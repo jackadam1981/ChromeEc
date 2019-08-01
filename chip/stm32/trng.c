@@ -104,7 +104,7 @@ static int command_rand(int argc, char **argv)
 	rand_bytes(data, sizeof(data));
 	exit_trng();
 
-	ccprintf("rand %.*h\n", sizeof(data), data);
+	ccprintf("rand %.*ph\n", sizeof(data), data);
 
 	return EC_SUCCESS;
 }

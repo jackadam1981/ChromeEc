@@ -600,7 +600,8 @@ static void dump_memory(void)
 				(uint8_t *)&rx_buf, rx_len);
 
 		for (i = 0; i < rx_len - ST_TP_DUMMY_BYTE; i += 32) {
-			CPRINTF("%.4h %.4h %.4h %.4h %.4h %.4h %.4h %.4h\n",
+			CPRINTF("%.4ph %.4ph %.4ph %.4ph "
+				"%.4ph %.4ph %.4ph %.4ph\n",
 				rx_buf.bytes + i + 4 * 0,
 				rx_buf.bytes + i + 4 * 1,
 				rx_buf.bytes + i + 4 * 2,
@@ -1264,7 +1265,7 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		*data_size = 8;
 		st_tp_read_host_buffer_header();
 		memcpy(buf, rx_buf.bytes, *data_size);
-		CPRINTS("header: %.*h", *data_size, buf);
+		CPRINTS("header: %.*ph", *data_size, buf);
 		return EC_SUCCESS;
 	case ST_TP_DEBUG_CMD_READ_EVENTS:
 		num_events = st_tp_read_all_events(0);
