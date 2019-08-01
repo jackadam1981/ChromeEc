@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "967cbbe4_90269c2f",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-01T01:36:52Z",
+      "side": 1,
+      "message": "why not uint8_t?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "6e015c531f2af26ade28d4369a00d9dc6b2a32ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8989f0_c8b44f71",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-01T01:36:52Z",
+      "side": 1,
+      "message": "Or simply, extern uint8_t sku_id (and remove static in baseboard.c). You don\u0027t need a getter as only board/*.c may reference it.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "6e015c531f2af26ade28d4369a00d9dc6b2a32ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
