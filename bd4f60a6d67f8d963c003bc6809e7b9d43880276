@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b678d15_10437d93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:39:01Z",
+      "side": 1,
+      "message": "Include how much more space this code needs: we may want it all the time, waiting 10s to adapt to transition to a bright room/sunny outside.",
+      "revId": "bd4f60a6d67f8d963c003bc6809e7b9d43880276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c933f88f_f463119a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:39:01Z",
+      "side": 1,
+      "message": "use same function prototype as 116, so that you don\u0027t need #ifdef CONFIG_TCS_USE_LUX_TABLE throughout the code.",
+      "revId": "bd4f60a6d67f8d963c003bc6809e7b9d43880276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b231d8_026a8de7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:39:01Z",
+      "side": 1,
+      "message": "as is, you will have a compiler warning when CONFIG_TCS_USE_LUX_TABLE is not defined, as percent_left is never used.",
+      "revId": "bd4f60a6d67f8d963c003bc6809e7b9d43880276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ccb7c64_31748c27",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:39:01Z",
+      "side": 1,
+      "message": "parenthesis not needed or at the wrong place.",
+      "revId": "bd4f60a6d67f8d963c003bc6809e7b9d43880276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
