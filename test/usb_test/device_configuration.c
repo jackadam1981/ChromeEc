@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 	if (optind < argc) {
 		uint16_t v, p;
 
-		if (2 == sscanf(argv[optind], "%hx:%hx", &v, &p)) {
+		if (2 == sscanf(argv[optind], "%phx:%phx", &v, &p)) {
 			vid = v;
 			pid = p;
 			optind++;
