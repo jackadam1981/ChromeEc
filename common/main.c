@@ -37,6 +37,8 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+int small_array[4];
+
 test_mockable __keep int main(void)
 {
 	/*
@@ -211,7 +213,7 @@ test_mockable __keep int main(void)
 	 * into account the time before timer_init(), but it'll at least catch
 	 * the majority of the time.
 	 */
-	CPRINTS("Inits done");
+	CPRINTS("Inits donei%p", small_array);
 
 	/* Launch task scheduling (never returns) */
 	return task_start();
