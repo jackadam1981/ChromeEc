@@ -61,6 +61,8 @@ test-list-host += sbs_charging_v2
 test-list-host += sha256
 test-list-host += sha256_unrolled
 test-list-host += shmalloc
+test-list-host += static_if
+test-list-host += static_if_error
 test-list-host += system
 test-list-host += thermal
 test-list-host += timer_dos
@@ -131,6 +133,7 @@ sbs_charging_v2-y=sbs_charging_v2.o
 sha256-y=sha256.o
 sha256_unrolled-y=sha256.o
 shmalloc-y=shmalloc.o
+static_if-y=static_if.o
 stress-y=stress.o
 system-y=system.o
 thermal-y=thermal.o
@@ -160,3 +163,6 @@ $(out)/RO/test/nvmem_tpm2_mock.o: CFLAGS += -I$(TPM2_ROOT)
 
 host-is_enabled_error: TEST_SCRIPT=is_enabled_error.sh
 is_enabled_error-y=is_enabled_error.o.cmd
+
+host-static_if_error: TEST_SCRIPT=static_if_error.sh
+static_if_error-y=static_if_error.o.cmd
