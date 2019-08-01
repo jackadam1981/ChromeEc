@@ -165,8 +165,6 @@
 
 #define CONFIG_RNG
 
-#define CONFIG_ALWAYS_MEMSET
-
 #define CONFIG_CMD_FLASH
 #define CONFIG_CMD_SPI_XFER
 

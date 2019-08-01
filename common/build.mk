@@ -245,6 +245,8 @@ CPPFLAGS += -I$(abspath ./builtin)
 CPPFLAGS += -I$(CRYPTOCLIB)/include
 
 CRYPTOC_OBJS = $(shell find $(out)/cryptoc -name 'util.o')
+$(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_OBJS)
+$(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: cryptoc_objs
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_OBJS)
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: cryptoc_objs
 
