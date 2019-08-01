@@ -13,6 +13,13 @@
 #include "task.h"
 #include "util.h"
 
+#ifndef TEST_BUILD
+#include "cryptoc/util.h"
+#else
+/* Cryptoc library is not available to the test layer. */
+#define always_memset memset
+#endif
+
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
 /* Fingers templates for the current user */
@@ -51,7 +58,7 @@ void fp_task_simulate(void)
 
 void fp_clear_finger_context(int idx)
 {
-	memset(fp_template[idx], 0, sizeof(fp_template[0]));
+	always_memset(fp_template[idx], 0, sizeof(fp_template[0]));
 }
 
 void fp_clear_context(void)
@@ -60,9 +67,9 @@ void fp_clear_context(void)
 
 	templ_valid = 0;
 	templ_dirty = 0;
-	memset(fp_buffer, 0, sizeof(fp_buffer));
-	memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
-	memset(user_id, 0, sizeof(user_id));
+	always_memset(fp_buffer, 0, sizeof(fp_buffer));
+	always_memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+	always_memset(user_id, 0, sizeof(user_id));
 	for (idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
 	/* TODO maybe shutdown and re-init the private libraries ? */

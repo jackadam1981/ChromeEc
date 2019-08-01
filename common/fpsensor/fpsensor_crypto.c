@@ -16,6 +16,13 @@
 #error "fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE"
 #endif
 
+#ifndef TEST_BUILD
+#include "cryptoc/util.h"
+#else
+/* Cryptoc library is not available to the test layer. */
+#define always_memset memset
+#endif
+
 static int get_ikm(uint8_t *ikm)
 {
 	int ret;
@@ -77,7 +84,7 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	hmac_SHA256(key_buf, prk, prk_size, message_buf, info_size + 1);
 
 	memcpy(out_key, key_buf, out_key_size);
-	memset(key_buf, 0, sizeof(key_buf));
+	always_memset(key_buf, 0, sizeof(key_buf));
 
 	return EC_SUCCESS;
 }
@@ -100,7 +107,7 @@ int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 
 	/* "Extract step of HKDF. */
 	hkdf_extract(prk, salt, FP_CONTEXT_SALT_BYTES, ikm, sizeof(ikm));
-	memset(ikm, 0, sizeof(ikm));
+	always_memset(ikm, 0, sizeof(ikm));
 
 	/*
 	 * Only 1 "expand" step of HKDF since the size of the "info" context
@@ -109,7 +116,7 @@ int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 	 */
 	ret = hkdf_expand_one_step(out_key, SBP_ENC_KEY_LEN, prk, sizeof(prk),
 				   (uint8_t *)user_id, sizeof(user_id));
-	memset(prk, 0, sizeof(prk));
+	always_memset(prk, 0, sizeof(prk));
 
 	return ret;
 }
