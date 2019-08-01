@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a46b78d_c68ef593",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-01T23:32:01Z",
+      "side": 1,
+      "message": "Don\u0027t do that automatically (especially in a header!), you won\u0027t fail to build when you forget to include that config option for a board (in this case hatch_fp...)\n\nCheck out common/rma_auth.c to see how to do it safely for test builds.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "bd3119dfd7c022e41e41997aa2a90e147cdd0408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6266ea6d_88e9e758",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-01T23:32:01Z",
+      "side": 1,
+      "message": "You don\u0027t need that in the header itself, include it in the .c files that need it instead (see for example chip/g/dcrypto/hkdf.c)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "bd3119dfd7c022e41e41997aa2a90e147cdd0408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
