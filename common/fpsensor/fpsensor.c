@@ -28,6 +28,13 @@
 #error "fpsensor requires RNG"
 #endif
 
+#ifndef TEST_BUILD
+#include "cryptoc/util.h"
+#else
+/* Cryptoc library is not available to the test layer. */
+#define always_memset memset
+#endif
+
 /* Ready to encrypt a template. */
 static timestamp_t encryption_deadline;
 
@@ -409,7 +416,7 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 		encryption_deadline.val = now.val + (1 * SECOND);
 
-		memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+		always_memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
 		/* The beginning of the buffer contains nonce/salt/tag. */
 		enc_info = (void *)fp_enc_buffer;
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
