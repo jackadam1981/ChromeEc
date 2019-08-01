@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "474088ed_da866603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 35
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-08-01T09:33:53Z",
+      "side": 1,
+      "message": "is detected",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67721cd2_81446819",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 35
@@ -47,6 +70,57 @@
       "writtenOn": "2019-07-31T15:56:08Z",
       "side": 1,
       "message": "Is it really necessary to sleep in this case? I mean, you know there is more data to be read already.",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e39bf0_bb972e23",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-08-01T09:33:53Z",
+      "side": 1,
+      "message": "Should there be an API to register notifier ?\nIt is not easy for reader to understand notifier based on enable/disable notifier API.",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93fa3591_5245ee7b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-08-01T09:33:53Z",
+      "side": 1,
+      "message": "SHould we reuse how eve is waken up ?\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/board/eve/board.c?type\u003dcs\u0026q\u003dEC_DEVICE_EVENT_DSP\u0026g\u003d0\u0026l\u003d104",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce8fbd6_62a3affd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 4800,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-08-01T09:33:53Z",
+      "side": 1,
+      "message": "Please add comments to explain the fields.",
       "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
