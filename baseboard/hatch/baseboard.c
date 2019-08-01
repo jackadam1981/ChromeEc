@@ -22,6 +22,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "power.h"
+#include "stdbool.h"
 #include "tcpci.h"
 #include "timer.h"
 #include "usbc_ppc.h"
@@ -80,6 +81,12 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /******************************************************************************/
 /* Chipset callbacks/hooks */
 
+__attribute__((weak)) int board_has_kb_backlight(void)
+{
+	/* Default Enable keyboard backlight */
+	return true;
+}
+
 /* Called on AP S5 -> S3 transition */
 static void baseboard_chipset_startup(void)
 {
@@ -92,8 +99,8 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 static void baseboard_chipset_resume(void)
 {
 	/* TODD(b/122266850): Need to fill out this hook */
-	/* Enable keyboard backlight */
-	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+	if (board_has_kb_backlight())
+		gpio_set_level(GPIO_EC_KB_BL_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -101,8 +108,8 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 static void baseboard_chipset_suspend(void)
 {
 	/* TODD(b/122266850): Need to fill out this hook */
-	/* Disable keyboard backlight */
-	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
+	if (board_has_kb_backlight())
+		gpio_set_level(GPIO_EC_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
