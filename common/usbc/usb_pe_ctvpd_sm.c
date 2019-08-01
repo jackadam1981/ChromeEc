@@ -85,6 +85,16 @@ void pe_pass_up_message(int port)
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
+void pe_prl_reset_pending(int port)
+{
+	/* Do nothing */
+}
+
+void pe_prl_reset_complete(int port)
+{
+	/* Do nothing */
+}
+
 void pe_hard_reset_sent(int port)
 {
 	/* Do nothing */
