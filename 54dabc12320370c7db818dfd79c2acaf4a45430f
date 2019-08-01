@@ -70,6 +70,29 @@
     },
     {
       "key": {
+        "uuid": "3f997669_9e477d67",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-01T04:32:27Z",
+      "side": 1,
+      "message": "remove these",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 53
+      },
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6b016a4_584222aa",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 3
