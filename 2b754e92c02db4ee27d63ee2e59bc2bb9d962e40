@@ -238,6 +238,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb024ba_9e95884d",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-01T01:06:34Z",
+      "side": 1,
+      "message": "It\u0027s after all printf. EC won\u0027t change the behavior based on what\u0027s printed. So, I think we don\u0027t need to worry about not fixing a few (rare) cases. \n\nWe can tolerate missing \u0027F\u0027. We tolerated much worse cases: some statements were missing a new line, some were missing an argument, some were missing %*.",
+      "parentUuid": "4ffa0ccb_a403ccf0",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
