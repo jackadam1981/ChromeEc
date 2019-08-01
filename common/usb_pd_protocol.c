@@ -4513,10 +4513,14 @@ void pd_task(void *u)
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 			/*
-			 * Always stay in low power mode since we are waiting
-			 * for a connection.
+			 * If next state is either SNK_DISCONNECTED or
+			 * DRP_TOGGLE, then request LPM. However, if next state
+			 * is SRC_DISCONNECTED, then don't request LPM as
+			 * currently attached adapters may not create new TCPC
+			 * alerts following a chipset power transition into S0.
 			 */
-			pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
+			if (next_state != PD_STATE_SRC_DISCONNECTED)
+				pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
 #endif
 
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
