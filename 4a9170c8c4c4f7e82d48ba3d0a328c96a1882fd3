@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea627449_3cdea99f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4630,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-08-01T18:30:25Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PD_DEBUG_LEVEL\u003d0 is defined, it prevents users to change the debug_level. There is no way to show the debug messages, like RECV response, VDM request, and other messages like CTRL, srcCAP, batCAP, etc. These kinds of messages don\u0027t print PD state strings. It doesn\u0027t makes sense to suppress them.\n\nIt should be fixed, like limiting CONFIG_USB_PD_DEBUG_LEVEL (or other better name) to the messages only containing PD state strings.",
+      "range": {
+        "startLine": 4623,
+        "startChar": 0,
+        "endLine": 4630,
+        "endChar": 6
+      },
+      "revId": "4a9170c8c4c4f7e82d48ba3d0a328c96a1882fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
