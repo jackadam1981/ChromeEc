@@ -18,7 +18,7 @@
 /* USB Policy Engine Charge-Through VCONN Powered Device module */
 
 /* Policy Engine Flags */
-#define PE_FLAGS_MSG_RECEIVED (1 << 0)
+#define PE_FLAGS_MSG_RECEIVED        BIT(0)
 
 enum l_state {
 	PE_INIT,
@@ -101,6 +101,16 @@ void pe_got_soft_reset(int port)
 }
 
 void pe_message_sent(int port)
+{
+	/* Do nothing */
+}
+
+void pe_prl_reset_pending(int port)
+{
+	/* Do nothing */
+}
+
+void pe_prl_reset_complete(int port)
 {
 	/* Do nothing */
 }

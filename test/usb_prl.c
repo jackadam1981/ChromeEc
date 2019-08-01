@@ -47,6 +47,7 @@ static struct pd_prl {
 	int data_role;
 	int msg_tx_id;
 	int msg_rx_id;
+	int reset_pending;
 
 	int mock_pe_message_sent;
 	int mock_pe_error;
@@ -64,6 +65,8 @@ static void init_port(int port, int rev)
 	pd_port[port].data_role = PD_ROLE_UFP;
 	pd_port[port].msg_tx_id = 0;
 	pd_port[port].msg_rx_id = 0;
+	pd_port[port].reset_pending = 0;
+
 	tcpm_init(port);
 	tcpm_set_polarity(port, 0);
 	tcpm_set_rx_enable(port, 0);
@@ -629,6 +632,16 @@ static void enable_prl(int port, int en)
 	prl_set_rev(port, pd_port[port].rev);
 }
 
+void pe_prl_reset_pending(int port)
+{
+	pd_port[port].reset_pending = 1;
+}
+
+void pe_prl_reset_complete(int port)
+{
+	pd_port[port].reset_pending = 0;
+}
+
 int tc_get_power_role(int port)
 {
 	return pd_port[port].power_role;
@@ -683,6 +696,26 @@ static int test_initial_states(void)
 				TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
 	TEST_ASSERT(get_prl_hr_state_id(port) ==
 				PRL_HR_WAIT_FOR_REQUEST);
+
+	return EC_SUCCESS;
+}
+
+static int test_prl_reset(void)
+{
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	TEST_ASSERT(pd_port[port].reset_pending == 0);
+	prl_reset(port);
+	TEST_ASSERT(pd_port[port].reset_pending == 1);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(10 * MSEC);
+
+	TEST_ASSERT(pd_port[port].reset_pending == 0);
+
+	enable_prl(port, 0);
 
 	return EC_SUCCESS;
 }
@@ -1267,6 +1300,7 @@ void run_test(void)
 
 	/* Test PD 2.0 Protocol */
 	init_port(PORT0, PD_REV20);
+	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_initial_states);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
@@ -1284,6 +1318,7 @@ void run_test(void)
 
 	/* Test PD 3.0 Protocol */
 	init_port(PORT0, PD_REV30);
+	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_initial_states);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
