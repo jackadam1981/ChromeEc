@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f29758ef_b59b63e4",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T16:21:02Z",
+      "side": 1,
+      "message": "at mschilder@",
+      "parentUuid": "46f75e4d_cf0c4629",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 36
+      },
+      "revId": "84081735b7ceef9cc69bf4e89063a405267e8862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "519f42ce_3c34909b",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 14
