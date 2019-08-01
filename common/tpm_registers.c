@@ -10,6 +10,7 @@
  */
 
 #include "byteorder.h"
+#include "ccd_config.h"
 #include "console.h"
 #include "extension.h"
 #include "link_defs.h"
@@ -497,8 +498,16 @@ static void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 {
 	int i;
+	int verbose = ccd_get_state() == CCD_STATE_OPENED;
 
-	CPRINTF("%s(0x%06x, %d)", __func__, regaddr, data_size);
+	/*
+	 * Suppress UART messages in default and allow it only if CCD is open.
+	 * Otherwise, excessive UART character generation might cause starvation
+	 * to TPM task and HOOK task, and eventually get a watchdog timeout.
+	 */
+	if (verbose)
+		CPRINTF("%s(0x%06x, %d)", __func__, regaddr, data_size);
+
 	switch (regaddr) {
 	case TPM_DID_VID:
 		copy_bytes(dest, data_size, (GOOGLE_DID << 16) | GOOGLE_VID);
@@ -513,7 +522,8 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 		copy_bytes(dest, data_size, tpm_.regs.access);
 		break;
 	case TPM_STS:
-		CPRINTF(" %x", tpm_.regs.sts);
+		if (verbose)
+			CPRINTF(" %x", tpm_.regs.sts);
 		copy_bytes(dest, data_size, tpm_.regs.sts);
 		break;
 	case TPM_DATA_FIFO:
@@ -544,7 +554,8 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 		CPRINTS("%s(0x%06x, %d) => ??", __func__, regaddr, data_size);
 		return;
 	}
-	CPRINTF("\n");
+	if (verbose)
+		CPRINTF("\n");
 }
 
 static __preserved interface_control_func if_start;
