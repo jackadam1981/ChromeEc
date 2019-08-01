@@ -16,6 +16,24 @@
       "revId": "a9ba709a07957080de0c6e660e39eeb182fd495d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b3b65a_a5b920ea",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-01T09:43:04Z",
+      "side": 1,
+      "message": "Kernel won\u0027t know the \"5 dB\" gap for each step.  Kernel only knows, there is a scaler, and it has 5 scale (0~4).\n\n\"Chips\" can define which scale mapping to how many dB.",
+      "parentUuid": "7ff6fb17_094cb18a",
+      "revId": "a9ba709a07957080de0c6e660e39eeb182fd495d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
