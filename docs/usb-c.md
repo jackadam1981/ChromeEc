@@ -25,6 +25,10 @@ Modes in the EC codebase.
 
 ## Glossary
 
+TODO(jettrink): Add glossary definitions for more terms ex. 'negotiation',
+'contract', SNK, IC, Vbus, task (RO, RW = Read-Only, Read-Write?)
+
+
 *   PD
     *   Power Delivery. Protocol over USB-C connector that allows up to 100W of
         power. Not supported on USB-A or USB-B connectors.
@@ -71,6 +75,9 @@ Modes in the EC codebase.
 ## Different PD stacks
 
 Right now platform/ec has two different implementations of USB-C PD stack.
+
+TODO(jettrink): Add more explanation of usb_pd_protocol.c. Include details
+like explanation of tasks, state transitions, adherence to usb-c spec, etc.
 
 1.  The older implementation is mainly contained within
     [`usb_pd_protocol.c`](../common/usb_pd_protocol.c)
