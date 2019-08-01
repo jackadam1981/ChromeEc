@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "255ca7c8_a997d5cb",
+        "filename": "common/mock/rollback_mock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-08-01T00:11:31Z",
+      "side": 1,
+      "message": "The size is governed by CONFIG_ROLLBACK_SECRET_SIZE, which is defined in the fuzz/fuzz_config.h ( crrev.com/c/1661122/25/fuzz/fuzz_config.h ) or board/*/board.h for others.\n\nWhat do you think about adding a BUILD_ASSERT? I put one in the latest PS.\n\n----\n\nI suspect this will be expanded and generalized to fit future needs.",
+      "parentUuid": "baabf9a7_d1822787",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "8af33dc13d0fc009100a27b5c95995098b16e2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9412c12_ac4f751e",
         "filename": "fuzz/host_command_fuzz.mocklist",
         "patchSetId": 24
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-31T18:12:24Z",
       "side": 1,
       "message": "The filename should include \u0027fp\u0027, right?",
+      "revId": "8af33dc13d0fc009100a27b5c95995098b16e2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9233df96_1903afe0",
+        "filename": "fuzz/host_command_fuzz.mocklist",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-08-01T00:11:31Z",
+      "side": 1,
+      "message": "Not exactly, this is simply adding fingerprint host commands to the existing generic host command fuzzer (which can/does include other host commands).",
+      "parentUuid": "a9412c12_ac4f751e",
       "revId": "8af33dc13d0fc009100a27b5c95995098b16e2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
