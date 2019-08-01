@@ -241,12 +241,19 @@ endif
 
 ifeq ($(CONFIG_ALWAYS_MEMSET),y)
 CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
+ifneq ($(BOARD),host)
 CPPFLAGS += -I$(abspath ./builtin)
+endif
 CPPFLAGS += -I$(CRYPTOCLIB)/include
 
 CRYPTOC_OBJS = $(shell find $(out)/cryptoc -name 'util.o')
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_OBJS)
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: cryptoc_objs
+# Add cryptoc to host test executables but not fuzz executables.
+ifeq ($(TEST_FUZZ),)
+$(out)/$(PROJECT).exe: LDFLAGS_EXTRA += $(CRYPTOC_OBJS)
+$(out)/$(PROJECT).exe: cryptoc_objs
+endif
 
 # Force the external build each time, so it can look for changed sources.
 .PHONY: cryptoc_objs
