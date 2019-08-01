@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8aba170c_67f95558",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T20:31:04Z",
+      "side": 1,
+      "message": "copy order permutation basically ensures that the attacker can\u0027t assume the specific memory writing order, i.e. first memory write is not element zero of the array. Thus, it becomes harder to deduct where useful data starts by 8!.",
+      "parentUuid": "f29758ef_b59b63e4",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 36
+      },
+      "revId": "84081735b7ceef9cc69bf4e89063a405267e8862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "519f42ce_3c34909b",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 14
