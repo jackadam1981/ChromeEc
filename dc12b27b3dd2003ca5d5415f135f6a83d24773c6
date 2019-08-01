@@ -50,6 +50,23 @@
       "revId": "dc12b27b3dd2003ca5d5415f135f6a83d24773c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33940625_cb74518c",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-01T20:00:38Z",
+      "side": 1,
+      "message": "I think we want to get rid of CONFIG_USB_PD_5V_EN_CUSTOM and use ppc_is_sourcing_vbus()",
+      "revId": "dc12b27b3dd2003ca5d5415f135f6a83d24773c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
