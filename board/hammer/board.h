@@ -337,6 +337,9 @@
 #undef CONFIG_ROLLBACK_UPDATE
 #endif
 
+/* For rollback functions. */
+#define CONFIG_ALWAYS_MEMSET
+
 /* Maximum current to draw. */
 #define MAX_CURRENT_MA			2000
 /* Maximum current/voltage to provide over OTG. */
