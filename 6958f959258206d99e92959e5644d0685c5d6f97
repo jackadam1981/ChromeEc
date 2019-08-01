@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e035f2e9_93f85ba6",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-01T21:12:00Z",
+      "side": 1,
+      "message": "Oh.. nice find.",
+      "revId": "6958f959258206d99e92959e5644d0685c5d6f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103c93f0_2c08fdd1",
+        "filename": "test/is_enabled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-01T21:12:00Z",
+      "side": 1,
+      "message": "Move these to a different file.",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "6958f959258206d99e92959e5644d0685c5d6f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a6bda5_d5eb0207",
+        "filename": "test/is_enabled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-01T21:12:00Z",
+      "side": 1,
+      "message": "Also add a test to verify that the build fails when the option is defined to something other than blank.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/59/1731859/1/test/is_enabled_error.c and the .sh for it.",
+      "revId": "6958f959258206d99e92959e5644d0685c5d6f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
