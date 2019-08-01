@@ -1,0 +1,276 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2019d8a2_855a9fcf",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "Add a warning here. It should never be called.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7abcd77b_0461c099",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "what if status is not valid?",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a813926b_d315ca9c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "s/ATIME/accumulation time by incrementing ATIME register./",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd0be697_ef8972ab",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "no need of table:\ncur_gain \u003d 1 \u003c\u003c (2 * sat_p-\u003eagain)",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e40b08ef_726e9893",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "s/4/CRGB_COUNT/",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba106e3_5d9cc833",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "why do you need to convert to in64_t here?",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759c9e00_4fcde15c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "or CRGB_COUNT. Pick only one define.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7dcb5c7_252095c0",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "need to cast?",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3079e2ad_fb03f8c1",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "last_v[Y|Z] never used.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f16cf1_56a929e9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "you can not not send XYZ if you have sent clear. Test all the condition before sending the samples.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "821bf6d2_dbf319cb",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "Duplicate of CRGB_COUNT",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1575a5e9_3fa40053",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "Not needed anymore, it is the same as \u0027enable\u0027 from perform_calib.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39df2e24_a08ec212",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "It is somewhat a duplicate of xyz_coeff_index.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9795e84_06c16917",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "used? \nif not, als_channel_scale_t and crgb_channel_scale_t are the same structure.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74147274_92722285",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "To be consistent: SENSOR_APPLY_MUL_SCALE",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42ae618_8e1368ce",
+        "filename": "include/config.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T22:29:44Z",
+      "side": 1,
+      "message": "remove, TCS3400 does output meaningful information without XYZ translation.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
