@@ -22,6 +22,30 @@
       "revId": "0664f301bcc086fc324471379fa70a795a2c6965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "051fa5c7_ef826623",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-01T17:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc7ad78f_37806ec6",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 24
+      },
+      "revId": "0664f301bcc086fc324471379fa70a795a2c6965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
