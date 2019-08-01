@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "056fcd2c_356afa33",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-08-01T06:55:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8a3ea3e_2d0aa769",
+      "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef4687d7_54a2c7f2",
         "filename": "include/audio_codec.h",
         "patchSetId": 17
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "audio_codec_translate_addr_ec_to_ap() defines the memory mapping from EC address space to AP address space.\n\nUsually, \"chips\" need to implement (define) the function if there are shared memory on system RAM.  Otherwise, linker errors.\n\nThis CL describes an abstract layer, won\u0027t know the mapping details.",
       "parentUuid": "ef4687d7_54a2c7f2",
+      "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d10a6c_52203db3",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-08-01T06:55:11Z",
+      "side": 1,
+      "message": "I think you can put this into comment.\nOtherwise, reader does not know what are the functions to implement since we are not using ops structure.",
+      "parentUuid": "88534a6b_3ca3302a",
       "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
