@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "251dc552_95b9b1d5",
+        "filename": "common/chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-01T20:14:23Z",
+      "side": 1,
+      "message": "Please swap the tests, otherwise you risk accessing stuff out of bounds in calc_reset_log_checksum.\n\nnext_reset_log \u003c 0 || next_reset_log \u003e\u003d ARRAY_SIZE(reset_logs) ||\nreset_log_checksum !\u003d calc_reset_log_checksum()",
+      "revId": "ed15bcae48b944952954a4c2d3c254ec04543b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eba61cd_b86efe17",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-01T20:14:23Z",
+      "side": 1,
+      "message": "Move to include/util.h?",
+      "revId": "ed15bcae48b944952954a4c2d3c254ec04543b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebfd52a_d1b1fdd2",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-01T20:14:23Z",
+      "side": 1,
+      "message": "If it does not matter that the vector_table is in bss, maybe move this out of the #ifdef, so that you don\u0027t need the #ifndef below?",
+      "revId": "ed15bcae48b944952954a4c2d3c254ec04543b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
