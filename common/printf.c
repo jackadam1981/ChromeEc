@@ -18,16 +18,6 @@ static inline int divmod(uint64_t *n, int d)
 {
 	return uint64divmod(n, d);
 }
-#else /* CONFIG_DEBUG_PRINTF */
-/* if we are optimizing for size, remove the 64-bit support */
-#define NO_UINT64_SUPPORT
-static inline int divmod(uint32_t *n, int d)
-{
-	int r = *n % d;
-	*n /= d;
-	return r;
-}
-#endif
 
 /**
  * Convert the lowest nibble of a number to hex
@@ -43,6 +33,17 @@ static int hexdigit(int c)
 
 	return c > 9 ? (c + 'a' - 10) : (c + '0');
 }
+
+#else /* CONFIG_DEBUG_PRINTF */
+/* if we are optimizing for size, remove the 64-bit support */
+#define NO_UINT64_SUPPORT
+static inline int divmod(uint32_t *n, int d)
+{
+	int r = *n % d;
+	*n /= d;
+	return r;
+}
+#endif
 
 /* Flags for vfnprintf() flags */
 #define PF_LEFT		BIT(0)  /* Left-justify */
@@ -162,46 +163,7 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 			vstr = va_arg(args, char *);
 			if (vstr == NULL)
 				vstr = "(NULL)";
-		} else if (c == 'h') {
-			/* Hex dump output */
-			vstr = va_arg(args, char *);
 
-			if (precision < 0) {
-				/* Hex dump requires precision */
-				format = error_str;
-				continue;
-			}
-
-			/*
-			 * Divide pad_width instead of multiplying
-			 * precision to avoid overflow error
-			 * in the condition.
-			 * The "/2" and "2*" can be optimized by
-			 * the compiler.
-			 */
-			if ((pad_width/2) >= precision)
-				pad_width -= 2*precision;
-			else
-				pad_width = 0;
-
-			while (pad_width > 0 && !(flags & PF_LEFT)) {
-				if (addchar(context,
-					    flags & PF_PADZERO ? '0' : ' '))
-					return EC_ERROR_OVERFLOW;
-				pad_width--;
-			}
-			for (; precision; precision--, vstr++) {
-				if (addchar(context, hexdigit(*vstr >> 4)) ||
-				    addchar(context, hexdigit(*vstr)))
-					return EC_ERROR_OVERFLOW;
-			}
-			while (pad_width > 0 && (flags & PF_LEFT)) {
-				if (addchar(context, ' '))
-					return EC_ERROR_OVERFLOW;
-				pad_width--;
-			}
-
-			continue;
 		} else {
 			int base = 10;
 #ifdef NO_UINT64_SUPPORT
@@ -239,8 +201,48 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 						v /= 1000;
 					}
 
+				} else if (ptrspec == 'h') {
+					/* %ph - Print a hex byte buffer. */
+					vstr = ptrval;
+
+					if (precision < 0) {
+						/* Hex dump requires precision */
+						format = error_str;
+						continue;
+					}
+
+					/*
+					* Divide pad_width instead of multiplying
+					* precision to avoid overflow error
+					* in the condition.
+					* The "/2" and "2*" can be optimized by
+					* the compiler.
+					*/
+					if ((pad_width/2) >= precision)
+						pad_width -= 2*precision;
+					else
+						pad_width = 0;
+
+					while (pad_width > 0 && !(flags & PF_LEFT)) {
+						if (addchar(context,
+							flags & PF_PADZERO ? '0' : ' '))
+							return EC_ERROR_OVERFLOW;
+						pad_width--;
+					}
+					for (; precision; precision--, vstr++) {
+						if (addchar(context, hexdigit(*vstr >> 4)) ||
+						addchar(context, hexdigit(*vstr)))
+							return EC_ERROR_OVERFLOW;
+					}
+					while (pad_width > 0 && (flags & PF_LEFT)) {
+						if (addchar(context, ' '))
+							return EC_ERROR_OVERFLOW;
+						pad_width--;
+					}
+
+					continue;
 				} else if (ptrspec == 'P') {
-					/* Print a raw pointer. */
+					/* %pP - Print a raw pointer. */
 					v = (unsigned long)ptrval;
 					if (sizeof(unsigned long) ==
 					    sizeof(uint64_t))

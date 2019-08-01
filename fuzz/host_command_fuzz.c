@@ -113,7 +113,7 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	 * issues.
 	 */
 	if (first) {
-		ccprintf("Request: cmd=%04x data=%.*h\n",
+		ccprintf("Request: cmd=%04x data=%.*ph\n",
 			req->command, req_size, req_buf);
 		first = 0;
 	}
