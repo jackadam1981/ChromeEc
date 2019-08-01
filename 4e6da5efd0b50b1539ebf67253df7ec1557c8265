@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3e3aba_b7c19d51",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-01T14:02:35Z",
+      "side": 1,
+      "message": "Nit: the name of this function implies that it will return a bool indicating whether the board has a KB backlight. It would be much better to name it something like board_enable_kb_backlight.",
+      "revId": "4e6da5efd0b50b1539ebf67253df7ec1557c8265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
