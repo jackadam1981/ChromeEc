@@ -262,6 +262,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40e5ecc_fc9dfe5f",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-08-01T17:14:33Z",
+      "side": 1,
+      "message": "It will be worse than just a missing F. If %pF was extended to mean \"print me the contents of this struct I just passed you\", then instead of just printing a pointer value, you\u0027re reaching through that pointer and misinterpreting its contents. \n\nEven in the case of %pT here, except in the special NULL case, we reach through the pointer passed in and print a 64-bit timestamp at that value. If that pointer was not valid, we\u0027d crash the EC or worse.\n\nIs there a particular reason you want to keep %p\u003cno_suffix\u003e alive? It\u0027s hardly used in the EC codebase outside of test.\n\nWhoops, I\u0027m realizing now I guess I do need to fix up cases of %p before I submit this, if we go this route.",
+      "parentUuid": "cfb024ba_9e95884d",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
