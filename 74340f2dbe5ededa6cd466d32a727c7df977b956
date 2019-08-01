@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38f736b4_da01de72",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-08-01T04:52:03Z",
+      "side": 1,
+      "message": "for nit, maybe rename to ENTERING_RW_ODL?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "74340f2dbe5ededa6cd466d32a727c7df977b956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
