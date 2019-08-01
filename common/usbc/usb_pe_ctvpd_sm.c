@@ -102,6 +102,16 @@ void pe_message_sent(int port)
 	/* Do nothing */
 }
 
+void pe_prl_reset_pending(int port)
+{
+	/* Do nothing */
+}
+
+void pe_prl_reset_complete(int port)
+{
+	/* Do nothing */
+}
+
 static int pe_request(int port, enum sm_signal sig)
 {
 	int ret;

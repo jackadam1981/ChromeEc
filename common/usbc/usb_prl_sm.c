@@ -137,6 +137,8 @@ static struct pd_message {
 	uint8_t ext;
 	/* PD revision */
 	enum pd_rev_type rev;
+	/* Cable PD revision */
+	enum pd_rev_type cable_rev;
 	/* Number of 32-bit objects in chk_buf */
 	uint16_t data_objs;
 	/* temp chunk buffer */
@@ -229,10 +231,11 @@ void prl_init(int port)
 	rch[port].flags = 0;
 
 	/*
-	 * Initialize to highest revision supported. If the port partner
-	 * doesn't support this revision, the Protocol Engine will lower
-	 * this value to the revision supported by the port partner.
+	 * Initialize to highest revision supported. If the port or cable
+	 * partner doesn't support this revision, the Protocol Engine will
+	 * lower this value to the revision supported by the partner.
 	 */
+	pdmsg[port].cable_rev = PD_REV30;
 	pdmsg[port].rev = PD_REV30;
 	pdmsg[port].status_flags = 0;
 
@@ -327,13 +330,24 @@ void prl_send_ext_data_msg(int port,
 void prl_reset(int port)
 {
 	local_state[port] = SM_INIT;
+
+	/* Inform Policy Engine that a reset is in proccess */
+	pe_prl_reset_pending(port);
 }
 
 void usbc_protocol_layer(int port, int evt, int en)
 {
 	switch (local_state[port]) {
+	case SM_PAUSED:
+		if (!en)
+			break;
+		else
+			local_state[port] = SM_INIT;
+			/* fall through */
 	case SM_INIT:
 		prl_init(port);
+		/* Inform policy engine that the reset is complete */
+		pe_prl_reset_complete(port);
 		local_state[port] = SM_RUN;
 		/* fall through */
 	case SM_RUN:
@@ -365,12 +379,6 @@ void usbc_protocol_layer(int port, int evt, int en)
 		/* Run Protocol Layer Hard Reset state machine */
 		sm_run_state_machine(port, PRL_HR_OBJ(port), SM_RUN_SIG);
 		break;
-	case SM_PAUSED:
-		if (en) {
-			local_state[port] = SM_INIT;
-			usbc_protocol_layer(port, evt, en);
-		}
-		break;
 	}
 }
 
@@ -387,6 +395,16 @@ void prl_set_rev(int port, enum pd_rev_type rev)
 enum pd_rev_type prl_get_rev(int port)
 {
 	return pdmsg[port].rev;
+}
+
+void prl_set_cable_rev(int port, enum pd_rev_type rev)
+{
+	pdmsg[port].cable_rev = rev;
+}
+
+enum pd_rev_type prl_get_cable_rev(int port)
+{
+	return pdmsg[port].cable_rev;
 }
 
 /* Common Protocol Layer Message Transmission */
@@ -640,11 +658,20 @@ static void prl_tx_construct_message(int port)
 			tc_get_data_role(port),
 			prl_tx[port].msg_id_counter[pdmsg[port].xmit_type],
 			pdmsg[port].data_objs,
-			pdmsg[port].rev,
+			(prl_tx[port].sop == TCPC_TX_SOP) ?
+				pdmsg[port].rev : pdmsg[port].cable_rev,
 			pdmsg[port].ext);
 
 	/* Save SOP* so the correct msg_id_counter can be incremented */
 	prl_tx[port].sop = pdmsg[port].xmit_type;
+
+	/*
+	 * These flags could be set if this function is called before the
+	 * Policy Engine is informed of the previous transmission. Clear the
+	 * flags so that this message can be sent.
+	 */
+	prl_tx[port].xmit_status = TCPC_TX_UNSET;
+	pdmsg[port].status_flags &= ~PRL_FLAGS_TX_COMPLETE;
 
 	/* Pass message to PHY Layer */
 	tcpm_transmit(port, pdmsg[port].xmit_type, header,
@@ -896,6 +923,22 @@ static int prl_hr_reset_layer_entry(int port)
 	sm_set_state(port, PRL_TX_OBJ(port),
 		prl_tx_wait_for_message_request);
 
+	tch[port].flags = 0;
+	rch[port].flags = 0;
+	pdmsg[port].status_flags = 0;
+
+	/* Reset message ids */
+	for (i = 0; i < NUM_XMIT_TYPES; i++) {
+		prl_rx[port].msg_id[i] = -1;
+		prl_tx[port].msg_id_counter[i] = 0;
+	}
+
+	/* Disable RX */
+#if defined(CONFIG_USB_TYPEC_CTVPD) || defined(CONFIG_USB_TYPEC_VPD)
+	vpd_rx_enable(0);
+#else
+	tcpm_set_rx_enable(port, 0);
+#endif
 	return 0;
 }
 
@@ -1801,6 +1844,17 @@ static int prl_rx_wait_for_phy_message(int port, int evt)
 			cnt = PD_HEADER_CNT(header);
 			msid = PD_HEADER_ID(header);
 			sop = PD_HEADER_GET_SOP(header);
+
+#if !defined(CONFIG_USB_TYPEC_CTVPD) && !defined(CONFIG_USB_TYPEC_VPD)
+			/*
+			 * Ignore messages sent to the cable from our
+			 * port parner.
+			 */
+			if ((PD_HEADER_GET_SOP(header) != PD_MSG_SOP) &&
+				(PD_HEADER_PROLE(header) == PD_PLUG_DFP_UFP)) {
+				return 0;
+			}
+#endif
 
 			if (cnt == 0 && type == PD_CTRL_SOFT_RESET) {
 				int i;
