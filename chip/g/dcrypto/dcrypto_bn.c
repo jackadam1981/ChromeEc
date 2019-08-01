@@ -1484,7 +1484,7 @@ static int command_genp(int argc, char **argv)
 	result = call_on_bigger_stack(genp_core);
 
 	if (result == EC_SUCCESS) {
-		ccprintf("prime: %.*h (lsb first)\n", sizeof(prime_buf),
+		ccprintf("prime: %.*ph (lsb first)\n", sizeof(prime_buf),
 			 prime_buf);
 		ccprintf("μs   : %lu\n", genp_end.val - genp_start.val);
 	}
