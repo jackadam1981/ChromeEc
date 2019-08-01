@@ -12,6 +12,13 @@
 /* Port default state at startup */
 #define TC_DEFAULT_STATE(port) TC_UNATTACHED_SNK
 
+enum ps_reset_sequence {
+	PS_STATE0,
+	PS_STATE1,
+	PS_STATE2,
+	PS_STATE3
+};
+
 /**
  * This is the Type-C Port object that contains information needed to
  * implement a USB Type-C DRP with Accessory and Try.SRC module
@@ -27,11 +34,17 @@ struct type_c {
 	/* state id */
 	enum typec_state_id state_id;
 	/* current port power role (SOURCE or SINK) */
-	uint8_t power_role;
+	enum pd_power_role power_role;
 	/* current port data role (DFP or UFP) */
-	uint8_t data_role;
+	enum pd_data_role data_role;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
+#ifdef CONFIG_USB_PE_SM
+	/* enable power delivery state machines */
+	uint8_t pd_enable;
+	/* Power supply reset sequence during a hard reset */
+	enum ps_reset_sequence ps_reset_state;
+#endif
 	/* port flags, see TC_FLAGS_* */
 	uint32_t flags;
 	/* event timeout */
@@ -61,15 +74,6 @@ struct type_c {
 	uint64_t next_role_swap;
 	/* Generic timer */
 	uint64_t timeout;
-
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	/* Time to enter low power mode */
-	uint64_t low_power_time;
-	/* Tasks to notify after TCPC has been reset */
-	int tasks_waiting_on_reset;
-	/* Tasks preventing TCPC from entering low power mode */
-	int tasks_preventing_lpm;
-#endif
 	/* Type-C current */
 	typec_current_t typec_curr;
 	/* Type-C current change */
@@ -78,6 +82,14 @@ struct type_c {
 	uint16_t dev_id;
 	uint32_t dev_rw_hash[PD_RW_HASH_SIZE/4];
 	enum ec_current_image current_image;
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	/* Time to enter low power mode */
+	uint64_t low_power_time;
+	/* Tasks to notify after TCPC has been reset */
+	int tasks_waiting_on_reset;
+	/* Tasks preventing TCPC from entering low power mode */
+	int tasks_preventing_lpm;
+#endif
 };
 
 extern struct type_c tc[];

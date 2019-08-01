@@ -10,11 +10,101 @@
 
 #include "usb_sm.h"
 
+/* Policy Engine Receive and Transmit Errors */
 enum pe_error {
 	ERR_RCH_CHUNKED,
 	ERR_RCH_MSG_REC,
 	ERR_TCH_CHUNKED,
 	ERR_TCH_XMIT,
+};
+
+/* Policy Engine State Ids */
+enum pe_states {
+	PE_SRC_STARTUP,
+	PE_SRC_DISCOVERY,
+	PE_SRC_SEND_CAPABILITIES,
+	PE_SRC_NEGOTIATE_CAPABILITY,
+	PE_SRC_TRANSITION_SUPPLY,
+	PE_SRC_READY,
+	PE_SRC_DISABLED,
+	PE_SRC_CAPABILITY_RESPONSE,
+	PE_SRC_HARD_RESET,
+	PE_SRC_HARD_RESET_RECEIVED,
+	PE_SRC_TRANSITION_TO_DEFAULT,
+	PE_SRC_GET_SINK_CAP,
+	PE_SRC_WAIT_NEW_CAPABILITIES,
+	PE_SRC_VDM_IDENTITY_REQUEST,
+	PE_SRC_PING,
+
+	PE_SNK_STARTUP,
+	PE_SNK_DISCOVERY,
+	PE_SNK_WAIT_FOR_CAPABILITIES,
+	PE_SNK_EVALUATE_CAPABILITY,
+	PE_SNK_SELECT_CAPABILITY,
+	PE_SNK_TRANSITION_SINK,
+	PE_SNK_READY,
+	PE_SNK_HARD_RESET,
+	PE_SNK_TRANSITION_TO_DEFAULT,
+	PE_SNK_GIVE_SINK_CAP,
+	PE_SNK_GET_SOURCE_CAP,
+	PE_SNK_GIVE_SOURCE_CAP,
+
+	PE_DRS_EVALUATE_SWAP,
+	PE_DRS_CHANGE,
+	PE_DRS_SEND_SWAP,
+
+	PE_PRS_SRC_SNK_EVALUATE_SWAP,
+	PE_PRS_SRC_SNK_TRANSITION_TO_OFF,
+	PE_PRS_SRC_SNK_WAIT_SOURCE_ON,
+	PE_PRS_SRC_SNK_SEND_SWAP,
+	PE_PRS_SNK_SRC_EVALUATE_SWAP,
+	PE_PRS_SNK_SRC_TRANSITION_TO_OFF,
+	PE_PRS_SNK_SRC_ASSERT_RP,
+	PE_PRS_SNK_SRC_SOURCE_ON,
+	PE_PRS_SNK_SRC_SEND_SWAP,
+
+	PE_VCS_EVALUATE_SWAP,
+	PE_VCS_SEND_SWAP,
+	PE_VCS_WAIT_FOR_VCONN_SWAP,
+	PE_VCS_TURN_ON_VCONN_SWAP,
+	PE_VCS_TURN_OFF_VCONN_SWAP,
+	PE_VCS_SEND_PS_RDY_SWAP,
+
+	PE_SEND_SOFT_RESET,
+	PE_SOFT_RESET,
+
+	PE_GIVE_BATTERY_CAP,
+	PE_GIVE_BATTERY_STATUS,
+
+	PE_WAIT_FOR_ERROR_RECOVERY,
+	PE_HANDLE_CUSTOM_VDM_REQUEST,
+	PE_HANDLE_SVDM_REQUEST,
+	PE_BIST,
+	PE_SEND_NOT_SUPPORTED,
+
+	PE_DO_PORT_DISCOVERY,
+	PE_VDM_REQUEST,
+	PE_VDM_ACKED,
+	PE_VDM_RESPONSE,
+};
+
+/*
+ * Device Policy Manager Requests.
+ * NOTE: These are usually set by host commands from the AP.
+ */
+enum pe_dpm_request {
+	DPM_REQUEST_DR_SWAP             = BIT(0),
+	DPM_REQUEST_PR_SWAP             = BIT(1),
+	DPM_REQUEST_VCONN_SWAP          = BIT(2),
+	DPM_REQUEST_GOTO_MIN            = BIT(3),
+	DPM_REQUEST_SRC_CAP_CHANGE      = BIT(4),
+	DPM_REQUEST_GET_SNK_CAPS        = BIT(5),
+	DPM_REQUEST_SEND_PING           = BIT(6),
+	DPM_REQUEST_SOURCE_CAP          = BIT(7),
+	DPM_REQUEST_NEW_POWER_LEVEL     = BIT(8),
+	DPM_REQUEST_DISCOVER_IDENTITY   = BIT(9),
+	DPM_REQUEST_EXIT_DP_MODE        = BIT(10),
+	DPM_REQUEST_SVDM                = BIT(11),
 };
 
 /*
@@ -38,6 +128,18 @@ void pe_init(int port);
  * @param en   0 to disable the machine, 1 to enable the machine
  */
 void usbc_policy_engine(int port, int evt, int en);
+
+/**
+ * Informs the Policy Engine that a Protocol Layer reset is pending.
+ */
+void pe_prl_reset_pending(int port);
+
+/**
+ * Informs the Policy Engine that the Protocol Layer is done resetting
+ *
+ * @param port USB-C port number
+ */
+void pe_prl_reset_complete(int port);
 
 /**
  * Informs the Policy Engine that a message was successfully sent
@@ -82,6 +184,72 @@ void pe_got_soft_reset(int port);
  * @param port USB-C port number
  */
 void pe_hard_reset_sent(int port);
+
+/**
+ * Exit DP mode
+ *
+ * @param port USB-C port number
+ */
+void pe_exit_dp_mode(int port);
+
+/**
+ * Get the id of the current Policy Engine state
+ *
+ * @param port USB-C port number
+ */
+enum pe_states pe_get_state_id(int port);
+
+/**
+ * Indicates if the Policy Engine State Machine is running.
+ *
+ * @param port USB-C port number
+ * @return 1 if policy engine state machine is running, else 0
+ */
+int pe_is_running(int port);
+
+/**
+ * Informs the Policy Engine that the Power Supply is at it's default state
+ *
+ * @param port USB-C port number
+ */
+void pe_ps_reset_complete(int port);
+
+/**
+ * Informs the Policy Engine that a VCONN Swap has completed
+ *
+ * @param port USB-C port number
+ */
+void pe_vconn_swap_complete(int port);
+
+/**
+ * Instructs the Policy Engine to send a Vendor Defined Message
+ *
+ * @param port  USB-C port number
+ * @param vid   Vendor ID
+ * @param cmd   Vendor Defined Command
+ * @param data  Vendor Defined Data
+ * @param count Size of Vendor Defined Data in 32-bit objects
+ */
+void pe_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
+				int count);
+
+/**
+ * Indicates if an explicit contract is in place
+ *
+ * @param port  USB-C port number
+ * @return 1 if an explicit contract is in place, else 0
+ */
+int pe_is_explicit_contract(int port);
+
+/**
+ * Instruct the Policy Engine to perform a Device Policy Manager Request
+ * This function is called from the Device Policy Manager and only has effect
+ * if the current Policy Engine state is Src.Ready or Snk.Ready.
+ *
+ * @param port  USB-C port number
+ * @param req   Device Policy Manager Request
+ */
+void pe_dpm_request(int port, enum pe_dpm_request req);
 
 #endif /* __CROS_EC_USB_PE_H */
 
