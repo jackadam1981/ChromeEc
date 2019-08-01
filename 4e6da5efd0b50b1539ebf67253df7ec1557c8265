@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1d101fbc_6a024b30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-01T14:06:25Z",
+      "side": 1,
+      "message": "backlight",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "4e6da5efd0b50b1539ebf67253df7ec1557c8265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d3e3aba_b7c19d51",
         "filename": "baseboard/hatch/baseboard.c",
         "patchSetId": 1
