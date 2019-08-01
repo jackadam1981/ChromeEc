@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "327da461_21ec86b5",
+        "filename": "fuzz/rollback_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-01T22:41:30Z",
+      "side": 1,
+      "message": "When this lands I can change fpsensor unit test suite to use this and delete the local one.",
+      "parentUuid": "e1193d0a_74590331",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f6f20d9_6dab49a4",
         "filename": "fuzz/rollback_mock.h",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Access to these controls will be needed by future test and fuzz CLs (in this chain).",
       "parentUuid": "b0a33687_2828d1db",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df70299_1015e658",
+        "filename": "fuzz/rollback_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-01T22:41:30Z",
+      "side": 1,
+      "message": "This control should be accessible in the unit test suite as well, so should not be static.",
+      "parentUuid": "2472407d_c0353688",
       "range": {
         "startLine": 9,
         "startChar": 0,
