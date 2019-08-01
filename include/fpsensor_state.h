@@ -13,6 +13,12 @@
 #include "ec_commands.h"
 #include "link_defs.h"
 
+#ifndef CONFIG_ALWAYS_MEMSET
+#define always_memset memset
+#else
+#include "cryptoc/util.h"
+#endif
+
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
