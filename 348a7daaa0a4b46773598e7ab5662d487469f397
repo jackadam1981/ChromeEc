@@ -22,6 +22,30 @@
       "revId": "348a7daaa0a4b46773598e7ab5662d487469f397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5170b123_44e1ad5a",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-01T02:34:03Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "2341240e_a4ec2874",
+      "range": {
+        "startLine": 448,
+        "startChar": 2,
+        "endLine": 452,
+        "endChar": 38
+      },
+      "revId": "348a7daaa0a4b46773598e7ab5662d487469f397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
