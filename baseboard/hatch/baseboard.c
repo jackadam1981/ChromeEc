@@ -80,6 +80,12 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /******************************************************************************/
 /* Chipset callbacks/hooks */
 
+__attribute__((weak)) void board_has_kb_backlight(void)
+{
+	/* Default Enable keyboard backlight */
+	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+}
+
 /* Called on AP S5 -> S3 transition */
 static void baseboard_chipset_startup(void)
 {
@@ -92,8 +98,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 static void baseboard_chipset_resume(void)
 {
 	/* TODD(b/122266850): Need to fill out this hook */
-	/* Enable keyboard backlight */
-	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+	board_has_kb_backlight();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
