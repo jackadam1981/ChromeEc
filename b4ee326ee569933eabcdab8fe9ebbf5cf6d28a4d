@@ -22,6 +22,30 @@
       "revId": "b4ee326ee569933eabcdab8fe9ebbf5cf6d28a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987df85a_adf0882d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-01T18:58:09Z",
+      "side": 1,
+      "message": "Doxygen comment formatting: http://www.doxygen.nl/manual/docblocks.html\n\n(see \"Putting documentation after members\")",
+      "parentUuid": "47caf2e5_084074b8",
+      "range": {
+        "startLine": 1763,
+        "startChar": 28,
+        "endLine": 1763,
+        "endChar": 30
+      },
+      "revId": "b4ee326ee569933eabcdab8fe9ebbf5cf6d28a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
