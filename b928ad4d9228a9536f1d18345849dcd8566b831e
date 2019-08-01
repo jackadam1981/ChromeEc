@@ -70,6 +70,30 @@
       "revId": "b928ad4d9228a9536f1d18345849dcd8566b831e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec8e475_4bfd4a83",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4901,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-01T20:55:24Z",
+      "side": 1,
+      "message": "uint16 was better. I kept playing with it, I updated it again and gave an example in the description",
+      "parentUuid": "7dac3e5d_4408af46",
+      "range": {
+        "startLine": 4901,
+        "startChar": 15,
+        "endLine": 4901,
+        "endChar": 20
+      },
+      "revId": "b928ad4d9228a9536f1d18345849dcd8566b831e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
