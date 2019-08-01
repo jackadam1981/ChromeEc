@@ -22,6 +22,30 @@
       "revId": "74340f2dbe5ededa6cd466d32a727c7df977b956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa37ed5_af2c0f75",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 42
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-01T05:13:17Z",
+      "side": 1,
+      "message": "This name is hard-coded in common/system.c",
+      "parentUuid": "38f736b4_da01de72",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "74340f2dbe5ededa6cd466d32a727c7df977b956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
