@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af679c0c_a54c1e4d",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-01T02:19:20Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "967cbbe4_90269c2f",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "6e015c531f2af26ade28d4369a00d9dc6b2a32ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8989f0_c8b44f71",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1670658/8/baseboard/hatch/baseboard.c#38",
       "parentUuid": "5c8989f0_c8b44f71",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "6e015c531f2af26ade28d4369a00d9dc6b2a32ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027223c1_5b833fdd",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-01T02:19:20Z",
+      "side": 1,
+      "message": "I think its better to have a get_board_sku() rather than doing it extern. Avoids errors resulting in unwanted changes.",
+      "parentUuid": "b89b4eaa_9e283406",
       "range": {
         "startLine": 183,
         "startChar": 0,
