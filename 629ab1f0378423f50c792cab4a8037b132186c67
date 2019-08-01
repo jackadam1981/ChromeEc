@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc381706_d498fe08",
+        "filename": "board/bob/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T23:48:45Z",
+      "side": 1,
+      "message": "same as base_standard_ref, remove.",
+      "revId": "629ab1f0378423f50c792cab4a8037b132186c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b16612b_b55d2d38",
+        "filename": "board/bob/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-01T23:48:45Z",
+      "side": 1,
+      "message": "BASE_ACCEL and BASE_GYRO are the same sensor, so they should have the same rot_standard_ref.",
+      "revId": "629ab1f0378423f50c792cab4a8037b132186c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
