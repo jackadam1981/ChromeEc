@@ -754,9 +754,9 @@ static int hash_command_wrapper(int argc, char *argv[])
 		rv = EC_SUCCESS;
 
 		if (req.subcmd == SPI_HASH_SUBCMD_DUMP)
-			ccprintf("data: %.*h\n", req.size, p);
+			ccprintf("data: %.*ph\n", req.size, p);
 		else if (req.subcmd == SPI_HASH_SUBCMD_SHA256)
-			ccprintf("hash: %.32h\n", p);
+			ccprintf("hash: %.32ph\n", p);
 	}
 
 	return rv;
