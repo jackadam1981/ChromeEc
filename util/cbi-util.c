@@ -318,7 +318,7 @@ static int cmd_create(int argc, char **argv)
 	}
 
 	if (set_mask != (ARGS_MASK_BOARD_VERSION | ARGS_MASK_FILENAME |
-			ARGS_MASK_OEM_ID | ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
+			ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
 		fprintf(stderr, "Missing required arguments\n");
 		print_help_create();
 		return -1;
