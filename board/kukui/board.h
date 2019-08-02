@@ -30,10 +30,15 @@
 
 #ifdef BOARD_KRANE
 #define CONFIG_CHARGER_MT6370_BACKLIGHT
+#endif /* BOARD_KRANE */
+
+/*
+ * TODO(b:138741956) disabling CONFIG_DEDICATED_CHARGE_PORT_COUNT causes
+ * i2c bus busy and tcpc_init fail on kukui.
+ */
 #undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
 #define DEDICATED_CHARGE_PORT 1
-#endif /* BOARD_KRANE */
 
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
