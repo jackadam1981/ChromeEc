@@ -46,6 +46,30 @@
       "revId": "cb7df8053b21f81cae0f4a5054135e958310c431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3fc46d_5c461084",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-02T16:21:39Z",
+      "side": 1,
+      "message": "Use __maybe_unused instead, or change the ifdefs to IS_ENABLED to get rid of the unused function error.",
+      "parentUuid": "ae14899d_7aa23b3b",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "cb7df8053b21f81cae0f4a5054135e958310c431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
