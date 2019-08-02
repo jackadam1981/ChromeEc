@@ -22,6 +22,30 @@
       "revId": "cb7df8053b21f81cae0f4a5054135e958310c431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae14899d_7aa23b3b",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-08-02T16:17:23Z",
+      "side": 1,
+      "message": "hexdigit() is used only by %h, which moved into %ph, which is inside #ifndef NO_UINT64_SUPPORT. So I get an unused function error on hexdigit() if CONFIG_DEBUG_PRINTF is set.\n\nThis is a functional change. The boards that set CONFIG_DEBUG_PRINTF are chell_pd, chocodile_vpdmcu, glados_pd, minimuffin, oak_pd, and zinger. The prints I see using %h that might be included by these boards are in spi_commands.c, i2c_master.c, host_command.c, trng.c, and vboot_hash.c.\n\nMaybe I need to try and refactor %h into a subroutine, and then figure out some more ugly ifdefs to stick in there so that %h still works if CONFIG_DEBUG_PRINTF is set. Or maybe this isn\u0027t worth it... not sure.",
+      "parentUuid": "9efd9184_3346d946",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "cb7df8053b21f81cae0f4a5054135e958310c431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
