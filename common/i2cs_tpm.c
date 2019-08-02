@@ -5,7 +5,6 @@
 
 #include "common.h"
 #include "console.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "i2cs.h"
 #include "registers.h"
@@ -201,14 +200,6 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	else
 		process_write_access(reg_size, tpm_reg,
 				     data, i2cs_data_size);
-
-	/*
-	 * Since cr50 does not provide i2c clock stretching, we need some
-	 * onther means of flow controlling the host. Let's generate a pulse
-	 * on the AP interrupt line for that.
-	 */
-	gpio_set_level(GPIO_INT_AP_L, 0);
-	gpio_set_level(GPIO_INT_AP_L, 1);
 }
 
 static void i2cs_if_stop(void)

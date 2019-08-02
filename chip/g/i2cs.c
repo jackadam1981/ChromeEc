@@ -311,6 +311,18 @@ void __attribute__((used)) _i2cs_write_complete_int(void)
 
 		/* Invoke the callback to process the message. */
 		write_complete_handler_(i2cs_buffer, bytes_processed);
+
+		/*
+		 * Since cr50 does not provide i2c clock stretching, we need
+		 * some other means of flow controlling the host. Let's generate
+		 * a pulse on the AP interrupt line for that.
+		 *
+		 * To make the interrupt pulse longer lets's assert it as soon
+		 * as interrupt processing is completed, and deassert it in the
+		 * end of this function. Remaining code in this function makes
+		 * sure the pulse it at least 9 us long.
+		 */
+		gpio_set_level(GPIO_INT_AP_L, 0);
 	}
 
 	/* The transaction is complete so the slave has released SDA. */
@@ -323,6 +335,8 @@ void __attribute__((used)) _i2cs_write_complete_int(void)
 	 */
 	delay_sleep_by(1 * SECOND);
 	enable_sleep(SLEEP_MASK_I2C_SLAVE);
+
+	gpio_set_level(GPIO_INT_AP_L, 1);
 }
 DECLARE_IRQ(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT,
 	    _i2cs_write_complete_int, 1);
