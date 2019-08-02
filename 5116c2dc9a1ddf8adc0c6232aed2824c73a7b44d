@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3539d894_46b5defc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 35
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474088ed_da866603",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67721cd2_81446819",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 35
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-31T15:57:26Z",
       "side": 1,
       "message": "This and the function below are very similar, is there a way to merge some of the code?\n\nAlso, potentially, each board only needs to implement one, so maybe the other one can be left unsupported to save space.",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f27650_22965e95",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "packet mode is basic; shm mode is an extended feature.  They are not exclusive.  We cannot easily use meta-programming to separate them.\n\nNACK on \"merge some of the code\", I think it results in too ugly and code (especially 2 ec_response_* are different).\nACK on save space if SHM is not supported.",
+      "parentUuid": "67721cd2_81446819",
       "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "8b21ebd0_53f3c5ea",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "Yes, that is a problem.  So, we need to distinguish the overrun case.",
+      "parentUuid": "d208eab1_59a069e8",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ca1735d_58fb5aee",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 35
@@ -70,6 +130,24 @@
       "writtenOn": "2019-07-31T15:56:08Z",
       "side": 1,
       "message": "Is it really necessary to sleep in this case? I mean, you know there is more data to be read already.",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e669db_b51dce88",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "I am afraid so.  Or this task will take all of the processor time.  And watchdog...and crashed...",
+      "parentUuid": "7ca1735d_58fb5aee",
       "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "4fec96ae_7557b8fd",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "NACK.  We used to have a similar API.  But we want to keep it simple (in terms of memory space).",
+      "parentUuid": "83e39bf0_bb972e23",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93fa3591_5245ee7b",
         "filename": "include/ec_commands.h",
         "patchSetId": 35
@@ -104,6 +200,24 @@
       "writtenOn": "2019-08-01T09:33:53Z",
       "side": 1,
       "message": "SHould we reuse how eve is waken up ?\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/board/eve/board.c?type\u003dcs\u0026q\u003dEC_DEVICE_EVENT_DSP\u0026g\u003d0\u0026l\u003d104",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ecfcf5a_deb4c2bd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "It looks like a host command (EC_CMD_DEVICE_EVENT).  AP firmware checks the device event periodically.  I have no idea how AP firmware notifies kernel (and Intel DSP) when it finds EC_DEVICE_EVENT_DSP.",
+      "parentUuid": "93fa3591_5245ee7b",
       "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -124,6 +238,24 @@
       "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7ba787_8c95aed1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 4800,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-02T13:05:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ce8fbd6_62a3affd",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
