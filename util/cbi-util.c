@@ -80,7 +80,6 @@ const char help_create[] =
 	"Required ARGS are:\n"
 	"  --file <file>              Path to output file\n"
 	"  --board_version <value>    Board version\n"
-	"  --oem_id <value>           OEM ID\n"
 	"  --sku_id <value>           SKU ID\n"
 	"  --size <size>              Size of output file in bytes\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF and field size can\n"
@@ -88,6 +87,7 @@ const char help_create[] =
 	"<size> must be a positive integer <= 0XFFFF.\n"
 	"Optional ARGS are:\n"
 	"  --dram_part_num <string>   DRAM PART NUM\n"
+	"  --oem_id <value>           OEM ID\n"
 	"  --oem_name <string>        OEM NAME\n"
 	"  --erase_byte <uint8>       Byte used for empty space. Default:0xff\n"
 	"  --format_version <uint16>  Data format version\n"
@@ -318,7 +318,7 @@ static int cmd_create(int argc, char **argv)
 	}
 
 	if (set_mask != (ARGS_MASK_BOARD_VERSION | ARGS_MASK_FILENAME |
-			ARGS_MASK_OEM_ID | ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
+			ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
 		fprintf(stderr, "Missing required arguments\n");
 		print_help_create();
 		return -1;
