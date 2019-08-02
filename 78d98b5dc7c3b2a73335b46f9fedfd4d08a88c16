@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "1ef920f8_48fc32c9",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-02T07:52:01Z",
+      "side": 1,
+      "message": "As discussed in person, going ahead with this refactor, but deferring the \u0027difficult\u0027 part about how to ensure the correct write to a follow up CL.",
+      "parentUuid": "c330bd9d_f633baee",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 12
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ca0206a_43df1619",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -312,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "dcce6087_f125cb73",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-02T07:52:01Z",
+      "side": 1,
+      "message": "As discussed in person, replacing this with a simple write, and will send a follow up CL to address this specific issue, using Andrey\u0027s suggestiong of __aeabi_memcpy4",
+      "parentUuid": "12891a1c_caee4020",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 30
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9302b91_43878945",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -332,6 +380,30 @@
       "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68594984_62448855",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-02T07:52:01Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "c9302b91_43878945",
+      "range": {
+        "startLine": 773,
+        "startChar": 13,
+        "endLine": 773,
+        "endChar": 24
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
