@@ -94,6 +94,30 @@
       "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21356ef6_efef6d45",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-08-02T00:49:17Z",
+      "side": 1,
+      "message": "This is an interesting problem addressed in the spec.\n\n\u003e 6.3.11 VCONN_Swap Message\n\u003e \n\u003e Before communicating with a Cable Plug a Port [[Shall]] ensure that it is the VCONN Source and that the Cable Plugs are powered, by performing a VCONN swap if necessary.\n\u003e \n\u003e Since it cannot be guaranteed that the present VCONN Source is supplying VCONN, the only means to ensure that the Cable Plugs are powered is for a Port wishing to communicate with a Cable Plug to become the VCONN Source.\n\u003e \n\u003e If a Not_Supported Message is returned in response to the VCONN_Swap Message then the Port is allowed to become the VCONN Source until a Hard Reset or Detach.\n\u003e \n\u003e A VCONN Source that is also a Source can attempt to send a Discover Identity Command using SOP’ to a Cable Plug prior to the establishment of an Explicit Contract.\n\u003e \n\u003e Note: even when it is presently the VCONN Source, the Sink is not permitted to initiate an AMS with a Cable Plug unless Rp is set to SinkTxOk (see Section 6.9).\n\nSo we need to check two things:\n(1) depends if we are in PD2.0 mode or PD3.0 mode (SinkTxOK bit)\n(2) depends if we are Vconn source or not (that Shall statement)\n\nThis is in addition to that \"SOP\u0027 messaging shall be aborted immediately if a SOP message comes along\" requirement somewhere on (2.6.1 Source operation) (2.6.2 Sink Operation) page 58. We almost need a \"Yes we\u0027re trying to do SOP\u0027 message/AMS now\" bit that is turned on and off and we ignore based on that.\n\n(NOTE: NOT suggesting that specific bit by any means -- I\u0027m bad at this -- but merely current code doesn\u0027t appear to **explicitly \"ignore** unprompted/undesired SOP\u0027 messages.)\n\n\u003e The Sink when it is the VCONN Source can communicate with a Cable Plug using SOP’ or SOP’’ Communication at any time it is not engaged in any other SOP Communications:\u003d\n\u003e \n\u003e * If SOP Packets are received by the Sink, during SOP’ or SOP’’ Communication, the SOP’ or SOP’’ Communication is immediately terminated (the Cable Plug times out and does not retry)\n\u003e \n\u003e * If the Sink needs to initiate an SOP Communication during an ongoing SOP’ or SOP’’ Communication (e.g. for a Capabilities change) then the SOP’ or SOP’’ Communications will be interrupted.\n\u003e \n\u003e * When the Sink Port is also a DFP the Sink can control the entry, and exiting of modes in the Cable Plug(s) and control Modal Operation.",
+      "parentUuid": "e1f3a763_3d1c0d15",
+      "range": {
+        "startLine": 1820,
+        "startChar": 7,
+        "endLine": 1821,
+        "endChar": 48
+      },
+      "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
