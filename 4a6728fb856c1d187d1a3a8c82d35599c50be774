@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d65d8e_7127f7c4",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-02T22:25:00Z",
+      "side": 1,
+      "message": "I took another look at this, and am not sure how significant this is, but before this patch i2cs_tpm.c:write_complete_handler() would not generate the pulse in case there were processing errors, now the pulse is generated unconditionally.",
+      "revId": "4a6728fb856c1d187d1a3a8c82d35599c50be774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe5ced3_11ede9b9",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-02T22:25:00Z",
+      "side": 1,
+      "message": "I am also not so sure about this one either: the AP should not be interrupted until  init_new_cycle() is done.",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 16
+      },
+      "revId": "4a6728fb856c1d187d1a3a8c82d35599c50be774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
