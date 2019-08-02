@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3447520_c9aa2ead",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-02T00:55:47Z",
+      "side": 1,
+      "message": "Does the DUT never come up? Or does it auto-boot after 10s i.e. when battery is up? I think we would want to see the DUT auto-poweron.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "4cf8b78238a468822ea40bc4522ae5865fd424b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
