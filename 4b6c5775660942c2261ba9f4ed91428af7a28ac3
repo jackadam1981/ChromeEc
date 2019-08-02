@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6c7385a4_c65ca410",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-02T15:29:54Z",
+      "side": 1,
+      "message": "I think D2_HPD is the right choice... at least for now.",
+      "parentUuid": "3e94c99e_e063fb68",
+      "revId": "4b6c5775660942c2261ba9f4ed91428af7a28ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07f411e_8a344d84",
         "filename": "board/trembyle/gpio.inc",
         "patchSetId": 7
