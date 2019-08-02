@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9a2cad1_e6bdc0ab",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-08-02T17:52:15Z",
+      "side": 1,
+      "message": "Is there any way to make this only check if the FIFO is empty instead of the count? Running the i2c command can take up to 1ms from tests we\u0027ve done. If you look at http://cs/chromeos_public/src/platform/ec/driver/accelgyro_lsm6dsm.c?l\u003d423 you\u0027ll see that we just check the signal level (1: empty, 0: has data). Looking at the PDF from the bug I think you should be able to do the same. Unless I\u0027m reading it wrong you should be able to check if the flags include the INT_SIGNAL and test the signal. Page 21 seems to indicate (unless I\u0027m reading it wrong) that when data is available the signal is high.",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 14
+      },
+      "revId": "2e933ff27d8d12f70f055f0ff497012ec4da7a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
