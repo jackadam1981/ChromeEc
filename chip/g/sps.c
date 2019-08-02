@@ -5,7 +5,6 @@
 
 #include "common.h"
 #include "console.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "pmu.h"
 #include "registers.h"
@@ -339,12 +338,6 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 		if (seen_data) {
 			sps_rx_handler(NULL, 0, 1);
 
-			/*
-			 * Signal the AP that this SPI frame processing is
-			 * completed.
-			 */
-			gpio_set_level(GPIO_INT_AP_L, 0);
-			gpio_set_level(GPIO_INT_AP_L, 1);
 			seen_data = 0;
 		}
 	}

@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "sps.h"
 #include "system.h"
@@ -200,8 +201,16 @@ static void tpm_rx_handler(uint8_t *data, size_t data_size, int cs_deasserted)
 	    (sps_tpm_state == SPS_TPM_STATE_RECEIVING_WRITE_DATA))
 		process_rx_data(data, data_size, cs_deasserted);
 
-	if (cs_deasserted)
+	if (cs_deasserted) {
+		/* Signal the AP that this SPI frame processing is completed. */
+		gpio_set_level(GPIO_INT_AP_L, 0);
+		/*
+		 * Let's overlap INT_AP_L pulse and other interrupt
+		 * handler's work, This keeps the pulse for approx 10~14 usec.
+		 */
 		init_new_cycle();
+		gpio_set_level(GPIO_INT_AP_L, 1);
+	}
 }
 
 static void sps_if_stop(void)
