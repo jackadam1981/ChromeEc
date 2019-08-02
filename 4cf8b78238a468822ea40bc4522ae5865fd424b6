@@ -22,6 +22,30 @@
       "revId": "4cf8b78238a468822ea40bc4522ae5865fd424b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374dfe7a_242668ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-02T14:43:46Z",
+      "side": 1,
+      "message": "The DUT does not power-on.  The EC does not wait \"forever\" to boot the AP if enough power isn\u0027t available.  According to Jett, this is WAI.",
+      "parentUuid": "c3447520_c9aa2ead",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "4cf8b78238a468822ea40bc4522ae5865fd424b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
