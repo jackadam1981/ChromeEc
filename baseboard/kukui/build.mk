@@ -14,6 +14,8 @@ baseboard-$(VARIANT_KUKUI_BATTERY_MAX17055)+=battery_max17055.o
 baseboard-$(VARIANT_KUKUI_BATTERY_MM8013)+=battery_mm8013.o
 baseboard-$(VARIANT_KUKUI_BATTERY_SMART)+=battery_smart.o
 
+ifeq ($(VARIANT_KUKUI_BATTERY_SMART),)
 baseboard-$(VARIANT_KUKUI_CHARGER_MT6370)+=charger_mt6370.o
+endif
 
 $(out)/RO/baseboard/$(BASEBOARD)/emmc.o: $(out)/bootblock_data.h
