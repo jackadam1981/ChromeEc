@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e28250d_afad480b",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-02T17:17:42Z",
+      "side": 1,
+      "message": "You should start the deadline here, same as the matching case.\n\nI\u0027d actually define a function that enables/disables the secret and handles all the parameters at the same time (|template_with_secret|, |fp_pos_match_secret_readable|, |read_secret_deadline|, etc)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 17
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3c0d97_80af6077",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-02T17:17:42Z",
+      "side": 1,
+      "message": "That\u0027s potentially opening a hole for someone to just request a template and then make the secret readable. I *think* |template_with_secret| correctly gates it in the current implementation, but it\u0027s not obvious.\n\nI think you shouldn\u0027t handle the state of the match secret in that function, it\u0027s unrelated.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8288fcf_26f7a808",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-02T17:17:42Z",
+      "side": 1,
+      "message": "You need to clear the deadline too. Another use case for a enable/disable function :-)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ce5069_3deb949d",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-02T17:17:42Z",
+      "side": 1,
+      "message": "Can you add logs to the various error cases?",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 24
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b82e48e_82a50f1e",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-02T17:17:42Z",
+      "side": 1,
+      "message": "I don\u0027t understand the reason behind that code. Which case is that?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
