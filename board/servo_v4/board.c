@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "ps8742.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
@@ -427,10 +428,10 @@ static void board_init(void)
 	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
 
 	/*
-	 * Write USB3 Mode to PS8742 USB/DP Mux.
-	 * 0x0:disable 0x20:enable.
+	 * Disable USB3 mode in PS8742 USB/DP Mux.
+	 * 0:disable, PS8742_MODE_USB:enable.
 	 */
-	i2c_write8(1, 0x20, 0x0, 0x0);
+	i2c_write8(I2C_PORT_MASTER, PS8742_I2C_ADDR0, PS8742_REG_MODE, 0);
 
 	/* Enable uservo USB by default. */
 	init_ioexpander();
