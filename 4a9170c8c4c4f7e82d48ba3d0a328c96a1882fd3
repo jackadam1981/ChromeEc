@@ -22,6 +22,30 @@
       "revId": "4a9170c8c4c4f7e82d48ba3d0a328c96a1882fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9f7d8d_813b708b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4630,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-08-02T16:54:13Z",
+      "side": 1,
+      "message": "Please ignore my previous comment.\n\nThe CONFIG_USB_PD_DEBUG_LEVEL was introduced at crrev.com/c/339935\nThis config is intended to prevent users to change the debug_level.",
+      "parentUuid": "ea627449_3cdea99f",
+      "range": {
+        "startLine": 4623,
+        "startChar": 0,
+        "endLine": 4630,
+        "endChar": 6
+      },
+      "revId": "4a9170c8c4c4f7e82d48ba3d0a328c96a1882fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
