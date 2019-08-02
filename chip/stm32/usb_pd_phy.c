@@ -333,7 +333,7 @@ int pd_start_tx(int port, int polarity, int bit_len)
 			DIV_ROUND_UP(bit_len, 8),
 			pd_phy[port].raw_samples);
 	/* Flush data in write buffer so that DMA can get the latest data */
-	asm volatile("dmb;");
+	__asm__ volatile("dmb;");
 
 	/* Kick off the DMA to send the data */
 	dma_clear_isr(DMAC_SPI_TX(port));

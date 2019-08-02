@@ -91,7 +91,7 @@ void __idle(void)
 		 * shortly therefore, resumes execution on exiting idle mode.
 		 * Workaround: Replace the idle function with the followings
 		 */
-		asm (
+		__asm__ (
 			"cpsid i\n"             /* Disable interrupt */
 			"push {r0-r5}\n"        /* Save needed registers */
 			"wfi\n"                 /* Wait for int to enter idle */
@@ -105,7 +105,7 @@ void __idle(void)
 		 * Wait for the next irq event.  This stops the CPU clock
 		 * (sleep / deep sleep, depending on chip config).
 		 */
-		asm("wfi");
+		__asm__("wfi");
 #endif
 	}
 }
@@ -219,19 +219,19 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
 
 void interrupt_disable(void)
 {
-	asm("cpsid i");
+	__asm__("cpsid i");
 }
 
 void interrupt_enable(void)
 {
-	asm("cpsie i");
+	__asm__("cpsie i");
 }
 
 inline int in_interrupt_context(void)
 {
 	int ret;
-	asm("mrs %0, ipsr \n"             /* read exception number */
-	    "lsl %0, #23  \n":"=r"(ret)); /* exception bits are the 9 LSB */
+	__asm__("mrs %0, ipsr \n"             /* read exception number */
+	        "lsl %0, #23  \n":"=r"(ret)); /* exception bits are 9 LSB */
 	return ret;
 }
 
@@ -239,7 +239,7 @@ inline int in_interrupt_context(void)
 static inline int get_interrupt_context(void)
 {
 	int ret;
-	asm("mrs %0, ipsr \n":"=r"(ret)); /* read exception number */
+	__asm__("mrs %0, ipsr \n":"=r"(ret)); /* read exception number */
 	return ret & 0x1ff;               /* exception bits are the 9 LSB */
 }
 #endif
@@ -279,8 +279,8 @@ void svc_handler(int desched, task_id_t resched)
 	 * Push the priority to -1 until the return, to avoid being
 	 * interrupted.
 	 */
-	asm volatile("cpsid f\n"
-		     "isb\n");
+	__asm__ volatile("cpsid f\n"
+		         "isb\n");
 
 #ifdef CONFIG_TASK_PROFILING
 	/*
@@ -351,10 +351,10 @@ void svc_handler(int desched, task_id_t resched)
 
 void __schedule(int desched, int resched)
 {
-	register int p0 asm("r0") = desched;
-	register int p1 asm("r1") = resched;
+	register int p0 __asm__("r0") = desched;
+	register int p1 __asm__("r1") = resched;
 
-	asm("svc 0"::"r"(p0),"r"(p1));
+	__asm__("svc 0"::"r"(p0),"r"(p1));
 }
 
 #ifdef CONFIG_TASK_PROFILING
@@ -920,7 +920,7 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
+		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
 			 task_names[i], tasks[i].events, tasks[i].runtime,
 			 stackused, tasks_init[i].stack_size);
 		cflush();
@@ -948,10 +948,10 @@ int command_task_info(int argc, char **argv)
 	ccprintf("Service calls:          %11d\n", svc_calls);
 	ccprintf("Total exceptions:       %11d\n", total + svc_calls);
 	ccprintf("Task switches:          %11d\n", task_switches);
-	ccprintf("Task switching started: %11.6ld s\n", task_start_time);
-	ccprintf("Time in tasks:          %11.6ld s\n",
+	ccprintf("Task switching started: %11.6lld s\n", task_start_time);
+	ccprintf("Time in tasks:          %11.6lld s\n",
 		 get_time().val - task_start_time);
-	ccprintf("Time in exceptions:     %11.6ld s\n", exc_total_time);
+	ccprintf("Time in exceptions:     %11.6lld s\n", exc_total_time);
 #endif
 
 	return EC_SUCCESS;
@@ -1007,12 +1007,12 @@ void task_clear_fp_used(void)
 	int ctrl;
 
 	/* Clear the CONTROL.FPCA bit, which represents FP context active. */
-	asm volatile("mrs %0, control" : "=r"(ctrl));
+	__asm__ volatile("mrs %0, control" : "=r"(ctrl));
 	ctrl &= ~0x4;
-	asm volatile("msr control, %0" : : "r"(ctrl));
+	__asm__ volatile("msr control, %0" : : "r"(ctrl));
 
 	/* Flush pipeline before returning. */
-	asm volatile("isb");
+	__asm__ volatile("isb");
 }
 
 int task_start(void)

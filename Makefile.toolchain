@@ -95,7 +95,7 @@ HOST_CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(CFLAGS_TEST) \
 	 $(EXTRA_CFLAGS) $(CFLAGS_COVERAGE) $(LATE_CFLAGS_DEFINE) \
 	 -DSECTION_IS_$(BLD)=$(EMPTY) -DSECTION=$(BLD) $(CPPFLAGS_$(BLD))
 ifneq ($(BOARD),host)
-CPPFLAGS+=-ffreestanding -fno-builtin -nostdinc -nostdlib
+CPPFLAGS+=-ffreestanding -fno-builtin -nostdinc -nostdlib -std=c99
 CPPFLAGS+=-Ibuiltin/
 else
 CPPFLAGS+=-Og

@@ -277,7 +277,7 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 		set_rtc_alarm(seconds, microseconds, &rtc, 0);
 
 	/* interrupts off now */
-	asm volatile("cpsid i");
+	__asm__ volatile("cpsid i");
 
 #ifdef CONFIG_HIBERNATE_WAKEUP_PINS
 	/* enable the wake up pins */
@@ -286,7 +286,7 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	STM32_PWR_CR |= 0xe;
 	CPU_SCB_SYSCTRL |= 0x4;
 	/* go to Standby mode */
-	asm("wfi");
+	__asm__("wfi");
 
 	/* we should never reach that point */
 	while (1)
@@ -316,7 +316,7 @@ void __idle(void)
 	struct rtc_time_reg rtc0, rtc1;
 
 	while (1) {
-		asm volatile("cpsid i");
+		__asm__ volatile("cpsid i");
 
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
@@ -351,7 +351,7 @@ void __idle(void)
 
 			set_rtc_alarm(0, next_delay - STOP_MODE_LATENCY,
 				      &rtc0, 0);
-			asm("wfi");
+			__asm__("wfi");
 
 			CPU_SCB_SYSCTRL &= ~0x4;
 
@@ -389,12 +389,12 @@ void __idle(void)
 			idle_sleep_cnt++;
 
 			/* Normal idle : only CPU clock stopped */
-			asm("wfi");
+			__asm__("wfi");
 		}
 #ifdef CONFIG_LOW_POWER_IDLE_LIMITED
 en_int:
 #endif
-		asm volatile("cpsie i");
+		__asm__ volatile("cpsie i");
 	}
 }
 #endif /* CONFIG_LOW_POWER_IDLE */

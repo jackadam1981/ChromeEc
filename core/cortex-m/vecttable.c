@@ -22,7 +22,7 @@ typedef void (*func)(void);
 void __attribute__((used, naked)) default_handler(void);
 void default_handler()
 {
-	asm(
+	__asm__(
 	".thumb_func\n"
 	"	b exception_panic"
 	);
@@ -62,7 +62,7 @@ void weak_with_default svc_handler(int desched, task_id_t resched);
 void __attribute__((used,naked)) svc_helper_handler(void);
 void svc_helper_handler()
 {
-	asm(
+	__asm__(
 	".thumb_func\n"
 	"	tst lr, #4		/* see if called from supervisor mode */\n"
 	"	mrs r2, msp		/* get the correct stack pointer into r2 */\n"

@@ -359,7 +359,7 @@ void __keep report_panic(void)
 void exception_panic(void)
 {
 	/* Save registers and branch directly to panic handler */
-	asm volatile(
+	__asm__ volatile(
 		"mov r0, %[pregs]\n"
 		"mrs r1, psp\n"
 		"mrs r2, ipsr\n"

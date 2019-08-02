@@ -222,9 +222,26 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 			int ptrspec;
 			void *ptrval;
 
-			/* Handle length */
+			/*
+			 * Handle length:
+			 * %l - long
+			 * %ll - long long
+			 * %z - size_t
+			 */
 			if (c == 'l') {
-				flags |= PF_64BIT;
+				if (sizeof(long) == sizeof(uint64_t))
+					flags |= PF_64BIT;
+
+				c = *format++;
+				if (c == 'l') {
+					flags |= PF_64BIT;
+					c = *format++;
+				}
+
+			} else if (c == 'z') {
+				if (sizeof(size_t) == sizeof(uint64_t))
+					flags |= PF_64BIT;
+
 				c = *format++;
 			}
 

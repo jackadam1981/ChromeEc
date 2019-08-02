@@ -30,13 +30,13 @@
 	void __keep routine(void);				\
 	void IRQ_HANDLER(irq)(void)				\
 	{							\
-		asm volatile("mov r0, lr\n"			\
-			     "push {r0, lr}\n"			\
-			     bl_task_start_irq_handler		\
-			     "bl "#routine"\n"			\
-			     "pop {r0, lr}\n"			\
-			     "b task_resched_if_needed\n"	\
-			    );					\
+		__asm__ volatile("mov r0, lr\n"			\
+			         "push {r0, lr}\n"		\
+			         bl_task_start_irq_handler	\
+			         "bl "#routine"\n"		\
+			         "pop {r0, lr}\n"		\
+			         "b task_resched_if_needed\n"	\
+			        );				\
 	}							\
 	const struct irq_priority __keep IRQ_PRIORITY(irq)	\
 	__attribute__((section(".rodata.irqprio")))		\

@@ -26,6 +26,7 @@ int usb_puts(const char *outstr);
  *
  * @return EC_SUCCESS, or non-zero if output was truncated.
  */
+__attribute__((__format__(__printf__, 1, 2)))
 int usb_vprintf(const char *format, va_list args);
 
 /**

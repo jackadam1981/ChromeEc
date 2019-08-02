@@ -84,6 +84,7 @@ int cputs(enum console_channel channel, const char *outstr);
  *
  * @return non-zero if output was truncated.
  */
+__attribute__((__format__(__printf__, 2, 3)))
 int cprintf(enum console_channel channel, const char *format, ...);
 
 /**
@@ -95,6 +96,7 @@ int cprintf(enum console_channel channel, const char *format, ...);
  *
  * @return non-zero if output was truncated.
  */
+__attribute__((__format__(__printf__, 2, 3)))
 int cprints(enum console_channel channel, const char *format, ...);
 
 /**
