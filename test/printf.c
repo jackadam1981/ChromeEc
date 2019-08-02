@@ -53,6 +53,7 @@ int run(int expect_ret, const char *expect,
 	return EC_SUCCESS;
 }
 
+__attribute__((__format__(__printf__, 2, 3)))
 int expect_success(const char *expect, const char *format, ...)
 {
 	va_list args;
@@ -67,6 +68,7 @@ int expect_success(const char *expect, const char *format, ...)
 	return rv;
 }
 
+__attribute__((__format__(__printf__, 5, 6)))
 int expect(int expect_ret, const char *expect,
 	   bool output_null, size_t size_limit,
 	   const char *format, ...)
