@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f8fbb82_a1873d8e",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-08-02T06:08:20Z",
+      "side": 1,
+      "message": "Is this relationship between these two I2C addresses guaranteed, e.g. if the PS8805 were configured for a different I2C address, this address difference would hold true?",
+      "revId": "f662cc25fcb8647eb173919f5eb4bab9eac0c78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d60d333_55a799a9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-08-02T06:08:20Z",
+      "side": 1,
+      "message": "How about:\n\n  return status !\u003d EC_SUCCESS ? status : e;\n\nOr expanded:\n\n  if (status !\u003d EC_SUCCESS)\n    return status;\n  return e;",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 15
+      },
+      "revId": "f662cc25fcb8647eb173919f5eb4bab9eac0c78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66fbd53_1c30ec64",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-08-02T06:08:20Z",
+      "side": 1,
+      "message": "nit: 0xC0 capitalization for consistency with surrounding hex literals.\n\nAlso consider changing line 38 to 0xBF capitalization while you\u0027re at it.",
+      "revId": "f662cc25fcb8647eb173919f5eb4bab9eac0c78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
