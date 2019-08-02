@@ -22,6 +22,30 @@
       "revId": "7f5eba7af4adec46761ae4b3acd05b86d941d979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858c9712_b972f7da",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-08-02T16:02:51Z",
+      "side": 1,
+      "message": "Whoops yes. That fix is in CL:1704216, but it really should be here. The cq-depend means they all go in together, but it\u0027s still good to fix. Thanks.",
+      "parentUuid": "02bb89c5_08b7d7aa",
+      "range": {
+        "startLine": 199,
+        "startChar": 31,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "7f5eba7af4adec46761ae4b3acd05b86d941d979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
