@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdd6c028_60cf08fc",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-02T00:11:06Z",
+      "side": 1,
+      "message": "Think this should be F5",
+      "revId": "4b6c5775660942c2261ba9f4ed91428af7a28ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e94c99e_e063fb68",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-02T00:11:06Z",
+      "side": 1,
+      "message": "C1 HPD varies with DB OPT, no?",
+      "revId": "4b6c5775660942c2261ba9f4ed91428af7a28ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07f411e_8a344d84",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-02T00:11:06Z",
+      "side": 1,
+      "message": "Lets move these up to USB_C1_TCPC_RST_L",
+      "revId": "4b6c5775660942c2261ba9f4ed91428af7a28ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
