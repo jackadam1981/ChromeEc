@@ -344,8 +344,19 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 			 * completed.
 			 */
 			gpio_set_level(GPIO_INT_AP_L, 0);
-			gpio_set_level(GPIO_INT_AP_L, 1);
+
+			/*
+			 * This is to meet the AP requirement of minimum 4 usec
+			 *  duration of INT_AP_L assertion.
+			 *
+			 * TODO(b/130515803): Ideally, this should be improved
+			 * to support any duration requirement in future.
+			 */
+			for (volatile int i_ = 0; i_ < 3;)
+				i_++;
+
 			seen_data = 0;
+			gpio_set_level(GPIO_INT_AP_L, 1);
 		}
 	}
 }
