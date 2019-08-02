@@ -118,6 +118,30 @@
       "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b30fa12_1f8e4805",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-08-02T00:51:14Z",
+      "side": 1,
+      "message": "One note I completely forgot:\n\nThis also doesn\u0027t address the sitution of if the *cable plug* is trying to communicate *with us* for some reason. (Thermal status warning maybe?)",
+      "parentUuid": "21356ef6_efef6d45",
+      "range": {
+        "startLine": 1820,
+        "startChar": 7,
+        "endLine": 1821,
+        "endChar": 48
+      },
+      "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
