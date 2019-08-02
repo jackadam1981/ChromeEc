@@ -610,6 +610,7 @@ struct pd_policy {
 #define USB_PD_HW_DEV_ID_DINGDONG    3
 #define USB_PD_HW_DEV_ID_HOHO        4
 #define USB_PD_HW_DEV_ID_HONEYBUNS   5
+#define USB_PD_HW_DEV_ID_SERVO_V4    6
 
 /*
  * ChromeOS specific VDO_CMD_READ_INFO responds with device info including:
