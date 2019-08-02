@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d35c4d3_df489149",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-02T09:25:17Z",
+      "side": 1,
+      "message": "You shouldn\u0027t update this here IMO... or it will stuck at this loop forever if it\u0027s really a SDP.\n\nCould you please test this CL at your side?",
+      "range": {
+        "startLine": 997,
+        "startChar": 0,
+        "endLine": 997,
+        "endChar": 15
+      },
+      "revId": "ad2d3839d4c30e6c69c2b52d45dd54b0d4cbc082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
