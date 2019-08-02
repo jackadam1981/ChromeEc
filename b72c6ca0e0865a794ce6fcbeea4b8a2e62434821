@@ -22,6 +22,30 @@
       "revId": "b72c6ca0e0865a794ce6fcbeea4b8a2e62434821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97953c6_ee5b90d9",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-02T08:49:54Z",
+      "side": 1,
+      "message": "No, jacuzzi doesn\u0027t use rt946x/mt6370.",
+      "parentUuid": "c7861993_2e7f0e81",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "b72c6ca0e0865a794ce6fcbeea4b8a2e62434821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
