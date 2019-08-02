@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "388dbf68_76232f94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-02T13:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20be7bcd_973b485e",
+      "revId": "dc12b27b3dd2003ca5d5415f135f6a83d24773c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48b3cefd_f8ec717b",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 7
