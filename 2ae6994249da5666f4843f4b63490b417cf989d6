@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce0c244f_a0602e05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-02T20:55:45Z",
+      "side": 1,
+      "message": "extended to what? Can you add measurement results?",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "2ae6994249da5666f4843f4b63490b417cf989d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08965af0_14c37b6b",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-02T20:55:45Z",
+      "side": 1,
+      "message": "maybe\n\nTo make the interrupt pulse longer lets\u0027s assert it as soon as interrupt processing is completed, and deassert it in the end of this function. Remaining code in this function makes sure the pulse it at least 10 us long.",
+      "range": {
+        "startLine": 320,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 58
+      },
+      "revId": "2ae6994249da5666f4843f4b63490b417cf989d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
