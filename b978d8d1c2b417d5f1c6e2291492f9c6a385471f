@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4eb6878_698758d5",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-02T23:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e28250d_afad480b",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 17
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb3c0d97_80af6077",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-02T17:17:42Z",
       "side": 1,
       "message": "That\u0027s potentially opening a hole for someone to just request a template and then make the secret readable. I *think* |template_with_secret| correctly gates it in the current implementation, but it\u0027s not obvious.\n\nI think you shouldn\u0027t handle the state of the match secret in that function, it\u0027s unrelated.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c87c09d_8616c029",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-02T23:13:35Z",
+      "side": 1,
+      "message": "If the template is newly enrolled or updated, we need to make the new secret readable. But this will only be allowed if we noticed this is an updated template (dirty), or this is a newly enrolled template.\n\nFor the enrollment case I have moved the enablement to fp_process_enroll().",
+      "parentUuid": "fb3c0d97_80af6077",
       "range": {
         "startLine": 449,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a1c5d66b_e6cca76e",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-02T23:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8288fcf_26f7a808",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75ce5069_3deb949d",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "66677853_c341a2f3",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-02T23:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ce5069_3deb949d",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 24
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b82e48e_82a50f1e",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2019-08-02T17:17:42Z",
       "side": 1,
       "message": "I don\u0027t understand the reason behind that code. Which case is that?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30b383a_6756e05a",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-02T23:13:35Z",
+      "side": 1,
+      "message": "This is to give a second chance to read secret for a template that\u0027s matched and updated. Because the salt has changed, biod needs to read the new secret after reading the template. This is moved to fp_command_frame in the new patchset.",
+      "parentUuid": "4b82e48e_82a50f1e",
       "range": {
         "startLine": 243,
         "startChar": 0,
