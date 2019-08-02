@@ -16,6 +16,24 @@
       "revId": "ad49426e120d18ef499b97097e56bc7aa8a11a01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a75a2bd_0104d069",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4522,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-02T18:51:43Z",
+      "side": 1,
+      "message": "I have modified this to use cc_is_open() as the gating factor. If nothing is attached, always request LPM regardless of the next state.",
+      "parentUuid": "87215f1a_73e58061",
+      "revId": "ad49426e120d18ef499b97097e56bc7aa8a11a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
