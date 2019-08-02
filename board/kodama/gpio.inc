@@ -65,7 +65,6 @@ GPIO(I2C2_SCL,             PIN(A, 11), GPIO_INPUT)
 GPIO(I2C2_SDA,             PIN(A, 12), GPIO_INPUT)
 
 /* Analog pins */
-GPIO(BATT_ID,              PIN(A, 7),  GPIO_ANALOG)
 GPIO(BOARD_ID,             PIN(C, 0),  GPIO_ANALOG)
 GPIO(EC_SKU_ID,            PIN(B, 0),  GPIO_ANALOG)
 
@@ -75,6 +74,7 @@ GPIO(BOOT0,                PIN(F, 11), GPIO_INPUT)
 GPIO(CCD_MODE_ODL,         PIN(A, 5),  GPIO_INPUT)
 
 /* Other output pins */
+GPIO(EC_BATT_PRES_ODL,     PIN(A, 7),  GPIO_INPUT)
 GPIO(ENTERING_RW,          PIN(C, 6),  GPIO_ODR_HIGH) /* EC_ENTERING_RW_ODL */
 GPIO(EC_INT_L,             PIN(B, 12), GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 GPIO(EC_BOARD_ID_EN_L,     PIN(C, 15), GPIO_ODR_HIGH) /* EC_BOARD_ID_EN_ODL */
