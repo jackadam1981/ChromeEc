@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b79383c_e7ceee8c",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-03T01:18:53Z",
+      "side": 1,
+      "message": "clean up the blank line (and above)?",
+      "revId": "b9375ba5dc667faf3a5b638c99991c17f1cf4447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0dd2868_2532c500",
+        "filename": "test/usb_test/device_configuration.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-03T01:18:53Z",
+      "side": 1,
+      "message": "isn\u0027t this different since it\u0027s scanf?",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "b9375ba5dc667faf3a5b638c99991c17f1cf4447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
