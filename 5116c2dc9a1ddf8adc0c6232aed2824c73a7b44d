@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "5a5541cf_e16d07e0",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-04T22:49:43Z",
+      "side": 1,
+      "message": "No, I\u0027m just talking about the case where audio_buf_wp \u003d\u003d AUDIO_BUF_LEN.\n\nFor example:\naudio_buf_wp \u003d AUDIO_BUF_LEN-3; audio_buf_rp \u003d 200\n  n \u003d 3\n  \u003d\u003e audio_buf_wp \u003d AUDIO_BUF_LEN\n  \u003d\u003e usleep(1000) Why do we sleep 1ms where we just read only 3 bytes, and we know there are 200 bytes that can be read straight away in the buffer?",
+      "parentUuid": "05e669db_b51dce88",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83e39bf0_bb972e23",
         "filename": "include/audio_codec.h",
         "patchSetId": 35
