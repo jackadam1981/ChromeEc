@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "213bfbbc_84b47a30",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1705,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-05T20:06:06Z",
+      "side": 1,
+      "message": "After this fix, is the function only invoked once?",
+      "parentUuid": "3edc9fd9_73e50ccf",
+      "range": {
+        "startLine": 1705,
+        "startChar": 42,
+        "endLine": 1705,
+        "endChar": 45
+      },
+      "revId": "8ab733557ddb842812887cc2c8abd09f331edd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63aa9cc7_03396434",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -107,6 +131,24 @@
       "writtenOn": "2019-08-01T17:17:11Z",
       "side": 1,
       "message": "Why is one signal open drain?",
+      "revId": "8ab733557ddb842812887cc2c8abd09f331edd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ccc2f6_a5b2dbab",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-05T20:06:06Z",
+      "side": 1,
+      "message": "When the gpio is marked GPIO_OPEN_DRAIN, the gpio ouptut is only enabled when the gpio is asserted. This means GPIO1.6 will not drive PINMUX_I2CS_SDA when it is deasserted. Do we need to drive the signal high to unwedge i2cs?\n\nSince the gpio output is not enabled when the gpio is deasserted, do we actually need to disconnect it from PINMUX_I2CS_SDA at the end of unwedge?\n\nI don\u0027t know if we should be relying on the fake open drain behavior in chip/g/gpio.inc for the unwedge gpios. If there isn\u0027t a specific reason to add the OPEN_DRAIN flag to I2CS_SDA, I don\u0027t think we should use it.",
+      "parentUuid": "a8e30fe2_891c1f5b",
       "revId": "8ab733557ddb842812887cc2c8abd09f331edd2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
