@@ -232,7 +232,7 @@ static void board_init(void)
 	/* Enable pogo interrupt */
 	gpio_enable_interrupt(GPIO_POGO_ADC_INT_L);
 
-	if (IS_ENABLED(BOARD_KRANE)) {
+	if (IS_ENABLED(BOARD_KODAMA)) {
 		/* Display bias settings. */
 		mt6370_db_set_voltages(6000, 5800, 5800);
 
