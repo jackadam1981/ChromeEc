@@ -22,6 +22,30 @@
       "revId": "ae9772a79ae332a3d38f0ce2059e3737f85c540f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ada57dd_939a0474",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4522,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-05T21:07:07Z",
+      "side": 1,
+      "message": "The else clause won\u0027t catch the case where the next state is determined not by cc status, but by drp_state values. Such as when DRP is not allowed, so even when nothing is attached, the next state will be PD_STATE_SNK_DISCONNECTED.",
+      "parentUuid": "791d6dcf_20a91e16",
+      "range": {
+        "startLine": 4515,
+        "startChar": 3,
+        "endLine": 4522,
+        "endChar": 45
+      },
+      "revId": "ae9772a79ae332a3d38f0ce2059e3737f85c540f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
