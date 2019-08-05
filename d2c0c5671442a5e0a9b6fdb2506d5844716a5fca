@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df370d8_261e0a45",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-05T17:11:25Z",
+      "side": 1,
+      "message": "how about EXTERN_IF()? and rename STATIC_REQUIRES to STATIC_IF()?",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 380,
+        "endChar": 21
+      },
+      "revId": "d2c0c5671442a5e0a9b6fdb2506d5844716a5fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33fe0d9_d08d881f",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-05T17:11:25Z",
+      "side": 1,
+      "message": "Add an error test for EXTERN_IF as well.\n\nMaybe you can pass in the .cmd to the script as an arg so you don\u0027t need to copy the script?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 21
+      },
+      "revId": "d2c0c5671442a5e0a9b6fdb2506d5844716a5fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
