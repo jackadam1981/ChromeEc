@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "6d4665d5_3c750735",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-05T01:34:55Z",
+      "side": 1,
+      "message": "I think we may still need this in smart battery? Ting@ any comment?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "498c3c9c7997ddd088463f793e3b6b8578f35b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb527a9b_125bc27c",
         "filename": "baseboard/kukui/build.mk",
         "patchSetId": 4
