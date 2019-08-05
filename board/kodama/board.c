@@ -14,6 +14,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/usb_mux/it5205.h"
 #include "driver/charger/rt946x.h"
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
@@ -62,6 +63,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct i2c_port_t i2c_ports[] = {
 	{"charger",   I2C_PORT_CHARGER,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"tcpc0",     I2C_PORT_TCPC0,     400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+	{"usb_mux",   I2C_PORT_USB_MUX,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"battery",   I2C_PORT_BATTERY,   100, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"accelgyro", I2C_PORT_ACCEL,     100, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 };
@@ -94,7 +96,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.driver = &virtual_usb_mux_driver,
+		.port_addr = IT5205_I2C_ADDR1_FLAGS,
+		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
 };
