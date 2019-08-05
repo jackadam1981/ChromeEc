@@ -318,7 +318,7 @@ static void svdm_dp_post_config(int port)
 
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 #ifdef VARIANT_KUKUI_DP_MUX_GPIO
-	gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
+	usb_mux_dp_enable(0);
 	gpio_set_level(GPIO_USB_C0_DP_POLARITY, board_get_polarity(port));
 #endif
 
@@ -357,7 +357,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 
 #ifdef VARIANT_KUKUI_DP_MUX_GPIO
-		gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
+		usb_mux_dp_enable(0);
 		gpio_set_level(GPIO_USB_C0_DP_POLARITY,
 			       board_get_polarity(port));
 #endif
@@ -370,7 +370,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	} else {
 		gpio_set_level(GPIO_USB_C0_HPD_OD, lvl);
 #ifdef VARIANT_KUKUI_DP_MUX_GPIO
-		gpio_set_level(GPIO_USB_C0_DP_OE_L, !lvl);
+		usb_mux_dp_enable(!lvl);
 		gpio_set_level(GPIO_USB_C0_DP_POLARITY,
 			       board_get_polarity(port));
 #endif
@@ -389,7 +389,7 @@ static void svdm_exit_dp_mode(int port)
 	svdm_safe_dp_mode(port);
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 0);
 #ifdef VARIANT_KUKUI_DP_MUX_GPIO
-	gpio_set_level(GPIO_USB_C0_DP_OE_L, 1);
+	usb_mux_dp_enable(1);
 #endif
 	mux->hpd_update(port, 0, 0);
 }
