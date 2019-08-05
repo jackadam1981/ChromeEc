@@ -70,6 +70,30 @@
       "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4e26a1_5d0bd8a7",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-05T23:53:28Z",
+      "side": 1,
+      "message": "so, let\u0027s say FSM is stuck mid I2C Read transaction, and happens to be driving the SDA high.\n\nThis will not prevent the master from issuing the sart sequence and 8 clocks of the address cycle, by that time the slave would shift its entire byte out whatever that byte was, and might start shifting out the next byte, which will be all ones (line 118 below makes sure that the next 4 bytes in the read buffer are 0xFF.\n\nIs this not sufficient for the FSM to be reliably taken out of the state where it drives SDA line low?\n\nI feel quite apprehensive about running this \u0027unwedge\u0027 sequence on every reset, even if it is not necessary.",
+      "parentUuid": "aeb684cf_e1888399",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
