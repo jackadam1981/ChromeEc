@@ -29,6 +29,48 @@ static int last_val_changed(int i, int v)
 	}
 }
 
+int ioex_enable_interrupt(enum ioex_signal signal)
+{
+	const struct ioexpander_drv *drv;
+	const struct ioex_info *g = ioex_list + signal;
+
+	/* Fail if no interrupt handler */
+	if (signal >= ioex_ih_count)
+		return EC_ERROR_PARAM1;
+
+	drv = ioex_config[g->ioex].drv;
+	/*
+	 * Not every IOEX chip can support interrupt, check it before enabling
+	 * the interrupt function
+	 */
+	if (drv->enable_interrupt == NULL) {
+		CPRINTS("IOEX chip port %d doesn't support INT", g->ioex);
+		return EC_ERROR_UNIMPLEMENTED;
+	}
+	return drv->enable_interrupt(g->ioex, g->port, g->mask, 1);
+}
+
+int ioex_disable_interrupt(enum ioex_signal signal)
+{
+	const struct ioexpander_drv *drv;
+	const struct ioex_info *g = ioex_list + signal;
+
+	/* Fail if no interrupt handler */
+	if (signal >= ioex_ih_count)
+		return EC_ERROR_PARAM1;
+
+	drv = ioex_config[g->ioex].drv;
+	/*
+	 * Not every IOEX chip can support interrupt, check it before enabling
+	 * the interrupt function
+	 */
+	if (drv->enable_interrupt == NULL) {
+		CPRINTS("IOEX chip port %d doesn't support INT", g->ioex);
+		return EC_ERROR_UNIMPLEMENTED;
+	}
+	return drv->enable_interrupt(g->ioex, g->port, g->mask, 0);
+}
+
 int ioex_get_flags_by_mask(int ioex, int port, int mask, int *flags)
 {
 	return ioex_config[ioex].drv->get_flags_by_mask(ioex, port, mask,
