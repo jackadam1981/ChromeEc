@@ -22,6 +22,40 @@
       "revId": "2e933ff27d8d12f70f055f0ff497012ec4da7a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159b275a_f0b2a86d",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-05T02:24:00Z",
+      "side": 1,
+      "message": "From datasheet thid device should has address 0x18 or 0x19 which is determined by SA0 pin",
+      "revId": "2e933ff27d8d12f70f055f0ff497012ec4da7a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6615f088_6e33a78d",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-05T02:24:00Z",
+      "side": 1,
+      "message": "if __odr \u003c LIS2DW12_ODR_MIN_VAL, __builtin_clz will get 32, Is this a risk?",
+      "revId": "2e933ff27d8d12f70f055f0ff497012ec4da7a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
