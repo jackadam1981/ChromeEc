@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e85bbe7_50cdbead",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Should vector just not be populated, or does kernel not check for null before jumping to the vector entry?",
+      "parentUuid": "2019d8a2_855a9fcf",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7abcd77b_0461c099",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -33,6 +51,24 @@
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3d5d1f_3312ffff",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7abcd77b_0461c099",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8ae72d7e_e9d5eb79",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a813926b_d315ca9c",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd0be697_ef8972ab",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -64,6 +118,24 @@
       "writtenOn": "2019-08-01T22:29:44Z",
       "side": 1,
       "message": "no need of table:\ncur_gain \u003d 1 \u003c\u003c (2 * sat_p-\u003eagain)",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5b1a52_d262b1b1",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "If sat_p-\u003eagain \u003d 2, gain \u003d 16\nHowever,\n16 !\u003d (1 \u003c\u003c (2 * 2)\n16 !\u003d 8\n\nThe following equation would work, but would the math be quicker / more beneficial than table lookup?\ngain \u003d 4^sat_p-\u003eagain",
+      "parentUuid": "bd0be697_ef8972ab",
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "f9cecfe8_4e0b9318",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e40b08ef_726e9893",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fba106e3_5d9cc833",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -98,6 +188,24 @@
       "writtenOn": "2019-08-01T22:29:44Z",
       "side": 1,
       "message": "why do you need to convert to in64_t here?",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3404ea16_629d795d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "fp_t can only represent positive values up to 32,767, so any channel values between 32768 and 65535 inclusive would appear negative if not cast to int64_t here, throwing the math off.",
+      "parentUuid": "fba106e3_5d9cc833",
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "30bd9d8a_acbdf538",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "759c9e00_4fcde15c",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7dcb5c7_252095c0",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "4589a00c_0ea117d3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7dcb5c7_252095c0",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3079e2ad_fb03f8c1",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -152,6 +296,24 @@
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5860f9c3_9d174da3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3079e2ad_fb03f8c1",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +351,24 @@
     },
     {
       "key": {
+        "uuid": "6d09b2f1_7e51ac38",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821bf6d2_dbf319cb",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1575a5e9_3fa40053",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 45
@@ -203,6 +383,24 @@
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588dae8d_b43cc006",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "OK, if enable is non-zero, I\u0027ll assume normal run mode.",
+      "parentUuid": "1575a5e9_3fa40053",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +421,24 @@
     },
     {
       "key": {
+        "uuid": "feb2660f_22402c58",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "No, it\u0027s not.  XYZ does not have clear channel, count is only 3.  This is to index into arrays that include clear channel data and is in RGB format, not XYZ.",
+      "parentUuid": "39df2e24_a08ec212",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9795e84_06c16917",
         "filename": "include/accelgyro.h",
         "patchSetId": 45
@@ -237,6 +453,24 @@
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e122f5a_838016b4",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9795e84_06c16917",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -257,6 +491,24 @@
     },
     {
       "key": {
+        "uuid": "b8a6d071_b7ab60d8",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "accelgyro_bmi160.c will need to change to make this change.  Let\u0027s merge it like this and then in a separate change, change SENSOR_APPLY_SCALE to SENSOR_APPLY_MUL_SCALE in accelgyro_bmi160.c and als_tcs3400.c.",
+      "parentUuid": "74147274_92722285",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e42ae618_8e1368ce",
         "filename": "include/config.h",
         "patchSetId": 45
@@ -268,6 +520,24 @@
       "writtenOn": "2019-08-01T22:29:44Z",
       "side": 1,
       "message": "remove, TCS3400 does output meaningful information without XYZ translation.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ec5413_621dc020",
+        "filename": "include/config.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-05T19:34:09Z",
+      "side": 1,
+      "message": "If I remove this, then I will need to add checks to the code to make sure that the coeffients have been added to the code to avoid divide and multiply by zero issues.\n\nI\u0027m not sure what the values would be for coefficients that would make the XYZ translation somewhat meaningful in that situation.  Thoughts?",
+      "parentUuid": "e42ae618_8e1368ce",
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
