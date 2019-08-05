@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "661bdd69_a5413fde",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-05T18:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a46b78d_c68ef593",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "bd3119dfd7c022e41e41997aa2a90e147cdd0408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6266ea6d_88e9e758",
         "filename": "include/fpsensor_state.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bd3119dfd7c022e41e41997aa2a90e147cdd0408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3fa2a9_c598d676",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-05T18:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6266ea6d_88e9e758",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "bd3119dfd7c022e41e41997aa2a90e147cdd0408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
