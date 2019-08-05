@@ -34,6 +34,24 @@
       "revId": "3245636e58f5e88fcd421c655a618e2e31959684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f097087_f784ce2c",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-05T20:32:17Z",
+      "side": 1,
+      "message": "I\u0027d keep it consistent with other parts of the EC codebase, i.e. explicitly use always_memset() when we want the functionality. Does that make sense?",
+      "parentUuid": "ec76f40b_86cc4c92",
+      "revId": "3245636e58f5e88fcd421c655a618e2e31959684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
