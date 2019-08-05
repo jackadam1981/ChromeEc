@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54bb436c_a7ea82e5",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-05T06:51:48Z",
+      "side": 1,
+      "message": "All devices with MT6370 should use this cutoff procedure.\n\nThis is hard for Kodama because battery_fuel_gauge defines its own board_cut_off_battery().\nMaybe add a new config option in battery_fuel_gauge to have customized cutoff, or don\u0027t define CONFIG_BATTERY_FUEL_GAUGE at all.",
+      "revId": "39495ed78f3f334005f123f68d8f1d70cd015498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
