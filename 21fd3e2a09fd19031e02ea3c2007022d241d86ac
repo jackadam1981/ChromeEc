@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3142ed88_4b7b3d34",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-05T14:22:50Z",
+      "side": 1,
+      "message": "doesn\u0027t this have to be volatile? \n\nPlease use REG32_ADDR()",
+      "range": {
+        "startLine": 764,
+        "startChar": 1,
+        "endLine": 764,
+        "endChar": 16
+      },
+      "revId": "21fd3e2a09fd19031e02ea3c2007022d241d86ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
