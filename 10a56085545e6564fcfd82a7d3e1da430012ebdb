@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eada32ea_40eb7af7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-05T03:22:15Z",
+      "side": 1,
+      "message": "driver",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "10a56085545e6564fcfd82a7d3e1da430012ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655b9a9c_df0f9002",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-05T03:22:15Z",
+      "side": 1,
+      "message": "Don\u0027t really need a MASK for a single bit.",
+      "revId": "10a56085545e6564fcfd82a7d3e1da430012ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
