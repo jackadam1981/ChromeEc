@@ -68,6 +68,53 @@
       "revId": "1cbe50648d449beae64799fd6c4366f980cf7d14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5de29b8_f6095c80",
+        "filename": "include/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-05T04:27:56Z",
+      "side": 1,
+      "message": "x \u003e\u003d min",
+      "range": {
+        "startLine": 59,
+        "startChar": 31,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "1cbe50648d449beae64799fd6c4366f980cf7d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f42c983_1c84a3f4",
+        "filename": "include/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-05T04:27:56Z",
+      "side": 1,
+      "message": "The term \u0027range\u0027 in c++ usually means [low, high) (i.e. does not include upper boundary).\nc does not have a range concept, so I think it\u0027s ok to follow c++ style here.",
+      "parentUuid": "e3109ff2_47d1cfe5",
+      "range": {
+        "startLine": 59,
+        "startChar": 43,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "1cbe50648d449beae64799fd6c4366f980cf7d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
