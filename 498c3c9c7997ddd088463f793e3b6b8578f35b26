@@ -16,6 +16,29 @@
       "revId": "498c3c9c7997ddd088463f793e3b6b8578f35b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb527a9b_125bc27c",
+        "filename": "baseboard/kukui/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-05T01:33:37Z",
+      "side": 1,
+      "message": "This line will break other boards. Please just drop this line.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "498c3c9c7997ddd088463f793e3b6b8578f35b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
