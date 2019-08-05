@@ -22,6 +22,30 @@
       "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90210b1b_a87ecf4e",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-05T21:14:29Z",
+      "side": 1,
+      "message": "this is how we detect that the bus was reset mid transaction - the SDA line is held low during reset, when it should not be.\n\nIf it is not held low the master will be able to generate a start sequence which will reset the bus, right?",
+      "parentUuid": "b738f216_ba2b1809",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
