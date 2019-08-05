@@ -51,11 +51,6 @@
 #error Must define a VARIANT_KUKUI_CHARGER
 #endif /* VARIANT_KUKUI_CHARGER */
 
-/*
- * Board controls dp mux via gpio pins USB_C0_DP_OE_L and USB_C0_DP_POLARITY.
- */
-#undef VARIANT_KUKUI_DP_MUX_GPIO
-
 /* Optional modules */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG

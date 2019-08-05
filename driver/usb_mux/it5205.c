@@ -77,8 +77,10 @@ static int it5205_set_mux(int port, mux_state_t mux_state)
 		break;
 	}
 
+#ifndef CONFIG_USB_MUX_POLARITY_UNINVERTED
 	if (mux_state & MUX_POLARITY_INVERTED)
 		reg |= IT5205_POLARITY_INVERTED;
+#endif
 
 	return it5205_write(port, IT5205_REG_MUXCR, reg);
 }

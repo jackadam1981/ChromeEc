@@ -138,6 +138,8 @@ int board_charge_port_is_connected(int port);
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
 
+#define usb_mux_dp_enable(enable) gpio_set_level(GPIO_USB_C0_DP_OE_L, enable)
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

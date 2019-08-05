@@ -4046,6 +4046,9 @@
 /* 'Virtual' USB mux under host (not EC) control */
 #undef CONFIG_USB_MUX_VIRTUAL
 
+/* Disable USB mus polarity inverted */
+#undef CONFIG_USB_MUX_POLARITY_UNINVERTED
+
 /*****************************************************************************/
 /* USB GPIO config */
 #undef CONFIG_USB_GPIO

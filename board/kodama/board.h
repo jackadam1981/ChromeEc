@@ -21,6 +21,9 @@
 
 #define CONFIG_VOLUME_BUTTONS
 
+#define CONFIG_USB_MUX_IT5205
+#define CONFIG_USB_MUX_POLARITY_UNINVERTED
+
 /* Battery */
 #ifdef BOARD_KRANE
 #define BATTERY_DESIRED_CHARGING_CURRENT    3500  /* mA */
@@ -52,6 +55,7 @@
 /* I2C ports */
 #define I2C_PORT_CHARGER  0
 #define I2C_PORT_TCPC0    0
+#define I2C_PORT_USB_MUX  0
 #define I2C_PORT_BATTERY  1
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
 #define I2C_PORT_ACCEL    1
@@ -114,6 +118,8 @@ int board_charge_port_is_sink(int port);
 int board_charge_port_is_connected(int port);
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
+
+#define usb_mux_dp_enable(enable) gpio_set_level(GPIO_CCD_MODE_ODL, !enable)
 
 #endif /* !__ASSEMBLER__ */
 
