@@ -46,6 +46,30 @@
       "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb684cf_e1888399",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1362301
+      },
+      "writtenOn": "2019-08-05T21:29:55Z",
+      "side": 1,
+      "message": "Only the stop sequence would reset the bus, not the start sequence.\nIf the fsm is stuck in a certain state (even one that isn\u0027t pulling sda low), the next transaction could leave the i2cs into a stuck at 0 state, preventing the stop condition from being seen by the i2cs block and wedging the bus.\nInstead of setting timers/interrupts to detect when the bus is hung, I though it would be easier just to apply the workaround to reset the i2cs fsm every time the tpm reset is detected.",
+      "parentUuid": "90210b1b_a87ecf4e",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
