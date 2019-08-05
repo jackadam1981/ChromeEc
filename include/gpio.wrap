@@ -118,6 +118,10 @@
 #define IOEX(name, expin, flags)
 #endif
 
+#ifndef IOEX_INT
+#define IOEX_INT(name, expin, flags, signal)
+#endif
+
 #include "gpio.inc"
 
 /*
@@ -137,3 +141,4 @@
 #undef UNIMPLEMENTED_RW
 
 #undef IOEX
+#undef IOEX_INT

@@ -69,6 +69,7 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
 #define IOEX_EXPIN(ioex, port, index) (ioex), (port), BIT(index)
 
 #define IOEX(name, expin, flags) {#name, IOEX_##expin, flags},
+#define IOEX_INT(name, expin, flags, signal) IOEX(name, expin, flags)
 
 /* IO expander signal list. */
 const struct ioex_info ioex_list[] = {
@@ -76,7 +77,23 @@ const struct ioex_info ioex_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_list) == IOEX_COUNT);
 
+/* IO Expander Interrupt Handlers */
+#define IOEX_INT(name, expin, flags, signal) signal,
+void (* const ioex_irq_handlers[])(enum ioex_signal signal) = {
+	#include "gpio.wrap"
+};
+const int ioex_ih_count = ARRAY_SIZE(ioex_irq_handlers);
+/*
+ * All IOEX IOs with interrupt handlers must be declared at the top of the
+ * IOEX's declaration in the gpio.inc
+ * file.
+ */
+#define IOEX_INT(name, expin, flags, signal)	\
+	BUILD_ASSERT(IOEX_##name < ARRAY_SIZE(ioex_irq_handlers));
+#include "gpio.wrap"
+
 #define IOEX(name, expin, flags) expin
+#define IOEX_INT(name, expin, flags, signal) expin
 
 /* The compiler will complain if we use the same name twice or the controller
  * number declared is greater or equal to CONFIG_IO_EXPANDER_PORT_COUNT.
