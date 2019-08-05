@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebde88cf_9f217583",
+        "filename": "common/mock/rollback_mock.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-05T21:39:12Z",
+      "side": 1,
+      "message": "I had to include \"ec_commands.h\" for the definition of BUILD_ASSERT in order to \"make host-host_command_fuzz\". Am I missing something?\n\nBesides this, I have verified this CL works as intended.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "f45bf20f2ae0559544cd516c9663e83da30461c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
