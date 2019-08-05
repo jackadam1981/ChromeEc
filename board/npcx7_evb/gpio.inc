@@ -9,6 +9,7 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Pins for internal flash testing */
+
 GPIO_INT(RECOVERY_L,       PIN(0, 3), GPIO_INT_BOTH | GPIO_PULL_UP, switch_interrupt)
 GPIO_INT(WP_L,             PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, switch_interrupt)
 
@@ -26,6 +27,14 @@ GPIO_INT(LID_OPEN,         PIN(0, 1), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, lid_in
 GPIO_INT(AC_PRESENT,       PIN(7, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   extpower_interrupt)
 GPIO_INT(POWER_BUTTON_L,   PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button_interrupt)
 GPIO_INT(LID_OPEN,         PIN(A, 6), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
+#endif
+
+#ifdef CONFIG_IO_EXPANDER
+/* Alert event from TCPC/IOEX */
+GPIO_INT(IOEX_ALERT0,      PIN(D, 4), GPIO_INT_FALLING, ioex_alert_event)
+GPIO_INT(IOEX_ALERT1,      PIN(D, 5), GPIO_INT_FALLING, ioex_alert_event)
+/* Test pin to gerenate a edge/level to trigger IOEX interrupt */
+GPIO(TRIG_IOEX_INT,        PIN(C, 5), GPIO_OUT_HIGH)
 #endif
 
 /* Pins for SPI/FAN/LPC modules testing */
@@ -50,6 +59,48 @@ GPIO(I2C7_SCL0,            PIN(B, 3), GPIO_ODR_HIGH)
 GPIO(BOARD_VERSION1,       PIN(6, 4), GPIO_INPUT)
 GPIO(BOARD_VERSION2,       PIN(6, 5), GPIO_INPUT)
 GPIO(BOARD_VERSION3,       PIN(6, 6), GPIO_INPUT)
+#ifdef CONFIG_IO_EXPANDER
+/* GPIO declaration for 1st NCT3807 on port 0 */
+/* GPIO group 0 */
+IOEX_INT(3807_1_G0_00,       EXPIN(0, 0, 0), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_1_G0_01,       EXPIN(0, 0, 1), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_1_G0_02,       EXPIN(0, 0, 2), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_1_G0_03,       EXPIN(0, 0, 3), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_1_G0_04,       EXPIN(0, 0, 4), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_1_G0_05,       EXPIN(0, 0, 5), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_1_G0_06,       EXPIN(0, 0, 6), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_1_G0_07,       EXPIN(0, 0, 7), GPIO_INT_BOTH, board_test_ioex_int)
+/* GPIO group 1 */
+IOEX_INT(3807_1_G1_00,       EXPIN(0, 1, 0), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_1_G1_01,       EXPIN(0, 1, 1), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_1_G1_02,       EXPIN(0, 1, 2), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_1_G1_03,       EXPIN(0, 1, 3), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_1_G1_04,       EXPIN(0, 1, 4), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_1_G1_05,       EXPIN(0, 1, 5), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_1_G1_06,       EXPIN(0, 1, 6), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_1_G1_07,       EXPIN(0, 1, 7), GPIO_INT_RISING, board_test_ioex_int)
+
+#if (CONFIG_IO_EXPANDER_PORT_COUNT >= 2)
+/* GPIO declaration for 1st NCT3807 on port 1 */
+IOEX_INT(3807_2_G0_00,       EXPIN(1, 0, 0), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_2_G0_01,       EXPIN(1, 0, 1), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_2_G0_02,       EXPIN(1, 0, 2), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_2_G0_03,       EXPIN(1, 0, 3), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_2_G0_04,       EXPIN(1, 0, 4), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_2_G0_05,       EXPIN(1, 0, 5), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_2_G0_06,       EXPIN(1, 0, 6), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_2_G0_07,       EXPIN(1, 0, 7), GPIO_INT_FALLING, board_test_ioex_int)
+/* GPIO group 1 */
+IOEX_INT(3807_2_G1_00,       EXPIN(1, 1, 0), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_2_G1_01,       EXPIN(1, 1, 1), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_2_G1_02,       EXPIN(1, 1, 2), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_2_G1_03,       EXPIN(1, 1, 3), GPIO_INT_FALLING, board_test_ioex_int)
+IOEX_INT(3807_2_G1_04,       EXPIN(1, 1, 4), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_2_G1_05,       EXPIN(1, 1, 5), GPIO_INT_BOTH, board_test_ioex_int)
+IOEX_INT(3807_2_G1_06,       EXPIN(1, 1, 6), GPIO_INT_RISING, board_test_ioex_int)
+IOEX_INT(3807_2_G1_07,       EXPIN(1, 1, 7), GPIO_INT_RISING, board_test_ioex_int)
+#endif
+#endif
 
 /*********************** Alternate pins for npcx7 series **********************/
 #if (CONFIG_CONSOLE_UART == 0)
