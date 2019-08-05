@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9068bb9_133722c1",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-05T08:27:51Z",
+      "side": 1,
+      "message": "Similarly, please see (and ideally build on top of) https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1595928\n\nPassing a pointer to DMEM like this should be avoided (except in the case of cp8w(), which is specifically designed to handle it).\n\nSame thing on L1022",
+      "revId": "cfe91387c3c7de717be39760e07dce7f8fe1654f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
