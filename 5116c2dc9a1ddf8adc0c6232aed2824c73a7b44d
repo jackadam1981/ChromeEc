@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "ed414875_d6418d4e",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-05T02:40:23Z",
+      "side": 1,
+      "message": "misunderstanding: wp \u003d AUDIO_BUF_LEN-3, rp \u003d 200\n\u003d\u003e n \u003d 3, wp \u003d 0, rp \u003d 200\n\u003d\u003e we have 199 bytes left to write\n\n\nTo make it universal, I think we don\u0027t need to separate the following 2 cases:\n1. wp \u003d 0, rp \u003d 200, n \u003d 3\n2. wp \u003d 0, rp \u003d 200, n \u003d 3000",
+      "parentUuid": "5a5541cf_e16d07e0",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83e39bf0_bb972e23",
         "filename": "include/audio_codec.h",
         "patchSetId": 35
