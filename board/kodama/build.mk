@@ -13,4 +13,4 @@ CHIP_VARIANT:=stm32f09x
 BASEBOARD:=kukui
 
 board-y=board.o led.o battery.o
-board-$(BOARD_KRANE)+=base_detect_kodama.o
+board-$(BOARD_KODAMA)+=base_detect_kodama.o
