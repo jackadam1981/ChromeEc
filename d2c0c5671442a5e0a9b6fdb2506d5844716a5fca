@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d62625e_f0a1c7a2",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-05T18:54:49Z",
+      "side": 1,
+      "message": "Naming things is hard, but I think the name should emphasize that the variable will be static under its intended configuration, that way this macro is not misused to declare a (for example) stack variable.\n\nBut \"REQUIRES\" *is* a little funky.\n\nSome things I was thinking that might work instead (and may be less odd) is STATIC_WHEN/STATIC_UNLESS, STATIC_IF/STATIC_UNLESS, or if \"UNLESS\" is unclear, we could also do STATIC_IF_NOT?\n\nMy vote would be on STATIC_WHEN/STATIC_UNLESS, but curious to hear others\u0027 opinions.",
+      "parentUuid": "3df370d8_261e0a45",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 380,
+        "endChar": 21
+      },
+      "revId": "d2c0c5671442a5e0a9b6fdb2506d5844716a5fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e33fe0d9_d08d881f",
         "filename": "test/build.mk",
         "patchSetId": 2
