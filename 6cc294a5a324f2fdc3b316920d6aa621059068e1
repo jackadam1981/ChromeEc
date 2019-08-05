@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5a4efc4_e7da1517",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-05T08:17:58Z",
+      "side": 1,
+      "message": "This is not safe, please see (ideally, patch in and build on top of):\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1595928\n\n(same applies to other instances below on L1007 and L1037)",
+      "range": {
+        "startLine": 973,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 38
+      },
+      "revId": "6cc294a5a324f2fdc3b316920d6aa621059068e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a0c233_6ff23971",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-05T08:17:58Z",
+      "side": 1,
+      "message": "This function must not write to DMEM",
+      "revId": "6cc294a5a324f2fdc3b316920d6aa621059068e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
