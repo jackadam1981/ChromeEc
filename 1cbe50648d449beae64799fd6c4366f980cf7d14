@@ -115,6 +115,30 @@
       "revId": "1cbe50648d449beae64799fd6c4366f980cf7d14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ee963c_93439d50",
+        "filename": "include/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-05T04:55:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f42c983_1c84a3f4",
+      "range": {
+        "startLine": 59,
+        "startChar": 43,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "1cbe50648d449beae64799fd6c4366f980cf7d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
