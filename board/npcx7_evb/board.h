@@ -21,6 +21,9 @@
 #define BOARD_VERSION  2
 #endif
 
+#define CONFIG_IO_EXPANDER
+#define CONFIG_IO_EXPANDER_NCT38XX
+#define CONFIG_IO_EXPANDER_PORT_COUNT 2
 /* EC modules */
 #define CONFIG_ADC
 #define CONFIG_PWM
@@ -137,6 +140,12 @@ enum mft_channel {
 };
 
 #include "gpio_signal.h"
+
+#ifdef CONFIG_IO_EXPANDER
+void ioex_alert_event(enum gpio_signal signal);
+void board_test_ioex_int(enum ioex_signal signal);
+
+#endif
 
 #endif /* !__ASSEMBLER__ */
 
