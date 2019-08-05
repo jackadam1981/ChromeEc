@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b738f216_ba2b1809",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1362301
+      },
+      "writtenOn": "2019-08-05T20:19:13Z",
+      "side": 1,
+      "message": "The unwedge function should be called anytime you suspect the bus got reset mid transaction.\nThis gating may cause the fsm to be stuck in a non-idle state, potentially wedging the bus in future transactions.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "d5ecf9d99dbd6fc3d0edad124e2182a0097fdb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
