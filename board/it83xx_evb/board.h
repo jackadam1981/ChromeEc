@@ -8,6 +8,12 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#undef CONFIG_RAM_BASE
+#define CONFIG_RAM_BASE   0x00100000
+#undef CONFIG_FLASH_SIZE
+#define CONFIG_FLASH_SIZE 0x00100000
+#define CONFIG_IT83XX_FLASH_IS_KGD
+
 /* NOTE: 0->ec evb, non-zero->pd evb */
 #define IT83XX_PD_EVB  0
 
