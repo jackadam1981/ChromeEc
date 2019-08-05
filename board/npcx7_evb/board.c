@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "backlight.h"
+#include "console.h"
 #include "chipset.h"
 #include "common.h"
 #include "driver/temp_sensor/tmp006.h"
@@ -15,6 +16,9 @@
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "hooks.h"
+#include "ioexpander_nct38xx.h"
+#include "ioexpander.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -83,8 +87,8 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 /******************************************************************************/
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master0-0", NPCX_I2C_PORT0_0, 100, GPIO_I2C0_SCL0, GPIO_I2C0_SDA0},
-	{"master1-0", NPCX_I2C_PORT1_0, 100, GPIO_I2C1_SCL0, GPIO_I2C1_SDA0},
+	{"master0-0", NPCX_I2C_PORT0_0, 400, GPIO_I2C0_SCL0, GPIO_I2C0_SDA0},
+	{"master1-0", NPCX_I2C_PORT1_0, 400, GPIO_I2C1_SCL0, GPIO_I2C1_SDA0},
 	{"master2-0", NPCX_I2C_PORT2_0, 100, GPIO_I2C2_SCL0, GPIO_I2C2_SDA0},
 	{"master3-0", NPCX_I2C_PORT3_0, 100, GPIO_I2C3_SCL0, GPIO_I2C3_SDA0},
 	{"master7-0", NPCX_I2C_PORT7_0, 100, GPIO_I2C7_SCL0, GPIO_I2C7_SDA0},
@@ -121,3 +125,113 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xc8  /* full set */
 	},
 };
+
+/* IO expander configuration */
+#ifdef CONFIG_IO_EXPANDER
+#define IO_EXPANDER_PORT_0 0
+#define IO_EXPANDER_PORT_1 1
+struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
+	/* Port 0 for NCT3807, use I2C port0_0 with address 0x70 (7-bit) */
+	[IO_EXPANDER_PORT_0] = {
+		.i2c_host_port = NPCX_I2C_PORT0_0,
+		.i2c_slave_addr = NCT38XX_I2C_ADDR1_1_FLAGS,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+#if (CONFIG_IO_EXPANDER_PORT_COUNT >= 2)
+	/* Port 1 for NCT3801, use I2C port1_0 with address 0x70 (7-bit) */
+	[IO_EXPANDER_PORT_1] = {
+		.i2c_host_port = NPCX_I2C_PORT1_0,
+		.i2c_slave_addr = NCT38XX_I2C_ADDR1_1_FLAGS,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+#endif
+};
+
+/*
+ * The following is used to emulate the pd_interrupt_handler_task to handle
+ * the alert event from NCT38XX TCPC/IO-expander chips
+ */
+static void ioex_alert0_defer(void)
+{
+	if (!gpio_get_level(GPIO_IOEX_ALERT0))
+		nct38xx_ioex_handle_alert(0);
+}
+DECLARE_DEFERRED(ioex_alert0_defer);
+
+static void ioex_alert1_defer(void)
+{
+	if (!gpio_get_level(GPIO_IOEX_ALERT1))
+		nct38xx_ioex_handle_alert(1);
+}
+DECLARE_DEFERRED(ioex_alert1_defer);
+
+void ioex_alert_event(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_IOEX_ALERT0:
+		ccprintf("Alert 0 INT\n");
+		hook_call_deferred(&ioex_alert0_defer_data, 0);
+		break;
+	case GPIO_IOEX_ALERT1:
+		ccprintf("Alert 1 INT\n");
+		hook_call_deferred(&ioex_alert1_defer_data, 0);
+		break;
+	default:
+		return;
+	}
+}
+
+void board_test_ioex_int(enum ioex_signal signal)
+{
+	ccprintf("Sig %d:[%s]\n", signal, ioex_get_name(signal));
+}
+
+static void board_ioex_init(void)
+{
+	gpio_enable_interrupt(GPIO_IOEX_ALERT0);
+	gpio_enable_interrupt(GPIO_IOEX_ALERT1);
+
+}
+DECLARE_HOOK(HOOK_INIT, board_ioex_init, HOOK_PRIO_DEFAULT);
+#endif
+
+static int command_ioexint(int argc, char **argv)
+{
+	char *e;
+	int io_num, enable;
+
+	io_num = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	if (parse_bool(argv[2], &enable)) {
+		if (enable)
+			ioex_enable_interrupt(io_num);
+		else
+			ioex_disable_interrupt(io_num);
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(ioexint, command_ioexint, "", "");
+
+/*
+ * Connect this GPIO to the pin of IOEX under testing. Generate the different
+ * level/pulse to test the interrupt funtion of the IOEX's IO
+ */
+static int command_trig_int(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	v = strtoi(argv[1], &e, 0);
+	if (v)
+		gpio_set_level(GPIO_TRIG_IOEX_INT, 1);
+	else
+		gpio_set_level(GPIO_TRIG_IOEX_INT, 0);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(trig_int, command_trig_int, "", "");
