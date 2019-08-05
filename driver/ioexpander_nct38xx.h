@@ -12,6 +12,9 @@
  */
 #include "nct38xx.h"
 
+void nct38xx_ioex_handle_alert(int ioex);
+void nct38xx_ioex_event_handler(int ioex);
+
 extern const struct ioexpander_drv nct38xx_ioexpander_drv;
 
 #endif /* defined(__CROS_EC_IOEXPANDER_NCT38XX_H) */
