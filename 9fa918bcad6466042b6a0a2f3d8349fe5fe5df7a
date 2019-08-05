@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c2780fe_a05555f0",
+        "filename": "chip/mt_scp/audio_codec_wov.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-05T05:19:36Z",
+      "side": 1,
+      "message": "How about replacing #ifdef macro with if (IS_ENABLED(....))? also below.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "9fa918bcad6466042b6a0a2f3d8349fe5fe5df7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
