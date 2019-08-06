@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2feb053_d28dd8b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "I think this title would make more sense:\n\n\ng: add vendor command to get or set the endorsement key seed\n\nand in other places \u0027manufacture seed\u0027 should be also changed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a48ce8a6_c195488d",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "this should be uint8_t *",
+      "range": {
+        "startLine": 509,
+        "startChar": 46,
+        "endLine": 509,
+        "endChar": 51
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afd104b_afb0350c",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "I am not sure it\u0027s a good idea to print this on the console when the user did not request anything on the console, it\u0027s enough gsctool would print it out.",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 28
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fcbea74_f266218a",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "why does this have to be uint8_t ?",
+      "range": {
+        "startLine": 538,
+        "startChar": 1,
+        "endLine": 538,
+        "endChar": 8
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c2f372_467cc2b4",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "you have not allocated info1 space yet, but exit: will try to zero it",
+      "range": {
+        "startLine": 544,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 12
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50537b39_dfc9795f",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "what\u0027s the point of reading the entire info1 space when you care only about 32 bytes?\n\nThen you can hold the data on the stack, no need in alloc/free/",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 2
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6c2d39_1568edf3",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "this is changing, please rebase on the top of the patch changing info1 API",
+      "range": {
+        "startLine": 552,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 33
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dde076a_f4299a2a",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:23:55Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
