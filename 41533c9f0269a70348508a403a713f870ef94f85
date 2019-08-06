@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "080ff8fa_9040480f",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-06T07:15:47Z",
+      "side": 1,
+      "message": "Nit: Since this file is for kodama only, you can completely remove this \"if\".",
+      "revId": "41533c9f0269a70348508a403a713f870ef94f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
