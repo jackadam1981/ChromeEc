@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a8e7507_24466de8",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-06T22:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5a4efc4_e7da1517",
+      "range": {
+        "startLine": 973,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 38
+      },
+      "revId": "6cc294a5a324f2fdc3b316920d6aa621059068e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a0c233_6ff23971",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 12
@@ -39,6 +63,24 @@
       "revId": "6cc294a5a324f2fdc3b316920d6aa621059068e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b8907f_d2ee8a86",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-06T22:34:55Z",
+      "side": 1,
+      "message": "this is fixed in the next CL in the chain",
+      "parentUuid": "f6a0c233_6ff23971",
+      "revId": "6cc294a5a324f2fdc3b316920d6aa621059068e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
