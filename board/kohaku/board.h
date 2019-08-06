@@ -111,7 +111,7 @@
 #define CONFIG_TEMP_SENSOR_POWER_GPIO GPIO_EN_A_RAILS
 #define CONFIG_THERMISTOR
 #define CONFIG_THROTTLE_AP
-#define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
+#define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
 /*
  * Macros for GPIO signals used in common code that don't match the
@@ -139,6 +139,8 @@ extern enum gpio_signal gpio_en_pp5000_a;
 enum adc_channel {
 	ADC_TEMP_SENSOR_1,	/* ADC0 */
 	ADC_TEMP_SENSOR_2,	/* ADC1 */
+	ADC_TEMP_SENSOR_3,	/* ADC2 */
+	ADC_TEMP_SENSOR_4,	/* ADC3 */
 	ADC_CH_COUNT
 };
 
@@ -161,6 +163,8 @@ enum pwm_channel {
 enum temp_sensor_id {
 	TEMP_SENSOR_1,
 	TEMP_SENSOR_2,
+	TEMP_SENSOR_3,
+	TEMP_SENSOR_4,
 	TEMP_SENSOR_COUNT
 };
 
