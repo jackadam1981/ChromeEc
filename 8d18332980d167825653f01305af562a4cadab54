@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c62a0a4_eb9d25c1",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-06T21:35:40Z",
+      "side": 1,
+      "message": "I don\u0027t know what character to use. All obvious ones were taken.\n\nI picked X, because this is a DBG feature and people should know what they\u0027re doing when they use it. figuring out X is the arg to use should be ok.",
+      "range": {
+        "startLine": 320,
+        "startChar": 50,
+        "endLine": 320,
+        "endChar": 51
+      },
+      "revId": "8d18332980d167825653f01305af562a4cadab54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
