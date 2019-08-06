@@ -16,6 +16,24 @@
       "revId": "2f1b3f6af3e488eb3f23a15e0de4f713ca484be6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df40ab06_896752d5",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T21:42:46Z",
+      "side": 1,
+      "message": "done. \n\nThis would case some asymmetric invocation of flash_info_write_disable() in case of errors, but I think it is not a big deal, keeping flash_info_wirte_enable() invocation after the mutex grab is a good improvement.",
+      "parentUuid": "65a9f5bb_64c245b1",
+      "revId": "2f1b3f6af3e488eb3f23a15e0de4f713ca484be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
