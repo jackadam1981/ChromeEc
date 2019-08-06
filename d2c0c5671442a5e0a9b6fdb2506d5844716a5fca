@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "85a3ec3a_027dcd4b",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-06T17:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d62625e_f0a1c7a2",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 380,
+        "endChar": 21
+      },
+      "revId": "d2c0c5671442a5e0a9b6fdb2506d5844716a5fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e33fe0d9_d08d881f",
         "filename": "test/build.mk",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "d2c0c5671442a5e0a9b6fdb2506d5844716a5fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae510017_a8e4827f",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-06T17:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33fe0d9_d08d881f",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 21
+      },
+      "revId": "d2c0c5671442a5e0a9b6fdb2506d5844716a5fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
