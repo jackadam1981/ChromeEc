@@ -42,6 +42,7 @@
 #include "board_id.h"
 #include "console.h"
 #include "cryptoc/util.h"
+#include "extension.h"
 #include "flash.h"
 #include "flash_log.h"
 #include "registers.h"
@@ -501,8 +502,96 @@ void flash_open_ro_window(uint32_t offset, size_t size_b)
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
 }
 
-#ifdef CR50_RELAXED
+#ifdef CR50_DEV
+#define MANUFACTURE_SEED_SIZE 32
 
+static uint8_t print_seed_and_check_is_erased(char *seed)
+{
+	uint8_t is_erased = 1;
+	int i;
+
+	ccprintf("manufacture seed:\n");
+	for (i = 0; i < MANUFACTURE_SEED_SIZE; i++) {
+		ccprintf("%02x", seed[i]);
+		if (!((i + 1) % 4))
+			ccprintf(" ");
+
+		if (!((i + 1) % 16))
+			ccprintf("\n");
+		if (seed[i] != 0xff)
+			is_erased = 0;
+	}
+	return is_erased;
+}
+
+static enum vendor_cmd_rc vc_manufacture_info(enum vendor_cmd_cc code,
+					      void *buf,
+					      size_t input_size,
+					      size_t *response_size)
+{
+	struct info1_layout *info1;
+	int i;
+	int rv = VENDOR_RC_SUCCESS;
+	uint32_t *p;
+	int erased_seed = 1;
+	uint8_t set_seed = input_size == MANUFACTURE_SEED_SIZE;
+
+	*response_size = 0;
+	if (input_size && !set_seed) {
+		ccprintf("invalid seed");
+		rv = VENDOR_RC_BOGUS_ARGS;
+		goto exit;
+	}
+
+	if (shared_mem_acquire(sizeof(*info1), (char **)&info1) != EC_SUCCESS) {
+		ccprintf("Failed to allocate memory for info1!\n");
+		return VENDOR_RC_INTERNAL_ERROR;
+	}
+
+	flash_info_read_enable(0, 2048);
+
+	/* Read the entire info1. */
+	p = (uint32_t *)info1;
+	for (i = 0; i < (sizeof(*info1) / sizeof(*p)); i++) {
+		if (flash_physical_info_read_word(i * sizeof(*p), p + i) !=
+		    EC_SUCCESS) {
+			ccprintf("Failed to read word %d!\n", i);
+			rv = VENDOR_RC_INTERNAL_ERROR;
+			goto exit;
+		}
+	}
+
+	erased_seed = print_seed_and_check_is_erased(info1->manufacture_space);
+
+	if (!input_size || !erased_seed) {
+		if (!erased_seed && set_seed) {
+			ccprintf("seed is already set!\n");
+			rv = VENDOR_RC_NOT_ALLOWED;
+		}
+		*response_size = MANUFACTURE_SEED_SIZE;
+		memcpy(buf, info1->manufacture_space, *response_size);
+		goto exit;
+	}
+
+	memcpy(info1->manufacture_space, buf, input_size);
+	ccprintf("Setting ");
+	print_seed_and_check_is_erased(info1->manufacture_space);
+	flash_info_write_enable(0, 2048);
+
+	if (flash_info_physical_write(0, sizeof(*info1), (char *)info1)
+	    != EC_SUCCESS) {
+		ccprintf("Failed write back info1 contents!\n");
+		rv = VENDOR_RC_INTERNAL_ERROR;
+	}
+ exit:
+	flash_info_write_disable();
+	always_memset(info1, 0, sizeof(*info1));
+	shared_mem_release(info1);
+	return rv;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_MANUFACTURE_INFO, vc_manufacture_info);
+#endif
+#ifdef CR50_RELAXED
 static int command_erase_flash_info(int argc, char **argv)
 {
 	int i;
@@ -604,3 +693,4 @@ DECLARE_SAFE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info,
 			     "", "Erase INFO1 flash space");
 #endif
 #endif
+
