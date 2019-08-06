@@ -60,23 +60,28 @@
 	(BIT(LID_ACCEL) | BIT(LID_ALS) | BIT(CLEAR_ALS))
 
 /* Parameter to calculate LUX on Kohaku */
-/*
- * TODO (b/130835790): These values are from Caroline. Do they need to be
- * changed for Kohaku?
- */
 #define CONFIG_ALS_BH1730_LUXTH_PARAMS
+/*
+ * Need to two equations on kokaku.
+ * 1. d1_1K/d0_1K * 1000 <  BH1730_LUXTH1_1K
+ * 2. BH1730_LUXTH1_1K <= d1_1K/d0_1K * 1000
+ * d0 and d1 are unsigned 16 bit. So, d1/d0 max is 65535
+ * To meet 2 case, make BH1730_LUXTH2_1K to (max+1)*1000
+ * Will not use BH1730_LUXTH3_1K and BH1730_LUXTH4_1K
+ * on Kohaku
+ */
 #define BH1730_LUXTH1_1K                270
-#define BH1730_LUXTH1_D0_1K             4000
-#define BH1730_LUXTH1_D1_1K             6364
-#define BH1730_LUXTH2_1K                740
-#define BH1730_LUXTH2_D0_1K             3088
-#define BH1730_LUXTH2_D1_1K             3010
+#define BH1730_LUXTH1_D0_1K             19200
+#define BH1730_LUXTH1_D1_1K             30528
+#define BH1730_LUXTH2_1K                655360000
+#define BH1730_LUXTH2_D0_1K             11008
+#define BH1730_LUXTH2_D1_1K             10752
 #define BH1730_LUXTH3_1K                1030
-#define BH1730_LUXTH3_D0_1K             2056
-#define BH1730_LUXTH3_D1_1K             1608
+#define BH1730_LUXTH3_D0_1K             11008
+#define BH1730_LUXTH3_D1_1K             10752
 #define BH1730_LUXTH4_1K                3670
-#define BH1730_LUXTH4_D0_1K             550
-#define BH1730_LUXTH4_D1_1K             149
+#define BH1730_LUXTH4_D0_1K             11008
+#define BH1730_LUXTH4_D1_1K             10752
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_TCPM_PS8751
