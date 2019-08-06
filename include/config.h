@@ -86,6 +86,21 @@
 #undef CONFIG_ACCEL_LIS2D_COMMON
 #undef CONFIG_ACCEL_LIS2DW12
 
+/*
+ * lis2dw12 and lis2dwl have almost the same register interface.
+ * lis2dw12 support 4 low power modes but lis2dwl only support one. lis2dwl only
+ * support 12 bit resolution under low power mode. But lis2dw12 can support 12
+ * bit or 14 bit resolution at different low power modes. In order to get 14 bit
+ * resolution, lis2dwl does not use low power mode and lis2dw12 only use 3 of 4
+ * low power modes.
+ *
+ * Use the define for your correct chip and the CONFIG_ACCEL_LIS2DW_COMMON will
+ * automatically get defined.
+ */
+#undef CONFIG_ACCEL_LIS2DW12
+#undef CONFIG_ACCEL_LIS2DWL
+#undef CONFIG_ACCEL_LIS2DW_COMMON
+
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DS0
 /* Use CONFIG_ACCELGYRO_LSM6DSM for LSM6DSL, LSM6DSM, and/or LSM6DS3 */
@@ -4702,6 +4717,14 @@
 	defined(CONFIG_ACCEL_LIS2DE) || \
 	defined(CONFIG_ACCEL_LNG2DM)
 #define CONFIG_ACCEL_LIS2D_COMMON
+#endif
+
+/*
+ * Automatically define CONFIG_ACCEL_LIS2DW_COMMON if a child option is defined.
+ */
+#if defined(CONFIG_ACCEL_LIS2DW12) || \
+	defined(CONFIG_ACCEL_LIS2DWL)
+#define CONFIG_ACCEL_LIS2DW_COMMON
 #endif
 
 /*****************************************************************************/
