@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9414cb61_e8779de6",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-06T07:34:24Z",
+      "side": 1,
+      "message": "please fix this according to https://crrev.com/c/1731212",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
