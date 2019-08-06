@@ -16,6 +16,24 @@
       "revId": "39495ed78f3f334005f123f68d8f1d70cd015498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6806ee_e2d00828",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-06T06:31:35Z",
+      "side": 1,
+      "message": "Got it, I will do this. In addition, MTK recommends that the charging voltage should not be kept at 9v, which there will be risk to damage the battery. Therefore, Kodama　project still needs API mt6370_charger_profile_override to adjust the charge voltage during charging and prevent overheat.",
+      "parentUuid": "54bb436c_a7ea82e5",
+      "revId": "39495ed78f3f334005f123f68d8f1d70cd015498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
