@@ -316,7 +316,9 @@ static const struct option_container cmd_line_options[] = {
 	{{"version", no_argument, NULL, 'v'},
 	 "Report this utility version"},
 	{{"wp", no_argument, NULL, 'w'},
-	 "Get the current wp setting"}
+	 "Get the current wp setting"},
+	{{"manufacture_state", optional_argument, NULL, 'X'},
+	 "[state]%get/set manufacturing state primary seed"}
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -2088,6 +2090,84 @@ static void process_sn_inc_rma(struct transfer_descriptor *td,
 	}
 }
 
+/* Get/Set the primary seed of the info1 manufacture state. */
+static void process_manufacture_state(struct transfer_descriptor *td,
+				      const char *manufacture_seed_str)
+{
+	uint8_t manufacture_seed[32];
+	uint8_t response_seed[32];
+	size_t seed_size = sizeof(manufacture_seed);
+	size_t response_size = sizeof(manufacture_seed);
+	size_t i;
+	int rv;
+
+	if (!manufacture_seed_str) {
+		rv = send_vendor_command(td, VENDOR_CC_MANUFACTURE_INFO, NULL,
+					 0, response_seed, &response_size);
+		if (rv) {
+			fprintf(stderr, "Error sending vendor command %d\n",
+				rv);
+			exit(update_error);
+		}
+		printf("Manufacture seed: ");
+		for (i = 0; i < response_size; i++)
+			printf("%02x", response_seed[i]);
+		printf("\n");
+		return;
+	}
+	if (seed_size * 2 != strlen(manufacture_seed_str)) {
+		printf("Invalid seed %s\n", manufacture_seed_str);
+		exit(update_error);
+	}
+
+	for (i = 0; i < seed_size; i++) {
+		int nibble;
+		char c;
+
+		c = manufacture_seed_str[2 * i];
+		nibble = from_hexascii(c);
+		if (nibble < 0) {
+			fprintf(stderr,	"Error: Non hex character in seed %c\n",
+				c);
+			exit(update_error);
+		}
+		manufacture_seed[i] = nibble << 4;
+
+		c = manufacture_seed_str[2 * i + 1];
+		nibble = from_hexascii(c);
+		if (nibble < 0) {
+			fprintf(stderr,	"Error: Non hex character in seed %c\n",
+				c);
+			exit(update_error);
+		}
+		manufacture_seed[i] |= nibble;
+	}
+
+	printf("Setting seed: %s\n", manufacture_seed_str);
+	rv = send_vendor_command(td, VENDOR_CC_MANUFACTURE_INFO,
+				 manufacture_seed, seed_size,
+				 response_seed, &response_size);
+	if (rv == VENDOR_RC_NOT_ALLOWED) {
+		if (response_size != seed_size) {
+			fprintf(stderr, "Unexpected response.\n");
+			exit(update_error);
+		}
+		for (i = 0; i < response_size; i++) {
+			if (response_seed[i] != manufacture_seed[i]) {
+				fprintf(stderr, "Seed set differently.\n");
+				exit(update_error);
+			}
+		}
+		printf("Seed matches. Nothing to do.\n");
+		return;
+	}
+	if (rv) {
+		fprintf(stderr, "Error sending vendor command %d\n", rv);
+		exit(update_error);
+	}
+	printf("Updated manufacture seed.\n");
+}
+
 /*
  * Retrieve the RMA authentication challenge from the Cr50, print out the
  * challenge on the console, then prompt the user for the authentication code,
@@ -2498,6 +2578,8 @@ int main(int argc, char *argv[])
 	int show_fw_ver = 0;
 	int rma = 0;
 	const char *rma_auth_code;
+	int get_manufacture_info = 0;
+	const char *manufacture_seed_str;
 	int corrupt_inactive_rw = 0;
 	struct board_id bid;
 	enum board_id_action bid_action;
@@ -2672,6 +2754,10 @@ int main(int argc, char *argv[])
 		case 'v':
 			report_version();  /* This will call exit(). */
 			break;
+		case 'X':
+			get_manufacture_info = 1;
+			manufacture_seed_str = optarg;
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -2714,6 +2800,7 @@ int main(int argc, char *argv[])
 	    !ccd_unlock &&
 	    !corrupt_inactive_rw &&
 	    !get_flog &&
+	    !get_manufacture_info &&
 	    !factory_mode &&
 	    !password &&
 	    !rma &&
@@ -2787,6 +2874,8 @@ int main(int argc, char *argv[])
 	if (bid_action != bid_none)
 		process_bid(&td, bid_action, &bid, show_machine_output);
 
+	if (get_manufacture_info)
+		process_manufacture_state(&td, manufacture_seed_str);
 	if (rma)
 		process_rma(&td, rma_auth_code);
 
