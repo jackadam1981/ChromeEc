@@ -24,7 +24,7 @@ static int bh1730_convert_to_lux(uint32_t data0_1)
 	uint16_t data1 = data0_1 >> 16;
 	uint32_t d0_1k = data0 * 1000;
 	uint32_t d1_1k = data1 * 1000;
-	uint32_t d_temp = d1_1k / d0_1k;
+	uint32_t d_temp = d1_1k / data0;
 	uint32_t d_lux;
 
 	if (data0 == 0)
