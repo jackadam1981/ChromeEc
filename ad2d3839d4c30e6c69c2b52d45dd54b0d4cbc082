@@ -22,6 +22,30 @@
       "revId": "ad2d3839d4c30e6c69c2b52d45dd54b0d4cbc082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d55aa0_7f7d485b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-08-06T13:15:21Z",
+      "side": 1,
+      "message": "ok, i verify pass with plug in SDP, will do bc12 workaround about detect three times",
+      "parentUuid": "6d35c4d3_df489149",
+      "range": {
+        "startLine": 997,
+        "startChar": 0,
+        "endLine": 997,
+        "endChar": 15
+      },
+      "revId": "ad2d3839d4c30e6c69c2b52d45dd54b0d4cbc082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
