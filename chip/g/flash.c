@@ -42,6 +42,7 @@
 #include "board_id.h"
 #include "console.h"
 #include "cryptoc/util.h"
+#include "extension.h"
 #include "flash.h"
 #include "flash_log.h"
 #include "registers.h"
@@ -50,6 +51,7 @@
 #include "timer.h"
 #include "watchdog.h"
 
+#define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
 /* Mutex to prevent concurrent accesses to flash engine. */
@@ -460,8 +462,73 @@ void flash_open_ro_window(uint32_t offset, size_t size_b)
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
 }
 
-#ifdef CR50_RELAXED
+#ifdef CR50_DEV
+/*
+ * The seed is the first 32 bytes of the manufacture state space. That is all
+ * we care about. We can ignore the rest of the manufacture state.
+ */
+#define ENDORSEMENT_SEED_SIZE 32
 
+static enum vendor_cmd_rc vc_endorsement_seed(enum vendor_cmd_cc code,
+					      void *buf,
+					      size_t input_size,
+					      size_t *response_size)
+{
+	uint8_t endorsement_seed[ENDORSEMENT_SEED_SIZE];
+	int rv = VENDOR_RC_SUCCESS;
+	int is_erased = 1;
+	int set_seed = input_size == ENDORSEMENT_SEED_SIZE;
+	int i;
+	uint32_t *p;
+	int offset;
+
+	*response_size = 0;
+	if (input_size && !set_seed) {
+		CPRINTS("Invalid seed");
+		return VENDOR_RC_BOGUS_ARGS;
+	}
+
+	flash_info_read_enable(0, 2048);
+
+	/* Read the endorsement key seed. */
+	p = (uint32_t *)endorsement_seed;
+	for (i = 0; i < (ENDORSEMENT_SEED_SIZE / sizeof(*p)); i++) {
+		offset = FLASH_INFO_MANUFACTURE_STATE_OFFSET + i * sizeof(*p);
+		if (flash_physical_info_read_word(offset, p + i) !=
+		    EC_SUCCESS) {
+			CPRINTS("Failed to read word %d!", i);
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
+		if (p[i] != 0xffffffff)
+			is_erased = 0;
+	}
+
+	if (!input_size || !is_erased) {
+		if (!is_erased && set_seed) {
+			CPRINTS("Endorsement key seed is already set!");
+			rv = VENDOR_RC_NOT_ALLOWED;
+		}
+		*response_size = ENDORSEMENT_SEED_SIZE;
+		memcpy(buf, endorsement_seed, *response_size);
+		return rv;
+	}
+
+	memcpy(endorsement_seed, buf, input_size);
+	CPRINTS("Setting seed.");
+
+	flash_info_write_enable(0, 2048);
+	if (flash_info_physical_write(FLASH_INFO_MANUFACTURE_STATE_OFFSET,
+				      sizeof(endorsement_seed),
+				      (char *)endorsement_seed) != EC_SUCCESS) {
+		CPRINTS("Failed write endorsement seed!");
+		rv = VENDOR_RC_INTERNAL_ERROR;
+	}
+	flash_info_write_disable();
+	return rv;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_ENDORSEMENT_SEED, vc_endorsement_seed);
+#endif
+#ifdef CR50_RELAXED
 static int command_erase_flash_info(int argc, char **argv)
 {
 	int i;
