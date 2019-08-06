@@ -759,6 +759,11 @@ DECLARE_CONSOLE_COMMAND(pe, command_pe,
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+uint8_t get_usb_pd_mux_cable_type(int port)
+{
+	return cable[port].type;
+}
+
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
