@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46f0be6b_8035b966",
+        "filename": "board/treeya/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-06T20:15:22Z",
+      "side": 1,
+      "message": "Please remove this (not needed for treeya) and just use GPIO_BAT_LED_1/2_L directly.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "b0242eea0b456bb8618c476eb0236e4da7663e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b216a6f1_5cd1fd6c",
+        "filename": "board/treeya/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-06T20:15:22Z",
+      "side": 1,
+      "message": "Delete this comment, since treeya has added power LED.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "b0242eea0b456bb8618c476eb0236e4da7663e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
