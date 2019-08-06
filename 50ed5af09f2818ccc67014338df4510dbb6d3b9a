@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8d2281d_03cf03ad",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-06T21:50:44Z",
+      "side": 1,
+      "message": "I know we read the board id in ccd_config_init which happens during HOOK_INIT at HOOK_PRIO_DEFAULT. \n\nCan we change this to at least HOOK_PRIO_DEFAULT -1 to make sure info1 access is setup before that?\n\nCan we do this in flash_pre_init instead?",
+      "range": {
+        "startLine": 569,
+        "startChar": 49,
+        "endLine": 569,
+        "endChar": 66
+      },
+      "revId": "50ed5af09f2818ccc67014338df4510dbb6d3b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
