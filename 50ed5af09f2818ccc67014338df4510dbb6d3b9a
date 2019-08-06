@@ -22,6 +22,30 @@
       "revId": "50ed5af09f2818ccc67014338df4510dbb6d3b9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f77043_996096ad",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-06T22:36:54Z",
+      "side": 1,
+      "message": "yes, flash_pre_init is the perfect place for this, moved.",
+      "parentUuid": "b8d2281d_03cf03ad",
+      "range": {
+        "startLine": 569,
+        "startChar": 49,
+        "endLine": 569,
+        "endChar": 66
+      },
+      "revId": "50ed5af09f2818ccc67014338df4510dbb6d3b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
