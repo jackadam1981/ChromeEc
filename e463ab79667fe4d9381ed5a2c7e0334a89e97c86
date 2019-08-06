@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf64737b_385bca46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-06T14:44:49Z",
+      "side": 1,
+      "message": "This TEST line should be on the previous CL, then you can mark it as +1 verified",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 72
+      },
+      "revId": "e463ab79667fe4d9381ed5a2c7e0334a89e97c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
