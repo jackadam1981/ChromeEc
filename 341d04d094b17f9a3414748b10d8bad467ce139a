@@ -22,6 +22,30 @@
       "revId": "341d04d094b17f9a3414748b10d8bad467ce139a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124d4abe_9d24876a",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-06T05:49:54Z",
+      "side": 1,
+      "message": "Indeed, these lines can be removed.",
+      "parentUuid": "8b2dad9b_5208e322",
+      "range": {
+        "startLine": 340,
+        "startChar": 2,
+        "endLine": 341,
+        "endChar": 20
+      },
+      "revId": "341d04d094b17f9a3414748b10d8bad467ce139a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
