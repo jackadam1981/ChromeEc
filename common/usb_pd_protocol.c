@@ -2148,6 +2148,7 @@ static void pd_vdm_send_state_machine(int port)
 
 		if (is_sop_prime_ready(port, pd[port].data_role,
 							     pd[port].flags)) {
+			header &= ~(BIT(5) | BIT(8));
 			res = pd_transmit(port, TCPC_TX_SOP_PRIME, header,
 					  pd[port].vdo_data);
 			/*
@@ -2157,6 +2158,11 @@ static void pd_vdm_send_state_machine(int port)
 			 * pd flow remains intact.
 			 */
 			if (res < 0) {
+				header = PD_HEADER(PD_DATA_VENDOR_DEF,
+					pd[port].power_role,
+					pd[port].data_role, pd[port].msg_id,
+					(int)pd[port].vdo_count,
+					pd_get_rev(port), 0);
 				pd[port].vdo_data[0] =
 					VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
 				res = pd_transmit(port, TCPC_TX_SOP, header,
