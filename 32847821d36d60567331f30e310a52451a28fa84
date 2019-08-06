@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "424dbbc2_3cfc30b0",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2019-08-06T11:52:33Z",
+      "side": 1,
+      "message": "Just as reminder (TODO):\nI think this is too much dependent to init/platform configuration,\n\nmaybe we need to think to something that automatically notices the irq level, based on the interrupt configuration, and report fifo data availability accordingly",
+      "revId": "32847821d36d60567331f30e310a52451a28fa84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da4a2e0_c63a8065",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2019-08-06T11:52:33Z",
+      "side": 1,
+      "message": "the power mode should never change at this point so we could also remove it",
+      "revId": "32847821d36d60567331f30e310a52451a28fa84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
