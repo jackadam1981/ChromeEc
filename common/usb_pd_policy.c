@@ -760,6 +760,11 @@ static void disable_transmit_sop_prime(int port)
 	cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
 }
 
+uint8_t get_usb_pd_mux_cable_type(int port)
+{
+	return cable[port].type;
+}
+
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
