@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26db3eb1_5b94bfbc",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-07T17:35:18Z",
+      "side": 1,
+      "message": "I copy/pasted the code from hatch. So what they had is what I went with.  I can adjust this if you would like.",
+      "parentUuid": "38938ec0_2d0b383c",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b060ab5a_596c22a1",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-07T17:08:15Z",
       "side": 1,
       "message": "If you know the source of these numbers, it would be good to comment in the source.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc4baf9_4e34f978",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-07T17:35:18Z",
+      "side": 1,
+      "message": "again... copied from the same place and included all 0 comments from that source. :-)",
+      "parentUuid": "b060ab5a_596c22a1",
       "range": {
         "startLine": 190,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1810ffb5_e7f33d81",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-07T17:35:18Z",
+      "side": 1,
+      "message": "there are a number of users of the FAN API, which defines this as not being a const. Do you want me to change this system wide and does it belong on this issue?",
+      "parentUuid": "9b0dc464_86b93f9f",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 6
+      },
+      "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2c9febd_b85643fa",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3e0bdf1a_c75760b0",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-07T17:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2c9febd_b85643fa",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 28
+      },
+      "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2adbba69_dc4fca00",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1b4ffb_bafee112",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-07T17:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adbba69_dc4fca00",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
