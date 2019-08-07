@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83b68d85_e596a789",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-07T17:21:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163582b2_a7311209",
+      "range": {
+        "startLine": 320,
+        "startChar": 49,
+        "endLine": 320,
+        "endChar": 52
+      },
+      "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ea3aee_1a1947f3",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
