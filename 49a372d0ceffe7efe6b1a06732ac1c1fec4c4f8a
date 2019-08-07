@@ -22,6 +22,30 @@
       "revId": "49a372d0ceffe7efe6b1a06732ac1c1fec4c4f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e54d6f9_826c64ee",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-07T22:49:51Z",
+      "side": 1,
+      "message": "The set mode is used to set both client mode and to set host mode. Setting client mode doesn\u0027t give any useful info regarding the closing of the D+/D- switches. It\u0027s the result of the bc1.2 detection that has useful info and that\u0027s already being logged.",
+      "parentUuid": "f0a658ae_05aba132",
+      "range": {
+        "startLine": 324,
+        "startChar": 4,
+        "endLine": 324,
+        "endChar": 52
+      },
+      "revId": "49a372d0ceffe7efe6b1a06732ac1c1fec4c4f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
