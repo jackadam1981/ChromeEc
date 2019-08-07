@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1431843c_251dc7f4",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-07T18:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6c2d39_1568edf3",
+      "range": {
+        "startLine": 552,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 33
+      },
+      "revId": "4de7f1b2357bc1448f5959aad81e058cfed96ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dde076a_f4299a2a",
         "filename": "chip/g/flash.c",
         "patchSetId": 1
