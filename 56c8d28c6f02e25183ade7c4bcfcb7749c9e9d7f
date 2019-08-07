@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e36612e_16f3781c",
+        "filename": "include/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-07T15:31:03Z",
+      "side": 1,
+      "message": "I still think EXTERN_IF is clearer. Wording things with a negative makes the reader have to think just a bit harder.\n\nAnyone else have comments on the name?",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 380,
+        "endChar": 21
+      },
+      "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
