@@ -33,6 +33,24 @@
       "revId": "188d2c7bdde30f31f044b03e726ff282a242f3d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fba1213_d652c031",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-07T01:06:22Z",
+      "side": 1,
+      "message": "I didn\u0027t get it, isn\u0027t this board-dependent and include/config.h is for all boards?",
+      "parentUuid": "96b20e0e_f8d7f749",
+      "revId": "188d2c7bdde30f31f044b03e726ff282a242f3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
