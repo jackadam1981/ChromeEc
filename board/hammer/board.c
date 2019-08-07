@@ -256,7 +256,7 @@ void board_touchpad_reset(void)
 #endif
 }
 
-#if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW)
+#if defined(CONFIG_KEYBOARD_TABLET_MODE_SWITCH) && defined(SECTION_IS_RW)
 static void board_tablet_mode_change(void)
 {
 	/*
