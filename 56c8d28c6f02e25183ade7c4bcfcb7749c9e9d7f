@@ -22,6 +22,30 @@
       "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed824cf_9626e4dc",
+        "filename": "include/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-07T15:35:56Z",
+      "side": 1,
+      "message": "\u0027extern\u0027 is an implementation detail used to cause the error when the variable goes used, not the purpose of the macro.\n\nrspangler@ seemed to be OK with STATIC_IF_NOT from the bug comments.",
+      "parentUuid": "2e36612e_16f3781c",
+      "range": {
+        "startLine": 380,
+        "startChar": 8,
+        "endLine": 380,
+        "endChar": 21
+      },
+      "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
