@@ -4,6 +4,7 @@
  */
 
 #include "adc.h"
+#include "chip/stm32/adc_chip.h"
 #include "gpio.h"
 #include "timer.h"
 
@@ -91,6 +92,7 @@ int board_get_version(void)
 		mv = adc_read_channel(ADC_BOARD_ID);
 
 	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+	adc_disable();
 
 	for (i = 0; i < BOARD_VERSION_COUNT; ++i) {
 		if (mv < kukui_boards[i].expect_mv + THRESHOLD_MV) {
