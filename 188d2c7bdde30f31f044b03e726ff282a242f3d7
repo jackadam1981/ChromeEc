@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e198638_712bb04a",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-07T00:49:49Z",
+      "side": 1,
+      "message": "Just enable the option when CONFIG_ROLLBACK_SECRET_SIZE is set?",
+      "revId": "188d2c7bdde30f31f044b03e726ff282a242f3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b20e0e_f8d7f749",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-07T00:49:49Z",
+      "side": 1,
+      "message": "Move this to include/config.h",
+      "revId": "188d2c7bdde30f31f044b03e726ff282a242f3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
