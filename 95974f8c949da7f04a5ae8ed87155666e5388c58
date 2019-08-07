@@ -70,6 +70,30 @@
       "revId": "95974f8c949da7f04a5ae8ed87155666e5388c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9353bfc_9c8fe916",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-07T04:53:27Z",
+      "side": 1,
+      "message": "It\u0027s done on the parent CL(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1725383). We will pay attention to this that the \"copy\" is not a good copy anymore, thanks!",
+      "parentUuid": "64093a0e_f09a921e",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "95974f8c949da7f04a5ae8ed87155666e5388c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
