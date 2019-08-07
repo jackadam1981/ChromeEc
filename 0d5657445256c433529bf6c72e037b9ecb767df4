@@ -81,6 +81,24 @@
       "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5081706_7758b703",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T19:31:10Z",
+      "side": 1,
+      "message": "so, if this is one of mutually exclusive options, what is the point or continuing processing?\n\nIf there are other places where a mutually exclusive option handler does not call exit() - those places need to be fixed, we should not be adding more.",
+      "parentUuid": "267ae701_d1c79440",
+      "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
