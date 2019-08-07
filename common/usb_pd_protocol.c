@@ -5378,7 +5378,11 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 				PD_CTRL_RESP_ROLE_USB_COMM : 0) |
 			((pd[p->port].flags & PD_FLAGS_PARTNER_EXTPOWER) ?
 				PD_CTRL_RESP_ROLE_EXT_POWERED : 0);
+#ifndef CONFIG_USB_MUX_POLARITY_UNINVERTED
 		r_v2->polarity = pd[p->port].polarity;
+#else
+		r_v2->polarity = 0;
+#endif
 
 		if (debug_level > 0)
 			strzcpy(r_v2->state,
