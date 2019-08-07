@@ -51,6 +51,24 @@
       "revId": "188d2c7bdde30f31f044b03e726ff282a242f3d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b56905_2a8bf170",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-07T01:20:06Z",
+      "side": 1,
+      "message": "Something like this:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/188d2c7bdde30f31f044b03e726ff282a242f3d7/include/config.h#4777\n\nEnable CONFIG_ALWAYS_MEMSET if ROLLBACK_SECRET_SIZE is set.",
+      "parentUuid": "3fba1213_d652c031",
+      "revId": "188d2c7bdde30f31f044b03e726ff282a242f3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
