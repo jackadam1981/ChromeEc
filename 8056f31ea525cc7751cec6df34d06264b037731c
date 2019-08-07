@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee233e12_9615e58b",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-07T02:59:41Z",
+      "side": 1,
+      "message": "Please don\u0027t have duplicate ports here. You only have 2 real ports.",
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9414cb61_e8779de6",
         "filename": "board/kodama/board.c",
         "patchSetId": 11
