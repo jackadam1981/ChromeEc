@@ -20,10 +20,29 @@
 #define FLASH_DMA_START ((uint32_t) &__flash_dma_start)
 #define FLASH_DMA_CODE __attribute__((section(".flash_direct_map")))
 
+#ifdef CONFIG_IT83XX_FLASH_IS_KGD
+/* KGD page program command  */
+#define FLASH_CMD_PAGE_WRITE          0x02
+/* KGD sector erase command (erase size is 4KB) */
+#define FLASH_CMD_SECTOR_ERASE        0x20
+/* erase size of sector is 4KB */
+#define FLASH_SECTOR_ERASE_SIZE       0x00001000
+/* protect bank size is equal to erase size of sector */
+#undef CONFIG_FLASH_BANK_SIZE
+#define CONFIG_FLASH_BANK_SIZE        FLASH_SECTOR_ERASE_SIZE
+/* erase bank size is equal to erase size of sector */
+#undef CONFIG_FLASH_ERASE_SIZE
+#define CONFIG_FLASH_ERASE_SIZE       FLASH_SECTOR_ERASE_SIZE
+/* ideal write size */
+#undef CONFIG_FLASH_WRITE_IDEAL_SIZE
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE 256
+#else
+/* Sector erase size is 1KB */
 #define FLASH_SECTOR_ERASE_SIZE       0x00000400
 
 /* Flash sector erase (1K bytes) command */
 #define FLASH_CMD_SECTOR_ERASE 0xD7
+#endif
 /* Write status register */
 #define FLASH_CMD_WRSR         0x01
 /* Write disable */
@@ -34,6 +53,12 @@
 #define FLASH_CMD_RS           0x05
 /* Auto address increment programming */
 #define FLASH_CMD_AAI_WORD     0xAD
+
+#ifdef CONFIG_IT83XX_FLASH_IS_KGD
+#define FLASH_CMD_WRITE        FLASH_CMD_PAGE_WRITE
+#else
+#define FLASH_CMD_WRITE        FLASH_CMD_AAI_WORD
+#endif
 
 #define FLASH_TEXT_START ((uint32_t) &__flash_text_start)
 /* The default tag index of immu. */
@@ -249,16 +274,38 @@ void FLASH_DMA_CODE dma_flash_cmd_erase(int addr, int cmd)
 	dma_flash_follow_mode_exit();
 }
 
-void FLASH_DMA_CODE dma_flash_cmd_aai_write(int addr, int wlen, uint8_t *wbuf)
+void FLASH_DMA_CODE dma_flash_cmd_write(int addr, int wlen, uint8_t *wbuf)
 {
-	int i;
-	uint8_t aai_write[] = {FLASH_CMD_AAI_WORD, ((addr >> 16) & 0xFF),
+	int i = 0;
+	uint8_t flash_write[] = {FLASH_CMD_WRITE, ((addr >> 16) & 0xFF),
 				((addr >> 8) & 0xFF), (addr & 0xFF)};
 
 	/* enter EC-indirect follow mode */
 	dma_flash_follow_mode();
-	/* send aai word command */
-	dma_flash_transaction(sizeof(aai_write), aai_write, 0, NULL, 0);
+	/* send flash write command (aai word or page program) */
+	dma_flash_transaction(sizeof(flash_write), flash_write, 0, NULL, 0);
+#ifdef CONFIG_IT83XX_FLASH_IS_KGD
+	do {
+		/* send data byte */
+		dma_flash_write_dat(wbuf[i++]);
+		addr++;
+		if (i % 256) {
+			dma_flash_fsce_high();
+			/* make sure busy bit cleared. */
+			dma_flash_cmd_read_status(FLASH_SR_BUSY,
+							FLASH_SR_NO_BUSY);
+			/* re-send write command */
+			flash_write[1] = (addr >> 16) & 0xff;
+			flash_write[2] = (addr >>  8) & 0xff;
+			flash_write[3] = addr & 0xff;
+			dma_flash_transaction(sizeof(flash_write), flash_write,
+				0, NULL, 0);
+		}
+	} while (i < wlen);
+	dma_flash_fsce_high();
+	/* make sure busy bit cleared. */
+	dma_flash_cmd_read_status(FLASH_SR_BUSY, FLASH_SR_NO_BUSY);
+#else
 	for (i = 0; i < wlen; i += 2) {
 		dma_flash_write_dat(wbuf[i]);
 		dma_flash_write_dat(wbuf[i + 1]);
@@ -267,8 +314,9 @@ void FLASH_DMA_CODE dma_flash_cmd_aai_write(int addr, int wlen, uint8_t *wbuf)
 		dma_flash_cmd_read_status(FLASH_SR_BUSY, FLASH_SR_NO_BUSY);
 		/* resend aai word command without address field */
 		if ((i + 2) < wlen)
-			dma_flash_transaction(1, aai_write, 0, NULL, 0);
+			dma_flash_transaction(1, flash_write, 0, NULL, 0);
 	}
+#endif
 	/* exit EC-indirect follow mode */
 	dma_flash_follow_mode_exit();
 }
@@ -306,10 +354,10 @@ int FLASH_DMA_CODE dma_flash_verify(int addr, int size, const char *data)
 	return EC_SUCCESS;
 }
 
-void FLASH_DMA_CODE dma_flash_aai_write(int addr, int wlen, const char *wbuf)
+void FLASH_DMA_CODE dma_flash_write(int addr, int wlen, const char *wbuf)
 {
 	dma_flash_cmd_write_enable();
-	dma_flash_cmd_aai_write(addr, wlen, (uint8_t *)wbuf);
+	dma_flash_cmd_write(addr, wlen, (uint8_t *)wbuf);
 	dma_flash_cmd_write_disable();
 }
 
@@ -406,7 +454,7 @@ int FLASH_DMA_CODE flash_physical_write(int offset, int size, const char *data)
 	 */
 	interrupt_disable();
 
-	dma_flash_aai_write(offset, size, data);
+	dma_flash_write(offset, size, data);
 	dma_reset_immu((offset + size) >= IMMU_TAG_INDEX_BY_DEFAULT);
 	ret = dma_flash_verify(offset, size, data);
 
@@ -440,7 +488,7 @@ int FLASH_DMA_CODE flash_physical_erase(int offset, int size)
 	 */
 	interrupt_disable();
 
-	/* Always use sector erase command (1K bytes) */
+	/* Always use sector erase command (1K or 4K bytes) */
 	for (; size > 0; size -= FLASH_SECTOR_ERASE_SIZE) {
 		dma_flash_erase(offset, FLASH_CMD_SECTOR_ERASE);
 		offset += FLASH_SECTOR_ERASE_SIZE;
