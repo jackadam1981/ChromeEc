@@ -16,6 +16,24 @@
       "revId": "cfe91387c3c7de717be39760e07dce7f8fe1654f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6934e51d_540725c8",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-07T15:27:42Z",
+      "side": 1,
+      "message": "The dcrypto_p256_permuted_blinded_copy should be modified to do the safe copying since it is similar in the sense to the cp8w but with randomized copy order. I will patch in or wait until your CL is merged (whichever comes first) and then fix the dcrypto_p256_permuted_blinded_copy. Right now the function internally uses cp8w which makes it compliant but defeats the purposes of permuted copy.",
+      "parentUuid": "b9068bb9_133722c1",
+      "revId": "cfe91387c3c7de717be39760e07dce7f8fe1654f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
