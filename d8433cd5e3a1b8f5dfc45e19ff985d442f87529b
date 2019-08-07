@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "40a35dca_41e5d5ea",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-07T23:01:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebc72cb3_1e1ab5c7",
+      "range": {
+        "startLine": 1501,
+        "startChar": 0,
+        "endLine": 1503,
+        "endChar": 0
+      },
+      "revId": "d8433cd5e3a1b8f5dfc45e19ff985d442f87529b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fa152ec_040e6a0d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "d8433cd5e3a1b8f5dfc45e19ff985d442f87529b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "423791b3_c3994fcf",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-07T23:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85da8376_ef2c4a4e",
+      "range": {
+        "startLine": 1540,
+        "startChar": 0,
+        "endLine": 1543,
+        "endChar": 3
+      },
+      "revId": "d8433cd5e3a1b8f5dfc45e19ff985d442f87529b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
