@@ -11,8 +11,18 @@
 #include "usb_mux.h"
 #include "util.h"
 
-static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
-static int hpd_irq_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+/*
+ * USB PD protocol configures the USB & DP mux state and USB PD policy
+ * configures the HPD mux state. Both states are independent of each other
+ * may differ when the PD role changes when in dock mode.
+ */
+#define USB_PD_MUX_HPD_STATE	(USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ)
+#define USB_PD_MUX_USB_DP_STATE	(USB_PD_MUX_USB_ENABLED | \
+			USB_PD_MUX_DP_ENABLED | USB_PD_MUX_POLARITY_INVERTED | \
+			USB_PD_MUX_SAFE_MODE)
+
+static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_COUNT];
+static int hpd_irq_state[CONFIG_USB_PD_PORT_COUNT];
 
 static int virtual_init(int port)
 {
