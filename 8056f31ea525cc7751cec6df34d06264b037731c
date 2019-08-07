@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e6f0a84_9d8669c2",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-07T02:33:08Z",
+      "side": 0,
+      "message": "We have this pin, I have checked Kodama SCH [https://partnerissuetracker.corp.google.com/issues/136080218#comment4], PC4 pin of EC connects to U6567.8 (BC12_DET_EN) directly, PC4 has configured as GPIO_OUT_LOW mode in gpio.inc, I am confused about PC4 pin re-configured as GPIO_ODR_HIGH, why not keep the same config with gpio.inc?",
+      "parentUuid": "54a303ed_fe8fdde9",
+      "range": {
+        "startLine": 296,
+        "startChar": 17,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d6c61d5_18f9fab4",
         "filename": "board/kodama/board.c",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-07T01:42:35Z",
       "side": 0,
       "message": "don\u0027t you use mt6370 for display bias?",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a75ba2c_265097b8",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-07T02:33:08Z",
+      "side": 0,
+      "message": "I will restore this and remove the condition \u0027if (board_get_version() \u003e\u003d 2)\u0027.",
+      "parentUuid": "6d6c61d5_18f9fab4",
       "range": {
         "startLine": 297,
         "startChar": 0,
