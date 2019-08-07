@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0a658ae_05aba132",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-07T22:45:11Z",
+      "side": 1,
+      "message": "Do you want a print here or in pi3usb9201_set_mode() so that it benefits all mode set?",
+      "range": {
+        "startLine": 324,
+        "startChar": 4,
+        "endLine": 324,
+        "endChar": 52
+      },
+      "revId": "49a372d0ceffe7efe6b1a06732ac1c1fec4c4f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
