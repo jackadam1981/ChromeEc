@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7157804b_1230085a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-07T17:33:19Z",
+      "side": 1,
+      "message": "Where do these updated parameter values come from? This commit message is missing way too much info about the motivation for the change and where the new values are derived from.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7243e8fc_80425d1d",
         "filename": "board/kohaku/board.h",
         "patchSetId": 1
@@ -59,6 +82,29 @@
       "writtenOn": "2019-08-07T15:03:04Z",
       "side": 1,
       "message": "If these aren\u0027t being used, can the #defines be removed?",
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8b5fdb_18fe354c",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-07T17:33:19Z",
+      "side": 1,
+      "message": "Aren\u0027t these changes dependent on https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1739028? If that\u0027s the case then this CL and the one I listed should be in a relation chain. Also, what is the scale factor being applied to change these constants?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
       "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
