@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad0b8080_7e9a7771",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-07T19:28:22Z",
+      "side": 0,
+      "message": "Sounds like NSS being low is the only problem, no?\n\nI don\u0027t think we want to have this fully. In RO there will be no alternate set for SPI, so there does need to be a bunch of GPIO entries to make sure the pins don\u0027t float.",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 51
+      },
+      "revId": "dbe44d30babbd6f3856f379f3808603c2615afe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
