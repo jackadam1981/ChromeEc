@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f78016a4_4209df65",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-07T20:06:04Z",
+      "side": 1,
+      "message": "This is somewhat strange. Cryptoc source files (e.g. cryptoc/util.c) use some standard headers (e.g. stddef.h) but we do not have these headers under cryptoc directory. If we don\u0027t include builtin then the build system cannot find these headers.",
+      "parentUuid": "64f035f7_3cc29fb0",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 34
+      },
+      "revId": "14c2f9fd7524612fe9e8cf834bb3ce1cdacd6f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "597f4995_5b28488c",
         "filename": "common/build.mk",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-07T18:33:04Z",
       "side": 1,
       "message": "Just to be clear. CONFIG_ALWAYS_MEMSET can only be used in RW?\nThere is no way to make this more generic?",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 55
+      },
+      "revId": "14c2f9fd7524612fe9e8cf834bb3ce1cdacd6f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "764dbab9_ea97eb6d",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-07T20:06:04Z",
+      "side": 1,
+      "message": "It\u0027s also enabled in RO in a follow-up CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1731544/3\n\nI\u0027m following the pattern here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/e8dd8120c87f7dc8b8faa61af2b87fed2583f5cb/chip/g/build.mk#236\n\nNot aware of a better way.",
+      "parentUuid": "597f4995_5b28488c",
       "range": {
         "startLine": 248,
         "startChar": 0,
