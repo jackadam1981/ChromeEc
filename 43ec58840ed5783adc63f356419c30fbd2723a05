@@ -36,6 +36,346 @@
     },
     {
       "key": {
+        "uuid": "d28d5121_d04b51a8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "We should also reuse the same debug_level. Maybe make an accessor function that returns the level (since it can be const and non-const)",
+      "parentUuid": "7368ea42_60387f02",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa2330ab_0eb42349",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "Can you add a comment for what DPM stands for please\n\nAlso should we take in a bit number here and have the macro call BIT so all of the callers don\u0027t have to",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701240b4_589afd4a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "why start at one? (can you add a comment)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a9bb2d_abb93e87",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "can we reuse the existing definition of this enum in usb_sm.h?",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4df4d30_f4c5afcc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "what is this for? Please add comments",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d369d4a_145ffff0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "no need to specify this since it is the 0 value (and you are actually only initializing the first ports value anyway.",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 68
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9ca467_60b053de",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "let\u0027s make this an enum",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9725e2d4_cd606c86",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "enum please",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07a50f0_5d235395",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "let\u0027s add more comment here. I have not idea what this is used for. from the above code I am assuming each bit represents something waiting/requested",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed483e7_8f4ab581",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "state time out timer, right?\n\n\"generic\" is too generic :)",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6428b41_07522781",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "needs more comments and enum needs more descriptive values",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16aa58aa_88aee3d7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "reuse the enum from above (comment)",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db08a55f_dcd5259b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "what does am stand for? can we just call this variable policy?",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cd6e0e_96cc2396",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "Can we elaborate what no cap mean? Does it mean that this is the max voltage we can request without getting source caps?",
+      "range": {
+        "startLine": 204,
+        "startChar": 56,
+        "endLine": 204,
+        "endChar": 68
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda209eb_8bb1546d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "can these move into the pe struct? if not why not?",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d70eb5b4_46a0c012",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -93,6 +433,190 @@
     },
     {
       "key": {
+        "uuid": "d3d8bef1_ad982eb0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "we should restart the state machine right after this line, since the call called into with a \nenable \u003d true; we should re-init and run in that call (not no-op and wait for the next call into usbc_policy_engine)",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b87162_16ad8439",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "where is this logic in the spec, I didn\u0027t find it.\n\nI only found to go pe_src_hard_reset_recieved state",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 393,
+        "endChar": 65
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c34e03_b47157ae",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "can this be called outside of the PD task? If so, then let\u0027s sent an event to the PD task like we did for hard reset",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 49
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "473ad799_147d4edc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "if count is 0 then memcpy will behave correctly, so we shouldn\u0027t need this.\n\nCount shouldnt\u0027 be negative, so let\u0027s take an unint16_t instead?",
+      "range": {
+        "startLine": 489,
+        "startChar": 1,
+        "endLine": 489,
+        "endChar": 15
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da04fccb_0567dda0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "since we are in the src startup, shouldn\u0027t this be src? when could this be snk?",
+      "range": {
+        "startLine": 688,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 47
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4cd9ed0_0ed9f265",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "we don\u0027t need this delay on startup, only if we transition to this state from Power role swap",
+      "range": {
+        "startLine": 709,
+        "startChar": 1,
+        "endLine": 710,
+        "endChar": 42
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36289b8d_70fec5db",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "why is the policy engine setting the timeout of the TypeC statemachine? What does this mean?",
+      "range": {
+        "startLine": 712,
+        "startChar": 1,
+        "endLine": 712,
+        "endChar": 32
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a541ed80_fbec225d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "this isn\u0027t the same as a reset. I feel like there might a potential for us to think that the protocol layer reset because it is running, but it never started the reset.\n\nCan we use flags to the protocol layer to signal a reset request and the a reset complete.",
+      "range": {
+        "startLine": 720,
+        "startChar": 5,
+        "endLine": 720,
+        "endChar": 41
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "684b8e49_e90dee0e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -104,6 +628,98 @@
       "writtenOn": "2019-08-07T06:41:09Z",
       "side": 1,
       "message": "It\u0027s not necessary to wait if we\u0027re first starting up. Did you encounter issues with eMarkers not responding in time? I would think that retries would handle it appropriately.",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9308b5ee_7c5cc0c6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "we also need to ensure that a plug is attached before transitioning states\n\"Note: Sources Shall remain in the PE_SRC_Startup state, without sending any Source_Capabilities \nMessages until a\nplug is Attached.\"",
+      "range": {
+        "startLine": 724,
+        "startChar": 2,
+        "endLine": 724,
+        "endChar": 54
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a208b39_39f272ae",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "we shouldn\u0027t transition to this state (from pr_src_startup) unless the device policy manager request it, or are we saying that the Device policy manger is alway requesting it (because that is us)?\n\nre: 8.3.3.22.3.1 PE_SRC_VDM_Identity_Request State",
+      "range": {
+        "startLine": 732,
+        "startChar": 11,
+        "endLine": 732,
+        "endChar": 30
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97680d5f_f4f227bd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "I didn\u0027t find this wait in the spec anywhere\n\n---\n\nwell, this timer should be handeled from the TypeC layer and we should expose a function \"int tc_vconn_stable(int port)\" since this is the TypeC layer\u0027s concern",
+      "range": {
+        "startLine": 747,
+        "startChar": 1,
+        "endLine": 752,
+        "endChar": 55
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef9c455_570125ea",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "if we were in PE_SRC_Startup because of a power role swap, then we are supposed to go to pe_src_discovery instead of pe_src_send_capabilities",
+      "range": {
+        "startLine": 778,
+        "startChar": 41,
+        "endLine": 778,
+        "endChar": 65
+      },
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -126,6 +742,75 @@
         "startChar": 2,
         "endLine": 2161,
         "endChar": 10
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7abc4684_ef3a3c02",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3919,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "why not make this 3 separate states? You have a little statemachine within this one state. Let\u0027s break it out into is own state and reuse the statemachine framework for this",
+      "range": {
+        "startLine": 3904,
+        "startChar": 0,
+        "endLine": 3919,
+        "endChar": 31
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a43f54c_b7e62bcb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4020,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "these could be the sub state run functions, and the remainder of this function that is common can be the super state run.",
+      "range": {
+        "startLine": 4019,
+        "startChar": 1,
+        "endLine": 4020,
+        "endChar": 24
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74662ddd_8a2eccce",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-07T19:40:06Z",
+      "side": 1,
+      "message": "this can never get call because ret || !ret is always true",
+      "range": {
+        "startLine": 4248,
+        "startChar": 6,
+        "endLine": 4250,
+        "endChar": 21
       },
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
