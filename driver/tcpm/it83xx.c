@@ -497,6 +497,7 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 			/* Enable tcpc receive SOP' packet */
 			IT83XX_USBPD_PDMSR(port) |= USBPD_REG_MASK_SOPP_ENABLE;
+		ccprints("en vconn");
 	}
 	/* Turn on/off vconn power switch. */
 	board_pd_vconn_ctrl(port,
@@ -518,6 +519,7 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 		 * (ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
 		 */
 		it83xx_enable_vconn(port, enable);
+		ccprints("dis vconn");
 	}
 
 	return EC_SUCCESS;

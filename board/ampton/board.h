@@ -26,6 +26,8 @@
 
 #define CONFIG_LED_COMMON
 
+/* #define CONFIG_CMD_USB_PD_CABLE */
+
 /* Sensors */
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR
