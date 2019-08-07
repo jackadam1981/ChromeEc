@@ -46,6 +46,75 @@
       "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b1abd1_9223f7c7",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-07T17:24:05Z",
+      "side": 1,
+      "message": "Why is this needed? This check is already done in the common code.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518a44c8_ea3e22fd",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-07T17:24:05Z",
+      "side": 1,
+      "message": "Why not just add this as a case in the switch statement below? Also, do you not want blue to ever be on, even for HW validation?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81cf7a7_305b0e51",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-07T17:24:05Z",
+      "side": 1,
+      "message": "The code this is replacing will only turn one of the 2 possible colors on at a time. This however, could allow both red and green to be on at the same time. That doesn\u0027t seem like it\u0027s equivalent.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
