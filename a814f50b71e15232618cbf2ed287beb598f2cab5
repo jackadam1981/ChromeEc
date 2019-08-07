@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "9b0dc464_86b93f9f",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-07T17:12:46Z",
+      "side": 1,
+      "message": "Should be const?\nAlso, change array size to unspecified, and add BUILD_ASSERT.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 6
+      },
+      "revId": "a814f50b71e15232618cbf2ed287beb598f2cab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2c9febd_b85643fa",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 1
