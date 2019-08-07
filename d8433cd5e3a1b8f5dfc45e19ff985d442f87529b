@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3754551c_f99d171d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T21:29:11Z",
+      "side": 1,
+      "message": "nit: no need to copy if devids are both zero",
+      "range": {
+        "startLine": 1501,
+        "startChar": 0,
+        "endLine": 1503,
+        "endChar": 0
+      },
+      "revId": "d8433cd5e3a1b8f5dfc45e19ff985d442f87529b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa152ec_040e6a0d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T21:29:11Z",
+      "side": 1,
+      "message": "why not print this inline with the rest of the string?",
+      "range": {
+        "startLine": 1540,
+        "startChar": 0,
+        "endLine": 1543,
+        "endChar": 3
+      },
+      "revId": "d8433cd5e3a1b8f5dfc45e19ff985d442f87529b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
