@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4978766f_93e39f17",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-07T03:17:08Z",
+      "side": 1,
+      "message": "Hi Alexandru, I have done this in another CL, link as below.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1730377/13/board/kodama/board.c#63",
+      "parentUuid": "ee233e12_9615e58b",
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9414cb61_e8779de6",
         "filename": "board/kodama/board.c",
         "patchSetId": 11
