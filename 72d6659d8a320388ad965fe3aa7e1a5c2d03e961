@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47348a02_f70fd77e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-07T01:55:04Z",
+      "side": 1,
+      "message": "Please use new Cq-Depend syntax:\n\ne.g.\n\n  Cq-Depend: chrome-internal:1054910, chromium:1731360",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5e0dab_2351faf1",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-07T01:55:04Z",
+      "side": 1,
+      "message": "It seems that both batteries have the same configs?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d643a6a_4fbfc3cb",
+        "filename": "board/kodama/build.mk",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-07T01:55:04Z",
+      "side": 1,
+      "message": "nit:\n\nboard-y\u003dbattery.o board.o led.o",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
