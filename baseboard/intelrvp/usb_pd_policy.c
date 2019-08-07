@@ -199,12 +199,18 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
 static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 
+#ifdef CONFIG_USB_MUX_VIRTUAL
+#define BOARD_SVDM_SAFE_DP_MODE TYPEC_MUX_SAFE
+#else
+#define BOARD_SVDM_SAFE_DP_MODE TYPEC_MUX_NONE
+#endif
+
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
-	usb_mux_set(port, TYPEC_MUX_NONE,
+	usb_mux_set(port, BOARD_SVDM_SAFE_DP_MODE,
 		USB_SWITCH_CONNECT, pd_get_polarity(port));
 }
 
