@@ -15,7 +15,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX) || \
+	defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
 /* Store each port last message id of received packet */
 static uint8_t message_id_last[USBPD_PORT_COUNT];
 
@@ -47,8 +48,10 @@ static int consume_repeat_message(int port)
 	else if (message_id_last[port] != msg_id)
 		message_id_last[port] = msg_id;
 	else if (message_id_last[port] == msg_id) {
+#ifdef CONFIG_USB_PD_TCPM_ITE83XX
 		/* If clear this bit, USBPD receives next packet */
 		IT83XX_USBPD_MRSR(port) = USBPD_REG_MASK_RX_MSG_VALID;
+#endif
 		CPRINTS("receive repetitive msg id: p[%d] id=%d", port, msg_id);
 		ret = 1;
 	}
@@ -181,7 +184,8 @@ void intc_cpu_int_group_12(void)
 		espi_vw_interrupt();
 		break;
 #endif
-#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX) || \
+	defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
 	case IT83XX_IRQ_USBPD0:
 		chip_pd_irq(USBPD_PORT_A);
 		break;
@@ -189,7 +193,12 @@ void intc_cpu_int_group_12(void)
 	case IT83XX_IRQ_USBPD1:
 		chip_pd_irq(USBPD_PORT_B);
 		break;
-#endif /* CONFIG_USB_PD_TCPM_ITE83XX */
+#ifdef CONFIG_USB_PD_TCPM_ITE83XX_V2
+	case IT83XX_IRQ_USBPD2:
+		chip_pd_irq(USBPD_PORT_C);
+		break;
+#endif
+#endif
 	default:
 		break;
 	}
