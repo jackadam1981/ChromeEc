@@ -117,6 +117,24 @@
       "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723676b8_d07b730d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T20:45:23Z",
+      "side": 1,
+      "message": "so, there is one handler which does the right thing, let\u0027s make sure the new one does it too.\n\ninvoking handlers like exit(handler()) is a good idea to address the case when the handler has multiple return statements.\n\nYou are right that gsctool is not consistent, it should be cleaned up (in a separate patch).",
+      "parentUuid": "65bc0d63_d3634f67",
+      "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
