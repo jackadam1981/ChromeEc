@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ecbe5c2_61d6035a",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T17:55:59Z",
+      "side": 1,
+      "message": "how is this better than having file scope\n\nstatic const volatile struct DMEM_ecc *dmem_ecc \u003d (const struct DMEM_ecc *)GREG32_ADDR(CRYPTO, DMEM_DUMMY);\n\nI think requiring to call dmem_read() just to get a pointer is confusing for the reader. Also, the name dmem_read name seems to indicate that the function reads something.",
+      "range": {
+        "startLine": 793,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 0
+      },
+      "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eececc16_4a90e95d",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T17:55:59Z",
+      "side": 1,
+      "message": "cp8w and cp1w are not writing into an arbitrary addresses any more, they explicitly operate on the chip\u0027s register file and each invocation now includes DMEM_OFFSET(x) as the first parameter.\n\nIf you wrapped it in an accessor macro it would make the code better readable:\n\n#define CP{1,8}W(a, b) cp8w(DMEM_OFFSET(a), (b))\n\ncp8w() still could call cp1w{) directly",
+      "range": {
+        "startLine": 805,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 41
+      },
+      "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b84687de_aafbff90",
+        "filename": "util/signer/ec_RW-manifest-dev.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T17:55:59Z",
+      "side": 1,
+      "message": "this file does not belong in this patch.\n\nJust curious, why did you need to modify the version number, is timestamp not enough to guarantee that the later images always runs?",
+      "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
