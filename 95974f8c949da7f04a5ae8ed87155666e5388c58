@@ -46,6 +46,30 @@
       "revId": "95974f8c949da7f04a5ae8ed87155666e5388c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64093a0e_f09a921e",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-07T03:13:25Z",
+      "side": 1,
+      "message": "Please do this change on the parent CL. It\u0027s been fixed on krane for a few days now, so the \"copy\" is not a good copy anymore.",
+      "parentUuid": "2344871c_3e2cd625",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "95974f8c949da7f04a5ae8ed87155666e5388c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
