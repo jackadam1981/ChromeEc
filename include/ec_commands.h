@@ -4244,6 +4244,7 @@ struct __ec_align1 ec_params_usb_pd_mux_info {
 #define USB_PD_MUX_POLARITY_INVERTED (1 << 2) /* CC line Polarity inverted */
 #define USB_PD_MUX_HPD_IRQ           (1 << 3) /* HPD IRQ is asserted */
 #define USB_PD_MUX_HPD_LVL           (1 << 4) /* HPD level is asserted */
+#define USB_PD_MUX_SAFE_MODE         (1 << 5) /* DP is in safe mode */
 
 struct __ec_align1 ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
