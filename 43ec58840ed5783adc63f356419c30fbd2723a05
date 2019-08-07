@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c9e6c78_5e560c27",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "Why is there an empty line here?",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7368ea42_60387f02",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "No need to hardcode this here?",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70eb5b4_46a0c012",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "duplicate",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "103422bb_f01a2aaa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "duplicate",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fee33af4_62dab064",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 6
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684b8e49_e90dee0e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "It\u0027s not necessary to wait if we\u0027re first starting up. Did you encounter issues with eMarkers not responding in time? I would think that retries would handle it appropriately.",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cab531f_8a8b90c7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-07T06:41:09Z",
+      "side": 1,
+      "message": "DEBUG_PRINTF ?",
+      "range": {
+        "startLine": 2161,
+        "startChar": 2,
+        "endLine": 2161,
+        "endChar": 10
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
