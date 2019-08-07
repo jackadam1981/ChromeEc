@@ -63,6 +63,24 @@
       "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267ae701_d1c79440",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-07T19:10:00Z",
+      "side": 1,
+      "message": "I took a look at other functions, it looks like they return without exiting. I think they ensure only one option is expected by the check in 2836. I added get_endorsement_seed there.",
+      "parentUuid": "f3ea3aee_1a1947f3",
+      "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
