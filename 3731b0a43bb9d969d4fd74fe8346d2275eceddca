@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e60b9d8_b15a96ec",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-07T00:33:33Z",
+      "side": 1,
+      "message": "Make static, and if we are keeping local state here, could make a struct for it and move chip_info here too, out of ioexpander_config_t.",
+      "revId": "3731b0a43bb9d969d4fd74fe8346d2275eceddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e27ad4_db8a6f99",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-07T00:33:33Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "revId": "3731b0a43bb9d969d4fd74fe8346d2275eceddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994196ed_3ff74ca2",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-07T00:33:33Z",
+      "side": 1,
+      "message": "Should be |\u003d",
+      "revId": "3731b0a43bb9d969d4fd74fe8346d2275eceddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86d23208_5e7ee52d",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-07T00:33:33Z",
+      "side": 1,
+      "message": "nit: fix indentation",
+      "revId": "3731b0a43bb9d969d4fd74fe8346d2275eceddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab08026_a4ac0e6a",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-07T00:33:33Z",
+      "side": 1,
+      "message": "Please add comment explaining these, and relation to CONFIG_USB_PD_TCPM_NCT38XX.",
+      "revId": "3731b0a43bb9d969d4fd74fe8346d2275eceddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd12da3_e0cc4e00",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-07T00:33:33Z",
+      "side": 1,
+      "message": "nit: \"Enable\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "3731b0a43bb9d969d4fd74fe8346d2275eceddca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
