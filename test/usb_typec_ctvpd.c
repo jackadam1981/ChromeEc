@@ -15,6 +15,7 @@
 #include "util.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_test_util.h"
+#include "usb_sm_checks.h"
 #include "vpd_api.h"
 
 #define PORT0	0
@@ -1513,6 +1514,21 @@ void run_test(void)
 	RUN_TEST(test_ctvpd_behavior_case5);
 	RUN_TEST(test_ctvpd_behavior_case6);
 #endif
+
+	/* Do basic state machine sanity checks last. */
+        RUN_TEST(test_tc_no_parent_cycles);
+        RUN_TEST(test_tc_no_empty_state);
+        RUN_TEST(test_tc_all_states_named);
+
+	/*
+	 * Since you have to include TypeC layer when adding PE layer, the
+	 * PE test would have the same build dependencies, so go ahead and test
+	 * te PE statemachine here so we don't have to create another test exe
+	 */
+        RUN_TEST(test_pe_no_parent_cycles);
+        RUN_TEST(test_pe_no_empty_state);
+        RUN_TEST(test_pe_all_states_named);
+
 	test_print_result();
 }
 
