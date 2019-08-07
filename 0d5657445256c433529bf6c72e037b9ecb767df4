@@ -99,6 +99,24 @@
       "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65bc0d63_d3634f67",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-07T20:17:16Z",
+      "side": 1,
+      "message": "grepping for exit in gsctool shows show_headers_versions is the only process function that exits if there is not an error and it does it like this.\n\nexit(show_headers_versions(data, show_machine_output));\n\ngsctool -v is the only place where there is an exit(0);\n\nAs gsctool is written I would say processing functions don\u0027t exit in the end with 0 exit code.",
+      "parentUuid": "e5081706_7758b703",
+      "revId": "0d5657445256c433529bf6c72e037b9ecb767df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
