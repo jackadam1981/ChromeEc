@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efe4935e_4506825a",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T19:16:43Z",
+      "side": 1,
+      "message": "I still think that this overcomplicates things:\n\nthe vendor command handler does not have to spend time/code space figuring out if the user is trying to set the same seed. The logic should be simple: if seed space is not erased, and the user is trying to write it - this is an error.",
+      "range": {
+        "startLine": 504,
+        "startChar": 5,
+        "endLine": 504,
+        "endChar": 28
+      },
+      "revId": "2298198e25c20c183c80360d9081f65561def471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c24b93_57d7e542",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T19:16:43Z",
+      "side": 1,
+      "message": "why setting a value in the return packet in this case, how is this different from the rest of the errors?\n\nIn general, the single byte error value returned in the buffer should be from the EC_ERROR... enum. The VENDOR_RC_... value gets into the return packet header from the return value of the handler.",
+      "range": {
+        "startLine": 513,
+        "startChar": 2,
+        "endLine": 513,
+        "endChar": 27
+      },
+      "revId": "2298198e25c20c183c80360d9081f65561def471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b5a45d_bd6e58be",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T19:16:43Z",
+      "side": 1,
+      "message": "there is no need in \u0027else\u0027 if the preceding \u0027if\u0027 ends with a return statement.",
+      "range": {
+        "startLine": 515,
+        "startChar": 3,
+        "endLine": 515,
+        "endChar": 7
+      },
+      "revId": "2298198e25c20c183c80360d9081f65561def471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4150c74_664cd6d4",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T19:16:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we should print anything if there is no problem (and maybe even if there is): gsctool output should allow to tell what went wrong.",
+      "range": {
+        "startLine": 521,
+        "startChar": 1,
+        "endLine": 521,
+        "endChar": 12
+      },
+      "revId": "2298198e25c20c183c80360d9081f65561def471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
