@@ -22,6 +22,30 @@
       "revId": "21fd3e2a09fd19031e02ea3c2007022d241d86ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a12230e8_dcb85a5b",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-07T09:28:54Z",
+      "side": 1,
+      "message": "Sorry yes I guess it should be (though everything seems to work ok without, for now.. :)",
+      "parentUuid": "3142ed88_4b7b3d34",
+      "range": {
+        "startLine": 764,
+        "startChar": 1,
+        "endLine": 764,
+        "endChar": 16
+      },
+      "revId": "21fd3e2a09fd19031e02ea3c2007022d241d86ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
