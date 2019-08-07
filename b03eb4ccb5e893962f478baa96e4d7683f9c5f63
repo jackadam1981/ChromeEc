@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4e5ec64_d1e39804",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-07T15:41:20Z",
+      "side": 1,
+      "message": "Should this be a #define instead?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "b03eb4ccb5e893962f478baa96e4d7683f9c5f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a42bb08_9379f662",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4671,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-07T15:41:20Z",
+      "side": 1,
+      "message": "Does this need to include CONFIG_ACCEL_LIS2DWL?",
+      "revId": "b03eb4ccb5e893962f478baa96e4d7683f9c5f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
