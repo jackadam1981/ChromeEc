@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62d563f4_f3b39d28",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T00:03:09Z",
+      "side": 1,
+      "message": "let\u0027s wait for the other patch to land and rebase this on top.",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 532,
+        "endChar": 33
+      },
+      "revId": "c9982499731be0c70d294a6228b591c79d59e9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b19256b_9fd2a50f",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T00:03:09Z",
+      "side": 1,
+      "message": "you can break here, or, better yet, you can be checking values in the loop above, between lines 546 and 547",
+      "range": {
+        "startLine": 547,
+        "startChar": 3,
+        "endLine": 547,
+        "endChar": 17
+      },
+      "revId": "c9982499731be0c70d294a6228b591c79d59e9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc8c466_13ca10a0",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T00:03:09Z",
+      "side": 1,
+      "message": "I thought I had a comment on this in the previous round, but looks like it  did not get published.\n\nWhat is the logic here, why do you care if it is erased or not if this is a get request?\n\nshould it be \n\nif (!set_seed) {\n... copy seed into output buffer\nreturn rv/\n}\n\nif (!is_erased) {\n  .return \u0027already set\u0027 error\n}",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 2
+      },
+      "revId": "c9982499731be0c70d294a6228b591c79d59e9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66676f39_623823a0",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T00:03:09Z",
+      "side": 1,
+      "message": "there is no need to copy, you can pass buf directly to flash_info_physical_write()",
+      "range": {
+        "startLine": 560,
+        "startChar": 1,
+        "endLine": 560,
+        "endChar": 43
+      },
+      "revId": "c9982499731be0c70d294a6228b591c79d59e9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb3084d_47fa76a1",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-07T00:03:09Z",
+      "side": 1,
+      "message": "let\u0027s drop this message.",
+      "range": {
+        "startLine": 561,
+        "startChar": 1,
+        "endLine": 561,
+        "endChar": 26
+      },
+      "revId": "c9982499731be0c70d294a6228b591c79d59e9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
