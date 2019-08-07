@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54a303ed_fe8fdde9",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-07T01:42:35Z",
+      "side": 0,
+      "message": "you don\u0027t have this pin?",
+      "range": {
+        "startLine": 296,
+        "startChar": 17,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6c61d5_18f9fab4",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-07T01:42:35Z",
+      "side": 0,
+      "message": "don\u0027t you use mt6370 for display bias?",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

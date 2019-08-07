@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d4c32b6_b9365532",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-07T01:42:35Z",
+      "side": 1,
+      "message": "Only need two entries, e.g.:\n\n  {\"typec\", 0, 400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},\n  {\"other\", 1, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "95974f8c949da7f04a5ae8ed87155666e5388c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
