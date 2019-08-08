@@ -22,6 +22,30 @@
       "revId": "dbe44d30babbd6f3856f379f3808603c2615afe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26dcf438_033fe8a2",
+        "filename": "chip/mchp/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T23:25:39Z",
+      "side": 0,
+      "message": "I think I\u0027m removing the equivalent in the STM32F412 codebase: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1734010/1/chip/stm32/dma-stm32f4.c#b147\n\nWas there another one I missed?",
+      "parentUuid": "7a5b41f7_271c716d",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "dbe44d30babbd6f3856f379f3808603c2615afe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
