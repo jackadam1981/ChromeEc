@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0babb95d_11bf9ad0",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T00:00:22Z",
+      "side": 1,
+      "message": "Since everywhere you call fp_enable_match_secret_for_finger, you immediately assign the argument before calling it, I think it would be more readable and less error prone if you move the assignment of \"template_with_secret\" inside \"fp_enable_match_secret_for_finger\".",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 50
+      },
+      "revId": "edcbafd1f6c342c90816ce86421449af90aa44ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15023e85_2e21f5ce",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T00:00:22Z",
+      "side": 1,
+      "message": "Since these variables are so closely aligned, I think it would be more readable if we put them together in a struct:\n\n  struct positive_match_secret_state {\n    int8_t template_index;\n    bool readable;\n    timestamp_t deadline;\n  };\n\nand then just have a global:\n\n struct positive_match_secret positive_match_secret_state;",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "edcbafd1f6c342c90816ce86421449af90aa44ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c208f560_99a6ce61",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T00:00:22Z",
+      "side": 1,
+      "message": "With the struct change, you can add an arg that is a pointer to the struct. We will just have one global struct, but it makes the unit testing of the function a little cleaner because you can just pass in a dummy struct and not have to rely on the global struct state.",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 51
+      },
+      "revId": "edcbafd1f6c342c90816ce86421449af90aa44ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72aeba27_bd3bb91e",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T00:00:22Z",
+      "side": 1,
+      "message": "With the struct change, you can add an arg that is a pointer to the struct. We will just have one global struct, but it makes the unit testing of the function a little cleaner because you can just pass in a dummy struct and make sure the values are set correctly.",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "edcbafd1f6c342c90816ce86421449af90aa44ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b024f3_3f3d8353",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5747,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T00:00:22Z",
+      "side": 1,
+      "message": "I think norvez@ mentioned at some point in earlier review (maybe since we changed the implemetnation) that we can just make this \"positive_match_secret\" so it\u0027s not ambiguous.",
+      "range": {
+        "startLine": 5747,
+        "startChar": 9,
+        "endLine": 5747,
+        "endChar": 25
+      },
+      "revId": "edcbafd1f6c342c90816ce86421449af90aa44ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
