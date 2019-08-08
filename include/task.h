@@ -229,6 +229,27 @@ void task_clear_fp_used(void);
 void task_enable_all_tasks(void);
 
 /**
+ * Enable a task.
+ */
+
+static inline void task_enable_task(task_id_t tskid)
+{
+	extern uint32_t tasks_enabled;
+
+	tasks_enabled |= BIT(tskid);
+}
+
+/**
+ * Disable a task.
+ */
+static inline void task_disable_task(task_id_t tskid)
+{
+	extern uint32_t tasks_enabled;
+
+	tasks_enabled &= ~BIT(tskid);
+}
+
+/**
  * Enable an interrupt.
  */
 void task_enable_irq(int irq);

@@ -208,7 +208,7 @@ static uint32_t tasks_ready = BIT(TASK_ID_HOOKS);
  * status, in order for HOOK_INIT to complete before other tasks.
  * task_enable_all_tasks() will open the flood gates.
  */
-static uint32_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
+uint32_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
 
 static int start_called;  /* Has task swapping started */
 
