@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b2a9fc_fc3fbd4e",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-08T20:11:53Z",
+      "side": 1,
+      "message": "These addresses don\u0027t match up with the binary bits in the comments.\nLooking at the datasheet, I think ADDR0 should be 0x18 and ADDR1 should be 0x19.",
+      "revId": "53760d5c964983341c6dd6c7d43502ce187c48cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
