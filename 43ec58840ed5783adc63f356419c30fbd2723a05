@@ -680,6 +680,30 @@
     },
     {
       "key": {
+        "uuid": "5893167e_ed974f88",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "I think it\u0027s the latter. I don\u0027t see a clear demarcation of the DPM in our stacks.",
+      "parentUuid": "6a208b39_39f272ae",
+      "range": {
+        "startLine": 732,
+        "startChar": 11,
+        "endLine": 732,
+        "endChar": 30
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97680d5f_f4f227bd",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -772,6 +796,46 @@
     },
     {
       "key": {
+        "uuid": "94c32eea_8f206c6c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3942,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "Why aren\u0027t the other commands handled in here as well?",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5665a4f8_e02ef131",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3979,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "The DiscoverIdentity SVDM request doesn\u0027t have any VDOs, so this is probably unnecessary.",
+      "range": {
+        "startLine": 3971,
+        "startChar": 0,
+        "endLine": 3979,
+        "endChar": 3
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a43f54c_b7e62bcb",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -789,6 +853,74 @@
         "endLine": 4020,
         "endChar": 24
       },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93091a93_e5544f57",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "The check here for either TX completion or message received seems like it could be problematic since it seems like TX completion is the actual event of interest here. e.g. could the PRL indicate that a message was received prior to sending the VDM? If so, would the PE mistakenly think that the message was sent?",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bbcb866_a6bd79d2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4024,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "nit: \"Restore roles and set response timer.\"",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bcfd9cc_fed6b529",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4106,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "When the protocol layer sets the PE_FLAGS_MSG_RECEIVED flag, is it guaranteed to be a SVDM response? Should we check that it actually is a VDM instead of a control message like DR_Swap or something?",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b92b83e_049c503c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4188,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-08T01:37:18Z",
+      "side": 1,
+      "message": "Maybe we should also mask out bit 5 since it\u0027s reserved?",
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
