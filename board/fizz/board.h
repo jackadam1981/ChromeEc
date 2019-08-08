@@ -189,7 +189,6 @@ enum button {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
-int board_get_battery_soc(void);
 
 #endif /* !__ASSEMBLER__ */
 
