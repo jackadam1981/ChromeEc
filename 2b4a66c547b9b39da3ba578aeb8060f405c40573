@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44a478a0_150b9d24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T02:03:08Z",
+      "side": 1,
+      "message": "I have updated comment.",
+      "parentUuid": "7157804b_1230085a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7243e8fc_80425d1d",
         "filename": "board/kohaku/board.h",
         "patchSetId": 1
@@ -154,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "120b9769_7c6a054d",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T02:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfdaf128_60794630",
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8b5fdb_18fe354c",
         "filename": "board/kohaku/board.h",
         "patchSetId": 1
@@ -189,6 +231,30 @@
       "side": 1,
       "message": "I think this CL has no dependency with https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1739028. CL:1739028 is related all devices that has hb1733.\nIf we don\u0027t use scale factor, BH1730_LUXTH1_1K will 0.27 instead of 270.",
       "parentUuid": "4d8b5fdb_18fe354c",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9176090_737cd15e",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T02:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ada76b_505dbd58",
       "range": {
         "startLine": 73,
         "startChar": 0,
