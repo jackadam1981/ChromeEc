@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd7bf73_7220996c",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-08T16:17:33Z",
+      "side": 1,
+      "message": "Not sure why you\u0027d need to add this, doesn\u0027t the \"#undef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT\" already take care of this for you? Seems like it should.",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
