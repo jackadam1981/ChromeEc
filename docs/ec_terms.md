@@ -2,7 +2,7 @@
 
 ## Glossary
 
-*   **ACCEL - Accelerometer**<a name="accel"></a>
+*   **ACCEL - Accelerometer**{#accel}
 
     A sensor that measures acceleration, typically over 3-axis. Nominally
     provides information about the orientation of a device. On Chromebook 2-in-1
