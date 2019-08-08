@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5497b6bf_9b0d0fab",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9e6c78_5e560c27",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7368ea42_60387f02",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "2d7bf02b_d04cd6c2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "This was left in by accident. Maybe we should change the name of this macro but currently it\u0027s only used to print the state names.",
+      "parentUuid": "d28d5121_d04b51a8",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa2330ab_0eb42349",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -74,6 +110,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fd869c_d487dfec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa2330ab_0eb42349",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "3919dea4_9218416a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "See Table 6-25 Structured VDM Header in the PD spec. A value of 0 is reserved and the commands start at 1.",
+      "parentUuid": "701240b4_589afd4a",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50a9bb2d_abb93e87",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -120,6 +204,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5202ce_e383640d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Yes I\u0027m using them. Just forgot to remove this enum.",
+      "parentUuid": "50a9bb2d_abb93e87",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -146,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "769091f4_6e1aea6c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4df4d30_f4c5afcc",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d369d4a_145ffff0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -166,6 +298,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02dea667_236e738b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d369d4a_145ffff0",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 68
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +348,30 @@
     },
     {
       "key": {
+        "uuid": "94fcf1fa_cfd3ad7e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b9ca467_60b053de",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9725e2d4_cd606c86",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -212,6 +392,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94d4a8f_1f0c8401",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9725e2d4_cd606c86",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +442,30 @@
     },
     {
       "key": {
+        "uuid": "6ce48cd9_e88e1861",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a07a50f0_5d235395",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ed483e7_8f4ab581",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -258,6 +486,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ba77b3_e1cf0f2c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed483e7_8f4ab581",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -284,6 +536,30 @@
     },
     {
       "key": {
+        "uuid": "716fa1be_d4941365",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6428b41_07522781",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16aa58aa_88aee3d7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -304,6 +580,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93528b27_333d8b5e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16aa58aa_88aee3d7",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -330,6 +630,30 @@
     },
     {
       "key": {
+        "uuid": "82fba9bf_9b4ebcb6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db08a55f_dcd5259b",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cd6e0e_96cc2396",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -350,6 +674,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bcf0f38_ea6431ff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9cd6e0e_96cc2396",
+      "range": {
+        "startLine": 204,
+        "startChar": 56,
+        "endLine": 204,
+        "endChar": 68
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -376,6 +724,30 @@
     },
     {
       "key": {
+        "uuid": "c6583234_16a5e998",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda209eb_8bb1546d",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d70eb5b4_46a0c012",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -393,6 +765,24 @@
     },
     {
       "key": {
+        "uuid": "a5021a3d_c56a23f7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70eb5b4_46a0c012",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "103422bb_f01a2aaa",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -407,6 +797,24 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ec915b_7e678704",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103422bb_f01a2aaa",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -456,6 +864,30 @@
     },
     {
       "key": {
+        "uuid": "4f736889_ca590b57",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "I agree and restructured the code.",
+      "parentUuid": "d3d8bef1_ad982eb0",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16b87162_16ad8439",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -476,6 +908,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e3a0ff5_e6df993a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "8.3.3.2.10 PE_SRC_Hard_Reset_Received State\nThe Policy Engine Shall transition from any state to the PE_SRC_Hard_Reset_Received state when:\n• Hard Reset Signaling is detected.\n\n8.3.3.3.9 PE_SNK_Transition_to_default State\nThe Policy Engine Shall transition from any state to PE_SNK_Transition_to_default state when:\n• Hard Reset Signaling is detected.",
+      "parentUuid": "16b87162_16ad8439",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 393,
+        "endChar": 65
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -502,6 +958,30 @@
     },
     {
       "key": {
+        "uuid": "81196ec4_8d8f0003",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "No. This is only called from the protocol layer. Actually all the pe_* functions are called from the PD task only.",
+      "parentUuid": "c7c34e03_b47157ae",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 49
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "473ad799_147d4edc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -525,6 +1005,30 @@
     },
     {
       "key": {
+        "uuid": "a725b2ae_7b8d1170",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "473ad799_147d4edc",
+      "range": {
+        "startLine": 489,
+        "startChar": 1,
+        "endLine": 489,
+        "endChar": 15
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da04fccb_0567dda0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -545,6 +1049,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824165a5_30c30ff5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "da04fccb_0567dda0",
+      "range": {
+        "startLine": 688,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 47
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -617,6 +1145,30 @@
     },
     {
       "key": {
+        "uuid": "c4286b45_39ad6ebf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a541ed80_fbec225d",
+      "range": {
+        "startLine": 720,
+        "startChar": 5,
+        "endLine": 720,
+        "endChar": 41
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "684b8e49_e90dee0e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -654,6 +1206,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9598f2cd_96a3c10c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "The Policy Engine or PD in general is only active in the Type-C attached states. See Attached.SRC or Attached.SNK in usb_tc_drp_acc_trysrc.c",
+      "parentUuid": "9308b5ee_7c5cc0c6",
+      "range": {
+        "startLine": 724,
+        "startChar": 2,
+        "endLine": 724,
+        "endChar": 54
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -704,6 +1280,30 @@
     },
     {
       "key": {
+        "uuid": "675cf348_66e1a4f5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Yeah, I was a little confused by this too. Sometimes the EC acts as the DPM and sometimes it\u0027s the AP. In this case, it\u0027s the EC.",
+      "parentUuid": "5893167e_ed974f88",
+      "range": {
+        "startLine": 732,
+        "startChar": 11,
+        "endLine": 732,
+        "endChar": 30
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97680d5f_f4f227bd",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -750,6 +1350,30 @@
     },
     {
       "key": {
+        "uuid": "505c81a2_09ee41a9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Could you show me where this is stated in the spec? From my understanding, the PE_SRC_Startup state always transition to the pe_src_send_capablilites state. But the PE_SNK_Startup state transitions to PE_SNK_Discovery.",
+      "parentUuid": "eef9c455_570125ea",
+      "range": {
+        "startLine": 778,
+        "startChar": 41,
+        "endLine": 778,
+        "endChar": 65
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cab531f_8a8b90c7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -770,6 +1394,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33154596_2307bfe3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "overlooked debug statement. removed.",
+      "parentUuid": "6cab531f_8a8b90c7",
+      "range": {
+        "startLine": 2161,
+        "startChar": 2,
+        "endLine": 2161,
+        "endChar": 10
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -924,6 +1572,24 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae23303_e055f853",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4188,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-08T21:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b92b83e_049c503c",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
