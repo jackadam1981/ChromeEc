@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca8bf331_d41508a9",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-08T07:48:19Z",
+      "side": 1,
+      "message": "Good point, changed, thanks!",
+      "parentUuid": "0ecbe5c2_61d6035a",
+      "range": {
+        "startLine": 793,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 0
+      },
+      "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eececc16_4a90e95d",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6c75e6a1_406942fa",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-08T07:48:19Z",
+      "side": 1,
+      "message": "Nice idea, done, thanks!",
+      "parentUuid": "eececc16_4a90e95d",
+      "range": {
+        "startLine": 805,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 41
+      },
+      "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b84687de_aafbff90",
         "filename": "util/signer/ec_RW-manifest-dev.json",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686947b3_0c53a806",
+        "filename": "util/signer/ec_RW-manifest-dev.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-08T07:48:19Z",
+      "side": 1,
+      "message": "Oops sorry, removed.\n\nYes good question, I\u0027ve been meaning to ask about this. I haven\u0027t quite pinned down the circumstances yet but it seems that sometimes flashing the new image either doesn\u0027t succeed, or the timestamp is not updated.\n\nSince this change doesn\u0027t cause any diff in behavior (if all is working as intended!) I upped the version number to be sure that I was testing what I thought I was.\n\nI\u0027ll dig into this a bit more and send an email with some details.",
+      "parentUuid": "b84687de_aafbff90",
+      "revId": "cb15d19d0c079d26abcfed27736280d15fa91b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
