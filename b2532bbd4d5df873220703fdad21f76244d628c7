@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33d04c8f_44c9ac7f",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-08T18:44:53Z",
+      "side": 1,
+      "message": "nit: \"Store the GPIO_ALERT_MASK_0/1 and chip ID registers locally.\"",
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f5e404_d249881f",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-08T18:44:53Z",
+      "side": 1,
+      "message": "Passing ioex as first param to nct38xx_ioex_check_is_valid() and using \"chip_data[ioex].chip_id\" within nct38xx_ioex_check_is_valid() may make this file simpler overall.",
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4972ef7_c7563a0b",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-08T18:44:53Z",
+      "side": 1,
+      "message": "nit: add newline",
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
