@@ -99,7 +99,7 @@
 
 /* USB configuration */
 #define CONFIG_USB
-#define CONFIG_USB_CONSOLE
+#define CONFIG_USB_CONSOLE_STREAM
 #define CONFIG_USB_I2C
 #define CONFIG_USB_INHIBIT_INIT
 #define CONFIG_USB_SPI

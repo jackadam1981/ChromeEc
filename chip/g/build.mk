@@ -78,6 +78,7 @@ chip-$(CONFIG_WATCHDOG)+=watchdog.o
 
 chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
 chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
+chip-$(CONFIG_USB_CONSOLE_STREAM)+=usb_console_stream.o
 chip-$(CONFIG_USB_HID_KEYBOARD)+=usb_hid_keyboard.o
 chip-$(CONFIG_USB_BLOB)+=blob.o
 chip-$(CONFIG_USB_SPI)+=usb_spi.o
