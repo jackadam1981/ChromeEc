@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ebe737d_d3afea8f",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-08T16:44:51Z",
+      "side": 1,
+      "message": "Remove the ifdef block and modify the macro in include/config.h instead.\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/include/config.h?l\u003d4489",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 41
+      },
+      "revId": "dced9a1ffa7b173b183bc91637f9c0ab4493656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
