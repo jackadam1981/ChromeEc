@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "725081d9_48f62caa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-08T03:23:07Z",
+      "side": 1,
+      "message": "Could you add more context about this CL here?\n\ne.g. why do we need this, and how do you fix this?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "266668d3333b54b1f885766d2f616b78ea9504c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21094070_3e52309c",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-08T03:23:07Z",
+      "side": 1,
+      "message": "*(SORT(.preserved_logs.*))",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "266668d3333b54b1f885766d2f616b78ea9504c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
