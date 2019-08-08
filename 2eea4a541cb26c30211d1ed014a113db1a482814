@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b79fec8a_b0c604fd",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-08T16:05:03Z",
+      "side": 1,
+      "message": "Nothing seems to be using thermal_params: if I delete it the build still succeeds.\nLooks like we want to include thermal.c via CONFIG_THROTTLE_AP, otherwise nothing will actually tell the fans to turn on (unless there is another path I missed?).",
+      "revId": "2eea4a541cb26c30211d1ed014a113db1a482814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
