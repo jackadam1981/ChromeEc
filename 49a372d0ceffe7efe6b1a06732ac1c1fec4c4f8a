@@ -46,6 +46,30 @@
       "revId": "49a372d0ceffe7efe6b1a06732ac1c1fec4c4f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52dcde32_3f8dd197",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-08T21:02:15Z",
+      "side": 1,
+      "message": "oh okay. I was just thinking it might be helpful to know about state changes. Also, if in the future host mode set happens in a different place, that would benefit too. But, we can start with this if this is the only useful place.",
+      "parentUuid": "0e54d6f9_826c64ee",
+      "range": {
+        "startLine": 324,
+        "startChar": 4,
+        "endLine": 324,
+        "endChar": 52
+      },
+      "revId": "49a372d0ceffe7efe6b1a06732ac1c1fec4c4f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
