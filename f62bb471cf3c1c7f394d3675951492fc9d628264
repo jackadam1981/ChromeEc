@@ -22,6 +22,30 @@
       "revId": "f62bb471cf3c1c7f394d3675951492fc9d628264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea6eaeb_677132b3",
+        "filename": "board/kohaku/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-08T01:30:11Z",
+      "side": 1,
+      "message": "Sounds like a good candidate for a followup CL",
+      "parentUuid": "2a1197a5_716847b9",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 28
+      },
+      "revId": "f62bb471cf3c1c7f394d3675951492fc9d628264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
