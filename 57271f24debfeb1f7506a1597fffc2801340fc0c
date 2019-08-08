@@ -22,6 +22,30 @@
       "revId": "57271f24debfeb1f7506a1597fffc2801340fc0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83396aee_1d67424e",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-08T21:54:59Z",
+      "side": 1,
+      "message": "It wasn\u0027t clear to me that the {#id} style anchors were supported as md_browser.py doesn\u0027t recognize them - and neither did the VSCode markdown preview.  gitiles does support {#id} anchors, so I\u0027ll switch to the markdown anchors for readability.",
+      "parentUuid": "6ca05fc6_8a319122",
+      "range": {
+        "startLine": 5,
+        "startChar": 29,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "57271f24debfeb1f7506a1597fffc2801340fc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
