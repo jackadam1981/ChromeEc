@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2a4f4c1_9885f393",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-08T23:41:38Z",
+      "side": 1,
+      "message": "so, what happens to private-cr5x boards which define CONFIG_USB_CONSOLE but do not define CONFIG_STREAM_USB?",
+      "revId": "e0b49d723559bd582bfd673489270c01efe44915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
