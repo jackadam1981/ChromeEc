@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91a45210_bbc8ba96",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-08T22:10:41Z",
+      "side": 1,
+      "message": "Old CL, I know, but now that they\u0027re globally available we should rename those variables with some namespace/prefix.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "325d65d3b08903e7bd3c70d14875cc1dfbf1686d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
