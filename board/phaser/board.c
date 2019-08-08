@@ -300,3 +300,13 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
 }
+
+static void ppc_init_current_limit(void)
+{
+	int p;
+
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++)
+		typec_set_source_current_limit(p, CONFIG_USB_PD_PULLUP);
+}
+
+DECLARE_HOOK(HOOK_INIT, ppc_init_current_limit, HOOK_PRIO_DEFAULT);
