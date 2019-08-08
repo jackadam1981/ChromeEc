@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9d54cd1_c7946ae2",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-08T18:44:42Z",
+      "side": 0,
+      "message": "Also need to remove chip_info from ioex_config[] in zork/baseboard.c to avoid build error.",
+      "revId": "bef4cc466bdca22eb2140c100f9704060c028315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
