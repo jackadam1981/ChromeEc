@@ -70,6 +70,30 @@
       "revId": "dbe44d30babbd6f3856f379f3808603c2615afe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0c8768_d640af7f",
+        "filename": "chip/mchp/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-08T23:37:57Z",
+      "side": 0,
+      "message": "I just forgot to remove those others. Good catch.\n\nIt\u0027s changing the semantics of dma_bytes_done so it should be changed everywhere.",
+      "parentUuid": "4559f07c_f19ab2f5",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "dbe44d30babbd6f3856f379f3808603c2615afe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
