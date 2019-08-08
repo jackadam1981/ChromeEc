@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a4efd6_51bbc752",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-08T17:04:44Z",
+      "side": 1,
+      "message": "Equation #2 has the same variables as #1, just swapping the left and right side and changing \u003c to \u003c\u003d. That wouldn\u0027t make sense; you\u0027re solving for (a\u003cb) \u0026\u0026 (b\u003c\u003da).",
+      "revId": "d9120a895ea0b6d9100e2be0a0ab3fa2be24ad07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
