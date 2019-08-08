@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5b41f7_271c716d",
+        "filename": "chip/mchp/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-08T23:06:55Z",
+      "side": 0,
+      "message": "you do not remove this test in the other codebase, why do you do so here?",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "dbe44d30babbd6f3856f379f3808603c2615afe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
