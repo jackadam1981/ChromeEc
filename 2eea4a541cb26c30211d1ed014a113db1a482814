@@ -16,6 +16,24 @@
       "revId": "2eea4a541cb26c30211d1ed014a113db1a482814",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a33485e_a41d8cb6",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-08T16:23:30Z",
+      "side": 1,
+      "message": "It wasn\u0027t you that missed the path... I didn\u0027t get that connection. I remedied this in another CL.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1741300\nThanks",
+      "parentUuid": "b79fec8a_b0c604fd",
+      "revId": "2eea4a541cb26c30211d1ed014a113db1a482814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
