@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21dc0098_0bfe2f3e",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-08T23:02:22Z",
+      "side": 1,
+      "message": "About reading from the registers here and below. The p256_int members of the register file are sill defined as __packed, does it affect the compiled code?\n\nI checked that the value of rnd here matches the value put in the registers in line 849 above, but am still curious: how does this work, is there a memcpy() copying from the chip into the destination?\n\nDoes the memcpy() ever use byte wide accesses? Maybe memcpy() is optimized to use 4 byte accesses if both source and destination are aligned, I did not verify.",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 853,
+        "endChar": 19
+      },
+      "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
