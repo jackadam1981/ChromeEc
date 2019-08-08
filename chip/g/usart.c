@@ -129,6 +129,8 @@ USB_STREAM_CONFIG(ec_usb,
 		  ec_uart_to_usb)
 #endif
 
+uint8_t ec_comms_uart = UART_EC; /* Set to ~0 to stop ec comms. */
+
 void get_data_from_usb(struct usart_config const *config)
 {
 	struct queue const *uart_out = config->consumer.queue;
@@ -163,6 +165,19 @@ void send_data_to_usb(struct usart_config const *config)
 
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
+		if (ec_comms_uart == uart) {
+			int rv;
+
+			rv = ec_comms_active(uart_in->buffer[tail]);
+			if (rv) {
+				q_room--;
+				if (rv != 1)
+					/* Got some return value. */
+					uartn_write_char(uart, rv);
+				continue;
+			}
+		}
+
 		tail = (tail + 1) & mask;
 		count++;
 	}

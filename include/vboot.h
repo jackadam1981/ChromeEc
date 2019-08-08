@@ -67,7 +67,11 @@ void vboot_main(void);
  */
 int vboot_need_pd_comm(void);
 
-#define CR50_PACKET_MAGIC 0x4345	/* 'EC' in little endian */
+#define CR50_MAGIC_CHAR0 'E'
+#define CR50_MAGIC_CHAR1 'C'
+
+/* 'EC' in little endian */
+#define CR50_PACKET_MAGIC (((CR50_MAGIC_CHAR1) << 8) + (CR50_MAGIC_CHAR0))
 
 struct cr50_comm_packet {
 	uint16_t magic;	/* CR50_PACKET_MAGIC */
@@ -91,5 +95,7 @@ struct cr50_comm_packet {
 #define CR50_COMM_ERROR_CRC		0xe2
 #define CR50_COMM_ERROR_ROLLBACK	0xe3
 #define CR50_COMM_ERROR_TIMEOUT		0xe4
+#define CR50_COMM_ERROR_UNSUPPORTED	0xe5
+#define CR50_COMM_ERROR_SIZE		0xe6
 
 #endif

@@ -73,5 +73,8 @@ void get_data_from_usb(struct usart_config const *config);
 
 /* Helper for UART bitbang mode. */
 extern struct usart_config const ec_uart;
+extern uint8_t ec_comms_uart;
+void check_ec_entering_rw(void);
+
 
 #endif  /* __CROS_FORWARD_UART_H */

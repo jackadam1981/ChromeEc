@@ -273,6 +273,7 @@ void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
 /* Ignore the servo state. */
 void servo_ignore(int enable);
+int ec_comms_active(unsigned char c);
 
 /**
  * Set up a deferred call to update CCD state.

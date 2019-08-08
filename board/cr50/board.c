@@ -784,6 +784,8 @@ static void board_init(void)
 	 * machines run in HOOK_SECOND, which first triggers right after
 	 * HOOK_INIT, not at +1.0 seconds.
 	 */
+
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_ENTERING_RW_RED, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -901,6 +903,7 @@ static void deferred_tpm_rst_isr(void)
 	if (!reboot_request_posted || other_rw_is_inactive()) {
 		/* Reset TPM, no need to wait for completion. */
 		tpm_reset_request(0, 0);
+		check_ec_entering_rw();
 		return;
 	}
 
