@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ec45d93_3a963e35",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "It would be great to have an introduction here, explaining what (and who) this doc is for.",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad4de91_9e2f6875",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "An explanation of what these things actually do would be helpful. Also, an engineer from Maxim and I have both been doing EC work with Maxim\u0027s debug set-up (MAX32660 evaluation kit with OpenOCD and GDB), so it might be worth mentioning that they don\u0027t necessarily *have* to do it this way.",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ea51ea_23fa8f29",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "Why `bloonchipper` here, but `dragonclaw` before this?",
+      "range": {
+        "startLine": 177,
+        "startChar": 22,
+        "endLine": 177,
+        "endChar": 34
+      },
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ebd290_0fcff217",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "Nit: why bash for these blocks, when it\u0027s the on-device console?",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 7
+      },
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5403f4f3_cedd1338",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "Might be worth explaining that this is what we generally call the \"serial console\", just in case it\u0027s not clear from the above.",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edbfa4b_ec9fe52b",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "I\u0027ve found that some vendors aren\u0027t even familiar with Git, never mind Gerrit. For them, I ended up writing an intro doc that takes the approach of \"here\u0027s the absolute basics, now run these commands to make a commit and upload a CL\". I\u0027m not sure that we should encourage quite such a low-understanding approach, but the Gerrit team have these public \"Concepts and Workflows\" presentations for Git [0] and Gerrit [1] which might be good to link to here.\n\n[0]: https://docs.google.com/presentation/d/1IQCRPHEIX-qKo7QFxsD3V62yhyGA9_5YsYXFOiBpgkk/edit\n[1]: https://docs.google.com/presentation/d/1C73UgQdzZDw0gzpaEqIC6SPujZJhqamyqO1XOHjH-uk/edit",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae39fe8_800f77e1",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "It\u0027s kind of unclear what this set of commands does. Maybe add a \"for example, to [do such and such]\" at the end of the previous sentence.",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7480deb3_05385778",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-08T22:22:10Z",
+      "side": 1,
+      "message": "Might be worth mentioning the fix for `arm-none-eabi-gcc` not being found here (crbug.com/992082). Even though it only affects one board, it comes up when they try to run the presubmits before uploading a CL (which require `make buildall -j` to be run).",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
