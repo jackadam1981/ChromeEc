@@ -85,6 +85,7 @@ void usb_spi_board_enable(struct usb_spi_config const *config) {}
 void usb_spi_board_disable(struct usb_spi_config const *config) {}
 #endif  /* !BOARD_WHISKERS */
 
+#ifdef CONFIG_I2C
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"master", I2C_PORT_MASTER, 400,
@@ -95,6 +96,7 @@ const struct i2c_port_t i2c_ports[] = {
 #endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+#endif
 
 #ifdef BOARD_STAFF
 #define KBLIGHT_PWM_FREQ 100 /* Hz */
@@ -243,12 +245,12 @@ int board_has_keyboard_backlight(void)
 /* Reset the touchpad, mainly used to recover it from malfunction. */
 void board_touchpad_reset(void)
 {
-#ifdef BOARD_WHISKERS
+#ifdef GPIO_EN_PP3300_TP
 	gpio_set_level(GPIO_EN_PP3300_TP, 0);
 	msleep(100);
 	gpio_set_level(GPIO_EN_PP3300_TP, 1);
 	msleep(100);
-#else
+#elif defined(GPIO_EN_PP3300_TP_ODL)
 	gpio_set_level(GPIO_EN_PP3300_TP_ODL, 1);
 	msleep(10);
 	gpio_set_level(GPIO_EN_PP3300_TP_ODL, 0);

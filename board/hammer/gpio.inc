@@ -9,10 +9,12 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 #ifdef SECTION_IS_RW
+#if !defined(BOARD_MAGNEMITE)
 GPIO_INT(TOUCHPAD_INT, PIN(B, 8), GPIO_INT_FALLING, touchpad_interrupt)
-#if defined(BOARD_MASTERBALL) || defined(BOARD_WHISKERS)
+#endif /* !BOARD_MAGNEMITE */
+#ifdef CONFIG_TABLET_MODE
 GPIO_INT(TABLET_MODE_L, PIN(B, 11), GPIO_PULL_UP | GPIO_INT_BOTH, hall_sensor_isr)
-#endif /* BOARD_MASTERBALL || BOARD_WHISKERS */
+#endif /* CONFIG_TABLET_MODE */
 #endif /* SECTION_IS_RW */
 
 /* Keyboard inputs */
@@ -59,7 +61,7 @@ GPIO(MASTER_I2C_SDA,		PIN(B, 7), GPIO_INPUT)
 /* TODO(crosbug.com/p/59083): Disable trackpad when appropriate */
 #ifdef BOARD_WHISKERS
 GPIO(EN_PP3300_TP,		PIN(A, 14), GPIO_OUT_HIGH)
-#else
+#elif !defined(BOARD_MAGNEMITE)
 GPIO(EN_PP3300_TP_ODL,		PIN(A, 14), GPIO_OUT_LOW)
 #endif
 
@@ -97,6 +99,8 @@ ALTERNATE(PIN_MASK(B, 0x0c00), 1, MODULE_I2C, 0) /* I2C CHARGER: PB10/11  GPIO_O
 ALTERNATE(PIN_MASK(B, 0x0038), 0, MODULE_SPI_MASTER, 0) /* SPI MASTER:PB3/4/5 */
 #endif
 
+#ifdef CONFIG_I2C
 ALTERNATE(PIN_MASK(B, 0x00c0), 1, MODULE_I2C, 0) /* I2C TOUCHPAD: PB6/7 GPIO_ODR_HIGH */
+#endif
 
 ALTERNATE(PIN_MASK(B, 0x0200), 2, MODULE_PWM, GPIO_PULL_DOWN) /* PWM: PB9 */

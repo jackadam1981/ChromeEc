@@ -87,6 +87,8 @@
 #define CONFIG_USB
 #ifdef BOARD_HAMMER
 #define CONFIG_USB_PID 0x5022
+#elif defined(BOARD_MAGNEMITE)
+#define CONFIG_USB_PID 0x503d
 #elif defined(BOARD_MASTERBALL)
 #define CONFIG_USB_PID 0x503c
 #elif defined(BOARD_STAFF)
@@ -128,6 +130,9 @@
 #ifdef SECTION_IS_RW
 #define USB_IFACE_HID_KEYBOARD	0
 #define USB_IFACE_UPDATE	1
+#ifdef BOARD_MAGNEMITE
+#define USB_IFACE_COUNT		2
+#else /* !BOARD_MAGNEMITE */
 #define USB_IFACE_HID_TOUCHPAD	2
 /* Can be either I2C or SPI passthrough, depending on the board. */
 #define USB_IFACE_I2C_SPI	3
@@ -137,6 +142,7 @@
 #else  /* !(BOARD_WHISKERS && CONFIG_USB_ISOCHRONOUS) */
 #define USB_IFACE_COUNT		4
 #endif  /* BOARD_WHISKERS && CONFIG_USB_ISOCHRONOUS */
+#endif /* !BOARD_MAGNEMITE */
 #else  /* !SECTION_IS_RW */
 #define USB_IFACE_UPDATE	0
 #define USB_IFACE_COUNT		1
@@ -147,6 +153,9 @@
 #define USB_EP_UPDATE		1
 #ifdef SECTION_IS_RW
 #define USB_EP_HID_KEYBOARD	2
+#ifdef BOARD_MAGNEMITE
+#define USB_EP_COUNT		3
+#else /* !BOARD_MAGNEMITE */
 #define USB_EP_HID_TOUCHPAD	3
 /* Can be either I2C or SPI passthrough, depending on the board. */
 #define USB_EP_I2C_SPI		4
@@ -157,6 +166,7 @@
 #else /* !(BOARD_WHISKERS && CONFIG_USB_ISOCHRONOUS) */
 #define USB_EP_COUNT		5
 #endif /* BOARD_WHISKERS && CONFIG_USB_ISOCHRONOUS */
+#endif /* !BOARD_MAGNEMITE */
 #else  /* !SECTION_IS_RW */
 #define USB_EP_COUNT		2
 #endif  /* SECTION_IS_RW */
@@ -197,13 +207,6 @@
 #define CONFIG_USB_HID
 #define CONFIG_USB_HID_KEYBOARD
 #define CONFIG_USB_HID_KEYBOARD_BACKLIGHT
-#define CONFIG_USB_HID_TOUCHPAD
-
-/* Virtual address for touchpad FW in USB updater. */
-#define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
-
-/* Include touchpad FW hashes in image */
-#define CONFIG_TOUCHPAD_HASH_FW
 
 /* Touchpad firmware size and dimension difference */
 #if defined(BOARD_HAMMER) || defined(BOARD_WAND)
@@ -213,6 +216,8 @@
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1018 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 566 /* tenth of mm */
 #define CONFIG_TOUCHPAD_VIRTUAL_SIZE (48*1024)
+#elif defined(BOARD_MAGNEMITE)
+/* No touchpad */
 #elif defined(BOARD_MASTERBALL)
 /* TODO(b:138422450): Insert correct dimensions. */
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3206
@@ -239,6 +244,16 @@
 #error "No touchpad information for board."
 #endif
 
+#ifdef CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X
+#define CONFIG_USB_HID_TOUCHPAD
+
+/* Virtual address for touchpad FW in USB updater. */
+#define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
+
+/* Include touchpad FW hashes in image */
+#define CONFIG_TOUCHPAD_HASH_FW
+#endif
+
 #define CONFIG_KEYBOARD_DEBUG
 #undef CONFIG_KEYBOARD_BOOT_KEYS
 #undef CONFIG_KEYBOARD_RUNTIME_KEYS
@@ -249,17 +264,20 @@
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C, GPIO_F
 
+#if !defined(BOARD_MAGNEMITE)
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0
 #define I2C_PORT_KBLIGHT 0
 #define I2C_PORT_CHARGER 1
+#endif
 
 /* Enable PWM */
 #define CONFIG_PWM
 
 /* Hall sensor for base flip detection. */
-#if defined(BOARD_MASTERBALL) || defined(BOARD_WHISKERS)
+#if defined(BOARD_MAGNEMITE) || defined(BOARD_MASTERBALL) \
+	|| defined(BOARD_WHISKERS)
 #define CONFIG_TABLET_MODE
 #define CONFIG_HALL_SENSOR
 #define HALL_SENSOR_GPIO_L GPIO_TABLET_MODE_L
@@ -280,7 +298,7 @@
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ST
 
-#else  /* !BOARD_WHISKERS */
+#elif !defined(BOARD_MAGNEMITE)  /* !BOARD_WHISKERS */
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
 #define USB_IFACE_I2C USB_IFACE_I2C_SPI
@@ -290,7 +308,7 @@
 #define CONFIG_TOUCHPAD_ELAN
 #define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_MASTER
 #define CONFIG_TOUCHPAD_I2C_ADDR_FLAGS 0x15
-#endif  /* BOARD_WHISKERS */
+#endif  /* !BOARD_MAGNEMITE */
 
 #define CONFIG_CURVE25519
 
