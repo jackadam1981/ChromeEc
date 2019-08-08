@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0e590c5a_f0cd29b9",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T01:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7243e8fc_80425d1d",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a29dab5_b198a203",
         "filename": "board/kohaku/board.h",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "6c7c67d1_709827c9",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T01:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a29dab5_b198a203",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a80d6792_bc2167ae",
         "filename": "board/kohaku/board.h",
         "patchSetId": 1
@@ -85,6 +133,24 @@
       "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdaf128_60794630",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T01:23:40Z",
+      "side": 1,
+      "message": "From IC vendor, to get lux we can use following equation.\nif (DATA1/DATA0\u003c0.26) Lx \u003d ( 1.290 x DATA0 - 2.733 x DATA1 ) / Gain x 102.6 / ITIME_ms\nelse if (DATA1/DATA0\u003c0.55) Lx \u003d ( 0.795 x DATA0 - 0.859 x DATA1 ) / Gain x 102.6 / ITIME_ms\nelse if (DATA1/DATA0\u003c1.09) Lx \u003d ( 0.510 x DATA0 - 0.345 x DATA1 ) / Gain x 102.6 / ITIME_ms\nelse if (DATA1/DATA0\u003c2.13) Lx \u003d ( 0.276 x DATA0 - 0.130 x DATA1 ) / Gain x 102.6 / ITIME_ms\nelse Lx\u003d0\n\nBut in case of Kohaku, we can use two equation. We don\u0027t need 3rd/4th.\nFor other board/chassis, I want to keep define.",
+      "parentUuid": "a80d6792_bc2167ae",
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +174,30 @@
       "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6ada76b_505dbd58",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2019-08-08T01:23:40Z",
+      "side": 1,
+      "message": "I think this CL has no dependency with https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1739028. CL:1739028 is related all devices that has hb1733.\nIf we don\u0027t use scale factor, BH1730_LUXTH1_1K will 0.27 instead of 270.",
+      "parentUuid": "4d8b5fdb_18fe354c",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "2b4a66c547b9b39da3ba578aeb8060f405c40573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
