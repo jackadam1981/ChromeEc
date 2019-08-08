@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6a8c40e_aaaf7157",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2019-08-08T08:26:45Z",
+      "side": 1,
+      "message": "would it be better if we list boards with i2c touchpad, instead of using a negate statement?\n\nOr introduce new variable (e.g.)\n\n  HAS_SPI_TOUCHPAD\n  HAS_I2C_TOUCHPAD\n  NO_TOUCHPAD",
+      "revId": "6125866cc3924ecccbac204f3807554fc90f946d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee35fcf_f514af22",
+        "filename": "board/hammer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2019-08-08T08:26:45Z",
+      "side": 1,
+      "message": "Can we use \"CONFIG_TOUCHPAD\" or \"CONFIG_USB_HID_TOUCHPAD\" here?",
+      "revId": "6125866cc3924ecccbac204f3807554fc90f946d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
