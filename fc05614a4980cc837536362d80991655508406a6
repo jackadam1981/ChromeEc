@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d184c8d0_786bf482",
+        "filename": "chip/g/usb_console_stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-09T20:39:52Z",
+      "side": 1,
+      "message": "if this goal is to have a common module it makes sense write it as a common module and to place it in the common place, then when STM32 decides enable it no chip/g space changes would be required.",
+      "parentUuid": "d18c6be9_c830095e",
+      "revId": "fc05614a4980cc837536362d80991655508406a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a22eba4a_37eebb57",
         "filename": "include/config.h",
         "patchSetId": 2
