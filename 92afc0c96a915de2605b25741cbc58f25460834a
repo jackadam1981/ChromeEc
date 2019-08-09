@@ -46,6 +46,30 @@
       "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b4601a_65fc9ab4",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-09T02:59:21Z",
+      "side": 1,
+      "message": "I also verified that whatever is written in line 849 is properly read back here.\n\nIt would be interesting to know if this chip is not suffering from byte aliasing in the read direction, but this patch does not have to wait I think.",
+      "parentUuid": "09a87f5a_979689b6",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 853,
+        "endChar": 19
+      },
+      "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
