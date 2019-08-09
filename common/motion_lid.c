@@ -257,6 +257,10 @@ static void motion_lid_set_dptf_profile(int reliable)
 
 			debounce_cnt = DPTF_MODE_DEBOUNCE_COUNT;
 			acpi_dptf_set_profile_num(new_prof);
+#ifdef CONFIG_HOSTCMD_EVENTS
+			/* Notify kernel to update DPTF profile */
+			host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+#endif
 			return;
 		}
 	}
