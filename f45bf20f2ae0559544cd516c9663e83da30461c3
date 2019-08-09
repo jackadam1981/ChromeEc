@@ -22,6 +22,30 @@
       "revId": "f45bf20f2ae0559544cd516c9663e83da30461c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6dda910_f799fe64",
+        "filename": "common/mock/rollback_mock.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-08-09T00:37:49Z",
+      "side": 1,
+      "message": "Thanks Yicheng!\nI included compile_time_macros.h to fix this issue.",
+      "parentUuid": "ebde88cf_9f217583",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "f45bf20f2ae0559544cd516c9663e83da30461c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
