@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "229f3281_c2aac46b",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T17:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec45d93_3a963e35",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ad4de91_9e2f6875",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-08T22:22:10Z",
       "side": 1,
       "message": "An explanation of what these things actually do would be helpful. Also, an engineer from Maxim and I have both been doing EC work with Maxim\u0027s debug set-up (MAX32660 evaluation kit with OpenOCD and GDB), so it might be worth mentioning that they don\u0027t necessarily *have* to do it this way.",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11a85f9_cd8fce62",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T17:01:38Z",
+      "side": 1,
+      "message": "Yeah, I wrote this primarily targeting fingerprint vendors (which is more obvious with the updated context I added), but I updated to mention alternatives are available.",
+      "parentUuid": "2ad4de91_9e2f6875",
       "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "9fd1dc75_d9f12154",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T17:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ebd290_0fcff217",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 7
+      },
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5403f4f3_cedd1338",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 11
@@ -99,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "651b01a9_ca09b7ec",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T17:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5403f4f3_cedd1338",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3edbfa4b_ec9fe52b",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 11
@@ -110,6 +188,24 @@
       "writtenOn": "2019-08-08T22:22:10Z",
       "side": 1,
       "message": "I\u0027ve found that some vendors aren\u0027t even familiar with Git, never mind Gerrit. For them, I ended up writing an intro doc that takes the approach of \"here\u0027s the absolute basics, now run these commands to make a commit and upload a CL\". I\u0027m not sure that we should encourage quite such a low-understanding approach, but the Gerrit team have these public \"Concepts and Workflows\" presentations for Git [0] and Gerrit [1] which might be good to link to here.\n\n[0]: https://docs.google.com/presentation/d/1IQCRPHEIX-qKo7QFxsD3V62yhyGA9_5YsYXFOiBpgkk/edit\n[1]: https://docs.google.com/presentation/d/1C73UgQdzZDw0gzpaEqIC6SPujZJhqamyqO1XOHjH-uk/edit",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504f070f_1b5410cd",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T17:01:38Z",
+      "side": 1,
+      "message": "Thanks for those links. I agree that it\u0027s not ideal to have the basic commands, but practically speaking if they don\u0027t have experience with git, it\u0027s quite a hill to climb when combined with gerrit. In my case the vendor was familiar with git, so it wasn\u0027t an issue.\n\nCan you share the \"basic commands\" you provided, and I can add them?",
+      "parentUuid": "3edbfa4b_ec9fe52b",
       "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
