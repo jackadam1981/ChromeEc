@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "040642e7_7fe7c874",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-09T06:22:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be removed as well?",
+      "range": {
+        "startLine": 291,
+        "startChar": 3,
+        "endLine": 291,
+        "endChar": 32
+      },
+      "revId": "e8028f006224df28a501077fab1f9ad86255a6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
