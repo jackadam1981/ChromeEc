@@ -52,6 +52,24 @@
       "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c278a382_90df4129",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-09T16:09:49Z",
+      "side": 1,
+      "message": "But won\u0027t the PPC reset when the EC firmware is updated to change to \"#undef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT\"?",
+      "parentUuid": "35ed1789_0408befc",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
