@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d1ad0869_909ebcb4",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-09T08:58:28Z",
+      "side": 0,
+      "message": "On Kodama board, BC12_DET_EN only connect to usb signal switch (fsusb42), so we do not need this to be compatible with P1 board.",
+      "parentUuid": "60549f93_a07d2c58",
+      "range": {
+        "startLine": 296,
+        "startChar": 17,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d6c61d5_18f9fab4",
         "filename": "board/kodama/board.c",
         "patchSetId": 12
@@ -141,6 +165,30 @@
       "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5bcfb25_747d708c",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-09T08:58:28Z",
+      "side": 0,
+      "message": "Yes, kodoma don\u0027t use mt6370 for display bias.",
+      "parentUuid": "4249d455_47f9d4d9",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
