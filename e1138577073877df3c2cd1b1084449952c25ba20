@@ -16,6 +16,24 @@
       "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c8b2534_a06ee89c",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-08-09T02:12:04Z",
+      "side": 1,
+      "message": "Yes, but I worry about this scenario: As GLK-R(Phaser-R) is a new ongoing project(CPU updates to CPU-Refresh). GLK(Phaser/Phaser360) has already shipped project. They all have the same 11297 branch. For Phaser/Phaser shipped devices, it seems the devices won\u0027t reboot after OTA. If a sink device is attached while OTA or last source port is 3A?, 3A current limit has been set. Looks like there is no way to change 3A limit back to 1.5A unless reset EC.",
+      "parentUuid": "cfd7bf73_7220996c",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
