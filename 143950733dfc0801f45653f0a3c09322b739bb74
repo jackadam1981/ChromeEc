@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "64cebf8d_141ad309",
+        "filename": "board/max32660-eval/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-08-09T20:29:01Z",
+      "side": 1,
+      "message": "I was pretty sure of this... the problem is if I do not include this then I get build errors:\ni2c_chip.c:104: undefined reference to `i2c_ports\ni2c_master.c:1067: undefined reference to `i2c_ports_used\u0027",
+      "parentUuid": "8c251545_890b3d7c",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6aca8f75_bbdaef15",
         "filename": "board/max32660-eval/board.h",
         "patchSetId": 1
