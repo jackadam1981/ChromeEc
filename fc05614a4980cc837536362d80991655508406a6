@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d18c6be9_c830095e",
+        "filename": "chip/g/usb_console_stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-09T20:33:32Z",
+      "side": 1,
+      "message": "Could it be done in another CL that handles code sharing beween chip/g and chip/stm32 ?",
+      "parentUuid": "ececa961_324b8d1c",
+      "revId": "fc05614a4980cc837536362d80991655508406a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a22eba4a_37eebb57",
         "filename": "include/config.h",
         "patchSetId": 2
