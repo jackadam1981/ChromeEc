@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fd460adc_b5b30efd",
+        "filename": "board/max32660-eval/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-09T20:43:41Z",
+      "side": 1,
+      "message": "Hmm... if you define it as an empty array, does that work?",
+      "parentUuid": "64cebf8d_141ad309",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6aca8f75_bbdaef15",
         "filename": "board/max32660-eval/board.h",
         "patchSetId": 1
