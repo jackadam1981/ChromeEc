@@ -70,6 +70,30 @@
       "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b08067e_eb57c3f4",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-09T03:29:23Z",
+      "side": 1,
+      "message": "Ok, thanks! I\u0027ll land this now then and investigate further separately",
+      "parentUuid": "83b4601a_65fc9ab4",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 853,
+        "endChar": 19
+      },
+      "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
