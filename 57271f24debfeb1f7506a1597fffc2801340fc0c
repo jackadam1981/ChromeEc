@@ -46,6 +46,30 @@
       "revId": "57271f24debfeb1f7506a1597fffc2801340fc0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a236a4c6_7a7f85c3",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T16:40:11Z",
+      "side": 1,
+      "message": "No worries. It\u0027s not obvious since there are various markdown \"standards\". This style for anchors is supported by gitiles and g3doc, so I think it\u0027s safe to use.",
+      "parentUuid": "83396aee_1d67424e",
+      "range": {
+        "startLine": 5,
+        "startChar": 29,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "57271f24debfeb1f7506a1597fffc2801340fc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
