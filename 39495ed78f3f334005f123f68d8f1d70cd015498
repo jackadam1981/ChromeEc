@@ -34,6 +34,24 @@
       "revId": "39495ed78f3f334005f123f68d8f1d70cd015498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f344b14d_d29dc123",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-09T10:56:28Z",
+      "side": 1,
+      "message": "At present, it keeps be consistent with jacuzzi board.",
+      "parentUuid": "ec6806ee_e2d00828",
+      "revId": "39495ed78f3f334005f123f68d8f1d70cd015498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

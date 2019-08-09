@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db00feac_d4a6266c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-09T10:56:28Z",
+      "side": 1,
+      "message": "Got it, remove CQ-DEPEND.",
+      "parentUuid": "47348a02_f70fd77e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e5e0dab_2351faf1",
         "filename": "board/kodama/battery.c",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-07T01:55:04Z",
       "side": 1,
       "message": "It seems that both batteries have the same configs?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373e1f17_b7d06c35",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-09T10:56:28Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "1e5e0dab_2351faf1",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4540b40b_604e4f8c",
+        "filename": "board/kodama/build.mk",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-09T10:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d643a6a_4fbfc3cb",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "72d6659d8a320388ad965fe3aa7e1a5c2d03e961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
