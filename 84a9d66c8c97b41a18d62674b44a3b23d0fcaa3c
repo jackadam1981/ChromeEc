@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72dee0b0_e67b6db6",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-08-09T20:52:53Z",
+      "side": 1,
+      "message": "You might avoid linking to an internal doc if possible.  You could put more details from the doc directly in the comment here, but it seems clear enough to me already.",
+      "range": {
+        "startLine": 443,
+        "startChar": 3,
+        "endLine": 443,
+        "endChar": 31
+      },
+      "revId": "84a9d66c8c97b41a18d62674b44a3b23d0fcaa3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
