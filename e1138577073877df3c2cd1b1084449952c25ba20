@@ -34,6 +34,24 @@
       "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ed1789_0408befc",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-08-09T03:34:37Z",
+      "side": 1,
+      "message": "Sorry for mistake. Looks like there is no way to change 3A limit back to 1.5A unless reset ppc NX3483.",
+      "parentUuid": "8c8b2534_a06ee89c",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
