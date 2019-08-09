@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "60549f93_a07d2c58",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-09T02:09:11Z",
+      "side": 0,
+      "message": "Hi, Yilun. Kodama Proto SCH refers to Kukui P2 release version, which board version is 2. In addition, BOOTBLOCK_MUX_OD (Q736, R90579, R90675) have removed and route BOOTBLOCK_EN_L (via a 0ohm) to u6522 as SEL 3. USB 2.0 channel is enabled when GPIO_BC12_DET_EN is 0 level. It\u0027s better to remove this here?",
+      "parentUuid": "7e6f0a84_9d8669c2",
+      "range": {
+        "startLine": 296,
+        "startChar": 17,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d6c61d5_18f9fab4",
         "filename": "board/kodama/board.c",
         "patchSetId": 12
@@ -84,6 +108,30 @@
       "side": 0,
       "message": "I will restore this and remove the condition \u0027if (board_get_version() \u003e\u003d 2)\u0027.",
       "parentUuid": "6d6c61d5_18f9fab4",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "8056f31ea525cc7751cec6df34d06264b037731c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4249d455_47f9d4d9",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-09T02:09:11Z",
+      "side": 0,
+      "message": "Hi Yilun, I double-checked Kodama SCH, DB_ENP pin and DB_ENN pin of MT670 is pulled down to GND and disconnect to TPS65132B5YFFR (MIPI panel) which is different from Kukui P2 release version. remove this here?",
+      "parentUuid": "0a75ba2c_265097b8",
       "range": {
         "startLine": 297,
         "startChar": 0,
