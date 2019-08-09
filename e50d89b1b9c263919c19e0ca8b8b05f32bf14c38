@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1bc6e2_b69c743a",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-09T21:28:30Z",
+      "side": 1,
+      "message": "These names don\u0027t match the schematic.  On other boards I see gpio.inc uses the schematic name, and then board.h defines a helper macro\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/board/akemi/board.h?l\u003d86-88\u0026rcl\u003d1d75f18c5f386d75313b71db316fcf99993fcc9f\n\nMy preference is that gpio.inc always uses the schematic net name, but I won\u0027t block the CL for it.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "e50d89b1b9c263919c19e0ca8b8b05f32bf14c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
