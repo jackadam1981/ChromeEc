@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "ececa961_324b8d1c",
+        "filename": "chip/g/usb_console_stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-09T20:27:45Z",
+      "side": 1,
+      "message": "should this file go into ./common ?",
+      "revId": "fc05614a4980cc837536362d80991655508406a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a22eba4a_37eebb57",
         "filename": "include/config.h",
         "patchSetId": 2
