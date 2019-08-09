@@ -22,6 +22,30 @@
       "revId": "eeac8ab58bd853b8d1e3b53722ce47df5fe2bf18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14638abf_f7f379d4",
+        "filename": "common/rollback.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-09T02:33:47Z",
+      "side": 1,
+      "message": "Resolved conflict.",
+      "parentUuid": "37a1ea40_fb3dc070",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 26
+      },
+      "revId": "eeac8ab58bd853b8d1e3b53722ce47df5fe2bf18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
