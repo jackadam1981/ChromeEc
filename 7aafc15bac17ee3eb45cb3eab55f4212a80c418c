@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98cd03bc_bc5b3e51",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-09T17:50:11Z",
+      "side": 1,
+      "message": "We also need to enabled the alt function for these 2 new ADC channels. Currently only CH0/CH1 are configured.\n\n/* ADC */\nALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)                             /* ADC0-1 */",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 18
+      },
+      "revId": "7aafc15bac17ee3eb45cb3eab55f4212a80c418c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
