@@ -70,6 +70,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a980b15_158d1211",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-09T23:13:17Z",
+      "side": 0,
+      "message": "Sorry, I missed the definition of motion_sense_fifo_is_wake_up_needed(). The name is somewhat misleading.",
+      "parentUuid": "38fb2a30_f3c574af",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
