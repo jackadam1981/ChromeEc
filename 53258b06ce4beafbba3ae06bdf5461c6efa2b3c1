@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83a6cb02_726892a8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-09T16:24:34Z",
+      "side": 1,
+      "message": "did you determine TC_UNATTACHED_SRC was not a valid state here?",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb9d5f8_3db55e43",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-09T16:24:34Z",
+      "side": 1,
+      "message": "Wouldn\u0027t get_state_tc be more consistent with the name changes in usb_prl if you named this tc_get_state?",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
