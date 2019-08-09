@@ -22,6 +22,30 @@
       "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a87f5a_979689b6",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-09T02:49:03Z",
+      "side": 1,
+      "message": "I will need to check again to be sure, but if I remember right, yes it uses memcpy(). I didn\u0027t go deeper than seeing the call to memcpy() when looking at the disassembly before, but I think I did do a bit of reading and come to the conclusion that in the case of aligned source and destination, memcpy() would do 4 byte reads/writes.\n\nOn a related note, when experimenting with all of this initially, I wrote a loop to read from DMEM using a uint8_t*, and this did not have the same problems as writes; I don\u0027t think I got to the bottom of why this worked. \n\nI think we are safe here, but let me do some more digging and follow up separately with some more details?",
+      "parentUuid": "21dc0098_0bfe2f3e",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 853,
+        "endChar": 19
+      },
+      "revId": "92afc0c96a915de2605b25741cbc58f25460834a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
