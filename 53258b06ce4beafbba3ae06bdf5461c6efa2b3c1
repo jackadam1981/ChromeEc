@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "64d78d95_3bc1d2b8",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-09T19:02:22Z",
+      "side": 1,
+      "message": "why not be consistent with these as well... such as prl_tx_set_state()",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a270239_c93483de",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-09T19:02:22Z",
+      "side": 1,
+      "message": "should this be an IS_ENABLED instead?",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83a6cb02_726892a8",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
