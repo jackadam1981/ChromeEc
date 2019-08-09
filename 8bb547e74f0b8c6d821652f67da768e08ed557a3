@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "e9e62312_b3d010fb",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-09T19:04:02Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s long. Skimming it, it does look generic. I think vapier@ would want it somewhere in the main docs: https://chromium.googlesource.com/chromiumos/docs/+/master/ (check with him). To mostly automatically convert to markdown, I recommend this strategy: http://go/cros-fingerprint-writing-docs#converting-documentation",
+      "parentUuid": "2d0854cb_edd1b246",
+      "revId": "8bb547e74f0b8c6d821652f67da768e08ed557a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ae39fe8_800f77e1",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 11
