@@ -16,6 +16,24 @@
       "revId": "e0b49d723559bd582bfd673489270c01efe44915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742d5a49_92fe176b",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-09T16:17:55Z",
+      "side": 1,
+      "message": "There are two boards (proto2 and tk-v001) under private-cr52, which has only two USB interface: one for U2F, and the other for USB_Console. It doesn\u0027t define CONFIG_STREAM_USB, because it has nothing to bridge to USB.\n\nTechnically, it doesn\u0027t change the way it transfers data through USB much, considering the code similarity between usb_console.c and usb-stream.c before its recent optimization (https://chromium.git.corp.google.com/chromiumos/platform/ec/+/4a48404aeea58bfe0c31d5fea554b5329a223131/chip/g/usb-stream.c#).",
+      "parentUuid": "f2a4f4c1_9885f393",
+      "revId": "e0b49d723559bd582bfd673489270c01efe44915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
