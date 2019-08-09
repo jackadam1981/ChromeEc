@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3bf15e04_c4d984b5",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-09T14:57:58Z",
+      "side": 1,
+      "message": "Is this missing a word, like \"solve\"?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b6617c_5956d7a5",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-09T14:57:58Z",
+      "side": 1,
+      "message": "Should this be BH1730_LUXTH***2***_1K? Because you have the same mathematical problem I pointed out in the previous patchset: copy those two equations into a text editor. Replace \"d1_1K/d0_1K * 1000\" with \"a\" and then replace \"BH1730_LUXTH1_1K\" with \"b\". Only one of the two equations can be satisfied:\na \u003c b\na \u003e\u003d b\n\nMaybe I\u0027m missing it. I\u0027d like the comment to have more explanation of why these two equations must both be satisfied.",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a809e8_90052998",
         "filename": "board/kohaku/board.h",
         "patchSetId": 4
