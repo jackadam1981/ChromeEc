@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f9da7e80_84ad89be",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-10T03:03:01Z",
+      "side": 1,
+      "message": "You say:\n\nTo use two condition\n * 1. d1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH1_1K\n * 2. d1_1K/d0_1K * 1000 \u003e\u003d BH1730_LUXTH1_1K\n\nWhat exactly do you mean? Do you have to meet conditions 1 *and* 2, or conditions 1 *or* 2. Because the \"and\" is impossible and the \"or\" is meaningless, unless I\u0027m really missing something.\nSimplify your equations. a \u003d d1_1K/d0_1K * 1000. Now you have\n1. a \u003c BH1730_LUXTH1_1K\n2. a \u003e\u003d BH1730_LUXTH1_1K\n\nSo you either have ((a \u003c BH1730_LUXTH1_1K) \u0026\u0026 (a \u003e\u003d BH1730_LUXTH1_1K)), which is impossible, because \u003c and \u003e\u003d are exact opposites so you are askings for true\u0026\u0026false or false\u0026\u0026true, or you have ((a \u003c BH1730_LUXTH1_1K) || (a \u003e\u003d BH1730_LUXTH1_1K)), which any number at all satisfies that condition.\n\nI think the code is OK, but the explanation does not match the code.",
+      "parentUuid": "7dde0af1_60f40443",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a809e8_90052998",
         "filename": "board/kohaku/board.h",
         "patchSetId": 4
