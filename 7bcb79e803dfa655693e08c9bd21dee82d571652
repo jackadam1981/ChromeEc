@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ae12350_a0fc47b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-10T08:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80fe380_8a691058",
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35e2a5d0_8d76f28c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c4fd62f_550e3752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-10T08:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e2a5d0_8d76f28c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3832eb9f_59704c27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-10T08:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a954e22_915a1945",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "785220df_726333a4",
         "filename": "board/kodama/board.c",
         "patchSetId": 5
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "7b2ae92d_a4a6f56c",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-10T08:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "785220df_726333a4",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 66
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ae4f549_f236b151",
         "filename": "board/kodama/board.c",
         "patchSetId": 5
@@ -99,6 +189,30 @@
       "writtenOn": "2019-08-07T03:09:24Z",
       "side": 1,
       "message": "Are we ok with this only in S0? We might loose fancier future features by only hooking this up to an S0 power rail. +gwendal@",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bf0693_9b54624c",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-10T08:23:17Z",
+      "side": 1,
+      "message": "Hi, gwendal, please kindly help to confirm fancier future features is used in Kodama and only work in S0?",
+      "parentUuid": "5ae4f549_f236b151",
       "range": {
         "startLine": 271,
         "startChar": 17,
