@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3c3bbc3_b6fb9fb1",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2019-08-10T01:00:52Z",
+      "side": 1,
+      "message": "I have updated comment.",
+      "parentUuid": "3bf15e04_c4d984b5",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02b6617c_5956d7a5",
         "filename": "board/kohaku/board.h",
         "patchSetId": 4
