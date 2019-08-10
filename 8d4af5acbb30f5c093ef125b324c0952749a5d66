@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "7dde0af1_60f40443",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2019-08-10T00:59:48Z",
+      "side": 1,
+      "message": "I don\u0027t want to modify bh1730_convert_to_lux for kohaku.\nHere is current conditions\n        if(d_temp \u003c BH1730_LUXTH1_1K) {\n                d0_1k \u003d BH1730_LUXTH1_D0_1K * data0;\n                d1_1k \u003d BH1730_LUXTH1_D1_1K * data1;\n        } else if(d_temp \u003c BH1730_LUXTH2_1K) {\n                d0_1k \u003d BH1730_LUXTH2_D0_1K * data0;\n                d1_1k \u003d BH1730_LUXTH2_D1_1K * data1;\n        } else if(d_temp \u003c BH1730_LUXTH3_1K) {\n                d0_1k \u003d BH1730_LUXTH3_D0_1K * data0;\n                d1_1k \u003d BH1730_LUXTH3_D1_1K * data1;\n        } else if(d_temp \u003c BH1730_LUXTH4_1K) {\n                d0_1k \u003d BH1730_LUXTH4_D0_1K * data0;\n                d1_1k \u003d BH1730_LUXTH4_D1_1K * data1;\n        } else\n                return 0;\n\nTo use two condition\n * 1. d1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH1_1K\n * 2. d1_1K/d0_1K * 1000 \u003e\u003d BH1730_LUXTH1_1K\n\nd1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH1_1K\nd1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH2_1K\n\nSo, I think we will not use following two conditions\n        } else if(d_temp \u003c BH1730_LUXTH3_1K) {\n                d0_1k \u003d BH1730_LUXTH3_D0_1K * data0;\n                d1_1k \u003d BH1730_LUXTH3_D1_1K * data1;\n        } else if(d_temp \u003c BH1730_LUXTH4_1K) {\n                d0_1k \u003d BH1730_LUXTH4_D0_1K * data0;\n                d1_1k \u003d BH1730_LUXTH4_D1_1K * data1;\n\nAnd then we can use two conditions.\nd1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH1_1K\nBH1730_LUXTH1_1K \u003c\u003d d1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH2_1K\n\nBH1730_LUXTH2_1K is maximum value for d1_1K/d0_1K * 1000\nSo, it will meet d1_1K/d0_1K * 1000 \u003e\u003d BH1730_LUXTH1_1K\n\nFrom ALS IC datasheet, we need 4 equations as light source(lux). \nBut from our test result, following two condition can get accurate lux from all range lux.\n\n * 1. d1_1K/d0_1K * 1000 \u003c  BH1730_LUXTH1_1K (270)\n * 2. d1_1K/d0_1K * 1000 \u003e\u003d BH1730_LUXTH1_1K (270)",
+      "parentUuid": "02b6617c_5956d7a5",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79a809e8_90052998",
         "filename": "board/kohaku/board.h",
         "patchSetId": 4
@@ -68,6 +92,30 @@
       "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad6b630_d7a12044",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2019-08-10T00:59:48Z",
+      "side": 1,
+      "message": "Do you mean \"need to remove them from comment\" ?\nIf we didn\u0027t define CONFIG_ALS_BH1730_LUXTH_PARAMS, we will meet compile error.",
+      "parentUuid": "79a809e8_90052998",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "8d4af5acbb30f5c093ef125b324c0952749a5d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
