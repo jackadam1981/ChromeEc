@@ -70,6 +70,24 @@
       "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc78cc75_c0199f0b",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-08-10T04:39:19Z",
+      "side": 1,
+      "message": "It looks like that typec_set_source_current_limit() will only be called in charge_manager_source_port(). But actually charge_manager_source_port() is defined under scope of CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT . \n\nAs the result, if we #undef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT then there is no one will set ppc current limit.",
+      "parentUuid": "c278a382_90df4129",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
