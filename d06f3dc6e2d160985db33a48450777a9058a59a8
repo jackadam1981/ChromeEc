@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17629911_39c2bf0d",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f72a6d_5ec4b1e0",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57847caf_c0c96a61",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "use \"\" for all of these.\n\nAnd remove string.h/stdbool.h, I don\u0027t think you need them.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106a692f_5b4b1818",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822d7df7_4ae7368a",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "mutexes do not work in interrupt context",
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e829b414_84f0f44d",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "drop the mutexes, not needed",
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12bfba41_01db04f0",
+        "filename": "board/kukui_scp/mdp_ipi_message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "Please use a correct license, like the rest of the EC code.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "438eb7f0_804a5d3a",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T11:01:56Z",
+      "side": 1,
+      "message": "hard-code the value in ec.tasklist instead",
+      "revId": "d06f3dc6e2d160985db33a48450777a9058a59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
