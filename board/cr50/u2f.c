@@ -341,27 +341,3 @@ int u2f_gen_kek_seed(int commit)
 
 	return EC_SUCCESS;
 }
-
-/* ---- Send/receive U2F APDU over TPM vendor commands ---- */
-
-static enum vendor_cmd_rc vc_u2f_apdu(enum vendor_cmd_cc code, void *body,
-			       size_t cmd_size, size_t *response_size)
-{
-	unsigned retlen;
-
-	if (!use_u2f()) { /* the feature is disabled */
-		uint8_t *cmd = body;
-		/* process it only if the host tries to enable the feature */
-		if (cmd_size < 2 || cmd[1] != U2F_VENDOR_MODE) {
-			*response_size = 0;
-			return VENDOR_RC_NO_SUCH_COMMAND;
-		}
-	}
-
-	/* Process U2F APDU */
-	retlen = u2f_apdu_rcv(body, cmd_size, *response_size);
-
-	*response_size = retlen;
-	return VENDOR_RC_SUCCESS;
-}
-DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_APDU, vc_u2f_apdu);
