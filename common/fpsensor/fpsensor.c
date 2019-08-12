@@ -410,6 +410,10 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 	if (!offset) {
 		/* Host has requested the first chunk, do the encryption. */
 		timestamp_t now = get_time();
+		uint8_t positive_match_secret[FP_POS_MATCH_SECRET_BYTES];
+		/* Encrypted template is right after the medadata. */
+		uint8_t *output_encrypted_template
+			= fp_enc_buffer + sizeof(*enc_info);
 
 		/* b/114160734: Not more than 1 encrypted message per second. */
 		if (!timestamp_expired(encryption_deadline, &now))
@@ -432,7 +436,7 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		}
 
 		ret = aes_gcm_encrypt(key, SBP_ENC_KEY_LEN, fp_template[fgr],
-				      fp_enc_buffer + sizeof(*enc_info),
+				      output_encrypted_template,
 				      sizeof(fp_template[0]),
 				      enc_info->nonce, FP_CONTEXT_NONCE_BYTES,
 				      enc_info->tag, FP_CONTEXT_TAG_BYTES);
@@ -441,6 +445,21 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			CPRINTS("fgr%d: Failed to encrypt template", fgr);
 			return EC_RES_UNAVAILABLE;
 		}
+
+		ret = derive_pos_match_secret(positive_match_secret,
+					      enc_info->salt);
+		if (ret != EC_SUCCESS) {
+			CPRINTS("fgr%d: Failed to derive positive match "
+				"secret.", fgr);
+			always_memset(positive_match_secret, 0,
+				      sizeof(positive_match_secret));
+			return EC_RES_UNAVAILABLE;
+		}
+
+		derive_validation_value(enc_info->validation_value,
+					positive_match_secret);
+		always_memset(positive_match_secret, 0,
+			      sizeof(positive_match_secret));
 		templ_dirty &= ~BIT(fgr);
 		memcpy(fp_encryption_salt[fgr], enc_info->salt,
 		       sizeof(fp_encryption_salt[0]));
@@ -472,6 +491,10 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 static int validate_template_format(
 	struct ec_fp_template_encryption_metadata *enc_info)
 {
+	if (enc_info->struct_version == 3 && FP_TEMPLATE_FORMAT_VERSION == 4)
+		/* The host requested migration to v4. */
+		return EC_RES_SUCCESS;
+
 	if (enc_info->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
 		CPRINTS("Invalid template format %d", enc_info->struct_version);
 		return EC_RES_INVALID_PARAM;
