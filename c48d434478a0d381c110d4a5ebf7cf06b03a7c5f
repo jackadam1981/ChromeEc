@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "3c5bfca4_8eb8a268",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T22:39:53Z",
+      "side": 1,
+      "message": "Do not call sensor_init_done here, so you can safely remove set_range entry point.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5950cdeb_8f4951da",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 50
