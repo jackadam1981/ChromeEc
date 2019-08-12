@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49392c36_a875d8dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Various Git tools break unless the second line of the commit message is blank. You might want to take a look at the contributing guide\u0027s commit message section [0], but I\u0027d suggest something more like this:\n\n max32660: add I2C master and slave\n\n BRANCH\u003dnone\n BUG\u003dnone\n TEST\u003dslave tested with EC CMDs sent from a custom written EC HOST using\n      another MAX32660 device as an I2C Master\n\n\n[0]: https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Commit-messages",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41770b09_c46ab343",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Nit: indentation is off here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33999db9_c44be732",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Can combine these two `if`s to reduce the amount of indentation needed.",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2032525_96d369c8",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Please remove if it\u0027s not needed, instead of commenting out.",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f165617_85aeea2c",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Again, please remove instead of using `#if 0`.",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e58f5e6_265eb6fe",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Similarly, please remove.",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d6a4c3_ec5b42e9",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Similarly to `enum i2c_speed_t` above, please document the members of this struct in Kernel-doc style in this comment, rather than after each one.",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d089065_7110e7bc",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Similarly, please use Kernel-doc style for functions. For example here:\n\n I2C_Api_MasterWrite() - write data from master\n @i2c: Pointer to I2C regs.\n ...\n Context: Will block until transaction is complete.\n Return: EC_SUCCESS if successful, otherwise a common error code",
+      "revId": "403e7a941497493f1d21c2b7ce0a0416a66f4f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

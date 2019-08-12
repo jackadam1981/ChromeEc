@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "73a54956_cdfd0901",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fbfe6e1_8aca4b23",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "044cd59a_72296933",
         "filename": "chip/max32660/i2c_api.c",
         "patchSetId": 1
@@ -212,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "289a8547_aa1dbdd0",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58100522_43509551",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15441d74_d7f8f139",
         "filename": "chip/max32660/i2c_api.c",
         "patchSetId": 1
@@ -226,6 +268,24 @@
       "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c037132e_a2dfbca2",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15441d74_d7f8f139",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +309,30 @@
       "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2b68fb_ab2e5bea",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072292af_f1b98e45",
+      "range": {
+        "startLine": 323,
+        "startChar": 8,
+        "endLine": 323,
+        "endChar": 16
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -382,6 +466,24 @@
       "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1549af_57c6a3c4",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-12T20:30:13Z",
+      "side": 1,
+      "message": "Although this comment has changed, it looks like the code is still using all left-aligned addresses (except for `I2C_Api_SlaveAsync`), unless I\u0027ve missed something.",
+      "parentUuid": "15c1019a_76f9eed9",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
