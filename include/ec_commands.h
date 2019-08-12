@@ -5641,7 +5641,7 @@ struct ec_response_fp_info {
 #define FP_FRAME_OFFSET_MASK       0x0FFFFFFF
 
 /* Version of the format of the encrypted templates. */
-#define FP_TEMPLATE_FORMAT_VERSION 3
+#define FP_TEMPLATE_FORMAT_VERSION 4
 
 /* Constants for encryption parameters */
 #define FP_CONTEXT_NONCE_BYTES 12
