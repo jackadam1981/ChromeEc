@@ -88,6 +88,24 @@
       "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c07ffb9_a9376259",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-08-12T13:34:42Z",
+      "side": 1,
+      "message": "Steps I test: 1.plug in a sink device. 2. flash the BIOS.bin 3.Check EC RW is synced after F3 + power 4. ppc_dump to see the value of reg offset 0x0a in EC console. 5. plug out the sink device to see ppc_dump 5. See ppc_dump after reboot EC again",
+      "parentUuid": "dc78cc75_c0199f0b",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
