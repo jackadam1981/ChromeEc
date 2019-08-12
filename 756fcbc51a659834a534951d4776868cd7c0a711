@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaba47ec_0183b390",
+        "filename": "include/config.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T23:17:42Z",
+      "side": 1,
+      "message": "If it takes such a small space and improve anti saturation speed, #define by default.\nWe will #undef it only when space constraint.",
+      "revId": "756fcbc51a659834a534951d4776868cd7c0a711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
