@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6531d420_a6c66123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-08-12T12:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a2c4011_831d2a16",
+      "revId": "ca4061c0fddb5a6ee0f5b47f83a4581345775951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff98b652_2bca406a",
         "filename": "board/kukui_scp/ec.tasklist",
         "patchSetId": 29
@@ -33,6 +51,24 @@
       "revId": "ca4061c0fddb5a6ee0f5b47f83a4581345775951",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94331f16_bd32f59b",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 29
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-08-12T12:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff98b652_2bca406a",
+      "revId": "ca4061c0fddb5a6ee0f5b47f83a4581345775951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "29519527_d16b2d19",
+        "filename": "board/kukui_scp/isp_p2_srv.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-08-12T12:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c90f84b_d31c64f7",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "ca4061c0fddb5a6ee0f5b47f83a4581345775951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c210bab_0898b5bf",
         "filename": "chip/mt_scp/config_chip.h",
         "patchSetId": 29
@@ -79,6 +139,30 @@
       "revId": "ca4061c0fddb5a6ee0f5b47f83a4581345775951",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5433a463_76b46e3e",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-08-12T12:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c210bab_0898b5bf",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "ca4061c0fddb5a6ee0f5b47f83a4581345775951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
