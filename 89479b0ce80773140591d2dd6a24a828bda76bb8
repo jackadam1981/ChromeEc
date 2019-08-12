@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0aa673d1_62c05509",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-12T19:30:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "745127c3_1bdeed1f",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7abcd77b_0461c099",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -178,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "712b102b_29b4703d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-12T19:30:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b7b02e7_4c456b34",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e40b08ef_726e9893",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -263,6 +299,24 @@
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78460800_ab125a6a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-12T19:30:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5f40b48_7973236d",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -400,6 +454,24 @@
       "side": 1,
       "message": "Still not resolved.",
       "parentUuid": "c7f16cf1_56a929e9",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e9a94f_071e1055",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-12T19:30:26Z",
+      "side": 1,
+      "message": "If we are not in calibration mode, you\u0027re correct that if we have sent clear, then that means we will need to send RGB, since the clear channel output is the same as the Y output.  The converse doesn\u0027t hold true in that if we need to send XYZ, that doesn\u0027t necessarily mean that we need to send clear, as there\u0027s the possibility that it\u0027s X and/or Z that differs.\n\nIf we\u0027re in calibration mode, Clear channel output is not tied to Green channel output (C raw and RGB raw is returned in calibration mode, LUX and XYZ is returned in non-calibration mode), so all must be checked independently in calibration mode.\n\nWhen you say \"test all condition before sending the samples\", are you suggesting that I missed a case, or that this check could be done more efficiently?",
+      "parentUuid": "51714a64_1522030c",
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
