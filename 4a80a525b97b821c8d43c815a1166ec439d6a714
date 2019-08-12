@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55601b54_de914032",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:07:06Z",
+      "side": 1,
+      "message": "Is rgb_scale still used?\nLooking tcs3400_rgb_get_scale(), rgb_cal.scale is used.",
+      "revId": "4a80a525b97b821c8d43c815a1166ec439d6a714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
