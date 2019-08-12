@@ -201,6 +201,7 @@
 #define CONFIG_BC12_DETECT_MAX14637
 #define CONFIG_CMD_PD_CONTROL
 #define CONFIG_CMD_PPC_DUMP
+#define CONFIG_CMD_CHARGEN
 
 /* TODO(b/76218141): Use correct PD delay values */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000	/* us */

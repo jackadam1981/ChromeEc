@@ -28,6 +28,7 @@
 #undef CONFIG_CMD_SYSJUMP
 #undef CONFIG_CMD_SYSLOCK
 
+#define CONFIG_CMD_CHARGEN
 #ifndef CR50_DEV
 /* Disable stuff that should only be in debug builds */
 #undef CONFIG_CMD_CRASH
