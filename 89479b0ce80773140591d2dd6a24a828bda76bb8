@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "745127c3_1bdeed1f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T17:44:40Z",
+      "side": 1,
+      "message": "kernel never access this funcition. EC is calling -\u003eread periodically, but the RGB sensor frequency is always 0.",
+      "parentUuid": "2e85bbe7_50cdbead",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7abcd77b_0461c099",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -142,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "6b7b02e7_4c456b34",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T17:44:40Z",
+      "side": 1,
+      "message": "Yes.\nBTW, (1 \u003c\u003c (2*2)) is 16.",
+      "parentUuid": "da5b1a52_d262b1b1",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e40b08ef_726e9893",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 45
@@ -206,6 +242,24 @@
       "side": 1,
       "message": "fp_t can only represent positive values up to 32,767, so any channel values between 32768 and 65535 inclusive would appear negative if not cast to int64_t here, throwing the math off.",
       "parentUuid": "fba106e3_5d9cc833",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f40b48_7973236d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T17:44:40Z",
+      "side": 1,
+      "message": "But FP_TO_INT already transform a fp_inter_t (hopefully between 0 and 1 \u003c\u003c 48) into a s32. No need to recast to s64",
+      "parentUuid": "3404ea16_629d795d",
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -328,6 +382,24 @@
       "writtenOn": "2019-08-01T22:29:44Z",
       "side": 1,
       "message": "you can not not send XYZ if you have sent clear. Test all the condition before sending the samples.",
+      "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51714a64_1522030c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T17:44:40Z",
+      "side": 1,
+      "message": "Still not resolved.",
+      "parentUuid": "c7f16cf1_56a929e9",
       "revId": "89479b0ce80773140591d2dd6a24a828bda76bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
