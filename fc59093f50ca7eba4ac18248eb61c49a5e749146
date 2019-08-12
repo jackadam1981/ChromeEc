@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da4eb1ad_2e21b448",
+        "filename": "board/kukui_scp/isp_p1_srv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T10:51:01Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this",
+      "revId": "fc59093f50ca7eba4ac18248eb61c49a5e749146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd271b1_06def881",
+        "filename": "board/kukui_scp/isp_p1_srv.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T10:51:01Z",
+      "side": 1,
+      "message": "I think this fits in one line?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "fc59093f50ca7eba4ac18248eb61c49a5e749146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4ba139_a6d8ebc8",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T10:51:01Z",
+      "side": 1,
+      "message": "Just use 880 directly in ec.tasklist",
+      "revId": "fc59093f50ca7eba4ac18248eb61c49a5e749146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
