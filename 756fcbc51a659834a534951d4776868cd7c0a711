@@ -16,6 +16,24 @@
       "revId": "756fcbc51a659834a534951d4776868cd7c0a711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9b31c2_8a958650",
+        "filename": "include/config.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-12T23:37:43Z",
+      "side": 1,
+      "message": "Developer will want to disable this function until after calibration / all scaling factors have been set.  Prior to adding calibration data, values would be wrong since the table is indexed by LUX value, and LUX value won\u0027t be correct until it\u0027s using the correct scaling factors for the device.",
+      "parentUuid": "aaba47ec_0183b390",
+      "revId": "756fcbc51a659834a534951d4776868cd7c0a711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
