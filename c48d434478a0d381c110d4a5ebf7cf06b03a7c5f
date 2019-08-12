@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee3c4d39_08befa47",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2538ab93_a2d41fda",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "754ce915_afdfd896",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "return 0.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a9cda7_2be912aa",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "leave it to 0, noone reads rgb standalone.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5950cdeb_8f4951da",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "naming convention: _rgb_ are used in tcs3400_rgb_drv.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f7b974_07265f36",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "Remove, we use the scale set in tcs3400_set_scale.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6345b0_6b1228d8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "Remove, we use the scale set in tcs3400_set_scale.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0826fc3_67d304b1",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 50
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "Remove, we use the scale from als_drv_data_t.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25642349_362bcb36",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 50
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T19:31:28Z",
+      "side": 1,
+      "message": "remove, we use the rate from als_drv_data_t.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
