@@ -16,6 +16,23 @@
       "revId": "9948f3c19ca549916d4939adeb6edc06d6743056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5063ab1_11e4c077",
+        "filename": "include/config.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-12T23:19:47Z",
+      "side": 1,
+      "message": "Without it, the sensor is not very useful. I would remove this define, the code it protects is core to the tcs3400 driver.",
+      "revId": "9948f3c19ca549916d4939adeb6edc06d6743056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
