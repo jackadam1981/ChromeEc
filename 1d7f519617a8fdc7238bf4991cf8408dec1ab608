@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9146931_e7ef5657",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-12T02:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c0367f5_fd4fe4a7",
+      "revId": "1d7f519617a8fdc7238bf4991cf8408dec1ab608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6b95a9a_e8f7e92d",
         "filename": "baseboard/grunt/baseboard.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "a3073f02_2a48d855",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-12T02:02:03Z",
+      "side": 1,
+      "message": "please refer to: https://partnerissuetracker.corp.google.com/issues/137849739\nTreeya will get sku_id 0xa0-0xa7 and Treeya360 will use sku_id 0xa8-0xaf. Treeya is clamshell sku and Treeya360 is 360 degree convertible sku. Both of them have no keyboard backlight support.",
+      "parentUuid": "e6b95a9a_e8f7e92d",
+      "range": {
+        "startLine": 591,
+        "startChar": 19,
+        "endLine": 591,
+        "endChar": 21
+      },
+      "revId": "1d7f519617a8fdc7238bf4991cf8408dec1ab608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1301737a_8f104e5b",
         "filename": "board/treeya/board.h",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "1d7f519617a8fdc7238bf4991cf8408dec1ab608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e041adf2_d5da1d5e",
+        "filename": "board/treeya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-12T02:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1301737a_8f104e5b",
+      "revId": "1d7f519617a8fdc7238bf4991cf8408dec1ab608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
