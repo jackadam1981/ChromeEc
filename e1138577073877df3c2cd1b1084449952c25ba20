@@ -106,6 +106,24 @@
       "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74a51f5_69032dde",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-08-12T13:54:12Z",
+      "side": 1,
+      "message": "It seems PPC does not reset during the test. If EC doesn\u0027t send command, PPC may only be reset when PPC VDD power drop.",
+      "parentUuid": "7c07ffb9_a9376259",
+      "revId": "e1138577073877df3c2cd1b1084449952c25ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
