@@ -73,6 +73,30 @@
       "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ff0644_c0ec2c67",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-12T16:47:41Z",
+      "side": 1,
+      "message": "This is exported so it can be called from nct38xx_tcpc_alert() in the TCPM driver (driver/tcpm/nct38xx.c).",
+      "parentUuid": "bbcfcbdf_e03838df",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
