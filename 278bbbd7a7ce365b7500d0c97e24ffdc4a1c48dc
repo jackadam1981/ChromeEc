@@ -22,6 +22,30 @@
       "revId": "278bbbd7a7ce365b7500d0c97e24ffdc4a1c48dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38fc6566_5b83798f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-12T17:29:56Z",
+      "side": 1,
+      "message": "I think it\u0027s good to document even the \"well known\" industry terms somewhere.  For developers new to the EC codebase (and potentially new to embedded systems), even the well known terms are a barrier to exploring the code.   I\u0027m open to suggestions if there is a better place to capture this info.",
+      "parentUuid": "4a52eaff_cb7dc2d9",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "278bbbd7a7ce365b7500d0c97e24ffdc4a1c48dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
