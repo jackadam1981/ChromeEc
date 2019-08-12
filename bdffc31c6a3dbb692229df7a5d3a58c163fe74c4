@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc18759a_4fa3d960",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-12T23:07:31Z",
+      "side": 0,
+      "message": "Converting to an array, UUT_MON in patchset#1",
+      "range": {
+        "startLine": 1266,
+        "startChar": 6,
+        "endLine": 1267,
+        "endChar": 16
+      },
+      "revId": "bdffc31c6a3dbb692229df7a5d3a58c163fe74c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3015a096_3b6a9b75",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-12T23:07:31Z",
+      "side": 0,
+      "message": "Converting to an array, UUT_WR in patchset#1",
+      "range": {
+        "startLine": 1273,
+        "startChar": 7,
+        "endLine": 1274,
+        "endChar": 16
+      },
+      "revId": "bdffc31c6a3dbb692229df7a5d3a58c163fe74c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
