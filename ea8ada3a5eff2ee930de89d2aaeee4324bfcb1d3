@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1810ab2c_6f0fa56c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-12T09:12:08Z",
+      "side": 1,
+      "message": "This CL ensures that the contents won\u0027t be clobbered or cleared by putting mandatory symbols\nat a fixed location on SRAM, and resets the values only if checksum or sanity check fails.",
+      "revId": "ea8ada3a5eff2ee930de89d2aaeee4324bfcb1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4195bd81_0c02f203",
+        "filename": "common/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-12T09:12:08Z",
+      "side": 1,
+      "message": "This is not a preprocessor guards, use a tab for indention.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "ea8ada3a5eff2ee930de89d2aaeee4324bfcb1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3cbd15f_ee63a71c",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3518,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-12T09:12:08Z",
+      "side": 1,
+      "message": ", so",
+      "range": {
+        "startLine": 3518,
+        "startChar": 51,
+        "endLine": 3518,
+        "endChar": 54
+      },
+      "revId": "ea8ada3a5eff2ee930de89d2aaeee4324bfcb1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ef6926_f47078eb",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3518,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-12T09:12:08Z",
+      "side": 1,
+      "message": "or sysjumped.",
+      "range": {
+        "startLine": 3518,
+        "startChar": 7,
+        "endLine": 3518,
+        "endChar": 8
+      },
+      "revId": "ea8ada3a5eff2ee930de89d2aaeee4324bfcb1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
