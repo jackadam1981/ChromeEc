@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad7ed39c_e6dd5093",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-12T10:51:35Z",
+      "side": 1,
+      "message": "BUG\u003db:139269434",
+      "revId": "fc59093f50ca7eba4ac18248eb61c49a5e749146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da4eb1ad_2e21b448",
         "filename": "board/kukui_scp/isp_p1_srv.c",
         "patchSetId": 25
