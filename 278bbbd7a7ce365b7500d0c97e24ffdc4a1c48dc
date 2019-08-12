@@ -46,6 +46,30 @@
       "revId": "278bbbd7a7ce365b7500d0c97e24ffdc4a1c48dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfddff4_ab7289f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-12T18:53:10Z",
+      "side": 1,
+      "message": "I agree with Keith. vapier@ had similar suggestions when I was adding docs to servo (https://chromium-review.googlesource.com/c/chromiumos/third_party/hdctools/+/1741719/9/docs/sitemap.md#16)\n\nIt\u0027s best to be completely unambiguous esp. since people outside of Google (partners, etc) are involved. We may have contributors that are less familiar with low-level concepts, so it\u0027s nice to be able to point them to a single place to help them get up to speed.",
+      "parentUuid": "38fc6566_5b83798f",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "278bbbd7a7ce365b7500d0c97e24ffdc4a1c48dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
