@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a52eaff_cb7dc2d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-12T17:03:59Z",
+      "side": 1,
+      "message": "I think we should list only terms which are locally defined, or abbreviated, or ambiguous. For example, we shouldn\u0027t list ADC, I2C, GPIO, PWM, UART, etc.",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "278bbbd7a7ce365b7500d0c97e24ffdc4a1c48dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
