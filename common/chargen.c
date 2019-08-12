@@ -3,10 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include "common.h"
 #include "config.h"
 #include "console.h"
 #include "timer.h"
 #include "uart.h"
+#include "usb_console.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -14,9 +16,26 @@
  * Microseconds time to drain entire UART_TX console buffer at 115200 b/s, 10
  * bits per character.
  */
-#define BUFFER_DRAIN_TIME_US (1000000UL * 10 * CONFIG_UART_TX_BUF_SIZE / 115200)
+#define BUFFER_DRAIN_TIME_US (1000000UL * 10 * CONFIG_UART_TX_BUF_SIZE         \
+				/ CONFIG_UART_BAUD_RATE)
+
+static inline int putc_(int ch)
+{
+	int rv1 = uart_putc(ch);
+	int rv2 = usb_putc(ch);
+
+	return rv1 == EC_SUCCESS ? rv2 : rv1;
+}
+
+static inline int getc_(void)
+{
+	int ch = uart_getc();
+
+	return (ch == -1) ? usb_getc() : ch;
+}
+
 /*
- * Generate a stream of characters on the UART console.
+ * Generate a stream of characters on the UART (and USB) console.
  *
  * The stream is an ever incrementing pattern of characters from the following
  * set: 0..9A..Za..z.
@@ -41,7 +60,7 @@ static int command_chargen(int argc, char **argv)
 	uint32_t seq_number = 0;
 	timestamp_t prev_watchdog_time;
 
-	while (uart_getc() != -1)
+	while (getc_() != -1)
 		; /* Drain received characters, if any. */
 
 	if (argc > 1)
@@ -52,10 +71,10 @@ static int command_chargen(int argc, char **argv)
 
 	c = '0';
 	prev_watchdog_time = get_time();
-	while (uart_getc() != 'x') {
+	while (getc_() != 'x') {
 		timestamp_t current_time;
 
-		while (uart_buffer_full()) {
+		while (uart_buffer_full() || usb_txq_full()) {
 			/*
 			 * Let's sleep enough time to drain half of TX
 			 * buffer.
@@ -72,7 +91,7 @@ static int command_chargen(int argc, char **argv)
 			prev_watchdog_time.val = current_time.val;
 		}
 
-		uart_putc(c++);
+		putc_(c++);
 
 		if (seq_number && (++seq_counter == seq_number))
 			break;
@@ -91,7 +110,7 @@ static int command_chargen(int argc, char **argv)
 			c = 'A';
 	}
 
-	uart_putc('\n');
+	putc_('\n');
 	return 0;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
