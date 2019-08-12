@@ -16,6 +16,24 @@
       "revId": "4a80a525b97b821c8d43c815a1166ec439d6a714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c327a52c_e497b0d8",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-12T19:30:16Z",
+      "side": 1,
+      "message": "Yes, it\u0027s used on lines 294 \u0026 295 of driver/als_tcs3400.",
+      "parentUuid": "55601b54_de914032",
+      "revId": "4a80a525b97b821c8d43c815a1166ec439d6a714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
