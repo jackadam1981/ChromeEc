@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9c242f93_b98fcd73",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3c4d39_08befa47",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2538ab93_a2d41fda",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 50
@@ -33,6 +51,24 @@
       "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dfcc9a_0bc49e4d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2538ab93_a2d41fda",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e284fee2_d0ab17fd",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "754ce915_afdfd896",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29a9cda7_2be912aa",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 50
@@ -67,6 +121,24 @@
       "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08c8d9c_04448b10",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29a9cda7_2be912aa",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "ab339e8c_3574293f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5bfca4_8eb8a268",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5950cdeb_8f4951da",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 50
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "e081d138_59bdb6c6",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5950cdeb_8f4951da",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f7b974_07265f36",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 50
@@ -115,6 +223,24 @@
       "writtenOn": "2019-08-12T19:31:28Z",
       "side": 1,
       "message": "Remove, we use the scale set in tcs3400_set_scale.",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afbf0c02_01e151ba",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "I thought set_scale is now used to pass the k_channel scaling factor for that particular channel?  If so, each channel has a unique k scaling factor, so tcs3400_rgb_set_scale() will need to be called to pass it kr, kg, and kb, and tcs3400_set_scale() called to pass it kc.",
+      "parentUuid": "63f7b974_07265f36",
       "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "a14f7960_e8fe6881",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 50
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0826fc3_67d304b1",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25642349_362bcb36",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 50
@@ -169,6 +313,24 @@
       "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75720895_0a91e4d9",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 50
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25642349_362bcb36",
+      "revId": "c48d434478a0d381c110d4a5ebf7cf06b03a7c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

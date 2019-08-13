@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d4a04877_23e59178",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "I don\u0027t upload with --no-verify, thought verify was on by default.  It does go through a verify without specifying --verify, but perhaps not as strictly as with --verify?",
+      "parentUuid": "0c4fa131_447f3467",
+      "revId": "9948f3c19ca549916d4939adeb6edc06d6743056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5063ab1_11e4c077",
         "filename": "include/config.h",
         "patchSetId": 52
@@ -33,6 +51,24 @@
       "revId": "9948f3c19ca549916d4939adeb6edc06d6743056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351143ad_da0f37eb",
+        "filename": "include/config.h",
+        "patchSetId": 52
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-13T01:55:53Z",
+      "side": 1,
+      "message": "OK, I guess data will be wrong regardless until all scaling factors have been determined and put into play.  Results from RGB driver will likely deliver values of 0 until calibration is performed for a device and coefficients are added to the code.",
+      "parentUuid": "d5063ab1_11e4c077",
+      "revId": "9948f3c19ca549916d4939adeb6edc06d6743056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
