@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94582a7b_f549d697",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1357421
+      },
+      "writtenOn": "2019-08-13T09:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c171f0_1e5a5b97",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 4
+      },
+      "revId": "0a6e1816a7b9998f931bc596833b8ae0ad4f093a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d69b3796_51976d1a",
         "filename": "include/link_defs.h",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "0a6e1816a7b9998f931bc596833b8ae0ad4f093a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a8130a_20eca379",
+        "filename": "include/link_defs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1357421
+      },
+      "writtenOn": "2019-08-13T09:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69b3796_51976d1a",
+      "range": {
+        "startLine": 140,
+        "startChar": 43,
+        "endLine": 140,
+        "endChar": 48
+      },
+      "revId": "0a6e1816a7b9998f931bc596833b8ae0ad4f093a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
