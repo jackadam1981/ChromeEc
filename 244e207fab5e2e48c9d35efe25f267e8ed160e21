@@ -94,6 +94,30 @@
       "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd072f0_2d3f9da9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T18:27:59Z",
+      "side": 1,
+      "message": "Yeah, I was thinking you might want to do that.\n\nBut I\u0027m still curious what you were trying to do with this CL.",
+      "parentUuid": "3d7ee9ff_059f0e3c",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
