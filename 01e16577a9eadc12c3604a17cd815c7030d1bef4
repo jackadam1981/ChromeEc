@@ -353,6 +353,30 @@
       "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2eadb8_70a31ab9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-08-13T00:48:28Z",
+      "side": 1,
+      "message": "If the role swap fails, it is being handled by initiating a soft reset (Line 3692: case PD_STATE_DR_SWAP) so that will handle role swap fail.",
+      "parentUuid": "98fb7449_1dc613b9",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2152,
+        "endChar": 26
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
