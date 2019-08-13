@@ -65,3 +65,23 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 		ccprints("sleep evt%d", state);
 	}
 }
+
+static int command_task_wake(int argc, char **argv)
+{
+	task_id_t id;
+	char *e;
+
+	if (argc == 2) {
+		id = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM1;
+		ccprintf("wakeup task %d\n", id);
+		task_wake(id);
+		return EC_SUCCESS;
+	}
+
+	return EC_ERROR_PARAM_COUNT;
+}
+DECLARE_CONSOLE_COMMAND(taskwk, command_task_wake,
+			"task_id",
+			"wake a task");
