@@ -44,7 +44,7 @@
  * - Last, pick one from the rest suppliers.  Also note that some boards assume
  *   wireless suppliers as low priority.
  */
-__attribute__((weak)) const int supplier_priority[] = {
+__overridable const int supplier_priority[] = {
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	[CHARGE_SUPPLIER_DEDICATED] = 0,
 #endif
@@ -1385,21 +1385,20 @@ DECLARE_CONSOLE_COMMAND(chgsup, charge_supplier_info,
 			NULL, "print chg supplier info");
 #endif
 
-__attribute__((weak))
+__overridable
 int board_charge_port_is_sink(int port)
 {
 	return 1;
 }
 
-__attribute__((weak))
+__overridable
 int board_charge_port_is_connected(int port)
 {
 	return 1;
 }
 
-__attribute__((weak))
-void board_fill_source_power_info(int port,
-				  struct ec_response_usb_pd_power_info *r)
+__overridable void board_fill_source_power_info(
+		int port, struct ec_response_usb_pd_power_info *r)
 {
 	r->meas.voltage_now = 0;
 	r->meas.voltage_max = 0;
