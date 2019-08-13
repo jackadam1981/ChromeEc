@@ -405,6 +405,24 @@
       "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67fc4ed0_4bbd973b",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-08-13T16:00:12Z",
+      "side": 1,
+      "message": "As far as I\u0027ve been able to tell yes, Jack also confirmed.",
+      "parentUuid": "269f0ec9_88766c24",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
