@@ -16,6 +16,24 @@
       "revId": "c2358d2c9857fd35f71ab843c8ff18cd74a83158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a054d01_7ce2287b",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2019-08-13T00:52:29Z",
+      "side": 1,
+      "message": "Yes we can use d1_1k / data0. I will change code.",
+      "parentUuid": "bf089529_27cb6206",
+      "revId": "c2358d2c9857fd35f71ab843c8ff18cd74a83158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
