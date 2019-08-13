@@ -246,6 +246,30 @@
       "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8621742_1848187a",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-13T10:41:52Z",
+      "side": 1,
+      "message": "Because I observe that .config is configured as SENSOR_CONFIG_EC_S0 and SENSOR_CONFIG_EC_S3 not be configured, which doesn\u0027t match .active_mask (SENSOR_ACTIVE_S0_S3), so I configure .active_mask as SENSOR_ACTIVE_S0. If .active_mask is configured as SENSOR_ACTIVE_S0_S3, but .config not be configured SENSOR_CONFIG_EC_S0 and SENSOR_CONFIG_EC_S3, I believe EC will not get XYZ data from the sensor.",
+      "parentUuid": "0e8fb671_a179e232",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

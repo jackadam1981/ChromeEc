@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6391cd6f_fc83e03a",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-13T10:41:52Z",
+      "side": 1,
+      "message": "If .active_mask is configured as SENSOR_ACTIVE_S0, VDD of the sensor is also high level when OS is S3 state.",
+      "parentUuid": "4b3e9472_ff396602",
+      "range": {
+        "startLine": 265,
+        "startChar": 17,
+        "endLine": 265,
+        "endChar": 33
+      },
+      "revId": "690e60a3adb4529e51d5135c0f2756b7a6936a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ed1bdef_458d9c1c",
         "filename": "board/kodama/board.c",
         "patchSetId": 7
