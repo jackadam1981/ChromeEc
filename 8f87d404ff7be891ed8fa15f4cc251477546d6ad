@@ -45,6 +45,30 @@
       "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a8e920_b1318b21",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-13T03:41:03Z",
+      "side": 1,
+      "message": "But I observed CAM_EC_VSYNC signal is connected from PA8 of EC to CON6901 of Rear camera, I am not sure it needs EC will to do something. If it needn\u0027t EC to do something, PA8 (CAM_EC_VSYNC) of EC will be configured as input mode instead of interrupt mode?",
+      "parentUuid": "f74da6ee_5d4b1c50",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
