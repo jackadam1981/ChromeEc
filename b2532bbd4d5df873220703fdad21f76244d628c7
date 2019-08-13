@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7403099b_7850d87b",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-13T02:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33d04c8f_44c9ac7f",
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2f5e404_d249881f",
         "filename": "driver/ioexpander_nct38xx.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b02780ec_1a294a03",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-13T02:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f5e404_d249881f",
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4972ef7_c7563a0b",
         "filename": "driver/ioexpander_nct38xx.h",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fadbdca_e6a16c72",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-13T02:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4972ef7_c7563a0b",
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -97,6 +151,30 @@
       "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fc3f5f_9a48422e",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-13T02:34:16Z",
+      "side": 1,
+      "message": "Yes, it will be call from nct38xx_tcpc_alert when Vendor Define bit of ALERT register is set.",
+      "parentUuid": "44ff0644_c0ec2c67",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "b2532bbd4d5df873220703fdad21f76244d628c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
