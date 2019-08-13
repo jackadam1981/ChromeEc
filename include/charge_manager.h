@@ -294,7 +294,7 @@ int board_charge_port_is_connected(int port);
  * @param port	Dedicated charge port.
  * @param r	USB PD power info to be updated.
  */
-void board_fill_source_power_info(int port,
-				  struct ec_response_usb_pd_power_info *r);
+__override_proto void board_fill_source_power_info(
+		int port, struct ec_response_usb_pd_power_info *r);
 
 #endif /* __CROS_EC_CHARGE_MANAGER_H */
