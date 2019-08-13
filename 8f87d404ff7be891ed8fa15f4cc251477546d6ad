@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69e359f5_36ff35e8",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T02:52:43Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74da6ee_5d4b1c50",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T02:52:43Z",
+      "side": 1,
+      "message": "This should get removed too. You have no VSYNC pin, therefore no VSYNC sensor.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
