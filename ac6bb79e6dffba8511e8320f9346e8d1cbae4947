@@ -46,6 +46,30 @@
       "revId": "ac6bb79e6dffba8511e8320f9346e8d1cbae4947",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "773356b3_f73402a0",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-08-13T15:59:21Z",
+      "side": 1,
+      "message": "Ah, missed that.",
+      "parentUuid": "636fc64f_82c62b20",
+      "range": {
+        "startLine": 1300,
+        "startChar": 1,
+        "endLine": 1303,
+        "endChar": 32
+      },
+      "revId": "ac6bb79e6dffba8511e8320f9346e8d1cbae4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
