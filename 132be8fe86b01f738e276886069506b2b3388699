@@ -118,6 +118,30 @@
       "revId": "132be8fe86b01f738e276886069506b2b3388699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db14a24c_7a494d28",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-13T19:07:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "758f6df9_e49b081e",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "132be8fe86b01f738e276886069506b2b3388699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
