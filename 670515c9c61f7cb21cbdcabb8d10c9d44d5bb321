@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47cde36e_c2a3da43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-13T20:07:13Z",
+      "side": 1,
+      "message": "I think the octopus branch was but around the time we were switching the corebook sdk compiler. It is weird to me too.\n\nI think it is the { 0 } notation with the inline struct definition that is causing that version of the compiler issue.",
+      "parentUuid": "8fd6bd68_5b506f64",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "670515c9c61f7cb21cbdcabb8d10c9d44d5bb321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af24f340_0ed5d4ae",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "670515c9c61f7cb21cbdcabb8d10c9d44d5bb321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad8f8b1_dec0e47a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-13T20:07:13Z",
+      "side": 1,
+      "message": "See https://en.wikipedia.org/wiki/C_syntax#Initialization\n\n\"Any unspecified elements are set to zero\"\n\nwhen we do { 0 } we are setting the first element to 0 explicitly then the reset of the elements are implicitly set to 0. {} just implicitly sets all elements to 0 instead.",
+      "parentUuid": "af24f340_0ed5d4ae",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "670515c9c61f7cb21cbdcabb8d10c9d44d5bb321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
