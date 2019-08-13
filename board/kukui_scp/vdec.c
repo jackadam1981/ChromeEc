@@ -71,6 +71,7 @@ void vdec_service_task(void *u)
 	mtk_vdec_msg_handle[VDEC_H264] = vdec_h264_msg_handler;
 
 	while (1) {
+		CPRINTS("vdec loop");
 		/*
 		 * Queue unit is added in IPI handler, which is in ISR context.
 		 * Disable IRQ to prevent a clobbered queue.
