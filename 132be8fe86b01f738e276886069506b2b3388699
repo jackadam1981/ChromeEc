@@ -46,6 +46,30 @@
       "revId": "132be8fe86b01f738e276886069506b2b3388699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66e3173_9cc2d135",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-13T16:48:01Z",
+      "side": 1,
+      "message": "Would it make more sense to do nothing in this function?",
+      "parentUuid": "e0675a24_a635f76d",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "132be8fe86b01f738e276886069506b2b3388699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
