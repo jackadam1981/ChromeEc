@@ -94,6 +94,30 @@
       "revId": "132be8fe86b01f738e276886069506b2b3388699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758f6df9_e49b081e",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-13T17:32:05Z",
+      "side": 1,
+      "message": "The code does need to stay.  However, the comment is misleading.  The shutdown is never forced due to power button press - instead a forced shutdown (due to thermal, battery, or console command) initiates a power button press, so this code needs to release the power button as Ed noted.\n\nThe comment should also mention that S5_PGOOD input is passed through the EC to the RSMRST# output, so future readers can make the connection between S5_PGOOD and RSMRST#.",
+      "parentUuid": "9edff2f7_ef4ab12d",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "132be8fe86b01f738e276886069506b2b3388699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
