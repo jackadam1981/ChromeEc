@@ -70,6 +70,30 @@
       "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7ee9ff_059f0e3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-13T04:04:38Z",
+      "side": 1,
+      "message": "May I merge this CL into CL:1730377 (kodama: Remove unused chip drivers)? It\u0027s maybe more appropriate.",
+      "parentUuid": "042dbed1_3e93fd65",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
