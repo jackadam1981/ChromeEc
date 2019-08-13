@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e731194_98b1140f",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-13T18:29:23Z",
+      "side": 1,
+      "message": "Nit: should be `_freq`?",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "a476d205c3270fef93a8c611002f28b6d7f037ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9410f049_3f639e75",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-13T18:29:23Z",
+      "side": 1,
+      "message": "Nit: missing colon.",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "a476d205c3270fef93a8c611002f28b6d7f037ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
