@@ -22,6 +22,30 @@
       "revId": "3453a26d18738bd751773f0837fe8681fc90fc1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd36d3ac_a5221eb7",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-13T11:28:48Z",
+      "side": 1,
+      "message": "Hi,Yilun, it\u0027s done, but I remove charger_profile_override() in charger_profile_override(), \nReasons are as follows：\n1)SOC of battery sometimes not match actual value because of if (rt946x_is_charge_done())...\n2)We are discussing about thermal solution and it would need API charger_profile_override() to do more things.",
+      "parentUuid": "cbccacbd_86c7179f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "3453a26d18738bd751773f0837fe8681fc90fc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
