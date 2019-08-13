@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a2c179_7d2fe57e",
+        "filename": "baseboard/intelrvp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-13T23:47:07Z",
+      "side": 1,
+      "message": "Avoid #ifdef on CONFIG options when possible - delete this block and use IS_ENABLED check below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 0
+      },
+      "revId": "bcd263e3b59c8e705be41fd8e891109b5b6cbe50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c5deb0_7996eb98",
+        "filename": "baseboard/intelrvp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-13T23:47:07Z",
+      "side": 1,
+      "message": "Change to \nif (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))\n\tusb_mux_set(port, TYPEC_MUX_SAFE, \n\t\tUSB_SWITCH_CONNECT, pd_get_polarity(port));\nelse\n\tusb_mux_set(port, TYPEC_MUX_NONE,\n\t\tUSB_SWITCH_CONNECT, pd_get_polarity(port));",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 0
+      },
+      "revId": "bcd263e3b59c8e705be41fd8e891109b5b6cbe50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
