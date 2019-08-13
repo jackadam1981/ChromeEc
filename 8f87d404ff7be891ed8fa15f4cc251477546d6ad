@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "604af14c_0dc03c73",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T03:48:10Z",
+      "side": 1,
+      "message": "Nvm, I misunderstood.",
+      "parentUuid": "69e359f5_36ff35e8",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 3
+      },
+      "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f74da6ee_5d4b1c50",
         "filename": "board/kodama/board.h",
         "patchSetId": 21
@@ -69,6 +93,30 @@
       "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e445ea1e_9bc0578b",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T03:48:10Z",
+      "side": 1,
+      "message": "Oh. my bad. You do have a sensor!\n\nPlease disregard my comments related to this.",
+      "parentUuid": "d2a8e920_b1318b21",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "8f87d404ff7be891ed8fa15f4cc251477546d6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
