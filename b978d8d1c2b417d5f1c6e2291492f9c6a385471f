@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c7a9342c_0c70d091",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-13T18:30:00Z",
+      "side": 1,
+      "message": "Resolve since we moved to different design",
+      "parentUuid": "9c87c09d_8616c029",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8288fcf_26f7a808",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 7
@@ -234,6 +258,30 @@
       "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3405d1_fa1d3988",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-13T18:30:00Z",
+      "side": 1,
+      "message": "Resolve since we moved to different design",
+      "parentUuid": "c30b383a_6756e05a",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "b978d8d1c2b417d5f1c6e2291492f9c6a385471f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
