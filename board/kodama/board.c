@@ -515,8 +515,8 @@ int board_charge_port_is_connected(int port)
 	return gpio_get_level(GPIO_POGO_VBUS_PRESENT);
 }
 
-void board_fill_source_power_info(int port,
-				  struct ec_response_usb_pd_power_info *r)
+__override void board_fill_source_power_info(
+		int port, struct ec_response_usb_pd_power_info *r)
 {
 	r->meas.voltage_now = 3300;
 	r->meas.voltage_max = 3300;
