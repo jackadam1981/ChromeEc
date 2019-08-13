@@ -46,6 +46,30 @@
       "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "042dbed1_3e93fd65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T03:47:28Z",
+      "side": 1,
+      "message": "I\u0027m also confused. It says that you\u0027re Adding or Enabling. But all your CL does is removes lines, some unrelated to backlights.",
+      "parentUuid": "e958e4bb_b36c3810",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
