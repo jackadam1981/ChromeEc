@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e3c1a797_d25301fe",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1107450
+      },
+      "writtenOn": "2019-08-13T08:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5f8a0c_5c35ae3e",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91bc944d_23cae267",
         "filename": "board/kukui/board.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e436a3_567fd233",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1107450
+      },
+      "writtenOn": "2019-08-13T08:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91bc944d_23cae267",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "97238826_23f0c327",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1107450
+      },
+      "writtenOn": "2019-08-13T08:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd55dab6_860c8a4a",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "407ea4c6_be7e9cb1",
         "filename": "common/gesture.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4c1155f9_fd528770",
+        "filename": "common/gesture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1107450
+      },
+      "writtenOn": "2019-08-13T08:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "407ea4c6_be7e9cb1",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f5c7c1a_5b889099",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -84,6 +156,24 @@
       "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6dce6ff_62a5140b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1107450
+      },
+      "writtenOn": "2019-08-13T08:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f5c7c1a_5b889099",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
