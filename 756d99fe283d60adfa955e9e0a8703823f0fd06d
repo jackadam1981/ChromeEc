@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "23593b9f_1e1568f1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-08-13T15:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a4d0ce_6e87cf72",
+      "revId": "756d99fe283d60adfa955e9e0a8703823f0fd06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d414b61_966adf97",
         "filename": "common/motion_sense.c",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "756d99fe283d60adfa955e9e0a8703823f0fd06d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c6f005_a5dea7dd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-08-13T15:06:57Z",
+      "side": 1,
+      "message": "See the next CL, this one ONLY focuses on converting the uses of CONFIG_ACCEL_FIFO. The next one performs a few refactorings.",
+      "parentUuid": "4d414b61_966adf97",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 2
+      },
+      "revId": "756d99fe283d60adfa955e9e0a8703823f0fd06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
