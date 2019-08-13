@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b5b63f_c17da4af",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-13T23:23:20Z",
+      "side": 1,
+      "message": "Rather than appending it at the end of the raw payload, can you add a field to the encryption metadata structure? It\u0027s easier to access that way, you don\u0027t have to hardcode magic offsets on the biod side to extract the validation value, you can just use the structure.",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 56
+      },
+      "revId": "e794f67d3ce78b61f18e584f60be9d58d32fedbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
