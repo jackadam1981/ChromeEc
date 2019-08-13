@@ -213,6 +213,11 @@ enum hook_type {
 	 * USB PD cc connection event.
 	 */
 	HOOK_USB_PD_CONNECT,
+
+	/*
+	 * Double taps is triggered to wake up device.
+	 */
+	HOOK_DOUBLE_TAP_CHANGE,
 };
 
 struct hook_data {

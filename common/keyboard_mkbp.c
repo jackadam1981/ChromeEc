@@ -11,6 +11,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "double_tap.h"
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -276,6 +277,16 @@ DECLARE_HOOK(HOOK_BASE_ATTACHED_CHANGE, mkbp_base_attached_change,
 DECLARE_HOOK(HOOK_INIT, mkbp_base_attached_change, HOOK_PRIO_INIT_LID+1);
 #endif
 
+#ifdef CONFIG_DOUBLE_TAP_SWITCH
+static void mkbp_double_tap_change(void)
+{
+	mkbp_update_switches(EC_MKBP_DOUBLE_TAP, double_tap_get_state());
+}
+DECLARE_HOOK(HOOK_DOUBLE_TAP_CHANGE, mkbp_double_tap_change,
+	     HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_INIT, mkbp_double_tap_change, HOOK_PRIO_INIT_LID+1);
+#endif
+
 void keyboard_update_button(enum keyboard_button_type button, int is_pressed)
 {
 	switch (button) {
@@ -444,6 +455,9 @@ static uint32_t get_supported_switches(void)
 #endif
 #ifdef CONFIG_BASE_ATTACHED_SWITCH
 	val |= BIT(EC_MKBP_BASE_ATTACHED);
+#endif
+#ifdef CONFIG_DOUBLE_TAP_SWITCH
+	val |= BIT(EC_MKBP_DOUBLE_TAP);
 #endif
 	return val;
 }

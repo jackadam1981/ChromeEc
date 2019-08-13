@@ -243,6 +243,10 @@ SECTIONS
         KEEP(*(.rodata.HOOK_USB_PD_CONNECT))
         __hooks_usb_pd_connect_end = .;
 
+        __hooks_double_tap_change  = .;
+        KEEP(*(.rodata.HOOK_DOUBLE_TAP_CHANGE))
+        __hooks_double_tap_change_end = .;
+
         __deferred_funcs = .;
         KEEP(*(.rodata.deferred))
         __deferred_funcs_end = .;

@@ -622,6 +622,7 @@ enum host_event_code {
 	 *
 	 * - TABLET/LAPTOP mode
 	 * - detachable base attach/detach event
+	 * - double tap is triggered
 	 */
 	EC_HOST_EVENT_MODE_CHANGE = 29,
 
@@ -3580,6 +3581,7 @@ struct ec_response_get_next_event_v1 {
 #define EC_MKBP_LID_OPEN	0
 #define EC_MKBP_TABLET_MODE	1
 #define EC_MKBP_BASE_ATTACHED	2
+#define EC_MKBP_DOUBLE_TAP 3
 
 /* Run keyboard factory test scanning */
 #define EC_CMD_KEYBOARD_FACTORY_TEST 0x0068
