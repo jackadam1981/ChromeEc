@@ -1397,9 +1397,8 @@ int board_charge_port_is_connected(int port)
 	return 1;
 }
 
-__attribute__((weak))
-void board_fill_source_power_info(int port,
-				  struct ec_response_usb_pd_power_info *r)
+__overridable void board_fill_source_power_info(
+		int port, struct ec_response_usb_pd_power_info *r)
 {
 	r->meas.voltage_now = 0;
 	r->meas.voltage_max = 0;
