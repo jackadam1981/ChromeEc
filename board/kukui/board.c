@@ -13,6 +13,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "double_tap.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_tcs3400.h"
 #include "driver/bc12/pi3usb9201.h"
@@ -20,6 +21,7 @@
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
 #include "extpower.h"
+#include "gesture.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -304,6 +306,11 @@ static void board_rev_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
 
+void sensor_board_proc_double_tap(void)
+{
+	double_tap_set_state();
+}
+
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW
@@ -382,7 +389,12 @@ struct motion_sensor_t motion_sensors[] = {
 	 .config = {
 		 /* Enable accel in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
+			 .odr = TAP_ODR,
+			 .ec_rate = 100 * MSEC,
+		 },
+		 /* For double taps detection */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = TAP_ODR,
 			 .ec_rate = 100 * MSEC,
 		 },
 	 },

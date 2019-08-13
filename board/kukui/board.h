@@ -76,8 +76,8 @@
 
 /* Define the host events which are allowed to wakeup AP in S3. */
 #define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
-		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
-		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
+		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
+		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_MODE_CHANGE))
 
 #ifndef __ASSEMBLER__
 
@@ -137,6 +137,18 @@ int board_charge_port_is_sink(int port);
 int board_charge_port_is_connected(int port);
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
+
+/* Enable double tap detection */
+#define CONFIG_DOUBLE_TAP_SWITCH
+#define CONFIG_GESTURE_DETECTION
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_WAKEUP_DEVICE
+#define CONFIG_GESTURE_SENSOR_DOUBLE_TAP 0
+#define CONFIG_GESTURE_SAMPLING_INTERVAL_MS 5
+#define CONFIG_GESTURE_TAP_THRES_MG 100
+#define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T 500
+#define CONFIG_GESTURE_DETECTION_MASK \
+	 BIT(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)
 
 #endif /* !__ASSEMBLER__ */
 

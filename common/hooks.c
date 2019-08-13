@@ -58,6 +58,7 @@ static const struct hook_ptrs hook_list[] = {
 	{__hooks_second, __hooks_second_end},
 	{__hooks_usb_pd_disconnect, __hooks_usb_pd_disconnect_end},
 	{__hooks_usb_pd_connect, __hooks_usb_pd_connect_end},
+	{__hooks_double_tap_change, __hooks_double_tap_change_end},
 };
 
 /* Times for deferrable functions */
