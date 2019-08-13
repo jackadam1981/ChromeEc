@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5f2b0122_f96ab0bc",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-13T02:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c64a30de_c4b0c609",
+      "revId": "6bfdb8649e142ed8a826149eeb837a666c761bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "118b9b12_fe032365",
         "filename": "include/gpio_list.h",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "6bfdb8649e142ed8a826149eeb837a666c761bcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf77067_20822884",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-13T02:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "118b9b12_fe032365",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 10
+      },
+      "revId": "6bfdb8649e142ed8a826149eeb837a666c761bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
