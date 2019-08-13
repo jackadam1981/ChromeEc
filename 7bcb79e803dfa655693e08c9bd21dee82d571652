@@ -222,6 +222,30 @@
       "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e8fb671_a179e232",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-08-13T04:46:29Z",
+      "side": 1,
+      "message": "Why do you want to change this to S0 only? Could you please elaborate the reason here?",
+      "parentUuid": "c7bf0693_9b54624c",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
