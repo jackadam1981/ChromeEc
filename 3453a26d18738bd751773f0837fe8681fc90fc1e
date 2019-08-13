@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbccacbd_86c7179f",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-13T05:05:51Z",
+      "side": 1,
+      "message": "This is identical to mt6370_charger_profile_override, please see battery_mm8013.c for revising this part.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "3453a26d18738bd751773f0837fe8681fc90fc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
