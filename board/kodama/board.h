@@ -117,7 +117,6 @@ enum charge_port {
 	CHARGE_PORT_POGO,
 };
 
-#include "ec_commands.h"
 #include "gpio_signal.h"
 #include "registers.h"
 
@@ -133,8 +132,6 @@ void pogo_adc_interrupt(enum gpio_signal signal);
 int board_discharge_on_ac(int enable);
 int board_charge_port_is_sink(int port);
 int board_charge_port_is_connected(int port);
-void board_fill_source_power_info(int port,
-				  struct ec_response_usb_pd_power_info *r);
 
 #endif /* !__ASSEMBLER__ */
 
