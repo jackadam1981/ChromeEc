@@ -20,7 +20,9 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/max14637.h"
 #include "driver/ppc/sn5s330.h"
+#ifndef BOARD_TREEYA
 #include "driver/tcpm/anx74xx.h"
+#endif
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "ec_commands.h"
@@ -77,6 +79,7 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
+#ifndef BOARD_TREEYA
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -99,6 +102,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.flags = 0,
 	},
 };
+#endif
 
 void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -118,6 +122,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
+#ifndef BOARD_TREEYA
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.driver = &anx74xx_tcpm_usb_mux_driver,
@@ -129,6 +134,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		/* TODO(ecgh): ps8751_tune_mux needed? */
 	}
 };
+#endif
 
 struct ppc_config_t ppc_chips[] = {
 	{

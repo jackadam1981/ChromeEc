@@ -10,6 +10,14 @@
 
 #include "baseboard.h"
 
+/* Treeya use anx3447 at tcpc port 0 */
+#define USB_PD_PORT_ANX7447 USB_PD_PORT_ANX74XX
+#define BOARD_TCPC_C0_RESET_HOLD_DELAY ANX74XX_RESET_HOLD_MS
+#define BOARD_TCPC_C0_RESET_POST_DELAY ANX74XX_RESET_HOLD_MS
+#define BOARD_TCPC_C1_RESET_HOLD_DELAY PS8XXX_RESET_DELAY_MS
+#define BOARD_TCPC_C1_RESET_POST_DELAY 0
+#define CONFIG_USB_PD_TCPM_ANX7447
+
 /*
  * By default, enable all console messages excepted HC, ACPI and event:
  * The sensor stack is generating a lot of activity.
