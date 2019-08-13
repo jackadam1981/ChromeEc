@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa96629_3dc308c8",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T02:57:15Z",
+      "side": 0,
+      "message": "Please just move this to the de-KRANE-ify CL (aka \"kodama: Remove unused chip drivers\").",
+      "revId": "559b32d472907fdca27cb4e59167f6ab0fea77d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36acb81b_b0bbc75b",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T02:57:15Z",
+      "side": 0,
+      "message": "Why is this DEDICATED_CHARGE_PORT stuff appearing here? It\u0027s pretty unrelated to your CL. Please fix.",
+      "revId": "559b32d472907fdca27cb4e59167f6ab0fea77d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
