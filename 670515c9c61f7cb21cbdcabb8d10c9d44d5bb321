@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "da487043_dc7dffcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-13T20:08:21Z",
+      "side": 1,
+      "message": "s/was but around/was cut around/",
+      "parentUuid": "47cde36e_c2a3da43",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "670515c9c61f7cb21cbdcabb8d10c9d44d5bb321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af24f340_0ed5d4ae",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
