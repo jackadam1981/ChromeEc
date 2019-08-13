@@ -907,10 +907,11 @@ void task_print_list(void)
 {
 	int i;
 
-	ccputs("Task Ready Name         Events      Time (s)  StkUsed\n");
+	ccputs("Task Ready Enable Name         Events      Time (s)  StkUsed\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
 		char is_ready = (tasks_ready & (1<<i)) ? 'R' : ' ';
+		char is_en = (tasks_enabled & (1<<i)) ? 'E' : ' ';
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
@@ -920,9 +921,9 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
-			 task_names[i], tasks[i].events, tasks[i].runtime,
-			 stackused, tasks_init[i].stack_size);
+		ccprintf("%4d %c %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
+			 is_en, task_names[i], tasks[i].events,
+			 tasks[i].runtime, stackused, tasks_init[i].stack_size);
 		cflush();
 	}
 }
