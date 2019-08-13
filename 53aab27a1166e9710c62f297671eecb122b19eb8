@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c843f41_490956ea",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-13T19:59:24Z",
+      "side": 1,
+      "message": "Aren\u0027t we supposed to use IS_ENABLED whenever possible?",
+      "revId": "53aab27a1166e9710c62f297671eecb122b19eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
