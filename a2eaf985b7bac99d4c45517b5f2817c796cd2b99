@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1c23572_ee79fcd9",
+        "filename": "chip/max32660/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-13T22:24:46Z",
+      "side": 1,
+      "message": "Judging by how the STM32 code does it [1], I think the I2C files should only be added if `CONFIG_I2C` is defined, something like this:\n\n chip-$(CONFIG_I2C)+\u003di2c_chip.o i2c_api.o\n\nOtherwise, I get compile errors saying that `CC_I2C` is undefined when I compile a board that uses the MAX32660 but doesn\u0027t define `CONFIG_I2C`.\n\n[1]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/ish/build.mk#21",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2390fe_3d62a58d",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-13T22:24:46Z",
+      "side": 1,
+      "message": "`CPRINTS` calls should have `\\n` at the end of their strings, as they\u0027re automatically wrapped in square brackets and line feeds.",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10fba5d4_7c23c766",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-13T22:24:46Z",
+      "side": 1,
+      "message": "Similarly.",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
