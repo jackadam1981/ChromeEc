@@ -34,6 +34,24 @@
       "revId": "36079ad1bc5558672d7e6eac18fa2e3c9aa8c340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d681fb_5c22e696",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T02:47:08Z",
+      "side": 1,
+      "message": "You\u0027re right. I like it better your way Tim, to be consistent.\n\nDaisuke, would you mind it if was not \"ioex_...\"?",
+      "parentUuid": "c9037552_6b0a96c5",
+      "revId": "36079ad1bc5558672d7e6eac18fa2e3c9aa8c340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
