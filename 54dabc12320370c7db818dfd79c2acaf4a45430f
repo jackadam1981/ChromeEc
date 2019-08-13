@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9c61374_8ad3451a",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T19:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c6c42d_37ee02c2",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c05db754_a8e0acdd",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5219888f_0660d5ec",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T19:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05db754_a8e0acdd",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2798396b_64c35850",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T19:11:22Z",
+      "side": 1,
+      "message": "Done?\nCONFIG_ACCEL_FIFO enough?\n\nnvm, CONFIG_ACCEL_FIFO already defined in baseboard/kukui/board.h",
+      "parentUuid": "bbff70da_7c29b942",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02778193_96705531",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2019-07-24T09:15:11Z",
       "side": 1,
       "message": "is it an interrupt for the EC or just the AP?",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b17232c_83c3c854",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T19:11:22Z",
+      "side": 1,
+      "message": "Only EC. Why would the AP be involved?\n\nThe thing I\u0027m confused about is why do we have a lid interrupt pin, I thought we\u0027re only polling this sensor.",
+      "parentUuid": "02778193_96705531",
       "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "b8f03343_46f5644d",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T19:11:22Z",
+      "side": 1,
+      "message": "I don\u0027t know... What about when we\u0027re in RO?",
+      "parentUuid": "3f997669_9e477d67",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 53
+      },
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6b016a4_584222aa",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 3
@@ -107,6 +203,24 @@
       "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70583268_8783327f",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-13T19:11:22Z",
+      "side": 1,
+      "message": "Done, just else.",
+      "parentUuid": "f6b016a4_584222aa",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
