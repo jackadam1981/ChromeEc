@@ -22,6 +22,30 @@
       "revId": "ac6bb79e6dffba8511e8320f9346e8d1cbae4947",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636fc64f_82c62b20",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-13T15:55:42Z",
+      "side": 1,
+      "message": "No. This should not be \"else\".\nBesides \"--read\" case, it is supposed to handle the case \u0027--verify\u0027 is given. Please check line 1292~1299. Also take a look at line 1000~1010, stm32 case.",
+      "parentUuid": "60f5e14f_6fd42897",
+      "range": {
+        "startLine": 1300,
+        "startChar": 1,
+        "endLine": 1303,
+        "endChar": 32
+      },
+      "revId": "ac6bb79e6dffba8511e8320f9346e8d1cbae4947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
