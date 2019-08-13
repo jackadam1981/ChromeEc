@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b3c6cfc6_e95dcab0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-08-13T22:27:03Z",
+      "side": 1,
+      "message": "There must be a blank line after this.",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1c23572_ee79fcd9",
         "filename": "chip/max32660/build.mk",
         "patchSetId": 9
