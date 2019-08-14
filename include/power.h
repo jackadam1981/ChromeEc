@@ -221,9 +221,9 @@ struct host_sleep_event_context {
  * @param state Current host sleep state updated by the host.
  * @param ctx Possible sleep parameters and return values, depending on state.
  */
-void
-power_chipset_handle_host_sleep_event(enum host_sleep_event state,
-				      struct host_sleep_event_context *ctx);
+__override_proto void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx);
 
 /**
  * Provide callback to allow board to take any action on host sleep event
