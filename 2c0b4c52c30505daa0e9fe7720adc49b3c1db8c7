@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e61eadba_d560184a",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T00:31:28Z",
+      "side": 1,
+      "message": "Please use designated initializers here.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5207719_e2a75b06",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T00:31:28Z",
+      "side": 1,
+      "message": "Remove - create a bug to track if support is needed later.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe01478_de5c7e64",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T00:31:28Z",
+      "side": 1,
+      "message": "Nit - since this value is shared by both ports, you only need one #define.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca08d05_cee94901",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T00:31:28Z",
+      "side": 1,
+      "message": "Why is DC_JACK{PORT_0 defined in this array?  It\u0027s not referenced by tcpc_gpios[].",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ebc2d50_b5fa0ded",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T00:31:28Z",
+      "side": 1,
+      "message": "Nit - it\u0027s clearer if you replace the hard coded masks with (BIT(4)|BIT(5)).  Then it\u0027s easier to match the bit number to the GPIO pin definition above.",
+      "range": {
+        "startLine": 197,
+        "startChar": 22,
+        "endLine": 197,
+        "endChar": 26
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92185bee_5e0ccfcd",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T00:31:28Z",
+      "side": 1,
+      "message": "Please remove and add in when verified.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 0
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
