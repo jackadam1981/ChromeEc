@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13191d2e_5cb6e98e",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2fea10c_0bdf9882",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "b99a2cad6e1832741d80a311b5fcbaa88444ac06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e6b7f4_9c9f4a5e",
         "filename": "include/gpio_list.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b99a2cad6e1832741d80a311b5fcbaa88444ac06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2343b31c_55b7f9f5",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:16Z",
+      "side": 1,
+      "message": "Ok, lets change it to handler.",
+      "parentUuid": "00e6b7f4_9c9f4a5e",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "b99a2cad6e1832741d80a311b5fcbaa88444ac06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
