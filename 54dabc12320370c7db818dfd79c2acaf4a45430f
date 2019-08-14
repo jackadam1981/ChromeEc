@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9012cdf6_80d031c4",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-14T04:47:32Z",
+      "side": 1,
+      "message": "I don\u0027t know either...\nThis comment was added before we run G3 power test, now I think the setup in CL:1741593 is good.\n(or at least change SPI_CK to OUT_LOW)",
+      "parentUuid": "b8f03343_46f5644d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 53
+      },
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6b016a4_584222aa",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 3
