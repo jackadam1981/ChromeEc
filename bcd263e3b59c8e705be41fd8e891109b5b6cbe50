@@ -45,6 +45,30 @@
       "revId": "bcd263e3b59c8e705be41fd8e891109b5b6cbe50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120607a0_f1d14631",
+        "filename": "baseboard/intelrvp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T00:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27c5deb0_7996eb98",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 0
+      },
+      "revId": "bcd263e3b59c8e705be41fd8e891109b5b6cbe50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
