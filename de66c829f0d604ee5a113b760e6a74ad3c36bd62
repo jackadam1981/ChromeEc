@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf46394_4c0a7e7c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-14T15:10:39Z",
+      "side": 1,
+      "message": "Use constant instead of 1000: Use TCS3400_LIGHT_MAX_FREQ instead.\nAlso TCS3400_LIGHT_MAX_FREQ is 10Hz, so it should be changed as well.",
+      "revId": "de66c829f0d604ee5a113b760e6a74ad3c36bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
