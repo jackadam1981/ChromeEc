@@ -647,7 +647,7 @@ power_board_handle_host_sleep_event(enum host_sleep_event state)
 	/* Default weak implementation -- no action required. */
 }
 
-void
+__override void
 power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 				      struct host_sleep_event_context *ctx)
 {

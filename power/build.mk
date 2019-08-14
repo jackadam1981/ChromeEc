@@ -19,4 +19,5 @@ power-$(CONFIG_CHIPSET_RK3399)+=rk3399.o
 power-$(CONFIG_CHIPSET_SDM845)+=sdm845.o
 power-$(CONFIG_CHIPSET_SKYLAKE)+=skylake.o intel_x86.o
 power-$(CONFIG_CHIPSET_STONEY)+=stoney.o
+power-$(CONFIG_POWER_COMMANDS)+=commands.o
 power-$(CONFIG_POWER_COMMON)+=common.o
