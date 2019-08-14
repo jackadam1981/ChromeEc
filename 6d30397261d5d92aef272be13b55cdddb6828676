@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "73639450_296b7776",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T20:07:16Z",
+      "side": 1,
+      "message": "nit: Can we make another variable in the function for this? It just makes it a little easier to validate against the RFC since it matches HashLen in that.\n\n  const uint8_t hash_len \u003d SHA256_DIGEST_SIZE;",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e4136d_0ca264fb",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T20:07:16Z",
+      "side": 1,
+      "message": "I wonder if we should change this to \"N\" to match the style you\u0027re using with \"T\". Generally I don\u0027t like variable names like that, but I think it can be good when it matches the RFC, since it makes it easy to compare directly. We can add a comment \"// num blocks\" when declaring.",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9096fcd2_a2552247",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 6
@@ -18,6 +64,52 @@
         "startChar": 29,
         "endLine": 104,
         "endChar": 46
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7edb0045_a40281e4",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T20:07:16Z",
+      "side": 1,
+      "message": "sizeof(count) makes it a little clearer that we\u0027re using allocating space for that value",
+      "range": {
+        "startLine": 105,
+        "startChar": 63,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c7e6bd_f71e0a97",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T20:07:16Z",
+      "side": 1,
+      "message": "sizeof(count) here as well",
+      "range": {
+        "startLine": 133,
+        "startChar": 27,
+        "endLine": 133,
+        "endChar": 28
       },
       "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
