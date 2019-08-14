@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c586bc8c_61fb7631",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-14T01:19:40Z",
+      "side": 1,
+      "message": "I wonder, should we do the 7% compensation here, instead?",
+      "revId": "60f00e00efed22f17e112c392130dd3953659f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
