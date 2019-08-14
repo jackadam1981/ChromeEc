@@ -175,7 +175,8 @@ test_mockable __keep int main(void)
 	 * Execute PMIC reset in case we're here after watchdog reset to unwedge
 	 * AP. This has to be done here because vboot_main may jump to RW.
 	 */
-	chipset_handle_reboot();
+	if (IS_ENABLED(CONFIG_CHIPSET_SKYLAKE))
+		chipset_handle_reboot();
 	/*
 	 * For RO, it behaves as follows:
 	 *   In recovery, it enables PD communication and returns.

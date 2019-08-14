@@ -167,6 +167,11 @@ static int verify_and_jump(void)
 	return rv;
 }
 
+__overridable void led_critical(void)
+{
+	/* no-op */
+}
+
 /* Request more power: charging battery or more powerful AC adapter */
 static void request_power(void)
 {
