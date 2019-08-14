@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7ea311c_234231a9",
+        "filename": "baseboard/intelrvp/retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "if we have 3 ports, combination of sharing the NVM varies hence kept 2 separate macros.",
+      "parentUuid": "a957864f_ca7a8c2c",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77b85789_54b91b5a",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-14T16:20:10Z",
       "side": 1,
       "message": "SMCLK5/SMDAT5 are function 3 correct?  I\u0027m not familiar with the ITE implementation and I don\u0027t actually see the function parameter used by it83xx/gpio.c:gpio_set_alternate_function(), so this might be don\u0027t care.",
+      "range": {
+        "startLine": 197,
+        "startChar": 40,
+        "endLine": 197,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3cab6c_f57dcc03",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "yes you are right. Looks like this can be anything and is checked for \u003e\u003d 0 or \u003c 0\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/it83xx/gpio.c#381",
+      "parentUuid": "77b85789_54b91b5a",
       "range": {
         "startLine": 197,
         "startChar": 40,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "21e260d3_f7c482f3",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7972e270_b317a009",
+      "range": {
+        "startLine": 200,
+        "startChar": 40,
+        "endLine": 200,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbb30496_29a9a6fe",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c32c156_656d8186",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dbb30496_29a9a6fe",
+      "range": {
+        "startLine": 201,
+        "startChar": 31,
+        "endLine": 201,
+        "endChar": 32
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5592ba94_194e7697",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20c21101_e07fb129",
+      "range": {
+        "startLine": 205,
+        "startChar": 40,
+        "endLine": 205,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "242d51e6_ad2624ab",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e9ad7e9_a4b547b0",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "242d51e6_ad2624ab",
+      "range": {
+        "startLine": 208,
+        "startChar": 40,
+        "endLine": 208,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "773e4237_01d9655a",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "817aed98_5e203372",
+      "range": {
+        "startLine": 209,
+        "startChar": 40,
+        "endLine": 209,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cac8a12_abfc1a25",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2019-08-14T16:20:10Z",
       "side": 1,
       "message": "I don\u0027t understand what you mean by \"GPIOs that have internal configuration\".  Are these pins configured somewhere else, is this the default setting by the it8320, or will they be configured in a future change list?",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 82
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76874902_437f0bd3",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T17:23:40Z",
+      "side": 1,
+      "message": "these are configured by ITE internally. these will not be configure in future CL. I will plan to remove it.",
+      "parentUuid": "5cac8a12_abfc1a25",
       "range": {
         "startLine": 216,
         "startChar": 3,
