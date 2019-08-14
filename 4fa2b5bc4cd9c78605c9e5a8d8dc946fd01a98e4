@@ -70,6 +70,30 @@
       "revId": "4fa2b5bc4cd9c78605c9e5a8d8dc946fd01a98e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0299611a_7d0a5a92",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-14T21:20:16Z",
+      "side": 1,
+      "message": "This is because this particular file, fpsensor.c is not linked into test builds, so in this file we always have always_memset. But for the other two (fpsensor_crypto.c and fpsensor_state.c) we can\u0027t compile without this guard.",
+      "parentUuid": "4f0a75c5_3053c28a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "4fa2b5bc4cd9c78605c9e5a8d8dc946fd01a98e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
