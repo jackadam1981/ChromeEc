@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f4bdc_008b3cc8",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T21:45:00Z",
+      "side": 1,
+      "message": "Have you thought about hiding this in acpi_dptf_set_profile_num (to beat CL:1747061 at the same time)?",
+      "range": {
+        "startLine": 262,
+        "startChar": 4,
+        "endLine": 262,
+        "endChar": 25
+      },
+      "revId": "81c74cabddd8ead1af10d073d5e9cd355f2b45d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
