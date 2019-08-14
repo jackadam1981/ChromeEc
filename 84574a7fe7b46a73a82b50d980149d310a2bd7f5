@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3fba6124_2caf8041",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T18:50:07Z",
+      "side": 1,
+      "message": "So either set all function params to 0, or correct them.  I see other platforms have done both approaches.  My preference is to correct them.",
+      "parentUuid": "2c3cab6c_f57dcc03",
+      "range": {
+        "startLine": 197,
+        "startChar": 40,
+        "endLine": 197,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7972e270_b317a009",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 4
