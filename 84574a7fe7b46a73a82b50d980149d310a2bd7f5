@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a957864f_ca7a8c2c",
+        "filename": "baseboard/intelrvp/retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "If I understand correctly, the .shared_nvm setting will always be set to the same value for TYPE_C_PORT_0 and TYPE_C_PORT1.  You can just set this to BB_RETIMER_SHARED_NVM without creating separate macros for each port.",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b85789_54b91b5a",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "SMCLK5/SMDAT5 are function 3 correct?  I\u0027m not familiar with the ITE implementation and I don\u0027t actually see the function parameter used by it83xx/gpio.c:gpio_set_alternate_function(), so this might be don\u0027t care.",
+      "range": {
+        "startLine": 197,
+        "startChar": 40,
+        "endLine": 197,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7972e270_b317a009",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "Function 3?",
+      "range": {
+        "startLine": 200,
+        "startChar": 40,
+        "endLine": 200,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb30496_29a9a6fe",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "Function 3?",
+      "range": {
+        "startLine": 201,
+        "startChar": 31,
+        "endLine": 201,
+        "endChar": 32
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c21101_e07fb129",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "Function 3?",
+      "range": {
+        "startLine": 205,
+        "startChar": 40,
+        "endLine": 205,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242d51e6_ad2624ab",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "Function 1?",
+      "range": {
+        "startLine": 208,
+        "startChar": 40,
+        "endLine": 208,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817aed98_5e203372",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "Function 1?",
+      "range": {
+        "startLine": 209,
+        "startChar": 40,
+        "endLine": 209,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cac8a12_abfc1a25",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-14T16:20:10Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean by \"GPIOs that have internal configuration\".  Are these pins configured somewhere else, is this the default setting by the it8320, or will they be configured in a future change list?",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 82
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
