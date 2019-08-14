@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "329b648f_3008d087",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-14T10:41:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65703fc9_4edd6f6a",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 38
+      },
+      "revId": "e6a800f4ba1d4efa80fa9a7fc8e5d128d301e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ec1d923_5c7c9c89",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e6a800f4ba1d4efa80fa9a7fc8e5d128d301e8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b72f92_fa19c491",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-14T10:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ec1d923_5c7c9c89",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 19
+      },
+      "revId": "e6a800f4ba1d4efa80fa9a7fc8e5d128d301e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
