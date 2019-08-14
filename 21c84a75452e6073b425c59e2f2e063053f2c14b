@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e20fd81_2ee580e5",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T22:35:40Z",
+      "side": 1,
+      "message": "Does it work to move \"template_matched\" inside \"struct positive_match_secret_state\"? Or actually is it the same thing as \"state.template_with_secret\"? The one referenced in fp_command_stats could be state.template_with_secret? Double-check to see if that works.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "21c84a75452e6073b425c59e2f2e063053f2c14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465f9eb3_20d07b4e",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T22:35:40Z",
+      "side": 1,
+      "message": "You could do something like this:\n\n  struct positive_match_secret_state state \u003d positive_match_secret_state;\n  fp_disable_positive_match_secret(\u0026positive_match_secret_state);\n\n  // use the local copy \"state\" in the remainder\n\nIt would just prevent accidentally forgetting to call fp_disable_positive_match_secret in the future if we add additional checks.",
+      "revId": "21c84a75452e6073b425c59e2f2e063053f2c14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

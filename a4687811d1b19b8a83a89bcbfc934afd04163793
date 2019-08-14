@@ -708,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "08a96ac6_4d84e996",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5741,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T22:35:40Z",
+      "side": 1,
+      "message": "Yeah, biod does use 32-bit values a lot. I was hoping maybe we could fix biod at some point to be consistent, but I haven\u0027t looked through it enough to see whether it would be possible. It\u0027s always easy to change biod, but the EC commands have to be versioned (or we force a firmware update at the same time as biod), so it would be nice to not have to change in the future if we don\u0027t have to.\n\nI can\u0027t think of a use-case for negative value. We could always treat UINT8_MAX as special if we need to.",
+      "parentUuid": "64893d07_f79dd374",
+      "range": {
+        "startLine": 5741,
+        "startChar": 1,
+        "endLine": 5741,
+        "endChar": 11
+      },
+      "revId": "a4687811d1b19b8a83a89bcbfc934afd04163793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35584cea_285b0bd2",
         "filename": "include/fpsensor_state.h",
         "patchSetId": 9
