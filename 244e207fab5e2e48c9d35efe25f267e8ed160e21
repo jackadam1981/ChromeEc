@@ -118,6 +118,30 @@
       "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d860e79a_f159cbb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-14T01:04:26Z",
+      "side": 1,
+      "message": "I referred to the API board_setup_panel of Flapjack board which seems to be compatible for Kodama board. I worried about that there would be different solution for Kodama, but not clear which solution is better for Kodama, so I created this CL about LCD backlight topic.",
+      "parentUuid": "acd072f0_2d3f9da9",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "244e207fab5e2e48c9d35efe25f267e8ed160e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
