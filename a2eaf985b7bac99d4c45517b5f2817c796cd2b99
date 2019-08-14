@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39138c5e_57857522",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-08-14T13:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c6cfc6_e95dcab0",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1c23572_ee79fcd9",
         "filename": "chip/max32660/build.mk",
         "patchSetId": 9
