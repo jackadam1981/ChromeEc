@@ -22,6 +22,30 @@
       "revId": "434f92c87c093a516b0348bb71e69ef661411c95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2945beb2_098f32d3",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-14T18:11:20Z",
+      "side": 1,
+      "message": "Sure, but why is IS_ENABLED preferred to #ifdef?",
+      "parentUuid": "19d36b8c_72b1f828",
+      "range": {
+        "startLine": 260,
+        "startChar": 7,
+        "endLine": 260,
+        "endChar": 28
+      },
+      "revId": "434f92c87c093a516b0348bb71e69ef661411c95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
