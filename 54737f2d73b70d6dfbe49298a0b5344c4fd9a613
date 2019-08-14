@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edbc5cce_fa391827",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-14T18:05:28Z",
+      "side": 0,
+      "message": "I thought removing this would be enough to free up the space occupied by the counter, at least it should have been. \n\nI think this patch should make sure that the space is freed up.\n\nLet me take a look.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "54737f2d73b70d6dfbe49298a0b5344c4fd9a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

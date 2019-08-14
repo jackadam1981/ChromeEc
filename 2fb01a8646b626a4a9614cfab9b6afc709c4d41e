@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8aff410_49b26f3d",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-14T18:05:28Z",
+      "side": 1,
+      "message": "no need to keep deprecated config flag in comments.",
+      "range": {
+        "startLine": 1723,
+        "startChar": 0,
+        "endLine": 1727,
+        "endChar": 34
+      },
+      "revId": "2fb01a8646b626a4a9614cfab9b6afc709c4d41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
