@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2f24c3b_52924a9e",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-14T05:39:46Z",
+      "side": 1,
+      "message": "Oh I had no idea you could declare an extern inside a function, sounds better than poluting the namespace.",
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
