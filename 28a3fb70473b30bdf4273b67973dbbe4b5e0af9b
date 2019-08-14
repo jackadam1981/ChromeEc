@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0a06d394_11fb6194",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:34:56Z",
+      "side": 1,
+      "message": "I *think* strlen() on a constant string will be optimized as a constant, so you could use strlen() here and still wouldn\u0027t have a variable-length array. This BUILD_CHECK_INLINE seems to show that is what is happening:\n\n  \tuint8_t info[strlen(info_prefix) + sizeof(user_id)];\n\n\tBUILD_CHECK_INLINE(sizeof(info), sizeof(info_prefix) - 1 + sizeof(user_id));\n\nUsing strlen() just makes it consistent with strlen(info_prefix) that is used later in the function.",
+      "range": {
+        "startLine": 154,
+        "startChar": 14,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "749e3e4b_e80323aa",
         "filename": "common/util.c",
         "patchSetId": 15
