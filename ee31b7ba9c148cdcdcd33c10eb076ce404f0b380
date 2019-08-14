@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "36123a01_a172a9ef",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-08-14T21:07:32Z",
+      "side": 1,
+      "message": "Will this code be built when BOARD_TGLRVPU_ITE is undefined?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e06d6f9c_63c28840",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 5
