@@ -46,6 +46,30 @@
       "revId": "3a3e298d0f3fafbe6f941bd296c0e3022042a7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa6e376_ebdda33c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-08-14T08:02:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a9ac3b2d_ac7d6a14",
+      "range": {
+        "startLine": 1400,
+        "startChar": 0,
+        "endLine": 1400,
+        "endChar": 13
+      },
+      "revId": "3a3e298d0f3fafbe6f941bd296c0e3022042a7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
