@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b5d4d3e_caf117e6",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91ab582_60416cc5",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36123a01_a172a9ef",
         "filename": "board/tglrvpu_ite/board.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-14T21:07:32Z",
       "side": 1,
       "message": "Will this code be built when BOARD_TGLRVPU_ITE is undefined?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337ee230_44c9007a",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T21:41:39Z",
+      "side": 1,
+      "message": "yes: I have a symbolic link for tglrvpy_ite.\nmake detects this and builds respective board",
+      "parentUuid": "36123a01_a172a9ef",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0392fd_f4dbee07",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e06d6f9c_63c28840",
+      "range": {
+        "startLine": 152,
+        "startChar": 13,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
