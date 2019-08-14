@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19d36b8c_72b1f828",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T18:06:30Z",
+      "side": 1,
+      "message": "Can you use IS_ENABLED?",
+      "range": {
+        "startLine": 260,
+        "startChar": 7,
+        "endLine": 260,
+        "endChar": 28
+      },
+      "revId": "434f92c87c093a516b0348bb71e69ef661411c95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
