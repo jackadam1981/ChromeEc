@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "749e3e4b_e80323aa",
+        "filename": "common/util.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:07:02Z",
+      "side": 1,
+      "message": "nit: bool",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 3
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa8d6b6_0b9afdad",
+        "filename": "include/util.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:07:02Z",
+      "side": 1,
+      "message": "nit: \"Check if\"",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 9
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea26e905_15d9527d",
+        "filename": "include/util.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:07:02Z",
+      "side": 1,
+      "message": "Can we add a test for this? It may be easier to split the bytes_are_trivial related code into a separate commit just to keep the size of the CL smaller.",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29aa503b_7d6c0a8c",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:07:02Z",
+      "side": 1,
+      "message": "Can you add the exact command you use so someone in the future can reproduce if necessary?\n\nAlso, please include the git commit (SHA1) and repo of boringssl that you are using. e.g., \"From boringssl commit ABC123 https://boringssl.googlesource.com/boringssl\"\n\n(e.g., if there were some bug in boringssl that generated wrong output we would want to update it here).",
+      "range": {
+        "startLine": 316,
+        "startChar": 39,
+        "endLine": 316,
+        "endChar": 64
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed35b18_989fd6d6",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:07:02Z",
+      "side": 1,
+      "message": "nit: BoringSSL",
+      "range": {
+        "startLine": 316,
+        "startChar": 47,
+        "endLine": 316,
+        "endChar": 56
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
