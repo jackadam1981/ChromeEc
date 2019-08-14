@@ -39,6 +39,29 @@
       "revId": "21c84a75452e6073b425c59e2f2e063053f2c14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466f3b70_e4fc96fb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5745,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T22:53:12Z",
+      "side": 1,
+      "message": "Let\u0027s change to FP_POSITIVE_MATCH_SECRET_BYTES (to be consistent everywhere)",
+      "range": {
+        "startLine": 5745,
+        "startChar": 8,
+        "endLine": 5745,
+        "endChar": 33
+      },
+      "revId": "21c84a75452e6073b425c59e2f2e063053f2c14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
