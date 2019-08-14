@@ -70,6 +70,30 @@
       "revId": "434f92c87c093a516b0348bb71e69ef661411c95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7229941a_c7ac657b",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-14T20:45:25Z",
+      "side": 1,
+      "message": "I see. Thanks!",
+      "parentUuid": "a14b9b4f_c1d10014",
+      "range": {
+        "startLine": 260,
+        "startChar": 7,
+        "endLine": 260,
+        "endChar": 28
+      },
+      "revId": "434f92c87c093a516b0348bb71e69ef661411c95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
