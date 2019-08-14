@@ -22,6 +22,30 @@
       "revId": "e794f67d3ce78b61f18e584f60be9d58d32fedbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc86444_586a1c6e",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-14T01:45:23Z",
+      "side": 1,
+      "message": "Done. This requires inserting empty validation value at migration time. See biod migration CL.",
+      "parentUuid": "17b5b63f_c17da4af",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 56
+      },
+      "revId": "e794f67d3ce78b61f18e584f60be9d58d32fedbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
