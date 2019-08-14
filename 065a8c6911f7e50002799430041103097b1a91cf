@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c57e88dc_9c10feda",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T17:35:34Z",
+      "side": 1,
+      "message": "Can you use ioex_ih_count?",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "065a8c6911f7e50002799430041103097b1a91cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae34ece_5de908bf",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T17:35:34Z",
+      "side": 1,
+      "message": "Why not CPRINTS?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "065a8c6911f7e50002799430041103097b1a91cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae2c18e_7fa12e48",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T17:35:34Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "065a8c6911f7e50002799430041103097b1a91cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59304fd_764316da",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T17:35:34Z",
+      "side": 1,
+      "message": "They always exist as a pair, right? Can you unite them with enable switch?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "065a8c6911f7e50002799430041103097b1a91cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
