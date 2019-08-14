@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f91ab582_60416cc5",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-08-14T19:33:14Z",
+      "side": 1,
+      "message": "I think this would be a little easier to read with separate variables for the port 1 and port 2 values, instead of reusing fab_id and board_id.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e06d6f9c_63c28840",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-08-14T19:33:14Z",
+      "side": 1,
+      "message": "\"discrete\"?",
+      "range": {
+        "startLine": 152,
+        "startChar": 13,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "ee31b7ba9c148cdcdcd33c10eb076ce404f0b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
