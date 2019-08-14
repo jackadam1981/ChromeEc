@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "713ee8fb_d13c10c8",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:51:59Z",
+      "side": 1,
+      "message": "Same with derive_validation_value: specify sizes.",
+      "parentUuid": "b832b74b_d0c1a513",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d39ef2b_0449a07e",
         "filename": "include/fpsensor_crypto.h",
         "patchSetId": 15
