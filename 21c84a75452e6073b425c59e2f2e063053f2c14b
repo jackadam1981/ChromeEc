@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26915b75_5f7e9844",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-14T22:55:31Z",
+      "side": 1,
+      "message": "Oh good point, with the new design we are only reading secret in the match case, so template_with_secret is essentially the same as template_matched, they become duplicates. We can move template_matched inside struct positive_match_secret_state and reference it in fp_command_stats",
+      "parentUuid": "4e20fd81_2ee580e5",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "21c84a75452e6073b425c59e2f2e063053f2c14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "465f9eb3_20d07b4e",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 10
