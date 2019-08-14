@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86217e5e_994c3098",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-14T21:32:45Z",
+      "side": 1,
+      "message": "Yes, this is also because this file is not supposed to be linked into test builds.",
+      "parentUuid": "aaf4d344_337d75d8",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "b81099347c5616fae4e5851f9f454049022c1578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1cf7b3b_09336c06",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b81099347c5616fae4e5851f9f454049022c1578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bed2bdc_b790728d",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-14T21:32:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1cf7b3b_09336c06",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "b81099347c5616fae4e5851f9f454049022c1578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
