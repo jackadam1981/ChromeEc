@@ -16,6 +16,29 @@
       "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8863891_c8e1d324",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-14T16:53:25Z",
+      "side": 1,
+      "message": "How do we guarantee atomicity?",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 28
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
