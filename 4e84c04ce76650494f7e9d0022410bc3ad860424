@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2d16cef_08e1b51c",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-14T22:20:34Z",
+      "side": 1,
+      "message": "typo: Workflow*s* or there\u0027s no link",
+      "range": {
+        "startLine": 281,
+        "startChar": 22,
+        "endLine": 281,
+        "endChar": 30
+      },
+      "revId": "4e84c04ce76650494f7e9d0022410bc3ad860424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb7bed1_a85c4104",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-14T22:20:34Z",
+      "side": 1,
+      "message": "typo: Workflow*s* or there\u0027s no link",
+      "range": {
+        "startLine": 282,
+        "startChar": 25,
+        "endLine": 282,
+        "endChar": 33
+      },
+      "revId": "4e84c04ce76650494f7e9d0022410bc3ad860424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd6edc6_adcf9b46",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-14T22:20:34Z",
+      "side": 1,
+      "message": "That\u0027s not really guaranteed. I\u0027d instead point to https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#installing-chromium-os-on-your-device\n\nNote that SSH access is also only on by default on test images, not base.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 58
+      },
+      "revId": "4e84c04ce76650494f7e9d0022410bc3ad860424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4623b7b_c32b7c85",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-14T22:20:34Z",
+      "side": 1,
+      "message": "nit: (device) to follow the convention at https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md#typography-conventions",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 4
+      },
+      "revId": "4e84c04ce76650494f7e9d0022410bc3ad860424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc2c347_44040e94",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-14T22:20:34Z",
+      "side": 1,
+      "message": "I\u0027d remove that section if it does not work",
+      "range": {
+        "startLine": 403,
+        "startChar": 69,
+        "endLine": 404,
+        "endChar": 35
+      },
+      "revId": "4e84c04ce76650494f7e9d0022410bc3ad860424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
