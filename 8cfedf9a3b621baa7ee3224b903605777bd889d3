@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "454c3614_76a0d0c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:52Z",
+      "side": 1,
+      "message": "The IO pins (GPIO00~GPIO07) in NCT3807/NCT3808 are set for some TCPC function by default. However, they can be switched to GPIO by mux_control registers if they not used for TCPC purpose.\nThe IO pins (GPIO10~GPIO17) in NCT3807 are used only for GPIO purpose.",
+      "parentUuid": "0ed90df4_d1d273c2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ed993a0_4877558e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a8cc86_f0bb078b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:52Z",
+      "side": 1,
+      "message": "These are filed at line 322 in driver/ioexpander_nct38xx.c",
+      "parentUuid": "6ed993a0_4877558e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "916a241e_ef08e6f0",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:52Z",
+      "side": 1,
+      "message": "I check the return value under each I2C transaction in overall of this file.",
+      "parentUuid": "cc046f4b_5638f698",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 57
+      },
+      "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd879894_5d2c0c4f",
         "filename": "driver/ioexpander_nct38xx.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b889959a_764b6f5c",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd879894_5d2c0c4f",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 11
+      },
+      "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "76f12922_88e192ac",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:52Z",
+      "side": 1,
+      "message": "This is removed.",
+      "parentUuid": "8c0442d6_c08b889b",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 34
+      },
+      "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e9be8e2_52e9f90d",
         "filename": "driver/ioexpander_nct38xx.c",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a2054b_13baaf07",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-08-14T10:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9be8e2_52e9f90d",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 7
+      },
+      "revId": "8cfedf9a3b621baa7ee3224b903605777bd889d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
