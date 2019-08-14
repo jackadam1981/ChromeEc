@@ -2849,6 +2849,11 @@
  */
 #define CONFIG_DSW_PWROK_TO_PWRBTN_US (95 * MSEC)
 
+/*
+ * Compile power host command code. The commands are independant from
+ * common state machine.
+ */
+#undef CONFIG_POWER_COMMANDS
 
 /* Compile common code for AP power state machine */
 #undef CONFIG_POWER_COMMON
@@ -4589,7 +4594,6 @@
 #undef CONFIG_CHIPSET_SKYLAKE
 #undef CONFIG_CHIPSET_STONEY
 #undef CONFIG_POWER_COMMON
-#undef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #endif
 
 /*
@@ -4691,6 +4695,12 @@
 #if defined(CONFIG_CHIPSET_SKYLAKE) || defined(CONFIG_CHIPSET_CANNONLAKE) \
 	|| defined(CONFIG_CHIPSET_ICELAKE)
 #define CONFIG_CHIPSET_X86_RSMRST_DELAY
+#endif
+
+/*****************************************************************************/
+/* Define derived power configs */
+#ifdef CONFIG_POWER_COMMON
+#define CONFIG_POWER_COMMANDS
 #endif
 
 /*****************************************************************************/
