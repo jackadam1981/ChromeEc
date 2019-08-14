@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "fcdf5ede_e781a087",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T19:23:23Z",
+      "side": 1,
+      "message": "I have created a bug to clean up the code b:139427854.\nWill push a separate CL for ITE chip code.",
+      "parentUuid": "3fba6124_2caf8041",
+      "range": {
+        "startLine": 197,
+        "startChar": 40,
+        "endLine": 197,
+        "endChar": 41
+      },
+      "revId": "84574a7fe7b46a73a82b50d980149d310a2bd7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7972e270_b317a009",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 4
