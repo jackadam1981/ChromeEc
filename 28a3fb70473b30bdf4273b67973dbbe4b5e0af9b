@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "ee861ac6_098d063c",
+        "filename": "include/util.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-14T21:20:31Z",
+      "side": 1,
+      "message": "Can you mention that this function runs in constant execution time, so it can be used to avoid timing attacks?\n\nhttps://www.chosenplaintext.ca/articles/beginners-guide-constant-time-cryptography.html",
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea26e905_15d9527d",
         "filename": "include/util.h",
         "patchSetId": 15
