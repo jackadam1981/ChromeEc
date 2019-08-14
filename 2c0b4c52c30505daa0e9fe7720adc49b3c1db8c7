@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f6631372_fe380080",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T01:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62baf908_f8ce4b0d",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5207719_e2a75b06",
         "filename": "board/tglrvpu_ite/board.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "c5207719_e2a75b06",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e253c55f_4bae57da",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T01:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5df5e9_3bd55d98",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "b1abe580_da8a7b72",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T01:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8832b56b_1dedcf34",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bca08d05_cee94901",
         "filename": "board/tglrvpu_ite/board.h",
         "patchSetId": 3
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "3b2d1a8e_9ff21252",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T01:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe9aca9_0464b151",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ebc2d50_b5fa0ded",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 3
@@ -225,6 +321,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "3ebc2d50_b5fa0ded",
+      "range": {
+        "startLine": 197,
+        "startChar": 22,
+        "endLine": 197,
+        "endChar": 26
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a147fce1_1f77cc95",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T01:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d1d5a6_68022166",
       "range": {
         "startLine": 197,
         "startChar": 22,
@@ -281,6 +401,30 @@
       "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667f4303_1be76352",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-14T01:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a049de45_22830ea9",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 0
+      },
+      "revId": "2c0b4c52c30505daa0e9fe7720adc49b3c1db8c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
