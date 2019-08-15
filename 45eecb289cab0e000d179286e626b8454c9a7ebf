@@ -16,6 +16,24 @@
       "revId": "45eecb289cab0e000d179286e626b8454c9a7ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965e03f5_e44643a6",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-08-15T15:57:09Z",
+      "side": 1,
+      "message": "Thanks for the catch, error rebasing when this was all moved out into baseboard/kukui",
+      "parentUuid": "c63fc0ee_021ea175",
+      "revId": "45eecb289cab0e000d179286e626b8454c9a7ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
