@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb6684b6_cd4c8815",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-15T19:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbfc5f2f_99e8eb4c",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70a72ffd_71de2f69",
         "filename": "docs/usb_power.md",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "77635159_bb500e3e",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-15T19:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a72ffd_71de2f69",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aec8ea5_fc258560",
         "filename": "docs/usb_power.md",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-15T18:15:50Z",
       "side": 1,
       "message": "Can we get the info from the host (AP)? In S3/S5, we\u0027re sink only, aren\u0027t we?",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a8cb7d_f2204e08",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-15T19:52:32Z",
+      "side": 1,
+      "message": "If there was no data connection, would the AP know about it? Say you are charging a battery pack with TypeA to TypeB-micro.",
+      "parentUuid": "1aec8ea5_fc258560",
       "range": {
         "startLine": 29,
         "startChar": 4,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5f54ada5_9ed83ebd",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-15T19:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3e5705_535b62f4",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4936de3e_9b87d1ef",
         "filename": "docs/usb_power.md",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f74c0d0f_c01359bb",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-15T19:52:32Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I add a parenthetical statement. Let me know if that helps or hurts",
+      "parentUuid": "4936de3e_9b87d1ef",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dff02eb3_c83568f4",
         "filename": "docs/usb_power.md",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-08-15T18:15:50Z",
       "side": 1,
       "message": "we downgrade only if power budget is not enough, right? I think we keep 3A if the total budge is 4.5A.",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 5
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13eb7b4d_ca288c6b",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-15T19:52:32Z",
+      "side": 1,
+      "message": "Hmm, that is a good point. Looking at the most recent code, we are doing that. I am going to bring that point up in the on-going thread.",
+      "parentUuid": "dff02eb3_c83568f4",
       "range": {
         "startLine": 112,
         "startChar": 4,
