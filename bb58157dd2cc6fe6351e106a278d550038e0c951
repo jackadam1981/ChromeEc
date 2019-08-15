@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84432a89_3e05512d",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-15T19:50:33Z",
+      "side": 1,
+      "message": "does this assume that data points at an ASCII string?\n\nwhat if CRC8 happens to be zero?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "bb58157dd2cc6fe6351e106a278d550038e0c951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ad15a5_245ed50b",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-15T19:50:33Z",
+      "side": 1,
+      "message": "isn\u0027t Cr50 supposed to return 0xEC aka EC_CR50_COMM_SUCCESS in case the EC RW version is accepted?",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 7
+      },
+      "revId": "bb58157dd2cc6fe6351e106a278d550038e0c951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
