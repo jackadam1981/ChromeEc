@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a7d6e445_710be345",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-15T00:31:44Z",
+      "side": 1,
+      "message": "I think it does not help readability that much, especially now you need to read that extra comment and BUILD_CHECK_INLINE as well. Also if we change compiler options or compiler itself we will need to change this back. So I think it\u0027s not quite worth it to change to strlen()",
+      "parentUuid": "5a11cd0e_37bcf6c7",
+      "range": {
+        "startLine": 154,
+        "startChar": 14,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "749e3e4b_e80323aa",
         "filename": "common/util.c",
         "patchSetId": 15
