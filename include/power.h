@@ -180,6 +180,15 @@ static inline void power_signal_interrupt(enum gpio_signal signal) { }
 #endif /* !HAS_TASK_CHIPSET */
 
 /**
+ * Interrupt handler for rsmrst signal GPIO. This interrupt handler should be
+ * used when there is a requirement to have minimum pass through delay between
+ * the rsmrst coming to the EC and the rsmrst that goes to the PCH.
+ *
+ * @param signal - The gpio signal that triggered the interrupt..
+ */
+void intel_x86_rsmrst_signal_interrupt(enum gpio_signal signal);
+
+/**
  * pause_in_s5 getter method.
  *
  * @return Whether we should pause in S5 when shutting down.
