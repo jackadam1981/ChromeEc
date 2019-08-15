@@ -46,6 +46,29 @@
       "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc696d94_d460ce2f",
+        "filename": "test/static_if.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-15T17:04:47Z",
+      "side": 1,
+      "message": "This always causes a link error, right? Yet, you have test_static_if_blank, which is expected to pass. How do the tests work together?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
