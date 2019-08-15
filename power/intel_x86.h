@@ -36,6 +36,12 @@
 #endif
 
 /**
+ * Handle RSMRST signal assertion in power_signal interrupt context to minimize
+ * propogation delay.
+ */
+void intel_x86_handle_rsmrst_assertion(void);
+
+/**
  * Handle RSMRST signal.
  *
  * @param state Current chipset state.

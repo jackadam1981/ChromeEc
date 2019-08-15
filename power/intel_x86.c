@@ -604,6 +604,21 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 	return state;
 }
 
+#ifdef CONFIG_CHIPSET_X86_RSMRST_ISR_PASS
+void intel_x86_handle_rsmrst_assertion(void)
+{
+	int rsmrst_in = gpio_get_level(GPIO_RSMRST_L_PGOOD);
+	int rsmrst_out = gpio_get_level(GPIO_PCH_RSMRST_L);
+
+	/*
+	 * This function is called from the power_signal_interrupt. If rsmrst
+	 * has been asserted (high -> low) then pass this new state to PCH.
+	 */
+	if (!rsmrst_in && (rsmrst_in != rsmrst_out))
+		gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+}
+#endif
+
 void common_intel_x86_handle_rsmrst(enum power_state state)
 {
 	/*

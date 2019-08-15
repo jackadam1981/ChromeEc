@@ -696,6 +696,14 @@ DECLARE_HOOK(HOOK_SECOND,
 
 void power_signal_interrupt(enum gpio_signal signal)
 {
+#ifdef CONFIG_CHIPSET_X86_RSMRST_ISR_PASS
+	/*
+	 * Check for RSMRST_L assertion and pass through immediately to minimize
+	 * propogation delay.
+	 */
+	intel_x86_handle_rsmrst_assertion();
+#endif
+
 #ifdef CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
 	int i;
 
