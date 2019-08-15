@@ -181,10 +181,22 @@ MSG_VERIFY_FAIL="Failed to verify EC firmware image."
 set -e
 
 DUT_CONTROL_CMD=( "dut-control" "--port=${FLAGS_port}" )
+DUT_CONTROL_EXT=""
 
 function dut_control() {
 	local DUT_CTRL_CML=( "${DUT_CONTROL_CMD[@]}" )
-	DUT_CTRL_CML+=( "$@" )
+
+	if [[ -z "${DUT_CONTROL_EXT}" ]] ; then
+		DUT_CTRL_CML+=( "$@" )
+	else
+		for p in $@ ; do
+			# Only add the prefix if the arg is a control name.
+			if [[ ${p} != -* ]] ; then
+				p="${DUT_CONTROL_EXT}${p}"
+			fi
+			DUT_CTRL_CML+=( "$p" )
+		done
+	fi
 
 	if [ "${FLAGS_verbose}" = ${FLAGS_TRUE} ]; then
 		echo "${DUT_CTRL_CML[*]}" 1>&2
@@ -204,10 +216,18 @@ function dut_control_get() {
 	fi
 
 	local ARGS DUT_GETVAL RETVAL
+	ARGS_EXT=( "${DUT_CONTROL_CMD[@]}" "-o" "${DUT_CONTROL_EXT}$1" )
 	ARGS=( "${DUT_CONTROL_CMD[@]}" "-o" "$1" )
 	RETVAL=0
 	# || statement is attached to avoid an exit if error exit is enabled.
-	DUT_GETVAL=$( "${ARGS[@]}" ) || RETVAL="$?"
+	DUT_GETVAL=$( "${ARGS_EXT[@]}" ) || RETVAL="$?"
+	# Retry the command without the control prefix if it fails. ec_chip
+	# doesn't exist with a prefix, so ccd_cr50.ec_chip will fail, but
+	# ec_chip succeeds.
+	if (( "${RETVAL}" )) ; then
+		RETVAL=0
+		DUT_GETVAL=$( "${ARGS[@]}" ) || RETVAL="$?"
+	fi
 	if (( "${RETVAL}" )) ; then
 		warn "${FUNCNAME[0]} failed: ${ARGS[*]} returned ${RETVAL}."
 		return "${RETVAL}"
@@ -336,6 +356,14 @@ case "${CHIP}" in
 esac
 
 SERVO_TYPE="$(dut_control_get servo_type || :)"
+if [[ ${SERVO_TYPE} =~ servo_v4_with_.*_and_.* ]] ; then
+	SECOND_DEVICE="${SERVO_TYPE#*_and_}"
+	ACTIVE_DEVICE="$(dut_control_get active_v4_device || :)"
+	SERVO_TYPE="servo_v4_with_${ACTIVE_DEVICE}"
+	if [[ "${SECOND_DEVICE}" = "${ACTIVE_DEVICE}" ]] ; then
+		DUT_CONTROL_EXT="${ACTIVE_DEVICE}."
+	fi
+fi
 
 servo_has_warm_reset() {
 	dut_control -i warm_reset >/dev/null 2>&1
@@ -633,9 +661,13 @@ declare -a save
 function servo_save_add() {
 	local CTRL_RESULT=
 	case $# in
-		1) CTRL_RESULT="$( "${DUT_CONTROL_CMD[@]}" "$@" )"
+		1) CTRL_RESULT="$( "${DUT_CONTROL_CMD[@]}" \
+				"${DUT_CONTROL_EXT}$@" )"
 		   if [[ -n "${CTRL_RESULT}" ]]; then
-			save+=( "${CTRL_RESULT}" )
+			# Don't save the control with the prefix, because
+			# dut_control will add the prefix again when we restore
+			# the settings.
+			save+=( "${CTRL_RESULT#$DUT_CONTROL_EXT}" )
 		   fi
 		   ;;
 		2) save+=( "$1:$2" )
