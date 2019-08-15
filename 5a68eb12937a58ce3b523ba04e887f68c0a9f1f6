@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4936de3e_9b87d1ef",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2019-08-15T18:00:19Z",
+      "side": 1,
+      "message": "If I recall correctly, Samus\u0027s USB-Cs were set to Rp-DefaultUSB, and has a limit of 5V 900mA source output for each port.\n\nRp-DefaultUSB is a valid option as well, but maybe not one we should be encouraging going forward.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
