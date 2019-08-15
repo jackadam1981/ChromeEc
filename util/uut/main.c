@@ -26,6 +26,7 @@
 #define MAX_FILE_NAME_SIZE 512
 #define MAX_PARAM_SIZE 32
 #define MAX_MSG_SIZE 128
+#define MAX_SYNC_RETRIES 3
 
 /* Default values */
 #define DEFAULT_BAUD_RATE 115200
@@ -255,6 +256,7 @@ int main(int argc, char *argv[])
 	uint32_t strip_size;
 	enum sync_result sr;
 	uint8_t *buffer;
+	int sync_attempt_count;
 
 	if (argc <= 1)
 		exit(EC_UNSUPPORTED_CMD_ERR);
@@ -291,21 +293,24 @@ int main(int argc, char *argv[])
 
 	/* Verify Host and Device are synchronized */
 	DISPLAY_MSG(("Performing a Host/Device synchronization check...\n"));
-	sr = opr_check_sync(baudrate);
-
-	/*
-	 * If it fails, try it once more. There is an issue that the first
-	 * command after EC reset gets 0x00 byte response. Note b/126795953.
-	 */
-	if (sr != SR_OK)
+	sync_attempt_count = 0;
+	do {
 		sr = opr_check_sync(baudrate);
-
-	if (sr != SR_OK) {
+		if (sr == SR_OK)
+			break;
+		/*
+		 * If it fails, try it again up to three times.
+		 * It might fail for garbage data drainage from H1, or
+		 * for timeout due to unstable data transfer yet.
+		 */
+		++sync_attempt_count;
 		display_color_msg(FAIL,
-			"Host/Device synchronization failed, error = %lu.\n",
-			sr);
-		exit_uart_app(EC_SYNC_ERR);
-	}
+			"Host/Device synchronization failed, error = %lu,"
+			" fail count = %d\n", sr, sync_attempt_count);
+
+		if (sync_attempt_count >= MAX_SYNC_RETRIES)
+			exit_uart_app(EC_SYNC_ERR);
+	} while (sr != SR_OK);
 
 	if (auto_mode) {
 		size = param_get_file_size(file_name);
