@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e63a9d3_b4a052b6",
+        "filename": "board/trembyle/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-15T23:36:26Z",
+      "side": 1,
+      "message": "As a matter of style - can you add tabs to align the right side of each assignment?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "a934d2e5b2377b788d40cc8708d9da475fa515bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3243cada_a2e1d17d",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-15T23:36:26Z",
+      "side": 1,
+      "message": "You could also change these, and then eliminate the comment on each line.  There are no users of GPIO_I2Cn_SDA or GPIO_I2Cn_SCL in the common code.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "a934d2e5b2377b788d40cc8708d9da475fa515bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
