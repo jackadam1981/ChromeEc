@@ -16,6 +16,24 @@
       "revId": "60f00e00efed22f17e112c392130dd3953659f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f092335_6b3f0b1a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-15T02:00:41Z",
+      "side": 1,
+      "message": "It seems that PD spec doesn\u0027t mention the tolerance of the current.\nI think we could do around 5% compensation here, rather than 7%.\n\nayo, tony, any comments here?",
+      "parentUuid": "c586bc8c_61fb7631",
+      "revId": "60f00e00efed22f17e112c392130dd3953659f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
