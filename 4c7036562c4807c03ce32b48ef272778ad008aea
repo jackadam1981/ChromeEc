@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e31ae160_3f65bac0",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-15T23:24:40Z",
+      "side": 1,
+      "message": "I think ec_chip is the only control we use that doesn\u0027t have a ccd_cr50 prefix.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
