@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a40507b7_fa85536a",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-08-15T15:30:30Z",
+      "side": 1,
+      "message": "I would much prefer that this be written\n  return (sku_id \u003e\u003d 1) \u0026\u0026 (sku_id \u003c\u003d 4);\nI don\u0027t like the practice of testing an integer as a boolean to determine zero/non-zero. I should have caught that in the earlier patch sets, sorry.",
+      "revId": "0c68bdae9bc03e98b3f7143066c51ed2c624b8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
