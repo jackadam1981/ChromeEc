@@ -404,4 +404,23 @@ int tcpc_run(int port, int evt);
  */
 int board_tcpc_post_init(int port) __attribute__((weak));
 
+
+/**
+ * Invalidate last message received at the port when the port gets disconnected
+ * or reset(soft/hard). This is used to identify and handle the duplicate
+ * messages.
+ *
+ * @param port USB PD TCPC port number
+ */
+void invalidate_last_message_id(int port);
+
+/**
+ * Identify and drop any duplicate messages received at the port.
+ *
+ * @param port USB PD TCPC port number
+ * @param msg_header Message Header containing the RX message ID
+ * @return 1 if the received message is a duplicate one, 0 otherwise.
+ */
+int consume_repeat_message(int port, uint16_t msg_header);
+
 #endif /* __CROS_EC_USB_PD_TCPM_H */
