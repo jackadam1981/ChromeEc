@@ -294,6 +294,30 @@
       "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb71da3_87c973be",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-15T03:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3e9229_d0b57d29",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "7bcb79e803dfa655693e08c9bd21dee82d571652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
