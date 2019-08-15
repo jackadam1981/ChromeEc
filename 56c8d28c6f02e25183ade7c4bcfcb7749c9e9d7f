@@ -93,6 +93,30 @@
       "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc20f7c7_c61b8ce9",
+        "filename": "test/static_if.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-15T17:55:45Z",
+      "side": 1,
+      "message": "Then, can you rephrase the comment above? Shouldn\u0027t it say \"This shouldn\u0027t cause a link error because ...\"?",
+      "parentUuid": "ecf3787c_0ec975e0",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
