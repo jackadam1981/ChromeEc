@@ -46,6 +46,30 @@
       "revId": "3453a26d18738bd751773f0837fe8681fc90fc1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80c4fe2_46779e4b",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-15T08:14:27Z",
+      "side": 1,
+      "message": "1) I think that it\u0027s intend to do so, could you consider to keep this?\n\n2) you could see how battery_mm8013.c do this \n\nint charger_profile_override(struct charge_state_data *curr)\n{\n       /* TODO(b:138269954): Add battery configs for krane. */\n\n#ifdef VARIANT_KUKUI_CHARGER_MT6370\n       mt6370_charger_profile_override(curr);\n#endif /* CONFIG_CHARGER_MT6370 */\n\n\n       /* do kodama specific things here */\n\n\n\n       return 0;\n}",
+      "parentUuid": "dd36d3ac_a5221eb7",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "3453a26d18738bd751773f0837fe8681fc90fc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
