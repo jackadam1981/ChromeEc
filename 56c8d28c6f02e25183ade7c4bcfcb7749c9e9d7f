@@ -69,6 +69,30 @@
       "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf3787c_0ec975e0",
+        "filename": "test/static_if.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-15T17:13:28Z",
+      "side": 1,
+      "message": "This test works since the usage is guarded by an IS_ENABLED. So the variable usage gets optimized away and linker does not complain.\n\nstatic_if_error.{sh,c} tests the failure condition.",
+      "parentUuid": "fc696d94_d460ce2f",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
