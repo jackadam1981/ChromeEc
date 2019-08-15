@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a11cd0e_37bcf6c7",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-08-15T00:13:59Z",
+      "side": 1,
+      "message": "I don\u0027t mind either way, as long as we make it clear that it\u0027s not a VLA. I *think* the fact that strlen() knows the value at compile time for constant strings is a result of GCC using a builtin (and I think clang has a similar one) but I didn\u0027t see it officially documented in https://www.gnu.org/software/libc/manual/html_node/String-Length.html\n\nI don\u0027t mind using strlen() -it does help readability!- if:\n- we comment that this is done on purpose with the compile-time optimisation in mind and is not a VLA\n- we add some compile-time assertion, something like Tom\u0027s BUILD_CHECK_INLINE, to ensure that it won\u0027t break if we ever change the compiler options (or the compiler itself...)\n\nDoes that make sense?",
+      "parentUuid": "1cf2d5f4_c5a7464c",
+      "range": {
+        "startLine": 154,
+        "startChar": 14,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "28a3fb70473b30bdf4273b67973dbbe4b5e0af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "749e3e4b_e80323aa",
         "filename": "common/util.c",
         "patchSetId": 15
