@@ -1,0 +1,178 @@
+# USB Power Considerations
+
+Users want to be able to charge external devices using their Chromebook USB
+ports, e.g. charge a phone from their Chromebook. We want to provide a fast
+charging experience to end-users, so we prefer to offer high power charging when
+possible.
+
+[TOC]
+
+## Summary of Design Requirements
+
+For explanations of calculations see rest of doc.
+
+### Total System Power
+
+Total current needed for external USB devices at 5V:
+
+```
+((Number of Type-C Ports) * (1800mA)) + 1500mA +
+((Number of Type-A Ports) * (900mA)) + 600mA†
+```
+
+† The additional 600mA can be omitted if BC1.2 is not supported for Type-A
+
+### Daughter Board Considerations
+
+If a daughter board has 1 Type-A and 1 Type-C, the potential power load
+scenarios at 5V from different USB device configurations are below:
+
+Scenario | Type-A Vbus | Type-C Vbus | Type-C Vconn | Total
+-------- | ----------- | ----------- | ------------ | ------
+1 Type-C | 0mA         | 3000mA      | 300mA        | 3300mA
+1 Type-A | 1500mA      | 0mA         | 0mA          | 1500mA
+Both     | 1500mA      | 3000mA      | 300mA        | 4800mA
+
+*   The DB ribbon cables need to be able to carry enough current to supply 24W
+    (<= 4.8A * 5V) of power to the DB.
+    *   This may be on a single or multiple power rails depending on hardware
+        design.
+*   The ground path on the ribbon cable from the DB also needs to be able to
+    carry enough current to match the power rails.
+
+## USB Type-A Ports
+
+For Type-A ports, the [BC 1.2 Specification] adds higher power modes on top of
+the [USB 3.2 Specification]. While BC 1.2 support isn't required, it is
+preferred, as it allows end-users to charge their devices more quickly.
+
+[BC 1.2 Specification] defines multiple modes of operation including, but not
+limited to:
+
+*   CDP - Charging Downstream Port
+    *   Allows USB Data. Provides guaranteed 1.5A @ 5V power.
+    *   ChromeOS device can act as a CDP.
+*   SDP - Standard Downstream Port
+    *   Allows USB Data. Provides guaranteed current defined by USB
+        Specifications
+        *   For USB3, provides guaranteed current of 0.9A @ 5V.
+        *   For USB2, provides guaranteed current of 0.5A @ 5V.
+    *   ChromeOS device can act as a SDP.
+*   DCP - Dedicated Charging Port
+    *   No USB Data. Provides max of 1.5A @ 5V power.
+    *   ChromeOS device **will not** act as a DCP.
+
+For detection logic of each mode (e.g. on the D+ and D- pins) and nuance of
+power/current power requirements, see full [BC 1.2 Specification].
+
+Without BC 1.2 support, the max power requirements match that of a Standard
+Downstream Port (SDP) as defined by various specification (e.g.
+[USB 3.2 Specification]).
+
+### ChromeOS as Source - Policy for Type-A
+
+If BC 1.2 is supported for a ChromeOS device, then the first Type-A port in use
+will act as a CDP, providing a maximum current of 1.5A while also enabling USB
+data. All other Type-A ports will only be SDP, providing a maximum current of
+900mA.
+
+Note that the CDP Type-A port allocation is dynamic; the first Type-A port in
+use claims the higher, 1.5A current, and then all other Type-A ports get
+downgraded to the lower, 900mA current.
+
+The allocation of the one CDP Type-A port is unaffected by user interaction with
+Type-C ports. Once a Type-A port has been claimed as CDP, inserting a Type-C
+device will not revoke the CDP status of the Type-A port.
+
+Once the last Type-A device has been removed, then any Type-A port can become
+the one CDP Type-A port; CDP is claimed again by the first Type-A port in use
+after all Type-A ports have been vacant.
+
+The total current needed for all Type-A ports at 5V is:
+
+```
+if (BC1.2_Supported)
+    (# Type-A Ports)*(900mA) + 600mA
+else
+    (# Type-A Ports)*(900mA)
+```
+
+## USB Type-C Ports
+
+USB Type-C allows for dynamic negotiation of high power contracts; this is
+accomplished through varying CC resistors and/or USB-C Power Delivery (PD). More
+in-depth information can be found in the [USB PD Specification]; power contracts
+can range from 0mA/3.3V to 5A/20V.
+
+### ChromeOS as Source - Policy for Type-C
+
+ChromeOS devices currently source power to external USB devices at 5V with a
+typical current of 1.5A for each Type-C port. In certain scenarios, a single
+Type-C port can source up to 3A @ 5V.
+
+ChromeOS devices prefer that the first PD-capable Type-C device that is inserted
+should get 3A guaranteed at 5V. When another PD-capable Type-C device is
+inserted, the second device will only be offer a maximum of 1.5A.
+
+If there are no PD-capable Type-C devices plugged in, then the first device will
+be offered 3A (until a PD-capable device is inserted).
+
+When a device that is currently claiming 3A is removed, then the next oldest
+PD-capable device is offered 3A. If no PD-capable devices are present, then the
+oldest non-PD capable device is offered 3A through CC resistor change.
+
+Inserting a Type-A device does not affect the power assignment for Type-C ports;
+only Type-C devices affect the power of Type-C ports.
+
+For example, the below sequence of events illustrates the above Type-C policy
+
+1.  A non-PD capable Type-C keyboard is inserted first
+    *   It will be offered 3A since there are no PD-capable devices and this is
+        the first device.
+    *   Current state: `keyboard @ 3A`
+2.  A non-PD capable Type-C mouse is inserted second
+    *   It will be offered 1.5A since there is already another non-PD device
+        claiming 3A.
+    *   Current state: `keyboard @ 3A` and `mouse @ 1.5A`
+3.  A PD-capable Type-C phone is inserted third
+    *   Since there isn't an existing PD-capable device claiming 3A, the
+        keyboard is downgraded to 1.5A.
+    *   The PD-capable phone is offered 3A.
+        *   It claims the 3A slot whether the phone accepts the 3A contract or
+            not.
+    *   Current state: `keyboard @ 1.5A` and `mouse @ 1.5A` and `phone @ 3A`.
+4.  A PD-capable Type-C tablet is inserted fourth
+    *   Since there is already a PD-capable device claiming the 3A slot, the
+        tablet is only offered 1.5A
+    *   Current state: `keyboard @ 1.5A` and `mouse @ 1.5A` and `phone @ 3A` and
+        `tablet @ 1.5A`
+5.  The PD-capable phone is removed.
+    *   The next oldest PD-capable device is offered 3A.
+    *   Tablet is given 3A
+    *   Current state: `keyboard @ 1.5A` and `mouse @ 1.5A` and `tablet @ 3A`
+6.  The PD-capable tablet is removed.
+    *   The next oldest PD-capable device is offered 3A. If there are no
+        PD-capable devices, then the next oldest non-PD capable device is
+        offered 3A
+    *   Keyboard is given 3A
+    *   Current state: `keyboard @ 3A` and `mouse @ 1.5A`
+7.  The keyboard is removed
+    *   Mouse is given 3A
+    *   Current state: `mouse @ 3A`
+
+Type-C ports also need to provide an additional 300mA @ 5V (<= 1.5W) for Vconn
+on every port. Note: the 1.5W for Vconn may also be supplied via 455mA @ 3.3V
+instead.
+
+The total current needed for all Type-C ports at 5V is:
+
+```
+((Number of Type-C Ports) * (1500mA + 300mA)) + 1500mA
+```
+
+The total maximum current needed for a single Type-C port at 5V is `(3000mA +
+300mA) = 3.3A`. This matters for a daughter board ribbon cable.
+
+[BC 1.2 Specification]: <https://www.usb.org/document-library/battery-charging-v12-spec-and-adopters-agreement>
+[USB 3.2 Specification]: <https://www.usb.org/document-library/usb-32-specification-released-september-22-2017-and-ecns>
+[USB PD Specification]: https://www.usb.org/document-library/usb-power-delivery
