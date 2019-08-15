@@ -696,6 +696,19 @@ DECLARE_HOOK(HOOK_SECOND,
 
 void power_signal_interrupt(enum gpio_signal signal)
 {
+#ifdef CONFIG_CHIPSET_X86_RSMRST_ISR_PASS
+	int rsmrst_in = gpio_get_level(GPIO_RSMRST_L_PGOOD);
+	int rsmrst_out = gpio_get_level(GPIO_PCH_RSMRST_L);
+
+	/*
+	 * If RSMRST_L is asserted, then pass it through to PCH here to avoid
+	 * latency of waking up the chipset task. Low -> high passthrough is
+	 * still handled in common_intel_x86_handle_rsmrst.
+	 */
+	if (!rsmrst_in && (rsmrst_in != rsmrst_out))
+		gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+#endif
+
 #ifdef CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
 	int i;
 

@@ -1068,6 +1068,13 @@
  */
 #undef CONFIG_CHIPSET_X86_RSMRST_DELAY
 
+/*
+ * Enabling this config results in RSMRST_L asserted (low) pass through to
+ * happen in the power_signal_interrupt which minimizes the propogattion
+ * dealy. This does not affect timing of low->high transitions.
+ */
+#undef CONFIG_CHIPSET_X86_RSMRST_ISR_PASS
+
 /* Support power rail control */
 #define CONFIG_CHIPSET_HAS_PP1350
 #define CONFIG_CHIPSET_HAS_PP5000
@@ -4686,6 +4693,7 @@
 
 #if defined(CONFIG_CHIPSET_ICELAKE) || defined(CONFIG_CHIPSET_COMETLAKE)
 #define CONFIG_POWER_COMMON
+#define CONFIG_CHIPSET_X86_RSMRST_ISR_PASS
 #endif
 
 #if defined(CONFIG_CHIPSET_SKYLAKE) || defined(CONFIG_CHIPSET_CANNONLAKE) \
