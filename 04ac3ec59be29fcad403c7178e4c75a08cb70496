@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "407f39d6_31067e80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-15T18:30:04Z",
+      "side": 1,
+      "message": "You have quite a collection of changes here. It would be nice to explain a little bit about each of the smaller things. Why do you have so many VARIANT_X_NO_SENSORS, etc.",
+      "revId": "04ac3ec59be29fcad403c7178e4c75a08cb70496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cd84a5_0e08f095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-15T18:30:04Z",
+      "side": 1,
+      "message": "Similarly here. You\u0027re touching quite a few boards, would be nice to do a sanity check (including describing here what you did) on a representative sample of what boards you\u0027re changing.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "04ac3ec59be29fcad403c7178e4c75a08cb70496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f085c232_723d3066",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-15T18:30:04Z",
+      "side": 1,
+      "message": "Which your new fancy #define you should probably replace these SECTION_IS_RW sections, since they\u0027re all doing the same thing.\n\nOtherwise your define adding just becomes a second parallel way to do things and it wouldn\u0027t be consistent.",
+      "range": {
+        "startLine": 309,
+        "startChar": 7,
+        "endLine": 309,
+        "endChar": 20
+      },
+      "revId": "04ac3ec59be29fcad403c7178e4c75a08cb70496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "610268f8_7e44cb27",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-15T18:30:04Z",
+      "side": 1,
+      "message": "For most boards this name makes sense, but for kukui I wouldn\u0027t really call it a variant. It\u0027s just the firmware half that doesn\u0027t do sensors.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "04ac3ec59be29fcad403c7178e4c75a08cb70496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
