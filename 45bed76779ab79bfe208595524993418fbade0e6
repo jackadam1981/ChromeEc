@@ -70,6 +70,30 @@
       "revId": "45bed76779ab79bfe208595524993418fbade0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1268c17b_67c20847",
+        "filename": "common/acpi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-15T22:34:15Z",
+      "side": 1,
+      "message": "I tried to send back-to-back EC_HOST_EVENT_MODE_CHANGE to AP from EC. It seems kernel can handle this case well.",
+      "parentUuid": "96f72dd8_d3e4dc14",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "45bed76779ab79bfe208595524993418fbade0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
