@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b67173e_d0712577",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-15T05:34:36Z",
+      "side": 1,
+      "message": "how about define this for all board, and only undef it in kukui?\n\nSince all the boards use mt6370 (except kukui) should define this config?",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 39
+      },
+      "revId": "d6ab54f2ca0b789cd5a8c520c3c34f4bca2a1af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
