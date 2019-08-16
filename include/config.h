@@ -2293,6 +2293,11 @@
  */
 #undef CONFIG_IT83XX_FLASH_CLOCK_48MHZ
 
+/*
+ * The 512KB/1MB internal flash of IT8xxx1 or IT8xxx2 series is KGD.
+ */
+#undef CONFIG_IT83XX_FLASH_IS_KGD
+
 /* To define it, if I2C channel C and PECI used at the same time. */
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
 

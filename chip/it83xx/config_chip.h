@@ -8,6 +8,8 @@
 
 #if defined(CHIP_FAMILY_IT8320)    /* N8 core */
 #include "config_chip_it8320.h"
+#elif defined(CHIP_FAMILY_IT8XXX1) /* N8 core */
+#include "config_chip_it8xxx1.h"
 #elif defined(CHIP_FAMILY_IT8XXX2) /* RISCV core */
 #include "config_chip_it8xxx2.h"
 #else
@@ -62,6 +64,18 @@
  * until write disable instruction.
  */
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE CONFIG_FLASH_ERASE_SIZE
+
+#if 1 /* TODO */
+/* protect bank size is equal to erase size of sector */
+#undef CONFIG_FLASH_BANK_SIZE
+#define CONFIG_FLASH_BANK_SIZE        0x00001000
+/* erase bank size is equal to erase size of sector */
+#undef CONFIG_FLASH_ERASE_SIZE
+#define CONFIG_FLASH_ERASE_SIZE       0x00001000
+/* ideal write size */
+#undef CONFIG_FLASH_WRITE_IDEAL_SIZE
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE 256
+#endif
 
 /****************************************************************************/
 /* Define our flash layout. */
