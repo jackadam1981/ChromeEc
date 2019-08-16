@@ -96,3 +96,22 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+#ifdef CONFIG_USBC_VCONN
+void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+{
+	/*
+	 * Setting vconn gpio pins low before enabling the
+	 * power switch according to the cc lines
+	 */
+	gpio_set_level(tcpc_gpios[port].vconn.cc0_pin,
+			!tcpc_gpios[port].vconn.pin_pol);
+	gpio_set_level(tcpc_gpios[port].vconn.cc1_pin,
+			!tcpc_gpios[port].vconn.pin_pol);
+
+	if (enabled)
+		gpio_set_level(cc_pin ? tcpc_gpios[port].vconn.cc1_pin :
+				tcpc_gpios[port].vconn.cc0_pin,
+				tcpc_gpios[port].vconn.pin_pol);
+}
+#endif
