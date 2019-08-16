@@ -5602,17 +5602,13 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 			return rv;
 
 		printf("Port %d: ", i);
-		if (r.flags & USB_PD_MUX_USB_ENABLED)
-			printf("USB ");
-		if (r.flags & USB_PD_MUX_DP_ENABLED)
-			printf("DP ");
-		if (!(r.flags & (USB_PD_MUX_DP_ENABLED |
-				 USB_PD_MUX_USB_ENABLED)))
-			printf("OPEN ");
-		if (r.flags & USB_PD_MUX_POLARITY_INVERTED)
-			printf("INV ");
-		if (r.flags & USB_PD_MUX_HPD_IRQ)
-			printf("HPD_IRQ ");
+		printf("USB=%d ", !!(r.flags & USB_PD_MUX_USB_ENABLED));
+		printf("DP=%d ", !!(r.flags & USB_PD_MUX_DP_ENABLED));
+		printf("POLARITY=%d ",
+			!!(r.flags & USB_PD_MUX_POLARITY_INVERTED));
+		printf("HPD_IRQ=%d ", !!(r.flags & USB_PD_MUX_HPD_IRQ));
+		printf("HPD_LVL=%d ", !!(r.flags & USB_PD_MUX_HPD_LVL));
+		printf("SAFE=%d ", !!(r.flags & USB_PD_MUX_SAFE_MODE));
 		printf("\n");
 	}
 
