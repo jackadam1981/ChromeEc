@@ -16,6 +16,24 @@
       "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c15a13b_b2a5220e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-16T20:43:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it is worth it: we reset here as soon as an issue is detected, there is no reason for the issue not to reoccur after reboot since we are not modifying the flash contents.",
+      "parentUuid": "a9407909_2d76bd7f",
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
