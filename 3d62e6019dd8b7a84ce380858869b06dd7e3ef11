@@ -93,6 +93,30 @@
       "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfa3423_7467c763",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-16T22:04:55Z",
+      "side": 1,
+      "message": "We could add a dedicated flash log event for this, but I am not sure if is necessary, seeing a log entry for the original failure should be enough.",
+      "parentUuid": "e0d5ae33_20fbb68f",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 24
+      },
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
