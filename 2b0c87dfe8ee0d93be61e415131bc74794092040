@@ -22,6 +22,30 @@
       "revId": "2b0c87dfe8ee0d93be61e415131bc74794092040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3315d3b2_880690ec",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-16T17:38:13Z",
+      "side": 1,
+      "message": "is it still necessary? If the FSM is reset then the next cycle will be a valid read or write cycle started by the master, right?",
+      "parentUuid": "7ce6b9a7_3cef2f5f",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "2b0c87dfe8ee0d93be61e415131bc74794092040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
