@@ -58,3 +58,12 @@ void vboot_main(void);
  * @return 1: need PD communication. 0: PD communication is not needed.
  */
 int vboot_need_pd_comm(void);
+
+/**
+ * Callback for boards to notify users of vboot error when no display is
+ * available.
+ *
+ * Typically this happens when a Chromebox is booting on a Type-C adapter and
+ * EFS failed.
+ */
+void led_critical(void);
