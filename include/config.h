@@ -4117,6 +4117,15 @@
 /* Support early firmware selection */
 #undef CONFIG_VBOOT_EFS
 
+/*
+ * Has a matrix (built-in) keyboard
+ *
+ * This is on by default. There are security implications for boards with a
+ * matrix keyboard. Boards must manually undefine it if they don't have an
+ * internal keyboard.
+ */
+#define CONFIG_HAS_MATRIX_KEYBOARD
+
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
