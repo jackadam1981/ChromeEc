@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "066e823b_b202ae08",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-08-16T21:50:52Z",
+      "side": 1,
+      "message": "Seems like it. It is not explicit in arcada_ish/board.c. Same for TGL.",
+      "parentUuid": "0f2908b0_694f5a9d",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ac109b4_94613ecd",
         "filename": "board/drallion_ish/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-16T20:03:33Z",
       "side": 1,
       "message": "looks like accel is active in S3 \u0026 above, how about enabling it in HOOK_CHIPSET_STARTUP",
+      "range": {
+        "startLine": 168,
+        "startChar": 13,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dcba7bd_9fcacae6",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-08-16T21:50:52Z",
+      "side": 1,
+      "message": "Might have to confirm with Li on this. For Arcada, it is in hook_init.",
+      "parentUuid": "1ac109b4_94613ecd",
       "range": {
         "startLine": 168,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5c598e26_5c744d06",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-08-16T21:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e98968d_a69f6a8c",
+      "range": {
+        "startLine": 27,
+        "startChar": 37,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef549ef0_4abce28c",
         "filename": "board/drallion_ish/board.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-08-16T20:03:33Z",
       "side": 1,
       "message": "console commands",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d2fd60_6144f765",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-08-16T21:50:52Z",
+      "side": 1,
+      "message": "Unsure what you are referring to here.",
+      "parentUuid": "ef549ef0_4abce28c",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -114,6 +210,30 @@
       "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59b1df9_76f98340",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-08-16T21:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d90500fa_41305d24",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
