@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0d3a222_8c22b495",
+        "filename": "baseboard/kukui/battery_mm8013.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1335003
+      },
+      "writtenOn": "2019-08-16T01:30:53Z",
+      "side": 1,
+      "message": "According to lenovo\u0027s requirements, when the battery temperature is more than 59 degrees Celsius, the device needs to be shut down",
+      "range": {
+        "startLine": 43,
+        "startChar": 23,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "b58fef12c062452e41ab4f23e4963b28154b1ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
