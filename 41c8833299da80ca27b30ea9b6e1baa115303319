@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc151c91_fdf63410",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-16T09:22:00Z",
+      "side": 1,
+      "message": "add this in usb_pd.h:\n\n #define MODE_DP_PIN_ALL 0x3f",
+      "range": {
+        "startLine": 253,
+        "startChar": 31,
+        "endLine": 253,
+        "endChar": 35
+      },
+      "revId": "41c8833299da80ca27b30ea9b6e1baa115303319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7737b3_98ba7519",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-16T09:22:00Z",
+      "side": 1,
+      "message": "You should still use board_get_polarity() here. Some of the boards\u0027s polarity are reversed, and the logic is handle in the function.",
+      "range": {
+        "startLine": 304,
+        "startChar": 27,
+        "endLine": 304,
+        "endChar": 42
+      },
+      "revId": "41c8833299da80ca27b30ea9b6e1baa115303319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
