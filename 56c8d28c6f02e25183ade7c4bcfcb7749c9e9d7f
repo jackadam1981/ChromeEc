@@ -117,6 +117,30 @@
       "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "671ee30c_0b3d8ff0",
+        "filename": "test/static_if.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-08-16T16:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc20f7c7_c61b8ce9",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "56c8d28c6f02e25183ade7c4bcfcb7749c9e9d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
