@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "554a031f_99ba7dad",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:13:32Z",
+      "side": 1,
+      "message": "this logic seems backwards.\n\nshould be\n\n...\n  if val \u003d\u003d chip_id\n    return success;\n}\n\nreturn EC_ERROR_UNKOWN;\n\n\n\n----\n\notherwise we will always return EC_ERROR_UNKNOWN",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf85f13_e9ac08e1",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:13:32Z",
+      "side": 1,
+      "message": "I like that we are enabling automated tests with test_mockable. Can you add unit tests for this driver please?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5acaa2ca_c524493d",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:13:32Z",
+      "side": 1,
+      "message": "what is checking if this access if valid. What if CONFIG_KEYBOARD_KEYPAD is defined or not defined.\n\ncol[13] could be valid (i.e. 13 value) or invalid (i.e. 0 value). If invalid then it would be trying to set the incorrect lines.",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
