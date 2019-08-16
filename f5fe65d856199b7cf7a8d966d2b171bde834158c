@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b86cc892_fc413a5a",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:52:28Z",
+      "side": 1,
+      "message": "what about #elif defined(...) to let the reader know that they are mutually exclusive?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "f5fe65d856199b7cf7a8d966d2b171bde834158c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6976060d_7079c0e2",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:52:28Z",
+      "side": 1,
+      "message": "same comment here (and rest of file)",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 6
+      },
+      "revId": "f5fe65d856199b7cf7a8d966d2b171bde834158c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
