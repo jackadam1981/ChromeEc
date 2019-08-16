@@ -94,6 +94,30 @@
       "revId": "2b0c87dfe8ee0d93be61e415131bc74794092040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c5864ef_4bbabaee",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-16T18:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a34daa78_2ada5b58",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "2b0c87dfe8ee0d93be61e415131bc74794092040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
