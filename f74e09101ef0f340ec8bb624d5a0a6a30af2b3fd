@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26c5b658_358fd587",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-16T15:52:00Z",
+      "side": 1,
+      "message": "Suggest to remove the sku_id parameter and call system_get_sku_id() inside board_use_st_sensor() (so it matches board_is_convertible()).",
+      "revId": "f74e09101ef0f340ec8bb624d5a0a6a30af2b3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
