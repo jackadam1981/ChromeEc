@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c046fc9e_34932f6a",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:32:58Z",
+      "side": 1,
+      "message": "I would much rather keep this a static variable and make each core implement its own task_enable and task_disable method.\n\nI really don\u0027t want to expose this data outside of this file",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2f24c3b_52924a9e",
         "filename": "include/task.h",
         "patchSetId": 3
@@ -35,6 +58,53 @@
         "startChar": 1,
         "endLine": 239,
         "endChar": 28
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89b4aac_5f83d403",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:32:58Z",
+      "side": 1,
+      "message": "+1, we need atomic access for sure",
+      "parentUuid": "b8863891_c8e1d324",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 28
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "673f3893_751ab3bc",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:32:58Z",
+      "side": 1,
+      "message": "looks like most core will throw an assertion failure as soon as you disable a task and something sends it an event.",
+      "range": {
+        "startLine": 245,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 36
       },
       "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
