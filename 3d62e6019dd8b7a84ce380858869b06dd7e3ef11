@@ -52,6 +52,24 @@
       "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7de5c1fa_6affc033",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-16T21:13:20Z",
+      "side": 1,
+      "message": "it would be extra code for no good reason. Unless we think that flash reads happen to be wrong sometimes (and in this case the entire device would be falling apart in mysterious ways each time this happens, and this is not happening), so there is no such thing as \u0027flaky\u0027 nvmem failure.\n\nAlso notice that if the problem happened not within 10 seconds of reset it will still cause a reboot, so if the problem was due to a \u0027flake\u0027 it would not be seen again after reset.",
+      "parentUuid": "48061d7a_1b58ebd2",
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
