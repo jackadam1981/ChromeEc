@@ -78,29 +78,27 @@ void keyboard_raw_task_start(void)
 		return;
 	}
 
-	/* KSO alternate function switching(KSO[21:18]) and enable pull-up */
-	it8801_write(IT8801_REG_GPIO00_KSO19, IT8801_REG_MASK_GPIOAFS_FUNC2 |
-		IT8801_REG_MASK_GPIOPUE);
-	it8801_write(IT8801_REG_GPIO01_KSO18, IT8801_REG_MASK_GPIOAFS_FUNC2 |
-		IT8801_REG_MASK_GPIOPUE);
-	it8801_write(IT8801_REG_GPIO22_KSO21, IT8801_REG_MASK_GPIOAFS_FUNC2 |
-		IT8801_REG_MASK_GPIOPUE);
-	it8801_write(IT8801_REG_GPIO23_KSO20, IT8801_REG_MASK_GPIOAFS_FUNC2 |
-		IT8801_REG_MASK_GPIOPUE);
-
-	/* Enable pull-up register of KSO[17:11, 6:0] */
-	it8801_write(IT8801_REG_GPIO10, IT8801_REG_MASK_GPIOAFS_PULLUP |
-		IT8801_REG_MASK_GPIOPUE);
-
-	/* KSO[22:11, 6:0] pins low. */
-	it8801_write(IT8801_REG_KSOMCR, IT8801_REG_MASK_AKSOSC);
+	/* KSO alternate function switching(KSO[21:18]) */
+	it8801_write(IT8801_REG_GPIO00_KSO19, IT8801_REG_MASK_GPIOAFS_FUNC2);
+	it8801_write(IT8801_REG_GPIO01_KSO18, IT8801_REG_MASK_GPIOAFS_FUNC2);
+	it8801_write(IT8801_REG_GPIO22_KSO21, IT8801_REG_MASK_GPIOAFS_FUNC2);
+// 	it8801_write(IT8801_REG_GPIO23_KSO20, IT8801_REG_MASK_GPIOAFS_FUNC2);
 
 	if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED)) {
-		/* GPIO alternate function switching(GPIO23) as output */
+		/*
+		 * Since most of the KSO pins can't drive up, we'll must use
+		 * a pin capable of being a GPIO instead and use the GPIO
+		 * feature to do the required inverted push pull.
+		 */
 		it8801_write(IT8801_REG_GPIO23_KSO20, IT8801_REG_MASK_GPIODIR);
-		/* GPIO23 output is high, others are low. */
+
+		/* Start with KEYBOARD_COLUMN_ALL, Output high (so selected). */
+		/* TODO: This clobbers other pins to 0 */
 		it8801_write(IT8801_REG_GPIOG2SOVR, IT8801_REG_GPIO23SOV);
 	}
+
+	/* Start with KEYBOARD_COLUMN_ALL, KSO[22:11, 6:0] pins low. */
+	it8801_write(IT8801_REG_KSOMCR, IT8801_REG_MASK_AKSOSC);
 
 	/* Keyboard scan in interrupt enable register */
 	it8801_write(IT8801_REG_KSIIER, 0xff);
@@ -121,6 +119,49 @@ __overridable const uint8_t kso_mapping[KEYBOARD_COLS_MAX] = {
 /* IT8801 kso supports maximum 18 pins */
 BUILD_ASSERT(ARRAY_SIZE(kso_mapping) <= IT8801_KSO_COUNT);
 
+
+/*
+#dump
+i2cxfer r 1 0x38 0x40
+i2cxfer r 1 0x38 0x41
+i2cxfer r 1 0x38 0x42
+i2cxfer r 1 0x38 0x43
+
+#alternate
+i2cxfer w 1 0x38 0x0a 0x40
+i2cxfer r 1 0x38 0x0a
+i2cxfer w 1 0x38 0x0b 0x40
+i2cxfer r 1 0x38 0x0b
+
+i2cxfer w 1 0x38 0x1c 0x40
+i2cxfer r 1 0x38 0x1c
+# i2cxfer w 1 0x38 0x1d 0x40
+# i2cxfer r 1 0x38 0x1d
+
+#make kso20 a gpio output high
+i2cxfer w 1 0x38 0x1d 0x20
+i2cxfer w 1 0x38 0x07 0x08 #gpio23=h
+
+#kso 0
+i2cxfer w 1 0x38 0x07 0x00 #gpio23=l
+i2cxfer w 1 0x38 0x40 0x00 #only kso0
+
+#kso 2
+i2cxfer w 1 0x38 0x07 0x08 #gpio23=h
+i2cxfer w 1 0x38 0x40 0xa0 #all hiz
+
+#KEYBOARD_COLUMN_NONE
+i2cxfer w 1 0x38 0x40 0xa0 #all hiz
+i2cxfer w 1 0x38 0x07 0x00 #gpio23=l
+
+#KEYBOARD_COLUMN_ALL
+i2cxfer w 1 0x38 0x07 0x08 #gpio23=h
+i2cxfer w 1 0x38 0x40 0x20 #all low
+
+#read
+i2cxfer r 1 0x38 0x41
+*/
+
 test_mockable void keyboard_raw_drive_column(int col)
 {
 	int kso_val;
@@ -134,12 +175,9 @@ test_mockable void keyboard_raw_drive_column(int col)
 		kso_val = IT8801_REG_MASK_KSOSDIC | IT8801_REG_MASK_AKSOSC;
 
 		if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED))
-			/*
-			 * Inverted GPIO23 output low,
-			 * all others KSO output high.
-			 */
-			it8801_write(IT8801_REG_GPIOG2SOVR,
-				~IT8801_REG_GPIO23SOV);
+			/* Output low (so not selected). */
+			/* TODO: This clobbers other pins to 0 */
+			it8801_write(IT8801_REG_GPIOG2SOVR, 0);
 	}
 	/* Assert all outputs */
 	else if (col == KEYBOARD_COLUMN_ALL) {
@@ -147,10 +185,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 		kso_val = IT8801_REG_MASK_AKSOSC;
 
 		if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED))
-			/*
-			 * Inverted GPIO23 output high,
-			 * all others KSO output low.
-			 */
+			/* Output high (so selected too). */
+			/* TODO: This clobbers other pins to 0 */
 			it8801_write(IT8801_REG_GPIOG2SOVR,
 				IT8801_REG_GPIO23SOV);
 	} else {
@@ -164,18 +200,18 @@ test_mockable void keyboard_raw_drive_column(int col)
 		kso_val = kso_mapping[col];
 
 		if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED)) {
-			/* GPIO23 is inverted. */
-			if (col == IT8801_REG_MASK_SELKSO2)
-			/* Selected GPIO23 and others KSO output high. */
+			if (col == IT8801_REG_MASK_SELKSO2) {
+				/* Output low (so selected). */
+				/* TODO: This clobbers other pins to 0 */
 				it8801_write(IT8801_REG_GPIOG2SOVR,
 					IT8801_REG_GPIO23SOV);
-			else
-			/*
-			 * Selected kso_val and GPIO23 output low,
-			 * others KSO output high.
-			 */
-				it8801_write(IT8801_REG_GPIOG2SOVR,
-					~IT8801_REG_GPIO23SOV);
+
+				/* KSO[22:11, 6:0] output high */
+				kso_val = IT8801_REG_MASK_KSOSDIC | IT8801_REG_MASK_AKSOSC;
+			} else
+				/* Output low (so not selected). */
+				/* TODO: This clobbers other pins to 0 */
+				it8801_write(IT8801_REG_GPIOG2SOVR, 0);
 		}
 	}
 
@@ -251,6 +287,7 @@ static int it8801_dump(int argc, char **argv)
 	dump_register(IT8801_REG_KSIEER);
 	dump_register(IT8801_REG_KSIDR);
 	dump_register(IT8801_REG_KSOMCR);
+	task_wake(TASK_ID_KEYSCAN);
 
 	return EC_SUCCESS;
 }
