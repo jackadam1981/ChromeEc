@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd3b4830_71f1dffc",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:25:45Z",
+      "side": 1,
+      "message": "We cannot change this for existing driver; We need to add a new flag to the driver so the driver can distinguish between active high and active low devices.\n\nYou could add the following flag:\n\nMOTIONSENSE_FLAG_INT_ACTIVE_HIGH BIT(3)\n\nthen the correct statement would be:\n\nreturn gpio_get_level(s-\u003eint_signal) \u003d\u003d !!(MOTIONSENSE_FLAG_INT_ACTIVE_HIGH \u0026 s-\u003eflags);",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "056a76ae528494b861056644c8b0080996b848f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c842702_d0fa62c1",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:25:45Z",
+      "side": 1,
+      "message": "this may not be compatible with some HW design that have already used the 12. Can you double checked. Let\u0027s use the flag here to set this conditionally",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 522,
+        "endChar": 22
+      },
+      "revId": "056a76ae528494b861056644c8b0080996b848f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0dbe974_a6603d6c",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:25:45Z",
+      "side": 1,
+      "message": "s/support/supports/g",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "056a76ae528494b861056644c8b0080996b848f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8249c2ff_e4196002",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4730,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:25:45Z",
+      "side": 1,
+      "message": "you should also assert an error if both are defined at the same time since the impl code cannot currently handle that case",
+      "range": {
+        "startLine": 4729,
+        "startChar": 0,
+        "endLine": 4730,
+        "endChar": 3
+      },
+      "revId": "056a76ae528494b861056644c8b0080996b848f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
