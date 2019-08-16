@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9407909_2d76bd7f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-16T20:35:41Z",
+      "side": 1,
+      "message": "Should we check the rollback counter and only invalidate it after like 3 reboots?",
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
