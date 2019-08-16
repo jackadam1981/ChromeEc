@@ -70,6 +70,29 @@
       "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d5ae33_20fbb68f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-08-16T22:02:00Z",
+      "side": 1,
+      "message": "do we want to log this action or is logging the failure\na few lines earlier conclusive?",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 24
+      },
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
