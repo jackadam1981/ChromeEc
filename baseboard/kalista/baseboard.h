@@ -125,6 +125,7 @@
 
 /* Verify and jump to RW image on boot */
 #define CONFIG_VBOOT_EFS
+#undef CONFIG_HAS_MATRIX_KEYBOARD
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
