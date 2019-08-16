@@ -13,9 +13,12 @@ GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button
 GPIO_INT(PCH_PLTRST_L,   PIN(E, 3), GPIO_INT_BOTH | GPIO_PULL_UP,   lpcrst_interrupt)
 #endif
 GPIO_INT(LID_OPEN,       PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
-GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH,                  switch_interrupt)         /* Write protect input */
+GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_interrupt)         /* Write protect input */
 #ifdef CONFIG_LOW_POWER_IDLE
+#if 0
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING,               uart_deepsleep_interrupt) /* UART1 RX input */
+#endif
+GPIO_INT(UART1_RX,       PIN(C, 7), GPIO_INT_FALLING,               uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
 
 #if IT83XX_PD_EVB
@@ -66,7 +69,11 @@ GPIO(BOARD_VERSION3, PIN(KSO_H, 7), GPIO_INPUT)
 /* Unimplemented signals which we need to emulate for now */
 UNIMPLEMENTED(ENTERING_RW)
 
+#if 0
 ALTERNATE(PIN_MASK(B, 0x03), 1, MODULE_UART, GPIO_PULL_UP) /* UART1 */
+#endif
+ALTERNATE(PIN_MASK(C, 0x80), 1, MODULE_UART, GPIO_PULL_UP) /* UART1 */
+ALTERNATE(PIN_MASK(E, 0x40), 1, MODULE_UART, GPIO_PULL_UP) /* UART1 */
 #ifdef CONFIG_UART_HOST
 ALTERNATE(PIN_MASK(H, 0x06), 1, MODULE_UART, 0)            /* UART2 */
 #endif
