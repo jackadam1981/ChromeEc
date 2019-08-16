@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39073846_6295cc2e",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-08-16T18:09:06Z",
+      "side": 1,
+      "message": "Do you mean wait until this CL chain merges and then change the Ice Lake configuration to make it appropriate for Tiger Lake?",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "eafd6df93563f5889823bc348c8e01ac1cea6fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
