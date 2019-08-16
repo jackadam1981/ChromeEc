@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9e16c4aa_5219ee8f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T16:02:05Z",
+      "side": 1,
+      "message": "Same reason, these are \"private\" functions",
+      "parentUuid": "64d78d95_3bc1d2b8",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a270239_c93483de",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a34888_940cee44",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T16:02:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a270239_c93483de",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "09f8d44f_d7038977",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T16:02:05Z",
+      "side": 1,
+      "message": "yes, TC_DEFAULT_STATE was always defined to TC_UNATTACHED_SNK. I just remove a layer of indirection. When we need to define the default state on a per-board basis in the future, then we can add back a option for a board to customize (maybe in a driver though).",
+      "parentUuid": "83a6cb02_726892a8",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddb9d5f8_3db55e43",
         "filename": "test/usb_typec_ctvpd.c",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d62056_e6be0f93",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T16:02:05Z",
+      "side": 1,
+      "message": "I started an undocumented naming convention, that I want to make official (I think there is more clean up work to make it official)\n\nif a function has a tc_, prl_, or pe_ prefix then it is a public function to that layer, if not, then it is a private function to that layer.\n\n\nThis is where a test is using a \"private\" function so it is reaching into the impl to make use of the test_export_static declaration.",
+      "parentUuid": "ddb9d5f8_3db55e43",
+      "revId": "53258b06ce4beafbba3ae06bdf5461c6efa2b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
