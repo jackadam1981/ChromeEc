@@ -45,6 +45,29 @@
       "revId": "fcfef354743a6ce2b722b7aa99b71a9cc3cbde50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699a1a15_800235ef",
+        "filename": "power/commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T20:38:34Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem correct. The value of HOST_SLEEP_EVENT_S0IX_RESUME is defined in the host command interface whether CONFIG_POWER_S0IX is defined or not.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "fcfef354743a6ce2b722b7aa99b71a9cc3cbde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
