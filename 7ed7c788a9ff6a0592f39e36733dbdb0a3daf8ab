@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5aa7e21c_720f7609",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2019-08-16T01:01:45Z",
+      "side": 1,
+      "message": "Because kohaku has 3-in-1 led, EC must check auto control of power led and battery led.",
+      "parentUuid": "e2b1abd1_9223f7c7",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "518a44c8_ea3e22fd",
         "filename": "board/kohaku/led.c",
         "patchSetId": 6
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b80c3b8_e2cb9c33",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2019-08-16T01:01:45Z",
+      "side": 1,
+      "message": "Battery must be turn off when system is S0 because kohaku has 3-in-l led. Otherwise the color is mixed.",
+      "parentUuid": "518a44c8_ea3e22fd",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d81cf7a7_305b0e51",
         "filename": "board/kohaku/led.c",
         "patchSetId": 6
@@ -115,6 +163,30 @@
       "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389b86e8_7f2cadc7",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2019-08-16T01:01:45Z",
+      "side": 1,
+      "message": "Leds is seperated by use. One is for power state and the other is for battery.",
+      "parentUuid": "d81cf7a7_305b0e51",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
