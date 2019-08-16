@@ -27,25 +27,6 @@
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
-static int has_matrix_keyboard(void)
-{
-	return 0;
-}
-
-static int is_efs_supported(void)
-{
-#ifdef CONFIG_VBOOT_EFS
-	return 1;
-#else
-	return 0;
-#endif
-}
-
-static int is_low_power_ap_boot_supported(void)
-{
-	return 0;
-}
-
 static int verify_slot(enum system_image_copy_t slot)
 {
 	const struct vb21_packed_key *vb21_key;
@@ -64,7 +45,7 @@ static int verify_slot(enum system_image_copy_t slot)
 			CONFIG_RO_PUBKEY_STORAGE_OFF);
 	rv = vb21_is_packed_key_valid(vb21_key);
 	if (rv) {
-		CPRINTS("Invalid key (%d)", rv);
+		CPRINTS("Invalid key (0x%x)", rv);
 		return EC_ERROR_VBOOT_KEY;
 	}
 	key = (const struct rsa_public_key *)
@@ -90,7 +71,7 @@ static int verify_slot(enum system_image_copy_t slot)
 
 	rv = vb21_is_signature_valid(vb21_sig, vb21_key);
 	if (rv) {
-		CPRINTS("Invalid signature (%d)", rv);
+		CPRINTS("Invalid signature (0x%x)", rv);
 		return EC_ERROR_INVAL;
 	}
 	sig = (const uint8_t *)vb21_sig + vb21_sig->sig_offset;
@@ -104,7 +85,7 @@ static int verify_slot(enum system_image_copy_t slot)
 
 	rv = vboot_verify(data, len, key, sig);
 	if (rv) {
-		CPRINTS("Invalid data (%d)", rv);
+		CPRINTS("Invalid data (0x%x)", rv);
 		return EC_ERROR_INVAL;
 	}
 
@@ -162,7 +143,7 @@ static int verify_and_jump(void)
 
 	/* 3. Jump (and reboot) */
 	rv = system_run_image_copy(slot);
-	CPRINTS("Failed to jump (%d)", rv);
+	CPRINTS("Failed to jump (0x%x)", rv);
 
 	return rv;
 }
@@ -171,12 +152,6 @@ static int verify_and_jump(void)
 static void request_power(void)
 {
 	CPRINTS("%s", __func__);
-}
-
-static void request_recovery(void)
-{
-	CPRINTS("%s", __func__);
-	led_critical();
 }
 
 static int is_manual_recovery(void)
@@ -220,27 +195,29 @@ void vboot_main(void)
 
 	if (is_manual_recovery()) {
 		CPRINTS("Manual recovery");
-		if (battery_is_present() || has_matrix_keyboard()) {
+		/*
+		 * We'll enforce the exception (pd_comm_enabled=1) only strictly
+		 * for Chromeboxes (instead of including Chromebooks with a
+		 * battery disconnected).
+		 */
+		if (IS_ENABLED(CONFIG_BATTERY)
+				|| IS_ENABLED(HAS_TASK_KEYSCAN)) {
+			/*
+			 * For Chromebooks, we proceed. We may boot immediately
+			 * or may need to wait for a battery to be charged.
+			 */
 			request_power();
 			return;
 		}
-		/* We don't request_power because we don't want to assume all
-		 * devices support a non type-c charger. We open up a security
-		 * hole by allowing EC-RO to do PD negotiation but attackers
-		 * don't gain meaningful advantage on devices without a matrix
-		 * keyboard */
+		/*
+		 * We don't request_power because we don't want to assume all
+		 * devices support a non type-c charger. We relax security
+		 * for keyboard-less devices (i.e. Chromeboxes) by allowing
+		 * EC-RO to do PD negotiation but attackers don't gain
+		 * meaningful advantage on devices without a matrix keyboard.
+		 */
 		CPRINTS("Enable PD comm");
 		pd_comm_enabled = 1;
-		return;
-	}
-
-	if (!is_efs_supported()) {
-		if (is_low_power_ap_boot_supported())
-			/* If a device supports this feature, AP's boot power
-			 * threshold should be set low. That will let EC-RO
-			 * boot AP and softsync take care of RW verification. */
-			return;
-		request_power();
 		return;
 	}
 
@@ -249,6 +226,22 @@ void vboot_main(void)
 	verify_and_jump();
 	clock_enable_module(MODULE_FAST_CPU, 0);
 
-	/* Failed to jump. Need recovery. */
-	request_recovery();
+	/*
+	 * Failed to jump.
+	 *
+	 * If a battery isn't charged, we'll hang out in S5 until it's charged.
+	 * If a battery is disconnected, the system would boot on PD power (
+	 * because PD is unlocked). Either way, a Chromebook will proceed in RO.
+	 * We don't need to indicate failure (by LED). EC Software Sync will fix
+	 * the bad RW (using the traditional path).
+	 */
+	if (!IS_ENABLED(CONFIG_BATTERY))
+		/*
+		 * If this is a Chromebox, it'll stay in S5, requesting recovery
+		 * with a USB-C adapter, or boot to recovery mode with a barrel
+		 * jack adapter. We need to indicate it on the LED.
+		 */
+		led_critical();
+
+	CPRINTS("Exit");
 }
