@@ -34,6 +34,24 @@
       "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48061d7a_1b58ebd2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-16T20:59:15Z",
+      "side": 1,
+      "message": "Once we have a failure there\u0027s no way to recover other than invalidating nvmem? \n\nThere\u0027s no possible way for nvmem to succeed the next time? Is it possible we encountered an error for some flaky reason?\n\nCr50 rolling reboots happen pretty quickly. If we wait for a couple of resets it won\u0027t add that much time and this shouldn\u0027t happen very often.",
+      "parentUuid": "4c15a13b_b2a5220e",
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
