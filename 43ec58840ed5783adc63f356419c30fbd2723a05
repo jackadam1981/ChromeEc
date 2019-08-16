@@ -841,6 +841,30 @@
     },
     {
       "key": {
+        "uuid": "3a311613_969d4e79",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "removed. we can add it back if it\u0027s needed.",
+      "parentUuid": "fee33af4_62dab064",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 6
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3d8bef1_ad982eb0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1099,6 +1123,30 @@
     },
     {
       "key": {
+        "uuid": "dfc0ea1a_819d6f3b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4cd9ed0_0ed9f265",
+      "range": {
+        "startLine": 709,
+        "startChar": 1,
+        "endLine": 710,
+        "endChar": 42
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36289b8d_70fec5db",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1119,6 +1167,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f77894a9_17243985",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "This runs the state machine loop at 2ms. But it\u0027s not needed here.",
+      "parentUuid": "36289b8d_70fec5db",
+      "range": {
+        "startLine": 712,
+        "startChar": 1,
+        "endLine": 712,
+        "endChar": 32
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1183,6 +1255,24 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea329f5a_9fe981f8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "684b8e49_e90dee0e",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1327,6 +1417,30 @@
     },
     {
       "key": {
+        "uuid": "c3b6f318_0c1d3ae8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97680d5f_f4f227bd",
+      "range": {
+        "startLine": 747,
+        "startChar": 1,
+        "endLine": 752,
+        "endChar": 55
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eef9c455_570125ea",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1444,6 +1558,30 @@
     },
     {
       "key": {
+        "uuid": "a7807392_2e459da6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3919,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "The policy for our current VDM is that initially we send a discover identity, followed by discover svids, discover modes, enter mode, dpstatus, and dpconfigure, and finally attention. If we don\u0027t send the sequence of messages at startup, we should think what policy the DPM will use to send the messages.\n\nFor now, I think we should keep the current policy but clean up the code to make it clear what it\u0027s doing.",
+      "parentUuid": "7abc4684_ef3a3c02",
+      "range": {
+        "startLine": 3904,
+        "startChar": 0,
+        "endLine": 3919,
+        "endChar": 31
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94c32eea_8f206c6c",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1458,6 +1596,24 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dfa992_519d6ed1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3942,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "see comment above.",
+      "parentUuid": "94c32eea_8f206c6c",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1484,6 +1640,30 @@
     },
     {
       "key": {
+        "uuid": "02ad2c2d_0ae8c751",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3979,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "The code has been restructured.",
+      "parentUuid": "5665a4f8_e02ef131",
+      "range": {
+        "startLine": 3971,
+        "startChar": 0,
+        "endLine": 3979,
+        "endChar": 3
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a43f54c_b7e62bcb",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1507,6 +1687,30 @@
     },
     {
       "key": {
+        "uuid": "5ee46201_cc96b467",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4020,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "The code has been restructured.",
+      "parentUuid": "9a43f54c_b7e62bcb",
+      "range": {
+        "startLine": 4019,
+        "startChar": 1,
+        "endLine": 4020,
+        "endChar": 24
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93091a93_e5544f57",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1518,6 +1722,24 @@
       "writtenOn": "2019-08-08T01:37:18Z",
       "side": 1,
       "message": "The check here for either TX completion or message received seems like it could be problematic since it seems like TX completion is the actual event of interest here. e.g. could the PRL indicate that a message was received prior to sending the VDM? If so, would the PE mistakenly think that the message was sent?",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b7fc4f_45e1f998",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Yes this can be a problem. Please see 6.11.2.1.3.1 TCH_Wait_For_Message_Request_From_Policy_Engine State in the spec. The problem is, the machine transitions to state TCH_Message_Received when a message is received from any other state except TCH_Wait_Chunk_Request.",
+      "parentUuid": "93091a93_e5544f57",
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1541,6 +1763,24 @@
     },
     {
       "key": {
+        "uuid": "1e62b77b_7b2edc60",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4024,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bbcb866_a6bd79d2",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bcfd9cc_fed6b529",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -1555,6 +1795,24 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda233f2_e272ebca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4106,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Good point. Fixed in the code restructure.",
+      "parentUuid": "4bcfd9cc_fed6b529",
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1613,6 +1871,30 @@
       "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c5b372_b20715bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4250,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-08-16T21:15:42Z",
+      "side": 1,
+      "message": "Fixed in code restructuring.",
+      "parentUuid": "74662ddd_8a2eccce",
+      "range": {
+        "startLine": 4248,
+        "startChar": 6,
+        "endLine": 4250,
+        "endChar": 21
+      },
+      "revId": "43ec58840ed5783adc63f356419c30fbd2723a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
