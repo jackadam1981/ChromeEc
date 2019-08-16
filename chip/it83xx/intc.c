@@ -20,7 +20,7 @@
 static uint8_t message_id_last[USBPD_PORT_COUNT];
 
 /* Invalidate last received message id variable */
-void invalidate_last_message_id(int port)
+void it83xx_invalidate_last_message_id(int port)
 {
 	/*
 	 * Message id starts from 0 to 7. If static global variable
@@ -30,7 +30,7 @@ void invalidate_last_message_id(int port)
 	message_id_last[port] = 0xff;
 }
 
-static int consume_repeat_message(int port)
+static int it83xx_consume_repeat_message(int port)
 {
 	uint16_t msg_header = IT83XX_USBPD_RMH(port);
 	int msg_id = PD_HEADER_ID(msg_header);
@@ -43,7 +43,7 @@ static int consume_repeat_message(int port)
 	 */
 	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
 	    PD_HEADER_CNT(msg_header) == 0)
-		invalidate_last_message_id(port);
+		it83xx_invalidate_last_message_id(port);
 	else if (message_id_last[port] != msg_id)
 		message_id_last[port] = msg_id;
 	else if (message_id_last[port] == msg_id) {
@@ -65,12 +65,12 @@ static void chip_pd_irq(enum usbpd_port port)
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
 		/* Invalidate last received message id variable */
-		invalidate_last_message_id(port);
+		it83xx_invalidate_last_message_id(port);
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
-			if (!consume_repeat_message(port))
+			if (!it83xx_consume_repeat_message(port))
 				tcpm_enqueue_message(port);
 			/* clear RX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
