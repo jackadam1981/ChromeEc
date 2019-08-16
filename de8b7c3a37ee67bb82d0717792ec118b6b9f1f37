@@ -22,6 +22,30 @@
       "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45df97f3_01b453e0",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-16T22:52:24Z",
+      "side": 1,
+      "message": "We can update dptf profile in a new function listening to HOOK_TABLET_MODE_CHANGE.\nBut we will have to add redundant code to read sensor state (L79-L81) in the new function.\nI\u0027m not so sure if that\u0027s better.",
+      "parentUuid": "b3a244c7_906d3b44",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
