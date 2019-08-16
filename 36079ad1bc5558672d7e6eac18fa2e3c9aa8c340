@@ -70,6 +70,24 @@
       "revId": "36079ad1bc5558672d7e6eac18fa2e3c9aa8c340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "857fdbc6_c87986d0",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-16T21:12:29Z",
+      "side": 1,
+      "message": "Alright, let\u0027s just call it ioexpander_* to be consistent and rename it (to ioex_*, which i agree is a nicer name) in a later CL. It doesn\u0027t make sense to actively land something that doesn\u0027t match the rest of the stuff.\n\nI\u0027m going to reupload (PS23 perhaps) this CL with this change + a rebase.",
+      "parentUuid": "ac9c5f96_6cc215f9",
+      "revId": "36079ad1bc5558672d7e6eac18fa2e3c9aa8c340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

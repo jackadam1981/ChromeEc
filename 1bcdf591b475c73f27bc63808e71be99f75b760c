@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd27c577_57547143",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-16T21:12:29Z",
+      "side": 1,
+      "message": "I don\u0027t think it8801_vendor_id_verify means a list of possible ids. Instead it\u0027s an array of both bytes to check (and they both have to match).\n\nThe logic says if one part of the VID doesn\u0027t match, then return error.",
+      "parentUuid": "554a031f_99ba7dad",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddf85f13_e9ac08e1",
         "filename": "driver/ioex_it8801.c",
         "patchSetId": 22
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-16T20:13:32Z",
       "side": 1,
       "message": "I like that we are enabling automated tests with test_mockable. Can you add unit tests for this driver please?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b38258_33ad18e5",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-16T21:12:29Z",
+      "side": 1,
+      "message": "I\u0027m not really sure what you mean. What do you envision here?\n\nDoesn\u0027t test_mockable mean you can replace this function with some mock version? Most of the keyboard_* API functions in this driver are of that kind (to be replaced with a mock), everything else is low level glue code that can\u0027t really be tested without real hardware.",
+      "parentUuid": "ddf85f13_e9ac08e1",
       "range": {
         "startLine": 124,
         "startChar": 0,
