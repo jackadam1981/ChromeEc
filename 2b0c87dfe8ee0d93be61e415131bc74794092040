@@ -46,6 +46,30 @@
       "revId": "2b0c87dfe8ee0d93be61e415131bc74794092040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633b9f47_8ca2e9a7",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1362301
+      },
+      "writtenOn": "2019-08-16T17:56:56Z",
+      "side": 1,
+      "message": "The fsm is only getting reset when SDA is stuck at 0.\nIf SDA is stuck at 1 (i2cs is in the middle of a read and outputting a 0), we are relying on the next transaction to reset the fsm.\nI think there may be a small chance that a stuck at 1 may turn into a stuck at 0 after the transaction, but this requires a lot of events to line up (such as the read acks).\nBut this scenario is rare, so it may not be worth preventing?",
+      "parentUuid": "3315d3b2_880690ec",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "2b0c87dfe8ee0d93be61e415131bc74794092040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
