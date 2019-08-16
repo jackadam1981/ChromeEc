@@ -11,6 +11,8 @@
 /* USB MUX */
 #define CONFIG_USB_MUX_VIRTUAL
 
+#define CONFIG_USBC_VCONN
+
 #include "baseboard.h"
 
 /* TODO: Chipset Tigerlake */
@@ -76,6 +78,9 @@
 #define USB_PORT0_BB_RETIMER_SHARED_NVM	BB_RETIMER_SHARED_NVM
 #define USB_PORT1_BB_RETIMER_SHARED_NVM	BB_RETIMER_SHARED_NVM
 
+/* Enabling SOP' communication */
+#define CONFIG_USB_PD_DECODE_SOP
+
 #ifndef __ASSEMBLER__
 
 enum tglrvp_charge_ports {
@@ -94,6 +99,8 @@ enum tglrvp_i2c_channel {
 #define PD_MAX_POWER_MW        60000
 
 int board_get_version(void);
+/* Turn on/off vconn power switch. */
+void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 
 #endif /* !__ASSEMBLER__ */
 
