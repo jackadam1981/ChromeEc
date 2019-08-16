@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdca4bc5_5dea2bab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-16T21:42:24Z",
+      "side": 1,
+      "message": "Can you add link to https://crrev.com/c/1742870 and https://crrev.com/c/1585121/2/baseboard/octopus/usb_pd_policy.c in the commit message?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfa4a29_598d5b63",
+        "filename": "baseboard/zork/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-16T21:42:24Z",
+      "side": 1,
+      "message": "Pull in comment from hatch \"Make DP interface safe until configure\"",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
