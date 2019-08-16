@@ -30,6 +30,7 @@
 /* EC console commands  */
 #define CONFIG_CMD_CHARGER_DUMP
 #define CONFIG_CMD_KEYBOARD
+#define CONFIG_CMD_USB_PD_CABLE
 
 /* Port80 display */
 #define CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY
@@ -207,6 +208,13 @@ struct tcpc_gpio_t {
 	uint8_t pin_pol;
 };
 
+/* VCONN gpios */
+struct vconn_gpio_t {
+	enum gpio_signal cc1_pin;
+	enum gpio_signal cc2_pin;
+	uint8_t pin_pol;
+};
+
 struct tcpc_gpio_config_t {
 	/* VBUS interrput */
 	struct tcpc_gpio_t vbus;
@@ -214,6 +222,10 @@ struct tcpc_gpio_config_t {
 	struct tcpc_gpio_t src;
 	/* Sink enable */
 	struct tcpc_gpio_t snk;
+#if defined(CONFIG_USBC_VCONN) && defined(CHIP_FAMILY_IT83XX)
+	/* Enable VCONN */
+	struct vconn_gpio_t vconn;
+#endif
 };
 extern const struct tcpc_gpio_config_t tcpc_gpios[];
 
