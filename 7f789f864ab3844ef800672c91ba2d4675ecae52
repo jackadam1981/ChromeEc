@@ -16,6 +16,24 @@
       "revId": "7f789f864ab3844ef800672c91ba2d4675ecae52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe740c4_6b323da4",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-16T17:44:58Z",
+      "side": 1,
+      "message": "my goal was to cleanup Jett\u0027s existing document and started because the names changed while coding the new state machine. a nice long document going into more detail would be nice but not sure the code is complete enough to go there quite yet... but I could be wrong, Jett?",
+      "parentUuid": "d37f9de2_f197fceb",
+      "revId": "7f789f864ab3844ef800672c91ba2d4675ecae52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
