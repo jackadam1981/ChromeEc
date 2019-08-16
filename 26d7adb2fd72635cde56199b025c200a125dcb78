@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75d5722d_eca9ed56",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-16T20:21:47Z",
+      "side": 1,
+      "message": "See my main comment. If this was rolled into the normal gpio api you wouldn\u0027t need special console commands for the io expander gpios. You could just use gpioget and gpioset.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 50
+      },
+      "revId": "26d7adb2fd72635cde56199b025c200a125dcb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
