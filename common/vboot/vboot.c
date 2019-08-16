@@ -27,25 +27,6 @@
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
-static int has_matrix_keyboard(void)
-{
-	return 0;
-}
-
-static int is_efs_supported(void)
-{
-#ifdef CONFIG_VBOOT_EFS
-	return 1;
-#else
-	return 0;
-#endif
-}
-
-static int is_low_power_ap_boot_supported(void)
-{
-	return 0;
-}
-
 static int verify_slot(enum system_image_copy_t slot)
 {
 	const struct vb21_packed_key *vb21_key;
@@ -64,7 +45,7 @@ static int verify_slot(enum system_image_copy_t slot)
 			CONFIG_RO_PUBKEY_STORAGE_OFF);
 	rv = vb21_is_packed_key_valid(vb21_key);
 	if (rv) {
-		CPRINTS("Invalid key (%d)", rv);
+		CPRINTS("Invalid key (0x%x)", rv);
 		return EC_ERROR_VBOOT_KEY;
 	}
 	key = (const struct rsa_public_key *)
@@ -90,7 +71,7 @@ static int verify_slot(enum system_image_copy_t slot)
 
 	rv = vb21_is_signature_valid(vb21_sig, vb21_key);
 	if (rv) {
-		CPRINTS("Invalid signature (%d)", rv);
+		CPRINTS("Invalid signature (0x%x)", rv);
 		return EC_ERROR_INVAL;
 	}
 	sig = (const uint8_t *)vb21_sig + vb21_sig->sig_offset;
@@ -104,7 +85,7 @@ static int verify_slot(enum system_image_copy_t slot)
 
 	rv = vboot_verify(data, len, key, sig);
 	if (rv) {
-		CPRINTS("Invalid data (%d)", rv);
+		CPRINTS("Invalid data (0x%x)", rv);
 		return EC_ERROR_INVAL;
 	}
 
@@ -162,7 +143,7 @@ static int verify_and_jump(void)
 
 	/* 3. Jump (and reboot) */
 	rv = system_run_image_copy(slot);
-	CPRINTS("Failed to jump (%d)", rv);
+	CPRINTS("Failed to jump (0x%x)", rv);
 
 	return rv;
 }
@@ -220,7 +201,8 @@ void vboot_main(void)
 
 	if (is_manual_recovery()) {
 		CPRINTS("Manual recovery");
-		if (battery_is_present() || has_matrix_keyboard()) {
+		if (battery_is_present()
+				|| IS_ENABLED(CONFIG_HAS_MATRIX_KEYBOARD)) {
 			request_power();
 			return;
 		}
@@ -234,21 +216,20 @@ void vboot_main(void)
 		return;
 	}
 
-	if (!is_efs_supported()) {
-		if (is_low_power_ap_boot_supported())
-			/* If a device supports this feature, AP's boot power
-			 * threshold should be set low. That will let EC-RO
-			 * boot AP and softsync take care of RW verification. */
-			return;
-		request_power();
-		return;
-	}
-
 	clock_enable_module(MODULE_FAST_CPU, 1);
 	/* If successful, this won't return. */
 	verify_and_jump();
 	clock_enable_module(MODULE_FAST_CPU, 0);
 
-	/* Failed to jump. Need recovery. */
-	request_recovery();
+	/*
+	 * Failed to jump.
+	 *
+	 * We proceed in RO to boot AP (using a traditional path). AP will run
+	 * softsync and fix the invalid or corrupted RW.
+	 *
+	 * If this is a Chromebox, it'll stay in S5 requesting recovery with a
+	 * USB-C adapter or boot to recovery mode with a barrel jack adapter.
+	 */
+	if (!battery_is_present())
+		request_recovery();
 }

@@ -4117,6 +4117,9 @@
 /* Support early firmware selection */
 #undef CONFIG_VBOOT_EFS
 
+/* Has a matrix (built-in) keyboard */
+#define CONFIG_HAS_MATRIX_KEYBOARD
+
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
