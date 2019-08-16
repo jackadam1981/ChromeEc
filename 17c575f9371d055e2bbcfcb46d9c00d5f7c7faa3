@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eab3fec9_2fef0f49",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-16T22:32:40Z",
+      "side": 1,
+      "message": "Nit: remove 8. I doubt we\u0027ll ever do more than at a time that in here.",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c1ffcc_0519ac56",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-16T22:32:40Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
