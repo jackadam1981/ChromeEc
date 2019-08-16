@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a13d7640_c66edb8e",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-16T15:15:43Z",
+      "side": 1,
+      "message": "what about calling common_intel_x86_handle_rsmrst here?\n\nWe could remove the enum power_state state parameter (since it is unused in that function) and make a note that is could be called in either interrupt or task context.\n\nThen in common_86x if CONFIG_CHIPSET_X8^_RMSRST_ISR_PASS is defined, we skip the call to common_intel_x86_handle_rsmrst.\n\nWhat are you thoughts?\n\n(we would also need to remove the print from common_intel_x86_handle_rsmrst)\n\n\n----\n\n\nFor boards that define both CONFIG_CHIPSET_X86_RSMRST_ISR_PASS and CONFIG_BOARD_HAS_BEFORE_RSMRST right now, the board_before_rmsrst(0) would never get called.",
+      "range": {
+        "startLine": 700,
+        "startChar": 1,
+        "endLine": 709,
+        "endChar": 47
+      },
+      "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
