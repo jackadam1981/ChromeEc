@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8586ca1_1f1d5d1e",
+        "filename": "test/static_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-16T17:23:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be something like: \"because the variable usage gets optimized away by a linker\"?",
+      "range": {
+        "startLine": 30,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "38be20319a3dcd402b2a74f12dd25f0b58c450af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
