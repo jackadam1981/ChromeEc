@@ -47,7 +47,7 @@ test_mockable __keep int main(void)
 	 * interrupts.
 	 */
 #ifdef CONFIG_BOARD_PRE_INIT
-	board_config_pre_init();
+	board_config_pre_init(;
 #endif
 
 #ifdef CONFIG_CHIP_PRE_INIT
