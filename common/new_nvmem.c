@@ -364,6 +364,7 @@ test_export_static struct access_tracker master_at;
 
 test_export_static enum ec_error_list browse_flash_contents(int print);
 static enum ec_error_list save_container(struct nn_container *nc);
+static void corrupt_all_pages(void);
 
 /* Log NVMEM problem as per passed in payload and size, and reboot. */
 static void report_failure(struct nvmem_failure_payload *payload,
@@ -376,6 +377,15 @@ static void report_failure(struct nvmem_failure_payload *payload,
 		payload);
 	ccprintf("Logging failure %d\n", payload->failure_type);
 	cflush();
+
+	if (get_time().val < (10 * SECOND)) {
+		/*
+		 * This could be a rolling reboot, let's play it safe and
+		 * erase nvmem to stop this.
+		 */
+		corrupt_all_pages();
+	}
+
 	system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED | SYSTEM_RESET_HARD);
 }
 
@@ -631,6 +641,23 @@ static enum ec_error_list write_to_flash(const void *flash_addr,
 {
 	return flash_physical_write(
 		(uintptr_t)flash_addr - CONFIG_PROGRAM_MEMORY_BASE, size, obj);
+}
+
+static void corrupt_all_pages(void)
+{
+	size_t i;
+	struct nn_page_header *ph;
+	struct nn_page_header bad_ph;
+
+	memset(&bad_ph, 0, sizeof(bad_ph));
+
+	for (i = 0; i < ARRAY_SIZE(page_list); i++) {
+
+		ph = list_element_to_ph(i);
+		if (!ph)
+			continue;
+		write_to_flash(ph, &bad_ph, sizeof(*ph));
+	}
 }
 
 /*
