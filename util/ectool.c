@@ -5613,6 +5613,9 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 			printf("INV ");
 		if (r.flags & USB_PD_MUX_HPD_IRQ)
 			printf("HPD_IRQ ");
+		printf("HPD_LVL=%d ", !!(r.flags & USB_PD_MUX_HPD_LVL));
+		if (r.flags & USB_PD_MUX_SAFE_MODE)
+			printf("SAFE ");
 		printf("\n");
 	}
 
