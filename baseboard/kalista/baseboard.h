@@ -125,6 +125,7 @@
 
 /* Verify and jump to RW image on boot */
 #define CONFIG_VBOOT_EFS
+#undef CONFIG_HAS_MATRIX_KEYBOARD
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
@@ -231,7 +232,6 @@ enum OEM_ID {
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 void led_alert(int enable);
-void led_critical(void);
 
 #endif /* !__ASSEMBLER__ */
 
