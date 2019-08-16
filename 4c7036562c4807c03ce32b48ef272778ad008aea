@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4e8257be_7fb1de8d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-16T01:26:16Z",
+      "side": 1,
+      "message": "Why don\u0027t we let servod/dut-control take care of this, and let flash_ec always call it with prefix?\nSo, in my suggestion, servod would do the second attempt stripping prefix from the control only if the first attempt fails.",
+      "parentUuid": "1881ace1_bab36ef1",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ee46d39_57c22556",
         "filename": "util/flash_ec",
         "patchSetId": 1
