@@ -1,0 +1,22 @@
+##
+##
+##
+
+mainmenu "EC configuration"
+
+menu "General setup"
+
+config TEST_CONFIG_1
+       bool "test config 1"
+       default y
+
+endmenu
+
+choice
+	prompt "Board name"
+
+source "board/*/Kconfig.name"
+
+endchoice
+
+source "board/*/Kconfig"
