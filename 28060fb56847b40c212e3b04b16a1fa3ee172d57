@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "88edb972_7a8ae89b",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-17T00:07:28Z",
+      "side": 1,
+      "message": "FYI, you don\u0027t need the \"\u003c \u003e\", but since the file is already written that way, it\u0027s ok.",
+      "range": {
+        "startLine": 175,
+        "startChar": 17,
+        "endLine": 175,
+        "endChar": 119
+      },
+      "revId": "28060fb56847b40c212e3b04b16a1fa3ee172d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "818842d7_2b2e2f09",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-17T00:07:28Z",
+      "side": 1,
+      "message": "nit: add \"https://\" since gitiles doesn\u0027t linkify without it",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "28060fb56847b40c212e3b04b16a1fa3ee172d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bd6a8b_22d5d2a8",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-17T00:07:28Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "28060fb56847b40c212e3b04b16a1fa3ee172d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc92324a_06668252",
         "filename": "docs/usb-c.md",
         "patchSetId": 2
@@ -13,6 +82,30 @@
       "writtenOn": "2019-08-16T21:04:59Z",
       "side": 1,
       "message": "This is a well written, but third party doc.  Is it ok to link to it?",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 106
+      },
+      "revId": "28060fb56847b40c212e3b04b16a1fa3ee172d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65035773_2d8d5679",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-17T00:07:28Z",
+      "side": 1,
+      "message": "Seems like a good idea to me.",
+      "parentUuid": "fc92324a_06668252",
       "range": {
         "startLine": 203,
         "startChar": 0,
