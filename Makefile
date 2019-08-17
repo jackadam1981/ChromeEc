@@ -252,6 +252,14 @@ objs_from_dir=$(call objs_from_dir_p,$(1),$(2),y)
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
 
+common_dirs=util
+
+################################################################
+
+include Makefile.kconfig
+
+################################################################
+
 ifdef CTS_MODULE
 include cts/build.mk
 endif
@@ -317,7 +325,6 @@ dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 dirs+= private $(PDIR) $(PBDIR)
 dirs+=$(shell find common -type d)
 dirs+=$(shell find driver -type d)
-common_dirs=util
 
 ifeq ($(custom-ro_objs-y),)
 ro-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
