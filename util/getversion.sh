@@ -53,7 +53,8 @@ get_tree_version() {
     # changed
     git status > /dev/null 2>&1
 
-    if [ -n "$(git diff-index --name-only HEAD 2>/dev/null)" ]; then
+    if [ "$TIMELESS_BUILD" != 1 ] &&
+	 [ -n "$(git diff-index --name-only HEAD 2>/dev/null)" ]; then
       marker="${dirty_marker}"
     else
       marker="-"
@@ -143,7 +144,11 @@ main() {
     echo "#define BUILDER \"${USER}@`hostname`\""
   fi
 
-  if [ -n "$global_dirty" ]; then
+  if [ "$TIMELESS_BUILD" = 1 ]; then
+    timestamp="1970-01-01 00:00:00"
+    echo "/* Time-less build, using 1970. */"
+    echo "#define DATE \"${timestamp}\""
+  elif [ -n "$global_dirty" ]; then
     most_recent_file="$(git status --porcelain | \
                awk '$1 ~ /[M|A|?]/ {print $2}' |  \
                xargs ls -t | head -1)"
