@@ -255,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "2e534ab2_f7b93ba0",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1364477
+      },
+      "writtenOn": "2019-08-17T00:57:26Z",
+      "side": 1,
+      "message": "Agreed regarding the Type-A \u003c\u003e Type-C dependency. Could we just say \"if only one Type-C port is in use, it should source 3A. If a second Type-C is plugged in, we downgrade both to 1.5A. We then leave Type-A requirements independent?",
+      "parentUuid": "d2f68b3d_25fde892",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 78
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46c4f607_5b9d3559",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -294,6 +318,29 @@
         "startChar": 0,
         "endLine": 122,
         "endChar": 32
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d64982_a12133b1",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1364477
+      },
+      "writtenOn": "2019-08-17T00:57:26Z",
+      "side": 1,
+      "message": "Can you explain what is accomplished by going from max 4800mA to max 3300mA (through this policy adjustment)? Presumably something having to do with providing flexibility on the daughter board implementation?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 44
       },
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
