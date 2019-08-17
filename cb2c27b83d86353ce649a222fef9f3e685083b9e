@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0650a67_2d9b7eec",
+        "filename": "common/rollback.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-17T00:04:51Z",
+      "side": 1,
+      "message": "Just for consistency, should this be \"goto failed\"? Technically, we don\u0027t need to clear it, but usually nice if all failure paths follow the same flow.",
+      "range": {
+        "startLine": 189,
+        "startChar": 9,
+        "endLine": 189,
+        "endChar": 25
+      },
+      "revId": "cb2c27b83d86353ce649a222fef9f3e685083b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
