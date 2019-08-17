@@ -1,0 +1,12 @@
+
+mainmenu "EC configuration"
+
+choice
+
+	prompt "Board name"
+
+source "board/*/Kconfig.name"
+
+endchoice
+
+source "board/*/Kconfig"
