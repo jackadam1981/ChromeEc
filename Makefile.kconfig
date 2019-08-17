@@ -1,0 +1,49 @@
+srck := $(CURDIR)/util/kconfig
+objk := $(out)/util/kconfig
+Kconfig := Kconfig
+
+#KBUILD_DEFCONFIG := configs/defconfig
+KBUILD_DEFCONFIG := $(BDIR)/defconfig.in
+DEFCONFIG := $(BDIR)/defconfig.out
+
+#DOTCONFIG ?= $(top)/.config
+#DOTCONFIG ?= $(out)/board.kconfig
+DOTCONFIG ?= $(BDIR)/board.kconfig
+export CONFIG_ := KCONFIG_
+export KCONFIG_CONFIG = $(DOTCONFIG)
+export KCONFIG_AUTOCONFIG := $(out)/auto.conf
+#config.h
+export KCONFIG_AUTOHEADER := $(out)/kconfig.h
+export KCONFIG_DEPENDENCIES := $(out)/auto.conf.cmd
+#/config
+export KCONFIG_SPLITCONFIG := $(out)/include/kconfig
+export KCONFIG_TRISTATE := $(out)/tristate.conf
+
+export COREBOOT_BUILD_DIR := $(out)
+
+# [new, cj] env KCONFIG_POSITIVES := 1
+
+# env KCONFIG_AUTOCONFIG := $(obj)/auto.conf
+# env KCONFIG_NEGATIVES := 1
+# env KCONFIG_SPLITCONFIG := $(obj)/config
+# env KCONFIG_DEPENDENCIES := $(obj)/auto.conf.cmd
+# env KCONFIG_AUTOHEADER := $(obj)/config.h
+# env KCONFIG_TRISTATE := $(obj)/tristate.conf
+# env KCONFIG_PROBABILITY
+# env KCONFIG_ALLCONFIG
+# env KCONFIG_SEED
+# env KCONFIG_NOSILENTUPDATE
+# warnings are errors
+export KCONFIG_STRICT := 1
+
+include $(srck)/Makefile
+
+common_dirs+=util/kconfig util/kconfig/lxdialog
+common_dirs+=include/kconfig
+
+################################################################
+
+$(KCONFIG_AUTOHEADER): $(KCONFIG_CONFIG) $(objk)/conf
+	$(MAKE) oldconfig
+
+$(KCONFIG_AUTOCONFIG): $(KCONFIG_AUTOHEADER) ;
