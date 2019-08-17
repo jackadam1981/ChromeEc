@@ -1,0 +1,13 @@
+##
+##
+##
+
+mainmenu "EC configuration"
+
+menu "General setup"
+
+config TEST_CONFIG_1
+       bool "test config 1"
+       default y
+
+endmenu
