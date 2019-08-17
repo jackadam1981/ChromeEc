@@ -669,7 +669,7 @@ ifneq ($(CCACHE),)
 endif
 
 .PHONY: help
-help:
+help::
 	@echo "Google Chromium EC build"
 	@echo "Common Targets:"
 	@echo "  all   [BOARD=]       - Build a single board (Default target)"

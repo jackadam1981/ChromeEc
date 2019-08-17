@@ -83,6 +83,11 @@ include Makefile.toolchain
 .PHONY: all
 all:
 
+common_dirs=util
+
+# Kconfig rules
+include Makefile.kconfig
+
 # Returns the opposite of a configuration variable
 # y  ->
 # ro -> rw
@@ -317,7 +322,6 @@ dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 dirs+= private $(PDIR) $(PBDIR)
 dirs+=$(shell find common -type d)
 dirs+=$(shell find driver -type d)
-common_dirs=util
 
 ifeq ($(custom-ro_objs-y),)
 ro-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))

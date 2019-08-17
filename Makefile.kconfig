@@ -1,0 +1,40 @@
+srck := $(CURDIR)/util/kconfig
+objk := $(out)/util/kconfig
+Kconfig := Kconfig
+
+# make defconfig reads this file
+# this is intentionally a missing file
+KBUILD_DEFCONFIG := $(BDIR)/board.defconfig
+
+# make savedefconfig writes this
+DEFCONFIG := $(out)/kconfig.defconfig
+
+export KCONFIG_CONFIG = $(BDIR)/board.kconfig
+export KCONFIG_AUTOCONFIG := $(out)/auto.conf
+export KCONFIG_AUTOHEADER := $(out)/kconfig.h
+export KCONFIG_TRISTATE := $(out)/tristate.conf
+
+# TODO(caveh): add support for KCONFIG_STRICT
+# warnings are errors
+export KCONFIG_STRICT := 1
+
+include $(srck)/Makefile.inc
+
+common_dirs+=util/kconfig util/kconfig/lxdialog
+common_dirs+=include/kconfig
+
+################################################################
+
+cmd_silentoldconfig = \
+	if [ -e $< ]; then \
+		$(MAKE) silentoldconfig $(silent) ; \
+	else \
+		touch $@ ; \
+	fi
+
+$(KCONFIG_CONFIG):
+
+$(KCONFIG_AUTOHEADER): $(KCONFIG_CONFIG) $(objk)/conf
+	+$(call quiet,silentoldconfig,GEN    )
+
+$(KCONFIG_AUTOCONFIG): $(KCONFIG_AUTOHEADER) ;
