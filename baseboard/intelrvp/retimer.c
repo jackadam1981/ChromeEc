@@ -6,7 +6,7 @@
 /* Intel BASEBOARD-RVP Retimer specific configuration */
 
 #include "bb_retimer.h"
-#include "common.h"
+#include "compile_time_macros.h"
 
 /* USB Retimers configuration */
 #ifdef CONFIG_USB_PD_RETIMER_INTEL_BB
