@@ -70,20 +70,6 @@ enum tch_state_id {
 #define N_RETRY_COUNT 2
 
 /**
- * Initialize the Protocol Layer State Machine
- *
- * @param port USB-C port number
- */
-void prl_init(int port);
-
-/**
- * Resets the Protocol Layer State Machine
- *
- * @param port USB-C port number
- */
-void prl_reset(int port);
-
-/**
  * Get Chunked Rx State Machine state id
  *
  * @param port USB-C port number
@@ -114,14 +100,6 @@ enum prl_tx_state_id get_prl_tx_state_id(int port);
  * @return id
  */
 enum prl_hr_state_id get_prl_hr_state_id(int port);
-
-/**
- * Returns the state of the PRL state machine
- * @return SM_INIT for initializing
- *         SM_RUN for running
- *         SM_PAUSED for paused
- */
-enum sm_local_state prl_get_local_state(int port);
 
 /**
  * Runs the Protocol Layer State Machine

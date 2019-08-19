@@ -218,7 +218,7 @@ void prl_execute_hard_reset(int port)
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
-void prl_init(int port)
+static void prl_init(int port)
 {
 	int i;
 
@@ -324,19 +324,19 @@ void prl_send_ext_data_msg(int port,
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
-void prl_reset(int port)
-{
-	local_state[port] = SM_INIT;
-}
-
 void usbc_protocol_layer(int port, int evt, int en)
 {
-	switch (local_state[port]) {
-	case SM_INIT:
+	if (local_state[port] == SM_PAUSED) {
+		if (en)
+			local_state[port] = SM_INIT;
+	}
+
+	if (local_state[port] == SM_INIT) {
 		prl_init(port);
 		local_state[port] = SM_RUN;
-		/* fall through */
-	case SM_RUN:
+	}
+
+	if (local_state[port] == SM_RUN) {
 		/* If disabling, wait until message is sent. */
 		if (!en && tch[port].state_id ==
 					TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE) {
@@ -347,7 +347,7 @@ void usbc_protocol_layer(int port, int evt, int en)
 			tcpm_set_rx_enable(port, 0);
 #endif
 			local_state[port] = SM_PAUSED;
-			break;
+			return;
 		}
 
 		/* Run Protocol Layer Message Reception */
@@ -364,19 +364,7 @@ void usbc_protocol_layer(int port, int evt, int en)
 
 		/* Run Protocol Layer Hard Reset state machine */
 		sm_run_state_machine(port, PRL_HR_OBJ(port), SM_RUN_SIG);
-		break;
-	case SM_PAUSED:
-		if (en) {
-			local_state[port] = SM_INIT;
-			usbc_protocol_layer(port, evt, en);
-		}
-		break;
 	}
-}
-
-enum sm_local_state prl_get_local_state(int port)
-{
-	return local_state[port];
 }
 
 void prl_set_rev(int port, enum pd_rev_type rev)

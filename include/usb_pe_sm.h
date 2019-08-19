@@ -24,13 +24,6 @@ enum pe_error {
 #define PE_OBJ(port)   (SM_OBJ(pe[port]))
 
 /**
- * Initialize the Policy Engine State Machine
- *
- * @param port USB-C port number
- */
-void pe_init(int port);
-
-/**
  * Runs the Policy Engine State Machine
  *
  * @param port USB-C port number

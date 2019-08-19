@@ -38,7 +38,7 @@ static struct policy_engine {
 /* Policy Engine states */
 DECLARE_STATE(pe, request, WITH_RUN, NOOP);
 
-void pe_init(int port)
+static void pe_init(int port)
 {
 	pe[port].flags = 0;
 	sm_init_state(port, PE_OBJ(port), pe_request);
@@ -48,26 +48,23 @@ void usbc_policy_engine(int port, int evt, int en)
 {
 	static enum sm_local_state local_state[CONFIG_USB_PD_PORT_COUNT];
 
-	switch (local_state[port]) {
-	case SM_INIT:
+	if (local_state[port] == SM_PAUSED) {
+		if (en)
+			local_state[port] = SM_INIT;
+	}
+
+	if (local_state[port] == SM_INIT) {
 		pe_init(port);
 		local_state[port] = SM_RUN;
-		/* fall through */
-	case SM_RUN:
+	}
+
+	if (local_state[port] == SM_RUN) {
 		if (!en) {
 			local_state[port] = SM_PAUSED;
-			break;
+			return;
 		}
 
 		sm_run_state_machine(port, PE_OBJ(port), SM_RUN_SIG);
-		break;
-	case SM_PAUSED:
-		if (en) {
-			/* Restart state machine right now. */
-			local_state[port] = SM_INIT;
-			usbc_policy_engine(port, evt, en);
-		}
-		break;
 	}
 }
 
