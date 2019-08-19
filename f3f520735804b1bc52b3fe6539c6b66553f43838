@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afad4c9c_c72a235f",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-19T23:42:53Z",
+      "side": 1,
+      "message": "Suggest expanding this to mention CONFIG_KEYBOARD_PROTOCOL_MKBP vs CONFIG_MKBP_EVENT.\nI was confused early on Grunt because we used CONFIG_KEYBOARD_PROTOCOL_8042, but then also had CONFIG_MKBP_EVENT for non-keyboard-related events (sensor data).\nSee b/136284831#comment2 for some more history from Furquan.",
+      "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46bc9dd0_4e4f2896",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-19T23:42:53Z",
+      "side": 1,
+      "message": "missing d: \"Structured\"",
+      "range": {
+        "startLine": 151,
+        "startChar": 13,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ad217b_bda5b632",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-19T23:42:53Z",
+      "side": 1,
+      "message": "missing d: \"Structured\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
