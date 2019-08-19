@@ -22,6 +22,30 @@
       "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23b818f_65ad6cf7",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-19T21:23:34Z",
+      "side": 1,
+      "message": "+1 to using common_intel_x86_handle_rsmrst() so that we can account for any actions required by other platforms. However, I think we need to be careful about what changes that could result into. i.e. would it be called only when high -\u003e low transition is done? Is this something that affects all Intel platforms and should be a common intel handler that does this? Would we get rid of the call to common_intel_x86_handle_rsmrst() in other places if the platform chooses to have CONFIG_CHIPSET_X86_RSMRST_ISR_PASS?",
+      "parentUuid": "a13d7640_c66edb8e",
+      "range": {
+        "startLine": 700,
+        "startChar": 1,
+        "endLine": 709,
+        "endChar": 47
+      },
+      "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
