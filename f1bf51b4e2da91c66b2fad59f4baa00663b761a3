@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c5c57e7_ea882ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-19T17:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdca4bc5_5dea2bab",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adfa4a29_598d5b63",
         "filename": "baseboard/zork/usb_pd_policy.c",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8021be9b_f810043c",
+        "filename": "baseboard/zork/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-19T17:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2da6f547_2ce05462",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
