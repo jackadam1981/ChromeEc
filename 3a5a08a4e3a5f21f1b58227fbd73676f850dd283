@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b11e8d9c_b988de20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-19T20:32:31Z",
+      "side": 1,
+      "message": "Can you please do this as a separate CL? It is not related to the change actually being made.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac50b51a_976a2121",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2856,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-19T20:32:31Z",
+      "side": 1,
+      "message": "Should this be CONFIG_POWER_HOST_COMMAND to make it clear that this is referring to host commands?",
+      "range": {
+        "startLine": 2856,
+        "startChar": 7,
+        "endLine": 2856,
+        "endChar": 28
+      },
+      "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd25bbb0_b643eca3",
+        "filename": "power/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-19T20:32:31Z",
+      "side": 1,
+      "message": "Can this not be: CONFIG_POWER_TRACK_HOST_SLEEP_STATE? Do we really need a new config?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
