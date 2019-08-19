@@ -148,8 +148,14 @@ static void led_set_battery(void)
 				led_set_color_battery(1, LED_OFF);
 		}
 
-		if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED))
-			led_set_color_battery(0, LED_OFF);
+		if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)) {
+			if (charge_get_percent() < 10)
+				led_set_color_battery(0, (battery_ticks %
+					LED_TICKS_PER_CYCLE < LED_ON_TICKS) ?
+					LED_WHITE : LED_OFF);
+			else
+				led_set_color_battery(0, LED_OFF);
+		}
 		break;
 	case PWR_STATE_ERROR:
 		set_active_port_color((battery_ticks & 0x2) ?
