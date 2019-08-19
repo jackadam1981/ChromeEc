@@ -93,6 +93,98 @@
       "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6474ef26_2c44d69e",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-19T22:10:31Z",
+      "side": 1,
+      "message": "Why are all these gpios pulled up now?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 70
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9aba65_01167786",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-19T22:10:31Z",
+      "side": 1,
+      "message": "Making GPIO10 a pullup makes jacuzzi not boot since it\u0027s touching PMIC_FORCE_RESET.\n\n0x80 is fine, but 0x01 is not.\n\n\nAnd again, why do we want to pullup in the first place anyway? I would just leave this 0.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9639d75_a785f2ba",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-19T22:10:31Z",
+      "side": 1,
+      "message": "This clobbers other pins that might be in this register. We need to do a read modify write instead probably. Perhaps with a local cache what this register is to save an i2c transfer.",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d310ccf5_21bba7c0",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-19T22:10:31Z",
+      "side": 1,
+      "message": "I know there\u0027s been a lot of bikeshedding over how this is overridable, but is there even a good reason we should have it overridable?\n\nWould it be a bad idea to just hardcode it?\n\nIt\u0027s getting quite interesting now since a lot of IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED) also need to check what kso_mapping[2] is set to and configure the appropriate gpio instead. It would be easier if we could just assume this is always the same.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
