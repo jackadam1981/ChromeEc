@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a613aeb3_41562957",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-19T10:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc151c91_fdf63410",
+      "range": {
+        "startLine": 253,
+        "startChar": 31,
+        "endLine": 253,
+        "endChar": 35
+      },
+      "revId": "41c8833299da80ca27b30ea9b6e1baa115303319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db7737b3_98ba7519",
         "filename": "baseboard/kukui/usb_pd_policy.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "41c8833299da80ca27b30ea9b6e1baa115303319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92ae9e3_46a6b07b",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-19T10:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db7737b3_98ba7519",
+      "range": {
+        "startLine": 304,
+        "startChar": 27,
+        "endLine": 304,
+        "endChar": 42
+      },
+      "revId": "41c8833299da80ca27b30ea9b6e1baa115303319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
