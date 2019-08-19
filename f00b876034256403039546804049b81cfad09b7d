@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb408a95_0825222e",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "is this for the type-C port?  probably should be on the same line as above to make that obvious",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d573fd_baf07e88",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "this section is worded prescriptively (like a hard requirement) rather than informationaly (implementation guidance).\n\nthe project I\u0027m working on uses a completely different approach to implementing the C+A, but achieves the same output power.  do I no longer meet the requirements in this doc?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be9a1d7_10a2bc43",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "t",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01856fe6_cc773596",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "USB4 is not on the Type-A port",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc3239b_59fed738",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "max\n\nDCP requires the device to ramp current and see where VBUS starts drooping.  Devices are supposed to stop ramping around 1.5A (or maybe 1.8A) even if VBUS is still well within a valid range.  That means depending on the source/device combo, devices may end up pulling anything from 900mA to 2.4A (yes, exceeding the spec)\n\nCDP requires the host to provide 1.5A, guaranteed.",
+      "range": {
+        "startLine": 54,
+        "startChar": 30,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886fc256_891ef271",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "resistors",
+      "range": {
+        "startLine": 85,
+        "startChar": 32,
+        "endLine": 85,
+        "endChar": 40
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118e3789_5b5b94a8",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "536caf41_d420d9b6",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "Samus only.\nEither name it explicitly or drop the reference",
+      "range": {
+        "startLine": 92,
+        "startChar": 45,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b362f9_da57836c",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "I don\u0027t understand this.  If we have 1.5*n+1.5 available, why would we do 3A+1.5A in the PD+non-PD case and only 1.5A+1.5A in the PD+PD case?\n\nThere are plenty of low-cost, large-battery devices that could take 3A to charge but not do PD, such as battery banks, low-cost phones (Android One in particular), cheap tablets.  Seems weird to not give them 3A, since Type-C explicitly supports dynamically swapping between 3A and 1.5A via resistors alone.\n\nHow about the following heuristic instead:\n1. First device attached gets 3A\n2A. If second device supports PD (and wants 3A), first device drops to 1.5A and 3A is given to second device (avoids issues with gnubby+phone combo)\n2B. If second device does not support PD, the first device keeps 3A and the second device gets 1.5A.",
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

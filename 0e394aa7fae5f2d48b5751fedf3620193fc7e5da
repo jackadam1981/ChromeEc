@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "e057a804_80956fe1",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "no, USB-4 doesn\u0027t apply to Type-A, so this version was more correct.\n\nAlso, using \"gen 2.x\" is very confusing.  The official terms are:\nUSB 2.0\nUSB 3.2 Gen 1 (5gbps)\nUSB 3.2 Gen 2 (10gbps)\n\nI find that when talking about power, it\u0027s minimally confusing to just use \"USB2\" and \"USB3\".",
+      "parentUuid": "9f0bb7a0_c3234b23",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d94357a_7f5f7cd3",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -719,6 +743,30 @@
       "side": 1,
       "message": "this was the one section that was pretty much copy and pasted to the summary section. I wasn\u0027t thrilled about it either. I wanted to have the table and some text explain the table. The text here ended on being important at the summary level too.\n\nPlease let me know if you have any suggestions.",
       "parentUuid": "77c451b2_7069b0de",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45d817d_6ce8a31d",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-19T18:46:22Z",
+      "side": 1,
+      "message": "maybe just introduce all of this at the same time?  Seems weird to have a \"Daughter board requirements\" section and a totally separate \"daughter board considerations\" section.\nEspecially since I don\u0027t think the daughter board requirements are actually requirements (see other note).",
+      "parentUuid": "cde85c1e_894724bd",
       "range": {
         "startLine": 142,
         "startChar": 0,
