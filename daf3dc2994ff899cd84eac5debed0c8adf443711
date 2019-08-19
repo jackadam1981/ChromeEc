@@ -46,6 +46,30 @@
       "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c3bf15_a1b2bd41",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-19T21:59:36Z",
+      "side": 1,
+      "message": "The existing function deals with both low-\u003ehigh and high-\u003elow transitions. The transition that we need to make faster is high-\u003elow only. If we remove the call common_intel_x86_handle_rsmrst  from within the power state machine (common or chip specific), then it becomes challenging to delay the low-\u003ehigh pass through case. Even if CONFIG_CHIPSET_X8^_RMSRST_ISR_PAS is defined, there is no need to skip common_intel_x86_handle_rsmrst as that function becomes a \"do nothing\" for high-\u003elow transitions.",
+      "parentUuid": "a23b818f_65ad6cf7",
+      "range": {
+        "startLine": 700,
+        "startChar": 1,
+        "endLine": 709,
+        "endChar": 47
+      },
+      "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
