@@ -22,6 +22,30 @@
       "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db46f78f_682a9647",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4592,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:36:13Z",
+      "side": 0,
+      "message": "This CL decouples the need of enabling chipset task and CONFIG_POWER_TRACK_HOST_SLEEP_STATE.\nSome chips, e.g. mt_scp, doesn\u0027t control/handle the power transition.  The only thing it needs to know is AP\u0027s suspend/resume status.",
+      "parentUuid": "9abe8087_f37a4a8b",
+      "range": {
+        "startLine": 4592,
+        "startChar": 7,
+        "endLine": 4592,
+        "endChar": 42
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "844a7ee8_2e5e01f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:36:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "276e748f_c2d59f3d",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "fcfef354743a6ce2b722b7aa99b71a9cc3cbde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c55af74c_91786a0a",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0e65d715_4fa0a3ea",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:36:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c55af74c_91786a0a",
+      "range": {
+        "startLine": 2853,
+        "startChar": 53,
+        "endLine": 2853,
+        "endChar": 64
+      },
+      "revId": "fcfef354743a6ce2b722b7aa99b71a9cc3cbde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "699a1a15_800235ef",
         "filename": "power/commands.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "fcfef354743a6ce2b722b7aa99b71a9cc3cbde50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4407c870_07bdcab2",
+        "filename": "power/commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:36:13Z",
+      "side": 1,
+      "message": "Done. Remove this guard.",
+      "parentUuid": "699a1a15_800235ef",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "fcfef354743a6ce2b722b7aa99b71a9cc3cbde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
