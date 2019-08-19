@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1a8cb10_bf7b53af",
+        "filename": "baseboard/intelrvp/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-19T16:04:46Z",
+      "side": 1,
+      "message": "Let\u0027s move this to it83xx.c (and append __overridable).",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 1
+      },
+      "revId": "1cb39306c0bbccb899464f95b5ab730d30bf7d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
