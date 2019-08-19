@@ -500,6 +500,17 @@ int charger_set_input_current(int input_current)
 	uint8_t reg_iin = 0;
 	const struct charger_info * const info = charger_get_info();
 
+	/*
+	 * AICR's accuracy is 14% off from the maximum value. i.e. If AICR is
+	 * 2000, then the possible input current ranges from 1720 to 2000.
+	 * In most observed cases, it's usually under the medium value.
+	 * This leads to an inaccurate input current setting.
+	 *
+	 * To make the input current more accurate, we raise the input_current
+	 * by 5% which should still be safe from the previous experience.
+	 */
+	input_current = input_current * 105 / 100;
+
 	reg_iin = rt946x_closest_reg(info->input_current_min,
 		info->input_current_max, info->input_current_step,
 		input_current);
