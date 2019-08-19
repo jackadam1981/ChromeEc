@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a27c338_378b1962",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:35:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c046fc9e_34932f6a",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2f24c3b_52924a9e",
         "filename": "include/task.h",
         "patchSetId": 3
@@ -89,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "e2a3d52f_03b70d29",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:35:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a89b4aac_5f83d403",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 28
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "673f3893_751ab3bc",
         "filename": "include/task.h",
         "patchSetId": 3
@@ -100,6 +148,30 @@
       "writtenOn": "2019-08-16T20:32:58Z",
       "side": 1,
       "message": "looks like most core will throw an assertion failure as soon as you disable a task and something sends it an event.",
+      "range": {
+        "startLine": 245,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 36
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90765c7_56cb9902",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-19T05:35:56Z",
+      "side": 1,
+      "message": "Not sure what kind of assertions you are saying here? \n\nAre you saying task id? I think it\u0027s hard to misuse this function, so I didn\u0027t add the assertion here.",
+      "parentUuid": "673f3893_751ab3bc",
       "range": {
         "startLine": 245,
         "startChar": 19,
