@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4513d9bc_55c1cbe6",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73c8e730_8f4b9400",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61f1313a_551cbb61",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326cff93_febc1a21",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "915bd8a0_ff1987ac",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc2fca2_6fb7a02e",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "I removed it, since Type-A and Type-C are fully independent now",
+      "parentUuid": "915bd8a0_ff1987ac",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 76
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f6268282_78088c57",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b613f0e_40891145",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e56fff0_faf8e8d6",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f55c9c_030322c6",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e56fff0_faf8e8d6",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9f0bb7a0_c3234b23",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Add section about always supply 1.5A to ensure peripherals have enough power.",
+      "parentUuid": "fcd342bc_9595f2e2",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d94357a_7f5f7cd3",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252882dd_e23cbc73",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Changed based on email thread discussion. We will always source 1.5A on each Type-A port now.\n\nAnd yes this is how it worked in hardware with a feedback gpio from/to each Type-A BC 1.2 chip.",
+      "parentUuid": "9d94357a_7f5f7cd3",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "4c0f7573_61aaf1ec",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "that is not how it was implemented today. However, I updated the documentation to reflect the 1.5A guaranteed current requirement now.",
+      "parentUuid": "ab1c9f0a_4e45d686",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 80
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d5fc74f_49e38ec1",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7bbe59bb_06c631b3",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d5fc74f_49e38ec1",
+      "range": {
+        "startLine": 100,
+        "startChar": 13,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acb19c8f_c35e19f6",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57757db6_d492e759",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done. Better to be a correct as possible :)",
+      "parentUuid": "acb19c8f_c35e19f6",
+      "range": {
+        "startLine": 101,
+        "startChar": 71,
+        "endLine": 101,
+        "endChar": 79
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "09ebeff2_0ea0f902",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Remove the Type-A Type-C dependency based on discussion here and email thread.",
+      "parentUuid": "2e534ab2_f7b93ba0",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 78
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46c4f607_5b9d3559",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -299,6 +563,30 @@
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d25aba66_3f3b64c3",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46c4f607_5b9d3559",
+      "range": {
+        "startLine": 116,
+        "startChar": 47,
+        "endLine": 116,
+        "endChar": 57
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -325,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "8d230a93_698c47b4",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "a4649a5f_3584f000",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40d64982_a12133b1",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -348,6 +660,30 @@
     },
     {
       "key": {
+        "uuid": "9f5b2687_31e08390",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "I actually removed this note now that Type-C and Type-A are independent again. Max current is 4.8A all the time now.",
+      "parentUuid": "40d64982_a12133b1",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77c451b2_7069b0de",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -359,6 +695,30 @@
       "writtenOn": "2019-08-15T23:42:15Z",
       "side": 1,
       "message": "is it just me or is there a lot of copy-paste and repeating the same numbers in this doc?\ncan the spec be simplified so that when it changes in the future, we\u0027re not making the same changes in multiple places?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde85c1e_894724bd",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-19T16:54:36Z",
+      "side": 1,
+      "message": "this was the one section that was pretty much copy and pasted to the summary section. I wasn\u0027t thrilled about it either. I wanted to have the table and some text explain the table. The text here ended on being important at the summary level too.\n\nPlease let me know if you have any suggestions.",
+      "parentUuid": "77c451b2_7069b0de",
       "range": {
         "startLine": 142,
         "startChar": 0,
