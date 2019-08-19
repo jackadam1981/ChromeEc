@@ -22,6 +22,40 @@
       "revId": "4aedbc6a26c371e2e769ebb04a91b25495589a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11afa9a4_bed090ae",
+        "filename": "board/kukui_scp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-19T07:30:24Z",
+      "side": 1,
+      "message": "This does not look too necessary.",
+      "revId": "4aedbc6a26c371e2e769ebb04a91b25495589a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e705d794_60a5e540",
+        "filename": "board/kukui_scp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-19T07:30:24Z",
+      "side": 1,
+      "message": "drop this?",
+      "revId": "4aedbc6a26c371e2e769ebb04a91b25495589a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
