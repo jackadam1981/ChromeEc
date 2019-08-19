@@ -93,6 +93,30 @@
       "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da6f547_2ce05462",
+        "filename": "baseboard/zork/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-19T16:40:16Z",
+      "side": 1,
+      "message": "I think CL:1575429 was an improvement here, so suggest reverting this chunk to keep this unchanged from Grunt.",
+      "parentUuid": "49d92563_d4dffecb",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "f1bf51b4e2da91c66b2fad59f4baa00663b761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
