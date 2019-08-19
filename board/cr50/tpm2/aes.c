@@ -242,7 +242,7 @@ static void aes_command_handler(void *cmd_body,
 	 */
 	struct unaligned_buf {
 		uint8_t unused;
-		uint8_t b[128];
+		uint8_t b[256];
 	} __packed;
 
 	struct unaligned_buf out_local;
@@ -266,7 +266,7 @@ static void aes_command_handler(void *cmd_body,
 	 * iv          | 0 or 16  | as defined by iv_len
 	 * aad_len     |  <= 127  | additional authentication data length
 	 * aad         |  aad_len | additional authentication data
-	 * text_len    |    2     | size of the text to process, big endian
+	 * text_len    |    1     | size of the text to process, big endian
 	 * text        | text_len | text to encrypt/decrypt
 	 */
 	e_mode = *cmd++;
@@ -292,8 +292,7 @@ static void aes_command_handler(void *cmd_body,
 	aad = cmd;
 	cmd += aad_len;
 	data_len = *cmd++;
-	data_len = data_len * 256 + *cmd++;
-
+	
 	/*
 	 * We know that the receive buffer is at least this big, i.e. all the
 	 * preceding fields are guaranteed to fit.
