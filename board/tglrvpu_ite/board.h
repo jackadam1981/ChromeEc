@@ -42,6 +42,7 @@
 	#define TYPE_C_PORT_1_USB3_NUM	2
 #endif /* BOARD_TGLRVPU_ITE */
 
+#define CONFIG_EC_KEYBOARD
 
 /* Config BB retimer */
 #define CONFIG_USB_PD_RETIMER_INTEL_BB

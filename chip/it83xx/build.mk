@@ -31,6 +31,6 @@ chip-$(CONFIG_HOSTCMD_X86)+=lpc.o ec2i.o
 chip-$(CONFIG_HOSTCMD_ESPI)+=espi.o
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
 chip-$(CONFIG_PECI)+=peci.o
-chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
+chip-$(CONFIG_EC_KEYBOARD)+=keyboard_raw.o
 chip-$(CONFIG_I2C_MASTER)+=i2c.o
 chip-$(CONFIG_I2C_SLAVE)+=i2c_slave.o

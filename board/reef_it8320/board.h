@@ -129,7 +129,7 @@
 #define CONFIG_WLAN_POWER_ACTIVE_LOW
 #define WIRELESS_GPIO_WLAN_POWER GPIO_WIRELESS_GPIO_WLAN_POWER
 #define CONFIG_PWR_STATE_DISCHARGE_FULL
-
+#define CONFIG_EC_KEYBOARD
 /*
  * Enable 1 slot of secure temporary storage to support
  * suspend/resume with read/write memory training.
