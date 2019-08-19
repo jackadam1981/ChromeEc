@@ -186,3 +186,8 @@ int ioexpander_read_intelrvp_version(int *port0, int *port1)
 		I2C_ADDR_PCA9555_BOARD_ID_GPIO,
 		PCA9555_CMD_INPUT_PORT_1, port1);
 }
+
+void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+{
+}
+

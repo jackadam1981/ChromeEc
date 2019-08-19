@@ -225,6 +225,7 @@ void board_charging_enable(int port, int enable);
 void board_vbus_enable(int port, int enable);
 int ioexpander_read_intelrvp_version(int *port0, int *port1);
 void board_dc_jack_interrupt(enum gpio_signal signal);
+void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 
 #endif /* !__ASSEMBLER__ */
 
