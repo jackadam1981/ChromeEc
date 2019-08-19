@@ -118,6 +118,30 @@
       "revId": "4fa2b5bc4cd9c78605c9e5a8d8dc946fd01a98e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9415354_d0892449",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-19T19:38:31Z",
+      "side": 1,
+      "message": "Ok, there were a few issues here, but I understand what was happening.\n\nThe following fixes it (tested with \"rm -rf build \u0026\u0026 make V\u003d1 run-fpsensor):\n\n \tdiff --git a/Makefile.rules b/Makefile.rules\n\tindex 127964045..993ee431c 100644\n\t--- a/Makefile.rules\n\t+++ b/Makefile.rules\n\t@@ -78,7 +78,7 @@ cmd_elf \u003d $(CC) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \\\n\t cmd_fuzz_exe \u003d $(CXX) $^ $(HOST_TEST_LDFLAGS) $(LDFLAGS_EXTRA) -o $@\n\t cmd_run_fuzz \u003d build/host/$*/$*.exe -seed\u003d1 -runs\u003d1 $(silent) \\\n\t\t$(silent_err) || (echo \"Test $* failed!\" \u0026\u0026 false)\n\t-cmd_exe \u003d $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) -o $@\n\t+cmd_exe \u003d $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) $(LDFLAGS_EXTRA) -o $@\n\t cmd_c_to_o \u003d $(CC) $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $\u003c -o $(@D)/$(@F)\n\t cmd_cxx_to_o \u003d $(CXX) -std\u003dc++11 $(CFLAGS) $(CXXFLAGS) -MMD -MP -MF $@.d -c $\u003c \\\n\t\t\t      -o $(@D)/$(@F)\n\tdiff --git a/board/host/board.h b/board/host/board.h\n\tindex 6f41dec20..8cf444ee3 100644\n\t--- a/board/host/board.h\n\t+++ b/board/host/board.h\n\t@@ -21,6 +21,8 @@\n\t \n\t #define CONFIG_WP_ACTIVE_HIGH\n\t \n\t+#define CONFIG_ALWAYS_MEMSET\n\t+\n\t #include \"gpio_signal.h\"\n\t \n\t enum temp_sensor_id {\n\tdiff --git a/common/build.mk b/common/build.mk\n\tindex 63e5d052d..a803aae05 100644\n\t--- a/common/build.mk\n\t+++ b/common/build.mk\n\t@@ -242,12 +242,17 @@ endif\n\t \n\t ifeq ($(CONFIG_ALWAYS_MEMSET),y)\n\t CRYPTOCLIB :\u003d $(realpath ../../third_party/cryptoc)\n\t+ifneq ($(BOARD),host)\n\t CPPFLAGS +\u003d -I$(abspath ./builtin)\n\t+endif\n\t CPPFLAGS +\u003d -I$(CRYPTOCLIB)/include\n\t \n\t CRYPTOC_OBJS \u003d $(shell find $(out)/cryptoc -name \u0027util.o\u0027)\n\t $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA +\u003d $(CRYPTOC_OBJS)\n\t $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: cryptoc_objs\n\t+# Host test executables\n\t+$(out)/$(PROJECT).exe: LDFLAGS_EXTRA +\u003d $(CRYPTOC_OBJS)\n\t+$(out)/$(PROJECT).exe: cryptoc_objs\n\t \n\t # Force the external build each time, so it can look for changed sources.\n\t .PHONY: cryptoc_objs\n\tdiff --git a/common/fpsensor/fpsensor.c b/common/fpsensor/fpsensor.c\n\tindex 58f99371c..db471f607 100644\n\t--- a/common/fpsensor/fpsensor.c\n\t+++ b/common/fpsensor/fpsensor.c\n\t@@ -28,12 +28,7 @@\n\t #error \"fpsensor requires RNG\"\n\t #endif\n\t \n\t-#ifndef TEST_BUILD\n\t #include \"cryptoc/util.h\"\n\t-#else\n\t-/* Cryptoc library is not available to the test layer. */\n\t-#define always_memset memset\n\t-#endif\n\t \n\t /* Ready to encrypt a template. */\n\t static timestamp_t encryption_deadline;\n\tdiff --git a/common/fpsensor/fpsensor_crypto.c b/common/fpsensor/fpsensor_crypto.c\n\tindex 51ce543f8..02d5f6358 100644\n\t--- a/common/fpsensor/fpsensor_crypto.c\n\t+++ b/common/fpsensor/fpsensor_crypto.c\n\t@@ -16,12 +16,7 @@\n\t #error \"fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE\"\n\t #endif\n\t \n\t-#ifndef TEST_BUILD\n\t #include \"cryptoc/util.h\"\n\t-#else\n\t-/* Cryptoc library is not available to the test layer. */\n\t-#define always_memset memset\n\t-#endif\n\t \n\t static int get_ikm(uint8_t *ikm)\n\t {\n\tdiff --git a/common/fpsensor/fpsensor_state.c b/common/fpsensor/fpsensor_state.c\n\tindex 058af39b7..2314c0bb9 100644\n\t--- a/common/fpsensor/fpsensor_state.c\n\t+++ b/common/fpsensor/fpsensor_state.c\n\t@@ -13,12 +13,7 @@\n\t #include \"task.h\"\n\t #include \"util.h\"\n\t \n\t-#ifndef TEST_BUILD\n\t #include \"cryptoc/util.h\"\n\t-#else\n\t-/* Cryptoc library is not available to the test layer. */\n\t-#define always_memset memset\n\t-#endif\n\t \n\t /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */\n\t uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);",
+      "parentUuid": "5455788d_d977f6ec",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "4fa2b5bc4cd9c78605c9e5a8d8dc946fd01a98e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
