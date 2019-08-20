@@ -22,6 +22,30 @@
       "revId": "b73998b3abe2274783061fddac165333e4a26f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5e8600_33374291",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T21:20:42Z",
+      "side": 1,
+      "message": "+1, no one seems to be overriding it. (I think we did at one point but we brought that special case into common code)",
+      "parentUuid": "b2561175_67de19ea",
+      "range": {
+        "startLine": 956,
+        "startChar": 0,
+        "endLine": 956,
+        "endChar": 13
+      },
+      "revId": "b73998b3abe2274783061fddac165333e4a26f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
