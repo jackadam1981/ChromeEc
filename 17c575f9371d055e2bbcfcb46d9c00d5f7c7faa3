@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ab444ab2_3588f2ca",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-20T08:27:54Z",
+      "side": 1,
+      "message": "Remove IT8801_REG_MASK_GPIOPUE.\n\nThe output type of KSO is open-drain, so these KSO pins need to pull up by internal or external.",
+      "parentUuid": "6a9aba65_01167786",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9639d75_a785f2ba",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 23
@@ -165,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "3dd05675_3a7662d9",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-20T08:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9639d75_a785f2ba",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d310ccf5_21bba7c0",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 23
@@ -176,6 +224,30 @@
       "writtenOn": "2019-08-19T22:10:31Z",
       "side": 1,
       "message": "I know there\u0027s been a lot of bikeshedding over how this is overridable, but is there even a good reason we should have it overridable?\n\nWould it be a bad idea to just hardcode it?\n\nIt\u0027s getting quite interesting now since a lot of IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED) also need to check what kso_mapping[2] is set to and configure the appropriate gpio instead. It would be easier if we could just assume this is always the same.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e757595d_38927983",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-20T08:27:54Z",
+      "side": 1,
+      "message": "It is mainly for developer to declare kso pins testing or verifying in board.c",
+      "parentUuid": "d310ccf5_21bba7c0",
       "range": {
         "startLine": 115,
         "startChar": 0,
