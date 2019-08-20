@@ -94,6 +94,29 @@
       "revId": "ce6937d41948427b16c9e7f696945f456ed739b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a473e9_ce97f856",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T21:09:30Z",
+      "side": 1,
+      "message": "If \u0027this is necessary only if CONFIG_USBC_VCONN is enabled\u0027 as you commented, it should be guarded by IS_ENABLED.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 28
+      },
+      "revId": "ce6937d41948427b16c9e7f696945f456ed739b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
