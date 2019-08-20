@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0106f2c_d59fd572",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:53:04Z",
+      "side": 1,
+      "message": "This is good. Please remove other declarations to avoid conflicts.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 60
+      },
+      "revId": "9afa4b0f66ea656d43a278f22df512c14abce3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
