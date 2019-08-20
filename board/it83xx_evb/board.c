@@ -43,7 +43,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{-1, -1, &it83xx_tcpm_drv},
 };
 
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+__override void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
 {
 	int cc1_enabled = 0, cc2_enabled = 0;
 
