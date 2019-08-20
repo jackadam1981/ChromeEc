@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d311382_c9f41d57",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-08-20T06:45:42Z",
+      "side": 1,
+      "message": "Daisuke,\nWhen using IS_ENABLED(), linker will link functions behind IS_ENABLED(), and it will show \"board_pd_vconn_ctrl not reference\" in project tglrvpu_ite. So I still use pre-processor to avoid this error. How about you thinking?",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 24
+      },
+      "revId": "6860068068cde30ec4f4ec4be01290850a9d6770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
