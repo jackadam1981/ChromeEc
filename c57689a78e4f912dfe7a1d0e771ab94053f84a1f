@@ -22,6 +22,30 @@
       "revId": "c57689a78e4f912dfe7a1d0e771ab94053f84a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081c42a0_d94a2b8e",
+        "filename": "navbar.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-20T21:43:45Z",
+      "side": 1,
+      "message": "This was to make it easy to report a security issue (since the process is different from filing a bug).\n\nOptions:\n\n\"Report Security Issue\"\n\"File Security Issue\"\n\nOther ideas?",
+      "parentUuid": "11bc949f_e93f718e",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "c57689a78e4f912dfe7a1d0e771ab94053f84a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
