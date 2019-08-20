@@ -46,6 +46,30 @@
       "revId": "6860068068cde30ec4f4ec4be01290850a9d6770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fe88ea_96fa94bd",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-20T16:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e54002c8_966717f8",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 24
+      },
+      "revId": "6860068068cde30ec4f4ec4be01290850a9d6770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
