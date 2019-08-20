@@ -181,6 +181,30 @@
       "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3ef485_3f94dab7",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T20:57:01Z",
+      "side": 1,
+      "message": "I was thinking that [0] would cause the assert, but as long as you never disable the idle task, then it won\u0027t ever cause an assert.\n\n\n[0] https://chromium.googlesource.com/chromiumos/platform/ec/+/d3784365bf1633dddd6671ee0c5322e87ada9db7/core/cortex-m/task.c#318",
+      "parentUuid": "e90765c7_56cb9902",
+      "range": {
+        "startLine": 245,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 36
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
