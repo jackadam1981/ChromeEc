@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd0e7a54_602d4cdf",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-20T00:59:06Z",
+      "side": 1,
+      "message": "The history that Furquan mentions in that bug seems valuable, but is quite long. Perhaps that detail deserves its own doc (or should go in an existing doc), instead of the glossary? i.e., just link to it?",
+      "parentUuid": "afad4c9c_c72a235f",
+      "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46bc9dd0_4e4f2896",
         "filename": "docs/ec_terms.md",
         "patchSetId": 3
