@@ -46,6 +46,30 @@
       "revId": "55ed8ec848dad3cc6925978959141993df62a8ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8dae23c_e239820b",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-20T22:56:15Z",
+      "side": 0,
+      "message": "created a bug b:139761723",
+      "parentUuid": "a1d8569f_bbad23a3",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 33
+      },
+      "revId": "55ed8ec848dad3cc6925978959141993df62a8ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
