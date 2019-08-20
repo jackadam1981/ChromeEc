@@ -165,7 +165,11 @@ static struct ipc_if_ctx ipc_peer_ctxs[IPC_PEERS_COUNT] = {
 		.pimr_2ish_bit = IPC_PIMR_HOST2ISH_BIT,
 		.pimr_2host_clearing_bit = IPC_PIMR_ISH2HOST_CLR_BIT,
 		.irq_in = ISH_IPC_HOST2ISH_IRQ,
+#ifdef CHIP_VARIANT_ISH5P4
+		.irq_clr = ISH_IPC_HOST2ISH_IRQ,
+#else
 		.irq_clr = ISH_IPC_ISH2HOST_CLR_IRQ,
+#endif
 		.tx_queue = QUEUE_NULL(IPC_HOST_MSG_QUEUE_SIZE, struct ipc_msg),
 	},
 	/* Other peers (PMC, CSME, etc) to be added when required */
@@ -459,7 +463,9 @@ static void ipc_host2ish_isr(void)
 	if ((pisr & IPC_PISR_HOST2ISH_BIT) && (pimr & IPC_PIMR_HOST2ISH_BIT))
 		handle_msg_recv_interrupt(IPC_PEER_ID_HOST);
 }
+#ifndef CHIP_VARIANT_ISH5P4
 DECLARE_IRQ(ISH_IPC_HOST2ISH_IRQ, ipc_host2ish_isr);
+#endif
 
 static void ipc_host2ish_busy_clear_isr(void)
 {
@@ -470,7 +476,20 @@ static void ipc_host2ish_busy_clear_isr(void)
 	    (pimr & IPC_PIMR_ISH2HOST_CLR_BIT))
 		handle_busy_clear_interrupt(IPC_PEER_ID_HOST);
 }
+
+#ifndef CHIP_VARIANT_ISH5P4
 DECLARE_IRQ(ISH_IPC_ISH2HOST_CLR_IRQ, ipc_host2ish_busy_clear_isr);
+#endif
+
+#ifdef CHIP_VARIANT_ISH5P4
+static void ipc_host2ish_combined_isr(void)
+{
+	ipc_host2ish_isr();
+	ipc_host2ish_busy_clear_isr();
+}
+DECLARE_IRQ(ISH_IPC_HOST2ISH_IRQ, ipc_host2ish_combined_isr);
+#endif
+ 
 
 int ipc_write_timestamp(const ipc_handle_t handle, const void *buf,
 			const size_t buf_size, uint32_t *timestamp)
@@ -558,7 +577,9 @@ ipc_handle_t ipc_open(const enum ipc_peer_id peer_id,
 
 	if (ctx->initialized == 0) {
 		task_enable_irq(ctx->irq_in);
+#ifndef CHIP_VARIANT_ISH5P4
 		task_enable_irq(ctx->irq_clr);
+#endif
 
 		ipc_enable_pimr_db_interrupt(ctx);
 		ipc_enable_pimr_clearing_interrupt(ctx);

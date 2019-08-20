@@ -13,6 +13,17 @@
 
 #define UART_ERROR		-1
 #define UART_BUSY		-2
+
+#ifdef CHIP_VARIANT_ISH5P4
+#define UART0_OFFS              (0x00)
+#define UART0_BASE              (ISH_UART_BASE + UART0_OFFS)
+
+#define UART1_OFFS              (0x2000)
+#define UART1_BASE              (ISH_UART_BASE + UART1_OFFS)
+
+#define UART2_OFFS              (0x4000)
+#define UART2_BASE              (ISH_UART_BASE + UART2_OFFS)
+#else
 #define HSU_BASE		ISH_UART_BASE
 #define UART0_OFFS		(0x80)
 #define UART0_BASE		(ISH_UART_BASE + UART0_OFFS)
@@ -25,12 +36,35 @@
 #define UART2_OFFS		(0x180)
 #define UART2_BASE		(ISH_UART_BASE + UART2_OFFS)
 #define UART2_SIZE		(0x80)
+#endif
 
 #define UART_REG(size, name, n)					\
 	REG##size(uart_ctx[n].base +					\
 		  UART_OFFSET_##name * uart_ctx[n].addr_interval)
 
 /* Register accesses */
+#ifdef CHIP_VARIANT_ISH5P4
+#define LSR(n)			UART_REG(8, LSR, n)
+#define THR(n)			UART_REG(8, THR, n)
+#define RBR(n)			UART_REG(8, RBR, n)
+#define DLL(n)			UART_REG(8, DLL, n)
+#define DLH(n)			UART_REG(8, DLH, n)
+#define DLF(n)			UART_REG(8, DLF, n)
+#define IER(n)			UART_REG(8, IER, n)
+#define IIR(n)			UART_REG(8, IIR, n)
+#define FCR(n)			UART_REG(8, FCR, n)
+#define LCR(n)			UART_REG(8, LCR, n)
+#define MCR(n)			UART_REG(8, MCR, n)
+#define MSR(n)			UART_REG(8, MSR, n)
+#define SCR(n)			UART_REG(8, SCR, n)
+#define LPDLL(n)		UART_REG(8, LPDLL, n)
+#define LPDLH(n)		UART_REG(8, LPDLH, n)
+#define FAR(n)			UART_REG(8, FAR, n)
+#define TFR(n)			UART_REG(8, TFR, n)
+#define RFW(n)			UART_REG(8, RFW, n)
+#define USR(n)			UART_REG(8, USR, n)
+#define CPR(n)			UART_REG(8, CPR, n)
+#else
 #define LSR(n)			UART_REG(8, LSR, n)
 #define THR(n)			UART_REG(8, THR, n)
 #define FOR(n)			UART_REG(32, FOR, n)
@@ -48,6 +82,188 @@
 #define PS(n)			UART_REG(32, PS, n)
 #define MUL(n)			UART_REG(32, MUL, n)
 #define DIV(n)			UART_REG(32, DIV, n)
+#endif
+
+#ifdef CHIP_VARIANT_ISH5P4
+/*
+ * RBR: Receive Buffer register     (BLAB bit = 0)
+ */
+#define UART_OFFSET_RBR      (0x00)
+
+/*
+ * THR: Transmit Holding register   (BLAB bit = 0)
+ */
+#define UART_OFFSET_THR      (0x00)
+
+/*
+ * DLL: Divisor Latch Reg. low byte  (BLAB bit = 1)
+ * baud rate = (serial clock freq) / (16 * divisor)
+ */
+#define UART_OFFSET_DLL      (0x00)
+
+/*
+ * DLH: Divisor Latch Reg. high byte (BLAB bit = 1)
+ */
+#define UART_OFFSET_DLH      (0x04)
+
+/*
+ * IER: Interrupt Enable register   (BLAB bit = 0)
+ */
+#define UART_OFFSET_IER      (0x04)
+
+#define IER_RECV        (0x01)  /* Receive Data Available, 2nd highest prio */
+#define IER_TDRQ        (0x02)  /* Transmit Holding Register Empty, 3rd highest prio */
+#define IER_LINE_STAT   (0x04)  /* Receiver Line Status, highest prio */
+#define IER_MODEM       (0x08)  /* Modem Status, 4th highest prio */
+#define IER_PTIME       (0x80)  /* Programmable THRE Interrupt Mode Enable */
+
+/*
+ * IIR: Interrupt ID register
+ */
+#define UART_OFFSET_IIR      (0x08)
+
+#define IIR_MODEM           (0x00)  /* Prio: 4 */
+#define IIR_NO_INTR         (0x01)
+#define IIR_THRE            (0x02)  /* Prio: 3 */
+#define IIR_RECV_DATA       (0x04)  /* Prio: 2 */
+#define IIR_LINE_STAT       (0x06)  /* Prio: 1 */
+#define IIR_BUSY            (0x07)  /* Prio: 5 */
+#define IIR_TIME_OUT        (0x0C)  /* Prio: 2 */
+#define IIR_SOURCE          (0x0F)
+
+/*
+ * FCR: FIFO Control register (FIFO_MODE != NONE)
+ */
+#define UART_OFFSET_FCR      (0x08)
+
+#define FIFO_SIZE         64
+#define FCR_FIFO_ENABLE         (0x01)
+#define FCR_RESET_RX            (0x02)
+#define FCR_RESET_TX            (0x04)
+#define FCR_DMA_MODE            (0x08)
+
+/* tx empty trigger(TET) */
+#define FCR_TET_EMPTY           (0x00)
+#define FCR_TET_2CHAR           (0x10)
+#define FCR_TET_QTR_FULL        (0x20)
+#define FCR_TET_HALF_FULL       (0x30)
+
+/* receive trigger(RT) */
+#define FCR_RT_1CHAR            (0x00)
+#define FCR_RT_QTR_FULL         (0x40)
+#define FCR_RT_HALF_FULL        (0x80)
+#define FCR_RT_2LESS_FULL       (0xc0)
+
+/*
+ * LCR: Line Control register
+ */
+#define UART_OFFSET_LCR       (0x0c)
+
+#define LCR_5BIT_CHR            (0x00)
+#define LCR_6BIT_CHR            (0x01)
+#define LCR_7BIT_CHR            (0x02)
+#define LCR_8BIT_CHR            (0x03)
+#define LCR_BIT_CHR_MASK        (0x03)
+
+#define LCR_STOP                (1 << 2)  /* 0: 1 stop bit, 1: 1.5/2 */
+#define LCR_PEN                 (1 << 3)  /* Parity Enable */
+#define LCR_EPS                 (1 << 4)  /* Even Parity Select */
+#define LCR_SP                  (1 << 5)  /* Stick Parity */
+#define LCR_BC                  (1 << 6)  /* Break Control */
+#define LCR_DLAB                (1 << 7)  /* Divisor Latch Access */
+
+/*
+ * MCR: Modem Control register
+ */
+#define UART_OFFSET_MCR       (0x10)
+#define MCR_DTR                 (0x1)     /* Data terminal ready */
+#define MCR_RTS                 (0x2)     /* Request to send */
+#define MCR_LOOP                (0x10)    /* LoopBack bit*/
+
+#define MCR_INTR_ENABLE         (0x08)    /* User-designated OUT2 */
+#define MCR_AUTO_FLOW_EN        (0x20)
+ 
+/*
+ * LSR: Line Status register
+ */
+#define UART_OFFSET_LSR       (0x14)
+ 
+#define LSR_DR                  (0x01)         /* Data Ready */
+#define LSR_OE                  (0x02)         /* Overrun error */
+#define LSR_PE                  (0x04)         /* Parity error */
+#define LSR_FE                  (0x08)         /* Framing error */
+#define LSR_BI                  (0x10)         /* Breaking interrupt */
+#define LSR_TDRQ                (0x20)       /* Transmit Holding Register Empty */
+#define LSR_TEMT                (0x40)       /* Transmitter empty */
+ 
+/*
+ * MSR: Modem Status register
+ */
+#define UART_OFFSET_MSR       (0x18)
+ 
+#define MSR_CTS            (1 << 4) /* Clear To Send signal */
+
+/*
+ * SCR: Scratchpad register
+ *      For temporary storage space
+ */
+#define UART_OFFSET_SCR       (0x1c)
+
+
+/*
+ * LPDLL: Low Power Divisor Latch Low Register
+ */
+#define UART_OFFSET_LPDLL     (0x20)
+
+/*
+ * LPLDH: Low Power Divisor Latch High Register
+ */
+#define UART_OFFSET_LPDLH     (0x20)
+ 
+/*
+ * FAR: FIFO Access Register
+ */
+#define UART_OFFSET_FAR       (0x70)
+#define FAR_EN             (1 << 0)
+ 
+/*
+ * TFR: Transmit FIFO read
+ * Return the data at the top of the transmit FIFO
+ */
+#define UART_OFFSET_TFR       (0x74)
+ 
+/*
+ * RFW: Receive FIFO write
+ */
+#define UART_OFFSET_RFW       (0x78)
+ 
+/*
+ * USR: UART Status Register
+ */
+#define UART_OFFSET_USR       (0x7C)
+#define USR_BUSY           (1 << 0)
+#define USR_TFNF           (1 << 1)  /* Transmit FIFO Not Full */
+#define USR_TFE            (1 << 2)  /* Transmit FIFO Empty */
+#define USR_RFNE           (1 << 3)  /* Receive FIFO Not Empty */
+#define USR_RFF            (1 << 4)  /* Receive FIFO full */
+ 
+/*
+ * TFL: Transmit FIFO Level
+ */
+#define UART_OFFSET_TFL       (0x80)
+ 
+/*
+ * RFL: Receive FIFO Level
+ */
+#define UART_OFFSET_RFL       (0x84)
+ 
+/*
+ * DLF: Divisor Latch Fraction Register
+ */
+#define UART_OFFSET_DLF       (0xC0)
+ 
+#define UART_OFFSET_CPR        (0xF4)
+#else
 
 /* RBR: Receive Buffer register     (BLAB bit = 0)  */
 #define UART_OFFSET_RBR	(0)
@@ -146,6 +362,7 @@
 #define GIST_UART1_EN		BIT(1)
 #define GIST_UART0_EN		BIT(0)
 #define GIST_UARTx_EN		(GIST_UART0_EN|GIST_UART1_EN|GIST_UART2_EN)
+#endif
 
 /* UART config flag, send to sc_io_control if the current UART line has HW
  * flow control lines connected.
@@ -185,13 +402,17 @@
 /* KHZ, MHZ */
 #define KHZ(x)				((x) * 1000)
 #define MHZ(x)				(KHZ(x) * 1000)
-#if defined(CHIP_FAMILY_ISH3) || defined(CHIP_FAMILY_ISH5)
+
+#if defined(CHIP_VARIANT_ISH5P4)
+#define UART_ISH_INPUT_FREQ             MHZ(100)
+#elif defined(CHIP_FAMILY_ISH3) || defined(CHIP_FAMILY_ISH5)
 #define UART_ISH_INPUT_FREQ		MHZ(120)
 #elif defined(CHIP_FAMILY_ISH4)
 #define UART_ISH_INPUT_FREQ		MHZ(100)
 #endif
 #define UART_DEFAULT_BAUD_RATE		115200
 #define UART_STATE_CG			BIT(UART_OP_CG)
+#define ceil_f(N, M) (((N - 1) / M) + 1)
 
 enum UART_PORT {
 	UART_PORT_0,

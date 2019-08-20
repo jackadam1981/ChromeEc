@@ -35,7 +35,9 @@ int system_is_reboot_warm(void)
 void system_pre_init(void)
 {
 	ish_fwst_set_fw_status(FWSTS_FW_IS_RUNNING);
+#ifndef CHIP_VARIANT_ISH5P4
 	task_enable_irq(ISH_FABRIC_IRQ);
+#endif
 	ish_pm_init();
 	ish_persistent_data_init();
 }
@@ -174,6 +176,7 @@ void system_set_image_copy(enum system_image_copy_t copy)
 {
 }
 
+#ifndef CHIP_VARIANT_ISH5P4
 static void fabric_isr(void)
 {
 	/**
@@ -186,3 +189,4 @@ static void fabric_isr(void)
 }
 
 DECLARE_IRQ(ISH_FABRIC_IRQ, fabric_isr);
+#endif

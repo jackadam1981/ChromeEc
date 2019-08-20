@@ -32,6 +32,20 @@ enum ish_i2c_port {
 /* In ISH, the devices are mapped to pre-defined addresses in the 32-bit
  * linear address space.
  */
+#ifdef CHIP_VARIANT_ISH5P4
+#define ISH_I2C0_BASE     0x00000000
+#define ISH_I2C1_BASE     0x00002000
+#define ISH_I2C2_BASE     0x00004000
+#define ISH_UART_BASE     0x08100000
+#define ISH_GPIO_BASE     0x00100000
+#define ISH_PMU_BASE      0x04200000
+#define ISH_CCU_BASE      0x04300000
+#define ISH_IPC_BASE      0x04100000
+#define ISH_WDT_BASE      0x04900000
+#define ISH_IOAPIC_BASE   0xFEC00000
+#define ISH_HPET_BASE     0x04700000
+#define ISH_LAPIC_BASE    0xFEE00000
+#else
 #define ISH_I2C0_BASE     0x00100000
 #define ISH_I2C1_BASE     0x00102000
 #define ISH_I2C2_BASE     0x00105000
@@ -47,8 +61,22 @@ enum ish_i2c_port {
 #define ISH_IOAPIC_BASE   0xFEC00000
 #define ISH_HPET_BASE     0xFED00000
 #define ISH_LAPIC_BASE    0xFEE00000
+#endif
 
 /* HW interrupt pins mapped to IOAPIC, from I/O sources */
+#ifdef CHIP_VARIANT_ISH5P4
+#define ISH_I2C0_IRQ               15
+#define ISH_I2C1_IRQ               16
+#define ISH_FABRIC_IRQ             12
+#define ISH_I2C2_IRQ               17
+#define ISH_WDT_IRQ                26
+#define ISH_GPIO_IRQ               13
+#define ISH_HPET_TIMER1_IRQ        14
+#define ISH_IPC_HOST2ISH_IRQ       0
+#define ISH_UART0_IRQ              23
+#define ISH_UART1_IRQ              24
+#define ISH_RESET_PREP_IRQ         6
+#else
 #define ISH_I2C0_IRQ               0
 #define ISH_I2C1_IRQ               1
 #define ISH_FABRIC_IRQ             5
@@ -68,6 +96,7 @@ enum ish_i2c_port {
 #define ISH_UART0_IRQ              34
 #define ISH_UART1_IRQ              35
 #define ISH_RESET_PREP_IRQ         62
+#endif
 
 /* Interrupt vectors 0-31 are architecture reserved.
  * Vectors 32-255 are user-defined.
@@ -104,10 +133,12 @@ enum ish_i2c_port {
 #define ISH_I2C2_VEC               IRQ_TO_VEC(ISH_I2C2_IRQ)
 #define ISH_WDT_VEC                IRQ_TO_VEC(ISH_WDT_IRQ)
 #define ISH_GPIO_VEC               IRQ_TO_VEC(ISH_GPIO_IRQ)
-#define ISH_HPET_TIMER0_VEC        IRQ_TO_VEC(ISH_HPET_TIMER0_IRQ)
 #define ISH_HPET_TIMER1_VEC        IRQ_TO_VEC(ISH_HPET_TIMER1_IRQ)
+#ifndef CHIP_VARIANT_ISH5P4
+#define ISH_HPET_TIMER0_VEC        IRQ_TO_VEC(ISH_HPET_TIMER0_IRQ)
 #define ISH_HPET_TIMER2_VEC        IRQ_TO_VEC(ISH_HPET_TIMER2_IRQ)
 #define ISH_IPC_ISH2HOST_CLR_VEC   IRQ_TO_VEC(ISH_IPC_ISH2HOST_CLR_IRQ)
+#endif
 #define ISH_UART0_VEC              IRQ_TO_VEC(ISH_UART0_IRQ)
 #define ISH_UART1_VEC              IRQ_TO_VEC(ISH_UART1_IRQ)
 #define ISH_IPC_VEC                IRQ_TO_VEC(ISH_IPC_HOST2ISH_IRQ)
@@ -285,7 +316,12 @@ enum ish_i2c_port {
 					 FABRIC_M_ERR_BIT)
 
 /* CSME Registers */
+#ifdef CHIP_VARIANT_ISH5P4
+#define SEC_OFFSET			0x10000
+#define ISH_RST_REG			REG32(ISH_IPC_BASE + SEC_OFFSET + 0x44)
+#else
 #define ISH_RST_REG			REG32(ISH_IPC_BASE + 0x44)
+#endif
 
 /* IOAPIC registers */
 #define IOAPIC_IDX			REG32(ISH_IOAPIC_BASE + 0x0)

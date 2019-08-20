@@ -149,19 +149,31 @@ static void uart_hw_init(enum UART_PORT id)
 	uint8_t mcr = 0;
 	uint8_t fcr = 0;
 	struct uart_ctx *ctx = &uart_ctx[id];
+#ifdef CHIP_VARIANT_ISH5P4
+	uint8_t fraction;
+#endif
 
 	/* Calculate baud rate divisor */
 	divisor = (ctx->input_freq / ctx->baud_rate) >> 4;
-
+#ifdef CHIP_VARIANT_ISH5P4
+	/* calculate the fractional part */
+	fraction = ceil_f(ctx->input_freq, ctx->baud_rate) - (divisor << 4);
+#endif
+ 
+#ifndef CHIP_VARIANT_ISH5P4
 	MUL(ctx->id) = (divisor * ctx->baud_rate);
 	DIV(ctx->id) = (ctx->input_freq / 16);
 	PS(ctx->id) = 16;
+#endif
 
 	/* Set the DLAB to access the baud rate divisor registers */
 	LCR(ctx->id) = LCR_DLAB;
 	DLL(ctx->id) = (divisor & 0xff);
 	DLH(ctx->id) = ((divisor >> 8) & 0xff);
-
+#ifdef CHIP_VARIANT_ISH5P4
+	DLF(ctx->id) = fraction;
+#endif
+ 
 	/* 8 data bits, 1 stop bit, no parity, clear DLAB */
 	LCR(ctx->id) = LCR_8BIT_CHR;
 
@@ -169,19 +181,27 @@ static void uart_hw_init(enum UART_PORT id)
 		mcr = MCR_AUTO_FLOW_EN;
 
 	/* needs to be set regardless of flow control */
+#ifndef CHIP_VARIANT_ISH5P4
 	mcr |= MCR_INTR_ENABLE;
+#endif
 
 	mcr |= (MCR_RTS | MCR_DTR);
 	MCR(ctx->id) = mcr;
 
+#ifdef CHIP_VARIANT_ISH5P4
+	fcr = FCR_TET_EMPTY | FCR_RT_1CHAR;
+#else
 	fcr = FCR_FIFO_SIZE_64 | FCR_ITL_FIFO_64_BYTES_1;
+#endif
 
 	/* configure FIFOs */
 	FCR(ctx->id) = (fcr | FCR_FIFO_ENABLE
 			| FCR_RESET_RX | FCR_RESET_TX);
 
+#ifndef CHIP_VARIANT_ISH5P4
 	/* enable UART unit */
 	ABR(ctx->id) = ABR_UUE;
+#endif
 
 	/* clear the port */
 	RBR(ctx->id);
@@ -194,9 +214,12 @@ static void uart_hw_init(enum UART_PORT id)
 
 static void uart_stop_hw(enum UART_PORT id)
 {
+#ifndef CHIP_VARIANT_ISH5P4
 	int i;
 	uint32_t fifo_len;
+#endif
 
+#ifndef CHIP_VARIANT_ISH5P4
 	/* Manually clearing the fifo from possible noise.
 	 * Entering D0i3 when fifo is not cleared may result in a hang.
 	 */
@@ -204,6 +227,7 @@ static void uart_stop_hw(enum UART_PORT id)
 
 	for (i = 0; i < fifo_len; i++)
 		(void)RBR(id);
+#endif
 
 	/* No interrupts are enabled */
 	IER(id) = 0;
@@ -212,8 +236,10 @@ static void uart_stop_hw(enum UART_PORT id)
 	/* Clear and disable FIFOs */
 	FCR(id) = (FCR_RESET_RX | FCR_RESET_TX);
 
+#ifndef CHIP_VARIANT_ISH5P4
 	/* Disable uart unit */
 	ABR(id) = 0;
+#endif
 }
 
 static int uart_client_init(enum UART_PORT id, uint32_t baud_rate_id, int flags)
@@ -245,12 +271,13 @@ static void uart_drv_init(void)
 	for (i = 0; i < UART_DEVICES; i++)
 		uart_stop_hw(i);
 
+#ifndef CHIP_VARIANT_ISH5P4
 	/* Enable HSU global interrupts (DMA/U0/U1) and set PMEN bit
 	 * to allow PMU to clock gate ISH
 	 */
 	HSU_REG_GIEN = (GIEN_DMA_EN | GIEN_UART0_EN
 			| GIEN_UART1_EN | GIEN_PWR_MGMT);
-
+#endif
 	task_enable_irq(ISH_DEBUG_UART_IRQ);
 }
 
