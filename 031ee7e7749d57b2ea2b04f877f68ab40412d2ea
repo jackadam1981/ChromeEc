@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8bf783a_dc141daf",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-20T01:27:36Z",
+      "side": 1,
+      "message": "I think there\u0027s a race condition here or something.\n\nIs it possible an interrupt came here while we were finishing keyboard_raw_read_rows() (so the task was already awake). Then we just went to sleep?",
+      "range": {
+        "startLine": 758,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 48
+      },
+      "revId": "031ee7e7749d57b2ea2b04f877f68ab40412d2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
