@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3e267ec_6c92a678",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-20T23:00:20Z",
+      "side": 1,
+      "message": "Nit: Perhaps explain a little bit why we\u0027re doing this.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1761728/2/driver/ioexpander_it8801.c#91 for inspiration.\n\nFeel free to copy more comments from there if you like them.",
+      "revId": "685cf0a571eb21e13d3b5b17dcda520d9928b016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

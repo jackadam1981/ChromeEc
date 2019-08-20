@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9582daf4_f5b68fe3",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-20T23:00:20Z",
+      "side": 1,
+      "message": "And not just that, but it seems like we\u0027re hardcoding these to be ksos instead of gpios.\n\nIT8801_REG_GPIO00_KSO19 is actually an output that goes to EN_PP5000_USBC. I feel like this function should not touch anything that\u0027s not a keyboard pin.\nIT8801_REG_GPIO22_KSO21 is just a testpad (TP9146). I doubt it has to be a KSO ever.\nIT8801_REG_GPIO01_KSO18 is fine, that\u0027s actually a KSO that we use\nIT8801_REG_GPIO23_KSO20 is maybe fine, assuming we\u0027ll even use it uninverted. If we use it inverted we change it back to GPIO anyway 5 lines later.",
+      "parentUuid": "6474ef26_2c44d69e",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 70
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9aba65_01167786",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 23
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "Remove IT8801_REG_MASK_GPIOPUE.\n\nThe output type of KSO is open-drain, so these KSO pins need to pull up by internal or external.",
       "parentUuid": "6a9aba65_01167786",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc29124_eb223cc1",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-20T23:00:20Z",
+      "side": 1,
+      "message": "There is a pullup though, on the KSI side, right? I don\u0027t think you really need this.",
+      "parentUuid": "ab444ab2_3588f2ca",
       "range": {
         "startLine": 93,
         "startChar": 2,
@@ -213,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "1ffb5bcb_9146e352",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-20T23:00:20Z",
+      "side": 1,
+      "message": "I guess we\u0027ll have to be careful with race conditions (what if something from another EC task sets an io expanded gpio in between the read and write), or maybe eventually implement the caching.",
+      "parentUuid": "3dd05675_3a7662d9",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d310ccf5_21bba7c0",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 23
@@ -248,6 +320,30 @@
       "side": 1,
       "message": "It is mainly for developer to declare kso pins testing or verifying in board.c",
       "parentUuid": "d310ccf5_21bba7c0",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82863a76_18f876f1",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-20T23:00:20Z",
+      "side": 1,
+      "message": "But my question is why would anyone change it in board.c? It seems we spent quite a bit of time testing this particular configuration, you lose all of that once you override it with a custom one.\n\nThe custom stuff, assuming inverted row2, will also need to use KSO20 as KSO2, since keyboard_raw_drive_column is already hardcoded to do that.\n\nWithout decoupling that too, it seems the __override is an future expansion thing that\u0027s not really complete. I\u0027m thinking https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it",
+      "parentUuid": "e757595d_38927983",
       "range": {
         "startLine": 115,
         "startChar": 0,
