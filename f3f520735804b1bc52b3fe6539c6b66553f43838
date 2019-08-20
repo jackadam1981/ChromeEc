@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b2968172_065a9d45",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T21:18:15Z",
+      "side": 1,
+      "message": "I do think we should say that we use the MKBP mechanism to asynchronously deliver messages from the EC to the AP. Each message can also pass data. One of the main users of this is the sensor subsystem.\n\nAlso \"This the EC MKBP dirver implementation\" seems like it might be missing a few words ;)",
+      "parentUuid": "fd0e7a54_602d4cdf",
+      "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46bc9dd0_4e4f2896",
         "filename": "docs/ec_terms.md",
         "patchSetId": 3
@@ -76,6 +94,29 @@
         "startChar": 8,
         "endLine": 64,
         "endChar": 17
+      },
+      "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420b51a7_faf92098",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T21:18:15Z",
+      "side": 1,
+      "message": "let\u0027s add something like. SVDMs are used to negotiate the display port mode over USB-C",
+      "range": {
+        "startLine": 65,
+        "startChar": 66,
+        "endLine": 65,
+        "endChar": 72
       },
       "revId": "f3f520735804b1bc52b3fe6539c6b66553f43838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
