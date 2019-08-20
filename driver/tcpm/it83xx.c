@@ -30,6 +30,8 @@
 #define PD_IT83XX_VCONN_TURN_OFF_DELAY_US 500
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{&IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0},
 	{&IT83XX_GPIO_GPCRH1, &IT83XX_GPIO_GPCRH2, IT83XX_IRQ_USBPD1},
@@ -247,6 +249,17 @@ static void it83xx_send_bist_mode2_pattern(enum usbpd_port port)
 	USBPD_ENABLE_SEND_BIST_MODE_2(port);
 	usleep(PD_T_BIST_TRANSMIT);
 	USBPD_DISABLE_SEND_BIST_MODE_2(port);
+}
+
+/*
+ * If we need implemented vconn control (ex. CONFIG_USBC_VCONN,
+ * CONFIG_USBC_VCONN_SWAP), it should control GPIO or PPC in board.c/
+ * baseboard.c. So this weak function print messages to remind.
+ */
+__overridable void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+{
+	if (IS_ENABLED(CONFIG_USBC_VCONN))
+		CPRINTS("%s not implement yet", __func__);
 }
 
 static void it83xx_enable_vconn(enum usbpd_port port, int enabled)
@@ -488,25 +501,37 @@ static int it83xx_tcpm_set_polarity(int port, int polarity)
 
 static int it83xx_tcpm_set_vconn(int port, int enable)
 {
-#ifdef CONFIG_USBC_VCONN
-	/* Disable cc voltage detector and enable 5v tolerant. */
-	if (enable)
+	if (enable) {
+		/*
+		 * Unused cc will become Vconn SRC, disable cc analog module
+		 * (ex.UP/RD/DET/Tx/Rx) and enable 5v tolerant.
+		 */
 		it83xx_enable_vconn(port, enable);
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			/* Enable tcpc receive SOP' packet */
+			IT83XX_USBPD_PDMSR(port) |= USBPD_REG_MASK_SOPP_ENABLE;
+	}
 	/* Turn on/off vconn power switch. */
 	board_pd_vconn_ctrl(port,
 		USBPD_GET_PULL_CC_SELECTION(port) ?
 				USBPD_CC_PIN_2 :
 				USBPD_CC_PIN_1, enable);
 	if (!enable) {
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			/* Disable tcpc receive SOP' packet */
+			IT83XX_USBPD_PDMSR(port) &= ~USBPD_REG_MASK_SOPP_ENABLE;
 		/*
 		 * We need to make sure cc voltage detector is enabled after
 		 * vconn is turned off to avoid the potential risk of voltage
 		 * fed back into Vcore.
 		 */
 		usleep(PD_IT83XX_VCONN_TURN_OFF_DELAY_US);
+		/*
+		 * Since our cc are not Vconn SRC, enable cc analog module
+		 * (ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
+		 */
 		it83xx_enable_vconn(port, enable);
 	}
-#endif
 
 	return EC_SUCCESS;
 }
