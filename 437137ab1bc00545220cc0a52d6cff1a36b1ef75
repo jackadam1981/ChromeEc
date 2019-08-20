@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d938a4f9_2536266f",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-08-20T03:43:14Z",
+      "side": 1,
+      "message": "Sorry I\u0027m not sure I follow, could you explain a bit about the reasons for the changes to how d and k are calculated?",
+      "range": {
+        "startLine": 999,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 32
+      },
+      "revId": "437137ab1bc00545220cc0a52d6cff1a36b1ef75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
