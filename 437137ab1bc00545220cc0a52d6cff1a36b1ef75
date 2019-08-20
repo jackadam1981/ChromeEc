@@ -22,6 +22,30 @@
       "revId": "437137ab1bc00545220cc0a52d6cff1a36b1ef75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c8051de_5cfde19b",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-20T21:01:41Z",
+      "side": 1,
+      "message": "new changes in the dcrypto engine add 1 to both k and d within dcrypto processor. To be backwards compatible the d and k are minus oned in the existing ecdsa functions. Thus, there are sub function and also dropping of the add function.",
+      "parentUuid": "d938a4f9_2536266f",
+      "range": {
+        "startLine": 999,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 32
+      },
+      "revId": "437137ab1bc00545220cc0a52d6cff1a36b1ef75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
