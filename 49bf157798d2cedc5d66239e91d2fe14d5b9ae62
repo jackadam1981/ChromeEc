@@ -22,6 +22,30 @@
       "revId": "49bf157798d2cedc5d66239e91d2fe14d5b9ae62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34cb5352_4f7d2caa",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-20T04:01:49Z",
+      "side": 1,
+      "message": "Test on a DUT, usually EC will check ADC_STAT about 6 times in one loop， but sometimes EC will check ADC_STAE more than 15 times (75ms). How about delaying sleep time (5ms -\u003e 10ms)?",
+      "parentUuid": "47d465b6_71026c7a",
+      "range": {
+        "startLine": 693,
+        "startChar": 5,
+        "endLine": 693,
+        "endChar": 12
+      },
+      "revId": "49bf157798d2cedc5d66239e91d2fe14d5b9ae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
