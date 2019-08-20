@@ -97,6 +97,10 @@ static uint32_t fp_process_enroll(void)
 	int percent = 0;
 	int res;
 
+	if (template_newly_enrolled != FP_NO_SUCH_TEMPLATE)
+		CPRINTS("Warning: previously enrolled template has not been "
+			"read yet.");
+
 	/* begin/continue enrollment */
 	CPRINTS("[%d]Enrolling ...", templ_valid);
 	res = fp_finger_enroll(fp_buffer, &percent);
@@ -114,6 +118,7 @@ static uint32_t fp_process_enroll(void)
 			rand_bytes(fp_positive_match_salt[templ_valid],
 				   FP_POSITIVE_MATCH_SALT_BYTES);
 			exit_trng();
+			template_newly_enrolled = templ_valid;
 			templ_valid++;
 		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
@@ -415,15 +420,19 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		encryption_deadline.val = now.val + (1 * SECOND);
 
 		memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
-		/* The beginning of the buffer contains nonce/salt/tag. */
+		/*
+		 * The beginning of the buffer contains nonce, encryption_salt
+		 * and tag.
+		 */
 		enc_info = (void *)fp_enc_buffer;
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
 		init_trng();
 		rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
-		rand_bytes(enc_info->salt, FP_CONTEXT_SALT_BYTES);
+		rand_bytes(enc_info->encryption_salt,
+			   FP_CONTEXT_ENCRYPTION_SALT_BYTES);
 		exit_trng();
 
-		ret = derive_encryption_key(key, enc_info->salt);
+		ret = derive_encryption_key(key, enc_info->encryption_salt);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", fgr);
 			return EC_RES_UNAVAILABLE;
@@ -440,6 +449,41 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_dirty &= ~BIT(fgr);
+
+		if (fgr == template_newly_enrolled) {
+			uint8_t positive_match_secret
+				[FP_POSITIVE_MATCH_SECRET_BYTES];
+			/*
+			 * Newly enrolled templates need new positive match
+			 * salt, new positive match secret and new validation
+			 * value.
+			 */
+			template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
+			init_trng();
+			rand_bytes(fp_positive_match_salt[fgr],
+				   FP_POSITIVE_MATCH_SALT_BYTES);
+			exit_trng();
+
+			ret = derive_positive_match_secret(
+				positive_match_secret,
+				fp_positive_match_salt[fgr]);
+			if (ret != EC_SUCCESS) {
+				CPRINTS("fgr%d: Failed to derive positive "
+					"match secret.", fgr);
+				always_memset(positive_match_secret, 0,
+					      sizeof(positive_match_secret));
+				return EC_RES_UNAVAILABLE;
+			}
+
+			derive_validation_value(enc_info->validation_value,
+						positive_match_secret);
+			always_memset(positive_match_secret, 0,
+				      sizeof(positive_match_secret));
+		}
+
+		memcpy(enc_info->positive_match_salt,
+		       fp_positive_match_salt[fgr],
+		       sizeof(fp_positive_match_salt[0]));
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
 	args->response_size = size;
@@ -472,6 +516,10 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 static int validate_template_format(
 	struct ec_fp_template_encryption_metadata *enc_info)
 {
+	if (enc_info->struct_version == 3 && FP_TEMPLATE_FORMAT_VERSION == 4)
+		/* The host requested migration to v4. */
+		return EC_RES_SUCCESS;
+
 	if (enc_info->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
 		CPRINTS("Invalid template format %d", enc_info->struct_version);
 		return EC_RES_INVALID_PARAM;
@@ -509,14 +557,17 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 		 * decryption.
 		 */
 		fp_clear_finger_context(idx);
-		/* The beginning of the buffer contains nonce/salt/tag. */
+		/*
+		 * The beginning of the buffer contains nonce, encryption_salt
+		 * and tag.
+		 */
 		enc_info = (void *)fp_enc_buffer;
 		ret = validate_template_format(enc_info);
 		if (ret != EC_RES_SUCCESS) {
 			CPRINTS("fgr%d: Template format not supported", idx);
 			return EC_RES_INVALID_PARAM;
 		}
-		ret = derive_encryption_key(key, enc_info->salt);
+		ret = derive_encryption_key(key, enc_info->encryption_salt);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", idx);
 			return EC_RES_UNAVAILABLE;
@@ -535,6 +586,9 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_valid++;
+		memcpy(fp_positive_match_salt[idx],
+		       enc_info->positive_match_salt,
+		       sizeof(fp_positive_match_salt[0]));
 	}
 
 	return EC_RES_SUCCESS;
