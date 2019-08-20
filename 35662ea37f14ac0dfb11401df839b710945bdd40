@@ -46,6 +46,30 @@
       "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80809024_ad5fe715",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4592,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T21:32:22Z",
+      "side": 0,
+      "message": "Ah, my misunderstanding. I thought this was the definition of this config option, not task specific stuff. This change lgtm.",
+      "parentUuid": "db46f78f_682a9647",
+      "range": {
+        "startLine": 4592,
+        "startChar": 7,
+        "endLine": 4592,
+        "endChar": 42
+      },
+      "revId": "35662ea37f14ac0dfb11401df839b710945bdd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

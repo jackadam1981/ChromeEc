@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3221e2e0_e7cc65bd",
+        "filename": "power/commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T21:32:22Z",
+      "side": 1,
+      "message": "we don\u0027t need this (and the corresponding #endif) since the build file takes care of that now.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "dec27e30b04809f40451d56de215b50476bb2bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
