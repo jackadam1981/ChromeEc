@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47d465b6_71026c7a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-20T01:46:23Z",
+      "side": 1,
+      "message": "I ponder should we adjust this value as well? Since it the datasheet says it may took 200 ms, and we had 35 ms in the wrong assumption.",
+      "range": {
+        "startLine": 693,
+        "startChar": 5,
+        "endLine": 693,
+        "endChar": 12
+      },
+      "revId": "49bf157798d2cedc5d66239e91d2fe14d5b9ae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
