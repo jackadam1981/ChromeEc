@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4baa348e_20b7010e",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-20T05:22:38Z",
+      "side": 1,
+      "message": "it\u0027s applicable only to ITE EC, can you please remove it? We will add it in intelrvp/ite.h when enable this.",
+      "range": {
+        "startLine": 228,
+        "startChar": 5,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "e149c237c72cb8324ee7dfa0125421ebf82380b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
