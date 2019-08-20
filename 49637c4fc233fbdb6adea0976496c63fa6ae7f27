@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e20d774_c202fe72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T15:42:52Z",
+      "side": 1,
+      "message": "To follow iwyu, common.h should be in retimer.c for CONFIG_USB_PD_RETIMER_INTEL_BB (from config.h). What happens if you have both compile_time_macro.h and common.h?",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "49637c4fc233fbdb6adea0976496c63fa6ae7f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
