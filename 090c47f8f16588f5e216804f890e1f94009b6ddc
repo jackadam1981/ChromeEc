@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07c167ff_f75a0e79",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-20T07:18:06Z",
+      "side": 0,
+      "message": "I think this line should be kept for kukui/krane.  They don\u0027t support MF, so we should mask this out.",
+      "range": {
+        "startLine": 288,
+        "startChar": 5,
+        "endLine": 288,
+        "endChar": 54
+      },
+      "revId": "090c47f8f16588f5e216804f890e1f94009b6ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
