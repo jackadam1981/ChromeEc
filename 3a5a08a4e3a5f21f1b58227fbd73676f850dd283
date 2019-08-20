@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ed52f50_a14dbf9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-20T06:27:36Z",
+      "side": 1,
+      "message": "Done https://crrev.com/c/1761759",
+      "parentUuid": "b11e8d9c_b988de20",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac50b51a_976a2121",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ef220086_ed7bd82a",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2856,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-20T06:27:36Z",
+      "side": 1,
+      "message": "Dropped the command.",
+      "parentUuid": "ac50b51a_976a2121",
+      "range": {
+        "startLine": 2856,
+        "startChar": 7,
+        "endLine": 2856,
+        "endChar": 28
+      },
+      "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd25bbb0_b643eca3",
         "filename": "power/build.mk",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fbc44c_ad340fad",
+        "filename": "power/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-20T06:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd25bbb0_b643eca3",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "3a5a08a4e3a5f21f1b58227fbd73676f850dd283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
