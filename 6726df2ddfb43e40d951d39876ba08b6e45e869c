@@ -22,6 +22,30 @@
       "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63279f8_682c2ce5",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-20T15:54:59Z",
+      "side": 1,
+      "message": "I think this might work:\n\n \t--- a/common/build.mk\n\t+++ b/common/build.mk\n\t@@ -252,7 +252,10 @@ CRYPTOC_OBJS \u003d $(shell find $(out)/cryptoc -name \u0027util.o\u0027)\n\t $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA +\u003d $(CRYPTOC_OBJS)\n\t $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: cryptoc_objs\n\t # Add cryptoc to host test executables but not fuzz executables.\n\t-ifeq ($(TEST_FUZZ),)\n\t+ifeq ($(CONFIG_DCRYPTO),y)\n\t+$(out)/$(PROJECT).exe: LDFLAGS_EXTRA +\u003d -lcrypto\n\t+$(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a\n\t+else\n\t $(out)/$(PROJECT).exe: LDFLAGS_EXTRA +\u003d $(CRYPTOC_OBJS)\n\t $(out)/$(PROJECT).exe: cryptoc_objs\n\t endif\n\nHowever, this ends up being quite messy. What\u0027s happening is that there is a rule in chip/host/build.mk to build the target \"$(out)/cryptoc/libcryptoc.a\".\n\nI think we should try to see if we can unify all of this with a more generic \"CONFIG_LIBCRYPTOC\" instead of CONFIG_ALWAYS_MEMSET. So we could have a single rule in common/build.mk (haven\u0027t tested this):\n\n ifeq($(CONFIG_LIBCRYPTOC),y)\n\n CRYPTOCLIB :\u003d $(realpath ../../third_party/cryptoc)\n ifneq ($(BOARD),host)\n CPPFLAGS +\u003d -I$(abspath ./builtin)\n endif\n CPPFLAGS +\u003d -I$(CRYPTOCLIB)/include\n\n $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA +\u003d -lcrypto\n $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf:  $(out)/cryptoc/libcryptoc.a \n $(out)/$(PROJECT).exe: LDFLAGS_EXTRA +\u003d -lcrypto\n $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a\n                                                                                                                                                           \n # Force the external build each time, so it can look for changed sources.                                                                               \n .PHONY: $(out)/cryptoc/libcryptoc.a                                                   \n $(out)/cryptoc/libcryptoc.a:                                                                                                            \n        $(MAKE) obj\u003d$(realpath $(out))/cryptoc SUPPORT_UNALIGNED\u003d1 \\                                                                             \n                CONFIG_UPTO_SHA512\u003d$(CONFIG_UPTO_SHA512) -C $(CRYPTOCLIB)\n\n endif\n\nAnd then inside chip/host/build.mk remove the cryptoc-related stuff. We should also be able to remove the cryptoc references in chip/g/build.mk as long as we specify CONFIG_LIBCRYPTOC (looks like probably in board/cr50/board.h)",
+      "parentUuid": "4877cc2f_65b8dcae",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 20
+      },
+      "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
