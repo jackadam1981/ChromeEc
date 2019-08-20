@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df796a99_5fbe0767",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T22:09:20Z",
+      "side": 1,
+      "message": "Is this removal of board_pd_vconn_ctrl intended?",
+      "revId": "f475f50299618af0bd891562670f4a06e3138d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216300d8_2bb1086a",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T22:09:20Z",
+      "side": 1,
+      "message": "You need a formal multi-line description /** ... */ where parameters \u0026 return values are explained.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "f475f50299618af0bd891562670f4a06e3138d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db122cd4_b2186020",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T22:09:20Z",
+      "side": 1,
+      "message": "Actually, you can promote this to usb_pd_tcpm.h. If it doesn\u0027t work, please append it83xx_.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "f475f50299618af0bd891562670f4a06e3138d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
