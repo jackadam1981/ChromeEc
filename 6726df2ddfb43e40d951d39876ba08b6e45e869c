@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4877cc2f_65b8dcae",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-20T01:19:06Z",
+      "side": 1,
+      "message": "Now that the host \"board\" has CONFIG_ALWAYS_MEMSET, I had to add this, otherwise when you \"make host-cr50_fuzz\" it sees CONFIG_ALWAYS_MEMSET and tries to build cryptoc_objs and cannot find it. Is there a way to configure fuzz/build.mk to make this work for fuzz builds also?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 20
+      },
+      "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -142,6 +142,30 @@
       "revId": "4fa2b5bc4cd9c78605c9e5a8d8dc946fd01a98e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0c55e2_a0645bd8",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-20T01:19:06Z",
+      "side": 1,
+      "message": "Thanks for this! I applied this and the only remaining problem is the fuzz builds, they now see CONFIG_ALWAYS_MEMSET on. See my other commend.",
+      "parentUuid": "a9415354_d0892449",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "4fa2b5bc4cd9c78605c9e5a8d8dc946fd01a98e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
