@@ -117,6 +117,30 @@
       "revId": "ce6937d41948427b16c9e7f696945f456ed739b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e1e0c7_53ff917b",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-20T21:27:17Z",
+      "side": 1,
+      "message": "nice catch, we can guard the entire function with IS_ENABLED(CONFIG_USBC_VCONN) and remove __overridable function",
+      "parentUuid": "54a473e9_ce97f856",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 28
+      },
+      "revId": "ce6937d41948427b16c9e7f696945f456ed739b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
