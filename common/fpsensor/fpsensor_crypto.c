@@ -147,7 +147,8 @@ int derive_positive_match_secret(uint8_t *output,
 	static const char info_prefix[] = "positive_match_secret for user ";
 	uint8_t info[sizeof(info_prefix) - 1 + sizeof(user_id)];
 
-	if (bytes_are_trivial(input_encryption_salt, FP_CONTEXT_SALT_BYTES)) {
+	if (bytes_are_trivial(input_encryption_salt,
+			      FP_CONTEXT_ENCRYPTION_SALT_BYTES)) {
 		CPRINTS("Failed to derive positive match secret: "
 			"salt bytes are trivial.");
 		return EC_ERROR_INVAL;
@@ -160,8 +161,8 @@ int derive_positive_match_secret(uint8_t *output,
 	}
 
 	/* "Extract" step of HKDF. */
-	hkdf_extract(prk, input_encryption_salt, FP_CONTEXT_SALT_BYTES, ikm,
-		     sizeof(ikm));
+	hkdf_extract(prk, input_encryption_salt,
+		     FP_CONTEXT_ENCRYPTION_SALT_BYTES, ikm, sizeof(ikm));
 	always_memset(ikm, 0, sizeof(ikm));
 
 	memcpy(info, info_prefix, strlen(info_prefix));
@@ -206,7 +207,8 @@ int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 	}
 
 	/* "Extract step of HKDF. */
-	hkdf_extract(prk, salt, FP_CONTEXT_SALT_BYTES, ikm, sizeof(ikm));
+	hkdf_extract(prk, salt, FP_CONTEXT_ENCRYPTION_SALT_BYTES, ikm,
+		     sizeof(ikm));
 	always_memset(ikm, 0, sizeof(ikm));
 
 	/*
