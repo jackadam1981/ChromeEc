@@ -489,21 +489,35 @@ static int it83xx_tcpm_set_polarity(int port, int polarity)
 static int it83xx_tcpm_set_vconn(int port, int enable)
 {
 #ifdef CONFIG_USBC_VCONN
-	/* Disable cc voltage detector and enable 5v tolerant. */
-	if (enable)
+	if (enable) {
+		/*
+		 * Unused cc will become Vconn SRC, disable cc analog
+		 * module (ex.UP/RD/DET/Tx/Rx) and enable 5v tolerant.
+		 */
 		it83xx_enable_vconn(port, enable);
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			/* Enable tcpc receive SOP' packet */
+			IT83XX_USBPD_PDMSR(port) |= USBPD_REG_MASK_SOPP_ENABLE;
+	}
 	/* Turn on/off vconn power switch. */
 	board_pd_vconn_ctrl(port,
 		USBPD_GET_PULL_CC_SELECTION(port) ?
 				USBPD_CC_PIN_2 :
 				USBPD_CC_PIN_1, enable);
 	if (!enable) {
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			/* Disable tcpc receive SOP' packet */
+			IT83XX_USBPD_PDMSR(port) &= ~USBPD_REG_MASK_SOPP_ENABLE;
 		/*
-		 * We need to make sure cc voltage detector is enabled after
-		 * vconn is turned off to avoid the potential risk of voltage
-		 * fed back into Vcore.
+		 * We need to make sure cc voltage detector is enabled
+		 * after vconn is turned off to avoid the potential risk
+		 * of voltage fed back into Vcore.
 		 */
 		usleep(PD_IT83XX_VCONN_TURN_OFF_DELAY_US);
+		/*
+		 * Since our cc are not Vconn SRC, enable cc analog
+		 * module(ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
+		 */
 		it83xx_enable_vconn(port, enable);
 	}
 #endif
