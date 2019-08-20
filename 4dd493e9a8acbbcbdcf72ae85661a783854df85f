@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63ae2dc3_ca1b07fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "Is there a codename for this ISH?",
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "093ae46f_46ffed32",
+        "filename": "board/tgl_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "9",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265f9e1d_ed71361a",
+        "filename": "board/tgl_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "Is this updated?",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665c833b_6c6acf5c",
+        "filename": "board/tgl_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "TGL?\n\nAny update on the watchdog?",
+      "range": {
+        "startLine": 64,
+        "startChar": 50,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f479c26c_f2ef30b0",
+        "filename": "board/tgl_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "Move these up under /* Undefined features */?\n\nADC and SHA256 are undefined by default.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de897154_2720c9f8",
+        "filename": "board/tgl_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "Do you need these?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d39cd0_c530d26e",
+        "filename": "board/tgl_ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "9",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f3f55b_eb10cef4",
+        "filename": "board/tgl_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "Please replace this with \n\n/*\n * See CONFIG_TASK_LIST in config.h for details.\n */",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b5417d_339fe4f7",
+        "filename": "board/tgl_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-20T16:03:11Z",
+      "side": 1,
+      "message": "can you fold it?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 79
+      },
+      "revId": "4dd493e9a8acbbcbdcf72ae85661a783854df85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
