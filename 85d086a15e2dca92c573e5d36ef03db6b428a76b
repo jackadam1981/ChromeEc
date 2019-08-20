@@ -16,6 +16,24 @@
       "revId": "85d086a15e2dca92c573e5d36ef03db6b428a76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f5f54d_3dcde914",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-20T21:02:27Z",
+      "side": 1,
+      "message": "That was silly; Thanks for pointing that out! My algorithm of adding the \"usb_pd_tcpm.h\" include to every file that I changed broken down for this file. Fixed in CL:1762534",
+      "parentUuid": "f876f988_52586a5f",
+      "revId": "85d086a15e2dca92c573e5d36ef03db6b428a76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
