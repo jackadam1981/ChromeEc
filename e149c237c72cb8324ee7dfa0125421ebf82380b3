@@ -22,6 +22,30 @@
       "revId": "e149c237c72cb8324ee7dfa0125421ebf82380b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3035afb9_bb39c2e3",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-20T05:26:19Z",
+      "side": 1,
+      "message": "how about adding it in it83xx_pd.h?",
+      "parentUuid": "4baa348e_20b7010e",
+      "range": {
+        "startLine": 228,
+        "startChar": 5,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "e149c237c72cb8324ee7dfa0125421ebf82380b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
