@@ -112,5 +112,7 @@ extern const struct tcpm_drv it83xx_tcpm_drv;
 void it83xx_disable_pd_module(int port);
 /* Invalidate last received message id variable */
 extern void invalidate_last_message_id(int port);
+/* Turn on/off vconn power switch. */
+void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */
