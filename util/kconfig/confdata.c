@@ -573,8 +573,13 @@ header_print_symbol(FILE *fp, struct symbol *sym, const char *value, void *arg)
 			suffix = "_MODULE";
 			/* fall through */
 		default:
-			fprintf(fp, "#define %s%s%s 1\n",
-			    CONFIG_, sym->name, suffix);
+			if (getenv("KCONFIG_POSITIVES")) {
+				fprintf(fp, "#define %s%s%s 1\n",
+					CONFIG_, sym->name, suffix);
+			} else {
+				fprintf(fp, "#define %s%s%s\n",
+					CONFIG_, sym->name, suffix);
+			}
 		}
 		break;
 	}
