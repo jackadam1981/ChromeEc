@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d315ae50_ba57b5cd",
+        "filename": "power/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-21T15:22:08Z",
+      "side": 1,
+      "message": "commands.c is a very generic name. This file seems to be dealing with host_sleep_state. Should it be named host_sleep.c or host_sleep_state.c?",
+      "range": {
+        "startLine": 23,
+        "startChar": 46,
+        "endLine": 23,
+        "endChar": 56
+      },
+      "revId": "6542c1faae32223a8b786a2a50d020a8eae2ffbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
