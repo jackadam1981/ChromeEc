@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a8197f_4e1586f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-21T15:30:01Z",
+      "side": 1,
+      "message": "One of the advantages and motives for EFS is to reduce the RO footprint/presence. So, this change is moving us in the opposite direction. EFS only needs to know whether escape is being pressed or not. It doesn\u0027t need to scan the entire keyboard matrix.\n\n(As Randall hinted), why don\u0027t we seek for a hardware solution? How about wiring the escape key directly to the EC?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "a4eb973b1f78484479127386ee759113c05f0a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabddd9c_5adff16a",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-21T15:30:01Z",
+      "side": 1,
+      "message": "Can you revisit hooks using \"HOOK_PRIO_INIT_I2C + 1\"? They might need to be \"HOOK_PRIO_INIT_EFS + 1\" or HOOK_PRIO_INIT_XXX(\u003d6).",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "a4eb973b1f78484479127386ee759113c05f0a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
