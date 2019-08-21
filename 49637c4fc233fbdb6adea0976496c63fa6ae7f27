@@ -22,6 +22,30 @@
       "revId": "49637c4fc233fbdb6adea0976496c63fa6ae7f27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aaf8f23_f4d0e178",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-08-21T02:06:34Z",
+      "side": 1,
+      "message": "I didn\u0027t notice that CONFIG_USB_PD_RETIMER_INTEL_BB is from common.h. It works by including both header files.",
+      "parentUuid": "3e20d774_c202fe72",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "49637c4fc233fbdb6adea0976496c63fa6ae7f27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
