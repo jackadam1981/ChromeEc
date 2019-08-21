@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "7cdd220a_96440580",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-08-21T15:46:46Z",
+      "side": 1,
+      "message": "Drallion",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "169864df_7fe39475",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-08-21T15:46:46Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a quick or easy fix, but I do hate having an exact copy of this code here and in arcada_ish.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a740fff0_9027cdaf",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-08-21T15:46:46Z",
+      "side": 1,
+      "message": "Drallion",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90ea9975_98e7d9f9",
         "filename": "board/drallion_ish/board.h",
         "patchSetId": 6
