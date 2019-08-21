@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7559f186_9172e3a7",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-21T20:03:26Z",
+      "side": 1,
+      "message": "Sorry to make you change back, but these should be named cc1/cc2 to match the standard USB-C signal names.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 26
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d614a8_6835e189",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-21T20:03:26Z",
+      "side": 1,
+      "message": "It should be sufficient to gate this on CONFIG_USBC_VCONN only.  If the EC chip changes, you\u0027ll probably need to create a new baseboard anyway.",
+      "range": {
+        "startLine": 225,
+        "startChar": 30,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0ae5a3_285c2df8",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-21T20:03:26Z",
+      "side": 1,
+      "message": "Is there a reason you didn\u0027t just define two instances tcpc_gpio_t here?\nFor example:\n  struct tcpcp_gpio_t vconn_cc1;\n  struct tcpcp_gpio_t vconn_cc2;",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 27
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b71ace_ac50e4c4",
+        "filename": "baseboard/intelrvp/ite_ec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-21T20:03:26Z",
+      "side": 1,
+      "message": "Change to \"enum usbpd_cc_pin cc_pin\".",
+      "range": {
+        "startLine": 101,
+        "startChar": 35,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dbb9b92_89cf01bf",
+        "filename": "baseboard/intelrvp/ite_ec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-21T20:03:26Z",
+      "side": 1,
+      "message": "Change to (cc_pin !\u003d USB_CC_PIN_1).",
+      "range": {
+        "startLine": 113,
+        "startChar": 17,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f22f5e_3d01c482",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-08-21T20:03:26Z",
+      "side": 1,
+      "message": "Please use the actual net names from the schematic.  I don\u0027t have access to the schematic, but I assume the signal names are *CC1/CC2",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
