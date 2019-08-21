@@ -708,6 +708,7 @@ void keyboard_scan_init(void)
 #endif
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
 }
+DECLARE_HOOK(HOOK_INIT, keyboard_scan_init, HOOK_PRIO_INIT_KEYBOARD);
 
 void keyboard_scan_task(void *u)
 {

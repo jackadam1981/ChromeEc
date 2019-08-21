@@ -75,7 +75,7 @@ static void init_battery_type(void)
 	if (get_battery_type() == BATTERY_TYPE_COUNT)
 		CPRINTS("battery not found");
 }
-DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_INIT_BATTERY);
 
 static inline const struct board_batt_params *get_batt_params(void)
 {
