@@ -94,6 +94,30 @@
       "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71cf1ed_e9690360",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-21T23:44:58Z",
+      "side": 1,
+      "message": "I took a look at this. It looks like it\u0027s stripping the unused symbols. I checked this by applying the following patch, doing a build with \"make BOARD\u003dnocturne_fp -j\" and then look at the \"build/nocturne_fp/RW/ec.RW.smap\" (this is a file with the \"sorted symbols\"). Looks like only \"always_memset\" is there, not any of the other cryptoc symbols.\n\nAlso, one thing that is slightly confusing is that \"host/build.mk\" links against \"-lcrypto\", which appears to be actually linking against the \"/usr/lib64/libcrypto\" in the chroot (note the missing \"c\" at the end). Not sure yet whether that is intentional or not.\n\n  diff --git a/common/build.mk b/common/build.mk\n  index 1dfc4d8b3..8cca06b1c 100644\n  --- a/common/build.mk\n  +++ b/common/build.mk\n  @@ -247,21 +247,18 @@ ifneq ($(BOARD),host)\n   CPPFLAGS +\u003d -I$(abspath ./builtin)\n   endif\n   CPPFLAGS +\u003d -I$(CRYPTOCLIB)/include\n  -\n  -CRYPTOC_OBJS \u003d $(shell find $(out)/cryptoc -name \u0027util.o\u0027)\n  -$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA +\u003d $(CRYPTOC_OBJS)\n  -$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: cryptoc_objs\n  -# Add cryptoc to host test executables but not fuzz executables.\n  -ifeq ($(TEST_FUZZ),)\n  -$(out)/$(PROJECT).exe: LDFLAGS_EXTRA +\u003d $(CRYPTOC_OBJS)\n  -$(out)/$(PROJECT).exe: cryptoc_objs\n  -endif\n  +CRYPTOC_LDFLAGS :\u003d -L$(out)/cryptoc -lcryptoc\n   \n   # Force the external build each time, so it can look for changed sources.\n  -.PHONY: cryptoc_objs\n  -cryptoc_objs:\n  +.PHONY: $(out)/cryptoc/libcryptoc.a\n  +$(out)/cryptoc/libcryptoc.a:\n          $(MAKE) obj\u003d$(realpath $(out))/cryptoc SUPPORT_UNALIGNED\u003d1 \\\n  -               CONFIG_UPTO_SHA512\u003d$(CONFIG_UPTO_SHA512) -C $(CRYPTOCLIB) objs\n  +               CONFIG_UPTO_SHA512\u003d$(CONFIG_UPTO_SHA512) -C $(CRYPTOCLIB)\n  +\n  +$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA +\u003d $(CRYPTOC_LDFLAGS)\n  +$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a\n  +$(out)/$(PROJECT).exe: LDFLAGS_EXTRA +\u003d $(CRYPTOC_LDFLAGS)\n  +$(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a\n   endif\n   \n   include $(_common_dir)fpsensor/build.mk",
+      "parentUuid": "e0a7d648_0d73a57f",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 20
+      },
+      "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
