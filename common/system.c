@@ -640,7 +640,7 @@ enum system_image_copy_t system_get_active_copy(void)
 
 enum system_image_copy_t system_get_update_copy(void)
 {
-#ifdef CONFIG_VBOOT_EFS
+#ifdef CONFIG_RW_B
 	return system_get_active_copy() == SYSTEM_IMAGE_RW_A ?
 			SYSTEM_IMAGE_RW_B : SYSTEM_IMAGE_RW_A;
 #else
@@ -650,7 +650,8 @@ enum system_image_copy_t system_get_update_copy(void)
 
 int system_set_active_copy(enum system_image_copy_t copy)
 {
-	return system_set_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, copy);
+	return IS_ENABLED(CONFIG_RW_B) ?
+		system_set_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, copy) : EC_SUCCESS;
 }
 
 /*
@@ -659,7 +660,7 @@ int system_set_active_copy(enum system_image_copy_t copy)
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy)
 {
-#ifdef CONFIG_VBOOT_EFS
+#if defined(CONFIG_RW_B) && defined(CONFIG_VBOOT_EFS)
 	if (copy == SYSTEM_IMAGE_RW_B)
 		return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_B_STORAGE_OFF;
 #endif
@@ -1493,13 +1494,10 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 	}
 
-	if (p.flags & EC_REBOOT_FLAG_SWITCH_RW_SLOT) {
-#ifdef CONFIG_VBOOT_EFS
+	if (!IS_ENABLED(CONFIG_RW_B)
+			&& p.flags & EC_REBOOT_FLAG_SWITCH_RW_SLOT) {
 		if (system_set_active_copy(system_get_update_copy()))
 			CPRINTS("Failed to set active slot");
-#else
-		return EC_RES_INVALID_PARAM;
-#endif
 	}
 	if (p.flags & EC_REBOOT_FLAG_ON_AP_SHUTDOWN) {
 		/* Store request for processing at chipset shutdown */
