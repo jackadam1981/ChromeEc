@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 
 #include "com_port.h"
+#include "compile_time_macros.h"
 #include "main.h"
 #include "misc_util.h"
 #include "opr.h"
@@ -43,6 +44,11 @@
 #define FIRMWARE_START_ADDR    0x10090000
 /* Divide the ec firmware image into 4K byte */
 #define FIRMWARE_SEGMENT       0x1000
+/* Register address for chip ID */
+#define NPCX_SRID_CR         0x400C101C
+/* Register address for device ID */
+#define NPCX_DEVICE_ID_CR    0x400C1022
+
 /*---------------------------------------------------------------------------
  * Global variables
  *---------------------------------------------------------------------------
@@ -68,7 +74,50 @@ static uint32_t baudrate;
 static uint32_t dev_num;
 static uint32_t flash_offset;
 static bool auto_mode;
+static bool get_flash_size_flag;
 
+struct npcx_chip_info {
+	uint8_t device_id;
+	uint8_t chip_id;
+	uint32_t flash_size;
+};
+
+const static struct npcx_chip_info chip_info[] = {
+	{
+		/* NPCX796FA */
+		.device_id = 0x21,
+		.chip_id = 0x06,
+		.flash_size = 1024 * 1024,
+	},
+
+	{
+		/* NPCX796FB */
+		.device_id = 0x21,
+		.chip_id = 0x07,
+		.flash_size = 1024 * 1024,
+	},
+
+	{
+		/* NPCX797WB */
+		.device_id = 0x24,
+		.chip_id = 0x07,
+		.flash_size = 1024 * 1024,
+	},
+
+	{
+		/* NPCX796FC */
+		.device_id = 0x29,
+		.chip_id = 0x07,
+		.flash_size = 512 * 1024,
+	},
+
+	{
+		/* NPCX797WC */
+		.device_id = 0x2C,
+		.chip_id = 0x07,
+		.flash_size = 512 * 1024,
+	},
+};
 /*---------------------------------------------------------------------------
  * Functions prototypes
  *---------------------------------------------------------------------------
@@ -197,6 +246,28 @@ static bool image_auto_write(uint32_t offset, uint8_t *buffer,
 	return true;
 }
 
+static bool get_flash_size(uint32_t *flash_size)
+{
+	uint8_t dev_id, chip_id, i;
+
+	if (opr_read_chunk(&dev_id, NPCX_DEVICE_ID_CR, 1) != true)
+		return false;
+
+	if (opr_read_chunk(&chip_id, NPCX_SRID_CR, 1) != true)
+		return false;
+
+	for (i = 0; i < ARRAY_SIZE(chip_info); i++) {
+		if (chip_info[i].device_id == dev_id &&
+				chip_info[i].chip_id == chip_id) {
+			*flash_size = chip_info[i].flash_size;
+			return true;
+		}
+	}
+	printf("Unknown NPCX device/chip ID\n");
+
+	return false;
+}
+
 /*---------------------------------------------------------------------------
  * Function:	read_input_file
  *
@@ -268,6 +339,7 @@ int main(int argc, char *argv[])
 	verbose = true;
 	console = false;
 	auto_mode = false;
+	get_flash_size_flag = false;
 
 	param_parse_cmd_line(argc, argv);
 
@@ -329,6 +401,18 @@ int main(int argc, char *argv[])
 			exit_uart_app(EC_OK);
 		}
 		free(buffer);
+		exit_uart_app(-1);
+	}
+
+	if (get_flash_size_flag) {
+		uint32_t flash_size;
+
+		if (get_flash_size(&flash_size)) {
+			printf("%d\n", flash_size);
+			exit_uart_app(EC_OK);
+		}
+
+		printf("Fail to read the flash size\n");
 		exit_uart_app(-1);
 	}
 
@@ -401,22 +485,23 @@ int main(int argc, char *argv[])
  */
 
 static const struct option long_opts[] = {
-	{"version",  0, 0, 'v'},
-	{"help",     0, 0, 'h'},
-	{"quiet",    0, 0, 'q'},
-	{"console",  0, 0, 'c'},
-	{"auto",     0, 0, 'A'},
-	{"baudrate", 1, 0, 'b'},
-	{"opr",      1, 0, 'o'},
-	{"port",     1, 0, 'p'},
-	{"file",     1, 0, 'f'},
-	{"addr",     1, 0, 'a'},
-	{"size",     1, 0, 's'},
-	{"offset",   1, 0, 'O'},
+	{"version",         0, 0, 'v'},
+	{"help",            0, 0, 'h'},
+	{"quiet",           0, 0, 'q'},
+	{"console",         0, 0, 'c'},
+	{"auto",            0, 0, 'A'},
+	{"get-flash-size",  0, 0, 'S'},
+	{"baudrate",        1, 0, 'b'},
+	{"opr",             1, 0, 'o'},
+	{"port",            1, 0, 'p'},
+	{"file",            1, 0, 'f'},
+	{"addr",            1, 0, 'a'},
+	{"size",            1, 0, 's'},
+	{"offset",          1, 0, 'O'},
 	{NULL,       0, 0, 0}
 };
 
-static char *short_opts = "vhqcAb:o:p:f:a:s:O:?";
+static char *short_opts = "vhqcASb:o:p:f:a:s:O:?";
 
 static void param_parse_cmd_line(int argc, char *argv[])
 {
@@ -442,6 +527,9 @@ static void param_parse_cmd_line(int argc, char *argv[])
 			break;
 		case 'A':
 			auto_mode = true;
+			break;
+		case 'S':
+			get_flash_size_flag = true;
 			break;
 		case 'b':
 			if (sscanf(optarg, "%du", &baudrate) == 0)
