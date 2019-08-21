@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "219e72d9_ddfce639",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-21T21:00:38Z",
+      "side": 1,
+      "message": "Hi Keith,\nsome background on intelrvp baseboard:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/intelrvp/README.md\n\nMECC signals will remain same for all RVPs. Only vendors specific peripherals will change. For TGL we are using ITE EC. EC vendors can use RVP and validate their EC using this baseboard.",
+      "parentUuid": "46d614a8_6835e189",
+      "range": {
+        "startLine": 225,
+        "startChar": 30,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a0ae5a3_285c2df8",
         "filename": "baseboard/intelrvp/baseboard.h",
         "patchSetId": 8
@@ -128,6 +152,30 @@
       "writtenOn": "2019-08-21T20:03:26Z",
       "side": 1,
       "message": "Please use the actual net names from the schematic.  I don\u0027t have access to the schematic, but I assume the signal names are *CC1/CC2",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "985128539071089f26a47d827f318d203fb4639a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451dbbad_e86a00a9",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-21T21:00:38Z",
+      "side": 1,
+      "message": "I have attached the schematics and rework instructions in b:139763031\nThese nets are not there in the schematics are added as part of rework instructions. \n\nNote: Same net name may do different operation on different RVP platform.",
+      "parentUuid": "25f22f5e_3d01c482",
       "range": {
         "startLine": 133,
         "startChar": 0,
