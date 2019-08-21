@@ -46,6 +46,30 @@
       "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b0e5ff_c385515d",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-21T21:47:35Z",
+      "side": 1,
+      "message": "@norvez I think one reason we decided to use CONFIG_ALWAYS_MEMSET is that the whole cryptoc library is somewhat heavy-weight for EC and we do not want to link the whole thing when all we need is always_memset()?",
+      "parentUuid": "b63279f8_682c2ce5",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 20
+      },
+      "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
