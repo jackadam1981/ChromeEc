@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "e46d5d30_ed872d32",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-21T22:09:19Z",
+      "side": 1,
+      "message": "Doh! This would have never worked. Stuff in hooks.c actually cares about this value and stuff lower than it will never get executed.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 104
+      },
+      "revId": "a4eb973b1f78484479127386ee759113c05f0a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fabddd9c_5adff16a",
         "filename": "include/hooks.h",
         "patchSetId": 1
@@ -36,6 +59,30 @@
       "writtenOn": "2019-08-21T15:30:01Z",
       "side": 1,
       "message": "Can you revisit hooks using \"HOOK_PRIO_INIT_I2C + 1\"? They might need to be \"HOOK_PRIO_INIT_EFS + 1\" or HOOK_PRIO_INIT_XXX(\u003d6).",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "a4eb973b1f78484479127386ee759113c05f0a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce803d84_b51c8659",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-21T22:09:19Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m not really happy how this relabeling here is going.\n\nOn one had it\u0027s nice to know the hook priority right away, and for that I would like to just use raw numbers.\n\nOn the other hand dependencies are hard to do with just numbers.\n\nSo I was thinking:\nHOOK_PRIO_INIT_I2C \u003d HOOK_PRIO_FIRST + 1,\nHOOK_PRIO_INIT_KEYBOARD \u003d HOOK_PRIO_INIT_I2C + 1,\nHOOK_PRIO_INIT_BUTTONS \u003d HOOK_PRIO_INIT_I2C + 1,\nHOOK_PRIO_INIT_EFS \u003d HOOK_PRIO_INIT_KEYBOARD + 1,\nHOOK_PRIO_INIT_LPC \u003d HOOK_PRIO_INIT_EFS+ 1,\n\nBut idk about that either, it could get gnarly fast.\n\nAnother option is to just leave the numbers out and rely on the autonumbering by the enum type (unnumbered items will just be previous+1).",
+      "parentUuid": "fabddd9c_5adff16a",
       "range": {
         "startLine": 22,
         "startChar": 1,
