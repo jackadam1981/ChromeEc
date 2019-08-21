@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71a578b8_3509f408",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-21T22:36:36Z",
+      "side": 1,
+      "message": "This needs to be split in another CL.",
+      "revId": "21b27246b1cacf187e0bf068378710d6d1ea16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d972a01f_9ef052e3",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-21T22:36:36Z",
+      "side": 1,
+      "message": "I probably need to split this hook reorganization + populating of HOOK_PRIO_INIT_TCPC, HOOK_PRIO_INIT_BATTERY, HOOK_PRIO_INIT_CHARGER in another CL.",
+      "revId": "21b27246b1cacf187e0bf068378710d6d1ea16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
