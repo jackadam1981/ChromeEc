@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "52cf91bb_55378991",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-08-21T17:35:34Z",
+      "side": 1,
+      "message": "Should the comment then say SOP* instead of SOP\u0027?",
+      "parentUuid": "b3590f2a_a8e30c37",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "de3c6d583e0f2f6a6ff4d08ac8cc4fa83568c6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bebabb48_df5675ca",
         "filename": "board/tglrvpu_ite/gpio.inc",
         "patchSetId": 7
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "C0_CC1, C0_CC2 are cc lines for port 0 and C1_CC1, C1_CC2 are cc lines for port 1",
       "parentUuid": "bebabb48_df5675ca",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 50
+      },
+      "revId": "de3c6d583e0f2f6a6ff4d08ac8cc4fa83568c6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b285afc_99a8be7b",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-08-21T17:35:34Z",
+      "side": 1,
+      "message": "OK, but why are the pins 1 and 2 here instead of 0 and 1?",
+      "parentUuid": "3b34f4b8_ffbee630",
       "range": {
         "startLine": 133,
         "startChar": 0,
