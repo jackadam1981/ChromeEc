@@ -37,6 +37,8 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+uint64_t efs_time_start;
+
 test_mockable __keep int main(void)
 {
 	/*
@@ -164,6 +166,8 @@ test_mockable __keep int main(void)
 	lpc_init_mask();
 #endif
 
+	efs_time_start = get_time().val;
+
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
 	 * into account the time before timer_init(), but it'll at least catch
@@ -174,3 +178,10 @@ test_mockable __keep int main(void)
 	/* Launch task scheduling (never returns) */
 	return task_start();
 }
+
+void if_efs_was_running(void) {
+	uint64_t delayed_time = get_time().val - efs_time_start;
+	CPRINTF("EFS would be delayed by %luus.", delayed_time);
+}
+DECLARE_HOOK(HOOK_INIT, if_efs_was_running, HOOK_PRIO_INIT_EFS);
+
