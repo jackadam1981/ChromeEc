@@ -178,10 +178,10 @@ endif
 # them into variables available to this build script
 _flag_cfg_ro:=$(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
 	-I$(BASEDIR) -I$(BDIR) -DSECTION_IS_RO=$(EMPTY) include/config.h | \
-	grep -o "\#define \(CONFIG\|VARIANT\)_[A-Z0-9_]*" | cut -c9- | sort)
+	grep -o "\#define \(K\?CONFIG\|VARIANT\)_[A-Z0-9_]*" | cut -c9- | sort)
 _flag_cfg_rw:=$(_tsk_cfg_rw) $(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
 	-I$(BASEDIR) -I$(BDIR) -DSECTION_IS_RW=$(EMPTY) include/config.h | \
-	grep -o "\#define \(CONFIG\|VARIANT\)_[A-Z0-9_]*" | cut -c9- | sort)
+	grep -o "\#define \(K\?CONFIG\|VARIANT\)_[A-Z0-9_]*" | cut -c9- | sort)
 
 _flag_cfg:= $(filter $(_flag_cfg_ro), $(_flag_cfg_rw))
 _flag_cfg_ro:= $(filter-out $(_flag_cfg), $(_flag_cfg_ro))
