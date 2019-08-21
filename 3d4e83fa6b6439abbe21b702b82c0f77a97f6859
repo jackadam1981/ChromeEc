@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8144857_c9fdc41d",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-21T15:03:25Z",
+      "side": 1,
+      "message": "Use a bool, please.",
+      "range": {
+        "startLine": 84,
+        "startChar": 22,
+        "endLine": 84,
+        "endChar": 25
+      },
+      "revId": "3d4e83fa6b6439abbe21b702b82c0f77a97f6859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a063dd27_b217bc5a",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-21T15:03:25Z",
+      "side": 1,
+      "message": "Use a bool, please.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "3d4e83fa6b6439abbe21b702b82c0f77a97f6859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
