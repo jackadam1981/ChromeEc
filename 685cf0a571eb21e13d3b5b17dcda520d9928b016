@@ -34,6 +34,52 @@
       "revId": "685cf0a571eb21e13d3b5b17dcda520d9928b016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e73ce56_c0cdac75",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T16:41:58Z",
+      "side": 1,
+      "message": "I don\u0027t think this BUILD_ASSERT is going to work if kso_mapping is overridden in another file.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 58
+      },
+      "revId": "685cf0a571eb21e13d3b5b17dcda520d9928b016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4495e1_c512d9d7",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T16:41:58Z",
+      "side": 1,
+      "message": "we should do this check and also check that it is within the array bounds with ARRAY_SIZE (or maybe you have to create another variable to contain the size of the kso_mapping array (if it was defined in another file)",
+      "range": {
+        "startLine": 166,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 30
+      },
+      "revId": "685cf0a571eb21e13d3b5b17dcda520d9928b016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

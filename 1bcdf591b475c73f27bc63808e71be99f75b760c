@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6b3c50a5_1e2c03c7",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T16:41:58Z",
+      "side": 1,
+      "message": "Ah, I thought we were supporting 2 different vendor ids with a single driver. I understand now.\n\nLet\u0027s add a comment saying that the vendor ID is 16-bits, please.",
+      "parentUuid": "cd27c577_57547143",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddf85f13_e9ac08e1",
         "filename": "driver/ioex_it8801.c",
         "patchSetId": 22
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I\u0027m not really sure what you mean. What do you envision here?\n\nDoesn\u0027t test_mockable mean you can replace this function with some mock version? Most of the keyboard_* API functions in this driver are of that kind (to be replaced with a mock), everything else is low level glue code that can\u0027t really be tested without real hardware.",
       "parentUuid": "ddf85f13_e9ac08e1",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44d3db6_fb309c58",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T16:41:58Z",
+      "side": 1,
+      "message": "Yeah, most of this is more low-level looking at it again.\n\nWe can mock out i2c transaction (include/test_util.h), so it still might be worth adding some basic sanity check unit test with that",
+      "parentUuid": "37b38258_33ad18e5",
       "range": {
         "startLine": 124,
         "startChar": 0,
