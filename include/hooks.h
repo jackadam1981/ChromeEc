@@ -12,17 +12,26 @@
 
 enum hook_priority {
 	/* Generic values across all hooks */
-	HOOK_PRIO_FIRST = 1,       /* Highest priority */
+	HOOK_PRIO_FIRST = 10, /*TODO put this back after we decide in the WIP CL*/       /* Highest priority */
 	HOOK_PRIO_DEFAULT = 5000,  /* Default priority */
 	HOOK_PRIO_LAST = 9999,     /* Lowest priority */
 
 	/* Specific hook vales for HOOK_INIT */
-	/* DMA inits before ADC, I2C, SPI */
-	HOOK_PRIO_INIT_DMA = HOOK_PRIO_FIRST + 1,
+
+	/* I2C is needed by a lot of things */
+	HOOK_PRIO_INIT_I2C = 1,
+
+	/* Recovery via keyboard happens pretty early, sometimes needs I2C */
+	HOOK_PRIO_INIT_KEYBOARD = 2,
+
+	/* Recovery via buttons happens pretty early, sometimes needs I2C */
+	HOOK_PRIO_INIT_BUTTONS = 3,
+
+	/* EFS has to happen fast, but needs to know if we're in recovery */
+	HOOK_PRIO_INIT_EFS = 4,
+
 	/* LPC inits before modules which need memory-mapped I/O */
 	HOOK_PRIO_INIT_LPC = HOOK_PRIO_FIRST + 1,
-	/* I2C is needed before chipset inits (battery communications). */
-	HOOK_PRIO_INIT_I2C = HOOK_PRIO_FIRST + 2,
 	/* Chipset inits before modules which need to know its initial state. */
 	HOOK_PRIO_INIT_CHIPSET = HOOK_PRIO_FIRST + 3,
 	/* Lid switch inits before power button */

@@ -209,6 +209,9 @@ void button_init(void)
 	}
 #endif /* defined(CONFIG_BUTTON_TRIGGERED_RECOVERY) */
 }
+#if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
+DECLARE_HOOK(HOOK_INIT, button_init, HOOK_PRIO_INIT_BUTTONS);
+#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
 
 /*
  * Handle debounced button changing state.
