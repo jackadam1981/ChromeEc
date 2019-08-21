@@ -252,3 +252,19 @@ void vboot_main(void)
 	/* Failed to jump. Need recovery. */
 	request_recovery();
 }
+
+void efs_init(void) {
+	/*
+	 * Execute PMIC reset in case we're here after watchdog reset to unwedge
+	 * AP. This has to be done here because vboot_main may jump to RW.
+	 */
+	chipset_handle_reboot();
+	/*
+	 * For RO, it behaves as follows:
+	 *   In recovery, it enables PD communication and returns.
+	 *   In normal boot, it verifies and jumps to RW.
+	 * For RW, it returns immediately.
+	 */
+	vboot_main();
+}
+DECLARE_HOOK(HOOK_INIT, efs_init, HOOK_PRIO_INIT_EFS);

@@ -426,7 +426,7 @@ static void isl923x_init(void)
 init_fail:
 	CPRINTS("%s failed!", __func__);
 }
-DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_CHARGER);
 
 int charger_discharge_on_ac(int enable)
 {

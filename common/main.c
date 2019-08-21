@@ -163,48 +163,6 @@ test_mockable __keep int main(void)
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_init_mask();
 #endif
-#ifdef HAS_TASK_KEYSCAN
-	keyboard_scan_init();
-#endif
-#if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
-	button_init();
-#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
-
-#if defined(CONFIG_VBOOT_EFS)
-	/*
-	 * Execute PMIC reset in case we're here after watchdog reset to unwedge
-	 * AP. This has to be done here because vboot_main may jump to RW.
-	 */
-	chipset_handle_reboot();
-	/*
-	 * For RO, it behaves as follows:
-	 *   In recovery, it enables PD communication and returns.
-	 *   In normal boot, it verifies and jumps to RW.
-	 * For RW, it returns immediately.
-	 */
-	vboot_main();
-#elif defined(CONFIG_RWSIG) && !defined(HAS_TASK_RWSIG)
-	/*
-	 * Check the RW firmware signature and jump to it if it is good.
-	 *
-	 * Only the Read-Only firmware needs to do the signature check.
-	 */
-	if (system_get_image_copy() == SYSTEM_IMAGE_RO) {
-#if defined(CONFIG_RWSIG_DONT_CHECK_ON_PIN_RESET)
-		/*
-		 * If system was reset by reset-pin, do not jump and wait for
-		 * command from host
-		 */
-		if (system_get_reset_flags() == RESET_FLAG_RESET_PIN) {
-			CPRINTS("Hard pin-reset detected, disable RW jump");
-		} else
-#endif
-		{
-			if (rwsig_check_signature())
-				rwsig_jump_now();
-		}
-	}
-#endif  /* !CONFIG_VBOOT_EFS && CONFIG_RWSIG && !HAS_TASK_RWSIG */
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take

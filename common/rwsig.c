@@ -11,6 +11,7 @@
 #include "ec_commands.h"
 #include "flash.h"
 #include "host_command.h"
+#include "hooks.h"
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -326,3 +327,29 @@ DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
 		     rwsig_cmd_check_status,
 		     EC_VER_MASK(0));
 #endif
+
+#if !defined(CONFIG_VBOOT_EFS) && !defined(HAS_TASK_RWSIG)
+void efs_init(void) {
+	/*
+	 * Check the RW firmware signature and jump to it if it is good.
+	 *
+	 * Only the Read-Only firmware needs to do the signature check.
+	 */
+	if (system_get_image_copy() == SYSTEM_IMAGE_RO) {
+#if defined(CONFIG_RWSIG_DONT_CHECK_ON_PIN_RESET)
+		/*
+		 * If system was reset by reset-pin, do not jump and wait for
+		 * command from host
+		 */
+		if (system_get_reset_flags() == RESET_FLAG_RESET_PIN) {
+			CPRINTS("Hard pin-reset detected, disable RW jump");
+		} else
+#endif
+		{
+			if (rwsig_check_signature())
+				rwsig_jump_now();
+		}
+	}
+}
+DECLARE_HOOK(HOOK_INIT, efs_init, HOOK_PRIO_INIT_EFS);
+#endif  /* !CONFIG_VBOOT_EFS && !HAS_TASK_RWSIG */
