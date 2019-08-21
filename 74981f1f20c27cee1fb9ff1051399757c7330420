@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c7319787_d6c30d8e",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T22:53:45Z",
+      "side": 1,
+      "message": "lgtm",
+      "parentUuid": "2365aa2b_bcd39519",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f77ed55c_44eec5d8",
         "filename": "docs/usb_power.md",
         "patchSetId": 6
@@ -281,6 +305,30 @@
       "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af1b5296_38a3279b",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T22:53:45Z",
+      "side": 1,
+      "message": "OK, but what about the case where you have a PD device that never requests more than 1.5A?  Why does such a PD device pull power away from a non-PD 3A device, but a PD device that actually wants 3A can\u0027t pull it away from the 1.5A PD device?\n\nThe assumption here (assuming reasonably simple PD implementations) is that a PD device that requests \u003c\u003d1.5A could be a dock, or a USB4 flash drive, or something else that doesn\u0027t charge.",
+      "parentUuid": "73086c41_c0b97a76",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
