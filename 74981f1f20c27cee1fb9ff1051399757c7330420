@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47f7ff68_e1bff083",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "nit: maybe pick a symbol that looks less like a +\n\n^\n[1]\n~",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d4c33f_b0827a28",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 74,
+        "startChar": 23,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63286ad6_051465ea",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "ok, I keep saying this, but I finally checked the datasheet to back it up.  The load balancing between the ports is dynamic, based on current draw.  From the datasheet[0]:\n\n\"STATUS# trip point is based on ILIM_L current limit value to set the point. When a connected peripheral device requires port power charge current higher than ILIM_L+60mA 200ms then the STATUS# pin will automatically output LOW to let system know. When the charge current is below ILIM_L+60mA 3s then STATUS# return back to HIGH.\"\n\nWe cross-connect this to the other port\u0027s mode pin to switch between SDP/ILIM_L and CDP/ILIM_H.\n\nThis means the following can happen:\n\n1. Connect to port A0.  CDP is advertised and detected by the device.  Device pulls 500mA for a bit.\n2. Connect to port A1.  CDP is still advertised and detected by the second device.  Device starts pulling 1.5A.\n3. The current limit on A0 gets set to 900mA due to exceeding the 900mA threshold on A1, but the first device still has the expectation that the port is a CDP.\n4. The first device tries to pull 1.5A, which it is supposed to be guaranteed...but gets capped at 900mA.\n\nRealistically, most (all?) devices treat CDP the same as DCP, and will stop ramping when they hit the current limit.  So technically we\u0027re not to spec, but I doubt anything will break because of it.  Continuing the scenario:\n\n5. Second device finishes charging and the current drops down to 500mA.\n6. The current limit on A0 will go back up to 1.5A.\n7. If the first device notices (it probably won\u0027t), it could increase its current draw to 1.5A, which would subsequently cause the A1 current limit to be set to 900mA.\n\nThe way these chips work, I don\u0027t think we actually have a means to guarantee the \"first to connect gets CDP; second to connect gets SDP\" behavior.  We would need a flag from the chip that says whether primary detection has happened, and the only chip that does this is really not designed for Type-A.\nBut since most devices that pull more than 900mA do so pretty much immediately upon connection, and once charged, don\u0027t tend to drop below 900mA and then ramp back up beyond it again, the above scenario is relatively unlikely to happen.\n\n\n[0] \"Power management\" at the bottom of page 13 in this datasheet: https://www.dialog-semiconductor.com/sites/default/files/xslg55546r102_02042016.pdf",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f77ed55c_44eec5d8",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "ed",
+      "range": {
+        "startLine": 115,
+        "startChar": 46,
+        "endLine": 115,
+        "endChar": 47
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc29de5_1fd20d91",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "remove the parentheses since this is important behavior",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c097dd7_41e16941",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "why?  if it only requests 1.5A, can\u0027t we treat it the same as non-pd devices for the purposes of distributing power?\n\nsimilarly, if it requests 3A for a while, then re-requests only 1.5A since it doesn\u0027t need it, it would be great to reallocate the power to the 4th device (the tablet).\n\nwe don\u0027t *have* to give 3A back to the non-PD devices, but it would be good to at least redistribute amongst PD-capable devices.\n\nI suspect we\u0027ll ultimately have two bits (PD/non-PD, \u003e1.5A/1.5A) per port along with the order of connection going into this policy algorithm, and a simple priority selection that picks who gets 3A, run each time a state changes.  So the above behavior would just naturally come through.\n\nWe can complicate things if we consider that PD sources and PD devices can advertise and request a range of currents (not just 1.5A/3A), but there\u0027s diminishing returns there...",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb447f8_343f6999",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "omg 4 type-c ports\nwant",
+      "range": {
+        "startLine": 144,
+        "startChar": 43,
+        "endLine": 144,
+        "endChar": 49
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08a8df49_b6208f12",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "at other voltages, such as",
+      "range": {
+        "startLine": 164,
+        "startChar": 61,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d703ba5_084bd5eb",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-21T21:16:18Z",
+      "side": 1,
+      "message": "it matters in all cases, but perhaps is especially relevant when sizing daughterboard connections",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 62
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
