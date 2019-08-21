@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "381bdd3a_05fed5ba",
+        "filename": "util/uut/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-21T17:49:05Z",
+      "side": 1,
+      "message": "I\u0027d locate these lines at line 381 and keep dev_id and chip_id global.\nWith that, it would be easy to make \"read\" operation to use the default flash_size only if \"--size\" was not given.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 15
+      },
+      "revId": "fa00b0d9a182afc84a44ef7b7184aa06d1022988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "775df7a4_ea50c0ec",
         "filename": "util/uut/main.c",
         "patchSetId": 1
