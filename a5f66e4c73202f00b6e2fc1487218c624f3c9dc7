@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6e12c87_b201f540",
+        "filename": "util/uut/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:21:07Z",
+      "side": 1,
+      "message": "Define a constant MAX_SYNC_RETRIES or something.",
+      "revId": "a5f66e4c73202f00b6e2fc1487218c624f3c9dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7551e91f_1380fb04",
+        "filename": "util/uut/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:21:07Z",
+      "side": 1,
+      "message": "while(sr !\u003d SR_OK)",
+      "range": {
+        "startLine": 312,
+        "startChar": 10,
+        "endLine": 312,
+        "endChar": 11
+      },
+      "revId": "a5f66e4c73202f00b6e2fc1487218c624f3c9dc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
