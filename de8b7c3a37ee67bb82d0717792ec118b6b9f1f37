@@ -70,6 +70,30 @@
       "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152c48bf_2c505e62",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-21T03:13:06Z",
+      "side": 1,
+      "message": "Well, the tricky part is that we don\u0027t want to update dptf profile when entering/existing tablet mode. Instead, we want to update dptf when entering/existing 360 mode. So we do need to check gmr sensor GPIO in the callback. Or we have to implement something like tablet_360_get_mode() and use it to keep track of 360 mode.",
+      "parentUuid": "f6b92287_62b702d4",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
