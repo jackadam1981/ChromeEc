@@ -46,6 +46,30 @@
       "revId": "b73998b3abe2274783061fddac165333e4a26f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c6b4b3_54c12b4a",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-21T03:25:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f5e8600_33374291",
+      "range": {
+        "startLine": 956,
+        "startChar": 0,
+        "endLine": 956,
+        "endChar": 13
+      },
+      "revId": "b73998b3abe2274783061fddac165333e4a26f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
