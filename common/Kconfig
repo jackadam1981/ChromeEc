@@ -1,0 +1,22 @@
+config PWM
+	bool "Support PWM control"
+	default n
+
+config PWM_KBLIGHT
+	bool "Support keyboard backlight control"
+	default n
+	select PWM
+	help
+	  You need to define board_kblight_init unless CONFIG_PWM_KBLIGHT is used.
+	  For example, lm3509 can be registered as a driver in board_kblight_init.
+
+config SOFTWARE_PANIC
+	bool "Software panic"
+	default n
+	help
+	  Store a panic log and halt the system for a software-related reasons, such as
+	  stack overflow or assertion failure.
+
+config SHA256_UNROLLED
+	bool "Unroll some loops in SHA256_transform for better performance"
+	default n
