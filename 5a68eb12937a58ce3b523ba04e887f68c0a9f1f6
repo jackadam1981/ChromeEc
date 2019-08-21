@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "45629510_d3be5e61",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46a8cb7d_f2204e08",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef3e5705_535b62f4",
         "filename": "docs/usb_power.md",
         "patchSetId": 3
@@ -281,6 +305,30 @@
       "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77cb433_3de364fd",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "We are discussing that now. We are making that the offical policy now (keep the 3A if we can)",
+      "parentUuid": "13eb7b4d_ca288c6b",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 5
+      },
+      "revId": "5a68eb12937a58ce3b523ba04e887f68c0a9f1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

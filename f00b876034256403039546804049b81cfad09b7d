@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c4d7d1a_a6231586",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "It is, done.",
+      "parentUuid": "cb408a95_0825222e",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8d573fd_baf07e88",
         "filename": "docs/usb_power.md",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "f00b876034256403039546804049b81cfad09b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8aabb2_fe404298",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Made this a Consideration. Changed wording as well.",
+      "parentUuid": "d8d573fd_baf07e88",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "52882f8c_92825c45",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be9a1d7_10a2bc43",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01856fe6_cc773596",
         "filename": "docs/usb_power.md",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "f00b876034256403039546804049b81cfad09b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e376e9_a56165e0",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "01856fe6_cc773596",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0e3df93d_bf49a461",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Changed to max. I didn\u0027t include any of your explanation in the doc. I think a fuller reading of the BC1.2 spec should provide that insight. Do you agree?",
+      "parentUuid": "bfc3239b_59fed738",
+      "range": {
+        "startLine": 54,
+        "startChar": 30,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "886fc256_891ef271",
         "filename": "docs/usb_power.md",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "f00b876034256403039546804049b81cfad09b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9aa5dc_600c1f6d",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886fc256_891ef271",
+      "range": {
+        "startLine": 85,
+        "startChar": 32,
+        "endLine": 85,
+        "endChar": 40
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "fcdbc6e1_d63b0b6d",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "118e3789_5b5b94a8",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "536caf41_d420d9b6",
         "filename": "docs/usb_power.md",
         "patchSetId": 5
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "7e246026_086d32d6",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "I removed it, because I think Samus actually did eventually limp to 1.5A per my understanding.",
+      "parentUuid": "536caf41_d420d9b6",
+      "range": {
+        "startLine": 92,
+        "startChar": 45,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23b362f9_da57836c",
         "filename": "docs/usb_power.md",
         "patchSetId": 5
@@ -200,6 +392,24 @@
       "revId": "f00b876034256403039546804049b81cfad09b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c548a4e5_297a90c1",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Good call. That didn\u0027t make sense.\n\nI tweaked the algorithm and put in a somewhat exhaustive example of how the policy is applied.\n\nI think it would be less confusing to users if we omitted the 2B that you suggested and go with 2A (please, see the proposed flow).",
+      "parentUuid": "23b362f9_da57836c",
+      "revId": "f00b876034256403039546804049b81cfad09b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

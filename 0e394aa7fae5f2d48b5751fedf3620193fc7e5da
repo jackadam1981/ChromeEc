@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "bf30f362_a2a849eb",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e057a804_80956fe1",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d94357a_7f5f7cd3",
         "filename": "docs/usb_power.md",
         "patchSetId": 4
@@ -776,6 +800,30 @@
       "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43925bf_77a2ff33",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-21T19:34:46Z",
+      "side": 1,
+      "message": "I just ended up removing the bottom DB section and put the table in the summary section.",
+      "parentUuid": "f45d817d_6ce8a31d",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "0e394aa7fae5f2d48b5751fedf3620193fc7e5da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
