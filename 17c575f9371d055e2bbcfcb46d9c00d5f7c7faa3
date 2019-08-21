@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "3a4e539e_2ba7be2c",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-21T06:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9582daf4_f5b68fe3",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 70
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9aba65_01167786",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 23
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "There is a pullup though, on the KSI side, right? I don\u0027t think you really need this.",
       "parentUuid": "ab444ab2_3588f2ca",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a2e67b_e7514a5e",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-21T06:50:03Z",
+      "side": 1,
+      "message": "You\u0027re right. After removing internal pull-up, press any key is still no problem.",
+      "parentUuid": "fcc29124_eb223cc1",
       "range": {
         "startLine": 93,
         "startChar": 2,
@@ -285,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "b7f3732a_2db6e8c8",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-21T06:50:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ffb5bcb_9146e352",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d310ccf5_21bba7c0",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 23
@@ -344,6 +416,30 @@
       "side": 1,
       "message": "But my question is why would anyone change it in board.c? It seems we spent quite a bit of time testing this particular configuration, you lose all of that once you override it with a custom one.\n\nThe custom stuff, assuming inverted row2, will also need to use KSO20 as KSO2, since keyboard_raw_drive_column is already hardcoded to do that.\n\nWithout decoupling that too, it seems the __override is an future expansion thing that\u0027s not really complete. I\u0027m thinking https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it",
       "parentUuid": "e757595d_38927983",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "17c575f9371d055e2bbcfcb46d9c00d5f7c7faa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b70f5ef_7b81c867",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-21T06:50:03Z",
+      "side": 1,
+      "message": "Because there is consideration no inverted situation, or the KSO pins are different connection.\nAs above, the KSO2 and other KSO can be replaced.",
+      "parentUuid": "82863a76_18f876f1",
       "range": {
         "startLine": 115,
         "startChar": 0,
