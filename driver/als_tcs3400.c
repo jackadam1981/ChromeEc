@@ -22,6 +22,21 @@
  */
 #undef MAKE_TABLE_MODE
 
+/*
+ * #define AUTO_FIX_TABLE_MODE to identify bad values in LUX table
+ */
+#undef  AUTO_FIX_TABLE_MODE
+
+/*
+ * #define AUTO_FIX_TABLE_MODE_MAKE_CHANGE to dynamically fix bad values in
+ * LUX table.  AUTO_FIX_TABLE_MODE must be defined.
+ */
+#undef  AUTO_FIX_TABLE_MODE_MAKE_CHANGE
+
+#if defined(AUTO_FIX_TABLE_MODE_MAKE_CHANGE) && !defined(AUTO_FIX_TABLE_MODE)
+#error "AUTO_FIX_TABLE_MODE must be defined if AUTO_FIX_TABLE_MODE_MAKE_CHANGE"
+#endif
+
 enum alslog_level {
 	DISABLED = 0,
 	ERRORS = 1,
@@ -35,13 +50,14 @@ enum alslog_level {
 	SCALING = 256,
 	XYZ_XLATE = 512,
 	TEST = 1024,
+	LUX_TABLE = 2048,
 };
 
 #ifdef CONFIG_CMD_ALSLOG
 #ifdef MAKE_TABLE_MODE
 static int gAlsLogMask = TEST;
 #else
-static int gAlsLogMask;
+static int gAlsLogMask = (SATURATION | LUX_TABLE);
 #endif
 static int32_t negative_fp(fp_t fp)
 {
@@ -101,12 +117,45 @@ static volatile uint32_t last_interrupt_timestamp;
  * Values in array are TCS_ATIME_GAIN_FACTOR (100x) times actual value to allow
  * for fractions using integers.
  */
-static const uint16_t
+static uint16_t
 range_atime[TCS_MAX_AGAIN - TCS_MIN_AGAIN + 1][TCS_MAX_ATIME_RANGES] = {
 {11200, 5600, 5600, 7200, 5500, 4500, 3800, 3800, 3300, 2900, 2575, 2275, 2075},
 {11200, 5100, 2700, 1840, 1400, 1133, 981, 963, 833, 728, 650, 577, 525},
 {250, 1225, 643, 441, 337, 276, 237, 235, 203, 176, 150, 0, 0},
 {790, 311, 163, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} };
+
+
+#ifdef AUTO_FIX_TABLE_MODE
+struct saturation_setting_t {
+	int	percent;
+	int	steps;
+	uint8_t again;
+	uint8_t lux_range;
+	uint8_t uptrained;
+};
+static struct saturation_setting_t g_last_sat;
+
+#ifdef AUTO_FIX_TABLE_MODE_MAKE_CHANGE
+static void log_table(void)
+{
+	ALSLOG(LUX_TABLE, "");
+	ALSLOG(LUX_TABLE, "range_atime[%d][%d] = ",
+		g_last_sat.again, g_last_sat.lux_range);
+
+	for (int x = 0; x < 4; x++)
+		ALSLOG(LUX_TABLE, "{ %d, %d, %d, %d, %d, %d, %d, %d, "
+			"%d, %d, %d, %d, %d },",
+			range_atime[x][0], range_atime[x][1],
+			range_atime[x][2], range_atime[x][3],
+			range_atime[x][4], range_atime[x][5],
+			range_atime[x][6], range_atime[x][7],
+			range_atime[x][8], range_atime[x][9],
+			range_atime[x][10], range_atime[x][11],
+			range_atime[x][12]);
+	ALSLOG(LUX_TABLE, "");
+}
+#endif /* AUTO_FIX_TABLE_MODE_MAKE_CHANGE */
+#endif /* AUTO_FIX_TABLE_MODE */
 
 static void
 decrement_atime(struct tcs_saturation_t *sat_p, uint16_t cur_lux, int percent)
@@ -117,8 +166,19 @@ decrement_atime(struct tcs_saturation_t *sat_p, uint16_t cur_lux, int percent)
 
 	steps = percent * range_atime[sat_p->again][lux / 1000] /
 			TCS_ATIME_GAIN_FACTOR;
+#ifdef AUTO_FIX_TABLE_MODE
+	g_last_sat.again = sat_p->again;
+	g_last_sat.lux_range = lux / 1000;
+	g_last_sat.percent = percent;
+	g_last_sat.steps = sat_p->atime;
+#endif
 	atime = MAX(sat_p->atime - steps, TCS_MIN_ATIME);
 	sat_p->atime = MIN(atime, TCS_MAX_ATIME);
+#ifdef AUTO_FIX_TABLE_MODE
+	/* steps = original atime - current atime */
+	g_last_sat.steps -= sat_p->atime;
+	g_last_sat.uptrained = steps;
+#endif
 }
 
 #else
@@ -403,6 +463,32 @@ static int next_test_setting(struct motion_sensor_t *s, int saturation,
 
 #else
 
+#ifdef AUTO_FIX_TABLE_MODE_MAKE_CHANGE
+static void check_fix_table(void)
+{
+	if (g_last_sat.uptrained == 0) {
+		ALSLOG(SATURATION, "range_atime[%d][%d] = %d ===> %d",
+		       g_last_sat.again, g_last_sat.lux_range,
+		       range_atime[g_last_sat.again][g_last_sat.lux_range],
+		       range_atime[g_last_sat.again][g_last_sat.lux_range] *
+			g_last_sat.percent / (g_last_sat.percent + 10));
+		return;
+	}
+
+	ALSLOG(SATURATION, "CHANGED range_atime[%d][%d], was %d, now %d",
+	       g_last_sat.again, g_last_sat.lux_range,
+	       range_atime[g_last_sat.again][g_last_sat.lux_range],
+	       range_atime[g_last_sat.again][g_last_sat.lux_range] *
+			g_last_sat.percent / (g_last_sat.percent + 10));
+
+	range_atime[g_last_sat.again][g_last_sat.lux_range] =
+	       range_atime[g_last_sat.again][g_last_sat.lux_range] *
+		g_last_sat.percent / (g_last_sat.percent + 10);
+
+	log_table();
+}
+#endif /* AUTO_FIX_TABLE_MODE_MAKE_CHANGE */
+
 /*
  * tcs3400_adjust_sensor_for_saturation() tries to keep CRGB values as
  * close to saturation as possible without saturating by implementing
@@ -452,6 +538,19 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 	if ((status & TCS_I2C_STATUS_ALS_SATURATED) ||
 			(max_val >= TCS_SATURATION_LEVEL)) {
 		/* Saturation occurred, decrease AGAIN if we can */
+#ifdef AUTO_FIX_TABLE_MODE
+		ALSLOG(SATURATION, "SATURATED!  Last again %d, range %d, "
+				   "percent %d, steps %d",
+				   g_last_sat.again,
+				   g_last_sat.lux_range,
+				   g_last_sat.percent,
+				   g_last_sat.steps);
+
+#ifdef AUTO_FIX_TABLE_MODE_MAKE_CHANGE
+		check_fix_table();
+#endif /* AUTO_FIX_TABLE_MODE_MAKE_CHANGE */
+#endif /* AUTO_FIX_TABLE_MODE */
+
 		g_saturation_count++;
 		if (sat_p->again > TCS_MIN_AGAIN) {
 			sat_p->again--;
@@ -548,7 +647,14 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 		ALSLOG(SATURATION, "Set AGAIN = %d", sat_p->again);
 	}
 
+#ifdef AUTO_FIX_TABLE_MODE
+	g_last_sat.uptrained = 0;
+#endif
 	if (save_atime != sat_p->atime) {
+#ifdef AUTO_FIX_TABLE_MODE
+		if (save_atime > sat_p->atime)
+			g_last_sat.uptrained = 1;
+#endif
 		ret = tcs3400_i2c_write8(s, TCS_I2C_ATIME, sat_p->atime);
 		if (ret)
 			return ret;
