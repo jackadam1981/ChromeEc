@@ -22,6 +22,29 @@
       "revId": "20aee170790731a42fb143f0d2fab48177b320cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d486cb6_fa5ebc38",
+        "filename": "board/jacuzzi/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-21T23:08:24Z",
+      "side": 1,
+      "message": "This might be too low.\n\nNormally KEYSCAN doesn\u0027t need that much task, but now it\u0027s doing i2c calls everywhere\n\nWe\u0027re 8 bytes to spare:\nKEYSCAN          80000000    0.236029  480/488\n\nI have seen it stack overflow when disabling LTO and holding the recovery keys.",
+      "range": {
+        "startLine": 18,
+        "startChar": 48,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "20aee170790731a42fb143f0d2fab48177b320cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
