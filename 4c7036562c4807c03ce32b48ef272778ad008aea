@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db265207_b6431408",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb353683_498d1997",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0a7ca3_207abe16",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -45,6 +69,53 @@
       "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d6d5b5_0e26757f",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0a7ca3_207abe16",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 5
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31a5be5a_490bcba1",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:45:02Z",
+      "side": 1,
+      "message": "Ruben is working on fixing this. We won\u0027t need to retry.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 20
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "1dfd80c1_92a381bf",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:45:02Z",
+      "side": 1,
+      "message": "I think we want to make the controls servo runs as transparent as possible. \nI have a fix to make sure all controls have the ccd_cr50.prefix if they are used to flash the ec.",
+      "parentUuid": "4e8257be_7fb1de8d",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee46d39_57c22556",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -130,6 +225,30 @@
       "writtenOn": "2019-08-16T01:19:44Z",
       "side": 1,
       "message": "Don\u0027 we need to handle the case of [[ -z ${ACTIVE_DEVICE} ]] ?",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 44
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108b57f4_474d6dad",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:45:02Z",
+      "side": 1,
+      "message": "No. There will always be some string returned. Either ccd_cr50 or servo_micro.",
+      "parentUuid": "5ee46d39_57c22556",
       "range": {
         "startLine": 362,
         "startChar": 0,
@@ -162,6 +281,30 @@
       "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7647e8e_83338450",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-21T00:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd611883_a60c8782",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 3
+      },
+      "revId": "4c7036562c4807c03ce32b48ef272778ad008aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
