@@ -207,6 +207,12 @@
 /* Define which ALS sensor is used for dimming the lightbar when dark */
 #undef CONFIG_ALS_LIGHTBAR_DIMMING
 
+<<<<<<< HEAD   (1532c3 EC: Do not drop SCI events responsible for wake.)
+=======
+/* Link against third_party/cryptoc. */
+#undef CONFIG_LIBCRYPTOC
+
+>>>>>>> CHANGE (5ce0aa common: Add CONFIG_LIBCRYPTOC to enable third_party/cryptoc)
 /* Support AP hang detection host command and state machine */
 #undef CONFIG_AP_HANG_DETECT
 
