@@ -261,7 +261,7 @@ CRYPTOC_LDFLAGS := -L$(out)/cryptoc -lcryptoc
 
 # Force the external build each time, so it can look for changed sources.
 .PHONY: $(out)/cryptoc/libcryptoc.a
-$(out)/cryptoc/libcryptoc.a:
+$(out)/cryptoc/libcryptoc.a: $(KCONFIG_AUTOHEADER)
 	$(MAKE) obj=$(realpath $(out))/cryptoc SUPPORT_UNALIGNED=1 \
 		CONFIG_UPTO_SHA512=$(CONFIG_UPTO_SHA512) -C $(CRYPTOCLIB)
 

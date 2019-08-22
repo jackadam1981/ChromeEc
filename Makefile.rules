@@ -513,21 +513,21 @@ endif
 
 $(out)/RO/%.o.cmd:%.c
 	$(file > $@,$(subst .o.cmd,.o,$(cmd_c_to_o)))
-$(out)/RO/%.o:%.c
+$(out)/RO/%.o:%.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
-$(out)/RW/%.o:%.c
+$(out)/RW/%.o:%.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
 
-$(out)/RO/%.o:%.cc
+$(out)/RO/%.o:%.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
-$(out)/RW/%.o:%.cc
+$(out)/RW/%.o:%.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
 
 $(out)/RO/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
-$(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
+$(out)/RO/%.pb.o:$(out)/gen/%.pb.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
 $(out)/RW/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
-$(out)/RW/%.pb.o:$(out)/gen/%.pb.cc
+$(out)/RW/%.pb.o:$(out)/gen/%.pb.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
 $(out)/gen/%.pb.cc:%.proto
 	$(call quiet,proto_to_cxx,PROTOC )
@@ -535,12 +535,12 @@ $(out)/gen/%.pb.h:%.proto
 	$(call quiet,proto_to_cxx,PROTOC )
 
 $(out)/$(SHOBJLIB)/%.o: override LATE_CFLAGS_DEFINE:=-DSHAREDLIB_IMAGE=$(EMPTY)
-$(out)/$(SHOBJLIB)/%.o:%.c
+$(out)/$(SHOBJLIB)/%.o:%.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
 
-$(out)/RO/%.o:%.S
+$(out)/RO/%.o:%.S $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,AS     )
-$(out)/RW/%.o:%.S
+$(out)/RW/%.o:%.S $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,AS     )
 
 # Default rules for archives, dependencies need to be fixes in build.mk
@@ -594,7 +594,7 @@ npx-monitor-dir:
 	$(Q)mkdir -p ${out}/chip/npcx/spiflashfw
 
 # TODO: optional make rules for PROJECT_EXTRA
-$(npcx-monitor-fw-bin):$(npcx-monitor-fw).c npx-monitor-dir
+$(npcx-monitor-fw-bin):$(npcx-monitor-fw).c npx-monitor-dir $(KCONFIG_AUTOHEADER)
 	$(if $(V),,@echo '  EXTBIN ' $(subst $(out)/,,$@) ; )
 	$(Q)$(CC) $(CFLAGS) -MMD -MF $(out)/$(npcx-lfw).d -c $< \
 		-o $(out)/$(npcx-monitor-fw).o
@@ -603,14 +603,14 @@ $(npcx-monitor-fw-bin):$(npcx-monitor-fw).c npx-monitor-dir
 		-Wl,-Map,$(out)/$(npcx-monitor-fw).map
 	$(Q)$(OBJCOPY) -O binary $(out)/$(npcx-monitor-fw).elf $@
 
-$(out)/$(npcx-monitor-hdr)_ro.o:$(npcx-monitor-hdr).c npx-monitor-dir
+$(out)/$(npcx-monitor-hdr)_ro.o:$(npcx-monitor-hdr).c npx-monitor-dir $(KCONFIG_AUTOHEADER)
 	$(Q)$(CC) $(CFLAGS) -DSECTION_IS_RO=$(EMPTY) -MMD -c $< -o $@
 
 $(npcx-monitor-hdr-ro-bin):$(out)/$(npcx-monitor-hdr)_ro.o
 	$(if $(V),,@echo '  EXTBIN ' $(subst $(out)/,,$@) ; )
 	$(Q)$(OBJCOPY) -O binary $< $@
 
-$(out)/$(npcx-monitor-hdr)_rw.o:$(npcx-monitor-hdr).c npx-monitor-dir
+$(out)/$(npcx-monitor-hdr)_rw.o:$(npcx-monitor-hdr).c npx-monitor-dir $(KCONFIG_AUTOHEADER)
 	$(Q)$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 $(npcx-monitor-hdr-rw-bin):$(out)/$(npcx-monitor-hdr)_rw.o

@@ -113,7 +113,7 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: copied_objs
 
 # Force the external build each time, so it can look for changed sources.
 .PHONY: copied_objs
-copied_objs:
+copied_objs: $(KCONFIG_AUTOHEADER)
 	$(MAKE) obj=$(realpath $(out))/tpm2 EMBEDDED_MODE=1 \
 		-C $(EXTLIB) copied_objs
 

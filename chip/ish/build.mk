@@ -62,7 +62,7 @@ $(ish-aon-lds-y): chip/$(CHIP)/aontaskfw/ish_aontask.lds.S
 	-@ mkdir -p $(@D)
 	$(call quiet,lds,LDS    )
 
-$(ish-aon-out)/%.o: %.c
+$(ish-aon-out)/%.o: %.c $(KCONFIG_AUTOHEADER)
 	-@ mkdir -p $(@D)
 	$(call quiet,c_to_o,CC     )
 

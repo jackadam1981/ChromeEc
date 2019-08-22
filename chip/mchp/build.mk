@@ -87,7 +87,7 @@ $(out)/RW/%-lfw.o: private CC+=-I$(BDIR)/lfw -DLFW=$(EMPTY)
 ifeq ($(CONFIG_LTO),y)
 $(out)/RW/%-lfw.o: private CFLAGS_CPU := $(filter-out -flto, $(CFLAGS_CPU))
 endif
-$(out)/RW/%-lfw.o: %.c
+$(out)/RW/%-lfw.o: %.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
 
 # let lfw's elf link only with selected objects

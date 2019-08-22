@@ -38,3 +38,5 @@ $(KCONFIG_AUTOHEADER): $(KCONFIG_CONFIG) $(objk)/conf
 	+$(call quiet,silentoldconfig,GEN    )
 
 $(KCONFIG_AUTOCONFIG): $(KCONFIG_AUTOHEADER) ;
+
+CFLAGS += -include $(abspath $(KCONFIG_AUTOHEADER))
