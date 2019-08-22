@@ -22,6 +22,30 @@
       "revId": "9edd43d5478fbdb1d094f5d5b52ca3fb51ac3871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408d098f_a143796d",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-22T19:32:02Z",
+      "side": 1,
+      "message": "CDP will be available on any port once current draw drops below 900mA on all active Type-A ports.  If a device was already plugged in on a second port and was not advertised CDP, it will not discover the newfound capability until re-plug (or connection reset, which is basically the same thing).\n\nI think this paragraph is correct only if we have 2 ports.  If we have 3 ports, then the following can (and will) happen:\n1. plug into port A, take 1.5A\n2. plug into port B, SDP limited to 0.9A\n3. unplug A. B stays at 0.9A (doesn\u0027t know about CDP)\n4. plug into port C without unplugging B, gets CDP/1.5A.",
+      "parentUuid": "cd3f47fb_8e5760fb",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "9edd43d5478fbdb1d094f5d5b52ca3fb51ac3871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
