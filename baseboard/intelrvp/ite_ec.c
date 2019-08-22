@@ -77,12 +77,12 @@ struct keyboard_scan_config keyscan_config = {
 const struct fan_tach_t fan_tach[] = {
 	{TACH_CH_NULL,  -1, -1, -1},
 	{TACH_CH_NULL,  -1, -1, -1},
-	{TACH_CH_NULL,  -1, -1, -1},
-	{TACH_CH_NULL,  -1, -1, -1},
-	{TACH_CH_NULL,  -1, -1, -1},
-	{TACH_CH_NULL,  -1, -1, -1},
-	{TACH_CH_NULL,  -1, -1, -1},
 	{TACH_CH_TACH1A, 2, 50, 30},
+	{TACH_CH_NULL,  -1, -1, -1},
+	{TACH_CH_NULL,  -1, -1, -1},
+	{TACH_CH_NULL,  -1, -1, -1},
+	{TACH_CH_NULL,  -1, -1, -1},
+	{TACH_CH_NULL,  -1, -1, -1},
 };
 BUILD_ASSERT(ARRAY_SIZE(fan_tach) == PWM_HW_CH_TOTAL);
 
@@ -92,7 +92,7 @@ const struct pwm_t pwm_channels[] = {
 		.channel = PWM_HW_CH_DCR2,
 		.flags = PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 30000,
-		.pcfsr_sel = PWM_PRESCALER_C4,
+		.pcfsr_sel = PWM_PRESCALER_C7,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
