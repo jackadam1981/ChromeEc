@@ -23,6 +23,8 @@
 
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 
+#define CONFIG_I2C_BITBANG
+
 /* Battery */
 #ifdef BOARD_KRANE
 #define BATTERY_DESIRED_CHARGING_CURRENT    3500  /* mA */
@@ -50,9 +52,9 @@
 #define I2C_PORT_CHARGER  0
 #define I2C_PORT_TCPC0    0
 #define I2C_PORT_USB_MUX  0
-#define I2C_PORT_BATTERY  1
-#define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
 #define I2C_PORT_ACCEL    1
+#define I2C_PORT_BATTERY  2
+#define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
 
 /* Define the host events which are allowed to wakeup AP in S3. */
 #define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
