@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b8a3e74_9a9b54b2",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-22T03:02:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this function be prototyped in baseboard.h, so that you don\u0027t need extern here?",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 35
+      },
+      "revId": "00dd013e6627b5a072ba58ca9fe1b4d1222c0aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
