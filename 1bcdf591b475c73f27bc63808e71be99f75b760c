@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "60f4e330_0e527b7c",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-22T08:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b3c50a5_1e2c03c7",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddf85f13_e9ac08e1",
         "filename": "driver/ioex_it8801.c",
         "patchSetId": 22
