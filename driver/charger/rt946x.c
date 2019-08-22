@@ -919,8 +919,11 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 	switch (charge_supplier) {
 	case CHARGE_SUPPLIER_BC12_DCP:
 		if (IS_ENABLED(CONFIG_CHARGE_RAMP_SW))
-			/* A conservative value to prevent a bad charger. */
-			return 2000;
+			/*
+			 * A conservative value to prevent a bad charger.
+			 * AICR is 50ma per step, +10 for carry.
+			 */
+			return RT946X_AICR_TYP2MAX(2000 + 10);
 	case CHARGE_SUPPLIER_BC12_CDP:
 		return 1500;
 	case CHARGE_SUPPLIER_BC12_SDP:
