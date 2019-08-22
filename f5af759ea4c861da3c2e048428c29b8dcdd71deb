@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7e50f5f4_1ee3b2c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:33:15Z",
+      "side": 1,
+      "message": "You forgot about b/138415463",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "f5af759ea4c861da3c2e048428c29b8dcdd71deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f5bb5a6_ea9f7a7a",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 2
