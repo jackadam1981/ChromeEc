@@ -2329,6 +2329,9 @@
 
 /******************************************************************************/
 
+/* Support IT8801 I/O expander. */
+#undef CONFIG_IO_EXPANDER_IT8801
+
 /* Support Nuvoton NCT38xx I/O expander. */
 #undef CONFIG_IO_EXPANDER_NCT38XX
 
@@ -2499,6 +2502,8 @@
  * Enable keypad (a palm-sized keyboard section usually placed on the far right)
  */
 #undef CONFIG_KEYBOARD_KEYPAD
+
+/*****************************************************************************/
 
 /*****************************************************************************/
 
