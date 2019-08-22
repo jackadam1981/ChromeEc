@@ -33,8 +33,8 @@ static const uint16_t
 range_atime[TCS_MAX_AGAIN - TCS_MIN_AGAIN + 1][TCS_MAX_ATIME_RANGES] = {
 {11200, 5600, 5600, 7200, 5500, 4500, 3800, 3800, 3300, 2900, 2575, 2275, 2075},
 {11200, 5100, 2700, 1840, 1400, 1133, 981, 963, 833, 728, 650, 577, 525},
-{250, 1225, 643, 441, 337, 276, 237, 235, 203, 176, 150, 0, 0},
-{790, 311, 163, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} };
+{250, 1225, 643, 441, 337, 276, 253, 235, 203, 176, 150, 0, 0},
+{790, 261, 163, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} };
 
 static void
 decrement_atime(struct tcs_saturation_t *sat_p, uint16_t cur_lux, int percent)
@@ -218,11 +218,11 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 			 * is to adjust atime to reduce sensitivity so
 			 * that we may increase gain without saturation.
 			 * This combination effectively acts as a half
-			 * gain increase (2x estimate) instead of a full
-			 * gain increase of 4x that would result in
+			 * gain increase (2.5x estimate) instead of a full
+			 * gain increase of > 4x that would result in
 			 * saturation.
 			 */
-			if (max_val < TCS_GAIN_SAT_UPSHIFT_LEVEL) {
+			if (max_val < TCS_GAIN_UPSHIFT_LEVEL) {
 				sat_p->atime = TCS_GAIN_UPSHIFT_ATIME;
 				sat_p->again++;
 			}
@@ -416,10 +416,9 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 		/* If in spoof mode, replace actual data with our fake data */
-		if (s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) {
+		if (s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE)
 			for (i = 0; i < 3; i++)
 				vector.data[i] = last_v[i] = s->spoof_xyz[i];
-		}
 #endif /* CONFIG_ACCEL_SPOOF_MODE */
 
 #ifdef CONFIG_ACCEL_FIFO
