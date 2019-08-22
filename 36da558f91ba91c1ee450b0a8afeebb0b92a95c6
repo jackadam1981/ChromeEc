@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a75b073_f5cf27ef",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:56:04Z",
+      "side": 1,
+      "message": "include/gesture.h:#define TAP_ODR (1000000 / CONFIG_GESTURE_SAMPLING_INTERVAL_MS)\n#define CONFIG_GESTURE_SAMPLING_INTERVAL_MS 5\n\nso the new .odr \u003d 200000 (Hz). That seems like quite a lot to always be running in S0 and S3.\nCan the EC even go that fast? I know on other boards we frequently lower this number since it can\u0027t keep up.",
+      "range": {
+        "startLine": 392,
+        "startChar": 11,
+        "endLine": 392,
+        "endChar": 18
+      },
+      "revId": "36da558f91ba91c1ee450b0a8afeebb0b92a95c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de5d9b3_ba9c6305",
+        "filename": "common/double_tap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:56:04Z",
+      "side": 1,
+      "message": "Please make a new event, EC_HOST_EVENT_MODE_CHANGE is kinda related but not exactly for double tap.\n\nBut you\u0027ll find adding a new host event is annoying, please use an MKBP event instead.",
+      "range": {
+        "startLine": 28,
+        "startChar": 23,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "36da558f91ba91c1ee450b0a8afeebb0b92a95c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4912d50f_9e200ae7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:56:04Z",
+      "side": 1,
+      "message": "As far as I know, this alone would be enough to wake up the AP from sleep.",
+      "range": {
+        "startLine": 1138,
+        "startChar": 17,
+        "endLine": 1138,
+        "endChar": 47
+      },
+      "revId": "36da558f91ba91c1ee450b0a8afeebb0b92a95c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
