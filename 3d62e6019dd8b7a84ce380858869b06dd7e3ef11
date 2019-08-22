@@ -117,6 +117,30 @@
       "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3286c17_0b3b5244",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-22T21:54:55Z",
+      "side": 1,
+      "message": "added an explicit log event.",
+      "parentUuid": "0dfa3423_7467c763",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 24
+      },
+      "revId": "3d62e6019dd8b7a84ce380858869b06dd7e3ef11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
