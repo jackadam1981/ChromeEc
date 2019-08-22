@@ -118,6 +118,30 @@
       "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfd74df_02b3ea26",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-08-22T00:50:07Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ve changed the other 2 CLs accordingly.",
+      "parentUuid": "b71cf1ed_e9690360",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 20
+      },
+      "revId": "6726df2ddfb43e40d951d39876ba08b6e45e869c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
