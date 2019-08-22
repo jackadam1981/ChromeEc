@@ -51,6 +51,8 @@
 #define CONFIG_SYNC_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 
+#define CONFIG_EC_KEYBOARD
+
 /* Keyboard backlight is unimplemented in hardware */
 #undef CONFIG_PWM
 #undef CONFIG_PWM_KBLIGHT
