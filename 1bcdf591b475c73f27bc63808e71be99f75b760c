@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "7e56b91d_ca25265e",
+        "filename": "driver/ioex_it8801.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-08-22T10:34:12Z",
+      "side": 1,
+      "message": "I have referenced the unit test for i2c transaction, but I don\u0027t know what unit test can we do in the function of keyboard_raw_drive_column.",
+      "parentUuid": "e44d3db6_fb309c58",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "1bcdf591b475c73f27bc63808e71be99f75b760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5acaa2ca_c524493d",
         "filename": "driver/ioex_it8801.c",
         "patchSetId": 22
