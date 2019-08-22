@@ -22,6 +22,8 @@
 
 #define CONFIG_BC12_DETECT_PI3USB9201
 
+#define CONFIG_I2C_BITBANG
+
 #define CONFIG_USB_PD_TCPM_FUSB302
 #define CONFIG_USB_PD_DISCHARGE_GPIO
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
@@ -53,9 +55,9 @@
 #define I2C_PORT_TCPC0              0
 #define I2C_PORT_USB_MUX            0
 #define I2C_PORT_CHARGER            1
-#define I2C_PORT_BATTERY            1
-#define I2C_PORT_VIRTUAL_BATTERY    1
 #define I2C_PORT_IO_EXPANDER_IT8801 1
+#define I2C_PORT_BATTERY            2
+#define I2C_PORT_VIRTUAL_BATTERY    2
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
