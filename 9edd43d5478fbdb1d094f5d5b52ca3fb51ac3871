@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd3f47fb_8e5760fb",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1364477
+      },
+      "writtenOn": "2019-08-22T19:08:40Z",
+      "side": 1,
+      "message": "To me, this paragraph means that if a Device A is plugged in and claims CDP port, the Device B is plugged in, then Device A is unplugged, Device B is unable to claim CDP. Similarly, if Device C is plugged in, Device C couldn\u0027t claim the CDP port either.\n\nIs this the case? Is there a technical reason why we can\u0027t reallocate the CDP port once it is vacated (either to an existing device or worst case to a new device?)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "9edd43d5478fbdb1d094f5d5b52ca3fb51ac3871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
