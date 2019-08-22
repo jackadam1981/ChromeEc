@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff20cbbd_6431b6cc",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-22T07:51:52Z",
+      "side": 1,
+      "message": "remove this, so that ARRAY_SIZE(strcmd) won\u0027t be fixed",
+      "range": {
+        "startLine": 85,
+        "startChar": 20,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "a91642b50a01bf8f62bfda4790d6a08e2525d245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
