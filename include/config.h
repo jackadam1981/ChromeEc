@@ -2268,6 +2268,10 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/* TODO: add doc */
+#undef CONFIG_I2C_BITBANG
+#define I2C_BITBANG_PORT_COUNT 0
+
 /*
  * Packet error checking support for SMBus.
  *
