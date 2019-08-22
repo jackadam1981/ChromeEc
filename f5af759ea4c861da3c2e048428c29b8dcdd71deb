@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f5bb5a6_ea9f7a7a",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:32:25Z",
+      "side": 1,
+      "message": "This is cool!",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 68
+      },
+      "revId": "f5af759ea4c861da3c2e048428c29b8dcdd71deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b867cc_42e0f345",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:32:25Z",
+      "side": 1,
+      "message": "This just means the bus is busy. I wouldn\u0027t assert.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/stm32/i2c-stm32f0.c#73\nIt\u0027s equivalent to STM32_I2C_ISR_ARLO, the stm32 driver just returns EC_ERROR_UNKNOWN in this case.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "f5af759ea4c861da3c2e048428c29b8dcdd71deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02214e2b_458bf524",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:32:25Z",
+      "side": 1,
+      "message": "This is equivalent to STM32_I2C_ISR_NACK, perhaps just return EC_ERROR_UNKNOWN",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "f5af759ea4c861da3c2e048428c29b8dcdd71deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608f149b_d1ff280a",
+        "filename": "include/i2c_bitbang.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T18:32:25Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this, since the function already comes as part of the struct.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "f5af759ea4c861da3c2e048428c29b8dcdd71deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
