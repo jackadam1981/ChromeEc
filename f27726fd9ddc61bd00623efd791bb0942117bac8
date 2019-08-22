@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37165ebd_71bd2e7b",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-22T18:34:23Z",
+      "side": 1,
+      "message": "just a nit: maybe k should be local in this and the above loops.",
+      "revId": "f27726fd9ddc61bd00623efd791bb0942117bac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
