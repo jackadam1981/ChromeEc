@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e400d860_e6568316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-22T20:25:08Z",
+      "side": 1,
+      "message": "nit: change \"to enable\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "89a814c1159b1b716c452c27fd46450e16e64164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d415c2_6041ef24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-22T20:25:08Z",
+      "side": 1,
+      "message": "nit: \"Functions in third_party/cryptoc that are not...\"\n\nAlso let\u0027s add a line describing how to verify:\n\n This can be verified by checking the \"smaps\" file in the build directory for a given target (e.g., build/nocturne_fp/RW/ec.RW.smap), which contains a list of all symbols in the target.",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "89a814c1159b1b716c452c27fd46450e16e64164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7483409_f4dd927f",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-22T20:25:08Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment above this line:\n\n # Link RW against cryptoc",
+      "revId": "89a814c1159b1b716c452c27fd46450e16e64164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a488cd_690dcd15",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-22T20:25:08Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment above this line:\n\n # Host test executables (including fuzz tests)",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 1
+      },
+      "revId": "89a814c1159b1b716c452c27fd46450e16e64164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c83aada_bff3c511",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-22T20:25:08Z",
+      "side": 1,
+      "message": "\"Link against\"",
+      "range": {
+        "startLine": 331,
+        "startChar": 3,
+        "endLine": 331,
+        "endChar": 10
+      },
+      "revId": "89a814c1159b1b716c452c27fd46450e16e64164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
