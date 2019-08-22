@@ -46,6 +46,30 @@
       "revId": "9edd43d5478fbdb1d094f5d5b52ca3fb51ac3871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54f763f_e2afd8b6",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1364477
+      },
+      "writtenOn": "2019-08-22T20:55:49Z",
+      "side": 1,
+      "message": "Got it. I think we should update the language to reflect the 3 port case, or at least to say \"once the CDP device is unplugged, any future device that is plugged in is free to claim it, but it cannot be claimed by a device currently plugged in\"",
+      "parentUuid": "408d098f_a143796d",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "9edd43d5478fbdb1d094f5d5b52ca3fb51ac3871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
