@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81511653_ed7628a4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-22T15:58:10Z",
+      "side": 1,
+      "message": "I think we can use the new STATIC_IF(CONFIG_ACCEL_FIFO) now\n\nHere and other files (I started reviewing from the bottom)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 8
+      },
+      "revId": "5704a9c7be501dd3ebbdc8c61e40d40e298e2b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
