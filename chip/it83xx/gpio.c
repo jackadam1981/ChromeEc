@@ -671,12 +671,13 @@ static void __gpio_irq(void)
 {
 	/* Determine interrupt number. */
 	int irq = intc_get_ec_int();
-
 #ifdef HAS_TASK_KEYSCAN
+#ifndef CONFIG_IO_EXPANDER_IT8801
 	if (irq == IT83XX_IRQ_WKINTC) {
 		keyboard_raw_interrupt();
 		return;
 	}
+#endif
 #endif
 
 #ifdef CONFIG_HOSTCMD_X86
