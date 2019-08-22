@@ -31,6 +31,7 @@
 #endif /* BOARD_KRANE */
 
 #define CONFIG_CHARGER_MT6370_BACKLIGHT
+#define CONFIG_CHARGER_MAINTAIN_VBAT
 
 /* Motion Sensors */
 #ifdef SECTION_IS_RW

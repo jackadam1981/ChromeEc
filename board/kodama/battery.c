@@ -89,6 +89,23 @@ int charger_profile_override(struct charge_state_data *curr)
 	mt6370_charger_profile_override(curr);
 #endif /* CONFIG_CHARGER_MT6370 */
 
+#ifdef CONFIG_CHARGER_MAINTAIN_VBAT
+	if (!curr->batt.is_present &&
+		curr->requested_voltage == 0 &&
+		curr->requested_current == 0) {
+		const struct battery_info *batt_info = battery_get_info();
+
+		/*
+		 * b/138978212: EC will set charging current as 0mA and
+		 * set charging voltage as 0mV when removing battery, then
+		 * system will shutdown.
+		 */
+		CPRINTS("found battery in disconnect state");
+		curr->requested_voltage = batt_info->voltage_max;
+		curr->requested_current = batt_info->precharge_current;
+	}
+#endif
+
 	return 0;
 }
 
