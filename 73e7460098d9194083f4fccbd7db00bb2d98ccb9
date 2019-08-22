@@ -45,6 +45,30 @@
       "revId": "73e7460098d9194083f4fccbd7db00bb2d98ccb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35f9c06_55425242",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-22T18:01:48Z",
+      "side": 1,
+      "message": "Well I am glad you are on this review to provide useful examples.\n\nI think a user inserting power into a dock or selecting a new power policy in an OS should count as \"user interaction\" and should thus change the power distribution accordingly.\n\nI updated the doc to account for power distribution when a power contract is downgraded from 3A to 1.5A.\n\nAt the end of the day we can still answer the help question of \"why isn\u0027t my phone charging fast\" with \"ensure you plugged that phone in first\", but hopefully an end-user won\u0027t ask that question because the Chromebook is charging their PD or non-PD device fast as long as there aren\u0027t competing high-power-drawing devices wanting power.",
+      "parentUuid": "d2651b68_285500d3",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "73e7460098d9194083f4fccbd7db00bb2d98ccb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
