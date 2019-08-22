@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e54d2f3_68448b49",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-22T07:52:04Z",
+      "side": 1,
+      "message": "remove this, so that ARRAY_SIZE(strcmd) won\u0027t be fixed",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "eca9975e9fe879720acbd2fd3bae432950c3a9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
