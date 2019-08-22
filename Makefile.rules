@@ -513,21 +513,21 @@ endif
 
 $(out)/RO/%.o.cmd:%.c
 	$(file > $@,$(subst .o.cmd,.o,$(cmd_c_to_o)))
-$(out)/RO/%.o:%.c
+$(out)/RO/%.o:%.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
-$(out)/RW/%.o:%.c
+$(out)/RW/%.o:%.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
 
-$(out)/RO/%.o:%.cc
+$(out)/RO/%.o:%.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
-$(out)/RW/%.o:%.cc
+$(out)/RW/%.o:%.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
 
 $(out)/RO/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
-$(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
+$(out)/RO/%.pb.o:$(out)/gen/%.pb.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
 $(out)/RW/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
-$(out)/RW/%.pb.o:$(out)/gen/%.pb.cc
+$(out)/RW/%.pb.o:$(out)/gen/%.pb.cc $(KCONFIG_AUTOHEADER)
 	$(call quiet,cxx_to_o,CXX    )
 $(out)/gen/%.pb.cc:%.proto
 	$(call quiet,proto_to_cxx,PROTOC )
@@ -535,12 +535,12 @@ $(out)/gen/%.pb.h:%.proto
 	$(call quiet,proto_to_cxx,PROTOC )
 
 $(out)/$(SHOBJLIB)/%.o: override LATE_CFLAGS_DEFINE:=-DSHAREDLIB_IMAGE=$(EMPTY)
-$(out)/$(SHOBJLIB)/%.o:%.c
+$(out)/$(SHOBJLIB)/%.o:%.c $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,CC     )
 
-$(out)/RO/%.o:%.S
+$(out)/RO/%.o:%.S $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,AS     )
-$(out)/RW/%.o:%.S
+$(out)/RW/%.o:%.S $(KCONFIG_AUTOHEADER)
 	$(call quiet,c_to_o,AS     )
 
 # Default rules for archives, dependencies need to be fixes in build.mk
@@ -590,7 +590,7 @@ $(out)/tags: $(out)/cscope.files
 	$(call quiet,ctags,CTAGS  )
 
 # TODO: optional make rules for PROJECT_EXTRA
-$(npcx-monitor-fw-bin):
+$(npcx-monitor-fw-bin): $(KCONFIG_AUTOHEADER)
 	$(if $(V),,@echo '  EXTBIN ' $(subst $(out)/,,$@) ; )
 	$(Q)mkdir -p $(@D)
 	$(Q)$(CC) $(CFLAGS) -MMD -MF $(out)/$(npcx-lfw).d -c $(npcx-monitor-fw).c \
@@ -600,14 +600,14 @@ $(npcx-monitor-fw-bin):
 		-Wl,-Map,$(out)/$(npcx-monitor-fw).map
 	$(Q)$(OBJCOPY) -O binary $(out)/$(npcx-monitor-fw).elf $@
 
-$(out)/$(npcx-monitor-hdr)_ro.o:$(npcx-monitor-hdr).c
+$(out)/$(npcx-monitor-hdr)_ro.o:$(npcx-monitor-hdr).c $(KCONFIG_AUTOHEADER)
 	$(Q)$(CC) $(CFLAGS) -DSECTION_IS_RO=$(EMPTY) -MMD -c $(npcx-monitor-hdr).c -o $@
 
 $(npcx-monitor-hdr-ro-bin):$(out)/$(npcx-monitor-hdr)_ro.o
 	$(if $(V),,@echo '  EXTBIN ' $(subst $(out)/,,$@) ; )
 	$(Q)$(OBJCOPY) -O binary $< $@
 
-$(out)/$(npcx-monitor-hdr)_rw.o:$(npcx-monitor-hdr).c
+$(out)/$(npcx-monitor-hdr)_rw.o:$(npcx-monitor-hdr).c $(KCONFIG_AUTOHEADER)
 	$(Q)$(CC) $(CFLAGS) -MMD -c $(npcx-monitor-hdr).c -o $@
 
 $(npcx-monitor-hdr-rw-bin):$(out)/$(npcx-monitor-hdr)_rw.o
