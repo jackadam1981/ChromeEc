@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "i2c_bitbang.h"
 #include "system.h"
 #include "task.h"
 #include "usb_pd_tcpm.h"
@@ -66,6 +67,12 @@ const struct i2c_port_t *get_i2c_port(const int port)
 		if (i2c_ports[i].port == port)
 			return &i2c_ports[i];
 	}
+#ifdef CONFIG_I2C_BITBANG
+	for (i = 0; i < i2c_bitbang_ports_used; i++) {
+		if (i2c_bitbang_ports[i].port == port)
+			return &i2c_bitbang_ports[i];
+	}
+#endif
 
 	return NULL;
 }
@@ -76,6 +83,7 @@ static int chip_i2c_xfer_with_notify(const int port,
 				     uint8_t *in, int in_size, int flags)
 {
 	int ret;
+	const struct i2c_port_t *i2c_port = get_i2c_port(port);
 
 	if (IS_ENABLED(CONFIG_I2C_DEBUG))
 		i2c_trace_notify(port, slave_addr_flags, 0, out, out_size);
@@ -83,8 +91,12 @@ static int chip_i2c_xfer_with_notify(const int port,
 	if (IS_ENABLED(CONFIG_I2C_XFER_BOARD_CALLBACK))
 		i2c_start_xfer_notify(port, slave_addr_flags);
 
-	ret = chip_i2c_xfer(port, slave_addr_flags,
-			    out, out_size, in, in_size, flags);
+	if (i2c_port->drv)
+		ret = i2c_port->drv->xfer(i2c_port, slave_addr_flags,
+					  out, out_size, in, in_size, flags);
+	else
+		ret = chip_i2c_xfer(port, slave_addr_flags,
+				    out, out_size, in, in_size, flags);
 
 	if (IS_ENABLED(CONFIG_I2C_XFER_BOARD_CALLBACK))
 		i2c_end_xfer_notify(port, slave_addr_flags);
