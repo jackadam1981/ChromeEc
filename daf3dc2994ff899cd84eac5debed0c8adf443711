@@ -94,6 +94,30 @@
       "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ab1520_51c1507e",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-22T17:44:51Z",
+      "side": 1,
+      "message": "I looked doing what was suggested above, but still am of the opinion that attempting to call common_intel_x86_handle_rsmrst  from the power_signal_interrupt adds much more complication without really any benefits. Low-\u003ehigh transitions may be gated on other power rails being up or require delays to meet timing requirements, so doing those within the interrupt context are not practical.",
+      "parentUuid": "d53a4003_f5713641",
+      "range": {
+        "startLine": 700,
+        "startChar": 1,
+        "endLine": 709,
+        "endChar": 47
+      },
+      "revId": "daf3dc2994ff899cd84eac5debed0c8adf443711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
