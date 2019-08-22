@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d6ba21_b9c96c74",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-22T07:08:42Z",
+      "side": 1,
+      "message": "Since this function uses a lock, we should ensure this can\u0027t be used in IRQ handler.\n\nCould you add something like:\n\n if (in_interrupt_context()) {\n   CPRINTS(\"Should not use .... in IRQ\");\n   return EC_....;\n }",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 31
+      },
+      "revId": "75be3d73587f761670436409cfd53588009bf855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b82416_b0d21bf3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-22T07:08:42Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1021,
+        "startChar": 0,
+        "endLine": 1021,
+        "endChar": 30
+      },
+      "revId": "75be3d73587f761670436409cfd53588009bf855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13971d8_5fd8a503",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-22T07:08:42Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same as RT946X_IRQ_COUNT (in rt946x.c)?",
+      "range": {
+        "startLine": 636,
+        "startChar": 9,
+        "endLine": 636,
+        "endChar": 24
+      },
+      "revId": "75be3d73587f761670436409cfd53588009bf855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
