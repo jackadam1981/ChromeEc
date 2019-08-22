@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "37c8e6a6_bc178fa2",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-22T15:50:14Z",
+      "side": 1,
+      "message": "It has to been configured correctly in coreboot gpio since this is a alternate function on the SoC.\n\nIt would probably be good to add a comment here stating that (same in GPIO.inc, that coreboot gpio has to be set correctly)",
+      "parentUuid": "066e823b_b202ae08",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "373e5fd0509e7456854be4452a03feeaed05bd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ac109b4_94613ecd",
         "filename": "board/drallion_ish/board.c",
         "patchSetId": 2
