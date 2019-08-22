@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fee506d_94d20e95",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-22T20:46:51Z",
+      "side": 1,
+      "message": "size_t is a more appropriate type for size/lenght arguments",
+      "range": {
+        "startLine": 73,
+        "startChar": 43,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "cdbc8fbda2519a439e27f969a8e52a0543b79906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
