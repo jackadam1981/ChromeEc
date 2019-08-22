@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37216593_1f62adaa",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-22T17:23:30Z",
+      "side": 1,
+      "message": "omg now we have five type-c ports\nthis chromebook just keeps getting better",
+      "range": {
+        "startLine": 157,
+        "startChar": 43,
+        "endLine": 157,
+        "endChar": 48
+      },
+      "revId": "73e7460098d9194083f4fccbd7db00bb2d98ccb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2651b68_285500d3",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-22T17:23:30Z",
+      "side": 1,
+      "message": "I dunno, it seems bizarre to require the user to unplug and reattach the phone once it\u0027s at 100% in order for the tablet to charge faster (unplugging and reattaching the tablet doesn\u0027t have the same effect).  This requires the user to somehow figure out which device is currently getting the 3A contract (even though *nothing* is currently charging fast), then remove and reattach it to keep it topped off while charging something else quickly.\n\nI think if a type-c device is such a good citizen that it releases the extra power once it\u0027s charged, we should be smart and pass it to something else since it\u0027s very explicitly unneeded.  Note that some devices may also relinquish power due to user action, such as by plugging a power adapter into a second port or by activating some sort of smart charging policy (battery longevity stuff).\n\nI would even take it a step further and proactively downgrade devices to 1.5A if it seems they\u0027re not pulling more than that, but few of our platforms can do this.\n\nAs for step 6 as written, it seems like you\u0027d have to explicitly implement the \"sticky\" behavior, since a renegotiation looks very similar to the initial contract...so more work for an arguably worse result.",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "73e7460098d9194083f4fccbd7db00bb2d98ccb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
