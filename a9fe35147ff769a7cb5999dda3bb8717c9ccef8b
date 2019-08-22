@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4935fe44_dfd72e3f",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-08-22T07:52:14Z",
+      "side": 1,
+      "message": "remove this, so that ARRAY_SIZE(strcmd) won\u0027t be fixed",
+      "range": {
+        "startLine": 95,
+        "startChar": 20,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "a9fe35147ff769a7cb5999dda3bb8717c9ccef8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
