@@ -239,7 +239,7 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: cryptoc_objs
 
 # Force the external build each time, so it can look for changed sources.
 .PHONY: cryptoc_objs
-cryptoc_objs:
+cryptoc_objs: $(KCONFIG_AUTOHEADER)
 	$(MAKE) obj=$(realpath $(out))/cryptoc SUPPORT_UNALIGNED=1 \
 		CONFIG_UPTO_SHA512=$(CONFIG_UPTO_SHA512) -C $(CRYPTOCLIB) objs
 endif   # end CONFIG_DCRYPTO
