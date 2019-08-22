@@ -1,7 +1,8 @@
 
 config BOARD_ATLAS
+#	prompt "Atlas"
 #	def_bool n
-	bool
+#	bool
 	select ADC
 	select BOARD_VERSION_CUSTOM
 	select BOARD_FORCE_RESET_PIN
@@ -17,6 +18,7 @@ config BOARD_ATLAS
 	select PWM
 	select PWM_KBLIGHT
 	select SHA256_UNROLLED
+	select BATTERY_SMART
 
 
 
