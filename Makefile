@@ -353,6 +353,7 @@ $(config): $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
 def_all_deps:=$(config) $(PROJECT_EXTRA) notice rw size utils
+def_all_deps+=kconfig-sanity
 ifeq ($(CONFIG_FW_INCLUDE_RO),y)
 def_all_deps+=ro
 endif

@@ -40,3 +40,54 @@ $(KCONFIG_AUTOHEADER): $(KCONFIG_CONFIG) $(objk)/conf
 $(KCONFIG_AUTOCONFIG): $(KCONFIG_AUTOHEADER) ;
 
 CFLAGS += -include $(abspath $(KCONFIG_AUTOHEADER))
+
+################################################################
+
+.PHONY: kconfig-sanity
+kconfig-sanity: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:.h=.raw) ;
+kconfig-sanity: $(out)/kconfig.new
+kconfig-sanity: $(out)/kconfig.missing
+kconfig-sanity: $(out)/kconfig.common
+kconfig-sanity: $(DEFCONFIG)
+
+cmd_savedefconfig = \
+	if [ -e $< ]; then \
+		$(MAKE) savedefconfig $(silent) ; \
+	else \
+		touch $@ ; \
+	fi
+
+$(DEFCONFIG): $(KCONFIG_CONFIG) $(objk)/conf
+	+$(call quiet,savedefconfig,GEN    )
+
+cmd_gen_conf_raw = \
+	$(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
+	-I$(BASEDIR) -I$(BDIR) -DSECTION_IS_RW=$(EMPTY) $< | \
+	sed -ne "s, \+$$,,;s,^\#define K\?\(CONFIG_.*\)$$,\1,p" | \
+	sort -o $@
+
+$(config:%=%.raw): include/config.h
+	$(call quiet,gen_conf_raw,GEN    )
+
+cmd_gen_kc_raw = \
+	sed -ne "/__yn$$/d;/^\#define K\?CONFIG_HAVE_/d;\
+		s,^\#define K\?\(CONFIG_.*\)$$,\1,p" $< | \
+	sort -o $@
+
+$(KCONFIG_AUTOHEADER:%.h=%.raw): $(KCONFIG_AUTOHEADER)
+	$(call quiet,gen_kc_raw,GEN    )
+
+cmd_gen_kc_comm = comm -12 $+ > $@
+
+$(out)/kconfig.common: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw)
+	$(call quiet,gen_kc_comm,GEN    )
+
+cmd_gen_kc_new = comm -13 $+ > $@
+
+$(out)/kconfig.new: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw)
+	$(call quiet,gen_kc_new,GEN    )
+
+cmd_gen_kc_miss = comm -23 $+ > $@
+
+$(out)/kconfig.missing: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw)
+	$(call quiet,gen_kc_miss,GEN    )
