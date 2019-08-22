@@ -131,6 +131,29 @@
     },
     {
       "key": {
+        "uuid": "32a866c2_5283cf8a",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-22T22:19:44Z",
+      "side": 1,
+      "message": "Missed a spot.",
+      "range": {
+        "startLine": 475,
+        "startChar": 10,
+        "endLine": 475,
+        "endChar": 23
+      },
+      "revId": "04ac3ec59be29fcad403c7178e4c75a08cb70496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "610268f8_7e44cb27",
         "filename": "board/kukui/board.h",
         "patchSetId": 10
