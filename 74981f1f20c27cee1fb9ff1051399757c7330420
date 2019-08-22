@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "988c3274_6a07c474",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-22T17:01:20Z",
+      "side": 1,
+      "message": "Alright, I am convinced when assuming simple PD where device don\u0027t change their contracts all the time.\n\nI think the only remaining point of contention will be bullet 6 in patchset 8. I still very much prefer only changing the power distribution when the user interacts with the system. I think it makes it more understandable by the user and we don\u0027t really lose out on the most optimal power configuration in almost all scenarios.",
+      "parentUuid": "af1b5296_38a3279b",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "74981f1f20c27cee1fb9ff1051399757c7330420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdb447f8_343f6999",
         "filename": "docs/usb_power.md",
         "patchSetId": 6
