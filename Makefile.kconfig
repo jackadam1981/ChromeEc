@@ -58,3 +58,48 @@ $(KCONFIG_AUTOHEADER): $(KCONFIG_CONFIG) $(objk)/conf
 $(KCONFIG_AUTOCONFIG): $(KCONFIG_AUTOHEADER) ;
 
 CFLAGS += -include $(abspath $(KCONFIG_AUTOHEADER))
+
+################################################################
+
+.PHONY: kconfig-sanity
+kconfig-sanity: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:.h=.raw) ;
+kconfig-sanity: $(out)/kconfig.new
+kconfig-sanity: $(out)/kconfig.missing
+kconfig-sanity: $(out)/kconfig.common
+
+cmd_gen_conf_raw = \
+	$(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
+	-I$(BASEDIR) -I$(BDIR) -DSECTION_IS_RW=$(EMPTY) include/config.h | \
+	sed -ne "s, \+$$,,;s,^\#define K\?\(CONFIG_.*\)$$,\1,p" | \
+	sort -o $@
+
+$(config:%=%.raw): $(config)
+	$(call quiet,gen_conf_raw,GEN    )
+
+# we really need to run kconfig.h through cpp to get the full
+# effect of other header files turning stuff on/off
+
+cmd_gen_kc_raw = \
+	sed -ne "/__yn$$/d;s,^\#define K\?\(CONFIG_.*\)$$,\1,p" $< | \
+	sort -o $@
+
+cmd_gen_kc_comm = \
+	comm -12 $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw) > $@
+
+cmd_gen_kc_new = \
+	comm -13 $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw) > $@
+
+cmd_gen_kc_miss = \
+	comm -23 $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw) > $@
+
+$(KCONFIG_AUTOHEADER:%.h=%.raw): $(KCONFIG_AUTOHEADER)
+	$(call quiet,gen_kc_raw,GEN    )
+
+$(out)/kconfig.common: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw)
+	$(call quiet,get_kc_comm,GEN    )
+
+$(out)/kconfig.new: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw)
+	$(call quiet,get_kc_new,GEN    )
+
+$(out)/kconfig.missing: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:%.h=%.raw)
+	$(call quiet,get_kc_miss,GEN    )
