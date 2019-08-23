@@ -140,6 +140,30 @@
       "revId": "75be3d73587f761670436409cfd53588009bf855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1472ddf0_50ec173e",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "If you look at rt946x.c, there\u0027s a enum for mt6370, and the value will still be 16.\n\nenum rt946x_irq {\n\tMT6370_IRQ_CHGSTAT1 \u003d 0,\n\tMT6370_IRQ_CHGSTAT2,\n\tMT6370_IRQ_CHGSTAT3,\n\tMT6370_IRQ_CHGSTAT4,\n\tMT6370_IRQ_CHGSTAT5,\n\tMT6370_IRQ_CHGSTAT6,\n\tMT6370_IRQ_DPDMSTAT,\n\tMT6370_IRQ_DICHGSTAT,\n\tMT6370_IRQ_OVPCTRLSTAT,\n\tMT6370_IRQ_FLEDSTAT1,\n\tMT6370_IRQ_FLEDSTAT2,\n\tMT6370_IRQ_BASESTAT,\n\tMT6370_IRQ_LDOSTAT,\n\tMT6370_IRQ_RGBSTAT,\n\tMT6370_IRQ_BLSTAT,\n\tMT6370_IRQ_DBSTAT,\n\tRT946X_IRQ_COUNT,\n};",
+      "parentUuid": "b93fc6fb_eb7cbb22",
+      "range": {
+        "startLine": 636,
+        "startChar": 9,
+        "endLine": 636,
+        "endChar": 24
+      },
+      "revId": "75be3d73587f761670436409cfd53588009bf855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

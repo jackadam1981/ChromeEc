@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73e34fd4_9c355f2e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "Can you please rephrase this to an appropriate sentance?",
+      "range": {
+        "startLine": 274,
+        "startChar": 11,
+        "endLine": 274,
+        "endChar": 37
+      },
+      "revId": "343c95a89076e9c99ef58cab5e79ffc2e563a04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e704b5cd_d7378828",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1027,
+        "startChar": 11,
+        "endLine": 1027,
+        "endChar": 38
+      },
+      "revId": "343c95a89076e9c99ef58cab5e79ffc2e563a04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f93fa613_414ee28b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "Please drop this line, or it will be very noisy.",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 37
+      },
+      "revId": "343c95a89076e9c99ef58cab5e79ffc2e563a04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f9852f_30e32fe9",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "a newline between declaration and statements.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1160,
+        "endChar": 10
+      },
+      "revId": "343c95a89076e9c99ef58cab5e79ffc2e563a04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b63102_1eb24ce1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "It seems that this line doesn\u0027t do what the function says?",
+      "range": {
+        "startLine": 1161,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 40
+      },
+      "revId": "343c95a89076e9c99ef58cab5e79ffc2e563a04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7796f328_dd9579db",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:43:05Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 47
+      },
+      "revId": "343c95a89076e9c99ef58cab5e79ffc2e563a04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
