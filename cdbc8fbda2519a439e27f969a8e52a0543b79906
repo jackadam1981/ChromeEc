@@ -22,6 +22,30 @@
       "revId": "cdbc8fbda2519a439e27f969a8e52a0543b79906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027091d4_de4d9c22",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-08-23T00:30:20Z",
+      "side": 1,
+      "message": "in line 51 above (DCRYPTO_aes_init) it\u0027s uint32_t as well, and this parameter is passed to that function as is. Since it\u0027s bit size (128/192/256), not a data structure size, i think size_t will be confusing...",
+      "parentUuid": "4fee506d_94d20e95",
+      "range": {
+        "startLine": 73,
+        "startChar": 43,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "cdbc8fbda2519a439e27f969a8e52a0543b79906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
