@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "0d60a5b9_1f703141",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-23T20:03:34Z",
+      "side": 1,
+      "message": "Perhaps. We should also see what the stm32 driver does, and maybe make everything match.",
+      "parentUuid": "39a97409_fa26f79e",
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "730986d0_7f1de285",
         "filename": "common/i2c_bitbang.c",
         "patchSetId": 6
@@ -58,6 +76,53 @@
         "startChar": 1,
         "endLine": 131,
         "endChar": 18
+      },
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b4bfe0b_5193e482",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-23T20:03:34Z",
+      "side": 1,
+      "message": "Yeah, this is not cool. 35ms with interrupts disable will ruin both sensors and tcpc timings. I would rather have the host stretch the transaction while it\u0027s servicing an interrupt or a higher priority task.\n\nPlease leave interrupts enabled.\n\nIf this is really the only way, we should just do this in a high priority task (but even then, there are plenty of tasks that need to get to work in faster latencies than 35ms).",
+      "parentUuid": "730986d0_7f1de285",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cd5cf7_8678519e",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-23T20:03:34Z",
+      "side": 1,
+      "message": "what do you mean by this?\n\nDid you mean something like \"check for ack\"?",
+      "range": {
+        "startLine": 137,
+        "startChar": 34,
+        "endLine": 137,
+        "endChar": 38
       },
       "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
