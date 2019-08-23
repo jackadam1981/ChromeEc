@@ -22,6 +22,30 @@
       "revId": "c55867a678463da59c3682fe8aed3d018d813473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2fa8fd4_fe80d522",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2019-08-23T01:45:02Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nin master, it has this implicitly defined but in nami doesn\u0027t\nI try to add this implicitly defined in nami and it\u0027s work it\n\nbut we can\u0027t in nami branch upload CL and this implicitly defined already defined in the master config.h, Could help cherry-pick the implicitly defined CL into nami branch?",
+      "parentUuid": "32133502_1324814c",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "c55867a678463da59c3682fe8aed3d018d813473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
