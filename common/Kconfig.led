@@ -1,0 +1,113 @@
+
+config LED_COMMON
+	bool "Support common LED interface"
+	default n
+
+config LED_POLICY_STD
+	bool "Standard LED behavior"
+	default n
+	help
+	  Standard LED behavior according to spec given that we have a red-green
+	  bicolor led for charging and one power led
+
+config LED_PWM
+	bool "Support common PWM-controlled LEDs"
+	select PWM
+	help
+	  Support common PWM-controlled LEDs that conform to the Chrome OS LED
+	  behaviour specification.
+
+if LED_PWM
+
+config LED_PWM_COUNT
+	int "Number of PWM LEDs"
+	range 0 2
+	default 2
+	help
+	  How many PWM LEDs does the system have that will be controlled by the common
+	  PWM LED policy?  Currently, this may be at most 2.
+
+config LED_PWM_CHARGE_STATE_ONLY
+	bool "LEDs only show charging state"
+	help
+	  By default the PWM LED behaviour is reflected on both LEDs and includes the
+	  chipset state, battery state, as well as the charging state.  Enable
+	  this CONFIG_* option to show only the charging state on the LEDs.
+
+config LED_PWM_ACTIVE_CHARGE_PORT_ONLY
+	bool "Only on charging port"
+	depends on LED_PWM_CHARGE_STATE_ONLY
+	help
+	  By default the PWM LED behaviour is reflected on both LEDs and includes the
+	  chipset state, battery state, as well as the charging state.  Enable
+	  this CONFIG_* option to show only the charging state, and only on the LED of
+	  the active charge port.
+
+endif
+
+config LED_ONOFF_STATES
+	bool "Support GPIO-controlled LEDs"
+	help
+	  Support GPIO-controlled LEDs for common battery/power
+	  states through a board-defined lookup table.
+
+config LED_ONOFF_STATES_BAT_LOW__yn
+	bool "Select battery charge percentage for ..."
+	depends on LED_ONOFF_STATES
+
+config LED_ONOFF_STATES_BAT_LOW
+	int "charge percentage"
+	range 0 100
+	default 10
+	depends on LED_ONOFF_STATES_BAT_LOW__yn
+	help
+	  Set the battery charge percentage for optional STATE_DISCHARGE_S0_BAT_LOW
+	  provided by CONFIG_LED_ONOFF_STATES.
+
+config LED_POWER_LED
+	bool "Add a power LED"
+	depends on LED_ONOFF_STATES
+	help
+	  Adds a power LED under the control of the board-defined lookup table.
+	  Must be used with the CONFIG_LED_ONOFF_STATES option.
+
+config LED_BAT_ACTIVE_LOW
+	bool "LED_BAT_ACTIVE_LOW"
+	depends on LED_POLICY_STD
+	help
+	  LEDs for LED_POLICY STD may be inverted.  In this case they are active low
+	  and the GPIO names will be GPIO_LED..._L.
+
+config LED_POWER_ACTIVE_LOW
+	bool "LED_POWER_ACTIVE_LOW"
+	depends on LED_POLICY_STD
+	help
+	  LEDs for LED_POLICY STD may be inverted.  In this case they are active low
+	  and the GPIO names will be GPIO_LED..._L.
+
+config BACKLIGHT_LID
+	bool "Control the display backlight based on the state of the lid"
+	help
+	  Support controlling the display backlight based on the state of the lid
+	  switch.  The EC will disable the backlight when the lid is closed.
+
+	  The GPIO should be named GPIO_ENABLE_BACKLIGHT if active high, or
+	  GPIO_ENABLE_BACKLIGHT_L if active low. See CONFIG_BACKLIGHT_LID_ACTIVE_LOW.
+
+config BACKLIGHT_LID_ACTIVE_LOW
+	bool "The backlight GPIO pin is active low and named GPIO_BACKLIGHT_ENABLED_L"
+
+menu "Support for LED driver chips"
+
+config LED_DRIVER_DS2413
+	bool "Maxim DS2413, on one-wire interface"
+config LED_DRIVER_LM3509
+	bool "LM3509, on I2C interface"
+config LED_DRIVER_LM3630A
+	bool "LM3630A, on I2C interface"
+config LED_DRIVER_LP5562
+	bool "LP5562, on I2C interface"
+config LED_DRIVER_OZ554
+	bool "O2Micro OZ554, on I2C"
+
+endmenu
