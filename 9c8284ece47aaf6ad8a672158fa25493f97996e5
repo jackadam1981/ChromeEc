@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a55c3266_1b90bb40",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-23T17:28:32Z",
+      "side": 1,
+      "message": "so, ok for invalidating for all types of failures, only line 811 improvement is pending.",
+      "parentUuid": "d044176d_455529d0",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 24
+      },
+      "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8313e7a4_15613ee0",
         "filename": "common/new_nvmem.c",
         "patchSetId": 3
