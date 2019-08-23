@@ -160,6 +160,30 @@
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861f4812_9f1fedae",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-23T19:26:03Z",
+      "side": 1,
+      "message": "most devices do not currently, but in PD you can simply send another REQUEST message to change the amount of current you want.\nThis is something we should eventually be doing on ChromeOS as multi-port chargers become more common.",
+      "parentUuid": "8613f876_573e47e4",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
