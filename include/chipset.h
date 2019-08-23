@@ -14,7 +14,9 @@
 #define __CROS_EC_CHIPSET_H
 
 #include "common.h"
+#include "ec_commands.h"
 #include "gpio.h"
+#include "stddef.h"
 
 /*
  * Chipset state mask
