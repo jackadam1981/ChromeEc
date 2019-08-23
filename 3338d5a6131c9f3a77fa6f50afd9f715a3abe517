@@ -137,6 +137,29 @@
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8613f876_573e47e4",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T18:37:48Z",
+      "side": 1,
+      "message": "do they do this? and how? if a 5V/3A PDO was requested, the entire 3A is allocated for that port partner? I guess they could set max operating current in the SnkCap, but I don\u0027t think we incorporate that in our load balancing.",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
