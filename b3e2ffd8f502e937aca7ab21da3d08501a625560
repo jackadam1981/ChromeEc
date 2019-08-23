@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39a97409_fa26f79e",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-08-23T11:22:27Z",
+      "side": 1,
+      "message": "I2C spec doesn\u0027t define the max time... But we probably can follow SMBus (i.e 35ms)?",
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730986d0_7f1de285",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-08-23T11:22:27Z",
+      "side": 1,
+      "message": "Not quite sure if this violate the other component\u0027s realtime requirement if we want to support SMBus timeout value (\u003e\u003d35ms timeout)",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
