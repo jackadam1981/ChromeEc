@@ -93,6 +93,30 @@
       "revId": "da69eb5162d015dbb2f8b5cbdcca86cfa23a5f5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4315e35_0dba64d9",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-23T17:25:32Z",
+      "side": 1,
+      "message": "ok, as discussed offline, let\u0027s land this fix as is, for one page only, and clean up the logic a bit in the followups.",
+      "parentUuid": "f781b6b6_401486ba",
+      "range": {
+        "startLine": 2167,
+        "startChar": 12,
+        "endLine": 2167,
+        "endChar": 25
+      },
+      "revId": "da69eb5162d015dbb2f8b5cbdcca86cfa23a5f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
