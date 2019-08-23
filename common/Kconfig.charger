@@ -1,0 +1,386 @@
+
+config CHARGER
+	bool "Compile common charge state code"
+
+if CHARGER
+config CHARGER_V2
+	bool "CHARGER_V2"
+
+choice
+	prompt "Compile charger-specific code for this charger"
+
+config CHARGER_BD9995X
+	bool "CHARGER_BD9995X"
+	select USB_PD_VBUS_MEASURE_CHARGER
+config CHARGER_BQ24707A
+	bool "CHARGER_BQ24707A"
+config CHARGER_BQ24715
+	bool "CHARGER_BQ24715"
+config CHARGER_BQ24725
+	bool "CHARGER_BQ24725"
+config CHARGER_BQ24735
+	bool "CHARGER_BQ24735"
+config CHARGER_BQ24738
+	bool "CHARGER_BQ24738"
+config CHARGER_BQ24770
+	bool "CHARGER_BQ24770"
+config CHARGER_BQ24773
+	bool "CHARGER_BQ24773"
+config CHARGER_BQ25703
+	bool "CHARGER_BQ25703"
+config CHARGER_BQ25710
+	bool "CHARGER_BQ25710"
+	select USB_PD_VBUS_MEASURE_CHARGER
+config CHARGER_BQ25890
+	bool "CHARGER_BQ25890"
+config CHARGER_BQ25892
+	bool "CHARGER_BQ25892"
+config CHARGER_BQ25895
+	bool "CHARGER_BQ25895"
+config CHARGER_ISL9237
+	bool "CHARGER_ISL9237"
+	select CHARGER_NARROW_VDC
+config CHARGER_ISL9238
+	bool "CHARGER_ISL9238"
+	select CHARGER_NARROW_VDC
+config CHARGER_ISL9241
+	bool "CHARGER_ISL9241"
+	select CHARGER_NARROW_VDC
+	select USB_PD_VBUS_MEASURE_CHARGER
+config CHARGER_MT6370
+	bool "CHARGER_MT6370"
+	select USB_PD_VBUS_MEASURE_CHARGER
+config CHARGER_RT9466
+	bool "CHARGER_RT9466"
+	select USB_PD_VBUS_MEASURE_CHARGER
+config CHARGER_RT9467
+	bool "CHARGER_RT9467"
+	select USB_PD_VBUS_MEASURE_CHARGER
+config CHARGER_SY21612
+	bool "CHARGER_SY21612"
+
+endchoice
+
+if CHARGER_BD9995X
+
+config CHARGER_BD9995X_CHGEN
+	bool "Enable the CHG_EN at initialization"
+	help
+	  Enable the CHG_EN at initialization to turn-on the BGATE which allows voltage
+	  to be applied to the battery PACK & wakes the battery if it is in shipmode.
+
+config BD9995X_POWER_SAVE_MODE
+	bool "BD9995X Power Save Mode"
+	help
+	  Which power save mode should the charger enter when VBUS is removed.  Check
+	  driver/bd9995x.h for the power save settings.  By default, no power save mode
+	  is enabled.
+
+config CHARGER_BATTERY_TSENSE
+	bool "battery temp sensor support"
+	help
+	  If the battery temperature sense pin is connected to charger,
+	  get the battery temperature from the charger.
+
+endif
+
+if (CHARGER_BQ25890 || CHARGER_BQ25892 || CHARGER_BQ25895)
+
+config CHARGER_BQ2589X_IR_COMP
+	bool "BQ2589x IR Compensation settings"
+	help
+	  Should be the combination of BQ2589X_IR_TREG_xxxC, BQ2589X_IR_VCLAMP_yyyMV
+	  and  BQ2589X_IR_BAT_COMP_zzzMOHM.
+
+config CHARGER_BQ2589X_BOOST
+	bool "BQ2589x 5V boost current limit and voltage"
+	help
+	  Should be the combination of BQ2589X_BOOSTV_MV(voltage) and
+	  BQ2589X_BOOST_LIM_xxxMA.
+
+config CHARGER_TERM_CURRENT_LIMIT
+	int "Board specific charging current termination limit"
+	help
+	  Board specific charging current termination limit, in mA.  If defined and
+	  charger supports setting termination current it should be set during charger
+	  init.
+
+	  TODO(tbroch): Only valid for bq2589x currently.  Configure defaults for other
+	  charger ICs that support termination currents.
+
+endif
+
+if CHARGER_MT6370
+
+config CHARGER_MT6370_BACKLIGHT
+	bool "CHARGER_MT6370_BACKLIGHT"
+	help
+	  MT6370 backlight control settings.
+	  If defined, Panel backlight power is controlled by MT6370.
+
+config CHARGER_MT6370_BC12_GPIO
+	bool "MT6370 BC1.2 USB-PHY control"
+	help
+	  If defined, USB-PHY connection is controlled by GPIO_BC12_DET_EN.
+	  Assert GPIO_BC12_DET_EN to detect BC1.2 device, and deassert
+	  GPIO_BC12_DET_EN to mux USB-PHY back.
+
+endif
+
+if CHARGER_BQ25710
+
+config CHARGER_BQ25710_IDCHG_LIMIT_MA
+	bool "Enable IDCHG trigger for prochot"
+	help
+	  This config option is used to enable IDCHG trigger for prochot. This macro
+	  should be set to the desired current limit to draw from the battery before
+	  triggering prochot. Note that is has a 512 mA granularity. The function that
+	  sets the limit will mask of the lower 10 bits. For this check to be active
+	  the bq25710 must be in performance mode and this config option is also used
+	  to keep the bq25710 in performance mode when the AP is in S0.
+
+endif
+
+# there seem to be no references to this
+
+config CHARGER_CURRENT_LIMIT__yn
+	bool "Select CHARGER_CURRENT_LIMIT"
+config CHARGER_CURRENT_LIMIT
+	int "CHARGER_CURRENT_LIMIT"
+	depends on CHARGER_CURRENT_LIMIT__yn
+	help
+	  Board specific charging current limit, in mA.  If defined, the charge state
+	  machine will not allow the battery to request more current than this.
+
+config CHARGER_PSYS
+	bool "System power monitor PSYS function"
+	help
+	  Enable/disable system power monitor PSYS function: this enables output
+	  from charger chip to SoC.
+
+config CHARGER_PSYS_READ
+	bool "Enable reading PSYS"
+	select CHARGER_PSYS if (CHARGER_ISL9237 || CHARGER_ISL9238)
+	help
+	  Enable reading PSYS (system power) value, either via "psys" console command,
+	  or via charger_get_system_power function.
+
+config CHARGER_DISCHARGE_ON_AC
+	bool "Discharge on AC"
+	help
+	  Board supports discharge mode.  In this mode, the battery will discharge
+	  even if AC is present.  Used for testing.
+
+config CHARGER_DISCHARGE_ON_AC_CUSTOM
+	bool "Board has a custom discharge mode"
+
+config CHARGER_ILIM_PIN_DISABLED
+	bool "disable external ILIM pin"
+	help
+	  Board specific flag used to disable external ILIM pin used to determine input
+	  current limit. When defined, the input current limit is decided only by
+	  the software register value.
+
+config CHARGER_INPUT_CURRENT__yn
+	bool "Select CHARGER_INPUT_CURRENT"
+config CHARGER_INPUT_CURRENT
+	int "Default input current for the board, in mA"
+	depends on CHARGER_INPUT_CURRENT__yn
+	help
+	  Default input current for the board, in mA.  Many boards also use this as the
+	  least maximum input current during transients.
+
+	  This value should depend on external power adapter, designed charging
+	  voltage, and the maximum power of the running system. For type-C chargers,
+	  this should be set to 512 mA in order to not brown-out low-current USB
+	  charge ports in accordance with USB-PD r3.0 Sec. 7.3
+
+menu "Power thresholds for AP boot"
+
+	# comment "If one of the following conditions is met, EC boots AP:"
+	# comment ""
+	# comment "1. Battery charge >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON"
+	# comment "2. AC power >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON"
+	# comment "3. Battery charge >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC"
+	# comment "and"
+	# comment "AC power >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT"
+	# comment ""
+	# comment "Note that CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT/_CHG_MW are thresholds"
+	# comment "for the OS boot used by Depthcharge. The OS has higher power requirement"
+	# comment "but PD power is also available."
+	# comment ""
+	# comment "WARNING: Locked RO firmware does not negotiate power greater than 15W via"
+	# comment "analog signaling.  If the AP requires greater than 15W to boot, then see"
+	# comment "CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW."
+
+
+config CHARGER_MAX_INPUT_CURRENT__yn
+	bool "Select CHARGER_MAX_INPUT_CURRENT"
+config CHARGER_MAX_INPUT_CURRENT
+	int "Board specific maximum input current limit, in mA"
+	depends on CHARGER_MAX_INPUT_CURRENT__yn
+
+config CHARGER_MAINTAIN_VBAT
+	bool "Leave charger VBAT configured to battery-requested"
+	help
+	  Leave charger VBAT configured to battery-requested voltage under all
+	  conditions, even when AC is not present. This may be necessary to work
+	  around quirks of certain charger chips, such as the BD9995X.
+
+config CHARGER_MIN_BAT_PCT_FOR_POWER_ON__yn
+	bool "Select CHARGER_MIN_BAT_PCT_FOR_POWER_ON"
+config CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+	int "MIN_BAT_PCT_FOR_POWER_ON"
+	depends on CHARGER_MIN_BAT_PCT_FOR_POWER_ON__yn
+
+config CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC__yn
+	bool "Select CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC"
+config CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
+	int "MIN_BAT_PCT_FOR_POWER_ON_WITH_AC"
+	depends on CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC__yn
+
+config CHARGER_MIN_POWER_MW_FOR_POWER_ON__yn
+	bool "CHARGER_MIN_POWER_MW_FOR_POWER_ON"
+	help
+	  Default: 15000
+config CHARGER_MIN_POWER_MW_FOR_POWER_ON
+	int "CHARGER_MIN_POWER_MW_FOR_POWER_ON"
+	depends on CHARGER_MIN_POWER_MW_FOR_POWER_ON__yn
+
+config CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT__yn
+	bool "Select CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT"
+config CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT
+	int "CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT"
+	depends on CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT__yn
+
+#config CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON__yn
+#	bool "Select CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON"
+#	help
+#	  Minimum battery percentage for power on with an imbalanced pack
+config CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
+	int "Minimum battery percentage for power on with an imbalanced pack"
+	default 5
+#	depends on CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON__yn
+	help
+	  The function of MEASURE_BATTERY_IMBALANCE and these variables is to prevent a
+	  battery brownout when the management IC reports a state of charge that is
+	  higher than CHARGER_MIN_BAT_PCT_FOR_POWER_ON, but an individual cell is lower
+	  than the rest of the pack.  The critical term is MAX_IMBALANCE_MV, which must
+	  be small enough to ensure that the system can reliably boot even when the
+	  battery total state of charge barely passes the
+	  CHARGER_MIN_BAT_PCT_FOR_POWER_ON threshold.
+
+	  Lowering CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON below
+	  CHARGER_MIN_BAT_PCT_FOR_POWER_ON disables this check.  Raising it too high
+	  may needlessly prevent boot when the lowest cell can still support the
+	  system.
+
+	  As this term is lowered and BATTERY_MAX_IMBALANCE_MV is raised, the risk of
+	  cell-undervoltage brownout during startup increases.  Raising this term and
+	  lowering MAX_IMBALANCE_MV increases the risk of poor UX when the user must
+	  wait longer to turn on their device.
+
+config BATTERY_MAX_IMBALANCE_MV
+	int "Maximum battery cell imbalance in millivolts"
+	default 200
+	help
+	  Maximum battery cell imbalance to accept before considering the pack to be
+	  imbalanced, in millivolts.
+
+	  WAG.  Imbalanced battery packs in this situation appear to have balanced
+	  charge very quickly after beginning the charging cycle, since dV/dQ rapidly
+	  decreases as the cell is charged out of deep discharge.  Increasing the value
+	  of CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON will make a system tolerant of
+	  larger values of BATTERY_MAX_IMBALANCE_MV.
+
+# Low energy thresholds - when battery level is below BAT_PCT and an external
+# charger provides less than CHG_MW of power, inform the AP of the situation
+# through the LIMIT_POWER charge state parameter.  Depthcharge will hold off on
+# the boot for up to 3 seconds while waiting for either condition to clear
+# before starting the kernel.  This wait happens after sw sync in RW mode, so
+# the firmware may set it high enough that PD negotiation is required to clear
+# it.
+# 
+# Default: Disabled.  Depthcharge is immediately released to boot the kernel.
+# 
+# Setting this value to 15001 will require PD negotiation to be complete prior
+# to releasing depthcharge.  During PD negotiation, the charger will be briefly
+# reduced to about 2.5W for a few hundred ms.
+
+
+config CHARGER_LIMIT_POWER_THRESH_CHG_MW__yn
+	bool "Select CHARGER_LIMIT_POWER_THRESH_CHG_MW"
+config CHARGER_LIMIT_POWER_THRESH_CHG_MW
+	int "CHARGER_LIMIT_POWER_THRESH_CHG_MW"
+	depends on CHARGER_LIMIT_POWER_THRESH_CHG_MW__yn
+
+config CHARGER_LIMIT_POWER_THRESH_BAT_PCT__yn
+	bool "Select CHARGER_LIMIT_POWER_THRESH_BAT_PCT"
+config CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+	int "CHARGER_LIMIT_POWER_THRESH_BAT_PCT"
+	depends on CHARGER_LIMIT_POWER_THRESH_BAT_PCT__yn
+	help
+	  Default: CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+endmenu
+
+config CHARGER_NARROW_VDC
+	bool "Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8"
+
+config CHARGER_OTG
+	bool "Enable charger's OTG functions"
+	help
+	  Enable charger's OTG functions, i.e. make it possible to supply output power
+	  from battery.
+
+config CHARGER_PROFILE_OVERRIDE
+	bool "CHARGER_PROFILE_OVERRIDE"
+	depends on CHARGER_V2
+	help
+	  Charger should call battery_override_params() to limit/correct the voltage
+	  and current requested by the battery pack before acting on the request.
+
+config CHARGER_PROFILE_OVERRIDE_COMMON
+	bool "Common code for charger profile override"
+	depends on CHARGER_PROFILE_OVERRIDE
+
+config CHARGER_PROFILE_VOLTAGE_RANGES
+	int "CHARGER_PROFILE_VOLTAGE_RANGES"
+	default 2
+	help
+	  Battery voltage threshold ranges for charge profile override.
+	  Override it in board.h if battery has multiple threshold ranges.
+
+config CHARGER_SENSE_RESISTOR__yn
+	bool "Select CHARGER_SENSE_RESISTOR"
+config CHARGER_SENSE_RESISTOR
+	int "Value of the charge sense resistor, in mOhms"
+	depends on CHARGER_SENSE_RESISTOR__yn
+
+config CHARGER_SENSE_RESISTOR_AC__yn
+	bool "Select CHARGER_SENSE_RESISTOR_AC"
+config CHARGER_SENSE_RESISTOR_AC
+	int "Value of the input current sense resistor, in mOhms"
+	depends on CHARGER_SENSE_RESISTOR_AC__yn
+
+# nothing uses this!
+
+#config CHARGER_EN_GPIO
+#	bool "Board has an GPIO pin to enable or disable charging"
+#	help
+#	  This GPIO should be named GPIO_CHARGER_EN, if active high. Or
+#	  GPIO_CHARGER_EN_L if active low.
+
+#config CHARGER_EN_ACTIVE_LOW
+#	bool "Charger enable GPIO is active low"
+#	depends on CHARGER_EN_GPIO
+
+config TRICKLE_CHARGING
+	bool "Enable trickle charging"
+
+config WIRELESS_CHARGER_P9221_R7
+	bool "WIRELESS_CHARGER_P9221_R7"
+
+config USB_PD_VBUS_MEASURE_CHARGER
+	bool
+
+endif # CHARGER
