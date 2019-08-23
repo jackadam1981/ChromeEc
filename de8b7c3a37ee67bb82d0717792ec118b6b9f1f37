@@ -190,6 +190,30 @@
       "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c33acf3_5a7b876f",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T18:05:31Z",
+      "side": 1,
+      "message": "Ah, I see. I was thinking that the two modes could be the same, but I suppose one could have the device sitting on a table in stand mode.\n\nIn that case, I agree with Jett that we should some new 360 mode API.",
+      "parentUuid": "2e3e4637_e8896df6",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
