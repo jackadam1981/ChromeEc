@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09805e99_9f5eea64",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-08-23T07:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b3c152a_e1bfb85b",
+      "range": {
+        "startLine": 989,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 0
+      },
+      "revId": "2831c6694b5aae20afaf1d6b73a406f0a1398b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08adab0_083d8fc1",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "2831c6694b5aae20afaf1d6b73a406f0a1398b34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9de68a2_eceb934c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-08-23T07:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08adab0_083d8fc1",
+      "range": {
+        "startLine": 992,
+        "startChar": 0,
+        "endLine": 992,
+        "endChar": 38
+      },
+      "revId": "2831c6694b5aae20afaf1d6b73a406f0a1398b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
