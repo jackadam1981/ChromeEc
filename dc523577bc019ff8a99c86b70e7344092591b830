@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "818980c8_47d4fdd3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:39:48Z",
+      "side": 1,
+      "message": "nit: transpose to \u0027last_msg_id\u0027",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "866e3d4e_2b85893b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -42,6 +65,23 @@
         "endLine": 682,
         "endChar": 5
       },
+      "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c1b7df_e5cddb8e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:39:48Z",
+      "side": 1,
+      "message": "nit: Usually our Type-C print messages have the prefix of \"C%d\", where the int is the port, saves a few bytes too.",
       "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
