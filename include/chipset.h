@@ -14,7 +14,9 @@
 #define __CROS_EC_CHIPSET_H
 
 #include "common.h"
+#include "ec_commands.h"
 #include "gpio.h"
+#include "stddef.h"
 
 /*
  * Chipset state mask
@@ -117,4 +119,52 @@ static inline void chipset_handle_espi_reset_assert(void) { }
  */
 int chipset_pltrst_is_valid(void) __attribute__((weak));
 
+<<<<<<< HEAD   (af74f5 cortex-m: Set WATCHDOG_WARN panic reason on watchdog warning)
+=======
+/**
+ * Execute chipset-specific reboot.
+ */
+void chipset_handle_reboot(void);
+
+/**
+ * GPIO interrupt handler of watchdog from AP.
+ *
+ * It is used in MT8183 chipset, where it must be setup to trigger on falling
+ * edge only.
+ */
+void chipset_watchdog_interrupt(enum gpio_signal signal);
+
+#ifdef CONFIG_CMD_AP_RESET_LOG
+
+/**
+ * Report that the AP is being reset to the reset log.
+ */
+void report_ap_reset(enum chipset_shutdown_reason reason);
+
+/**
+ * Get statistics about AP resets.
+ *
+ * @param reset_log_entries       Pointer to array of log entries.
+ * @param num_reset_log_entries   Number of items in reset_log_entries.
+ * @param resets_since_ec_boot    Number of AP resets since EC boot.
+ */
+test_mockable enum ec_error_list
+get_ap_reset_stats(struct ap_reset_log_entry *reset_log_entries,
+		   size_t num_reset_log_entries,
+		   uint32_t *resets_since_ec_boot);
+
+#else
+
+static inline void report_ap_reset(enum chipset_shutdown_reason reason) { }
+
+test_mockable_static_inline enum ec_error_list
+get_ap_reset_stats(struct ap_reset_log_entry *reset_log_entries,
+		   size_t num_reset_log_entries, uint32_t *resets_since_ec_boot)
+{
+	return EC_SUCCESS;
+}
+
+#endif /* !CONFIG_CMD_AP_RESET_LOG */
+
+>>>>>>> CHANGE (d0e366 common: Add uptime host command)
 #endif  /* __CROS_EC_CHIPSET_H */

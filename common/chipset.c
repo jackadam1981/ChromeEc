@@ -45,3 +45,66 @@ DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown,
 			NULL,
 			"Force AP shutdown");
 #endif
+<<<<<<< HEAD   (af74f5 cortex-m: Set WATCHDOG_WARN panic reason on watchdog warning)
+=======
+
+#ifdef CONFIG_HOSTCMD_AP_RESET
+static int host_command_apreset(struct host_cmd_handler_args *args)
+{
+	/* Force the chipset to reset */
+	chipset_reset(CHIPSET_RESET_HOST_CMD);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_AP_RESET,
+		     host_command_apreset,
+		     EC_VER_MASK(0));
+
+#endif
+
+#ifdef CONFIG_CMD_AP_RESET_LOG
+static struct mutex reset_log_mutex;
+static int next_reset_log;
+static uint32_t ap_resets_since_ec_boot;
+/* keep reset_logs size a power of 2 */
+static struct ap_reset_log_entry reset_logs[4];
+
+void report_ap_reset(enum chipset_shutdown_reason reason)
+{
+	timestamp_t now = get_time();
+	uint32_t now_ms = (uint32_t)(now.val / MSEC);
+
+	mutex_lock(&reset_log_mutex);
+	reset_logs[next_reset_log].reset_cause = reason;
+	reset_logs[next_reset_log++].reset_time_ms = now_ms;
+	next_reset_log &= ARRAY_SIZE(reset_logs) - 1;
+	ap_resets_since_ec_boot++;
+	mutex_unlock(&reset_log_mutex);
+}
+
+test_mockable enum ec_error_list
+get_ap_reset_stats(struct ap_reset_log_entry *reset_log_entries,
+		   size_t num_reset_log_entries, uint32_t *resets_since_ec_boot)
+{
+	size_t log_address;
+	size_t i;
+
+	if (reset_log_entries == NULL || resets_since_ec_boot == NULL)
+		return EC_ERROR_INVAL;
+
+	mutex_lock(&reset_log_mutex);
+	*resets_since_ec_boot = ap_resets_since_ec_boot;
+	for (i = 0;
+	     i != ARRAY_SIZE(reset_logs) && i != num_reset_log_entries;
+	     ++i) {
+		log_address = (next_reset_log + i) &
+			(ARRAY_SIZE(reset_logs) - 1);
+		reset_log_entries[i] = reset_logs[log_address];
+	}
+	mutex_unlock(&reset_log_mutex);
+
+	return EC_SUCCESS;
+}
+
+#endif  /* !CONFIG_AP_RESET_LOG */
+
+>>>>>>> CHANGE (d0e366 common: Add uptime host command)

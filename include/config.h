@@ -1515,6 +1515,18 @@
 /* Set SKU ID from AP */
 #undef CONFIG_HOSTCMD_AP_SET_SKUID
 
+<<<<<<< HEAD   (af74f5 cortex-m: Set WATCHDOG_WARN panic reason on watchdog warning)
+=======
+/* Command to issue AP reset */
+#undef  CONFIG_HOSTCMD_AP_RESET
+
+/* Command to get the EC uptime (and optionally AP reset stats) */
+#define CONFIG_HOSTCMD_GET_UPTIME_INFO
+
+/* List of host commands whose debug output will be suppressed */
+#undef CONFIG_SUPPRESSED_HOST_COMMANDS
+
+>>>>>>> CHANGE (d0e366 common: Add uptime host command)
 /*****************************************************************************/
 
 /* Enable debugging and profiling statistics for hook functions */
