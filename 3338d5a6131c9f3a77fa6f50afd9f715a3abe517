@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30b85f73_4d7793aa",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74c7e79_6a95d7fc",
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f720d533_2f71811b",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -39,6 +57,30 @@
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58790a84_c3737fe2",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "It felt like multiplication without the arrow, but I removed it. I want it to be a clear as possible",
+      "parentUuid": "f720d533_2f71811b",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1c1e5064_a8dd0a56",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e93924a_b90efe83",
+      "range": {
+        "startLine": 87,
+        "startChar": 18,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3b1d748_ec232f80",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "331940bd_89d68373",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b1d748_ec232f80",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ddcdeb1_7502c9b2",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -99,6 +189,30 @@
       "writtenOn": "2019-08-23T18:26:36Z",
       "side": 1,
       "message": "a",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8319fbc_1f3af375",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "I think the is more appropriate here since we only have a single CDP. I would expand this to \"the one and only CDP\"\n\n(I don\u0027t feel that strongly about this, just bring up why I made it the versus a)",
+      "parentUuid": "6ddcdeb1_7502c9b2",
       "range": {
         "startLine": 102,
         "startChar": 32,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "a308a330_574bc9e2",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7ca4d6_1d92ccc6",
+      "range": {
+        "startLine": 103,
+        "startChar": 31,
+        "endLine": 103,
+        "endChar": 37
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bee3d8c_897f2af8",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -154,6 +292,30 @@
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b5d603_00f1b533",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "6bee3d8c_897f2af8",
+      "range": {
+        "startLine": 108,
+        "startChar": 56,
+        "endLine": 108,
+        "endChar": 61
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "3700dde0_82c0ea14",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "I can go either way, but I changed it to High-current port status.",
+      "parentUuid": "749b7de1_4e0777b0",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d148c88_da821938",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "91fb4479_896d37d0",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "same; feel free to push back though",
+      "parentUuid": "5d148c88_da821938",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f63f979c_1de8aeb9",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -223,6 +433,30 @@
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d4bf2c_158932f4",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "I added\n\nNote: Not all released Chromebooks implement the above policy due to pre-existing hardware design constraints.\n\nat the bottom of this example",
+      "parentUuid": "f63f979c_1de8aeb9",
+      "range": {
+        "startLine": 160,
+        "startChar": 58,
+        "endLine": 160,
+        "endChar": 77
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -273,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "a7215858_f06c8c12",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "If we got another REQUEST from a SNK for 1.5A or lower, then this condition would trigger. I definitely agreed that very few devices do this in practice, but I wanted to call this condition out specifically in our policy.",
+      "parentUuid": "861f4812_9f1fedae",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64faab14_e45e6486",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -293,6 +551,30 @@
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3bd0ee8_cf41ce3c",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-23T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64faab14_e45e6486",
+      "range": {
+        "startLine": 215,
+        "startChar": 60,
+        "endLine": 215,
+        "endChar": 62
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
