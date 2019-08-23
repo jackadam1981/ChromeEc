@@ -7,3 +7,35 @@ config CHIP_PANIC_BACKUP
 	  saved/restored to persistent storage by using chip specific
 	  implementations. This option can be enabled by those platforms that have and
 	  wish to use chip-implemented panic backup/restore functions.
+
+# USB section 
+
+config USB_BOS
+	bool "USB Binary device Object Store support"
+	default n
+
+config USB_BCD_DEV___
+	bool "Set USB Device version of product"
+	default n
+
+if USB_BCD_DEV___
+config USB_BCD_DEV
+	prompt "USB Device version of product"
+	hex
+endif
+
+config USB
+	bool "Compile chip support for the USB device controller"
+	default n
+
+config USB_ISOCHRONOUS
+	bool "Support USB isochronous handler"
+	default n
+
+config USB_BLOB
+	bool "Support USB blob handler"
+	default n
+
+config USB_CHARGER
+	bool "Common USB / BC1.2 charger detection routines"
+	default n
