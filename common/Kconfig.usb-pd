@@ -1,0 +1,417 @@
+
+config USB_POWER_DELIVERY
+	bool "Include all USB Power Delivery modules"
+
+config USB_PD_ALT_MODE
+	bool "Support for USB PD alternate mode"
+
+config USB_PD_ALT_MODE_DFP
+	bool "Support for USB PD alternate mode of Downward Facing Port"
+
+config USB_PD_CHECK_MAX_REQUEST_ALLOWED
+	bool "Check if max voltage request is allowed before each request"
+
+config USB_PD_COMM_DISABLED
+	bool "Default state of PD communication disabled flag"
+
+config USB_PD_COMM_LOCKED
+	bool "Do not enable PD communication in RO"
+	help
+	  Do not enable PD communication in RO as a security measure.
+	  We don't want to allow communication to outside world until
+	  we jump to RW. This can by overridden with the removal of
+	  the write protect screw to allow for easier testing.
+
+# choice
+# 	prompt "Default USB data role when a USB PD debug accessory is seen"
+# 	default PD_ROLE_DFP__yn
+
+# 	config PD_ROLE_UFP__yn
+# 		bool
+# 		prompt "UFP"
+# 	config PD_ROLE_DFP__yn
+# 		bool
+# 		prompt "DFP"
+# 	config PD_ROLE_DISCONNECTED__yn
+# 		bool
+# 		prompt "disconnected"
+# endchoice
+
+# config USB_PD_DEBUG_DR
+# 	int
+# 	default PD_ROLE_UFP          if PD_ROLE_UFP__yn
+# 	default PD_ROLE_DFP          if PD_ROLE_DFP__yn
+# 	default PD_ROLE_DISCONNECTED if PD_ROLE_DISCONNECTED__yn
+
+config USB_PD_DEBUG_LEVEL
+	bool "Define to have a fixed PD Task debug level"
+	help
+	  Define to have a fixed PD Task debug level.
+	  Undef to allow runtime change via console command.
+
+config USB_PD_DISCHARGE
+	bool "Define if this board can enable VBUS discharge"
+	help
+	  Define if this board can enable VBUS discharge (eg. through a GPIO-controlled
+	  discharge circuit, or through port controller registers) to discharge VBUS
+	  rapidly on disconnect. Will be defined automatically when one of the below
+	  options is defined.
+
+config USB_PD_DISCHARGE_GPIO
+	bool "Define if discharge circuit is EC GPIO-controlled"
+	select USB_PD_DISCHARGE
+
+config USB_PD_DISCHARGE_TCPC
+	bool "Define if discharge circuit is using PD discharge registers on TCPC"
+	select USB_PD_DISCHARGE
+
+config USB_PD_DISCHARGE_PPC
+	bool "Define if discharge circuit is using PD discharge registers on PPC"
+	select USB_PD_DISCHARGE
+
+config USB_PD_DUAL_ROLE
+	bool "Define if this board can act as a dual-role PD port (source and sink)"
+
+config USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	bool "Define if this board can used TCPC-controlled DRP toggle"
+
+config BD9995X_DELAY_INPUT_PORT_SELECT
+	bool "Define to reduces VBUS droop caused by inrush current during charging"
+
+# choice
+# 	prompt "Initial DRP / toggle policy"
+# 	default __PD_DRP_TOGGLE_OFF__yn
+
+# 	config PD_DRP_TOGGLE_ON__yn
+# 		bool
+# 		prompt "DRP_TOGGLE_ON"
+# 	config PD_DRP_TOGGLE_OFF__yn
+# 		bool
+# 		prompt "DRP_TOGGLE_OFF"
+# 	config PD_DRP_FREEZE__yn
+# 		bool
+# 		prompt "DRP_FREEZE"
+# 	config PD_DRP_FORCE_SINK__yn
+# 		bool
+# 		prompt "DRP_FORCE_SINK"
+# 	config PD_DRP_FORCE_SOURCE__yn
+# 		bool
+# 		prompt "DRP_FORCE_SOURCE"
+# endchoice
+
+# config USB_PD_INITIAL_DRP_STATE
+# 	string
+# 	default "PD_DRP_TOGGLE_ON"    if PD_DRP_TOGGLE_ON__yn
+# 	default "PD_DRP_TOGGLE_OFF"   if PD_DRP_TOGGLE_OFF__yn
+# 	default "PD_DRP_FREEZE"       if PD_DRP_FREEZE__yn
+# 	default "PD_DRP_FORCE_SINK"   if PD_DRP_FORCE_SINK__yn
+# 	default "PD_DRP_FORCE_SOURCE" if PD_DRP_FORCE_SOURCE__yn
+
+config USB_PD_5V_EN_ACTIVE_LOW
+	bool "Define if VBUS source GPIOs are active-low"
+	help
+	  Define if VBUS source GPIOs (GPIO_USB_C*_5V_EN) are active-low (and named
+	  (..._L) rather than default active-high.
+
+config USB_PD_5V_CHARGER_CTRL
+	bool "Ask charger if VBUS is enabled on a source port, instead of using GPIO"
+
+config USB_PD_5V_EN_CUSTOM
+	bool "use a custom function to determine if VBUS is enabled"
+	help
+	  If defined, use a custom function to determine if VBUS is enabled on a
+	  source port. The custom function is board_is_sourcing_vbus(port).
+
+config USB_PD_DYNAMIC_SRC_CAP
+	bool "Dynamic USB PD source capability"
+
+config USB_PD_FLASH
+	bool "Support USB PD flash"
+
+config USB_PD_FLASH_ERASE_CHECK
+	bool "Check whether PD is the sole power source before flash erase operation"
+
+config USB_PD_GIVE_BACK
+	bool "Define if this board, operating as a sink, can give power back to a source"
+
+config USB_PD_REV30
+	bool "Enable USB PD Rev3.0 features"
+
+config USB_PD_HW_DEV_ID_BOARD__yn
+	bool "Major and Minor ChromeOS specific PD device Hardware IDs"
+
+if USB_PD_HW_DEV_ID_BOARD__yn
+config USB_PD_HW_DEV_ID_BOARD_MAJOR
+	int
+	prompt "major"
+config USB_PD_HW_DEV_ID_BOARD_MINOR
+	int
+	prompt "minor"
+endif
+
+config USB_PD_IDENTITY_HW__yn
+	bool "HW version for alternate mode discover identity response 4bits"
+if USB_PD_IDENTITY_HW__yn
+config CONFIG_USB_PD_IDENTITY_HW_VERS
+	int
+	prompt "HW"
+endif
+
+config USB_PD_IDENTITY_SW__yn
+	bool "SW version for alternate mode discover identity response 4bits"
+if USB_PD_IDENTITY_SW__yn
+config CONFIG_USB_PD_IDENTITY_SW_VERS
+	int
+	prompt "SW"
+endif
+
+config USB_PD_I2C_SLAVE_ADDR_FLAGS
+	prompt "USB PD MCU slave address for host commands"
+	hex
+	default 0x1E
+
+config USB_PD_INTERNAL_COMP
+	bool "Define if using internal comparator for PD receive"
+
+config USB_PD_LOGGING
+	bool "Record main PD events in a circular buffer"
+
+config EVENT_LOG_SIZE 
+	prompt "The size in bytes of the FIFO used for event logging"
+	int
+	default 512
+
+config USB_PD_LOW_POWER
+	bool "Save power by waking up on VBUS rather than polling CC"
+	default y
+
+config USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED
+	bool "Allow chip to go into low power idle even when a PD device is attached"
+
+config USB_PD_PORT_COUNT__yn
+	bool "Number of USB PD ports"
+
+if USB_PD_PORT_COUNT__yn
+config USB_PD_PORT_COUNT
+	prompt "Number of USB PD ports"
+	int
+endif
+
+config USB_PD_SIMPLE_DFP
+	bool "Simple DFP, such as power adapter, will not send discovery VDM on connect"
+
+config USB_PD_RX_COMP_IRQ
+	bool "Use comparator module for PD RX interrupt"
+	default y
+
+config USB_PD_TCPC
+	bool "Use TCPC module (type-C port controller)"
+
+config USB_PD_TCPC_LOW_POWER
+	bool "Enable TCPC to enter low power mode"
+
+config USB_PD_DECODE_SOP
+	bool "Enable the encoding of msg SOP* in bits 31-28 of 32-bit msg header type"
+
+config USB_PD_TCPC_TRACK_VBUS
+	bool "Track VBUS level in TCPC module"
+	help
+	  Track VBUS level in TCPC module. This will only be needed if we're acting
+	  as an external TCPC.
+
+config USB_PD_TCPC_RUNTIME_CONFIG
+	bool "Enable runtime config the TCPC"
+
+#if USB_PD_TCPC
+
+menu "TCPM choice"
+#	prompt "TCPM choice"
+#	default USB_PD_TCPM_TCPCI
+#	help
+#	  Choose one of the following TCPMs (type-C port manager) to manage TCPC. The
+#	  TCPM stub is used to make direct function calls to TCPC when TCPC is on
+#	  the same MCU. The TCPCI TCPM uses the standard TCPCI i2c interface to TCPC.
+
+config USB_PD_TCPM_STUB
+	bool "USB_PD_TCPM_STUB"
+config USB_PD_TCPM_TCPCI
+	bool "USB_PD_TCPM_TCPCI"
+config USB_PD_TCPM_FUSB302
+	bool "USB_PD_TCPM_FUSB302"
+config USB_PD_TCPM_ITE83XX
+	bool "USB_PD_TCPM_ITE83XX"
+config USB_PD_TCPM_ANX3429
+	bool "USB_PD_TCPM_ANX3429"
+	select USB_PD_TCPM_ANX74XX
+config USB_PD_TCPM_ANX740X
+	bool "USB_PD_TCPM_ANX740X"
+	select USB_PD_TCPM_ANX74XX
+config USB_PD_TCPM_ANX741X
+	bool "USB_PD_TCPM_ANX741X"
+config USB_PD_TCPM_ANX7447
+	bool "USB_PD_TCPM_ANX7447"
+config USB_PD_TCPM_ANX7688
+	bool "USB_PD_TCPM_ANX7688"
+config USB_PD_TCPM_NCT38XX
+	bool "USB_PD_TCPM_NCT38XX"
+config USB_PD_TCPM_PS8751
+	bool "USB_PD_TCPM_PS8751"
+config USB_PD_TCPM_PS8805
+	bool "USB_PD_TCPM_PS8805"
+config USB_PD_TCPM_MT6370
+	bool "USB_PD_TCPM_MT6370"
+config USB_PD_TCPM_TUSB422
+	bool "USB_PD_TCPM_TUSB422"
+
+endmenu
+
+#endif
+
+config USB_PD_RETIMER
+	bool "Type-C multi-protocol retimer is present"
+
+config USB_PD_RETIMER_INTEL_BB
+	bool "Type-C multi-protocol retimer to be used in on-board applications"
+	select USB_PD_RETIMER
+
+# move this to Kconfig.cmd?
+config USB_PD_TCPM_ANX7447_OCM_ERASE_COMMAND
+	bool "Adds an EC console command to erase the ANX7447 OCM flash"
+	help
+	  Adds an EC console command to erase the ANX7447 OCM flash.
+	  Note: this is intended to be a temporary option and
+	  won't be needed when ANX7447 are put on boards with OCM already erased
+
+config USB_PD_TCPM_MUX
+	bool "support 18h CONFIG_STANDARD_OUTPUT register"
+	help
+	  Use this option if the TCPC port controller supports the optional register
+	  18h CONFIG_STANDARD_OUTPUT to steer the high-speed muxes.
+
+#
+
+config HAVE_USB_PD_VBUS_DETECT_TCPC
+       bool
+config HAVE_USB_PD_VBUS_DETECT_CHARGER
+       bool
+config HAVE_USB_PD_VBUS_DETECT_GPIO
+       bool
+config HAVE_USB_PD_VBUS_DETECT_PPC
+       bool
+config HAVE_USB_PD_VBUS_DETECT_NONE
+       bool
+
+choice
+	prompt "TCPM VBUS detection"
+
+	default USB_PD_VBUS_DETECT_NONE    if HAVE_USB_PD_VBUS_DETECT_NONE
+	default USB_PD_VBUS_DETECT_TCPC    if HAVE_USB_PD_VBUS_DETECT_TCPC
+	default USB_PD_VBUS_DETECT_CHARGER if HAVE_USB_PD_VBUS_DETECT_CHARGER
+	default USB_PD_VBUS_DETECT_GPIO    if HAVE_USB_PD_VBUS_DETECT_GPIO
+	default USB_PD_VBUS_DETECT_PPC     if HAVE_USB_PD_VBUS_DETECT_PPC
+
+	help
+	  The TCPM must know whether VBUS is present in order to make proper state
+	  transitions. In addition, charge_manager must know about VBUS presence in
+	  order to make charging decisions. VBUS state can be determined by various
+	  methods:
+	  - Some TCPCs can detect and report the presence of VBUS.
+	  - In some configurations, charger ICs can report the presence of VBUS.
+	  - On some boards, dedicated VBUS interrupt pins are available.
+	  - Some power path controllers (PPC) can report the presence of VBUS.
+
+	  Exactly one of these should be defined for all boards that run the PD
+	  state machine.
+
+config USB_PD_VBUS_DETECT_NONE
+	bool "NONE"
+config USB_PD_VBUS_DETECT_TCPC
+	bool "TCPC"
+config USB_PD_VBUS_DETECT_CHARGER
+	bool "CHARGER"
+config USB_PD_VBUS_DETECT_GPIO
+	bool "GPIO"
+config USB_PD_VBUS_DETECT_PPC
+	bool "PPC"
+
+endchoice
+
+config USB_PD_VBUS_MEASURE_ADC_EACH_PORT
+	bool "Define if the there is a separate ADC channel for each USB-C Vbus voltage"
+
+config USB_PD_VBUS_MEASURE_NOT_PRESENT
+	bool "Define if the there is no hardware to measure Vbus voltage"
+
+config TCPC_I2C_BASE_ADDR_FLAGS
+       prompt "Define the type-c port controller I2C base address"
+       hex
+       default 0x4E
+
+config USB_PD_TRY_SRC
+	bool "Use this option to enable Try.SRC mode for Dual Role devices"
+
+config USB_PD_TRY_SRC_MIN_BATT_SOC
+	prompt "Set the default minimum battery percentage for Try.Src to be enabled"
+	int
+	range 0 100
+	default 1
+
+config USB_PD_RESET_MIN_BATT_SOC__yn
+	bool "Select the minimum battery percentage"
+
+if USB_PD_RESET_MIN_BATT_SOC__yn
+config USB_PD_RESET_MIN_BATT_SOC
+	prompt "Minimum battery percentage"
+	int
+	help
+	  Set the minimum battery percentage to allow a PD port to send resets as a
+	  sink (and risk a hard reset, losing Vbus).  Note this may cause a high-power
+	  charger to appear as only a low-power 15W charger until a reset is sent to
+	  re-start PD negotiation.
+endif
+
+config USB_PD_TX_PHY_ONLY
+	bool "Alternative configuration keeping only the TX part of PHY"
+
+config PD_USE_DAC_AS_REF
+	bool "Use DAC as reference for comparator at 850mV."
+
+config USB_TYPEC_VPD
+	bool "Type-C VCONN Powered Device"
+
+config USB_TYPEC_CTVPD
+	bool "Type-C Charge Through VCONN Powered Device"
+
+config _USB_TYPEC_DRP_ACC_TRYSRC
+	bool "Type-C DRP with Accessory and Try.SRC"
+
+config USB_PID
+	bool "USB Product ID"
+
+#menu "USB_PD_PULLUP choice"
+#	prompt "Default pull-up value on the USB-C ports when they are used as source"
+#	default TYPEC_RP_1A5
+
+config USB_PD_MAX_SINGLE_SOURCE_CURRENT
+	bool "Override the pull-up value"
+	help
+	  Override the pull-up value when only zero or one port is actively sourcing
+	  current and we can advertise more current than what is defined by
+	  `CONFIG_USB_PD_PULLUP`.
+	  Should be defined with one of the tcpc_rp_value.
+
+config USB_PD_MAX_TOTAL_SOURCE_CURRENT__yn
+	bool "Select total current the board can supply"
+
+if USB_PD_MAX_TOTAL_SOURCE_CURRENT__yn
+config USB_PD_MAX_TOTAL_SOURCE_CURRENT
+	prompt "Total current in mA the board can supply"
+	int
+	help
+	  Total current in mA the board can supply to external devices through
+	  USB-C ports
+
+	  When a sink device is plugged or unplugged, source current redistribution
+	  occurs. If this macro is defined, redistribution occurs in such a way
+	  that there is no current drop (e.g. 3A -> 1.5A) on active source ports.
+endif
