@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3c152a_e1bfb85b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:47:44Z",
+      "side": 1,
+      "message": "I think we should delay the print until BC12 type recognized, or it will be in a mess.",
+      "range": {
+        "startLine": 989,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 0
+      },
+      "revId": "2831c6694b5aae20afaf1d6b73a406f0a1398b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08adab0_083d8fc1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:47:44Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 992,
+        "startChar": 0,
+        "endLine": 992,
+        "endChar": 38
+      },
+      "revId": "2831c6694b5aae20afaf1d6b73a406f0a1398b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
