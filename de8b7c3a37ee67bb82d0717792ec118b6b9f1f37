@@ -166,6 +166,30 @@
       "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3e4637_e8896df6",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-23T07:34:29Z",
+      "side": 1,
+      "message": "For DPTF, we are concerned about the 360-degree mode. Skin temperature thresholds need to be lower only when the device is in completely flipped 360-degree mode. Doing it at 200-degree would cause throttling to happen sooner than required.",
+      "parentUuid": "cc6f247b_4ae50cc9",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
