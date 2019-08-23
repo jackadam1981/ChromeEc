@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38b680d_9558a842",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T01:29:31Z",
+      "side": 1,
+      "message": "We already have EC_INT_L here, and it\u0027s an output to the AP.",
+      "revId": "a76ce2ac6069354ccfc9c3797b36e895b5554eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
