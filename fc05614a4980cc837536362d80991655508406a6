@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e6c050cf_93abc147",
+        "filename": "chip/g/usb_console_stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-23T00:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d184c8d0_786bf482",
+      "revId": "fc05614a4980cc837536362d80991655508406a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a22eba4a_37eebb57",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -86,6 +104,24 @@
       "revId": "fc05614a4980cc837536362d80991655508406a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d933487_c8a2e57e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3897,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-23T00:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22eba4a_37eebb57",
+      "revId": "fc05614a4980cc837536362d80991655508406a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
