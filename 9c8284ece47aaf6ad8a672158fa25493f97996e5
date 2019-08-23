@@ -140,6 +140,30 @@
       "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3de8df4_515da234",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-23T14:29:00Z",
+      "side": 1,
+      "message": "sure, let me add it.",
+      "parentUuid": "8313e7a4_15613ee0",
+      "range": {
+        "startLine": 811,
+        "startChar": 7,
+        "endLine": 811,
+        "endChar": 24
+      },
+      "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
