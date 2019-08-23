@@ -46,6 +46,30 @@
       "revId": "c55867a678463da59c3682fe8aed3d018d813473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642d1db5_c463d3d5",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-23T15:26:24Z",
+      "side": 1,
+      "message": "Are you fixing this in Nami branch? If so, why don\u0027t you add the implicit definition in Nami branch?",
+      "parentUuid": "c2fa8fd4_fe80d522",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "c55867a678463da59c3682fe8aed3d018d813473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
