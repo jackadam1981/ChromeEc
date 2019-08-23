@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88e9cc3e_a2630547",
+        "filename": "board/max32660-eval/ec.tasklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-08-23T17:06:57Z",
+      "side": 1,
+      "message": "nit: indent the line-continuation backslashes consistently, either all having just one prior space, or all being on the same column.",
+      "range": {
+        "startLine": 22,
+        "startChar": 64,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92c42713_b4cff474",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-08-23T17:06:57Z",
+      "side": 1,
+      "message": "I do not see a single reference to this field, is that indicative of a bug or missing functionality, or is the field not supposed to be present?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556444f3_4a7b47fc",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-08-23T17:06:57Z",
+      "side": 1,
+      "message": "What is the point of using a mix of explicit constants, and reference to another enum?\nAs far as I can tell EC_ERROR_UNKNOWN has a numerical value of 1, meaning that I2C_MASTER_IDLE and I2C_MASTER_ERROR will both have value 1, I cannot believe that to be intentional.  Even if EC_ERROR_UNKNOWN had a different value, I would be worried that a future refactoring of the EC_ constants could result in collision.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "016d04f0_29ca347c",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-08-23T17:06:57Z",
+      "side": 1,
+      "message": "Is this meant to be called from other compilation units?  If not, declare it static.",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315d4725_fdbe21ea",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-08-23T17:06:57Z",
+      "side": 1,
+      "message": "The documentation of I2C_Api_MasterWrite states that the return is a \"common error code\", which I assume means EC_ series error codes.  So what is the point of \"hiding\" the particular error here, and always returning EC_ERROR_UNKNOWN.  In my opinion, you could just have\nreturn I2C_Api_Master...(...)\nin each branch, dropping both status and ret variables.",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b82b59c_6f3a79e2",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-08-23T17:06:57Z",
+      "side": 1,
+      "message": "The caller of this method is not prepared to process error codes, and the implementation of this method never returns anything but zero.  So I think this one should be declared void, rather than giving the appearance that errors could be reported by return codes.",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
