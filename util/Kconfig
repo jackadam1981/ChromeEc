@@ -1,0 +1,14 @@
+config VIF_TYPE_C_CAN_ACT_AS_HOST
+	bool "Indicates whether the UUT can communicate as host"
+	default n
+	help
+	  Used during generation of VIF for USB Type-C Compliance Testing.
+	  Indicates whether the UUT can communicate with USB 2.0 or USB 3.1 as a host
+	  or as the Downstream Facing Port of a hub.
+
+config VIF_CAPTIVE_CABLE
+	bool "Indicates whether the UUT has a captive cable"
+	default n
+	help
+	  Used during generation of VIF for USB Type-C Compliance Testing.
+	  Indicates whether the UUT has a captive cable.
