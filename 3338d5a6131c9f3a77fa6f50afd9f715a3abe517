@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "d74c7e79_6a95d7fc",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-23T20:44:07Z",
+      "side": 1,
+      "message": "I feel like this table over-complicates things: how about replacing it with just:\n\"Type-A Vbus (1500mA) + Type-C Vbus (3000mA) + Type-C Vconn (300mA) \u003d 4800mA\"",
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f720d533_2f71811b",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-23T20:44:07Z",
+      "side": 1,
+      "message": "Is this an arrow or \"less than or equal to\"? I think deleting it makes it clearer: \"24W (4.8A * 5V)\".",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e93924a_b90efe83",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -94,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "6bee3d8c_897f2af8",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-23T20:44:07Z",
+      "side": 1,
+      "message": "nit: 900mA",
+      "range": {
+        "startLine": 108,
+        "startChar": 56,
+        "endLine": 108,
+        "endChar": 61
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "749b7de1_4e0777b0",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
@@ -133,6 +196,29 @@
         "startChar": 32,
         "endLine": 117,
         "endChar": 35
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f63f979c_1de8aeb9",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-23T20:44:07Z",
+      "side": 1,
+      "message": "Add a note that this is a proposed future policy, not the current implementation?",
+      "range": {
+        "startLine": 160,
+        "startChar": 58,
+        "endLine": 160,
+        "endChar": 77
       },
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -180,6 +266,29 @@
         "startChar": 4,
         "endLine": 190,
         "endChar": 37
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64faab14_e45e6486",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-23T20:44:07Z",
+      "side": 1,
+      "message": "delete \"\u003c\u003d\"",
+      "range": {
+        "startLine": 215,
+        "startChar": 60,
+        "endLine": 215,
+        "endChar": 62
       },
       "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
