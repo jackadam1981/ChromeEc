@@ -45,6 +45,52 @@
       "revId": "cc9168d26b8b5095ecb674f0053115799d7f2d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fadd8d2_67593c7e",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-23T07:47:20Z",
+      "side": 1,
+      "message": "What do you think about this:\n\n1. Add a function in intel_x86.c intel_x86_power_signal_interrupt() which looks something like this:\n\nvoid intel_x86_power_signal_interrupt(enum gpio_signal signal)\n{\n    intel_x86_handle_rsmrst_assertion();\n    power_signal_interrupt(signal);\n}\n\n2. Change gpio.inc for any board that requires rsmrst assertion to be quick to use intel_x86_power_signal_interrupt() instead of power_signal_interrupt().\n\nReason for suggesting this:\n\n1. It avoids having to add another config option. This is under the assumption that we have linker options enabled to garbage collect unused functions.\n2. It avoids having to put intel_x86 specific call back in power/common.c i.e intel_x86_handle_rsmrst_assertion().\n3. This also gives you the flexibility to use intel_x86_handle_rsmrst_assertion() only for PG_EC_RSMRST_L in gpio.inc i.e. when other power signals change you do not have to spend any time looking at the GPIO states for rsmrst_in and rsmrst_out.",
+      "range": {
+        "startLine": 697,
+        "startChar": 5,
+        "endLine": 697,
+        "endChar": 27
+      },
+      "revId": "cc9168d26b8b5095ecb674f0053115799d7f2d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1e4ce8_7c0c2d0e",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-23T07:47:20Z",
+      "side": 1,
+      "message": "Not for this change, but we should get rid of this since CONFIG_BOARD_HAS_BEFORE_RSMRST doesn\u0027t seem to be used.",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 6
+      },
+      "revId": "cc9168d26b8b5095ecb674f0053115799d7f2d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
