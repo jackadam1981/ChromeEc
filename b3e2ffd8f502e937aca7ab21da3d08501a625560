@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "19d71c33_67c97eb7",
+        "filename": "board/kodama/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-23T11:31:26Z",
+      "side": 1,
+      "message": "Hi, phoenix, we have internal discussion and plan to use external pull-up resistor 2.2k, please help to remove GPIO_PULL_UP. Besides, I tried patch set 6 on SMP and Celpert battery, the effect is greatly improved, I will go on tracing this. thanks!",
+      "range": {
+        "startLine": 66,
+        "startChar": 67,
+        "endLine": 66,
+        "endChar": 68
+      },
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39a97409_fa26f79e",
         "filename": "common/i2c_bitbang.c",
         "patchSetId": 6
