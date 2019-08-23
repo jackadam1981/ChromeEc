@@ -142,6 +142,30 @@
       "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6f247b_4ae50cc9",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-23T02:21:52Z",
+      "side": 1,
+      "message": "@Jett Yes, that\u0027s the other path of mode-aware DPTF support. It\u0027s guarded by CONFIG_DPTF_MOTION_LID_NO_HALL_SENSOR.\n@Aseda, I\u0027m not so sure why tablet DPTF profile is only used when near 360 degrees instead of tablet mode. Furquan, do you know the reason?",
+      "parentUuid": "252f2ea0_1cc2570f",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
