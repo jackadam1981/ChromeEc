@@ -16,6 +16,24 @@
       "revId": "a76ce2ac6069354ccfc9c3797b36e895b5554eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7653441_e3429bc2",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-08-23T01:46:35Z",
+      "side": 1,
+      "message": "Good catch.  I was wondering why not having it defined didn\u0027t generate a compiler error.  This explains it (grep\u0027ing for GPIO_EC_INT_L in ec/ doesn\u0027t find this file, but does find a board that #defines it in board.h).",
+      "parentUuid": "a38b680d_9558a842",
+      "revId": "a76ce2ac6069354ccfc9c3797b36e895b5554eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
