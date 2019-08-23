@@ -22,6 +22,30 @@
       "revId": "ca35d9a55aa04593f1de2caf2261775b1f45c460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "008f5e2d_ef4899a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-08-23T07:44:22Z",
+      "side": 1,
+      "message": "we detect 5v1a/5v2.4a apple TA as DCP,\nso we need to check this workaround is work on pure MT6370 EVB or not, that can make sure DPDM can be control and detect right without AP influences",
+      "parentUuid": "c63ba0bf_7bd4bf21",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "ca35d9a55aa04593f1de2caf2261775b1f45c460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
