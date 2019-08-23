@@ -1,0 +1,308 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18b64b5d_b582c936",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3722,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "nit: maybe call it CONFIG_USB_PD_MANFACTURER_INFO",
+      "range": {
+        "startLine": 3722,
+        "startChar": 7,
+        "endLine": 3722,
+        "endChar": 37
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a40f4f38_e6dcab00",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "I would just remove it.",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 6
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4a0bdc_c2856c16",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "just \u0027Power\u0027",
+      "range": {
+        "startLine": 527,
+        "startChar": 29,
+        "endLine": 527,
+        "endChar": 36
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7378b66a_adee459d",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "typo: Batteries",
+      "range": {
+        "startLine": 633,
+        "startChar": 25,
+        "endLine": 633,
+        "endChar": 33
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c47ab58_fb3f4c0e",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "Why isn\u0027t capabl spelled out?",
+      "range": {
+        "startLine": 663,
+        "startChar": 12,
+        "endLine": 663,
+        "endChar": 31
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928744ae_7d8e62a8",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "typo: Default",
+      "range": {
+        "startLine": 701,
+        "startChar": 8,
+        "endLine": 701,
+        "endChar": 15
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e001b4e_6a5a398b",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "I think that we should take a look at CONFIG_USB_PD_PULLUP and set it accordingly as that will be default.",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 0
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a01ff372_5f540d25",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "On x86 devices, usually only one port can do this and it has to be configured by the user in dev mode. (UDC mode). For our other peripherals, CONFIG_USB_PID should be defined. I\u0027d set the response based upon that config option. Or you may check to see if USB_DEV_CLASS \u003d\u003d USB_CLASS_BILLBOARD.",
+      "range": {
+        "startLine": 747,
+        "startChar": 13,
+        "endLine": 747,
+        "endChar": 16
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d2236c9_45947ded",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "Unfortunately, we don\u0027t yet have a config option that expresses this. hoho, dingdong, and coffeecake are.",
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ab99b5_d0eb9160",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "Maybe check if \"CONFIG_DEDICATED_CHARGE_PORT_COUNT\" is \u003e 0. For those single USB-C port devices, it\u0027s likely the port is externally powered if it\u0027s the port under test.",
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ceeb60_a22a5686",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "This is acting as a UFP. I think for our devices it\u0027s only 2.0 in device mode, but I\u0027m not certain.",
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458a5939_7a3dde55",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "Because I think it\u0027s currently 2.0 only, I think these aren\u0027t needed.",
+      "range": {
+        "startLine": 811,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 1
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e491b1a8_595683ba",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "Yes, we do. Those devices that use a PPC have OCP; check for CONFIG_USBC_PPC. The method is \"0 – Over-Current Response\"",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 6
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541fdc29_9d6de252",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-23T00:03:59Z",
+      "side": 1,
+      "message": "Because we don\u0027t advertise BC 1.2 on Type-C, I think you can remove this.",
+      "range": {
+        "startLine": 948,
+        "startChar": 0,
+        "endLine": 959,
+        "endChar": 1
+      },
+      "revId": "357b98d2e74896b27c09f07d6ba04f058ef2f63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
