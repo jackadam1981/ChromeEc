@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63c2f1c0_0f6f0d1a",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-23T21:23:36Z",
+      "side": 1,
+      "message": "This is quoted from line 267,",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 396,
+        "endChar": 65
+      },
+      "revId": "83a330cdcda278da320fc3d1c912c73d14cc23f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6749a3d_d21b3e25",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-08-23T21:23:36Z",
+      "side": 1,
+      "message": "This is quoted from line 162.",
+      "range": {
+        "startLine": 277,
+        "startChar": 21,
+        "endLine": 277,
+        "endChar": 46
+      },
+      "revId": "83a330cdcda278da320fc3d1c912c73d14cc23f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
