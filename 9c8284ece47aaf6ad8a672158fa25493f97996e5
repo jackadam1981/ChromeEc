@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b2ec459a_62d41fda",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-23T00:26:29Z",
+      "side": 1,
+      "message": "ok, will change",
+      "parentUuid": "43c7741a_c0217f16",
+      "range": {
+        "startLine": 375,
+        "startChar": 10,
+        "endLine": 375,
+        "endChar": 18
+      },
+      "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdd0c2a5_23af81f0",
         "filename": "common/new_nvmem.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-22T23:49:27Z",
       "side": 1,
       "message": "nit: shall we do it for all types of failure types?\nit feels those NVMEMF_CONTAINER_HASH_MISMATCH etc may still be useful to be added to teh log, just shouldn\u0027t trigger NVMEM_WIPE during init_in_progress.",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 24
+      },
+      "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2b04bd_48d618c7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-23T00:26:29Z",
+      "side": 1,
+      "message": "I don\u0027t understand, shall we do what for all failure types invalidate flash?\n\nI am not sure this is a good idea, some failures could be rectified by the init,following the reboot, so only if the failure persists across reboots and is causing a rolling reboot there is no way around it and we should wipe out NVMEM",
+      "parentUuid": "cdd0c2a5_23af81f0",
       "range": {
         "startLine": 378,
         "startChar": 2,
