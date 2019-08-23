@@ -94,6 +94,30 @@
       "revId": "27d1395ae9a01b97e9f25765d6579c423e7284bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346ce918_af5295e3",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-23T18:47:07Z",
+      "side": 1,
+      "message": "Looks like we can remove it for non DPTF devices only as it turn on during chipset resume.\nFor the DPTF enabled devices, FAN might not turn on before AP boots. This might block booting of AP in high temperature cases.",
+      "parentUuid": "4cfa6dd6_2a00c98c",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 67
+      },
+      "revId": "27d1395ae9a01b97e9f25765d6579c423e7284bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
