@@ -15,7 +15,9 @@
 
 #include "common.h"
 #include "compile_time_macros.h"
+#include "ec_commands.h"
 #include "gpio.h"
+#include "stddef.h"
 
 /*
  * Chipset state mask
@@ -256,9 +258,17 @@ __override_proto enum critical_shutdown board_system_is_idle(
  */
 void report_ap_reset(enum chipset_shutdown_reason reason);
 
+void ap_reset_stats(struct ap_reset_log_entry *reset_log_entry,
+		    size_t num_reset_log_entries,
+		    uint32_t *resets_since_ec_boot);
+
 #else
 
 static inline void report_ap_reset(enum chipset_shutdown_reason reason) { }
+
+static inline void ap_reset_stats(struct ap_reset_log_entry *reset_log_entry,
+				  size_t num_reset_log_entries,
+				  uint32_t *resets_since_ec_boot) { }
 
 #endif /* !CONFIG_CMD_AP_RESET_LOG */
 
