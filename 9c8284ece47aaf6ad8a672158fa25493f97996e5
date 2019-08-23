@@ -93,6 +93,53 @@
       "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d044176d_455529d0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-23T05:43:57Z",
+      "side": 1,
+      "message": "I meant, we are currently invalidating flash in case of any report_failure() called while init_in_progress\u003d\u003dtrue. is it the right thing to do? shall we only call it for some failure_types reported through report_failure()? \n\nthough, having thought more about that, yes, even if it was a (potentially recoverable) NVMEMF_MALLOC, if that happens while init_in_progress\u003d\u003dtrue, it\u0027s likely we see the same allocation problem after reboot again.\n\nthe 2nd part of the comment (NVMEMF_CONTAINER_HASH_MISMATCH etc may still be useful to be added to the log) was related to changes to line 811, so see a new comment there.",
+      "parentUuid": "4a2b04bd_48d618c7",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 24
+      },
+      "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8313e7a4_15613ee0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-23T05:43:57Z",
+      "side": 1,
+      "message": "iiuc, in init_in_progress\u003d\u003dtrue case, once the error is propagated to the top, it may either be fixed on the next retry or still eventually cause NVMEMF_UNRECOVERABLE_INIT. in the 1st case it\u0027s good that we haven\u0027t invalidated the flash immediately, but we also lose information - we don\u0027t have a record about NVMEMF_CONTAINER_HASH_MISMATCH in the logs.\n\ncan we do\n  if (init_in_progress) {\n    flash_log_add_event(...);\n  } else {\n    report_no_payload_failure(...);\n  }\n?",
+      "range": {
+        "startLine": 811,
+        "startChar": 7,
+        "endLine": 811,
+        "endChar": 24
+      },
+      "revId": "9c8284ece47aaf6ad8a672158fa25493f97996e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
