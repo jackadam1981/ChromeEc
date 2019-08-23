@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5990b41f_bc02ce4f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-23T14:22:37Z",
+      "side": 1,
+      "message": "this refers to object: if the last object in the flash is corrupted this could be a case of normal interrupted save, if not the last object is corrupted - some genuine failure must have happened.",
+      "parentUuid": "8407c5d3_408ec433",
+      "range": {
+        "startLine": 2166,
+        "startChar": 30,
+        "endLine": 2166,
+        "endChar": 36
+      },
+      "revId": "da69eb5162d015dbb2f8b5cbdcca86cfa23a5f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5f5420f_d860ad75",
         "filename": "common/new_nvmem.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-23T05:27:18Z",
       "side": 1,
       "message": "can we just erase all pages from the point to the last regardless of how many more objects were there?",
+      "range": {
+        "startLine": 2167,
+        "startChar": 12,
+        "endLine": 2167,
+        "endChar": 25
+      },
+      "revId": "da69eb5162d015dbb2f8b5cbdcca86cfa23a5f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f781b6b6_401486ba",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-23T14:22:37Z",
+      "side": 1,
+      "message": "if this was not the last object - the entire nvmem space would be reinitialized, if it is the last one - the only page we want to clear is the page where it spills into. Or do I misunderstand your comment?",
+      "parentUuid": "f5f5420f_d860ad75",
       "range": {
         "startLine": 2167,
         "startChar": 12,
