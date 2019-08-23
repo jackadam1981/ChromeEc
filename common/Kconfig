@@ -1,4 +1,26 @@
 
+menu "Charger setup"
+source "common/Kconfig.charger"
+endmenu
+
+menu "LED setup"
+source "common/Kconfig.led"
+endmenu
+
+menu "USB PD setup"
+source "common/Kconfig.usb-pd"
+endmenu
+
+menuconfig MCMDS
+	bool
+	prompt "MCMDS"
+
+comment "some commands"
+
+menu "Console commands"
+source "common/Kconfig.cmd"
+endmenu
+
 source "common/Kconfig.battery"
 
 config PWM
