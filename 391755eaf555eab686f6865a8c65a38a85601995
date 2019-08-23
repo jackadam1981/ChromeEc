@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed6bbff5_0cbbbda4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-08-23T02:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ce3ef0_b880c7d3",
+      "range": {
+        "startLine": 287,
+        "startChar": 24,
+        "endLine": 287,
+        "endChar": 26
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65ab9764_bf5538d4",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "391755eaf555eab686f6865a8c65a38a85601995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd81a374_c59f1fd8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-08-23T02:35:48Z",
+      "side": 1,
+      "message": "please use mt6370_get_adc to get vbus voltage.",
+      "parentUuid": "65ab9764_bf5538d4",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 812,
+        "endChar": 2
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9c01f2fb_f83ef51c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-08-23T02:35:48Z",
+      "side": 1,
+      "message": "please use mt6370_get_adc to get vbus voltage.",
+      "parentUuid": "98fcc628_5acdb9d4",
+      "range": {
+        "startLine": 1060,
+        "startChar": 25,
+        "endLine": 1060,
+        "endChar": 42
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e46b8a4_dd670e2b",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 6
@@ -115,6 +187,30 @@
       "revId": "391755eaf555eab686f6865a8c65a38a85601995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276dc5c9_4c838f62",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-08-23T02:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e46b8a4_dd670e2b",
+      "range": {
+        "startLine": 1183,
+        "startChar": 15,
+        "endLine": 1183,
+        "endChar": 17
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
