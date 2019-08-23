@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d07fcea_87cb17a1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "818980c8_47d4fdd3",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "866e3d4e_2b85893b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cff3f93e_068d184b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:19:25Z",
+      "side": 1,
+      "message": "This is a debug print, forgot to remove this.  Thanks!",
+      "parentUuid": "866e3d4e_2b85893b",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 27
+      },
+      "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614b2035_5a7e5d8a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c62e646_85402e98",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-23T06:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614b2035_5a7e5d8a",
+      "range": {
+        "startLine": 679,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 5
+      },
+      "revId": "dc523577bc019ff8a99c86b70e7344092591b830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
