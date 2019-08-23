@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8407c5d3_408ec433",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-23T05:27:18Z",
+      "side": 1,
+      "message": "object or page?",
+      "range": {
+        "startLine": 2166,
+        "startChar": 30,
+        "endLine": 2166,
+        "endChar": 36
+      },
+      "revId": "da69eb5162d015dbb2f8b5cbdcca86cfa23a5f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f5420f_d860ad75",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-23T05:27:18Z",
+      "side": 1,
+      "message": "can we just erase all pages from the point to the last regardless of how many more objects were there?",
+      "range": {
+        "startLine": 2167,
+        "startChar": 12,
+        "endLine": 2167,
+        "endChar": 25
+      },
+      "revId": "da69eb5162d015dbb2f8b5cbdcca86cfa23a5f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
