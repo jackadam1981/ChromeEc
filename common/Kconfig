@@ -1,4 +1,16 @@
 
+menu "Board setup"
+source "common/Kconfig.board"
+endmenu
+
+menu "Console config"
+source "common/Kconfig.console"
+endmenu
+
+menu "Keyboard config"
+source "common/Kconfig.keyboard"
+endmenu
+
 menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
@@ -7,8 +19,20 @@ menu "LED setup"
 source "common/Kconfig.led"
 endmenu
 
+menu "Flash setup"
+source "common/Kconfig.flash"
+endmenu
+
+menu "USB setup"
+source "common/Kconfig.usb"
+endmenu
+
 menu "USB PD setup"
 source "common/Kconfig.usb-pd"
+endmenu
+
+menu "Hostcmd setup"
+source "common/Kconfig.hostcmd"
 endmenu
 
 menuconfig MCMDS
@@ -25,23 +49,45 @@ source "common/Kconfig.battery"
 
 config PWM
 	bool "Support PWM control"
-	default n
-
-config PWM_KBLIGHT
-	bool "Support keyboard backlight control"
-	default n
-	select PWM
-	help
-	  You need to define board_kblight_init unless CONFIG_PWM_KBLIGHT is used.
-	  For example, lm3509 can be registered as a driver in board_kblight_init.
 
 config SOFTWARE_PANIC
 	bool "Software panic"
-	default n
+
 	help
 	  Store a panic log and halt the system for a software-related reasons, such as
 	  stack overflow or assertion failure.
 
 config SHA256_UNROLLED
 	bool "Unroll some loops in SHA256_transform for better performance"
-	default n
+
+menu "Common Code"
+
+config COMMON_PANIC_OUTPUT
+	bool "Provide common core code to output panic information without interrupts"
+	default y
+
+config COMMON_GPIO
+	bool "Provide the default GPIO abstraction layer"
+	default y
+	help
+	  You want this unless you are doing a really tiny firmware.
+
+config COMMON_GPIO_SHORTNAMES
+	bool "Use short GPIO names"
+	depends on COMMON_GPIO
+	help
+	  Provides smaller GPIO names to reduce flash size.  Instead of the 'name'
+	  field in GPIO macro it will concat 'port' and 'pin' to reduce flash size.
+
+config COMMON_RUNTIME
+	bool "COMMON_RUNTIME"
+	default y
+	help
+	  Provide common runtime layer code (tasks, hooks ...)
+	  You want this unless you are doing a really tiny firmware.
+
+config COMMON_TIMER
+	bool "Provide common core code to handle the operating system timers"
+	default y
+
+endmenu
