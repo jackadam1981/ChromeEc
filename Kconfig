@@ -4,13 +4,13 @@
 
 mainmenu "EC configuration"
 
-menu "General setup"
+# menu "General setup"
 
-config TEST_CONFIG_1
-       bool "test config 1"
-       default y
+# config TEST_CONFIG_1
+#        bool "test config 1"
+#        default y
 
-endmenu
+# endmenu
 
 choice
 	prompt "Board name"
@@ -22,4 +22,7 @@ endchoice
 source "board/*/Kconfig"
 source "chip/Kconfig"
 source "common/Kconfig"
+
+source "power/Kconfig"
+
 source "util/Kconfig"
