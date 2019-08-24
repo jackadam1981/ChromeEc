@@ -17,6 +17,7 @@ config CMD_ACCELSPOOF
 
 config CMD_ADC
 	bool "CMD_ADC"
+	depends on ADC
 	default y
 
 config CMD_ALS
@@ -290,6 +291,7 @@ config CMD_PPC_DUMP
 
 config CMD_PWR_AVG
 	bool "CMD_PWR_AVG"
+	depends on BATTERY
 	default y
 
 config CMD_RAND
@@ -408,14 +410,3 @@ config CMD_WAITMS
 	bool "CMD_WAITMS"
 	default y
 
-
-################################################################
-
-# /* Certain console cmds are irrelevant without parent modules. */
-# #ifndef CONFIG_BATTERY
-# #undef CONFIG_CMD_PWR_AVG
-# #endif
-
-# #ifndef CONFIG_ADC
-# #undef CONFIG_CMD_ADC
-# #endif
