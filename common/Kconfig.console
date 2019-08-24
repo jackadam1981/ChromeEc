@@ -1,0 +1,100 @@
+
+config CONSOLE__yn
+	bool "Console support"
+
+if CONSOLE__yn
+
+
+config CONSOLE_CHANNEL
+	bool "Output to different channels"
+	default y
+	help
+	  Make it possible for console to be output to different channels that can be
+	  turned on and off.
+
+	  This is useful as a developer convenience when the console is crowded with
+	  messages, to make it easier to use the interactive console.
+	  FAFT and servod also use this feature.
+
+	  Boards may #undef this to reduce image size.
+
+config CONSOLE_CMDHELP
+	bool "Provide additional help on console commands"
+	default y
+	help
+	  Provide additional help on console commands, such as the supported
+	  options/usage.
+
+	  Boards may #undef this to reduce image size.
+
+config CONSOLE_COMMAND_FLAGS
+       	bool "Add a .flags field to the console commands data structure"
+	help
+	  Add a .flags field to the console commands data structure, to distinguish
+	  some commands from others. The available flags bits are defined in
+	  include/console.h
+
+config RESTRICTED_CONSOLE_COMMANDS
+	bool "RESTRICTED_CONSOLE_COMMANDS"
+	depends on CONSOLE_COMMAND_FLAGS
+	help
+	  One use of the .flags field is to make some console commands restricted, so
+	  that they can be disabled or enabled at run time.
+
+config CONSOLE_ENABLE_READ_V1
+	bool "Enable EC_CMD_CONSOLE_READ V1"
+	default y
+	help
+	  Enable EC_CMD_CONSOLE_READ V1. One could disable this config to prevent
+	  kernel from creating the `console_log` debugfs entry.
+
+if !EXPERIMENTAL_CONSOLE
+
+config CONSOLE_HISTORY
+	int "Number of entries in console history buffer"
+	default 8
+	help
+	  Number of entries in console history buffer.
+
+	  Boards may #undef this to reduce memory usage.
+
+endif
+
+config CONSOLE_INPUT_LINE_SIZE
+	int "Max length of a single line of input"
+	default 80
+
+config CONSOLE_VERBOSE
+	bool "Enable verbose output to UART console and extra timestamp print precision"
+	default y
+
+config UART_RX_BUF_SIZE
+	int "UART_RX_BUF_SIZE"
+	default 128
+	help
+	  UART receive buffer size in bytes.  Must be a power of 2 for macros in
+	  common/uart_buffering.c to work properly.  Must be larger than
+	  CONFIG_CONSOLE_INPUT_LINE_SIZE to copy and paste scripts.
+
+config EXPERIMENTAL_CONSOLE
+	bool "Enable the experimental console"
+	select CRC8
+	help
+	  NOTE: If you enable this experimental console, you will need to run the
+	  EC-3PO interactive console in the util directory!  Otherwise, you won't be
+	  able to enter any commands.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+endif
