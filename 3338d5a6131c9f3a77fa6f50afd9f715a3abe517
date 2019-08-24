@@ -460,6 +460,30 @@
     },
     {
       "key": {
+        "uuid": "1f6205c6_93895f36",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-24T00:13:45Z",
+      "side": 1,
+      "message": "we *should* be doing 3A and then reducing the power (before applying VBUS to the second port), but I\u0027m not sure that\u0027s implemented.  Probably b/35577509\n\nThis is supposed to work in both PD and Type-C resistor land.  Our defence against devices that only speak resistors but don\u0027t respond to changes it to start with Rp1A5 at time of connection and upgrade to Rp3A0 some short time later",
+      "parentUuid": "d9601681_e33138a2",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 76
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f63f979c_1de8aeb9",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
