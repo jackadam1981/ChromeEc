@@ -437,6 +437,29 @@
     },
     {
       "key": {
+        "uuid": "d9601681_e33138a2",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-24T00:01:01Z",
+      "side": 1,
+      "message": "I thought we supply only 1.5A if the total budget is only 3.0A (because we don\u0027t want to reduce the power when another device is plugged in to the other port).",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 76
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f63f979c_1de8aeb9",
         "filename": "docs/usb_power.md",
         "patchSetId": 11
