@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bdc0d3e_e0cc62fe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "Any reason you skipped bit 18?",
+      "range": {
+        "startLine": 83,
+        "startChar": 52,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a4db90e_39a35428",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "This isn\u0027t needed right? Setting local_state temporarily doesn\u0027t seem to have much value.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 31
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e24bc7_463b5934",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "Similarly here for the data role, since we know we\u0027re a source, we should set our data role as DFP (and also update the protocol layer)?",
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a217476d_76c387c2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "Instead of simply updating the policy engine\u0027s power role, should we also set the protocol layer\u0027s role here as well. i.e. - tc_set_power_role(port, PD_ROLE_SOURCE)?",
+      "range": {
+        "startLine": 699,
+        "startChar": 23,
+        "endLine": 699,
+        "endChar": 37
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a93d54_ffb3b073",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "This should just be \u003c.",
+      "range": {
+        "startLine": 760,
+        "startChar": 42,
+        "endLine": 760,
+        "endChar": 44
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b9f044_35b57dcb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "why is this time here? In fact, why is this timeout here at all? 5V should already be present and pd_transition_voltage() is usually a no-op. I think this would only be applicable if a board is capable of sourcing \u003e5V.",
+      "range": {
+        "startLine": 1078,
+        "startChar": 37,
+        "endLine": 1078,
+        "endChar": 59
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9de357_f3fb438e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "Do we need to do this twice? After Accept is sent, can\u0027t we immediately send PS_RDY?",
+      "range": {
+        "startLine": 1107,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 3
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5629cbf7_e7153e21",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4016,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "If the message we received ended up being a control message, should we handle it some place?",
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a856b06e_8ff36c0e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "Same question here: is it still worth temporarily setting this variable if we\u0027re falling thru?",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 31
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2409237_928c0f00",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-24T00:58:16Z",
+      "side": 1,
+      "message": "What do you think about \u0027TC_FLAGS_PARTNER_PD_CAPABLE\u0027 ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "cd12bbe5065d8c2f9dc6993b68163f3016500a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
