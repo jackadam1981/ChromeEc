@@ -1,0 +1,127 @@
+
+config HOSTCMD_X86
+	bool "EC supports x86 host communication"
+	help
+	  EC supports x86 host communication with AP. This can either be through LPC
+	  or eSPI. The CONFIG_HOSTCMD_X86 will get automatically defined if either
+	  CONFIG_HOSTCMD_LPC or CONFIG_HOSTCMD_ESPI are defined. LPC and eSPI are
+	  mutually exclusive.
+
+config HOSTCMD_LPC
+	bool "Support host command interface over LPC bus"
+
+config HOSTCMD_ESPI
+	bool "Support host command interface over eSPI bus"
+
+config HOSTCMD_ESPI_VW_SLP_SIGNALS
+	bool "HOSTCMD_ESPI_VW_SLP_SIGNALS"
+	depends on HOSTCMD_ESPI
+	help
+	  SLP signals (SLP_S3 and SLP_S4) use virtual wires intead of physical pins
+	  with eSPI interface.
+
+config HOSTCMD_FLASHPD
+	bool "Flash commands over PD"
+	default y
+
+config HOSTCMD_LOCATE_CHIP
+       bool "Enable EC_CMD_LOCATE_CHIP"
+       default y
+
+config HOSTCMD_RWHASHPD
+	bool "Set entry in PD MCU's device rw_hash table"
+	default y
+
+config HOST_COMMAND_STATUS
+	bool "HOST_COMMAND_STATUS"
+	help
+	  Support the host asking the EC about the status of the most recent host
+	  command.
+
+	  When the AP is attached to the EC via a serialized bus such as I2C or SPI,
+	  it needs a way to minimize the length of time an EC command will tie up the
+	  bus (and the kernel driver on the AP).  If this config is defined, the EC
+	  may return an in-progress result code for slow commands such as flash
+	  erase/write instead of stalling until the command finishes processing, and
+	  the AP may then inquire the status of the current command and/or the result
+	  of the previous command.
+
+config HOST_EVENT64
+	bool "Config option to support 64-bit hostevents and wake-masks"
+
+config HOSTCMD_SECTION_SORTED
+	bool "HOSTCMD_SECTION_SORTED"
+	help
+	  The host commands are sorted in the .rodata.hcmds section so use the binary
+	  search algorithm to match a command to its handler
+
+config HOSTCMD_ALIGNED
+	bool "HOSTCMD_ALIGNED"
+	help
+	  Host command parameters and response are 32-bit aligned.  This generates
+	  much more efficient code on ARM.
+
+# should be selected by HAS_TASK_HOSTCMD
+
+config HOSTCMD_EVENTS
+	bool "HOSTCMD_EVENTS"
+
+config HOSTCMD_BATTERY_V2
+	bool "HOSTCMD_BATTERY_V2"
+	depends on BATTERY_V2
+	help
+	  Include host commands to fetch battery information from
+	  ec_response_battery_static/dynamic_info structures, only makes sense when
+	  CONFIG_BATTERY_V2 is enabled.
+
+config HOSTCMD_FLASH_SPI_INFO
+	bool "HOSTCMD_FLASH_SPI_INFO"
+	help
+	  Board supports host command to get EC SPI flash info.  This is typically
+	  only needed if the factory needs to determine which of several possible SPI
+	  flash chips is attached to the EC on a given board.
+
+config HOSTCMD_I2C_SLAVE_ADDR_FLAGS
+       bool "HOSTCMD_I2C_SLAVE_ADDR_FLAGS"
+       help
+         For ECs where the host command interface is I2C, slave
+	 address which the EC will respond to.
+
+config HOSTCMD_SPS
+	bool "Accept EC host commands over the SPI slave (SPS) interface"
+
+config HOSTCMD_PD
+	bool "PD MCU supports host commands"
+
+config HOSTCMD_PD_CHG_CTRL
+	bool "HOSTCMD_PD_CHG_CTRL"
+	help
+	  Use if PD MCU controls charging (selecting charging port and input
+	  current limit).
+
+config HOSTCMD_PD_PANIC
+	bool "Panic when status of PD MCU reflects that it has crashed"
+
+config HOSTCMD_RTC
+	bool "Board supports RTC host commands"
+
+config HOSTCMD_VBNV_CONTEXT
+	bool "For access to VBNV on-EC battery-backed storage"
+
+config HOSTCMD_SKUID
+	bool "EC controls the board's SKU ID and can report that to the AP"
+
+config HOSTCMD_AP_SET_SKUID
+	bool "Set SKU ID from AP"
+
+config HOSTCMD_AP_RESET
+	bool "Command to issue AP reset"
+
+config HOSTCMD_FLASHPD
+	bool "Flash commands over PD"
+
+config HOSTCMD_RWHASHPD
+	bool "Set entry in PD MCU's device rw_hash table"
+
+config SUPPRESSED_HOST_COMMANDS
+	bool "List of host commands whose debug output will be suppressed"
