@@ -1,24 +1,24 @@
 
 config BOARD_ATLAS
-#	prompt "Atlas"
-#	def_bool n
-#	bool
 	select ADC
+#	select ALS
+#	select ALS_OPT3001
+	select BATTERY_SMART
 	select BOARD_VERSION_CUSTOM
 	select BOARD_FORCE_RESET_PIN
+	select CHIP_PANIC_BACKUP
 	select DPTF
 	select FPU
 	select I2C
 	select I2C_MASTER
+	select KEYBOARD__yn
 	select LID_SWITCH
 	select LOW_POWER_IDLE
 	select LTO
-	select CHIP_PANIC_BACKUP
-	select SOFTWARE_PANIC
-	select PWM
-	select PWM_KBLIGHT
+#	select PWM
+#	select PWM_KBLIGHT
 	select SHA256_UNROLLED
-	select BATTERY_SMART
+	select SOFTWARE_PANIC
 
 
 
@@ -26,24 +26,8 @@ config BOARD_ATLAS
 
 # ================================================================
 
-config ADC
-	bool "Compile chip support for analog-to-digital converter"
-	default n
-
-config BOARD_VERSION_CUSTOM
-	bool "The board version function is defined in board code"
-	default n
-
-config BOARD_FORCE_RESET_PIN
-	bool "Force reset pin"
-	default n
-	help
-	  The board is unable to distinguish EC reset from power-on so it should treat
-	  all resets as triggered by RESET_PIN even if it is a POWER_ON reset.
-
 config DPTF
 	bool "Enable DPTF to manage thermals"
-	default n
 	help
 	  If defined, DPTF is enabled to manage thermals.
 
@@ -52,15 +36,12 @@ config DPTF
 
 config FPU
 	bool "Enable support for floating point unit"
-	default n
 
 config I2C
 	bool "Enable I2C support"
-	default n
 
 config I2C_MASTER
 	bool "EC uses an I2C master interface"
-	default n
 
 config LID_SWITCH
 	bool "Compile lid switch support"
@@ -74,7 +55,6 @@ menu LPI
 
 config LOW_POWER_IDLE
 	bool "low power idle"
-	default n
 	help
 	  Low power idle options. These are disabled by default and all boards that
 	  want to use low power idle must define it. When using the LFIOSC, the low
@@ -88,19 +68,16 @@ config LOW_POWER_IDLE
 
 config LOW_POWER_USE_LFIOSC
 	bool "Use LFIOSC"
-	default n
 
 config LOW_POWER_IDLE_LIMITED
 	bool "Allows us to enable/disable low power idle mode in runtime"
-	default n
 
 config LOW_POWER_S0
 	bool "Enable deep sleep during S0 (ignores SLEEP_MASK_AP_RUN)"
-	default n
 
 endmenu
 
 config LTO
 	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
-	default n
+
 
