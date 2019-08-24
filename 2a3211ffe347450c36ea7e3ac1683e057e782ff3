@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6f48af7_a499942c",
+        "filename": "common/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-24T01:14:24Z",
+      "side": 1,
+      "message": "maybe get_ap_reset_stats?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378559e6_781c52a6",
+        "filename": "include/chipset.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-24T01:14:24Z",
+      "side": 1,
+      "message": "This was a very nice comment, can it go back in ?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 3
+      },
+      "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
