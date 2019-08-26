@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c336158_7339abb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-08-26T21:12:44Z",
+      "side": 1,
+      "message": "I removed it to be under 50 chars",
+      "parentUuid": "1634b03d_1ca6fdcd",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "ea22b988a7f440083c1dbd5d168f94135c40031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83884fc7_90b4ed6c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ea22b988a7f440083c1dbd5d168f94135c40031f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66561fcb_1bc0a2ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-08-26T21:12:44Z",
+      "side": 1,
+      "message": "That was intentional to ensure click-ability of the link, but might not be necessary.",
+      "parentUuid": "83884fc7_90b4ed6c",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "ea22b988a7f440083c1dbd5d168f94135c40031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
