@@ -69,6 +69,30 @@
       "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abf5705_867760fc",
+        "filename": "include/chipset.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-26T16:46:24Z",
+      "side": 1,
+      "message": "Oops, my bad, I saw it in patchset 1 and I missed in patchset 2, I see it now.  Sorry!",
+      "parentUuid": "c2b58379_e27d542e",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 3
+      },
+      "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
