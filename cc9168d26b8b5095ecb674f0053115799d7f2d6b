@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "1e8cacba_73224557",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-26T23:41:36Z",
+      "side": 1,
+      "message": "I think this is a good idea. However, I think it should be intel_x86_rsmrst_signal_interrupt(), because this new function will only be tied to the rsmrst line while other power signals will still call power_signal_interrrupt().",
+      "parentUuid": "8fadd8d2_67593c7e",
+      "range": {
+        "startLine": 697,
+        "startChar": 5,
+        "endLine": 697,
+        "endChar": 27
+      },
+      "revId": "cc9168d26b8b5095ecb674f0053115799d7f2d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f1e4ce8_7c0c2d0e",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
