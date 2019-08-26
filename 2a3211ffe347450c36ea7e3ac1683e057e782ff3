@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "26014a68_4ed306e7",
+        "filename": "common/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-26T17:25:14Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "c6f48af7_a499942c",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f518bb33_3c03ea3d",
+        "filename": "common/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-26T17:25:14Z",
+      "side": 1,
+      "message": "Also, add NULL checks?",
+      "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "378559e6_781c52a6",
         "filename": "include/chipset.h",
         "patchSetId": 2
