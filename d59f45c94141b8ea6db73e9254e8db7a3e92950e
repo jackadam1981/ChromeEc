@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8475858_f0c54aa1",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-26T22:47:33Z",
+      "side": 1,
+      "message": "typo: least",
+      "range": {
+        "startLine": 59,
+        "startChar": 62,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "d59f45c94141b8ea6db73e9254e8db7a3e92950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105ce7d3_393ec959",
+        "filename": "include/util.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-26T22:47:33Z",
+      "side": 1,
+      "message": "Not necessary here since I\u0027ve reviewed it, but for future reference you could split the implementation of bytes_are_trivial (and the associated tests) into a separate commit since it can stand alone. Mainly just makes the review a little bit easier to read since the number of changes is smaller.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "d59f45c94141b8ea6db73e9254e8db7a3e92950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
