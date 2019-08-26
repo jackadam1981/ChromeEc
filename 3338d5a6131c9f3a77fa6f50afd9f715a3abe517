@@ -532,6 +532,30 @@
     },
     {
       "key": {
+        "uuid": "508037f8_20580e55",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-26T23:39:21Z",
+      "side": 1,
+      "message": "I like keeping the defensive strategy of advertising CC resistors as 1.5A until we negotiate, then bumping them up to 3A CC resistors after some period of time or negotiating to 3A via PD.\n\nMarking as resolved, please re-open as needed though.",
+      "parentUuid": "926dbadc_1ecfe4ce",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 76
+      },
+      "revId": "3338d5a6131c9f3a77fa6f50afd9f715a3abe517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f63f979c_1de8aeb9",
         "filename": "docs/usb_power.md",
         "patchSetId": 11

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5b6c71e_e8ca5126",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-26T23:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e2549c_84b30065",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "781d31a05149909a6df8dc63d3e4bdaa3f898059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7607cd2c_08a6548b",
         "filename": "docs/usb_power.md",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "781d31a05149909a6df8dc63d3e4bdaa3f898059",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae39ea5_aa224fd4",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-26T23:39:21Z",
+      "side": 1,
+      "message": "We will offer 5V/3A as PDOs to all ports, and then if no port takes 3A, then we change the CC resistors on the first non-PD device",
+      "parentUuid": "7607cd2c_08a6548b",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "781d31a05149909a6df8dc63d3e4bdaa3f898059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
