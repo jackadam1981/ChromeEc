@@ -169,6 +169,30 @@
       "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2731c6c_2d32923a",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-26T11:07:42Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "50cd5cf7_8678519e",
+      "range": {
+        "startLine": 137,
+        "startChar": 34,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "b3e2ffd8f502e937aca7ab21da3d08501a625560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
