@@ -232,8 +232,9 @@ static void board_init(void)
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
 	}
 
-	/* Set SPI1 PB13/14/15 pins to high speed */
-	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000000;
+	/* Set SPI1 PA15,PB3/4/5/13/14/15 pins to high speed */
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000fc0;
 
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
