@@ -45,6 +45,30 @@
       "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b58379_e27d542e",
+        "filename": "include/chipset.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-26T16:38:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the request.\n\nI added this comment in this CL.",
+      "parentUuid": "378559e6_781c52a6",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 3
+      },
+      "revId": "2a3211ffe347450c36ea7e3ac1683e057e782ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
