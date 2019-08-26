@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3a6a7bd_43014381",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-26T12:32:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "007cc67b238360e9afd2feaf72ed51f5ca7520af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71b2397_3c171eee",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-26T12:32:35Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "007cc67b238360e9afd2feaf72ed51f5ca7520af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17529a8_5a0baa94",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-26T12:32:35Z",
+      "side": 1,
+      "message": "Should all be \"\", and you need to remove the ones that you don\u0027t really need.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "007cc67b238360e9afd2feaf72ed51f5ca7520af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95309fc3_474fb95f",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-26T12:32:35Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "007cc67b238360e9afd2feaf72ed51f5ca7520af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45eadfe_a99756f6",
+        "filename": "board/kukui_scp/mdp_ipi_message.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-08-26T12:32:35Z",
+      "side": 1,
+      "message": "No, please use standard Chromium OS copyright.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "007cc67b238360e9afd2feaf72ed51f5ca7520af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
