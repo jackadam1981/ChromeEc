@@ -142,6 +142,30 @@
       "revId": "27d1395ae9a01b97e9f25765d6579c423e7284bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccebb20c_3608999e",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-27T20:03:35Z",
+      "side": 1,
+      "message": "I would like to see all entry set_thermal_control_enabled(fan, 1) consolidated to line 572.\n\nI remember we added other entry points (CHIPSET_RESET and CHIPSET_STARTUP) to handle the case (\u003dwarm reset) where CHIPSET_RESUME is somehow skipped on Fizz. \n\nCan you tell whether this is a hardware (or BIOS) bug or not? If so, we can get rid of other calls.",
+      "parentUuid": "346ce918_af5295e3",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 67
+      },
+      "revId": "27d1395ae9a01b97e9f25765d6579c423e7284bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
