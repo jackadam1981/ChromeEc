@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ae22090a_4c317e77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-27T16:55:36Z",
+      "side": 1,
+      "message": "If you want to avoid confusion, you probably want to say \u0027deeply\u0027 or \u0027when soc is below BATTERY_LEVEL_SHUTDOWN\u0027.",
+      "parentUuid": "a4c1ce1a_70296e92",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "cb73a1110ee229650ea03b12d97f8cf93f67e578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c887dea_74234cc0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
