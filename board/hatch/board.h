@@ -25,6 +25,9 @@
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 
+/* Fan control by EC in absence of DPTF */
+#define CONFIG_DPTF_FAIL_SAFE_OFFSET	0
+
 /* Sensors */
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCEL_INTERRUPTS
