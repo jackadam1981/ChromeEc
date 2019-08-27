@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "656d8034_ede30eed",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-27T18:42:53Z",
+      "side": 1,
+      "message": "\u003e err this needs to move one line below. Or something, but basically this is broken if !defined(CONFIG_VBOOT_EFS) \u0026\u0026 (defined(CONFIG_RWSIG) \u0026\u0026 !defined(HAS_TASK_RWSIG))\n\nOops, you\u0027re right.\n\n\u003e Does this even build (make buildall -j)? I\u0027d expect dingdong to fail badly.\n\nI didn\u0027t expect buildall to work yet (besides select boards).\n\nWith my new changes both fizz and dingdong compile. I could test it on the real boards once it\u0027s worthwhile.\n\nIn theory this CL is not finished until we move all the non-i2c-controller instances of \"git grep HOOK_PRIO_INIT_I2C\". But perhaps that stuff will be in a parent CL to keep it simpler. But I would like to confirm this is an ok direction before starting such a refactoring effort.",
+      "parentUuid": "3bc044f3_684b43f5",
+      "revId": "21b27246b1cacf187e0bf068378710d6d1ea16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71a578b8_3509f408",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 2
