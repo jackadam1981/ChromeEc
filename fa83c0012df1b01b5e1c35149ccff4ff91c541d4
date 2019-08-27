@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7bea7674_a37f305f",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a relationship between the delay and events other than connection\n\npower distribution may be re-evaluated after any of these events, but that\u0027s somewhat unrelated to this paragraph.",
+      "range": {
+        "startLine": 149,
+        "startChar": 51,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c180f52d_fbbd2288",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "200ms may be sufficient too, or even less",
+      "range": {
+        "startLine": 151,
+        "startChar": 20,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "511260a0_f93dce5a",
         "filename": "docs/usb_power.md",
         "patchSetId": 14
@@ -18,6 +64,145 @@
         "startChar": 28,
         "endLine": 154,
         "endChar": 37
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726858d8_37009501",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "We don\u0027t.  But if it did react to it, it\u0027ll hopefully react when we later reduce the power advertisement.  If it didn\u0027t react to it, then it\u0027s also harmless to later reduce the power advertisement.",
+      "parentUuid": "511260a0_f93dce5a",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13cf08bc_9f2e4f69",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "keyboard",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 16
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d2bfc8_468c59c3",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this delay is needed",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 33
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f00f920_41474cfa",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "whyyy",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 33
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b525a9_3ffd2b2d",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "noooo",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 33
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22cb53ac_aa7847e0",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-27T23:18:22Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 220,
+        "startChar": 35,
+        "endLine": 220,
+        "endChar": 39
       },
       "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
