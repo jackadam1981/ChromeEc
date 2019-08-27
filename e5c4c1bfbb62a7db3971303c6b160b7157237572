@@ -22,6 +22,30 @@
       "revId": "e5c4c1bfbb62a7db3971303c6b160b7157237572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18abdfdc_6921b489",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-27T03:07:37Z",
+      "side": 1,
+      "message": "See\n bool board_has_kb_backlight() \nbelow.",
+      "parentUuid": "5fa156ef_776b8f67",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "e5c4c1bfbb62a7db3971303c6b160b7157237572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
