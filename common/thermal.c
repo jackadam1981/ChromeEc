@@ -10,9 +10,11 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "dptf.h"
 #include "fan.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "stdbool.h"
 #include "temp_sensor.h"
 #include "thermal.h"
 #include "throttle_ap.h"
@@ -46,6 +48,29 @@ int thermal_fan_percent(int low, int high, int cur)
  */
 BUILD_ASSERT(EC_TEMP_THRESH_COUNT == 3);
 
+#ifdef CONFIG_DPTF_FAIL_SAFE_OFFSET
+static bool is_dptf_still_active(void)
+{
+	int i, t;
+	uint8_t *mptr = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
+
+	for (i = 0; i < TEMP_SENSOR_COUNT; i++, mptr++) {
+		/* current temp */
+		t = *mptr + EC_TEMP_SENSOR_OFFSET + CONFIG_DPTF_FAIL_SAFE_OFFSET;
+
+		if (thermal_params[i].temp_fan_max &&
+			(t > thermal_params[i].temp_fan_max)) {
+			/*
+			 * if temperature is higher than temp_fan_max,
+			 * assume DPTF is not active.
+			 */
+			return false;
+		}
+	}
+	return true;
+}
+#endif
+
 /* Keep track of which thresholds have triggered */
 static cond_t cond_hot[EC_TEMP_THRESH_COUNT];
 
@@ -57,7 +82,6 @@ static void thermal_control(void)
 	int num_valid_limits[EC_TEMP_THRESH_COUNT];
 	int num_sensors_read;
 	int fmax;
-	int temp_fan_configured;
 
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));
@@ -65,7 +89,17 @@ static void thermal_control(void)
 	memset(num_valid_limits, 0, sizeof(num_valid_limits));
 	num_sensors_read = 0;
 	fmax = 0;
-	temp_fan_configured = 0;
+
+#ifdef CONFIG_DPTF_FAIL_SAFE_OFFSET
+	/* check if still in duty mode (by DPTF) and DPTF is active (low temp) */
+	if (dptf_get_fan_duty_target() != -1) { /* if duty mode */
+		if (!is_dptf_still_active())     /* DPTF is not active */
+			/* Let EC to control the fan. */
+			dptf_set_fan_duty_target(5000); /* set flag */
+		else
+			return;
+	}
+#endif
 
 	/* go through all the sensors */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
@@ -102,8 +136,6 @@ static void thermal_control(void)
 						t);
 			if (f > fmax)
 				fmax = f;
-
-			temp_fan_configured = 1;
 		}
 	}
 
@@ -172,17 +204,15 @@ static void thermal_control(void)
 		throttle_ap(THROTTLE_OFF, THROTTLE_SOFT, THROTTLE_SRC_THERMAL);
 	}
 
-	if (temp_fan_configured) {
 #ifdef CONFIG_FANS
 	/* TODO(crosbug.com/p/23797): For now, we just treat all fans the
 	 * same. It would be better if we could assign different thermal
 	 * profiles to each fan - in case one fan cools the CPU while another
 	 * cools the radios or battery.
 	 */
-		for (i = 0; i < fan_get_count(); i++)
-			fan_set_percent_needed(i, fmax);
+	for (i = 0; i < CONFIG_FANS; i++)
+		fan_set_percent_needed(i, fmax);
 #endif
-	}
 }
 
 /* Wait until after the sensors have been read */
