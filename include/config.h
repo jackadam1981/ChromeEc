@@ -1606,6 +1606,13 @@
  */
 #undef CONFIG_FAN_UPDATE_PERIOD
 
+/*
+ * This option enables EC to take over the fan control when the temperature
+ * reaches EC_TEMP_THRESH_WARN or HIGH level. This is useful in case DPTF
+ * daemon on the host should hang or stop for some reason,
+ */
+#undef CONFIG_DPTF_FAIL_SAFE
+
 /*****************************************************************************/
 /* Flash configuration */
 
