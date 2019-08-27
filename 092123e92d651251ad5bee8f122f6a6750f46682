@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2da1b8de_b225e369",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2019-08-27T20:52:00Z",
+      "side": 1,
+      "message": "Refer to the Type-C resistor mechanism as USB Type-C Specification, Section 4.5.2.3 Sink Power Sub-State.",
+      "range": {
+        "startLine": 131,
+        "startChar": 29,
+        "endLine": 131,
+        "endChar": 42
+      },
+      "revId": "092123e92d651251ad5bee8f122f6a6750f46682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd5d2fc_db8e06ce",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2019-08-27T20:52:00Z",
+      "side": 1,
+      "message": "Make sure to add a link to the USB Type-C Specification too.\nhttps://www.usb.org/document-library/usb-type-cr-cable-and-connector-specification-revision-14-march-29-2019",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 79
+      },
+      "revId": "092123e92d651251ad5bee8f122f6a6750f46682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
