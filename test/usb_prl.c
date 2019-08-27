@@ -61,6 +61,7 @@ enum usb_tch_state {
 	TCH_SENDING_CHUNKED_MESSAGE,
 	TCH_WAIT_CHUNK_REQUEST,
 	TCH_MESSAGE_RECEIVED,
+	TCH_MESSAGE_SENT,
 };
 
 /* Defined in implementation */

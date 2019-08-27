@@ -89,6 +89,7 @@ enum usb_tch_state {
 	TCH_SENDING_CHUNKED_MESSAGE,
 	TCH_WAIT_CHUNK_REQUEST,
 	TCH_MESSAGE_RECEIVED,
+	TCH_MESSAGE_SENT,
 };
 
 /* Forward declare full list of states. Index by above enums. */
@@ -628,17 +629,15 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 			/* Increment message id counter */
 			increment_msgid_counter(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
-			return;
+		} else {
+			/*
+			 * NOTE: PRL_TX_Construct_Message State embedded
+			 * here.
+			 */
+			/* Try to resend the message. */
+			prl_tx_construct_message(port);
 		}
-
-		/* Try to resend the message. */
-		/* NOTE: PRL_TX_Construct_Message State embedded here. */
-		prl_tx_construct_message(port);
-		return;
-	}
-
-	if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
-
+	} else if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
 		/* NOTE: PRL_TX_Message_Sent State embedded here. */
 
 		/* Increment messageId counter */
@@ -646,7 +645,6 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 		/* Inform Policy Engine Message was sent */
 		pdmsg[port].status_flags |= PRL_FLAGS_TX_COMPLETE;
 		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
-		return;
 	}
 }
 
@@ -837,18 +835,17 @@ static void copy_chunk_to_ext(int port)
 /*
  * Chunked Rx State Machine
  */
-static inline void rch_clear_abort_set_chunking(int port)
+
+/*
+ * RchWaitForMessageFromProtocolLayer
+ */
+static void rch_wait_for_message_from_protocol_layer_entry(const int port)
 {
 	/* Clear Abort flag */
 	pdmsg[port].status_flags &= ~PRL_FLAGS_ABORT;
 
 	/* All Messages are chunked */
 	rch[port].flags = PRL_FLAGS_CHUNKING;
-}
-
-static void rch_wait_for_message_from_protocol_layer_entry(const int port)
-{
-	rch_clear_abort_set_chunking(port);
 }
 
 static void rch_wait_for_message_from_protocol_layer_run(const int port)
@@ -1123,18 +1120,27 @@ static void rch_report_error_run(const int port)
 /*
  * Chunked Tx State Machine
  */
-static inline void tch_clear_abort_set_chunking(int port)
+
+/*
+ * TchReportError
+ */
+static inline void tch_report_error(const int port, enum pe_error error)
+{
+	/* Report Error To Policy Engine */
+	pe_report_error(port, error);
+	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+}
+
+/*
+ * TchWaitForMessageRequestFromPe
+ */
+static void tch_wait_for_message_request_from_pe_entry(const int port)
 {
 	/* Clear Abort flag */
 	pdmsg[port].status_flags &= ~PRL_FLAGS_ABORT;
 
 	/* All Messages are chunked */
 	tch[port].flags = PRL_FLAGS_CHUNKING;
-}
-
-static void tch_wait_for_message_request_from_pe_entry(const int port)
-{
-	tch_clear_abort_set_chunking(port);
 }
 
 static void tch_wait_for_message_request_from_pe_run(const int port)
@@ -1145,7 +1151,6 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 	if (tch[port].flags & PRL_FLAGS_MSG_RECEIVED) {
 		tch[port].flags &= ~PRL_FLAGS_MSG_RECEIVED;
 		set_state_tch(port, TCH_MESSAGE_RECEIVED);
-		return;
 	} else if (tch[port].flags & PRL_FLAGS_MSG_XMIT) {
 		tch[port].flags &= ~PRL_FLAGS_MSG_XMIT;
 		/*
@@ -1156,15 +1161,17 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 		 */
 		if (rch_get_state(port) !=
 				RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER) {
-			/* Report Error To Policy Engine */
-			pe_report_error(port, ERR_TCH_XMIT);
-			tch_clear_abort_set_chunking(port);
+			tch_report_error(port, ERR_TCH_XMIT);
 		} else {
 			/*
 			 * Extended Message Request & Chunking
 			 */
 			if ((pdmsg[port].rev == PD_REV30) && pdmsg[port].ext &&
 			     (tch[port].flags & PRL_FLAGS_CHUNKING)) {
+				/*
+				 * NOTE: TCH_Prepare_To_Send_Chunked_Message
+				 * embedded here.
+				 */
 				pdmsg[port].send_offset = 0;
 				pdmsg[port].chunk_number_to_send = 0;
 				set_state_tch(port,
@@ -1176,15 +1183,14 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 			{
 				/* Make sure buffer doesn't overflow */
 				if (emsg[port].len > BUFFER_SIZE) {
-					/* Report Error To Policy Engine */
-					pe_report_error(port, ERR_TCH_XMIT);
-					tch_clear_abort_set_chunking(port);
+					tch_report_error(port, ERR_TCH_XMIT);
 					return;
 				}
 
+				/* NOTE: TCH_Pass_Down_Message embedded here */
 				/* Copy message to chunked buffer */
 				memset((uint8_t *)pdmsg[port].chk_buf,
-								0, BUFFER_SIZE);
+					0, BUFFER_SIZE);
 				memcpy((uint8_t *)pdmsg[port].chk_buf,
 					(uint8_t *)emsg[port].buf,
 					emsg[port].len);
@@ -1199,11 +1205,10 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 						(emsg[port].len + 3) >> 2;
 				/* Pass Message to Protocol Layer */
 				prl_tx[port].flags |= PRL_FLAGS_MSG_XMIT;
+
 				set_state_tch(port,
 					TCH_WAIT_FOR_TRANSMISSION_COMPLETE);
 			}
-
-			return;
 		}
 	}
 }
@@ -1219,27 +1224,20 @@ static void tch_wait_for_transmission_complete_run(const int port)
 	if (tch[port].flags & PRL_FLAGS_MSG_RECEIVED) {
 		tch[port].flags &= ~PRL_FLAGS_MSG_RECEIVED;
 		set_state_tch(port, TCH_MESSAGE_RECEIVED);
-		return;
 	}
-
 	/*
 	 * Inform Policy Engine that Message was sent.
 	 */
-	if (pdmsg[port].status_flags & PRL_FLAGS_TX_COMPLETE) {
+	else if (pdmsg[port].status_flags & PRL_FLAGS_TX_COMPLETE) {
 		pdmsg[port].status_flags &= ~PRL_FLAGS_TX_COMPLETE;
-		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
-
-		/* Tell PE message was sent */
-		pe_message_sent(port);
+		set_state_tch(port, TCH_MESSAGE_SENT);
 	}
 	/*
 	 * Inform Policy Engine of Tx Error
 	 */
 	else if (pdmsg[port].status_flags & PRL_FLAGS_TX_ERROR) {
 		pdmsg[port].status_flags &= ~PRL_FLAGS_TX_ERROR;
-		/* Tell PE an error occurred */
-		pe_report_error(port, ERR_TCH_XMIT);
-		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+		tch_report_error(port, ERR_TCH_XMIT);
 	}
 }
 
@@ -1313,26 +1311,18 @@ static void tch_sending_chunked_message_run(const int port)
 	if (tch[port].flags & PRL_FLAGS_MSG_RECEIVED) {
 		tch[port].flags &= ~PRL_FLAGS_MSG_RECEIVED;
 		set_state_tch(port, TCH_MESSAGE_RECEIVED);
-		return;
 	}
-
 	/*
 	 * Transmission Error
 	 */
-	if (pdmsg[port].status_flags & PRL_FLAGS_TX_ERROR) {
-		pe_report_error(port, ERR_TCH_XMIT);
-		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
-	}
+	else if (pdmsg[port].status_flags & PRL_FLAGS_TX_ERROR)
+		tch_report_error(port, ERR_TCH_XMIT);
 	/*
 	 * Message Transmitted from Protocol Layer &
 	 * Last Chunk
 	 */
-	else if (emsg[port].len == pdmsg[port].send_offset) {
-		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
-
-		/* Tell PE message was sent */
-		pe_message_sent(port);
-	}
+	else if (emsg[port].len == pdmsg[port].send_offset)
+		set_state_tch(port, TCH_MESSAGE_SENT);
 	/*
 	 * Message Transmitted from Protocol Layer &
 	 * Not Last Chunk
@@ -1377,9 +1367,8 @@ static void tch_wait_chunk_request_run(const int port)
 				 * Chunk Number != Chunk Number to Send
 				 */
 				else {
-					pe_report_error(port, ERR_TCH_CHUNKED);
-					set_state_tch(port,
-					  TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+					tch_report_error(port,
+							 ERR_TCH_CHUNKED);
 				}
 				return;
 			}
@@ -1395,10 +1384,7 @@ static void tch_wait_chunk_request_run(const int port)
 	 */
 	else if (get_time().val >=
 			tch[port].chunk_sender_request_timer) {
-		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
-
-		/* Tell PE message was sent */
-		pe_message_sent(port);
+		set_state_tch(port, TCH_MESSAGE_SENT);
 	}
 }
 
@@ -1416,6 +1402,17 @@ static void tch_message_received_entry(const int port)
 static void tch_message_received_run(const int port)
 {
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+}
+
+/*
+ * TchMessageSent
+ */
+static void tch_message_sent_entry(const int port)
+{
+	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+
+	/* Tell PE message was sent */
+	pe_message_sent(port);
 }
 
 /*
@@ -1624,6 +1621,9 @@ static const struct usb_state tch_states[] = {
 	[TCH_MESSAGE_RECEIVED] = {
 		.entry  = tch_message_received_entry,
 		.run    = tch_message_received_run,
+	},
+	[TCH_MESSAGE_SENT] = {
+		.entry  = tch_message_sent_entry,
 	},
 };
 
