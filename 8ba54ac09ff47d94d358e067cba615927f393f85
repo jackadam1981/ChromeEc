@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452fa3b9_36d39423",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-27T18:55:28Z",
+      "side": 1,
+      "message": "nit: space before \u0027in\u0027",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c596e7_a0c053e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-27T18:55:28Z",
+      "side": 1,
+      "message": "Did you test this functionality too?",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79122f0f_1d42d4bd",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-27T18:55:28Z",
+      "side": 1,
+      "message": "If you #include \"stdbool.h\", you can use bool, true and false instead.",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933acf44_c173043c",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-27T18:55:28Z",
+      "side": 1,
+      "message": "This function has a name that implies it will not have side effects (i.e., a \"getter\"), but this is a side effect; could you please move this functionality down below to where is_dptf_still_active() is called?",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
