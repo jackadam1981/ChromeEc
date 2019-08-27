@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5479008_fc2293b6",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1238380
+      },
+      "writtenOn": "2019-08-27T01:35:40Z",
+      "side": 1,
+      "message": "it is better uint8_t as your function define.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 13
+      },
+      "revId": "737b99d7cc72a89ff931d976c70977294f027831",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
