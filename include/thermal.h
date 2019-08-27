@@ -19,4 +19,6 @@ extern struct ec_thermal_config thermal_params[];
 /* Helper function to compute percent cooling */
 int thermal_fan_percent(int low, int high, int cur);
 
+void set_thermal_control_enabled(int fan, int enable);
+
 #endif  /* __CROS_EC_THERMAL_H */

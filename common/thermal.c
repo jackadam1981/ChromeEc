@@ -10,9 +10,11 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "dptf.h"
 #include "fan.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "stdbool.h"
 #include "temp_sensor.h"
 #include "thermal.h"
 #include "throttle_ap.h"
@@ -45,6 +47,30 @@ int thermal_fan_percent(int low, int high, int cur)
  * This is just a sanity check to be sure we catch any changes in thermal.h
  */
 BUILD_ASSERT(EC_TEMP_THRESH_COUNT == 3);
+
+static bool get_dptf_alive_status(void)
+{
+#ifdef CONFIG_DPTF_FAIL_SAFE_OFFSET
+	int i, cur_temp;
+
+	for (i = 0; i < TEMP_SENSOR_COUNT; i++) {
+		if((temp_sensor_read(i, &cur_temp)) == EC_SUCCESS)
+		{
+			/* Add the dptf safe offset value */
+			cur_temp += CONFIG_DPTF_FAIL_SAFE_OFFSET;
+
+			/* if temperature is higher than temp_fan_max,
+			 * assume DPTF is not active.
+			 */
+			if((thermal_params[i].temp_fan_max) &&
+				(cur_temp > thermal_params[i].temp_fan_max))
+				return false;
+		}
+	}
+#else
+	return true;
+#endif
+}
 
 /* Keep track of which thresholds have triggered */
 static cond_t cond_hot[EC_TEMP_THRESH_COUNT];
@@ -171,6 +197,18 @@ static void thermal_control(void)
 		CPRINTS("thermal no longer warn");
 		throttle_ap(THROTTLE_OFF, THROTTLE_SOFT, THROTTLE_SRC_THERMAL);
 	}
+
+	if (!get_dptf_alive_status())
+		/*
+		 * This will take over the fan from DPTF until it calls
+		 * dptf_set_fan_duty_target (via ACPI).
+		 * Since get_dptf_alive_status determines the DPTF status just
+		 * by the temperature, EC and DPTF may rally over the fan. It
+		 * would be noticed by the user as the fan speed changes back
+		 * and force repeatedly.
+		 */
+		for (i = 0; i < fan_get_count(); i++)
+			set_thermal_control_enabled(i, 1);
 
 	if (temp_fan_configured) {
 #ifdef CONFIG_FANS
