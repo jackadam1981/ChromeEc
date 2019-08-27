@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42f6b45e_749ee907",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "\"Shouldn\u0027t use %s in IRQ\", __func__",
+      "range": {
+        "startLine": 274,
+        "startChar": 10,
+        "endLine": 274,
+        "endChar": 46
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24a7ebe_81766024",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "\"Shouldn\u0027t use %s in IRQ\", __func__",
+      "range": {
+        "startLine": 1027,
+        "startChar": 10,
+        "endLine": 1027,
+        "endChar": 46
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f15be1b_014975c4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "Could we mask it out by rt946x_irqmask array? (rather than another array do similar things)\n\nalso below",
+      "range": {
+        "startLine": 1168,
+        "startChar": 21,
+        "endLine": 1168,
+        "endChar": 39
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b86e505_c8395f39",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "Wait... you want to allocate an array with 128 elements (and only one of them is used)?  We don\u0027t have that much free space though...",
+      "range": {
+        "startLine": 1179,
+        "startChar": 46,
+        "endLine": 1179,
+        "endChar": 60
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c474729_988c3ac7",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "Since these two IRQ handlers do nothing, why not just drop it?",
+      "range": {
+        "startLine": 1181,
+        "startChar": 0,
+        "endLine": 1183,
+        "endChar": 0
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "525d5447_2693d6f1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "You read this in this function (and clear the register).\nWouldn\u0027t this break line:1259 rt946x_read8(RT946X_REG_DPDMIRQ, \u0026reg);?",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 59
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e3314d_6304d335",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-27T09:37:44Z",
+      "side": 1,
+      "message": "RT946X_IRQ_COUNT",
+      "range": {
+        "startLine": 1229,
+        "startChar": 17,
+        "endLine": 1229,
+        "endChar": 19
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
