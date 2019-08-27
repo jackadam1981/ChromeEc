@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a32579f_bbdc5095",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-08-27T15:27:02Z",
+      "side": 1,
+      "message": "non-power \"LED\"?",
+      "range": {
+        "startLine": 138,
+        "startChar": 51,
+        "endLine": 138,
+        "endChar": 60
+      },
+      "revId": "6cd3681c3b9cf5d1d8cb0e1a5de3418b09ad433f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b589fe_cd83ed87",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-08-27T15:27:02Z",
+      "side": 1,
+      "message": "How about PWR_STATE_CHARGE_NEAR_FULL? In this case, charger is attached.",
+      "range": {
+        "startLine": 145,
+        "startChar": 25,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "6cd3681c3b9cf5d1d8cb0e1a5de3418b09ad433f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
