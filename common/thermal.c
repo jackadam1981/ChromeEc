@@ -159,6 +159,10 @@ static void thermal_control(void)
 	if (cond_went_true(&cond_hot[EC_TEMP_THRESH_HIGH])) {
 		CPRINTS("thermal HIGH");
 		throttle_ap(THROTTLE_ON, THROTTLE_HARD, THROTTLE_SRC_THERMAL);
+		if (IS_ENABLED(CONFIG_DPTF_FAIL_SAFE)) {
+			for (i = 0; i < fan_get_count(); i++)
+				set_thermal_control_enabled(i, 1);
+		}
 	} else if (cond_went_false(&cond_hot[EC_TEMP_THRESH_HIGH])) {
 		CPRINTS("thermal no longer high");
 		throttle_ap(THROTTLE_OFF, THROTTLE_HARD, THROTTLE_SRC_THERMAL);
@@ -167,6 +171,10 @@ static void thermal_control(void)
 	if (cond_went_true(&cond_hot[EC_TEMP_THRESH_WARN])) {
 		CPRINTS("thermal WARN");
 		throttle_ap(THROTTLE_ON, THROTTLE_SOFT, THROTTLE_SRC_THERMAL);
+		if (IS_ENABLED(CONFIG_DPTF_FAIL_SAFE)) {
+			for (i = 0; i < fan_get_count(); i++)
+				set_thermal_control_enabled(i, 1);
+		}
 	} else if (cond_went_false(&cond_hot[EC_TEMP_THRESH_WARN])) {
 		CPRINTS("thermal no longer warn");
 		throttle_ap(THROTTLE_OFF, THROTTLE_SOFT, THROTTLE_SRC_THERMAL);
