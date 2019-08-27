@@ -25,6 +25,14 @@ static int thermal_control_enabled[CONFIG_FANS];
 static int fan_update_counter[CONFIG_FANS];
 #endif
 
+static void set_enabled(int fan, int enable)
+{
+	fan_set_enabled(fans[fan].conf->ch, enable);
+
+	if (fans[fan].conf->enable_gpio >= 0)
+		gpio_set_level(fans[fan].conf->enable_gpio, enable);
+}
+
 /*
  * Number of fans.
  *
@@ -93,15 +101,9 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 	    new_rpm < fans[fan].rpm->rpm_start)
 		new_rpm = fans[fan].rpm->rpm_start;
 
-	fan_set_rpm_target(FAN_CH(fan), new_rpm);
-}
-
-static void set_enabled(int fan, int enable)
-{
-	fan_set_enabled(FAN_CH(fan), enable);
-
-	if (fans[fan].conf->enable_gpio >= 0)
-		gpio_set_level(fans[fan].conf->enable_gpio, enable);
+	/* enable the fan when non-zero duty */
+	set_enabled(fan, (pct > 0) ? 1 : 0);
+	fan_set_rpm_target(fans[fan].conf->ch, new_rpm);
 }
 
 test_export_static void set_thermal_control_enabled(int fan, int enable)
