@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfc50a49_50041349",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-27T20:56:50Z",
+      "side": 1,
+      "message": "could this be refactored into two functions calling the same core just calling different tx_char()? Or maybe add an extra parameter to tx_char() to indicate that it should operate in raw mode?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 0
+      },
+      "revId": "2e258f283b2012b97b5cfaa16319944cab5366d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
