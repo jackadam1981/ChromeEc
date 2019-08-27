@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "948fbd4b_a7f48ae8",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-27T21:46:54Z",
+      "side": 1,
+      "message": "You should be checking this every time you set sda to 1 (or maybe on the clock pulse when the slave is supposed to be reading the clock).\n\nExample:\nYou output sda \u003d 1\nYou do the clock edge to signal the slave to sample the line\nYou now also read sda, as if the slave is reading it\nif you read low it means something else is holding it and it hasn\u0027t succeeded.\n\nAlso something to keep in mind: Arbitration lost usually means there\u0027s another master on the bus. If you\u0027re sure there\u0027s only slaves on the bus then it means something\u0027s super wonky on their side, you might have to call the unwedge code.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "bc55876e938cdc80f278fba9586cc3046d004c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
