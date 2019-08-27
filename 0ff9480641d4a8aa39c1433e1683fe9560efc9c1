@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9423e4b8_47e5ca8b",
+        "filename": "common/usbc/usb_pe_ctvpd_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-27T16:57:43Z",
+      "side": 1,
+      "message": "why policy engine and protocol layer? Is this for both. I don\u0027t understand why they are shared",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 11
+      },
+      "revId": "0ff9480641d4a8aa39c1433e1683fe9560efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d2bb70_a474c673",
+        "filename": "common/usbc/usb_pe_ctvpd_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-27T16:57:43Z",
+      "side": 1,
+      "message": "can we add a reason why we don\u0027t need to do anything here",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "0ff9480641d4a8aa39c1433e1683fe9560efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab28da2_33d9ecae",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-27T16:57:43Z",
+      "side": 1,
+      "message": "since not used, let\u0027s remove",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "0ff9480641d4a8aa39c1433e1683fe9560efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848f1a95_405ba227",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-27T16:57:43Z",
+      "side": 1,
+      "message": "Can we put a spec number here for easy reference, please?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "0ff9480641d4a8aa39c1433e1683fe9560efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e3659c_e2eedaef",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-27T16:57:43Z",
+      "side": 1,
+      "message": "sinec all chromebooks going forward are very likely to have vconn, then let\u0027s just remove this ifdef and always define these states. (we can always add it back later if we need to)",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 24
+      },
+      "revId": "0ff9480641d4a8aa39c1433e1683fe9560efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f11f8cb6_e7d4adbd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-27T16:57:43Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment here for what our policy is, i.e. that we serailally go down the list and request all of them information with reties in the face of failures.",
+      "revId": "0ff9480641d4a8aa39c1433e1683fe9560efc9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
