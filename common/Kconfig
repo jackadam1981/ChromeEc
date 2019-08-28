@@ -7,10 +7,6 @@ menu "Console config"
 source "common/Kconfig.console"
 endmenu
 
-menu "Keyboard config"
-source "common/Kconfig.keyboard"
-endmenu
-
 menu "Accel setup"
 source "common/Kconfig.accel"
 endmenu
