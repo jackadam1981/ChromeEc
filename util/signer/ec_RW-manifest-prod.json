@@ -5,6 +5,12 @@
         "FW_DEFINED_DATA_BLK0": 2,  // cros SKU
         "FW_DEFINED_DATA_EXTRA_BLK6": 0  // escape hatch
 },
+<<<<<<< HEAD   (537113 cr50: improve logging of flash errors)
+=======
+  "board_id": 1179010630,  // that's 0x46464646, a.k.a. 'FFFF' in ASCII
+  "board_id_mask": 0,
+  "board_id_flags": 16,   // 0x10
+>>>>>>> CHANGE (a233e0 signer: get rid of hex values in the manifest)
 // Rollback state.
 "info": {
                                    "3": -1,   "4": -1,   "5": -1,   "6": -1,
