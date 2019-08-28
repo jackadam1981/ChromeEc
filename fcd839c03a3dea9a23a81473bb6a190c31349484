@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e4302e_1cb4bb83",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4121,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:36:19Z",
+      "side": 1,
+      "message": "wouldn\u0027t adding a config explicitly enabled for just a few devices be better than adding a config by default enabled for all?",
+      "range": {
+        "startLine": 4121,
+        "startChar": 0,
+        "endLine": 4121,
+        "endChar": 34
+      },
+      "revId": "fcd839c03a3dea9a23a81473bb6a190c31349484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
