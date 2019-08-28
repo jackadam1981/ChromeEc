@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cfacdc6_cb54f6d2",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:49:17Z",
+      "side": 1,
+      "message": "please add a comment describing what this code is doing.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "4e2868b37913f3600f78397453d4ad842f2aa7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fe918f_f36f7c7a",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:49:17Z",
+      "side": 1,
+      "message": "this should include _INCLUDE_ to guarantee namespace separation.",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "4e2868b37913f3600f78397453d4ad842f2aa7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
