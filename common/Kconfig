@@ -19,6 +19,10 @@ menu "LED setup"
 source "common/Kconfig.led"
 endmenu
 
+menu "Fan setup"
+source "common/Kconfig.fan"
+endmenu
+
 menu "Flash setup"
 source "common/Kconfig.flash"
 endmenu
