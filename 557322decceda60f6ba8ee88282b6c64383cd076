@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c15c3f0_d68cd7df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:35:50Z",
+      "side": 1,
+      "message": "why is this necessary? Can you add some description here or in code comments?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "145d22b9_d927aab4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:35:50Z",
+      "side": 1,
+      "message": "is there a way to demonstrate that both images\u0027 number of commits can be retrieved?",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39e0526_e69cf66f",
+        "filename": "common/version.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:35:50Z",
+      "side": 1,
+      "message": "IIRC the standard discourages heading underscores in names, trailing underscores are recommended",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b2c5dd_f40a047d",
+        "filename": "common/version.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-08-28T02:35:50Z",
+      "side": 1,
+      "message": "since i is now compared to size_t values its type should be size_t;",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
