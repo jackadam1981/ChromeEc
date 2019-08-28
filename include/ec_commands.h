@@ -3514,6 +3514,9 @@ enum ec_mkbp_event {
 	/* We have entered DisplayPort Alternate Mode on a Type-C port. */
 	EC_MKBP_EVENT_DP_ALT_MODE_ENTERED = 10,
 
+	/* Send a double tap message to the AP */
+	EC_MKBP_EVENT_DOUBLE_TAP = 11,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };

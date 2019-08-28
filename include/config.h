@@ -1910,6 +1910,12 @@
 /* Which sensor to look for battery tap recognition */
 #undef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 
+/* Which sensor to look for double tap recognition */
+#undef CONFIG_GESTURE_SENSOR_DOUBLE_TAP
+
+/* Enable gesture to wakeup device */
+#undef CONFIG_GESTURE_WAKEUP_DEVICE
+
 /*
  * Double tap detection parameters
  * Double tap works by looking for two isolated Z-axis accelerometer impulses
