@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cd990a0_78015bf5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T18:29:56Z",
+      "side": 1,
+      "message": "seems like weird name with the enum type. Should this be called partner_type instead?",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 35
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9bc297_9dac6255",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T18:29:56Z",
+      "side": 1,
+      "message": "these comments are great. Can we add them for the rest of the timers, please?",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 27
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1660e642_914bff46",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T18:29:56Z",
+      "side": 1,
+      "message": "we also want to set the state to NULL here so we exit any state we are currently in.",
+      "range": {
+        "startLine": 384,
+        "startChar": 3,
+        "endLine": 384,
+        "endChar": 8
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499f9dba_67e260a6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T18:29:56Z",
+      "side": 1,
+      "message": "nit: pe_messaage_recieved is probably a better name from the policy engine\u0027s point of view (since it is exposing the API)\n\n(or got_message so we are consistent with name here and hard reset)",
+      "range": {
+        "startLine": 398,
+        "startChar": 5,
+        "endLine": 398,
+        "endChar": 23
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43724bac_9b5fdf27",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T18:29:56Z",
+      "side": 1,
+      "message": "is this for both PD 2.0 and PD 3.0 (if not can we call out which on it is)",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 44
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bde9321_dd6cdce9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T18:29:56Z",
+      "side": 1,
+      "message": "which this API and other API functions, do we want to ensure we are on the correct PD task and if not send an event to the task?\n\nI think we should protect again doing statemachine transition in any task other than the PD task, thoughts?",
+      "range": {
+        "startLine": 470,
+        "startChar": 5,
+        "endLine": 470,
+        "endChar": 22
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
