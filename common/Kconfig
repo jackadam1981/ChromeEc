@@ -11,8 +11,16 @@ menu "Keyboard config"
 source "common/Kconfig.keyboard"
 endmenu
 
+menu "Accel setup"
+source "common/Kconfig.accel"
+endmenu
+
 menu "Charger setup"
 source "common/Kconfig.charger"
+endmenu
+
+menu "Debug setup"
+source "common/Kconfig.debug"
 endmenu
 
 menu "LED setup"
