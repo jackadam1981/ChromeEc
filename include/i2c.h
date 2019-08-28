@@ -447,6 +447,11 @@ int i2c_set_response(int port, uint8_t *buf, int len);
  */
 void i2cm_init(void);
 
+/*
+ * Initialize i2c master controller.
+ */
+void i2c_init(void);
+
 /**
  * Board-level function to determine whether i2c passthru should be allowed
  * on a given port.
