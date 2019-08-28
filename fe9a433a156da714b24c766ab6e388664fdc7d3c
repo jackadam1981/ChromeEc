@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "cecba75f_69742721",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-28T16:41:02Z",
+      "side": 1,
+      "message": "Would the change work for all the ECs? If you can\u0027t verify that, you probably want to apply the change progressively to other ECs.",
+      "parentUuid": "9db83f7b_ba5af5f4",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "910e59bb_939615f8",
         "filename": "include/i2c.h",
         "patchSetId": 1
