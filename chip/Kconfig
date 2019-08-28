@@ -8,6 +8,16 @@ config CHIP_PANIC_BACKUP
 	  implementations. This option can be enabled by those platforms that have and
 	  wish to use chip-implemented panic backup/restore functions.
 
+config CHIP_MEMORY_REGIONS
+	bool "The chip needs to define special SRAM memory regions as linker sections"
+	help
+	  The chip needs to define special SRAM memory regions as linker sections.
+	  Those regions are defined in the special-purpose preprocessed file in
+	  chip/<chip_name>/memory_regions.inc using the following macro:
+	  REGION(name, attributes, start_address, size)
+
+	  Note: these 'special' regions are NOT cleared at startup contrary to .bss.
+
 config CHIP_PRE_INIT
 	bool "Chip needs to do pre-init"
 	help
@@ -166,5 +176,4 @@ config ALS_LIGHTBAR_DIMMING
 endif #ALS
 
 endmenu # "ALS config"
-
 

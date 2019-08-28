@@ -1,5 +1,3 @@
-menu "Fan setup"
-
 config FANS__yn
 	bool "Select cooling fans"
 
@@ -29,5 +27,3 @@ config FAN_UPDATE_PERIOD
 	  seconds instead.
 
 endif # FANS_yn
-
-endmenu
