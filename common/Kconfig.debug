@@ -1,0 +1,84 @@
+
+config DEBUG_ASSERT
+	bool "ASSERT() macros are checked at runtime"
+	default y
+	help
+	  ASSERT() macros are checked at runtime.  See CONFIG_DEBUG_ASSERT_REBOOTS
+	  to see what happens if one fails.
+
+	  Boards may #undef this to reduce image size.
+
+config DEBUG_ASSERT_REBOOTS
+	bool "Prints a message and reboots if an ASSERT() macro fails at runtime"
+	default y
+	depends on DEBUG_ASSERT
+	help
+	  Prints a message and reboots if an ASSERT() macro fails at runtime.  When
+	  enabled, an ASSERT() which fails will produce a message of the form:
+
+	  ASSERTION FAILURE '<expr>' in function() at file:line
+
+	  If this is not defined, failing ASSERT() will trigger a BKPT instruction
+	  instead.
+
+	  Ignored if CONFIG_DEBUG_ASSERT is not defined.
+
+	  Boards may #undef this to reduce image size.
+
+config DEBUG_ASSERT_BRIEF
+	bool "On assertion failure, prints only the file name and the line number"
+	depends on DEBUG_ASSERT
+	help
+	  On assertion failure, prints only the file name and the line number.
+
+	  Ignored if CONFIG_DEBUG_ASSERT_REBOOTS is not defined.
+
+	  Boards may define this to reduce image size.
+
+config DEBUG_DISABLE_WRITE_BUFFER
+	bool "Disable the write buffer used for default memory map accesses"
+	help
+	  Disable the write buffer used for default memory map accesses.
+	  This turns "Imprecise data bus errors" into "Precise" errors
+	  in exception traces at the cost of some performance.
+	  This may help identify the offending instruction causing an
+	  exception. Supported on cortex-m.
+
+config DEBUG_EXCEPTIONS
+	bool "Print additional information when exceptions are triggered"
+	default y
+	help
+	Print additional information when exceptions are triggered, such as the
+	fault address, here shown as bfar. This shows the reason for the fault
+	and may help to determine the cause.
+
+	    === EXCEPTION: 03 ====== xPSR: 01000000 ===========
+	    r0 :0000000b r1 :00000047 r2 :60000000 r3 :200013dd
+	    r4 :00000000 r5 :080053f4 r6 :200013d0 r7 :00000002
+	    r8 :00000000 r9 :200013de r10:00000000 r11:00000000
+	    r12:00000000 sp :200009a0 lr :08002b85 pc :08003a8a
+	    Precise data bus error, Forced hard fault, Vector catch, bfar = 60000000
+	    mmfs = 00008200, shcsr = 00000000, hfsr = 40000000, dfsr = 00000008
+
+	If this is not defined, only a register dump will be printed.
+
+	Boards may #undef this to reduce image size.
+
+config DEBUG_PRINTF
+	bool "Support Synchronous UART debug printf"
+
+config DEBUG_STACK_OVERFLOW
+	bool "Check for stack overflows on every context switch"
+	default y
+
+config PORT80_HISTORY_LEN
+	int "Length of history buffer for port80 messages"
+	default 128
+
+config PORT80_PRINT_IN_INT
+	int "Print of port80 messages in interrupt context"
+	default 0
+	range 0 1
+	help
+	  Enable/Disable printing of port80 messages in interrupt context. By default,
+	  this is disabled.
