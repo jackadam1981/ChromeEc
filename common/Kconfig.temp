@@ -1,0 +1,60 @@
+
+# Temperature sensor config */
+
+config TEMP_SENSOR
+	bool "Compile common code for temperature sensor support"
+
+if TEMP_SENSOR
+
+menu "Support particular temperature sensor chips"
+
+config TEMP_SENSOR_ADT7481
+	bool "ADT 7481 sensor, on I2C bus"
+config TEMP_SENSOR_BD99992GW
+	bool "BD99992GW PMIC, on I2C bus"
+config TEMP_SENSOR_EC_ADC
+	bool "Thermistors on EC's own ADC"
+config TEMP_SENSOR_G781
+	bool "G781 sensor, on I2C bus"
+config TEMP_SENSOR_G782
+	bool "G782 sensor, on I2C bus"
+config TEMP_SENSOR_SB_TSI
+	bool "SB_TSI sensor, on I2C bus"
+config TEMP_SENSOR_TMP006
+	bool "TI TMP006 sensor, on I2C bus"
+config TEMP_SENSOR_TMP411
+	bool "TI TMP411 sensor, on I2C bus"
+config TEMP_SENSOR_TMP432
+	bool "TI TMP432 sensor, on I2C bus"
+config TEMP_SENSOR_TMP468
+	bool "TI TMP468 sensor, on I2C bus"
+config TEMP_SENSOR_F75303
+	bool "Fintek  F75303 sensor, on I2C bus"
+
+endmenu
+
+config TEMP_SENSOR_POWER_GPIO
+	bool "TEMP_SENSOR_POWER_GPIO"
+	help
+	  If defined, active-high GPIO which indicates temperature sensor chips are
+	  powered.  If not defined, temperature sensors are assumed to be always
+	  powered.
+
+config THROTTLE_AP
+	bool "Compile common code for throttling the CPU based on the temp sensors"
+	help
+	  Thermal throttling AP must have temperature sensor enabled to get
+	  the temperature readings.
+
+config DPTF
+	bool "Enable DPTF to manage thermals"
+	help
+	  If defined, DPTF is enabled to manage thermals.
+
+	  NOTE: This doesn't mean that thermal control is completely taken care by
+	  DPTF. We have some hybrid solutions where the EC still manages the fans.
+
+	  DPTF must have temperature sensor enabled to get the readings for
+	  generating DPTF thresholds events.
+
+endif # TEMP_SENSOR
