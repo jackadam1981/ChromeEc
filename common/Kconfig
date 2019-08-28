@@ -7,10 +7,6 @@ menu "Console config"
 source "common/Kconfig.console"
 endmenu
 
-menu "Keyboard config"
-source "common/Kconfig.keyboard"
-endmenu
-
 menu "Accel setup"
 source "common/Kconfig.accel"
 endmenu
@@ -23,16 +19,24 @@ menu "Debug setup"
 source "common/Kconfig.debug"
 endmenu
 
-menu "LED setup"
-source "common/Kconfig.led"
-endmenu
-
 menu "Fan setup"
 source "common/Kconfig.fan"
 endmenu
 
 menu "Flash setup"
 source "common/Kconfig.flash"
+endmenu
+
+menu "Keyboard config"
+source "common/Kconfig.keyboard"
+endmenu
+
+menu "LED setup"
+source "common/Kconfig.led"
+endmenu
+
+menu "Temp sensor setup"
+source "common/Kconfig.temp"
 endmenu
 
 menu "USB setup"
