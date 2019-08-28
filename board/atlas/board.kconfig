@@ -195,6 +195,11 @@ KCONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY=y
 # KCONFIG_LED_DRIVER_OZ554 is not set
 
 #
+# Fan setup
+#
+# KCONFIG_FANS__yn is not set
+
+#
 # Flash setup
 #
 KCONFIG_FLASH=y
