@@ -214,6 +214,30 @@
       "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff70f67_a3d966b8",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-28T10:21:31Z",
+      "side": 1,
+      "message": "Looking closer, I think L103 is mostly no-op. Because when 360 hall sensor interrupt fires, the device is already in tablet mode, so tablet_set_mode() would return immediately instead of evoking HOOK_TABLET_MODE_CHANGE. So we won\u0027t be able to listen to HOOK_TABLET_MODE_CHANGE and then update dptf profile. There might be other routes, but the current patch set is the most straightforward solution I can think of.",
+      "parentUuid": "2c33acf3_5a7b876f",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
