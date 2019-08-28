@@ -41,9 +41,9 @@ struct sm_ctx {
 
 /* Local state machine states */
 enum sm_local_state {
-	SM_INIT = 0, /* Ensure static variables initialize to SM_INIT */
+	SM_PAUSED = 0,
+	SM_INIT,
 	SM_RUN,
-	SM_PAUSED,
 };
 
 /**

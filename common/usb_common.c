@@ -11,6 +11,7 @@
 #include "common.h"
 #include "charge_state.h"
 #include "task.h"
+#include "usb_common.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -121,8 +122,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	int ret = 0;
 	int cur_uw = 0;
 	int prefer_cur;
-
-	int __attribute__((unused)) cur_mv = 0;
+	int cur_mv = 0;
 
 	/* max voltage is always limited by this boards max request */
 	max_mv = MIN(max_mv, PD_MAX_VOLTAGE_MV);
@@ -201,8 +201,9 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 }
 
 void pd_build_request(uint32_t src_cap_cnt, const uint32_t * const src_caps,
-			int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
-			uint32_t *mv, enum pd_request_type req_type,
+			struct pd_cable const * const cable, uint32_t *rdo,
+			uint32_t *ma, uint32_t *mv,
+			enum pd_request_type req_type,
 			uint32_t max_request_mv)
 {
 	uint32_t pdo;
@@ -229,10 +230,11 @@ void pd_build_request(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	/*
 	 * Adjust VBUS current if CTVPD device was detected.
 	 */
-	if (vpd_vdo > 0) {
-		max_vbus = VPD_VDO_MAX_VBUS(vpd_vdo);
-		vpd_vbus_dcr = VPD_VDO_VBUS_IMP(vpd_vdo) << 1;
-		vpd_gnd_dcr = VPD_VDO_GND_IMP(vpd_vdo);
+	if (cable != NULL && cable->type == IDH_PTYPE_VPD &&
+				VPD_VDO_CTS(cable->attr.raw_value)) {
+		max_vbus = VPD_VDO_MAX_VBUS(cable->attr.raw_value);
+		vpd_vbus_dcr = VPD_VDO_VBUS_IMP(cable->attr.raw_value) << 1;
+		vpd_gnd_dcr = VPD_VDO_GND_IMP(cable->attr.raw_value);
 
 		/*
 		 * Valid max_vbus values:
@@ -304,5 +306,75 @@ void notify_sysjump_ready(volatile const task_id_t * const sysjump_task_waiting)
 	if (*sysjump_task_waiting != TASK_ID_INVALID)
 		task_set_event(*sysjump_task_waiting,
 						TASK_EVENT_SYSJUMP_READY, 0);
+}
+#endif
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+enum pd_drp_next_states drp_auto_toggle_next_state(
+	uint64_t *drp_sink_time,
+	enum pd_power_role power_role,
+	enum pd_dual_role_states drp_state,
+	enum tcpc_cc_voltage_status cc1,
+	enum tcpc_cc_voltage_status cc2)
+{
+	/* Set to appropriate port state */
+	if (cc_is_open(cc1, cc2)) {
+		/*
+		 * If nothing is attached then use drp_state to determine next
+		 * state. If DRP auto toggle is still on, then remain in the
+		 * DRP_AUTO_TOGGLE state. Otherwise, stop dual role toggling
+		 * and go to a disconnected state.
+		 */
+		switch (drp_state) {
+		case PD_DRP_TOGGLE_OFF:
+			return DRP_TC_DEFAULT;
+		case PD_DRP_FREEZE:
+			if (power_role == PD_ROLE_SINK)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_UNATTACHED_SRC;
+		case PD_DRP_FORCE_SINK:
+			return DRP_TC_UNATTACHED_SNK;
+		case PD_DRP_FORCE_SOURCE:
+			return DRP_TC_UNATTACHED_SRC;
+		case PD_DRP_TOGGLE_ON:
+		default:
+			return DRP_TC_DRP_AUTO_TOGGLE;
+		}
+	} else if ((cc_is_rp(cc1) || cc_is_rp(cc2)) &&
+		 drp_state != PD_DRP_FORCE_SOURCE) {
+		/* SNK allowed unless ForceSRC */
+		return DRP_TC_UNATTACHED_SNK;
+	} else if (cc_is_at_least_one_rd(cc1, cc2) ||
+					cc_is_audio_acc(cc1, cc2)) {
+		/*
+		 * SRC allowed unless ForceSNK or Toggle Off
+		 *
+		 * Ideally we wouldn't use auto-toggle when drp_state is
+		 * TOGGLE_OFF/FORCE_SINK, but for some TCPCs, auto-toggle can't
+		 * be prevented in low power mode. Try being a sink in case the
+		 * connected device is dual-role (this ensures reliable charging
+		 * from a hub, b/72007056). 100 ms is enough time for a
+		 * dual-role partner to switch from sink to source. If the
+		 * connected device is sink-only, then we will attempt
+		 * TC_UNATTACHED_SNK twice (due to debounce time), then return
+		 * to low power mode (and stay there). After 200 ms, reset
+		 * ready for a new connection.
+		 */
+		if (drp_state == PD_DRP_TOGGLE_OFF ||
+				drp_state == PD_DRP_FORCE_SINK) {
+			if (get_time().val > *drp_sink_time + 200*MSEC)
+				*drp_sink_time = get_time().val;
+			if (get_time().val < *drp_sink_time + 100*MSEC)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_DRP_AUTO_TOGGLE;
+		} else {
+			return DRP_TC_UNATTACHED_SRC;
+		}
+	} else {
+		/* Anything else, keep toggling */
+		return DRP_TC_DRP_AUTO_TOGGLE;
+	}
 }
 #endif
