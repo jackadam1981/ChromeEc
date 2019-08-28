@@ -25,6 +25,11 @@ const struct svdm_response svdm_rsp = {
 	.modes = NULL,
 };
 
+void tc_src_power_off(int port)
+{
+	/* Do nothing */
+}
+
 /**
  * Test section
  */

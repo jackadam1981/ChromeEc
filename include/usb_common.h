@@ -10,6 +10,30 @@
 #include "usb_pd_tcpm.h"
 #include "task_id.h"
 
+enum pd_drp_next_states {
+	DRP_TC_DEFAULT,
+	DRP_TC_UNATTACHED_SNK,
+	DRP_TC_UNATTACHED_SRC,
+	DRP_TC_DRP_AUTO_TOGGLE
+};
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+/**
+ * Returns the next state to transistion to while in the drp auto toggle state.
+ *
+ * @param drp_sink_time timer for handling TOGGLE_OFF/FORCE_SINK mode when
+ *			auto-toggle enabled. This is an in/out variable.
+ * @param power_role current power role
+ * @param drp_state dual role states
+ * @param cc1 value of CC1 set by tcpm_get_cc
+ * @param cc2 value of CC2 set by tcpm_get_cc
+ *
+ */
+enum pd_drp_next_states drp_auto_toggle_next_state(uint64_t *drp_sink_time,
+	uint8_t power_role, enum pd_dual_role_states drp_state,
+	enum tcpc_cc_voltage_status cc1, enum tcpc_cc_voltage_status cc2);
+#endif
+
 /* Returns the battery percentage [0-100] of the system. */
 int usb_get_battery_soc(void);
 
@@ -60,18 +84,19 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv);
 /**
  * Decide which PDO to choose from the source capabilities.
  *
- * @param src_cap_cnt
- * @param src_caps
- * @param rdo  requested Request Data Object.
- * @param ma  selected current limit (stored on success)
- * @param mv  selected supply voltage (stored on success)
+ * @param src_cap_cnt source caps count
+ * @param src_caps array of souce caps
+ * @param cable cable that was detected. Can be NULL
+ * @param rdo  requested Request Data Object., Must not be NULL
+ * @param ma  selected current limit (stored on success), Must not be NULL
+ * @param mv  selected supply voltage (stored on success), Must Not be NULL
  * @param req_type request type
  * @param max_request_mv max voltage a sink can request before getting
  *			source caps
  */
 void pd_build_request(uint32_t src_cap_cnt, const uint32_t * const src_caps,
-	int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
-	enum pd_request_type req_type, uint32_t max_request_mv);
+	struct pd_cable const * const cable, uint32_t *rdo, uint32_t *ma,
+	uint32_t *mv, enum pd_request_type req_type, uint32_t max_request_mv);
 
 /**
  * Notifies a task that is waiting on a system jump, that it's complete.
