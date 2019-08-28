@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84499473_105b98de",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-28T01:36:55Z",
+      "side": 1,
+      "message": "nit: Align the second line in parenthesis to the first line.\n\n if (bc12_type \u003d\u003d CHARGE_SUPPLIER_BC12_SDP \u0026\u0026\n     bc12_cnt \u003c max_bc12_cnt) {",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 992,
+        "endChar": 0
+      },
+      "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
