@@ -80,7 +80,11 @@
 #define N_CAPS_COUNT 25
 
 /* 6.7.5 Discover Identity Counter */
-#define N_DISCOVER_IDENTITY_COUNT 20
+/*
+ * NOTE: The Protocol Layer tries to send a message 4 time before giving up,
+ * so a Discover Identity message will be sent 4*5 = 20 times.
+ */
+#define N_DISCOVER_IDENTITY_COUNT 5
 
 /*
  * Function pointer to a Structured Vendor Defined Message (SVDM) response
@@ -275,6 +279,8 @@ static struct policy_engine {
 
 	/* state specific state machine variable */
 	enum sub_state sub;
+
+	struct pd_cable cable;
 
 	/* VDO */
 	int32_t active_cable_vdo1;
@@ -573,6 +579,13 @@ void pe_report_error(int port, enum pe_error e)
 	}
 }
 
+void reset_pd_cable(int port)
+{
+	PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION |
+				PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+	memset(&pe[port].cable, 0, sizeof(pe[port].cable));
+}
+
 void pe_got_soft_reset(int port)
 {
 	/* This should only be called from the PD task */
@@ -828,6 +841,7 @@ static void pe_src_startup_entry(int port)
 {
 	print_current_state(port);
 
+	reset_pd_cable(port);
 	/* Initialize VDOs to default values */
 	pe[port].active_cable_vdo1 = -1;
 	pe[port].active_cable_vdo2 = -1;
@@ -1243,15 +1257,13 @@ static void pe_src_ready_entry(int port)
 				pe[port].port_discover_identity_count <=
 						N_DISCOVER_IDENTITY_COUNT) {
 		pe[port].discover_identity_timer =
-				get_time().val + PD_T_DISCOVER_IDENTITY;
+			get_time().val + PD_T_DISCOVER_IDENTITY;
 	} else {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_identity_timer = 0;
 	}
 
 	/* NOTE: PPS Implementation should be added here. */
-
-	tc_set_timeout(port, 5 * MSEC);
 }
 
 static void pe_src_ready_run(int port)
@@ -1428,8 +1440,6 @@ static void pe_src_ready_exit(int port)
 	 */
 	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
-	tc_set_timeout(port, 2 * MSEC);
 }
 
 /**
@@ -1917,7 +1927,7 @@ static void pe_snk_ready_entry(int port)
 				pe[port].port_discover_identity_count <=
 						N_DISCOVER_IDENTITY_COUNT) {
 		pe[port].discover_identity_timer =
-			get_time().val + PD_T_DISCOVER_IDENTITY;
+				get_time().val + PD_T_DISCOVER_IDENTITY;
 	} else {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_identity_timer = 0;
@@ -1929,8 +1939,6 @@ static void pe_snk_ready_entry(int port)
 	 *  1) Initialize and run the SinkPPSPeriodicTimer.
 	 *  NOTE: PPS Implementation should be added here.
 	 */
-
-	tc_set_timeout(port, 5 * MSEC);
 }
 
 static void pe_snk_ready_run(int port)
@@ -2107,8 +2115,6 @@ static void pe_snk_ready_exit(int port)
 {
 	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
-	tc_set_timeout(port, 2 * MSEC);
 }
 
 /**
