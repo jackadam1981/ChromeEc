@@ -11,6 +11,7 @@
 #include "common.h"
 #include "charge_state.h"
 #include "task.h"
+#include "usb_common.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -280,5 +281,84 @@ void notify_sysjump_ready(volatile const task_id_t * const sysjump_task_waiting)
 	if (*sysjump_task_waiting != TASK_ID_INVALID)
 		task_set_event(*sysjump_task_waiting,
 						TASK_EVENT_SYSJUMP_READY, 0);
+}
+#endif
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+enum pd_drp_next_states drp_auto_toggle_next_state(uint8_t power_role,
+	uint64_t *drp_sink_time,
+	enum pd_dual_role_states *drp_state,
+	enum tcpc_cc_voltage_status cc1, enum tcpc_cc_voltage_status cc2)
+{
+	enum pd_drp_next_states next_state;
+
+	/* Set to appropriate port state */
+	if (cc_is_open(cc1, cc2)) {
+		/*
+		 * If nothing is attached then use drp_state to determine next
+		 * state. If DRP auto toggle is still on, then remain in the
+		 * DRP_AUTO_TOGGLE state. Otherwise, stop dual role toggling
+		 * and go to a disconnected state.
+		 */
+		switch (*drp_state) {
+		case PD_DRP_TOGGLE_OFF:
+			next_state = DRP_TC_DEFAULT;
+			break;
+
+		case PD_DRP_FREEZE:
+			if (power_role == PD_ROLE_SINK)
+				next_state = DRP_TC_UNATTACHED_SNK;
+			else
+				next_state = DRP_TC_UNATTACHED_SRC;
+			break;
+
+		case PD_DRP_FORCE_SINK:
+			next_state = DRP_TC_UNATTACHED_SNK;
+			break;
+
+		case PD_DRP_FORCE_SOURCE:
+			next_state = DRP_TC_UNATTACHED_SRC;
+			break;
+
+		case PD_DRP_TOGGLE_ON:
+		default:
+			next_state = DRP_TC_DRP_AUTO_TOGGLE;
+			break;
+		}
+	} else if ((cc_is_rp(cc1) || cc_is_rp(cc2)) &&
+		 *drp_state != PD_DRP_FORCE_SOURCE) {
+		/* SNK allowed unless ForceSRC */
+		next_state = DRP_TC_UNATTACHED_SNK;
+	} else if (cc_is_at_least_one_rd(cc1, cc2) ||
+					cc_is_audio_acc(cc1, cc2)) {
+		/*
+		 * SRC allowed unless ForceSNK or Toggle Off
+		 *
+		 * Ideally we wouldn't use auto-toggle when drp_state is
+		 * TOGGLE_OFF/FORCE_SINK, but for some TCPCs, auto-toggle can't
+		 * be prevented in low power mode. Try being a sink in case the
+		 * connected device is dual-role (this ensures reliable charging
+		 * from a hub, b/72007056). 100 ms is enough time for a
+		 * dual-role partner to switch from sink to source. If the
+		 * connected device is sink-only, then we will attempt
+		 * TC_UNATTACHED_SNK twice (due to debounce time), then return
+		 * to low power mode (and stay there). After 200 ms, reset
+		 * ready for a new connection.
+		 */
+		if (*drp_state == PD_DRP_TOGGLE_OFF ||
+				*drp_state == PD_DRP_FORCE_SINK) {
+			if (get_time().val > *drp_sink_time + 200*MSEC)
+				*drp_sink_time = get_time().val;
+			if (get_time().val < *drp_sink_time + 100*MSEC)
+				next_state = DRP_TC_UNATTACHED_SNK;
+			else
+				next_state = DRP_TC_DRP_AUTO_TOGGLE;
+		} else
+			next_state = DRP_TC_UNATTACHED_SRC;
+	} else
+		/* Anything else, keep toggling */
+		next_state = DRP_TC_DRP_AUTO_TOGGLE;
+
+	return next_state;
 }
 #endif

@@ -184,5 +184,10 @@ void pd_task(void *u)
 
 		/* Run TypeC state machine */
 		tc_run(port);
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+		/* Try to enter low power mode */
+		tc_enter_low_power(port);
+#endif
 	}
 }
