@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f0de144_b7e1b375",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-08-28T16:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cdd220a_96440580",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "169864df_7fe39475",
         "filename": "board/drallion_ish/board.c",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a96a8cce_54e0d7e7",
+        "filename": "board/drallion_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-08-28T16:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61560ddd_ba2e58d1",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 44
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a740fff0_9027cdaf",
         "filename": "board/drallion_ish/board.h",
         "patchSetId": 6
@@ -91,6 +139,30 @@
       "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e3acb2_a9e4c7a0",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-08-28T16:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a740fff0_9027cdaf",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "82977389_2ab61cc5",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-08-28T16:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ea9975_98e7d9f9",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ab6cf6_ee00c203",
         "filename": "board/drallion_ish/board.h",
         "patchSetId": 6
@@ -137,6 +233,30 @@
       "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425c4630_8928ade9",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-08-28T16:56:18Z",
+      "side": 1,
+      "message": "Values have been confirmed to be fine tuned for Arcada. Unless we see power data not meet requirement for Drallion, they should be correct. Closed bug here 140097967",
+      "parentUuid": "f3ab6cf6_ee00c203",
+      "range": {
+        "startLine": 97,
+        "startChar": 50,
+        "endLine": 97,
+        "endChar": 71
+      },
+      "revId": "136b4ead4652874e00b0b12fdb6a8baa8204679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
