@@ -204,7 +204,7 @@ static void activate_mkbp_with_events(uint32_t events_to_add)
 
 #ifdef CONFIG_MKBP_EVENT_WAKEUP_MASK
 	/* Check to see if this MKBP event should wake the system. */
-	if (!skip_interrupt)
+	if (skip_interrupt)
 		skip_interrupt = host_is_sleeping() &&
 			!(events_to_add & mkbp_event_wake_mask);
 #endif /* CONFIG_MKBP_EVENT_WAKEUP_MASK */
