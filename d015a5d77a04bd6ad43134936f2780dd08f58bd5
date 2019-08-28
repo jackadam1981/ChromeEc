@@ -22,6 +22,30 @@
       "revId": "d015a5d77a04bd6ad43134936f2780dd08f58bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19a2f81_13e4493a",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-28T04:35:08Z",
+      "side": 1,
+      "message": "Yeah this is still in a messy state after I figured out I can\u0027t simply add things into i2c_ports[] array lol",
+      "parentUuid": "f027b30a_002fab33",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "d015a5d77a04bd6ad43134936f2780dd08f58bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
