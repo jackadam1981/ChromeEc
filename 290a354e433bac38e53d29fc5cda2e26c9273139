@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7053f5a7_7214fbd5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:38:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we will use this new stack with anything that doesn\u0027t support auto toggle, let\u0027s remove this define to make it simpler. thoughts?",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03c2072_22760cc7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:38:08Z",
+      "side": 1,
+      "message": "We should drop this conditional compile. When would we really every use tc without pe?",
+      "range": {
+        "startLine": 363,
+        "startChar": 7,
+        "endLine": 363,
+        "endChar": 23
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efaa392_39e7c76f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:38:08Z",
+      "side": 1,
+      "message": "again, let\u0027s drop this as a define. If we really need to customize boards in the future looks like auto_toggle_support \u003d 0 will do that for us.",
+      "range": {
+        "startLine": 1734,
+        "startChar": 7,
+        "endLine": 1734,
+        "endChar": 42
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda820c6_9600ea1a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2599,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:38:08Z",
+      "side": 1,
+      "message": "let\u0027s put this in usb_common.c",
+      "range": {
+        "startLine": 2599,
+        "startChar": 25,
+        "endLine": 2599,
+        "endChar": 51
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da74a42b_9432813c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3078,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:38:08Z",
+      "side": 1,
+      "message": "let\u0027s use IS_ENABLE",
+      "range": {
+        "startLine": 3078,
+        "startChar": 7,
+        "endLine": 3078,
+        "endChar": 28
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8089684_10c34942",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3235,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:38:08Z",
+      "side": 1,
+      "message": "let\u0027s update the ASCII art ;)",
+      "range": {
+        "startLine": 3231,
+        "startChar": 1,
+        "endLine": 3235,
+        "endChar": 3
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
