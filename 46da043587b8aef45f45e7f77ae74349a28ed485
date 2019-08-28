@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3d28f1_bf4080cc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2722,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:29:12Z",
+      "side": 1,
+      "message": "nit, can you combine these two condition into one if statement with an \u0026\u0026",
+      "range": {
+        "startLine": 2721,
+        "startChar": 5,
+        "endLine": 2722,
+        "endChar": 24
+      },
+      "revId": "46da043587b8aef45f45e7f77ae74349a28ed485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b981588_fda85d39",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:29:12Z",
+      "side": 1,
+      "message": "this really is no change in behavior, just keying off better data/functions, right?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 57
+      },
+      "revId": "46da043587b8aef45f45e7f77ae74349a28ed485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3085907b_9bdcc987",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:29:12Z",
+      "side": 1,
+      "message": "can we add to the comment that this is default on because there are laxed security implications if we don\u0027t have a matrix keyboard, so boards must manually undef if they don\u0027t have an internal keyboard.",
+      "range": {
+        "startLine": 4120,
+        "startChar": 0,
+        "endLine": 4121,
+        "endChar": 34
+      },
+      "revId": "46da043587b8aef45f45e7f77ae74349a28ed485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
