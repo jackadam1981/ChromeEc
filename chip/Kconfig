@@ -177,3 +177,33 @@ endif #ALS
 
 endmenu # "ALS config"
 
+config WATCHDOG
+	bool "Compile watchdog timer support"
+	default y
+	help
+	  Compile watchdog timer support.  The watchdog timer will reboot the system
+	  if the hook task (which is the lowest-priority task on the system) gets
+	  starved for CPU time and isn't able to fire its HOOK_TICK event.
+
+if WATCHDOG
+
+config WATCHDOG_HELP
+	bool "Try to detect a watchdog that is about to fire"
+	help
+	  Try to detect a watchdog that is about to fire, and print a trace.  This is
+	  required on chips such as STM32 where the watchdog timer simply reboots the
+	  system without any early warning.
+
+endif # WATCHDOG
+
+config WATCHDOG_MAX_RETRIES
+	int "The maximum number of times that the watchdog timer may reset"
+	default 4
+	help
+	  The maximum number of times that the watchdog timer may reset
+	  before halting the system (or taking some sort of other
+	  chip-dependent corrective action).
+
+config WATCHDOG_PERIOD_MS
+	int "Watchdog period in ms; see also AUX_TIMER_PERIOD_MS"
+	default 1600
