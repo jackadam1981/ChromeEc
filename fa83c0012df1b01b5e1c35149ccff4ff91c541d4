@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0780273c_8a0ddfe7",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "Okay, I removed the requirement that we wait after disconnection and power negotiation as well.",
+      "parentUuid": "7bea7674_a37f305f",
+      "range": {
+        "startLine": 149,
+        "startChar": 51,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180f52d_fbbd2288",
         "filename": "docs/usb_power.md",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc0da0bf_da3866aa",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "I picked a number that seemed big enough. I reduced all of the 500s to 200ms",
+      "parentUuid": "c180f52d_fbbd2288",
+      "range": {
+        "startLine": 151,
+        "startChar": 20,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "45df3e30_28609f57",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "agreed.",
+      "parentUuid": "726858d8_37009501",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13cf08bc_9f2e4f69",
         "filename": "docs/usb_power.md",
         "patchSetId": 14
@@ -115,6 +187,30 @@
       "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa2ad1df_14c8e957",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13cf08bc_9f2e4f69",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 16
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "cebb42a0_3003343a",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d2bfc8_468c59c3",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 33
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f00f920_41474cfa",
         "filename": "docs/usb_power.md",
         "patchSetId": 14
@@ -161,6 +281,30 @@
       "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752b2edb_ffe8fa35",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f00f920_41474cfa",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 33
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +351,54 @@
       "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0707deac_b5dd4545",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b525a9_3ffd2b2d",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 33
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5540046_2d63edc8",
+        "filename": "docs/usb_power.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T00:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22cb53ac_aa7847e0",
+      "range": {
+        "startLine": 220,
+        "startChar": 35,
+        "endLine": 220,
+        "endChar": 39
+      },
+      "revId": "fa83c0012df1b01b5e1c35149ccff4ff91c541d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
