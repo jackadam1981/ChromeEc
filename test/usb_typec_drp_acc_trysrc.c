@@ -13,6 +13,7 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usb_sm_checks.h"
+#include "usb_tc_sm.h"
 
 #define PORT0 0
 
