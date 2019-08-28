@@ -13,6 +13,7 @@
 #include "keyboard_scan.h"
 #include "registers.h"
 #include "task.h"
+#include "assert.h"
 
 #define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ## args)
 
@@ -20,12 +21,7 @@ static int i2c_init_done;
 
 void keyboard_raw_init(void)
 {
-	/*
-	 * The I/O expander communicated with EC is through
-	 * I2C, but the I2C is not ready during initialization
-	 * of the keyboard raw. So this function can not do
-	 * anything.
-	 */
+	i2c_init_done = 1;
 }
 
 static int it8801_read(int reg, int *data)
@@ -122,8 +118,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 {
 	int kso_val, val;
 
-	if (!i2c_init_done)
-		return;
+	assert(i2c_init_done);
 
 	/* Tri-state all outputs */
 	if (col == KEYBOARD_COLUMN_NONE) {
@@ -182,8 +177,7 @@ test_mockable int keyboard_raw_read_rows(void)
 	int data = 0;
 	int ksieer = 0;
 
-	if (!i2c_init_done)
-		return 0;
+	assert(i2c_init_done);
 
 	it8801_read(IT8801_REG_KSIDR, &data);
 
@@ -197,8 +191,7 @@ test_mockable int keyboard_raw_read_rows(void)
 
 void keyboard_raw_enable_interrupt(int enable)
 {
-	if (!i2c_init_done)
-		return;
+	assert(i2c_init_done);
 
 	if (enable) {
 		it8801_write(IT8801_REG_KSIEER, 0xff);
@@ -214,16 +207,6 @@ void io_expander_it8801_interrupt(enum gpio_signal signal)
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
-
-/*
- * TODO(b/138384267): The recovery entry is probably broken
- * because boot keys are scanned before hook_task is started.
- */
-static void i2c_init_check(void)
-{
-	i2c_init_done = 1;
-}
-DECLARE_HOOK(HOOK_INIT, i2c_init_check, HOOK_PRIO_INIT_I2C + 1);
 
 static void dump_register(int reg)
 {
