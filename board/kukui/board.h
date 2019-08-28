@@ -85,10 +85,10 @@
 /* Route sbs host requests to virtual battery driver */
 #define VIRTUAL_BATTERY_ADDR_FLAGS 0x0B
 
-/* Define the host events which are allowed to wakeup AP in S3. */
-#define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
-		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
-		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
+/* MKBP */
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_EVENT_WAKEUP_MASK \
+	(BIT(EC_MKBP_EVENT_SENSOR_FIFO) | BIT(EC_MKBP_EVENT_HOST_EVENT))
 
 #ifndef __ASSEMBLER__
 
@@ -143,6 +143,16 @@ int board_get_version(void);
 int board_is_sourcing_vbus(int port);
 void pogo_adc_interrupt(enum gpio_signal signal);
 int board_discharge_on_ac(int enable);
+
+/* Enable double tap detection */
+#define CONFIG_GESTURE_DETECTION
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_SENSOR_DOUBLE_TAP 0
+#define CONFIG_GESTURE_SAMPLING_INTERVAL_MS 5
+#define CONFIG_GESTURE_TAP_THRES_MG 100
+#define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T 500
+#define CONFIG_GESTURE_DETECTION_MASK \
+	BIT(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)
 
 #endif /* !__ASSEMBLER__ */
 
