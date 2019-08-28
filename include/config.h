@@ -2234,6 +2234,12 @@
 /* EC uses an I2C master interface */
 #undef CONFIG_I2C_MASTER
 
+/*
+ * We have an I2C master port but we don't want it initialized early in boot,
+ * the board will manually do this later at a specific point in time.
+ */
+#undef CONFIG_I2C_MASTER_DEFERRED
+
 /* EC uses an I2C slave interface */
 #undef CONFIG_I2C_SLAVE
 

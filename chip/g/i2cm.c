@@ -451,12 +451,11 @@ static void i2cm_init_port(const struct i2c_port_t *p)
 /**
  * Initialize the i2c module for all supported ports.
  */
-void i2cm_init(void)
+void i2c_init(void)
 {
 	const struct i2c_port_t *p = i2c_ports;
 	int i;
 
 	for (i = 0; i < i2c_ports_used; i++, p++)
 		i2cm_init_port(p);
-
 }

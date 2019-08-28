@@ -17,6 +17,7 @@
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "keyboard_scan.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -179,6 +180,13 @@ test_mockable __keep int main(void)
 	 */
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_init_mask();
+#endif
+#if defined(CONFIG_I2C_MASTER) && !defined(CONFIG_I2C_MASTER_DEFERRED)
+	/*
+	 * Some devices (like the I2C keyboards, CBI) need I2C access pretty
+	 * early, so let's initialize the controller now.
+	 */
+	i2c_init();
 #endif
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();

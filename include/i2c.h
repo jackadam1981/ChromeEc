@@ -447,11 +447,10 @@ enum ec_status i2c_get_protocol_info(struct host_cmd_handler_args *args);
 void i2c_data_received(int port, uint8_t *buf, int len);
 int i2c_set_response(int port, uint8_t *buf, int len);
 
-/**
- * Initialize i2c master ports. This function can be called for cases where i2c
- * ports are not initialized by default via a hook call.
+/*
+ * Initialize i2c master controller.
  */
-void i2cm_init(void);
+void i2c_init(void);
 
 /**
  * Board-level function to determine whether i2c passthru should be allowed

@@ -68,9 +68,10 @@ static void ina_connect(void)
 
 	/*
 	 * Initialize the i2cm module after the INAs are powered and the signal
-	 * lines are connected.
+	 * lines are connected. Note that this hasn't been done earlier due to
+	 * CONFIG_I2C_MASTER_DEFERRED.
 	 */
-	i2cm_init();
+	i2c_init();
 }
 
 void usb_i2c_board_disable(void)

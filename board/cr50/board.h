@@ -430,6 +430,7 @@ enum nvmem_users {
 
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_I2C_MASTER_DEFERRED
 #define CONFIG_I2C_SLAVE
 #define CONFIG_TPM_I2CS
 
