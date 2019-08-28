@@ -39,6 +39,16 @@ int tc_restart_tcpc(int port)
 	return tcpm_init(port);
 }
 
+void tc_pause_event_loop(int port)
+{
+	task_wait_event(-1);
+}
+
+void tc_start_event_loop(int port)
+{
+	task_wait_event(USBC_EVENT_TIMEOUT);
+}
+
 void set_polarity(int port, int polarity)
 {
 	tcpm_set_polarity(port, polarity);
