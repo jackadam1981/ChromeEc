@@ -22,6 +22,30 @@
       "revId": "fcd839c03a3dea9a23a81473bb6a190c31349484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34dd2a9b_faac53fb",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-28T18:17:01Z",
+      "side": 1,
+      "message": "CONFIG_HAS_MATRIX_KEYBOARD looks to me more clear and intuitive than CONFIG_NO_MATRIX_KEYBOARD. I think it\u0027s less readable to double-negate in general. In this case, the code would look: !IS_ENABLED(CONFIG_NO_MATRIX_KEYBOARD). One of my favorite examples is:\n\n  batt_disconnect_status !\u003d BATTERY_NOT_DISCONNECTED\n\nThe following is more readable:\n\n  batt_connect_status \u003d\u003d BATTERY_DISCONNECTED\n\nWhat names are available depends on the context but in the case of CONFIG_HAS_MATRIX_KEYBOARD, I think we don\u0027t need to negate the name.",
+      "parentUuid": "68e4302e_1cb4bb83",
+      "range": {
+        "startLine": 4121,
+        "startChar": 0,
+        "endLine": 4121,
+        "endChar": 34
+      },
+      "revId": "fcd839c03a3dea9a23a81473bb6a190c31349484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
