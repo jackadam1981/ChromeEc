@@ -137,6 +137,236 @@
       "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe41ef6_30798aca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "we can use maybe_unused for this scenario now (instead of wrapping it with ifdefs)",
+      "range": {
+        "startLine": 520,
+        "startChar": 7,
+        "endLine": 520,
+        "endChar": 71
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39038467_9149b7a3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "what does prs mean here? present?\n\nwhat is both snk and src in the name with rp? Should this only be the src then?",
+      "range": {
+        "startLine": 2832,
+        "startChar": 1,
+        "endLine": 2832,
+        "endChar": 25
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04efe926_9b2c1209",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "nit: omitted \"Or\" (unless I am missing something)",
+      "range": {
+        "startLine": 2916,
+        "startChar": 9,
+        "endLine": 2916,
+        "endChar": 11
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6bdd86_7e1decd0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2961,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "this is normally something we have a macro for (but you don\u0027t have to make one if you don\u0027t think it should have one)\n\nPlease document which bits you are trying to select. bit31 through bit28 appears to be what you want (let\u0027s call that out)",
+      "range": {
+        "startLine": 2961,
+        "startChar": 16,
+        "endLine": 2961,
+        "endChar": 35
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4421d4_2dead9ff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2965,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "please add comments or defines for what 5 and 8 mean.",
+      "range": {
+        "startLine": 2964,
+        "startChar": 0,
+        "endLine": 2965,
+        "endChar": 17
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa8a126_ad7760a6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3490,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "let\u0027s make this a first class typedef with a name, please",
+      "range": {
+        "startLine": 3490,
+        "startChar": 1,
+        "endLine": 3490,
+        "endChar": 47
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9627b9b0_c99aa054",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3512,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "where does svdm_rsp come from? I don\u0027t see it defined anywhere\n\nWe really should have a unit test that just builds this file in this first submission to ensure we are building",
+      "range": {
+        "startLine": 3512,
+        "startChar": 9,
+        "endLine": 3512,
+        "endChar": 17
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e5ef1b_14f6b743",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4041,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "can this be put in common code, i.e. usb_common.c?\n\nThis and any other function that has been copied over with very little modification.",
+      "range": {
+        "startLine": 4041,
+        "startChar": 5,
+        "endLine": 4041,
+        "endChar": 21
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36500d5_fd2f2387",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4175,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "we should also make these #defines like USB_PID_APPLE_XX",
+      "range": {
+        "startLine": 4175,
+        "startChar": 41,
+        "endLine": 4175,
+        "endChar": 47
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7862723b_8cdce08d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T20:33:10Z",
+      "side": 1,
+      "message": "we should definitely clean this up. This is also something that belongs in usb_common.c\n\nLet\u0027s use IS_ENABLED for TCPC and PPC, then the else would have to use #ifdef for GPIO and COUNT. Also, we have boards with more than 2 ports, so the assumption for 1 or 2 ports is definitely wrong.",
+      "range": {
+        "startLine": 4185,
+        "startChar": 0,
+        "endLine": 4198,
+        "endChar": 6
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
