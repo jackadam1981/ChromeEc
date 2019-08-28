@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d64a50d4_de65f7ef",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-08-28T23:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b45d325_015bde77",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 214,
+        "endChar": 10
+      },
+      "revId": "1581b8343f344dff8e1b47c4b144ac3cce2e4661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26fbcaf7_d4b6ceef",
         "filename": "chip/g/dcrypto/dcrypto.h",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "1581b8343f344dff8e1b47c4b144ac3cce2e4661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1719e8_f6f902ad",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-08-28T23:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26fbcaf7_d4b6ceef",
+      "revId": "1581b8343f344dff8e1b47c4b144ac3cce2e4661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
