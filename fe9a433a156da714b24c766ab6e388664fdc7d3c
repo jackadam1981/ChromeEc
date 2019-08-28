@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "f9b9f10b_74e930a7",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T17:49:26Z",
+      "side": 1,
+      "message": "nit: we can use IS_ENABLED(CONFIG_I2C_MASTER) now",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ec88dea_78374432",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
@@ -30,6 +53,24 @@
       "writtenOn": "2019-08-28T00:36:26Z",
       "side": 1,
       "message": "So this is fun. Hopefully it\u0027s actually wrong and doesn\u0027t care where it\u0027s done in relation to the i2c controller.\n\nMaybe it meant ((HOOK_PRIO_INIT_I2C + 1) - 1)",
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c76edc92_8c68402a",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T17:49:26Z",
+      "side": 1,
+      "message": "This needs to happen before the board_tcpc inits, so it is technically wrong.\n\nIdeally this would be initialized as a global static variable. Maybe we can move it to the start of the pd_task (althought that would not be before the board_tcpc init)",
+      "parentUuid": "3ec88dea_78374432",
       "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -71,6 +112,30 @@
       "side": 1,
       "message": "Would the change work for all the ECs? If you can\u0027t verify that, you probably want to apply the change progressively to other ECs.",
       "parentUuid": "9db83f7b_ba5af5f4",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35245358_44a7b23b",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-28T17:49:26Z",
+      "side": 1,
+      "message": "I still like breaking out TCPC, battery, etc inits like you did in another CL. Maybe we could remove all of the init_i2c with those instead. Thoughts?",
+      "parentUuid": "cecba75f_69742721",
       "range": {
         "startLine": 25,
         "startChar": 1,
