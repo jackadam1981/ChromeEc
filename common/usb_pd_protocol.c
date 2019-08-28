@@ -117,7 +117,7 @@ enum vdm_states {
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
-enum pd_dual_role_states drp_state[CONFIG_USB_PD_PORT_COUNT] = {
+enum pd_dual_role_states drp_state[CONFIG_USB_PD_PORT_COUNT + 10] = {
 	[0 ... (CONFIG_USB_PD_PORT_COUNT - 1)] =
 		CONFIG_USB_PD_INITIAL_DRP_STATE};
 
