@@ -50,28 +50,28 @@
 #define PE_CHK_DPM_REQUEST(port, req) (pe[port].dpm_request &   (req))
 
 /* Policy Engine Layer Flags */
-#define PE_FLAGS_PD_CONNECTION                  BIT(0)
-#define PE_FLAGS_ACCEPT                         BIT(1)
-#define PE_FLAGS_PS_READY                       BIT(2)
-#define PE_FLAGS_PROTOCOL_ERROR                 BIT(3)
-#define PE_FLAGS_MODAL_OPERATION                BIT(4)
-#define PE_FLAGS_TX_COMPLETE                    BIT(5)
-#define PE_FLAGS_MSG_RECEIVED                   BIT(6)
-#define PE_FLAGS_HARD_RESET_PENDING             BIT(7)
-#define PE_FLAGS_WAIT                           BIT(8)
-#define PE_FLAGS_EXPLICIT_CONTRACT              BIT(9)
-#define PE_FLAGS_SNK_WAIT_CAP_TIMEOUT           BIT(10)
-#define PE_FLAGS_PS_TRANSITION_TIMEOUT          BIT(11)
-#define PE_FLAGS_INTERRUPTIBLE_AMS              BIT(12)
-#define PE_FLAGS_PS_RESET_COMPLETE              BIT(13)
-#define PE_FLAGS_SEND_SVDM                      BIT(14)
-#define PE_FLAGS_VCONN_SWAP_COMPLETE            BIT(15)
-#define PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE    BIT(16)
-#define PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE     BIT(17)
-#define PE_FLAGS_RUN_SOURCE_START_TIMER         BIT(19)
-#define PE_FLAGS_VDM_REQUEST_BUSY               BIT(20)
-#define PE_FLAGS_VDM_REQUEST_NAKED              BIT(21)
-#define PE_FLAGS_FAST_ROLE_SWAP                 BIT(22)
+#define PE_FLAGS_PD_CONNECTION               BIT(0) /* PD connection est. */
+#define PE_FLAGS_ACCEPT                      BIT(1) /* Got accept message */
+#define PE_FLAGS_PS_READY                    BIT(2) /* Power Supply Ready */
+#define PE_FLAGS_PROTOCOL_ERROR              BIT(3) /* Received Protocol Err */
+#define PE_FLAGS_MODAL_OPERATION             BIT(4) /* Modal operation set */
+#define PE_FLAGS_TX_COMPLETE                 BIT(5) /* Transmit complete */
+#define PE_FLAGS_MSG_RECEIVED                BIT(6) /* Messaged Received */
+#define PE_FLAGS_HARD_RESET_PENDING          BIT(7) /* Hard reset pending */
+#define PE_FLAGS_WAIT                        BIT(8) /* Wait before msg resend */
+#define PE_FLAGS_EXPLICIT_CONTRACT           BIT(9) /* Explicit contract */
+#define PE_FLAGS_SNK_WAIT_CAP_TIMEOUT        BIT(10)/* Snk caps timeout */
+#define PE_FLAGS_PS_TRANSITION_TIMEOUT       BIT(11)/* PS transition timeout */
+#define PE_FLAGS_INTERRUPTIBLE_AMS           BIT(12)/* interruptible AMS */
+#define PE_FLAGS_PS_RESET_COMPLETE           BIT(13)/* PS reset complete */
+#define PE_FLAGS_SEND_SVDM                   BIT(14)/* Send a SVDM */
+#define PE_FLAGS_VCONN_SWAP_COMPLETE         BIT(15)/* VCONN Swap complete */
+#define PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE BIT(16)/* Disc. port ident. done */
+#define PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE  BIT(17)/* Disc. vdm ident. done */
+#define PE_FLAGS_RUN_SOURCE_START_TIMER      BIT(19)/* Run source start timer */
+#define PE_FLAGS_VDM_REQUEST_BUSY            BIT(20)/* FRS/PRS Exec Path */
+#define PE_FLAGS_VDM_REQUEST_NAKED           BIT(21)/* FRS Current State */
+#define PE_FLAGS_FAST_ROLE_SWAP              BIT(22)/* FRS Signaled by PPC */
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -80,7 +80,11 @@
 #define N_CAPS_COUNT 25
 
 /* 6.7.5 Discover Identity Counter */
-#define N_DISCOVER_IDENTITY_COUNT 20
+/*
+ * NOTE: The Protocol Layer tries to send a message 4 time before giving up,
+ * so a Discover Identity message will be sent 4*5 = 20 times.
+ */
+#define N_DISCOVER_IDENTITY_COUNT 5
 
 /*
  * Function pointer to a Structured Vendor Defined Message (SVDM) response
@@ -276,12 +280,9 @@ static struct policy_engine {
 	/* state specific state machine variable */
 	enum sub_state sub;
 
-	/* VDO */
-	int32_t active_cable_vdo1;
-	int32_t active_cable_vdo2;
-	int32_t passive_cable_vdo;
-	int32_t ama_vdo;
-	int32_t vpd_vdo;
+	/* Power Delivery Cable */
+	struct pd_cable cable;
+
 	/* alternate mode policy*/
 	struct pd_policy am_policy;
 
@@ -573,6 +574,13 @@ void pe_report_error(int port, enum pe_error e)
 	}
 }
 
+void reset_pd_cable(int port)
+{
+	PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION |
+				PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+	memset(&pe[port].cable, 0, sizeof(pe[port].cable));
+}
+
 void pe_got_soft_reset(int port)
 {
 	/* This should only be called from the PD task */
@@ -736,7 +744,7 @@ static void pe_send_request_msg(int port)
 	 * request the max voltage, then select vSafe5V
 	 */
 	pd_build_request(pe[port].src_cap_cnt, pe[port].src_caps,
-		pe[port].vpd_vdo, &rdo, &curr_limit,
+		&pe[port].cable, &rdo, &curr_limit,
 		&supply_voltage, charging && max_request_allowed ?
 		PD_REQUEST_MAX : PD_REQUEST_VSAFE5V, max_request_mv);
 
@@ -828,12 +836,8 @@ static void pe_src_startup_entry(int port)
 {
 	print_current_state(port);
 
-	/* Initialize VDOs to default values */
-	pe[port].active_cable_vdo1 = -1;
-	pe[port].active_cable_vdo2 = -1;
-	pe[port].passive_cable_vdo = -1;
-	pe[port].ama_vdo = -1;
-	pe[port].vpd_vdo = -1;
+	/* Reset cable values */
+	reset_pd_cable(port);
 
 	/* Reset CapsCounter */
 	pe[port].caps_counter = 0;
@@ -930,7 +934,8 @@ static void pe_src_discovery_run(int port)
 	/*
 	 * A VCONN or Charge-Through VCONN Powered Device was detected.
 	 */
-	if (pe[port].vpd_vdo >= 0 && VPD_VDO_CTS(pe[port].vpd_vdo)) {
+	if (pe[port].cable.type == IDH_PTYPE_VPD &&
+				VPD_VDO_CTS(pe[port].cable.attr.raw_value)) {
 		set_state_pe(port, PE_SRC_DISABLED);
 		return;
 	}
@@ -1243,15 +1248,13 @@ static void pe_src_ready_entry(int port)
 				pe[port].port_discover_identity_count <=
 						N_DISCOVER_IDENTITY_COUNT) {
 		pe[port].discover_identity_timer =
-				get_time().val + PD_T_DISCOVER_IDENTITY;
+			get_time().val + PD_T_DISCOVER_IDENTITY;
 	} else {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_identity_timer = 0;
 	}
 
 	/* NOTE: PPS Implementation should be added here. */
-
-	tc_set_timeout(port, 5 * MSEC);
 }
 
 static void pe_src_ready_run(int port)
@@ -1428,8 +1431,6 @@ static void pe_src_ready_exit(int port)
 	 */
 	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
-	tc_set_timeout(port, 2 * MSEC);
 }
 
 /**
@@ -1439,7 +1440,8 @@ static void pe_src_disabled_entry(int port)
 {
 	print_current_state(port);
 
-	if ((pe[port].vpd_vdo >= 0) && VPD_VDO_CTS(pe[port].vpd_vdo)) {
+	if (pe[port].cable.type == IDH_PTYPE_VPD &&
+				VPD_VDO_CTS(pe[port].cable.attr.raw_value)) {
 		/*
 		 * Inform the Device Policy Manager that a Charge-Through VCONN
 		 * Powered Device was detected.
@@ -1917,7 +1919,7 @@ static void pe_snk_ready_entry(int port)
 				pe[port].port_discover_identity_count <=
 						N_DISCOVER_IDENTITY_COUNT) {
 		pe[port].discover_identity_timer =
-			get_time().val + PD_T_DISCOVER_IDENTITY;
+				get_time().val + PD_T_DISCOVER_IDENTITY;
 	} else {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_identity_timer = 0;
@@ -1929,8 +1931,6 @@ static void pe_snk_ready_entry(int port)
 	 *  1) Initialize and run the SinkPPSPeriodicTimer.
 	 *  NOTE: PPS Implementation should be added here.
 	 */
-
-	tc_set_timeout(port, 5 * MSEC);
 }
 
 static void pe_snk_ready_run(int port)
@@ -2107,8 +2107,6 @@ static void pe_snk_ready_exit(int port)
 {
 	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
-	tc_set_timeout(port, 2 * MSEC);
 }
 
 /**
@@ -3437,10 +3435,13 @@ static void pe_vdm_request_entry(int port)
 		emsg[port].len = pe[port].vdm_cnt * 4;
 	}
 
-	if (pe[port].partner_type) {
+	if (pe[port].partner_type == CABLE) {
 		/* Save power and data roles */
 		pe[port].saved_power_role = tc_get_power_role(port);
 		pe[port].saved_data_role = tc_get_data_role(port);
+
+		tc_set_data_role(port, PD_PLUG_DFP_UFP);
+		tc_set_power_role(port, PD_PLUG_DFP_UFP);
 
 		prl_send_data_msg(port, TCPC_TX_SOP_PRIME, PD_DATA_VENDOR_DEF);
 	} else {
@@ -3457,7 +3458,7 @@ static void pe_vdm_request_run(int port)
 		/* Message was sent */
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
-		if (pe[port].partner_type) {
+		if (pe[port].partner_type == CABLE) {
 			/* Restore power and data roles */
 			tc_set_power_role(port, pe[port].saved_power_role);
 			tc_set_data_role(port, pe[port].saved_data_role);
@@ -3470,7 +3471,7 @@ static void pe_vdm_request_run(int port)
 		/* Message not sent and we received a protocol error */
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 
-		if (pe[port].partner_type) {
+		if (pe[port].partner_type == CABLE) {
 			/* Restore power and data roles */
 			tc_set_power_role(port, pe[port].saved_power_role);
 			tc_set_data_role(port, pe[port].saved_data_role);
@@ -3585,6 +3586,16 @@ static void pe_vdm_acked_entry(int port)
 		uint32_t id_header = payload[1];
 		uint8_t ptype_ufp;
 
+		/*
+		 * Set to highest revision supported by both
+		 * ports.
+		 */
+		prl_set_cable_rev(port,
+				(PD_HEADER_REV(emsg[port].header) > PD_REV30) ?
+				PD_REV30 : PD_HEADER_REV(emsg[port].header));
+
+		pe[port].cable.rev = prl_get_cable_rev(port);
+
 		if (PD_VDO_CMD(vdm_header) == CMD_DISCOVER_IDENT &&
 				PD_VDO_SVDM(vdm_header) &&
 				PD_HEADER_CNT(emsg[port].header) == 5) {
@@ -3592,36 +3603,30 @@ static void pe_vdm_acked_entry(int port)
 
 			switch (ptype_ufp) {
 			case IDH_PTYPE_UNDEF:
+				pe[port].cable.type = IDH_PTYPE_UNDEF;
 				break;
 			case IDH_PTYPE_HUB:
+				pe[port].cable.type = IDH_PTYPE_HUB;
 				break;
 			case IDH_PTYPE_PERIPH:
+				pe[port].cable.type = IDH_PTYPE_PERIPH;
 				break;
 			case IDH_PTYPE_PCABLE:
-				/* Passive Cable Detected */
-				pe[port].passive_cable_vdo =
-						payload[4];
+				pe[port].cable.type = IDH_PTYPE_PCABLE;
+				pe[port].cable.attr.raw_value = payload[4];
 				break;
 			case IDH_PTYPE_ACABLE:
-				/* Active Cable Detected */
-				pe[port].active_cable_vdo1 =
-						payload[4];
-				pe[port].active_cable_vdo2 =
-						payload[5];
+				pe[port].cable.type = IDH_PTYPE_ACABLE;
+				pe[port].cable.attr.raw_value = payload[4];
+				pe[port].cable.attr2.raw_value = payload[5];
 				break;
 			case IDH_PTYPE_AMA:
-				/*
-				 * Alternate Mode Adapter
-				 * Detected
-				 */
-				pe[port].ama_vdo = payload[4];
+				pe[port].cable.type = IDH_PTYPE_AMA;
+				pe[port].cable.attr.raw_value = payload[4];
 				break;
 			case IDH_PTYPE_VPD:
-				/*
-				 * VCONN Powered Device
-				 * Detected
-				 */
-				pe[port].vpd_vdo = payload[4];
+				pe[port].cable.type = IDH_PTYPE_VPD;
+				pe[port].cable.attr.raw_value = payload[4];
 
 				/*
 				 * If a CTVPD device was not discovered, inform
@@ -3632,8 +3637,7 @@ static void pe_vdm_acked_entry(int port)
 				 * Policy Manager will clear the DISC_IDENT flag
 				 * set by tc_disc_ident_in_progress.
 				 */
-				if (pe[port].vpd_vdo < 0 ||
-						!VPD_VDO_CTS(pe[port].vpd_vdo))
+				if (!VPD_VDO_CTS(pe[port].cable.attr.raw_value))
 					tc_disc_ident_complete(port);
 				break;
 			}
