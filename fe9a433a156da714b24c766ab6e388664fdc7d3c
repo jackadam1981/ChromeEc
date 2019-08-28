@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddf1609f_3f3d18f7",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-28T00:36:26Z",
+      "side": 1,
+      "message": "I\u0027ll need a chance like this for every I2C Controller we have for this CL to be complete.",
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec88dea_78374432",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-28T00:36:26Z",
+      "side": 1,
+      "message": "So this is fun. Hopefully it\u0027s actually wrong and doesn\u0027t care where it\u0027s done in relation to the i2c controller.\n\nMaybe it meant ((HOOK_PRIO_INIT_I2C + 1) - 1)",
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db83f7b_ba5af5f4",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-28T00:36:26Z",
+      "side": 1,
+      "message": "This is soon going to feel very lonely because nothing will actually be HOOK_PRIO_INIT_I2C anymore.\n\nBut keep in mind that everything still wants to be HOOK_PRIO_INIT_I2C + 1!\n\nSuggestions?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910e59bb_939615f8",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-28T00:36:26Z",
+      "side": 1,
+      "message": "Insert spidermans pointing at each other meme here.\n\nThis is only used by CR50. +Vadim\n\n~/cros/src/platform/ec (jacuzzi-keyboard)% git grep i2cm_init\nboard/cr50/usb_i2c.c:   i2cm_init();\nchip/g/i2cm.c:static void i2cm_init_port(const struct i2c_port_t *p)\nchip/g/i2cm.c:void i2cm_init(void)\nchip/g/i2cm.c:          i2cm_init_port(p);\ninclude/i2c.h:void i2cm_init(void);",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 21
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
