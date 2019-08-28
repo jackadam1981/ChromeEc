@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "0fcf758f_e4acbb3f",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-28T01:25:20Z",
+      "side": 1,
+      "message": "I understand what it\u0027s doing, I still just don\u0027t think it\u0027s best solution for this problem. I\u0027d prefer to modify/update the charge led state handler to allow for this option. I\u0027m looking in to how best to change that.",
+      "parentUuid": "2dd9d6b9_611786e9",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d81cf7a7_305b0e51",
         "filename": "board/kohaku/led.c",
         "patchSetId": 6
