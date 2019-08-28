@@ -91,6 +91,30 @@
       "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdab456_47026657",
+        "filename": "common/version.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-28T18:17:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the variable identity (\u003d i \u0027as an index\u0027) determine the type for readability? Or do you know a specific case that using size_t for an index can avoid an error or coding mistakes?",
+      "parentUuid": "c8b2c5dd_f40a047d",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
