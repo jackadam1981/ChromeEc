@@ -58,6 +58,22 @@ void prl_set_rev(int port, enum pd_rev_type rev);
 enum pd_rev_type prl_get_rev(int port);
 
 /**
+ * Set the PD Cable revision
+ *
+ * @param port USB-C port number
+ * @param rev revision
+ */
+void prl_set_cable_rev(int port, enum pd_rev_type rev);
+
+/**
+ * Get the PD Cable revision
+ *
+ * @param port USB-C port number
+ * @return pd rev
+ */
+enum pd_rev_type prl_get_cable_rev(int port);
+
+/**
  * Sends a PD control message
  *
  * @param port USB-C port number

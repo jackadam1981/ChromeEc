@@ -322,6 +322,13 @@ void tc_event_check(int port, int evt);
 void tc_run(const int port);
 
 /**
+ * Attempts to enter low power mode if it's enabled
+ *
+ * @param port USB-C port number
+ */
+void tc_enter_low_power(const int port);
+
+/**
  * Attempt to activate VCONN
  *
  * @param port USB-C port number
