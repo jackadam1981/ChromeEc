@@ -9,6 +9,30 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+enum pd_drp_next_states {
+	DRP_TC_DEFAULT,
+	DRP_TC_UNATTACHED_SNK,
+	DRP_TC_UNATTACHED_SRC,
+	DRP_TC_DRP_AUTO_TOGGLE
+};
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+/**
+ * Returns the next state to transistion to while in the drp auto toggle state.
+ *
+ * @param drp_sink_time timer for handling TOGGLE_OFF/FORCE_SINK mode when
+ *			auto-toggle enabled
+ * @param power_role current power role
+ * @param drp_state dual role states
+ * @param cc1 value of CC1 set by tcpm_get_cc
+ * @param cc2 value of CC2 set by tcpm_get_cc
+ *
+ */
+enum pd_drp_next_states drp_auto_toggle_next_state(uint64_t *drp_sink_time,
+	uint8_t power_role, enum pd_dual_role_states drp_state,
+	enum tcpc_cc_voltage_status cc1, enum tcpc_cc_voltage_status cc2);
+#endif
+
 /* Returns the battery percentage [0-100] of the system. */
 int usb_get_battery_soc(void);
 
