@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbd3fccd_1c0af0c8",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-29T00:31:23Z",
+      "side": 1,
+      "message": "this is needed for abrupt shutdown",
+      "parentUuid": "3bc8bbac_f5d35ea3",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 69
+      },
+      "revId": "d2061c218ad0c1b58bf8f096c54601749e54f862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b7c84cc_508b7c39",
         "filename": "common/fan.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-28T22:53:02Z",
       "side": 1,
       "message": "Why do you need these?",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 604,
+        "endChar": 65
+      },
+      "revId": "d2061c218ad0c1b58bf8f096c54601749e54f862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39c6a28_dd5c595d",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-08-29T00:31:23Z",
+      "side": 1,
+      "message": "HOOK_CHIPSET_STARTUP we can remove",
+      "parentUuid": "2b7c84cc_508b7c39",
       "range": {
         "startLine": 603,
         "startChar": 0,
