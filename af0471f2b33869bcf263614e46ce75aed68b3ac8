@@ -435,6 +435,23 @@
     },
     {
       "key": {
+        "uuid": "55485c24_7ee523b2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-29T20:04:54Z",
+      "side": 1,
+      "message": "does \"if (IS_ENABLED(CONFIG_USB_PE_SM))\" work here and other similar places below?",
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b57df298_21afe789",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 7
