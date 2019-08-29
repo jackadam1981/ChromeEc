@@ -270,7 +270,7 @@ int board_set_active_charge_port(int port)
 
 	/* Check if the port is sourcing VBUS. */
 	if (ppc_is_sourcing_vbus(port)) {
-		CPRINTFUSB("Skip enable C%d", port);
+		CPRINTSUSB("Skip enable C%d", port);
 		return EC_ERROR_INVAL;
 	}
 
