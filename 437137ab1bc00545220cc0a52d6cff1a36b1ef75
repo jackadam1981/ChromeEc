@@ -46,6 +46,52 @@
       "revId": "437137ab1bc00545220cc0a52d6cff1a36b1ef75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0736541_4a28b5dd",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-08-29T00:55:17Z",
+      "side": 1,
+      "message": "This goes over the bus in the clear, which is sad.\nCan you not blind and bus transfer in one move, like D rom does?\nAnd do permuted copy, not a straight 0..7",
+      "range": {
+        "startLine": 1000,
+        "startChar": 1,
+        "endLine": 1000,
+        "endChar": 5
+      },
+      "revId": "437137ab1bc00545220cc0a52d6cff1a36b1ef75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21019cb1_dfb82d7b",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-08-29T00:55:17Z",
+      "side": 1,
+      "message": "b !\u003d NULL reads a bit more direct",
+      "range": {
+        "startLine": 1166,
+        "startChar": 6,
+        "endLine": 1166,
+        "endChar": 7
+      },
+      "revId": "437137ab1bc00545220cc0a52d6cff1a36b1ef75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
