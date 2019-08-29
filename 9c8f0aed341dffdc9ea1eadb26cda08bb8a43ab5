@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb8f4070_be0b1423",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-29T06:30:27Z",
+      "side": 1,
+      "message": "Thanks, Alexandru， I will provide detailed information here.",
+      "parentUuid": "6d60a26b_1735ab0e",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "9c8f0aed341dffdc9ea1eadb26cda08bb8a43ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f3a1c10_ad0077bb",
         "filename": "board/kodama/battery.c",
         "patchSetId": 1
