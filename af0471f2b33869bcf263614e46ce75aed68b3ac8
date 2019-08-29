@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "f5a52233_7757ace8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-29T19:48:24Z",
+      "side": 1,
+      "message": "Since this is not a static function, isn\u0027t it OK to always have the function and it just wont link in if it is not used, even without maybe_unused?",
+      "parentUuid": "bbe41ef6_30798aca",
+      "range": {
+        "startLine": 520,
+        "startChar": 7,
+        "endLine": 520,
+        "endChar": 71
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39038467_9149b7a3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 7
@@ -174,6 +198,30 @@
       "writtenOn": "2019-08-28T20:33:10Z",
       "side": 1,
       "message": "what does prs mean here? present?\n\nwhat is both snk and src in the name with rp? Should this only be the src then?",
+      "range": {
+        "startLine": 2832,
+        "startChar": 1,
+        "endLine": 2832,
+        "endChar": 25
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3dba18_d90d13bf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-29T19:48:24Z",
+      "side": 1,
+      "message": "Power Role Swap",
+      "parentUuid": "39038467_9149b7a3",
       "range": {
         "startLine": 2832,
         "startChar": 1,
