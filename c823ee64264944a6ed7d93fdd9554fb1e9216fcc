@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef10ee7_161617bb",
+        "filename": "include/power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-29T01:35:06Z",
+      "side": 1,
+      "message": "only for high-\u003elow transitions?",
+      "range": {
+        "startLine": 185,
+        "startChar": 66,
+        "endLine": 185,
+        "endChar": 67
+      },
+      "revId": "c823ee64264944a6ed7d93fdd9554fb1e9216fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84afb4ca_27fce9cb",
+        "filename": "include/power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-29T01:35:06Z",
+      "side": 1,
+      "message": "One period should be good?",
+      "range": {
+        "startLine": 187,
+        "startChar": 64,
+        "endLine": 187,
+        "endChar": 65
+      },
+      "revId": "c823ee64264944a6ed7d93fdd9554fb1e9216fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
