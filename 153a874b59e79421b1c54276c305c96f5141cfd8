@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd7b4bc8_3650a9e3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-08-29T19:04:15Z",
+      "side": 1,
+      "message": "I think we should move common code into some function like rt946x_read_chgadc, and use a mutex to protect it.\n(what will happen if rt946x_get_charger_temp() and charger_get_vbus_voltage() called at same time?)",
+      "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
