@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c062a49d_c21259f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "if DPTF is active, it would have taken an action for cooling and reduced the temperature by running fan.",
+      "parentUuid": "01cf6629_6b8f4a05",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "452fa3b9_36d39423",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0fff0c45_b0a82c8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "I wanted to say in commit message that we have tested this with stopping/killing DPTF on runtime. I will update above message appropriately.",
+      "parentUuid": "15e835f0_88d9aed0",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43c596e7_a0c053e7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "d4669635_ec29d771",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "e36f1877_571c32a3",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dab8034_8d07756b",
         "filename": "common/fan.c",
         "patchSetId": 1
@@ -153,6 +225,30 @@
       "writtenOn": "2019-08-29T06:59:30Z",
       "side": 1,
       "message": "Why is this change needed? This should already be taken care of by fan_init or fan_resume.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 37
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb90dc9_ef8f4286",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "This is needed to cut-off the power line for the fan when percent is zero. Only enable the fan in non-zero percent case.",
+      "parentUuid": "0dab8034_8d07756b",
       "range": {
         "startLine": 105,
         "startChar": 2,
@@ -188,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "72e5b31e_7109f1b0",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79122f0f_1d42d4bd",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "933acf44_c173043c",
         "filename": "common/thermal.c",
         "patchSetId": 1
@@ -211,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "15083f17_1e96f735",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "Got your point here. Yes, will submit new patch set with this change.",
+      "parentUuid": "933acf44_c173043c",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bf976b_b4faf5f4",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -222,6 +366,30 @@
       "writtenOn": "2019-08-29T06:59:30Z",
       "side": 1,
       "message": "I am not clear why/what this offset really is and why is it added to current temperature?",
+      "range": {
+        "startLine": 1604,
+        "startChar": 3,
+        "endLine": 1606,
+        "endChar": 10
+      },
+      "revId": "8ba54ac09ff47d94d358e067cba615927f393f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5272400c_e52045c8",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:01Z",
+      "side": 1,
+      "message": "It might need to update/fine tune this value at later stage during production, if required. That\u0027s the reason we have defined this as 0 (as initial value) in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1772862/1/board/hatch/board.h#32",
+      "parentUuid": "77bf976b_b4faf5f4",
       "range": {
         "startLine": 1604,
         "startChar": 3,
