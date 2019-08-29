@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72b15624_06c947e0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-29T00:02:51Z",
+      "side": 1,
+      "message": "CONFIG_GESTURE_SENSOR_BATTERY_TAP and CONFIG_GESTURE_SENSOR_DOUBLE_TAP are very similar.\n\nRemove CONFIG_GESTURE_SENSOR_BATTERY_TAP here and in driver, and add in include/config.h:\n\n#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP\n#define CONFIG_GESTURE_SENSOR_DOUBLE_TAP CONFIG_GESTURE_SENSOR_BATTERY_TAP\n#endif",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e94a1e2_a10006c5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-29T00:02:51Z",
+      "side": 1,
+      "message": "Should be #ifndef CONFIG_GESTURE_SENSOR_BATTERY_TAP: you don\u0027t want to wake up the host just for battery tap, but otherwise, if double tap is enabled, wake up the host.",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08152045_b7ce8631",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-29T00:02:51Z",
+      "side": 1,
+      "message": "This is intended to wake up the host, EC_MKBP_EVENT_DOUBLE_TAP is not needed.",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46feb58_dca575d2",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-08-29T00:02:51Z",
+      "side": 1,
+      "message": "This is the default for CONFIG_GESTURE_SIGMO when CONFIG_GESTURE_HOST_DETECTION is enabled. It needs further cleanup.",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
