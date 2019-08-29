@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "768e76cc_4bb0c351",
+        "filename": "include/power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-29T00:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de92fb9e_c72ed1b5",
+      "range": {
+        "startLine": 183,
+        "startChar": 25,
+        "endLine": 183,
+        "endChar": 31
+      },
+      "revId": "0a14c089db3efc955df5fbd15ca609b4134a4f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3839e4b9_4331a8a3",
         "filename": "include/power.h",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "0a14c089db3efc955df5fbd15ca609b4134a4f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8242b95_f2d05a61",
+        "filename": "include/power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-08-29T00:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3839e4b9_4331a8a3",
+      "revId": "0a14c089db3efc955df5fbd15ca609b4134a4f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
