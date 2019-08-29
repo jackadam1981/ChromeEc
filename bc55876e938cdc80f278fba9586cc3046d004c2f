@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec7ede26_da4365a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-29T04:58:27Z",
+      "side": 1,
+      "message": "add I2C\n\nI couldn\u0027t find this CL earlier in my list of CLs because it didn\u0027t have i2c in the name.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "bc55876e938cdc80f278fba9586cc3046d004c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "948fbd4b_a7f48ae8",
         "filename": "common/i2c_bitbang.c",
         "patchSetId": 10
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "Yes I\u0027ve checked it in i2c_start_cond and i2c_write_bit. And the spec seems doesn\u0027t care about arbitration lost during STOP condition.\n\nCurrently I\u0027m assuming EC is not the only master, so my plan is:\n  arbitration lost in start/write: do nothing, just return error\n  arbitration lost in stop: try reset the bus\n\nBut if we are pretty sure other devices are all slaves, I can do reset on all cases.",
       "parentUuid": "948fbd4b_a7f48ae8",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "bc55876e938cdc80f278fba9586cc3046d004c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d546af_8c3ec630",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-29T04:58:27Z",
+      "side": 1,
+      "message": "Arbitration lost could happen in any place, not just start and stop. That\u0027s why i\u0027m saying you should check in all places where you pulse SCL just after releasing SDA. And of course, it\u0027s not for a real arbitration lost, but it\u0027ll provide hints if something\u0027s stalled and needs unwedging.",
+      "parentUuid": "4f28e666_cfb28090",
       "range": {
         "startLine": 107,
         "startChar": 0,

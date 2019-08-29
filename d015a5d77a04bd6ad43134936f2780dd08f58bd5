@@ -46,6 +46,53 @@
       "revId": "d015a5d77a04bd6ad43134936f2780dd08f58bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa511a1_59402940",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-29T04:58:27Z",
+      "side": 1,
+      "message": "would be much easier to try this CL if you did. I was trying to use it on an unreworked board (by remuxing the i2c2 pins to bitbang), my first reflex was to try i2cscan and i2cxfer.",
+      "parentUuid": "c19a2f81_13e4493a",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "d015a5d77a04bd6ad43134936f2780dd08f58bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09b88f2_807bea52",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-08-29T04:58:27Z",
+      "side": 1,
+      "message": "You might want to read some of this. It might come in handy for the stuff we\u0027re doing. Perhaps call it when applicable. Though... it would be nice to have some warnings if you\u0027re even in a situation when you need this, especially if you\u0027re seeing errors after 5 min.",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 42
+      },
+      "revId": "d015a5d77a04bd6ad43134936f2780dd08f58bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
