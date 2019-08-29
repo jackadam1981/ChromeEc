@@ -46,6 +46,30 @@
       "revId": "b95d3a69f292cdfdd4c90cc0eaffb28eb143781a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0414d4ce_65f22d75",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-08-29T18:57:22Z",
+      "side": 1,
+      "message": "We need this value to be defined as 0 (as initial value) and we add this value as offset (temperature value) to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1772861/1/common/thermal.c#58",
+      "parentUuid": "bf4a9461_a7906ab5",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "b95d3a69f292cdfdd4c90cc0eaffb28eb143781a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
