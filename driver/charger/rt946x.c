@@ -73,6 +73,7 @@ enum rt946x_chg_stat {
 enum rt946x_adc_in_sel {
 	RT946X_ADC_VBUS_DIV5 = 1,
 	RT946X_ADC_VBUS_DIV2,
+	RT946X_ADC_VBUS_TEMP_JC = 12,
 };
 
 #if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
@@ -722,6 +723,46 @@ int charger_get_vbus_voltage(int port)
 		rt946x_read8(RT946X_REG_ADCDATAH, &val);
 		vbus_mv |= (val << 8);
 		vbus_mv *= 25;
+	}
+
+	return vbus_mv;
+}
+
+int rt946x_get_charger_temp(void)
+{
+	int val;
+	static int vbus_mv;
+	int retries = 10;
+
+	/* Set VBUS as ADC input */
+	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
+		RT946X_ADC_VBUS_TEMP_JC << RT946X_SHIFT_ADC_IN_SEL);
+
+	/* Start ADC conversion */
+	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
+
+	/*
+	 * In practice, ADC conversion rarely takes more than 35ms.
+	 * However, according to the datasheet, ADC conversion may take
+	 * up to 200ms. But we can't wait for that long, otherwise
+	 * host command would time out. So here we set ADC timeout as 50ms.
+	 * If ADC times out, we just return the last read vbus_mv.
+	 *
+	 * TODO(chromium:820335): We may handle this more gracefully with
+	 * EC_RES_IN_PROGRESS.
+	 */
+	while (--retries) {
+		rt946x_read8(RT946X_REG_CHGSTAT, &val);
+		if (!(val & RT946X_MASK_ADC_STAT))
+			break;
+		msleep(5);
+	}
+
+	if (retries) {
+		/* Read measured results if ADC finishes in time. */
+		rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
+		rt946x_read8(RT946X_REG_ADCDATAH, &val);
+		vbus_mv = ((val << 8) + vbus_mv) * 2 - 40;
 	}
 
 	return vbus_mv;

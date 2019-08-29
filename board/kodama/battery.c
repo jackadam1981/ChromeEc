@@ -7,10 +7,12 @@
 #include "battery_fuel_gauge.h"
 #include "charge_state.h"
 #include "charger_mt6370.h"
+#include "chipset.h"
 #include "console.h"
 #include "driver/charger/rt946x.h"
 #include "gpio.h"
 #include "power.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
 
@@ -83,8 +85,83 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
 }
 
+#define THERMAL_THRESHOLD_TEMP_56	56		/* C */
+#define THERMAL_THRESHOLD_TEMP_60	60
+#define THERMAL_THRESHOLD_TEMP_63	63
+#define THERMAL_THRESHOLD_TEMP_66	66
+
+#define CHARGING_CURRENT_LIMIT_400MA	400		/* mA*/
+#define CHARGING_CURRENT_LIMIT_1000MA	1000
+#define CHARGING_CURRENT_LIMIT_1500MA	1500
+
+static void thermal_process(struct charge_state_data *curr)
+{
+	static int temp_over_flag;
+	static int charger_temp;
+	static int prev_time;
+	int curr_time;
+
+	/*
+	 * b/140156596: With 45W adpater, A cover skin temperature < 48C through
+	 * limit charging current when run all full loading in S0 state.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON) && curr->batt_is_charging) {
+		curr_time = get_time().val;
+
+		/* get charger temperature every second */
+		if (curr_time - prev_time > SECOND) {
+			prev_time = curr_time;
+
+			charger_temp = rt946x_get_charger_temp();
+		}
+
+		if (charger_temp > THERMAL_THRESHOLD_TEMP_66) {
+			temp_over_flag = 1;
+			curr->requested_current = MIN(
+				curr->requested_current,
+				CHARGING_CURRENT_LIMIT_400MA);
+		} else if (charger_temp > THERMAL_THRESHOLD_TEMP_63) {
+			if (!temp_over_flag) {
+				curr->requested_current = MIN(
+					curr->requested_current,
+					CHARGING_CURRENT_LIMIT_1000MA);
+			} else {
+				curr->requested_current = MIN(
+					curr->requested_current,
+					CHARGING_CURRENT_LIMIT_400MA);
+			}
+		} else if (charger_temp > THERMAL_THRESHOLD_TEMP_60) {
+			if (!temp_over_flag) {
+				curr->requested_current = MIN(
+					curr->requested_current,
+					CHARGING_CURRENT_LIMIT_1500MA);
+			} else {
+				curr->requested_current = MIN(
+					curr->requested_current,
+					CHARGING_CURRENT_LIMIT_1000MA);
+			}
+		} else if (charger_temp > THERMAL_THRESHOLD_TEMP_56) {
+			if (temp_over_flag)
+				curr->requested_current = MIN(
+					curr->requested_current,
+					CHARGING_CURRENT_LIMIT_1500MA);
+		} else {
+			if (temp_over_flag)
+				temp_over_flag = 0;
+		}
+	} else {
+		if (charger_temp)
+			charger_temp = 0;
+
+		if (temp_over_flag)
+			temp_over_flag = 0;
+	}
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
+	thermal_process(curr);
+
 #ifdef VARIANT_KUKUI_CHARGER_MT6370
 	mt6370_charger_profile_override(curr);
 #endif /* CONFIG_CHARGER_MT6370 */
