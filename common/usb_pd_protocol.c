@@ -1759,8 +1759,6 @@ static void handle_ctrl_request(int port, uint16_t head,
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY) {
 			/* reset message ID and swap roles */
 			pd[port].msg_id = 0;
-			pd_set_power_role(port, PD_ROLE_SINK);
-			pd_update_roles(port);
 			/*
 			 * Give the state machine time to read VBUS as high.
 			 * Note: This is empirically determined, not strictly
@@ -3725,6 +3723,10 @@ void pd_task(void *u)
 				/* Send PS_RDY */
 				res = send_control(port, PD_CTRL_PS_RDY);
 				if (res < 0) {
+					/* Restore Rp and power role */
+					tcpm_set_cc(port, TYPEC_CC_RP);
+					pd_set_power_role(port, PD_ROLE_SOURCE);
+					pd_update_roles(port);
 					timeout = 10*MSEC;
 					set_state(port,
 						  PD_STATE_SRC_DISCONNECTED);
@@ -4276,10 +4278,14 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_SWAP_COMPLETE:
 			/* Send PS_RDY and change to source role */
+			//pd_set_power_role(port, PD_ROLE_SOURCE);
+			//pd_update_roles(port);
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res < 0) {
-				/* Restore Rd */
+				/* Restore Rd and power role */
 				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd_set_power_role(port, PD_ROLE_SINK);
+				pd_update_roles(port);
 				pd_power_supply_reset(port);
 				timeout = 10 * MSEC;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
@@ -4292,7 +4298,10 @@ void pd_task(void *u)
 			pd[port].msg_id = 0;
 			pd_set_power_role(port, PD_ROLE_SOURCE);
 			pd_update_roles(port);
-			set_state(port, PD_STATE_SRC_DISCOVERY);
+			/* Wait for not too early send SRC_Cap, ch.6.6.8 */
+			set_state_timeout(port, get_time().val +
+					PD_T_SWAP_SRC_START,
+					PD_STATE_SRC_DISCOVERY);
 			timeout = 10*MSEC;
 			break;
 #ifdef CONFIG_USBC_VCONN_SWAP
