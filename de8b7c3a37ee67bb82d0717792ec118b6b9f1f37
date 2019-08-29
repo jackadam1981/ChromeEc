@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5c1eb00_7b1123b1",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-29T06:10:56Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this check. It is already present in acpi_dptf_set_profile_num().",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3a244c7_906d3b44",
         "filename": "common/tablet_mode.c",
         "patchSetId": 5
@@ -229,6 +252,30 @@
       "side": 1,
       "message": "Looking closer, I think L103 is mostly no-op. Because when 360 hall sensor interrupt fires, the device is already in tablet mode, so tablet_set_mode() would return immediately instead of evoking HOOK_TABLET_MODE_CHANGE. So we won\u0027t be able to listen to HOOK_TABLET_MODE_CHANGE and then update dptf profile. There might be other routes, but the current patch set is the most straightforward solution I can think of.",
       "parentUuid": "2c33acf3_5a7b876f",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6705bca3_004ffeee",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-29T06:10:56Z",
+      "side": 1,
+      "message": "Humm... you are right. On devices with 360 hall sensor, we might have already switched to tablet mode at 200 degrees. Thus, tablet_set_mode() might just be a no-op.\n\nTo summarize:\n\n1. On devices without 360 hall sensor,\n lid_motion driver sets tablet mode at 200 degree\n lid_motion driver sets dptf profile at 300 degree\n\n2. On devices with 360 hall sensor,\n lid_motion driver sets tablet mode at 200 degree\n hall_sensor_isr sets tablet mode in case lid_motion hadn\u0027t already done that if the lid angle calculation was unreliable. Additionally, it has to set dptf profile.\n\nConsidering that I am okay with the above change. Let\u0027s wait for Jett/Aseda to respond before pushing this in.",
+      "parentUuid": "dff70f67_a3d966b8",
       "range": {
         "startLine": 84,
         "startChar": 1,
