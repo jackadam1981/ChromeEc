@@ -22,6 +22,52 @@
       "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11432b1_a64fe6ea",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-29T20:51:51Z",
+      "side": 1,
+      "message": "continue here means you read RT946X_REG_DPDMIRQ again at line 985. Is it necessary? The register is cleared on read. Why not loop here locally (for 3 times)?",
+      "range": {
+        "startLine": 994,
+        "startChar": 5,
+        "endLine": 994,
+        "endChar": 13
+      },
+      "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a473302_e86839a2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-29T20:51:51Z",
+      "side": 1,
+      "message": "I would output these in a single line: e.g. \"VBUS attached (%dmV, BC12\u003d%d)\". \n\nAlso, I think we should have:\n\nconst char charge_supplier_names[] \u003d {\n  ...\n  [CHARGE_SUPPLIER_BC12_DCP] \u003d \"DCP\",\n  ...\n}\n\nso that we can print SDP/CDP/DCP for better debugging.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 0,
+        "endLine": 1015,
+        "endChar": 38
+      },
+      "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
