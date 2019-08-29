@@ -7,16 +7,16 @@
 #include "battery_fuel_gauge.h"
 #include "charge_state.h"
 #include "charger_mt6370.h"
+#include "chipset.h"
 #include "console.h"
 #include "driver/charger/rt946x.h"
 #include "gpio.h"
 #include "power.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
-
-#define BAT_LEVEL_PD_LIMIT 85
 
 const struct board_batt_params board_battery_info[] = {
 	[BATTERY_SIMPLO] = {
@@ -83,8 +83,68 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
 }
 
+static void thermal_process(struct charge_state_data *curr)
+{
+	static int temp_over_flag;
+	static int charger_temp;
+	static int prev_time;
+	int curr_time;
+
+	/*
+	 * b/140156596: With 45W adpater, A cover skin temperature < 48C through
+	 * limit charging current when run all full loading in S0 state.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON) && curr->batt_is_charging) {
+		curr_time = get_time().val;
+
+		/* get charger temperature every second */
+		if (curr_time - prev_time > SECOND) {
+			prev_time = curr_time;
+
+			charger_temp = rt946x_get_charger_temp();
+		}
+
+		if (charger_temp > 66) {
+			temp_over_flag = 1;
+			curr->requested_current = MIN(
+				curr->requested_current, 400);
+		} else if (charger_temp > 63) {
+			if (!temp_over_flag) {
+				curr->requested_current = MIN(
+					curr->requested_current, 1000);
+			} else {
+				curr->requested_current = MIN(
+					curr->requested_current, 400);
+			}
+		} else if (charger_temp > 60) {
+			if (!temp_over_flag) {
+				curr->requested_current = MIN(
+					curr->requested_current, 1500);
+			} else {
+				curr->requested_current = MIN(
+					curr->requested_current, 1000);
+			}
+		} else if (charger_temp > 56) {
+			if (temp_over_flag)
+				curr->requested_current = MIN(
+					curr->requested_current, 1500);
+		} else {
+			if (temp_over_flag)
+				temp_over_flag = 0;
+		}
+	} else {
+		if (charger_temp)
+			charger_temp = 0;
+
+		if (temp_over_flag)
+			temp_over_flag = 0;
+	}
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
+	thermal_process(curr);
+
 #ifdef VARIANT_KUKUI_CHARGER_MT6370
 	mt6370_charger_profile_override(curr);
 #endif /* CONFIG_CHARGER_MT6370 */
