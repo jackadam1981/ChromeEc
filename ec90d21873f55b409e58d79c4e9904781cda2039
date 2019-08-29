@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae508350_fb801c36",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-08-29T00:42:18Z",
+      "side": 1,
+      "message": "This is fraught w/ peril. The p256_int* argument suggests you can pass a p256_int in and it will be written as 8 words. But it gets written as 32 bytes by hmac_drbg_generate() and that will cause trouble if the p256_int lives in dcrypto dmem.\nhmac_drbg_generate into local p256_int, then word copy that over to k_out?\n\nOr, better?, add hmac_drbg_generate_p256() and make sure that does word copies only, directly from drbg state.",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "ec90d21873f55b409e58d79c4e9904781cda2039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
