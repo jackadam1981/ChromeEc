@@ -367,6 +367,57 @@
       "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b6a4be_9f944cca",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-29T17:19:17Z",
+      "side": 1,
+      "message": "can you add a /* fall through */ on this?",
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57df298_21afe789",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-29T17:19:17Z",
+      "side": 1,
+      "message": "would this be more consistent as tc_snk_power_off?",
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00082c4a_2712960d",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-29T17:19:17Z",
+      "side": 1,
+      "message": "Any meaningful TEST_ASSERTs that could be added to this to verify it is performing the reset correctly, or is this tested elsewhere?",
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
