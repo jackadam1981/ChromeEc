@@ -22,6 +22,30 @@
       "revId": "ec90d21873f55b409e58d79c4e9904781cda2039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18aee58d_ec81ad47",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-29T22:21:56Z",
+      "side": 1,
+      "message": "went with the first option, seems makes sense to reuse. Done.",
+      "parentUuid": "ae508350_fb801c36",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "ec90d21873f55b409e58d79c4e9904781cda2039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
