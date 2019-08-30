@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad61f41d_2717c177",
+        "filename": "test/uptime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-30T22:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2503b428_5a02c468",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "fee6c0b1a550912026e7e4eda9ecfef4823aad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3dc47af_809a7b35",
         "filename": "test/uptime.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e931aaaa_4e246e7c",
+        "filename": "test/uptime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-30T22:22:28Z",
+      "side": 1,
+      "message": "This one can\u0027t be static because it will be considered an unused function (-Werror\u003dunused-function).",
+      "parentUuid": "e3dc47af_809a7b35",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "fee6c0b1a550912026e7e4eda9ecfef4823aad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b5d26be_e2982b06",
         "filename": "test/uptime.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "fee6c0b1a550912026e7e4eda9ecfef4823aad12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcc163f_cd0fcc2b",
+        "filename": "test/uptime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-08-30T22:22:28Z",
+      "side": 1,
+      "message": "This one can\u0027t be static because it has to match the non-static declaration: https://chromium.googlesource.com/chromiumos/platform/ec/+/fee6c0b1a550912026e7e4eda9ecfef4823aad12/include/timer.h#117",
+      "parentUuid": "3b5d26be_e2982b06",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "fee6c0b1a550912026e7e4eda9ecfef4823aad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
