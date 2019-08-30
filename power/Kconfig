@@ -123,4 +123,33 @@ config POWER_S0IX_FAILURE_DETECTION
 	depends on POWER_S0IX
 	depends on POWER_TRACK_HOST_SLEEP_STATE
 
+config HIBERNATE
+	bool "Enable system hibernate"
+	default y
+
+config HIBERNATE_DELAY_SEC
+	int "Default delay after shutting down before hibernating"
+	default "3600"
+
+config SUPPORT_CHIP_HIBERNATION
+	bool "If defined, chip hibernation is used"
+	help
+	  If defined, chip hibernation is used. Your board needs to define wake-up
+	  signals. Undefine this to use board hibernation capability.
+
+menu "External Power"
+
+config EXTPOWER
+	bool "Include code for handling external power"
+	default y
+
+config EXTPOWER_GPIO
+	bool "Support detecting external power presence via a GPIO"
+
+config EXTPOWER_DEBOUNCE_MS
+	int "Default debounce time for external power signal"
+	default 30
+
+endmenu # "External Power"
+
 endmenu # "Power"
