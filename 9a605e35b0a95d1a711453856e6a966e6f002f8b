@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "681ed2f6_d086ec57",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-30T21:41:52Z",
+      "side": 1,
+      "message": "Also used to detect tablet mode (360 open) on some convertibles.\nSimilar to hall sensor, so eg CONFIG_HALL_SENSOR includes GMR too.",
+      "revId": "9a605e35b0a95d1a711453856e6a966e6f002f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a90b52_40aa87b3",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-30T21:41:52Z",
+      "side": 1,
+      "message": "VCONN can power devices and accessories in addition to the cable (eg some display dongles, docks).",
+      "revId": "9a605e35b0a95d1a711453856e6a966e6f002f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
