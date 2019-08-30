@@ -1,0 +1,36 @@
+
+config CHARGE_MANAGER
+	bool "Compile charge manager"
+
+if CHARGE_MANAGER
+
+config DEDICATED_CHARGE_PORT_COUNT
+	int "Number of charge ports excluding type-c ports"
+	default 0
+	help
+	  If defined, the board must define a macro DEDICATED_CHARGE_PORT indicates
+	  the dedicated port number.
+
+	  See include/charger_manager.h for more details about dedicated port.
+
+config CHARGE_MANAGER_DRP_CHARGING
+	bool "Allow charge manager to default to charging from dual-role partners"
+
+config CHARGE_MANAGER_EXTERNAL_POWER_LIMIT
+	bool "Handle the external power limit host command in charge manager"
+
+config CHARGE_MANAGER_SAFE_MODE
+	bool "Initially enter safe mode, with relaxed port / current selection rules"
+	default y
+
+config CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT
+	int "Leave safe mode when battery pct meets or exceeds this value"
+	default 2
+
+config CHARGE_RAMP_HW
+	bool "The hardware has some input current ramping/back-off mechanism"
+
+config CHARGE_RAMP_SW
+	bool "Compile input current ramping support using software control"
+
+endif # CHARGE_MANAGER
