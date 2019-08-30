@@ -1,0 +1,31 @@
+
+choice # CHIP_FAMILY
+
+       prompt "NPCX family"
+
+config CHIP_NPCX_NPCX5__yn
+	bool "NPCX5"
+	select I2C_MULTI_PORT_CONTROLLER
+config CHIP_NPCX_NPCX7__yn
+	bool "NPCX5"
+	select I2C_MULTI_PORT_CONTROLLER
+
+endchoice # CHIP_FAMILY
+
+if CHIP_NPCX__yn
+
+config CHIP_FAMILY
+	string
+	default "npcx5"		if CHIP_NPCX_NPCX5__yn
+	default "npcx7"		if CHIP_NPCX_NPCX7__yn
+
+endif # CHIP_NPCX
+
+# CHIP_VARIANT:=npcx5m5g
+# CHIP_VARIANT:=npcx5m6g
+# CHIP_VARIANT:=npcx7m6f
+# CHIP_VARIANT:=npcx7m6fb
+# CHIP_VARIANT:=npcx7m6fc
+# CHIP_VARIANT:=npcx7m6g
+# CHIP_VARIANT:=npcx7m7wb
+# CHIP_VARIANT:=npcx7m7wc
