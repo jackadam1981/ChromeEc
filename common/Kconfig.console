@@ -84,17 +84,7 @@ config EXPERIMENTAL_CONSOLE
 	  EC-3PO interactive console in the util directory!  Otherwise, you won't be
 	  able to enter any commands.
 
+config FORCE_CONSOLE_RESUME
+	bool "Allow EC serial console input to wake up the EC from STOP mode"
 
-
-
-
-
-
-
-
-
-
-
-
-
-endif
+endif # CONSOLE__yn
