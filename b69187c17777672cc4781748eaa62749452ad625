@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05a7d654_a5b86e00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-08-30T07:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe12e7c8_85239f81",
+      "revId": "b69187c17777672cc4781748eaa62749452ad625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e72c310_83ff6d9b",
         "filename": "board/treeya/board.c",
         "patchSetId": 2
