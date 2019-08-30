@@ -1,0 +1,23 @@
+
+choice # CHIP_FAMILY
+
+       prompt "ISH family"
+
+config CHIP_ISH_ISH3__yn
+	bool "ISH3"
+config CHIP_ISH_ISH5__yn
+	bool "ISH5"
+
+endchoice # CHIP_FAMILY
+
+if CHIP_ISH__yn
+
+config CHIP_FAMILY
+	string
+	default "ish3"		if CHIP_ISH_ISH3__yn
+	default "ish5"		if CHIP_ISH_ISH5__yn
+
+endif # CHIP_ISH
+
+# CHIP_VARIANT:=ish3p0
+# CHIP_VARIANT:=ish5p0
