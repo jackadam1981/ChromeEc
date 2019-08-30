@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "c51dc48a_6bf01b70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-08-30T09:15:14Z",
+      "side": 1,
+      "message": "Please specify the actual input PDO is selected to 5V/3A instead of 45W only. Otherwise, it\u0027s confusing for which voltage is being used, might be 5V or 9V or 12V.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "542cee8b_8b3bc78e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-08-30T09:15:14Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb853584_c24007a4",
         "filename": "board/kodama/battery.c",
         "patchSetId": 1
