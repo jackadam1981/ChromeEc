@@ -245,6 +245,8 @@ int charger_is_sourcing_otg_power(int port)
 static void board_chipset_startup(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 1);
+	if (board_get_version() >= 1)
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -252,5 +254,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
+	if (board_get_version() >= 1)
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
