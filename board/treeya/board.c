@@ -6,6 +6,7 @@
 /* Treeya board-specific configuration */
 
 #include "button.h"
+#include "console.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -54,16 +55,22 @@ static struct lsm6dsm_data g_lsm6dsm_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 static const mat33_fp_t lsm6dsm_base_standard_ref = {
-	{ 0, FLOAT_TO_FP(1), 0},
 	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
 /* just a placeholder, will revise when board is out */
 static const mat33_fp_t lis2dwl_lid_standard_ref = {
-	{ 0, FLOAT_TO_FP(-1), 0},
-	{ FLOAT_TO_FP(-1), 0, 0},
-	{ 0, 0, FLOAT_TO_FP(-1)}
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+static const mat33_fp_t treeya_standard_ref = {
+	{ 0,  FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0,  0},
+	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
 struct motion_sensor_t lid_accel_1 = {
@@ -145,11 +152,17 @@ struct motion_sensor_t base_gyro_1 = {
 	.max_frequency = LSM6DSM_ODR_MAX_VAL,
 };
 
-/* sku_id a8-a9 use ST sensors */
 static int board_use_st_sensor(void)
 {
+	/*
+	 *sku_id a8-a9 use ST sensors in proto
+	 *only proto use KNX and BMI sensor
+	 *the other phases use ST sensors
+	 */
 	uint32_t sku_id = system_get_sku_id();
-	return sku_id == 0xa8 || sku_id == 0xa9;
+	int board_version = board_get_version();
+
+	return !(board_version == 3 && sku_id != 0xa8 && sku_id != 0xa9);
 }
 
 /* treeya board will use two sets of lid/base sensor, we need update
@@ -160,9 +173,15 @@ void board_update_sensor_config_from_sku(void)
 	if (board_is_convertible()) {
 		/* sku_id a8-a9 use ST sensors */
 		if (board_use_st_sensor()) {
+			ccprints("ST sensor is selected");
 			motion_sensors[LID_ACCEL] = lid_accel_1;
 			motion_sensors[BASE_ACCEL] = base_accel_1;
 			motion_sensors[BASE_GYRO] = base_gyro_1;
+		} else{
+			/*Need to change matrix for treeya*/
+			motion_sensors[LID_ACCEL].rot_standard_ref = &treeya_standard_ref;
+			motion_sensors[BASE_ACCEL].rot_standard_ref = &treeya_standard_ref;
+			motion_sensors[BASE_GYRO].rot_standard_ref = &treeya_standard_ref;
 		}
 
 		/* Enable Gyro interrupts */
