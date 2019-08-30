@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7a9d2e9_8e733f31",
+        "filename": "board/ec_template/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-08-30T21:14:15Z",
+      "side": 1,
+      "message": "I like the idea but I don\u0027t see a significant value in the current patch set because it focuses on one particular chip and lots of undefined CONFIGs.\n\nIt would be nice to implement templates for all chips and SoCs (as a script in util/ directory) instead of creating a template for each chip and SoC under board/.\n\nUltimately, I hope we can do \u0027make menuconfig\u0027 like linux kernel.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
