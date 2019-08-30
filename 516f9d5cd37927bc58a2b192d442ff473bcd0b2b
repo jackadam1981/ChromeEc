@@ -22,6 +22,30 @@
       "revId": "516f9d5cd37927bc58a2b192d442ff473bcd0b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10230407_57a6013f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-30T19:03:36Z",
+      "side": 1,
+      "message": "This is the order the existing code performs these two lines, so I left it as it was to not break something that should already be working.  I wanted to reverse these lines but was uncomfortable changing the order from what was already there.",
+      "parentUuid": "e3e67385_935a5b4a",
+      "range": {
+        "startLine": 1412,
+        "startChar": 1,
+        "endLine": 1412,
+        "endChar": 14
+      },
+      "revId": "516f9d5cd37927bc58a2b192d442ff473bcd0b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
