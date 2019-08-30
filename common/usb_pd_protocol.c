@@ -1759,8 +1759,6 @@ static void handle_ctrl_request(int port, uint16_t head,
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY) {
 			/* reset message ID and swap roles */
 			pd[port].msg_id = 0;
-			pd_set_power_role(port, PD_ROLE_SINK);
-			pd_update_roles(port);
 			/*
 			 * Give the state machine time to read VBUS as high.
 			 * Note: This is empirically determined, not strictly
@@ -3725,6 +3723,10 @@ void pd_task(void *u)
 				/* Send PS_RDY */
 				res = send_control(port, PD_CTRL_PS_RDY);
 				if (res < 0) {
+					/* Restore Rp and power role */
+					tcpm_set_cc(port, TYPEC_CC_RP);
+					pd_set_power_role(port, PD_ROLE_SOURCE);
+					pd_update_roles(port);
 					timeout = 10*MSEC;
 					set_state(port,
 						  PD_STATE_SRC_DISCONNECTED);
@@ -4248,15 +4250,28 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_SWAP_SRC_DISABLE:
 			/* Wait for PS_RDY */
-			if (pd[port].last_state != pd[port].task_state)
+			if (pd[port].last_state != pd[port].task_state) {
+				/*
+				 * Update goodcrc message header power role
+				 * field to be SRC for repsonding PS_RDY.
+				 * But now our cc should keep asserting Rd,
+				 * later receiving PS_RDY will switch to Rp.
+				 * ellisys ? side effect ?
+				 */
+				pd_set_power_role(port, PD_ROLE_SOURCE);
+				pd_update_roles(port);
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_T_PS_SOURCE_OFF,
 						  PD_STATE_HARD_RESET_SEND);
+			}
 			break;
 		case PD_STATE_SNK_SWAP_STANDBY:
 			if (pd[port].last_state != pd[port].task_state) {
-				/* Switch to Rp and enable power supply. */
+				/*
+				 * Now switch to Rp for match our SRC power
+				 * role. And enable power supply.
+				 */
 				tcpm_set_cc(port, TYPEC_CC_RP);
 				if (pd_set_power_supply_ready(port)) {
 					/* Restore Rd */
@@ -4275,11 +4290,13 @@ void pd_task(void *u)
 			}
 			break;
 		case PD_STATE_SNK_SWAP_COMPLETE:
-			/* Send PS_RDY and change to source role */
+			/* Send PS_RDY */
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res < 0) {
-				/* Restore Rd */
+				/* Restore Rd and power role */
 				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd_set_power_role(port, PD_ROLE_SINK);
+				pd_update_roles(port);
 				pd_power_supply_reset(port);
 				timeout = 10 * MSEC;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
@@ -4290,10 +4307,9 @@ void pd_task(void *u)
 			snk_cap_count = PD_SNK_CAP_RETRIES+1;
 			caps_count = 0;
 			pd[port].msg_id = 0;
-			pd_set_power_role(port, PD_ROLE_SOURCE);
-			pd_update_roles(port);
 			set_state(port, PD_STATE_SRC_DISCOVERY);
-			timeout = 10*MSEC;
+			/* Wait for not too early send SRC_Cap, ch.6.6.8 */
+			timeout = PD_T_SWAP_SOURCE_START;
 			break;
 #ifdef CONFIG_USBC_VCONN_SWAP
 		case PD_STATE_VCONN_SWAP_SEND:
