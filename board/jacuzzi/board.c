@@ -248,10 +248,26 @@ static void board_chipset_startup(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
+static void disable_gpio_pp1800_deferred(void);
+DECLARE_DEFERRED(disable_gpio_pp1800_deferred);
+
+static void disable_gpio_pp1800_deferred(void)
+{
+	if (power_get_state() == POWER_G3)
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 1);
+	else if (power_get_state() == POWER_S5G3)
+		/* still transitioning, wait a few seconds and try again */
+		hook_call_deferred(&disable_gpio_pp1800_deferred_data,
+			3 * SECOND);
+}
+
 /* Called on AP S3 -> S5 transition */
 static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
+	if (board_get_version() >= 1)
+		hook_call_deferred(&disable_gpio_pp1800_deferred_data,
+			3 * SECOND);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -260,3 +276,10 @@ int board_get_charger_i2c(void)
 	/* TODO(b:138415463): confirm the bus allocation for future builds */
 	return board_get_version() == 1 ? 2 : 1;
 }
+
+void board_chipset_pre_init(void)
+{
+	if (board_get_version() >= 1)
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
