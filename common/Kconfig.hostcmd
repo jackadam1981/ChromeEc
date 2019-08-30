@@ -93,6 +93,10 @@ config HOSTCMD_SPS
 config HOSTCMD_PD
 	bool "PD MCU supports host commands"
 
+config EC_CMD_PD_CHIP_INFO
+	bool "EC supports EC_CMD_PD_CHIP_INFO"
+	default y
+
 config HOSTCMD_PD_CHG_CTRL
 	bool "HOSTCMD_PD_CHG_CTRL"
 	help
