@@ -165,3 +165,36 @@ void uartn_init(int uart)
 	uartn_enable_interrupt(uart);
 #endif
 }
+
+#ifndef SECTION_IS_RO
+
+static void toggle_diom4(void)
+{
+	gpio_set_level(GPIO_DIOM4, 0);
+	gpio_set_level(GPIO_DIOM4, 1);
+}
+
+static int command_testuart(int argc, char **argv)
+{
+	const char *string = "\nthis is a long string A0123456789abcdefB0123456789abcdefC0123456789abcdef\n";
+
+	interrupt_disable();
+
+	toggle_diom4(); /* Start printing the string. */
+
+	do {
+		uartn_write_char(0, *string++);
+	} while(*string);
+
+	toggle_diom4();  /* Finished putting the string into the UART TX FIFO. */
+
+	uartn_tx_flush(0);
+
+	toggle_diom4(); /* Finished printing the string. */
+
+	interrupt_enable();
+	ccputs("\n");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(testuart, command_testuart, "", "");
+#endif
