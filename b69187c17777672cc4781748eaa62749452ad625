@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe12e7c8_85239f81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-30T06:53:41Z",
+      "side": 1,
+      "message": "do not assume only ST will be used. Assume both of them will be used in the future.",
+      "revId": "b69187c17777672cc4781748eaa62749452ad625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e72c310_83ff6d9b",
         "filename": "board/treeya/board.c",
         "patchSetId": 2
