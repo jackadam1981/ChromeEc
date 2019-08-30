@@ -22,6 +22,30 @@
       "revId": "7ba53f8c635f1653b3434bbd623e98d63a3f7fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c0dcf2_0a5a4e14",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-30T19:03:25Z",
+      "side": 1,
+      "message": "The old code used to look at the message itself to determine we were on the first chunk and used that to trigger the cleanup. It does not feel as safe as it could be using the data provided by the outside world as requiring it to be valid.\n\nIt is known that we are starting a chunked message at this point in the code.  The message is not required to be correct to get this state of which chunk we are on.  This will make it safer in the case of a chunked message that has a lot of chunk numbers set to 0, which would allow a whole lot of chunks to go through that are meaningless.",
+      "parentUuid": "fda8032f_3cf0707b",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 885,
+        "endChar": 0
+      },
+      "revId": "7ba53f8c635f1653b3434bbd623e98d63a3f7fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
