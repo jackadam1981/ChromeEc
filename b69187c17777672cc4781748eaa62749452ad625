@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e72c310_83ff6d9b",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-30T06:44:43Z",
+      "side": 1,
+      "message": "remove this comment if this is formal matrix",
+      "revId": "b69187c17777672cc4781748eaa62749452ad625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831bb5f0_d08558b8",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-30T06:44:43Z",
+      "side": 1,
+      "message": "leave space between * and comment words",
+      "revId": "b69187c17777672cc4781748eaa62749452ad625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32792550_dcc08002",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-30T06:44:43Z",
+      "side": 1,
+      "message": "In my understanding, you need not differentiate board version, just follow sku-id allocation because sku_id allocation cover all cases.",
+      "revId": "b69187c17777672cc4781748eaa62749452ad625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52f7679_cc56813a",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-08-30T06:44:43Z",
+      "side": 1,
+      "message": "this output is not neccessary, remove it",
+      "revId": "b69187c17777672cc4781748eaa62749452ad625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
