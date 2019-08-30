@@ -1,0 +1,38 @@
+
+if CHIP_NPCX__yn
+
+choice # CHIP_FAMILY
+
+       prompt "NPCX family"
+
+config CHIP_NPCX_NPCX5__yn
+	bool "NPCX5"
+	select I2C_MULTI_PORT_CONTROLLER
+config CHIP_NPCX_NPCX7__yn
+	bool "NPCX7"
+	select I2C_MULTI_PORT_CONTROLLER
+
+endchoice # CHIP_FAMILY
+
+config CHIP_FAMILY
+	string
+	default "npcx5"		if CHIP_NPCX_NPCX5__yn
+	default "npcx7"		if CHIP_NPCX_NPCX7__yn
+
+config CONSOLE_UART
+	int "Console UART"
+	default 0
+	help
+	  Select which UART controller is the console UART:
+	  0:UART1 1:UART2.
+
+endif # CHIP_NPCX__yn
+
+# CHIP_VARIANT:=npcx5m5g
+# CHIP_VARIANT:=npcx5m6g
+# CHIP_VARIANT:=npcx7m6f
+# CHIP_VARIANT:=npcx7m6fb
+# CHIP_VARIANT:=npcx7m6fc
+# CHIP_VARIANT:=npcx7m6g
+# CHIP_VARIANT:=npcx7m7wb
+# CHIP_VARIANT:=npcx7m7wc
