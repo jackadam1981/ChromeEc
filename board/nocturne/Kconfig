@@ -1,2 +1,85 @@
-config BOARD_NOCTURNE
+
+config BOARD_NOCTURNE__yn
 	select ADC
+#	select ALS
+#	select ALS_OPT3001
+	select BATTERY_SMART
+	select BOARD_VERSION_CUSTOM
+	select BOARD_FORCE_RESET_PIN
+	select CHIP_PANIC_BACKUP
+	select DPTF
+	select FPU
+	select I2C
+	select I2C_MASTER
+	select KEYBOARD__yn
+	select LID_SWITCH
+	select LOW_POWER_IDLE
+	select LTO
+#	select PWM
+#	select PWM_KBLIGHT
+	select SHA256_UNROLLED
+	select SOFTWARE_PANIC
+
+
+
+
+
+# ================================================================
+
+config DPTF
+	bool "Enable DPTF to manage thermals"
+	select TEMP_SENSOR
+	help
+	  If defined, DPTF is enabled to manage thermals.
+
+	  NOTE: This doesn't mean that thermal control is completely taken care by
+	  DPTF. We have some hybrid solutions where the EC still manages the fans.
+
+	  DPTF must have temperature sensor enabled to get the readings for
+	  generating DPTF thresholds events.
+
+config FPU
+	bool "Enable support for floating point unit"
+
+config I2C
+	bool "Enable I2C support"
+
+config I2C_MASTER
+	bool "EC uses an I2C master interface"
+
+config LID_SWITCH
+	bool "Compile lid switch support"
+	default y
+	help
+	  This is enabled by default because all boards other than reference boards
+	  are for laptops with lid switchs.  Reference boards #undef it.
+
+
+menu LPI
+
+config LOW_POWER_IDLE
+	bool "low power idle"
+	help
+	  Low power idle options. These are disabled by default and all boards that
+	  want to use low power idle must define it. When using the LFIOSC, the low
+	  frequency clock will be used to conserve even more power when possible.
+
+	  GPIOs which need to trigger interrupts in low power idle must specify the
+	  GPIO_INT_DSLEEP flag in gpio_list[].
+
+	  Note that for some processors (e.g. LM4), an active JTAG connection will
+	  prevent the EC from using low-power idle.
+
+config LOW_POWER_USE_LFIOSC
+	bool "Use LFIOSC"
+
+config LOW_POWER_IDLE_LIMITED
+	bool "Allows us to enable/disable low power idle mode in runtime"
+
+config LOW_POWER_S0
+	bool "Enable deep sleep during S0 (ignores SLEEP_MASK_AP_RUN)"
+
+endmenu
+
+config LTO
+	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
