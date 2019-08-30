@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1851a34_15ce11ff",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-08-30T08:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c1eb00_7b1123b1",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "de8b7c3a37ee67bb82d0717792ec118b6b9f1f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3a244c7_906d3b44",
         "filename": "common/tablet_mode.c",
         "patchSetId": 5
