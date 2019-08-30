@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4866e5f9_e8e78cb9",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-30T18:37:19Z",
+      "side": 1,
+      "message": "nit: we should put a return after set_state or remove the other returns.\n\nReturn is theoretically the safest, but it just depends on the function itself how likely it will be that other stuff will happen after setting state",
+      "range": {
+        "startLine": 884,
+        "startChar": 4,
+        "endLine": 884,
+        "endChar": 17
+      },
+      "revId": "6a3311f758c4cb8230c0d1d10b0fea7894a41a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
