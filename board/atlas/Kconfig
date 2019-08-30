@@ -1,5 +1,5 @@
 
-config BOARD_ATLAS
+config BOARD_ATLAS__yn
 	select ADC
 #	select ALS
 #	select ALS_OPT3001
