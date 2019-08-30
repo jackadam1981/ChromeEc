@@ -475,6 +475,29 @@
     },
     {
       "key": {
+        "uuid": "568f172f_cd42de8b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-08-30T17:12:17Z",
+      "side": 1,
+      "message": "Isn\u0027t this known to not be defined based on the #else for the #ifdef CONFIG_USB_PE_SM?",
+      "range": {
+        "startLine": 1981,
+        "startChar": 6,
+        "endLine": 1981,
+        "endChar": 34
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b57df298_21afe789",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 7
