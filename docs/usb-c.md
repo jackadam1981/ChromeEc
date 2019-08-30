@@ -75,6 +75,15 @@ Modes in the EC codebase.
     *   Downstream Facing Port. The USB Data role that is typical for a host
         machine (e.g. device running ChromeOS).
 
+*   E-Mark {#emark}
+    *   Electronically marked cable. A USB-C cable that contains an embedded
+        chip in the cable, used to identify the capabilities of the cable.
+
+*   VCONN {#vconn}
+    *   Connector Voltage. VCONN is a signal on [E-Mark](#emark) cables that
+        provides power to the E-Mark chip. VCONN re-uses one of the CC1/CC2
+        signals to provide 5 volt, 1 watt, of power to the cable.
+
 ## Different PD stacks
 
 Right now platform/ec has two different implementations of USB-C PD stack.
