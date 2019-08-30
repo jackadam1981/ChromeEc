@@ -387,6 +387,21 @@ static void board_gpio_set_pp5000(void)
 
 }
 
+static void board_set_motion_sensor_count(uint8_t sku_id)
+{
+	/*
+	 * There are two possible sensor configurations. Clamshell device will
+	 * not have any of the motion sensors populated, while convertible
+	 * devices have the BMI160 Accel/Gryo lid acceleration
+	 * sensor. If a new SKU id is used that is not in the table, then the
+	 * number of motion sensors will remain as ARRAY_SIZE(motion_sensors).
+	 */
+	motion_sensor_count = SKU_IS_CONVERTIBLE(sku_id) ?
+		ARRAY_SIZE(motion_sensors) : 0;
+
+	CPRINTS("Motion Sensor Count = %d", motion_sensor_count);
+}
+
 static void board_init(void)
 {
 	/* Initialize Fans */
@@ -397,6 +412,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
 	/* Select correct gpio signal for PP5000_A control */
 	board_gpio_set_pp5000();
+	/* Use sku_id to set motion sensor count */
+	board_set_motion_sensor_count(get_board_sku());
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
