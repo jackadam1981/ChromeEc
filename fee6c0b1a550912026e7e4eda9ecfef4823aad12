@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5b8149d0_dbf5068a",
+        "filename": "test/uptime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-30T22:24:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e931aaaa_4e246e7c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "fee6c0b1a550912026e7e4eda9ecfef4823aad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b5d26be_e2982b06",
         "filename": "test/uptime.c",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "This one can\u0027t be static because it has to match the non-static declaration: https://chromium.googlesource.com/chromiumos/platform/ec/+/fee6c0b1a550912026e7e4eda9ecfef4823aad12/include/timer.h#117",
       "parentUuid": "3b5d26be_e2982b06",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "fee6c0b1a550912026e7e4eda9ecfef4823aad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdb4383c_d58c7f9b",
+        "filename": "test/uptime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-08-30T22:24:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebcc163f_cd0fcc2b",
       "range": {
         "startLine": 26,
         "startChar": 0,
