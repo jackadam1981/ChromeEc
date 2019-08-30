@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ea8075e9_f3ebaaa4",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-08-30T15:09:46Z",
+      "side": 1,
+      "message": "Also, let\u0027s add a comment explaining why i2c needs to happen this earlier (e.g. keyboard scan and cbi eeprom prerequisites)",
+      "parentUuid": "f9b9f10b_74e930a7",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ec88dea_78374432",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
