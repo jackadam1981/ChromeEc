@@ -57,6 +57,24 @@
       "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0785ca6_396d4b34",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-08-30T06:42:50Z",
+      "side": 1,
+      "message": "Please see https://crrev.com/c/1660522 for handling mutex.",
+      "parentUuid": "495699f4_82b31a86",
+      "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
