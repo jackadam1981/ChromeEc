@@ -39,6 +39,24 @@
       "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "495699f4_82b31a86",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-08-30T03:31:16Z",
+      "side": 1,
+      "message": "It is a good idea.\nThere is a possibility that rt946x_get_charger_temp() and charger_get_vbus_voltage().With adding more ec logs, when plugging adapter, charger_get_vbus_voltage() will be called. In aadition, I observed charger temperature value is large, e.g. 450C.",
+      "parentUuid": "bd7b4bc8_3650a9e3",
+      "revId": "153a874b59e79421b1c54276c305c96f5141cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
