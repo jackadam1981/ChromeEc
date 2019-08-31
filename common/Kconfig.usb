@@ -1,0 +1,232 @@
+
+menu "USB Setup"
+
+config USB_CONSOLE
+	bool "Enable USB serial console module"
+
+config USB_CONSOLE_TX_BUF_SIZE
+	int "USB serial console transmit buffer size in bytes"
+	default 2048
+#	depends on USB_CONSOLE
+
+config USB_CONSOLE_CRC
+	bool "Enable USB serial console crc32 computation"
+	help
+	  Also makes console output block on overrun.
+
+config USB_HID
+	bool "Support USB HID interface"
+
+config USB_HID_KEYBOARD
+	bool "Support USB HID keyboard interface"
+
+config USB_HID_KEYBOARD_BACKLIGHT
+	bool "Support USB HID keyboard backlight"
+
+config USB_HID_TOUCHPAD
+	bool "Support USB HID touchpad interface"
+
+config USB_INHIBIT_CONNECT
+	bool "Disable automatic connection of USB peripheral"
+
+config USB_INHIBIT_INIT
+	bool "Disable automatic initialization of USB peripheral"
+
+config USB_SELECT_PHY
+	bool "Support control of multiple PHY"
+
+config USB_PORT_POWER_DUMB
+	bool "Support simple control of power to the device's USB ports"
+
+config USB_PORT_POWER_SMART
+	bool "Support smart power control to the device's USB ports"
+	help
+	  Support smart power control to the device's USB ports, using
+	  dedicated power control chips.  This potentially enables automatic
+	  negotiation of supplying more power to peripherals.
+
+config USB_PORT_POWER_SMART_CDP_SDP_ONLY
+	bool "USB_PORT_POWER_SMART_CDP_SDP_ONLY"
+	help
+	  Support smart power control to the device's USB ports, however only CDP and
+	  SDP are supported.  Usually this is the case if all the control lines to the
+	  charging port controller are hard-wired.
+
+config USB_PORT_POWER_SMART_SIMPLE
+	bool "USB_PORT_POWER_SMART_SIMPLE"
+	help
+	  Smart USB power control can use a full set of control signals to the USB
+	  port power chip, or a reduced set.  If this is defined, use the reduced set.
+
+config USB_PORT_POWER_SMART_PORT_COUNT
+	int "Number of smart USB power ports"
+	default 2
+
+config USB_PORT_POWER_SMART_INVERTED
+	bool "USB_PORT_POWER_SMART_INVERTED"
+	help
+	  Smart USB power control current limit pins may be inverted.  In this case
+	  they are active low and the GPIO names will be GPIO_USBn_ILIM_SEL_L.
+
+config USB_REMOTE_WAKEUP
+	bool "USB_REMOTE_WAKEUP"
+	help
+	  Support waking up host by setting the K-state on the data lines (requires
+	  CONFIG_USB_SUSPEND to be set as well).
+
+config USB_SERIALNO
+	bool "Support programmable USB device iSerial field"
+
+config USB_MAXPOWER_MA
+	int "Support reporting of configuration bMaxPower in mA"
+	default 500
+
+config USB_SELF_POWERED
+	bool "Support reporting as self powered in USB configuration"
+
+config USB_SUSPEND
+	bool "Support correct handling of USB suspend (host-initiated)"
+
+config USB_DWC_FS
+	bool "Set USB speed to FS rather than HS"
+
+config USB_MUX_IT5205
+	bool "Support the ITE IT5205 Type-C USB alternate mode mux"
+
+config USB_MUX_PI3USB30532
+	bool "Support the Pericom PI3USB30532 USB3.0/DP1.2 Matrix Switch"
+
+config USB_MUX_PS8740
+	bool "Support the Parade PS8740 Type-C Redriving Switch"
+
+config USB_MUX_PS8743
+	bool "Support the Parade PS8743 Type-C Redriving Switch"
+
+config USB_MUX_VIRTUAL
+	bool "'Virtual' USB mux under host (not EC) control"
+
+config USB_GPIO
+	bool "USB GPIO config"
+
+config USB_SPI
+	bool "USB SPI config"
+
+config USB_I2C
+	bool "USB I2C config"
+
+config USB_I2C_MAX_WRITE_COUNT
+	int "Allowed write count for USB over I2C"
+	default 60
+
+config USB_I2C_MAX_READ_COUNT
+	int "Allowed read count for USB over I2C"
+	default 60
+
+config USB_POWER
+	bool "USB Power monitoring interface config"
+
+config STREAM_SIGNATURE
+	bool "STREAM_SIGNATURE"
+	help
+	  USB stream signing config. This allows data read over UART or SPI
+	  to have a signature generated that can be used to validate the data
+	  offline based on H1's registered key. Used by mn50.
+
+endmenu # USB Setup
+
+menu "USB Type-C Setup"
+
+config USBC_PPC_POLARITY
+	bool "PPC needs to be informed of CC polarity"
+
+config USBC_DISABLE_CHARGE_FROM_RP_DEF
+       	bool "Disable charging from Default(USB) Rp"
+	help
+	  Disable charging from Default(USB) Rp as a type-c supplier. If your device
+	  can detect such a supplier by BC 1.2, define this to get more current
+	  from a BC 1.2 supplier.
+
+config USBC_SS_MUX
+	bool "Support for USB type-c superspeed mux"
+
+config USBC_SS_MUX_DFP_ONLY
+	bool "Only configure USB type-c superspeed mux when DFP"
+	depends on USBC_SS_MUX
+	help
+	  Only configure USB type-c superspeed mux when DFP (for chipsets that
+	  don't support being a UFP)
+
+config USBC_BACKWARDS_COMPATIBLE_DFP
+	bool "Support v1.1 type-C connection state machine"
+
+config USBC_VCONN
+	bool "Support for USB type-c vconn. Not needed for captive cables"
+
+config USBC_VCONN_SWAP
+	bool "Support VCONN swap"
+	depends on USBC_VCONN
+
+config USB_SM_FRAMEWORK
+	bool "Use Power Delivery State Machine Framework"
+	help
+	  Define to use Power Delivery State Machine Framework. Along with
+	  CONFIG_USB_SM_FRAMEWORK, you must ensure the follow options are defined to
+	  use the new statemachine for USB-C:
+
+	  CONFIG_USB_TYPEC_SM (defined by default)
+	  CONFIG_USB_PRL_SM (defined by default)
+	  One of CONFIG_USB_PE_* policy engine options.
+
+config USB_TYPEC_SM
+	bool "Enable Type-C State Machine"
+	default y
+	help
+	  Define to enable Type-C State Machine. Must be enabled
+	  with CONFIG_USB_SM_FRAMEWORK
+
+config USB_PRL_SM
+	bool "Enable Protocol Layer State Machine"
+	default y
+	help
+	  Define to enable Protocol Layer State Machine. Must be enabled
+	  with CONFIG_USB_SM_FRAMEWORK and CONFIG_USB_TYPEC_SM
+
+config USB_PE_SM
+	bool "Enable Policy Engine State Machine"
+	default y
+	help
+	  Define to enable Policy Engine State Machine. Must be enabled
+	  with CONFIG_USB_SM_FRAMEWORK and CONFIG_USB_TYPEC_SM
+
+endmenu
+
+config USBC_PPC
+	bool "board has a USB Type-C Power Path Controller"
+
+if USBC_PPC
+
+choice
+	prompt "USB Type-C Power Path Controllers (PPC)"
+
+config USBC_PPC_NX20P3481
+	bool "NX20P3481"
+config USBC_PPC_NX20P3483
+	bool "NX20P3483"
+config USBC_PPC_SN5S330
+	bool "SN5S330"
+config USBC_PPC_SYV682X
+	bool "SYV682X"
+
+endchoice
+
+config USBC_PPC_SBU
+	bool "PPC is capable of gating the SBU lines"
+
+config USBC_PPC_VCONN
+	bool "PPC is capable of providing VCONN"
+
+config USBC_PPC_DEDICATED_INT
+	bool "PPC has level interrupts and has a dedicated interrupt pin to check"
+
+endif # USBC_PPC
+
