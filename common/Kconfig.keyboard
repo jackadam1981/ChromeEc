@@ -1,0 +1,183 @@
+
+config MKBP_EVENT
+	bool "Support MKBP event"
+
+if MKBP_EVENT
+
+config MKBP_USE_HOST_EVENT
+	bool "MKBP events are sent by using host event"
+
+config MKBP_USE_GPIO
+	bool "MKBP events are sent by using GPIO"
+
+endif # MKBP_EVENT
+
+config KEYBOARD__yn
+	bool "Keyboard support"
+
+if KEYBOARD__yn
+
+config KEYBOARD_COL2_INVERTED
+	bool "KEYBOARD_COL2_INVERTED"
+	help
+	  The Silego reset chip sits in between the EC and the physical keyboard on
+	  column 2.  To save power in low-power modes, some Silego variants require
+	  the signal to be inverted so that the open-drain output from the EC isn't
+	  costing power due to the pull-up resistor in the Silego.
+
+config KEYBOARD_REFRESH_ROW3
+	bool "KEYBOARD_REFRESH_ROW3"
+	help
+	  Keyboards with the assistant key also move the refresh key matrix to row 3
+	  instead of row 2.  This is used by the boot key detection code to determine
+	  if the refresh key is held down at boot.
+
+config KEYBOARD_KSO_BASE__yn
+	bool "Select CONFIG_KEYBOARD_KSO_BASE"
+	default y
+config KEYBOARD_KSO_BASE
+	int "KEYBOARD_KSO_BASE"
+	default 0
+	help
+	  Config KSO to start from a different KSO pin. This is to allow some chips
+	  to use alternate functions on KSO pins.
+
+config KEYBOARD_PWRBTN_ASSERTS_KSI2
+	bool "KEYBOARD_PWRBTN_ASSERTS_KSI2"
+	help
+	  For certain board configurations, KSI2 or KSI3 will be stuck asserted for all
+	  scan columns if the power button is held. We must be aware of this case
+	  in order to correctly handle recovery mode key combinations.
+
+config KEYBOARD_PWRBTN_ASSERTS_KSI3
+	bool "KEYBOARD_PWRBTN_ASSERTS_KSI3"
+	help
+	  For certain board configurations, KSI2 or KSI3 will be stuck asserted for all
+	  scan columns if the power button is held. We must be aware of this case
+	  in order to correctly handle recovery mode key combinations.
+
+
+config KEYBOARD_DEBUG
+	bool "Enable extra debugging output from keyboard modules"
+
+config KEYBOARD_IRQ_GPIO
+	bool "The board uses a negative edge-triggered GPIO for keyboard interrupts"
+
+choice
+	prompt "Keyboard protocol"
+
+config KEYBOARD_PROTOCOL_8042
+	bool "Compile code for 8042 keyboard protocol"
+
+config KEYBOARD_PROTOCOL_MKBP
+	bool "Compile code for MKBP keyboard protocol"
+	select MKBP_EVENT
+
+endchoice
+
+config KEYBOARD_FACTORY_TEST
+	bool "Support keyboard factory test scanning"
+
+config KEYBOARD_BOARD_CONFIG
+	bool "KEYBOARD_BOARD_CONFIG"
+	help
+	  Keyboard config (struct keyboard_scan_config) is in board.c.  If this is
+	  not defined, default values from common/keyboard_scan.c will be used.
+
+config KEYBOARD_BOOT_KEYS
+	bool "KEYBOARD_BOOT_KEYS"
+	default y
+	help
+	  Support for boot key combinations (e.g. refresh key being held on boot to
+	  trigger recovery).
+
+config KEYBOARD_ASSISTANT_KEY
+	bool "Add support for the assistant key"
+
+config KEYBOARD_TABLET_MODE_SWITCH
+	bool "Add support for a switch that indicates if the device is in tablet mode"
+
+config KEYBOARD_POST_SCAN_CLOCKS__yn
+	bool "Select KEYBOARD_POST_SCAN_CLOCKS"
+config KEYBOARD_POST_SCAN_CLOCKS
+	int "KEYBOARD_POST_SCAN_CLOCKS"
+	depends on KEYBOARD_POST_SCAN_CLOCKS__yn
+	help
+	  Minimum CPU clocks between scans.  This ensures that keyboard scanning
+	  doesn't starve the other EC tasks of CPU when running at a decreased system
+	  clock.
+
+config KEYBOARD_PRINT_SCAN_TIMES
+	bool "Print keyboard scan time intervals"
+
+config KEYBOARD_RUNTIME_KEYS
+	bool "Select KEYBOARD_RUNTIME_KEYS"
+	default y if !BOARD_HAMMER
+config KEYBOARD_RUNTIME_KEYS
+	bool "KEYBOARD_RUNTIME_KEYS"
+	help
+	  Support for extra runtime key combinations (e.g. alt+volup+h/r for hibernate
+	  and warm reboot, respectively).
+
+
+config KEYBOARD_RUNTIME_KEYS
+	bool "KEYBOARD_RUNTIME_KEYS"
+	help
+	  Support for extra runtime key combinations (e.g. alt+volup+h/r for hibernate
+	  and warm reboot, respectively).
+
+config KEYBOARD_SCANCODE_MUTABLE
+	bool "Allow the keyboard scan code set tables to be modified at runtime"
+
+
+config KEYBOARD_SCANCODE_CALLBACK
+	bool "Allow board-specific 8042 keyboard callback when a key state is changed"
+
+config KEYBOARD_SUPPRESS_NOISE
+	bool "KEYBOARD_SUPPRESS_NOISE"
+	help
+	  Call board-supplied keyboard_suppress_noise() function when the debounced
+	  keyboard state changes.  Some boards use this to send a signal to the audio
+	  codec to suppress typing noise picked up by the microphone.
+
+config KEYBOARD_TEST
+	bool "KEYBOARD_TEST"
+	help
+	  Enable keyboard testing functionality. This enables a message which receives
+	  a list of keyscan events from the AP and processes them.  This will cause
+	  keypresses to appear on the AP through the same mechanism as a normal
+	  keyboard press.
+
+	  This can be used to spoof keyboard events, so is not normally defined,
+	  except during internal testing.
+
+config KEYBOARD_KSO_HIGH_DRIVE
+	bool "KEYBOARD_KSO_HIGH_DRIVE"
+	help
+	  Enable quasi-bidirectional buffers for KSO pins. It has an open-drain output
+	  and a low-impedance pull-up. The low-impedance pull-up is active when ec
+	  changes the output data buffers from 0 to 1, thereby reducing the
+	  low-to-high transition time.
+
+config KEYBOARD_LANGUAGE_ID
+	bool "Add support for keyboards with language ID pins"
+
+config KEYBOARD_KEYPAD
+	bool "Enable keypad (a palm-sized keyboard section usually placed on the far right)"
+
+config KEYBOARD_BACKLIGHT
+	bool "Support keyboard backlight control"
+	help
+	  You need to define board_kblight_init unless PWM_KBLIGHT is used.
+	  For example, lm3509 can be registered as a driver in board_kblight_init.
+
+config PWM_KBLIGHT
+	bool "Support keyboard backlight control"
+	select PWM
+	select KEYBOARD_BACKLIGHT
+	help
+	  You need to define board_kblight_init unless CONFIG_PWM_KBLIGHT is used.
+	  For example, lm3509 can be registered as a driver in board_kblight_init.
+
+
+endif # KEYBOARD__yn
