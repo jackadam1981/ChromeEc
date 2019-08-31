@@ -3,10 +3,6 @@ menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
 
-menu "LED setup"
-source "common/Kconfig.led"
-endmenu
-
 menu "Console commands"
 source "common/Kconfig.cmd"
 endmenu
