@@ -1,0 +1,271 @@
+
+config HAVE_BATTERY_BQ20Z453
+	bool
+	select BATTERY
+	select BATTERY_BQ20Z453
+
+config HAVE_BATTERY_BQ27541
+	bool
+	select BATTERY
+	select BATTERY_BQ27541
+
+config HAVE_BATTERY_BQ27621
+	bool
+	select BATTERY
+	select BATTERY_BQ27621
+
+config HAVE_BATTERY_BQ4050
+	bool
+	select BATTERY
+	select BATTERY_BQ4050
+
+config HAVE_BATTERY_MAX17055
+	bool
+	select BATTERY
+	select BATTERY_MAX17055
+
+config HAVE_BATTERY_MM8013
+	bool
+	select BATTERY
+	select BATTERY_MM8013
+
+config HAVE_BATTERY_SMART
+	bool
+	select BATTERY
+	select BATTERY_SMART
+
+config HAVE_BATTERY_MOCK
+	bool
+	select BATTERY
+	select BATTERY_MOCK
+
+config HAVE_BATTERY_DEVICE_CHEMISTRY_LION
+	bool
+
+#
+
+config BATTERY
+	bool "Battery support"
+
+if BATTERY
+
+# TODO: should battery type be a "choice"?
+
+menu "Battery parameters"
+
+menu "Battery type"
+
+config BATTERY_SMART
+	bool "Smart battery support"
+	help
+	  For batteries which support this specification:
+	  http://sbs-forum.org/specs/sbdat110.pdf
+
+config BATTERY_BQ20Z453
+	bool "BQ20Z453"
+
+config BATTERY_BQ27541
+	bool "BQ27541"
+
+config BATTERY_BQ27621
+	bool "BQ27621"
+
+config BATTERY_BQ4050
+	bool "BQ4050"
+
+config BATTERY_MAX17055
+	bool "MAX17055"
+
+config BATTERY_MAX17055_ALERT
+	bool "MAX17055_ALERT"
+	depends on BATTERY_MAX17055
+	help
+	  MAX17055 support alert on voltage, current, temperature, and state-of-charge.
+
+config BATTERY_MAX17055_FULL_MODEL
+	bool "Enable full model driver of MAX17055"
+	depends on BATTERY_MAX17055
+	help
+	  It provides a better soc estimation. ocv_table needs to be supplied.
+
+config BATTERY_MM8013
+	bool "MM8013"
+
+endmenu # Battery type
+
+config BATTERY_MOCK
+	bool "Compile mock battery support - used by tests"
+
+config BATTERY_PRECHARGE_TIMEOUT
+	int "Maximum time to wake a non-responsive battery, in second"
+	default 30
+
+config BATTERY_HW_PRESENT_CUSTOM
+	bool "BATTERY_HW_PRESENT_CUSTOM"
+	help
+	  If defined, the charger will check a board specific function for battery hw
+	  presence as an additional condition to determine if power on is allowed for
+	  factory override, where allowing booting of a bare board with no battery and
+	  no power button press is required.
+
+config BATTERY_PRESENT_CUSTOM
+	bool "BATTERY_PRESENT_CUSTOM"
+	help
+	   If defined, the charger will check for battery presence before attempting
+	   to communicate with it. This avoids the 30 second delay when booting
+	   without a battery present. Do not use with CONFIG_BATTERY_PRESENT_GPIO.
+	   
+	   Replace the default battery_is_present() function with a board-specific
+	   implementation in board.c
+
+# config BATTERY_PRESENT_GPIO
+# 	bool "BATTERY_PRESENT_GPIO"
+# 	help
+# 	  If defined, GPIO which is driven low when battery is present.
+# 	  Charger will check for battery presence before attempting to communicate
+# 	  with it. This avoids the 30 second delay when booting without a battery
+# 	  present. Do not use with CONFIG_BATTERY_PRESENT_CUSTOM.
+
+config BATTERY_DEVICE_CHEMISTRY
+	string "Chemistry of the battery device"
+	default "LION" if HAVE_BATTERY_DEVICE_CHEMISTRY_LION
+	help
+	  usually "LION"
+
+config BATTERY_FUEL_GAUGE
+	bool
+	help
+	  If defined, the board must supply fuel gauge and battery information for
+	  each supported battery. This information is then used for battery cut off
+	  and to check the charge/discharge FET status.
+	
+config BATTERY_CRITICAL_SHUTDOWN_TIMEOUT
+	int "Critical battery shutdown timeout (seconds)"
+	default 30
+	help
+	  If the battery is at extremely low charge (and discharging) or extremely
+	  high temperature, the EC will notify the AP and start a timer with the
+	  timeout defined here. If the critical condition is not corrected before
+	  the timeout expires, the EC will shut down the AP (if the AP is not already
+	  off) and then optionally hibernate or cut off battery.
+
+config BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
+	bool "Perform a battery cut-off when we reach the battery critical level"
+
+config BATTERY_CUT_OFF
+	bool "Support battery cut-off as host command and console command"
+	help
+	  Once defined, you have to implement a board_cut_off_battery() function
+	  in board/???/battery.c file.
+
+# TODO: not needed
+# config BATTERY_CUTOFF_DELAY_US__yn
+# 	bool "Select BATTERY_CUTOFF_DELAY_US"
+# 	help
+# 	  The default delay is 1 second. Define this if a board prefers
+# 	  a different delay.
+
+# config BATTERY_CUTOFF_DELAY_US
+# 	int "BATTERY_CUTOFF_DELAY_US"
+# 	depends on BATTERY_CUTOFF_DELAY_US__yn
+
+config BATTERY_VENDOR_PARAM
+	bool "BATTERY_VENDOR_PARAM"
+	help
+	  The board-specific battery.c implements get and set functions to read and
+	  write arbirary vendor-specific parameters stored in the battery.
+	  See include/battery.h for prototypes.
+
+config BATTERY_REQUESTS_NIL_WHEN_DEAD
+	bool "BATTERY_REQUESTS_NIL_WHEN_DEAD"
+	help
+	  TODO(crosbug.com/p/29467): allows charging of a dead battery that
+	  requests nil for current and voltage. Remove this workaround when
+	  possible.
+
+config BATTERY_REVIVE_DISCONNECT
+	bool "BATTERY_REVIVE_DISCONNECT"
+	help
+	  Check for battery in disconnect state (similar to cut-off state). If this
+	  battery is found to be in disconnect state, take it out of this state by
+	  force-applying a charge current. This option requires
+	  battery_get_disconnect_state() to be defined.
+
+config BATTERY_LEVEL_NEAR_FULL
+	int "BATTERY_LEVEL_NEAR_FULL"
+	range 0 100
+	help
+	  Specify the battery percentage at which the host is told it is full.
+	  If this value is not specified the default is 97% set in battery.h.
+
+config BATTERY_V2
+	bool "BATTERY_V2"
+	help
+	  Use an alternative method to store battery information: Instead of writing
+	  directly to host memory mapped region, this keeps the battery information in
+	  ec_response_battery_static/dynamic_info structures, that can then be fetched
+	  using host commands, or via EC_ACPI_MEM_BATTERY_INDEX command, which tells
+	  the EC to update the shared memory.
+
+	  This is required on dual-battery systems, and on on hostless bases with a
+	  battery.
+
+config BATTERY_COUNT
+	int "Number of batteries"
+	depends on BATTERY_V2
+	help
+	  Number of batteries, only matters when CONFIG_BATTERY_V2 is used.
+
+config BATTERY_MEASURE_IMBALANCE
+	bool "BATTERY_MEASURE_IMBALANCE"
+	help
+	  Smart battery driver should measure the voltage cell imbalance in the battery
+	  pack.  This requires a battery driver capable of the measurement.
+
+config BATTERY_MAX_IMBALANCE_MV
+	int "BATTERY_MAX_IMBALANCE_MV"
+	default 200
+	help
+	  Maximum battery cell imbalance to accept before considering the pack to be
+	  imbalanced, in millivolts.
+
+	  WAG.  Imbalanced battery packs in this situation appear to have balanced
+	  charge very quickly after beginning the charging cycle, since dV/dQ rapidly
+	  decreases as the cell is charged out of deep discharge.  Increasing the value
+	  of CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON will make a system tolerant of
+	  larger values of BATTERY_MAX_IMBALANCE_MV.
+
+config BATT_FULL_FACTOR
+	int "BATT_FULL_FACTOR"
+	range 0 100
+	default 98
+	help
+	  If remaining capacity is x% of full capacity, remaining capacity is set
+	  equal to full capacity.
+
+	  Some batteries don't update full capacity timely or don't update it at all.
+	  On such systems, compensation is required to guarantee remaining_capacity
+	  will be equal to full_capacity eventually. This used to be done in ACPI.
+
+config BATT_HOST_SHUTDOWN_PERCENTAGE
+	int "BATT_HOST_SHUTDOWN_PERCENTAGE"
+	range 0 100
+	default 4
+
+config BATT_HOST_FULL_FACTOR
+	int "BATT_HOST_FULL_FACTOR"
+	range 0 100
+	default 94
+	help
+	  Powerd's full_factor. It has to be 100(%) to get display battery percentage.
+	  Otherwise, display percentages will be always zero.
+
+endmenu # battery type
+
+config PWR_STATE_DISCHARGE_FULL
+	bool "special status if battery is discharging and nearly full"
+	help
+	  If defined, charge_get_state returns a special status if battery is
+	  discharging and battery is nearly full.
+
+endif # BATTERY
