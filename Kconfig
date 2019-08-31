@@ -10,7 +10,12 @@ source "board/*/Kconfig.name"
 endchoice
 
 source "board/*/Kconfig"
+
+menu "Chip setup"
 source "chip/Kconfig"
+source "chip/*/Kconfig"
+endmenu
+
 source "common/Kconfig"
 source "power/Kconfig"
 source "util/Kconfig"
