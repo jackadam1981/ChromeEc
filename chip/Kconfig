@@ -1,0 +1,318 @@
+
+config HAVE_CHIP_G
+	bool
+config HAVE_CHIP_HOST
+	bool
+config HAVE_CHIP_ISH
+	bool
+config HAVE_CHIP_IT83XX
+	bool
+config HAVE_CHIP_LM4
+	bool
+config HAVE_CHIP_MAX32660
+	bool
+config HAVE_CHIP_MCHP
+	bool
+config HAVE_CHIP_MEC1322
+	bool
+config HAVE_CHIP_MT_SCP
+	bool
+config HAVE_CHIP_NPCX
+	bool
+config HAVE_CHIP_NRF51
+	bool
+config HAVE_CHIP_STM32
+	bool
+
+choice # CHIP
+	prompt "EC chip"
+
+	default CHIP_G__yn        if HAVE_CHIP_G
+	default CHIP_HOST__yn     if HAVE_CHIP_HOST
+	default CHIP_ISH__yn      if HAVE_CHIP_ISH
+	default CHIP_IT83XX__yn   if HAVE_CHIP_IT83XX
+	default CHIP_LM4__yn      if HAVE_CHIP_LM4
+	default CHIP_MAX32660__yn if HAVE_CHIP_MAX32660
+	default CHIP_MCHP__yn     if HAVE_CHIP_MCHP
+	default CHIP_MEC1322__yn  if HAVE_CHIP_MEC1322
+	default CHIP_MT_SCP__yn   if HAVE_CHIP_MT_SCP
+	default CHIP_NPCX__yn     if HAVE_CHIP_NPCX
+	default CHIP_NRF51__yn    if HAVE_CHIP_NRF51
+	default CHIP_STM32__yn    if HAVE_CHIP_STM32
+
+config CHIP_G__yn
+	bool "g"
+config CHIP_HOST__yn
+	bool "host"
+config CHIP_ISH__yn
+	bool "ish"
+config CHIP_IT83XX__yn
+	bool "IT83xx"
+config CHIP_LM4__yn
+	bool "LM4"
+config CHIP_MAX32660__yn
+	bool "MAX32660"
+config CHIP_MCHP__yn
+	bool "MCHP"
+config CHIP_MEC1322__yn
+	bool "MEC1322"
+config CHIP_MT_SCP__yn
+	bool "MT_SCP"
+config CHIP_NPCX__yn
+	bool "NPCX"
+	select CHIP_PRE_INIT
+config CHIP_NRF51__yn
+	bool "NRF51"
+config CHIP_STM32__yn
+	bool "STM32"
+
+endchoice # CHIP
+
+config CHIP
+	string
+	default "g"		if CHIP_G__yn
+	default "host"		if CHIP_HOST__yn
+	default "ish"		if CHIP_ISH__yn
+	default "it83xx"	if CHIP_IT83XX__yn
+	default "lm4"		if CHIP_LM4__yn
+	default "max32660"	if CHIP_MAX32660__yn
+	default "mchp"		if CHIP_MCHP__yn
+	default "mec1322"	if CHIP_MEC1322__yn
+	default "mt_scp"	if CHIP_MT_SCP__yn
+	default "npcx"		if CHIP_NPCX__yn
+	default "nrf51"		if CHIP_NRF51__yn
+	default "stm32"		if CHIP_STM32__yn
+
+config UART_TX_BUF_SIZE
+	int "UART transmit buffer size in bytes"
+	default 2048	if CHIP_ISH__yn
+	default 8192	if CHIP_LM4__yn
+	default 8192	if CHIP_MAX32660__yn
+	default 1024	if CHIP_MCHP__yn
+	default 2048	if CHIP_MEC1322__yn
+	default 1024	if CHIP_NPCX__yn
+	default 1024	if CHIP_NRF51__yn
+	default 2048	if CHIP_STM32__yn
+	default 512
+	help
+	  UART transmit buffer size in bytes.  Must be a power of 2 for macros in
+	  common/uart_buffering.c to work properly.
+
+
+config CHIP_PANIC_BACKUP
+	bool "Panic backup"
+	default n
+	help
+	  Certain platforms(e.g. eve, poppy) cannot retain panic info in data ram since
+	  VCC is powered down on EC reset. On such platforms, panic data needs to be
+	  saved/restored to persistent storage by using chip specific
+	  implementations. This option can be enabled by those platforms that have and
+	  wish to use chip-implemented panic backup/restore functions.
+
+config STACK_SIZE__yn
+	bool "Select STACK_SIZE"
+
+if STACK_SIZE__yn
+
+config STACK_SIZE
+	int "Default stack size to use for tasks, in bytes"
+	default 1024 if (CHIP = "g")
+	default 1024 if (CHIP = "ish")
+	default 1024 if (CHIP = "it83xx")
+	default 1024 if (CHIP = "mec1322")
+	default 1024 if (CHIP = "mt_scp")
+	default 1024 if (CHIP = "npcx")
+	default 1024 if (CHIP = "nrf51")
+	default 1024 if (CHIP = "stm32")
+
+endif # STACK_SIZE__yn
+
+config CHIP_MEMORY_REGIONS
+	bool "The chip needs to define special SRAM memory regions as linker sections"
+	help
+	  The chip needs to define special SRAM memory regions as linker sections.
+	  Those regions are defined in the special-purpose preprocessed file in
+	  chip/<chip_name>/memory_regions.inc using the following macro:
+	  REGION(name, attributes, start_address, size)
+
+	  Note: these 'special' regions are NOT cleared at startup contrary to .bss.
+
+config CHIP_PRE_INIT
+	bool "Chip needs to do pre-init"
+	help
+	  Chip needs to do pre-init very early in main(), and provides chip_pre_init()
+	  to do so.
+
+config RTC
+	bool "Support Real-Time Clock (RTC)"
+
+menu "Low Power Idle"
+
+config LOW_POWER_IDLE
+	bool "low power idle"
+	help
+	  Low power idle options. These are disabled by default and all boards that
+	  want to use low power idle must define it. When using the LFIOSC, the low
+	  frequency clock will be used to conserve even more power when possible.
+
+	  GPIOs which need to trigger interrupts in low power idle must specify the
+	  GPIO_INT_DSLEEP flag in gpio_list[].
+
+	  Note that for some processors (e.g. LM4), an active JTAG connection will
+	  prevent the EC from using low-power idle.
+
+config LOW_POWER_USE_LFIOSC
+	bool "Use LFIOSC"
+
+config LOW_POWER_IDLE_LIMITED
+	bool "Allows us to enable/disable low power idle mode in runtime"
+
+endmenu # LPI
+
+menu "USB config"
+
+# USB section 
+
+config USB_BOS
+	bool "USB Binary device Object Store support"
+	default n
+
+config USB_BCD_DEV__yn
+	bool "Set USB Device version of product"
+	default n
+
+if USB_BCD_DEV__yn
+config USB_BCD_DEV
+	prompt "USB Device version of product"
+	range 0x00 0xff
+	hex
+endif
+
+config USB
+	bool "Compile chip support for the USB device controller"
+	default n
+
+config USB_ISOCHRONOUS
+	bool "Support USB isochronous handler"
+	default n
+
+config USB_BLOB
+	bool "Support USB blob handler"
+	default n
+
+config USB_CHARGER
+	bool "Common USB / BC1.2 charger detection routines"
+	default n
+
+endmenu # "USB config"
+
+menu "ADC config"
+
+config ADC
+	bool "Compile chip support for analog-to-digital convertor"
+
+# TODO: this should be "if ADC", but enabled by default in config.h
+
+config ADC_WATCHDOG
+	bool
+	prompt "Include the ADC analog watchdog feature in the ADC code"
+	default y
+
+if ADC
+
+choice
+	prompt "Chip-dependent ADC configuration"
+
+config ADC_PROFILE_SINGLE
+	bool "Sample all inputs once when requested"
+config ADC_PROFILE_FAST_CONTINUOUS
+	bool "Sample all inputs continuously using DMA, with minimal sample time."
+
+endchoice
+
+endif # ADC
+
+endmenu # "ADC config"
+
+config WATCHDOG
+	bool "Compile watchdog timer support"
+	default y
+	help
+	  Compile watchdog timer support.  The watchdog timer will reboot the system
+	  if the hook task (which is the lowest-priority task on the system) gets
+	  starved for CPU time and isn't able to fire its HOOK_TICK event.
+
+if WATCHDOG
+
+config WATCHDOG_HELP
+	bool "Try to detect a watchdog that is about to fire"
+	help
+	  Try to detect a watchdog that is about to fire, and print a trace.  This is
+	  required on chips such as STM32 where the watchdog timer simply reboots the
+	  system without any early warning.
+
+endif # WATCHDOG
+
+config WATCHDOG_MAX_RETRIES
+	int "The maximum number of times that the watchdog timer may reset"
+	default 4
+	help
+	  The maximum number of times that the watchdog timer may reset
+	  before halting the system (or taking some sort of other
+	  chip-dependent corrective action).
+
+config WATCHDOG_PERIOD_MS
+	int "Watchdog period in ms; see also AUX_TIMER_PERIOD_MS"
+	default 1600
+
+config FPU
+	bool "Enable support for floating point unit"
+
+config HIBERNATE
+	bool "Enable system hibernate"
+	default y
+
+config MPU
+	bool "Support memory protection unit (MPU)"
+
+
+config DMA
+	bool "Support DMA transfers inside the EC"
+
+config DMA_DEFAULT_HANDLERS
+	bool "Use the common interrupt handlers for DMA IRQs"
+	default y
+
+config DMA_HELP
+	bool "Compile extra debugging and tests for the DMA module"
+
+config FW_INCLUDE_RO
+	bool "FW_INCLUDE_RO"
+	default y
+	help
+	  Board Image ec.bin contains a RO firmware.  If not defined, the image will
+	  only contain the RW firmware.
+
+config FW_LIMITED_IMAGE
+	bool "If defined, another image (RW) exists with more features"
+
+config MAPPED_STORAGE
+	bool "Flash is directly mapped into the EC's address space"
+	default y
+	help
+	  Flash is directly mapped into the EC's address space.  If this is not
+	  defined, the flash driver must implement flash_physical_read().
+
+choice
+	prompt "EC code can reside on internal or external storage"
+	help
+	  EC code can reside on internal or external storage. Only one of these
+	  CONFIGs should be defined. CONFIG_INTERNAL_STORAGE implies XIP
+	  (eXecute-In-Place) semantics. i.e. code is being fetched directly from
+	  storage media.
+
+config EXTERNAL_STORAGE
+	bool "EXTERNAL_STORAGE"
+config INTERNAL_STORAGE
+	bool "INTERNAL_STORAGE"
+endchoice
