@@ -21,3 +21,4 @@ endchoice
 
 source "board/*/Kconfig"
 source "chip/Kconfig"
+source "common/Kconfig"
