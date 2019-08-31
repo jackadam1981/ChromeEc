@@ -10,3 +10,4 @@ source "board/*/Kconfig.name"
 endchoice
 
 source "board/*/Kconfig"
+source "chip/Kconfig"
