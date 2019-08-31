@@ -1,0 +1,97 @@
+
+menu "USB Type-C Setup"
+
+config USBC_PPC_POLARITY
+	bool "PPC needs to be informed of CC polarity"
+
+config USBC_DISABLE_CHARGE_FROM_RP_DEF
+       	bool "Disable charging from Default(USB) Rp"
+	help
+	  Disable charging from Default(USB) Rp as a type-c supplier. If your device
+	  can detect such a supplier by BC 1.2, define this to get more current
+	  from a BC 1.2 supplier.
+
+config USBC_SS_MUX
+	bool "Support for USB type-c superspeed mux"
+
+config USBC_SS_MUX_DFP_ONLY
+	bool "Only configure USB type-c superspeed mux when DFP"
+	depends on USBC_SS_MUX
+	help
+	  Only configure USB type-c superspeed mux when DFP (for chipsets that
+	  don't support being a UFP)
+
+config USBC_BACKWARDS_COMPATIBLE_DFP
+	bool "Support v1.1 type-C connection state machine"
+
+config USBC_VCONN
+	bool "Support for USB type-c vconn. Not needed for captive cables"
+
+config USBC_VCONN_SWAP
+	bool "Support VCONN swap"
+	depends on USBC_VCONN
+
+config USB_SM_FRAMEWORK
+	bool "Use Power Delivery State Machine Framework"
+	help
+	  Define to use Power Delivery State Machine Framework. Along with
+	  CONFIG_USB_SM_FRAMEWORK, you must ensure the follow options are defined to
+	  use the new statemachine for USB-C:
+
+	  CONFIG_USB_TYPEC_SM (defined by default)
+	  CONFIG_USB_PRL_SM (defined by default)
+	  One of CONFIG_USB_PE_* policy engine options.
+
+config USB_TYPEC_SM
+	bool "Enable Type-C State Machine"
+	default y
+	help
+	  Define to enable Type-C State Machine. Must be enabled
+	  with CONFIG_USB_SM_FRAMEWORK
+
+config USB_PRL_SM
+	bool "Enable Protocol Layer State Machine"
+	default y
+	help
+	  Define to enable Protocol Layer State Machine. Must be enabled
+	  with CONFIG_USB_SM_FRAMEWORK and CONFIG_USB_TYPEC_SM
+
+config USB_PE_SM
+	bool "Enable Policy Engine State Machine"
+	default y
+	help
+	  Define to enable Policy Engine State Machine. Must be enabled
+	  with CONFIG_USB_SM_FRAMEWORK and CONFIG_USB_TYPEC_SM
+
+endmenu
+
+config USBC_PPC
+	bool "board has a USB Type-C Power Path Controller"
+
+if USBC_PPC
+
+choice
+	prompt "USB Type-C Power Path Controllers (PPC)"
+
+config USBC_PPC_NX20P3481
+	bool "NX20P3481"
+config USBC_PPC_NX20P3483
+	bool "NX20P3483"
+config USBC_PPC_SN5S330
+	bool "SN5S330"
+config USBC_PPC_SYV682X
+	bool "SYV682X"
+
+endchoice
+
+config USBC_PPC_SBU
+	bool "PPC is capable of gating the SBU lines"
+
+config USBC_PPC_VCONN
+	bool "PPC is capable of providing VCONN"
+
+config USBC_PPC_DEDICATED_INT
+	bool "PPC has level interrupts and has a dedicated interrupt pin to check"
+
+endif # USBC_PPC
+
