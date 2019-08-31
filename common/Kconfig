@@ -1,4 +1,8 @@
 
+menu "Charger setup"
+source "common/Kconfig.charger"
+endmenu
+
 menu "LED setup"
 source "common/Kconfig.led"
 endmenu
