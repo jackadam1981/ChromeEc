@@ -1,0 +1,226 @@
+
+menuconfig MCMDS
+	bool
+	prompt "MCMDS"
+
+config LOW_POWER_S0
+	bool "Enable deep sleep during S0 (ignores SLEEP_MASK_AP_RUN)"
+
+config LTO
+	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
+
+config PWM
+	bool "Support PWM control"
+
+config SOFTWARE_PANIC
+	bool "Software panic"
+
+	help
+	  Store a panic log and halt the system for a software-related reasons, such as
+	  stack overflow or assertion failure.
+
+config SHA256_UNROLLED
+	bool "Unroll some loops in SHA256_transform for better performance"
+
+menu "Common Code"
+
+config COMMON_PANIC_OUTPUT
+	bool "Provide common core code to output panic information without interrupts"
+	default y
+
+config COMMON_GPIO
+	bool "Provide the default GPIO abstraction layer"
+	default y
+	help
+	  You want this unless you are doing a really tiny firmware.
+
+config COMMON_GPIO_SHORTNAMES
+	bool "Use short GPIO names"
+	depends on COMMON_GPIO
+	help
+	  Provides smaller GPIO names to reduce flash size.  Instead of the 'name'
+	  field in GPIO macro it will concat 'port' and 'pin' to reduce flash size.
+
+config COMMON_RUNTIME
+	bool "COMMON_RUNTIME"
+	default y
+	help
+	  Provide common runtime layer code (tasks, hooks ...)
+	  You want this unless you are doing a really tiny firmware.
+
+config COMMON_TIMER
+	bool "Provide common core code to handle the operating system timers"
+	default y
+
+endmenu
+
+menu IPI
+endmenu # IPI
+
+config IPI
+	bool "EC support Inter-Processor Interrupt"
+
+if IPI
+
+
+config IPC_SHARED_OBJ_ADDR
+	bool "IPC0/IPI shared object address"
+	help
+	  IPC0/IPI shared object address. This is the starting address of the send
+	  object and the receive object.  Each object contains a buffer.
+
+config IPC_SHARED_OBJ_BUF_SIZE
+	int "\"buffer\" size of ipc_shared_obj"
+
+config RPMSG_NAME_SERVICE
+	bool "EC support rpmsg name service over IPI"
+
+endif # IPI
+
+config FACTORY_MODE
+	bool "Add support for CCD factory mode"
+
+
+menu "Vboot"
+
+config VBOOT_EFS
+	bool "Support early firmware selection"
+
+config VBOOT_HASH
+	bool "Support computing hash of code for verified boot"
+
+config VSTORE
+	bool "Support for secure temporary storage for verified boot"
+
+config VSTORE_SLOT_COUNT
+	int "Number of supported slots for secure temporary storage"
+	depends on VSTORE
+
+endmenu # "Vboot"
+
+config SWITCH
+	bool "Compile common code to handle simple switch inputs"
+	help
+	  Compile common code to handle simple switch inputs such as the recovery
+	  button input from the servo debug interface.
+
+config SWITCH_DEDICATED_RECOVERY
+	bool "Support dedicated recovery signal from servo board"
+	depends on SWITCH
+
+config TASK_PROFILING
+	bool "Enable task profiling"
+	default y
+	help
+	  Boards may #undef this to reduce image size and RAM usage.
+
+menu "Rollback"
+
+config ROLLBACK_VERSION
+	int "Current rollback version"
+	default 0
+	help
+	  Current rollback version. Meaningless for RO (but provides the minimum value
+	  that will be written to the rollback protection at flash time).
+
+	  For RW, rollback version included in version structure, used by RO to
+	  determine if the RW image is recent enough and can be jumped to.
+
+	  Valid values are >= 0, <= INT32_MAX (positive, 32-bit signed integer).
+
+config ROLLBACK_SECRET_SIZE__yn
+	bool "Select ROLLBACK_SECRET_SIZE"
+
+config ROLLBACK_SECRET_SIZE
+	int "If defined, add support for storing some entropy in the rollback region"
+	depends on ROLLBACK_SECRET_SIZE__yn
+
+config ROLLBACK_MPU_PROTECT
+	bool "If defined, protect rollback region readback using MPU"
+
+config ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
+	bool "inject some locally generated entropy when secret is updated"
+	help
+	  If defined, inject some locally generated entropy when secret is updated,
+	  using board_get_entropy function.
+	  Large values may take a long time to generate.
+
+	  This is only meant to add a little bit of extra entropy, when the hardware
+	  lacks a random number generator (otherwise, the strong entropy can be
+	  directly added to the secret, using rollback_add_entropy).
+
+
+config ROLLBACK_UPDATE
+	bool "If defined, we can update rollback information (RW can unset this)"
+	default y
+
+
+endmenu # "Rollback"
+
+config PWR_STATE_DISCHARGE_FULL
+	bool "special status if battery is discharging and nearly full"
+	help
+	  If defined, charge_get_state returns a special status if battery is
+	  discharging and battery is nearly full.
+
+
+menu "Motion Sensor"
+
+config MOTION_SENSE_SUSPEND_DELAY_US
+	int "Defer the (re)configuration of motion sensors after suspend"
+	default 0
+	help
+	  Defer the (re)configuration of motion sensors after the suspend event or
+	  resume event.  Sensor power rails may be powered up or down asynchronously
+	  from the EC, so it may be necessary to wait some time period before
+	  reconfiguring after a transition.
+
+config MOTION_SENSE_RESUME_DELAY_US
+	int "Defer the (re)configuration of motion sensors after resume"
+	default 0
+	help
+	  Defer the (re)configuration of motion sensors after the suspend event or
+	  resume event.  Sensor power rails may be powered up or down asynchronously
+	  from the EC, so it may be necessary to wait some time period before
+	  reconfiguring after a transition.
+
+
+config DYNAMIC_MOTION_SENSOR_COUNT
+	bool "Define motion sensor count in board layer"
+
+config MOTION_FILL_LPC_SENSE_DATA
+	bool "Define when LPC memory space needs to be populated"
+
+endmenu # "Motion Sensor"
+
+choice
+	prompt "EC code can reside on internal or external storage"
+	help
+	  EC code can reside on internal or external storage. Only one of these
+	  CONFIGs should be defined. CONFIG_INTERNAL_STORAGE implies XIP
+	  (eXecute-In-Place) semantics. i.e. code is being fetched directly from
+	  storage media.
+
+config EXTERNAL_STORAGE
+	bool "EXTERNAL_STORAGE"
+config INTERNAL_STORAGE
+	bool "INTERNAL_STORAGE"
+endchoice
+
+config MAPPED_STORAGE
+	bool "Flash is directly mapped into the EC's address space"
+	default y
+	help
+	  Flash is directly mapped into the EC's address space.  If this is not
+	  defined, the flash driver must implement flash_physical_read().
+
+config FW_INCLUDE_RO
+	bool "FW_INCLUDE_RO"
+	default y
+	help
+	  Board Image ec.bin contains a RO firmware.  If not defined, the image will
+	  only contain the RW firmware.
+
+config FW_LIMITED_IMAGE
+	bool "If defined, another image (RW) exists with more features"
+	
