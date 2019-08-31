@@ -1,0 +1,155 @@
+
+menu "Chipset config"
+
+choice
+	prompt "Choose chipset"
+
+config CHIPSET_ICELAKE
+	bool "Intel Icelake (x86)"
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_CANNONLAKE
+	bool "Intel Cannonlake (x86)"
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_COMETLAKE
+	bool "Intel Cometlake (x86)"
+config CHIPSET_SKYLAKE
+	bool "Intel Skylake (x86)"
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_GEMINILAKE
+	bool "Intel Geminilake (x86)"
+config CHIPSET_APOLLOLAKE
+	bool "Intel Apollolake (x86)"
+config CHIPSET_BRASWELL
+	bool "Intel Braswell (x86)"
+config CHIPSET_MT8183
+	bool "MediaTek MT8183"
+config CHIPSET_MT817X
+	bool "MediaTek MT817x"
+config CHIPSET_RK3399
+	bool "Rockchip rk3399"
+config CHIPSET_RK3288
+	bool "Rockchip rk3288"
+config CHIPSET_SDM845
+	bool "Qualcomm SDM845"
+config CHIPSET_STONEY
+	bool "AMD Stoney (x86)"
+config CHIPSET_ECDRIVEN
+	bool "Dummy power module"
+
+endchoice
+
+config CHIPSET_HAS_PLATFORM_PMIC_RESET
+	bool "Support PMIC reset(using LDO_EN) in chipset"
+
+config CHIPSET_RESET_HOOK
+	bool "Enable chipset reset hook, requires a deferrable function"
+
+config CHIPSET_X86_RSMRST_DELAY
+	bool "Enable delayed RSMRST to PCH"
+	help
+	  Enable if chipset requires delay between power signals going high
+	  and deasserting RSMRST to PCH.
+
+config CPU_PROCHOT_ACTIVE_LOW
+	bool "PROCHOT signal is active low"
+	help
+	  On x86 systems, define this option if the CPU_PROCHOT signal is active low"
+
+endmenu # "Chipset config"
+
+menu "Power"
+
+menu "Power Button"
+
+config POWER_BUTTON
+	bool "Compile common code to support power button debouncing"
+
+config POWER_BUTTON_ACTIVE_STATE__yn
+	bool "Select POWER_BUTTON_ACTIVE_STATE"
+config POWER_BUTTON_ACTIVE_STATE
+	int "Force the active state of the power button : 0(default if unset) or 1"
+	depends on POWER_BUTTON_ACTIVE_STATE__yn
+
+config POWER_BUTTON_IGNORE_LID
+	bool "Allow the power button to send events while the lid is closed"
+
+config POWER_BUTTON_X86
+	bool "Support sending the power button signal to x86 chipsets"
+
+config POWER_BUTTON_INIT_IDLE
+	bool "Set power button state idle at init. Implemented only for npcx"
+
+config POWER_BUTTON_INIT_TIMEOUT__yn
+	bool "Select POWER_BUTTON_INIT_TIMEOUT"
+	default y
+config POWER_BUTTON_INIT_TIMEOUT
+	int "Timeout before power button task gives up starting system"
+	default 1
+	depends on POWER_BUTTON_INIT_TIMEOUT__yn
+
+endmenu # "Power Button"
+
+config POWER_COMMON
+	bool "Compile common code for AP power state machine"
+
+config POWER_PP5000_CONTROL
+	bool "Enable a task-safe way to control the PP5000 rail"
+
+config POWER_SHUTDOWN_PAUSE_IN_S5
+	bool "Support stopping in S5 on shutdown"
+
+config POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD__yn
+	bool "Select CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD"
+config POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
+	int "POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD"
+	depends on POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD__yn
+	help
+	  Detect power signal interrupt storms, defined as more than
+	  CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD occurences of a single
+	  power signal interrupt within one second.
+
+config POWER_TRACK_HOST_SLEEP_STATE
+	bool "POWER_TRACK_HOST_SLEEP_STATE"
+	help
+	  Allow the host to self-report its sleep state, in case there is some delay
+	  between the host beginning to enter the sleep state and power signals
+	  actually reflecting the new state.
+
+config POWER_S0IX
+	bool "Support S0ix"
+
+config POWER_S0IX_FAILURE_DETECTION
+	bool "Support detecting failure to enter S0ix"
+	depends on POWER_S0IX
+	depends on POWER_TRACK_HOST_SLEEP_STATE
+
+config HIBERNATE
+	bool "Enable system hibernate"
+	default y
+
+config HIBERNATE_DELAY_SEC
+	int "Default delay after shutting down before hibernating"
+	default "3600"
+
+config SUPPORT_CHIP_HIBERNATION
+	bool "If defined, chip hibernation is used"
+	help
+	  If defined, chip hibernation is used. Your board needs to define wake-up
+	  signals. Undefine this to use board hibernation capability.
+
+menu "External Power"
+
+config EXTPOWER
+	bool "Include code for handling external power"
+	default y
+
+config EXTPOWER_GPIO
+	bool "Support detecting external power presence via a GPIO"
+
+config EXTPOWER_DEBOUNCE_MS
+	int "Default debounce time for external power signal"
+	default 30
+
+endmenu # "External Power"
+
+endmenu # "Power"
