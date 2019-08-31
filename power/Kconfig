@@ -1,0 +1,235 @@
+
+config HAVE_CHIPSET_TIGERLAKE
+	bool
+config HAVE_CHIPSET_ICELAKE
+	bool
+config HAVE_CHIPSET_CANNONLAKE
+	bool
+config HAVE_CHIPSET_COMETLAKE
+	bool
+config HAVE_CHIPSET_SKYLAKE
+	bool
+config HAVE_CHIPSET_GEMINILAKE
+	bool
+config HAVE_CHIPSET_APOLLOLAKE
+	bool
+config HAVE_CHIPSET_BRASWELL
+	bool
+config HAVE_CHIPSET_MT8183
+	bool
+config HAVE_CHIPSET_MT817X
+	bool
+config HAVE_CHIPSET_RK3399
+	bool
+config HAVE_CHIPSET_RK3288
+	bool
+config HAVE_CHIPSET_SDM845
+	bool
+config HAVE_CHIPSET_STONEY
+	bool
+config HAVE_CHIPSET_ECDRIVEN
+	bool
+
+#
+
+menu "Chipset config"
+
+choice
+	prompt "Choose chipset"
+
+config CHIPSET_TIGERLAKE
+	bool "Intel Tigerlake (x86)"
+	select CHIPSET_ICL_TGL
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+	depends on HAVE_CHIPSET_TIGERLAKE
+config CHIPSET_ICELAKE
+	bool "Intel Icelake (x86)"
+	select CHIPSET_ICL_TGL
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+	depends on HAVE_CHIPSET_ICELAKE
+config CHIPSET_CANNONLAKE
+	bool "Intel Cannonlake (x86)"
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+	depends on HAVE_CHIPSET_CANNONLAKE
+config CHIPSET_COMETLAKE
+	bool "Intel Cometlake (x86)"
+	select POWER_COMMON
+	depends on HAVE_CHIPSET_COMETLAKE
+config CHIPSET_SKYLAKE
+	bool "Intel Skylake (x86)"
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+	depends on HAVE_CHIPSET_SKYLAKE
+config CHIPSET_GEMINILAKE
+	bool "Intel Geminilake (x86)"
+	select CHIPSET_APL_GLK
+	select POWER_COMMON
+	depends on HAVE_CHIPSET_GEMINILAKE
+config CHIPSET_APOLLOLAKE
+	bool "Intel Apollolake (x86)"
+	select CHIPSET_APL_GLK
+	select POWER_COMMON
+	depends on HAVE_CHIPSET_APOLLOLAKE
+config CHIPSET_BRASWELL
+	bool "Intel Braswell (x86)"
+	select POWER_COMMON
+	depends on HAVE_CHIPSET_BRASWELL
+config CHIPSET_MT8183
+	bool "MediaTek MT8183"
+	depends on HAVE_CHIPSET_MT8183
+config CHIPSET_MT817X
+	bool "MediaTek MT817x"
+	depends on HAVE_CHIPSET_MT817X
+config CHIPSET_RK3399
+	bool "Rockchip rk3399"
+	depends on HAVE_CHIPSET_RK3399
+config CHIPSET_RK3288
+	bool "Rockchip rk3288"
+	depends on HAVE_CHIPSET_RK3288
+config CHIPSET_SDM845
+	bool "Qualcomm SDM845"
+	depends on HAVE_CHIPSET_SDM845
+config CHIPSET_STONEY
+	bool "AMD Stoney (x86)"
+	depends on HAVE_CHIPSET_STONEY
+config CHIPSET_ECDRIVEN
+	bool "Dummy power module"
+	depends on HAVE_CHIPSET_ECDRIVEN
+
+endchoice
+
+config CHIPSET_ICL_TGL
+	bool
+
+config CHIPSET_APL_GLK
+	bool
+
+config CHIPSET_POWER_SEQ_VERSION
+	int "CHIPSET_POWER_SEQ_VERSION"
+	default 0
+	help
+	  Redefine when we need a different power-on sequence on the same chipset.
+
+config CHIPSET_HAS_PLATFORM_PMIC_RESET
+	bool "Support PMIC reset (using LDO_EN) in chipset"
+
+config CHIPSET_HAS_PRE_INIT_CALLBACK
+	bool "Board requires chipset pre-init callback"
+	default y if CHIPSET_APL_GLK
+
+config CHIPSET_RESET_HOOK
+	bool "Enable chipset reset hook, requires a deferrable function"
+
+config CHIPSET_X86_RSMRST_DELAY
+	bool "Enable delayed RSMRST to PCH"
+	help
+	  Enable if chipset requires delay between power signals going high
+	  and deasserting RSMRST to PCH.
+
+config CPU_PROCHOT_ACTIVE_LOW
+	bool "PROCHOT signal is active low"
+	help
+	  On x86 systems, define this option if the CPU_PROCHOT signal is active low"
+
+endmenu # "Chipset config"
+
+menu "Power Setup"
+
+menu "Power Button"
+
+config POWER_BUTTON
+	bool "Compile common code to support power button debouncing"
+
+config POWER_BUTTON_ACTIVE_STATE__yn
+	bool "Select POWER_BUTTON_ACTIVE_STATE"
+config POWER_BUTTON_ACTIVE_STATE
+	int "Force the active state of the power button : 0(default if unset) or 1"
+	range 0 1
+	depends on POWER_BUTTON_ACTIVE_STATE__yn
+
+config POWER_BUTTON_IGNORE_LID
+	bool "Allow the power button to send events while the lid is closed"
+
+config POWER_BUTTON_X86
+	bool "Support sending the power button signal to x86 chipsets"
+
+config POWER_BUTTON_INIT_IDLE
+	bool "Set power button state idle at init. Implemented only for npcx"
+
+config POWER_BUTTON_INIT_TIMEOUT__yn
+	bool "Select POWER_BUTTON_INIT_TIMEOUT"
+	default y
+config POWER_BUTTON_INIT_TIMEOUT
+	int "Timeout before power button task gives up starting system"
+	default 1
+	depends on POWER_BUTTON_INIT_TIMEOUT__yn
+
+endmenu # "Power Button"
+
+config POWER_COMMON
+	bool "Compile common code for AP power state machine"
+
+config POWER_PP5000_CONTROL
+	bool "Enable a task-safe way to control the PP5000 rail"
+
+config POWER_SHUTDOWN_PAUSE_IN_S5
+	bool "Support stopping in S5 on shutdown"
+
+config POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD__yn
+	bool "Select CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD"
+config POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
+	int "POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD"
+	depends on POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD__yn
+	help
+	  Detect power signal interrupt storms, defined as more than
+	  CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD occurences of a single
+	  power signal interrupt within one second.
+
+config POWER_TRACK_HOST_SLEEP_STATE
+	bool "POWER_TRACK_HOST_SLEEP_STATE"
+	help
+	  Allow the host to self-report its sleep state, in case there is some delay
+	  between the host beginning to enter the sleep state and power signals
+	  actually reflecting the new state.
+
+config POWER_S0IX
+	bool "Support S0ix"
+
+config POWER_S0IX_FAILURE_DETECTION
+	bool "Support detecting failure to enter S0ix"
+	depends on POWER_S0IX
+	depends on POWER_TRACK_HOST_SLEEP_STATE
+
+config HIBERNATE
+	bool "Enable system hibernate"
+	default y
+
+config HIBERNATE_DELAY_SEC
+	int "Default delay after shutting down before hibernating"
+	default "3600"
+
+config SUPPORT_CHIP_HIBERNATION
+	bool "If defined, chip hibernation is used"
+	help
+	  If defined, chip hibernation is used. Your board needs to define wake-up
+	  signals. Undefine this to use board hibernation capability.
+
+menu "External Power"
+
+config EXTPOWER
+	bool "Include code for handling external power"
+	default y
+
+config EXTPOWER_GPIO
+	bool "Support detecting external power presence via a GPIO"
+
+config EXTPOWER_DEBOUNCE_MS
+	int "Default debounce time for external power signal"
+	default 30
+
+endmenu # "External Power"
+
+endmenu # "Power"
