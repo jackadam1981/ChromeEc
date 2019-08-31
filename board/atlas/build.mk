@@ -7,7 +7,9 @@
 #
 
 CHIP:=npcx
+#CHIP:=$(shell echo $(KCONFIG_CHIP))
 CHIP_FAMILY:=npcx7
+#CHIP_FAMILY:=$(shell echo $(KCONFIG_CHIP_FAMILY))
 CHIP_VARIANT:=npcx7m6fb
 
 board-y=board.o
