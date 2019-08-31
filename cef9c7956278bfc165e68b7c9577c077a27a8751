@@ -22,6 +22,30 @@
       "revId": "cef9c7956278bfc165e68b7c9577c077a27a8751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7262b827_c0ac4867",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-08-31T00:40:30Z",
+      "side": 1,
+      "message": "Actually, you need ramping to even get to 1.5A with DCP.\n\nAre we setting MIVR (minimum input voltage regulation) when in BC1.2 mode?\nIf we set MIVR to the right value (whatever was in the ramping algorithms we\u0027ve implemented in the past) and combine it with AICL, the charger does the ramping for us.\n\nNote that MIVR in the non-BC1.2 case should stay at 4V.",
+      "parentUuid": "c6ee3d83_69d8cfc9",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "cef9c7956278bfc165e68b7c9577c077a27a8751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
