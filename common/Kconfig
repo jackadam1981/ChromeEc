@@ -1,9 +1,7 @@
 
-menuconfig MCMDS
-	bool
-	prompt "MCMDS"
-
-comment "some commands"
+menu "Console commands"
+source "common/Kconfig.cmd"
+endmenu
 
 source "common/Kconfig.battery"
 
