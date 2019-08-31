@@ -1,0 +1,257 @@
+
+config FLASH
+	bool "Enable console commands and higher-level features"
+	default y
+
+if FLASH
+
+config FLASH_PHYSICAL
+	bool "Enable chip-specific access functions"
+	default y
+
+config FLASH_BANK_SIZE__yn
+	bool "Select FLASH_BANK_SIZE"
+config FLASH_BANK_SIZE
+	int "FLASH_BANK_SIZE"
+	depends on FLASH_BANK_SIZE__yn
+
+config FLASH_LOG
+	bool "Provide event log stored in flash memory"
+
+config FLASH_LOG_BASE__yn
+	bool "Select flash log base"
+	depends on FLASH_LOG
+config FLASH_LOG_BASE
+	hex "flash log base"
+	depends on FLASH_LOG
+
+config FLASH_LOG_SPACE__yn
+	bool "Select flash log space"
+	depends on FLASH_LOG
+config FLASH_LOG_SPACE
+	hex "flash log space"
+	depends on FLASH_LOG_SPACE__yn
+
+config FLASH_ERASED_VALUE32__yn
+	bool "Select FLASH_ERASED_VALUE32"
+config FLASH_ERASED_VALUE32
+	int "FLASH_ERASED_VALUE32"
+#	string "FLASH_ERASED_VALUE32"
+	depends on FLASH_ERASED_VALUE32__yn
+	help
+	  This is typically 0 or (-1U)... which Kconfig does not parse correctly.
+
+config FLASH_ERASE_SIZE__yn
+	bool "Select FLASH_ERASE_SIZE"
+config FLASH_ERASE_SIZE
+	hex "FLASH_ERASE_SIZE"
+	depends on FLASH_ERASE_SIZE__yn
+
+config FLASH_ROW_SIZE__yn
+	bool "Select FLASH_ROW_SIZE"
+config FLASH_ROW_SIZE
+	int "FLASH_ROW_SIZE"
+	depends on FLASH_ROW_SIZE__yn
+
+config FLASH_DEFERRED_ERASE
+	bool "Allow deferred (async) flash erase"
+
+config FLASH_SELECT_REQUIRED
+	bool "Flash must be selected for write/erase operations to succeed"
+
+config FLASH_PROTECT_NEXT_BOOT
+	bool "FLASH_PROTECT_NEXT_BOOT"
+
+config FLASH_PROTECT_RW
+	bool "Some platforms need to write protect RW independently of all flash"
+
+
+config FLASH_PSTATE
+	bool "FLASH_PSTATE"
+	default y
+	help
+	  Store persistent write protect for the flash inside the flash data itself.
+	  This allows ECs with internal flash to emulate something closer to a SPI
+	  flash write protect register.  If this is not defined, write protect state
+	  is maintained solely by the physical flash driver.
+
+# %%% this should depend on FLASH_PSTATE
+# but that breaks config.h match
+
+config FLASH_PSTATE_BANK
+	bool "FLASH_PSTATE_BANK"
+	default y
+#	#depends on FLASH_PSTATE
+	help
+	  Store the pstate data in its own dedicated bank of flash.  This allows
+	  disabling the protect-RO-at-boot flag without rewriting the RO firmware,
+	  but costs a bank of flash.
+
+	  If this is not defined, the pstate data is stored inside the RO firmware
+	  image itself.  This is more space-efficient, but the only way to clear the
+	  flag once it's set is to rewrite the RO firmware (after removing the WP
+	  screw, of course).
+
+config FLASH_PSTATE_LOCKED
+	bool "FLASH_PSTATE_LOCKED"
+	depends on !FLASH_PSTATE_BANK
+	help
+	  Lock the PSTATE by default (currently only supported when
+	  CONFIG_FLASH_PSTATE_BANK is not defined).
+
+config FLASH_READOUT_PROTECTION
+	bool "Enable readout protection"
+
+config FLASH_READOUT_PROTECTION_AS_PSTATE
+	bool "FLASH_READOUT_PROTECTION_AS_PSTATE"
+	help
+	  Use Read-out protection status as PSTATE, i.e. after RDP is enabled, we never
+	  allow RO protection to be disabled.
+
+	  This is used when we want to prevent read-back of some critical region (e.g.
+	  rollback), even in DFU/BOOT0 mode.
+
+	  Note that this significantly changes the behaviour or flash protection,
+	  as this tie EC_FLASH_PROTECT_RO_AT_BOOT with RDP status: it makes no
+	  sense to be able to unlock RO protection if RDP is enabled, as a custom RO
+	  could allow protected regions readback.
+
+	  TODO(crbug.com/888109): Implementation is currently only available on
+	  STM32H7 and STM32F4, and requires more documentation.
+
+config FLASH_MULTIPLE_REGION
+	bool "FLASH_MULTIPLE_REGION"
+	help
+	  For flash that is segemented in different regions.
+
+config FLASH_REGION_TYPE_COUNT__yn
+	bool "Select number of regions of different size/type"
+config FLASH_REGION_TYPE_COUNT
+	int "Number of regions of different size/type"
+	depends on FLASH_REGION_TYPE_COUNT__yn
+
+config FLASH_SIZE__yn
+	bool "Select total size of writable flash"
+config FLASH_SIZE
+	hex "Total size of writable flash"
+	depends on FLASH_SIZE__yn
+
+config FLASH_WRITE_SIZE__yn
+	bool "Select minimum flash write size (in bytes)"
+config FLASH_WRITE_SIZE
+	hex "Minimum flash write size (in bytes)"
+	depends on FLASH_WRITE_SIZE__yn
+
+config FLASH_WRITE_IDEAL_SIZE__yn
+	bool "Select most efficient flash write size (in bytes)"
+config FLASH_WRITE_IDEAL_SIZE
+	hex "Most efficient flash write size (in bytes)"
+	depends on FLASH_WRITE_IDEAL_SIZE__yn
+
+menu "NvMem Configuration"
+
+config FLASH_NVMEM
+	bool "Enable NV Memory module within flash"
+
+config FLASH_NVMEM_VARS
+	bool "Enable <key,value> variable support (requires CONFIG_FLASH_NVMEM)"
+	depends on FLASH_NVMEM
+
+endmenu
+
+config FMAP
+	bool "Include a flashmap in the compiled firmware image"
+	default y
+
+menu "SPI flash"
+
+config SPI_FLASH
+	bool "Support SPI flash"
+
+
+config SPI_FLASH_REGS
+	bool "Support SPI flash protection register translation"
+
+choice
+	prompt "Select any of the following SPI flash configs that your board uses"
+
+config SPI_FLASH_GD25LQ40
+	bool "GD25LQ40"
+config SPI_FLASH_GD25Q41B
+	bool "GD25Q41B"
+config SPI_FLASH_W25Q128
+	bool "W25Q128"
+config SPI_FLASH_W25Q40
+	bool "W25Q40"
+config SPI_FLASH_W25Q64
+	bool "W25Q64"
+config SPI_FLASH_W25Q80
+	bool "W25Q80"
+config SPI_FLASH_W25X40
+	bool "W25X40"
+
+endchoice
+
+if SPI_FLASH
+
+config SPI_FLASH_PORT__yn
+	bool "Select SPI_FLASH_PORT"
+config SPI_FLASH_PORT
+	int "Define the SPI port to use to access the flash"
+	depends on SPI_FLASH_PORT__yn
+
+
+config SPI_FLASH_HAS_SR2
+	bool "SPI flash part supports SR2 register"
+
+config SPI_NOR
+	bool "Support JEDEC SFDP based Serial NOR flash"
+
+
+config SPI_NOR_DEBUG
+	bool "Enable SPI_NOR debugging"
+	help
+	  Enable SPI_NOR debugging providing additional console output while
+	  initializing Serial NOR Flash devices including SFDP discovery. */
+
+config SPI_NOR_MAX_MESSAGE_SIZE__yn
+	bool "Select SPI_NOR_MAX_MESSAGE_SIZE"
+config SPI_NOR_MAX_MESSAGE_SIZE
+	int "Maximum Serial NOR flash command size, in Bytes"
+	depends on SPI_NOR_MAX_MESSAGE_SIZE__yn
+
+config SPI_NOR_MAX_READ_SIZE__yn
+	bool "Select SPI_NOR_MAX_READ_SIZE"
+config SPI_NOR_MAX_READ_SIZE
+	int "Maximum Serial NOR flash read size, in Bytes"
+	depends on SPI_NOR_MAX_READ_SIZE__yn
+
+config SPI_NOR_MAX_WRITE_SIZE__yn
+	bool "SPI_NOR_MAX_WRITE_SIZE"
+config SPI_NOR_MAX_WRITE_SIZE
+	int "Maximum Serial NOR flash write size, in bytes. Note this must be a power of two"
+	depends on SPI_NOR_MAX_WRITE_SIZE__yn
+
+config SPI_NOR_BLOCK_ERASE
+	bool "If defined will enable block (64KiB) erase operations"
+
+config SPI_NOR_SMART_ERASE
+	bool "read the sector/block to be erased first"
+	help
+	  If defined will read the sector/block to be erased first and only initiate
+	  the erase operation if not already in an erased state. The read operation
+	  (performed in CONFIG_SPI_NOR_MAX_READ_SIZE chunks) is aborted early if a
+	  non "0xff" byte is encountered.
+	  !! Make sure there is enough stack space to host a
+	  !! CONFIG_SPI_NOR_MAX_READ_SIZE sized buffer before enabling.
+
+
+
+
+endif # SPI_FLASH
+
+endmenu
+
+
+
+endif # FLASH
