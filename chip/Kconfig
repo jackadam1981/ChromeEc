@@ -1,0 +1,364 @@
+
+choice # CHIP
+	prompt "EC chip"
+
+config CHIP_G__yn
+	bool "g"
+config CHIP_HOST__yn
+	bool "host"
+config CHIP_ISH__yn
+	bool "ish"
+config CHIP_IT83XX__yn
+	bool "IT83xx"
+config CHIP_LM4__yn
+	bool "LM4"
+config CHIP_MAX32660__yn
+	bool "MAX32660"
+config CHIP_MCHP__yn
+	bool "MCHP"
+config CHIP_MEC1322__yn
+	bool "MEC1322"
+config CHIP_MT_SCP__yn
+	bool "MT_SCP"
+config CHIP_NPCX__yn
+	bool "NPCX"
+config CHIP_NRF51__yn
+	bool "NRF51"
+config CHIP_STM32__yn
+	bool "STM32"
+
+endchoice # CHIP
+
+config CHIP
+	string
+	default "g"		if CHIP_G__yn
+	default "host"		if CHIP_HOST__yn
+	default "ish"		if CHIP_ISH__yn
+	default "it83xx"	if CHIP_IT83XX__yn
+	default "lm4"		if CHIP_LM4__yn
+	default "max32660"	if CHIP_MAX32660__yn
+	default "mchp"		if CHIP_MCHP__yn
+	default "mec1322"	if CHIP_MEC1322__yn
+	default "mt_scp"	if CHIP_MT_SCP__yn
+	default "npcx"		if CHIP_NPCX__yn
+	default "nrf51"		if CHIP_NRF51__yn
+	default "stm32"		if CHIP_STM32__yn
+
+config CHIP_PANIC_BACKUP
+	bool "Panic backup"
+	default n
+	help
+	  Certain platforms(e.g. eve, poppy) cannot retain panic info in data ram since
+	  VCC is powered down on EC reset. On such platforms, panic data needs to be
+	  saved/restored to persistent storage by using chip specific
+	  implementations. This option can be enabled by those platforms that have and
+	  wish to use chip-implemented panic backup/restore functions.
+
+config CHIP_MEMORY_REGIONS
+	bool "The chip needs to define special SRAM memory regions as linker sections"
+	help
+	  The chip needs to define special SRAM memory regions as linker sections.
+	  Those regions are defined in the special-purpose preprocessed file in
+	  chip/<chip_name>/memory_regions.inc using the following macro:
+	  REGION(name, attributes, start_address, size)
+
+	  Note: these 'special' regions are NOT cleared at startup contrary to .bss.
+
+config CHIP_PRE_INIT
+	bool "Chip needs to do pre-init"
+	help
+	  Chip needs to do pre-init very early in main(), and provides chip_pre_init()
+	  to do so.
+
+config RTC
+	bool "Support Real-Time Clock (RTC)"
+
+menu "Low Power Idle"
+
+config LOW_POWER_IDLE
+	bool "low power idle"
+	help
+	  Low power idle options. These are disabled by default and all boards that
+	  want to use low power idle must define it. When using the LFIOSC, the low
+	  frequency clock will be used to conserve even more power when possible.
+
+	  GPIOs which need to trigger interrupts in low power idle must specify the
+	  GPIO_INT_DSLEEP flag in gpio_list[].
+
+	  Note that for some processors (e.g. LM4), an active JTAG connection will
+	  prevent the EC from using low-power idle.
+
+config LOW_POWER_USE_LFIOSC
+	bool "Use LFIOSC"
+
+config LOW_POWER_IDLE_LIMITED
+	bool "Allows us to enable/disable low power idle mode in runtime"
+
+endmenu # LPI
+
+menu "USB config"
+
+# USB section 
+
+config USB_BOS
+	bool "USB Binary device Object Store support"
+	default n
+
+config USB_BCD_DEV__yn
+	bool "Set USB Device version of product"
+	default n
+
+if USB_BCD_DEV__yn
+config USB_BCD_DEV
+	prompt "USB Device version of product"
+	range 0x00 0xff
+	hex
+endif
+
+config USB
+	bool "Compile chip support for the USB device controller"
+	default n
+
+config USB_ISOCHRONOUS
+	bool "Support USB isochronous handler"
+	default n
+
+config USB_BLOB
+	bool "Support USB blob handler"
+	default n
+
+config USB_CHARGER
+	bool "Common USB / BC1.2 charger detection routines"
+	default n
+
+endmenu # "USB config"
+
+menu "ADC config"
+
+config ADC
+	bool "Compile chip support for analog-to-digital convertor"
+
+# TODO: this should be "if ADC", but enabled by default in config.h
+
+config ADC_WATCHDOG
+	bool
+	prompt "Include the ADC analog watchdog feature in the ADC code"
+	default y
+
+if ADC
+
+choice
+	prompt "Chip-dependent ADC configuration"
+
+config ADC_PROFILE_SINGLE
+	bool "Sample all inputs once when requested"
+config ADC_PROFILE_FAST_CONTINUOUS
+	bool "Sample all inputs continuously using DMA, with minimal sample time."
+
+endchoice
+
+endif # ADC
+
+endmenu # "ADC config"
+
+menu "ALS config"
+
+config ALS
+	bool "ALS support"
+
+if ALS
+
+choice
+	prompt "Choose ALS chip"
+
+config ALS_AL3010
+	bool "ALS_AL3010"
+
+config ALS_BH1730
+	bool "ALS_BH1730"
+
+config ALS_BH1730_LUXTH_PARAMS
+	bool "Use board specific lux calculation"
+	depends on ALS_BH1730
+	help
+	  If defined, BH1730 uses board specific lux calculation formula parameters.
+	  If not defined, BH1730 uses default parameters to calculate lux.
+
+config ALS_ISL29035
+	bool "Enable ALS_ISL29035 support"
+
+config ALS_OPT3001
+	bool "ALS_OPT3001"
+
+config ALS_SI114X__yn
+	bool "Select ALS_SI114X"
+config ALS_SI114X
+	hex "Define the exact model ID present on the board: SI1141 = 41, SI1142 = 42"
+	range 0x00 0xff
+	default 0x40 if BOARD_EVE
+	depends on ALS_SI114X__yn
+
+if ALS_SI114X
+
+config ALS_SI114X_CHECK_REVISION
+	bool "Check if the device revision is supported"
+
+config ALS_SI114X_POLLING
+	bool "Enable Si114x to operate in polling mode"
+	help
+	  Enable Si114x to operate in polling mode. This config is used in conjunction
+	  with CONFIG_ALS_SI114X_INT_EVENT. When polling is enabled, the read is
+	  initiated in the same manner as when interrupts are used, but the event which
+	  triggers the irq_handler is generated by deferred call using a fixed delay.
+
+endif # ALS_SI114X
+
+config ALS_TCS3400
+	bool "Define to include the clear channel driver for the tcs3400 light sensor"
+
+if ALS_TCS3400
+
+config TCS_USE_LUX_TABLE
+	bool "TCS_USE_LUX_TABLE"
+	help
+	  Define to use atime tables in anti-saturation algos in the tcs3400 driver.
+	  Defining this for a board makes the anti-saturation algorithm much more
+	  efficient, but requires the board to have it's lens cover scale and k_channel
+	  scales to be determined.  Define this for a board once it's added its
+	  cover_scale and k_channel scale factors.
+
+config ALS_TCS3400_EMULATED_IRQ_EVENT
+	bool "Enable tcs3400 to operate without interrupt pin"
+	help
+	  Enable tcs3400 to operate without interrupt pin. This config is used in
+	  conjunction with CONFIG_ALS_TCS3400_INT_EVENT. When this option is enabled,
+	  the read is initiated in the same manner as when interrupts are used, but the
+	  event which triggers the irq_handler is generated by deferred call.
+
+endif # ALS_TCS3400
+
+endchoice # ALS chip
+
+config ALS_LIGHTBAR_DIMMING
+	bool "Define which ALS sensor is used for dimming the lightbar when dark"
+
+
+
+endif #ALS
+
+endmenu # "ALS config"
+
+config WATCHDOG
+	bool "Compile watchdog timer support"
+	default y
+	help
+	  Compile watchdog timer support.  The watchdog timer will reboot the system
+	  if the hook task (which is the lowest-priority task on the system) gets
+	  starved for CPU time and isn't able to fire its HOOK_TICK event.
+
+if WATCHDOG
+
+config WATCHDOG_HELP
+	bool "Try to detect a watchdog that is about to fire"
+	help
+	  Try to detect a watchdog that is about to fire, and print a trace.  This is
+	  required on chips such as STM32 where the watchdog timer simply reboots the
+	  system without any early warning.
+
+endif # WATCHDOG
+
+config WATCHDOG_MAX_RETRIES
+	int "The maximum number of times that the watchdog timer may reset"
+	default 4
+	help
+	  The maximum number of times that the watchdog timer may reset
+	  before halting the system (or taking some sort of other
+	  chip-dependent corrective action).
+
+config WATCHDOG_PERIOD_MS
+	int "Watchdog period in ms; see also AUX_TIMER_PERIOD_MS"
+	default 1600
+
+config FPU
+	bool "Enable support for floating point unit"
+
+config SUPPORT_HIBERNATE
+	bool "Enable system hibernate"
+	default y
+
+config I2C
+	bool "Enable I2C support"
+
+config I2C_MASTER
+	bool "EC uses an I2C master interface"
+
+config I2C_MULTI_PORT_CONTROLLER
+	bool "I2C multi-port controller"
+	help
+	  If CONFIG_I2C_MULTI_PORT_CONTROLLER is defined, a single on-chip I2C
+	  controller may have multiple I2C ports attached. Therefore, I2c operations
+	  must lock the controller (not just the port) to prevent hardware access
+	  conflicts.
+
+config MPU
+	bool "Support memory protection unit (MPU)"
+
+
+if CHIP_NPCX__yn
+
+config SUPPORT_CHIP_HIBERNATION
+	bool "If defined, chip hibernation is used"
+	default y
+	help
+	  If defined, chip hibernation is used. Your board needs to define wake-up
+	  signals. Undefine this to use board hibernation capability.
+
+config HIBERNATE_PSL
+	bool "Use PSL (Power Switch Logic) for hibernating"
+	help
+	  Use PSL (Power Switch Logic) for hibernating. It turns off VCC power rail
+	  for ultra-low power consumption and uses PSL inputs rely on VSBY power rail
+	  to wake up ec and the whole system.
+
+endif # CHIP_NPCX__yn
+
+config DMA
+	bool "Support DMA transfers inside the EC"
+
+config DMA_DEFAULT_HANDLERS
+	bool "Use the common interrupt handlers for DMA IRQs"
+	default y
+
+config DMA_HELP
+	bool "Compile extra debugging and tests for the DMA module"
+
+config FW_INCLUDE_RO
+	bool "FW_INCLUDE_RO"
+	default y
+	help
+	  Board Image ec.bin contains a RO firmware.  If not defined, the image will
+	  only contain the RW firmware.
+
+config FW_LIMITED_IMAGE
+	bool "If defined, another image (RW) exists with more features"
+
+config MAPPED_STORAGE
+	bool "Flash is directly mapped into the EC's address space"
+	default y
+	help
+	  Flash is directly mapped into the EC's address space.  If this is not
+	  defined, the flash driver must implement flash_physical_read().
+
+choice
+	prompt "EC code can reside on internal or external storage"
+	help
+	  EC code can reside on internal or external storage. Only one of these
+	  CONFIGs should be defined. CONFIG_INTERNAL_STORAGE implies XIP
+	  (eXecute-In-Place) semantics. i.e. code is being fetched directly from
+	  storage media.
+
+config EXTERNAL_STORAGE
+	bool "EXTERNAL_STORAGE"
+config INTERNAL_STORAGE
+	bool "INTERNAL_STORAGE"
+endchoice
