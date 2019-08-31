@@ -5,6 +5,8 @@ menuconfig MCMDS
 
 comment "some commands"
 
+source "common/Kconfig.battery"
+
 config PWM
 	bool "Support PWM control"
 	default n
