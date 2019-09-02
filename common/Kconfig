@@ -29,6 +29,10 @@ menu "Debug setup"
 source "common/Kconfig.debug"
 endmenu
 
+menu "Fan setup"
+source "common/Kconfig.fan"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
