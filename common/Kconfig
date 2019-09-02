@@ -37,6 +37,10 @@ menu "Flash setup"
 source "common/Kconfig.flash"
 endmenu
 
+menu "Keyboard setup"
+source "common/Kconfig.keyboard"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
