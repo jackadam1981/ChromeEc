@@ -2,7 +2,6 @@
 mainmenu "EC configuration"
 
 choice
-
 	prompt "Board name"
 
 source "board/*/Kconfig.name"
@@ -10,9 +9,6 @@ source "board/*/Kconfig.name"
 endchoice
 
 source "board/*/Kconfig"
-
 source "chip/Kconfig"
 source "chip/*/Kconfig"
 source "common/Kconfig"
-source "power/Kconfig"
-source "util/Kconfig"
