@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60b3f7ff_a8ab460b",
+        "filename": "board/kodama/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-09-02T06:20:40Z",
+      "side": 1,
+      "message": "please align this line. and what\u0027s this? \nAccording to b:140358646, shouldn\u0027t this be USB_C0_DP_OE_L?",
+      "revId": "30abf4a6bfb2c2cfe1bc89931f9d60b3f7f91e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
