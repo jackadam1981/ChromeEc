@@ -51,6 +51,10 @@ menu "LED setup"
 source "common/Kconfig.led"
 endmenu
 
+menu "Temp sensor setup"
+source "common/Kconfig.temp"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
