@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "53f7a118_c7d1b06a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-09-02T06:26:43Z",
+      "side": 1,
+      "message": "commit message should be something like \"swap pin location of CCD_MODE_ODL and USB_C0_DP_OE_L\"",
+      "revId": "30abf4a6bfb2c2cfe1bc89931f9d60b3f7f91e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60b3f7ff_a8ab460b",
         "filename": "board/kodama/gpio.inc",
         "patchSetId": 1
