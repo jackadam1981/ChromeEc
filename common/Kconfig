@@ -41,6 +41,10 @@ menu "Keyboard setup"
 source "common/Kconfig.keyboard"
 endmenu
 
+menu "Hostcmd setup"
+source "common/Kconfig.hostcmd"
+endmenu
+
 menu "LED setup"
 source "common/Kconfig.led"
 endmenu
