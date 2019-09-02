@@ -7,6 +7,10 @@ menu "Board setup"
 source "common/Kconfig.board"
 endmenu
 
+menu "Accel setup"
+source "common/Kconfig.accel"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
