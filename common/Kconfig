@@ -3,6 +3,10 @@ menu "Console config"
 source "common/Kconfig.console"
 endmenu
 
+menu "Keyboard config"
+source "common/Kconfig.keyboard"
+endmenu
+
 menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
