@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1f8d3928_f1962d64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-09-02T06:34:06Z",
+      "side": 1,
+      "message": "1) PA5 is reserved for BATT_CUTOFF_INDICATOR. 2)CCD_MODE_ODL instead of USB_C0_DP_OE_L(PA1)",
+      "parentUuid": "53f7a118_c7d1b06a",
+      "revId": "30abf4a6bfb2c2cfe1bc89931f9d60b3f7f91e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60b3f7ff_a8ab460b",
         "filename": "board/kodama/gpio.inc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-02T06:20:40Z",
       "side": 1,
       "message": "please align this line. and what\u0027s this? \nAccording to b:140358646, shouldn\u0027t this be USB_C0_DP_OE_L?",
+      "revId": "30abf4a6bfb2c2cfe1bc89931f9d60b3f7f91e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cfe643_e58a88c7",
+        "filename": "board/kodama/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-09-02T06:34:06Z",
+      "side": 1,
+      "message": "1) USB_C0_DP_OE_L is not used in EVT board, VARIANT_KUKUI_DP_MUX_GPIO not defined in Kodama.\n2) PA5 is reserved for BATT_CUTOFF_INDICATOR.",
+      "parentUuid": "60b3f7ff_a8ab460b",
       "revId": "30abf4a6bfb2c2cfe1bc89931f9d60b3f7f91e4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
