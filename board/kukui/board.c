@@ -268,6 +268,8 @@ static void board_init(void)
 		 * (b/133655155)
 		 */
 		mt6370_backlight_set_dim(MT6370_BLDIM_DEFAULT * 3 / 4);
+
+		rt946x_set_vprec(3400);
 	}
 
 	/* Enable pogo charging signal */
