@@ -45,6 +45,10 @@ menu "LED setup"
 source "common/Kconfig.led"
 endmenu
 
+menu "Temp sensor setup"
+source "common/Kconfig.temp"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
