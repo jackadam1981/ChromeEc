@@ -25,6 +25,10 @@ endmenu
 
 source "common/Kconfig.battery"
 
+menu "Debug setup"
+source "common/Kconfig.debug"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
