@@ -632,6 +632,12 @@ int rt946x_enable_charge_termination(int en);
  */
 int rt946x_toggle_bc12_detection(void);
 
+/*
+ * Set precharge voltage.
+ * Return 0 if it succeeds.
+ */
+int rt946x_set_vprec(unsigned int vprec);
+
 struct rt946x_init_setting {
 	uint16_t eoc_current;
 	uint16_t mivr;

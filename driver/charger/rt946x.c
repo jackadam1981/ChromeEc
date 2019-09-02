@@ -355,7 +355,7 @@ static int rt946x_set_ircmp_res(unsigned int res)
 		reg_res << RT946X_SHIFT_IRCMP_RES);
 }
 
-static int rt946x_set_vprec(unsigned int vprec)
+int rt946x_set_vprec(unsigned int vprec)
 {
 	uint8_t reg_vprec = 0;
 
