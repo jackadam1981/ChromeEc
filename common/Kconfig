@@ -55,6 +55,10 @@ menu "Temp sensor setup"
 source "common/Kconfig.temp"
 endmenu
 
+menu "USB setup"
+source "common/Kconfig.usb"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
