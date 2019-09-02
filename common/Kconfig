@@ -15,6 +15,10 @@ menu "Accel setup"
 source "common/Kconfig.accel"
 endmenu
 
+menu "Charge Manager setup"
+source "common/Kconfig.charge-manager"
+endmenu
+
 menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
