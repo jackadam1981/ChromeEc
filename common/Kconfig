@@ -27,6 +27,10 @@ menu "Console commands"
 source "common/Kconfig.cmd"
 endmenu
 
+menu "Console config"
+source "common/Kconfig.console"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
