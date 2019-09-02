@@ -23,6 +23,10 @@ menu "Console commands"
 source "common/Kconfig.cmd"
 endmenu
 
+menu "Console config"
+source "common/Kconfig.console"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
