@@ -3,6 +3,10 @@ menu "Board setup"
 source "common/Kconfig.board"
 endmenu
 
+menu "Accel setup"
+source "common/Kconfig.accel"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
