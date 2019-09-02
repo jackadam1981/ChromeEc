@@ -3,27 +3,27 @@ menu "Board setup"
 source "common/Kconfig.board"
 endmenu
 
-menu "Console config"
-source "common/Kconfig.console"
-endmenu
-
 menu "Accel setup"
 source "common/Kconfig.accel"
-endmenu
-
-menu "Charge Manager setup"
-source "common/Kconfig.charge-manager"
 endmenu
 
 menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
 
+menu "Charge Manager setup"
+source "common/Kconfig.charge-manager"
+endmenu
+
+source "common/Kconfig.battery"
+
 menu "Console commands"
 source "common/Kconfig.cmd"
 endmenu
 
-source "common/Kconfig.battery"
+menu "Console config"
+source "common/Kconfig.console"
+endmenu
 
 menu "Debug setup"
 source "common/Kconfig.debug"
@@ -41,10 +41,6 @@ menu "Keyboard setup"
 source "common/Kconfig.keyboard"
 endmenu
 
-menu "Hostcmd setup"
-source "common/Kconfig.hostcmd"
-endmenu
-
 menu "LED setup"
 source "common/Kconfig.led"
 endmenu
@@ -57,9 +53,17 @@ menu "USB PD setup"
 source "common/Kconfig.usb-pd"
 endmenu
 
+menu "Hostcmd setup"
+source "common/Kconfig.hostcmd"
+endmenu
+
 menu "USB setup"
 source "common/Kconfig.usb"
 endmenu
+
+menuconfig MCMDS
+	bool
+	prompt "MCMDS"
 
 config PWM
 	bool "Support PWM control"
