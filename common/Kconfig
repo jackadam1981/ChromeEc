@@ -53,6 +53,10 @@ menu "Temp sensor setup"
 source "common/Kconfig.temp"
 endmenu
 
+menu "USB PD setup"
+source "common/Kconfig.usb-pd"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
