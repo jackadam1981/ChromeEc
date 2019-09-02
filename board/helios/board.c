@@ -32,6 +32,7 @@
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "temp_sensor.h"
 #include "thermal.h"
@@ -93,6 +94,14 @@ static void bc12_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
+}
+
+static void board_lid_interrupt(enum gpio_signal signal)
+{
+	if (tablet_get_mode())
+		return;
+
+	lid_interrupt(signal);
 }
 
 #include "gpio_list.h" /* Must come after other header files. */
