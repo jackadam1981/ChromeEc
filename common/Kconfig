@@ -57,6 +57,10 @@ menu "USB PD setup"
 source "common/Kconfig.usb-pd"
 endmenu
 
+menu "USB setup"
+source "common/Kconfig.usb"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
