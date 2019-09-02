@@ -41,6 +41,10 @@ menu "Keyboard setup"
 source "common/Kconfig.keyboard"
 endmenu
 
+menu "LED setup"
+source "common/Kconfig.led"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
