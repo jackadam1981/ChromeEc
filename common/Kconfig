@@ -3,12 +3,6 @@ menu "LED setup"
 source "common/Kconfig.led"
 endmenu
 
-menuconfig MCMDS
-	bool
-	prompt "MCMDS"
-
-comment "some commands"
-
 menu "Console commands"
 source "common/Kconfig.cmd"
 endmenu
