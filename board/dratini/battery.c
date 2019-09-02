@@ -32,62 +32,238 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
-	/* SMP LIS Dell FMXMT Battery Information */
-	[BATTERY_SMP_LIS] = {
+	/* DynaPack Coslight BDAK126150-W0P0703HT attery Information */
+	[BATTERY_DANAPACK_COS] = {
 		.fuel_gauge = {
-			.manuf_name = "SMP-LIS3.78",
+			.manuf_name = "333-2C-DA-A",
 			.ship_mode = {
-				.reg_addr = 0x0,
-				.reg_data = { 0x10, 0x10 },
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
+				.mfgacc_support = 1,
 				.reg_addr = 0x0,
-				.reg_mask = 0x2000,
-				.disconnect_val = 0x2000,
-			}
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
 		},
 		.batt_info = {
-			.voltage_max		= 8800,
-			.voltage_normal		= 7660, /* mV */
-			.voltage_min		= 6000, /* mV */
-			.precharge_current	= 256,	/* mA */
-			.start_charging_min_c	= 0,
-			.start_charging_max_c	= 60,
-			.charging_min_c		= 0,
-			.charging_max_c		= 60,
-			.discharging_min_c	= 0,
-			.discharging_max_c	= 60,
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
 		},
 	},
 
-	/* SMP SDI Dell FMXMT Battery Information */
-	[BATTERY_SMP_SDI] = {
+	/* DynaPack ATL DynaPack DAK126150-W0G0703HT Battery Information */
+	[BATTERY_DANAPACK_ATL] = {
 		.fuel_gauge = {
-			.manuf_name = "SMP-SDI-3727",
+			.manuf_name = "333-27-DA-A",
 			.ship_mode = {
-				.reg_addr = 0x0,
-				.reg_data = { 0x10, 0x10 },
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
+				.mfgacc_support = 1,
 				.reg_addr = 0x0,
-				.reg_mask = 0x2000,
-				.disconnect_val = 0x2000,
-			}
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
 		},
 		.batt_info = {
-			.voltage_max		= 8800,
-			.voltage_normal		= 7660, /* mV */
-			.voltage_min		= 6000, /* mV */
-			.precharge_current	= 256,	/* mA */
-			.start_charging_min_c	= 0,
-			.start_charging_max_c	= 60,
-			.charging_min_c		= 0,
-			.charging_max_c		= 60,
-			.discharging_min_c	= 0,
-			.discharging_max_c	= 60,
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* DynaPack SDI DAK126150-W020703HT Battery Information */
+	[BATTERY_DANAPACK_SDI] = {
+		.fuel_gauge = {
+			.manuf_name = "333-24-DA-A",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
+		},
+		.batt_info = {
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* Samsung SDI P21GGH-03-N02 Battery Information */
+	[BATTERY_SAMSUNG_SDI] = {
+		.fuel_gauge = {
+			.manuf_name = "333-54-DA-A",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
+		},
+		.batt_info = {
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* Simplo Coslight 996QA149H Battery Information */
+	[BATTERY_SIMPLO_COS] = {
+		.fuel_gauge = {
+			.manuf_name = "333-1C-DA-A",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
+		},
+		.batt_info = {
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* Simplo ATL 996QA150H Battery Information */
+	[BATTERY_SIMPLO_ATL] = {
+		.fuel_gauge = {
+			.manuf_name = "333-17-DA-A",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
+		},
+		.batt_info = {
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* LGC MPPHPPMD021C Battery Information */
+	[BATTERY_LGC] = {
+		.fuel_gauge = {
+			.manuf_name = "333-42-33-A",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
+		},
+		.batt_info = {
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* Coslight B00C368598D0001 Battery Information */
+	[BATTERY_COS] = {
+		.fuel_gauge = {
+			.manuf_name = "333-AC-33-A",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x0,
+				.reg_mask = 0x6000,
+				.disconnect_val = 0x6000,
+			},
+		},
+		.batt_info = {
+			.voltage_max = 8800,	/* mV */
+			.voltage_normal = 7700,
+			.voltage_min = 6000,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 45,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = -10,
+			.discharging_max_c = 60,
 		},
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
-const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SMP_SDI;
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_DANAPACK_COS;
