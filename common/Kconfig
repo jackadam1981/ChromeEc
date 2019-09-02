@@ -1,8 +1,4 @@
 
-menuconfig MCMDS
-	bool
-	prompt "MCMDS"
-
 menu "Board setup"
 source "common/Kconfig.board"
 endmenu
@@ -66,6 +62,10 @@ endmenu
 menu "USB PD setup"
 source "common/Kconfig.usb-pd"
 endmenu
+
+menuconfig MCMDS
+	bool
+	prompt "MCMDS"
 
 config PWM
 	bool "Support PWM control"
