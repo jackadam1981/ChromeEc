@@ -12,4 +12,5 @@ endchoice
 source "board/*/Kconfig"
 source "chip/Kconfig"
 source "common/Kconfig"
+source "power/Kconfig"
 source "util/Kconfig"
