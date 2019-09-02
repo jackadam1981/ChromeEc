@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbefe1bd_01a1dc45",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-02T02:44:19Z",
+      "side": 1,
+      "message": "Same as above, please make this a separate function that describes what SKU ID 1,2,3,4 means as opposed to others.",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 39
+      },
+      "revId": "324c789b2b518080078e5b0b5fc8e4ca0de65e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65cc913_275e7067",
+        "filename": "board/kindred/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-02T02:44:19Z",
+      "side": 1,
+      "message": "Ok, the time has come to make some functions out of these :)",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "324c789b2b518080078e5b0b5fc8e4ca0de65e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
