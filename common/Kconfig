@@ -1,4 +1,8 @@
 
+menu "Board setup"
+source "common/Kconfig.board"
+endmenu
+
 menu "Console config"
 source "common/Kconfig.console"
 endmenu
