@@ -31,10 +31,6 @@ menu "Console config"
 source "common/Kconfig.console"
 endmenu
 
-menu "Keyboard setup"
-source "common/Kconfig.keyboard"
-endmenu
-
 menu "Debug setup"
 source "common/Kconfig.debug"
 endmenu
@@ -49,6 +45,14 @@ endmenu
 
 menu "Hostcmd setup"
 source "common/Kconfig.hostcmd"
+endmenu
+
+menu "Keyboard setup"
+source "common/Kconfig.keyboard"
+endmenu
+
+menu "LED setup"
+source "common/Kconfig.led"
 endmenu
 
 config PWM
