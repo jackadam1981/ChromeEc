@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6181dfe7_c15c9bba",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-03T16:39:15Z",
+      "side": 1,
+      "message": "can you add a comment here explaining that DPTF is only interested in a pure 360 degree orientation as that affects thermal parameters, and if there is no hall sensor, then the lid_angle task will handle this based on lid angle calculation (and that the two methods for sending 360 mode updates are mutually exclusive), please",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 65
+      },
+      "revId": "dfdf466446377eb2fb16f35d3ee7ceb20a6f85e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
