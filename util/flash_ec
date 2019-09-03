@@ -154,6 +154,8 @@ DEFINE_string logfile "" \
 	"Stm32 only: pathname of the file to store communications log."
 DEFINE_string offset "0" \
 	"Offset where to program the image from."
+DEFINE_string prefix "" \
+	"Device control prefix for specific servod device (new servod)."
 DEFINE_integer port "${DEFAULT_PORT}" \
 	"Port to communicate to servo on."
 DEFINE_boolean raiden "${FLAGS_FALSE}" \
@@ -183,7 +185,31 @@ MSG_VERIFY_FAIL="Failed to verify EC firmware image."
 
 set -e
 
+
 DUT_CONTROL_CMD=( "dut-control" "--port=${FLAGS_port}" )
+
+
+# This will fail if servod cannot talk on that port but succeed otherwise as
+# it just retrieves a cached value.
+${DUT_CONTROL_CMD[@]} "servod_pid" > /dev/null
+
+
+if [ ! -z  "$FLAGS_prefix" ]; then
+	devs=$(${DUT_CONTROL_CMD[@]} devices 2>&1 | cat)
+	# Test here whether this is the new servod that supports prefixes.
+	if ! [[ $devs =~ "No control named" ]]; then
+		# Test here whether the prefix is known.
+		if [[ $devs =~ "'prefix': '${FLAGS_prefix}'" ]]; then
+			DUT_CONTROL_CMD+=("--prefix=$FLAGS_prefix")
+		else
+			die "prefix '${FLAGS_prefix}' unknown to servod."
+		fi
+	else
+	# Warn the user that prefix was used but it's not supported.
+		warn "old servod. no prefix support. prefix '${FLAGS_prefix}'"
+	fi
+fi
+
 
 function dut_control() {
 	local DUT_CTRL_CML=( "${DUT_CONTROL_CMD[@]}" )
@@ -618,10 +644,11 @@ function servo_ec_uart() {
 # controls are supported by each servo type.
 servo_v2_VARS=( "cold_reset" )
 servo_micro_VARS=( "cold_reset" )
-servo_v4_with_ccd_cr50_VARS=( "cold_reset" )
+ccd_cr50_VARS=( "cold_reset" )
 
 # Some servo boards use the same controls.
 servo_v3_VARS=( "${servo_v2_VARS[@]}" )
+servo_v4_with_ccd_cr50_VARS=( "${ccd_cr50_VARS[@]}" )
 servo_v4_with_servo_micro_VARS=( "${servo_micro_VARS[@]}" )
 toad_VARS=( "boot_mode" )
 
