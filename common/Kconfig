@@ -31,6 +31,10 @@ menu "Debug setup"
 source "common/Kconfig.debug"
 endmenu
 
+menu "Fan setup"
+source "common/Kconfig.fan"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
