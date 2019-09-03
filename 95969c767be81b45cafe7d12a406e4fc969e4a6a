@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d2dcb2e_52bb960b",
+        "filename": "board/meep/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-09-03T12:30:05Z",
+      "side": 1,
+      "message": "Where could I check this value?",
+      "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8436d3c_552e1795",
+        "filename": "board/meep/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-09-03T12:30:05Z",
+      "side": 1,
+      "message": "Just assume it is same as other SIMPLO battery",
+      "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613beaa6_6705ca4d",
+        "filename": "board/meep/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-09-03T12:30:05Z",
+      "side": 1,
+      "message": "The spec in the b/138089473#1 shows 7700?",
+      "range": {
+        "startLine": 226,
+        "startChar": 21,
+        "endLine": 226,
+        "endChar": 25
+      },
+      "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
