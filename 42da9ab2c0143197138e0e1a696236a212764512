@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "384bd711_bb3bbd9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-03T23:48:42Z",
+      "side": 1,
+      "message": "Please add chromium:999705 as well.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "42da9ab2c0143197138e0e1a696236a212764512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7410852f_d12b07f5",
         "filename": "board/scripts/initial_ec_image.sh",
         "patchSetId": 2
