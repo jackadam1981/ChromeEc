@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c350a4f_99cbb5c9",
+        "filename": "board/scripts/initial_ec_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-09-03T21:41:16Z",
+      "side": 1,
+      "message": "Between these two steps, it would be good to perform a search and replace of the old variant name with the new variant name.  Need to be careful not to override the BASEBOARD assignment in build.mk when the old variant matches the baseboard name.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "31fdf10b367fae734114e7b16a343977b97cde86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
