@@ -15,6 +15,10 @@ menu "Battery setup"
 source "common/Kconfig.battery"
 endmenu
 
+menu "Charge Manager setup"
+source "common/Kconfig.charge-manager"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
