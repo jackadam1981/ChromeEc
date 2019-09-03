@@ -11,6 +11,10 @@ menu "Accel setup"
 source "common/Kconfig.accel"
 endmenu
 
+menu "Battery setup"
+source "common/Kconfig.battery"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
