@@ -45,6 +45,7 @@ endmenu
 
 menu "Hostcmd setup"
 source "common/Kconfig.hostcmd"
+endmenu
 
 menu "Keyboard setup"
 source "common/Kconfig.keyboard"
@@ -60,6 +61,10 @@ endmenu
 
 menu "USB setup"
 source "common/Kconfig.usb"
+endmenu
+
+menu "USB PD setup"
+source "common/Kconfig.usb-pd"
 endmenu
 
 config PWM
