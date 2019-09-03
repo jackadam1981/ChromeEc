@@ -22,6 +22,30 @@
       "revId": "2fb2b9e56e7d5c1351d22690f38474c94018273c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8afdf9_f54038b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-03T17:33:50Z",
+      "side": 1,
+      "message": "the variables were potentially unused in CPRINTS in case the else clause was taken. that one is gone, no?",
+      "parentUuid": "400a391f_70b207b9",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "2fb2b9e56e7d5c1351d22690f38474c94018273c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
