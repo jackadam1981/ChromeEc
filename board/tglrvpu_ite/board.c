@@ -42,6 +42,7 @@ const struct tcpc_gpio_config_t tcpc_gpios[] = {
 			.cc2_pin = GPIO_USB_C0_CC2_VCONN_EN,
 			.pin_pol = 1,
 		},
+		.src_ilim = GPIO_USB_C0_SRC_HI_ILIM,
 	},
 	[TYPE_C_PORT_1] = {
 		.vbus = {
@@ -61,6 +62,7 @@ const struct tcpc_gpio_config_t tcpc_gpios[] = {
 			.cc2_pin = GPIO_USB_C1_CC2_VCONN_EN,
 			.pin_pol = 1,
 		},
+		.src_ilim = GPIO_USB_C1_SRC_HI_ILIM,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_gpios) == CONFIG_USB_PD_PORT_COUNT);
