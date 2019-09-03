@@ -27,6 +27,10 @@ menu "Console config"
 source "common/Kconfig.console"
 endmenu
 
+menu "Debug setup"
+source "common/Kconfig.debug"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
