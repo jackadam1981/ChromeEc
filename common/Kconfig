@@ -43,6 +43,10 @@ menu "Hostcmd setup"
 source "common/Kconfig.hostcmd"
 endmenu
 
+menu "Keyboard setup"
+source "common/Kconfig.keyboard"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
