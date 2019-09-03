@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4f2668ac_9506f271",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-09-03T14:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8f4070_be0b1423",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "9c8f0aed341dffdc9ea1eadb26cda08bb8a43ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f3a1c10_ad0077bb",
         "filename": "board/kodama/battery.c",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "9c8f0aed341dffdc9ea1eadb26cda08bb8a43ab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786d8575_e1b2e4a3",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-09-03T14:15:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3a1c10_ad0077bb",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "9c8f0aed341dffdc9ea1eadb26cda08bb8a43ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
