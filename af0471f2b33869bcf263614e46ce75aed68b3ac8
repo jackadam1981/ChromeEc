@@ -210,6 +210,29 @@
     },
     {
       "key": {
+        "uuid": "5bf50223_405e6514",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2766,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-03T22:09:43Z",
+      "side": 1,
+      "message": "PRL is a weird prefix for PE_ flags\n\nAlso shouldn\u0027t we only wait on the TX COMPLETE FLAG?\n\nWhat if we never send it, should there be a timeout?",
+      "range": {
+        "startLine": 2766,
+        "startChar": 23,
+        "endLine": 2766,
+        "endChar": 39
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39038467_9149b7a3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 7
@@ -250,6 +273,52 @@
         "startChar": 1,
         "endLine": 2832,
         "endChar": 25
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69ed5b9_a88489ee",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2865,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-03T22:09:43Z",
+      "side": 1,
+      "message": "this is a uint64, so it will always be positive. Can you add a comment, is 0 a speicial value? If so let\u0027s make it !\u003d 0 instead",
+      "range": {
+        "startLine": 2865,
+        "startChar": 1,
+        "endLine": 2865,
+        "endChar": 36
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf116d3_6bbcd406",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2889,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-03T22:09:43Z",
+      "side": 1,
+      "message": "I couldn\u0027t find where we are clearing the MessageID Counter etc after this.\n\nSee \"6.3.10 PR_Swap Message\"\n\n\"After a successful Power Role Swap the Port Partners Shall reset their respective Protocol Layers (equivalent to a Soft Reset): resetting their MessageIDCounter, RetryCounter and Protocol Layer state machines before attempting to establish an Explicit Contract. At this point the Source Shall also reset its CapsCounter.\"",
+      "range": {
+        "startLine": 2888,
+        "startChar": 2,
+        "endLine": 2889,
+        "endChar": 35
       },
       "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
