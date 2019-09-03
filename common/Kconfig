@@ -19,6 +19,10 @@ menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
 
+menu "Console commands"
+source "common/Kconfig.cmd"
+endmenu
+
 menuconfig MCMDS
 	bool
 	prompt "MCMDS"
