@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8d5ea2e_19a5d48a",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-03T15:30:44Z",
+      "side": 1,
+      "message": "why not %d? dev_drv is signed.",
+      "range": {
+        "startLine": 105,
+        "startChar": 24,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "5941afe6297ad8b7e6e97b2cdb3430d1316ceb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
