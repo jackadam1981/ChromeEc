@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "400a391f_70b207b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-03T15:35:06Z",
+      "side": 1,
+      "message": "nit: With this change, we\u0027re still using uninitialized variables. Declarations will be moved inside the if clause and somehow Coverity will be happy, I guess.\n\nI\u0027m wondering if a parameter passed as a pointer can be annotated: (__uninitialized)txmf_id by p9221_read16 or not.",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "2fb2b9e56e7d5c1351d22690f38474c94018273c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
