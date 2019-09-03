@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a070d1c_5d9d1f2d",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-09-03T01:32:58Z",
+      "side": 1,
+      "message": "i think you need to declare a HOOK_INIT with priority I2C+1 and switch the mux config according to the board id. Otherwise, the DP function of board id \u003c\u003d 4 will be broken.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "404b26d6e68459e8172b967bfa452313603ba217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f6631d_6eb18f4e",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-09-03T01:32:58Z",
+      "side": 1,
+      "message": "I think you need to add a board_hpd_status() function just like we did in the jacuzzi board.",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "404b26d6e68459e8172b967bfa452313603ba217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
