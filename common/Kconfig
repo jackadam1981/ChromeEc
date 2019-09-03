@@ -39,6 +39,10 @@ menu "Fan setup"
 source "common/Kconfig.fan"
 endmenu
 
+menu "Flash setup"
+source "common/Kconfig.flash"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
