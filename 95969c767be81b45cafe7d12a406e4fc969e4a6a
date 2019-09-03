@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "20bc694d_63c4595a",
+        "filename": "board/meep/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-09-03T13:08:26Z",
+      "side": 1,
+      "message": "I have asked battery vendor add into spec. btw we have EVT sample to confirm the value.",
+      "parentUuid": "8d2dcb2e_52bb960b",
+      "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8436d3c_552e1795",
         "filename": "board/meep/battery.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-03T12:30:05Z",
       "side": 1,
       "message": "Just assume it is same as other SIMPLO battery",
+      "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d02b51c_219cf314",
+        "filename": "board/meep/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-09-03T13:08:26Z",
+      "side": 1,
+      "message": "yes, simplo batteries used the same gauge.",
+      "parentUuid": "d8436d3c_552e1795",
       "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +92,30 @@
       "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75bf4df7_6f419c61",
+        "filename": "board/meep/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-09-03T13:08:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "613beaa6_6705ca4d",
+      "range": {
+        "startLine": 226,
+        "startChar": 21,
+        "endLine": 226,
+        "endChar": 25
+      },
+      "revId": "95969c767be81b45cafe7d12a406e4fc969e4a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
