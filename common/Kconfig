@@ -23,6 +23,10 @@ menu "Charger setup"
 source "common/Kconfig.charger"
 endmenu
 
+menu "Console commands"
+source "common/Kconfig.cmd"
+endmenu
+
 config PWM
 	bool "Support PWM control"
 
