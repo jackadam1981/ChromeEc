@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07d121dd_2904ef38",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-03T02:11:18Z",
+      "side": 1,
+      "message": "The naming is confusing. For example, we have RT946X_IRQ_COUNT, and we also have MT6370_IRQ_MAX.",
+      "range": {
+        "startLine": 1147,
+        "startChar": 1,
+        "endLine": 1147,
+        "endChar": 15
+      },
+      "revId": "6d44717e1eabe16bad7dda9e8256fef2d96a88af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
