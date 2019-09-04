@@ -39,6 +39,23 @@
       "revId": "fd651f6160df0c3322429db739679a6bfe4a319b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "020a3cc3_145459b5",
+        "filename": "board/kukui_scp/mdp_ipi_message.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-04T03:08:38Z",
+      "side": 1,
+      "message": "Please add build_assert as in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1584182/37/board/kukui_scp/isp_p2_srv.h",
+      "revId": "fd651f6160df0c3322429db739679a6bfe4a319b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
