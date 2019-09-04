@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "967f54e8_4df217df",
+        "filename": "board/kukui_scp/mdp_ipi_message.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-04T12:21:11Z",
+      "side": 1,
+      "message": "please revise mutex usages in mdp_ipi_handler and mdp_service_task.\n\nexample: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1584182/39/board/kukui_scp/isp_p2_srv.c",
+      "revId": "bb00f145631ea097dc49b5412b123ce721148ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
