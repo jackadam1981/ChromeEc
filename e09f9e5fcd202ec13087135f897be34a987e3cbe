@@ -22,6 +22,30 @@
       "revId": "e09f9e5fcd202ec13087135f897be34a987e3cbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2545006b_93fa6df5",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-09-04T21:25:31Z",
+      "side": 0,
+      "message": "Removing was a request from a different CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1633269/56/driver/als_tcs3400.c#414)\n\nGranted, the reviewer requested one level of curly brackets be removed because it was not necessary, so I removed the other as well as it also wasn\u0027t technically needed.\n\nI agree in that I prefer the brackets as well, so since it wasn\u0027t specifically requested to be removed, I\u0027m adding them back.",
+      "parentUuid": "eb2c544b_b58d1a5b",
+      "range": {
+        "startLine": 419,
+        "startChar": 48,
+        "endLine": 419,
+        "endChar": 50
+      },
+      "revId": "e09f9e5fcd202ec13087135f897be34a987e3cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
