@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "292819a2_adc820fc",
+        "filename": "common/version.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-04T18:25:05Z",
+      "side": 1,
+      "message": "we should do some validation here, ensuring that we are between \u00270\u0027 and \u00279\u0027 inclusive",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "42c638d293ec1f8fda89c668c0f93a699133c889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
