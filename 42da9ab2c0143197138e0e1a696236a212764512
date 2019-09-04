@@ -57,6 +57,24 @@
       "revId": "42da9ab2c0143197138e0e1a696236a212764512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e56124e_041dd22e",
+        "filename": "board/scripts/initial_ec_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-04T22:06:47Z",
+      "side": 1,
+      "message": "I\u0027m talking about ec/util/. CrOS EC hosts scripts there.",
+      "parentUuid": "c1de70f9_f705e670",
+      "revId": "42da9ab2c0143197138e0e1a696236a212764512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
