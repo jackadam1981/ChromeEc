@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5ddb00e_f83993ca",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-04T18:51:47Z",
+      "side": 1,
+      "message": "This should be #define\u0027d  to nothing, then define CONFIG_ACCEL_FIFO_SIZE as well... getting compile errors when I cherry pick on ToT:\n\n```\n$ make BOARD\u003ddrallion_ish\ninclude/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\ninclude/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\nIn file included from \u003ccommand-line\u003e:0:0:\n./include/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\nIn file included from \u003ccommand-line\u003e:0:0:\n./include/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\nIn file included from \u003ccommand-line\u003e:0:0:\n./include/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\n  VERSION ec_version.h\n  BUILDCC util/ec_uartd\n  LDS     firmware_image.lds\nIn file included from common/firmware_image.lds.S:6:\ninclude/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^~~~~\nmake: *** [Makefile.rules:414: build/drallion_ish/firmware_image.lds] Error 1\n```",
+      "revId": "9fdee1806ff8168b2a6c4f21e3b35334de1b901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
