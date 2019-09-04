@@ -326,6 +326,30 @@
     },
     {
       "key": {
+        "uuid": "afa1d520_0bbb32aa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2889,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-04T13:12:36Z",
+      "side": 1,
+      "message": "Testing my current understanding of the new state machine.  I think I was able to find the path.\n\nChanging state to PE_SRC_STARTUP will cause pe_src_startup_entry to be called. This calls prl_reset which sets the local state to SM_INIT. prl_run will see the state as SM_INIT and will call prl_init, which cleans up the counters like the soft reset.\n\nDoes this look right?",
+      "parentUuid": "1bf116d3_6bbcd406",
+      "range": {
+        "startLine": 2888,
+        "startChar": 2,
+        "endLine": 2889,
+        "endChar": 35
+      },
+      "revId": "af0471f2b33869bcf263614e46ce75aed68b3ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04efe926_9b2c1209",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 7
