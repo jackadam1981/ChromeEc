@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c3b2fa7_44aaaa8a",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-04T22:54:01Z",
+      "side": 1,
+      "message": "What is this? Did the script run for you?",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "1dd3df16f52ab8494859191f2f0e12505bc9574f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f81f3a00_bdc5b58f",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-04T22:54:01Z",
+      "side": 1,
+      "message": "What if $base doesn\u0027t exist?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1dd3df16f52ab8494859191f2f0e12505bc9574f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
