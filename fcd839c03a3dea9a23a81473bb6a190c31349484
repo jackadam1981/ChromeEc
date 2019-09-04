@@ -46,6 +46,30 @@
       "revId": "fcd839c03a3dea9a23a81473bb6a190c31349484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f1bdad_98e3d3cb",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-04T17:01:10Z",
+      "side": 1,
+      "message": "I lean toward the the positive tense, as well, with a default define that only gets undef\u0027ed in the special case",
+      "parentUuid": "34dd2a9b_faac53fb",
+      "range": {
+        "startLine": 4121,
+        "startChar": 0,
+        "endLine": 4121,
+        "endChar": 34
+      },
+      "revId": "fcd839c03a3dea9a23a81473bb6a190c31349484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
