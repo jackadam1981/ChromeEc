@@ -46,6 +46,30 @@
       "revId": "7ba53f8c635f1653b3434bbd623e98d63a3f7fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8befc7f4_efac1fdb",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-04T19:44:47Z",
+      "side": 1,
+      "message": "okay this makes sense. I wanted to throw out another idea, but it might be over complicating the solution (or maybe not).\n\n\nAnother way to express this is to make a super state: RCH_CHUNK_PROCESSING. The 3 chunking states would be sub states: RCH_processing_extended_mnessage, rch_requesting_chunk, and rch_Waiting_chunk.\n\nThe RCH_CHUNK_PROCESSING_entry would be this code (no chunk_num \u003d\u003d0 check).\n\nIf we cycle within the chunk processing super state, then we would never entry the super state again, so we basically only clear it when transition from no chunks to start processing chunks (i.e. from rch_wait_for_message_from_protocol_layer -\u003e rch_processing_extended_message)\n\n\nThoughts?",
+      "parentUuid": "81c0dcf2_0a5a4e14",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 885,
+        "endChar": 0
+      },
+      "revId": "7ba53f8c635f1653b3434bbd623e98d63a3f7fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
