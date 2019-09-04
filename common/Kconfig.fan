@@ -27,3 +27,9 @@ config FAN_UPDATE_PERIOD
 	  seconds instead.
 
 endif # FANS_yn
+
+config FAN_INIT_SPEED
+	int "FAN_INIT_SPEED"
+	default 100
+	help
+	  Percentage to which all fans are set at initiation.
