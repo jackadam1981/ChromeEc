@@ -45,6 +45,7 @@
 #endif
 
 /* Motion Sensors */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 100000
 #ifdef SECTION_IS_RW
 #ifndef BOARD_KRANE
 #define CONFIG_MAG_BMI160_BMM150
