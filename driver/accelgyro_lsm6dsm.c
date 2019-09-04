@@ -721,9 +721,19 @@ static int init(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
-	if (tmp != LSM6DS3_WHO_AM_I && tmp != LSM6DSM_WHO_AM_I) {
-		/* Unrecognized sensor */
-		CPRINTS("Unknown WHO_AM_I value: 0x%x", tmp);
+	if (s->chip == MOTIONSENSE_CHIP_LSM6DSM &&
+	    tmp != LSM6DSM_WHO_AM_I) {
+		CPRINTS("Unexpected WHO_AM_I value: 0x%x - 0x%x",
+			tmp, MOTIONSENSE_CHIP_LSM6DSM);
+		return EC_ERROR_ACCESS_DENIED;
+	} else if (s->chip == MOTIONSENSE_CHIP_LSM6DS3 &&
+		   tmp != LSM6DS3_WHO_AM_I) {
+		CPRINTS("Unexpected WHO_AM_I value: 0x%x - 0x%x",
+			tmp, MOTIONSENSE_CHIP_LSM6DS3);
+		return EC_ERROR_ACCESS_DENIED;
+	} else if (s->chip != MOTIONSENSE_CHIP_LSM6DSM &&
+		   s->chip != MOTIONSENSE_CHIP_LSM6DS3) {
+		CPRINTS("Unexpected chip id: 0x%x", s->chip);
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
