@@ -39,6 +39,24 @@
       "revId": "42da9ab2c0143197138e0e1a696236a212764512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1de70f9_f705e670",
+        "filename": "board/scripts/initial_ec_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-04T21:32:25Z",
+      "side": 1,
+      "message": "We use \u0027scripts\u0027 in other places, e.g. ~/trunk/src/scripts",
+      "parentUuid": "7410852f_d12b07f5",
+      "revId": "42da9ab2c0143197138e0e1a696236a212764512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
