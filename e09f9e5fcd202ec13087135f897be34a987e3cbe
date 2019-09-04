@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb2c544b_b58d1a5b",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-04T19:16:33Z",
+      "side": 0,
+      "message": "did the presubmit check complain about this? If not I would prefer to have the {} as I think it make it more clear and less prone to error in the future.\n\nWon\u0027t stand in the way of the submit though",
+      "range": {
+        "startLine": 419,
+        "startChar": 48,
+        "endLine": 419,
+        "endChar": 50
+      },
+      "revId": "e09f9e5fcd202ec13087135f897be34a987e3cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
