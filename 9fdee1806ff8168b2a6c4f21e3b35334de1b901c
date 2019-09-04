@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "633dea5f_89c6d1f8",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-04T19:11:05Z",
+      "side": 1,
+      "message": "nit: put a space before */",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "9fdee1806ff8168b2a6c4f21e3b35334de1b901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c47064d_58172885",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-04T19:11:05Z",
+      "side": 1,
+      "message": "nit: use a single space here",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "9fdee1806ff8168b2a6c4f21e3b35334de1b901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e38497_bbf1d287",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-04T19:11:05Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "9fdee1806ff8168b2a6c4f21e3b35334de1b901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5ddb00e_f83993ca",
         "filename": "board/drallion_ish/board.h",
         "patchSetId": 11
@@ -13,6 +82,29 @@
       "writtenOn": "2019-09-04T18:51:47Z",
       "side": 1,
       "message": "This should be #define\u0027d  to nothing, then define CONFIG_ACCEL_FIFO_SIZE as well... getting compile errors when I cherry pick on ToT:\n\n```\n$ make BOARD\u003ddrallion_ish\ninclude/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\ninclude/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\nIn file included from \u003ccommand-line\u003e:0:0:\n./include/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\nIn file included from \u003ccommand-line\u003e:0:0:\n./include/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\nIn file included from \u003ccommand-line\u003e:0:0:\n./include/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^\n  VERSION ec_version.h\n  BUILDCC util/ec_uartd\n  LDS     firmware_image.lds\nIn file included from common/firmware_image.lds.S:6:\ninclude/config.h:4888:2: error: #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n #error \"Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES\"\n  ^~~~~\nmake: *** [Makefile.rules:414: build/drallion_ish/firmware_image.lds] Error 1\n```",
+      "revId": "9fdee1806ff8168b2a6c4f21e3b35334de1b901c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b45211_8dd74a27",
+        "filename": "board/drallion_ish/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-04T19:11:05Z",
+      "side": 1,
+      "message": "nit: use a single space here",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 38
+      },
       "revId": "9fdee1806ff8168b2a6c4f21e3b35334de1b901c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
