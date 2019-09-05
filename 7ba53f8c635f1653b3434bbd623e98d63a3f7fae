@@ -70,6 +70,30 @@
       "revId": "7ba53f8c635f1653b3434bbd623e98d63a3f7fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f5e0a5_03e87c18",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-05T13:01:11Z",
+      "side": 1,
+      "message": "The spec should not have been written as it is.  RCH_Processing_Extended_Message has two ways to enter it.  One from RCH_Wait_For_Message_From_Protocol_Layer and the other from RCH_Waiting_Chunk.  The conditional entry action based on if first chunk should have been an exit action coming from RCH_Wait_For_Message_From_Protocol_Layer.  You could set a flag there so you can determine this is really the first chunk but that seems like extra code to do nothing more than this is doing.  I am not sure adding an additional state makes sense as the code already compresses states into previous states by embedding their actions there when it is the only way into the compressed state.",
+      "parentUuid": "8befc7f4_efac1fdb",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 885,
+        "endChar": 0
+      },
+      "revId": "7ba53f8c635f1653b3434bbd623e98d63a3f7fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
