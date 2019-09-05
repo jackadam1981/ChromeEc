@@ -1,4 +1,45 @@
 
+menu "USB Setup"
+
+config USB_CONSOLE
+	bool "Enable USB serial console module"
+
+config USB_CONSOLE_TX_BUF_SIZE
+	int "USB serial console transmit buffer size in bytes"
+	default 2048
+#	depends on USB_CONSOLE
+
+config USB_CONSOLE_CRC
+	bool "Enable USB serial console crc32 computation"
+	help
+	  Also makes console output block on overrun.
+
+config USB_HID
+	bool "Support USB HID interface"
+
+config USB_HID_KEYBOARD
+	bool "Support USB HID keyboard interface"
+
+config USB_HID_KEYBOARD_BACKLIGHT
+	bool "Support USB HID keyboard backlight"
+
+config USB_HID_TOUCHPAD
+	bool "Support USB HID touchpad interface"
+
+config USB_INHIBIT_CONNECT
+	bool "Disable automatic connection of USB peripheral"
+
+config USB_INHIBIT_INIT
+	bool "Disable automatic initialization of USB peripheral"
+
+config USB_SELECT_PHY
+	bool "Support control of multiple PHY"
+
+config USB_PORT_POWER_DUMB
+	bool "Support simple control of power to the device's USB ports"
+
+endmenu # USB Setup
+
 menu "USB Type-C Setup"
 
 config USBC_PPC_POLARITY
