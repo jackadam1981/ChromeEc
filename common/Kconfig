@@ -63,15 +63,12 @@ menu "USB PD setup"
 source "common/Kconfig.usb-pd"
 endmenu
 
-menuconfig MCMDS
-	bool
-	prompt "MCMDS"
+#menuconfig MCMDS
+#	bool
+#	prompt "MCMDS"
 
 config LOW_POWER_S0
 	bool "Enable deep sleep during S0 (ignores SLEEP_MASK_AP_RUN)"
-
-config LTO
-	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
 
 config PWM
 	bool "Support PWM control"
@@ -82,9 +79,6 @@ config SOFTWARE_PANIC
 	help
 	  Store a panic log and halt the system for a software-related reasons, such as
 	  stack overflow or assertion failure.
-
-config SHA256_UNROLLED
-	bool "Unroll some loops in SHA256_transform for better performance"
 
 menu "Common Code"
 
@@ -118,11 +112,12 @@ config COMMON_TIMER
 
 endmenu
 
-menu IPI
-endmenu # IPI
+#menu IPI
+#endmenu # IPI
 
 config IPI
 	bool "EC support Inter-Processor Interrupt"
+#	depends on CHIP_MT_SCP__yn
 
 if IPI
 
@@ -140,10 +135,6 @@ config RPMSG_NAME_SERVICE
 	bool "EC support rpmsg name service over IPI"
 
 endif # IPI
-
-config FACTORY_MODE
-	bool "Add support for CCD factory mode"
-
 
 menu "Vboot"
 
@@ -168,6 +159,11 @@ config SWITCH
 	  Compile common code to handle simple switch inputs such as the recovery
 	  button input from the servo debug interface.
 
+menu "Debug & Profiling Options"
+
+config FACTORY_MODE
+	bool "Add support for CCD factory mode"
+
 config SWITCH_DEDICATED_RECOVERY
 	bool "Support dedicated recovery signal from servo board"
 	depends on SWITCH
@@ -177,6 +173,18 @@ config TASK_PROFILING
 	default y
 	help
 	  Boards may #undef this to reduce image size and RAM usage.
+
+endmenu # Debug & Profiling Options
+
+menu "Optimization Options"
+
+config LTO
+	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
+
+config SHA256_UNROLLED
+	bool "Unroll some loops in SHA256_transform for better performance"
+
+endmenu # Optimization Options
 
 menu "Rollback"
 
@@ -221,12 +229,6 @@ config ROLLBACK_UPDATE
 
 endmenu # "Rollback"
 
-config PWR_STATE_DISCHARGE_FULL
-	bool "special status if battery is discharging and nearly full"
-	help
-	  If defined, charge_get_state returns a special status if battery is
-	  discharging and battery is nearly full.
-
 
 menu "Motion Sensor"
 
@@ -257,37 +259,6 @@ config MOTION_FILL_LPC_SENSE_DATA
 
 endmenu # "Motion Sensor"
 
-choice
-	prompt "EC code can reside on internal or external storage"
-	help
-	  EC code can reside on internal or external storage. Only one of these
-	  CONFIGs should be defined. CONFIG_INTERNAL_STORAGE implies XIP
-	  (eXecute-In-Place) semantics. i.e. code is being fetched directly from
-	  storage media.
-
-config EXTERNAL_STORAGE
-	bool "EXTERNAL_STORAGE"
-config INTERNAL_STORAGE
-	bool "INTERNAL_STORAGE"
-endchoice
-
-config MAPPED_STORAGE
-	bool "Flash is directly mapped into the EC's address space"
-	default y
-	help
-	  Flash is directly mapped into the EC's address space.  If this is not
-	  defined, the flash driver must implement flash_physical_read().
-
-config FW_INCLUDE_RO
-	bool "FW_INCLUDE_RO"
-	default y
-	help
-	  Board Image ec.bin contains a RO firmware.  If not defined, the image will
-	  only contain the RW firmware.
-
-config FW_LIMITED_IMAGE
-	bool "If defined, another image (RW) exists with more features"
-	
 config LID_SWITCH
 	bool "Compile lid switch support"
 	default y
