@@ -45,6 +45,30 @@
       "revId": "90f0445eac35e9b5e23d23d129684c260095ffb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc020306_37cc9f22",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-09-05T01:55:04Z",
+      "side": 1,
+      "message": "Is kb backlight only support on convertible sku?\nIf not, maybe we can create a function like board_is_kb_backlight()?",
+      "parentUuid": "b4db3bd4_addc5a70",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 39
+      },
+      "revId": "90f0445eac35e9b5e23d23d129684c260095ffb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
