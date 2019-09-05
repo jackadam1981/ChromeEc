@@ -22,6 +22,30 @@
       "revId": "31fdf10b367fae734114e7b16a343977b97cde86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350f6a1e_da912678",
+        "filename": "board/scripts/initial_ec_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T20:03:26Z",
+      "side": 1,
+      "message": "The search-and-replace-but-not-this-larger-string-that-includes-the-smaller-string is going to be a fragile piece of code. Since this is creating a CL to make an exact clone of the baseboard, and the engineer will need to go back and make changes for the specific variant, it seems like they should also change the names at that time.",
+      "parentUuid": "5c350a4f_99cbb5c9",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "31fdf10b367fae734114e7b16a343977b97cde86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
