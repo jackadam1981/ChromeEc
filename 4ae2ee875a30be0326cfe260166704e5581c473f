@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50a9fd14_4c939206",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T21:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9664d303_a1926081",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87544463_a05c58b1",
         "filename": "util/initial_ec_image.sh",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0f9517fa_95bb19d2",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T21:04:35Z",
+      "side": 1,
+      "message": "There are several scripts that run in the various repos to create a variant of a baseboard. Right now, they have to run individually, but eventually there will be a single script that runs them in the correct order, performs the repo upload, and then adds cq-depend for the CLs that depend on earlier steps in the process.\n\nIt\u0027s mainly because of the required order of the steps that we are not comfortable with automating just part of this and leaving the commit and upload to the user.\n\nI\u0027ve run repo start multiple times in a dirty directory (when I forgot to repo start before creating or editing files) and it has never complained. If there is a case where it will fail, please let me know how to reproduce that and I\u0027ll account for it.",
+      "parentUuid": "87544463_a05c58b1",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65c2d871_8986c65a",
         "filename": "util/initial_ec_image.sh",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80027d3_bda4a5a3",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T21:04:35Z",
+      "side": 1,
+      "message": "See line 17 above; I already did a pushd into the board/ directory, so I can just \u0027cp hatch sushi\u0027",
+      "parentUuid": "65c2d871_8986c65a",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
