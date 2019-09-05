@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8304e12d_e5c68a8f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-05T13:51:21Z",
+      "side": 1,
+      "message": "Naming convention used elsewhere seems like this should be tch_get_last_state",
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5b924c_b5d69373",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-05T13:51:21Z",
+      "side": 1,
+      "message": "and this one tch_set_state",
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
