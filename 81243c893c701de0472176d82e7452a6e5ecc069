@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90ee4c4c_c138594a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-05T16:07:19Z",
+      "side": 1,
+      "message": "Jett, this is the naming convention you used in other files. I lean toward using prefixes instead of postfix. What do you think?",
+      "parentUuid": "8304e12d_e5c68a8f",
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db5b924c_b5d69373",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-05T13:51:21Z",
       "side": 1,
       "message": "and this one tch_set_state",
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b924cd_c8d7fbb3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-05T16:07:19Z",
+      "side": 1,
+      "message": "Same comment here as above.",
+      "parentUuid": "db5b924c_b5d69373",
       "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
