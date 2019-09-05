@@ -93,6 +93,30 @@
       "revId": "1dd3df16f52ab8494859191f2f0e12505bc9574f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f841df29_bc5df642",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T19:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed6070da_dd439930",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1dd3df16f52ab8494859191f2f0e12505bc9574f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
