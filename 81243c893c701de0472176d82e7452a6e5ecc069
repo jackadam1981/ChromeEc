@@ -87,6 +87,29 @@
       "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7522db1c_87ec5a89",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-05T16:40:52Z",
+      "side": 1,
+      "message": "After looking at the Chunked Tx State Diagram (Figure 6-50), I don\u0027t think returning to the last state is the proper thing to do.",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1496,
+        "endChar": 47
+      },
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
