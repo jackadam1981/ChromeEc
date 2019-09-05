@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9664d303_a1926081",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T20:45:42Z",
+      "side": 1,
+      "message": "Can you add comments on these globals?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87544463_a05c58b1",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T20:45:42Z",
+      "side": 1,
+      "message": "Not sure if this is appreciated. I personally like to control branch creation myself (and git commit). If the directory is dirty, I think repo start fails.\n\nDo you want to remove \u0027repo start\u0027 and just print out 1. commit message, 2. git command to run, and 3. repo upload command?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c2d871_8986c65a",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T20:45:42Z",
+      "side": 1,
+      "message": "You expect $variant to be a path, right? You need to append \u0027board/\u0027.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
