@@ -20,21 +20,3 @@ config BOARD_NOCTURNE__yn
 	select SHA256_UNROLLED
 	select SOFTWARE_PANIC
 
-
-
-
-
-# ================================================================
-
-config I2C
-	bool "Enable I2C support"
-
-config I2C_MASTER
-	bool "EC uses an I2C master interface"
-
-config LID_SWITCH
-	bool "Compile lid switch support"
-	default y
-	help
-	  This is enabled by default because all boards other than reference boards
-	  are for laptops with lid switchs.  Reference boards #undef it.
