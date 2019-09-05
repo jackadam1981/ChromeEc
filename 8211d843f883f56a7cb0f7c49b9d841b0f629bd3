@@ -19,6 +19,116 @@
     },
     {
       "key": {
+        "uuid": "c0a0d5b5_8abe123d",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-05T02:14:35Z",
+      "side": 1,
+      "message": "just\n\n static int mt6370_polarity;\n\n(global variables are inited to zero by default.",
+      "parentUuid": "28ea0865_98672dfd",
+      "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317fe19b_4629ed98",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-05T02:14:35Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 49
+      },
+      "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8eada89_d5686460",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-05T02:14:35Z",
+      "side": 1,
+      "message": "How about using a macro instead? Also below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a605b4fb_db98ece9",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-05T02:14:35Z",
+      "side": 1,
+      "message": "also this?",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c838b68d_de6e52bd",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-05T02:14:35Z",
+      "side": 1,
+      "message": "!rv",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a30806d_087c6f46",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 3
@@ -30,6 +140,24 @@
       "writtenOn": "2019-09-04T16:33:29Z",
       "side": 1,
       "message": "Is there any reason to call mt6370_init_cc_params() here?\nIt\u0027s strange that a get_* function changes tcpc state.\n\nIf no, I suggest move this line to mt6370_set_polarity",
+      "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae91e5e_2415e272",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-05T02:14:35Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8a30806d_087c6f46",
       "revId": "8211d843f883f56a7cb0f7c49b9d841b0f629bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
