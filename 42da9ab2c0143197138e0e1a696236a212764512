@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf14bd41_aa4ccea8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T19:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384bd711_bb3bbd9e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "42da9ab2c0143197138e0e1a696236a212764512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7410852f_d12b07f5",
         "filename": "board/scripts/initial_ec_image.sh",
         "patchSetId": 2
