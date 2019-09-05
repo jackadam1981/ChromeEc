@@ -1,0 +1,740 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c59a5cd_75703008",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "support for ish5.4?",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a48d5f98_9800c992",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "please open a bug to track ISH5.4 implementation",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea3f71f_caf3048d",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "is this supposed to be $(CHIP_VARIANT_ISH5P4)?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc316ff_05a06d9a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "Use BIT macro, also, #define a constant for whatever this means instead of using that bit directly.",
+      "range": {
+        "startLine": 261,
+        "startChar": 43,
+        "endLine": 261,
+        "endChar": 49
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6543208_76ece74d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "Instead of putting ifdef in c source file, make a new constant for the default port frequency and use that here instead.\n\nAlternatively, export the symbol and compile the correct file based on the ISH version.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d3a3a5_3e25b880",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "Instead, make a new constant for what is representing .irq_clr, and don\u0027t have the ifdef in the .c file.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664c27d5_f411596c",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "Instead of conditionally enabling these isrs only for !ish5.4, can we put these in a file that is only compiled for !ish5.4?",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f4c4356_44afbdd6",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "Use IS_ENABLED",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 582,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bddabb71_ad34a54b",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "please get google documentation on these registers",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d51e9b2_8cc22f7a",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "make sure that all the constants get defined for either... or remove the unused constants from below",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea2789b_c368cd6a",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "should be defined for 5.4 as well",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7dcb7ac_4b131613",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c40a50f_ae56da0f",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "unused...",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1452409f_de8523b0",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "what is \"wr\"?",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39734506_630576b8",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "use IS_ENABLED",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6e74fd_8478f614",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "don\u0027t conditionally compile fabric_isr",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493ed027_d51e6302",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "remove the ifdef",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 0
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79020bd9_434dd685",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "replace ifdef with IS_ENABLED",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a06ded3_8d4476da",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "replace ifndef with !IS_ENABLED",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "784bc1ec_b32cdea2",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "use IS_ENABLED",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f3cbac_d8ff0407",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "delete erroneous space",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d170d5bf_436aab0c",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "!IS_ENABLED",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b769962_e883c057",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "IS_ENABLED",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3fc0d1_28101a56",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "IS_ENABLED",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 0
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c88d46_d715c268",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "remove ifndef",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b58ab442_1e903bb2",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "!IS_ENABLED",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71bb032d_695f9db3",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "!IS_ENABLED",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c1cd5a_2200ae33",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "!IS_ENABLED",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96495011_23f845d2",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "not all the same constants were defined for both cases",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d35751a_0ffefa8a",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "not all the same macros were defined for both cases. Also, factor out what is the same.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d19584d_29ec8021",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "Is there anything we can do to factor what is common? Also, for this much different perhaps it just needs to be in its own file?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 5
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90a087d_83ab153b",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-05T15:44:52Z",
+      "side": 1,
+      "message": "macros should be in CAPS\n\nwhat is this function supposed to do? does gcc have a __builtin_ for it? Is it common code (in which case move to common.h?)",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 40
+      },
+      "revId": "e4f718b3c99f176638a8db5d0ea2e2d55e464d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
