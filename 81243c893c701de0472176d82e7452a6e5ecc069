@@ -110,6 +110,30 @@
       "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e87ea9_b2e6bf09",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-05T16:48:04Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be hardcoded to set the next state to TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_POLICY_ENGINE?",
+      "parentUuid": "7522db1c_87ec5a89",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1496,
+        "endChar": 47
+      },
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
