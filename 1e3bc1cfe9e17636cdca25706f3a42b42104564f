@@ -46,6 +46,30 @@
       "revId": "1e3bc1cfe9e17636cdca25706f3a42b42104564f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6025ced_64ab7d6b",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T15:18:28Z",
+      "side": 1,
+      "message": "board_has_kb_backlight is the only function that calls board_is_kb_backlight. It doesn\u0027t seem like it\u0027s necessary to have this as a separate function. We should take the one line of code from this function and put it in the body of board_has_kb_backlight instead.",
+      "parentUuid": "6c1582b5_c28b6ad4",
+      "range": {
+        "startLine": 443,
+        "startChar": 12,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "1e3bc1cfe9e17636cdca25706f3a42b42104564f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
