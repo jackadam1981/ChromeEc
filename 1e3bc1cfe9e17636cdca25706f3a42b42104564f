@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2acaa8e_bd1c2f04",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-09-05T07:09:50Z",
+      "side": 1,
+      "message": "Why is this helper function added? I don\u0027t see much use.",
+      "range": {
+        "startLine": 443,
+        "startChar": 12,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "1e3bc1cfe9e17636cdca25706f3a42b42104564f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
