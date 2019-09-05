@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35911670_44c717c7",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T21:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058e2d8f_776aa80f",
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9664d303_a1926081",
         "filename": "util/initial_ec_image.sh",
         "patchSetId": 7
@@ -228,6 +246,30 @@
       "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9a9c29_fc5f6ef4",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-05T21:28:46Z",
+      "side": 1,
+      "message": "Good idea! I added it to the script.",
+      "parentUuid": "7e69f6c8_47add49e",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
