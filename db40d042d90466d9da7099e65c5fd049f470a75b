@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ace02b_8fb82062",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-05T22:50:59Z",
+      "side": 1,
+      "message": "This could also be HAS_MOCK_FP_SENSOR, but that might mask too much logic and potentially cause errors in the future.",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "db40d042d90466d9da7099e65c5fd049f470a75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
