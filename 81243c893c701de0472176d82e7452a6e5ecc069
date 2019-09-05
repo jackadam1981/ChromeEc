@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6b24b393_19600d68",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-05T19:29:44Z",
+      "side": 1,
+      "message": "All function name changing will be done in future CLs.",
+      "parentUuid": "f342b19e_942f57c6",
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db5b924c_b5d69373",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 8
@@ -134,6 +152,48 @@
       "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dbf821a_5789be1c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-05T19:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18b924cd_c8d7fbb3",
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aa1a6e1_75d2c728",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-05T19:29:44Z",
+      "side": 1,
+      "message": "Yes, this has been changed back to the original code.",
+      "parentUuid": "a9e87ea9_b2e6bf09",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1496,
+        "endChar": 47
+      },
+      "revId": "81243c893c701de0472176d82e7452a6e5ecc069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
