@@ -212,6 +212,13 @@ config BATT_HOST_FULL_FACTOR
 	  Powerd's full_factor. It has to be 100(%) to get display battery percentage.
 	  Otherwise, display percentages will be always zero.
 
-endmenu
+endmenu # battery type
 
-endif
+endif # BATTERY
+
+config PWR_STATE_DISCHARGE_FULL
+	bool "special status if battery is discharging and nearly full"
+	help
+	  If defined, charge_get_state returns a special status if battery is
+	  discharging and battery is nearly full.
+
