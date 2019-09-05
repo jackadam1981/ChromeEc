@@ -3,9 +3,78 @@ menu "Board setup"
 source "common/Kconfig.board"
 endmenu
 
+menu "Peripherals setup"
+
 menu "Accel setup"
 source "common/Kconfig.accel"
 endmenu
+
+menu "Console config"
+source "common/Kconfig.console"
+endmenu
+
+menu "Fan setup"
+source "common/Kconfig.fan"
+endmenu
+
+menu "Keyboard setup"
+source "common/Kconfig.keyboard"
+endmenu
+
+menu "LED setup"
+source "common/Kconfig.led"
+endmenu
+
+menu "Temp sensor setup"
+source "common/Kconfig.temp"
+endmenu
+
+menu "Motion Sensor"
+
+config MOTION_SENSE_SUSPEND_DELAY_US
+	int "Defer the (re)configuration of motion sensors after suspend"
+	default 0
+	help
+	  Defer the (re)configuration of motion sensors after the suspend event or
+	  resume event.  Sensor power rails may be powered up or down asynchronously
+	  from the EC, so it may be necessary to wait some time period before
+	  reconfiguring after a transition.
+
+config MOTION_SENSE_RESUME_DELAY_US
+	int "Defer the (re)configuration of motion sensors after resume"
+	default 0
+	help
+	  Defer the (re)configuration of motion sensors after the suspend event or
+	  resume event.  Sensor power rails may be powered up or down asynchronously
+	  from the EC, so it may be necessary to wait some time period before
+	  reconfiguring after a transition.
+
+
+config DYNAMIC_MOTION_SENSOR_COUNT
+	bool "Define motion sensor count in board layer"
+
+config MOTION_FILL_LPC_SENSE_DATA
+	bool "Define when LPC memory space needs to be populated"
+
+endmenu # "Motion Sensor"
+
+config SWITCH
+	bool "Compile common code to handle simple switch inputs"
+	help
+	  Compile common code to handle simple switch inputs such as the recovery
+	  button input from the servo debug interface.
+
+config LID_SWITCH
+	bool "Compile lid switch support"
+	default y
+	help
+	  This is enabled by default because all boards other than reference boards
+	  are for laptops with lid switchs.  Reference boards #undef it.
+
+config PWM
+	bool "Support PWM control"
+
+endmenu # Peripherals setup
 
 menu "Battery setup"
 source "common/Kconfig.battery"
@@ -23,36 +92,12 @@ menu "Console commands"
 source "common/Kconfig.cmd"
 endmenu
 
-menu "Console config"
-source "common/Kconfig.console"
-endmenu
-
-menu "Debug setup"
-source "common/Kconfig.debug"
-endmenu
-
-menu "Fan setup"
-source "common/Kconfig.fan"
-endmenu
-
 menu "Flash setup"
 source "common/Kconfig.flash"
 endmenu
 
 menu "Hostcmd setup"
 source "common/Kconfig.hostcmd"
-endmenu
-
-menu "Keyboard setup"
-source "common/Kconfig.keyboard"
-endmenu
-
-menu "LED setup"
-source "common/Kconfig.led"
-endmenu
-
-menu "Temp sensor setup"
-source "common/Kconfig.temp"
 endmenu
 
 menu "USB setup"
@@ -63,18 +108,12 @@ menu "USB PD setup"
 source "common/Kconfig.usb-pd"
 endmenu
 
-menuconfig MCMDS
-	bool
-	prompt "MCMDS"
+#menuconfig MCMDS
+#	bool
+#	prompt "MCMDS"
 
 config LOW_POWER_S0
 	bool "Enable deep sleep during S0 (ignores SLEEP_MASK_AP_RUN)"
-
-config LTO
-	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
-
-config PWM
-	bool "Support PWM control"
 
 config SOFTWARE_PANIC
 	bool "Software panic"
@@ -82,9 +121,6 @@ config SOFTWARE_PANIC
 	help
 	  Store a panic log and halt the system for a software-related reasons, such as
 	  stack overflow or assertion failure.
-
-config SHA256_UNROLLED
-	bool "Unroll some loops in SHA256_transform for better performance"
 
 menu "Common Code"
 
@@ -116,13 +152,14 @@ config COMMON_TIMER
 	bool "Provide common core code to handle the operating system timers"
 	default y
 
-endmenu
+endmenu # Common Code
 
-menu IPI
-endmenu # IPI
+#menu IPI
+#endmenu # IPI
 
 config IPI
 	bool "EC support Inter-Processor Interrupt"
+#	depends on CHIP_MT_SCP__yn
 
 if IPI
 
@@ -141,10 +178,6 @@ config RPMSG_NAME_SERVICE
 
 endif # IPI
 
-config FACTORY_MODE
-	bool "Add support for CCD factory mode"
-
-
 menu "Vboot"
 
 config VBOOT_EFS
@@ -162,11 +195,14 @@ config VSTORE_SLOT_COUNT
 
 endmenu # "Vboot"
 
-config SWITCH
-	bool "Compile common code to handle simple switch inputs"
-	help
-	  Compile common code to handle simple switch inputs such as the recovery
-	  button input from the servo debug interface.
+menu "Debug & Profiling Options"
+
+menu "Debug setup"
+source "common/Kconfig.debug"
+endmenu
+
+config FACTORY_MODE
+	bool "Add support for CCD factory mode"
 
 config SWITCH_DEDICATED_RECOVERY
 	bool "Support dedicated recovery signal from servo board"
@@ -177,6 +213,18 @@ config TASK_PROFILING
 	default y
 	help
 	  Boards may #undef this to reduce image size and RAM usage.
+
+endmenu # Debug & Profiling Options
+
+menu "Optimization Options"
+
+config LTO
+	bool "Use Link-Time Optimizations to try to reduce the firmware code size"
+
+config SHA256_UNROLLED
+	bool "Unroll some loops in SHA256_transform for better performance"
+
+endmenu # Optimization Options
 
 menu "Rollback"
 
@@ -218,73 +266,4 @@ config ROLLBACK_UPDATE
 	bool "If defined, we can update rollback information (RW can unset this)"
 	default y
 
-
 endmenu # "Rollback"
-
-config PWR_STATE_DISCHARGE_FULL
-	bool "special status if battery is discharging and nearly full"
-	help
-	  If defined, charge_get_state returns a special status if battery is
-	  discharging and battery is nearly full.
-
-
-menu "Motion Sensor"
-
-config MOTION_SENSE_SUSPEND_DELAY_US
-	int "Defer the (re)configuration of motion sensors after suspend"
-	default 0
-	help
-	  Defer the (re)configuration of motion sensors after the suspend event or
-	  resume event.  Sensor power rails may be powered up or down asynchronously
-	  from the EC, so it may be necessary to wait some time period before
-	  reconfiguring after a transition.
-
-config MOTION_SENSE_RESUME_DELAY_US
-	int "Defer the (re)configuration of motion sensors after resume"
-	default 0
-	help
-	  Defer the (re)configuration of motion sensors after the suspend event or
-	  resume event.  Sensor power rails may be powered up or down asynchronously
-	  from the EC, so it may be necessary to wait some time period before
-	  reconfiguring after a transition.
-
-
-config DYNAMIC_MOTION_SENSOR_COUNT
-	bool "Define motion sensor count in board layer"
-
-config MOTION_FILL_LPC_SENSE_DATA
-	bool "Define when LPC memory space needs to be populated"
-
-endmenu # "Motion Sensor"
-
-choice
-	prompt "EC code can reside on internal or external storage"
-	help
-	  EC code can reside on internal or external storage. Only one of these
-	  CONFIGs should be defined. CONFIG_INTERNAL_STORAGE implies XIP
-	  (eXecute-In-Place) semantics. i.e. code is being fetched directly from
-	  storage media.
-
-config EXTERNAL_STORAGE
-	bool "EXTERNAL_STORAGE"
-config INTERNAL_STORAGE
-	bool "INTERNAL_STORAGE"
-endchoice
-
-config MAPPED_STORAGE
-	bool "Flash is directly mapped into the EC's address space"
-	default y
-	help
-	  Flash is directly mapped into the EC's address space.  If this is not
-	  defined, the flash driver must implement flash_physical_read().
-
-config FW_INCLUDE_RO
-	bool "FW_INCLUDE_RO"
-	default y
-	help
-	  Board Image ec.bin contains a RO firmware.  If not defined, the image will
-	  only contain the RW firmware.
-
-config FW_LIMITED_IMAGE
-	bool "If defined, another image (RW) exists with more features"
-	
