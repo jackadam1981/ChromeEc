@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "058e2d8f_776aa80f",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T21:13:01Z",
+      "side": 1,
+      "message": "nit: Could you add a line above?",
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9664d303_a1926081",
         "filename": "util/initial_ec_image.sh",
         "patchSetId": 7
@@ -96,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "6686c390_f817ef5f",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T21:13:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f9517fa_95bb19d2",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65c2d871_8986c65a",
         "filename": "util/initial_ec_image.sh",
         "patchSetId": 7
@@ -140,6 +181,53 @@
       "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7a99b98_bac8699e",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T21:13:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a80027d3_bda4a5a3",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e69f6c8_47add49e",
+        "filename": "util/initial_ec_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-05T21:13:01Z",
+      "side": 1,
+      "message": "We can actually run this. TODO?",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "4ae2ee875a30be0326cfe260166704e5581c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
