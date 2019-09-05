@@ -288,3 +288,9 @@ config FW_INCLUDE_RO
 config FW_LIMITED_IMAGE
 	bool "If defined, another image (RW) exists with more features"
 	
+config LID_SWITCH
+	bool "Compile lid switch support"
+	default y
+	help
+	  This is enabled by default because all boards other than reference boards
+	  are for laptops with lid switchs.  Reference boards #undef it.
