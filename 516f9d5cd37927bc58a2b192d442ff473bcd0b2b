@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d61af3d3_74691ac4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-05T21:29:35Z",
+      "side": 1,
+      "message": "this flow will no longer clear the abort flag since it won\u0027t run the entry for this state again (since it is already in this state. i.e. TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE)",
+      "range": {
+        "startLine": 1164,
+        "startChar": 3,
+        "endLine": 1164,
+        "endChar": 19
+      },
+      "revId": "516f9d5cd37927bc58a2b192d442ff473bcd0b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3e67385_935a5b4a",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
