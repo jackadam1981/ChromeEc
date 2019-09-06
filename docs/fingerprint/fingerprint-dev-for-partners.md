@@ -17,6 +17,19 @@ Chromebook). Development for other [EC]s is often done in a similar manner, but
 some of them have their own standalone development or evaluation kits that don't
 require the use of [servo].
 
+
+### FPMCU board
+
+The FPMCU board has the MCU that handles all fingerprint-related functionality
+(matching, encryption, etc). The fingerprint sensor itself connects to the
+FPMCU board.
+
+![DragonClaw board]
+
+
+### Setup Servo Micro Debugger
+
+
 ### Servo v2
 
 Servo v2 is a general purpose debug board that connects to a header on the
@@ -28,75 +41,68 @@ NOTE: More information on servo can be found in the [servo] documentation.
 
 ![Servo v2]
 
-### Yoshi Flex Cable
+#### Yoshi Flex Cable
 
 The Yoshi Flex cable is used to connect Servo v2 to the FPMCU board. The
 standard cable does not work with SWD, but a simple rework can be performed to
 support SWD.
 
-#### Standard Yoshi Flex
 
-![Standard Yoshi Flex]
+| Standard Yoshi Flex          | Yoshi Flex Reworked to Support SWD    |
+| ---------------------------- | ------------------------------------- |
+| ![Standard Yoshi Flex]       | ![Yoshi Flex Reworked to Support SWD] |
 
-#### Yoshi Flex Reworked to Support SWD
-
+Rework steps:
 *   Remove R18 and R19
 *   Wire from Pin 6 of U21 to right side of R18
 *   Wire from Pin 6 of U21 to right side of R19
 
-![Yoshi Flex Reworked to Support SWD]
-
-### FPMCU board
-
-The FPMCU board has the MCU that handles all fingerprint-related functionality
-(matching, encryption, etc). The fingerprint sensor itself connects to the
-FPMCU board.
-
-![DragonClaw board]
-
-### Micro USB Cable
+#### Micro USB Cable
 
 A micro USB cable is needed to connect the the servo v2 board to your host Linux
 development machine.
 
 *   [Micro USB Cable]
 
-## Hardware Setup
+#### Servo V2 Hardware Setup
 
-### Connect Yoshi Flex
+1. Connect Yoshi Flex
 
-Connect the Yoshi Flex cable to servo, paying attention to the pin numbering.
+   Connect the Yoshi Flex cable to servo, paying attention to the
+   pin numbering.
 
-![Connect Yoshi Flex]
+   ![Connect Yoshi Flex]
+   ![Another Yoshi Flex image]
 
-![Another Yoshi Flex image]
+2. Connect Yoshi Flex to FPMCU Board
 
-### Connect Yoshi Flex to FPMCU Board
+   Connect the other end of the Yoshi Flex cable to the servo header on the
+   FPMCU board.
 
-Connect the other end of the Yoshi Flex cable to the servo header on the FPMCU
-board.
+   ![Connect Yoshi Flex to FPMCU board]
+   ![Another image]
 
-![Connect Yoshi Flex to FPMCU board]
+   *** note
+   Newer bloonchipper hardware revisions connect the ribbon cable in reverse direction.
+   ***
 
-![Another image]
+3. Connect Sensor to FPMCU
 
-### Connect Sensor to FPMCU
+   Connect the fingerprint sensor to the header on the FPMCU board.
 
-Connect the fingerprint sensor to the header on the FPMCU board.
+4. Connect USB to Servo
 
-### Connect USB to Servo
+   Connect the micro USB cable to servo's `HOST_IN` port. The other end of
+   the USB cable should be plugged into your host development machine.
 
-Connect the micro USB cable to servo's `HOST_IN` port. The other end of the USB
-cable should be plugged into your host development machine.
+   ![Connect USB to Servo]
 
-![Connect USB to Servo]
+5. Optional: Connect SWD Debugger
 
-### Optional: Connect SWD Debugger
+   If you want to use SWD for debugging, connect your debugger to the `JTAG`
+   header on servo v2.
 
-If you want to use SWD for debugging, connect your debugger to the `JTAG` header
-on servo v2.
-
-![Connect SWD Debugger]
+   ![Connect SWD Debugger]
 
 ## Software Setup
 
@@ -123,7 +129,7 @@ Open **two** terminals and enter the chroot in each:
 NOTE: More information on servo can be found in the [servo] documentation.
 ***
 
-In the one of the terminals, build and start `servod`:
+In one of the terminals, build and start `servod`
 
 Build and install `servod` in the chroot:
 
@@ -134,7 +140,7 @@ Build and install `servod` in the chroot:
 Run `servod`:
 
 ```bash
-(chroot) $ sudo servod --board=bloonchipper
+(chroot) $ sudo servod --board=bloonchipper --config bloonchipper_rev0.1.xml
 ```
 
 You should see something like this. Leave it running:
@@ -264,6 +270,14 @@ Start a fingerprint enrollment:
 ```
 > fpenroll
 ```
+
+Monitor onboard power (mw) and voltage (mv):
+
+The Bloonchipper reference board has an onboard INA that monitors the voltage and power draw of the MCU and FP Sensor independently.
+```bash
+watch -n0.5 dut-control pp3300_dx_mcu_mv pp3300_dx_fp_mv pp1800_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw pp1800_dx_fp_mw
+```
+
 
 ### Contributing Changes
 
