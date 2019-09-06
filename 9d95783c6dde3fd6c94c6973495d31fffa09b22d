@@ -22,6 +22,30 @@
       "revId": "9d95783c6dde3fd6c94c6973495d31fffa09b22d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ae6c52_34227769",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3477,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-06T17:18:48Z",
+      "side": 1,
+      "message": "Anything in particular you\u0027d like added? I didn\u0027t write the driver, I just saw that the config flag was missing from this listing, so I don\u0027t know much about it. The source code doesn\u0027t even say exactly which ST chip it\u0027s for.",
+      "parentUuid": "9bff9c83_92dcf25e",
+      "range": {
+        "startLine": 3477,
+        "startChar": 0,
+        "endLine": 3477,
+        "endChar": 22
+      },
+      "revId": "9d95783c6dde3fd6c94c6973495d31fffa09b22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
