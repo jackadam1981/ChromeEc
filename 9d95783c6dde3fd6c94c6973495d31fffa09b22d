@@ -70,6 +70,30 @@
       "revId": "9d95783c6dde3fd6c94c6973495d31fffa09b22d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d43b81d5_fcb38c9a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3477,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-06T19:53:50Z",
+      "side": 1,
+      "message": "From the commit history of driver/touchpad_st.c, it looks like it\u0027s for the chip used on Whiskers, if that helps.",
+      "parentUuid": "75afd294_19645ecc",
+      "range": {
+        "startLine": 3477,
+        "startChar": 0,
+        "endLine": 3477,
+        "endChar": 22
+      },
+      "revId": "9d95783c6dde3fd6c94c6973495d31fffa09b22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
