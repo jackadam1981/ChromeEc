@@ -981,6 +981,10 @@ enum pd_states {
 	PD_STATE_BIST_RX,			/* C36 */
 	PD_STATE_BIST_TX,			/* C37 */
 	PD_STATE_DRP_AUTO_TOGGLE,		/* C38 */
+	PD_STATE_SNK_FAST_SWAP_SNK_DISABLE,	/* C39 */
+	PD_STATE_SNK_FAST_SWAP_INIT,		/* C40 */
+	PD_STATE_SNK_FAST_SWAP_STANDBY,		/* C41 */
+	PD_STATE_SNK_FAST_SWAP_COMPLETE,	/* C42 */
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,
 };
@@ -1057,6 +1061,7 @@ enum pd_states {
  * timers in SNK_DISCOVERY
  */
 #define PD_FLAGS_SNK_WAITING_BATT BIT(20)
+#define PD_FLAGS_FAST_SWAP         BIT(21)/* enable tcpc fast swap */
 
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
