@@ -735,6 +735,11 @@ static inline void set_state(int port, enum pd_states next_state)
 
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
 	    next_state == PD_STATE_SNK_DISCONNECTED) {
+		/* disable fast role swap */
+		if (pd[port].flags & PD_FLAGS_FAST_SWAP) {
+			tcpm_set_fast_swap(port, pd[port].power_role, 0);
+			pd[port].flags &= ~PD_FLAGS_FAST_SWAP;
+		}
 #ifdef CONFIG_USBC_PPC
 		enum tcpc_cc_voltage_status cc1, cc2;
 
@@ -1396,7 +1401,10 @@ void pd_execute_hard_reset(int port)
 	 * to Rd and turn off vbus to match our power_role.
 	 */
 	if (pd[port].task_state == PD_STATE_SNK_SWAP_STANDBY ||
-	    pd[port].task_state == PD_STATE_SNK_SWAP_COMPLETE) {
+	    pd[port].task_state == PD_STATE_SNK_SWAP_COMPLETE ||
+	    pd[port].task_state == PD_STATE_SNK_FAST_SWAP_INIT ||
+	    pd[port].task_state == PD_STATE_SNK_FAST_SWAP_STANDBY ||
+	    pd[port].task_state == PD_STATE_SNK_FAST_SWAP_COMPLETE) {
 		tcpm_set_cc(port, TYPEC_CC_RD);
 		pd_power_supply_reset(port);
 	}
@@ -1810,6 +1818,9 @@ static void handle_ctrl_request(int port, uint16_t head,
 			pd[port].vbus_debounce_time =
 				get_time().val + PD_T_DEBOUNCE;
 			set_state(port, PD_STATE_SNK_DISCOVERY);
+		} else if (pd[port].task_state ==
+					PD_STATE_SNK_FAST_SWAP_STANDBY) {
+			set_state(port, PD_STATE_SNK_FAST_SWAP_COMPLETE);
 #ifdef CONFIG_USBC_VCONN_SWAP
 		} else if (pd[port].task_state == PD_STATE_VCONN_SWAP_INIT) {
 			/*
@@ -1942,6 +1953,13 @@ static void handle_ctrl_request(int port, uint16_t head,
 						   PD_BBRMFLG_EXPLICIT_CONTRACT,
 						   0);
 			set_state(port, PD_STATE_SNK_SWAP_SNK_DISABLE);
+		} else if (pd[port].task_state == PD_STATE_SNK_FAST_SWAP_INIT) {
+			/* explicit contract goes away for power swap */
+			pd[port].flags &= ~PD_FLAGS_EXPLICIT_CONTRACT;
+			pd_update_saved_port_flags(port,
+						   PD_BBRMFLG_EXPLICIT_CONTRACT,
+						   0);
+			set_state(port, PD_STATE_SNK_FAST_SWAP_STANDBY);
 		} else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
 			/* explicit contract is now in place */
 			pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
@@ -3160,6 +3178,10 @@ void pd_task(void *u)
 			set_state(port, PD_STATE_HARD_RESET_SEND);
 #endif /* defined(CONFIG_USBC_PPC) */
 
+		/* detect SRC Rp to GND signal for fast swap */
+		if (evt & PD_EVENT_FIRST_FREE_BIT)
+			set_state(port, PD_STATE_SNK_FAST_SWAP_SNK_DISABLE);
+
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
@@ -4236,6 +4258,12 @@ void pd_task(void *u)
 				break;
 			}
 
+			/* enable driver detect fast role swap */
+			if (!(pd[port].flags & PD_FLAGS_FAST_SWAP)) {
+				tcpm_set_fast_swap(port, PD_ROLE_SINK, 1);
+				pd[port].flags |= PD_FLAGS_FAST_SWAP;
+			}
+
 			/* If DFP, send discovery SVDMs */
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			     (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
@@ -4331,6 +4359,90 @@ void pd_task(void *u)
 			set_state(port, PD_STATE_SRC_DISCOVERY);
 			timeout = 10*MSEC;
 			break;
+		case PD_STATE_SNK_FAST_SWAP_SNK_DISABLE:
+			/* Stop drawing power */
+			pd_set_input_current_limit(port, 0, 0);
+#ifdef CONFIG_CHARGE_MANAGER
+			typec_set_input_current_limit(port, 0, 0);
+			charge_manager_set_ceil(port,
+						CEIL_REQUESTOR_PD,
+						CHARGE_CEIL_NONE);
+#endif
+			set_state(port, PD_STATE_SNK_FAST_SWAP_INIT);
+			timeout = 10*MSEC;
+			break;
+		case PD_STATE_SNK_FAST_SWAP_INIT:
+			if (pd[port].last_state != pd[port].task_state) {
+				/* Enable power supply */
+				if (pd_set_power_supply_ready(port)) {
+					timeout = 10*MSEC;
+					set_state(port,
+						  PD_STATE_SNK_DISCONNECTED);
+					break;
+				}
+				res = send_control(port, PD_CTRL_FR_SWAP);
+				if (res < 0) {
+					timeout = 10*MSEC;
+					/*
+					 * If failed to get goodCRC, send
+					 * soft reset, otherwise ignore
+					 * failure.
+					 */
+					set_state(port, res == -1 ?
+						   PD_STATE_SOFT_RESET :
+						   PD_STATE_SNK_READY);
+					break;
+				}
+				/* Wait for accept or reject */
+				set_state_timeout(port,
+						  get_time().val +
+						  PD_T_SENDER_RESPONSE,
+						  PD_STATE_HARD_RESET_SEND);
+			}
+			break;
+		case PD_STATE_SNK_FAST_SWAP_STANDBY:
+			/* Wait for PS_RDY */
+			if (pd[port].last_state != pd[port].task_state) {
+				/*
+				 * Update goodcrc message header power role
+				 * field to be SRC for repsonding PS_RDY.
+				 * But now our cc should keep asserting Rd,
+				 * later receiving PS_RDY will switch to Rp.
+				 */
+				tcpm_set_msg_header(port, PD_ROLE_SOURCE,
+						    pd[port].data_role);
+				set_state_timeout(port,
+						  get_time().val +
+						  PD_T_PS_SOURCE_OFF,
+						  PD_STATE_HARD_RESET_SEND);
+			}
+			break;
+		case PD_STATE_SNK_FAST_SWAP_COMPLETE:
+			/* Now switch to Rp for match our SRC power role */
+			pd_set_power_role(port, PD_ROLE_SOURCE);
+			tcpm_set_cc(port, TYPEC_CC_RP);
+			/* Send PS_RDY */
+			res = send_control(port, PD_CTRL_PS_RDY);
+			if (res < 0) {
+				/* Restore Rd and power role */
+				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd_set_power_role(port, PD_ROLE_SINK);
+				pd_update_roles(port);
+				pd_power_supply_reset(port);
+				timeout = 10 * MSEC;
+				set_state(port, PD_STATE_SNK_DISCONNECTED);
+				break;
+			}
+
+			/* Don't send GET_SINK_CAP on swap */
+			snk_cap_count = PD_SNK_CAP_RETRIES + 1;
+			caps_count = 0;
+			pd[port].msg_id = 0;
+			set_state(port, PD_STATE_SRC_DISCOVERY);
+			/* Wait for not too early send SRC_Cap, ch.6.6.8 */
+			timeout = PD_T_SWAP_SOURCE_START;
+			break;
+
 #ifdef CONFIG_USBC_VCONN_SWAP
 		case PD_STATE_VCONN_SWAP_SEND:
 			if (pd[port].last_state != pd[port].task_state) {
