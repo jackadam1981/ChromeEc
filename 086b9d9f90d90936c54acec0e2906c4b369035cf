@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4534f3c8_95513645",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-09T16:34:48Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "2bde9f7c_08beac57",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-09T15:46:25Z",
       "side": 1,
       "message": "It would be nice to make this a macro, maybe something like FAN_DUTY_TARGET_EC_CONTROL or ..._OUT_OF_RANGE ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc2b8f5_47b7caa9",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-09T16:34:48Z",
+      "side": 1,
+      "message": "+1. This should be a macro, not a magic number.",
+      "parentUuid": "032e2187_b028fc33",
       "range": {
         "startLine": 98,
         "startChar": 28,
