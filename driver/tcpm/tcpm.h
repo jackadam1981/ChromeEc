@@ -176,6 +176,11 @@ static inline int tcpm_set_rx_enable(int port, int enable)
 	return tcpc_config[port].drv->set_rx_enable(port, enable);
 }
 
+static inline int tcpm_set_fast_swap(int port, int power_role, int enable)
+{
+	return tcpc_config[port].drv->set_fast_swap(port, power_role, enable);
+}
+
 /**
  * Reads a message using get_message_raw driver method and puts it into EC's
  * cache.
