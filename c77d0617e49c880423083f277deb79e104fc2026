@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "77890e9d_b6c981ac",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-09T18:04:52Z",
+      "side": 1,
+      "message": "Can we also link to the \"official\" servo docs somewhere in the relevant sections?\n\nIt\u0027s nice to have the overview you put here so the doc is self-contained, but it could be helpful for readers to know where the complete docs are if they run into issues.\n\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo.md\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo_v2.md\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/servo_micro.md",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "c77d0617e49c880423083f277deb79e104fc2026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cacbea5_588257f1",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 15
