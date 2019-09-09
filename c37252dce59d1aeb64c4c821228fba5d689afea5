@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc220fd4_ce55278c",
+        "filename": "board/glkrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-09T21:35:06Z",
+      "side": 1,
+      "message": "This whole thing can be:\n\n  if (port \u003e\u003d 0 \u0026\u0026 port \u003c CONFIG_USB_PD_PORT_COUNT) {\n     ...\n  }",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "c37252dce59d1aeb64c4c821228fba5d689afea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
