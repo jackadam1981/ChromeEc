@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "57ecc692_ced43bb0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-09T07:24:29Z",
+      "side": 1,
+      "message": "We can\u0027t merge this, since it may break all the projects. You should fix the DPDM irq reading in this CL (rather than another CL which is still composing...)",
+      "parentUuid": "8675c265_533fc25f",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 59
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8e3314d_6304d335",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 10
