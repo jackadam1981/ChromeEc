@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bade5f1e_44c539a8",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-09-09T23:01:24Z",
+      "side": 1,
+      "message": "result \u003d\u003d 0 or result \u003d\u003d EC_SUCCESS?",
+      "range": {
+        "startLine": 1008,
+        "startChar": 10,
+        "endLine": 1008,
+        "endChar": 17
+      },
+      "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d52d5ef_a4fc2242",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-09-09T23:01:24Z",
+      "side": 1,
+      "message": "I\u0027m not convinced the compiler won\u0027t ever do byte copy here if p256_int has attribute((packed))?\n\nUnless it emits run-time code to check that k_out is at word address and optimizes?\nOr it just emits memcpy, which then does the word copy optimization? Fragile..\n\nsomeone should refactor and get rid of attribute((packed)) for p256_int..",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
