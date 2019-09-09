@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cacbea5_588257f1",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-09T17:36:05Z",
+      "side": 1,
+      "message": "super nit: you can run mdformat (http://go/mdformat#command-line) on this to have the tables nicely auto-formatted (among other things)\n\nOne thing is that it doesn\u0027t recognize the note format:\n\n *** note\n ***\n\nso watch that it will add more \"*\" and break those (you can just skip adding those changes before committing with \"git add -p\")",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 74
+      },
+      "revId": "c77d0617e49c880423083f277deb79e104fc2026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f02d699_7ae686a4",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-09T17:36:05Z",
+      "side": 1,
+      "message": "nit: \"Servo Micro Fix\"",
+      "range": {
+        "startLine": 416,
+        "startChar": 15,
+        "endLine": 416,
+        "endChar": 24
+      },
+      "revId": "c77d0617e49c880423083f277deb79e104fc2026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
