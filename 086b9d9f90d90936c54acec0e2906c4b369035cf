@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bde9f7c_08beac57",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-09T15:46:25Z",
+      "side": 1,
+      "message": "Would be great to break out retrieving \u0027t\u0027 for each temp sensor into a helper function.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "032e2187_b028fc33",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-09T15:46:25Z",
+      "side": 1,
+      "message": "It would be nice to make this a macro, maybe something like FAN_DUTY_TARGET_EC_CONTROL or ..._OUT_OF_RANGE ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
