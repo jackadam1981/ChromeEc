@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "188e1cf3_9bc99312",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-09T18:07:42Z",
+      "side": 1,
+      "message": "Maybe link to this page: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/master/docs/power_measurement.md?\n\nSomething like:\n\nMore detailed documentation on power measurement is available here",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 54
+      },
+      "revId": "c77d0617e49c880423083f277deb79e104fc2026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f02d699_7ae686a4",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 15
