@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "8675c265_533fc25f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-09-09T03:27:05Z",
+      "side": 1,
+      "message": "Gene will integrate the DPDM function into the mt6370_irq_handler, so we keep the patch#11.",
+      "parentUuid": "5a0faba4_2262cbd0",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 59
+      },
+      "revId": "6888d920d0aba922a8a88acb07b7cb35d0e8c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8e3314d_6304d335",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 10
