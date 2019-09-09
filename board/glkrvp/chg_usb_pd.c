@@ -202,8 +202,11 @@ int board_set_active_charge_port(int port)
 	/* charge port is a realy physical port */
 	int is_real_port = (port >= 0 &&
 			port < CHARGE_PORT_COUNT);
-	/* check if we are source vbus on that port */
-	int source = board_charger_port_is_sourcing_vbus(port);
+
+	int source = 0;
+	/* check if we are source vbus on that port if it's a PD port */
+	if (port < CONFIG_USB_PD_PORT_COUNT)
+		source = board_charger_port_is_sourcing_vbus(port);
 
 	if (is_real_port && source) {
 		CPRINTS("Skip enable p%d", port);
