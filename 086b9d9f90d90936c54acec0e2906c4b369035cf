@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ded55736_d0ca2b29",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-10T15:17:41Z",
+      "side": 1,
+      "message": "You could also use temp_sensor_read(), which would be more clear to read.  Then you don\u0027t need to use the host mapped memory.",
+      "parentUuid": "18f157cb_88be0e51",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
