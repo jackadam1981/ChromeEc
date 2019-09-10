@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfaac05e_892cf5a6",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-10T20:02:53Z",
+      "side": 1,
+      "message": "Note to myself: Every time we have a new SKU_ID, we have to update the firmware. If we use SKU_ID as a bitmap, it would be as easy as:\n\n\treturn sku_id \u0026 MEEP_SKU_ID_CONVERTIBLE\n\nNo firmware update is needed. https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/nami/board.c#1011.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 54
+      },
+      "revId": "d5446e1f01dd26bcc2a078fa31239609c55ae9db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
