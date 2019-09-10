@@ -22,6 +22,30 @@
       "revId": "a6dcf7d22f98102cac704515c50a270e7eadbfa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5da3f73_a69cec20",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-09-10T18:02:30Z",
+      "side": 1,
+      "message": "precharge voltage should be depends on battery, not charger.\nwill create another CL and see if people like that approach.",
+      "parentUuid": "1b1b9ce4_f2732939",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 2
+      },
+      "revId": "a6dcf7d22f98102cac704515c50a270e7eadbfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
