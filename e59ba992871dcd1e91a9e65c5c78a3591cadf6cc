@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca8e7a8e_3ecb1141",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-10T13:38:04Z",
+      "side": 1,
+      "message": "IS_ENABLED(CONFIG_CHARGER_RAMP_SW) || IS_ENABLED(CONFIG_CHARGER_RAMP_HW)\n\nalso below",
+      "range": {
+        "startLine": 986,
+        "startChar": 6,
+        "endLine": 986,
+        "endChar": 39
+      },
+      "revId": "e59ba992871dcd1e91a9e65c5c78a3591cadf6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714ea297_d325614f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-10T13:38:04Z",
+      "side": 1,
+      "message": "How about using below to simplify the logic:\n\n\nif (bc12_type \u003d\u003d CHARGE_SUPPLIER_NONE) {\n  /* fall through */\n} else if (IS_ENABLED(CONFIG_WIRELESS_CHARGER_P9221_R7) \u0026\u0026 bc12_type \u003d\u003d ... ) {\n  ...\n  CPRINTS(\"WPC ON\");\n} else if (IS_ENABLED(CONFIG_CHARGER_MT6370) {\n  \n  ...\n} else {\n  ...\n}",
+      "range": {
+        "startLine": 1102,
+        "startChar": 0,
+        "endLine": 1134,
+        "endChar": 0
+      },
+      "revId": "e59ba992871dcd1e91a9e65c5c78a3591cadf6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
