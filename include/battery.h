@@ -130,6 +130,8 @@ struct battery_info {
 	int voltage_normal;
 	int voltage_min;
 	/* (TODO(chromium:756700): add desired_charging_current */
+	/* Pre-charge voltage in mV, default to voltage_min if not specified */
+	int precharge_voltage;
 	/* Pre-charge current in mA */
 	int precharge_current;
 	/* Working temperature ranges in degrees C */
