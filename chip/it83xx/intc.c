@@ -21,6 +21,12 @@ static void chip_pd_irq(enum usbpd_port port)
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+#ifdef IT83XX_INTC_FAST_SWAP_SUPPORT
+		/* disable fast role swap */
+		IT83XX_USBPD_PDQSCR(port) &=
+					~(USBPD_REG_FAST_SWAP_REQUEST_ENABLE |
+					  USBPD_REG_FAST_SWAP_DETECT_ENABLE);
+#endif //IT83XX_INTC_FAST_SWAP_SUPPORT
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
@@ -57,6 +63,15 @@ static void chip_pd_irq(enum usbpd_port port)
 				PD_EVENT_CC, 0);
 		}
 #endif //IT83XX_INTC_PLUG_IN_SUPPORT
+#ifdef IT83XX_INTC_FAST_SWAP_SUPPORT
+		if (USBPD_IS_FAST_SWAP_DETECT(port)) {
+			/* clear detect SRC Rp to GND signal interrupt */
+			IT83XX_USBPD_PD30IR(port) =
+						USBPD_REG_FAST_SWAP_DETECT_STAT;
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_FAST_ROLE_SWAP, 0);
+		}
+#endif //IT83XX_INTC_FAST_SWAP_SUPPORT
 	}
 }
 #endif
