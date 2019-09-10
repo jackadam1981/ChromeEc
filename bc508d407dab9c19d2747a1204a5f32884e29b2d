@@ -45,6 +45,30 @@
       "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67dc770a_96c66b42",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-09-10T01:36:24Z",
+      "side": 1,
+      "message": "I believe it emits memcpy\n\np256_int is used in parts of the TPM stack where it actually is unaligned, so we can\u0027t just remove packed (b/132132791); we could have a separate non-packed struct, and a function to safely copy between them, but I\u0027m not convinced that making the entire codebase compatible with writes to DMEM is the right way to go - eg we might want to use this function to write into an unaligned p256_int used in the TPM stack.\n\nIMHO the constraints around DMEM should be handled as close as possible to where the write happens, and the rest of the codebase should not need to know about this: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1595928",
+      "parentUuid": "1d52d5ef_a4fc2242",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
