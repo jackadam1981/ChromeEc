@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "3964b568_f17fb7e7",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-10T16:13:20Z",
+      "side": 1,
+      "message": "Sorry, there already is a temp_sensor_read(), see https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/temp_sensor.c#18 .  You can just use that",
+      "parentUuid": "894ff3fa_a80bdbba",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
