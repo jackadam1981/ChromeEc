@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "894ff3fa_a80bdbba",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-10T15:45:57Z",
+      "side": 1,
+      "message": "Testing below code changes as per above comments to move in helper function.\n\n+#ifdef CONFIG_DPTF_FAIL_SAFE_OFFSET\n+static bool temp_sensor_read(uint8_t *mptr, int i)\n+{\n+\tint cur_temp, dptf_active_flag;\n+\n+\t/* get the current temp */\n+\tcur_temp \u003d *mptr + EC_TEMP_SENSOR_OFFSET + CONFIG_DPTF_FAIL_SAFE_OFFSET;\n+\n+\t/* if temperature is higher than temp_fan_max,assume DPTF is not active. */\n+\tdptf_active_flag \u003d (((thermal_params[i].temp_fan_max) \u0026\u0026 \n+\t\t\t\t(cur_temp \u003e thermal_params[i].temp_fan_max)) ? 0 : 1);\n+\n+\treturn dptf_active_flag;\n+}\n+static bool is_dptf_still_active(void)\n+{\n+\tint i;\n+\tuint8_t *mptr \u003d host_get_memmap(EC_MEMMAP_TEMP_SENSOR);\n+\n+\tfor (i \u003d 0; i \u003c TEMP_SENSOR_COUNT; i++, mptr++) {\n+\t\tif(!(temp_sensor_read(mptr, i)))\n+\t\t\treturn false;\t\n+\t}\n+\treturn true;\n+}\n+#endif",
+      "parentUuid": "252ed262_1e877208",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
