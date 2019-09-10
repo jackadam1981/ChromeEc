@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b8d537a_5e8b52bf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-10T17:01:03Z",
+      "side": 1,
+      "message": "nit: add space between power and charger",
+      "range": {
+        "startLine": 108,
+        "startChar": 31,
+        "endLine": 108,
+        "endChar": 43
+      },
+      "revId": "799a0eeb2bf11f8484cb6d259e68a01f7bec1eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a70b2213_dfdd2f1e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -19,6 +42,46 @@
         "endLine": 109,
         "endChar": 67
       },
+      "revId": "799a0eeb2bf11f8484cb6d259e68a01f7bec1eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bfe9bd1_6c936660",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-10T17:01:03Z",
+      "side": 1,
+      "message": "typo: identity",
+      "range": {
+        "startLine": 110,
+        "startChar": 66,
+        "endLine": 110,
+        "endChar": 73
+      },
+      "revId": "799a0eeb2bf11f8484cb6d259e68a01f7bec1eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff047304_314cd590",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3715,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-10T17:01:03Z",
+      "side": 1,
+      "message": "Is this just for debug?",
       "revId": "799a0eeb2bf11f8484cb6d259e68a01f7bec1eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
