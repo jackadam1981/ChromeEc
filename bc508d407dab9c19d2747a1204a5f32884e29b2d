@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84c16842_862c214a",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-09-10T16:58:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bade5f1e_44c539a8",
+      "range": {
+        "startLine": 1008,
+        "startChar": 10,
+        "endLine": 1008,
+        "endChar": 17
+      },
+      "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d52d5ef_a4fc2242",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 19
@@ -69,6 +93,30 @@
       "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17db4a8_18cc136e",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-09-10T16:58:49Z",
+      "side": 1,
+      "message": "yeah, ideally this function should not interact with DMEM directly. all the writes to DMEM should happen via CP1W or CP8W from within the dcrypto_p256 module.",
+      "parentUuid": "67dc770a_96c66b42",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
