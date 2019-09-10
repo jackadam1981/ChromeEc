@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "66153454_ae476603",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-10T15:09:36Z",
+      "side": 1,
+      "message": "t is a loop invariant, and should be moved outside the for loop. Also, it should have a better name than \u0027t\u0027. It\u0027s fine to use single-character names for loop indices and very short-lived variables, but this one has a meaning that should be captured: it is the current temperature.\n\nSince t doesn\u0027t depend on the loop, I would be OK with just moving it to right after initializing mptr for clarity.",
+      "parentUuid": "18f157cb_88be0e51",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
