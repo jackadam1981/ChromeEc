@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "252ed262_1e877208",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-10T15:30:14Z",
+      "side": 1,
+      "message": "Tim, I missed the mptr++ in the last part of the for loop. So that\u0027s another good reason to put it all into a function.",
+      "parentUuid": "42f970f6_8db33e89",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
