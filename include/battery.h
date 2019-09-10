@@ -125,11 +125,16 @@ int battery_get_avg_voltage(void); /* in mV */
 
 /* Battery constants */
 struct battery_info {
-	/* Design voltage in mV */
+	/* Operation voltage in mV */
 	int voltage_max;
 	int voltage_normal;
 	int voltage_min;
 	/* (TODO(chromium:756700): add desired_charging_current */
+	/**
+	 * Pre-charge to fast charge threshold in mV,
+	 * default to voltage_min if not specified.
+	 */
+	int precharge_voltage;
 	/* Pre-charge current in mA */
 	int precharge_current;
 	/* Working temperature ranges in degrees C */
