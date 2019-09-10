@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "882b855d_c018c5f9",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-10T13:31:30Z",
+      "side": 1,
+      "message": ":(  I see what you are saying... let me adjust this",
+      "parentUuid": "ccf47e70_d7af6577",
+      "range": {
+        "startLine": 1164,
+        "startChar": 3,
+        "endLine": 1164,
+        "endChar": 19
+      },
+      "revId": "516f9d5cd37927bc58a2b192d442ff473bcd0b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3e67385_935a5b4a",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
