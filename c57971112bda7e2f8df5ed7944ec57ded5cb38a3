@@ -22,6 +22,30 @@
       "revId": "c57971112bda7e2f8df5ed7944ec57ded5cb38a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec953ff_e0ee3bc1",
+        "filename": "util/ecst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-10T06:00:03Z",
+      "side": 1,
+      "message": "resolved in a follow up (because that\u0027s, by and large, an unrelated change to fseek handling).",
+      "parentUuid": "984cba4c_9926931d",
+      "range": {
+        "startLine": 1882,
+        "startChar": 9,
+        "endLine": 1882,
+        "endChar": 10
+      },
+      "revId": "c57971112bda7e2f8df5ed7944ec57ded5cb38a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
