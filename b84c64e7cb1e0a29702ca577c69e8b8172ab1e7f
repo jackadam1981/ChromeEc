@@ -22,6 +22,30 @@
       "revId": "b84c64e7cb1e0a29702ca577c69e8b8172ab1e7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77de7ff2_b079fd36",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-09-10T06:51:38Z",
+      "side": 1,
+      "message": "When we detect SRC Vbus \u003c\u003d 5v, we should turn on Vbus to 5v within 150us (tSrcFRSwap). So if Intelrvp control Vbus by gpio that maybe can not meet tSrcFRSwap defined in spec. \n\nOur board ampton use TI\u0027s PPC(power path control) to switch Vbus, and it seems support fast role swap. I will implement ppc driver for fast role swap and validate on ampton.\n\nI think that we define IT83XX_INTC_FAST_SWAP_SUPPORT on board level code, that can support fast role swap.",
+      "parentUuid": "0b983589_8157d933",
+      "range": {
+        "startLine": 341,
+        "startChar": 7,
+        "endLine": 341,
+        "endChar": 20
+      },
+      "revId": "b84c64e7cb1e0a29702ca577c69e8b8172ab1e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
