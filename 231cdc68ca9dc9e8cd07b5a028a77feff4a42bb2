@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff51f0d2_0a13bf30",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-10T20:38:58Z",
+      "side": 1,
+      "message": "Carrying over my comment from the previous location [0] to make it easier to keep track of:\n\n\u003e Might be worth adding a comment explaining this limitation. Is it a hardware thing?\n\u003e\n\u003e Also, it seems unusual to be checking that a value is greater than 256, as opposed to 255. Worth double-checking.\n\n[0] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1716928/15..16/chip/max32660/i2c_api.c#b333",
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226fabbc_98bfad34",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-10T20:38:58Z",
+      "side": 1,
+      "message": "Nit: incomplete sentence.",
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a951a328_de6db137",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-10T20:38:58Z",
+      "side": 1,
+      "message": "Nit: the names of the slave functions (`I2C_SlaveRead`, `I2C_SlaveWrite`, `I2C_SlaveHandler`) should be changed to snake_case like the others in the file.",
+      "range": {
+        "startLine": 894,
+        "startChar": 11,
+        "endLine": 894,
+        "endChar": 24
+      },
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8d825c_b8cd5c47",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-10T20:38:58Z",
+      "side": 1,
+      "message": "Nit: incomplete sentence.",
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

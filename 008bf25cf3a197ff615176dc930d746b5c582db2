@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "8e1ce9db_be1dc015",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-10T20:38:58Z",
+      "side": 1,
+      "message": "Resolving this comment in favour of the one in its new location in i2c_chip.c.",
+      "parentUuid": "787406bc_9c27ce04",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "556444f3_4a7b47fc",
         "filename": "chip/max32660/i2c_api.h",
         "patchSetId": 15
@@ -242,6 +260,24 @@
       "side": 1,
       "message": "I did simplify this to return if the I2C_Api_Master..(...) is not successful.... but I don\u0027t think I can just do a return I2C_Api_Master...(...) here, if I did then the following I2C_Api_MasterRead would never be given a chance to execute.",
       "parentUuid": "315d4725_fdbe21ea",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac8aac8_033df1de",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-10T20:38:58Z",
+      "side": 1,
+      "message": "I think just returning `status` in the error case would be fine here, as I can\u0027t imagine we\u0027d want to carry on with the read if the write failed.",
+      "parentUuid": "9e1a21e6_344bd4e9",
       "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
