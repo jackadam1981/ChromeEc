@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "d7c3d4a2_a67af884",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-10T15:28:07Z",
+      "side": 1,
+      "message": "Paul, t does depend on the loop; mptr is incremented each pass through the loop; it\u0027s intended to read the temperature from each sensor via the host memory mapped interface.",
+      "parentUuid": "ded55736_d0ca2b29",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
