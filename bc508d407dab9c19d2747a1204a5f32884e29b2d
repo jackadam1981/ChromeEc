@@ -117,6 +117,30 @@
       "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "114246e9_1d471448",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-09-10T18:19:57Z",
+      "side": 1,
+      "message": "By that reasoning, why aren\u0027t all structs that have members w/ alignment expectations packed?\n\nWe are programming a machine that has alignment requirements, so imo it is best to fix alignment at I/O (de)serialization but let the rest of the code be managed by the compiler.\nPacked tells the compiler to assume the worst, which is not free in performance nor code space. \n\nThe dmem alignment expectation is tip of the iceberg, not the real issue ;-)",
+      "parentUuid": "f17db4a8_18cc136e",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "bc508d407dab9c19d2747a1204a5f32884e29b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
