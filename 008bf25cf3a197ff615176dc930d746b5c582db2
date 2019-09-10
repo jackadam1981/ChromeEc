@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdc3ca0e_f2aacb54",
+        "filename": "board/max32660-eval/ec.tasklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e9cc3e_a2630547",
+      "range": {
+        "startLine": 22,
+        "startChar": 64,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92c42713_b4cff474",
         "filename": "chip/max32660/i2c_api.c",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b74e4e41_d6ecc4e3",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "The slave implementation is async, the master implementation is not... you are correct this field is not used.",
+      "parentUuid": "92c42713_b4cff474",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "287fd27c_c7062bcd",
         "filename": "chip/max32660/i2c_api.c",
         "patchSetId": 15
@@ -59,6 +107,24 @@
       "writtenOn": "2019-09-05T01:25:29Z",
       "side": 1,
       "message": "Might be worth adding a comment explaining this limitation. Is it a hardware thing?\n\nAlso, it seems unusual to be checking that a value is greater than 256, as opposed to 255. Worth double-checking.",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787406bc_9c27ce04",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "Good point... I will look into this.",
+      "parentUuid": "287fd27c_c7062bcd",
       "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "e8d02d4f_6d1ad7ef",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "556444f3_4a7b47fc",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "016d04f0_29ca347c",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 15
@@ -102,6 +192,24 @@
       "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4f3754_add34e86",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016d04f0_29ca347c",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "9e1a21e6_344bd4e9",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "I did simplify this to return if the I2C_Api_Master..(...) is not successful.... but I don\u0027t think I can just do a return I2C_Api_Master...(...) here, if I did then the following I2C_Api_MasterRead would never be given a chance to execute.",
+      "parentUuid": "315d4725_fdbe21ea",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b82b59c_6f3a79e2",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 15
@@ -136,6 +262,24 @@
       "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95d3cc9_bfba0f3f",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T18:02:31Z",
+      "side": 1,
+      "message": "Good point, thanks!",
+      "parentUuid": "3b82b59c_6f3a79e2",
+      "revId": "008bf25cf3a197ff615176dc930d746b5c582db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
