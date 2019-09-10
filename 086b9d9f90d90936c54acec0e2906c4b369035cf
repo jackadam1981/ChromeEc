@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "18f157cb_88be0e51",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-10T14:54:53Z",
+      "side": 1,
+      "message": "We might need to run a loop here for checking all temp sensors and  need\u0027if\u0027 conditions at line 61. \nI can think of two different implementations here as below. These both feasible but not sure on calling a helper function might help speed up execution or debug. \n[1] move all \u0027t\u0027 calculations and below \u0027if\u0027 check in another helper function, but sill need a loop to check for each temp sensor. \n[2] only move line 59 \u0027t\u0027 calculation to a helper function and let rest be here under this function.",
+      "parentUuid": "4534f3c8_95513645",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
