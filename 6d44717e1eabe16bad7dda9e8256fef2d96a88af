@@ -70,6 +70,99 @@
       "revId": "6d44717e1eabe16bad7dda9e8256fef2d96a88af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98be30c3_1f45538c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-10T13:18:29Z",
+      "side": 1,
+      "message": "If there is only MIVR IRQ here, how about just dropping this enum. (and you could also simplify drop mt6370_irq_handler_tbl)",
+      "parentUuid": "d63bee1f_354122d0",
+      "range": {
+        "startLine": 1147,
+        "startChar": 1,
+        "endLine": 1147,
+        "endChar": 15
+      },
+      "revId": "6d44717e1eabe16bad7dda9e8256fef2d96a88af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0047d0_b7dae785",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-10T13:18:29Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1164,
+        "endChar": 6
+      },
+      "revId": "6d44717e1eabe16bad7dda9e8256fef2d96a88af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "175ec933_062ef965",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-10T13:18:29Z",
+      "side": 1,
+      "message": "How about just using 0xF1 directly, rather than have the filter table.",
+      "range": {
+        "startLine": 1166,
+        "startChar": 0,
+        "endLine": 1173,
+        "endChar": 2
+      },
+      "revId": "6d44717e1eabe16bad7dda9e8256fef2d96a88af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb017a2_54aabc12",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-10T13:18:29Z",
+      "side": 1,
+      "message": "drop this. Doesn\u0027t need the irq table.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 23,
+        "endLine": 1176,
+        "endChar": 45
+      },
+      "revId": "6d44717e1eabe16bad7dda9e8256fef2d96a88af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
