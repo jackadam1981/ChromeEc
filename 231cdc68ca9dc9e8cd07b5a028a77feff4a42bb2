@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c973d0ca_114f2264",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T23:00:54Z",
+      "side": 1,
+      "message": "Good catch! The destination field for this only 8 bits so I need to constrain the incoming value to 8 bits.",
+      "parentUuid": "ff51f0d2_0a13bf30",
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "226fabbc_98bfad34",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 16
@@ -33,6 +51,24 @@
       "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14d4453_f89ff23c",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T23:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "226fabbc_98bfad34",
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4724ceaa_ceade107",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T23:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a951a328_de6db137",
+      "range": {
+        "startLine": 894,
+        "startChar": 11,
+        "endLine": 894,
+        "endChar": 24
+      },
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af8d825c_b8cd5c47",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 16
@@ -73,6 +133,24 @@
       "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478ba041_475a32d8",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-10T23:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8d825c_b8cd5c47",
+      "revId": "231cdc68ca9dc9e8cd07b5a028a77feff4a42bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
