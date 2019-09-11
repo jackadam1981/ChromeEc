@@ -240,6 +240,11 @@ enum tbt_compat_cable_speed get_tbt_compat_cable_speed(int port)
 	return cable[port].tbt_cable_resp.tbt_cable_speed;
 }
 
+uint8_t get_tbt_compat_rounded_support(int port)
+{
+	return cable[port].tbt_cable_resp.tbt_rounded_support;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP

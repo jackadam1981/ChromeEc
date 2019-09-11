@@ -5368,9 +5368,32 @@ __attribute__((weak)) uint8_t board_get_dp_pin_mode(int port)
 	return 0;
 }
 
+/*
+ * Combines the following information into a single byte
+ * Bit 0: Active cable
+ * Bit 1: tbt_type
+ * Bit 2: tbt_cable_type
+ * Bit 3: tbt_link
+ */
+static uint8_t get_tbt_flags(int port)
+{
+	struct tbt_mode_resp_cable cable_resp = get_tbt_cable_resp_vdo(port);
+	struct tbt_mode_resp_device device_resp = get_tbt_dev_resp_vdo(port);
+
+	/* Ref: USB Type-C Cable and Connector Specification
+	 * Table F-11 TBT3 Cable Discover Mode VDO Responses
+	 * For Passive cables, Active Cable Plug link training is set to 0
+	 */
+	return ((cable_resp.link_lsrx_comm << USB_PD_MUX_TBT_LINK) |
+	       (cable_resp.tbt_cable_type << USB_PD_MUX_TBT_CABLE_TYPE) |
+	       (device_resp.tbt_adapter << USB_PD_MUX_TBT_ADAPTER) |
+		cable_resp.tbt_retimer);
+}
+
 static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
+	struct ec_response_usb_pd_control_v3 *r_v3 = args->response;
 	struct ec_response_usb_pd_control_v2 *r_v2 = args->response;
 	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
@@ -5419,14 +5442,15 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		break;
 	case 1:
 	case 2:
-		r_v2->enabled =
+	case 3:
+		r_v3->enabled =
 			(pd_comm_is_enabled(p->port) ?
 				PD_CTRL_RESP_ENABLED_COMMS : 0) |
 			(pd_is_connected(p->port) ?
 				PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
 			((pd[p->port].flags & PD_FLAGS_PREVIOUS_PD_CONN) ?
 				PD_CTRL_RESP_ENABLED_PD_CAPABLE : 0);
-		r_v2->role =
+		r_v3->role =
 			(pd[p->port].power_role ? PD_CTRL_RESP_ROLE_POWER : 0) |
 			(pd[p->port].data_role ? PD_CTRL_RESP_ROLE_DATA : 0) |
 			((pd[p->port].flags & PD_FLAGS_VCONN_ON) ?
@@ -5439,23 +5463,29 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 				PD_CTRL_RESP_ROLE_USB_COMM : 0) |
 			((pd[p->port].flags & PD_FLAGS_PARTNER_EXTPOWER) ?
 				PD_CTRL_RESP_ROLE_EXT_POWERED : 0);
-		r_v2->polarity = pd[p->port].polarity;
+		r_v3->polarity = pd[p->port].polarity;
 
 		if (debug_level > 0)
-			strzcpy(r_v2->state,
+			strzcpy(r_v3->state,
 				pd_state_names[pd[p->port].task_state],
-				sizeof(r_v2->state));
+				sizeof(r_v3->state));
 		else
-			r_v2->state[0] = '\0';
+			r_v3->state[0] = '\0';
 
-		r_v2->cc_state =  pd[p->port].cc_state;
-		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
-		r_v2->cable_type = get_usb_pd_mux_cable_type(p->port);
+		r_v3->cc_state =  pd[p->port].cc_state;
+		r_v3->dp_mode = board_get_dp_pin_mode(p->port);
+		r_v3->cable_type = get_usb_pd_mux_cable_type(p->port);
+		r_v3->tbt_flags = get_tbt_flags(p->port);
+		r_v3->tbt_cable_speed = get_tbt_compat_cable_speed(p->port);
+		r_v3->tbt_cable_gen = get_tbt_compat_rounded_support(p->port);
 
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);
-		else
+		else if (args->version == 2)
 			args->response_size = sizeof(*r_v2);
+		else
+			args->response_size = sizeof(*r_v3);
+
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
@@ -5464,7 +5494,8 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 		     hc_usb_pd_control,
-		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2)
+		     | EC_VER_MASK(3));
 
 #ifdef CONFIG_HOSTCMD_FLASHPD
 static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
