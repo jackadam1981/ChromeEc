@@ -13,12 +13,33 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ## args)
 
+<<<<<<< HEAD   (40c69e usb_pd_protocol: Add a 3ms delay between polling ALERT#.)
 /* 1: in tablet mode. 0: otherwise */
 static int tablet_mode = 1;
+=======
+/* 1: in tablet mode; 0: notebook mode; -1: uninitialized  */
+static int tablet_mode = -1;
+static int forced_tablet_mode = -1;
+
+/* 1: hall sensor is reporting 360 degrees. */
+static int hall_sensor_at_360;
+
+/*
+ * 1: all calls to tablet_set_mode are ignored and tablet_mode if forced to 0
+ * 0: all calls to tablet_set_mode are honored
+ */
+static int disabled;
+>>>>>>> CHANGE (87502c tablet_mode: expose console command.)
 
 int tablet_get_mode(void)
 {
+<<<<<<< HEAD   (40c69e usb_pd_protocol: Add a 3ms delay between polling ALERT#.)
 	return tablet_mode;
+=======
+	if (forced_tablet_mode != -1)
+		return !!forced_tablet_mode;
+	return !!tablet_mode;
+>>>>>>> CHANGE (87502c tablet_mode: expose console command.)
 }
 
 void tablet_set_mode(int mode)
@@ -27,8 +48,41 @@ void tablet_set_mode(int mode)
 		return;
 
 	tablet_mode = mode;
+
+	if (forced_tablet_mode != -1)
+		return;
+
 	CPRINTS("tablet mode %sabled", mode ? "en" : "dis");
 	hook_notify(HOOK_TABLET_MODE_CHANGE);
+<<<<<<< HEAD   (40c69e usb_pd_protocol: Add a 3ms delay between polling ALERT#.)
+=======
+
+#ifdef CONFIG_HOSTCMD_EVENTS
+	/*
+	 * When tablet mode changes, send an event to ACPI to retrieve
+	 * tablet mode value and send an event to the kernel.
+	 */
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+#endif
+}
+
+static void tabletmode_force_state(int mode)
+{
+	if (forced_tablet_mode == mode)
+		return;
+
+	forced_tablet_mode = mode;
+
+	hook_notify(HOOK_TABLET_MODE_CHANGE);
+	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
+		host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+}
+
+void tablet_disable(void)
+{
+	tablet_mode = 0;
+	disabled = 1;
+>>>>>>> CHANGE (87502c tablet_mode: expose console command.)
 }
 
 /* This ifdef can be removed once we clean up past projects which do own init */
@@ -69,3 +123,21 @@ static void tablet_mode_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, tablet_mode_init, HOOK_PRIO_DEFAULT);
 #endif
+
+static int command_settabletmode(int argc, char **argv)
+{
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+	if (argv[1][0] == 'o' && argv[1][1] == 'n')
+		tabletmode_force_state(1);
+	else if (argv[1][0] == 'o' && argv[1][1] == 'f')
+		tabletmode_force_state(0);
+	else if (argv[1][0] == 'r')
+		tabletmode_force_state(-1);
+	else
+		return EC_ERROR_PARAM1;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(tabletmode, command_settabletmode,
+	"[on | off | reset]",
+	"Manually force tablet mode to on, off or reset.");
