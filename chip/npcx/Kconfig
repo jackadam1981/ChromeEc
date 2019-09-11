@@ -1,0 +1,63 @@
+
+config HAVE_CHIP_NPCX_NPCX5
+	bool
+	select HAVE_CHIP_NPCX
+
+config HAVE_CHIP_NPCX_NPCX7
+	bool
+	select HAVE_CHIP_NPCX
+
+if CHIP_NPCX__yn
+
+choice # CHIP_FAMILY
+       prompt "NPCX family"
+
+config CHIP_NPCX_NPCX5__yn
+	bool "NPCX5"
+	depends on HAVE_CHIP_NPCX5
+	select I2C_MULTI_PORT_CONTROLLER
+config CHIP_NPCX_NPCX7__yn
+	bool "NPCX7"
+	depends on HAVE_CHIP_NPCX7
+	select I2C_MULTI_PORT_CONTROLLER
+
+endchoice # CHIP_FAMILY
+
+config CHIP_FAMILY
+	string
+	default "npcx5"		if CHIP_NPCX_NPCX5__yn
+	default "npcx7"		if CHIP_NPCX_NPCX7__yn
+
+config CONSOLE_UART
+	int "Console UART"
+	range 0 1
+	default 0
+	help
+	  Select which UART controller is the console UART:
+	  0:UART1 1:UART2.
+
+config SUPPORT_CHIP_HIBERNATION
+	bool "If defined, chip hibernation is used"
+	default y
+	help
+	  If defined, chip hibernation is used. Your board needs to define wake-up
+	  signals. Undefine this to use board hibernation capability.
+
+config HIBERNATE_PSL
+	bool "Use PSL (Power Switch Logic) for hibernating"
+	help
+	  Use PSL (Power Switch Logic) for hibernating. It turns off VCC power rail
+	  for ultra-low power consumption and uses PSL inputs rely on VSBY power rail
+	  to wake up ec and the whole system.
+
+endif # CHIP_NPCX__yn
+
+# TODO:
+# CHIP_VARIANT:=npcx5m5g
+# CHIP_VARIANT:=npcx5m6g
+# CHIP_VARIANT:=npcx7m6f
+# CHIP_VARIANT:=npcx7m6fb
+# CHIP_VARIANT:=npcx7m6fc
+# CHIP_VARIANT:=npcx7m6g
+# CHIP_VARIANT:=npcx7m7wb
+# CHIP_VARIANT:=npcx7m7wc
