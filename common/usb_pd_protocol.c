@@ -5323,6 +5323,29 @@ __attribute__((weak)) uint8_t board_get_dp_pin_mode(int port)
 	return 0;
 }
 
+/*
+ * Combines the following information into a single byte
+ * Bit 0: Thunderbolt cable
+ * Bit 1: Type-C adapter type
+ * Bit 2: Cable type
+ * Bit 3: Link training
+ */
+static uint8_t get_pd_control_flags(int port)
+{
+	struct tbt_mode_resp_cable cable_resp = get_cable_tbt_vdo(port);
+	struct tbt_mode_resp_device device_resp = get_dev_tbt_vdo(port);
+
+	/*
+	 * Ref: USB Type-C Cable and Connector Specification
+	 * Table F-11 TBT3 Cable Discover Mode VDO Responses
+	 * For Passive cables, Active Cable Plug link training is set to 0
+	 */
+	return (cable_resp.lsrx_comm ? USB_PD_MUX_TBT_LINK : 0) |
+		(cable_resp.tbt_cable ? USB_PD_MUX_TBT_CABLE_TYPE : 0) |
+		(device_resp.tbt_adapter ? USB_PD_MUX_TBT_ADAPTER : 0) |
+		(cable_resp.retimer_type ? USB_PD_MUX_TBT_ACTIVE_CABLE : 0);
+}
+
 static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
@@ -5406,11 +5429,15 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		r_v2->cc_state =  pd[p->port].cc_state;
 		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
 		r_v2->cable_type = get_usb_pd_mux_cable_type(p->port);
+		r_v2->control_flags = get_pd_control_flags(p->port);
+		r_v2->cable_speed = get_tbt_cable_speed(p->port);
+		r_v2->cable_gen = get_tbt_rounded_support(p->port);
 
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);
 		else
 			args->response_size = sizeof(*r_v2);
+
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
