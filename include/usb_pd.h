@@ -1923,7 +1923,25 @@ struct tbt_mode_resp_cable get_cable_tbt_vdo(int port);
 struct tbt_mode_resp_device get_dev_tbt_vdo(int port);
 
 /**
- * Update Mux on entering TBT mode
+ * Return Thunderbolt cable speed
+ *
+ * @param port USB-C port number
+ * @return cable speed
+ */
+enum tbt_compat_cable_speed get_tbt_cable_speed(int port);
+
+/**
+ * Return Thunderbolt rounded support
+ * Rounded support indicates if the cable can support rounding the
+ * frequency depending upon the cable generation.
+ *
+ * @param port USB-C port number
+ * @return tbt_rounded_support
+ */
+uint8_t get_tbt_rounded_support(int port);
+
+/**
+ * Update Mux on entering Thunderbolt mode
  *
  * @param port USB-C port number
  */
