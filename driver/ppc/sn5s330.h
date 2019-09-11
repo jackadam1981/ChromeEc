@@ -101,6 +101,9 @@ enum sn5s330_pp_idx {
 #define SN5S330_CC_EN			BIT(4)
 #define SN5S330_VCONN_ILIM_SEL		BIT(5)
 
+/* FUNC_SET_5 */
+#define SN5S330_FRS_EN			BIT(6)
+
 /* FUNC_SET_8 */
 #define SN5S330_VCONN_DEGLITCH_MASK	(3 << 6)
 #define SN5S330_VCONN_DEGLITCH_63_US	(0 << 6)
@@ -109,6 +112,7 @@ enum sn5s330_pp_idx {
 #define SN5S330_VCONN_DEGLITCH_1280_US	(3 << 6)
 
 /* FUNC_SET_9 */
+#define SN5S330_FRS_COMP_EN_CC		BIT(0)
 #define SN5S330_FORCE_OVP_EN_SBU	BIT(1)
 #define SN5S330_PP2_CONFIG		BIT(2)
 #define SN5S330_OVP_EN_CC		BIT(4)
@@ -118,6 +122,7 @@ enum sn5s330_pp_idx {
 
 /* INT_STATUS_REG3 */
 #define SN5S330_VBUS_GOOD		BIT(0)
+#define SN5S330_FRS_SRC_CMPLT		BIT(6)
 
 /* INT_STATUS_REG4 */
 #define SN5S330_DIG_RES			BIT(0)
