@@ -1,0 +1,34 @@
+
+config HAVE_CHIP_ISH_ISH3
+	bool
+	select HAVE_CHIP_ISH
+
+config HAVE_CHIP_ISH_ISH5
+	bool
+	select HAVE_CHIP_ISH
+
+if CHIP_ISH__yn
+
+choice # CHIP_FAMILY
+	prompt "ISH family"
+
+	default CHIP_ISH_ISH3__yn if HAVE_CHIP_ISH_ISH3
+	default CHIP_ISH_ISH5__yn if HAVE_CHIP_ISH_ISH5
+
+config CHIP_ISH_ISH3__yn
+	bool "ISH3"
+config CHIP_ISH_ISH5__yn
+	bool "ISH5"
+
+endchoice # CHIP_FAMILY
+
+config CHIP_FAMILY
+	string
+	default "ish3"		if CHIP_ISH_ISH3__yn
+	default "ish5"		if CHIP_ISH_ISH5__yn
+
+endif # CHIP_ISH__yn
+
+# TODO:
+# CHIP_VARIANT:=ish3p0
+# CHIP_VARIANT:=ish5p0
