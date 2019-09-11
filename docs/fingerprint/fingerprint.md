@@ -88,12 +88,18 @@ prevent you from uploading.
 
 ## Production Updates
 
-### `fp_updater.sh` and `bio_fw_updater`
+### `bio_fw_updater`
 
-[`fp_updater.sh`] and [`bio_fw_updater`] are wrappers around [`flashrom`] and
-require already-functioning RO firmware running on the FPMCU. It’s meant to be
-used in production to update the RW firmware. `fp_updater.sh` was used prior to
-M77; `bio_fw_updater` replaces it.
+[`bio_fw_updater`] is a wrapper around [`flashrom`] designed to check and
+update the fingerprint MCU firmware at boot.
+[`fp_updater.sh`] was used prior to M77; [`bio_fw_updater`] replaces it.
+*** note
+NOTE: These updaters require the MCU to already a functional firmware
+running, since it updates over the EC host interface.
+
+Use [flash_fp_mcu](#factory-rma-development-updates) when no working firmware
+is present.
+***
 
 It's also possible to use the updater to update the RO firmware if you disable
 *both* HW and SW write protect, which we use for updating development devices
