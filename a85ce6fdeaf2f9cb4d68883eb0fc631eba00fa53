@@ -22,6 +22,30 @@
       "revId": "a85ce6fdeaf2f9cb4d68883eb0fc631eba00fa53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c38e1bb1_c34f2274",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-09-11T23:54:12Z",
+      "side": 0,
+      "message": "sorry, copy-pasted the wrong string into the CL description.",
+      "parentUuid": "d93b6319_c8aadb0c",
+      "range": {
+        "startLine": 649,
+        "startChar": 7,
+        "endLine": 649,
+        "endChar": 32
+      },
+      "revId": "a85ce6fdeaf2f9cb4d68883eb0fc631eba00fa53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
