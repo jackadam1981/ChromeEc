@@ -5194,6 +5194,28 @@ struct ec_response_usb_pd_ports {
 	uint8_t num_ports;
 } __ec_align1;
 
+/* Active/Passive Cable */
+#define USB_PD_MUX_TBT_ACTIVE_CABLE BIT(0)
+/* Optical/Non-optical cable */
+#define USB_PD_MUX_TBT_CABLE_TYPE   BIT(1)
+/* 3rd Gen TBT device (or AMA)/2nd gen tbt Adapter */
+#define USB_PD_MUX_TBT_ADAPTER      BIT(2)
+/* Active Link enabled/disabled */
+#define USB_PD_MUX_TBT_LINK         BIT(3)
+
+struct ec_response_usb_pd_control_v3 {
+	uint8_t enabled;
+	uint8_t role;
+	uint8_t polarity;
+	char state[32];
+	uint8_t cc_state; /* USBC_PD_CC_*Encoded cc state */
+	uint8_t dp_mode;  /* Current DP pin mode (MODE_DP_PIN_[A-E]) */
+	uint8_t cable_type; /* USBC_CABLE_TYPE_*cable_type */
+	uint8_t flags; /* USB_PD_MUX_*TBT_flags */
+	uint8_t cable_speed;
+	uint8_t cable_gen; /* rounded_support */
+} __ec_align1;
+
 #define EC_CMD_USB_PD_POWER_INFO 0x0103
 
 #define PD_POWER_CHARGING_PORT 0xff
