@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d8abbb3_0c1fe3d0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-09-12T19:08:10Z",
+      "side": 1,
+      "message": "From Rev 3.0, Section 6.2.1.1.7\n\n\" The 1-bit Cable Plug field Shalli ndicate whether this Message originated from a Cable Plug or VPD:\n• 0b Message originated from a DFP or UFP\nUSB Power Delivery Specification Revision 3.0, Version 2.0 Page 103\n• 1b Message originated from a Cable Plug or VPD\n\"\n\nThis check is performed inside pd_set_cable_rev(). That said, it doesn\u0027t disambiguate between Cable Plug and VPD (both are treated the same). \n\nDo we need to worry about VPD? The spec says it is a captive cable device, and doesn\u0027t support Alternate modes (so userspace likely won\u0027t do anything with this information anyway?)",
+      "parentUuid": "44736830_3b838abf",
+      "range": {
+        "startLine": 1587,
+        "startChar": 1,
+        "endLine": 1587,
+        "endChar": 30
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84d9ba57_83f2dc0a",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-12T17:30:56Z",
       "side": 1,
       "message": "Do you mean 8?",
+      "range": {
+        "startLine": 1318,
+        "startChar": 51,
+        "endLine": 1318,
+        "endChar": 52
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0a2d7f_c84e91fe",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-09-12T19:08:10Z",
+      "side": 1,
+      "message": "Yes, sorry, it\u0027s 8 (can technically be the same as PD_HEADER_PROLE, since it\u0027s dependent on whether the message is SOP or SOP\u0027/SOP\u0027\u0027.",
+      "parentUuid": "84d9ba57_83f2dc0a",
       "range": {
         "startLine": 1318,
         "startChar": 51,
