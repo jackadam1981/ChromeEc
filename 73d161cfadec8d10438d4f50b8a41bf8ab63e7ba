@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86f3cb99_1fe70452",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-12T07:31:15Z",
+      "side": 1,
+      "message": "please use IS_ENABLED instead.\n\n if (IS_ENABLED(CONFIG_CHARGER_MAINTAIN_VBAT) \u0026\u0026 !cur-\u003ebatt.is_present \u0026\u0026 ...)",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "73d161cfadec8d10438d4f50b8a41bf8ab63e7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff003b7a_41da1174",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-12T07:31:15Z",
+      "side": 1,
+      "message": "nit: just \"battery disconnected\" to save flash space.",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "73d161cfadec8d10438d4f50b8a41bf8ab63e7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
