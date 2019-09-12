@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a0b3b90_37a3e5e6",
+        "filename": "common/usb_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-12T12:56:06Z",
+      "side": 1,
+      "message": "Coverity (their issue #204009) complains that this condition can\u0027t ever be true because VPD_VDO_MAX_VBUS() clamps max_vbus to 0..3 (through \"\u0026 3\") while this is looking for \"\u003e 3\".\n\nIs this just a sanity check to deal with the (currently impossible) case that MAX_VBUS above returns a too big value?",
+      "revId": "c32c1ae24c398679edae807f9c1620eb91377003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
