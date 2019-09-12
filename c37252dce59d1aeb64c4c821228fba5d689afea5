@@ -70,6 +70,30 @@
       "revId": "c37252dce59d1aeb64c4c821228fba5d689afea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ac9464_3dd4947d",
+        "filename": "board/glkrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-12T12:46:16Z",
+      "side": 1,
+      "message": "board_charger_port_is_sourcing_vbus() is still querying the hardware if it\u0027s sourcing VBUS, so I\u0027m not sure we can just drop it.",
+      "parentUuid": "3ea37ee8_d6c8a384",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "c37252dce59d1aeb64c4c821228fba5d689afea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
