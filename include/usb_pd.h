@@ -1241,7 +1241,7 @@ enum pd_cc_polarity_type {
 
 /* Protocol revision */
 enum pd_rev_type {
-	PD_REV10,
+	PD_REV10 = 0,
 	PD_REV20,
 	PD_REV30
 };
@@ -1315,6 +1315,7 @@ enum pd_data_role {
 #define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
 #define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
+#define PD_HEADER_CABLE_PLUG(header) (((header) >> 7) & 1)
 #define PD_HEADER_REV(header)   (((header) >> 6) & 3)
 #define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
@@ -1787,6 +1788,14 @@ void reset_pd_cable(int port);
  * @return	cable type
  */
 uint8_t get_usb_pd_mux_cable_type(int port);
+
+/**
+ * Set the cable PD revision number.
+ *
+ * @param port     USB-C port number
+ * @param head     message header.
+ */
+void pd_set_cable_rev(int port, uint16_t head);
 
 /**
  * Store Device ID & RW hash of device
