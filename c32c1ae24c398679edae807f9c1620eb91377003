@@ -16,6 +16,24 @@
       "revId": "c32c1ae24c398679edae807f9c1620eb91377003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b19e24b_bbeabb46",
+        "filename": "common/usb_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-12T16:45:00Z",
+      "side": 1,
+      "message": "I was being a bit paranoid ;-). And yes, this check unnecessary and I\u0027ll remove it.",
+      "parentUuid": "1a0b3b90_37a3e5e6",
+      "revId": "c32c1ae24c398679edae807f9c1620eb91377003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
