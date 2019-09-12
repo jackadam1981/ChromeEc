@@ -210,6 +210,18 @@ uint8_t get_usb_pd_mux_cable_type(int port)
 	return cable[port].type;
 }
 
+void pd_set_cable_rev(int port, uint16_t head)
+{
+	/* Set the cable PD: PD spec rev 2.0, version 1.3, Table 6-1 */
+	if (PD_HEADER_CABLE_PLUG(head) == PD_PLUG_CABLE_VPD) {
+		cable[port].rev = PD_HEADER_REV(head);
+		CPRINTF("C%d , cable revision = %d",
+				port, cable[port].rev);
+	} else {
+		CPRINTF("C%d , port, not cable %d", port);
+	}
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
@@ -277,7 +289,6 @@ static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
 	    cable[port].type == IDH_PTYPE_ACABLE) {
-		cable[port].rev = PD_REV30;
 		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
 	}
 }

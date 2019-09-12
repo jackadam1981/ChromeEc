@@ -1584,6 +1584,8 @@ static void handle_data_request(int port, uint16_t head,
 	int type = PD_HEADER_TYPE(head);
 	int cnt = PD_HEADER_CNT(head);
 
+	pd_set_cable_rev(port, head);
+
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_DATA_SOURCE_CAP:
