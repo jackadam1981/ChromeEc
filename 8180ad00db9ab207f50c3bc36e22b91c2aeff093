@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9402250_73067c6c",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-12T18:29:37Z",
+      "side": 1,
+      "message": "Returning here means you\u0027re disabling all the AP throttling and emergency shutdown below. Is that what you meant?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
