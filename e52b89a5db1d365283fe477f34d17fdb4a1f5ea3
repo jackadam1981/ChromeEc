@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44736830_3b838abf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-12T17:30:56Z",
+      "side": 1,
+      "message": "How do we know this is a message from a cable (not from a partner device)?",
+      "range": {
+        "startLine": 1587,
+        "startChar": 1,
+        "endLine": 1587,
+        "endChar": 30
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d9ba57_83f2dc0a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-12T17:30:56Z",
+      "side": 1,
+      "message": "Do you mean 8?",
+      "range": {
+        "startLine": 1318,
+        "startChar": 51,
+        "endLine": 1318,
+        "endChar": 52
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
