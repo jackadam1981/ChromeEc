@@ -1245,7 +1245,8 @@ static void queue_vdm(int port, uint32_t *header, const uint32_t *data,
 	pd[port].vdm_state = VDM_STATE_READY;
 }
 
-static void handle_vdm_request(int port, int cnt, uint32_t *payload)
+static void handle_vdm_request(int port, int cnt, uint32_t *payload,
+				uint16_t head)
 {
 	int rlen = 0;
 	uint32_t *rdata;
@@ -1265,7 +1266,7 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 	}
 
 	if (PD_VDO_SVDM(payload[0]))
-		rlen = pd_svdm(port, cnt, payload, &rdata);
+		rlen = pd_svdm(port, cnt, payload, head, &rdata);
 	else
 		rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 
@@ -1687,7 +1688,7 @@ static void handle_data_request(int port, uint16_t head,
 		break;
 #endif
 	case PD_DATA_VENDOR_DEF:
-		handle_vdm_request(port, cnt, payload);
+		handle_vdm_request(port, cnt, payload, head);
 		break;
 	default:
 		CPRINTF("C%d Unhandled data message type %d\n", port, type);

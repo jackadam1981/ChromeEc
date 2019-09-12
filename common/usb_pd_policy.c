@@ -262,7 +262,8 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	}
 }
 
-static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
+static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
+					uint16_t head)
 {
 	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {
 		cable[port].type = PD_IDH_PTYPE(payload[VDO_INDEX_IDH]);
@@ -277,9 +278,12 @@ static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
 	    cable[port].type == IDH_PTYPE_ACABLE) {
-		cable[port].rev = PD_REV30;
 		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
 	}
+
+	/* From PD spec rev 2.0, version 1.3, Table 6-1 */
+	if (PD_HEADER_CABLE_PLUG(head) == PD_PLUG_CABLE_VPD)
+		cable[port].rev = PD_HEADER_REV(head);
 }
 
 static int dfp_discover_ident(int port, uint32_t *payload)
@@ -645,7 +649,8 @@ DECLARE_CONSOLE_COMMAND(pe, command_pe,
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
-int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+int pd_svdm(int port, int cnt, uint32_t *payload, uint16_t head,
+		uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	int cmd_type = PD_VDO_CMDT(payload[0]);
@@ -720,7 +725,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			/* Received a SOP Prime Discover Ident msg */
 			if (is_transmit_msg_sop_prime(port)) {
 				/* Store cable type */
-				dfp_consume_cable_response(port, cnt, payload);
+				dfp_consume_cable_response(port, cnt, payload,
+							   head);
 				disable_transmit_sop_prime(port);
 				rsize = dfp_discover_svids(port, payload);
 			/* Received a SOP Discover Ident Message */
@@ -833,7 +839,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 
 #else
 
-int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+int pd_svdm(int port, int cnt, uint32_t *payload, uint16_t head,
+		uint32_t **rpayload)
 {
 	return 0;
 }
