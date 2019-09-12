@@ -60,8 +60,10 @@ enum pd_rx_errors {
 #define PD_EVENT_SM			TASK_EVENT_CUSTOM_BIT(10)
 /* Prepare for sysjump */
 #define PD_EVENT_SYSJUMP		TASK_EVENT_CUSTOM_BIT(11)
+/* Fast role swap event */
+#define PD_EVENT_FAST_ROLE_SWAP		TASK_EVENT_CUSTOM_BIT(12)
 /* First free event on PD task */
-#define PD_EVENT_FIRST_FREE_BIT		12
+#define PD_EVENT_FIRST_FREE_BIT		13
 
 /* Ensure TCPC is out of low power mode before handling these events. */
 #define PD_EXIT_LOW_POWER_EVENT_MASK \
@@ -981,6 +983,10 @@ enum pd_states {
 	PD_STATE_BIST_RX,			/* C36 */
 	PD_STATE_BIST_TX,			/* C37 */
 	PD_STATE_DRP_AUTO_TOGGLE,		/* C38 */
+	PD_STATE_SNK_FAST_SWAP_SNK_DISABLE,	/* C39 */
+	PD_STATE_SNK_FAST_SWAP_INIT,		/* C40 */
+	PD_STATE_SNK_FAST_SWAP_STANDBY,		/* C41 */
+	PD_STATE_SNK_FAST_SWAP_COMPLETE,	/* C42 */
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,
 };
@@ -1057,6 +1063,7 @@ enum pd_states {
  * timers in SNK_DISCOVERY
  */
 #define PD_FLAGS_SNK_WAITING_BATT BIT(20)
+#define PD_FLAGS_FAST_SWAP         BIT(21)/* Enable TCPC fast role swap */
 
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
@@ -1606,6 +1613,26 @@ int pd_snk_is_vbus_provided(int port);
  * @param port USB-C port number
  */
 void pd_vbus_low(int port);
+
+/**
+ * Determine if we (new SRC) are providing VBUS or not
+ * when fast power role swap from SNK to SRC.
+ *
+ * @param port USB-C port number
+ *
+ * @return VBUS is detected
+ */
+int pd_new_src_is_frs_vbus_provide(int port);
+
+/**
+ * Enable/disable ppc fast role swap from SNK to SRC.
+ *
+ * @param port: Type-C port number
+ * @enable: true for enable, false for disable
+ *
+ * @return EC_SUCCESS on success, error otherwise
+ */
+int pd_snk_fast_swap_to_src_enable(int port, int enable);
 
 /**
  * Check if power swap is allowed.

@@ -169,6 +169,11 @@ int pd_snk_is_vbus_provided(int port)
 {
 	return ppc_is_vbus_present(port);
 }
+
+int pd_new_src_is_frs_vbus_provide(int port)
+{
+	return ppc_is_frs_vbus_provide(port);
+}
 #endif
 
 void typec_set_source_current_limit(int port, int rp)
@@ -181,6 +186,10 @@ int board_vbus_source_enabled(int port)
 	return ppc_is_sourcing_vbus(port);
 }
 
+int pd_snk_fast_swap_to_src_enable(int port, int enable)
+{
+	return ppc_fast_swap_to_src_enable(port, enable);
+}
 
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
