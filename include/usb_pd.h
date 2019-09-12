@@ -1241,7 +1241,7 @@ enum pd_cc_polarity_type {
 
 /* Protocol revision */
 enum pd_rev_type {
-	PD_REV10,
+	PD_REV10 = 0,
 	PD_REV20,
 	PD_REV30
 };
@@ -1315,6 +1315,7 @@ enum pd_data_role {
 #define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
 #define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
+#define PD_HEADER_CABLE_PLUG(header) (((header) >> 8) & 1)
 #define PD_HEADER_REV(header)   (((header) >> 6) & 3)
 #define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
@@ -1694,10 +1695,12 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
  * @param port     USB-C port number
  * @param cnt      number of data objects in the payload.
  * @param payload  payload data.
+ * @param head     message header.
  * @param rpayload pointer to the data to send back.
  * @return if >0, number of VDOs to send back.
  */
-int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
+int pd_svdm(int port, int cnt, uint32_t *payload, uint16_t head,
+			 uint32_t **rpayload);
 
 /**
  * Handle Custom VDMs for flashing.
