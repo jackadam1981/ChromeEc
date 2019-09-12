@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "0c7f3cae_6427a4d4",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-12T13:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3964b568_f17fb7e7",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032e2187_b028fc33",
         "filename": "common/thermal.c",
         "patchSetId": 3
@@ -285,6 +309,30 @@
       "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70668924_13b0ab5d",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-12T13:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc2b8f5_47b7caa9",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "086b9d9f90d90936c54acec0e2906c4b369035cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
