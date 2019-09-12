@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8903098_96442492",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-09-12T16:48:47Z",
+      "side": 1,
+      "message": "nit: please indicate in the comment that these are functions added in 1.1.0",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8988080_d0c41752",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-09-12T16:48:47Z",
+      "side": 1,
+      "message": "nit: this must be an adaptation of code from bn_lib, but would it be more readable to do something more structural\n\nBN_ULONG* word;\n/* do length checks */\nfor (i\u003d0, word\u003da-\u003ed; i\u003ca-\u003etop; i++, word++, to+\u003dBN_BYTES) {\n  BN_ULONG_to_LEULONG(word, to);\n}\nmemset(to, 0, tolen - i*BN_BYTES);\n\nwhere BN_ULONG_to_LEULONG(BN_ULONG* word, u_char* to) {\n  for (i\u003d0; i\u003cBN_BYTES; i++) {\n    *to++ \u003d BN_ULONG_lebyte(*word, i);\n  }\n}\n\nand BN_ULONG_lebyte(BN_ULONG value, int nbyte) {\n  return (value \u003e\u003e (BN_BYTES - nbyte + 1)*8) \u0026 0xFFu;\n}",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007682ef_af14b2d3",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-09-12T16:48:47Z",
+      "side": 1,
+      "message": "nit: empty line in between",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9407c5_0810ecf7",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-09-12T16:48:47Z",
+      "side": 1,
+      "message": "why do we need to do this now?\nit used to be just DCRYPTO_bn_wrap(...) without first converting to lebin",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
