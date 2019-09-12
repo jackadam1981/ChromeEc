@@ -271,7 +271,9 @@ sspi_flash_upload(int spi_offset, int spi_size)
 	uint32_t sz_image = spi_size;
 
 	/* Unlock & stop watchdog */
-	watchdog_stop_and_unlock();
+	NPCX_WDSDM = 0x87;
+	NPCX_WDSDM = 0x61;
+	NPCX_WDSDM = 0x63;
 
 	/* UMA Unlock */
 	CLEAR_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK);
