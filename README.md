@@ -1,5 +1,7 @@
 # Embedded Controller (EC)
 
+
+
 [TOC]
 
 ## Introduction
