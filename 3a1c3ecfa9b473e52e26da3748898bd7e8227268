@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84045dd8_ed2ccc3a",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-13T18:25:36Z",
+      "side": 1,
+      "message": "Is there any reason for these to be at file scope? It looks like they could be made local to `i2c_slave_handler` and passed as parameters to `i2c_slave_read` and `i2c_slave_write`, since their values are never carried over between calls to `i2c_slave_handler`.",
+      "revId": "3a1c3ecfa9b473e52e26da3748898bd7e8227268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
