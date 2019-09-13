@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "019fc870_0fe19e26",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-09-13T17:22:39Z",
+      "side": 1,
+      "message": "What do you envision the type C connector class reporting to be, for VPD devices?",
+      "parentUuid": "ab16763d_bee7288e",
+      "range": {
+        "startLine": 1587,
+        "startChar": 1,
+        "endLine": 1587,
+        "endChar": 30
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84d9ba57_83f2dc0a",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
