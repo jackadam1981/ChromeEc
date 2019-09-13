@@ -277,7 +277,7 @@ run-test-targets=$(foreach t,$(test-list-host),run-$(t))
 
 $(host-test-targets): host-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/test-$*
-	$(call quiet,host_test,BUILD  )
+	+$(call quiet,host_test,BUILD  )
 
 $(run-test-targets): run-%: host-%
 	$(call quiet,run_host_test,TEST   )
@@ -301,7 +301,7 @@ $(fuzz-test-targets): TEST_FLAG=TEST_FUZZ=y TEST_ASAN=$(TEST_ASAN) \
 		sed -e 's/[^-]*$$//')
 $(fuzz-test-targets): host-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/test-$*
-	$(call quiet,host_test,BUILD  )
+	+$(call quiet,host_test,BUILD  )
 $(run-fuzz-test-targets): run-%: host-%
 	$(call quiet,run_fuzz,TEST   )
 	@rm -f $(FAILED_BOARDS_DIR)/test-$*
