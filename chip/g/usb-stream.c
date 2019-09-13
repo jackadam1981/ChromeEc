@@ -282,10 +282,10 @@ void usb_stream_reset(struct usb_stream_config const *config)
 	config->in_desc[1].addr = (void *)config->consumer.queue->buffer;
 	GR_USB_DIEPDMA(config->endpoint) = (uint32_t)config->in_desc;
 	GR_USB_DOEPCTL(config->endpoint) = DXEPCTL_MPS(64) | DXEPCTL_USBACTEP |
-					   DXEPCTL_EPTYPE_BULK |
+					   DXEPCTL_SET_D0PID | DXEPCTL_EPTYPE_BULK |
 					   DXEPCTL_CNAK | DXEPCTL_EPENA;
 	GR_USB_DIEPCTL(config->endpoint) = DXEPCTL_MPS(64) | DXEPCTL_USBACTEP |
-					   DXEPCTL_EPTYPE_BULK |
+					   DXEPCTL_SET_D0PID |DXEPCTL_EPTYPE_BULK |
 					   DXEPCTL_TXFNUM(config->endpoint);
 	GR_USB_DAINTMSK |= DAINT_INEP(config->endpoint) |
 			   DAINT_OUTEP(config->endpoint);
