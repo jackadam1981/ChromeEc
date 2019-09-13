@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6ff77c28_ec7673ea",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-13T23:26:34Z",
+      "side": 1,
+      "message": "Looks good now, thanks.",
+      "parentUuid": "1489a40c_3007a04f",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "c77d0617e49c880423083f277deb79e104fc2026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cacbea5_588257f1",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 15
@@ -187,6 +211,30 @@
       "revId": "c77d0617e49c880423083f277deb79e104fc2026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61506cd6_a284b2ed",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 15
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-13T23:26:34Z",
+      "side": 1,
+      "message": "Looks good now, thanks.",
+      "parentUuid": "8b4a5f98_451688b2",
+      "range": {
+        "startLine": 416,
+        "startChar": 15,
+        "endLine": 416,
+        "endChar": 24
+      },
+      "revId": "c77d0617e49c880423083f277deb79e104fc2026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
