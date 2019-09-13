@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ab16763d_bee7288e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2019-09-13T17:20:51Z",
+      "side": 1,
+      "message": "Hey Prashant,\n\nYes, we will have to worry about VPD. You should check with David Schneider and Sam Hurst, as we have some VPD prototypes around.\n\nBenson",
+      "parentUuid": "f4ab05be_4c526c77",
+      "range": {
+        "startLine": 1587,
+        "startChar": 1,
+        "endLine": 1587,
+        "endChar": 30
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84d9ba57_83f2dc0a",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
