@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "940643fd_58454ba2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2019-09-13T17:29:52Z",
+      "side": 1,
+      "message": "Connector class sysfs nodes be like this:\n/sys/class/typec/\n/sys/class/typec/port0 \u003c---------------------------Me\n\nI imagine instead of:\n/sys/class/typec/port0/port0-cable/ \u003c--------------Our Cable\n\nWe would have this:\n/sys/class/typec/port0/port0-vpd/ \u003c----------------Vconn Powered Device\n\n\nIt\u0027s further complicated by the fact that VPDs can be *charge-through* as well, so we\u0027ll have to carefully structure it so it makes sense! \n\nDavid is the VPD guru. We should put together a design doc for this change to the connector class and put it up as an RFC to the maintainer...",
+      "parentUuid": "019fc870_0fe19e26",
+      "range": {
+        "startLine": 1587,
+        "startChar": 1,
+        "endLine": 1587,
+        "endChar": 30
+      },
+      "revId": "e52b89a5db1d365283fe477f34d17fdb4a1f5ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84d9ba57_83f2dc0a",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
