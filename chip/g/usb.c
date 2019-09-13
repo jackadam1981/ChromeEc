@@ -461,6 +461,28 @@ static void stall_both_fifos(void)
 	GR_USB_DIEPCTL(0) = DXEPCTL_STALL | DXEPCTL_EPENA;
 }
 
+static void usb_reset_all_ep_pids(void)
+{
+  int i;
+  CPRINTS("%s, num ep %x", __func__, USB_EP_COUNT);
+
+  for (i = 1; i < USB_EP_COUNT; i++) {
+    GR_USB_DOEPCTL(i) |= DXEPCTL_SET_D0PID;
+    GR_USB_DIEPCTL(i) |= DXEPCTL_SET_D0PID;
+  }
+}
+
+static void usb_reset_ep_pid(int ep)
+{
+  CPRINTS("%s, ep %x", __func__, ep);
+
+  if (ep & 0x80) {   // IN enpoint
+    GR_USB_DIEPCTL(ep & 0x7f) |= DXEPCTL_SET_D0PID;
+  } else {
+    GR_USB_DOEPCTL(ep) |= DXEPCTL_SET_D0PID;
+  }
+}
+
 /* The next packet from the host should be a Setup packet. Get ready for it. */
 static void expect_setup_packet(void)
 {
@@ -760,8 +782,8 @@ static int handle_setup_with_no_data_stage(enum table_case tc,
 			device_state = DS_ADDRESS;
 			break;
 		case 1:	    /* Caution: Only one config descriptor TODAY */
-			/* TODO: All endpoints set to DATA0 toggle state */
-			configuration_value = req->wValue;
+      usb_reset_all_ep_pids();
+      configuration_value = req->wValue;
 			device_state = DS_CONFIGURED;
 			break;
 		default:
@@ -817,6 +839,27 @@ static void handle_setup(enum table_case tc)
 			bytes = usb_iface_request[iface](req);
 			print_later("  iface returned %d", bytes, 0, 0, 0, 0);
 		}
+  } else if (USB_RECIP_ENDPOINT ==
+             (req->bmRequestType & USB_RECIP_MASK)) {
+    /* Endpoint-specific requests */
+    uint8_t ep = req->wIndex & 0xff;
+
+    print_later("ep %d request (vs %d)",
+                iface, USB_EP_COUNT, 0, 0, 0);
+    if ( (ep & 0x7f) < USB_EP_COUNT) {
+      /* This could call out to a usb_ep_request fn, but only */
+      /* clearing the stall is implemnted */
+      if ( (req->bRequest == USB_REQ_CLEAR_FEATURE) &&
+           (req->bmRequestType == 2) ) { /* standard endpoint */
+          /* Case for CLEAR_FEATURE(endpoint_halt) */
+        usb_reset_ep_pid(req->wIndex);
+        bytes = 0;
+      }
+      else
+      {
+        report_error(-1);
+      }
+    }
 	} else {
 #ifdef CONFIG_WEBUSB_URL
 		if (data_phase_in &&
