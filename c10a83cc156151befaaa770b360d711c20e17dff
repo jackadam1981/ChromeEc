@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a22c59ce_49e137b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-13T21:06:56Z",
+      "side": 1,
+      "message": "What is the actual complaint?",
+      "range": {
+        "startLine": 15,
+        "startChar": 50,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "c10a83cc156151befaaa770b360d711c20e17dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23cddcb9_4eb3ae65",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-13T21:06:56Z",
+      "side": 1,
+      "message": "Can you add comments about why we need this?",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "c10a83cc156151befaaa770b360d711c20e17dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
