@@ -22,6 +22,30 @@
       "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e561edde_791b420c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-13T17:47:15Z",
+      "side": 1,
+      "message": "Actually, in pd_svdm we check only SOP\u0027 (by is_transmit_msg_sop_prime). The message could be from a UPF/DFP. So, this whole function (\u003ddfp_consume_cable_response) should be called after checking (PD_HEADER_CABLE_PLUG(head) \u003d\u003d PD_PLUG_CABLE_VPD, shouldn\u0027t it?",
+      "parentUuid": "b7b32153_91c0585e",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
