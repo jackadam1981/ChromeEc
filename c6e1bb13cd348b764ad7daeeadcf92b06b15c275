@@ -46,6 +46,30 @@
       "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff557c9_6468cbd2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-09-13T18:11:23Z",
+      "side": 1,
+      "message": "I had a similar thought, but I assumed the check was legit (and sufficient proof that the message was from a cable) and didn\u0027t want to mess with the existing flow too much (and break functionality). I can take this check out to the calling function in the next patch...",
+      "parentUuid": "e561edde_791b420c",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
