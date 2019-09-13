@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a90d371_fe4a713e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-13T21:24:47Z",
+      "side": 1,
+      "message": "How about \n\n\trt946x_set_vprec(precharge_voltage ? precharge_voltage : voltage_min)\n\n?",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 53
+      },
+      "revId": "f566cf23ba1fce38c70f2d58aa571bfec9d59750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
