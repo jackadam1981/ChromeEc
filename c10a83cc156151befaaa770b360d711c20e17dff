@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a0c4dff_0d452ff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-09-13T22:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22c59ce_49e137b8",
+      "range": {
+        "startLine": 15,
+        "startChar": 50,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "c10a83cc156151befaaa770b360d711c20e17dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23cddcb9_4eb3ae65",
         "filename": "Makefile.rules",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-13T21:06:56Z",
       "side": 1,
       "message": "Can you add comments about why we need this?",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "c10a83cc156151befaaa770b360d711c20e17dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530b2287_71c12f54",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-09-13T22:19:30Z",
+      "side": 1,
+      "message": "make scans for the use of $(MAKE) in commands to decide if there\u0027s\ngoing to be a recursive make invocation.  if so, then it passes\nadditional state info through the environment to the sub-make telling\nit how to contact the job server of the parent make.\nthe way $(call ...) is constructed, the scan-for-$(MAKE)\nheuristic fails, so we need to annotate this explicitly.",
+      "parentUuid": "23cddcb9_4eb3ae65",
       "range": {
         "startLine": 280,
         "startChar": 1,
