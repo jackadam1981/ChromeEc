@@ -34,6 +34,24 @@
       "revId": "c32c1ae24c398679edae807f9c1620eb91377003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5999fa57_59a0ff93",
+        "filename": "common/usb_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-09-13T09:50:09Z",
+      "side": 1,
+      "message": "Looking at PD3.0v1.2 \"6.4.4.3.1.7 \"Vconn Powered USB Device VDO\", this check is probably more about bitfield escapement... less so 100v USB-C (or 21.0v, since the field\u0027s a mapped enum). :)\n\nIn the current version of the spec you\u0027re right, only B16...15 are allocated to Vbus voltage bitfield. And you\u0027re right our code does filter it appropriately.... for now.\n\nusb_pd.h#802\n#define VPD_VDO_MAX_VBUS(vdo) (((vdo) \u003e\u003e 15) \u0026 0x3)\n\nHowever B20...17 right next to it are \"Reserved\" in PD3v1.2. Heaven knows if USB-IF will in the future extend this field to 3+ bits, to contain new voltage definitions for 0b100 or 0b111 (i.e. 21.0v). If they do and we \"mask off\" the upper 0b1__ bit(s), bad things might happen.\n\nThis safety check (as written) would catch that error and default back to 20v \"vSafe20v\".\n\nI share the sentiment that \"50v on USB-C is a bridge too far practically and realistically. But I\u0027m tempted to leave safety checks like this in place since theoretically this stack will live a very long time.\n\nIf we ever change the VPD_VDO_MAX_VBUS() macro this might bite us. I\u0027m unfamiliar, but is this logic strictly typed up in the spec?",
+      "parentUuid": "4b19e24b_bbeabb46",
+      "revId": "c32c1ae24c398679edae807f9c1620eb91377003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
