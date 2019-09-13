@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b32153_91c0585e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-13T17:02:47Z",
+      "side": 1,
+      "message": "Don\u0027t we already know this is a message from a cable plug?",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
