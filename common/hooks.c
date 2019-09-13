@@ -27,11 +27,13 @@ struct hook_ptrs {
 	const struct hook_data *end;
 };
 
+
+extern const struct hook_ptrs hook_list[];
 /*
  * Hook data start and end pointers for each type of hook.  Must be in same
  * order as enum hook_type.
  */
-static const struct hook_ptrs hook_list[] = {
+const struct hook_ptrs hook_list[] = {
 	{__hooks_init, __hooks_init_end},
 	{__hooks_pre_freq_change, __hooks_pre_freq_change_end},
 	{__hooks_freq_change, __hooks_freq_change_end},
@@ -59,9 +61,12 @@ static const struct hook_ptrs hook_list[] = {
 	{__hooks_usb_pd_disconnect, __hooks_usb_pd_disconnect_end},
 };
 
+extern int defer_new_call;
+extern int hook_task_started;
+
 /* Times for deferrable functions */
-static int defer_new_call;
-static int hook_task_started;
+int defer_new_call;
+int hook_task_started;
 
 #ifdef CONFIG_HOOK_DEBUG
 /* Stats for hooks */
@@ -72,6 +77,7 @@ static uint64_t max_hook_run_time[ARRAY_SIZE(hook_list)];
 static uint64_t avg_hook_tick_delay;
 static uint64_t avg_hook_second_delay;
 static uint64_t avg_hook_run_time[ARRAY_SIZE(hook_list)];
+
 
 static inline void update_hook_average(uint64_t *avg, uint64_t time)
 {
@@ -97,6 +103,7 @@ static void record_hook_delay(uint64_t now, uint64_t last, uint64_t interval,
 }
 #endif
 
+#if 0
 void hook_notify(enum hook_type type)
 {
 	const struct hook_data *start, *end, *p;
@@ -108,7 +115,6 @@ void hook_notify(enum hook_type type)
 #endif
 
 	CPRINTS("hook notify %d", type);
-
 	start = hook_list[type].start;
 	end = hook_list[type].end;
 	count = end - start;
@@ -166,6 +172,7 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 
 	return EC_SUCCESS;
 }
+
 
 void hook_task(void *u)
 {
@@ -247,6 +254,7 @@ void hook_task(void *u)
 			task_wait_event(next);
 	}
 }
+#endif
 
 /*****************************************************************************/
 /* Console commands */

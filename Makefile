@@ -167,6 +167,9 @@ _flag_cfg:= $(filter $(_flag_cfg_ro), $(_flag_cfg_rw))
 _flag_cfg_ro:= $(filter-out $(_flag_cfg), $(_flag_cfg_ro))
 _flag_cfg_rw:= $(filter-out $(_flag_cfg), $(_flag_cfg_rw))
 
+
+RUSTC_CFG_FLAGS:=$(foreach t,$(_flag_cfg),--cfg feature=\"$(t)\")
+
 $(foreach c,$(_tsk_cfg_rw) $(_flag_cfg_rw),$(eval $(c)=rw))
 $(foreach c,$(_tsk_cfg_ro) $(_flag_cfg_ro),$(eval $(c)=ro))
 $(foreach c,$(_tsk_cfg) $(_flag_cfg),$(eval $(c)=y))
