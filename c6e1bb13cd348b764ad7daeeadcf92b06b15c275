@@ -70,6 +70,30 @@
       "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3d0977_15db0cf2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-09-13T18:22:00Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not even convinced pd_svdm() is the right place to be setting cable attributes. I\u0027ve connected an e-mark cable to a power source (as well as a Pixel 2 phone) and I\u0027m not able to hit this code path.\n\nNeed to dig in a bit more....",
+      "parentUuid": "fff557c9_6468cbd2",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "c6e1bb13cd348b764ad7daeeadcf92b06b15c275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
