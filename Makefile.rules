@@ -50,6 +50,16 @@ quiet = $(cmd_$(1))
 endif
 endif
 
+ifneq (,$(findstring armv6s-m,$(CFLAGS_CPU)))
+RUST_TARGET:=thumbv6m-none-eabi
+endif
+ifneq (,$(findstring armv7-m,$(CFLAGS_CPU)))
+RUST_TARGET:=thumbv7m-none-eabi
+endif
+ifneq (,$(findstring armv7e-m,$(CFLAGS_CPU)))
+RUST_TARGET:=thumbv7em-none-eabihf
+endif
+
 # commands to build all targets
 cmd_libec = $(LD) -r $^ -o $@.1.o && \
 	$(OBJCOPY) --localize-hidden $@.1.o $@.2.o && \
@@ -60,7 +70,7 @@ cmd_lds_b = $(cmd_lds) -DRW_B_LDS
 cmd_obj_to_bin ?= $(OBJCOPY) --gap-fill=0xff -O binary $^ $(out)/$*.bin.tmp
 cmd_flat_to_obj = $(CC) -Wl,-T $(out)/firmware_image.lds -nostdlib $(CPPFLAGS) \
                   -Wl,--build-id=none -o $@ $<
-# Allow the .roshared section to overlap other sections (itself)
+# Allow the .roshared section to overlap other sections (itself)]
 cmd_ec_elf_to_flat ?= $(OBJCOPY) --set-section-flags .roshared=share -R .dram* \
 				-O binary $< $@
 cmd_ec_elf_to_flat_dram ?= $(OBJCOPY) -j .dram* -O binary $< $@
@@ -72,15 +82,21 @@ cmd_elf_to_hex = $(OBJCOPY) -O ihex $< $@
 cmd_bin_to_hex = $(OBJCOPY) -I binary -O ihex \
 	--change-addresses $(_program_memory_base) $^ $@
 cmd_smap = $(NM) $< | sort > $@
-cmd_elf = $(CC) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \
+# TODO(zachr): The hardcoded rustlib path below is a complete hack.
+cmd_elf = $(CC) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) /usr/lib/rustlib/$(RUST_TARGET)/lib/libcore-*.rlib $(out)/RO/common/libcommon.rlib \
 	-o $@ -Wl,-T,$< -Wl,-Map,$(patsubst %.elf,%.map,$@)
 cmd_fuzz_exe = $(CXX) $^ $(HOST_TEST_LDFLAGS) $(LDFLAGS_EXTRA) -o $@
 cmd_run_fuzz = build/host/$*/$*.exe -seed=1 -runs=1 $(silent) \
 	$(silent_err) || (echo "Test $* failed!" && false)
 cmd_exe = $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) -o $@
+
 cmd_c_to_o = $(CC) $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $< -o $(@D)/$(@F)
 cmd_cxx_to_o = $(CXX) -std=c++11 $(CFLAGS) $(CXXFLAGS) -MMD -MP -MF $@.d -c $< \
 		      -o $(@D)/$(@F)
+cmd_rs_to_rlib = OUT_DIR=$(out)/$(BLD) rustc $(RUSTC_FLAGS) $< -o $(@D)/$(@F)
+cmd_rs_to_o = rustc $(RUSTC_FLAGS) $(RUSTC_CFG_FLAGS) --emit obj --extern=common=$(@D)/libcommon.rlib $< -o $(@D)/$(@F)
+cmd_h_to_rs = bindgen --ctypes-prefix=crate::raw --use-core --no-layout-tests --no-doc-comments \
+              --no-prepend-enum-name --no-derive-debug $< -- $(BINDGEN_FLAGS) >$(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $(wildcard $*.c)) \
 	         $(BUILD_LDFLAGS) \
@@ -462,13 +478,17 @@ endif
 
 $(out)/RO/%.o:%.c
 	$(call quiet,c_to_o,CC     )
-$(out)/RW/%.o:%.c
-	$(call quiet,c_to_o,CC     )
-
 $(out)/RO/%.o:%.cc
 	$(call quiet,cxx_to_o,CXX    )
+$(out)/RO/%.o:%.rs $(out)/RO/common/libcommon.rlib
+	$(call quiet,rs_to_o,RUSTC  )
+
+$(out)/RW/%.o:%.c
+	$(call quiet,c_to_o,CC     )
 $(out)/RW/%.o:%.cc
 	$(call quiet,cxx_to_o,CXX    )
+$(out)/RW/%.o:%.rs $(out)/RW/common/libcommon.rlib
+	$(call quiet,rs_to_o,RUSTC  )
 
 $(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
 	$(call quiet,cxx_to_o,CXX    )

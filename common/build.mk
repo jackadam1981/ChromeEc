@@ -43,7 +43,7 @@ common-$(CONFIG_CHARGER_V2)+=charge_state_v2.o
 common-$(CONFIG_CMD_I2CWEDGE)+=i2c_wedge.o
 common-$(CONFIG_COMMON_GPIO)+=gpio.o gpio_commands.o
 common-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic_output.o
-common-$(CONFIG_COMMON_RUNTIME)+=hooks.o main.o system.o
+common-$(CONFIG_COMMON_RUNTIME)+= main.o system.o hooks.o
 common-$(CONFIG_COMMON_TIMER)+=timer.o
 common-$(CONFIG_CRC8)+= crc8.o
 common-$(CONFIG_CURVE25519)+=curve25519.o
@@ -163,6 +163,16 @@ ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
 $(out)/RO/common/rsa.o: CFLAGS+=-O3
 endif
+
+$(out)/RW/common/libcommon.rlib: common/common.rs $(out)/RW/generated.rs
+	$(call quiet,rs_to_rlib,RUSTC )
+$(out)/RO/common/libcommon.rlib: common/common.rs $(out)/RO/generated.rs
+	$(call quiet,rs_to_rlib,RUSTC )
+
+$(out)/RW/generated.rs: include/rust_wrapper.h
+	$(call quiet,h_to_rs,BINDGEN )
+$(out)/RO/generated.rs: include/rust_wrapper.h
+	$(call quiet,h_to_rs,BINDGEN )
 
 # AES-GCM code needs C99, else we'd have to move many variables declarations
 # around.
