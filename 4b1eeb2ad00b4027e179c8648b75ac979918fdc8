@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84584552_f3f80a02",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-09-16T03:16:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84499473_105b98de",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 992,
+        "endChar": 0
+      },
+      "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11432b1_a64fe6ea",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-29T20:51:51Z",
       "side": 1,
       "message": "continue here means you read RT946X_REG_DPDMIRQ again at line 985. Is it necessary? The register is cleared on read. Why not loop here locally (for 3 times)?",
+      "range": {
+        "startLine": 994,
+        "startChar": 5,
+        "endLine": 994,
+        "endChar": 13
+      },
+      "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d536f5c7_545b905d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-09-16T03:16:12Z",
+      "side": 1,
+      "message": "because we try to shrink redundant code\nwe tried local loop 3 times in previous version, it\u0027s also work\nthe idea is \"we toggle bc12 and wait bc12 result\" with same flow in first trigger",
+      "parentUuid": "a11432b1_a64fe6ea",
       "range": {
         "startLine": 994,
         "startChar": 5,
@@ -68,6 +116,30 @@
       "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c28a3b3_140381d6",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-09-16T03:16:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a473302_e86839a2",
+      "range": {
+        "startLine": 1013,
+        "startChar": 0,
+        "endLine": 1015,
+        "endChar": 38
+      },
+      "revId": "4b1eeb2ad00b4027e179c8648b75ac979918fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
