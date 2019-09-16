@@ -52,6 +52,24 @@
       "revId": "1de39e266835f761b3a47ad89bc1e39aa3981768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8b6650_80be4037",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 31
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-09-16T09:42:23Z",
+      "side": 1,
+      "message": "Interesting, I can compile after remove the CFLAGS.\n\nI think this is old code (without all-in-one archive) which I didn\u0027t review again and forget to remove.",
+      "parentUuid": "cc9d3eeb_9ecfc461",
+      "revId": "1de39e266835f761b3a47ad89bc1e39aa3981768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
