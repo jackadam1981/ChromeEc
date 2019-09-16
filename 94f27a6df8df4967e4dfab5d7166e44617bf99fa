@@ -114,6 +114,29 @@
       "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ec5ddf_34f35678",
+        "filename": "driver/touchpad_gt7288.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2019-09-16T23:53:21Z",
+      "side": 1,
+      "message": "Could use comment/description",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
