@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f25624fc_c7f95683",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-09-16T07:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e6c9e1_4b88a10c",
+      "range": {
+        "startLine": 61,
+        "startChar": 25,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "833d601f35c00f4e8afc9d50b2939cdf46de47cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f74903bc_91247053",
         "filename": "chip/mt_scp/audio_codec_wov.c",
         "patchSetId": 29
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-16T01:10:45Z",
       "side": 1,
       "message": "I don\u0027t understand, what\u0027s the point of ever applying software gain to WoV input? (the only thing this does is to shift the 16-bit value, so we can\u0027t possibly get any extra information?) Shouldn\u0027t the algorithm be able to compensate for low volume by itself?",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 42
+      },
+      "revId": "833d601f35c00f4e8afc9d50b2939cdf46de47cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b485f7f_ca568890",
+        "filename": "chip/mt_scp/audio_codec_wov.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-09-16T07:38:48Z",
+      "side": 1,
+      "message": "No.  The algorithm needs loud enough volume to raise its confidence.",
+      "parentUuid": "f74903bc_91247053",
       "range": {
         "startLine": 81,
         "startChar": 12,
@@ -68,6 +116,30 @@
       "revId": "833d601f35c00f4e8afc9d50b2939cdf46de47cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc7d77f_a9100a4c",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-09-16T07:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8021da6_fb273b24",
+      "range": {
+        "startLine": 153,
+        "startChar": 32,
+        "endLine": 153,
+        "endChar": 40
+      },
+      "revId": "833d601f35c00f4e8afc9d50b2939cdf46de47cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
