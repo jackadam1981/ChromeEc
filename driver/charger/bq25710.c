@@ -192,6 +192,7 @@ static void bq25710_init(void)
 		/* Set all registers to default values */
 		raw_write16(BQ25710_REG_CHARGE_OPTION_3, reg);
 		/* Restore VSYS_MIN voltage to POR reset value */
+		vsys = 0x1800;
 		raw_write16(BQ25710_REG_MIN_SYSTEM_VOLTAGE, vsys);
 	}
 
