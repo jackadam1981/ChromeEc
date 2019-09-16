@@ -34,6 +34,24 @@
       "revId": "e43fb3a610825e1eb3a3f34f6a3f2e1de19c8d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "427a8197_7c2b5138",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-16T16:56:55Z",
+      "side": 1,
+      "message": "I am not a huge fan of globals but they are there in either implementation. Adding code space usage to pass the same parameter seems wasteful, unless there is a chance this could be a different value at some point. Otherwise, I am on the fence, but mostly on the smaller code size side.  If others want it this way, I am OK with it.",
+      "parentUuid": "eeeec14e_034309ae",
+      "revId": "e43fb3a610825e1eb3a3f34f6a3f2e1de19c8d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
