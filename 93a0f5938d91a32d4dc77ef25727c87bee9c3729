@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac641a23_5c8924a9",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:45:04Z",
+      "side": 1,
+      "message": "Inverse the test\n\n#ifdef SHM\nSHM code\n#else\nno SHM code\n#endif",
+      "revId": "93a0f5938d91a32d4dc77ef25727c87bee9c3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b6d9c3_9640e210",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:45:04Z",
+      "side": 1,
+      "message": "This may be a bit unsafe, if the buffer is almost full:\n\nTask 1: Increment audio_buf_rp\nTask 1: unlock mutex\nTask 2: Increment audio_buf_wp and writes new data\nTask 1: Copies over data (but that was overwriten by Thread 2).\n\nIt\u0027d be easy to fix this here by moving the memcpy within the mutex, but it\u0027s not possible to solve it similarly in the shm case (unless we have a callback to indicate that we are done reading out the buffer.\n\nThis may be ok, but I\u0027d document the limitation, maybe?",
+      "revId": "93a0f5938d91a32d4dc77ef25727c87bee9c3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f9f864_5d7be0f5",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:45:04Z",
+      "side": 1,
+      "message": "So if there is no hotword, we happily overrun the buffer, is that the idea? Shouldn\u0027t we modify audio_buf_rp so that we can still read the whole buffer when the hotword happens?",
+      "range": {
+        "startLine": 344,
+        "startChar": 6,
+        "endLine": 344,
+        "endChar": 26
+      },
+      "revId": "93a0f5938d91a32d4dc77ef25727c87bee9c3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb8d94b_398f35d3",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:45:04Z",
+      "side": 1,
+      "message": "What is this for?\n\n(this should be added as a comment)",
+      "revId": "93a0f5938d91a32d4dc77ef25727c87bee9c3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d70bc72_03a3f8ea",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:45:04Z",
+      "side": 1,
+      "message": "I may have asked this in the past, but why?\n\nPlease document by adding a comment.",
+      "revId": "93a0f5938d91a32d4dc77ef25727c87bee9c3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
