@@ -16,6 +16,24 @@
       "revId": "e96b7dddaf2be655b1174ac7e840ddd2b83b3790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ddee71c_69189e9a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-16T16:49:43Z",
+      "side": 1,
+      "message": "never mind... you removed the redundant check",
+      "parentUuid": "e4e0a7fa_f1355304",
+      "revId": "e96b7dddaf2be655b1174ac7e840ddd2b83b3790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
