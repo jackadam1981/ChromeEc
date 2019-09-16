@@ -94,6 +94,30 @@
       "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d177cb98_9ee1ce91",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-16T22:37:05Z",
+      "side": 1,
+      "message": "Really? That\u0027s odd. Still, better to have the right values here, in case it matters at some time in the future.",
+      "parentUuid": "af8ff4dd_a2dd95fe",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
