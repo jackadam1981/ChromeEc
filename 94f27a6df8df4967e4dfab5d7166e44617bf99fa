@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dba701f1_9d7a329e",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:34:25Z",
+      "side": 1,
+      "message": "Can you put the command routines together so that you can toggle them all together by a single #ifdef ... #endif?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964fa375_5c630a72",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:34:25Z",
+      "side": 1,
+      "message": "nit: ccprintf is better. we don\u0027t need to mask console command output.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7669c25d_cb1dc766",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:34:25Z",
+      "side": 1,
+      "message": "Why not gt7288_read?",
+      "range": {
+        "startLine": 134,
+        "startChar": 13,
+        "endLine": 135,
+        "endChar": 46
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fb6729_4c9d1178",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:34:25Z",
+      "side": 1,
+      "message": "+80 chars",
+      "range": {
+        "startLine": 164,
+        "startChar": 66,
+        "endLine": 164,
+        "endChar": 68
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458a3774_f2b44097",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:34:25Z",
+      "side": 1,
+      "message": "Can you use if (IS_ENABLED(DEBUG_CHECKS))...?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
