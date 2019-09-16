@@ -16,6 +16,24 @@
       "revId": "ae0c5c5f8fc8d9ad45d41ac3536bc792faf993b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cbd9a6_71fbec59",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-16T08:56:32Z",
+      "side": 1,
+      "message": "Move base_detect_* to baseboard https://crrev.com/c/1806633 so KODAMA and KRANE can share the same code.\nAnd... I think JACUZZI\u0027s tablet switch code should put somewhere else. (rather than base_detect_kukui.c)",
+      "parentUuid": "f44a519a_2c0110dc",
+      "revId": "ae0c5c5f8fc8d9ad45d41ac3536bc792faf993b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
