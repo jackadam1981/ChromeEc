@@ -46,6 +46,12 @@
 #undef CONFIG_CHARGER_MT6370_BC12_GPIO
 #endif
 
+/* base and tablet mode */
+#ifdef BOARD_KRANE
+#define CONFIG_DETACHABLE_BASE
+#define CONFIG_BASE_ATTACHED_SWITCH
+#endif
+
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
 #ifndef BOARD_KRANE

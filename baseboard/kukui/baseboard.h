@@ -137,7 +137,6 @@
 
 /* To be able to indicate the device is in tablet mode. */
 #define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_MODE_SWITCH
 #define GPIO_LID_OPEN GPIO_HALL_INT_L
 
 #ifndef VARIANT_KUKUI_NO_SENSORS
