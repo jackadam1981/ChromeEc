@@ -16,6 +16,24 @@
       "revId": "e43fb3a610825e1eb3a3f34f6a3f2e1de19c8d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeeec14e_034309ae",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-16T16:54:11Z",
+      "side": 1,
+      "message": "I wanted this file to only contain utility functions and not state. But we could revisit this design decision if anyone thinks this is not the best way.",
+      "parentUuid": "9b789663_fcc02607",
+      "revId": "e43fb3a610825e1eb3a3f34f6a3f2e1de19c8d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
