@@ -94,6 +94,30 @@
       "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5269478_7a1b284b",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-16T08:32:16Z",
+      "side": 1,
+      "message": "DPTF takes care overall system thermal management. For active cooling, DPTF controls the Fan. For Passive cooling, DPTF throttles the power limits and cools down the system thermals. And the last if temperature goes beyond Tjmax (Junction temperature) value, DPTF can initiate the shutdown as critical cooling action.",
+      "parentUuid": "2ae8164f_f8ead7ec",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
