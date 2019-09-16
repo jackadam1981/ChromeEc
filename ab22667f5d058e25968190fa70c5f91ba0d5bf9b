@@ -22,6 +22,30 @@
       "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a444407_b71599cd",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-09-16T20:56:39Z",
+      "side": 1,
+      "message": "I think so.\n\nADC0 -\u003e GPIO45 (TEMP_SENSOR_1)\nADC1 -\u003e GPIO44 (TEMP_SENSOR_2)\nADC2 -\u003e GPIO43\nADC3 -\u003e GPIO42 (TEMP_SENSOR_3)\n\nTurning on ADC0/1/3 needs setting bit5/4/2, so 0x32.",
+      "parentUuid": "1bea3d32_f1e2918f",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
