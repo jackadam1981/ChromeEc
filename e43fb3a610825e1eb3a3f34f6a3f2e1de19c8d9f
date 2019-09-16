@@ -52,6 +52,24 @@
       "revId": "e43fb3a610825e1eb3a3f34f6a3f2e1de19c8d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a00c68d_cfff4533",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-16T17:08:26Z",
+      "side": 1,
+      "message": "is the only use of this function in usb_pd_protocol?  if so, why is it being moved to common? Sorry if these are stupid questions, I am new to the PD.",
+      "parentUuid": "427a8197_7c2b5138",
+      "revId": "e43fb3a610825e1eb3a3f34f6a3f2e1de19c8d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
