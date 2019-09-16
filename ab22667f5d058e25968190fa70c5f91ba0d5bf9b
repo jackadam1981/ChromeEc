@@ -46,6 +46,30 @@
       "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f802458f_98e2a267",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-16T21:00:48Z",
+      "side": 1,
+      "message": "Bits 5/4/2 is 0x34.",
+      "parentUuid": "7a444407_b71599cd",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
