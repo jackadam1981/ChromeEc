@@ -264,6 +264,9 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 
 static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
 {
+	if (cable[port].is_valid_data)
+		return;
+
 	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {
 		cable[port].type = PD_IDH_PTYPE(payload[VDO_INDEX_IDH]);
 		if (is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1))
@@ -280,6 +283,7 @@ static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
 		cable[port].rev = PD_REV30;
 		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
 	}
+	cable[port].is_valid_data = 1;
 }
 
 static int dfp_discover_ident(int port, uint32_t *payload)
@@ -726,9 +730,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			/* Received a SOP Discover Ident Message */
 			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
 				dfp_consume_identity(port, cnt, payload);
-				rsize = dfp_discover_ident(port, payload);
 				/* Send SOP' Discover Ident message */
-				enable_transmit_sop_prime(port);
+				if (!cable[port].is_valid_data) {
+					rsize = dfp_discover_ident(port,
+								   payload);
+					enable_transmit_sop_prime(port);
+				}
 			} else {
 				dfp_consume_identity(port, cnt, payload);
 				rsize = dfp_discover_svids(port, payload);
@@ -820,8 +827,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			rsize = 0;
 		}
 	} else if (cmd_type == CMDT_RSP_NAK) {
-		/* nothing to do */
 		rsize = 0;
+		/* Send SOP' Discover Ident message, if not already received. */
+		if (!cable[port].is_valid_data) {
+			rsize = dfp_discover_ident(port, payload);
+			enable_transmit_sop_prime(port);
+		}
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 	} else {
 		CPRINTF("ERR:CMDT:%d\n", cmd);
