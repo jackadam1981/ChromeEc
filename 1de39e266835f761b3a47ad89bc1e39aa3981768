@@ -16,6 +16,24 @@
       "revId": "1de39e266835f761b3a47ad89bc1e39aa3981768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ee2ea0_f1b9b27d",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 31
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-09-16T07:38:15Z",
+      "side": 1,
+      "message": "I guess it should be fine:\n1. the object files are finally compiled into one single executable\n  - e.g. we cannot have a.o with -fsingle-precision but b.o with -fdouble-precision\n2. most EC code don\u0027t use floating (thus, the flag should be ignored)",
+      "parentUuid": "5e03c293_8284a0a4",
+      "revId": "1de39e266835f761b3a47ad89bc1e39aa3981768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
