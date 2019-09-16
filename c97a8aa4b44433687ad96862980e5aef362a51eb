@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fd8605e_67234fd2",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:22:13Z",
+      "side": 1,
+      "message": "that cast isn\u0027t really needed is it?",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "c97a8aa4b44433687ad96862980e5aef362a51eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ad0d85_b1d81531",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:22:13Z",
+      "side": 1,
+      "message": "() not needed",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "c97a8aa4b44433687ad96862980e5aef362a51eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7761f22b_6143d830",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:22:13Z",
+      "side": 1,
+      "message": "() not really needed",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "c97a8aa4b44433687ad96862980e5aef362a51eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c9d2ee_6b3ae1a0",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:22:13Z",
+      "side": 1,
+      "message": "pointer",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "c97a8aa4b44433687ad96862980e5aef362a51eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
