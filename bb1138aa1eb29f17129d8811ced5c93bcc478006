@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ca7f333_50878bb1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:47:06Z",
+      "side": 1,
+      "message": "What message do you assume this NAK is for or we don\u0027t care? Can you comment on that?",
+      "range": {
+        "startLine": 831,
+        "startChar": 3,
+        "endLine": 831,
+        "endChar": 66
+      },
+      "revId": "bb1138aa1eb29f17129d8811ced5c93bcc478006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46704c3_8f898d16",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:47:06Z",
+      "side": 1,
+      "message": "Could you revise this code using is_valid_data so that we can distinguish \u0027not emark cable\u0027 and \u0027unidentified\u0027?",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 2
+      },
+      "revId": "bb1138aa1eb29f17129d8811ced5c93bcc478006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d1324b_e3d1f910",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-16T23:47:06Z",
+      "side": 1,
+      "message": "nit: It\u0027s more like \u0027is_identified\u0027?",
+      "range": {
+        "startLine": 712,
+        "startChar": 9,
+        "endLine": 712,
+        "endChar": 22
+      },
+      "revId": "bb1138aa1eb29f17129d8811ced5c93bcc478006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
