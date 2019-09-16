@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79310e79_063053ae",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:49:49Z",
+      "side": 1,
+      "message": "Please don\u0027t. Use / 2 * 4 / 5. Or just * 2 / 5\n\nAlso, please explain why you are doing this.",
+      "range": {
+        "startLine": 399,
+        "startChar": 51,
+        "endLine": 399,
+        "endChar": 57
+      },
+      "revId": "d1441a7da83000bbd0fb17e346ccfd09130bb30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8308b1e5_b084517b",
+        "filename": "include/hotword_dsp_api.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-16T00:49:49Z",
+      "side": 1,
+      "message": "Can we still use C-style comments here?",
+      "revId": "d1441a7da83000bbd0fb17e346ccfd09130bb30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
