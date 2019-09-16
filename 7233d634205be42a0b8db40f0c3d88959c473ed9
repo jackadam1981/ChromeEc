@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8756d8b_0dd124cf",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-16T23:14:54Z",
+      "side": 1,
+      "message": "This is shadowing the other |data| variable.\n\nSorry, I just noticed that I had an outstanding change for this.",
+      "range": {
+        "startLine": 480,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 28
+      },
+      "revId": "7233d634205be42a0b8db40f0c3d88959c473ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
