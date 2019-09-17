@@ -511,6 +511,21 @@ void tc_prs_snk_src_assert_rp(int port)
 	}
 }
 
+void tc_fr_swap_complete(int port)
+{
+	TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+}
+
+void tc_frs_snk_src_assert_rp(int port)
+{
+	/* Must be in Attached.SNK when this function is called */
+	if (get_state_tc(port) == TC_ATTACHED_SNK) {
+		/* Transition to Attached.SRC to assert Rp */
+		TC_SET_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
+	}
+}
+
 void tc_hard_reset(int port)
 {
 	TC_SET_FLAG(port, TC_FLAGS_HARD_RESET);
