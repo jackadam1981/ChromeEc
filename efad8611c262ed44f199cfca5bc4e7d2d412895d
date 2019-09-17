@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91708a67_51fdcf43",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-17T02:07:25Z",
+      "side": 1,
+      "message": "nit: Use CPRINTS and drop \"\\n\"",
+      "range": {
+        "startLine": 1130,
+        "startChar": 0,
+        "endLine": 1130,
+        "endChar": 47
+      },
+      "revId": "efad8611c262ed44f199cfca5bc4e7d2d412895d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b9f7d3_9e56603d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-17T02:07:25Z",
+      "side": 1,
+      "message": "nit:\n if (IS_ENABLED(CONFIG_CHARGER_MT6370))\n     mt6370_irt_handler();",
+      "range": {
+        "startLine": 1199,
+        "startChar": 0,
+        "endLine": 1202,
+        "endChar": 0
+      },
+      "revId": "efad8611c262ed44f199cfca5bc4e7d2d412895d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
