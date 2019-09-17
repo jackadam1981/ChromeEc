@@ -82,6 +82,7 @@ static int bbram_is_byte_access(enum bbram_data_index index)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		|| index == BBRM_DATA_INDEX_PD0
 		|| index == BBRM_DATA_INDEX_PD1
+		|| index == BBRM_DATA_INDEX_PD2
 #endif
 		|| index == BBRM_DATA_INDEX_PANIC_FLAGS
 	;
