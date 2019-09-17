@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97d1266c_8b7ad2b8",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-17T19:38:33Z",
+      "side": 1,
+      "message": "Please note that this shall be called on USB initialization by USB resume:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/chip/g/usb.c?rcl\u003d4284bf8c73aa210cb997d39a14851c5505a9c90b\u0026l\u003d1379\n\nThis patch will ignore the restored DPID values by usb_restore_suspended_state():\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/chip/g/usb.c?rcl\u003d4284bf8c73aa210cb997d39a14851c5505a9c90b\u0026l\u003d1357\n\nI think, this DPID reset should be done either in usb_reset() or in handle_setup_with_no_data_stage().\n- usb_reset(): https://cs.corp.google.com/chromeos_public/src/platform/ec/chip/g/usb.c?rcl\u003d4284bf8c73aa210cb997d39a14851c5505a9c90b\u0026l\u003d1104\n- handle_setup_with_no_data_stage(): https://cs.corp.google.com/chromeos_public/src/platform/ec/chip/g/usb.c?rcl\u003d4284bf8c73aa210cb997d39a14851c5505a9c90b\u0026l\u003d701",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 41
+      },
+      "revId": "1d723080470ff07348e8b449bac3aa60a1e4a42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
