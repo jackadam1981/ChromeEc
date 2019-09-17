@@ -94,6 +94,20 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 	}
 }
 
+void pd_enable_fast_swap(int port, int flags)
+{
+	/*
+	 * If partner is dual-role power and dualrole toggling is on, consider
+	 * if a power swap is necessary.
+	 */
+	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
+	     pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
+		/* Enable TCPC and PPC fast role swap to SRC */
+		tcpm_set_fast_swap(port, PD_ROLE_SINK, 1);
+		pd_snk_fast_swap_to_src_enable(port, 1);
+	}
+}
+
 int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap if pp5000_A rail is enabled */
@@ -169,6 +183,11 @@ int pd_snk_is_vbus_provided(int port)
 {
 	return ppc_is_vbus_present(port);
 }
+
+int pd_new_src_is_frs_vbus_provide(int port)
+{
+	return ppc_is_frs_vbus_provide(port);
+}
 #endif
 
 void typec_set_source_current_limit(int port, int rp)
@@ -181,6 +200,10 @@ int board_vbus_source_enabled(int port)
 	return ppc_is_sourcing_vbus(port);
 }
 
+int pd_snk_fast_swap_to_src_enable(int port, int enable)
+{
+	return ppc_fast_swap_to_src_enable(port, enable);
+}
 
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
