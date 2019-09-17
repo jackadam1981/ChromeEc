@@ -16,6 +16,24 @@
       "revId": "3a1c3ecfa9b473e52e26da3748898bd7e8227268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e36fba_3219d20f",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-17T16:48:01Z",
+      "side": 1,
+      "message": "Thanks (as always) for your input! I\u0027m looking into this... these parameters are modified within the i2c_slave_(read|write) routines so they would have to be pointers to ints.  I am also trying to evaluate if these variables are persistent across interrupt handler calls (perhaps across calls due to a fifo threshold.",
+      "parentUuid": "84045dd8_ed2ccc3a",
+      "revId": "3a1c3ecfa9b473e52e26da3748898bd7e8227268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
