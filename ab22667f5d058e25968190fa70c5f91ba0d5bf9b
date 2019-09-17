@@ -118,6 +118,30 @@
       "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee551eed_54ccc3a4",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-09-17T02:09:54Z",
+      "side": 1,
+      "message": "Just a thought. We can potentially avoid manual errors here if we switch to using BIT(5) | BIT(4) | BIT(2) here instead of the hex value. It will make the line longer, but explicitly calls out the bits that the author wants to set.\n\nNot for this change, but something that might be helpful to do at some point.",
+      "parentUuid": "d177cb98_9ee1ce91",
+      "range": {
+        "startLine": 116,
+        "startChar": 22,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "ab22667f5d058e25968190fa70c5f91ba0d5bf9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
