@@ -54,6 +54,9 @@
 #define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
 #define GPIO_WP_L			GPIO_EC_WP_L
 
+/* USB ID */
+#define CONFIG_USB_PID 0x5022
+
 #ifndef __ASSEMBLER__
 
 enum battery_type {
