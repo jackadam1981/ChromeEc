@@ -192,6 +192,22 @@ void tc_prs_snk_src_assert_rp(int port);
 void tc_pr_swap_complete(int port);
 
 /**
+ * Informs the Type-C State Machine that a Fast Role Swap is complete.
+ * This function is called from the Policy Engine.
+ *
+ * @param port USB_C port number
+ */
+void tc_fr_swap_complete(int port);
+
+/**
+ * Initiates a Fast Role Swap from Attached.SNK to Attached.SRC. This function
+ * has no effect if the current Type-C state is not Attached.SNK.
+ *
+ * @param port USB_C port number
+ */
+void tc_frs_snk_src_assert_rp(int port);
+
+/**
  * Informs the Type-C State Machine that a Discover Identity is in progress.
  * This function is called from the Policy Engine.
  *
