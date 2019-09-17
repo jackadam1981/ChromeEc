@@ -22,6 +22,30 @@
       "revId": "034cdc988249335943514706bb069be1888053fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2bae46e_06f8e0f7",
+        "filename": "board/helios/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-09-17T16:26:16Z",
+      "side": 1,
+      "message": "We should change the sensor names to better reflect the reality.",
+      "parentUuid": "82638bff_ee5fa9fb",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 326,
+        "endChar": 13
+      },
+      "revId": "034cdc988249335943514706bb069be1888053fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
