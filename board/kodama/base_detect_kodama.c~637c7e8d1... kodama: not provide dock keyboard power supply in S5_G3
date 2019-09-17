@@ -4,7 +4,6 @@
  */
 
 #include "adc.h"
-#include "base_state.h"
 #include "board.h"
 #include "charge_manager.h"
 #include "console.h"
@@ -31,10 +30,7 @@ enum kukui_pogo_device_type {
 	DEVICE_TYPE_ERROR = -2,
 	DEVICE_TYPE_UNKNOWN = -1,
 	DEVICE_TYPE_DETACHED = 0,
-#ifdef VARIANT_KUKUI_POGO_DOCK
-	DEVICE_TYPE_DOCK,
-#endif
-	DEVICE_TYPE_KEYBOARD,
+	DEVICE_TYPE_KEYBOARD = 1,
 	DEVICE_TYPE_COUNT,
 };
 
@@ -42,9 +38,6 @@ struct {
 	int mv_low, mv_high;
 } static const pogo_detect_table[] = {
 	[DEVICE_TYPE_DETACHED] = {2700, 3500}, /* 10K, NC, around 3.3V */
-#ifdef VARIANT_KUKUI_POGO_DOCK
-	[DEVICE_TYPE_DOCK] = {141, 173},       /* 10K, 0.5K ohm */
-#endif
 	[DEVICE_TYPE_KEYBOARD] = {270, 400},   /* 10K, 1K ohm */
 };
 BUILD_ASSERT(ARRAY_SIZE(pogo_detect_table) == DEVICE_TYPE_COUNT);
@@ -67,26 +60,6 @@ static enum kukui_pogo_device_type get_device_type(int mv)
 	return DEVICE_TYPE_UNKNOWN;
 }
 
-static void enable_charge(int enable)
-{
-#ifdef VARIANT_KUKUI_POGO_DOCK
-	if (enable) {
-		struct charge_port_info info = {
-			.voltage = 5000, .current = 1500};
-		/*
-		 * Set supplier type to PD to have same priority as type c
-		 * port.
-		 */
-		charge_manager_update_charge(
-			CHARGE_SUPPLIER_DEDICATED, CHARGE_PORT_POGO, &info);
-	} else {
-		charge_manager_update_charge(
-			CHARGE_SUPPLIER_DEDICATED, CHARGE_PORT_POGO, NULL);
-	}
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
-#endif
-}
-
 static void enable_power_supply(int enable)
 {
 	gpio_set_level(GPIO_EN_PP3300_POGO, enable);
@@ -95,46 +68,11 @@ static void enable_power_supply(int enable)
 static void base_detect_deferred(void);
 DECLARE_DEFERRED(base_detect_deferred);
 
-static void base_set_device_type(enum kukui_pogo_device_type device_type)
-{
-	switch (device_type) {
-	case DEVICE_TYPE_ERROR:
-	case DEVICE_TYPE_UNKNOWN:
-		hook_call_deferred(&base_detect_deferred_data,
-				BASE_DETECT_RETRY_US);
-		break;
-
-	case DEVICE_TYPE_DETACHED:
-		enable_power_supply(0);
-		enable_charge(0);
-		base_set_state(0);
-		break;
-
-#ifdef VARIANT_KUKUI_POGO_DOCK
-	case DEVICE_TYPE_DOCK:
-		enable_power_supply(0);
-		enable_charge(1);
-		base_set_state(1);
-		break;
-#endif
-
-	case DEVICE_TYPE_KEYBOARD:
-		enable_charge(0);
-		enable_power_supply(1);
-		base_set_state(1);
-		break;
-
-	case DEVICE_TYPE_COUNT:
-		/* should not happen */
-		break;
-	}
-}
-
 static void base_detect_deferred(void)
 {
 	uint64_t time_now = get_time().val;
 	int mv;
-	enum kukui_pogo_device_type device_type;
+	int device_type;
 
 	if (base_detect_debounce_time > time_now) {
 		hook_call_deferred(&base_detect_deferred_data,
@@ -156,7 +94,25 @@ static void base_detect_deferred(void)
 	device_type = get_device_type(mv);
 	CPRINTS("POGO: adc=%d, device_type=%d", mv, device_type);
 
-	base_set_device_type(device_type);
+	switch (device_type) {
+	case DEVICE_TYPE_ERROR:
+	case DEVICE_TYPE_UNKNOWN:
+		hook_call_deferred(&base_detect_deferred_data,
+				BASE_DETECT_RETRY_US);
+		break;
+
+	case DEVICE_TYPE_DETACHED:
+		enable_power_supply(0);
+		break;
+
+	case DEVICE_TYPE_KEYBOARD:
+		enable_power_supply(1);
+		break;
+
+	case DEVICE_TYPE_COUNT:
+		/* should not happen */
+		break;
+	}
 }
 
 void pogo_adc_interrupt(enum gpio_signal signal)
@@ -190,31 +146,3 @@ static void pogo_chipset_shutdown(void)
 	enable_power_supply(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pogo_chipset_shutdown, HOOK_PRIO_DEFAULT);
-
-void base_force_state(int state)
-{
-	if (state != 1 && state != 0) {
-		gpio_enable_interrupt(GPIO_POGO_ADC_INT_L);
-		hook_call_deferred(&base_detect_deferred_data, 0);
-		CPRINTS("BD forced reset");
-		return;
-	}
-
-	gpio_disable_interrupt(GPIO_POGO_ADC_INT_L);
-	base_set_device_type(state == 1 ? DEVICE_TYPE_KEYBOARD :
-					  DEVICE_TYPE_DETACHED);
-	CPRINTS("BD forced %sconnected", state == 1 ? "" : "dis");
-}
-
-#ifdef VARIANT_KUKUI_POGO_DOCK
-static void board_pogo_charge_init(void)
-{
-	int i;
-
-	/* Initialize all charge suppliers to 0 */
-	for (i = 0; i < CHARGE_SUPPLIER_COUNT; i++)
-		charge_manager_update_charge(i, CHARGE_PORT_POGO, NULL);
-}
-DECLARE_HOOK(HOOK_INIT, board_pogo_charge_init,
-	     HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
-#endif
