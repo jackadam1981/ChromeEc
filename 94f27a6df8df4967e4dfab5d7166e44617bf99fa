@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "1dce1ac3_ff9ff5f5",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b9e35ed_14efbf78",
+      "range": {
+        "startLine": 164,
+        "startChar": 66,
+        "endLine": 164,
+        "endChar": 68
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458a3774_f2b44097",
         "filename": "driver/touchpad_gt7288.c",
         "patchSetId": 1

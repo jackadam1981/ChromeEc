@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61cf6ff6_36c9ff3c",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "These are nice. Do you mind moving them to include/common.h?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 64
+      },
+      "revId": "2ceb1e5f223e91a06eb3cac4a272cc1860ffb106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7e8923_0b924c4b",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "nit^2: I would name it something like RETURN_IF(fn) so that the readers would know this macro contains \u0027return\u0027.",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "2ceb1e5f223e91a06eb3cac4a272cc1860ffb106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e33411_a1d0900b",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "How about naming it gt7288_read_desc so that gt7288_read can be used for i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, GT7288_SLAVE_ADDRESS,\t\t\t     NULL, 0, data, sizeof(data))?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "2ceb1e5f223e91a06eb3cac4a272cc1860ffb106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b2b209_b9d1f828",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "Can you file a bug?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "2ceb1e5f223e91a06eb3cac4a272cc1860ffb106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65a5c46_c023ec6d",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "Can you add a subroutine (e.g. gt7288_read)?",
+      "range": {
+        "startLine": 100,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "2ceb1e5f223e91a06eb3cac4a272cc1860ffb106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4018c130_2d245934",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-17T16:13:00Z",
+      "side": 1,
+      "message": "nit: ccprintf is better because if CC_TOUCHPAD is off, these won\u0027t be printed.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "2ceb1e5f223e91a06eb3cac4a272cc1860ffb106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
