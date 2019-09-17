@@ -22,6 +22,30 @@
       "revId": "f566cf23ba1fce38c70f2d58aa571bfec9d59750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58646efc_995472f8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-09-17T11:31:44Z",
+      "side": 1,
+      "message": "Done.\n\nSince there\u0027s only 5 files affected, I was trying to not abuse voltage_min. But I\u0027m also ok with using voltage_min as a fallback.",
+      "parentUuid": "0a90d371_fe4a713e",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 53
+      },
+      "revId": "f566cf23ba1fce38c70f2d58aa571bfec9d59750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
