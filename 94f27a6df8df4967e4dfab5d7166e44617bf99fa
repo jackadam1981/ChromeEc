@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbb14dc4_c9668e38",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-17T01:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba701f1_9d7a329e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "964fa375_5c630a72",
         "filename": "driver/touchpad_gt7288.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12408a1_99d9f97a",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-17T01:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "964fa375_5c630a72",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98f25d7a_e71ab8ba",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-17T01:06:25Z",
+      "side": 1,
+      "message": "Good point, that\u0027s nicer.",
+      "parentUuid": "7669c25d_cb1dc766",
+      "range": {
+        "startLine": 134,
+        "startChar": 13,
+        "endLine": 135,
+        "endChar": 46
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9fb6729_4c9d1178",
         "filename": "driver/touchpad_gt7288.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9e35ed_14efbf78",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-17T01:06:25Z",
+      "side": 1,
+      "message": "Yes, but this is required by the style guide for \"user\"-visible strings: https://www.kernel.org/doc/html/latest/process/coding-style.html#breaking-long-lines-and-strings",
+      "parentUuid": "f9fb6729_4c9d1178",
+      "range": {
+        "startLine": 164,
+        "startChar": 66,
+        "endLine": 164,
+        "endChar": 68
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8c80cb99_33dfdbfd",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-17T01:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458a3774_f2b44097",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 19
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20ec5ddf_34f35678",
         "filename": "driver/touchpad_gt7288.h",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c60092_5b4c7f0c",
+        "filename": "driver/touchpad_gt7288.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-17T01:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ec5ddf_34f35678",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "94f27a6df8df4967e4dfab5d7166e44617bf99fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
