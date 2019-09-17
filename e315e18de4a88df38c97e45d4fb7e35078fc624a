@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a60d5991_75500413",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-17T22:48:53Z",
+      "side": 1,
+      "message": "nit: nothing on the first or last line in multi-line comments.",
+      "revId": "e315e18de4a88df38c97e45d4fb7e35078fc624a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47082f81_beab1c8e",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-17T22:48:53Z",
+      "side": 1,
+      "message": "nit: nothing on the first or last line in multi-line comments.",
+      "revId": "e315e18de4a88df38c97e45d4fb7e35078fc624a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d3f400_b76d2bf9",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-17T22:48:53Z",
+      "side": 1,
+      "message": "could you also fix this one while we\u0027re here?",
+      "revId": "e315e18de4a88df38c97e45d4fb7e35078fc624a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac14a30_c2fe7682",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-17T22:48:53Z",
+      "side": 1,
+      "message": "\"EC Software Sync\"",
+      "range": {
+        "startLine": 229,
+        "startChar": 48,
+        "endLine": 229,
+        "endChar": 56
+      },
+      "revId": "e315e18de4a88df38c97e45d4fb7e35078fc624a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc57137c_14642093",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4127,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-17T22:48:53Z",
+      "side": 1,
+      "message": "Since you\u0027re adding a new default option, you should make sure to set it appropriately for all boards. Alternatively, how do you feel about making a CONFIG_* option for chromeboxes?",
+      "revId": "e315e18de4a88df38c97e45d4fb7e35078fc624a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
