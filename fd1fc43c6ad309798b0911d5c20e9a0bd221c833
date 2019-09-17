@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd7d5aaf_9b1927c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-17T07:05:28Z",
+      "side": 1,
+      "message": "common here means: chip/stm32/",
+      "parentUuid": "d6ed2376_edb0e8f2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "fd1fc43c6ad309798b0911d5c20e9a0bd221c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33a20f86_d8f011f2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
