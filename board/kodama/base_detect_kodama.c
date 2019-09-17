@@ -6,6 +6,7 @@
 #include "adc.h"
 #include "board.h"
 #include "charge_manager.h"
+#include "chipset.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -74,6 +75,9 @@ static void base_detect_deferred(void)
 	int mv;
 	int device_type;
 
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+
 	if (base_detect_debounce_time > time_now) {
 		hook_call_deferred(&base_detect_deferred_data,
 				   base_detect_debounce_time - time_now);
@@ -127,8 +131,16 @@ void pogo_adc_interrupt(enum gpio_signal signal)
 	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
 }
 
-static void base_init(void)
+/* Called on AP S5 -> S3 transition */
+static void pogo_chipset_startup(void)
 {
 	hook_call_deferred(&base_detect_deferred_data, 0);
 }
-DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pogo_chipset_startup, HOOK_PRIO_INIT_ADC);
+
+/* Called on AP S3 -> S5 transition */
+static void pogo_chipset_shutdown(void)
+{
+	enable_power_supply(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pogo_chipset_shutdown, HOOK_PRIO_INIT_ADC);
