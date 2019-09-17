@@ -131,6 +131,11 @@ enum usb_pe_state {
 	PE_PRS_SNK_SRC_ASSERT_RP,
 	PE_PRS_SNK_SRC_SOURCE_ON,
 	PE_PRS_SNK_SRC_SEND_SWAP,
+	PE_FRS_SNK_SRC_START_AMS,
+	PE_FRS_SNK_SRC_SEND_SWAP,
+	PE_FRS_SNK_SRC_TRANSITION_TO_OFF,
+	PE_FRS_SNK_SRC_ASSERT_RP,
+	PE_FRS_SNK_SRC_SOURCE_ON,
 	PE_VCS_EVALUATE_SWAP,
 	PE_VCS_SEND_SWAP,
 	PE_VCS_WAIT_FOR_VCONN_SWAP,
@@ -193,6 +198,11 @@ static const char * const pe_state_names[] = {
 	[PE_PRS_SNK_SRC_ASSERT_RP] = "PE_SNK_SRC_Assert_Rp",
 	[PE_PRS_SNK_SRC_SOURCE_ON] = "PE_SNK_SRC_Source_On",
 	[PE_PRS_SNK_SRC_SEND_SWAP] = "PE_SNK_SRC_Send_Swap",
+	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
+	[PE_FRS_SNK_SRC_SEND_SWAP] = "PE_FRS_SNK_SRC_Send_Swap",
+	[PE_FRS_SNK_SRC_TRANSITION_TO_OFF] = "PE_FRS_SNK_SRC_Transition_To_Off",
+	[PE_FRS_SNK_SRC_ASSERT_RP] = "PE_FRS_SNK_SRC_Assert_Rp",
+	[PE_FRS_SNK_SRC_SOURCE_ON] = "PE_FRS_SNK_SRC_Source_On",
 	[PE_VCS_EVALUATE_SWAP] = "PE_VCS_Evaluate_Swap",
 	[PE_VCS_SEND_SWAP] = "PE_VCS_Send_Swap",
 	[PE_VCS_WAIT_FOR_VCONN_SWAP] = "PE_VCS_Wait_For_Vconn_Swap",
@@ -2897,11 +2907,16 @@ static void pe_prs_snk_src_evaluate_swap_run(int port)
 
 /**
  * PE_PRS_SNK_SRC_Transition_To_Off
+ * PE_FRS_SNK_SRC_Transition_To_Off
  */
 static void pe_prs_snk_src_transition_to_off_entry(int port)
 {
+	const int is_prs = get_state_pe(port)
+			   == PE_PRS_SNK_SRC_TRANSITION_TO_OFF;
+
 	print_current_state(port);
-	tc_snk_power_off(port);
+	if (is_prs)
+		tc_snk_power_off(port);
 	pe[port].ps_source_timer = get_time().val + PD_T_PS_SOURCE_OFF;
 }
 
@@ -2915,36 +2930,47 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 	 * Transition to ErrorRecovery state when:
 	 *   1) The PSSourceOffTimer times out.
 	 */
-	if (get_time().val > pe[port].ps_source_timer) {
+	if (get_time().val > pe[port].ps_source_timer)
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
-		return;
-	}
 
 	/*
-	 * Transition to PE_PRS_SNK_SRC_Assert_Rp when:
+	 * PRS: Transition to PE_PRS_SNK_SRC_Assert_Rp when:
+	 * FRS: Transition to PE_FRS_SNK_SRC_Assert_Rp when:
 	 *   1) An PS_RDY Message is received.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
 		ext = PD_HEADER_EXT(emsg[port].header);
 
-		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY))
-			set_state_pe(port, PE_PRS_SNK_SRC_ASSERT_RP);
+		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
+			const int is_prs = get_state_pe(port)
+					   == PE_PRS_SNK_SRC_TRANSITION_TO_OFF;
+
+			/*
+			 * FRP: We are always ready to drive vSafe5v, so just
+			 * skip PE_FRS_SNK_SRC_Vbus_Applied and go direct to
+			 * PE_FRS_SNK_SRC_Assert_Rp
+			 */
+			set_state_pe(port,
+				is_prs ? PE_PRS_SNK_SRC_ASSERT_RP
+				       : PE_FRS_SNK_SRC_ASSERT_RP);
+		}
 	}
 }
 
 /**
  * PE_PRS_SNK_SRC_Assert_Rp
+ * PE_FRS_SNK_SRC_Assert_Rp
  */
 static void pe_prs_snk_src_assert_rp_entry(int port)
 {
 	print_current_state(port);
 
 	/*
-	 * Tell TypeC to Power Role Swap (PRS) from
+	 * Tell TypeC to Power/Fast Role Swap (PRS/FRS) from
 	 * Attached.SNK to Attached.SRC
 	 */
 	tc_prs_snk_src_assert_rp(port);
@@ -2954,14 +2980,22 @@ static void pe_prs_snk_src_assert_rp_run(int port)
 {
 	/* Wait until TypeC is in the Attached.SRC state */
 	if (tc_is_attached_src(port)) {
-		/* Contract is invalid now */
-		PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
-		set_state_pe(port, PE_PRS_SNK_SRC_SOURCE_ON);
+		const int is_prs = get_state_pe(port)
+				   == PE_PRS_SNK_SRC_ASSERT_RP;
+
+		if (is_prs) {
+			/* Contract is invalid now */
+			PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+			set_state_pe(port, PE_PRS_SNK_SRC_SOURCE_ON);
+		} else {
+			set_state_pe(port, PE_FRS_SNK_SRC_SOURCE_ON);
+		}
 	}
 }
 
 /**
  * PE_PRS_SNK_SRC_Source_On
+ * PE_FRS_SNK_SRC_Source_On
  */
 static void pe_prs_snk_src_source_on_entry(int port)
 {
@@ -2987,20 +3021,18 @@ static void pe_prs_snk_src_source_on_run(int port)
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
 		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
 		pe[port].ps_source_timer = 0;
-		return;
 	}
 
 	/*
 	 * Transition to ErrorRecovery state when:
 	 *   1) On protocol error
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+	else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
-		return;
 	}
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	else if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Run swap source timer on entry to pe_src_startup */
@@ -3012,13 +3044,27 @@ static void pe_prs_snk_src_source_on_run(int port)
 
 /**
  * PE_PRS_SNK_SRC_Send_Swap
+ * PE_FRS_SNK_SRC_Send_Swap
  */
 static void pe_prs_snk_src_send_swap_entry(int port)
 {
+	const int is_prs = get_state_pe(port)
+			   == PE_PRS_SNK_SRC_SEND_SWAP;
+
 	print_current_state(port);
 
-	/* Request the Protocol Layer to send a PR_Swap Message. */
-	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PR_SWAP);
+	/*
+	 * PRS_SNK_SRC_SEND_SWAP
+	 *     Request the Protocol Layer to send a PR_Swap Message.
+	 *
+	 * FRS_SNK_SRC_SEND_SWAP
+	 *     Hardware should have turned off sink power and started
+	 *     bringing Vbus to vSafe5.
+	 *     Request the Protocol Layer to send a FR_Swap Message.
+	 */
+	prl_send_ctrl_msg(port,
+		TCPC_TX_SOP,
+		is_prs ? PD_CTRL_PR_SWAP : PD_CTRL_FR_SWAP);
 
 	/* Start the SenderResponseTimer */
 	pe[port].sender_response_timer =
@@ -3027,28 +3073,34 @@ static void pe_prs_snk_src_send_swap_entry(int port)
 
 static void pe_prs_snk_src_send_swap_run(int port)
 {
+	const int is_prs = get_state_pe(port)
+			   == PE_PRS_SNK_SRC_SEND_SWAP;
+
 	int type;
 	int cnt;
 	int ext;
 
 	/*
-	 * Transition to PE_SNK_Ready state when:
+	 * PRS: Transition to PE_SNK_Ready state when:
+	 * FRS: Transition to ErrorRecovery state when:
 	 *   1) The SenderResponseTimer times out.
 	 */
-	if (get_time().val > pe[port].sender_response_timer) {
-		set_state_pe(port, PE_SNK_READY);
-		return;
-	}
+	if (get_time().val > pe[port].sender_response_timer)
+		set_state_pe(port,
+			     is_prs ? PE_SNK_READY
+				    : PE_WAIT_FOR_ERROR_RECOVERY);
 
 	/*
-	 * Transition to PE_PRS_SNK_SRC_Transition_to_off when:
+	 * PRS: Transition to PE_PRS_SNK_SRC_Transition_to_off when:
+	 * FRS: Transition to PE_FRS_SNK_SRC_Transition_to_off when:
 	 *   1) An Accept Message is received.
 	 *
-	 * Transition to PE_SNK_Ready state when:
+	 * PRS: Transition to PE_SNK_Ready state when:
+	 * FRS: Transition to ErrorRecovery state when:
 	 *   1) A Reject Message is received.
 	 *   2) Or a Wait Message is received.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(emsg[port].header);
@@ -3058,10 +3110,15 @@ static void pe_prs_snk_src_send_swap_run(int port)
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT)
 				set_state_pe(port,
-					PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
+					is_prs
+					   ? PE_PRS_SNK_SRC_TRANSITION_TO_OFF
+					   : PE_FRS_SNK_SRC_TRANSITION_TO_OFF);
 			else if ((type == PD_CTRL_REJECT) ||
 						(type == PD_CTRL_WAIT))
-				set_state_pe(port, PE_SNK_READY);
+				set_state_pe(port,
+					is_prs
+					   ? PE_SNK_READY
+					   : PE_WAIT_FOR_ERROR_RECOVERY);
 		}
 	}
 }
@@ -3070,6 +3127,23 @@ static void pe_prs_snk_src_send_swap_exit(int port)
 {
 	/* Clear TX Complete Flag if set */
 	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+}
+
+/**
+ * PE_FRS_SNK_SRC_Start_AMS
+ */
+static void pe_frs_snk_src_start_ams_entry(int port)
+{
+	print_current_state(port);
+
+	/* Contract is invalid now */
+	PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+
+	/* Inform Protocol Layer this is start of AMS */
+	prl_start_ams(port);
+	tc_set_timeout(port, 2 * MSEC);
+
+	set_state_pe(port, PE_FRS_SNK_SRC_SEND_SWAP);
 }
 
 /**
@@ -4812,6 +4886,26 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_prs_snk_src_send_swap_entry,
 		.run   = pe_prs_snk_src_send_swap_run,
 		.exit  = pe_prs_snk_src_send_swap_exit,
+	},
+	[PE_FRS_SNK_SRC_START_AMS] = {
+		.entry = pe_frs_snk_src_start_ams_entry,
+	},
+	[PE_FRS_SNK_SRC_SEND_SWAP] = {
+		.entry = pe_prs_snk_src_send_swap_entry,
+		.run   = pe_prs_snk_src_send_swap_run,
+		.exit  = pe_prs_snk_src_send_swap_exit,
+	},
+	[PE_FRS_SNK_SRC_TRANSITION_TO_OFF] = {
+		.entry = pe_prs_snk_src_transition_to_off_entry,
+		.run   = pe_prs_snk_src_transition_to_off_run,
+	},
+	[PE_FRS_SNK_SRC_ASSERT_RP] = {
+		.entry = pe_prs_snk_src_assert_rp_entry,
+		.run   = pe_prs_snk_src_assert_rp_run,
+	},
+	[PE_FRS_SNK_SRC_SOURCE_ON] = {
+		.entry = pe_prs_snk_src_source_on_entry,
+		.run   = pe_prs_snk_src_source_on_run,
 	},
 	[PE_VCS_EVALUATE_SWAP] = {
 		.entry = pe_vcs_evaluate_swap_entry,
