@@ -102,6 +102,69 @@
       "revId": "63688612004472a15628a84752fb8a5712949b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdd4db0_877aabf4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2675,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T23:43:12Z",
+      "side": 1,
+      "message": "Just curious, why 5ms in particular?",
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d38e6a_88787bda",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T23:43:12Z",
+      "side": 1,
+      "message": "not you, but this seems like a misnomer.",
+      "range": {
+        "startLine": 3056,
+        "startChar": 2,
+        "endLine": 3056,
+        "endChar": 16
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e688687_c12021ef",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T23:43:12Z",
+      "side": 1,
+      "message": "This can all probably be in common code. common/usb_common.c",
+      "range": {
+        "startLine": 3016,
+        "startChar": 0,
+        "endLine": 3080,
+        "endChar": 76
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
