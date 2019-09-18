@@ -1,0 +1,48 @@
+
+source "driver/Kconfig.als"
+
+#
+
+config HAVE_THERMISTOR_NCP15WB
+	bool
+	select THERMISTOR
+	select THERMISTOR_NCP15WB
+
+config THERMISTOR
+	bool "Compile common code for thermistor support"
+
+# Support particular thermistors
+
+if THERMISTOR
+
+config THERMISTOR_NCP15WB
+	bool "NCP15WB thermistor"
+
+menu "STEINHART_HART"
+#	help
+#	  If defined, image includes lookup tables and helper functions that convert
+#	  thermistor ADC readings into degrees K based off of various circuit
+#	  configurations.
+
+config STEINHART_HART_3V0_22K6_47K_4050B
+	bool "3V0_22K6_47K_4050B"
+config STEINHART_HART_3V3_13K7_47K_4050B
+	bool "3V3_13K7_47K_4050B"
+config STEINHART_HART_3V3_51K1_47K_4050B
+	bool "3V3_51K1_47K_4050B"
+config STEINHART_HART_6V0_51K1_47K_4050B
+	bool "6V0_51K1_47K_4050B"
+config STEINHART_HART_3V3_30K9_47K_4050B
+	bool "3V3_30K9_47K_4050B"
+
+endmenu # STEINHART_HART
+
+endif # THERMISTOR
+
+config SYNC_QUEUE_SIZE
+	int "How many sync events to buffer before motion_sense gets a chance to run"
+	default 8
+	help
+	  How many sync events to buffer before motion_sense gets a chance to run.
+	  This is similar to sensor side fifos.
+	  Note: for vsync, anything above 2 is probably plenty.
