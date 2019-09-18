@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca5aa98a_2601f54b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2953,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:51:34Z",
+      "side": 1,
+      "message": "FRS?",
+      "range": {
+        "startLine": 2953,
+        "startChar": 6,
+        "endLine": 2953,
+        "endChar": 9
+      },
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a3be7e_14486efb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4893,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:51:34Z",
+      "side": 1,
+      "message": "I think it is worth a comment that the PRS functions are re-used for the FRS states.\nThe p/f difference is easy to miss, or might look like a mistake.",
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
