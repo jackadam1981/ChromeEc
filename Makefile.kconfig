@@ -9,7 +9,7 @@ DEFCONFIG := $(BDIR)/defconfig.out
 #DOTCONFIG ?= $(top)/.config
 #DOTCONFIG ?= $(out)/board.kconfig
 DOTCONFIG ?= $(BDIR)/board.kconfig
-export CONFIG_ := KCONFIG_
+####export CONFIG_ := KCONFIG_
 export KCONFIG_CONFIG = $(DOTCONFIG)
 export KCONFIG_AUTOCONFIG := $(out)/auto.conf
 #config.h
@@ -77,7 +77,8 @@ $(config:%=%.raw): include/config.h
 	$(call quiet,gen_conf_raw,GEN    )
 
 cmd_gen_kc_raw = \
-	sed -ne "/__yn$$/d;s,^\#define K\?\(CONFIG_.*\)$$,\1,p" $< | \
+	sed -ne "/__yn$$/d;/^\#define K\?CONFIG_HAVE_/d;\
+		s,^\#define K\?\(CONFIG_.*\)$$,\1,p" $< | \
 	sort -o $@
 
 $(KCONFIG_AUTOHEADER:%.h=%.raw): $(KCONFIG_AUTOHEADER)
