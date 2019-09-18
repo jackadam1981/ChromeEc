@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "03b14c82_766e73b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2915,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:17:13Z",
+      "side": 1,
+      "message": "Can we determine this once and store it in the pe[port] array to ensure we either go through the entire PRS or FRS flow without switching in between if we got our assumptions wrong",
+      "range": {
+        "startLine": 2914,
+        "startChar": 11,
+        "endLine": 2915,
+        "endChar": 41
+      },
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca5aa98a_2601f54b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -36,6 +59,24 @@
       "writtenOn": "2019-09-18T21:51:34Z",
       "side": 1,
       "message": "I think it is worth a comment that the PRS functions are re-used for the FRS states.\nThe p/f difference is easy to miss, or might look like a mistake.",
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23770808_efa2710e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4893,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:17:13Z",
+      "side": 1,
+      "message": "+1, even to put the name in /* comments */ to the right of the PRS definition so we can find it easily with grep",
+      "parentUuid": "d6a3be7e_14486efb",
       "revId": "19519569bf331409b98da7126b3649f283bfa96f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
