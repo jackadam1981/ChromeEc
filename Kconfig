@@ -16,6 +16,10 @@ source "chip/Kconfig"
 source "chip/*/Kconfig"
 endmenu
 
+menu "Devices setup"
+source "driver/Kconfig"
+endmenu
+
 source "common/Kconfig"
 source "power/Kconfig"
 source "util/Kconfig"
