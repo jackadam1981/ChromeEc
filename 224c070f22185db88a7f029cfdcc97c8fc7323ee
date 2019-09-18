@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e56bd914_d4b43489",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T20:30:31Z",
+      "side": 1,
+      "message": "nit: \u0027does not\u0027",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2993dd_6869619d",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T20:30:31Z",
+      "side": 1,
+      "message": "Maybe reword to: \"We cannot take any action when we can\u0027t communicate with the battery\".\n\nAlso, I guess you could move this before L90 as well.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 62
+      },
+      "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
