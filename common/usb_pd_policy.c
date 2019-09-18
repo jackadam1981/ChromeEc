@@ -171,12 +171,91 @@ int pd_charge_from_device(uint16_t vid, uint16_t pid)
 
 static struct pd_cable cable[CONFIG_USB_PD_PORT_COUNT];
 
+static void enable_transmit_sop_prime(int port)
+{
+	cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
+void disable_transmit_sop_prime(int port)
+{
+	cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
 static uint8_t is_transmit_msg_sop_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		return !!(cable[port].flags & CABLE_FLAGS_SOP_PRIME_ENABLE);
 
 	return 0;
+}
+
+void set_pd_cable_flag_cable_char(int port)
+{
+	cable[port].flags |= CABLE_FLAGS_CABLE_CHAR;
+}
+
+uint8_t get_pd_cable_flag_cable_char(int port)
+{
+	return !!(cable[port].flags & CABLE_FLAGS_CABLE_CHAR);
+}
+
+uint8_t is_transmit_sop_prime_implicit(int port, uint32_t pd_flags)
+{
+	if (!(pd_flags & PD_FLAGS_EXPLICIT_CONTRACT))
+		return is_transmit_msg_sop_prime(port);
+	return 0;
+}
+
+void transmit_sop_prime_implicit(int port, uint8_t pwr_role,
+				    uint32_t pd_flags)
+{
+	/*
+	 * Ref: USB PD 3.0 sec 2.5.4: When no Contract or an Implicit Contract
+	 * is in place only the Source port that is supplying VCONN is allowed
+	 * to send packets to a Cable Plug (SOP'/SOP'') and is allowed to
+	 * respond to packets from the Cable Plug (SOP'/SOP'') with a GoodCRC
+	 * in order to discover the Cable Plug’s characteristics
+	 *
+	 * Ref: USB PD 2.0 sec 2.4.4: When no Contract or an Implicit Contract
+	 * is in place the Source (either the DFP or UFP) can communicate with
+	 * a Cable Plug using SOP’ Packets in order to discover its
+	 * characteristics
+	 * Sec 3.6.11 : Before communicating with a Cable Plug a Port Should
+	 * ensure that it is the Vconn Source
+	 */
+	if (pd_flags & PD_FLAGS_VCONN_ON && pwr_role == PD_ROLE_SOURCE)
+		enable_transmit_sop_prime(port);
+
+}
+
+static int is_vdo_present(int cnt, int index)
+{
+	return cnt > index;
+}
+
+static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
+{
+	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {
+		cable[port].type = PD_IDH_PTYPE(payload[VDO_INDEX_IDH]);
+		if (is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1))
+			cable[port].attr.raw_value =
+					payload[VDO_INDEX_PTYPE_CABLE1];
+	}
+	/*
+	 * Ref USB PD Spec 3.0  Pg 145. For active cable there are two VDOs.
+	 * Hence storing the second VDO.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
+	    cable[port].type == IDH_PTYPE_ACABLE) {
+		cable[port].rev = PD_REV30;
+		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
+	}
+}
+
+void consume_cable_response(int port, int cnt, uint32_t *payload)
+{
+	dfp_consume_cable_response(port, cnt, payload);
 }
 
 uint8_t is_sop_prime_ready(int port, uint8_t data_role, uint32_t pd_flags)
@@ -216,21 +295,6 @@ uint8_t get_usb_pd_mux_cable_type(int port)
 
 static struct pd_policy pe[CONFIG_USB_PD_PORT_COUNT];
 
-static int is_vdo_present(int cnt, int index)
-{
-	return cnt > index;
-}
-
-static void enable_transmit_sop_prime(int port)
-{
-	cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
-}
-
-static void disable_transmit_sop_prime(int port)
-{
-	cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
-}
-
 void pd_dfp_pe_init(int port)
 {
 	memset(&pe[port], 0, sizeof(struct pd_policy));
@@ -259,26 +323,6 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 		break;
 	default:
 		break;
-	}
-}
-
-static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
-{
-	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {
-		cable[port].type = PD_IDH_PTYPE(payload[VDO_INDEX_IDH]);
-		if (is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1))
-			cable[port].attr.raw_value =
-					payload[VDO_INDEX_PTYPE_CABLE1];
-	}
-	/*
-	 * Ref USB PD Spec 3.0  Pg 145. For active cable there are two VDOs.
-	 * Hence storing the second VDO.
-	 */
-	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
-	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
-	    cable[port].type == IDH_PTYPE_ACABLE) {
-		cable[port].rev = PD_REV30;
-		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
 	}
 }
 
@@ -726,9 +770,18 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			/* Received a SOP Discover Ident Message */
 			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
 				dfp_consume_identity(port, cnt, payload);
-				rsize = dfp_discover_ident(payload);
-				/* Send SOP' Discover Ident message */
-				enable_transmit_sop_prime(port);
+				/*
+				 * Send SOP' Discover Ident message if
+				 * cable characteristics are not stored
+				 * during implicit contract
+				 */
+				if (!(cable[port].flags &
+					CABLE_FLAGS_CABLE_CHAR)) {
+					set_pd_cable_flag_cable_char(port);
+					enable_transmit_sop_prime(port);
+					rsize = dfp_discover_ident(payload);
+				} else
+					rsize = dfp_discover_svids(payload);
 			} else {
 				dfp_consume_identity(port, cnt, payload);
 				rsize = dfp_discover_svids(payload);
