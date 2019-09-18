@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf01f477_90de08e8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-18T16:53:06Z",
+      "side": 1,
+      "message": "I agree with you but tcpm_enable_drp_toggle is used in the tc_drp_auto_toggle state and generates \"error: implicit declaration of function ‘tcpm_enable_drp_toggle’\" at build time. This is because driver/tcpm/tcpm.h encloses tcpm_enable_drp_toggle inside the CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE macro.",
+      "parentUuid": "7053f5a7_7214fbd5",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03c2072_22760cc7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-28T20:38:08Z",
       "side": 1,
       "message": "We should drop this conditional compile. When would we really every use tc without pe?",
+      "range": {
+        "startLine": 363,
+        "startChar": 7,
+        "endLine": 363,
+        "endChar": 23
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ff8e72_4ec0b861",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-18T16:53:06Z",
+      "side": 1,
+      "message": "Someone could design a TypeC only charger but it\u0027s probably unlikely. I\u0027m open to removing the CONFIG_USB_PE_SM macros if no one objects.",
+      "parentUuid": "d03c2072_22760cc7",
       "range": {
         "startLine": 363,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7831f28c_71b4e3ba",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-18T16:53:06Z",
+      "side": 1,
+      "message": "See comment above.",
+      "parentUuid": "7efaa392_39e7c76f",
+      "range": {
+        "startLine": 1734,
+        "startChar": 7,
+        "endLine": 1734,
+        "endChar": 42
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cda820c6_9600ea1a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee4c699_b94c46a6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2599,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-18T16:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda820c6_9600ea1a",
+      "range": {
+        "startLine": 2599,
+        "startChar": 25,
+        "endLine": 2599,
+        "endChar": 51
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "37edaeda_a841b76a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3078,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-18T16:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da74a42b_9432813c",
+      "range": {
+        "startLine": 3078,
+        "startChar": 7,
+        "endLine": 3078,
+        "endChar": 28
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8089684_10c34942",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2860268_e4327ec5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3235,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-18T16:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8089684_10c34942",
+      "range": {
+        "startLine": 3231,
+        "startChar": 1,
+        "endLine": 3235,
+        "endChar": 3
+      },
+      "revId": "290a354e433bac38e53d29fc5cda2e26c9273139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
