@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "039b0c8f_c1168d44",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T22:30:25Z",
+      "side": 1,
+      "message": "whitespace change",
+      "range": {
+        "startLine": 1919,
+        "startChar": 3,
+        "endLine": 1919,
+        "endChar": 4
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c8a6787_deb71d0d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T22:30:25Z",
+      "side": 1,
+      "message": "This variable seems useless. By defining CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE, it must be supported. Also, I don\u0027t even see it being set here....",
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdf776c_29510422",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T22:30:25Z",
+      "side": 1,
+      "message": "Here too: we\u0027re checking if it\u0027s set, but it\u0027s guarded by the same config_* option.",
+      "range": {
+        "startLine": 1755,
+        "startChar": 1,
+        "endLine": 1755,
+        "endChar": 35
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3013570_93a0c7b5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T22:30:25Z",
+      "side": 1,
+      "message": "After arriving here from DrpAutoToggle, how do you ensure that we\u0027re not DRP toggling to Unattached.SRC? Or is the intention to just bounce between DrpAutoToggle and Uattached.SNK?",
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b239a45_82da9b99",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2658,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T22:30:25Z",
+      "side": 1,
+      "message": "For these cases where we may be remaining in Unattached.SNK or Unattached.SRC, I don\u0027t see a call to enter low power mode.",
+      "range": {
+        "startLine": 2650,
+        "startChar": 0,
+        "endLine": 2658,
+        "endChar": 8
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
