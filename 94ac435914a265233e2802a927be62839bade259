@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "ad2befc2_3c6eaa14",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-09-18T20:52:16Z",
+      "side": 1,
+      "message": "Might be useful to say that ectool bypasses a lot of the kernel driver functionality. ectool sends raw packets directly (through the help of a lower level portion of cros-ec).\nIt\u0027s good because it allows quick testing/prototyping of functionality, but it\u0027s bad since it doesn\u0027t confirm that everything\u0027s sane.",
+      "revId": "94ac435914a265233e2802a927be62839bade259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96fa542a_4246c571",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-09-18T20:52:16Z",
+      "side": 1,
+      "message": "See above. This is because the kernel driver exposes an interface that\u0027s really only used by ectool for the purposes of sending a raw packet.\n\nThe rest of the cros-ec drivers are there to act as adapters to whatever linux apis exist:\n* sensors go to iio\n* keyboard to input subsystem\n* type c stuff goes to extcon (to be changed in the future to the new upstream type c api)\n* i2c tunnel acts like an i2c controller",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "94ac435914a265233e2802a927be62839bade259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46764cb3_fa77fade",
         "filename": "docs/ap-ec-comm.md",
         "patchSetId": 2
@@ -42,6 +82,23 @@
         "endLine": 55,
         "endChar": 57
       },
+      "revId": "94ac435914a265233e2802a927be62839bade259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "303affb2_8d166385",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-09-18T20:52:16Z",
+      "side": 1,
+      "message": "When I was working on veyron ECs (2015) I deprecated version 2 from the stm32f0 spi transport layer. I doubt anything else newer than that uses it. Might be useful to point out if that\u0027s the case (though kernel driver will need to support it for quite a while longer).",
       "revId": "94ac435914a265233e2802a927be62839bade259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
