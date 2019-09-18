@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "748017c2_d6486beb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:24:27Z",
+      "side": 1,
+      "message": "nit: rely",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "724dcf8a91da7f9b31f591c23d9572bf47fbacaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4bb2671_3a592774",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:24:27Z",
+      "side": 1,
+      "message": "nit: just use emsg[port].header directly here, as above.",
+      "range": {
+        "startLine": 950,
+        "startChar": 42,
+        "endLine": 950,
+        "endChar": 48
+      },
+      "revId": "724dcf8a91da7f9b31f591c23d9572bf47fbacaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
