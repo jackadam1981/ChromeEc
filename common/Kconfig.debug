@@ -70,3 +70,15 @@ config DEBUG_PRINTF
 config DEBUG_STACK_OVERFLOW
 	bool "Check for stack overflows on every context switch"
 	default y
+
+config PORT80_HISTORY_LEN
+	int "Length of history buffer for port80 messages"
+	default 128
+
+config PORT80_PRINT_IN_INT
+	int "Print of port80 messages in interrupt context"
+	default 0
+	range 0 1
+	help
+	  Enable/Disable printing of port80 messages in interrupt context. By default,
+	  this is disabled.
