@@ -1,0 +1,82 @@
+
+config I2C
+	bool "Enable I2C support"
+
+if I2C
+
+config I2C_DEBUG
+	bool "I2C_DEBUG"
+
+config I2C_DEBUG_PASSTHRU
+	bool "I2C_DEBUG_PASSTHRU"
+
+config I2C_PASSTHROUGH
+	bool "I2C_PASSTHROUGH"
+
+config I2C_PASSTHRU_RESTRICTED
+	bool "I2C_PASSTHRU_RESTRICTED"
+
+config I2C_VIRTUAL_BATTERY
+	bool "I2C_VIRTUAL_BATTERY"
+
+config I2C_BUS_MAY_BE_UNPOWERED
+	bool "I2C_BUS_MAY_BE_UNPOWERED"
+	help
+	  Define this option if an i2c bus may be unpowered at a certain point during
+	  runtime.  An example could be, a sensor bus which is not needed in lower
+	  power states so the power rail for those sensors is completely disabled.
+
+	  If defined, your board must provide a board_is_i2c_port_powered() function.
+
+config I2C_XFER_LARGE_READ
+	bool "I2C_XFER_LARGE_READ"
+	help
+	  Enable i2c_xfer() for receiving request larger than
+	  CONFIG_I2C_CHIP_MAX_READ_SIZE.
+
+config I2C_XFER_BOARD_CALLBACK
+	bool "I2C_XFER_BOARD_CALLBACK"
+	help
+	  If defined, makes i2c_xfer callback into board-provided functions before the
+	  start and after the end of every I2C transaction. This can be used by boards
+	  to implement any I2C device specific quirks e.g. requiring minimum bus-free
+	  time between every I2C transaction with a device.
+
+config I2C_MASTER
+	bool "EC uses an I2C master interface"
+
+config I2C_SLAVE
+	bool "EC uses an I2C slave interface"
+
+config I2C_MULTI_PORT_CONTROLLER
+	bool "I2C multi-port controller"
+	help
+	  If CONFIG_I2C_MULTI_PORT_CONTROLLER is defined, a single on-chip I2C
+	  controller may have multiple I2C ports attached. Therefore, I2c operations
+	  must lock the controller (not just the port) to prevent hardware access
+	  conflicts.
+
+endif # I2C
+
+# TODO: these should depend on I2C
+#	(defined unconditionally in config.h).
+
+config I2C_CHIP_MAX_READ_SIZE
+	int "Conservative I2C reading size per single transaction"
+	default 255
+	help
+	  Conservative I2C reading size per single transaction. For example, register
+	  of stm32f0 and stm32l4 are limited to be 8 bits for this field.
+
+config I2C_NACK_RETRY_COUNT
+	int "Defines I2C operation retry count when slave nack'd(EC_ERROR_BUSY)"
+	default 0
+
+config I2C_EXTRA_PACKET_SIZE
+	int "I2C_EXTRA_PACKET_SIZE"
+	default 0
+	help
+	  Some chip supports two owned slave address. The second slave address is used
+	  for other purpose such as board specific i2c commands. This option can be
+	  set if user of the second slave address requires larger host packet buffer
+	  size.
