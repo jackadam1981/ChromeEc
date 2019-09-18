@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "54b435f0_d3d89992",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 35
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-18T21:18:51Z",
+      "side": 1,
+      "message": "typo: fingerprint",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "db40d042d90466d9da7099e65c5fd049f470a75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ace02b_8fb82062",
         "filename": "include/fpsensor_state.h",
         "patchSetId": 35
