@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abf94eed_c04b2f21",
+        "filename": "board/dratini/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-18T18:57:07Z",
+      "side": 1,
+      "message": "The double inline conditional expressions make this a little difficult to read.  Do you think this could be refactored into an expression to get the led (amber_c1 vs. amber_c0, etc.), and another one to set the state (bat_led_on vs. bat_led_off)?  I think it would be easier to read that way.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "cbfced75f637646eb858c350cdcae46f4bfc1caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
