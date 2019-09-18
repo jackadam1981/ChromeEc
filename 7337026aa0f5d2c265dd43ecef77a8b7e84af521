@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "264049bf_602f0884",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:37:31Z",
+      "side": 1,
+      "message": "nit: Have we print\n\"Unexpected WHO_AM_I value (0x%x). Expected 0x%x\"",
+      "range": {
+        "startLine": 720,
+        "startChar": 45,
+        "endLine": 720,
+        "endChar": 47
+      },
+      "revId": "7337026aa0f5d2c265dd43ecef77a8b7e84af521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
