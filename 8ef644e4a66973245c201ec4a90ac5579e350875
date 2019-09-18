@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8859919d_7388ba76",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "call this \u003cbaseboard-name\u003e or just \u003cname\u003e \n\n(for both .c and .h)",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49933fc0_1a5cabc9",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "Make comments there. Can we remove references to npcx there in the sample scripts",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33b4341_f5ef27d4",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "for completeness, can we include an example here too?",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e74cde_0e9bb2b1",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "since this list will get out of date, can we say to just select one `CONFIG_CHIPSET_*` option?",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 27
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88256796_969cb11c",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "Hmm, I think it is worth looking into what the i2c recovery process looks like for primary i2c pins. I.e. can we manually bit bang those pin and should we still define ALTERNATE for those pins to enable that? The answer to this could be that it isn\u0027t need. just a thought.",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 31
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8016a3e2_2cbf4132",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "maybe just link straight to https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md ?",
+      "range": {
+        "startLine": 252,
+        "startChar": 50,
+        "endLine": 252,
+        "endChar": 65
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f4311b7_9286264c",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "this bug doesn\u0027t exist",
+      "range": {
+        "startLine": 262,
+        "startChar": 24,
+        "endLine": 262,
+        "endChar": 33
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd94852_122c9ff5",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:32:44Z",
+      "side": 1,
+      "message": "maybe add a gotcha note here that most likely one of the pins will have inverted polarity so special care will be needed for that",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 31
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
