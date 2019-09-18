@@ -722,6 +722,8 @@ struct pd_cable {
 
 /* Flag for sending SOP Prime packet */
 #define CABLE_FLAGS_SOP_PRIME_ENABLE	BIT(0)
+/* This flag is set when the cable characteristics are stored */
+#define CABLE_FLAGS_CABLE_CHAR		BIT(1)
 
 /*
  * AMA VDO
@@ -1760,6 +1762,57 @@ uint16_t pd_get_identity_vid(int port);
  * @return      the USB Product Identifier or 0 if it doesn't exist
  */
 uint16_t pd_get_identity_pid(int port);
+
+/* Disables CABLE_FLAGS_SOP_PRIME_ENABLE
+ *
+ * @param port   USB-C port number
+ */
+void disable_transmit_sop_prime(int port);
+
+/**
+ * Sets cable flag - CABLE_FLAGS_CABLE_CHAR
+ *
+ * @param port          USB-C port number
+ */
+void set_pd_cable_flag_cable_char(int port);
+
+/**
+ * Returns status of cable flag - CABLE_FLAGS_CABLE_CHAR
+ *
+ * @param port          USB-C port number
+ * @return              Status of cable flag CABLE_FLAGS_CABLE_CHAR
+ */
+uint8_t get_pd_cable_flag_cable_char(int port);
+
+/**
+ *  Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
+ *  if explicit contract isn't established
+ *
+ *  @param port         USB-C port number
+ *  @param pd_flags     current pd flags
+ *  @return             status of CABLE_FLAGS_SOP_PRIME_ENABLE
+ *                      is explicit contract is not establised
+ *                      Flase otherwise
+ */
+uint8_t is_transmit_sop_prime_implicit(int port, uint32_t pd_flags);
+
+/**
+ * Enables CABLE_FLAGS_SOP_PRIME_ENABLE if VCONN is enabled and
+ * power role is source
+ *
+ * @param port          USB-C port number
+ * @param pwr_role      current power role
+ * @param pd_flags      current pd flags
+ */
+void transmit_sop_prime_implicit(int port, uint8_t pwr_role,
+				    uint32_t pd_flags);
+
+/**
+ * @param port		USB-C accessory port number
+ * @param cnt		number of data objects in payload
+ * @param payload	payload data
+ */
+void consume_cable_response(int port, int cnt, uint32_t *payload);
 
 /**
  * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE

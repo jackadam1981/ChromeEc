@@ -2056,6 +2056,11 @@ static void handle_request(int port, uint16_t head,
 		CPRINTF("\n");
 	}
 
+	if (is_transmit_sop_prime_implicit(port, pd[port].flags)) {
+		consume_cable_response(port, cnt, payload);
+		disable_transmit_sop_prime(port);
+	}
+
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
 	 * a hard reset if we get one.
@@ -2177,6 +2182,19 @@ static void pd_vdm_send_state_machine(int port)
 			break;
 		}
 
+		if (is_transmit_sop_prime_implicit(port, pd[port].flags)) {
+			/* Prepare and send VDM */
+			header = PD_HEADER(PD_DATA_VENDOR_DEF,
+				   pd[port].power_role,
+				   pd[port].data_role, pd[port].msg_id,
+				   (int)pd[port].vdo_count,
+				   pd_get_rev(port), 0);
+
+			res = pd_transmit(port, TCPC_TX_SOP_PRIME, header,
+					  pd[port].vdo_data);
+			break;
+		}
+
 		/*
 		 * if there's traffic or we're not in PDO ready state don't send
 		 * a VDM.
@@ -2191,6 +2209,9 @@ static void pd_vdm_send_state_machine(int port)
 				   pd_get_rev(port), 0);
 
 		/*
+		 * In case of implicit contract, if VCONN is enabled,
+		 * source(DFP/UFP) can communicate with the cable plug.
+		 *
 		 * To communicate with the cable plug, an explicit contract
 		 * should be established, VCONN should be enabled and data role
 		 * that can communicate with the cable plug should be in place.
@@ -3493,6 +3514,22 @@ void pd_task(void *u)
 						  PD_HARD_RESET_COUNT ?
 						    PD_STATE_HARD_RESET_SEND :
 						    PD_STATE_SRC_DISCONNECTED);
+			}
+
+			/*
+			 * Ref: USB PD 3.0 sec 4.4 and USB PD 2.0 sec 4.5.1:
+			 * Sources Shall run the cable detection process prior
+			 * to the Source sending Source_Capabilities Messages
+			 */
+			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+				if (!get_pd_cable_flag_cable_char(port)) {
+					set_pd_cable_flag_cable_char(port);
+					transmit_sop_prime_implicit(port,
+					pd[port].power_role, pd[port].flags);
+					pd_send_vdm(port, USB_SID_PD,
+					    CMD_DISCOVER_IDENT, NULL, 0);
+					break;
+				}
 			}
 
 			/* Send source cap some minimum number of times */
