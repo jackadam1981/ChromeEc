@@ -2,14 +2,16 @@ srck := $(CURDIR)/util/kconfig
 objk := $(out)/util/kconfig
 Kconfig := Kconfig
 
-#KBUILD_DEFCONFIG := configs/defconfig
-KBUILD_DEFCONFIG := $(BDIR)/defconfig.in
-DEFCONFIG := $(BDIR)/defconfig.out
+# make defconfig reads this file
+# this is intentionally a missing file
+KBUILD_DEFCONFIG := $(BDIR)/board.defconfig
 
-#DOTCONFIG ?= $(top)/.config
-#DOTCONFIG ?= $(out)/board.kconfig
+# make savedefconfig writes this
+#DEFCONFIG := $(BDIR)/board.defconfig
+DEFCONFIG := $(out)/kconfig.defconfig
+
 DOTCONFIG ?= $(BDIR)/board.kconfig
-export CONFIG_ := KCONFIG_
+####export CONFIG_ := KCONFIG_
 export KCONFIG_CONFIG = $(DOTCONFIG)
 export KCONFIG_AUTOCONFIG := $(out)/auto.conf
 #config.h
@@ -57,6 +59,7 @@ $(KCONFIG_AUTOHEADER): $(KCONFIG_CONFIG) $(objk)/conf
 
 $(KCONFIG_AUTOCONFIG): $(KCONFIG_AUTOHEADER) ;
 
+CFLAGS += -include $(abspath include/config.h)
 CFLAGS += -include $(abspath $(KCONFIG_AUTOHEADER))
 
 ################################################################
@@ -66,6 +69,17 @@ kconfig-sanity: $(config:%=%.raw) $(KCONFIG_AUTOHEADER:.h=.raw) ;
 kconfig-sanity: $(out)/kconfig.new
 kconfig-sanity: $(out)/kconfig.missing
 kconfig-sanity: $(out)/kconfig.common
+kconfig-sanity: $(DEFCONFIG)
+
+cmd_savedefconfig = \
+	if [ -e $< ]; then \
+		$(MAKE) savedefconfig $(silent) ; \
+	else \
+		touch $@ ; \
+	fi
+
+$(DEFCONFIG): $(KCONFIG_CONFIG) $(objk)/conf
+	+$(call quiet,savedefconfig,GEN    )
 
 cmd_gen_conf_raw = \
 	$(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
@@ -77,7 +91,8 @@ $(config:%=%.raw): include/config.h
 	$(call quiet,gen_conf_raw,GEN    )
 
 cmd_gen_kc_raw = \
-	sed -ne "/__yn$$/d;s,^\#define K\?\(CONFIG_.*\)$$,\1,p" $< | \
+	sed -ne "/__yn$$/d;/^\#define K\?CONFIG_HAVE_/d;\
+		s,^\#define K\?\(CONFIG_.*\)$$,\1,p" $< | \
 	sort -o $@
 
 $(KCONFIG_AUTOHEADER:%.h=%.raw): $(KCONFIG_AUTOHEADER)
