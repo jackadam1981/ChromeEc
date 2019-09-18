@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18eab7a9_2907df24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:37:23Z",
+      "side": 1,
+      "message": "Were these states added to fix a bug? If so, please add some description of the bug/fix, since it wasn\u0027t obvious to me.",
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6870da94_0a0c5c0c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:37:23Z",
+      "side": 1,
+      "message": "I think set_state_tch() should move down to the end.\ntch_wait_for_transmission_complete_run had it in that order.\nAnd if the ordering does matter, better to find out now.",
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6195b598_5e397b0a",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T21:37:23Z",
+      "side": 1,
+      "message": "TCH_REPORT_ERROR?",
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
