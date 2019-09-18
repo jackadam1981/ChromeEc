@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c037b9df_c7920dec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2915,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-09-18T22:33:05Z",
+      "side": 1,
+      "message": "If we added an FRS flag to pe[port], then we could also delete most of the new FRS states (PE_FRS_SNK_SRC_SEND_SWAP, PE_FRS_SNK_SRC_TRANSITION_TO_OFF, PE_FRS_SNK_SRC_ASSERT_RP, PE_FRS_SNK_SRC_SOURCE_ON) and just use the matching PRS state. I think that might end up simpler.",
+      "parentUuid": "03b14c82_766e73b9",
+      "range": {
+        "startLine": 2914,
+        "startChar": 11,
+        "endLine": 2915,
+        "endChar": 41
+      },
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca5aa98a_2601f54b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
