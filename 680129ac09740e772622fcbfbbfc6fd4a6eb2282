@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "f55885c2_a693ccca",
+        "filename": "baseboard/ec_template/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T17:50:26Z",
+      "side": 1,
+      "message": "do we have to have these defines? Seems like something a board would want to do after copying this",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896a6d63_058e7fab",
+        "filename": "baseboard/ec_template/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T17:50:26Z",
+      "side": 1,
+      "message": "Let\u0027s put a TODO here to update to correct size based on chip and remove reference to NPCX",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72076f68_59b3b451",
+        "filename": "board/ec_template/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T17:50:26Z",
+      "side": 1,
+      "message": "should we move this to baseboard?\n\n---\n\nAlso as a separate CL, maybe we can change the default UART BUF size to 4096 and remove all of the boards that define it as that and add explict undef for 512 for the remaining. Thoughts?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 36
+      },
+      "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7a9d2e9_8e733f31",
         "filename": "board/ec_template/build.mk",
         "patchSetId": 1
@@ -18,6 +87,53 @@
         "startChar": 0,
         "endLine": 11,
         "endChar": 23
+      },
+      "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a122ef_285afb06",
+        "filename": "board/ec_template/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T17:50:26Z",
+      "side": 1,
+      "message": "I think we can scrub the remaining references to npcx in this CL, then we can add a TODO here in this file instead to use the correct chip. How does that sound?",
+      "parentUuid": "a7a9d2e9_8e733f31",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b776feb5_9330b268",
+        "filename": "board/ec_template/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T17:50:26Z",
+      "side": 1,
+      "message": "I don\u0027t think we should defined these. Maybe we can use UNIMPLEMENTED here instead with TODOs?",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 48
       },
       "revId": "680129ac09740e772622fcbfbbfc6fd4a6eb2282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
