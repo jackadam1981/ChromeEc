@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8f0ab617_2f17da62",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:18:58Z",
+      "side": 1,
+      "message": "can we also add support for this in other charger drivers?",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 58
+      },
+      "revId": "d0c8e2546613a030bf7797ed48ed76884f31dee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d95a5d0_a550ae0e",
         "filename": "include/battery.h",
         "patchSetId": 3
