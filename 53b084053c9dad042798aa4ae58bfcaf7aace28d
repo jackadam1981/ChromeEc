@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6b99573_b7c1e7c9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T19:51:21Z",
+      "side": 1,
+      "message": "We can add a reference to 6.11.2.2.1.10 PRL_Tx_Discard_Message State\n\ncaused by \"Protocol Layer Message reception receives an incoming Message\"",
+      "range": {
+        "startLine": 890,
+        "startChar": 5,
+        "endLine": 890,
+        "endChar": 54
+      },
+      "revId": "53b084053c9dad042798aa4ae58bfcaf7aace28d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
