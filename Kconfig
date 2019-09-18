@@ -18,6 +18,9 @@ endmenu
 
 menu "Devices setup"
 source "driver/Kconfig"
+
+source "driver/Kconfig.battery"
+
 endmenu
 
 source "common/Kconfig"
