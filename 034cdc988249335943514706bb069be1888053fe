@@ -46,6 +46,30 @@
       "revId": "034cdc988249335943514706bb069be1888053fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "186497d1_a8e6d200",
+        "filename": "board/helios/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-18T02:23:12Z",
+      "side": 1,
+      "message": "Are you planning to do this change in the same CL or new CL ? Please, let\u0027s know. Thanks.",
+      "parentUuid": "e2bae46e_06f8e0f7",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 326,
+        "endChar": 13
+      },
+      "revId": "034cdc988249335943514706bb069be1888053fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
