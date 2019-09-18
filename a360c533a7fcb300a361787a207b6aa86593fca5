@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b1ec3f_43103f69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-18T18:11:04Z",
+      "side": 1,
+      "message": "Is this still the right bug? \n\nTony wrote: \"BC1.2 detection on Kukui P2 board is kind of broken. Which can\u0027t disconnect AP\u0027s USB+/- while detecting charger type, so Apple\u0027s TA can\u0027t be detected is expected.\"\n\nAre we still fixing this for Kukui?",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "a360c533a7fcb300a361787a207b6aa86593fca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
