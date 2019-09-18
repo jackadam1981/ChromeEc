@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "3caadd65_5d40e084",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:03:16Z",
+      "side": 1,
+      "message": "Let\u0027s say something like, the error that the XXX state will report when run",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 14
+      },
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84ea0a4_f848585b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:03:16Z",
+      "side": 1,
+      "message": "nit: let\u0027s keep the {} here for consistency",
+      "range": {
+        "startLine": 1377,
+        "startChar": 42,
+        "endLine": 1377,
+        "endChar": 52
+      },
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30e07823_e71de8a6",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:03:16Z",
+      "side": 1,
+      "message": "I know you are trying to keep the existing order, but I think we should switch the order of these two lines (i.e. pe_message_sent first)",
+      "range": {
+        "startLine": 1470,
+        "startChar": 0,
+        "endLine": 1470,
+        "endChar": 59
+      },
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6870da94_0a0c5c0c",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 8
@@ -30,6 +99,29 @@
       "writtenOn": "2019-09-18T21:37:23Z",
       "side": 1,
       "message": "I think set_state_tch() should move down to the end.\ntch_wait_for_transmission_complete_run had it in that order.\nAnd if the ordering does matter, better to find out now.",
+      "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4c9912_51dd1460",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:03:16Z",
+      "side": 1,
+      "message": "shouldn\u0027t be inline, right?",
+      "range": {
+        "startLine": 1479,
+        "startChar": 7,
+        "endLine": 1479,
+        "endChar": 13
+      },
       "revId": "f57c6a25b6c0e7e9037bee280d65f79939ce7ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
