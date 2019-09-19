@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "732d68ac_a5f298c0",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T23:56:15Z",
+      "side": 1,
+      "message": "I guess, this was done by automatic pattern conversion (space to tab) from your editor.\nI am undoing it.",
+      "range": {
+        "startLine": 799,
+        "startChar": 3,
+        "endLine": 799,
+        "endChar": 8
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d88b0647_a306352c",
         "filename": "chip/g/usb.c",
         "patchSetId": 4
