@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "14763411_0cf940fe",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-09-19T08:42:11Z",
+      "side": 1,
+      "message": "Hmm...config.h is included at the beginning. At the meantime, CONFIG_GESTURE_SENSOR_BATTERY_TAP is not defined.\n\nI prefer to use CONFIG_GESTURE_DETECTION_MASK since CONFIG_GESTURE_SENSOR_BATTERY_TAP and CONFIG_GESTURE_SENSOR_DOUBLE_TAP both define it.",
+      "parentUuid": "72b15624_06c947e0",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e94a1e2_a10006c5",
         "filename": "common/motion_sense.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de94b98_54f40906",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-09-19T08:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e94a1e2_a10006c5",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "36fd48f8_9d8e7195",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-09-19T08:42:11Z",
+      "side": 1,
+      "message": "EC_MKBP_EVENT_DOUBLE_TAP is removed. Change to use EC_MKBP_EVENT_SENSOR_FIFO to wake up AP.",
+      "parentUuid": "08152045_b7ce8631",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f46feb58_dca575d2",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3094468_344b70ee",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-09-19T08:42:11Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f46feb58_dca575d2",
+      "revId": "b89d1686b54686c42998b88b2fc09e2982932670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
