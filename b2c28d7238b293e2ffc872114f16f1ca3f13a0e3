@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b6ced8d_bc71f2fd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2019-09-19T22:40:54Z",
+      "side": 1,
+      "message": "nit: Please don\u0027t create another function which merely calls an existing function. Instead, only use the exported version.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 1
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7e52cc_072f5c0d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2019-09-19T22:40:54Z",
+      "side": 1,
+      "message": "Another CL (crrev.com/c/1808057) is adding a struct entry called |is_identified| that would be more appropriate and more readable than adding a flag",
+      "range": {
+        "startLine": 778,
+        "startChar": 4,
+        "endLine": 779,
+        "endChar": 27
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e471ff63_c93af8f2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2188,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2019-09-19T22:40:54Z",
+      "side": 1,
+      "message": "I think this is being discussed in another CL, but we shouldn\u0027t blindly re-use the port\u0027s power role while constructing the SOP\u0027 header.",
+      "range": {
+        "startLine": 2188,
+        "startChar": 7,
+        "endLine": 2188,
+        "endChar": 26
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73410cbc_50923d97",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3528,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2019-09-19T22:40:54Z",
+      "side": 1,
+      "message": "Please indent appropriately.",
+      "range": {
+        "startLine": 3528,
+        "startChar": 5,
+        "endLine": 3528,
+        "endChar": 42
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
