@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c8b0d96_f368d6ec",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-19T19:36:25Z",
+      "side": 1,
+      "message": "the issue with this is that the error register is shared between all banks, so the pending command could be stuck in a different bank\u0027s control register.\n\nI\u0027ll upload an update.",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 20
+      },
+      "revId": "648c38b7c02e440250125797619990c58234b140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
