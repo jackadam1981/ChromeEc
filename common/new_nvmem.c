@@ -809,9 +809,27 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 		if (!container_is_valid(ch)) {
 			struct nvmem_failure_payload fp;
 
-			if (!init_in_progress)
+			if (!init_in_progress) {
+#if 1
+				fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_EXTENDED;
+				fp.hash_ext.ct_offset = at->ct.data_offset;
+				fp.hash_ext.ct = temp_ch;
+				flash_log_add_event(
+					FE_LOG_NVMEM,
+					offsetof(struct nvmem_failure_payload, size) + sizeof(fp.hash_ext),
+					&fp);
+
+				fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_PAGE;
+				fp.page.page_number = at->ct.ph->page_number;
+				fp.page.data_offset = at->ct.ph->data_offset;
+				flash_log_add_event(
+					FE_LOG_NVMEM,
+					offsetof(struct nvmem_failure_payload, size) + sizeof(fp.page),
+					&fp);
+#endif
 				report_no_payload_failure(
 					NVMEMF_CONTAINER_HASH_MISMATCH);
+			}
 			/*
 			 * During init there might be a way to deal with
 			 * this, let's just log this and continue.
