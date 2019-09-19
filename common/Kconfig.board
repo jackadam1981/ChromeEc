@@ -1,4 +1,17 @@
 
+config HAVE_BOARD_VERSION_CBI
+       bool
+       select BOARD_VERSION
+       select BOARD_VERSION_CBI
+config HAVE_BOARD_VERSION_CUSTOM
+       bool
+       select BOARD_VERSION
+       select BOARD_VERSION_CUSTOM
+config HAVE_BOARD_VERSION_GPIO
+       bool
+       select BOARD_VERSION
+       select BOARD_VERSION_GPIO
+
 config BOARD_VERSION
 	bool "The EC has the notion of board version"
 	help
@@ -7,20 +20,17 @@ config BOARD_VERSION
 	  specific options is used.
 
 if BOARD_VERSION
-choice
-	prompt "Board version implementation"
 
 config BOARD_VERSION_CBI
-	bool "Cros Board Info (CBI) within EEPROM"
+	bool "The board version comes from Cros Board Info within EEPROM"
 config BOARD_VERSION_CUSTOM
-	bool "Custom board code"
+	bool "The board version function is defined in board code"
 config BOARD_VERSION_GPIO
 	bool "Encoded with 3 GPIOs"
 	help
 	  The board version is encoded with 3 GPIO signals where GPIO_BOARD_VERSION1
 	  is the LSB.
 
-endchoice
 endif
 
 config BOARD_I2C_SLAVE_ADDR_FLAGS
