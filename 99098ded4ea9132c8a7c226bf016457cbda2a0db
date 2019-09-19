@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c283b724_3a34d0fe",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T18:27:09Z",
+      "side": 1,
+      "message": "can you move this down to line 2188?",
+      "range": {
+        "startLine": 2142,
+        "startChar": 0,
+        "endLine": 2145,
+        "endChar": 28
+      },
+      "revId": "99098ded4ea9132c8a7c226bf016457cbda2a0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
