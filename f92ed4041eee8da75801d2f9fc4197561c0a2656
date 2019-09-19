@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b6c9db1_5db58bb1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T21:14:03Z",
+      "side": 0,
+      "message": "I think we want to keep these:\n\n\tif (idx \u003d\u003d SYSTEM_BBRAM_IDX_TRY_SLOT \u0026\u0026 IS_ENABLED(CONFIG_VBOOT_EFS))\n\nso that we can return error appropriately.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 6
+      },
+      "revId": "f92ed4041eee8da75801d2f9fc4197561c0a2656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
