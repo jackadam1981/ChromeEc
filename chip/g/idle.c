@@ -229,7 +229,7 @@ void __idle(void)
 		idle_action = idle_default;
 
 	/* Disable sleep for 20 seconds after init */
-	delay_sleep_by(20 * SECOND);
+	delay_sleep_by(10 * SECOND);
 
 	while (1) {
 

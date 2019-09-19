@@ -23,6 +23,8 @@
 #include "task.h"
 #include "timer.h"
 
+static int called_from_line;
+
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 /*
  * ==== Overview
@@ -384,8 +386,8 @@ static void report_failure(struct nvmem_failure_payload *payload,
 					     size),
 			    payload);
 
-	ccprintf("Logging failure %d, will %sreinit\n", payload->failure_type,
-		 init_in_progress ? "" : "not ");
+	ccprintf("Logging failure %d, will %sreinit called from %d\n", payload->failure_type,
+		 init_in_progress ? "" : "not ", called_from_line);
 
 	if (init_in_progress) {
 		struct nvmem_failure_payload fp;
@@ -735,6 +737,23 @@ static uint32_t aligned_container_size(const struct nn_container *ch)
 	return (ch->size + sizeof(*ch) + alignment_mask) & ~alignment_mask;
 }
 
+static void dump_pt(const char *header, const struct page_tracker *pt)
+{
+	ccprintf("%s\n", header);
+	ccprintf("page  at: %p\n", pt->ph);
+	ccprintf("page num: %d\n", pt->ph->page_number);
+	ccprintf("data ofs: %03x\n", pt->data_offset);
+}
+
+static void dump_at(const char *header, const struct access_tracker  *tcopy)
+{
+	ccprintf("%s\n", header);
+	dump_pt("mt", &tcopy->mt);
+	dump_pt("ct", &tcopy->ct);
+	dump_pt("dt", &tcopy->dt);
+	ccprintf("List index: %d\n\n", tcopy->list_index);
+}
+
 /*
  * Function which allows to iterate through all objects stored in flash. The
  * passed in context keeps track of where the previous object retrieval ended.
@@ -750,12 +769,15 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 {
 	uint32_t salt[4];
 	uint8_t ctype;
+	struct access_tracker tcopy;
 
 	salt[3] = 0;
 
 	do {
 		size_t aligned_remaining_size;
 		struct nn_container temp_ch;
+
+		tcopy = *at;
 
 		nvmem_read_bytes(at, sizeof(temp_ch), &temp_ch, 1);
 		ctype = temp_ch.container_type;
@@ -809,13 +831,32 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 		if (!container_is_valid(ch)) {
 			struct nvmem_failure_payload fp;
 
-			if (!init_in_progress)
-				report_no_payload_failure(
-					NVMEMF_CONTAINER_HASH_MISMATCH);
 			/*
 			 * During init there might be a way to deal with
 			 * this, let's just log this and continue.
 			 */
+			dump_at("start tracker:", &tcopy);
+			dump_at("end tracker:", at);
+			ccprintf("Container size: %d\n", ch->size);
+			{
+				const uint8_t *c = (const uint8_t *)ch;
+				int i;
+
+				ccprintf("Container body:\n");
+				for (i = 0; i < 8; i++)
+					ccprintf(" %02x", c[i]);
+				ccprintf("\n");
+
+				ccprintf("Page list:\n");
+				for (i = 0; i < NEW_NVMEM_TOTAL_PAGES; i++)
+					ccprintf(" %02x", page_list[i]);
+				ccprintf("\n");
+			}
+
+			if (!init_in_progress)
+				report_no_payload_failure(
+					NVMEMF_CONTAINER_HASH_MISMATCH);
+
 			fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH;
 			flash_log_add_event(
 				FE_LOG_NVMEM,
@@ -835,6 +876,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 			/* But keep track only of finalized ones. */
 			if (ch->container_type == NN_OBJ_OLD_COPY) {
 				at->dt.ph = at->ct.ph;
+
 				at->dt.data_offset = at->ct.data_offset;
 			}
 		}
@@ -929,6 +971,7 @@ test_export_static enum ec_error_list compact_nvmem(void)
 	saved_object_count = 0;
 
 	do {
+		called_from_line = __LINE__;
 		switch (get_next_object(&at, ch, 0)) {
 		case EC_SUCCESS:
 			break;
@@ -2032,6 +2075,7 @@ static enum ec_error_list verify_last_section(
 
 	po = newobjs->objects;
 
+	called_from_line = __LINE__;
 	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
 		ctype = ch->container_type;
 
@@ -2087,6 +2131,7 @@ static enum ec_error_list verify_last_section(
 		size_t key_size;
 		uint32_t key;
 
+		called_from_line = __LINE__;
 		if (get_next_object(&at, ch, 0) != EC_SUCCESS)
 			report_no_payload_failure(NVMEMF_MISSING_OBJECT);
 
@@ -2203,6 +2248,7 @@ static enum ec_error_list verify_delimiter(struct nn_container *nc)
 			}
 	}
 
+	called_from_line = __LINE__;
 	while ((rv = get_next_object(&dpt, nc, 0)) == EC_SUCCESS)
 		delete_object(&dpt, nc);
 
@@ -2284,6 +2330,7 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 		memset(res_bitmap, 0, sizeof(res_bitmap));
 		next_evict_obj_base = 0;
 
+		called_from_line = __LINE__;
 		while ((rv = get_next_object(&master_at, nc, 0)) ==
 		       EC_SUCCESS) {
 			switch (nc->container_type) {
@@ -2677,6 +2724,7 @@ static enum ec_error_list new_nvmem_save_(void)
 	while ((fence_ph != at.mt.ph) || (fence_offset != at.mt.data_offset)) {
 		int rv;
 
+		called_from_line = __LINE__;
 		rv = get_next_object(&at, ch, 0);
 
 		if (rv == EC_ERROR_MEMORY_ALLOCATION)
@@ -2779,6 +2827,7 @@ static struct max_var_container *find_var(const uint8_t *key, size_t key_len,
 	 * Let's iterate over all objects there are and look for matching
 	 * tuples.
 	 */
+	called_from_line = __LINE__;
 	while ((rv = get_next_object(at, &vc->c_header, 0)) == EC_SUCCESS) {
 
 		if (vc->c_header.container_type != NN_OBJ_TUPLE)
@@ -3016,6 +3065,7 @@ int nvmem_erase_tpm_data(void)
 
 	lock_mutex(__LINE__);
 
+	called_from_line = __LINE__;
 	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
 
 		if ((ch->container_type != NN_OBJ_TPM_RESERVED) &&
@@ -3117,6 +3167,7 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
 	lock_mutex(__LINE__);
 
+	called_from_line = __LINE__;
 	while ((rv = get_next_object(&at, ch, 1)) == EC_SUCCESS) {
 		uint8_t ctype = ch->container_type;
 
