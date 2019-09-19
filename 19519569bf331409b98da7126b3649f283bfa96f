@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e6504a9d_92ce2dc2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2915,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T14:05:39Z",
+      "side": 1,
+      "message": "The new state machine is supposed to match the spec diagrams as closely as possible.  I would prefer to not remove the states.  Implementing the same actions twice seemed overkill and wasted a lot of flash space, so that has been implemented.  I will look at saving that we are in the FRS path so we don\u0027t have to do the assignment in all of the locations that check for that difference.",
+      "parentUuid": "c037b9df_c7920dec",
+      "range": {
+        "startLine": 2914,
+        "startChar": 11,
+        "endLine": 2915,
+        "endChar": 41
+      },
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca5aa98a_2601f54b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -69,6 +93,30 @@
       "revId": "19519569bf331409b98da7126b3649f283bfa96f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c06dd92_186c45ba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2953,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T14:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5aa98a_2601f54b",
+      "range": {
+        "startLine": 2953,
+        "startChar": 6,
+        "endLine": 2953,
+        "endChar": 9
+      },
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +152,24 @@
       "revId": "19519569bf331409b98da7126b3649f283bfa96f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb319c1_aa00bab6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4893,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T14:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23770808_efa2710e",
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
