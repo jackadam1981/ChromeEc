@@ -809,9 +809,64 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 		if (!container_is_valid(ch)) {
 			struct nvmem_failure_payload fp;
 
-			if (!init_in_progress)
+			if (!init_in_progress) {
+#if 1
+				size_t ii;
+				uint8_t* payload = (uint8_t *)(ch+1);
+
+				fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_EXTENDED;
+				fp.hash_ext.ct_offset = at->ct.data_offset;
+				fp.hash_ext.ct = temp_ch;
+				fp.hash_ext.aligned_remaining_size = aligned_remaining_size;
+				flash_log_add_event(
+					FE_LOG_NVMEM,
+					offsetof(struct nvmem_failure_payload, size) + sizeof(fp.hash_ext),
+					&fp);
+
+				fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_PAGE;
+				fp.page.mem_base = CONFIG_PROGRAM_MEMORY_BASE;
+				fp.page.ct_ptr = (uintptr_t)at->ct.ph;
+				fp.page.mt_ptr = (uintptr_t)at->mt.ph;
+				// fp.page.ct_page_number = at->ct.ph->page_number;
+				// fp.page.ct_data_offset = at->ct.ph->data_offset;
+				flash_log_add_event(
+					FE_LOG_NVMEM,
+					offsetof(struct nvmem_failure_payload, size) + sizeof(fp.page),
+					&fp);
+
+				memset(&fp, 0, sizeof(fp));
+				fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_DATA;
+				memcpy(fp.data, page_list, NEW_NVMEM_TOTAL_PAGES);
+				flash_log_add_event(
+					FE_LOG_NVMEM,
+					offsetof(struct nvmem_failure_payload, size) + NEW_NVMEM_TOTAL_PAGES,
+					&fp);
+
+				fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_DATA;
+				memcpy(fp.data, ch, sizeof(*ch));
+				flash_log_add_event(
+					FE_LOG_NVMEM,
+					offsetof(struct nvmem_failure_payload, size) + sizeof(*ch),
+					&fp);
+
+				for (ii=0; ii<aligned_remaining_size && ii<128; ) {
+					size_t part_size = aligned_remaining_size - ii;
+					if (part_size > 16)
+						part_size = 16;
+
+					fp.failure_type = NVMEMF_CONTAINER_HASH_MISMATCH_DATA;
+					memcpy(fp.data, payload+ii, part_size);
+					flash_log_add_event(
+						FE_LOG_NVMEM,
+						offsetof(struct nvmem_failure_payload, size) + part_size,
+						&fp);
+
+					ii += part_size;
+				}
+#endif
 				report_no_payload_failure(
 					NVMEMF_CONTAINER_HASH_MISMATCH);
+			}
 			/*
 			 * During init there might be a way to deal with
 			 * this, let's just log this and continue.
