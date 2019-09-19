@@ -70,6 +70,24 @@
       "revId": "11f6879467db22012d05cca0862f076a3ef54ab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb83759_a052fc2b",
+        "filename": "board/trembyle/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T17:14:27Z",
+      "side": 1,
+      "message": "The PID is also sent in the VDM Discover Identity message.  Benson suggests that we allocate a unique PID per reference platform.  This is allocated at http://google3/hardware/standards/usb/",
+      "parentUuid": "ad0671da_aaffe76d",
+      "revId": "11f6879467db22012d05cca0862f076a3ef54ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
