@@ -142,6 +142,30 @@
       "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed066ed9_18b0630c",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1130551
+      },
+      "writtenOn": "2019-09-19T04:57:46Z",
+      "side": 1,
+      "message": "We are not disabling any capability here. Above is the if condition, under true EC controls the Fan else DPTF controls the fan. DPTF is thermal daemon in OS, it does all AP throttling (as Passive cooling) and emergency shutdown (as Critical policy) for safety action. DPTF also does Active cooling with Fan control at OS level for AP.",
+      "parentUuid": "90b8c85a_deb29090",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
