@@ -45,6 +45,29 @@
       "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13fcf38f_c7822dab",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-19T15:59:31Z",
+      "side": 1,
+      "message": "don\u0027t we you want to set curr-\u003e current and voltage to the precharge numbers here before returning?",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 9
+      },
+      "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
