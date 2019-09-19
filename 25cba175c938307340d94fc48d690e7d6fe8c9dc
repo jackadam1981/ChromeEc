@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa83a032_d3c20fb0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-19T01:45:47Z",
+      "side": 1,
+      "message": "If there is only one macro check, please use #ifdef:\n\n  #ifdef CONFIG_CHARGER_MT6370\n\nalso below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "25cba175c938307340d94fc48d690e7d6fe8c9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d3c0cf_c29fc751",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-19T01:45:47Z",
+      "side": 1,
+      "message": "Could we just integrate this function (or replace) with mt6370_get_adc? So we can drop it.",
+      "range": {
+        "startLine": 1021,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 1
+      },
+      "revId": "25cba175c938307340d94fc48d690e7d6fe8c9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
