@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "22e06213_923d047e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T17:07:36Z",
+      "side": 1,
+      "message": "Why don\u0027t we run cable discovery only for CMD_DISCOVERY_IDENT? That is, \n\n\tif (!cable[port].is_valid_data \u0026\u0026 cmd \u003d\u003d CMD_DISCOVERY_IDENT) {\n\t\t...\n\t}",
+      "parentUuid": "d5809702_ceb67fba",
+      "range": {
+        "startLine": 831,
+        "startChar": 3,
+        "endLine": 831,
+        "endChar": 66
+      },
+      "revId": "bb1138aa1eb29f17129d8811ced5c93bcc478006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46704c3_8f898d16",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Should we just return an EC_ERROR for the entire command_cable() function if |is_identified| is false? Or print some error like, \"Cable on Port x not identified\\n\"?\n\nSeems like if that flag isn\u0027t set, all the data is bogus.",
       "parentUuid": "d46704c3_8f898d16",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 2
+      },
+      "revId": "bb1138aa1eb29f17129d8811ced5c93bcc478006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb12bc4b_2b2ea985",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T17:07:36Z",
+      "side": 1,
+      "message": "I think we can return EC_SUCCESS if !is_identified (as you implemented in PS4).",
+      "parentUuid": "40c3bb14_4d972fa4",
       "range": {
         "startLine": 896,
         "startChar": 0,
