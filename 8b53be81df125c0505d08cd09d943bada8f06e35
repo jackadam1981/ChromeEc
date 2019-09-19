@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "7c7a9cb6_51dad114",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "I\u0027m good with the commet at Line 850 in Patchset#4.",
+      "parentUuid": "758683aa_5555155b",
+      "range": {
+        "startLine": 856,
+        "startChar": 16,
+        "endLine": 856,
+        "endChar": 18
+      },
+      "revId": "8b53be81df125c0505d08cd09d943bada8f06e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8492c165_287ef168",
         "filename": "chip/g/usb.c",
         "patchSetId": 3

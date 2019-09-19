@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5291a717_da824a18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "s/tranfer/transfer",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5bbafb2_de72ca43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "Exceeds 70 char/line.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d88b0647_a306352c",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "bmRequestType is being masked several times in this function. Going to have a variable for masked value.",
+      "range": {
+        "startLine": 823,
+        "startChar": 1,
+        "endLine": 823,
+        "endChar": 68
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c20f214d_73a6c821",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "These lines exceeds 80 char.",
+      "range": {
+        "startLine": 850,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 71
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c1e636_7216987b",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "I am merging this to line 842 in the next patch upload.",
+      "range": {
+        "startLine": 853,
+        "startChar": 48,
+        "endLine": 854,
+        "endChar": 63
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0d99292_9cee9e08",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-19T22:39:38Z",
+      "side": 1,
+      "message": "s/0x01/USB_REQ_CLEAR_FEATURE",
+      "range": {
+        "startLine": 869,
+        "startChar": 24,
+        "endLine": 869,
+        "endChar": 28
+      },
+      "revId": "2b09ed1837d9c054ecac0de0c13c0a07a9a2b29e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
