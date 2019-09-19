@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1e082c2_2b49e24e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T12:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "748017c2_d6486beb",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "724dcf8a91da7f9b31f591c23d9572bf47fbacaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4bb2671_3a592774",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "724dcf8a91da7f9b31f591c23d9572bf47fbacaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af40366f_3374c901",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T12:49:55Z",
+      "side": 1,
+      "message": "Left it the way it was to stop the line from breaking at 80 characters... I will use it direct instead. Thanks",
+      "parentUuid": "a4bb2671_3a592774",
+      "range": {
+        "startLine": 950,
+        "startChar": 42,
+        "endLine": 950,
+        "endChar": 48
+      },
+      "revId": "724dcf8a91da7f9b31f591c23d9572bf47fbacaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
