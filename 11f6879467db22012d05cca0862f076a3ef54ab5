@@ -16,6 +16,24 @@
       "revId": "11f6879467db22012d05cca0862f076a3ef54ab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e52f2a04_4ae2ada5",
+        "filename": "board/trembyle/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T13:45:56Z",
+      "side": 1,
+      "message": "The PID is sent back in the new state machine in the Battery Capabilities extended message.  I searched through the code base and found a number of CONFIG_USB_PID values set to 0x5022 or real close to it. Have no idea how it is determined but needed this to get the code to build.  Maybe Jett has an idea where this comes from and why it changed to being needed",
+      "parentUuid": "e303224b_7747d6fd",
+      "revId": "11f6879467db22012d05cca0862f076a3ef54ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
