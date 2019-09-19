@@ -776,3 +776,22 @@ void system_print_extended_version_info(void)
 }
 
 #endif /* CONFIG_EXTENDED_VERSION_INFO */
+
+void g_write_scratch_reg(uint32_t preserve_mask, uint32_t value, uint32_t reg_num)
+{
+	uint32_t enable_mask;
+	uint32_t old_value;
+	volatile uint32_t *reg_addr;
+
+	if (reg_num > 2)
+		return;
+
+	enable_mask = 1 << reg_num;
+	reg_addr = GREG32_ADDR(PMU, LONG_LIFE_SCRATCH0) + reg_num;
+
+	old_value = *reg_addr;
+	value |= (old_value & preserve_mask);
+	GREG32(PMU, LONG_LIFE_SCRATCH_WR_EN) |= enable_mask;
+	*reg_addr = value;
+	GREG32(PMU, LONG_LIFE_SCRATCH_WR_EN) &= ~enable_mask;
+}

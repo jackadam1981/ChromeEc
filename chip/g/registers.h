@@ -554,4 +554,7 @@ struct g_usb_desc {
 	void *addr;
 };
 
+#define SUPPRESS_RO_UART (1 << 10)
+void g_write_scratch_reg(uint32_t preserve_mask, uint32_t value, uint32_t reg_num);
+
 #endif	/* __CROS_EC_REGISTERS_H */

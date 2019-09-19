@@ -777,6 +777,9 @@ static void board_init(void)
 		GWRITE_FIELD(RBOX, INT_ENABLE, INTR_BUTTON_COMBO0_RDY, 1);
 	}
 
+	/* Enable RO uart output. */
+	g_write_scratch_reg(~SUPPRESS_RO_UART, 0, 1);
+
 	/*
 	 * Note that the AP, EC, and servo state machines do not have explicit
 	 * init_xxx_state() functions, because they don't need to configure

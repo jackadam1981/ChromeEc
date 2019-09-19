@@ -147,6 +147,9 @@ static void prepare_to_sleep(void)
 		GWRITE_FIELD(USB, PCGCCTL, RSTPDWNMODULE, 1);
 		GWRITE_FIELD(USB, PCGCCTL, STOPPCLK, 1);
 
+		/* Disable RO uart output. */
+		g_write_scratch_reg(~SUPPRESS_RO_UART, SUPPRESS_RO_UART, 1);
+
 		/* Shut down one more power rail for deep sleep */
 		GR_PMU_LOW_POWER_DIS |=
 			GC_PMU_LOW_POWER_DIS_VDDL_MASK;
