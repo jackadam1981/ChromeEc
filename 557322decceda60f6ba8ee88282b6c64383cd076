@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "476c3324_dc552365",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "145d22b9_d927aab4",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a39e0526_e69cf66f",
         "filename": "common/version.c",
         "patchSetId": 10
@@ -68,6 +92,30 @@
       "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090828c4_35d3dbd6",
+        "filename": "common/version.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39e0526_e69cf66f",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +187,30 @@
       "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b1026b_34d9e8ef",
+        "filename": "common/version.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65891f9c_05225944",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
