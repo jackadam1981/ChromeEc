@@ -171,6 +171,20 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
+	/* We have two flash banks. Adjust offset and registers accordingly. */
+	if (is_info_bank) {
+		/* Only INFO bank operations are supported. */
+		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL1);
+	} else if (byte_offset >= CFG_FLASH_HALF) {
+		byte_offset -= CFG_FLASH_HALF;
+		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL1);
+	} else {
+		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL0);
+	}
+
+	/* Stop any pending (or failed) previous operation. */
+	*fsh_pe_control = 0;
+
 	/* Error status is self-clearing. Read it until it does (we hope). */
 	for (i = 0; i < 50; i++) {
 		tmp = GREAD(FLASH, FSH_ERROR);
@@ -183,17 +197,6 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 	if (tmp) {
 		CPRINTF("%s:%d\n", __func__, __LINE__);
 		return EC_ERROR_UNKNOWN;
-	}
-
-	/* We have two flash banks. Adjust offset and registers accordingly. */
-	if (is_info_bank) {
-		/* Only INFO bank operations are supported. */
-		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL1);
-	} else if (byte_offset >= CFG_FLASH_HALF) {
-		byte_offset -= CFG_FLASH_HALF;
-		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL1);
-	} else {
-		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL0);
 	}
 
 	/* What are we doing? */
