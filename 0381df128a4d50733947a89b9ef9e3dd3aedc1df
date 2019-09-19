@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ecd7d3f9_b997fca2",
+        "filename": "common/mock/fp_sensor_mock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-19T23:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05d67a7a_22544431",
+      "revId": "0381df128a4d50733947a89b9ef9e3dd3aedc1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1e0ad0_ea605ef3",
         "filename": "common/mock/fp_sensor_mock.c",
         "patchSetId": 24
@@ -33,6 +51,24 @@
       "revId": "0381df128a4d50733947a89b9ef9e3dd3aedc1df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273d9269_95186c5d",
+        "filename": "common/mock/fp_sensor_mock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-19T23:33:16Z",
+      "side": 1,
+      "message": "That\u0027s really weird. It doesn\u0027t show up in vscode and wouldn\u0027t let me finagle it out of there.",
+      "parentUuid": "bf1e0ad0_ea605ef3",
+      "revId": "0381df128a4d50733947a89b9ef9e3dd3aedc1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4b50a576_82213cf1",
+        "filename": "common/mock/fp_sensor_mock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-19T23:33:16Z",
+      "side": 1,
+      "message": "Ahh gotcha. I was doing the Google C++ style thing, where you put your source associated header file on the top line.",
+      "parentUuid": "c4ae78c4_a4438e0b",
+      "revId": "0381df128a4d50733947a89b9ef9e3dd3aedc1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8c7f34e_41dec54b",
         "filename": "common/mock/mkbp_events_mock.c",
         "patchSetId": 24
@@ -67,6 +121,24 @@
       "revId": "0381df128a4d50733947a89b9ef9e3dd3aedc1df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8044be_2a981cb7",
+        "filename": "common/mock/mkbp_events_mock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-19T23:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8c7f34e_41dec54b",
+      "revId": "0381df128a4d50733947a89b9ef9e3dd3aedc1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
