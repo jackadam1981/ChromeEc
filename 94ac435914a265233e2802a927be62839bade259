@@ -105,6 +105,23 @@
     },
     {
       "key": {
+        "uuid": "c9d0e49b_c2c4207c",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001164
+      },
+      "writtenOn": "2019-09-19T21:24:50Z",
+      "side": 1,
+      "message": "Would be nice for this to go in to a bit more detail on the actual I2C wire sequence. (I was looking for that the other day, so got excited when I saw this CL)\n\nI presume it is something like (HOST IN CAPS, ec in lower)\nSTART : EC_ADDR | WRITE, ack : REQ[0], ack : ... : REQ[N-1], ack : START(repeated) : EC_ADDR | READ, ack : ***Expect clock stretch*** rsp[0], ACK : rsp[1], ACK : ... rsp[M-1], NACK : STOP\n\nWith the comment about filler meaning that after rsp[M-1] if the host says ACK and continues reading data the ec provides 0xec.\n\nMaybe this is a protocol where the last byte of the read is responded to with ACK and the STOP is the only termination?\n\nShould probably also comment on the max time the clock should be stretched for so the host can set its timeout.",
+      "revId": "94ac435914a265233e2802a927be62839bade259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1af4042d_5d1adb98",
         "filename": "docs/ap-ec-comm.md",
         "patchSetId": 2
