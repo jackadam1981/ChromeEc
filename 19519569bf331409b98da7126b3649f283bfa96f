@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "29f8234d_926d5f9b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2915,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-19T15:29:05Z",
+      "side": 1,
+      "message": "added a fast role swap flag to the pe array and set/clear on all entry paths into the shared code.",
+      "parentUuid": "e6504a9d_92ce2dc2",
+      "range": {
+        "startLine": 2914,
+        "startChar": 11,
+        "endLine": 2915,
+        "endChar": 41
+      },
+      "revId": "19519569bf331409b98da7126b3649f283bfa96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca5aa98a_2601f54b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
