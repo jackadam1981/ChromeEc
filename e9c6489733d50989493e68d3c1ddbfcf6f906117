@@ -45,6 +45,30 @@
       "revId": "e9c6489733d50989493e68d3c1ddbfcf6f906117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db892059_e6d569a9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2019-09-19T20:06:00Z",
+      "side": 1,
+      "message": "I didn\u0027t want to include a new header. Is it acceptable to include stdbool.h just for this one instance? bool is also probably 8 bits here.",
+      "parentUuid": "f4b11bcd_61fa2244",
+      "range": {
+        "startLine": 711,
+        "startChar": 1,
+        "endLine": 711,
+        "endChar": 8
+      },
+      "revId": "e9c6489733d50989493e68d3c1ddbfcf6f906117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
