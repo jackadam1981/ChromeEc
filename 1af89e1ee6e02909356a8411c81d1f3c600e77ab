@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48593d03_c3bf2eaf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2988,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-19T19:03:51Z",
+      "side": 1,
+      "message": "nit: can we invert this logic to remove a negation, i.e. if FRS, do frs stuff, else prs stuff",
+      "range": {
+        "startLine": 2988,
+        "startChar": 6,
+        "endLine": 2988,
+        "endChar": 7
+      },
+      "revId": "1af89e1ee6e02909356a8411c81d1f3c600e77ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b55af37_5ea0f188",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3070,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-19T19:03:51Z",
+      "side": 1,
+      "message": "nit: drop negation\n\n --\n\nhere and remaining places",
+      "range": {
+        "startLine": 3070,
+        "startChar": 2,
+        "endLine": 3070,
+        "endChar": 3
+      },
+      "revId": "1af89e1ee6e02909356a8411c81d1f3c600e77ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a65eee_734193e3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 4928,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-19T19:03:51Z",
+      "side": 1,
+      "message": "this doesn\u0027t feel right. I think it should be an invariant that state X should have X_entry and we should not share methods.\n\nCan we drop these extra states and just use the PRS states.\n\nIf we really want the debug print statements to be correct, we can make the entry method print  take into account what the pe[port].flags \u0026 FRS state is.\n\nAlso with the flag and these states it seems like we could get in a bad scenario where we are in the FRS states but the FRS flags isn\u0027t set in pe[port].flags",
+      "range": {
+        "startLine": 4908,
+        "startChar": 1,
+        "endLine": 4928,
+        "endChar": 3
+      },
+      "revId": "1af89e1ee6e02909356a8411c81d1f3c600e77ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
