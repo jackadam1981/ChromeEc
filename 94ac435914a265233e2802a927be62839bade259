@@ -102,6 +102,29 @@
       "revId": "94ac435914a265233e2802a927be62839bade259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af4042d_5d1adb98",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-09-19T20:54:18Z",
+      "side": 1,
+      "message": "You could just say \"LPC or eSPI\" as they both behave the same here.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "94ac435914a265233e2802a927be62839bade259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
