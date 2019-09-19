@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9779098b_e5a5f1c1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "039b0c8f_c1168d44",
+      "range": {
+        "startLine": 1919,
+        "startChar": 3,
+        "endLine": 1919,
+        "endChar": 4
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c8a6787_deb71d0d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "63688612004472a15628a84752fb8a5712949b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364c6f7a_a7ea6905",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "the original stack sets the variable with tcpm_auto_toggle_supported(port) and I\u0027ve added it to the restart_tc_sm function.",
+      "parentUuid": "7c8a6787_deb71d0d",
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f89341ac_6535b900",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "see first comment above concerning auto_toggle_supported.",
+      "parentUuid": "0cdf776c_29510422",
+      "range": {
+        "startLine": 1755,
+        "startChar": 1,
+        "endLine": 1755,
+        "endChar": 35
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3013570_93a0c7b5",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -79,6 +145,24 @@
       "revId": "63688612004472a15628a84752fb8a5712949b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd6e022_8f06c5ec",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "The TCPC_DRP_TOGGLE, LPM_REQUESTED, and LPM_ENGAGED flags seem to be handled correctly now, so the DrpAutoToggle to Unattached.SNK bounce between only occurs twice before low power mode is entered. Here is a printout of entering low power mode:\n\n2019-09-19 11:29:16 [423.735775 power state 3 \u003d S0, in 0x0019]\n2019-09-19 11:29:16 RTC: 0x00011770 (71536.00 s)\n2019-09-19 11:29:16 [423.736663 power state 8 \u003d S0-\u003eS3, in 0x0019]\n2019-09-19 11:29:16 [423.739251 PD:S0-\u003eS3]\n2019-09-19 11:29:16 RTC: 0x00011770 (71536.00 s)\n2019-09-19 11:29:16 [423.741591 power state 2 \u003d S3, in 0x0019]\n2019-09-19 11:29:16 RTC: 0x00011770 (71536.00 s)\n2019-09-19 11:29:16 [423.742314 power state 9 \u003d S3-\u003eS5, in 0x0019]\n2019-09-19 11:29:16 [423.744882 PD:S3-\u003eS5]\n2019-09-19 11:29:16 [423.745963 Lid Accel ODR: 10000 - roundRTC: 0x00011770 (71536.00 s)\n2019-09-19 11:29:16 [423.746751 power state 1 \u003d S5, in 0x0019]\n2019-09-19 11:29:16 up 1 from config 2 [AP 0]]\n2019-09-19 11:29:16 i2c 2 recovery! error code is 7, current state is 0\n2019-09-19 11:29:16 [423.750518 C1: Unattached.SNK]\n2019-09-19 11:29:16 [423.751643 C1: AttachWait.SNK]\n2019-09-19 11:29:16 [423.776151 C1: Unattached.SRC]\n2019-09-19 11:29:16 [423.782713 C1: DRPAutoToggle]\n2019-09-19 11:29:16 [423.789808 C1: Unattached.SNK]\n2019-09-19 11:29:16 [423.796053 C1: DRPAutoToggle]\n2019-09-19 11:29:16 [423.806882 TCPC p1 Enter Low Power Mode]\n2019-09-19 11:29:20 Port 80 writes:\n2019-09-19 11:29:20   0e 13 14 15 7f 00 01 14 16 20 23 24 32 4f 50 5f 15 20 21 22\n2019-09-19 11:29:20   23 24 28 3f 4f 40 41 42 47 61 63 03 04 05 06 07 0f 65 64 6f\n2019-09-19 11:29:20   0f 99 72 24 25 24 25 55 55 73 94 94 74 75 75 75 75 75 75 75\n2019-09-19 11:29:20   75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75\n2019-09-19 11:29:20   75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75 75\n2019-09-19 11:29:20   75 75 75 75 75 75 75 75 75 75 76 77 79 9c 93 7a 95 05 25 95\n2019-09-19 11:29:20   88 89 fe 7b f8 aa ab 96 \u003c--new\n2019-09-19 11:29:27 RTC: 0x0001177a (71546.00 s)\n2019-09-19 11:29:27 [433.747635 power state 10 \u003d S5-\u003eG3, in 0x0019]\n2019-09-19 11:29:27 [433.748131 chipset_force_shutdown(32775)]\n2019-09-19 11:29:27 [433.763005 power lost input; wanted 0x0008, got 0x0000]\n2019-09-19 11:29:27 RTC: 0x0001177a (71546.00 s)\n2019-09-19 11:29:27 [433.764087 power state 0 \u003d G3, in 0x0000]",
+      "parentUuid": "e3013570_93a0c7b5",
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4a2ff399_f696a431",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2658,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "I added the tc_enter_low_power function to handle this case",
+      "parentUuid": "4b239a45_82da9b99",
+      "range": {
+        "startLine": 2650,
+        "startChar": 0,
+        "endLine": 2658,
+        "endChar": 8
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bdd4db0_877aabf4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -119,6 +227,24 @@
       "revId": "63688612004472a15628a84752fb8a5712949b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b484355b_ce50241d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2675,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "some of the cc timers range from 10ms to 20ms and a 5ms loop time seemed to be a reasonable value.",
+      "parentUuid": "6bdd4db0_877aabf4",
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "d1efa0ce_66bac365",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "Do you think we should change the name?",
+      "parentUuid": "37d38e6a_88787bda",
+      "range": {
+        "startLine": 3056,
+        "startChar": 2,
+        "endLine": 3056,
+        "endChar": 16
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e688687_c12021ef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -156,6 +306,30 @@
       "writtenOn": "2019-09-18T23:43:12Z",
       "side": 1,
       "message": "This can all probably be in common code. common/usb_common.c",
+      "range": {
+        "startLine": 3016,
+        "startChar": 0,
+        "endLine": 3080,
+        "endChar": 76
+      },
+      "revId": "63688612004472a15628a84752fb8a5712949b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7805515_ad74ffd5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-19T20:44:06Z",
+      "side": 1,
+      "message": "I removed some unused flags, so the code isn\u0027t exactly the same as the code used in the original stack. But I suppose it could still be moved to common code with a few modifications.",
+      "parentUuid": "7e688687_c12021ef",
       "range": {
         "startLine": 3016,
         "startChar": 0,
