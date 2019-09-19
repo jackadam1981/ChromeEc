@@ -166,6 +166,30 @@
       "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a27d19_c0fe5dd3",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-19T18:40:11Z",
+      "side": 1,
+      "message": "Can you explain why we no longer need something external to DPTF (\u003dEC) to monitor the temperatures and throttle or shutdown AP? Why do we believe DPTF always functions soundly thus we can disable EC\u0027s fail-safe capability?",
+      "parentUuid": "ed066ed9_18b0630c",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
