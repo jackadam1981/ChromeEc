@@ -11,6 +11,9 @@
 #include "compile_time_macros.h"
 #include "stddef.h"
 
+/* DBGDBG */
+#include "new_nvmem.h"
+
 enum flash_event_type {
 	FE_LOG_START = 0,
 	FE_LOG_CORRUPTED = 1,
@@ -73,6 +76,10 @@ enum nvmem_failure_type {
 	NVMEMF_CONTAINER_HASH_MISMATCH = 14,
 	NVMEMF_UNRECOVERABLE_INIT = 15,
 	NVMEMF_NVMEM_WIPE = 16,
+
+	NVMEMF_CONTAINER_HASH_MISMATCH_EXTENDED = 17, /* DBGDBG */
+	NVMEMF_CONTAINER_HASH_MISMATCH_PAGE = 18, /* DBGDBG */
+	NVMEMF_CONTAINER_HASH_MISMATCH_DATA = 19, /* DBGDBG */
 };
 
 /* Not all nvmem failures require payload. */
@@ -86,6 +93,21 @@ struct nvmem_failure_payload {
 		} ph __packed;
 		uint16_t underrun_size; /* How many bytes short. */
 		uint8_t last_obj_type;
+		struct {
+			uint16_t ct_offset;
+			struct nn_container ct;
+			uint16_t aligned_remaining_size;
+		} hash_ext __packed;  /* DBGDBG */
+		struct {
+			uint32_t mem_base;
+			uint32_t mt_ptr;
+			uint32_t ct_ptr;
+			// uint32_t ct_page_number;
+			// uint32_t mt_page_number;
+			// uint16_t ct_data_offset;
+			// uint16_t mt_data_offset;
+		} page __packed;  /* DBGDBG */
+		uint8_t data[16]; /* DBGDBG */
 	} __packed;
 } __packed;
 
