@@ -25,7 +25,6 @@
 #define CONFIG_STREAM_USART3
 #define CONFIG_STREAM_USART4
 #define CONFIG_STREAM_USB
-#define CONFIG_CMD_USART_INFO
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
@@ -60,9 +59,6 @@
 #define USB_EP_USART4_STREAM	5
 #define USB_EP_UPDATE		6
 #define USB_EP_COUNT		7
-
-/* Enable console recasting of GPIO type. */
-#define CONFIG_CMD_GPIO_EXTENDED
 
 /* This is not actually an EC so disable some features. */
 #undef CONFIG_WATCHDOG_HELP
