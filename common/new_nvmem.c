@@ -1077,6 +1077,10 @@ static void start_new_flash_page(size_t data_size)
 			       CONFIG_PROGRAM_MEMORY_BASE);
 
 	write_to_flash(master_at.mt.ph, &ph, sizeof(ph));
+	if (memcmp(master_at.mt.ph, &ph, sizeof(ph))) {
+		/* report cache mismatch */
+		ccprintf("%s:%d MARYYYY cache mismatch\n", __func__, __LINE__);
+	}
 	master_at.mt.data_offset = sizeof(ph);
 }
 
