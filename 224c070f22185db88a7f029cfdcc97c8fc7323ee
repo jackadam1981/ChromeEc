@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44924b0a_77570308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-09-20T02:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56bd914_d4b43489",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd2993dd_6869619d",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f8fba9_31211773",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-09-20T02:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2993dd_6869619d",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 62
+      },
+      "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "Oh, I see now. This contract between these two layers is pretty intricate.",
       "parentUuid": "ec0c12bb_5619f831",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 9
+      },
+      "revId": "224c070f22185db88a7f029cfdcc97c8fc7323ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63d21dd2_375e7aff",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-09-20T02:42:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d4e65c_1a8487e7",
       "range": {
         "startLine": 99,
         "startChar": 2,
