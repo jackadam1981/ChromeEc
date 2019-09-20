@@ -1312,7 +1312,8 @@ DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq,
 /*****************************************************************************/
 /* Host commands */
 
-static int host_command_get_version(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_version *r = args->response;
 	enum system_image_copy_t active_slot = system_get_active_copy();
@@ -1345,7 +1346,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_VERSION,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_HOSTCMD_SKUID
-static int host_command_get_sku_id(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_sku_id(struct host_cmd_handler_args *args)
 {
 	struct ec_sku_id_info *r = args->response;
 
@@ -1360,7 +1362,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_SKU_ID,
 #endif
 
 #ifdef CONFIG_HOSTCMD_AP_SET_SKUID
-static int host_command_set_sku_id(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_set_sku_id(struct host_cmd_handler_args *args)
 {
 	const struct ec_sku_id_info *p = args->params;
 
@@ -1374,7 +1377,8 @@ DECLARE_HOST_COMMAND(EC_CMD_SET_SKU_ID,
 #endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
-static int host_command_get_keyboard_id(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_keyboard_id(struct host_cmd_handler_args *args)
 {
 	struct ec_response_keyboard_id *r = args->response;
 
@@ -1388,7 +1392,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBOARD_ID,
 		     EC_VER_MASK(0));
 #endif
 
-static int host_command_build_info(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_build_info(struct host_cmd_handler_args *args)
 {
 	strzcpy(args->response, system_get_build_info(), args->response_max);
 	args->response_size = strlen(args->response) + 1;
@@ -1399,7 +1404,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BUILD_INFO,
 		     host_command_build_info,
 		     EC_VER_MASK(0));
 
-static int host_command_get_chip_info(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_chip_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_chip_info *r = args->response;
 
@@ -1416,7 +1422,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CHIP_INFO,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_BOARD_VERSION
-int host_command_get_board_version(struct host_cmd_handler_args *args)
+enum ec_status
+host_command_get_board_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_board_version *r = args->response;
 	int board_version;
@@ -1438,7 +1445,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
 #endif
 
 #ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
-int host_command_vbnvcontext(struct host_cmd_handler_args *args)
+enum ec_status host_command_vbnvcontext(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_vbnvcontext *p = args->params;
 	struct ec_response_vbnvcontext *r;
@@ -1470,7 +1477,7 @@ DECLARE_HOST_COMMAND(EC_CMD_VBNV_CONTEXT,
 		     EC_VER_MASK(EC_VER_VBNV_CONTEXT));
 #endif /* CONFIG_HOSTCMD_VBNV_CONTEXT */
 
-int host_command_reboot(struct host_cmd_handler_args *args)
+enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 {
 	struct ec_params_reboot_ec p;
 
