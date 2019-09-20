@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5298d24a_c81f683f",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-09-20T21:05:41Z",
+      "side": 1,
+      "message": "Should this also be enum ec_error_list?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "a6db5d50ddcbc4b956fb0c24023922dfe83f50f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058197b4_2034cd86",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-09-20T21:05:41Z",
+      "side": 1,
+      "message": "This one too?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "a6db5d50ddcbc4b956fb0c24023922dfe83f50f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f108db1_08853624",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-09-20T21:05:41Z",
+      "side": 1,
+      "message": "I guess this one\u0027s good as is, because I don\u0027t see us returning it directly, nor comparing it against EC_ERROR_ values.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "a6db5d50ddcbc4b956fb0c24023922dfe83f50f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
