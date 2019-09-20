@@ -461,14 +461,14 @@ static int fp_command_stats(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 
-static int validate_template_format(
-	struct ec_fp_template_encryption_metadata *enc_info)
+static enum ec_error_list
+validate_template_format(struct ec_fp_template_encryption_metadata *enc_info)
 {
 	if (enc_info->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
 		CPRINTS("Invalid template format %d", enc_info->struct_version);
-		return EC_RES_INVALID_PARAM;
+		return EC_ERROR_INVAL;
 	}
-	return EC_RES_SUCCESS;
+	return EC_SUCCESS;
 }
 
 static int fp_command_template(struct host_cmd_handler_args *args)
@@ -480,7 +480,7 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 	uint32_t idx = templ_valid;
 	uint8_t key[SBP_ENC_KEY_LEN];
 	struct ec_fp_template_encryption_metadata *enc_info;
-	int ret;
+	enum ec_error_list ret;
 
 	/* Can we store one more template ? */
 	if (idx >= FP_MAX_FINGER_COUNT)
@@ -504,7 +504,7 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 		/* The beginning of the buffer contains nonce/salt/tag. */
 		enc_info = (void *)fp_enc_buffer;
 		ret = validate_template_format(enc_info);
-		if (ret != EC_RES_SUCCESS) {
+		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Template format not supported", idx);
 			return EC_RES_INVALID_PARAM;
 		}
