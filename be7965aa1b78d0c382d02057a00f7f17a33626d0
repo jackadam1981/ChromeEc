@@ -22,6 +22,30 @@
       "revId": "be7965aa1b78d0c382d02057a00f7f17a33626d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41fc1735_81292a0c",
+        "filename": "driver/touchpad_gt7288.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-20T21:00:26Z",
+      "side": 1,
+      "message": "I don\u0027t think so, since in older versions of the reports these bytes are reserved but set to 0.",
+      "parentUuid": "ca960cc1_0babc440",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "be7965aa1b78d0c382d02057a00f7f17a33626d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
