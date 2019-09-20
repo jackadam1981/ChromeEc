@@ -22,6 +22,30 @@
       "revId": "d71c268f773fd485e4126b1ea184d7da34d9543f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c481975_44b153eb",
+        "filename": "util/create_variant.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-20T18:53:23Z",
+      "side": 0,
+      "message": "Oops! That gets removed in the next major feature, when there\u0027s a top-level script that calls all of these and does the repo upload (and cq-depend) automatically.",
+      "parentUuid": "8ab87186_8959c60f",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "d71c268f773fd485e4126b1ea184d7da34d9543f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
