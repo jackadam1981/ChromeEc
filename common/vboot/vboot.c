@@ -132,6 +132,75 @@ static int hc_verify_slot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
 
+/**
+ * Send raw byte stream to Cr50
+ *
+ * @param data
+ * @param timeout
+ * @return
+ */
+static int send_to_cr50_raw(const uint8_t *data, size_t size)
+{
+	uint64_t until = get_time().val + CR50_COMM_TIMEOUT;
+
+	uart_clear_input();
+	/* No traffic control, assuming Cr50 consumes stream much faster. */
+	uart_put_raw(data, size);
+
+	/* Wait for response from Cr50 */
+	while (get_time().val < until) {
+		int c = uart_getc();
+		if (c != -1)
+			return c;
+		msleep(10);
+	}
+	return CR50_COMM_ERROR_TIMEOUT;
+}
+
+static int send_to_cr50(const uint8_t *data, uint8_t size)
+{
+	struct {
+		uint8_t preamble[CR50_UART_RX_BUFFER_SIZE];
+		uint8_t packet[CR50_COMM_MAX_PACKET_SIZE];
+	} __packed s;
+	struct cr50_comm_packet *p = (struct cr50_comm_packet *)s.packet;
+
+	/* compose stream = preamble + packet */
+	memset(s.preamble, 0xec, sizeof(s.preamble));
+	p->magic = CR50_PACKET_MAGIC;
+	p->type = CR50_CMD_FW_VERSION;
+	p->size = size;
+	memcpy(p->data, data, p->size);
+	p->crc = crc8((uint8_t *)&p->type,
+		      sizeof(p->type) + sizeof(p->size) + p->size);
+
+	return send_to_cr50_raw((uint8_t *)&s,
+				sizeof(s.preamble) + sizeof(*p) + p->size);
+}
+
+static int check_rollback(enum system_image_copy_t slot)
+{
+	uint16_t version = ver_get_version(slot);
+	int rv;
+
+	CPRINTS("RW version is %d", version);
+
+	if (!version)
+		return EC_ERROR_UNKNOWN;
+
+	/* Clear Tx buffer. Console task hasn't started yet. */
+	uart_flush_output();
+
+	/* send version */
+	rv = send_to_cr50((uint8_t *)&version, sizeof(version));
+	if (rv != CR50_COMM_SUCCESS) {
+		CPRINTS("Rollback check failed (0x%x)", rv);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
 static int verify_and_jump(void)
 {
 	enum system_image_copy_t slot;
