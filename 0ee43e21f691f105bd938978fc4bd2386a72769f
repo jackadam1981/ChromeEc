@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e93900c8_f8cfb267",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T20:10:10Z",
+      "side": 1,
+      "message": "It think this will clear the flag when we don\u0027t want to (since FRS path will call this after the FRS AMS entry)",
+      "range": {
+        "startLine": 3148,
+        "startChar": 2,
+        "endLine": 3151,
+        "endChar": 44
+      },
+      "revId": "0ee43e21f691f105bd938978fc4bd2386a72769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
