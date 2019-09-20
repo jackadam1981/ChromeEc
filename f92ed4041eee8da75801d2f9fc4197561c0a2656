@@ -22,6 +22,30 @@
       "revId": "f92ed4041eee8da75801d2f9fc4197561c0a2656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1f3313_ce3ad22e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T18:02:25Z",
+      "side": 0,
+      "message": "Since we always reserve the BBRAM slot and it is readable and writable, I don\u0027t think this layer needs to enforce that it doesn\u0027t exist (since it does in memory).\n\nI would rather keep the ifdefs guard out.\n\nIf you trace the code with the guards, then everything runs as expected.\n\nto me CONFIG_EFS means are we enabling code/functionality, not if we are reserving the BBRAM memory (since we always reserve the memory). I think it is logically okay for non EFS code to access the TRY_SLOT BBRAM (but it probably won\u0027t).",
+      "parentUuid": "8b6c9db1_5db58bb1",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 6
+      },
+      "revId": "f92ed4041eee8da75801d2f9fc4197561c0a2656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
