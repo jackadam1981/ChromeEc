@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b27f92d_cb815ecb",
+        "filename": "util/create_variant.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-20T23:29:16Z",
+      "side": 1,
+      "message": "You may want to name these exit codes so that parent scripts can do better error handling.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "de9855a8c6c62b5e7d8af7e68671d2ff7f017edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
