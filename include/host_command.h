@@ -116,7 +116,7 @@ struct host_command {
 	 * Handler for the command.  Args points to context for handler.
 	 * Returns result status (EC_RES_*).
 	 */
-	int (*handler)(struct host_cmd_handler_args *args);
+	enum ec_status (*handler)(struct host_cmd_handler_args *args);
 	/* Command code */
 	int command;
 	/* Mask of supported versions */

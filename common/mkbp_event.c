@@ -313,7 +313,7 @@ static int take_event_if_set(uint8_t event_type)
 	return taken;
 }
 
-static int mkbp_get_next_event(struct host_cmd_handler_args *args)
+static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 {
 	static int last;
 	int i, evt;

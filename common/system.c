@@ -1312,7 +1312,8 @@ DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq,
 /*****************************************************************************/
 /* Host commands */
 
-static int host_command_get_version(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_version *r = args->response;
 	enum system_image_copy_t active_slot = system_get_active_copy();
@@ -1388,7 +1389,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBOARD_ID,
 		     EC_VER_MASK(0));
 #endif
 
-static int host_command_build_info(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_build_info(struct host_cmd_handler_args *args)
 {
 	strzcpy(args->response, system_get_build_info(), args->response_max);
 	args->response_size = strlen(args->response) + 1;
@@ -1399,7 +1401,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BUILD_INFO,
 		     host_command_build_info,
 		     EC_VER_MASK(0));
 
-static int host_command_get_chip_info(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_chip_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_chip_info *r = args->response;
 
@@ -1470,7 +1473,7 @@ DECLARE_HOST_COMMAND(EC_CMD_VBNV_CONTEXT,
 		     EC_VER_MASK(EC_VER_VBNV_CONTEXT));
 #endif /* CONFIG_HOSTCMD_VBNV_CONTEXT */
 
-int host_command_reboot(struct host_cmd_handler_args *args)
+enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 {
 	struct ec_params_reboot_ec p;
 

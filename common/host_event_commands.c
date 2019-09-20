@@ -584,7 +584,7 @@ uint8_t lpc_is_active_wm_set_by_host(void)
 
 #endif  /* CONFIG_HOSTCMD_X86 */
 
-static int host_event_get_b(struct host_cmd_handler_args *args)
+static enum ec_status host_event_get_b(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -597,7 +597,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_B,
 		     host_event_get_b,
 		     EC_VER_MASK(0));
 
-static int host_event_clear(struct host_cmd_handler_args *args)
+static enum ec_status host_event_clear(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -608,7 +608,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR,
 		     host_event_clear,
 		     EC_VER_MASK(0));
 
-static int host_event_clear_b(struct host_cmd_handler_args *args)
+static enum ec_status host_event_clear_b(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -728,7 +728,8 @@ static int host_event_action_clear(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_command_host_event(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_host_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 
