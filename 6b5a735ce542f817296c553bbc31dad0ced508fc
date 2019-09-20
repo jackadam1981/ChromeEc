@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54de3e4_2d73ed33",
+        "filename": "common/usb_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we need this, right?",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79147b31_f840abd2",
+        "filename": "common/usb_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "please take in enum instead of uint8_t",
+      "range": {
+        "startLine": 288,
+        "startChar": 51,
+        "endLine": 288,
+        "endChar": 69
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3486d9da_ff5e6f26",
+        "filename": "common/usb_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "please document this as and in/out and put this at the end of parameter list (or begining). It seems weird to mix input and output parameters with each other",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 25
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6bbf70_85b9fe0b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "we should take this in by value instead of by pointer (as you aren\u0027t changing it, and it make the contract between functions more clear)",
+      "range": {
+        "startLine": 290,
+        "startChar": 26,
+        "endLine": 290,
+        "endChar": 36
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "074d2a75_b3ece5be",
+        "filename": "common/usb_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this, you can just return from this function",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 35
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4653f4a5_a17cb24c",
+        "filename": "common/usb_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "nit: if the if clause needs {} please use {} for the else as well. (Presumbit allows this)",
+      "range": {
+        "startLine": 356,
+        "startChar": 3,
+        "endLine": 358,
+        "endChar": 7
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a612cae0_c0f0848c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "does this mean it is support or that it is in progress?\n\nWe need comments for each of these flag values",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7ef8c3_2f861df2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "new stack will always support this right? Let\u0027s omit this guard",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d33098e_45c8b455",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50355122_2da0931e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "let\u0027s move this function now since we have a common code location, and we are touching this functionality.",
+      "range": {
+        "startLine": 884,
+        "startChar": 12,
+        "endLine": 884,
+        "endChar": 32
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09d25e7_c92a9d04",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "this does not seem like the correct usage of this macro since you are not checking it. Please use \u0026 with flags directly here instead.",
+      "range": {
+        "startLine": 1761,
+        "startChar": 19,
+        "endLine": 1761,
+        "endChar": 30
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae33932_28a383fb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2235,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 2235,
+        "startChar": 19,
+        "endLine": 2235,
+        "endChar": 30
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b931d138_ff2b1389",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "I beleive these can move to common as well",
+      "range": {
+        "startLine": 3075,
+        "startChar": 0,
+        "endLine": 3128,
+        "endChar": 76
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55f22ab_b100e717",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3225,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 3225,
+        "startChar": 7,
+        "endLine": 3225,
+        "endChar": 42
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203db633_d8cb1130",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "IS_ENABLED",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fcb0410_621ecac6",
+        "filename": "include/usb_common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T17:49:50Z",
+      "side": 1,
+      "message": "always define these, drop the guard",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
