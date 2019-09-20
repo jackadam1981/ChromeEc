@@ -15,7 +15,7 @@
  * @param salt the salt to use in HKDF.
  * @return EC_SUCCESS on success and error code otherwise.
  */
-int derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
+enum ec_error_list derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
 
 /**
  * Encrypt |plaintext| using AES-GCM128.
@@ -31,11 +31,11 @@ int derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
  * @param tag_size the size of |tag|.
  * @return EC_SUCCESS on success and error code otherwise.
  */
-int aes_gcm_encrypt(const uint8_t *key, int key_size,
-		    const uint8_t *plaintext,
-		    uint8_t *ciphertext, int text_size,
-		    const uint8_t *nonce, int nonce_size,
-		    uint8_t *tag, int tag_size);
+enum ec_error_list aes_gcm_encrypt(const uint8_t *key, int key_size,
+				   const uint8_t *plaintext,
+				   uint8_t *ciphertext, int text_size,
+				   const uint8_t *nonce, int nonce_size,
+				   uint8_t *tag, int tag_size);
 
 /**
  * Decrypt |plaintext| using AES-GCM128.
@@ -51,9 +51,10 @@ int aes_gcm_encrypt(const uint8_t *key, int key_size,
  * @param tag_size the length of tag to compare against.
  * @return EC_SUCCESS on success and error code otherwise.
  */
-int aes_gcm_decrypt(const uint8_t *key, int key_size, uint8_t *plaintext,
-		    const uint8_t *ciphertext, int text_size,
-		    const uint8_t *nonce, int nonce_size,
-		    const uint8_t *tag, int tag_size);
+enum ec_error_list aes_gcm_decrypt(const uint8_t *key, int key_size,
+				   uint8_t *plaintext,
+				   const uint8_t *ciphertext, int text_size,
+				   const uint8_t *nonce, int nonce_size,
+				   const uint8_t *tag, int tag_size);
 
 #endif /* __CROS_EC_FPSENSOR_CRYPTO_H */
