@@ -22,6 +22,30 @@
       "revId": "0ee43e21f691f105bd938978fc4bd2386a72769f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed01db5_4fed02c6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-20T20:12:59Z",
+      "side": 1,
+      "message": "I didn\u0027t think it would because I added FRS AMS entry into the super class and parent entry should happen before normal entry... So it should clear it and then set it again in AMS entry. Am I wrong?",
+      "parentUuid": "e93900c8_f8cfb267",
+      "range": {
+        "startLine": 3148,
+        "startChar": 2,
+        "endLine": 3151,
+        "endChar": 44
+      },
+      "revId": "0ee43e21f691f105bd938978fc4bd2386a72769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
