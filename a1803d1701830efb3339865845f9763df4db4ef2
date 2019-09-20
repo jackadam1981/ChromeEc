@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c70fe001_301a9c21",
+        "filename": "board/dratini/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-20T16:03:30Z",
+      "side": 1,
+      "message": "This is repeated 3 times, can you break this out into a separate variable?  amber_led?",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 65
+      },
+      "revId": "a1803d1701830efb3339865845f9763df4db4ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b2963f_16e2e740",
+        "filename": "board/dratini/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-20T16:03:30Z",
+      "side": 1,
+      "message": "Same thing here.",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "a1803d1701830efb3339865845f9763df4db4ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243dfff1_aa5d9316",
+        "filename": "board/dratini/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-20T16:03:30Z",
+      "side": 1,
+      "message": "Here\u0027s exactly the reason for refactoring, this should be C0 :-)",
+      "range": {
+        "startLine": 52,
+        "startChar": 62,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "a1803d1701830efb3339865845f9763df4db4ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
