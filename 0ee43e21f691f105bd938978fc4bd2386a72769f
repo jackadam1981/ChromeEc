@@ -46,6 +46,30 @@
       "revId": "0ee43e21f691f105bd938978fc4bd2386a72769f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c19e68_d5f7470d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-20T20:20:28Z",
+      "side": 1,
+      "message": "You are right, I missed that the FRS declared this as a super state. Can you call out this subtle intercation in a comment, saying that this will get call then the FRS AMS entry will get call right afterwards and set the bit.",
+      "parentUuid": "5ed01db5_4fed02c6",
+      "range": {
+        "startLine": 3148,
+        "startChar": 2,
+        "endLine": 3151,
+        "endChar": 44
+      },
+      "revId": "0ee43e21f691f105bd938978fc4bd2386a72769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
