@@ -1,0 +1,114 @@
+
+menu "SPI flash"
+
+config SPI
+	bool "Support SPI interfaces"
+
+config SPI_FLASH
+	bool "Support SPI flash (common implementation)"
+
+config SPI_FLASH_REGS
+	bool "Support SPI flash protection register translation"
+
+#
+
+config HAVE_SPI_FLASH_GD25LQ40
+	bool
+config HAVE_SPI_FLASH_GD25Q41B
+	bool
+config HAVE_SPI_FLASH_W25Q40
+	bool
+config HAVE_SPI_FLASH_W25Q64
+	bool
+config HAVE_SPI_FLASH_W25Q80
+	bool
+config HAVE_SPI_FLASH_W25Q128
+	bool
+config HAVE_SPI_FLASH_W25X40
+	bool
+
+choice # SPI flash chip
+	prompt "Select SPI flash chip"
+
+	default SPI_FLASH_GD25LQ40 if HAVE_SPI_FLASH_GD25LQ40
+	default SPI_FLASH_GD25Q41B if HAVE_SPI_FLASH_GD25Q41B
+	default SPI_FLASH_W25Q40   if HAVE_SPI_FLASH_W25Q40
+	default SPI_FLASH_W25Q64   if HAVE_SPI_FLASH_W25Q64
+	default SPI_FLASH_W25Q80   if HAVE_SPI_FLASH_W25Q80
+	default SPI_FLASH_W25Q128  if HAVE_SPI_FLASH_W25Q128
+	default SPI_FLASH_W25X40   if HAVE_SPI_FLASH_W25X40
+
+	help
+	  Select any of the following SPI flash configs that your board uses
+
+config SPI_FLASH_GD25LQ40
+	bool "GD25LQ40"
+config SPI_FLASH_GD25Q41B
+	bool "GD25Q41B"
+config SPI_FLASH_W25Q40
+	bool "W25Q40"
+config SPI_FLASH_W25Q64
+	bool "W25Q64"
+config SPI_FLASH_W25Q80
+	bool "W25Q80"
+config SPI_FLASH_W25Q128
+	bool "W25Q128"
+config SPI_FLASH_W25X40
+	bool "W25X40"
+
+endchoice # SPI flash chip
+
+if SPI || SPI_FLASH
+
+config SPI_FLASH_PORT__yn
+	bool "Select SPI_FLASH_PORT"
+config SPI_FLASH_PORT
+	int "Define the SPI port to use to access the flash"
+	depends on SPI_FLASH_PORT__yn
+
+config SPI_FLASH_HAS_SR2
+	bool "SPI flash part supports SR2 register"
+
+config SPI_NOR
+	bool "Support JEDEC SFDP based Serial NOR flash"
+
+config SPI_NOR_DEBUG
+	bool "Enable SPI_NOR debugging"
+	help
+	  Enable SPI_NOR debugging providing additional console output while
+	  initializing Serial NOR Flash devices including SFDP discovery. */
+
+config SPI_NOR_MAX_MESSAGE_SIZE__yn
+	bool "Select SPI_NOR_MAX_MESSAGE_SIZE"
+config SPI_NOR_MAX_MESSAGE_SIZE
+	int "Maximum Serial NOR flash command size, in Bytes"
+	depends on SPI_NOR_MAX_MESSAGE_SIZE__yn
+
+config SPI_NOR_MAX_READ_SIZE__yn
+	bool "Select SPI_NOR_MAX_READ_SIZE"
+config SPI_NOR_MAX_READ_SIZE
+	int "Maximum Serial NOR flash read size, in Bytes"
+	depends on SPI_NOR_MAX_READ_SIZE__yn
+
+config SPI_NOR_MAX_WRITE_SIZE__yn
+	bool "SPI_NOR_MAX_WRITE_SIZE"
+config SPI_NOR_MAX_WRITE_SIZE
+	int "Maximum Serial NOR flash write size, in bytes. Note this must be a power of two"
+	depends on SPI_NOR_MAX_WRITE_SIZE__yn
+
+config SPI_NOR_BLOCK_ERASE
+	bool "If defined will enable block (64KiB) erase operations"
+
+config SPI_NOR_SMART_ERASE
+	bool "read the sector/block to be erased first"
+	help
+	  If defined will read the sector/block to be erased first and only initiate
+	  the erase operation if not already in an erased state. The read operation
+	  (performed in CONFIG_SPI_NOR_MAX_READ_SIZE chunks) is aborted early if a
+	  non "0xff" byte is encountered.
+	  !! Make sure there is enough stack space to host a
+	  !! CONFIG_SPI_NOR_MAX_READ_SIZE sized buffer before enabling.
+
+endif # SPI || SPI_FLASH
+
+endmenu # SPI flash
