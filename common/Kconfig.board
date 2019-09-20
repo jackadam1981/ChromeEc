@@ -1,0 +1,71 @@
+
+config HAVE_BOARD_VERSION_CBI
+       bool
+       select BOARD_VERSION
+       select BOARD_VERSION_CBI
+config HAVE_BOARD_VERSION_CUSTOM
+       bool
+       select BOARD_VERSION
+       select BOARD_VERSION_CUSTOM
+config HAVE_BOARD_VERSION_GPIO
+       bool
+       select BOARD_VERSION
+       select BOARD_VERSION_GPIO
+
+config BOARD_VERSION
+	bool "The EC has the notion of board version"
+	help
+	  EC has the notion of board version either through resistors or EEPROM.
+	  The common CONFIG_BOARD_VERSION is defined automatically when one of the
+	  specific options is used.
+
+if BOARD_VERSION
+
+config BOARD_VERSION_CBI
+	bool "The board version comes from Cros Board Info within EEPROM"
+config BOARD_VERSION_CUSTOM
+	bool "The board version function is defined in board code"
+config BOARD_VERSION_GPIO
+	bool "Encoded with 3 GPIOs"
+	help
+	  The board version is encoded with 3 GPIO signals where GPIO_BOARD_VERSION1
+	  is the LSB.
+
+endif
+
+config BOARD_I2C_SLAVE_ADDR_FLAGS
+	bool "EC responses to a board defined I2C slave address"
+
+config BOARD_FORCE_RESET_PIN
+	bool "The board is unable to distinguish EC reset from power-on"
+	help
+	  The board is unable to distinguish EC reset from power-on so it should treat
+	  all resets as triggered by RESET_PIN even if it is a POWER_ON reset.
+
+config BOARD_HAS_RTC_RESET
+	bool "EC has GPIOs to allow board to reset RTC"
+
+config BOARD_HAS_BEFORE_RSMRST
+	bool "Call board_before_rsmrst before passing RSMRST# to AP"
+	help
+	  Call board_before_rsmrst(state) before passing RSMRST# to the AP.
+	  This is for board workarounds that are required after rails are up
+	  but before the AP is out of reset.
+
+config BOARD_POST_GPIO_INIT
+	bool "BOARD_POST_GPIO_INIT"
+	help
+	  Call board_config_post_gpio_init() after GPIOs are initialized.  See
+	  include/board_config.h for more information.
+
+config BOARD_PRE_INIT
+	bool "BOARD_PRE_INIT"
+	help
+	  Call board_config_pre_init() before any inits are called.  See
+	  include/board_config.h for more information.
+
+config BOARD_ID_SUPPORT
+	bool "BOARD_ID_SUPPORT"
+	help
+	  Define this if board ID support is required. For g chip based boards it
+	  allows to nail different images to different boards.
