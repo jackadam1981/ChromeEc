@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ac34369_ede91842",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-20T19:37:42Z",
+      "side": 1,
+      "message": "Because RO image has to send the RW version to Cr50. Without this patch, RO image can read only its own version.",
+      "parentUuid": "0c15c3f0_d68cd7df",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "557322decceda60f6ba8ee88282b6c64383cd076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "145d22b9_d927aab4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
