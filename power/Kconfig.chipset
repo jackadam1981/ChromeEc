@@ -1,0 +1,136 @@
+
+config HAVE_CHIPSET_TIGERLAKE
+	bool
+config HAVE_CHIPSET_ICELAKE
+	bool
+config HAVE_CHIPSET_CANNONLAKE
+	bool
+config HAVE_CHIPSET_COMETLAKE
+	bool
+config HAVE_CHIPSET_SKYLAKE
+	bool
+config HAVE_CHIPSET_GEMINILAKE
+	bool
+config HAVE_CHIPSET_APOLLOLAKE
+	bool
+config HAVE_CHIPSET_BRASWELL
+	bool
+config HAVE_CHIPSET_MT8183
+	bool
+config HAVE_CHIPSET_MT817X
+	bool
+config HAVE_CHIPSET_RK3399
+	bool
+config HAVE_CHIPSET_RK3288
+	bool
+config HAVE_CHIPSET_SDM845
+	bool
+config HAVE_CHIPSET_STONEY
+	bool
+config HAVE_CHIPSET_ECDRIVEN
+	bool
+
+menu "Chipset config"
+
+choice
+	prompt "Choose chipset"
+
+	default CHIPSET_TIGERLAKE  if HAVE_CHIPSET_TIGERLAKE
+	default CHIPSET_ICELAKE    if HAVE_CHIPSET_ICELAKE
+	default CHIPSET_CANNONLAKE if HAVE_CHIPSET_CANNONLAKE
+	default CHIPSET_COMETLAKE  if HAVE_CHIPSET_COMETLAKE
+	default CHIPSET_SKYLAKE    if HAVE_CHIPSET_SKYLAKE
+	default CHIPSET_GEMINILAKE if HAVE_CHIPSET_GEMINILAKE
+	default CHIPSET_APOLLOLAKE if HAVE_CHIPSET_APOLLOLAKE
+	default CHIPSET_BRASWELL   if HAVE_CHIPSET_BRASWELL
+	default CHIPSET_MT8183 	   if HAVE_CHIPSET_MT8183
+	default CHIPSET_MT817X 	   if HAVE_CHIPSET_MT817X
+	default CHIPSET_RK3399 	   if HAVE_CHIPSET_RK3399
+	default CHIPSET_RK3288 	   if HAVE_CHIPSET_RK3288
+	default CHIPSET_SDM845 	   if HAVE_CHIPSET_SDM845
+	default CHIPSET_STONEY 	   if HAVE_CHIPSET_STONEY
+	default CHIPSET_ECDRIVEN   if HAVE_CHIPSET_ECDRIVEN
+
+config CHIPSET_TIGERLAKE
+	bool "Intel Tigerlake (x86)"
+	select CHIPSET_ICL_TGL
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_ICELAKE
+	bool "Intel Icelake (x86)"
+	select CHIPSET_ICL_TGL
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_CANNONLAKE
+	bool "Intel Cannonlake (x86)"
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_COMETLAKE
+	bool "Intel Cometlake (x86)"
+	select POWER_COMMON
+config CHIPSET_SKYLAKE
+	bool "Intel Skylake (x86)"
+	select POWER_COMMON
+	select CHIPSET_X86_RSMRST_DELAY
+config CHIPSET_GEMINILAKE
+	bool "Intel Geminilake (x86)"
+	select CHIPSET_APL_GLK
+	select POWER_COMMON
+config CHIPSET_APOLLOLAKE
+	bool "Intel Apollolake (x86)"
+	select CHIPSET_APL_GLK
+	select POWER_COMMON
+config CHIPSET_BRASWELL
+	bool "Intel Braswell (x86)"
+	select POWER_COMMON
+config CHIPSET_MT8183
+	bool "MediaTek MT8183"
+config CHIPSET_MT817X
+	bool "MediaTek MT817x"
+config CHIPSET_RK3399
+	bool "Rockchip rk3399"
+config CHIPSET_RK3288
+	bool "Rockchip rk3288"
+config CHIPSET_SDM845
+	bool "Qualcomm SDM845"
+config CHIPSET_STONEY
+	bool "AMD Stoney (x86)"
+config CHIPSET_ECDRIVEN
+	bool "Dummy power module"
+
+endchoice
+
+config CHIPSET_ICL_TGL
+	bool
+
+config CHIPSET_APL_GLK
+	bool
+
+config CHIPSET_POWER_SEQ_VERSION
+	int "CHIPSET_POWER_SEQ_VERSION"
+	default 0
+	help
+	  Redefine when we need a different power-on sequence on the same chipset.
+
+config CHIPSET_HAS_PLATFORM_PMIC_RESET
+	bool "Support PMIC reset (using LDO_EN) in chipset"
+
+config CHIPSET_HAS_PRE_INIT_CALLBACK
+	bool "Board requires chipset pre-init callback"
+	default y if CHIPSET_APL_GLK
+
+config CHIPSET_RESET_HOOK
+	bool "Enable chipset reset hook, requires a deferrable function"
+
+config CHIPSET_X86_RSMRST_DELAY
+	bool "Enable delayed RSMRST to PCH"
+	help
+	  Enable if chipset requires delay between power signals going high
+	  and deasserting RSMRST to PCH.
+
+config CPU_PROCHOT_ACTIVE_LOW
+	bool "PROCHOT signal is active low"
+	help
+	  On x86 systems, define this option if the CPU_PROCHOT signal is active low"
+
+endmenu # "Chipset config"
