@@ -17,7 +17,7 @@
 #error "fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE"
 #endif
 
-static int get_ikm(uint8_t *ikm)
+static enum ec_error_list get_ikm(uint8_t *ikm)
 {
 	int ret;
 
@@ -54,9 +54,10 @@ static void hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size,
 	hmac_SHA256(prk, salt, salt_size, ikm, ikm_size);
 }
 
-static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
-				uint8_t *prk, size_t prk_size,
-				uint8_t *info, size_t info_size)
+static enum ec_error_list hkdf_expand_one_step(uint8_t *out_key,
+					       size_t out_key_size,
+					       uint8_t *prk, size_t prk_size,
+					       uint8_t *info, size_t info_size)
 {
 	uint8_t key_buf[SHA256_DIGEST_SIZE];
 	uint8_t message_buf[SHA256_DIGEST_SIZE + 1];
@@ -83,9 +84,9 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	return EC_SUCCESS;
 }
 
-int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
+enum ec_error_list derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 {
-	int ret;
+	enum ec_error_list ret;
 	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
 	uint8_t prk[SHA256_DIGEST_SIZE];
 
@@ -115,11 +116,11 @@ int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 	return ret;
 }
 
-int aes_gcm_encrypt(const uint8_t *key, int key_size,
-		    const uint8_t *plaintext,
-		    uint8_t *ciphertext, int text_size,
-		    const uint8_t *nonce, int nonce_size,
-		    uint8_t *tag, int tag_size)
+enum ec_error_list aes_gcm_encrypt(const uint8_t *key, int key_size,
+				   const uint8_t *plaintext,
+				   uint8_t *ciphertext, int text_size,
+				   const uint8_t *nonce, int nonce_size,
+				   uint8_t *tag, int tag_size)
 {
 	int res;
 	AES_KEY aes_key;
@@ -148,10 +149,11 @@ int aes_gcm_encrypt(const uint8_t *key, int key_size,
 	return EC_SUCCESS;
 }
 
-int aes_gcm_decrypt(const uint8_t *key, int key_size, uint8_t *plaintext,
-		    const uint8_t *ciphertext, int text_size,
-		    const uint8_t *nonce, int nonce_size,
-		    const uint8_t *tag, int tag_size)
+enum ec_error_list aes_gcm_decrypt(const uint8_t *key, int key_size,
+				   uint8_t *plaintext,
+				   const uint8_t *ciphertext, int text_size,
+				   const uint8_t *nonce, int nonce_size,
+				   const uint8_t *tag, int tag_size)
 {
 	int res;
 	AES_KEY aes_key;
