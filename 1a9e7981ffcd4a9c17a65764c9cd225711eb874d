@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80e445de_3d85fd21",
+        "filename": "common/chargen.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-21T00:38:11Z",
+      "side": 1,
+      "message": "this seems odd - how can you be receiving characters from both channels?\n\nWhat happens on devices where there is no usb console?\n\nHow fast can you saturate the uart line before and after this patch on a typical EC?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "1a9e7981ffcd4a9c17a65764c9cd225711eb874d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
