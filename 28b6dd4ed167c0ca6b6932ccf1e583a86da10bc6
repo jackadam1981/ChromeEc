@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20ef0f4c_0c94831e",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-21T00:25:09Z",
+      "side": 1,
+      "message": "Hello Ruben, can you tell why it waits here if TX is valid?\n\nI think it should wait until TX gets vald.\nMeanwhile, in my observation, this function always returns False because of EP_TX_NAK status.\nSo, the behavior seems ok, but the function name and logic are quite confusing.",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "28b6dd4ed167c0ca6b6932ccf1e583a86da10bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14869e4b_a4677ff5",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-09-21T00:25:09Z",
+      "side": 1,
+      "message": "This should have been quoted from Line 162 (just like done in cr50), but this patch has used the reversed value by mistake.\nusb_console_tx_valid() always returned FALSE because STM32_USB_EP(USB_EP_CONSOLE) value was 0x00003021 always, where EP_TX status is EP_TX_NAK (0x20) not EP_TX_VALID(0x30).\nThe logic and function name are confusing, but I am leaving this to servod team.",
+      "range": {
+        "startLine": 277,
+        "startChar": 21,
+        "endLine": 277,
+        "endChar": 45
+      },
+      "revId": "28b6dd4ed167c0ca6b6932ccf1e583a86da10bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
