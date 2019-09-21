@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "024abdbd_d5696754",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-09-21T00:35:44Z",
+      "side": 1,
+      "message": "good question, I\u0027m not familiar with this, let me add Nick to see if he has more input.",
+      "parentUuid": "20ef0f4c_0c94831e",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "28b6dd4ed167c0ca6b6932ccf1e583a86da10bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14869e4b_a4677ff5",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 6
