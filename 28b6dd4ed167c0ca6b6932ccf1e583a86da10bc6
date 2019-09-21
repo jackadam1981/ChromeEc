@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bf851a08_f1551338",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-21T01:21:59Z",
+      "side": 1,
+      "message": "note that the uart console buffer could also overflow, and the characters will be dropped on the floor, this is why there is cflush() which has to be added manually.\n\nThe original intention of chargen testing was for the case where the traffic source is completely decoupled (as when AP or EC are sending characters through Cr50 uart) and there is no means of flow control.\n\nWhat is the purpose of testing sending characters to the USB channel - see if we CPU can saturate the USB channel?\n\nI still don\u0027t see why someone wants to test USB channel in this case, but at the very least I don\u0027t think that USB and UART should be mixed up in the same test.",
+      "parentUuid": "7d35551b_1b8da88b",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "28b6dd4ed167c0ca6b6932ccf1e583a86da10bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14869e4b_a4677ff5",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 6
