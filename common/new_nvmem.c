@@ -1024,7 +1024,14 @@ static void start_new_flash_page(size_t data_size)
 	ph.data_offset = sizeof(ph) + data_size;
 	ph.page_number = master_at.mt.ph->page_number + 1;
 	ph.page_hash = calculate_page_header_hash(&ph);
-	master_at.list_index++;
+
+	/*
+	 * In certain cases list_index could be pointing at an empty page, no
+	 * need to advance it in that case.
+	 */
+	if (list_element_to_ph(master_at.list_index))
+		master_at.list_index++;
+
 	if (master_at.list_index == ARRAY_SIZE(page_list))
 		report_no_payload_failure(NVMEMF_PAGE_LIST_OVERFLOW);
 
