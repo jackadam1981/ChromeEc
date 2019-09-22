@@ -1,11 +1,11 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 """Unit tests for the EC-3PO Console interface."""
 
-from __future__ import print_function
+
 
 import binascii
 # pylint: disable=cros-logging-import
@@ -14,9 +14,9 @@ import mock
 import tempfile
 import unittest
 
-import console
-import interpreter
-import threadproc_shim
+from . import console
+from . import interpreter
+from . import threadproc_shim
 
 ESC_STRING = chr(console.ControlKey.ESC)
 

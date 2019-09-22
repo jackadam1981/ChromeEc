@@ -23,7 +23,7 @@ SWIG = /usr/bin/swig
 vpath %c $(src) ../../chip/g/dcrypto $(src)/testlib
 
 CFLAGS = -fPIC
-CFLAGS += -I /usr/include/python2.7
+CFLAGS += -I /usr/include/python3.7m
 CFLAGS += -I../../../../third_party/cryptoc/include
 CFLAGS += -I../../board/cr50
 CFLAGS += -I../../chip/g

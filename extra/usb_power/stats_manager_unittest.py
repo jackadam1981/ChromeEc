@@ -4,7 +4,7 @@
 
 """Unit tests for StatsManager."""
 
-from __future__ import print_function
+
 import json
 import os
 import re
@@ -12,7 +12,7 @@ import shutil
 import tempfile
 import unittest
 
-import stats_manager
+from . import stats_manager
 
 
 class TestStatsManager(unittest.TestCase):
@@ -77,11 +77,11 @@ class TestStatsManager(unittest.TestCase):
   def test_AddSampleNoFloatNotAcceptNaN(self):
     """Adding a non-number raises a StatsManagerError if accept_nan is False."""
     self.data = stats_manager.StatsManager(accept_nan=False)
-    with self.assertRaisesRegexp(stats_manager.StatsManagerError,
+    with self.assertRaisesRegex(stats_manager.StatsManagerError,
                                  'accept_nan is false. Cannot add NaN sample.'):
       # adding a fake NaN: one that gets converted into NaN internally
       self.data.AddSample('Test', 'fiesta')
-    with self.assertRaisesRegexp(stats_manager.StatsManagerError,
+    with self.assertRaisesRegex(stats_manager.StatsManagerError,
                                  'accept_nan is false. Cannot add NaN sample.'):
       # adding a real NaN
       self.data.AddSample('Test', float('NaN'))
@@ -136,9 +136,9 @@ class TestStatsManager(unittest.TestCase):
     """SaveRawData stores same data as fed in."""
     self._populate_dummy_stats()
     dirname = 'unittest_raw_data'
-    expected_files = set(['A_mW.txt', 'B_mV.txt'])
+    expected_files = {'A_mW.txt', 'B_mV.txt'}
     fnames = self.data.SaveRawData(self.tempdir, dirname)
-    files_returned = set([os.path.basename(f) for f in fnames])
+    files_returned = {os.path.basename(f) for f in fnames}
     # Assert that only the expected files got returned.
     self.assertEqual(expected_files, files_returned)
     # Assert that only the returned files are in the outdir.
@@ -229,7 +229,7 @@ class TestStatsManager(unittest.TestCase):
     data.AddSample('D-domain', 17)
     data.CalculateStats()
     summary_str = data.SummaryToString()
-    self.assertRegexpMatches(summary_str, d_b_a_c_regexp)
+    self.assertRegex(summary_str, d_b_a_c_regexp)
 
   def test_MakeUniqueFName(self):
     data = stats_manager.StatsManager()
@@ -248,7 +248,7 @@ class TestStatsManager(unittest.TestCase):
     # Assert the reported fname is the same as the expected fname
     self.assertEqual(expected_fname, fname)
     # Assert only the reported fname is output (in the tempdir)
-    self.assertEqual(set([os.path.basename(fname)]),
+    self.assertEqual({os.path.basename(fname)},
                      set(os.listdir(self.tempdir)))
     with open(fname, 'r') as f:
       self.assertEqual(
@@ -278,7 +278,7 @@ class TestStatsManager(unittest.TestCase):
     # Assert the reported fname is the same as the expected fname
     self.assertEqual(expected_fname, fname)
     # Assert only the reported fname is output (in the tempdir)
-    self.assertEqual(set([os.path.basename(fname)]),
+    self.assertEqual({os.path.basename(fname)},
                      set(os.listdir(self.tempdir)))
     with open(fname, 'r') as f:
       summary = json.load(f)

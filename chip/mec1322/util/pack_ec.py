@@ -24,7 +24,7 @@ CRC_TABLE = [0x00, 0x07, 0x0e, 0x09, 0x1c, 0x1b, 0x12, 0x15,
 
 def Crc8(crc, data):
   """Update CRC8 value."""
-  data_bytes = map(lambda b: ord(b) if isinstance(b, str) else b, data)
+  data_bytes = [ord(b) if isinstance(b, str) else b for b in data]
   for v in data_bytes:
     crc = ((crc << 4) & 0xff) ^ (CRC_TABLE[(crc >> 4) ^ (v >> 4)]);
     crc = ((crc << 4) & 0xff) ^ (CRC_TABLE[(crc >> 4) ^ (v & 0xf)]);
@@ -37,7 +37,7 @@ def GetEntryPoint(payload_file):
     s = f.read(4)
   return struct.unpack('<I', s)[0]
 
-def GetPayloadFromOffset(payload_file,offset):
+def GetPayloadFromOffset(payload_file, offset):
   """Read payload and pad it to 64-byte aligned."""
   with open(payload_file, 'rb') as f:
     f.seek(offset)
@@ -67,8 +67,7 @@ def GetPublicKey(pem_file):
     if line.startswith('publicExponent'):
       exp = int(line.split(' ')[1], 10)
   modulus_raw.reverse()
-  modulus = bytearray(''.join(map(lambda x: chr(int(x, 16)),
-                                  modulus_raw[0:256])))
+  modulus = bytearray(''.join([chr(int(x, 16)) for x in modulus_raw[0:256]]))
   return struct.pack('<Q', exp), modulus
 
 def GetSpiClockParameter(args):
@@ -144,7 +143,7 @@ def PacklfwRoImage(rorw_file, loader_file, image_size):
   bytes from the loader_file appended
   return the filename"""
   fo=tempfile.NamedTemporaryFile(delete=False) # Need to keep file around
-  with open(loader_file,'rb') as fin1:
+  with open(loader_file, 'rb') as fin1:
     pro = fin1.read()
   fo.write(pro)
   with open(rorw_file, 'rb') as fin:
@@ -202,7 +201,7 @@ def parseargs():
 # Debug helper routine
 def dumpsects(spi_list):
   for s in spi_list:
-    print "%x %d %s\n"%(s[0],len(s[1]),s[2])
+    print("%x %d %s\n"%(s[0], len(s[1]), s[2]))
 
 def main():
   args = parseargs()
@@ -223,7 +222,7 @@ def main():
   header_signature = SignByteArray(header, args.header_key)
   tag = BuildTag(args)
   # truncate the RW to 128k
-  payloadrw = GetPayloadFromOffset(args.input,args.image_size)[:128*1024]
+  payloadrw = GetPayloadFromOffset(args.input, args.image_size)[:128*1024]
   os.remove(rorofile)           # clean up the temp file
 
   spi_list.append((args.header_loc, header, "header"))

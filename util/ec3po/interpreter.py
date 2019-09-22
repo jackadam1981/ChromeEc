@@ -12,14 +12,14 @@ additionally supports automatic command retrying if the EC drops a character in
 a command.
 """
 
-from __future__ import print_function
+
 
 import binascii
 # pylint: disable=cros-logging-import
 import copy
 import logging
 import os
-import Queue
+import queue
 import select
 import traceback
 
@@ -106,7 +106,7 @@ class Interpreter(object):
     self.log_level = log_level
     self.inputs = [self.ec_uart_pty, self.cmd_pipe]
     self.outputs = []
-    self.ec_cmd_queue = Queue.Queue()
+    self.ec_cmd_queue = queue.Queue()
     self.last_cmd = ''
     self.enhanced_ec = False
     self.interrogating = False

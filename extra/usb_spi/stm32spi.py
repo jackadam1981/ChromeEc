@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -32,14 +32,14 @@ class SSpiBus(object):
     if dev is None:
       raise Exception("SPI", "USB device not found")
 
-    print "Found stm32: %04x:%04x" % (vendor, product)
+    print("Found stm32: %04x:%04x" % (vendor, product))
     self._dev = dev
 
     # Get an endpoint instance.
     cfg = dev.get_active_configuration()
     intf = usb.util.find_descriptor(cfg, bInterfaceNumber=interface)
     self._intf = intf
-    print "InterfaceNumber: %s" % intf.bInterfaceNumber
+    print("InterfaceNumber: %s" % intf.bInterfaceNumber)
 
     read_ep = usb.util.find_descriptor(
         intf,
@@ -51,7 +51,7 @@ class SSpiBus(object):
     )
 
     self._read_ep = read_ep
-    print "Reader endpoint: 0x%x" % read_ep.bEndpointAddress
+    print("Reader endpoint: 0x%x" % read_ep.bEndpointAddress)
 
     write_ep = usb.util.find_descriptor(
         intf,
@@ -63,10 +63,10 @@ class SSpiBus(object):
     )
 
     self._write_ep = write_ep
-    print "Writer endpoint: 0x%x" % write_ep.bEndpointAddress
+    print("Writer endpoint: 0x%x" % write_ep.bEndpointAddress)
 
     self.enable(True)
-    print "Set up stm32 spi"
+    print("Set up stm32 spi")
 
   def enable(self, enable):
     # USB_RIR_OUT = 0 | USB_TYPE_VENDOR = (0x02 << 5) |
@@ -78,11 +78,11 @@ class SSpiBus(object):
     else:
       bmRequest = 0x1
 
-    print "ctrl_transfer(0x%x, 0x%x, 0, 0x%x, null)" % (
-        bmRequestType, bmRequest, self._intf.bInterfaceNumber)
+    print("ctrl_transfer(0x%x, 0x%x, 0, 0x%x, null)" % (
+        bmRequestType, bmRequest, self._intf.bInterfaceNumber))
     ret = self._dev.ctrl_transfer(
         bmRequestType, bmRequest, 0, self._intf.bInterfaceNumber, '')
-    print "ctrl_transfer ret - %s" % ret
+    print("ctrl_transfer ret - %s" % ret)
 
 
 
@@ -101,8 +101,8 @@ class SSpiBus(object):
       write: [write_count, read_count, data ... ]
       read: [data .. ]
     """
-    print "SSpi.wr_rd(write_list=%s, read_count=%s)" % (
-        write_list, read_count)
+    print("SSpi.wr_rd(write_list=%s, read_count=%s)" % (
+        write_list, read_count))
 
     # Clean up args from python style to correct types.
     write_length = 0
@@ -113,19 +113,19 @@ class SSpiBus(object):
 
     # Send wr_rd command to stm32.
     cmd = [write_length, read_count] + write_list
-    print "WR: %s" % cmd
+    print("WR: %s" % cmd)
     ret = self._write_ep.write(cmd, 100)
 
-    print "RET: %s " % ret
+    print("RET: %s " % ret)
 
     # Read back response if necessary.
     bytesread = self._read_ep.read(read_count + 2, 1000)
-    print "BYTES: %s " % bytesread
+    print("BYTES: %s " % bytesread)
 
     if len(bytesread) < 2:
       raise Exception("SPI", "Read status failed.")
 
-    print "STATUS: 0x%02x%02x" % (int(bytesread[1]), int(bytesread[0]))
+    print("STATUS: 0x%02x%02x" % (int(bytesread[1]), int(bytesread[0])))
     return bytesread[2:]
 
 

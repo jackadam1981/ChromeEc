@@ -4,7 +4,7 @@
 
 """Allow creation of uart/console interface via stm32 usb endpoint."""
 
-from __future__ import print_function
+
 
 import os
 import select
@@ -15,7 +15,7 @@ import time
 import tty
 import usb
 
-import stm32usb
+from . import stm32usb
 
 
 class SuartError(Exception):

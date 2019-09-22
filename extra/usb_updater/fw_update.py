@@ -5,7 +5,7 @@
 
 # Upload firmware over USB
 
-from __future__ import print_function
+
 
 import argparse
 import array
@@ -85,7 +85,7 @@ class Supdate(object):
       try:
         dev = dev_list[0]
       except:
-        dev = dev_list.next()
+        dev = next(dev_list)
 
     debuglog("Found stm32: %04x:%04x" % (vendor, product))
     self._dev = dev

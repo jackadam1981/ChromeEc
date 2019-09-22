@@ -96,7 +96,7 @@ _RFC_TEST_INPUTS = (
 
 def _rfc_tests(tpm):
   for data in _RFC_TEST_INPUTS:
-    IKM, salt, info, OKM = map(a2b, data[:-1])
+    IKM, salt, info, OKM = list(map(a2b, data[:-1]))
     test_name = 'HKDF:SHA256:%s' % data[-1]
     cmd = _rfc_test_cmd(salt, IKM, info, len(OKM))
     wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.HKDF, cmd))
@@ -105,7 +105,7 @@ def _rfc_tests(tpm):
     if result != OKM:
       raise subcmd.TpmTestError('%s error:%s%s' % (
           test_name, utils.hex_dump(result), utils.hex_dump(OKM)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def hkdf_test(tpm):

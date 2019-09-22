@@ -21,6 +21,7 @@ import struct
 
 import subcmd
 import utils
+from functools import reduce
 
 _MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -633,7 +634,7 @@ _KEYTEST_INPUTS = (
 _KEYGEN_INPUTS = (
   (768, 65537, '', None),
   (1024, 65537, 'rsa_test', None),
-  (2048, 65537, 'RSA key by vendor', 20811475686431332186511278472307159547870512766846593830860105577496044159545322178313772755518365593670114793803805067608811418757734989708137784444223785391864604211835387393923163468734914392307047296990698533218399115126417934050463597455237478939601236799120239663591264311485133747167378663829046579164891864068853210530642835833947569643788911200934265596274935082689832626616967124524353322373059893974744194447740045242468136414689225322177212281193879756355471091445748150740871146034049776312457888356154834233819876846764944450478069436248506560967902863015152471662817623176815923756421011384149834497587L),
+  (2048, 65537, 'RSA key by vendor', 20811475686431332186511278472307159547870512766846593830860105577496044159545322178313772755518365593670114793803805067608811418757734989708137784444223785391864604211835387393923163468734914392307047296990698533218399115126417934050463597455237478939601236799120239663591264311485133747167378663829046579164891864068853210530642835833947569643788911200934265596274935082689832626616967124524353322373059893974744194447740045242468136414689225322177212281193879756355471091445748150740871146034049776312457888356154834233819876846764944450478069436248506560967902863015152471662817623176815923756421011384149834497587),
   (2048, 65537, '', None),
 )
 
@@ -666,7 +667,7 @@ def _encrypt_tests(tpm):
     if padding == 'NULL':
       # Check for leading zeros.
       if reduce(lambda x, y: x | y,
-                map(ord, plaintext[:len(plaintext) - len(msg)])):
+                list(map(ord, plaintext[:len(plaintext) - len(msg)]))):
         raise subcmd.TpmTestError('%s error:%s%s' % (
           test_name, utils.hex_dump(msg), utils.hex_dump(plaintext)))
       else:
@@ -674,7 +675,7 @@ def _encrypt_tests(tpm):
     if msg != plaintext:
       raise subcmd.TpmTestError('%s error:%s%s' % (
           test_name, utils.hex_dump(msg), utils.hex_dump(plaintext)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _sign_tests(tpm):
@@ -698,7 +699,7 @@ def _sign_tests(tpm):
     if not verifier.verify(h, signature):
       raise subcmd.TpmTestError('%s error' % (
           test_name,))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _verify_tests(tpm):
@@ -721,7 +722,7 @@ def _verify_tests(tpm):
     if verified != expected:
       raise subcmd.TpmTestError('%s error:%s%s' % (
           test_name, utils.hex_dump(verified), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _keytest_tests(tpm):
@@ -735,7 +736,7 @@ def _keytest_tests(tpm):
     if valid != expected:
       raise subcmd.TpmTestError('%s error:%s%s' % (
           test_name, utils.hex_dump(valid), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _keygen_tests(tpm):
@@ -766,7 +767,7 @@ def _keygen_tests(tpm):
     if p == q:
       raise subcmd.TpmTestError('%s error:%s' % (
           test_name, utils.hex_dump(result)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _primegen_tests(tpm):
@@ -793,7 +794,7 @@ def _primegen_tests(tpm):
     if p != calculated:
       raise subcmd.TpmTestError('%s error:%s' % (
           test_name, utils.hex_dump(result)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _x509_verify_tests(tpm):
@@ -805,7 +806,7 @@ def _x509_verify_tests(tpm):
   if valid != expected:
     raise subcmd.TpmTestError('%s error:%s%s' % (
       test_name, utils.hex_dump(valid), utils.hex_dump(expected)))
-  print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+  print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def rsa_test(tpm):

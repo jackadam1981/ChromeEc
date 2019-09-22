@@ -154,7 +154,7 @@ class ptyDriver(object):
         lastindex = match.lastindex if match and match.lastindex else 0
         # Create a tuple which contains the entire matched string and all
         # the subgroups of the match.
-        result = match.group(*range(lastindex + 1)) if match else None
+        result = match.group(*list(range(lastindex + 1))) if match else None
         result_list.append(result)
     except pexpect.TIMEOUT:
       raise ptyError('Timeout waiting for response.')
@@ -187,7 +187,7 @@ class ptyDriver(object):
           lastindex = match.lastindex if match and match.lastindex else 0
           # Create a tuple which contains the entire matched string and all
           # the subgroups of the match.
-          result = match.group(*range(lastindex + 1)) if match else None
+          result = match.group(*list(range(lastindex + 1))) if match else None
           result_list.append(result)
         except pexpect.TIMEOUT:
           break

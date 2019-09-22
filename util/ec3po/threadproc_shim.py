@@ -33,7 +33,7 @@ wait until after completing the TODO above to stop using multiprocessing.Pipe!
 """
 
 # Imports to bring objects into this namespace for users of this module.
-from Queue import Queue
+from queue import Queue
 from multiprocessing import Pipe
 from threading import Thread as ThreadOrProcess
 

@@ -5,7 +5,7 @@
 
 """Module for testing hash functions using extended commands."""
 
-from __future__ import print_function
+
 
 import hashlib
 import struct

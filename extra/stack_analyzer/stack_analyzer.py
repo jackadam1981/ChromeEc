@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2017 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -13,7 +13,7 @@
 
 """
 
-from __future__ import print_function
+
 
 import argparse
 import collections
@@ -369,8 +369,8 @@ class AndesAnalyzer(object):
           if self.OPERANDGROUP_RE.match(operandgroup_text) is not None:
             # capture number & transfer string to integer
             oprandgrouphead = operandgroup_text.split(',')[0]
-            rx=int(filter(str.isdigit, oprandgrouphead.split('~')[0]))
-            ry=int(filter(str.isdigit, oprandgrouphead.split('~')[1]))
+            rx=int(list(filter(str.isdigit, oprandgrouphead.split('~')[0])))
+            ry=int(list(filter(str.isdigit, oprandgrouphead.split('~')[1])))
 
             stack_frame += ((len(operandgroup_text.split(','))+ry-rx) *
                           self.GENERAL_PURPOSE_REGISTER_SIZE)
@@ -387,8 +387,8 @@ class AndesAnalyzer(object):
           if self.OPERANDGROUP_RE.match(operandgroup_text) is not None:
             # capture number & transfer string to integer
             oprandgrouphead = operandgroup_text.split(',')[0]
-            rx=int(filter(str.isdigit, oprandgrouphead.split('~')[0]))
-            ry=int(filter(str.isdigit, oprandgrouphead.split('~')[1]))
+            rx=int(list(filter(str.isdigit, oprandgrouphead.split('~')[0])))
+            ry=int(list(filter(str.isdigit, oprandgrouphead.split('~')[1])))
 
             stack_frame += ((len(operandgroup_text.split(','))+ry-rx) *
                           self.GENERAL_PURPOSE_REGISTER_SIZE)
@@ -773,7 +773,7 @@ class StackAnalyzer(object):
       line_index += 1
 
     # Resolve callees of functions.
-    for function in function_map.values():
+    for function in list(function_map.values()):
       for callsite in function.callsites:
         if callsite.target is not None:
           # Remain the callee as None if we can't resolve it.
@@ -850,7 +850,7 @@ class StackAnalyzer(object):
 
           # No path signature but all symbol signatures of functions are same.
           # Assume they are the same functions, so there is no ambiguity.
-          (function_group,) = group_map.values()
+          (function_group,) = list(group_map.values())
         else:
           function_group = group_map.get(path)
 
@@ -961,7 +961,7 @@ class StackAnalyzer(object):
     invalid_sigtxts = set()
 
     if 'add' in self.annotation and self.annotation['add'] is not None:
-      for src_sigtxt, dst_sigtxts in self.annotation['add'].items():
+      for src_sigtxt, dst_sigtxts in list(self.annotation['add'].items()):
         src_sig = NormalizeSignature(src_sigtxt)
         if src_sig is None:
           invalid_sigtxts.add(src_sigtxt)
@@ -1061,7 +1061,7 @@ class StackAnalyzer(object):
     (add_rules, remove_rules, invalid_sigtxts) = self.LoadAnnotation()
 
     signature_set = set()
-    for src_sig, dst_sigs in add_rules.items():
+    for src_sig, dst_sigs in list(add_rules.items()):
       signature_set.add(src_sig)
       signature_set.update(dst_sigs)
 
@@ -1074,7 +1074,7 @@ class StackAnalyzer(object):
 
     # Build the indirect callsite map indexed by callsite signature.
     indirect_map = collections.defaultdict(set)
-    for function in function_map.values():
+    for function in list(function_map.values()):
       for callsite in function.callsites:
         if callsite.target is not None:
           continue
@@ -1097,7 +1097,7 @@ class StackAnalyzer(object):
     remove_list = list()
     eliminated_addrs = set()
 
-    for src_sig, dst_sigs in add_rules.items():
+    for src_sig, dst_sigs in list(add_rules.items()):
       src_funcs = set(signature_map.get(src_sig, []))
       # Try to match the source signature to the indirect callsites. Even if it
       # can't be found in disassembly.
@@ -1160,7 +1160,7 @@ class StackAnalyzer(object):
     for sigtxt in invalid_sigtxts:
       failed_sigtxts.add((sigtxt, self.ANNOTATION_ERROR_INVALID))
 
-    for sig, error in sig_error_map.items():
+    for sig, error in list(sig_error_map.items()):
       failed_sigtxts.add((StringifySignature(sig), error))
 
     return (add_set, remove_list, eliminated_addrs, failed_sigtxts)
@@ -1208,7 +1208,7 @@ class StackAnalyzer(object):
     # Delete simple remove paths.
     remove_simple = set(tuple(p) for p in remove_list if len(p) <= 2)
     edge_set = set()
-    for function in function_map.values():
+    for function in list(function_map.values()):
       cleaned_callsites = []
       for callsite in function.callsites:
         if ((callsite.callee,) in remove_simple or
@@ -1402,7 +1402,7 @@ class StackAnalyzer(object):
     scc_index_map = {}
     scc_stack = []
     cycle_groups = []
-    for function in function_map.values():
+    for function in list(function_map.values()):
       if function.stack_max_usage is None:
         Traverse((function.address, initial_positions))
 
@@ -1517,11 +1517,11 @@ class StackAnalyzer(object):
 
               text_list.append(order_text)
 
-          for _, text in sorted(text_list, key=lambda (k, _): k):
+          for _, text in sorted(text_list, key=lambda k__: k__[0]):
             print(text)
 
     print('Unresolved indirect callsites:')
-    for function in function_map.values():
+    for function in list(function_map.values()):
       indirect_callsites = []
       for callsite in function.callsites:
         if callsite.target is None:
@@ -1533,7 +1533,7 @@ class StackAnalyzer(object):
         for address in indirect_callsites:
           text_list.append(OutputInlineStack(address, '        '))
 
-        for _, text in sorted(text_list, key=lambda (k, _): k):
+        for _, text in sorted(text_list, key=lambda k__1: k__1[0]):
           print(text)
 
     print('Unresolved annotation signatures:')

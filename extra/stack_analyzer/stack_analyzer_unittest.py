@@ -1,11 +1,11 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2017 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 """Tests for Stack Analyzer classes and functions."""
 
-from __future__ import print_function
+
 
 import mock
 import os
@@ -270,7 +270,7 @@ class StackAnalyzerTest(unittest.TestCase):
     (add_rules, remove_rules, invalid_sigtxts) = self.analyzer.LoadAnnotation()
     self.assertEqual(add_rules, {
       ('touchpad_calc', None, None):
-        set([('console_task', None, None), ('hook_task', None, None)])})
+        {('console_task', None, None), ('hook_task', None, None)}})
 
     funcs = {
         0x1000: sa.Function(0x1000, 'hook_task', 0, []),
@@ -319,7 +319,7 @@ class StackAnalyzerTest(unittest.TestCase):
     self.assertEqual(invalid_sigtxts, {'touchpad?calc['})
 
     signature_set = set()
-    for src_sig, dst_sigs in add_rules.items():
+    for src_sig, dst_sigs in list(add_rules.items()):
       signature_set.add(src_sig)
       signature_set.update(dst_sigs)
 
@@ -342,7 +342,7 @@ class StackAnalyzerTest(unittest.TestCase):
         ('inlined_mul', None, None): {funcs[0x13000], funcs[0x13100]},
     }
     self.assertEqual(len(signature_map), len(expect_signature_map))
-    for sig, funclist in signature_map.items():
+    for sig, funclist in list(signature_map.items()):
       self.assertEqual(set(funclist), expect_signature_map[sig])
 
     self.assertEqual(add_set, {
@@ -583,7 +583,7 @@ class StackAnalyzerTest(unittest.TestCase):
         {funcs[0x4000], funcs[0x8000], funcs[0x9000]},
         {funcs[0x7000]},
     ]
-    for func in funcs.values():
+    for func in list(funcs.values()):
       (stack_max_usage, stack_max_path) = expect_func_stack[func.address]
       self.assertEqual(func.stack_max_usage, stack_max_usage)
       self.assertEqual(func.stack_max_path, stack_max_path)
@@ -622,12 +622,12 @@ class StackAnalyzerTest(unittest.TestCase):
         ['addr2line', '-f', '-e', './ec.RW.elf', '123456'])
     checkoutput_mock.reset_mock()
 
-    with self.assertRaisesRegexp(sa.StackAnalyzerError,
+    with self.assertRaisesRegex(sa.StackAnalyzerError,
                                  'addr2line failed to resolve lines.'):
       checkoutput_mock.side_effect = subprocess.CalledProcessError(1, '')
       self.analyzer.AddressToLine(0x5678)
 
-    with self.assertRaisesRegexp(sa.StackAnalyzerError,
+    with self.assertRaisesRegex(sa.StackAnalyzerError,
                                  'Failed to run addr2line.'):
       checkoutput_mock.side_effect = OSError()
       self.analyzer.AddressToLine(0x9012)
@@ -681,12 +681,12 @@ class StackAnalyzerTest(unittest.TestCase):
           mock.call('    fake_func: function is not found'),
       ])
 
-    with self.assertRaisesRegexp(sa.StackAnalyzerError,
+    with self.assertRaisesRegex(sa.StackAnalyzerError,
                                  'Failed to run objdump.'):
       checkoutput_mock.side_effect = OSError()
       self.analyzer.Analyze()
 
-    with self.assertRaisesRegexp(sa.StackAnalyzerError,
+    with self.assertRaisesRegex(sa.StackAnalyzerError,
                                  'objdump failed to disassemble.'):
       checkoutput_mock.side_effect = subprocess.CalledProcessError(1, '')
       self.analyzer.Analyze()
@@ -740,12 +740,12 @@ class StackAnalyzerTest(unittest.TestCase):
           mock.call('    fake_func: function is not found'),
       ])
 
-    with self.assertRaisesRegexp(sa.StackAnalyzerError,
+    with self.assertRaisesRegex(sa.StackAnalyzerError,
                                  'Failed to run objdump.'):
       checkoutput_mock.side_effect = OSError()
       self.analyzer.Analyze()
 
-    with self.assertRaisesRegexp(sa.StackAnalyzerError,
+    with self.assertRaisesRegex(sa.StackAnalyzerError,
                                  'objdump failed to disassemble.'):
       checkoutput_mock.side_effect = subprocess.CalledProcessError(1, '')
       self.analyzer.Analyze()

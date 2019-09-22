@@ -1,11 +1,11 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 """Unit tests for the EC-3PO interpreter."""
 
-from __future__ import print_function
+
 
 # pylint: disable=cros-logging-import
 import logging
@@ -13,8 +13,8 @@ import mock
 import tempfile
 import unittest
 
-import interpreter
-import threadproc_shim
+from . import interpreter
+from . import threadproc_shim
 
 class TestEnhancedECBehaviour(unittest.TestCase):
   """Test case to verify all enhanced EC interpretation tasks."""

@@ -7,7 +7,7 @@
    or other usb device that exports a USB power logging interface.
 """
 
-from __future__ import print_function
+
 import argparse
 import array
 from distutils import sysconfig
@@ -22,7 +22,7 @@ import traceback
 
 import usb
 
-from stats_manager import StatsManager
+from .stats_manager import StatsManager
 
 # Directory where hdctools installs configuration files into.
 LIB_DIR = os.path.join(sysconfig.get_python_lib(standard_lib=False), 'servo',
@@ -179,7 +179,7 @@ class Spower(object):
         dev = dev_list[0]
       except TypeError:
         # Incompatible pyUsb version.
-        dev = dev_list.next()
+        dev = next(dev_list)
 
     self._logger.debug("Found USB device: %04x:%04x", vendor, product)
     self._dev = dev
@@ -624,7 +624,7 @@ class powerlog(object):
     used_boards = []
     for name in self._names:
       success = False
-      for key in self._pwr.keys():
+      for key in list(self._pwr.keys()):
         if self._pwr[key].add_ina_name(name):
           success = True
           if key not in used_boards:
@@ -634,11 +634,11 @@ class powerlog(object):
                         "sweetberry, or bad board file?)" % name)
 
     # Evict unused boards.
-    for key in self._pwr.keys():
+    for key in list(self._pwr.keys()):
       if key not in used_boards:
         self._pwr.pop(key)
 
-    for key in self._pwr.keys():
+    for key in list(self._pwr.keys()):
       if sync_date:
         self._pwr[key].set_time(time.time() * 1000000)
       else:
@@ -738,7 +738,7 @@ class powerlog(object):
         aggregate_record = {"boards": set()}
         for record in pending_records:
           if record["berry"] not in aggregate_record["boards"]:
-            for rkey in record.keys():
+            for rkey in list(record.keys()):
               aggregate_record[rkey] = record[rkey]
             aggregate_record["boards"].add(record["berry"])
           else:
@@ -892,7 +892,7 @@ def main(argv=None):
       sync_date=sync_date, use_ms=use_ms, use_mW=use_mW,
       print_stats=print_stats, stats_dir=stats_dir,
       stats_json_dir=stats_json_dir,
-      print_raw_data=print_raw_data,raw_data_dir=raw_data_dir)
+      print_raw_data=print_raw_data, raw_data_dir=raw_data_dir)
 
   # Start logging.
   powerlogger.start(integration_us_request, seconds, sync_speed=sync_speed)

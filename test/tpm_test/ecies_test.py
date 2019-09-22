@@ -209,7 +209,7 @@ def _ecies_test(tpm):
     if decrypted != expected:
       raise subcmd.TpmTestError('%s error:%s:%s' % (
           test_name, utils.hex_dump(decrypted), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _compat_test(tpm):
@@ -225,7 +225,7 @@ def _compat_test(tpm):
     if decrypted != expected:
       raise subcmd.TpmTestError('%s error:%s:%s' % (
           test_name, utils.hex_dump(decrypted), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def ecies_test(tpm):

@@ -31,8 +31,8 @@ def fetch_records(basename):
 
 def main(argv):
   if len(argv) != 2:
-    print "usage:"
-    print " %s input.py" % argv[0]
+    print("usage:")
+    print(" %s input.py" % argv[0])
     return
 
   inputf = argv[1]
@@ -40,7 +40,7 @@ def main(argv):
   outputf = basename + '.board'
   outputs = basename + '.scenario'
 
-  print "Converting %s to %s, %s" % (inputf, outputf, outputs)
+  print("Converting %s to %s, %s" % (inputf, outputf, outputs))
 
   inas = fetch_records(basename)
 

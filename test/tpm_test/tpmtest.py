@@ -5,7 +5,7 @@
 
 """Module for initializing and driving a SPI TPM."""
 
-from __future__ import print_function
+
 
 import os
 import struct
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     rsa_test.rsa_test(t)
     upgrade_test.upgrade(t)
   except subcmd.TpmTestError as e:
-    exc_file, exc_line = traceback.extract_tb(sys.exc_traceback)[-1][:2]
+    exc_file, exc_line = traceback.extract_tb(sys.exc_info()[2])[-1][:2]
     print('\nError in %s:%s: ' % (os.path.basename(exc_file), exc_line), e)
     if debug_needed:
       traceback.print_exc()

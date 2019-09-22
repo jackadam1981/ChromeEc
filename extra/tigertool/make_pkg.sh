@@ -19,7 +19,8 @@ cp flash_dfu.sh "${DEST}"
 cp tigertool.py "${DEST}"
 
 cp -r ecusb "${DEST}"
-cp -r ../../../../../chroot/usr/lib64/python2.7/site-packages/usb "${DEST}"
+#cp -r ../../../../../chroot/usr/lib64/python2.7/site-packages/usb "${DEST}"
+cp -r /usr/lib/python3.7/site-packages/usb "${DEST}"
 find "${DEST}" -name "*.py[co]" -delete
 cp -r ../usb_serial "${DEST}"
 

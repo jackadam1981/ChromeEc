@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -10,7 +10,7 @@ handles the presentation of the EC console including editing methods as well as
 session-persistent command history.
 """
 
-from __future__ import print_function
+
 
 import argparse
 import binascii
@@ -27,8 +27,8 @@ import stat
 import sys
 import traceback
 
-import interpreter
-import threadproc_shim
+from . import interpreter
+from . import threadproc_shim
 
 
 PROMPT = '> '

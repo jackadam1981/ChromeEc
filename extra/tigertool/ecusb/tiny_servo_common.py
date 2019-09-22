@@ -12,8 +12,8 @@ import subprocess
 import sys
 import time
 
-import pty_driver
-import stm32uart
+from . import pty_driver
+from . import stm32uart
 
 
 class TinyServoError(Exception):

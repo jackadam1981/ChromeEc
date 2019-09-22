@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -17,11 +17,11 @@ import tty
 try:
   import usb
 except:
-  print "import usb failed"
-  print "try running these commands:"
-  print " sudo apt-get install python-pip"
-  print " sudo pip install --pre pyusb"
-  print ""
+  print("import usb failed")
+  print("try running these commands:")
+  print(" sudo apt-get install python-pip")
+  print(" sudo pip install --pre pyusb")
+  print("")
   sys.exit(-1)
 
 
@@ -95,7 +95,7 @@ class Susb():
         dev = dev_list[0]
       except:
         try:
-          dev = dev_list.next()
+          dev = next(dev_list)
         except:
           raise SusbError("USB device %04x:%04x not found" % (vendor, product))
 
@@ -184,7 +184,7 @@ class Suart():
             # If we miss some characters on pty disconnect, that's fine.
             # ep.read() also throws USBError on timeout, which we discard.
             if not isinstance(e, (exceptions.OSError, usb.core.USBError)):
-              print "rx %s" % (e,)
+              print("rx %s" % (e,))
     finally:
       self._done.set()
 
@@ -199,7 +199,7 @@ class Suart():
               self._susb._write_ep.write(array.array(b"B", r),
                                          self._susb.TIMEOUT_MS)
           except Exception as e:
-            print "tx %s" % (e,)
+            print("tx %s" % (e,))
     finally:
       self._done.set()
 
@@ -276,7 +276,7 @@ def main():
       os.system("stty echo")
     # Avoid having the user's shell prompt start mid-line after the final output
     # from this program.
-    print
+    print()
 
 
 if __name__ == '__main__':

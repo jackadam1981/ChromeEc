@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -141,7 +141,7 @@ class FlashPD(client.ServoClient):
         retries.
     """
     tries = retries + 1
-    for i in xrange(tries):
+    for i in range(tries):
       self._serial.write('pd %d %s\n' % (self._options.multiport, cmd))
       (found, line) = self.expect(expect)
       if i:
@@ -238,7 +238,7 @@ def flash_pd(options):
     return
 
   # write firmware content
-  for i in xrange(len(words) / 6):
+  for i in range(len(words) / 6):
     chunk = words[i * 6: (i + 1) * 6]
     cmd = ' '.join(['%08x' % (w) for w in chunk])
     ec.flash_command(cmd)
@@ -341,7 +341,7 @@ def main():
   except KeyboardInterrupt:
     sys.exit(0)
   except FlashPDError as e:
-    print 'Error: ', e.message
+    print('Error: ', e.message)
     sys.exit(1)
 
 if __name__ == '__main__':

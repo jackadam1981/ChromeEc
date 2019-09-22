@@ -17,7 +17,7 @@ image with a manifest header, ISH shim loader will parse this header and load
 each binaries into right memory location.
 """
 
-from __future__ import print_function
+
 import argparse
 import struct
 

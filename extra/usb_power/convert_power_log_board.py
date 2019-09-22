@@ -11,7 +11,7 @@ import json
 import os
 import sys
 
-from powerlog import Spower
+from .powerlog import Spower
 
 
 def fetch_records(board_file):
@@ -60,8 +60,8 @@ def write_to_file(file, sweetberry, inas):
 
 def main(argv):
     if len(argv) != 2:
-        print "usage:"
-        print " %s input.board" % argv[0]
+        print("usage:")
+        print(" %s input.board" % argv[0])
         return
 
     inputf = argv[1]
@@ -72,12 +72,12 @@ def main(argv):
     sweetberry = set(rec['sweetberry'] for rec in inas)
 
     if len(sweetberry) == 2:
-        print "Converting %s to %s and %s" % (inputf, basename + '_a.py',
-                                              basename + '_b.py')
+        print("Converting %s to %s and %s" % (inputf, basename + '_a.py',
+                                              basename + '_b.py'))
         write_to_file(basename + '_a.py', 'A', inas)
         write_to_file(basename + '_b.py', 'B', inas)
     else:
-        print "Converting %s to %s" % (inputf, basename + '.py')
+        print("Converting %s to %s" % (inputf, basename + '.py'))
         write_to_file(basename + '.py', sweetberry.pop(), inas)
 
 

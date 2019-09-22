@@ -6,7 +6,7 @@
 
 # A script to pack EC binary into SPI flash image for MEC17xx
 # Based on MEC170x_ROM_Description.pdf DS00002225C (07-28-17).
-from __future__ import print_function
+
 
 import argparse
 import hashlib
@@ -43,7 +43,7 @@ debug_print = dummy_print
 
 def Crc8(crc, data):
   """Update CRC8 value."""
-  data_bytes = map(lambda b: ord(b) if isinstance(b, str) else b, data)
+  data_bytes = [ord(b) if isinstance(b, str) else b for b in data]
   for v in data_bytes:
     crc = ((crc << 4) & 0xff) ^ (CRC_TABLE[(crc >> 4) ^ (v >> 4)]);
     crc = ((crc << 4) & 0xff) ^ (CRC_TABLE[(crc >> 4) ^ (v & 0xf)]);
@@ -86,8 +86,7 @@ def GetPublicKey(pem_file):
     if line.startswith('publicExponent'):
       exp = int(line.split(' ')[1], 10)
   modulus_raw.reverse()
-  modulus = bytearray(''.join(map(lambda x: chr(int(x, 16)),
-                                  modulus_raw[0:256])))
+  modulus = bytearray(''.join([chr(int(x, 16)) for x in modulus_raw[0:256]]))
   return struct.pack('<Q', exp), modulus
 
 def GetSpiClockParameter(args):
@@ -232,7 +231,7 @@ def PacklfwRoImage(rorw_file, loader_file, image_size):
   from the rorw file.
   return the filename"""
   fo=tempfile.NamedTemporaryFile(delete=False) # Need to keep file around
-  with open(loader_file,'rb') as fin1: # read 4KB loader file
+  with open(loader_file, 'rb') as fin1: # read 4KB loader file
     pro = fin1.read()
   fo.write(pro)            # write 4KB loader data to temp file
   with open(rorw_file, 'rb') as fin:
@@ -321,14 +320,14 @@ def parseargs():
 def dumpsects(spi_list):
   debug_print("spi_list has {0} entries".format(len(spi_list)))
   for s in spi_list:
-    debug_print("0x{0:x} 0x{1:x} {2:s}".format(s[0],len(s[1]),s[2]))
+    debug_print("0x{0:x} 0x{1:x} {2:s}".format(s[0], len(s[1]), s[2]))
 
 def printByteArrayAsHex(ba, title):
-  debug_print(title,"= ")
+  debug_print(title, "= ")
   count = 0
   for b in ba:
     count = count + 1
-    debug_print("0x{0:02x}, ".format(b),end="")
+    debug_print("0x{0:02x}, ".format(b), end="")
     if (count % 8) == 0:
       debug_print("")
   debug_print("\n")
@@ -385,16 +384,16 @@ def main():
 
   spi_list = []
 
-  debug_print("args.input = ",args.input)
-  debug_print("args.loader_file = ",args.loader_file)
-  debug_print("args.image_size = ",hex(args.image_size))
+  debug_print("args.input = ", args.input)
+  debug_print("args.loader_file = ", args.loader_file)
+  debug_print("args.image_size = ", hex(args.image_size))
 
   rorofile=PacklfwRoImage(args.input, args.loader_file, args.image_size)
 
   payload = GetPayload(rorofile)
   payload_len = len(payload)
   # debug
-  debug_print("EC_LFW + EC_RO length = ",hex(payload_len))
+  debug_print("EC_LFW + EC_RO length = ", hex(payload_len))
 
   # SPI image integrity test
   # compute CRC32 of EC_RO except for last 4 bytes
@@ -519,17 +518,17 @@ def main():
     addr = 0
     for s in spi_list:
       if addr < s[0]:
-        debug_print("Offset ",hex(addr)," Length", hex(s[0]-addr),
+        debug_print("Offset ", hex(addr), " Length", hex(s[0]-addr),
                 "fill with 0xff")
         f.write('\xff' * (s[0] - addr))
         addr = s[0]
-        debug_print("Offset ",hex(addr), " Length", hex(len(s[1])), "write data")
+        debug_print("Offset ", hex(addr), " Length", hex(len(s[1])), "write data")
 
       f.write(s[1])
       addr += len(s[1])
 
     if addr < spi_size:
-      debug_print("Offset ",hex(addr), " Length", hex(spi_size - addr),
+      debug_print("Offset ", hex(addr), " Length", hex(spi_size - addr),
               "fill with 0xff")
       f.write('\xff' * (spi_size - addr))
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Copyright 2019 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
@@ -17,7 +17,7 @@ Prerequisite:
         e.g. dut-control cr50_uart_timestamp:off
 """
 
-from __future__ import print_function
+
 from chromite.lib import cros_logging as logging
 
 import argparse
@@ -64,31 +64,31 @@ class UartSerial(object):
   UART_DEV_PROFILES = (
       # Kernel
       {
-          'prompt':'localhost login:',
-          'device_type':'AP',
-          'prepare_cmd':[
+          'prompt': 'localhost login:',
+          'device_type': 'AP',
+          'prepare_cmd': [
               CROS_USERNAME,             # Login
               CROS_PASSWORD,             # Password
               'dmesg -D',                # Disable console message
               'touch ' + FLAG_FILENAME,  # Create a temp file
           ],
-          'cleanup_cmd':[
+          'cleanup_cmd': [
               'rm -f ' + FLAG_FILENAME,  # Remove the temp file
               'dmesg -E',                # Enable console message
               'logout',                  # Logout
           ],
-          'end_of_input':LF,
+          'end_of_input': LF,
       },
       # EC
       {
-          'prompt':'> ',
-          'device_type':'EC',
-          'prepare_cmd':[
+          'prompt': '> ',
+          'device_type': 'EC',
+          'prepare_cmd': [
               'chan save',
               'chan 0'                   # Disable console message
           ],
-          'cleanup_cmd':['', 'chan restore'],
-          'end_of_input':CRLF,
+          'cleanup_cmd': ['', 'chan restore'],
+          'end_of_input': CRLF,
       },
   )
 
@@ -422,7 +422,7 @@ class ChargenTest(object):
   def prepare(self):
     """Prepare the test for each UART port"""
     self.logger.info('Prepare ports for test')
-    for _, ser in self.serials.items():
+    for _, ser in list(self.serials.items()):
       ser.prepare()
     self.logger.info('Ports are ready to test')
 
@@ -433,7 +433,7 @@ class ChargenTest(object):
       char_lost: Total number of characters lost
     """
     char_lost = 0
-    for _, ser in self.serials.items():
+    for _, ser in list(self.serials.items()):
       (tmp_lost, _, _) = ser.get_result()
       char_lost += tmp_lost
 
@@ -458,11 +458,11 @@ class ChargenTest(object):
 
     # Run the test on each UART port in thread.
     self.logger.info('Test starts')
-    for _, ser in self.serials.items():
+    for _, ser in list(self.serials.items()):
       ser.start_test()
 
     # Wait all tests to finish.
-    for _, ser in self.serials.items():
+    for _, ser in list(self.serials.items()):
       ser.wait_test_done()
 
     # Print the result.

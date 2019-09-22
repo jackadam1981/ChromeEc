@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright 2018 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-from __future__ import print_function
+
 import argparse
 import ctypes
 import os
@@ -79,7 +79,7 @@ def main():
   for key, _ in header._fields_:
     v = getattr(header, key)
     if isinstance(v, ctypes.Array):
-      print(key, map(hex, v))
+      print(key, list(map(hex, v)))
     else:
       print(key, hex(v))
 

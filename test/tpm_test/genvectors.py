@@ -7,7 +7,7 @@
 
 from binascii import b2a_hex as b2a
 from Crypto.Cipher import AES
-from itertools import izip_longest
+from itertools import zip_longest
 import os
 
 modes = {
@@ -39,7 +39,7 @@ def h2be(v):
     # little-endian words.  Pad-bytes (if necessary) are the empty string.
     word = [iter(v)] * 4
     return ''.join([
-        ''.join(b[::-1]) for b in izip_longest(*word, fillvalue='')
+        ''.join(b[::-1]) for b in zip_longest(*word, fillvalue='')
     ])
 
 
@@ -66,12 +66,12 @@ for mode in [AES.MODE_CBC, AES.MODE_CFB, AES.MODE_OFB]:
 
             assert obj.decrypt(ct)[:pt_len] == pt
 
-            print template.format(mode=modes[mode],
+            print(template.format(mode=modes[mode],
                                   key_bits=str(key_bytes * 8),
                                   test_num=str(test_num),
                                   pt=b2a(h2be(pt[:actual_pt_len])),
                                   key=b2a(h2be(key)),
                                   ct=b2a(h2be(ct[:actual_pt_len])),
-                                  iv=b2a(h2be(iv))),
+                                  iv=b2a(h2be(iv))), end=' ')
 
 

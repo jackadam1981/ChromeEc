@@ -8,7 +8,7 @@ import shutil
 import tempfile
 import unittest
 
-import powerlog
+from . import powerlog
 
 class TestPowerlog(unittest.TestCase):
   """Test to verify powerlog util methods work as expected."""

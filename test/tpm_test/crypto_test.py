@@ -5,7 +5,7 @@
 
 """Module for testing cryptography functions using extended commands."""
 
-from __future__ import print_function
+
 
 import binascii
 import struct

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -7,7 +7,7 @@
 Script to ensure that all configuration options for the Chrome EC are defined
 in config.h.
 """
-from __future__ import print_function
+
 import os
 import re
 import subprocess

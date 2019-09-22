@@ -127,7 +127,7 @@ def _sign_test(tpm):
     if verified != expected:
       raise subcmd.TpmTestError('%s error:%s:%s' % (
         test_name, utils.hex_dump(verified), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _keygen_test(tpm):
@@ -141,7 +141,7 @@ def _keygen_test(tpm):
     if valid != expected:
       raise subcmd.TpmTestError('%s error:%s:%s' % (
         test_name, utils.hex_dump(valid), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def _keyderive_test(tpm):
@@ -156,7 +156,7 @@ def _keyderive_test(tpm):
     if valid != expected:
       raise subcmd.TpmTestError('%s error:%s:%s' % (
         test_name, utils.hex_dump(valid), utils.hex_dump(expected)))
-    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+    print(('%sSUCCESS: %s' % (utils.cursor_back(), test_name)))
 
 
 def ecc_test(tpm):
