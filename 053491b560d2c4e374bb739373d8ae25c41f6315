@@ -22,6 +22,30 @@
       "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86386150_9ffc9668",
+        "filename": "Makefile.rules",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T02:49:43Z",
+      "side": 1,
+      "message": "Really, why is that? Is this a bash vs. dash thing?\n\n\"[ -t 1 ]\" should evaluate to false if stdout is not a tty.\nThus, all \u0026\u0026 commands do not run, and this falls back to just \"cat\".\nAlso, if column is not installed, it falls back to just \"cat\".\n\nFor experimentation purposes, here are some bash lines that show similar multi-logic behavior:\nfalse \u0026\u0026 true \u0026\u0026 echo bob\ntrue \u0026\u0026 false \u0026\u0026 echo jones\ntrue \u0026\u0026 true \u0026\u0026 echo finally\n\nfalse \u0026\u0026 true \u0026\u0026 echo no || echo yesss\n\n\nAlso, for testing this construct:\nseq 50 | { [ -t 1 ] \u0026\u0026 which column \u0026\u003e/dev/null \u0026\u0026 column || cat; }\nvs.\nseq 50 | { [ -t 1 ] \u0026\u0026 which column \u0026\u003e/dev/null \u0026\u0026 column || cat; } | cat",
+      "parentUuid": "2f6065e2_aa579851",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
