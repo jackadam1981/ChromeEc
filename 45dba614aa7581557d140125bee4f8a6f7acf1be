@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a1128fe_fc307bea",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-09-23T23:50:41Z",
+      "side": 0,
+      "message": "There will be another biod change to detect the supported version and only use the correct one that is supported.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 76
+      },
+      "revId": "45dba614aa7581557d140125bee4f8a6f7acf1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
