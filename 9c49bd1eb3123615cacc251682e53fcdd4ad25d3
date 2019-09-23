@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "938c206a_611e3865",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2019-09-23T18:21:53Z",
+      "side": 1,
+      "message": "Required, they\u0027re the credentials for the coverity site. I didn\u0027t want to leave them in the script without martinroth@ signing off",
+      "parentUuid": "2ab5768b_cfeb12fd",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "066fa547_a93e3807",
         "filename": "util/coverity.sh",
         "patchSetId": 2
