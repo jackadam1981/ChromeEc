@@ -141,6 +141,30 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508c2029_5e0efc1a",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T16:37:11Z",
+      "side": 1,
+      "message": "I totally, agree. I have recreated the original issue in dash (and yes it is simply that \"\u0026\u003e\" is unsupported and ends up backgrounding the \"\u0026\u0026\" expression, thus evaluating to true).\n\nI\u0027m simply saying here that \"2\u003e\u00261 and then 1\u003e/dev/null\" is incorrect and does not do what is intended.\nIt has to be written \"1\u003e/dev/null 2\u003e\u00261\".",
+      "parentUuid": "2e9c5d7d_20751d32",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
