@@ -94,6 +94,30 @@
       "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d69f82_adf0256d",
+        "filename": "Makefile.rules",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-23T15:47:52Z",
+      "side": 1,
+      "message": "oops, might be a different thread (I was looking at Stefan\u0027s CLs when I stumbled upon this one)",
+      "parentUuid": "5b6f8f32_b62f9854",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
