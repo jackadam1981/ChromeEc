@@ -35,8 +35,8 @@ static int test_insert_async_event(void)
 		sizeof(data), CONFIG_ACCEL_FIFO_SIZE,
 		data, &data_bytes_read);
 	TEST_EQ(read_count, 2, "%d");
-	TEST_EQ(data_bytes_read,
-		2 * sizeof(struct ec_response_motion_sensor_data), "%d");
+	TEST_EQ((size_t)data_bytes_read,
+		2 * sizeof(struct ec_response_motion_sensor_data), "%zd");
 
 	TEST_BITS_SET(data[0].flags, ASYNC_EVENT_FLUSH);
 	TEST_BITS_CLEARED(data[0].flags, MOTIONSENSE_SENSOR_FLAG_ODR);
