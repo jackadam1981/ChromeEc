@@ -91,6 +91,75 @@
       "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e768bd40_0448395e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-09-23T16:18:19Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 1794,
+        "startChar": 24,
+        "endLine": 1794,
+        "endChar": 26
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a468a6_d17b4c4f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-09-23T16:18:19Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 1794,
+        "startChar": 52,
+        "endLine": 1795,
+        "endChar": 29
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab11271f_f4b8ae24",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-09-23T16:18:19Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer \"count\".",
+      "range": {
+        "startLine": 1815,
+        "startChar": 42,
+        "endLine": 1815,
+        "endChar": 45
+      },
+      "revId": "b2c28d7238b293e2ffc872114f16f1ca3f13a0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
