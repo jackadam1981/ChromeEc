@@ -4,4 +4,6 @@
  */
 
  #define CONFIG_TEST_MOCK_LIST \
-        MOCK(FPSENSOR)
+        MOCK(FPSENSOR) \
+        MOCK(FPSENSOR_STATE) \
+        MOCK(ROLLBACK)
