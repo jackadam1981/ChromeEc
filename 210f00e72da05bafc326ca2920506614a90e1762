@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51da3fa0_31c8dc7f",
+        "filename": "board/dratini/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-09-23T14:56:06Z",
+      "side": 1,
+      "message": "This is really clunky. Why not this?\n  amber_led \u003d (port \u003d\u003d 0 ? GPIO_LED_WHITE_C1_L : GPIO_LED_WHITE_C0_L);\n\nOr this?\n  if (port \u003d\u003d 0) {\n    amber_led \u003d GPIO_LED_AMBED_C0_L;\n    white_led \u003d GPIO_LED_WHITE_C0_L;\n  }\n  else {\n    amber_led \u003d GPIO_LED_AMBED_C1_L;\n    white_led \u003d GPIO_LED_WHITE_C1_L;\n  }\n\nEither of these constructs are much easier to read and understand, and they will generate approximately the same code as what you\u0027ve written. Meaning, you don\u0027t gain significantly better/faster/smaller code by writing cryptic C.",
+      "revId": "210f00e72da05bafc326ca2920506614a90e1762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
