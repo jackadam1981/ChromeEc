@@ -70,6 +70,30 @@
       "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b6f8f32_b62f9854",
+        "filename": "Makefile.rules",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-23T15:46:53Z",
+      "side": 1,
+      "message": "I might have messed that part up inside Jenkins (where this code comes from). Jenkins isn\u0027t very clear about where stdout points to and so it took a bit of trial \u0026 error - don\u0027t assume this stuff to work as intended anywhere else.",
+      "parentUuid": "5834a082_f6acb8e2",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
