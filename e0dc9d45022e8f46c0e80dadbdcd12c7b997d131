@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "ab82b39b_b92d9afb",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-23T07:53:08Z",
+      "side": 1,
+      "message": "I think this isn\u0027t a \"blocking\", just a \"if check\" IMO....",
+      "parentUuid": "96b20aa3_8f12ce58",
+      "range": {
+        "startLine": 1069,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 0
+      },
+      "revId": "e0dc9d45022e8f46c0e80dadbdcd12c7b997d131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8131044c_5132ff24",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 16
