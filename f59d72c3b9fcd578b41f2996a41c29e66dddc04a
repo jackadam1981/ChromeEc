@@ -22,6 +22,30 @@
       "revId": "f59d72c3b9fcd578b41f2996a41c29e66dddc04a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ad0fcb_3c516d34",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-09-23T17:13:07Z",
+      "side": 1,
+      "message": "Correct. CONFIG_DPTF_MOTION_LID_NO_HALL_SENSOR was recently renamed to CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR.",
+      "parentUuid": "059720af_00aa7aeb",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "f59d72c3b9fcd578b41f2996a41c29e66dddc04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
