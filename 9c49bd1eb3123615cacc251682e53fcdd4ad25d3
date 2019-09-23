@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ab5768b_cfeb12fd",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-23T18:17:27Z",
+      "side": 1,
+      "message": "Are these required or optional?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066fa547_a93e3807",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-23T18:17:27Z",
+      "side": 1,
+      "message": "Are you sure you don\u0027t want these before $PATH?",
+      "range": {
+        "startLine": 13,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a43077_9f025394",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-23T18:17:27Z",
+      "side": 1,
+      "message": "Are these export\u0027s all necessary?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb3cd94_9726908d",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-23T18:17:27Z",
+      "side": 1,
+      "message": "You want to proceed with any errors from mkdir, rm, make, etc.?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8154ece6_3b7bc216",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-23T18:17:27Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d39196_11202d39",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-23T18:17:27Z",
+      "side": 1,
+      "message": "? You don\u0027t set \u0027-x\u0027. \u0027sh -x\u0027 is only one-time isn\u0027t it?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
