@@ -45,6 +45,54 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b5917d_00ef08d4",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-23T16:10:01Z",
+      "side": 1,
+      "message": "the subshell ensures that everybody (reader, various shells) are in agreement who the various || and \u0026\u0026 apply to.",
+      "parentUuid": "143dfd1e_0e2328bf",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 13
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21626dc9_92fca547",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-23T16:10:01Z",
+      "side": 1,
+      "message": "It works though ;-)",
+      "parentUuid": "385fbf90_5ae8dd95",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
