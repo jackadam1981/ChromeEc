@@ -330,6 +330,27 @@ static void it83xx_set_data_role(enum usbpd_port port, int pd_role)
 		(IT83XX_USBPD_PDMSR(port) & ~0xc) | ((pd_role & 0x1) << 2);
 }
 
+static int it83xx_tcpm_set_fast_swap(int port, int power_role, int enable)
+{
+	if (enable) {
+		if (power_role == PD_ROLE_SOURCE) {
+			/* enable fast swap request (Rp to GND) */
+		} else {
+			/* enable fast swap detect (Rp to GND) */
+			IT83XX_USBPD_PDQSCR(port) &=
+					~USBPD_REG_FAST_SWAP_REQUEST_ENABLE;
+			IT83XX_USBPD_PDQSCR(port) |=
+					USBPD_REG_FAST_SWAP_DETECT_ENABLE;
+		}
+	} else
+		/* disable fast swap request and detect (Rp to GND) */
+		IT83XX_USBPD_PDMSR(port) &=
+					~(USBPD_REG_FAST_SWAP_REQUEST_ENABLE |
+					  USBPD_REG_FAST_SWAP_DETECT_ENABLE);
+
+	return EC_SUCCESS;
+}
+
 static void it83xx_init(enum usbpd_port port, int role)
 {
 #ifdef IT83XX_USBPD_CC_PARAMETER_RELOAD
@@ -358,6 +379,12 @@ static void it83xx_init(enum usbpd_port port, int role)
 	/* enable tx done and reset detect interrupt */
 	IT83XX_USBPD_IMR(port) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
 					USBPD_REG_MASK_HARD_RESET_DETECT);
+#ifdef IT83XX_INTC_FAST_SWAP_SUPPORT
+	/* enable fast swap detect (Rp to GND) interrupt */
+	IT83XX_USBPD_MPD30IR(port) &= ~(USBPD_REG_MASK_PD30_ISR |
+					USBPD_REG_MASK_FAST_SWAP_DETECT_ISR);
+	//en request
+#endif
 #ifdef IT83XX_INTC_PLUG_IN_SUPPORT
 	/*
 	 * when tcpc detect type-c plug in (cc lines voltage change), it will
@@ -634,4 +661,5 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.get_message_raw	= &it83xx_tcpm_get_message_raw,
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+	.set_fast_swap		= &it83xx_tcpm_set_fast_swap,
 };

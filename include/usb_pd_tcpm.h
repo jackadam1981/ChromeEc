@@ -324,6 +324,21 @@ struct tcpm_drv {
 	 */
 	int (*enter_low_power_mode)(int port);
 #endif
+
+	/**
+	 * Instructs the TCPC to enable/disable fast role swap.
+	 *
+	 * NOTE: There are two cases,
+	 * We're SRC enable/disable fast role swap to SNK, or
+	 * we're SNK enable/disable fast role swap to SRC.
+	 *
+	 * @param port Type-C port number
+	 * @param power role Power role to be chosen case by driver setting
+	 * @enable true for enable, false for disable
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*set_fast_swap)(int port, int power_role, int enable);
 };
 
 /*
