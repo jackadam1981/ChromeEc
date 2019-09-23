@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "385fbf90_5ae8dd95",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T02:51:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this is valid. It should be \"1\u003e/dev/null 2\u003e\u00261\", but \u0026\u003e/dev/null is the same thing in bash.",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
