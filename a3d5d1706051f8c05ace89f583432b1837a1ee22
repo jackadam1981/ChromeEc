@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "816f3865_d4e8c129",
+        "filename": "common/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-23T23:01:12Z",
+      "side": 1,
+      "message": "can this one just be a CPRINTS?",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 24
+      },
+      "revId": "a3d5d1706051f8c05ace89f583432b1837a1ee22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b764b35_37d3f5f2",
+        "filename": "common/printf.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-23T23:01:12Z",
+      "side": 1,
+      "message": "delete blank lines above and below?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 0
+      },
+      "revId": "a3d5d1706051f8c05ace89f583432b1837a1ee22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055e8370_0389e5cb",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-23T23:01:12Z",
+      "side": 1,
+      "message": "looking at the context of this code, this one was probably meant to be a CPRINTS as well (*and* they forgot the \\n!)",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 43
+      },
+      "revId": "a3d5d1706051f8c05ace89f583432b1837a1ee22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1395f8_1cde9976",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-23T23:01:12Z",
+      "side": 1,
+      "message": "change this to cprints while we are here?",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 42
+      },
+      "revId": "a3d5d1706051f8c05ace89f583432b1837a1ee22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "399c8dc7_f32599dd",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-23T23:01:12Z",
+      "side": 1,
+      "message": "CPRINTS",
+      "range": {
+        "startLine": 821,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 42
+      },
+      "revId": "a3d5d1706051f8c05ace89f583432b1837a1ee22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
