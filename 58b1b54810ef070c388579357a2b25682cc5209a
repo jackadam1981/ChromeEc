@@ -22,6 +22,29 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143dfd1e_0e2328bf",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T02:56:14Z",
+      "side": 1,
+      "message": "That\u0027s interesting. Why do we need a sub-shell?\nI went into the verbose explanation @ crrev.com/c/1684714/4/Makefile.rules#154\n\nSorry, maybe I\u0027m missing something here.",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 13
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
