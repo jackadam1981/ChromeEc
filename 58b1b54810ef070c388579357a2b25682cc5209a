@@ -213,6 +213,30 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f558c8_1d602bf5",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T17:10:36Z",
+      "side": 1,
+      "message": "But again, AND lists are supported features even in POSIX:\nhttps://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_09_03_06",
+      "parentUuid": "09703d8d_6976f9bd",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 13
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
