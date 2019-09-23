@@ -165,6 +165,30 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09703d8d_6976f9bd",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T16:41:01Z",
+      "side": 1,
+      "message": "Sure, since this is not performance dependent, all for making it more clear to humans.",
+      "parentUuid": "e0b5917d_00ef08d4",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 13
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
