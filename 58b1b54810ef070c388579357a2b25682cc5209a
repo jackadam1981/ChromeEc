@@ -93,6 +93,30 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3057f529_ea5a4ab2",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T16:15:54Z",
+      "side": 1,
+      "message": "Hmm. I don\u0027t think it does.\n\nJust try\nwhich doesnotexist 2\u003e\u00261 1\u003e/dev/null\non the cmd line.\n\n\"2\u003e\u00261\" means dup fd1 to fd2.",
+      "parentUuid": "21626dc9_92fca547",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
