@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "059720af_00aa7aeb",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-23T16:55:49Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something, but I don\u0027t see this define used anywhere in the EC code.  I see a CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "f59d72c3b9fcd578b41f2996a41c29e66dddc04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
