@@ -117,6 +117,30 @@
       "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9c5d7d_20751d32",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-09-23T16:30:52Z",
+      "side": 1,
+      "message": "Indeed. It looks correct on Debian-alikes because their which(1) is silent when they find nothing. That doesn\u0027t work on Gentoo because its which(1) is noisy.\n\nAs \u0026\u003e is a bad idea on dash, better stay with the verbose variant.",
+      "parentUuid": "3057f529_ea5a4ab2",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "58b1b54810ef070c388579357a2b25682cc5209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
