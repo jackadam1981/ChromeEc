@@ -46,6 +46,30 @@
       "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5834a082_f6acb8e2",
+        "filename": "Makefile.rules",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-09-23T03:09:31Z",
+      "side": 1,
+      "message": "Ohhhhhhhh, maybe GNUMake is using dash as the SHELL, thus \"\u0026\u003e\" is interpreted as launching a bg task?",
+      "parentUuid": "86386150_9ffc9668",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "053491b560d2c4e374bb739373d8ae25c41f6315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
