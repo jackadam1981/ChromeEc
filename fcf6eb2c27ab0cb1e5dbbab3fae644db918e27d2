@@ -22,6 +22,30 @@
       "revId": "fcf6eb2c27ab0cb1e5dbbab3fae644db918e27d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7065a84_6b32f46f",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2019-09-23T18:00:11Z",
+      "side": 1,
+      "message": "I didn\u0027t have much luck with python3, but it seems like a good idea to update in the future.",
+      "parentUuid": "0ec60187_dc3de176",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "fcf6eb2c27ab0cb1e5dbbab3fae644db918e27d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
