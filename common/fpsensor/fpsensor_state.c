@@ -28,6 +28,12 @@ uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE]
  */
 uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
 	FP_TEMPLATE_SECTION;
+/*
+ * Buffer for operating the encrypted blob which may include more than the
+ * template.
+ */
+uint8_t fp_enc_blob_buffer
+	[FP_ALGORITHM_TEMPLATE_SIZE + FP_POSITIVE_MATCH_SALT_BYTES];
 /* Salt used in derivation of positive match secret. */
 uint8_t fp_positive_match_salt
 	[FP_MAX_FINGER_COUNT][FP_POSITIVE_MATCH_SALT_BYTES];
@@ -38,6 +44,8 @@ struct positive_match_secret_state positive_match_secret_state = {
 	.deadline.val = 0,
 };
 
+/* Index of the last enrolled but not retrieved template. */
+int8_t template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 /* Number of used templates */
 uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */
