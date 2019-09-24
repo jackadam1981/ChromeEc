@@ -22,6 +22,30 @@
       "revId": "6b81b53e6154fd78edb0dc304273bb0971f4cbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351013a4_dadb4ba2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T20:18:28Z",
+      "side": 1,
+      "message": "This is what comes next: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1818728/.",
+      "parentUuid": "2fecddfe_69d40cd2",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "6b81b53e6154fd78edb0dc304273bb0971f4cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
