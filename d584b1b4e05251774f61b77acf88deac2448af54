@@ -22,6 +22,30 @@
       "revId": "d584b1b4e05251774f61b77acf88deac2448af54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceec9d03_6f6c8b11",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-09-24T22:57:03Z",
+      "side": 1,
+      "message": "EC_HOST_EVENT_LID_{CLOSED,OPEN} seems to be a host event, as opposed to an mkbp event. I think this code is talking about the mkbp kind.\n\nRegarding sleeping and events across that. If I\u0027m reading this right, we only wake if EC_MKBP_EVENT_KEY_MATRIX is set, otherwise we skip_event.",
+      "parentUuid": "fdeef8a6_0da958ee",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "d584b1b4e05251774f61b77acf88deac2448af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
