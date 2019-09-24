@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13d5c88f_500f0745",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T23:32:43Z",
+      "side": 1,
+      "message": "Are you sure you want to split the line against https://www.kernel.org/doc/html/latest/process/coding-style.html#breaking-long-lines-and-strings?",
+      "range": {
+        "startLine": 989,
+        "startChar": 10,
+        "endLine": 990,
+        "endChar": 28
+      },
+      "revId": "c38292f2f07fc8610f58c5571309a9d83612a3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
