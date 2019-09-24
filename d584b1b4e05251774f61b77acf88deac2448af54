@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdeef8a6_0da958ee",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-09-24T22:48:08Z",
+      "side": 1,
+      "message": "Are we storing events that happen in S3 and are not wake capable. Consider the following scenario: \n1. Device suspends\n2. User closes lid\n3. user opens lid\n4. Powerd sees lid close and then lid open and then honors them in that order.\n5. powerd takes lid close action (maybe transition to shutdown) even if the lid is open.",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "d584b1b4e05251774f61b77acf88deac2448af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
