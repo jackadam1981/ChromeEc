@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0159c7f3_0120755e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T23:39:04Z",
+      "side": 1,
+      "message": "It\u0027s better not to split the line? https://www.kernel.org/doc/html/latest/process/coding-style.html#breaking-long-lines-and-strings",
+      "range": {
+        "startLine": 1758,
+        "startChar": 11,
+        "endLine": 1759,
+        "endChar": 13
+      },
+      "revId": "855742199e6444d8531becec2fe394cdc211eadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
