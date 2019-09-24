@@ -96,6 +96,8 @@
 #define CONFIG_MKBP_EVENT_WAKEUP_MASK \
 	(BIT(EC_MKBP_EVENT_SENSOR_FIFO) | BIT(EC_MKBP_EVENT_HOST_EVENT))
 
+#define CONFIG_CRC8
+
 #ifndef __ASSEMBLER__
 
 enum adc_channel {
