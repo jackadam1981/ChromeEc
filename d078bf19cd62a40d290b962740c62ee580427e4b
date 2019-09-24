@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76c94c98_5980d267",
+        "filename": "common/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T23:24:06Z",
+      "side": 1,
+      "message": "Can we use \u0027B\u0027 instead?",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 28
+      },
+      "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
