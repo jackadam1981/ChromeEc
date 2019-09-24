@@ -234,6 +234,30 @@
       "revId": "2ea0d0465e82aee3b37df30a90ab400518ed3775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c7ccb68_30c361c3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T17:57:18Z",
+      "side": 1,
+      "message": "and everywhere we simply exit.",
+      "parentUuid": "daa8564b_07b9d24b",
+      "range": {
+        "startLine": 1152,
+        "startChar": 2,
+        "endLine": 1152,
+        "endChar": 23
+      },
+      "revId": "2ea0d0465e82aee3b37df30a90ab400518ed3775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
