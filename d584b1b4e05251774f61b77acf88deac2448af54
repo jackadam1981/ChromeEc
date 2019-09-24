@@ -46,6 +46,30 @@
       "revId": "d584b1b4e05251774f61b77acf88deac2448af54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b960b448_4913a25d",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-09-24T23:51:50Z",
+      "side": 1,
+      "message": "I am sorry, I am pointing at the wrong line. Before this change, mkbp_send_event used to indicate mkbp_fifo_add whether the sending of event to AP is successful or not. mkbp_fifo_add used to drop the event from fifo if it is not sent to the AP. Not the case anymore. As a result events that are not wake capable are being replayed after suspend. Raised a bug for this \nb/141244101. Maybe powerd is the right place to handle this as we are seeing this on wilco ec too. But not quite sure how to defferentiate the order of events. lidopen immediately followed by lidclose vs this scenario.",
+      "parentUuid": "ceec9d03_6f6c8b11",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "d584b1b4e05251774f61b77acf88deac2448af54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
