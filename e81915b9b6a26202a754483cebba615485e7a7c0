@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "837717cf_ffd83b7f",
+        "filename": "common/version.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-09-24T16:50:50Z",
+      "side": 1,
+      "message": "Why don\u0027t we just use rollback_version for the version which limits rollback?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "e81915b9b6a26202a754483cebba615485e7a7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
