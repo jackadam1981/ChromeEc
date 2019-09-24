@@ -27,41 +27,6 @@ static enum charge_state prv_chstate = PWR_STATE_INIT;
 #define LED_MASK_GREEN	MT6370_MASK_RGB_ISNK2DIM_EN
 #define LED_MASK_BLUE	MT6370_MASK_RGB_ISNK3DIM_EN
 
-static void kukui_led_set_battery(void)
-{
-	enum charge_state chstate;
-	uint8_t br[EC_LED_COLOR_COUNT] = { 0 };
-
-	chstate = charge_get_state();
-
-	if (prv_chstate == chstate)
-		return;
-
-	prv_chstate = chstate;
-
-	switch (chstate) {
-	case PWR_STATE_CHARGE:
-		/* Always indicate when charging, even in suspend. */
-		br[EC_LED_COLOR_BLUE] = 1;
-		break;
-	case PWR_STATE_DISCHARGE:
-		if (charge_get_percent() <= 10)
-			br[EC_LED_COLOR_RED] = 1;
-		break;
-	case PWR_STATE_ERROR:
-		br[EC_LED_COLOR_RED] = 1;
-		break;
-	case PWR_STATE_CHARGE_NEAR_FULL:
-		br[EC_LED_COLOR_GREEN] = 1;
-		break;
-	default:
-		/* Other states don't alter LED behavior */
-		return;
-	}
-
-	led_set_brightness(EC_LED_ID_BATTERY_LED, br);
-}
-
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	if (led_id != EC_LED_ID_BATTERY_LED)
@@ -102,16 +67,6 @@ static void led_reset_auto_control(void)
 {
 	prv_chstate = PWR_STATE_INIT;
 }
-
-/* Called by hook task every 1 sec */
-static void led_second(void)
-{
-	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
-		kukui_led_set_battery();
-	else
-		led_reset_auto_control();
-}
-DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
 
 __override void led_control(enum ec_led_id led_id, enum ec_led_state state)
 {
