@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3918f03c_d6fde5b7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5772,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-24T01:14:46Z",
+      "side": 1,
+      "message": "It looks like other similar commands tend to put the |action| member as the first in the struct, should we do the same thing?",
+      "range": {
+        "startLine": 5772,
+        "startChar": 9,
+        "endLine": 5772,
+        "endChar": 15
+      },
+      "revId": "025d17600c5f31bfef1851b571535be7080b5310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f5d7ee_38a7727d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5773,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-24T01:14:46Z",
+      "side": 1,
+      "message": "Maybe we could add 3 |reserved| bytes at the end to make it clear?",
+      "range": {
+        "startLine": 5773,
+        "startChar": 2,
+        "endLine": 5773,
+        "endChar": 13
+      },
+      "revId": "025d17600c5f31bfef1851b571535be7080b5310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
