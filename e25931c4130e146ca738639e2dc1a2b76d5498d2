@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fc136c3_b6315c06",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T23:44:52Z",
+      "side": 1,
+      "message": "nit: These 1\u0027s and 2\u0027s should be named. They should be defined as part of host command protocol v3.",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 30
+      },
+      "revId": "e25931c4130e146ca738639e2dc1a2b76d5498d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
