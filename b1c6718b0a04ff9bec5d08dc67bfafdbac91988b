@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae19053c_6738d6e2",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-09-24T06:16:25Z",
+      "side": 1,
+      "message": "Should we add the +10 carry in the macro instead?\n\n(and if this is really to round to nearest, it should be +25 _after_ compensation)",
+      "revId": "b1c6718b0a04ff9bec5d08dc67bfafdbac91988b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
