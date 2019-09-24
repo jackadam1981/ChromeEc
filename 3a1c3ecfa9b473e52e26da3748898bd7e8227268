@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f42622a_53540cec",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-24T22:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acefd7a_ff6410d2",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 4
+      },
+      "revId": "3a1c3ecfa9b473e52e26da3748898bd7e8227268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84045dd8_ed2ccc3a",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 17

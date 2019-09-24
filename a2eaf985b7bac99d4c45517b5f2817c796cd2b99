@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3cdef5e9_aff8bb0d",
+        "filename": "chip/max32660/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-24T22:59:06Z",
+      "side": 1,
+      "message": "Looks like this comment got forgotten about; could you fix this, Jerry?",
+      "parentUuid": "e1c23572_ee79fcd9",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe2390fe_3d62a58d",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 9
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "811364f8_b176cf9a",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-24T22:59:06Z",
+      "side": 1,
+      "message": "(`CPRINTS` call has been removed.)",
+      "parentUuid": "fe2390fe_3d62a58d",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10fba5d4_7c23c766",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 9
@@ -85,6 +121,24 @@
       "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ab67c3_b2a0ebad",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-24T22:59:06Z",
+      "side": 1,
+      "message": "(`CPRINTS` call has been removed.)",
+      "parentUuid": "10fba5d4_7c23c766",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
