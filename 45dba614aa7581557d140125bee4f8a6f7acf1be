@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d56674e_6a265310",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-24T00:53:09Z",
+      "side": 1,
+      "message": "We should have a log when that happens, so we have a chance to find out if that ever happens and we can try to debug.",
+      "range": {
+        "startLine": 78,
+        "startChar": 31,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "45dba614aa7581557d140125bee4f8a6f7acf1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06a74e60_697a8c84",
+        "filename": "test/fpsensor_mock.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-24T00:53:09Z",
+      "side": 1,
+      "message": "Can those go to common/mock/ ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "45dba614aa7581557d140125bee4f8a6f7acf1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

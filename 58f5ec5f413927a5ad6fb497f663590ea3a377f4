@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e0764b6e_a3659c07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-24T00:53:09Z",
+      "side": 1,
+      "message": "Can you mention it in the commit message?",
+      "parentUuid": "09ce7229_d1ef810d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "58f5ec5f413927a5ad6fb497f663590ea3a377f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dea6c0d_3e332646",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
