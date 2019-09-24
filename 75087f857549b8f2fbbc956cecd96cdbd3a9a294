@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6375742b_78400ad6",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T17:14:05Z",
+      "side": 1,
+      "message": "Could you use if (IS_ENABLED(DEBUG) and remove #ifdef DEBUG at line 50?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 12
+      },
+      "revId": "75087f857549b8f2fbbc956cecd96cdbd3a9a294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7fe368_e31946ac",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T17:14:05Z",
+      "side": 1,
+      "message": "Should be EC_RES_INVALID_CHECKSUM?",
+      "range": {
+        "startLine": 176,
+        "startChar": 9,
+        "endLine": 176,
+        "endChar": 21
+      },
+      "revId": "75087f857549b8f2fbbc956cecd96cdbd3a9a294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
