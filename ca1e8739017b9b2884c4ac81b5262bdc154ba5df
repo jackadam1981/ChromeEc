@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "533f917d_0083da2d",
+        "filename": "common/printf.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-24T23:24:44Z",
+      "side": 1,
+      "message": "Can we use \u0027H\u0027 instead?",
+      "range": {
+        "startLine": 255,
+        "startChar": 27,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "ca1e8739017b9b2884c4ac81b5262bdc154ba5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
