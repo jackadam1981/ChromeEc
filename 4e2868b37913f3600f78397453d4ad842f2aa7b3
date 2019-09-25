@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f6e3120_9681a3c4",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-25T16:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cfacdc6_cb54f6d2",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "4e2868b37913f3600f78397453d4ad842f2aa7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9fe918f_f36f7c7a",
         "filename": "include/vboot.h",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "4e2868b37913f3600f78397453d4ad842f2aa7b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7b734c_515c1661",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-25T16:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9fe918f_f36f7c7a",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "4e2868b37913f3600f78397453d4ad842f2aa7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
