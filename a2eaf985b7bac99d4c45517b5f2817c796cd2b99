@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7763c7e8_57a54925",
+        "filename": "chip/max32660/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-25T12:30:30Z",
+      "side": 1,
+      "message": "Thanks, I never saw this post! :/ ...done.",
+      "parentUuid": "3cdef5e9_aff8bb0d",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe2390fe_3d62a58d",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 9
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "5aceaf8f_bec26315",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-25T12:30:30Z",
+      "side": 1,
+      "message": "Yes, they have been removed... done.",
+      "parentUuid": "811364f8_b176cf9a",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10fba5d4_7c23c766",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 9
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "(`CPRINTS` call has been removed.)",
       "parentUuid": "10fba5d4_7c23c766",
+      "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1df0ccb4_2e9367f0",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-09-25T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7ab67c3_b2a0ebad",
       "revId": "a2eaf985b7bac99d4c45517b5f2817c796cd2b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
