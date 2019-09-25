@@ -5741,20 +5741,39 @@ int cmd_panic_info(int argc, char *argv[])
 
 int cmd_power_info(int argc, char *argv[])
 {
-	struct ec_response_power_info r;
+	struct ec_response_power_info_v1 r;
 	int rv;
 
 	rv = ec_command(EC_CMD_POWER_INFO, 0, NULL, 0, &r, sizeof(r));
 	if (rv < 0)
 		return rv;
 
-	printf("AC Voltage: %d mV\n", r.voltage_ac);
-	printf("System Voltage: %d mV\n", r.voltage_system);
-	printf("System Current: %d mA\n", r.current_system);
-	printf("System Power: %d mW\n",
-			r.voltage_system * r.current_system / 1000);
-	printf("USB Device Type: 0x%x\n", r.usb_dev_type);
-	printf("USB Current Limit: %d mA\n", r.usb_current_limit);
+	printf("Power source:\t");
+	switch (r.system_power_source) {
+	case POWER_SOURCE_UNKNOWN:
+		printf("Unknown");
+		break;
+	case POWER_SOURCE_BATTERY:
+		printf("Battery");
+		break;
+	case POWER_SOURCE_AC:
+		printf("AC");
+		break;
+	case POWER_SOURCE_AC_BATTERY:
+		printf("AC + battery");
+		break;
+	}
+
+	printf("Battery state-of-charge: %d%%\n", r.battery_soc);
+	printf("Max AC power: %d Watts\n", r.ac_adapter_100pct);
+	printf("Battery 1Cd rate: %d\n", r.battery_1cd);
+	printf("RoP Avg: %d Watts\n", r.rop_avg);
+	printf("RoP Peak: %d Watts\n", r.rop_peak);
+	printf("Battery DBPT support level: %d\n", r.batt_dbpt_support_level);
+	printf("Battery DBPT Max Peak Power: %d Watts\n",
+	       r.batt_dbpt_max_peak_power);
+	printf("Battery DBPT Sus Peak Power: %d Watts\n",
+	       r.batt_dbpt_sus_peak_power);
 	return 0;
 }
 
