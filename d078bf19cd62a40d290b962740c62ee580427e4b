@@ -22,6 +22,30 @@
       "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af70af64_083361ca",
+        "filename": "common/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-09-25T16:12:11Z",
+      "side": 1,
+      "message": "That could be possible. My logic for lowercase was this:\n1. It will make more sense to EC developers who are already familiar with the old %b. The cognitive load from %b -\u003e %pb is I think at its lowest.\n2. If folks do need to yank a change with a converted printf call into a branch that doesn\u0027t have the core printf changes, it\u0027s one less thing they\u0027d have to do to de-capitalize the B.\n\nDo you have a specific reason for wanting to go with a capital B?",
+      "parentUuid": "76c94c98_5980d267",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 28
+      },
+      "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
