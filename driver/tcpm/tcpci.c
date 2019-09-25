@@ -886,6 +886,13 @@ int tcpci_tcpm_mux_get(int port, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
+/* Fast Role Swap */
+void tcpc_set_frs_enable(int port, int enable)
+{
+	if (tcpc_config[port].drv->set_frs_enable)
+		tcpc_config[port].drv->set_frs_enable(port, enable);
+}
+
 const struct usb_mux_driver tcpci_tcpm_usb_mux_driver = {
 	.init = &tcpci_tcpm_mux_init,
 	.set = &tcpci_tcpm_mux_set,

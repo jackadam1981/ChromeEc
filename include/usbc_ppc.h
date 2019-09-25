@@ -137,6 +137,17 @@ struct ppc_drv {
 	 * @return EC_SUCCESS on success, error otherwise.
 	 */
 	int (*enter_low_power_mode)(int port);
+
+	/**
+	 * Enable/Disable PPC FRS detection
+	 *
+	 * NOTE: It is valid to not enable/disable FRS at the PPC level
+	 * if it is implemented in the TCPC
+	 *
+	 * @param port Type-C port number
+	 * @param enable FRS enable (true) disable (false)
+	 */
+	 void (*set_frs_enable)(int port, int enable);
 };
 
 struct ppc_config_t {
@@ -295,5 +306,13 @@ int ppc_enter_low_power_mode(int port);
  * @return 0 if interrupt is cleared, 1 if it is still on
  */
 int ppc_get_alert_status(int port);
+
+/**
+ * Enable/Disable PPC FRS detection
+ *
+ * @param port Type-C port number
+ * @param enable FRS enable (true) disable (false)
+ */
+void ppc_set_frs_enable(int port, int enable);
 
 #endif /* !defined(__CROS_EC_USBC_PPC_H) */
