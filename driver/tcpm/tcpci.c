@@ -144,6 +144,7 @@ int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 }
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
+
 static int init_alert_mask(int port)
 {
 	uint16_t mask;
@@ -884,6 +885,14 @@ int tcpci_tcpm_mux_get(int port, mux_state_t *mux_state)
 		*mux_state |= MUX_POLARITY_INVERTED;
 
 	return EC_SUCCESS;
+}
+
+/* Fast Role Swap */
+void tcpc_set_frs_enable(int port, int enable)
+{
+	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP))
+		if (tcpc_config[port].drv->set_frs_enable)
+			tcpc_config[port].drv->set_frs_enable(port, enable);
 }
 
 const struct usb_mux_driver tcpci_tcpm_usb_mux_driver = {

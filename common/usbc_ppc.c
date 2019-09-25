@@ -246,3 +246,10 @@ static int command_ppc_dump(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(ppc_dump, command_ppc_dump, "<Type-C port>",
 			"dump the PPC regs");
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
+
+void ppc_set_frs_enable(int port, int enable)
+{
+	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP))
+		if (ppc_chips[port].drv->set_frs_enable)
+			ppc_chips[port].drv->set_frs_enable(port, enable);
+}
