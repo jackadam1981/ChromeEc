@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bafb437_e89a4493",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-25T18:00:31Z",
+      "side": 1,
+      "message": "Can you explain this a little more? Timestamp is updated when a file is updated. Are you dealing with the case where a file is updated but the content is the same?",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "d24b26b704a007d106c58b79f6526193b4040fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
