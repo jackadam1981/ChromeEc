@@ -16,6 +16,24 @@
       "revId": "bfc9778eebc7bb666b9a61be213287500dd77af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d20d066_fa715203",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-25T20:08:41Z",
+      "side": 1,
+      "message": "Honestly I don\u0027t know why they pass a char* around, but that is ABI between AP/EC right now. We could introduce a new version (i.e. v3) to change it but we would still have to support v2 and v1",
+      "parentUuid": "585928f9_5665ad6f",
+      "revId": "bfc9778eebc7bb666b9a61be213287500dd77af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
