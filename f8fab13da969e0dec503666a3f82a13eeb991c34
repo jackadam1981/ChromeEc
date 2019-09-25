@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08755ffc_2c11c6af",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-25T22:16:48Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. I fixed it.",
+      "parentUuid": "5287c206_0eaf8b85",
+      "range": {
+        "startLine": 2260,
+        "startChar": 21,
+        "endLine": 2261,
+        "endChar": 40
+      },
+      "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6498a786_84cf493c",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "49ac9a7b_dea1d6ff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2671,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-25T22:16:48Z",
+      "side": 1,
+      "message": "See the Vconn CL in this stack. I will submit them together.\n\nI was trying to keep each CL a little smaller, but I will need to submit them together though.",
+      "parentUuid": "6498a786_84cf493c",
+      "range": {
+        "startLine": 2671,
+        "startChar": 1,
+        "endLine": 2671,
+        "endChar": 33
+      },
+      "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f229ec5_ebbed33a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af6d0296_74947883",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-25T22:16:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f229ec5_ebbed33a",
+      "range": {
+        "startLine": 2697,
+        "startChar": 2,
+        "endLine": 2697,
+        "endChar": 33
+      },
+      "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
