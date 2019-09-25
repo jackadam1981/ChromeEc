@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4e02969_5c31927b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-25T21:24:15Z",
+      "side": 1,
+      "message": "Could you point this out in the spec?\n\nFigure 8-67 only enters the hard reset state when a sender response timer expires. The no response timer is used to determine that the port partner is unresponsive and we should give up sending hard resets.",
+      "range": {
+        "startLine": 1094,
+        "startChar": 2,
+        "endLine": 1095,
+        "endChar": 41
+      },
+      "revId": "14aeec7192b0768ca45c53072bf831b18c0098fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95eae87_6062bc16",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-25T21:24:15Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 1226,
+        "startChar": 1,
+        "endLine": 1227,
+        "endChar": 40
+      },
+      "revId": "14aeec7192b0768ca45c53072bf831b18c0098fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
