@@ -4071,16 +4071,59 @@ struct ec_response_ldo_get {
 
 /*
  * Get power info.
+ *
+ * Note: v0 of this command is deprecated
  */
 #define EC_CMD_POWER_INFO 0x009D
 
-struct ec_response_power_info {
-	uint32_t usb_dev_type;
-	uint16_t voltage_ac;
-	uint16_t voltage_system;
-	uint16_t current_system;
-	uint16_t usb_current_limit;
-} __ec_align4;
+/*
+ * v1 of EC_CMD_POWER_INFO
+ */
+enum system_power_source {
+	POWER_SOURCE_UNKNOWN = 0,
+	POWER_SOURCE_BATTERY = 1,
+	POWER_SOURCE_AC = 2,
+	POWER_SOURCE_AC_BATTERY = 3,
+};
+
+struct ec_response_power_info_v1 {
+	/* enum system_power_source */
+	uint8_t system_power_source;
+	/* Battery state-of-charge, 0-100, 0 if not present */
+	uint8_t battery_soc;
+	/* AC Adapter 100% rating, Watts */
+	uint8_t ac_adapter_100pct;
+	/* AC Adapter 10ms rating, Watts */
+	uint8_t ac_adapter_10ms;
+	/* Battery 1C rating, derated */
+	uint8_t battery_1cd;
+	/* Rest of Platform average, Watts */
+	uint8_t rop_avg;
+	/* Rest of Platform peak, Watts */
+	uint8_t rop_peak;
+	/* Nominal charger efficiency, % */
+	uint8_t nominal_charger_eff;
+	/* Rest of Platform VR Average Efficiency, % */
+	uint8_t rop_avg_eff;
+	/* Rest of Platform VR Peak Efficiency, % */
+	uint8_t rop_peak_eff;
+	/* SoC VR Efficiency at Average level, % */
+	uint8_t soc_avg_eff;
+	/* SoC VR Efficiency at Peak level, % */
+	uint8_t soc_peak_eff;
+	/* Battery's level of DBPT support: 0, 2 */
+	uint8_t batt_dbpt_support_level;
+	/*
+	 * Maximum peak power from battery (10ms), Watts
+	 * If DBPT is not supported, this is 0
+	 */
+	uint8_t batt_dbpt_max_peak_power;
+	/*
+	 * Sustained peak power from battery, Watts
+	 * If DBPT is not supported, this is 0
+	 */
+	uint8_t batt_dbpt_sus_peak_power;
+} __ec_align1;
 
 /*****************************************************************************/
 /* I2C passthru command */
