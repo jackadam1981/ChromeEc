@@ -143,6 +143,9 @@ enum sn5s330_pp_idx {
  */
 #define SN5S330_VCONN_ILIM (1 << 1)
 
+#define SN5S330_CC1_CON (1 << 2)
+#define SN5S330_CC2_CON (1 << 3)
+
 /*
  * INT_MASK_RISE/FALL_EDGE_3
  *
