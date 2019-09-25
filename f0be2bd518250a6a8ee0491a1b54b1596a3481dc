@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "109d5ea2_f2266365",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-25T13:25:04Z",
+      "side": 1,
+      "message": "the other variables in this section are commented... does it make sense to add a short comment?",
+      "revId": "f0be2bd518250a6a8ee0491a1b54b1596a3481dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37533bb8_074bac4b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-25T13:25:04Z",
+      "side": 1,
+      "message": "I like consistent naming. Does this make sense to change over to be pd_reset_cable?",
+      "revId": "f0be2bd518250a6a8ee0491a1b54b1596a3481dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d251fa3c_52a407dd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3240,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-25T13:25:04Z",
+      "side": 1,
+      "message": "should this be added to the ASCII art?",
+      "revId": "f0be2bd518250a6a8ee0491a1b54b1596a3481dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
