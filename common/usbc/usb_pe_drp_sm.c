@@ -81,6 +81,11 @@
 /* 6.7.5 Discover Identity Counter */
 #define N_DISCOVER_IDENTITY_COUNT 20
 
+
+#define TIMER_PRESTART 0
+#define TIMER_DISABLED 0xffffffff
+
+
 /*
  * Function pointer to a Structured Vendor Defined Message (SVDM) response
  * function defined in the board's usb_pd_policy.c file.
@@ -696,6 +701,7 @@ static void send_source_cap(int port)
 	memcpy(emsg[port].buf, (uint8_t *)src_pdo, emsg[port].len);
 
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_SOURCE_CAP);
+	pe[port].sender_response_timer = TIMER_PRESTART;
 }
 
 /*
@@ -978,8 +984,8 @@ static void pe_src_send_capabilities_entry(int port)
 	/* Increment CapsCounter */
 	pe[port].caps_counter++;
 
-	/* Stop sender response timer */
-	pe[port].sender_response_timer = 0;
+	/* Do not start timers yet */
+	pe[port].sender_response_timer = TIMER_DISABLED;
 
 	/*
 	 * Clear PE_FLAGS_INTERRUPTIBLE_AMS flag if it was set
@@ -990,18 +996,23 @@ static void pe_src_send_capabilities_entry(int port)
 
 static void pe_src_send_capabilities_run(int port)
 {
+	if (!prl_is_done_transmitting(port))
+		return;
+
+	if (pe[port].no_response_timer == TIMER_PRESTART)
+		pe[port].no_response_timer = get_time().val + PD_T_NO_RESPONSE;
+
 	/*
 	 * If a GoodCRC Message is received then the Policy Engine Shall:
 	 *  1) Stop the NoResponseTimer.
 	 *  2) Reset the HardResetCounter and CapsCounter to zero.
 	 *  3) Initialize and run the SenderResponseTimer.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
-				pe[port].sender_response_timer == 0) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Stop the NoResponseTimer */
-		pe[port].no_response_timer = 0;
+		pe[port].no_response_timer = TIMER_DISABLED;
 
 		/* Reset the HardResetCounter to zero */
 		pe[port].hard_reset_counter = 0;
@@ -1010,16 +1021,15 @@ static void pe_src_send_capabilities_run(int port)
 		pe[port].caps_counter = 0;
 
 		/* Initialize and run the SenderResponseTimer */
-		pe[port].sender_response_timer = get_time().val +
-							PD_T_SENDER_RESPONSE;
+		pe[port].sender_response_timer =
+			get_time().val + PD_T_SENDER_RESPONSE;
 	}
 
 	/*
 	 * Transition to the PE_SRC_Negotiate_Capability state when:
 	 *  1) A Request Message is received from the Sink
 	 */
-	if (pe[port].sender_response_timer != 0 &&
-			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/*
@@ -1080,10 +1090,10 @@ static void pe_src_send_capabilities_run(int port)
 	 *  2) The NoResponseTimer times out
 	 *  3) And the HardResetCounter > nHardResetCount.
 	 */
-	if (pe[port].no_response_timer > 0 &&
-			get_time().val > pe[port].no_response_timer &&
-			pe[port].hard_reset_counter > N_HARD_RESET_COUNT) {
-		if (PE_CHK_FLAG(port, PE_FLAGS_PD_CONNECTION))
+	if (get_time().val > pe[port].no_response_timer) {
+		if (pe[port].hard_reset_counter <= N_HARD_RESET_COUNT)
+			set_state_pe(port, PE_SRC_HARD_RESET);
+		else if (PE_CHK_FLAG(port, PE_FLAGS_PD_CONNECTION))
 			set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 		else
 			set_state_pe(port, PE_SRC_DISABLED);
@@ -1094,9 +1104,9 @@ static void pe_src_send_capabilities_run(int port)
 	 * Transition to the PE_SRC_Hard_Reset state when:
 	 *  1) The SenderResponseTimer times out.
 	 */
-	if ((pe[port].sender_response_timer > 0) &&
-			get_time().val > pe[port].sender_response_timer) {
+	if (get_time().val > pe[port].sender_response_timer) {
 		set_state_pe(port, PE_SRC_HARD_RESET);
+		return;
 	}
 }
 
@@ -1152,10 +1162,19 @@ static void pe_src_transition_supply_entry(int port)
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_GOTO_MIN);
 	}
 
+	/* Ensure we start no response timer after we send above message */
+	pe[port].no_response_timer = TIMER_PRESTART;
+
 }
 
 static void pe_src_transition_supply_run(int port)
 {
+	if (!prl_is_done_transmitting(port))
+		return;
+
+	if (pe[port].no_response_timer == TIMER_PRESTART)
+		pe[port].no_response_timer = get_time().val + PD_T_NO_RESPONSE;
+
 	/*
 	 * Transition to the PE_SRC_Ready state when:
 	 *  1) The power supply is ready.
@@ -1188,6 +1207,7 @@ static void pe_src_transition_supply_run(int port)
 			/* NOTE: First pass through this code block */
 			/* Send PS_RDY message */
 			prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+			pe[port].no_response_timer = TIMER_PRESTART;
 			PE_SET_FLAG(port, PE_FLAGS_PS_READY);
 		}
 
@@ -1202,6 +1222,9 @@ static void pe_src_transition_supply_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_SRC_HARD_RESET);
 	}
+
+	if (get_time().val > pe[port].no_response_timer)
+		set_state_pe(port, PE_SRC_HARD_RESET);
 }
 
 /**
