@@ -58,7 +58,8 @@ void prl_set_rev(int port, enum pd_rev_type rev);
 enum pd_rev_type prl_get_rev(int port);
 
 /**
- * Sends a PD control message
+ * Sends a PD control message. Use prl_is_done_transmitting() to determine when
+ * it is appropriate to start no response timers.
  *
  * @param port USB-C port number
  * @param type Transmit type
@@ -69,7 +70,8 @@ void prl_send_ctrl_msg(int port, enum tcpm_transmit_type type,
 	enum pd_ctrl_msg_type msg);
 
 /**
- * Sends a PD data message
+ * Sends a PD data message. Use prl_is_done_transmitting() to determine when
+ * it is appropriate to start no response timers.
  *
  * @param port USB-C port number
  * @param type Transmit type
@@ -80,7 +82,8 @@ void prl_send_data_msg(int port, enum tcpm_transmit_type type,
 	enum pd_data_msg_type msg);
 
 /**
- * Sends a PD extended data message
+ * Sends a PD extended data message. Use prl_is_done_transmitting() to determine
+ * when it is appropriate to start no response timers.
  *
  * @param port USB-C port number
  * @param type Transmit type
@@ -89,6 +92,12 @@ void prl_send_data_msg(int port, enum tcpm_transmit_type type,
  */
 void prl_send_ext_data_msg(int port, enum tcpm_transmit_type type,
 	enum pd_ext_msg_type msg);
+
+/*
+ * When called in the same PD task, return true if the physical layer is done
+ * transmitting a message on the CC lines.
+ */
+int prl_is_done_transmitting(const int port);
 
 /**
  * Informs the Protocol Layer that a hard reset has completed

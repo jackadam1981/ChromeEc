@@ -1311,6 +1311,9 @@ void pd_request_vconn_swap_off(int port)
 			get_state_tc(port) == TC_ATTACHED_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_OFF);
 		task_wake(PD_PORT_TO_TASK_ID(port));
+	} else {
+		/* This is an error, but we don't want the PE waiting forever */
+		pe_vconn_swap_complete(port);
 	}
 }
 
@@ -1320,6 +1323,9 @@ void pd_request_vconn_swap_on(int port)
 			get_state_tc(port) == TC_ATTACHED_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_ON);
 		task_wake(PD_PORT_TO_TASK_ID(port));
+	} else {
+		/* This is an error, but we don't want the PE waiting forever */
+		pe_vconn_swap_complete(port);
 	}
 }
 #endif
