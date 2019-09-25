@@ -46,6 +46,30 @@
       "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4e17ca_7516fccb",
+        "filename": "common/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-25T18:04:27Z",
+      "side": 1,
+      "message": "I thought it would be simpler to use only capital or only lower case for the %p extension. So, I\u0027m wondering if %pp and %pt are better. What does the kernel do?",
+      "parentUuid": "af70af64_083361ca",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 28
+      },
+      "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
