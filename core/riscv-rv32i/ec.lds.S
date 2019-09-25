@@ -57,6 +57,7 @@ SECTIONS
         . = ALIGN(IT83XX_ILM_BLOCK_SIZE);
         __flash_text_start = .;
         *(.text*)
+        . = ALIGN(4);
     } > ILM AT>FLASH
 
     . = ALIGN(4);
