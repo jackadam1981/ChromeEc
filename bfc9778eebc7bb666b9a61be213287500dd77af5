@@ -34,6 +34,24 @@
       "revId": "bfc9778eebc7bb666b9a61be213287500dd77af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f89929d3_0102f60d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-25T21:16:33Z",
+      "side": 1,
+      "message": "It\u0027s from here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1468049/.\n\nIt looks being used in an unintended way.\n\n+ayushee",
+      "parentUuid": "0d20d066_fa715203",
+      "revId": "bfc9778eebc7bb666b9a61be213287500dd77af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
