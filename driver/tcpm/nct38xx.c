@@ -364,4 +364,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+	.set_frs_enable         = &tcpci_tcpc_fast_role_swap_enable,
+#endif
 };

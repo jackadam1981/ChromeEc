@@ -1790,6 +1790,13 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 			 uint32_t ec_current_image);
 
 /**
+ * Fast Role Swap was detected
+ *
+ * @param port			USB-C port number
+ */
+void pd_got_frs_signal(int port);
+
+/**
  * Try to fetch one PD log entry from accessory
  *
  * @param port	USB-C accessory port number
