@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c780ff_f847fd83",
+        "filename": "common/mock/fpsensor_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-25T00:07:13Z",
+      "side": 1,
+      "message": "That should be deleted I think?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "16627f74c64cb54b941e528a5dc9499516d9ba14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81627434_36c82670",
+        "filename": "common/mock/fpsensor_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-09-25T00:07:13Z",
+      "side": 1,
+      "message": "That doesn\u0027t seem necessary",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "16627f74c64cb54b941e528a5dc9499516d9ba14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
