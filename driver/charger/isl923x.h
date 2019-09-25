@@ -17,14 +17,16 @@
 #define ISL923X_REG_SYS_VOLTAGE_MAX  0x15
 #define ISL923X_REG_SYS_VOLTAGE_MIN  0x3e
 #define ISL923X_REG_PROCHOT_AC       0x47
+#define ISL923X_REG_PROCHOT_AC_MASK  0x1f80
 #define ISL923X_REG_PROCHOT_DC       0x48
+#define ISL923X_REG_PROCHOT_DC_MASK  0x3f00
 #define ISL923X_REG_T1_T2            0x38
 #define ISL923X_REG_CONTROL0         0x39
 #define ISL923X_REG_CONTROL1         0x3c
 #define ISL923X_REG_CONTROL2         0x3d
 #define ISL9238_REG_CONTROL3         0x4c
 #define ISL9238_REG_CONTROL4         0x4e
-#define ISL923X_REG_INFO             0x3a
+#define ISL923X_REG_INFO1            0x3a
 #define ISL9238_REG_INFO2            0x4d
 #define ISL923X_REG_OTG_VOLTAGE      0x49
 #define ISL923X_REG_OTG_CURRENT      0x4a
