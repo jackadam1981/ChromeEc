@@ -4957,4 +4957,6 @@
 #define CONFIG_SHA256
 #endif
 
+#undef CONFIG_PPC_OVP_DETECT
+
 #endif  /* __CROS_EC_CONFIG_H */
