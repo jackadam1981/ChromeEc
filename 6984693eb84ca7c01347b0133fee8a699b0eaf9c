@@ -22,6 +22,30 @@
       "revId": "6984693eb84ca7c01347b0133fee8a699b0eaf9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312a11ef_562010da",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-25T22:17:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand. If Vconn isn\u0027t define then the TC_FLAG_VCONN should never be set since that code path doesn\u0027t exist.",
+      "parentUuid": "db1db2f9_971f2373",
+      "range": {
+        "startLine": 1812,
+        "startChar": 2,
+        "endLine": 1813,
+        "endChar": 22
+      },
+      "revId": "6984693eb84ca7c01347b0133fee8a699b0eaf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
