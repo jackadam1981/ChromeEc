@@ -324,6 +324,17 @@ struct tcpm_drv {
 	 */
 	int (*enter_low_power_mode)(int port);
 #endif
+
+	/**
+	 * Enable/Disable TCPC FRS detection
+	 *
+	 * NOTE: It is valid to not enable/disable FRS at the TCPC level
+	 * if it is implemented in the PPC
+	 *
+	 * @param port Type-C port number
+	 * @param enable FRS enable (true) disable (false)
+	 */
+	 void (*set_frs_enable)(int port, int enable);
 };
 
 /*
