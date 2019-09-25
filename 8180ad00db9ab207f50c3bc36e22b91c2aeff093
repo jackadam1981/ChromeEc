@@ -262,6 +262,30 @@
       "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a40ca9e_dd1bac03",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2019-09-25T01:34:25Z",
+      "side": 1,
+      "message": "I think \u0027fail-safe\u0027 give us lots of confusion. It means \u0027System-wide temperature/fan control fail-safe\u0027, not DPTF daemon itself to be fail-safe !)  \n\nLine 193 ~ 219 is unnecessary if DPTF is running in user space since DPTF does the job.\nIf DPTF is running normally, this \u0027thermal_control\u0027 thread(hook) is only for monitoring DPTF\u0027s health \u0027indirectly\u0027 by checking on-board temperature sensors.(line 110)  If temperature is above the threshold, it just assumes DPTF does not do its job and let EC to control fan(line 112).\nFan will be controlled regardless by either DPTF or EC. This is system wide fail-safe in fan control.  \n\nIf CPU temperature is too hot, DPTF will start shutdown process. if DPTF is down and CPU is getting hot, EC will notice and will control fan to cool CPU down. \nIf both DPTF and EC are down, we don\u0027t have solution. This will be same for system with NO DPTF and if EC is down, PROCHOT# cannot be asserted.",
+      "parentUuid": "4b828f76_1f5d72ef",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
