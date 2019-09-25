@@ -73,6 +73,14 @@ static int nct38xx_tcpm_init(int port)
 	if (rv)
 		return rv;
 
+	/* Set FRS direction for SNK detect, if FRS is enabled */
+	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP)) {
+		reg = TCPC_REG_CONFIG_EXT_1_FR_SWAP_SNK_DIR;
+		rv = tcpc_write(port, TCPC_REG_CONFIG_EXT_1, reg);
+		if (rv)
+			return rv;
+	}
+
 	/* Start VBus monitor */
 	rv = tcpc_write(port, TCPC_REG_COMMAND,
 			TCPC_REG_COMMAND_ENABLE_VBUS_DETECT);
@@ -363,5 +371,8 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+#endif
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+	.set_frs_enable         = &tcpci_tcpc_fast_role_swap_enable,
 #endif
 };
