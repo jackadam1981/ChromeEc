@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3a71561_76e3ecfb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-25T22:22:00Z",
+      "side": 1,
+      "message": "I don\u0027t think the path of when NoResponseTimer expires is explicit in the spec in that diagram.\n\nSection NoResponseTimer gives a little more details:\n\n\"If the Source fails to receive a GoodCRC Message in response to a Source_Capabilities Message within tNoResponse\nof:\nThe last bit of a Hard Reset Signaling being sent by the PHY Layer if the Hard Reset Signaling was initiated by the\nSink.\nThe last bit of a Hard Reset Signaling being received by the PHY Layer if the Hard Reset Signaling was initiated by\nthe Source.\nThen the Source Shall issue additional Hard Resets up to nHardResetCount times (see Section 6.8.2).\"",
+      "parentUuid": "b4e02969_5c31927b",
+      "range": {
+        "startLine": 1094,
+        "startChar": 2,
+        "endLine": 1095,
+        "endChar": 41
+      },
+      "revId": "14aeec7192b0768ca45c53072bf831b18c0098fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e95eae87_6062bc16",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
