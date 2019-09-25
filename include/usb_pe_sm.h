@@ -35,6 +35,7 @@ enum pe_dpm_request {
 	DPM_REQUEST_DISCOVER_IDENTITY   = BIT(9),
 	DPM_REQUEST_EXIT_DP_MODE        = BIT(10),
 	DPM_REQUEST_SVDM                = BIT(11),
+	DPM_REQUEST_FRS_ENABLE          = BIT(12),
 };
 
 /**
@@ -96,6 +97,13 @@ void pe_got_soft_reset(int port);
  * @param port USB-C port number
  */
 void pe_hard_reset_sent(int port);
+
+/**
+ * Informs the Policy Engine that a Fast Role Swap signal was detected
+ *
+ * @param port USB-C port number
+ */
+void pe_got_frs_signal(int port);
 
 /**
  * Exit DP mode
