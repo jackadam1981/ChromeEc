@@ -81,6 +81,24 @@
       "revId": "3a1c3ecfa9b473e52e26da3748898bd7e8227268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d2a3c0c_4c9406c2",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-09-25T20:41:20Z",
+      "side": 1,
+      "message": "If we work out that we can do this, let\u0027s do it in a follow-up CL so that we can get this one submitted.",
+      "parentUuid": "c1e36fba_3219d20f",
+      "revId": "3a1c3ecfa9b473e52e26da3748898bd7e8227268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
