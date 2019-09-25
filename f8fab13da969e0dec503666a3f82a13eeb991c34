@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5287c206_0eaf8b85",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-25T20:39:59Z",
+      "side": 1,
+      "message": "This does not evaluate properly when CONFIG_USB_PD_TRY_SRC is undefined",
+      "range": {
+        "startLine": 2260,
+        "startChar": 21,
+        "endLine": 2261,
+        "endChar": 40
+      },
+      "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6498a786_84cf493c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2671,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-25T20:39:59Z",
+      "side": 1,
+      "message": "tc_attached_snk should not have tc_cc_rd as a parent because tc_cc_rd turns off vconn but vconn should be unchanged after a power role swap.",
+      "range": {
+        "startLine": 2671,
+        "startChar": 1,
+        "endLine": 2671,
+        "endChar": 33
+      },
+      "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f229ec5_ebbed33a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-25T20:39:59Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 2697,
+        "startChar": 2,
+        "endLine": 2697,
+        "endChar": 33
+      },
+      "revId": "f8fab13da969e0dec503666a3f82a13eeb991c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
