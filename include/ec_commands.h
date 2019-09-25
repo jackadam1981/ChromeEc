@@ -5703,6 +5703,78 @@ struct ec_response_locate_chip {
 } __ec_align2;
 
 /*****************************************************************************/
+/* Return system power status information
+ *
+ * Return values:
+ * EC_RES_INVALID: The EC does not respond to this command
+ */
+#define EC_CMD_GET_POWER_STATUS 0x0127
+
+enum system_power_source {
+	POWER_SOURCE_UNKNOWN = 0,
+	POWER_SOURCE_BATTERY = 1,
+	POWER_SOURCE_AC = 2,
+	POWER_SOURCE_AC_BATTERY = 3,
+};
+
+enum power_status_type {
+	POWER_STATUS_BASE,
+	POWER_STATUS_DYNAMIC,
+};
+
+struct ec_params_get_power_status {
+	/* One of enum power_status_type */
+	uint8_t power_status_type;
+} __ec_align1;
+
+struct ec_response_get_power_status {
+	/* enum power_status_type */
+	uint8_t power_status_type;
+	/* enum system_power_source */
+	uint8_t system_power_source;
+	/* Battery state-of-charge */
+	uint8_t battery_soc;
+
+	union {
+		/* Dynamic section */
+		struct {
+			/* AC Adapter 100% rating, W */
+			uint8_t ac_adapter_100pct;
+			/* AC Adapter 10ms rating, W */
+			uint8_t ac_adapter_10ms;
+			/* Battery 2Cd rating, W */
+			uint8_t battery_2cd;
+			/* Battery 4Cd rating, W */
+			uint8_t battery_4cd;
+			/* Rest of Platform average, W */
+			uint8_t rop_avg;
+			/* Rest of Platform peak, W */
+			uint8_t rop_peak;
+			/* If DBPT is available */
+			/* Maximum peak power from battery (10ms), W */
+			uint8_t batt_dbpt_max_peak_power;
+			/* Sustained peak power from battery, W */
+			uint8_t batt_dbpt_sus_peak_power;
+		} dynamic;
+		/* Base section */
+		struct {
+			/* Nominal charger efficiency, % */
+			uint8_t nominal_charger_eff;
+			/* Rest of Platform VR Average Efficiency, % */
+			uint8_t rop_avg_eff;
+			/* Rest of Platform VR Peak Efficiency, % */
+			uint8_t rop_peak_eff;
+			/* SoC VR Efficiency at PL2 Average level, % */
+			uint8_t soc_pl2_avg_eff;
+			/* SoC VR Efficiency at PL2 Peak level, % */
+			uint8_t soc_pl2_peak_eff;
+			/* Battery's level of DBPT support: 0, 2, 3 */
+			uint8_t batt_dbpt_support_level;
+		} base;
+	};
+} __ec_align1;
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/
