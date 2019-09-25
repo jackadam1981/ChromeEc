@@ -94,6 +94,30 @@
       "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55d1495_412667e7",
+        "filename": "common/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-25T20:57:55Z",
+      "side": 1,
+      "message": "Then, I think we should follow the ones supported by the kernel. The rest is probably better be the same as before.",
+      "parentUuid": "a2cd1222_98bd1e25",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 28
+      },
+      "revId": "d078bf19cd62a40d290b962740c62ee580427e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
