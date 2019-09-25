@@ -46,6 +46,30 @@
       "revId": "6984693eb84ca7c01347b0133fee8a699b0eaf9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd39eb3_77e27203",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-09-25T22:33:28Z",
+      "side": 1,
+      "message": "I think the code should not be included if CONFIG_USBC_VCONN is undefined. Same as it\u0027s being used on line 2138",
+      "parentUuid": "312a11ef_562010da",
+      "range": {
+        "startLine": 1812,
+        "startChar": 2,
+        "endLine": 1813,
+        "endChar": 22
+      },
+      "revId": "6984693eb84ca7c01347b0133fee8a699b0eaf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
