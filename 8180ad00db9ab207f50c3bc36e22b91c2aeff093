@@ -238,6 +238,30 @@
       "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b828f76_1f5d72ef",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-25T00:42:21Z",
+      "side": 1,
+      "message": "How can DPTF be a fail-safe if it\u0027s implemented as a software daemon in userspace?  The fail-safe in this case is not who controls the fan, it\u0027s who controls PROCHOT# and can force the chipset to shutdown to avoid damage.",
+      "parentUuid": "3606f8b8_353429d8",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
