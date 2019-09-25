@@ -213,6 +213,11 @@ enum hook_type {
 	 * USB PD cc connection event.
 	 */
 	HOOK_USB_PD_CONNECT,
+
+	/*
+	 * Power available over USB has changed
+	 */
+	HOOK_INPUT_POWER_CHANGED,
 };
 
 struct hook_data {

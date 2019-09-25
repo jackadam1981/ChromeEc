@@ -72,6 +72,8 @@ extern const struct hook_data __hooks_usb_pd_disconnect[];
 extern const struct hook_data __hooks_usb_pd_disconnect_end[];
 extern const struct hook_data __hooks_usb_pd_connect[];
 extern const struct hook_data __hooks_usb_pd_connect_end[];
+extern const struct hook_data __hooks_input_power_changed[];
+extern const struct hook_data __hooks_input_power_changed_end[];
 
 /* Deferrable functions and firing times*/
 extern const struct deferred_data __deferred_funcs[];
