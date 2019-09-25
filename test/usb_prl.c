@@ -322,7 +322,6 @@ static int simulate_receive_extended_data(int port,
 	int data_offset = 0;
 	uint8_t *expected_data = (uint8_t *)test_data;
 	uint16_t header;
-	int req_timeout;
 
 	pd_port[port].mock_pe_error = -1;
 	pd_port[port].mock_pe_message_received = 0;
@@ -332,7 +331,7 @@ static int simulate_receive_extended_data(int port,
 
 	dsize = len;
 
-	cycle_through_state_machine(port, 2, 40 * MSEC);
+	cycle_through_state_machine(port, 2, MSEC);
 
 	for (j = 0; j < 10; j++) {
 		byte_len = len;
@@ -352,7 +351,7 @@ static int simulate_receive_extended_data(int port,
 			pd_port[port].data_role, pd_port[port].msg_rx_id,
 			nw, pd_port[port].rev, 1);
 
-		cycle_through_state_machine(port, 2, 40 * MSEC);
+		cycle_through_state_machine(port, 2, MSEC);
 
 		if (pd_port[port].mock_pe_error >= 0)
 			return 0;
@@ -364,14 +363,14 @@ static int simulate_receive_extended_data(int port,
 			return 0;
 
 		simulate_rx_msg(port, header, nw, (uint32_t *)td);
-		task_wait_event(40 * MSEC);
+		task_wait_event(MSEC);
 
 		if (!verify_goodcrc(port, pd_port[port].data_role,
 						pd_port[port].msg_rx_id))
 			return 0;
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(40);
+		task_wait_event(MSEC);
 		inc_rx_id(port);
 
 		/*
@@ -379,16 +378,6 @@ static int simulate_receive_extended_data(int port,
 		 */
 		if (len <= 0)
 			break;
-
-		/*
-		 * Wait for request chunk message
-		 */
-		req_timeout = 0;
-		while (rch_get_state(port) != RCH_REQUESTING_CHUNK &&
-							req_timeout < 5) {
-			req_timeout++;
-			msleep(2);
-		}
 
 		chunk_num++;
 
@@ -415,18 +404,18 @@ static int simulate_receive_extended_data(int port,
 			return 0;
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		task_wait_event(MSEC);
 
 		/* Request next chunk packet was good. Send GoodCRC */
 		simulate_goodcrc(port, pd_port[port].power_role,
 					pd_port[port].msg_tx_id);
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(40 * MSEC);
+		task_wait_event(MSEC);
 		inc_tx_id(port);
 	}
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(20 * MSEC);
+	task_wait_event(MSEC);
 
 	return verify_chunk_data_reception(port, header, dsize);
 }
@@ -531,7 +520,7 @@ static int simulate_send_data_msg_request_from_pe(int port,
 	emsg[port].len = len;
 
 	prl_send_data_msg(port, type, msg_type);
-	task_wait_event(30 * MSEC);
+	task_wait_event(MSEC);
 
 	return verify_data_msg_transmission(port, msg_type, len);
 }
@@ -618,7 +607,7 @@ static int verify_extended_data_msg_transmission(int port,
 		simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		task_wait_event(MSEC);
 		inc_tx_id(port);
 
 		len -= 26;
@@ -632,7 +621,7 @@ static int verify_extended_data_msg_transmission(int port,
 			return 0;
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		task_wait_event(MSEC);
 		inc_rx_id(port);
 	}
 
