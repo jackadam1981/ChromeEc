@@ -350,6 +350,12 @@ void prl_hard_reset_complete(int port)
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
+int prl_is_done_transmitting(const int port)
+{
+	return !TCH_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT) &&
+	       !PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT);
+}
+
 void prl_send_ctrl_msg(int port,
 		      enum tcpm_transmit_type type,
 		      enum pd_ctrl_msg_type msg)
