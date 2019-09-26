@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76712709_cdf850ee",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-26T13:56:25Z",
+      "side": 1,
+      "message": "use a common \"now\" get time value?",
+      "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9009cb_67440b3d",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-26T13:56:25Z",
+      "side": 1,
+      "message": "is this right to use a PRL flag in a TCH check?",
+      "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8894774d_fc2f91d5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-26T13:56:25Z",
+      "side": 1,
+      "message": "since these are errors, should we display something or give some hint that it happened?",
+      "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
