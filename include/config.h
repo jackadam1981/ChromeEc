@@ -2268,6 +2268,9 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/* TODO: add doc */
+#undef CONFIG_SMBUS_PEC
+
 /*****************************************************************************/
 /* IPI configuration.  Support mt_scp only for now. */
 

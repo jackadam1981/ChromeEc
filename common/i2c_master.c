@@ -9,6 +9,7 @@
 #include "clock.h"
 #include "charge_state.h"
 #include "console.h"
+#include "crc8.h"
 #include "host_command.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -499,6 +500,103 @@ int i2c_write_block(const int port,
 
 	return rv;
 }
+
+#ifdef CONFIG_SMBUS_PEC
+int i2c_read16_pec(const int port,
+		   const uint16_t slave_addr_flags,
+		   int offset, int *data)
+{
+	int rv, i;
+	uint8_t pec = 0;
+	uint8_t reg, addr_8bit, buf[sizeof(uint16_t) + 1];
+
+	addr_8bit = (slave_addr_flags << 1) & 0xFF;
+	reg = offset & 0xff;
+
+	pec = crc8_arg(&addr_8bit, 1, pec);
+	pec = crc8_arg(&reg, 1, pec);
+	addr_8bit |= 1;
+	pec = crc8_arg(&addr_8bit, 1, pec);
+
+	for (i = 0; i < 3; i++) {
+		/*
+		 * I2C read 16-bit word: transmit 8-bit offset,
+		 * and read 16bits data + 8bit pec */
+		rv = i2c_xfer(port, slave_addr_flags,
+			      &reg, 1, buf, sizeof(buf));
+		if (rv)
+			continue;
+		if (crc8_arg(buf, sizeof(uint16_t), pec) == buf[2])
+			break;
+	}
+
+	if (i == 3)
+		rv = EC_ERROR_CRC;
+	if (rv)
+		return rv;
+
+	if (I2C_IS_BIG_ENDIAN(slave_addr_flags))
+		*data = ((int)buf[0] << 8) | buf[1];
+	else
+		*data = ((int)buf[1] << 8) | buf[0];
+
+	return EC_SUCCESS;
+}
+
+int i2c_read_string_pec(const int port,
+			const uint16_t slave_addr_flags,
+			int offset, uint8_t *data, int len)
+{
+	int rv, i;
+	uint8_t reg, block_length, pec_out = 0, addr_8bit;
+	uint8_t buf[257]; /* maximum 256 byte + 1 byte pec */
+
+	addr_8bit = (slave_addr_flags << 1) & 0xFF;
+	reg = offset & 0xff;
+
+	pec_out = crc8_arg(&addr_8bit, 1, pec_out);
+	pec_out = crc8_arg(&reg, 1, pec_out);
+	addr_8bit |= 1;
+	pec_out = crc8_arg(&addr_8bit, 1, pec_out);
+
+	i2c_lock(port, 1);
+	for (i = 0; i < 3; i++) {
+		uint8_t pec = pec_out;
+		rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				       &reg, 1, &block_length, 1, I2C_XFER_START);
+		if (rv)
+			continue;
+
+		pec = crc8_arg(&block_length, 1, pec);
+
+		rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				       0, 0, buf, block_length + 1, I2C_XFER_STOP);
+		if (rv)
+			continue;
+		pec = crc8_arg(buf, block_length, pec);
+		if (pec == buf[block_length])
+			break;
+	}
+
+	if (i == 3)
+		rv = EC_ERROR_CRC;
+	if (rv)
+		goto exit;
+
+	buf[block_length] = 0;
+	if (block_length >= len) {
+		memcpy(data, buf, len - 1);
+		data[len - 1] = 0;
+	} else {
+		memcpy(data, buf, block_length);
+		data[block_length] = 0;
+	}
+
+exit:
+	i2c_lock(port, 0);
+	return rv;
+}
+#endif
 
 int get_sda_from_i2c_port(int port, enum gpio_signal *sda)
 {

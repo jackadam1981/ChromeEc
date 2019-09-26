@@ -31,8 +31,17 @@ test_mockable int sb_read(int cmd, int *param)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
+#ifdef CONFIG_SMBUS_PEC
+	if (battery_get_info()->enable_pec)
+		return i2c_read16_pec(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				  cmd, param);
+	else
+		return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				  cmd, param);
+#else
 	return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			  cmd, param);
+#endif
 }
 
 test_mockable int sb_write(int cmd, int param)
@@ -59,8 +68,17 @@ int sb_read_string(int offset, uint8_t *data, int len)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
+#ifdef CONFIG_SMBUS_PEC
+	if (battery_get_info()->enable_pec)
+		return i2c_read_string_pec(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+					   offset, data, len);
+	else
+		return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				       offset, data, len);
+#else
 	return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			       offset, data, len);
+#endif
 }
 
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
