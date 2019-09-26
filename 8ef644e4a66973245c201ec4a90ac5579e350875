@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3422220d_4f795743",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-09-26T16:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8859919d_7388ba76",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49933fc0_1a5cabc9",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2095bae1_4f241d73",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-09-26T16:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49933fc0_1a5cabc9",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3fe727e2_e88f6c99",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-09-26T16:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a33b4341_f5ef27d4",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60e74cde_0e9bb2b1",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-09-18T19:32:44Z",
       "side": 1,
       "message": "since this list will get out of date, can we say to just select one `CONFIG_CHIPSET_*` option?",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 27
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f45fb71_9f97a2a2",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-09-26T16:41:28Z",
+      "side": 1,
+      "message": "There is a name conflict as CONFIG_CHIPSET* is both to select an AP chipset type and to enable/disable chipset options. I\u0027ll remove the list here and hope that a user figures it out. This will be updated once the kConfig stuff lands.",
+      "parentUuid": "60e74cde_0e9bb2b1",
       "range": {
         "startLine": 182,
         "startChar": 5,
@@ -183,6 +279,30 @@
       "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6589d3a_1b88e47d",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-09-26T16:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd94852_122c9ff5",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 31
+      },
+      "revId": "8ef644e4a66973245c201ec4a90ac5579e350875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
