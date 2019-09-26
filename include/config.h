@@ -2268,6 +2268,14 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/*
+ * Tx/Rx I2C data with FIFO - specific config for npcx chip
+ *
+ * If enabled, use the data FIFO to Tx/RX I2C data.
+ * Otherwisw, the single byte mode is used.
+ */
+#undef CONFIG_I2C_DATA_FIFO
+
 /*****************************************************************************/
 /* IPI configuration.  Support mt_scp only for now. */
 
