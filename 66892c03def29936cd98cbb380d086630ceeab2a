@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07eea0d5_e5cd9cd8",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-09-26T21:12:37Z",
+      "side": 1,
+      "message": "If ICO mode isn\u0027t disabled, then the input current limit will be set by IIN_DPM. ICO mode will only complete if VINDPM and INDPM conditions can be triggered. With most type C/USB-PD chargers, this doesn\u0027t happen. The other case this won\u0027t happen is when the battery will not accept any charge.",
+      "parentUuid": "fd0204e9_eb0d9923",
+      "range": {
+        "startLine": 456,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 24
+      },
+      "revId": "66892c03def29936cd98cbb380d086630ceeab2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cf680eb_e0f2b88a",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2019-09-26T20:04:51Z",
       "side": 1,
       "message": "Good catch, that was just wrong previously.",
+      "range": {
+        "startLine": 538,
+        "startChar": 70,
+        "endLine": 539,
+        "endChar": 26
+      },
+      "revId": "66892c03def29936cd98cbb380d086630ceeab2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc82faf_2227c04d",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-09-26T21:12:37Z",
+      "side": 1,
+      "message": "The ADC reading is close to what\u0027s in IIN_DPM, but IIN_DPM is what the optimal input current limit is to avoid triggering VINDPM.",
+      "parentUuid": "89717670_7f6f9cbd",
       "range": {
         "startLine": 538,
         "startChar": 70,
