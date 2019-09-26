@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd0204e9_eb0d9923",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-26T20:04:51Z",
+      "side": 1,
+      "message": "Do you still want to do this even if the ramping isn\u0027t considered stable yet?",
+      "range": {
+        "startLine": 456,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 24
+      },
+      "revId": "66892c03def29936cd98cbb380d086630ceeab2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf680eb_e0f2b88a",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-26T20:04:51Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 533,
+        "startChar": 33,
+        "endLine": 533,
+        "endChar": 34
+      },
+      "revId": "66892c03def29936cd98cbb380d086630ceeab2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89717670_7f6f9cbd",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-26T20:04:51Z",
+      "side": 1,
+      "message": "Good catch, that was just wrong previously.",
+      "range": {
+        "startLine": 538,
+        "startChar": 70,
+        "endLine": 539,
+        "endChar": 26
+      },
+      "revId": "66892c03def29936cd98cbb380d086630ceeab2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
