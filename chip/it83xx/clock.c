@@ -193,10 +193,6 @@ static void clock_set_pll(enum pll_freq_idx idx)
 {
 	int pll;
 
-	/* TODO(b/134542199): fix me... Changing PLL failed on it83202/ax */
-	if (IS_ENABLED(CHIP_VARIANT_IT83202AX))
-		return;
-
 	pll_div_fnd  = clock_pll_ctrl[idx].div_fnd;
 	pll_div_ec   = clock_pll_ctrl[idx].div_ec;
 	pll_div_jtag = clock_pll_ctrl[idx].div_jtag;
@@ -421,18 +417,10 @@ int clock_ec_wake_from_sleep(void)
 void clock_cpu_standby(void)
 {
 	/* standby instruction */
-	if (IS_ENABLED(CHIP_CORE_NDS32)) {
+	if (IS_ENABLED(CHIP_CORE_NDS32))
 		asm("standby wake_grant");
-	} else if (IS_ENABLED(CHIP_CORE_RISCV)) {
-		/*
-		 * An interrupt is not able to wake EC up from low power mode.
-		 * (AX bug)
-		 */
-		if (IS_ENABLED(CHIP_VARIANT_IT83202AX))
-			asm("nop");
-		else
-			asm("wfi");
-	}
+	else if (IS_ENABLED(CHIP_CORE_RISCV))
+		asm("wfi");
 }
 
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
@@ -585,6 +573,8 @@ void __idle(void)
 			clock_ec_pll_ctrl(EC_PLL_DOZE);
 			idle_doze_cnt++;
 		}
+		if (IS_ENABLED(CHIP_CORE_RISCV))
+			interrupt_enable();
 		clock_cpu_standby();
 		interrupt_enable();
 	}
