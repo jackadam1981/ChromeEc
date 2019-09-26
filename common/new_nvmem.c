@@ -542,6 +542,36 @@ test_export_static struct nn_page_header *list_element_to_ph(size_t el)
 	return NULL;
 }
 
+static int ph_to_pn(const struct nn_page_header* ph) {
+	if (!ph)
+		return 0;
+	return ((uintptr_t)ph - CONFIG_PROGRAM_MEMORY_BASE)/CONFIG_FLASH_BANK_SIZE;
+}
+
+static void dump_page_list(void)
+{
+	int i;
+	ccprintf("Page list: ");
+	for (i = 0; i < NEW_NVMEM_TOTAL_PAGES; i++) {
+		struct nn_page_header *ph = list_element_to_ph(i);
+		if (ph) {
+			ccprintf(" [%d]=%02x(%u)", i, page_list[i], ph->page_number);
+		} else {
+			ccprintf(" [%d]=%02x(X)", i, page_list[i]);
+		}
+	}
+	ccprintf("\n");
+	cflush();
+}
+
+static void dump_access_tracker(struct access_tracker *at) {
+	ccprintf("AT: ct={%x, %d}, mt={%x, %d}, li=%d\n",
+		          ph_to_pn(at->ct.ph), at->ct.data_offset,
+		          ph_to_pn(at->mt.ph), at->mt.data_offset,
+							at->list_index);
+	cflush();
+}
+
 /*
  * Read into buf or skip if buf is NULL the next num_bytes in the storage, at
  * the location determined by the passed in access tracker. Start from the
@@ -640,6 +670,14 @@ static size_t nvmem_read_bytes(struct access_tracker *at, size_t num_bytes,
 			memcpy(buf, at->mt.ph + 1, togo);
 
 		at->mt.data_offset = sizeof(*at->mt.ph) + togo;
+	} else if (!togo) {
+		struct nn_container *nc = buf;
+
+		if (container_fetch && nc->size) {
+			ccprintf("%s: non zero (%u) container, but no next page!!!\n", __func__, nc->size);
+			dump_access_tracker(at);
+			dump_page_list();
+		}
 	}
 
 	return num_bytes;
@@ -1035,6 +1073,10 @@ static void start_new_flash_page(size_t data_size)
 
 	write_to_flash(master_at.mt.ph, &ph, sizeof(ph));
 	master_at.mt.data_offset = sizeof(ph);
+
+	ccprintf("after start_new_flash_page: ");
+	dump_access_tracker(&master_at);
+	dump_page_list();
 }
 
 /*
@@ -3169,7 +3211,9 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 					 ch->generation);
 			}
 			if (print > 1) {
+				dump_access_tracker(&at);
 				dump_contents(ch);
+				ccprintf("\n");
 				continue;
 			}
 
@@ -3182,6 +3226,9 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 			}
 		}
 	}
+
+	ccprintf("\n");
+	dump_page_list();
 
 	unlock_mutex(__LINE__);
 
@@ -3213,3 +3260,74 @@ static int command_dump_nvmem(int argc, char **argv)
 	return 0;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(dump_nvmem, command_dump_nvmem, "", "");
+
+static int command_test_nvmem(int argc, char **argv) {
+	struct access_tracker at = {};
+	int rv = EC_SUCCESS;
+	struct nn_container *ch;
+	uint8_t* var_buf;
+	const uint8_t kTestVarName[] = { 'Z' };
+	const unsigned kTestVarNameSize = ARRAY_SIZE(kTestVarName);
+	const unsigned kVarHeaderPlusDelimSize = 4 /*delim*/ + 4 + 3 + kTestVarNameSize;
+	const unsigned kMaxVarSize = 255;
+	int var_iter = 0;
+	unsigned var_size;
+	const struct tuple *tt;
+
+	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
+	if (ch == NULL) {
+		ccprintf("Can't allocate ch\n");
+		return 0;
+	}
+	var_buf = (uint8_t*)ch;
+
+	do {
+		memset(&at, 0, sizeof(at));
+		lock_mutex(__LINE__);
+		while ((rv = get_next_object(&at, ch, 1)) == EC_SUCCESS) {};
+		ccprintf("\n[%d] ", ++var_iter);
+		unlock_mutex(__LINE__);
+		if (at.mt.data_offset == CONFIG_FLASH_BANK_SIZE-4)
+			break;
+
+		if (at.ct.data_offset + kVarHeaderPlusDelimSize >= CONFIG_FLASH_BANK_SIZE-4) {
+			var_size = kMaxVarSize;
+			ccprintf("var_size=%u\n", var_size);
+		} else {
+			var_size = CONFIG_FLASH_BANK_SIZE-4 - kVarHeaderPlusDelimSize - at.ct.data_offset;
+			if (var_size > kMaxVarSize) {
+				if (var_size > kMaxVarSize + kVarHeaderPlusDelimSize) {
+					var_size = kMaxVarSize;
+				} else {
+					var_size = kMaxVarSize/2;
+				}
+				ccprintf("var_size=%u\n", var_size);
+			} else {
+				ccprintf("Leaving 4 bytes => var_size=%u\n", var_size);
+			}
+		}
+		setvar(kTestVarName, kTestVarNameSize, var_buf, var_size);
+	} while(1);
+	dump_access_tracker(&master_at);
+	dump_page_list();
+
+	ccprintf("\nNow retrieve_nvmem_contents\n");
+	retrieve_nvmem_contents();
+	dump_access_tracker(&master_at);
+	dump_page_list();
+
+	ccprintf("\nNow create a var\n");
+	setvar(kTestVarName, kTestVarNameSize, var_buf, kMaxVarSize/2);
+	dump_access_tracker(&master_at);
+	dump_page_list();
+
+	ccprintf("\nNow getvar\n");
+	tt = getvar(kTestVarName, kTestVarNameSize);
+	freevar(tt);
+	dump_access_tracker(&master_at);
+	dump_page_list();
+
+	shared_mem_release(ch);
+	return 0;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(test_nvmem, command_test_nvmem, "", "");
