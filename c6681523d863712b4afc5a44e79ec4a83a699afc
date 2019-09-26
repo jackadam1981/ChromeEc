@@ -45,6 +45,30 @@
       "revId": "c6681523d863712b4afc5a44e79ec4a83a699afc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ded7a60_9125aa41",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4252,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-09-26T01:54:17Z",
+      "side": 1,
+      "message": "ya, we keep sending hard resets - same behavior as before.\nmy intent here is to fix the watchdog issue we saw in the\noriginal implementation since the timeout effectively\ngets cancelled due to repeated pending events.\n\ni\u0027m open to following up with another patch to give up on\nsending hard resets, but if the bus is being jammed periodically\nby the peripheral, is that really better?",
+      "parentUuid": "117ae650_27d65ad6",
+      "range": {
+        "startLine": 4251,
+        "startChar": 7,
+        "endLine": 4252,
+        "endChar": 17
+      },
+      "revId": "c6681523d863712b4afc5a44e79ec4a83a699afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
