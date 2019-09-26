@@ -2,10 +2,11 @@
 #![crate_type = "staticlib"]
 #![allow(non_camel_case_types)]
 
-extern crate common;
-
+use core::cmp::min;
 use core::mem::size_of;
-use core::slice::from_raw_parts;
+use core::slice::{from_raw_parts, from_raw_parts_mut};
+use core::sync::atomic::AtomicBool;
+use core::sync::atomic::Ordering;
 use core::time::Duration;
 
 use common::generated::*;
@@ -60,6 +61,50 @@ static HOOK_LIST: &[HookInterval] = unsafe {
     ]
 };
 
+#[derive(Copy, Clone)]
+struct StaticArray<T: 'static>(&'static [T], &'static [T]);
+
+impl<T> StaticArray<T> {
+    pub fn len(&self) -> usize {
+        let Self(start, end) = self;
+        (isize::wrapping_sub(end.as_ptr() as _, start.as_ptr() as _) / size_of::<T>() as isize)
+            as usize
+    }
+
+    pub fn as_slice(&self) -> &'static [T] {
+        let Self(start, _) = self;
+        // Safe assuming the linker gave us valid addresses.
+        unsafe { from_raw_parts(start.as_ptr(), self.len()) }
+    }
+}
+
+struct StaticMutArray<T: 'static>(&'static mut [T], &'static mut [T]);
+
+impl<T> StaticMutArray<T> {
+    pub fn len(&self) -> usize {
+        let Self(start, end) = self;
+        (isize::wrapping_sub(end.as_ptr() as _, start.as_ptr() as _) / size_of::<T>() as isize)
+            as usize
+    }
+
+    pub fn as_slice(&self) -> &'static [T] {
+        let Self(start, _) = self;
+        // Safe assuming the linker gave us valid addresses.
+        unsafe { from_raw_parts(start.as_ptr(), self.len()) }
+    }
+
+    pub fn as_mut_slice(&mut self) -> &mut [T] {
+        let Self(start, _) = self;
+        // Safe assuming the linker gave us valid addresses.
+        unsafe { from_raw_parts_mut(start.as_mut_ptr(), self.len()) }
+    }
+}
+
+static mut DEFERRED_UNTIL: StaticMutArray<u64> =
+    unsafe { StaticMutArray(&mut __deferred_until, &mut __deferred_until_end) };
+static mut DEFERRED_FUNCS: StaticArray<deferred_data> =
+    unsafe { StaticArray(&__deferred_funcs, &__deferred_funcs_end) };
+
 #[no_mangle]
 pub fn hook_notify(type_: hook_type) {
     if type_ as usize >= HOOK_LIST.len() {
@@ -70,7 +115,9 @@ pub fn hook_notify(type_: hook_type) {
 
     let mut count = 0;
     let mut last_priority = (HOOK_PRIO_FIRST - 1) as c_int;
+    // Call all the hooks in priority order.
     while count < hooks.len() {
+        // Find the lowest remaining priority
         let mut min_priority = (HOOK_PRIO_LAST + 1) as c_int;
         for hook in hooks.iter() {
             if hook.priority < min_priority && hook.priority > last_priority {
@@ -78,6 +125,8 @@ pub fn hook_notify(type_: hook_type) {
             }
         }
         last_priority = min_priority;
+
+        // Call all the hooks with that priority
         for hook in hooks.iter() {
             if hook.priority == min_priority {
                 count += 1;
@@ -92,19 +141,11 @@ pub fn hook_notify(type_: hook_type) {
     }
 }
 
-extern "C" {
-    static mut defer_new_call: i32;
-    static mut hook_task_started: i32;
-}
+static HOOK_TASK_STARTED: AtomicBool = AtomicBool::new(false);
+static DEFER_NEW_CALL: AtomicBool = AtomicBool::new(false);
 
 fn system_duration() -> Duration {
-    Duration::from_micros(unsafe {
-        get_time().val
-    })
-}
-
-fn duration_since(d: Duration) -> Duration {
-    system_duration() - d
+    Duration::from_micros(unsafe { get_time().val })
 }
 
 fn duration_elapsed(now: Duration, then: Duration, elapsed: Duration) -> bool {
@@ -126,13 +167,17 @@ pub unsafe extern "C" fn hook_call_deferred(data: *const deferred_data, us: i32)
 
     let p: &mut u64 = __deferred_until.get_unchecked_mut(i as usize);
     if us < 0 {
+        // Cancel
         *p = 0;
     } else {
         let future = system_duration().as_micros() as u64;
+        // Set Alarm
         *p = future + us as u64;
-        defer_new_call = 1;
+        // Flag that hook_call_deferred() has been called.  If the hook task is already active, this
+        // will allow it to go through the loop one more time before sleeping.
+        DEFER_NEW_CALL.store(true, Ordering::SeqCst);
 
-        if hook_task_started != 0 {
+        if HOOK_TASK_STARTED.load(Ordering::SeqCst) {
             task_set_event(TASK_ID_HOOKS as task_id_t, TASK_EVENT_WAKE, 0);
         }
     }
@@ -149,48 +194,80 @@ macro_rules! unsafe_static_mut {
     };
 }
 
-// TODO(zachr): WIP
 #[no_mangle]
-pub extern "C" fn hook_task(u: c_void) -> ! {
-    // let last_second: &mut u64 = unsafe {
-    //     static mut last_second: u64 = 0;
-    //     &mut last_second
-    // };
+pub extern "C" fn hook_task(_u: c_void) -> ! {
     const HOOK_TICK_INTERVAL: Duration = Duration::from_millis(HOOK_TICK_INTERVAL_MS as u64);
+    const SECOND: Duration = Duration::from_secs(1);
+    const NO_TIME: Duration = Duration::from_secs(0);
     unsafe_static_mut!(static mut last_second: Duration = HOOK_TICK_INTERVAL);
     unsafe_static_mut!(static mut last_tick: Duration = HOOK_TICK_INTERVAL);
 
+    HOOK_TASK_STARTED.store(true, Ordering::SeqCst);
+
+    // Call HOOK_INIT hooks
     hook_notify(HOOK_INIT);
+    // Now, enable the rest of the tasks.
     unsafe {
         task_enable_all_tasks();
     }
 
     loop {
         let t = system_duration();
-        let next = Duration::from_secs(0);
+        let mut next = Duration::from_secs(0);
 
-        if duration_elapsed(t, *last_tick, HOOK_TICK_INTERVAL)  {
+        for (deferred_until, deferred_func) in unsafe {
+            DEFERRED_UNTIL
+                .as_mut_slice()
+                .iter_mut()
+                .zip(DEFERRED_FUNCS.as_slice().iter())
+        } {
+            if *deferred_until != 0 && Duration::from_micros(*deferred_until) < t {
+                // Call deferred function.  Clear timer first, so it can request itself be called
+                // later.
+                *deferred_until = 0;
+                if let Some(routine) = deferred_func.routine {
+                    // The hook's routine is always unsafe to call.
+                    unsafe {
+                        routine();
+                    }
+                }
+            }
+        }
+
+        if duration_elapsed(t, *last_tick, HOOK_TICK_INTERVAL) {
             hook_notify(HOOK_TICK);
             *last_tick = t;
         }
 
-        if duration_elapsed(t, *last_second, Duration::from_secs(1)) {
+        if duration_elapsed(t, *last_second, SECOND) {
             hook_notify(HOOK_SECOND);
             *last_second = t;
         }
 
+        // Calculate when next tick needs to occur
         let t = system_duration();
         if *last_tick + HOOK_TICK_INTERVAL > t {
-            let next = *last_tick + HOOK_TICK_INTERVAL - t;
+            next = *last_tick + HOOK_TICK_INTERVAL - t;
         }
 
-        unsafe { defer_new_call = 0 }
-    
+        // Wake earlier if needed by a deferred routine
+        DEFER_NEW_CALL.store(false, Ordering::SeqCst);
 
-        if next > Duration::from_secs(0) && unsafe { defer_new_call == 0 } {
-            unsafe {
-                task_wait_event(next.as_micros() as i32)
-            };
+        for deferred_until in unsafe { DEFERRED_UNTIL.as_slice().iter() } {
+            if *deferred_until == 0 {
+                continue;
+            }
+
+            let future_duration = Duration::from_micros(*deferred_until)
+                .checked_sub(t)
+                .unwrap_or(NO_TIME);
+            next = min(future_duration, next)
+        }
+
+        // If nothing is immediately pending, and hook_call_deferred() hasn't been called since we
+        // started calculating next, sleep until the next event.
+        if next > NO_TIME && !DEFER_NEW_CALL.load(Ordering::SeqCst) {
+            unsafe { task_wait_event(next.as_micros() as i32) };
         }
     }
 }
