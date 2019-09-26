@@ -405,6 +405,20 @@ int i2c_write_block(const int port,
 		    const uint16_t slave_addr_flags,
 		    int offset, const uint8_t *data, int len);
 
+#ifdef CONFIG_SMBUS_PEC
+/**
+ * Read a 16-bit register from the slave at 7-bit slave address <slaveaddr>, at
+ * the specified 8-bit <offset> in the slave's address space.
+ */
+int i2c_read16_pec(const int port,
+		   const uint16_t slave_addr_flags,
+		   int offset, int *data);
+
+int i2c_read_string_pec(const int port,
+			const uint16_t slave_addr_flags,
+			int offset, uint8_t *data, int len);
+#endif
+
 /**
  * Convert port number to controller number, for multi-port controllers.
  * This function will only be called if CONFIG_I2C_MULTI_PORT_CONTROLLER is
