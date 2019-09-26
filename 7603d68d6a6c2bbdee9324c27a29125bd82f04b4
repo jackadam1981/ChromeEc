@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c43e245_5dc075a7",
+        "filename": "include/printf.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-26T16:53:32Z",
+      "side": 1,
+      "message": "We should probably document all of the extensions here. so something like this:\n\n\n    - \u0027p\u0027 - printf extension, the character(s) that follow indicate the extension:\n          - \"%pP\" - raw pointer\n\nThen in the child CLs, keep extending this list and delete from \"special format codes\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "7603d68d6a6c2bbdee9324c27a29125bd82f04b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
