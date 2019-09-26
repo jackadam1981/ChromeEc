@@ -70,6 +70,30 @@
       "revId": "6984693eb84ca7c01347b0133fee8a699b0eaf9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e1208f_d2d36873",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-26T13:38:59Z",
+      "side": 1,
+      "message": "If CONFIG_USBC_VCONN isn\u0027t defined, then there is no way for the flag to be set.\n\nI think this is easier to read having a single condition than having two conditions where one doesn\u0027t have any logical value (i.e. TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON) can never be true if IS_ENABLED(CONFIG_USBC_VCONN) is false)\n\nI don\u0027t thinks this really costs us much code size and CONFIG_USBC_VCONN still controls whether we are using vconn or not (which I would image every users of the new stack will do).\n\n----\n\nI did confirm that there are no compiler errors when CONFIG_USBC_VCONN is defined or undefined.",
+      "parentUuid": "0dd39eb3_77e27203",
+      "range": {
+        "startLine": 1812,
+        "startChar": 2,
+        "endLine": 1813,
+        "endChar": 22
+      },
+      "revId": "6984693eb84ca7c01347b0133fee8a699b0eaf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
