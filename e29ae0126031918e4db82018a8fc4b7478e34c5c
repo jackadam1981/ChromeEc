@@ -22,6 +22,30 @@
       "revId": "e29ae0126031918e4db82018a8fc4b7478e34c5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbb69c4_f312247b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-26T20:52:55Z",
+      "side": 1,
+      "message": "Oops I updated it inline the first time, not in my tree.  Fixed again :)",
+      "parentUuid": "36993691_cea49024",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "e29ae0126031918e4db82018a8fc4b7478e34c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
