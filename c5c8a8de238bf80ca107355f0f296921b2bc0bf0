@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "060878f0_dbad4286",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-27T17:38:40Z",
+      "side": 1,
+      "message": "nit: I wouldn\u0027t call this PD contract change anymore since charge manager is more generic than just PD power.\n\nI do think this is the right spot to send the notification though, so, maybe call is HOOK_INPUT_POWER_CHANGED\n\n---\n\nWe might also want to hook into HOOK_AC_CHANGE and potentially expand that scope of the hook",
+      "range": {
+        "startLine": 777,
+        "startChar": 14,
+        "endLine": 777,
+        "endChar": 41
+      },
+      "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
