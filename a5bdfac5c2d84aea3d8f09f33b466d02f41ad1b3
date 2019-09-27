@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b42abcd_13c3cb69",
+        "filename": "test/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-27T04:11:58Z",
+      "side": 1,
+      "message": "Is there a clever way to test PRINTF_TIMESTAMP_NOW?",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 54
+      },
+      "revId": "a5bdfac5c2d84aea3d8f09f33b466d02f41ad1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
