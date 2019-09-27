@@ -22,6 +22,30 @@
       "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ad0943_b5f02420",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-27T17:50:18Z",
+      "side": 1,
+      "message": "That\u0027s a fair point, naming things is hard :)  I like your suggestion.  Also I thought AC_CHANGE was just for insertion and removal?  Have to look at how else that HOOK is being used, but that could be used as well.",
+      "parentUuid": "060878f0_dbad4286",
+      "range": {
+        "startLine": 777,
+        "startChar": 14,
+        "endLine": 777,
+        "endChar": 41
+      },
+      "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
