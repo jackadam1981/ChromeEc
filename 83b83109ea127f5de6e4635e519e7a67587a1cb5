@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a8093816_a51e6a03",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-09-27T06:14:58Z",
+      "side": 1,
+      "message": "If I didn\u0027t change it, skip_interrupt will be set to true in CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK section and skip in this section.\n\nI think the logic is to check every possibility when skip_interrupt is false.\nOne of the condition is true, then we don\u0027t need to check other conditions.",
+      "parentUuid": "70982ce3_d0eaeb35",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
