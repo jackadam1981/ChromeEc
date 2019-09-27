@@ -46,6 +46,30 @@
       "revId": "a360c533a7fcb300a361787a207b6aa86593fca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3431c4b2_cfd824a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-09-27T02:54:23Z",
+      "side": 1,
+      "message": "please add b:122866184 as well.\n\nBUG\u003db:118791032 b:122866184",
+      "parentUuid": "a3eaf797_0cd05a5e",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "a360c533a7fcb300a361787a207b6aa86593fca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
