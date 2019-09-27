@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e89ee436_dc9d72b6",
+        "filename": "chip/g/loader/launch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-09-27T22:56:37Z",
+      "side": 1,
+      "message": "It\u0027s probably better/safer to keep the same behavior here, and get around to cleaning up loose ends in a child CL, imo.",
+      "parentUuid": "43da0e9f_0e197790",
+      "range": {
+        "startLine": 229,
+        "startChar": 36,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "b97d68f8c08dad38471be75780ac66023b0e16ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fe70877_da67c02b",
         "filename": "chip/g/loader/rom_flash.c",
         "patchSetId": 4
