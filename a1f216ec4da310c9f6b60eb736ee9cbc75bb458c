@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba160d3b_a8bde86f",
+        "filename": "chip/g/loader/launch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-09-27T18:15:36Z",
+      "side": 1,
+      "message": "The compile-time format checker complained about this one but not line 66. Likely due to the %l in this one that\u0027s not in the other one.",
+      "parentUuid": "61ac6b65_a14891ed",
+      "range": {
+        "startLine": 230,
+        "startChar": 7,
+        "endLine": 230,
+        "endChar": 25
+      },
+      "revId": "a1f216ec4da310c9f6b60eb736ee9cbc75bb458c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "807be7d1_5efe1c98",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a1f216ec4da310c9f6b60eb736ee9cbc75bb458c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc090c47_c6937017",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-09-27T18:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "807be7d1_5efe1c98",
+      "range": {
+        "startLine": 793,
+        "startChar": 20,
+        "endLine": 794,
+        "endChar": 34
+      },
+      "revId": "a1f216ec4da310c9f6b60eb736ee9cbc75bb458c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
