@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4fb1d67e_6aa69d9f",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-09-27T06:20:33Z",
+      "side": 1,
+      "message": "I agree with you, let\u0027s check with the original writer intent as the logic is now reversed.",
+      "parentUuid": "a8093816_a51e6a03",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
