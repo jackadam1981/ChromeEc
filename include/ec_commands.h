@@ -651,7 +651,15 @@ enum host_event_code {
 	 * raw event status via EC_MEMMAP_HOST_EVENTS but the LPC interface is
 	 * not initialized on the EC, or improperly configured on the host.
 	 */
-	EC_HOST_EVENT_INVALID = 32
+	EC_HOST_EVENT_INVALID = 32,
+#ifdef CONFIG_HOST_EVENT64
+	/*
+	 * The system power status has changed, AP should request
+	 * EC_CMD_GET_POWER_STATUS as soon as possible.
+	 */
+	EC_HOST_EVENT_POWER_CHANGE = 32,
+#endif /* CONFIG_HOST_EVENT64 */
+
 };
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code) - 1)
