@@ -36,6 +36,10 @@
 void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
 		      void (*send_response)(int));
 
+__override_proto
+int board_tcpc_set_vbus_source_current_limit(int port,
+					     enum tcpc_rp_value rp);
+
 /**
  * Handle VBUS wake interrupts
  *
