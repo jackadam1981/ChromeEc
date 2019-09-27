@@ -26,7 +26,7 @@
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE (512 * 1024)
 #define CONFIG_SPI_FLASH_REGS
-#define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
+#define CONFIG_SPI_FLASH_W25Q40 /* Internal spi flash type */
 
 /*
  * Enable 1 slot of secure temporary storage to support
@@ -42,12 +42,12 @@
 #define CONFIG_CPU_PROCHOT_ACTIVE_LOW
 #define CONFIG_EC_FEATURE_BOARD_OVERRIDE
 #define CONFIG_HIBERNATE_PSL
-#define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOSTCMD_LPC
 #define CONFIG_HOSTCMD_SKUID
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
-#define CONFIG_LOW_POWER_IDLE
-#define CONFIG_LOW_POWER_S0
+/* #define CONFIG_LOW_POWER_IDLE */
+/* #define CONFIG_LOW_POWER_S0 */
 #define CONFIG_LTO
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
@@ -82,7 +82,7 @@
 #define CONFIG_CHIPSET_RESET_HOOK
 
 /* Use external 32kHz OSC as LFCLK source */
-#define CONFIG_CLOCK_SRC_EXTERNAL
+/* #define CONFIG_CLOCK_SRC_EXTERNAL */
 
 #undef  CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 200
