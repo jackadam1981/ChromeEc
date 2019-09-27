@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c17b7b69_ec231838",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-09-27T06:46:16Z",
+      "side": 0,
+      "message": "Hi, phoenix, we need to reserve the macro I2C_PORT_ACCEL, otherwise it will build failed.\nIn addition，I applied PS14 in Kodama, it showed failed logs as below, it should be not true value.\n[167.086739 charge_request(4400mV, 5000mA)] \n[233.840793 ignoring ridiculous batt.soc of 65535%] \n[483.268241 ignoring ridiculous batt.temp of 6275C]",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "881d05951d94345c7c5bdea909cf5d393bd66a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
