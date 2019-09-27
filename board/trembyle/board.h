@@ -15,6 +15,7 @@
  * TODO: Remove this config before production.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_BRINGUP
 
 #define CONFIG_MKBP_USE_GPIO
 
@@ -57,7 +58,7 @@
 #ifndef __ASSEMBLER__
 
 enum battery_type {
-	BATTERY_PANASONIC,
+	BATTERY_AP18F4M,
 	BATTERY_TYPE_COUNT,
 };
 
