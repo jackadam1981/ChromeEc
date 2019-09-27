@@ -20,7 +20,6 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/nx20p348x.h"
-#include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
@@ -211,11 +210,11 @@ const struct mft_t mft_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 struct ppc_config_t ppc_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_TCPC0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv
-	},
+	/*
+	 * USBC_PORT_C0 is an AOZ1380DI-01 which does not use
+	 * I2C to make adjustments. The chip runs directly from
+	 * the TCPC.  So just leaving the entry out.
+	 */
 
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_TCPC1,
@@ -230,7 +229,11 @@ void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
-		sn5s330_interrupt(USBC_PORT_C0);
+		/*
+		 * Not seeing any interrupts that come from
+		 * the AOZ1380DI-01, so leaving this as a
+		 * no-op.
+		 */
 		break;
 
 	case GPIO_USB_C1_PPC_INT_ODL:
