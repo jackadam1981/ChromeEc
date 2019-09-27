@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61ac6b65_a14891ed",
+        "filename": "chip/g/loader/launch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-27T04:06:42Z",
+      "side": 1,
+      "message": "Why do you fix this but not line 66?",
+      "range": {
+        "startLine": 230,
+        "startChar": 7,
+        "endLine": 230,
+        "endChar": 25
+      },
+      "revId": "a1f216ec4da310c9f6b60eb736ee9cbc75bb458c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807be7d1_5efe1c98",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-09-27T04:06:42Z",
+      "side": 1,
+      "message": "These should be one line.",
+      "range": {
+        "startLine": 793,
+        "startChar": 20,
+        "endLine": 794,
+        "endChar": 34
+      },
+      "revId": "a1f216ec4da310c9f6b60eb736ee9cbc75bb458c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
