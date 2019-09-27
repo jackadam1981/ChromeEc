@@ -33,6 +33,24 @@
       "revId": "5f18914e0ef7e51879ac207b4a08e7cdfc90654d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cda431_0b811824",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-09-27T06:10:41Z",
+      "side": 1,
+      "message": "I thought kukui is a tablet and it doesn\u0027t have a lid.\nI can add this back since it is not related to this CL.",
+      "parentUuid": "91612ee2_0458ea32",
+      "revId": "5f18914e0ef7e51879ac207b4a08e7cdfc90654d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
