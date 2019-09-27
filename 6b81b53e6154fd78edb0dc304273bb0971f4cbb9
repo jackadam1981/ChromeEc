@@ -70,6 +70,29 @@
       "revId": "6b81b53e6154fd78edb0dc304273bb0971f4cbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee197d5d_e978c1d5",
+        "filename": "include/util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-27T17:25:36Z",
+      "side": 1,
+      "message": "needs comment header. which string is supposed to be the sub set of the other. We need to document the interface",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "6b81b53e6154fd78edb0dc304273bb0971f4cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
