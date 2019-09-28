@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae9333db_f6a2a70c",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-28T19:21:07Z",
+      "side": 1,
+      "message": "I will look at the implementation in the common code but thought leaving [0] out and only giving [1] would initialize all of the values to 0 for the unused port and would have expected that to be a good thing for this hardware setup.\n\nBut I was wrong. The drv indirect functions are required and not checked for NULL... I will create a \"driver\" for this part that I have no control over and see how that works out.\n\nThanks for catching this.",
+      "parentUuid": "7c6341ad_26f4bbc3",
+      "revId": "05e0a20bd5037f71c2a41662e6b8f734a1028a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a727ef3e_8996f57d",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "05e0a20bd5037f71c2a41662e6b8f734a1028a47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc8b7df_e7d5d6f9",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-28T19:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a727ef3e_8996f57d",
+      "revId": "05e0a20bd5037f71c2a41662e6b8f734a1028a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
