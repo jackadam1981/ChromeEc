@@ -84,8 +84,6 @@ static void lpc_task_enable_irq(void)
 	task_enable_irq(NPCX_IRQ_PORT80);
 #ifdef CONFIG_HOSTCMD_ESPI
 	task_enable_irq(NPCX_IRQ_ESPI);
-	/* Virtual Wire: SLP_S3/4/5, SUS_STAT, PLTRST, OOB_RST_WARN */
-	task_enable_irq(NPCX_IRQ_WKINTA_2);
 	/* Virtual Wire: HOST_RST_WARN, SUS_WARN, SUS_PWRDN_ACK, SLP_A */
 	task_enable_irq(NPCX_IRQ_WKINTB_2);
 	/* Enable eSPI module interrupts and wake-up functionalities */
@@ -816,7 +814,9 @@ static void lpc_init(void)
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SMIE);
 #endif
+	ccprints("lpc_init A");
 	lpc_task_enable_irq();
+	ccprints("lpc_init B");
 
 	/* Sufficiently initialized */
 	init_done = 1;
