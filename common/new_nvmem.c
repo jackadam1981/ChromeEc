@@ -771,7 +771,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 			 * two pages - roll back page index saved in the
 			 * context.
 			 */
-			if ((CONFIG_FLASH_BANK_SIZE - at->mt.data_offset) <
+			if ((CONFIG_FLASH_BANK_SIZE - at->mt.data_offset) <=
 			    sizeof(struct nn_container))
 				at->list_index--;
 
