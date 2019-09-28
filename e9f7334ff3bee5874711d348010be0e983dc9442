@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "acb675a0_dbf8bab8",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "feature",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4df399be_0d9329bc",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -35,6 +58,437 @@
         "startChar": 0,
         "endLine": 119,
         "endChar": 5
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dab73a9_01ecc511",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "Additional",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81f24904_349b9913",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "power_interrupt",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 89
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20264f84_5837aa77",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "power_button_interrupt",
+      "range": {
+        "startLine": 167,
+        "startChar": 57,
+        "endLine": 167,
+        "endChar": 75
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681171c7_94a5ec42",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "e.g., NPCX7 ?",
+      "range": {
+        "startLine": 177,
+        "startChar": 56,
+        "endLine": 177,
+        "endChar": 57
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f838bee3_1d419af5",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "start with the",
+      "range": {
+        "startLine": 208,
+        "startChar": 42,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2a591b_3afa25fc",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "Alternate",
+      "range": {
+        "startLine": 235,
+        "startChar": 14,
+        "endLine": 235,
+        "endChar": 23
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c246ab34_6d651a6d",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "- `GPIO_PCH_SLP_S0_L` - Power signal interrupt, asserted low then AP enters S0ix sleep state.",
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c633280_e5878ae8",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "Busses",
+      "range": {
+        "startLine": 312,
+        "startChar": 17,
+        "endLine": 312,
+        "endChar": 22
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4609239d_25f669f9",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "This permits",
+      "range": {
+        "startLine": 337,
+        "startChar": 55,
+        "endLine": 337,
+        "endChar": 69
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c35cca6_13d2c5d0",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "EC-specific",
+      "range": {
+        "startLine": 338,
+        "startChar": 78,
+        "endLine": 339,
+        "endChar": 12
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73eb46ff_bf73474f",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "pins",
+      "range": {
+        "startLine": 341,
+        "startChar": 74,
+        "endLine": 341,
+        "endChar": 77
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092ac2a2_b3c6330b",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "be configured automatically when initializing (?)",
+      "range": {
+        "startLine": 369,
+        "startChar": 38,
+        "endLine": 369,
+        "endChar": 68
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2301733_d19792bf",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "busses",
+      "range": {
+        "startLine": 370,
+        "startChar": 4,
+        "endLine": 370,
+        "endChar": 9
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1606575_6491525c",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "defined if",
+      "range": {
+        "startLine": 413,
+        "startChar": 66,
+        "endLine": 413,
+        "endChar": 79
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0f4be3_374d848f",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "Is this always true or is this a chip-specific thing?",
+      "range": {
+        "startLine": 429,
+        "startChar": 10,
+        "endLine": 429,
+        "endChar": 51
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734ab6d1_80391df8",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "LEDs",
+      "range": {
+        "startLine": 441,
+        "startChar": 13,
+        "endLine": 441,
+        "endChar": 17
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb846f36_fada4e5c",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "GPIO-based",
+      "range": {
+        "startLine": 442,
+        "startChar": 14,
+        "endLine": 442,
+        "endChar": 25
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "903e2201_cdc148d7",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "control the",
+      "range": {
+        "startLine": 473,
+        "startChar": 33,
+        "endLine": 473,
+        "endChar": 40
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c72daeb_adf1ca8b",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-28T02:46:47Z",
+      "side": 1,
+      "message": "Chromebooks (Chromeboxen?)",
+      "range": {
+        "startLine": 485,
+        "startChar": 16,
+        "endLine": 485,
+        "endChar": 28
       },
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
