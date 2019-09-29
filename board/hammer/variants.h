@@ -87,7 +87,7 @@
 
 /* Hall sensor for tablet mode detection */
 #if defined(BOARD_MASTERBALL) || defined(BOARD_WHISKERS)
-#define CONFIG_HALL_SENSOR
+#define CONFIG_GMR_TABLET_MODE
 #endif
 
 #endif /* SECTION_IS_RW */
