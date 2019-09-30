@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f40a8522_0c4017d3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-30T19:33:41Z",
+      "side": 1,
+      "message": "This is a great catch.\n\nNote that actually container header can never span between two pages, as the container size if 4 bytes and each new container is aligned at 4 byte boundary. (Container size used to be 5 bytes, so the comment is stale).\n\nIt seems counter intuitive that the erroneous list_index increment happens in nvmem_read_bytes() and then is fixed here, I tried to avoid it at the time, but this would have its own share of issues, so I moved it here.",
+      "range": {
+        "startLine": 769,
+        "startChar": 3,
+        "endLine": 773,
+        "endChar": 6
+      },
+      "revId": "70eff9be1e4a6dc75514fa4c6c9a59ab3e85b825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
