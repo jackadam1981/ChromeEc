@@ -328,6 +328,30 @@
       "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93711ec3_df99be9b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5771,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T22:04:08Z",
+      "side": 1,
+      "message": "this base section is intel specific right? Should name is intel base or something like that or just PL2 exist on other SoC as well?",
+      "parentUuid": "baa2b06a_8d3ab74c",
+      "range": {
+        "startLine": 5769,
+        "startChar": 3,
+        "endLine": 5771,
+        "endChar": 49
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
