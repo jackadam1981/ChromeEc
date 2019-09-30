@@ -1096,6 +1096,13 @@ out:
 	return rv;
 }
 
+int mt6370_get_temperature(void)
+{
+	int temp_c;
+	charger_get_adc(MT6370_ADC_TEMP_JC, &temp_c);
+	return temp_c;
+}
+
 int charger_get_vbus_voltage(int port)
 {
 	static int vbus_mv;

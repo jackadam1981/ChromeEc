@@ -760,7 +760,9 @@ int mt6370_led_set_pwm_dim_duty(enum mt6370_led_index index, uint8_t dim_duty);
 
 /* Set LED PWM mode frequency */
 int mt6370_led_set_pwm_frequency(enum mt6370_led_index index,
-				 enum mt6370_led_pwm_freq freq);
+		                 enum mt6370_led_pwm_freq freq);
+
+int mt6370_get_temperature(void);
 #endif
 
 #endif /* __CROS_EC_RT946X_H */
