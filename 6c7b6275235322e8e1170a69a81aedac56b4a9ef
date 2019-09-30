@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d97113f_bb0ae90c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5722,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e689bbf5_0d360fa8",
+      "range": {
+        "startLine": 5721,
+        "startChar": 1,
+        "endLine": 5722,
+        "endChar": 22
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b6a9eed_3b1a5637",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b050b5c2_bdfda8cc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "No it doesn\u0027t, I guess it was more for my testing sanity :)  I can remove it.",
+      "parentUuid": "1b6a9eed_3b1a5637",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b34b7f31_1e4cf4d5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2022152d_99524872",
+      "range": {
+        "startLine": 5735,
+        "startChar": 0,
+        "endLine": 5737,
+        "endChar": 0
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92f5212a_ab1798ed",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffd182b_7562cd0e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5738,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92f5212a_ab1798ed",
+      "range": {
+        "startLine": 5738,
+        "startChar": 1,
+        "endLine": 5738,
+        "endChar": 6
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "da2a3db2_6752a10e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5741,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "Watts, I\u0027ll write it out.",
+      "parentUuid": "a3c9f303_4a4f079d",
+      "range": {
+        "startLine": 5741,
+        "startChar": 30,
+        "endLine": 5741,
+        "endChar": 31
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17861035_2bde336a",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f1731137_187870ad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5744,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "If it\u0027s USB-PD, it is the same as the 100% value, otherwise it\u0027s 1.5x the 100% value.",
+      "parentUuid": "17861035_2bde336a",
+      "range": {
+        "startLine": 5744,
+        "startChar": 11,
+        "endLine": 5744,
+        "endChar": 26
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5a34a6d_313d4026",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -160,6 +304,30 @@
       "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa2b06a_8d3ab74c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5771,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:00:12Z",
+      "side": 1,
+      "message": "Because the kernel isn\u0027t board-specific, it\u0027s easiest to just keep this level of information around.  These are voltage regulator efficiency percentages at different loading levels.  If you can think of a better place for these to live, let me know :)  I can change the name if you like.",
+      "parentUuid": "f5a34a6d_313d4026",
+      "range": {
+        "startLine": 5769,
+        "startChar": 3,
+        "endLine": 5771,
+        "endChar": 49
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
