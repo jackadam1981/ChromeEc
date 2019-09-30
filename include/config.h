@@ -5489,6 +5489,20 @@
  */
 #define CONFIG_CCD_USBC_PORT_NUMBER	0
 
+/******************************************************************************/
+/* Power status related CONFIGs */
+
+/*
+ * Compile in the power_status module.  This module is used to detect
+ * changes in the power available to the board and provide power-related
+ * information to the AP so that it can make decisions on whether and how to
+ * apply power-related policies, such as power limits on IA.
+ */
+#undef CONFIG_POWER_STATUS
+
+/* #define this if the board's battery supports DBPT v2 or v3 */
+#undef CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
