@@ -22,6 +22,30 @@
       "revId": "58255aaf42f45794b3422d5e41079415c96f95c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4956a7a_5598b320",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:18:58Z",
+      "side": 1,
+      "message": "I haven\u0027t fully implemented the kernel side of things yet, but I wouldn\u0027t expect this to cause an issue for 64-bit host events, as this will not be the high bit anymore.",
+      "parentUuid": "738222fb_1da15fa9",
+      "range": {
+        "startLine": 660,
+        "startChar": 1,
+        "endLine": 660,
+        "endChar": 33
+      },
+      "revId": "58255aaf42f45794b3422d5e41079415c96f95c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
