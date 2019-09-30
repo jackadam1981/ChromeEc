@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1387c4d5_c7aca40e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-09-30T18:28:00Z",
+      "side": 1,
+      "message": "This should be ppc: sn5s330:",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "7c7c18f96d578d641765c7e25b717b81f55a6772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05cc294_94b1d41c",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-09-30T18:28:00Z",
+      "side": 1,
+      "message": "What happens in the else case? I think at a minimum there should be an EC console log print. Possibly, a short sleep, then check again to see if OVP can be cleared.",
+      "range": {
+        "startLine": 729,
+        "startChar": 3,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "7c7c18f96d578d641765c7e25b717b81f55a6772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3e33a09_c09c4c9d",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-09-30T18:28:00Z",
+      "side": 1,
+      "message": "Add description here to be consistent with the other bit definitions for this file.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 32
+      },
+      "revId": "7c7c18f96d578d641765c7e25b717b81f55a6772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9c71d5_29f47aae",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4960,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-09-30T18:28:00Z",
+      "side": 1,
+      "message": "This should have a description of what this config option is used for. However, I\u0027m not sure I understand why this can\u0027t just be the default behavior. In other words, what is a case where it\u0027s not desirable to check for an OVP interrupt?",
+      "range": {
+        "startLine": 4960,
+        "startChar": 7,
+        "endLine": 4960,
+        "endChar": 28
+      },
+      "revId": "7c7c18f96d578d641765c7e25b717b81f55a6772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
