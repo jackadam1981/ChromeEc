@@ -46,6 +46,30 @@
       "revId": "03c8f8f86733e2b14bdba5b6644a37fb900c1b3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bddfe967_f998666c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-30T19:47:51Z",
+      "side": 0,
+      "message": "the concern is that the host could conceivably write the control register to claim the locality without reading the register first.",
+      "parentUuid": "fbc56932_65b43070",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 9
+      },
+      "revId": "03c8f8f86733e2b14bdba5b6644a37fb900c1b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
