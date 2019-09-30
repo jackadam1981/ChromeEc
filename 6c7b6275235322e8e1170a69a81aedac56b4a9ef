@@ -352,6 +352,30 @@
       "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f3b40f_39247dcc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5771,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:20:32Z",
+      "side": 1,
+      "message": "The names probably are tripping you up; this is really about VR efficiencies at different loading levels, so that Intel devices can set PL2/PL4 etc correctly.  I\u0027ll try to come up with better names.",
+      "parentUuid": "93711ec3_df99be9b",
+      "range": {
+        "startLine": 5769,
+        "startChar": 3,
+        "endLine": 5771,
+        "endChar": 49
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
