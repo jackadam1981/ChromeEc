@@ -46,6 +46,30 @@
       "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d0fb0d_5742153d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:23:10Z",
+      "side": 1,
+      "message": "Looking at the code, I thinking we can safely extend the meaning of AC change to presence and contract change.\n\nUltimately that doesn\u0027t really happen all that often. Since HOOK_AC_CHANGE is already very close to what we need (your new one would be strict superset) let\u0027s just you HOOK_AC_CHANGE.\n\nI also think that captures more of what you want since if the barrel jack or wireless charging input power changes, you would want to know about it too :)",
+      "parentUuid": "86ad0943_b5f02420",
+      "range": {
+        "startLine": 777,
+        "startChar": 14,
+        "endLine": 777,
+        "endChar": 41
+      },
+      "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
