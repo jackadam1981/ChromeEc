@@ -166,6 +166,12 @@
 #define MANUFACTURE_DATE_YEAR_SHIFT	9
 #define MANUFACTURE_DATE_YEAR_OFFSET	1980
 
+/* DBPT register addresses */
+#define DBPT_MAX_PEAK_POWER_ADDR 0x59
+#define DBPT_SUS_PEAK_POWER_ADDR 0x5A
+#define DBPT_SYS_RESISTANCE_ADDR 0x5C
+#define DBPT_MIN_SYS_VOLTAGE_ADDR 0x5D
+
 /* Read from battery */
 int sb_read(int cmd, int *param);
 
