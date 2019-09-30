@@ -22,6 +22,30 @@
       "revId": "70eff9be1e4a6dc75514fa4c6c9a59ab3e85b825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93129392_23ddb06e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-09-30T19:45:56Z",
+      "side": 1,
+      "message": "so, shall we go with this one-char fix?\nI like it better than accommodating for a possible list_index+1 when creating new page since if you run the get_next_object loop twice before creating anything new you can get with list_index+2. it doesn\u0027t happen now, but can happen in the future, so fixing it here is less brittle.",
+      "parentUuid": "f40a8522_0c4017d3",
+      "range": {
+        "startLine": 769,
+        "startChar": 3,
+        "endLine": 773,
+        "endChar": 6
+      },
+      "revId": "70eff9be1e4a6dc75514fa4c6c9a59ab3e85b825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
