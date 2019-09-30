@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b82d8d21_b3981ea8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:40:53Z",
+      "side": 1,
+      "message": "this is a good change. Please break it out into a seperate CL.\n\nThis really helps when cherry picking change to older firmware branches\n\n---\n\nActually the new PPC driver should be in its own CL as well",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "cc6e7dffce41de069777e21e942e704f5be3ca03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
