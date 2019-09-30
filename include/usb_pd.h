@@ -3132,6 +3132,11 @@ void board_reset_pd_mcu(void);
 bool pd_is_debug_acc(int port);
 
 /**
+ * Return the currnet power source based on power or battery presence.
+ */
+bool get_latest_power_source(void);
+
+/**
  * Sets the polarity of the port
  *
  * @param port USB-C port number

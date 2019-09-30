@@ -157,7 +157,7 @@ extern "C" {
 #define EC_MEMMAP_BATT_SERIAL      0x70 /* Battery Serial Number String */
 #define EC_MEMMAP_BATT_TYPE        0x78 /* Battery Type String */
 #define EC_MEMMAP_ALS              0x80 /* ALS readings in lux (2 X 16 bits) */
-/* Unused 0x84 - 0x8f */
+/* Unused 0x8d - 0x8f */
 #define EC_MEMMAP_ACC_STATUS       0x90 /* Accelerometer status (8 bits )*/
 /* Unused 0x91 */
 #define EC_MEMMAP_ACC_DATA         0x92 /* Accelerometers data 0x92 - 0x9f */
@@ -165,7 +165,16 @@ extern "C" {
 /* 0x94 - 0x99: 1st Accelerometer */
 /* 0x9a - 0x9f: 2nd Accelerometer */
 #define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */
-/* Unused 0xa6 - 0xdf */
+
+#define EC_MEMMAP_POWER_SRC        0xA6 /* Power source (8 bits) */
+#define EC_MEMMAP_ARTG             0xA8 /* Adapter rating (W) (32 bits) */
+/* Worst case Rest Of Platform power (W) (32 bits) */
+#define EC_MEMMAP_PROP             0xAC
+/* Maximum platform power supported by Battery (W) (32 bits) */
+#define EC_MEMMAP_BATT_PMAX        0xB0
+/* Maximum sustained power for battery (W) (32 bits) */
+#define EC_MEMMAP_BATT_PBSS        0xB4
+/* Unused 0xb8 - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
@@ -4449,23 +4458,25 @@ struct ec_response_ldo_get {
 /*
  * v1 of EC_CMD_POWER_INFO
  */
-enum system_power_source {
+enum ec_system_power_source {
 	/*
 	 * Haven't established which power source is used yet,
 	 * or no presence signals are available
 	 */
 	POWER_SOURCE_UNKNOWN = 0,
-	/* System is running on battery alone */
-	POWER_SOURCE_BATTERY = 1,
-	/* System is running on A/C alone */
-	POWER_SOURCE_AC = 2,
-	/* System is running on A/C and battery */
-	POWER_SOURCE_AC_BATTERY = 3,
+	POWER_SOURCE_AC = BIT(0),
+	POWER_SOURCE_BATTERY = BIT(1),
+	POWER_SOURCE_BATTERY_1 = BIT(2),
+	POWER_SOURCE_ALL = POWER_SOURCE_AC | POWER_SOURCE_BATTERY |
+						POWER_SOURCE_BATTERY_1,
+	POWER_SOURCE_MAX = UINT8_MAX
 };
 
 struct ec_response_power_info_v1 {
 	/* enum system_power_source */
 	uint8_t system_power_source;
+	/* Power Delivery state change sequence number */
+	uint8_t pd_sequence;
 	/* Battery state-of-charge, 0-100, 0 if not present */
 	uint8_t battery_soc;
 	/* AC Adapter 100% rating, Watts */
@@ -4474,6 +4485,8 @@ struct ec_response_power_info_v1 {
 	uint8_t ac_adapter_10ms;
 	/* Battery 1C rating, derated */
 	uint8_t battery_1cd;
+	/* Rest of Platform worst, Watts */
+	uint8_t rop_worst;
 	/* Rest of Platform average, Watts */
 	uint8_t rop_avg;
 	/* Rest of Platform peak, Watts */
@@ -4503,6 +4516,7 @@ struct ec_response_power_info_v1 {
 		 */
 		uint8_t batt_dbpt_sus_peak_power;
 	} intel;
+
 } __ec_align1;
 
 /*****************************************************************************/
@@ -7488,6 +7502,39 @@ struct ec_params_charger_control {
 
 struct ec_params_usb_pd_mux_ack {
 	uint8_t port; /* USB-C port number */
+} __ec_align1;
+
+/* Power Boss OK
+ * Reference: Intel Dynamic Tuning Technology 8.x
+ * PBOK Object Definition Table:
+ *
+ * The ACPI methods PSRC[7:4] and PBOK are designed to provide
+ * a mechanism for AC removal protection. When AC is removed,
+ * depending on the battery level, the platform peak power may
+ * change substantially. This could cause system to brown out.
+ */
+#define EC_CMD_POWER_BOSS_OK 0x0604
+
+enum prochot_deassert {
+	PROCHOT_DEASSERT_NOT_OK,
+	PROCHOT_DEASSERT_OK,
+};
+
+/*
+ * struct ec_response_power_boss_ok - Power Boss OK response
+ * @prochot_action: 0 - Not OK to deassert PROCHOT, 1 - OK to
+ * deassert PROCHOT
+ */
+struct ec_response_power_boss_ok {
+	uint8_t prochot_action; /* enum prochot_deassert */
+} __ec_align1;
+
+/*
+ * struct ec_params_power_boss_ok - Power Boss OK parameters
+ * @pd_sequence: Power delivery state change sequence number
+ */
+struct ec_params_power_boss_ok {
+	uint8_t pd_sequence;
 } __ec_align1;
 
 /*****************************************************************************/
