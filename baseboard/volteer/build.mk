@@ -7,3 +7,4 @@
 #
 
 baseboard-y=baseboard.o
+baseboard-$(CONFIG_LED_COMMON)+=led.o
