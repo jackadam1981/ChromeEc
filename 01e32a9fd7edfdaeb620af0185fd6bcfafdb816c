@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "73bdf989_9268dada",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T22:21:20Z",
+      "side": 1,
+      "message": "Yes, Thanks for pointing that out",
+      "parentUuid": "095c50b8_a0f9c0c8",
+      "revId": "01e32a9fd7edfdaeb620af0185fd6bcfafdb816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045fc184_3ff5d299",
         "filename": "common/usbc/usb_tc_ctvpd_sm.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "01e32a9fd7edfdaeb620af0185fd6bcfafdb816c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9907127a_1a6cd058",
+        "filename": "common/usbc/usb_tc_ctvpd_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T22:21:20Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be well defined constant. I would actually like to remove this and its uses in a subsequent CL. This is a private helper constant.",
+      "parentUuid": "045fc184_3ff5d299",
+      "revId": "01e32a9fd7edfdaeb620af0185fd6bcfafdb816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "715af7ed_6149d4b7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T22:21:20Z",
+      "side": 1,
+      "message": "It is, but I was trying to follow the pattern of time comparison first to keep things consistent.\n\nThe run time difference is negligible in the long run, so I when with code readability (or at least what I thought was more consistent code) :)",
+      "parentUuid": "f59e9b0b_d52e2fee",
+      "revId": "01e32a9fd7edfdaeb620af0185fd6bcfafdb816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3470b579_59b2b23a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "01e32a9fd7edfdaeb620af0185fd6bcfafdb816c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d751b0d8_ba890cff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2403,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T22:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3470b579_59b2b23a",
+      "revId": "01e32a9fd7edfdaeb620af0185fd6bcfafdb816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
