@@ -70,6 +70,30 @@
       "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22c35587_6e293709",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-09-30T22:01:10Z",
+      "side": 1,
+      "message": "That\u0027s fine with me, I already used both HOOKs with the same function :)",
+      "parentUuid": "75d0fb0d_5742153d",
+      "range": {
+        "startLine": 777,
+        "startChar": 14,
+        "endLine": 777,
+        "endChar": 41
+      },
+      "revId": "c5c8a8de238bf80ca107355f0f296921b2bc0bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
