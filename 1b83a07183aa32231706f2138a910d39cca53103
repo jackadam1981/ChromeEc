@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7617f01a_2b54b32d",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-09-30T23:08:55Z",
+      "side": 1,
+      "message": "AFAIK, there is no reason that these can\u0027t run at 100% duty cycle (255 here), but I didn\u0027t see any other boards that set the max brightness higher than 100/255.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 62
+      },
+      "revId": "1b83a07183aa32231706f2138a910d39cca53103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
