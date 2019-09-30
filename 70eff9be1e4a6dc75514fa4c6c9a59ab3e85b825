@@ -46,6 +46,30 @@
       "revId": "70eff9be1e4a6dc75514fa4c6c9a59ab3e85b825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e61525a_157a6aaa",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-30T19:54:30Z",
+      "side": 1,
+      "message": "yes, I think we should go with this fix, the comment needs updating.",
+      "parentUuid": "93129392_23ddb06e",
+      "range": {
+        "startLine": 769,
+        "startChar": 3,
+        "endLine": 773,
+        "endChar": 6
+      },
+      "revId": "70eff9be1e4a6dc75514fa4c6c9a59ab3e85b825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
