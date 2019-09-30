@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29c93440_c71d118b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-09-30T19:25:46Z",
+      "side": 1,
+      "message": "I changed the comment on this last one because it really indicated which execution path within the state machine we were running FRS/PRS.\n\n#define PE_FLAGS_FAST_ROLE_SWAP_PATH            BIT(22)/* FRS/PRS Exec Path */\n#define PE_FLAGS_FAST_ROLE_SWAP_ENABLED         BIT(23)/* FRS Current State */\n#define PE_FLAGS_FAST_ROLE_SWAP_SIGNALED        BIT(24)/* FRS Signaled by PPC */",
+      "revId": "f5d96f68d1355b8ec25896450e984bd11cfcd463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
