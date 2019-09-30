@@ -4321,6 +4321,15 @@
  */
 #undef CONFIG_INTEL_VIRTUAL_MUX
 
+/******************************************************************************/
+/* Power status related CONFIGs */
+
+/* Compile in the power_status module */
+#undef CONFIG_POWER_STATUS
+
+/* #define this if the board's battery supports DBPT v2 or v3 */
+#undef CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
