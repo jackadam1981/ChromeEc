@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e689bbf5_0d360fa8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5722,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "what do these values mean? Please add comments.\n\n---\n\nSince this part of of the ABI, pleaes give each enum value a value, ie. BASE \u003d 0",
+      "range": {
+        "startLine": 5721,
+        "startChar": 1,
+        "endLine": 5722,
+        "endChar": 22
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6a9eed_3b1a5637",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "does this change from the input? If not, we don\u0027t need it in the output",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2022152d_99524872",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "Add comment. I am assuming value is from [0 - 100] What if battery isn\u0027t present? 0 or 255?",
+      "range": {
+        "startLine": 5735,
+        "startChar": 0,
+        "endLine": 5737,
+        "endChar": 0
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f5212a_ab1798ed",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5738,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "even though not strictly required, can you put a uint8_t before the union to make the structs 4 byte aligned?",
+      "range": {
+        "startLine": 5738,
+        "startChar": 1,
+        "endLine": 5738,
+        "endChar": 6
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c9f303_4a4f079d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5741,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "what is the W?",
+      "range": {
+        "startLine": 5741,
+        "startChar": 30,
+        "endLine": 5741,
+        "endChar": 31
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17861035_2bde336a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5744,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "what is the unknown/invalid value?",
+      "range": {
+        "startLine": 5744,
+        "startChar": 11,
+        "endLine": 5744,
+        "endChar": 26
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a34a6d_313d4026",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5771,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T21:29:05Z",
+      "side": 1,
+      "message": "I thought the AP was going to have/calculate this information. I didn\u0027t think the EC was going to get involved with PL2 and PL4. I thought the EC was just going to give battery and power information and these calculation would happen on the AP",
+      "range": {
+        "startLine": 5769,
+        "startChar": 3,
+        "endLine": 5771,
+        "endChar": 49
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
