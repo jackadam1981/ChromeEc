@@ -29,3 +29,4 @@ power-$(CONFIG_CHIPSET_STONEY)+=amd_x86.o
 power-$(CONFIG_CHIPSET_FALCONLITE)+=falconlite.o
 power-$(CONFIG_POWER_COMMON)+=common.o
 power-$(CONFIG_POWER_TRACK_HOST_SLEEP_STATE)+=host_sleep.o
+power-$(CONFIG_POWER_STATUS)+=power_status.o
