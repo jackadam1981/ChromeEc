@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "738222fb_1da15fa9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-30T22:00:57Z",
+      "side": 1,
+      "message": "Hmm, I would think this would be 33 so it wouldn\u0027t be confused with INVALID. does this not cause a problem?",
+      "range": {
+        "startLine": 660,
+        "startChar": 1,
+        "endLine": 660,
+        "endChar": 33
+      },
+      "revId": "58255aaf42f45794b3422d5e41079415c96f95c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
