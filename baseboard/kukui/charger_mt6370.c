@@ -32,13 +32,14 @@ void mt6370_charger_profile_override(struct charge_state_data *curr)
 {
 	static int previous_chg_limit_mv;
 	int chg_limit_mv;
+	int temp_c = mt6370_get_temperature();
 
 	/* Limit input (=VBUS) to 5V when soc > 85% and charge current < 1A. */
 	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT) &&
 			charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
 			curr->batt.current < 1000) {
 		chg_limit_mv = 5500;
-	} else if (power_get_state() == POWER_S0) {
+	} else if (temp_c > 70) {
 		/*
 		 * b/134227872: limit power to 5V/2A in S0 to prevent
 		 * overheat
@@ -85,8 +86,9 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
+	int temp_c = mt6370_get_temperature();
 	/* b/134227872: Limit input current to 2A in S0 to prevent overheat */
-	if (power_get_state() == POWER_S0)
+	if (temp_c > 70)
 		charge_set_input_current_limit(MIN(charge_ma, 2000), charge_mv);
 	else
 		charge_set_input_current_limit(
