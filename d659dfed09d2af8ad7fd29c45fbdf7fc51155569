@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e2ed506_5765cd74",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-01T15:54:35Z",
+      "side": 1,
+      "message": "sorry if you hate me for this, but I started searching for other power EC commands and I found EC_CMD_POWER_INFO. It looks like it is similar but not the same. Do you think we could combined this new command and that old command into a EC_CMD_POWER_INFO_v2 that gives a super set of both?\n\nWhat are your thoughts? Feel free to come over and discuss",
+      "range": {
+        "startLine": 5711,
+        "startChar": 8,
+        "endLine": 5711,
+        "endChar": 31
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8a1322_4324c0f4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-01T15:54:35Z",
+      "side": 1,
+      "message": "Is the AP always going to loop through all 3 values? How does the caller decide which value to use?",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
