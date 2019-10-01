@@ -65,6 +65,10 @@
 #define CONFIG_MATH_UTIL
 #endif
 
+#ifdef TEST_STILLNESS_DETECTOR
+#define CONFIG_STILL_DET
+#endif
+
 #ifdef TEST_FLOAT
 #define CONFIG_FPU
 #define CONFIG_MAG_CALIBRATE
