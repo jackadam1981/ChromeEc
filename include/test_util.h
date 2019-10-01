@@ -38,17 +38,21 @@
 		} \
 	} while (0)
 
-#define TEST_OPERATOR(a, b, op, fmt)                                        \
-	do {                                                                \
-		__auto_type _a = (a);                                       \
-		__auto_type _b = (b);                                       \
-		if (!(_a op _b)) {                                          \
-			ccprintf("%d: ASSERSION failed: %s " #op " %s\n",   \
-				 __LINE__, #a, #b);                         \
-			ccprintf("\t\tEVAL: ");                             \
-			if (fmt[0] == '%' && fmt[1] == 'f')                 \
-				ccprintf("%pf " #op " %pf\n", &_a, &_b);    \
-			else                                                \
+#if defined(__cplusplus) && !defined(__auto_type)
+#define __auto_type auto
+#endif
+
+#define TEST_OPERATOR(a, b, op, fmt) \
+	do { \
+		__auto_type _a = (a); \
+		__auto_type _b = (b); \
+		if (!(_a op _b)) { \
+			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
+				 __LINE__, #a, #b); \
+			ccprintf("\t\tEVAL: ");\
+			if (fmt[0] == '%' && fmt[1] == 'f') \
+				ccprintf("%pf " #op " %pf\n", &_a, &_b); \
+			else \
 				ccprintf(fmt " " #op " " fmt "\n", _a, _b); \
 			task_dump_trace();                                  \
 			return EC_ERROR_UNKNOWN;                            \
