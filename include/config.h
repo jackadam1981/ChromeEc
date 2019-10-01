@@ -2676,6 +2676,9 @@
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
 
+/* Include sensor stillness detector */
+#undef CONFIG_STILL_DET
+
 /* Include code to do online compass calibration */
 #undef CONFIG_MAG_CALIBRATE
 
