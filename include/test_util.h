@@ -38,9 +38,15 @@
 		} \
 	} while (0)
 
+#if defined(__cplusplus) && !defined(__auto_type)
+#define __auto_type auto
+#endif
+
 #define TEST_OPERATOR(a, b, op, fmt) \
 	do { \
-		if (!((a) op (b))) { \
+		__auto_type _a = (a); \
+		__auto_type _b = (b); \
+		if (!(_a op _b)) { \
 			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
 				 __LINE__, #a, #b); \
 			ccprintf("\t\tEVAL: ");\
