@@ -354,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "9f1f73f2_890ab876",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4291,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-01T14:02:00Z",
+      "side": 1,
+      "message": "We will be in FRS disabled unless we get here. So this should only need to set when we can do FRS.  Still want me to call local FRS anyway? \n\nDone - tracking bug",
+      "parentUuid": "128503a8_f80ece27",
+      "range": {
+        "startLine": 4288,
+        "startChar": 4,
+        "endLine": 4291,
+        "endChar": 17
+      },
+      "revId": "46573065285822aa00e2cebe1aa944a9db244ce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f8a9ed5_5496df7d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 8
