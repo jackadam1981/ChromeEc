@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "138b0442_c841ce2e",
+        "filename": "baseboard/volteer/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-01T17:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b60860d8_f471ac3b",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1b83a07183aa32231706f2138a910d39cca53103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7617f01a_2b54b32d",
         "filename": "baseboard/volteer/led.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2019-10-01T15:49:20Z",
       "side": 1,
       "message": "Is this right?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "1b83a07183aa32231706f2138a910d39cca53103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c079d51f_b7184d48",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-01T17:45:28Z",
+      "side": 1,
+      "message": "I copied this from grunt, but all the implementations I looked at  (PWM or GPIO) look pretty much the same. I guess I could at least go to the trouble of supporting all the colors I went to the trouble of defining.\n\nThe description and type of |brightness| suggest that it should contain a specific brightness setting (0-255) for each \"color channel,\" but the individual LEDs (PWM channels) won\u0027t necessarily correspond to the colors in |ec_led_colors|. It would kind of make sense if there were a reasonable way to average across values of |led_color_map|, e.g. blue at brightness 198 and amber at brightness 50 means drive the blue LED at (198 / 255 * 100)%, red at (50 / 255 * 100)%, and green at (50 / 255 * 75)%. That\u0027s kind of crazy, though, and I don\u0027t see any code like that.\n\nThe existing implementations appear to take |brightness| as a one-hot encoding of which of the colors in |ec_led_colors| should be set. For the implementations I looked at, it would make more sense if |brightness| had type |enum ec_led_colors|. The only place I can find that sets these values is in ectool, and it contemplates the possibility of brightness ranges for each color. I don\u0027t see any code in the EC codebase that would actually support that, but maybe I\u0027m missing something.\n\nThoughts?",
+      "parentUuid": "a7de8930_f9e1410d",
       "range": {
         "startLine": 56,
         "startChar": 1,
