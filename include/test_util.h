@@ -40,11 +40,13 @@
 
 #define TEST_OPERATOR(a, b, op, fmt) \
 	do { \
-		if (!((a) op (b))) { \
+		__auto_type _a = (a); \
+		__auto_type _b = (b); \
+		if (!(_a op _b)) { \
 			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
 				 __LINE__, #a, #b); \
-			ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", \
-				 (a), (b)); \
+			ccprintf("\t\tEVAL: "); \
+			ccprintf(fmt " " #op " " fmt "\n", _a, _b); \
 			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \
@@ -58,6 +60,8 @@
 #define TEST_GE(a, b, fmt) TEST_OPERATOR(a, b, >=, fmt)
 #define TEST_BITS_SET(a, bits) TEST_OPERATOR(a & (int)bits, (int)bits, ==, "%u")
 #define TEST_BITS_CLEARED(a, bits) TEST_OPERATOR(a & (int)bits, 0, ==, "%u")
+#define TEST_NEARF(a, b, epsilon) \
+		TEST_OPERATOR(ABS((a) - (b)), epsilon, <, "%f")
 
 #define __ABS(n) ((n) > 0 ? (n) : -(n))
 
