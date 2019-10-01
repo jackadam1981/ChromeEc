@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4540906c_39312203",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-01T23:30:10Z",
+      "side": 1,
+      "message": "what if it is exactly full? all setvars() could have ended up filling exactly MAX_VAR_TOTAL_SPACE. then setvar for size+1 will fail.",
+      "range": {
+        "startLine": 661,
+        "startChar": 4,
+        "endLine": 661,
+        "endChar": 18
+      },
+      "revId": "d6d429a8c9a72f0465006f764db04b37240cf138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
