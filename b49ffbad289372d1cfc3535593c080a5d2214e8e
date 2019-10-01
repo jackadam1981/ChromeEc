@@ -22,6 +22,30 @@
       "revId": "b49ffbad289372d1cfc3535593c080a5d2214e8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1dcfe0f_0034f691",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-01T16:02:37Z",
+      "side": 1,
+      "message": "I believe so, yes. AFAICT, this is controlled by\nconst enum ec_led_id supported_led_ids[] \u003d {\n\tEC_LED_ID_BATTERY_LED,\n};\nSee child CL. There are other values of that enum, so I think it could be made to mean other things. I don\u0027t think there\u0027s a way to specify that in this file.",
+      "parentUuid": "f6fe03e2_8a717e03",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "b49ffbad289372d1cfc3535593c080a5d2214e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
