@@ -22,6 +22,30 @@
       "revId": "d6d429a8c9a72f0465006f764db04b37240cf138",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c7a041_131e14db",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-01T23:49:19Z",
+      "side": 1,
+      "message": "we know that the capacity is 1000 bytes, so it is not going to be exact.\n\nShould this assumption ever change this test would start failing and will have to be fixed, but I don\u0027t foresee this happening.",
+      "parentUuid": "4540906c_39312203",
+      "range": {
+        "startLine": 661,
+        "startChar": 4,
+        "endLine": 661,
+        "endChar": 18
+      },
+      "revId": "d6d429a8c9a72f0465006f764db04b37240cf138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
