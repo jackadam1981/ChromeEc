@@ -32,6 +32,10 @@ int tablet_get_mode(void)
 {
 	if (forced_tablet_mode != -1)
 		return !!forced_tablet_mode;
+
+	if (tablet_mode == -1)
+		return 0;
+
 	return !!tablet_mode;
 }
 
