@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56d18bef_14f92ea7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-01T19:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ce3370_5020546e",
+      "range": {
+        "startLine": 687,
+        "startChar": 5,
+        "endLine": 688,
+        "endChar": 53
+      },
+      "revId": "3c9fc236a9153beb44456f1954dee6b68779f3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04e97db1_6f8f7fc5",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3c9fc236a9153beb44456f1954dee6b68779f3ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc568f0_3c5f4575",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-01T19:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e97db1_6f8f7fc5",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 1
+      },
+      "revId": "3c9fc236a9153beb44456f1954dee6b68779f3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
