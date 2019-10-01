@@ -2676,6 +2676,9 @@
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
 
+/* Need for a random number generator library */
+#undef CONFIG_RANDOM
+
 /* Include code to do online compass calibration */
 #undef CONFIG_MAG_CALIBRATE
 

@@ -82,6 +82,7 @@ test-list-host += utils
 test-list-host += utils_str
 test-list-host += vboot
 test-list-host += x25519
+test-list-host += random
 endif
 
 
@@ -160,6 +161,7 @@ vboot-y=vboot.o
 float-y=fp.o
 fp-y=fp.o
 x25519-y=x25519.o
+random-y=random.o
 
 TPM2_ROOT := $(CROS_WORKON_SRCROOT)/src/third_party/tpm2
 $(out)/RO/common/new_nvmem.o: CFLAGS += -I$(TPM2_ROOT) -I chip/g
