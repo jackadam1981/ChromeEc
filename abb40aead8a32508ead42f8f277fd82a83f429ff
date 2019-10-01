@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7d776d5_15d6a138",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-01T14:54:59Z",
+      "side": 1,
+      "message": "If we are using 64-bit flags, then we should probably also define EC_HOST_EVENT_INVALID \u003d 64. And to be safe, I\u0027d echo Jett\u0027s suggestion that we use EC_HOST_EVENT_POWER_CHANGE \u003d 33 so that there is no confusion what it means when bit 32 is set.",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 662,
+        "endChar": 0
+      },
+      "revId": "abb40aead8a32508ead42f8f277fd82a83f429ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
