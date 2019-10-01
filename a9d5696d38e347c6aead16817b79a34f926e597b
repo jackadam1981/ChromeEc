@@ -22,6 +22,30 @@
       "revId": "a9d5696d38e347c6aead16817b79a34f926e597b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5b70d9_e6f48931",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-01T20:03:07Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "85f3232b_57e833a1",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "a9d5696d38e347c6aead16817b79a34f926e597b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
