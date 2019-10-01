@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01eea527_0ae091f6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-01T16:59:43Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like that host command is even used right now.  I don\u0027t see a handler for it in the EC code and I also don\u0027t see a request for it in the kernel either since 3.18.",
+      "parentUuid": "3e2ed506_5765cd74",
+      "range": {
+        "startLine": 5711,
+        "startChar": 8,
+        "endLine": 5711,
+        "endChar": 31
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8a1322_4324c0f4",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-01T15:54:35Z",
       "side": 1,
       "message": "Is the AP always going to loop through all 3 values? How does the caller decide which value to use?",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85bfa5b9_199d105c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-01T16:59:43Z",
+      "side": 1,
+      "message": "There are only 2 values.  The first one (\"base\") is intended to just be retrieved once at init time, b/c those are the \"static\" values that are mainboard-dependent and shouldn\u0027t change.  Then after that, whenever the proper host event is received, this host command is used to get the new information (\"dynamic\") that has potentially changed and possibly calculate new power limit values.",
+      "parentUuid": "ec8a1322_4324c0f4",
       "range": {
         "startLine": 5732,
         "startChar": 9,
