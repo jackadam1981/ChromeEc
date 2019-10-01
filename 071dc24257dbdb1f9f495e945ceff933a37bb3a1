@@ -22,6 +22,30 @@
       "revId": "071dc24257dbdb1f9f495e945ceff933a37bb3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56f065c_33ecd644",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-01T19:04:16Z",
+      "side": 1,
+      "message": "I check this flag in pe_run.  I think it is safe as it is.  Do you disagree?",
+      "parentUuid": "75d7af14_d99e2139",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 53
+      },
+      "revId": "071dc24257dbdb1f9f495e945ceff933a37bb3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
