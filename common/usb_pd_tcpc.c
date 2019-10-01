@@ -1091,6 +1091,13 @@ int tcpc_set_power_status_mask(int port, uint8_t mask)
 	return EC_SUCCESS;
 }
 
+__overridable
+int board_tcpc_set_vbus_source_current_limit(int port,
+					     enum tcpc_rp_value rp)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 int tcpc_set_vconn(int port, int enable)
 {
 #ifdef CONFIG_USBC_VCONN
