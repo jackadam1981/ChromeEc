@@ -117,6 +117,23 @@ static void board_lid_interrupt(enum gpio_signal signal)
 	lid_interrupt(signal);
 }
 
+static void board_gmr_tablet_switch_isr(enum gpio_signal signal)
+{
+	static int board_id = -1;
+
+	if (board_id == -1) {
+		uint32_t val;
+
+		if (cbi_get_board_version(&val) == EC_SUCCESS)
+			board_id = val;
+	}
+
+	if (board_id < 2)
+		return;
+
+	gmr_tablet_switch_isr(signal);
+}
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
