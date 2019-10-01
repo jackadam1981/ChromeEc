@@ -253,7 +253,9 @@ uint32_t switch_handler(int desched, task_id_t resched)
 		return 0;
 
 	if (IS_ENABLED(ISH_DEBUG))
-		CPRINTF("[%ld -> %ld]\n", current - tasks, next - tasks);
+		CPRINTF("[%lld -> %lld]\n",
+			(long long)(current - tasks),
+			(long long)(next - tasks));
 
 	/* Switch to new task */
 	if (IS_ENABLED(CONFIG_TASK_PROFILING))
