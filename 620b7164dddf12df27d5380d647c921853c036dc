@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47f5e6d_6cbe5abc",
+        "filename": "board/helios/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-10-01T18:29:32Z",
+      "side": 0,
+      "message": "FYI - Removing this disables mode-aware DPTF support for rev1 boards.\nBut we didn\u0027t add the tablet trip points in coreboot anyway, so it looks fine to me.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 44
+      },
+      "revId": "620b7164dddf12df27d5380d647c921853c036dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
