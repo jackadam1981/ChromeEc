@@ -67,7 +67,7 @@ static int aoz1380_is_sourcing_vbus(int port)
 static int aoz1380_set_vbus_source_current_limit(int port,
 						 enum tcpc_rp_value rp)
 {
-	return board_tcpc_set_vbus_source_current_limit(port, rp);
+	return board_aoz1380_set_vbus_source_current_limit(port, rp);
 }
 
 /*

@@ -12,6 +12,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "gpio.h"
+#include "ioexpander.h"
 #include "system.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -178,6 +179,23 @@ void typec_set_source_current_limit(int port, int rp)
 int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
+}
+
+/*
+ * In the AOZ1380 PPC, there are no programmable features.  We use
+ * the attached NCT3807 to control a GPIO to indicate 1A5 or 3A0
+ * current limits.
+ */
+int board_aoz1380_set_vbus_source_current_limit(int port,
+						enum tcpc_rp_value rp)
+{
+	int rv;
+
+	/* Use the TCPC to set the current limit */
+	rv = ioex_set_level(IOEX_USB_C0_PPC_ILIM_3A_EN,
+			    (rp == TYPEC_RP_3A0) ? 1 : 0);
+
+	return rv;
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */

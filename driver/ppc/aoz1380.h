@@ -22,8 +22,8 @@
  * @return EC_SUCCESS for success, otherwise error
  */
 extern
-int board_tcpc_set_vbus_source_current_limit(int port,
-					     enum tcpc_rp_value rp);
+int board_aoz1380_set_vbus_source_current_limit(int port,
+						enum tcpc_rp_value rp);
 
 
 struct ppc_drv;
