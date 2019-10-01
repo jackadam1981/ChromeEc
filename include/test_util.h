@@ -38,6 +38,10 @@
 		} \
 	} while (0)
 
+#if defined(__cplusplus) && !defined(__auto_type)
+#define __auto_type auto
+#endif
+
 #define TEST_OPERATOR(a, b, op, fmt) \
 	do { \
 		__auto_type _a = (a); \
