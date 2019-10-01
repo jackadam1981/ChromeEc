@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "850ca33f_bcf2585d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-01T18:26:37Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I\u0027m working on right now.",
+      "parentUuid": "c83c0f68_38be01bc",
+      "range": {
+        "startLine": 5711,
+        "startChar": 8,
+        "endLine": 5711,
+        "endChar": 31
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8a1322_4324c0f4",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Oh I got confused. I thought BATTERY, AC, BATTERY+AC was the input. Never mind! :)",
       "parentUuid": "85bfa5b9_199d105c",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44c57c71_a1bfda12",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-01T18:26:37Z",
+      "side": 1,
+      "message": "For EC_CMD_POWER_INFO, I\u0027ve just dumped everything into one structure instead of a union of two with a tag.  Thoughts?  It does transfer redundant information but it makes using it simpler.",
+      "parentUuid": "2afbda47_24b76848",
       "range": {
         "startLine": 5732,
         "startChar": 9,
