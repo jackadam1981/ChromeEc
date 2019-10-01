@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd52e917_14f4c32e",
+        "filename": "chip/g/dcrypto/dcrypto_bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-10-01T23:13:33Z",
+      "side": 1,
+      "message": "is this cast needed because we build this for x64 where\nint64_t is a long?",
+      "range": {
+        "startLine": 1490,
+        "startChar": 4,
+        "endLine": 1490,
+        "endChar": 15
+      },
+      "revId": "ea009ede498c46f35f377b1d0cd8e79d576d27b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66fa626_a37f0809",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-10-01T23:13:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t these just be %d (%td, technically), but\nmy guess is that %d would keep the checker happy.\nminute-ia is supposedly a i586... ILP32.",
+      "range": {
+        "startLine": 256,
+        "startChar": 20,
+        "endLine": 256,
+        "endChar": 24
+      },
+      "revId": "ea009ede498c46f35f377b1d0cd8e79d576d27b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
