@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6498a52_21bad444",
+        "filename": "chip/npcx/system-npcx7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-01T18:14:45Z",
+      "side": 1,
+      "message": "Could you add \"/* Higher bits are reserved and need to be masked */\"? Thanks,",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "2ef3c23cb8faf37afeb91fc6a7fef3d676849e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
