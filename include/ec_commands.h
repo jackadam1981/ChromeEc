@@ -1369,6 +1369,8 @@ enum ec_feature_code {
 	EC_FEATURE_SCP = 39,
 	/* The MCU is an Integrated Sensor Hub */
 	EC_FEATURE_ISH = 40,
+	/* EC supports online calibration */
+	EC_FEATURE_ONLINE_CALIBRATION = 41,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
