@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "195584f8_32109b45",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-01T17:50:11Z",
+      "side": 1,
+      "message": "You need to put these in a separate CL because if these API and the new specifier are used by other CLs in a branch, they would need to cherry pick this CL, which contains unrelated changes (stillness_detector).",
+      "revId": "d9599b6c9d6527421563ecf27a7c0c96c5974778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0e1b4d_7004fa07",
+        "filename": "include/stillness_detector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-01T17:50:11Z",
+      "side": 1,
+      "message": "Could you use lower case and underscore?",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "d9599b6c9d6527421563ecf27a7c0c96c5974778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
