@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "167ecfeb_38a0f659",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-10-02T23:39:41Z",
+      "side": 1,
+      "message": "To make sure I understand, this works before the kernel now only loads FW from CONFIG_RAM_BASE+\u003cbuffer size\u003e, leaving the range CONFIG_RAM_BASE -\u003e CONFIG_RAM_BASE+\u003cbuffer size\u003e intact?",
+      "revId": "b7e1cb610386a1241df392b6edd044d7ad538d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
