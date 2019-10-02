@@ -46,6 +46,30 @@
       "revId": "8405a4efe80315241bd611546f498a7b1abba4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c42abb_20947eec",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-02T13:35:09Z",
+      "side": 1,
+      "message": "added an investigation bug and commented that in the aoz1380 driver",
+      "parentUuid": "e27c86a5_0437582d",
+      "range": {
+        "startLine": 248,
+        "startChar": 24,
+        "endLine": 248,
+        "endChar": 49
+      },
+      "revId": "8405a4efe80315241bd611546f498a7b1abba4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
