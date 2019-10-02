@@ -1273,7 +1273,7 @@ void usb_charger_task(void *u)
 	vbus_voltage = 0;
 #endif
 
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
 		bc12_detected_type[port] = CHARGE_SUPPLIER_NONE;
 		bd9995x_enable_vbus_detect_interrupts(port, 1);
 		bc12_det_mark[port] = 0;

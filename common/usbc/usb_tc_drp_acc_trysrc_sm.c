@@ -602,7 +602,7 @@ void pd_prepare_sysjump(void)
 		 * Exit modes before sysjump so we can cleanly enter again
 		 * later
 		 */
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 			/*
 			 * We can't be in an alternate mode if PD comm is
 			 * disabled, so no need to send the event

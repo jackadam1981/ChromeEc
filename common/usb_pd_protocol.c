@@ -5321,7 +5321,7 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 {
 	struct ec_response_usb_pd_ports *r = args->response;
-	r->num_ports = CONFIG_USB_PD_PORT_MAX_COUNT;
+	r->num_ports = board_get_usb_pd_port_count();
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;

@@ -1111,11 +1111,11 @@ int tcpc_set_rx_enable(int port, int enable)
 
 #if defined(CONFIG_LOW_POWER_IDLE) && !defined(CONFIG_USB_POWER_DELIVERY)
 	/* If any PD port is connected, then disable deep sleep */
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i)
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i)
 		if (pd[i].rx_enabled)
 			break;
 
-	if (i == CONFIG_USB_PD_PORT_MAX_COUNT)
+	if (i == board_get_usb_pd_port_count())
 		enable_sleep(SLEEP_MASK_USB_PD);
 	else
 		disable_sleep(SLEEP_MASK_USB_PD);

@@ -140,7 +140,7 @@ enum charge_manager_change_type {
 
 static int is_pd_port(int port)
 {
-	return port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT;
+	return port >= 0 && port < board_get_usb_pd_port_count();
 }
 
 static int is_sink(int port)
@@ -761,7 +761,7 @@ static void charge_manager_refresh(void)
 	if (updated_old_port != CHARGE_PORT_NONE)
 		save_log[updated_old_port] = 1;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i)
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i)
 		if (save_log[i])
 			charge_manager_save_log(i);
 #endif

@@ -78,7 +78,7 @@ enum battery_present battery_is_present(void)
 static void clear_new_power_requests(void)
 {
 	int i;
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i)
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i)
 		new_power_request[i] = 0;
 }
 
@@ -115,7 +115,7 @@ static void initialize_charge_table(int current, int voltage, int ceil)
 	charge.current = current;
 	charge.voltage = voltage;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
 		for (j = 0; j < CEIL_REQUESTOR_COUNT; ++j)
 			charge_manager_set_ceil(i, j, ceil);
 		charge_manager_update_dualrole(i, CAP_DEDICATED);
