@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8a1d6e7_dcf4f281",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T22:45:56Z",
+      "side": 1,
+      "message": "nit: |${boolean} \u003d\u003d false| is |!${boolean}|",
+      "range": {
+        "startLine": 289,
+        "startChar": 5,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "7631f9325b4972dc6ba49d4fee28f347dc7322e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a70dd1_a75c3ed9",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T22:45:56Z",
+      "side": 1,
+      "message": "Can you declare a local variable with the correct type? It helps verify correctness.\n\nstruct ec_response_fp_read_match_secret *response \u003d args-\u003eresponse;\nderive_positive_match_secret(\u0026response-\u003epositive_match_secret, fp_positive_match_salt[fgr]);\n\nAnd below:\n\nargs-\u003eresponse_size \u003d sizeof(*response);",
+      "range": {
+        "startLine": 295,
+        "startChar": 34,
+        "endLine": 295,
+        "endChar": 48
+      },
+      "revId": "7631f9325b4972dc6ba49d4fee28f347dc7322e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca8434b_c76625c8",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T22:45:56Z",
+      "side": 1,
+      "message": "Can you add those to the mock/ directory? Instead of exposing |now| as a global, you can create a set_time() function just for tests.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "7631f9325b4972dc6ba49d4fee28f347dc7322e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1e5077_9d804427",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T22:45:56Z",
+      "side": 1,
+      "message": "Same name as the global",
+      "range": {
+        "startLine": 589,
+        "startChar": 13,
+        "endLine": 589,
+        "endChar": 16
+      },
+      "revId": "7631f9325b4972dc6ba49d4fee28f347dc7322e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5eec737_ee40425d",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T22:45:56Z",
+      "side": 1,
+      "message": "FP_NO_SUCH_TEMPLATE",
+      "range": {
+        "startLine": 628,
+        "startChar": 14,
+        "endLine": 628,
+        "endChar": 16
+      },
+      "revId": "7631f9325b4972dc6ba49d4fee28f347dc7322e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
