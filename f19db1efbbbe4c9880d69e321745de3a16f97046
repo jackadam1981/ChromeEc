@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "849ecab4_fc0c5499",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T16:35:15Z",
+      "side": 1,
+      "message": "Ha, yeah all these acronyms got me tripped up :)",
+      "parentUuid": "7879d2c6_4ed0cfcb",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8e06a73_a799f41f",
         "filename": "power/power_status.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120213bb_ec1557d4",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T16:35:15Z",
+      "side": 1,
+      "message": "Good eye!  To me it looked like a state machine, so I made it more explicit than necessary I guess.  I also had case-specific print statements originally for debugging.  I\u0027ll clean that up.",
+      "parentUuid": "c8e06a73_a799f41f",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 7
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "40fd10eb_19c0ce6f",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T16:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7291f938_292b7fba",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 22
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6561350_5b1109f1",
         "filename": "power/power_status.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291c459f_bd97b178",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T16:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6561350_5b1109f1",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 41
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "be2d54ae_70551e60",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T16:35:15Z",
+      "side": 1,
+      "message": "From Intel\u0027s docs, made this more clear.",
+      "parentUuid": "200b849e_48d03f44",
+      "range": {
+        "startLine": 293,
+        "startChar": 4,
+        "endLine": 293,
+        "endChar": 52
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1fc6e9e_ab6809a1",
         "filename": "power/power_status.c",
         "patchSetId": 7
@@ -137,6 +257,30 @@
       "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "918eeed7_178577d5",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T16:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1fc6e9e_ab6809a1",
+      "range": {
+        "startLine": 301,
+        "startChar": 48,
+        "endLine": 301,
+        "endChar": 55
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
