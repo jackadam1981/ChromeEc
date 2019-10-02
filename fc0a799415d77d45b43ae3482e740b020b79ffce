@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e22059fa_e90367d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-02T09:13:38Z",
+      "side": 1,
+      "message": "CHG_VIN will detect VBUS when we have back boost voltage, then the CHRIND LED will be lit even you don`t plug in cable.",
+      "parentUuid": "d3f8a928_83952308",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "fc0a799415d77d45b43ae3482e740b020b79ffce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41a36cdb_66b664e5",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "fc0a799415d77d45b43ae3482e740b020b79ffce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41601096_a77dabe0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-02T09:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a36cdb_66b664e5",
+      "range": {
+        "startLine": 1077,
+        "startChar": 14,
+        "endLine": 1077,
+        "endChar": 43
+      },
+      "revId": "fc0a799415d77d45b43ae3482e740b020b79ffce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

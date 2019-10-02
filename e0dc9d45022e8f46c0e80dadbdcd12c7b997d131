@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0fe072f0_34937c3a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-02T09:13:38Z",
+      "side": 1,
+      "message": "No, it can`t.\nCuz your engineer who merged MT6370 into rt946x.c and rt946x.h, used CONFIG_CHARGER_MT6370 to separate MT6370, RT9466, and RT9467.\nIf I use IS_ENABLED, \"build all\" will fail.",
+      "parentUuid": "dba01563_ae9d3429",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "e0dc9d45022e8f46c0e80dadbdcd12c7b997d131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3ed982c_3d78f719",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 16
@@ -264,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "93f55720_3dcbfa48",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-02T09:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e8cec56_7c2d76a3",
+      "range": {
+        "startLine": 1069,
+        "startChar": 0,
+        "endLine": 1072,
+        "endChar": 0
+      },
+      "revId": "e0dc9d45022e8f46c0e80dadbdcd12c7b997d131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8131044c_5132ff24",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 16
@@ -311,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "7d9d9168_e005d3f2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-02T09:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f3adee_d5953bc4",
+      "range": {
+        "startLine": 1084,
+        "startChar": 0,
+        "endLine": 1084,
+        "endChar": 28
+      },
+      "revId": "e0dc9d45022e8f46c0e80dadbdcd12c7b997d131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd61bd1_c75d4d9a",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 16
@@ -322,6 +394,30 @@
       "writtenOn": "2019-09-24T17:57:18Z",
       "side": 1,
       "message": "I think if you use IS_ENABLED here, you can get rid of \u0027#if defined(CONFIG_CHARGER_MT6370)\u0027 at line 1105.",
+      "range": {
+        "startLine": 1216,
+        "startChar": 7,
+        "endLine": 1216,
+        "endChar": 28
+      },
+      "revId": "e0dc9d45022e8f46c0e80dadbdcd12c7b997d131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4b0657f_3987ba78",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-02T09:13:38Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "1fd61bd1_c75d4d9a",
       "range": {
         "startLine": 1216,
         "startChar": 7,
