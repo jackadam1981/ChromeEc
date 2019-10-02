@@ -34,6 +34,24 @@
       "revId": "3008a0a850cf4f02978be1f1aecda4c249eddfc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7219ca88_69068d0b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-02T09:47:31Z",
+      "side": 1,
+      "message": "wait... I thought adc_result is already in mA/mV?\n\nAnd there\u0027s other things like TS_BAT/TEMP_JC that doesn\u0027t need to divide 1000. So please filter out them.",
+      "parentUuid": "7d7adb34_ab0af92b",
+      "revId": "3008a0a850cf4f02978be1f1aecda4c249eddfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
