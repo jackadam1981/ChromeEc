@@ -45,6 +45,30 @@
       "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e39230_f3bdbbae",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-10-02T03:28:20Z",
+      "side": 1,
+      "message": "Active-low.",
+      "parentUuid": "5902cc6e_be2893c3",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
