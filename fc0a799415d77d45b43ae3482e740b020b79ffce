@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ebda2ba3_d3b83033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-02T17:30:07Z",
+      "side": 1,
+      "message": "Is my understanding right? When AC is plugged, back boost turns on. When AC is unplugged, back boost stays on.\n\nWhy does back boost stay on?",
+      "parentUuid": "e22059fa_e90367d8",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "fc0a799415d77d45b43ae3482e740b020b79ffce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41a36cdb_66b664e5",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 18
