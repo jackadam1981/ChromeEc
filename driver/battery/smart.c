@@ -380,7 +380,7 @@ void battery_get_params(struct batt_params *batt)
 			batt_new.state_of_charge < BATTERY_LEVEL_FULL) ||
 		(batt_new.desired_voltage == 0 &&
 			batt_new.desired_current == 0 &&
-			batt_new.state_of_charge == 0)))
+			batt_new.state_of_charge > 2)))
 #else
 	    batt_new.desired_voltage &&
 	    batt_new.desired_current &&
