@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7879d2c6_4ed0cfcb",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T07:06:31Z",
+      "side": 1,
+      "message": "DBPT?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e06a73_a799f41f",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T07:06:31Z",
+      "side": 1,
+      "message": "This seems more complicated than required? Can this be done something like:\n\nif (ext_pres \u0026\u0026 batt_pres)\n    new_power_source \u003d POWER_SOURCE_AC_BATTERY;\nelse if (ext_pres) {\n    new_power_source \u003d POWER_SOURCE_AC;\n    dbpt_available \u003d false;\n} else if (batt_pres)\n    new_power_source \u003d POWER_SOURCE_BATTERY;\nelse {\n    new_power_source \u003d POWER_SOURCE_UNKNOWN;\n    dpbt_available \u003d false;\n}",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 7
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7291f938_292b7fba",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T07:06:31Z",
+      "side": 1,
+      "message": "if (!dbpt_available)\n\treturn;\n\nRest of the code wouldn\u0027t have to be indented an additional tab.",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 22
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6561350_5b1109f1",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T07:06:31Z",
+      "side": 1,
+      "message": "v1?",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 41
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200b849e_48d03f44",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T07:06:31Z",
+      "side": 1,
+      "message": "How was this determined?",
+      "range": {
+        "startLine": 293,
+        "startChar": 4,
+        "endLine": 293,
+        "endChar": 52
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1fc6e9e_ab6809a1",
+        "filename": "power/power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T07:06:31Z",
+      "side": 1,
+      "message": "factor?",
+      "range": {
+        "startLine": 301,
+        "startChar": 48,
+        "endLine": 301,
+        "endChar": 55
+      },
+      "revId": "f19db1efbbbe4c9880d69e321745de3a16f97046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
