@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3473704e_38a01a75",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-02T22:53:16Z",
+      "side": 1,
+      "message": "Yicheng, here is an example of how to set \"-Wvla\" for all of the fpsensor files:\n\n diff --git a/common/fpsensor/build.mk b/common/fpsensor/build.mk\nindex 9556515f2..3af81d7f8 100644\n--- a/common/fpsensor/build.mk\n+++ b/common/fpsensor/build.mk\n@@ -7,11 +7,24 @@\n # Note that this variable includes the trailing \"/\"\n _fpsensor_dir:\u003d$(dir $(lastword $(MAKEFILE_LIST)))\n \n-all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_dir)fpsensor_state.o\n-all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_dir)fpsensor_crypto.o\n+# Additional CFLAGS for only fpsensor objects\n+fpsensor_CFLAGS\u003d-Wvla\n+\n+_fpsensor_state_obj:\u003d$(_fpsensor_dir)fpsensor_state.o\n+_fpsensor_crypto_obj:\u003d$(_fpsensor_dir)fpsensor_crypto.o\n+_fpsensor_obj:\u003d$(_fpsensor_dir)fpsensor.o\n+_fpsensor_stubs_obj:\u003d$(_fpsensor_dir)fpsensor_stubs.o\n+\n+$(out)/RW/$(_fpsensor_state_obj): CFLAGS+\u003d$(fpsensor_CFLAGS)\n+$(out)/RW/$(_fpsensor_crypto_obj): CFLAGS+\u003d$(fpsensor_CFLAGS)\n+$(out)/RW/$(_fpsensor_obj): CFLAGS+\u003d$(fpsensor_CFLAGS)\n+$(out)/RW/$(_fpsensor_stubs_obj): CFLAGS+\u003d$(fpsensor_CFLAGS)\n+\n+all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_state_obj)\n+all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_crypto_obj)\n ifneq ($(CONFIG_SPI_FP_PORT),)\n-all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_dir)fpsensor.o\n+all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_obj)\n endif\n ifeq ($(HAS_MOCK_FPSENSOR),)\n-all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_dir)fpsensor_stubs.o\n+all-obj-$(HAS_TASK_FPSENSOR)+\u003d$(_fpsensor_stubs-obj)\n endif\n\n\nWe can consider setting it globally too, but will have to fix some existing cases across the codebase.",
+      "parentUuid": "d897db35_64c34fd9",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51e4136d_0ca264fb",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 6
