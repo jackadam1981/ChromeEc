@@ -12,11 +12,13 @@
  * By default, enable all console messages excepted HC, ACPI and event:
  * The sensor stack is generating a lot of activity.
  */
+#if 0
 #define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
 #define CONFIG_SUPPRESSED_HOST_COMMANDS \
 	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_USB_PD_DISCOVERY,\
 	EC_CMD_USB_PD_POWER_INFO, EC_CMD_PD_GET_LOG_ENTRY, \
 	EC_CMD_MOTION_SENSE_CMD, EC_CMD_GET_NEXT_EVENT
+#endif
 
 /* NPCX7 config */
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
@@ -26,7 +28,7 @@
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE (512 * 1024)
 #define CONFIG_SPI_FLASH_REGS
-#define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
+#define CONFIG_SPI_FLASH_W25Q40 /* Internal SPI flash type. */
 
 /*
  * Enable 1 slot of secure temporary storage to support
@@ -46,8 +48,10 @@
 #define CONFIG_HOSTCMD_SKUID
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#if 0
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LOW_POWER_S0
+#endif
 #define CONFIG_LTO
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
@@ -82,7 +86,9 @@
 #define CONFIG_CHIPSET_RESET_HOOK
 
 /* Use external 32kHz OSC as LFCLK source */
+#if 0
 #define CONFIG_CLOCK_SRC_EXTERNAL
+#endif
 
 #undef  CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 200
@@ -118,12 +124,15 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 
-/* Enable the new USB-C PD stack */
+/* TODO(b/142284905): Enable new PD stack */
+#if 0
 #define CONFIG_USB_PE_SM
 #define CONFIG_USB_PRL_SM
 #define CONFIG_USB_SM_FRAMEWORK
 #define CONFIG_USB_TYPEC_SM
 #define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#endif
 
 #define CONFIG_CMD_PD_CONTROL
 #define CONFIG_USB_CHARGER
@@ -295,6 +304,10 @@ void ppc_interrupt(enum gpio_signal signal);
 
 int board_is_convertible(void);
 void board_update_sensor_config_from_sku(void);
+
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+int board_tcpc_fast_role_swap_enable(int port, int enable);
+#endif
 
 #endif /* !__ASSEMBLER__ */
 
