@@ -1112,7 +1112,6 @@ enum pd_states {
 #define PD_BBRMFLG_DATA_ROLE         BIT(2)
 #define PD_BBRMFLG_VCONN_ROLE        BIT(3)
 
-#ifdef CONFIG_USB_PD_DUAL_ROLE
 enum pd_dual_role_states {
 	/* While disconnected, toggle between src and sink */
 	PD_DRP_TOGGLE_ON,
@@ -1125,6 +1124,7 @@ enum pd_dual_role_states {
 	/* Switch to source */
 	PD_DRP_FORCE_SOURCE,
 };
+
 /**
  * Get dual role state
  *
@@ -1147,8 +1147,6 @@ void pd_set_dual_role(int port, enum pd_dual_role_states state);
  * @param port Port number from which to get role
  */
 int pd_get_role(int port);
-
-#endif
 
 /* Control Message type */
 enum pd_ctrl_msg_type {
@@ -2115,11 +2113,53 @@ void pd_execute_hard_reset(int port);
 void pd_transmit_complete(int port, int status);
 
 /**
+ * Get PD enable/connection status
+ *
+ * @param port USB-C port number
+ */
+uint8_t pd_get_enabled(int port);
+
+/**
+ * Get current power role and data role status
+ *
+ * @param port Port number from which to get role
+ */
+uint8_t pd_get_pwr_and_data_role(int port);
+
+/**
  * Get port polarity.
  *
  * @param port USB-C port number
  */
 int pd_get_polarity(int port);
+
+/**
+ * Get current state
+ *
+ * @param port USB-C port number
+ */
+uint8_t pd_get_state(int port);
+
+/**
+ * Get name of current state
+ *
+ * @param port USB-C port number
+ */
+void pd_get_state_name(int port, char *state);
+
+/**
+ * Get current cc state
+ *
+ * @param port USb-C port number
+ */
+uint8_t pd_get_current_cc_state(int port);
+
+/*
+ * Request a vconn swap
+ *
+ * @param port USB-C port number
+ */
+void pd_request_vconn_swap(int port);
 
 /**
  * Get port partner data swap capable status

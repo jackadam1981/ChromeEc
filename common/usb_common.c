@@ -11,6 +11,7 @@
 #include "common.h"
 #include "charge_state.h"
 #include "task.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -107,6 +108,102 @@ enum pd_cc_states pd_get_cc_state(
 	 */
 	return PD_CC_NONE;
 }
+
+#ifdef CONFIG_USBC_SS_MUX
+static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
+	[USB_PD_CTRL_MUX_NONE] = TYPEC_MUX_NONE,
+	[USB_PD_CTRL_MUX_USB]  = TYPEC_MUX_USB,
+	[USB_PD_CTRL_MUX_AUTO] = TYPEC_MUX_DP,
+	[USB_PD_CTRL_MUX_DP]   = TYPEC_MUX_DP,
+	[USB_PD_CTRL_MUX_DOCK] = TYPEC_MUX_DOCK,
+};
+#endif
+
+static const enum pd_dual_role_states dual_role_map[USB_PD_CTRL_ROLE_COUNT] = {
+	[USB_PD_CTRL_ROLE_TOGGLE_ON]    = PD_DRP_TOGGLE_ON,
+	[USB_PD_CTRL_ROLE_TOGGLE_OFF]   = PD_DRP_TOGGLE_OFF,
+	[USB_PD_CTRL_ROLE_FORCE_SINK]   = PD_DRP_FORCE_SINK,
+	[USB_PD_CTRL_ROLE_FORCE_SOURCE] = PD_DRP_FORCE_SOURCE,
+	[USB_PD_CTRL_ROLE_FREEZE]       = PD_DRP_FREEZE,
+};
+
+__overridable uint8_t board_get_dp_pin_mode(int port)
+{
+	return 0;
+}
+
+static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_control *p = args->params;
+	struct ec_response_usb_pd_control_v2 *r_v2 = args->response;
+	struct ec_response_usb_pd_control *r = args->response;
+
+	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	if (p->role >= USB_PD_CTRL_ROLE_COUNT ||
+			p->mux >= USB_PD_CTRL_MUX_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	if (p->role != USB_PD_CTRL_ROLE_NO_CHANGE)
+		pd_set_dual_role(p->port, dual_role_map[p->role]);
+
+#ifdef CONFIG_USBC_SS_MUX
+	if (p->mux != USB_PD_CTRL_MUX_NO_CHANGE)
+		usb_mux_set(p->port, typec_mux_map[p->mux],
+			typec_mux_map[p->mux] == TYPEC_MUX_NONE ?
+			USB_SWITCH_DISCONNECT :
+			USB_SWITCH_CONNECT,
+			pd_get_polarity(p->port));
+#endif
+	if (p->swap == USB_PD_CTRL_SWAP_DATA)
+		pd_request_data_swap(p->port);
+	else if (p->swap == USB_PD_CTRL_SWAP_POWER)
+		pd_request_power_swap(p->port);
+#ifdef CONFIG_USBC_VCONN_SWAP
+	else if (p->swap == USB_PD_CTRL_SWAP_VCONN)
+		pd_request_vconn_swap(p->port);
+#endif
+
+	switch (args->version) {
+	case 0:
+		r->enabled = pd_comm_is_enabled(p->port);
+		r->role = pd_get_role(p->port);
+		r->polarity = pd_get_polarity(p->port);
+		r->state = pd_get_state(p->port);
+		args->response_size = sizeof(*r);
+		break;
+	case 1:
+	case 2:
+		if (sizeof(*r_v2) > args->response_max)
+			return EC_RES_INVALID_PARAM;
+
+		r_v2->enabled = pd_get_enabled(p->port);
+		r_v2->role = pd_get_pwr_and_data_role(p->port);
+		r_v2->polarity = pd_get_polarity(p->port);
+		r_v2->cc_state = pd_get_current_cc_state(p->port);
+		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
+		r_v2->cable_type = get_usb_pd_mux_cable_type(p->port);
+		pd_get_state_name(p->port, r_v2->state);
+
+		if (args->version == 1) {
+			/*
+			 * ec_response_usb_pd_control_v2 (r_v2) is a
+			 * strict superset of ec_response_usb_pd_control_v1
+			 */
+			args->response_size =
+				sizeof(struct ec_response_usb_pd_control_v1);
+		} else
+			args->response_size = sizeof(*r_v2);
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
+			hc_usb_pd_control,
+			EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 /*
  * Zinger implements a board specific usb policy that does not define
