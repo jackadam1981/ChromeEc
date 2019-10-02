@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85deb03a_cdc0a0a6",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:20:02Z",
+      "side": 1,
+      "message": "nit: it\u0027s best to avoid naming things \"new\" or \"latest\" or anything relative. What will be the meaning 3 years from now?",
+      "range": {
+        "startLine": 503,
+        "startChar": 27,
+        "endLine": 503,
+        "endChar": 30
+      },
+      "revId": "db13f364f681df812ac3864c468fa323d3fd6c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dfc7cf1_c9e3381d",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:20:02Z",
+      "side": 1,
+      "message": "Can you move that before deriving the key? The shorter the key lives (not just in microseconds, also in number of potentially-buggy lines of code), the better.",
+      "range": {
+        "startLine": 573,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 3
+      },
+      "revId": "db13f364f681df812ac3864c468fa323d3fd6c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5868e9_8d089019",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:20:02Z",
+      "side": 1,
+      "message": "That can fail, so it should happen before the |templ_valid++| line. Agreed that it *shouldn\u0027t* fail in practice, but still :-)\nIt\u0027s probably best to also clear the content of |fp_template| in that case.",
+      "range": {
+        "startLine": 609,
+        "startChar": 4,
+        "endLine": 609,
+        "endChar": 32
+      },
+      "revId": "db13f364f681df812ac3864c468fa323d3fd6c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
