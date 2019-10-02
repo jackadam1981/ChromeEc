@@ -1516,7 +1516,11 @@ void charger_task(void *u)
 			 */
 			if (curr.requested_voltage == 0 &&
 			    curr.requested_current == 0 &&
+#ifdef CONFIG_BATTERY_DEAD_FG_GARBAGE
+			    curr.batt.state_of_charge < CONFIG_BATTERY_DEAD_FG_GARBAGE) {
+#else
 			    curr.batt.state_of_charge == 0) {
+#endif
 				/* Battery is dead, give precharge current */
 				curr.requested_voltage =
 					batt_info->voltage_max;
