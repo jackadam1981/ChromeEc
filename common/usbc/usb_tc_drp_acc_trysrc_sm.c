@@ -767,13 +767,13 @@ static void exit_low_power_mode(int port)
 void tc_event_check(int port, int evt)
 {
 #ifdef CONFIG_USB_PE_SM
-	if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 		if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
 			exit_low_power_mode(port);
 
 		if (evt & PD_EVENT_DEVICE_ACCESSED)
 			handle_device_access(port);
-	}
+#endif /*CONFIG_USB_PD_TCPC_LOW_POWER */
 
 	if (IS_ENABLED(CONFIG_POWER_COMMON)) {
 		if (evt & PD_EVENT_POWER_STATE_CHANGE)
@@ -1011,9 +1011,15 @@ static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 };
 #endif
 
+__attribute__((weak)) uint8_t board_get_dp_pin_mode(int port)
+{
+	return 0;
+}
+
 static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
+	struct ec_response_usb_pd_control_v2 *r_v2 = args->response;
 	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
 
@@ -1045,21 +1051,24 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		pe_dpm_request(p->port, DPM_REQUEST_VCONN_SWAP);
 #endif
 
-	if (args->version == 0) {
+	switch (args->version) {
+	case 0:
 		r->enabled = pd_comm_is_enabled(p->port);
 		r->role = tc[p->port].power_role;
 		r->polarity = tc[p->port].polarity;
 		r->state = get_state_tc(p->port);
 		args->response_size = sizeof(*r);
-	} else {
-		r_v1->enabled =
+		break;
+	case 1:
+	case 2:
+		r_v2->enabled =
 			(pd_comm_is_enabled(p->port) ?
 			PD_CTRL_RESP_ENABLED_COMMS : 0) |
 			(pd_is_connected(p->port) ?
 				PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
 			(TC_CHK_FLAG(p->port, TC_FLAGS_PARTNER_PD_CAPABLE) ?
 				PD_CTRL_RESP_ENABLED_PD_CAPABLE : 0);
-		r_v1->role =
+		r_v2->role =
 			(tc[p->port].power_role ? PD_CTRL_RESP_ROLE_POWER : 0) |
 			(tc[p->port].data_role ? PD_CTRL_RESP_ROLE_DATA : 0) |
 			(TC_CHK_FLAG(p->port, TC_FLAGS_VCONN_ON) ?
@@ -1072,16 +1081,26 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 				PD_CTRL_RESP_ROLE_USB_COMM : 0) |
 			(TC_CHK_FLAG(p->port, TC_FLAGS_PARTNER_EXTPOWER) ?
 				PD_CTRL_RESP_ROLE_EXT_POWERED : 0);
-		r_v1->polarity = tc[p->port].polarity;
-		strzcpy(r_v1->state, tc_state_names[get_state_tc(p->port)],
-				sizeof(r_v1->state));
-		args->response_size = sizeof(*r_v1);
+		r_v2->polarity = tc[p->port].polarity;
+		r_v2->cc_state = tc[p->port].cc_state;
+		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
+		r_v2->cable_type = get_usb_pd_mux_cable_type(p->port);
+
+		strzcpy(r_v2->state, tc_state_names[get_state_tc(p->port)],
+				sizeof(r_v2->state));
+		if (args->version == 1)
+			args->response_size = sizeof(*r_v1);
+		else
+			args->response_size = sizeof(*r_v2);
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
 	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 			hc_usb_pd_control,
-			EC_VER_MASK(0) | EC_VER_MASK(1));
+			EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
 {
@@ -2879,6 +2898,19 @@ void tc_run(const int port)
 {
 	exe_state(port, &tc[port].ctx);
 }
+
+#ifdef CONFIG_USB_PD_RETIMER
+int pd_is_ufp(int port)
+{
+	return tc[port].cc_state == PD_CC_UFP_ATTACHED;
+}
+
+int pd_is_debug_acc(int port)
+{
+	return tc[port].cc_state == PD_CC_UFP_DEBUG_ACC ||
+	       tc[port].cc_state == PD_CC_DFP_DEBUG_ACC;
+}
+#endif
 
 /*
  * Type-C State Hierarchy (Sub-States are listed inside the boxes)
