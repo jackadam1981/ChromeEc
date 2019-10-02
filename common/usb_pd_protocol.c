@@ -383,7 +383,9 @@ int pd_is_vbus_present(int port)
 #ifdef CONFIG_USB_PD_RETIMER
 int pd_is_ufp(int port)
 {
-	return pd[port].cc_state == PD_CC_UFP_ATTACHED;
+	/* Returns true if chromebook is UFP */
+	return pd[port].cc_state == PD_CC_DFP_ATTACHED ||
+	       pd[port].cc_state == PD_CC_DFP_DEBUG_ACC;
 }
 
 int pd_is_debug_acc(int port)
