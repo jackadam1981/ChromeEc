@@ -16,12 +16,11 @@
 
 #include "usb_pd_tcpm.h"
 
-/**
- * AOZ1380 Set VBus Source Current Limit.
- *
- * Using this driver requires a board_aoz1380_set_vbus_source_limit
- * function due to the lack of programability of this device and
- * requirement for hardware specific code to handle setting this limit.
+struct ppc_drv;
+extern const struct ppc_drv aoz1380_drv;
+
+/*
+ * TCPC Set VBus Source Current Limit.
  *
  * @param port The Type-C port
  * @param rp The Type-C RP value
@@ -30,9 +29,6 @@
 int board_aoz1380_set_vbus_source_current_limit(int port,
 						enum tcpc_rp_value rp);
 
-
-struct ppc_drv;
-extern const struct ppc_drv aoz1380_drv;
 
 /**
  * Interrupt Handler for the AOZ1380.
