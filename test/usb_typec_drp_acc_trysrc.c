@@ -8,7 +8,25 @@
 #include "timer.h"
 #include "test_util.h"
 #include "usb_sm_checks.h"
+<<<<<<< HEAD   (1b376d pd_protocol: add hard_reset_complete_timer)
 #include "charge_manager.h"
+=======
+
+#define PORT0 0
+
+/* Install Mock TCPC and MUX drivers */
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.drv = &mock_tcpc_driver,
+	},
+};
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.driver = &mock_usb_mux_driver,
+	}
+};
+>>>>>>> CHANGE (957770 Rename CONFIG_USB_PD_PORT_COUNT as CONFIG_USB_PD_PORT_MAX_CO)
 
 void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 {
