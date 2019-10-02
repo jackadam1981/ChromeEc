@@ -744,7 +744,7 @@ int tcpci_get_chip_info(int port, int live,
 	int error;
 	int val;
 
-	if (port >= CONFIG_USB_PD_PORT_MAX_COUNT)
+	if (port >= board_get_usb_pd_port_count())
 		return EC_ERROR_INVAL;
 
 	i = &info[port];

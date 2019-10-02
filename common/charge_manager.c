@@ -140,7 +140,7 @@ enum charge_manager_change_type {
 
 static int is_pd_port(int port)
 {
-	return port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT;
+	return port >= 0 && port < board_get_usb_pd_port_count();
 }
 
 static int is_sink(int port)
@@ -761,7 +761,7 @@ static void charge_manager_refresh(void)
 	if (updated_old_port != CHARGE_PORT_NONE)
 		save_log[updated_old_port] = 1;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i)
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i)
 		if (save_log[i])
 			charge_manager_save_log(i);
 #endif
@@ -1138,7 +1138,7 @@ static int can_supply_max_current(int port)
 	if (!is_active_source(port))
 		/* Non-active ports don't get 3A */
 		return 0;
-	for (p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+	for (p = 0; p < board_get_usb_pd_port_count(); p++) {
 		if (p == port)
 			continue;
 		if (source_port_rp[p] ==
@@ -1166,7 +1166,7 @@ void charge_manager_source_port(int port, int enable)
 		return;
 
 	/* Set port limit according to policy */
-	for (p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+	for (p = 0; p < board_get_usb_pd_port_count(); p++) {
 		rp = can_supply_max_current(p) ?
 				CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT :
 				CONFIG_USB_PD_PULLUP;
@@ -1309,7 +1309,7 @@ static void charge_manager_set_external_power_limit(int current_lim,
 	if (voltage_lim == EC_POWER_LIMIT_NONE)
 		voltage_lim = PD_MAX_VOLTAGE_MV;
 
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
+	for (port = 0; port < board_get_usb_pd_port_count(); ++port) {
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_HOST, current_lim);
 		pd_set_external_voltage_limit(port, voltage_lim);
 	}
