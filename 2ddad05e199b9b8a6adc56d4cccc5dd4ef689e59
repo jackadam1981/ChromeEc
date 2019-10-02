@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c8c1369_dfb65329",
+        "filename": "common/fpsensor/fpsensor_stubs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T00:31:30Z",
+      "side": 1,
+      "message": "I\u0027d return an error (and log it!) in that case. The stubs shouldn\u0027t be used, so if it ever makes its way on real hardware we want to fail noisily",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "2ddad05e199b9b8a6adc56d4cccc5dd4ef689e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
