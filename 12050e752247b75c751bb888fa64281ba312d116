@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "96be79e7_55a802ab",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-10-02T23:34:34Z",
+      "side": 1,
+      "message": "I think that will not work because fp_finger_match takes this template array and there\u0027s no way to tell the matcher to skip the salt bytes.\nhttps://chromium.git.corp.google.com/chromiumos/platform/ec/+/ad64a080363380e7b34d4c395867a55b83e61c1c/include/fpsensor.h#122",
+      "parentUuid": "829730be_6951101a",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 61
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4677fd96_fbadf9e1",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
