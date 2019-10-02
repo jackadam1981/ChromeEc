@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab74353_d11379ea",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T21:48:53Z",
+      "side": 1,
+      "message": "super nit: you can #undef it at the end of the function since you no longer need that. See for example https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/sha1.c#51",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 16
+      },
+      "revId": "a035c8ea573843015534be023a8227e72ff1697f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
