@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c5240d60_d672b6eb",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-10-02T21:39:58Z",
+      "side": 1,
+      "message": "Done. I have started a bug to remind myself to turn on this compiler warning later: https://crbug.com/1010634",
+      "parentUuid": "d897db35_64c34fd9",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e4136d_0ca264fb",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 6
