@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d048dc56_b5727255",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4086,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T06:19:45Z",
+      "side": 1,
+      "message": "How is this different than POWER_SOURCE_AC? Can you please add some comments here?",
+      "range": {
+        "startLine": 4086,
+        "startChar": 1,
+        "endLine": 4086,
+        "endChar": 24
+      },
+      "revId": "9998dbf492028729cca52faccf72ffd38810382e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ea073c_00eb10e9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4115,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-02T06:19:45Z",
+      "side": 1,
+      "message": "Some of this is very Intel specific. I think there should be some comment indicating that. Also, it might be a good idea to put Intel specific members in a structure of its own so that if other platforms decide to use this command they don\u0027t need to care about this data.",
+      "range": {
+        "startLine": 4115,
+        "startChar": 9,
+        "endLine": 4115,
+        "endChar": 32
+      },
+      "revId": "9998dbf492028729cca52faccf72ffd38810382e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
