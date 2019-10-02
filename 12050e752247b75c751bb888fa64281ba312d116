@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6227495_87e5b3b1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:10:31Z",
+      "side": 1,
+      "message": "That doesn\u0027t seem necessary anymore, since you\u0027re doing it in template request function (which is fine!)",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 15
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce6eafdd_2a48fd37",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:10:31Z",
+      "side": 1,
+      "message": "Can you move that before the call to derive_encryption_key()?",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 3
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d74410e_5199b705",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:10:31Z",
+      "side": 1,
+      "message": "nit: no need for a newline",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 0
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "829730be_6951101a",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:10:31Z",
+      "side": 1,
+      "message": "This significantly increases RAM usage :-(\nInstead of a full dedicated buffer that only serves to concatenate a template and an extra 16 bytes before encryption, could you instead tweak the |fp_template| buffers so they contain both the actual template and the positive_match_salt at the end?\n\n\nstruct fp_template_s {\n  uint8_t bio_template[FP_ALGORITHM_TEMPLATE_SIZE];\n  uint8_t fp_positive_match_salt[FP_POSITIVE_MATCH_SALT_BYTES];\n};\n(you\u0027ll need to pack that struct)\n\nstruct fp_template_s fp_template[FP_MAX_FINGER_COUNT] FP_TEMPLATE_SECTION;",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 61
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4677fd96_fbadf9e1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5731,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T23:10:31Z",
+      "side": 1,
+      "message": "that\u0027s a different salt, right?",
+      "range": {
+        "startLine": 5730,
+        "startChar": 39,
+        "endLine": 5731,
+        "endChar": 14
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
