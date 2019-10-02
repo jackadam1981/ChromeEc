@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e194d8e_24837981",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T18:40:01Z",
+      "side": 1,
+      "message": "IIUC this is with user_id set to 0x00. Can you also try with a \"real\" value?",
+      "range": {
+        "startLine": 375,
+        "startChar": 16,
+        "endLine": 375,
+        "endChar": 48
+      },
+      "revId": "20522cb7ef5e179ec669be52acbdc72f12552a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
