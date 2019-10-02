@@ -3560,6 +3560,16 @@ static void pe_vdm_request_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
+uint8_t get_usb_pd_mux_cable_type(int port)
+{
+	if (pe[port].passive_cable_vdo != -1)
+		return IDH_PTYPE_PCABLE;
+	else if (pe[port].active_cable_vdo1 != -1)
+		return IDH_PTYPE_ACABLE;
+	else
+		return IDH_PTYPE_UNDEF;
+}
+
 /**
  * PE_VDM_Acked
  */
