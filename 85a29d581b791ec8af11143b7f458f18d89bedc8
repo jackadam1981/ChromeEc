@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f560c00c_d0eee765",
+        "filename": "common/fpsensor/fpsensor_stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T17:06:02Z",
+      "side": 1,
+      "message": "panic() takes just one argument I think? https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/panic.h#165\n\nDid you mean panic_printf()?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "85a29d581b791ec8af11143b7f458f18d89bedc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
