@@ -376,6 +376,30 @@
       "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17b514a_f8a08319",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5771,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-02T18:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f3b40f_39247dcc",
+      "range": {
+        "startLine": 5769,
+        "startChar": 3,
+        "endLine": 5771,
+        "endChar": 49
+      },
+      "revId": "6c7b6275235322e8e1170a69a81aedac56b4a9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
