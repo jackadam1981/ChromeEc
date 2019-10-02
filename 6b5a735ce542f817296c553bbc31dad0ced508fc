@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "bf0e2fcc_7a2d4168",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-02T15:29:01Z",
+      "side": 1,
+      "message": "The comment says \"TCPC controls DRP toggling\", so will this bit be set when we are in SNK_READY in an explicit contract?",
+      "parentUuid": "13583006_88097b9f",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be7ef8c3_2f861df2",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 7
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "I think we should keep this. I\u0027m in the process of porting the stack to servo_v4 and it does not have auto toggle but can benefit from the flash savings when this macro is undefined.",
       "parentUuid": "be7ef8c3_2f861df2",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf38dc3a_7de6e2b2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-02T15:29:01Z",
+      "side": 1,
+      "message": "Can we make all of the flash savings in one CL and we can evaluate it then.\n\nThe old stack was littered with conditional that made it extremely difficult to read. I would rather avoid that for the new stack.\n\nMaybe servoV4 needs another top-level PE file that is limited in scope.",
+      "parentUuid": "d88b3bc3_579dc58b",
       "range": {
         "startLine": 84,
         "startChar": 7,
@@ -460,6 +508,30 @@
       "side": 1,
       "message": "Do we want to put hook functions in common code? Also, common code will include state because of the pd_try_src_enable variable because hook functions don\u0027t use parameters.",
       "parentUuid": "50355122_2da0931e",
+      "range": {
+        "startLine": 884,
+        "startChar": 12,
+        "endLine": 884,
+        "endChar": 32
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd7a034c_25a7bd62",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-02T15:29:01Z",
+      "side": 1,
+      "message": "We can change the signature of this function to return a whether try_source should be enabled (basically the value of pd_try_src_enabled), right? then both old and new stack can use this",
+      "parentUuid": "1854fba8_1e69a150",
       "range": {
         "startLine": 884,
         "startChar": 12,
@@ -601,6 +673,30 @@
       "side": 1,
       "message": "If this code is moved to common, how do you suggest we handle pd_set_dual_role_no_wakeup which modifies the static drp_state variable? The hook functions don\u0027t take parameters.",
       "parentUuid": "b931d138_ff2b1389",
+      "range": {
+        "startLine": 3075,
+        "startChar": 0,
+        "endLine": 3128,
+        "endChar": 76
+      },
+      "revId": "6b5a735ce542f817296c553bbc31dad0ced508fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509aa830_ecd9bbe9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-02T15:29:01Z",
+      "side": 1,
+      "message": "You could make a set method in both old and new stack that sets the private, static drp_state for each stack",
+      "parentUuid": "c764b446_d1047e17",
       "range": {
         "startLine": 3075,
         "startChar": 0,

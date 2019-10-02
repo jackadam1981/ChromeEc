@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7815341f_0b5399c6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-02T15:29:01Z",
+      "side": 1,
+      "message": "Yes, I think changing to pd_ makes sense here",
+      "parentUuid": "663d3310_8a7de354",
+      "revId": "f0be2bd518250a6a8ee0491a1b54b1596a3481dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d251fa3c_52a407dd",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 9
