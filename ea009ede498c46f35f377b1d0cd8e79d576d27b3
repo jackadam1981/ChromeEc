@@ -93,6 +93,30 @@
       "revId": "ea009ede498c46f35f377b1d0cd8e79d576d27b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcae60b4_3a9998d9",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-10-02T01:18:11Z",
+      "side": 1,
+      "message": "oh, this is quirky: our desktop \"gcc -m32\" is happy with %d.\nthe coreboot i386-elf-gcc is not happy (surprise!).\ndesktop \"gcc -m64\" is also not happy (expected).\n\nmy suggestion is to support %td instead of forcing 64bit promotion/arithmetic on tiny 32 bit machines.  i assume\nthis is essentially the same case as %zd in the printf implementation?",
+      "parentUuid": "706c75c5_98f42239",
+      "range": {
+        "startLine": 256,
+        "startChar": 20,
+        "endLine": 256,
+        "endChar": 24
+      },
+      "revId": "ea009ede498c46f35f377b1d0cd8e79d576d27b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
