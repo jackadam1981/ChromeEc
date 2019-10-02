@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6dbc030e_62c644b9",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-02T17:23:05Z",
+      "side": 1,
+      "message": "Late to this sorry, but now we\u0027re back to a variable-length array I think?",
+      "parentUuid": "d7adae8c_a981bab3",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "6d30397261d5d92aef272be13b55cdddb6828676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51e4136d_0ca264fb",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 6
