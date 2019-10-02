@@ -989,9 +989,6 @@ static void pe_src_send_capabilities_entry(int port)
 	/* Increment CapsCounter */
 	pe[port].caps_counter++;
 
-	/* Stop sender response timer */
-	pe[port].sender_response_timer = 0;
-
 	/*
 	 * Clear PE_FLAGS_INTERRUPTIBLE_AMS flag if it was set
 	 * in the src_discovery state
@@ -1007,8 +1004,7 @@ static void pe_src_send_capabilities_run(int port)
 	 *  2) Reset the HardResetCounter and CapsCounter to zero.
 	 *  3) Initialize and run the SenderResponseTimer.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
-				pe[port].sender_response_timer == 0) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Stop the NoResponseTimer */
@@ -1029,8 +1025,7 @@ static void pe_src_send_capabilities_run(int port)
 	 * Transition to the PE_SRC_Negotiate_Capability state when:
 	 *  1) A Request Message is received from the Sink
 	 */
-	if (pe[port].sender_response_timer != 0 &&
-			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/*
@@ -1092,9 +1087,10 @@ static void pe_src_send_capabilities_run(int port)
 	 *  3) And the HardResetCounter > nHardResetCount.
 	 */
 	if (pe[port].no_response_timer > 0 &&
-			get_time().val > pe[port].no_response_timer &&
-			pe[port].hard_reset_counter > N_HARD_RESET_COUNT) {
-		if (PE_CHK_FLAG(port, PE_FLAGS_PD_CONNECTION))
+			get_time().val > pe[port].no_response_timer) {
+		if (pe[port].hard_reset_counter <= N_HARD_RESET_COUNT)
+			set_state_pe(port, PE_SRC_HARD_RESET);
+		else if (PE_CHK_FLAG(port, PE_FLAGS_PD_CONNECTION))
 			set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 		else
 			set_state_pe(port, PE_SRC_DISABLED);
