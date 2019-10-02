@@ -140,15 +140,12 @@ static struct type_c {
 	uint64_t next_role_swap;
 	/* Generic timer */
 	uint64_t timeout;
-
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	/* Time to enter low power mode */
 	uint64_t low_power_time;
 	/* Tasks to notify after TCPC has been reset */
 	int tasks_waiting_on_reset;
 	/* Tasks preventing TCPC from entering low power mode */
 	int tasks_preventing_lpm;
-#endif
 	/* The last time the cc1 or cc2 line changed. */
 	uint64_t cc_last_change;
 	/* Current voltage on CC pins */
@@ -175,13 +172,19 @@ enum pd_dual_role_states drp_state[CONFIG_USB_PD_PORT_COUNT] = {
 static void set_vconn(int port, int enable);
 #endif
 
-#ifdef CONFIG_USB_PE_SM
+/* Forward declare common, private functions */
+static void exit_low_power_mode(int port);
+static void handle_device_access(int port);
+static void handle_new_power_state(int port);
+static int reset_device_and_notify(int port);
+static void pd_update_dual_role_config(int port);
+static int pd_device_in_low_power(int port);
+static void pd_wait_for_wakeup(int port);
 
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 /* Tracker for which task is waiting on sysjump prep to finish */
 static volatile task_id_t sysjump_task_waiting = TASK_ID_INVALID;
-#endif
 
+#ifdef CONFIG_USB_PE_SM
 /*
  * 4 entry rw_hash table of type-C devices that AP has firmware updates for.
  */
@@ -190,20 +193,6 @@ static volatile task_id_t sysjump_task_waiting = TASK_ID_INVALID;
 static struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #endif
 
-/* Forward declare common, private functions */
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static void exit_low_power_mode(int port);
-static void handle_device_access(int port);
-static int pd_device_in_low_power(int port);
-static void pd_wait_for_wakeup(int port);
-static int reset_device_and_notify(int port);
-#endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
-
-#ifdef CONFIG_POWER_COMMON
-static void handle_new_power_state(int port);
-#endif /* CONFIG_POWER_COMMON */
-
-static void pd_update_dual_role_config(int port);
 #endif /* CONFIG_USB_PE_SM */
 
 /* Forward declare common, private functions */
@@ -744,18 +733,18 @@ static void print_current_state(const int port)
 	CPRINTS("C%d: %s", port, tc_state_names[get_state_tc(port)]);
 }
 
-#ifdef CONFIG_USB_PE_SM
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 /* This is only called from the PD tasks that owns the port. */
 static void exit_low_power_mode(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PE_SM) &&
+	    !IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return;
+
 	if (TC_CHK_FLAG(port, TC_FLAGS_LPM_ENGAGED))
 		reset_device_and_notify(port);
 	else
 		TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED);
 }
-#endif
-#endif
 
 void tc_event_check(int port, int evt)
 {
@@ -772,7 +761,9 @@ void tc_event_check(int port, int evt)
 		}
 	}
 
-#ifdef CONFIG_USB_PE_SM
+	if (!IS_ENABLED(CONFIG_USB_PE_SM))
+		return;
+
 	if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
 		if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
 			exit_low_power_mode(port);
@@ -795,8 +786,6 @@ void tc_event_check(int port, int evt)
 
 	if (evt & PD_EVENT_UPDATE_DUAL_ROLE)
 		pd_update_dual_role_config(port);
-#endif
-
 }
 
 /*
@@ -939,8 +928,6 @@ void pd_deferred_resume(int port)
 }
 #endif  /* CONFIG_USB_PD_DEFERRED_RESUME */
 
-#ifdef CONFIG_USB_PE_SM
-
 /* This must only be called from the PD task */
 static void pd_update_dual_role_config(int port)
 {
@@ -950,6 +937,9 @@ static void pd_update_dual_role_config(int port)
 	 * or debug accessory toggle only and we are in the source
 	 * disconnected state).
 	 */
+	if (!IS_ENABLED(CONFIG_USB_PE_SM))
+		return;
+
 	if (tc[port].power_role == PD_ROLE_SOURCE &&
 			((drp_state[port] == PD_DRP_FORCE_SINK &&
 			!pd_ts_dts_plugged(port)) ||
@@ -966,23 +956,23 @@ static void pd_update_dual_role_config(int port)
 	}
 }
 
-#ifdef CONFIG_POWER_COMMON
 static void handle_new_power_state(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
+	if (IS_ENABLED(CONFIG_POWER_COMMON) &&
+	    IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 			/*
 			 * The SoC will negotiated DP mode again when it
 			 * boots up
 			 */
 			pe_exit_dp_mode(port);
+
+		/* Ensure mux is set properly after chipset transition */
+		set_usb_mux_with_current_data_role(port);
 	}
-
-	/* Ensure mux is set properly after chipset transition */
-	set_usb_mux_with_current_data_role(port);
 }
-#endif /* CONFIG_POWER_COMMON */
 
+#ifdef CONFIG_USB_PE_SM
 /*
  * HOST COMMANDS
  */
@@ -1017,10 +1007,15 @@ static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 };
 #endif
 
+__attribute__((weak)) uint8_t board_get_dp_pin_mode(int port)
+{
+	return 0;
+}
+
 static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
-	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
+	struct ec_response_usb_pd_control_v2 *r_v2 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
 
 	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
@@ -1051,21 +1046,27 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		pe_dpm_request(p->port, DPM_REQUEST_VCONN_SWAP);
 #endif
 
-	if (args->version == 0) {
+	switch (args->version) {
+	case 0:
 		r->enabled = pd_comm_is_enabled(p->port);
 		r->role = tc[p->port].power_role;
 		r->polarity = tc[p->port].polarity;
 		r->state = get_state_tc(p->port);
 		args->response_size = sizeof(*r);
-	} else {
-		r_v1->enabled =
+		break;
+	case 1:
+	case 2:
+		if (sizeof(*r_v2) > args->response_max)
+			return EC_RES_INVALID_PARAM;
+
+		r_v2->enabled =
 			(pd_comm_is_enabled(p->port) ?
 			PD_CTRL_RESP_ENABLED_COMMS : 0) |
 			(pd_is_connected(p->port) ?
 				PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
 			(TC_CHK_FLAG(p->port, TC_FLAGS_PARTNER_PD_CAPABLE) ?
 				PD_CTRL_RESP_ENABLED_PD_CAPABLE : 0);
-		r_v1->role =
+		r_v2->role =
 			(tc[p->port].power_role ? PD_CTRL_RESP_ROLE_POWER : 0) |
 			(tc[p->port].data_role ? PD_CTRL_RESP_ROLE_DATA : 0) |
 			(TC_CHK_FLAG(p->port, TC_FLAGS_VCONN_ON) ?
@@ -1078,16 +1079,31 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 				PD_CTRL_RESP_ROLE_USB_COMM : 0) |
 			(TC_CHK_FLAG(p->port, TC_FLAGS_PARTNER_EXTPOWER) ?
 				PD_CTRL_RESP_ROLE_EXT_POWERED : 0);
-		r_v1->polarity = tc[p->port].polarity;
-		strzcpy(r_v1->state, tc_state_names[get_state_tc(p->port)],
-				sizeof(r_v1->state));
-		args->response_size = sizeof(*r_v1);
+		r_v2->polarity = tc[p->port].polarity;
+		r_v2->cc_state = tc[p->port].cc_state;
+		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
+		r_v2->cable_type = get_usb_pd_mux_cable_type(p->port);
+
+		strzcpy(r_v2->state, tc_state_names[get_state_tc(p->port)],
+				sizeof(r_v2->state));
+		if (args->version == 1) {
+			/*
+			 * ec_response_usb_pd_control_v2 (r_v2) is a
+			 * strict superset of ec_response_usb_pd_control_v1
+			 */
+			args->response_size =
+				sizeof(struct ec_response_usb_pd_control_v1);
+		} else
+			args->response_size = sizeof(*r_v2);
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
 	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 			hc_usb_pd_control,
-			EC_VER_MASK(0) | EC_VER_MASK(1));
+			EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
 {
@@ -1401,13 +1417,15 @@ void pd_handle_overcurrent(int port)
 }
 #endif /* defined(CONFIG_USBC_PPC) */
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 /* 10 ms is enough time for any TCPC transaction to complete. */
 #define PD_LPM_DEBOUNCE_US (10 * MSEC)
 
 /* This is only called from the PD tasks that owns the port. */
 static void handle_device_access(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return;
+
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
@@ -1426,6 +1444,8 @@ static void handle_device_access(int port)
 
 static int pd_device_in_low_power(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return 0;
 	/*
 	 * If we are actively waking the device up in the PD task, do not
 	 * let TCPC operation wait or retry because we are in low power mode.
@@ -1445,6 +1465,9 @@ static int reset_device_and_notify(int port)
 {
 	int rv;
 	int task, waiting_tasks;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return 0;
 
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
@@ -1499,6 +1522,9 @@ static int reset_device_and_notify(int port)
  */
 static void pd_wait_for_wakeup(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return;
+
 	if (port == TASK_ID_TO_PD_PORT(task_get_current())) {
 		/* If we are in the PD task, we can directly reset */
 		reset_device_and_notify(port);
@@ -1540,6 +1566,9 @@ void pd_wait_exit_low_power(int port)
  */
 void pd_device_accessed(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return;
+
 	if (port == TASK_ID_TO_PD_PORT(task_get_current())) {
 		/* Ignore any access to device while it is waking up */
 		if (TC_CHK_FLAG(port, TC_FLAGS_LPM_TRANSITION))
@@ -1560,13 +1589,14 @@ void pd_prevent_low_power_mode(int port, int prevent)
 {
 	const int current_task_mask = (1 << task_get_current());
 
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER))
+		return;
+
 	if (prevent)
 		atomic_or(&tc[port].tasks_preventing_lpm, current_task_mask);
 	else
 		atomic_clear(&tc[port].tasks_preventing_lpm, current_task_mask);
 }
-
-#endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
 static void sink_power_sub_states(int port)
 {
@@ -2626,6 +2656,19 @@ static void tc_cc_open_entry(const int port)
 void tc_run(const int port)
 {
 	exe_state(port, &tc[port].ctx);
+}
+
+int pd_is_ufp(int port)
+{
+	/* Returns true if chromebook is UFP */
+	return tc[port].cc_state == PD_CC_DFP_ATTACHED ||
+	       tc[port].cc_state == PD_CC_DFP_DEBUG_ACC;
+}
+
+int pd_is_debug_acc(int port)
+{
+	return tc[port].cc_state == PD_CC_UFP_DEBUG_ACC ||
+	       tc[port].cc_state == PD_CC_DFP_DEBUG_ACC;
 }
 
 /*
