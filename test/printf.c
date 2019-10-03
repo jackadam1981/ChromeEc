@@ -44,10 +44,10 @@ int run(int expect_ret, const char *expect,
 			   sizeof(output) - expect_size);
 
 	if (rv >= 0) {
-		TEST_ASSERT(rv == expect_size - 1);
-		TEST_ASSERT(EC_SUCCESS == expect_ret);
+		TEST_EQ((size_t)rv, expect_size - 1, "%lu");
+		TEST_EQ(EC_SUCCESS, expect_ret, "%d");
 	} else {
-		TEST_ASSERT(rv == -expect_ret);
+		TEST_EQ(rv, -expect_ret, "%d");
 	}
 
 	return EC_SUCCESS;
@@ -200,6 +200,17 @@ test_static int test_vsnprintf_int(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_vsnprintf_float(void)
+{
+	T(expect_success("0.000000", "%pf", &((float){ 0.0f })));
+	T(expect_success("0.123456", "%pf", &((float){ 0.123456f })));
+	T(expect_success("123.456001", "%pf", &((float){ 123.456f })));
+	T(expect(EC_ERROR_INVAL, NO_BYTES_TOUCHED, false, -1, "%pf",
+		 &((float){ 4294967296.0f })));
+
+	return EC_SUCCESS;
+}
+
 test_static int test_vsnprintf_pointers(void)
 {
 	void *ptr = (void *)0x55005E00;
@@ -303,6 +314,7 @@ void run_test(void)
 
 	RUN_TEST(test_vsnprintf_args);
 	RUN_TEST(test_vsnprintf_int);
+	RUN_TEST(test_vsnprintf_float);
 	RUN_TEST(test_vsnprintf_pointers);
 	RUN_TEST(test_vsnprintf_chars);
 	RUN_TEST(test_vsnprintf_strings);
