@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e409e5f3_bea61c2f",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-10-03T17:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78f95066_e615d283",
+      "revId": "fc2fac166fa14b2c6106d8a8f9db2482a3f7113c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23b7f078_1c5b5f86",
         "filename": "chip/g/usb.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "fc2fac166fa14b2c6106d8a8f9db2482a3f7113c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698fe6c6_b2ff72db",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-10-03T17:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b7f078_1c5b5f86",
+      "revId": "fc2fac166fa14b2c6106d8a8f9db2482a3f7113c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
