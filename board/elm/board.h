@@ -22,6 +22,21 @@
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_LID_ANGLE_UPDATE
+<<<<<<< HEAD   (cd3aac kappa: Add keyboard functionality)
+=======
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO 512
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+
+/* Lower maximal ODR to 100Hz */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 100000
+
+/*
+ * Sensor internal FIFO is enabled for BMI160, but not for BMA255.
+ */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	((1 << LID_ACCEL) | (1 << BASE_ACCEL))
+>>>>>>> CHANGE (d58e50 hana: lower the maximum allowed ODR to 100Hz)
 
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
