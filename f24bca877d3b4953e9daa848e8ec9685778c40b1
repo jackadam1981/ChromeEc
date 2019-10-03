@@ -22,6 +22,30 @@
       "revId": "f24bca877d3b4953e9daa848e8ec9685778c40b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d73f9b_c7bf75da",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-03T03:15:08Z",
+      "side": 1,
+      "message": "define exit_low_power_mode() in intelrvp/ite.c and add comment not applicable for ITE tcpc. This should fix it",
+      "parentUuid": "00e563c8_8a4edcf4",
+      "range": {
+        "startLine": 770,
+        "startChar": 0,
+        "endLine": 770,
+        "endChar": 35
+      },
+      "revId": "f24bca877d3b4953e9daa848e8ec9685778c40b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
