@@ -39,6 +39,24 @@
       "revId": "a10b8681986558e47c44fd8941e2532ea941319f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40bec21f_bbfc2534",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-03T17:41:33Z",
+      "side": 1,
+      "message": "I think TC_FLAGS_DO_PR_SWAP is an indication that we should do PR_Swap when we are in the right state.  TC_FLAGS_PR_SWAP_IN_PROGRESS is an indication that we are actively doing a PR_Swap",
+      "parentUuid": "0bb5ed7b_171bbcbf",
+      "revId": "a10b8681986558e47c44fd8941e2532ea941319f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
