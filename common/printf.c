@@ -44,6 +44,28 @@ static int hexdigit(int c)
 	return c > 9 ? (c + 'a' - 10) : (c + '0');
 }
 
+__maybe_unused static char *itoa(char *buff, int buff_len, uint32_t i)
+{
+	int digits = 0, idx;
+	uint32_t copy = i;
+
+	while (copy) {
+		digits++;
+		copy /= 10;
+	}
+
+	digits = (digits == 0) ? 1 : digits;
+	if (digits > buff_len)
+		return NULL;
+
+	for (idx = digits - 1; idx >= 0; --idx) {
+		buff[idx] = '0' + (i % 10);
+		i /= 10;
+	}
+
+	return buff + digits;
+}
+
 /* Flags for vfnprintf() flags */
 #define PF_LEFT		BIT(0)  /* Left-justify */
 #define PF_PADZERO	BIT(1)  /* Pad with 0's not spaces */
@@ -202,6 +224,34 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 			}
 
 			continue;
+		} else if (IS_ENABLED(CONFIG_FPU) && c == 'f') {
+			float vf = *(va_arg(args, float*));
+			uint32_t i;
+
+			precision = IS_ENABLED(CONFIG_CONSOLE_VERBOSE) ? 6 : 3;
+			vstr = intbuf;
+			vlen = sizeof(intbuf) - 1;
+			if (vf < 0) {
+				*(vstr++) = '-';
+				vf = -vf;
+			}
+			i = (uint32_t) vf;
+			vstr = itoa(vstr, vlen - (vstr - intbuf), i);
+			if (!vstr)
+				return EC_ERROR_OVERFLOW;
+			vf -= i;
+			if (vlen - (vstr - intbuf) >= 2) {
+				*(vstr++) = '.';
+				while (precision-- &&
+				       vlen - (vstr - intbuf) > 0) {
+					vf *= 10;
+					*(vstr++) = '0' + (int) vf;
+					vf -= (int) vf;
+				}
+			}
+			*vstr = '\0';
+			vlen = vstr - intbuf;
+			vstr = intbuf;
 		} else {
 			int base = 10;
 #ifdef NO_UINT64_SUPPORT
