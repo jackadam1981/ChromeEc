@@ -773,9 +773,45 @@ const char *system_get_build_info(void)
 	return build_info;
 }
 
+/*
+ * If the jump data structure isn't the same size as the
+ * current one, shift the jump tags to immediately before the
+ * current jump data structure, to make room for initalizing
+ * the new fields below.
+ */
+
+static void uprev_jump_data(struct jump_data * const jdata)
+{
+	intptr_t delta;
+
+	if (jdata->version == 1)
+		delta = 0;  /* No tags in v1, so no need for move */
+	else if (jdata->version == 2)
+		delta = sizeof(struct jump_data) - JUMP_DATA_SIZE_V2;
+	else
+		delta = sizeof(struct jump_data) - jdata->struct_size;
+
+	if (delta && jdata->jump_tag_total) {
+		uint8_t *d = (uint8_t *)jdata - jdata->jump_tag_total;
+		memmove(d, d + delta, jdata->jump_tag_total);
+	}
+
+	/* Initialize fields added after version 1 */
+	if (jdata->version < 2)
+		jdata->jump_tag_total = 0;
+
+	/* Initialize fields added after version 2 */
+	if (jdata->version < 3)
+		jdata->reserved0 = 0;
+
+	/* Struct size is now the current struct size */
+	jdata->struct_size = sizeof(struct jump_data);
+}
+
 void system_common_pre_init(void)
 {
-	uintptr_t addr;
+	const struct panic_data *pdata;
+	struct jump_data *in_jdata;
 
 #ifdef CONFIG_SOFTWARE_PANIC
 	/*
@@ -795,61 +831,58 @@ void system_common_pre_init(void)
 #endif
 
 	/*
-	 * Put the jump data before the panic data, or at the end of RAM if
+	 * Locate the jump data before the panic data, or at the end of RAM if
 	 * panic data is not present.
+	 *
+	 * The size of the panic data may have changed between images.
+	 * in_jdata is where the previous image passed jump_data to
+	 * this image.  jdata is the normal location for this image.
 	 */
-	addr = (uintptr_t)panic_get_data();
-	if (!addr)
-		addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE;
+	pdata = panic_get_data();
+	if (pdata) {
+		intptr_t pdelta;
 
-	jdata = (struct jump_data *)(addr - sizeof(struct jump_data));
+		pdelta = sizeof(struct panic_data) - pdata->struct_size;
+		in_jdata = (struct jump_data *)(
+			(uintptr_t)pdata + pdelta - sizeof(struct jump_data));
+		jdata = (struct jump_data *)(
+			(uintptr_t)pdata - sizeof(struct jump_data));
+	} else {
+		in_jdata = (struct jump_data *)(
+			CONFIG_RAM_BASE + CONFIG_RAM_SIZE -
+			sizeof(struct jump_data));
+		jdata = in_jdata;
+	}
 
 	/*
 	 * Check jump data if this is a jump between images.  Jumps all show up
 	 * as an unknown reset reason, because we jumped directly from one
 	 * image to another without actually triggering a chip reset.
 	 */
-	if (jdata->magic == JUMP_DATA_MAGIC &&
-	    jdata->version >= 1 &&
+	if (in_jdata->magic == JUMP_DATA_MAGIC &&
+	    in_jdata->version >= 1 &&
 	    reset_flags == 0) {
-		/* Change in jump data struct size between the previous image
-		 * and this one. */
-		int delta;
+		/*
+		 * Handle jump_data, panic_info size changes between the
+		 * previous image and this one.
+		 * 1st, uprev jump_data if an older one was passed in.
+		 * 2nd, shift jump_data if panic_info size changed.
+		 */
+		uprev_jump_data(in_jdata);
+		if (jdata != in_jdata) {
+			/*
+			 * Shift jump_data to its proper location.
+			 */
+			memmove(jdata - in_jdata->jump_tag_total,
+				in_jdata - in_jdata->jump_tag_total,
+				in_jdata->jump_tag_total +
+				sizeof (struct jump_data));
+		}
 
 		/* Yes, we jumped to this image */
 		jumped_to_image = 1;
 		/* Restore the reset flags */
 		reset_flags = jdata->reset_flags | EC_RESET_FLAG_SYSJUMP;
-
-		/*
-		 * If the jump data structure isn't the same size as the
-		 * current one, shift the jump tags to immediately before the
-		 * current jump data structure, to make room for initalizing
-		 * the new fields below.
-		 */
-		if (jdata->version == 1)
-			delta = 0;  /* No tags in v1, so no need for move */
-		else if (jdata->version == 2)
-			delta = sizeof(struct jump_data) - JUMP_DATA_SIZE_V2;
-		else
-			delta = sizeof(struct jump_data) - jdata->struct_size;
-
-		if (delta && jdata->jump_tag_total) {
-			uint8_t *d = (uint8_t *)system_usable_ram_end();
-			memmove(d, d + delta, jdata->jump_tag_total);
-		}
-
-		/* Initialize fields added after version 1 */
-		if (jdata->version < 2)
-			jdata->jump_tag_total = 0;
-
-		/* Initialize fields added after version 2 */
-		if (jdata->version < 3)
-			jdata->reserved0 = 0;
-
-		/* Struct size is now the current struct size */
-		jdata->struct_size = sizeof(struct jump_data);
-
 		/*
 		 * Clear the jump struct's magic number.  This prevents
 		 * accidentally detecting a jump when there wasn't one, and
