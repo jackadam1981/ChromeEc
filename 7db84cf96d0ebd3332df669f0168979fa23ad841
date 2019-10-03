@@ -16,6 +16,29 @@
       "revId": "7db84cf96d0ebd3332df669f0168979fa23ad841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13100209_0e8ef39f",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-03T23:18:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this priority be higher than HOOK_PRIO_DEFAULT now so that gmr_tablet_switch_init() does not enable an interrupt before gmr_tablet_switch_disable() is called and cause spurious interrupts?",
+      "range": {
+        "startLine": 420,
+        "startChar": 36,
+        "endLine": 420,
+        "endChar": 53
+      },
+      "revId": "7db84cf96d0ebd3332df669f0168979fa23ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
