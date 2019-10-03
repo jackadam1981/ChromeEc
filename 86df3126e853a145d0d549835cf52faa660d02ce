@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "5fc52e87_ed193dea",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-10-03T21:53:59Z",
+      "side": 1,
+      "message": "Instead of doing this, can we just disable TABLET_MODE_L as an interrupt pin if board_id \u003c 2?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
+      },
+      "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5902cc6e_be2893c3",
         "filename": "board/helios/gpio.inc",
         "patchSetId": 1
