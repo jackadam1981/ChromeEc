@@ -16,6 +16,24 @@
       "revId": "b7e1cb610386a1241df392b6edd044d7ad538d94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6db574_436a6c4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-03T08:53:53Z",
+      "side": 1,
+      "message": "The current ec.obj specify kernel to load two regions:\n1. dram, which should not touch the preserved uart buffer section.\n2. sram firmware, which only loads IROM memory, i.e., all the contents located prior to .preserve_logs and .bss. So the loader shouldn\u0027t touch this area in theory.",
+      "parentUuid": "167ecfeb_38a0f659",
+      "revId": "b7e1cb610386a1241df392b6edd044d7ad538d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
