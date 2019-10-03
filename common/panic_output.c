@@ -251,6 +251,21 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo,
 			NULL,
 			"Print info from a previous panic");
 
+#if 1
+
+static int command_fakepanicinfo(int argc, char **argv)
+{
+	ccprintf("populating panic info at 0x%08x\n", pdata_ptr);
+
+	memset(pdata_ptr, 0xdb, sizeof(*pdata_ptr));
+	pdata_ptr->magic = PANIC_DATA_MAGIC;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fakepanicinfo, command_fakepanicinfo,
+			NULL,
+			"Populate panicinfo with fake data");
+#endif
+
 /*****************************************************************************/
 /* Host commands */
 
