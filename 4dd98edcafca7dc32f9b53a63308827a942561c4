@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "730e97ca_06798d21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T17:38:13Z",
+      "side": 1,
+      "message": "how",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c7fc3f_3fdbac74",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T17:38:13Z",
+      "side": 1,
+      "message": "What\u0027s the point of TIMER_PRESTART? Is it just to save on \"get_time().val + PD_T_NO_RESPONSE\"? Or is there something more going on?",
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5743b22f_9fb3b33a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T17:38:13Z",
+      "side": 1,
+      "message": "Unnecessary return?",
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe9f6c2_ba23aed1",
+        "filename": "include/usb_prl_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T17:38:13Z",
+      "side": 1,
+      "message": "What does \"When called in the same PD task\" mean?",
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
