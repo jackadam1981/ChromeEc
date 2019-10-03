@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b88be806_670abd7b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 0,
+      "message": "nit: for future reference, removing all of the tc_set_timeout in this file would be a good standalone CL that could easily be +2\u0027ed.\n\nYou don\u0027t have to separate it out now, but it would be helpful in the future",
+      "range": {
+        "startLine": 1933,
+        "startChar": 1,
+        "endLine": 1934,
+        "endChar": 1
+      },
+      "revId": "8915e19a9b373ad87878d67973be6cdcaf5eb2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

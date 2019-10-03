@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "340ee317_97319881",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "nit: we have recieve at least one successful PD communication packet from the port partner (or maybe more condensed than that :) )",
+      "range": {
+        "startLine": 53,
+        "startChar": 55,
+        "endLine": 53,
+        "endChar": 72
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286d1a2a_7e400ee4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "what does modal operation mean? I have no idea",
+      "range": {
+        "startLine": 57,
+        "startChar": 55,
+        "endLine": 57,
+        "endChar": 74
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "114629c1_b10e22ba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "nit: explicit PD contract in place",
+      "range": {
+        "startLine": 62,
+        "startChar": 55,
+        "endLine": 62,
+        "endChar": 72
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38647073_669d7cbf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "Power Supply? Let\u0027s spell it out since this is suppose to help people figure stuff out",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 57
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3adbadc_24aba309",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "let\u0027s spell out what AMS means here.",
+      "range": {
+        "startLine": 65,
+        "startChar": 69,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa797964_774ec740",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "who sends? That we are requesting to send ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 55,
+        "endLine": 67,
+        "endChar": 66
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a96402d9_052105d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "after a new explict contract is established, this is cleared when we close the contract\n\nLet\u0027s give a little more usage details for the flags.\n\nIt is okay if we have to use the line about the flag value to better describe its purpose",
+      "range": {
+        "startLine": 69,
+        "startChar": 55,
+        "endLine": 70,
+        "endChar": 76
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1497d58f_1a1518da",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "that is it running, or that we want it to run?",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 71,
+        "endChar": 78
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0040e8a_f90fadcd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "these comments are not correct. Rebase issue?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 75
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4c4b23_4585e940",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "worth nothing here that these flags are used in multiple state machines and they can mean different things at each level",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec21a385_82b4d2cf",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "what we are processing the start of AMS. can both start and end be set at the same time. What is the usage for these flags",
+      "range": {
+        "startLine": 57,
+        "startChar": 52,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddabc6cf_ab19b589",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "This means that a message is in the process of being transmitted.",
+      "range": {
+        "startLine": 63,
+        "startChar": 52,
+        "endLine": 63,
+        "endChar": 75
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574ef523_0efd3ea7",
+        "filename": "include/usb_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "we don\u0027t need this guard, right?\n\nWe can always defined a function prototype",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a98799a_f0da58d0",
+        "filename": "include/usb_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "please call out that this in an in/out variable",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736e5142_d0f33d15",
+        "filename": "include/usb_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T19:28:37Z",
+      "side": 1,
+      "message": "why are all of these pointers? Are the out variables? the contract of this method including what is an input and output and how variables are changed should be documented above.\n\nIf a variable is only an input and a same data type, then we should take it by value instead\n\nIf it is an array, then document that it is an array.\n\nIf it is in valid to call with NULL, or valid to call with NULL ,please call that out.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "ca591fff903a153a44e662b6f238a3b4c44ebb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
