@@ -46,6 +46,37 @@ static int hexdigit(int c)
 	return c > 9 ? (c + 'a' - 10) : (c + '0');
 }
 
+/**
+ * Print a uint32_t to a given buffer with a maximum length.
+ *
+ * @param buff The char buffer to write to
+ * @param buff_len The maximum length we can write
+ * @param i The unsigned int to write
+ * @return The number of characters written to the buffer (-1 if there was an
+ *	error.
+ */
+static int snprint_uint32(char *buff, int buff_len, uint32_t i)
+{
+	int digits = 0, idx;
+	uint32_t copy = i;
+
+	while (copy) {
+		digits++;
+		copy /= 10;
+	}
+
+	digits = (digits == 0) ? 1 : digits;
+	if (digits > buff_len)
+		return -1;
+
+	for (idx = digits - 1; idx >= 0; --idx) {
+		buff[idx] = '0' + (i % 10);
+		i /= 10;
+	}
+
+	return digits;
+}
+
 /* Flags for vfnprintf() flags */
 #define PF_LEFT		BIT(0)  /* Left-justify */
 #define PF_PADZERO	BIT(1)  /* Pad with 0's not spaces */
@@ -96,6 +127,69 @@ static int print_hex_buffer(int (*addchar)(void *context, int c),
 			return EC_ERROR_OVERFLOW;
 		pad_width--;
 	}
+
+	return EC_SUCCESS;
+}
+
+static int print_float(int (*addchar)(void *context, int c),
+		       void *context, char *buff, size_t bufflen, float vf)
+{
+	uint32_t i;
+	char *vstr = buff;
+	int count;
+	int precision = IS_ENABLED(CONFIG_CONSOLE_VERBOSE) ? 6 : 3;
+
+	/* Check that the float isn't too big to first cast to a uint32_t.
+	 * Note that we can't use 2^32-1 here because float doesn't have
+	 * the precision for that and running the following code will result
+	 * in `result` being 0:
+	 *   float f = 4294967296.0f;
+	 *   uint32_t u = 0xffffffffU;
+	 *   int result = f > u;
+	 */
+	if (vf > (float) 0xffffff7fU)
+		return EC_ERROR_OVERFLOW;
+
+	/* Remove 1 for terminating null. */
+	bufflen--;
+
+	/* Account for sign. */
+	if (vf < 0) {
+		*(vstr++) = '-';
+		vf = -vf;
+	}
+
+	/* Handle integer portion. */
+	i = (uint32_t) vf;
+	count = snprint_uint32(vstr, bufflen - (vstr - buff), i);
+	if (count < 0)
+		return EC_ERROR_OVERFLOW;
+	vstr += count;
+	vf -= i;
+
+	/* If there's room, print decimal point up to precision or full
+	 * buffer.
+	 */
+	if (bufflen - (vstr - buff) >= 2) {
+		*(vstr++) = '.';
+		while (precision-- &&
+		       bufflen - (vstr - buff) > 0) {
+			vf *= 10;
+			*(vstr++) = '0' + (int) vf;
+			vf -= (int)vf;
+		}
+	}
+
+	/* Terminate the string. */
+	*vstr = '\0';
+
+	/* Print the buffer. */
+	vstr = buff;
+	while (*vstr) {
+		if (addchar(context, *vstr++))
+			return EC_ERROR_OVERFLOW;
+	}
+
 
 	return EC_SUCCESS;
 }
@@ -318,7 +412,17 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 					pad_width = binary->count;
 					flags |= PF_PADZERO;
 					base = 2;
+				} else if (IS_ENABLED(CONFIG_FPU) &&
+					   ptrspec == 'f') {
+					float vf = *((float *) ptrval);
+					int rc = print_float(
+						addchar, context,
+						intbuf, sizeof(intbuf), vf);
 
+					if (rc != EC_SUCCESS)
+						return rc;
+
+					continue;
 				} else {
 					return EC_ERROR_INVAL;
 				}
