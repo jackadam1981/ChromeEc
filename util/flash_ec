@@ -163,6 +163,8 @@ DEFINE_boolean raiden "${FLAGS_FALSE}" \
 DEFINE_string read "" "Pathname of the file to store EC firmware image."
 DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
+DEFINE_boolean rw "${FLAGS_FALSE}" \
+	"Write only the read-write partition"
 DEFINE_integer timeout 600 \
 	"Timeout for flashing the EC, measured in seconds."
 DEFINE_boolean verbose "${FLAGS_FALSE}" \
@@ -566,6 +568,8 @@ trap cleanup EXIT
 # Possible default EC images
 if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] ; then
 	EC_FILE=ec.RO.flat
+elif [ "${FLAGS_rw}" = ${FLAGS_TRUE} ] ; then
+	EC_FILE=ec.RW.flat
 else
 	EC_FILE=ec.bin
 fi
@@ -859,7 +863,16 @@ function flash_flashrom() {
 
 		[[ -z "${FLAGS_read}" ]] && dump_fmap -F "${IMG}" > "${L}"
 
+if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] ; then
+		FLASHROM_OPTIONS="-i WP_RO -l "${L}" --ignore-fmap"
+elif [ "${FLAGS_rw}" = ${FLAGS_TRUE} ] ; then
+		FLASHROM_OPTIONS="-i EC_RW -l "${L}" --ignore-fmap"
+else
 		FLASHROM_OPTIONS="-i EC_RW -i WP_RO -l "${L}" --ignore-fmap"
+fi
+
+
+#		FLASHROM_OPTIONS="-i EC_RW -i WP_RO -l "${L}" --ignore-fmap"
 		FLASHROM_OPTIONS+=" --fast-verify"
 	fi
 
