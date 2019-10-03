@@ -69,6 +69,30 @@
       "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7739ef6_5087e40f",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-10-03T21:34:32Z",
+      "side": 1,
+      "message": "Then shouldn\u0027t it be TABLET_MODE_L to avoid confusion?",
+      "parentUuid": "63e39230_f3bdbbae",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
