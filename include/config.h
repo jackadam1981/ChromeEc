@@ -2268,6 +2268,19 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/*
+ * Packet error checking support for SMBus.
+ *
+ * If defined, introduces a set of i2c read/write functions with _pec suffix,
+ * these functions has same functionality as non-pec versions, except that
+ * i2c_write_*_pec appends an error checking byte at end of transfer, and
+ * i2c_read_*_pec verifies the correctness of error checking byte from the
+ * slave.
+ *
+ * This option also enables error checking function on smart batteries.
+ */
+#undef CONFIG_SMBUS_PEC
+
 /*****************************************************************************/
 /* IPI configuration.  Support mt_scp only for now. */
 
@@ -4961,6 +4974,10 @@
 /* EC Codec Wake-on-Voice related definitions */
 #ifdef CONFIG_AUDIO_CODEC_WOV
 #define CONFIG_SHA256
+#endif
+
+#ifdef CONFIG_SMBUS_PEC
+#define CONFIG_CRC8
 #endif
 
 #endif  /* __CROS_EC_CONFIG_H */
