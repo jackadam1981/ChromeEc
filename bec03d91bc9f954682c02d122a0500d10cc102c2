@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a99e01_528b1329",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "Should these both be returning PD_CC_DFP_ATTACHED?",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89edf660_b2490ac3",
+        "filename": "common/usbc/usb_tc_ctvpd_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc5c944_16f75983",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "Why do you need the extern int?",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64abe9b7_4fad68bf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "How frequently do we poll waiting for this?",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582597ff_0ab326bb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "This is a fancy dot!",
+      "range": {
+        "startLine": 1690,
+        "startChar": 21,
+        "endLine": 1690,
+        "endChar": 22
+      },
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e18fed_ea1ff6e8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "Can we use cc_state instead?",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c152e67c_23110045",
+        "filename": "common/usbc/usb_tc_vpd_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T16:49:14Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
