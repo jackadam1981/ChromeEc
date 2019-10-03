@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcae5388_3495a66c",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-03T23:55:48Z",
+      "side": 1,
+      "message": "Are we still supporting board_id 0? We should deprecate it if not since the variant scripts copy Hatch as reference and this incorrectly gets copied over.",
+      "range": {
+        "startLine": 457,
+        "startChar": 5,
+        "endLine": 457,
+        "endChar": 18
+      },
+      "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710b6cae_b1d640ba",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-03T23:55:48Z",
+      "side": 1,
+      "message": "Same comment here as in the other CL about the priority.",
+      "range": {
+        "startLine": 411,
+        "startChar": 36,
+        "endLine": 411,
+        "endChar": 53
+      },
+      "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb4e0fe_29b6a81a",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-03T23:55:48Z",
+      "side": 1,
+      "message": "Is this even true for Kindred?",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 3
+      },
+      "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
