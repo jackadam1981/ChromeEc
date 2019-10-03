@@ -112,7 +112,7 @@ void system_check_bbram_on_reset(void)
 static int bbram_valid(enum bbram_data_index index, int bytes)
 {
 	/* Check index */
-	if (index < 0 || index + bytes > NPCX_BBRAM_SIZE)
+	if (index < 0 || index + bytes >= NPCX_BBRAM_SIZE)
 		return 0;
 
 	/* Check BBRAM is valid */
