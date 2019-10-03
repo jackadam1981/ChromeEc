@@ -774,7 +774,7 @@ const char *system_get_build_info(void)
 
 void system_common_pre_init(void)
 {
-	uintptr_t addr;
+	struct panic_data *pdata;
 
 #ifdef CONFIG_SOFTWARE_PANIC
 	/*
@@ -794,14 +794,22 @@ void system_common_pre_init(void)
 #endif
 
 	/*
-	 * Put the jump data before the panic data, or at the end of RAM if
+	 * Locate the jump data before the panic data, or at the end of RAM if
 	 * panic data is not present.
 	 */
-	addr = (uintptr_t)panic_get_data();
-	if (!addr)
-		addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE;
-
-	jdata = (struct jump_data *)(addr - sizeof(struct jump_data));
+	pdata = panic_get_data();
+	if (pdata) {
+		/*
+		 * The size of pdata may have changed between EC-RO
+		 * and EC-RW.  Fix up the pointer to the start using
+		 * the embedded size info.
+		 */
+		jdata = (void *)(pdata + 1) - pdata->struct_size;
+	} else {
+		jdata = (struct jump_data *)(CONFIG_RAM_BASE +
+					     CONFIG_RAM_SIZE);
+	}
+	jdata -= 1;
 
 	/*
 	 * Check jump data if this is a jump between images.  Jumps all show up
