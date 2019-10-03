@@ -56,6 +56,8 @@
  *   - "%pT" - current time in seconds - interpreted as "%.6T" for precision.
  *           Supply PRINTF_TIMESTAMP_NOW to use the current time, or supply a
  *           pointer to a 64-bit timestamp to print.
+ *   - '%pf' - print a float. Needed because GCC auto-promotes floats to
+ *           doubles with no way to turn that off.
  */
 
 #ifndef HIDE_EC_STDLIB
