@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78f95066_e615d283",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-10-03T15:26:43Z",
+      "side": 1,
+      "message": "drop this debug output? or at least make it opt in?",
+      "revId": "fc2fac166fa14b2c6106d8a8f9db2482a3f7113c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b7f078_1c5b5f86",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-10-03T15:26:43Z",
+      "side": 1,
+      "message": "same here, debug output not by default?",
+      "revId": "fc2fac166fa14b2c6106d8a8f9db2482a3f7113c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
