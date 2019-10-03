@@ -37,6 +37,17 @@ struct accelgyro_drv {
 	 */
 	int (*read)(const struct motion_sensor_t *s, intv3_t v);
 
+#ifdef CONFIG_FPU
+	/**
+	 * Read the sensor's current internal temperature.
+	 *
+	 * @param s Pointer to sensor data.
+	 * @param temp Pointer to store temperature in degrees C.
+	 * @return EC_SUCCESS if successful, non-zero if error.
+	 */
+	int (*read_temp)(const struct motion_sensor_t *s, float *temp);
+#endif /* CONFIG_FPU */
+
 	/**
 	 * Setter and getter methods for the sensor range. The sensor range
 	 * defines the maximum value that can be returned from read(). As the
