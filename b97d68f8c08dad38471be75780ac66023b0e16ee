@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "23dcbc82_a1a384cc",
+        "filename": "chip/g/loader/launch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-03T19:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d0742d_12870229",
+      "range": {
+        "startLine": 229,
+        "startChar": 36,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "b97d68f8c08dad38471be75780ac66023b0e16ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fe70877_da67c02b",
         "filename": "chip/g/loader/rom_flash.c",
         "patchSetId": 4
@@ -116,6 +140,30 @@
       "revId": "b97d68f8c08dad38471be75780ac66023b0e16ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dd3db8_aef341f3",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-03T19:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe532952_728380ed",
+      "range": {
+        "startLine": 142,
+        "startChar": 14,
+        "endLine": 142,
+        "endChar": 19
+      },
+      "revId": "b97d68f8c08dad38471be75780ac66023b0e16ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
