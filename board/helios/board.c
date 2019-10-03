@@ -400,21 +400,12 @@ static void setup_fans(void)
 
 static void board_init(void)
 {
-	static int board_id = -1;
-
 	/* Initialize Fans */
 	setup_fans();
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
-	if (board_id == -1) {
-		uint32_t val;
-
-		if (cbi_get_board_version(&val) == EC_SUCCESS)
-			board_id = val;
-	}
-
-	if (board_id < 2)
+	if (get_board_id() < 2)
 		gmr_tablet_switch_disable();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

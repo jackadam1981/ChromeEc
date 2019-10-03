@@ -452,10 +452,7 @@ enum gpio_signal gpio_en_pp5000_a = GPIO_EN_PP5000_A_V1;
 
 static void board_gpio_set_pp5000(void)
 {
-	uint32_t board_id = 0;
-
-	/* Errors will count as board_id 0 */
-	cbi_get_board_version(&board_id);
+	uint32_t board_id = get_board_id();
 
 	if (board_id == 0) {
 		reset_gpio_flags(GPIO_EN_PP5000_A_V0, GPIO_OUT_LOW);
@@ -464,7 +461,6 @@ static void board_gpio_set_pp5000(void)
 	} else if (board_id >= 1) {
 		reset_gpio_flags(GPIO_EN_PP5000_A_V1, GPIO_OUT_LOW);
 	}
-
 }
 
 static void board_init(void)
