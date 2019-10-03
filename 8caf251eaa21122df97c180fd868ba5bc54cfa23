@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc974723_03f7f218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-03T16:47:23Z",
+      "side": 1,
+      "message": "I think it would be good to have some brief explanation as to where the new values are coming from.",
+      "revId": "8caf251eaa21122df97c180fd868ba5bc54cfa23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9768e9_97b202c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-03T16:47:23Z",
+      "side": 1,
+      "message": "None is what is used here, when it\u0027s not a firmware branch.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "8caf251eaa21122df97c180fd868ba5bc54cfa23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db258ee_0256c7a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-03T16:47:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t their be some testing related to the the temperature settings and fan operation at those transition points?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "8caf251eaa21122df97c180fd868ba5bc54cfa23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29bdf7ea_a3b35574",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-03T16:47:23Z",
+      "side": 1,
+      "message": "This comment can be removed since the updated values should be correct now.",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 3
+      },
+      "revId": "8caf251eaa21122df97c180fd868ba5bc54cfa23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
