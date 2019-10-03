@@ -46,6 +46,30 @@
       "revId": "9546756d22e70f9676fae4004a5856e5cab82af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cff80c42_f2643caf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-10-03T22:45:38Z",
+      "side": 1,
+      "message": "If battery returns 1%, isn\u0027t it already up? The charger should provide power as intended. Why do we still need to wake the battery up by providing pre-charge current + max voltage??",
+      "parentUuid": "efc7aacb_086990b1",
+      "range": {
+        "startLine": 1519,
+        "startChar": 7,
+        "endLine": 1519,
+        "endChar": 36
+      },
+      "revId": "9546756d22e70f9676fae4004a5856e5cab82af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
