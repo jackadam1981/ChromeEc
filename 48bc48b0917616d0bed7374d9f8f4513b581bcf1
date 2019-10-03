@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6846478e_7c6ec577",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T17:53:55Z",
+      "side": 1,
+      "message": "More so that this is a analog input on the chip whose control is going to be the board specific. This limit in not part of the  TCPCI standard, so it isn\u0027t common code",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "48bc48b0917616d0bed7374d9f8f4513b581bcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30ad7e1_670935be",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T17:53:55Z",
+      "side": 1,
+      "message": "we might need to current off Vbus here so we can make the interrupt line de-assert. Let\u0027s test this out of put a TODO with bug number here to test it, please",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "48bc48b0917616d0bed7374d9f8f4513b581bcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833b4fb5_ad14b2ef",
+        "filename": "driver/ppc/aoz1380.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T17:53:55Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you need the extern keyword here.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "48bc48b0917616d0bed7374d9f8f4513b581bcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

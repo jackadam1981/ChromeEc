@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9834406e_8971c4c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T17:53:55Z",
+      "side": 1,
+      "message": "I can see the argument either way. I think this driver could be renamed and reused in the future since it is pretty generic.\n\nMaybe the compromise is putting a comment in header that says that this could be easily renamed and repurosed for a broarder scope in the future. thoughts?",
+      "parentUuid": "2d3dcf0b_dd633f42",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d32c2050c9850e6e7ad7b7aefb93617506150f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "731521f4_9fa76869",
         "filename": "driver/ppc/aoz1380.c",
         "patchSetId": 10
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "The normal PPC controlled path would be \n\ncharge_manager_source_port\n-\u003e typec_set_source_current_limit\n-\u003e ppc_set_vbus_source_current_limit\n-\u003e \u003cdriver\u003e_set_vbus_source_current_limit\n-\u003e implementation (which can include GPIO/IoExpander)\n\nSo all I have added is the one extra call into the board specific.  I could hook this direct into the ppc_drv structure but not sure yet if this will not have anything generic that needs to be done here as well.",
       "parentUuid": "731521f4_9fa76869",
+      "revId": "d32c2050c9850e6e7ad7b7aefb93617506150f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e154698c_b4e65211",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-03T17:53:55Z",
+      "side": 1,
+      "message": "I think all those layers that Ed mentioned actually make sense for our codebase. What would you remove?",
+      "parentUuid": "14a44509_e4320e03",
       "revId": "d32c2050c9850e6e7ad7b7aefb93617506150f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
