@@ -200,6 +200,15 @@ test_static int test_vsnprintf_int(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_vsnprintf_float(void)
+{
+	T(expect_success("0.000000",   "%f", &((float) {0.0f})));
+	T(expect_success("0.123456",   "%f", &((float) {0.123456f})));
+	T(expect_success("123.456001", "%f", &((float) {123.456f})));
+
+	return EC_SUCCESS;
+}
+
 test_static int test_vsnprintf_pointers(void)
 {
 	void *ptr = (void *)0x55005E00;
@@ -303,6 +312,7 @@ void run_test(void)
 
 	RUN_TEST(test_vsnprintf_args);
 	RUN_TEST(test_vsnprintf_int);
+	RUN_TEST(test_vsnprintf_float);
 	RUN_TEST(test_vsnprintf_pointers);
 	RUN_TEST(test_vsnprintf_chars);
 	RUN_TEST(test_vsnprintf_strings);
