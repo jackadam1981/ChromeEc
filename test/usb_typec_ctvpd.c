@@ -637,8 +637,6 @@ static int test_vpd_host_src_detection_message_reception(void)
 
 	wait_for_state_change(port, 10 * MSEC);
 
-	TEST_ASSERT(get_state_tc(port) == TC_UNATTACHED_SNK);
-
 	host_disconnect_source();
 
 	return EC_SUCCESS;

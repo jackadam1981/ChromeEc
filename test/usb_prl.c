@@ -770,7 +770,7 @@ static int test_send_ctrl_msg(void)
 						pd_port[port].msg_tx_id);
 		inc_tx_id(port);
 
-		cycle_through_state_machine(port, 3, 10 * MSEC);
+		cycle_through_state_machine(port, 3, MSEC);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
@@ -793,7 +793,7 @@ static int test_send_ctrl_msg_with_retry_and_fail(void)
 	 * TEST: Control message transmission fail with retry
 	 */
 	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(40 * MSEC);
+	task_wait_event(MSEC);
 
 	TEST_ASSERT(prl_tx_get_state(port) ==
 			PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
@@ -802,30 +802,30 @@ static int test_send_ctrl_msg_with_retry_and_fail(void)
 					TCPC_TX_SOP, PD_CTRL_ACCEPT));
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(30 * MSEC);
+	task_wait_event(MSEC);
 
 	simulate_goodcrc(port, pd_port[port].power_role,
 					pd_port[port].msg_tx_id);
 
 	/* Do not increment tx_id so phy layer will not transmit message */
 
-	cycle_through_state_machine(port, 3, 10 * MSEC);
+	cycle_through_state_machine(port, 3, MSEC);
 
 	TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 	TEST_ASSERT(pd_port[port].mock_pe_message_sent);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(40 * MSEC);
+	task_wait_event(MSEC);
 
 	TEST_ASSERT(prl_tx_get_state(port) ==
 					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 
 	pd_port[port].mock_pe_message_sent = 0;
 	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
-	task_wait_event(30 * MSEC);
+	task_wait_event(MSEC);
 
 	for (i = 0; i < N_RETRY_COUNT + 1; i++) {
-		cycle_through_state_machine(port, 10, 10 * MSEC);
+		cycle_through_state_machine(port, 10, 100 * MSEC);
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
 		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
@@ -930,7 +930,7 @@ static int test_send_data_msg(void)
 	 */
 	for (i = 1; i <= 28; i++) {
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(40 * MSEC);
+		task_wait_event(MSEC);
 
 		TEST_ASSERT(prl_tx_get_state(port) ==
 					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
@@ -939,13 +939,13 @@ static int test_send_data_msg(void)
 					TCPC_TX_SOP, PD_DATA_SOURCE_CAP, i));
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		task_wait_event(MSEC);
 
 		simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
 		inc_tx_id(port);
 
-		cycle_through_state_machine(port, 3, 10 * MSEC);
+		cycle_through_state_machine(port, 3, MSEC);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
