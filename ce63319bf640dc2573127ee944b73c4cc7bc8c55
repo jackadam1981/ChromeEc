@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d21236_b430d864",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-03T23:53:34Z",
+      "side": 1,
+      "message": "I am almost at a point where I think we should move this to common/cbi.c and provide get_board_id() and get_board_sku() guarded by some CONFIG_COMMON_CBI_ID_HELPERS there so that more than just hatch can benefit. :)",
+      "range": {
+        "startLine": 355,
+        "startChar": 12,
+        "endLine": 355,
+        "endChar": 20
+      },
+      "revId": "ce63319bf640dc2573127ee944b73c4cc7bc8c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
