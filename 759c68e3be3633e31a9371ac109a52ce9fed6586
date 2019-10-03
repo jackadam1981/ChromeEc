@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf896796_ef10879a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T18:47:50Z",
+      "side": 1,
+      "message": "Why not keep this as get_time().val + PD_T_SWAP_SOURCE_START?",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95765a1f_39858094",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T18:47:50Z",
+      "side": 1,
+      "message": "Return just in case something gets added below later?",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880e9a59_a8270a14",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T18:47:50Z",
+      "side": 1,
+      "message": "No need to wait until message is sent to continue with the below?",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23785233_893906fc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2658,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T18:47:50Z",
+      "side": 1,
+      "message": "Remove Or",
+      "range": {
+        "startLine": 2658,
+        "startChar": 9,
+        "endLine": 2658,
+        "endChar": 11
+      },
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8705ee00_0b137b5d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3530,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-03T18:47:50Z",
+      "side": 1,
+      "message": "Are these not all exactly the previous state?\nIE would \"set_state_pe(port, get_last_state_pe(port))\" work?",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
