@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c24548e5_ff952140",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-03T19:22:01Z",
+      "side": 1,
+      "message": "Can you restructure this so the console log only happens if the max retries fail?",
+      "range": {
+        "startLine": 732,
+        "startChar": 4,
+        "endLine": 732,
+        "endChar": 46
+      },
+      "revId": "8506809a2389e7e8802fae622285f56100e9e5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
