@@ -21,6 +21,26 @@
 
 static int fake_state_of_charge = -1;
 
+#ifdef CONFIG_SMBUS_PEC
+static int battery_supports_pec(void)
+{
+	static int supports_pec = -1;
+
+	if (supports_pec < 0) {
+		int spec_info;
+		int rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				    SB_SPECIFICATION_INFO, &spec_info);
+		/* failed, assuming not support and try again later */
+		if (rv)
+			return 0;
+
+		supports_pec = (BATTERY_SPEC_VERSION(spec_info) ==
+				BATTERY_SPEC_SMBUS_1_1_WITH_PEC);
+	}
+	return supports_pec;
+}
+#endif
+
 test_mockable int sb_read(int cmd, int *param)
 {
 #ifdef CONFIG_BATTERY_CUT_OFF
@@ -31,8 +51,17 @@ test_mockable int sb_read(int cmd, int *param)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
+#ifdef CONFIG_SMBUS_PEC
+	if (battery_supports_pec())
+		return i2c_read16_pec(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				      cmd, param);
+	else
+		return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				  cmd, param);
+#else
 	return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			  cmd, param);
+#endif
 }
 
 test_mockable int sb_write(int cmd, int param)
@@ -45,8 +74,17 @@ test_mockable int sb_write(int cmd, int param)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
+#ifdef CONFIG_SMBUS_PEC
+	if (battery_supports_pec())
+		return i2c_write16_pec(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				       cmd, param);
+	else
+		return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				   cmd, param);
+#else
 	return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			   cmd, param);
+#endif
 }
 
 int sb_read_string(int offset, uint8_t *data, int len)
@@ -59,8 +97,17 @@ int sb_read_string(int offset, uint8_t *data, int len)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
+#ifdef CONFIG_SMBUS_PEC
+	if (battery_supports_pec() && 0)
+		return i2c_read_string_pec(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+					   offset, data, len);
+	else
+		return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				       offset, data, len);
+#else
 	return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			       offset, data, len);
+#endif
 }
 
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
@@ -103,9 +150,18 @@ int sb_write_block(int reg, const uint8_t *val, int len)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
+#ifdef CONFIG_SMBUS_PEC
+	if (battery_supports_pec())
+		return i2c_write_block_pec(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+					   reg, val, len);
+	else
+		return i2c_write_block(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				       reg, val, len);
+#else
 	/* TODO: implement smbus_write_block. */
 	return i2c_write_block(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			       reg, val, len);
+#endif
 }
 
 int battery_get_mode(int *mode)

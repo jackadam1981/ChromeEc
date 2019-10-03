@@ -9,6 +9,7 @@
 #include "clock.h"
 #include "charge_state.h"
 #include "console.h"
+#include "crc8.h"
 #include "host_command.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -499,6 +500,176 @@ int i2c_write_block(const int port,
 
 	return rv;
 }
+
+#ifdef CONFIG_SMBUS_PEC
+int i2c_read16_pec(const int port,
+		   const uint16_t slave_addr_flags,
+		   int offset, int *data)
+{
+	int rv = EC_SUCCESS, i;
+	uint8_t pec = 0;
+	uint8_t reg, addr_8bit, buf[sizeof(uint16_t) + 1] = {};
+
+	addr_8bit = (slave_addr_flags << 1) & 0xFF;
+	reg = offset & 0xff;
+
+	pec = crc8_arg(&addr_8bit, 1, pec);
+	pec = crc8_arg(&reg, 1, pec);
+	addr_8bit |= 1;
+	pec = crc8_arg(&addr_8bit, 1, pec);
+
+	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
+		rv = EC_SUCCESS;
+
+		/*
+		 * I2C read 16-bit word: transmit 8-bit offset,
+		 * and read 16bits data + 8bit pec
+		 */
+		rv = i2c_xfer(port, slave_addr_flags,
+			      &reg, 1, buf, sizeof(buf));
+		if (rv)
+			continue;
+
+		if (crc8_arg(buf, sizeof(uint16_t), pec) == buf[2])
+			break;
+
+		rv = EC_ERROR_CRC;
+	}
+
+	if (rv)
+		return rv;
+
+	if (I2C_IS_BIG_ENDIAN(slave_addr_flags))
+		*data = ((int)buf[0] << 8) | buf[1];
+	else
+		*data = ((int)buf[1] << 8) | buf[0];
+
+	return EC_SUCCESS;
+}
+
+int i2c_read_string_pec(const int port,
+			const uint16_t slave_addr_flags,
+			int offset, uint8_t *data, int len)
+{
+	int rv = EC_SUCCESS, i;
+	uint8_t addr_8bit = (slave_addr_flags << 1) & 0xFF;
+	uint8_t reg = offset & 0xff;
+
+	i2c_lock(port, 1);
+
+	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
+		uint8_t pec = 0, pec_remote = 0;
+		uint8_t block_length = 0;
+		int data_length;
+
+		pec = crc8(&addr_8bit, 1);
+		pec = crc8_arg(&reg, 1, pec);
+		addr_8bit |= 1;
+		pec = crc8_arg(&addr_8bit, 1, pec);
+
+		rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				       &reg, 1, &block_length, 1,
+				       I2C_XFER_START);
+		if (rv)
+			continue;
+		pec = crc8_arg(&block_length, 1, pec);
+
+		if (len && block_length > (len - 1))
+			data_length = len - 1;
+		else
+			data_length = block_length;
+
+		rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				       0, 0, data, data_length, I2C_XFER_STOP);
+		data[data_length] = 0;
+		block_length -= data_length;
+		pec = crc8_arg(data, data_length, pec);
+
+		/* read all remaining bytes */
+		while (block_length) {
+			uint8_t byte;
+
+			rv = i2c_xfer_unlocked(port, slave_addr_flags, 0, 0,
+					       &byte, 1, 0);
+			if (rv)
+				break;
+			pec = crc8_arg(&byte, 1, pec);
+			--block_length;
+		}
+		if (rv)
+			continue;
+
+		rv = i2c_xfer_unlocked(port, slave_addr_flags, 0, 0,
+				       &pec_remote, 1, I2C_XFER_STOP);
+		if (rv)
+			continue;
+
+		if (pec == pec_remote)
+			break;
+
+		rv = EC_ERROR_CRC;
+	}
+
+	i2c_lock(port, 0);
+	return rv;
+}
+
+int i2c_write16_pec(const int port,
+		    const uint16_t slave_addr_flags,
+		    int offset, int data)
+{
+	uint8_t buf[2 + sizeof(uint16_t)];
+	uint8_t addr_8bit = (slave_addr_flags << 1) & 0xFF;
+
+	buf[0] = offset & 0xff;
+
+	if (I2C_IS_BIG_ENDIAN(slave_addr_flags)) {
+		buf[1] = (data >> 8) & 0xff;
+		buf[2] = data & 0xff;
+	} else {
+		buf[1] = data & 0xff;
+		buf[2] = (data >> 8) & 0xff;
+	}
+	buf[3] = crc8(&addr_8bit, sizeof(uint8_t));
+	buf[3] = crc8_arg(buf, 1 + sizeof(uint16_t), buf[3]);
+
+	return i2c_xfer(port, slave_addr_flags,
+			buf, 2 + sizeof(uint16_t), NULL, 0);
+}
+
+int i2c_write_block_pec(const int port,
+			const uint16_t slave_addr_flags,
+			int offset, const uint8_t *data, int len)
+{
+	int rv;
+	uint8_t reg_address = offset;
+	uint8_t addr_8bit = (slave_addr_flags << 1) & 0xFF;
+	uint8_t pec;
+
+	pec = crc8(&addr_8bit, sizeof(uint8_t));
+	pec = crc8_arg(data, len, pec);
+
+	/*
+	 * Split into two transactions to avoid the stack space consumption of
+	 * appending the destination address with the data array.
+	 */
+	i2c_lock(port, 1);
+	rv = i2c_xfer_unlocked(port, slave_addr_flags,
+			       &reg_address, 1, NULL, 0, I2C_XFER_START);
+	if (!rv) {
+		rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				       data, len, NULL, 0, 0);
+	}
+	if (!rv) {
+		rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				       &pec, sizeof(uint8_t), NULL, 0,
+				       I2C_XFER_STOP);
+	}
+	i2c_lock(port, 0);
+
+	return rv;
+}
+#endif
 
 int get_sda_from_i2c_port(int port, enum gpio_signal *sda)
 {
