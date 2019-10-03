@@ -491,6 +491,8 @@ void __espi_wk2a_interrupt(void)
 	/* Clear pending bits of MIWU */
 	NPCX_WKPCL(MIWU_TABLE_2, MIWU_GROUP_1) = pending_bits;
 
+	CPRINTS("wk2a pending bits: %02x", pending_bits);
+
 	/* Handle events of virtual-wire */
 	if (IS_BIT_SET(pending_bits, 0))
 		espi_vw_evt_slp_s3();
