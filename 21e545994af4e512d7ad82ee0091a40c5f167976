@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59177319_910eb02a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-03T18:29:09Z",
+      "side": 1,
+      "message": "can you make this a little more descriptive, like \"add %f specifier to printf\"...\n\nWill help distinguish it from the 10 other printf CLs on my dashboard right now ;)",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "21e545994af4e512d7ad82ee0091a40c5f167976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f476a82_e772c44c",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-03T18:29:09Z",
+      "side": 1,
+      "message": "This might be a good candidate to go under common/util.c",
+      "range": {
+        "startLine": 47,
+        "startChar": 28,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "21e545994af4e512d7ad82ee0091a40c5f167976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
