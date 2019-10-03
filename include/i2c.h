@@ -411,6 +411,36 @@ int i2c_write_block(const int port,
 		    const uint16_t slave_addr_flags,
 		    int offset, const uint8_t *data, int len);
 
+#ifdef CONFIG_SMBUS_PEC
+/**
+ * i2c_read16 with error check, return EC_ERROR_CRC on checksum error.
+ */
+int i2c_read16_pec(const int port,
+		   const uint16_t slave_addr_flags,
+		   int offset, int *data);
+
+/**
+ * i2c_read_string with error check, return EC_ERROR_CRC on checksum error.
+ */
+int i2c_read_string_pec(const int port,
+			const uint16_t slave_addr_flags,
+			int offset, uint8_t *data, int len);
+
+/**
+ * i2c_write16 with an extra error checking byte appended to the message.
+ */
+int i2c_write16_pec(const int port,
+		    const uint16_t slave_addr_flags,
+		    int offset, int data);
+
+/**
+ * i2c_write_block with an extra error checking byte appended to the message.
+ */
+int i2c_write_block_pec(const int port,
+			const uint16_t slave_addr_flags,
+			int offset, const uint8_t *data, int len);
+#endif
+
 /**
  * Convert port number to controller number, for multi-port controllers.
  * This function will only be called if CONFIG_I2C_MULTI_PORT_CONTROLLER is
