@@ -46,6 +46,28 @@ static int hexdigit(int c)
 	return c > 9 ? (c + 'a' - 10) : (c + '0');
 }
 
+static int itoa(char *buff, int buff_len, uint32_t i)
+{
+	int digits = 0, idx;
+	uint32_t copy = i;
+
+	while (copy) {
+		digits++;
+		copy /= 10;
+	}
+
+	digits = (digits == 0) ? 1 : digits;
+	if (digits > buff_len)
+		return -1;
+
+	for (idx = digits - 1; idx >= 0; --idx) {
+		buff[idx] = '0' + (i % 10);
+		i /= 10;
+	}
+
+	return digits;
+}
+
 /* Flags for vfnprintf() flags */
 #define PF_LEFT		BIT(0)  /* Left-justify */
 #define PF_PADZERO	BIT(1)  /* Pad with 0's not spaces */
@@ -96,6 +118,57 @@ static int print_hex_buffer(int (*addchar)(void *context, int c),
 			return EC_ERROR_OVERFLOW;
 		pad_width--;
 	}
+
+	return EC_SUCCESS;
+}
+
+static int print_float(int (*addchar)(void *context, int c),
+		       void *context, char *buff, int bufflen, float vf)
+{
+	uint32_t i;
+	char *vstr = buff;
+	int count;
+	int precision = IS_ENABLED(CONFIG_CONSOLE_VERBOSE) ? 6 : 3;
+
+	/* Remove 1 for terminating null. */
+	bufflen--;
+
+	/* Account for sign. */
+	if (vf < 0) {
+		*(vstr++) = '-';
+		vf = -vf;
+	}
+
+	/* Handle integer portion. */
+	i = (uint32_t) vf;
+	count = itoa(vstr, bufflen - (vstr - buff), i);
+	if (count < 0)
+		return EC_ERROR_OVERFLOW;
+	vstr += count;
+	vf -= i;
+
+	/* If there's room, print decimal point up to precision or full
+	 * buffer.
+	 */
+	if (bufflen - (vstr - buff) >= 2) {
+		*(vstr++) = '.';
+		while (precision-- &&
+		       bufflen - (vstr - buff) > 0) {
+			vf *= 10;
+			*(vstr++) = '0' + (int) vf;
+			vf -= (int) vf;
+		}
+	}
+
+	/* Terminate the string. */
+	*vstr = '\0';
+
+	/* Print the buffer. */
+	vstr = buff;
+	while (*vstr)
+		if (addchar(context, *vstr++))
+			return EC_ERROR_OVERFLOW;
+
 
 	return EC_SUCCESS;
 }
@@ -319,7 +392,17 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 					pad_width = binary->count;
 					flags |= PF_PADZERO;
 					base = 2;
+				} else if (IS_ENABLED(CONFIG_FPU) &&
+					   ptrspec == 'f') {
+					float vf = *((float *) ptrval);
+					int rc = print_float(
+						addchar, context,
+						intbuf, sizeof(intbuf), vf);
 
+					if (rc != EC_SUCCESS)
+						return rc;
+
+					continue;
 				} else {
 					return EC_ERROR_INVAL;
 				}

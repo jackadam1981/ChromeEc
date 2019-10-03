@@ -43,8 +43,11 @@
 		if (!((a) op (b))) { \
 			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
 				 __LINE__, #a, #b); \
-			ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", \
-				 (a), (b)); \
+			ccprintf("\t\tEVAL: ");\
+			if (fmt[0] == '%' && fmt[1] == 'f') \
+				ccprintf("%pf " #op " %pf\n", &_a, &_b); \
+			else \
+				ccprintf(fmt " " #op " " fmt "\n", _a, _b); \
 			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \
