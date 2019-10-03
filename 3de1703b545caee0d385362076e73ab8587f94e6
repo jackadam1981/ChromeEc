@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aec433c7_b6034c9b",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-03T21:35:34Z",
+      "side": 1,
+      "message": "If the future I think we can get rid of this and the #ifdef HAVE_PRIVATE_DRIVER in fpsensor.c if we provide stubs for the remaining private APIs like this: https://crrev.com/c/1834274 so that the public build works.\n\nWould you mind filing a bug and TODO?\n\nAlso double-check that \"make buildall\" works as-is with the public build (just rename the \"private\" directory and it will be the same as public build since it won\u0027t find the directory).",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "3de1703b545caee0d385362076e73ab8587f94e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
