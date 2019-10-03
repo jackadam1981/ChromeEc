@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6f9d06e_da80a907",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-03T19:09:59Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "9d0c565016985e0f6a48f9b43897251e38692f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b936788e_ae18af50",
         "filename": "common/printf.c",
         "patchSetId": 4
@@ -22,6 +39,30 @@
       "revId": "9d0c565016985e0f6a48f9b43897251e38692f65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c68b84e2_1ee3d817",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-03T19:09:59Z",
+      "side": 1,
+      "message": "think this should be done in a child CL, not with %z",
+      "parentUuid": "b936788e_ae18af50",
+      "range": {
+        "startLine": 234,
+        "startChar": 20,
+        "endLine": 234,
+        "endChar": 21
+      },
+      "revId": "9d0c565016985e0f6a48f9b43897251e38692f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
