@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8e56564_54dda15d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-03T14:17:24Z",
+      "side": 1,
+      "message": "Do we need to take this out of the else {} and validate i2c_bus?\n\ni \u003e\u003d I2C_MAX_ADAPTER",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "73c7288d26e7350d9f920e2dab46cf29a1b761ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291186ce_8009d27b",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-03T14:17:24Z",
+      "side": 1,
+      "message": "Could you print how this is used? Maybe we should print \"I2C_ADAPTER_NODE\"?",
+      "range": {
+        "startLine": 355,
+        "startChar": 56,
+        "endLine": 355,
+        "endChar": 67
+      },
+      "revId": "73c7288d26e7350d9f920e2dab46cf29a1b761ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
