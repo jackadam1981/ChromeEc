@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "e9ef3738_94f64f82",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-03T17:28:03Z",
+      "side": 1,
+      "message": "Ah, I\u0027d missed that, good catch. Maybe the increase in RAM usage is acceptable for now, but I\u0027m not sure we have that much RAM left in all chips.\nPossible alternative: call CRYPTO_gcm128_encrypt() twice in aes_gcm_encrypt, once for the templates and once for the salt, with the offset in the output buffer appropriately modified. I think that would work?",
+      "parentUuid": "96be79e7_55a802ab",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 61
+      },
+      "revId": "12050e752247b75c751bb888fa64281ba312d116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4677fd96_fbadf9e1",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
