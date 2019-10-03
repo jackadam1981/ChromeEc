@@ -255,21 +255,32 @@ static int verify_chunk_data_reception(int port, uint16_t header, int len)
 	int i;
 	uint8_t *td = (uint8_t *)test_data;
 
-	if (pd_port[port].mock_got_soft_reset)
+	if (pd_port[port].mock_got_soft_reset) {
+		ccprintf("Got mock soft reset\n");
 		return 0;
+	}
 
-	if (!pd_port[port].mock_pe_message_received)
+	if (!pd_port[port].mock_pe_message_received) {
+		ccprintf("No mock pe msg received\n");
 		return 0;
+	}
 
-	if (pd_port[port].mock_pe_error >= 0)
+	if (pd_port[port].mock_pe_error >= 0) {
+		ccprintf("Mock pe error (%d)\n", pd_port[port].mock_pe_error);
 		return 0;
+	}
 
-	if (emsg[port].len != len)
+	if (emsg[port].len != len) {
+		ccprintf("emsg len (%d) != 0\n", emsg[port].len);
 		return 0;
+	}
 
-	for (i = 0; i < len; i++)
-		if (emsg[port].buf[i] != td[i])
+	for (i = 0; i < len; i++) {
+		if (emsg[port].buf[i] != td[i]) {
+			ccprintf("emsg buf[%d] != td\n", i);
 			return 0;
+		}
+	}
 
 	return 1;
 }
@@ -322,7 +333,6 @@ static int simulate_receive_extended_data(int port,
 	int data_offset = 0;
 	uint8_t *expected_data = (uint8_t *)test_data;
 	uint16_t header;
-	int req_timeout;
 
 	pd_port[port].mock_pe_error = -1;
 	pd_port[port].mock_pe_message_received = 0;
@@ -331,10 +341,10 @@ static int simulate_receive_extended_data(int port,
 	memset(emsg[port].buf, 0, 260);
 
 	dsize = len;
-
-	cycle_through_state_machine(port, 2, 40 * MSEC);
-
 	for (j = 0; j < 10; j++) {
+		/* Let state machine settle before starting another round */
+		cycle_through_state_machine(port, 10, MSEC);
+
 		byte_len = len;
 		if (byte_len > 26)
 			byte_len = 26;
@@ -352,26 +362,33 @@ static int simulate_receive_extended_data(int port,
 			pd_port[port].data_role, pd_port[port].msg_rx_id,
 			nw, pd_port[port].rev, 1);
 
-		cycle_through_state_machine(port, 2, 40 * MSEC);
-
-		if (pd_port[port].mock_pe_error >= 0)
+		if (pd_port[port].mock_pe_error >= 0) {
+			ccprintf("Mock pe error (%d) iteration (%d)\n",
+				pd_port[port].mock_pe_error, j);
 			return 0;
+		}
 
-		if (pd_port[port].mock_pe_message_received)
+		if (pd_port[port].mock_pe_message_received) {
+			ccprintf("Mock pe msg received iteration (%d)\n", j);
 			return 0;
+		}
 
-		if (emsg[port].len != 0)
+		if (emsg[port].len != 0) {
+			ccprintf("emsg len (%d) != 0 iteration (%d)\n",
+				emsg[port].len, j);
 			return 0;
+		}
 
 		simulate_rx_msg(port, header, nw, (uint32_t *)td);
-		task_wait_event(40 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 		if (!verify_goodcrc(port, pd_port[port].data_role,
-						pd_port[port].msg_rx_id))
+						pd_port[port].msg_rx_id)) {
+			ccprintf("Verify goodcrc bad iteration (%d)\n", j);
 			return 0;
+		}
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(40);
+		cycle_through_state_machine(port, 1, MSEC);
 		inc_rx_id(port);
 
 		/*
@@ -380,53 +397,52 @@ static int simulate_receive_extended_data(int port,
 		if (len <= 0)
 			break;
 
-		/*
-		 * Wait for request chunk message
-		 */
-		req_timeout = 0;
-		while (rch_get_state(port) != RCH_REQUESTING_CHUNK &&
-							req_timeout < 5) {
-			req_timeout++;
-			msleep(2);
-		}
-
 		chunk_num++;
 
 		/* Test Request next chunk packet */
-		if (!pd_test_tx_msg_verify_sop(port))
+		if (!pd_test_tx_msg_verify_sop(port)) {
+			ccprintf("Verify sop bad iteration (%d)\n", j);
 			return 0;
+		}
 
 		if (!pd_test_tx_msg_verify_short(port,
 				PD_HEADER(msg_type,
 				pd_port[port].power_role,
 				pd_port[port].data_role,
 				pd_port[port].msg_tx_id,
-				1, pd_port[port].rev, 1)))
+				1, pd_port[port].rev, 1))) {
+			ccprintf("Verify msg short bad iteration (%d)\n", j);
 			return 0;
+		}
 
 		if (!pd_test_tx_msg_verify_word(port,
-				PD_EXT_HEADER(chunk_num, 1, 0)))
+				PD_EXT_HEADER(chunk_num, 1, 0))) {
+			ccprintf("Verify msg word bad iteration (%d)\n", j);
 			return 0;
+		}
 
-		if (!pd_test_tx_msg_verify_crc(port))
+		if (!pd_test_tx_msg_verify_crc(port)) {
+			ccprintf("Verify msg crc bad iteration (%d)\n", j);
 			return 0;
+		}
 
-		if (!pd_test_tx_msg_verify_eop(port))
+		if (!pd_test_tx_msg_verify_eop(port)) {
+			ccprintf("Verify msg eop bad iteration (%d)\n", j);
 			return 0;
+		}
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 		/* Request next chunk packet was good. Send GoodCRC */
 		simulate_goodcrc(port, pd_port[port].power_role,
 					pd_port[port].msg_tx_id);
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(40 * MSEC);
+
+		cycle_through_state_machine(port, 1, MSEC);
+
 		inc_tx_id(port);
 	}
 
-	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(20 * MSEC);
+	cycle_through_state_machine(port, 1, MSEC);
 
 	return verify_chunk_data_reception(port, header, dsize);
 }
@@ -459,10 +475,11 @@ static int simulate_send_ctrl_msg_request_from_pe(int port,
 	pd_port[port].mock_pe_error = -1;
 	pd_port[port].mock_pe_message_sent = 0;
 	prl_send_ctrl_msg(port, type, msg_type);
-	task_wait_event(40 * MSEC);
+	cycle_through_state_machine(port, 1, MSEC);
 
+	/* Soft reset takes another iteration through the state machine */
 	if (msg_type == PD_CTRL_SOFT_RESET)
-		cycle_through_state_machine(port, 1, 20 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 	return verify_ctrl_msg_transmission(port, msg_type);
 }
@@ -531,7 +548,7 @@ static int simulate_send_data_msg_request_from_pe(int port,
 	emsg[port].len = len;
 
 	prl_send_data_msg(port, type, msg_type);
-	task_wait_event(30 * MSEC);
+	task_wait_event(MSEC);
 
 	return verify_data_msg_transmission(port, msg_type, len);
 }
@@ -611,14 +628,12 @@ static int verify_extended_data_msg_transmission(int port,
 		if (!pd_test_tx_msg_verify_eop(port))
 			return 0;
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(10 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 		/* Send GoodCRC */
 		simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 		inc_tx_id(port);
 
 		len -= 26;
@@ -626,13 +641,13 @@ static int verify_extended_data_msg_transmission(int port,
 			break;
 
 		chunk_number_to_send++;
-		cycle_through_state_machine(port, 4, 10 * MSEC);
+		/* Let state machine settle */
+		cycle_through_state_machine(port, 10, MSEC);
 		if (!simulate_request_chunk(port, msg_type,
 				chunk_number_to_send, dsize))
 			return 0;
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 		inc_rx_id(port);
 	}
 
@@ -658,7 +673,7 @@ static int simulate_send_extended_data_msg(int port,
 		buf[i] = td[i];
 
 	prl_send_ext_data_msg(port, type, msg_type);
-	task_wait_event(30 * MSEC);
+	cycle_through_state_machine(port, 1, MSEC);
 
 	return verify_extended_data_msg_transmission(port, msg_type,
 							len);
@@ -673,11 +688,7 @@ static void enable_prl(int port, int en)
 	pd_port[port].msg_rx_id = 0;
 
 	/* Init PRL */
-	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(10 * MSEC);
-
-	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(10 * MSEC);
+	cycle_through_state_machine(port, 10, MSEC);
 
 	prl_set_rev(port, pd_port[port].rev);
 }
@@ -763,14 +774,14 @@ static int test_send_ctrl_msg(void)
 		TEST_ASSERT(simulate_send_ctrl_msg_request_from_pe(port,
 						TCPC_TX_SOP, PD_CTRL_ACCEPT));
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 		simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
 		inc_tx_id(port);
 
-		cycle_through_state_machine(port, 3, 10 * MSEC);
+		/* Let statemachine settle */
+		cycle_through_state_machine(port, 10, MSEC);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
@@ -793,7 +804,7 @@ static int test_send_ctrl_msg_with_retry_and_fail(void)
 	 * TEST: Control message transmission fail with retry
 	 */
 	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(40 * MSEC);
+	task_wait_event(MSEC);
 
 	TEST_ASSERT(prl_tx_get_state(port) ==
 			PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
@@ -801,34 +812,32 @@ static int test_send_ctrl_msg_with_retry_and_fail(void)
 	TEST_ASSERT(simulate_send_ctrl_msg_request_from_pe(port,
 					TCPC_TX_SOP, PD_CTRL_ACCEPT));
 
-	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(30 * MSEC);
+	cycle_through_state_machine(port, 1, MSEC);
 
 	simulate_goodcrc(port, pd_port[port].power_role,
 					pd_port[port].msg_tx_id);
 
 	/* Do not increment tx_id so phy layer will not transmit message */
 
-	cycle_through_state_machine(port, 3, 10 * MSEC);
+	/* Let statemachine settle */
+	cycle_through_state_machine(port, 10, MSEC);
 
 	TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 	TEST_ASSERT(pd_port[port].mock_pe_message_sent);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(40 * MSEC);
+	task_wait_event(MSEC);
 
 	TEST_ASSERT(prl_tx_get_state(port) ==
 					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 
 	pd_port[port].mock_pe_message_sent = 0;
 	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
-	task_wait_event(30 * MSEC);
+	cycle_through_state_machine(port, 1, MSEC);
 
 	for (i = 0; i < N_RETRY_COUNT + 1; i++) {
-		cycle_through_state_machine(port, 10, 10 * MSEC);
-
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
+		/* Ensure that we have timed out */
+		cycle_through_state_machine(port, 10, 100 * MSEC);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		TEST_ASSERT(pd_port[port].mock_pe_message_sent == 0);
@@ -854,8 +863,6 @@ static int test_send_ctrl_msg_with_retry_and_success(void)
 	/*
 	 * TEST: Control message transmission fail with retry
 	 */
-	task_wake(PD_PORT_TO_TASK_ID(port));
-	task_wait_event(40 * MSEC);
 
 	TEST_ASSERT(prl_tx_get_state(port) ==
 				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
@@ -929,8 +936,7 @@ static int test_send_data_msg(void)
 	 * TEST: Sending data  message with 1 to 28 bytes
 	 */
 	for (i = 1; i <= 28; i++) {
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(40 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 		TEST_ASSERT(prl_tx_get_state(port) ==
 					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
@@ -938,14 +944,13 @@ static int test_send_data_msg(void)
 		TEST_ASSERT(simulate_send_data_msg_request_from_pe(port,
 					TCPC_TX_SOP, PD_DATA_SOURCE_CAP, i));
 
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		task_wait_event(30 * MSEC);
+		cycle_through_state_machine(port, 1, MSEC);
 
 		simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
 		inc_tx_id(port);
 
-		cycle_through_state_machine(port, 3, 10 * MSEC);
+		cycle_through_state_machine(port, 10, MSEC);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
@@ -979,7 +984,7 @@ static int test_send_data_msg_to_much_data(void)
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	task_wait_event(30 * MSEC);
 
-	cycle_through_state_machine(port, 3, 10 * MSEC);
+	cycle_through_state_machine(port, 10, MSEC);
 
 	TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 	TEST_ASSERT(!pd_port[port].mock_pe_message_sent);
@@ -1019,7 +1024,7 @@ static int test_send_extended_data_msg(void)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 		task_wait_event(30 * MSEC);
 
-		cycle_through_state_machine(port, 3, 10 * MSEC);
+		cycle_through_state_machine(port, 10, MSEC);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
@@ -1060,7 +1065,7 @@ static int test_receive_soft_reset_msg(void)
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	task_wait_event(30 * MSEC);
 
-	cycle_through_state_machine(port, 3, 10 * MSEC);
+	cycle_through_state_machine(port, 10, MSEC);
 
 	TEST_ASSERT(pd_port[port].mock_got_soft_reset);
 	TEST_ASSERT(pd_port[port].mock_pe_error < 0);
@@ -1315,6 +1320,15 @@ int pd_task(void *u)
 	}
 
 	return EC_SUCCESS;
+}
+
+/* Reset the state machine between each test */
+void before_test(void)
+{
+	pd_port[PORT0].pd_enable = false;
+	cycle_through_state_machine(PORT0, 10, MSEC);
+	pd_port[PORT0].pd_enable = true;
+	cycle_through_state_machine(PORT0, 10, MSEC);
 }
 
 void run_test(void)
