@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6d4d627_0c1c92e9",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-03T22:30:58Z",
+      "side": 1,
+      "message": "Note that this condition will also be true if cbi_get_board_version() fails. If that\u0027s what you want, please put a comment that you\u0027re disabling GMR for certain board versions *or* an unknown version of the board.",
+      "revId": "7db84cf96d0ebd3332df669f0168979fa23ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
