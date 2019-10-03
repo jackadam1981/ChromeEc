@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c8cea86_d50619a6",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-10-03T21:19:09Z",
+      "side": 1,
+      "message": "Yes this is not the right way to do. I have remove the code here and put all the logic inside uart.c itself.",
+      "parentUuid": "8d338879_552dc517",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "af8164e2b9aa5be4c739686db8ecd7295d3d7498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b65c6699_d0ee2c41",
         "filename": "chip/g/uart.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "af8164e2b9aa5be4c739686db8ecd7295d3d7498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c1431d_dbde3f1a",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-10-03T21:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65c6699_d0ee2c41",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "af8164e2b9aa5be4c739686db8ecd7295d3d7498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
