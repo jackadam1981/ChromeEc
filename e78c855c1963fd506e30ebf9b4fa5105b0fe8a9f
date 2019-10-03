@@ -22,6 +22,30 @@
       "revId": "e78c855c1963fd506e30ebf9b4fa5105b0fe8a9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530932f5_00161f4b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-03T03:57:07Z",
+      "side": 1,
+      "message": "Hi Daisuke, thanks for weighing in. I\u0027ve uploaded these more as a wip (as you can see I haven\u0027t added the verified +1 label). Here\u0027s the design doc that I\u0027m working on: https://docs.google.com/document/d/1GhKZmDERke5Eq4qGFklj-NKmUTOhvU_FCPfupZkXeus/edit?usp\u003dsharing",
+      "parentUuid": "70eefbdb_a2503489",
+      "range": {
+        "startLine": 1369,
+        "startChar": 23,
+        "endLine": 1369,
+        "endChar": 34
+      },
+      "revId": "e78c855c1963fd506e30ebf9b4fa5105b0fe8a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
