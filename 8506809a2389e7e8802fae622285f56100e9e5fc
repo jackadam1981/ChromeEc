@@ -22,6 +22,30 @@
       "revId": "8506809a2389e7e8802fae622285f56100e9e5fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e8e51d_fac42290",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-10-04T11:00:08Z",
+      "side": 1,
+      "message": "Done, and upload code set 7.",
+      "parentUuid": "c24548e5_ff952140",
+      "range": {
+        "startLine": 732,
+        "startChar": 4,
+        "endLine": 732,
+        "endChar": 46
+      },
+      "revId": "8506809a2389e7e8802fae622285f56100e9e5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
