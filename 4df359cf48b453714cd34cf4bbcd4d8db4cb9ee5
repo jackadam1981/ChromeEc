@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0c27f1a_9269e7b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-04T15:00:19Z",
+      "side": 1,
+      "message": "Done and added the missing \u0027i\u0027 as well :-)",
+      "parentUuid": "c4b5b071_86927552",
+      "range": {
+        "startLine": 13,
+        "startChar": 33,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66d6cf7b_ee2fc1ca",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3c5624_605bfb44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-04T15:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d6cf7b_ee2fc1ca",
+      "range": {
+        "startLine": 21,
+        "startChar": 40,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c5a95eb_73484706",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-04T15:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a1f775_bd0d3e80",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab9ec8a7_8f74643a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-04T15:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0ec26e_cb443261",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
