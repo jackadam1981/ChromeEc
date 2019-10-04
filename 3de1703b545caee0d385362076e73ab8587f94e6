@@ -22,6 +22,30 @@
       "revId": "3de1703b545caee0d385362076e73ab8587f94e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd6988b_1deaf876",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-04T22:59:24Z",
+      "side": 1,
+      "message": "Done.\n\n* Bug to remove PRIVATE macro b/142082838.\n* Yes, it builds without private",
+      "parentUuid": "aec433c7_b6034c9b",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "3de1703b545caee0d385362076e73ab8587f94e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
