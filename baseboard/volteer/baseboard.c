@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "keyboard_scan.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 
@@ -21,6 +22,27 @@ const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_EC_RST_ODL,
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
+/******************************************************************************/
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/*
+	 * F3 key scan cycle completed but scan input is not
+	 * charging to logic high when EC start scan next
+	 * column for "T" key, so we set .output_settle_us
+	 * to 80us from 50us.
+	 */
+	.output_settle_us = 80,
+	.debounce_down_us = 9 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+	},
+};
 
 /******************************************************************************/
 /* I2C port map configuration */
