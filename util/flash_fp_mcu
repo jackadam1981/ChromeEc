@@ -231,8 +231,9 @@ config_hatch() {
   readonly GPIO_NRST=212
   # FPMCU BOOT0 is on GPP_A22 = 200 + 22 = 222
   readonly GPIO_BOOT0=222
-  # No PWREN GPIO on Hatch, FPMCU is always on
-  readonly GPIO_PWREN=""
+  # FP_PWR_EN is on GPP_C11 = 456 + (192 - 181) = 456 + 11 = 467
+  # See b/142001487 for explination.
+  readonly GPIO_PWREN=467
 }
 
 config_nami() {
