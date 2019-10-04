@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7ad147b5_02d55155",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:17:37Z",
+      "side": 1,
+      "message": "I want the timer to be expired in the (implicit) else case.\n\nIf you prefer an else with\n\npe[port].swap_source_start_timer \u003d get_time().val;\n\nI can do that too",
+      "parentUuid": "bf896796_ef10879a",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95765a1f_39858094",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8f82af67_d3448d68",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:17:37Z",
+      "side": 1,
+      "message": "Yes sir. Just protect against future code being add after this. I am adding it here since this function in long than just one screen too, so each if statement has its own return when setting the state",
+      "parentUuid": "95765a1f_39858094",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "880e9a59_a8270a14",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27dbfbff_e6c9d3a8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:17:37Z",
+      "side": 1,
+      "message": "Nah, If we receive a message, we can process it",
+      "parentUuid": "880e9a59_a8270a14",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "ed933679_e5704224",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2658,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23785233_893906fc",
+      "range": {
+        "startLine": 2658,
+        "startChar": 9,
+        "endLine": 2658,
+        "endChar": 11
+      },
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8705ee00_0b137b5d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd69e86b_e6eb73b0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3530,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:17:37Z",
+      "side": 1,
+      "message": "My comment wasn\u0027t correct. It is only the last state for those 2 special case otherwise it is the default state for the power role.",
+      "parentUuid": "8705ee00_0b137b5d",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
