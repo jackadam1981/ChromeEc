@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "853215e8_c048b601",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-04T19:30:26Z",
+      "side": 1,
+      "message": "0 was intended to mean it couldn\u0027t be read out of the EEPROM for whatever reason (I thought CBI wasn\u0027t programmed for early revisions of kindred?)",
+      "parentUuid": "dcae5388_3495a66c",
+      "range": {
+        "startLine": 457,
+        "startChar": 5,
+        "endLine": 457,
+        "endChar": 18
+      },
+      "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "710b6cae_b1d640ba",
         "filename": "board/helios/board.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2019-10-03T23:55:48Z",
       "side": 1,
       "message": "Is this even true for Kindred?",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 3
+      },
+      "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb441db0_d97ee66d",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-04T19:30:26Z",
+      "side": 1,
+      "message": "I think this was the early proto that did not have CBI programmed?  Not sure.  Also have to look into this and see if it was just a straight copy from Hatch EC (did Kindred have both signals too?)",
+      "parentUuid": "acb4e0fe_29b6a81a",
       "range": {
         "startLine": 385,
         "startChar": 1,
