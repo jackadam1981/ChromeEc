@@ -59,9 +59,6 @@
 /* Embedded flash block write size for different programming modes. */
 #define FTDI_BLOCK_WRITE_SIZE	(1<<16)
 
-/* Embedded flash number of pages in a sector erase */
-#define SECTOR_ERASE_PAGES	4
-
 /* JEDEC SPI Flash commands */
 #define SPI_CMD_PAGE_PROGRAM	0x02
 #define SPI_CMD_WRITE_DISABLE	0x04
@@ -69,7 +66,8 @@
 #define SPI_CMD_WRITE_ENABLE	0x06
 #define SPI_CMD_FAST_READ	0x0B
 #define SPI_CMD_CHIP_ERASE	0x60
-#define SPI_CMD_SECTOR_ERASE	0xD7
+#define SPI_CMD_SECTOR_ERASE_1K	0xD7
+#define SPI_CMD_SECTOR_ERASE_4K	0x20
 #define SPI_CMD_WORD_PROGRAM	0xAD
 #define SPI_CMD_EWSR		0x50 /* Enable Write Status Register */
 #define SPI_CMD_WRSR		0x01 /* Write Status Register */
@@ -88,6 +86,12 @@
 #define I2C_MUX_CMD_NONE		0x00
 #define I2C_MUX_CMD_INAS		0x01
 #define I2C_MUX_CMD_EC			0x02
+
+unsigned char SPI_CMD_SECTOR_ERASE;
+
+/* Embedded flash number of pages in a sector erase */
+unsigned char SECTOR_ERASE_PAGES;
+
 
 static volatile sig_atomic_t exit_requested;
 
@@ -522,6 +526,7 @@ static int get_3rd_chip_id_byte(struct common_hnd *chnd, uint8_t *chip_id)
 	ret |= i2c_write_byte(chnd, 0x2e, 0x85);
 	ret |= i2c_read_byte(chnd, 0x30, chip_id);
 
+	printf("\n\rget_3rd_chip_id_byte:%x", *chip_id);
 	if (ret < 0)
 		fprintf(stderr, "Failed to get id of 3rd byte.");
 
@@ -534,7 +539,7 @@ static int check_chipid(struct common_hnd *chnd)
 	int ret;
 	uint8_t ver = 0xff;
 	uint32_t id = 0xffff;
-	uint16_t v2[5] = {128, 192, 256, 384, 512};
+	uint16_t v2[7] = {128, 192, 256, 384, 512, 768, 1024};
 	/*
 	 * Chip Version is mapping from bit 3-0
 	 * Flash size is mapping from bit 7-4
@@ -559,10 +564,9 @@ static int check_chipid(struct common_hnd *chnd)
 	 *
 	 * flash size(bit 7-4) of it8xxx1 or it8xxx2 series
 	 * 0:128KB
-	 * 2:192KB
 	 * 4:256KB
-	 * 6:384KB
 	 * 8:512KB
+	 * C:1024KB
 	 */
 
 	ret = i2c_read_byte(chnd, 0x00, (uint8_t *)&id + 1);
@@ -575,6 +579,8 @@ static int check_chipid(struct common_hnd *chnd)
 	if (ret < 0)
 		return ret;
 
+	printf("\n\rcheck_chipid=%x", id);
+
 	if ((id & 0xff00) != (CHIP_ID & 0xff00)) {
 		id |= 0xff0000;
 		ret = get_3rd_chip_id_byte(chnd, (uint8_t *)&id+2);
@@ -582,6 +588,7 @@ static int check_chipid(struct common_hnd *chnd)
 			return ret;
 
 		if ((id & 0xf000f) == 0x80001 || (id & 0xf000f) == 0x80002) {
+			printf("\n\rcmd v2\n\r");
 			chnd->flash_cmd_v2 = 1;
 			chnd->dbgr_addr_3bytes = 1;
 		} else {
@@ -1181,6 +1188,7 @@ failed_write:
 	return res;
 }
 
+#if 0
 /*
  * Write another program flow to match the
  * original ITE 8903 Download board.
@@ -1257,6 +1265,72 @@ failed_write:
 
 	return res;
 }
+#endif
+
+/*
+ * Test for spi page program command
+ */
+static int command_write_pages3(struct common_hnd *chnd, uint32_t address,
+				uint32_t size, uint8_t *buffer,
+				int block_write_size)
+{
+	int res = 0;
+	uint8_t addr_H, addr_M, addr_L;
+	uint8_t cmd;
+
+
+	res |= i2c_write_byte(chnd, 0x07, 0x7f);
+	res |= i2c_write_byte(chnd, 0x06, 0xff);
+	res |= i2c_write_byte(chnd, 0x04, 0xFF);
+
+	/* SMB_SPI_Flash_Write_Status_Reg */
+	res |= i2c_write_byte(chnd, 0x05, 0xfe);
+	res |= i2c_write_byte(chnd, 0x08, 0x00);
+	res |= i2c_write_byte(chnd, 0x05, 0xfd);
+	res |= i2c_write_byte(chnd, 0x08, 0x01);
+	res |= i2c_write_byte(chnd, 0x08, 0x00);
+
+	/* SMB_SPI_Flash_Write_Enable */
+	if (spi_flash_command_short(chnd, SPI_CMD_WRITE_ENABLE,
+		"SPI Command Write Enable") < 0) {
+		res = -EIO;
+		goto failed_write;
+	}
+
+	if (spi_flash_command_short(chnd, SPI_CMD_PAGE_PROGRAM,
+		"SPI_CMD_PAGE_PROGRAM") < 0) {
+		res = -EIO;
+		goto failed_write;
+	}
+
+	addr_H = (address >> 16) & 0xFF;
+	addr_M = (address >> 8) & 0xFF;
+	addr_L = address & 0xFF;
+
+	res = i2c_byte_transfer(chnd, I2C_DATA_ADDR, &addr_H, 1, 1);
+	res |= i2c_byte_transfer(chnd, I2C_DATA_ADDR, &addr_M, 1, 1);
+	res |= i2c_byte_transfer(chnd, I2C_DATA_ADDR, &addr_L, 1, 1);
+
+	cmd = 0x0A;
+	res = i2c_byte_transfer(chnd, I2C_CMD_ADDR, &cmd, 1, 1);
+
+	res = i2c_byte_transfer(chnd, I2C_BLOCK_ADDR, buffer, 1,
+		256);
+
+	if (spi_flash_command_short(chnd, SPI_CMD_WRITE_DISABLE,
+		"write disable exit page program") < 0)
+		res = -EIO;
+	/* Wait until not busy */
+	if (spi_poll_busy(chnd, "Page Program") < 0)
+		goto failed_write;
+
+	/* No error so far */
+failed_write:
+
+	return res;
+}
+
+
 
 static int command_erase(struct common_hnd *chnd, uint32_t len, uint32_t off)
 {
@@ -1520,6 +1594,7 @@ static int write_flash(struct common_hnd *chnd, const char *filename,
 	return 0;
 }
 
+#if 0
 /*
  * Return zero on success, a negative error value on failures.
  *
@@ -1585,6 +1660,75 @@ failed_write:
 
 	return 0;
 }
+#endif
+
+/*
+ * Return zero on success, a negative error value on failures.
+ *
+ * Change the program command to match the ITE Download
+ * The original flow may not work on the DX chip.
+ *
+ */
+static int write_flash3(struct common_hnd *chnd, const char *filename,
+			uint32_t offset)
+{
+	int res, written;
+	int block_write_size = chnd->conf.block_write_size;
+	FILE *hnd;
+	int size = chnd->flash_size;
+	int cnt;
+	uint8_t *buffer = malloc(size);
+
+	if (!buffer) {
+		fprintf(stderr, "%s: Cannot allocate %d bytes\n", __func__,
+			size);
+		return -ENOMEM;
+	}
+
+	hnd = fopen(filename, "r");
+	if (!hnd) {
+		fprintf(stderr, "%s: Cannot open file %s for reading\n",
+			__func__, filename);
+		free(buffer);
+		return -EIO;
+	}
+	res = fread(buffer, 1, size, hnd);
+	if (res <= 0) {
+		fprintf(stderr, "%s: Failed to read %d bytes from %s with "
+			"ferror() %d\n", __func__, size, filename, ferror(hnd));
+		fclose(hnd);
+		free(buffer);
+		return -EIO;
+	}
+	fclose(hnd);
+
+	offset = 0;
+	printf("Writing %d bytes at 0x%08x.......\n", res, offset);
+	while (res) {
+		cnt = (res > 256) ? 256 : res;
+		written = command_write_pages3(chnd, offset, cnt,
+			&buffer[offset], block_write_size);
+		if (written == -EIO)
+			goto failed_write;
+
+		res -= cnt;
+		offset += cnt;
+		draw_spinner(res, res + offset);
+	}
+
+	if (written != res) {
+failed_write:
+		fprintf(stderr, "%s: Error writing to flash\n", __func__);
+		free(buffer);
+		return -EIO;
+	}
+	printf("\n\rWriting Done.\n");
+	free(buffer);
+
+	return 0;
+}
+
+
 
 /* Return zero on success, a non-zero value on failures. */
 static int verify_flash(struct common_hnd *chnd, const char *filename,
@@ -2096,6 +2240,14 @@ int main(int argc, char **argv)
 			goto return_after_init;
 	}
 
+	if (1) {
+		SECTOR_ERASE_PAGES = 16;
+		SPI_CMD_SECTOR_ERASE = SPI_CMD_SECTOR_ERASE_4K;
+	} else {
+		SECTOR_ERASE_PAGES = 4;
+		SPI_CMD_SECTOR_ERASE = SPI_CMD_SECTOR_ERASE_1K;
+	}
+
 	if (chnd.conf.erase) {
 		if (chnd.flash_cmd_v2)
 			/* Do Normal Erase Function */
@@ -2108,7 +2260,7 @@ int main(int argc, char **argv)
 
 	if (chnd.conf.output_filename) {
 		if (chnd.flash_cmd_v2)
-			ret = write_flash2(&chnd, chnd.conf.output_filename, 0);
+			ret = write_flash3(&chnd, chnd.conf.output_filename, 0);
 		else
 			ret = write_flash(&chnd, chnd.conf.output_filename, 0);
 		if (ret)
