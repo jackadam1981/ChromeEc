@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "70f98564_ebc5e714",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-10-04T10:47:49Z",
+      "side": 1,
+      "message": "If disable GMR interrupt first, it will be enable again by gmr_tablet_switch_init function.\nIf disable GMR interrupt later, the gmr_table_switch_init will run gmr_tablet_switch_interrupt once. It maybe cause unknown status.\nSo, I return code set 1 solution.\nIf board_id \u003c 2, I think GMR interrupt triggered is less.",
+      "parentUuid": "5fc52e87_ed193dea",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
+      },
+      "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5902cc6e_be2893c3",
         "filename": "board/helios/gpio.inc",
         "patchSetId": 1
@@ -116,6 +140,30 @@
       "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8381b8fd_f6cb65f4",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-10-04T10:47:49Z",
+      "side": 1,
+      "message": "Modify GPIO Name to TABLET_MODE_L for code set 4.",
+      "parentUuid": "b7739ef6_5087e40f",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "86df3126e853a145d0d549835cf52faa660d02ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

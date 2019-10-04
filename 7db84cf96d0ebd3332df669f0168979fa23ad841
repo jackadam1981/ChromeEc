@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "99866f1c_034ef61c",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-10-04T10:47:49Z",
+      "side": 1,
+      "message": "I add comment in code set 4.",
+      "parentUuid": "b6d4d627_0c1c92e9",
+      "revId": "7db84cf96d0ebd3332df669f0168979fa23ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13100209_0e8ef39f",
         "filename": "board/helios/board.c",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "7db84cf96d0ebd3332df669f0168979fa23ad841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7f5419_2d2ccc41",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-10-04T10:47:49Z",
+      "side": 1,
+      "message": "I return to code set 1 solution.",
+      "parentUuid": "13100209_0e8ef39f",
+      "range": {
+        "startLine": 420,
+        "startChar": 36,
+        "endLine": 420,
+        "endChar": 53
+      },
+      "revId": "7db84cf96d0ebd3332df669f0168979fa23ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
