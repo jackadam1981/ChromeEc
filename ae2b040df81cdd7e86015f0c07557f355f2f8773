@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7732848_972f2999",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "It would be helpful to add some more information as to when a board is expected to enable this.",
+      "range": {
+        "startLine": 4327,
+        "startChar": 3,
+        "endLine": 4327,
+        "endChar": 37
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eadff425_89b937c2",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f99237_7578c52e",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0db4d3_ac13bab2",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51223b3_84a98532",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a83dc6_483f82c1",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Not sure if this is the right one to use. But, I don\u0027t see a good one either. Maybe CC_SYSTEM?",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ad20538_178357b3",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Is this guard really necessary? The only thing it currently guards is dbpt_available. There are other DBPT params outside the guard anyways. dbpt_available can be false by default and only if CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS is defined you call into program_dbpt_params().\n\n Also, I think most of the checks can be changed to runtime checks?\n\nif (IS_ENABLED(CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS))\n        program_dbpt_params();\n\nAnd the linker should take care of throwing away unused code?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c4b265_2fa9ebcf",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "If host command is not called, then this will not be initialized.",
+      "range": {
+        "startLine": 149,
+        "startChar": 36,
+        "endLine": 149,
+        "endChar": 51
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3440e1f5_6c633b0b",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Can these be changed to runtime checks?\n\nif (IS_ENABLED(CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS))",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee4f9c9_712fcec1",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Since you are already checking this dbpt_available check is redundant. That will also allow you to get rid of setting dbpt_available to false above in lines 179 and 187.",
+      "range": {
+        "startLine": 201,
+        "startChar": 24,
+        "endLine": 201,
+        "endChar": 56
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153b4e08_26254e23",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "What happens when the battery is not discharging? Does it read back as 0?",
+      "range": {
+        "startLine": 235,
+        "startChar": 50,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a32bc8_9c4a7003",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Also, a HOOK_INIT just in case anything else uses these values in the future?",
+      "range": {
+        "startLine": 243,
+        "startChar": 13,
+        "endLine": 243,
+        "endChar": 24
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c6c37e_2ce1751c",
+        "filename": "power/power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T01:05:12Z",
+      "side": 1,
+      "message": "Is this something that can be queried from the FG?",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 284,
+        "endChar": 16
+      },
+      "revId": "ae2b040df81cdd7e86015f0c07557f355f2f8773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
