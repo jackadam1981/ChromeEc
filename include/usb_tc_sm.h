@@ -315,6 +315,20 @@ void tc_state_init(int port);
 void tc_event_check(int port, int evt);
 
 /**
+ * Exit low power mode
+ *
+ * @param port USB-C port number
+ */
+void exit_low_power_mode(int port);
+
+/**
+ * Handle device access in low power mode
+ *
+ * @param port USB-C port number
+ */
+void handle_device_access(int port);
+
+/**
  * Runs the TypeC layer statemachine
  *
  * @param port USB-C port number
