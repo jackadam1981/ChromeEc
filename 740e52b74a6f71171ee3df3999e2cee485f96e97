@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0df8cd7_a762c8f4",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-04T16:45:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this code executes on Cr50.\n\nThe RO comes from a different codebase and the RW does not jump to other images.",
+      "revId": "740e52b74a6f71171ee3df3999e2cee485f96e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
