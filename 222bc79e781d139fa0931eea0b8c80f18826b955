@@ -116,6 +116,30 @@
       "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c41ab54_0b5ad478",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-10-04T20:34:12Z",
+      "side": 1,
+      "message": "Some ODM folks are still running tests on kindred rev0.\nWe can clean this up after rev1 is fully deployed.",
+      "parentUuid": "fb441db0_d97ee66d",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 3
+      },
+      "revId": "222bc79e781d139fa0931eea0b8c80f18826b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
