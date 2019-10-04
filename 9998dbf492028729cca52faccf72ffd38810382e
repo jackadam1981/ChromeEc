@@ -117,6 +117,30 @@
       "revId": "9998dbf492028729cca52faccf72ffd38810382e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea638516_73e5298a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4115,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-04T00:00:38Z",
+      "side": 1,
+      "message": "Anything that does not rely on Intel DBPT spec or Intel platform specifically can be useful. At least system power source and battery soc, though I think there are other ways for non-Intel platforms to know that.",
+      "parentUuid": "6c95d30d_b4c566bd",
+      "range": {
+        "startLine": 4115,
+        "startChar": 9,
+        "endLine": 4115,
+        "endChar": 32
+      },
+      "revId": "9998dbf492028729cca52faccf72ffd38810382e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
