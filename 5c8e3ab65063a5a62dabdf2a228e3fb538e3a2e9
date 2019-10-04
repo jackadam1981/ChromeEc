@@ -16,6 +16,24 @@
       "revId": "5c8e3ab65063a5a62dabdf2a228e3fb538e3a2e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ee2f0e_5cb2a547",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:23Z",
+      "side": 0,
+      "message": "for sure, this was dumb. I have revert this change",
+      "parentUuid": "4c00164a_d0bc2edb",
+      "revId": "5c8e3ab65063a5a62dabdf2a228e3fb538e3a2e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
