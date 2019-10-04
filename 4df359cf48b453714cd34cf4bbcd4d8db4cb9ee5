@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4b5b071_86927552",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-04T14:41:22Z",
+      "side": 1,
+      "message": "b",
+      "range": {
+        "startLine": 13,
+        "startChar": 33,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d6cf7b_ee2fc1ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-04T14:41:22Z",
+      "side": 1,
+      "message": "to",
+      "range": {
+        "startLine": 21,
+        "startChar": 40,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a1f775_bd0d3e80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-04T14:41:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is right: isn\u0027t FASTSW_CTL enabled on TCPC_REG_POWER_CTRL_FRS_ENABLE, ie before the fast swap signal?",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0ec26e_cb443261",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-04T14:41:22Z",
+      "side": 1,
+      "message": "The TCPC detects the fast swap signal, tells the PPC to switch...",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "4df359cf48b453714cd34cf4bbcd4d8db4cb9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
