@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "45d300eb_d5d03b21",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-04T23:21:42Z",
+      "side": 1,
+      "message": "Yes, I think an explicit else would be nice. And maybe even a comment too.\nWhy does it need to be expired (rather than disabled) in the else case?",
+      "parentUuid": "7ad147b5_02d55155",
+      "revId": "759c68e3be3633e31a9371ac109a52ce9fed6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95765a1f_39858094",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
