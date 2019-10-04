@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "cc8f77b1_f67ef6ab",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-10-04T00:20:54Z",
+      "side": 1,
+      "message": "This seems incorrect. If we\u0027ve decided to skip_interrupt, there\u0027s no need to check the MKBP event mask. Also, we definitely don\u0027t want to overwrite that decision.",
+      "parentUuid": "4fb1d67e_6aa69d9f",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
