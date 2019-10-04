@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28f92bbc_a6e71ee3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-04T12:43:54Z",
+      "side": 1,
+      "message": "if you are going to retry, do you need to reset the crc_receive_timer to allow time for the transfer to complete?",
+      "revId": "3d54c5904d10a417c26e5ff55301851ae008c219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
