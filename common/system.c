@@ -506,6 +506,13 @@ static void jump_to_image(uintptr_t init_addr)
 {
 	void (*resetvec)(void);
 
+#ifdef GPIO_ENTERING_RW
+	/*
+	 * EC has GPIO_ENTERING_RW output, which is connected to EC_ENTERING_RW
+	 * pin of H1 RBOX module. This part is for EC only, not CR50 family or
+	 * other ECs without GPIO_ENTERING_RW.
+	 */
+
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
 	 * EC is not in read-only firmware.  (This is not technically true if
@@ -518,6 +525,7 @@ static void jump_to_image(uintptr_t init_addr)
 	gpio_set_level(GPIO_ENTERING_RW, 1);
 	usleep(MSEC);
 	gpio_set_level(GPIO_ENTERING_RW, 0);
+#endif
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	/* Note: must be before i2c module is locked down */

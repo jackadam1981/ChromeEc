@@ -190,10 +190,6 @@ GPIO(I2CS_SDA,        PIN(0, 14), GPIO_INPUT)
  */
 GPIO(EC_TX_CR50_RX_OUT, PIN(0, 15), GPIO_ODR_HIGH)
 
-/* Unimplemented signals which we need to emulate for now */
-/* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
-UNIMPLEMENTED(ENTERING_RW)
-
 /*
  * If we are included by generic GPIO code that doesn't know about the PINMUX
  * macro we need to provide an empty definition so that the invocations don't
