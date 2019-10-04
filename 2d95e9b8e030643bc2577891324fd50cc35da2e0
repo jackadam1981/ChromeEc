@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "edeb660e_9879b707",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "Doesn\u0027t apply to this CL anymore. will do in the child CL",
+      "parentUuid": "76712709_cdf850ee",
+      "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d9009cb_67440b3d",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8525dc5b_1bc1c80b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "Not in CL anymore. Doing a different way",
+      "parentUuid": "7d9009cb_67440b3d",
+      "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8894774d_fc2f91d5",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc17920_32578b7a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "Not in this CL anymore. I should come back and fix this though",
+      "parentUuid": "8894774d_fc2f91d5",
+      "revId": "2d95e9b8e030643bc2577891324fd50cc35da2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

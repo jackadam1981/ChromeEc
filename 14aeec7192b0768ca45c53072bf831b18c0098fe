@@ -93,6 +93,30 @@
       "revId": "14aeec7192b0768ca45c53072bf831b18c0098fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28bc88e_dabc2c46",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment applies anymore since this code isn\u0027t changing anymore",
+      "parentUuid": "e95eae87_6062bc16",
+      "range": {
+        "startLine": 1226,
+        "startChar": 1,
+        "endLine": 1227,
+        "endChar": 40
+      },
+      "revId": "14aeec7192b0768ca45c53072bf831b18c0098fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

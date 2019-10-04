@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "768849a7_40c141bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "730e97ca_06798d21",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7c7fc3f_3fdbac74",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24963fd_ee323804",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "I removed this concept. I didn\u0027t like it all that much",
+      "parentUuid": "c7c7fc3f_3fdbac74",
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a8875aa6_c05bbb01",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "It isn\u0027t in this CL anymore, but in a child. It is to prevent code after it from missing a return",
+      "parentUuid": "5743b22f_9fb3b33a",
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe9f6c2_ba23aed1",
         "filename": "include/usb_prl_sm.h",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4ececc_ddfd2b3a",
+        "filename": "include/usb_prl_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-04T22:16:55Z",
+      "side": 1,
+      "message": "Removed this concept.",
+      "parentUuid": "abe9f6c2_ba23aed1",
+      "revId": "4dd98edcafca7dc32f9b53a63308827a942561c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
