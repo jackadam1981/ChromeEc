@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "5bac01b6_9846807d",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-05T03:32:47Z",
+      "side": 1,
+      "message": "as discussed below, we actually assume \u0027\u003c\u0027.\nif it is \u0027\u003d\u003d\u0027, the test below will fail.",
+      "range": {
+        "startLine": 655,
+        "startChar": 41,
+        "endLine": 655,
+        "endChar": 43
+      },
+      "revId": "d6d429a8c9a72f0465006f764db04b37240cf138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2059808_31e9f784",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-05T03:32:47Z",
+      "side": 1,
+      "message": "nit: technically, we know it should be even smaller:\nMAX_VAR_TOTAL_SPACE - test_result.tuple_data_size) \u003c (sizeof(key) + sizeof(value) - 1)\nsince, if it was \u003e\u003d sizeof(key) + sizeof(value) - 1, our previous setvar() should  have succeeded.",
+      "range": {
+        "startLine": 657,
+        "startChar": 7,
+        "endLine": 657,
+        "endChar": 34
+      },
+      "revId": "d6d429a8c9a72f0465006f764db04b37240cf138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4540906c_39312203",
         "filename": "test/nvmem.c",
         "patchSetId": 2
@@ -37,6 +83,30 @@
       "side": 1,
       "message": "we know that the capacity is 1000 bytes, so it is not going to be exact.\n\nShould this assumption ever change this test would start failing and will have to be fixed, but I don\u0027t foresee this happening.",
       "parentUuid": "4540906c_39312203",
+      "range": {
+        "startLine": 661,
+        "startChar": 4,
+        "endLine": 661,
+        "endChar": 18
+      },
+      "revId": "d6d429a8c9a72f0465006f764db04b37240cf138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a57e8c0_19a847a0",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-05T03:32:47Z",
+      "side": 1,
+      "message": "ok, let\u0027s then add a comment about that. and change the assumption above",
+      "parentUuid": "78c7a041_131e14db",
       "range": {
         "startLine": 661,
         "startChar": 4,
