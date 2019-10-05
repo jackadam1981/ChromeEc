@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c68f1617_cd55d70b",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-05T23:49:11Z",
+      "side": 1,
+      "message": "ppc_get_alert_status() and CONFIG_USBC_PPC_DEDICATED_INT can be deleted from zork/trembyle now, since they only apply to SN5S330.",
+      "revId": "51fe82dbdbc2aa6c47677290d46aa4a2297bb3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
