@@ -46,6 +46,30 @@
       "revId": "f24bca877d3b4953e9daa848e8ec9685778c40b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e572e2_806da872",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-05T00:00:10Z",
+      "side": 1,
+      "message": "Added https://crrev.com/c1841696 to fix issue on all boards having CONFIG_USB_PD_TCPC_LOW_POWER undefined",
+      "parentUuid": "c2d73f9b_c7bf75da",
+      "range": {
+        "startLine": 770,
+        "startChar": 0,
+        "endLine": 770,
+        "endChar": 35
+      },
+      "revId": "f24bca877d3b4953e9daa848e8ec9685778c40b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
