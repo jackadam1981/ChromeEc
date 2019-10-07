@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "64814333_92e42b0b",
+        "filename": "common/usbc/usb_tc_ctvpd_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-07T20:20:38Z",
+      "side": 1,
+      "message": "Ooops, yes it is used in many places in this file.",
+      "parentUuid": "44245a30_85915216",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc5c944_16f75983",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4

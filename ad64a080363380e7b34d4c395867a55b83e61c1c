@@ -69,6 +69,24 @@
       "revId": "ad64a080363380e7b34d4c395867a55b83e61c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dcd3f5f_6f60a9d5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2341,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-07T20:20:38Z",
+      "side": 0,
+      "message": "Nice! And I guess the \"Apply Rp\" just below goes away because tc_cc_rp_entry did this already.",
+      "parentUuid": "4ffbc4e7_58b6da9e",
+      "revId": "ad64a080363380e7b34d4c395867a55b83e61c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
