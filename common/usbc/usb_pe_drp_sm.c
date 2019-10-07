@@ -4737,6 +4737,34 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+static enum ec_status hc_pd_cable_info(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_cable_info *p = args->params;
+	struct ec_response_usb_pd_cable_info *r = args->response;
+
+	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	memset(r, 0x00, sizeof(*r));
+
+	if (pe[p->port].active_cable_vdo1 != -1) {
+		r->is_active = 1;
+		r->vdo1 = pe[p->port].active_cable_vdo1;
+		r->vdo2 = pe[p->port].active_cable_vdo2;
+	} else if (pe[p->port].passive_cable_vdo != -1) {
+		r->vdo1 = pe[p->port].passive_cable_vdo;
+	} else {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CABLE_INFO,
+		     hc_pd_cable_info,
+		     EC_VER_MASK(0));
+
 static const struct usb_state pe_states[] = {
 	/* Super States */
 	[PE_PRS_FRS_SHARED] = {
