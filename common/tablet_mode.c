@@ -16,8 +16,14 @@
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ## args)
 
 /* 1: in tablet mode; 0: notebook mode; -1: uninitialized  */
-static int tablet_mode = -1;
-static int forced_tablet_mode = -1;
+enum mode {
+	UNINITIALIZED,
+	DISABLED,
+	ENABLED,
+};
+
+static enum mode tablet_mode = UNINITIALIZED;
+static enum mode forced_tablet_mode = UNINITIALIZED;
 
 /* 1: GMR sensor is reporting 360 degrees. */
 static int gmr_sensor_at_360;
@@ -30,14 +36,15 @@ static int disabled;
 
 int tablet_get_mode(void)
 {
-	if (forced_tablet_mode != -1)
-		return !!forced_tablet_mode;
-	return !!tablet_mode;
+	if (forced_tablet_mode != UNINITIALIZED)
+		return forced_tablet_mode == ENABLED;
+
+	return tablet_mode == ENABLED;
 }
 
 void tablet_set_mode(int mode)
 {
-	if (tablet_mode == mode)
+	if (tablet_mode == (mode ? ENABLED : DISABLED))
 		return;
 
 	if (disabled) {
@@ -51,9 +58,9 @@ void tablet_set_mode(int mode)
 		return;
 	}
 
-	tablet_mode = mode;
+	tablet_mode = (mode ? ENABLED : DISABLED);
 
-	if (forced_tablet_mode != -1)
+	if (forced_tablet_mode != UNINITIALIZED)
 		return;
 
 	CPRINTS("tablet mode %sabled", mode ? "en" : "dis");
@@ -68,7 +75,7 @@ void tablet_set_mode(int mode)
 #endif
 }
 
-static void tabletmode_force_state(int mode)
+static void tabletmode_force_state(enum mode mode)
 {
 	if (forced_tablet_mode == mode)
 		return;
@@ -82,7 +89,7 @@ static void tabletmode_force_state(int mode)
 
 void tablet_disable(void)
 {
-	tablet_mode = 0;
+	tablet_mode = DISABLED;
 	disabled = 1;
 }
 
@@ -153,6 +160,9 @@ static void gmr_tablet_switch_init(void)
 	 * so that the cached state reflects reality.
 	 */
 	gmr_tablet_switch_interrupt_debounce();
+	/* Ensure that we have set the tablet mode initially */
+	if (tablet_mode == UNINITIALIZED)
+		tablet_set_mode(0);
 }
 DECLARE_HOOK(HOOK_INIT, gmr_tablet_switch_init, HOOK_PRIO_DEFAULT);
 
@@ -170,11 +180,11 @@ static int command_settabletmode(int argc, char **argv)
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 	if (argv[1][0] == 'o' && argv[1][1] == 'n')
-		tabletmode_force_state(1);
+		tabletmode_force_state(ENABLED);
 	else if (argv[1][0] == 'o' && argv[1][1] == 'f')
-		tabletmode_force_state(0);
+		tabletmode_force_state(DISABLED);
 	else if (argv[1][0] == 'r')
-		tabletmode_force_state(-1);
+		tabletmode_force_state(UNINITIALIZED);
 	else
 		return EC_ERROR_PARAM1;
 	return EC_SUCCESS;
