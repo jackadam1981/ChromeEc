@@ -579,6 +579,29 @@ to `follow_batt_pres`, you need to remove the write protect screw and disconnect
 the battery to disable write protect. If you run `wp disable`, you will also
 need to remove the screw.
 
+##### WP Issues with AP Off
+
+Cr50 may not be able to disable write protect when the AP is off. Cr50 write
+protect is an open drain signal. Cr50 can't disable write protect unless the
+external pull up is powered. On some boards the pull up is not powered when the
+AP is off, so Cr50 wont be able to keep WP disabled on these boards. If Cr50
+can't disable WP while the AP is off, you will need to disable SW write protect
+to flash RO firmware using ccd.
+
+Check if your board has this issue
+1.  Disable write protect using the cr50 console command
+2.  Check it's still disabled when the AP is off. This command should show write
+    protect is disabled. If it shows it's enabled, then cr50 can't disable WP
+    all the time. You should disable SW WP to flash RO firmware using ccd.
+
+
+    chroot > sudo flashrom -p raiden_debug_spi:target=AP --wp-status
+
+
+Disable SW WP
+
+    from AP > flashrom -p host --wp-disable
+
 # CCD as a Servo replacement
 
 Once cr50 is open and all capabilities have been set to Always, cr50 should be
