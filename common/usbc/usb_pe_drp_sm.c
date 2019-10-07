@@ -280,6 +280,9 @@ static struct policy_engine {
 	int32_t active_cable_vdo1;
 	int32_t active_cable_vdo2;
 	int32_t passive_cable_vdo;
+	int32_t cable_id_header_vdo;
+	int32_t cable_cert_stat_vdo;
+	int32_t cable_product_vdo;
 	int32_t ama_vdo;
 	int32_t vpd_vdo;
 	/* alternate mode policy*/
@@ -832,6 +835,9 @@ static void pe_src_startup_entry(int port)
 	pe[port].active_cable_vdo1 = -1;
 	pe[port].active_cable_vdo2 = -1;
 	pe[port].passive_cable_vdo = -1;
+	pe[port].cable_id_header_vdo = -1;
+	pe[port].cable_cert_stat_vdo = -1;
+	pe[port].cable_product_vdo = -1;
 	pe[port].ama_vdo = -1;
 	pe[port].vpd_vdo = -1;
 
@@ -3601,6 +3607,12 @@ static void pe_vdm_acked_entry(int port)
 				/* Passive Cable Detected */
 				pe[port].passive_cable_vdo =
 						payload[4];
+				pe[port].cable_id_header_vdo =
+					id_header;
+				pe[port].cable_cert_stat_vdo =
+					payload[2];
+				pe[port].cable_product_vdo =
+					payload[3];
 				break;
 			case IDH_PTYPE_ACABLE:
 				/* Active Cable Detected */
@@ -3608,6 +3620,12 @@ static void pe_vdm_acked_entry(int port)
 						payload[4];
 				pe[port].active_cable_vdo2 =
 						payload[5];
+				pe[port].cable_id_header_vdo =
+					id_header;
+				pe[port].cable_cert_stat_vdo =
+					payload[2];
+				pe[port].cable_product_vdo =
+					payload[3];
 				break;
 			case IDH_PTYPE_AMA:
 				/*
@@ -4736,6 +4754,37 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
 	EC_VER_MASK(0));
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+
+static enum ec_status hc_pd_cable_info(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_cable_info *p = args->params;
+	struct ec_response_usb_pd_cable_info *r = args->response;
+
+	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	memset(r, 0x00, sizeof(*r));
+
+	r->id_header_vdo = pe[p->port].cable_id_header_vdo;
+	r->cert_stat_vdo = pe[p->port].cable_cert_stat_vdo;
+	r->product_vdo = pe[p->port].cable_product_vdo;
+	if (pe[p->port].active_cable_vdo1 != -1) {
+		r->is_active = 1;
+		r->vdo1 = pe[p->port].active_cable_vdo1;
+		r->vdo2 = pe[p->port].active_cable_vdo2;
+	} else if (pe[p->port].passive_cable_vdo != -1) {
+		r->vdo1 = pe[p->port].passive_cable_vdo;
+	} else {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CABLE_INFO,
+		     hc_pd_cable_info,
+		     EC_VER_MASK(0));
 
 static const struct usb_state pe_states[] = {
 	/* Super States */
