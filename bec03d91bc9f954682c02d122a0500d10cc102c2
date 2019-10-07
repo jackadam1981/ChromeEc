@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d7c53fa6_345dc1fa",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "No, definitely not. Fixed in another CL",
+      "parentUuid": "a1a99e01_528b1329",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89edf660_b2490ac3",
         "filename": "common/usbc/usb_tc_ctvpd_sm.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44245a30_85915216",
+        "filename": "common/usbc/usb_tc_ctvpd_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "It is used. I moved it around though. Send a CL for it",
+      "parentUuid": "89edf660_b2490ac3",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "134c6abb_733d92d6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "So it builds using IS_ENABLED, but it would fail to build with a linker error if you actually used TC_TRY_SRC in code that wasn\u0027t gaurded by the appropriate IS_ENABLED",
+      "parentUuid": "9cc5c944_16f75983",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64abe9b7_4fad68bf",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ad8a67_db98040d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "I think the loop timeout is 2 to 5 MSEC",
+      "parentUuid": "64abe9b7_4fad68bf",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "ea07de7b_68a140de",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "582597ff_0ab326bb",
+      "range": {
+        "startLine": 1690,
+        "startChar": 21,
+        "endLine": 1690,
+        "endChar": 22
+      },
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e18fed_ea1ff6e8",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "da8fec44_95fc0595",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "It would be PD_CC_DFP_DEBUG_ACC || PD_CC_DFP_ATTACHED. Sent out a CL for it.",
+      "parentUuid": "a0e18fed_ea1ff6e8",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c152e67c_23110045",
         "filename": "common/usbc/usb_tc_vpd_sm.c",
         "patchSetId": 4
@@ -124,6 +238,24 @@
       "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07907b88_2fac7825",
+        "filename": "common/usbc/usb_tc_vpd_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 1,
+      "message": "It is. Send a CL to move it around",
+      "parentUuid": "c152e67c_23110045",
+      "revId": "bec03d91bc9f954682c02d122a0500d10cc102c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

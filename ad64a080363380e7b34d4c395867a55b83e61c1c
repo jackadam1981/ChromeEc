@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b5f697c_42c07927",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 0,
+      "message": "Into the super state.\n\nIt we are transitioning from a the Rp super state to Rd super state, then we would run the Rp super state code which then set the power role and message header.\n\nIf a swap isn\u0027t already in progress then we are already setting the power role and message header correctly long before we entered this state.",
+      "parentUuid": "60358ec3_791f43a3",
+      "revId": "ad64a080363380e7b34d4c395867a55b83e61c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ce6fff6_55581980",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "ad64a080363380e7b34d4c395867a55b83e61c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ffbc4e7_58b6da9e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2341,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T17:34:28Z",
+      "side": 0,
+      "message": "It is in the else case above. If PE is not defined, then the flag cannot be set, so we take the else path",
+      "parentUuid": "6ce6fff6_55581980",
+      "revId": "ad64a080363380e7b34d4c395867a55b83e61c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
