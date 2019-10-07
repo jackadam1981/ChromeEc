@@ -503,6 +503,7 @@ static struct lookup cmd_table[] = {
 	{0x116, "EC_CMD_USB_PD_GET_AMODE"},
 	{0x117, "EC_CMD_USB_PD_SET_AMODE"},
 	{0x118, "EC_CMD_PD_WRITE_LOG_ENTRY"},
+	{0x127, "EC_CMD_USB_PD_CABLE_INFO"},
 	{0x200, "EC_CMD_BLOB"},
 };
 
