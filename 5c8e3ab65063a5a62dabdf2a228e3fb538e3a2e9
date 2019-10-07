@@ -52,6 +52,24 @@
       "revId": "5c8e3ab65063a5a62dabdf2a228e3fb538e3a2e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "802041ef_3a0b2a46",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-07T16:28:56Z",
+      "side": 0,
+      "message": "I made the wait above 100 MSEC instead and cycle the state machine with events during it.",
+      "parentUuid": "6bdaff42_65a0317a",
+      "revId": "5c8e3ab65063a5a62dabdf2a228e3fb538e3a2e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
