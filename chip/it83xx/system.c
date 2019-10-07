@@ -120,6 +120,11 @@ void chip_pre_init(void)
 	/* bit4, enable debug mode through SMBus */
 	IT83XX_SMB_SLVISELR &= ~BIT(4);
 
+	if (IS_ENABLED(CHIP_VARIANT_IT83201AX)) {
+		IT83XX_ECPM_CGCTRL6R &= ~BIT(1);
+		IT83XX_ECPM_CGCTRL6R |= BIT(1);
+	}
+
 	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
 		/* System triggers a soft reset by default (command: reboot). */
 		IT83XX_GCTRL_ETWDUARTCR &= ~ETWD_HW_RST_EN;
