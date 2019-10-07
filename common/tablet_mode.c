@@ -9,35 +9,47 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_angle.h"
+#include "stdbool.h"
 #include "tablet_mode.h"
 #include "timer.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ## args)
 
-/* 1: in tablet mode; 0: notebook mode; -1: uninitialized  */
-static int tablet_mode = -1;
-static int forced_tablet_mode = -1;
+/*
+ * Other code modules assume that notebook mode (i.e. tablet_mode = false) at
+ * startup
+ */
+static bool tablet_mode;
 
-/* 1: GMR sensor is reporting 360 degrees. */
-static int gmr_sensor_at_360;
+/* Console command can force tablet_mode value */
+enum forced_mode {
+	UNSET,
+	DISABLED,
+	ENABLED,
+};
+static enum forced_mode forced_tablet_mode = UNSET;
+
+/* True if GMR sensor is reporting 360 degrees. */
+static bool gmr_sensor_at_360;
 
 /*
- * 1: all calls to tablet_set_mode are ignored and tablet_mode if forced to 0
- * 0: all calls to tablet_set_mode are honored
+ * True: all calls to tablet_set_mode are ignored and tablet_mode if forced to 0
+ * False: all calls to tablet_set_mode are honored
  */
-static int disabled;
+static bool disabled;
 
 int tablet_get_mode(void)
 {
-	if (forced_tablet_mode != -1)
-		return !!forced_tablet_mode;
-	return !!tablet_mode;
+	if (forced_tablet_mode != UNSET)
+		return forced_tablet_mode == ENABLED;
+
+	return tablet_mode;
 }
 
 void tablet_set_mode(int mode)
 {
-	if (tablet_mode == mode)
+	if (tablet_mode == !!mode)
 		return;
 
 	if (disabled) {
@@ -51,9 +63,9 @@ void tablet_set_mode(int mode)
 		return;
 	}
 
-	tablet_mode = mode;
+	tablet_mode = !!mode;
 
-	if (forced_tablet_mode != -1)
+	if (forced_tablet_mode != UNSET)
 		return;
 
 	CPRINTS("tablet mode %sabled", mode ? "en" : "dis");
@@ -68,7 +80,7 @@ void tablet_set_mode(int mode)
 #endif
 }
 
-static void tabletmode_force_state(int mode)
+static void tabletmode_force_state(enum forced_mode mode)
 {
 	if (forced_tablet_mode == mode)
 		return;
@@ -82,8 +94,8 @@ static void tabletmode_force_state(int mode)
 
 void tablet_disable(void)
 {
-	tablet_mode = 0;
-	disabled = 1;
+	tablet_mode = false;
+	disabled = true;
 }
 
 /* This ifdef can be removed once we clean up past projects which do own init */
@@ -170,11 +182,11 @@ static int command_settabletmode(int argc, char **argv)
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 	if (argv[1][0] == 'o' && argv[1][1] == 'n')
-		tabletmode_force_state(1);
+		tabletmode_force_state(ENABLED);
 	else if (argv[1][0] == 'o' && argv[1][1] == 'f')
-		tabletmode_force_state(0);
+		tabletmode_force_state(DISABLED);
 	else if (argv[1][0] == 'r')
-		tabletmode_force_state(-1);
+		tabletmode_force_state(UNSET);
 	else
 		return EC_ERROR_PARAM1;
 	return EC_SUCCESS;
