@@ -32,7 +32,8 @@ int tablet_get_mode(void)
 {
 	if (forced_tablet_mode != -1)
 		return !!forced_tablet_mode;
-	return !!tablet_mode;
+	/* Returning uninitialized value of -1 is intentional. */
+	return tablet_mode;
 }
 
 void tablet_set_mode(int mode)

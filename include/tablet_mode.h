@@ -9,7 +9,7 @@
 /**
  * Get tablet mode state
  *
- * Return 1 if in tablet mode, 0 otherwise
+ * Return 1 if in tablet mode, 0 if notebook mode, and -1 if unititalized.
  */
 int tablet_get_mode(void);
 
