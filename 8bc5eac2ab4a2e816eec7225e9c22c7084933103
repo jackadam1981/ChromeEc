@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "055410fc_7615e14e",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-07T20:41:01Z",
+      "side": 1,
+      "message": "Looks good. I just thought of slightly cleaner(?) way to write it that doesn\u0027t need the \"else\" clause:\n\nif (template_needs_validation_value(enc_info)) {\n  init_trng()\n  rand_bytes(positive_match_salt, FP_POSITIVE_MATCH_SALT_BYTES);\n  exit_trng();\n}\nif (bytes_are_trivial(positive_match_salt))\n{\n  \u003csnip\u003e\n}\nmemcpy(fp_positive_match_salt[idx], positive_match_salt, sizeof(fp_positive_match_salt[0]));\n\n\nThat way the codepath is closer in both cases and bytes_are_trivial() will also catch the case where |positive_match_salt| that\u0027s just been generated has an issue.",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 3
+      },
+      "revId": "8bc5eac2ab4a2e816eec7225e9c22c7084933103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
