@@ -5761,6 +5761,18 @@ struct ec_response_locate_chip {
 	};
 } __ec_align2;
 
+/* Retrieve Cable information for a specific port */
+#define  EC_CMD_USB_PD_CABLE_INFO 0x0127
+struct ec_params_usb_pd_cable_info {
+	uint8_t port;      /* port */
+} __ec_align_size1;
+
+struct ec_response_usb_pd_cable_info {
+	uint8_t is_active;
+	uint32_t vdo1; /* Passive cable / Active Cable VDO 1 */
+	uint32_t vdo2; /* Active Cable VDO 2. Unused for passive cables */
+} __ec_align1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 

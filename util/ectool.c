@@ -304,6 +304,8 @@ const char help_str[] =
 	"      Control USB PD/type-C\n"
 	"  usbpdmuxinfo\n"
 	"      Get USB-C SS mux info\n"
+	"  usbpdcableinfo [port]\n"
+	"      Get USB PD cable information\n"
 	"  usbpdpower [port]\n"
 	"      Get USB PD power information\n"
 	"  version\n"
@@ -5643,6 +5645,36 @@ static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 	printf("\n");
 }
 
+int cmd_usb_pd_cable_info(int argc, char *argv[])
+{
+	int ret;
+	char *e;
+	struct ec_params_usb_pd_cable_info *p =
+		(struct ec_params_usb_pd_cable_info *)ec_outbuf;
+	struct ec_response_usb_pd_cable_info *r =
+		(struct ec_response_usb_pd_cable_info *)ec_inbuf;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
+		return -1;
+	}
+
+	p->port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad port\n");
+		return -1;
+	}
+
+	ret = ec_command(EC_CMD_USB_PD_CABLE_INFO, 0, p, sizeof(*p),
+			 ec_inbuf, ec_max_insize);
+	if (ret < 0)
+		return ret;
+	printf("Active=%u, Vdo1=%x, VDO2=%x", r->is_active, r->vdo1, r->vdo2);
+	printf("\n");
+
+	return 0;
+}
+
 int cmd_usb_pd_mux_info(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_mux_info p;
@@ -9169,6 +9201,7 @@ const struct command commands[] = {
 	{"usbchargemode", cmd_usb_charge_set_mode},
 	{"usbmux", cmd_usb_mux},
 	{"usbpd", cmd_usb_pd},
+	{"usbpdcableinfo", cmd_usb_pd_cable_info},
 	{"usbpdmuxinfo", cmd_usb_pd_mux_info},
 	{"usbpdpower", cmd_usb_pd_power},
 	{"version", cmd_version},

@@ -1038,6 +1038,15 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
 
 #endif
 
+/* Not supported on PD 2.0 stack */
+static enum ec_status hc_pd_cable_info(struct host_cmd_handler_args *args)
+{
+	return EC_RES_UNAVAILABLE;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CABLE_INFO,
+		     hc_pd_cable_info,
+		     EC_VER_MASK(0));
+
 #define FW_RW_END (CONFIG_EC_WRITABLE_STORAGE_OFF + \
 		   CONFIG_RW_STORAGE_OFF + CONFIG_RW_SIZE)
 
