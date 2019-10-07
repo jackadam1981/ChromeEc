@@ -196,7 +196,14 @@ It goes into a lot more detail.
                 Cr50 > ccd set OpenNoDevMode Always
                 Cr50 > ccd set OpenFromUSB Always
 
+6.  **(recommended) [Disable SW WP]**. Cr50 may not be able to disable write
+    protect when the AP is off. [Disable SW WP] to ensure you can flash RO
+    firmware using ccd.
+
+                AP > flashrom -p host --wp-disable
+
 [Setup CCD]: ./case_closed_debugging_cr50.md#CCD-Setup
 [sparkfun]: https://www.sparkfun.com/products/14746
 [SuzyQ]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/refs/heads/master/docs/ccd.md#suzyq-suzyqable
 [wp console command]: ./case_closed_debugging_cr50.md#WP-control
+[Disable SW WP]: ./case_closed_debugging_cr50.md#AP-Off
