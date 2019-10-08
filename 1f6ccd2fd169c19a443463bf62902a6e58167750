@@ -16,6 +16,24 @@
       "revId": "1f6ccd2fd169c19a443463bf62902a6e58167750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13557cc3_f5efb835",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-08T23:49:27Z",
+      "side": 1,
+      "message": "I know the prototype goes away, but have seen many localized \"extern prototypes\" inline just before using a function. Guess they will get what they deserve.  I will remove it from here.",
+      "parentUuid": "c4bb55ca_905a70f4",
+      "revId": "1f6ccd2fd169c19a443463bf62902a6e58167750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
