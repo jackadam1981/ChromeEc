@@ -16,6 +16,24 @@
       "revId": "96f554d873c5eee09d140f7067770ca09a67ac7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd58ec8_fd886be3",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-08T23:29:15Z",
+      "side": 1,
+      "message": "hmm... ya, i can see things going wrong if we inherit a panicinfo\nfrom RO, then write another panicinfo in RW - we would not have\nrecomputed the jumpinfo pointer.",
+      "parentUuid": "c0d4a50c_1435b31b",
+      "revId": "96f554d873c5eee09d140f7067770ca09a67ac7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
