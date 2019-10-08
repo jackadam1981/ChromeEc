@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c6dd62b_aa61e780",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-08T16:58:20Z",
+      "side": 1,
+      "message": "Oh, TIL :) Of course.",
+      "parentUuid": "54760cdd_1090d1ad",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "065940d0_3e0cf44c",
         "filename": "power/power_status.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f749ec_9577c680",
+        "filename": "power/power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-08T16:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "065940d0_3e0cf44c",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 26
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e8085b21_f3bd270d",
+        "filename": "power/power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-08T16:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd61eee_b9824e1c",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 55
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6300e470_1d0f7392",
         "filename": "power/power_status.c",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98998133_321d4207",
+        "filename": "power/power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-08T16:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6300e470_1d0f7392",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
