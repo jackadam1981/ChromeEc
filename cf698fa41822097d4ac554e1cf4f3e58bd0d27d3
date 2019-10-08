@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbf776b_48f23f4a",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:37:58Z",
+      "side": 1,
+      "message": "nit: drop the unneeded parenthesis please",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "cf698fa41822097d4ac554e1cf4f3e58bd0d27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
