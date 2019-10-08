@@ -213,6 +213,30 @@
       "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ab9c54_a72e0f41",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:03:35Z",
+      "side": 1,
+      "message": "I like the flat list of attributes with a single call",
+      "parentUuid": "44c57c71_a1bfda12",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
