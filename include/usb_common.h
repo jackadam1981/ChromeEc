@@ -10,9 +10,6 @@
 #include "usb_pd_tcpm.h"
 #include "task_id.h"
 
-/* Returns the battery percentage [0-100] of the system. */
-int usb_get_battery_soc(void);
-
 /*
  * Returns type C current limit (mA), potentially with the DTS flag, based upon
  * states of the CC lines on the partner side.

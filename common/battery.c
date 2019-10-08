@@ -624,3 +624,14 @@ int battery_manufacturer_name(char *dest, int size)
 {
 	return get_battery_manufacturer_name(dest, size);
 }
+
+int get_battery_soc(void)
+{
+#if defined(CONFIG_CHARGER)
+	return charge_get_percent();
+#elif defined(CONFIG_BATTERY)
+	return board_get_battery_soc();
+#else
+	return 0;
+#endif
+}

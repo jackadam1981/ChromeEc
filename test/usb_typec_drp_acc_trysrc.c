@@ -10,6 +10,11 @@
 #include "usb_sm_checks.h"
 #include "charge_manager.h"
 
+int get_battery_soc(void)
+{
+	return 100;
+}
+
 void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 {
 	/* Do Nothing, but needed for linking */
