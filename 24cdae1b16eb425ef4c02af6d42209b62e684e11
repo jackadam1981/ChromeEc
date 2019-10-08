@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54760cdd_1090d1ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:52:06Z",
+      "side": 1,
+      "message": "nit: EC has a targeted meaning for module (see module_id); can you reword this to remove the work module here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065940d0_3e0cf44c",
+        "filename": "power/power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:52:06Z",
+      "side": 1,
+      "message": "Hmm, we shoudl single source this: see usb_get_battery_soc(void)",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 26
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd61eee_b9824e1c",
+        "filename": "power/power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:52:06Z",
+      "side": 1,
+      "message": "there is a battery_hw_present() for some system too, sorry it is such a mess",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 55
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6300e470_1d0f7392",
+        "filename": "power/power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:52:06Z",
+      "side": 1,
+      "message": "nit: for style, please drop the newline between the function and host_command declaration",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "24cdae1b16eb425ef4c02af6d42209b62e684e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
