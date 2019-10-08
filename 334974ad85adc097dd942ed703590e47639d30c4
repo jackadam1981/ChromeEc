@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a25c891_f12ff594",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4455,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-08T16:43:59Z",
+      "side": 0,
+      "message": "How is this CL different from changing timeout \u003d PD_T_HARD_RESET_COMPLETE?\n\nThey both look pd_task loops in PD_STATE_HARD_RESET_SEND until hard_reset_sent \u003d\u003d 1. How would the old one starve watchdog but the new one doesn\u0027t?",
+      "range": {
+        "startLine": 4455,
+        "startChar": 15,
+        "endLine": 4455,
+        "endChar": 22
+      },
+      "revId": "334974ad85adc097dd942ed703590e47639d30c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
