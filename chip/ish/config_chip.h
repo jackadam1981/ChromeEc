@@ -35,7 +35,11 @@
 /*                               Memory Layout                               */
 /*****************************************************************************/
 
+#ifdef CHIP_VARIANT_ISH5P4
+#define CONFIG_RAM_BASE		0xFF200000
+#else
 #define CONFIG_RAM_BASE		0xFF000000
+#endif
 #define CONFIG_RAM_SIZE		0x000A0000
 #define CONFIG_RAM_BANK_SIZE		0x00008000
 
