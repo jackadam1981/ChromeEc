@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69884c3a_5095b9b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-10-08T16:19:59Z",
+      "side": 1,
+      "message": "YB, can you add the bug link - b:138413964?",
+      "parentUuid": "4f6bc658_6cb4e3b0",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "9546756d22e70f9676fae4004a5856e5cab82af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35c12c88_7f7d3425",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
