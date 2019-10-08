@@ -22,6 +22,30 @@
       "revId": "cf698fa41822097d4ac554e1cf4f3e58bd0d27d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d7e266_d02f823a",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-10-08T17:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbf776b_48f23f4a",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "cf698fa41822097d4ac554e1cf4f3e58bd0d27d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
