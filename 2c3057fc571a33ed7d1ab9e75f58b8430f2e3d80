@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ae1d8aa_0d4f0ffd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:20:51Z",
+      "side": 1,
+      "message": "is the AX version not available for purchase anymore? How do we ensure that we don\u0027t use the AX in designs?",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "2c3057fc571a33ed7d1ab9e75f58b8430f2e3d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aeeef9c_f22933da",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:20:51Z",
+      "side": 1,
+      "message": "if we didn\u0027t disable this here, would it the FW reset itself soon after chip pre init?",
+      "range": {
+        "startLine": 125,
+        "startChar": 30,
+        "endLine": 125,
+        "endChar": 44
+      },
+      "revId": "2c3057fc571a33ed7d1ab9e75f58b8430f2e3d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
