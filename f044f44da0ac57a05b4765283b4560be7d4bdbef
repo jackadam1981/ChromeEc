@@ -22,6 +22,30 @@
       "revId": "f044f44da0ac57a05b4765283b4560be7d4bdbef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98922508_1c72c09f",
+        "filename": "common/mock/fp_sensor_mock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-08T18:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0408cc98_322f67ad",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "f044f44da0ac57a05b4765283b4560be7d4bdbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
