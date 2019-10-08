@@ -493,7 +493,7 @@ void pe_run(int port, int evt, int en)
 		}
 
 		/* Run state machine */
-		exe_state(port, &pe[port].ctx);
+		run_state(port, &pe[port].ctx);
 		break;
 	}
 }
