@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e60f90b_d49d0791",
+        "filename": "power/power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-08T21:38:36Z",
+      "side": 1,
+      "message": "Actually, I think I did mean battery_is_present(), which is usually board-specific and often includes the physical presence check as well.  I\u0027m going to switch back to that unless you have objections.  The goal is to see if we have a battery that is available for providing power.",
+      "parentUuid": "172b1c96_7a43a2cb",
+      "range": {
+        "startLine": 166,
+        "startChar": 24,
+        "endLine": 166,
+        "endChar": 54
+      },
+      "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "defc39ce_5eab5a07",
         "filename": "power/power_status.c",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db5553d_90eb907c",
+        "filename": "power/power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-08T21:38:36Z",
+      "side": 1,
+      "message": "Sure, I\u0027m on board for that.  common/battery_common.c is my thought.",
+      "parentUuid": "defc39ce_5eab5a07",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
