@@ -321,6 +321,24 @@ static void state_machine(uint64_t tnow)
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		break;
 	case PWRBTN_STATE_INIT_ON:
+
+
+#ifdef CONFIG_CHARGER
+		/*
+		 * If not able to power on, try again later, to allow time for
+		 * charger, battery and USB-C PD initialization.
+		 */
+		if (charge_prevent_power_on(0)) {
+			if (tnow >
+				(tpb_task_start +
+				 CONFIG_POWER_BUTTON_INIT_TIMEOUT * SECOND)) {
+				pwrbtn_state = PWRBTN_STATE_IDLE;
+				break;
+			}
+				tnext_state = tnow + 100 * MSEC;
+				break;
+		}
+#else
 		/*
 		 * Before attempting to power the system on, we need to wait for
 		 * charger and battery to be ready to supply sufficient power.
@@ -335,16 +353,6 @@ static void state_machine(uint64_t tnow)
 		    (tpb_task_start +
 		     CONFIG_POWER_BUTTON_INIT_TIMEOUT * SECOND)) {
 			pwrbtn_state = PWRBTN_STATE_IDLE;
-			break;
-		}
-
-#ifdef CONFIG_CHARGER
-		/*
-		 * If not able to power on, try again later, to allow time for
-		 * charger, battery and USB-C PD initialization.
-		 */
-		if (charge_prevent_power_on(0)) {
-			tnext_state = tnow + 100 * MSEC;
 			break;
 		}
 #endif
