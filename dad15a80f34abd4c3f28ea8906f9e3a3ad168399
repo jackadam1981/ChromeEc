@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d9e9045_32cfcca4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-08T16:14:48Z",
+      "side": 1,
+      "message": "This could overflow args-\u003eresponse, although in practice it looks like the response buffer allocated by each chip is big enough.\n\nProbably better to get rid of the fall through and create a helper function that fills in the fields common to v1 and v2 so that you\u0027re not writing v2 data into a v1 response.",
+      "range": {
+        "startLine": 1096,
+        "startChar": 0,
+        "endLine": 1099,
+        "endChar": 0
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
