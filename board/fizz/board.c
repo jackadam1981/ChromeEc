@@ -823,3 +823,8 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	return fan_table[current_level].rpm;
 }
+
+int get_battery_soc(void)
+{
+	return 0;
+}

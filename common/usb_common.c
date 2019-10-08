@@ -15,17 +15,6 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-int usb_get_battery_soc(void)
-{
-#if defined(CONFIG_CHARGER)
-	return charge_get_percent();
-#elif defined(CONFIG_BATTERY)
-	return board_get_battery_soc();
-#else
-	return 0;
-#endif
-}
-
 /*
  * CC values for regular sources and Debug sources (aka DTS)
  *

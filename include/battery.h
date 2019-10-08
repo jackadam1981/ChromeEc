@@ -445,4 +445,9 @@ extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
  */
 void battery_compensate_params(struct batt_params *batt);
 
+/**
+ * Attempt all known ways to get battery SoC, 0 if unavailable.
+ */
+int get_battery_soc(void);
+
 #endif /* __CROS_EC_BATTERY_H */

@@ -611,3 +611,8 @@ host_event_status_host_cmd(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, host_event_status_host_cmd,
 			EC_VER_MASK(0));
+
+int get_battery_soc(void)
+{
+	return 0;
+}
