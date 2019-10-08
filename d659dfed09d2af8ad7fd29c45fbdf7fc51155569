@@ -261,6 +261,30 @@
       "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "318e340f_0c0b296d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:53:55Z",
+      "side": 1,
+      "message": "I realized right after I sent the comment. Whoops. Thanks!",
+      "parentUuid": "5fe7696c_cef33b90",
+      "range": {
+        "startLine": 5732,
+        "startChar": 9,
+        "endLine": 5732,
+        "endChar": 26
+      },
+      "revId": "d659dfed09d2af8ad7fd29c45fbdf7fc51155569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
