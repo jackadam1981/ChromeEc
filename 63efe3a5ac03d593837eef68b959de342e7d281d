@@ -114,6 +114,30 @@
       "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4152075_93a51c6c",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-08T17:30:11Z",
+      "side": 1,
+      "message": "it sounds like a really good use of a flag bit",
+      "parentUuid": "f28e1083_420aeb44",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 30
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
