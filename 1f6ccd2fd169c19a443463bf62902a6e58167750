@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4bb55ca_905a70f4",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-08T20:41:59Z",
+      "side": 1,
+      "message": "Doesn\u0027t this whole function go away if CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP is disabled?\nSo then no need to check it inside?",
+      "revId": "1f6ccd2fd169c19a443463bf62902a6e58167750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
