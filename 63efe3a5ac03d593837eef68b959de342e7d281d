@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "9c08b524_c5c3d98e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-08T17:56:21Z",
+      "side": 1,
+      "message": "An I2C flag bit along with \"if (battery_supports_pec())\" will reduce this to a single call option.  This comment applies for the same usage pattern below.",
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4b97e01_5ae75c03",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
