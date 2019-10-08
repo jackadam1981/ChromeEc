@@ -45,6 +45,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "362a46f2_3c78387c",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-08T19:04:25Z",
+      "side": 1,
+      "message": "this should return 0 if tablet_mode is DISABLED, but DISABLED as an integer is 1",
+      "parentUuid": "a12d172f_dc2d7147",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
