@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "battery.h"
+#include "battery_common.h"
 #include "battery_smart.h"
 #include "board.h"
 #include "charge_manager.h"
@@ -2344,7 +2345,7 @@ static void pd_update_try_source(void)
 {
 	int i;
 	int try_src = 0;
-	int batt_soc = usb_get_battery_soc();
+	int batt_soc = get_battery_soc();
 
 	try_src = 0;
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
@@ -2389,7 +2390,7 @@ static void pd_update_try_source(void)
 static void pd_update_snk_reset(void)
 {
 	int i;
-	int batt_soc = usb_get_battery_soc();
+	int batt_soc = get_battery_soc();
 
 	if (batt_soc < CONFIG_USB_PD_RESET_MIN_BATT_SOC)
 		return;
@@ -4083,7 +4084,7 @@ void pd_task(void *u)
 				 * high-power chargers will stay at 15W until a
 				 * reset is sent, depending on boot timing.
 				 */
-				int batt_soc = usb_get_battery_soc();
+				int batt_soc = get_battery_soc();
 
 				if (batt_soc < CONFIG_USB_PD_RESET_MIN_BATT_SOC)
 					pd[port].flags |=

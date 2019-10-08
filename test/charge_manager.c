@@ -38,6 +38,12 @@ static unsigned int charge_port_to_reject = CHARGE_PORT_NONE;
 static int new_power_request[CONFIG_USB_PD_PORT_COUNT];
 static int power_role[CONFIG_USB_PD_PORT_COUNT];
 
+/* Stub for getting battery SoC */
+int board_get_battery_soc(void)
+{
+	return 100;
+}
+
 /* Callback functions called by CM on state change */
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)

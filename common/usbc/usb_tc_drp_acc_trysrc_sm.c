@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery_common.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -839,7 +840,7 @@ static void pd_update_try_source(void)
 	int i;
 	int try_src = 0;
 
-	int batt_soc = usb_get_battery_soc();
+	int batt_soc = get_battery_soc();
 
 	try_src = 0;
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
