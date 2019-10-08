@@ -16,6 +16,46 @@
       "revId": "7c36224b20d9f74f3bada81925d07ba41b31d143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dfdf383_e49f9719",
+        "filename": "common/battery_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-08T23:54:40Z",
+      "side": 1,
+      "message": "Why not common/battery.c?",
+      "revId": "7c36224b20d9f74f3bada81925d07ba41b31d143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840c8657_3ac5f14f",
+        "filename": "common/battery_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-08T23:54:40Z",
+      "side": 1,
+      "message": "I think IS_ENABLED() should work.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "7c36224b20d9f74f3bada81925d07ba41b31d143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
