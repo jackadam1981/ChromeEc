@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5792ba_afd7d2dc",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:06:10Z",
+      "side": 1,
+      "message": "please add a comment saying we want to restart the write sequence every IDEAL_SIZE chunk worth of data",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 50
+      },
+      "revId": "9ded37e31bb420ebf0270d48e331226d04417a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99da08cb_68455e36",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:06:10Z",
+      "side": 1,
+      "message": "why don\u0027t we do this in a signle dma transaction like we do on line 273?",
+      "range": {
+        "startLine": 287,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 16
+      },
+      "revId": "9ded37e31bb420ebf0270d48e331226d04417a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
