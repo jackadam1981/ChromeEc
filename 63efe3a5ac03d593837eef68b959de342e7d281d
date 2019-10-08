@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a92ada13_7b0527d7",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T17:20:51Z",
+      "side": 1,
+      "message": "seems like the value of this should be cache and we shouldn\u0027t perform an i2c read everytime we need to talk to the battery",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854d17f7_4a82d705",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T17:20:51Z",
+      "side": 1,
+      "message": "also make this function available all the time and return 0 if CONFIG_SMBUS_PEC is not defined. This will clean up the calling code quite a bit",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b97e01_5ae75c03",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T17:20:51Z",
+      "side": 1,
+      "message": "left over from debugging?",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d9e2d6_a01e5a25",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2282,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T17:20:51Z",
+      "side": 1,
+      "message": "I don\u0027t think we need a config option for this, we can just try reading the register and apply the new reading strategy indiscriminately",
+      "range": {
+        "startLine": 2270,
+        "startChar": 0,
+        "endLine": 2282,
+        "endChar": 23
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28e1083_420aeb44",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T17:20:51Z",
+      "side": 1,
+      "message": "Instead of creating new function, should we use a new i2c flag instead?\n\nDenis what are you thoughts?",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 30
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
