@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "9a89a7a9_3f1f7e60",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-08T17:30:08Z",
+      "side": 1,
+      "message": "Instead of having definitions of these functions in two places, I think it might be more readable to forward declare them unconditionally and have the bodies of the existing definitions be conditionally compiled. I think that would also allow you to replace #ifdef with IS_ENABLED for CONFIG_USB_PE_SM in those definitions.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fac0f8c7_e9455dce",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
