@@ -16,6 +16,24 @@
       "revId": "068b917ef17383c1cf8987d070b27fea30a72d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9b6a82_0b51e243",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:22:13Z",
+      "side": 1,
+      "message": "No it wasn\u0027t really used and it was ambiguous with PD_CC_NONE",
+      "parentUuid": "3d3766bd_e50f1fab",
+      "revId": "068b917ef17383c1cf8987d070b27fea30a72d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
