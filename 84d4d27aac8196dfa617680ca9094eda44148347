@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee6b8ea4_0cd83522",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:21:39Z",
+      "side": 1,
+      "message": "I think you are going to have to multiple by sizeof(uint32_t) as well to get the number of bytes",
+      "range": {
+        "startLine": 436,
+        "startChar": 11,
+        "endLine": 436,
+        "endChar": 22
+      },
+      "revId": "84d4d27aac8196dfa617680ca9094eda44148347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
