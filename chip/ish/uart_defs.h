@@ -13,18 +13,23 @@
 
 #define UART_ERROR		-1
 #define UART_BUSY		-2
-#define HSU_BASE		ISH_UART_BASE
+#ifdef CHIP_VARIANT_ISH5P4
+#define UART0_OFFS              (0x00)
+#define UART1_OFFS              (0x2000)
+#define UART2_OFFS              (0x4000)
+#else
 #define UART0_OFFS		(0x80)
-#define UART0_BASE		(ISH_UART_BASE + UART0_OFFS)
 #define UART0_SIZE		(0x80)
-
 #define UART1_OFFS		(0x100)
-#define UART1_BASE		(ISH_UART_BASE + UART1_OFFS)
 #define UART1_SIZE		(0x80)
-
 #define UART2_OFFS		(0x180)
-#define UART2_BASE		(ISH_UART_BASE + UART2_OFFS)
 #define UART2_SIZE		(0x80)
+#endif
+
+#define HSU_BASE		ISH_UART_BASE
+#define UART0_BASE              (ISH_UART_BASE + UART0_OFFS)
+#define UART1_BASE              (ISH_UART_BASE + UART1_OFFS)
+#define UART2_BASE              (ISH_UART_BASE + UART2_OFFS)
 
 #define UART_REG(size, name, n)					\
 	REG##size(uart_ctx[n].base +					\
@@ -33,32 +38,31 @@
 /* Register accesses */
 #define LSR(n)			UART_REG(8, LSR, n)
 #define THR(n)			UART_REG(8, THR, n)
-#define FOR(n)			UART_REG(32, FOR, n)
 #define RBR(n)			UART_REG(8, RBR, n)
 #define DLL(n)			UART_REG(8, DLL, n)
 #define DLH(n)			UART_REG(8, DLH, n)
-#define DLD(n)			UART_REG(8, DLD, n)
 #define IER(n)			UART_REG(8, IER, n)
 #define IIR(n)			UART_REG(8, IIR, n)
 #define FCR(n)			UART_REG(8, FCR, n)
 #define LCR(n)			UART_REG(8, LCR, n)
 #define MCR(n)			UART_REG(8, MCR, n)
 #define MSR(n)			UART_REG(8, MSR, n)
+#define DLF(n)			UART_REG(8, DLF, n)
+#define FOR(n)			UART_REG(32, FOR, n)
 #define ABR(n)			UART_REG(32, ABR, n)
 #define PS(n)			UART_REG(32, PS, n)
 #define MUL(n)			UART_REG(32, MUL, n)
 #define DIV(n)			UART_REG(32, DIV, n)
 
+#ifdef CHIP_VARIANT_ISH5P4
+#include "uart_ish54_regs.h"
+#else
 /* RBR: Receive Buffer register     (BLAB bit = 0)  */
 #define UART_OFFSET_RBR	(0)
 /* THR: Transmit Holding register   (BLAB bit = 0)  */
 #define UART_OFFSET_THR	(0)
 /* IER: Interrupt Enable register   (BLAB bit = 0)  */
 #define UART_OFFSET_IER	(1)
-
-#define FCR_FIFO_SIZE_16	(0x00)
-#define FCR_FIFO_SIZE_64	(0x20)
-#define FCR_ITL_FIFO_64_BYTES_1 (0x00)
 
 /* FCR: FIFO Control register */
 #define UART_OFFSET_FCR	(2)
@@ -112,9 +116,12 @@
 
 /* DLH: Divisor Latch Reg. high byte (BLAB bit = 1) */
 #define UART_OFFSET_DLH	(1)
+#endif
 
-/* DLH: Divisor Latch Fractional. (BLAB bit = 1) */
-#define UART_OFFSET_DLD	(2)
+/*
+ * DLF: Divisor Latch Fraction Register
+ */
+#define UART_OFFSET_DLF       (0xC0)
 
 /* FOR: Fifo O Register (ISH only) */
 #define UART_OFFSET_FOR	(0x20)
@@ -131,6 +138,22 @@
 /* DDS registers (ISH only) */
 #define UART_OFFSET_MUL	(0x34)
 #define UART_OFFSET_DIV	(0x38)
+
+#define FCR_FIFO_SIZE_16	(0x00)
+#define FCR_FIFO_SIZE_64	(0x20)
+#define FCR_ITL_FIFO_64_BYTES_1 (0x00)
+
+/* tx empty trigger(TET) */
+#define FCR_TET_EMPTY           (0x00)
+#define FCR_TET_2CHAR           (0x10)
+#define FCR_TET_QTR_FULL        (0x20)
+#define FCR_TET_HALF_FULL       (0x30)
+
+/* receive trigger(RT) */
+#define FCR_RT_1CHAR            (0x00)
+#define FCR_RT_QTR_FULL         (0x40)
+#define FCR_RT_HALF_FULL        (0x80)
+#define FCR_RT_2LESS_FULL       (0xc0)
 
 /* G_IEN: Global Interrupt Enable  (ISH only) */
 #define HSU_REG_GIEN		REG32(HSU_BASE + 0x0)
@@ -185,13 +208,17 @@
 /* KHZ, MHZ */
 #define KHZ(x)				((x) * 1000)
 #define MHZ(x)				(KHZ(x) * 1000)
-#if defined(CHIP_FAMILY_ISH3) || defined(CHIP_FAMILY_ISH5)
+#if defined(CHIP_VARIANT_ISH5P4)
+/* Change to 100MHZ in real silicon platform */
+#define UART_ISH_INPUT_FREQ             MHZ(100)
+#elif defined(CHIP_FAMILY_ISH3) || defined(CHIP_FAMILY_ISH5)
 #define UART_ISH_INPUT_FREQ		MHZ(120)
 #elif defined(CHIP_FAMILY_ISH4)
 #define UART_ISH_INPUT_FREQ		MHZ(100)
 #endif
 #define UART_DEFAULT_BAUD_RATE		115200
 #define UART_STATE_CG			BIT(UART_OP_CG)
+#define ceil_f(N, M) (((N - 1) / M) + 1)
 
 enum UART_PORT {
 	UART_PORT_0,
