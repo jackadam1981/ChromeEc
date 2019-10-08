@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "172b1c96_7a43a2cb",
+        "filename": "power/power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T20:43:29Z",
+      "side": 1,
+      "message": "So technically the battery_hw_present can return YES when the battery is broken but it physically seated in the system. Do you want that scenario to say that we are using the battery?\n\nIf so, can you call that out in a comment above this line, please",
+      "range": {
+        "startLine": 166,
+        "startChar": 24,
+        "endLine": 166,
+        "endChar": 54
+      },
+      "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "defc39ce_5eab5a07",
+        "filename": "power/power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T20:43:29Z",
+      "side": 1,
+      "message": "can you pull this function out into a new file that depends on CONFIG_COMMON_RUNTIME instead. It is a little weird for this code module to require on USB power delivery being defined",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
