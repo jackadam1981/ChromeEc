@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d4a50c_1435b31b",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-10-08T06:33:03Z",
+      "side": 1,
+      "message": "This looks right (but honestly I\u0027d prefer plain arithmetic to pointer arithmetic like it\u0027s done now).\n\nAlso, I\u0027m a bit concerned about what happens on the _next_ sysjump (not that it\u0027s super common... but, still). Won\u0027t the jdata be at the wrong position? (since pdata will use the new struct_size, but jdata still be at the old offset?)",
+      "revId": "96f554d873c5eee09d140f7067770ca09a67ac7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
