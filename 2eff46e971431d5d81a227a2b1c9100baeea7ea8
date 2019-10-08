@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78f72791_fa63fa97",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8083,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:00:00Z",
+      "side": 1,
+      "message": "let\u0027s also make sure this string isn\u0027t NULL. (Print out an error instead maybe?)",
+      "range": {
+        "startLine": 8083,
+        "startChar": 23,
+        "endLine": 8083,
+        "endChar": 43
+      },
+      "revId": "2eff46e971431d5d81a227a2b1c9100baeea7ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
