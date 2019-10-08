@@ -22,6 +22,30 @@
       "revId": "8c89d95776c73783bcb8e24bf483f509e8dbd560",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e230433_ead362ad",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8053,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-10-08T06:54:24Z",
+      "side": 1,
+      "message": "Yeay I copy-pasted a comment with a grammar mistake.\n\nDropped the comment, it does not belong here ,-P",
+      "parentUuid": "4b38fd2f_2784a128",
+      "range": {
+        "startLine": 8053,
+        "startChar": 26,
+        "endLine": 8053,
+        "endChar": 30
+      },
+      "revId": "8c89d95776c73783bcb8e24bf483f509e8dbd560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
