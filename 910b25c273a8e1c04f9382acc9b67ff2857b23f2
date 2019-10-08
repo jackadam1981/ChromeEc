@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42e8a275_e273e0c6",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-08T18:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f10c25_a13911bd",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 64
+      },
+      "revId": "910b25c273a8e1c04f9382acc9b67ff2857b23f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6be15aa_acfbcb31",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "910b25c273a8e1c04f9382acc9b67ff2857b23f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfca090d_5b217a83",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-08T18:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6be15aa_acfbcb31",
+      "range": {
+        "startLine": 235,
+        "startChar": 28,
+        "endLine": 235,
+        "endChar": 29
+      },
+      "revId": "910b25c273a8e1c04f9382acc9b67ff2857b23f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
