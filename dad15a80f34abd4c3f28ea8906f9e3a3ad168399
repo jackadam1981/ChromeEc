@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3c8431e5_bd67c116",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3563,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:16:32Z",
+      "side": 1,
+      "message": "enum idh_ptype",
+      "range": {
+        "startLine": 3563,
+        "startChar": 0,
+        "endLine": 3563,
+        "endChar": 7
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac0f8c7_e9455dce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:16:32Z",
+      "side": 1,
+      "message": "drop this variable",
+      "range": {
+        "startLine": 1034,
+        "startChar": 39,
+        "endLine": 1034,
+        "endChar": 43
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d9e9045_32cfcca4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -18,6 +64,75 @@
         "startChar": 0,
         "endLine": 1099,
         "endChar": 0
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81fbbe2_5068d7c8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:16:32Z",
+      "side": 1,
+      "message": "and use sizeof(struct ec_response_usb_pd_control_v1)\n\nAlso add a comment that v2 is a strict superset of v1",
+      "range": {
+        "startLine": 1103,
+        "startChar": 33,
+        "endLine": 1103,
+        "endChar": 37
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bbbf4e9_2888e9d9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2651,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:16:32Z",
+      "side": 1,
+      "message": "you can drop the conditional and just always define these functions.",
+      "range": {
+        "startLine": 2651,
+        "startChar": 7,
+        "endLine": 2651,
+        "endChar": 28
+      },
+      "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e463769_a8b9fc83",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2654,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T16:16:32Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be PD_CC_DFP_ATTACHED || PD_CC_DFP_DEBUG_ACC",
+      "range": {
+        "startLine": 2654,
+        "startChar": 29,
+        "endLine": 2654,
+        "endChar": 47
       },
       "revId": "dad15a80f34abd4c3f28ea8906f9e3a3ad168399",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
