@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "22c47c36_17142d87",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-08T18:00:53Z",
+      "side": 1,
+      "message": "I think the designed method of getting an 8bit address is\n\nI2C_GET_ADDR(addr_flag) \u003c\u003c 1;",
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a92ada13_7b0527d7",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
