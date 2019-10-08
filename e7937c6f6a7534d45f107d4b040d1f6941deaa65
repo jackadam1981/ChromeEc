@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6288896c_e7528322",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:12:43Z",
+      "side": 1,
+      "message": "let\u0027s make this an else case.\n\nOtherwise the indentation is wrong",
+      "range": {
+        "startLine": 337,
+        "startChar": 4,
+        "endLine": 339,
+        "endChar": 10
+      },
+      "revId": "e7937c6f6a7534d45f107d4b040d1f6941deaa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bff371c_be8c4f0e",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-08T15:12:43Z",
+      "side": 1,
+      "message": "You can single source this code, please don\u0027t copy it\n\nif (!IS_ENABLED(CONFIG_CHARGER) || charger_prevent_power_on(0) {\n ...\n\n}",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 6
+      },
+      "revId": "e7937c6f6a7534d45f107d4b040d1f6941deaa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
