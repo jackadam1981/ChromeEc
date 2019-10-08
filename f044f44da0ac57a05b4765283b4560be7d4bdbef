@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0408cc98_322f67ad",
+        "filename": "common/mock/fp_sensor_mock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-08T16:25:09Z",
+      "side": 1,
+      "message": "Extra semicolon?",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "f044f44da0ac57a05b4765283b4560be7d4bdbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
