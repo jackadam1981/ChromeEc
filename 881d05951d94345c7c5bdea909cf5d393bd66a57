@@ -22,6 +22,30 @@
       "revId": "881d05951d94345c7c5bdea909cf5d393bd66a57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca3c8f1_39cd39db",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:10:10Z",
+      "side": 0,
+      "message": "Ah sorry, added back I2C_PORT_ACCEL (and rebased to ToT to make cherry-pick easier)",
+      "parentUuid": "c17b7b69_ec231838",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "881d05951d94345c7c5bdea909cf5d393bd66a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
