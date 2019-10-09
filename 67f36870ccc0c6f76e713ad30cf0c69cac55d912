@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40191573_4a574654",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-10-09T22:11:25Z",
+      "side": 1,
+      "message": "nit: You can save a level of indentation by using the guard clauses:\n\n if (!IS_ENABLED(CONFIG_USB_PE_SM))\n          return;\n  .....\n\nsimilarly elsewhere.",
+      "revId": "67f36870ccc0c6f76e713ad30cf0c69cac55d912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
