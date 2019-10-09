@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "69c23d2a_9ae53d45",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8034,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-10-09T06:40:09Z",
+      "side": 1,
+      "message": "This makes sure that there are no blank/NULL entries in the array above...\n\nI\u0027ll rethink this, we can do better.",
+      "parentUuid": "7be00aa8_2e999f9b",
+      "range": {
+        "startLine": 8034,
+        "startChar": 49,
+        "endLine": 8034,
+        "endChar": 50
+      },
+      "revId": "e48c2bf5fef85f2a72284333dd4ace035d73c092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f7fc22a_3455566d",
         "filename": "util/ectool.c",
         "patchSetId": 3
