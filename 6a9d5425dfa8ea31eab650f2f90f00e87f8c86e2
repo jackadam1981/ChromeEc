@@ -46,6 +46,30 @@
       "revId": "6a9d5425dfa8ea31eab650f2f90f00e87f8c86e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6fe6f37_f48f6d6e",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1286980
+      },
+      "writtenOn": "2019-10-09T09:18:47Z",
+      "side": 1,
+      "message": "It\u0027s ok to follow scarlet. USB_C0_DISCHARGE is default low. USB_C0_DISCHARGE is high only when unplug the ac adapter and the VBUS is still above vSafe5V. It can be switched to low after the VBUS returns back to vSafe5V or below vSafe5V.",
+      "parentUuid": "3e8ccf9b_4713e094",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "6a9d5425dfa8ea31eab650f2f90f00e87f8c86e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
