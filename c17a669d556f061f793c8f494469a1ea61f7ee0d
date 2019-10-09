@@ -16,6 +16,24 @@
       "revId": "c17a669d556f061f793c8f494469a1ea61f7ee0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54a3fa8_e54f1147",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-09T22:48:28Z",
+      "side": 1,
+      "message": "It has already been filled out for Intelrvp, It\u0027s in baseboard/intelrvp/usb_pd_policy.c:258",
+      "parentUuid": "ea902320_19ebecc2",
+      "revId": "c17a669d556f061f793c8f494469a1ea61f7ee0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
