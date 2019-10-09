@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1dd96518_c11d0db1",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-09T15:59:30Z",
+      "side": 1,
+      "message": "Yeah, moving forward we should make sure they\u0027re properly versioned so we can distinguish.",
+      "parentUuid": "b67a60f8_6d794ccb",
+      "range": {
+        "startLine": 42,
+        "startChar": 35,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "0e6ef114abe1eef28e0eab1a0a662e81e9d32c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6864210_90830407",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "47fba23c_20591227",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-09T15:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6864210_90830407",
+      "range": {
+        "startLine": 179,
+        "startChar": 42,
+        "endLine": 179,
+        "endChar": 50
+      },
+      "revId": "0e6ef114abe1eef28e0eab1a0a662e81e9d32c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dbfd688_d7f88068",
         "filename": "docs/images/dartmonkey.jpg",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "0e6ef114abe1eef28e0eab1a0a662e81e9d32c9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0232f8cf_5fd2c265",
+        "filename": "docs/images/dartmonkey.jpg",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-09T15:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbfd688_d7f88068",
+      "revId": "0e6ef114abe1eef28e0eab1a0a662e81e9d32c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
