@@ -93,6 +93,30 @@
       "revId": "0f591f322342f7517b341cdd9183c98dd287a549",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d911e6f_eb0f40b8",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-10-09T20:23:31Z",
+      "side": 1,
+      "message": "I think it would still be good to keep the line 544 warning, so it\u0027ll give a reason for why eraseflashinfo may stop working, but I\u0027m ok with this if you don\u0027t want to keep it in.",
+      "parentUuid": "117167ed_fe39d551",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 32
+      },
+      "revId": "0f591f322342f7517b341cdd9183c98dd287a549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
