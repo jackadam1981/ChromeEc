@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "253426ae_e8603f23",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-10-09T20:05:02Z",
+      "side": 1,
+      "message": "Can we continue compiling this in DBG images. We haven\u0027t made the transition to the new RO yet. I\u0027d like to be able to continue using eraseflashinfo in dbg images until we make the RO change.\n\nI don\u0027t think it\u0027s a big deal if eraseflashinfo exists, but doesn\u0027t work in dbg images. The error message in 544 clearly states what\u0027s going on.",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 16
+      },
+      "revId": "0f591f322342f7517b341cdd9183c98dd287a549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab90086_847d3f45",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-10-09T20:05:02Z",
+      "side": 1,
+      "message": "Can we skip returning an error in CR50_DEV images, so dbg image eraseflashinfo will continue working until the new RO is out.",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 32
+      },
+      "revId": "0f591f322342f7517b341cdd9183c98dd287a549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
