@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b300770c_3f2d2d07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1238380
+      },
+      "writtenOn": "2019-10-09T01:11:50Z",
+      "side": 1,
+      "message": "This is not only for kindred, power_button_x86 is better.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "e7937c6f6a7534d45f107d4b040d1f6941deaa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6288896c_e7528322",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
