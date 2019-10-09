@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca68d25e_468acee9",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8079,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-09T07:21:08Z",
+      "side": 1,
+      "message": "Not so sure we need so many zeroes here.  The other ectool outputs looks like they cut it much shorter.",
+      "range": {
+        "startLine": 8079,
+        "startChar": 33,
+        "endLine": 8079,
+        "endChar": 35
+      },
+      "revId": "e1cea1377126ad1b7316d09bf74e53cd2d7cde3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
