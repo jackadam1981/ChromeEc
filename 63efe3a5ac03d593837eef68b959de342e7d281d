@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f24b9fbb_db25f873",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22c47c36_17142d87",
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a92ada13_7b0527d7",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2019-10-08T17:20:51Z",
       "side": 1,
       "message": "seems like the value of this should be cache and we shouldn\u0027t perform an i2c read everytime we need to talk to the battery",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b24749_bc31b927",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "yes it\u0027s cached (line 27 below)",
+      "parentUuid": "a92ada13_7b0527d7",
       "range": {
         "startLine": 25,
         "startChar": 11,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "7de6dc50_28dc6393",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854d17f7_4a82d705",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c08b524_c5c3d98e",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493b5e5b_860cf2ea",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c08b524_c5c3d98e",
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "5ce10b63_a7d4f248",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4b97e01_5ae75c03",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d9e2d6_a01e5a25",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -116,6 +224,30 @@
       "writtenOn": "2019-10-08T17:20:51Z",
       "side": 1,
       "message": "I don\u0027t think we need a config option for this, we can just try reading the register and apply the new reading strategy indiscriminately",
+      "range": {
+        "startLine": 2270,
+        "startChar": 0,
+        "endLine": 2282,
+        "endChar": 23
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56df00a8_13805619",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2282,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "Not sure if all boards like its overhead, both in size and performance.\n\nActually these new functions can\u0027t fit into Chell\u0027s flash space, 132 bytes overflow.",
+      "parentUuid": "23d9e2d6_a01e5a25",
       "range": {
         "startLine": 2270,
         "startChar": 0,
@@ -172,6 +304,30 @@
       "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b786ad_c61be2aa",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4152075_93a51c6c",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 30
+      },
+      "revId": "63efe3a5ac03d593837eef68b959de342e7d281d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
