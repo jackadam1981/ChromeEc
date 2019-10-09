@@ -46,6 +46,30 @@
       "revId": "881d05951d94345c7c5bdea909cf5d393bd66a57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d19b14_fa8202e5",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-09T12:11:06Z",
+      "side": 0,
+      "message": "and for reducing failure rate, please try CL:1827138",
+      "parentUuid": "cca3c8f1_39cd39db",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "881d05951d94345c7c5bdea909cf5d393bd66a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
