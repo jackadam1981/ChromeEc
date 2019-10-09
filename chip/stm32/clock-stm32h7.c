@@ -32,7 +32,13 @@
  * with /4 prescaler (2^2): period 125 us, full range ~8s
  */
 #define LPTIM_PRESCALER_LOG2 2
-#define LPTIM_PRESCALER BIT(LPTIM_PRESCALER_LOG2)
+/*
+ * We do not replace this bit shift with BIT() macro here, because BIT() macro
+ * makes LPTIM_PERIOD_US an unsigned long instead of int, which causes a
+ * bug in the LPTIM code and changes deep sleep behavior.
+ * TODO: Explain exactly what the bug is.
+ */
+#define LPTIM_PRESCALER (1 << LPTIM_PRESCALER_LOG2)
 #define LPTIM_PERIOD_US (SECOND / (STM32_LSI_CLOCK / LPTIM_PRESCALER))
 
 /*
