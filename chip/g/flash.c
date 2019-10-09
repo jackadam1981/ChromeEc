@@ -47,6 +47,7 @@
 #include "flash_log.h"
 #include "registers.h"
 #include "shared_mem.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "watchdog.h"
@@ -526,79 +527,45 @@ static enum vendor_cmd_rc vc_endorsement_seed(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_ENDORSEMENT_SEED, vc_endorsement_seed);
 #endif
-#ifdef CR50_RELAXED
+
 static int command_erase_flash_info(int argc, char **argv)
 {
+	uint32_t *preserved_manufacture_state;
+	const size_t manuf_word_count =
+		FLASH_INFO_MANUFACTURE_STATE_SIZE / sizeof(uint32_t);
 	int i;
-	int rv;
-	struct info1_layout *info1;
-	uint32_t *p;
+	int rv = EC_ERROR_BUSY;
+#ifndef CR50_DEV
+	const struct SignedHeader *h;
 
-	rv = shared_mem_acquire(sizeof(*info1), (char **)&info1);
-	if (rv != EC_SUCCESS) {
-		ccprintf("Failed to allocate memory for info1!\n");
-		return rv;
+	h = (struct SignedHeader *)get_program_memory_addr(
+		system_get_image_copy());
+	if (!(h->config1_ & INFO1_IS_ERASABLE)) {
+		ccprintf("This image is not authorized to erase INFO1!\n");
+		return EC_ERROR_ACCESS_DENIED;
+	}
+#endif
+	if (shared_mem_acquire(FLASH_INFO_MANUFACTURE_STATE_SIZE,
+			       (char **)&preserved_manufacture_state) !=
+	    EC_SUCCESS) {
+		ccprintf("Failed to allocate memory for manufacture state!\n");
+		return EC_ERROR_MEMORY_ALLOCATION;
 	}
 
-	/* Read the entire info1. */
-	p = (uint32_t *)info1;
-	for (i = 0; i < (sizeof(*info1) / sizeof(*p)); i++) {
-		if (flash_physical_info_read_word(i * sizeof(*p), p + i) !=
-		    EC_SUCCESS) {
+	/* Preserve manufacturing information. */
+	for (i = 0; i < manuf_word_count; i++) {
+		if (flash_physical_info_read_word(
+			    FLASH_INFO_MANUFACTURE_STATE_OFFSET +
+				    i * sizeof(uint32_t),
+			    preserved_manufacture_state + i) != EC_SUCCESS) {
 			ccprintf("Failed to read word %d!\n", i);
 			goto exit;
 		}
 	}
 
-#ifdef CR50_SQA
-	/*
-	 * SQA images erase INFO1 RW mask, but do not allow erasing board ID.
-	 *
-	 * If compiled with CR50_SQA=1, board ID flags will set to zero, if
-	 * compiled with CR50_SQA=2 or greater, board ID flags can be set to
-	 * an arbitrary value passed in on the command line, but guaranteeing
-	 * not to lock out the currently running image.
-	 */
-	{
-		uint32_t flags = 0;
-#if CR50_SQA > 1
-		if (argc > 1) {
-			char *e;
-
-			flags = strtoi(argv[1], &e, 0);
-			if (*e) {
-				rv = EC_ERROR_PARAM1;
-				goto exit;
-			}
-		}
-#endif
-		if (board_id_is_blank(&info1->board_space.bid)) {
-			ccprintf("BID is erased. Not modifying flags\n");
-		} else {
-			ccprintf("setting BID flags to %x\n", flags);
-			info1->board_space.bid.flags = flags;
-		}
-		if (check_board_id_vs_header(&info1->board_space.bid,
-					     get_current_image_header())) {
-			ccprintf("Flags %x would lock out current image\n",
-				 flags);
-			rv = EC_ERROR_PARAM1;
-			goto exit;
-		}
-	}
-#else  /* CR50_SQA   ^^^^^^ defined    vvvvvvv Not defined. */
-	/*
-	 * This must be CR50_DEV=1 image, just erase the board information
-	 * space.
-	 */
-	memset(&info1->board_space, 0xff, sizeof(info1->board_space));
-#endif /* CR50_SQA Not defined. */
-
-	memset(info1->rw_info_map, 0xff, sizeof(info1->rw_info_map));
+	flash_info_write_enable();
 
 	mutex_lock(&flash_mtx);
-
-	flash_info_write_enable();
 
 	rv = do_flash_op(OP_ERASE_BLOCK, 1, 0, 512);
 
@@ -609,21 +576,23 @@ static int command_erase_flash_info(int argc, char **argv)
 		goto exit;
 	}
 
-	rv = flash_info_physical_write(0, sizeof(*info1), (char *)info1);
-	if (rv != EC_SUCCESS)
-		ccprintf("Failed write back info1 contents!\n");
+	if (flash_info_physical_write(FLASH_INFO_MANUFACTURE_STATE_OFFSET,
+				      FLASH_INFO_MANUFACTURE_STATE_SIZE,
+				      (char *)preserved_manufacture_state) !=
+	    EC_SUCCESS) {
+		ccprintf("Failed to restore manufacture state!\n");
+		goto exit;
+	}
 
- exit:
+	rv = EC_SUCCESS;
+exit:
 	flash_info_write_disable();
-	always_memset(info1, 0, sizeof(*info1));
-	shared_mem_release(info1);
+
+	always_memset(preserved_manufacture_state, 0,
+		      FLASH_INFO_MANUFACTURE_STATE_SIZE);
+	shared_mem_release(preserved_manufacture_state);
+
 	return rv;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info,
-#if defined(CR50_SQA) && (CR50_SQA > 1)
-			     "[bid flags]",
-			     "Erase INFO1 flash space and set Board ID flags");
-#else
-			     "", "Erase INFO1 flash space");
-#endif
-#endif
+DECLARE_SAFE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info, "",
+			     "Erase INFO1 flash space");
