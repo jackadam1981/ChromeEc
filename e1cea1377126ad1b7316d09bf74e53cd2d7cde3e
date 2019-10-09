@@ -22,6 +22,30 @@
       "revId": "e1cea1377126ad1b7316d09bf74e53cd2d7cde3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13124137_7ec80170",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8079,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-10-09T08:37:31Z",
+      "side": 1,
+      "message": "04. 16 bits should be enough for everyone.",
+      "parentUuid": "ca68d25e_468acee9",
+      "range": {
+        "startLine": 8079,
+        "startChar": 33,
+        "endLine": 8079,
+        "endChar": 35
+      },
+      "revId": "e1cea1377126ad1b7316d09bf74e53cd2d7cde3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
