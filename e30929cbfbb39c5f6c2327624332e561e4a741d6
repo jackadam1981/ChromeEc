@@ -16,6 +16,24 @@
       "revId": "e30929cbfbb39c5f6c2327624332e561e4a741d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6866f053_8c6bd3b9",
+        "filename": "include/usb_pe_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-09T17:23:48Z",
+      "side": 1,
+      "message": "For use only by unit tests, we should use test_export_static.",
+      "parentUuid": "fa45a5c5_45dba144",
+      "revId": "e30929cbfbb39c5f6c2327624332e561e4a741d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
