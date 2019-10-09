@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb1158b_e574e3d0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-09T17:15:52Z",
+      "side": 1,
+      "message": "Can this also be pulled into the IS_ENABLED line below, or at least placed inside the function body?",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 35
+      },
+      "revId": "1946dd0a52c39266620ee5d40c49f53c70229e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a435ded_eed7a4b5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-09T17:15:52Z",
+      "side": 1,
+      "message": "This whole block is conditional on CONFIG_USB_PE_SM, one way or another. Can you put it in one big\nif (IS_ENABLED(CONFIG_USB_PE_SM))\nto get rid of the #ifdef and give the branches similar structures?",
+      "range": {
+        "startLine": 783,
+        "startChar": 1,
+        "endLine": 807,
+        "endChar": 6
+      },
+      "revId": "1946dd0a52c39266620ee5d40c49f53c70229e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3222006_0af89b83",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-09T17:15:52Z",
+      "side": 1,
+      "message": "Can you check for CONFIG_USB_PD_TCPC_LOW_POWER on line 1447 to avoid a second, empty function definition here?",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1609,
+        "endChar": 1
+      },
+      "revId": "1946dd0a52c39266620ee5d40c49f53c70229e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
