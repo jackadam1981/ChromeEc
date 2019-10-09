@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1b7084b_f9c13dab",
+        "filename": "board/helios/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-09T02:49:51Z",
+      "side": 1,
+      "message": "Sorry, can you try rebasing on top of the CLs that are above this one, please?  If this is the first time this function is called, it will be doing blocking I2C communication from interrupt context, which prevents any other task or ISR from running until it\u0027s done.",
+      "range": {
+        "startLine": 127,
+        "startChar": 6,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "11f68ded9b2cf9d99dfd7d9e82eed3450cb1d1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
