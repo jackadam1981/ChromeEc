@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "309f418a_3aee5086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-10-09T01:13:33Z",
+      "side": 1,
+      "message": "I think this change to \nCommon: Make sure PWRBTN_STATE_INIT_ON timeout in correct timing.",
+      "revId": "e7937c6f6a7534d45f107d4b040d1f6941deaa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6288896c_e7528322",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
