@@ -16,6 +16,24 @@
       "revId": "e73594dd7a8198c75b8e571b5784b52ece6a74b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f595ea9_319469c8",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-10T20:17:22Z",
+      "side": 1,
+      "message": "This is a completely unrelated check, keeping it here would allow to see endorsement failures which are probably more likely to happen?\n\nDo you have a suggestion where this check should be - I can move it.",
+      "parentUuid": "14578533_6423dbb9",
+      "revId": "e73594dd7a8198c75b8e571b5784b52ece6a74b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
