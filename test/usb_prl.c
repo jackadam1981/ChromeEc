@@ -6,6 +6,7 @@
  */
 #include "common.h"
 #include "crc.h"
+#include <sched.h>
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
@@ -184,6 +185,7 @@ static void cycle_through_state_machine(int port, uint32_t num, uint32_t time)
 	for (i = 0; i < num; i++) {
 		task_wake(PD_PORT_TO_TASK_ID(port));
 		task_wait_event(time);
+		(void)sched_yield();
 		/*
 		 * Ensure that the PD task actually ran otherwise loop again.
 		 * This can happen for slow/overloaded cpus (e.g. cq machine).
@@ -1374,7 +1376,10 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+
+	ccprintf("Testing PD_REV20\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_receive_control_msg);
@@ -1391,7 +1396,10 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+
+	ccprintf("Testing PD_REV30\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_send_extended_data_msg);
