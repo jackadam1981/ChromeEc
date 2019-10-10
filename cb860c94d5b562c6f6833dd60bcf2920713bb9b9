@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e14ea9ea_a4e46692",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-10T16:06:37Z",
+      "side": 0,
+      "message": "This won\u0027t be referenced anywhere after this patch. Do we still need to keep it (in util/build.mk)?",
+      "range": {
+        "startLine": 91,
+        "startChar": 44,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "cb860c94d5b562c6f6833dd60bcf2920713bb9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
