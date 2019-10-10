@@ -141,7 +141,7 @@ int system_jumped_to_this_image(void);
 int system_add_jump_tag(uint16_t tag, int version, int size, const void *data);
 
 /**
- * Retrieve previously stored jump data
+ * Retrieve previously stored jump data.
  *
  * This retrieves data stored by a previous image's call to
  * system_add_jump_tag().
@@ -191,7 +191,7 @@ int system_get_image_used(enum system_image_copy_t copy);
 int system_run_image_copy(enum system_image_copy_t copy);
 
 /**
- * Get the rollback version for an image
+ * Get the rollback version for an image.
  *
  * @param copy		Image copy to get version from, or SYSTEM_IMAGE_UNKNOWN
  *			to get the version for the currently running image.
@@ -200,7 +200,7 @@ int system_run_image_copy(enum system_image_copy_t copy);
 int32_t system_get_rollback_version(enum system_image_copy_t copy);
 
 /**
- * Get the image data of an image
+ * Get the image data of an image.
  *
  * @param copy	Image copy to get the version of.
  * @return	Image data
@@ -208,7 +208,7 @@ int32_t system_get_rollback_version(enum system_image_copy_t copy);
 const struct image_data *system_get_image_data(enum system_image_copy_t copy);
 
 /**
- * Get the version string for an image
+ * Get the version string for an image.
  *
  * @param copy		Image copy to get version from, or SYSTEM_IMAGE_UNKNOWN
  *			to get the version for the currently running image.
@@ -218,7 +218,7 @@ const struct image_data *system_get_image_data(enum system_image_copy_t copy);
 const char *system_get_version(enum system_image_copy_t copy);
 
 /**
- * Get the SKU ID for a device
+ * Get the SKU ID for a device.
  *
  * @return A value that identifies the SKU variant of a model. Its meaning and
  * the number of bits actually used is opaque outside board specific code.
@@ -263,7 +263,7 @@ const char *system_get_build_info(void);
  */
 #define SYSTEM_RESET_WAIT_EXT           BIT(4)
 /*
- * Indicate that this reset was triggered by an AP watchdog
+ * Indicate that this reset was triggered by an AP watchdog.
  */
 #define SYSTEM_RESET_AP_WATCHDOG        BIT(5)
 
@@ -401,7 +401,7 @@ static inline void print_system_rtc(enum console_channel channel) { }
 #endif /* !defined(CONFIG_RTC) */
 
 /**
- * Enable hibernate interrupt
+ * Enable hibernate interrupt.
  */
 void system_enable_hib_interrupt(void);
 
@@ -513,7 +513,7 @@ void delay_sleep_by(uint32_t us);
 
 /*
  **
- * Funtctions to control deep sleep behavior. When disabled - the device never
+ * Functions to control deep sleep behavior. When disabled - the device never
  * falls into deep sleep (the lowest power consumption state exit of which
  * usually happens through the regular reset vector with just a few bits of
  * state preserved).
@@ -523,7 +523,7 @@ void enable_deep_sleep(void);
 
 /**
  * Use hibernate module to set up an RTC interrupt at a given
- * time from now
+ * time from now.
  *
  * Note: If time given is less than HIB_SET_RTC_MATCH_DELAY_USEC, then it will
  * set the interrupt at exactly HIB_SET_RTC_MATCH_DELAY_USEC.
@@ -539,9 +539,9 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds);
 void system_reset_rtc_alarm(void);
 
 /**
- * Return address of little FW to prepare for sysjump
+ * Return address of little FW to prepare for sysjump.
  *
- * Note: This feature is used for code ram arch
+ * Note: This feature is used for code ram arch.
  *
  */
 uint32_t system_get_lfw_address(void);
@@ -559,9 +559,9 @@ uint32_t system_get_lfw_address(void);
 void system_set_image_copy(enum system_image_copy_t copy);
 
 /**
- * Return which region is used in Code RAM
+ * Return which region is used in Code RAM.
  *
- * Note: This feature is used for code ram arch
+ * Note: This feature is used for code ram arch.
  *
  */
 enum system_image_copy_t system_get_shrspi_image_copy(void);
@@ -589,14 +589,14 @@ static inline void system_print_extended_version_info(void)
 #endif
 
 /**
- * Check if the system can supply enough power to boot AP
+ * Check if the system can supply enough power to boot AP.
  *
  * @return true if the system is powered enough or false otherwise
  */
 int system_can_boot_ap(void);
 
 /**
- * Get active image copy
+ * Get active image copy.
  *
  * Active slot contains an image which is being executed or will be executed
  * after sysjump.
