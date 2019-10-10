@@ -19,7 +19,11 @@
 #define CHARGE_POLL_PERIOD_CHARGE      (MSEC * 250)
 #define CHARGE_POLL_PERIOD_SHORT       (MSEC * 100)
 #define CHARGE_MIN_SLEEP_USEC          (MSEC * 50)
-#define CHARGE_MAX_SLEEP_USEC          MINUTE
+#if defined(CHARGE_MAX_SLEEP_USEC_ADJUST)
+#define CHARGE_MAX_SLEEP_USEC CHARGE_MAX_SLEEP_USEC_ADJUST
+#else
+#define CHARGE_MAX_SLEEP_USEC MINUTE
+#endif
 
 /* Power states */
 enum charge_state {
