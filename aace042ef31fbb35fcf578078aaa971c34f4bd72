@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd9ba90_27ba58ed",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-10T23:23:59Z",
+      "side": 1,
+      "message": "shouldn\u0027t you have a function that tells if signal is a valid GPIO value?  You are making the assumption that all implementations will leave this as the smallest set of GPIO types of value",
+      "revId": "aace042ef31fbb35fcf578078aaa971c34f4bd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
