@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e62951e4_c8483286",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-10T19:43:24Z",
+      "side": 1,
+      "message": "what about current CR50_SQA? do we still need this command to work there?",
+      "range": {
+        "startLine": 538,
+        "startChar": 8,
+        "endLine": 538,
+        "endChar": 16
+      },
+      "revId": "547662c15a86590416b17e31dc8805a05bd24add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ec06a6_a8b0026c",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-10T19:43:24Z",
+      "side": 1,
+      "message": "shall we build special INFO1-erasing images with CR50_SQA defined in the future?\nin this case the whole thing should still be wrapped in #ifdef CR50_RELAXED.\nand then we can warn on (!(h-\u003econfig1_ \u0026 INFO1_IS_ERASABLE)) but not abort. this will work both for old and new cases.\nold CR50_RELAXED would still be able to erase (though will get the warning).\nnew CR50_RELAXED in case INFO1 is protected will fail at OP_ERASE_BLOCK (I hope) and the warning will be there to explain why it failed.\nand neither old nor new cr50 images will have this command available in regular prod.",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 28
+      },
+      "revId": "547662c15a86590416b17e31dc8805a05bd24add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
