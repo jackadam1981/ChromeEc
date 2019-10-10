@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_CONFIG_CHIP_H
 #define __CROS_EC_CONFIG_CHIP_H
 
+#include <stdint.h>
+
 /* Memory mapping */
 #if !defined(TEST_NVMEM) && !defined(TEST_CR50_FUZZ)
 #define CONFIG_FLASH_SIZE 0x00020000
@@ -23,8 +25,11 @@ extern char __host_flash[CONFIG_FLASH_SIZE];
 #define CONFIG_FLASH_ERASE_SIZE 0x0010	     /* erase bank size */
 #define CONFIG_FLASH_WRITE_SIZE 0x0002	     /* minimum write size */
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE 0x0080 /* ideal write size */
-#define CONFIG_RAM_BASE 0x0		     /* Not supported */
-#define CONFIG_RAM_SIZE                0x0 /* Not supported */
+#define CONFIG_RAM_BASE ((uintptr_t)__shared_mem_buf)
+#define CONFIG_SHARED_MEM_SIZE 0x2000 /* bytes */
+#define CONFIG_RAM_DATA_SIZE (sizeof(struct panic_data) + 512) /* bytes */
+#define CONFIG_RAM_SIZE	(CONFIG_SHARED_MEM_SIZE + CONFIG_RAM_DATA_SIZE)
+extern uint8_t __shared_mem_buf[];
 
 #define CONFIG_FPU
 
@@ -45,8 +50,6 @@ extern char __host_flash[CONFIG_FLASH_SIZE];
 #define HOOK_TICK_INTERVAL_MS 250
 #define HOOK_TICK_INTERVAL    (HOOK_TICK_INTERVAL_MS * MSEC)
 
-/* Do NOT use common panic code (designed to output information on the UART) */
-#undef CONFIG_COMMON_PANIC_OUTPUT
 /* Do NOT use common timer code which is designed for hardware counters. */
 #undef CONFIG_COMMON_TIMER
 
