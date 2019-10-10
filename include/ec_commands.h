@@ -4990,6 +4990,17 @@ struct ec_params_reboot_ec {
 } __ec_align1;
 
 /*
+ * Reboot AP on G3
+ *
+ * This command is used for validation purpose, where the system needs to be
+ * returned back to S0 state from G3 state without using the servo to trigger
+ * wake events.
+ * Order of command usage:
+ * ectool reboot_ap_on_g3 && shutdown -h now
+ */
+#define EC_CMD_REBOOT_AP_ON_G3 0x00D0
+
+/*
  * Get information on last EC panic.
  *
  * Returns variable-length platform-dependent panic information.  See panic.h
