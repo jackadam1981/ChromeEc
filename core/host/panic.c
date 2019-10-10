@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "panic.h"
+
 #include "stack_trace.h"
 
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
@@ -19,4 +21,11 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 	fflush(stdout);
 
 	exit(1);
+}
+
+/*
+ * Print panic data
+ */
+void panic_data_print(const struct panic_data *pdata)
+{
 }

@@ -18,11 +18,9 @@
 // Forward declaration from <stdlib.h> to avoid declaration conflicts.
 void exit(int);
 
-#define SHARED_MEM_SIZE 0x2000 /* bytes */
-#define RAM_DATA_SIZE (sizeof(struct panic_data) + 512) /* bytes */
-uint8_t __shared_mem_buf[SHARED_MEM_SIZE + RAM_DATA_SIZE];
+uint8_t __shared_mem_buf[CONFIG_SHARED_MEM_SIZE + CONFIG_RAM_DATA_SIZE];
 
-static char *__ram_data = __shared_mem_buf + SHARED_MEM_SIZE;
+static char *__ram_data = __shared_mem_buf + CONFIG_SHARED_MEM_SIZE;
 
 static enum system_image_copy_t __running_copy;
 
@@ -33,7 +31,7 @@ static void ramdata_set_persistent(void)
 
 	ASSERT(f != NULL);
 
-	sz = fwrite(__ram_data, RAM_DATA_SIZE, 1, f);
+	sz = fwrite(__ram_data, CONFIG_RAM_DATA_SIZE, 1, f);
 	ASSERT(sz == 1);
 
 	release_persistent_storage(f);
@@ -46,11 +44,11 @@ static void ramdata_get_persistent(void)
 	if (f == NULL) {
 		fprintf(stderr,
 			"No RAM data found. Initializing to 0x00.\n");
-		memset(__ram_data, 0, RAM_DATA_SIZE);
+		memset(__ram_data, 0, CONFIG_RAM_DATA_SIZE);
 		return;
 	}
 
-	fread(__ram_data, RAM_DATA_SIZE, 1, f);
+	fread(__ram_data, CONFIG_RAM_DATA_SIZE, 1, f);
 
 	release_persistent_storage(f);
 
@@ -135,7 +133,7 @@ static int load_time(timestamp_t *t)
 test_mockable struct panic_data *panic_get_data(void)
 {
 	return (struct panic_data *)
-		(__ram_data + RAM_DATA_SIZE - sizeof(struct panic_data));
+		(__ram_data + CONFIG_RAM_DATA_SIZE - sizeof(struct panic_data));
 }
 
 test_mockable void system_reset(int flags)

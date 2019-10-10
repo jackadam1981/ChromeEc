@@ -108,6 +108,7 @@ void panic_reboot(void)
 
 #ifdef CONFIG_DEBUG_ASSERT_REBOOTS
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
+test_mockable
 void panic_assert_fail(const char *fname, int linenum)
 {
 	panic_printf("\nASSERTION FAILURE at %s:%d\n", fname, linenum);
@@ -118,6 +119,7 @@ void panic_assert_fail(const char *fname, int linenum)
 #endif
 }
 #else
+test_mockable
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
 		       int linenum)
 {
