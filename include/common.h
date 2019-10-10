@@ -245,6 +245,9 @@ enum ec_error_list {
 	EC_ERROR_INTERNAL_LAST = 0x1FFFF
 };
 
+/* Flag indicating whether reboot required on G3 - defined in system.c */
+extern uint8_t want_reboot_at_g3;
+
 /*
  * Define test_mockable and test_mockable_static for mocking
  * functions.

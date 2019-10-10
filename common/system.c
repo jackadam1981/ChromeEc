@@ -63,6 +63,7 @@ static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
+uint8_t want_reboot_at_g3; /* Flag indicating whether reboot required on G3 */
 
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_seconds;
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_microseconds;
@@ -1506,6 +1507,17 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC,
 		     host_command_reboot,
 		     EC_VER_MASK(0));
+
+enum ec_status host_command_reboot_on_G3(struct host_cmd_handler_args *args)
+{
+	/* Store request for processing at g3 */
+	want_reboot_at_g3 = 1;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_REBOOT_ON_G3,
+			host_command_reboot_on_G3,
+			EC_VER_MASK(0));
 
 int system_can_boot_ap(void)
 {

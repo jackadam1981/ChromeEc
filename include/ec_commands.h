@@ -5017,6 +5017,23 @@ struct ec_params_reboot_ec {
 #define EC_CMD_REBOOT 0x00D1  /* Think "die" */
 
 /*
+ * Reboot on G3
+ *
+ * This command is used for validation purpose, where the system needs to be
+ * returned back to idle(S0) state from G3 state. Note that there is no
+ * response to this command.
+ *
+ * Use EC_CMD_REBOOT_ON_G3 carefully to reboot only under some test related
+ * scripts.
+ *
+ * Few use case scenarios:
+ * 1) Replicate FAFT cold boot flows in manual testing
+ * 2) To deal the issue of delayed kernel shutdown during FAFT cold boot tests
+ * 3) Usage in DHC script
+ */
+#define EC_CMD_REBOOT_ON_G3 0x00D0
+
+/*
  * Resend last response (not supported on LPC).
  *
  * Returns EC_RES_UNAVAILABLE if there is no response available - for example,
