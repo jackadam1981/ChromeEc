@@ -319,11 +319,15 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
+	ASSERT(signal < GPIO_COUNT);
+
 	return !!(NPCX_PDIN(gpio_list[signal].port) & gpio_list[signal].mask);
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
+	ASSERT(signal < GPIO_COUNT);
+
 	if (value)
 		NPCX_PDOUT(gpio_list[signal].port) |=  gpio_list[signal].mask;
 	else
