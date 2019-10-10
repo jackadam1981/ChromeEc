@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7feaf839_ef530d7b",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-10T20:40:50Z",
+      "side": 1,
+      "message": "Add static",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b6685f_1528d0c6",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-10T20:40:50Z",
+      "side": 1,
+      "message": "Put them in fifo_staged, as it is related to sample_count / data_period arrays.",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "191b3f0e_08b53b45",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-10T20:40:50Z",
+      "side": 1,
+      "message": "Do you need to protect fifo_staged? Only fifo is access outside of the motion_sense stack.",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9645e630_b03a9033",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-10T20:40:50Z",
+      "side": 1,
+      "message": "\"or timestamp is after our computed next...\" Are you observing this? Does it mean we are spreading samples too far in the future?",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628677f4_ee193ec8",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-10T20:40:50Z",
+      "side": 1,
+      "message": "document if mutex must be acquired before.",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d36985_ebce787f",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-10T20:40:50Z",
+      "side": 1,
+      "message": "Add memset(\u0026fifo_staged, 0, sizeof(fifo_staged));\nand use this function at the end of motion_sense_fifo_commit_data.",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
