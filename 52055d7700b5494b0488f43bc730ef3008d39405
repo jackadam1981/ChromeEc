@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8a012668_849a11df",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-10-10T02:55:03Z",
+      "side": 1,
+      "message": "this excerpt is from openssl 1.1 lib taken as is, since OpenSSL 1.0 didn\u0027t provide this function. it also does padding. not sure if it make sense to rewrite it",
+      "parentUuid": "d8988080_d0c41752",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "007682ef_af14b2d3",
         "filename": "test/tpm_test/bn_test.c",
         "patchSetId": 2
@@ -91,6 +115,30 @@
       "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97585ddb_384e69b1",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-10-10T02:55:03Z",
+      "side": 1,
+      "message": "OpenSSL 1.0 was only working for little-endian architectures (x86) and had direct access to BIGNUM structure, so DCRYPTO_bn_wrap which just sets a pointer to user provided buffer as source for LITE_BIGNUM could be applied data in BIGNUM extracted by memcpy(). In OpenSSL 1.1 BIGNUM became opaque, so we need to use extra code to get data in little-endian format which used by DCRYPTO_*. It\u0027s actually replacement for memcpy()",
+      "parentUuid": "8d9407c5_0810ecf7",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
