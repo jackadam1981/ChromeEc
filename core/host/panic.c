@@ -3,20 +3,13 @@
  * found in the LICENSE file.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "console.h"
+#include "panic.h"
 
-#include "stack_trace.h"
-
-void panic_assert_fail(const char *msg, const char *func, const char *fname,
-		       int linenum)
+/*
+ * Print panic data
+ */
+void panic_data_print(const struct panic_data *pdata)
 {
-	fprintf(stderr, "ASSERTION FAIL: %s:%d:%s - %s\n",
-		fname, linenum, func, msg);
-	task_dump_trace();
-
-	puts("Fail!"); /* Inform test runner */
-	fflush(stdout);
-
-	exit(1);
+	ccprintf("Host panic_data at 0x%pP\n", pdata);
 }
