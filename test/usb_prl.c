@@ -6,6 +6,7 @@
  */
 #include "common.h"
 #include "crc.h"
+#include <sched.h>
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
@@ -943,10 +944,18 @@ static int test_send_ctrl_msg_with_retry_and_success(void)
 		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
-		if (i == N_RETRY_COUNT)
+		if (i == N_RETRY_COUNT) {
+			if (!pd_port[port].mock_pe_message_sent) {
+				(void)sched_yield();
+				if (pd_port[port].mock_pe_message_sent) {
+					ccprintf("yield avoided assert.\n");
+					TEST_ASSERT(0);
+				}
+			}
 			TEST_ASSERT(pd_port[port].mock_pe_message_sent);
-		else
+		} else {
 			TEST_ASSERT(pd_port[port].mock_pe_message_sent == 0);
+		}
 		TEST_ASSERT(pd_port[port].mock_pe_error < 0);
 	}
 
@@ -1374,7 +1383,10 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+
+	ccprintf("Testing PD_REV20\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_receive_control_msg);
@@ -1391,7 +1403,10 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+
+	ccprintf("Testing PD_REV30\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_send_extended_data_msg);
