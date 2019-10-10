@@ -100,6 +100,8 @@ static struct pd_prl {
 	int msg_tx_id;
 	int msg_rx_id;
 
+	int verbose_mode;
+
 	int mock_pe_message_sent;
 	int mock_pe_error;
 	int mock_pe_hard_reset_sent;
@@ -116,6 +118,8 @@ static void init_port(int port, int rev)
 	pd_port[port].data_role = PD_ROLE_UFP;
 	pd_port[port].msg_tx_id = 0;
 	pd_port[port].msg_rx_id = 0;
+
+	pd_port[port].verbose_mode = 0;
 
 	tcpm_init(port);
 	tcpm_set_polarity(port, 0);
@@ -1374,7 +1378,11 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+	pd_port[PORT0].verbose_mode = 1;
+	if (pd_port[PORT0].verbose_mode)
+		ccprintf("Testing PD_REV20\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+	pd_port[PORT0].verbose_mode = 0;
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_receive_control_msg);
@@ -1391,7 +1399,11 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+	pd_port[PORT0].verbose_mode = 1;
+	if (pd_port[PORT0].verbose_mode)
+		ccprintf("Testing PD_REV30\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+	pd_port[PORT0].verbose_mode = 0;
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_send_extended_data_msg);
