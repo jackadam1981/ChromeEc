@@ -48,6 +48,10 @@
 #define USB_PD_PORT_ANX7447	0
 #define USB_PD_PORT_PS8751	1
 
+/* Adjust power state task polling periods in usec */
+#undef CHARGE_MAX_SLEEP_USEC
+#define CHARGE_MAX_SLEEP_USEC SECOND
+
 static uint8_t sku_id;
 
 static void ppc_interrupt(enum gpio_signal signal)
