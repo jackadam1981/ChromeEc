@@ -45,6 +45,30 @@
       "revId": "547662c15a86590416b17e31dc8805a05bd24add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76565af4_44747e2f",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-10-10T19:52:50Z",
+      "side": 1,
+      "message": "I just resign the same image for creating CR50_SQA images. I don\u0027t think we need to keep CR50_SQA in tot. After the RO update, SQA images will just use the standard eraseflashinfo image.",
+      "parentUuid": "a4ec06a6_a8b0026c",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 28
+      },
+      "revId": "547662c15a86590416b17e31dc8805a05bd24add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
