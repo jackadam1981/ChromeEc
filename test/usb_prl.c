@@ -942,6 +942,14 @@ static int test_send_ctrl_msg_with_retry_and_success(void)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
 
+		if (i == N_RETRY_COUNT) {
+			if (pd_port[port].mock_pe_message_sent) {
+				ccprintf("Would have asserted. ");
+				ccprintf("state = %d\n",
+					 prl_tx_get_state(port));
+			}
+		}
+
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		if (i == N_RETRY_COUNT)
 			TEST_ASSERT(pd_port[port].mock_pe_message_sent);
@@ -1374,7 +1382,10 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+
+	ccprintf("Testing PD_REV20\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_receive_control_msg);
@@ -1391,7 +1402,10 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+
+	ccprintf("Testing PD_REV30\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_send_extended_data_msg);
