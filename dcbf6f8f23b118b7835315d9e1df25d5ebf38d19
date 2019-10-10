@@ -93,6 +93,30 @@
       "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9669f7c5_b2a76e64",
+        "filename": "power/power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-10T00:02:58Z",
+      "side": 1,
+      "message": "Why don\u0027t we move it to common/battery.c?",
+      "parentUuid": "3db5553d_90eb907c",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
