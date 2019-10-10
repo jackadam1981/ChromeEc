@@ -34,6 +34,24 @@
       "revId": "e73594dd7a8198c75b8e571b5784b52ece6a74b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20bcdeec_ee8f7425",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-10-10T20:28:50Z",
+      "side": 1,
+      "message": "i think at least before endorsement_complete()? But yeah, earlier in the flow is not needed.\n\nAlso, any fail is full stop and triggers investigation on chip production, so not sure there is much screening effect in practice?",
+      "parentUuid": "1f595ea9_319469c8",
+      "revId": "e73594dd7a8198c75b8e571b5784b52ece6a74b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
