@@ -52,6 +52,24 @@
       "revId": "e73594dd7a8198c75b8e571b5784b52ece6a74b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c8f321_fdf83fa6",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-10T21:42:08Z",
+      "side": 1,
+      "message": "the intention of this patch is to catch devices in chip production which did not enter the factory mode for some reason - this is the mode they are expected to be in when installed on the chromebooks, this (enabling factory mode) should just work, but if it does not we do want to stop the line and have it investigated.",
+      "parentUuid": "20bcdeec_ee8f7425",
+      "revId": "e73594dd7a8198c75b8e571b5784b52ece6a74b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
