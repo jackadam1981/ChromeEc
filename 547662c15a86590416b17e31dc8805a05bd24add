@@ -117,6 +117,30 @@
       "revId": "547662c15a86590416b17e31dc8805a05bd24add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef603095_23559dc5",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-10T20:34:07Z",
+      "side": 1,
+      "message": "So, in other words we will only sign images with this change for the new RO. And if you want to run them you need to update RO first, old RO just won\u0027t accept them. If so, also works.\nThe main combo I was caring about is old RO + new RW.",
+      "parentUuid": "ef15231c_8480f482",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 28
+      },
+      "revId": "547662c15a86590416b17e31dc8805a05bd24add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
