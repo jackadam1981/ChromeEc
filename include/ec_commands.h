@@ -5017,6 +5017,20 @@ struct ec_params_reboot_ec {
 #define EC_CMD_REBOOT 0x00D1  /* Think "die" */
 
 /*
+ * Reboot AP on G3
+ *
+ * This command is used for validation purpose, where the system needs to be
+ * returned back to idle(S0) state from G3 state.
+ * Recommended order of command usage:
+ * ectool reboot_ap_on_g3 && shutdown -h now
+ *
+ * With this new command, AP cold boot cycling is done without triggering
+ * POWER button press from SERVO.Thus, the dependency of SERVO is removed,
+ * with the usage of this new command.
+ */
+#define EC_CMD_REBOOT_AP_ON_G3 0x00D0
+
+/*
  * Resend last response (not supported on LPC).
  *
  * Returns EC_RES_UNAVAILABLE if there is no response available - for example,
