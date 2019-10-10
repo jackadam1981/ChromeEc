@@ -307,6 +307,11 @@ static enum power_state power_common_state(enum power_state state)
 {
 	switch (state) {
 	case POWER_G3:
+		if (is_system_to_reboot_on_g3()) {
+			CPRINTS("Initiating Reboot at G3\n");
+			chipset_exit_hard_off();
+		}
+
 		if (want_g3_exit) {
 			want_g3_exit = 0;
 			return POWER_G3S5;

@@ -596,6 +596,13 @@ static inline void system_print_extended_version_info(void)
 #endif
 
 /**
+ * Check if the flag to reboot AP, on G3 is set or not.
+ *
+ * @return true if the flag is set or false otherwise.
+ */
+int is_system_to_reboot_on_g3(void);
+
+/**
  * Check if the system can supply enough power to boot AP
  *
  * @return true if the system is powered enough or false otherwise
