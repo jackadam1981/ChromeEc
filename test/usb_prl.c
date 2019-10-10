@@ -100,6 +100,8 @@ static struct pd_prl {
 	int msg_tx_id;
 	int msg_rx_id;
 
+	int verbose_mode;
+
 	int mock_pe_message_sent;
 	int mock_pe_error;
 	int mock_pe_hard_reset_sent;
@@ -116,6 +118,8 @@ static void init_port(int port, int rev)
 	pd_port[port].data_role = PD_ROLE_UFP;
 	pd_port[port].msg_tx_id = 0;
 	pd_port[port].msg_rx_id = 0;
+
+	pd_port[port].verbose_mode = 0;
 
 	tcpm_init(port);
 	tcpm_set_polarity(port, 0);
@@ -890,6 +894,13 @@ static int test_send_ctrl_msg_with_retry_and_success(void)
 
 	enable_prl(port, 1);
 
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("ENTER %s. ", __func__);
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+	}
+#endif
+
 	/*
 	 * TEST: Control message transmission fail with retry
 	 */
@@ -906,41 +917,108 @@ static int test_send_ctrl_msg_with_retry_and_success(void)
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	task_wait_event(40 * MSEC);
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Sent Accept. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+	}
+#endif
 
 	simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Sim goodcrc. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+	}
+#endif
 
 	/* Do not increment tx_id. */
 
 	cycle_through_state_machine(port, 3, 10 * MSEC);
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Ran state machine. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+	}
+#endif
 
 	TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 	TEST_ASSERT(pd_port[port].mock_pe_message_sent);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	task_wait_event(40 * MSEC);
-
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Did wait. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+	}
+#endif
 	TEST_ASSERT(prl_tx_get_state(port) ==
 				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 
 	pd_port[port].mock_pe_message_sent = 0;
 	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
 	task_wait_event(30 * MSEC);
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Sending another accept. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+	}
+#endif
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	task_wait_event(30 * MSEC);
-
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Did wait. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+		ccprintf("Starting retry loop.\n");
+	}
+#endif
 	for (i = 0; i < N_RETRY_COUNT + 1; i++) {
-		if (i == N_RETRY_COUNT)
+		if (i == N_RETRY_COUNT) {
 			inc_tx_id(port);
+#if 0
+			if (pd_port[PORT0].verbose_mode) {
+				ccprintf("Incremented TX-ID. ");
+				ccprintf("state = %d\n",
+					prl_tx_get_state(port));
+			}
+#endif
+		}
 
 		simulate_goodcrc(port, pd_port[port].power_role,
 						pd_port[port].msg_tx_id);
+#if 0
+		if (pd_port[PORT0].verbose_mode) {
+			ccprintf("Sim goodcrc. ");
+			ccprintf("state = %d\n", prl_tx_get_state(port));
+		}
+#endif
 
 		cycle_through_state_machine(port, 8, 10 * MSEC);
+#if 0
+		if (pd_port[PORT0].verbose_mode) {
+			ccprintf("Ran state machine. ");
+			ccprintf("state = %d\n", prl_tx_get_state(port));
+		}
+#endif
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
 		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
+
+		if (pd_port[PORT0].verbose_mode) {
+			if (i == N_RETRY_COUNT) {
+				if (pd_port[port].mock_pe_message_sent) {
+					ccprintf("Would have asserted. ");
+					ccprintf("state = %d\n",
+						 prl_tx_get_state(port));
+				}
+			}
+			ccprintf("Did wait. ");
+			ccprintf("state = %d\n", prl_tx_get_state(port));
+		}
 
 		TEST_ASSERT(!pd_port[port].mock_got_soft_reset);
 		if (i == N_RETRY_COUNT)
@@ -949,6 +1027,13 @@ static int test_send_ctrl_msg_with_retry_and_success(void)
 			TEST_ASSERT(pd_port[port].mock_pe_message_sent == 0);
 		TEST_ASSERT(pd_port[port].mock_pe_error < 0);
 	}
+#if 0
+	if (pd_port[PORT0].verbose_mode) {
+		ccprintf("Left retry loop. ");
+		ccprintf("state = %d\n", prl_tx_get_state(port));
+		ccprintf("EXIT %s.\n", __func__);
+	}
+#endif
 
 	enable_prl(port, 0);
 
@@ -1374,7 +1459,11 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+	pd_port[PORT0].verbose_mode = 1;
+	if (pd_port[PORT0].verbose_mode)
+		ccprintf("Testing PD_REV20\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+	pd_port[PORT0].verbose_mode = 0;
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_receive_control_msg);
@@ -1391,7 +1480,11 @@ void run_test(void)
 	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
+	pd_port[PORT0].verbose_mode = 0;
+	if (pd_port[PORT0].verbose_mode)
+		ccprintf("Testing PD_REV30\n");
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_success);
+	pd_port[PORT0].verbose_mode = 0;
 	RUN_TEST(test_send_data_msg);
 	RUN_TEST(test_send_data_msg_to_much_data);
 	RUN_TEST(test_send_extended_data_msg);
