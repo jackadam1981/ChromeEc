@@ -93,6 +93,30 @@
       "revId": "547662c15a86590416b17e31dc8805a05bd24add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef15231c_8480f482",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-10T20:15:23Z",
+      "side": 1,
+      "message": "The intention here is to move to this code only once migration to the new RO is completed.\n\nOnce it is completed no image would be able to erase info1 unless all these conditions are met:\n\n- image is prod signed\n- image is node locked\n- the appropriate config1 bit is set\n\nso, I don\u0027t see a need for further locking down this feature, and also I would rather keep in in MP branch in case there are changes later we want in the image capable of erasing INFO1.\n\nThe old RO is going away, along with the fobs which allow creating node locked images for it, this also would be enforced by the rollback bit in the RO rollback section of INFO1.",
+      "parentUuid": "bab1954d_7f885d28",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 28
+      },
+      "revId": "547662c15a86590416b17e31dc8805a05bd24add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
