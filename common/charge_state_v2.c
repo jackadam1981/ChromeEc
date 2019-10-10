@@ -1289,64 +1289,65 @@ static inline int battery_too_low(void)
   */
 static int shutdown_on_critical_battery(void)
 {
-	int batt_temp_c;
-	int battery_critical = 0;
+	return 0;
+/* 	int batt_temp_c; */
+/* 	int battery_critical = 0; */
 
-	/*
-	 * TODO(crosbug.com/p/27642): The thermal loop should watch the battery
-	 * temp, so it can turn fans on.
-	 */
-	batt_temp_c = DECI_KELVIN_TO_CELSIUS(curr.batt.temperature);
-	if (battery_too_hot(batt_temp_c)) {
-		CPRINTS("Batt temp out of range: %dC", batt_temp_c);
-		battery_critical = 1;
-	}
+/* 	/\* */
+/* 	 * TODO(crosbug.com/p/27642): The thermal loop should watch the battery */
+/* 	 * temp, so it can turn fans on. */
+/* 	 *\/ */
+/* 	batt_temp_c = DECI_KELVIN_TO_CELSIUS(curr.batt.temperature); */
+/* 	if (battery_too_hot(batt_temp_c)) { */
+/* 		CPRINTS("Batt temp out of range: %dC", batt_temp_c); */
+/* 		battery_critical = 1; */
+/* 	} */
 
-	if (battery_too_low() && !curr.batt_is_charging) {
-		CPRINTS("Low battery: %d%%, %dmV",
-			curr.batt.state_of_charge, curr.batt.voltage);
-		battery_critical = 1;
-	}
+/* 	if (battery_too_low() && !curr.batt_is_charging) { */
+/* 		CPRINTS("Low battery: %d%%, %dmV", */
+/* 			curr.batt.state_of_charge, curr.batt.voltage); */
+/* 		battery_critical = 1; */
+/* 	} */
 
-	if (!battery_critical) {
-		/* Reset shutdown warning time */
-		shutdown_warning_time.val = 0;
-		return battery_critical;
-	}
+/* 	if (!battery_critical) { */
+/* 		/\* Reset shutdown warning time *\/ */
+/* 		shutdown_warning_time.val = 0; */
+/* 		return battery_critical; */
+/* 	} */
 
-	if (!shutdown_warning_time.val) {
-		CPRINTS("charge warn shutdown due to critical battery");
-		shutdown_warning_time = get_time();
-#ifdef CONFIG_HOSTCMD_EVENTS
-		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
-			host_set_single_event(EC_HOST_EVENT_BATTERY_SHUTDOWN);
-#endif
-	} else if (get_time().val > shutdown_warning_time.val +
-		   CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US) {
-		if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-			/* Timeout waiting for charger to provide more power */
-#if defined(CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF)
-#ifdef CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION
-			if (!board_critical_shutdown_check(&curr))
-				return battery_critical;
-#endif /* CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION */
-			CPRINTS(
-			  "charge force battery cut-off due to critical level");
-			board_cut_off_battery();
-#elif defined(CONFIG_HIBERNATE)
-			CPRINTS(
-			  "charge force EC hibernate due to critical battery");
-			system_hibernate(0, 0);
-#endif
-		} else {
-			/* Timeout waiting for AP to shut down, so kill it */
-			CPRINTS(
-			  "charge force shutdown due to critical battery");
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_BATTERY_CRIT);
-		}
-	}
+/* 	if (!shutdown_warning_time.val) { */
+/* 		CPRINTS("charge warn shutdown due to critical battery"); */
+/* 		shutdown_warning_time = get_time(); */
+/* #ifdef CONFIG_HOSTCMD_EVENTS */
+/* 		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) */
+/* 			host_set_single_event(EC_HOST_EVENT_BATTERY_SHUTDOWN); */
+/* #endif */
+/* 	} else if (get_time().val > shutdown_warning_time.val + */
+/* 		   CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US) { */
+/* 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) { */
+/* 			/\* Timeout waiting for charger to provide more power *\/ */
+/* #if defined(CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF) */
+/* #ifdef CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION */
+/* 			if (!board_critical_shutdown_check(&curr)) */
+/* 				return battery_critical; */
+/* #endif /\* CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION *\/ */
+/* 			CPRINTS( */
+/* 			  "charge force battery cut-off due to critical level"); */
+/* 			board_cut_off_battery(); */
+/* #elif defined(CONFIG_HIBERNATE) */
+/* 			CPRINTS( */
+/* 			  "charge force EC hibernate due to critical battery"); */
+/* 			system_hibernate(0, 0); */
+/* #endif */
+/* 		} else { */
+/* 			/\* Timeout waiting for AP to shut down, so kill it *\/ */
+/* 			CPRINTS( */
+/* 			  "charge force shutdown due to critical battery"); */
+/* 			chipset_force_shutdown(CHIPSET_SHUTDOWN_BATTERY_CRIT); */
+/* 		} */
+/* 	} */
 
-	return battery_critical;
+/* 	return battery_critical; */
 }
 
 /*
