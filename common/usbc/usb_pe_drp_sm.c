@@ -1319,7 +1319,6 @@ static void pe_src_ready_entry(int port)
 
 	/* NOTE: PPS Implementation should be added here. */
 
-	tc_set_timeout(port, 5 * MSEC);
 }
 
 static void pe_src_ready_run(int port)
@@ -1496,8 +1495,6 @@ static void pe_src_ready_exit(int port)
 	 */
 	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
-	tc_set_timeout(port, 2 * MSEC);
 }
 
 /**
@@ -2003,8 +2000,6 @@ static void pe_snk_ready_entry(int port)
 	 *  1) Initialize and run the SinkPPSPeriodicTimer.
 	 *  NOTE: PPS Implementation should be added here.
 	 */
-
-	tc_set_timeout(port, 5 * MSEC);
 }
 
 static void pe_snk_ready_run(int port)
@@ -2184,8 +2179,6 @@ static void pe_snk_ready_exit(int port)
 {
 	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
-	tc_set_timeout(port, 2 * MSEC);
 }
 
 /**
