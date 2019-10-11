@@ -117,6 +117,30 @@
       "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdaabccf_4cb849c6",
+        "filename": "power/power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-11T14:24:36Z",
+      "side": 1,
+      "message": "Yeah actually that makes more sense. Done.",
+      "parentUuid": "9669f7c5_b2a76e64",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "dcbf6f8f23b118b7835315d9e1df25d5ebf38d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
