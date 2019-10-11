@@ -22,6 +22,52 @@
  * panic_data section
  */
 
+struct panic_data_size1 {
+	uint8_t arch;             /* Architecture (PANIC_ARCH_*) */
+	uint8_t struct_version;   /* Structure version (currently 2) */
+	uint8_t flags;            /* Flags (PANIC_DATA_FLAG_*) */
+	uint8_t reserved;         /* Reserved; set 0 */
+
+	/* core specific panic data */
+	union {
+		struct cortex_panic_data cm;       /* Cortex-Mx registers */
+		struct nds32_n8_panic_data nds_n8; /* NDS32 N8 registers */
+	};
+
+	/*
+	 * These fields go at the END of the struct so we can find it at the
+	 * end of memory.
+	 */
+	uint32_t struct_size;     /* Size of this struct */
+	uint32_t magic;           /* PANIC_SAVE_MAGIC if valid */
+};
+
+/*
+ * size changed:
+ * a898b6cc70 (Jack Rosenthal    2019-03-11 17:37:28 -0600  85)
+ */
+
+struct panic_data_size2 {
+	uint8_t arch;             /* Architecture (PANIC_ARCH_*) */
+	uint8_t struct_version;   /* Structure version (currently 2) */
+	uint8_t flags;            /* Flags (PANIC_DATA_FLAG_*) */
+	uint8_t reserved;         /* Reserved; set 0 */
+
+	/* core specific panic data */
+	union {
+		struct cortex_panic_data cm;       /* Cortex-Mx registers */
+		struct nds32_n8_panic_data nds_n8; /* NDS32 N8 registers */
+		struct x86_panic_data x86;         /* Intel x86 */
+	};
+
+	/*
+	 * These fields go at the END of the struct so we can find it at the
+	 * end of memory.
+	 */
+	uint32_t struct_size;     /* Size of this struct */
+	uint32_t magic;           /* PANIC_SAVE_MAGIC if valid */
+};
+
 /*
  * size3 as of:
  * 59d060ebfe (Dino Li           2019-06-10 16:26:36 +0800  86)
@@ -50,6 +96,36 @@ struct panic_data_size3 {
 };
 
 BUILD_ASSERT(sizeof(struct panic_data_size3) == sizeof(struct panic_data));
+
+static int set_panic_size1(void)
+{
+	static const struct panic_data_size1 p1data = {
+		.magic = PANIC_DATA_MAGIC,
+		.struct_size = sizeof(struct panic_data_size1),
+	};
+	uintptr_t p1addr;
+
+	p1addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE -
+		sizeof(struct panic_data_size1);
+	memcpy((void *)p1addr, &p1data, sizeof(p1data));
+	TEST_ASSERT(panic_get_data());
+	return EC_SUCCESS;
+}
+
+static int set_panic_size2(void)
+{
+	static const struct panic_data_size2 p2data = {
+		.magic = PANIC_DATA_MAGIC,
+		.struct_size = sizeof(struct panic_data_size2),
+	};
+	uintptr_t p2addr;
+
+	p2addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE -
+		sizeof(struct panic_data_size2);
+	memcpy((void *)p2addr, &p2data, sizeof(p2data));
+	TEST_ASSERT(panic_get_data());
+	return EC_SUCCESS;
+}
 
 static int set_panic_size3(void)
 {
@@ -196,6 +272,24 @@ static int test_P3_J2(void)
 	return EC_SUCCESS;
 }
 
+static int test_P2_J2(void)
+{
+	setup();
+	CHECK(set_panic_size2());
+	CHECK(set_jump_v2());
+	CHECK(run_sysjump());
+	return EC_SUCCESS;
+}
+
+static int test_P1_J2(void)
+{
+	setup();
+	CHECK(set_panic_size1());
+	CHECK(set_jump_v2());
+	CHECK(run_sysjump());
+	return EC_SUCCESS;
+}
+
 /*
  * jump_data V3 scenarios
  */
@@ -218,15 +312,37 @@ static int test_P3_J3(void)
 	return EC_SUCCESS;
 }
 
+static int test_P2_J3(void)
+{
+	setup();
+	CHECK(set_panic_size2());
+	CHECK(set_jump_v3());
+	CHECK(run_sysjump());
+	return EC_SUCCESS;
+}
+
+static int test_P1_J3(void)
+{
+	setup();
+	CHECK(set_panic_size1());
+	CHECK(set_jump_v3());
+	CHECK(run_sysjump());
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	test_reset();
 
 	RUN_TEST(test_Pn_J3);
 	RUN_TEST(test_P3_J3);
+	RUN_TEST(test_P2_J3);
+	RUN_TEST(test_P1_J3);
 
 	RUN_TEST(test_Pn_J2);
 	RUN_TEST(test_P3_J2);
+	RUN_TEST(test_P2_J2);
+	RUN_TEST(test_P1_J2);
 
 	test_print_result();
 }
