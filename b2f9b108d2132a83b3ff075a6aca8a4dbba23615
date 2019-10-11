@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a28fee95_a0deefc3",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7feaf839_ef530d7b",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32b6685f_1528d0c6",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-10T20:40:50Z",
       "side": 1,
       "message": "Put them in fifo_staged, as it is related to sample_count / data_period arrays.",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d385aa8_bca63f26",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:43:38Z",
+      "side": 1,
+      "message": "fifo_staged gets reset at each commit, this data isn\u0027t. I guess I could put it in there and replace the simple memset to 0 with a more detailed reset. Would you like me to do that?",
+      "parentUuid": "32b6685f_1528d0c6",
       "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5132468f_004e637d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:43:38Z",
+      "side": 1,
+      "message": "No, you\u0027re right, this was one of the things I was testing and forgot to revert.",
+      "parentUuid": "191b3f0e_08b53b45",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9645e630_b03a9033",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431e981d_42c4f439",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:43:38Z",
+      "side": 1,
+      "message": "This accounts for the case where the spreading was done via the computed window. Basically, the default is to set the spreading by the odr. But, we also check the window between the first data-\u003etimestamp in the staged FIFO and the fifo_staged.read_ts (which is the first time motion_sense_fifo_stage_data was called after a previous commit). The window / (count - 1) gives us the spreading period which if smaller than the sensor\u0027s collection_rate will be used. Because of this, it\u0027s possible that we might have predicted the next ts to be at time N + 8ms but the real sample came in at N + 10ms. In this case, we use that or to reset our baseline timestamp for spreading.",
+      "parentUuid": "9645e630_b03a9033",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "c1f73dd5_e18e354a",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:43:38Z",
+      "side": 1,
+      "message": "Fixed, lock was needed internally.",
+      "parentUuid": "628677f4_ee193ec8",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6d36985_ebce787f",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46dae905_75cbda7e",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:43:38Z",
+      "side": 1,
+      "message": "This function is used to be able to reset the state for tests, see the header. We don\u0027t want to reset next_timestamp_initialized normally at commit, but I added the memset and queue_init to reset the staged metadata for tests.",
+      "parentUuid": "c6d36985_ebce787f",
+      "revId": "b2f9b108d2132a83b3ff075a6aca8a4dbba23615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
