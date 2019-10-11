@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff9ec09_4e51edfc",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-11T16:54:04Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 1
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61db213e_d0f28406",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-11T16:54:04Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 1
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
