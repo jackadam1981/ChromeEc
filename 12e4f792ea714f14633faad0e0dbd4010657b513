@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0fc03b5e_b42f035b",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-10-11T20:40:59Z",
+      "side": 1,
+      "message": "I made it explicit.",
+      "parentUuid": "fb2043d4_d17d5e99",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31f83647_f8429655",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
