@@ -122,6 +122,30 @@
       "revId": "7c36224b20d9f74f3bada81925d07ba41b31d143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9d25c3b_d78b4ad0",
+        "filename": "common/battery_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-11T16:00:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0b9667e_718fb59e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "7c36224b20d9f74f3bada81925d07ba41b31d143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
