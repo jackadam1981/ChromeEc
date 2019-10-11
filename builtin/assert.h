@@ -18,9 +18,17 @@ extern "C" {
 #ifdef CONFIG_DEBUG_ASSERT
 #ifdef CONFIG_DEBUG_ASSERT_REBOOTS
 
+/**
+ * Report an assertion failure and reset
+ *
+ * @param msg		Assertion expression or other message
+ * @param func		Function name where assertion happened
+ * @param fname		File name where assertion happened
+ * @param linenum	Line number where assertion happened
+ */
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
 extern void panic_assert_fail(const char *fname, int linenum)
-	__attribute__((noreturn));
+	ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn);
 #define ASSERT(cond)                                           \
 	do {                                                   \
 		if (!(cond))                                   \
@@ -29,7 +37,7 @@ extern void panic_assert_fail(const char *fname, int linenum)
 #else
 extern void panic_assert_fail(const char *msg, const char *func,
 			      const char *fname, int linenum)
-	__attribute__((noreturn));
+	ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn);
 #define ASSERT(cond)                                                 \
 	do {                                                         \
 		if (!(cond))                                         \
