@@ -22,6 +22,30 @@
       "revId": "4a0b341aa8daec63ae7883cfd1d3abc13e3dfd1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9231a00_b1922fcc",
+        "filename": "include/test_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-11T20:23:56Z",
+      "side": 1,
+      "message": "TEST_OPERATOR already handles it",
+      "parentUuid": "d7732f77_fda106ac",
+      "range": {
+        "startLine": 55,
+        "startChar": 41,
+        "endLine": 55,
+        "endChar": 53
+      },
+      "revId": "4a0b341aa8daec63ae7883cfd1d3abc13e3dfd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
