@@ -9,6 +9,7 @@
 #ifndef __CROS_EC_PANIC_H
 #define __CROS_EC_PANIC_H
 
+#include <assert.h>
 #include <stdarg.h>
 #include <stdint.h>
 
@@ -59,10 +60,10 @@ void panic_data_print(const struct panic_data *pdata);
  */
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
 void panic_assert_fail(const char *fname, int linenum)
-	__attribute__((noreturn));
+	fuzz_test_noreturn;
 #else
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
-		       int linenum) __attribute__((noreturn));
+		       int linenum) fuzz_test_noreturn;
 #endif
 
 /**
@@ -70,19 +71,19 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
  *
  * @param msg	Panic message
  */
-void panic(const char *msg) __attribute__((noreturn));
+void panic(const char *msg) fuzz_test_noreturn;
 
 /**
  * Display a default message and reset
  */
-void panic_reboot(void) __attribute__((noreturn));
+void panic_reboot(void) fuzz_test_noreturn;
 
 #ifdef CONFIG_SOFTWARE_PANIC
 /**
  * Store a panic log and halt the system for a software-related reason, such as
  * stack overflow or assertion failure.
  */
-void software_panic(uint32_t reason, uint32_t info) __attribute__((noreturn));
+void software_panic(uint32_t reason, uint32_t info) fuzz_test_noreturn;
 
 /**
  * Log a panic in the panic log, but don't halt the system. Normally

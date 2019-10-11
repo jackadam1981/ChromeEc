@@ -261,6 +261,12 @@ enum ec_error_list {
 #define test_export_static static
 #endif
 
+#ifdef TEST_FUZZ
+#define fuzz_test_noreturn
+#else
+#define fuzz_test_noreturn __attribute__((noreturn))
+#endif
+
 /*
  * Weak symbol markers
  *
