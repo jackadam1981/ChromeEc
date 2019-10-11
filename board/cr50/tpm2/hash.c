@@ -271,12 +271,69 @@ static void process_finish(int handle, void *response_body,
 	       sizeof(*context));
 }
 
+static uint16_t do_software_hmac(TPM_ALG_ID alg, uint32_t in_len, uint8_t *in,
+				 uint32_t out_len, uint8_t *out)
+{
+	CPRI_HASH_STATE hstate;
+	TPM2B_MAX_HASH_BLOCK hmacKey;
+	const uint16_t digest_len = _cpri__GetDigestSize(alg);
+
+	if (digest_len == 0)
+		return 0;
+	_cpri__StartHMAC(alg, 0, &hstate, in_len, in, &hmacKey.b);
+	/* read next text_len field */
+	in += in_len;
+	in_len = *in++;
+	in_len = in_len * 256 + *in++;
+	_cpri__UpdateHash(&hstate, in_len, in);
+	/* complete HMAC */
+	out_len = _cpri__CompleteHMAC(&hstate, &hmacKey.b, out_len, out);
+
+	return out_len;
+}
+
+static uint16_t do_dcrypto_hmac(TPM_ALG_ID alg, uint32_t in_len,
+				uint8_t *in, int32_t out_len, uint8_t *out)
+{
+	LITE_HMAC_CTX ctx;
+
+	/* Dcrypto only support SHA-256 */
+	if (alg != TPM_ALG_SHA256)
+		return 0;
+
+	DCRYPTO_HMAC_SHA256_init(&ctx, in, in_len);
+	/* read next text_len field */
+	in += in_len;
+	in_len = *in++;
+	in_len = in_len * 256 + *in++;
+	HASH_update(&ctx.hash, in, in_len);
+	out_len = MIN(out_len, SHA256_DIGEST_SIZE);
+	memcpy(out, DCRYPTO_HMAC_final(&ctx), out_len);
+	return out_len;
+}
+
+enum hash_cmd {
+	CMD_START = 0,
+	CMD_CONTINUE = 1,
+	CMD_FINISH = 2,
+	CMD_HASH = 3,
+	CMD_SW_HMAC = 4,
+	CMD_HW_HMAC = 5
+};
+
+enum hash_alg {
+	HASH_ALG_SHA1 = 0,
+	HASH_ALG_SHA256 = 1,
+	HASH_ALG_SHA384 = 2,
+	HASH_ALG_SHA512 = 3
+};
+
 static void hash_command_handler(void *cmd_body,
 				size_t cmd_size,
 				size_t *response_size)
 {
-	int mode;
-	int hash_mode;
+	enum hash_cmd hash_cmd;
+	enum hash_alg hash_alg;
 	int handle;
 	uint16_t text_len;
 	uint8_t *cmd;
@@ -301,31 +358,36 @@ static void hash_command_handler(void *cmd_body,
 	 *
 	 * field     |    size  |                  note
 	 * ===================================================================
-	 * mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
-	 * hash_mode |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
+	 * hash_cmd  |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
+	 *           |          | 4 - SW HMAC single shot (TPM code)
+	 *           |          | 5 - HW HMAC SHA256 single shot (dcrypto code)
+	 * hash_alg  |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
 	 * handle    |    1     | session handle, ignored in 'single' mode
 	 * text_len  |    2     | size of the text to process, big endian
-	 * text      | text_len | text to hash
+	 * text      | text_len | text to hash or key for HMAC
+	 * for HMAC single shot only:
+	 * text_len2 |    2     | size of the text to HMAC, big endian
+	 * text2     | text_len | text to hash for HMAC single shot
 	 */
 
-	mode = *cmd++;
-	hash_mode = *cmd++;
+	hash_cmd = *cmd++;
+	hash_alg = *cmd++;
 	handle = *cmd++;
 	text_len = *cmd++;
 	text_len = text_len * 256 + *cmd++;
 
-	switch (hash_mode) {
-	case 0:
+	switch (hash_alg) {
+	case HASH_ALG_SHA1:
 		alg = TPM_ALG_SHA1;
 		break;
-	case 1:
+	case HASH_ALG_SHA256:
 		alg = TPM_ALG_SHA256;
 		break;
 #ifdef SHA512_SUPPORT
-	case 2:
+	case HASH_ALG_SHA384:
 		alg = TPM_ALG_SHA384;
 		break;
-	case 3:
+	case HASH_ALG_SHA512:
 		alg = TPM_ALG_SHA512;
 		break;
 #endif
@@ -333,8 +395,8 @@ static void hash_command_handler(void *cmd_body,
 		return;
 	}
 
-	switch (mode) {
-	case 0: /* Start a new hash context. */
+	switch (hash_cmd) {
+	case CMD_START: /* Start a new hash context. */
 		process_start(alg, handle, cmd_body, response_size);
 		if (*response_size)
 			break; /* Something went wrong. */
@@ -342,12 +404,12 @@ static void hash_command_handler(void *cmd_body,
 				 cmd_body, response_size);
 		break;
 
-	case 1:
+	case CMD_CONTINUE:
 		process_continue(handle, cmd, text_len,
 				 cmd_body, response_size);
 		break;
 
-	case 2:
+	case CMD_FINISH:
 		process_continue(handle, cmd, text_len,
 				 cmd_body, response_size);
 		if (*response_size)
@@ -358,7 +420,7 @@ static void hash_command_handler(void *cmd_body,
 			*response_size);
 		break;
 
-	case 3: /* Process a buffer in a single shot. */
+	case CMD_HASH: /* Process a buffer in a single shot. */
 		/*
 		 * Error responses are just 1 byte in size, valid responses
 		 * are of various hash sizes.
@@ -368,6 +430,27 @@ static void hash_command_handler(void *cmd_body,
 		CPRINTF("%s:%d response size %d\n", __func__,
 			__LINE__, *response_size);
 		break;
+	case CMD_SW_HMAC: /* SW HMAC SHA-256 (key, value) in a single shot. */
+		/*
+		 * Error responses are just 1 byte in size, valid responses
+		 * are of various hash sizes.
+		 */
+		*response_size = do_software_hmac(alg, text_len, cmd,
+						  response_room, cmd_body);
+		CPRINTF("%s:%d hmac response size %d\n", __func__, __LINE__,
+			*response_size);
+		break;
+	case CMD_HW_HMAC: /* HW HMAC SHA-256 (key, value) in a single shot */
+		/*
+		 * Error responses are just 1 byte in size, valid responses
+		 * are of various hash sizes.
+		 */
+		*response_size = do_dcrypto_hmac(alg, text_len, cmd,
+						 response_room, cmd_body);
+		CPRINTF("%s:%d hmac response size %d\n", __func__, __LINE__,
+			*response_size);
+		break;
+
 	default:
 		break;
 	}
