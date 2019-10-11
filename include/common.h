@@ -409,4 +409,16 @@ enum ec_error_list {
 #define STATIC_IF_NOT(option)						\
 	__cfg_select_build_assert(#option, option, extern, static)
 
+/**
+ * Sets a symbol attribute based on a config option being enabled (or
+ * disabled).
+ *
+ * This follows the same constraints as IS_ENABLED, the config option
+ * should be defined to nothing or undefined.
+ */
+#define ATTRIBUTE_IF(option, attribute)					\
+	__cfg_select(option, __attribute__((attribute)), /**/)
+#define ATTRIBUTE_IF_NOT(option, attribute)				\
+	__cfg_select(option, /**/, __attribute__((attribute)))
+
 #endif  /* __CROS_EC_COMMON_H */

@@ -50,39 +50,24 @@ void panic_printf(const char *format, ...);
 void panic_data_print(const struct panic_data *pdata);
 
 /**
- * Report an assertion failure and reset
- *
- * @param msg		Assertion expression or other message
- * @param func		Function name where assertion happened
- * @param fname		File name where assertion happened
- * @param linenum	Line number where assertion happened
- */
-#ifdef CONFIG_DEBUG_ASSERT_BRIEF
-void panic_assert_fail(const char *fname, int linenum)
-	__attribute__((noreturn));
-#else
-void panic_assert_fail(const char *msg, const char *func, const char *fname,
-		       int linenum) __attribute__((noreturn));
-#endif
-
-/**
  * Display a custom panic message and reset
  *
  * @param msg	Panic message
  */
-void panic(const char *msg) __attribute__((noreturn));
+void panic(const char *msg) ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn);
 
 /**
  * Display a default message and reset
  */
-void panic_reboot(void) __attribute__((noreturn));
+void panic_reboot(void) ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn);
 
 #ifdef CONFIG_SOFTWARE_PANIC
 /**
  * Store a panic log and halt the system for a software-related reason, such as
  * stack overflow or assertion failure.
  */
-void software_panic(uint32_t reason, uint32_t info) __attribute__((noreturn));
+void software_panic(uint32_t reason, uint32_t info)
+	ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn);
 
 /**
  * Log a panic in the panic log, but don't halt the system. Normally
