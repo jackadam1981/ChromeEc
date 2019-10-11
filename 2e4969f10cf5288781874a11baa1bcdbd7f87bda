@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c0177b7_87442784",
+        "filename": "include/espi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-11T00:09:14Z",
+      "side": 1,
+      "message": "Same comment as IOEX - no real need to have both *BASE and *START just so the first signal starts at 0x2000 instead of 0x2001",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2202d8d4_a47684ce",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-11T00:09:14Z",
+      "side": 1,
+      "message": "You could add a GPIO_BASE\u003d0 here, which could then be used by other assert logic.  It just means that the real GPIOs start at 1.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c43b30d_dd5ac88f",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-11T00:09:14Z",
+      "side": 1,
+      "message": "I\u0027d prefer only one name here. The two values IOEX_SIGNAL_BASE and IOEX_SIGNAL_START don\u0027t really add value other than allowing IOEX to start at exactly 0x1000 instead of 0x1001.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
