@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "50db6448_07059b96",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-11T00:43:08Z",
+      "side": 1,
+      "message": "Not true anymore, since crrev.com/c/1834601.\n\nBut, I\u0027m still a bit confused tho, unsigned long is usually safe.\nWhy is this causing an issue?",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f83647_f8429655",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
