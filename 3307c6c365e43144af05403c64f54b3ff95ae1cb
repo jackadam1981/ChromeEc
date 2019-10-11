@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bfb01094_a8bc6c70",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-11T17:18:02Z",
+      "side": 1,
+      "message": "Thank you for the explanation. This CL lgtm, then.\n\nusb_pd_protocol shouldn\u0027t assume there is a battery. So, there seems still a place to refine.",
+      "parentUuid": "da9e402f_f428bc1e",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 1
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61db213e_d0f28406",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 4
