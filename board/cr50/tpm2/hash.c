@@ -159,6 +159,7 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 struct test_context {
 	int context_handle;
 	CPRI_HASH_STATE hstate;
+	TPM2B_MAX_HASH_BLOCK hmacKey;
 };
 
 static struct {
@@ -177,8 +178,9 @@ struct test_context *find_context(int handle)
 	return NULL;
 }
 
-static void process_start(TPM_ALG_ID alg, int handle, void *response_body,
-			  size_t *response_size)
+static struct test_context *process_start(TPM_ALG_ID alg, int handle,
+					  void *response_body,
+					  size_t *response_size)
 {
 	uint8_t *response = response_body;
 	struct test_context *new_context;
@@ -186,7 +188,7 @@ static void process_start(TPM_ALG_ID alg, int handle, void *response_body,
 	if (find_context(handle)) {
 		*response = EXC_HASH_DUPLICATED_HANDLE;
 		*response_size = 1;
-		return;
+		return NULL;
 	}
 
 	if (!hash_test_db.max_contexts) {
@@ -206,7 +208,7 @@ static void process_start(TPM_ALG_ID alg, int handle, void *response_body,
 			hash_test_db.max_contexts = 0;
 			*response = EXC_HASH_TOO_MANY_HANDLES;
 			*response_size = 1;
-			return;
+			return NULL;
 		}
 		memset(hash_test_db.contexts, 0, buffer_size);
 	}
@@ -214,14 +216,36 @@ static void process_start(TPM_ALG_ID alg, int handle, void *response_body,
 	if (hash_test_db.current_context_count == hash_test_db.max_contexts) {
 		*response = EXC_HASH_TOO_MANY_HANDLES;
 		*response_size = 1;
-		return;
+		return NULL;
 	}
 
 	new_context = hash_test_db.contexts +
 		hash_test_db.current_context_count++;
 	new_context->context_handle = handle;
-	_cpri__StartHash(alg, 0, &new_context->hstate);
+	return new_context;
 }
+
+static void process_start_hash(TPM_ALG_ID alg, int handle, void *response_body,
+			       size_t *response_size)
+{
+	struct test_context *ctx = process_start(alg, handle, response_body,
+						 response_size);
+	if (ctx)
+		_cpri__StartHash(alg, 0, &ctx->hstate);
+}
+
+static void process_start_hmac(TPM_ALG_ID alg, int handle, void *response_body,
+			       size_t *response_size, void *cmd_body,
+			       uint16_t text_len)
+{
+	struct test_context *ctx = process_start(alg, handle, response_body,
+						 response_size);
+	if (ctx)
+		_cpri__StartHMAC(alg, 0, &ctx->hstate, text_len,
+				 cmd_body, &ctx->hmacKey.b);
+	return;
+}
+
 
 static void process_continue(int handle, void *cmd_body, uint16_t text_len,
 			     void *response_body, size_t *response_size)
@@ -250,6 +274,41 @@ static void process_finish(int handle, void *response_body,
 
 	/* There for sure is enough room in the TPM buffer. */
 	*response_size = _cpri__CompleteHash(&context->hstate,
+					     SHA_DIGEST_MAX_BYTES,
+					     response_body);
+
+	/* drop this context from the database. */
+	hash_test_db.current_context_count--;
+	if (!hash_test_db.current_context_count) {
+		shared_mem_release(hash_test_db.contexts);
+		hash_test_db.max_contexts = 0;
+		return;
+	}
+
+	/* Nothing to do, if the deleted context is the last one in memory. */
+	if (context == (hash_test_db.contexts +
+			hash_test_db.current_context_count))
+		return;
+
+	memcpy(context,
+	       hash_test_db.contexts + hash_test_db.current_context_count,
+	       sizeof(*context));
+}
+
+static void process_finish_hmac(int handle, void *response_body,
+			   size_t *response_size)
+{
+	struct test_context *context = find_context(handle);
+
+	if (!context) {
+		*((uint8_t *)response_body) = EXC_HASH_UNKNOWN_CONTEXT;
+		*response_size = 1;
+		return;
+	}
+
+	/* There for sure is enough room in the TPM buffer. */
+	*response_size = _cpri__CompleteHMAC(&context->hstate,
+					     &context->hmacKey.b,
 					     SHA_DIGEST_MAX_BYTES,
 					     response_body);
 
@@ -302,10 +361,12 @@ static void hash_command_handler(void *cmd_body,
 	 * field     |    size  |                  note
 	 * ===================================================================
 	 * mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
-	 * hash_mode |    1     | 0 - sha1, 1 - sha256
-	 * handle    |    1     | seassion handle, ignored in 'single' mode
+	 *           |          | 4 - start SW HMAC, 5 - SW HMAC final (TPM)
+	 *           |          | 6 - start HW HMAC, 7 - HW HMAC final
+	 * hash_mode |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
+	 * handle    |    1     | session handle, ignored in 'single' mode
 	 * text_len  |    2     | size of the text to process, big endian
-	 * text      | text_len | text to hash
+	 * text      | text_len | text to hash or key for start HMAC
 	 */
 
 	mode = *cmd++;
@@ -321,14 +382,21 @@ static void hash_command_handler(void *cmd_body,
 	case 1:
 		alg = TPM_ALG_SHA256;
 		break;
-
+	case 2:
+		alg = TPM_ALG_SHA384;
+		break;
+#ifdef SHA512_SUPPORT
+	case 3:
+		alg = TPM_ALG_SHA512;
+		break;
+#endif
 	default:
 		return;
 	}
 
 	switch (mode) {
 	case 0: /* Start a new hash context. */
-		process_start(alg, handle, cmd_body, response_size);
+		process_start_hash(alg, handle, cmd_body, response_size);
 		if (*response_size)
 			break; /* Something went wrong. */
 		process_continue(handle, cmd, text_len,
@@ -361,6 +429,21 @@ static void hash_command_handler(void *cmd_body,
 		CPRINTF("%s:%d response size %d\n", __func__,
 			__LINE__, *response_size);
 		break;
+	case 4: /* Start a new hash context. */
+		process_start_hmac(alg, handle, cmd_body, response_size,
+				   cmd, text_len);
+		break;
+	case 5:
+		process_continue(handle, cmd, text_len,
+				 cmd_body, response_size);
+		if (*response_size)
+			break;  /* Something went wrong. */
+
+		process_finish_hmac(handle, cmd_body, response_size);
+		CPRINTF("%s:%d response size %d\n", __func__, __LINE__,
+			*response_size);
+		break;
+
 	default:
 		break;
 	}

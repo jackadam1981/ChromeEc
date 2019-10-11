@@ -135,6 +135,10 @@ enum vendor_cmd_cc {
 	VENDOR_CC_ENDORSEMENT_SEED = 48,
 
 	VENDOR_CC_U2F_MODE = 49,
+	/*
+	 * Provide access to DRBG implementation for ACVP tests
+	 */
+	VENDOR_CC_DRBG_TEST = 50,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
