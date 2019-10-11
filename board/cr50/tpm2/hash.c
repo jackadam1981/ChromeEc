@@ -159,6 +159,7 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 struct test_context {
 	int context_handle;
 	CPRI_HASH_STATE hstate;
+	TPM2B_MAX_HASH_BLOCK hmacKey;
 };
 
 static struct {
@@ -177,8 +178,9 @@ struct test_context *find_context(int handle)
 	return NULL;
 }
 
-static void process_start(TPM_ALG_ID alg, int handle, void *response_body,
-			  size_t *response_size)
+static void process_start(TPM_ALG_ID alg, int handle,
+					  void *response_body,
+					  size_t *response_size)
 {
 	uint8_t *response = response_body;
 	struct test_context *new_context;
@@ -220,7 +222,6 @@ static void process_start(TPM_ALG_ID alg, int handle, void *response_body,
 	new_context = hash_test_db.contexts +
 		hash_test_db.current_context_count++;
 	new_context->context_handle = handle;
-	_cpri__StartHash(alg, 0, &new_context->hstate);
 }
 
 static void process_continue(int handle, void *cmd_body, uint16_t text_len,
@@ -271,6 +272,47 @@ static void process_finish(int handle, void *response_body,
 	       sizeof(*context));
 }
 
+static uint16_t _cpri__HMACBlock(TPM_ALG_ID alg, uint32_t in_len, uint8_t *in,
+				 uint32_t out_len, uint8_t *out)
+{
+	CPRI_HASH_STATE hstate;
+	TPM2B_MAX_HASH_BLOCK hmacKey;
+	const uint16_t digest_len = _cpri__GetDigestSize(alg);
+
+	if (digest_len == 0)
+		return 0;
+	_cpri__StartHMAC(alg, 0, &hstate, in_len, in, &hmacKey.b);
+	/* read next text_len field */
+	in += in_len;
+	in_len = *in++;
+	in_len = in_len * 256 + *in++;
+	_cpri__UpdateHash(&hstate, in_len, in);
+	/* complete HMAC */
+	out_len = _cpri__CompleteHMAC(&hstate, &hmacKey.b, out_len, out);
+
+	return out_len;
+}
+
+static uint16_t _dcrypto__HMACBlock(TPM_ALG_ID alg, uint32_t in_len,
+				    uint8_t *in, int32_t out_len, uint8_t *out)
+{
+	LITE_HMAC_CTX ctx;
+
+	/* Dcrypto only support SHA-256 */
+	if (alg != TPM_ALG_SHA256)
+		return 0;
+
+	DCRYPTO_HMAC_SHA256_init(&ctx, in, in_len);
+	/* read next text_len field */
+	in += in_len;
+	in_len = *in++;
+	in_len = in_len * 256 + *in++;
+	HASH_update(&ctx.hash, in, in_len);
+	out_len = MIN(out_len, SHA256_DIGEST_SIZE);
+	memcpy(out, DCRYPTO_HMAC_final(&ctx), out_len);
+	return out_len;
+}
+
 static void hash_command_handler(void *cmd_body,
 				size_t cmd_size,
 				size_t *response_size)
@@ -302,10 +344,15 @@ static void hash_command_handler(void *cmd_body,
 	 * field     |    size  |                  note
 	 * ===================================================================
 	 * mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
+	 *           |          | 4 - SW HMAC single shot (TPM code)
+	 *           |          | 5 - HW HMAC single shot (dcrypto code)
 	 * hash_mode |    1     | 0 - sha1, 1 - sha256
-	 * handle    |    1     | seassion handle, ignored in 'single' mode
+	 * handle    |    1     | session handle, ignored in 'single' mode
 	 * text_len  |    2     | size of the text to process, big endian
-	 * text      | text_len | text to hash
+	 * text      | text_len | text to hash or key for start HMAC
+	 * for HMAC single shot only:
+	 * text_len2 |    2     | size of the text to HMAC, big endian
+	 * text2     | text_len | text to hash for HMAC single shot
 	 */
 
 	mode = *cmd++;
@@ -361,6 +408,27 @@ static void hash_command_handler(void *cmd_body,
 		CPRINTF("%s:%d response size %d\n", __func__,
 			__LINE__, *response_size);
 		break;
+	case 4: /* Process a buffer in a single shot. */
+		/*
+		 * Error responses are just 1 byte in size, valid responses
+		 * are of various hash sizes.
+		 */
+		*response_size = _cpri__HMACBlock(alg, text_len,
+						  cmd, response_room, cmd_body);
+		CPRINTF("%s:%d response size %d\n", __func__,
+			__LINE__, *response_size);
+		break;
+	case 5: /* Process a buffer in a single shot. */
+		/*
+		 * Error responses are just 1 byte in size, valid responses
+		 * are of various hash sizes.
+		 */
+		*response_size = _dcrypto__HMACBlock(alg, text_len,
+						  cmd, response_room, cmd_body);
+		CPRINTF("%s:%d response size %d\n", __func__,
+			__LINE__, *response_size);
+		break;
+
 	default:
 		break;
 	}
