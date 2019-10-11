@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbef3772_9e0646a2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1372,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-11T15:50:17Z",
+      "side": 1,
+      "message": "Given not all sensors will support online calibration (light for instance), add this capability in ec_response_motion_sense info_v4. \nIt will be easier for the kernel driver to add the appropriate hooks.",
+      "revId": "c52b68dffd2a948fa9d3dd6dd7dc61f2088c898d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
