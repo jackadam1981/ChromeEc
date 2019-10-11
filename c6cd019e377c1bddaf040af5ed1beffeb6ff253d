@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13a74a5d_2a71d284",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-11T14:16:16Z",
+      "side": 1,
+      "message": "nit: prefer parens around this",
+      "range": {
+        "startLine": 720,
+        "startChar": 6,
+        "endLine": 720,
+        "endChar": 28
+      },
+      "revId": "c6cd019e377c1bddaf040af5ed1beffeb6ff253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe2bda1_dc55e3e7",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-11T14:16:16Z",
+      "side": 1,
+      "message": "nit: prefer parens around this",
+      "range": {
+        "startLine": 720,
+        "startChar": 32,
+        "endLine": 720,
+        "endChar": 54
+      },
+      "revId": "c6cd019e377c1bddaf040af5ed1beffeb6ff253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
