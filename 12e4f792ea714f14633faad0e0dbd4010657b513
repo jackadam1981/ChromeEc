@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "40b29810_7bf10833",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-11T00:43:54Z",
+      "side": 1,
+      "message": "SG, thanks",
+      "parentUuid": "5f2b1205_5afe7f5d",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50db6448_07059b96",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
