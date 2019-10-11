@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fba03a81_e5cedfac",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-11T01:01:39Z",
+      "side": 1,
+      "message": "Signed vs. unsigned suspect",
+      "range": {
+        "startLine": 312,
+        "startChar": 17,
+        "endLine": 312,
+        "endChar": 18
+      },
+      "revId": "5cd05ac1c13553d3889eb5a34b17cc1927d872e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
