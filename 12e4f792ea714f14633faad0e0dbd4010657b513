@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f2b1205_5afe7f5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-10-11T00:29:12Z",
+      "side": 1,
+      "message": "This CL does not need to (and can\u0027t) be cherrypicked to nocturne branch since nocturne branch does not use BIT() macro at all. But if we end up refactoring the LPTIM code, I\u0027ll cherrypick to nocturne.",
+      "parentUuid": "af117860_dd0dff99",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31f83647_f8429655",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d5cdb2_0901bad9",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-10-11T00:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f83647_f8429655",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
