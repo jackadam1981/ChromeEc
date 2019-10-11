@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "379cb0e2_06024f01",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-11T20:39:29Z",
+      "side": 1,
+      "message": "nit - convert to IS_ENABLED guard clause. This can be done in a later CL if there are no more patchsets on this CL.",
+      "range": {
+        "startLine": 1453,
+        "startChar": 0,
+        "endLine": 1453,
+        "endChar": 43
+      },
+      "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a1b40a9_5b5692b9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2667,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-11T20:39:29Z",
+      "side": 1,
+      "message": "Is this correct? Shouldn\u0027t this be checking PD_CC_UFP_AUDIO_ACC, PD_CC_UFP_DEBUG_ACC and PD_CC_UFP_ATTACHED?",
+      "range": {
+        "startLine": 2665,
+        "startChar": 0,
+        "endLine": 2667,
+        "endChar": 0
+      },
+      "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
