@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "5228fd71_fbbd5597",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-11T21:05:48Z",
+      "side": 1,
+      "message": "We used to return 100 for Fizz: crrev.com/c/289854. It was changed to 0 somewhere in the history.\n\nusb_get_battery_soc was in usb_common.c because usb_common.c is included by battery-less systems. I think it\u0027s ok to keep it in usb_common.c. If you want to decouple it from \u0027usb\u0027, we can probably put it in common/battery_less.c, which should be included if CONFIG_BATTERY is undefined.\n\nEach caller of get_battery_soc should handle battery less systems properly. We can blindly make get_battery_soc return 100 as a source and 0 as a sink based on a very fragile assumption.",
+      "parentUuid": "400038fd_8e1efd95",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 1
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61db213e_d0f28406",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 4
