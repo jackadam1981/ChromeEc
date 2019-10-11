@@ -1596,3 +1596,12 @@ void clock_enable_module(enum module_id module, int enable)
 	 * function.
 	 */
 }
+
+#ifdef TEST_BUILD
+void system_common_reset_state(void)
+{
+	jdata = 0;
+	reset_flags = 0;
+	jumped_to_image = 0;
+}
+#endif  /* TEST_BUILD */
