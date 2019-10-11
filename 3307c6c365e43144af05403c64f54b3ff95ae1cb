@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da9e402f_f428bc1e",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-11T17:13:22Z",
+      "side": 1,
+      "message": "I only added it so it would compile.  They use usb_pd_protocol, which calls battery_get_soc() (formerly usb_get_battery_soc, which was already included in the USB code).  There is no battery in samus_pd, but it uses the old PD stack which requires battery state-of-charge for pd_update_try_source.",
+      "parentUuid": "bff9ec09_4e51edfc",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 1
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61db213e_d0f28406",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-11T16:54:04Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 1
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39eddaa7_2a0ea440",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-11T17:13:22Z",
+      "side": 1,
+      "message": "Same answer.  I only added it so it would compile.  They use usb_pd_protocol, which calls battery_get_soc() (formerly usb_get_battery_soc, which was already included in the USB code).  There is no battery in fizz (chromebox), but it uses the old PD stack which requires battery state-of-charge for pd_update_try_source.",
+      "parentUuid": "61db213e_d0f28406",
       "range": {
         "startLine": 615,
         "startChar": 0,
