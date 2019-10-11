@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "fb2043d4_d17d5e99",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-11T00:47:25Z",
+      "side": 1,
+      "message": "Even if it was the signed vs. unsigned, wouldn\u0027t you rather just make this explicit and type cast to \"int\" here?",
+      "parentUuid": "50db6448_07059b96",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f83647_f8429655",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
