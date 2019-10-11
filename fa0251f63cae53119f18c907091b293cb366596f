@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc11c7ab_5d2e4d96",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-11T22:01:02Z",
+      "side": 1,
+      "message": "Can this happen when CONFIG_ACCEL_FIFO is disabled? the logic changed slightly, as this used to be in an else from the IS_ENABLED(CONFIG_ACCEL_FIFO)",
+      "revId": "fa0251f63cae53119f18c907091b293cb366596f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0a1ed1_92d723dd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-11T22:01:02Z",
+      "side": 1,
+      "message": "whitespace oddities. Think this should be a space instead of a tab...",
+      "range": {
+        "startLine": 684,
+        "startChar": 11,
+        "endLine": 684,
+        "endChar": 12
+      },
+      "revId": "fa0251f63cae53119f18c907091b293cb366596f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
