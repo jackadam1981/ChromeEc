@@ -22,6 +22,30 @@
       "revId": "8915e19a9b373ad87878d67973be6cdcaf5eb2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc892be_1d7830cd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-11T23:19:35Z",
+      "side": 0,
+      "message": "Here is a CL to just remove tc_set_timeout: CL1857216\nI realize adding low power mode will need to set a -1 timeout, but I think that can be easily added directly in usbc_task.c.",
+      "parentUuid": "b88be806_670abd7b",
+      "range": {
+        "startLine": 1933,
+        "startChar": 1,
+        "endLine": 1934,
+        "endChar": 1
+      },
+      "revId": "8915e19a9b373ad87878d67973be6cdcaf5eb2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
