@@ -22,6 +22,30 @@
       "revId": "100e95df1985f13bdeac8258620028eb480c767f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b46aa9_4199307e",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-11T18:33:47Z",
+      "side": 1,
+      "message": "\u003e Does this require that signal_is_ioex() is always available?\n\nsignal_is_ioex() is only available when CONFIG_IO_EXPANDER is enabled.\nFor boards that don\u0027t have CONFIG_IO_EXPANDER, this just turns into gpio_set_level.\nMoving this into common/gpio.c sounds good, I\u0027ll make that change.",
+      "parentUuid": "9ecf995b_eb854e88",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "100e95df1985f13bdeac8258620028eb480c767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
