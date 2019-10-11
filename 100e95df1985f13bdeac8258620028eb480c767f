@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ecf995b_eb854e88",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-11T18:09:04Z",
+      "side": 1,
+      "message": "Does this require that signal_is_ioex() is always available?\nYou could do \nif (IS_ENABLED(CONFIG_IO_EXPANDER))\n  if (signal_is_ioex(signal))\n    ioex_set_level();\n    return;\n\nThis will more easily expand to support more GPIO types if needed, and if this gets promoted to a common layer.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "100e95df1985f13bdeac8258620028eb480c767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
