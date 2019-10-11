@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af117860_dd0dff99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-11T00:14:29Z",
+      "side": 1,
+      "message": "nocturne?\nI know it\u0027s not currently impacted, but surely positive_match_secret will require those CLs in the nocturne branch, right?",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f83647_f8429655",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-10-11T00:14:29Z",
+      "side": 1,
+      "message": "You need to add a link to the associated bug",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "12e4f792ea714f14633faad0e0dbd4010657b513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
