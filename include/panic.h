@@ -9,6 +9,7 @@
 #ifndef __CROS_EC_PANIC_H
 #define __CROS_EC_PANIC_H
 
+#include <assert.h>
 #include <stdarg.h>
 #include <stdint.h>
 
@@ -57,12 +58,14 @@ void panic_data_print(const struct panic_data *pdata);
  * @param fname		File name where assertion happened
  * @param linenum	Line number where assertion happened
  */
+#ifndef TEST_BUILD
+__attribute__((noreturn))
+#endif
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
-void panic_assert_fail(const char *fname, int linenum)
-	__attribute__((noreturn));
+void panic_assert_fail(const char *fname, int linenum);
 #else
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
-		       int linenum) __attribute__((noreturn));
+		       int linenum);
 #endif
 
 /**
@@ -70,12 +73,18 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
  *
  * @param msg	Panic message
  */
-void panic(const char *msg) __attribute__((noreturn));
+#ifndef TEST_BUILD
+__attribute__((noreturn))
+#endif
+void panic(const char *msg);
 
 /**
  * Display a default message and reset
  */
-void panic_reboot(void) __attribute__((noreturn));
+#ifndef TEST_BUILD
+__attribute__((noreturn))
+#endif
+void panic_reboot(void);
 
 #ifdef CONFIG_SOFTWARE_PANIC
 /**

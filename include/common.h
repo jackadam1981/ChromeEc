@@ -254,11 +254,13 @@ enum ec_error_list {
 #define test_mockable_static __attribute__((weak))
 #define test_mockable_static_inline __attribute__((weak))
 #define test_export_static
+#define test_mockable_noreturn
 #else
 #define test_mockable
 #define test_mockable_static static
 #define test_mockable_static_inline static inline
 #define test_export_static static
+#define test_mockable_noreturn __attribute__((noreturn))
 #endif
 
 /*
