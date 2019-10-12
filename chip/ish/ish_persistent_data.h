@@ -6,7 +6,7 @@
 #ifndef __CROS_EC_ISH_PERSISTENT_DATA_H
 #define __CROS_EC_ISH_PERSISTENT_DATA_H
 
-#include "panic.h"
+#include "panic_data.h"
 
 /*
  * If you make backwards-incompatible changes to this struct, (that
