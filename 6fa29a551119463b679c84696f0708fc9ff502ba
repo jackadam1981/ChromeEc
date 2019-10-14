@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1d58886_d3a6dc3d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:16:17Z",
+      "side": 1,
+      "message": "let\u0027s call this i2c_read\n\nand the other i2c_write\n\n\nBecause you don\u0027t need to be using PEC for these function to make sense",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 23
+      },
+      "revId": "6fa29a551119463b679c84696f0708fc9ff502ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07936330_76c6717a",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:16:17Z",
+      "side": 1,
+      "message": "you made a variable for this call addr_8bit, can you do that here?\n\nAlso, let\u0027s comment that the | 1 if for the R/W bit",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 39
+      },
+      "revId": "6fa29a551119463b679c84696f0708fc9ff502ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e54bcc_6fb35ab7",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:16:17Z",
+      "side": 1,
+      "message": "this line doesn\u0027t do anything",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 18
+      },
+      "revId": "6fa29a551119463b679c84696f0708fc9ff502ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b531a30e_263ea02b",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:16:17Z",
+      "side": 1,
+      "message": "nit: sizeof(uint16_t)\n\nThis documents what that parameter is used for",
+      "range": {
+        "startLine": 417,
+        "startChar": 51,
+        "endLine": 417,
+        "endChar": 52
+      },
+      "revId": "6fa29a551119463b679c84696f0708fc9ff502ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3fcf28_84b48826",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:16:17Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this first part of the condition since you early returned on line 522",
+      "range": {
+        "startLine": 551,
+        "startChar": 6,
+        "endLine": 551,
+        "endChar": 37
+      },
+      "revId": "6fa29a551119463b679c84696f0708fc9ff502ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b381c048_989519a0",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:16:17Z",
+      "side": 1,
+      "message": "this return value will not get propogates out.\n\nline 585 will overwrite rv",
+      "range": {
+        "startLine": 582,
+        "startChar": 4,
+        "endLine": 582,
+        "endChar": 22
+      },
+      "revId": "6fa29a551119463b679c84696f0708fc9ff502ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
