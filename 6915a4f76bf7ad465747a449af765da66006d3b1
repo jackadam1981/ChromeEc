@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84fbdc08_5beb7cdb",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-10-14T22:52:23Z",
+      "side": 1,
+      "message": "why not just have a real dependency for this:\n\n${out}/chip/npcx/spiflashfw:\n        $(Q)mkdir -p $@",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 16
+      },
+      "revId": "6915a4f76bf7ad465747a449af765da66006d3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
