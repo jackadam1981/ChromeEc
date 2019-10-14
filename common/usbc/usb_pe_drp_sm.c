@@ -435,7 +435,8 @@ static struct svdm_amode_data *get_modep(int port, uint16_t svid);
 #endif
 
 test_export_static enum usb_pe_state get_state_pe(const int port);
-static void set_state_pe(const int port, const enum usb_pe_state new_state);
+test_export_static void set_state_pe(const int port,
+				     const enum usb_pe_state new_state);
 
 void pe_init(int port)
 {
@@ -728,7 +729,8 @@ void pe_exit_dp_mode(int port)
  */
 
 /* Set the TypeC state machine to a new state. */
-static void set_state_pe(const int port, const enum usb_pe_state new_state)
+test_export_static void set_state_pe(const int port,
+				     const enum usb_pe_state new_state)
 {
 	set_state(port, &pe[port].ctx, &pe_states[new_state]);
 }
@@ -738,6 +740,29 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 {
 	return pe[port].ctx.current - &pe_states[0];
 }
+
+#ifdef TEST_BUILD
+void pe_set_flag(int port, int flag)
+{
+	PE_SET_FLAG(port, flag);
+}
+void pe_clr_flag(int port, int flag)
+{
+	PE_CLR_FLAG(port, flag);
+}
+int pe_chk_flag(int port, int flag)
+{
+	return PE_CHK_FLAG(port, flag);
+}
+int pe_get_all_flags(int port)
+{
+	return pe[port].flags;
+}
+void pe_set_all_flags(int port, int flags)
+{
+	pe[port].flags = flags;
+}
+#endif
 
 /* Get the previous TypeC state. */
 static enum usb_pe_state get_last_state_pe(const int port)
@@ -3405,6 +3430,7 @@ static void pe_do_port_discovery_entry(int port)
 
 static void pe_do_port_discovery_run(int port)
 {
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	uint32_t *payload = (uint32_t *)emsg[port].buf;
 	struct svdm_amode_data *modep = get_modep(port, PD_VDO_VID(payload[0]));
 	int ret = 0;
@@ -3494,6 +3520,7 @@ static void pe_do_port_discovery_run(int port)
 		pe[port].vdm_cnt = ret;
 		set_state_pe(port, PE_VDM_REQUEST);
 	}
+#endif
 }
 
 /**

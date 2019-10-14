@@ -284,6 +284,22 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_SW_CRC
 #endif
 
+#if defined(TEST_USB_PE_DRP)
+#undef CONFIG_SW_CRC
+#define CONFIG_TEST_USB_PE_SM
+#undef CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PID 0x5036
+#define CONFIG_USB_POWER_DELIVERY
+#undef CONFIG_USB_PRL_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#undef CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USBC_VCONN
+#define PD_VCONN_SWAP_DELAY 5000 /* us */
+#endif
+
 /* Common TypeC tests defines */
 #if defined(TEST_USB_TYPEC_VPD) || \
 	defined(TEST_USB_TYPEC_CTVPD) || \
