@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b2c2b1b6_43b1c088",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T16:16:51Z",
+      "side": 1,
+      "message": "This is just a local enum. Not exposing it to callers",
+      "parentUuid": "f1f48c62_79ed07d4",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12d172f_dc2d7147",
         "filename": "common/tablet_mode.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5db75b6_a334276f",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T16:16:51Z",
+      "side": 1,
+      "message": "I think tablet mode being false is a sane default to return. Then we don\u0027t need to make all callers need to handle a special uninitialized case.\n\nAlso, we ensure that it is always initialized on line 165. so caller will most likely never even hit the UNINITIALIZED case since it will alway be ENABLED or DISABLED after line 165.",
+      "parentUuid": "0a58124c_31be5a5a",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
