@@ -189,6 +189,29 @@
       "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e3c80c_17fe8326",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:27:01Z",
+      "side": 1,
+      "message": "this won\u0027t every be expressed, since this file in only included when CONFIG_BATTERY is defined",
+      "range": {
+        "startLine": 635,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 11
+      },
+      "revId": "3307c6c365e43144af05403c64f54b3ff95ae1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
