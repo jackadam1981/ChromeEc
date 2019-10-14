@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9bc07a1_e929cac6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-14T23:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379cb0e2_06024f01",
+      "range": {
+        "startLine": 1453,
+        "startChar": 0,
+        "endLine": 1453,
+        "endChar": 43
+      },
+      "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a1b40a9_5b5692b9",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 9
@@ -69,6 +93,30 @@
       "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7a564f_7029f99e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2667,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-14T23:46:43Z",
+      "side": 1,
+      "message": "yes this function checks if Chromebook is UFP.I have added a comment to avoid confusion.",
+      "parentUuid": "193cc232_16687f3b",
+      "range": {
+        "startLine": 2665,
+        "startChar": 0,
+        "endLine": 2667,
+        "endChar": 0
+      },
+      "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
