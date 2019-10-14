@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da4479a2_b9f7f3c5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-14T04:06:18Z",
+      "side": 1,
+      "message": "I don\u0027t think the logic changed, please correct me if I\u0027m wrong here...\n\n- Both cases of if (IS_ENABLED(...)) and the else first check forced mode and time to read.\n- Then they run motion_sense_read.\n- Difference is if we have CONFIG_ACCEL_FIFO we write the data into a temporary vector, stage it, then commit. If accel fifo isn\u0027t defined, we copy the data to sensor-\u003exyz. (this logic was moved to motion_sense_push_raw_xyz).\n- Finally difference is there\u0027s an extra bit of logic that runs if the config is enabled and we have a pending flush (which is seen below).",
+      "parentUuid": "fc11c7ab_5d2e4d96",
+      "revId": "fa0251f63cae53119f18c907091b293cb366596f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c0a1ed1_92d723dd",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "fa0251f63cae53119f18c907091b293cb366596f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf3466f_ca392357",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-14T04:06:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c0a1ed1_92d723dd",
+      "range": {
+        "startLine": 684,
+        "startChar": 11,
+        "endLine": 684,
+        "endChar": 12
+      },
+      "revId": "fa0251f63cae53119f18c907091b293cb366596f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
