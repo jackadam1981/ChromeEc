@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5151b28f_42566d5d",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:34:23Z",
+      "side": 1,
+      "message": "this won\u0027t work with the expander as is.\n\nI wish this would give a compiler error or something :(\n\nYou are going to need to tweak usb_port_power_dumb.c and ensure that all calls do not happen before I2C is ready and aren\u0027t in any interrupt context. (Looks like everything is okay)\n\nI don\u0027t know how this will work for the host command though. It might be too much latency for the host command, but I don\u0027t know for sure",
+      "range": {
+        "startLine": 487,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 21
+      },
+      "revId": "157cc83e6108850a795eff917efc6bb96eab550a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
