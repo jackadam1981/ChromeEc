@@ -546,6 +546,8 @@ void espi_interrupt(void)
 		/* Clear pending bits first */
 		NPCX_ESPISTS = status;
 
+		CPRINTS("eSPI sts=%x err=%x cfg=%x", status, NPCX_ESPIIERR, NPCX_ESPICFG);
+
 		if (IS_BIT_SET(status, NPCX_ESPISTS_BERR))
 			CPRINTS("eSPI Bus Error");
 
