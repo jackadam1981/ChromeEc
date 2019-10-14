@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "929bf3e2_3a5e0d9f",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-14T15:41:29Z",
+      "side": 1,
+      "message": "fmu, this should always be considered \"used\" by the compiler now.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "508d4fd736c53981f4872553affea277764feb6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cc3b27_79fae18d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-14T15:41:29Z",
+      "side": 1,
+      "message": "we need to find an effective way around using a pointer for the argument type with the compile time printf checks enabled... CPRINTF(\"%f\", \u0026(0.1)) won\u0027t compile with the checks enabled.",
+      "range": {
+        "startLine": 239,
+        "startChar": 14,
+        "endLine": 239,
+        "endChar": 15
+      },
+      "revId": "508d4fd736c53981f4872553affea277764feb6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
