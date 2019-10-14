@@ -46,6 +46,29 @@
       "revId": "100e95df1985f13bdeac8258620028eb480c767f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3834a805_2a3a3cea",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-14T21:44:01Z",
+      "side": 1,
+      "message": "have you tried this host command with the ioexpanders. I am worried it might be too slow (I am sure there is some kind of work around though)",
+      "range": {
+        "startLine": 207,
+        "startChar": 21,
+        "endLine": 207,
+        "endChar": 47
+      },
+      "revId": "100e95df1985f13bdeac8258620028eb480c767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
