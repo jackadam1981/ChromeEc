@@ -21,7 +21,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
+			 PDO_FIXED_FAST_SWAP | PDO_FIXED_COMM_CAP)
 
 const uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
@@ -91,6 +91,23 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
 		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
 			pd_request_power_swap(port);
+	}
+}
+
+void pd_check_fast_swap(int port, int flags)
+{
+	/*
+	 * If port partner support dual-role power, fast role swap
+	 * and our dualrole toggling is on, then enable TCPC and PPC
+	 * fast role swap to SRC.
+	 */
+	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
+	    (flags & PD_FLAGS_PARTNER_FAST_SWAP) &&
+	    (pd_get_dual_role(port) == PD_DRP_TOGGLE_ON)) { //need check TypeC current if we can satisfy
+		tcpm_set_fast_swap(port, PD_ROLE_SINK, 1);
+		pd_snk_fast_swap_to_src_enable(port, 1);
+		/* If the power contract > 5v, turn on PP1 */
+		ppc_vbus_source_enable(port, 1);
 	}
 }
 
@@ -169,6 +186,11 @@ int pd_snk_is_vbus_provided(int port)
 {
 	return ppc_is_vbus_present(port);
 }
+
+int pd_new_src_is_frs_vbus_provide(int port)
+{
+	return ppc_is_frs_vbus_provide(port);
+}
 #endif
 
 void typec_set_source_current_limit(int port, int rp)
@@ -181,6 +203,10 @@ int board_vbus_source_enabled(int port)
 	return ppc_is_sourcing_vbus(port);
 }
 
+int pd_snk_fast_swap_to_src_enable(int port, int enable)
+{
+	return ppc_fast_swap_to_src_enable(port, enable);
+}
 
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {

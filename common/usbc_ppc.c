@@ -329,7 +329,27 @@ int ppc_is_vbus_present(int port)
 
 	return rv;
 }
+
+int ppc_is_frs_vbus_provide(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt)) {
+		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		return 0;
+	}
+
+	return ppc_chips[port].drv->is_frs_vbus_provide(port);
+}
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
+
+int ppc_fast_swap_to_src_enable(int port, int enable)
+{
+	if ((port < 0) || (port >= ppc_cnt)) {
+		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		return 0;
+	}
+
+	return ppc_chips[port].drv->fast_swap_to_src_enable(port, enable);
+}
 
 #ifdef CONFIG_CMD_PPC_DUMP
 static int command_ppc_dump(int argc, char **argv)

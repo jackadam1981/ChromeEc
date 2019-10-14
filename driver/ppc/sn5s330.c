@@ -463,6 +463,16 @@ static int sn5s330_init(int port)
 		}
 	}
 
+	/* Disable CC FRS comparator, this is an undocumented register. */
+	i2c_write8(i2c_port, i2c_addr_flags, 0x2E, 0x80);
+	//status = i2c_read8(i2c_port, i2c_addr_flags, 0x2E, &regval);
+	//if (status) {
+	//	CPRINTS("ppc p%d: Failed to read reg 0x2E!", port);
+	//	return status;
+	//}
+	//regval |= BIT(7);
+	//i2c_write8(i2c_port, i2c_addr_flags, 0x2E, regval);
+
 	return EC_SUCCESS;
 }
 
@@ -479,6 +489,20 @@ static int sn5s330_is_vbus_present(int port)
 	}
 
 	return !!(regval & SN5S330_VBUS_GOOD);
+}
+
+static int sn5s330_is_frs_vbus_provide(int port)
+{
+	int regval;
+	int rv;
+
+	rv = read_reg(port, SN5S330_INT_STATUS_REG3, &regval);
+	if (rv) {
+		CPRINTS("ppc p%d: FRS VBUS present error (%d)", port, rv);
+		return 0;
+	}
+
+	return !!(regval & SN5S330_FRS_SRC_CMPLT);
 }
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
@@ -628,6 +652,55 @@ static int sn5s330_vbus_source_enable(int port, int enable)
 	return sn5s330_pp_fet_enable(port, SN5S330_PP1, !!enable);
 }
 
+static int sn5s330_fast_swap_to_src_enable(int port, int enable)
+{
+	int regval;
+	int status;
+
+	/* Enable ppc detect source Rp to GND signal for fast role swap , no */
+
+	/* set pp1, pp2 in SNK mode = 0 ? SN5S330_FUNC_SET3 52h bit[3:4] */
+
+	/* Enable fast role swap from SNK to SRC */
+	status = read_reg(port, SN5S330_FUNC_SET5, &regval);
+	if (status)
+		return status;
+
+	if (enable)
+		regval |= SN5S330_FRS_EN;
+	else
+		regval &= ~SN5S330_FRS_EN;
+
+	status = write_reg(port, SN5S330_FUNC_SET5, regval);
+	if (status) {
+		CPRINTS("ppc p%d: Failed to %s fast role swap",
+			port, enable ? "enable" : "disable");
+		return status;
+	}
+
+	/*
+	 * Enable ppc moniter Vbus <= 5v, if this occur that ppc auto turn on
+	 * Vbus to 5v within 150us (tSrcFRSwap).
+	 */
+	//status = read_reg(port, SN5S330_FUNC_SET9, &regval);
+	//if (status)
+	//	return status;
+
+	//if (enable)
+	//	regval |= SN5S330_FRS_COMP_EN_CC;
+	//else
+	//	regval &= ~SN5S330_FRS_COMP_EN_CC;
+
+	//status = write_reg(port, SN5S330_FUNC_SET5, regval);
+	//if (status) {
+	//	CPRINTS("ppc p%d: Failed to %s moniter Vbus",
+	//		port, enable ? "enable" : "disable");
+	//	return status;
+	//}
+
+	return EC_SUCCESS;
+}
+
 static void sn5s330_handle_interrupt(int port)
 {
 	int attempt = 0;
@@ -740,6 +813,7 @@ const struct ppc_drv sn5s330_drv = {
 #endif
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 	.is_vbus_present = &sn5s330_is_vbus_present,
+	.is_frs_vbus_provide = &sn5s330_is_frs_vbus_provide,
 #endif
 #ifdef CONFIG_USBC_PPC_POLARITY
 	.set_polarity = &sn5s330_set_polarity,
@@ -750,4 +824,5 @@ const struct ppc_drv sn5s330_drv = {
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &sn5s330_set_vconn,
 #endif
+	.fast_swap_to_src_enable = &sn5s330_fast_swap_to_src_enable,
 };
