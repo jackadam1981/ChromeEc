@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "66379388_1ace9adc",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-10-14T13:45:06Z",
+      "side": 1,
+      "message": "The change is wrong if CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK is not defined.\n\nI\u0027d like to change to\n\nint skip_interrupt;\nint host_skip_interrupt \u003d 1, mkbp_skip_interrupt \u003d 1;\n#ifdef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK\n    host_skip_interrupt \u003d ...\n#endif\n\n#ifdef CONFIG_MKBP_EVENT_WAKEUP_MASK\n    mkbp_skip_interrupt \u003d ...\n#endif\n\n    skip_interrupt \u003d host_skip_interrupt \u0026\u0026 mkbp_skip_interrupt;\n\nThen we can have CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK and CONFIG_MKBP_EVENT_WAKEUP_MASK at the same time. One of these wants to wake up device then skip_interrupt is 0.\n\nHi Aseda,\nHow do you think?\nThanks.",
+      "parentUuid": "293bba52_1cf8cf17",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
