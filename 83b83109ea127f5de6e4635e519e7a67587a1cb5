@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "f1ebb535_f08d069e",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T16:52:00Z",
+      "side": 1,
+      "message": "I have gone over this a few times in my head today. What is your use case that does not work right now that you need to change the code?\n\nThe code on ToT still seems correct to me.\n\nTo answer Gwendal\u0027s early questions: if you want any host event delivered through MKBP to successfully send while the SoC is sleeping, you must either leave CONFIG_MKBP_EVENT_WAKEUP_MASK undefined or ensure that BIT(EC_MKBP_EVENT_HOST_EVENT) or BIT(EC_MKBP_EVENT_HOST_EVENT_64) is defined in your mask\n\n----\n\n@Heng-Ruey, the suggestion does not seem correct. if mkbp wants to skip the interrupt, then it should skip it\n\n\n---\n\nI do think this code could be cleaned up with a few more comments. Maybe we can consolidate the keyboard passthrue with the mkcp_event_wake_mask too",
+      "parentUuid": "66379388_1ace9adc",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
