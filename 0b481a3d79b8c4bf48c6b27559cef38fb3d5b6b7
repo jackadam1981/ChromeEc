@@ -22,6 +22,30 @@
       "revId": "0b481a3d79b8c4bf48c6b27559cef38fb3d5b6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640e3628_9cc61752",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-15T00:42:01Z",
+      "side": 1,
+      "message": "Modified the older stack as well. CC lines give what is attached at present. So if DFP is attached that means the port to which it is connected is UFP - which is what we need.",
+      "parentUuid": "222450e2_390e77ff",
+      "range": {
+        "startLine": 2661,
+        "startChar": 4,
+        "endLine": 2661,
+        "endChar": 13
+      },
+      "revId": "0b481a3d79b8c4bf48c6b27559cef38fb3d5b6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
