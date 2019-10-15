@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "621020f4_53584292",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-15T02:38:28Z",
+      "side": 1,
+      "message": "you are not changing anything on Cr50, it should not be included in this patch. It also makes sense to keep the name, as H1 has both master and slave i2c controllers.",
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
