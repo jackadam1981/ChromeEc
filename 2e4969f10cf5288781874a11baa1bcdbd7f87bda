@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "3f951813_e08728a2",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T13:41:06Z",
+      "side": 1,
+      "message": "why do we need this? so we don\u0027t get truncation? I would rather we get a compiler error when you try to cross these two enums",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c43b30d_dd5ac88f",
         "filename": "include/gpio_signal.h",
         "patchSetId": 1
