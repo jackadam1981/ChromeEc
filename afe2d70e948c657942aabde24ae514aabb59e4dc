@@ -22,6 +22,30 @@
       "revId": "afe2d70e948c657942aabde24ae514aabb59e4dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d3ca16_c97379de",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-15T14:07:07Z",
+      "side": 1,
+      "message": "There is not much of a difference in code, although more so in the unit test code with your timer changes.  Since the instruction execution time is the same, I am going to leave this so it mimics exactly what the old implementation was doing.",
+      "parentUuid": "c194a805_bc4e4c66",
+      "range": {
+        "startLine": 3080,
+        "startChar": 21,
+        "endLine": 3080,
+        "endChar": 23
+      },
+      "revId": "afe2d70e948c657942aabde24ae514aabb59e4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
