@@ -22,6 +22,30 @@
       "revId": "fe3279823196b29f102843cc5351d85eef2bc35c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbc5e52_bc75ec90",
+        "filename": "board/host/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-10-15T19:25:35Z",
+      "side": 1,
+      "message": "when I ran make buildall, BOARD\u003dhost was the only one using GCC 9.x compiler which turned on this warning by default.",
+      "parentUuid": "6ad76e74_81c649e1",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "fe3279823196b29f102843cc5351d85eef2bc35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
