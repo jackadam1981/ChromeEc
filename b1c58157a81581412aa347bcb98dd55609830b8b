@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "49a376da_733da17a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T23:29:57Z",
+      "side": 1,
+      "message": "The rationale here was to leave it for the board to decide (just like cr50 currently does).\n\nAnyway, I\u0027m leaving this as is for now. If desired, a future cleanup can change this and reunite the 2.",
+      "parentUuid": "f6b2db0d_27f16944",
+      "range": {
+        "startLine": 2241,
+        "startChar": 7,
+        "endLine": 2241,
+        "endChar": 33
+      },
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd774ba5_4e29da87",
         "filename": "test/test_config.h",
         "patchSetId": 2
