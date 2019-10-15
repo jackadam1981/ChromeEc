@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c194a805_bc4e4c66",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T14:03:47Z",
+      "side": 1,
+      "message": "nit: you can drop the \u003d since that boundary condition doesn\u0027t really matter\n\n(it is okay either way though)",
+      "range": {
+        "startLine": 3080,
+        "startChar": 21,
+        "endLine": 3080,
+        "endChar": 23
+      },
+      "revId": "afe2d70e948c657942aabde24ae514aabb59e4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
