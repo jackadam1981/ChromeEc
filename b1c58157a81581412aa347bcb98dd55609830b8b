@@ -80,6 +80,30 @@
       "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc76de6_0d9105df",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T23:24:05Z",
+      "side": 1,
+      "message": "My bad, search and replace problems.\n\nI find it funny that this doesn\u0027t trigger errors and still compiles.\n\nReverting this file anyway (in favor of a dummy i2c_init in host/), so no worries.",
+      "parentUuid": "fd774ba5_4e29da87",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 26
+      },
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
