@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc7fda8_1cacb0fa",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T20:50:31Z",
+      "side": 1,
+      "message": "let\u0027s poll every 10 seconds instead of every second.\n\nAlso, please put a reference to b/133375756 in the comments here explain we need to do this",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "cde37e606e193f8a5da131968f98ce40a2d5e962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b98385d_d4a885ec",
+        "filename": "include/charge_state.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T20:50:31Z",
+      "side": 1,
+      "message": "let\u0027s not introduce a new variable\n\n/* If a board hasn\u0027t provided a max sleep, use 1 minute as default */\n#ifndef CHARGE_MAX_SLEEP_USEC\n#define CHARGE_MAX_SLEEP_USEC MINUTE\n#endif",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "cde37e606e193f8a5da131968f98ce40a2d5e962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
