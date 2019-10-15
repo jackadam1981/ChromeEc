@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b86ba29_37d3e518",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:31:20Z",
+      "side": 1,
+      "message": "we should be using\n\n#define __override_proto\n#define __override\n#define __overridable\n\n\nappropriately",
+      "range": {
+        "startLine": 1010,
+        "startChar": 0,
+        "endLine": 1010,
+        "endChar": 19
+      },
+      "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f06a55_b2258fcd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:31:20Z",
+      "side": 1,
+      "message": "if this is a common host command control, let\u0027s pull it out in to usb_common.\n\nWe don\u0027t want duplicate code that gets out of sync if we can help it",
+      "range": {
+        "startLine": 1015,
+        "startChar": 22,
+        "endLine": 1015,
+        "endChar": 39
+      },
+      "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
