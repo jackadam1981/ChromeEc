@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "222450e2_390e77ff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-15T00:13:45Z",
+      "side": 1,
+      "message": "This function in the old PD stack checks if cc_state\u003d\u003dPD_CC_UFP_ATTACHED, so right now the implementations don\u0027t do the same thing. Is this a bug in the old stack?\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/usb_pd_protocol.c#386",
+      "range": {
+        "startLine": 2661,
+        "startChar": 4,
+        "endLine": 2661,
+        "endChar": 13
+      },
+      "revId": "0b481a3d79b8c4bf48c6b27559cef38fb3d5b6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
