@@ -34,6 +34,52 @@
       "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b2db0d_27f16944",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-15T16:24:28Z",
+      "side": 1,
+      "message": "If this is defined, where is i2c_init called?",
+      "range": {
+        "startLine": 2241,
+        "startChar": 7,
+        "endLine": 2241,
+        "endChar": 33
+      },
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd774ba5_4e29da87",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-15T16:24:28Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 26
+      },
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
