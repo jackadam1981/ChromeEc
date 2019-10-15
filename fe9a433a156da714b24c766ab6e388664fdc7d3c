@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6bc78fb_fcce8f42",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T02:36:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf1609f_3f3d18f7",
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9b9f10b_74e930a7",
         "filename": "common/main.c",
         "patchSetId": 1
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "c21e9a76_7eabe136",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T02:36:59Z",
+      "side": 1,
+      "message": "Done the comment.\n\nI have some apprehensions about IS_ENABLED for now (not to mention the style compared to the rest in this file). Will get back to it, no worries.",
+      "parentUuid": "ea8075e9_f3ebaaa4",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ec88dea_78374432",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
@@ -98,6 +140,24 @@
       "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e868043_067ce978",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T02:36:59Z",
+      "side": 1,
+      "message": "I\u0027m deferring this (and other HOOK changes) for another CL.",
+      "parentUuid": "c76edc92_8c68402a",
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +232,30 @@
     },
     {
       "key": {
+        "uuid": "088ec491_1d7d67e2",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T02:36:59Z",
+      "side": 1,
+      "message": "Will defer this hook this reorganization to another CL. Adding a todo in here though.\n\nDaisuke: I don\u0027t intend to land this unless it works for all ECs. Version 1 of this CL only works for stm32 (because I didn\u0027t modify the other drivers).",
+      "parentUuid": "35245358_44a7b23b",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910e59bb_939615f8",
         "filename": "include/i2c.h",
         "patchSetId": 1
@@ -192,6 +276,30 @@
       "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f0df9a_912c9211",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T02:36:59Z",
+      "side": 1,
+      "message": "Renamed i2cm_init to i2c_init.\nMade CONFIG_I2C_MASTER_DEFERRED for cr50.",
+      "parentUuid": "910e59bb_939615f8",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 21
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
