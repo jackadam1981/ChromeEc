@@ -85,6 +85,24 @@
       "revId": "799a0eeb2bf11f8484cb6d259e68a01f7bec1eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76991324_5f614635",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3715,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-15T22:13:15Z",
+      "side": 1,
+      "message": "Yes this was just for debug and should be removed.",
+      "parentUuid": "ff047304_314cd590",
+      "revId": "799a0eeb2bf11f8484cb6d259e68a01f7bec1eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
