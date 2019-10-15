@@ -16,6 +16,24 @@
       "revId": "2cdd6745812e1d1f8e47ab90db9391659c19b94d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "495b1d5f_20044c28",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1223539
+      },
+      "writtenOn": "2019-10-15T13:44:05Z",
+      "side": 1,
+      "message": "In my understanding,\nThe bit is already set in get_feature_flags() after define CONFIG_KEYBOARD_BACKLIGHT which be controlled by CONFIG_PWM_KBLIGHT in dratini/board.h\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/34/1859234/1/common/ec_features.c#26",
+      "parentUuid": "3a3b977d_269160f0",
+      "revId": "2cdd6745812e1d1f8e47ab90db9391659c19b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
