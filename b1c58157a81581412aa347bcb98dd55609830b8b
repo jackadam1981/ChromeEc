@@ -16,6 +16,24 @@
       "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5582b2f6_7e4f04f8",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T02:43:56Z",
+      "side": 1,
+      "message": "Please see these comments for more context: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1772490/1/include/i2c.h#448\n\ni2c_init in the other chips usually refer to masters too.\n\nIt felt awkward to have 2 function headers that are really close in name, yet they essentially do the same thing. The only difference I could tell was that the cr50\u0027s init functions weren\u0027t called at boot, hence the CONFIG_I2C_MASTER_DEFERRED.\n\nYou\u0027re right... this is a noop for cr50, but I had to do a little bit of cleanup.",
+      "parentUuid": "621020f4_53584292",
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
