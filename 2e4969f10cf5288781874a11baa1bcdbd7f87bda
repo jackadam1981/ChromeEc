@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3cd96ae5_edcc4237",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-15T19:17:36Z",
+      "side": 1,
+      "message": "Yes, a compiler error when mixing up the enums would be ideal, but isn\u0027t possible in C AFAIK.\n\nThe reason for adding GPIO_LIMIT is to ensure that sizeof(enum gpio_signal) \u003d\u003d sizeof(enum ioex_signal). Without it, then (on NPCX) sizeof(enum gpio_signal) \u003d 1, sizeof(enum ioex_signal) \u003d 2. Then if you do something like this:\n\n  enum ioex_signal foo \u003d IOEX_EN_USB_A0_5V;\n  gpio_set_level(foo, 1);\n\nthen there is no compiler error, foo gets silently truncated, the wrong GPIO gets set, and an ASSERT() in gpio_set_level() can\u0027t catch the error at run-time.",
+      "parentUuid": "3f951813_e08728a2",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c43b30d_dd5ac88f",
         "filename": "include/gpio_signal.h",
         "patchSetId": 1
