@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "763e3bbe_2aa151bd",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-15T23:49:53Z",
+      "side": 1,
+      "message": "That would mean the i2c hook will have to survive. The plan is to get rid of it after this CL and split it up in the i2c dependee hooks (tcpc, sensors, etc).",
+      "parentUuid": "3f7d8838_f8846646",
+      "range": {
+        "startLine": 2241,
+        "startChar": 7,
+        "endLine": 2241,
+        "endChar": 33
+      },
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd774ba5_4e29da87",
         "filename": "test/test_config.h",
         "patchSetId": 2
