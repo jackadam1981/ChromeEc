@@ -15,6 +15,8 @@
 ARCH?=amd64
 BOARD ?= bds
 
+# Test DO NOT SUBMIT
+
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
 # Private board directory
