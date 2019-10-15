@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4e1be8a_f158e01b",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-15T15:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929bf3e2_3a5e0d9f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "508d4fd736c53981f4872553affea277764feb6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71cc3b27_79fae18d",
         "filename": "common/printf.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "508d4fd736c53981f4872553affea277764feb6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f01c76_3f7d32a1",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-15T15:39:38Z",
+      "side": 1,
+      "message": "Moved to %pf",
+      "parentUuid": "71cc3b27_79fae18d",
+      "range": {
+        "startLine": 239,
+        "startChar": 14,
+        "endLine": 239,
+        "endChar": 15
+      },
+      "revId": "508d4fd736c53981f4872553affea277764feb6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
