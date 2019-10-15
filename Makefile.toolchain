@@ -45,8 +45,9 @@ HOSTCXX?=$(CCACHE) $(HOST_CROSS_COMPILE)g++
 PROTOC?=protoc
 
 C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
+# TODO: add -Wno-address-of-packed-member once upgraded to GCC 9.x
 COMMON_WARN = -Wall -Wundef -Werror -Werror-implicit-function-declaration \
-	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
+	-Wno-trigraphs -Wno-format-security \
 	-fno-common -fno-strict-aliasing -fno-strict-overflow
 
 UBSAN_FLAGS=-fsanitize=array-bounds,vla-bound \
