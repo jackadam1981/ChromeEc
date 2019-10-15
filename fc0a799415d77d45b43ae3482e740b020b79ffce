@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "28117b44_f1955d0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-15T17:57:16Z",
+      "side": 1,
+      "message": "Do you know why \u0027sometimes back boost stays on when AC is unplugged\u0027?",
+      "parentUuid": "345c50fe_9ca4a60e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "fc0a799415d77d45b43ae3482e740b020b79ffce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41a36cdb_66b664e5",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 18
