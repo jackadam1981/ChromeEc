@@ -22,6 +22,30 @@
       "revId": "4038bac6f39207dca025f8c333813ad77052b349",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d56207_103d87ac",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-10-15T22:02:59Z",
+      "side": 0,
+      "message": "excellent question! i looked into this and don\u0027t understand. manually invoking compilation with this option set doesn\u0027t trigger compiler error on unrecognized flag, but it only displayed in combination with some other issue detected by compiler. I suppose in case of CRYPTO_TEST\u003d1 other issues fixed triggered that, so I noticed it.\n\nIn file included from chip/g/board_space.h:10,\n                 from chip/g/board_id.h:10,\n                 from board/cr50/board.c:5:\ninclude/compile_time_macros.h:13:13: error: size of array \u0027__build_assertion_83\u0027 is negative\n  extern int __build_assertion_ ## line[1 - 2*!(cond)] \\\n             ^~~~~~~~~~~~~~~~~~\ninclude/compile_time_macros.h:15:21: note: in expansion of macro \u0027_BA1_\u0027\n #define _BA0_(c, x) _BA1_(c, x)\n                     ^~~~~\ninclude/compile_time_macros.h:16:28: note: in expansion of macro \u0027_BA0_\u0027\n #define BUILD_ASSERT(cond) _BA0_(cond, __LINE__)\n                            ^~~~~\nboard/cr50/board.c:83:1: note: in expansion of macro \u0027BUILD_ASSERT\u0027\n BUILD_ASSERT(NVMEM_TPM_SIZE \u003d\u003d NV_MEMORY_SIZE);\n ^~~~~~~~~~~~\ncc1: warning: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027",
+      "parentUuid": "53cb1a6b_ac72cbaf",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 65
+      },
+      "revId": "4038bac6f39207dca025f8c333813ad77052b349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
