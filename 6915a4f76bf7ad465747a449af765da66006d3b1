@@ -46,6 +46,29 @@
       "revId": "6915a4f76bf7ad465747a449af765da66006d3b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc7f82d_907b2c07",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-15T01:55:36Z",
+      "side": 1,
+      "message": "It\u0027s nice to use a variable for this (and update chip/npcx/build.mk).\n\nAlso have you tried to put these in chip/npcx/build.mk?",
+      "range": {
+        "startLine": 594,
+        "startChar": 20,
+        "endLine": 594,
+        "endChar": 41
+      },
+      "revId": "6915a4f76bf7ad465747a449af765da66006d3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
