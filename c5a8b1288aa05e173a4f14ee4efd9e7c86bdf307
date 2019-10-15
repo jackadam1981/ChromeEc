@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "223b6158_3fc64484",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3396,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "I think you can turn this into\n\nif (!IS_ENALBED(CONFIG_USB_PD_ALT_MODE_DFP))\n return;\n\nright, or will it not compile?",
+      "range": {
+        "startLine": 3396,
+        "startChar": 1,
+        "endLine": 3396,
+        "endChar": 33
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5dc0326_7de7806d",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "prl fake",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7932c2_9f534d22",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "battery fake",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e8f435_936ce25d",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "these look like they would go in the typec_fake",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b14f7a_743afbf1",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "let\u0027s make prl_fake with these",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849d677d_88dd64dc",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "Let\u0027s put this in a separate file that is the typec_fake\n\nWe will be able to augment this typec_fake with more controls as needed",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60bfea5_29ffa7a6",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "nit: make a define for this call\n#defined ENABLED 1\n\nto make the call site easier to read please",
+      "range": {
+        "startLine": 214,
+        "startChar": 18,
+        "endLine": 214,
+        "endChar": 19
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c232f66d_8b202a6e",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "add comment here saying this is the port partner accepting the FR_SWAP\n\nAlso, should this be set closer to set_flag MSG_RECEIVED?",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 66
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045fb4e5_ef394f7f",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "move this down to set_flag MSG_RX also add comment saying that port partner is sending this to us",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 66
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8565a0c5_57f40950",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-15T15:18:03Z",
+      "side": 1,
+      "message": "add comment saying that this is marking that the port partner has presented Rd and we established a valid CC resistor connection",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 17
+      },
+      "revId": "c5a8b1288aa05e173a4f14ee4efd9e7c86bdf307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
