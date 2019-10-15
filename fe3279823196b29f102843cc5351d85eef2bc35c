@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad76e74_81c649e1",
+        "filename": "board/host/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-15T18:57:31Z",
+      "side": 1,
+      "message": "why only for BOARD\u003dhost?\n\nshall we rather do smth like\n  ifneq ($(BOARD),cr50)\n  COMMON_WARN+\u003d-Wno-address-of-packed-member\n  endif\nin Makefile.toolchain instead?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "fe3279823196b29f102843cc5351d85eef2bc35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
