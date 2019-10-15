@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03cd134f_cf9a0ccb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-15T22:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b86ba29_37d3e518",
+      "range": {
+        "startLine": 1010,
+        "startChar": 0,
+        "endLine": 1010,
+        "endChar": 19
+      },
+      "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6f06a55_b2258fcd",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-15T15:31:20Z",
       "side": 1,
       "message": "if this is a common host command control, let\u0027s pull it out in to usb_common.\n\nWe don\u0027t want duplicate code that gets out of sync if we can help it",
+      "range": {
+        "startLine": 1015,
+        "startChar": 22,
+        "endLine": 1015,
+        "endChar": 39
+      },
+      "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "913e1a82_970cfced",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-15T22:59:08Z",
+      "side": 1,
+      "message": "In TCPMv2, usb_tc_drp_acc_trysrc_sm.c is an optional file enabled on #define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC. So pulling it into common/usb_common.c file is causing undefined reference errors on make buildall. Any suggestions what can be done to avoid it?\n\nI have added a WIP patchset for the same - https://crrev.com/c/1863825",
+      "parentUuid": "a6f06a55_b2258fcd",
       "range": {
         "startLine": 1015,
         "startChar": 22,
