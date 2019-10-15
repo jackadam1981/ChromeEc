@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69fd59bc_4e9eea23",
+        "filename": "board/akemi/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-15T23:47:47Z",
+      "side": 1,
+      "message": "Which fuel gauge is being used for akemi batteries? I\u0027m not familiar with a version that uses bit 11 for the discharge FET status.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "eea0da9e3d21b9b8bc6b95ef007fee4d2fdb0ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
