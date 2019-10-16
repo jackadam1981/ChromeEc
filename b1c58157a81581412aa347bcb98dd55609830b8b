@@ -156,6 +156,30 @@
     },
     {
       "key": {
+        "uuid": "c29c0601_909eacf2",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-16T00:45:37Z",
+      "side": 1,
+      "message": "Sigh, we\u0027re back to arguing that we should have 2 entry points for this....\n\nThis is essentially a noop to all boards, it causes them to initialize i2c tens of microseconds earlier.",
+      "parentUuid": "783e9b7a_c54d3d79",
+      "range": {
+        "startLine": 2241,
+        "startChar": 7,
+        "endLine": 2241,
+        "endChar": 33
+      },
+      "revId": "b1c58157a81581412aa347bcb98dd55609830b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd774ba5_4e29da87",
         "filename": "test/test_config.h",
         "patchSetId": 2
