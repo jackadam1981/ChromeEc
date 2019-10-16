@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2052e9e8_da7a7566",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-10-16T04:19:04Z",
+      "side": 1,
+      "message": "given i2c_init is a public function, I wonder if we can move the #ifndef DECLARE_HOOK block to somewhere that people don\u0027t need to write it for every board - for example in main.c or some commonly shared file?\n\n(since we know if a device needs I2C, it should be either initialized in PRIO_INIT_I2C, or EARLY (main)).",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 6
+      },
+      "revId": "fdfde6044b21802da162463131b9bdc2d30fa881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
