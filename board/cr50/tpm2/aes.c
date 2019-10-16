@@ -444,7 +444,8 @@ static void aes_command_handler(void *cmd_body,
 				data_local.b, data_len);
 			if (count < 0) {
 				CPRINTF(
-					"%s: gcm encrypt failed\n");
+					"%s: gcm encrypt failed\n",
+					__func__);
 				break;
 			}
 			total = count;
