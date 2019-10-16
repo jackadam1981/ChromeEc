@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff54dbe1_90021621",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-16T18:30:09Z",
+      "side": 1,
+      "message": "It looks like this doesn\u0027t store the address itself, but some kind of flag value instead. Could you describe the possible values?",
+      "revId": "2a2daaee7cb9dec2bce76f8afd7bcc4935963b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb0628a_0611d729",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-16T18:30:09Z",
+      "side": 1,
+      "message": "Could we keep the assignment and the check separate? We generally try to avoid assignments within `if`s.",
+      "revId": "2a2daaee7cb9dec2bce76f8afd7bcc4935963b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49efa4f2_3c799e15",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-16T18:30:09Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "2a2daaee7cb9dec2bce76f8afd7bcc4935963b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
