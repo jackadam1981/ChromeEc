@@ -57,7 +57,7 @@ static void i2c_init_port(unsigned int port)
 		CPRINTF("port %d could be wedged\n", port);
 }
 
-static void i2c_init(void)
+void i2c_init(void)
 {
 	int i, rv;
 
@@ -72,7 +72,9 @@ static void i2c_init(void)
 		}
 	}
 }
+#ifndef CONFIG_I2C_INIT_EARLY
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
+#endif
 
 static void dump_i2c_reg(int port)
 {

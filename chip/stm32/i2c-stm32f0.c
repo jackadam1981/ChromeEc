@@ -580,7 +580,7 @@ int i2c_get_line_levels(int port)
 		(i2c_raw_get_scl(port) ? I2C_LINE_SCL_HIGH : 0);
 }
 
-static void i2c_init(void)
+void i2c_init(void)
 {
 	const struct i2c_port_t *p = i2c_ports;
 	int i;
@@ -613,5 +613,7 @@ static void i2c_init(void)
 	task_enable_irq(IRQ_SLAVE);
 #endif
 }
+#ifndef CONFIG_I2C_INIT_EARLY
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
+#endif
 

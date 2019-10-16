@@ -521,7 +521,7 @@ static void i2c_initial_board_config(struct i2c_context *ctx)
 	bus_info->high_speed.lcnt = default_lcnt_scl_hs[freq];
 }
 
-static void i2c_init(void)
+void i2c_init(void)
 {
 	int i;
 
@@ -537,4 +537,6 @@ static void i2c_init(void)
 
 	CPRINTS("Done i2c_init");
 }
+#ifndef CONFIG_I2C_INIT_EARLY
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
+#endif

@@ -343,7 +343,7 @@ static void i2c_freq_changed(void)
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, i2c_freq_changed, HOOK_PRIO_DEFAULT);
 
-static void i2c_init(void)
+void i2c_init(void)
 {
 	uint32_t mask = 0;
 	int i;
@@ -374,7 +374,9 @@ static void i2c_init(void)
 		i2c_set_timeout(i, 0);
 	}
 }
+#ifndef CONFIG_I2C_INIT_EARLY
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
+#endif
 
 /**
  * Handle an interrupt on the specified port.
