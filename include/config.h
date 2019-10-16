@@ -2268,6 +2268,11 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/*
+ * Initialize I2C in main (instead of HOOK_PRIO_INIT_I2C)
+ */
+#undef CONFIG_I2C_INIT_EARLY
+
 /*****************************************************************************/
 /* IPI configuration.  Support mt_scp only for now. */
 

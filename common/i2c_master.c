@@ -9,6 +9,7 @@
 #include "clock.h"
 #include "charge_state.h"
 #include "console.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -1345,3 +1346,7 @@ DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"i2ctest count|udelay|dev",
 			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
+#if !defined(CONFIG_I2C_INIT_EARLY) && !defined(TEST_BUILD)
+DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
+#endif
