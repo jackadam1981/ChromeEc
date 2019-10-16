@@ -469,7 +469,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-static void i2c_init(void)
+void i2c_init(void)
 {
 	int i;
 	int controller;

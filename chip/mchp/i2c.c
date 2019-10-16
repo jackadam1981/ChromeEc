@@ -878,7 +878,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
  * If multiple ports are mapped to the same controller choose the
  * lowest speed.
  */
-static void i2c_init(void)
+void i2c_init(void)
 {
 	int i, controller, kbps;
 	int controller_kbps[MCHP_I2C_CTRL_MAX];

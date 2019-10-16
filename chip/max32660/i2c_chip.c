@@ -260,7 +260,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
 /**
  * i2c_init() - Initialize the I2C ports used on device.
  */
-static void i2c_init(void)
+void i2c_init(void)
 {
 	int i;
 	int port;

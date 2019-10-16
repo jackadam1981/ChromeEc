@@ -57,7 +57,7 @@ static void i2c_init_port(unsigned int port)
 		CPRINTF("port %d could be wedged\n", port);
 }
 
-static void i2c_init(void)
+void i2c_init(void)
 {
 	int i, rv;
 
