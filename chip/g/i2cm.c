@@ -460,3 +460,6 @@ void i2cm_init(void)
 		i2cm_init_port(p);
 
 }
+
+void i2c_init(void)
+{}

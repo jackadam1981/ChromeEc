@@ -17,6 +17,7 @@
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "keyboard_scan.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -180,6 +181,10 @@ test_mockable __keep int main(void)
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_init_mask();
 #endif
+
+	if (IS_ENABLED(CONFIG_I2C_INIT_EARLY))
+		i2c_init();
+
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
 #endif
