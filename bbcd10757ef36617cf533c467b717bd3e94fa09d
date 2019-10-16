@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7f60d15_1fd29abb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-16T01:25:20Z",
+      "side": 1,
+      "message": "This line was not guarded with CONFIG_USB_PE_SM in previous revision, but now it is guarded.  If this was intentional, please add a comment why.",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 43
+      },
+      "revId": "bbcd10757ef36617cf533c467b717bd3e94fa09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
