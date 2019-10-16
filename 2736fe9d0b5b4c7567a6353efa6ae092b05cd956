@@ -93,6 +93,30 @@
       "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4548ca_72c54485",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-16T03:43:33Z",
+      "side": 1,
+      "message": "I cherry picked the change, it\u0027s failing the host-usb_typec_vpd test.  The CONFIG options for the various tests are controlled by test/test_config.h.\n\nUnfortunately, just adding CONFIG_USB_TYPEC_DRP_ACC_TRYSRC to the TEST_USB_TYPEC_VPD section causes other build failures.",
+      "parentUuid": "913e1a82_970cfced",
+      "range": {
+        "startLine": 1015,
+        "startChar": 22,
+        "endLine": 1015,
+        "endChar": 39
+      },
+      "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
