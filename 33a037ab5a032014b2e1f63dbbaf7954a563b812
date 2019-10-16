@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53e2c180_af4314fb",
+        "filename": "include/panic_data.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T00:15:06Z",
+      "side": 1,
+      "message": "This won\u0027t be defined without config.h?",
+      "range": {
+        "startLine": 103,
+        "startChar": 45,
+        "endLine": 103,
+        "endChar": 67
+      },
+      "revId": "33a037ab5a032014b2e1f63dbbaf7954a563b812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
