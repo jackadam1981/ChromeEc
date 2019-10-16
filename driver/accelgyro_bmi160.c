@@ -1268,6 +1268,45 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_FPU
+#define TEMP_RESOLUTION 0.001953125f
+static int read_temp(const struct motion_sensor_t *s, float *temp)
+{
+	uint8_t data[2], is_positive;
+	int ret;
+
+	ret = raw_read_n(s->port, s->i2c_spi_addr_flags,
+			 BMI160_TEMPERATURE_0, data, 2);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Invalid state check */
+	if (data[0] == 0x80 && data[1] == 0x00)
+		return EC_ERROR_UNKNOWN;
+
+	if (data[0] & 0x80) {
+		/* Save the sign and take two's complement */
+		is_positive = 0;
+		data[0] = ~data[0];
+		data[1] = ~data[1];
+		/* Overflow */
+		if (data[1] + 1 < data[1])
+			data[0]++;
+		data[1]++;
+	} else {
+		is_positive = 1;
+	}
+
+	*temp = data[1] * TEMP_RESOLUTION +
+		(data[0] << 8) * TEMP_RESOLUTION;
+	if (!is_positive)
+		*temp = -(*temp);
+	*temp += 23.0f;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_FPU */
+
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp, i;
@@ -1449,6 +1488,9 @@ const struct accelgyro_drv bmi160_drv = {
 	.set_scale = set_scale,
 	.get_offset = get_offset,
 	.perform_calib = perform_calib,
+#ifdef CONFIG_FPU
+	.read_temp = read_temp,
+#endif
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif
