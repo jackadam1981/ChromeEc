@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9fa5f49e_8ab2f428",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "This was suspected as causing bug, the fix for b/12489290 actually contains two parts, one part is this, but we verify later that this doesn\u0027t cause that bug although removed it also doesn\u0027t cause problem, the other part actually fixed the issue. But in TGL RVP this must be added back as it will not work properly if not.",
+      "parentUuid": "cf3f9043_cfc636ca",
+      "range": {
+        "startLine": 261,
+        "startChar": 42,
+        "endLine": 261,
+        "endChar": 61
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92270556_a7abeab9",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4133ac2a_dddc8736",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "92270556_a7abeab9",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 6
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b2165a35_81901d6e",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "I added definition for ISH_DMA_BASE but there is not OCP and MISC register blocks in ISH 5.4, do we need to define them to certain values?",
+      "parentUuid": "54d39850_7f166006",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4b2cc33_f4b2c92f",
         "filename": "chip/ish/registers.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917d29a9_d5f77180",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "In ISH5.4, the interrupts for three timers are merged into one single irq number 8, if we define it to same irq 8 as timer 1 then the build fails which doesn\u0027t allow this. Do we need to define time 0 irq to some special value?",
+      "parentUuid": "c4b2cc33_f4b2c92f",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "212a146c_8cd03324",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "In ISH5.4, the interrupts for three timers are merged into one single irq number 8, if we define it to same irq 8 as timer 1 then the build fails which doesn\u0027t allow this. Do we need to define time 2 irq to some special value?",
+      "parentUuid": "a4a007f6_fb774984",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26e8c358_716d7b32",
         "filename": "chip/ish/registers.h",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2019-10-15T22:38:32Z",
       "side": 1,
       "message": "needs defined for 5.4",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe1b6ab_9049fef8",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "I added definitions fpr PMU_WAKEUP_IRQ and D3_RISE_IRQ. The 4 irqs (d3_rise,d3_fall, bme_rise, bme_fall) are merged to single irq 9, do we also need to define them to some value? The ISH2HOST_CLR_IRQ also merged with ISH_IPC_HOST2ISH_IRQ to single irq.",
+      "parentUuid": "26e8c358_716d7b32",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "da47a571_81c45fe0",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Same explaination as above.",
+      "parentUuid": "b843b5e6_9d3d61cd",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "146ed139_5791f891",
         "filename": "chip/ish/reset_prep_wr.c",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2fe4a3d_3c6e1f07",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "146ed139_5791f891",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "cb125f72_d92ad530",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1d4f2fbe_9c41484c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c7db8f7_034629f9",
         "filename": "chip/ish/uart.c",
         "patchSetId": 2
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "dcde0304_3039b58d",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6c7db8f7_034629f9",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 38
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6de4ad1_cbd6890a",
         "filename": "chip/ish/uart.c",
         "patchSetId": 2
@@ -243,6 +483,30 @@
       "writtenOn": "2019-10-15T22:38:32Z",
       "side": 1,
       "message": "fix indentation",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 4
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b944a3_f16c17c8",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "d6de4ad1_cbd6890a",
       "range": {
         "startLine": 214,
         "startChar": 0,
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "bc430b5c_dce45823",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6c3b4a84_e8115a5b",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a312987_181cf825",
         "filename": "chip/ish/uart_defs.h",
         "patchSetId": 2
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "bb68a5df_37119e53",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6a312987_181cf825",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 60
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58fdf0ac_18c88a6c",
         "filename": "chip/ish/uart_defs.h",
         "patchSetId": 2
@@ -321,6 +633,30 @@
       "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce7a3f0_11608117",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-16T09:46:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "58fdf0ac_18c88a6c",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
