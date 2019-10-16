@@ -22,6 +22,9 @@ typedef float fp_inter_t;
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x))
 
+#define NAN_F (*((float *) &(uint32_t) {0x7fc00000}))
+#define INFINITY_F (*((float *) &(uint32_t) {0x7f800000}))
+
 #else
 /* Fixed-point type */
 typedef int32_t fp_t;
@@ -39,6 +42,11 @@ typedef int64_t fp_inter_t;
 #define FLOAT_TO_FP(x) ((fp_t)((x) * (float)(1<<FP_BITS)))
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x) / (float)(1<<FP_BITS))
+
+/* Do not use, needed for compile! */
+#define NAN_F 0
+#define INFINITY_F 0
+
 #endif
 
 /*
@@ -61,6 +69,22 @@ static inline fp_t fp_div(fp_t a, fp_t b)
 static inline fp_t fp_div_dbz(fp_t a, fp_t b)
 {
 	return fp_div(a, b);
+}
+
+static inline int fp_isnan(fp_t v)
+{
+	uint32_t bytes = *((uint32_t *) &v);
+
+	return (bytes & 0x7f800000) == 0x7f800000 &&
+		(bytes & 0x7fffff);
+}
+
+static inline int fp_isinf(fp_t v)
+{
+	uint32_t bytes = *((uint32_t *) &v);
+
+	return (bytes & 0x7f800000) == 0x7f800000 &&
+		(bytes & 0x7fffff) == 0;
 }
 #else
 /**
@@ -96,6 +120,17 @@ static inline fp_t fp_div_dbz(fp_t a, fp_t b)
 	 */
 	return b == FLOAT_TO_FP(0) ? INT32_MAX : fp_div(a, b);
 }
+
+static inline int fp_isnan(fp_t v)
+{
+	return 0;
+}
+
+static inline int fp_isinf(fp_t v)
+{
+	return 0;
+}
+
 #endif
 
 /**
