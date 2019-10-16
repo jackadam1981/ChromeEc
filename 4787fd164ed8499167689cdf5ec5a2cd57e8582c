@@ -22,6 +22,30 @@
       "revId": "4787fd164ed8499167689cdf5ec5a2cd57e8582c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88deaef_78b3ce09",
+        "filename": "baseboard/kukui/usb_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-16T07:18:31Z",
+      "side": 1,
+      "message": "Currently not possible because our include chain:\n  common.h (which defines __override_proto) includes baseboard.h indirectly.",
+      "parentUuid": "c2a73391_23439fb4",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "4787fd164ed8499167689cdf5ec5a2cd57e8582c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
