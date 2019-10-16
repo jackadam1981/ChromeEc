@@ -72,6 +72,43 @@ const struct i2c_port_t i2c_bitbang_ports[] = {
 };
 const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
+static int sb_i2c_test_read(int cmd, int *param)
+{
+	char name[32];
+	int rv;
+
+	if (cmd == SB_DEVICE_NAME) {
+		rv = battery_device_name(name, sizeof(name));
+		if (rv)
+			return rv;
+		if (strcasecmp(name, "L19M3PG0"))
+			return EC_ERROR_UNKNOWN;
+
+		*param = EC_SUCCESS;
+		return EC_SUCCESS;
+	}
+
+
+	return sb_read(cmd, param);
+}
+
+static struct i2c_stress_test_dev battery_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = SB_DEVICE_NAME,
+		.read_val = EC_SUCCESS,
+		.write_reg = SB_AT_RATE,
+	},
+	.i2c_read_dev = &sb_i2c_test_read,
+	.i2c_write_dev = &sb_write,
+};
+
+struct i2c_stress_test i2c_stress_tests[] = {
+	{
+		.i2c_test = &battery_i2c_stress_test_dev,
+	},
+};
+const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
+
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_AP_IN_SLEEP_L,   POWER_SIGNAL_ACTIVE_LOW,  "AP_IN_S3_L"},
