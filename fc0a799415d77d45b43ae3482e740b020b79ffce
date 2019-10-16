@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "bdeb0c8e_4a119b49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-10-16T01:31:56Z",
+      "side": 1,
+      "message": "That`s HW issue, we gave the issue report.\nPlz sync with Eric Yilun Lin first, thx.",
+      "parentUuid": "28117b44_f1955d0e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "fc0a799415d77d45b43ae3482e740b020b79ffce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41a36cdb_66b664e5",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 18
