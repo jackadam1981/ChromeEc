@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46ad6690_e9d56999",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4609,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T18:12:35Z",
+      "side": 0,
+      "message": "nit: I don\u0027t know what the practice here is, but should we maybe leave this in as a comment or renamed to DEPRECATED to make sure we don\u0027t reuse the code too quickly?",
+      "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
