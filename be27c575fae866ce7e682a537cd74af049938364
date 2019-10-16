@@ -16,6 +16,24 @@
       "revId": "be27c575fae866ce7e682a537cd74af049938364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e85b33_382b6940",
+        "filename": "fuzz/usb_tcpm_v2_fuzz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-16T23:38:40Z",
+      "side": 1,
+      "message": "fake_battery is just what I needed, thanks!",
+      "parentUuid": "692ffe64_b9f34d53",
+      "revId": "be27c575fae866ce7e682a537cd74af049938364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
