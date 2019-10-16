@@ -36,6 +36,9 @@
 
 #define CONFIG_USB_MUX_IT5205
 
+/* For remote key scanner (IT8801) */
+#define CONFIG_I2C_INIT_EARLY
+
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
 #define CONFIG_MAG_BMI160_BMM150
