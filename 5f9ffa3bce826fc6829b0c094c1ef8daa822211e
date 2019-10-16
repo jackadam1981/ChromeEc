@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f464b89f_6a9d9f4b",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1579,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T00:17:57Z",
+      "side": 1,
+      "message": "There\u0027s no reason to guard this with pp. Linker will strip unused symbols...",
+      "range": {
+        "startLine": 1572,
+        "startChar": 0,
+        "endLine": 1579,
+        "endChar": 24
+      },
+      "revId": "5f9ffa3bce826fc6829b0c094c1ef8daa822211e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d262700_af09d554",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T00:17:57Z",
+      "side": 1,
+      "message": "And we definitely don\u0027t want to guard this, otherwise it\u0027ll lead to unnecessary ifdefs in source code.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "5f9ffa3bce826fc6829b0c094c1ef8daa822211e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
