@@ -46,6 +46,30 @@
       "revId": "bbcd10757ef36617cf533c467b717bd3e94fa09d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73708ed9_dbfd636c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-16T01:52:51Z",
+      "side": 1,
+      "message": "Thanks for the explanation. No need to add a comment to the code. The gerrit history is sufficient.",
+      "parentUuid": "3f8b1b02_915946bd",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 43
+      },
+      "revId": "bbcd10757ef36617cf533c467b717bd3e94fa09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
