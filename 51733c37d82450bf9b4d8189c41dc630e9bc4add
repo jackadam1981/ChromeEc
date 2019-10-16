@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "806a9388_0bca999b",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "Yes, we should make sure that it\u0027s valid syntax to use ISH_OCP_BASE or ISH_MISC_BASE without an ifdef, or remove the #defines if we are not using them.",
+      "parentUuid": "b2165a35_81901d6e",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4b2cc33_f4b2c92f",
         "filename": "chip/ish/registers.h",
         "patchSetId": 2
@@ -187,6 +211,30 @@
       "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4930e49c_f32a8b0b",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "It looks like we aren\u0027t using these defines in 5.0, so let\u0027s remove them from 5.0. If it\u0027s easy enough for you, removing the unused defines from 5.0 should probably go in a parent CL, which will make it easier to review, bisect, and give us better history.",
+      "parentUuid": "917d29a9_d5f77180",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -237,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "62d54778_e7a3a0e1",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "212a146c_8cd03324",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26e8c358_716d7b32",
         "filename": "chip/ish/registers.h",
         "patchSetId": 2
@@ -272,6 +344,30 @@
       "side": 1,
       "message": "I added definitions fpr PMU_WAKEUP_IRQ and D3_RISE_IRQ. The 4 irqs (d3_rise,d3_fall, bme_rise, bme_fall) are merged to single irq 9, do we also need to define them to some value? The ISH2HOST_CLR_IRQ also merged with ISH_IPC_HOST2ISH_IRQ to single irq.",
       "parentUuid": "26e8c358_716d7b32",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ffb6ab_d61fa821",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "Yes, in general we need to figure out a way to make using these values valid syntax regardless of ISH version.",
+      "parentUuid": "abe1b6ab_9049fef8",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -328,6 +424,30 @@
       "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e777aa76_416f88d6",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "Let\u0027s just remove the unused definitions in a parent CL.",
+      "parentUuid": "da47a571_81c45fe0",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "51733c37d82450bf9b4d8189c41dc630e9bc4add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

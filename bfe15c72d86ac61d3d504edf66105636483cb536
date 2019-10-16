@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebcba492_fdbbe843",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "Can we come up with a common ISH_IPC_IRQ_CLR definition in a header file and keep the ifdef out of the source?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cacb3e2_4c9cc90d",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "can this just guard the DECLARE_IRQ? __maybe_unused can be used if needed to satisfy the compiler",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 26
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26798a9f_3248ac32",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "additional functions for just ISH 5.4 (or similar remark?)",
+      "range": {
+        "startLine": 6,
+        "startChar": 28,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2fbef2d_41cb0c2a",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6c169b_afe6881c",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "don\u0027t guard the implementation, just the DECLARE_IRQ",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 27
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e43cd4_0044d76a",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "put braces on the if, as the else has them",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 70
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f9448c_fd29e9cb",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-16T16:38:19Z",
+      "side": 1,
+      "message": "This needs to go in common, and make it a separate CL. Also, it needs documented. This way we can request review from more of the EC owners (dnojiri, etc.)",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 40
+      },
+      "revId": "bfe15c72d86ac61d3d504edf66105636483cb536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
