@@ -22,6 +22,30 @@
       "revId": "bbcd10757ef36617cf533c467b717bd3e94fa09d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8b1b02_915946bd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-16T01:33:06Z",
+      "side": 1,
+      "message": "In previous revision: There was a #ifdef on line 942 and it ends on line 1319. So the condition on line 972 was always true. \n\nSince #ifdef is replaced by IS_ENABLED, enclosed set_usb_mux_with_current_data_role(port) inside the if condition as well.\n\nNot sure what comment to add it doesn\u0027t change any code logic",
+      "parentUuid": "e7f60d15_1fd29abb",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 43
+      },
+      "revId": "bbcd10757ef36617cf533c467b717bd3e94fa09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
