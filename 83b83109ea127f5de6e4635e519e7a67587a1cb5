@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "7b9eb0a2_0f93b6c0",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-10-16T02:02:56Z",
+      "side": 1,
+      "message": "Our use case is to have CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK and CONFIG_MKBP_EVENT_WAKEUP_MASK at the same time.\nCONFIG_MKBP_HOST_EVENT_WAKEUP_MASK is for power button and CONFIG_MKBP_EVENT_WAKEUP_MASK is for EC_MKBP_EVENT_SENSOR_FIFO event.\n\nIf we use original code, CONFIG_MKBP_EVENT_WAKEUP_MASK section will not be executed.\nHmm...Seems like the priority of skip_interrupt is higher than wake up device.",
+      "parentUuid": "f1ebb535_f08d069e",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
