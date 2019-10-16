@@ -16,6 +16,24 @@
       "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a91179_8088562a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4609,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-16T23:27:15Z",
+      "side": 0,
+      "message": "It looks we remove the handler but keep the entry here (with \u0027deprecated\u0027 warning).",
+      "parentUuid": "46ad6690_e9d56999",
+      "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
