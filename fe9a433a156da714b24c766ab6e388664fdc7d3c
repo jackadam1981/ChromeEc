@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "407920f4_d36b05c8",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-16T01:07:01Z",
+      "side": 1,
+      "message": "Done.\n\nI was worried that boards without i2c_init (and CONFIG_I2C_MASTER) would fail this, if it\u0027s a normal C style if. Turns out it\u0027ll only be a linker error, since i2c.h is still included regardless.",
+      "parentUuid": "c21e9a76_7eabe136",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "fe9a433a156da714b24c766ab6e388664fdc7d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec88dea_78374432",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
