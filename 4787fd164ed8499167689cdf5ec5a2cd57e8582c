@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2a73391_23439fb4",
+        "filename": "baseboard/kukui/usb_pd_policy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-16T07:04:43Z",
+      "side": 1,
+      "message": "How about putting it in kukui/baseboard.h?",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "4787fd164ed8499167689cdf5ec5a2cd57e8582c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
