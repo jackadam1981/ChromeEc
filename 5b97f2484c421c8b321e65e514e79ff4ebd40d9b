@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb23beb_2a4702b1",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2019-10-16T09:25:54Z",
+      "side": 1,
+      "message": "The LAST bit can not be cleared by FW writing 0 to the bit. \nBut it will be cleared in i2c_reset() (a few lines below) since this function resets the module.",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 26
+      },
+      "revId": "5b97f2484c421c8b321e65e514e79ff4ebd40d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c068feb4_75561902",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2019-10-16T09:25:54Z",
+      "side": 1,
+      "message": "I do not really understand what is \"SMB_READ_SUSPEND\" used for, however the question is: why is this \"if\" statement only handles a FIFO disable case ?",
+      "range": {
+        "startLine": 344,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 41
+      },
+      "revId": "5b97f2484c421c8b321e65e514e79ff4ebd40d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
