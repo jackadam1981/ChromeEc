@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e513b38_d2b171b9",
+        "filename": "include/charge_state.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-10-16T14:47:17Z",
+      "side": 1,
+      "message": "It seems to me that the S0iX state of AP will use this value so in case here, we might need to override this one to 10s instead of CHARGE_MAX_SLEEP_USEC?",
+      "revId": "2147e87a0f3cbca72ddf09389565c0b4f704d60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
