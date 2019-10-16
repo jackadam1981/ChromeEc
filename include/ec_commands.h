@@ -4601,21 +4601,6 @@ struct ec_response_sb_fw_update {
 	};
 } __ec_align1;
 
-/*
- * Entering Verified Boot Mode Command
- * Default mode is VBOOT_MODE_NORMAL if EC did not receive this command.
- * Valid Modes are: normal, developer, and recovery.
- */
-#define EC_CMD_ENTERING_MODE 0x00B6
-
-struct ec_params_entering_mode {
-	int vboot_mode;
-} __ec_align4;
-
-#define VBOOT_MODE_NORMAL    0
-#define VBOOT_MODE_DEVELOPER 1
-#define VBOOT_MODE_RECOVERY  2
-
 /*****************************************************************************/
 /*
  * I2C passthru protection command: Protects I2C tunnels against access on
