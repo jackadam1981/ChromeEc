@@ -16,6 +16,24 @@
       "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de125e28_d59ae6f3",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-10-16T20:24:39Z",
+      "side": 0,
+      "message": "Hi Harry,\n  I was trying to figure out what happened here... I looked at the log and it all became clear : )\n\n    cb85603 max32660: put slave-only code in `#ifdef`s by Harry Cutts · 7 days ago\n    23932a5 max32660: add I2C master and slave by Jerry Bradshaw · 3 weeks ago\n\nI did not know how those functions got switched around but it was because of the #ifdef as indicated in the above log..... my bad for not pulling your changes before pushing mine :/\nI\u0027m sorry about that... fixed.",
+      "parentUuid": "1a98c447_704a26aa",
+      "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
