@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "accelgyro.h"
 #include "console.h"
 #include "hwtimer.h"
 #include "mkbp_event.h"
@@ -10,6 +11,7 @@
 #include "tablet_mode.h"
 #include "task.h"
 #include "util.h"
+#include "math_util.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 
@@ -48,6 +50,17 @@ static struct queue fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO_SIZE,
 static int fifo_lost;
 /** Metadata for the fifo, used for staging and spreading data. */
 static struct fifo_staged fifo_staged;
+
+/** Cache for internal sensor temperatures. */
+STATIC_IF(CONFIG_ONLINE_CALIB) int sensor_temp_cache[SENSOR_COUNT]
+#if defined(CONFIG_ONLINE_CALIB) && defined(SENSOR_COUNT)
+= {
+#define STATIC_INIT_VALUE -1
+#define STATIC_INIT_COUNT SENSOR_COUNT
+#include "static_init.h"
+}
+#endif
+;
 
 /**
  * Cached expected timestamp per sensor. If a sensor's timestamp pre-dates this
@@ -350,6 +363,14 @@ void motion_sense_fifo_stage_data(
 			fifo_staged.read_ts = __hw_clock_source_read();
 		fifo_stage_timestamp(time);
 	}
+	if (IS_ENABLED(CONFIG_ONLINE_CALIB) && sensor->drv->read_temp &&
+	    sensor_temp_cache[motion_sensors - sensor] < 0) {
+		int temp;
+		int rc = sensor->drv->read_temp(sensor, &temp);
+
+		if (rc == EC_SUCCESS)
+			sensor_temp_cache[motion_sensors - sensor] = temp;
+	}
 	fifo_stage_unit(data, sensor, valid_data);
 }
 
@@ -459,6 +480,8 @@ commit_data_end:
 
 	/* Reset metadata for next staging cycle. */
 	memset(&fifo_staged, 0, sizeof(fifo_staged));
+	if (IS_ENABLED(CONFIG_ONLINE_CALIB))
+		memset(sensor_temp_cache, 0xff, sizeof(sensor_temp_cache));
 
 	mutex_unlock(&g_sensor_mutex);
 }
@@ -519,5 +542,7 @@ void motion_sense_fifo_reset(void)
 {
 	next_timestamp_initialized = 0;
 	memset(&fifo_staged, 0, sizeof(fifo_staged));
+	if (IS_ENABLED(CONFIG_ONLINE_CALIB))
+		memset(sensor_temp_cache, 0xff, sizeof(sensor_temp_cache));
 	queue_init(&fifo);
 }
