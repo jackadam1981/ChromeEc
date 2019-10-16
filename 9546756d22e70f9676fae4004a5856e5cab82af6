@@ -117,6 +117,30 @@
       "revId": "9546756d22e70f9676fae4004a5856e5cab82af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d606682_cb114343",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-10-16T02:33:48Z",
+      "side": 1,
+      "message": "I have update some capture on b:138413964.\nIt takes 850ms~950ms to get valid RSOC after battery wake-up.\nThe value 1% is garbage data from FG.",
+      "parentUuid": "cff80c42_f2643caf",
+      "range": {
+        "startLine": 1519,
+        "startChar": 7,
+        "endLine": 1519,
+        "endChar": 36
+      },
+      "revId": "9546756d22e70f9676fae4004a5856e5cab82af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
