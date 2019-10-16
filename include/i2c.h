@@ -511,4 +511,9 @@ void i2c_end_xfer_notify(const int port,
 void i2c_trace_notify(int port, uint16_t slave_addr_flags,
 		      int direction, const uint8_t *data, size_t size);
 
+/**
+ * Initialize i2c.
+ */
+void i2c_init(void);
+
 #endif  /* __CROS_EC_I2C_H */

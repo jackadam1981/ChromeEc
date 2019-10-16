@@ -109,3 +109,6 @@ int i2c_get_line_levels(int port)
 {
 	return 0;
 }
+
+void i2c_init(void)
+{}
