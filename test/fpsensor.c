@@ -610,19 +610,20 @@ test_static int test_enable_positive_match_secret(void)
 		.readable = false,
 		.deadline.val = 0,
 	};
+	const uint8_t kIndexToEnable = 0;
 	timestamp_t now = get_time();
 
-	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
-		EC_SUCCESS);
-	TEST_ASSERT(dumb_state.template_matched == 0);
-	TEST_ASSERT(dumb_state.readable == true);
+	TEST_ASSERT(fp_enable_positive_match_secret(
+		kIndexToEnable, &dumb_state) == EC_SUCCESS);
+	TEST_ASSERT(dumb_state.template_matched == kIndexToEnable);
+	TEST_ASSERT(dumb_state.readable);
 	TEST_ASSERT(dumb_state.deadline.val == now.val + (5 * SECOND));
 
 	/* Trying to enable again before reading secret should fail. */
 	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
 		EC_ERROR_UNKNOWN);
 	TEST_ASSERT(dumb_state.template_matched == FP_NO_SUCH_TEMPLATE);
-	TEST_ASSERT(dumb_state.readable == false);
+	TEST_ASSERT(!dumb_state.readable);
 	TEST_ASSERT(dumb_state.deadline.val == 0);
 
 	return EC_SUCCESS;
@@ -630,13 +631,21 @@ test_static int test_enable_positive_match_secret(void)
 
 test_static int test_disable_positive_match_secret(void)
 {
-	struct positive_match_secret_state dumb_state;
+	struct positive_match_secret_state dumb_state = {
+		.template_matched = FP_NO_SUCH_TEMPLATE,
+		.readable = false,
+		.deadline.val = 0,
+	};
+	const uint8_t kIndexToEnable = 0;
 
-	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
-		EC_SUCCESS);
+	TEST_ASSERT(fp_enable_positive_match_secret(
+			kIndexToEnable, &dumb_state) == EC_SUCCESS);
+	TEST_ASSERT(dumb_state.template_matched == kIndexToEnable);
+	TEST_ASSERT(dumb_state.readable);
+
 	fp_disable_positive_match_secret(&dumb_state);
 	TEST_ASSERT(dumb_state.template_matched == FP_NO_SUCH_TEMPLATE);
-	TEST_ASSERT(dumb_state.readable == false);
+	TEST_ASSERT(!dumb_state.readable);
 	TEST_ASSERT(dumb_state.deadline.val == 0);
 
 	return EC_SUCCESS;
