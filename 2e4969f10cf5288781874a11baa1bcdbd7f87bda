@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0ec94c91_03ec841e",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-16T05:48:43Z",
+      "side": 1,
+      "message": "I think -Wenum-conversion might do what we want, which has been in clang for a while, and just got added to GCC a month ago, after a few years of debate!\nhttps://gcc.gnu.org/bugzilla/show_bug.cgi?id\u003d78736#c13",
+      "parentUuid": "3cd96ae5_edcc4237",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c43b30d_dd5ac88f",
         "filename": "include/gpio_signal.h",
         "patchSetId": 1
