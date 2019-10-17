@@ -46,6 +46,30 @@
       "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7a2dc1_ef03b281",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-17T21:11:14Z",
+      "side": 1,
+      "message": "I\u0027m ok with it if checkpatch accepts it. Otherwise, Somebody else would hit the warning.",
+      "parentUuid": "50980779_d7bd20a6",
+      "range": {
+        "startLine": 57,
+        "startChar": 56,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
