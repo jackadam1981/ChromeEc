@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe56b4e5_ee89256d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-17T13:50:07Z",
+      "side": 1,
+      "message": "Suggested rewrite: \"dratini and dragonair use the same PCB with BOM changes. Dratini uses a hall sensor instead of GMR, and does not stuff the accelerometer and gryo sensors. Disable initialization of those sensors on Dratini.\nDratini is a clamshell that does not support tablet mode, so disable that, too.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "294c09b5a8452e858a2103c1a17dd0e02d7ccab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a464ff_bb06b473",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-17T13:50:07Z",
+      "side": 1,
+      "message": "Suggested rewrite: \"Dragonair (SKU 21 and 22) is a convertible. Dratini is not.\"",
+      "revId": "294c09b5a8452e858a2103c1a17dd0e02d7ccab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
