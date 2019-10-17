@@ -1651,7 +1651,7 @@ static void tc_unattached_snk_entry(const int port)
 	 * Indicate that the port is disconnected so the board
 	 * can restore state from any previous data swap.
 	 */
-	pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
+	pd_execute_data_swap(port, PD_ROLE_DFP);
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SNK;
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
@@ -2032,7 +2032,7 @@ static void tc_unattached_src_entry(const int port)
 	 * Indicate that the port is disconnected so the board
 	 * can restore state from any previous data swap.
 	 */
-	pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
+	pd_execute_data_swap(port, PD_ROLE_DFP);
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		tc[port].flags = 0;

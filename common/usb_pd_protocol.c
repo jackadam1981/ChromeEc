@@ -813,7 +813,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		 * Indicate that the port is disconnected so the board
 		 * can restore state from any previous data swap.
 		 */
-		pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
+		pd_execute_data_swap(port, PD_ROLE_DFP);
 #ifdef CONFIG_USBC_SS_MUX
 		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
