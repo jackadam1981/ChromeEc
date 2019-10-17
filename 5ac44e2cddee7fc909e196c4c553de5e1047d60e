@@ -70,6 +70,30 @@
       "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a760c6_0be1338b",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-17T21:55:20Z",
+      "side": 1,
+      "message": "Looks like we define simple macros (e.g. test_mockable) differently depending on TEST_BUILD or TEST_FUZZ.\n\nOne advantage of fuzz_noreturn is that the condition can be changed at once. For example,\n\n  #ifdef TEST_FUZZ\n  #define fuzz_noreturn __attribute__((noreturn))\n  #endif\n\ncan be changed to\n\n  #if defined(TEST_FUZZ) || defined(TEST_BUILD)\n  #define fuzz_noreturn __attribute__((noreturn))\n  #endif\n\nwhile with ATTRIBUTE_IF, conditions are distributed.\n\nSo, being consistent with other similar macros, checkpatch spitting warning, and the advantage mentioned above, I would vote for fuzz_noreturn.",
+      "parentUuid": "7b7a2dc1_ef03b281",
+      "range": {
+        "startLine": 57,
+        "startChar": 56,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
