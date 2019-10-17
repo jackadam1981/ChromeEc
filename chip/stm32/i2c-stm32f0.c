@@ -479,6 +479,17 @@ int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
 			rv = wait_isr(port, STM32_I2C_ISR_TC);
 			if (rv)
 				goto xfer_exit;
+		} else if (xfer_start) {
+			/*
+			 * If out_bytes == 0 and this is the first "read"
+			 * transaction, we may have set RELOAD=1 in previous
+			 * chip_i2c_xfer() call. In this case, we need to set
+			 * NBYTES = 0 and RELOAD = 0 to exit reload mode.
+			 */
+			STM32_I2C_CR2(port) = 0;
+			rv = wait_isr(port, STM32_I2C_ISR_TC);
+			if (rv)
+				goto xfer_exit;
 		}
 		/*
 		 * Configure the read transfer: if we are stopping then set
