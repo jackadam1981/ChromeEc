@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f5c2ae_da53dd5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-17T13:45:30Z",
+      "side": 1,
+      "message": "Nit: I suggest \"dratini: enable GMR sensor for tablet mode\"",
+      "revId": "ab31ce022dbb17f3081752a6e33d4d4a5c5f0c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd60f40a_218bce7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-17T13:45:30Z",
+      "side": 1,
+      "message": "Nit: I\u0027d like to see a little more detail here. What are you doing physically with the unit to make it transition into and out of tablet mode. What is the behavior you expect to see - screen rotation, keyboard disabled, touchpad disabled, on-screen keyboard enabled?",
+      "revId": "ab31ce022dbb17f3081752a6e33d4d4a5c5f0c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
