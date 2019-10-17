@@ -4378,15 +4378,28 @@ void pd_set_vbus_discharge(int port, int enable)
 	enable &= !board_vbus_source_enabled(port);
 
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
-#if CONFIG_USB_PD_PORT_COUNT == 0
-	gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);
-#elif CONFIG_USB_PD_PORT_COUNT == 1
-	gpio_set_level(GPIO_USB_C1_DISCHARGE, enable);
-#elif CONFIG_USB_PD_PORT_COUNT == 2
-	gpio_set_level(GPIO_USB_C2_DISCHARGE, enable);
-#elif CONFIG_USB_PD_PORT_COUNT == 3
-	gpio_set_level(GPIO_USB_C3_DISCHARGE, enable);
-#endif
+	switch (port) {
+	case 0:
+	#if CONFIG_USB_PD_PORT_COUNT == 1
+		gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);
+	#endif
+		break;
+	case 1:
+	#if CONFIG_USB_PD_PORT_COUNT == 2
+		gpio_set_level(GPIO_USB_C1_DISCHARGE, enable);
+	#endif
+		break;
+	case 2:
+	#if CONFIG_USB_PD_PORT_COUNT == 3
+		gpio_set_level(GPIO_USB_C2_DISCHARGE, enable);
+	#endif
+		break;
+	case 3:
+	#if CONFIG_USB_PD_PORT_COUNT == 4
+		gpio_set_level(GPIO_USB_C3_DISCHARGE, enable);
+	#endif
+		break;
+	}
 #else
 	if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_TCPC))
 		tcpc_discharge_vbus(port, enable);
