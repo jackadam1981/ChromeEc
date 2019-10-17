@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3945e089_f99aae0a",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-17T00:15:03Z",
+      "side": 1,
+      "message": "This is an int8_t. That const is an uint8_t.\n\nAlso, the above fp_enable_positive_match_secret requires a uint32_t for first param. If you really want to override these, then make it explicit.",
+      "range": {
+        "startLine": 618,
+        "startChar": 24,
+        "endLine": 618,
+        "endChar": 40
+      },
+      "revId": "6274ca1547397d7a74d233d7d78159cec4a2f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b4d12b_c46ba08a",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-17T00:15:03Z",
+      "side": 1,
+      "message": "Same issue with implicit type casting.",
+      "range": {
+        "startLine": 643,
+        "startChar": 24,
+        "endLine": 643,
+        "endChar": 40
+      },
+      "revId": "6274ca1547397d7a74d233d7d78159cec4a2f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
