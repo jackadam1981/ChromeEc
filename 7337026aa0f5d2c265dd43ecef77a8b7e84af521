@@ -22,6 +22,30 @@
       "revId": "7337026aa0f5d2c265dd43ecef77a8b7e84af521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b77bab59_6c046ca1",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-17T21:06:52Z",
+      "side": 1,
+      "message": "I\u0027m OK with printing the expected value, but I do think that printing the chip value is important as it provides a bit more detail. Something like\n\"Unexpected WHO_AM_I value (0x%x), expected 0x%x for chip 0x%x\".\n\nI\u0027m happy either way.",
+      "parentUuid": "264049bf_602f0884",
+      "range": {
+        "startLine": 720,
+        "startChar": 45,
+        "endLine": 720,
+        "endChar": 47
+      },
+      "revId": "7337026aa0f5d2c265dd43ecef77a8b7e84af521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
