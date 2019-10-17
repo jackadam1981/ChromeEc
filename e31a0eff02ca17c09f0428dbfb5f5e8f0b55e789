@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c4a4ae2_56272e90",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-17T16:26:49Z",
+      "side": 1,
+      "message": "Do you know why GPIO_EC_PCH_RSMRST_L and GPIO_PCH_RSMRST_L are used? Aren\u0027t they the same?",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "e31a0eff02ca17c09f0428dbfb5f5e8f0b55e789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
