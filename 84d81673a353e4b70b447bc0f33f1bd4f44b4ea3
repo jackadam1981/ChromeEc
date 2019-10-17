@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0acf4f75_cf8b9ca2",
+        "filename": "builtin/assert.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-17T09:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5bafb22_9ca55a8b",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "84d81673a353e4b70b447bc0f33f1bd4f44b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08f4ae3c_a02fb598",
         "filename": "include/common.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e372de32_d9c4075b",
+        "filename": "include/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-17T09:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f4ae3c_a02fb598",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 6
+      },
+      "revId": "84d81673a353e4b70b447bc0f33f1bd4f44b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e1e840e_b41ee926",
         "filename": "include/panic.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-16T00:25:10Z",
       "side": 1,
       "message": "where does this get used in this file?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "84d81673a353e4b70b447bc0f33f1bd4f44b4ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2804e9d5_dff84848",
+        "filename": "include/panic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-17T09:20:29Z",
+      "side": 1,
+      "message": "assert.h also declares panic_assert_fail().\nbefore unraveling the duplication, i wanted to\nbring in assert.h so that we have assurance\nthat the declarations are consistent.\n\nat this point, it looks like the cleanest approach\nis to pull asserts out of here entirely.",
+      "parentUuid": "5e1e840e_b41ee926",
       "range": {
         "startLine": 12,
         "startChar": 0,

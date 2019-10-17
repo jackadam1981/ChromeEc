@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9709026e_c59ade2d",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-17T09:20:29Z",
+      "side": 1,
+      "message": "checkpatch is really not happy with this:\n\n            WARNING: function definition argument \u0027noreturn\u0027 should also have an identifier name\n            #106: FILE: include/panic.h:57:\n            +void panic(const char *msg) ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn);\n\n\nis there a way out?",
+      "range": {
+        "startLine": 57,
+        "startChar": 56,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
