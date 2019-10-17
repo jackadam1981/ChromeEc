@@ -22,6 +22,30 @@
       "revId": "33a037ab5a032014b2e1f63dbbaf7954a563b812",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9d68e5_a524339e",
+        "filename": "include/panic_data.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-17T09:22:39Z",
+      "side": 1,
+      "message": "this line is OK - it\u0027ll have a definition by the time it\u0027s used.\nit\u0027s the other\n#ifdef CONFIG_... in panic.h that are problematic.\n\"config.h\" includes \"config_chip.h\" before\n\"board.h\", so we can\u0027t use\n#ifdef CONFIG_ in \"config_chip.h\" yet.",
+      "parentUuid": "53e2c180_af4314fb",
+      "range": {
+        "startLine": 103,
+        "startChar": 45,
+        "endLine": 103,
+        "endChar": 67
+      },
+      "revId": "33a037ab5a032014b2e1f63dbbaf7954a563b812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
