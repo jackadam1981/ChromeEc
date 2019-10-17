@@ -51,6 +51,9 @@
 #define CONFIG_SYNC_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 
+/* Enable detect fast swap (Rp to GND) interrupt */
+#define IT83XX_INTC_FAST_SWAP_SUPPORT
+
 /* Keyboard backlight is unimplemented in hardware */
 #undef CONFIG_PWM
 #undef CONFIG_PWM_KBLIGHT

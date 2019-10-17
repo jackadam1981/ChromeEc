@@ -463,6 +463,16 @@ static int sn5s330_init(int port)
 		}
 	}
 
+	/* Disable CC FRS comparator, this is an undocumented register. */
+	status = i2c_read8(i2c_port, i2c_addr_flags, SN5S330_UNDOCUMENT_REG,
+			   &regval);
+	if (status) {
+		CPRINTS("ppc p%d: Failed to read reg 0x2E!", port);
+		return status;
+	}
+	regval |= BIT(7);
+	i2c_write8(i2c_port, i2c_addr_flags, SN5S330_UNDOCUMENT_REG, regval);
+
 	return EC_SUCCESS;
 }
 
@@ -628,6 +638,33 @@ static int sn5s330_vbus_source_enable(int port, int enable)
 	return sn5s330_pp_fet_enable(port, SN5S330_PP1, !!enable);
 }
 
+static int sn5s330_fast_swap_to_src_enable(int port, int enable)
+{
+	int regval;
+	int status;
+
+	/* Enable fast role swap from SNK to SRC */
+	status = read_reg(port, SN5S330_FUNC_SET5, &regval);
+	if (status)
+		return status;
+
+	if (enable)
+		regval |= SN5S330_FRS_EN;
+	else {
+		regval &= ~SN5S330_FRS_EN;
+		regval |= SN5S330_FRS_END;
+	}
+
+	status = write_reg(port, SN5S330_FUNC_SET5, regval);
+	if (status) {
+		CPRINTS("ppc p%d: Failed to %s fast role swap",
+			port, enable ? "enable" : "disable");
+		return status;
+	}
+
+	return EC_SUCCESS;
+}
+
 static void sn5s330_handle_interrupt(int port)
 {
 	int attempt = 0;
@@ -750,4 +787,5 @@ const struct ppc_drv sn5s330_drv = {
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &sn5s330_set_vconn,
 #endif
+	.fast_swap_to_src_enable = &sn5s330_fast_swap_to_src_enable,
 };
