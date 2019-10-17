@@ -42,7 +42,29 @@
 #define CONFIG_MATH_UTIL
 #endif
 
-#ifdef TEST_MOTION_LID
+#ifdef TEST_FLOAT
+#define CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_FP
+#undef CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_KASA
+#define CONFIG_FPU
+#define CONFIG_ONLINE_CALIB
+#endif
+
+#if defined(TEST_MOTION_LID) || defined(TEST_MOTION_ANGLE) || \
+	defined(TEST_MOTION_ANGLE_TABLET) || defined(TEST_MOTION_SENSE_FIFO)
+enum sensor_id {
+	BASE,
+	LID,
+	SENSOR_COUNT,
+};
+
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 #define CONFIG_LID_ANGLE_TABLET_MODE
