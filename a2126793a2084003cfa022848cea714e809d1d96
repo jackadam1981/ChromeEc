@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebc5badc_0aba1b51",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4389,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-10-17T15:32:27Z",
+      "side": 1,
+      "message": "My original code is incorrect. The port number should determine which line to discharge, instead of the port count. Could you remove the CONFIG_USB_PD_PORT_COUNT macros and add a switch statement to select the desired discharge line?",
+      "range": {
+        "startLine": 4381,
+        "startChar": 0,
+        "endLine": 4389,
+        "endChar": 6
+      },
+      "revId": "a2126793a2084003cfa022848cea714e809d1d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
