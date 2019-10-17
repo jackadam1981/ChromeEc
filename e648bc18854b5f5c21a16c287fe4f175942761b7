@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53a9ca46_3b5cd50c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-17T19:01:19Z",
+      "side": 1,
+      "message": "Is the idea that this only gets called when the role is changing? Who checks that?",
+      "revId": "e648bc18854b5f5c21a16c287fe4f175942761b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
