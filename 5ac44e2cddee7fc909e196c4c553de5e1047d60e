@@ -22,6 +22,30 @@
       "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50980779_d7bd20a6",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-17T19:48:08Z",
+      "side": 1,
+      "message": "checkpatch really sucks with macros and is just confused.\n\ndnojiri: any concerns with introducing this macro?",
+      "parentUuid": "9709026e_c59ade2d",
+      "range": {
+        "startLine": 57,
+        "startChar": 56,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
