@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5541bb12_884b536d",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-10-17T01:11:46Z",
+      "side": 1,
+      "message": "The mismatch is really because we were not careful enough historically (e.g. in ec_command.h the max index is 16 bits, in biod we have some 32-bits), and we should try to fix it up. We only need 8 bits. For now I changed this local const to be int8_t to avoid a cast since we fully control this local const and won\u0027t assign -1 to it. I will prepare another CL to change the argument of fp_enable_positive_match_secret to be int8_t.",
+      "parentUuid": "2121af2c_735ddbd3",
+      "range": {
+        "startLine": 618,
+        "startChar": 24,
+        "endLine": 618,
+        "endChar": 40
+      },
+      "revId": "6274ca1547397d7a74d233d7d78159cec4a2f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74b4d12b_c46ba08a",
         "filename": "test/fpsensor.c",
         "patchSetId": 1
