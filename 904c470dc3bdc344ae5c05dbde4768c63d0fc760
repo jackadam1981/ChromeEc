@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dc7c5ec_1e965536",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-10-17T21:40:50Z",
+      "side": 1,
+      "message": "So for how long do we plan to keep this in here? Is there ever going to be a cleanup where we verify that all chips are ok with this, or are we forever going to have this parallel way of doing things?",
+      "range": {
+        "startLine": 1350,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 0
+      },
+      "revId": "904c470dc3bdc344ae5c05dbde4768c63d0fc760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
