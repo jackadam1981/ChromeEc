@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0cc15e4a_ff6ddaf5",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-17T00:58:29Z",
+      "side": 1,
+      "message": "I see. You wanted to use -1 as a special value for template_matched.\n\nIt looks like there are a lot more significant implicit type conversions in this file + I don\u0027t think we will ever turn on strict type conversion checking in EC, so I guess this is fine.\n\nTo add a bit of context, \"const\"s are great because they can be scoped and because they have a proper type that can be checked. This struck me as slightly odd because we immediately break the const\u0027s type.",
+      "parentUuid": "2121af2c_735ddbd3",
+      "range": {
+        "startLine": 618,
+        "startChar": 24,
+        "endLine": 618,
+        "endChar": 40
+      },
+      "revId": "6274ca1547397d7a74d233d7d78159cec4a2f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74b4d12b_c46ba08a",
         "filename": "test/fpsensor.c",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "6274ca1547397d7a74d233d7d78159cec4a2f905",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "479f966c_617b55b1",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-17T00:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74b4d12b_c46ba08a",
+      "range": {
+        "startLine": 643,
+        "startChar": 24,
+        "endLine": 643,
+        "endChar": 40
+      },
+      "revId": "6274ca1547397d7a74d233d7d78159cec4a2f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
