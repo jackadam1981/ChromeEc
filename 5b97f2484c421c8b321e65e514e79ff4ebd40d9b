@@ -93,6 +93,30 @@
       "revId": "5b97f2484c421c8b321e65e514e79ff4ebd40d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534b173b_c8004745",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2019-10-17T06:30:49Z",
+      "side": 1,
+      "message": "I agree, the code is o.k.",
+      "parentUuid": "a7983c5f_4ea6034d",
+      "range": {
+        "startLine": 344,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 41
+      },
+      "revId": "5b97f2484c421c8b321e65e514e79ff4ebd40d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
