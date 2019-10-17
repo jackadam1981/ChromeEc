@@ -93,6 +93,11 @@
 #define CONFIG_ACCEL_FIFO_THRES 10
 #endif
 
+#ifdef TEST_KASA
+#define CONFIG_FPU
+#define CONFIG_ONLINE_CALIB
+#endif
+
 #if defined(TEST_MOTION_LID) || defined(TEST_MOTION_ANGLE) || \
 	defined(TEST_MOTION_ANGLE_TABLET) || defined(TEST_MOTION_SENSE_FIFO)
 enum sensor_id {
