@@ -22,6 +22,30 @@
       "revId": "34c386a9ef18e68562caf8a631848bddec4d9cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd0a28b_1a95f2ce",
+        "filename": "test/sysjump.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-17T09:25:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074d386b_92a6b954",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "34c386a9ef18e68562caf8a631848bddec4d9cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
