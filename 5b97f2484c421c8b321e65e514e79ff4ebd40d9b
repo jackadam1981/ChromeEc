@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8759a6b6_7f9775f8",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-10-17T03:50:41Z",
+      "side": 1,
+      "message": "Ok, lets remove this line.",
+      "parentUuid": "eeb23beb_2a4702b1",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 26
+      },
+      "revId": "5b97f2484c421c8b321e65e514e79ff4ebd40d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c068feb4_75561902",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-16T09:25:54Z",
       "side": 1,
       "message": "I do not really understand what is \"SMB_READ_SUSPEND\" used for, however the question is: why is this \"if\" statement only handles a FIFO disable case ?",
+      "range": {
+        "startLine": 344,
+        "startChar": 2,
+        "endLine": 344,
+        "endChar": 41
+      },
+      "revId": "5b97f2484c421c8b321e65e514e79ff4ebd40d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7983c5f_4ea6034d",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-10-17T03:50:41Z",
+      "side": 1,
+      "message": "As we already discussed, this \"if\" statement is to handle the special case in single byte mode as addressed in the CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/430569\nFor FIFO mode, the driver has to always stall the bus before reading FIFO data.\nSo it doesn\u0027t need to have the dummy read.",
+      "parentUuid": "c068feb4_75561902",
       "range": {
         "startLine": 344,
         "startChar": 2,
