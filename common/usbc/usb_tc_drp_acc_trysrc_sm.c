@@ -795,6 +795,12 @@ void tc_set_data_role(int port, int role)
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 		set_usb_mux_with_current_data_role(port);
 
+	/*
+	 * Run any board-specific code for role swap (e.g. setting OTG signals
+	 * to SoC).
+	 */
+	pd_execute_data_swap(port, role);
+
 	/* Notify TCPC of role update */
 	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
 }
@@ -1647,13 +1653,6 @@ static void tc_unattached_snk_entry(const int port)
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
 
-	/*
-	 * Indicate that the port is disconnected so the board
-	 * can restore state from any previous data swap.
-	 *
-	 * NOTE: This is no-op change. This is cleaned up further in a child CL
-	 */
-	pd_execute_data_swap(port, PD_ROLE_DFP);
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SNK;
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
@@ -2029,15 +2028,6 @@ static void tc_unattached_src_entry(const int port)
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
 
 	tc_set_data_role(port, PD_ROLE_DFP);
-
-	/*
-	 * Indicate that the port is disconnected so the board
-	 * can restore state from any previous data swap.
-	 *
-	 * NOTE: This is no-op change. This is cleaned up further in a child CL
-	 */
-	 */
-	pd_execute_data_swap(port, PD_ROLE_DFP);
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		tc[port].flags = 0;
