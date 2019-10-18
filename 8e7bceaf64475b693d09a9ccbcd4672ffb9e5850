@@ -16,6 +16,24 @@
       "revId": "8e7bceaf64475b693d09a9ccbcd4672ffb9e5850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c76340_3d28d717",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1649,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T13:57:48Z",
+      "side": 0,
+      "message": "I also dropped the tc_set_data role in both unattached states as we aren\u0027t really in a data role. We keep what ever last data role we have and only when we get to an attached state do we set the data role because it matters then.",
+      "parentUuid": "ca13dbad_3290c7e0",
+      "revId": "8e7bceaf64475b693d09a9ccbcd4672ffb9e5850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
