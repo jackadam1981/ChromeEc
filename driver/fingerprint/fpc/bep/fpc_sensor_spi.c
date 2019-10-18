@@ -59,13 +59,13 @@ int __unused fpc_sensor_spi_write_read(uint8_t *write, uint8_t *read,
 		rc = -1;
 	}
 
-	if (rc == 0) {
-		return FPC_RESULT_OK;
-	} else {
+	if (rc != 0) {
 		CPRINTS("Error: spi_transaction()/spi_transaction_async() failed, result=%d",
 			rc);
 		return FPC_RESULT_IO_ERROR;
 	}
+
+	return FPC_RESULT_OK;
 }
 
 bool __unused fpc_sensor_spi_check_irq(void)
