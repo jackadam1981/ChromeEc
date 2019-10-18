@@ -744,8 +744,9 @@ int command_fpcapture(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpcapture, command_fpcapture, NULL,
-			"Capture fingerprint in PGM format");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
+			      "Capture fingerprint in PGM format",
+			      CMD_FLAG_RESTRICTED);
 
 int command_fpenroll(int argc, char **argv)
 {
@@ -780,8 +781,9 @@ int command_fpenroll(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpenroll, command_fpenroll, NULL,
-			"Enroll a new fingerprint");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
+			      "Enroll a new fingerprint",
+			      CMD_FLAG_RESTRICTED);
 
 
 int command_fpmatch(int argc, char **argv)
