@@ -725,9 +725,6 @@ int command_fpcapture(int argc, char **argv)
 	uint32_t mode;
 	enum ec_error_list rc;
 
-	if (system_is_locked())
-		return EC_ERROR_ACCESS_DENIED;
-
 	if (argc >= 2) {
 		char *e;
 
@@ -744,8 +741,9 @@ int command_fpcapture(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpcapture, command_fpcapture, NULL,
-			"Capture fingerprint in PGM format");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
+			      "Capture fingerprint in PGM format",
+			      CMD_FLAG_RESTRICTED);
 
 int command_fpenroll(int argc, char **argv)
 {
@@ -754,9 +752,6 @@ int command_fpenroll(int argc, char **argv)
 	uint32_t event;
 	static const char * const enroll_str[] = {"OK", "Low Quality",
 						  "Immobile", "Low Coverage"};
-
-	if (system_is_locked())
-		return EC_ERROR_ACCESS_DENIED;
 
 	do {
 		int tries = 1000;
@@ -780,8 +775,9 @@ int command_fpenroll(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpenroll, command_fpenroll, NULL,
-			"Enroll a new fingerprint");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
+			      "Enroll a new fingerprint",
+			      CMD_FLAG_RESTRICTED);
 
 
 int command_fpmatch(int argc, char **argv)
