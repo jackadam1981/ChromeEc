@@ -66,6 +66,8 @@ DerivePointerAlignment: false
 DisableFormat: false
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: false
+ForEachMacros:
+  - 'FOR_ORIENTS'
 IncludeBlocks: Preserve
 IncludeCategories:
   - Regex: '.*'
