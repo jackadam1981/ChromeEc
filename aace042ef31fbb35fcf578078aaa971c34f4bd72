@@ -34,6 +34,24 @@
       "revId": "aace042ef31fbb35fcf578078aaa971c34f4bd72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb86b855_bc7df28c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T23:08:59Z",
+      "side": 1,
+      "message": "Added signal_is_gpio() to common/gpio.c",
+      "parentUuid": "a6eabd80_b252dc25",
+      "revId": "aace042ef31fbb35fcf578078aaa971c34f4bd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
