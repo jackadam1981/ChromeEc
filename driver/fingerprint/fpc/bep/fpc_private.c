@@ -211,7 +211,8 @@ int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
 	rc = bio_template_image_match_list(templ, templ_count, image,
 					   match_index, update_bitmap);
 	if (rc < 0)
-		CPRINTS("Error: bio_template_image_match_list() failed, result=%d",
+		CPRINTS("Error: bio_template_image_match_list() failed, "
+			"result=%d",
 			rc);
 
 	return rc;
