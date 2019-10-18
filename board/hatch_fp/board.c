@@ -20,6 +20,16 @@ void fps_event(enum gpio_signal signal)
 }
 #endif
 
+/**
+ * Disable restricted commands when the system is locked.
+ *
+ * @see console.h system.c
+ */
+int console_is_restricted(void)
+{
+	return system_is_locked();
+}
+
 static void ap_deferred(void)
 {
 	/*
