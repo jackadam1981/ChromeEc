@@ -20,6 +20,13 @@ void fps_event(enum gpio_signal signal)
 }
 #endif
 
+#ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
+int console_is_restricted(void)
+{
+	return 0;
+}
+#endif
+
 static void ap_deferred(void)
 {
 	/*
