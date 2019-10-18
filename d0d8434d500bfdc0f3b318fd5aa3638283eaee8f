@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c6db5cc_8ff76c0f",
+        "filename": "core/host/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-18T17:39:05Z",
+      "side": 1,
+      "message": "It might be better to mock the clock only when you need it like we did for the FPMCU tests. That lets you customize any timer behavior you want: \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/f46eefcad2b32a171583c4f566c2efd0c0bd7127/common/mock/timer_mock.c#10\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/f46eefcad2b32a171583c4f566c2efd0c0bd7127/test/fpsensor.c#751\n\nhttps://crrev.com/c/1652627",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "d0d8434d500bfdc0f3b318fd5aa3638283eaee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
