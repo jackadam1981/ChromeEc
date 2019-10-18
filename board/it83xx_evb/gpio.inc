@@ -13,7 +13,11 @@ GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button
 GPIO_INT(PCH_PLTRST_L,   PIN(E, 3), GPIO_INT_BOTH | GPIO_PULL_UP,   lpcrst_interrupt)
 #endif
 GPIO_INT(LID_OPEN,       PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
+#ifdef CHIP_FAMILY_IT8XXX2
+GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_interrupt)         /* Write protect input */
+#else
 GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH,                  switch_interrupt)         /* Write protect input */
+#endif
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING,               uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
@@ -85,3 +89,4 @@ ALTERNATE(PIN_MASK(C, 0x06), 1, MODULE_I2C, 0)             /* I2C B SCL/SDA */
 ALTERNATE(PIN_MASK(F, 0xC0), 1, MODULE_I2C, 0)             /* I2C C SCL/SDA */
 #endif
 ALTERNATE(PIN_MASK(E, 0x81), 1, MODULE_I2C, 0)             /* I2C E SCL/SDA E0/E7 */
+ALTERNATE(PIN_MASK(O, 0x0F), 1, MODULE_SPI, 0)             /* Slave SPI Function */
