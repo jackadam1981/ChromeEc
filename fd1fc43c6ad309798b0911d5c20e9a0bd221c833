@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c2f2c1de_ae1f6832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-18T08:39:20Z",
+      "side": 1,
+      "message": "doesn\u0027t this depends on the gpio pin assignment on each board?",
+      "parentUuid": "fd7d5aaf_9b1927c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "fd1fc43c6ad309798b0911d5c20e9a0bd221c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33a20f86_d8f011f2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "fd1fc43c6ad309798b0911d5c20e9a0bd221c833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbe198f_8b1bfaea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-18T08:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a20f86_d8f011f2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "fd1fc43c6ad309798b0911d5c20e9a0bd221c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
