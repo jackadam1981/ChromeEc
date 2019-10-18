@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b212c1c1_af1e3f0e",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-18T05:03:05Z",
+      "side": 1,
+      "message": "should we just drop the conditions here? We should wait for the previous xfer completes anyway?",
+      "range": {
+        "startLine": 454,
+        "startChar": 6,
+        "endLine": 454,
+        "endChar": 32
+      },
+      "revId": "b0bd5c57b95196a218fd546285acb67767231b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85a25c83_9c328983",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 3
