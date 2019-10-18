@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0f75eda_1d103bd4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c93d4597_abf4a95e",
+      "revId": "08eeeb8bb592c8db0928b717597d91c39ce70993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "785f487a_ff1f9dc9",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a00c7233_88c290ed",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:21Z",
+      "side": 1,
+      "message": "Talked offline. This makes the API more clear and easier to mock than using a #define",
+      "parentUuid": "785f487a_ff1f9dc9",
+      "revId": "08eeeb8bb592c8db0928b717597d91c39ce70993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "944a96a4_6b6eda05",
         "filename": "test/usb_prl.c",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "08eeeb8bb592c8db0928b717597d91c39ce70993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28469f1_a24dfd5e",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:21Z",
+      "side": 1,
+      "message": "This is to make the compiler happy. I am adding a API interface so this fake/mock need to provide an implementation",
+      "parentUuid": "944a96a4_6b6eda05",
+      "revId": "08eeeb8bb592c8db0928b717597d91c39ce70993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
