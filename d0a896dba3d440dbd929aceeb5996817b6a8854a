@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d6bc19a_6b56ea04",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-18T14:53:21Z",
+      "side": 1,
+      "message": "This seems out of character for a hierarchical state machine. Why are you bypassing the normal flow?",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fcb691_348ae0b3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-18T14:53:21Z",
+      "side": 1,
+      "message": "same comment as the SNK path above.  Seems that going to super state unattached would give an opportunity to perform this without the bypass.",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
