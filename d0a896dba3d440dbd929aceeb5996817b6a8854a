@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7992b048_fcff45fe",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:00Z",
+      "side": 1,
+      "message": "Agreed. Pulled out in a sub function",
+      "parentUuid": "3d6bc19a_6b56ea04",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3fcb691_348ae0b3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db18080b_9646a028",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3fcb691_348ae0b3",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "40363e2e_686a98da",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:00Z",
+      "side": 1,
+      "message": "I was trying to keep the internals implementation from leaking into the test. I am really trying to ensure that setting resistors and waiting will turn on the mux, if we change the internal states or mechanism this should still be true.\n\nI was tempted to write an assert on the state, but ended up not doing it so I didn\u0027t couple this test to internal implementation.",
+      "parentUuid": "4d2fa458_77a2a0e0",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "423af7b3_90f31205",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4dcc1d_7b3b3a27",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-18T17:04:00Z",
+      "side": 1,
+      "message": "I want to keep the test cases pretty separate, and also we get a bunch of calls to the header update when we are waiting 10 second in an unattached state since we are dual role toggling.",
+      "parentUuid": "423af7b3_90f31205",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
