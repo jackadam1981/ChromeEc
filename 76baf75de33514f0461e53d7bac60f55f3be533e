@@ -22,6 +22,30 @@
       "revId": "76baf75de33514f0461e53d7bac60f55f3be533e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86acdd2b_4ddd8306",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-18T20:02:07Z",
+      "side": 1,
+      "message": "and we don\u0027t need kCmdG2fSysInfo \u003d 0x11 since we only use it in StartService() in G2F case, and for G2F old OS + new cr50 is irrelevant, right?",
+      "parentUuid": "2ebbdc68_8c18c744",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 18
+      },
+      "revId": "76baf75de33514f0461e53d7bac60f55f3be533e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
