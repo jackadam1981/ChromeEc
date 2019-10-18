@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "08589520_aa1c0286",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-18T17:39:34Z",
+      "side": 1,
+      "message": "New boards won\u0027t use jumptag and old boards won\u0027t use RO and RW built from tot.\n\nSo, this unit test won\u0027t be meaningful unless it\u0027s ported to branches. It won\u0027t harm. So, we can still proceed...",
+      "parentUuid": "07fef1be_543ab3c5",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "2d5295dca098f2e83b143099d18fb469f61e2b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72bd9215_657c64b0",
         "filename": "include/sysjump_impl.h",
         "patchSetId": 3
