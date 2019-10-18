@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f6578c7_fe3df4b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-18T03:17:46Z",
+      "side": 1,
+      "message": "consecutive",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "b0bd5c57b95196a218fd546285acb67767231b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a25c83_9c328983",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-18T03:17:46Z",
+      "side": 1,
+      "message": "Do you mean that the second read is waiting for this bit been set?",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 44
+      },
+      "revId": "b0bd5c57b95196a218fd546285acb67767231b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
