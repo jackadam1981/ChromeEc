@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7c24e7f3_36011017",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T23:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5d805a_17d015be",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f951813_e08728a2",
         "filename": "include/gpio_signal.h",
         "patchSetId": 1
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "1fb006bf_8f7cb9fb",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T23:06:09Z",
+      "side": 1,
+      "message": "We do use \"int\" in places where multiple signal types are possible.\nBut if we replace all the enum types with int (or uint16_t), then we wouldn\u0027t be able to take advantage of something like -Wenum-conversion in the future.",
+      "parentUuid": "983f1c7e_dac19963",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c43b30d_dd5ac88f",
         "filename": "include/gpio_signal.h",
         "patchSetId": 1
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "I was thinking this made all the other calculations a little simpler and reduces the risk of off-by-one bugs. But I admit that assumes IOEX_SIGNAL_BASE is only used to set the start number and never used anywhere else. I\u0027ll change it to only use IOEX_SIGNAL_START.",
       "parentUuid": "1c43b30d_dd5ac88f",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "2e4969f10cf5288781874a11baa1bcdbd7f87bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453c7eca_b499baff",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T23:06:09Z",
+      "side": 1,
+      "message": "I\u0027ve changed this to only use IOEX_SIGNAL_START, but now the extra \"-1\" needed in places like common/ioexpander.c, common/espi.c, and chip/it83xx/espi.c seems unappealing to me. What do you think?",
+      "parentUuid": "0bde6294_524165b7",
       "range": {
         "startLine": 34,
         "startChar": 0,
