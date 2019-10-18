@@ -34,6 +34,24 @@
       "revId": "9f425ec3ba1dc8a7665d1264d6642669008931f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9efbcf1_2ea83dd9",
+        "filename": "include/panic_data.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-18T18:05:19Z",
+      "side": 1,
+      "message": "I know there is a tricky dependency around config_chip.h, board.h, config.h. Is this CL making things worse? Ideally, any file should be able to be included by any file in any order. So, this looks like a hack or a workaround.",
+      "parentUuid": "af5974bc_4af3a6fe",
+      "revId": "9f425ec3ba1dc8a7665d1264d6642669008931f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
