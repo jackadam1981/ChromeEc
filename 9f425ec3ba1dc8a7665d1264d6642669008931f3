@@ -16,6 +16,24 @@
       "revId": "9f425ec3ba1dc8a7665d1264d6642669008931f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af5974bc_4af3a6fe",
+        "filename": "include/panic_data.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-18T08:30:02Z",
+      "side": 1,
+      "message": "no, that kinda gets us back to the original problem.",
+      "parentUuid": "8c33e196_5d05709e",
+      "revId": "9f425ec3ba1dc8a7665d1264d6642669008931f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
