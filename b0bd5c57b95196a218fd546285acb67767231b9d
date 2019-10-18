@@ -45,6 +45,30 @@
       "revId": "b0bd5c57b95196a218fd546285acb67767231b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd68341_8c8d5222",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-18T04:35:08Z",
+      "side": 1,
+      "message": "No I think it\u0027s waiting for the STM32_I2C_CR2_RELOAD be cleared.\n(This is undocumented so I\u0027m just guessing its behavior)",
+      "parentUuid": "85a25c83_9c328983",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 44
+      },
+      "revId": "b0bd5c57b95196a218fd546285acb67767231b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
