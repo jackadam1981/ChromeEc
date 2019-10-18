@@ -14,6 +14,9 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+
+#define CONFIG_RESTRICTED_CONSOLE_COMMANDS
+
 /*
  * Flash layout: we redefine the sections offsets and sizes as we want to
  * include a rollback region, and will use RO/RW regions of different sizes.
