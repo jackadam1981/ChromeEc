@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b44ec06e_dd52bcba",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T23:08:12Z",
+      "side": 1,
+      "message": "Moved gpio_or_ioex_set_level() into common/gpio.c",
+      "parentUuid": "e3b46aa9_4199307e",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "100e95df1985f13bdeac8258620028eb480c767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3834a805_2a3a3cea",
         "filename": "common/usb_port_power_smart.c",
         "patchSetId": 1
