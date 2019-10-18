@@ -33,6 +33,40 @@
       "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2fa458_77a2a0e0",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T16:05:30Z",
+      "side": 1,
+      "message": "Can we check we are in the state we think we are?",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "423af7b3_90f31205",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-18T16:05:30Z",
+      "side": 1,
+      "message": "Why not check both mock_usb_mux.num_set_calls and mock_tcpc.num_calls_to_set_header in all 3 tests?",
+      "revId": "d0a896dba3d440dbd929aceeb5996817b6a8854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
