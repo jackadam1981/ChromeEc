@@ -9,8 +9,21 @@
 fuzz-test-list-host =
 # Fuzzers should only be built for architectures that support sanitizers.
 ifeq ($(ARCH),amd64)
-fuzz-test-list-host += cr50_fuzz host_command_fuzz usb_pd_fuzz usb_tcpm_v2_fuzz
+fuzz-test-list-host += cr50_fuzz \
+                       host_command_fuzz \
+                       nvmem_fuzz \
+                       usb_pd_fuzz \
+                       usb_tcpm_v2_fuzz
 endif
+
+nvmem-fuzz-ext-list = common/new_nvmem \
+                      common/nvmem \
+                      common/nvmem_vars \
+                      common/crc \
+                      test/nvmem_tpm2_mock
+
+nvmem-fuzz-ext-objs = $(foreach x,$(nvmem-fuzz-ext-list),../$(x).o)
+nvmem-fuzz-ext-targets = $(foreach x,$(nvmem-fuzz-ext-objs),$(out)/RO/fuzz/$(x))
 
 # For fuzzing targets libec.a is built from the ro objects and hides functions
 # that collide with stdlib. The rw only objects are then linked against libec.a
@@ -26,6 +39,7 @@ endif
 # Otherwise use <obj_name>-y
 cr50_fuzz-rw = cr50_fuzz.o pinweaver_model.o mem_hash_tree.o nvmem_tpm2_mock.o
 host_command_fuzz-y = host_command_fuzz.o
+nvmem_fuzz-y = nvmem_fuzz.o $(nvmem-fuzz-ext-objs)
 usb_pd_fuzz-y = usb_pd_fuzz.o
 usb_tcpm_v2_fuzz-y = usb_pd_fuzz.o usb_tcpm_v2_fuzz.o ../test/fake_battery.o
 
@@ -37,6 +51,10 @@ $(out)/RW/fuzz/cr50_fuzz.o: CPPFLAGS+=${LIBPROTOBUF_MUTATOR_CFLAGS}
 
 TPM2_LIB_ROOT := $(CROS_WORKON_SRCROOT)/src/third_party/tpm2
 $(out)/RW/fuzz/nvmem_tpm2_mock.o: CFLAGS += -I$(TPM2_LIB_ROOT)
+
+NVMEM_FUZZ_FLAGS := -DTEST_NVMEM=y -I$(TPM2_LIB_ROOT) -Ichip/g
+$(nvmem-fuzz-ext-targets): CFLAGS += $(NVMEM_FUZZ_FLAGS)
+$(out)/RO/fuzz/nvmem_fuzz.o: CFLAGS += $(NVMEM_FUZZ_FLAGS)
 
 $(out)/cr50_fuzz.exe: $(out)/cryptoc/libcryptoc.a \
   $(out)/gen/fuzz/cr50_fuzz.pb.o \
