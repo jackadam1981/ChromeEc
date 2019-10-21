@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9051e36f_d91abf8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-10-21T16:40:36Z",
+      "side": 1,
+      "message": "Wait, I\u0027m confused about this. Can you elaborate here? Here\u0027s my understanding:\n\nOn EABI ARM, there are three possible FP ABIs, \"soft\", \"softfp\", and \"hard\". Soft turns all FPU operations into function calls, softfp uses the function call interface but then uses VFP hardware in the function implementations, and \"hard\" directly encodes VFP (and maybe NEON?) instructions. So assuming we\u0027re not using the \"hard\" model, on ARM at least I\u0027m confused about how there are chips that support float but not double, given that it\u0027s a runtime support library that does it.\n\n...oh wait, I see we are using the \"hard\" model:\ncore/cortex-m/build.mk:CFLAGS_FPU-$(CONFIG_FPU)\u003d-mfpu\u003dfpv4-sp-d16 -mfloat-abi\u003dhard\n\nIt would be great to understand if there are a set of compiler flags  we might be able to use that allows us to use the standard %f. Or maybe it\u0027s just that the float ABI compiler flag should be set at a different level than \"cortex-m\", since there seems to be some variety here?",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
