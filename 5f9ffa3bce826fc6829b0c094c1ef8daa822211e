@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "341b390d_dce5d1bb",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1579,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-21T17:13:56Z",
+      "side": 1,
+      "message": "Can you elaborate it? \n\nI think the simple solution is to exclude the entire function with #ifdef TEST_BUILD ... #endif (as done before) and comment \"/* Not expected to be included in a normal build */\".",
+      "parentUuid": "6f2f3b05_4c9e2f11",
+      "range": {
+        "startLine": 1572,
+        "startChar": 0,
+        "endLine": 1579,
+        "endChar": 24
+      },
+      "revId": "5f9ffa3bce826fc6829b0c094c1ef8daa822211e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d262700_af09d554",
         "filename": "include/system.h",
         "patchSetId": 3
