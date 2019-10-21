@@ -262,6 +262,19 @@ enum ec_error_list {
 #endif
 
 /*
+ * Attribute to define functions to only be used in test code, causing
+ * a compiler error if used without TEST_BUILD defined.
+ *
+ * Example usage (add to prototype in header):
+ * __for_testing void foo(void);
+ */
+#ifdef TEST_BUILD
+#define __for_testing
+#else
+#define __for_testing __error("This function should only be used by tests")
+#endif
+
+/*
  * Weak symbol markers
  *
  * These macros are used to annotate weak definitions, their declarations, and
