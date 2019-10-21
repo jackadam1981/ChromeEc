@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b12d02c_ad416378",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-10-21T18:01:47Z",
+      "side": 1,
+      "message": "added a comment. +mschilder@ to update the comment if necessary.",
+      "parentUuid": "b6373d84_2581e4e9",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9444efa_9e2fbfd0",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 21
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-21T03:44:01Z",
       "side": 1,
       "message": "I think you could make use of the tpm_alt_extension() function here, see ccd_command_wrapper() in ccd_config.c for an example",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c6af1b_db508042",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-10-21T18:01:47Z",
+      "side": 1,
+      "message": "clarifying this offline",
+      "parentUuid": "b9444efa_9e2fbfd0",
       "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c10ebf83_c06f78f2",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-10-21T18:01:47Z",
+      "side": 1,
+      "message": "oh, forgot about this. It was complaining from the misalignment within vhaven. Seems it got fixed with all alignment handling in dcrypto_p256.c Returning this function back to its origins.",
+      "parentUuid": "eaa0c242_ffb19988",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
