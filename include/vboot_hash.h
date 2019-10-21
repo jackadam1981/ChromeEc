@@ -11,6 +11,16 @@
 #include "common.h"
 
 /**
+ * Get hash of RW image.
+ *
+ * Your task will be blocked until hash computation is done.
+ *
+ * @param dst	(OUT) Address where computed hash is stored.
+ * @return	enum ec_error_list.
+ */
+int vboot_get_rw_hash(const uint8_t **dst);
+
+/**
  * Invalidate the hash if the hashed data overlaps the specified region.
  *
  * @param offset	Region start offset in flash

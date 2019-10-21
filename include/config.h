@@ -4320,6 +4320,7 @@
 
 /* Support early firmware selection */
 #undef CONFIG_VBOOT_EFS
+#undef CONFIG_VBOOT_EFS2
 
 /* Offset of RW-A image in writable storage when using EFS. */
 #undef CONFIG_RW_A_STORAGE_OFF
