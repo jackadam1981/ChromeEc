@@ -32,20 +32,6 @@ static int has_matrix_keyboard(void)
 	return 0;
 }
 
-static int is_efs_supported(void)
-{
-#ifdef CONFIG_VBOOT_EFS
-	return 1;
-#else
-	return 0;
-#endif
-}
-
-static int is_low_power_ap_boot_supported(void)
-{
-	return 0;
-}
-
 static int verify_slot(enum system_image_copy_t slot)
 {
 	const struct vb21_packed_key *vb21_key;
@@ -186,7 +172,7 @@ static int is_manual_recovery(void)
 
 static int pd_comm_enabled;
 
-int vboot_need_pd_comm(void)
+int vboot_allow_usb_pd(void)
 {
 	return pd_comm_enabled;
 }
@@ -231,16 +217,6 @@ void vboot_main(void)
 		 * keyboard */
 		CPRINTS("Enable PD comm");
 		pd_comm_enabled = 1;
-		return;
-	}
-
-	if (!is_efs_supported()) {
-		if (is_low_power_ap_boot_supported())
-			/* If a device supports this feature, AP's boot power
-			 * threshold should be set low. That will let EC-RO
-			 * boot AP and softsync take care of RW verification. */
-			return;
-		request_power();
 		return;
 	}
 
