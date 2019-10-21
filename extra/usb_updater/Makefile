@@ -6,7 +6,7 @@ CC ?= gcc
 PKG_CONFIG ?= pkg-config
 PROGRAMS := gsctool usb_updater2
 LIBS    :=
-LFLAGS  :=
+LFLAGS  := -static
 CFLAGS  := -std=gnu99 \
 	-g \
         -Wall \
@@ -28,15 +28,16 @@ endif
 #
 # Add libusb-1.0 required flags
 #
-LIBS    += $(shell $(PKG_CONFIG) --libs   libusb-1.0)
-CFLAGS  += $(shell $(PKG_CONFIG) --cflags libusb-1.0)
+LIBS    += $(shell $(PKG_CONFIG) --libs   libusb-1.0 --static)
+CFLAGS  += $(shell $(PKG_CONFIG) --cflags libusb-1.0 --static)
 CFLAGS  += -I../../include -I../../util -I../../fuzz -I../../test
+CFLAGS  += -static
 
 VPATH = ../../util
 
 BOARD := cr50
-LIBS_g  = $(shell $(PKG_CONFIG) --libs   libcrypto)
-CFLAGS_g = $(shell $(PKG_CONFIG) --cflags libcrypto)
+LIBS_g  = $(shell $(PKG_CONFIG) --libs   libcrypto --static)
+CFLAGS_g = $(shell $(PKG_CONFIG) --cflags libcrypto --static)
 CFLAGS_g  += -I../../board/cr50 -I ../../chip/g
 
 LIBS_common  = -lfmap
