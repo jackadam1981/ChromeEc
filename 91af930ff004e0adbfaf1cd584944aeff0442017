@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6373d84_2581e4e9",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-21T03:44:01Z",
+      "side": 1,
+      "message": "Nit: add a comment explaining why this is necessary?",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9444efa_9e2fbfd0",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-21T03:44:01Z",
+      "side": 1,
+      "message": "I think you could make use of the tpm_alt_extension() function here, see ccd_command_wrapper() in ccd_config.c for an example",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa0c242_ffb19988",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-21T03:44:01Z",
+      "side": 1,
+      "message": "I guess that here you are trying to make it safe to write into DMEM? \n\nI think this is not the right place to be doing that, and this approach is a bit brittle as it depends on the fact this will [IIRC] be compiled as a memcpy that will do word writes",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
