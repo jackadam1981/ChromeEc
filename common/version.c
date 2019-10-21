@@ -70,3 +70,13 @@ int ver_get_num_commits(enum system_image_copy_t copy)
 		data = &current_image_data;
 	return data ? get_num_commits(data) : 0;
 }
+
+size_t ver_get_image_size(enum system_image_copy_t copy)
+{
+	const struct image_data *data;
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		data = system_get_image_data(copy);
+	else
+		data = &current_image_data;
+	return data ? data->size : 0;
+}
