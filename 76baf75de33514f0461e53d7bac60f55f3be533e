@@ -46,6 +46,30 @@
       "revId": "76baf75de33514f0461e53d7bac60f55f3be533e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58710814_bc15cb6c",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-21T08:12:20Z",
+      "side": 1,
+      "message": "Limited to vendor mode and version. Sysinfo was never implemented incr50 - u2fd has already been able to handle an unknown command error for that.",
+      "parentUuid": "86acdd2b_4ddd8306",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 18
+      },
+      "revId": "76baf75de33514f0461e53d7bac60f55f3be533e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
