@@ -1512,6 +1512,11 @@ const struct batt_params *charger_current_battery_params(void)
 	return &curr.batt;
 }
 
+bool charge_battery_is_bad(void)
+{
+	return curr.batt.flags & BATT_FLAG_BAD_ANY;
+}
+
 #ifdef CONFIG_BATTERY_CHECK_CHARGE_TEMP_LIMITS
 /* Determine if the battery is outside of allowable temperature range */
 static int battery_outside_charging_temperature(void)
@@ -1774,7 +1779,7 @@ void charger_task(void *u)
 		 */
 		if (curr.chg.flags & CHG_FLAG_BAD_ANY)
 			problem(PR_CHG_FLAGS, curr.chg.flags);
-		if (curr.batt.flags & BATT_FLAG_BAD_ANY)
+		if (charge_battery_is_bad())
 			problem(PR_BATT_FLAGS, curr.batt.flags);
 
 		/*

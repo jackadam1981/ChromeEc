@@ -23,6 +23,10 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* VBOOT/EFS */
+#define CONFIG_VBOOT_EFS2
+#define CONFIG_VBOOT_HASH
+
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 

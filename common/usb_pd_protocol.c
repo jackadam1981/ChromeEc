@@ -2741,10 +2741,8 @@ static void pd_init_tasks(void)
 	/* Disable PD communication at init if we're in RO and locked. */
 	if (!system_is_in_rw() && system_is_locked())
 		enable = 0;
-#ifdef CONFIG_VBOOT_EFS
-	if (vboot_need_pd_comm())
+	if (vboot_allow_usb_pd())
 		enable = 1;
-#endif
 #endif
 	for (i = 0; i < board_get_usb_pd_port_count(); i++)
 		pd_comm_enabled[i] = enable;

@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "host_command.h"
+#include "stdbool.h"
 
 /* Battery index, only used with CONFIG_BATTERY_V2. */
 enum battery_index {
