@@ -75,6 +75,7 @@
 #define PE_FLAGS_FAST_ROLE_SWAP_PATH            BIT(22)/* FRS/PRS Exec Path */
 #define PE_FLAGS_FAST_ROLE_SWAP_ENABLED         BIT(23)/* FRS Listening State */
 #define PE_FLAGS_FAST_ROLE_SWAP_SIGNALED        BIT(24)/* FRS PPC/TCPC Signal */
+#define PE_FLAGS_VCONN_SWAP_ENABLE              BIT(25)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -254,6 +255,22 @@ enum sub_state {
 
 static enum sm_local_state local_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Cable VDOs */
+union passive_cable_vdo {
+	struct passive_cable_vdo_rev30 rev30_pvdo;
+	uint32_t raw_value;
+};
+
+union active_cable_vdo_1 {
+	struct active_cable_vdo_rev30 rev30_avdo1;
+	uint32_t raw_value;
+};
+
+union active_cable_vdo_2 {
+	struct active_cable_vdo2_rev30 rev30_avdo2;
+	uint32_t raw_value;
+};
+
 /*
  * Policy Engine State Machine Object
  */
@@ -284,11 +301,10 @@ static struct policy_engine {
 	enum sub_state sub;
 
 	/* VDO */
-
 	/* PD_VDO_INVALID is used when there is an invalid VDO */
-	int32_t active_cable_vdo1;
-	int32_t active_cable_vdo2;
-	int32_t passive_cable_vdo;
+	union passive_cable_vdo  p_cable_vdo;
+	union active_cable_vdo_1 a_cable_vdo1;
+	union active_cable_vdo_2 a_cable_vdo2;
 	int32_t ama_vdo;
 	int32_t vpd_vdo;
 	/* alternate mode policy*/
@@ -455,6 +471,13 @@ static void pe_init(int port)
 		set_state_pe(port, PE_SRC_STARTUP);
 	else
 		set_state_pe(port, PE_SNK_STARTUP);
+}
+
+static void init_cable_vdos(int port)
+{
+	pe[port].p_cable_vdo.raw_value = PD_VDO_INVALID;
+	pe[port].a_cable_vdo1.raw_value = PD_VDO_INVALID;
+	pe[port].a_cable_vdo2.raw_value = PD_VDO_INVALID;
 }
 
 int pe_is_running(int port)
@@ -904,9 +927,7 @@ static void pe_src_startup_entry(int port)
 	print_current_state(port);
 
 	/* Initialize VDOs to default values */
-	pe[port].active_cable_vdo1 = PD_VDO_INVALID;
-	pe[port].active_cable_vdo2 = PD_VDO_INVALID;
-	pe[port].passive_cable_vdo = PD_VDO_INVALID;
+	init_cable_vdos(port);
 	pe[port].ama_vdo = PD_VDO_INVALID;
 	pe[port].vpd_vdo = PD_VDO_INVALID;
 
@@ -1700,6 +1721,12 @@ static void pe_snk_startup_entry(int port)
 
 	/* Clear explicit contract */
 	pe_invalidate_explicit_contract(port);
+
+	/* Initialize VDOs to default values */
+	init_cable_vdos(port);
+	pe[port].ama_vdo = PD_VDO_INVALID;
+	pe[port].vpd_vdo = PD_VDO_INVALID;
+
 }
 
 static void pe_snk_startup_run(int port)
@@ -3396,6 +3423,23 @@ static void pe_do_port_discovery_entry(int port)
 	pe[port].vdm_cnt = 0;
 }
 
+static int is_cable_identified(int port)
+{
+	/* Cable type has been identified */
+	if (get_usb_pd_mux_cable_type(port) != IDH_PTYPE_UNDEF)
+		return 1;
+
+	/* Ref: USB PD 3.2 Section 2.5.4: When an explicit contract is in place
+	 * communication with the Cable Plug is initiated and controlled by the
+	 * VCONN Source. Hence, Discover Identity SOP' will be sent only if the
+	 * Chromebook is VCONN source and max identity count has not been
+	 * achieved.
+	 */
+	return !(tc_is_vconn_src(port) &&
+		 pe[port].cable_discover_identity_count <
+					N_DISCOVER_IDENTITY_COUNT);
+}
+
 static void pe_do_port_discovery_run(int port)
 {
 	uint32_t *payload;
@@ -3409,6 +3453,15 @@ static void pe_do_port_discovery_run(int port)
 	modep = get_modep(port, PD_VDO_VID(payload[0]));
 	ret = 0;
 
+	/* Request a VCONN swap if Chromebook is not already a VCONN source */
+	if (!tc_is_vconn_src(port) &&
+	    !PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_ENABLE)) {
+		/* To avoid VCONN swap again in case of NACK */
+		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_ENABLE);
+		set_state_pe(port, PE_VCS_SEND_SWAP);
+		return;
+	}
+
 	if (!PE_CHK_FLAG(port,
 		PE_FLAGS_VDM_REQUEST_NAKED | PE_FLAGS_VDM_REQUEST_BUSY)) {
 		switch (pe[port].vdm_cmd) {
@@ -3418,7 +3471,12 @@ static void pe_do_port_discovery_run(int port)
 			ret = 1;
 			break;
 		case CMD_DISCOVER_IDENT:
-			pe[port].vdm_cmd = CMD_DISCOVER_SVID;
+			if (!is_cable_identified(port)) {
+				pe[port].cable_discover_identity_count++;
+				pe[port].partner_type = CABLE;
+				pe[port].vdm_cmd = CMD_DISCOVER_IDENT;
+			} else
+				pe[port].vdm_cmd = CMD_DISCOVER_SVID;
 			pe[port].vdm_data[0] = 0;
 			ret = 1;
 			break;
@@ -3640,9 +3698,9 @@ static void pe_vdm_request_exit(int port)
 
 enum idh_ptype get_usb_pd_mux_cable_type(int port)
 {
-	if (pe[port].passive_cable_vdo != PD_VDO_INVALID)
+	if (pe[port].p_cable_vdo.raw_value != PD_VDO_INVALID)
 		return IDH_PTYPE_PCABLE;
-	else if (pe[port].active_cable_vdo1 != PD_VDO_INVALID)
+	else if (pe[port].a_cable_vdo1.raw_value != PD_VDO_INVALID)
 		return IDH_PTYPE_ACABLE;
 	else
 		return IDH_PTYPE_UNDEF;
@@ -3687,15 +3745,12 @@ static void pe_vdm_acked_entry(int port)
 				break;
 			case IDH_PTYPE_PCABLE:
 				/* Passive Cable Detected */
-				pe[port].passive_cable_vdo =
-						payload[4];
+				pe[port].p_cable_vdo.raw_value = payload[4];
 				break;
 			case IDH_PTYPE_ACABLE:
 				/* Active Cable Detected */
-				pe[port].active_cable_vdo1 =
-						payload[4];
-				pe[port].active_cable_vdo2 =
-						payload[5];
+				pe[port].a_cable_vdo1.raw_value = payload[4];
+				pe[port].a_cable_vdo2.raw_value = payload[5];
 				break;
 			case IDH_PTYPE_AMA:
 				/*
@@ -4182,11 +4237,13 @@ static void pe_vcs_send_ps_rdy_swap_entry(int port)
 
 static void pe_vcs_send_ps_rdy_swap_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+	switch (pe[port].sub) {
+	case PE_SUB0:
+		/* Wait until message is sent */
+		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 
-		switch (pe[port].sub) {
-		case PE_SUB0:
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+
 			/*
 			 * After a VCONN Swap the VCONN Source needs to reset
 			 * the Cable Plug’s Protocol Layer in order to ensure
@@ -4196,29 +4253,31 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 							PD_CTRL_SOFT_RESET);
 			pe[port].sub = PE_SUB1;
 			pe[port].timeout = get_time().val + 100*MSEC;
-			break;
-		case PE_SUB1:
-			/* Got ACCEPT or REJECT from Cable Plug */
-			if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED) ||
-					get_time().val > pe[port].timeout) {
-				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-				/*
-				 * A VCONN Swap Shall reset the
-				 * DiscoverIdentityCounter to zero
-				 */
-				pe[port].cable_discover_identity_count = 0;
-				pe[port].port_discover_identity_count = 0;
-
-				if (pe[port].power_role == PD_ROLE_SOURCE)
-					set_state_pe(port, PE_SRC_READY);
-				else
-					set_state_pe(port, PE_SNK_READY);
-			}
-			break;
-		case PE_SUB2:
-			/* Do nothing */
-			break;
 		}
+		break;
+	case PE_SUB1:
+		/*
+		 * Wait until ACCEPT or REJECT is received from
+		 * the Cable Plug
+		 */
+		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED) ||
+					get_time().val > pe[port].timeout) {
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+			/*
+			 * A VCONN Swap Shall reset the
+			 * DiscoverIdentityCounter to zero
+			 */
+			pe[port].cable_discover_identity_count = 0;
+			pe[port].port_discover_identity_count = 0;
+			if (pe[port].power_role == PD_ROLE_SOURCE)
+				set_state_pe(port, PE_SRC_READY);
+			else
+				set_state_pe(port, PE_SNK_READY);
+		}
+		break;
+	case PE_SUB2:
+		/* Do nothing */
+		break;
 	}
 }
 
