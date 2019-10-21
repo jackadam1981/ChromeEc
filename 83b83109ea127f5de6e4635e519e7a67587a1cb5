@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "1aa4b8f6_da409fe1",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-10-21T06:19:37Z",
+      "side": 1,
+      "message": "Correct \u0026\u0026 Jett pretty much answered it: \n\n\"\"\"\nTo answer Gwendal\u0027s early questions: if you want any host event delivered through MKBP to successfully send while the SoC is sleeping, you must either leave CONFIG_MKBP_EVENT_WAKEUP_MASK undefined or ensure that BIT(EC_MKBP_EVENT_HOST_EVENT) or BIT(EC_MKBP_EVENT_HOST_EVENT_64) is defined in your mask\n\"\"\"",
+      "parentUuid": "7b9eb0a2_0f93b6c0",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
