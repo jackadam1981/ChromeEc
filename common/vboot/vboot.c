@@ -17,6 +17,7 @@
 #include "host_command.h"
 #include "rsa.h"
 #include "rwsig.h"
+#include "stdbool.h"
 #include "sha256.h"
 #include "shared_mem.h"
 #include "system.h"
@@ -28,20 +29,6 @@
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
 static int has_matrix_keyboard(void)
-{
-	return 0;
-}
-
-static int is_efs_supported(void)
-{
-#ifdef CONFIG_VBOOT_EFS
-	return 1;
-#else
-	return 0;
-#endif
-}
-
-static int is_low_power_ap_boot_supported(void)
 {
 	return 0;
 }
@@ -184,9 +171,9 @@ static int is_manual_recovery(void)
 	return host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 
-static int pd_comm_enabled;
+static bool pd_comm_enabled;
 
-int vboot_need_pd_comm(void)
+bool vboot_allow_usb_pd(void)
 {
 	return pd_comm_enabled;
 }
@@ -230,17 +217,7 @@ void vboot_main(void)
 		 * don't gain meaningful advantage on devices without a matrix
 		 * keyboard */
 		CPRINTS("Enable PD comm");
-		pd_comm_enabled = 1;
-		return;
-	}
-
-	if (!is_efs_supported()) {
-		if (is_low_power_ap_boot_supported())
-			/* If a device supports this feature, AP's boot power
-			 * threshold should be set low. That will let EC-RO
-			 * boot AP and softsync take care of RW verification. */
-			return;
-		request_power();
+		pd_comm_enabled = true;
 		return;
 	}
 

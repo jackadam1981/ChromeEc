@@ -11,6 +11,21 @@
 #include "common.h"
 
 /**
+ * Get hash of RW image.
+ *
+ * Your task will be blocked until hash computation is done.
+ *
+ * This is expected to be called before tasks are initialized. If it's called
+ * while tasks are running, it may starve lower priority tasks.
+ *
+ * See chromium:1047870 for some optimization.
+ *
+ * @param dst	(OUT) Address where computed hash is stored.
+ * @return	enum ec_error_list.
+ */
+int vboot_get_rw_hash(const uint8_t **dst);
+
+/**
  * Invalidate the hash if the hashed data overlaps the specified region.
  *
  * @param offset	Region start offset in flash
