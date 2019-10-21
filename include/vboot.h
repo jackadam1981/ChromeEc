@@ -99,7 +99,9 @@ struct cr50_comm_packet {
 #define CR50_COMM_TIMEOUT		(200 * MSEC)	/* TODO: tune */
 
 /* commands */
-#define CR50_CMD_FW_VERSION		0x1
+#define CR50_COMM_CMD_HELLO		0x0
+#define CR50_COMM_CMD_SET_BOOT_MODE	0x1
+#define CR50_COMM_CMD_VERIFY_HASH	0x2
 
 /* return code */
 #define CR50_COMM_SUCCESS		0xec
@@ -108,5 +110,16 @@ struct cr50_comm_packet {
 #define CR50_COMM_ERROR_CRC		0xe2
 #define CR50_COMM_ERROR_ROLLBACK	0xe3
 #define CR50_COMM_ERROR_TIMEOUT		0xe4
+#define CR50_COMM_ERROR_HASH_MISMATCH	0xe7
+
+enum boot_mode {
+	BOOT_MODE_RESET = 0,
+	BOOT_MODE_NORMAL = 1,
+	BOOT_MODE_NO_BOOT = 2,
+	BOOT_MODE_RECOVERY = 3,
+	BOOT_MODE_NO_RECOVERY = 4,
+	/* boot_mode is uint8_t */
+	BOOT_MODE_LIMIT = 255,
+};
 
 #endif  /* __CROS_EC_INCLUDE_VBOOT_H */

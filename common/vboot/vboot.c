@@ -30,103 +30,11 @@
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
-static int verify_slot(enum system_image_copy_t slot)
-{
-	const struct vb21_packed_key *vb21_key;
-	const struct vb21_signature *vb21_sig;
-	const struct rsa_public_key *key;
-	const uint8_t *sig;
-	const uint8_t *data;
-	int len;
-	int rv;
-
-	CPRINTS("Verifying %s", system_image_copy_t_to_string(slot));
-
-	vb21_key = (const struct vb21_packed_key *)(
-			CONFIG_MAPPED_STORAGE_BASE +
-			CONFIG_EC_PROTECTED_STORAGE_OFF +
-			CONFIG_RO_PUBKEY_STORAGE_OFF);
-	rv = vb21_is_packed_key_valid(vb21_key);
-	if (rv) {
-		CPRINTS("Invalid key (0x%x)", rv);
-		return EC_ERROR_VBOOT_KEY;
-	}
-	key = (const struct rsa_public_key *)
-		((const uint8_t *)vb21_key + vb21_key->key_offset);
-
-	if (slot == SYSTEM_IMAGE_RW_A) {
-		data = (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE +
-				CONFIG_EC_WRITABLE_STORAGE_OFF +
-				CONFIG_RW_A_STORAGE_OFF);
-		vb21_sig = (const struct vb21_signature *)(
-				CONFIG_MAPPED_STORAGE_BASE +
-				CONFIG_EC_WRITABLE_STORAGE_OFF +
-				CONFIG_RW_A_SIGN_STORAGE_OFF);
-	} else {
-		data = (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE +
-				CONFIG_EC_WRITABLE_STORAGE_OFF +
-				CONFIG_RW_B_STORAGE_OFF);
-		vb21_sig = (const struct vb21_signature *)(
-				CONFIG_MAPPED_STORAGE_BASE +
-				CONFIG_EC_WRITABLE_STORAGE_OFF +
-				CONFIG_RW_B_SIGN_STORAGE_OFF);
-	}
-
-	rv = vb21_is_signature_valid(vb21_sig, vb21_key);
-	if (rv) {
-		CPRINTS("Invalid signature (0x%x)", rv);
-		return EC_ERROR_INVAL;
-	}
-	sig = (const uint8_t *)vb21_sig + vb21_sig->sig_offset;
-	len = vb21_sig->data_size;
-
-	if (vboot_is_padding_valid(data, len,
-				   CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)) {
-		CPRINTS("Invalid padding");
-		return EC_ERROR_INVAL;
-	}
-
-	rv = vboot_verify(data, len, key, sig);
-	if (rv) {
-		CPRINTS("Invalid data (0x%x)", rv);
-		return EC_ERROR_INVAL;
-	}
-
-	CPRINTS("Verified %s", system_image_copy_t_to_string(slot));
-
-	return EC_SUCCESS;
-}
-
-static enum ec_status hc_verify_slot(struct host_cmd_handler_args *args)
-{
-	const struct ec_params_efs_verify *p = args->params;
-	enum system_image_copy_t slot;
-
-	switch (p->region) {
-	case EC_FLASH_REGION_ACTIVE:
-		slot = system_get_active_copy();
-		break;
-	case EC_FLASH_REGION_UPDATE:
-		slot = system_get_update_copy();
-		break;
-	default:
-		return EC_RES_INVALID_PARAM;
-	}
-	return verify_slot(slot) ? EC_RES_ERROR : EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
-
-/**
- * Send raw byte stream to Cr50
- *
- * @param data
- * @param timeout
- * @return
- */
 static int send_to_cr50_raw(const uint8_t *data, size_t size)
 {
 	uint64_t until = get_time().val + CR50_COMM_TIMEOUT;
 
+	uart_flush_output();
 	uart_clear_input();
 	/* No traffic control, assuming Cr50 consumes stream much faster. */
 	uart_put_raw(data, size);
@@ -141,7 +49,7 @@ static int send_to_cr50_raw(const uint8_t *data, size_t size)
 	return CR50_COMM_ERROR_TIMEOUT;
 }
 
-static int send_to_cr50(const uint8_t *data, uint8_t size)
+static int verify_hash(const uint8_t *hash, size_t size)
 {
 	struct {
 		uint8_t preamble[CR50_UART_RX_BUFFER_SIZE];
@@ -152,9 +60,9 @@ static int send_to_cr50(const uint8_t *data, uint8_t size)
 	/* compose stream = preamble + packet */
 	memset(s.preamble, 0xec, sizeof(s.preamble));
 	p->magic = CR50_PACKET_MAGIC;
-	p->type = CR50_CMD_FW_VERSION;
+	p->type = CR50_COMM_CMD_VERIFY_HASH;
 	p->size = size;
-	memcpy(p->data, data, p->size);
+	memcpy(p->data, hash, p->size);
 	p->crc = crc8((uint8_t *)&p->type,
 		      sizeof(p->type) + sizeof(p->size) + p->size);
 
@@ -162,77 +70,84 @@ static int send_to_cr50(const uint8_t *data, uint8_t size)
 				sizeof(s.preamble) + sizeof(*p) + p->size);
 }
 
-static int check_rollback(enum system_image_copy_t slot)
+static int is_padding_valid(const uint8_t *data, uint32_t start, uint32_t end)
 {
-	int32_t version = system_get_rollback_version(slot);
-	int rv;
+	const uint32_t *data32 = (const uint32_t *)data;
+	int i;
 
-	CPRINTS("Rollback version is %d", version);
+	if (start > end)
+		return EC_ERROR_INVAL;
 
-	if (version < 0)
-		return EC_ERROR_UNKNOWN;
+	if (start % 4 || end % 4)
+		return EC_ERROR_INVAL;
 
-	/* Clear Tx buffer. Console task hasn't started yet. */
-	uart_flush_output();
-
-	/* send version */
-	rv = send_to_cr50((uint8_t *)&version, sizeof(version));
-	if (rv != CR50_COMM_SUCCESS) {
-		CPRINTS("Rollback check failed (0x%x)", rv);
-		return EC_ERROR_UNKNOWN;
+	for (i = start / 4; i < end / 4; i++) {
+		if (data32[i] != 0xffffffff)
+			return EC_ERROR_INVAL;
 	}
 
 	return EC_SUCCESS;
 }
 
-static int verify_and_jump(void)
+static int verify_rw(void)
 {
-	enum system_image_copy_t slot;
-	int rv;
+	const uint8_t *data;
+	size_t len;
+	struct sha256_ctx ctx;
+	uint8_t *hash;
 
-	/* 1. Decide which slot to try */
-	slot = system_get_active_copy();
-
-	/* 2. Verify the slot */
-	rv = verify_slot(slot);
-	if (rv) {
-		enum system_image_copy_t fallback;
-		if (rv == EC_ERROR_VBOOT_KEY)
-			/* Key error. The other slot isn't worth trying. */
-			return rv;
-
-		/* If the update copy (=RW_B) isn't present, the same copy
-		 * (RW_A) would be returned. Then, there is no slot to try. */
-		fallback = system_get_update_copy();
-		if (fallback == slot)
-			return rv;
-
-		/* Found a fallback slot to try */
-		slot = fallback;
-
-		/* TODO(chromium:767050): Skip reading key again. */
-		rv = verify_slot(slot);
-		if (rv)
-			/* Both slots failed */
-			return rv;
-
-		/* Proceed with the other slot. If this slot isn't expected, AP
-		 * will catch it and request recovery after a few attempts. */
-		if (system_set_active_copy(slot))
-			CPRINTS("Failed to activate %s",
-				system_image_copy_t_to_string(slot));
+	data = (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE
+			+ CONFIG_EC_WRITABLE_STORAGE_OFF
+			+ CONFIG_RW_STORAGE_OFF);
+	len = ver_get_image_size(SYSTEM_IMAGE_RW);
+	if (len == 0 || len > CONFIG_RW_SIZE) {
+		CPRINTS("Invalid image size (%d)", len);
+		return EC_ERROR_INVAL;
 	}
 
-	/* 3. Send version to cr50 for rollback protection */
-	rv = check_rollback(slot);
-	if (rv)
-		return rv;
+	if (is_padding_valid(data, len, CONFIG_RW_SIZE)) {
+		CPRINTS("Invalid padding");
+		return EC_ERROR_INVAL;
+	}
 
-	/* 4. Jump (and reboot) */
-	rv = system_run_image_copy(slot);
-	CPRINTS("Failed to jump (0x%x)", rv);
+	/* Compute hash of the RW firmware */
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, data, len);
+	hash = SHA256_final(&ctx);
 
-	return rv;
+	return verify_hash(hash, sizeof(ctx.buf));
+}
+
+static int pd_comm_enabled;
+
+static void enable_pd(void)
+{
+	CPRINTS("Enable PD comm");
+	pd_comm_enabled = 1;
+}
+
+int vboot_need_pd_comm(void)
+{
+	return pd_comm_enabled;
+}
+
+static void verify_and_jump(void)
+{
+	int rv = verify_rw();
+
+	switch (rv) {
+	case CR50_COMM_ERROR_HASH_MISMATCH:
+		/* Cr50 should have set NO_BOOT. */
+		CPRINTS("Hash mismatch");
+		enable_pd();
+		break;
+	case CR50_COMM_SUCCESS:
+		rv = system_run_image_copy(SYSTEM_IMAGE_RW);
+		CPRINTS("Failed to jump (0x%x)", rv);
+		break;
+	default:
+		CPRINTS("verify_rw failed (0x%x)", rv);
+	}
 }
 
 /* Request more power: charging battery or more powerful AC adapter */
@@ -246,11 +161,25 @@ static int is_manual_recovery(void)
 	return host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 
-static int pd_comm_enabled;
-
-int vboot_need_pd_comm(void)
+static int set_boot_mode(enum boot_mode mode)
 {
-	return pd_comm_enabled;
+	struct {
+		uint8_t preamble[CR50_UART_RX_BUFFER_SIZE];
+		uint8_t packet[CR50_COMM_MAX_PACKET_SIZE];
+	} __packed s;
+	struct cr50_comm_packet *p = (struct cr50_comm_packet *)s.packet;
+
+	/* compose stream = preamble + packet */
+	memset(s.preamble, 0xec, sizeof(s.preamble));
+	p->magic = CR50_PACKET_MAGIC;
+	p->type = CR50_COMM_CMD_SET_BOOT_MODE;
+	p->size = 1;
+	memcpy(p->data, &mode, p->size);
+	p->crc = crc8((uint8_t *)&p->type,
+		      sizeof(p->type) + sizeof(p->size) + p->size);
+
+	return send_to_cr50_raw((uint8_t *)&s,
+				sizeof(s.preamble) + sizeof(*p) + p->size);
 }
 
 void vboot_main(void)
@@ -281,35 +210,39 @@ void vboot_main(void)
 	}
 
 	if (is_manual_recovery()) {
+		int soc;
+
 		CPRINTS("Manual recovery");
-		/*
-		 * We'll enforce the exception (pd_comm_enabled=1) only strictly
-		 * for Chromeboxes (instead of including Chromebooks with a
-		 * battery disconnected).
-		 */
-		if (IS_ENABLED(CONFIG_BATTERY)
-				|| IS_ENABLED(HAS_TASK_KEYSCAN)) {
+		if (!IS_ENABLED(CONFIG_BATTERY)
+				&& !IS_ENABLED(HAS_TASK_KEYSCAN)) {
 			/*
-			 * For Chromebooks, we proceed. We may boot immediately
-			 * or may need to wait for a battery to be charged.
+			 * For Chromeboxes, we relax security by allowing PD in
+			 * RO. Attackers don't gain meaningful advantage on
+			 * built-in-keyboard-less systems.
 			 */
-			request_power();
+			set_boot_mode(BOOT_MODE_RECOVERY);
+			enable_pd();
 			return;
 		}
+
 		/*
-		 * We don't request_power because we don't want to assume all
-		 * devices support a non type-c charger. We relax security
-		 * for keyboard-less devices (i.e. Chromeboxes) by allowing
-		 * EC-RO to do PD negotiation but attackers don't gain
-		 * meaningful advantage on devices without a matrix keyboard.
+		 * If battery is drained or bad, we will boot in NO_RECOVERY to
+		 * inform the user of the problem.
+		 *
+		 * TODO: Defer the judgment after the battery is initialized.
 		 */
-		CPRINTS("Enable PD comm");
-		pd_comm_enabled = 1;
+		if (battery_state_of_charge_abs(&soc) || soc < 20
+				|| battery_is_bad()) {
+			CPRINTS("Battery not ready");
+			set_boot_mode(BOOT_MODE_NO_RECOVERY);
+			enable_pd();
+			return;
+		}
+		set_boot_mode(BOOT_MODE_RECOVERY);
 		return;
 	}
 
 	clock_enable_module(MODULE_FAST_CPU, 1);
-	/* If successful, this won't return. */
 	verify_and_jump();
 	clock_enable_module(MODULE_FAST_CPU, 0);
 

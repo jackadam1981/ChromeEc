@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "stdbool.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
@@ -623,4 +624,9 @@ __attribute__((weak)) int get_battery_manufacturer_name(char *dest, int size)
 int battery_manufacturer_name(char *dest, int size)
 {
 	return get_battery_manufacturer_name(dest, size);
+}
+
+bool battery_is_bad(void)
+{
+	return charger_current_battery_params()->flags & BATT_FLAG_BAD_ANY;
 }
