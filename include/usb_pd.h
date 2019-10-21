@@ -2395,4 +2395,11 @@ __override_proto int svdm_tbt_compat_config(int port, uint32_t *payload);
  */
 __override_proto int svdm_tbt_compat_attention(int port, uint32_t *payload);
 
+/**
+ * Indicate vboot allowed PD (in RO).
+ *
+ * @return 1: allowed. 0: disallowed.
+ */
+__override_proto int vboot_allow_usb_pd(void);
+
 #endif  /* __CROS_EC_USB_PD_H */

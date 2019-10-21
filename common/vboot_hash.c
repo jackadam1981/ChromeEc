@@ -13,6 +13,7 @@
 #include "host_command.h"
 #include "sha256.h"
 #include "shared_mem.h"
+#include "stdbool.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -44,6 +45,7 @@ static uint32_t curr_pos;
 static const uint8_t *hash;   /* Hash, or NULL if not valid */
 static int want_abort;
 static int in_progress;
+static bool is_deferred;
 
 static struct sha256_ctx ctx;
 
@@ -155,7 +157,11 @@ static void vboot_hash_next_chunk(void)
 	}
 
 	/* If we're still here, more work to do; come back later */
-	hook_call_deferred(&vboot_hash_next_chunk_data, WORK_INTERVAL_US);
+	if (is_deferred)
+		hook_call_deferred(&vboot_hash_next_chunk_data,
+				   WORK_INTERVAL_US);
+	else
+		vboot_hash_next_chunk();
 }
 
 /**
@@ -165,7 +171,7 @@ static void vboot_hash_next_chunk(void)
  * Returns non-zero if error.
  */
 static int vboot_hash_start(uint32_t offset, uint32_t size,
-			    const uint8_t *nonce, int nonce_size)
+			    const uint8_t *nonce, int nonce_size, bool deferred)
 {
 	/* Fail if hash computation is already in progress */
 	if (in_progress)
@@ -188,6 +194,7 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	hash = NULL;
 	want_abort = 0;
 	in_progress = 1;
+	is_deferred = deferred;
 
 	/* Restart the hash computation */
 	CPRINTS("hash start 0x%08x 0x%08x", offset, size);
@@ -195,7 +202,10 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	if (nonce_size)
 		SHA256_update(&ctx, nonce, nonce_size);
 
-	hook_call_deferred(&vboot_hash_next_chunk_data, 0);
+	if (is_deferred)
+		hook_call_deferred(&vboot_hash_next_chunk_data, 0);
+	else
+		vboot_hash_next_chunk();
 
 	return EC_SUCCESS;
 }
@@ -232,7 +242,7 @@ int vboot_hash_invalidate(int offset, int size)
  */
 static uint32_t get_rw_size(void)
 {
-#ifdef CONFIG_VBOOT_EFS
+#ifdef CONFIG_VBOOT_EFS		/* Not needed for EFS2 */
 	return CONFIG_RW_SIZE;
 #else
 	return system_get_image_used(SYSTEM_IMAGE_RW);
@@ -270,10 +280,18 @@ static void vboot_hash_init(void)
 	{
 		/* Start computing the hash of RW firmware */
 		vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
-				 get_rw_size(), NULL, 0);
+				 get_rw_size(), NULL, 0, true);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_INIT_VBOOT_HASH);
+
+int vboot_hash_sync(const uint8_t **dst)
+{
+	int rv = vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
+				  get_rw_size(), NULL, 0, false);
+	*dst = hash;
+	return rv;
+}
 
 #ifdef CONFIG_SAVE_VBOOT_HASH
 
@@ -345,13 +363,13 @@ static int command_hash(int argc, char **argv)
 		} else if (!strcasecmp(argv[1], "rw")) {
 			return vboot_hash_start(
 					get_offset(EC_VBOOT_HASH_OFFSET_ACTIVE),
-					get_rw_size(), NULL, 0);
+					get_rw_size(), NULL, 0, true);
 		} else if (!strcasecmp(argv[1], "ro")) {
 			return vboot_hash_start(
 				CONFIG_EC_PROTECTED_STORAGE_OFF +
 				CONFIG_RO_STORAGE_OFF,
 				system_get_image_used(SYSTEM_IMAGE_RO),
-				NULL, 0);
+				NULL, 0, true);
 		}
 		return EC_ERROR_PARAM2;
 	}
@@ -373,9 +391,9 @@ static int command_hash(int argc, char **argv)
 
 		return vboot_hash_start(offset, size,
 					(const uint8_t *)&nonce,
-					sizeof(nonce));
+					sizeof(nonce), true);
 	} else
-		return vboot_hash_start(offset, size, NULL, 0);
+		return vboot_hash_start(offset, size, NULL, 0, true);
 }
 DECLARE_CONSOLE_COMMAND(hash, command_hash,
 			"[abort | ro | rw] | [<offset> <size> [<nonce>]]",
@@ -428,7 +446,7 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 			(offset == EC_VBOOT_HASH_OFFSET_UPDATE))
 		size = get_rw_size();
 	offset = get_offset(offset);
-	rv = vboot_hash_start(offset, size, p->nonce_data, p->nonce_size);
+	rv = vboot_hash_start(offset, size, p->nonce_data, p->nonce_size, true);
 
 	if (rv == EC_SUCCESS)
 		return EC_RES_SUCCESS;
