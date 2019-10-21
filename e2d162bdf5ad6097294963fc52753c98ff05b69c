@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d09463b5_260cdd99",
+        "filename": "util/gdbinit",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-21T18:13:40Z",
+      "side": 1,
+      "message": "Nit: `SERVER` and `PORT` seem a little generic for environment variable names; can they be prefixed? (e.g. `GDB_SERVER`)",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "e2d162bdf5ad6097294963fc52753c98ff05b69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
