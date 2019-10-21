@@ -22,6 +22,30 @@
       "revId": "e2d162bdf5ad6097294963fc52753c98ff05b69c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcb4263_6f95e506",
+        "filename": "util/gdbinit",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-21T19:23:07Z",
+      "side": 1,
+      "message": "I personally prefer less letters for something you need to manually type in every time you use this, but I think I found a happy middle ground.\nUnderscores are too difficult to type fast, so I just omitted that.",
+      "parentUuid": "d09463b5_260cdd99",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "e2d162bdf5ad6097294963fc52753c98ff05b69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
