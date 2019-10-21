@@ -261,6 +261,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc6b65d4_ceca58b4",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-21T22:43:11Z",
+      "side": 1,
+      "message": "As far as I read the code correctly, all hook handlers don\u0027t need to be called on the first transition if we assume tablet_mode\u003d\u003ddisabled. That\u0027ll remove the complexity and remove the redundancy (i.e. skip setting a GPIO which is already set, skip enabling keyscan which is already enabled, skip notifying the host which already knows it\u0027s in clamshell, etc.).",
+      "parentUuid": "7801c460_11f6eacf",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
