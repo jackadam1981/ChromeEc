@@ -11,6 +11,14 @@
 #include "common.h"
 
 /**
+ * Get RW hash synchronously.
+ *
+ * @param dst	Computed hash
+ * @return	enum ec_error_list
+ */
+int vboot_hash_sync(const uint8_t **dst);
+
+/**
  * Invalidate the hash if the hashed data overlaps the specified region.
  *
  * @param offset	Region start offset in flash

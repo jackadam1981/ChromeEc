@@ -187,7 +187,7 @@ void chipset_handle_reboot(void)
 	while (1)
 		; /* wait here */
 }
-#ifndef CONFIG_VBOOT_EFS
+#ifndef CONFIG_VBOOT_EFS	/* Not needed for EFS2 boards. */
 DECLARE_HOOK(HOOK_INIT, chipset_handle_reboot, HOOK_PRIO_FIRST);
 #endif
 #endif /* CONFIG_CHIPSET_HAS_PLATFORM_RESET */
