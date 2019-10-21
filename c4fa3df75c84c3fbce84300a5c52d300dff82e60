@@ -16,6 +16,24 @@
       "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23737c92_997bade6",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-10-21T20:08:36Z",
+      "side": 1,
+      "message": "great catch, this will not work for negative borrows. it did not manifest itself because we implicitly never get close to negative borrows. I have updated the function to use a safer method, please check.",
+      "parentUuid": "dae1bf12_005bc646",
+      "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
