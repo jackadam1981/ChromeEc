@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f8c8854_8d4550a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-10-21T02:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbbe9ff3_8cf51889",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "1cde76024459b833e1e24af953faec31693cbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e73fd7ec_e3251fb7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1f4ef64e_ba896607",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-10-21T02:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e73fd7ec_e3251fb7",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "1cde76024459b833e1e24af953faec31693cbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b85bee98_10ab2724",
         "filename": "baseboard/kukui/base_detect_kukui.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-18T20:04:22Z",
       "side": 1,
       "message": "nit: why don\u0027t you just move the whole function body to board_init?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 35
+      },
+      "revId": "1cde76024459b833e1e24af953faec31693cbd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf83e79a_409dc63c",
+        "filename": "baseboard/kukui/base_detect_kukui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-10-21T02:56:51Z",
+      "side": 1,
+      "message": "Kodama and Krane use POGO keyboard function. Move common API to the HOOK_INIT (pogo_chipset_init).",
+      "parentUuid": "b85bee98_10ab2724",
       "range": {
         "startLine": 169,
         "startChar": 0,
