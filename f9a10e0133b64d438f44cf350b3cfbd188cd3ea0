@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aeddf235_0680f40d",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2842f7a_daaaafeb",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e07ea204_e919c097",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "Is there an orientation defined for TGL RVP?",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a09b05f_03e07ca3",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "This bug is marked as fixed. Can you open a new bug if we need more sensors for TGL RVP?",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c887b722_1efd73d8",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "Low power states were implemented. Can you fix this please?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1d6597_b7440269",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "This is a correct assumption, remove the scary text",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c3439a_6f94456e",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b919e698_67e71d35",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "wrong year",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0277260_e62f1404",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "TGL RVP ISH",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba07209_b8aee186",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "\"Don\u0027t use this on production systems\" since this is RVP, correct?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bf8519_673615a7",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "add space before */",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40137cf8_7d4c8730",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "use BIT macro",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c42b83_4866d50b",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff00381d_a2a3e7ca",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "Can we enable this?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9491edfd_f394f5d6",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "only BASE_ACCEL is used",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "980eadf2_9dd39591",
+        "filename": "board/tglrvp_ish/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aeee121_833f661a",
+        "filename": "board/tglrvp_ish/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8065980b_4a741150",
+        "filename": "board/tglrvp_ish/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "The format of the ec.tasklist files changed, and we don\u0027t include this list anymore. See another ec.tasklist for an example",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e08cad3_8d48264e",
+        "filename": "board/tglrvp_ish/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-21T21:40:07Z",
+      "side": 1,
+      "message": "incorrect year",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
