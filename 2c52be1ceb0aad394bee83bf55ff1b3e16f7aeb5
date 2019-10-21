@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d1f858e_6cdf875a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "f13936a4_4642a5c1",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61b4b0f8_7c29ab10",
         "filename": "board/dood/battery.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-10-18T05:57:03Z",
       "side": 1,
       "message": "Please check and replace any \"bobba\" to \"dood\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4813f6e3_be5a450c",
+        "filename": "board/dood/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done Patch6",
+      "parentUuid": "61b4b0f8_7c29ab10",
       "range": {
         "startLine": 13,
         "startChar": 24,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "4289d247_934e8d17",
+        "filename": "board/dood/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "modified it later, because of battery vender spec not ready",
+      "parentUuid": "b5332d8b_a4600201",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f62c80fa_7e69c417",
         "filename": "board/dood/board.c",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2019-10-18T05:57:03Z",
       "side": 1,
       "message": "Please remove this AR Core related codes because of no AR Core in dood",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d7dc70_10c4c6b3",
+        "filename": "board/dood/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "f62c80fa_7e69c417",
       "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "80f78b5f_0115d751",
+        "filename": "board/dood/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "250643b3_3a441b8f",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4368c183_708ea38f",
         "filename": "board/dood/board.c",
         "patchSetId": 2
@@ -104,6 +200,24 @@
       "writtenOn": "2019-10-18T05:57:03Z",
       "side": 1,
       "message": "Please remove this related codes for USB redriver in the sub-board and if dood does have this HW then we can discuss the plan to support power control of usb redriver in the subboard.",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dcee6f5_15225cd7",
+        "filename": "board/dood/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "4368c183_708ea38f",
       "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "9628c711_4c7d4021",
+        "filename": "board/dood/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "efb39840_fdd090a8",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a1fa6c8_77b94aa0",
         "filename": "board/dood/board.h",
         "patchSetId": 2
@@ -138,6 +270,24 @@
       "writtenOn": "2019-10-18T05:57:03Z",
       "side": 1,
       "message": "ARCore related?",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a50a32a_8e7ed988",
+        "filename": "board/dood/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "6a1fa6c8_77b94aa0",
       "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "ea9b6952_082bb744",
+        "filename": "board/dood/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "8030c39d_63a61493",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57512f4d_f038d506",
         "filename": "board/dood/board.h",
         "patchSetId": 2
@@ -172,6 +340,24 @@
       "writtenOn": "2019-10-18T05:57:03Z",
       "side": 1,
       "message": "numeric keypad?",
+      "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eefcf949_0d58c9de",
+        "filename": "board/dood/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-21T06:48:22Z",
+      "side": 1,
+      "message": "done, Patch6 remove it",
+      "parentUuid": "57512f4d_f038d506",
       "revId": "2c52be1ceb0aad394bee83bf55ff1b3e16f7aeb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
