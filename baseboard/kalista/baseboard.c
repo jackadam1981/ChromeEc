@@ -520,3 +520,16 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	return fan_table[current_level].rpm;
 }
+
+void board_rtc_reset(void)
+{
+	CPRINTS("Asserting RTCRST# to PCH");
+	gpio_set_level(GPIO_PCH_RTCRST, 1);
+	udelay(100);
+	gpio_set_level(GPIO_PCH_RTCRST, 0);
+}
+
+enum battery_present battery_hw_present(void)
+{
+	return BP_NO;
+}

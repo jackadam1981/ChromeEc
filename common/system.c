@@ -723,7 +723,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	return data ? data->version : "";
 }
 
-#ifdef CONFIG_ROLLBACK
+#ifdef CONFIG_ROLLBACK_VERSION
 int32_t system_get_rollback_version(enum system_image_copy_t copy)
 {
 	const struct image_data *data = system_get_image_data(copy);
