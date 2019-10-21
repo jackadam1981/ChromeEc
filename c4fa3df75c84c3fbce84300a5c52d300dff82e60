@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae1bf12_005bc646",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-21T06:54:44Z",
+      "side": 1,
+      "message": "I think this is wrong.\n\nAt this point, borrow will either be d or -1\n\nIf it is -1, we need to add it, not subtract it.\n\nGiven input {0, 0, 0, 0, 0, 0, 1, 0}, the function as it stands outputs {0, 0, 0, 0, 0, 0, 2, -1}\n\nIIUC, output should be {0, 0, 0, 0, 0, 0, 0, -1}\n\nIf you change 1178 to:\np256_sddigit borrow \u003d -(p256_sddigit)d;\n\n.. and L1181 to:\nborrow \u003d (p256_sddigit)P256_DIGIT(a, i) + borrow;\n\n.. then I think you\u0027ll get desired output, however at that point the function is basically the same as p256_add_d..\n\nSo perhaps you could just change p256_add_d to used a signed digit for the carry, and just pass a negative number to it for subtraction?",
+      "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
