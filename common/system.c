@@ -631,10 +631,6 @@ int system_set_active_copy(enum system_image_copy_t copy)
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy)
 {
-#ifdef CONFIG_VBOOT_EFS
-	if (copy == SYSTEM_IMAGE_RW_B)
-		return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_B_STORAGE_OFF;
-#endif
 	if (is_rw_image(copy))
 		return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
 
@@ -695,7 +691,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	return data ? data->version : "";
 }
 
-#ifdef CONFIG_ROLLBACK
+#ifdef CONFIG_ROLLBACK_VERSION
 int32_t system_get_rollback_version(enum system_image_copy_t copy)
 {
 	const struct image_data *data = system_get_image_data(copy);

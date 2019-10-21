@@ -33,4 +33,12 @@ extern const void *__image_size;
  * @return Number of commits in integer or 0 on error
  */
 int ver_get_num_commits(enum system_image_copy_t copy);
+
+/**
+ * Get size of an image
+ *
+ * @return Size of image in bytes or zero for error.
+ */
+size_t ver_get_image_size(enum system_image_copy_t copy);
+
 #endif  /* __CROS_EC_VERSION_H */

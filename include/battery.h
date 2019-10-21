@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "host_command.h"
+#include "stdbool.h"
 
 /* Battery index, only used with CONFIG_BATTERY_V2. */
 enum battery_index {
@@ -460,5 +461,7 @@ void battery_compensate_params(struct batt_params *batt);
  * board-specific battery_compensate_params
  */
 __override_proto void board_battery_compensate_params(struct batt_params *batt);
+
+bool battery_is_bad(void);
 
 #endif /* __CROS_EC_BATTERY_H */
