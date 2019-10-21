@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05ffacb5_a9910a91",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-21T12:54:11Z",
+      "side": 1,
+      "message": "return ((s \u003e\u003d START) \u0026\u0026 (s \u003c (START+COUNT)));",
+      "revId": "55112f4d63ae8de149374179d89e7319a3146e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
