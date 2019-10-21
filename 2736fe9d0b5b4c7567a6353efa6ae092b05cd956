@@ -117,6 +117,30 @@
       "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdafcc45_d34eeb97",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-21T16:13:05Z",
+      "side": 1,
+      "message": "I filed bug b/142911453 and assigned to Sam.  Please just add a TODO comment and reference this bug. I want to get the TGL changes unblocked from this.",
+      "parentUuid": "6e4548ca_72c54485",
+      "range": {
+        "startLine": 1015,
+        "startChar": 22,
+        "endLine": 1015,
+        "endChar": 39
+      },
+      "revId": "2736fe9d0b5b4c7567a6353efa6ae092b05cd956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
