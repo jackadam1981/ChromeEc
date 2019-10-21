@@ -422,7 +422,9 @@ $(out)/%_B.lds: core/$(CORE)/ec.lds.S
 
 $(out)/%.bin: $(out)/%.obj
 	$(call quiet,obj_to_bin,OBJCOPY)
+ifneq ($(CONFIG_RWSIG_TYPE_RWSIG),)
 	$(if $(wildcard $(PEM)),$(call quiet,rsasign,SIGN   ),)
+endif
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )

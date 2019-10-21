@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "host_command.h"
+#include "stdbool.h"
 
 /* Battery index, only used with CONFIG_BATTERY_V2. */
 enum battery_index {
@@ -444,5 +445,7 @@ extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
  *       battery drivers as needed.
  */
 void battery_compensate_params(struct batt_params *batt);
+
+bool battery_is_bad(void);
 
 #endif /* __CROS_EC_BATTERY_H */
