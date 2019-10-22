@@ -22,6 +22,30 @@
       "revId": "334974ad85adc097dd942ed703590e47639d30c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893b38af_99627221",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4455,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-22T04:29:37Z",
+      "side": 0,
+      "message": "the problem is that task_wait_event(...) will return immediately\nwhen there\u0027s an event waiting.  if another event shows up by the\ntime we get back to the top of the loop for the\nnext task_wait_event(), we get into a tight loop.",
+      "parentUuid": "5a25c891_f12ff594",
+      "range": {
+        "startLine": 4455,
+        "startChar": 15,
+        "endLine": 4455,
+        "endChar": 22
+      },
+      "revId": "334974ad85adc097dd942ed703590e47639d30c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
