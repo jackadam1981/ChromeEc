@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1c6b4b50_8c4896bb",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-22T02:18:43Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "3b12d02c_ad416378",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9444efa_9e2fbfd0",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 21
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "dff69fff_49d2f955",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-22T02:18:43Z",
+      "side": 1,
+      "message": "As mentioned on chat, I think it\u0027s best to follow up on this with vbendeb",
+      "parentUuid": "b4c6af1b_db508042",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaa0c242_ffb19988",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 21
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "oh, forgot about this. It was complaining from the misalignment within vhaven. Seems it got fixed with all alignment handling in dcrypto_p256.c Returning this function back to its origins.",
       "parentUuid": "eaa0c242_ffb19988",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acc7d635_11539b0a",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-22T02:18:43Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "c10ebf83_c06f78f2",
       "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
