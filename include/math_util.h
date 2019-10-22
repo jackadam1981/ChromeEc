@@ -114,6 +114,17 @@ static inline fp_t fp_abs(fp_t a)
 	return (a >= INT_TO_FP(0) ? a : -a);
 }
 
+/*
+ * Calculate multiples of M which closely greater or equal to N.
+ *
+ * For example, if n = 88 and m = 9, then the result 10 is the smallest
+ * integer multiplying by 9 equal or greater than 88.
+ */
+static inline int ceil_f(int n, int m)
+{
+	return (((n - 1) / m) + 1);
+}
+
 /**
  * Square root
  */
