@@ -28,6 +28,7 @@
 #include "throttle_ap.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_pd.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -2161,6 +2162,16 @@ int charge_get_percent(void)
 	 * anything.
 	 */
 	return is_full ? 100 : curr.batt.state_of_charge;
+}
+
+int charge_get_desired_mw(void)
+{
+	/* TODO(yllin): fix this for device w/o battery */
+#ifdef CONFIG_BATTERY
+	return curr.batt.desired_current * curr.batt.desired_voltage / 1000;
+#else
+	return 0;
+#endif
 }
 
 int charge_get_display_charge(void)
