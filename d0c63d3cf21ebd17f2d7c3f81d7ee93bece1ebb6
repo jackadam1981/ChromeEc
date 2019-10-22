@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3be74093_0c6e2edb",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "One potential issue with this I see is, in a future ISH version, a combined ISR (or potentially not) may be selected. We would have to change this to really funky logic to handle that case.\n\nA way we can mitigate this would be to add a CONFIG_ISH_HOST2ISH_COMBINED_ISR config option (add to common/config.h), and enable that option automatically for 5.4. Then, change these ifdefs to pivot on that option instead.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccdf6d87_7065ecc5",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "... stemming from above, this could pivot on that config option then as well",
+      "range": {
+        "startLine": 574,
+        "startChar": 6,
+        "endLine": 574,
+        "endChar": 37
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ba010a_062aa7c0",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "Don\u0027t guard this definition",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbb9e9c_99b8e668",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "Instead, define SEC_OFFSET as 0 for \u003c5.4, and the definition of ISH_RST_REG can be common then.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca29a532_18e9aaa2",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "This still needs fixed.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b70d6949_9cd7f3e7",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "Lets make another CONFIG_ISH_ option like the combined ISR I described above (like CONFIG_ISH_CLEAR_FABRICK_ERRORS).",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704d2547_2550911e",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "... and use it here.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c5c354_ae82bbcb",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "is there a way we can keep the ISH version out of the implementation so much here? For example, with more CONFIG_ option(s)?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 0
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f52390f_4b7e9085",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "Use the CONFIG_ option I described above.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da23e3f6_32d12a5b",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T19:17:38Z",
+      "side": 1,
+      "message": "Instead, can we have CHIP_VARIANT_ISH5P4 imply CONFIG_ISH_PM_RESET_PREP?",
+      "range": {
+        "startLine": 154,
+        "startChar": 37,
+        "endLine": 154,
+        "endChar": 69
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
