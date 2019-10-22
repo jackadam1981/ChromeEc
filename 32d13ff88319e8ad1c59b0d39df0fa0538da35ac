@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d52e8948_1017d3ae",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4463,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-22T19:57:37Z",
+      "side": 1,
+      "message": "Please join the lines for search.",
+      "parentUuid": "13ffe11f_b3a3d6f3",
+      "range": {
+        "startLine": 4463,
+        "startChar": 12,
+        "endLine": 4463,
+        "endChar": 31
+      },
+      "revId": "32d13ff88319e8ad1c59b0d39df0fa0538da35ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6157f29_d0cd881e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
