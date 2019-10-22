@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dc52e89_c586d626",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-22T16:49:43Z",
+      "side": 1,
+      "message": "Usually a printf line is kept in one line even beyond +80 for search.",
+      "range": {
+        "startLine": 214,
+        "startChar": 10,
+        "endLine": 215,
+        "endChar": 14
+      },
+      "revId": "b09eff9b62f15bd8a84686fef9d799bc2ae33c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c078a16_e4609055",
+        "filename": "driver/fingerprint/fpc/bep/fpc_sensor_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-22T16:49:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 63,
+        "startChar": 60,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "b09eff9b62f15bd8a84686fef9d799bc2ae33c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "851ab54c_ce1cc578",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_sensor_pal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-22T16:49:43Z",
+      "side": 1,
+      "message": "Can you fix +80?",
+      "range": {
+        "startLine": 20,
+        "startChar": 66,
+        "endLine": 20,
+        "endChar": 81
+      },
+      "revId": "b09eff9b62f15bd8a84686fef9d799bc2ae33c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
