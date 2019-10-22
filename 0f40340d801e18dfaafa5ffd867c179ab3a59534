@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82062f7b_08c01dbf",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-22T02:46:38Z",
+      "side": 1,
+      "message": "i\u0027d probably stick with a test_ prefix for consistency.\nmaybe \"test_only\".\n\nalso, do we want to put these symbols in a separate linker\nsection so we can force-discard them?  looks like we can\u0027t\nimplement __error() for clang, so maybe that\u0027s how we need\nto catch this when using clang.",
+      "range": {
+        "startLine": 272,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 21
+      },
+      "revId": "0f40340d801e18dfaafa5ffd867c179ab3a59534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
