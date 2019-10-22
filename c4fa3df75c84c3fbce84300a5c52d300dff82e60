@@ -34,6 +34,24 @@
       "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ecc3d6_e967949e",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-10-22T02:27:45Z",
+      "side": 1,
+      "message": "Thanks, looks sane, though I would personally find it easier to read without the use of tmp (which is a no-op in all but the first iteration).",
+      "parentUuid": "23737c92_997bade6",
+      "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
