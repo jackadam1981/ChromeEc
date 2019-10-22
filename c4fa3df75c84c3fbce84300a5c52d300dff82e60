@@ -52,6 +52,24 @@
       "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8509a1d_109d85a3",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-10-22T16:10:15Z",
+      "side": 1,
+      "message": "i think the tmp gives a better idea to the reader how exactly the p256 subtraction works out. Also, this arrangement will be useful if in future we add the general subtraction function.",
+      "parentUuid": "d9ecc3d6_e967949e",
+      "revId": "c4fa3df75c84c3fbce84300a5c52d300dff82e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
