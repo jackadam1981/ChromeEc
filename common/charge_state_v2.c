@@ -28,6 +28,7 @@
 #include "throttle_ap.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_pd.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -1166,6 +1167,7 @@ static int calc_is_full(void)
  */
 static int charge_request(int voltage, int current)
 {
+	int i;
 	int r1 = EC_SUCCESS, r2 = EC_SUCCESS, r3 = EC_SUCCESS;
 	static int __bss_slow prev_volt, prev_curr;
 
@@ -1226,6 +1228,20 @@ static int charge_request(int voltage, int current)
 	 * Only update if the request worked, so we'll keep trying on failures.
 	 */
 	if (!r1 && !r2) {
+		/*
+		 * If desired watts changed, evaluate the best PD voltage
+		 * again.
+		 */
+		if (IS_ENABLED(CONFIG_PD_PREFER_MV) &&
+		    voltage * current > 0 &&
+		    prev_volt * prev_curr != voltage * current) {
+			for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+				if (pd_is_connected(i) &&
+				    pd_get_role(i) == PD_ROLE_SINK)
+					pd_set_new_power_request(i);
+			}
+		}
+
 		prev_volt = voltage;
 		prev_curr = current;
 	}
@@ -2161,6 +2177,17 @@ int charge_get_percent(void)
 	 * anything.
 	 */
 	return is_full ? 100 : curr.batt.state_of_charge;
+}
+
+int charge_get_desired_mw(void)
+{
+#define PLT_SHIFT 3000
+	/* TODO(yllin): fix this for device w/o battery */
+#ifdef CONFIG_BATTERY
+	return PLT_SHIFT + curr.batt.desired_current * curr.batt.desired_voltage / 1000;
+#else
+	return 0;
+#endif
 }
 
 int charge_get_display_charge(void)
