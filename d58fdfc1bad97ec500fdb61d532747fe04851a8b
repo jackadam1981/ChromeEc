@@ -22,6 +22,30 @@
       "revId": "d58fdfc1bad97ec500fdb61d532747fe04851a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068de0e2_7cd3b539",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-22T22:44:50Z",
+      "side": 1,
+      "message": "no errors, but there was a request to reformat.\nthere\u0027s another change to this file in my patch stack,\nso i wanted to separate the format-only changes\nfrom actual changes.",
+      "parentUuid": "dde8b257_3e9fc82a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "d58fdfc1bad97ec500fdb61d532747fe04851a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
