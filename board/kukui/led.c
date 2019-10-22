@@ -34,7 +34,8 @@ static void kukui_led_set_battery(void)
 
 	chstate = charge_get_state();
 
-	if (prv_chstate == chstate)
+	if (prv_chstate == chstate &&
+		chstate != PWR_STATE_DISCHARGE)
 		return;
 
 	prv_chstate = chstate;
