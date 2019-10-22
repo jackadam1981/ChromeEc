@@ -48,6 +48,9 @@
 #define REG16(addr) (*REG16_ADDR(addr))
 #define REG8(addr)  (*REG8_ADDR(addr))
 
+/* Macro to calculate multiples of M which closely greater or equal to N */
+#define ceil_f(N, M) (((N - 1) / M) + 1)
+
 /*
  * Define __aligned(n) and __packed if someone hasn't beat us to it.  Linux
  * kernel style checking prefers these over __attribute__((packed)) and
