@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61327291_3a2efee9",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-22T01:17:11Z",
+      "side": 0,
+      "message": "This is no longer necessary?",
+      "range": {
+        "startLine": 727,
+        "startChar": 1,
+        "endLine": 729,
+        "endChar": 32
+      },
+      "revId": "f41c8eaf804676434118995ecc9370817b8ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73bcb2ac_8add2e15",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-22T01:17:11Z",
+      "side": 0,
+      "message": "Same as other. If we remove it we should probably add a comment to the functions indicating that we assume system_is_locked is checked before it is called.",
+      "range": {
+        "startLine": 757,
+        "startChar": 1,
+        "endLine": 759,
+        "endChar": 32
+      },
+      "revId": "f41c8eaf804676434118995ecc9370817b8ca470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
