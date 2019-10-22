@@ -46,6 +46,30 @@
       "revId": "d58fdfc1bad97ec500fdb61d532747fe04851a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa3d29f_94694e76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T23:02:31Z",
+      "side": 1,
+      "message": "There\u0027s nothing wrong with this CL, but clang-format has the functionality to touch only the lines in your patch:\n\nhttps://clang.llvm.org/docs/ClangFormat.html#script-for-patch-reformatting",
+      "parentUuid": "068de0e2_7cd3b539",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "d58fdfc1bad97ec500fdb61d532747fe04851a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
