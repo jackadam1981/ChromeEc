@@ -31,19 +31,14 @@ int board_cut_off_battery(void)
 void mt6370_charger_profile_override(struct charge_state_data *curr)
 {
 	static int previous_chg_limit_mv;
-	int chg_limit_mv;
+	int chg_limit_mv = pd_get_max_voltage();
 
 	/* Limit input (=VBUS) to 5V when soc > 85% and charge current < 1A. */
 	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT) &&
-			charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
-			curr->batt.current < 1000) {
+	    charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
+	    curr->batt.current < 1000 && power_get_state() != POWER_S0) {
 		chg_limit_mv = 5500;
-	} else if (power_get_state() == POWER_S0) {
-		/*
-		 * b/134227872: limit power to 5V/2A in S0 to prevent
-		 * overheat
-		 */
-		chg_limit_mv = 5500;
+	}
 	} else {
 		chg_limit_mv = PD_MAX_VOLTAGE_MV;
 	}
@@ -87,12 +82,15 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	/* b/134227872: Limit input current to 2A in S0 to prevent overheat */
-	if (power_get_state() == POWER_S0)
-		charge_set_input_current_limit(
-			MIN(charge_ma, RT946X_AICR_TYP2MAX(2000)),
-			charge_mv);
-	else
+	/*
+	 * b/134227872: Limit input current to 2A in S0 to prevent overheat
+	 * TODO(yllin): watch thermal and reduce charge current if throttle.
+	 */
+	/* if (power_get_state() == POWER_S0)
+	 *         charge_set_input_current_limit(
+	 *                 MIN(charge_ma, RT946X_AICR_TYP2MAX(2000)),
+	 *                 charge_mv);
+	 * else */
 		charge_set_input_current_limit(
 				MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT),
 				charge_mv);

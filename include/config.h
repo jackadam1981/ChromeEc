@@ -3855,6 +3855,9 @@
 /* Use DAC as reference for comparator at 850mV. */
 #undef CONFIG_PD_USE_DAC_AS_REF
 
+#undef CONFIG_PD_PREFER_MV
+#define PD_PREFER_MV 0 /* just a random value to make compiler happy */
+
 /* Type-C VCONN Powered Device */
 #undef CONFIG_USB_TYPEC_VPD
 

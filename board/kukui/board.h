@@ -72,6 +72,10 @@
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 #endif /* SECTION_IS_RW */
 
+/* TODO(yllin): Add to config */
+#define CONFIG_PD_PREFER_MV
+#define PD_PREFER_MV 9000
+
 /* I2C ports */
 #define I2C_PORT_CHARGER  0
 #define I2C_PORT_TCPC0    0

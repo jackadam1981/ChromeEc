@@ -8,12 +8,16 @@
  * and the new (i.e. usb_sm_*) USB-C PD stacks.
  */
 
-#include "common.h"
 #include "charge_state.h"
+#include "common.h"
+#include "console.h"
 #include "task.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
 int usb_get_battery_soc(void)
 {
@@ -120,6 +124,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	int i, uw, mv;
 	int ret = 0;
 	int cur_uw = 0;
+	int has_preferred_pdo = 0, has_desired_watt = 0;
 	int prefer_cur;
 
 	int __attribute__((unused)) cur_mv = 0;
@@ -127,7 +132,10 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	/* max voltage is always limited by this boards max request */
 	max_mv = MIN(max_mv, PD_MAX_VOLTAGE_MV);
 
-	/* Get max power that is under our max voltage input */
+	/*
+	 * Get max power that is under our max voltage input,
+	 * or get the PDO which closest to PD_PREFER_MV
+	 */
 	for (i = 0; i < src_cap_cnt; i++) {
 		/* its an unsupported Augmented PDO (PD3.0) */
 		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
@@ -155,17 +163,38 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
 		prefer_cur = 0;
 
-		/* Apply special rules in case of 'tie' */
+		/* Apply special rules in favor of voltage  */
 		if (IS_ENABLED(PD_PREFER_LOW_VOLTAGE)) {
 			if (uw == cur_uw && mv < cur_mv)
 				prefer_cur = 1;
 		} else if (IS_ENABLED(PD_PREFER_HIGH_VOLTAGE)) {
 			if (uw == cur_uw && mv > cur_mv)
 				prefer_cur = 1;
+		} else if (IS_ENABLED(CONFIG_PD_PREFER_MV)) {
+			if (uw >= charge_get_desired_mw() * 1000) {
+				has_desired_watt = 1;
+				if (PD_PREFER_MV == mv) {
+					ret = i;
+					break;
+				} else if ((mv < cur_mv &&
+					    PD_PREFER_MV < mv) ||
+					   (PD_PREFER_MV > cur_mv &&
+					    mv > PD_PREFER_MV)) {
+					prefer_cur = 1;
+				}
+			} else if (!has_desired_watt && uw > cur_uw) {
+				prefer_cur = 1;
+			}
 		}
 
+		has_preferred_pdo =
+			prefer_cur ||
+			(IS_ENABLED(CONFIG_PD_PREFER_MV) ? 0 : uw > cur_uw);
+
+		CPRINTS("** V=%d W=%d Desired=%d Prefer=%d", mv, uw, charge_get_desired_mw(), has_preferred_pdo);
+
 		/* Prefer higher power, except for tiebreaker */
-		if (uw > cur_uw || prefer_cur) {
+		if (has_preferred_pdo) {
 			ret = i;
 			cur_uw = uw;
 			cur_mv = mv;
