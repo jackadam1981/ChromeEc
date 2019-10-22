@@ -1534,6 +1534,34 @@ static int pd_send_request_msg(int port, int always_send_request)
 	set_state(port, PD_STATE_SNK_REQUESTED);
 	return EC_SUCCESS;
 }
+
+static int command_pdreq(int argc, char ** argv)
+{
+	char *e;
+	int port;
+	int always_send_request = 0;
+
+	if (argc > 4)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is sensor id. */
+	port = strtoi(argv[1], &e, 0);
+	if (*e || port < 0 || port >= CONFIG_USB_PD_PORT_COUNT)
+		return EC_ERROR_PARAM1;
+
+	if (argc >= 3) {
+		/* Second argument is data to write. */
+		always_send_request = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+	}
+
+	pd_send_request_msg(port, always_send_request);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pdreq, command_pdreq,
+			"pdreq [port [1]]", "Send PD request");
+
 #endif
 
 static void pd_update_pdo_flags(int port, uint32_t pdo)
