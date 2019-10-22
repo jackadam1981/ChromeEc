@@ -118,6 +118,30 @@
       "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3404cf27_e4883319",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-22T16:27:59Z",
+      "side": 1,
+      "message": "My observation is the same. Defining a macro in one place has an advantage that it can be defined differently in one place. Maybe we can do:\n\n  #define fuzz_test_noreturn ATTRIBUTE_IF_NOT(TEST_FUZZ, noreturn)",
+      "parentUuid": "d1111082_f0eb6dd7",
+      "range": {
+        "startLine": 57,
+        "startChar": 56,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
