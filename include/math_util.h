@@ -114,6 +114,12 @@ static inline fp_t fp_abs(fp_t a)
 	return (a >= INT_TO_FP(0) ? a : -a);
 }
 
+/* Calculate M's smallest multiplier which is equal to or greater than N. */
+static inline int ceil_for(int n, int m)
+{
+	return (((n - 1) / m) + 1);
+}
+
 /**
  * Square root
  */
