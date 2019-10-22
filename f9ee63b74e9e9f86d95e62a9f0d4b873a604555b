@@ -22,6 +22,30 @@
       "revId": "f9ee63b74e9e9f86d95e62a9f0d4b873a604555b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35bc8403_7e5afe12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-10-22T00:06:16Z",
+      "side": 1,
+      "message": "interesting thought - not sure if it\u0027ll break tests that\ndepend on the current behavior - but, maybe that dependency\nis a bug :)\n\nin a brute force sort of way, you could probably make it work\nwith extra fork()s to preserve the original state.  in this\nparticular case,  in this particular case,\nsystem_common_pre_init() is used to initialize\nthe mock EC memory, but it\u0027s not low level enough for\nthis case.  it probably makes more\nsense to make early initialization more mocking friendly.",
+      "parentUuid": "269e9b32_7f7f964f",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "f9ee63b74e9e9f86d95e62a9f0d4b873a604555b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
