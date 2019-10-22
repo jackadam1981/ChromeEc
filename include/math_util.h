@@ -141,6 +141,9 @@ enum {
  */
 #define ABS(x) ((x) >= 0 ? (x) : -(x))
 
+/* Macro to calculate multiples of M which closely greater or equal to N */
+#define ceil_f(N, M) (((N - 1) / M) + 1)
+
 /**
  * Find acos(x) in degrees. Argument is clipped to [-1.0, 1.0].
  *
