@@ -46,6 +46,30 @@
       "revId": "0f40340d801e18dfaafa5ffd867c179ab3a59534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd62ddde_a4fa7516",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-22T20:14:40Z",
+      "side": 1,
+      "message": "Done (see parent CL for making __error discard symbols on clang)",
+      "parentUuid": "6e34f8fc_da027259",
+      "range": {
+        "startLine": 272,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 21
+      },
+      "revId": "0f40340d801e18dfaafa5ffd867c179ab3a59534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
