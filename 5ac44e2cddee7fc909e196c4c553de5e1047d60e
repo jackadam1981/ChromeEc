@@ -94,6 +94,30 @@
       "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1111082_f0eb6dd7",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-10-22T00:14:35Z",
+      "side": 1,
+      "message": "just remember that the fuzz/test build is the one that will\nnot have the __attribute__((noreturn)).",
+      "parentUuid": "60a760c6_0be1338b",
+      "range": {
+        "startLine": 57,
+        "startChar": 56,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "5ac44e2cddee7fc909e196c4c553de5e1047d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
