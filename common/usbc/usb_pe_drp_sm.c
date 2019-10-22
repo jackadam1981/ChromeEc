@@ -426,7 +426,6 @@ static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
 /*
  * Private VDM utility functions
  */
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int validate_mode_request(struct svdm_amode_data *modep,
 						uint16_t svid, int opos);
 static void dfp_consume_attention(int port, uint32_t *payload);
@@ -436,7 +435,6 @@ static int dfp_discover_modes(int port, uint32_t *payload);
 static void dfp_consume_modes(int port, int cnt, uint32_t *payload);
 static int get_mode_idx(int port, uint16_t svid);
 static struct svdm_amode_data *get_modep(int port, uint16_t svid);
-#endif
 
 test_export_static enum usb_pe_state get_state_pe(const int port);
 test_export_static void set_state_pe(const int port,
@@ -3399,10 +3397,16 @@ static void pe_do_port_discovery_entry(int port)
 
 static void pe_do_port_discovery_run(int port)
 {
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	uint32_t *payload = (uint32_t *)emsg[port].buf;
-	struct svdm_amode_data *modep = get_modep(port, PD_VDO_VID(payload[0]));
-	int ret = 0;
+	uint32_t *payload;
+	struct svdm_amode_data *modep;
+	int ret;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
+
+	payload = (uint32_t *)emsg[port].buf;
+	modep = get_modep(port, PD_VDO_VID(payload[0]));
+	ret = 0;
 
 	if (!PE_CHK_FLAG(port,
 		PE_FLAGS_VDM_REQUEST_NAKED | PE_FLAGS_VDM_REQUEST_BUSY)) {
@@ -3489,7 +3493,6 @@ static void pe_do_port_discovery_run(int port)
 		pe[port].vdm_cnt = ret;
 		set_state_pe(port, PE_VDM_REQUEST);
 	}
-#endif
 }
 
 /**
@@ -3722,29 +3725,26 @@ static void pe_vdm_acked_entry(int port)
 				break;
 			}
 		}
-	} else {
+	} else if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 		/*
 		 * Handle Message From Port Partner
 		 */
 
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		int cnt = PD_HEADER_CNT(emsg[port].header);
 		struct svdm_amode_data *modep;
 
 		modep = get_modep(port, PD_VDO_VID(payload[0]));
-#endif
 
 		switch (vdo_cmd) {
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
 			dfp_consume_identity(port, cnt, payload);
-#ifdef CONFIG_CHARGE_MANAGER
+			if (!IS_ENABLED(CONFIG_CHARGE_MANAGER))
+				break;
 			if (pd_charge_from_device(pd_get_identity_vid(port),
 						pd_get_identity_pid(port))) {
 				charge_manager_update_dualrole(port,
 								CAP_DEDICATED);
 			}
-#endif
 			break;
 		case CMD_DISCOVER_SVID:
 			dfp_consume_svids(port, cnt, payload);
@@ -3768,14 +3768,14 @@ static void pe_vdm_acked_entry(int port)
 		case CMD_EXIT_MODE:
 			/* Do nothing */
 			break;
-#endif
 		case CMD_ATTENTION:
 			/* Do nothing */
 			break;
 		default:
 			CPRINTF("ERR:CMD:%d\n", vdo_cmd);
 		}
-	}
+	} else if (vdo_cmd != CMD_ATTENTION)
+		CPRINTF("ERR:CMD:%d\n", vdo_cmd);
 
 	if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE)) {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE);
@@ -4421,7 +4421,6 @@ void pd_set_vbus_discharge(int port, int enable)
 #endif /* CONFIG_USB_PD_DISCHARGE */
 
 /* VDM utility functions */
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static void pd_usb_billboard_deferred(void)
 {
 #if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP) \
@@ -4441,15 +4440,20 @@ DECLARE_DEFERRED(pd_usb_billboard_deferred);
 
 void pd_dfp_pe_init(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
+
 	memset(&pe[port].am_policy, 0, sizeof(struct pd_policy));
 }
 
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 {
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 	size_t identity_size = MIN(sizeof(pe[port].am_policy.identity),
 				(cnt - 1) * sizeof(uint32_t));
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
 
 	pd_dfp_pe_init(port);
 	memcpy(&pe[port].am_policy.identity, payload + 1, identity_size);
@@ -4476,9 +4480,15 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 static void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 {
 	int i;
-	uint32_t *ptr = payload + 1;
-	int vdo = 1;
+	uint32_t *ptr;
+	int vdo;
 	uint16_t svid0, svid1;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
+
+	ptr = payload + 1;
+	vdo = 1;
 
 	for (i = pe[port].am_policy.svid_cnt;
 				i < pe[port].am_policy.svid_cnt + 12; i += 2) {
@@ -4515,8 +4525,12 @@ static void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 
 static int dfp_discover_modes(int port, uint32_t *payload)
 {
-	uint16_t svid =
-		pe[port].am_policy.svids[pe[port].am_policy.svid_idx].svid;
+	uint16_t svid;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
+	svid = pe[port].am_policy.svids[pe[port].am_policy.svid_idx].svid;
 
 	if (pe[port].am_policy.svid_idx >= pe[port].am_policy.svid_cnt)
 		return 0;
@@ -4528,7 +4542,12 @@ static int dfp_discover_modes(int port, uint32_t *payload)
 
 static void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 {
-	int idx = pe[port].am_policy.svid_idx;
+	int idx;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
+
+	idx = pe[port].am_policy.svid_idx;
 
 	pe[port].am_policy.svids[idx].mode_cnt = cnt - 1;
 
@@ -4548,6 +4567,9 @@ static int get_mode_idx(int port, uint16_t svid)
 {
 	int i;
 
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return -1;
+
 	for (i = 0; i < PD_AMODE_COUNT; i++) {
 		if (pe[port].am_policy.amodes[i].fx->svid == svid)
 			return i;
@@ -4558,14 +4580,24 @@ static int get_mode_idx(int port, uint16_t svid)
 
 static struct svdm_amode_data *get_modep(int port, uint16_t svid)
 {
-	int idx = get_mode_idx(port, svid);
+	int idx;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return NULL;
+
+	idx = get_mode_idx(port, svid);
 
 	return (idx == -1) ? NULL : &pe[port].am_policy.amodes[idx];
 }
 
 int pd_alt_mode(int port, uint16_t svid)
 {
-	struct svdm_amode_data *modep = get_modep(port, svid);
+	struct svdm_amode_data *modep;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return -1;
+
+	modep = get_modep(port, svid);
 
 	return (modep) ? modep->opos : -1;
 }
@@ -4574,7 +4606,12 @@ int allocate_mode(int port, uint16_t svid)
 {
 	int i, j;
 	struct svdm_amode_data *modep;
-	int mode_idx = get_mode_idx(port, svid);
+	int mode_idx;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return -1;
+
+	mode_idx = get_mode_idx(port, svid);
 
 	if (mode_idx != -1)
 		return mode_idx;
@@ -4611,9 +4648,14 @@ int allocate_mode(int port, uint16_t svid)
 
 uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
 {
-	int mode_idx = allocate_mode(port, svid);
+	int mode_idx;
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
+	mode_idx = allocate_mode(port, svid);
 
 	if (mode_idx == -1)
 		return 0;
@@ -4643,6 +4685,9 @@ uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
 static int validate_mode_request(struct svdm_amode_data *modep,
 					uint16_t svid, int opos)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
 	if (!modep->fx)
 		return 0;
 
@@ -4663,9 +4708,16 @@ static int validate_mode_request(struct svdm_amode_data *modep,
 
 static void dfp_consume_attention(int port, uint32_t *payload)
 {
-	uint16_t svid = PD_VDO_VID(payload[0]);
-	int opos = PD_VDO_OPOS(payload[0]);
-	struct svdm_amode_data *modep = get_modep(port, svid);
+	uint16_t svid;
+	int opos;
+	struct svdm_amode_data *modep;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
+
+	svid = PD_VDO_VID(payload[0]);
+	opos = PD_VDO_OPOS(payload[0]);
+	modep = get_modep(port, svid);
 
 	if (!modep || !validate_mode_request(modep, svid, opos))
 		return;
@@ -4673,7 +4725,7 @@ static void dfp_consume_attention(int port, uint32_t *payload)
 	if (modep->fx->attention)
 		modep->fx->attention(port, payload);
 }
-#endif
+
 /*
  * This algorithm defaults to choosing higher pin config over lower ones in
  * order to prefer multi-function if desired.
@@ -4695,9 +4747,14 @@ static void dfp_consume_attention(int port, uint32_t *payload)
  */
 int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 {
-	struct svdm_amode_data *modep = get_modep(port, USB_SID_DISPLAYPORT);
+	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
 	uint32_t pin_caps;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
+	modep = get_modep(port, USB_SID_DISPLAYPORT);
 
 	if (!modep)
 		return 0;
@@ -4730,6 +4787,8 @@ int pd_dfp_exit_mode(int port, uint16_t svid, int opos)
 	struct svdm_amode_data *modep;
 	int idx;
 
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
 
 	/*
 	 * Empty svid signals we should reset DFP VDM state by exiting all
@@ -4768,15 +4827,21 @@ int pd_dfp_exit_mode(int port, uint16_t svid, int opos)
 
 uint16_t pd_get_identity_vid(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
 	return PD_IDH_VID(pe[port].am_policy.identity[0]);
 }
 
 uint16_t pd_get_identity_pid(int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
 	return PD_PRODUCT_PID(pe[port].am_policy.identity[2]);
 }
 
-
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 #ifdef CONFIG_CMD_USB_PD_PE
 static void dump_pe(int port)
 {
