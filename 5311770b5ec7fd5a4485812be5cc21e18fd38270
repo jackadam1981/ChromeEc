@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b8c3045_d14932ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-22T14:33:34Z",
+      "side": 1,
+      "message": "space after ,",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "5311770b5ec7fd5a4485812be5cc21e18fd38270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a484131_2676dbaa",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-22T14:33:34Z",
+      "side": 1,
+      "message": "could we have something like below (to reduce i2c traffic):\n\n static uint8_t prv_r, prv_g, prv_b;\n\n if (prv_r \u003d\u003d br[EC_LED_COLOR_RED] \u0026\u0026\n     prv_g \u003d\u003d br[EC_LED_COLOR_GREEN] \u0026\u0026\n     prv_b \u003d\u003d br[EC_LED_COLOR_BLUE])\n         return;\n\n prv_r \u003d br[EC_LED_COLOR_RED];\n prv_g \u003d br[EC_LED_COLOR_GREEN];\n prv_b \u003d br[EC_LED_COLOR_BLUE];\n led_set_brightness(EC_LED_ID_BATTERY_LED, br);",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "5311770b5ec7fd5a4485812be5cc21e18fd38270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
