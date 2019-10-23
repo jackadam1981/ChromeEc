@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "91c1ddf6_c7daba81",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T16:18:21Z",
+      "side": 1,
+      "message": "I am thinking about this more, and I am leaning to changing the behavior to initializing i2c early for all board and not having this as an option.\n\nI don\u0027t know what issues there may be though. Our branching strategy will handle not breaking old boards. I would really prefer having only one options for when i2c is initialized.\n\nVery few people will know about this i2c init early option.\n\n\nI know it is subjective and relies on our (somewhat broken) branching strategy, but adding more config points is also a difficult in its own way. I am wrestling with the concept of landing new feaures on ToT with default on in CL:1827137 as well.",
+      "parentUuid": "92447c92_7abbb4bb",
+      "range": {
+        "startLine": 1350,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 0
+      },
+      "revId": "904c470dc3bdc344ae5c05dbde4768c63d0fc760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd250478_30e70028",
         "filename": "common/main.c",
         "patchSetId": 4
