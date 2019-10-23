@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15762d75_d93a0de7",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T16:27:19Z",
+      "side": 1,
+      "message": "section needs more comments, please",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 4
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb6d34c_f31cab4c",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T16:27:19Z",
+      "side": 1,
+      "message": "comments, why is this needed",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 33
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0393074_f76540c1",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T16:27:19Z",
+      "side": 1,
+      "message": "comments",
+      "range": {
+        "startLine": 454,
+        "startChar": 3,
+        "endLine": 459,
+        "endChar": 0
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08bd0a45_473f6af2",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T16:27:19Z",
+      "side": 1,
+      "message": "I am tempted to not make this a new config option and enabled FIFO i2c transation for NPCX7 on ToT.\n\nWhat risks do you see with enabling i2c FIFO on all new NPCX7 platforms?",
+      "range": {
+        "startLine": 2271,
+        "startChar": 0,
+        "endLine": 2277,
+        "endChar": 27
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
