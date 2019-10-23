@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a42c6ec_235c5986",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-23T14:44:50Z",
+      "side": 1,
+      "message": "Usually, when comments say \"depending on ...\" it means there is a conditional in the code (#ifdef, if stmt, etc.). In this case, the ALS is removed completely. Please update the commit message to explain why the ALS is removed.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "f5f0f4b100f241a0fe0769c61d30ccf2ad561d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
