@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0af38c85_fe01aac0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "nit: elements\n\n\"should collect ... \" \"during a fifo read operation\" ?\n\nfifo_int_enabled is a weird name for a number. It should like a boolean if the interrupt it enabled or not",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b6487ca_5f26803c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "what is this for, can you add this to the comments above the if statement?",
+      "range": {
+        "startLine": 910,
+        "startChar": 7,
+        "endLine": 910,
+        "endChar": 35
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2527e421_8f1f5227",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "we typically use uint32_t for bitmask since that is the word size on all of our EC\u0027s.",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22af0d39_5b50aac2",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "Is this guarded by a mutex? If so can you add that to the comments?\n\n(maybe it doesn\u0027t need to be, I haven\u0027t read the rest of the code yet)",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e86e4f7_0befb9f1",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "nit: can you add const here, just to ensure we don\u0027t accidentally make any changes?",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a74ceb_d7eaacc6",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "Convenience",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31813bcf_08f67d39",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "we are locking now, should we remove this comment?\n\nAlso, why are we locking more, was it to fix a bug or convenience?",
+      "range": {
+        "startLine": 232,
+        "startChar": 45,
+        "endLine": 232,
+        "endChar": 71
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df16a007_b6d0f5e6",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "this unbalances the mutex. This should be a return instead",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 22
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177daec2_d6da92a6",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "update this comment. Maybe call out that it is the number of intervals between sample (thus count - 1)",
+      "range": {
+        "startLine": 385,
+        "startChar": 21,
+        "endLine": 385,
+        "endChar": 34
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82e8b6c_3113548d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "nit: can you use positive logic (i.e. drop the !)",
+      "range": {
+        "startLine": 434,
+        "startChar": 3,
+        "endLine": 434,
+        "endChar": 5
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c226ddea_c6cbdcc0",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T14:28:21Z",
+      "side": 1,
+      "message": "why not in the mutex?",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 36
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
