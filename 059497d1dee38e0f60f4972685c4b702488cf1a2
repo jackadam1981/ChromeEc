@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c5260f_ecf2358a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3097,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-23T13:42:49Z",
+      "side": 1,
+      "message": "Should we just move this below PD_EVENT_TCPC_RESET handling statements?",
+      "range": {
+        "startLine": 3093,
+        "startChar": 0,
+        "endLine": 3097,
+        "endChar": 0
+      },
+      "revId": "059497d1dee38e0f60f4972685c4b702488cf1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
