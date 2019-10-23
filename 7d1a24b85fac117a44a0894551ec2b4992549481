@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "248fe3b2_38a138d7",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-23T19:12:00Z",
+      "side": 1,
+      "message": "This can be promoted to macro in include/espi.h and shared by all chip drivers.\n\n#define GPIO_SIGNAL_TO_VW_INDEX(__signal) (__signal - VW_SIGNAL_START)\n\nI\u0027m open to other name suggestions.",
+      "range": {
+        "startLine": 581,
+        "startChar": 44,
+        "endLine": 581,
+        "endChar": 68
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8607aa98_07a7dcdd",
         "filename": "common/espi.c",
         "patchSetId": 2
@@ -178,6 +201,30 @@
       "side": 1,
       "message": "I do prefer having the _START values be valid, that was how I had it in PS1.",
       "parentUuid": "fc31b102_8960ba38",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17114991_1ce34562",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-23T19:12:00Z",
+      "side": 1,
+      "message": "PS1 had IOEX_SIGNAL_BASE and IOEX_SIGNAL_START - these two names were confusing and prone to misuse down the road.  I like Jett\u0027s __IOEX_PLACEHOLDER suggestion so that IOEX_SIGNAL_START is valid.",
+      "parentUuid": "3d29486e_0cbfdb6f",
       "range": {
         "startLine": 34,
         "startChar": 1,
