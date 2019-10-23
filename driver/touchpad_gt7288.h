@@ -72,6 +72,8 @@ struct gt7288_ptp_report {
 	struct gt7288_contact contacts[GT7288_MAX_CONTACTS];
 };
 
+int gt7288_read(uint8_t *data, size_t max_length);
+
 /**
  * Reads a complete report, when the GT7288 is in PTP mode.
  *

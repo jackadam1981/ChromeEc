@@ -159,6 +159,7 @@ static void __timer_event_isr(void)
 		process_timers(NOT_ROLLOVER_EVENT);
 	}
 }
+
 /*
  * Declare the EC Timer lower in priority than the I2C interrupt. This
  * allows the I2C driver to process time sensitive interrupts.
