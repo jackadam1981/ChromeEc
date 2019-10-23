@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8607aa98_07a7dcdd",
+        "filename": "common/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-23T17:45:21Z",
+      "side": 1,
+      "message": "There are a lot of these comments, and it seems like each one is an opportunity for mistakes or confusion in the future. Can we have something like\ninline size_t vw_signal_to_index(enum espi_vw_signal)\nand similar for ioex_signal?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f532de3f_08a09848",
         "filename": "include/gpio_signal.h",
         "patchSetId": 2
