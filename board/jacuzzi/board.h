@@ -30,6 +30,13 @@
 #undef CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 200
 
+#define CONFIG_I2C_BITBANG
+#undef I2C_BITBANG_PORT_COUNT
+#define I2C_BITBANG_PORT_COUNT 1
+#undef CONFIG_I2C_NACK_RETRY_COUNT
+#define CONFIG_I2C_NACK_RETRY_COUNT 3
+#define CONFIG_SMBUS_PEC
+
 #define CONFIG_USB_PD_TCPM_FUSB302
 #define CONFIG_USB_PD_DISCHARGE_GPIO
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
@@ -61,9 +68,9 @@
 #define I2C_PORT_BC12               0
 #define I2C_PORT_TCPC0              0
 #define I2C_PORT_USB_MUX            0
-#define I2C_PORT_BATTERY            1
 #define I2C_PORT_CHARGER            board_get_charger_i2c()
 #define I2C_PORT_IO_EXPANDER_IT8801 1
+#define I2C_PORT_BATTERY            board_get_battery_i2c()
 #define I2C_PORT_VIRTUAL_BATTERY    I2C_PORT_BATTERY
 
 /* Enable Accel over SPI */
@@ -139,8 +146,9 @@ void board_reset_pd_mcu(void);
 int board_get_version(void);
 int board_is_sourcing_vbus(int port);
 
-/* returns the i2c port number of charger */
+/* returns the i2c port number of charger/battery */
 int board_get_charger_i2c(void);
+int board_get_battery_i2c(void);
 
 #endif /* !__ASSEMBLER__ */
 
