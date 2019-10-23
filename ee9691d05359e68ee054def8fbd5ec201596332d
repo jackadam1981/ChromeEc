@@ -22,6 +22,30 @@
       "revId": "ee9691d05359e68ee054def8fbd5ec201596332d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25514635_2036bc24",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-23T19:03:40Z",
+      "side": 1,
+      "message": "I think the original intent was to say anything !\u003d 0 will set the GPIO high (maybe?).\nI\u0027ll change it to be less confusing.",
+      "parentUuid": "0a2b3571_9d8f370b",
+      "range": {
+        "startLine": 198,
+        "startChar": 48,
+        "endLine": 198,
+        "endChar": 49
+      },
+      "revId": "ee9691d05359e68ee054def8fbd5ec201596332d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
