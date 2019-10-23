@@ -713,6 +713,9 @@ static inline void set_state(int port, enum pd_states next_state)
 	if (last_state == next_state)
 		return;
 
+	CPRINTF("\x1b[1;31mC%d st%d %s\x1b[m\n", port, next_state,
+				 pd_state_names[next_state]);
+
 #if defined(CONFIG_USBC_PPC) && defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)
 	/* If we're entering DRP_AUTO_TOGGLE, there is no sink connected. */
 	if (next_state == PD_STATE_DRP_AUTO_TOGGLE) {
@@ -3164,6 +3167,9 @@ void pd_task(void *u)
 				pd_set_power_role(port, PD_ROLE_DEFAULT(port));
 				pd[port].vdm_state = VDM_STATE_DONE;
 				set_state(port, PD_DEFAULT_STATE(port));
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+				pd_update_dual_role_config(port);
+#endif
 			}
 		}
 #endif
