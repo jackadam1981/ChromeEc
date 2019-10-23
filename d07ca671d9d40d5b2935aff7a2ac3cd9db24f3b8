@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0f3202_90bfba56",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T17:47:08Z",
+      "side": 1,
+      "message": "sorry for one more formatting change. Can you write the function as follows insetad\n\nif (!IS_ENABLED(CONFIG_SMBUS_PEC) \u0026\u0026 I2C_USE_PEC(slave_addr_flags))\n\t\treturn EC_ERROR_UNIMPLEMENTED;\n\nif (I2C_USE_PEC(slave_addr_flags) {\n  current code\n} else {\n   return i2cxfer()\n}\n\nIt makes it more clear that the i2x_xfer path is mutually exclusive with the PEC path",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 19
+      },
+      "revId": "d07ca671d9d40d5b2935aff7a2ac3cd9db24f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc655449_da644b28",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T17:47:08Z",
+      "side": 1,
+      "message": "can you remove the PEC flag here since all of the PEC logic is at this layer. I wouldn\u0027t want lower layers to also try to handle PEC logic.\n\n(here and all other calls within a PEC block)\n\nWhat are your thoughts?",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 48
+      },
+      "revId": "d07ca671d9d40d5b2935aff7a2ac3cd9db24f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9be913f_9389d968",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T17:47:08Z",
+      "side": 1,
+      "message": "this seems like a bug in the original code. I don\u0027t know why this isn\u0027t causing us more problems :(",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 9
+      },
+      "revId": "d07ca671d9d40d5b2935aff7a2ac3cd9db24f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
