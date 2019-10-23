@@ -159,7 +159,7 @@ static void __timer_event_isr(void)
 		process_timers(NOT_ROLLOVER_EVENT);
 	}
 }
-DECLARE_IRQ(EC_TMR1_IRQn, __timer_event_isr, 1);
+DECLARE_IRQ(EC_TMR1_IRQn, __timer_event_isr, 2);
 
 static void init_timer(mxc_tmr_regs_t *timer, enum tmr_pres prescaler,
 		       enum tmr_mode mode, uint32_t count)
