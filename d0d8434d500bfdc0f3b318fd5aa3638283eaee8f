@@ -22,6 +22,30 @@
       "revId": "d0d8434d500bfdc0f3b318fd5aa3638283eaee8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f079fb_9344e3cb",
+        "filename": "core/host/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T15:54:14Z",
+      "side": 1,
+      "message": "Most of the time, we just need something that is hermetic. Most tests just need to skip forward in time (which already happens). The mock is a useful tool if needed though.\n\nThis helps all tests that aren\u0027t using the mock timer, which is most of them. Now they are all repeatable with consistent results.\n\nThanks for the tip/reminder about mock clock though!",
+      "parentUuid": "5c6db5cc_8ff76c0f",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "d0d8434d500bfdc0f3b318fd5aa3638283eaee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
