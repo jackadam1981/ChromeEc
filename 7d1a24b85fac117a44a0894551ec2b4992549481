@@ -234,6 +234,30 @@
       "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86096af_9db07677",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-23T20:04:44Z",
+      "side": 1,
+      "message": "Agreed about the names, I\u0027ll update to use Jett\u0027s suggestion.",
+      "parentUuid": "17114991_1ce34562",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
