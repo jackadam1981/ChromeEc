@@ -428,6 +428,25 @@ int pd_adc_read(int port, int cc)
 		    cc_pull_stored == TYPEC_CC_RD && port == DUT &&
 		    cc == (cc_config & CC_POLARITY ? 0 : 1))
 			mv = 0;
+
+		/*
+		 * When servo configured as srcdts, servo pulls up the CC lines
+		 * with different Rp values, both connecting to DUT. Then the
+		 * servo PD state machine detects the Rd values in DUT. It will
+		 * detect both CC lines having Rd. As servo and DUT don't
+		 * support oriented debug accessory detection, there is no way
+		 * to determine the CC polarity. As a result, only the
+		 * unflipped direction (CC1 as primary) works.
+		 *
+		 * In order to make the flipped direction (CC2 as primary)
+		 * work, a workaround is to fake the alternative CC voltage as
+		 * something not Rd, e.g. Ra here.
+		 */
+		else if (!(cc_config & CC_DISABLE_DTS) &&
+		    cc_pull_stored == TYPEC_CC_RP && port == DUT &&
+		    cc == (cc_config & CC_POLARITY ? 0 : 1))
+			mv = 0;
+
 		else
 			mv = adc_read_channel(cc ? ADC_DUT_CC2_PD :
 						   ADC_DUT_CC1_PD);
