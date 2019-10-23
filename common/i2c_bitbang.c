@@ -287,6 +287,9 @@ static int i2c_bitbang_xfer(const struct i2c_port_t *i2c_port,
 	uint16_t addr_8bit = slave_addr_flags << 1, err = EC_SUCCESS;
 	int i = 0;
 
+	if (i2c_port->kbps != 100)
+		CPRINTS("warning: bitbang driver only supports 100kbps");
+
 	if (out_size) {
 		if (flags & I2C_XFER_START) {
 			err = i2c_start_cond(i2c_port);
