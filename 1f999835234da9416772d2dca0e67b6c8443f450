@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c4568c98_c326f3d3",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T15:51:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29f8f15b_27ba3afc",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12d172f_dc2d7147",
         "filename": "common/tablet_mode.c",
         "patchSetId": 2
@@ -276,6 +300,30 @@
       "side": 1,
       "message": "As far as I read the code correctly, all hook handlers don\u0027t need to be called on the first transition if we assume tablet_mode\u003d\u003ddisabled. That\u0027ll remove the complexity and remove the redundancy (i.e. skip setting a GPIO which is already set, skip enabling keyscan which is already enabled, skip notifying the host which already knows it\u0027s in clamshell, etc.).",
       "parentUuid": "7801c460_11f6eacf",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60572d60_bcc5bb27",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T15:51:31Z",
+      "side": 1,
+      "message": "Alright, I updated to just initialize to disable. We won\u0027t have an initial print of the tablet mode state.",
+      "parentUuid": "fc6b65d4_ceca58b4",
       "range": {
         "startLine": 42,
         "startChar": 8,
