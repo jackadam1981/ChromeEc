@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2957e35_1ddeb738",
+        "filename": "common/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-23T19:02:10Z",
+      "side": 1,
+      "message": "I agree, my preference to avoid this is to have the _START value be a valid signal, as in PS1.",
+      "parentUuid": "8607aa98_07a7dcdd",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f532de3f_08a09848",
         "filename": "include/gpio_signal.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-23T16:04:18Z",
       "side": 1,
       "message": "should this be 0xfff instead? This would still ensure it is large enough.",
+      "range": {
+        "startLine": 27,
+        "startChar": 14,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "792f3448_12a90cda",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-23T19:02:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure it matters, it is only here to ensure the size of the enum gpio_signal type, no one should ever be using it. I\u0027m open to suggestions for a better name.\n\nAnd now I\u0027ve read the comment below: making this 0xfff and adding _LIMIT to all three enums sounds good to me.",
+      "parentUuid": "f532de3f_08a09848",
       "range": {
         "startLine": 27,
         "startChar": 14,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "feea8305_b3b0979c",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-23T19:02:10Z",
+      "side": 1,
+      "message": "We don\u0027t need it, it was only added to enum gpio_signal to avoid the 8 vs 16 bit size problem. I guess we could add them to all 3 for consistency and say they are showing the end of the allocated range.",
+      "parentUuid": "44523bb6_fb68b985",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc31b102_8960ba38",
         "filename": "include/gpio_signal.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-23T16:04:18Z",
       "side": 1,
       "message": "what if we make\n\nIOEX_SIGNAL_START \u003d GPIO_LIMIT + 1,\n__IOEX_PLACEHODER \u003d GPIO_LIMIT, // Used to ensure that first value is same as start\n#include \"gpio.wrap\"\nIOEX_SIGNAL_END,\nIOEC_LIMIT \u003d 0x1ffff\n\n\nThen both GPIO_SIGNAL_START and IOEC_SIGNAL_START are valid values (and we don\u0027t waste an element in the ioex array)",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "7d1a24b85fac117a44a0894551ec2b4992549481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d29486e_0cbfdb6f",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-23T19:02:10Z",
+      "side": 1,
+      "message": "I do prefer having the _START values be valid, that was how I had it in PS1.",
+      "parentUuid": "fc31b102_8960ba38",
       "range": {
         "startLine": 34,
         "startChar": 1,
