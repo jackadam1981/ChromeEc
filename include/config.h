@@ -2315,6 +2315,12 @@
  */
 #undef CONFIG_ITE_FLASH_SUPPORT
 
+/*
+ * I2C HID touchpad.
+ *
+ */
+#undef CONFIG_I2C_HID_TOUCHPAD
+
 /*****************************************************************************/
 /* IPI configuration.  Support mt_scp only for now. */
 
