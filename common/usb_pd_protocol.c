@@ -3090,11 +3090,6 @@ void pd_task(void *u)
 		}
 #endif
 
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-		if (evt & PD_EVENT_UPDATE_DUAL_ROLE)
-			pd_update_dual_role_config(port);
-#endif
-
 #ifdef CONFIG_USB_PD_TCPC
 		/*
 		 * run port controller task to check CC and/or read incoming
@@ -3166,6 +3161,11 @@ void pd_task(void *u)
 				set_state(port, PD_DEFAULT_STATE(port));
 			}
 		}
+#endif  /* CONFIG_USB_PD_TCPC */
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+		if (evt & (PD_EVENT_UPDATE_DUAL_ROLE | PD_EVENT_TCPC_RESET))
+			pd_update_dual_role_config(port);
 #endif
 
 #ifdef CONFIG_USBC_PPC
