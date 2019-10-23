@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "af334f02_a54f0d8c",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-10-23T08:52:22Z",
+      "side": 1,
+      "message": "Thanks Aseda and Jett.\nI see I can set BIT(EC_MKBP_EVENT_HOST_EVENT) to wake up SoC when host event is triggered.\nBut how do I restrict some host events instead of all host events?\nFor current use case as an example, only EC_HOST_EVENT_POWER_BUTTON can wake up SoC.",
+      "parentUuid": "1aa4b8f6_da409fe1",
+      "revId": "83b83109ea127f5de6e4635e519e7a67587a1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1016977_c30019cd",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
