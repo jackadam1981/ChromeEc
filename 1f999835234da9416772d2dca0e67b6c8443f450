@@ -333,6 +333,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c1b889d_e4bc0d90",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:24:21Z",
+      "side": 1,
+      "message": "What I\u0027m proposing is getting rid of UNSET. Shall I upload my patchset? \n\nI think we don\u0027t need UNSET if we start with DISABLED (and transition between ENABLED and DISABLED onward). All listeners assume it\u0027s DISABLED until they hear ENABLED.",
+      "parentUuid": "60572d60_bcc5bb27",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
