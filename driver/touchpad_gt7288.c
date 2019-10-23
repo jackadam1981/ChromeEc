@@ -86,7 +86,7 @@ static void gt7288_translate_contact(const uint8_t *data,
 	contact->height = data[13];
 }
 
-static int gt7288_read(uint8_t *data, size_t max_length)
+int gt7288_read(uint8_t *data, size_t max_length)
 {
 	return i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, GT7288_SLAVE_ADDRESS,
 			NULL, 0, data, max_length);
