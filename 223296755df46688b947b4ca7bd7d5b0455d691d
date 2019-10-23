@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "612344bc_e27a6442",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "Can you do !defined(CHIP_FAMILY_NPCX7) instead?",
+      "range": {
+        "startLine": 21,
+        "startChar": 37,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb02ea8a_3a67d5a5",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "nit: I would change line here.",
+      "range": {
+        "startLine": 66,
+        "startChar": 29,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36802e6e_50bd9d13",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "static",
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cdeb5f1_d81f35e7",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "MIN(a,b)",
+      "range": {
+        "startLine": 294,
+        "startChar": 7,
+        "endLine": 294,
+        "endChar": 43
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1254714b_af550791",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "I think the code looks cleaner if you do this in i2c_fifo_write_data:\n\nlen \u003d 1;\nif (IS_ENABLED(CONFIG_I2C_DATA_FIFO)) {\n  len \u003d ...\n  fifo_avail \u003d ...\n}",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 4
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15762d75_d93a0de7",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 2
@@ -71,6 +180,126 @@
     },
     {
       "key": {
+        "uuid": "d2b6441c_d8aa10a2",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "static",
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8228a69_65ac9541",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "static",
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73727592_871d9cee",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "can you comment on these?",
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e1de61_43f3e3cc",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "I know it\u0027s not new but where is it defined?",
+      "range": {
+        "startLine": 874,
+        "startChar": 41,
+        "endLine": 874,
+        "endChar": 46
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b2104e_68069b05",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "Can you say something like \u0027currently supported only on npcx7\u0027 or add __error(\"not supported\") to config_chip.h?",
+      "range": {
+        "startLine": 2272,
+        "startChar": 28,
+        "endLine": 2272,
+        "endChar": 59
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b7408b_b350c79d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "e",
+      "range": {
+        "startLine": 2275,
+        "startChar": 11,
+        "endLine": 2275,
+        "endChar": 12
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08bd0a45_473f6af2",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -82,6 +311,30 @@
       "writtenOn": "2019-10-23T16:27:19Z",
       "side": 1,
       "message": "I am tempted to not make this a new config option and enabled FIFO i2c transation for NPCX7 on ToT.\n\nWhat risks do you see with enabling i2c FIFO on all new NPCX7 platforms?",
+      "range": {
+        "startLine": 2271,
+        "startChar": 0,
+        "endLine": 2277,
+        "endChar": 27
+      },
+      "revId": "223296755df46688b947b4ca7bd7d5b0455d691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908687e5_71721798",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-23T18:29:51Z",
+      "side": 1,
+      "message": "+1 on completely switching over to FIFO mode.",
+      "parentUuid": "08bd0a45_473f6af2",
       "range": {
         "startLine": 2271,
         "startChar": 0,
