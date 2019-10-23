@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06690648_a829172b",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-23T06:27:50Z",
+      "side": 1,
+      "message": "\"We want the charging indicator turns red when displayed Soc \u003c\u003d 10, so modify the battery Soc\"\n\nBut it seems \u003c\u003d 12, is this what you are expecting?",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "20940191baf6b7f72f0b46fa84793ed289a84abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
