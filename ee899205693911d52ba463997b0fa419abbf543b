@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0f485d7_da44be21",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-10-23T07:06:28Z",
+      "side": 1,
+      "message": "Looks like this patch doesn\u0027t wait for CROS_COMM_READY response after it sends a preamble string (0xec * 4). Should CR50 skip sending CROS_COMM_READY to align with this patch? Either way is ok to me.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "ee899205693911d52ba463997b0fa419abbf543b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
