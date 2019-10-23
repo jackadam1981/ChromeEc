@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d990db64_2c0d45fc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Bad copy pasta, fixed comment.",
+      "parentUuid": "0af38c85_fe01aac0",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b6487ca_5f26803c",
         "filename": "common/motion_sense.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcca6150_1ddea32c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "This fulfills bullet 2 above \"-the queue is almost full\"",
+      "parentUuid": "4b6487ca_5f26803c",
+      "range": {
+        "startLine": 910,
+        "startChar": 7,
+        "endLine": 910,
+        "endChar": 35
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2d5804d9_24338a5c",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2527e421_8f1f5227",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22af0d39_5b50aac2",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6673aea0_b191c6d3",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "You\u0027re right, I believe it should be. Refactored into a get/reset type function.",
+      "parentUuid": "22af0d39_5b50aac2",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "51c3ef46_c4de8d81",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e86e4f7_0befb9f1",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31a74ceb_d7eaacc6",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "88e9504d_469b831e",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31a74ceb_d7eaacc6",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31813bcf_08f67d39",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 6
@@ -151,6 +295,30 @@
       "writtenOn": "2019-10-23T14:28:21Z",
       "side": 1,
       "message": "we are locking now, should we remove this comment?\n\nAlso, why are we locking more, was it to fix a bug or convenience?",
+      "range": {
+        "startLine": 232,
+        "startChar": 45,
+        "endLine": 232,
+        "endChar": 71
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee55f24e_54b1ffdd",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "I\u0027m OK either way, we still don\u0027t need to lock for this command. The lock above is for fifo_ensure_space(). We also need the lock for some of the changes to fifo_staged below so this happened to get caught in the crossfire. I can update the comment or just remove that part.",
+      "parentUuid": "31813bcf_08f67d39",
       "range": {
         "startLine": 232,
         "startChar": 45,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "a2f5ab62_9295bcaf",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Moved the lock above, needed for the logic in commit_data_end which validates the timestamps.",
+      "parentUuid": "df16a007_b6d0f5e6",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 22
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "177daec2_d6da92a6",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 6
@@ -206,6 +398,30 @@
       "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86858b20_b968a1cc",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "177daec2_d6da92a6",
+      "range": {
+        "startLine": 385,
+        "startChar": 21,
+        "endLine": 385,
+        "endChar": 34
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "822fc7fc_7c5742d9",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82e8b6c_3113548d",
+      "range": {
+        "startLine": 434,
+        "startChar": 3,
+        "endLine": 434,
+        "endChar": 5
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c226ddea_c6cbdcc0",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 6
@@ -252,6 +492,30 @@
       "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150bd7e8_2776caca",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-23T21:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c226ddea_c6cbdcc0",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 36
+      },
+      "revId": "040f0bda59a166e5116c54c3542ae3e4605c47ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
