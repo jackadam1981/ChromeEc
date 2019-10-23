@@ -1,0 +1,409 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63bce3a7_933cf414",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: couldn\u0027t we use the `MAX` macro from util.h instead? (https://crrev.com/1a078e86ab6523d90d8ecc975466c446c030aad0/include/util.h#27)",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a753200_a20505c7",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "I don\u0027t understand how this relates to a pending reset; could the variable name or the documentation comment be clarified?",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9afd1660_9bf6c208",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Since we only write values 0 and 1 to this, let\u0027s make it a `bool`. Also, it looks like it can be `static`.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5242de63_4bdecbdc",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Looks like this can be `static`.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f96f3e0_de63774b",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "It looks like the fields in this struct are assigned to (in `i2c_hid_init`) but not read from, and b/70681946 has been marked fixed. Maybe we can remove the selective reporting stuff (at least until there\u0027s other code that uses it)?",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe14d816_5dee75dc",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nice documentation! It might be nice to clarify that we\u0027re talking about reports sent from the host to the EC, as the term \"report\" seems like it can refer to either direction.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91116efd_2bfa6279",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: I think this can be `const`.",
+      "range": {
+        "startLine": 384,
+        "startChar": 39,
+        "endLine": 384,
+        "endChar": 54
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd37f959_d0765d32",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: maybe print a warning to the console if this is not the case?",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b02425_4ab9597e",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: we have the `UINT16_FROM_BYTE_ARRAY_LE` macro for this now (https://crrev.com/ab18c5ac746d3f332700fd13ed390359a3611a93/include/common.h#136).",
+      "range": {
+        "startLine": 413,
+        "startChar": 8,
+        "endLine": 413,
+        "endChar": 34
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2aba2de_d6298f7f",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "I\u0027m not totally clear on this myself, but shouldn\u0027t we use `cprints` here so that we get a timestamp in the log (and the ability to filter by tag)?\n\n(Similarly for the other uses of `ccprintf` in this file.)",
+      "range": {
+        "startLine": 426,
+        "startChar": 3,
+        "endLine": 426,
+        "endChar": 11
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae912dd_b9b29962",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Could you document what the return values of this function mean? Is this meant to match up with `i2c_hid_touchpad_process` in i2c_hid_touchpad.h?",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72154e2_9caa6290",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "I\u0027m confused as to how this sets the power state.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba9cc3f_f1512770",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "b/70681946 is marked fixed, so if this TODO is still relevant it needs a different bug.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe1b38b0_42ed022e",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "b/70681946 is marked fixed, so if this TODO is still relevant it needs a different bug.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2300532_086fc96e",
+        "filename": "include/hid.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: update copyright year.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0c0413_257a7b6c",
+        "filename": "include/hid.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Could this be `sizeof(struct hid_descriptor)` instead, so that we don\u0027t have to remember to update it when changing the struct?",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc5d85b_190eb430",
+        "filename": "include/hid.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Is it intentional that these are both the same?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adee13db_db33c8d7",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: this looks like Doxygen, so should start with `/**`.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff9f579_caef2d7b",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: could make the parameter `size_t`, so that it can\u0027t be negative.",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68bc51c9_7080d29b",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "This seems like quite a complicated return value. Is this defined by the I2C HID spec, or could we replace it with something more intuitive?",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59785f67_af2c5673",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-23T21:48:36Z",
+      "side": 1,
+      "message": "Nit: again, should be `/**`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
