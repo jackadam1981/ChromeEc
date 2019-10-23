@@ -46,6 +46,53 @@
       "revId": "904c470dc3bdc344ae5c05dbde4768c63d0fc760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92447c92_7abbb4bb",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T15:16:51Z",
+      "side": 1,
+      "message": "We at least need a comment pointer to main.c with the alternate approach. Also comment that hooks is default unless boards opt-into init_early\n\nnit: you can use ifndef instead\n\n----\n\nI can\u0027t think of a better way that this CL without changing all other board implementations without testing them. If we had better automated testing, we could potential just change all boards to init early, but we don\u0027t have the safety net right now.",
+      "parentUuid": "90b16adc_662867e4",
+      "range": {
+        "startLine": 1350,
+        "startChar": 0,
+        "endLine": 1353,
+        "endChar": 0
+      },
+      "revId": "904c470dc3bdc344ae5c05dbde4768c63d0fc760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd250478_30e70028",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-23T15:16:51Z",
+      "side": 1,
+      "message": "we need a comment pointer to i2c_master for the alternate approach",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 13
+      },
+      "revId": "904c470dc3bdc344ae5c05dbde4768c63d0fc760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
