@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ec005d9_fa638a04",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-24T22:25:36Z",
+      "side": 1,
+      "message": "I couldn\u0027t find anything which suggest a good value for this on the spec. Anyway, 1ms seems reasonable.",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 29
+      },
+      "revId": "cac81cef38e9500c0678750497c18d9a19c92c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
