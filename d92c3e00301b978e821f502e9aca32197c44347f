@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64e0a400_8637caf9",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-24T15:37:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabb5c13_151007a5",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "d92c3e00301b978e821f502e9aca32197c44347f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19068278_315d0b2e",
         "filename": "include/test_util.h",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "d92c3e00301b978e821f502e9aca32197c44347f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2fdcfe5_8c11f4e5",
+        "filename": "include/test_util.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-24T15:37:07Z",
+      "side": 1,
+      "message": "You\u0027re right, adding a define __auto_type auto for C++",
+      "parentUuid": "19068278_315d0b2e",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "d92c3e00301b978e821f502e9aca32197c44347f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
