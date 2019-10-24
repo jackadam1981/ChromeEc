@@ -22,6 +22,30 @@
       "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3604ae0_424131bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-10-24T15:25:57Z",
+      "side": 1,
+      "message": "I spoke to a friend of mine on the Android compiler team about this prior to writing up this CL. He said we could do one of the following:\n1. Move away from hard into softfp which gives us a small performance hit, but he assured me that as long as we\u0027re not doing any tight recursion or using a very tight loop in which we pass floats as function arguments it won\u0027t be that bad.\n2. Use a pointer to the float when using varargs and keep everything else the same.\n\nHis recommendation was to go with #2 since we\u0027re rarely ever going to be using varargs with floats. I feel like moving to softfp is an entirely different discussion and we\u0027d need to do a TON of validating before committing to such a change.",
+      "parentUuid": "9051e36f_d91abf8a",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
