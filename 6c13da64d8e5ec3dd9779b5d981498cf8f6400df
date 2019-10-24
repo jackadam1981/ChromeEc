@@ -22,6 +22,30 @@
       "revId": "6c13da64d8e5ec3dd9779b5d981498cf8f6400df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996ef2c8_084faf15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-10-24T01:44:34Z",
+      "side": 1,
+      "message": "Hi Tim,\nI tested the value simply. The temperature value is OK. It is ambient temperature when not power on. It also could rise up and drop down smoothly. The thermal engineer is working on the detailed test. I am also awaiting his feedback if it is OK or needs calibration. We will report the result once he finishes the work.",
+      "parentUuid": "32e18ef6_ef5a4c20",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "6c13da64d8e5ec3dd9779b5d981498cf8f6400df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
