@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "085ee4f0_dde713e8",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "aeddf235_0680f40d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2842f7a_daaaafeb",
         "filename": "board/tglrvp_ish/board.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea2e454_ffcb9fdc",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "c2842f7a_daaaafeb",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "25cdddc6_ae707682",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "Currently no.",
+      "parentUuid": "e07ea204_e919c097",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a09b05f_03e07ca3",
         "filename": "board/tglrvp_ish/board.c",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4acb45_786153ea",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "This is something copy from original arcada_ish, removed it.",
+      "parentUuid": "8a09b05f_03e07ca3",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b191df92_f319fa89",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "power management for ish5.4 is not implemented yet.",
+      "parentUuid": "c887b722_1efd73d8",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1d6597_b7440269",
         "filename": "board/tglrvp_ish/board.c",
         "patchSetId": 8
@@ -137,6 +257,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e1d42e_441c4d4c",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5b1d6597_b7440269",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a415d07d_e9b53d5e",
+        "filename": "board/tglrvp_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "power management for ish5.4 is not implemented yet.",
+      "parentUuid": "f1c3439a_6f94456e",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b919e698_67e71d35",
         "filename": "board/tglrvp_ish/board.h",
         "patchSetId": 8
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "328038dd_2eace7d2",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "b919e698_67e71d35",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0277260_e62f1404",
         "filename": "board/tglrvp_ish/board.h",
         "patchSetId": 8
@@ -197,6 +389,30 @@
       "writtenOn": "2019-10-21T21:40:07Z",
       "side": 1,
       "message": "TGL RVP ISH",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00c05f8_cbcb1d42",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "c0277260_e62f1404",
       "range": {
         "startLine": 6,
         "startChar": 3,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "202fd822_ee9bcae4",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "1ba07209_b8aee186",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91bf8519_673615a7",
         "filename": "board/tglrvp_ish/board.h",
         "patchSetId": 8
@@ -252,6 +492,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf7de9e_f6a3cd21",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "91bf8519_673615a7",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "fd3d4e2a_6df32559",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "40137cf8_7d4c8730",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c42b83_4866d50b",
         "filename": "board/tglrvp_ish/board.h",
         "patchSetId": 8
@@ -298,6 +586,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4434d4e_af94d74e",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "55c42b83_4866d50b",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "9d3fa982_4ea21ce1",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "We haven\u0027t enabled and tested WDT in ish5.4 initial enablement. Can we enable WDT as a follow up patch?",
+      "parentUuid": "ff00381d_a2a3e7ca",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9491edfd_f394f5d6",
         "filename": "board/tglrvp_ish/board.h",
         "patchSetId": 8
@@ -344,6 +680,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964b0785_ae8629cd",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "Yes, currently we only enabled 1 sensor as the first step, more sensors will be enabled in future.",
+      "parentUuid": "9491edfd_f394f5d6",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "653c6d8d_52293b32",
+        "filename": "board/tglrvp_ish/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "980eadf2_9dd39591",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee121_833f661a",
         "filename": "board/tglrvp_ish/ec.tasklist",
         "patchSetId": 8
@@ -390,6 +774,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55f40335_cd246155",
+        "filename": "board/tglrvp_ish/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "2aeee121_833f661a",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "433f00d2_1f87e71a",
+        "filename": "board/tglrvp_ish/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8065980b_4a741150",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e08cad3_8d48264e",
         "filename": "board/tglrvp_ish/gpio.inc",
         "patchSetId": 8
@@ -436,6 +868,30 @@
       "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d7e44e_30083a1e",
+        "filename": "board/tglrvp_ish/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T08:08:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "4e08cad3_8d48264e",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "f9a10e0133b64d438f44cf350b3cfbd188cd3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
