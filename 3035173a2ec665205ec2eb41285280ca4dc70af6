@@ -46,6 +46,30 @@
       "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b92cd23_74dc89d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-10-24T17:42:51Z",
+      "side": 1,
+      "message": "So what exactly goes wrong when you just implement this as %f? We already have -mfloat-abi\u003dhard compiled in all boards, indicating an assumption that floating point support is available. I also see a few cases where floating point is used, though that code may not be activated on all boards.\n\nIt seems to me like it should be fine to implement the standard %f, even with the automatic promotion to double. You\u0027re already hiding this support behind CONFIG_FPU. If we come across boards that somehow support 32-bit floats but not 64-bit doubles, then -mfloat-abi\u003dhard -mfpu\u003dfpv4-sp-d16 was the wrong set of compiler options anyway. So those boards should be compiled with something different, like -mfloat-abi\u003dsoftfp. But I don\u0027t actually think any such hardware exists.",
+      "parentUuid": "f3604ae0_424131bc",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
