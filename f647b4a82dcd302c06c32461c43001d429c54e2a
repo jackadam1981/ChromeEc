@@ -22,6 +22,30 @@
       "revId": "f647b4a82dcd302c06c32461c43001d429c54e2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869c6bbe_b4b82880",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-24T17:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c38d0fbb_89e1b7db",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "f647b4a82dcd302c06c32461c43001d429c54e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
