@@ -65,7 +65,11 @@
 /************************************************************************/
 /* Define our RAM layout. */
 
+#ifdef CHIP_VARIANT_MEC5105
+#define CONFIG_MEC_SRAM_BASE_START	0x000D0000
+#else
 #define CONFIG_MEC_SRAM_BASE_START	0x000E0000
+#endif /* CHIP_VARIANT_MEC5105 */
 #define CONFIG_MEC_SRAM_BASE_END	0x00120000
 #define CONFIG_MEC_SRAM_SIZE		(CONFIG_MEC_SRAM_BASE_END - \
 					CONFIG_MEC_SRAM_BASE_START)
@@ -114,7 +118,11 @@
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE	256
 
 /* Program memory base address */
+#ifdef CHIP_VARIANT_MEC5105
+#define CONFIG_PROGRAM_MEMORY_BASE	0x000D0000
+#else
 #define CONFIG_PROGRAM_MEMORY_BASE	0x000E0000
+#endif /* CHIP_VARIANT_MEC5105 */
 
 #include "config_flash_layout.h"
 

@@ -9,6 +9,7 @@
 # Microchip MEC5106 which is similar to MEC1702
 CHIP:=mchp
 CHIP_FAMILY:=mec17xx
+CHIP_VARIANT:=mec5105
 CHIP_SPI_SIZE_KB:=512
 
 board-y=board.o
