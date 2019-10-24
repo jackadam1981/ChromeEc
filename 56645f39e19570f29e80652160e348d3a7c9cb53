@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24c29918_feee34d6",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-24T13:25:10Z",
+      "side": 1,
+      "message": "The entire macro body should be parenthesized to avoid possible errors with operator precedence.",
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a90229ae_31c2f4be",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-24T13:25:10Z",
+      "side": 1,
+      "message": "Why not use (__fls(_odr / LIS2DW12_ODR_MIN_VAL) + LIS2DW12_ODR_12HZ_VAL) here, like before?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 51
+      },
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411cb7cf_30151577",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-24T13:25:10Z",
+      "side": 1,
+      "message": "Parenthesize entire macro body",
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f079a3c8_d2c69edc",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-24T13:25:10Z",
+      "side": 1,
+      "message": "Same as for lines 184-185. Why not use __fls here?",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
