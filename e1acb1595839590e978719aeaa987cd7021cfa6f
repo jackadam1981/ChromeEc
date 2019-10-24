@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "98f193b9_74cec71a",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T04:48:06Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a68428ae_4e6477b5",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "e1acb1595839590e978719aeaa987cd7021cfa6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e32364f6_14751694",
         "filename": "include/common.h",
         "patchSetId": 1
@@ -235,6 +259,30 @@
       "revId": "e1acb1595839590e978719aeaa987cd7021cfa6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9fcd7d_10c0b337",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-24T04:48:06Z",
+      "side": 1,
+      "message": "ceil for given integers N and M, i.e. ceil for (N, M).",
+      "parentUuid": "692a1d57_a9fd54aa",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "e1acb1595839590e978719aeaa987cd7021cfa6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
