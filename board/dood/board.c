@@ -151,7 +151,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
+	 .addr = KX022_ADDR1,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 4, /* g */
 	 .config = {
@@ -175,7 +175,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	 .addr = BMI160_ADDR0,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 4,  /* g */
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
@@ -203,7 +203,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	 .addr = BMI160_ADDR0,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
@@ -227,7 +227,7 @@ static void board_update_sensor_config_from_sku(void)
 		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 	} else {
 		motion_sensor_count = 0;
-		gmr_tablet_switch_disable();
+		hall_sensor_disable();
 		/* Base accel is not stuffed, don't allow line to float */
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 			       GPIO_INPUT | GPIO_PULL_DOWN);
