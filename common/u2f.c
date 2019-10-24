@@ -194,6 +194,40 @@ static int verify_legacy_kh_owned(const uint8_t *app_id,
 	return p256_cmp(&app_id_p256, &kh_app_id_p256) == 0;
 }
 
+/*
+ * Returns 1 if presence is required to sign this request, or 0 if the presence
+ * check can be skipped.
+ */
+static int presence_required(const U2F_SIGN_REQ *req, size_t input_size)
+{
+	if (input_size == sizeof(U2F_SIGN_REQ) ||
+	    !(req->flags & 0x08 /* Skip Presence */)) {
+		/*
+		 * We have no message to verify, or we haven't been requested to
+		 * skip presence.
+		 */
+		return 1;
+	}
+
+	/*
+	 * Verify the message matches the hash passed in the request.
+	 */
+
+	/* verify_hash(req, input_size); */
+
+	/*
+	 * Check if the message could be a U2F authenticate response message,
+	 * and if so, check that the 'UP' bit is not set. If the 'UP' bit is
+	 * not set, we do not need to require presence to sign the message.
+	 *
+	 * See FIDO Raw Message formats spec for details on message format.
+	 */
+	if (input_size - sizeof(U2F_SIGN_REQ) == 69 && !(req->message[32] & 1))
+		return 0;
+
+	return 1;
+}
+
 /* Below, we depend on the response not being larger than than the request. */
 BUILD_ASSERT(sizeof(U2F_SIGN_RESP) <= sizeof(U2F_SIGN_REQ));
 
@@ -224,7 +258,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	/* Response is smaller than request, so no need to check this. */
 	*response_size = 0;
 
-	if (input_size != sizeof(U2F_SIGN_REQ))
+	if (input_size < sizeof(U2F_SIGN_REQ))
 		return VENDOR_RC_BOGUS_ARGS;
 
 	if (verify_kh_owned(req->userSecret, req->appId, req->keyHandle,
@@ -252,7 +286,8 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 		return VENDOR_RC_SUCCESS;
 
 	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
+	if (presence_required(req, input_size) &&
+	    pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Re-create origin-specific key. */

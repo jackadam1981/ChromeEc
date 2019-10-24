@@ -69,6 +69,7 @@ typedef struct {
     uint8_t keyHandle[U2F_FIXED_KH_SIZE];  // Key handle
     uint8_t hash[U2F_P256_SIZE];
     uint8_t flags;
+    uint8_t message[];
 } U2F_SIGN_REQ;
 
 typedef struct {
