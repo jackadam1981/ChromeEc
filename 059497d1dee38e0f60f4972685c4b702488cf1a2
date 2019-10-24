@@ -46,6 +46,30 @@
       "revId": "059497d1dee38e0f60f4972685c4b702488cf1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "173bccdd_f1d2b10f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3097,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-24T08:15:50Z",
+      "side": 1,
+      "message": "I miss tcpc_run() at 3103 line. patchset2 seems good. We should update the dual role before check port states.",
+      "parentUuid": "f4e1de6e_05e0ede1",
+      "range": {
+        "startLine": 3093,
+        "startChar": 0,
+        "endLine": 3097,
+        "endChar": 0
+      },
+      "revId": "059497d1dee38e0f60f4972685c4b702488cf1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
