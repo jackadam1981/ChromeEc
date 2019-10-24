@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ba0af14_989b8898",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a236ef1c_7ebf278a",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "I still think this function deserves common definition",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8578ec6_e1da3df2",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "size_t would also be appropriate",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e7e243_ff001552",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 126,
+        "startChar": 36,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee2b53e_8d07cc5c",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "linux style does not have a space on these casts",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7e56f3_7798b88e",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "separate out the increment",
+      "range": {
+        "startLine": 169,
+        "startChar": 23,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d77eac_7dec2ed4",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "why are we using a buffer at all when we can call addchar directly?",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6acb973_40445737",
+        "filename": "test/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-24T17:30:27Z",
+      "side": 1,
+      "message": "Can we add tests for multiple %pf in the same format string?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 1
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
