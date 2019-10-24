@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a71c04c_43fbd19a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-10-24T02:46:57Z",
+      "side": 1,
+      "message": "When you write \"dependent on hardware design,\" it makes it sound like some SKU of Helios *could* have the ALS, depending on what the SKU is. This will cause confusion, and it is better to just say that Helios doesn\u0027t have an ALS.\n\nMay I suggest rewording this as \"Helios does not have an ambient light sensor (ALS). Remove the ALS OPT3001 configuration.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "7a34184249f43feebfcfe8e5e8347886d0f72c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
