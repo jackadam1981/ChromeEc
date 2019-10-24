@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "680bfafc_f7599e8d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-24T12:09:31Z",
+      "side": 1,
+      "message": "Done, but we still need IS_ENABLED(CONFIG_SMBUS_PEC) in the second if for compiler to optimize out crc functions. \n*then maybe it\u0027s not that clear for human..?)",
+      "parentUuid": "5a0f3202_90bfba56",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 19
+      },
+      "revId": "d07ca671d9d40d5b2935aff7a2ac3cd9db24f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc655449_da644b28",
         "filename": "common/i2c_master.c",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "68ed6bcd_36933adb",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-24T12:09:31Z",
+      "side": 1,
+      "message": "Done.\n\nFlag removed in chip_i2c_xfer_with_notify(), so that the notify callbacks can still see the flag, and left a path for chip driver to receive the flag if we want hardware PEC in the future.",
+      "parentUuid": "bc655449_da644b28",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 48
+      },
+      "revId": "d07ca671d9d40d5b2935aff7a2ac3cd9db24f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9be913f_9389d968",
         "filename": "common/i2c_master.c",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-23T17:47:08Z",
       "side": 1,
       "message": "this seems like a bug in the original code. I don\u0027t know why this isn\u0027t causing us more problems :(",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 9
+      },
+      "revId": "d07ca671d9d40d5b2935aff7a2ac3cd9db24f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "821c042d_7006739f",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-24T12:09:31Z",
+      "side": 1,
+      "message": "not sure what you mean, but I also found that the retry mechanic in i2c_xfer_unlocked was not working here.",
+      "parentUuid": "c9be913f_9389d968",
       "range": {
         "startLine": 648,
         "startChar": 1,
