@@ -168,8 +168,9 @@ struct tcs_saturation_t {
 struct tcs3400_rgb_drv_data_t {
 	uint8_t calibration_mode;/* 0 = normal run mode, 1 = calibration mode */
 
-	struct rgb_calibration_t rgb_cal[RGB_CHANNEL_COUNT];
+	struct rgb_calibration_t calibration;
 	struct tcs_saturation_t saturation;  /* saturation adjustment */
+	fp_t irt; /* IRT scaling factor, one per device */
 };
 
 extern const struct accelgyro_drv tcs3400_drv;
