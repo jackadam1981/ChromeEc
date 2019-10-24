@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4486e07b_c4061d3b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-10-24T15:59:08Z",
+      "side": 1,
+      "message": "I tried using IS_ENABLED here as well as other places in the CL but these are the places where it doesn\u0027t work and generates a build error.",
+      "parentUuid": "451c38cc_cafe1679",
+      "revId": "71ed68280fecdd7f729e750eb7abb9c230a46d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a7442f_c6500814",
         "filename": "test/usb_pe.h",
         "patchSetId": 16
@@ -33,6 +51,24 @@
       "revId": "71ed68280fecdd7f729e750eb7abb9c230a46d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be956fe_683ff180",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-10-24T15:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a7442f_c6500814",
+      "revId": "71ed68280fecdd7f729e750eb7abb9c230a46d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

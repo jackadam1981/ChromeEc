@@ -16,6 +16,24 @@
       "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72e5d31_9a47d53d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-10-24T15:59:08Z",
+      "side": 0,
+      "message": "Yes, you are correct. I got carried away with the rush to get this CL ready for RO.",
+      "parentUuid": "2a5ae57f_717bef8b",
+      "revId": "b67b7780755c9ffa5f79ce2aa6a2689e15259785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
