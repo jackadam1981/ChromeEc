@@ -3,10 +3,17 @@
  * found in the LICENSE file.
  */
 
+/**
+ * @file
+ * @brief Controls for the mock rollback block library
+ */
+
 #ifndef __MOCK_ROLLBACK_MOCK_H
 #define __MOCK_ROLLBACK_MOCK_H
 
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
 
 struct mock_ctrl_rollback {
 	bool get_secret_fail;
@@ -18,5 +25,7 @@ struct mock_ctrl_rollback {
 }
 
 extern struct mock_ctrl_rollback mock_ctrl_rollback;
+
+size_t mock_ctrl_fill_rollback(const uint8_t *data, size_t size);
 
 #endif  /* __MOCK_ROLLBACK_MOCK_H */
