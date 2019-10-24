@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "451c38cc_cafe1679",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-24T14:02:16Z",
+      "side": 1,
+      "message": "Throughout the CL should be as consistent as possible on all of the #ifdef/#if defined to use IS_ENABLED",
+      "revId": "71ed68280fecdd7f729e750eb7abb9c230a46d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a7442f_c6500814",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-10-24T14:02:16Z",
+      "side": 1,
+      "message": "Missing one...\n#define PE_FLAGS_DR_SWAP_TO_DFP              BIT(23)",
+      "revId": "71ed68280fecdd7f729e750eb7abb9c230a46d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
