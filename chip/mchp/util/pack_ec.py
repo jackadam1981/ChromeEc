@@ -7,6 +7,8 @@
 # A script to pack EC binary into SPI flash image for MEC17xx
 # Based on MEC170x_ROM_Description.pdf DS00002225C (07-28-17).
 import argparse
+from enum import Enum
+import functools
 import hashlib
 import os
 import struct
@@ -22,12 +24,24 @@ import zlib # CRC32
 #
 
 LFW_SIZE = 0x1000
-LOAD_ADDR = 0x0E0000
-LOAD_ADDR_RW = 0xE1000
 HEADER_SIZE = 0x40
 SPI_CLOCK_LIST = [48, 24, 16, 12]
-SPI_READ_CMD_LIST = [0x3, 0xb, 0x3b, 0x6b]
+class DriveStrength(Enum):
+    TWO = 2
+    FOUR = 4
+    EIGHT = 8
+    TWELVE = 12
 
+DRIVE_STRENGTH_DICT = {
+    DriveStrength.TWO: 0,
+    DriveStrength.FOUR: 1,
+    DriveStrength.EIGHT: 2,
+    DriveStrength.TWELVE: 3
+}
+def driveStrengthFromString(str_value):
+  return DriveStrength(int(str_value))
+
+SPI_READ_CMD_LIST = [0x3, 0xb, 0x3b, 0x6b]
 CRC_TABLE = [0x00, 0x07, 0x0e, 0x09, 0x1c, 0x1b, 0x12, 0x15,
              0x38, 0x3f, 0x36, 0x31, 0x24, 0x23, 0x2a, 0x2d]
 
@@ -88,6 +102,9 @@ def GetSpiClockParameter(args):
          "Unsupported SPI clock speed %d MHz" % args.spi_clock
   return SPI_CLOCK_LIST.index(args.spi_clock)
 
+def GetDriveStrengthParameter(args):
+  return DRIVE_STRENGTH_DICT[args.drive_strength]
+
 def GetSpiReadCmdParameter(args):
   assert args.spi_read_cmd in SPI_READ_CMD_LIST, \
          "Unsupported SPI read command 0x%x" % args.spi_read_cmd
@@ -102,7 +119,7 @@ def BuildHeader(args, payload_len, load_addr, rorofile):
 
   # byte[5]
   b = GetSpiClockParameter(args)
-  b |= (1 << 2)
+  b |= (GetDriveStrengthParameter(args) << 2)
   header.append(b)
 
   # byte[6]
@@ -288,7 +305,7 @@ def parseargs():
                       default=0x80)
   parser.add_argument("-r", "--rw_loc", type=int,
                       help="Start offset of EC_RW. Default is -1 meaning 1/2 flash size",
-                      default=-1)
+                      default=0x81000)
   parser.add_argument("--spi_clock", type=int,
                       help="SPI clock speed. 8, 12, 24, or 48 MHz.",
                       default=24)
@@ -307,6 +324,12 @@ def parseargs():
   parser.add_argument("--verbose", action='store_true',
                       help="Enable verbose output",
                       default=False)
+  parser.add_argument("--load_addr", type=functools.partial(int, base=0),
+                      help="Address used as the base address SRAM",
+                      default=0x0E0000)
+  parser.add_argument("--drive_strength", type=driveStrengthFromString,
+                      help="Drive strength. One of [%s] mA" % (", ".join(map(str,[e.value for e in DriveStrength]))),
+                      default=4)
 
   return parser.parse_args()
 
@@ -411,7 +434,7 @@ def main():
 
   # MEC17xx Header is 0x80 bytes with an 64 byte signature
   # (32 byte SHA256 + 32 zero bytes)
-  header = BuildHeader(args, payload_len, LOAD_ADDR, rorofile)
+  header = BuildHeader(args, payload_len, args.load_addr, rorofile)
   # debug
   printByteArrayAsHex(header, "Header LFW + EC_RO")
 
