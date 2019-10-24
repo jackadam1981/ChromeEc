@@ -488,9 +488,11 @@ static void jump_to_image(uintptr_t init_addr)
 	 * drop it again so we don't leak power through the pulldown in the
 	 * Silego.
 	 */
+#if 0
 	gpio_set_level(GPIO_ENTERING_RW, 1);
 	usleep(MSEC);
 	gpio_set_level(GPIO_ENTERING_RW, 0);
+#endif
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	/* Note: must be before i2c module is locked down */

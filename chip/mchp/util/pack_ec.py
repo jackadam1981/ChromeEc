@@ -27,8 +27,8 @@ import zlib # CRC32
 #
 
 LFW_SIZE = 0x1000
-LOAD_ADDR = 0x0E0000
-LOAD_ADDR_RW = 0xE1000
+LOAD_ADDR = 0x0D0000
+LOAD_ADDR_RW = 0xD1000
 HEADER_SIZE = 0x40
 SPI_CLOCK_LIST = [48, 24, 16, 12]
 SPI_READ_CMD_LIST = [0x3, 0xb, 0x3b, 0x6b]
@@ -109,7 +109,7 @@ def BuildHeader(args, payload_len, load_addr, rorofile):
 
   # byte[5]
   b = GetSpiClockParameter(args)
-  b |= (1 << 2)
+  #b |= (1 << 2)
   header.append(b)
 
   # byte[6]
@@ -295,7 +295,7 @@ def parseargs():
                       default=0x80)
   parser.add_argument("-r", "--rw_loc", type=int,
                       help="Start offset of EC_RW. Default is -1 meaning 1/2 flash size",
-                      default=-1)
+                      default=0x81000)
   parser.add_argument("--spi_clock", type=int,
                       help="SPI clock speed. 8, 12, 24, or 48 MHz.",
                       default=24)
@@ -334,6 +334,8 @@ def printByteArrayAsHex(ba, title):
   debug_print("\n")
 
 def print_args(args):
+  args.spi_read_cmd = 0x6b
+  args.spi_size = 32768
   debug_print("parsed arguments:")
   debug_print(".input  = ", args.input)
   debug_print(".output = ", args.output)

@@ -175,13 +175,13 @@ def parseargs():
                       default=4)
   parser.add_argument("-l", "--header_loc", type=int,
                       help="Location of header in SPI flash",
-                      default=0x170000)
+                      default=0x1000)
   parser.add_argument("-p", "--payload_offset", type=int,
                       help="The offset of payload from the header",
                       default=0x240)
   parser.add_argument("-r", "--rwpayload_loc", type=int,
                       help="The offset of payload from the header",
-                      default=0x190000)
+                      default=0x91000)
   parser.add_argument("-z", "--romstart", type=int,
                       help="The first location to output of the rom",
                       default=0)

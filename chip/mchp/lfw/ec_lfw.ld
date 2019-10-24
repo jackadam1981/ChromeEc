@@ -14,8 +14,8 @@
  */
 MEMORY
 {
-    VECTOR(r )  : ORIGIN =  0x0E0000, LENGTH = 0x18
-    SRAM (xrw)  : ORIGIN =  0x0E0018, LENGTH = 0xFE8
+    VECTOR(r )  : ORIGIN =  0x0D0000, LENGTH = 24
+    SRAM (xrw)  : ORIGIN =  0x0D0018, LENGTH = 0x1000 - LENGTH(VECTOR)
 }
 
 /*

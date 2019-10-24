@@ -332,6 +332,8 @@ static void prepare_for_deep_sleep(void)
 {
 	trace0(0, MEC, 0, "Prepare for Deep Sleep");
 
+	MCHP_VCI_VCIREG &= ~(1 << 10);
+
 	/* sysTick timer */
 	CPU_NVIC_ST_CTRL &= ~ST_ENABLE;
 	CPU_NVIC_ST_CTRL &= ~ST_COUNTFLAG;

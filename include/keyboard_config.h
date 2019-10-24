@@ -17,7 +17,7 @@
 
 /* Keyboard matrix is 13 (or 15 with keypad) output columns x 8 input rows */
 #define KEYBOARD_COLS_WITH_KEYPAD	15
-#define KEYBOARD_COLS_NO_KEYPAD		13
+#define KEYBOARD_COLS_NO_KEYPAD		17
 
 /*
  * KEYBOARD_COLS_MAX has the build time column size. It's used to allocate

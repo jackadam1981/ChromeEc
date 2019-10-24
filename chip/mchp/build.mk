@@ -43,7 +43,7 @@ chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o qmspi.o
 chip-$(CONFIG_TFDP)+=tfdp.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
-chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
+# chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 
 # location of the scripts and keys used to pack the SPI flash image
 SCRIPTDIR:=./chip/${CHIP}/util
