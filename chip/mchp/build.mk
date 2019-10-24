@@ -58,14 +58,24 @@ ifeq ($(CONFIG_MCHP_LFW_DEBUG),y)
 	TEST_SPI=--test_spi
 endif
 
+DRIVE_STRENGTH=4
+ifeq ($(CHIP_VARIANT_MEC5105),y)
+	DRIVE_STRENGTH=2
+endif
+
 # pack_ec.py creates SPI flash image for MEC
 # _rw_size is CONFIG_RW_SIZE
 # Commands to convert $^ to $@.tmp
+_program_memory_base:=$(shell echo "CONFIG_PROGRAM_MEMORY_BASE" | $(CPP) $(CPPFLAGS) -P \
+	-Ichip/$(CHIP) -I$(BASEDIR) -I$(BDIR) -imacros include/config.h - 2> /dev/null)
+
 cmd_obj_to_bin = $(OBJCOPY) --gap-fill=0xff -O binary $< $@.tmp1 ; \
 		 ${SCRIPTDIR}/pack_ec.py -o $@.tmp -i $@.tmp1 \
 		--loader_file $(chip-lfw-flat) ${TEST_SPI} \
 		--spi_size ${CHIP_SPI_SIZE_KB} \
-		--image_size $(_rw_size) ${SCRIPTVERBOSE}; rm -f $@.tmp1
+		--image_size $(_rw_size) ${SCRIPTVERBOSE} \
+		--load_addr $(_program_memory_base) \
+		--drive_strength $(DRIVE_STRENGTH); rm -f $@.tmp1
 
 chip-lfw = chip/${CHIP}/lfw/ec_lfw
 chip-lfw-flat = $(out)/RW/$(chip-lfw)-lfw.flat

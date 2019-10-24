@@ -91,6 +91,21 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
  * will destroy panic data.
  */
 
+static void vci_latch(void)
+{
+	if (!IS_ENABLED(CHIP_VARIANT_MEC5105))
+		return;
+
+	/* Enable VCI_FW_CNTRL */
+	MCHP_VCI_VCIREG |= MCHP_VCI_VCIREG_FW_CNTRL;
+	/* Enable FW_EXT */
+	MCHP_VCI_VCIREG |= MCHP_VCI_VCIREG_FW_EXT;
+	/* Invert VCI_IN0# polarity so it stays asserted when latched */
+	MCHP_VCI_POLARITY |= MCHP_VCI_POLARITY_IN0_POS_EDGE;
+	/* Latch VCI_IN0# so power stays up when button is released */
+	MCHP_VCI_LATCH_EN |= MCHP_VCI_LATCH_IN0_EN;
+}
+
 /*
  * Configure 32-bit basic timer 0 for 1MHz, auto-reload and
  * no interrupt.
@@ -352,6 +367,9 @@ void lfw_main(void)
 
 	uintptr_t init_addr;
 
+	/* Enable firmware control in supported variants. */
+	vci_latch();
+
 	/* install vector table */
 	*((uintptr_t *) 0xe000ed08) = (uintptr_t) &hdr_int_vect;
 
@@ -366,6 +384,7 @@ void lfw_main(void)
 	MCHP_TMR16_CTL(0) &= ~1;
 #endif
 #endif
+
 	/*
 	 * TFDP functions will compile to nothing if CONFIG_MEC1701_TFDP
 	 * is not defined.

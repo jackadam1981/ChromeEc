@@ -197,7 +197,8 @@ void system_pre_init(void)
 	MCHP_INT_BLK_DIS = 0xfffffffful;
 	MCHP_INT_BLK_EN = (0x1Ful << 8) + (0x07ul << 24);
 
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	if (!IS_ENABLED(CHIP_VARIANT_MEC5105))
+		spi_enable(CONFIG_SPI_FLASH_PORT, 1);
 }
 
 void chip_save_reset_flags(uint32_t flags)
@@ -473,3 +474,20 @@ void system_set_image_copy(enum system_image_copy_t copy)
 				SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RO;
 }
 
+static void disable_vci_out(void)
+{
+	CPRINTS("disable_vci_out: LATCH=%08x POL=%08x REG=%08x",
+		MCHP_VCI_LATCH_EN, MCHP_VCI_POLARITY, MCHP_VCI_VCIREG);
+	MCHP_VCI_LATCH_EN &= ~MCHP_VCI_LATCH_IN0_EN;
+	MCHP_VCI_POLARITY &= ~MCHP_VCI_POLARITY_IN0_POS_EDGE;
+	/* De-assert VCI_OUT by disabling VCI_FW_CTRL */
+	MCHP_VCI_VCIREG &= ~(MCHP_VCI_VCIREG_FW_CNTRL | MCHP_VCI_VCIREG_FW_EXT);
+}
+DECLARE_DEFERRED(disable_vci_out);
+
+static void system_chipset_shutdown(void)
+{
+	CPRINTS("system_chipset_shutdown");
+	hook_call_deferred(&disable_vci_out_data, 100*MSEC);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, system_chipset_shutdown, HOOK_PRIO_DEFAULT);
