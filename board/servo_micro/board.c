@@ -236,6 +236,83 @@ DECLARE_CONSOLE_COMMAND(baud, command_uart_baud,
 			"Set baud rate on uart");
 
 /******************************************************************************
+ * Hold the usart pins low while disabling it, or return it to normal.
+ */
+static int command_hold_usart_low(int argc, char **argv)
+{
+	/* Each bit represets if that port is being held low */
+	static int usart_status;
+
+	const struct usart_config *usart;
+	int usart_mask;
+	int gpio_p, gpio_m;
+
+	if (argc > 3 || argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "usart2")) {
+		usart = &usart2;
+		usart_mask = 1 << 2;
+		gpio_p = GPIO_A;
+		gpio_m = 0x000C;
+	} else if (!strcasecmp(argv[1], "usart3")) {
+		usart = &usart3;
+		usart_mask = 1 << 3;
+		gpio_p = GPIO_B;
+		gpio_m = 0x0C00;
+	} else if (!strcasecmp(argv[1], "usart4")) {
+		usart = &usart4;
+		usart_mask = 1 << 4;
+		gpio_p = GPIO_A;
+		gpio_m = 0x0003;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	/* Updating the status of this port */
+	if (argc == 3) {
+		char *e;
+		const int hold_low = strtoi(argv[2], &e, 0);
+
+		if (*e || (hold_low < 0) || (hold_low > 1))
+			return EC_ERROR_PARAM2;
+
+		if (!!(usart_status & usart_mask) == hold_low) {
+			/* Do nothing since there is no change */
+		} else if (hold_low) {
+			/*
+			 * Shutdown the USB uart,
+			 * turn off alternate mode, then set both
+			 * pins to output low (even though only one is
+			 * technically needed for UART programming mode)
+			 */
+			usart_shutdown(usart);
+			gpio_set_alternate_function(gpio_p, gpio_m, -1);
+			gpio_set_flags_by_mask(gpio_p, gpio_m, GPIO_OUT_LOW);
+
+			usart_status |= usart_mask;
+		} else {
+			/*
+			 * This will reset the alternate mode of the
+			 * GPIO pins appropriately and restart USB UART
+			 */
+			usart_init(usart);
+
+			usart_status &= ~usart_mask;
+		}
+	}
+
+	/* Print status for get and set case. */
+	ccprintf("USART status: %s\n",
+			usart_status & usart_mask ? "held low" : "normal");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(hold_usart_low, command_hold_usart_low,
+			"usart[2|3|4] [0|1]?",
+			"Get/set the hold-low state for usart port");
+
+/******************************************************************************
  * Commands for sending the magic non-I2C handshake over I2C bus wires to an
  * ITE IT8320 EC chip to enable direct firmware update (DFU) over I2C mode.
  */
