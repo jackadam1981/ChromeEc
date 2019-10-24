@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "903cc50f_96ac6498",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bce3a7_933cf414",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a753200_a20505c7",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c0767aa_55ce888d",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a753200_a20505c7",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9ea3a434_b9e2868c",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9afd1660_9bf6c208",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5242de63_4bdecbdc",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4a2c29_755c4f2a",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5242de63_4bdecbdc",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "74c92818_9580b6b4",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "They are actually set and read from when an I2C HID command \u0027REPORT_ID_REPORTING\u0027 comes in later in the code so that from the host\u0027s point of view it would appear that we are maintaining these variables. It just doesn\u0027t have an actual effect for now. I think they are here just for protocol completeness.\n\nI have replaced the bug with my id. Let me know if you think removing it all would be a better idea.",
+      "parentUuid": "3f96f3e0_de63774b",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe14d816_5dee75dc",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2019-10-23T21:48:36Z",
       "side": 1,
       "message": "Nice documentation! It might be nice to clarify that we\u0027re talking about reports sent from the host to the EC, as the term \"report\" seems like it can refer to either direction.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ea624f_5e43c2ad",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Yeah, that is confusing. Added a note.",
+      "parentUuid": "fe14d816_5dee75dc",
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -127,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "f089ff1d_292528f8",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91116efd_2bfa6279",
+      "range": {
+        "startLine": 384,
+        "startChar": 39,
+        "endLine": 384,
+        "endChar": 54
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd37f959_d0765d32",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 2
@@ -141,6 +273,24 @@
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447e5fe1_72d5423e",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd37f959_d0765d32",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +314,30 @@
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a19a376_b5d7386a",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b02425_4ab9597e",
+      "range": {
+        "startLine": 413,
+        "startChar": 8,
+        "endLine": 413,
+        "endChar": 34
+      },
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "f3427d11_ee9f772f",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ae912dd_b9b29962",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d72154e2_9caa6290",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 2
@@ -218,6 +410,24 @@
       "writtenOn": "2019-10-23T21:48:36Z",
       "side": 1,
       "message": "I\u0027m confused as to how this sets the power state.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af751f73_f26166f2",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t. The idea is that the user of this implementation can parse the power setting from the return value and set the touch controller\u0027s power state accordingly. This way we can separate board-level stuff from the essential I2C HID protocol.\n\nI\u0027ve added a comment to explain this.",
+      "parentUuid": "d72154e2_9caa6290",
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -241,6 +451,24 @@
     },
     {
       "key": {
+        "uuid": "ef11d6f8_806e7ad2",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Updated the comment.",
+      "parentUuid": "aba9cc3f_f1512770",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe1b38b0_42ed022e",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 2
@@ -252,6 +480,24 @@
       "writtenOn": "2019-10-23T21:48:36Z",
       "side": 1,
       "message": "b/70681946 is marked fixed, so if this TODO is still relevant it needs a different bug.",
+      "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fb1e12_0b09eec3",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-24T09:40:37Z",
+      "side": 1,
+      "message": "Made it configurable.",
+      "parentUuid": "fe1b38b0_42ed022e",
       "revId": "227a5993bf5a239e4e7f4a6b102063bf756bcf48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
