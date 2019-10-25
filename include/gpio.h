@@ -11,6 +11,7 @@
 #include "common.h"
 
 /* Flag definitions for gpio_info and gpio_alt_func */
+#define GPIO_FLAG_NONE     0       /* No flag needed, default setting */
 /* The following are valid for both gpio_info and gpio_alt_func: */
 #define GPIO_OPEN_DRAIN    BIT(0)  /* Output type is open-drain */
 #define GPIO_PULL_UP       BIT(1)  /* Enable on-chip pullup */
@@ -63,6 +64,18 @@ enum gpio_signal {
 	GPIO_COUNT
 };
 #endif /* __CROS_EC_GPIO_SIGNAL_H */
+
+/* Alternate functions for GPIOs */
+enum gpio_alternate_func {
+	GPIO_ALT_FUNC_NONE = -1,
+	GPIO_ALT_FUNC_DEFAULT,
+	GPIO_ALT_FUNC_1,
+	GPIO_ALT_FUNC_2,
+	GPIO_ALT_FUNC_3,
+	GPIO_ALT_FUNC_4,
+	GPIO_ALT_FUNC_5,
+	GPIO_ALT_FUNC_6,
+};
 
 /* GPIO signal definition structure, for use by board.c */
 struct gpio_info {
@@ -271,7 +284,8 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags);
  * @param func		Alternate function; if <0, configures the specified
  *			GPIOs for normal GPIO operation.
  */
-void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func);
+void gpio_set_alternate_function(uint32_t port, uint32_t mask,
+				enum gpio_alternate_func func);
 
 #ifdef CONFIG_GPIO_POWER_DOWN
 /**
