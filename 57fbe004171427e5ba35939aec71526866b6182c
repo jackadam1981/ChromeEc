@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62159ca5_9b62167b",
+        "filename": "board/jacuzzi/ec.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-10-25T04:56:44Z",
+      "side": 1,
+      "message": "need at least LARGER_TASK_STACK_SIZE(\u003d640)\n 8   KEYSCAN          00000000    0.002249  544/640",
+      "range": {
+        "startLine": 18,
+        "startChar": 48,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "57fbe004171427e5ba35939aec71526866b6182c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
