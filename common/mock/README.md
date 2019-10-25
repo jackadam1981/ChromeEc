@@ -11,6 +11,8 @@ from unit tests and fuzzers' `.mocklist` file.
   optional header file to [include/mock](/include/mock).
   Header files are only necessary if you want to expose additional
   mock control functions/variables.
+  See the [Additional Information](#additional-information) section
+  for more detail on design patterns.
 * Add an new entry in [common/mock/build.mk](build.mk)
   that is conditioned on your mock's name.
 
@@ -58,3 +60,15 @@ void somefunc() {
 	mock_ctrl_rollback.get_secret_fail = true;
 }
 ```
+
+## Additional Information
+* When creating mock controls, consider placing all your mock parameters in
+  one externally facing struct, like in
+  [fp_sensor_mock.h](/include/mock/fp_sensor_mock.h).
+  The primary reason for this is to allow the mock to be easily used
+  by a fuzzer.
+* When following the above pattern, please provide a macro for resetting
+  default values for this struct, like in
+  [fp_sensor_mock.h](/include/mock/fp_sensor_mock.h).
+  This allows unit tests to quickly reset the mock state/parameters
+  before each unrelated unit test.
