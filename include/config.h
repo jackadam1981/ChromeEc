@@ -2668,7 +2668,8 @@
  * SLP signals (SLP_S3 and SLP_S4) use virtual wires intead of physical pins
  * with eSPI interface.
  */
-#undef CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS
+#undef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+#undef CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
 /* MCHP next two items are EC eSPI slave configuration */
 /* Maximum clock frequence eSPI EC slave advertises
