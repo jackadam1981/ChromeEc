@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "147283ca_f08dba0f",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-25T23:33:27Z",
+      "side": 1,
+      "message": "Can you include the unit in the name?",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1464f8_61ef07b6",
+        "filename": "power/icelake.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-25T23:33:27Z",
+      "side": 1,
+      "message": "I don\u0027t know why all of the others start with \"X86_\", but should this do that for consistency?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
