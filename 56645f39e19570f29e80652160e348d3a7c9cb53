@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "33b6a4da_61dbcad1",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-10-25T00:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c29918_feee34d6",
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a90229ae_31c2f4be",
         "filename": "driver/accel_lis2dw12.h",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b89745e5_8bd1e3d5",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-10-25T00:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90229ae_31c2f4be",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 51
+      },
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "411cb7cf_30151577",
         "filename": "driver/accel_lis2dw12.h",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3bf7f8_fb3aa3ea",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-10-25T00:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411cb7cf_30151577",
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca28d34a_47f2c365",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2019-10-25T00:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f079a3c8_d2c69edc",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "56645f39e19570f29e80652160e348d3a7c9cb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
