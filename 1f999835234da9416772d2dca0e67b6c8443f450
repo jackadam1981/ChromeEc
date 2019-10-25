@@ -429,6 +429,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4802881a_44c2ffd1",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-25T19:18:25Z",
+      "side": 1,
+      "message": "On start up, we set it\u0027s explicitly DISABLED (a.k.a. Clamshell). Then, the mode goes between ENABLED and DISABLED. When do we need UNINITIALIZED or UNSET? The mode is always set. \n\nEven a tablet device can start as a Clamshell and switch to tablet. Hooks and OS will be notified.",
+      "parentUuid": "abcabf8e_5590a7f4",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
