@@ -3950,7 +3950,6 @@ void pd_task(void *u)
 
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
 			tcpm_get_cc(port, &cc1, &cc2);
-
 			if (cc_is_rp(cc1) && cc_is_rp(cc2)) {
 				/* Debug accessory */
 				new_cc_state = PD_CC_DFP_DEBUG_ACC;
@@ -4812,11 +4811,20 @@ static void pd_control_resume(int port)
  * port's default state.
  */
 
-void pd_set_suspend(int port, int enable)
+int pd_set_suspend(int port, int enable)
 {
 	int tries = 300;
 
 	if (enable) {
+		if (pd[port].req_suspend_state ||
+		    pd[port].task_state == PD_STATE_SUSPENDED) {
+			/*
+			 * the PD task is already suspended
+			 * or has a suspend request pending
+			 */
+			return EC_ERROR_BUSY;
+		}
+
 		pd[port].req_suspend_state = 1;
 		do {
 			task_wake(PD_PORT_TO_TASK_ID(port));
@@ -4824,11 +4832,14 @@ void pd_set_suspend(int port, int enable)
 				break;
 			msleep(1);
 		} while (--tries != 0);
-		if (!tries)
+		if (!tries) {
 			CPRINTS("TCPC p%d set_suspend failed!", port);
+			return EC_ERROR_UNKNOWN;
+		}
 	} else {
 		pd_control_resume(port);
 	}
+	return EC_SUCCESS;
 }
 
 #ifdef CONFIG_USB_PD_TCPM_TCPCI
@@ -5691,6 +5702,7 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 	static int pd_control_disabled[CONFIG_USB_PD_PORT_COUNT];
 	const struct ec_params_pd_control *cmd = args->params;
 	int enable = 0;
+	int status;
 
 	if (cmd->chip >= CONFIG_USB_PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
@@ -5755,8 +5767,10 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_COMMAND;
 	}
 
+	status = pd_set_suspend(cmd->chip, !enable);
+	if (status != EC_SUCCESS)
+		return EC_RES_BUSY;
 	pd_comm_enable(cmd->chip, enable);
-	pd_set_suspend(cmd->chip, !enable);
 
 	return EC_RES_SUCCESS;
 }

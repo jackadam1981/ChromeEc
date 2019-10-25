@@ -537,13 +537,14 @@ void tc_src_power_off(int port)
 	}
 }
 
-void pd_set_suspend(int port, int enable)
+int pd_set_suspend(int port, int enable)
 {
 	if (pd_is_port_enabled(port) == !enable)
-		return;
+		return EC_ERROR_BUSY;
 
 	set_state_tc(port,
 		enable ? TC_DISABLED : TC_UNATTACHED_SNK);
+	return EC_SUCCESS;
 }
 
 int pd_is_port_enabled(int port)
