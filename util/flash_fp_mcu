@@ -181,7 +181,6 @@ flash_fp_mcu_stm32() {
   echo "${spiid}" > /sys/bus/spi/drivers/spidev/bind
 
   # Release reset as the SPI bus is now ready
-  echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
   echo "in" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
 
   # Print out the actual underlying command we're running and run it
@@ -198,11 +197,11 @@ flash_fp_mcu_stm32() {
   echo "out" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
   echo 0 > "/sys/class/gpio/gpio${gpio_boot0}/value"
   echo 0 > "/sys/class/gpio/gpio${gpio_nrst}/value"
-  echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
+  echo "in" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
+  sleep 0.01
+  echo "in" > "/sys/class/gpio/gpio${gpio_boot0}/direction"
 
   # Give up GPIO control
-  echo "in" > "/sys/class/gpio/gpio${gpio_boot0}/direction"
-  echo "in" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
   echo "${gpio_boot0}" > /sys/class/gpio/unexport
   echo "${gpio_nrst}" > /sys/class/gpio/unexport
 
