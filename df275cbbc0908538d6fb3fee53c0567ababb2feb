@@ -99,6 +99,328 @@
     },
     {
       "key": {
+        "uuid": "c9c69cb0_b8923dc7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "both of these flags are really only used for low power mode stuff. Instead of introducing these flags, can we instead change the state of the existing LPM flags instead.\n\nIf we we have a CC_EVENT flag (which I don\u0027t think we should), then all of the states that are interested in a CC states change should use this flag and clear it, not just low power mode.\n\nSame reasoning applies to power state change flag",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 72
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf221a25_e9e3367e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "see line 131 for how we are handling states that shouldn\u0027t be used\n\nThis keeps the enum value consistent",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5efee24_140c914b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "let\u0027s make this a flag instead, no need 8-bit on this, right?",
+      "range": {
+        "startLine": 149,
+        "startChar": 9,
+        "endLine": 149,
+        "endChar": 30
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa114b7_d90826cb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "let\u0027s always define this.\n\nOne of the goals of the new stack was to reduce the amount of ifdef all over the place. Let\u0027s continue making progress on that goal\n\nYou an use __maybe_unsed if you need to and let the linker remove the function later",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 8
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b575911c_9a7e56e0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "this is a state change from a diferent task now, we need to guard this which atomic access or a mutex\n\nor at least make the drp_state variable volitale so the compiler won\u0027t optimize out read and write instructions",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 25
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da5b7b8_b6d0b8c9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "we should be able to make IS_ENABLED work",
+      "range": {
+        "startLine": 698,
+        "startChar": 7,
+        "endLine": 698,
+        "endChar": 42
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb64b31_1cf602a8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need the guard.\n\nAlso I am pretty sure that more TCPC that are going to use the new stack will already define this so we won\u0027t be wasting extra cycles or code space",
+      "range": {
+        "startLine": 714,
+        "startChar": 7,
+        "endLine": 714,
+        "endChar": 35
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe9f1b7b_46c89ea9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "why? we are going to be checking the CC lines all the time. We should only check them when the status register on the TCPC informs us or a change\n\n-----\n\nWe had to have logic in the old stack that prevented the EC from talking to the TCPC over i2c to get CC lines update, but the new stack shouldn\u0027t have to suffer from that same scenario. We shouldn\u0027t need these types of guards for low power mode since we are not (at least before this \"|| !LPM_REQUEST\" addition) asking the TCPC for CC status proactively, only when we get an interrupt saying something changed.",
+      "range": {
+        "startLine": 774,
+        "startChar": 26,
+        "endLine": 774,
+        "endChar": 68
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c143b7_6f8a7ad9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be a need for this going forward after we the above to no long communicate with the TCPC.\n\nOnly low power mode clears this flag which is wrong since the flag could be stale.\n\nWe definitely need to rethink this",
+      "range": {
+        "startLine": 783,
+        "startChar": 21,
+        "endLine": 783,
+        "endChar": 38
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95122215_b6918076",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "why are you changing this from IS_ENABLE to ifdef, this is backwards progress",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 33
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f5a7daa_5858a40c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "check your logic here. Please don\u0027t just copy it from the old stack.\n\nis_try_src can never return true here since we are, by definition, in the Unattached_SNK state.\n\nWhen you are translating code from old to new, please take the time to understand it more fully before writing the new implementation",
+      "range": {
+        "startLine": 1640,
+        "startChar": 5,
+        "endLine": 1640,
+        "endChar": 15
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8cbe27_3481b20c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "this should be a different CL....\n\nLow power mode changes and this should not be in the same CL",
+      "range": {
+        "startLine": 1960,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 6
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93fd1608_c3344920",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "look at line 2349. If that needs to happen here, please remove it there",
+      "range": {
+        "startLine": 2322,
+        "startChar": 2,
+        "endLine": 2323,
+        "endChar": 40
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5227af_498c8ea0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2329,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T13:57:49Z",
+      "side": 1,
+      "message": "this is probably causing the double call which is causing the test failure",
+      "range": {
+        "startLine": 2329,
+        "startChar": 2,
+        "endLine": 2329,
+        "endChar": 18
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e91c4e6c_412eaac5",
         "filename": "include/usb_sm.h",
         "patchSetId": 17
