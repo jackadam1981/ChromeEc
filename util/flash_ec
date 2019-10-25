@@ -431,6 +431,21 @@ ccd_ec_boot0() {
 	dut_control ccd_ec_boot_mode_$2:$1
 }
 
+servo_micro_ec_boot0() {
+	info "Using servo micro $2 mode."
+
+	# Setting the touch point should be benign, or if the
+	# hardware rework is present, allow the EC_TX_SERVO_RX line
+	# to be driven by the servo for 'on' value. 'off' value
+	# lets the EC drive the EC_TX_SERVO_RX net.
+	#
+	# HW Rework (b/143163043#comment3):
+	#   - Disconnect U45.1 from ground
+	#   - Connected U45.1 to TP1 pad
+	dut_control tp1:$1
+	dut_control servo_micro_ec_boot_mode_$2:$1
+}
+
 servo_ec_boot0() {
 	dut_control ec_boot_mode:$1
 }
@@ -453,6 +468,8 @@ ec_switch_boot0() {
 	fi
 	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
 		stype=ccd
+	elif [[ "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
+		stype=servo_micro
 	elif [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
 		stype=servo
 	else
