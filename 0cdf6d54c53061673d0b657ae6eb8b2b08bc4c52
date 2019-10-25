@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "317f0af4_f7349d43",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4383,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-10-25T06:15:16Z",
+      "side": 1,
+      "message": "I think the logic should be \u003e\u003d. (and below three cases are same as too)\nRegardless of the CONFIG_USB_PD_PORT_COUNT, the port should discharge Vbus through its GPIO of the port.",
+      "range": {
+        "startLine": 4383,
+        "startChar": 30,
+        "endLine": 4383,
+        "endChar": 32
+      },
+      "revId": "0cdf6d54c53061673d0b657ae6eb8b2b08bc4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
