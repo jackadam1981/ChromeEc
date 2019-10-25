@@ -141,6 +141,30 @@
       "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2c36212_ee91eb1a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2667,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-25T00:24:24Z",
+      "side": 1,
+      "message": "Double checked, BB retimer need to check if port partner is ufp or not. Hence changing it. Sorry about the confusion!",
+      "parentUuid": "87e3ec8e_c309d2a6",
+      "range": {
+        "startLine": 2665,
+        "startChar": 0,
+        "endLine": 2667,
+        "endChar": 0
+      },
+      "revId": "10ea0998a87cd91b3a4401c91959027c19955a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
