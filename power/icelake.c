@@ -17,6 +17,10 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
+#ifndef SYS_PWROK_DELAY
+	#define SYS_PWROK_DELAY		2
+#endif
+
 /* The wait time is ~150 msec, allow for safety margin. */
 #define IN_PCH_SLP_SUS_WAIT_TIME_USEC	(250 * MSEC)
 
@@ -25,34 +29,40 @@ static int forcing_shutdown;  /* Forced shutdown in progress? */
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S0_DEASSERTED] = {
-		GPIO_PCH_SLP_S0_L,
-		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
-		"SLP_S0_DEASSERTED",
+		.gpio = GPIO_PCH_SLP_S0_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH |
+			POWER_SIGNAL_DISABLE_AT_BOOT,
+		.name = "SLP_S0_DEASSERTED",
 	},
 	[X86_SLP_S3_DEASSERTED] = {
-		SLP_S3_SIGNAL_L,
-		POWER_SIGNAL_ACTIVE_HIGH,
-		"SLP_S3_DEASSERTED",
+		.gpio = SLP_S3_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S3_DEASSERTED",
 	},
 	[X86_SLP_S4_DEASSERTED] = {
-		SLP_S4_SIGNAL_L,
-		POWER_SIGNAL_ACTIVE_HIGH,
-		"SLP_S4_DEASSERTED",
+		.gpio = SLP_S4_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S4_DEASSERTED",
 	},
 	[X86_SLP_SUS_DEASSERTED] = {
-		GPIO_SLP_SUS_L,
-		POWER_SIGNAL_ACTIVE_HIGH,
-		"SLP_SUS_DEASSERTED",
+		.gpio = GPIO_SLP_SUS_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_SUS_DEASSERTED",
 	},
 	[X86_RSMRST_L_PGOOD] = {
-		GPIO_PG_EC_RSMRST_ODL,
-		POWER_SIGNAL_ACTIVE_HIGH,
-		"RSMRST_L_PGOOD",
+		.gpio = GPIO_PG_EC_RSMRST_ODL,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "RSMRST_L_PGOOD",
 	},
 	[X86_DSW_DPWROK] = {
-		GPIO_PG_EC_DSW_PWROK,
-		POWER_SIGNAL_ACTIVE_HIGH,
-		"DSW_DPWROK",
+		.gpio = GPIO_PG_EC_DSW_PWROK,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "DSW_DPWROK",
+	},
+	[ALL_SYS_PGOOD] = {
+		.gpio = GPIO_PG_EC_ALL_SYS_PWRGD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "ALL_SYS_PWRGD",
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
@@ -121,6 +131,8 @@ enum power_state power_handle_state(enum power_state state)
 {
 	int dswpwrok_in = gpio_get_level(GPIO_PG_EC_DSW_PWROK);
 	static int dswpwrok_out = -1;
+	int all_sys_pwrgd_in;
+	int all_sys_pwrgd_out;
 
 	/* Pass-through DSW_PWROK to ICL. */
 	if (dswpwrok_in != dswpwrok_out) {
@@ -187,6 +199,22 @@ enum power_state power_handle_state(enum power_state state)
 		/* If SLP_SUS_L is asserted, we're no longer in S5. */
 		if (!power_has_signals(IN_PCH_SLP_SUS_DEASSERTED))
 			return POWER_S5G3;
+		break;
+
+	case POWER_S0:
+		/*
+		 * Check value of PG_EC_ALL_SYS_PWRGD to see if PCH_SYS_PWROK
+		 * needs to be changed. If it's low->high transition, requires a
+		 * board specified delay (default 2 ms)
+		 */
+		all_sys_pwrgd_in = gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD);
+		all_sys_pwrgd_out = gpio_get_level(GPIO_PCH_SYS_PWROK);
+
+		if (all_sys_pwrgd_in != all_sys_pwrgd_out) {
+			if (all_sys_pwrgd_in)
+				msleep(SYS_PWROK_DELAY);
+			gpio_set_level(GPIO_PCH_SYS_PWROK, all_sys_pwrgd_in);
+		}
 		break;
 
 	default:
