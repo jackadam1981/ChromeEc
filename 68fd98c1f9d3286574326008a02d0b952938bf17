@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9512861a_56234376",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-25T01:19:36Z",
+      "side": 1,
+      "message": "I think these are getting complicated enough that they could just be moved to a function in the .c file, assuming they\u0027re not used anywhere else.  If they\u0027re small and marked static, the compiler will most likely inline it anyway.  The division will require far greater latency than any function call anyway.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 62
+      },
+      "revId": "68fd98c1f9d3286574326008a02d0b952938bf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
