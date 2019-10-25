@@ -381,6 +381,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eed233f7_f4894b8a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-25T00:35:38Z",
+      "side": 1,
+      "message": "I think we can \u0026 should get rid of UNSET from forced_tablet_mode, too. It\u0027s only for the console command.",
+      "parentUuid": "78798095_0d0f8c3a",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
