@@ -352,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "9b37dd79_adc0112c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-25T14:59:13Z",
+      "side": 1,
+      "message": "After reading this again, this same off much more harsh than I intended it to, sorry.\n\nWhat I would have rather said:\nI don\u0027t think this try_src check belongs here and the function itself probably isn\u0027t needed. The old stack implemented TrySrc as a substate of unattached src so this check was important then. In the new stack, TrySrc is it\u0027s own state.\n\nI don\u0027t know that the flag check on DRP toggle is appropriate either since you don\u0027t appear to be using it on line 1662, where we are DRP toggling manually.\n\n\nI would love to see us have less flags on the new stack than were needed on the old stack. This is our opportunity to clean up the subtle state transition and requirements and make them first class in the state machine.",
+      "parentUuid": "7f5a7daa_5858a40c",
+      "range": {
+        "startLine": 1640,
+        "startChar": 5,
+        "endLine": 1640,
+        "endChar": 15
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d8cbe27_3481b20c",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
