@@ -662,7 +662,7 @@ void tcpci_tcpc_alert(int port)
 
 		/* Ensure we don't loop endlessly */
 		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
-			CPRINTF("C%d Cannot consume RX buffer after %d failed "
+			CPRINTS("C%d Cannot consume RX buffer after %d failed "
 				"attempts!", port, failed_attempts);
 			/*
 			 * The port is in a bad state, we don't want to consume
