@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67b4f710_c1b349c0",
+        "filename": "common/mock/usb_mux_mock.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-25T18:09:12Z",
+      "side": 1,
+      "message": "Thanks for using mocks in EC!\nAny particular reason for putting the control header files in common/mock, instead of include/mock?",
+      "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
