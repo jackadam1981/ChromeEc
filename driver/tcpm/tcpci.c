@@ -669,8 +669,8 @@ void tcpci_tcpc_alert(int port)
 			 * all EC resources so suspend the port for a little
 			 * while.
 			 */
-			pd_set_suspend(port, 1);
-			pd_deferred_resume(port);
+			if (pd_set_suspend(port, 1) == EC_SUCCESS)
+				pd_deferred_resume(port);
 			return;
 		}
 	}
