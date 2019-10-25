@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "794a9d5d_d0d12c93",
+        "filename": "test/fpsensor.mocklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-25T20:42:34Z",
+      "side": 0,
+      "message": "Courtesy note:\nThis will now conflict with cros/master, since I changed this name to FP_SENSOR in crrev.com/c/1715633/32 .",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "99d0d6e76c6c9e566a664bdb76f2e3c6db221cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
