@@ -492,7 +492,7 @@ int board_set_active_charge_port(int charge_port)
 		return EC_ERROR_INVAL;
 	}
 
-	CPRINTF("New chg p%d", charge_port);
+	CPRINTS("New chg p%d", charge_port);
 
 	if (charge_port == CHARGE_PORT_NONE) {
 		/* Disable both ports */
