@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34d06828_f5f6d642",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-25T18:15:43Z",
+      "side": 1,
+      "message": "Why use a `uint8_t` but then restrict it to 8 bits? (Might be worth putting in a comment.)",
+      "range": {
+        "startLine": 72,
+        "startChar": 18,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "7dc50cfad32a9ea0154f1cd8fb970210c2067544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
