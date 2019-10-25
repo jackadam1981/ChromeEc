@@ -22,6 +22,30 @@
       "revId": "cb860c94d5b562c6f6833dd60bcf2920713bb9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb7dde0_5afc8a65",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2019-10-25T20:45:34Z",
+      "side": 0,
+      "message": "My guess is no. The use in the EC code base seems wrong. -ffreestanding -fno-builtin -nostdinc is supposed to be used for non-OS binaries. But it seems the only places where this was used is for OS binaries.\n\nAlso there is another occurence of those in CPPFLAGS (and they\u0027re not preprocessor flags) that looks broken",
+      "parentUuid": "e14ea9ea_a4e46692",
+      "range": {
+        "startLine": 91,
+        "startChar": 44,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "cb860c94d5b562c6f6833dd60bcf2920713bb9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

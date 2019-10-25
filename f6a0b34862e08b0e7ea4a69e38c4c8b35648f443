@@ -22,6 +22,30 @@
       "revId": "f6a0b34862e08b0e7ea4a69e38c4c8b35648f443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fa1aa3_a1c6ce32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2019-10-25T20:45:34Z",
+      "side": 1,
+      "message": "-ffreestanding -fno-builtin -nostdinc are for non-OS builds but the flags are used for userland utilities. In many build environments this will cause the code to not compile or link correctly.\n\nI will look into the approach here again and clean up the other occurences",
+      "parentUuid": "b469c838_8a1e709c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "f6a0b34862e08b0e7ea4a69e38c4c8b35648f443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
