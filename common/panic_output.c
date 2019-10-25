@@ -15,6 +15,7 @@
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
+#include "usb_console.h"
 #include "util.h"
 
 /* Panic data goes at the end of RAM. */
@@ -89,7 +90,11 @@ void panic_printf(const char *format, ...)
 	uart_flush_output();
 
 	va_start(args, format);
+	/* Send the message to the UART console */
 	vfnprintf(panic_txchar, NULL, format, args);
+	/* Send the message to the USB console */
+	usb_vprintf(format, args);
+
 	va_end(args);
 
 	/* Flush the transmit FIFO */
