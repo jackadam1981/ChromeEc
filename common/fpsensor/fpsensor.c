@@ -164,6 +164,7 @@ static void fp_process_finger(void)
 	timestamp_t t0 = get_time();
 	int res = fp_sensor_acquire_image_with_mode(fp_buffer,
 			FP_CAPTURE_TYPE(sensor_mode));
+	int prev_level;
 	capture_time_us = time_since32(t0);
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
@@ -177,6 +178,10 @@ static void fp_process_finger(void)
 			CPRINTS("Failed to flush SPI: 0x%x", res);
 		/* we need CPU power to do the computations */
 		clock_enable_module(MODULE_FAST_CPU, 1);
+
+		/* Tell cr50 that we have user presence. */
+		prev_level = gpio_get_level(GPIO_USER_PRES_L);
+		gpio_set_level(GPIO_USER_PRES_L, 1 - prev_level);
 
 		if (sensor_mode & FP_MODE_ENROLL_IMAGE)
 			evt = fp_process_enroll();

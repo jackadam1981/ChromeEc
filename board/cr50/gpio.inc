@@ -125,6 +125,8 @@ GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
 GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
 GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
 
+GPIO(USER_PRES_L,     PIN(0, 3), GPIO_INPUT)
+
 /*
  * Pull this low to reset the AP. (We reset the EC with the RBOX.)
  * This is pseudo open drain.
@@ -221,6 +223,7 @@ PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
+PINMUX(GPIO(USER_PRES_L),     M4, DIO_INPUT)
 /*
  * Update closed_source_set1.c if pinmux for I2C_SCL_INA or I2C_SDA_INA is
  * changed or removed.
