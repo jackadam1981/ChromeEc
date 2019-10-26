@@ -58,6 +58,9 @@ static void power_button_press_enable_interrupt(int enable)
 
 static void power_button_handler(void)
 {
+	int signal_zero = gpio_get_level(GPIO_BATT_PRES_L);
+	CPRINTS("fpsensor line: %d", signal_zero);
+
 	CPRINTS("power button pressed");
 
 	if (physical_detect_press() != EC_SUCCESS) {
