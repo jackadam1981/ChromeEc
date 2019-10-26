@@ -178,6 +178,9 @@ static void fp_process_finger(void)
 		/* we need CPU power to do the computations */
 		clock_enable_module(MODULE_FAST_CPU, 1);
 
+		/* Tell cr50 that we have user presence. */
+		gpio_set_level(GPIO_USER_PRES_L, 0);
+
 		if (sensor_mode & FP_MODE_ENROLL_IMAGE)
 			evt = fp_process_enroll();
 		else if (sensor_mode & FP_MODE_MATCH)
