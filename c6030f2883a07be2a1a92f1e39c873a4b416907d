@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e9207028_9daf4844",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-27T05:09:01Z",
+      "side": 1,
+      "message": "can we rename GPIO as\nGPIO(NC_PCH_SYS_PWROK,\tPIN(K, 4), GPIO_INPUT)",
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "147283ca_f08dba0f",
         "filename": "power/icelake.c",
         "patchSetId": 1
