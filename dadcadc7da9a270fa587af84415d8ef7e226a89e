@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a63ef4f0_f1bfd42c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T17:55:52Z",
+      "side": 1,
+      "message": "Change these to CONFIG_HOSTCMD_SLP_S*_IS_VWIRE for consistency with the PLTRST naming at line 2683.\n\nAlso move these definitions to be adjacent to the PLTRST option at line 2683 with a single shared comment.",
+      "range": {
+        "startLine": 2653,
+        "startChar": 0,
+        "endLine": 2659,
+        "endChar": 0
+      },
+      "revId": "dadcadc7da9a270fa587af84415d8ef7e226a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d322cc4_e8515f9b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2683,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T17:55:52Z",
+      "side": 1,
+      "message": "Rename to CONFIG_HOSTCMD_ESPI_PLTRST_IS_VW (only 5 references to change).\nAlso add the following after include of board.h.\n#if defined CONFIG_HOSTCMD_ESPI_SLP_S3_IS_VW || \n   CONFIG_HOSTCMD_ESPI_SLP_S3_IS_VW ||\n   CONFIG_HOSTCMD_ESPI_PLTRST_IS_VW\n   #define CONFIG_HOST_ESPI_VW_ENABLED\n\nAnd then use CONFIG_HOST_ESPI_VW_ENABLED in the guard clauses.",
+      "range": {
+        "startLine": 2683,
+        "startChar": 7,
+        "endLine": 2683,
+        "endChar": 42
+      },
+      "revId": "dadcadc7da9a270fa587af84415d8ef7e226a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
