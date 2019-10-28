@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0cb464e6_3dafe5f1",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T23:38:09Z",
+      "side": 1,
+      "message": "Agreed. I was trying to make all lines \u003c 80 to satisfy repo upload checks (and your other comment). Sounds like you\u0027d prefer them to be longer in this case.",
+      "parentUuid": "2bd1b2c2_db309112",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "6f34c688f5c052090f67416e809a87b8e4da3660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9367bdb_a8a92ee3",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-25T17:13:26Z",
       "side": 1,
       "message": "What is this anyway?",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "6f34c688f5c052090f67416e809a87b8e4da3660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a465d4b_b508af05",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T23:38:09Z",
+      "side": 1,
+      "message": "Doxygen syntax. See \"putting documentation after members\": http://www.doxygen.nl/manual/docblocks.html",
+      "parentUuid": "d9367bdb_a8a92ee3",
       "range": {
         "startLine": 51,
         "startChar": 6,
