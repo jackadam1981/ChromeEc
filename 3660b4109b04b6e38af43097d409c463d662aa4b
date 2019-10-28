@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e257027_63e7a9e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T19:03:49Z",
+      "side": 1,
+      "message": "Do you know if same thing applies to STM32H743 (nocturne_fp)? I can give you a board (without FP sensor) that you can use to do the power measurement.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "3660b4109b04b6e38af43097d409c463d662aa4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a7e693_466635df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T19:03:49Z",
+      "side": 1,
+      "message": "Just for a sanity check, can you also enroll and test matching in the FPMCU console:\n\n fpenroll\n fpmatch",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "3660b4109b04b6e38af43097d409c463d662aa4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
