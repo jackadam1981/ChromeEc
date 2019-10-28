@@ -22,6 +22,30 @@
       "revId": "b31ac5b26d6a69d1e0cd65f9e9b5c1bc9c6e71b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012bb82f_eb7a4fc9",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2019-10-28T23:24:58Z",
+      "side": 1,
+      "message": "I used the usb_vprintf() instead of invocations that use the vfnprintf and passing it the USB console\u0027s __tx_char() function because I don\u0027t see a need for the USB console setup and shutdown related code to be duplicated here.\n\nWhen a fatal event occurs, the report_panic() function is triggered which stores the PANIC_DATA_PTR region. After this occurs, the panic_printf() is invoked and the system promptly reboots. As the data from usb format is added to a queue which terminates further printing when it is full and a deferred task is invoked to offload this data to the USB endpoint, nothing will be printed that first pass while we are in the ISR. When the chip reboots, the invocations are called from usb console commands and we don\u0027t have any special constraints.\n\nDigging though a bit more: I see 2 concerns related to us putting panic_data_print() within the fault ISR but these aren\u0027t very specific to the USB as the UART also has these issues. There are wait functions in both which rely on other systems to be working in order to ensure finite run time like the timers and peripherals and the second area is increased stack utilization caused by several layers of function calls and their parameters.\n\n\n\"It\u0027s not super clear that this can fit in this special context as well as vfnprintf(panic_txchar...).\"\n\nI don\u0027t understand this line. Can you elaborate on the concern or question.",
+      "parentUuid": "d70344a4_2c5a80c7",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "b31ac5b26d6a69d1e0cd65f9e9b5c1bc9c6e71b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
