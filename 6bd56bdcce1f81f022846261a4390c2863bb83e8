@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06aeeb3e_596d3901",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T16:36:03Z",
+      "side": 1,
+      "message": "Should be GPIO_ALT_FUNC_7 (and add enum to gpio.h). MediaTek doc shows support for modes 0-7 on GPIO pins.",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82af543_dfba3f0c",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T16:36:03Z",
+      "side": 1,
+      "message": "This value is 21 and out of bounds for enum gpio_alternate_func and STM32 uses up to 43 for this parameter.  Maybe add GPIO_ALT_FUNC_MAX \u003d 63 to gpio.h, and then add build asert\nBUILD_ASSERT(NRF51_MAX_ALT_FUNCS \u003c\u003d GPIO_ALT_FUNC_MAX)",
+      "range": {
+        "startLine": 170,
+        "startChar": 49,
+        "endLine": 170,
+        "endChar": 69
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3714c0a_2cac739a",
+        "filename": "chip/stm32/gpio-f0-l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T16:36:03Z",
+      "side": 1,
+      "message": "Add a build assert to chip/stm32/module_id.h\nBUILD_ASSERT(MODULE_COUNT \u003c\u003d GPIO_ALT_FUNC_MAX)",
+      "range": {
+        "startLine": 143,
+        "startChar": 13,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a6d28d_0be74b71",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T16:36:03Z",
+      "side": 1,
+      "message": "See comments in nrf51 stm32 drivers.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
