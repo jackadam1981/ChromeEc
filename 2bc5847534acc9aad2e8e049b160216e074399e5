@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1191f308_0b1dd546",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-10-28T17:39:59Z",
+      "side": 1,
+      "message": "Any reason why this is needed?",
+      "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12216760_0592e34e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-10-28T17:39:59Z",
+      "side": 1,
+      "message": "This should be get_state_tc, else compile error?",
+      "range": {
+        "startLine": 1644,
+        "startChar": 5,
+        "endLine": 1644,
+        "endChar": 22
+      },
+      "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
