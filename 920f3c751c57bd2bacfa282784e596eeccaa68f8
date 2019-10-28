@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c4190bc_b24b4780",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-28T20:32:37Z",
+      "side": 1,
+      "message": "Can you read these from gpio.inc?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 18
+      },
+      "revId": "920f3c751c57bd2bacfa282784e596eeccaa68f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a625f041_ca57b0ee",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-28T20:32:37Z",
+      "side": 1,
+      "message": "FYI: It can be GPIO_ALT_FUNC_NONE after CL:1880974.",
+      "range": {
+        "startLine": 290,
+        "startChar": 47,
+        "endLine": 290,
+        "endChar": 49
+      },
+      "revId": "920f3c751c57bd2bacfa282784e596eeccaa68f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
