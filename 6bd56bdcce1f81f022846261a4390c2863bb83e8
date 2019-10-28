@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "144bdaee_32edaa32",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-28T20:17:02Z",
+      "side": 1,
+      "message": "Do we need to care about reaching here with func\u003d\u003dGPIO_ALT_FUNC_NONE?",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b82af543_dfba3f0c",
         "filename": "chip/nrf51/gpio.c",
         "patchSetId": 2
