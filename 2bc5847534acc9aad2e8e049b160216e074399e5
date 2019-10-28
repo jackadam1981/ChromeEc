@@ -39,6 +39,23 @@
       "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd0a6ee_9dbedf16",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-10-28T17:55:54Z",
+      "side": 1,
+      "message": "Could you please rebase this patch. I am able to SRC_Ready for dongle connected with this change + change in Line 1643 set_rd(port) from Top of tree. Without that goes in loop.",
+      "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
