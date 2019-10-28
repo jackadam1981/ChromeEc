@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1e28d74_76dfd85a",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T21:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9207028_9daf4844",
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "147283ca_f08dba0f",
         "filename": "power/icelake.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d6526444_73c2a37c",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T21:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "147283ca_f08dba0f",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8f182ba_0a035a34",
         "filename": "power/icelake.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2019-10-26T14:31:03Z",
       "side": 1,
       "message": "from TGL PDG (page 664)\n1. we can remove delay as PCH_PWROK \u0026 SYS_PWROK can also be tied together. \n2. PCH_PWROK and SYS_PWROK both needs to be high to exit reset, but either signal can come up first.",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eddd9d6_367a2cb8",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T21:14:02Z",
+      "side": 1,
+      "message": "Yes, TGL doesn\u0027t require a delay for SYS_PWROK. My thinking was a board design might want a delay before releasing the AP from reset.\nThis would be consistent with the cometlake code, but I can remove it.",
+      "parentUuid": "c8f182ba_0a035a34",
       "range": {
         "startLine": 214,
         "startChar": 1,
@@ -100,6 +166,30 @@
       "side": 1,
       "message": "I think this signal also can be changed to X86_*.\nMay be it was left out because same signal is used for generating EN pin for IMVP9.",
       "parentUuid": "fc1464f8_61ef07b6",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5f72d5_4d89f4e5",
+        "filename": "power/icelake.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-28T21:14:02Z",
+      "side": 1,
+      "message": "I was following the naming convention used on cometlake - which has the same logic.  I\u0027ll update to include X86_ prefix.",
+      "parentUuid": "7333d466_3e1f740f",
       "range": {
         "startLine": 37,
         "startChar": 1,
