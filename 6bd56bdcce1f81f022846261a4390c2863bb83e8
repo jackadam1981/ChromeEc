@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fde447ec_1540a34a",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-28T23:34:12Z",
+      "side": 1,
+      "message": "Nit: I think the use of whitespace here is a little confusing. I think it might be better if the code were rearranged so that the line break is next to the \u0027|\u0027 or the \u0027\u0026\u0027.",
+      "range": {
+        "startLine": 388,
+        "startChar": 11,
+        "endLine": 388,
+        "endChar": 12
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06aeeb3e_596d3901",
         "filename": "chip/mt_scp/gpio.c",
         "patchSetId": 2
@@ -110,6 +133,29 @@
         "startChar": 0,
         "endLine": 77,
         "endChar": 17
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f27bf7_ba7c9519",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-28T23:34:12Z",
+      "side": 1,
+      "message": "GPIO_ALT_FUNC_NONE",
+      "range": {
+        "startLine": 284,
+        "startChar": 39,
+        "endLine": 284,
+        "endChar": 41
       },
       "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
