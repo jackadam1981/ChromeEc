@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2567cd7d_ca7a134c",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3be74093_0c6e2edb",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccdf6d87_7065ecc5",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf3aeeb_76691d9f",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ccdf6d87_7065ecc5",
+      "range": {
+        "startLine": 574,
+        "startChar": 6,
+        "endLine": 574,
+        "endChar": 37
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eba32bb9_f587fed7",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "28ba010a_062aa7c0",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dbb9e9c_99b8e668",
         "filename": "chip/ish/registers.h",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f45e37_e893323b",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "5dbb9e9c_99b8e668",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "afcd2c18_42b05fa2",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "ca29a532_18e9aaa2",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b70d6949_9cd7f3e7",
         "filename": "chip/ish/system.c",
         "patchSetId": 10
@@ -137,6 +257,30 @@
       "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7478b8d8_b605b3b6",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "b70d6949_9cd7f3e7",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "646019bd_8dedfdc2",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "704d2547_2550911e",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c5c354_ae82bbcb",
         "filename": "chip/ish/uart.c",
         "patchSetId": 10
@@ -183,6 +351,30 @@
       "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042471ec_99d95755",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "70c5c354_ae82bbcb",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 0
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "0b380848_5c5e74b3",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "4f52390f_4b7e9085",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 6
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da23e3f6_32d12a5b",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 10
@@ -229,6 +445,30 @@
       "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb1a2bb_e27007c0",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-10-28T06:25:30Z",
+      "side": 1,
+      "message": "No, enable config_pm_reset_prep will uses the way to process reset prep in full power management. As the full PM is not enabled in ish5.4, the chip_variant_ish5p4 doesn\u0027t imply config_pm_reset_prep.",
+      "parentUuid": "da23e3f6_32d12a5b",
+      "range": {
+        "startLine": 154,
+        "startChar": 37,
+        "endLine": 154,
+        "endChar": 69
+      },
+      "revId": "d0c63d3cf21ebd17f2d7c3f81d7ee93bece1ebb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
