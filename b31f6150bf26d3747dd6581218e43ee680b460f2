@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c4f86b9_a185ddfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T16:03:35Z",
+      "side": 1,
+      "message": "terms \u0027assertion/deassertion EC reset\u0027 would make it clearer to understand the intent of this patch.",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "b31f6150bf26d3747dd6581218e43ee680b460f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5002c8dd_85f64331",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T16:03:35Z",
+      "side": 1,
+      "message": "before this patch the timeout was happening in the background, now the current thread of execution is going to be blocked, could the delay be kept as in a deferred function?",
+      "revId": "b31f6150bf26d3747dd6581218e43ee680b460f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
