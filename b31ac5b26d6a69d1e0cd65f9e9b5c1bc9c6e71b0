@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d70344a4_2c5a80c7",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-28T21:52:16Z",
+      "side": 1,
+      "message": "Why not vfnprintf(panic_usb_tx_char,...)?\n\nIt\u0027s not super clear that this can fit in this special context as well as vfnprintf(panic_txchar...).\n\nCan you elaborate that it\u0027s not violating any assumptions that panic handling code needs to meet?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "b31ac5b26d6a69d1e0cd65f9e9b5c1bc9c6e71b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
