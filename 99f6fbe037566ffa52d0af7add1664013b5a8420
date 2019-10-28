@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da9a036d_fe833aba",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-28T23:10:30Z",
+      "side": 1,
+      "message": "Nit: please use C-style comments (`/* ... */`).",
+      "range": {
+        "startLine": 464,
+        "startChar": 2,
+        "endLine": 464,
+        "endChar": 4
+      },
+      "revId": "99f6fbe037566ffa52d0af7add1664013b5a8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78d88fe_9135b39c",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-28T23:10:30Z",
+      "side": 1,
+      "message": "Ditto on C-style.",
+      "range": {
+        "startLine": 476,
+        "startChar": 2,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "99f6fbe037566ffa52d0af7add1664013b5a8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03870d5e_50ba3245",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-28T23:10:30Z",
+      "side": 1,
+      "message": "Nit: no need for this comment unless there\u0027s documentation you\u0027d like to add.",
+      "revId": "99f6fbe037566ffa52d0af7add1664013b5a8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34967106_f5931909",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-28T23:10:30Z",
+      "side": 1,
+      "message": "Similarly, no need for documentation comments that only contain the function name.",
+      "revId": "99f6fbe037566ffa52d0af7add1664013b5a8420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
