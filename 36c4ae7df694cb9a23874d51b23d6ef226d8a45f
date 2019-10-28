@@ -46,6 +46,29 @@
       "revId": "36c4ae7df694cb9a23874d51b23d6ef226d8a45f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5498c578_214ab8a6",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-10-28T22:52:09Z",
+      "side": 1,
+      "message": "nit: \"test point\"",
+      "range": {
+        "startLine": 437,
+        "startChar": 15,
+        "endLine": 437,
+        "endChar": 26
+      },
+      "revId": "36c4ae7df694cb9a23874d51b23d6ef226d8a45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
