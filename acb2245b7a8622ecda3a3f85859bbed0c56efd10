@@ -93,6 +93,30 @@
       "revId": "acb2245b7a8622ecda3a3f85859bbed0c56efd10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccb3fcc3_f9c943ae",
+        "filename": "include/math_util.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-28T17:01:45Z",
+      "side": 1,
+      "message": "Could you please put back the example and simplify the explanation? That is, you can copy \u0026 paste:\n\n/*\n * Return the smallest positive X where M * X \u003e\u003d N.\n *\n * For example, if n \u003d 88 and m \u003d 9, then it returns 10\n * (i.e. 9 * 10 \u003e\u003d 88).\n */\n\nThen, lgtm.",
+      "parentUuid": "83a8cf84_a2eb0caa",
+      "range": {
+        "startLine": 120,
+        "startChar": 53,
+        "endLine": 120,
+        "endChar": 56
+      },
+      "revId": "acb2245b7a8622ecda3a3f85859bbed0c56efd10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
