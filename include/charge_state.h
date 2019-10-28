@@ -14,14 +14,20 @@
 #define PRECHARGE_TIMEOUT CONFIG_BATTERY_PRECHARGE_TIMEOUT
 
 /* Power state task polling periods in usec */
-#define CHARGE_POLL_PERIOD_VERY_LONG   MINUTE
+#define CHARGE_POLL_PERIOD_VERY_LONG   (5 * SECOND)
 #define CHARGE_POLL_PERIOD_LONG        (MSEC * 500)
 #define CHARGE_POLL_PERIOD_CHARGE      (MSEC * 250)
 #define CHARGE_POLL_PERIOD_SHORT       (MSEC * 100)
 #define CHARGE_MIN_SLEEP_USEC          (MSEC * 50)
-/* If a board hasn't provided a max sleep, use 1 minute as default */
+/*
+ * If a board hasn't provided a max sleep, use 10 seconds as default.
+ * We don't want this to be larger than 30 seconds because there is a known
+ * issue with FW in TI fuel gauges shipped after 2017 that can cause sporadic
+ * battery cutoff if the battery has not had i2c communication in over 30
+ * seconds and the overall battery drain is very small.
+ */
 #ifndef CHARGE_MAX_SLEEP_USEC
-#define CHARGE_MAX_SLEEP_USEC          MINUTE
+#define CHARGE_MAX_SLEEP_USEC          (10 * SECOND)
 #endif
 
 /* Power states */
