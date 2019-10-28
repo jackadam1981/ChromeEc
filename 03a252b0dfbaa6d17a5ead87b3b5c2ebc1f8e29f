@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e19a5498_3f1ba4e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T23:18:08Z",
+      "side": 1,
+      "message": "nit: Can you add\n\n (\"AN4365\")\n\nafter this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "03a252b0dfbaa6d17a5ead87b3b5c2ebc1f8e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac91b743_089bdb33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T23:18:08Z",
+      "side": 1,
+      "message": "nit: All caps.\n\nSame for both in gpio.inc",
+      "range": {
+        "startLine": 18,
+        "startChar": 39,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "03a252b0dfbaa6d17a5ead87b3b5c2ebc1f8e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b23709_e298f654",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-28T23:18:08Z",
+      "side": 1,
+      "message": "Should this be \"7.3.12 Analog configuration\" section?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "03a252b0dfbaa6d17a5ead87b3b5c2ebc1f8e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
