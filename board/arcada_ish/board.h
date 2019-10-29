@@ -21,6 +21,7 @@
 /* EC */
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
+#define CONFIG_ONLINE_CALIB
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
