@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c11b0d8_5984d963",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-29T03:25:02Z",
+      "side": 1,
+      "message": "just \u0027kukui\u0027",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "52dc107e40419aae5a52268be7e6b943cb86173b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e789f8f_d26145c4",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-29T03:25:02Z",
+      "side": 1,
+      "message": "please take a look at batery_mm8013.c. The code has an example to handle desired_voltage/desired_current changing in different temp zones",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "52dc107e40419aae5a52268be7e6b943cb86173b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
