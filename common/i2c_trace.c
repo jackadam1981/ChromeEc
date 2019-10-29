@@ -39,18 +39,17 @@ void i2c_trace_notify(int port, uint16_t slave_addr_flags,
 	return;
 
 trace_enabled:
-	CPRINTF("i2c: %d:0x%X ", port, addr);
+	CPRINTF("{%Xw", addr);
 	if (out_size) {
-		CPRINTF("wr ");
 		for (i = 0; i < out_size; i++)
-			CPRINTF("0x%02X ", out_data[i]);
+			CPRINTF("%02X", out_data[i]);
 	}
+	CPRINTF("r");
 	if (in_size) {
-		CPRINTF("  rd ");
 		for (i = 0; i < in_size; i++)
-			CPRINTF("0x%02X ", in_data[i]);
+			CPRINTF("%02X", in_data[i]);
 	}
-	CPRINTF("\n");
+	CPRINTF("}");
 }
 
 static int command_i2ctrace_list(void)
