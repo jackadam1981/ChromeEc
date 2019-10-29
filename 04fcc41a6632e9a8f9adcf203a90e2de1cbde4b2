@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8944db82_14f17e86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-10-29T05:56:45Z",
+      "side": 1,
+      "message": "change to , done",
+      "parentUuid": "6913f3c4_3b778d1a",
+      "revId": "04fcc41a6632e9a8f9adcf203a90e2de1cbde4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4694bb56_87e57cff",
         "filename": "board/dood/gpio.inc",
         "patchSetId": 1
