@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfd0581d_12a95a3e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-29T19:32:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we simply do:\n\n  static bool tablet_mode; /* disabled at start-up */\n  static bool forced;      /* currently named \u0027disabled\u0027 */\n\n? We only have 4 states, right? That is:\n\n  1. disabled\n  2. enabled\n  3. forced disabled\n  4. forced enabled\n\nWhy do we need forced_tablet_mode?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "5de71699bb9b14c3c56897401d40336b8c7f77b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
