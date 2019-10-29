@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "76fed792_967c5198",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-29T16:32:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1e28d74_76dfd85a",
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "147283ca_f08dba0f",
         "filename": "power/icelake.c",
         "patchSetId": 1
