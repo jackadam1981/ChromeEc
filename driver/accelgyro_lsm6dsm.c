@@ -822,6 +822,24 @@ err_unlock:
 	return ret;
 }
 
+static int read_temp(const struct motion_sensor_t *s, fp_t *temp)
+{
+	int ret;
+	uint8_t raw[2];
+	int16_t int_temp;
+
+	ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+				  LSM6DSM_OUT_TEMP_L_ADDR, raw, 2);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	int_temp = (int16_t) ((((uint16_t) raw[1]) << 8) | ((uint16_t) raw[0]));
+	*temp = FLOAT_TO_FP(25.0f) +
+		fp_div(INT_TO_FP(int_temp), FLOAT_TO_FP(256.0f));
+
+	return EC_SUCCESS;
+}
+
 const struct accelgyro_drv lsm6dsm_drv = {
 	.init = init,
 	.read = read,
@@ -830,6 +848,7 @@ const struct accelgyro_drv lsm6dsm_drv = {
 	.get_resolution = st_get_resolution,
 	.set_data_rate = lsm6dsm_set_data_rate,
 	.get_data_rate = st_get_data_rate,
+	.read_temp = read_temp,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS

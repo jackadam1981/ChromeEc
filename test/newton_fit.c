@@ -25,10 +25,10 @@ static int test_newton_fit_reset(void)
 
 	newton_fit_reset(&fit);
 	newton_fit_accumulate(&fit, 1.0f, 0.0f, 0.0f);
-	TEST_EQ(queue_count(&fit.orientations), (size_t) 1, "%zu");
+	TEST_EQ(queue_count(fit.orientations), (size_t) 1, "%zu");
 	newton_fit_reset(&fit);
 
-	TEST_EQ(queue_count(&fit.orientations), (size_t) 0, "%zu");
+	TEST_EQ(queue_count(fit.orientations), (size_t) 0, "%zu");
 
 	return EC_SUCCESS;
 }
@@ -41,8 +41,8 @@ static int test_newton_fit_accumulate(void)
 	newton_fit_reset(&fit);
 	newton_fit_accumulate(&fit, 1.0f, 0.0f, 0.0f);
 
-	TEST_EQ(queue_count(&fit.orientations), (size_t) 1, "%zu");
-	it = queue_begin(&fit.orientations);
+	TEST_EQ(queue_count(fit.orientations), (size_t) 1, "%zu");
+	it = queue_begin(fit.orientations);
 	TEST_EQ(((struct newton_fit_orientation *) it.ptr)->nsamples, 1, "%u");
 
 	return EC_SUCCESS;
@@ -57,8 +57,8 @@ static int test_newton_fit_accumulate_merge(void)
 	newton_fit_accumulate(&fit, 1.0f, 0.0f, 0.0f);
 	newton_fit_accumulate(&fit, 1.05f, 0.0f, 0.0f);
 
-	TEST_EQ(queue_count(&fit.orientations), (size_t) 1, "%zu");
-	it = queue_begin(&fit.orientations);
+	TEST_EQ(queue_count(fit.orientations), (size_t) 1, "%zu");
+	it = queue_begin(fit.orientations);
 	TEST_EQ(((struct newton_fit_orientation *) it.ptr)->nsamples, 2, "%u");
 
 	return EC_SUCCESS;
@@ -75,18 +75,18 @@ static int test_newton_fit_accumulate_prune(void)
 	newton_fit_accumulate(&fit, 0.0f, 1.0f, 0.0f);
 	newton_fit_accumulate(&fit, 0.0f, -1.0f, 0.0f);
 
-	TEST_EQ(queue_is_full(&fit.orientations), 1, "%d");
-	it = queue_begin(&fit.orientations);
+	TEST_EQ(queue_is_full(fit.orientations), 1, "%d");
+	it = queue_begin(fit.orientations);
 	TEST_EQ(((struct newton_fit_orientation *) it.ptr)->nsamples, 1, "%u");
-	queue_next(&fit.orientations, &it);
+	queue_next(fit.orientations, &it);
 	TEST_EQ(((struct newton_fit_orientation *) it.ptr)->nsamples, 1, "%u");
-	queue_next(&fit.orientations, &it);
+	queue_next(fit.orientations, &it);
 	TEST_EQ(((struct newton_fit_orientation *) it.ptr)->nsamples, 1, "%u");
-	queue_next(&fit.orientations, &it);
+	queue_next(fit.orientations, &it);
 	TEST_EQ(((struct newton_fit_orientation *) it.ptr)->nsamples, 1, "%u");
 
 	newton_fit_accumulate(&fit, 0.0f, 0.0f, 1.0f);
-	TEST_EQ(queue_is_full(&fit.orientations), 0, "%d");
+	TEST_EQ(queue_is_full(fit.orientations), 0, "%d");
 
 	return EC_SUCCESS;
 }

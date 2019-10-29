@@ -62,7 +62,7 @@ struct newton_fit {
 	/**
 	 * Queue of newton_fit_orientation structs.
 	 */
-	struct queue orientations;
+	struct queue *orientations;
 };
 
 #define NEWTON_FIT(SIZE, NSAMPLES, NEAR_THRES, NEW_PT_WEIGHT, ERROR_THRESHOLD, \
@@ -74,8 +74,8 @@ struct newton_fit {
 		.max_orientations = SIZE, \
 		.max_iterations = MAX_ITERATIONS, \
 		.min_orientation_samples = NSAMPLES, \
-		.orientations = QUEUE_NULL(SIZE, \
-					   struct newton_fit_orientation), \
+		.orientations = (struct queue *) \
+			&QUEUE_NULL(SIZE, struct newton_fit_orientation), \
 	})
 
 /**

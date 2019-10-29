@@ -78,12 +78,22 @@ static int test_rotate(void)
 	return EC_SUCCESS;
 }
 
+static int test_isnan(void)
+{
+	float f = NAN_F;
+
+	TEST_EQ(fp_isnan(f), 1, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	test_reset();
 
 	RUN_TEST(test_acos);
 	RUN_TEST(test_rotate);
+	RUN_TEST(test_isnan);
 
 	test_print_result();
 }

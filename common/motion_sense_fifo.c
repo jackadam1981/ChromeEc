@@ -12,8 +12,23 @@
 #include "task.h"
 #include "util.h"
 #include "math_util.h"
+#include "stdbool.h"
+#include "vec3.h"
+#include "accel_cal.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
+
+#define USES_ONLINE_CALIB(S) \
+	(IS_ENABLED(CONFIG_ONLINE_CALIB) && \
+	 (S) && \
+	 (S)->drv->read_temp && \
+	 (S)->online_calib_data)
+
+#define CLAMP(V, MIN, MAX) \
+	({ __auto_type _v = (V); \
+		__auto_type _min = (MIN); \
+		__auto_type _max = (MAX); \
+		((_v < _min) ? _min : (_v > _max) ? _max : _v); })
 
 /**
  * Staged metadata for the fifo queue.
@@ -53,9 +68,7 @@ static struct fifo_staged fifo_staged;
 
 /** Cache for internal sensor temperatures. */
 STATIC_IF(CONFIG_ONLINE_CALIB) fp_t sensor_temp_cache[SENSOR_COUNT];
-#ifdef CONFIG_ONLINE_CALIB
-memset(sensor_temp_cache, NAN_F, sizeof(sensor_temp_cache));
-#endif /* CONFIG_ONLINE_CALIB */
+STATIC_IF(CONFIG_ONLINE_CALIB) bool sensor_temp_cache_initialized;
 
 /**
  * Cached expected timestamp per sensor. If a sensor's timestamp pre-dates this
@@ -84,6 +97,19 @@ static inline int is_timestamp(
 }
 
 /**
+ * Check whether or not a given sensor data entry contains sensor data or not.
+ *
+ * @param data The data entry to check.
+ * @return True if the entry contains data, false otherwise.
+ */
+static inline bool is_data(
+	const struct ec_response_motion_sensor_data *data)
+{
+	return (data->flags & (MOTIONSENSE_SENSOR_FLAG_TIMESTAMP |
+			       MOTIONSENSE_SENSOR_FLAG_ODR)) == 0;
+}
+
+/**
  * Convenience function to get the head of the fifo. This function makes no
  * guarantee on whether or not the entry is valid.
  *
@@ -94,6 +120,21 @@ static inline struct ec_response_motion_sensor_data *get_fifo_head(void)
 	return ((struct ec_response_motion_sensor_data *) fifo.buffer) +
 		(fifo.state->head & fifo.buffer_units_mask);
 }
+
+/**
+ * Add a new calibration sample. This function assumes that there's a non NaN
+ * value at the corresponding entry of sensor_temp_cache with the latest
+ * temperature of the sensor being updated. If a new bias is found, it will
+ * be added to the staged units.
+ *
+ * @param sensor Pointer to the sensor being calibrated.
+ * @param data Pointer to the latest data being added.
+ * @param timestamp The timestamp of the data being added.
+ */
+static void add_calibration_sample(
+	struct motion_sensor_t *sensor,
+	const struct ec_response_motion_sensor_data *data,
+	const uint32_t timestamp);
 
 /**
  * Pop one entry from the motion sense fifo. Poping will give priority to
@@ -197,6 +238,12 @@ static void fifo_ensure_space(void)
 		 queue_count(&fifo) + fifo_staged.count);
 }
 
+static inline bool is_new_timestamp(uint8_t sensor_num, uint32_t timestamp)
+{
+	return sensor_num != 0xff &&
+		!(next_timestamp_initialized & BIT(sensor_num));
+}
+
 /**
  * Stage a single data unit to the motion sense fifo. Note that for the AP to
  * see this data, it must be committed.
@@ -211,21 +258,32 @@ static void fifo_stage_unit(
 	int valid_data)
 {
 	struct queue_chunk chunk;
-	int i;
+	int i, removed = 0;
 
 	mutex_lock(&g_sensor_mutex);
 
 	for (i = 0; i < valid_data; i++)
 		sensor->xyz[i] = data->data[i];
 
+	/* For timestamps, update the next value of the sensor's timestamp
+	 * if this timestamp is considered new.
+	 */
+	if (data->flags & MOTIONSENSE_SENSOR_FLAG_TIMESTAMP &&
+	    data->sensor_num < SENSOR_COUNT &&
+	    is_new_timestamp(data->sensor_num, data->timestamp)) {
+		next_timestamp[data->sensor_num].next =
+			next_timestamp[data->sensor_num].prev = data->timestamp;
+		next_timestamp_initialized |= BIT(data->sensor_num);
+	}
+
 	/* For valid sensors, check if AP really needs this data */
 	if (valid_data) {
-		int removed;
-
-		if (sensor->oversampling_ratio == 0)
-			goto stage_unit_end;
-		removed = sensor->oversampling++;
-		sensor->oversampling %= sensor->oversampling_ratio;
+		if (sensor->oversampling_ratio == 0) {
+			removed = 1;
+		} else {
+			removed = sensor->oversampling++;
+			sensor->oversampling %= sensor->oversampling_ratio;
+		}
 		if (removed)
 			goto stage_unit_end;
 	}
@@ -278,20 +336,38 @@ static void fifo_stage_unit(
 
 stage_unit_end:
 	mutex_unlock(&g_sensor_mutex);
+
+	/* Needs to happen after unlock because add_calibration_sample
+	 * can trigger another call to fifo_stage_unit.
+	 */
+	if (removed &&
+	    USES_ONLINE_CALIB(sensor) &&
+	    next_timestamp_initialized & BIT(data->sensor_num) &&
+	    !fp_isnan(sensor_temp_cache[data->sensor_num])) {
+		/* We're about to skip this sample, but we
+		 * should try to use it for online calibration
+		 * first.
+		 */
+		add_calibration_sample(
+			sensor, data,
+			next_timestamp[data->sensor_num].next);
+	}
 }
 
 /**
  * Stage an entry representing a single timestamp.
  *
  * @param timestamp The timestamp to add to the fifo.
+ * @param sensor_num The sensor number that this timestamp came from (use 0xff
+ *	  for unknown).
  */
-static void fifo_stage_timestamp(uint32_t timestamp)
+static void fifo_stage_timestamp(uint32_t timestamp, uint8_t sensor_num)
 {
 	struct ec_response_motion_sensor_data vector;
 
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
 	vector.timestamp = timestamp;
-	vector.sensor_num = 0;
+	vector.sensor_num = sensor_num;
 	fifo_stage_unit(&vector, NULL, 0);
 }
 
@@ -307,6 +383,79 @@ peek_fifo_staged(size_t offset)
 {
 	return (struct ec_response_motion_sensor_data *)
 		queue_get_write_chunk(&fifo, offset).buffer;
+}
+
+static void data_int162fp(
+	const struct motion_sensor_t *s,
+	const int16_t *data,
+	fpv3_t out)
+{
+	int i;
+	fp_t range = INT_TO_FP(s->drv->get_range(s));
+
+	for (i = 0; i < 3; ++i) {
+		fp_t v = INT_TO_FP((int32_t) data[i]);
+
+		out[i] = fp_div(v, INT_TO_FP(
+			(data[i] >= 0) ? 0x7fff : 0x8000));
+		out[i] = fp_mul(out[i], range);
+		out[i] = CLAMP(out[i], -range, range);
+	}
+}
+
+static void data_fp2int16(
+	const struct motion_sensor_t *s,
+	const fpv3_t data,
+	int16_t *out)
+{
+	int i;
+	fp_t range = INT_TO_FP(s->drv->get_range(s));
+
+	for (i = 0; i < 3; ++i) {
+		int32_t iv;
+		fp_t v = fp_div(data[i], range);
+
+		v = fp_mul(v, INT_TO_FP(
+			(data[i] >= INT_TO_FP(0)) ? 0x7fff : 0x8000));
+		iv = FP_TO_INT(v);
+		/* Check for overflow */
+		out[i] = CLAMP(iv, (int32_t) 0xffff8000, (int32_t) 0x00007fff);
+	}
+}
+
+/* See declaration for doc. */
+static void add_calibration_sample(
+	struct motion_sensor_t *sensor,
+	const struct ec_response_motion_sensor_data *data,
+	const uint32_t timestamp)
+{
+	struct ec_response_motion_sensor_data calib;
+	fp_t temperature = sensor_temp_cache[sensor - motion_sensors];
+
+	switch (sensor->type) {
+	case MOTIONSENSE_TYPE_ACCEL: {
+		struct accel_cal *cal =
+			(struct accel_cal *) sensor->online_calib_data;
+		fpv3_t fdata;
+
+		data_int162fp(sensor, data->data, fdata);
+		if (accel_cal_accumulate(
+			cal, timestamp, fdata[X], fdata[Y], fdata[Z],
+			temperature)) {
+			calib.flags = MOTIONSENSE_SENSOR_FLAG_ONLINE_CALIB;
+			data_fp2int16(sensor, cal->bias, calib.data);
+			CPRINTS("New calibration available for sensor[%d]"
+				"(%pf, %pf, %pf)",
+				(int) (sensor - motion_sensors),
+				&cal->bias[0], &cal->bias[1], &cal->bias[2]);
+			fifo_stage_unit(&calib, sensor, 0);
+		}
+		break;
+	}
+	default:
+		CPRINTS("Calibration not yet enabled for sensor type %d",
+			sensor->type);
+	}
 }
 
 int motion_sense_fifo_wake_up_needed(void)
@@ -342,7 +491,7 @@ void motion_sense_fifo_insert_async_event(
 
 inline void motion_sense_fifo_add_timestamp(uint32_t timestamp)
 {
-	fifo_stage_timestamp(timestamp);
+	fifo_stage_timestamp(timestamp, 0xff);
 	motion_sense_fifo_commit_data();
 }
 
@@ -352,19 +501,28 @@ void motion_sense_fifo_stage_data(
 	int valid_data,
 	uint32_t time)
 {
+	/* TODO create a motion_sense_fifo_init function to handle this. */
+	if (IS_ENABLED(CONFIG_ONLINE_CALIB) && !sensor_temp_cache_initialized) {
+		int i;
+
+		CPRINTS("Initializing temperature cache...");
+		for (i = 0; i < SENSOR_COUNT; ++i)
+			sensor_temp_cache[i] = NAN_F;
+		sensor_temp_cache_initialized = true;
+	}
 	if (IS_ENABLED(CONFIG_SENSOR_TIGHT_TIMESTAMPS)) {
 		/* First entry, save the time for spreading later. */
 		if (!fifo_staged.count)
 			fifo_staged.read_ts = __hw_clock_source_read();
-		fifo_stage_timestamp(time);
+		fifo_stage_timestamp(time, data->sensor_num);
 	}
-	if (IS_ENABLED(CONFIG_ONLINE_CALIB) && sensor->drv->read_temp &&
-	    fp_isnan(sensor_temp_cache[motion_sensors - sensor])) {
+	if (USES_ONLINE_CALIB(sensor) &&
+	    fp_isnan(sensor_temp_cache[sensor - motion_sensors])) {
 		fp_t temp;
 		int rc = sensor->drv->read_temp(sensor, &temp);
 
 		if (rc == EC_SUCCESS)
-			sensor_temp_cache[motion_sensors - sensor] = temp;
+			sensor_temp_cache[sensor - motion_sensors] = temp;
 	}
 	fifo_stage_unit(data, sensor, valid_data);
 }
@@ -436,17 +594,28 @@ commit_data_end:
 	 * the timestamp right before it to keep things correct.
 	 */
 	for (i = 0; i < fifo_staged.count; i++) {
+		int lookback_counter;
+
 		data = peek_fifo_staged(i);
 		if (data->flags & MOTIONSENSE_SENSOR_FLAG_WAKEUP)
 			wake_up_needed = 1;
 
-		/* Skip timestamp, we don't know the sensor number yet. */
-		if (is_timestamp(data))
+		/* Skip non-data entries, we don't know the sensor number yet.
+		 */
+		if (!is_data(data))
 			continue;
 
 		/* Get the sensor number and point to the timestamp entry. */
 		sensor_num = data->sensor_num;
-		data = peek_fifo_staged(i - 1);
+		lookback_counter = 1;
+		do {
+			data = peek_fifo_staged(i - lookback_counter++);
+		} while (lookback_counter < i && !is_timestamp(data));
+
+		if (lookback_counter == i) {
+			CPRINTS("Timestamp not found for data entry in FIFO");
+			continue;
+		}
 
 		/*
 		 * If this is the first time we're seeing a timestamp for this
@@ -468,6 +637,14 @@ commit_data_end:
 			fifo_staged.requires_spreading
 			? data_periods[sensor_num]
 			: motion_sensors[sensor_num].collection_rate;
+
+		/* Update online calibration if enabled. */
+		data = peek_fifo_staged(i);
+		if (USES_ONLINE_CALIB(&motion_sensors[sensor_num]) &&
+		    !fp_isnan(sensor_temp_cache[sensor_num]))
+			add_calibration_sample(
+				&motion_sensors[sensor_num],
+				data, next_timestamp[sensor_num].prev);
 	}
 
 	/* Advance the tail and clear the staged metadata. */
@@ -475,8 +652,8 @@ commit_data_end:
 
 	/* Reset metadata for next staging cycle. */
 	memset(&fifo_staged, 0, sizeof(fifo_staged));
-	if (IS_ENABLED(CONFIG_ONLINE_CALIB))
-		memset(sensor_temp_cache, NAN_F, sizeof(sensor_temp_cache));
+	for (i = 0; IS_ENABLED(CONFIG_ONLINE_CALIB) && i < SENSOR_COUNT; ++i)
+		sensor_temp_cache[i] = NAN_F;
 
 	mutex_unlock(&g_sensor_mutex);
 }
@@ -535,9 +712,11 @@ int motion_sense_fifo_read(int capacity_bytes, int max_count, void *out,
 
 void motion_sense_fifo_reset(void)
 {
+	int i;
+
 	next_timestamp_initialized = 0;
 	memset(&fifo_staged, 0, sizeof(fifo_staged));
-	if (IS_ENABLED(CONFIG_ONLINE_CALIB))
-		memset(sensor_temp_cache, NAN_F, sizeof(sensor_temp_cache));
+	for (i = 0; IS_ENABLED(CONFIG_ONLINE_CALIB) && i < SENSOR_COUNT; ++i)
+		sensor_temp_cache[i] = NAN_F;
 	queue_init(&fifo);
 }
