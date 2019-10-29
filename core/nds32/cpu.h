@@ -9,6 +9,7 @@
 #define __CROS_EC_CPU_H
 
 #include <stdint.h>
+#include "console.h"
 
 /* Process Status Word bits */
 #define PSW_GIE		BIT(0) /* Global Interrupt Enable */
@@ -49,6 +50,13 @@ static inline uint32_t get_itype(void)
 	uint32_t ret;
 	asm volatile ("mfsr %0, $ITYPE" : "=r"(ret));
 	return ret;
+}
+
+inline void get_lp(void)
+{
+	uint32_t ret;
+	asm volatile ("mov55 %0, $lp" : "=r"(ret));
+	ccprints("$lp = 0x  %x", ret);
 }
 
 /* Generic CPU core initialization */
