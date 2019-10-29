@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ace4cec_5b7402df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T06:20:15Z",
+      "side": 1,
+      "message": "nit: value",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "ca40c569a741a00fa754536df734e106cfa70b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c804be9_674ccb29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T06:20:15Z",
+      "side": 1,
+      "message": "I think instead of saying header, it would be better to mention \"loader region\" or \"bootloader region\" since on some chips I believe this region contains the bootloader(e.g. mec) and on some it contains the header (e.g. npcx).",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "ca40c569a741a00fa754536df734e106cfa70b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a515707_686b0681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T06:20:15Z",
+      "side": 1,
+      "message": "It would be good to add some information about how that data is critical in ensuring that the RO FW gets loaded correctly into memory and how it results in various side-effects.",
+      "range": {
+        "startLine": 12,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "ca40c569a741a00fa754536df734e106cfa70b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40d0163_62dcca1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T06:20:15Z",
+      "side": 1,
+      "message": "nit: older",
+      "range": {
+        "startLine": 20,
+        "startChar": 64,
+        "endLine": 20,
+        "endChar": 70
+      },
+      "revId": "ca40c569a741a00fa754536df734e106cfa70b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
