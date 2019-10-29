@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4250b1db_c27d7729",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-29T00:10:55Z",
+      "side": 1,
+      "message": "Only needed on static functions.",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 14
+      },
+      "revId": "0df9ddc252b418f2779f5f9e0d88f6aff24d5b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2efe3e4_38ba8e16",
+        "filename": "include/motion_sense_fifo.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-29T00:10:55Z",
+      "side": 1,
+      "message": "Use __test_only attribute instead",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 17
+      },
+      "revId": "0df9ddc252b418f2779f5f9e0d88f6aff24d5b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
