@@ -4,9 +4,12 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "stillness_detector.h"
 #include "timer.h"
 #include <string.h>
+
+#define CPRINTS(fmt, args...) cprints(CC_MOTION_SENSE, fmt, ##args)
 
 static void still_det_reset(struct still_det *still_det)
 {
