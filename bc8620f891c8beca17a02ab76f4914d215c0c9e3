@@ -46,6 +46,30 @@
       "revId": "bc8620f891c8beca17a02ab76f4914d215c0c9e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd186803_8484fe9a",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-29T22:24:29Z",
+      "side": 0,
+      "message": "\u003e Maybe I can add ifndef conditional ...\n\nsgtm.",
+      "parentUuid": "9dde420c_66e8eb80",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 46
+      },
+      "revId": "bc8620f891c8beca17a02ab76f4914d215c0c9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
