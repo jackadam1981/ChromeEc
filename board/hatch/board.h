@@ -11,6 +11,9 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_FPU
+/* #define CONFIG_ONLINE_CALIB */
+
 #define CONFIG_POWER_BUTTON
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
