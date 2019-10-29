@@ -5,6 +5,7 @@
 
 /* Hatch board-specific configuration */
 
+#include "accel_cal.h"
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
@@ -217,6 +218,26 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 	.saturation.atime = TCS_DEFAULT_ATIME,
 };
 
+static struct kasa_fit g_bmi160_kasa_fit_0, g_bmi160_kasa_fit_1;
+static struct newton_fit g_bmi160_newton_fit_0 =
+				 NEWTON_FIT(4, 15, 0.01f, 0.25f, 1.0e-8f, 100),
+			 g_bmi160_newton_fit_1 =
+				 NEWTON_FIT(4, 15, 0.01f, 0.25f, 1.0e-8f, 100);
+static struct accel_cal_algo g_bmi160_accel_cal_algo[2] = {
+	{
+		&g_bmi160_kasa_fit_0,
+		&g_bmi160_newton_fit_0,
+	},
+	{
+		&g_bmi160_kasa_fit_1,
+		&g_bmi160_newton_fit_1,
+	},
+};
+static struct accel_cal g_bmi160_accel_cal = {
+	.algos = (struct accel_cal_algo *)g_bmi160_accel_cal_algo,
+	.num_temp_windows = 2,
+};
+
 /* Matrix to rotate accelrator into standard reference frame */
 static const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(1), 0},
@@ -272,6 +293,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &bmi160_drv,
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
+		.online_calib_data = &g_bmi160_accel_cal,
 		.port = I2C_PORT_ACCEL,
 		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
