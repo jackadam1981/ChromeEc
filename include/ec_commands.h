@@ -2569,6 +2569,7 @@ struct ec_motion_sense_activity {
 #define MOTIONSENSE_SENSOR_FLAG_WAKEUP BIT(2)
 #define MOTIONSENSE_SENSOR_FLAG_TABLET_MODE BIT(3)
 #define MOTIONSENSE_SENSOR_FLAG_ODR BIT(4)
+#define MOTIONSENSE_SENSOR_FLAG_ONLINE_CALIB BIT(5)
 
 /*
  * Send this value for the data element to only perform a read. If you
