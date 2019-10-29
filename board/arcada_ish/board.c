@@ -5,6 +5,8 @@
 
 /* Arcada ISH board-specific configuration */
 
+#include "common.h"
+#include "accel_cal.h"
 #include "console.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -48,6 +50,27 @@ const mat33_fp_t lid_rot_ref = {
 	{ 0, 0,  FLOAT_TO_FP(1)}
 };
 
+static struct kasa_fit g_lsm6dsm_kasa_fit_0, g_lsm6dsm_kasa_fit_1;
+static struct newton_fit g_lsm6dsm_newton_fit_0 =
+				 NEWTON_FIT(4, 15, 0.01f, 0.25f, 1.0e-8f, 100),
+			 g_lsm6dsm_newton_fit_1 =
+				 NEWTON_FIT(4, 15, 0.01f, 0.25f, 1.0e-8f, 100);
+static struct accel_cal_algo g_lsm6dsm_accel_cal_algo[2] = {
+	{
+		&g_lsm6dsm_kasa_fit_0,
+		&g_lsm6dsm_newton_fit_0,
+	},
+	{
+		&g_lsm6dsm_kasa_fit_1,
+		&g_lsm6dsm_newton_fit_1,
+	},
+};
+static struct accel_cal g_lsm6dsm_accel_cal = {
+	.still_det = &STILL_DET(0.00025f, 800 * MSEC, 1200 * MSEC, 5),
+	.algos = (struct accel_cal_algo *)g_lsm6dsm_accel_cal_algo,
+	.num_temp_windows = 2,
+};
+
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
@@ -60,6 +83,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_lid_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_a_data,
 				MOTIONSENSE_TYPE_ACCEL),
+		.online_calib_data = &g_lsm6dsm_accel_cal,
 		.int_signal = GPIO_ACCEL_GYRO_INT_L,
 		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
