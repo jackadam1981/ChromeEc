@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fb3cf15a_b7c338d8",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-29T16:00:12Z",
+      "side": 1,
+      "message": "I just wanted the naming convention to be consistent for all virtual wires. In patchset 1.  With CONFIG_HOSTCMD_ESPI_PLTRST_IS_VW removed, the remaining CONFIG_ options are consistent with each other.",
+      "parentUuid": "1ba894d7_3b5f731d",
+      "range": {
+        "startLine": 2653,
+        "startChar": 0,
+        "endLine": 2659,
+        "endChar": 0
+      },
+      "revId": "dadcadc7da9a270fa587af84415d8ef7e226a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d322cc4_e8515f9b",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Are you referring to the chip/npcx/espi.c guard clause?\n\nNote that, to date that guard clause has only included SLP_S3 and SLP_S4 virtual wires. Your patch would change that.\n\nNote also that the virtual wires other than SLP_S3 and SLP_S4 (and PLTRST, before this chain), are controlled by CONFIG_HOSTCMD_ESPI.",
       "parentUuid": "5d322cc4_e8515f9b",
+      "range": {
+        "startLine": 2683,
+        "startChar": 7,
+        "endLine": 2683,
+        "endChar": 42
+      },
+      "revId": "dadcadc7da9a270fa587af84415d8ef7e226a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e912cfc_2ebeb155",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2683,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-29T16:00:12Z",
+      "side": 1,
+      "message": "chip/npcx/espi.c only recently added the CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS guard around power_signal_interrupt().  My thinking was that the npcx eSPI driver needs to call power_signal_interrupt() anytime VW signals are enabled, so if additional virtual wires are added later, these guard clauses won\u0027t have to change.\n\nYou can skip creating CONFIG_HOST_ESPI_VW_ENABLED, but you should add a check that fails the build if CONFIG_HOSTCMD_ESPI_VW_SLP_S3 or CONFIG_HOSTCMD_ESPI_VW_SLP_S4 is defined and CONFIG_HOSTCMD_ESPI is not defined.",
+      "parentUuid": "72ac302e_c1e57c77",
       "range": {
         "startLine": 2683,
         "startChar": 7,
