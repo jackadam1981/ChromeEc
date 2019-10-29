@@ -14,12 +14,12 @@
 #include "stillness_detector.h"
 
 struct accel_cal_algo {
-	struct kasa_fit kasa_fit;
-	struct newton_fit newton_fit;
-}
+	struct kasa_fit *kasa_fit;
+	struct newton_fit *newton_fit;
+};
 
 struct accel_cal {
-	struct still_det still_det;
+	struct still_det *still_det;
 	struct accel_cal_algo *algos;
 	uint8_t num_temp_windows;
 	fpv3_t bias;
