@@ -22,6 +22,30 @@
       "revId": "1abde9252f8aec41afc36f451a34f8e89564c3e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9db2468_4460b455",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-10-29T18:44:48Z",
+      "side": 1,
+      "message": "In the case of resetting the EC we assert EC reset wait 30 ms and then deassert it, for the flashing case we need to assert EC reset for at least 30 ms and EC reset stays asserted for the duration of the flash operation.",
+      "parentUuid": "0ea6cf66_eca91064",
+      "range": {
+        "startLine": 10,
+        "startChar": 53,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "1abde9252f8aec41afc36f451a34f8e89564c3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
