@@ -42,11 +42,10 @@ static void kukui_led_set_battery(void)
 	prv_chstate = chstate;
 
 	switch (chstate) {
+	/* Use the R/W LED instead of R/G/B LED, Green as White */
 	case PWR_STATE_CHARGE:
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		br[EC_LED_COLOR_BLUE] = 2;
 		br[EC_LED_COLOR_GREEN] = 1;
-		br[EC_LED_COLOR_RED] = 1;
 		break;
 	case PWR_STATE_DISCHARGE:
 		/* display SoC 10% = real battery SoC 13%*/
