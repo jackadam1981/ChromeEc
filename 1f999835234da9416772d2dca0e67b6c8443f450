@@ -453,6 +453,30 @@
       "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ecb1e9_decccf5c",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-29T18:02:35Z",
+      "side": 1,
+      "message": "Disabled for force means that tablet mode is forced to disabled not that forcing mode does not apply.\n\nThis needs to get through the CQ as we are see more issue from this (see attache bug).",
+      "parentUuid": "4802881a_44c2ffd1",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "1f999835234da9416772d2dca0e67b6c8443f450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
