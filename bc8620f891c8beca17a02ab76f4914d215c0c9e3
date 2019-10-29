@@ -22,6 +22,30 @@
       "revId": "bc8620f891c8beca17a02ab76f4914d215c0c9e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dde420c_66e8eb80",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-10-29T21:53:29Z",
+      "side": 0,
+      "message": "The order in which these files are included in hatch_fp/board.c is also a problem. As in common.h is included before registers.h. Maybe I can add ifndef conditional along with your suggestion above in registers.h if that is preferable ?",
+      "parentUuid": "15be0ee4_5e0f0bac",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 46
+      },
+      "revId": "bc8620f891c8beca17a02ab76f4914d215c0c9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
