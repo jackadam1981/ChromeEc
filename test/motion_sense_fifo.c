@@ -47,9 +47,12 @@ static struct accelgyro_drv mock_sensor_driver = {
 
 static struct accelgyro_drv empty_sensor_driver = {};
 
+static int dummy_holder_for_online_calib_data;
+
 struct motion_sensor_t motion_sensors[] = {
 	[BASE] = {
 		.drv = &mock_sensor_driver,
+		.online_calib_data = &dummy_holder_for_online_calib_data,
 	},
 	[LID] = {
 		.drv = &empty_sensor_driver,
@@ -406,12 +409,16 @@ static int test_read_temp_twice_after_cache_stale(void)
 
 void before_test(void)
 {
+	/* Temporarily remove the online_calib_data to skip commit temp code. */
+	motion_sensors[BASE].online_calib_data = NULL;
 	motion_sense_fifo_commit_data();
 	motion_sense_fifo_read(sizeof(data), CONFIG_ACCEL_FIFO_SIZE, &data,
 			       &data_bytes_read);
 	motion_sense_fifo_reset_wake_up_needed();
 	memset(data, 0, sizeof(data));
 	motion_sense_fifo_reset();
+	motion_sensors[BASE].online_calib_data =
+		&dummy_holder_for_online_calib_data;
 	mock_read_temp_results = NULL;
 }
 
@@ -419,6 +426,7 @@ void run_test(void)
 {
 	test_reset();
 	motion_sense_fifo_init();
+
 	RUN_TEST(test_insert_async_event);
 	RUN_TEST(test_wake_up_needed);
 	RUN_TEST(test_wake_up_needed_overflow);
