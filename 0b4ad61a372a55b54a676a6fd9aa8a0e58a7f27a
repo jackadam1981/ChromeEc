@@ -22,6 +22,30 @@
       "revId": "0b4ad61a372a55b54a676a6fd9aa8a0e58a7f27a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7ce0ac_01817cf8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3813,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-29T23:55:31Z",
+      "side": 1,
+      "message": "probably not.  i think pd_power_supply_reset() should happen\nbefore tcpm_reset() because it still makes calls to tcpm_*\nunder the covers.  i\u0027m not sure we would want to change\nthe order for the USB_PD_TCPC case.",
+      "parentUuid": "a94f3ed2_fea1dc5e",
+      "range": {
+        "startLine": 3811,
+        "startChar": 0,
+        "endLine": 3813,
+        "endChar": 31
+      },
+      "revId": "0b4ad61a372a55b54a676a6fd9aa8a0e58a7f27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
