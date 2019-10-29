@@ -22,6 +22,30 @@
       "revId": "5de71699bb9b14c3c56897401d40336b8c7f77b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55107f17_ed834ff6",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-29T19:43:02Z",
+      "side": 1,
+      "message": "Yes, we only have 4 states, are you suggesting that we create an enum with 4 values instead?",
+      "parentUuid": "bfd0581d_12a95a3e",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "5de71699bb9b14c3c56897401d40336b8c7f77b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
