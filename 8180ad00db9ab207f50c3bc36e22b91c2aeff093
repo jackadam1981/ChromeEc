@@ -286,6 +286,30 @@
       "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fdd640_06e9428c",
+        "filename": "common/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-29T19:46:07Z",
+      "side": 1,
+      "message": "Again, if we return at line 114, we assume DPTF is all good as long as is_dptf_still_active returns true. My understanding is that DPTF can be misconfigured or can be malfunctioning even if is_dptf_still_active returns true.\n\nLine 193 ~ 219 are the mechanisms which can protect the board regardless the DPTF state or configuration.",
+      "parentUuid": "4a40ca9e_dd1bac03",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "8180ad00db9ab207f50c3bc36e22b91c2aeff093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
