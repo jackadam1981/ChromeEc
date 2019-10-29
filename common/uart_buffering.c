@@ -94,9 +94,13 @@ static int __tx_char(void *context, int c)
 	uart_write_char(c);
 #else
 
+	interrupt_disable();
+
 	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
-	if (tx_buf_next == tx_buf_tail)
+	if (tx_buf_next == tx_buf_tail) {
+		interrupt_enable();
 		return 1;
+	}
 
 	/*
 	 * If we do a READ_RECENT, the buffer may have wrapped around, and
@@ -119,6 +123,7 @@ static int __tx_char(void *context, int c)
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS))
 		tx_checksum = uart_buffer_calc_checksum();
 #endif
+	interrupt_enable();
 	return 0;
 }
 
