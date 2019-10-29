@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6f3f00f5_6f1e2714",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-10-29T10:44:40Z",
+      "side": 1,
+      "message": "This is for board reef_it8320 test and not any relation with plug in/out ISR. I will separate it.",
+      "parentUuid": "1191f308_0b1dd546",
+      "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12216760_0592e34e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d3c06766_53852100",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-10-29T10:44:40Z",
+      "side": 1,
+      "message": "There was not error when I compiled board reef_it8320. I have rebased.",
+      "parentUuid": "12216760_0592e34e",
+      "range": {
+        "startLine": 1644,
+        "startChar": 5,
+        "endLine": 1644,
+        "endChar": 22
+      },
+      "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdd0a6ee_9dbedf16",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-10-28T17:55:54Z",
       "side": 1,
       "message": "Could you please rebase this patch. I am able to SRC_Ready for dongle connected with this change + change in Line 1643 set_rd(port) from Top of tree. Without that goes in loop.",
+      "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8541c592_8e38223f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-10-29T10:44:40Z",
+      "side": 1,
+      "message": "Ok, I rebase the relation chain.",
+      "parentUuid": "fdd0a6ee_9dbedf16",
       "revId": "2bc5847534acc9aad2e8e049b160216e074399e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
