@@ -117,8 +117,8 @@ const struct _ec_fmap {
 			 */
 			.area_name = "EC_RO",
 			.area_offset = CONFIG_EC_PROTECTED_STORAGE_OFF -
-				FMAP_REGION_START + CONFIG_RO_STORAGE_OFF,
-			.area_size = CONFIG_RO_SIZE,
+				FMAP_REGION_START,
+			.area_size = CONFIG_RO_SIZE + CONFIG_RO_STORAGE_OFF,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 		{
