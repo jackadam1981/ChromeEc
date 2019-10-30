@@ -22,6 +22,30 @@
       "revId": "1a9e7981ffcd4a9c17a65764c9cd225711eb874d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc94a8da_23a4004d",
+        "filename": "common/chargen.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-10-30T19:28:17Z",
+      "side": 1,
+      "message": "Typical ECs un-define CONFIG_USB_CONSOLE, and define usb_getc() as (-1) and usb_putc() as (EC_SUCCESS) in usb_console.h.",
+      "parentUuid": "80e445de_3d85fd21",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "1a9e7981ffcd4a9c17a65764c9cd225711eb874d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

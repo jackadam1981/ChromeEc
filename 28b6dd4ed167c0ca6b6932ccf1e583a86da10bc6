@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9c1e4bef_74d6072b",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-10-30T19:28:17Z",
+      "side": 1,
+      "message": "Patch #8 makes chargen put characters either UART or USB exclusively, if CONFIG_USB_CONSOLE is defined. For typical ECs, it will be running on UART only.",
+      "parentUuid": "bf851a08_f1551338",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "28b6dd4ed167c0ca6b6932ccf1e583a86da10bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14869e4b_a4677ff5",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 6
