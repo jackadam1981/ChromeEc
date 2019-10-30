@@ -22,6 +22,30 @@
       "revId": "eb9e3010bceff3371c542dce1f531507934c203f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ce8117_85600ba2",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-30T22:44:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "104d50f9_eba1f15c",
+      "range": {
+        "startLine": 1572,
+        "startChar": 0,
+        "endLine": 1572,
+        "endChar": 11
+      },
+      "revId": "eb9e3010bceff3371c542dce1f531507934c203f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
