@@ -28,6 +28,7 @@
 #include "throttle_ap.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_pd.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -70,6 +71,8 @@ static timestamp_t uvp_throttle_start_time;
 #endif /* CONFIG_THROTTLE_AP_ON_BAT_OLTAGE */
 
 static int charge_request(int voltage, int current);
+/* Requested desired mW */
+static int desired_mw;
 
 static uint8_t battery_level_shutdown;
 
@@ -1166,8 +1169,9 @@ static int calc_is_full(void)
  */
 static int charge_request(int voltage, int current)
 {
+	int i;
 	int r1 = EC_SUCCESS, r2 = EC_SUCCESS, r3 = EC_SUCCESS;
-	static int __bss_slow prev_volt, prev_curr;
+	static int __bss_slow prev_volt, prev_curr, prev_desired_mw;
 
 	if (!voltage || !current) {
 #ifdef CONFIG_CHARGER_NARROW_VDC
@@ -1225,12 +1229,25 @@ static int charge_request(int voltage, int current)
 	/*
 	 * Only update if the request worked, so we'll keep trying on failures.
 	 */
-	if (!r1 && !r2) {
-		prev_volt = voltage;
-		prev_curr = current;
+	if (r1 || r2)
+		return r1 ? r1 : r2;
+
+	/* If desired watts changed, evaluate the best PD voltage again. */
+	desired_mw = voltage * current / 1000;
+	if (IS_ENABLED(CONFIG_PD_PREFER_MV) && desired_mw > 0 &&
+	    prev_desired_mw != desired_mw) {
+		for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+			if (pd_is_connected(i) &&
+			    pd_get_role(i) == PD_ROLE_SINK)
+				pd_set_new_power_request(i);
+		}
 	}
 
-	return r1 ? r1 : r2;
+	prev_volt = voltage;
+	prev_curr = current;
+	prev_desired_mw = desired_mw;
+
+	return EC_SUCCESS;
 }
 
 void chgstate_set_manual_current(int curr_ma)
@@ -2161,6 +2178,23 @@ int charge_get_percent(void)
 	 * anything.
 	 */
 	return is_full ? 100 : curr.batt.state_of_charge;
+}
+
+int charge_get_desired_mw(void)
+{
+	if (desired_mw > 0)
+		return desired_mw;
+
+	/*
+	 * charge_request may not be issued yet, taking values from the
+	 * battery directly.
+	 */
+	return curr.batt.desired_current * curr.batt.desired_voltage / 1000;
+}
+
+__overridable int board_get_desired_mw(void)
+{
+	return charge_get_desired_mw();
 }
 
 int charge_get_display_charge(void)

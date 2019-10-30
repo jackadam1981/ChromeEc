@@ -737,6 +737,14 @@ int charger_get_vbus_voltage(int port)
 	return vbus_mv;
 }
 
+static int command_get_vbus(int argc, char **argv)
+{
+
+	CPRINTS("vbus=%d mV",charger_get_vbus_voltage(0));
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(get_vbus, command_get_vbus, "", "");
+
 /* Setup sourcing current to prevent overload */
 #ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
 static int rt946x_enable_ilim_pin(int en)
