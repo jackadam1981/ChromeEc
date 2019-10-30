@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ba88f38_b2c24300",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:32:40Z",
+      "side": 1,
+      "message": "Use Kelvin to be consistent with temperature API (See include/temp_sensor.h).\nDo we need/have sub 1 degree precision? If not, use int.",
+      "revId": "03943d9e2c2d7f2d757bd1a581abf40e6f1fc4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
