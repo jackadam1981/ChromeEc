@@ -23,6 +23,7 @@ static uint8_t exti_events[16];
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
+	const struct unused_pin_info *u = unused_pin_list;
 	int is_warm = system_is_reboot_warm();
 	int i;
 
@@ -58,6 +59,12 @@ void gpio_pre_init(void)
 
 		/* Set up GPIO based on flags */
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
+	}
+
+	for (i = 0; i < UNUSED_PIN_COUNT; i++, u++) {
+#ifdef CHIP_FAMILY_STM32F4
+		gpio_set_flags_by_mask(u->port, u->mask, GPIO_ANALOG);
+#endif
 	}
 }
 
