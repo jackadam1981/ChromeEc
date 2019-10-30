@@ -32,6 +32,8 @@
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 #endif
 
+#include "gpio_macros_save.inc"
+
 /* Constants for GPIO interrupt mapping */
 #define GPIO_INT(name, pin, flags, signal) NPCX_WUI_GPIO_##pin,
 #ifdef CONFIG_LOW_POWER_IDLE
@@ -46,6 +48,8 @@
 static const struct npcx_wui gpio_wui_table[] = {
 	#include "gpio.wrap"
 };
+
+#include "gpio_macros_restore.inc"
 
 struct npcx_gpio {
 	uint8_t port  : 4;

@@ -429,6 +429,8 @@ static void init_ac_detect(void)
 /*                                                                           */
 /*****************************************************************************/
 
+#include "gpio_macros_save.inc"
+
 /*
  * There's no way to trigger on both rising and falling edges, so force a
  * compiler error if we try. The workaround is to use the pinmux to connect
@@ -437,6 +439,8 @@ static void init_ac_detect(void)
 #define GPIO_INT(name, pin, flags, signal)	\
 	BUILD_ASSERT(((flags) & GPIO_INT_BOTH) != GPIO_INT_BOTH);
 #include "gpio.wrap"
+
+#include "gpio_macros_restore.inc"
 
 /**
  * Reset wake logic

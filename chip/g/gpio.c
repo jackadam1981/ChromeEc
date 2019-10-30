@@ -129,6 +129,8 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask,
 	/* This HW feature is not present in the Cr50 ARM core */
 }
 
+#include "gpio_macros_save.inc"
+
 /*
  * A pinmux_config contains the selector offset and selector value for a
  * particular pinmux entry.
@@ -191,6 +193,8 @@ struct pinmux {
 static const struct pinmux pinmux_list[] = {
 	#include "gpio.wrap"
 };
+
+#include "gpio_macros_restore.inc"
 
 /* Return true if DIO should be a digital input */
 static int connect_dio_to_peripheral(struct pinmux const *p)
