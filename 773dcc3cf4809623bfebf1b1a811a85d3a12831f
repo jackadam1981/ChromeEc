@@ -22,6 +22,30 @@
       "revId": "773dcc3cf4809623bfebf1b1a811a85d3a12831f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0545689_a37e7f74",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-30T02:04:52Z",
+      "side": 1,
+      "message": "do we want 80 columns or readability?",
+      "parentUuid": "38e3d962_4211b189",
+      "range": {
+        "startLine": 665,
+        "startChar": 11,
+        "endLine": 666,
+        "endChar": 15
+      },
+      "revId": "773dcc3cf4809623bfebf1b1a811a85d3a12831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
