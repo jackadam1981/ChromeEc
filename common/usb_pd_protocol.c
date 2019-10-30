@@ -2682,6 +2682,11 @@ void pd_ping_enable(int port, int enable)
 		pd[port].flags &= ~PD_FLAGS_PING_ENABLED;
 }
 
+__overridable int board_get_polarity(int port, uint8_t *polarity)
+{
+	return 0;
+}
+
 #if defined(CONFIG_CHARGE_MANAGER)
 
 /**
@@ -3115,6 +3120,7 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			if (pd[port].task_state == PD_STATE_SOFT_RESET) {
 				enum tcpc_cc_voltage_status cc1, cc2;
+				uint8_t *p = &pd[port].polarity;
 
 				/*
 				 * Set the terminations to match our power
@@ -3126,11 +3132,10 @@ void pd_task(void *u)
 				/* Determine the polarity. */
 				tcpm_get_cc(port, &cc1, &cc2);
 				if (pd[port].power_role == PD_ROLE_SINK) {
-					pd[port].polarity =
-						get_snk_polarity(cc1, cc2);
+					*p = get_snk_polarity(cc1, cc2);
 				} else {
-					pd[port].polarity =
-						(cc1 != TYPEC_CC_VOLT_RD);
+					if (!board_get_polarity(port, p))
+						*p = (cc1 != TYPEC_CC_VOLT_RD);
 				}
 			} else
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -3367,12 +3372,14 @@ void pd_task(void *u)
 			/* UFP is attached */
 			if (new_cc_state == PD_CC_UFP_ATTACHED ||
 			    new_cc_state == PD_CC_UFP_DEBUG_ACC) {
+				uint8_t *p = &pd[port].polarity;
 #ifdef CONFIG_USBC_PPC
 				/* Inform PPC that a sink is connected. */
 				ppc_sink_is_connected(port, 1);
 #endif /* CONFIG_USBC_PPC */
-				pd[port].polarity = (cc1 != TYPEC_CC_VOLT_RD);
-				set_polarity(port, pd[port].polarity);
+				if (!board_get_polarity(port, p))
+					*p = (cc1 != TYPEC_CC_VOLT_RD);
+				set_polarity(port, *p);
 
 				/* initial data role for source is DFP */
 				pd_set_data_role(port, PD_ROLE_DFP);
