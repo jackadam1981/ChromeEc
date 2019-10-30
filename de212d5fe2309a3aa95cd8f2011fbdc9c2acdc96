@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7910c59_2fc3fa51",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T21:01:08Z",
+      "side": 1,
+      "message": "Use FP_ as much as you can: we still have EC without FPU (see kukui).",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6286434f_fc400884",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T21:01:08Z",
+      "side": 1,
+      "message": "merge this code with was is use for magnetometer calibration (see mag_cal_update() in common/mag_cal.c",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
