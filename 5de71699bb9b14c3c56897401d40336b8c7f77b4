@@ -70,6 +70,30 @@
       "revId": "5de71699bb9b14c3c56897401d40336b8c7f77b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7185e1_9fe86c92",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-30T17:12:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "297a66fa_c052300c",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "5de71699bb9b14c3c56897401d40336b8c7f77b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
