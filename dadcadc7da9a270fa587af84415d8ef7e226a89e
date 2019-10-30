@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "59b5a50b_34fe8995",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-30T17:07:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb3cf15a_b7c338d8",
+      "range": {
+        "startLine": 2653,
+        "startChar": 0,
+        "endLine": 2659,
+        "endChar": 0
+      },
+      "revId": "dadcadc7da9a270fa587af84415d8ef7e226a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d322cc4_e8515f9b",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "chip/npcx/espi.c only recently added the CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS guard around power_signal_interrupt().  My thinking was that the npcx eSPI driver needs to call power_signal_interrupt() anytime VW signals are enabled, so if additional virtual wires are added later, these guard clauses won\u0027t have to change.\n\nYou can skip creating CONFIG_HOST_ESPI_VW_ENABLED, but you should add a check that fails the build if CONFIG_HOSTCMD_ESPI_VW_SLP_S3 or CONFIG_HOSTCMD_ESPI_VW_SLP_S4 is defined and CONFIG_HOSTCMD_ESPI is not defined.",
       "parentUuid": "72ac302e_c1e57c77",
+      "range": {
+        "startLine": 2683,
+        "startChar": 7,
+        "endLine": 2683,
+        "endChar": 42
+      },
+      "revId": "dadcadc7da9a270fa587af84415d8ef7e226a89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94406bc7_d7f86edf",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2683,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-30T17:07:14Z",
+      "side": 1,
+      "message": "Done. I changed the name to reflect that the combined macro only reflects whether power signals are virtual wires. Per our OOB discussion yesterday, we don\u0027t want to call power_signal_interrupt for virtual wires we don\u0027t care about, which are enabled by CONFIG_HOSTCMD_ESPI.\n\nDid you mean \"CONFIG_HOSTCMD_ESPI_VW_ENABLED\" (as in, relating to the eSPI host command)? \"CONFIG_HOST_*\" is not much used. I guess this option also relates to the host per se, since that\u0027s where these power signals come from.",
+      "parentUuid": "2e912cfc_2ebeb155",
       "range": {
         "startLine": 2683,
         "startChar": 7,
