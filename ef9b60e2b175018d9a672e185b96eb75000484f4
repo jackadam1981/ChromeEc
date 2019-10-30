@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "56b5af42_84afa3bc",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-30T22:16:37Z",
+      "side": 1,
+      "message": "where does this file get added to a build.mk?",
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3945f494_085b0d50",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-30T22:16:37Z",
+      "side": 1,
+      "message": "These can be inline functions",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c36303c_7f9c78d4",
         "filename": "common/accel_cal.c",
         "patchSetId": 1
