@@ -22,6 +22,30 @@
       "revId": "176a7d6f11dfea5bdd16e7cf8f922dd7bddf3eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ba8e44_49f9de2e",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-30T20:55:06Z",
+      "side": 1,
+      "message": "Agree that this is going to be hard to maintain.\n\nIt looks like it\u0027s possible to change gpio_enable_clocks to take an enum argument of the clocks that should be enabled: https://chromium.googlesource.com/chromiumos/platform/ec/+/176a7d6f11dfea5bdd16e7cf8f922dd7bddf3eff/chip/stm32/gpio-stm32f4.c#16\n\nI think you will also to modify this check: https://chromium.googlesource.com/chromiumos/platform/ec/+/176a7d6f11dfea5bdd16e7cf8f922dd7bddf3eff/chip/stm32/system.c#579. For that you could do something like store the clocks that were enabled in gpio-stm32f4.c and add a \"stm32f4_is_reboot_warm\" function in that file that does the comparison (and would be called from system.c)",
+      "parentUuid": "d70702b2_f27564f0",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "176a7d6f11dfea5bdd16e7cf8f922dd7bddf3eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
