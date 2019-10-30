@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "040476d6_ff01bfad",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:37:47Z",
+      "side": 1,
+      "message": "does this need to change?",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b14752_60062fbf",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:37:47Z",
+      "side": 1,
+      "message": "ifdef not needed.",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269b6a0f_2a132ba8",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:37:47Z",
+      "side": 1,
+      "message": "The content is a duplicate of bmi160_get_sensor_temp.",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "353e236f_8a56c4ad",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:37:47Z",
+      "side": 1,
+      "message": "Do not use 23.0f directly, but FLOAT_TO_FP(23.0f)",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23818b1_f4ccd5cc",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:37:47Z",
+      "side": 1,
+      "message": "why is this ifdef needed.",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
