@@ -15,13 +15,15 @@
 
 void gpio_enable_clocks(void)
 {
-	/*
-	 * Enable all GPIOs clocks
-	 *
-	 * TODO(crosbug.com/p/23770): only enable the banks we need to,
-	 * and support disabling some of them in low-power idle.
-	 */
-	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_GPIOMASK;
+	/* Enable only ports that are referenced in the gpio.inc */
+	int gpio_ports_used = 0;
+
+#	define GPIO(name, pin, flags) pin
+#	define GPIO_INT(name, pin, flags, signal) pin
+#	define PIN(a, b...) gpio_ports_used |= STM32_RCC_AHB1ENR_GPIOMASK_PORT ## a;
+#	include "gpio.wrap"
+
+	STM32_RCC_AHB1ENR |= gpio_ports_used;
 
 	/* Delay 1 AHB clock cycle after the clock is enabled */
 	clock_wait_bus_cycles(BUS_AHB, 1);
