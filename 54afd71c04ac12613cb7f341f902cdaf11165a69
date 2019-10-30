@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9319eae_84cf6594",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-30T22:29:36Z",
+      "side": 1,
+      "message": "Should it be CONFIG_RO_SIZE - CONFIG_RO_STORAGE_OFF?",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "54afd71c04ac12613cb7f341f902cdaf11165a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
