@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e8088ae_b4c2bef2",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-10-30T06:59:32Z",
+      "side": 1,
+      "message": "This operation seems unnecessary without enabling PEC.",
+      "range": {
+        "startLine": 595,
+        "startChar": 3,
+        "endLine": 595,
+        "endChar": 25
+      },
+      "revId": "edb6d0f16cbb6b0d7af544313cc2608912855b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
