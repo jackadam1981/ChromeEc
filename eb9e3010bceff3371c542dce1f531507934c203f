@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104d50f9_eba1f15c",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-10-30T15:40:09Z",
+      "side": 1,
+      "message": "not needed here, but maybe we want it for style purpose as it does not harm anything either...",
+      "range": {
+        "startLine": 1572,
+        "startChar": 0,
+        "endLine": 1572,
+        "endChar": 11
+      },
+      "revId": "eb9e3010bceff3371c542dce1f531507934c203f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
