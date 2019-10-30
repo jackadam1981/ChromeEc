@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "608492df_f878a57c",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-30T19:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76fed792_967c5198",
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "147283ca_f08dba0f",
         "filename": "power/icelake.c",
         "patchSetId": 1
@@ -102,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "ceef517a_b6fd7ee2",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-30T19:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6526444_73c2a37c",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8f182ba_0a035a34",
         "filename": "power/icelake.c",
         "patchSetId": 1
@@ -137,6 +179,30 @@
       "side": 1,
       "message": "Yes, TGL doesn\u0027t require a delay for SYS_PWROK. My thinking was a board design might want a delay before releasing the AP from reset.\nThis would be consistent with the cometlake code, but I can remove it.",
       "parentUuid": "c8f182ba_0a035a34",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "c6030f2883a07be2a1a92f1e39c873a4b416907d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bd83e5_0df727df",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-30T19:42:09Z",
+      "side": 1,
+      "message": "Left the delay in, but set the default to 0ms in the latest patchset.",
+      "parentUuid": "2eddd9d6_367a2cb8",
       "range": {
         "startLine": 214,
         "startChar": 1,
