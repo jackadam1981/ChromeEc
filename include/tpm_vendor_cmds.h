@@ -136,6 +136,9 @@ enum vendor_cmd_cc {
 
 	VENDOR_CC_U2F_MODE = 49,
 
+	/* Set only the board id flags. */
+	VENDOR_CC_SET_BOARD_ID_FLAGS_WL = 50,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
