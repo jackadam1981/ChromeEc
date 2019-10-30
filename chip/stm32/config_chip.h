@@ -6,7 +6,7 @@
 #ifndef __CROS_EC_CONFIG_CHIP_H
 #define __CROS_EC_CONFIG_CHIP_H
 
-#ifdef CHIP_FAMILY_STM32F0
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32G0)
 /* CPU core BFD configuration */
 #include "core/cortex-m0/config_core.h"
 /* IRQ priorities */
@@ -59,6 +59,8 @@
 #include "config-stm32f03x.h"
 #elif defined(CHIP_VARIANT_STM32H7X3)
 #include "config-stm32h7x3.h"
+#elif defined(CHIP_VARIANT_STM32G071B)
+#include "config-stm32g071b.h"
 #else
 #error "Unsupported chip variant"
 #endif

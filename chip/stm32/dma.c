@@ -7,6 +7,7 @@
 #include "common.h"
 #include "console.h"
 #include "dma.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
@@ -32,7 +33,7 @@ static struct {
  */
 static int dma_get_irq(enum dma_channel channel)
 {
-#ifdef CHIP_FAMILY_STM32F0
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32G0)
 	if (channel == STM32_DMAC_CH1)
 		return STM32_IRQ_DMA_CHANNEL_1;
 
@@ -230,6 +231,8 @@ void dma_init(void)
 {
 #if defined(CHIP_FAMILY_STM32L4)
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN;
+#elif defined(CHIP_FAMILY_STM32G0)
+	STM32_RCC_AHBENR |= STM32_RCC_AHBENR_DMAEN;
 #else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 #endif
@@ -301,7 +304,7 @@ void dma_clear_isr(enum dma_channel channel)
 }
 
 #ifdef CONFIG_DMA_DEFAULT_HANDLERS
-#ifdef CHIP_FAMILY_STM32F0
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32G0)
 void dma_event_interrupt_channel_1(void)
 {
 	if (STM32_DMA1_REGS->isr & STM32_DMA_ISR_TCIF(STM32_DMAC_CH1)) {

@@ -314,12 +314,15 @@ static unsigned int tc_attach_wait_snk_run(int port)
 		else
 			tc[port].host_cc_debounce = get_time().val +
 							PD_T_PD_DEBOUNCE;
+		CPRINTS("tc_attach_wait_snk_run() exit 1");
 		return 0;
 	}
 
 	/* Wait for Host CC debounce */
-	if (get_time().val < tc[port].host_cc_debounce)
+	if (get_time().val < tc[port].host_cc_debounce) {
+		CPRINTS("tc_attach_wait_snk_run() exit 2");
 		return 0;
+	}
 
 	/*
 	 * A Charge-Through VCONN-Powered USB Device shall transition to
@@ -330,11 +333,16 @@ static unsigned int tc_attach_wait_snk_run(int port)
 	 * Transition to Unattached.SNK when the state of both the CC1 and
 	 * CC2 pins is SNK.Open for at least tPDDebounce.
 	 */
+	CPRINTS("tc_attach_wait_snk_run() host_cc_state=%d, vconn=%d, cbus=%d",
+		tc[port].host_cc_state, vpd_is_vconn_present(), vpd_is_host_vbus_present());
 	if (tc[port].host_cc_state == PD_CC_DFP_ATTACHED &&
-			(vpd_is_vconn_present() || vpd_is_host_vbus_present()))
+	    (vpd_is_vconn_present() || vpd_is_host_vbus_present())) {
+		CPRINTS("tc_attach_wait_snk_run() point A");
 		set_state(port, TC_OBJ(port), tc_attached_snk);
-	else if (tc[port].host_cc_state == PD_CC_NONE)
+	} else if (tc[port].host_cc_state == PD_CC_NONE) {
+		CPRINTS("tc_attach_wait_snk_run() point B");
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
+	}
 
 	return 0;
 }

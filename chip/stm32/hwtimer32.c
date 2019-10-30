@@ -116,11 +116,25 @@ defined(CHIP_FAMILY_STM32H7)
 		mask = STM32_RCC_PB2_TIM19;
 	}
 #endif
+#if defined(CHIP_FAMILY_STM32G0)
+	if (n == 2 || n == 3 || n == 6 || n == 7) {
+		reg = &STM32_RCC_APBENR1;
+		mask = 1 << (n - 2);
+	}
+	if (n == 1) {
+		reg = &STM32_RCC_APBENR2;
+		mask = STM32_RCC_TIM1EN;
+	}
+	if (n == 14 || n == 15 || n == 16 || n == 17) {
+		reg = &STM32_RCC_APBENR2;
+		mask = 1 << (n + 1);
+	}
+#else
 	if (n >= 2 && n <= 7) {
 		reg = &STM32_RCC_APB1ENR;
 		mask = STM32_RCC_PB1_TIM2 << (n - 2);
 	}
-
+#endif
 	if (!mask)
 		return;
 

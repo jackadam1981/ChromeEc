@@ -277,8 +277,12 @@ void system_pre_init(void)
 #endif
 
 	/* enable clock on Power module */
+#if defined(CHIP_FAMILY_STM32G0)
+	STM32_RCC_APBENR1 |= STM32_RCC_PWREN;
+#else
 #ifndef CHIP_FAMILY_STM32H7
 	STM32_RCC_APB1ENR |= STM32_RCC_PWREN;
+#endif
 #endif
 #if defined(CHIP_FAMILY_STM32F4)
 	/* enable backup registers */
@@ -286,6 +290,9 @@ void system_pre_init(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* enable backup registers */
 	STM32_RCC_AHB4ENR |= BIT(28);
+#elif defined(CHIP_FAMILY_STM32G0)
+	/* enable backup registers */
+	/*TODO(shurst): enable backup reg */
 #else
 	/* enable backup registers */
 	STM32_RCC_APB1ENR |= BIT(27);
@@ -314,7 +321,7 @@ void system_pre_init(void)
 	}
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4) || \
-	defined(CHIP_FAMILY_STM32H7)
+	defined(CHIP_FAMILY_STM32H7) || defined(CHIP_FAMILY_STM32G0)
 	if ((STM32_RCC_BDCR & BDCR_ENABLE_MASK) != BDCR_ENABLE_VALUE) {
 		/* The RTC settings are bad, we need to reset it */
 		STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
@@ -577,5 +584,8 @@ int system_is_reboot_warm(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	return ((STM32_RCC_AHB4ENR & STM32_RCC_AHB4ENR_GPIOMASK)
 			== STM32_RCC_AHB4ENR_GPIOMASK);
+#elif defined(CHIP_FAMILY_STM32G0)
+	return ((STM32_RCC_IOPENR & STM32_RCC_IOPENR_GPIOMASK)
+			== STM32_RCC_IOPENR_GPIOMASK);
 #endif
 }

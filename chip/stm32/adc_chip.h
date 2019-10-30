@@ -30,7 +30,7 @@ struct adc_t {
 	int factor_div;
 	int shift;
 	int channel;
-#ifdef CHIP_FAMILY_STM32F0
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32G0)
 	enum stm32_adc_smpr sample_rate;  /* Sampling Rate of the channel */
 #endif
 };

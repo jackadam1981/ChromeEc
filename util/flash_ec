@@ -60,6 +60,7 @@ BOARDS_STM32=(
 	coffeecake
 	chocodile_bec
 	chocodile_vpdmcu
+	chocodile2
 	glados_pd
 	hatch_fp
 	jerry
@@ -186,6 +187,7 @@ function dut_control() {
 		echo "${DUT_CTRL_CML[*]}" 1>&2
 	fi
 
+        echo "Running command: ${DUT_CTRL_CML[@]}" > /dev/stderr 
 	"${DUT_CTRL_CML[@]}" >/dev/null
 }
 
@@ -200,7 +202,8 @@ function dut_control_get() {
 	fi
 
 	local ARGS DUT_GETVAL RETVAL
-	ARGS=( "${DUT_CONTROL_CMD[@]}" "-o" "$1" )
+	ARGS=( "${DUT_CONTROL_CMD[@]}" "$1" )
+        echo "Running command: ${ARGS[@]}" > /dev/stderr 
 	RETVAL=0
 	# || statement is attached to avoid an exit if error exit is enabled.
 	DUT_GETVAL=$( "${ARGS[@]}" ) || RETVAL="$?"
@@ -331,7 +334,7 @@ case "${CHIP}" in
 		;;
 esac
 
-SERVO_TYPE="$(dut_control_get servo_type || :)"
+SERVO_TYPE="$((dut_control_get servo_type || :) | sed 's/.*://')"
 
 servo_has_warm_reset() {
 	dut_control -i warm_reset >/dev/null 2>&1
@@ -639,6 +642,7 @@ function servo_save_add() {
 
 function servo_save() {
 	local SERVO_VARS_NAME="${SERVO_TYPE}_VARS[@]"
+        echo "Fisk ${SERVO_TYPE} ${ctrl}"
 	for ctrl in "${!SERVO_VARS_NAME}"; do
 		servo_save_add "${ctrl}"
 	done
@@ -904,7 +908,7 @@ function flash_stm32() {
 
 	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:$PATH"
 	STM32MON=$(PATH="${TOOL_PATH}" which stm32mon)
-	EC_UART="$(servo_ec_uart)"
+	EC_UART="$(servo_ec_uart | sed -e 's/.*://')"
 	if [ ! -x "$STM32MON" ]; then
 		die "no stm32mon util found."
 	fi

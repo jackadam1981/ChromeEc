@@ -206,10 +206,14 @@ static int spi_master_initialize(int port)
 	spi->cr1 = STM32_SPI_CR1_MSTR | STM32_SPI_CR1_SSM | STM32_SPI_CR1_SSI |
 		(div << 3);
 
-#ifdef CHIP_FAMILY_STM32L4
+#if defined(CHIP_FAMILY_STM32L4)
 	dma_select_channel(dma_tx_option[port].channel, dma_req[port]);
 	dma_select_channel(dma_rx_option[port].channel, dma_req[port]);
+#elif defined(CHIP_FAMILY_STM32G0)
+	dma_select_channel(STM32_DMAC_SPI1_TX, DMAMUX1_REQ_SPI1_TX);
+	dma_select_channel(STM32_DMAC_SPI1_RX, DMAMUX1_REQ_SPI1_RX);
 #endif
+
 	/*
 	 * Configure 8-bit datasize, set FRXTH, enable DMA,
 	 * and set data size (applies to STM32F0 only).
@@ -240,6 +244,14 @@ static int spi_master_initialize(int port)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CHIP_FAMILY_STM32G0
+void dma_select_channel(enum dma_channel channel, uint8_t req)
+{
+	STM2_DMAMUX_CxCR(0, channel) = req;
+}
+#endif
+
 
 /**
  * Shutdown SPI module
@@ -317,6 +329,7 @@ static int spi_dma_wait(int port)
 		rv = dma_wait(dma_tx_option[port].channel);
 		if (rv)
 			return rv;
+
 		/* Disable TX DMA */
 		dma_disable(dma_tx_option[port].channel);
 	}
@@ -358,6 +371,7 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 		rv = shared_mem_acquire(MAX(txlen, rxlen), &buf);
 		if (rv != EC_SUCCESS)
 			return rv;
+
 	}
 #endif
 
@@ -390,6 +404,7 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
 			goto err_free;
+
 #ifdef CONFIG_SPI_HALFDUPLEX
 		spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
 #endif

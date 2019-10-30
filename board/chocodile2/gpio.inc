@@ -1,0 +1,46 @@
+/* -*- mode:c -*-
+ *
+ * Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Declare symbolic names for all the GPIOs that we care about.
+ * Note: Those with interrupt handlers must be declared first. */
+
+GPIO(VBUS_PASS_EN,	PIN(A, 0),  GPIO_OUT_LOW)
+GPIO(VCONN_VSENSE,	PIN(A, 1),  GPIO_ANALOG)
+GPIO(PRESENT_BILLBOARD,	PIN(A, 4),  GPIO_INPUT)
+GPIO(HOST_VBUS_VSENSE,	PIN(A, 6),  GPIO_ANALOG)
+GPIO(CHARGE_VBUS_VSENSE,	PIN(A, 7),  GPIO_ANALOG)
+
+GPIO(UCPD1_DBCC2,	PIN(B, 0),  GPIO_INPUT)
+GPIO(UCPD1_CC2,		PIN(B, 15), GPIO_INPUT)
+GPIO(UCPD1_CC1,		PIN(A, 8),  GPIO_INPUT)
+GPIO(UCPD1_DBCC1,	PIN(C, 6),  GPIO_INPUT)
+
+GPIO(DEBUG_LED_R_ODL,	PIN(A, 11), GPIO_ODR_HIGH)
+GPIO(DEBUG_LED_G_ODL,	PIN(A, 12), GPIO_ODR_HIGH)
+
+GPIO(VCONN_PWR_SEL_ODL,	PIN(A, 13), GPIO_INPUT)
+
+GPIO(UCPD2_CC1,		PIN(D, 0),  GPIO_INPUT)
+GPIO(UCPD2_DBCC1,	PIN(D, 1),  GPIO_INPUT)
+GPIO(UCPD2_CC2,		PIN(D, 2),  GPIO_INPUT)
+GPIO(UCPD2_DBCC2,	PIN(D, 3),  GPIO_INPUT)
+
+GPIO(VCONN_RA_EN_ODH,	PIN(B, 6),  GPIO_OUT_HIGH)
+GPIO(CC_THRU_EN,	PIN(B, 7),  GPIO_OUT_LOW)
+GPIO(CC_SEL,		PIN(B, 8),  GPIO_INPUT)
+	
+/* UART */
+GPIO(MCU_UART2_TX,	PIN(A, 2), GPIO_OUT_HIGH)
+GPIO(MCU_UART2_RX,	PIN(A, 3), GPIO_INPUT)
+//GPIO(DEBUG,		PIN(B, 2), GPIO_OUT_LOW)
+
+/* Unimplemented signals since this is a dev board */
+
+UNIMPLEMENTED(ENTERING_RW)
+UNIMPLEMENTED(WP_L)
+
+ALTERNATE(PIN_MASK(A, 0x000C), 1, MODULE_UART, 0) /* USART2: PA2/PA3 - Console */
