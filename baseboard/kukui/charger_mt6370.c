@@ -3,18 +3,23 @@
  * found in the LICENSE file.
  */
 
+#include "charge_manager.h"
+#include "charge_state_v2.h"
 #include "charger_mt6370.h"
 #include "console.h"
-#include "driver/tcpm/mt6370.h"
 #include "driver/charger/rt946x.h"
+#include "driver/tcpm/mt6370.h"
 #include "hooks.h"
+#include "math_util.h"
 #include "power.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
 
 #define BAT_LEVEL_PD_LIMIT 85
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 #ifndef CONFIG_BATTERY_SMART
 int board_cut_off_battery(void)
@@ -28,25 +33,62 @@ int board_cut_off_battery(void)
 }
 #endif
 
+/* Dynamicly change current based on battery's desired watt */
+void battery_desired_curr_dynamic(struct charge_state_data *curr)
+{
+	static int prev_stable_current = CHARGE_CURRENT_UNINITIALIZED;
+	static int prev_supply_voltage;
+	int supply_voltage;
+	int stable_current;
+
+	if (curr->state != ST_CHARGE) {
+		prev_supply_voltage = 0;
+		prev_stable_current = CHARGE_CURRENT_UNINITIALIZED;
+		pd_set_prefer_voltage(5000);
+		return;
+	}
+
+	supply_voltage = charge_manager_get_charger_voltage();
+	stable_current = charge_get_stable_current();
+
+	if (stable_current == CHARGE_CURRENT_UNINITIALIZED)
+		return;
+
+	if (!prev_supply_voltage)
+		goto update_charge;
+
+	if (curr->batt.state_of_charge >= BATTERY_CV_LEVEL &&
+	    supply_voltage == 5000 && prev_supply_voltage > supply_voltage &&
+	    prev_stable_current - stable_current > 300) {
+		/* Raise perfer voltage above 5000mV */
+		pd_set_prefer_voltage(6000);
+		/* Delay stable current evaluation */
+		charge_reset_stable_current(50 * SECOND);
+		/* Rewrite the stable current to re-evalute desired watt */
+		charge_set_stable_current(prev_stable_current);
+	} else {
+		pd_set_prefer_voltage(5000);
+	}
+
+update_charge:
+	prev_supply_voltage = supply_voltage;
+	prev_stable_current = stable_current;
+}
+
 void mt6370_charger_profile_override(struct charge_state_data *curr)
 {
 	static int previous_chg_limit_mv;
-	int chg_limit_mv;
+	int chg_limit_mv = pd_get_max_voltage();
+
+	battery_desired_curr_dynamic(curr);
 
 	/* Limit input (=VBUS) to 5V when soc > 85% and charge current < 1A. */
 	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT) &&
-			charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
-			curr->batt.current < 1000) {
+	    charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
+	    curr->batt.current < 1000 && power_get_state() != POWER_S0)
 		chg_limit_mv = 5500;
-	} else if (power_get_state() == POWER_S0) {
-		/*
-		 * b/134227872: limit power to 5V/2A in S0 to prevent
-		 * overheat
-		 */
-		chg_limit_mv = 5500;
-	} else {
+	else
 		chg_limit_mv = PD_MAX_VOLTAGE_MV;
-	}
 
 	if (chg_limit_mv != previous_chg_limit_mv)
 		CPRINTS("VBUS limited to %dmV", chg_limit_mv);
@@ -87,13 +129,11 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	/* b/134227872: Limit input current to 2A in S0 to prevent overheat */
-	if (power_get_state() == POWER_S0)
-		charge_set_input_current_limit(
-			MIN(charge_ma, RT946X_AICR_TYP2MAX(2000)),
-			charge_mv);
-	else
-		charge_set_input_current_limit(
-				MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT),
-				charge_mv);
+	charge_set_input_current_limit(
+		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+}
+
+__override int board_get_desired_mw(void)
+{
+	return PLT_SHIFT_MW + charge_get_desired_mw();
 }

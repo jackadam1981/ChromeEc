@@ -76,6 +76,9 @@
 #define CONFIG_BASE_ATTACHED_SWITCH
 #endif
 
+/* base system PLT */
+#define PLT_SHIFT_MW 3500
+
 /*
  * Define this flag if board controls dp mux via gpio pins USB_C0_DP_OE_L and
  * USB_C0_DP_POLARITY.
