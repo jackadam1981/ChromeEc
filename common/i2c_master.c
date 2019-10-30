@@ -550,17 +550,18 @@ int i2c_read_string(const int port,
 			data_length = len - 1;
 		else
 			data_length = block_length;
-		rv = i2c_xfer_unlocked(port, slave_addr_flags,
-				       0, 0, data, data_length, 0);
-		data[data_length] = 0;
-		if (rv)
-			continue;
 
 		if (IS_ENABLED(CONFIG_SMBUS_PEC) &&
 				I2C_USE_PEC(slave_addr_flags)) {
 			uint8_t addr_8bit = I2C_GET_ADDR(slave_addr_flags) << 1;
 			uint8_t out[3] = {addr_8bit, reg, addr_8bit | 1};
 			uint8_t pec, pec_remote;
+
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+					       0, 0, data, data_length, 0);
+			data[data_length] = 0;
+			if (rv)
+				continue;
 
 			pec = crc8(out, sizeof(out));
 			pec = crc8_arg(&block_length, 1, pec);
@@ -588,12 +589,17 @@ int i2c_read_string(const int port,
 
 			if (pec != pec_remote)
 				rv = EC_ERROR_CRC;
-		} else
-			rv = i2c_xfer_unlocked(port, slave_addr_flags, NULL, 0,
-					       NULL, 0, I2C_XFER_STOP);
+		} else {
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+					       0, 0, data, data_length,
+					       I2C_XFER_STOP);
+			data[data_length] = 0;
+			if (rv)
+				continue;
+		}
 
-		if (!rv)
-			break;
+		/* execution reaches here implies rv=0, so we can exit now */
+		break;
 	}
 
 	i2c_lock(port, 0);
@@ -640,24 +646,27 @@ int i2c_write_block(const int port,
 		if (rv)
 			continue;
 
-		rv = i2c_xfer_unlocked(port, slave_addr_flags,
-				       data, len, NULL, 0, 0);
-		if (rv)
-			continue;
-
 		if (I2C_USE_PEC(slave_addr_flags)) {
 			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+					       data, len, NULL, 0, 0);
+			if (rv)
+				continue;
+
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
 					       &pec, sizeof(uint8_t), NULL, 0,
-					       0);
+					       I2C_XFER_STOP);
+			if (rv)
+				continue;
+		} else {
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+					       data, len, NULL, 0,
+					       I2C_XFER_STOP);
 			if (rv)
 				continue;
 		}
 
-		rv = i2c_xfer_unlocked(port, slave_addr_flags,
-				       NULL, 0, NULL, 0,
-				       I2C_XFER_STOP);
-		if (!rv)
-			break;
+		/* execution reaches here implies rv=0, so we can exit now */
+		break;
 	}
 	i2c_lock(port, 0);
 
