@@ -2332,6 +2332,13 @@
 /* Support IT8801 I/O expander. */
 #undef CONFIG_IO_EXPANDER_IT8801
 
+/*
+ * Enable IT8801 pwm functions, note that this conflicts with the chip's pwm
+ * module. So a board can not enable both CONFIG_IO_EXPANDER_IT8801_PWM and
+ * CONFIG_PWM together.
+ */
+#undef CONFIG_IO_EXPANDER_IT8801_PWM
+
 /* Support Nuvoton NCT38xx I/O expander. */
 #undef CONFIG_IO_EXPANDER_NCT38XX
 
@@ -2502,8 +2509,6 @@
  * Enable keypad (a palm-sized keyboard section usually placed on the far right)
  */
 #undef CONFIG_KEYBOARD_KEYPAD
-
-/*****************************************************************************/
 
 /*****************************************************************************/
 
