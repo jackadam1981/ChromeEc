@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ee10577_83cd8faf",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-30T23:24:17Z",
+      "side": 1,
+      "message": "As Karthik pointed out below, now that the region is being updated to cover the entire RO firmware + header/bootloader if any, area_size should also cover CONFIG_RO_STORAGE_OFF i.e. it will have to be added to area_size.",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "54afd71c04ac12613cb7f341f902cdaf11165a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9319eae_84cf6594",
         "filename": "common/fmap.c",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2019-10-30T22:29:36Z",
       "side": 1,
       "message": "Should it be CONFIG_RO_SIZE - CONFIG_RO_STORAGE_OFF?",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "54afd71c04ac12613cb7f341f902cdaf11165a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682328ad_fd8a954d",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-30T23:24:17Z",
+      "side": 1,
+      "message": "No, CONFIG_RO_SIZE is correct since it contains only the RO firmware size that is loaded in memory. What needs to change is line 120 above.",
+      "parentUuid": "f9319eae_84cf6594",
       "range": {
         "startLine": 129,
         "startChar": 16,
