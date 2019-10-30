@@ -16,6 +16,8 @@
 static int gpio_values[GPIO_COUNT];
 static int gpio_interrupt_enabled[GPIO_COUNT];
 
+#include "gpio_macros_save.inc"
+
 /* Create a dictionary of names for debug console print */
 #define GPIO_INT(name, pin, flags, signal) #name,
 #define GPIO(name, pin, flags) #name,
@@ -24,6 +26,8 @@ const char * gpio_names[GPIO_COUNT] = {
 };
 #undef GPIO
 #undef GPIO_INT
+
+#include "gpio_macros_restore.inc"
 
 test_mockable void gpio_pre_init(void)
 {

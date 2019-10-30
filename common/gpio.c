@@ -30,6 +30,9 @@ struct gpio_alt_func {
 	uint32_t flags;
 };
 
+
+#include "gpio_macros_save.inc"
+
 /*
  * Construct the gpio_alt_funcs array.  This array is used by gpio_config_module
  * to enable and disable GPIO alternate functions on a module by module basis.
@@ -41,6 +44,8 @@ struct gpio_alt_func {
 static const struct gpio_alt_func gpio_alt_funcs[] = {
 #include "gpio.wrap"
 };
+
+#include "gpio_macros_restore.inc"
 
 /*
  * GPIO_CONFIG_ALL_PORTS signifies a "don't care" for the GPIO port.  This is

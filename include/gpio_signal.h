@@ -8,6 +8,8 @@
 
 #include "compile_time_macros.h"
 
+#include "gpio_macros_save.inc"
+
 /*
  * There are 3 different IO signal types used by the EC.
  * Ensure they each use a unique range of values so we can tell them apart.
@@ -45,5 +47,7 @@ enum ioex_signal {
 BUILD_ASSERT(IOEX_SIGNAL_END < IOEX_LIMIT);
 
 #define IOEX_COUNT (IOEX_SIGNAL_END - IOEX_SIGNAL_START)
+
+#include "gpio_macros_restore.inc"
 
 #endif /* __CROS_EC_GPIO_SIGNAL_H */
