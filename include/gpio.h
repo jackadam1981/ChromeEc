@@ -99,6 +99,19 @@ struct gpio_info {
 /* Signal information from board.c.  Must match order from enum gpio_signal. */
 extern const struct gpio_info gpio_list[];
 
+/* Unconnected pin definition structure. */
+struct unconnected_pin_info {
+	/* Port base address */
+	uint32_t port;
+
+	/* Bitmask on that port (1 << N; 0 = signal not implemented) */
+	uint32_t mask;
+};
+
+/* Unconnected pin information. */
+extern const struct unconnected_pin_info unconnected_pin_list[];
+extern const int unconnected_pin_count;
+
 /* Interrupt handler table for those GPIOs which have IRQ handlers.
  *
  * If the signal's interrupt is enabled, this will be called in the
