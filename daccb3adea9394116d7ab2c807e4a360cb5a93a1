@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4478bab7_74fe754c",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-10-30T02:43:38Z",
+      "side": 1,
+      "message": "We can\u0027t generate stop condition if the in/out size are both zero:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/it83xx/i2c.c#651\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/npcx/i2c.c#624\n\nThis change causes board reef_it8320 reboot continuously or applying this CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1887996",
+      "range": {
+        "startLine": 591,
+        "startChar": 50,
+        "endLine": 592,
+        "endChar": 34
+      },
+      "revId": "daccb3adea9394116d7ab2c807e4a360cb5a93a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
