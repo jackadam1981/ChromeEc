@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c990efd0_12ffd8eb",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-10-30T21:13:56Z",
+      "side": 1,
+      "message": "Correct, the checkpatch check fails on your example because it\u0027s using C90 style comments \"//\":\n\n    ERROR: do not use C99 // comments\n            #157: FILE: driver/fingerprint/fpc/libfp/fpc_private.h:50:\n            +   FPC_ERROR_INTERNAL_0 \u003d 0, //!\u003c Indicates that no internal code was\n\n\nIt also fails on the following:\n\n   WARNING: Block comments should align the * on each line\n            #240: FILE: driver/fingerprint/fpc/libfp/fpc_sensor_pal.h:21:\n            +   IRQ_EXT_TRIG \u003d 0x02     /**\u003c Externally triggered by event outside\n            +                            *   sensor (may take long time)\n\n\nSomeone can modify checkpatch, but it\u0027s really meant for the kernel, so I\u0027m not sure if others are going to complain if we add EC-specific stuff.",
+      "parentUuid": "cf67e87c_972c2a0a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "6f34c688f5c052090f67416e809a87b8e4da3660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9367bdb_a8a92ee3",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
         "patchSetId": 2
