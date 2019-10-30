@@ -2505,6 +2505,13 @@
 
 /*****************************************************************************/
 
+/*
+ * Enable IT8801 pwm functions, note that this conflicts with the chip's pwm
+ * module. So a board can not enable both CONFIG_IO_EXPANDER_IT8801_PWM and
+ * CONFIG_PWM together.
+ */
+#undef CONFIG_IO_EXPANDER_IT8801_PWM
+
 /*****************************************************************************/
 
 /* Support common LED interface */
