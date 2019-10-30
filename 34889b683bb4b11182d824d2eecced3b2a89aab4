@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71daceee_1d6dc6ae",
+        "filename": "common/kasa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:42:38Z",
+      "side": 1,
+      "message": "looks like mag_cal_update() in common/mag_cal.c.",
+      "revId": "34889b683bb4b11182d824d2eecced3b2a89aab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e807503e_37f2c3db",
+        "filename": "common/kasa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-30T20:42:38Z",
+      "side": 1,
+      "message": "This function looks like moc_fit() in common/mag_cal.c. combine in one.",
+      "revId": "34889b683bb4b11182d824d2eecced3b2a89aab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
