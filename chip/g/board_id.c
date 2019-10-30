@@ -203,6 +203,44 @@ static enum vendor_cmd_rc vc_set_board_id(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_BOARD_ID, vc_set_board_id);
 
+#define WHITELABEL_FLAGS 0x3f80
+
+/* Set whitelabel board id flags. The RLZ can be set later. */
+static enum vendor_cmd_rc vc_set_board_id_flags_wl(enum vendor_cmd_cc code,
+						   void *buf,
+						   size_t input_size,
+						   size_t *response_size)
+{
+	struct board_id id;
+	uint8_t *pbuf = buf;
+
+	*response_size = 1;
+
+	/* Fail if Board ID is already programmed */
+	if (read_board_id(&id)) {
+		CPRINTS("%s: error reading Board ID", __func__);
+		*pbuf = VENDOR_RC_READ_FLASH_FAIL;
+		return VENDOR_RC_READ_FLASH_FAIL;
+	}
+
+	if (id.flags == WHITELABEL_FLAGS) {
+		*pbuf = VENDOR_RC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
+	}
+
+	if (!board_id_is_blank(&id)) {
+		CPRINTS("%s: Board ID already programmed", __func__);
+		*pbuf = VENDOR_RC_NOT_ALLOWED;
+		return VENDOR_RC_NOT_ALLOWED;
+	}
+	id.flags = WHITELABEL_FLAGS;
+
+	*pbuf = write_board_id(&id);
+	return *pbuf;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_BOARD_ID_FLAGS_WL,
+		       vc_set_board_id_flags_wl);
+
 static int command_board_id(int argc, char **argv)
 {
 	struct board_id id;
