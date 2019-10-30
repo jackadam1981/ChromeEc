@@ -92,6 +92,14 @@
 #endif
 
 /*
+ * Mark pin as unused. This allows the chip specific code to provision these
+ * pins for the lowest power state.
+ */
+#ifndef UNUSED
+#define UNUSED(pin)
+#endif
+
+/*
  * RO/RW pin macro.
  *
  * Some boards may have very different pin configurations between RO and RW, and
