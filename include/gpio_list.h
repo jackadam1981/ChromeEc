@@ -46,6 +46,7 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
 #define GPIO(name, pin, flags) pin
 #define GPIO_INT(name, pin, flags, signal) pin
 /*
+ * Check at build time that pin/ports are only defined once.
  * The compiler will complain if we use the same name twice. The linker ignores
  * anything that gets by.
  */

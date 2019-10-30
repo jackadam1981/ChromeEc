@@ -92,6 +92,19 @@
 #endif
 
 /*
+ * Mark pin as unused. This allows the chip specific code to provision these
+ * pins for the lowest power state.
+ * We don't want to automatically provision all unreferenced pins/ports
+ * as unused, since this may alter the behavior of existing firmwares in
+ * ways that may not be obvious to the developer.
+ * Note, depending on the chip implementation, setting a pin to UNUSED may
+ * increase the pin table size.
+ */
+#ifndef UNUSED
+#define UNUSED(pin)
+#endif
+
+/*
  * RO/RW pin macro.
  *
  * Some boards may have very different pin configurations between RO and RW, and
@@ -109,6 +122,8 @@
 #define ALTERNATE_RW(pinmask, function, module, flags)
 #define UNIMPLEMENTED_RO(name) UNIMPLEMENTED(name)
 #define UNIMPLEMENTED_RW(name)
+#define UNUSED_RO(name) UNUSED(name)
+#define UNUSED_RW(name)
 #elif defined(SECTION_IS_RW)
 #define GPIO_RO(name, pin, flags)
 #define GPIO_RW(name, pin, flags) GPIO(name, pin, flags)
@@ -119,6 +134,8 @@
 		ALTERNATE(pinmask, function, module, flags)
 #define UNIMPLEMENTED_RO(name)
 #define UNIMPLEMENTED_RW(name) UNIMPLEMENTED(name)
+#define UNUSED_RO(name)
+#define UNUSED_RW(name) UNUSED(name)
 #else
 #define GPIO_RO(name, pin, flags) GPIO(name, pin, flags)
 #define GPIO_RW(name, pin, flags) GPIO(name, pin, flags)
@@ -130,6 +147,8 @@
 		ALTERNATE(pinmask, function, module, flags)
 #define UNIMPLEMENTED_RO(name) UNIMPLEMENTED(name)
 #define UNIMPLEMENTED_RW(name) UNIMPLEMENTED(name)
+#define UNUSED_RO(name) UNUSED(name)
+#define UNUSED_RW(name) UNUSED(name)
 #endif
 
 #ifndef IOEX
@@ -157,6 +176,8 @@
 #undef UNIMPLEMENTED
 #undef UNIMPLEMENTED_RO
 #undef UNIMPLEMENTED_RW
+#undef UNUSED_RO
+#undef UNUSED_RW
 
 #undef IOEX
 #undef IOEX_INT

@@ -144,6 +144,8 @@
 #define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
+#define GPIO_UNUSED_FLAGS 
+
 /* Prescaler values for PLL. Currently used only by STM32L476. */
 #define STM32_PLLM	0
 #define STM32_PLLN	0
