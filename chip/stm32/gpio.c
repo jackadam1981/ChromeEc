@@ -23,6 +23,7 @@ static uint8_t exti_events[16];
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
+	const struct unused_pin_info *u = unused_pin_list;
 	int is_warm = system_is_reboot_warm();
 	int i;
 
@@ -58,6 +59,20 @@ void gpio_pre_init(void)
 
 		/* Set up GPIO based on flags */
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
+	}
+
+	/* Configure optional unused pins for low power optimization. */
+	for (i = 0; i < UNUSED_PIN_COUNT; i++, u++) {
+#ifdef CHIP_FAMILY_STM32F4
+		/*
+		 * Configure unused pins as ANALOG INPUT to save power.
+		 * For more info, look at
+		 * "USING STM32F4 MCU POWER MODES WITH BEST DYNAMIC EFFICIENCY"
+		 * ("AN4365") section 1.2.6 and STM32F412 reference manual
+		 * section 7.3.12.
+		 */
+		gpio_set_flags_by_mask(u->port, u->mask, GPIO_ANALOG);
+#endif
 	}
 }
 
