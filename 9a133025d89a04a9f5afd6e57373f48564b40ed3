@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a40ca2c_664c9a4d",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-30T17:20:31Z",
+      "side": 1,
+      "message": "I think we no longer need it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "9a133025d89a04a9f5afd6e57373f48564b40ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e64e94_d6354337",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-30T17:20:31Z",
+      "side": 1,
+      "message": "Can you replace it with tablet_mode_forced?",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 13
+      },
+      "revId": "9a133025d89a04a9f5afd6e57373f48564b40ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc41942_2572c30a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-30T17:20:31Z",
+      "side": 1,
+      "message": "locked?",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "9a133025d89a04a9f5afd6e57373f48564b40ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f74095_0c3ba626",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-30T17:20:31Z",
+      "side": 1,
+      "message": "Can you replace it with tablet_mode_forced?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "9a133025d89a04a9f5afd6e57373f48564b40ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35578a1b_98870bc3",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-30T17:20:31Z",
+      "side": 1,
+      "message": "I think this should be \u0027tablet_mode_forced \u0026\u0026 !tablet_mode\u0027.",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 13
+      },
+      "revId": "9a133025d89a04a9f5afd6e57373f48564b40ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
