@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd35491a_9ef6c7de",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-10-30T23:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee10577_83cd8faf",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "54afd71c04ac12613cb7f341f902cdaf11165a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9319eae_84cf6594",
         "filename": "common/fmap.c",
         "patchSetId": 2
