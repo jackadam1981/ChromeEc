@@ -30,9 +30,12 @@ void gpio_pre_init(void)
 #ifdef CHIP_FAMILY_STM32H7
 	STM32_RCC_APB4ENR |= STM32_RCC_SYSCFGEN;
 #else
+#ifdef CHIP_FAMILY_STM32G0
+	STM32_RCC_APBENR2 |= STM32_RCC_SYSCFGEN;
+#else
 	STM32_RCC_APB2ENR |= STM32_RCC_SYSCFGEN;
 #endif
-
+#endif
 	/* Delay 1 APB clock cycle after the clock is enabled */
 	clock_wait_bus_cycles(BUS_APB, 1);
 
@@ -94,12 +97,21 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	}
 	exti_events[bit] = signal;
 
+#ifdef CHIP_FAMILY_STM32G0
+	group = bit / 4;
+	shift = (bit % 4) * 8;
+	bank = (g->port - STM32_GPIOA_BASE) / 0x400;
+
+	STM32_EXTI_EXTICRx(group) = (STM32_EXTI_EXTICRx(group) &
+					~(0xFF << shift)) | (bank << shift);
+#else
 	group = bit / 4;
 	shift = (bit % 4) * 4;
 	bank = (g->port - STM32_GPIOA_BASE) / 0x400;
 
 	STM32_SYSCFG_EXTICR(group) = (STM32_SYSCFG_EXTICR(group) &
 				      ~(0xF << shift)) | (bank << shift);
+#endif
 	STM32_EXTI_IMR |= g->mask;
 
 	return EC_SUCCESS;
@@ -129,9 +141,12 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 
 	if (!g->mask || signal >= GPIO_IH_COUNT)
 		return EC_ERROR_INVAL;
-
+#ifdef CHIP_FAMILY_STM32G0
+	STM32_EXTI_RPR1 |= g->mask;
+	STM32_EXTI_FPR1 |= g->mask;
+#else
 	STM32_EXTI_PR |= g->mask;
-
+#endif
 	return EC_SUCCESS;
 }
 
@@ -141,12 +156,25 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 void __keep gpio_interrupt(void)
 {
 	int bit;
-	/* process only GPIO EXTINTs (EXTINT0..15) not other EXTINTs */
-	uint32_t pending = STM32_EXTI_PR & 0xFFFF;
+	uint32_t pending;
 	uint8_t signal;
 
-	STM32_EXTI_PR = pending;
+	/* process only GPIO EXTINTs (EXTINT0..15) not other EXTINTs */
+#ifdef CHIP_FAMILY_STM32G0
+	pending = (STM32_EXTI_FPR1 & 0xFFFF) | (STM32_EXTI_RPR1 & 0xFFFF);
+#else
+	pending = STM32_EXTI_PR & 0xFFFF;
+#endif
 
+#ifdef CHIP_FAMILY_STM32G0
+	if (STM32_EXTI_FPR1)
+		STM32_EXTI_FPR1 = pending;
+
+	if (STM32_EXTI_RPR1)
+		STM32_EXTI_RPR1 = pending;
+#else
+	STM32_EXTI_PR = pending;
+#endif
 	while (pending) {
 		bit = get_next_bit(&pending);
 		signal = exti_events[bit];
@@ -154,7 +182,7 @@ void __keep gpio_interrupt(void)
 			gpio_irq_handlers[signal](signal);
 	}
 }
-#ifdef CHIP_FAMILY_STM32F0
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32G0)
 DECLARE_IRQ(STM32_IRQ_EXTI0_1, gpio_interrupt, STM32_IRQ_EXT0_1_PRIORITY);
 DECLARE_IRQ(STM32_IRQ_EXTI2_3, gpio_interrupt, STM32_IRQ_EXT2_3_PRIORITY);
 DECLARE_IRQ(STM32_IRQ_EXTI4_15, gpio_interrupt, STM32_IRQ_EXTI4_15_PRIORITY);
