@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d70702b2_f27564f0",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-10-30T02:21:02Z",
+      "side": 1,
+      "message": "Isn\u0027t this a bit of a hack?\nI really don\u0027t think it is good idea to start adding ambiguity to register related macros.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "176a7d6f11dfea5bdd16e7cf8f922dd7bddf3eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
