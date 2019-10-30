@@ -22,6 +22,30 @@
       "revId": "0cdf6d54c53061673d0b657ae6eb8b2b08bc4c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811d0fe7_d19fcf5a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4383,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-10-30T21:01:23Z",
+      "side": 1,
+      "message": "Makes sense. Sorry I missed the alert for patch.",
+      "parentUuid": "317f0af4_f7349d43",
+      "range": {
+        "startLine": 4383,
+        "startChar": 30,
+        "endLine": 4383,
+        "endChar": 32
+      },
+      "revId": "0cdf6d54c53061673d0b657ae6eb8b2b08bc4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
