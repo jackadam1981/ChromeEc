@@ -18,7 +18,8 @@
 #define BB_RETIMER_WRITE_SIZE	(BB_RETIMER_REG_SIZE + 2)
 #define BB_RETIMER_MUX_DATA_PRESENT (USB_PD_MUX_USB_ENABLED \
 				| USB_PD_MUX_DP_ENABLED \
-				| USB_PD_MUX_TBT_COMPAT_ENABLED)
+				| USB_PD_MUX_TBT_COMPAT_ENABLED \
+				| USB_PD_MUX_USB4_ENABLED)
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -193,7 +194,8 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 	if (pd_is_debug_acc(port))
 		set_retimer_con |= BB_RETIMER_DEBUG_ACCESSORY_MODE;
 
-	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+	if (mux_state & (USB_PD_MUX_TBT_COMPAT_ENABLED |
+			 USB_PD_MUX_USB4_ENABLED)) {
 		cable_resp = get_cable_tbt_vdo(port);
 		dev_resp = get_dev_tbt_vdo(port);
 
@@ -210,7 +212,8 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 		 * 0 - TBT not configured
 		 * 1 - TBT configured
 		 */
-		set_retimer_con |= BB_RETIMER_TBT_CONNECTION;
+		if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED)
+			set_retimer_con |= BB_RETIMER_TBT_CONNECTION;
 
 		/*
 		 * Bit 17: TBT_TYPE
@@ -229,7 +232,7 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 			set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
 
 		/*
-		 * Bit 20: TBT_ACTIVE_LINK_TRAINING
+		 * Bit 20: TBT/USB4_ACTIVE_LINK_TRAINING
 		 * 0 - Active with bi-directional LSRX communication
 		 * 1 - Active with uni-directional LSRX communication
 		 * Set to "0" when passive cable plug
@@ -247,11 +250,20 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 			set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
 		/*
-		 * Bits 27-25: TBT_CABLE_SPEED_SUPPORT
-		 * 000b - No Functionality
-		 * 001b - USB3.1 gen1 cable
+		 * Bit 23: USB4 Connection
+		 * 0 - USB4 not configured
+		 * 1 - USB4 Configured
+		 */
+		if (mux_state & USB_PD_MUX_USB4_ENABLED)
+			set_retimer_con |= BB_RETIMER_USB4_ENABLED;
+
+		/*
+		 * Bit 27-25: TBT/USB4 Cable speed
+		 * 000b - No functionality
+		 * 001b - USB3.1 Gen1 Cable
 		 * 010b - 10Gb/s
-		 * 011b -10Gb/s and 20Gb/s
+		 * 011b - 10Gb/s and 20Gb/s
+		 * 10..11b - Reserved
 		 */
 		set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
 						cable_resp.tbt_cable_speed);
