@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c76bd96_c78c9972",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-30T22:19:01Z",
+      "side": 1,
+      "message": "Add comment here saying what returning 0 here means for the default case, please",
+      "range": {
+        "startLine": 2687,
+        "startChar": 1,
+        "endLine": 2687,
+        "endChar": 10
+      },
+      "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47bc8b80_30201a22",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3375,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-30T22:19:01Z",
+      "side": 1,
+      "message": "nit: I would rather use polarity inline even it if make it take one more line, sorry.\n\nif you want to push back, then let\u0027s name if something more descriptive than p, like polarity",
+      "range": {
+        "startLine": 3375,
+        "startChar": 4,
+        "endLine": 3375,
+        "endChar": 36
+      },
+      "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f90722_5612e301",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3380,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-30T22:19:01Z",
+      "side": 1,
+      "message": "let\u0027s add comments saying why we are doing this here (probably similar comments to the function header)\n\nAlso are there any other places we need to do this for polarity?\n\nIf not, it might be worth naming the function board_get_src_dts_polarity to make it more clear, thoughts?",
+      "range": {
+        "startLine": 3380,
+        "startChar": 4,
+        "endLine": 3380,
+        "endChar": 37
+      },
+      "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
