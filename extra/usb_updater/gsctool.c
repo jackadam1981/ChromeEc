@@ -1579,6 +1579,10 @@ static int parse_bid(const char *opt,
 
 	*bid_action = bid_set;  /* Ignored by caller on errors. */
 
+	if (!strcmp(opt, "whitelabel")) {
+		*bid_action = bid_set_whitelabel_flags;
+		return 1;
+	}
 	/*
 	 * Pointer to the optional second component of the command line
 	 * parameter, when present - separated by a colon.
@@ -2053,6 +2057,21 @@ void process_bid(struct transfer_descriptor *td,
 				response_size);
 		}
 		exit(update_error);
+	}
+
+	if (bid_action == bid_set_whitelabel_flags) {
+		uint8_t response;
+
+		response_size = sizeof(response);
+		send_vendor_command(td, VENDOR_CC_SET_BOARD_ID_FLAGS_WL,
+				    NULL, 0, &response, &response_size);
+
+		if (response) {
+			fprintf(stderr, "Error %d while setting whitelabel "
+					"flags.\n",
+				response);
+			exit(update_error);
+		}
 	}
 }
 
