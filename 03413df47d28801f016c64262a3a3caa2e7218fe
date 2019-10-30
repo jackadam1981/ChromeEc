@@ -104,6 +104,29 @@
       "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f49134db_5e5dd602",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2019-10-30T06:08:01Z",
+      "side": 1,
+      "message": "According to Ti bq40370 spec, I found C/D FET bit in ManufacturerAccess(0x00) is bit\u003c15,14\u003e. When C/D FET are off, bit\u003c15,14\u003e\u003d\u003c1,0\u003e (0x8000).",
+      "range": {
+        "startLine": 270,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 29
+      },
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
