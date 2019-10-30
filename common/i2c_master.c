@@ -549,9 +549,16 @@ int i2c_read_string(const int port,
 			data_length = len - 1;
 		else
 			data_length = block_length;
-		rv = i2c_xfer_unlocked(port, slave_addr_flags,
-				       0, 0, data, data_length, 0);
-		data[data_length] = 0;
+
+		if (IS_ENABLED(CONFIG_SMBUS_PEC)) {
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				0, 0, data, data_length, 0);
+			data[data_length] = 0;
+		} else {
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+				0, 0, data, data_length, I2C_XFER_STOP);
+		}
+
 		if (rv)
 			continue;
 
@@ -587,9 +594,7 @@ int i2c_read_string(const int port,
 
 			if (pec != pec_remote)
 				rv = EC_ERROR_CRC;
-		} else
-			rv = i2c_xfer_unlocked(port, slave_addr_flags, NULL, 0,
-					       NULL, 0, I2C_XFER_STOP);
+		}
 
 		if (!rv)
 			break;
