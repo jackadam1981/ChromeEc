@@ -639,24 +639,27 @@ int i2c_write_block(const int port,
 		if (rv)
 			continue;
 
-		rv = i2c_xfer_unlocked(port, slave_addr_flags,
-				       data, len, NULL, 0, 0);
-		if (rv)
-			continue;
-
 		if (I2C_USE_PEC(slave_addr_flags)) {
 			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+					       data, len, NULL, 0, 0);
+			if (rv)
+				continue;
+
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
 					       &pec, sizeof(uint8_t), NULL, 0,
-					       0);
+					       I2C_XFER_STOP);
+			if (rv)
+				continue;
+		} else {
+			rv = i2c_xfer_unlocked(port, slave_addr_flags,
+					       data, len, NULL, 0,
+					       I2C_XFER_STOP);
 			if (rv)
 				continue;
 		}
 
-		rv = i2c_xfer_unlocked(port, slave_addr_flags,
-				       NULL, 0, NULL, 0,
-				       I2C_XFER_STOP);
-		if (!rv)
-			break;
+		/* execution reaches here implies rv=0, so we can exit now */
+		break;
 	}
 	i2c_lock(port, 0);
 
