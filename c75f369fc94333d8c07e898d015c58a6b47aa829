@@ -22,6 +22,30 @@
       "revId": "c75f369fc94333d8c07e898d015c58a6b47aa829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49e5d65_c53fd654",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-10-30T23:45:08Z",
+      "side": 1,
+      "message": "it\u0027s whatever common/system.c:system_is_locked() decides.\nbasically, the EC and BIOS flash blocks are locked and\nthe system WP signal is asserted.",
+      "parentUuid": "d8f75b03_7e359d03",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "c75f369fc94333d8c07e898d015c58a6b47aa829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
