@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79b8fd36_bc047a4c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T17:42:15Z",
+      "side": 1,
+      "message": "let\u0027s make a #define for this constant so we can name it. We can add comments to struct definition that says that that constant will be used when there is no valid VDO",
+      "range": {
+        "startLine": 3637,
+        "startChar": 35,
+        "endLine": 3637,
+        "endChar": 37
+      },
+      "revId": "e56d89e799e4b1638e179116415ee217f3529274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5e1fe92_b0e33885",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T17:42:15Z",
+      "side": 1,
+      "message": "we already have this file, usb_common.c",
+      "range": {
+        "startLine": 1011,
+        "startChar": 3,
+        "endLine": 1012,
+        "endChar": 43
+      },
+      "revId": "e56d89e799e4b1638e179116415ee217f3529274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
