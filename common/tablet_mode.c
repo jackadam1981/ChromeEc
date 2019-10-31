@@ -16,35 +16,28 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ## args)
 
-/*
- * Other code modules assume that notebook mode (i.e. tablet_mode = false) at
- * startup
- */
-static bool tablet_mode;
 
-/*
- * Console command can force the value of tablet_mode. If tablet_mode_force is
- * true, the all external set call for tablet_mode are ignored.
- */
-static bool tablet_mode_forced;
+enum tablet_mode_state {
+	DISABLED = 0, /* The initial state of the module at startup */
+	ENABLED = 1,
+	FORCED_DISABLED = 2,
+	FORCED_ENABLED = 3,
+	MODULE_BLOCKED = 4, /* This tablet mode module disabled at run-time. */
+
+};
+static enum tablet_mode_state tablet_mode;
 
 /* True if GMR sensor is reporting 360 degrees. */
 static bool gmr_sensor_at_360;
 
-/*
- * True: all calls to tablet_set_mode are ignored and tablet_mode if forced to 0
- * False: all calls to tablet_set_mode are honored
- */
-static bool disabled;
-
 int tablet_get_mode(void)
 {
-	return tablet_mode;
+	return tablet_mode == ENABLED || tablet_mode == FORCED_ENABLED;
 }
 
 static void notify_tablet_mode_change(void)
 {
-	CPRINTS("tablet mode %sabled", tablet_mode ? "en" : "dis");
+	CPRINTS("tablet mode %sabled", tablet_get_mode() ? "en" : "dis");
 	hook_notify(HOOK_TABLET_MODE_CHANGE);
 
 	/*
@@ -58,17 +51,13 @@ static void notify_tablet_mode_change(void)
 
 void tablet_set_mode(int mode)
 {
-	/* If tablet_mode is forced via a console command, ignore set. */
-	if (tablet_mode_forced)
+	/* If forcing mode or module is disabled, ignore set call */
+	if (tablet_mode != ENABLED && tablet_mode != DISABLED)
 		return;
 
-	if (tablet_mode == !!mode)
+	/* If value didn't change, return */
+	if ((tablet_mode == ENABLED) == !!mode)
 		return;
-
-	if (disabled) {
-		CPRINTS("Tablet mode set while disabled (ignoring)!");
-		return;
-	}
 
 	if (gmr_sensor_at_360 && !mode) {
 		CPRINTS("Ignoring tablet mode exit while gmr sensor "
@@ -76,15 +65,14 @@ void tablet_set_mode(int mode)
 		return;
 	}
 
-	tablet_mode = !!mode;
+	tablet_mode = mode ? ENABLED : DISABLED;
 
 	notify_tablet_mode_change();
 }
 
 void tablet_disable(void)
 {
-	tablet_mode = false;
-	disabled = true;
+	tablet_mode = MODULE_BLOCKED;
 }
 
 /* This ifdef can be removed once we clean up past projects which do own init */
@@ -145,7 +133,7 @@ void gmr_tablet_switch_isr(enum gpio_signal signal)
 static void gmr_tablet_switch_init(void)
 {
 	/* If this sub-system was disabled before initializing, honor that. */
-	if (disabled)
+	if (tablet_mode == MODULE_BLOCKED)
 		return;
 
 	gpio_enable_interrupt(GMR_TABLET_MODE_GPIO_L);
@@ -171,17 +159,15 @@ static int command_settabletmode(int argc, char **argv)
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	if (argv[1][0] == 'o' && argv[1][1] == 'n') {
-		tablet_mode = true;
-		tablet_mode_forced = true;
-	} else if (argv[1][0] == 'o' && argv[1][1] == 'f') {
-		tablet_mode = false;
-		tablet_mode_forced = true;
-	} else if (argv[1][0] == 'r') {
-		tablet_mode_forced = false;
-	} else {
+	if (argv[1][0] == 'o' && argv[1][1] == 'n')
+		tablet_mode = FORCED_ENABLED;
+	else if (argv[1][0] == 'o' && argv[1][1] == 'f')
+		tablet_mode = FORCED_DISABLED;
+	else if (argv[1][0] == 'r')
+		/* Coalesce the value to either enabled or disabled */
+		tablet_mode &= 0x1;
+	else
 		return EC_ERROR_PARAM1;
-	}
 
 	notify_tablet_mode_change();
 	return EC_SUCCESS;
