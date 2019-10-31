@@ -68,6 +68,30 @@
       "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7443318_28b9714e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3380,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-10-31T17:43:04Z",
+      "side": 1,
+      "message": "About changing the name to board_get_src_dts_polarity(), this has a different meaning, that  the caller explicitly knows the port is SRC DTS and calls this board function for the predetermined polarity. It is like:\n\nif (new_cc_state \u003d\u003d PD_CC_UFP_DEBUG_ACC)\n    pd[port].polarity \u003d board_get_src_dts_polarity();\nelse\n    pd[port].polarity \u003d (cc1 !\u003d TYPEC_CC_VOLT_RD);\n\n\nAnd the above soft reset case, can do the same thing, just adding some check for the PD_CC_UFP_DEBUG_ACC.\n\nI think this is better for spec compliance. What do you think?",
+      "parentUuid": "10f90722_5612e301",
+      "range": {
+        "startLine": 3380,
+        "startChar": 4,
+        "endLine": 3380,
+        "endChar": 37
+      },
+      "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
