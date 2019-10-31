@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "060d2163_7c48b95c",
+        "filename": "common/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T20:35:04Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure that cprints can be called in an interrupt context for all chips. It\u0027s ok to submit this CL as it won\u0027t immediately break anything but that\u0027s something nice to add as a note (unless you can verify).",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 8
+      },
+      "revId": "cf755fcbb00baf5ef97948aabbb9c7e8fccfa7f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
