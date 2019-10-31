@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ad95e0e_1e5e871c",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T17:29:59Z",
+      "side": 1,
+      "message": "is this a new config option?\n\nIf so, this should be in config.h\n\nthe presubmit should have caught this, did it not or did you skip presumit checks?",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "162a91a1d5ebebd5546ac36e657eb97f8847e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
