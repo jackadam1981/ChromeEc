@@ -46,6 +46,30 @@
       "revId": "ee163aa9dd57fb3c454ac049d530e488d62e12cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268ca040_5c7b5b07",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-10-31T19:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e10b646_0920c2cc",
+      "range": {
+        "startLine": 401,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 18
+      },
+      "revId": "ee163aa9dd57fb3c454ac049d530e488d62e12cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
