@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "357651ea_43fd6e11",
+        "filename": "common/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T19:29:22Z",
+      "side": 1,
+      "message": "I recommend this is separated from Volteer change (for cherry-picks).",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 0
+      },
+      "revId": "13fc4fd52c8ebcb4278dcdd1d871dbda2949612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
