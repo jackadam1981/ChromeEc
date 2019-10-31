@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5eb61f48_26ee565d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4788,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T16:38:39Z",
+      "side": 1,
+      "message": "nit: can you say \u0027resume\u0027?",
+      "range": {
+        "startLine": 4788,
+        "startChar": 20,
+        "endLine": 4788,
+        "endChar": 35
+      },
+      "revId": "1dd82b62c5ad4db60cc91570b8458ca45f6f959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767ee65a_47b91430",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4799,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T16:38:39Z",
+      "side": 1,
+      "message": "Does IS_ENABLED(HAS_TASK_PD_INT_C0) work?",
+      "range": {
+        "startLine": 4799,
+        "startChar": 7,
+        "endLine": 4799,
+        "endChar": 25
+      },
+      "revId": "1dd82b62c5ad4db60cc91570b8458ca45f6f959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
