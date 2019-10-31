@@ -116,6 +116,30 @@
       "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be8c0aa7_330224c9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3380,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-10-31T18:45:39Z",
+      "side": 1,
+      "message": "Fixed in the new patchset. I\u0027d prefer board_get_src_dts_polarity(), as the SRC non-DTS is a different case, i.e. (cc1 !\u003d TYPEC_CC_VOLT_RD). Servo is not intended to override the SRC non-DTS case.\n\nBTW, maybe we can move (cc1 !\u003d TYPEC_CC_VOLT_RD) to another inline function get_src_polarity(), similar to get_snk_polarity(), but it is out of scope of this change.",
+      "parentUuid": "5dc9ffb3_5d87f951",
+      "range": {
+        "startLine": 3380,
+        "startChar": 4,
+        "endLine": 3380,
+        "endChar": 37
+      },
+      "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
