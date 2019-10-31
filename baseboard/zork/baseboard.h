@@ -104,7 +104,7 @@
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 
 /* TODO(b/142284905): Enable new PD stack */
-#if 0
+#if 1
 /* Enable the new USB-C PD stack */
 #define CONFIG_USB_PE_SM
 #define CONFIG_USB_PRL_SM

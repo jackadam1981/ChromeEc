@@ -8,3 +8,4 @@
 
 baseboard-y=baseboard.o
 baseboard-y+=led.o
+baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o

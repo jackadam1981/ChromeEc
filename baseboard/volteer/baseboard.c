@@ -5,13 +5,20 @@
 
 /* Volteer family-specific configuration */
 #include "baseboard.h"
+#ifndef CONFIG_USB_PD_PORT_COUNT
+#error CONFIG_USB_PD_PORT_COUNT should be defined after including baseboard.h.
+#endif
 #include "battery.h"
+#ifndef CONFIG_USB_PD_PORT_COUNT
+#error How is it not defined now?
+#endif
 #include "charge_state.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "usb_pd_tcpm.h"
 
 /******************************************************************************/
 /* Wake up pins */
@@ -108,6 +115,27 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+const struct tcpc_config_t tcpc_config[] = {
+	[USBC_PORT_C0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C0,
+			.addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+	},
+	[USBC_PORT_C1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C1,
+			.addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
+BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT == USBC_PORT_COUNT);
 
 /* Stub out battery and charging functions to compile common LED code.
  * TODO(b/140557020): Define these for real.

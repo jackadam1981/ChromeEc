@@ -67,6 +67,26 @@
 /* Common battery defines */
 
 /* USB Type C and USB PD defines */
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#define CONFIG_USBC_VCONN
+
+/* TODO(b/140578872): Figure out correct values for Volteer. */
+#define PD_OPERATING_POWER_MW	15000
+#define PD_MAX_POWER_MW		45000
+#define PD_MAX_CURRENT_MA	3000
+#define PD_MAX_VOLTAGE_MV	20000
+
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
+#define PD_VCONN_SWAP_DELAY		5000 /* us */
 
 /* BC 1.2 */
 
@@ -89,6 +109,20 @@ enum pwm_channel {
 	PWM_CH_LED2_GREEN,
 	PWM_CH_LED3_RED,
 	PWM_CH_COUNT
+};
+
+/* TODO(b/140578872): Copied from zork. Figure out correct values for volteer.
+ */
+enum adc_channel {
+	ADC_TEMP_SENSOR_CHARGER,
+	ADC_TEMP_SENSOR_SOC,
+	ADC_CH_COUNT
+};
+
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
 };
 
 #endif /* !__ASSEMBLER__ */

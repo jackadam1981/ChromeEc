@@ -33,6 +33,13 @@
 /* Sensors */
 
 /* USB Type C and USB PD defines */
+/*
+ * USB ID
+ * TODO(b/140578872): Figure out what volteer's is.
+ * This is allocated specifically for Zork:Trembyle
+ * http://google3/hardware/standards/usb/
+ */
+#define CONFIG_USB_PID 0x503E
 
 /* USB Type A Features */
 
