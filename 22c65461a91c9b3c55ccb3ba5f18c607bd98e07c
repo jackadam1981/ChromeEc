@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95a12992_9ec0d883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-31T15:40:14Z",
+      "side": 1,
+      "message": "Have you tried writing only to EC_RO from DUT and reading back only EC_RO and ensuring they are the same i.e. the write happens to entire EC_RO region?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "22c65461a91c9b3c55ccb3ba5f18c607bd98e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
