@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b941158b_0ac02094",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-10-31T20:11:52Z",
+      "side": 1,
+      "message": "What is the purpose of calling the i2c_process_board_command(...) at this location?  I copied this from another ./chip I2C driver code... do I actually need this?  There is no board command information at this stage of the I2C transaction, making this call makes no sense to me but I implemented it because I saw the same type of code elsewhere.",
+      "revId": "c3a2c5e027dd0aaa107764a8c5da55b5cd1b13bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
