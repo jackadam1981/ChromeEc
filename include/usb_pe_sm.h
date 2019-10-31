@@ -163,5 +163,7 @@ int pe_is_explicit_contract(int port);
  */
 void pe_dpm_request(int port, enum pe_dpm_request req);
 
+int pd_is_vconn_src(int port);
+
 #endif /* __CROS_EC_USB_PE_H */
 

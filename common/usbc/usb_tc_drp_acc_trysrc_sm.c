@@ -368,6 +368,11 @@ enum pd_dual_role_states pd_get_dual_role(int port)
 	return drp_state[port];
 }
 
+int pd_is_vconn_src(int port)
+{
+	return TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON);
+}
+
 int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 					uint32_t current_image)
 {
@@ -741,13 +746,13 @@ void tc_event_check(int port, int evt)
 	/* Update the cc variables if there was a change */
 	if (evt & PD_EVENT_CC) {
 		enum tcpc_cc_voltage_status cc1, cc2;
-
 		tcpm_get_cc(port, &cc1, &cc2);
 		if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
 			tc[port].cc_state = pd_get_cc_state(cc1, cc2);
 			tc[port].cc1 = cc1;
 			tc[port].cc2 = cc2;
 			tc[port].cc_last_change = get_time().val;
+			ccprints("p%d has PD_EVENT_CC cc_state %d", port, tc[port].cc_state);
 		}
 	}
 
@@ -1662,6 +1667,8 @@ static void set_rd(const int port)
  */
 static void tc_unattached_snk_entry(const int port)
 {
+	if (port == 0)
+		//ccprints("p%d unattached SNK entry", port);
 	/* Set Rd since we are not in the Rd superstate */
 	set_rd(port);
 
@@ -1815,6 +1822,7 @@ static void tc_attached_snk_entry(const int port)
 
 static void tc_attached_snk_run(const int port)
 {
+	enum tcpc_cc_voltage_status cc1, cc2;
 #ifdef CONFIG_USB_PE_SM
 	/*
 	 * Perform Hard Reset
@@ -1851,6 +1859,16 @@ static void tc_attached_snk_run(const int port)
 		if (!pd_is_vbus_present(port)) {
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 				pd_dfp_exit_mode(port, 0, 0);
+
+		/* Update cc state, because TCPC will not CC_EVENT. */
+		tcpm_get_cc(port, &cc1, &cc2);
+		if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
+			tc[port].cc_state = pd_get_cc_state(cc1, cc2);
+			tc[port].cc1 = cc1;
+			tc[port].cc2 = cc2;
+			tc[port].cc_last_change = get_time().val;
+			ccprints("p%d polling No Vbus cc_state %d", port, tc[port].cc_state);
+		}
 
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
@@ -2042,6 +2060,8 @@ static void set_rp(const int port)
  */
 static void tc_unattached_src_entry(const int port)
 {
+	if (port == 0)
+		//ccprints("p%d unattached SRC entry", port);
 	/* Set Rd since we are not in the Rd superstate */
 	set_rp(port);
 
@@ -2159,12 +2179,14 @@ static void tc_attached_src_entry(const int port)
 	if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
-
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
 		 * data role / usb mux connections.
 		 */
 	} else {
+		tc[port].polarity = (tc[port].cc1 != TYPEC_CC_VOLT_RD);
+		set_polarity(port, tc[port].polarity);
+
 		/*
 		 * Start sourcing Vconn before Vbus to ensure
 		 * we are within USB Type-C Spec 1.4 tVconnON
@@ -2183,9 +2205,6 @@ static void tc_attached_src_entry(const int port)
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
 
-		tc[port].polarity = (tc[port].cc1 != TYPEC_CC_VOLT_RD);
-		set_polarity(port, tc[port].polarity);
-
 		/*
 		 * Initial data role for sink is DFP
 		 * This also sets the usb mux
@@ -2195,6 +2214,8 @@ static void tc_attached_src_entry(const int port)
 		tc[port].pd_enable = 0;
 		tc[port].timeout = get_time().val +
 			MAX(PD_POWER_SUPPLY_TURN_ON_DELAY, PD_T_VCONN_STABLE);
+		ccprints("p%d attached_src_entry vbus on", port);
+
 	}
 
 	/* Inform PPC that a sink is connected. */
@@ -2204,11 +2225,14 @@ static void tc_attached_src_entry(const int port)
 
 static void tc_attached_src_run(const int port)
 {
+	//ccprints("p%d tc_attached_src_run", port);
+
 #ifdef CONFIG_USB_PE_SM
 	/* Enable PD communications after power supply has fully turned on */
 	if (tc[port].pd_enable == 0 && get_time().val > tc[port].timeout) {
 		tc[port].pd_enable = 1;
 		tc[port].timeout = 0;
+		ccprints("p%d tc_attached_src_run Vbus 5v, pd_enable = 1", port);
 	}
 
 	if (tc[port].pd_enable == 0)
@@ -2285,7 +2309,7 @@ static void tc_attached_src_run(const int port)
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 				pd_dfp_exit_mode(port, 0, 0);
-
+		ccprints("p%d cc state is none", port);
 		tc[port].pd_enable = 0;
 		set_state_tc(port, IS_ENABLED(CONFIG_USB_PD_TRY_SRC) ?
 			TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);
@@ -2437,6 +2461,7 @@ static void tc_try_wait_snk_entry(const int port)
 static void tc_try_wait_snk_run(const int port)
 {
 	const uint64_t now = get_time().val;
+	ccprints("p%d try_wait_snk_run cc_state %d", port, tc[port].cc_state);
 
 	/*
 	 * The port shall transition to Attached.SNK after tCCDebounce if or
@@ -2631,6 +2656,9 @@ static void tc_unattached_entry(const int port)
 {
 	/* This only prints the first time we enter a unattached state */
 	print_current_state(port);
+
+	/* Detect USB PD cc disconnect */
+	hook_notify(HOOK_USB_PD_DISCONNECT);
 
 	/* This disables the mux when we disconnect on a port */
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
