@@ -22,6 +22,29 @@
       "revId": "22c65461a91c9b3c55ccb3ba5f18c607bd98e07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139da011_d5eac5bd",
+        "filename": "common/fmap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T18:07:52Z",
+      "side": 1,
+      "message": "can you add to the comment here that the EC_RO section includes the bootloader section because it may need to be updated/paired with a different RO",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 55
+      },
+      "revId": "22c65461a91c9b3c55ccb3ba5f18c607bd98e07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
