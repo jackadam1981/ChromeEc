@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b104ad4_b37cccd6",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T16:11:46Z",
+      "side": 1,
+      "message": "The disabled state is different from forcing on or off. This means the entire module is disabled.\n\nI am thinking a single enum for the state makes sense. I will send a CL out for review that does that",
+      "parentUuid": "3a40ca2c_664c9a4d",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "9a133025d89a04a9f5afd6e57373f48564b40ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31e64e94_d6354337",
         "filename": "common/tablet_mode.c",
         "patchSetId": 4
