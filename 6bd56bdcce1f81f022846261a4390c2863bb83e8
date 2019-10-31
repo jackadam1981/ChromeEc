@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "bffa64e2_1fd87058",
+        "filename": "chip/stm32/gpio-f0-l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T20:36:14Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a comparison between enums, but the preprocessor shouldn\u0027t care. \n The suggested BUILD_ASSERT is to ensure that the func parameter isn\u0027t overflowed on STM32.  In practice because GPIO_ALT_FUNC_NONE is -1, I expect the sizeof(enum gpio_alternate_func) to always be 4 bytes.",
+      "parentUuid": "b1db8f08_12a9f751",
+      "range": {
+        "startLine": 143,
+        "startChar": 13,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40a6d28d_0be74b71",
         "filename": "include/gpio.h",
         "patchSetId": 2

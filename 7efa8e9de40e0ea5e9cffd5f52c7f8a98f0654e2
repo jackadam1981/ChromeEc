@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62ed9230_69504a35",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T20:36:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u0026\u0026?  If either condition fails, we want the build to fail.",
+      "range": {
+        "startLine": 56,
+        "startChar": 64,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "7efa8e9de40e0ea5e9cffd5f52c7f8a98f0654e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
