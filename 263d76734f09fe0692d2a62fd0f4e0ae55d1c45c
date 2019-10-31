@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "460441f5_81886d0c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-31T02:28:03Z",
+      "side": 1,
+      "message": "This part has some of the code duplicate at line 1117~1120 region. Please revise.",
+      "range": {
+        "startLine": 1094,
+        "startChar": 3,
+        "endLine": 1107,
+        "endChar": 4
+      },
+      "revId": "263d76734f09fe0692d2a62fd0f4e0ae55d1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d27414b_0ff52f40",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-31T02:28:03Z",
+      "side": 1,
+      "message": "This is duplicated as line 1123.",
+      "range": {
+        "startLine": 1108,
+        "startChar": 0,
+        "endLine": 1108,
+        "endChar": 52
+      },
+      "revId": "263d76734f09fe0692d2a62fd0f4e0ae55d1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb2d6f2_7c8b66c1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-31T02:28:03Z",
+      "side": 1,
+      "message": "This should be at line:1124~1125",
+      "range": {
+        "startLine": 1109,
+        "startChar": 0,
+        "endLine": 1109,
+        "endChar": 35
+      },
+      "revId": "263d76734f09fe0692d2a62fd0f4e0ae55d1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
