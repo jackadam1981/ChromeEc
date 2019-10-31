@@ -187,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "bddb29c4_085e0892",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-10-31T02:22:38Z",
+      "side": 1,
+      "message": "It means you should drop the parenthesis \u0027(\u0027 and \u0027)\u0027:\n\n  bc12_type \u003d\u003d CHANGE_SUPPLIER_BC12_SDP",
+      "parentUuid": "4cb73b5f_191bd320",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 46
+      },
+      "revId": "493be98a1f4e48df39d41604fd4f83a5088d8439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f283445f_ffff06c2",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 19
