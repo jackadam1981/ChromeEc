@@ -16,6 +16,24 @@
       "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f73c1e_821dee29",
+        "filename": "common/mock/usb_mux_mock.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T17:45:49Z",
+      "side": 1,
+      "message": "Since this header file is fundamental to the implementation of the c file, I thought it was easier to have them in the same directory next to each other. Also mocks are a separate for everything else so I seems appropriate to keep everything contained here.\n\nI am realizing that I fractured how the headers files are organized for mocks. We should make it consistent.\n\nI like keeping the header files with the mocks, but I could be convinced otherwise. Either way, we should make it consistent. Thanks for pointing this out!",
+      "parentUuid": "67b4f710_c1b349c0",
+      "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
