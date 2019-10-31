@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "73bca500_68f2a887",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T20:22:20Z",
+      "side": 1,
+      "message": "Looks like this is a latent bug for kukui and flapjack.  The mode selection is 3-bits per GPIO.  Mode 0 is used to select GPIO mode.\n\nVijay\u0027s change doesn\u0027t change the logic, but we probably need to add this check:\n   if (func \u003d\u003d GPIO_ALT_FUNC_NONE)\n        func \u003d GPIO_ALT_FUNC_DEFAULT;\n\nI filed bug http://issuetracker.google.com/143710991 to track this.",
+      "parentUuid": "044bd1c6_7dee9af0",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b82af543_dfba3f0c",
         "filename": "chip/nrf51/gpio.c",
         "patchSetId": 2
