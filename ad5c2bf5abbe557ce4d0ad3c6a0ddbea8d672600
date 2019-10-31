@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "106dfee4_b21fb716",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T15:50:11Z",
+      "side": 1,
+      "message": "it\u0027s mostly unlikely that derivative boards will have this change.\nhow about having overridable function instead of config?\nAlso msleep(0) might have ASSERT.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "ad5c2bf5abbe557ce4d0ad3c6a0ddbea8d672600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
