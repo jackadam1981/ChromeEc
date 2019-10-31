@@ -22,6 +22,30 @@
       "revId": "ad5c2bf5abbe557ce4d0ad3c6a0ddbea8d672600",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e111ea_7d1a1832",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106dfee4_b21fb716",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "ad5c2bf5abbe557ce4d0ad3c6a0ddbea8d672600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
