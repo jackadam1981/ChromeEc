@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "7bd1f9e3_49a670cb",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T19:27:44Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "9608a6b5_9816636d",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2ce5eae_d7d2abb8",
         "filename": "board/volteer/power_sequence.c",
         "patchSetId": 4
