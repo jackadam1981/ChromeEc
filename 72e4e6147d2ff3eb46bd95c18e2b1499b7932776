@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ff6be77_375c3533",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T18:21:25Z",
+      "side": 1,
+      "message": "What I\u0027ve been suggesting is to have\n\n  static bool tablet_mode; /* disabled at start-up */\n  static bool forced;      /* currently named \u0027disabled\u0027 */\n\nand cover the four states:\n\n  1. disabled\n  2. enabled\n  3. forced disabled\n  4. forced enabled\n\nby (tablet_mode, forced) \u003d \n\t1. (false, false)\n\t2. (true, false)\n\t3. (false, true)\n\t4. (true, true)\n\nShall I upload my patchset?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "72e4e6147d2ff3eb46bd95c18e2b1499b7932776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
