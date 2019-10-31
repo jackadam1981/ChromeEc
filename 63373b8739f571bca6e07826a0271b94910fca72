@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b09af30_ba4f2df0",
+        "filename": "docs/ccd_howtos.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-10-31T13:26:13Z",
+      "side": 1,
+      "message": "This looks incomplete",
+      "range": {
+        "startLine": 76,
+        "startChar": 60,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "63373b8739f571bca6e07826a0271b94910fca72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c75ae53_9c782977",
+        "filename": "docs/ccd_howtos.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-10-31T13:26:13Z",
+      "side": 1,
+      "message": "it doesn\u0027t, or it shouldn\u0027t? Maybe: \"Orientation shouldn\u0027t matter with Servo V4. If it does, please file a bug\"? :-)",
+      "range": {
+        "startLine": 133,
+        "startChar": 41,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "63373b8739f571bca6e07826a0271b94910fca72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64899ff8_b65d121a",
+        "filename": "docs/ccd_howtos.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-10-31T13:26:13Z",
+      "side": 1,
+      "message": "some whitespace left-overs",
+      "revId": "63373b8739f571bca6e07826a0271b94910fca72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3c94641_7f6b54d3",
+        "filename": "docs/ccd_howtos.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-10-31T13:26:13Z",
+      "side": 1,
+      "message": "\"images/servo_v4_typec.jpg\" should convince the markdown renderer to properly load the image (it does so for the fingerprint docs)",
+      "range": {
+        "startLine": 385,
+        "startChar": 14,
+        "endLine": 385,
+        "endChar": 130
+      },
+      "revId": "63373b8739f571bca6e07826a0271b94910fca72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
