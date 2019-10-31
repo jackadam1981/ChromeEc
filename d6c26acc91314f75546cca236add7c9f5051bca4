@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e9fafd2e_c72fc944",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-31T17:39:44Z",
+      "side": 1,
+      "message": "EN_PP1050_BYPASS?",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fb15a3_b7343e46",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-31T17:39:44Z",
+      "side": 1,
+      "message": "#include \"console.h\"",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4036f9f_e730148a",
         "filename": "board/volteer/power_sequence.c",
         "patchSetId": 4
@@ -59,6 +105,40 @@
       "writtenOn": "2019-10-31T15:56:45Z",
       "side": 1,
       "message": "redundant?",
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2678e50c_b133bc55",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-31T17:39:44Z",
+      "side": 1,
+      "message": "Is this a todo?",
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ffb9f9_48a1be3a",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-10-31T17:39:44Z",
+      "side": 1,
+      "message": "For now, do you want to assert that signal \u003d\u003d GPIO_CPU_C10_GATE_L?",
       "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
