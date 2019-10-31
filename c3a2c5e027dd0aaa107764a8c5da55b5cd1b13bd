@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "132a60a5_d708f984",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-31T22:43:14Z",
+      "side": 1,
+      "message": "It seems odd to shift a 2 by the position; why not shift a 1 by the position + 1? Is this a 2-bit field that we\u0027re looking at here instead of just a flag? Maybe a comment would clarify things.",
+      "range": {
+        "startLine": 456,
+        "startChar": 4,
+        "endLine": 456,
+        "endChar": 5
+      },
+      "revId": "c3a2c5e027dd0aaa107764a8c5da55b5cd1b13bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a127d06_052ca904",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-31T22:43:14Z",
+      "side": 1,
+      "message": "Nit: empty `else`.",
+      "range": {
+        "startLine": 517,
+        "startChar": 3,
+        "endLine": 518,
+        "endChar": 3
+      },
+      "revId": "c3a2c5e027dd0aaa107764a8c5da55b5cd1b13bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b941158b_0ac02094",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 5
@@ -13,6 +59,47 @@
       "writtenOn": "2019-10-31T20:11:52Z",
       "side": 1,
       "message": "What is the purpose of calling the i2c_process_board_command(...) at this location?  I copied this from another ./chip I2C driver code... do I actually need this?  There is no board command information at this stage of the I2C transaction, making this call makes no sense to me but I implemented it because I saw the same type of code elsewhere.",
+      "revId": "c3a2c5e027dd0aaa107764a8c5da55b5cd1b13bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4053f997_e894e3bc",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-31T22:43:14Z",
+      "side": 1,
+      "message": "Hmm. I don\u0027t really know enough about this code to say, but if you take it out and stuff still works, sounds good to me :-).",
+      "parentUuid": "b941158b_0ac02094",
+      "revId": "c3a2c5e027dd0aaa107764a8c5da55b5cd1b13bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714f76e8_6ca05558",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-10-31T22:43:14Z",
+      "side": 1,
+      "message": "Nit: only one star here, since this isn\u0027t a documentation comment.",
+      "range": {
+        "startLine": 588,
+        "startChar": 1,
+        "endLine": 588,
+        "endChar": 4
+      },
       "revId": "c3a2c5e027dd0aaa107764a8c5da55b5cd1b13bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
