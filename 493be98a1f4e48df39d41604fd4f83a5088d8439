@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "4cb73b5f_191bd320",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-10-31T02:17:16Z",
+      "side": 1,
+      "message": "does wireless no need detect as SDP now?",
+      "parentUuid": "e736bc97_32c26946",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 46
+      },
+      "revId": "493be98a1f4e48df39d41604fd4f83a5088d8439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f283445f_ffff06c2",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 19
