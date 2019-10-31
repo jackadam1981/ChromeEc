@@ -92,6 +92,30 @@
       "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc9ffb3_5d87f951",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3380,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-10-31T18:16:25Z",
+      "side": 1,
+      "message": "I like patch set 2.\n\nMaybe we should call it board_get_src_polarity() and the board knows if it is in DTS or not (you have already done that)",
+      "parentUuid": "a7443318_28b9714e",
+      "range": {
+        "startLine": 3380,
+        "startChar": 4,
+        "endLine": 3380,
+        "endChar": 37
+      },
+      "revId": "4c9742786cd3194d33ab83bb352427963122fb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
