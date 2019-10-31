@@ -9,6 +9,7 @@
 #define __CROS_EC_GPIO_H
 
 #include "common.h"
+#include "console.h"
 
 /* Flag definitions for gpio_info and gpio_alt_func */
 /* The following are valid for both gpio_info and gpio_alt_func: */
@@ -198,6 +199,16 @@ int gpio_get_default_flags(enum gpio_signal signal);
  * @param value		New value for signal (0 = low, 1 = high)
  */
 void gpio_set_level(enum gpio_signal signal, int value);
+
+/**
+ * Set the value of a signal and log to the console.
+ *
+ * @param channel	Output channel
+ * @param signal	Signal to set
+ * @param value		New value for signal (0 = low, 1 = high)
+ */
+void gpio_set_level_verbose(enum console_channel channel,
+			    enum gpio_signal signal, int value);
 
 /**
  * Set the value of a signal that could be either a local GPIO or an IO
