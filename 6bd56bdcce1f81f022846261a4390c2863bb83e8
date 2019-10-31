@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac9802dc_20de9cc2",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde447ec_1540a34a",
+      "range": {
+        "startLine": 388,
+        "startChar": 11,
+        "endLine": 388,
+        "endChar": 12
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06aeeb3e_596d3901",
         "filename": "chip/mt_scp/gpio.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "22030c7c_322e3d7f",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06aeeb3e_596d3901",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "144bdaee_32edaa32",
         "filename": "chip/mt_scp/gpio.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-28T20:17:02Z",
       "side": 1,
       "message": "Do we need to care about reaching here with func\u003d\u003dGPIO_ALT_FUNC_NONE?",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044bd1c6_7dee9af0",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "I do not have datasheet for this chip.\nShall I create a crosbug and assign to mediatek owners?",
+      "parentUuid": "144bdaee_32edaa32",
       "range": {
         "startLine": 35,
         "startChar": 14,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4dc36646_f75903fa",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b82af543_dfba3f0c",
+      "range": {
+        "startLine": 170,
+        "startChar": 49,
+        "endLine": 170,
+        "endChar": 69
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3714c0a_2cac739a",
         "filename": "chip/stm32/gpio-f0-l.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-10-28T16:36:03Z",
       "side": 1,
       "message": "Add a build assert to chip/stm32/module_id.h\nBUILD_ASSERT(MODULE_COUNT \u003c\u003d GPIO_ALT_FUNC_MAX)",
+      "range": {
+        "startLine": 143,
+        "startChar": 13,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1db8f08_12a9f751",
+        "filename": "chip/stm32/gpio-f0-l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "it will be comparison between enums.\nshall I add a variable and then compare variables?",
+      "parentUuid": "c3714c0a_2cac739a",
       "range": {
         "startLine": 143,
         "startChar": 13,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "94a91cb8_1a16f087",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40a6d28d_0be74b71",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64f27bf7_ba7c9519",
         "filename": "include/gpio.h",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b54eff5_99450fee",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-10-31T18:47:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f27bf7_ba7c9519",
+      "range": {
+        "startLine": 284,
+        "startChar": 39,
+        "endLine": 284,
+        "endChar": 41
+      },
+      "revId": "6bd56bdcce1f81f022846261a4390c2863bb83e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
