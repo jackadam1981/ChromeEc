@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63f3b458_daff91f5",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9fafd2e_c72fc944",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fb15a3_b7343e46",
         "filename": "board/volteer/power_sequence.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dec910b9_9408c0e5",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16fb15a3_b7343e46",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4036f9f_e730148a",
         "filename": "board/volteer/power_sequence.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-31T15:56:45Z",
       "side": 1,
       "message": "You can get these by gpio_get_name(enum gpio_signal).\n\nAs you log almost all gpio_set_level calls, you might as well create a wrapper?\n\n  static void set_gpio(enum gpio_signal s, int enable)\n  {\n    CPRINTS(\"%7s %s\", enable ? \"enable\" : \"disable\", gpio_get_name(s));\n    gpio_set_level(s, enable);\n  }",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9608a6b5_9816636d",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Created a function in gpio.c. Seems like this is useful for more than just the power sequencing.  New function just prints out 0/1, because enable/disable implies assert/deassert which changes based on active high/low.",
+      "parentUuid": "a4036f9f_e730148a",
       "range": {
         "startLine": 30,
         "startChar": 17,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0405cf28_4be141b5",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Removed, there is no minimum value required by TGL.",
+      "parentUuid": "d2ce5eae_d7d2abb8",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "858c45c3_52ea87a8",
         "filename": "board/volteer/power_sequence.c",
         "patchSetId": 4
@@ -105,6 +201,24 @@
       "writtenOn": "2019-10-31T15:56:45Z",
       "side": 1,
       "message": "redundant?",
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebab9fd5_e88d18cd",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Are you referring to the white space? \nThe rails powered down in this function are not controlled by power/icelake.c or power/intel_x86.c so all are potentially needed here.",
+      "parentUuid": "858c45c3_52ea87a8",
       "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "c63ed79c_0378292d",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2678e50c_b133bc55",
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4ffb9f9_48a1be3a",
         "filename": "board/volteer/power_sequence.c",
         "patchSetId": 4
@@ -142,6 +274,24 @@
       "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be361a8_ee16f725",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-10-31T18:16:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4ffb9f9_48a1be3a",
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
