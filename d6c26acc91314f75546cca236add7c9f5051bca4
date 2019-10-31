@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4036f9f_e730148a",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T15:56:45Z",
+      "side": 1,
+      "message": "You can get these by gpio_get_name(enum gpio_signal).\n\nAs you log almost all gpio_set_level calls, you might as well create a wrapper?\n\n  static void set_gpio(enum gpio_signal s, int enable)\n  {\n    CPRINTS(\"%7s %s\", enable ? \"enable\" : \"disable\", gpio_get_name(s));\n    gpio_set_level(s, enable);\n  }",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ce5eae_d7d2abb8",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T15:56:45Z",
+      "side": 1,
+      "message": "Any comment on this?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858c45c3_52ea87a8",
+        "filename": "board/volteer/power_sequence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T15:56:45Z",
+      "side": 1,
+      "message": "redundant?",
+      "revId": "d6c26acc91314f75546cca236add7c9f5051bca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
