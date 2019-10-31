@@ -93,6 +93,30 @@
       "revId": "54afd71c04ac12613cb7f341f902cdaf11165a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1f9417_3b524e43",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-31T14:56:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "682328ad_fd8a954d",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "54afd71c04ac12613cb7f341f902cdaf11165a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
