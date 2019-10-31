@@ -46,6 +46,30 @@
       "revId": "c75f369fc94333d8c07e898d015c58a6b47aa829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d2a0ee_1624110c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-10-31T16:24:12Z",
+      "side": 1,
+      "message": "I guess you\u0027re talking about get_desired_input_current. There is no comment about why we have different behaviors depending on system_is_locked(). I think this should be fixed in the common layer.",
+      "parentUuid": "a49e5d65_c53fd654",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "c75f369fc94333d8c07e898d015c58a6b47aa829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
