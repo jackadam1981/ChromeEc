@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "38401539_8d3b3292",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T21:55:38Z",
+      "side": 1,
+      "message": "Please break this board only change into another CL (it helps for cherrypick changes later)",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "162a91a1d5ebebd5546ac36e657eb97f8847e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ad95e0e_1e5e871c",
         "filename": "board/nautilus/board.h",
         "patchSetId": 4
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "I\u0027ve added config to config.h.\n\nI use command like \u0027git push cros branch:refs/for/firmware\u0027",
       "parentUuid": "8ad95e0e_1e5e871c",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "162a91a1d5ebebd5546ac36e657eb97f8847e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aea6725_5f2aa6e9",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T21:55:38Z",
+      "side": 1,
+      "message": "Ah, Please use repo upload in the future\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md",
+      "parentUuid": "fd65303a_d9bc385f",
       "range": {
         "startLine": 78,
         "startChar": 8,

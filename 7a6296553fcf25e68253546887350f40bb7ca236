@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75f4a790_82178612",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T21:55:38Z",
+      "side": 1,
+      "message": "nit: let call this CONFIG_BATTERY_DEAD_UNTIL_VALUE please\n\nWe should say in the comment that you should define this config option to the minimum value for state_of_charge needed before the battery is considered functional",
+      "range": {
+        "startLine": 365,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 37
+      },
+      "revId": "7a6296553fcf25e68253546887350f40bb7ca236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
