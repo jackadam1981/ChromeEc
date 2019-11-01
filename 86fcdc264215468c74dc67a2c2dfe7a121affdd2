@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1de136d_1b8bbd3a",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T14:10:24Z",
+      "side": 1,
+      "message": "Why don\u0027t you use unused_pin_count?",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "86fcdc264215468c74dc67a2c2dfe7a121affdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46be405_0a3e3b72",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T14:10:24Z",
+      "side": 1,
+      "message": "Could you hide all these in IS_ENABLED? The unused error for u will automagically disappear.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "86fcdc264215468c74dc67a2c2dfe7a121affdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1736c48d_fe43abbc",
         "filename": "include/gpio.wrap",
         "patchSetId": 3
