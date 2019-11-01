@@ -284,6 +284,24 @@
     },
     {
       "key": {
+        "uuid": "ccef6857_00cb4634",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-01T17:34:33Z",
+      "side": 1,
+      "message": "Yes I agree with you but since the deadline for having these changes in TOT is next week, I don\u0027t know if we have time to make them the proper way. In the future, I would recommend that any major code changes be tested on hardware and or run on fluffy before being committed.",
+      "parentUuid": "f4f76e75_78d210d0",
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9c69cb0_b8923dc7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -578,6 +596,30 @@
       "side": 1,
       "message": "That just means you need to change the header file to something like the following:\n\n\n#ifdef AUTO_TOGGLE\ninline int tcpm_auto_toggle_support (...) {\n}\n\n#else\nint tcpm_auto_toggle_support( ...) ;\n#endif;",
       "parentUuid": "2983c981_7606bdb2",
+      "range": {
+        "startLine": 698,
+        "startChar": 7,
+        "endLine": 698,
+        "endChar": 42
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97007a23_ef6e733c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-01T17:34:33Z",
+      "side": 1,
+      "message": "These sort of changes can be made anytime. Since we have a deadline looming, could we focus more on functionality and stability?",
+      "parentUuid": "938c0c4e_21aa44ab",
       "range": {
         "startLine": 698,
         "startChar": 7,
@@ -1084,6 +1126,30 @@
     },
     {
       "key": {
+        "uuid": "5df14571_eae1a87b",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-01T17:34:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be a critical change at the moment, so let\u0027s add it later.",
+      "parentUuid": "1df4c459_56c43100",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e91c4e6c_412eaac5",
         "filename": "include/usb_sm.h",
         "patchSetId": 17
@@ -1131,6 +1197,24 @@
       "side": 1,
       "message": "This should be fixed by code in the run methods. (At the very least you need to document why PAUSED is first with a comment)\n\nUpdating the run method to be more resilient and unwanted state transitions seems like the more maintainable, long-term solution",
       "parentUuid": "f35d9a6e_98d2b259",
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe139fe4_e4e829e7",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-01T17:34:33Z",
+      "side": 1,
+      "message": "I think the states should start out paused since the state machines default to disabled and it makes since to have SM_PAUSED come first. Doing this doesn\u0027t require any other code changes.",
+      "parentUuid": "2d0b4fd1_265a100b",
       "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
