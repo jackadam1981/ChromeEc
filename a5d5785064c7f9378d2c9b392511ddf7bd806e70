@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79b43eb5_e1c538b2",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-01T01:28:40Z",
+      "side": 1,
+      "message": "These have some problems (duplicate channel assignments), but are more correctly defined in crrev.com/c/1893016 anyway. Remove?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "a5d5785064c7f9378d2c9b392511ddf7bd806e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816c4c4c_89b1e7af",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-01T01:28:40Z",
+      "side": 1,
+      "message": "We don\u0027t have a keyboard; is this still required because we have emulated sysrq enabled?",
+      "revId": "a5d5785064c7f9378d2c9b392511ddf7bd806e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a36d6b_5ffc7dc5",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-01T01:28:40Z",
+      "side": 1,
+      "message": "DEDICATED_CHARGE_PORT refers to USB AFAICT; seems misleading to refer to a barrel jack.",
+      "revId": "a5d5785064c7f9378d2c9b392511ddf7bd806e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
