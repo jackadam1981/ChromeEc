@@ -85,6 +85,14 @@
 
 #ifndef __ASSEMBLER__
 
+enum adc_channel {
+	ADC_TEMP_SENSOR_1_CHARGER,
+	ADC_TEMP_SENSOR_2_PP3300,
+	ADC_TEMP_SENSOR_3_DDR,
+	ADC_TEMP_SENSOR_4_EC,
+	ADC_CH_COUNT
+};
+
 enum pwm_channel {
 	PWM_CH_LED1_BLUE = 0,
 	PWM_CH_LED2_GREEN,
