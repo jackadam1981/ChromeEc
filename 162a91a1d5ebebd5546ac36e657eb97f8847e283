@@ -22,6 +22,30 @@
       "revId": "162a91a1d5ebebd5546ac36e657eb97f8847e283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd65303a_d9bc385f",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-11-01T01:11:46Z",
+      "side": 1,
+      "message": "I\u0027ve added config to config.h.\n\nI use command like \u0027git push cros branch:refs/for/firmware\u0027",
+      "parentUuid": "8ad95e0e_1e5e871c",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "162a91a1d5ebebd5546ac36e657eb97f8847e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
