@@ -22,6 +22,30 @@
       "revId": "6c0151cd75ce109b971ea85684ce8e326b6aa2c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea50d4b2_a8e7a266",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-11-01T22:58:04Z",
+      "side": 1,
+      "message": "FAFT does not support fingerprint. We have our own set of firmware tests that behave similarly to FAFT, but so far every single developer working on fingerprint that sees CONFIG_SYSTEM_UNLOCKED in master gets confused by it. It doesn\u0027t seem to be worth the trouble when we can toggle hardware write protect with servo connected to dev board or servo connected to DUT to disable system_is_locked() for testing.",
+      "parentUuid": "30b4d1d4_009fca16",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "6c0151cd75ce109b971ea85684ce8e326b6aa2c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
