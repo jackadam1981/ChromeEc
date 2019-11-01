@@ -46,6 +46,30 @@
       "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d156383f_ab5d39ac",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T21:49:52Z",
+      "side": 0,
+      "message": "You could add EC_MKBP_EVENT_SENSOR_FIFO to the HOST_EVENT_WAKEUP_MASK, right? Isn\u0027t that what you want?\n\nWithout this mask, it seems like you might be waking up too much (I don\u0027t know for sure though), just a though",
+      "parentUuid": "4cbebd9f_4c6c0467",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
