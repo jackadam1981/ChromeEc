@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3481283d_e0123744",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T18:10:42Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "76d1bbe04eb7e2596437c5c1526567773cfaad8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563acae8_04bdec41",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T18:10:42Z",
+      "side": 1,
+      "message": "This should be:\n\n\tif (bank)\n\t\tSET_BIT(NPCX_SMBCTL3(controller), NPCX_SMBCTL3_BNK_SEL);\n\telse\n\t\tCLEAR_BIT(NPCX_SMBCTL3(controller), NPCX_SMBCTL3_BNK_SEL);",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 60
+      },
+      "revId": "76d1bbe04eb7e2596437c5c1526567773cfaad8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
