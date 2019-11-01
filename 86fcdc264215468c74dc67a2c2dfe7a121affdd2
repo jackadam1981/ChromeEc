@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1736c48d_fe43abbc",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-01T00:31:23Z",
+      "side": 1,
+      "message": "I think using another name like UNUSED_IO is redundant in this context.\nPlus, we do not use UNUSED in all capitals anywhere else in EC.\nFurthermore,we already have a generic UNIMPLEMENTED macro for gpio.inc, so this is somewhat consistent.",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "86fcdc264215468c74dc67a2c2dfe7a121affdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
