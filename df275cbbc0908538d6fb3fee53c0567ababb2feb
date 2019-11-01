@@ -302,6 +302,24 @@
     },
     {
       "key": {
+        "uuid": "6f706ca8_0d14842e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2019-11-01T17:53:21Z",
+      "side": 1,
+      "message": "If this CL is breaking things, let\u0027s revert it first and check in a fix that does it properly later.",
+      "parentUuid": "ccef6857_00cb4634",
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9c69cb0_b8923dc7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
