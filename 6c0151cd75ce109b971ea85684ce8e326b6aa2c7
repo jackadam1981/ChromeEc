@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b4d1d4_009fca16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T19:03:37Z",
+      "side": 1,
+      "message": "The standard practice is to define CONFIG_SYSTEM_UNLOCKED at tot and remove it in a branch.\n\nI think we should catch a mistake by FAFT.",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "6c0151cd75ce109b971ea85684ce8e326b6aa2c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
