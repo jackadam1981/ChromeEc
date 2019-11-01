@@ -22,6 +22,30 @@
       "revId": "b96a4c77aa45e67ef9dadf91e8660a5086e3ef1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b8456e_7b021217",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-11-01T07:13:07Z",
+      "side": 1,
+      "message": "I\u0027d like to print it as power button pressed and released.",
+      "parentUuid": "29e076db_b461c00b",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 29
+      },
+      "revId": "b96a4c77aa45e67ef9dadf91e8660a5086e3ef1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

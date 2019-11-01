@@ -22,6 +22,30 @@
       "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbebd9f_4c6c0467",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-11-01T07:13:07Z",
+      "side": 0,
+      "message": "If CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK is defined, skip_interrupt will be set to 1 for EC_MKBP_EVENT_SENSOR_FIFO event in https://cs.corp.google.com/chromeos_public/src/platform/ec/common/mkbp_event.c?rcl\u003df88c89736d6354dbbdd1f9d7f47d794530cc4d5f\u0026l\u003d200\n\nIt causes double tap event cannot wake device up.\nThis is why I said that we cannot have CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK and CONFIG_MKBP_EVENT_WAKEUP_MASK at the same time.",
+      "parentUuid": "ff74a2a8_3b47e19c",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
