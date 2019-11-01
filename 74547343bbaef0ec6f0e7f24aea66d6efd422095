@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1e4dadc_21b5a875",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-11-01T19:55:38Z",
+      "side": 1,
+      "message": "Commit messages have to start with a single brief summary line, followed by a blank line, otherwise various tools tend to error. Then you can put more details in the next paragraph. So I\u0027d suggest something like this (wrapped to 72 characters):\n\nmax32660: add I2C board address support, refactor\n  \nAdds support for a second I2C slave address, modeled on the same feature in the STM32-F4. Also refactored the I2C slave interrupt handler to streamline host read and writes, reduced I2C slave state variable usage, and make better use of I2C slave interrupt types.\n\n[...]",
+      "revId": "74547343bbaef0ec6f0e7f24aea66d6efd422095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
