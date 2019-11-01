@@ -4114,6 +4114,9 @@
 /* Support the AMD FP5 USB/DP Mux */
 #undef CONFIG_USB_MUX_AMD_FP5
 
+/* GPIO based HPD */
+#undef CONFIG_USB_MUX_HPD_GPIO
+
 /* Support the ITE IT5205 Type-C USB alternate mode mux. */
 #undef CONFIG_USB_MUX_IT5205
 

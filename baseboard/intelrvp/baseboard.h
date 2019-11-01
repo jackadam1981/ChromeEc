@@ -223,6 +223,10 @@ struct tcpc_gpio_config_t {
 #endif
 	/* Enable source ILIM */
 	struct tcpc_gpio_t src_ilim;
+#ifdef CONFIG_USB_MUX_HPD_GPIO
+	/* Enable HPD */
+	struct tcpc_gpio_t hpd;
+#endif
 };
 extern const struct tcpc_gpio_config_t tcpc_gpios[];
 

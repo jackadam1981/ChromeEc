@@ -24,3 +24,11 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_COUNT);
 #endif /* CONFIG_USB_MUX_VIRTUAL */
+
+#ifdef CONFIG_USB_MUX_HPD_GPIO
+static void intelrvp_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	usb_mux_hpd_gpio_update(tcpc_gpios[port].hpd.pin,
+		tcpc_gpios[port].hpd.pin_pol, port, hpd_lvl, hpd_irq);
+}
+#endif /* CONFIG_USB_MUX_HPD_GPIO */

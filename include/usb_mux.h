@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_MUX_H
 
 #include "ec_commands.h"
+#include "gpio.h"
 #include "tcpm.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
@@ -214,4 +215,19 @@ int usb_mux_get(int port, const char **dp_str, const char **usb_str);
  * @param port port number.
  */
 void usb_mux_flip(int port);
-#endif
+
+#ifdef CONFIG_USB_MUX_HPD_GPIO
+/**
+ * Update the GPIO based HPD on HPD or IRQ
+ *
+ * @param hpd_gpio GPIO signal of HPD
+ * @param hpd_gpio_pol HPD GPIO polarity
+ * @param port port number
+ * @param hpd_lvl HPD level
+ * @param hpd_irq HPD IRQ
+ */
+void usb_mux_hpd_gpio_update(enum gpio_signal hpd_gpio, int hpd_gpio_pol,
+				int port, int hpd_lvl, int hpd_irq);
+#endif /* CONFIG_USB_MUX_HPD_GPIO */
+
+#endif /* __CROS_EC_USB_MUX_H */

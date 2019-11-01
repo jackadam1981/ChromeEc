@@ -9,6 +9,7 @@
 #include "console.h"
 #include "host_command.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -176,6 +177,39 @@ void usb_mux_flip(int port)
 	if (res)
 		CPRINTS("Err: set mux port(%d): %d", port, res);
 }
+
+#ifdef CONFIG_USB_MUX_HPD_GPIO
+/*
+ * timestamp of the next possible toggle to ensure the 2-ms spacing
+ * between IRQ_HPD.
+ */
+static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
+
+void usb_mux_hpd_gpio_update(enum gpio_signal hpd_gpio, int hpd_gpio_pol,
+				int port, int hpd_lvl, int hpd_irq)
+{
+	uint64_t time_now;
+
+	/* Set HPD gpio level */
+	gpio_set_level(hpd_gpio, hpd_gpio_pol ? hpd_lvl : !hpd_lvl);
+
+	/* Trigger IRQ */
+	if (hpd_irq) {
+		time_now = get_time().val;
+
+		/* wait for the minimum spacing between IRQ_HPD if needed */
+		if (time_now < hpd_deadline[port])
+			usleep(hpd_deadline[port] - time_now);
+
+		gpio_set_level(gpio, !hpd_gpio_pol);
+		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
+		gpio_set_level(gpio, hpd_gpio_pol);
+	}
+
+	/* enforce 2-ms delay between HPD pulses */
+	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+}
+#endif /* CONFIG_USB_MUX_HPD_GPIO */
 
 #ifdef CONFIG_CMD_TYPEC
 static int command_typec(int argc, char **argv)
