@@ -46,6 +46,9 @@
 #define CONFIG_PWM
 #define CONFIG_SHA256
 #define CONFIG_SHA256_UNROLLED
+#define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
+#define CONFIG_TEMP_SENSOR
+#define CONFIG_THERMISTOR
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
@@ -169,7 +172,13 @@
 #include "registers.h"
 
 enum adc_channel {
-	ADC_VBUS,
+	ADC_SNS_PP3300,     /* ADC2 */
+	ADC_SNS_PP1050,     /* ADC7 */
+	ADC_VBUS,           /* ADC4 */
+	ADC_PPVAR_IMON,     /* ADC9 */
+	ADC_TEMP_SENSOR_1,  /* ADC0 */
+	ADC_TEMP_SENSOR_2,  /* ADC1 */
+	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
 
@@ -184,16 +193,18 @@ enum pwm_channel {
 enum fan_channel {
 	FAN_CH_0,
 	/* Number of FAN channels */
-	FAN_CH_COUNT
+		FAN_CH_COUNT
 };
 
 enum mft_channel {
 	MFT_CH_0 = 0,
 	/* Number of MFT channels */
-	MFT_CH_COUNT,
+		MFT_CH_COUNT,
 };
 
 enum temp_sensor_id {
+	TEMP_SENSOR_PP3300,
+	TEMP_SENSOR_PP5000,
 	TEMP_SENSOR_COUNT
 };
 
