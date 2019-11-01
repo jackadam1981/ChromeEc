@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "060adac7_db9b0cc5",
+        "filename": "common/usb_common.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:04:59Z",
+      "side": 1,
+      "message": "I would be okay starting with that assumption, and we can always add the code complexity later if it is every needed.",
+      "parentUuid": "cf7be6f4_f02d839d",
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce5d00b6_fa304606",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 17
@@ -242,6 +260,24 @@
       "side": 1,
       "message": "Yes. Several docks on the Fluffy test fixture failed after the change was added.",
       "parentUuid": "7f82dc63_56765290",
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f76e75_78d210d0",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:04:59Z",
+      "side": 1,
+      "message": "Then let\u0027s root cause the issue and fix it in a separate CL. Putting this \"fix\" in a larger CL makes it very difficult to follow what happened or why something changed.",
+      "parentUuid": "cbab93ab_e0f90b86",
       "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -527,6 +563,30 @@
       "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "938c0c4e_21aa44ab",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:04:59Z",
+      "side": 1,
+      "message": "That just means you need to change the header file to something like the following:\n\n\n#ifdef AUTO_TOGGLE\ninline int tcpm_auto_toggle_support (...) {\n}\n\n#else\nint tcpm_auto_toggle_support( ...) ;\n#endif;",
+      "parentUuid": "2983c981_7606bdb2",
+      "range": {
+        "startLine": 698,
+        "startChar": 7,
+        "endLine": 698,
+        "endChar": 42
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -835,6 +895,30 @@
     },
     {
       "key": {
+        "uuid": "b321e2da_328986fe",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:04:59Z",
+      "side": 1,
+      "message": "Yes it is a Chrome OS policy. We should not have one giant CL for all of the ChromeOS policies.",
+      "parentUuid": "3a590165_195ac12c",
+      "range": {
+        "startLine": 1960,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 6
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93fd1608_c3344920",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -976,6 +1060,30 @@
     },
     {
       "key": {
+        "uuid": "1df4c459_56c43100",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:04:59Z",
+      "side": 1,
+      "message": "The exit of the disabled state (or what ever state paused it), can set the wait time out back again",
+      "parentUuid": "25264aff_277319a5",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e91c4e6c_412eaac5",
         "filename": "include/usb_sm.h",
         "patchSetId": 17
@@ -1008,6 +1116,24 @@
       "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0b4fd1_265a100b",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:04:59Z",
+      "side": 1,
+      "message": "This should be fixed by code in the run methods. (At the very least you need to document why PAUSED is first with a comment)\n\nUpdating the run method to be more resilient and unwanted state transitions seems like the more maintainable, long-term solution",
+      "parentUuid": "f35d9a6e_98d2b259",
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
