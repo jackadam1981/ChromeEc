@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "2faf110a_ee9cf16f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-01T09:21:58Z",
+      "side": 1,
+      "message": "I am always getting 0 celsius degree when passing MT6370_ADC_TEMP_JC to the charger_get_adc(). Please fix.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "0b8e7fa7809036aef46eb79044fcfeed11a35617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fafbc9d_764afbc3",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 23
