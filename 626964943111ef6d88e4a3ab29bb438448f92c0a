@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38136082_399efe5c",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T16:26:37Z",
+      "side": 1,
+      "message": "a little unfair, but this should be \u003c\u003d3\n\n(you can do this in another CL if you want though)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 48
+      },
+      "revId": "626964943111ef6d88e4a3ab29bb438448f92c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b5c396_bede8963",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T16:26:37Z",
+      "side": 1,
+      "message": "I am worked about this function never returning true if the board specified less than the maximum PD port since we will have \"dead\" elements in the available_charge array.\n\nCan you double check this behavior and add comments around the availabe_charge array (and other array of CHARGE_PORT_COUNT) saying that there may be unused elements in this array in the middle, but it is okay because ...",
+      "range": {
+        "startLine": 215,
+        "startChar": 11,
+        "endLine": 215,
+        "endChar": 35
+      },
+      "revId": "626964943111ef6d88e4a3ab29bb438448f92c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
