@@ -67,10 +67,60 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct temp_sensor_t temp_sensors[] = {
+const struct adc_t adc_channels[] = {
+	[ADC_SNS_PP3300] = {  /* 9/11 voltage divider */
+		.name = "SNS_PP3300",
+		.input_ch = NPCX_ADC_CH2,
+		.factor_mul = ADC_MAX_VOLT * 11,
+		.factor_div = (ADC_READ_MAX + 1) * 9,
+	},
+	[ADC_SNS_PP1050] = {
+		.name = "SNS_PP1050",
+		.input_ch = NPCX_ADC_CH7,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+	},
+	[ADC_VBUS] = {  /* 5/39 voltage divider */
+		.name = "VBUS",
+		.input_ch = NPCX_ADC_CH4,
+		.factor_mul = ADC_MAX_VOLT * 39,
+		.factor_div = (ADC_READ_MAX + 1) / 5,
+	},
+	[ADC_PPVAR_IMON] = {  /* 500 mV/A */
+		.name = "PPVAR_IMON",
+		.input_ch = NPCX_ADC_CH9,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+	},
+	[ADC_TEMP_SENSOR_1] = {
+		.name = "TEMP_SENSOR_1",
+		.input_ch = NPCX_ADC_CH0,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+	},
+	[ADC_TEMP_SENSOR_2] = {
+		.name = "TEMP_SENSOR_2",
+		.input_ch = NPCX_ADC_CH1,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+	},
 };
 
-const struct adc_t adc_channels[] = {
+const struct temp_sensor_t temp_sensors[] = {
+	[TEMP_SENSOR_PP3300] = {
+		.name = "PP3300",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_30k9_47k_4050b,
+		.idx = ADC_TEMP_SENSOR_1,
+		.action_delay_sec = 1,
+	},
+	[TEMP_SENSOR_PP5000] = {
+		.name = "PP5000",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_30k9_47k_4050b,
+		.idx = ADC_TEMP_SENSOR_2,
+		.action_delay_sec = 1,
+	},
 };
 
 /******************************************************************************/
