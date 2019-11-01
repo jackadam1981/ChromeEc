@@ -22,6 +22,30 @@
       "revId": "72e4e6147d2ff3eb46bd95c18e2b1499b7932776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912e7149_82464bd6",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-01T14:06:28Z",
+      "side": 1,
+      "message": "MODULE_BLOCKED and FORCED_DISABLED have different meanings.\n\nGo ahead and upload your patchset",
+      "parentUuid": "3ff6be77_375c3533",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "72e4e6147d2ff3eb46bd95c18e2b1499b7932776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
