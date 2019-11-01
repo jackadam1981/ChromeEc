@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb62adce_8b143ed0",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-01T03:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb46fb89_f6ad9469",
+      "revId": "9d2b39e77ffa71add9e34016c7ad3461d6918690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b56eb1d5_5f2f26f9",
         "filename": "board/puff/board.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "9d2b39e77ffa71add9e34016c7ad3461d6918690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c9e31d_1faf0df2",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-01T03:48:47Z",
+      "side": 1,
+      "message": "Unfortunately fan_t is declared in include/fan.h as non-const, but I will raise a separate bug and fix this.",
+      "parentUuid": "b56eb1d5_5f2f26f9",
+      "revId": "9d2b39e77ffa71add9e34016c7ad3461d6918690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
