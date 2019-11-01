@@ -22,6 +22,30 @@
       "revId": "9577704f30c7e824c0590264df22d95a2c706575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac3e5d2_070fec90",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-01T22:44:21Z",
+      "side": 0,
+      "message": "From the commit message, I didn\u0027t see why this timer should be adjusted.",
+      "parentUuid": "1dd41f37_93048509",
+      "range": {
+        "startLine": 654,
+        "startChar": 51,
+        "endLine": 654,
+        "endChar": 63
+      },
+      "revId": "9577704f30c7e824c0590264df22d95a2c706575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
