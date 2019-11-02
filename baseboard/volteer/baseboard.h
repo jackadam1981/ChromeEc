@@ -64,11 +64,14 @@
 /* Sensors */
 
 /* Common charger defines */
+#define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_INPUT_CURRENT		512
 #define CONFIG_CHARGER_ISL9241
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+
+#define CONFIG_BC12_DETECT_PI3USB9201
 
 /* Common battery defines */
 #define CONFIG_BATTERY_SMART
@@ -77,8 +80,45 @@
 /* #define CONFIG_BATTERY_CUT_OFF */
 
 /* USB Type C and USB PD defines */
+/* Enable the new USB-C PD stack */
+#define CONFIG_USB_SM_FRAMEWORK
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
 
-/* BC 1.2 */
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_DISCHARGE_PPC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
+#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TCPM_TUSB422	/* USBC port C0 */
+#define CONFIG_USB_PD_VBUS_DETECT_PPC
+#define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+
+#define CONFIG_USBC_PPC
+#define CONFIG_USBC_PPC_SBU
+#define CONFIG_USBC_PPC_SN5S330		/* USBC port C0 */
+
+
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USB_MUX_VIRTUAL
+
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
+#define PD_VCONN_SWAP_DELAY		5000 /* us */
+
+/*
+ * TUSB422 supports up to 24V VBUS measurement, however Chromebooks only
+ * request up to 60W by policy.
+ */
+#define PD_OPERATING_POWER_MW	15000
+#define PD_MAX_POWER_MW		45000
+#define PD_MAX_CURRENT_MA	3000
+#define PD_MAX_VOLTAGE_MV	20000
+
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C
@@ -98,6 +138,9 @@
 
 #ifndef __ASSEMBLER__
 
+#include "gpio_signal.h"
+
+
 enum adc_channel {
 	ADC_TEMP_SENSOR_1_CHARGER,
 	ADC_TEMP_SENSOR_2_PP3300,
@@ -112,6 +155,16 @@ enum pwm_channel {
 	PWM_CH_LED3_RED,
 	PWM_CH_COUNT
 };
+
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_COUNT
+};
+
+void board_reset_pd_mcu(void);
+
+/* Common definition for the USB PD interrupt handlers. */
+void tcpc_alert_event(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 

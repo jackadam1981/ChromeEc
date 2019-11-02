@@ -32,6 +32,7 @@ GPIO_INT(PG_EC_ALL_SYS_PWRGD,  PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt
 /* Sensor Interrupts */
 
 /* USB-C interrupts */
+GPIO_INT(USB_C0_TCPC_INT_ODL,	PIN(E, 0), GPIO_INT_BOTH, tcpc_alert_event)
 
 /* HDMI interrupts */
 
