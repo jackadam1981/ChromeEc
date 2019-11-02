@@ -8,3 +8,4 @@
 
 baseboard-y=baseboard.o
 baseboard-y+=led.o
+baseboard-$(CONFIG_BATTERY_SMART)+=battery_presence.o
