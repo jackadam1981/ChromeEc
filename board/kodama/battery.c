@@ -83,6 +83,54 @@ enum battery_present battery_hw_present(void)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
+	static enum charge_state_v2 prev_state;
+	static int over_discharge_flag;
+	const struct battery_info *batt_info = battery_get_info();
+
+	/*
+	 * SMP battery uses HW pre-charge circuit and pre-charge current is
+	 * limited to ~50mA. Once the charge current is lower than IEOC level
+	 * within CHG_TEDG_EOC (0x19, bit[2:0]), and TE is enabled, the charging
+	 * power path will be turned off. Disable EOC and TE when battery stays
+	 * over discharge state, otherwise enable EOC and TE.
+	 */
+	if (prev_state != curr->state) {
+		if (curr->state == ST_CHARGE) {
+			if (curr->batt.voltage < batt_info->voltage_min) {
+				rt946x_enable_charge_EOC(0);
+				rt946x_enable_charge_termination(0);
+				over_discharge_flag = 1;
+			} else {
+				rt946x_enable_charge_EOC(1);
+				rt946x_enable_charge_termination(1);
+				over_discharge_flag = 0;
+			}
+		} else
+			over_discharge_flag = 0;
+
+		prev_state = curr->state;
+	}
+
+	if (curr->state == ST_CHARGE) {
+		/* battery temp in 0.1 deg C */
+		int bat_temp_c = curr->batt.temperature - 2731;
+
+		/*
+		 * When smart battery temperature is more than 45 deg C, the max
+		 * charging voltage is 4100mV.
+		 */
+		if (bat_temp_c >= 450)
+			curr->requested_voltage	= 4100;
+
+		if (over_discharge_flag &&
+			curr->batt.voltage >= batt_info->voltage_min) {
+			over_discharge_flag = 0;
+
+			rt946x_enable_charge_EOC(1);
+			rt946x_enable_charge_termination(1);
+		}
+	}
+
 #ifdef VARIANT_KUKUI_CHARGER_MT6370
 	mt6370_charger_profile_override(curr);
 #endif /* CONFIG_CHARGER_MT6370 */
@@ -97,9 +145,6 @@ int charger_profile_override(struct charge_state_data *curr)
 		if (!curr->batt.is_present &&
 			curr->requested_voltage == 0 &&
 			curr->requested_current == 0) {
-			const struct battery_info *batt_info =
-					battery_get_info();
-
 			/*
 			 * b/138978212: With adapter plugged in S0, the system
 			 * will set charging current and voltage as 0V/0A once
