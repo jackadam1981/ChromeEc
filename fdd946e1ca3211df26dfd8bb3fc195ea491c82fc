@@ -94,6 +94,30 @@
       "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a413d1_fe500296",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-04T18:40:37Z",
+      "side": 0,
+      "message": "I finally understand the problem!!! Thank you for explaining it again 😊\n\nI agree with your proposed change. Please add a comment to why it is \u003d\u003d instead of \u0026 (because I thought it was wrong at first, but then realized it was correct after typing my response)",
+      "parentUuid": "fc9d5129_1f28119e",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
