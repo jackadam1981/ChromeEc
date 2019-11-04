@@ -73,6 +73,8 @@
 #ifdef IT83XX_INTC_PLUG_IN_SUPPORT
 #define USBPD_IS_PLUG_IN_OUT_DETECT(port)\
 	IS_MASK_SET(IT83XX_USBPD_TCDCR(port), USBPD_REG_PLUG_IN_OUT_DETECT_STAT)
+#define USBPD_IS_PLUG_IN(port)\
+	IS_MASK_CLEAR(IT83XX_USBPD_TCDCR(port), USBPD_REG_PLUG_IN_OUT_SELECT)
 #endif //IT83XX_INTC_PLUG_IN_SUPPORT
 
 enum usbpd_ufp_volt_status {
@@ -105,5 +107,6 @@ extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 extern const struct tcpm_drv it83xx_tcpm_drv;
 /* Disable integrated pd module */
 void it83xx_disable_pd_module(int port);
+extern enum pd_power_role tc_get_power_role(int port);
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */

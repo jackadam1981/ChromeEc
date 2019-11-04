@@ -979,7 +979,14 @@ static void pe_src_vdm_identity_request_run(int port)
 		pe[port].vdm_cnt = 1;
 
 		set_state_pe(port, PE_VDM_REQUEST);
-	} else {
+	} else if ((pe[port].power_role == PD_ROLE_SOURCE) &&
+		    !PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+		/*
+		 * SRC is default Vconn SRC in SRC startup state.
+		 * If we have discovered ID cable reach max counts, then we
+		 * should send SRC_Cap for starting power nego.
+		 */
+		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE);
 		set_state_pe(port, PE_SRC_SEND_CAPABILITIES);
 	}
 }
@@ -3765,7 +3772,8 @@ static void pe_vdm_acked_entry(int port)
 		}
 	}
 
-	if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE)) {
+	if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE) &&
+	    tc_is_vconn_src(port)) {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE);
 		set_state_pe(port, PE_SRC_VDM_IDENTITY_REQUEST);
 	} else if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE)) {

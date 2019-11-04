@@ -11,6 +11,7 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
 static void chip_pd_irq(enum usbpd_port port)
@@ -23,20 +24,35 @@ static void chip_pd_irq(enum usbpd_port port)
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
-	} else {
-		if (USBPD_IS_RX_DONE(port)) {
+	} else if (USBPD_IS_RX_DONE(port)) {
 			tcpm_enqueue_message(port);
 			/* clear RX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
-		}
-		if (USBPD_IS_TX_DONE(port)) {
+	} else if (USBPD_IS_TX_DONE(port)) {
 			/* clear TX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
-		}
 #ifdef IT83XX_INTC_PLUG_IN_SUPPORT
-		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+	} else if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+		/* clear type-c device plug in/out detect interrupt */
+		IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+
+		/* TCPC detect type-c port plug in or plug out */
+		if (USBPD_IS_PLUG_IN(port)) {
+			ccprints("P%d ISR: PLUG_IN", port);
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+			/*
+			 * When tcpc detect type-c plug in:
+			 * If we are sink, disable it. Because sink detecting
+			 * plug out is by polling Vbus volt.
+			 * If we are source, then setting detect plug out.
+			 *
+			 * When polling disconnect will enable detect type-c
+			 * plug in again.
+			 */
+			switch_plug_out_type(port);
+#else
 			/*
 			 * When tcpc detect type-c plug in, then disable
 			 * this interrupt. Because any cc volt changes
@@ -51,11 +67,17 @@ static void chip_pd_irq(enum usbpd_port port)
 			 * Clear detect type-c plug in interrupt status.
 			 */
 			IT83XX_USBPD_TCDCR(port) |=
-				(USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
-				 USBPD_REG_PLUG_IN_OUT_DETECT_STAT);
-			task_set_event(PD_PORT_TO_TASK_ID(port),
-				PD_EVENT_CC, 0);
+				USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
+		} else {
+			//if (cc_debounce_fail(port))
+			//	return;
+			ccprints("P%d ISR: PLUG_OUT", port);
+			/* switch to detect type-c plug in interrupt */
+			IT83XX_USBPD_TCDCR(port) &=
+				~USBPD_REG_PLUG_IN_OUT_SELECT;
 		}
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 #endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	}
 }
