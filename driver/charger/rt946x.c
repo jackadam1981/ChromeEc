@@ -69,15 +69,6 @@ enum rt946x_chg_stat {
 	RT946X_CHGSTAT_FAULT,
 };
 
-enum rt946x_adc_in_sel {
-	RT946X_ADC_VBUS_DIV5 = 1,
-	RT946X_ADC_VBUS_DIV2,
-	MT6370_ADC_TS_BAT = 6,
-	MT6370_ADC_IBUS = 8,
-	MT6370_ADC_TEMP_JC = 12,
-	MT6370_ADC_MAX,
-};
-
 static struct mutex adc_access_lock;
 
 #ifdef CONFIG_CHARGER_MT6370
@@ -1036,7 +1027,7 @@ static void usb_pd_connect(void)
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
 #endif
 
-static int charger_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
+int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
 {
 	int rv, i, adc_start, adc_result = 0;
 	int adc_data_h, adc_data_l, aicr;
@@ -1082,7 +1073,7 @@ static int charger_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
 
 	/* Read ADC data */
 	rv = rt946x_read8(RT946X_REG_ADCDATAH, &adc_data_h);
-	rv = rt946x_read8(RT946X_REG_ADCDATAL, &adc_data_l);
+	rv |= rt946x_read8(RT946X_REG_ADCDATAL, &adc_data_l);
 	if (rv)
 		goto out;
 
@@ -1109,8 +1100,10 @@ out:
 			adc_result = adc_result * 67 / 100;
 	}
 
+	*adc_val = adc_result;
 	if (adc_sel != MT6370_ADC_TS_BAT && adc_sel != MT6370_ADC_TEMP_JC)
-		*adc_val = adc_result / 1000;
+		*adc_val /= 1000;
+	
 	mt6370_enable_hidden_mode(0);
 #endif
 	mutex_unlock(&adc_access_lock);
@@ -1121,7 +1114,7 @@ int charger_get_vbus_voltage(int port)
 {
 	static int vbus_mv;
 
-	charger_get_adc(RT946X_ADC_VBUS_DIV5, &vbus_mv);
+	rt946x_get_adc(RT946X_ADC_VBUS_DIV5, &vbus_mv);
 	return vbus_mv;
 }
 
@@ -1167,7 +1160,7 @@ static int mt6370_pmu_chg_mivr_irq_handler(void)
 		return rv;
 	}
 
-	rv = charger_get_adc(MT6370_ADC_IBUS, &ibus);
+	rv = rt946x_get_adc(MT6370_ADC_IBUS, &ibus);
 	if (rv)
 		return rv;
 

@@ -30,6 +30,9 @@ enum charge_state_v2 {
 	NUM_STATES_V2
 };
 
+#define CHARGE_STABLE_WAIT_US (10 * SECOND)
+#define CHARGE_UNSTABLE_CURRENT -1
+
 struct charge_state_data {
 	timestamp_t ts;
 	int ac;
@@ -37,8 +40,11 @@ struct charge_state_data {
 	struct charger_params chg;
 	struct batt_params batt;
 	enum charge_state_v2 state;
+	/* requested voltage from charger to battery */
 	int requested_voltage;
+	/* requested current from charger to battery */
 	int requested_current;
+	/* desired input curret from power supply */
 	int desired_input_current;
 #ifdef CONFIG_CHARGER_OTG
 	int output_current;
@@ -47,6 +53,12 @@ struct charge_state_data {
 	int input_voltage;
 #endif
 };
+
+#define BATTERY_CV_LEVEL 70
+
+int charge_get_stable_current(void);
+void charge_set_stable_current(int);
+void charge_reset_stable_current(uint64_t us);
 
 /**
  * Set the output current limit and voltage. This is used to provide power from
