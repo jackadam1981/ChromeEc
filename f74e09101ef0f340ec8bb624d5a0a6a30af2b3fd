@@ -52,6 +52,24 @@
       "revId": "f74e09101ef0f340ec8bb624d5a0a6a30af2b3fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9044e1e2_dfd7e2c9",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-04T17:29:18Z",
+      "side": 1,
+      "message": "We don\u0027t have CBI on Grunt devices, system_get_sku_id() reads the SKU ID via ADC. The AP reads the SKU ID from the EC via host command.\n\n\u003e Is AP SKU set before the SoC boots?\n\nThe EC reads the SKU ID via ADC before the SoC boots.",
+      "parentUuid": "206ae0e4_b3e21288",
+      "revId": "f74e09101ef0f340ec8bb624d5a0a6a30af2b3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
