@@ -34,6 +34,24 @@
       "revId": "f74e09101ef0f340ec8bb624d5a0a6a30af2b3fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "206ae0e4_b3e21288",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-04T14:43:42Z",
+      "side": 1,
+      "message": "Is system_get_sku_id the same as the CBI SKU? From quick tracing, they look different? Or are you trying to use the SKY set by the host command instead?\n\nIs AP SKU set before the SoC boots?",
+      "parentUuid": "975bb531_03ffc181",
+      "revId": "f74e09101ef0f340ec8bb624d5a0a6a30af2b3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
