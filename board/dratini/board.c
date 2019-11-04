@@ -121,6 +121,10 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT]   = { .channel = 3, .flags = 0, .freq = 100 },
 	[PWM_CH_FAN] = {.channel = 5, .flags = PWM_CONFIG_OPEN_DRAIN,
 			.freq = 25000},
+#if (CONFIG_FANS == 2)
+	[PWM_CH_FAN2] = {.channel = 5, .flags = PWM_CONFIG_OPEN_DRAIN,
+			.freq = 25000},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -277,21 +281,44 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = GPIO_EN_PP5000_FAN,
 };
 
+#if (CONFIG_FANS == 2)
+const struct fan_conf fan_conf_1 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = MFT_CH_1,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+#endif
+
 /* Default */
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 3100,
-	.rpm_start = 3100,
-	.rpm_max = 6900,
+	.rpm_min = 2800,
+	.rpm_start = 2800,
+	.rpm_max = 5600,
 };
+
+#if (CONFIG_FANS == 2)
+const struct fan_rpm fan_rpm_1 = {
+	.rpm_min = 2900,
+	.rpm_start = 2900,
+	.rpm_max = 5500,
+};
+#endif
 
 struct fan_t fans[FAN_CH_COUNT] = {
 	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+#if (CONFIG_FANS == 2)
+	[FAN_CH_1] = { .conf = &fan_conf_1, .rpm = &fan_rpm_1, },
+#endif
 };
 
 /******************************************************************************/
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
 	[MFT_CH_0] = {NPCX_MFT_MODULE_1, TCKC_LFCLK, PWM_CH_FAN},
+#if (CONFIG_FANS == 2)
+	[MFT_CH_1] = {NPCX_MFT_MODULE_2, TCKC_LFCLK, PWM_CH_FAN2},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
@@ -331,8 +358,8 @@ const static struct ec_thermal_config thermal_a = {
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
 		[EC_TEMP_THRESH_HALT] = 0,
 	},
-	.temp_fan_off = C_TO_K(25),
-	.temp_fan_max = C_TO_K(70),
+	.temp_fan_off = C_TO_K(4),
+	.temp_fan_max = C_TO_K(76),
 };
 
 const static struct ec_thermal_config thermal_b = {
@@ -346,8 +373,8 @@ const static struct ec_thermal_config thermal_b = {
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
 		[EC_TEMP_THRESH_HALT] = 0,
 	},
-	.temp_fan_off = C_TO_K(25),
-	.temp_fan_max = C_TO_K(50),
+	.temp_fan_off = C_TO_K(4),
+	.temp_fan_max = C_TO_K(76),
 };
 
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
@@ -428,4 +455,74 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
+}
+
+struct fan_step {
+	int on;
+	int off;
+	int rpm0;
+	int rpm1;
+};
+
+/* Do not make the fan on/off point equal to 0 or 100 */
+const struct fan_step fan_table[] = {
+	{.on =  0, .off =  1, .rpm0 =    0, .rpm1 =    0},
+	{.on = 36, .off =  1, .rpm0 = 2800, .rpm1 = 2900},
+	{.on = 62, .off = 58, .rpm0 = 3200, .rpm1 = 3300},
+	{.on = 68, .off = 63, .rpm0 = 3400, .rpm1 = 3500},
+	{.on = 75, .off = 69, .rpm0 = 4200, .rpm1 = 4300},
+	{.on = 81, .off = 76, .rpm0 = 4800, .rpm1 = 4900},
+	{.on = 88, .off = 83, .rpm0 = 5200, .rpm1 = 5300},
+	{.on = 98, .off = 91, .rpm0 = 5600, .rpm1 = 5500},
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table)
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int current_level;
+	static int previous_pct;
+	static int new_rpm;
+	int i;
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct < previous_pct) {
+		for (i = current_level; i >= 0; i--) {
+			if (pct <= fan_table[i].off)
+				current_level = i - 1;
+			else
+				break;
+		}
+	} else if (pct > previous_pct) {
+		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
+			if (pct >= fan_table[i].on)
+				current_level = i;
+			else
+				break;
+		}
+	}
+
+	if (current_level < 0)
+		current_level = 0;
+
+	previous_pct = pct;
+
+	switch (fan) {
+	case FAN_CH_0:
+		new_rpm = fan_table[current_level].rpm0;
+		break;
+#if (CONFIG_FANS == 2)
+	case FAN_CH_1:
+		new_rpm = fan_table[current_level].rpm1;
+		break;
+#endif
+	default:
+		break;
+	}
+
+	return new_rpm;
 }
