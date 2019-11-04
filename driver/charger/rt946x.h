@@ -690,6 +690,17 @@ struct rt946x_init_setting {
 	uint16_t boost_current;
 };
 
+enum rt946x_adc_in_sel {
+	RT946X_ADC_VBUS_DIV5 = 1,
+	RT946X_ADC_VBUS_DIV2,
+	MT6370_ADC_TS_BAT = 6,
+	MT6370_ADC_IBUS = 8,
+	MT6370_ADC_TEMP_JC = 12,
+	MT6370_ADC_MAX,
+};
+
+int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val);
+
 #ifdef CONFIG_CHARGER_MT6370
 
 /*
