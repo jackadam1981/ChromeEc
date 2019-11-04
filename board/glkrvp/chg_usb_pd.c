@@ -24,11 +24,9 @@
 #define PTN5110_EXT_GPIO_EN_SNK1		BIT(4)
 #define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	BIT(3)
 
-enum glkrvp_charge_ports {
-	TYPE_C_PORT_0,
-	TYPE_C_PORT_1,
-	DC_JACK_PORT_0 = DEDICATED_CHARGE_PORT,
-};
+#define TYPE_C_PORT_0 0
+#define TYPE_C_PORT_1 1
+#define DC_JACK_PORT_0 DEDICATED_CHARGE_PORT
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -217,22 +215,16 @@ int board_set_active_charge_port(int port)
 	}
 
 	/* Make sure non-charging port is disabled */
-	switch (port) {
-	case TYPE_C_PORT_0:
+	if (port == TYPE_C_PORT_0) {
 		board_charging_enable(TYPE_C_PORT_1, 0);
 		board_charging_enable(TYPE_C_PORT_0, 1);
-		break;
-	case TYPE_C_PORT_1:
+	} else if (port == TYPE_C_PORT_1) {
 		board_charging_enable(TYPE_C_PORT_0, 0);
 		board_charging_enable(TYPE_C_PORT_1, 1);
-		break;
-	case DC_JACK_PORT_0:
-	case CHARGE_PORT_NONE:
-	default:
+	} else if (port == DC_JACK_PORT_0 || port == CHARGE_PORT_NONE) {
 		/* Disable both Type-C ports */
 		board_charging_enable(TYPE_C_PORT_0, 0);
 		board_charging_enable(TYPE_C_PORT_1, 0);
-		break;
 	}
 
 	return EC_SUCCESS;

@@ -113,7 +113,9 @@ enum ceil_requestor {
 	CEIL_REQUESTOR_COUNT,
 };
 
-#define CHARGE_PORT_COUNT (CONFIG_USB_PD_PORT_MAX_COUNT + \
+#define CHARGE_PORT_MAX_COUNT (CONFIG_USB_PD_PORT_MAX_COUNT + \
+			       CONFIG_DEDICATED_CHARGE_PORT_COUNT)
+#define CHARGE_PORT_COUNT (board_get_usb_pd_port_count() + \
 			   CONFIG_DEDICATED_CHARGE_PORT_COUNT)
 #if (CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0)
 
@@ -133,8 +135,6 @@ enum ceil_requestor {
  */
 #if !defined(DEDICATED_CHARGE_PORT)
 #error "DEDICATED_CHARGE_PORT must be defined"
-#elif DEDICATED_CHARGE_PORT < CONFIG_USB_PD_PORT_MAX_COUNT
-#error "DEDICATED_CHARGE_PORT must larger than pd port numbers"
 #endif /* !defined(DEDICATED_CHARGE_PORT) */
 
 #endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */

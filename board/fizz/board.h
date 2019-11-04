@@ -116,7 +116,7 @@
 /* Charge ports */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
-#define DEDICATED_CHARGE_PORT 1
+#define DEDICATED_CHARGE_PORT board_get_usb_pd_port_count()
 
 /* USB-A config */
 #define CONFIG_USB_PORT_POWER_DUMB

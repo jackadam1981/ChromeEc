@@ -75,7 +75,7 @@
 /* Dedicated barreljack charger port */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
-#define DEDICATED_CHARGE_PORT 1
+#define DEDICATED_CHARGE_PORT board_get_usb_pd_port_count()
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER

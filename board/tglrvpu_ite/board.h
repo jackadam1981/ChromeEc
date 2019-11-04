@@ -36,7 +36,7 @@
 
 /* USB ports */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
-#define DEDICATED_CHARGE_PORT 2
+#define DEDICATED_CHARGE_PORT board_get_usb_pd_port_count()
 
 /* USB-C port's USB2 & USB3 port numbers */
 #ifdef BOARD_TGLRVPU_ITE

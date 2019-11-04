@@ -71,10 +71,10 @@ BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
 /* Keep track of available charge for each charge port. */
 static struct charge_port_info available_charge[CHARGE_SUPPLIER_COUNT]
-					       [CHARGE_PORT_COUNT];
+					       [CHARGE_PORT_MAX_COUNT];
 
 /* Keep track of when the supplier on each port is registered. */
-static timestamp_t registration_time[CHARGE_PORT_COUNT];
+static timestamp_t registration_time[CHARGE_PORT_MAX_COUNT];
 
 /*
  * Charge current ceiling (mA) for ports. This can be set to temporarily limit
@@ -82,14 +82,14 @@ static timestamp_t registration_time[CHARGE_PORT_COUNT];
  * The ceiling can be set independently from several requestors, with the
  * minimum ceiling taking effect.
  */
-static int charge_ceil[CHARGE_PORT_COUNT][CEIL_REQUESTOR_COUNT];
+static int charge_ceil[CHARGE_PORT_MAX_COUNT][CEIL_REQUESTOR_COUNT];
 
 /* Dual-role capability of attached partner port */
-static enum dualrole_capabilities dualrole_capability[CHARGE_PORT_COUNT];
+static enum dualrole_capabilities dualrole_capability[CHARGE_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_LOGGING
 /* Mark port as dirty when making changes, for later logging */
-static int save_log[CHARGE_PORT_COUNT];
+static int save_log[CHARGE_PORT_MAX_COUNT];
 #endif
 
 /* Store current state of port enable / charge current. */
