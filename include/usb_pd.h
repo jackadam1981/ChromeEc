@@ -1476,6 +1476,24 @@ void pd_set_max_voltage(unsigned mv);
 unsigned pd_get_max_voltage(void);
 
 /**
+ * Get the voltage lastly requested.
+ * @return requested voltage in mV.
+ */
+int pd_get_supply_voltage(int port);
+
+/**
+ *
+ *
+ */
+int pd_get_prefer_voltage(void);
+
+/**
+ *
+ *
+ */
+void pd_set_prefer_voltage(int mv);
+
+/**
  * Check if this board supports the given input voltage.
  *
  * @mv input voltage
