@@ -101,6 +101,10 @@ int charge_get_percent(void);
 int board_get_battery_soc(void);
 #endif
 
+int charge_get_desired_mw(void);
+
+__override_proto int board_get_desired_mw(void);
+
 /**
  * Return current display charge in 10ths of a percent (e.g. 1000 = 100.0%)
  */

@@ -28,6 +28,7 @@
 #include "throttle_ap.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_pd.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -70,6 +71,12 @@ static timestamp_t uvp_throttle_start_time;
 #endif /* CONFIG_THROTTLE_AP_ON_BAT_OLTAGE */
 
 static int charge_request(int voltage, int current);
+
+static timestamp_t stable_ts;
+/* battery charging current after stable */
+static int stable_current;
+static int desired_mw;
+static int prev_desired_mw;
 
 static uint8_t battery_level_shutdown;
 
@@ -1160,6 +1167,16 @@ static int calc_is_full(void)
 	return ret;
 }
 
+void charge_reset_stable_current(uint64_t us)
+{
+	timestamp_t now = get_time();
+
+	if (stable_ts.val < now.val + us)
+		stable_ts.val = now.val + us;
+
+	stable_current = CHARGE_CURRENT_UNINITIALIZED;
+}
+
 /*
  * Ask the charger for some voltage and current. If either value is 0,
  * charging is disabled; otherwise it's enabled. Negative values are ignored.
@@ -1225,12 +1242,16 @@ static int charge_request(int voltage, int current)
 	/*
 	 * Only update if the request worked, so we'll keep trying on failures.
 	 */
-	if (!r1 && !r2) {
-		prev_volt = voltage;
-		prev_curr = current;
-	}
+	if (r1 || r2)
+		return r1 ? r1 : r2;
 
-	return r1 ? r1 : r2;
+	if (prev_volt != voltage || prev_curr != current)
+		charge_reset_stable_current(CHARGE_STABLE_WAIT_US);
+
+	prev_volt = voltage;
+	prev_curr = current;
+
+	return EC_SUCCESS;
 }
 
 void chgstate_set_manual_current(int curr_ma)
@@ -1564,6 +1585,8 @@ void charger_task(void *u)
 	prev_bp = BP_NOT_INIT;
 	curr.desired_input_current = get_desired_input_current(
 			curr.batt.is_present, info);
+	desired_mw = curr.batt.desired_current * curr.batt.desired_voltage;
+	charge_reset_stable_current(CHARGE_STABLE_WAIT_US);
 
 	battery_level_shutdown = board_set_battery_level_shutdown();
 
@@ -1662,6 +1685,9 @@ void charger_task(void *u)
 		}
 
 		notify_host_of_over_current(&curr.batt);
+
+		if (get_time().val > stable_ts.val && curr.batt.current >= 0)
+			stable_current = curr.batt.current;
 
 		/*
 		 * Now decide what we want to do about it. We'll normally just
@@ -1956,6 +1982,21 @@ wait_for_it:
 			}
 		}
 
+		prev_desired_mw = desired_mw;
+
+		if (curr.state != ST_CHARGE ||
+		    curr.batt.state_of_charge < BATTERY_CV_LEVEL)
+			desired_mw = curr.batt.desired_current *
+				     curr.batt.desired_voltage / 1000;
+		else if (curr.batt.state_of_charge >= BATTERY_CV_LEVEL &&
+			 stable_current != CHARGE_CURRENT_UNINITIALIZED)
+			desired_mw = curr.batt.voltage * stable_current / 1000;
+
+		if (prev_desired_mw / 1000 != board_get_desired_mw() / 1000 &&
+		    charge_manager_get_supplier() == CHARGE_SUPPLIER_PD)
+			pd_set_new_power_request(
+				charge_manager_get_active_charge_port());
+
 		/* Adjust for time spent in this loop */
 		sleep_usec -= (int)(get_time().val - curr.ts.val);
 		if (sleep_usec < CHARGE_MIN_SLEEP_USEC)
@@ -2096,6 +2137,16 @@ int charge_prevent_power_on(int power_button_pressed)
 	return prevent_power_on;
 }
 
+int charge_get_stable_current(void)
+{
+	return stable_current;
+}
+
+void charge_set_stable_current(int curr)
+{
+	stable_current = curr;
+}
+
 static int battery_near_full(void)
 {
 	if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL)
@@ -2161,6 +2212,16 @@ int charge_get_percent(void)
 	 * anything.
 	 */
 	return is_full ? 100 : curr.batt.state_of_charge;
+}
+
+int charge_get_desired_mw(void)
+{
+	return desired_mw;
+}
+
+__overridable int board_get_desired_mw(void)
+{
+	return charge_get_desired_mw();
 }
 
 int charge_get_display_charge(void)

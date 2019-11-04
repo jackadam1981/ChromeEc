@@ -4380,6 +4380,11 @@ unsigned int pd_get_max_voltage(void)
 	return max_request_mv;
 }
 
+int pd_get_supply_voltage(int port)
+{
+	return pd[port].supply_voltage;
+}
+
 int pd_charge_from_device(uint16_t vid, uint16_t pid)
 {
 	/* TODO: rewrite into table if we get more of these */
