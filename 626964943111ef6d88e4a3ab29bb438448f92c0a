@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8baf6055_06f9e830",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-11-04T23:22:51Z",
+      "side": 1,
+      "message": "Uploaded a CL(crrev.com/c/1898686) in this stack to resolve it.",
+      "parentUuid": "9e7e5b16_7b80b82f",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 48
+      },
+      "revId": "626964943111ef6d88e4a3ab29bb438448f92c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b5c396_bede8963",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I am inclined to introduce CHARGE_PORT_MAX_COUNT and define CHARGE_PORT_MAX_COUNT \u0026 CHARGE_PORT_COUNT as follows:\n#define CHARGE_PORT_MAX_COUNT CONFIG_USB_PD_PORT_MAX_COUNT + CONFIG_DEDICATED_CHARGE_PORT_COUNT\n#define CHARGE_PORT_COUNT board_get_usb_pd_port_count() + CONFIG_DEDICATED_CHARGE_PORT_COUNT\nThat will help to ensure that there are no gaps in the available_charge_array.\n\nAlso I see quite a lot of places where CHARGE_PORT_COUNT is used - like registration_time, charge_ceil, dual_role_capability etc. where there will be holes which is not accounted for.\n\nThis will make it cleaner. Thoughts??",
       "parentUuid": "59b5c396_bede8963",
+      "range": {
+        "startLine": 215,
+        "startChar": 11,
+        "endLine": 215,
+        "endChar": 35
+      },
+      "revId": "626964943111ef6d88e4a3ab29bb438448f92c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123da620_283326d0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-11-04T23:22:51Z",
+      "side": 1,
+      "message": "The next CL in this stack(crrev.com/c/1898645/) implements the approach mentioned here.",
+      "parentUuid": "72ec8a00_c9df8a6d",
       "range": {
         "startLine": 215,
         "startChar": 11,
