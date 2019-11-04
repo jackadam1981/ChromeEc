@@ -16,6 +16,24 @@
       "revId": "3180eb6a45b5c10e50531b789b0b70c43db2c89f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac0c5d7_c38ba27e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4818,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-11-04T23:46:17Z",
+      "side": 1,
+      "message": "this print is less relevant now that this is effectively a no-op.\nwe can remove it if that\u0027s the consensus.",
+      "parentUuid": "0fe5dc43_4d122d2d",
+      "revId": "3180eb6a45b5c10e50531b789b0b70c43db2c89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
