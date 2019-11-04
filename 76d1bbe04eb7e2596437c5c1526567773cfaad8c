@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61b6297f_8f2aa8c2",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-11-04T10:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3481283d_e0123744",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "76d1bbe04eb7e2596437c5c1526567773cfaad8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563acae8_04bdec41",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "76d1bbe04eb7e2596437c5c1526567773cfaad8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a118674_5bb7a642",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-11-04T10:44:51Z",
+      "side": 1,
+      "message": "Opps...Thanks for catching this.",
+      "parentUuid": "563acae8_04bdec41",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 60
+      },
+      "revId": "76d1bbe04eb7e2596437c5c1526567773cfaad8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
