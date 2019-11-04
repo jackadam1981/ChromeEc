@@ -70,6 +70,30 @@
       "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9d5129_1f28119e",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2019-11-04T02:55:46Z",
+      "side": 0,
+      "message": "I think HOST_EVENT_WAKEUP_MASK is only for host_event_code enum in ec_command.h. Right?\nEC_MKBP_EVENT_SENSOR_FIFO is in ec_mkbp_event enum.\nCan we mix these two events in CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK?\n\nIf we mix these two events, host_get_events() also returns 0 for EC_MKBP_EVENT_SENSOR_FIFO. Then skip_interrupt is also set to 1.\n\nI have a thought. How about change mkbp_event.c to the following code:\n\n#ifdef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK\n        /* Check to see if this host event should wake the system. */\n        if (events_to_add \u003d\u003d EC_MKBP_EVENT_HOST_EVENT ||\n            events_to_add \u003d\u003d EC_MKBP_EVENT_HOST_EVENT64)\n                skip_interrupt \u003d host_is_sleeping() \u0026\u0026\n                                !(host_get_events() \u0026\n                                mkbp_host_event_wake_mask);\n#endif /* CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK */ \n\nOnly handle host MKBP event while querying host events.\nThen we don\u0027t set skip_interrupt to 1 for EC_MKBP_EVENT_SENSOR_FIFO in HOST_EVENT_MAKEUP_MASK section.\n\nWhat do you think?\nThanks.",
+      "parentUuid": "d156383f_ab5d39ac",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "fdd946e1ca3211df26dfd8bb3fc195ea491c82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
