@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f318bcc2_905bcaa6",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-04T21:40:34Z",
+      "side": 1,
+      "message": "we can add CONFIG_CHARGE_MANAGER, CONFIG_CHARGER_DISCHARGE_ON_AC also.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "505a37e038769ae67a511d774d5d2dc774baf530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
