@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94925f87_f03f68c4",
+        "filename": "board/aleena/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-04T20:23:44Z",
+      "side": 1,
+      "message": "Add \"#define CONFIG_KEYBOARD_FACTORY_TEST\"",
+      "revId": "9f8e6eca174193e173b56ecb69b9021adc337b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b250d5c_8832e5c9",
+        "filename": "board/aleena/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-04T20:23:44Z",
+      "side": 1,
+      "message": "Move this down to below enum battery_type to be consistent with other board.h files.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "9f8e6eca174193e173b56ecb69b9021adc337b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
