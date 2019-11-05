@@ -46,6 +46,30 @@
       "revId": "aa54af7252c8fd259621ce4808c0e3c396597d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11cf3f05_fe427f43",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-05T23:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9b35240_f309428f",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 35
+      },
+      "revId": "aa54af7252c8fd259621ce4808c0e3c396597d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
