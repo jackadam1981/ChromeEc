@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b31c3dd4_89a0c9b5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-05T18:43:28Z",
+      "side": 1,
+      "message": "set_phy_reset(port)\nwe can do tcpc_init or discard in driver code",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 19
+      },
+      "revId": "4b1360d37e66adb96cd738cb3cb99bb1855fcbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21cb0e38_7e3d23b3",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-05T18:43:28Z",
+      "side": 1,
+      "message": "how about naming it set_phy_reset()",
+      "range": {
+        "startLine": 341,
+        "startChar": 9,
+        "endLine": 341,
+        "endChar": 23
+      },
+      "revId": "4b1360d37e66adb96cd738cb3cb99bb1855fcbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
