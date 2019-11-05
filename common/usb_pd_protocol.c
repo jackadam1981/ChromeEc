@@ -2758,7 +2758,7 @@ static void pd_init_tasks(void)
 	enable = 0;
 #elif defined(CONFIG_USB_PD_COMM_LOCKED)
 	/* Disable PD communication at init if we're in RO and locked. */
-	if (!system_is_in_rw() && system_is_locked())
+	if (!system_is_in_rw())  //&& system_is_locked())
 		enable = 0;
 #ifdef CONFIG_VBOOT_EFS
 	if (vboot_need_pd_comm())
