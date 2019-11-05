@@ -2632,6 +2632,9 @@ static void tc_unattached_entry(const int port)
 	/* This only prints the first time we enter a unattached state */
 	print_current_state(port);
 
+	/* Detect USB PD cc disconnect */
+	hook_notify(HOOK_USB_PD_DISCONNECT);
+
 	/* This disables the mux when we disconnect on a port */
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 		set_usb_mux_with_current_data_role(port);
