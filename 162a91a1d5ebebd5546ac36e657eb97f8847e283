@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "299b4832_3643d219",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2019-11-05T11:51:52Z",
+      "side": 1,
+      "message": "Sorry, CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD \u0026 CONFIG_BATTERY_DEAD_FG_GARBAGE",
+      "parentUuid": "51f4651e_5bf31b9a",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "162a91a1d5ebebd5546ac36e657eb97f8847e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ad95e0e_1e5e871c",
         "filename": "board/nautilus/board.h",
         "patchSetId": 4
