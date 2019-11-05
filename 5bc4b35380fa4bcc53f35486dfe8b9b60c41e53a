@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69569406_edf9d416",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4392,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-05T18:32:24Z",
+      "side": 1,
+      "message": "how about declaring array at board level and using it?\nusbc_dicharge_gpio[] \u003d {\n}",
+      "range": {
+        "startLine": 4392,
+        "startChar": 14,
+        "endLine": 4392,
+        "endChar": 15
+      },
+      "revId": "5bc4b35380fa4bcc53f35486dfe8b9b60c41e53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
