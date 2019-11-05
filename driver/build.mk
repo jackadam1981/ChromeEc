@@ -160,6 +160,8 @@ endif
 driver-$(CONFIG_USBC_PPC_SYV682X)+=ppc/syv682x.o
 driver-$(CONFIG_USBC_PPC_NX20P3483)+=ppc/nx20p348x.o
 
+driver-$(CONFIG_USBC_RETIMER_PI3DPX1207)+=retimer/pi3dpx1207.o
+
 # video converters
 driver-$(CONFIG_MCDP28X0)+=mcdp28x0.o
 
