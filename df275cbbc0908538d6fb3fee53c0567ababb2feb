@@ -816,6 +816,30 @@
     },
     {
       "key": {
+        "uuid": "b2618aca_d45b9beb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-05T18:15:44Z",
+      "side": 1,
+      "message": "How about this? Since CL:1825504 is currently breaking ToT for kohaku (at least), why don\u0027t we revert it for now, get the other bug fixes/policies reviewed and merged, and then we can come back to this. Jett could you file a bug for this issue? (maybe we can include that in the revert commit message).",
+      "parentUuid": "de95eed9_2471658e",
+      "range": {
+        "startLine": 774,
+        "startChar": 26,
+        "endLine": 774,
+        "endChar": 68
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05c143b7_6f8a7ad9",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
