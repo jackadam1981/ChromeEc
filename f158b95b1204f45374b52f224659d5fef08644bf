@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b80d312a_037c76d9",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-05T18:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875e857b_2d136156",
+      "range": {
+        "startLine": 68,
+        "startChar": 62,
+        "endLine": 68,
+        "endChar": 63
+      },
+      "revId": "f158b95b1204f45374b52f224659d5fef08644bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d95c565b_e87e2ec0",
         "filename": "chip/stm32/gpio.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "f158b95b1204f45374b52f224659d5fef08644bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c8ce32_425580e0",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-05T18:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d95c565b_e87e2ec0",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "f158b95b1204f45374b52f224659d5fef08644bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
