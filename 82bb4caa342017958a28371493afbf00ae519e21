@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d6f564b_8cdefd3e",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-05T03:29:14Z",
+      "side": 1,
+      "message": "Can we simplify this like\n\n int batt_low_v \u003d curr-\u003ebatt.voltage \u003c batt_info-\u003evoltage_mim;\n\n rt946x_enable_charge_eoc(!batt_low_v);\n rt946x_enable_charge_termination(!batt_low_v);\n over_discharge_flag \u003d batt_low_v;",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 4
+      },
+      "revId": "82bb4caa342017958a28371493afbf00ae519e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f524c447_e1a3a3a8",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-05T03:29:14Z",
+      "side": 1,
+      "message": "add parenthesis for \u0027else\u0027 part.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "82bb4caa342017958a28371493afbf00ae519e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1994c7_b3f3c1f0",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-05T03:29:14Z",
+      "side": 1,
+      "message": "this part is kind of duplicate with above part...",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "82bb4caa342017958a28371493afbf00ae519e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e0ce49_8f6dcce3",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-05T03:29:14Z",
+      "side": 1,
+      "message": "please keep the function name in lower cases.",
+      "range": {
+        "startLine": 638,
+        "startChar": 4,
+        "endLine": 638,
+        "endChar": 28
+      },
+      "revId": "82bb4caa342017958a28371493afbf00ae519e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
