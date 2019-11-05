@@ -22,6 +22,30 @@
       "revId": "d42af76875f018fee070b47cd5faefc34a94db2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f8795f_c3258a12",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-11-05T07:34:30Z",
+      "side": 1,
+      "message": "got my answer:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1021417",
+      "parentUuid": "d9b63db7_f61a66b0",
+      "range": {
+        "startLine": 540,
+        "startChar": 4,
+        "endLine": 540,
+        "endChar": 18
+      },
+      "revId": "d42af76875f018fee070b47cd5faefc34a94db2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
