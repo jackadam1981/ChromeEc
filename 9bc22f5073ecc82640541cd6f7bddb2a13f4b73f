@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46f08e52_3f1021f0",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-05T23:25:44Z",
+      "side": 1,
+      "message": "A comment should be added either here or in the function header to explain that we do not care about the image board_id_type field if the info1 space board ID type is not initialized.\n\nAlso, as a nit: I think the code would be clearer if this change was moving mismatch assignment from original line 59 to before 51 and then wrapping lines 51..53 in\n\nif (!mismatch \u0026\u0026 !board_id_type_is_blank()) {\n}",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "9bc22f5073ecc82640541cd6f7bddb2a13f4b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
