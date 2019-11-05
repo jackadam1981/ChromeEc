@@ -16,6 +16,29 @@
       "revId": "5ae2e51bccecf58deffe64c0f4b131be5d776dac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a2d093_0d67cefd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3852,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T22:15:02Z",
+      "side": 1,
+      "message": "Can you do the following?\n\n\tCPRINTS(\"TCPC p%d suspended!\", port);\n\tpd[port].req_suspend_state \u003d 0;\n\tif (IS_ENABLED(CONFIG_USB_PD_TCPC)) {\n\t\tpd_rx_disable_monitoring(port);\n\t\tpd_hw_release(port);\n\t\tpd_power_supply_reset(port);\n\t} else {\n\t\tint rstatus;\n\t\tpd_power_supply_reset(port);\n\t\tif (IS_ENABLED(CONFIG_USBC_VCONN)\n\t\t\tset_vconn(port, 0);\n\t\trstatus \u003d tcpm_release(port);\n\t\tif (rstatus !\u003d 0 \u0026\u0026 rstatus !\u003d EC_ERROR_UNIMPLEMENTED)\n\t\t\tCPRINTS(\"TCPC p%d release failed!\", port);\n\t}",
+      "range": {
+        "startLine": 3835,
+        "startChar": 0,
+        "endLine": 3852,
+        "endChar": 6
+      },
+      "revId": "5ae2e51bccecf58deffe64c0f4b131be5d776dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
