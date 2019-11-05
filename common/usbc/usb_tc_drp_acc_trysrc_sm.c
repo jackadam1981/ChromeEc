@@ -57,6 +57,8 @@
 #define TC_FLAGS_DO_PR_SWAP               BIT(20)
 #define TC_FLAGS_DISC_IDENT_IN_PROGRESS   BIT(21)
 
+#define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
+
 enum ps_reset_sequence {
 	PS_STATE0,
 	PS_STATE1,
@@ -149,6 +151,8 @@ static struct type_c {
 	uint64_t cc_last_change;
 	/* Current voltage on CC pins */
 	enum tcpc_cc_voltage_status cc1, cc2;
+	/* The next time the CC lines should be manually polled */
+	uint64_t next_cc_poll_time;
 	/* Interpreted PD state of above cc1 and cc2 lines */
 	enum pd_cc_states cc_state;
 	/* Type-C current */
@@ -738,16 +742,24 @@ static void exit_low_power_mode(int port)
 
 void tc_event_check(int port, int evt)
 {
-	/* Update the cc variables if there was a change */
-	if (evt & PD_EVENT_CC) {
+	/* Update the cc variables if there was a change or we need to poll */
+	if (evt & PD_EVENT_CC || get_time().val > tc[port].next_cc_poll_time) {
 		enum tcpc_cc_voltage_status cc1, cc2;
 
 		tcpm_get_cc(port, &cc1, &cc2);
+		tc[port].next_cc_poll_time = TIMER_DISABLED;
+
 		if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
 			tc[port].cc_state = pd_get_cc_state(cc1, cc2);
 			tc[port].cc1 = cc1;
 			tc[port].cc2 = cc2;
 			tc[port].cc_last_change = get_time().val;
+			/*
+			 * When we get a change, we want to ensure that the
+			 * read was good. Verify the read again in 50 msec
+			 */
+			tc[port].next_cc_poll_time =
+				get_time().val + (50 * MSEC);
 		}
 	}
 
