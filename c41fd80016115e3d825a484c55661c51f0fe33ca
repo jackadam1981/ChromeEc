@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b91807c2_4c708ceb",
+        "filename": "board/glkrvp_ite/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-05T15:42:59Z",
+      "side": 1,
+      "message": "I didn\u0027t realize that boards used the dedicated charge port as a constant. I don\u0027t think we should make the dedicated charge port define change at runtime. That means that TYPE_C_PORT_1 and DC_JACK_PORT_0 could both have the value of 1 at run time, and then I think the if else statement break down.\n\nI think we need to go about this differently. I think the charge manager code will need to handle having uninitialized holes in the array instead",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "c41fd80016115e3d825a484c55661c51f0fe33ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007a1833_21634042",
+        "filename": "board/glkrvp_ite/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-05T15:42:59Z",
+      "side": 1,
+      "message": "this should just be an else (because of the default clause in the switch statement)",
+      "range": {
+        "startLine": 222,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 64
+      },
+      "revId": "c41fd80016115e3d825a484c55661c51f0fe33ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
