@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd7a7c9b_a0df4745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T18:46:07Z",
+      "side": 1,
+      "message": "Are you going to add temp_sensor_t temp_sensors?",
+      "parentUuid": "81fe51a6_c3d4b141",
+      "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de1c2bb6_9b173025",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -35,6 +53,53 @@
         "startChar": 48,
         "endLine": 10,
         "endChar": 13
+      },
+      "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ad4f57_00f2f18e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T18:46:07Z",
+      "side": 1,
+      "message": "Why is it required?",
+      "parentUuid": "de1c2bb6_9b173025",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db95200_128df7e6",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T18:46:07Z",
+      "side": 1,
+      "message": "What is this for? Can you elaborate PP3300? PMIC?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 25
       },
       "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
