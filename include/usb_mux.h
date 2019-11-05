@@ -88,6 +88,34 @@ struct usb_mux_driver {
 	int (*enter_low_power_mode)(int port);
 };
 
+struct usb_retimer_driver {
+	/**
+	 * Initialize USB retimer. This is called every time the MUX is
+	 * access after being put in a fully disconnected state (low power
+	 * mode).
+	 *
+	 * @param port usb port of redriver (not port_addr)
+	 * @param i2c_port i2c port if applicable
+	 * @param addr_flags i2c slave address
+	 * @return EC_SUCCESS on success, non-zero error code on failure.
+	 */
+	int (*init)(int port, int i2c_port, uint16_t addr_flags);
+
+	/**
+	 * Set USB retimer state.
+	 *
+	 * @param port usb port of retimer (not port_addr)
+	 * @param i2c_port i2c port if applicable
+	 * @param addr_flags i2c slave address
+	 * @param gpio_enable GPIO to assert to enable device
+	 * @param gpio_dp_enable GPIO to assert to enable DP
+	 * @param mux_state State to set retimer mode to.
+	 * @return EC_SUCCESS on success, non-zero error code on failure.
+	 */
+	int (*set)(int port, int i2c_port, uint16_t addr_flags,
+		   int gpio_enable, int gpio_dp_enable, mux_state_t mux_state);
+};
+
 /* Flags used for usb_mux.flags */
 #define USB_MUX_FLAG_NOT_TCPC BIT(0) /* TCPC/MUX device used only as MUX */
 
@@ -107,6 +135,13 @@ struct usb_mux {
 
 	/* Mux driver */
 	const struct usb_mux_driver *driver;
+
+	/* USB retimer */
+	const int retimer_i2c_port;
+	const uint16_t retimer_i2c_addr_flags;
+	const int retimer_gpio_enable;
+	const int retimer_gpio_dp_enable;
+	const struct usb_retimer_driver *retimer;
 
 	/**
 	 * Optional method for tuning for USB mux during mux->driver->init().
@@ -131,6 +166,9 @@ extern const struct usb_mux_driver pi3usb30532_usb_mux_driver;
 extern const struct usb_mux_driver ps874x_usb_mux_driver;
 extern const struct usb_mux_driver tcpm_usb_mux_driver;
 extern const struct usb_mux_driver virtual_usb_mux_driver;
+
+/* Supported USB retimer drivers */
+extern const struct usb_retimer_driver pi3dpx1207_usb_retimer;
 
 /* Supported hpd_update functions */
 void virtual_hpd_update(int port, int hpd_lvl, int hpd_irq);

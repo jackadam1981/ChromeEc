@@ -68,6 +68,16 @@ void usb_mux_init(int port)
 		return;
 	}
 
+	if (mux->retimer && mux->retimer->init) {
+		res = mux->retimer->init(port,
+					 mux->retimer_i2c_port,
+					 mux->retimer_i2c_addr_flags);
+		if (res) {
+			CPRINTS("Err: init retimer port(%d): %d", port, res);
+			return;
+		}
+	}
+
 	/* Device is always out of LPM after initialization. */
 	flags[port] &= ~USB_MUX_FLAG_IN_LPM;
 
@@ -114,6 +124,20 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	if (res) {
 		CPRINTS("Err: set mux port(%d): %d", port, res);
 		return;
+	}
+
+	if (mux->retimer && mux->retimer->set) {
+		res = mux->retimer->set(port,
+					mux->retimer_i2c_port,
+					mux->retimer_i2c_addr_flags,
+					mux->retimer_gpio_enable,
+					mux->retimer_gpio_dp_enable,
+					mux_state);
+		if (res) {
+			CPRINTS("Err: set mux retimer port(%d): %d",
+				port, res);
+			return;
+		}
 	}
 
 	if (enable_debug_prints)
