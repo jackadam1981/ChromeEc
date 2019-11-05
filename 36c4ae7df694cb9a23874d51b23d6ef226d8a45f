@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f09f59fb_4550bee6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-05T18:59:42Z",
+      "side": 1,
+      "message": "Since this is a back up plan for it c2d2 doesn\u0027t work, I think having the blue wire is okay.\n\n\nI also made this a servo flag since having the rework is the abnormal case. Some board designs reused the EC_FLASH_ODL signal from servo to hold the RX pin on the UART low (e.g. hatch), and I want those to still work.",
+      "parentUuid": "9c81a9e1_c35321ff",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "36c4ae7df694cb9a23874d51b23d6ef226d8a45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5498c578_214ab8a6",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "36c4ae7df694cb9a23874d51b23d6ef226d8a45f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b978f3_8cd41e60",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-05T18:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5498c578_214ab8a6",
+      "range": {
+        "startLine": 437,
+        "startChar": 15,
+        "endLine": 437,
+        "endChar": 26
+      },
+      "revId": "36c4ae7df694cb9a23874d51b23d6ef226d8a45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
