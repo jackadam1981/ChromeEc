@@ -1095,6 +1095,11 @@ int charge_manager_get_charger_voltage(void)
 	return charge_voltage;
 }
 
+int charge_manager_get_supplier(void)
+{
+	return charge_supplier;
+}
+
 int charge_manager_get_power_limit_uw(void)
 {
 	int current_ma = charge_current;
