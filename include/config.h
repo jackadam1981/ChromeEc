@@ -3798,6 +3798,7 @@
  * Type-C multi-protocol retimer to be used in on-board applications.
  */
 #undef CONFIG_USB_PD_RETIMER_INTEL_BB
+#undef CONFIG_USBC_RETIMER_PI3DPX1207
 
 /*
  * Adds an EC console command to erase the ANX7447 OCM flash.

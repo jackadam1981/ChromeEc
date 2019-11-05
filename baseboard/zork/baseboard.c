@@ -21,6 +21,7 @@
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/retimer/pi3dpx1207.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
@@ -459,6 +460,11 @@ void bc12_interrupt(enum gpio_signal signal)
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.driver = &amd_fp5_usb_mux_driver,
+		.retimer = &pi3dpx1207_usb_retimer,
+		.retimer_i2c_port = I2C_PORT_TCPC0,
+		.retimer_i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
+		.retimer_gpio_enable = IOEX_USB_C0_DATA_EN,
+		.retimer_gpio_dp_enable = GPIO_USB_C0_IN_HPD,
 	},
 	[USBC_PORT_C1] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
