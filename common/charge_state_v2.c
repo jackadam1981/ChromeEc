@@ -27,6 +27,8 @@
 #include "task.h"
 #include "throttle_ap.h"
 #include "timer.h"
+#include "usb_common.h"
+#include "usb_pd.h"
 #include "util.h"
 
 /* Console output macros */
@@ -89,6 +91,15 @@ static int manual_current;  /* Manual current override (-1 = no override) */
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_target_time;
 static timestamp_t precharge_start_time;
+
+#ifdef CONFIG_USB_PD_PREFER_MV
+/* battery charging current stable time */
+static timestamp_t stable_ts;
+/* battery charging current after stable */
+static int stable_current;
+/* battery desired power in mW. */
+static int desired_mw;
+#endif
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 static int base_connected;
@@ -1225,12 +1236,17 @@ static int charge_request(int voltage, int current)
 	/*
 	 * Only update if the request worked, so we'll keep trying on failures.
 	 */
-	if (!r1 && !r2) {
-		prev_volt = voltage;
-		prev_curr = current;
-	}
+	if (r1 || r2)
+		return r1 ? r1 : r2;
 
-	return r1 ? r1 : r2;
+	if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV) &&
+	    (prev_volt != voltage || prev_curr != current))
+		charge_reset_stable_current(CHARGE_STABLE_WAIT_US);
+
+	prev_volt = voltage;
+	prev_curr = current;
+
+	return EC_SUCCESS;
 }
 
 void chgstate_set_manual_current(int curr_ma)
@@ -1540,6 +1556,9 @@ void charger_task(void *u)
 	int battery_critical;
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
+#ifdef CONFIG_USB_PD_PREFER_MV
+	int prev_desired_mw;
+#endif
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
@@ -1564,6 +1583,17 @@ void charger_task(void *u)
 	prev_bp = BP_NOT_INIT;
 	curr.desired_input_current = get_desired_input_current(
 			curr.batt.is_present, info);
+
+#ifdef CONFIG_USB_PD_PREFER_MV
+	/* init battery desired power */
+	desired_mw = curr.batt.desired_current * curr.batt.desired_voltage;
+	/*
+	 * Battery charging current needs time to be stable when a
+	 * new charge happens. Start the timer so we can evaluate the
+	 * stable current when timeout.
+	 */
+	charge_reset_stable_current(CHARGE_STABLE_WAIT_US);
+#endif
 
 	battery_level_shutdown = board_set_battery_level_shutdown();
 
@@ -1662,6 +1692,12 @@ void charger_task(void *u)
 		}
 
 		notify_host_of_over_current(&curr.batt);
+
+#ifdef CONFIG_USB_PD_PREFER_MV
+		/* battery current stable now, saves the current. */
+		if (get_time().val > stable_ts.val && curr.batt.current >= 0)
+			stable_current = curr.batt.current;
+#endif
 
 		/*
 		 * Now decide what we want to do about it. We'll normally just
@@ -1955,6 +1991,25 @@ wait_for_it:
 				sleep_usec = CHARGE_POLL_PERIOD_CHARGE;
 			}
 		}
+
+#ifdef CONFIG_USB_PD_PREFER_MV
+		prev_desired_mw = board_get_desired_mw();
+
+		/* Update desired power */
+		if (curr.state != ST_CHARGE ||
+		    curr.batt.state_of_charge < BATTERY_CV_PERCENT)
+			desired_mw = curr.batt.desired_current *
+				     curr.batt.desired_voltage / 1000;
+		else if (curr.batt.state_of_charge >= BATTERY_CV_PERCENT &&
+			 stable_current != CHARGE_CURRENT_UNINITIALIZED)
+			desired_mw = curr.batt.voltage * stable_current / 1000;
+
+		/* If the desired power changes, re-evaluate the PDO. */
+		if (prev_desired_mw != board_get_desired_mw() &&
+		    charge_manager_get_supplier() == CHARGE_SUPPLIER_PD)
+			pd_set_new_power_request(
+				charge_manager_get_active_charge_port());
+#endif
 
 		/* Adjust for time spent in this loop */
 		sleep_usec -= (int)(get_time().val - curr.ts.val);
@@ -2258,6 +2313,44 @@ int charge_set_input_current_limit(int ma, int mv)
 	return charger_set_input_current(ma);
 #endif
 }
+
+#ifdef CONFIG_USB_PD_PREFER_MV
+int charge_get_desired_mw(void)
+{
+	return desired_mw;
+}
+
+int board_get_desired_mw(void)
+{
+	/*
+	 * Ideally, the system consuming power could be evaluated by
+	 * "IBus * VBus - battery charging power". But in practice,
+	 * most charger drivers don't implement IBUS ADC reading,
+	 * so we use system PLT instead as an alterntaive approach.
+	 */
+	return pd_pref_config.plt_mw + charge_get_desired_mw();
+}
+
+int charge_get_stable_current(void)
+{
+	return stable_current;
+}
+
+void charge_set_stable_current(int ma)
+{
+	stable_current = ma;
+}
+
+void charge_reset_stable_current(uint64_t us)
+{
+	timestamp_t now = get_time();
+
+	if (stable_ts.val < now.val + us)
+		stable_ts.val = now.val + us;
+
+	stable_current = CHARGE_CURRENT_UNINITIALIZED;
+}
+#endif
 
 /*****************************************************************************/
 /* Host commands */
