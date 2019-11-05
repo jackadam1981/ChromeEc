@@ -22,6 +22,30 @@
       "revId": "66e85e4fa2b8406bc673b49bf8f5e5f7ea1f2772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d29150_27083466",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-05T22:39:03Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ve mentioned this before, but I guess never filed an actual bug. (https://crbug.com/919756#c4) Let me actually file a bug so we can end this.",
+      "parentUuid": "0fdbe6b9_14392899",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "66e85e4fa2b8406bc673b49bf8f5e5f7ea1f2772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
