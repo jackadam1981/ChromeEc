@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "16c4d8a1_181bba21",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-05T21:42:49Z",
+      "side": 1,
+      "message": "why not just send the required pattern to set the white lable board id fields?",
+      "revId": "b86892d8fd13520efa0cc99e23eae861fe5d4abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d020dd23_d5f81981",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
