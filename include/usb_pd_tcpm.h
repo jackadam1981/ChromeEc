@@ -332,6 +332,13 @@ struct tcpm_drv {
 	 * @param enable FRS enable (true) disable (false)
 	 */
 	 void (*set_frs_enable)(int port, int enable);
+
+	/**
+	 * TCPC discard Tx PHY messages
+	 *
+	 * @param port Type-C port number
+	 */
+	 void (*set_tx_discard)(int port);
 };
 
 /*

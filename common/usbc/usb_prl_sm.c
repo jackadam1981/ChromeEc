@@ -464,7 +464,10 @@ static void prl_tx_phy_layer_reset_entry(const int port)
 	 || IS_ENABLED(CONFIG_USB_TYPEC_VPD)) {
 		vpd_rx_enable(1);
 	} else {
-		tcpm_init(port);
+		if (IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX))
+			tcpm_set_tx_discard(port);
+		else
+			tcpm_init(port);
 		tcpm_set_rx_enable(port, 1);
 	}
 }

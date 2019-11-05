@@ -415,4 +415,14 @@ static inline void tcpm_set_frs_enable(int port, int enable)
 		tcpc->set_frs_enable(port, enable);
 }
 
+/**
+ * TCPC discard Tx PHY messages
+ *
+ * @param port Type-C port number
+ */
+static inline void tcpm_set_tx_discard(int port)
+{
+	tcpc_config[port].drv->set_tx_discard(port);
+}
+
 #endif
