@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9b63db7_f61a66b0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-11-05T03:30:45Z",
+      "side": 1,
+      "message": "sam, does the new stack actually implement pd_suspend?\n\nwhat we need is a blocking call to stop the task or state machine\nso we can get exclusive access to the TCPC to update its\nfirmware.",
+      "range": {
+        "startLine": 540,
+        "startChar": 4,
+        "endLine": 540,
+        "endChar": 18
+      },
+      "revId": "d42af76875f018fee070b47cd5faefc34a94db2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
