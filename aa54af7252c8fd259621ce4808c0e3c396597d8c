@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b62526_df67c5e9",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-05T21:42:09Z",
+      "side": 1,
+      "message": "why do you need a separate vendor command? You can change gsctool to send the necessary pattern when the user requests \u0027whitelabel\u0027",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 35
+      },
+      "revId": "aa54af7252c8fd259621ce4808c0e3c396597d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
