@@ -222,6 +222,9 @@ enum ec_error_list {
 	/* Sometimes operation is expected to have to be repeated. */
 	EC_ERROR_TRY_AGAIN = 26,
 
+	/* The requested item was not found. */
+	EC_ERROR_NOT_FOUND = 27,
+
 	/* Verified boot errors */
 	EC_ERROR_VBOOT_SIGNATURE = 0x1000, /* 4096 */
 	EC_ERROR_VBOOT_SIG_MAGIC = 0x1001,
