@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "875e857b_2d136156",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T17:50:34Z",
+      "side": 1,
+      "message": "Can you fix +80?",
+      "range": {
+        "startLine": 68,
+        "startChar": 62,
+        "endLine": 68,
+        "endChar": 63
+      },
+      "revId": "f158b95b1204f45374b52f224659d5fef08644bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d95c565b_e87e2ec0",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T17:50:34Z",
+      "side": 1,
+      "message": "nit: we don\u0027t use curly braces for a single execute line in if statement.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "f158b95b1204f45374b52f224659d5fef08644bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
