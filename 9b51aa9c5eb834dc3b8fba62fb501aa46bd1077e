@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "203a8971_48f80fc7",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-05T20:51:55Z",
+      "side": 1,
+      "message": "I don\u0027t know if we should hard code this to make sure 0x4000 is erased or just set it in the cr50-set-board-id script.",
+      "range": {
+        "startLine": 206,
+        "startChar": 25,
+        "endLine": 206,
+        "endChar": 31
+      },
+      "revId": "9b51aa9c5eb834dc3b8fba62fb501aa46bd1077e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
