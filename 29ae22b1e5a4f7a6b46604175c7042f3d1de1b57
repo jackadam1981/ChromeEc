@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b42d084_916f7539",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "This has an external pullup, no need to enable the internal one.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022ecdc4_c21d1fc8",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "Yes, these should all be connected to power_signal_interrupt since I intend to declare them as power signals.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83ebf9e_c7a03b4b",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "There is no such signal. Is this supposed to be EN_PP5000_USB_VBUS?",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c6c926b_3b696100",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "Push-pull output, default low.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0e1896_f32ace75",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "Push-pull output, default low.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ca2f64_0bffa156",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "GPIO_OUT_LOW; the regulator has a weak pulldown on this signal.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd147a7_2045e45a",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "Analog inputs are declared as alternate function only. Same for temperate sensors below.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf22887_1b2ec4ea",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "This needs to be a push-pull output and default low, since there\u0027s a weak pulldown in the load switch and the EC needs to assume at startup that it\u0027s receiving barrel jack power (otherwise it\u0027ll turn off its own power).",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee86bd3_ffa3d3ae",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "Push-pull output, this doesn\u0027t have a pull-up.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbaeeb31_9a2c6f70",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "PWM outputs don\u0027t get declared as GPIOs, just alternate functions. Same for LEDs above.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8004ce_cc25727a",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "I2C4 unused, safe to omit.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eddfd0e0_f87a26de",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "Also unused, safe to omit.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41093968_d029d3ce",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "PWM6 and TA2 aren\u0027t used, so I think we can omit them.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071905ef_9a4a6358",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "ADC3 isn\u0027t used, I think we can omit it. (0x3A)",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28789811_d7992f7d",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-05T23:32:06Z",
+      "side": 1,
+      "message": "ADC7/GPIOE1 should have mask 0x02.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
