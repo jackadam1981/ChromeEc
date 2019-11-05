@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fdbe6b9_14392899",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-05T21:38:45Z",
+      "side": 1,
+      "message": "Why don\u0027t we put these and some functions above in common/ and let boards override them as needed?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "66e85e4fa2b8406bc673b49bf8f5e5f7ea1f2772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
