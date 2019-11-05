@@ -741,7 +741,6 @@ void tc_event_check(int port, int evt)
 	/* Update the cc variables if there was a change */
 	if (evt & PD_EVENT_CC) {
 		enum tcpc_cc_voltage_status cc1, cc2;
-
 		tcpm_get_cc(port, &cc1, &cc2);
 		if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
 			tc[port].cc_state = pd_get_cc_state(cc1, cc2);
@@ -2159,12 +2158,18 @@ static void tc_attached_src_entry(const int port)
 	if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
-
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
 		 * data role / usb mux connections.
 		 */
 	} else {
+		/*
+		 * Set cc connection line for later TCPC turning on Vconn
+		 * on disconnection cc line.
+		 */
+		tc[port].polarity = (tc[port].cc1 != TYPEC_CC_VOLT_RD);
+		set_polarity(port, tc[port].polarity);
+
 		/*
 		 * Start sourcing Vconn before Vbus to ensure
 		 * we are within USB Type-C Spec 1.4 tVconnON
@@ -2182,9 +2187,6 @@ static void tc_attached_src_entry(const int port)
 				usb_mux_set(port, TYPEC_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
-
-		tc[port].polarity = (tc[port].cc1 != TYPEC_CC_VOLT_RD);
-		set_polarity(port, tc[port].polarity);
 
 		/*
 		 * Initial data role for sink is DFP
