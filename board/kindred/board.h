@@ -27,6 +27,10 @@
 /* Keyboard features */
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
+/* support factory keyboard test */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
 
 /* Sensors */
 /* BMI160 Base accel/gyro */
@@ -115,7 +119,6 @@
 #define GPIO_EN_PP5000		GPIO_EN_PP5000_A
 
 #ifndef __ASSEMBLER__
-
 #include "gpio_signal.h"
 #include "registers.h"
 
