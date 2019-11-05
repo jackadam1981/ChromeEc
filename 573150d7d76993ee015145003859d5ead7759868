@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6f76ed3_3e7f75fb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-05T20:08:24Z",
+      "side": 1,
+      "message": "if only a single debounce doesn\u0027t work, then we can set line 750 to\n\ntc[port].next_cc_poll_time \u003d get_time().val + (100 * MSEC)\n\ninstead of disabling it there.\n\nOnce of these two solution should work",
+      "range": {
+        "startLine": 761,
+        "startChar": 3,
+        "endLine": 762,
+        "endChar": 33
+      },
+      "revId": "573150d7d76993ee015145003859d5ead7759868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
