@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f72e5ccb_8b960810",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4410,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-05T13:49:51Z",
+      "side": 1,
+      "message": "the old code implies the GPIO may need to be set as well as possibly the tcpc or ppc.  Has this changed to where only one is needed, in all cases?",
+      "revId": "fa3d8a52d8c2480473e8938c7b4f301029eca710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
