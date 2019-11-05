@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "55c89875_88502339",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-05T00:51:32Z",
+      "side": 1,
+      "message": "this function should be consolidated with the one in  chip/g/dcrypto/dcrypto_bn.c.\n\nthe fact that called functions have different numbers of parameters should not be problem, you can use a wrapper for that.",
+      "parentUuid": "07559c88_b42c463e",
+      "revId": "91af930ff004e0adbfaf1cd584944aeff0442017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaa0c242_ffb19988",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 21
