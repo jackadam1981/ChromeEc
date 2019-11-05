@@ -134,4 +134,47 @@ enum critical_shutdown board_critical_shutdown_check(
  */
 uint8_t board_set_battery_level_shutdown(void);
 
+/**
+ * Return battery desired power.
+ */
+int charge_get_desired_mw(void);
+
+/**
+ * Return battery desired power plus system's PLT power.
+ */
+int board_get_desired_mw(void);
+
+/* Battery constant voltage level */
+#ifndef BATTERY_CV_LEVEL
+#define BATTERY_CV_LEVEL 70
+#endif
+
+/* time to wait for battery current stable */
+#ifndef CHARGE_STABLE_WAIT_US
+#define CHARGE_STABLE_WAIT_US (10 * SECOND)
+#endif
+
+/**
+ * Get the stable battery charging current. The current will be
+ * CHARGE_CURRENT_UNINITIALIZED if not yet stable.
+ *
+ * @return stable battery charging current in mA
+ */
+int charge_get_stable_current(void);
+
+/**
+ * Set the stable current.
+ *
+ * @param ma: battery charging current in mA
+ */
+void charge_set_stable_current(int ma);
+
+/**
+ * Reset the stable current counter, and resample the current.  Calling this
+ * function would set stable_current to CHARGE_CURRENT_UNINITIALIZED.
+ *
+ * @param us: evaluating the stable current after us time.
+ */
+void charge_reset_stable_current(uint64_t us);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
