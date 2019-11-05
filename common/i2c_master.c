@@ -1169,6 +1169,23 @@ static int command_i2cxfer(int argc, char **argv)
 			rv = i2c_write16(port, addr_flags,
 					 offset, v);
 
+	} else if (strcasecmp(argv[1], "wmod") == 0) {
+		/* 8-bit write on a 32 register device that does not
+		 * understand register offset
+		 */
+		uint8_t buff[32];
+
+		if (argc < 6 || offset < 0 || offset >= 32)
+			return EC_ERROR_PARAM5;
+
+		rv = i2c_xfer(port, addr_flags,
+			      NULL, 0, buff, 32);
+		if (!rv) {
+			buff[offset] = v;
+			rv = i2c_xfer(port, addr_flags,
+				      buff, offset + 1, NULL, 0);
+		}
+
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -1176,7 +1193,7 @@ static int command_i2cxfer(int argc, char **argv)
 	return rv;
 }
 DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
-			"r/r16/rlen/w/w16 port addr offset [value | len]",
+			"r/r16/rlen/w/w16/wmod port addr offset [value | len]",
 			"Read write I2C");
 #endif
 
