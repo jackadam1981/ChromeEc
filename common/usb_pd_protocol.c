@@ -9,6 +9,7 @@
 #include "board.h"
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "charge_state_v2.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -1536,6 +1537,9 @@ static int pd_send_request_msg(int port, int always_send_request)
 	if (rdo & RDO_CAP_MISMATCH)
 		CPRINTF(" Mismatch");
 	CPRINTF("\n");
+
+	if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV))
+		charge_reset_stable_current(CHARGE_STABLE_WAIT_US);
 
 	pd[port].curr_limit = curr_limit;
 	pd[port].supply_voltage = supply_voltage;
