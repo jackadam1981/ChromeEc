@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "36cbac5c_44c48018",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-05T18:52:13Z",
+      "side": 1,
+      "message": "When I first added, USB-PD I didn\u0027t have CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT defined.  Without this option, the charger code has dependency on the ADC so I created this CL.  I\u0027ll rebase to split this CL into a separate stack.",
+      "parentUuid": "de1c2bb6_9b173025",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9db95200_128df7e6",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 3
