@@ -159,6 +159,13 @@ static int is_connected(int port)
 
 	return pd_is_connected(port);
 }
+#else
+static int is_connected(int port)
+{
+	if (port < CHARGE_PORT_COUNT)
+		return 1;
+	return 0;
+}
 #endif /* !TEST_BUILD */
 
 #ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
@@ -190,6 +197,8 @@ static void charge_manager_init(void)
 	int i, j;
 
 	for (i = 0; i < CHARGE_PORT_COUNT; ++i) {
+		if (!is_connected(i))
+			continue;
 		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j) {
 			available_charge[j][i].current =
 				CHARGE_CURRENT_UNINITIALIZED;
@@ -221,14 +230,17 @@ static int charge_manager_is_seeded(void)
 	if (is_seeded)
 		return 1;
 
-	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < CHARGE_PORT_COUNT; ++j)
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
+		for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
+			if (!is_connected(j))
+				continue;
 			if (available_charge[i][j].current ==
 			    CHARGE_CURRENT_UNINITIALIZED ||
 			    available_charge[i][j].voltage ==
 			    CHARGE_VOLTAGE_UNINITIALIZED)
 				return 0;
-
+		}
+	}
 	is_seeded = 1;
 	return 1;
 }
@@ -242,7 +254,7 @@ static int charge_manager_is_seeded(void)
  */
 static int charge_manager_get_source_current(int port)
 {
-	if (!is_pd_port(port))
+	if (!is_pd_port(port) || !is_connected(port))
 		return 0;
 
 	switch (source_port_rp[port]) {
@@ -263,6 +275,10 @@ static enum charge_supplier find_supplier(int port, enum charge_supplier sup,
 					  int min_cur)
 {
 	int i;
+
+	if (is_pd_port(port) && !is_connected(port))
+		return sup;
+
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
 		if (available_charge[i][port].current <= min_cur ||
 		    available_charge[i][port].voltage <= 0)
@@ -295,6 +311,9 @@ static void charge_manager_fill_power_info(int port,
 	struct ec_response_usb_pd_power_info *r)
 {
 	int sup = CHARGE_SUPPLIER_NONE;
+
+	if (is_pd_port(port) && !is_connected(port))
+		return;
 
 	/* Determine supplier information to show. */
 	if (port == charge_port) {
@@ -459,7 +478,7 @@ void charge_manager_save_log(int port)
 	uint16_t flags = 0;
 	struct ec_response_usb_pd_power_info pinfo;
 
-	if (!is_pd_port(port))
+	if (!is_pd_port(port) || !is_connected(port))
 		return;
 
 	save_log[port] = 0;
@@ -486,7 +505,7 @@ void charge_manager_save_log(int port)
  */
 static void charge_manager_switch_to_source(int port)
 {
-	if (!is_pd_port(port))
+	if (!is_pd_port(port) || !is_connected(port))
 		return;
 
 	/* If connected to dual-role device, then ask for a swap */
@@ -505,6 +524,9 @@ static int charge_manager_get_ceil(int port)
 {
 	int ceil = CHARGE_CEIL_NONE;
 	int val, i;
+
+	if (is_pd_port(port) && !is_connected(port))
+		return ceil;
 
 	for (i = 0; i < CEIL_REQUESTOR_COUNT; ++i) {
 		val = charge_ceil[port][i];
@@ -544,6 +566,10 @@ static void charge_manager_get_best_charge_port(int *new_port,
 		 */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
 			for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
+				/* Skip this port if it is not connected. */
+				if (!is_connected(j))
+					continue;
+
 				/*
 				 * Skip this supplier if there is no
 				 * available charge.
@@ -814,6 +840,9 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	int i;
 	int clear_override = 0;
 
+	if (!is_connected(port))
+		return;
+
 	/* Determine if this is a change which can affect charge status */
 	switch (change) {
 	case CHANGE_CHARGE:
@@ -982,7 +1011,7 @@ void charge_manager_update_charge(int supplier,
 
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
 {
-	if (!is_pd_port(port))
+	if (!is_pd_port(port) || !is_connected(port))
 		return;
 
 	/* Ignore when capability is unchanged */
@@ -1008,6 +1037,9 @@ void charge_manager_leave_safe_mode(void)
 
 void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 {
+	if (is_pd_port(port) && !is_connected(port))
+		return;
+
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
@@ -1017,6 +1049,9 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	if (is_pd_port(port) && !is_connected(port))
+		return;
+
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.
