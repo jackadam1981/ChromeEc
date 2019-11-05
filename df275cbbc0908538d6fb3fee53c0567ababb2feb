@@ -792,6 +792,30 @@
     },
     {
       "key": {
+        "uuid": "de95eed9_2471658e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-05T17:05:25Z",
+      "side": 1,
+      "message": "Many of the typec/pd states use a fine resolution timer. For example, tHardResetComplete timer is 4 to 5ms. And sure we can adjust the timeout values depending on which state we\u0027re in but it seem like we are trading one implementation for another without much gain. I think we should revert the event driven CC line sampling and keep the timeout at the const 5ms. This implementation has been used for over a year without problems.",
+      "parentUuid": "0bd7d02b_55f43afe",
+      "range": {
+        "startLine": 774,
+        "startChar": 26,
+        "endLine": 774,
+        "endChar": 68
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05c143b7_6f8a7ad9",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
