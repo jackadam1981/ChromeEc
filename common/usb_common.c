@@ -8,12 +8,19 @@
  * and the new (i.e. usb_sm_*) USB-C PD stacks.
  */
 
-#include "common.h"
 #include "charge_state.h"
+#include "common.h"
+#include "console.h"
 #include "task.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+
+#ifndef PD_DEFAULT_PREFER_MV
+#define PD_DEFAULT_PREFER_MV 5000
+#endif
+
+static int pd_prefer_mv = PD_DEFAULT_PREFER_MV;
 
 int usb_get_battery_soc(void)
 {
@@ -108,6 +115,16 @@ enum pd_cc_states pd_get_cc_state(
 	return PD_CC_NONE;
 }
 
+int pd_get_prefer_voltage(void)
+{
+	return pd_prefer_mv;
+}
+
+void pd_set_prefer_voltage(int mv)
+{
+	pd_prefer_mv = mv;
+}
+
 /*
  * Zinger implements a board specific usb policy that does not define
  * PD_MAX_VOLTAGE_MV and PD_OPERATING_POWER_MW. And in turn, does not
@@ -120,6 +137,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	int i, uw, mv;
 	int ret = 0;
 	int cur_uw = 0;
+	int has_preferred_pdo, has_desired_watt = 0;
 	int prefer_cur;
 
 	int __attribute__((unused)) cur_mv = 0;
@@ -155,17 +173,44 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
 		prefer_cur = 0;
 
-		/* Apply special rules in case of 'tie' */
+		/* Apply special rules in favor of voltage  */
 		if (IS_ENABLED(PD_PREFER_LOW_VOLTAGE)) {
 			if (uw == cur_uw && mv < cur_mv)
 				prefer_cur = 1;
 		} else if (IS_ENABLED(PD_PREFER_HIGH_VOLTAGE)) {
 			if (uw == cur_uw && mv > cur_mv)
 				prefer_cur = 1;
+		} else if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV)) {
+			const int prefer_mv = pd_get_prefer_voltage();
+			int desired_uw = board_get_desired_mw() * 1000;
+
+			/*
+			 * Pick if the PDO provides more than desired.
+			 * TODO(b:141170279): Add support for prefer boost.
+			 * Current PDO select strategy is perfer bulk.
+			 */
+			if (uw >= desired_uw) {
+				has_desired_watt = 1;
+				/* pick if previous pick is under desired watt */
+				if (cur_uw < desired_uw)
+					prefer_cur = 1;
+				/* pick the smallest mv above prefer_mv */
+				else if (mv >= prefer_mv && mv < cur_mv)
+					prefer_cur = 1;
+				/* pick if */
+				else if (cur_mv < prefer_mv && mv > cur_mv)
+					prefer_cur = 1;
+			} else if (!has_desired_watt && uw > cur_uw) {
+				prefer_cur = 1;
+			}
 		}
 
 		/* Prefer higher power, except for tiebreaker */
-		if (uw > cur_uw || prefer_cur) {
+		has_preferred_pdo =
+			prefer_cur ||
+			(IS_ENABLED(CONFIG_USB_PD_PREFER_MV) ? 0 : uw > cur_uw);
+
+		if (has_preferred_pdo) {
 			ret = i;
 			cur_uw = uw;
 			cur_mv = mv;

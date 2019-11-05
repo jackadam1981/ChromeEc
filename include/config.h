@@ -3864,6 +3864,15 @@
 /* Use DAC as reference for comparator at 850mV. */
 #undef CONFIG_PD_USE_DAC_AS_REF
 
+/*
+ * Request for a PDO which voltage is closest to PD_DEFAULT_PREFER_MV for sink.
+ * This config in theory could achieve better charging efficiency.  Note this
+ * may not always pick the PD_DEFAULT_PREFER_MV if available (if the PDO's
+ * power if not sufficient for the system), it will pick second choice untill
+ * the system desired power is low enough to be charged by the designed PDO.
+ */
+#undef CONFIG_USB_PD_PREFER_MV
+
 /* Type-C VCONN Powered Device */
 #undef CONFIG_USB_TYPEC_VPD
 

@@ -1476,6 +1476,22 @@ void pd_set_max_voltage(unsigned mv);
 unsigned pd_get_max_voltage(void);
 
 /**
+ * Get the preferred PD voltage
+ *
+ * Preferred PD voltage is desiend to be battery's voltage_max to increase
+ * charging efficiency.
+ *
+ * @return preferred PD voltage
+ */
+int pd_get_prefer_voltage(void);
+
+/**
+ * Set the preferred PD voltage
+ * @param preferred voltae in mV
+ */
+void pd_set_prefer_voltage(int mv);
+
+/**
  * Check if this board supports the given input voltage.
  *
  * @mv input voltage
