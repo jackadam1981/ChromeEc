@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34424d05_ac9a8a0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-05T21:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c11f3d1c_691e4581",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "fd8c6ce725024143c419cde82aaefa65de1e3832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da74d2c4_b27ba9e3",
         "filename": "chip/stm32/gpio.c",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "fd8c6ce725024143c419cde82aaefa65de1e3832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66414801_442ff472",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-05T21:06:55Z",
+      "side": 1,
+      "message": "Yes. I should have seen that coming.",
+      "parentUuid": "da74d2c4_b27ba9e3",
+      "revId": "fd8c6ce725024143c419cde82aaefa65de1e3832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
