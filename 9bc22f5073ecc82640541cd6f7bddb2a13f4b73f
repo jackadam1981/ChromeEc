@@ -22,6 +22,30 @@
       "revId": "9bc22f5073ecc82640541cd6f7bddb2a13f4b73f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cacb16_4a144134",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-05T23:53:29Z",
+      "side": 1,
+      "message": "I added the comment to board_id.h. Is this ok?",
+      "parentUuid": "46f08e52_3f1021f0",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "9bc22f5073ecc82640541cd6f7bddb2a13f4b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
