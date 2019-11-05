@@ -806,4 +806,15 @@ int mt6370_led_set_pwm_frequency(enum mt6370_led_index index,
 				 enum mt6370_led_pwm_freq freq);
 #endif
 
+enum rt946x_adc_in_sel {
+	RT946X_ADC_VBUS_DIV5 = 1,
+	RT946X_ADC_VBUS_DIV2,
+	MT6370_ADC_TS_BAT = 6,
+	MT6370_ADC_IBUS = 8,
+	MT6370_ADC_TEMP_JC = 12,
+	MT6370_ADC_MAX,
+};
+
+int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val);
+
 #endif /* __CROS_EC_RT946X_H */
