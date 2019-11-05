@@ -3901,6 +3901,8 @@
 #undef CONFIG_USBC_PPC_SN5S330
 #undef CONFIG_USBC_PPC_SYV682X
 
+#undef CONFIG_USBC_RETIMER_PI3DPX1207
+
 /* PPC is capable of gating the SBU lines. */
 #undef CONFIG_USBC_PPC_SBU
 
