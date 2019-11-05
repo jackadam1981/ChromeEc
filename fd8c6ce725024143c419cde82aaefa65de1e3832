@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c11f3d1c_691e4581",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-05T20:44:44Z",
+      "side": 1,
+      "message": "unconnected?",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "fd8c6ce725024143c419cde82aaefa65de1e3832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da74d2c4_b27ba9e3",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-05T20:44:44Z",
+      "side": 1,
+      "message": "Can you split this into the stm32 change and another where you actually enable it for hatch_fp?",
+      "revId": "fd8c6ce725024143c419cde82aaefa65de1e3832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
