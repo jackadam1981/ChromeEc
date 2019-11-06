@@ -6,9 +6,9 @@
 
 /* Interrupts */
 GPIO_INT(FPS_INT,         PIN(A, 0), GPIO_INT_RISING, fps_event)
+GPIO_INT(PCH_SLP_S0_L,    PIN(A, 3), GPIO_INT_BOTH, slp_event)
 GPIO_INT(SPI1_NSS,        PIN(A, 4), GPIO_INPUT, spi_event)
 
-GPIO_INT(PCH_SLP_S0_L,    PIN(B, 0), GPIO_INT_BOTH, slp_event)
 GPIO_INT(PCH_SLP_S3_L,    PIN(B, 1), GPIO_INT_BOTH, slp_event)
 GPIO(PCH_SLP_S4_L,        PIN(B, 2), GPIO_INPUT)
 GPIO(PCH_SLP_SUS_L,       PIN(B, 5), GPIO_INPUT)
@@ -28,8 +28,8 @@ GPIO(USER_PRES_L,         PIN(B, 9),  GPIO_ODR_HIGH)
  * ("AN4365") section 1.2.6 and STM32F412 reference manual section 7.3.12.
  */
 GPIO(UNUSED_PA2,            PIN(A, 2),  GPIO_ANALOG)
-GPIO(UNUSED_PA3,            PIN(A, 3),  GPIO_ANALOG)
 GPIO(UNUSED_PA8,            PIN(A, 8),  GPIO_ANALOG)
+GPIO(UNUSED_PB0,            PIN(B, 0),  GPIO_ANALOG)
 GPIO(UNUSED_PC13,           PIN(C, 13), GPIO_ANALOG)
 GPIO(UNUSED_PC14,           PIN(C, 14), GPIO_ANALOG)
 GPIO(UNUSED_PC15,           PIN(C, 15), GPIO_ANALOG)
