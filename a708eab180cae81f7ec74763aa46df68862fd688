@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "829b4da9_676f2cec",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T19:23:00Z",
+      "side": 1,
+      "message": "These are interrupts, so they\u0027ll need to use the GPIO_INT(...).",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "a708eab180cae81f7ec74763aa46df68862fd688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a90c920_779aa753",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T19:23:00Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary to declare as we have it set up in the ALTERNATE(...) macro.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 55
+      },
+      "revId": "a708eab180cae81f7ec74763aa46df68862fd688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
