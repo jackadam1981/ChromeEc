@@ -22,6 +22,30 @@
       "revId": "4914e17d411c89a19f2025bdb4a2ff7191354639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c9a102_6bce78aa",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T22:51:08Z",
+      "side": 1,
+      "message": "I updated the values from Kindred. I agree these might change, but I figured kindred had the latest values.",
+      "parentUuid": "ff15db17_3ae5886e",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "4914e17d411c89a19f2025bdb4a2ff7191354639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
