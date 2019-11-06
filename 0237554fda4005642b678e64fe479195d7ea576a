@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c66bb81a_8f44dbb0",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-06T19:37:12Z",
+      "side": 1,
+      "message": "where is this defined?",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "0237554fda4005642b678e64fe479195d7ea576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935886ad_9d909ccc",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-06T19:37:12Z",
+      "side": 1,
+      "message": "does this not have to be updated? You want to go for max size every time?",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "0237554fda4005642b678e64fe479195d7ea576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
