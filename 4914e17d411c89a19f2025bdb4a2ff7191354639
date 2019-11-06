@@ -46,6 +46,30 @@
       "revId": "4914e17d411c89a19f2025bdb4a2ff7191354639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dc02d55_d38cb04d",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T23:45:18Z",
+      "side": 1,
+      "message": "The form factors are different, so I\u0027d expect these values to be different as thermal limits are probably different. At this stage, the exact value doesn\u0027t matter too much though.",
+      "parentUuid": "07c9a102_6bce78aa",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "4914e17d411c89a19f2025bdb4a2ff7191354639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
