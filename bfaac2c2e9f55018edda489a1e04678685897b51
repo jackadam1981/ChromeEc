@@ -16,6 +16,24 @@
       "revId": "bfaac2c2e9f55018edda489a1e04678685897b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e94dcc_eec2ffb3",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-11-06T08:14:43Z",
+      "side": 0,
+      "message": "As I know, there is no 192KB and 384KB for the it8xxx1 or it8xxx2.",
+      "parentUuid": "e6db1757_579f3470",
+      "revId": "bfaac2c2e9f55018edda489a1e04678685897b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
