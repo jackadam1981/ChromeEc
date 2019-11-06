@@ -48,4 +48,8 @@ void lpc_kbc_ibf_interrupt(void);
 void lpc_kbc_obe_interrupt(void);
 #endif
 
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+extern void switch_plug_out_type(int port);
+#endif
+
 #endif /* __CROS_EC_INTC_H */

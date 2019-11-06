@@ -611,16 +611,88 @@ static void it83xx_tcpm_set_tx_phy_reset(int port)
 	IT83XX_USBPD_PEPDRSR(port) |= USBPD_REG_MASK_TX_MSG_DISCARD;
 }
 
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+void switch_plug_out_type(int port)
+{
+	int cc1, cc2;
+
+	/* Reading our cc assert for checking if we are source or sink role */
+	cc1 = USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) >> 1;
+	cc2 = USBPD_GET_CC2_PULL_REGISTER_SELECTION(port) >> 3;
+
+
+	if ((cc1 == TYPEC_CC_RP) || (cc2 == TYPEC_CC_RP)) {
+		/*
+		 * Reading both cc volt determine which kind of partner
+		 * plug out (audio/debug or sink) should we detect.
+		 */
+		IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_SELECT;
+		it83xx_tcpm_get_cc(port, (enum tcpc_cc_voltage_status *) &cc1,
+					 (enum tcpc_cc_voltage_status *) &cc2);
+		if ((cc1 == TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD) ||
+		    (cc1 == TYPEC_CC_VOLT_RA && cc2 == TYPEC_CC_VOLT_RA))
+			/*
+			 * We're source, switch to detect audio/debug plug out
+			 */
+			IT83XX_USBPD_TCDCR(port) |=
+					USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+		else
+			/* We're source, switch to detect sink plug out */
+			IT83XX_USBPD_TCDCR(port) &=
+					~USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+	} else
+		/*
+		 * We're sink, disable plug in/out interrupt.
+		 * Because plug out is by TCPM polling Vbus.
+		 */
+		IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+}
+
+static void it83xx_tcpm_plug_in_out_isr_enable(int port, int enable)
+{
+	if (enable) {
+		/*
+		 * PRS/FRS, when tx/rx second PS_RDY
+		 * 1) We swap from SRC to new SNK: This won't enable detect
+		 *    type-c plug in/out interrupt, because plug out is by
+		 *    TCPM polling Vbus.
+		 * 2) We swap from SNK to new SRC: This will enable detect
+		 *    SNK plug out interrupt.
+		 */
+		/* Clear type-c device plug in/out detect interrupt */
+		IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+		switch_plug_out_type(port);
+		/* Enable detect type-c plug in/out interrupt */
+		IT83XX_USBPD_TCDCR(port) &=
+				~USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+	} else
+		/*
+		 * PRS/FRS, when tx/rx accept
+		 * This will disable detect type-c plug in/out interrupt.
+		 */
+		/* Disable detect type-c plug in/put interrupt */
+		IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+}
+#endif
+
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
-#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
-	/*
-	 * Enable detect type-c plug in interrupt, since the pd task has
-	 * detected a type-c physical disconnected.
-	 */
-	IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
-#endif //IT83XX_INTC_PLUG_IN_SUPPORT
+
+	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_SUPPORT))
+		/*
+		 * Enable detect type-c plug in interrupt, since the pd task
+		 * has detected a type-c physical disconnected.
+		 */
+		IT83XX_USBPD_TCDCR(port) &=
+				~USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+
+	if (IS_ENABLED(IT83XX_INTC_PLUG_OUT_SUPPORT))
+		/* Switch to detect type-c plug in */
+		IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_IN_OUT_SELECT;
+
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }
@@ -641,4 +713,5 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
 	.set_tx_phy_reset	= &it83xx_tcpm_set_tx_phy_reset,
+	.plug_in_out_isr_enable	= &it83xx_tcpm_plug_in_out_isr_enable,
 };
