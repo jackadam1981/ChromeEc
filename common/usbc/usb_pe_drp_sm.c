@@ -3773,7 +3773,8 @@ static void pe_vdm_acked_entry(int port)
 		}
 	}
 
-	if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE)) {
+	if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE) &&
+	    tc_is_vconn_src(port)) {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE);
 		set_state_pe(port, PE_SRC_VDM_IDENTITY_REQUEST);
 	} else if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE)) {
