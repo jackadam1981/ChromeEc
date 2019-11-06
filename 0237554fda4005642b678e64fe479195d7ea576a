@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3416f5ce_86bc95e4",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-06T21:11:21Z",
+      "side": 1,
+      "message": "in this case these patches need to be stacked or this patch\u0027s description needs to have a cl-depend clause to make sure that the other patch is merged first.\n\nAs submitted for review this is a stand alone patch, but it would not pass compilation.",
+      "parentUuid": "6868615a_93bca79b",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "0237554fda4005642b678e64fe479195d7ea576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "935886ad_9d909ccc",
         "filename": "chip/g/dcrypto/hmac.c",
         "patchSetId": 4
