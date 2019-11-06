@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6868615a_93bca79b",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-06T21:07:59Z",
+      "side": 1,
+      "message": "This is defined in the other CL under this topic - in include/cryptoc/hash-internal.h. Other macros from that file are already used here (HASH_update, HASH_size, HASH_final), so I think it\u0027s okay to use HASH_block_size here as well.",
+      "parentUuid": "c66bb81a_8f44dbb0",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "0237554fda4005642b678e64fe479195d7ea576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "935886ad_9d909ccc",
         "filename": "chip/g/dcrypto/hmac.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0237554fda4005642b678e64fe479195d7ea576a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421d2fe7_4ed454b4",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-06T21:07:59Z",
+      "side": 1,
+      "message": "You\u0027re right. It\u0027s not necessary to go for max.",
+      "parentUuid": "935886ad_9d909ccc",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "0237554fda4005642b678e64fe479195d7ea576a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
