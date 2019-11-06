@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "990903eb_b8b60938",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-06T19:41:35Z",
+      "side": 1,
+      "message": "need to be replaced with so that we dont have to add ITE ifdef\ntcpm_set_tx_phy_reset(port);",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 19
+      },
+      "revId": "9873a208eb9a82b490fb71e8a08c447502e010d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4a90e9_2b937da5",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-06T19:41:35Z",
+      "side": 1,
+      "message": "this logic has to be added to all the tcpm drivers",
+      "range": {
+        "startLine": 643,
+        "startChar": 2,
+        "endLine": 643,
+        "endChar": 51
+      },
+      "revId": "9873a208eb9a82b490fb71e8a08c447502e010d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
