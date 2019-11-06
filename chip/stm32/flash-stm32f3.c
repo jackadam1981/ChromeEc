@@ -45,7 +45,9 @@ struct ec_flash_bank const flash_bank_array[] = {
 };
 #elif defined(CHIP_FAMILY_STM32F4)
 /*
- * 8 "erase" sectors : 16KB/16KB/16KB/16KB/64KB/128KB/128KB/128KB
+ * 8 "erase" sectors (512 KB) : 16KB/16KB/16KB/16KB/64KB/128KB/128KB/128KB
+ * 12 "erase" sectors (1024 KB) :
+ *           16KB/16KB/16KB/16KB/64KB/128KB/128KB/128KB/128KB/128KB/128KB/128KB
  */
 struct ec_flash_bank const flash_bank_array[] = {
 	{
