@@ -1815,6 +1815,8 @@ static void tc_attached_snk_entry(const int port)
 static void tc_attached_snk_run(const int port)
 {
 #ifdef CONFIG_USB_PE_SM
+	enum tcpc_cc_voltage_status cc1, cc2;
+
 	/*
 	 * Perform Hard Reset
 	 */
@@ -1850,6 +1852,19 @@ static void tc_attached_snk_run(const int port)
 		if (!pd_is_vbus_present(port)) {
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 				pd_dfp_exit_mode(port, 0, 0);
+
+			/*
+			 * When we detect disconnection with SRC by polling
+			 * Vbus, TCPC won't set PD_EVENT_CC. So we need update
+			 * cc state.
+			 */
+			tcpm_get_cc(port, &cc1, &cc2);
+			if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
+				tc[port].cc_state = pd_get_cc_state(cc1, cc2);
+				tc[port].cc1 = cc1;
+				tc[port].cc2 = cc2;
+				tc[port].cc_last_change = get_time().val;
+			}
 
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
