@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "b4a1e8e3_f533744e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-06T02:32:22Z",
+      "side": 1,
+      "message": "Turns out the ISL9241 charger requires the enum adc_channel defined.   So this CL is needed for battery charging.",
+      "parentUuid": "36cbac5c_44c48018",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9db95200_128df7e6",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 3
