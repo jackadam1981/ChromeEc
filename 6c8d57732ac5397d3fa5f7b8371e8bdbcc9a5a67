@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b24939cd_079c1674",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "Let\u0027s not enable this quite yet. Usually we turn this on when we\u0027ve run out of space.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "063b1890_6ef2fa24",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "Can remove this comment as this should be fine for now.",
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0faf035d_11e7e4c3",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "I think per Toshak, this should be 30000.",
+      "range": {
+        "startLine": 85,
+        "startChar": 49,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8be13e7_0d3a3261",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "Let\u0027s go with 30000.",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8adc430_5b202fdd",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "I think we\u0027ll want to use 100000 for this.",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9dc513_6b4bf42f",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "This should be 5000.",
+      "range": {
+        "startLine": 111,
+        "startChar": 26,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816a492b_28e069e2",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "Let\u0027s use the PPC to discharge VBUS.",
+      "range": {
+        "startLine": 130,
+        "startChar": 32,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb46ff6_89bb9159",
+        "filename": "board/puff/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "Why do we have both VBUS detection methods defined? We should only need one and I think the PPC will do.",
+      "revId": "6c8d57732ac5397d3fa5f7b8371e8bdbcc9a5a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "48cce5f6_079e9240",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "I believe this should be 30000.",
+      "range": {
+        "startLine": 85,
+        "startChar": 49,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5035409a_657a8345",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "You can remove this comment as this is the config_* option we want.",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b42d084_916f7539",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -381,6 +421,24 @@
       "side": 1,
       "message": "Some of the other reference boards do keep the NC but labelled allocations.\nI think this is a good idea - it may help when it comes to the variants.",
       "parentUuid": "7b8004ce_cc25727a",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0343c882_3d040182",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T04:30:48Z",
+      "side": 1,
+      "message": "We actually just added a new macro for defining unconnected pins. I think it\u0027d be a good idea to use that for the NC pins. We would need to apply internal pull downs or something though. (we could do that in another CL)\n\nSpeaking for the variants, I think it\u0027s unlikely that they\u0027ll use the exact same gpio.inc file.",
+      "parentUuid": "0ee3c448_6488f2d5",
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
