@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff15db17_3ae5886e",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-06T21:30:02Z",
+      "side": 1,
+      "message": "I\u0027m curious why this and the RPM range changed? I\u0027m not sure if we even know what they should be at the moment.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "4914e17d411c89a19f2025bdb4a2ff7191354639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
