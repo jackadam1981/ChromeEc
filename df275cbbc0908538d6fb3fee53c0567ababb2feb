@@ -840,6 +840,30 @@
     },
     {
       "key": {
+        "uuid": "7ba08e77_6bb40d17",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-06T22:51:01Z",
+      "side": 1,
+      "message": "Created crbug.com/1022140 to track it. I think I have a fix for it already that works in my and Aseda\u0027s testing.",
+      "parentUuid": "b2618aca_d45b9beb",
+      "range": {
+        "startLine": 774,
+        "startChar": 26,
+        "endLine": 774,
+        "endChar": 68
+      },
+      "revId": "df275cbbc0908538d6fb3fee53c0567ababb2feb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05c143b7_6f8a7ad9",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
