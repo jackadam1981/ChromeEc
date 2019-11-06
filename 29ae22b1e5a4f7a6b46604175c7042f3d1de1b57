@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "01cf9ca4_bfc7443a",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b42d084_916f7539",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "022ecdc4_c21d1fc8",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bd4b19_f911e506",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "OK I will leave it to you to wire them up as interrupts once you have the power sequence code ready.",
+      "parentUuid": "022ecdc4_c21d1fc8",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e2ddd170_a2770208",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Hmm it may have been left over from the original hatch copy. Removed.\nIn fact, this is referenced from power/common.c, and I presume has to be aliased to\nGPIO_EN_PP5000_A",
+      "parentUuid": "f83ebf9e_c7a03b4b",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c6c926b_3b696100",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a4dd46_3d87e29a",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c6c926b_3b696100",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "714bf224_e30f8e0d",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab0e1896_f32ace75",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8ca2f64_0bffa156",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01a62871_fde0a6c5",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ca2f64_0bffa156",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "3f0d43e5_223b6b48",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Huh, I thought I had seen some of the boards configure these, but I see hatch hasn\u0027t.\nRemoved.",
+      "parentUuid": "6bd147a7_2045e45a",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cf22887_1b2ec4ea",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -135,6 +261,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41535b0d_4db080bf",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cf22887_1b2ec4ea",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "c82ed46e_3d1b82c7",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee86bd3_ffa3d3ae",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbaeeb31_9a2c6f70",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -169,6 +331,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff377614_82fd9fa9",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbaeeb31_9a2c6f70",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "0ee3c448_6488f2d5",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Some of the other reference boards do keep the NC but labelled allocations.\nI think this is a good idea - it may help when it comes to the variants.",
+      "parentUuid": "7b8004ce_cc25727a",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eddfd0e0_f87a26de",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -203,6 +401,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba0280b_e59390d7",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eddfd0e0_f87a26de",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "3fedd48d_e6a5809a",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "41093968_d029d3ce",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "071905ef_9a4a6358",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -240,6 +474,24 @@
     },
     {
       "key": {
+        "uuid": "f2dd994b_ec0dad24",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "It goes out to a TP, and is labelled.\nSee above.",
+      "parentUuid": "071905ef_9a4a6358",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28789811_d7992f7d",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -254,6 +506,24 @@
       "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b721b64a_45374874",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-06T01:14:56Z",
+      "side": 1,
+      "message": "Ah good catch.",
+      "parentUuid": "28789811_d7992f7d",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
