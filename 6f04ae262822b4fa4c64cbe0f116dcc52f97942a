@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "681bb074_5c7b2aa5",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-06T01:29:36Z",
+      "side": 1,
+      "message": "CHIP_VARIANT_ISH5P0 and CHIP_VARIANT_ISH3 should define CONFIG_ISH_CLEAR_FABRIC_ERRORS\nCHIP_VARIANT_ISH5P4 should define CONFIG_ISH_HOST2ISH_COMBINED_ISR",
+      "revId": "6f04ae262822b4fa4c64cbe0f116dcc52f97942a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2a2c18_3fab36fb",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-06T01:29:36Z",
+      "side": 1,
+      "message": "Flip the logic, use CONFIG_ISH_CLEAR_FABRIC_ERRORS and drop the not on defined.",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 22
+      },
+      "revId": "6f04ae262822b4fa4c64cbe0f116dcc52f97942a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
