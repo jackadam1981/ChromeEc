@@ -37,8 +37,11 @@ struct charge_state_data {
 	struct charger_params chg;
 	struct batt_params batt;
 	enum charge_state_v2 state;
+	/* requested voltage to charger for charging battery */
 	int requested_voltage;
+	/* requested current to charger for charging battery */
 	int requested_current;
+	/* desired input curret from power supply */
 	int desired_input_current;
 #ifdef CONFIG_CHARGER_OTG
 	int output_current;
