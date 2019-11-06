@@ -48,7 +48,13 @@
 #define CONFIG_USB_PD_DISCHARGE_TCPC
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_PREFER_MV
-#define PD_PREFER_MV 5000
+/*
+ * b/143318064: Prefer a voltage above 5V to force it picks a voltage above
+ * 5V at first. If PREFER_MV is 5V, when desired power is around  15W ~ 11W,
+ * it would pick 5V/3A initially, and mt6370 can only sink around 10W, and
+ * cause a low charging efficiency.
+ */
+#define PD_PREFER_MV 6000
 #define PD_PREFER_BULK
 /* System PLT power */
 #define SYSTEM_PLT_MW 3500
