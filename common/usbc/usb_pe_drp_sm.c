@@ -979,7 +979,15 @@ static void pe_src_vdm_identity_request_run(int port)
 		pe[port].vdm_cnt = 1;
 
 		set_state_pe(port, PE_VDM_REQUEST);
-	} else {
+	} else if ((pe[port].power_role == PD_ROLE_SOURCE) &&
+		    !PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+		/*
+		 * SRC is default Vconn SRC in SRC startup state.
+		 * Whether we have discovered ID cable reach max counts or
+		 * cable has responded ACK of discovered ID, then we should
+		 * send SRC Capabilities for starting power negotiation.
+		 */
+		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_VDM_IDENTITY_DONE);
 		set_state_pe(port, PE_SRC_SEND_CAPABILITIES);
 	}
 }
