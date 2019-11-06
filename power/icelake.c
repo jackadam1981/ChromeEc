@@ -161,7 +161,7 @@ enum power_state power_handle_state(enum power_state state)
 #ifdef CONFIG_POWER_PP5000_CONTROL
 		power_5v_enable(task_get_current(), 1);
 #else
-		gpio_set_level(GPIO_EN_PP5000, 1);
+//		gpio_set_level(GPIO_EN_PP5000, 1);
 #endif
 
 		/*
@@ -171,7 +171,7 @@ enum power_state power_handle_state(enum power_state state)
 		 * be done using chipset_pre_init_callback()
 		 */
 		/* Turn on the PP3300_DSW rail. */
-		gpio_set_level(GPIO_EN_PP3300_A, 1);
+		gpio_set_level_verbose(CC_CHIPSET, GPIO_EN_PP3300_A, 1);
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 
@@ -182,7 +182,7 @@ enum power_state power_handle_state(enum power_state state)
 		 * stable and the DSW_PWROK signal being passed to the PCH.
 		 */
 		msleep(10);
-		gpio_set_level(GPIO_PCH_DSW_PWROK, dswpwrok_in);
+		gpio_set_level_verbose(CC_CHIPSET, GPIO_PCH_DSW_PWROK, dswpwrok_in);
 		CPRINTS("Pass thru GPIO_DSW_PWROK: %d", dswpwrok_in);
 		dswpwrok_out = dswpwrok_in;
 
@@ -195,6 +195,9 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("SLP_SUS_L didn't go high!  Assuming G3.");
 			return POWER_G3;
 		}
+
+		gpio_set_level_verbose(CC_CHIPSET, GPIO_EN_PP5000, 1);
+
 		break;
 
 	case POWER_S5:
