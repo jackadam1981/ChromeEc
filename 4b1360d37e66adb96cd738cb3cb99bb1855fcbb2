@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96f65168_dbe4184d",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-11-06T10:45:21Z",
+      "side": 1,
+      "message": "Ok, I do discard in set_phy_reset(port), because doing tcpc_init let TCPC register value mismatch the PD stack states.",
+      "parentUuid": "b31c3dd4_89a0c9b5",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 19
+      },
+      "revId": "4b1360d37e66adb96cd738cb3cb99bb1855fcbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21cb0e38_7e3d23b3",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-05T18:43:28Z",
       "side": 1,
       "message": "how about naming it set_phy_reset()",
+      "range": {
+        "startLine": 341,
+        "startChar": 9,
+        "endLine": 341,
+        "endChar": 23
+      },
+      "revId": "4b1360d37e66adb96cd738cb3cb99bb1855fcbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d0a24b_94b4207f",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-11-06T10:45:21Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "21cb0e38_7e3d23b3",
       "range": {
         "startLine": 341,
         "startChar": 9,
