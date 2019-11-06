@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08e644cf_9d615554",
+        "filename": "board/kindred/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-11-06T01:51:13Z",
+      "side": 1,
+      "message": "Just the #define should have moved; the extern variables should stay where they were in the previous patch set.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "ece9e8414612c8e6f62e2bdc8b2830d79bf16189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
