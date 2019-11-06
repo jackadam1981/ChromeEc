@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef874efa_00cc5a82",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-06T19:38:12Z",
+      "side": 1,
+      "message": "how about making a new function for this?\nsame code is there at line 743",
+      "range": {
+        "startLine": 1856,
+        "startChar": 0,
+        "endLine": 1867,
+        "endChar": 4
+      },
+      "revId": "619dfedcbffa24d92412e9fb7c6758980e762f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
