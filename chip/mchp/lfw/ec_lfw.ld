@@ -15,7 +15,11 @@
 MEMORY
 {
     VECTOR(r )  : ORIGIN =  0x0D0000, LENGTH = 24
-    SRAM (xrw)  : ORIGIN =  0x0D0018, LENGTH = 0x1000 - LENGTH(VECTOR)
+    /*
+     * work around toolchain bug:
+     * https://community.arm.com/developer/tools-software/oss-platforms/f/gnu-toolchain-forum/12628/cannot-use-length-in-memory-definition-in-linker-file-for-arm-gcc-8-2018-q4-major
+     */
+    SRAM (xrw)  : ORIGIN =  0x0D0018, LENGTH = 0x1000 - 24 /* LENGTH(VECTOR) */
 }
 
 /*

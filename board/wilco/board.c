@@ -151,17 +151,6 @@ void bc_link_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
 
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-	{GPIO_VCC_PWRGD,         1, "PWRGD"},
-	{VW_SLP_S3_L,            1, "SLP_S3_DEASSERTED"},
-	{VW_SLP_S4_L,            1, "SLP_S4_DEASSERTED"},
-	{GPIO_PCH_SLP_SUS_L,     1, "SLP_SUS"},
-	{GPIO_VCC_PWRGD,         1, "PWRGD"},
-	{GPIO_VCC_PWRGD,         1, "PWRGD"},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
-
 #if 0
 /*
  * Logical SPI port to SPI controller table

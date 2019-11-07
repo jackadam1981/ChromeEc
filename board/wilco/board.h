@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/**** VERY suspect things from sjg */
+#define GPIO_PMIC_DPWROK	GPIO_SYS_PWROK
+/**** suspicion ends */
+
 /* #define CONFIG_BRINGUP */
 
 /*
@@ -131,7 +135,8 @@
 /* MCHP MEC1701 eSPI */
 #define CONFIG_ESPI
 #define CONFIG_ESPI_VW_SIGNALS
-#define CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 /* MCHP MEC1701 eSPI end */
 #define CONFIG_CLOCK_CRYSTAL
 #define CONFIG_HOSTCMD_ESPI
@@ -263,19 +268,6 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
-
-/* power signal definitions */
-enum power_signal {
-	X86_RSMRST_L_PWRGD = 0,
-	X86_SLP_S3_DEASSERTED,
-	X86_SLP_S4_DEASSERTED,
-	X86_SLP_SUS_DEASSERTED,
-	X86_PMIC_DPWROK,
-	X86_ALL_SYS_PWRGD,	/* TODO MCHP Kabylake */
-
-	/* Number of X86 signals */
-	POWER_SIGNAL_COUNT
-};
 
 enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY,
