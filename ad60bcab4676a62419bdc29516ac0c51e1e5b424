@@ -94,6 +94,30 @@
       "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887e2327_8249639e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-11-07T21:15:24Z",
+      "side": 1,
+      "message": "Yeah, we\u0027ve been working on it: https://crbug.com/991365",
+      "parentUuid": "b975e799_b84cf1a2",
+      "range": {
+        "startLine": 564,
+        "startChar": 28,
+        "endLine": 564,
+        "endChar": 30
+      },
+      "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
