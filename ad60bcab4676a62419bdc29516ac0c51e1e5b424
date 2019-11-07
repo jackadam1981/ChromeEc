@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "07ee1f25_2e755dcc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-11-07T23:12:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "887e2327_8249639e",
+      "range": {
+        "startLine": 564,
+        "startChar": 28,
+        "endLine": 564,
+        "endChar": 30
+      },
+      "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c4e1b58_4a94be7f",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -165,6 +189,30 @@
       "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd30d4b9_553d7d92",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-11-07T23:12:45Z",
+      "side": 1,
+      "message": "It needs to be packed in order to be exactly 2 bytes.",
+      "parentUuid": "af37b0f4_557da107",
+      "range": {
+        "startLine": 566,
+        "startChar": 36,
+        "endLine": 566,
+        "endChar": 37
+      },
+      "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
