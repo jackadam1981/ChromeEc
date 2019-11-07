@@ -22,6 +22,30 @@
       "revId": "23c8af2d311bfe66fb1452993ea0756a8407dbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823d07bd_cd6f2354",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-07T22:59:12Z",
+      "side": 1,
+      "message": "I copied the eve implementation.  But I agree that the logic is wrong.  dragaonegg and hatch have the same implementation, but have a latent bug.\nbattery_is_cut_off() returns a bool, and not enum battery_cutoff_states.\n\nI created bug b/144119559 to switch to a shared/overridable battery presence implementation, and noted the hatch/dragonegg bug.\n\nI\u0027ll switch to the dragonegg/hatch model, which is much clearer to read.",
+      "parentUuid": "e79bec65_0a029921",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "23c8af2d311bfe66fb1452993ea0756a8407dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
