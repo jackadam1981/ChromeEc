@@ -34,6 +34,24 @@
       "revId": "e844c49ed1bc72e98a19c6f7566bacd40d6ffea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea7842a7_18c69586",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2685,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T18:25:51Z",
+      "side": 0,
+      "message": "Ah, I see now, the use of PD_CC_UNSET in the CC handling code broke my assumptions. Fixed it",
+      "parentUuid": "39113008_bca89866",
+      "revId": "e844c49ed1bc72e98a19c6f7566bacd40d6ffea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
