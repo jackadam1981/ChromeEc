@@ -416,6 +416,7 @@ void __idle(void)
 
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
+		disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 
 		if (DEEP_SLEEP_ALLOWED &&
 		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {

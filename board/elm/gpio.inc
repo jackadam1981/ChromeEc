@@ -15,7 +15,9 @@ GPIO_INT(SOC_POWER_GOOD, PIN(A, 3),  GPIO_INT_BOTH,    power_signal_interrupt)
 GPIO_INT(PD_MCU_INT,     PIN(E, 0),  GPIO_INT_RISING,  pd_mcu_interrupt)       /* Signal from PD MCU, external pull-up */
 GPIO_INT(BC12_CABLE_INT, PIN(E, 1),  GPIO_INT_FALLING | GPIO_PULL_UP, usb_evt)    /* interrupt from BC12 and CABLE_DET */
 GPIO_INT(POWER_BUTTON_L, PIN(B, 5),  GPIO_INT_BOTH | GPIO_PULL_UP,  power_button_interrupt)
+#if 0
 GPIO_INT(SPI1_NSS,       PIN(A, 4),  GPIO_INT_BOTH | GPIO_PULL_UP,  spi_event)              /* SPI Chip Select */
+#endif
 
 /* Keyboard inputs */
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
@@ -44,6 +46,10 @@ GPIO(KB_OUT10,          PIN(C, 5),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT11,          PIN(C, 4),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT12,          PIN(D, 5),  GPIO_KB_OUTPUT)
 
+GPIO(PIN_A4,            PIN(A, 4), GPIO_INPUT)
+GPIO(PIN_A5,            PIN(A, 5), GPIO_INPUT)
+GPIO(PIN_A6,            PIN(A, 6), GPIO_INPUT)
+GPIO(PIN_A7,            PIN(A, 7), GPIO_INPUT)
 
 /* Inputs without interrupt handlers */
 GPIO(5V_POWER_GOOD,      PIN(A, 1), GPIO_INPUT)
@@ -109,5 +115,7 @@ GPIO(SENSOR_PWR_EN_L, PIN(D, 11), GPIO_OUT_LOW)
 ALTERNATE(PIN_MASK(A, 0x0600), 1, MODULE_UART, GPIO_PULL_UP) /* USART1: PA9/PA10 */
 ALTERNATE(PIN_MASK(B, 0x00c0), 1, MODULE_I2C,        0) /* I2C MASTER:PB6/7 */
 ALTERNATE(PIN_MASK(B, 0x6000), 5, MODULE_I2C,        0) /* I2C MASTER:PB13/14 */
+#if 0
 ALTERNATE(PIN_MASK(A, 0x00f0), 0, MODULE_SPI,        0) /* SPI SLAVE:PA4/5/6/7 */
+#endif
 ALTERNATE(PIN_MASK(D, 0x001A), 1, MODULE_SPI_MASTER, 0) /* SPI MASTER:PD1/3/4 */
