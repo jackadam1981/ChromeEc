@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db197c96_1b6f252c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3528,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:11:43Z",
+      "side": 1,
+      "message": "nit: we are returning a void, can you put the return on a separate line please",
+      "range": {
+        "startLine": 3527,
+        "startChar": 47,
+        "endLine": 3528,
+        "endChar": 4
+      },
+      "revId": "3a6e052255b869cc9265d5dffd92831bafb3b8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b3fe0a_11889c9d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3566,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:11:43Z",
+      "side": 1,
+      "message": "this make sense. I think you can single source lines 3538 and this now\n\nbasically, I think you just need to remove line 3538 through line 3547 and it is single sourced",
+      "range": {
+        "startLine": 3565,
+        "startChar": 1,
+        "endLine": 3566,
+        "endChar": 34
+      },
+      "revId": "3a6e052255b869cc9265d5dffd92831bafb3b8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
