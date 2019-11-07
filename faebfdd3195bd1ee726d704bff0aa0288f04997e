@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9178b0c_d7703c4f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3572,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T20:31:35Z",
+      "side": 1,
+      "message": "Do we not need to go to the last state in the PE_FLAGS_PROTOCOL_ERROR case as well?",
+      "range": {
+        "startLine": 3566,
+        "startChar": 2,
+        "endLine": 3572,
+        "endChar": 36
+      },
+      "revId": "faebfdd3195bd1ee726d704bff0aa0288f04997e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
