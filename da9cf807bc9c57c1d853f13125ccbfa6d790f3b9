@@ -34,6 +34,24 @@
       "revId": "da9cf807bc9c57c1d853f13125ccbfa6d790f3b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed65942_2b81cee9",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-07T19:18:28Z",
+      "side": 1,
+      "message": "I asked Jett and the background was that only the module should be aware of the internal flags, but it makes it hard to test. Therefore, there\u0027s this copy here. We think a better way might be to test the behaviour instead of the internal state, but that will require some work.\n\nKeeping the flags private is what I was missing.",
+      "parentUuid": "61c7f80e_3e9c5242",
+      "revId": "da9cf807bc9c57c1d853f13125ccbfa6d790f3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
