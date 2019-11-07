@@ -16,6 +16,24 @@
       "revId": "da9cf807bc9c57c1d853f13125ccbfa6d790f3b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c7f80e_3e9c5242",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-07T18:21:54Z",
+      "side": 1,
+      "message": "I agree with you but this was added in another CL. And we should definitely move this to a common header file.",
+      "parentUuid": "cad8c994_adb61692",
+      "revId": "da9cf807bc9c57c1d853f13125ccbfa6d790f3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
