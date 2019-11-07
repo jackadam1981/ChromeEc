@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c1c05f2_bfd7b23c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:35:22Z",
+      "side": 1,
+      "message": "let\u0027s add a comment to this function of why we need it and that there is potentially a \"hole\" in the middle of these arrays we need to skip, please",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 34
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e6e505_fb8d08a8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:35:22Z",
+      "side": 1,
+      "message": "We should print some kind of error here as this should happen",
+      "range": {
+        "startLine": 841,
+        "startChar": 1,
+        "endLine": 842,
+        "endChar": 9
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a525680d_d0837f4d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:35:22Z",
+      "side": 1,
+      "message": "I was going to say use is_valid here, but that is goign to break down. We should at least add a comment here",
+      "range": {
+        "startLine": 1239,
+        "startChar": 1,
+        "endLine": 1239,
+        "endChar": 31
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71eab73_2fe87bdd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:35:22Z",
+      "side": 1,
+      "message": "what will happen here for invalid port?\nShould we just make everything 0; I haven\u0027t looked to see if that is correct though",
+      "range": {
+        "startLine": 1242,
+        "startChar": 1,
+        "endLine": 1242,
+        "endChar": 31
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
