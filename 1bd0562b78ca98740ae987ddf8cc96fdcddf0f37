@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "567ef917_2f360eb8",
+        "filename": "chip/stm32/usb_dwc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-07T22:30:46Z",
+      "side": 1,
+      "message": "nit: __aligned(4) is enough.",
+      "range": {
+        "startLine": 149,
+        "startChar": 15,
+        "endLine": 149,
+        "endChar": 42
+      },
+      "revId": "1bd0562b78ca98740ae987ddf8cc96fdcddf0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
