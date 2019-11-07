@@ -736,19 +736,25 @@ static void exit_low_power_mode(int port)
 		TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED);
 }
 
+/* Update cc state variables */
+static void tc_update_cc_state(int port)
+{
+	enum tcpc_cc_voltage_status cc1, cc2;
+
+	tcpm_get_cc(port, &cc1, &cc2);
+	if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
+		tc[port].cc_state = pd_get_cc_state(cc1, cc2);
+		tc[port].cc1 = cc1;
+		tc[port].cc2 = cc2;
+		tc[port].cc_last_change = get_time().val;
+	}
+}
+
 void tc_event_check(int port, int evt)
 {
 	/* Update the cc variables if there was a change */
-	if (evt & PD_EVENT_CC) {
-		enum tcpc_cc_voltage_status cc1, cc2;
-		tcpm_get_cc(port, &cc1, &cc2);
-		if (cc1 != tc[port].cc1 || cc2 != tc[port].cc2) {
-			tc[port].cc_state = pd_get_cc_state(cc1, cc2);
-			tc[port].cc1 = cc1;
-			tc[port].cc2 = cc2;
-			tc[port].cc_last_change = get_time().val;
-		}
-	}
+	if (evt & PD_EVENT_CC)
+		tc_update_cc_state(port);
 
 	if (!IS_ENABLED(CONFIG_USB_PE_SM))
 		return;
@@ -1850,6 +1856,13 @@ static void tc_attached_snk_run(const int port)
 		if (!pd_is_vbus_present(port)) {
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 				pd_dfp_exit_mode(port, 0, 0);
+
+			/*
+			 * When we detect disconnection with SRC by polling
+			 * Vbus, TCPC won't set PD_EVENT_CC. So we need update
+			 * cc state variables.
+			 */
+			tc_update_cc_state(port);
 
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
