@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e79bec65_0a029921",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T21:24:40Z",
+      "side": 1,
+      "message": "I think this last cause is supposed to be \n\nbatt_pres \u003d\u003d BP_YES \u0026\u0026 batt_pres_prev !\u003d batt_pres \u0026\u0026\n(battery_is_cutoff() || !battery_init())\n\n\nWe should add more comments\n\nsee dragonegg\u0027s implementation",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "23c8af2d311bfe66fb1452993ea0756a8407dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
