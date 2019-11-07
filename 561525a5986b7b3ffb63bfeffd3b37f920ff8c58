@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbc03af7_69adfec4",
+        "filename": "chip/stm32/flash-stm32f3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-07T18:41:31Z",
+      "side": 1,
+      "message": "Why don\u0027t you mention \u0027STM32F12\u0027?\n\nWe don\u0027t have CHIP_FAMILY_STM32F12?",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "561525a5986b7b3ffb63bfeffd3b37f920ff8c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
