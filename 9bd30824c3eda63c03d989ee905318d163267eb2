@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5a3e55f_26179485",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-11-07T19:07:50Z",
+      "side": 1,
+      "message": "Nit: These could equivalently be tagged unions without the outer tagged struct layer.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 2
+      },
+      "revId": "9bd30824c3eda63c03d989ee905318d163267eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
