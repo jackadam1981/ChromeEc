@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afd938a3_97e80853",
+        "filename": "chip/g/board_id.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-07T19:04:34Z",
+      "side": 1,
+      "message": "\"Board ID from flash is blank\" and \"Board ID type hasn\u0027t been initialized\" is the same condition, right? If so something like\n\n* If the board id from flash is blank, board_id_type field from the header is ignored and only board_if_flags field is verified to match.\n\nwould be clearer",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "a86d8ec1d2a788dc305cf6151a6cb32ba7f116b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
