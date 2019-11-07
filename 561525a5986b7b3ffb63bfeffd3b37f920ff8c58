@@ -22,6 +22,30 @@
       "revId": "561525a5986b7b3ffb63bfeffd3b37f920ff8c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7388292b_0f2f061b",
+        "filename": "chip/stm32/flash-stm32f3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-11-07T21:13:41Z",
+      "side": 1,
+      "message": "Typo, should be STM32F412.\n\nSTM32F412xE has 512 KB flash\nSTM32F412xG has 1 MB flash\n\nhttps://www.st.com/resource/en/datasheet/stm32f412cg.pdf",
+      "parentUuid": "dbc03af7_69adfec4",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "561525a5986b7b3ffb63bfeffd3b37f920ff8c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
