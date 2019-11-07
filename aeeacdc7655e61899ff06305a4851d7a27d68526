@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "843075b4_8cb0ad7b",
+        "filename": "baseboard/volteer/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-07T04:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b20bd2_3913346f",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "aeeacdc7655e61899ff06305a4851d7a27d68526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8276f3d1_127d0868",
         "filename": "board/volteer/battery.c",
         "patchSetId": 3
@@ -141,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "bc105f9b_0e0d4747",
+        "filename": "board/volteer/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-07T04:50:20Z",
+      "side": 1,
+      "message": "Filed bug b/144038049 to clean this up.",
+      "parentUuid": "d96dd7a0_e349ba73",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 76
+      },
+      "revId": "aeeacdc7655e61899ff06305a4851d7a27d68526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "565c476c_ffb7dc7c",
         "filename": "board/volteer/build.mk",
         "patchSetId": 3
@@ -161,6 +209,30 @@
       "revId": "aeeacdc7655e61899ff06305a4851d7a27d68526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63af820_df3dcb45",
+        "filename": "board/volteer/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-07T04:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "565c476c_ffb7dc7c",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "aeeacdc7655e61899ff06305a4851d7a27d68526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
