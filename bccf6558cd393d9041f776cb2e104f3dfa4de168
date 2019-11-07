@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "facacb5e_f4f0d1d3",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T20:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c45dea_5a6dfb5d",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2640106_5e359ba4",
         "filename": "driver/retimer/pi3dpx1207.c",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55936fa7_f60f6408",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T20:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2640106_5e359ba4",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b49cd3bb_4741f250",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T20:54:13Z",
+      "side": 1,
+      "message": "It is in the B data sheet and the same bit is reserved but set in the C data sheet",
+      "parentUuid": "cf585b91_bb02653b",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "703d2523_37efbdb1",
         "filename": "driver/retimer/pi3dpx1207.c",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "ce5ce777_9352a475",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T20:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703d2523_37efbdb1",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b36eca1f_275cad6c",
         "filename": "include/config.h",
         "patchSetId": 5
@@ -84,6 +156,24 @@
       "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9199b6b3_bb7c93bb",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3904,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T20:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b36eca1f_275cad6c",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
