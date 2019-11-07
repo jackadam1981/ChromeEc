@@ -13,6 +13,9 @@
 #include "power_button.h"
 #include "task.h"
 #include "timer.h"
+#include "util.h"
+
+#include <stdbool.h>
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
@@ -59,6 +62,13 @@ const struct power_signal_info power_signal_list[] = {
 		.gpio = GPIO_PG_EC_ALL_SYS_PWRGD,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "ALL_SYS_PWRGD",
+	},
+
+	/* For monitoring during manual sequencing */
+	[X86_CPU_C10_GATE_DEASSERTED] = {
+		.gpio = GPIO_CPU_C10_GATE_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "CPU_C10_GATE",
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
@@ -133,12 +143,17 @@ __overridable void board_icl_tgl_all_sys_pwrgood(void)
 
 }
 
+static bool bypass_power_handling = true;
+
 enum power_state power_handle_state(enum power_state state)
 {
 	int dswpwrok_in = gpio_get_level(GPIO_PG_EC_DSW_PWROK);
 	static int dswpwrok_out = -1;
 	int all_sys_pwrgd_in;
 	int all_sys_pwrgd_out;
+
+	if (bypass_power_handling)
+		return state;
 
 	/* Pass-through DSW_PWROK to ICL. */
 	if (dswpwrok_in != dswpwrok_out) {
@@ -232,3 +247,26 @@ enum power_state power_handle_state(enum power_state state)
 
 	return common_intel_x86_power_handle_state(state);
 }
+
+static int command_bypass_power(int argc, char **argv)
+{
+	int val;
+	if (argc > 1) {
+		if (parse_bool(argv[1], &val)) {
+			if (val)
+				bypass_power_handling = true;
+			else
+				bypass_power_handling = false;
+		} else {
+			return EC_ERROR_PARAM1;
+		}
+	} else {
+		ccprintf("Bypass power sequencing = %s\n",
+			bypass_power_handling ? "true" : "false");
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bypass_power, command_bypass_power,
+			"[BOOLEAN]",
+			"Bypass power sequencing");

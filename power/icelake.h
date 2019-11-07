@@ -36,6 +36,8 @@ enum power_signal {
 	X86_DSW_DPWROK,
 	X86_ALL_SYS_PGOOD,
 
+	X86_CPU_C10_GATE_DEASSERTED,
+
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
 };

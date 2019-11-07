@@ -23,11 +23,11 @@
 
 static int command_volteer(int argc, char **argv)
 {
-	int ms = 100;  /* Press duration in ms */
+	int delay_ms = 100;  /* Press duration in ms */
 	char *e;
 
 	if (argc > 1) {
-		ms = strtoi(argv[1], &e, 0);
+		delay_ms = strtoi(argv[1], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM1;
 	}
@@ -39,14 +39,14 @@ static int command_volteer(int argc, char **argv)
 
 	gpio_set_level_verbose(CC_COMMAND, GPIO_EN_PP3300_A, 1);
 
-	msleep(100);
+	msleep(delay_ms);
 
 	gpio_set_level_verbose(CC_COMMAND, GPIO_EN_PP5000_A, 1);
 
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(volteer, command_volteer,
-			"[delay"],
+			"[delay]",
 			"Bring up PP3300 and PP5000 manually");
 
 static void board_init(void)
