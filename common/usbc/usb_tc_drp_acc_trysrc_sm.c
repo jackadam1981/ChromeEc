@@ -2497,9 +2497,6 @@ static void tc_attached_src_run(const int port)
 		tc[port].cc_debounce = get_time().val + PD_T_SRC_DISCONNECT;
 	}
 
-	if (get_time().val < tc[port].cc_debounce)
-		return;
-
 	/*
 	 * When the SRC.Open state is detected on the monitored CC pin, a DRP
 	 * shall transition to Unattached.SNK unless it strongly prefers the
