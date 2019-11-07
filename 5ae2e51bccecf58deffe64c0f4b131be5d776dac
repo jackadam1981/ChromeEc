@@ -75,6 +75,30 @@
       "revId": "5ae2e51bccecf58deffe64c0f4b131be5d776dac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e79e0ed_5cf716fe",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3852,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-11-07T10:33:25Z",
+      "side": 1,
+      "message": "not really, we end up with a similar problem on tcpm_release().\nthis scheme needs a bit more refinement to handle\nconfigurable APIs.",
+      "parentUuid": "d7a2d093_0d67cefd",
+      "range": {
+        "startLine": 3835,
+        "startChar": 0,
+        "endLine": 3852,
+        "endChar": 6
+      },
+      "revId": "5ae2e51bccecf58deffe64c0f4b131be5d776dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
