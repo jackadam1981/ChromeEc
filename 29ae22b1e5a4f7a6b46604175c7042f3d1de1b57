@@ -147,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "37d21c91_cea1a5c3",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-07T00:27:46Z",
+      "side": 1,
+      "message": "Don\u0027t know where I got USB_VBUS from, this should be EN_PP5000_A on GPIO A4.",
+      "parentUuid": "e2ddd170_a2770208",
+      "revId": "29ae22b1e5a4f7a6b46604175c7042f3d1de1b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c6c926b_3b696100",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
