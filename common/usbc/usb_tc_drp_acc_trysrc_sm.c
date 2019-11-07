@@ -2161,6 +2161,12 @@ static void tc_attached_src_entry(const int port)
 		pd_set_power_supply_ready(port);
 
 		/*
+		 * Now our cc Rp is connection with cc Rd of partner, then
+		 * enable TCPC detect plug in and TCPC will trigger PD_EVENT_CC
+		 * immediately. The cc state variables will be updated.
+		 */
+		tcpm_plug_in_out_isr_enable(port, 1);
+		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
 		 * data role / usb mux connections.
 		 */
@@ -2631,6 +2637,9 @@ static void tc_unattached_entry(const int port)
 {
 	/* This only prints the first time we enter a unattached state */
 	print_current_state(port);
+
+	/* Detect USB PD cc disconnect */
+	hook_notify(HOOK_USB_PD_DISCONNECT);
 
 	/* This disables the mux when we disconnect on a port */
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
