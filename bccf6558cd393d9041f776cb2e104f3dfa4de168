@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6c45dea_5a6dfb5d",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-07T19:04:04Z",
+      "side": 1,
+      "message": "Move to be with existing CONFIG_USB_PD_RETIMER_INTEL_BB in this file.",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2640106_5e359ba4",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-07T19:04:04Z",
+      "side": 1,
+      "message": "Add check for offset \u003c 32?",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf585b91_bb02653b",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-07T19:04:04Z",
+      "side": 1,
+      "message": "Where did you find WATCHDOG_EN? I don\u0027t see it in my datasheet.",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703d2523_37efbdb1",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-07T19:04:04Z",
+      "side": 1,
+      "message": "To make this work for other chips, need to either use gpio_or_ioex_set_level(), or do something like board_set_tcpc_power_mode() to let the board set the GPIOs.",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36eca1f_275cad6c",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3904,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-07T19:04:04Z",
+      "side": 1,
+      "message": "Move to join CONFIG_USB_PD_RETIMER and CONFIG_USB_PD_RETIMER_INTEL_BB",
+      "revId": "bccf6558cd393d9041f776cb2e104f3dfa4de168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
