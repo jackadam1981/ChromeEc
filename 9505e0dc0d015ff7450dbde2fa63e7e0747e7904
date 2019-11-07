@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a892db_429cb49a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3779,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-07T04:28:26Z",
+      "side": 1,
+      "message": "Nit - other paths of this if require braces, so this else if should also have braces.",
+      "range": {
+        "startLine": 3777,
+        "startChar": 0,
+        "endLine": 3779,
+        "endChar": 0
+      },
+      "revId": "9505e0dc0d015ff7450dbde2fa63e7e0747e7904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
