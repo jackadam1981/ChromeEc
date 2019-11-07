@@ -46,6 +46,30 @@
       "revId": "d42af76875f018fee070b47cd5faefc34a94db2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc5569f_e23a687c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-11-07T10:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f8795f_c3258a12",
+      "range": {
+        "startLine": 540,
+        "startChar": 4,
+        "endLine": 540,
+        "endChar": 18
+      },
+      "revId": "d42af76875f018fee070b47cd5faefc34a94db2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
