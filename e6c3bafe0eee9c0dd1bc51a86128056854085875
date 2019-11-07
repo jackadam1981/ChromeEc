@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa264f38_2449aa97",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-07T20:13:04Z",
+      "side": 1,
+      "message": "Use hard tabs instead of spaces, like above",
+      "range": {
+        "startLine": 325,
+        "startChar": 18,
+        "endLine": 325,
+        "endChar": 40
+      },
+      "revId": "e6c3bafe0eee9c0dd1bc51a86128056854085875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880e19a5_769859b4",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-07T20:13:04Z",
+      "side": 1,
+      "message": "The alignment of all of these values is not consistent. Also, use hard tabs instead of spaces",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 30
+      },
+      "revId": "e6c3bafe0eee9c0dd1bc51a86128056854085875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb0bdd3_acb3869c",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-07T20:13:04Z",
+      "side": 1,
+      "message": "All of these should be using BIT macro",
+      "range": {
+        "startLine": 129,
+        "startChar": 32,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "e6c3bafe0eee9c0dd1bc51a86128056854085875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
