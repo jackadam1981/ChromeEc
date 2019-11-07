@@ -46,6 +46,30 @@
       "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4e5901_3f5784f4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-11-07T21:06:03Z",
+      "side": 1,
+      "message": "Not a typo; it\u0027s doxygen inline comment format. See \"Putting documentation after members\": http://www.doxygen.nl/manual/docblocks.html",
+      "parentUuid": "8f837829_c70a9439",
+      "range": {
+        "startLine": 564,
+        "startChar": 28,
+        "endLine": 564,
+        "endChar": 30
+      },
+      "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
