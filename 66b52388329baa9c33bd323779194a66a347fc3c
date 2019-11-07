@@ -152,6 +152,30 @@
       "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258b9815_1c21b441",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-07T04:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db95200_128df7e6",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "66b52388329baa9c33bd323779194a66a347fc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
