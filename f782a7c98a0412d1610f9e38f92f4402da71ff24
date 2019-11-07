@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8226eb76_dacb1312",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-11-07T03:10:20Z",
+      "side": 1,
+      "message": "kukui",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "f782a7c98a0412d1610f9e38f92f4402da71ff24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c944e6fc_b319874b",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 13
