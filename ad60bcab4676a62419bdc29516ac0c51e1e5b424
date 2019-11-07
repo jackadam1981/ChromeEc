@@ -141,6 +141,30 @@
       "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af37b0f4_557da107",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T22:22:44Z",
+      "side": 1,
+      "message": "wait should this be a straight \u003d\u003d",
+      "parentUuid": "2c4e1b58_4a94be7f",
+      "range": {
+        "startLine": 566,
+        "startChar": 36,
+        "endLine": 566,
+        "endChar": 37
+      },
+      "revId": "ad60bcab4676a62419bdc29516ac0c51e1e5b424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
