@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "861a0fb5_b9f6e54e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-07T20:55:07Z",
+      "side": 1,
+      "message": "I thought I mentioned this before, sorry if I missed this:\n\nplease use uint8_t instead of unsigned char",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "f9e08c6b8247b580297a51150b1b44f8fec8561b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d2dde3_fae70717",
+        "filename": "util/iteflash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-07T20:55:07Z",
+      "side": 1,
+      "message": "this structure is used in two places now, please define it once at file scope and use as necessary.",
+      "range": {
+        "startLine": 548,
+        "startChar": 1,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "f9e08c6b8247b580297a51150b1b44f8fec8561b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d813f2_259bc263",
+        "filename": "util/iteflash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-07T20:55:07Z",
+      "side": 1,
+      "message": "no need for |\u003d, just \u003d will suffice here.",
+      "range": {
+        "startLine": 570,
+        "startChar": 5,
+        "endLine": 570,
+        "endChar": 8
+      },
+      "revId": "f9e08c6b8247b580297a51150b1b44f8fec8561b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
