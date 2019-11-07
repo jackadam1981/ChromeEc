@@ -22,6 +22,30 @@
       "revId": "9941430ee38b8117eb6b4240572f254c9fd69972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7d0f3a_d5edbd0c",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T20:38:17Z",
+      "side": 1,
+      "message": "It toggles the EC_FLASH_ODL line from the servo",
+      "parentUuid": "8e25e333_4b9d79fe",
+      "range": {
+        "startLine": 455,
+        "startChar": 14,
+        "endLine": 455,
+        "endChar": 26
+      },
+      "revId": "9941430ee38b8117eb6b4240572f254c9fd69972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
