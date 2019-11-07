@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d017aa90_02362bae",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T17:20:34Z",
+      "side": 0,
+      "message": "Why are you moving this to the end?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "1369d55f5e3cb9f0389c452b054d62fc74255c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c66bc6b_79d9bac4",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T17:20:34Z",
+      "side": 0,
+      "message": "why are you moving this to the end?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "1369d55f5e3cb9f0389c452b054d62fc74255c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
