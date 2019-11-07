@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90691d05_d17fcbb6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2685,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-07T17:35:14Z",
+      "side": 0,
+      "message": "Do you need to do this as well?  Looks like each transition needs to debounce.  Maybe checking tc[port].cc_state !\u003d PD_CC_UNSET, before setting it to that value, should do the debounce",
+      "revId": "e844c49ed1bc72e98a19c6f7566bacd40d6ffea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
