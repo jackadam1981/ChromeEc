@@ -41,12 +41,15 @@ GPIO(EC_FCH_PWR_BTN_L,		PIN(8, 6), GPIO_OUT_HIGH)			/* Power Button to SOC */
 GPIO(EC_FCH_RSMRST_L,		PIN(A, 1), GPIO_OUT_LOW)			/* RSMRST# to SOC */
 GPIO(EC_FCH_PWROK,		PIN(7, 5), GPIO_OUT_LOW)			/* Power OK to SOC */
 GPIO(EC_FCH_WAKE_L,		PIN(0, 3), GPIO_OUT_HIGH)			/* Wake SOC */
+GPIO(EC_FCH_SCI_ODL,		PIN(7, 6), GPIO_ODR_HIGH)			/* SCI to SOC */
 GPIO(EC_SYS_RST_L,		PIN(C, 7), GPIO_ODR_HIGH)			/* Cold Reset to SOC */
 GPIO(USB_C0_TCPC_RST_L,		PIN(E, 1), GPIO_OUT_HIGH)			/* C0 TCPC Reset */
 GPIO(USB_C1_TCPC_RST_L,		PIN(F, 0), GPIO_OUT_HIGH)			/* C1 TCPC Reset */
 GPIO(USB_C0_HPD,		PIN(F, 5), GPIO_OUT_LOW)			/* C0 DP Hotplug Detect */
 GPIO(USB_C0_IN_HPD,		PIN(7, 3), GPIO_OUT_LOW)			/* C0 IN Hotplug Detect */
 GPIO(DP2_HPD,			PIN(C, 1), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
+
+UNIMPLEMENTED(PCH_SMI_L)
 
 GPIO(LED_FULL_L,		PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(LED_CHRG_L,		PIN(C, 0), GPIO_OUT_HIGH)
@@ -67,11 +70,6 @@ IOEX(USB_A1_RETIMER_RST_DB,	EXPIN(USBC_PORT_C1, 0, 1), GPIO_OUT_LOW)	/* A1 Retim
 IOEX(USB_C1_TCPC_FASTSW_CTL_EN,	EXPIN(USBC_PORT_C1, 0, 4), GPIO_OUT_LOW)	/* C1 FastSwitch Ctrl */
 IOEX(EN_USB_A1_5V_DB,		EXPIN(USBC_PORT_C1, 1, 6), GPIO_OUT_LOW)	/* A1 5V Source Enable */
 IOEX(USB_A1_CHARGE_EN_DB_L,	EXPIN(USBC_PORT_C1, 1, 7), GPIO_OUT_HIGH)	/* A1 5V High Current Enable */
-
-/*
- * The NPCX LPC driver configures and controls SCI, so PCH_SCI_ODL [PIN(7, 6)]
- * is not defined here as GPIO.
- */
 
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(EC_I2C_USB_A0_C0_SCL,	PIN(B, 5), GPIO_INPUT)
