@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50a806bc_3010d6c2",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T22:29:05Z",
+      "side": 1,
+      "message": "well I was getting at that if there is more than one event getting added, then we don\u0027t want to apply the host event skipping logic if we are adding a host event and something else",
+      "range": {
+        "startLine": 201,
+        "startChar": 54,
+        "endLine": 201,
+        "endChar": 17
+      },
+      "revId": "b5fc6f23e32e719f138714dd1603c29339fce182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb35e45_4a7bc543",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-07T22:29:05Z",
+      "side": 1,
+      "message": "I don\u0027t think these renames of SENSOR_BATTERY_TAP \u003d\u003e MASK belogn in the same CL as the HOST_EVENT_WAKEUP_MASK change, sorry.\n\nCan you break them up into two CLs",
+      "range": {
+        "startLine": 731,
+        "startChar": 5,
+        "endLine": 734,
+        "endChar": 5
+      },
+      "revId": "b5fc6f23e32e719f138714dd1603c29339fce182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
