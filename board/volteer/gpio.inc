@@ -25,7 +25,7 @@ GPIO_INT(SLP_S0_L,             PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_S3_L,             PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt)
 #endif
 GPIO_INT(SLP_SUS_L,            PIN(D, 7), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(PG_EC_RSMRST_ODL,     PIN(E, 2), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PG_EC_RSMRST_ODL,     PIN(E, 2), GPIO_INT_BOTH, intel_x86_rsmrst_signal_interrupt)
 GPIO_INT(DSW_PWROK,            PIN(C, 7), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PG_EC_ALL_SYS_PWRGD,  PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt)
 
@@ -72,7 +72,7 @@ GPIO(EC_RST_ODL,		PIN(0, 2), GPIO_INT_BOTH |
 
 /* AP/PCH Signals */
 GPIO(EC_PCH_SYS_PWROK,         PIN(3, 7), GPIO_OUT_LOW)
-GPIO(EC_PCH_RSMRST_ODL,        PIN(A, 6), GPIO_ODR_HIGH) /* TODO - b/140950085 - implement TGL sequencing requirement */
+GPIO(EC_PCH_RSMRST_ODL,        PIN(A, 6), GPIO_OUT_LOW) /* TODO - b/140950085 - implement TGL sequencing requirement */
 GPIO(EC_PCH_PWR_BTN_ODL,       PIN(C, 1), GPIO_ODR_HIGH)
 GPIO(EC_PCH_RTCRST,            PIN(7, 6), GPIO_OUT_LOW)
 GPIO(EC_PCH_WAKE_ODL,          PIN(7, 4), GPIO_ODR_HIGH)

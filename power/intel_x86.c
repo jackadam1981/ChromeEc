@@ -626,6 +626,12 @@ void intel_x86_rsmrst_signal_interrupt(enum gpio_signal signal)
 	if (!rsmrst_in && (rsmrst_in != rsmrst_out))
 		gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
 
+	if (rsmrst_in && (rsmrst_in != rsmrst_out)) {
+		/* In interrupt context, must use udelay */
+		/* Delay 20ms to meet TigerLake requirement */
+		udelay(20*1000);
+		gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+	}
 	/*
 	 * Call the main power signal interrupt handler to wake up the chipset
 	 * task which handles low->high rsmrst pass through.
@@ -660,7 +666,7 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 	 * and deasserting RSMRST to PCH.
 	 */
 	if (rsmrst_in)
-		msleep(10);
+		msleep(20);
 #endif
 
 	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
