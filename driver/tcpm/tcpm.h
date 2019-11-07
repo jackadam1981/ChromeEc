@@ -427,4 +427,15 @@ static inline void tcpm_set_tx_phy_reset(int port)
 	else
 	    tcpc_config[port].drv->init(port);
 }
+
+/**
+ * Enable/Disable TCPC plug in/out interrupt detection
+ *
+ * @param port Type-C port number
+ * @param enable interrupt detection enable (true) disable (false)
+ */
+static inline void tcpm_plug_in_out_isr_enable(int port, int enable)
+{
+	tcpc_config[port].drv->plug_in_out_isr_enable(port, enable);
+}
 #endif

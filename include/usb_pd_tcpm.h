@@ -339,6 +339,14 @@ struct tcpm_drv {
 	 * @param port Type-C port number
 	 */
 	 void (*set_tx_phy_reset)(int port);
+
+	/**
+	 * Enable/Disable TCPC plug in/out interrupt detection
+	 *
+	 * @param port Type-C port number
+	 * @param enable interrupt detection enable (true) disable (false)
+	 */
+	 void (*plug_in_out_isr_enable)(int port, int enable);
 };
 
 /*
