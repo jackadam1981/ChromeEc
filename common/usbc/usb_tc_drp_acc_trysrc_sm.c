@@ -2682,7 +2682,6 @@ static void tc_try_wait_snk_entry(const int port)
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
-	tc[port].try_wait_debounce = get_time().val + PD_T_CC_DEBOUNCE;
 }
 
 static void tc_try_wait_snk_run(const int port)
@@ -2703,6 +2702,7 @@ static void tc_try_wait_snk_run(const int port)
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
 		tc[port].pd_debounce = get_time().val + PD_T_PD_DEBOUNCE;
+		tc[port].try_wait_debounce = get_time().val + PD_T_CC_DEBOUNCE;
 	}
 
 	/*
