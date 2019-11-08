@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d5fd248_17f4c07d",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-08T17:15:06Z",
+      "side": 1,
+      "message": "nit: There is no semantic link between charger\u0027s bus and eeprom\u0027s bus. So, I would just use NPCX_I2C_PORT7_0.",
+      "range": {
+        "startLine": 94,
+        "startChar": 25,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "7b7c2397f5acda06f3894a5cb07353785a4232d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
