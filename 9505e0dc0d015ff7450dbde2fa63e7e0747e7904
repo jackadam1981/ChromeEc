@@ -117,6 +117,30 @@
       "revId": "9505e0dc0d015ff7450dbde2fa63e7e0747e7904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3820d5f5_fb09a5d2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4426,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-08T00:45:42Z",
+      "side": 1,
+      "message": "Yes. After changing to IS_ENABLED, the make buildall -j is successful. So we can enable the block if we enable the necessary configs.",
+      "parentUuid": "8e794099_dbd0e68b",
+      "range": {
+        "startLine": 4426,
+        "startChar": 39,
+        "endLine": 4426,
+        "endChar": 75
+      },
+      "revId": "9505e0dc0d015ff7450dbde2fa63e7e0747e7904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
