@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e94c853_772b3c26",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T18:33:24Z",
+      "side": 1,
+      "message": "Thanks, created b/144168173 to fix.",
+      "parentUuid": "f840597a_ae449f34",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcbe36d9_22c1f699",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 6
@@ -57,6 +81,24 @@
       "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39c2d64_9c5c9d6e",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T18:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab79843_49030248",
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +137,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "0591b5b0_af904cdf",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aad754fe_2135a719",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T18:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95c91e60_923d18e2",
       "range": {
         "startLine": 114,
         "startChar": 0,
