@@ -133,12 +133,6 @@ static const char * const tc_state_names[] = {
 };
 #endif
 
-/* Generate a compiler error if invalid states are referenced */
-#ifndef CONFIG_USB_PD_TRY_SRC
-#define TC_TRY_SRC	TC_TRY_SRC_UNDEFINED
-#define TC_TRY_WAIT_SNK	TC_TRY_WAIT_SNK_UNDEFINED
-#endif
-
 static struct type_c {
 	/* state machine context */
 	struct sm_ctx ctx;
@@ -166,13 +160,11 @@ static struct type_c {
 	 * the state definitions.
 	 */
 	uint64_t pd_debounce;
-#ifdef CONFIG_USB_PD_TRY_SRC
 	/*
 	 * Time a port shall wait before it can determine it is
 	 * re-attached during the try-wait process.
 	 */
 	uint64_t try_wait_debounce;
-#endif
 	/* The cc state */
 	enum pd_cc_states cc_state;
 	/* Role toggle timer */
@@ -243,11 +235,9 @@ static void pd_update_dual_role_config(int port);
 static void set_state_tc(const int port, const enum usb_tc_state new_state);
 test_export_static enum usb_tc_state get_state_tc(const int port);
 
-#ifdef CONFIG_USB_PD_TRY_SRC
 /* Enable variable for Try.SRC states */
 static uint8_t pd_try_src_enable;
 static void pd_update_try_source(void);
-#endif
 
 static void sink_stop_drawing_current(int port);
 
@@ -866,7 +856,6 @@ static void sink_stop_drawing_current(int port)
 	}
 }
 
-#ifdef CONFIG_USB_PD_TRY_SRC
 /*
  * TODO(b/137493121): Move this function to a separate file that's shared
  * between the this and the original stack.
@@ -877,6 +866,9 @@ static void pd_update_try_source(void)
 	int try_src = 0;
 
 	int batt_soc = usb_get_battery_soc();
+
+	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
+		return;
 
 	try_src = 0;
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
@@ -909,7 +901,6 @@ static void pd_update_try_source(void)
 
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_try_source, HOOK_PRIO_DEFAULT);
-#endif /* CONFIG_USB_PD_TRY_SRC */
 
 #ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
 static inline void pd_dev_dump_info(uint16_t dev_id, uint8_t *hash)
@@ -1894,12 +1885,12 @@ static void tc_attach_wait_snk_run(const int port)
 	 */
 	if (pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
-#ifdef CONFIG_USB_PD_TRY_SRC
-			if (pd_try_src_enable)
-				set_state_tc(port, TC_TRY_SRC);
-			else
-#endif
-				set_state_tc(port, TC_ATTACHED_SNK);
+			if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC)) {
+				if (pd_try_src_enable)
+					set_state_tc(port, TC_TRY_SRC);
+				else
+					set_state_tc(port, TC_ATTACHED_SNK);
+				}
 		} else {
 			/* new_cc_state is PD_CC_DFP_DEBUG_ACC */
 			TC_SET_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
@@ -2642,9 +2633,11 @@ static void tc_attached_src_exit(const int port)
  *   Place Rp on CC
  *   Set power role to SOURCE
  */
-#ifdef CONFIG_USB_PD_TRY_SRC
 static void tc_try_src_entry(const int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
+		return;
+
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
@@ -2656,6 +2649,9 @@ static void tc_try_src_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
 	enum pd_cc_states new_cc_state;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
+		return;
 
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
@@ -2706,6 +2702,9 @@ static void tc_try_src_run(const int port)
  */
 static void tc_try_wait_snk_entry(const int port)
 {
+	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
+		return;
+
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
@@ -2716,6 +2715,9 @@ static void tc_try_wait_snk_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
 	enum pd_cc_states new_cc_state;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
+		return;
 
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
@@ -2750,8 +2752,6 @@ static void tc_try_wait_snk_run(const int port)
 						pd_is_vbus_present(port))
 		set_state_tc(port, TC_ATTACHED_SNK);
 }
-
-#endif
 
 #if defined(CONFIG_USB_PE_SM)
 /*
@@ -3076,7 +3076,6 @@ static const struct usb_state tc_states[] = {
 		.run	= tc_attached_src_run,
 		.exit	= tc_attached_src_exit,
 	},
-#ifdef CONFIG_USB_PD_TRY_SRC
 	[TC_TRY_SRC] = {
 		.entry	= tc_try_src_entry,
 		.run	= tc_try_src_run,
@@ -3087,7 +3086,6 @@ static const struct usb_state tc_states[] = {
 		.run	= tc_try_wait_snk_run,
 		.parent = &tc_states[TC_CC_RD],
 	},
-#endif /* CONFIG_USB_PD_TRY_SRC */
 #ifdef CONFIG_USB_PE_SM
 	[TC_CT_UNATTACHED_SNK] = {
 		.entry = tc_ct_unattached_snk_entry,
