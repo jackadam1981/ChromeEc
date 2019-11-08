@@ -201,6 +201,8 @@ enum power_state power_handle_state(enum power_state state)
 		CPRINTS("Pass thru GPIO_DSW_PWROK: %d", dswpwrok_in);
 		dswpwrok_out = dswpwrok_in;
 
+		gpio_set_level_verbose(CC_CHIPSET, GPIO_EN_PP5000, 1);
+
 		/*
 		 * Now wait for SLP_SUS_L to go high based on tPCH32. If this
 		 * signal doesn't go high within 250 msec then go back to G3.
@@ -210,9 +212,6 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("SLP_SUS_L didn't go high!  Assuming G3.");
 			return POWER_G3;
 		}
-
-		gpio_set_level_verbose(CC_CHIPSET, GPIO_EN_PP5000, 1);
-
 		break;
 
 	case POWER_S5:
