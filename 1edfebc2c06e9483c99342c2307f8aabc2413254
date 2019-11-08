@@ -22,6 +22,30 @@
       "revId": "1edfebc2c06e9483c99342c2307f8aabc2413254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5538445_81d40b47",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-08T20:20:00Z",
+      "side": 1,
+      "message": "* This is effectively the same as the gpio_list array above it.\n* gpio_list.h is only included in board.c in each board\u0027s directory.\n* Since there are many board.c files, someone must have opted to put these definitions in a common file and include them in each source file. This file could be renamed gpio_list.inc, but I don\u0027t think that is totally necessary.\n* The header def for these globals is in gpio.h.",
+      "parentUuid": "c3f53de7_183a66c7",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "1edfebc2c06e9483c99342c2307f8aabc2413254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
