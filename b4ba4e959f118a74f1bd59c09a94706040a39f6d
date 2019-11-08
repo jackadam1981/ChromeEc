@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b945fd6f_881e028b",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-08T17:10:51Z",
+      "side": 1,
+      "message": "Why not \u0027battery.c\u0027? This file hosts code not related to presence (e.g. batter_init).\n\nIf you move the highlighted code to common/battery.c, we can move battery_hw_present to baseboard/baseboard.c (and remove this file).",
+      "revId": "b4ba4e959f118a74f1bd59c09a94706040a39f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8894c38_53abb61b",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-08T17:10:51Z",
+      "side": 1,
+      "message": "Could you move all these to common/battery.c (as __overridable)?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "b4ba4e959f118a74f1bd59c09a94706040a39f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
