@@ -22,12 +22,11 @@
 #define CONFIG_CROS_BOARD_INFO
 #define CONFIG_HIBERNATE_PSL
 #define CONFIG_LED_COMMON
+#define CONFIG_CMD_LEDTEST
 /* TODO(b/140557020): Define CONFIG_LED_ONOFF_STATES and
  * CONFIG_LED_ONOFF_STATES_BAT_LOW when CONFIG_CHARGER is defined.
  */
 #define CONFIG_LED_PWM
-/* TODO(b/140557020): Remove this when CONFIG_CHARGER is defined. */
-#define CONFIG_LED_PWM_CHARGE_STATE_ONLY
 /* Although there are 2 LEDs, they are both controlled by the same lines. */
 #define CONFIG_LED_PWM_COUNT 1
 #define CONFIG_PWM
