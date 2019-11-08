@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b6bc29_7273365d",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T04:16:03Z",
+      "side": 1,
+      "message": "I reckon that these should be PWM_CONFIG_ACTIVE_LOW.",
+      "range": {
+        "startLine": 70,
+        "startChar": 49,
+        "endLine": 70,
+        "endChar": 50
+      },
+      "revId": "0e4d18878d1614f9b316de80629f9c79c2ebf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00cde428_72c46e57",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T04:16:03Z",
+      "side": 1,
+      "message": "This seems kinda high, maybe drop to 2k?",
+      "range": {
+        "startLine": 70,
+        "startChar": 59,
+        "endLine": 70,
+        "endChar": 64
+      },
+      "revId": "0e4d18878d1614f9b316de80629f9c79c2ebf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f1d0324_25af353b",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T04:16:03Z",
+      "side": 1,
+      "message": "do you mind fixing this typo as it\u0027s near? (should be \"TCPC\")",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "0e4d18878d1614f9b316de80629f9c79c2ebf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
