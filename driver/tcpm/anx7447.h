@@ -21,6 +21,16 @@
 #define ANX7447_REG_ADC_CTRL_1		0xBF
 #define ANX7447_REG_ADCFSM_EN		0x20
 
+#define ANX7447_REG_FRSWAP_CTRL		0xAB
+#define FRSWAP_Enable			0x01
+
+#define ANX7447_REG_VD_ALERT_MASK  0xC7
+#define FRSWAP_SIGNAL_DETECTED     0x01
+
+#define ANX7447_REG_R_FRSWAP_INT   0xC8
+#define FRSWAP_INT			0x01
+
+
 /* Registers: SPI slave address used */
 #define ANX7447_REG_HPD_CTRL_0		0x7E
 #define ANX7447_REG_HPD_MODE		0x01
@@ -52,6 +62,10 @@
 #define ANX7447_REG_ANALOG_CTRL_9	0xA9
 #define ANX7447_REG_SAFE_MODE		0x80
 #define ANX7447_REG_R_AUX_RES_PULL_SRC	0x20
+
+
+#define ANX7447_REG_FRS_REG_MAP				0xB6
+#define ANX7447_REG_FRS_REG_FRS_EN			0x01
 
 /*
  * This section of defines are only required to support the config option

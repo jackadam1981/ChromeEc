@@ -373,6 +373,24 @@ static int anx7447_init(int port)
 		rv |= anx7447_mux_set(port, TYPEC_MUX_NONE);
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
+#ifdef CONFIG_USB_PD_FRS_MODE
+	/*Clear FRS_EN pin*/
+	anx7447_reg_read(port, ANX7447_REG_FRS_REG_MAP, &reg);
+	reg &= ~ANX7447_REG_FRS_REG_FRS_EN;
+	anx7447_reg_write(port, ANX7447_REG_FRS_REG_MAP, reg);
+
+	/*UnMask FRS interrupt*/
+	tcpc_read(port, ANX7447_REG_VD_ALERT_MASK, &reg);
+	reg |= FRSWAP_SIGNAL_DETECTED;
+	tcpc_write(port, ANX7447_REG_VD_ALERT_MASK, reg);
+
+/* Fast Swap Function Enable */
+	rv = tcpc_read(port, ANX7447_REG_FRSWAP_CTRL, &reg);
+	reg |= FRSWAP_Enable;
+	rv = tcpc_write(port, ANX7447_REG_FRSWAP_CTRL, reg);
+
+#endif /* CONFIG_USB_PD_FRS_MODE */
+
 	return rv;
 }
 
@@ -437,7 +455,7 @@ int anx7447_board_charging_enable(int port, int enable)
 
 static void anx7447_tcpc_alert(int port)
 {
-	int alert, rv;
+	int alert, rv, reg;
 
 	rv = tcpc_read16(port, TCPC_REG_ALERT, &alert);
 	/* process and clear alert status */
@@ -445,6 +463,14 @@ static void anx7447_tcpc_alert(int port)
 
 	if (!rv && (alert & ANX7447_VENDOR_ALERT))
 		anx7447_update_hpd_enable(port);
+#ifdef CONFIG_USB_PD_FRS_MODE
+		/*FRS clear interrupt*/
+		rv = tcpc_read(port, ANX7447_REG_R_FRSWAP_INT, &reg);
+		if (!rv && (reg & FRSWAP_INT)) {
+			rv = tcpc_write(port, ANX7447_REG_R_FRSWAP_INT, FRSWAP_INT);
+			/*NOTE: to do something after FRS*/
+		}
+#endif /* CONFIG_USB_PD_FRS_MODE */
 }
 
 /*
