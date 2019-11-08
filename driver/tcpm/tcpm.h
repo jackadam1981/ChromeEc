@@ -415,4 +415,16 @@ static inline void tcpm_set_frs_enable(int port, int enable)
 		tcpc->set_frs_enable(port, enable);
 }
 
+/**
+ * Reset TCPC Tx PHY layer
+ *
+ * @param port Type-C port number
+ */
+static inline void tcpm_set_tx_phy_reset(int port)
+{
+	if (tcpc_config[port].drv->set_tx_phy_reset)
+	    tcpc_config[port].drv->set_tx_phy_reset(port);
+	else
+	    tcpc_config[port].drv->init(port);
+}
 #endif
