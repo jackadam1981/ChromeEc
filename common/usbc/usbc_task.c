@@ -39,6 +39,16 @@ int tc_restart_tcpc(int port)
 	return tcpm_init(port);
 }
 
+void tc_pause_event_loop(int port)
+{
+	task_wait_event(-1);
+}
+
+void tc_start_event_loop(int port)
+{
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+}
+
 void set_polarity(int port, int polarity)
 {
 	tcpm_set_polarity(port, polarity);
