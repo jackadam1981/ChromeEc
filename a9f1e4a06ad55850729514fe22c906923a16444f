@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f840597a_ae449f34",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T05:43:08Z",
+      "side": 1,
+      "message": "aside: please consider increasing the frequency of these to avoid flicker. (e.g. - ~2KHz)",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbe36d9_22c1f699",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T05:43:08Z",
+      "side": 1,
+      "message": "JFYI, currently ToT is broken for this stack, but fixes are coming in now.",
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0591b5b0_af904cdf",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T05:43:08Z",
+      "side": 1,
+      "message": "Be sure to file a bug and make a TODO to actually measure this and adjust as necessary.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
