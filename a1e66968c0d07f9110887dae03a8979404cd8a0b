@@ -34,6 +34,24 @@
       "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9773995f_9ff41ab3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T00:48:08Z",
+      "side": 1,
+      "message": "DFP_D is the \"DisplayPort Downstream Facing Port\", so I don\u0027t think we need to say DP again.",
+      "parentUuid": "3159ce3e_aea085df",
+      "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
