@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e0e924e_31412bce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-08T20:47:27Z",
+      "side": 0,
+      "message": "This functionality was moved to pd_device_accessed and the low_power_mode state.",
+      "parentUuid": "15b8887d_43ea4a93",
+      "revId": "18bd5c5b66dcb96d31bae8e7cc322bd4f4fb52ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c04b48e4_ee642255",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "18bd5c5b66dcb96d31bae8e7cc322bd4f4fb52ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c008b8_ac933dd0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2327,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-08T20:47:27Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c04b48e4_ee642255",
+      "range": {
+        "startLine": 2318,
+        "startChar": 1,
+        "endLine": 2327,
+        "endChar": 51
+      },
+      "revId": "18bd5c5b66dcb96d31bae8e7cc322bd4f4fb52ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
