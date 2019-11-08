@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba098aa0_af274be8",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-08T21:01:26Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be HASH_block_size? we use the entire block size in opad[], not just the digest size. should go upstream as well?\n\nor for simplicity just keep sizeof(ctx-\u003eopad) as before? whatever it is we want to zero out the entire structure, as on line 19.",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
