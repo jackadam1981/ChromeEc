@@ -605,6 +605,12 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+static void it83xx_tcpm_set_tx_phy_reset(int port)
+{
+	/* Discard Tx PHY messages */
+	IT83XX_USBPD_PEPDRSR(port) |= USBPD_REG_MASK_TX_MSG_DISCARD;
+}
+
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
@@ -634,4 +640,5 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.get_message_raw	= &it83xx_tcpm_get_message_raw,
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+	.set_tx_phy_reset	= &it83xx_tcpm_set_tx_phy_reset,
 };
