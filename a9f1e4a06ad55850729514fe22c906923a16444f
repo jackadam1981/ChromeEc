@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "eab79843_49030248",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T17:42:50Z",
+      "side": 1,
+      "message": "Even without Sam\u0027s changes on CL:1774822, these changes are able to negotiate up to 45W.  I\u0027ve also tested with Sam\u0027s CL cherry-picked, and basic PD still works.",
+      "parentUuid": "dcbe36d9_22c1f699",
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0591b5b0_af904cdf",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 6
@@ -62,6 +80,30 @@
       "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c91e60_923d18e2",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T17:42:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0591b5b0_af904cdf",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "a9f1e4a06ad55850729514fe22c906923a16444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
