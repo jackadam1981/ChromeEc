@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b1340561_d8311789",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "let\u0027s just always define this in the spirit of reducing the number of #ifdefs in the new stack",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2548ad_9739b84a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "nit: spacing align seems off here",
+      "range": {
+        "startLine": 362,
+        "startChar": 27,
+        "endLine": 363,
+        "endChar": 14
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "326228dd_bad70289",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -18,6 +64,29 @@
         "startChar": 50,
         "endLine": 61,
         "endChar": 55
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b544b0f1_b388d798",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "we can drop the #ifdef and keep the enum values always present.\n\nTo do that we need to do the extern trick down below on line ~140\n\nThis allows us to remove the #ifdef conditionals and replace them with IS_ENABLED while still maintaining compiler-time checking",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 6
       },
       "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -48,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "72bda71d_6cbc7e3c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "can you add comments to pd_update_try_source (and these functions) that they are called from a different tasks and need to protect access to any state variable.\n\nI looked at drp_state and it looks like the main task only reads from it (instead is access modify write), so we can get away with just making drp_state volatile. The more robust approach would be to cause read and writes to drp_state with a mutex. That would protect us long term if we every changes our read and write patterns in the different tasks.\n\n\nThe same logic apply to the pd_try_src_enable variable since that is accessed in multiple tasks. We should guard access to that via mutex as well.",
+      "range": {
+        "startLine": 361,
+        "startChar": 2,
+        "endLine": 361,
+        "endChar": 22
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a51a5a56_4b394728",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -71,6 +163,29 @@
     },
     {
       "key": {
+        "uuid": "43e9b190_1366db15",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "why do we need this here, can you add a comment, please?",
+      "range": {
+        "startLine": 736,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 63
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8258f352_f3e21f30",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -87,6 +202,75 @@
         "startChar": 3,
         "endLine": 805,
         "endChar": 4
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e067757_429d3b1c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "There isn\u0027t necessarily a CC event here, we should probably name this something else like wake from low power mode or something",
+      "range": {
+        "startLine": 806,
+        "startChar": 21,
+        "endLine": 806,
+        "endChar": 38
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136484f3_933dc667",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "This is uneeded",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 881,
+        "endChar": 48
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986e8478_02f1fea6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem like the correct flag, power state change means chipset power state other places. let\u0027s not confuse chipset power and tcpc power state in the same flag",
+      "range": {
+        "startLine": 1529,
+        "startChar": 3,
+        "endLine": 1529,
+        "endChar": 30
       },
       "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -134,6 +318,29 @@
     },
     {
       "key": {
+        "uuid": "1dc8c6c2_ef6dedb9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "these 3 conditions can be combine into once level of if statement",
+      "range": {
+        "startLine": 1721,
+        "startChar": 15,
+        "endLine": 1723,
+        "endChar": 23
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06ff4552_c20b3a71",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -145,6 +352,75 @@
       "writtenOn": "2019-11-08T08:11:31Z",
       "side": 1,
       "message": "Maybe here as well. Basically all places where this guard is used, I think IS_ENABLED(...) may work (and CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)",
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c791c430_6f853573",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1752,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "how does this interact with line 1744. If the DRP auto toggle time expires we never get to this statement. It seems like we need another guard for liner 1744 about auto_toggle_support \u003d\u003d false or something.",
+      "range": {
+        "startLine": 1751,
+        "startChar": 5,
+        "endLine": 1752,
+        "endChar": 39
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "134acc3e_f06dc9b8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "why is this in exit instead of entry of attach snk?\n\nWe are trying to say that we are not going to be in low power mode why we have an active connection, right?",
+      "range": {
+        "startLine": 2048,
+        "startChar": 1,
+        "endLine": 2049,
+        "endChar": 43
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c6006f9_d60daa65",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "let\u0027s single source this flag-keeping logic in one place, please",
+      "range": {
+        "startLine": 2151,
+        "startChar": 2,
+        "endLine": 2153,
+        "endChar": 50
+      },
       "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -174,6 +450,122 @@
     },
     {
       "key": {
+        "uuid": "e770374b_e9b1f1e3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "Also, these conditions can be combined into a single layer of an if statement.\n\n\n\n--\n\nsame comment from the unattcached snk: how does this interact with line 2195 and that manual toggling code. They should be exclusive paths (using IS_ENABLED will help with that since it can all be in one list of if else statements)",
+      "parentUuid": "9d1614d1_b7685f5d",
+      "range": {
+        "startLine": 2205,
+        "startChar": 3,
+        "endLine": 2205,
+        "endChar": 20
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135b32a8_b0141e58",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2587,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "same comment, should this be in entry",
+      "range": {
+        "startLine": 2586,
+        "startChar": 1,
+        "endLine": 2587,
+        "endChar": 43
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4502ee8_1e09ae44",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this as the new state machine is easier to follow (e.g. there is an try separate state), we shouldn\u0027t need to assert this.",
+      "range": {
+        "startLine": 2609,
+        "startChar": 1,
+        "endLine": 2609,
+        "endChar": 59
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e98e6f6_fc90c887",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2628,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "should we be reseting this before calling the fuction, I thought that the drp_auto_toggle_next_state fully controlled the value of this variable",
+      "range": {
+        "startLine": 2628,
+        "startChar": 1,
+        "endLine": 2628,
+        "endChar": 41
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956515e5_e85873fd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2663,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need to do this because we already did it in the entry for this state, right?\n\nWe know that the TCPM is already enabled dro toggle",
+      "range": {
+        "startLine": 2661,
+        "startChar": 2,
+        "endLine": 2663,
+        "endChar": 32
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eae1ed2b_63d212c1",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -185,6 +577,29 @@
       "writtenOn": "2019-11-08T08:11:31Z",
       "side": 1,
       "message": "Why did the ordering of this change?",
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d568d272_a3848f3e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "we should update the ascii art with new states",
+      "range": {
+        "startLine": 3147,
+        "startChar": 0,
+        "endLine": 3151,
+        "endChar": 3
+      },
       "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -207,6 +622,29 @@
         "startChar": 42,
         "endLine": 49,
         "endChar": 53
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5285de_b0c55eb7",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T15:30:45Z",
+      "side": 1,
+      "message": "Let\u0027s also define the header prototype. It will make it easier for IS_ENABLED",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 30
       },
       "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
