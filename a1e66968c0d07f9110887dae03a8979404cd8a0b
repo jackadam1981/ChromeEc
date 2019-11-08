@@ -99,6 +99,30 @@
       "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51dd7f04_6e922c5b",
+        "filename": "board/atlas/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-08T18:20:31Z",
+      "side": 1,
+      "message": "Ok. I know ChromeOS has a policy \"all CB have DP out on Type-C\". But that isn\u0027t always going to be true. Plus thinking of boards like:\n\n(1) \"Betty\" that physically can\u0027t do DP out,\n(2) or ChromiumOS images built for non-Google/CrOS computer systems that can\u0027t do DP out.",
+      "parentUuid": "919344c7_5bdfb7e9",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
