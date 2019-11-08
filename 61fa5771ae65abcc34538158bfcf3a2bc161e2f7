@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cc673d54_7de993b1",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T21:22:40Z",
+      "side": 1,
+      "message": "Fair enough. One place is probably okay. Thanks!",
+      "parentUuid": "37da719d_4dd07213",
+      "range": {
+        "startLine": 841,
+        "startChar": 1,
+        "endLine": 842,
+        "endChar": 9
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a525680d_d0837f4d",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
