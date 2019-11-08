@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44122d6f_e71b539c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-11-08T18:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c1c05f2_bfd7b23c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 34
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9e6e505_fb8d08a8",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37da719d_4dd07213",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-11-08T18:28:56Z",
+      "side": 1,
+      "message": "I am printing error only here and not in other places. This is because for servo_v4 we are running out of space in flash. With this CL series, we have 112 bytes of flash space left. This CL series itself is consuming around 320 bytes. Specifically this debug statement alone consumes around 54 bytes. Without this debug statement, we will have 176 bytes of flash space left.",
+      "parentUuid": "d9e6e505_fb8d08a8",
+      "range": {
+        "startLine": 841,
+        "startChar": 1,
+        "endLine": 842,
+        "endChar": 9
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "48b63d25_c5983014",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-11-08T18:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a525680d_d0837f4d",
+      "range": {
+        "startLine": 1239,
+        "startChar": 1,
+        "endLine": 1239,
+        "endChar": 31
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d71eab73_2fe87bdd",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c48671c_7b0c5259",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-11-08T18:28:56Z",
+      "side": 1,
+      "message": "This is what I am observing with this change in Garg with the HDMI monitor connected.\nlocalhost ~ # ectool usbpdpower\nPort 0: SRC 1500mA\nlocalhost ~ # ectool usbpdpower 0\nPort 0: SRC 1500mA\nlocalhost ~ # ectool usbpdpower 1\nPort 1: Disconnected",
+      "parentUuid": "d71eab73_2fe87bdd",
+      "range": {
+        "startLine": 1242,
+        "startChar": 1,
+        "endLine": 1242,
+        "endChar": 31
+      },
+      "revId": "61fa5771ae65abcc34538158bfcf3a2bc161e2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
