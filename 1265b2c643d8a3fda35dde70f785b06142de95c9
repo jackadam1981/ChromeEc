@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "146c7317_b2ee1aee",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-11-08T06:40:39Z",
+      "side": 1,
+      "message": "Do we need a case for undefind CONFIG_USB_PD_DISCHARGE_GPIO ?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 6
+      },
+      "revId": "1265b2c643d8a3fda35dde70f785b06142de95c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
