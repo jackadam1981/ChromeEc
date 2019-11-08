@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23a97059_4e45952c",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-08T02:14:19Z",
+      "side": 1,
+      "message": "since you have \u0027if (batt_low_v)\u0027 guarded here (in previous suggestion, you don\u0027t need a if statement), I\u0027ll just use constants as arguments for below rt946x_enable_charge_eoc() and rt946x_enable_charge_termination().\n\n if (curr-\u003ebatt.voltage \u003c batt_info-\u003evoltage_min) {\n     ...\n     if (!over_discharge_lock \u0026\u0026 curr-\u003estate \u003d\u003d ST_CHARGE) {\n          over_discharge_lock \u003d 1;\n\t  rt946x_enable_charge_eoc(0);\n\t  rt946x_enable_charge_termination(0);\n\n     }\n     ...\n } else {\n     ...\n     if (!normal_charge_lock) {\n         normal_charge_lock \u003d 1;\n         rt946x_enable_charge_eoc(1);\n\t rt946x_enable_charge_termination(1);\n     }\n }",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "bbf12b1d1245f212d8084769d6c3adc3e0445104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
