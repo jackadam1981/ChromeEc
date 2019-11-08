@@ -1085,7 +1085,7 @@ static void pe_src_send_capabilities_run(int port)
 			 * Set to highest revision supported by both
 			 * ports.
 			 */
-			prl_set_rev(port,
+			prl_set_rev(port, TCPC_TX_SOP,
 				(PD_HEADER_REV(emsg[port].header) > PD_REV30) ?
 				PD_REV30 : PD_HEADER_REV(emsg[port].header));
 
@@ -1753,7 +1753,7 @@ static void pe_snk_evaluate_capability_entry(int port)
 	pe[port].hard_reset_counter = 0;
 
 	/* Set to highest revision supported by both ports. */
-	prl_set_rev(port, (PD_HEADER_REV(header) > PD_REV30) ?
+	prl_set_rev(port, TCPC_TX_SOP, (PD_HEADER_REV(header) > PD_REV30) ?
 					PD_REV30 : PD_HEADER_REV(header));
 
 	pe[port].src_cap_cnt = num;
@@ -2370,7 +2370,7 @@ static void pe_send_not_supported_entry(int port)
 	print_current_state(port);
 
 	/* Request the Protocol Layer to send a Not_Supported Message. */
-	if (prl_get_rev(port) > PD_REV20)
+	if (prl_get_rev(port, TCPC_TX_SOP) > PD_REV20)
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_NOT_SUPPORTED);
 	else
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_REJECT);
