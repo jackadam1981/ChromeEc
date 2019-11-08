@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a30d0b52_101ba2d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T00:19:11Z",
+      "side": 1,
+      "message": "Can this routine also initialize pe[port].ama_vdo and .vpd_vdo?",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 37
+      },
+      "revId": "d2bddd9987e77473509b1c1c70c5f3c5304376e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
