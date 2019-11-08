@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17e416f4_9d909b9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Seems worth mentioning that this CL is adding new auto toggle state, in addition to low power mode.",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d33285_2777e343",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Suggest adding a test for dual-role charge-through hub, with DUT in S5 and S3 and S0.\nWhen hub and DUT are both dual role toggling, then sink/source roles are random, so it took multiple unplug-plug cycles to hit all cases.\n(see b/72007056 for example).",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "087b1f29_f88c4392",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Suggest measuring power to ensure TCPCs are staying in low power as expected. In the past we had bugs where they would wake up and not go back to low power.",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a782468_cfcb3ada",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "This ugly complexity is specific to \"ANX3429 doesn\u0027t support low power mode with auto-toggle disabled\" (b/72007056). I\u0027d like to remove it from this CL, and then add ANX3429 support to TCPMv2 later (if/when needed).\nBut I\u0027m torn since this is a common function shared with TCPMv1.",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d786ef6_7095d9a4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Looks like this flag is set and cleared but never checked, so can it be removed?",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbcbbe7b_fe059dac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "nit: change comment to \"Exit low power\"",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849af9be_83df7ca2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "In the old stack auto_toggle_supported seemed simpler and more obviously const.\nMost of the other TCPMv2 flags are more dynamic and changing at run-time. Can you think of a way to simplify / constify?",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d40a02_e4e6a10f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "remove todo?",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18df1a65_c13c768e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Since reset_device_and_notify() is only called on exit from low power mode, did we lose the print of \"init ready/failed\" on first boot? Would be nice to get that back.",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a22593d_d44a4430",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we toggle to TC_UNATTACHED_SRC when drp_state \u003d\u003d PD_DRP_TOGGLE_ON?",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a2246b6_c7630cef",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "\"already auto toggling\" and \"try.src\" are now separate states in TCPMv2, so aren\u0027t being checked here, so change comment to just \"Attempt TCPC auto DRP toggle\".",
+      "range": {
+        "startLine": 2193,
+        "startChar": 31,
+        "endLine": 2193,
+        "endChar": 46
+      },
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484669a2_2094b61c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2681,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "What if we aren\u0027t supposed to be DRP toggling? Is this relying on tc_drp_auto_toggle_run() to call drp_auto_toggle_next_state() to check drp_state to send us to a different state?",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092020e3_c5276687",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-08T22:11:02Z",
+      "side": 1,
+      "message": "Better to set a flag here and check it in the pd_task while loop?\ntask_wait_event(paused ? -1 : USBC_EVENT_TIMEOUT)\nThat ensures we\u0027ll always do a full pass through the loop before pausing.",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
