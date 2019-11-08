@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319e0583_f94c1297",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-08T18:40:17Z",
+      "side": 1,
+      "message": "We do not explicitly check if UNIMPLEMENTED or UNUSED are previously defined, since there is no guarantee that we would would catch the re-defined cpp error in this file first.\n\nRecall, that gpio.wrap is included in other files.",
+      "revId": "09fbd298be57d9b476b9854753a6c91df2522ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
