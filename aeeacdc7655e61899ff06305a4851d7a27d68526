@@ -212,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "d111d81b_2716c270",
+        "filename": "board/volteer/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-08T17:32:30Z",
+      "side": 1,
+      "message": "I\u0027ll remove as part of fixing that bug.  Need to get these changes merged for volteer power on efforts.",
+      "parentUuid": "a5f4c0e7_85eb3403",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "aeeacdc7655e61899ff06305a4851d7a27d68526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "565c476c_ffb7dc7c",
         "filename": "board/volteer/build.mk",
         "patchSetId": 3
