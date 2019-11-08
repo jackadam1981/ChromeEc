@@ -75,6 +75,30 @@
       "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919344c7_5bdfb7e9",
+        "filename": "board/atlas/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-08T17:35:11Z",
+      "side": 1,
+      "message": "Does any board act as a DP sink? If not, the DP source capability is inferred by having this function.",
+      "parentUuid": "3f1e4389_de253c72",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
