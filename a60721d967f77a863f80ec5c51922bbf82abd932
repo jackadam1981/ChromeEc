@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b9d3a431_8cf76a55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-08T21:12:46Z",
+      "side": 1,
+      "message": "should pass cr50 crypto tests as well.\n@sukhomlinov, @gurleengrewal, what do we suggest here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba098aa0_af274be8",
         "filename": "chip/g/dcrypto/hmac.c",
         "patchSetId": 7
