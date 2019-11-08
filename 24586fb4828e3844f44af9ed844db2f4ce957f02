@@ -22,6 +22,30 @@
       "revId": "24586fb4828e3844f44af9ed844db2f4ce957f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf51f362_10d44636",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-08T22:42:46Z",
+      "side": 1,
+      "message": "good point, dropped the comment completely as the code is pretty self explanatory.",
+      "parentUuid": "f5c5c48e_f698d2a3",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 34
+      },
+      "revId": "24586fb4828e3844f44af9ed844db2f4ce957f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
