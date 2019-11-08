@@ -4388,22 +4388,13 @@ void pd_set_vbus_discharge(int port, int enable)
 	mutex_lock(&discharge_lock[port]);
 	enable &= !board_vbus_source_enabled(port);
 
-#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
-#if CONFIG_USB_PD_PORT_COUNT == 0
-	gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);
-#elif CONFIG_USB_PD_PORT_COUNT == 1
-	gpio_set_level(GPIO_USB_C1_DISCHARGE, enable);
-#elif CONFIG_USB_PD_PORT_COUNT == 2
-	gpio_set_level(GPIO_USB_C2_DISCHARGE, enable);
-#elif CONFIG_USB_PD_PORT_COUNT == 3
-	gpio_set_level(GPIO_USB_C3_DISCHARGE, enable);
-#endif
-#else
-	if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_TCPC))
+	if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_GPIO))
+		gpio_set_level(usbc_dicharge_gpio[port], enable);
+	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_TCPC))
 		tcpc_discharge_vbus(port, enable);
 	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_PPC))
 		ppc_discharge_vbus(port, enable);
-#endif
+
 	mutex_unlock(&discharge_lock[port]);
 }
 #endif /* CONFIG_USB_PD_DISCHARGE */

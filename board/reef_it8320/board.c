@@ -84,6 +84,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
+const enum gpio_signal usbc_dicharge_gpio[] = {
+	GPIO_USB_C0_DISCHARGE,
+	GPIO_USB_C1_DISCHARGE,
+};
+BUILD_ASSERT(ARRAY_SIZE(usbc_dicharge_gpio) == CONFIG_USB_PD_PORT_COUNT);
+
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 	int cc1_enabled = 0, cc2_enabled = 0;

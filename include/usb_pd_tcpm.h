@@ -368,6 +368,10 @@ extern const struct tcpc_config_t tcpc_config[];
 extern struct tcpc_config_t tcpc_config[];
 #endif
 
+#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
+extern const enum gpio_signal usbc_dicharge_gpio[];
+#endif
+
 /**
  * Returns the PD_STATUS_TCPC_ALERT_* mask corresponding to the TCPC ports
  * that are currently asserting ALERT.
@@ -425,5 +429,4 @@ int board_tcpc_post_init(int port) __attribute__((weak));
  *
  */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled);
-
 #endif /* __CROS_EC_USB_PD_TCPM_H */
