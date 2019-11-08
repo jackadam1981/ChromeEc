@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf35162a_017e3742",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T05:10:05Z",
+      "side": 1,
+      "message": "100 is too low; personally, I can visibly see the flickering of the LED. I think 2.4KHz is where I settled for on nocturne where I couldn\u0027t discern flickering.",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "4c88f16b38138ea958187cb619636e9dd9d1ab04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
