@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de3a02dd_6ee5f417",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T14:59:26Z",
+      "side": 1,
+      "message": "seeing that the protocol layer has this flag that is getting used, I think we should remove it here. Thoughts?\n\n@Sam, unless you are going to use this flag in upcoming CLs soon. Do you need this flag?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 51
+      },
+      "revId": "d14276a946cf980a10676946de18e28a4b45a308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14fb03f3_0cf2ea34",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T14:59:26Z",
+      "side": 1,
+      "message": "nit: should be sent (?)",
+      "range": {
+        "startLine": 88,
+        "startChar": 51,
+        "endLine": 88,
+        "endChar": 59
+      },
+      "revId": "d14276a946cf980a10676946de18e28a4b45a308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b886b6b_25609316",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T14:59:26Z",
+      "side": 1,
+      "message": "is currently starting (either by us or port partner)",
+      "range": {
+        "startLine": 63,
+        "startChar": 23,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "d14276a946cf980a10676946de18e28a4b45a308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c72e5c4_367ad472",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T14:59:26Z",
+      "side": 1,
+      "message": "is ending either by us (not port partner)\n\nI remember start and stop not being symmetrical in the code",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "d14276a946cf980a10676946de18e28a4b45a308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbde110_f49b6563",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T14:59:26Z",
+      "side": 1,
+      "message": "current TX transmission (or does it apply to both)\n\nif so, can you call that out",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "d14276a946cf980a10676946de18e28a4b45a308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a508bed5_fad0507b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-08T14:59:26Z",
+      "side": 1,
+      "message": "current TX message transmission",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "d14276a946cf980a10676946de18e28a4b45a308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
