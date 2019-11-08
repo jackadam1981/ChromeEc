@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37128c42_c6933300",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-08T15:46:41Z",
+      "side": 1,
+      "message": "Sam, another one that is not currently being set anywhere",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 48
+      },
+      "revId": "40ea4e1d41fca73ce4e118f23165476ee30eb249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b270413c_f776ae69",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-08T15:46:41Z",
+      "side": 1,
+      "message": "Sam, another one not currently being set",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "40ea4e1d41fca73ce4e118f23165476ee30eb249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
