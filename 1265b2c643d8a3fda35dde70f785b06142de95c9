@@ -22,6 +22,30 @@
       "revId": "1265b2c643d8a3fda35dde70f785b06142de95c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93484d40_eea96f50",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-08T14:54:57Z",
+      "side": 1,
+      "message": "PPC \u0026 VBUS discharge functions?",
+      "parentUuid": "146c7317_b2ee1aee",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 6
+      },
+      "revId": "1265b2c643d8a3fda35dde70f785b06142de95c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
