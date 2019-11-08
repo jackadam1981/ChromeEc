@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa317366_cb519865",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-08T04:35:43Z",
+      "side": 1,
+      "message": "if (tcpc_config[port].drv-\u003eset_tx_phy_reset)\n    tcpc_config[port].drv-\u003eset_tx_phy_reset(port);\nelse\n    tcpc_config[port].drv-\u003einit(port);",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 47
+      },
+      "revId": "d7acc44d80093ff1974dc1be2bf26828d2435177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
