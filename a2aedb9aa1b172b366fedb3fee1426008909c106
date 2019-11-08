@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "326228dd_bad70289",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "Maybe \u0027chipset power state\u0027?",
+      "range": {
+        "startLine": 61,
+        "startChar": 50,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f72014_8dbfec0b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "Is this supposed to be #ifndef?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51a5a56_4b394728",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "At first glance it seemed strange to me to have this, but I suppose a board could have different types of TCPCs and some support DRP auto toggle and others don\u0027t? It might be helpful to put a comment here explaining the rationale.",
+      "range": {
+        "startLine": 721,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 6
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8258f352_f3e21f30",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "nit: unneeded indent",
+      "range": {
+        "startLine": 805,
+        "startChar": 3,
+        "endLine": 805,
+        "endChar": 4
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bdfc51_db15100a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "I think you might be able to enclose this in IS_ENABLED(...)?",
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b98fa35_98f98485",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1719,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "This bit of the comment doesn\u0027t seem to apply? I believe in TCPMv2, Try.Src is a separate state instead of a flag that it used to be.\n\nMaybe it should read \"and we\u0027re allowed to\" or something similar.",
+      "range": {
+        "startLine": 1719,
+        "startChar": 30,
+        "endLine": 1719,
+        "endChar": 45
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ff4552_c20b3a71",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "Maybe here as well. Basically all places where this guard is used, I think IS_ENABLED(...) may work (and CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)",
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1614d1_b7685f5d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "This seems like it will always be true and can be removed. Again, Try.Src is a separate state; so if we\u0027re in Unattached.Src, we\u0027re not in Try.Src.",
+      "range": {
+        "startLine": 2205,
+        "startChar": 3,
+        "endLine": 2205,
+        "endChar": 20
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae1ed2b_63d212c1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2982,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "Why did the ordering of this change?",
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650ee8e1_36f8d1cf",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "Why is a CC event being used to wake the task? Seems weird to fudge a CC event. If we want to overload an event, what do you think about the power_state_change event? Or is it just as weird to fudge that?",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc81dd6_668bb97f",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-08T08:11:31Z",
+      "side": 1,
+      "message": "typo: \u0027transition\u0027",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
