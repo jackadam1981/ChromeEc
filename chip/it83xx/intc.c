@@ -121,6 +121,11 @@ void intc_cpu_int_group_12(void)
 	int intc_group_12 = intc_get_ec_int();
 
 	switch (intc_group_12) {
+#ifdef CONFIG_SPI
+	case IT83XX_IRQ_SPI_SLAVE:
+		spi_interrupt();
+		break;
+#endif
 #ifdef CONFIG_PECI
 	case IT83XX_IRQ_PECI:
 		peci_interrupt();
