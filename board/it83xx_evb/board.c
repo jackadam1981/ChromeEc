@@ -211,3 +211,71 @@ const struct spi_device_t spi_devices[] = {
 	{ CONFIG_SPI_FLASH_PORT, 0, -1},
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+/* SPI test */
+static uint8_t tx_fifo[256];
+
+static int command_spislv_rdata(int argc, char **argv)
+{
+	int i;
+	char *e;
+	int len = strtoi(argv[1], &e, 0);
+
+	ccprints("[SSPI] tx_fifo=%pP\n", tx_fifo);
+	for (i = 0; i < spi_devices_used; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+
+		spi_transaction(&spi_devices[i], NULL, 0,
+			tx_fifo, len);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spiread, command_spislv_rdata,
+			"spiread [length]",
+			"SPI read data");
+
+static int command_spislv_wdata(int argc, char **argv)
+{
+	int i, j;
+	char *e;
+	int len = strtoi(argv[1], &e, 0);
+	uint8_t tx_buf[len];
+
+	for (j = 0; j < len; j++)
+		tx_buf[j] = j + 1;
+
+	for (i = 0; i < spi_devices_used; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+
+		spi_transaction(&spi_devices[i], tx_buf,
+			sizeof(tx_buf), NULL, 0);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spiwrite, command_spislv_wdata,
+			"spiwrite [length]",
+			"SPI write data");
+
+static int command_spislv_hello(int argc, char **argv)
+{
+	int i;
+	uint8_t tx_buf[] = {0x03, 0xEE, 0x01, 0x00, 0x00,
+		0x00, 0x04, 0x00, 0x01, 0x02, 0x03, 0x04};
+
+	for (i = 0; i < spi_devices_used; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+
+		spi_transaction(&spi_devices[i], tx_buf,
+			sizeof(tx_buf), NULL, 0);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spihello, command_spislv_hello,
+			"spihello",
+			"SPI hello cmmand");

@@ -33,6 +33,7 @@
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_UART_HOST
 #define CONFIG_HOSTCMD_LPC
+#define CONFIG_SPI
 
 #if IT83XX_PD_EVB
 /* PD */
