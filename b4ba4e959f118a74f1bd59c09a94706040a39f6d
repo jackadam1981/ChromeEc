@@ -37,6 +37,52 @@
     },
     {
       "key": {
+        "uuid": "44468ffe_f353f45f",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-11-08T20:14:22Z",
+      "side": 1,
+      "message": "false\n\nNit: This would be easier to read without the ternary operator.",
+      "range": {
+        "startLine": 27,
+        "startChar": 39,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "b4ba4e959f118a74f1bd59c09a94706040a39f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d1d05c_f4e17079",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-11-08T20:14:22Z",
+      "side": 1,
+      "message": "Nit: These could be one line.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "b4ba4e959f118a74f1bd59c09a94706040a39f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8894c38_53abb61b",
         "filename": "baseboard/volteer/battery_presence.c",
         "patchSetId": 5
