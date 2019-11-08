@@ -52,6 +52,29 @@
       "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1e4389_de253c72",
+        "filename": "board/atlas/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-08T09:00:34Z",
+      "side": 1,
+      "message": "Only a question: is there a #define config option that says \"this board is capable of DP AltMode Source (DFP_D)\"?\n\nChecking usb_pd.h seems to indicate DP_FLAGS_DP_ON is not a board-specific config define, but a \"bit(0) placeholder mask\" define.\n\nMaybe can make universally-applicable Master patch like pseudocode (ifdef(SPECIAL_BOARD_CONFIG)?1:0);",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
