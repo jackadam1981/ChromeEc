@@ -1358,6 +1358,18 @@ static void pe_src_ready_entry(int port)
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_port_identity_timer = TIMER_DISABLED;
 	}
+
+	/*
+	 * For PD2.0, add some jitter of up to 100ms before sending a message.
+	 * Some devices are chatty once we reach the SRC_READY state and we may
+	 * end up in a collision of messages if we try to immediately send our
+	 * interrogations.
+	 */
+	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20) {
+		if (pe[port].discover_port_identity_timer != TIMER_DISABLED)
+			pe[port].discover_port_identity_timer +=
+					(get_time().le.lo % (100 * MSEC));
+	}
 }
 
 static void pe_src_ready_run(int port)
@@ -2060,6 +2072,18 @@ static void pe_snk_ready_entry(int port)
 	} else {
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_port_identity_timer = TIMER_DISABLED;
+	}
+
+	/*
+	 * For PD2.0, add some jitter of up to 100ms before sending a message.
+	 * Some devices are chatty once we reach the SRC_READY state and we may
+	 * end up in a collision of messages if we try to immediately send our
+	 * interrogations.
+	 */
+	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20) {
+		if (pe[port].discover_port_identity_timer != TIMER_DISABLED)
+			pe[port].discover_port_identity_timer +=
+					(get_time().le.lo % (100 * MSEC));
 	}
 }
 
