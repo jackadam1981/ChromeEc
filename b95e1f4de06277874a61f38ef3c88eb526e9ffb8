@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce7cc06_01ede868",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-09T02:23:59Z",
+      "side": 1,
+      "message": "why it is moved outside if statement? if len \u003c\u003d HASH_block_size(\u0026ctx-\u003ehash) it will do initialization twice, which doesn\u0027t seem to serve any purpose.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "b95e1f4de06277874a61f38ef3c88eb526e9ffb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
