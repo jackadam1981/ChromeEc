@@ -236,6 +236,25 @@ void clock_enable_module(enum module_id module, int enable)
 	}
 }
 
+void __idle(void) {
+	while (1) {
+		asm volatile("cpsid i");
+		/* set deep sleep bit */
+		CPU_SCB_SYSCTRL |= 0x4;
+
+		/* ensure outstanding memory transactions complete */
+		asm volatile("dsb");
+
+		asm("wfi");
+		CPU_SCB_SYSCTRL &= ~0x4;
+		asm volatile("cpsie i");
+	}
+}
+
+void clock_refresh_console_in_use(void)
+{
+}
+
 void rtc_init(void)
 {
 	rtc_unlock_regs();
