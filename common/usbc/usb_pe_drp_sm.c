@@ -1177,7 +1177,8 @@ static void pe_src_send_capabilities_run(int port)
 	 *  2) Reset the HardResetCounter and CapsCounter to zero.
 	 *  3) Initialize and run the SenderResponseTimer.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
+		pe[port].sender_response_timer == TIMER_DISABLED) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Stop the NoResponseTimer */
@@ -1198,7 +1199,8 @@ static void pe_src_send_capabilities_run(int port)
 	 * Transition to the PE_SRC_Negotiate_Capability state when:
 	 *  1) A Request Message is received from the Sink
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (pe[port].sender_response_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/*
@@ -1915,12 +1917,15 @@ static void pe_snk_select_capability_run(int port)
 	uint8_t cnt;
 
 	/* Wait until message is sent */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-
-		/* Initialize and run SenderResponseTimer */
-		pe[port].sender_response_timer =
+	if (pe[port].sender_response_timer == TIMER_DISABLED) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+			/* Initialize and run SenderResponseTimer */
+			pe[port].sender_response_timer =
 					get_time().val + PD_T_SENDER_RESPONSE;
+		} else {
+			return;
+		}
 	}
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
@@ -1987,6 +1992,22 @@ static void pe_snk_select_capability_run(int port)
 						PE_SNK_WAIT_FOR_CAPABILITIES);
 				return;
 			}
+			/*
+			 * Unexpected Control Message Received
+			 */
+			else {
+				/* Send Soft Reset */
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			}
+		}
+		/*
+		 * Unexpected Data Message
+		 */
+		else {
+			/* Send Soft Reset */
+			set_state_pe(port, PE_SEND_SOFT_RESET);
+			return;
 		}
 	}
 
@@ -2788,11 +2809,27 @@ static void pe_drs_send_swap_run(int port)
 	int ext;
 
 	/* Wait until message is sent */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-		/* start the SenderResponseTimer */
-		pe[port].sender_response_timer =
-				get_time().val + PD_T_SENDER_RESPONSE;
+	if (pe[port].sender_response_timer == TIMER_DISABLED) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+			/* Initialize and run SenderResponseTimer */
+			pe[port].sender_response_timer =
+					get_time().val + PD_T_SENDER_RESPONSE;
+		} else {
+			return;
+		}
+	}
+
+	/*
+	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
+	 *   1) Or the SenderResponseTimer times out.
+	 */
+	if (get_time().val > pe[port].sender_response_timer) {
+		if (pe[port].power_role == PD_ROLE_SINK)
+			set_state_pe(port, PE_SNK_READY);
+		else
+			set_state_pe(port, PE_SRC_READY);
+		return;
 	}
 
 	/*
@@ -2922,7 +2959,8 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	int cnt;
 	int ext;
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Update pe power role */
@@ -3165,13 +3203,14 @@ static void pe_prs_snk_src_source_on_run(int port)
 {
 	/* Wait until power supply turns on */
 	if (pe[port].ps_source_timer != TIMER_DISABLED) {
-		if (get_time().val >= pe[port].ps_source_timer) {
-			/* update pe power role */
-			pe[port].power_role = tc_get_power_role(port);
-			prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
-			/* reset timer so PD_CTRL_PS_RDY isn't sent again */
-			pe[port].ps_source_timer = TIMER_DISABLED;
-		}
+		if (get_time().val < pe[port].ps_source_timer)
+			return;
+
+		/* update pe power role */
+		pe[port].power_role = tc_get_power_role(port);
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
+		pe[port].ps_source_timer = TIMER_DISABLED;
 	}
 
 	/*
@@ -3608,15 +3647,10 @@ static void pe_vdm_request_entry(int port)
 
 static void pe_vdm_request_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].vdm_response_timer == TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		/* Message was sent */
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-
-		if (pe[port].partner_type) {
-			/* Restore power and data roles */
-			tc_set_power_role(port, pe[port].saved_power_role);
-			tc_set_data_role(port, pe[port].saved_data_role);
-		}
 
 		/* Start no response timer */
 		pe[port].vdm_response_timer =
@@ -3641,7 +3675,8 @@ static void pe_vdm_request_run(int port)
 		ext = PD_HEADER_EXT(emsg[port].header);
 
 		if ((sop == TCPC_TX_SOP || sop == TCPC_TX_SOP_PRIME) &&
-			type == PD_DATA_VENDOR_DEF && cnt > 0 && ext == 0) {
+				type == PD_DATA_VENDOR_DEF && cnt > 0 &&
+				ext == 0) {
 			if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK) {
 				set_state_pe(port, PE_VDM_ACKED);
 				return;
@@ -3654,6 +3689,16 @@ static void pe_vdm_request_run(int port)
 					PE_SET_FLAG(port,
 						PE_FLAGS_VDM_REQUEST_BUSY);
 			}
+		} else {
+			/*
+			 * Unexpected Message Received.
+			 * Return to Src.Ready or Snk.Ready to
+			 * handle it.
+			 */
+			if (pe[port].power_role == PD_ROLE_SOURCE)
+				set_state_pe(port, PE_SRC_READY);
+			else
+				set_state_pe(port, PE_SNK_READY);
 		}
 	}
 
@@ -3992,12 +4037,16 @@ static void pe_vcs_send_swap_run(int port)
 	uint8_t cnt;
 
 	/* Wait until message is sent */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].sender_response_timer == TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		/* Start the SenderResponseTimer */
 		pe[port].sender_response_timer = get_time().val +
 						PD_T_SENDER_RESPONSE;
 	}
+
+	if (pe[port].sender_response_timer == TIMER_DISABLED)
+		return;
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
@@ -4025,7 +4074,6 @@ static void pe_vcs_send_swap_run(int port)
 						PE_VCS_TURN_ON_VCONN_SWAP);
 				return;
 			}
-
 			/*
 			 * Transition back to either the PE_SRC_Ready or
 			 * PE_SNK_Ready state when:
@@ -4041,6 +4089,14 @@ static void pe_vcs_send_swap_run(int port)
 				else
 					set_state_pe(port, PE_SNK_READY);
 			}
+		}
+		/*
+		 * Unexpected Data Message Received
+		 */
+		else {
+			/* Send Soft Reset */
+			set_state_pe(port, PE_SEND_SOFT_RESET);
+			return;
 		}
 	}
 }
