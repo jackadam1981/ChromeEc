@@ -103,8 +103,10 @@
 #define PE_FLAGS_DR_SWAP_TO_DFP              BIT(23)
 /* Flag to trigger a message resend after receiving a WAIT from port partner */
 #define PE_FLAGS_RESEND_MSG                  BIT(24)
-/* FLAG to track if port partner is dualrole capable */
+/* Flag to track if port partner is dualrole capable */
 #define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(25)
+/* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
+#define PE_FLAGS_FIRST_MSG                   BIT(26)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
