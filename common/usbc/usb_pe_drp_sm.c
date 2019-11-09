@@ -103,8 +103,10 @@
 #define PE_FLAGS_DR_SWAP_TO_DFP              BIT(23)
 /* Flag to trigger a message resend after receiving a WAIT from port partner */
 #define PE_FLAGS_RESEND_MSG                  BIT(24)
-/* FLAG to track if port partner is dualrole capable */
+/* Flag to track if port partner is dualrole capable */
 #define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(25)
+/* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
+#define PE_FLAGS_FIRST_MSG                   BIT(26)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -128,6 +130,23 @@
 #define N_DR_SWAP_ATTEMPT_COUNT 5
 
 #define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
+
+/*
+ * The time that we allow the port partner to send any messages after an
+ * explicit contract is established.  200ms was chosen somewhat arbitrarily as
+ * it should be long enough for sources to decide to send a message if they were
+ * going to, but not so long that a "low power charger connected" notification
+ * would be shown in the chrome OS UI.
+ */
+#define SNK_READY_HOLD_OFF_US (200 * MSEC)
+/*
+ * For the same purpose as SNK_READY_HOLD_OFF_US, but this delay can be longer
+ * since the concern over "low power charger" is not relevant when connected as
+ * a source and the additional delay avoids a race condition where the partner
+ * port sends a power role swap request close to when the VDM discover identity
+ * message gets sent.
+ */
+#define SRC_READY_HOLD_OFF_US (400 * MSEC)
 
 /*
  * Function pointer to a Structured Vendor Defined Message (SVDM) response
@@ -1014,20 +1033,34 @@ static void pe_attempt_port_discovery(int port)
 static void pe_update_wait_and_add_jitter_timer(int port)
 {
 	/*
-	 * For PD2.0, wait 400ms or 200ms and add some jitter of up to 100ms
-	 * before sending the first message after entering the PE_SRC_READY
-	 * and PE_SNK_READY states.
+	 * In PD2.0 Mode
 	 *
-	 * Some devices are chatty once we reach the SRC_READY state and we may
-	 * end up in a collision of messages if we try to immediately send our
-	 * interrogations.
+	 * For Source:
+	 * Give the sink some time to send any messages
+	 * before we may send messages of our own.  Add
+	 * some jitter of up to ~192ms, to prevent
+	 * multiple collisions. This delay also allows
+	 * the sink device to request power role swap
+	 * and allow the the accept message to be sent
+	 * prior to CMD_DISCOVER_IDENT being sent in the
+	 * SRC_READY state.
+	 *
+	 * For Sink:
+	 * Give the source some time to send any messages before
+	 * we start our interrogation.  Add some jitter of up to
+	 * ~192ms to prevent multiple collisions.
 	 */
 	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20 &&
 			PE_CHK_FLAG(port, PE_FLAGS_FIRST_MSG)) {
-		pe[port].wait_and_add_jitter_timer = get_time().val +
-				((get_time().le.lo % (100 * MSEC)) +
-				(pe[port].power_role == PD_ROLE_SOURCE ?
-					(400 * MSEC) : (200 * MSEC)));
+		if (pe[port].power_role == PD_ROLE_SOURCE) {
+			pe[port].wait_and_add_jitter_timer = get_time().val +
+			SRC_READY_HOLD_OFF_US +
+					(get_time().le.lo & 0xf) * 12 * MSEC;
+		} else {
+			pe[port].wait_and_add_jitter_timer = get_time().val +
+			SNK_READY_HOLD_OFF_US +
+					(get_time().le.lo & 0xf) * 12 * MSEC;
+		}
 	}
 }
 
