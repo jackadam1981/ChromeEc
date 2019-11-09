@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "12ebc8bc_b8a1535d",
+        "filename": "chip/g/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-09T02:03:17Z",
+      "side": 1,
+      "message": "i don\u0027t see this field defined in cryptoc which is here: https://cs.corp.google.com/chromeos_public/src/third_party/cryptoc/include/cryptoc/hash-internal.h",
+      "range": {
+        "startLine": 650,
+        "startChar": 42,
+        "endLine": 650,
+        "endChar": 59
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba098aa0_af274be8",
         "filename": "chip/g/dcrypto/hmac.c",
         "patchSetId": 7
@@ -141,6 +164,29 @@
       "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1677505_83195a4e",
+        "filename": "chip/g/dcrypto/sha256.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-09T02:03:17Z",
+      "side": 1,
+      "message": "should it be SHA512_DIGEST_SIZE?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
