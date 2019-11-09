@@ -1090,7 +1090,8 @@ static void pe_src_send_capabilities_run(int port)
 	 *  2) Reset the HardResetCounter and CapsCounter to zero.
 	 *  3) Initialize and run the SenderResponseTimer.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
+		pe[port].sender_response_timer == TIMER_DISABLED) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Stop the NoResponseTimer */
@@ -1111,7 +1112,8 @@ static void pe_src_send_capabilities_run(int port)
 	 * Transition to the PE_SRC_Negotiate_Capability state when:
 	 *  1) A Request Message is received from the Sink
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (pe[port].sender_response_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/*
@@ -1881,13 +1883,17 @@ static void pe_snk_select_capability_run(int port)
 	uint8_t cnt;
 
 	/* Wait until message is sent */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].sender_response_timer == TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Initialize and run SenderResponseTimer */
 		pe[port].sender_response_timer =
 					get_time().val + PD_T_SENDER_RESPONSE;
 	}
+
+	if (pe[port].sender_response_timer == TIMER_DISABLED)
+		return;
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
@@ -2799,11 +2805,27 @@ static void pe_drs_send_swap_run(int port)
 	int ext;
 
 	/* Wait until message is sent */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].sender_response_timer == TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		/* start the SenderResponseTimer */
 		pe[port].sender_response_timer =
 				get_time().val + PD_T_SENDER_RESPONSE;
+	}
+
+	if (pe[port].sender_response_timer == TIMER_DISABLED)
+		return;
+
+	/*
+	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
+	 *   1) Or the SenderResponseTimer times out.
+	 */
+	if (get_time().val > pe[port].sender_response_timer) {
+		if (pe[port].power_role == PD_ROLE_SINK)
+			set_state_pe(port, PE_SNK_READY);
+		else
+			set_state_pe(port, PE_SRC_READY);
+		return;
 	}
 
 	/*
@@ -2933,7 +2955,8 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	int cnt;
 	int ext;
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Update pe power role */
@@ -3176,13 +3199,14 @@ static void pe_prs_snk_src_source_on_run(int port)
 {
 	/* Wait until power supply turns on */
 	if (pe[port].ps_source_timer != TIMER_DISABLED) {
-		if (get_time().val >= pe[port].ps_source_timer) {
-			/* update pe power role */
-			pe[port].power_role = tc_get_power_role(port);
-			prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
-			/* reset timer so PD_CTRL_PS_RDY isn't sent again */
-			pe[port].ps_source_timer = TIMER_DISABLED;
-		}
+		if (get_time().val < pe[port].ps_source_timer)
+			return;
+
+		/* update pe power role */
+		pe[port].power_role = tc_get_power_role(port);
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
+		pe[port].ps_source_timer = TIMER_DISABLED;
 	}
 
 	/*
@@ -3619,15 +3643,10 @@ static void pe_vdm_request_entry(int port)
 
 static void pe_vdm_request_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].vdm_response_timer == TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		/* Message was sent */
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-
-		if (pe[port].partner_type) {
-			/* Restore power and data roles */
-			tc_set_power_role(port, pe[port].saved_power_role);
-			tc_set_data_role(port, pe[port].saved_data_role);
-		}
 
 		/* Start no response timer */
 		pe[port].vdm_response_timer =
@@ -4003,12 +4022,16 @@ static void pe_vcs_send_swap_run(int port)
 	uint8_t cnt;
 
 	/* Wait until message is sent */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	if (pe[port].sender_response_timer == TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		/* Start the SenderResponseTimer */
 		pe[port].sender_response_timer = get_time().val +
 						PD_T_SENDER_RESPONSE;
 	}
+
+	if (pe[port].sender_response_timer == TIMER_DISABLED)
+		return;
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
