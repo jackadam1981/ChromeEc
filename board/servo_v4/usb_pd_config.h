@@ -63,6 +63,14 @@
 #define CC_SNK_WITH_PD	(1 << 4)   /* Force enabling PD comm for sink role */
 #define CC_POLARITY	(1 << 5)   /* CC polarity */
 
+/* Servo v4 DP alt-mode configuration */
+#define ALT_DP_ENABLE	(1 << 0)   /* Enable DP alt-mode or not */
+#define ALT_DP_PIN_C	(1 << 1)   /* Pin assignment C supported */
+#define ALT_DP_PIN_D	(1 << 2)   /* Pin assignment D supported */
+#define ALT_DP_PIN_E	(1 << 3)   /* Pin assignment E supported */
+#define ALT_DP_MF_PREF	(1 << 4)   /* Multi-Function preferred */
+#define ALT_DP_PLUG	(1 << 5)   /* Plug or receptacle */
+
 /* TX uses SPI1 on PB3-4 for CHG port, SPI2 on PB 13-14 for DUT port */
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
 static inline void spi_enable_clock(int port)
