@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5e2676c_f7e0e43f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-09T00:05:19Z",
+      "side": 1,
+      "message": "Do you mean the ACVP tests? Checked the ones that have been added so far. I only check the short version of each test - which contains a random subset of test cases from the full version. The full versions take 3-5 hours each to run.\n\nShould we run the full ones as well?",
+      "parentUuid": "b9d3a431_8cf76a55",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba098aa0_af274be8",
         "filename": "chip/g/dcrypto/hmac.c",
         "patchSetId": 7
@@ -69,6 +93,30 @@
       "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d058392f_482aeae7",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-09T00:05:19Z",
+      "side": 1,
+      "message": "My mistake. Done. As per Vadim B\u0027s comment (on patchset 4) we\u0027ll stick with HASH_block_size instead of sizeof(ctx-\u003eopad).",
+      "parentUuid": "df29a889_f895bc3e",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
