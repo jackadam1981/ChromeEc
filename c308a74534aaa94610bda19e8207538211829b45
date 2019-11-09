@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9943bdc2_b45dfebc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-09T21:08:54Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_USB_PE_SM) \u0026\u0026 TC_CHK_FLAG...",
+      "revId": "c308a74534aaa94610bda19e8207538211829b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0fcc0a_a8623062",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-09T21:08:54Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_USB_PE_SM) ?",
+      "revId": "c308a74534aaa94610bda19e8207538211829b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc19ab0_c01b943d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2249,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-09T21:08:54Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_USBC_VCONN) ?",
+      "revId": "c308a74534aaa94610bda19e8207538211829b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
