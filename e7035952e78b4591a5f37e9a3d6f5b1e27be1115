@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "428497ea_8d572d70",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-09T21:04:08Z",
+      "side": 1,
+      "message": "Doesn\u0027t this belong between 1359 and 1360?  Then you can remove the condition !\u003d TIMER_DISABLED",
+      "range": {
+        "startLine": 1365,
+        "startChar": 0,
+        "endLine": 1375,
+        "endChar": 2
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c72fe3_10a28604",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-09T21:04:08Z",
+      "side": 1,
+      "message": "Doesn\u0027t this belong between 2077 and 2078?  Then you can remove the condition !\u003d TIMER_DISABLED",
+      "range": {
+        "startLine": 2082,
+        "startChar": 0,
+        "endLine": 2093,
+        "endChar": 2
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
