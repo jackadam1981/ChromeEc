@@ -993,15 +993,20 @@ static void pe_attempt_port_discovery(int port)
 	}
 
 	/*
-	 * For PD2.0, add some jitter of up to 100ms before sending a message.
-	 * Some devices are chatty once we reach the SRC_READY state and we may
-	 * end up in a collision of messages if we try to immediately send our
-	 * interrogations.
+	 * For PD2.0, wait 400ms or 200ms and add some jitter of up to 100ms
+	 * before sending a message. Some devices are chatty once we reach
+	 * the SRC_READY state and we may end up in a collision of messages if
+	 * we try to immediately send our interrogations.
+	 *
+	 * For a source, the wait time is PD_T_DISCOVER_IDENTITY + 355ms.
+	 * For a sink, the wait time is PD_T_DISCOVER_IDENTITY + 155ms.
 	 */
 	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20) {
 		if (pe[port].discover_port_identity_timer != TIMER_DISABLED)
-			pe[port].discover_port_identity_timer +=
-					(get_time().le.lo % (100 * MSEC));
+			pe[port].discover_port_identity_timer += (
+					(get_time().le.lo % (100 * MSEC)) +
+					(pe[port].power_role == PD_ROLE_SOURCE ?
+						(355 * MSEC) : (155 * MSEC)));
 	}
 }
 
