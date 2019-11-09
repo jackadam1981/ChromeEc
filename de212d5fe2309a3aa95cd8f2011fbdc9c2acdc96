@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "66ba8e41_c62468f9",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-09T00:07:41Z",
+      "side": 1,
+      "message": "This file only gets compiled with CONFIG_ONLINE_CALIB, which requires CONFIG_FPU.",
+      "parentUuid": "a7910c59_2fc3fa51",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6286434f_fc400884",
         "filename": "common/stillness_detector.c",
         "patchSetId": 12
