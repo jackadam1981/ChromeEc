@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5435b33a_da7887f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-09T00:32:59Z",
+      "side": 1,
+      "message": "short should be ok.\ndo we have anything for sha512? it\u0027s worth checking that it didn\u0027t break, since it\u0027s actually the one that requires larger opad",
+      "parentUuid": "d5e2676c_f7e0e43f",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba098aa0_af274be8",
         "filename": "chip/g/dcrypto/hmac.c",
         "patchSetId": 7
