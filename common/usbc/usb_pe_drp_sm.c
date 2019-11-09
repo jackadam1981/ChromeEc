@@ -103,8 +103,10 @@
 #define PE_FLAGS_DR_SWAP_TO_DFP              BIT(23)
 /* Flag to trigger a message resend after receiving a WAIT from port partner */
 #define PE_FLAGS_RESEND_MSG                  BIT(24)
-/* FLAG to track if port partner is dualrole capable */
+/* Flag to track if port partner is dualrole capable */
 #define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(25)
+/* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
+#define PE_FLAGS_FIRST_MSG                   BIT(26)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -426,6 +428,13 @@ static struct policy_engine {
 	 * This timer is used during a VCONN Swap.
 	 */
 	uint64_t vconn_on_timer;
+
+	/*
+	 * For PD2.0, this timer is used to wait 400ms or 200ms and add some
+	 * jitter of up to 100ms before sending a message.
+	 * NOTE: This timer is not part of the TypeC/PD spec.
+	 */
+	uint64_t wait_and_add_jitter_timer;
 
 	/* Counters */
 
@@ -991,17 +1000,32 @@ static void pe_attempt_port_discovery(int port)
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_port_identity_timer = TIMER_DISABLED;
 	}
+}
 
+/*
+ * This function must only be called from the PE_SNK_READY entry and
+ * PE_SRC_READY entry State.
+ */
+static void pe_update_wait_and_add_jitter_timer(int port)
+{
 	/*
-	 * For PD2.0, add some jitter of up to 100ms before sending a message.
+	 * For PD2.0, wait 400ms or 200ms and add some jitter of up to 100ms
+	 * before sending the first message after entering the PE_SRC_READY
+	 * and PE_SNK_READY states.
+	 *
 	 * Some devices are chatty once we reach the SRC_READY state and we may
 	 * end up in a collision of messages if we try to immediately send our
 	 * interrogations.
 	 */
-	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20) {
-		if (pe[port].discover_port_identity_timer != TIMER_DISABLED)
-			pe[port].discover_port_identity_timer +=
-					(get_time().le.lo % (100 * MSEC));
+	if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20 &&
+			PE_CHK_FLAG(port, PE_FLAGS_FIRST_MSG)) {
+		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
+		pe[port].wait_and_add_jitter_timer = get_time().val +
+				((get_time().le.lo % (100 * MSEC)) +
+				(pe[port].power_role == PD_ROLE_SOURCE ?
+					(400 * MSEC) : (200 * MSEC)));
+	} else {
+		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
 	}
 }
 
@@ -1059,6 +1083,12 @@ static void pe_src_startup_entry(int port)
 
 	/* Reset dr swap attempt counter */
 	pe[port].dr_swap_attempt_counter = 0;
+
+	/*
+	 * Set first message flag to trigger a wait and add jitter
+	 * delay when operating in PD2.0 mode.
+	 */
+	PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_RUN_SOURCE_START_TIMER)) {
 		PE_CLR_FLAG(port, PE_FLAGS_RUN_SOURCE_START_TIMER);
@@ -1418,6 +1448,12 @@ static void pe_src_ready_entry(int port)
 	 * part of this state. See pe_attempt_port_discovery for details.
 	 */
 	pe_attempt_port_discovery(port);
+
+	/*
+	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
+	 * have been sent since enter this state.
+	 */
+	pe_update_wait_and_add_jitter_timer(port);
 }
 
 static void pe_src_ready_run(int port)
@@ -1427,13 +1463,16 @@ static void pe_src_ready_run(int port)
 	uint8_t cnt;
 	uint8_t ext;
 
-	/*
-	 * Start Port Discovery when:
-	 *   1) The DiscoverIdentityTimer times out.
-	 */
-	if (get_time().val > pe[port].discover_port_identity_timer) {
-		pe_start_port_discovery(port);
-		return;
+	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
+		get_time().val > pe[port].wait_and_add_jitter_timer) {
+		/*
+		 * Start Port Discovery when:
+		 *   1) The DiscoverIdentityTimer times out.
+		 */
+		if (get_time().val > pe[port].discover_port_identity_timer) {
+			pe_start_port_discovery(port);
+			return;
+		}
 	}
 
 	/*
@@ -1782,6 +1821,12 @@ static void pe_snk_startup_entry(int port)
 
 	/* Reset dr swap attempt counter */
 	pe[port].dr_swap_attempt_counter = 0;
+
+	/*
+	 * Set first message flag to trigger a wait and add jitter
+	 * delay when operating in PD2.0 mode.
+	 */
+	PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
 }
 
 static void pe_snk_startup_run(int port)
@@ -2102,6 +2147,12 @@ static void pe_snk_ready_entry(int port)
 	 * part of this state. See pe_attempt_port_discovery for details.
 	 */
 	pe_attempt_port_discovery(port);
+
+	/*
+	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
+	 * have been sent since enter this state.
+	 */
+	pe_update_wait_and_add_jitter_timer(port);
 }
 
 static void pe_snk_ready_run(int port)
@@ -2111,18 +2162,21 @@ static void pe_snk_ready_run(int port)
 	uint8_t cnt;
 	uint8_t ext;
 
-	if (get_time().val > pe[port].sink_request_timer) {
-		set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
-		return;
-	}
+	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
+			get_time().val > pe[port].wait_and_add_jitter_timer) {
+		if (get_time().val > pe[port].sink_request_timer) {
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+			return;
+		}
 
-	/*
-	 * Start Port Discovery when:
-	 *   1) The PortDiscoverIdentityTimer times out.
-	 */
-	if (get_time().val > pe[port].discover_port_identity_timer) {
-		pe_start_port_discovery(port);
-		return;
+		/*
+		 * Start Port Discovery when:
+		 *   1) The PortDiscoverIdentityTimer times out.
+		 */
+		if (get_time().val > pe[port].discover_port_identity_timer) {
+			pe_start_port_discovery(port);
+			return;
+		}
 	}
 
 	/*
