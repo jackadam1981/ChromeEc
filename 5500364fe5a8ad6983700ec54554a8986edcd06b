@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2556ea68_c6d3e0f3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-09T03:36:15Z",
+      "side": 1,
+      "message": "Since VCONN is not allowed to be driven from this state, I think we can remove all cases of turning off VCONN within this state. The superstate also turns off VCONN. We may want to clear the TC_FLAGS_VCONN_ON upon entry to this state.",
+      "range": {
+        "startLine": 2190,
+        "startChar": 0,
+        "endLine": 2197,
+        "endChar": 23
+      },
+      "revId": "5500364fe5a8ad6983700ec54554a8986edcd06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25634bfd_b45dd9a1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2234,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-09T03:36:15Z",
+      "side": 1,
+      "message": "The spec doesn\u0027t really say if PR_Swaps are allowed in debug accessory mode. Assuming they are, I\u0027m thinking this should be UnorientedDebug.Src instead. (and upon entry we should apply Rp/Rp, and then in the future we can move to OrientedDebug.Src if we fix servo v4.x or whatever to have staggered pulldowns.)",
+      "range": {
+        "startLine": 2234,
+        "startChar": 22,
+        "endLine": 2234,
+        "endChar": 37
+      },
+      "revId": "5500364fe5a8ad6983700ec54554a8986edcd06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01eeb64f_a00dce70",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2259,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-09T03:36:15Z",
+      "side": 1,
+      "message": "I don\u0027t think the port is allowed to drive VCONN in DebugAccessory.SNK.\n\nType-C v1.3 Section 4.5.2.2.19.1 - DebugAccessory.SNK Requirements:\n\"The port shall not drive VBUS or VCONN.\"",
+      "range": {
+        "startLine": 2251,
+        "startChar": 0,
+        "endLine": 2259,
+        "endChar": 32
+      },
+      "revId": "5500364fe5a8ad6983700ec54554a8986edcd06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
