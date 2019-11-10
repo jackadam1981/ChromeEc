@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "f837396e_7ac27641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:39:45Z",
+      "side": 1,
+      "message": "Check with total phase that after the explicit contract is established our first messages are sent at least 200ms (when we\u0027re a SNK) and 400ms (when we\u0027re a SRC) after.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9890ea_bf9a1a56",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:39:45Z",
+      "side": 1,
+      "message": "wait and add some jitter",
+      "range": {
+        "startLine": 1366,
+        "startChar": 15,
+        "endLine": 1366,
+        "endChar": 30
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d602afea_2b3fe8d1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:39:45Z",
+      "side": 1,
+      "message": "In TCPMv1, for SRC.Ready the holdoff is 400ms + (0-100ms of jitter).",
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "428497ea_8d572d70",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -19,6 +82,46 @@
         "endLine": 1375,
         "endChar": 2
       },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35d25b2_e4a42909",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:39:45Z",
+      "side": 1,
+      "message": "it\u0027s wait and add jitter.",
+      "range": {
+        "startLine": 2084,
+        "startChar": 15,
+        "endLine": 2084,
+        "endChar": 30
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af2ccc12_8acd1974",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:39:45Z",
+      "side": 1,
+      "message": "In TCPMv1, for SNK.Ready the holdoff is 200ms + (0-100ms of jitter).",
       "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
