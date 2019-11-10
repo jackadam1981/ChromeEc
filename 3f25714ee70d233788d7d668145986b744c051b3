@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6871e6f8_49ce7763",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:29:24Z",
+      "side": 1,
+      "message": "Your subject should summarize your changes, not the bug. Maybe make L9 your subject.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "3f25714ee70d233788d7d668145986b744c051b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a82cc89_2b6efaf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:29:24Z",
+      "side": 1,
+      "message": "not necessary as this is the EC repo",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "3f25714ee70d233788d7d668145986b744c051b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc0db98_a59e27ad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:29:24Z",
+      "side": 1,
+      "message": "If the DFP sends a Reject, there\u0027s no reason to keep asking hoping that it will change its mind. It would be different if the response was a Wait, but even then, re-attempting the DR_Swap in a tight loop doesn\u0027t seem useful. Maybe it would be better to actually wait a longer period of time and come back.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "3f25714ee70d233788d7d668145986b744c051b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

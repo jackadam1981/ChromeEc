@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3bb33e6_1e2fd44f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-10T02:29:24Z",
+      "side": 0,
+      "message": "I bet this was the cause of chromium:1020747. If so, that could be its own change.",
+      "range": {
+        "startLine": 110,
+        "startChar": 34,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "335efeeccf1dc51b98731e200c148cb4781518cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
