@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c7adbb52_bee65040",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-11T20:32:10Z",
+      "side": 1,
+      "message": "Currently the hash command handler in cr50 only supports SHA1 and SHA256 modes. Vadim S and I will add support and tests for SHA512 and 384, and update here when done.",
+      "parentUuid": "5435b33a_da7887f6",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12ebc8bc_b8a1535d",
         "filename": "chip/g/dcrypto/dcrypto_sha512.c",
         "patchSetId": 7
@@ -84,6 +108,30 @@
       "writtenOn": "2019-11-09T02:03:17Z",
       "side": 1,
       "message": "i don\u0027t see this field defined in cryptoc which is here: https://cs.corp.google.com/chromeos_public/src/third_party/cryptoc/include/cryptoc/hash-internal.h",
+      "range": {
+        "startLine": 650,
+        "startChar": 42,
+        "endLine": 650,
+        "endChar": 59
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a18a1106_37305676",
+        "filename": "chip/g/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-11T20:32:10Z",
+      "side": 1,
+      "message": "It is defined in https://chromium-review.googlesource.com/c/chromiumos/third_party/cryptoc/+/1850535/11/include/cryptoc/sha512.h\n\nWhile it is true that it is not in upstream sources, this field was added to cryptoc to add support for HMAC-SHA-384 and 512.",
+      "parentUuid": "12ebc8bc_b8a1535d",
       "range": {
         "startLine": 650,
         "startChar": 42,
@@ -178,6 +226,30 @@
       "writtenOn": "2019-11-09T02:03:17Z",
       "side": 1,
       "message": "should it be SHA512_DIGEST_SIZE?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "a60721d967f77a863f80ec5c51922bbf82abd932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc14188_482feff7",
+        "filename": "chip/g/dcrypto/sha256.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-11T20:32:10Z",
+      "side": 1,
+      "message": "This is a struct for SHA256, so SHA256_BLOCK_SIZE should be used. The #ifdef SHA512_SUPPORT directive is there because this field only exists in the HASH_VTAB struct when compiled with that flag.",
+      "parentUuid": "a1677505_83195a4e",
       "range": {
         "startLine": 84,
         "startChar": 1,
