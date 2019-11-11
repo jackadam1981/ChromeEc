@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01268301_3d1ee8fa",
+        "filename": "baseboard/kukui/base_detect_kukui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-11T07:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d3b3c8_81ea2634",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "f96af6d69fe77b581f6dbc4c5d6f2ed5dbc2b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3e37585_be2746a7",
         "filename": "baseboard/kukui/baseboard.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fc35eba1_2054679a",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-11T07:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e37585_be2746a7",
+      "range": {
+        "startLine": 253,
+        "startChar": 18,
+        "endLine": 253,
+        "endChar": 28
+      },
+      "revId": "f96af6d69fe77b581f6dbc4c5d6f2ed5dbc2b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5246edc2_4d698c4e",
         "filename": "board/kukui/board.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-11T07:29:29Z",
       "side": 1,
       "message": "Shouldn\u0027t this be VARIANT_KUKUI_POGO_DOCK?\n\nI mean, POGO_KEYBOARD can never provide power...",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 35
+      },
+      "revId": "f96af6d69fe77b581f6dbc4c5d6f2ed5dbc2b12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277f6288_9b79abe9",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-11T07:38:18Z",
+      "side": 1,
+      "message": "It\u0027s if\u0027n\u0027def, and kukui doesn\u0027t define any POGO_* macros (to adapt go kukui board).",
+      "parentUuid": "5246edc2_4d698c4e",
       "range": {
         "startLine": 219,
         "startChar": 8,
