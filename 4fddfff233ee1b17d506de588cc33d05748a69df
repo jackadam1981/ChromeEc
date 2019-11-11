@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc620e5d_83a4bcad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:02:37Z",
+      "side": 1,
+      "message": "more of a clarification of existing code for me: if we are in a modal operation, but haven\u0027t finished discovering port identity, should we give up on discoverying port identiy altogether or should we try again after the modal operation is complete?",
+      "range": {
+        "startLine": 1361,
+        "startChar": 2,
+        "endLine": 1362,
+        "endChar": 57
+      },
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c681fd_6bf2ea31",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:02:37Z",
+      "side": 1,
+      "message": "we should single source this code, please",
+      "range": {
+        "startLine": 2040,
+        "startChar": 4,
+        "endLine": 2065,
+        "endChar": 3
+      },
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f7bb40_facf5125",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2099,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:02:37Z",
+      "side": 1,
+      "message": "single source code please",
+      "range": {
+        "startLine": 2089,
+        "startChar": 1,
+        "endLine": 2099,
+        "endChar": 3
+      },
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493645b9_e54b304b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:02:37Z",
+      "side": 1,
+      "message": "shoudl you alreayd reset the DR swap counter too?\n\n\n(same below)",
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
