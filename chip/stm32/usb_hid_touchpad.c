@@ -373,6 +373,7 @@ void set_touchpad_report(struct usb_hid_touchpad_report *report)
 
 static void hid_touchpad_tx(void)
 {
+	CPRINTS("%s", __func__);
 	hid_tx(USB_EP_HID_TOUCHPAD);
 
 	if (queue_count(&report_queue) > 0)

@@ -22,6 +22,7 @@
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
 #ifdef CONFIG_USB_BOS
 /* v2.10 (vs 2.00) BOS Descriptor provided */
@@ -507,7 +508,7 @@ void usb_wake(void)
 	if (!atomic_read_clear(&usb_wake_done))
 		return;
 
-	CPRINTF("WAKE\n");
+	CPRINTS("WAKE");
 
 	/*
 	 * Sometimes the USB controller gets stuck, and does not count SOF/ESOF
