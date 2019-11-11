@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f287055c_c734267f",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "vect.sensor_num  \u003d s - motion_sensors",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08d62b7_cd7172c3",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "Move this code in a different CL: Also, there are some changes around how double tap is configured (see crrev.com/c/1710210 , but I have comment on that change too).",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4f1a9d_d3cbfec6",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "what clear the interrupt pin? Is it reading the status register?",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82dcaa26_d723b576",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "nit: 256, this is a number of samples.",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a517e944_2ed40063",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "commit_fifo should be 0 if there is not events in the FIFO.\ncommit_fifo \u003d nsamples; maybe.",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0090eba5_034c77f7",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "do we need to do an interrupt loop? I am worried an interrupt avalanche from the sensor will brik the EC.\nOnce we read the fifo source address, won\u0027t the accelerometer set the interrupt line when a new event is avaible? If so, the task will be rescheduled via line 155.",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "576fb998_f8ee3daf",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "If we read the status register, check that double tap is set before ready TAP_SRC_ADDR.",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5e8c690_14ebb51b",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "We can not wait 1s for the sensor to be ready, the AP will be waiting as well.",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6da144_8abde3d3",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "Under reset, is the i2c still work? If not, we may have a slight race condition when reading WHO_AMI_I will fail because the sensor was under reset and the EC rebooted (small window).",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b63bee9_e637b04a",
+        "filename": "driver/accel_lis2ds.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "To prevent overwhelming the EC, we limit max_val to what the EC can handle: See\nlsm6dsm.h, where MAX_VAL is set to \n MOTION_MAX_SENSOR_FREQUENCY(416000, LSM6DSM_ODR_MIN_VAL)\n\nThen set_data_rate() will be impacted.",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f1623c1_1e3abb8b",
+        "filename": "driver/accel_lis2ds.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "Use __fls()",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fadd29_5db42376",
+        "filename": "driver/accel_lis2ds.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "Use __fls()",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc8b029_0ee70bd2",
+        "filename": "include/config.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-11T20:11:22Z",
+      "side": 1,
+      "message": "alphabetic order",
+      "revId": "56cd9d72706acc2620a4b03f15108ad4c022851f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
