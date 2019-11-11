@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3221db_50892763",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3892,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-11T22:11:03Z",
+      "side": 1,
+      "message": "I think this should be in the Sink Cap Extended and Source Cap Extended messages as all chrome OS devices (with the exception of Hoho and Dingdong) are not Alternate Mode Adapters.",
+      "range": {
+        "startLine": 3892,
+        "startChar": 10,
+        "endLine": 3892,
+        "endChar": 64
+      },
+      "revId": "d23c4bd7aa044f0962901024487a6309f2cfde0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
