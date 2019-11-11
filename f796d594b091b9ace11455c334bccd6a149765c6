@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e3981d4_5d924f47",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:15:58Z",
+      "side": 1,
+      "message": "nit: why not use |\u003d\n\n\nAlso, please use a define for 0x40 and 0x80 or at least comment here what those bits mean",
+      "range": {
+        "startLine": 522,
+        "startChar": 32,
+        "endLine": 522,
+        "endChar": 33
+      },
+      "revId": "f796d594b091b9ace11455c334bccd6a149765c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb7e372_6ef4f238",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:15:58Z",
+      "side": 1,
+      "message": "you don\u0027t need to specify the length do you? It will be sizes appropriately by the compiler",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "f796d594b091b9ace11455c334bccd6a149765c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
