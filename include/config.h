@@ -1080,6 +1080,9 @@
 #undef CONFIG_CHIPSET_BRASWELL		/* Intel Braswell (x86) */
 #undef CONFIG_CHIPSET_CANNONLAKE	/* Intel Cannonlake (x86) */
 #undef CONFIG_CHIPSET_COMETLAKE		/* Intel Cometlake (x86) */
+#undef CONFIG_CHIPSET_COMETLAKE_DISCRETE	/* Intel Cometlake (x86),
+						 * discrete EC control
+						 */
 #undef CONFIG_CHIPSET_ECDRIVEN		/* Dummy power module */
 #undef CONFIG_CHIPSET_GEMINILAKE	/* Intel Geminilake (x86) */
 #undef CONFIG_CHIPSET_ICELAKE		/* Intel Icelake (x86) */
@@ -4818,6 +4821,7 @@
 	defined(CONFIG_CHIPSET_BRASWELL) || \
 	defined(CONFIG_CHIPSET_CANNONLAKE) || \
 	defined(CONFIG_CHIPSET_COMETLAKE) || \
+	defined(CONFIG_CHIPSET_COMETLAKE_DISCRETE) || \
 	defined(CONFIG_CHIPSET_GEMINILAKE) || \
 	defined(CONFIG_CHIPSET_ICELAKE) || \
 	defined(CONFIG_CHIPSET_SKYLAKE) || \
