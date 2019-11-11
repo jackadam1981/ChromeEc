@@ -1712,3 +1712,16 @@ void board_unwedge_i2cs(void)
 	/* Restore external pin connection to the i2cs_scl. */
 	GWRITE(PINMUX, DIOA9_SEL, GC_PINMUX_I2CS0_SCL_SEL);
 }
+
+int board_nvmem_legacy_check_needed(void)
+{
+	enum system_image_copy_t other_rw;
+	const struct SignedHeader *h;
+
+	other_rw = system_get_image_copy() == SYSTEM_IMAGE_RW ?
+		SYSTEM_IMAGE_RW_B : SYSTEM_IMAGE_RW;
+
+	h = (const struct SignedHeader *)get_program_memory_addr(other_rw);
+
+	return (h->major_ <= 2) || (h->minor_ <= 18);
+}
