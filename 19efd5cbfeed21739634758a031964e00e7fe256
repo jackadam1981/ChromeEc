@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32b9f1a2_76d44354",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T17:55:38Z",
+      "side": 1,
+      "message": "should we also initialize the other 3 SOP_STAR_TYPES as well?",
+      "range": {
+        "startLine": 326,
+        "startChar": 13,
+        "endLine": 329,
+        "endChar": 0
+      },
+      "revId": "19efd5cbfeed21739634758a031964e00e7fe256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a8f39d8_9e49c1bf",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T17:55:38Z",
+      "side": 1,
+      "message": "I really like the accesor methods!!",
+      "range": {
+        "startLine": 455,
+        "startChar": 5,
+        "endLine": 462,
+        "endChar": 0
+      },
+      "revId": "19efd5cbfeed21739634758a031964e00e7fe256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
