@@ -54,6 +54,18 @@ static void tcpc_alert_event(enum gpio_signal signal)
 		schedule_deferred_pd_interrupt(0);
 }
 
+static void hdmi_ocp_interrupt(enum gpio_signal signal)
+{
+	/* If both HDMI ports are asserting ~FAULT (usually when they're
+	 * current-limiting), limit advertised power on the charging ports.
+	 */
+	int port0_fault = !gpio_get_level(GPIO_HDMI_CONN0_OC_ODL);
+	int port1_fault = !gpio_get_level(GPIO_HDMI_CONN1_OC_ODL);
+
+	gpio_set_level(GPIO_USB_A_LOW_PWR_OD, !(port0_fault && port1_fault));
+}
+
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
@@ -211,6 +223,11 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+/* USB-A port control */
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USB_VBUS,
+};
 
 /* Power Delivery and charging functions */
 void baseboard_tcpc_init(void)
