@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42f07a7_8192e733",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T21:32:01Z",
+      "side": 1,
+      "message": "can we scope this down further and make it specify to PRS_WAIT:\n\nPE_FLAGS_PRS_WAITING\n\nWhen it is more broad, it would be easier for someone to add another, potential conflicting use with this flag.\n\nIf we had too many of these specific flags in the future, we could consolidate them then and see how they were all used together.",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "1ea9b807f76a329b1dc1933f17390ee5fa485fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5a91db_0668a298",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T21:32:01Z",
+      "side": 1,
+      "message": "this entry should probably clear PE_FLAGS_RESEND_MSG",
+      "range": {
+        "startLine": 2748,
+        "startChar": 12,
+        "endLine": 2748,
+        "endChar": 34
+      },
+      "revId": "1ea9b807f76a329b1dc1933f17390ee5fa485fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
