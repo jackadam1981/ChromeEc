@@ -409,10 +409,10 @@ static inline void it83xx_set_alt_func(uint32_t port, uint32_t pin,
 	 * Otherwise, turn the pin into an input as it's default.
 	 */
 	if (func != GPIO_ALT_FUNC_NONE)
-		IT83XX_GPIO_CTRL(CTRL_BASE(port), pin) &= ~0xc0;
+		IT83XX_GPIO_CTRL(port, pin) &= ~0xc0;
 	else
-		IT83XX_GPIO_CTRL(CTRL_BASE(port), pin) =
-			(IT83XX_GPIO_CTRL(CTRL_BASE(port), pin) | 0x80) & ~0x40;
+		IT83XX_GPIO_CTRL(port, pin) =
+			(IT83XX_GPIO_CTRL(port, pin) | 0x80) & ~0x40;
 }
 void gpio_set_alternate_function(uint32_t port, uint32_t mask,
 				enum gpio_alternate_func func)
