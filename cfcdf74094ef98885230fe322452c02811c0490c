@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b452554_3569a9bc",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "let\u0027s make the board specific changes in another (child) CL, please",
+      "range": {
+        "startLine": 50,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a027f34c_b490d577",
+        "filename": "common/usb_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "let\u0027s make this more of a driver interface instead. If you define CONFIG_USB_PD_PREFFER_MV, then you must also provide\n\nstruct pd_preferred_config pd_referred_value \u003d {\n   mv \u003d xxx;\n ...\n};\n\n\nin board.c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0035a5e_2069559d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "based on driver comment, let\u0027s turn these ifdefs into run time conditions instead",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 8
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff28b013_62327836",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "I don\u0027t feel like this should an input parameter, the reset function should know what wait to use (it can use CHARG$E_STABLE_WAIT_US internally), or do you think that the caller has a better change to know how long to wait?",
+      "range": {
+        "startLine": 1542,
+        "startChar": 30,
+        "endLine": 1542,
+        "endChar": 51
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede064f5_58dbab98",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "what does constant coltage level mean? what are the units (percent)?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d79dfd2_02b0f97d",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "are you doing this with a ifndef to allow boards to provide a value?\n\nIf we aren\u0027t using that yet, let\u0027s just define the it where always and we can add in the ifndefs later if we ever need it.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 28
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a43db5a_9ab93d12",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "designed",
+      "range": {
+        "startLine": 1485,
+        "startChar": 27,
+        "endLine": 1485,
+        "endChar": 34
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131c36a4_9fb6f297",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T18:37:33Z",
+      "side": 1,
+      "message": "nit: newline between summary and parameters",
+      "range": {
+        "startLine": 1494,
+        "startChar": 4,
+        "endLine": 1494,
+        "endChar": 9
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
