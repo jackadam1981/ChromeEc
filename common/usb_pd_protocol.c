@@ -36,6 +36,10 @@
 
 BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT <= EC_USB_PD_MAX_PORTS);
 
+uint32_t storm_time_dbg;
+uint32_t now_dbg;
+int dbg_port;
+
 /*
  * If we are trying to upgrade the TCPC port that is supplying power, then we
  * need to ensure that the battery has enough charge for the upgrade. 100mAh
@@ -2656,12 +2660,15 @@ void pd_interrupt_handler_task(void *p)
 	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
 	struct {
 		int count;
+		int prev_count;
 		uint32_t time;
 	} storm_tracker[CONFIG_USB_PD_PORT_COUNT] = {};
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
 
 	pd_int_task_id[port] = task_get_current();
+
+	dbg_port = (int) p;
 
 	while (1) {
 		const int evt = task_wait_event(-1);
@@ -2685,6 +2692,7 @@ void pd_interrupt_handler_task(void *p)
 				tcpc_alert(port);
 
 				now = get_time().le.lo;
+				now_dbg = now;
 				if (time_after(now, storm_tracker[port].time)) {
 					storm_tracker[port].time =
 						now + ALERT_STORM_INTERVAL;
@@ -2693,6 +2701,8 @@ void pd_interrupt_handler_task(void *p)
 					 * an interrupt now
 					 */
 					storm_tracker[port].count = 1;
+					storm_time_dbg =
+						storm_tracker[port].time;
 				} else if (++storm_tracker[port].count >
 				    ALERT_STORM_MAX_COUNT) {
 					CPRINTS("C%d Interrupt storm detected. "
@@ -2701,6 +2711,14 @@ void pd_interrupt_handler_task(void *p)
 
 					pd_set_suspend(port, 1);
 					pd_deferred_resume(port);
+				}
+
+				if (storm_tracker[port].prev_count !=
+				    storm_tracker[port].count) {
+					storm_tracker[port].prev_count =
+					storm_tracker[port].count;
+					CPRINTF("storm_tracker count: %d\n",
+						storm_tracker[port].count);
 				}
 			}
 		}
@@ -4790,6 +4808,17 @@ void pd_handle_overcurrent(int port)
 	hook_call_deferred(&re_enable_ports_data, SECOND);
 }
 #endif /* defined(CONFIG_USBC_PPC) */
+
+static int command_dbg(int argc, char **argv)
+{
+	CPRINTF("C%d, Time: %.6d s, %.6d s\n", dbg_port, now_dbg,
+	storm_time_dbg);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dbg, command_dbg,
+			     NULL,
+			     "Print debug time");
 
 static int command_pd(int argc, char **argv)
 {
