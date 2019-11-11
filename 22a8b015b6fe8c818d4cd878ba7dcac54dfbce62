@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87686a64_5733c04c",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T15:35:14Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be changed here because it was added by another CL.",
+      "parentUuid": "1b6f34d0_b9caaeba",
+      "revId": "22a8b015b6fe8c818d4cd878ba7dcac54dfbce62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d8a6abb_67848eae",
         "filename": "common/usb_common.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "22a8b015b6fe8c818d4cd878ba7dcac54dfbce62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffc24cf_717a1273",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T15:35:14Z",
+      "side": 1,
+      "message": "I get errors if the #ifdef is removed:\ncommon/usb_common.c:320:7: error: \u0027enum pd_dual_role_states\u0027 declared inside parameter list will not be visible outside of this definition or declaration [-Werror]\n  enum pd_dual_role_states drp_state,\n       ^~~~~~~~~~~~~~~~~~~\ncommon/usb_common.c:320:27: error: parameter 3 (\u0027drp_state\u0027) has incomplete type\n  enum pd_dual_role_states drp_state,\n  ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~\ncommon/usb_common.c:317:25: error: function declaration isn\u0027t a prototype [-Werror\u003dstrict-prototypes]\n enum pd_drp_next_states drp_auto_toggle_next_state(",
+      "parentUuid": "7d8a6abb_67848eae",
+      "revId": "22a8b015b6fe8c818d4cd878ba7dcac54dfbce62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "22a8b015b6fe8c818d4cd878ba7dcac54dfbce62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29667d18_6dcedf85",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T15:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab469bb_4cf9ca5b",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "22a8b015b6fe8c818d4cd878ba7dcac54dfbce62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
