@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ae27678_d6379e66",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-11T22:52:35Z",
+      "side": 1,
+      "message": "This is mixing up AMD_FP5_* register values with mux_state_t values.\nUnfortunately, TYPEC_MUX_SAFE\u003d\u003dMUX_SAFE_MODE\u003d\u003dUSB_PD_MUX_SAFE_MODE\u003d\u003dBIT(5) !\u003d TYPEC_MUX_NONE\u003d\u003d0, but here I think if you change this to \"mux_state \u003d\u003d TYPEC_MUX_NONE\" then we\u0027re ok.",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "82b8e91cdac2bd75ce6e37374bf9dd8677fda8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
