@@ -47,6 +47,7 @@
 
 static int battery_type_id;
 static int fake_state_of_charge = -1;
+static int fake_temperature = -1;
 
 static int bq27541_read(int offset, int *data)
 {
@@ -227,8 +228,13 @@ void battery_get_params(struct batt_params *batt)
 	/* Reset flags */
 	batt->flags = 0;
 
-	if (bq27541_read(REG_TEMPERATURE, &batt->temperature))
+	if (bq27541_read(REG_TEMPERATURE, &batt->temperature)
+			&& fake_temperature < 0)
 		batt->flags |= BATT_FLAG_BAD_TEMPERATURE;
+
+	/* If temperature is faked, override with faked data */
+	if (fake_temperature >= 0)
+		batt->temperature = fake_temperature;
 
 	if (bq27541_read8(REG_STATE_OF_CHARGE, &v) && fake_state_of_charge < 0)
 		batt->flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
@@ -347,4 +353,27 @@ static int command_battfake(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
 			"percent (-1 = use real level)",
 			"Set fake battery level");
+
+static int command_batttempfake(int argc, char **argv)
+{
+	char *e;
+	int t;
+
+	if (argc == 2) {
+		t = strtoi(argv[1], &e, 0);
+		if (*e || t < -1 || t > 5000)
+			return EC_ERROR_PARAM1;
+
+		fake_temperature = t;
+	}
+
+	if (fake_temperature >= 0)
+		ccprintf("Fake batt temperature %d.%d K\n",
+			 fake_temperature / 10, fake_temperature % 10);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(batttempfake, command_batttempfake,
+			"temperature (-1 = use real temperature)",
+			"Set fake battery temperature in deciKelvin (2731 = 273.1 K = 0 deg C)");
 
