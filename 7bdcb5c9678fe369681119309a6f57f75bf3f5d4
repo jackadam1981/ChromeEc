@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77c382db_5a21efcd",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T21:20:09Z",
+      "side": 1,
+      "message": "can you initialize this to AMD_FP5_MUX_SAFE (just so it is more clear)",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "7bdcb5c9678fe369681119309a6f57f75bf3f5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
