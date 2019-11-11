@@ -55,6 +55,132 @@ static void tcpc_alert_event(enum gpio_signal signal)
 		schedule_deferred_pd_interrupt(0);
 }
 
+static void port_ocp_interrupt(enum gpio_signal signal)
+{
+	/* If both HDMI ports are asserting ~FAULT (usually when they're
+	 * current-limiting), limit advertised power on the charging ports.
+	 */
+	int port0_fault = !gpio_get_level(GPIO_HDMI_CONN0_OC_ODL);
+	int port1_fault = !gpio_get_level(GPIO_HDMI_CONN1_OC_ODL);
+
+	/* Output high limits power */
+	gpio_set_level(GPIO_USB_A_LOW_PWR_OD, port0_fault && port1_fault);
+}
+
+static bool usbc_overcurrent = 0;
+/* Update USB port power limits based on current state.
+ *
+ * Port power consumption is assumed to be negligible if not overcurrent,
+ * and we have two knobs: the front port power limit, and the USB-C power limit.
+ * Either one of the front ports may run at high power (one at a time) or we
+ * can limit both to low power. On USB-C we can similarly limit the port power,
+ * but there's only one port.
+ */
+void update_port_limits(void) {
+	/* Adjustable current limit settings (high and low), in mA. */
+	const int front_hp = 1600;
+	const int front_lp = 960;
+	const int c_hp = 3740;
+	const int c_lp = 2090;
+
+	const enum gpio_signal usb_a_rear_ports[] =
+		{GPIO_USB_A2_OC_ODL, GPIO_USB_A3_OC_ODL, GPIO_USB_A4_OC_ODL};
+	bool a0_oc, a1_oc, bc_power_limited;
+	int rear_oc_count = 0;
+	int headroom = 10000;	/* Total 5V rail capacity */
+	enum tcpc_rp_value req_c_limit;
+	bool req_a_limit;
+
+	/* Base load: things we don't have switches/monitoring for. */
+	int pp5000_load = 1335;
+	/* Rear USB-A */
+	for (size_t i = 0; i < ARRAY_SIZE(usb_a_rear_ports); i++) {
+		if (gpio_get_level(usb_a_rear_ports[i]) == 0)
+			rear_oc_count += 1;
+	}
+	pp5000_load += rear_oc_count * 1075;
+	/* Front USB-A */
+	a0_oc = !gpio_get_level(GPIO_USB_A0_OC_ODL);
+	a1_oc = !gpio_get_level(GPIO_USB_A1_OC_ODL);
+	bc_power_limited = gpio_get_level(GPIO_USB_A_LOW_PWR_OD);
+	if (!bc_power_limited && (a0_oc || a1_oc)) {
+		/* At least one charging port may be sinking high current */
+		pp5000_load += front_hp;
+		/* Only one may run at high power */
+		if (a0_oc && a1_oc)
+			pp5000_load += front_lp;
+	} else if (bc_power_limited) {
+		if (a0_oc)
+			pp5000_load += front_lp;
+		if (a1_oc)
+			pp5000_load += front_lp;
+	}
+	/* Type-C port */
+	if (ppc_is_sourcing_vbus(0) && usbc_overcurrent) {
+		/* Assume high-power; there's no way to poll this. */
+		/* TODO(b/143190102) add a way to poll port power limit so we
+		 * can detect when it can be increased again if the port is
+		 * already active.
+		 */
+		pp5000_load += c_hp;
+	}
+
+	headroom -= pp5000_load;
+	/* Assume any one of the ports that aren't currently in use might become
+	 * in use, and we need to be able to power them.
+	 */
+	if (!ppc_is_sourcing_vbus(0)) {
+		/* USB-C not in use, prefer to adjust it. No single other port
+		 * can draw as much even if this port is in low-power mode, so
+		 * this ensures we can also power any other port that might
+		 * become active.
+		 */
+		if (!bc_power_limited && !(a0_oc || a1_oc)) {
+			/* Can reclaim power from a front port if needed. */
+			if (headroom > c_hp) {
+				/* Can still go full power */
+				req_a_limit = 0;
+				req_c_limit = TYPEC_RP_3A0;
+			} else if (headroom > c_lp) {
+				/* Can go lower-power */
+				req_a_limit = 0;
+				req_c_limit = TYPEC_RP_1A5;
+			} else {
+				/* Must reduce power on both. */
+				req_a_limit = 1;
+				req_c_limit = TYPEC_RP_1A5;
+			}
+		} else {
+			/* Neither charging port is limiting, so we have
+			 * sufficient budget to allow full power. */
+			req_a_limit = 0;
+			req_c_limit = TYPEC_RP_3A0;
+		}
+	} else {
+		/* USB-C is in use, prefer to drop front port limits.
+		 * Pessimistically Assume C is currently in low-power mode. */
+		if (headroom > (c_hp - c_lp + front_hp)) {
+			/* Can still go full power */
+			req_a_limit = 0;
+			req_c_limit = TYPEC_RP_3A0;
+		} else if (headroom > (c_hp - c_lp + front_lp)) {
+			/* Reducing front allows C to go to full power */
+			req_a_limit = 1;
+			req_c_limit = TYPEC_RP_3A0;
+		} else {
+			/* Must reduce both */
+			req_a_limit = 1;
+			req_c_limit = TYPEC_RP_1A5;
+		}
+	}
+
+	ppc_set_vbus_source_current_limit(0, req_c_limit);
+	/* Output high limits power */
+	gpio_set_level(GPIO_USB_A_LOW_PWR_OD, req_a_limit);
+}
+DECLARE_HOOK(HOOK_INIT, update_port_limits, HOOK_PRIO_DEFAULT);
+
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
@@ -230,6 +356,11 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+/* USB-A port control */
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USB_VBUS,
+};
+
 /* Power Delivery and charging functions */
 void baseboard_tcpc_init(void)
 {
@@ -277,4 +408,5 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Sanity check the port. */
 	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
 		return;
+	usbc_overcurrent = is_overcurrented;
 }
