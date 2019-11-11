@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81b83825_d83fa097",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T18:37:06Z",
+      "side": 1,
+      "message": "If we are in modal operation, the port has already been discovered.",
+      "parentUuid": "fc620e5d_83a4bcad",
+      "range": {
+        "startLine": 1361,
+        "startChar": 2,
+        "endLine": 1362,
+        "endChar": 57
+      },
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10c681fd_6bf2ea31",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-11T18:02:37Z",
       "side": 1,
       "message": "we should single source this code, please",
+      "range": {
+        "startLine": 2040,
+        "startChar": 4,
+        "endLine": 2065,
+        "endChar": 3
+      },
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0999693_fe51be29",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T18:37:06Z",
+      "side": 1,
+      "message": "I initially wanted to single source this code but thought it would be easier to debug/maintain the code since the run state depends on variables set here. But single sourcing will reduce code  size which is probably more important.\n\nSame comment below.",
+      "parentUuid": "10c681fd_6bf2ea31",
       "range": {
         "startLine": 2040,
         "startChar": 4,
@@ -85,6 +133,24 @@
       "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de267241_1f9017da",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4122,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T18:37:06Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "493645b9_e54b304b",
+      "revId": "4fddfff233ee1b17d506de588cc33d05748a69df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
