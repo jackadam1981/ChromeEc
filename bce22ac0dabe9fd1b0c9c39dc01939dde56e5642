@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f1ae6e8_edb51f63",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4433,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-11-11T00:03:54Z",
+      "side": 1,
+      "message": "I believe the original code had a bug - I filed b:144238476 to confirm.\n\nHowever, this code is easier to read if you get rid of the outer negate option.\n\n\tif (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE) ||\n\t      !IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) ||\n\t      IS_ENABLED(CONFIG_USB_PD_SIMPLE_DFP) ||\n\t      !IS_ENABLED(CONFIG_USB_BOS)))\n              return;\n\nNote that my edit swaps the logic on CONFIG_USB_PD_ALT_MODE_DFP, which I believe is the intended operation.",
+      "range": {
+        "startLine": 4428,
+        "startChar": 0,
+        "endLine": 4433,
+        "endChar": 0
+      },
+      "revId": "bce22ac0dabe9fd1b0c9c39dc01939dde56e5642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
