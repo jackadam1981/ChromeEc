@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "16db7fed_84d0f61a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T17:52:45Z",
+      "side": 1,
+      "message": "I like the idea of starting clean in V2 and then adding \"tumors\" as we need them, but I also really single sourcing this code.\n\nNot clear cut to me, so I\u0027ll defer to you Sam.",
+      "parentUuid": "a19da39a_fd226479",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d786ef6_7095d9a4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2

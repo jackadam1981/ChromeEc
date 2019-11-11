@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "97b6811a_3d227fa9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-11T17:52:45Z",
+      "side": 1,
+      "message": "You just have to drop the #ifdef CONFIG_USB_PD_DUAL_ROLE on line 1122 in usb_pd.h to make that work",
+      "parentUuid": "3ffc24cf_717a1273",
+      "revId": "22a8b015b6fe8c818d4cd878ba7dcac54dfbce62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ab469bb_4cf9ca5b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
