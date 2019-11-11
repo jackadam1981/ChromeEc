@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8ff0ce5_00fc40be",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-11T21:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e21be0_d7e927d8",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "8c37c79446cd0764193524bc11d9984dd5d2f54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8656780b_3770e4f4",
         "filename": "driver/retimer/pi3dpx1207.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-11T21:21:38Z",
       "side": 1,
       "message": "this driver should probably be in its own CL too",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "8c37c79446cd0764193524bc11d9984dd5d2f54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9bb189_ce165bf5",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-11T21:34:34Z",
+      "side": 1,
+      "message": "The CL that this is in is specifically to add PI3DPX1207 support",
+      "parentUuid": "8656780b_3770e4f4",
       "range": {
         "startLine": 1,
         "startChar": 0,
