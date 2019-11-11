@@ -2683,6 +2683,10 @@ static void pe_drs_change_run(int port)
 	/* Update the data role */
 	pe[port].data_role = tc_get_data_role(port);
 
+	/* When we data role swap from UFP to DFP, discover port again. */
+	if (pe[port].data_role == PD_ROLE_DFP)
+		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+
 	/*
 	 * Port changed. Transition back to PE_SRC_Ready or
 	 * PE_SNK_Ready.
