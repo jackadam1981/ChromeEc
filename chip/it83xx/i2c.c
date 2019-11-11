@@ -240,7 +240,9 @@ static void i2c_reset(int p, int cause)
 		/* State reset and hardware reset */
 		IT83XX_I2C_CTR(p_ch) = E_STS_AND_HW_RST;
 	}
+#if 0
 	CPRINTS("I2C ch%d reset cause %d", p, cause);
+#endif
 }
 
 static void i2c_r_last_byte(int p)
