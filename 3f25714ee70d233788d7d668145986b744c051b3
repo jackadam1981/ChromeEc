@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "c15f1c4c_cbd91078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T18:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a82cc89_2b6efaf4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "3f25714ee70d233788d7d668145986b744c051b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d57222_03adc1bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T18:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6871e6f8_49ce7763",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "3f25714ee70d233788d7d668145986b744c051b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cc0db98_a59e27ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "3f25714ee70d233788d7d668145986b744c051b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d474145a_99f9db2e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-11T18:18:53Z",
+      "side": 1,
+      "message": "I only resend if a wait was received and the jitter will add a random amount of time before resend.",
+      "parentUuid": "6cc0db98_a59e27ad",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "3f25714ee70d233788d7d668145986b744c051b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
