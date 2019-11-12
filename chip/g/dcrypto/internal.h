@@ -131,11 +131,12 @@ struct drbg_ctx {
  * NIST SP 800-90A HMAC DRBG.
  */
 
+
 /* Standard initialization. */
 void hmac_drbg_init(struct drbg_ctx *ctx,
-		    const void *p0, size_t p0_len,
-		    const void *p1, size_t p1_len,
-		    const void *p2, size_t p2_len);
+		    const void *entropy, size_t entropy_len,
+		    const void *nonce, size_t nonce_len,
+		    const void *personalization, size_t personalization_len);
 /* Initialize for use as RFC6979 DRBG. */
 void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx,
 			    const p256_int *key,
@@ -143,8 +144,8 @@ void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx,
 /* Initialize with at least nbits of random entropy. */
 void hmac_drbg_init_rand(struct drbg_ctx *ctx, size_t nbits);
 void hmac_drbg_reseed(struct drbg_ctx *ctx,
-		      const void *p0, size_t p0_len,
-		      const void *p1, size_t p1_len,
+		      const void *entropy, size_t entropy_len,
+		      const void *input, size_t input_len,
 		      const void *p2, size_t p2_len);
 int hmac_drbg_generate(struct drbg_ctx *ctx,
 		       void *out, size_t out_len,

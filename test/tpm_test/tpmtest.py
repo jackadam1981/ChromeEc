@@ -27,6 +27,8 @@ import hkdf_test
 import rsa_test
 import subcmd
 import upgrade_test
+import drbg_test
+import utils
 
 # Extension command for dcypto testing
 EXT_CMD = 0xbaccd00a
@@ -69,17 +71,18 @@ class TPM(object):
     if size > 4096:
       raise subcmd.TpmTestError(prefix + 'invalid size %d' % size)
     if response_mode:
-      # Startup response code or extension command response code
-      if cmd_code == 0x100 or cmd_code == 0:
+      # Startup response code, extension or vendor command response code
+      if cmd_code == 0x100 or cmd_code == 0 or cmd_code == 0x500:
         return
       else:
         raise subcmd.TpmTestError(
-          prefix + 'invalid command code 0x%x' % cmd_code)
+          prefix + 'invalid response code 0x%x' % cmd_code)
     if cmd_code >= 0x11f and cmd_code <= 0x18f:
       return  # This is a valid command
     if cmd_code == EXT_CMD:
       return  # This is an extension command
-
+    if cmd_code >= 0x20000000 and cmd_code <= 0x200001ff:
+      return  # this is vendor command
     raise subcmd.TpmTestError(prefix + 'invalid command code 0x%x' % cmd_code)
 
   def command(self, cmd_data):
@@ -135,7 +138,7 @@ if __name__ == '__main__':
   try:
     debug_needed = len(sys.argv) == 2 and sys.argv[1] == '-d'
     t = TPM(debug_mode=debug_needed)
-
+    drbg_test.drbg_test(t)
     crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
     ecc_test.ecc_test(t)
     ecies_test.ecies_test(t)
