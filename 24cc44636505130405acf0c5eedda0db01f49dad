@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b08e0213_cbc5259f",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-11-12T07:01:04Z",
+      "side": 1,
+      "message": "Please describe these variables.",
+      "revId": "24cc44636505130405acf0c5eedda0db01f49dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394b087c_77d7fa37",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-11-12T07:01:04Z",
+      "side": 1,
+      "message": "Why do you need to save/restore the old value? Does it fail that often?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "24cc44636505130405acf0c5eedda0db01f49dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

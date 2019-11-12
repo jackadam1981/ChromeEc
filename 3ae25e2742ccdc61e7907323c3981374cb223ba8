@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03a0f7b8_bf578b10",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-11-12T07:01:04Z",
+      "side": 1,
+      "message": "Please describe these values.",
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9132c795_3f44c753",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-11-12T07:01:04Z",
+      "side": 1,
+      "message": "Can you describe a bit how you picked this value?\n\nSo basically this allows you to move 50mA/C every 3 seconds, is that enough if the CPU load suddendly changes and the whole system gets hot?\n\ne.g. start charging, then run a bunch of yes\u003e/dev/null in the console, and increase the backlight brightness to max, is the algo able to cool down quickly enough?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1888ca_8f7ddd60",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-11-12T07:01:04Z",
+      "side": 1,
+      "message": "\"We already set the charge limit, do not reset it again.\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5886ba_d8320ca6",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-11-12T07:01:04Z",
+      "side": 1,
+      "message": "nit: Blank line, drop.",
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
