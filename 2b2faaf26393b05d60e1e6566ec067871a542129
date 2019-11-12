@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "ea4136b0_b2a736f7",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Can\u0027t, using -1 return for overflow",
+      "parentUuid": "1ba0af14_989b8898",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d61c8d31_5e6088c3",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Renamed to avoid confusion since it\u0027s not a standard atoi",
+      "parentUuid": "a236ef1c_7ebf278a",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8578ec6_e1da3df2",
         "filename": "common/printf.c",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4371ae8_2aaf6e33",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Using size_t here causes an error as the loop below checks idx \u003e\u003d 0 and uses negative numbers to terminate. Considering the maximum float will have 46 digits I think we\u0027re OK to just leave this as an int. I\u0027ll be adding a check below to currently ban float that are outside of the range of the uint32_t",
+      "parentUuid": "a8578ec6_e1da3df2",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ff936943_4a8d4246",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42e7e243_ff001552",
+      "range": {
+        "startLine": 126,
+        "startChar": 36,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aee2b53e_8d07cc5c",
         "filename": "common/printf.c",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5574f56_3337908d",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee2b53e_8d07cc5c",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -160,6 +280,54 @@
       "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118142bc_900dfa8c",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7e56f3_7798b88e",
+      "range": {
+        "startLine": 169,
+        "startChar": 23,
+        "endLine": 169,
+        "endChar": 30
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8655f1d6_7c10d20b",
+        "filename": "common/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "To be able to read the digits from right to left.",
+      "parentUuid": "13d77eac_7dec2ed4",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
