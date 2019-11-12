@@ -131,6 +131,7 @@ struct drbg_ctx {
  * NIST SP 800-90A HMAC DRBG.
  */
 
+
 /* Standard initialization. */
 void hmac_drbg_init(struct drbg_ctx *ctx,
 		    const void *p0, size_t p0_len,
