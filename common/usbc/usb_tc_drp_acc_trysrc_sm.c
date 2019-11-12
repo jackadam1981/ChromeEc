@@ -2801,7 +2801,7 @@ static void tc_attached_src_run(const int port)
 		 * Power Role Swap Request
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
-			TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
 			return set_state_tc(port, TC_ATTACHED_SNK);
 		}
 
@@ -3065,6 +3065,7 @@ static void tc_try_wait_snk_entry(const int port)
 {
 	print_current_state(port);
 
+	tc[port].pd_enable = 0;
 	tc[port].cc_state = PD_CC_UNSET;
 	tc[port].try_wait_debounce = get_time().val + PD_T_CC_DEBOUNCE;
 }

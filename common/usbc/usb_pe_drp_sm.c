@@ -304,9 +304,6 @@ static struct policy_engine {
 	enum pd_power_role power_role;
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
-	/* saved data and power roles while communicating with a cable plug */
-	enum pd_data_role saved_data_role;
-	enum pd_power_role saved_power_role;
 	/* state machine flags */
 	uint32_t flags;
 	/* Device Policy Manager Request */
@@ -1376,6 +1373,7 @@ static void pe_src_transition_supply_run(int port)
 			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
 			PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+
 			set_state_pe(port, PE_SRC_READY);
 		} else {
 			/* NOTE: First pass through this code block */
@@ -1508,14 +1506,12 @@ static void pe_src_ready_run(int port)
 		/* Extended Message Requests */
 		if (ext > 0) {
 			switch (type) {
-#ifdef CONFIG_BATTERY
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
-#endif
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -1591,11 +1587,13 @@ static void pe_src_ready_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 	/*
-	 * If the Source is initiating an AMS then the Policy Engine Shall
+	 * If the Source is initiating an AMS and this is not
+	 * a PR Swap from SRC to SNK, then the Policy Engine Shall
 	 * notify the Protocol Layer that the first Message in an AMS will
 	 * follow.
 	 */
-	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
+	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS) &&
+			get_state_pe(port) != PE_PRS_SRC_SNK_EVALUATE_SWAP)
 		prl_start_ams(port);
 }
 
@@ -1789,6 +1787,7 @@ static void pe_snk_startup_entry(int port)
 
 	/* Reset dr swap attempt counter */
 	pe[port].dr_swap_attempt_counter = 0;
+
 }
 
 static void pe_snk_startup_run(int port)
@@ -2048,6 +2047,7 @@ static void pe_snk_transition_sink_run(int port)
 		if ((PD_HEADER_CNT(emsg[port].header) == 0) &&
 			   (PD_HEADER_TYPE(emsg[port].header) ==
 			   PD_CTRL_PS_RDY)) {
+
 			set_state_pe(port, PE_SNK_READY);
 			return;
 		}
@@ -2088,9 +2088,6 @@ static void pe_snk_transition_sink_exit(int port)
 static void pe_snk_ready_entry(int port)
 {
 	print_current_state(port);
-
-	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-	prl_end_ams(port);
 
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait, then do
@@ -2204,14 +2201,12 @@ static void pe_snk_ready_run(int port)
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
-#ifdef CONFIG_BATTERY
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
-#endif
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2281,12 +2276,6 @@ static void pe_snk_ready_run(int port)
 			}
 		}
 	}
-}
-
-static void pe_snk_ready_exit(int port)
-{
-	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
-		prl_start_ams(port);
 }
 
 /**
@@ -2544,8 +2533,6 @@ static void pe_give_battery_cap_entry(int port)
 	uint32_t payload = *(uint32_t *)(&emsg[port].buf);
 	uint16_t *msg = (uint16_t *)emsg[port].buf;
 
-	if (!IS_ENABLED(CONFIG_BATTERY))
-		return;
 	print_current_state(port);
 
 	/* msg[0] - extended header is set by Protocol Layer */
@@ -2638,8 +2625,6 @@ static void pe_give_battery_status_entry(int port)
 	uint32_t payload = *(uint32_t *)(&emsg[port].buf);
 	uint32_t *msg = (uint32_t *)emsg[port].buf;
 
-	if (!IS_ENABLED(CONFIG_BATTERY))
-		return;
 	print_current_state(port);
 
 	if (battery_is_present()) {
@@ -2926,8 +2911,8 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 {
 	print_current_state(port);
 
-	/* Tell TypeC to swap from Attached.SRC to Attached.SNK */
-	tc_prs_src_snk_assert_rd(port);
+	/* Tell TypeC to switch VBUS off */
+	tc_src_power_off(port);
 	pe[port].ps_source_timer =
 			get_time().val + PD_POWER_SUPPLY_TURN_OFF_DELAY;
 }
@@ -2938,12 +2923,7 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 	if (get_time().val < pe[port].ps_source_timer)
 		return;
 
-	/* Wait until Rd is asserted */
-	if (tc_is_attached_snk(port)) {
-		/* Contract is invalid */
-		pe_invalidate_explicit_contract(port);
-		set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
-	}
+	set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
 }
 
 /**
@@ -2952,7 +2932,9 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 static void pe_prs_src_snk_wait_source_on_entry(int port)
 {
 	print_current_state(port);
-	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+
+	/* Tell TypeC to assert RD */
+	tc_prs_src_snk_assert_rd(port);
 	pe[port].ps_source_timer = TIMER_DISABLED;
 }
 
@@ -2962,7 +2944,15 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	int cnt;
 	int ext;
 
-	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+	/* Wait until Rd is asserted */
+	if (tc_is_attached_snk(port) &&
+			PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+		/* Contract is invalid */
+		PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+	}
+
+	if (pe[port].ps_source_timer == TIMER_DISABLED &&
 			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
@@ -2975,7 +2965,8 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	 * Transition to PE_SNK_Startup when:
 	 *   1) An PS_RDY Message is received.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(emsg[port].header);
@@ -3363,7 +3354,7 @@ static void pe_prs_frs_shared_exit(int port)
 }
 
 /**
- * BIST
+ * BIST TX
  */
 static void pe_bist_entry(int port)
 {
@@ -3635,15 +3626,7 @@ static void pe_vdm_request_entry(int port)
 		emsg[port].len = pe[port].vdm_cnt * 4;
 	}
 
-	if (pe[port].partner_type) {
-		/* Save power and data roles */
-		pe[port].saved_power_role = tc_get_power_role(port);
-		pe[port].saved_data_role = tc_get_data_role(port);
-
-		prl_send_data_msg(port, TCPC_TX_SOP_PRIME, PD_DATA_VENDOR_DEF);
-	} else {
-		prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
-	}
+	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
 
 	pe[port].vdm_response_timer = TIMER_DISABLED;
 }
@@ -5038,7 +5021,6 @@ static const struct usb_state pe_states[] = {
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
-		.exit  = pe_snk_ready_exit,
 	},
 	[PE_SNK_HARD_RESET] = {
 		.entry = pe_snk_hard_reset_entry,
