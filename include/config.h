@@ -3842,6 +3842,9 @@
  */
 #undef CONFIG_USB_PD_TBT_COMPAT_MODE
 
+/* Enable to enter into USB4 mode between two port partners */
+#undef CONFIG_USB_PD_USB4
+
 /*
  * Track VBUS level in TCPC module. This will only be needed if we're acting
  * as an external TCPC.
