@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f9ee92a_fa40d856",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "since we have stack pressure, can you make this a static in this file instead (which a comment saying why it is a static instead of a stack variable)",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b363b0_36dfcf26",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "what does it mean for the offset to be \u003c 0? Is that an error? Can you error out early?",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de4927b_ff81ab85",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "nit: can you put this in a do ... while instead with a retry count. it make it a little more clear that nothing is changing between the two calls (And it let\u0027s us change our minds pretty easily on how many retries)\n\nI am okay with retries per do ... while or a total retries per function, your calls (just letting you know I wouldn\u0027t complain either way ;) )",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 32
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "767eeece_3f8b28b4",
         "filename": "include/config.h",
         "patchSetId": 16
@@ -18,6 +87,98 @@
         "startChar": 0,
         "endLine": 3804,
         "endChar": 3
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c34a46e_70593860",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "let\u0027s add a comment saying that retimers are driven by the mux API and not independently",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591d2a70_8c1462ea",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "add a comment that this is optional (can be null)",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 38
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad545763_7784b358",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "this should be in the driver\u0027s h file",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9fc7423_57ec5349",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:19:24Z",
+      "side": 1,
+      "message": "let\u0027s add a comment that says that this many be a sparse array (, right)?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 41
       },
       "revId": "23a904307d239d380625371df8ec69f1ec909998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
