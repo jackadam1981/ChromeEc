@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "127804cc_3539e7bf",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-12T07:28:16Z",
+      "side": 1,
+      "message": "Done description.\n\nI think 3 seconds is good enough, please see http://sheets/1RrjByacEGDpTeDNxk15i9p4D3qEBgvYp8YnJ1TmExeI#gid\u003d1141661944\n\nThe temperature can keep at around 82 celsius degree.",
+      "parentUuid": "9132c795_3f44c753",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf1888ca_8f7ddd60",
         "filename": "baseboard/kukui/charger_mt6370.c",
         "patchSetId": 7
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "8ca13ea0_d06c9bc5",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-12T07:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1888ca_8f7ddd60",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b5886ba_d8320ca6",
         "filename": "baseboard/kukui/charger_mt6370.c",
         "patchSetId": 7
@@ -79,6 +127,24 @@
       "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d86172c_d33d7716",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-12T07:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5886ba_d8320ca6",
+      "revId": "3ae25e2742ccdc61e7907323c3981374cb223ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
