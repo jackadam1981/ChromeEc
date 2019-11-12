@@ -91,6 +91,9 @@
 /* Enabling SOP* communication */
 #define CONFIG_USB_PD_DECODE_SOP
 
+/* Enabling USB4 mode */
+#define CONFIG_USB_PD_USB4
+
 /* Enabling Compatible Thunderbolt mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
 
