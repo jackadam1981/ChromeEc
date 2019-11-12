@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae41d303_9bb8e09c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T02:07:54Z",
+      "side": 1,
+      "message": "please use python3 instead",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c9b599_73925f2c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T02:07:54Z",
+      "side": 1,
+      "message": "drop the indentation",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ed75b9_976b4578",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T02:07:54Z",
+      "side": 1,
+      "message": "just name it |Error| for the base exception",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e628ac2f_161c683b",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T02:07:54Z",
+      "side": 1,
+      "message": "don\u0027t do this with |cmd|.  pass a proper list in at the caller.",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea14114_8890370e",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T02:07:54Z",
+      "side": 1,
+      "message": "you need encoding\u003d\u0027utf-8\u0027 if you\u0027re going to capture \u0026 use the output as text",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c012fd_442e4b80",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T02:07:54Z",
+      "side": 1,
+      "message": "this is python2-only syntax which is not allowed",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
