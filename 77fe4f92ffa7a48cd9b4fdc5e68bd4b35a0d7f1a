@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1484b098_6ab81e4d",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-12T03:55:23Z",
+      "side": 1,
+      "message": "So I am trying to figure out how this interacts with the code in usb_port_power_dumb.c\nThat tracks the state in charge_mode, but potentially this can be different from the actual state. I note that usb_charge_set_mode is called by the ACPI code.\nSo perhaps usb_port_power_dumb.c should have a function that is called by this code to disable the ports and keep that status correct.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558b6a9a_fd32aca8",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-12T03:55:23Z",
+      "side": 1,
+      "message": "Remove the TODO if this does it.",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6642e147_3ddef86d",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-12T03:55:23Z",
+      "side": 1,
+      "message": "So there are also USB_A[0-3]_OC_ODL that are signalled when each of the USB A ports hit overcurrent.\nShould these be included in the triggering of the low power advertisement?",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
