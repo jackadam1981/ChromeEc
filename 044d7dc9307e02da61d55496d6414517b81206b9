@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65509bd0_f6cc3013",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T17:00:52Z",
+      "side": 1,
+      "message": "can you add a comment here to why, basically the the mux is on the SoC so it is disconnect when the SoC is unpowered\n\n\ncomment here and in get too please",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "044d7dc9307e02da61d55496d6414517b81206b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
