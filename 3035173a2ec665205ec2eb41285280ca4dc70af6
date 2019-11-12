@@ -70,6 +70,30 @@
       "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eef5d883_370a2617",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-11-12T20:49:30Z",
+      "side": 1,
+      "message": "Ping on this, too... I still think the specifier can be %f directly rather than hiding it behind %pf.",
+      "parentUuid": "5b92cd23_74dc89d2",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
