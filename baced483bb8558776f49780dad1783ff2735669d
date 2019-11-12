@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4dfd839b_428fe720",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2164,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T16:57:44Z",
+      "side": 1,
+      "message": "Wouldn\u0027t we want to set this flag based on what the port partner was advertising it can do. If it can support a power role swap, then we should specify dual role here, otherwise we should specify dedicated.",
+      "parentUuid": "c02618c1_4b0e7432",
+      "range": {
+        "startLine": 2164,
+        "startChar": 40,
+        "endLine": 2164,
+        "endChar": 53
+      },
+      "revId": "baced483bb8558776f49780dad1783ff2735669d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc1d3c77_6863a084",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -281,6 +305,30 @@
       "revId": "baced483bb8558776f49780dad1783ff2735669d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "445d622a_37079f8d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T16:57:44Z",
+      "side": 1,
+      "message": "that is not the way I read the code:\n\nstatic struct type_c {\n\t/* state machine context */\n\tstruct sm_ctx ctx;\n\t/* current port power role (SOURCE or SINK) */\n\tenum pd_power_role power_role;\n\t/* current port data role (DFP or UFP) */\n\tenum pd_data_role data_role;\n\t/* Higher-level power deliver state machines are enabled if true. */\n\tuint8_t pd_enable;\n\n......",
+      "parentUuid": "c1e5cef1_8758cc57",
+      "range": {
+        "startLine": 2172,
+        "startChar": 1,
+        "endLine": 2173,
+        "endChar": 25
+      },
+      "revId": "baced483bb8558776f49780dad1783ff2735669d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
