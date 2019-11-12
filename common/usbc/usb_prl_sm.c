@@ -424,7 +424,6 @@ void prl_run(int port, int evt, int en)
 		/* If disabling, wait until message is sent. */
 		if (!en && tch_get_state(port) ==
 				   TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE) {
-
 			/* Disable RX */
 			if (IS_ENABLED(CONFIG_USB_TYPEC_CTVPD) ||
 			    IS_ENABLED(CONFIG_USB_TYPEC_VPD))
