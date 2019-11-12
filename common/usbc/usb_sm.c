@@ -130,6 +130,9 @@ void set_state(const int port, struct sm_ctx *const ctx,
 	/* We don't exit and re-enter shared parent states */
 	shared_parent = shared_parent_state(last_state, new_state);
 
+	/* Update next state variable in case the exit state needs to use it */
+	ctx->next = new_state;
+
 	/*
 	 * Exit all of the non-common states from the last state.
 	 */

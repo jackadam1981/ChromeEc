@@ -33,6 +33,7 @@ typedef const struct usb_state *usb_state_ptr;
 
 /* Defines the current context of the usb statemachine. */
 struct sm_ctx {
+	usb_state_ptr next;
 	usb_state_ptr current;
 	usb_state_ptr previous;
 	/* We use intptr_t type to accommodate host tests ptr size variance */
