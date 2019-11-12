@@ -349,6 +349,21 @@ void tc_start_event_loop(int port);
  */
 void tc_pause_event_loop(int port);
 
+/**
+ * Sets the Master TrySrc enable flag. If flag is set,
+ * the system can enable and disable try src.
+ *
+ * @param port USB-C port number
+ */
+void tc_set_try_src(int en);
+
+/*
+ * Prints the rw hash and sysjump image string.
+ *
+ * @param port USB-C port number
+ */
+void tc_print_dev_info(int port);
+
 #ifdef CONFIG_USB_TYPEC_CTVPD
 
 /**
