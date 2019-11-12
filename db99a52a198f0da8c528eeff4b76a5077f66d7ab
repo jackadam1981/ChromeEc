@@ -16,6 +16,24 @@
       "revId": "db99a52a198f0da8c528eeff4b76a5077f66d7ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd6f7d1_efb5f662",
+        "filename": "board/servo_micro/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-12T18:43:59Z",
+      "side": 1,
+      "message": "Something is definitely weird here. I opened b/144356961 for this. 3 of 6 servos should this weird behavior but the other 3 do not.",
+      "parentUuid": "ced74dd0_a52b6947",
+      "revId": "db99a52a198f0da8c528eeff4b76a5077f66d7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
