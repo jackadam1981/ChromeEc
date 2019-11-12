@@ -8,6 +8,8 @@
 #include "dcrypto.h"
 #include "internal.h"
 #include "trng.h"
+#include "tpm_vendor_cmds.h"
+#include "extension.h"
 
 /* HMAC_DRBG flow in NIST SP 800-90Ar1, 10.2, RFC 6979
  */
@@ -356,4 +358,60 @@ static int cmd_hmac_drbg_rand(int argc, char **argv)
 	return 0;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(hmac_drbg_rand, cmd_hmac_drbg_rand, NULL, NULL);
+
+static struct drbg_ctx drbg_ctx;
+
+/* DRBG INIT command  */
+static enum vendor_cmd_rc drbg_init(enum vendor_cmd_cc code, void *buf,
+				    size_t input_size, size_t *response_size)
+{
+	struct DRBG_INIT_REQ *req = buf;
+
+	*response_size = 0;
+	if (input_size != sizeof(struct DRBG_INIT_REQ))
+		return VENDOR_RC_BOGUS_ARGS;
+	hmac_drbg_init(&drbg_ctx, req->entropy, SHA256_DIGEST_SIZE, req->nonce,
+		       SHA256_DIGEST_SIZE, req->perso, SHA256_DIGEST_SIZE);
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_DRBG_INIT, drbg_init);
+
+/* DRBG GENERATE command  */
+static enum vendor_cmd_rc drbg_generate(enum vendor_cmd_cc code, void *buf,
+					size_t input_size,
+					size_t *response_size)
+{
+	static uint8_t output[SHA256_DIGEST_SIZE];
+	struct DRBG_GENERATE_REQ *req = buf;
+	struct DRBG_GENERATE_RESP *resp = buf;
+
+	*response_size = 0;
+	if (input_size != sizeof(struct DRBG_GENERATE_REQ) ||
+	    *response_size < sizeof(struct DRBG_GENERATE_RESP))
+		return VENDOR_RC_BOGUS_ARGS;
+
+	hmac_drbg_generate(&drbg_ctx, output, SHA256_DIGEST_SIZE, req->input,
+			   SHA256_DIGEST_SIZE);
+	memcpy(resp->drbg_out, output, SHA256_DIGEST_SIZE);
+	*response_size = sizeof(struct DRBG_GENERATE_RESP);
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_DRBG_GENERATE, drbg_generate);
+
+/* DRBG RESEED command */
+static enum vendor_cmd_rc drbg_reseed(enum vendor_cmd_cc code, void *buf,
+				      size_t input_size, size_t *response_size)
+{
+	struct DRBG_RESEED_REQ *req = buf;
+
+	*response_size = 0;
+	if (input_size != sizeof(struct DRBG_RESEED_REQ))
+		return VENDOR_RC_BOGUS_ARGS;
+	hmac_drbg_reseed(&drbg_ctx, req->entropy, SHA256_DIGEST_SIZE,
+			 req->input, SHA256_DIGEST_SIZE, NULL, 0);
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_DRBG_RESEED, drbg_reseed);
+
 #endif /* CRYPTO_TEST_SETUP */
