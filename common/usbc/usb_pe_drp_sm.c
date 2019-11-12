@@ -1590,7 +1590,8 @@ static void pe_src_ready_exit(int port)
 	 * notify the Protocol Layer that the first Message in an AMS will
 	 * follow.
 	 */
-	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
+	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS |
+				PE_PRS_SRC_SNK_EVALUATE_SWAP))
 		prl_start_ams(port);
 }
 
@@ -2085,9 +2086,6 @@ static void pe_snk_ready_entry(int port)
 {
 	print_current_state(port);
 
-	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-	prl_end_ams(port);
-
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait, then do
 	 * the following:
@@ -2275,12 +2273,6 @@ static void pe_snk_ready_run(int port)
 			}
 		}
 	}
-}
-
-static void pe_snk_ready_exit(int port)
-{
-	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
-		prl_start_ams(port);
 }
 
 /**
@@ -2915,8 +2907,8 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 {
 	print_current_state(port);
 
-	/* Tell TypeC to swap from Attached.SRC to Attached.SNK */
-	tc_prs_src_snk_assert_rd(port);
+	/* Tell TypeC to switch VBUS off */
+	tc_src_power_off(port);
 	pe[port].ps_source_timer =
 			get_time().val + PD_POWER_SUPPLY_TURN_OFF_DELAY;
 }
@@ -2927,12 +2919,7 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 	if (get_time().val < pe[port].ps_source_timer)
 		return;
 
-	/* Wait until Rd is asserted */
-	if (tc_is_attached_snk(port)) {
-		/* Contract is invalid */
-		pe_invalidate_explicit_contract(port);
-		set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
-	}
+	set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
 }
 
 /**
@@ -2941,7 +2928,9 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 static void pe_prs_src_snk_wait_source_on_entry(int port)
 {
 	print_current_state(port);
-	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+
+	/* Tell TypeC to assert RD */
+	tc_prs_src_snk_assert_rd(port);
 	pe[port].ps_source_timer = TIMER_DISABLED;
 }
 
@@ -2951,7 +2940,15 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	int cnt;
 	int ext;
 
-	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+	/* Wait until Rd is asserted */
+	if (tc_is_attached_snk(port) &&
+			PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+		/* Contract is invalid */
+		PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+	}
+
+	if (pe[port].ps_source_timer == TIMER_DISABLED &&
 			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
@@ -2964,7 +2961,8 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	 * Transition to PE_SNK_Startup when:
 	 *   1) An PS_RDY Message is received.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(emsg[port].header);
@@ -5027,7 +5025,6 @@ static const struct usb_state pe_states[] = {
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
-		.exit  = pe_snk_ready_exit,
 	},
 	[PE_SNK_HARD_RESET] = {
 		.entry = pe_snk_hard_reset_entry,
