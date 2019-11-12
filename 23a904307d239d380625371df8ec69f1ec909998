@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2fe873c6_c28db80d",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9ee92a_fa40d856",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45b363b0_36dfcf26",
         "filename": "driver/retimer/pi3dpx1207.c",
         "patchSetId": 16
@@ -45,6 +69,30 @@
       "revId": "23a904307d239d380625371df8ec69f1ec909998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727d7b65_52ae57ba",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "can\u0027t be \u003c0 but it can be \u003d\u003d0.  This would indicate a condition that we will never see because this is a read only register, but it could be asked for and then we would not do the initial read, just the write.  It is correct as it is",
+      "parentUuid": "45b363b0_36dfcf26",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7ef97974_8d57af4d",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de4927b_ff81ab85",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 32
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "767eeece_3f8b28b4",
         "filename": "include/config.h",
         "patchSetId": 16
@@ -91,6 +163,30 @@
       "revId": "23a904307d239d380625371df8ec69f1ec909998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b990584f_31dad499",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 3804,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "I think the current comment is useful",
+      "parentUuid": "767eeece_3f8b28b4",
+      "range": {
+        "startLine": 3802,
+        "startChar": 0,
+        "endLine": 3804,
+        "endChar": 3
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "999e90f8_eb762c76",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c34a46e_70593860",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "591d2a70_8c1462ea",
         "filename": "include/usb_mux.h",
         "patchSetId": 16
@@ -137,6 +257,30 @@
       "revId": "23a904307d239d380625371df8ec69f1ec909998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1246725_96993a4a",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591d2a70_8c1462ea",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 38
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "81c83dc3_3d4d65d6",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "I was following lines 128-133 above.  I will move this anyway",
+      "parentUuid": "ad545763_7784b358",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9fc7423_57ec5349",
         "filename": "include/usb_mux.h",
         "patchSetId": 16
@@ -183,6 +351,30 @@
       "revId": "23a904307d239d380625371df8ec69f1ec909998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a57484c_892fc24e",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T20:38:33Z",
+      "side": 1,
+      "message": "not sparse.  Follows pattern from line 139.  There is an entry for each port, used or not.",
+      "parentUuid": "d9fc7423_57ec5349",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 41
+      },
+      "revId": "23a904307d239d380625371df8ec69f1ec909998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
