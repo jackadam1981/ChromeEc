@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b74e3c_983bfe25",
+        "filename": "driver/retimer/pi3dpx1207.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-12T07:19:32Z",
+      "side": 1,
+      "message": "nit: buf[] is more common (than buff[]) in the existing EC code.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "54095dd3ff6db24be6196c816301f5a82739f865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1a0cb5_e62001d6",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-12T07:19:32Z",
+      "side": 1,
+      "message": "nit: combine into single if(IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) \u0026\u0026 (r-\u003eflags \u0026 USB_PD_MUX_HPD_IRQ) \u0026\u0026 ...",
+      "revId": "54095dd3ff6db24be6196c816301f5a82739f865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d84092f4_22058af3",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3802,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-12T07:19:32Z",
+      "side": 1,
+      "message": "Difference between CONFIG_USB_PD_RETIMER and CONFIG_USBC_PD_RETIMER_MUX is confusing.\nSince the former is used in usb_mux/virtual.c, and the latter is used in usb_mux/usb_mux.c, how about renaming:\n\n  CONFIG_USB_PD_RETIMER -\u003e CONFIG_USBC_VIRTUAL_MUX_RETIMER\n  CONFIG_USBC_PD_RETIMER_MUX -\u003e CONFIG_USBC_MUX_RETIMER\n\nAnd then documenting here as:\n\n  /* Type-C retimer used with virtual mux. */\n  #undef CONFIG_USBC_VIRTUAL_MUX_RETIMER\n\n  /* Type-C retimer used with real mux. */\n  #undef CONFIG_USBC_MUX_RETIMER",
+      "revId": "54095dd3ff6db24be6196c816301f5a82739f865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7ead32_4819f616",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3806,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-12T07:19:32Z",
+      "side": 1,
+      "message": "Remove this comment.",
+      "range": {
+        "startLine": 3804,
+        "startChar": 0,
+        "endLine": 3806,
+        "endChar": 3
+      },
+      "revId": "54095dd3ff6db24be6196c816301f5a82739f865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16c94df_56eacd5f",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3807,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-12T07:19:32Z",
+      "side": 1,
+      "message": "Rename to CONFIG_USBC_RETIMER_INTEL_BB for consistency (USBC_RETIMER makes more sense that USB_PD_RETIMER).",
+      "range": {
+        "startLine": 3807,
+        "startChar": 7,
+        "endLine": 3807,
+        "endChar": 37
+      },
+      "revId": "54095dd3ff6db24be6196c816301f5a82739f865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
