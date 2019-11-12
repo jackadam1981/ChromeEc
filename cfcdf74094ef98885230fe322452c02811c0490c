@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "d5c6a519_e94da07e",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-12T03:37:29Z",
+      "side": 1,
+      "message": "put this information in the return type.",
+      "range": {
+        "startLine": 212,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ede064f5_58dbab98",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 14
@@ -163,6 +186,23 @@
     },
     {
       "key": {
+        "uuid": "f60a07f1_299fc895",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-12T03:37:29Z",
+      "side": 1,
+      "message": "Move the declaration to usb_common.h since your definition is in usb_common.c",
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "131c36a4_9fb6f297",
         "filename": "include/usb_pd.h",
         "patchSetId": 14
@@ -180,6 +220,23 @@
         "endLine": 1494,
         "endChar": 9
       },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037c6a7b_1be195c5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-12T03:37:29Z",
+      "side": 1,
+      "message": "same here",
       "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
