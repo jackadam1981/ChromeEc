@@ -304,9 +304,6 @@ static struct policy_engine {
 	enum pd_power_role power_role;
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
-	/* saved data and power roles while communicating with a cable plug */
-	enum pd_data_role saved_data_role;
-	enum pd_power_role saved_power_role;
 	/* state machine flags */
 	uint32_t flags;
 	/* Device Policy Manager Request */
@@ -1438,6 +1435,7 @@ static void pe_src_ready_run(int port)
 	 *   1) The DiscoverIdentityTimer times out.
 	 */
 	if (get_time().val > pe[port].discover_port_identity_timer) {
+		PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 		pe_start_port_discovery(port);
 		return;
 	}
@@ -1481,6 +1479,7 @@ static void pe_src_ready_run(int port)
 		} else if (PE_CHK_DPM_REQUEST(port,
 					DPM_REQUEST_DISCOVER_IDENTITY)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DISCOVER_IDENTITY);
+			PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 
 			pe[port].partner_type = CABLE;
 			pe[port].vdm_cmd = DISCOVER_IDENTITY;
@@ -1531,6 +1530,8 @@ static void pe_src_ready_run(int port)
 			case PD_DATA_VENDOR_DEF:
 				if (PD_HEADER_TYPE(emsg[port].header) ==
 							PD_DATA_VENDOR_DEF) {
+					PE_SET_FLAG(port,
+						PE_FLAGS_INTERRUPTIBLE_AMS);
 					if (PD_VDO_SVDM(payload)) {
 						set_state_pe(port,
 							PE_VDM_RESPONSE);
@@ -2089,9 +2090,6 @@ static void pe_snk_ready_entry(int port)
 {
 	print_current_state(port);
 
-	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-	prl_end_ams(port);
-
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait, then do
 	 * the following:
@@ -2281,12 +2279,6 @@ static void pe_snk_ready_run(int port)
 			}
 		}
 	}
-}
-
-static void pe_snk_ready_exit(int port)
-{
-	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
-		prl_start_ams(port);
 }
 
 /**
@@ -2962,7 +2954,7 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	int cnt;
 	int ext;
 
-	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+	if (pe[port].ps_source_timer == TIMER_DISABLED &&
 			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
@@ -2975,7 +2967,8 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	 * Transition to PE_SNK_Startup when:
 	 *   1) An PS_RDY Message is received.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (pe[port].ps_source_timer != TIMER_DISABLED &&
+			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(emsg[port].header);
@@ -3635,15 +3628,7 @@ static void pe_vdm_request_entry(int port)
 		emsg[port].len = pe[port].vdm_cnt * 4;
 	}
 
-	if (pe[port].partner_type) {
-		/* Save power and data roles */
-		pe[port].saved_power_role = tc_get_power_role(port);
-		pe[port].saved_data_role = tc_get_data_role(port);
-
-		prl_send_data_msg(port, TCPC_TX_SOP_PRIME, PD_DATA_VENDOR_DEF);
-	} else {
-		prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
-	}
+	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
 
 	pe[port].vdm_response_timer = TIMER_DISABLED;
 }
@@ -5038,7 +5023,6 @@ static const struct usb_state pe_states[] = {
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
-		.exit  = pe_snk_ready_exit,
 	},
 	[PE_SNK_HARD_RESET] = {
 		.entry = pe_snk_hard_reset_entry,
