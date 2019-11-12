@@ -304,9 +304,6 @@ static struct policy_engine {
 	enum pd_power_role power_role;
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
-	/* saved data and power roles while communicating with a cable plug */
-	enum pd_data_role saved_data_role;
-	enum pd_power_role saved_power_role;
 	/* state machine flags */
 	uint32_t flags;
 	/* Device Policy Manager Request */
@@ -3622,15 +3619,7 @@ static void pe_vdm_request_entry(int port)
 		emsg[port].len = pe[port].vdm_cnt * 4;
 	}
 
-	if (pe[port].partner_type) {
-		/* Save power and data roles */
-		pe[port].saved_power_role = tc_get_power_role(port);
-		pe[port].saved_data_role = tc_get_data_role(port);
-
-		prl_send_data_msg(port, TCPC_TX_SOP_PRIME, PD_DATA_VENDOR_DEF);
-	} else {
-		prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
-	}
+	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
 
 	pe[port].vdm_response_timer = TIMER_DISABLED;
 }
