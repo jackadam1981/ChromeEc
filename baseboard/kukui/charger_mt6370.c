@@ -9,10 +9,16 @@
 #include "driver/charger/rt946x.h"
 #include "hooks.h"
 #include "power.h"
+#include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
 
 #define BAT_LEVEL_PD_LIMIT 85
+
+struct pd_pref_config_t pd_pref_config = {
+	.mv = 5000,
+	.type = PD_PREFER_BULK,
+};
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
