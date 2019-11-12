@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da60965_db4a50c3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-12T01:00:48Z",
+      "side": 1,
+      "message": "If we receive a message here that we\u0027re not expecting, I think we ought to send a Soft Reset. Right now it seems that we\u0027re just ignoring it and pretending it didn\u0027t happen.",
+      "revId": "dbffc258fbcdda5659e57618f0ff8c7bc47642e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c4de770_6bfd4b31",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3654,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-12T01:00:48Z",
+      "side": 1,
+      "message": "If the message received was unexpected, we should return to either SNK/SRC_READY state as this is an interruptible AMS.",
+      "revId": "dbffc258fbcdda5659e57618f0ff8c7bc47642e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0e0048_3c0956db",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4045,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-12T01:00:48Z",
+      "side": 1,
+      "message": "Again here, if we receive an unexpected message, we should send a SoftReset as this is a Non-Interruptible AMS.",
+      "revId": "dbffc258fbcdda5659e57618f0ff8c7bc47642e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
