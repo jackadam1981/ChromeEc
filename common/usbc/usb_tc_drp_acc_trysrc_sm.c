@@ -280,6 +280,7 @@ test_export_static enum usb_tc_state get_state_tc(const int port);
 
 #ifdef CONFIG_USB_PD_TRY_SRC
 /* Enable variable for Try.SRC states */
+static uint8_t pd_try_src_master_enable;
 static uint8_t pd_try_src_enable;
 static void pd_update_try_source(void);
 #endif
@@ -486,6 +487,11 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 void pd_got_frs_signal(int port)
 {
 	pe_got_frs_signal(port);
+}
+
+void tc_set_try_src(int en)
+{
+	pd_try_src_master_enable = en ? 1 : 0;
 }
 
 int tc_is_attached_src(int port)
@@ -838,6 +844,9 @@ void tc_state_init(int port)
 	 * after PD_LPM_DEBOUNCE_US.
 	 */
 	tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+
+	/* Allow system to set try src enable */
+	pd_try_src_master_enable = 1;
 }
 
 enum pd_power_role tc_get_power_role(int port)
@@ -1921,7 +1930,7 @@ static void tc_attach_wait_snk_run(const int port)
 	if (pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
 #ifdef CONFIG_USB_PD_TRY_SRC
-			if (pd_try_src_enable)
+			if (pd_try_src_master_enable && pd_try_src_enable)
 				set_state_tc(port, TC_TRY_SRC);
 			else
 #endif
