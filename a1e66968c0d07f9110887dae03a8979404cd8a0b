@@ -123,6 +123,30 @@
       "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7133eb6_de41f754",
+        "filename": "board/atlas/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-12T00:00:43Z",
+      "side": 1,
+      "message": "As I\u0027m working on crbug.com/1021724, I found myself adding such a CONFIG_* option. If that option is defined, these functions exist and therefore DFP_D will be set.",
+      "parentUuid": "51dd7f04_6e922c5b",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "a1e66968c0d07f9110887dae03a8979404cd8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
