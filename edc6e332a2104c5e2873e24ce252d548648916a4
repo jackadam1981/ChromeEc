@@ -22,6 +22,30 @@
       "revId": "edc6e332a2104c5e2873e24ce252d548648916a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1106d752_8a42246e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3800,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-12T17:14:09Z",
+      "side": 1,
+      "message": "This is defined when a board defines CONFIG_USBC_RETIMER_PI3DPX1207 (in parent CL)",
+      "parentUuid": "5306f9b8_d54ec097",
+      "range": {
+        "startLine": 3799,
+        "startChar": 0,
+        "endLine": 3800,
+        "endChar": 30
+      },
+      "revId": "edc6e332a2104c5e2873e24ce252d548648916a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
