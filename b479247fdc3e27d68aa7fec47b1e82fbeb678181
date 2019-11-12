@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9ae3966_cd87f22e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-12T18:37:22Z",
+      "side": 1,
+      "message": "the set_vconn function clears and sets the flag depending on the enable parameter",
+      "parentUuid": "069a1d51_620f33e2",
+      "range": {
+        "startLine": 723,
+        "startChar": 1,
+        "endLine": 724,
+        "endChar": 21
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d900285d_9d7803ea",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-12T16:57:44Z",
       "side": 1,
       "message": "we don\u0027t want to do this if we are in the middle of a PR swap right?",
+      "range": {
+        "startLine": 2138,
+        "startChar": 1,
+        "endLine": 2146,
+        "endChar": 37
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec71bf1_69093f48",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2146,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-12T18:37:22Z",
+      "side": 1,
+      "message": "After looking at the type-c spec, page 171, I don\u0027t think PR swap to source is allowed. Could you take a look? If this is the case, I\u0027ll remove the PR_SWAP code from the run state.",
+      "parentUuid": "d900285d_9d7803ea",
       "range": {
         "startLine": 2138,
         "startChar": 1,
