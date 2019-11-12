@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 
 """Module for testing ecc functions using extended commands."""
-import binascii
+from binascii import a2b_hex as a2b
 import hashlib
 import os
 import struct
@@ -17,6 +17,8 @@ _ECC_OPCODES = {
   'VERIFY': 0x01,
   'KEYGEN': 0x02,
   'KEYDERIVE': 0x03,
+  'TEST_POINT': 0x04,
+  'VERIFY_ANY': 0x05,
 }
 
 _ECC_CURVES = {
@@ -42,21 +44,33 @@ _HASH_FUNC = {
     'NIST-P256': hashlib.sha256
 }
 
-# Command format.
-#
-#   0x00 OP
-#   0x00 CURVE_ID
-#   0x00 SIGN_MODE
-#   0x00 HASHING
-#   0x00 MSB IN LEN
-#   0x00 LSB IN LEN
-#   .... IN
-#   0x00 MSB DIGEST LEN
-#   0x00 LSB DIGEST LEN
-#   .... DIGEST
-#
-_ECC_CMD_FORMAT = '{o:c}{c:c}{s:c}{h:c}{ml:s}{msg}{dl:s}{dig}'
+NIST_P256_QX = '12c3d6a2679ca8ee3c4d927f204ed5bc'\
+               'b4577a04b0ac02b2a36ab3e9e10781de'
+NIST_P256_QY = '5c85ad7413971172fca5738fee9d0e7b'\
+               'c59ffd8a626d689bc6cca4b58665521d'
 
+# Command format.
+#   size
+#   0x01 OP
+#   0x01 CURVE_ID
+#   0x01 SIGN_MODE
+#   0x01 HASHING
+#   0x01 MSB IN LEN
+#   0x01 LSB IN LEN
+#   .... IN
+#   0x01 MSB DIGEST LEN
+#   0x01 LSB DIGEST LEN
+#   .... DIGEST
+#   for OP == TEST_VERIFY_ANY:
+#   0x01 MSB Q.x LEN
+#   0x01 LSB Q.x LEN
+#   .... Q.x
+#   0x01 MSB Q.y LEN
+#   0x01 LSB Q.y LEN
+#   .... Q.y
+
+_ECC_CMD_FORMAT = '{o:c}{c:c}{s:c}{h:c}{ml:s}{msg}{dl:s}{dig}'
+_ECC_CMD_FORMAT_ANY = _ECC_CMD_FORMAT + '{qxl:s}{qx}{qyl:s}{qy}'
 
 def _sign_cmd(curve_id, hash_func, sign_mode, msg):
   op = _ECC_OPCODES['SIGN']
@@ -76,6 +90,27 @@ def _verify_cmd(curve_id, hash_func, sign_mode, msg, sig):
                                ml=struct.pack('>H', sig_len), msg=sig,
                                dl=struct.pack('>H', digest_len), dig=digest)
 
+
+def _verify_any_cmd(curve_id, hash_func, sign_mode, msg, sig, qx, qy):
+  op = _ECC_OPCODES['VERIFY_ANY']
+  sig_len = len(sig)
+  digest = hash_func(msg).digest()
+  digest_len = len(digest)
+  return _ECC_CMD_FORMAT_ANY.format(o=op, c=curve_id, s=sign_mode,
+                               h=_HASH['NONE'],
+                               ml=struct.pack('>H', sig_len), msg=sig,
+                               dl=struct.pack('>H', digest_len), dig=digest,
+                               qxl=struct.pack('>H', len(qx)), qx=qx,
+                               qyl=struct.pack('>H', len(qy)), qy=qy)
+
+def _test_point_cmd(curve_id, qx, qy):
+  op = _ECC_OPCODES['TEST_POINT']
+  return _ECC_CMD_FORMAT_ANY.format(o=op, c=curve_id, s=0,
+                               h=_HASH['NONE'],
+                               ml=struct.pack('>H', 0), msg='',
+                               dl=struct.pack('>H', 0), dig='',
+                               qxl=struct.pack('>H', len(qx)), qx=qx,
+                               qyl=struct.pack('>H', len(qy)), qy=qy)
 
 def _keygen_cmd(curve_id):
   op = _ECC_OPCODES['KEYGEN']
@@ -129,6 +164,39 @@ def _sign_test(tpm):
         test_name, utils.hex_dump(verified), utils.hex_dump(expected)))
     print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
 
+def _sign_test_any(tpm):
+  msg = 'Hello CR50'
+
+  for data in _SIGN_INPUTS:
+    curve_id, sign_mode = data
+    test_name = 'ECC-SIGN, Q:%s:%s' % data
+    cmd = _sign_cmd(_ECC_CURVES[curve_id], _HASH_FUNC[curve_id],
+                    _SIGN_MODE[sign_mode], msg)
+    wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.ECC, cmd))
+    signature = tpm.unwrap_ext_response(subcmd.ECC, wrapped_response)
+    # make sure properly supplied Q.x, Q.y works
+    cmd = _verify_any_cmd(_ECC_CURVES[curve_id], _HASH_FUNC[curve_id],
+                      _SIGN_MODE[sign_mode], msg, signature,
+                      a2b(NIST_P256_QX), a2b(NIST_P256_QY))
+    wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.ECC, cmd))
+    verified = tpm.unwrap_ext_response(subcmd.ECC, wrapped_response)
+    expected = '\x01'
+    if verified != expected:
+      raise subcmd.TpmTestError('%s error:%s:%s' % (
+        test_name, utils.hex_dump(verified), utils.hex_dump(expected)))
+    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+
+def _point_test(tpm):
+  test_name = 'POINT-TEST: NIST-P256'
+  cmd = _test_point_cmd(_ECC_CURVES['NIST-P256'],
+                         a2b(NIST_P256_QX), a2b(NIST_P256_QY))
+  wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.ECC, cmd))
+  verified = tpm.unwrap_ext_response(subcmd.ECC, wrapped_response)
+  expected = '\x01'
+  if verified != expected:
+    raise subcmd.TpmTestError('%s error:%s:%s' % (
+      test_name, utils.hex_dump(verified), utils.hex_dump(expected)))
+  print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
 
 def _keygen_test(tpm):
   for data in _KEYGEN_INPUTS:
@@ -161,5 +229,7 @@ def _keyderive_test(tpm):
 
 def ecc_test(tpm):
   _sign_test(tpm)
+  _sign_test_any(tpm)
+  _point_test(tpm)
   _keygen_test(tpm)
   _keyderive_test(tpm)

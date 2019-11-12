@@ -367,7 +367,9 @@ enum {
 	TEST_SIGN = 0,
 	TEST_VERIFY = 1,
 	TEST_KEYGEN = 2,
-	TEST_KEYDERIVE = 3
+	TEST_KEYDERIVE = 3,
+	TEST_POINT = 4,
+	TEST_VERIFY_ANY = 5
 };
 
 struct TPM2B_ECC_PARAMETER_aligned {
@@ -445,6 +447,7 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 	uint16_t in_len;
 	uint8_t in[MAX_MSG_BYTES];
 	uint16_t digest_len;
+	uint16_t q_len;
 	struct TPM2B_MAX_BUFFER_aligned digest;
 	uint8_t *out = (uint8_t *) cmd_body;
 	uint32_t *response_size = (uint32_t *) response_size_out;
@@ -456,17 +459,24 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 
 	/* Command format.
 	 *
-	 *   OFFSET       FIELD
-	 *   0            OP
+	 *   LENGTH       FIELD
+	 *   1            OP
 	 *   1            CURVE_ID
-	 *   2            SIGN_MODE
-	 *   3            HASHING
-	 *   4            MSB IN LEN
-	 *   5            LSB IN LEN
-	 *   6            IN
-	 *   6 + IN_LEN   MSB DIGEST LEN
-	 *   7 + IN_LEN   LSB DIGEST LEN
-	 *   8 + IN_LEN   DIGEST
+	 *   1            SIGN_MODE
+	 *   1            HASHING
+	 *   1            MSB IN LEN
+	 *   1            LSB IN LEN
+	 *   IN LEN       IN
+	 *   1            MSB DIGEST LEN
+	 *   1            LSB DIGEST LEN
+	 *   DIGEST LEN   DIGEST
+	 *   for OP == TEST_VERIFY_ANY:
+	 *   1            MSB Q.X LEN
+	 *   1            LSB Q.X LEN
+	 *   Q.X LEN      Q.X
+	 *   1            MSB Q.Y LEN
+	 *   1            LSB Q.Y LEN
+	 *   Q.Y LEN      Q.Y
 	 */
 
 	cmd = (uint8_t *) cmd_body;
@@ -483,7 +493,7 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 	memcpy(in, cmd, in_len);
 	cmd += in_len;
 
-	digest_len = ((uint16_t) (cmd[0] << 8)) | cmd[1];
+	digest_len = ((uint16_t)(cmd[0] << 8)) | cmd[1];
 	cmd += 2;
 	if (digest_len > sizeof(digest.d.t.buffer)) {
 		*response_size = 0;
@@ -493,12 +503,34 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 	memcpy(digest.d.t.buffer, cmd, digest_len);
 	cmd += digest_len;
 
+	if (op == TEST_VERIFY_ANY || op == TEST_POINT) {
+		q_len = ((uint16_t)(cmd[0] << 8)) | cmd[1];
+		cmd += 2;
+		if (q_len > sizeof(q.x.t.buffer)) {
+			*response_size = 0;
+			return;
+		}
+		memcpy(&q.x.t.buffer, cmd, q_len);
+		q.x.t.size = q_len;
+		cmd += q_len;
+		q_len = ((uint16_t)(cmd[0] << 8)) | cmd[1];
+		cmd += 2;
+		if (q_len > sizeof(q.y.t.buffer)) {
+			*response_size = 0;
+			return;
+		}
+		memcpy(&q.y.t.buffer, cmd, q_len);
+		q.y.t.size = q_len;
+	} else {
+		/* use fixed signature */
+		q.x = NIST_P256_qx.d;
+		q.y = NIST_P256_qy.d;
+	}
+
 	/* Make copies of d, and q, as const data is immutable. */
 	switch (curve_id) {
 	case TPM_ECC_NIST_P256:
 		d = NIST_P256_d.d;
-		q.x = NIST_P256_qx.d;
-		q.y = NIST_P256_qy.d;
 		break;
 	default:
 		*response_size = 0;
@@ -519,6 +551,7 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 		*response_size = r.d.b.size + s.d.b.size;
 		break;
 	case TEST_VERIFY:
+	case TEST_VERIFY_ANY:
 		r.d.b.size = in_len / 2;
 		memcpy(r.d.b.buffer, in, r.d.b.size);
 		s.d.b.size = in_len / 2;
@@ -604,6 +637,11 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 		}
 
 		*out = 1;
+		*response_size = 1;
+		return;
+	}
+	case TEST_POINT: {
+		*out = _cpri__EccIsPointOnCurve(curve_id, &q);
 		*response_size = 1;
 		return;
 	}
