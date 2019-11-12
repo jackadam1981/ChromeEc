@@ -367,7 +367,9 @@ enum {
 	TEST_SIGN = 0,
 	TEST_VERIFY = 1,
 	TEST_KEYGEN = 2,
-	TEST_KEYDERIVE = 3
+	TEST_KEYDERIVE = 3,
+	TEST_POINT = 4,
+	TEST_VERIFY_ANY = 5
 };
 
 struct TPM2B_ECC_PARAMETER_aligned {
@@ -467,6 +469,10 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 	 *   6 + IN_LEN   MSB DIGEST LEN
 	 *   7 + IN_LEN   LSB DIGEST LEN
 	 *   8 + IN_LEN   DIGEST
+	 *   for OP == TEST_VERIFY_ANY:
+	 *   8 + IN_LEN + DIGEST_LEN  MSB Q
+	 *   9 + IN_LEN + DIGEST_LEN  LSB Q
+	 *   10 + IN_LEN + DIGEST_LEN Q
 	 */
 
 	cmd = (uint8_t *) cmd_body;
@@ -482,23 +488,37 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 	}
 	memcpy(in, cmd, in_len);
 	cmd += in_len;
-
-	digest_len = ((uint16_t) (cmd[0] << 8)) | cmd[1];
-	cmd += 2;
-	if (digest_len > sizeof(digest.d.t.buffer)) {
-		*response_size = 0;
-		return;
+	/* no digest for TEST_POINT command */
+	if (op != TEST_POINT) {
+		digest_len = ((uint16_t)(cmd[0] << 8)) | cmd[1];
+		cmd += 2;
+		if (digest_len > sizeof(digest.d.t.buffer)) {
+			*response_size = 0;
+			return;
+		}
+		digest.d.t.size = digest_len;
+		memcpy(digest.d.t.buffer, cmd, digest_len);
+		cmd += digest_len;
 	}
-	digest.d.t.size = digest_len;
-	memcpy(digest.d.t.buffer, cmd, digest_len);
-	cmd += digest_len;
+	if (op == TEST_VERIFY_ANY) {
+		uint16_t point_len = ((uint16_t)(cmd[0] << 8)) | cmd[1];
+
+		cmd += 2;
+		if (point_len > sizeof(q)) {
+			*response_size = 0;
+			return;
+		}
+		memcpy(&q, cmd, point_len);
+	} else {
+		/* use fixed signature */
+		q.x = NIST_P256_qx.d;
+		q.y = NIST_P256_qy.d;
+	}
 
 	/* Make copies of d, and q, as const data is immutable. */
 	switch (curve_id) {
 	case TPM_ECC_NIST_P256:
 		d = NIST_P256_d.d;
-		q.x = NIST_P256_qx.d;
-		q.y = NIST_P256_qy.d;
 		break;
 	default:
 		*response_size = 0;
@@ -519,6 +539,7 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 		*response_size = r.d.b.size + s.d.b.size;
 		break;
 	case TEST_VERIFY:
+	case TEST_VERIFY_ANY:
 		r.d.b.size = in_len / 2;
 		memcpy(r.d.b.buffer, in, r.d.b.size);
 		s.d.b.size = in_len / 2;
@@ -604,6 +625,11 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 		}
 
 		*out = 1;
+		*response_size = 1;
+		return;
+	}
+	case TEST_POINT: {
+		*out = _cpri__EccIsPointOnCurve(curve_id, (TPMS_ECC_POINT *)in);
 		*response_size = 1;
 		return;
 	}
