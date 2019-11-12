@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ccc34d33_d44ae6ac",
+        "filename": "common/kasa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T21:13:17Z",
+      "side": 1,
+      "message": "See comment below",
+      "parentUuid": "71daceee_1d6dc6ae",
+      "revId": "34889b683bb4b11182d824d2eecced3b2a89aab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e807503e_37f2c3db",
         "filename": "common/kasa.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "34889b683bb4b11182d824d2eecced3b2a89aab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d03115_347d039a",
+        "filename": "common/kasa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-12T21:13:17Z",
+      "side": 1,
+      "message": "It\u0027s very similar, it\u0027s a new variant on the Kasa algorithm I\u0027ve worked on. You\u0027ll notice that in the mag_cal algorithm you have to first divide all the accumulators by nsamples. In this variant you don\u0027t. Mathematically they\u0027re identical, but this one saves a few extra steps and also has the benefit that you don\u0027t have to start over after each calculation.\n\nOnce accel online calibration is done I\u0027ll be making the appropriate changes to mag.",
+      "parentUuid": "e807503e_37f2c3db",
+      "revId": "34889b683bb4b11182d824d2eecced3b2a89aab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
