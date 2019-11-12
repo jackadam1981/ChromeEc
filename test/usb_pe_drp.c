@@ -30,6 +30,11 @@ int board_vbus_source_enabled(int port)
 	return 0;
 }
 
+void tc_src_power_off(int port)
+{
+	/* Do nothing */
+}
+
 /**
  * Test section
  */
