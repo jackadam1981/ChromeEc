@@ -247,6 +247,7 @@ struct stm32_def {
 	{ 0 }
 };
 
+#define DEFAULT_CONNECT_RETRIES 40
 #define DEFAULT_TIMEOUT 4 /* seconds */
 #define EXT_ERASE_TIMEOUT 20 /* seconds */
 #define DEFAULT_BAUDRATE B38400
@@ -269,6 +270,7 @@ enum interface_mode {
 
 /* store custom parameters */
 speed_t baudrate = DEFAULT_BAUDRATE;
+int connect_retries = DEFAULT_CONNECT_RETRIES;
 int i2c_adapter = INVALID_I2C_ADAPTER;
 const char *spi_adapter;
 int i2c_slave_address = DEFAULT_I2C_SLAVE_ADDRESS;
@@ -786,6 +788,7 @@ struct stm32_def *command_get_id(int fd)
 int init_monitor(int fd)
 {
 	int res;
+	int attempt = connect_retries + 1;
 	uint8_t init = mode == MODE_SPI ? SOF : CMD_INIT;
 
 	/* Skip in i2c mode */
@@ -795,7 +798,7 @@ int init_monitor(int fd)
 	printf("Waiting for the monitor startup ...");
 	fflush(stdout);
 
-	while (1) {
+	while (attempt--) {
 		/* Send the command index */
 		res = write_wrapper(fd, &init, 1);
 		if (res <= 0) {
@@ -819,6 +822,12 @@ int init_monitor(int fd)
 			return res;
 		fflush(stdout);
 	}
+
+	if (IS_STM32_ERROR(res)) {
+		printf("Giving up after %d attempts.\n", connect_retries + 1);
+		return res;
+	}
+
 	printf("Done.\n");
 
 	/* read trailing chars */
@@ -1442,6 +1451,7 @@ void display_usage(char *program)
 	fprintf(stderr, "--g[o] : jump to execute flash entrypoint\n");
 	fprintf(stderr, "--p[rogressbar] : use a progress bar instead of "
 			"the spinner\n");
+	fprintf(stderr, "--C[onnect] <retries> : limit connect retries\n");
 	fprintf(stderr, "-L[ogfile] <file> : save all communications exchange "
 		"in a log file\n");
 	fprintf(stderr, "-c[r50_mode] : consider device to be a Cr50 interface,"
@@ -1529,6 +1539,9 @@ int parse_parameters(int argc, char **argv)
 			break;
 		case 'r':
 			input_filename = optarg;
+			break;
+		case 'C':
+			connect_retries = atoi(optarg);
 			break;
 		case 's':
 			spi_adapter = optarg;
