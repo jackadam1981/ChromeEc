@@ -35,6 +35,10 @@ enum pe_dpm_request {
 	DPM_REQUEST_DISCOVER_IDENTITY   = BIT(9),
 	DPM_REQUEST_EXIT_DP_MODE        = BIT(10),
 	DPM_REQUEST_SVDM                = BIT(11),
+	DPM_REQUEST_SNK_STARTUP         = BIT(12),
+	DPM_REQUEST_SRC_STARTUP         = BIT(13),
+	DPM_REQUEST_BIST_RX             = BIT(14),
+	DPM_REQUEST_BIST_TX             = BIT(15),
 };
 
 /**
