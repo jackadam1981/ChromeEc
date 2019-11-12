@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced74dd0_a52b6947",
+        "filename": "board/servo_micro/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2019-11-12T17:20:03Z",
+      "side": 1,
+      "message": "There appears to be a problem with these lines right here. The switch from GPIO_ALTERNATE to GPIO_INPUT mode appears to result in the RO region not being updated and leaving us operating in an outdated RO region. If this is the case, some of the testing would be evaluating the old firmware and not the updated copy.\n\nThese are the version numbers as I tested in 3 different states:\n\n1) Working branch\nversion\nChip:    stm stm32f07x \nBoard:   0\nRO:      servo_micro_v2.0.2617+02.47.10\nRW:      servo_micro_v2.0.2617+02.47.10\nBuild:   servo_micro_v2.0.2617+02.47.10\n         2019-11-12 02:46:34 bnemec@bnemec.mtv.corp.google.com\n\n2) Flashed with ToT, note the RW version number changed to the ToT hash but other values are out of sync including Build timestamp.\nversion\nChip:    stm stm32f07x \nBoard:   0\nRO:      servo_micro_v2.0.2617+02.47.10\nRW:      servo_micro_v2.0.2616-6827cca9d\nBuild:   servo_micro_v2.0.2617+02.47.10\n         2019-11-12 02:46:34 bnemec@bnemec.mtv.corp.google.com\n\n3) Flashed again with ToT but with the GPIO configuration set GPIO_ALTERNATE\nversion. Versions are now in sync.\nChip:    stm stm32f07x \nBoard:   0\nRO:      servo_micro_v2.0.2616+6827cca9d\nRW:      servo_micro_v2.0.2616+6827cca9d\nBuild:   servo_micro_v2.0.2616+6827cca9d\n         2019-11-12 09:10:35 bnemec@bnemec.mtv.corp.google.com",
+      "revId": "db99a52a198f0da8c528eeff4b76a5077f66d7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
