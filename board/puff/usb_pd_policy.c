@@ -25,6 +25,7 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
+/* TODO: Confirm these numbers */
 const uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
@@ -34,6 +35,7 @@ const uint32_t pd_src_pdo_max[] = {
 };
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
+/* TODO: Maybe we don't need the BATT entry */
 const uint32_t pd_snk_pdo[] = {
 	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
 	PDO_BATT(4750, 21000, 15000),
@@ -41,24 +43,17 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
-int pd_board_checks(void)
+void pd_set_input_current_limit(int port, uint32_t max_ma,
+				uint32_t supply_voltage)
 {
-	return EC_SUCCESS;
+	/* No battery, nothing to do */
+	return;
 }
 
 int pd_check_data_swap(int port, int data_role)
 {
 	/* Allow data swap if we are a UFP, otherwise don't allow. */
 	return (data_role == PD_ROLE_UFP);
-}
-
-void pd_check_dr_role(int port, int dr_role, int flags)
-{
-	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
-		pd_request_data_swap(port);
 }
 
 int pd_check_power_swap(int port)
@@ -69,27 +64,6 @@ int pd_check_power_swap(int port)
 	 * to fix our role).
 	 */
 	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
-void pd_check_pr_role(int port, int pr_role, int flags)
-{
-	/*
-	 * If partner is dual-role power and dualrole toggling is on, consider
-	 * if a power swap is necessary.
-	 */
-	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
-		/*
-		 * If we are a sink and partner is not externally powered, then
-		 * swap to become a source. If we are source and partner is
-		 * externally powered, swap to become a sink.
-		 */
-		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
-
-		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
-			pd_request_power_swap(port);
-	}
 }
 
 int pd_check_vconn_swap(int port)
@@ -110,6 +84,24 @@ int pd_is_valid_input_voltage(int mv)
 
 void pd_power_supply_reset(int port)
 {
+	int prev_en;
+
+	prev_en = ppc_is_sourcing_vbus(port);
+
+	/* Disable VBUS. */
+	ppc_vbus_source_enable(port, 0);
+
+	/* Enable discharge if we were previously sourcing 5V */
+	if (prev_en)
+		pd_set_vbus_discharge(port, 1);
+
+#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
+	/* Give back the current quota we are no longer using */
+	charge_manager_source_port(port, 0);
+#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
+
+	/* Notify host of power info change. */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
 int pd_set_power_supply_ready(int port)
@@ -129,17 +121,37 @@ int pd_snk_is_vbus_provided(int port)
 }
 #endif
 
-void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+int ppc_get_alert_status(int port)
 {
-	ppc_set_vbus_source_current_limit(port, rp);
+	return gpio_get_level(GPIO_USB_C0_TCPPC_INT_ODL) == 0;
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int level;
+
+	/*
+	 * Check which port has the ALERT line set and ignore if that TCPC has
+	 * its reset line active.
+	 */
+	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USB_C0_TCPC_RST) != level)
+			status |= PD_STATUS_TCPC_ALERT_0;
+	}
+
+	return status;
 }
 
 int board_vbus_source_enabled(int port)
 {
-	return 0;
+	return ppc_is_sourcing_vbus(port);
 }
 
 
+/* TODO: Confirm that we need this */
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
