@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ed29f29a_42706286",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b1d4d7_2041bcfd",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "893a34f6_4eeca06b",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf12f44_76547c5a",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "893a34f6_4eeca06b",
+      "range": {
+        "startLine": 33,
+        "startChar": 52,
+        "endLine": 33,
+        "endChar": 76
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "eb8b7fa9_a25fca54",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcf5f05_99df33f2",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44fc20d6_1845e9c5",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2019-11-11T19:15:54Z",
       "side": 1,
       "message": "what environment is this scripts supposed to be used? It would be good to have this described in the docstring and in the patch description.\n\nIn pretty much any environment where Python can be sued there would be chrome OS Python library with an extensive command execution wrapper - why not use it.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed73c4d_f28c14a4",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "still working on this.",
+      "parentUuid": "44fc20d6_1845e9c5",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f392f464_07c7e244",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f6371d0_c1014425",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 64
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c194baca_b50d2fd0",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "3f6149c6_7c39cc3a",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c194baca_b50d2fd0",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fccc5bd_c9d84c32",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -183,6 +327,30 @@
       "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10cfafd2_74acbbfe",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fccc5bd_c9d84c32",
+      "range": {
+        "startLine": 92,
+        "startChar": 18,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -221,6 +389,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7b220152_f7a759f4",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 15
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5487b025_7abd1bea",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d4e04b4_a6e69d61",
       "range": {
         "startLine": 136,
         "startChar": 6,
