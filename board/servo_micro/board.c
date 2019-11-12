@@ -13,6 +13,7 @@
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "update_fw.h"
@@ -694,6 +695,15 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int usb_i2c_board_is_enabled(void) { return 1; }
 
+void pvd_interrupt(void) {
+	/* Clear Pending Register */
+	STM32_EXTI_PR = EXTI_PVD_EVENT;
+	/* Handle recovery by rebooting the system */
+	system_reset(0);
+}
+
+DECLARE_IRQ(STM32_IRQ_PVD, pvd_interrupt, HOOK_PRIO_FIRST);
+
 /******************************************************************************
  * Initialize board.
  */
@@ -732,5 +742,8 @@ static void board_init(void)
 	gpio_set_level(GPIO_JTAG_BUFIN_EN_L, 0);
 	gpio_set_level(GPIO_SERVO_JTAG_TDO_BUFFER_EN, 1);
 	gpio_set_level(GPIO_SERVO_JTAG_TDO_SEL, 1);
+
+	/* Enable the voltage monitor and the programmable voltage detector. */
+	configure_pvd();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
