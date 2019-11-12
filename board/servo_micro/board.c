@@ -13,6 +13,7 @@
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "update_fw.h"
@@ -317,7 +318,6 @@ static int command_hold_usart_low(int argc, char **argv)
 	/* Print status for get and set case. */
 	ccprintf("USART status: %s\n",
 			usart_status & usart_mask ? "held low" : "normal");
-
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(hold_usart_low, command_hold_usart_low,
@@ -694,6 +694,48 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int usb_i2c_board_is_enabled(void) { return 1; }
 
+void pvd_interrupt(void) {
+	system_reset(0);
+	/* Clear Pending Register */
+	STM32_EXTI_PR = EXTI_PVD_EVENT;
+}
+
+/* See 'Programmable voltage detector characteristics' in the STM32F072x8 Datasheet.
+   PVD Threshold 1 corresponds to a falling voltage threshold of min:2.09V, max:2.27V. */
+#define PVD_THRESHOLD     (1)
+
+/* Configures the programmable voltage detector to monitor for brown out conditions. */
+static void configure_pvd(void)
+{
+	/* Clear Interrupt Enable Mask Register. */
+	STM32_EXTI_IMR &= ~EXTI_PVD_EVENT;
+
+	/* Clear Rising and Falling Trigger Selection Registers. */
+	STM32_EXTI_RTSR &= ~EXTI_PVD_EVENT;
+	STM32_EXTI_FTSR &= ~EXTI_PVD_EVENT;
+
+	/* Clear the value of the PVD Level Selection. */
+	STM32_PWR_CR &= ~STM32_PWD_PVD_LS_MASK;
+
+	/* Set the new value of the PVD Level Selection. */
+	STM32_PWR_CR |= STM32_PWD_PVD_LS(PVD_THRESHOLD);
+
+	/* Enable Power Clock. */
+	STM32_RCC_APB1ENR |= STM32_RCC_PB1_PWREN;
+
+	/* Configure the NVIC for PVD. */
+	task_enable_irq(STM32_IRQ_PVD);
+
+	/* Configure interrupt mode. */
+	STM32_EXTI_IMR |= EXTI_PVD_EVENT;
+	STM32_EXTI_RTSR |= EXTI_PVD_EVENT;
+
+	/* Enable the PVD Output. */
+	STM32_PWR_CR |= STM32_PWR_PVDE;
+}
+
+DECLARE_IRQ(STM32_IRQ_PVD, pvd_interrupt, HOOK_PRIO_FIRST);
+
 /******************************************************************************
  * Initialize board.
  */
@@ -732,5 +774,10 @@ static void board_init(void)
 	gpio_set_level(GPIO_JTAG_BUFIN_EN_L, 0);
 	gpio_set_level(GPIO_SERVO_JTAG_TDO_BUFFER_EN, 1);
 	gpio_set_level(GPIO_SERVO_JTAG_TDO_SEL, 1);
+	gpio_set_flags(GPIO_UART3_RX_JTAG_BUFFER_TO_SERVO_TDO, GPIO_ALTERNATE);
+	gpio_set_flags(GPIO_UART3_TX_SERVO_JTAG_TCK, GPIO_ALTERNATE);
+
+	/* Enable the voltage monitor and the programmable voltage detector. */
+	configure_pvd();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
