@@ -22,6 +22,30 @@
       "revId": "044d7dc9307e02da61d55496d6414517b81206b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b74653_6318c5c4",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-12T17:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65509bd0_f6cc3013",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "044d7dc9307e02da61d55496d6414517b81206b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
