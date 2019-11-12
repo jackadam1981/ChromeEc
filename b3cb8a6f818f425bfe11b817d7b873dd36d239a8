@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "619aa861_e48be599",
+        "filename": "board/servo_micro/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2019-11-12T08:44:06Z",
+      "side": 1,
+      "message": "These changes from GPIO_ALTERNATE to GPIO_INPUT seem to have broken something, there\u0027s a mismatch between the RO and RW regions on ServoMicro when I build images with this and we are left running the old firmware in the RO region rather than jumping to the RW. This likely has also invalidated testing that was done with this firmware.\n\nFor example, these are the results from the version command before and after running the tests. These version strings based on the git hash become mismatched and the date isn\u0027t updated.\n\nBefore:\n\n\u003eversion\nChip:    stm stm32f07x \nBoard:   0\nRO:      servo_micro_v2.0.2617+38426b63a\nRW:      servo_micro_v2.0.2617-38426b63a\nBuild:   servo_micro_v2.0.2617+38426b63a\n         2019-11-11 23:56:54 bnemec@bnemec.mtv.corp.google.com\n\n\nAfter flashing ToT:\n\n\u003e version\nChip:    stm stm32f07x \nBoard:   0\nRO:      servo_micro_v2.0.2617+38426b63a\nRW:      servo_micro_v2.0.2616-6827cca9d\nBuild:   servo_micro_v2.0.2617+38426b63a\n         2019-11-11 23:56:54 bnemec@bnemec.mtv.corp.google.com",
+      "revId": "b3cb8a6f818f425bfe11b817d7b873dd36d239a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
