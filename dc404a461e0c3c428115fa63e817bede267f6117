@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "3d4e04b4_a6e69d61",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b220152_f7a759f4",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 15
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72a665b9_c914ab3f",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -232,6 +256,30 @@
     },
     {
       "key": {
+        "uuid": "17dfdf57_a1b0144c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a665b9_c914ab3f",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44026ba2_9034ba02",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -243,6 +291,30 @@
       "writtenOn": "2019-11-11T19:15:54Z",
       "side": 1,
       "message": "maybe use default value?",
+      "range": {
+        "startLine": 146,
+        "startChar": 21,
+        "endLine": 146,
+        "endChar": 25
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866378fb_9417653d",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:03:25Z",
+      "side": 1,
+      "message": "If we use this in the lab, I don\u0027t want someone to forget the port value and accidentally update the wrong dut.",
+      "parentUuid": "44026ba2_9034ba02",
       "range": {
         "startLine": 146,
         "startChar": 21,
@@ -278,6 +350,30 @@
     },
     {
       "key": {
+        "uuid": "20949e7e_3d3d49a9",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eabe4d79_74d4afaa",
+      "range": {
+        "startLine": 175,
+        "startChar": 31,
+        "endLine": 175,
+        "endChar": 68
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "291f356c_8d2faab3",
         "filename": "util/flash_cr50.py",
         "patchSetId": 2
@@ -298,6 +394,30 @@
       "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44534b73_81fcf716",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-12T00:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291f356c_8d2faab3",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 68
+      },
+      "revId": "dc404a461e0c3c428115fa63e817bede267f6117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
