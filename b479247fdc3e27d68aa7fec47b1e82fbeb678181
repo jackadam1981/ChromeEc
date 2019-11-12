@@ -93,6 +93,30 @@
       "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1126f77_a5538a75",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2146,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-12T23:25:36Z",
+      "side": 1,
+      "message": "Checking: we\u0027re all synced on Type-C R2.0 August 2019, correct?\n\nAseda and I investigated this at length, whether a DebugSNK PR_SWAP is allowed. True, state jump arrow isn\u0027t on state diagram \"Figure 4-16 Connection State Diagram: DRP with Accessory and Try.SRC Support\". But I think it is merely an accidental omission in the spec.\n\nI believe PR_SWAP in \"DebugAccessory.SNK\" should go to \" UnorientedDebugAccessory.SRC\". Just as \"Attached.SNK\" goes to \"AttachWait.SRC\".\n\nPlease see crbug/1023077 for the \"Oriented\" state.",
+      "parentUuid": "7ec71bf1_69093f48",
+      "range": {
+        "startLine": 2138,
+        "startChar": 1,
+        "endLine": 2146,
+        "endChar": 37
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
