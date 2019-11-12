@@ -3793,15 +3793,16 @@
 #undef CONFIG_USB_PD_TCPM_MT6370
 #undef CONFIG_USB_PD_TCPM_TUSB422
 
-/*
- * Type-C multi-protocol retimer is present.
- */
-#undef CONFIG_USB_PD_RETIMER
+/* Type-C retimer used with virtual mux */
+#undef CONFIG_USBC_VIRTUAL_MUX_RETIMER
+
+/* Type-C retimer used with real mux */
+#undef CONFIG_USBC_MUX_RETIMER
 
 /*
  * Type-C multi-protocol retimer to be used in on-board applications.
  */
-#undef CONFIG_USB_PD_RETIMER_INTEL_BB
+#undef CONFIG_USBC_RETIMER_INTEL_BB
 
 /*
  * Adds an EC console command to erase the ANX7447 OCM flash.
@@ -4681,8 +4682,8 @@
 
 /*****************************************************************************/
 /* Define derived config options for Retimer chips */
-#ifdef CONFIG_USB_PD_RETIMER_INTEL_BB
-#define CONFIG_USB_PD_RETIMER
+#ifdef CONFIG_USBC_RETIMER_INTEL_BB
+#define CONFIG_USBC_VIRTUAL_MUX_RETIMER
 #endif
 
 /*****************************************************************************/
