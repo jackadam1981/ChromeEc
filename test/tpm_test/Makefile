@@ -29,6 +29,7 @@ CFLAGS += -I../../board/cr50
 CFLAGS += -I../../chip/g
 CFLAGS += -I../../chip/g/dcrypto
 CFLAGS += -I../../include
+CFLAGS += -I../../fuzz
 CFLAGS += -I..
 CFLAGS += -I../..
 CFLAGS += -I.
