@@ -1,0 +1,316 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbbe723f_64a2e539",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "seems like you can just delete this.  we don\u0027t generally version our tools.",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1534620b_3be597ea",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "no space before the :",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ff454d_f541ac3b",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "use a tuple",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cade0d_a63bd074",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc3c486_ef818493",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "two blank lines for module-level things, but only one blank line between class-level things",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7bf996_e0d5841e",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "drop the []",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e357eb_17338438",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "you could make this into an assert once you change the cli parser (see below) to enforce this",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca9eb11_81321872",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "you can use cros_build_lib.CmdToStr to properly join+quote commands",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011f5aee_db0ad3b9",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "it\u0027s technically an argparse.Namespace, not a dict\n\nalso you aren\u0027t using optparse",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d2ecf88_8fdb4d54",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "use description\u003d__doc__ instead so you only need one string",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d73f44e0_6474d3a7",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "imo cli options should stick to - and never _ without very good reason for the _",
+      "range": {
+        "startLine": 781,
+        "startChar": 33,
+        "endLine": 781,
+        "endChar": 44
+      },
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b07198_10161423",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "\"serial number\"",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950c50f1_decc5814",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "the proper way of writing this would be to use choices\u003dSUPPORTED_RESETS and then have the help string use %(default)s",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b832a69_93676453",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "use tempfile.gettempdir() instead of hardcoding /tmp\n\nthat said, writing persistent \u0026 well known named files directly to /tmp is considered bad form.  you prob should do default\u003dNone and have the parser set it to a scratch dir like tempfile.mkdtemp() so it\u0027s always unique \u0026 cleaned up by default.",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4724d80f_c0b147da",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "only one blank line",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f225293_1224d337",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "for validating cli settings, use parser.error instead.  it will require restructuring your current parse_args logic, but it\u0027s a better user interface",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b2fd0c3_23d63a25",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "change |args| to |opts|",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b750d1c_25d0e816",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "this should be:\n\n sys.exit(main(sys.argv[1:]))\n\nthen you can pass argv down to parse_args",
+      "revId": "d588607ba6eb5a3b2c3b778ed1b87e3d128014ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

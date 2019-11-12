@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "023a240b_74dad12c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-11-12T19:44:20Z",
+      "side": 1,
+      "message": "yeah, if you only ever have one error type to raise\n\nyou could add more in the future that extend Error if you want more differentiation, but doesn\u0027t seem like you need it currently.  up to you.",
+      "parentUuid": "edc96a7e_b545c30f",
+      "revId": "d0eba18b032bc87f94c8016138870658771fcc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e628ac2f_161c683b",
         "filename": "util/flash_cr50.py",
         "patchSetId": 6
