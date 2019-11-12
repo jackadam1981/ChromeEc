@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "d0535e03_89f25dc8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-12T05:15:43Z",
+      "side": 1,
+      "message": "You have to replace the name from charger_get_adc to rt946x_get_adc.",
+      "parentUuid": "3d63e922_d719a90a",
+      "range": {
+        "startLine": 1021,
+        "startChar": 11,
+        "endLine": 1021,
+        "endChar": 26
+      },
+      "revId": "0b8e7fa7809036aef46eb79044fcfeed11a35617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2c92053_e0e52261",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 23
