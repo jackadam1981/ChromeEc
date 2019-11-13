@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f216420b_3d57565c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1918,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T16:15:33Z",
+      "side": 1,
+      "message": "could be the following to eliminate the extra comparison.\n\nif (pe[port].sender_response_timer \u003d\u003d TIMER_DISABLED) {\n    if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) {\n        PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);\n        pe[port].sender_response_timer \u003d get_time().val + PD_T_SENDER_RESPONSE;\n    } else {\n        return;\n    }\n}",
+      "range": {
+        "startLine": 1907,
+        "startChar": 0,
+        "endLine": 1918,
+        "endChar": 0
+      },
+      "revId": "6ffdf0f5d56c27793ff6a3f7bfac08cf8017b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96137fb4_ef4bfe04",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2804,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T16:15:33Z",
+      "side": 1,
+      "message": "same code comment as above",
+      "range": {
+        "startLine": 2794,
+        "startChar": 0,
+        "endLine": 2804,
+        "endChar": 0
+      },
+      "revId": "6ffdf0f5d56c27793ff6a3f7bfac08cf8017b4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
