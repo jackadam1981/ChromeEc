@@ -16,6 +16,24 @@
       "revId": "d10751c131e42ff68fec09c0b9827a4a36453b56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f98ee0fe_106b3bb7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T19:24:30Z",
+      "side": 1,
+      "message": "This the error I get with IS_ENABLED:\n\nommon/usbc/usb_tc_drp_acc_trysrc_sm.c:736:4: error: implicit declaration of function ‘set_vconn’ [-Werror\u003dimplicit-function-declaration]\n    set_vconn(port, 0);",
+      "parentUuid": "22387a86_85548e9d",
+      "revId": "d10751c131e42ff68fec09c0b9827a4a36453b56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
