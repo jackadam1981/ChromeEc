@@ -117,6 +117,30 @@
       "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f608a10_50e5a0dd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2146,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-13T03:23:58Z",
+      "side": 1,
+      "message": "I just spoke with one of the writers of the Type-C/PD specifications, David S.\n\nI was informed we are allowed to do pretty much anything we want in Debug mode, repurpose pins, etc. So I believe we are fully within our rights to enable a PR_SWAP jump to/from DrbugSNK and UnorientedDebugSRC states as described above -- mirroring AttachedSRC and AttachedSNK PR_SWAP jump.\n\nHe also confirmed are not currently implementing OrientedDebugSRC state due to CCD not having polarity support (for various reasons including reliability), but leaves that open as a possibility in the future.\n\nTL;DR: We should continue to allow PR_SWAP here for ServoV4.",
+      "parentUuid": "d1126f77_a5538a75",
+      "range": {
+        "startLine": 2138,
+        "startChar": 1,
+        "endLine": 2146,
+        "endChar": 37
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
