@@ -6,6 +6,7 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "charge_state.h"
 #include "common.h"
 #include "system.h"
 #include "util.h"
