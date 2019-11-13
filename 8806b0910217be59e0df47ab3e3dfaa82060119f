@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d5079f2_f9750a2b",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T13:40:59Z",
+      "side": 1,
+      "message": "Have you verified this on different hardware that was failing before with this CL merged?  This looks like it could be an issue.  Non-PEC path.  I don\u0027t think the hardware will do anything if the read and write are not happening.  So you may not get the stop transfer.",
+      "revId": "8806b0910217be59e0df47ab3e3dfaa82060119f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa2bda56_3143814e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T13:40:59Z",
+      "side": 1,
+      "message": "Same comment as above.  I will try to cherry-pick this into my trembyle build and see if this and the next CL will cause my hardware to boot loop",
+      "revId": "8806b0910217be59e0df47ab3e3dfaa82060119f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
