@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "07d65e74_bfc440c8",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-13T20:59:09Z",
+      "side": 1,
+      "message": "there is no need in this anymore. it\u0027s in drbg_test.py command format structure now and should be handled by ACVP tests.",
+      "parentUuid": "99b2b425_5e1405f5",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 39
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbf02b6e_c6090a4a",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 2
