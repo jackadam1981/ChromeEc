@@ -6,6 +6,7 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "charge_state.h"
 #include "common.h"
 #include "system.h"
 #include "util.h"
@@ -105,4 +106,21 @@ enum battery_present variant_battery_present(void)
 	 * case the battery is not really present.
 	 */
 	return BP_YES;
+}
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	/* battery temp in 0.1 deg C */
+	int bat_temp_c = curr->batt.temperature - 2731;
+
+	const struct battery_info *batt_info = battery_get_info();
+	/* Don't charge if outside of allowable temperature range */
+	if (bat_temp_c >= batt_info->charging_max_c * 10 ||
+	    bat_temp_c < batt_info->charging_min_c * 10) {
+		curr->requested_current = 0;
+		curr->requested_voltage = 0;
+		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+		curr->state = ST_IDLE;
+	}
+	return 0;
 }
