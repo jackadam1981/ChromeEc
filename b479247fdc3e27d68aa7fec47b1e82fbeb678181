@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "d3f9e095_b241c4b7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T19:20:17Z",
+      "side": 1,
+      "message": "Should we do PD in this state since we can power role swap to it?",
+      "range": {
+        "startLine": 2100,
+        "startChar": 12,
+        "endLine": 2100,
+        "endChar": 41
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d900285d_9d7803ea",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 7
@@ -137,6 +160,53 @@
         "startChar": 1,
         "endLine": 2146,
         "endChar": 37
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d974b19_25c7c274",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2146,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T19:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f608a10_50e5a0dd",
+      "range": {
+        "startLine": 2138,
+        "startChar": 1,
+        "endLine": 2146,
+        "endChar": 37
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83755e29_4d41637e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T19:20:17Z",
+      "side": 1,
+      "message": "Should we ignore CTVPD devices in this state?",
+      "range": {
+        "startLine": 2261,
+        "startChar": 2,
+        "endLine": 2280,
+        "endChar": 3
       },
       "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

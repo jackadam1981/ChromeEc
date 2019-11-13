@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "d98a85f4_0e198bf1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2164,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T19:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dfd839b_428fe720",
+      "range": {
+        "startLine": 2164,
+        "startChar": 40,
+        "endLine": 2164,
+        "endChar": 53
+      },
+      "revId": "baced483bb8558776f49780dad1783ff2735669d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc1d3c77_6863a084",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -329,6 +353,30 @@
       "revId": "baced483bb8558776f49780dad1783ff2735669d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bae13a6_f3e7cdc9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T19:20:17Z",
+      "side": 1,
+      "message": "Yes, I was thinking back when I had the macro around pd_enable.",
+      "parentUuid": "445d622a_37079f8d",
+      "range": {
+        "startLine": 2172,
+        "startChar": 1,
+        "endLine": 2173,
+        "endChar": 25
+      },
+      "revId": "baced483bb8558776f49780dad1783ff2735669d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
