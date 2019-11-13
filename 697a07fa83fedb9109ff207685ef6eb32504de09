@@ -22,6 +22,30 @@
       "revId": "697a07fa83fedb9109ff207685ef6eb32504de09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac18ce7_46f5eb5b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 0,
+      "message": "In the original stack, this flag was used to reset the low power timer when the TCPC was accessed. The current stack uses the pd_device_accessed function to accomplish the same task.",
+      "parentUuid": "7eb21430_bb639771",
+      "range": {
+        "startLine": 803,
+        "startChar": 12,
+        "endLine": 803,
+        "endChar": 36
+      },
+      "revId": "697a07fa83fedb9109ff207685ef6eb32504de09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

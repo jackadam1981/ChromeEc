@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c5549087_542e9da6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Some TCPCs enable auto toggle when their are put into low power mode, so I was looking at low power mode and auto toggling as one entity. But I get your point.",
+      "parentUuid": "17e416f4_9d909b9e",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6d33285_2777e343",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0be8eb68_a1665ee0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "f6d33285_2777e343",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "087b1f29_f88c4392",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb328dd_646432a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "I will work with Nathan to verify this.",
+      "parentUuid": "087b1f29_f88c4392",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "b7c29ec8_2e76a748",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d786ef6_7095d9a4",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbcbbe7b_fe059dac",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -155,6 +227,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b491cceb_1652d169",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbcbbe7b_fe059dac",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "ae32e8f0_4eeb8b68",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "To save space, Jett recommended that we use a flag to track auto toggle support.",
+      "parentUuid": "849af9be_83df7ca2",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6d40a02_e4e6a10f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -189,6 +297,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab001fd_4aeae99e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d40a02_e4e6a10f",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "52ff8bcc_7551da7a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "It\u0027s printed by restart_tc_sm on line 700.",
+      "parentUuid": "18df1a65_c13c768e",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a22593d_d44a4430",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -223,6 +367,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e71c22_39cf1caf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "6a22593d_d44a4430",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +411,30 @@
     },
     {
       "key": {
+        "uuid": "291e3029_60f404c2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2246b6_c7630cef",
+      "range": {
+        "startLine": 2193,
+        "startChar": 31,
+        "endLine": 2193,
+        "endChar": 46
+      },
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "484669a2_2094b61c",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -266,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "32be8101_4314a434",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2681,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "484669a2_2094b61c",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "092020e3_c5276687",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 2
@@ -280,6 +484,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b703f39_7cb77cc5",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "092020e3_c5276687",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
