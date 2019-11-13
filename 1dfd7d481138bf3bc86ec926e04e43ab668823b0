@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08cee502_721ddc08",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-13T23:38:28Z",
+      "side": 1,
+      "message": "Problem: Doesn\u0027t reset back to \"out\" on retry.",
+      "range": {
+        "startLine": 195,
+        "startChar": 10,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "1dfd7d481138bf3bc86ec926e04e43ab668823b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
