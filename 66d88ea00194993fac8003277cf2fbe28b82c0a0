@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa26d778_798bd901",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T15:55:28Z",
+      "side": 1,
+      "message": "is partner the right name for this parameter?  type or transmit_type seems more appropriate",
+      "revId": "66d88ea00194993fac8003277cf2fbe28b82c0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
