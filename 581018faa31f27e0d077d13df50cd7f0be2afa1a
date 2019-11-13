@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9bb67f9_417d3ebb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "Does this mean that we are toggling, should toggle...? How does this control the toggling?",
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b324f5e_44e4261e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "nit: Flag",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eafaa8d7_1782e149",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "This name seems confusing. CLR_ALL_BUT_LPM_FLAGS maybe?",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a2bb83d_1e4c44fc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "indented and lined up one flag per line may make this easier to read",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d830c07d_79b381a9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "I know you didn\u0027t add them, but shouldn\u0027t TC_CT_UNATTACHED_SNK and TC_CT_ATTACHED_SNK have a debug string as well?",
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40a1a2b_d4c8491d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "Noting I don\u0027t like the extra #ifdefs if they are not required.",
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8564cf_6c12b5bf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "indentation?\nshould this be an else if?",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2225,
+        "endChar": 3
+      },
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24668ee8_741d396c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2230,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "Should this be an else if or is it possible to change the state above and change it again here?",
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c6f50b_446b3ff6",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 1,
+      "message": "Left over debug?",
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

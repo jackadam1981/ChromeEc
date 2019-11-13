@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eb21430_bb639771",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T14:59:49Z",
+      "side": 0,
+      "message": "Did handling this event go away or is it handled by another path/case?",
+      "range": {
+        "startLine": 803,
+        "startChar": 12,
+        "endLine": 803,
+        "endChar": 36
+      },
+      "revId": "697a07fa83fedb9109ff207685ef6eb32504de09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
