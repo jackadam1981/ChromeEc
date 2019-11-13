@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "540e67a0_c7815e56",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T13:51:39Z",
+      "side": 1,
+      "message": "I still don\u0027t see why the need to set 0 unless it is needed for the crc and if that is the case move this line to after the condition so it is associated with the crc calculation code.",
+      "range": {
+        "startLine": 562,
+        "startChar": 3,
+        "endLine": 562,
+        "endChar": 25
+      },
+      "revId": "c1a3299a48a74af46882812384ec20cf0666cb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c68fafa_a6aaf31d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T13:51:39Z",
+      "side": 1,
+      "message": "This one makes no sense. Why is this one needed?",
+      "range": {
+        "startLine": 596,
+        "startChar": 3,
+        "endLine": 596,
+        "endChar": 25
+      },
+      "revId": "c1a3299a48a74af46882812384ec20cf0666cb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6b8aa2_c7e87b03",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-13T13:51:39Z",
+      "side": 1,
+      "message": "This makes more sense. I believe this is the change that will stop the boot loops. You should combine the parent CL with this one so they are not separate.",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 27
+      },
+      "revId": "c1a3299a48a74af46882812384ec20cf0666cb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
