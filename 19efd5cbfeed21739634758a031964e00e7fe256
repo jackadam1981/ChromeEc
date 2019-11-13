@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28e7a248_ec2c95f0",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T03:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b9f1a2_76d44354",
+      "range": {
+        "startLine": 326,
+        "startChar": 13,
+        "endLine": 329,
+        "endChar": 0
+      },
+      "revId": "19efd5cbfeed21739634758a031964e00e7fe256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a8f39d8_9e49c1bf",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-11T17:55:38Z",
       "side": 1,
       "message": "I really like the accesor methods!!",
+      "range": {
+        "startLine": 455,
+        "startChar": 5,
+        "endLine": 462,
+        "endChar": 0
+      },
+      "revId": "19efd5cbfeed21739634758a031964e00e7fe256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db10d073_6e74a51c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T03:16:30Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "6a8f39d8_9e49c1bf",
       "range": {
         "startLine": 455,
         "startChar": 5,
