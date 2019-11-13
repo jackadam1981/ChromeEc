@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8354165_1ea6912e",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-13T20:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4fd2254_c6f51824",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7f6f68d_0321c7a1",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "314f3fd4_9598f048",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-13T20:08:48Z",
+      "side": 1,
+      "message": "i just clarified how parameters matches NIST test vectors, can remove it",
+      "parentUuid": "f7f6f68d_0321c7a1",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 39
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbf02b6e_c6090a4a",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de0fe8f7_a65846ec",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-13T20:08:48Z",
+      "side": 1,
+      "message": "leftover from debugging. removed.",
+      "parentUuid": "cbf02b6e_c6090a4a",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
