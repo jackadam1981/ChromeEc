@@ -93,6 +93,30 @@
       "revId": "f796d594b091b9ace11455c334bccd6a149765c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ae0985_a5d3bc88",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-11-13T01:59:54Z",
+      "side": 1,
+      "message": "Sorry, I correct my responce that should be \"No, I don\u0027t\".",
+      "parentUuid": "342b2d74_d0cb6a62",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "f796d594b091b9ace11455c334bccd6a149765c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
