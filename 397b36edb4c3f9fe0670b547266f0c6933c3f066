@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eed04f4_022f79c1",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T23:50:07Z",
+      "side": 1,
+      "message": "propose changing to: size of second input in bytes (for INIT \u0026 RESEED) or size of expected output for GENERATE.",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9c25da_07ce8694",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T23:50:07Z",
+      "side": 1,
+      "message": "This parameter is not used for GENERATE.",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622c89c2_a694c537",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T23:50:07Z",
+      "side": 1,
+      "message": "This parameter is not used for GENERATE.",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa73a073_3a8fbb35",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T23:50:07Z",
+      "side": 1,
+      "message": "propose changing to: * DRBG_GENERATE returns p1_len of generated data (up to a maximum of 128 bytes)",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d476d8_1cc60964",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T23:50:07Z",
+      "side": 1,
+      "message": "nit: may be call this max_out_len so its purpose is clear.",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5914dfa5_c36a7867",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T23:50:07Z",
+      "side": 1,
+      "message": "Is there a case where we expect this to be false? Even if there is no nonce in the case of reseed and init, we would still want a p1_len of 0. So if it is false, should we return an error code?",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
