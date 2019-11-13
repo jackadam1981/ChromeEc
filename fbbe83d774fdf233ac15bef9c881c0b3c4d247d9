@@ -22,6 +22,30 @@
       "revId": "fbbe83d774fdf233ac15bef9c881c0b3c4d247d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c0ff46_ef353790",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-13T20:33:20Z",
+      "side": 1,
+      "message": "Nope, no deal.\n\nLooking at changelist #6:\namstan@cros:~/cros/src/platform/ec (4bb5b67...)% make BOARD\u003dhammer print-configs|grep KEYBOARD    \nCONFIG_CMD_KEYBOARD \nCONFIG_KEYBOARD_BOOT_KEYS \nCONFIG_KEYBOARD_KSO_BASE 0\nCONFIG_KEYBOARD_RUNTIME_KEYS \nCONFIG_CMD_KEYBOARD \nCONFIG_KEYBOARD_ASSISTANT_KEY \nCONFIG_KEYBOARD_BOARD_CONFIG \nCONFIG_KEYBOARD_DEBUG \nCONFIG_KEYBOARD_KSO_BASE 0\nCONFIG_USB_HID_KEYBOARD \nCONFIG_USB_HID_KEYBOARD_BACKLIGHT \n\nWhile it does seem config.h does run (CONFIG_KEYBOARD_BOOT_KEYS is a simple #define in there), but it seems HAS_TASK_KEYSCAN is not defined when config.h gets evaluated so my ifdef in config.h (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1693862/6..7/include/config.h#b2501) doesn\u0027t run properly.\n\nAny ideas?",
+      "parentUuid": "b48f97b1_7ac78b60",
+      "range": {
+        "startLine": 14,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "fbbe83d774fdf233ac15bef9c881c0b3c4d247d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
