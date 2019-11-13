@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0402f4fd_67e1c8fa",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-13T02:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6edad45d_1d54f1c5",
+      "range": {
+        "startLine": 82,
+        "startChar": 40,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc005028_c4197bdf",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c3b57481_d416f5a3",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-13T02:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc005028_c4197bdf",
+      "range": {
+        "startLine": 154,
+        "startChar": 37,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c90b1bee_ebb0df6c",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4417c6aa_401b013e",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-13T02:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90b1bee_ebb0df6c",
+      "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "bd4589d1_2be60437",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-13T02:09:02Z",
+      "side": 1,
+      "message": "This is literally just copied from the base driver for now, I intend to replace most of these functions later.\n\nI\u0027ve added TODOs to the functions that I expect to rip out.",
+      "parentUuid": "f6962a78_e6b06465",
+      "range": {
+        "startLine": 169,
+        "startChar": 13,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4c678ee_46ae8a6e",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 1
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "827f39bf_47524943",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-13T02:09:02Z",
+      "side": 1,
+      "message": "Right next to SLP_S0_L; I overlooked it and have put it in now.",
+      "parentUuid": "a4c678ee_46ae8a6e",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 14
+      },
+      "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f93289ea_e8211f51",
         "filename": "power/cometlake-discrete.h",
         "patchSetId": 1
@@ -131,6 +245,30 @@
       "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5075f024_c67fb2f1",
+        "filename": "power/cometlake-discrete.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-13T02:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93289ea_e8211f51",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "df805d841ce4f76d2a724745b16ee60fa1a68d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
