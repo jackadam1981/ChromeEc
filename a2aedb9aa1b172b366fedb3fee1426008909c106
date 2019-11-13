@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "22883149_968e4a84",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T18:20:18Z",
+      "side": 1,
+      "message": "Sorry, I tried the following code and I got unit test error:\n\n#ifndef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE\n#define TC_DRP_AUTO_TOGGLE TC_DRP_AUTO_TOGGLE_UNDEFINED\n#endif\n#ifndef CONFIG_USB_PD_TCPC_LOW_POWER\n#define TC_LOW_POWER_MODE TC_LOW_POWER_MODE_UNDEFINED\n#endif\n\nRunning test_power_role_set...[26.005020 C0: AttachWait.SRC]\n[26.110063 C0: Attached.SRC]\n[26.110064 Called into mux with 5]\n[26.110065 Setting TCPC header to SRC DFP]\nOK\nRunning test_tc_no_parent_cycles...OK\nRunning test_tc_no_empty_state...122: ASSERSION failed: i \u003d\u003d sm_data-\u003esize\n\t\tEVAL: 12 \u003d\u003d 17\n#0  build/host/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe() [0x414215]\n    /home/shurst/trunk/src/platform/ec/test/usb_sm_checks.c:122 (discriminator 1)\n#1  build/host/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe(test_tc_no_empty_state+0x1b) [0x4142c0]\n    /home/shurst/trunk/src/platform/ec/test/usb_sm_checks.c:134\n#2  build/host/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe(run_test+0x1af) [0x414aa4]\n    /home/shurst/trunk/src/platform/ec/test/usb_typec_drp_acc_trysrc.c:149\n#3  build/host/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe(_run_test+0x9) [0x4131b2]\n    /home/shurst/trunk/src/platform/ec/core/host/task.c:95\n#4  build/host/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe(_task_start_impl+0x4a) [0x413712]\n    /home/shurst/trunk/src/platform/ec/core/host/task.c:443 (discriminator 1)\n#5  /lib64/libpthread.so.0(+0x744a) [0x7fac996d144a]\n    ??:0\n#6  /lib64/libc.so.6(clone+0x3f) [0x7fac9940e5cf]\n    ??:0\nTC State machine 0 has empty state!\n136: ASSERTION failed: 0\n\n\nMaybe this can be changed at a later time.",
+      "parentUuid": "e4931728_51a979b0",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 6
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67f72014_8dbfec0b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -1034,6 +1058,30 @@
       "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06eff99c_c1790987",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2587,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T18:20:18Z",
+      "side": 1,
+      "message": "Was a mistake.",
+      "parentUuid": "d427c729_df090bbc",
+      "range": {
+        "startLine": 2586,
+        "startChar": 1,
+        "endLine": 2587,
+        "endChar": 43
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
