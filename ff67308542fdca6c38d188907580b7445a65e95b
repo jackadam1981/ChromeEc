@@ -16,6 +16,24 @@
       "revId": "ff67308542fdca6c38d188907580b7445a65e95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b666889_e15098e8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3611,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-13T17:18:15Z",
+      "side": 1,
+      "message": "No longer applicable since we are not talking to the cable. Cable probes will be added back as a feature in a later CL.",
+      "parentUuid": "69a376a3_3ff26dd2",
+      "revId": "ff67308542fdca6c38d188907580b7445a65e95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
