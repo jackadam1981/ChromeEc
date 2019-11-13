@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4fd2254_c6f51824",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-13T19:38:28Z",
+      "side": 1,
+      "message": "extension.h includes tpm_vendor_cmds.h\n\nIn general include should be sorted alphanumerically.",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f6f68d_0321c7a1",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-13T19:38:28Z",
+      "side": 1,
+      "message": "this does not look as a valid part of this patch, this is a fairly massive clean up, it should be included as a separate patch if at all needed.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 39
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf02b6e_c6090a4a",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-13T19:38:28Z",
+      "side": 1,
+      "message": "why is this import required?\n\nplease keep the rest of the imports sorted.",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "dcfe1d8c322a6f91c6b475cd1f53c7a0db20c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
