@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "ea8ffad2_d9bd1b92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-11-14T18:21:00Z",
+      "side": 1,
+      "message": "For your purposes, could you just translate from:\nprintf(\"%pf\", \u0026somefloat);\n\nto:\nprintf(\"%.6d\", (int)somefloat * 100000.0f);\n\nThen there would be no changes to the printf core needed.",
+      "parentUuid": "a85123fa_5500febc",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14e56a1a_c67a14f0",
         "filename": "include/printf.h",
         "patchSetId": 6
