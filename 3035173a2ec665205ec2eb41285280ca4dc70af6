@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "a85123fa_5500febc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-14T17:52:08Z",
+      "side": 1,
+      "message": "Tried adding softfp at the top level. Someboards (such as nami) break here with a linker error: undefined reference to `__aeabi_d2f\u0027. It seems that since we\u0027re using -ffreestanding in our build we\u0027re going to have to commit to every chip that supports fp to implement standard fp functions (cast double to float in this case but there might be more in the future).\n\nThe alternative would be to link libgcc (which was done for ish) but doing so for every board will require a lot of work.\n- discussing with ec owners to get the OK (probably at least a month of discussion)\n- deleting copied code from libgcc in chip/**\n\nOverall, this just doesn\u0027t seem worth it. Printing floats will be used for only 2 things: debugging sensor calibration, and printing out new calibration values into the log when they\u0027re calculated (Android successfully calibrates once every 2 days so I expect we\u0027ll be on a similar timeline). This just doesn\u0027t seem worth it. I\u0027m going to leave things as they are and if we find there\u0027s a need for more passing floats in varargs I\u0027ll be happy to tackle it after I\u0027m done with the sensor work.",
+      "parentUuid": "a328e9fb_914626a0",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14e56a1a_c67a14f0",
         "filename": "include/printf.h",
         "patchSetId": 6
@@ -165,6 +189,30 @@
       "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32489c6e_a1a19eef",
+        "filename": "include/printf.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-14T17:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14e56a1a_c67a14f0",
+      "range": {
+        "startLine": 59,
+        "startChar": 45,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

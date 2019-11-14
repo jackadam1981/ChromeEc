@@ -375,6 +375,30 @@
       "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c392077_8e456098",
+        "filename": "test/printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-14T17:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6acb973_40445737",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 1
+      },
+      "revId": "2b2faaf26393b05d60e1e6566ec067871a542129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
