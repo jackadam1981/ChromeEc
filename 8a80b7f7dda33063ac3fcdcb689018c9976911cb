@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "7d281860_8a825dde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-14T22:15:38Z",
+      "side": 1,
+      "message": "I\u0027m concerned we may get off into the weeds of \"qualifying TCPC chips\" instead of \"qualifying TCPMv2\".\n\nWiring up a Sweetberry might be difficult and would require support of the Power team. And which TCPC do we wish to vet for TCPMv2?\n\nI suggest instead a simple test for PS8751 which is POR:\n\nTest PS8751: Run i2cscan, then i2cxfer r 8 \u003cbus\u003e \u003caddr\u003e 0x1D\nPass: I2C error noted in console (means sleeping)\nFail: Value is returned\n\nTest ANX3429: (????)\n(Can you propose a method to verify this nondestructively?)\n\nPlease feel free to suggest a platform/variant to qualify and which TCPC you\u0027d like to see tested. I will try to follow up.",
+      "parentUuid": "eeb328dd_646432a4",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a782468_cfcb3ada",
         "filename": "common/usb_common.c",
         "patchSetId": 2
