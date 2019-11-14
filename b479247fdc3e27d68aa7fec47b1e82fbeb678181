@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "16548267_94b3f1a6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-14T22:05:51Z",
+      "side": 1,
+      "message": "Yes, we should. Would it not already be set from DebugAccessory.Snk?",
+      "parentUuid": "d3f9e095_b241c4b7",
+      "range": {
+        "startLine": 2100,
+        "startChar": 12,
+        "endLine": 2100,
+        "endChar": 41
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d900285d_9d7803ea",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 7
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "It is not possible for a CT-VPD to \"pass through\" into DebugAccessory mode dual-CC-line Rp\u0027s. This is because one of the CC lines for a Vconn-powered-device is dedicated... to Vconn. So we can\u0027t detect Debug-dual-Rp this in the first place, since CC2 line is dedicated voltage rail.\n\nFurther more, from the CT-VPD state machine spec (as in it\u0027s bottom charge-through receptacle) from Type-C R2.0 p190:\n\n\u003e 4.5.2.2.28 CTUnattached.Unsupported State\n\u003e This state appears in Figure 4-18.\n\u003e (...)\n\u003e A Charge-Through VCONN-Powered USB Device does not support Sinks, Debug Accessory Mode, or Audio Adapter Accessory Mode.\n\nI\u0027d say you can remove it from this (DebugAccessory.SNK) state. It\u0027s an impossible state to achieve.",
       "parentUuid": "83755e29_4d41637e",
+      "range": {
+        "startLine": 2261,
+        "startChar": 2,
+        "endLine": 2280,
+        "endChar": 3
+      },
+      "revId": "b479247fdc3e27d68aa7fec47b1e82fbeb678181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823c5bf6_aff91518",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-14T22:05:51Z",
+      "side": 1,
+      "message": "+1 to removing this bit.",
+      "parentUuid": "4f7a93cd_1bcd1a6e",
       "range": {
         "startLine": 2261,
         "startChar": 2,
