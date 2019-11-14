@@ -69,15 +69,6 @@ enum rt946x_chg_stat {
 	RT946X_CHGSTAT_FAULT,
 };
 
-enum rt946x_adc_in_sel {
-	RT946X_ADC_VBUS_DIV5 = 1,
-	RT946X_ADC_VBUS_DIV2,
-	MT6370_ADC_TS_BAT = 6,
-	MT6370_ADC_IBUS = 8,
-	MT6370_ADC_TEMP_JC = 12,
-	MT6370_ADC_MAX,
-};
-
 static struct mutex adc_access_lock;
 
 #ifdef CONFIG_CHARGER_MT6370
@@ -1143,7 +1134,7 @@ static void usb_pd_connect(void)
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
 #endif
 
-static int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
+int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
 {
 	int rv, i, adc_start, adc_result = 0;
 	int adc_data_h, adc_data_l, aicr;
