@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "c6d356af_42c2343c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-14T21:36:46Z",
+      "side": 1,
+      "message": "I don\u0027t see the IS_ENABLED(...) fix?",
+      "parentUuid": "65aae42f_8046b614",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2225,
+        "endChar": 3
+      },
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24668ee8_741d396c",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 9

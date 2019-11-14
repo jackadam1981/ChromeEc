@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "18a15eda_d5d35fb8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-14T21:36:46Z",
+      "side": 1,
+      "message": "Okay, let\u0027s drop this for now, but I\u0027ve filed a bug to make sure that we come back and clean these up. crbug.com/1024974",
+      "parentUuid": "22883149_968e4a84",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 6
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67f72014_8dbfec0b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -1390,6 +1414,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "be5285de_b0c55eb7",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "a2aedb9aa1b172b366fedb3fee1426008909c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "758d7098_906a5394",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-14T21:36:46Z",
+      "side": 1,
+      "message": "Still not defined",
+      "parentUuid": "3c66c754_3b5084e3",
       "range": {
         "startLine": 20,
         "startChar": 7,
