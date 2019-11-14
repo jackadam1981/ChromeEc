@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0433eacf_72d8eaf9",
+        "filename": "common/mock/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T16:44:47Z",
+      "side": 1,
+      "message": "what is mock control?",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "a983af9f1bbfa729d2f7899f357d47e7fdd1d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c190b2b6_23fca4d4",
         "filename": "common/mock/README.md",
         "patchSetId": 1
@@ -13,6 +36,52 @@
       "writtenOn": "2019-10-25T18:34:52Z",
       "side": 1,
       "message": "This information is separated from the previous sections to ensure that the previous sections maintain a minimal appearance.",
+      "revId": "a983af9f1bbfa729d2f7899f357d47e7fdd1d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad0778e_ee964a53",
+        "filename": "common/mock/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T16:44:47Z",
+      "side": 1,
+      "message": "Why don\u0027t you say something more explicit like \u0027design pattern recommendation\u0027?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "a983af9f1bbfa729d2f7899f357d47e7fdd1d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2c74fb_92bff4d0",
+        "filename": "common/mock/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T16:44:47Z",
+      "side": 1,
+      "message": "can you elaborate? It\u0027s for reducing name space conflict, isn\u0027t it?",
+      "range": {
+        "startLine": 68,
+        "startChar": 57,
+        "endLine": 68,
+        "endChar": 63
+      },
       "revId": "a983af9f1bbfa729d2f7899f357d47e7fdd1d11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
