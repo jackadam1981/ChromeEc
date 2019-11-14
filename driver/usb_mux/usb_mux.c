@@ -40,11 +40,27 @@ static void enter_low_power_mode(int port)
 
 	/* Apply any low power customization if present */
 	if (mux->driver->enter_low_power_mode) {
+		CPRINTS("USB_MUX_LOW_POWER(%d)", port);
 		res = mux->driver->enter_low_power_mode(port);
-
-		if (res)
+		if (res) {
 			CPRINTS("Err: enter_low_power_mode mux port(%d): %d",
 				port, res);
+			return;
+		}
+	}
+
+	if (IS_ENABLED(CONFIG_USBC_MUX_RETIMER)) {
+		const struct usb_retimer *retimer = &usb_retimers[port];
+
+		if (retimer->driver && retimer->driver->enter_low_power_mode) {
+			CPRINTS("RETIMER_MUX_LOW_POWER(%d)", port);
+			res = retimer->driver->enter_low_power_mode(port);
+			if (res) {
+				CPRINTS("Err: enter_low_power_mode retimer "
+					"port(%d): %d",	port, res);
+				return;
+			}
+		}
 	}
 }
 
@@ -62,6 +78,7 @@ void usb_mux_init(int port)
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
+	CPRINTS("USB_MUX_INIT(%d)", port);
 	res = mux->driver->init(port);
 	if (res) {
 		CPRINTS("Err: init mux port(%d): %d", port, res);
@@ -72,11 +89,11 @@ void usb_mux_init(int port)
 		const struct usb_retimer *retimer = &usb_retimers[port];
 
 		if (retimer->driver && retimer->driver->init) {
+			CPRINTS("RETIMER_MUX_INIT(%d)", port);
 			res = retimer->driver->init(port);
 			if (res) {
 				CPRINTS("Err: init retimer port(%d): %d",
 					port, res);
-				return;
 			}
 		}
 	}
@@ -121,7 +138,11 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	exit_low_power_mode(port);
 
 	/* Configure superspeed lanes */
-	mux_state = polarity ? mux_mode | MUX_POLARITY_INVERTED : mux_mode;
+	mux_state = (mux_mode && polarity)
+			? mux_mode | MUX_POLARITY_INVERTED
+			: mux_mode;
+
+	CPRINTS("USB_MUX_SET(%d), 0x%x", port, mux_state);
 	res = mux->driver->set(port, mux_state);
 	if (res) {
 		CPRINTS("Err: set mux port(%d): %d", port, res);
@@ -132,6 +153,7 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 		const struct usb_retimer *retimer = &usb_retimers[port];
 
 		if (retimer->driver && retimer->driver->set) {
+			CPRINTS("RETIMER_MUX_SET(%d), 0x%x", port, mux_state);
 			res = retimer->driver->set(port, mux_state);
 			if (res) {
 				CPRINTS("Err: set retimer port(%d): %d",
