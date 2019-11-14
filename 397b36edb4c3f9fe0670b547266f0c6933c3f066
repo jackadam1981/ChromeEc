@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f01f6022_89acc246",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-14T16:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eed04f4_022f79c1",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc9c25da_07ce8694",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd44186_23dac63d",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-14T16:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9c25da_07ce8694",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2dde913e_a2ab4778",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-14T16:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "622c89c2_a694c537",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa73a073_3a8fbb35",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 5
@@ -67,6 +121,24 @@
       "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954e321d_d632868d",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-14T16:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa73a073_3a8fbb35",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "f76c3d6d_8fce495b",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-14T16:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d476d8_1cc60964",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5914dfa5_c36a7867",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 5
@@ -101,6 +191,24 @@
       "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b847aeb0_2c045eff",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-14T16:22:29Z",
+      "side": 1,
+      "message": "yes, say if you don\u0027t need any additional parameters, you can skip zero values for p1_len and p2_len.",
+      "parentUuid": "5914dfa5_c36a7867",
+      "revId": "397b36edb4c3f9fe0670b547266f0c6933c3f066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
