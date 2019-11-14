@@ -118,6 +118,53 @@
       "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a328e9fb_914626a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1151649
+      },
+      "writtenOn": "2019-11-14T17:20:08Z",
+      "side": 1,
+      "message": "tl;dr: Switch to softfp for correctness and readablity. Optional `double` hardware breaks the requirements for `-mfloat-abi\u003dhard`.\n\nARM\u0027s decision to make `double` precision optional in some chipsets causes the problem here. They implemented the `-mfpu\u003d...` part correctly, in that it does single precision FP in hardware, while deferring double precision to software math helper functions. This breaks down if you specify `-mfloat-abi\u003dhard`, which only changes the calling conventions for passing floating point arguments (float, double, ...). It requires full support of hardware floating point types to enable it. Without that, the `hard` calling conventions do rely on the presence of `double` registers to pass arguments.\n\nhttps://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html has an explanation of the choices for `-mfloat-abi`. My suggestion here is to switch to `softfp` for your libraries, and then you can use them with whatever FPU flags you prefer (no hardware FP, just single precision, or all FP available). Android and many other projects use the `softfp` to preserve compatibility with different types of hardware. The minor drawback is if you have heavy use of FP arguments in tight loops. In those cases, you will be moving the FP values to integer registers (or the stack) instead of keeping them in the FP registers all the time. This is likely not the case for what is happening here, though. Even still, readability for the code makes it worthwhile to do this correctly, rather than in a slightly higher-performance way that is extremely fragile.",
+      "parentUuid": "f5041f2b_b52c4e0b",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e56a1a_c67a14f0",
+        "filename": "include/printf.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1151649
+      },
+      "writtenOn": "2019-11-14T17:20:08Z",
+      "side": 1,
+      "message": "It\u0027s actually part of the C standard (section 6.5.2.2 from http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf). This is default argument promotion in the calling conventions for floating point types when used in the ... part of variadic functions.",
+      "range": {
+        "startLine": 59,
+        "startChar": 45,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "3035173a2ec665205ec2eb41285280ca4dc70af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
