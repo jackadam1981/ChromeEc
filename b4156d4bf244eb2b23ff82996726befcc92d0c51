@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3409a923_e002d78c",
+        "filename": "board/jacuzzi/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-14T00:58:27Z",
+      "side": 1,
+      "message": "This makes userspace think there\u0027s a power led. I think you want it to be the right LED instead.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "559661e8_e26a8c8e",
+        "filename": "board/jacuzzi/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-14T00:58:27Z",
+      "side": 1,
+      "message": "These are too bright I think.",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645589fa_b29202cd",
+        "filename": "board/jacuzzi/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-14T00:58:27Z",
+      "side": 1,
+      "message": "This seems wrong.",
+      "range": {
+        "startLine": 37,
+        "startChar": 38,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf392014_34810cbe",
+        "filename": "board/jacuzzi/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-14T00:58:27Z",
+      "side": 1,
+      "message": "Why? \"ectool led power white\" won\u0027t work now.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6bd5fe_1211eaf0",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2483,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-14T00:58:27Z",
+      "side": 1,
+      "message": "This is quite unfortunate. Is there no way around that? What if we need both?",
+      "range": {
+        "startLine": 2483,
+        "startChar": 32,
+        "endLine": 2483,
+        "endChar": 56
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
