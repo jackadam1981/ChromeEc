@@ -140,6 +140,30 @@
       "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0860dc1_58f2a02c",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-14T00:12:42Z",
+      "side": 1,
+      "message": "In short, our power budget on 5V is 10A but with everything running full blast we might have demand for up to 12A. We get the remaining 2A back by limiting USB-C to 1.5A and charging ports to 0.9A.\n\nThe assumption is that a port\u0027s power draw is negligible if it\u0027s not overcurrent, so the available power budget can be computed from overcurrent inputs and the two available knobs (USB-C and charging port power) twiddled as required stay under budget.",
+      "parentUuid": "87e3dad3_3d400317",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
