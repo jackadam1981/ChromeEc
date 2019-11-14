@@ -35,6 +35,7 @@ static volatile uint32_t last_interrupt_timestamp;
  * @param s Pointer to the first sensor in the lsm6dsm (accelerometer).
  * @param ts The timestamp to use for the interrupt timestamp.
  */
+#ifdef CONFIG_ACCEL_INTERRUPTS
 static void reset_load_fifo_sensor_state(struct motion_sensor_t *s, uint32_t ts)
 {
 	int i;
@@ -45,6 +46,7 @@ static void reset_load_fifo_sensor_state(struct motion_sensor_t *s, uint32_t ts)
 		data->load_fifo_sensor_state[i].sample_count = 0;
 	}
 }
+#endif
 
 /**
  * Gets the dev_fifo enum value for a given sensor.
@@ -568,13 +570,16 @@ static int get_range(const struct motion_sensor_t *s)
 int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 {
 	struct stprivate_data *data = s->drv_data;
+#ifdef CONFIG_ACCEL_INTERRUPTS
 	const struct motion_sensor_t *accel = IS_ENABLED(CONFIG_ACCEL_FIFO) ?
 		LSM6DSM_MAIN_SENSOR(s) : NULL;
 	struct lsm6dsm_data *private = IS_ENABLED(CONFIG_ACCEL_FIFO) ?
 		LSM6DSM_GET_DATA(accel) : NULL;
+#endif
 	int ret = EC_SUCCESS, normalized_rate = 0;
 	uint8_t ctrl_reg, reg_val = 0;
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 		/* FIFO must be disabled before setting any ODR values */
 		ret = fifo_disable(accel);
@@ -583,6 +588,7 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 			return ret;
 		}
 	}
+#endif
 
 	if (rate > 0) {
 		reg_val = LSM6DSM_ODR_TO_REG(rate);
@@ -629,6 +635,7 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	}
 	if (ret == EC_SUCCESS) {
 		data->base.odr = normalized_rate;
+#ifdef CONFIG_ACCEL_INTERRUPTS
 		if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 			private->samples_to_discard[s->type] =
 				LSM6DSM_DISCARD_SAMPLES;
@@ -640,6 +647,7 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 				CPRINTS("Failed to enable FIFO. Error: %d",
 					ret);
 		}
+#endif
 	}
 
 	mutex_unlock(s->mutex);
@@ -797,11 +805,13 @@ static int init(const struct motion_sensor_t *s)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
 		if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 			ret = fifo_disable(s);
 			if (ret != EC_SUCCESS)
 				goto err_unlock;
 		}
+#endif
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 		ret = config_interrupt(s);
