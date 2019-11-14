@@ -376,6 +376,9 @@ void board_start_ite_sync(void);
  */
 void board_unwedge_i2cs(void);
 
+int board_ro_signed_for_prod(void);
+int board_rw_signed_for_prod(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */

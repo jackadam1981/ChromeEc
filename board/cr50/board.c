@@ -92,6 +92,9 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 static uint32_t board_properties; /* Mainly used as a cache for strap config. */
 static uint8_t reboot_request_posted;
 
+static uint8_t ro_signed_for_prod;
+static uint8_t rw_signed_for_prod;
+
 /* Which UARTs we'd like to be able to bitbang. */
 struct uart_bitbang_properties bitbang_config = {
 	.uart = UART_EC,
@@ -720,6 +723,11 @@ static void board_init(void)
 	init_trng();
 	maybe_trigger_ite_sync();
 	init_jittery_clock(1);
+
+	/* Convention enforced by RO starting with 0.0.11. */
+	rw_signed_for_prod = GREG32(KEYMGR, HKEY_FWR7) == 0;
+	ro_signed_for_prod = GREG32(KEYMGR, HKEY_RWR7) == 0xaa66150f;
+
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
@@ -1458,13 +1466,9 @@ void i2cs_set_pinmux(void)
 	GWRITE_FIELD(PINMUX, EXITEN0, DIOA1, 1);   /* enable powerdown exit */
 }
 
-/* Determine key type based on the key ID. */
-static const char *key_type(const struct SignedHeader *h)
+static const char *key_type(int is_prod)
 {
-	if (G_SIGNED_FOR_PROD(h))
-		return "prod";
-	else
-		return "dev";
+	return is_prod ? "prod" : "dev";
 }
 
 static int command_sysinfo(int argc, char **argv)
@@ -1489,12 +1493,14 @@ static int command_sysinfo(int argc, char **argv)
 	active = system_get_ro_image_copy();
 	vaddr = get_program_memory_addr(active);
 	h = (const struct SignedHeader *)vaddr;
-	ccprintf("RO keyid:    0x%08x(%s)\n", h->keyid, key_type(h));
+	ccprintf("RO keyid:    0x%08x(%s)\n", h->keyid,
+		 key_type(board_ro_signed_for_prod()));
 
 	active = system_get_image_copy();
 	vaddr = get_program_memory_addr(active);
 	h = (const struct SignedHeader *)vaddr;
-	ccprintf("RW keyid:    0x%08x(%s)\n", h->keyid, key_type(h));
+	ccprintf("RW keyid:    0x%08x(%s)\n", h->keyid,
+		 key_type(board_rw_signed_for_prod()));
 
 	ccprintf("DEV_ID:      0x%08x 0x%08x\n",
 		 GREG32(FUSE, DEV_ID0), GREG32(FUSE, DEV_ID1));
@@ -1711,4 +1717,14 @@ void board_unwedge_i2cs(void)
 
 	/* Restore external pin connection to the i2cs_scl. */
 	GWRITE(PINMUX, DIOA9_SEL, GC_PINMUX_I2CS0_SCL_SEL);
+}
+
+int board_ro_signed_for_prod(void)
+{
+	return !!ro_signed_for_prod;
+}
+
+int board_rw_signed_for_prod(void)
+{
+	return !!rw_signed_for_prod;
 }
