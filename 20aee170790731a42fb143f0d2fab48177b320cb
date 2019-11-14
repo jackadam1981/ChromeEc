@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b968383e_5610e758",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-14T11:27:19Z",
+      "side": 1,
+      "message": "remove this",
+      "parentUuid": "976d7a09_cc2118e5",
+      "revId": "20aee170790731a42fb143f0d2fab48177b320cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37bd0634_92c3ad1d",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2019-08-21T00:15:06Z",
       "side": 1,
       "message": "This is just copied from another board.\n\nEvery time we switch rows (13/15 times per scan) we send 4 I2C commands toward the IT8801 chip over a 100kHz bus.\n\nWe should probably recalculate some of these numbers.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 46
+      },
+      "revId": "20aee170790731a42fb143f0d2fab48177b320cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453729ed_8a0c206b",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-14T11:27:19Z",
+      "side": 1,
+      "message": "add a TODO here?",
+      "parentUuid": "37bd0634_92c3ad1d",
       "range": {
         "startLine": 85,
         "startChar": 0,
