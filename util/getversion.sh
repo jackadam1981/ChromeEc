@@ -11,7 +11,7 @@
 dc=$'\001'
 
 # Default marker to indicate 'dirty' repositories
-dirty_marker='+'
+dirty_marker='-'
 
 # This function examines the state of the current directory and attempts to
 # extract its version information: the latest tag, if any, how many patches
