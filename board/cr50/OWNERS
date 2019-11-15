@@ -1,0 +1,11 @@
+# Cr50 board owners
+apronin@chromium.org
+mruthven@chromium.org
+namyoon@chromium.org
+vbendeb@chromium.org
+
+# Allow anyone to approve changes.
+*
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
