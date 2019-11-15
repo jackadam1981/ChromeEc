@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4daa7ab2_3cb11f0b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-15T06:54:06Z",
+      "side": 1,
+      "message": "I\u0027ll rename this to rt946x_get_ieoc, since this register is shared between rt946x and mt6370",
+      "range": {
+        "startLine": 309,
+        "startChar": 11,
+        "endLine": 309,
+        "endChar": 26
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb7d7cc_ade63291",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-15T06:54:06Z",
+      "side": 1,
+      "message": "Even it\u0027s the same charger (mt6370), are there still two different CHIP VID?",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 44
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e45cb10_2ec4080f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-15T06:54:06Z",
+      "side": 1,
+      "message": "It seems that we don\u0027t use this function now. Do we still need this change here?",
+      "range": {
+        "startLine": 1498,
+        "startChar": 0,
+        "endLine": 1498,
+        "endChar": 39
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
