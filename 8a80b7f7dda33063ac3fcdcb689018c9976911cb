@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "9de952ed_75337760",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-15T18:40:43Z",
+      "side": 1,
+      "message": "Role States\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n* Try.SRC Enabled/Disabled\n* Try.SNK Enabled/Disabled\n* DRP -- latch as SRC\n* DRP -- latch as SNK\n* SRC\n* SNK\n\nPower States\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n* S0\n* S0ix\n* S3\n* S5 (Off/EC on)\n* FakeG3 (Off/EC hibernate)\n* TrueG3 (cutoff)\n* [All transitions from above A\u003c-\u003eB]\n\nDUT Power State\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n* DUT with charger\n* DUT w/o  charger\n* [All transitions from above in\u003c-\u003eout]\n\nDUT Properties\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n* Vconn-enabled  DUT\n* Vconn-disabled DUT\n\nIt can get quite complex if you multiply it all out.\nBut is necessary, I concur.",
+      "parentUuid": "0be8eb68_a1665ee0",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "087b1f29_f88c4392",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
