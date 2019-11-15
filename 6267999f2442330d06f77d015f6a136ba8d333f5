@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aeb81189_9f8e634a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "MT6370 ICHG reg0x17 bit7:2 default value.",
+      "parentUuid": "96f30ddf_e351da6b",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4daa7ab2_3cb11f0b",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "81e7fd9c_ccf43d39",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4daa7ab2_3cb11f0b",
+      "range": {
+        "startLine": 309,
+        "startChar": 11,
+        "endLine": 309,
+        "endChar": 26
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "039542a7_d43856d8",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-15T07:15:23Z",
       "side": 1,
       "message": "why 900mA? is this related to inaccurate ADC?",
+      "range": {
+        "startLine": 330,
+        "startChar": 5,
+        "endLine": 330,
+        "endChar": 35
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7620e3d_a422f39d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "It is reg0x17 bit7:2 setting.\nGoogle Chrompad MT6370 issue-vsys-ieoc-additional.pptx on 144532905(issue tracher) - VSYS Drop Issue has more detail.",
+      "parentUuid": "039542a7_d43856d8",
       "range": {
         "startLine": 330,
         "startChar": 5,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e553e431_1b52b889",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Disable VSYS short protection when ICHG \u003c 900mA.",
+      "parentUuid": "bc621c22_6b8bbce5",
+      "range": {
+        "startLine": 331,
+        "startChar": 53,
+        "endLine": 331,
+        "endChar": 63
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f69c381_955bd3d6",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-11-15T07:15:23Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 333,
+        "startChar": 53,
+        "endLine": 333,
+        "endChar": 63
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d890ab2d_3632b368",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Enable VSYS short protection when ICHG \u003e\u003d 900mA",
+      "parentUuid": "8f69c381_955bd3d6",
       "range": {
         "startLine": 333,
         "startChar": 53,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d0833938_76b47b62",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Yes, mt6370 has some sub-version and some sub-version don`t have this problem.",
+      "parentUuid": "cdb7d7cc_ade63291",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 44
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "193b4d9a_c90b831f",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2019-11-15T07:15:23Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 41
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0119124_ac54b8ad",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "193b4d9a_c90b831f",
       "range": {
         "startLine": 836,
         "startChar": 5,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e5714d20_bf41a5f2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Yes, cuz ICHG \u0026 IEOC share the same power path.\nGoogle Chrompad MT6370 issue-vsys-ieoc-additional.pptx on 144532905(issue tracher) - IEOC Issue has more detail.",
+      "parentUuid": "809d672e_148dc8de",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 39
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1959027_098aef80",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -197,6 +389,30 @@
       "writtenOn": "2019-11-15T07:15:23Z",
       "side": 1,
       "message": "Is this 5ms needed? what does ic mean here?",
+      "range": {
+        "startLine": 918,
+        "startChar": 0,
+        "endLine": 918,
+        "endChar": 18
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e7515a_eb624eb6",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Yes, it is needed for waiting AICR ramping time.\nIC means mt6370.",
+      "parentUuid": "c1959027_098aef80",
       "range": {
         "startLine": 918,
         "startChar": 0,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "7fdb2f06_bcd158dc",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Yes, cuz we do not know it will be used in the future.\nSo...do I need remove this change?",
+      "parentUuid": "7e45cb10_2ec4080f",
+      "range": {
+        "startLine": 1498,
+        "startChar": 0,
+        "endLine": 1498,
+        "endChar": 39
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb6c7858_f3f1b105",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -243,6 +483,30 @@
       "writtenOn": "2019-11-15T07:15:23Z",
       "side": 1,
       "message": "also, this part need your help. can you add more context?",
+      "range": {
+        "startLine": 1506,
+        "startChar": 0,
+        "endLine": 1506,
+        "endChar": 43
+      },
+      "revId": "6267999f2442330d06f77d015f6a136ba8d333f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b025552_579afcc0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-15T07:50:03Z",
+      "side": 1,
+      "message": "Google Chrompad MT6370 issue-vsys-ieoc-additional.pptx on 144532905(issue tracher) - VSYS overshoot has more detail.",
+      "parentUuid": "cb6c7858_f3f1b105",
       "range": {
         "startLine": 1506,
         "startChar": 0,
