@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4baba4e4_d43c00e8",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-15T17:57:10Z",
+      "side": 1,
+      "message": "Can this go in a separate CL on top the one adding the new CONFIG?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "8ad3c9511cc18f28ad13ef09dcaa327a82746705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "789eeb8e_40c57b62",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1488,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-15T17:57:10Z",
+      "side": 1,
+      "message": "Don\u0027t you want to return 1 if the fuel gauge says the temperature is invalid?",
+      "range": {
+        "startLine": 1486,
+        "startChar": 0,
+        "endLine": 1488,
+        "endChar": 11
+      },
+      "revId": "8ad3c9511cc18f28ad13ef09dcaa327a82746705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
