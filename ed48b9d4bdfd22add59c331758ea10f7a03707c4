@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a125d95c_de3803ed",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:17:36Z",
+      "side": 1,
+      "message": "alignement.",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171ad783_57b51c71",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:17:36Z",
+      "side": 1,
+      "message": "/*\n\n[make buildall is supposed to run checkpatch.pl that catches linux kernel patch warning and errors.]",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69049003_d84f3103",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:17:36Z",
+      "side": 1,
+      "message": "/*\n * Should ...",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
