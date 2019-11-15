@@ -1405,12 +1405,14 @@ static void pe_src_ready_run(int port)
 		/* Extended Message Requests */
 		if (ext > 0) {
 			switch (type) {
+#if defined(CONFIG_BATTERY)
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
+#endif
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2089,12 +2091,14 @@ static void pe_snk_ready_run(int port)
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
+#if defined(CONFIG_BATTERY)
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
+#endif
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2424,6 +2428,8 @@ static void pe_src_ping_run(int port)
  */
 static void pe_give_battery_cap_entry(int port)
 {
+/* If there is no battery, this should never be called */
+#if defined(CONFIG_BATTERY)
 	uint32_t payload = *(uint32_t *)(&emsg[port].buf);
 	uint16_t *msg = (uint16_t *)emsg[port].buf;
 
@@ -2498,10 +2504,12 @@ static void pe_give_battery_cap_entry(int port)
 	emsg[port].len = 9;
 
 	prl_send_ext_data_msg(port, TCPC_TX_SOP, PD_EXT_BATTERY_CAP);
+#endif
 }
 
 static void pe_give_battery_cap_run(int port)
 {
+#if defined(CONFIG_BATTERY)
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		if (pe[port].power_role == PD_ROLE_SOURCE)
@@ -2509,6 +2517,7 @@ static void pe_give_battery_cap_run(int port)
 		else
 			set_state_pe(port, PE_SNK_READY);
 	}
+#endif
 }
 
 /**
@@ -2516,6 +2525,7 @@ static void pe_give_battery_cap_run(int port)
  */
 static void pe_give_battery_status_entry(int port)
 {
+#if defined(CONFIG_BATTERY)
 	uint32_t payload = *(uint32_t *)(&emsg[port].buf);
 	uint32_t *msg = (uint32_t *)emsg[port].buf;
 
@@ -2573,14 +2583,17 @@ static void pe_give_battery_status_entry(int port)
 	emsg[port].len = 4;
 
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_BATTERY_STATUS);
+#endif
 }
 
 static void pe_give_battery_status_run(int port)
 {
+#if defined(CONFIG_BATTERY)
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		set_state_pe(port, PE_SRC_READY);
 	}
+#endif
 }
 
 /**
