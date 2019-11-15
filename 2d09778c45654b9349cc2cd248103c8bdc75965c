@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "865a5b1b_9715acce",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:10:03Z",
+      "side": 1,
+      "message": "memcpy would be faster. Add fpv3_zero().",
+      "revId": "2d09778c45654b9349cc2cd248103c8bdc75965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
