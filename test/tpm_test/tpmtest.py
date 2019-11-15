@@ -7,6 +7,7 @@
 
 from __future__ import print_function
 
+import getopt
 import os
 import struct
 import sys
@@ -26,6 +27,7 @@ import hash_test
 import hkdf_test
 import rsa_test
 import subcmd
+import trng_test
 import upgrade_test
 
 # Extension command for dcypto testing
@@ -133,9 +135,22 @@ class TPM(object):
 
 if __name__ == '__main__':
   try:
-    debug_needed = len(sys.argv) == 2 and sys.argv[1] == '-d'
+    opts, args = getopt.getopt(sys.argv[1:], 'dt')
+  except getopt.GetoptError as err:
+    print(str(err))
+    sys.exit(2)
+  debug_needed = False
+  trng_only = False
+  for o, a in opts:
+    if o == '-d':
+      debug_needed = True
+    elif o == '-t':
+      trng_only = True
+  try:
     t = TPM(debug_mode=debug_needed)
-
+    if trng_only:
+      trng_test.trng_test(t)
+      sys.exit(1)
     crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
     ecc_test.ecc_test(t)
     ecies_test.ecies_test(t)
