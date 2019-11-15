@@ -34,6 +34,13 @@ GPIO_INT(PG_EC_ALL_SYS_PWRGD,  PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt
 /* USB-C interrupts */
 GPIO_INT(USB_C0_TCPC_INT_ODL,	PIN(E, 0), GPIO_INT_BOTH, tcpc_alert_event)
 GPIO_INT(USB_C0_PPC_INT_ODL,	PIN(6, 2), GPIO_INT_BOTH, ppc_interrupt)
+GPIO_INT(USB_C1_TCPC_INT_ODL,	PIN(A, 2), GPIO_INT_BOTH, tcpc_alert_event)
+/* TODO(b/140561826): Figure out what to do with this interrupt. dragonegg is
+ * the only other board that uses this part, and the interrupt line is tied to
+ * the line for the C2 PPC, which is a different part and is serviced by that
+ * part's PPC ISR. syv682x.h does not define an ISR for this interrupt.
+ */
+GPIO_INT(USB_C1_PPC_INT_ODL,	PIN(F, 5), GPIO_INT_BOTH, ppc_interrupt)
 
 /* HDMI interrupts */
 
