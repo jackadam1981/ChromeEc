@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f703f_fedc8eb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-11-15T19:10:18Z",
+      "side": 1,
+      "message": "I think the CL title should just be \"enable CONFIG_BATTERY_CHECK_CHARGE_TEMP_LIMITS\" as that\u0027s what the CL is doing. The result of this config is the LED behavior is correct, so that can be described in the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "5066301defb31a6b1dade66da5ca02cb61c86161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
