@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "50c20491_598b0078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-15T00:53:03Z",
+      "side": 1,
+      "message": "There\u0027s also the `pwravg` command on the EC console. You can compare the numbers with a unit that you know is actually putting them into low power mode. (TCPMv1 for example).",
+      "parentUuid": "7d281860_8a825dde",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a782468_cfcb3ada",
         "filename": "common/usb_common.c",
         "patchSetId": 2
