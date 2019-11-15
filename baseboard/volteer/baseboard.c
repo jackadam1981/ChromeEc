@@ -10,12 +10,14 @@
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/tusb422.h"
+#include "driver/temp_sensor/thermistor.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "temp_sensor.h"
 #include "usbc_ppc.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -170,9 +172,31 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-
-
-
+/******************************************************************************/
+/* Temperature sensor configuration */
+const struct temp_sensor_t temp_sensors[] = {
+	[TEMP_SENSOR_1_CHARGER] = {.name = "Charger",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = get_temp_3v3_30k9_47k_4050b,
+				 .idx = ADC_TEMP_SENSOR_1_CHARGER,
+				 .action_delay_sec = 1},
+	[TEMP_SENSOR_2_PP3300_REGULATOR] = {.name = "PP3300 Regulator",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = get_temp_3v3_30k9_47k_4050b,
+				 .idx = ADC_TEMP_SENSOR_2_PP3300_REGULATOR,
+				 .action_delay_sec = 1},
+	[TEMP_SENSOR_3_DDR_SOC] = {.name = "DDR and SOC",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = get_temp_3v3_30k9_47k_4050b,
+				 .idx = ADC_TEMP_SENSOR_3_DDR_SOC,
+				 .action_delay_sec = 1},
+	[TEMP_SENSOR_4_FAN] = {.name = "Fan",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = get_temp_3v3_30k9_47k_4050b,
+				 .idx = ADC_TEMP_SENSOR_4_FAN,
+				 .action_delay_sec = 1},
+};
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 /******************************************************************************/
 /* USBC TCPC configuration */
