@@ -38,6 +38,9 @@
 /* Sensors */
 
 /* USB Type C and USB PD defines */
+/* USB-C port's USB2 & USB3 mapping from schematics */
+#define USBC_PORT_0_USB2_NUM	9
+#define USBC_PORT_0_USB3_NUM	1
 
 /* USB Type A Features */
 
