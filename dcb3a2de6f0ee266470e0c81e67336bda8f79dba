@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c06009ca_e58eddcf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-15T00:40:48Z",
+      "side": 1,
+      "message": "I think this is broken in the Attached.SRC state as well. Maybe fix that and de-duplicate in a follow up CL.",
+      "range": {
+        "startLine": 2194,
+        "startChar": 0,
+        "endLine": 2197,
+        "endChar": 0
+      },
+      "revId": "dcb3a2de6f0ee266470e0c81e67336bda8f79dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82737d01_f9e185e6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-15T00:40:48Z",
+      "side": 1,
+      "message": "\"A Hard Reset Shall Not cause any change to either the Rp/Rd resistor being asserted.\" - USB PD 3.0 v2.0 RC4 Section 6.8.3.",
+      "range": {
+        "startLine": 2209,
+        "startChar": 0,
+        "endLine": 2210,
+        "endChar": 36
+      },
+      "revId": "dcb3a2de6f0ee266470e0c81e67336bda8f79dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd63c8e_01245043",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2221,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-15T00:40:48Z",
+      "side": 1,
+      "message": "ditto here",
+      "range": {
+        "startLine": 2219,
+        "startChar": 0,
+        "endLine": 2221,
+        "endChar": 0
+      },
+      "revId": "dcb3a2de6f0ee266470e0c81e67336bda8f79dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
