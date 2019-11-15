@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "62a1b150_96bc8872",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:12:44Z",
+      "side": 1,
+      "message": "We should try to get all the code to compile without CONFIG_FPU.",
+      "parentUuid": "66ba8e41_c62468f9",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6286434f_fc400884",
         "filename": "common/stillness_detector.c",
         "patchSetId": 12
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Would it be OK to do that in a later CL? My goal was to keep all this work away from other code until it\u0027s 100% functional starting with accelerometers, then magnetometers, finally gyroscopes (since they calibrate best when given accel and mag readings).",
       "parentUuid": "6286434f_fc400884",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e73bba_e0bd5244",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:12:44Z",
+      "side": 1,
+      "message": "I would really encourage to fix existing code.",
+      "parentUuid": "51e23eaf_dde5cf3f",
       "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
