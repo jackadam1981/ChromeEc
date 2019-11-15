@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f112b5ff_a0130294",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-15T18:03:42Z",
+      "side": 1,
+      "message": "😎",
+      "parentUuid": "f0e4d97e_3c03e2a9",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "8ad3c9511cc18f28ad13ef09dcaa327a82746705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "789eeb8e_40c57b62",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "No. In this case, I have an invalid temperature read, so I don\u0027t know if it is or isn\u0027t outside of the range. Other boards that implement similar logic in their own battery.c (charger_profile_override) also check for a bad temperature and exit silently.",
       "parentUuid": "789eeb8e_40c57b62",
+      "range": {
+        "startLine": 1486,
+        "startChar": 0,
+        "endLine": 1488,
+        "endChar": 11
+      },
+      "revId": "8ad3c9511cc18f28ad13ef09dcaa327a82746705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "679cd27e_b395d303",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1488,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-15T18:03:42Z",
+      "side": 1,
+      "message": "Ah I see, that\u0027s a flag saying \"don\u0027t trust the fuel gauge temperature\" ?",
+      "parentUuid": "9bb78359_c2aea1fa",
       "range": {
         "startLine": 1486,
         "startChar": 0,
