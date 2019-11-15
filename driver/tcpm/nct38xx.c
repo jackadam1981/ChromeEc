@@ -30,12 +30,26 @@ static unsigned char rxBuf[33];
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Keep track of TCPCI IDLE/WAKE */
+static int nct38xx_has_been_reset;
+
 static int nct38xx_tcpm_init(int port)
 {
 	int rv = 0;
 	int reg;
 
 	cable_polarity[port] = POLARITY_NONE;
+
+	/* Clean up state with a software reset, if needed */
+	if (!(nct38xx_has_been_reset & (1 << port))) {
+		rv = tcpc_write(port,
+				NCT38XX_REG_SW_RESET_CTL,
+				NCT38XX_REG_SW_RESET_CTL_TRIGGER);
+		if (rv)
+			return rv;
+
+		nct38xx_has_been_reset |= (1 << port);
+	}
 
 	rv = tcpci_tcpm_init(port);
 		if (rv)
@@ -348,6 +362,19 @@ static void nct38xx_tcpc_alert(int port)
 			nct38xx_ioex_event_handler(port);
 
 }
+
+static __maybe_unused int nct38xx_low_power_mode(int port)
+{
+	/*
+	 * Keep track that we need to perform a reset on this
+	 * port before we can use the TCPC for our next connection
+	 */
+	nct38xx_has_been_reset &= ~(1 << port);
+
+	/* Put us into low power mode */
+	return tcpci_enter_low_power_mode(port);
+}
+
 const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init			= &nct38xx_tcpm_init,
 	.release		= &tcpci_tcpm_release,
@@ -376,7 +403,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+	.enter_low_power_mode	= &nct38xx_low_power_mode,
 #endif
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 	.set_frs_enable         = &tcpci_tcpc_fast_role_swap_enable,
