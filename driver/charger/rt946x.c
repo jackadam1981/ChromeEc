@@ -79,6 +79,9 @@ enum rt946x_adc_in_sel {
 };
 
 static struct mutex adc_access_lock;
+static struct mutex ichg_access_lock;
+/* Chip vid */
+static int chip_vid = 0;
 
 #ifdef CONFIG_CHARGER_MT6370
 /*
@@ -116,6 +119,12 @@ static const int mt6370_adc_offset[MT6370_ADC_MAX] = {
 	MT6370_ADC_OFFSET_CHG_VDDP,
 	MT6370_ADC_OFFSET_TEMP_JC,
 };
+
+/* IEOC Workaround */
+static int ieoc_wkard = 0;
+static int ichg_stat = 0;
+static int ichg_dis_chg = 2000;
+static uint32_t ieoc_stat = 0;
 
 static int hidden_mode_cnt = 0;
 static struct mutex hidden_mode_lock;
@@ -295,6 +304,37 @@ out:
 	mutex_unlock(&hidden_mode_lock);
 	return rv;
 }
+
+static int rt946x_get_ieoc(uint32_t *ieoc)
+{
+	int ret = 0, reg_ieoc = 0;
+
+	ret = rt946x_read8(RT946X_REG_CHGCTRL9, &reg_ieoc);
+	if (ret < 0)
+		return ret;
+
+	*ieoc = RT946X_IEOC_MIN +
+		RT946X_IEOC_STEP *
+			((reg_ieoc & RT946X_MASK_IEOC) >> RT946X_SHIFT_IEOC);
+	return ret;
+}
+
+static int mt6370_ichg_workaround(int curr)
+{
+	int rv = 0;
+
+	/* Vsys short protection */
+	mt6370_enable_hidden_mode(1);
+
+	if (ichg_stat >= 900 && curr < 900)
+		rv = rt946x_update_bits(MT6370_REG_CHGHIDDENCTRL7, 0x60, 0x00);
+	else if (curr >= 900 && ichg_stat < 900)
+		rv = rt946x_update_bits(MT6370_REG_CHGHIDDENCTRL7, 0x60, 0x40);
+
+	mt6370_enable_hidden_mode(0);
+	return rv;
+}
+
 #endif /* CONFIG_CHARGER_MT6370 */
 
 static int rt946x_chip_rev(int *chip_rev)
@@ -382,6 +422,7 @@ static int rt946x_enable_bc12_detection(int en)
 
 static int rt946x_set_ieoc(unsigned int ieoc)
 {
+	int rv;
 	uint8_t reg_ieoc = 0;
 
 	reg_ieoc = rt946x_closest_reg(RT946X_IEOC_MIN, RT946X_IEOC_MAX,
@@ -389,8 +430,16 @@ static int rt946x_set_ieoc(unsigned int ieoc)
 
 	CPRINTF("%s ieoc = %d(0x%02X)\n", __func__, ieoc, reg_ieoc);
 
-	return rt946x_update_bits(RT946X_REG_CHGCTRL9, RT946X_MASK_IEOC,
-		reg_ieoc << RT946X_SHIFT_IEOC);
+	rv = rt946x_update_bits(RT946X_REG_CHGCTRL9, RT946X_MASK_IEOC,
+				reg_ieoc << RT946X_SHIFT_IEOC);
+	if (rv < 0)
+		return rv;
+
+#if defined(CONFIG_CHARGER_MT6370)
+	/* Store IEOC */
+	return rt946x_get_ieoc(&ieoc_stat);
+#endif
+	return rv;
 }
 
 static int rt946x_set_mivr(unsigned int mivr)
@@ -757,14 +806,46 @@ int charger_get_current(int *current)
 
 int charger_set_current(int current)
 {
+	int rv;
 	uint8_t reg_icc = 0;
 	const struct charger_info * const info = charger_get_info();
 
+	mutex_lock(&ichg_access_lock);
+#ifdef CONFIG_CHARGER_MT6370
+	current = (current < 500) ? 500 : current;
+
+	if (chip_vid == 0x80 || chip_vid == 0xE0) {
+		rv = mt6370_ichg_workaround(current);
+		if (rv < 0)
+			return rv;
+	}
+#endif
 	reg_icc = rt946x_closest_reg(info->current_min, info->current_max,
 		info->current_step, current);
 
-	return rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
+	rv = rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
 		reg_icc << RT946X_SHIFT_ICHG);
+	if (rv < 0)
+		return rv;
+
+#ifdef CONFIG_CHARGER_MT6370
+	/* Store Ichg setting */
+	charger_get_current(&ichg_stat);
+
+	if (chip_vid != 0x80 && chip_vid != 0xE0)
+		goto bypass_ieoc_workaround;
+	/* Workaround to make IEOC accurate */
+	if (current < 900 && !ieoc_wkard) { /* 900mA */
+		rv = rt946x_set_ieoc(ieoc_stat + 100);
+		ieoc_wkard = 1;
+	} else if (current >= 900 && ieoc_wkard) {
+		ieoc_wkard = 0;
+		rv = rt946x_set_ieoc(ieoc_stat - 100);
+	}
+bypass_ieoc_workaround:
+#endif
+	mutex_unlock(&ichg_access_lock);
+	return rv;
 }
 
 int charger_get_voltage(int *voltage)
@@ -832,6 +913,9 @@ int charger_post_init(void)
 	rv = rt946x_select_ilmt(RT946X_ILMTSEL_AICR);
 	if (rv)
 		return rv;
+	/* wait ic ramp 5ms */
+	udelay(5 * 1000);
+
 	/* Disable ILIM pin */
 	rv = rt946x_enable_ilim_pin(0);
 	if (rv)
@@ -934,6 +1018,8 @@ static void rt946x_init(void)
 		CPRINTF("RT946X incorrect ID: 0x%02x\n", reg);
 		return;
 	}
+
+	chip_vid = reg;
 
 	/* Check revision id */
 	if (rt946x_chip_rev(&reg)) {
@@ -1410,6 +1496,25 @@ int usb_charger_ramp_max(int supplier, int sup_curr)
 
 int rt946x_enable_charger_boost(int en)
 {
+#ifdef CONFIG_CHARGER_MT6370
+	int rv, ichg_ramp_t = 0;
+
+	/* Workaround for vsys overshoot */
+	if (!en) {
+		ichg_dis_chg = ichg_stat;
+		ichg_ramp_t = (ichg_stat - 500) / 50 * 2;
+		rv = rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
+						0x04 << RT946X_SHIFT_ICHG);
+		if (rv < 0)
+			goto out;
+
+		udelay(ichg_ramp_t * 1000);
+	} else {
+		if (ichg_dis_chg == ichg_stat)
+			rv = charger_set_current(ichg_stat);
+	}
+out:
+#endif
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_CHGCTRL2, RT946X_MASK_CHG_EN);
 }
