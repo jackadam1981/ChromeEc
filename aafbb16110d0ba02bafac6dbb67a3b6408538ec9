@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc575917_ad76b70a",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:30:39Z",
+      "side": 1,
+      "message": "calling memset outside a function does not feel right. You may want to put it in the _init entry point.",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ea43b4_c9c9ce22",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:30:39Z",
+      "side": 1,
+      "message": "Do we need temperature at ODR speed, especially when we have only 1K granularity.",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be623f6c_acd392d4",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-15T17:30:39Z",
+      "side": 1,
+      "message": "These 4 lines are cut and paste from motion_sense_fifo_reset(). Call the same function.",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
