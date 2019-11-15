@@ -26,6 +26,7 @@ import hash_test
 import hkdf_test
 import rsa_test
 import subcmd
+import trng_test
 import upgrade_test
 
 # Extension command for dcypto testing
@@ -134,8 +135,11 @@ class TPM(object):
 if __name__ == '__main__':
   try:
     debug_needed = len(sys.argv) == 2 and sys.argv[1] == '-d'
+    trng_only = len(sys.argv) == 2 and sys.argv[1] == '-t'
     t = TPM(debug_mode=debug_needed)
-
+    if trng_only:
+      trng_test.trng_test(t)
+      sys.exit(1)
     crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
     ecc_test.ecc_test(t)
     ecies_test.ecies_test(t)
