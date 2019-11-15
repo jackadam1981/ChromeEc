@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5f0c61ee_fee097a8",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-11-15T18:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f112b5ff_a0130294",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "8ad3c9511cc18f28ad13ef09dcaa327a82746705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "789eeb8e_40c57b62",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
