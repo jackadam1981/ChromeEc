@@ -372,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "c4822919_f724e96e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2230,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-15T18:14:49Z",
+      "side": 1,
+      "message": "I see what you mean. I was not looking at the correct if statement.",
+      "parentUuid": "33ed0a32_d210bee3",
+      "revId": "581018faa31f27e0d077d13df50cd7f0be2afa1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34c6f50b_446b3ff6",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 9
