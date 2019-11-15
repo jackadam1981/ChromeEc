@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60840992_6f6b7d40",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-15T18:29:25Z",
+      "side": 1,
+      "message": "this is already defined here\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/config.h#4863",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "0c70e119706af28eb2bcc671bad34266804f608f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
