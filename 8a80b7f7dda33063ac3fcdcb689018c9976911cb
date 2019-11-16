@@ -233,6 +233,24 @@
     },
     {
       "key": {
+        "uuid": "ec1b9de4_0c1cb433",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-16T04:19:35Z",
+      "side": 1,
+      "message": "I attempted following Aseda\u0027s recommendation to use \"pwr_avg\" command, but was blocked due to (a) readings being swamped by plain on power (b) b/142033952 preventing Suzy-Q use.\n\nHowever I did verify (documented at crbug.com/1022217 ) that the proper LPM states are being entered and exited using DRP dock and \"pd trysrc 0\" command to test Try.SRC and non-Try.SRC DRP resolution in both states.\n\nRole States\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTry.SRC Enabled/Disabled\nDRP -- latch as SRC\nDRP -- latch as SNK\n\nPower States\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nS0\n\nDUT Power State\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDUT with charger\n\n\nDUT Properties\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nVconn-enabled  DUT",
+      "parentUuid": "1d8a87dc_cf47cc1d",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a782468_cfcb3ada",
         "filename": "common/usb_common.c",
         "patchSetId": 2
