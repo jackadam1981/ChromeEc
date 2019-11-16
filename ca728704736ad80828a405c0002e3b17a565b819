@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44db0b6b_7aea6683",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-16T00:19:14Z",
+      "side": 1,
+      "message": "can you please also add a help option and print help message in case wrong command line options are supplied",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "ca728704736ad80828a405c0002e3b17a565b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed6eca5_c0acd2d3",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-16T00:19:14Z",
+      "side": 1,
+      "message": "\u0027file\u0027 is a Python builtin, not a good choice for a variable name.",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "ca728704736ad80828a405c0002e3b17a565b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
