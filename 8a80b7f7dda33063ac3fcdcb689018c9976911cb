@@ -251,6 +251,24 @@
     },
     {
       "key": {
+        "uuid": "ebea3e30_24eb9172",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-16T04:47:00Z",
+      "side": 1,
+      "message": "Verification has been posted in crbug.com/1022217#c3",
+      "parentUuid": "ec1b9de4_0c1cb433",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a782468_cfcb3ada",
         "filename": "common/usb_common.c",
         "patchSetId": 2
