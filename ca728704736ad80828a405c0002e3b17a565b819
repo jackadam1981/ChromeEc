@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "347f1836_7c38fd2b",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-16T00:20:55Z",
+      "side": 1,
+      "message": "also, it would be good to add some simple README.md describing how this works, what this script is for, how to test trng, etc.",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 55
+      },
+      "revId": "ca728704736ad80828a405c0002e3b17a565b819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44db0b6b_7aea6683",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 3
