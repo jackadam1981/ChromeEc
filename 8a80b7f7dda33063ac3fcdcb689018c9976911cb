@@ -269,6 +269,24 @@
     },
     {
       "key": {
+        "uuid": "96e6f56a_59612966",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-18T16:48:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebea3e30_24eb9172",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a782468_cfcb3ada",
         "filename": "common/usb_common.c",
         "patchSetId": 2
