@@ -22,6 +22,30 @@
       "revId": "1dfd7d481138bf3bc86ec926e04e43ab668823b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f76eee8_62ad84d4",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-18T23:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08cee502_721ddc08",
+      "range": {
+        "startLine": 195,
+        "startChar": 10,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "1dfd7d481138bf3bc86ec926e04e43ab668823b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
