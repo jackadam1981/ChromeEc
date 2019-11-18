@@ -22,6 +22,30 @@
       "revId": "c0daa5d8c651e6f1c35b0387a5933f804335f223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff98427e_2cd2e2fc",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-18T18:39:39Z",
+      "side": 1,
+      "message": "done, though it looks like these constants are always defined - check line 104 above.",
+      "parentUuid": "b29489df_008922a1",
+      "range": {
+        "startLine": 325,
+        "startChar": 8,
+        "endLine": 325,
+        "endChar": 22
+      },
+      "revId": "c0daa5d8c651e6f1c35b0387a5933f804335f223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
