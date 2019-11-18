@@ -165,6 +165,7 @@ class RMAOpen(object):
         self.servo_port = servo_port if servo_port else '9999'
         self.print_caps = print_caps
         self.ip = ip
+        self._dut_control('cr50_uart_timestamp:off')
         if device:
             self.set_cr50_device(device)
         elif servo_port:
@@ -581,6 +582,7 @@ class RMAOpen(object):
         """Print the cr50 BID RLZ code"""
         bid_output = self.send_cmd_get_output('bid')
         bid = re.search('Board ID: (\S+),', bid_output).group(1)
+        bid = bid.replace(':', '')
         if bid == ERASED_BID:
             debug(DEBUG_ERASED_BOARD_ID)
             raise ValueError('Cannot run RMA Open when board id is erased')
