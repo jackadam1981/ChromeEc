@@ -142,6 +142,16 @@ struct ppc_drv {
 	 * @return EC_SUCCESS on success, error otherwise.
 	 */
 	int (*enter_low_power_mode)(int port);
+
+	/**
+	 * Enable/disable ppc fast role swap from SNK to SRC.
+	 *
+	 * @param port: Type-C port number.
+	 * @enable: true for enable, false for disable.
+	 *
+	 * @return EC_SUCCESS on success, error otherwise.
+	 */
+	int (*fast_swap_to_src_enable)(int port, int enable);
 };
 
 struct ppc_config_t {
@@ -209,6 +219,16 @@ int ppc_is_sourcing_vbus(int port);
  * @return 1 if VBUS is present, 0 if not.
  */
 int ppc_is_vbus_present(int port);
+
+/**
+ * Enable/disable ppc fast role swap from SNK to SRC.
+ *
+ * @param port: Type-C port number.
+ * @enable: true for enable, false for disable.
+ *
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+int ppc_fast_swap_to_src_enable(int port, int enable);
 
 /**
  * Inform the PPC module that a sink is connected.

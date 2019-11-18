@@ -61,8 +61,10 @@ enum pd_rx_errors {
 #define PD_EVENT_SM			TASK_EVENT_CUSTOM_BIT(10)
 /* Prepare for sysjump */
 #define PD_EVENT_SYSJUMP		TASK_EVENT_CUSTOM_BIT(11)
+/* Fast role swap event */
+#define PD_EVENT_FAST_ROLE_SWAP		TASK_EVENT_CUSTOM_BIT(12)
 /* First free event on PD task */
-#define PD_EVENT_FIRST_FREE_BIT		12
+#define PD_EVENT_FIRST_FREE_BIT		13
 
 /* Ensure TCPC is out of low power mode before handling these events. */
 #define PD_EXIT_LOW_POWER_EVENT_MASK \
@@ -1015,6 +1017,10 @@ enum pd_states {
 	PD_STATE_BIST_RX,			/* C36 */
 	PD_STATE_BIST_TX,			/* C37 */
 	PD_STATE_DRP_AUTO_TOGGLE,		/* C38 */
+	PD_STATE_SNK_FAST_SWAP_SNK_DISABLE,	/* C39 */
+	PD_STATE_SNK_FAST_SWAP_INIT,		/* C40 */
+	PD_STATE_SNK_FAST_SWAP_STANDBY,		/* C41 */
+	PD_STATE_SNK_FAST_SWAP_COMPLETE,	/* C42 */
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,
 };
@@ -1090,7 +1096,9 @@ enum pd_states {
  * Tracks whether port negotiation may have stalled due to not starting reset
  * timers in SNK_DISCOVERY
  */
-#define PD_FLAGS_SNK_WAITING_BATT BIT(20)
+#define PD_FLAGS_SNK_WAITING_BATT  BIT(20)
+#define PD_FLAGS_PARTNER_FAST_SWAP BIT(21)/* port partner support fast swap */
+#define PD_FLAGS_CHECK_FAST_SWAP   BIT(22)/* check fast role swap in READY */
 
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
@@ -1108,7 +1116,9 @@ enum pd_states {
 					   PD_FLAGS_PARTNER_USB_COMM | \
 					   PD_FLAGS_UPDATE_SRC_CAPS | \
 					   PD_FLAGS_TS_DTS_PARTNER | \
-					   PD_FLAGS_SNK_WAITING_BATT)
+					   PD_FLAGS_SNK_WAITING_BATT | \
+					   PD_FLAGS_PARTNER_FAST_SWAP | \
+					   PD_FLAGS_CHECK_FAST_SWAP)
 
 /* Per-port battery backed RAM flags */
 #define PD_BBRMFLG_EXPLICIT_CONTRACT BIT(0)
@@ -1659,6 +1669,14 @@ void pd_check_pr_role(int port, int pr_role, int flags);
  * @param flags PD flags
  */
 void pd_check_dr_role(int port, int dr_role, int flags);
+
+/**
+ * Check port partner if support fast role swap
+ *
+ * @param port USB-C port number
+ * @param flags PD flags
+ */
+void pd_check_fast_swap(int port, int flags);
 
 /**
  * Check if we should charge from this device. This is

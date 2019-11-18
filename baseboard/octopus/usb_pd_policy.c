@@ -33,7 +33,7 @@ const uint32_t pd_src_pdo_max[] = {
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
+	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS | PDO_FIXED_FRS_CURR_1A5_AT_5V),
 	PDO_BATT(4750, 21000, 15000),
 	PDO_VAR(4750, 21000, 3000),
 };
@@ -91,6 +91,22 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
 		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
 			pd_request_power_swap(port);
+	}
+}
+
+void pd_check_fast_swap(int port, int flags)
+{
+	/*
+	 * If port partner support dual-role power, fast role swap
+	 * and our dualrole toggling is on, then enable TCPC and PPC
+	 * fast role swap to SRC.
+	 */
+	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
+	    (flags & PD_FLAGS_PARTNER_FAST_SWAP) &&
+	    (pd_get_dual_role(port) == PD_DRP_TOGGLE_ON)) {
+		tcpm_set_frs_enable(port, 1);
+		ppc_fast_swap_to_src_enable(port, 1);
+		ppc_vbus_source_enable(port, 1);
 	}
 }
 
