@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3851df8f_712953a2",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-18T23:09:56Z",
+      "side": 1,
+      "message": "in this case it\u0027s not a BIT_MASK anymore. May be rename it to TPM_CC_VENDOR[_COMMAND]?",
+      "range": {
+        "startLine": 646,
+        "startChar": 11,
+        "endLine": 646,
+        "endChar": 33
+      },
+      "revId": "7c6f29e9c69df1c2be0be07913c2d29d02af3876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
