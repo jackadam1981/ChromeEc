@@ -45,6 +45,29 @@
       "revId": "5f574348a27a59c1a3805aec0d7b829f4ab29902",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac4e6f9_e021f0a4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-18T05:09:19Z",
+      "side": 1,
+      "message": "ieoc is cached (ieoc_stat) at rt946x_set_mivr, and the IEOC register will be updated to a new value. Should we swap the functions here?",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 12
+      },
+      "revId": "5f574348a27a59c1a3805aec0d7b829f4ab29902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
