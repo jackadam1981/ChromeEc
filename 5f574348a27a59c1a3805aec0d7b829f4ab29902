@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "645a9b17_1f22123b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-18T06:06:27Z",
+      "side": 1,
+      "message": "ieoc_wkard is for recording that the ieoc_reg is adjusted for accurate or not.\nieoc_stat is for recording ieoc_reg.\nichg_stat is for recording ichg_reg and be used on vsys short protection and vsys overshoot.\nichg_dis_chg is for recording ichg_reg when cable be plug out.",
+      "parentUuid": "755c2b9c_c69d77d4",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "5f574348a27a59c1a3805aec0d7b829f4ab29902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7083ec9c_aef03189",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b05d8c13_5e321dfa",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-18T06:06:27Z",
+      "side": 1,
+      "message": "Yes, charger_set_current use this function.",
+      "parentUuid": "7083ec9c_aef03189",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 1
+      },
+      "revId": "5f574348a27a59c1a3805aec0d7b829f4ab29902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ac4e6f9_e021f0a4",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-18T05:09:19Z",
       "side": 1,
       "message": "ieoc is cached (ieoc_stat) at rt946x_set_mivr, and the IEOC register will be updated to a new value. Should we swap the functions here?",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 12
+      },
+      "revId": "5f574348a27a59c1a3805aec0d7b829f4ab29902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0692f76e_7e1dbfdb",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-18T06:06:27Z",
+      "side": 1,
+      "message": "sorry... I put rt946x_get_ieoc on wrong place, it should be in rt946x_set_ieoc.",
+      "parentUuid": "9ac4e6f9_e021f0a4",
       "range": {
         "startLine": 602,
         "startChar": 0,
