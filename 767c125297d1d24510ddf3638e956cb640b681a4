@@ -34,6 +34,24 @@
       "revId": "767c125297d1d24510ddf3638e956cb640b681a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a93ef652_c0c43215",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2019-11-18T21:01:05Z",
+      "side": 1,
+      "message": "It doesn\u0027t need to be changed. I was just flagging it incase it was forgotten or if it was found to be detrimental to include. I see now that it makes sense to not disable it since it\u0027s enabled by the ccd_state_change_hook(), it should never be enabled when the jump occurs unlike the usb_spi_enable().",
+      "parentUuid": "e737d00c_d862d561",
+      "revId": "767c125297d1d24510ddf3638e956cb640b681a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
