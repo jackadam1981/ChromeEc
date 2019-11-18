@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ba4dc22_725683f7",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "Can we also drive the HPD signal to AP? Basically drive DP_HOT_PLUG_DET.",
+      "range": {
+        "startLine": 284,
+        "startChar": 17,
+        "endLine": 284,
+        "endChar": 35
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba50e78c_ce76929d",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "I think this is at PIN(B, 1)?",
+      "range": {
+        "startLine": 15,
+        "startChar": 30,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d791f0_6e48f800",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "This isn\u0027t a \"USB-C\" interrupt so maybe put a newline before this?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 129
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3ea6850_340c86a0",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "Supposed to be GPIO_INT()? Maybe move the other sensor interrupt here?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd26afe_60236b98",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "Maybe just DP_HOT_PLUG_DET?",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f863ad9_203bc73a",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "This is required to be named this for EC generic code?",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82db70e_5c446cc8",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "Can we get comments like\n\n/* KS0_12(GPIO05) KS0_11(GPIO06) KS0_10(GPIO07) */",
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f938167_3b991e55",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-18T22:04:30Z",
+      "side": 1,
+      "message": "second",
+      "range": {
+        "startLine": 353,
+        "startChar": 46,
+        "endLine": 353,
+        "endChar": 52
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
