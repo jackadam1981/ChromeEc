@@ -16,6 +16,24 @@
       "revId": "767c125297d1d24510ddf3638e956cb640b681a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e737d00c_d862d561",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-18T20:51:17Z",
+      "side": 1,
+      "message": "TLDR; it is subjective ;)\n\nI was trying to mirror the board_init\n\nAlso, i2c starts off as input in gpio.inc and is switched later. The hardware module for i2c also seems to be very resilient between going in and out of i2c modes all the time (as we do it for manual recovery). Also the fact that we are the master of the i2c bus means we should be able to recover pretty well.\n\nAlso that said, if you feel strongly that we should add i2c to the list, let me know and I will.",
+      "parentUuid": "d8453d78_6ea2014a",
+      "revId": "767c125297d1d24510ddf3638e956cb640b681a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
