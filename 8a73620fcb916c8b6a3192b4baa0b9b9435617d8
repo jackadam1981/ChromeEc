@@ -22,6 +22,30 @@
       "revId": "8a73620fcb916c8b6a3192b4baa0b9b9435617d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecbd2d0a_aed7fa52",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-18T23:39:03Z",
+      "side": 1,
+      "message": "I agree, this should be way smaller, but I have seen flash_ec over servo need a few attempts before catching. 5 retries should be okay, but I can\u0027t account for others using this program.",
+      "parentUuid": "ca7787cb_785a1982",
+      "range": {
+        "startLine": 250,
+        "startChar": 32,
+        "endLine": 250,
+        "endChar": 34
+      },
+      "revId": "8a73620fcb916c8b6a3192b4baa0b9b9435617d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
