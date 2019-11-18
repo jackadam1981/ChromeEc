@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5e785739_c42a9a13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-18T18:14:03Z",
+      "side": 1,
+      "message": "Done but I\u0027d like to test the failing dock with Nathan",
+      "parentUuid": "2894f1a4_3b081921",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de9890ea_bf9a1a56",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
