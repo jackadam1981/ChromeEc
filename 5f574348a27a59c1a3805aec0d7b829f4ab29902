@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "755c2b9c_c69d77d4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-18T02:32:04Z",
+      "side": 1,
+      "message": "can you explain what are these variables usage? I am still not quite clear. It seems that some of them are cached values, but I don\u0027t know why do we need them.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "5f574348a27a59c1a3805aec0d7b829f4ab29902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
