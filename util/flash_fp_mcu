@@ -5,6 +5,9 @@
 
 . /usr/share/misc/shflags
 
+DEFAULT_RETRIES=${DEFAULT_RETRIES:-4}
+STM32MON_CONNECT_RETRIES=${STM32MON_CONNECT_RETRIES:-4}
+
 DEFINE_boolean 'read' "${FLAGS_FALSE}" 'Read instead of write' 'r'
 # Both flash read and write protection are removed by default, but you
 # can optionally enable them (for testing purposes).
@@ -12,14 +15,15 @@ DEFINE_boolean 'remove_flash_read_protect' "${FLAGS_TRUE}" \
   'Remove flash read protection while performing command' 'U'
 DEFINE_boolean 'remove_flash_write_protect' "${FLAGS_TRUE}" \
   'Remove flash write protection while performing command' 'u'
-DEFINE_integer 'retries' 4 'Specify number of retries' 'R'
+DEFINE_integer 'retries' "${DEFAULT_RETRIES}" 'Specify number of retries' 'R'
+DEFINE_boolean 'hello' "${FLAGS_FALSE}" 'Only ping the bootloader' 'H'
 FLAGS_HELP="Usage: ${0} [flags] ec.bin"
 
 # Process commandline flags
 FLAGS "${@}" || exit 1
 eval set -- "${FLAGS_ARGV}"
 
-if [[ "$#" -eq 0 ]]; then
+if [[ "$#" -eq 0 ]] && [[ "${FLAGS_hello}" -eq "${FLAGS_FALSE}" ]]; then
   echo "Missing filename"
   flags_help
   exit 1
@@ -118,32 +122,31 @@ flash_fp_mcu_stm32() {
   local file="${5}"
   local spiid
 
-  local STM32MON_READ_FLAGS=" -p -s ${spidev} -r"
-  local STM32MON_WRITE_FLAGS="-p -s ${spidev} -e -w"
-  local stm32mon_flags="--retries 6"
 
-  if [[ "${FLAGS_remove_flash_write_protect}" -eq "${FLAGS_TRUE}" ]]; then
-    STM32MON_READ_FLAGS=" -u ${STM32MON_READ_FLAGS}"
-    STM32MON_WRITE_FLAGS="-u ${STM32MON_WRITE_FLAGS}"
-  fi
+  local stm32mon_flags="-p --retries ${STM32MON_CONNECT_RETRIES} -s ${spidev}"
 
-  if [[ "${FLAGS_remove_flash_read_protect}" -eq "${FLAGS_TRUE}" ]]; then
-    STM32MON_READ_FLAGS=" -U ${STM32MON_READ_FLAGS}"
-    STM32MON_WRITE_FLAGS="-U ${STM32MON_WRITE_FLAGS}"
-  fi
-
-  if [[ "${FLAGS_read}" -eq "${FLAGS_TRUE}" ]]; then
-    if [[ -e "${file}" ]]; then
-      echo "Output file already exists: ${file}"
-      exit 1
+  if [[ "${FLAGS_hello}" -eq "${FLAGS_FALSE}" ]]; then
+    if [[ "${FLAGS_remove_flash_write_protect}" -eq "${FLAGS_TRUE}" ]]; then
+      stm32mon_flags+=" -u"
     fi
-    stm32mon_flags+=" ${STM32MON_READ_FLAGS}"
-  else
-    if [[ ! -f "${file}" ]]; then
-      echo "Invalid image file: ${file}"
-      exit 1
+
+    if [[ "${FLAGS_remove_flash_read_protect}" -eq "${FLAGS_TRUE}" ]]; then
+      stm32mon_flags+=" -U"
     fi
-    stm32mon_flags+=" ${STM32MON_WRITE_FLAGS}"
+
+    if [[ "${FLAGS_read}" -eq "${FLAGS_TRUE}" ]]; then
+      if [[ -e "${file}" ]]; then
+        echo "Output file already exists: ${file}"
+        exit 1
+      fi
+      stm32mon_flags+=" -r ${file}"
+    else
+      if [[ ! -f "${file}" ]]; then
+        echo "Invalid image file: ${file}"
+        exit 1
+      fi
+      stm32mon_flags+=" -e -w ${file}"
+    fi
   fi
 
   check_hardware_write_protect_disabled
@@ -186,7 +189,7 @@ flash_fp_mcu_stm32() {
 
   local attempt=0
   local cmd_exit_status=1
-  local cmd="stm32mon ${stm32mon_flags} ${file}"
+  local cmd="stm32mon ${stm32mon_flags}"
 
   for attempt in $(seq ${FLAGS_retries}); do
     # Reset sequence to enter bootloader mode
