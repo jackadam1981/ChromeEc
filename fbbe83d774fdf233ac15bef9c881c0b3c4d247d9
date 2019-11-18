@@ -46,6 +46,30 @@
       "revId": "fbbe83d774fdf233ac15bef9c881c0b3c4d247d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b7e0d5_bb95098c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-11-18T23:49:42Z",
+      "side": 1,
+      "message": "Offline conversation, this is some nastiness with the Makefile and HAS_TASK_... not working when the task is in RW we don\u0027t want to have to deal with.",
+      "parentUuid": "e8c0ff46_ef353790",
+      "range": {
+        "startLine": 14,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "fbbe83d774fdf233ac15bef9c881c0b3c4d247d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
