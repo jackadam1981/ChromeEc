@@ -100,6 +100,11 @@ GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
  */
 GPIO(EC_EDP_BL_EN,             PIN(D, 3), GPIO_OUT_HIGH)
 
+/*
+ * Optane memory power-loss-notify signal
+ */
+GPIO(M2_SSD_PLN, PIN(A, 0), GPIO_OUT_LOW)
+
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(EC_I2C0_SENSOR_SCL,       PIN(B, 5), GPIO_INPUT | GPIO_SEL_1P8V)
 GPIO(EC_I2C0_SENSOR_SDA,       PIN(B, 4), GPIO_INPUT | GPIO_SEL_1P8V)
