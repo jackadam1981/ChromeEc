@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0a5547_9ddc2471",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-19T12:09:35Z",
+      "side": 1,
+      "message": "(Optional) In future, may be able to utilize \"enhanced\" PRNG util + larger rand window size from crrev/c/1922751 . It\u0027s a drop-in replacement for this highlighted part.\n\nThe PRNG method seems to be a tad more reliable with some DUT like b/144676183 . But this is minor enhancement -- may be adopted in future CL.",
+      "range": {
+        "startLine": 1030,
+        "startChar": 5,
+        "endLine": 1030,
+        "endChar": 37
+      },
+      "revId": "b8f6d423993a79fc7b95776525940cd7d833cefb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
