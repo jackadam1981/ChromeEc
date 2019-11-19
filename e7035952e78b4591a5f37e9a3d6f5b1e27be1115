@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5b6212ad_6e9113ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-19T11:58:26Z",
+      "side": 1,
+      "message": "I\u0027ve posted verification data at crbug/1022218\nThis works excellently given empirical constraints.\n\nSince Kensington SD2000P is PD3.0 (Collision Avoidance), suggest using Dell D6000 and Apple 2019 multiport as test devices instead.",
+      "parentUuid": "5e785739_c42a9a13",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e7035952e78b4591a5f37e9a3d6f5b1e27be1115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de9890ea_bf9a1a56",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
