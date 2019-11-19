@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a3e3ee_ab6ca3cc",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-19T08:26:43Z",
+      "side": 1,
+      "message": "nit: extra blank line",
+      "revId": "d8e4da47d94472b63a1219c74da75d018c5b3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f6e72b_fa12358a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-19T08:26:43Z",
+      "side": 1,
+      "message": "Should this apply to all variants? or just mt6370?",
+      "revId": "d8e4da47d94472b63a1219c74da75d018c5b3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
