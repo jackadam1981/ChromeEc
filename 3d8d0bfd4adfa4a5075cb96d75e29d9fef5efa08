@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a3c34f9d_9f8ebd72",
+        "filename": "test/tpm_test/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-19T17:07:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee761f8_31645bb9",
+      "range": {
+        "startLine": 3,
+        "startChar": 28,
+        "endLine": 3,
+        "endChar": 36
+      },
+      "revId": "3d8d0bfd4adfa4a5075cb96d75e29d9fef5efa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c741ab5a_06d9933d",
         "filename": "test/tpm_test/README.md",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "3d8d0bfd4adfa4a5075cb96d75e29d9fef5efa08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d8f8ba_184f48bd",
+        "filename": "test/tpm_test/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-19T17:07:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c741ab5a_06d9933d",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "3d8d0bfd4adfa4a5075cb96d75e29d9fef5efa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
