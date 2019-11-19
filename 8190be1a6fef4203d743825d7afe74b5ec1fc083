@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "777cbf9f_e96f0ad3",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-11-19T21:54:58Z",
+      "side": 1,
+      "message": "This is not exactly zero processing, does that matter? Notably the SHUFFLE_BITS adds some twists, CHURN just keeps xoring into accumulator until read.\n\nAlso, how do results look when UPPER_LIMIT is set to 0 (i.e. only use lsb of the measured collapse time).",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "8190be1a6fef4203d743825d7afe74b5ec1fc083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f299fb64_f055ad99",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-11-19T21:54:58Z",
+      "side": 1,
+      "message": "I take it this command is just to get one instance of this silicon generation qualified, for certification of the whole generation? You can do that w/ naked code, i.e. no cr50 etc, just same configuration and full speed dump to spi. Such program exists (for internal trng qual reasons..)",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "8190be1a6fef4203d743825d7afe74b5ec1fc083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
