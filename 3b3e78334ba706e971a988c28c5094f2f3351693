@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7dde5e_3f3f2260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-19T20:34:31Z",
+      "side": 1,
+      "message": "The granularity can be much coarser. We can do something like:\n\n\tready_state_holdoff_timer \u003d get_time().val\n\t\t+ SNK_READY_HOLD_OFF_US\n\t\t+ (get_time().le \u0026 0xf) * 12 * MSEC;",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "3b3e78334ba706e971a988c28c5094f2f3351693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
