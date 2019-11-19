@@ -22,6 +22,30 @@
       "revId": "7c6f29e9c69df1c2be0be07913c2d29d02af3876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253190e7_2faecf57",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-11-19T01:19:13Z",
+      "side": 1,
+      "message": "Actually it still has the bitmask meaning: please take a look at these twos about the use case as bit-mask.\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/tpm2/+/1892419.\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/tpm2/+/1893681\n\nThe existing TPM vendor command header of ours has a header like:\n    | Tag(2B) | Length (4B) | Command (4B, 0x2000 0000) | sub-command (2B) | body |\n\nIn Fido Command supporting patches, I add another case, which is named \u0027TPM extended command\u0027.\nThe header is like:\n    | Tag(2B) | Length (4B) | Command (4B, 0x2000 XXXX) | body |\n                                                  ^^^^\n                                                  (TPM Command Code in 2B)",
+      "parentUuid": "3851df8f_712953a2",
+      "range": {
+        "startLine": 646,
+        "startChar": 11,
+        "endLine": 646,
+        "endChar": 33
+      },
+      "revId": "7c6f29e9c69df1c2be0be07913c2d29d02af3876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
