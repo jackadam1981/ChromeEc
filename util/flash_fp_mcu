@@ -182,6 +182,7 @@ flash_fp_mcu_stm32() {
   # load spidev (fail on cros-ec-spi first to change modalias)
   echo "${spiid}" > /sys/bus/spi/drivers/cros-ec-spi/bind 2>/dev/null
   echo "${spiid}" > /sys/bus/spi/drivers/spidev/bind
+  sleep 0.1
 
   local attempt=0
   local cmd_exit_status=1
