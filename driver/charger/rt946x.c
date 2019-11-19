@@ -131,6 +131,8 @@ static const unsigned char mt6370_val_en_hidden_mode[] = {
 };
 #endif /* CONFIG_CHARGER_MT6370 */
 
+/* cached current Ichg config */
+static int curr_ichg;
 /* cached current Ieoc config */
 static uint32_t curr_ieoc;
 
@@ -311,6 +313,43 @@ static int mt6370_enable_hidden_mode(int en)
 
 out:
 	mutex_unlock(&hidden_mode_lock);
+	return rv;
+}
+
+/* Vsys short protection:
+ * When the system is charging at 500mA, and if Isys > 3600mA, the
+ * power path will be turned off and cause the system shutdown.
+ * When Ichg < 400mA, then power path is roughly 1/8 of the original.
+ * When Isys > 3600mA, this cause the voltage between Vbat and Vsys too
+ * huge (Vbat - Vsys > Vsys short portection) and turns off the power
+ * path.
+ * To workaround this,
+ * 1. disable Vsys short protection when Ichg is set below 900mA
+ * 2. forbids Ichg <= 400mA (this is done natually on mt6370, since mt6370's
+ *    minimum current is 512)
+ */
+static int mt6370_ichg_workaround(int new_ichg)
+{
+	int rv = EC_SUCCESS;
+
+	if (!IS_ENABLED(RCONFIG_CHARGER_RT9466) &&
+	    !IS_ENABLED(CONFIG_CHARGER_MT6370))
+		return EC_SUCCESS;
+
+	mt6370_enable_hidden_mode(1);
+
+	/* disable Vsys protect if if the new ichg is below 900mA */
+	if (curr_ichg >= 900 && new_ichg < 900)
+		rv = rt946x_update_bits(RT946X_REG_CHGHIDDENCTRL7,
+					RT946X_MASK_HIDDENCTRL7_VSYS_PROTECT,
+					0);
+	/* enable Vsys protect if the new ichg is above 900mA */
+	else if (new_ichg >= 900 && curr_ichg < 900)
+		rv = rt946x_update_bits(RT946X_REG_CHGHIDDENCTRL7,
+					RT946X_MASK_HIDDENCTRL7_VSYS_PROTECT,
+					RT946X_ENABLE_VSYS_PROTECT);
+
+	mt6370_enable_hidden_mode(0);
 	return rv;
 }
 #endif /* CONFIG_CHARGER_MT6370 */
@@ -794,6 +833,11 @@ int charger_set_current(int current)
 	if (IS_ENABLED(CONFIG_CHARGER_MT6370))
 		current = MAX(500, current);
 
+#ifdef CONFIG_CHARGER_MT6370
+	rv = mt6370_ichg_workaround(current);
+	if (rv)
+		return rv;
+#endif
 
 	reg_icc = rt946x_closest_reg(info->current_min, info->current_max,
 				     info->current_step, current);
@@ -805,6 +849,9 @@ int charger_set_current(int current)
 
 	if (IS_ENABLED(CONFIG_CHARGER_RT9466) ||
 	    IS_ENABLED(CONFIG_CHARGER_MT6370)) {
+		/* store Ichg setting */
+		charger_get_current(&curr_ichg);
+
 		/*
 		 * workaround to make IEOC accurate:
 		 * witht normal charging (ICC >= 900mA), the power path is fully
@@ -831,10 +878,6 @@ int charger_get_voltage(int *voltage)
 	int rv;
 	int val = 0;
 	const struct charger_info * const info = charger_get_info();
-
-
-	/* Need 5ms to ramp */
-	msleep(5);
 
 	rv = rt946x_read8(RT946X_REG_CHGCTRL4, &val);
 	if (rv)
@@ -895,6 +938,10 @@ int charger_post_init(void)
 	rv = rt946x_select_ilmt(RT946X_ILMTSEL_AICR);
 	if (rv)
 		return rv;
+
+	/* Need 5ms to ramp */
+	msleep(5);
+
 	/* Disable ILIM pin */
 	rv = rt946x_enable_ilim_pin(0);
 	if (rv)
