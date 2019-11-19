@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3abb345_10bb566a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-19T08:20:50Z",
+      "side": 1,
+      "message": "From the if condition around line 806, This should be IS_ENABLED(mt6370) \u0026\u0026 IS_ENABLED(rt9466).",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 38
+      },
+      "revId": "277b8b8942a5498fd4c13cf81a03a59b6867b7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9054834_b797de4c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-19T08:20:50Z",
+      "side": 1,
+      "message": "Why not just set curr_ieoc \u003d ieoc to save one i2c_read? \nOr curr_ieoc \u003d rt946x_closest_reg(...) if you want the exact value.",
+      "revId": "277b8b8942a5498fd4c13cf81a03a59b6867b7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
