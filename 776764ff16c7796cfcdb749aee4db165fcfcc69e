@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43b6fdfc_11ca227b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 12
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-19T19:23:37Z",
+      "side": 1,
+      "message": "This was probably compensating for the sleep needed in https://crrev.com/c/1925174, but since we do not hit this often(now at all), I think it is okay to leave as a large delay.",
+      "range": {
+        "startLine": 209,
+        "startChar": 11,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "776764ff16c7796cfcdb749aee4db165fcfcc69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
