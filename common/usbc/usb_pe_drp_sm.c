@@ -105,8 +105,6 @@
 #define PE_FLAGS_WAITING_DR_SWAP             BIT(24)
 /* FLAG to track if port partner is dualrole capable */
 #define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(25)
-/* FLAG is set when an AMS is initiated locally. ie. AP requested a PR_SWAP */
-#define PE_FLAGS_LOCALLY_INITIATED_AMS       BIT(26)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -1381,6 +1379,7 @@ static void pe_src_transition_supply_run(int port)
 			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
 			PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+
 			set_state_pe(port, PE_SRC_READY);
 		} else {
 			/* NOTE: First pass through this code block */
@@ -1408,8 +1407,6 @@ static void pe_src_transition_supply_run(int port)
 static void pe_src_ready_entry(int port)
 {
 	print_current_state(port);
-
-	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 
 	/*
 	 * If the transition into PE_SRC_Ready is the result of Protocol Error
@@ -1445,7 +1442,6 @@ static void pe_src_ready_run(int port)
 	 *   1) The DiscoverIdentityTimer times out.
 	 */
 	if (get_time().val > pe[port].discover_port_identity_timer) {
-		PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 		pe_start_port_discovery(port);
 		return;
 	}
@@ -1489,7 +1485,6 @@ static void pe_src_ready_run(int port)
 		} else if (PE_CHK_DPM_REQUEST(port,
 					DPM_REQUEST_DISCOVER_IDENTITY)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DISCOVER_IDENTITY);
-			PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 
 			pe[port].partner_type = CABLE;
 			pe[port].vdm_cmd = DISCOVER_IDENTITY;
@@ -1500,8 +1495,6 @@ static void pe_src_ready_run(int port)
 			pe[port].vdm_cnt = 1;
 			set_state_pe(port, PE_VDM_REQUEST);
 		}
-
-		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		return;
 	}
 
@@ -1608,9 +1601,8 @@ static void pe_src_ready_exit(int port)
 	 * notify the Protocol Layer that the first Message in an AMS will
 	 * follow.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS))
+	if (!PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS))
 		prl_start_ams(port);
-
 }
 
 /**
@@ -2062,6 +2054,7 @@ static void pe_snk_transition_sink_run(int port)
 		if ((PD_HEADER_CNT(emsg[port].header) == 0) &&
 			   (PD_HEADER_TYPE(emsg[port].header) ==
 			   PD_CTRL_PS_RDY)) {
+
 			set_state_pe(port, PE_SNK_READY);
 			return;
 		}
@@ -2103,7 +2096,6 @@ static void pe_snk_ready_entry(int port)
 {
 	print_current_state(port);
 
-	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 	prl_end_ams(port);
 
@@ -2146,7 +2138,6 @@ static void pe_snk_ready_run(int port)
 	 *   1) The PortDiscoverIdentityTimer times out.
 	 */
 	if (get_time().val > pe[port].discover_port_identity_timer) {
-		PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 		pe_start_port_discovery(port);
 		return;
 	}
@@ -2189,7 +2180,6 @@ static void pe_snk_ready_run(int port)
 			PE_CLR_DPM_REQUEST(port,
 					   DPM_REQUEST_DISCOVER_IDENTITY);
 
-			PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 			pe[port].partner_type = CABLE;
 			pe[port].vdm_cmd = DISCOVER_IDENTITY;
 			pe[port].vdm_data[0] = VDO(
@@ -2204,7 +2194,6 @@ static void pe_snk_ready_run(int port)
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GET_SNK_CAPS);
 			set_state_pe(port, PE_DR_SNK_GET_SINK_CAP);
 		}
-		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		return;
 	}
 
@@ -2301,16 +2290,6 @@ static void pe_snk_ready_run(int port)
 			}
 		}
 	}
-}
-
-static void pe_snk_ready_exit(int port)
-{
-	/*
-	 * If the Sink is initiating an AMS then notify the Protocol Layer
-	 * that the first Message in the AMS will follow
-	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS))
-		prl_start_ams(port);
 }
 
 /**
@@ -5061,7 +5040,6 @@ static const struct usb_state pe_states[] = {
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
-		.exit  = pe_snk_ready_exit,
 	},
 	[PE_SNK_HARD_RESET] = {
 		.entry = pe_snk_hard_reset_entry,
