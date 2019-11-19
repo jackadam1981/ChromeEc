@@ -18,7 +18,6 @@
 #include "driver/battery/max17055.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
-#include "driver/ioexpander_it8801.h"
 #include "driver/sync.h"
 #include "driver/tcpm/fusb302.h"
 #include "driver/usb_mux/it5205.h"
@@ -28,7 +27,11 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+<<<<<<< HEAD   (22ac80 jacuzzi: remove CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
 #include "i2c_bitbang.h"
+=======
+#include "it8801.h"
+>>>>>>> CHANGE (b6e367 cleanup: Segregate ioexpander related drivers in ioexpander )
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
