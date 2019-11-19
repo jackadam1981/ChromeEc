@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6787f3e_7211e10e",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-19T22:28:29Z",
+      "side": 1,
+      "message": "So far this patch is for measurement only. Dom mentioned they turned-off post-processing for TRNG to pass FIPS cert,so do I -  plan to test it soon with POST_PROCESSING_CTRL \u003d 0 \u0026 SLICE_MAX_UPPER_LIMIT \u003d 0.\nI need to get entropy assessment for whatever TRNG mode is used to initialize  \u0026 reseed DRBG properly. Will be more updates.",
+      "parentUuid": "777cbf9f_e96f0ad3",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "8190be1a6fef4203d743825d7afe74b5ec1fc083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f299fb64_f055ad99",
         "filename": "chip/g/trng.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "8190be1a6fef4203d743825d7afe74b5ec1fc083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc65a46d_c370433f",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-19T22:28:29Z",
+      "side": 1,
+      "message": "this command and scripts are to make it easier for evaluation lab to confirm entropy assessment.",
+      "parentUuid": "f299fb64_f055ad99",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "8190be1a6fef4203d743825d7afe74b5ec1fc083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
