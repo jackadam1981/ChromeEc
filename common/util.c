@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "timer.h"
 #include "util.h"
 
 __stdlib_compat size_t strlen(const char *s)
@@ -550,6 +551,33 @@ bool bytes_are_trivial(const uint8_t *buffer, size_t size)
 		result1 |= buffer[i] ^ 0xff;
 	}
 	return (result0 == 0) || (result1 == 0);
+}
+
+/*
+ * xorshift32 for pseudorandomness
+ *
+ * Taken from https://en.wikipedia.org/wiki/Xorshift
+ */
+static uint32_t xorshift32_state;
+static uint32_t xorshift32(void)
+{
+	/* Algorithm "xor" from p. 4 of Marsaglia, "Xorshift RNGs" */
+	uint32_t x = xorshift32_state;
+
+	x ^= x << 13;
+	x ^= x >> 17;
+	x ^= x << 5;
+	return xorshift32_state = x;
+}
+
+uint32_t prng_get(void)
+{
+	/* The state word must be initialized to non-zero */
+	if (!xorshift32_state)
+		xorshift32_state = get_time().le.lo & 0xffffffff;
+
+	xorshift32();
+	return xorshift32_state;
 }
 
 /****************************************************************************/
