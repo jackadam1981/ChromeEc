@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd3c8072_5fef10be",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-19T16:52:35Z",
+      "side": 1,
+      "message": "Not needed",
+      "revId": "cf035e49daa4f3b83d7bfc86dba9b88327ca9737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cb5a58_61656e7b",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-19T16:52:35Z",
+      "side": 1,
+      "message": "Just replace this with:\nif (IS_ENABLED(CONFIG_ACCEL_FIFO) \u0026\u0026 IS_ENABLED(CONFIG_ACCEL_INTERRUPTS))",
+      "revId": "cf035e49daa4f3b83d7bfc86dba9b88327ca9737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6e0dcc6_dd11a432",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-19T16:52:35Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "cf035e49daa4f3b83d7bfc86dba9b88327ca9737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481f8e42_ef465d44",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-19T16:52:35Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "cf035e49daa4f3b83d7bfc86dba9b88327ca9737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
