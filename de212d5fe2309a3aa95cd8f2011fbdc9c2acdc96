@@ -123,6 +123,24 @@
       "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15898311_d95e85f8",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-19T17:15:10Z",
+      "side": 1,
+      "message": "After a second look, would it make more sense to merge the kasa CL at https://crrev.com/c/1867226/11 with the magnetometer code?",
+      "parentUuid": "ae374891_efeb97ac",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
