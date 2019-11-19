@@ -832,6 +832,10 @@ int charger_get_voltage(int *voltage)
 	int val = 0;
 	const struct charger_info * const info = charger_get_info();
 
+
+	/* Need 5ms to ramp */
+	msleep(5);
+
 	rv = rt946x_read8(RT946X_REG_CHGCTRL4, &val);
 	if (rv)
 		return rv;
