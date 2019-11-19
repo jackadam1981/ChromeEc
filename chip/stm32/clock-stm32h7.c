@@ -33,10 +33,11 @@
  */
 #define LPTIM_PRESCALER_LOG2 2
 /*
- * LPTIM_PRESCALER and LPTIM_PERIOD_US have to be signed, because we compare
- * them to an int to decide whether to go to deep sleep. Simply using BIT()
- * makes them unsigned, which causes a bug in deep sleep behavior.
- * TODO(b/140538084): Explain exactly what the bug is.
+ * LPTIM_PRESCALER and LPTIM_PERIOD_US have to be signed, because next_delay
+ * in __idle() is an int and can be negative, in which case the unsigned
+ * LPTIM_PERIOD_US would make the comparison logic wrong in __idle(), and
+ * enter STOP mode when we are not supposed to. In that case, we would
+ * oversleep and fail to reset the watchdog.
  */
 #define LPTIM_PRESCALER ((int)BIT(LPTIM_PRESCALER_LOG2))
 #define LPTIM_PERIOD_US (SECOND / (STM32_LSI_CLOCK / LPTIM_PRESCALER))
