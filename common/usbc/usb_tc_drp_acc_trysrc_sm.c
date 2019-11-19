@@ -3103,6 +3103,7 @@ static void tc_try_wait_snk_entry(const int port)
 {
 	print_current_state(port);
 
+	tc[port].pd_enable = 0;
 	tc[port].cc_state = PD_CC_UNSET;
 	tc[port].try_wait_debounce = get_time().val + PD_T_CC_DEBOUNCE;
 }
