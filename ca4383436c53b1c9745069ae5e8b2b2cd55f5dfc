@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e447dd3_dd695daf",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "This is a TODO in gpio.inc DP_HOT_PLUG_DET_R.\n\nStill not sure what is the best solution. If the timing of the approach of EC host event works, would prefer the EC host event, that saves a GPIO and simplifies the EC logic. Regenerating HPD is as a backup plan.",
+      "parentUuid": "0ba4dc22_725683f7",
+      "range": {
+        "startLine": 284,
+        "startChar": 17,
+        "endLine": 284,
+        "endChar": 35
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba50e78c_ce76929d",
         "filename": "board/trogdor/gpio.inc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-18T22:04:30Z",
       "side": 1,
       "message": "I think this is at PIN(B, 1)?",
+      "range": {
+        "startLine": 15,
+        "startChar": 30,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d67dce_017571de",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "Just checked that this net is wired to both GPIO40 and GPIOB1. Will ask Jim to fix the schematic.",
+      "parentUuid": "ba50e78c_ce76929d",
       "range": {
         "startLine": 15,
         "startChar": 30,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "04b7964e_536dd5de",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "Moved it below to a new sensor interrupt section.",
+      "parentUuid": "97d791f0_6e48f800",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 129
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ea6850_340c86a0",
         "filename": "board/trogdor/gpio.inc",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2019-11-18T22:04:30Z",
       "side": 1,
       "message": "Supposed to be GPIO_INT()? Maybe move the other sensor interrupt here?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeba2618_0bf8adbb",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "Checked other platforms. It is like that, not triggering any interrupt.\n\namsten@, is it needed to be an interrupt?",
+      "parentUuid": "e3ea6850_340c86a0",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fd8b3267_af94e21b",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "The net name on EC side is DP_HOT_PLUG_DET_R.",
+      "parentUuid": "2dd26afe_60236b98",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f863ad9_203bc73a",
         "filename": "board/trogdor/gpio.inc",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2019-11-18T22:04:30Z",
       "side": 1,
       "message": "This is required to be named this for EC generic code?",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ce83ae_c1e5cb1a",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "I saw the name of this net was changed. Updated it.\n\nBut Trogdor doesn\u0027t need to switch this port between CDP and SDP, i.e. always enabled (CDP), so no common code controls this GPIO actually.",
+      "parentUuid": "9f863ad9_203bc73a",
       "range": {
         "startLine": 93,
         "startChar": 5,
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "761a6dda_8f0dcf8a",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82db70e_5c446cc8",
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f938167_3b991e55",
         "filename": "board/trogdor/usb_pd_policy.c",
         "patchSetId": 4
@@ -177,6 +339,30 @@
       "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332d281c_c3392ec3",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-19T10:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f938167_3b991e55",
+      "range": {
+        "startLine": 353,
+        "startChar": 46,
+        "endLine": 353,
+        "endChar": 52
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
