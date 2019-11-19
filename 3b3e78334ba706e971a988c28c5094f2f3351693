@@ -22,6 +22,30 @@
       "revId": "3b3e78334ba706e971a988c28c5094f2f3351693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce68e86_81446543",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-19T23:25:49Z",
+      "side": 1,
+      "message": "That\u0027s true. But widening the jitter range also helps and further reduces the likelihood of collisions instead of the fixed timing intervals.",
+      "parentUuid": "1c7dde5e_3f3f2260",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "3b3e78334ba706e971a988c28c5094f2f3351693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
