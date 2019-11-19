@@ -180,6 +180,11 @@ bool bytes_are_trivial(const uint8_t *buffer, size_t size);
  */
 void reverse(void *dest, size_t len);
 
+/**
+ * Get a cryptographically INSECURE pseudorandom 32-bit number. (Uses xorshift)
+ */
+uint32_t prng_get(void);
+
 
 /****************************************************************************/
 /* Conditional stuff.

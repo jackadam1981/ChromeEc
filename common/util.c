@@ -552,6 +552,35 @@ bool bytes_are_trivial(const uint8_t *buffer, size_t size)
 	return (result0 == 0) || (result1 == 0);
 }
 
+/*
+ * xorshift32 for pseudorandomness
+ *
+ * Taken from https://en.wikipedia.org/wiki/Xorshift
+ */
+struct xorshift32_state {
+	uint32_t a;
+};
+
+/* The state word must be initialized to non-zero */
+static struct xorshift32_state state = { 0xdeadbeef };
+
+static uint32_t xorshift32(struct xorshift32_state *state)
+{
+	/* Algorithm "xor" from p. 4 of Marsaglia, "Xorshift RNGs" */
+	uint32_t x = state->a;
+
+	x ^= x << 13;
+	x ^= x >> 17;
+	x ^= x << 5;
+	return state->a = x;
+}
+
+uint32_t prng_get(void)
+{
+	xorshift32(&state);
+	return state.a;
+}
+
 /****************************************************************************/
 /* stateful conditional stuff */
 
