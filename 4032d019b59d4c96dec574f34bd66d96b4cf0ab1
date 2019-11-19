@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f3b22eb_f1cb3caf",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-19T19:54:09Z",
+      "side": 1,
+      "message": "Why do we need a struct? Can we simply use uint32_t or typedef?",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 2
+      },
+      "revId": "4032d019b59d4c96dec574f34bd66d96b4cf0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839006a3_1a83d4f7",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-19T19:54:09Z",
+      "side": 1,
+      "message": "This is deterministic. Is it what we need? Shall we mix it with get_time?\n\n  return xorshift32(get_time() \u0026 0xffffffff);\n\nand change xorshift32 to\n\n  static uint32_t xorshift32(uint32_t seed)",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 16
+      },
+      "revId": "4032d019b59d4c96dec574f34bd66d96b4cf0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
