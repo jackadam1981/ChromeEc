@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9870536f_46c552c6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-19T22:13:51Z",
+      "side": 1,
+      "message": "No, I obviously missed this. The name has been changed.",
+      "parentUuid": "9dd7a1b8_5139d657",
+      "revId": "9f880be466d981b30ad43db7ec0cfd52ab423559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2b3abe3_bd900a64",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6a87ec74_c0c3ee39",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-19T22:13:51Z",
+      "side": 1,
+      "message": "I think my rebasing is getting mixed up. I remember changing this.",
+      "parentUuid": "f2b3abe3_bd900a64",
+      "revId": "9f880be466d981b30ad43db7ec0cfd52ab423559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40071e1f_bdb1eb37",
         "filename": "fuzz/usb_pd_fuzz.c",
         "patchSetId": 17
@@ -68,6 +104,24 @@
       "revId": "9f880be466d981b30ad43db7ec0cfd52ab423559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19d3ac3_8ab9f215",
+        "filename": "fuzz/usb_pd_fuzz.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-19T22:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40071e1f_bdb1eb37",
+      "revId": "9f880be466d981b30ad43db7ec0cfd52ab423559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
