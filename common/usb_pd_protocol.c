@@ -2590,6 +2590,13 @@ void pd_interrupt_handler_task(void *p)
 {
 	const int port = (int) p;
 	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
+<<<<<<< HEAD   (8b3bd4 usb_pd_policy: Make a lot of objects common)
+=======
+	struct {
+		int count;
+		timestamp_t time;
+	} storm_tracker[CONFIG_USB_PD_PORT_MAX_COUNT] = {};
+>>>>>>> CHANGE (044f15 usbc: fix storm tracker overflow issue)
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
 
@@ -2612,9 +2619,39 @@ void pd_interrupt_handler_task(void *p)
 			 */
 			while ((tcpc_get_alert_status() & port_mask) &&
 			       pd_is_port_enabled(port)) {
+<<<<<<< HEAD   (8b3bd4 usb_pd_policy: Make a lot of objects common)
+=======
+				timestamp_t now;
+
+>>>>>>> CHANGE (044f15 usbc: fix storm tracker overflow issue)
 				tcpc_alert(port);
+<<<<<<< HEAD   (8b3bd4 usb_pd_policy: Make a lot of objects common)
 				/* Give other tasks a chance to run. */
 				usleep(3*MSEC);
+=======
+
+				now = get_time();
+				if (timestamp_expired(
+					storm_tracker[port].time, &now)) {
+					/* Reset timer into future */
+					storm_tracker[port].time.val =
+						now.val + ALERT_STORM_INTERVAL;
+
+					/*
+					 * Start at 1 since we are processing
+					 * an interrupt now
+					 */
+					storm_tracker[port].count = 1;
+				} else if (++storm_tracker[port].count >
+				    ALERT_STORM_MAX_COUNT) {
+					CPRINTS("C%d Interrupt storm detected. "
+						"Disabling port for 5 seconds.",
+						port);
+
+					pd_set_suspend(port, 1);
+					pd_deferred_resume(port);
+				}
+>>>>>>> CHANGE (044f15 usbc: fix storm tracker overflow issue)
 			}
 		}
 	}

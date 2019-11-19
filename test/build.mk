@@ -60,6 +60,12 @@ test-list-host += shmalloc
 test-list-host += system
 test-list-host += thermal
 test-list-host += timer_dos
+<<<<<<< HEAD   (8b3bd4 usb_pd_policy: Make a lot of objects common)
+=======
+test-list-host += uptime
+test-list-host += usb_common
+test-list-host += usb_pd_int
+>>>>>>> CHANGE (044f15 usbc: fix storm tracker overflow issue)
 test-list-host += usb_pd
 test-list-host += usb_pd_giveback
 test-list-host += usb_pd_rev30
@@ -120,6 +126,12 @@ system-y=system.o
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o
+<<<<<<< HEAD   (8b3bd4 usb_pd_policy: Make a lot of objects common)
+=======
+uptime-y=uptime.o
+usb_common-y=usb_common_test.o
+usb_pd_int-y=usb_pd_int.o
+>>>>>>> CHANGE (044f15 usbc: fix storm tracker overflow issue)
 usb_pd-y=usb_pd.o
 usb_pd_giveback-y=usb_pd.o
 usb_pd_rev30-y=usb_pd.o

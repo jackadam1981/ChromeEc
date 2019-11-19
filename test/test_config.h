@@ -191,6 +191,134 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_ALS_LIGHTBAR_DIMMING 0
 #endif
 
+<<<<<<< HEAD   (8b3bd4 usb_pd_policy: Make a lot of objects common)
+=======
+#ifdef TEST_USB_COMMON
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H3)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H2)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H1)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H0)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_PRL)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_SM_FRAMEWORK
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif
+
+#if defined(TEST_USB_PE_DRP)
+#define CONFIG_TEST_USB_PE_SM
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PID 0x5036
+#define CONFIG_USB_POWER_DELIVERY
+#undef CONFIG_USB_PRL_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USBC_VCONN
+#define PD_VCONN_SWAP_DELAY 5000 /* us */
+#define CONFIG_USB_PD_DISCHARGE_GPIO
+#endif
+
+/* Common TypeC tests defines */
+#if defined(TEST_USB_TYPEC_VPD) || \
+	defined(TEST_USB_TYPEC_CTVPD)
+#define CONFIG_USB_PID 0x5036
+#define VPD_HW_VERSION 0x0001
+#define VPD_FW_VERSION 0x0001
+#define USB_BCD_DEVICE 0
+
+/* Vbus impedance in milliohms */
+#define VPD_VBUS_IMPEDANCE 65
+
+/* GND impedance in milliohms */
+#define VPD_GND_IMPEDANCE 33
+
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_SM_FRAMEWORK
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_SW_CRC
+#endif /* Common TypeC test defines */
+
+#ifdef TEST_USB_TYPEC_VPD
+#define CONFIG_USB_TYPEC_VPD
+#endif
+
+#ifdef TEST_USB_TYPEC_CTVPD
+#define CONFIG_USB_TYPEC_CTVPD
+#endif
+
+#ifdef TEST_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_POWER_DELIVERY
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#endif
+
+#ifdef TEST_USB_PD_INT
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif
+
+>>>>>>> CHANGE (044f15 usbc: fix storm tracker overflow issue)
 #if defined(TEST_USB_PD) || defined(TEST_USB_PD_GIVEBACK) || \
 	defined(TEST_USB_PD_REV30)
 #define CONFIG_USB_POWER_DELIVERY
