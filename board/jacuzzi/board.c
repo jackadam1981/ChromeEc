@@ -237,12 +237,16 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP,
 
 static void board_spi_disable(void)
 {
+	cputs(CC_ACCEL, "board_spi_disable");
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
 
 	/* Disable clocks to SPI2 module */
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
 
 	gpio_config_module(MODULE_SPI_MASTER, 0);
+	gpio_set_flags(GPIO_EC_SENSOR_SPI_CK, GPIO_OUT_LOW);
+	gpio_set_level(GPIO_EC_SENSOR_SPI_CK, 0);
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
