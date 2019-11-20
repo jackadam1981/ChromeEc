@@ -150,8 +150,35 @@ int hmac_drbg_generate(struct drbg_ctx *ctx,
 		       void *out, size_t out_len,
 		       const void *input, size_t input_len);
 /* Generate p256, with no additional input. */
-void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
+int hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
 void drbg_exit(struct drbg_ctx *ctx);
+
+
+/**
+ * Retrieve a 32 bit random value.
+ **/
+uint32_t trng_rand(void);
+
+/**
+ * Output len random bytes into buffer.
+ **/
+void trng_bytes(void *buffer, size_t len);
+
+/**
+ * store full (condensed) entropy into buffer.
+ */
+void get_entropy(void *buffer, size_t len);
+
+/**
+ * get 32 bits of full (condensed) entropy.
+ */
+uint32_t get_entropy32(void);
+
+/* initialize cr50-wide DRBG replacing rand */
+void cr50_drbg_init(void);
+
+/* mark cr50-wide DRBG as not initialized */
+void cr50_drbg_init_clear(void);
 
 /*
  * Accelerated p256. FIPS PUB 186-4

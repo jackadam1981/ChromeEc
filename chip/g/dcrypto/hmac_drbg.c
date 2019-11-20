@@ -89,12 +89,14 @@ void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx, const p256_int *key,
 
 void hmac_drbg_init_rand(struct drbg_ctx *ctx, size_t nbits)
 {
-	int i;
 	uint32_t x[(nbits + 31) / 32];
-
+#ifdef BOARD_CR50
+	get_entropy(x, sizeof(x));
+#else
+	int i;
 	for (i = 0; i < ARRAY_SIZE(x); ++i)
 		x[i] = rand();
-
+#endif
 	hmac_drbg_init(ctx, &x, sizeof(x), NULL, 0, NULL, 0);
 }
 
@@ -111,8 +113,12 @@ int hmac_drbg_generate(struct drbg_ctx *ctx,
 		       void *out, size_t out_len,
 		       const void *input, size_t input_len)
 {
-	/* TODO(louiscollard): Assert maximum output length? */
-
+	/* According to NIST SP 800-90A rev 1 B.2
+	 * Maximum number of bits per request = 7500 bits
+	 * Reseed_interval = 10 000 requests.
+	 */
+	if (out_len > 7500 / 8)
+		return 1;
 	if (ctx->reseed_counter >= 10000)
 		return 2;
 
@@ -135,11 +141,9 @@ int hmac_drbg_generate(struct drbg_ctx *ctx,
 	return 0;
 }
 
-void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out)
+int hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out)
 {
-	hmac_drbg_generate(ctx,
-			   k_out->a, sizeof(k_out->a),
-			   NULL, 0);
+	return hmac_drbg_generate(ctx, k_out->a, sizeof(k_out->a), NULL, 0);
 }
 
 void drbg_exit(struct drbg_ctx *ctx)
@@ -147,6 +151,7 @@ void drbg_exit(struct drbg_ctx *ctx)
 	always_memset(ctx->k,  0x00, sizeof(ctx->k));
 	always_memset(ctx->v,  0x00, sizeof(ctx->v));
 }
+
 
 #ifdef CRYPTO_TEST_SETUP
 

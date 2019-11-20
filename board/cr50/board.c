@@ -718,6 +718,7 @@ static void board_init(void)
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
+	cr50_drbg_init_clear();
 	maybe_trigger_ite_sync();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
