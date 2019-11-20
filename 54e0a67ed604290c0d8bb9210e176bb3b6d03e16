@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a8c8c0a_ef51350d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:06:10Z",
+      "side": 1,
+      "message": "does this condition need to change? the dbg snks seems to care about the TC_FLAGS_POWER_OFF_SNK flag",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 45
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1e1404_f07483fb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:06:10Z",
+      "side": 1,
+      "message": "we don\u0027t need to do this because of the super state right?",
+      "range": {
+        "startLine": 2143,
+        "startChar": 2,
+        "endLine": 2150,
+        "endChar": 51
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4e5b9b_4a8271c6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:06:10Z",
+      "side": 1,
+      "message": "there is a lot of duplication here, can we reduce that duplicate code like we have done elsewhere?\n\nWe should be able to drop the #ifdef and instead just use if SWAP_IN_PRGRESS since that can never be set if the SM is disabled, right?",
+      "range": {
+        "startLine": 2160,
+        "startChar": 1,
+        "endLine": 2198,
+        "endChar": 45
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6df86b_acd61f22",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2212,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:06:10Z",
+      "side": 1,
+      "message": "why are we using #ifdef guards?\n\nWe can we remove the guards altogether since the condition should never be true for the no PE case?\n\n\nDo we really ever expect to run the TypeC layer without the Policy engine layer compiled in? It seems like we send a lot of extra ifdef complexity for something that is never going to occur.",
+      "range": {
+        "startLine": 2212,
+        "startChar": 0,
+        "endLine": 2212,
+        "endChar": 23
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e621507_ab10c4c4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2411,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:06:10Z",
+      "side": 1,
+      "message": "why do we need this if guard, don\u0027t the presence of the flags indicate that prl is running?",
+      "range": {
+        "startLine": 2411,
+        "startChar": 1,
+        "endLine": 2411,
+        "endChar": 50
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe363d5_4ade0dc7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:06:10Z",
+      "side": 1,
+      "message": "this Vconn comment doesn\u0027t apply.\n\n----\n\nShould we clear the DO PR SWAP flag in the run method instead? I don\u0027t see a reason we need to do it in the exit (instead of run) here.",
+      "range": {
+        "startLine": 2437,
+        "startChar": 31,
+        "endLine": 2437,
+        "endChar": 36
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
