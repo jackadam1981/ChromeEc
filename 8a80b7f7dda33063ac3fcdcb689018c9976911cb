@@ -694,6 +694,24 @@
     },
     {
       "key": {
+        "uuid": "6286b10e_bf8df773",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:31:21Z",
+      "side": 1,
+      "message": "PD_DRP_TOGGLE_ON/PD_DRP_TOGGLE_OFF controls whether auto toggling is on or off not drp toggleing in general. The base CL does not use this FLAG. It was only added to prevent drp toggling when auto toggle is enabled. Perhaps the name of the flags should be changed to PD_DRP_AUTO_TOGGLE_ON and PD_DRP_AUTO_TOGGLE_OFF.",
+      "parentUuid": "313a1114_7473bbe9",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
