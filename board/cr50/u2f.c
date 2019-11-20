@@ -8,6 +8,7 @@
 #include "console.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "fips_rand.h"
 #include "nvmem_vars.h"
 #include "rbox.h"
 #include "registers.h"
@@ -57,9 +58,9 @@ enum touch_state pop_check_presence(int consume)
 /* ---- non-volatile U2F state ---- */
 
 struct u2f_state {
-	uint32_t salt[8];
-	uint32_t salt_kek[8];
-	uint32_t salt_kh[8];
+	uint32_t salt[SHA256_DIGEST_WORDS];
+	uint32_t salt_kek[SHA256_DIGEST_WORDS];
+	uint32_t salt_kh[SHA256_DIGEST_WORDS];
 };
 
 static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
@@ -76,7 +77,7 @@ static int load_state(struct u2f_state *state)
 			return 0;
 
 		/* create random salt */
-		if (!DCRYPTO_ladder_random(state->salt))
+		if (!fips_rand_bytes(state->salt, sizeof(state->salt)))
 			return 0;
 		if (setvar(&k_salt, sizeof(k_salt),
 			   (const uint8_t *)state->salt, sizeof(state->salt)))
@@ -108,7 +109,8 @@ static int load_state(struct u2f_state *state)
 			 * We have never used u2f before - generate
 			 * new seed.
 			 */
-			if (!DCRYPTO_ladder_random(state->salt_kek))
+			if (!fips_rand_bytes(state->salt_kek,
+					     sizeof(state->salt_kek)))
 				return 0;
 		}
 		if (write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK,
@@ -125,7 +127,7 @@ static int load_state(struct u2f_state *state)
 		 * We have never used u2f before - generate
 		 * new seed.
 		 */
-		if (!DCRYPTO_ladder_random(state->salt_kh))
+		if (!fips_rand_bytes(state->salt_kh, sizeof(state->salt_kh)))
 			return 0;
 
 		if (write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT,
@@ -149,6 +151,18 @@ static struct u2f_state *get_state(void)
 	return state_loaded ? &state : NULL;
 }
 
+void u2f_zeroize(void)
+{
+	uint8_t zero[SHA256_DIGEST_SIZE] = {};
+
+	/* wipe content first */
+	setvar(&k_salt, sizeof(k_salt), zero, SHA256_DIGEST_SIZE);
+	/* delete now */
+	setvar(&k_salt, sizeof(k_salt), NULL, 0);
+
+	wipe_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK);
+	wipe_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT);
+}
 /* ---- chip-specific U2F crypto ---- */
 
 static int _derive_key(enum dcrypto_appid appid, const uint32_t input[8],
@@ -157,7 +171,7 @@ static int _derive_key(enum dcrypto_appid appid, const uint32_t input[8],
 	struct APPKEY_CTX ctx;
 	int result;
 
-	/* Setup USR-based application key. */
+	/* Setup USR-based device-unique application key. */
 	if (!DCRYPTO_appkey_init(appid, &ctx))
 		return 0;
 	result = DCRYPTO_appkey_derive(appid, input, output);
@@ -281,7 +295,7 @@ int u2f_gen_kek_seed(int commit)
 	if (!state)
 		return EC_ERROR_UNKNOWN;
 
-	if (!DCRYPTO_ladder_random(state->salt_kek))
+	if (!fips_rand_bytes(state->salt_kek, sizeof(state->salt_kek)))
 		return EC_ERROR_HW_INTERNAL;
 
 	if (write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK, sizeof(state->salt_kek),

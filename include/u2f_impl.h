@@ -94,6 +94,11 @@ int u2f_origin_user_keypair(const uint8_t *key_handle,
  */
 int u2f_gen_kek(const uint8_t *origin, uint8_t *kek, size_t key_len);
 
+/***
+ * Zeroize current U2F keys
+ */
+void u2f_zeroize(void);
+
 /**
  * Generate a hardware derived ECDSA keypair for individual attestation.
  *

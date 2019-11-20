@@ -235,7 +235,9 @@ static int nvmem_find_partition(void)
 	 * is valid. Let's reinitialize the NVMEM - there is nothing else we
 	 * can do.
 	 */
+#ifndef BOARD_CR50
 	CPRINTS("%s: No Legacy Partitions found.", __func__);
+#endif
 	return EC_ERROR_INVALID_CONFIG;
 }
 

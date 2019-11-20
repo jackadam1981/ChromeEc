@@ -9,9 +9,12 @@
 #include "CryptoEngine.h"
 #include "TPMB.h"
 
+#include "fips.h"
+#include "fips_rand.h"
+#include "dcrypto.h"
 #include "trng.h"
 #include "util.h"
-#include "dcrypto.h"
+
 
 #include "cryptoc/p256.h"
 #include "cryptoc/p256_ecdsa.h"
@@ -166,6 +169,9 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	uint32_t count = 0;
 	uint8_t key_bytes[P256_NBYTES];
 	LITE_HMAC_CTX hmac;
+
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
@@ -336,7 +342,7 @@ CRYPT_RESULT _cpri__GetEphemeralEcc(TPMS_ECC_POINT *q, TPM2B_ECC_PARAMETER *d,
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
 
-	rand_bytes(key_bytes, sizeof(key_bytes));
+	fips_rand_bytes(key_bytes, sizeof(key_bytes));
 
 	result = DCRYPTO_p256_key_from_bytes((p256_int *) q->x.b.buffer,
 					(p256_int *) q->y.b.buffer,

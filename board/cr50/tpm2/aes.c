@@ -5,6 +5,7 @@
 
 #include "CryptoEngine.h"
 #include "dcrypto.h"
+#include "fips.h"
 
 #include <assert.h>
 
@@ -18,6 +19,8 @@ CRYPT_RESULT _cpri__AESDecryptCBC(
 {
 	CRYPT_RESULT result;
 
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	if (len == 0)
 		return CRYPT_SUCCESS;
 	assert(key != NULL && iv != NULL && in != NULL && out != NULL);
@@ -37,6 +40,8 @@ CRYPT_RESULT _cpri__AESDecryptCFB(uint8_t *out, uint32_t num_bits,
 				uint8_t *key, uint8_t *iv, uint32_t len,
 				uint8_t *in)
 {
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	if (len == 0)
 		return CRYPT_SUCCESS;
 	assert(key != NULL && iv != NULL && out != NULL && in != NULL);

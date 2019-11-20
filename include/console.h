@@ -150,6 +150,10 @@ void cflush(void);
  */
 void console_has_input(void);
 
+void console_disable_output(void);
+
+void console_enable_output(void);
+
 /**
  * Register a console command handler.
  *

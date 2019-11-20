@@ -236,8 +236,9 @@ test_mockable __keep int main(void)
 	 * into account the time before timer_init(), but it'll at least catch
 	 * the majority of the time.
 	 */
+#ifndef BOARD_CR50
 	CPRINTS("Inits done");
-
+#endif
 	/* Launch task scheduling (never returns) */
 	return task_start();
 }
