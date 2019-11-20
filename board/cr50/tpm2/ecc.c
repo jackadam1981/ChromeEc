@@ -9,9 +9,12 @@
 #include "CryptoEngine.h"
 #include "TPMB.h"
 
+#include "fips.h"
+#include "fips_rand.h"
+#include "dcrypto.h"
 #include "trng.h"
 #include "util.h"
-#include "dcrypto.h"
+
 
 #include "cryptoc/p256.h"
 #include "cryptoc/p256_ecdsa.h"
@@ -70,6 +73,8 @@ CRYPT_RESULT _cpri__EccPointMultiply(
 {
 	int result;
 
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	switch (curve_id) {
 	case TPM_ECC_NIST_P256:
 		if ((n1 != NULL && n2 != NULL) ||
@@ -167,6 +172,9 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	uint8_t key_bytes[P256_NBYTES];
 	LITE_HMAC_CTX hmac;
 
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
+
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
 
@@ -239,10 +247,12 @@ CRYPT_RESULT _cpri__SignEcc(
 	const size_t digest_len = MIN(digest->size, sizeof(digest_local));
 	p256_int p256_digest;
 	int result;
-	struct drbg_ctx drbg;
 
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
+
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 
 	switch (scheme) {
 	case TPM_ALG_ECDSA:
@@ -256,12 +266,10 @@ CRYPT_RESULT _cpri__SignEcc(
 
 		reverse_tpm2b(&d->b);
 
-		hmac_drbg_init_rand(&drbg, 512);
-		result = dcrypto_p256_ecdsa_sign(&drbg,
-				(p256_int *) d->b.buffer,
-				&p256_digest,
-				(p256_int *) r->b.buffer,
-				(p256_int *) s->b.buffer);
+		result = fips_p256_ecdsa_sign((p256_int *)d->b.buffer,
+					      &p256_digest,
+					      (p256_int *)r->b.buffer,
+					      (p256_int *)s->b.buffer);
 		reverse_tpm2b(&d->b);
 
 		r->b.size = sizeof(p256_int);
@@ -290,6 +298,8 @@ CRYPT_RESULT _cpri__ValidateSignatureEcc(
 
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 
 	switch (scheme) {
 	case TPM_ALG_ECDSA:
@@ -335,8 +345,10 @@ CRYPT_RESULT _cpri__GetEphemeralEcc(TPMS_ECC_POINT *q, TPM2B_ECC_PARAMETER *d,
 
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 
-	rand_bytes(key_bytes, sizeof(key_bytes));
+	fips_rand_bytes(key_bytes, sizeof(key_bytes));
 
 	result = DCRYPTO_p256_key_from_bytes((p256_int *) q->x.b.buffer,
 					(p256_int *) q->y.b.buffer,

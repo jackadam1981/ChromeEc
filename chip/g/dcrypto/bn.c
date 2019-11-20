@@ -9,7 +9,9 @@
 
 #include "dcrypto.h"
 #include "internal.h"
-
+#ifdef BOARD_CR50
+#include "fips_rand.h"
+#endif
 #include "trng.h"
 
 #include "cryptoc/util.h"
@@ -1108,7 +1110,11 @@ static int bn_probable_prime(const struct LITE_BIGNUM *p)
 		int i;
 
 		/* pick random A, such that A < p */
+#ifdef BOARD_CR50
+		fips_rand_bytes(A_buf, bn_size(&A));
+#else
 		rand_bytes(A_buf, bn_size(&A));
+#endif
 		for (i = A.dmax - 1; i >= 0; i--) {
 			while (BN_DIGIT(&A, i) > BN_DIGIT(p, i))
 				BN_DIGIT(&A, i) = rand();

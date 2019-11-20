@@ -5,6 +5,9 @@
 
 #include "dcrypto.h"
 #include "internal.h"
+#ifdef BOARD_CR50
+#include "fips_rand.h"
+#endif
 
 #include "trng.h"
 #include "util.h"
@@ -406,6 +409,9 @@ static int pkcs1_pss_pad(uint8_t *padded, uint32_t padded_len,
 	HASH_update(&ctx, padded, 8);
 	HASH_update(&ctx, in, in_len);
 	/* Pilfer bits of output for temporary use. */
+#ifdef BOARD_CR50
+	fips_rand_bytes(padded, salt_len);
+#endif
 	rand_bytes(padded, salt_len);
 	HASH_update(&ctx, padded, salt_len);
 

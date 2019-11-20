@@ -954,7 +954,7 @@ int DCRYPTO_appkey_init(enum dcrypto_appid appid, struct APPKEY_CTX *ctx)
 	return 1;
 }
 
-void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx)
+void DCRYPTO_appkey_finish(void)
 {
 	MOCK_hwctx_appkey = 0;
 }

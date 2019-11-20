@@ -8,6 +8,8 @@
 #include "console.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "fips.h"
+#include "fips_rand.h"
 #include "nvmem_vars.h"
 #include "rbox.h"
 #include "registers.h"
@@ -57,9 +59,9 @@ enum touch_state pop_check_presence(int consume)
 /* ---- non-volatile U2F state ---- */
 
 struct u2f_state {
-	uint32_t salt[8];
-	uint32_t salt_kek[8];
-	uint32_t salt_kh[8];
+	uint32_t salt[SHA256_DIGEST_WORDS];
+	uint32_t salt_kek[SHA256_DIGEST_WORDS];
+	uint32_t salt_kh[SHA256_DIGEST_WORDS];
 };
 
 static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
@@ -76,7 +78,7 @@ static int load_state(struct u2f_state *state)
 			return 0;
 
 		/* create random salt */
-		if (!DCRYPTO_ladder_random(state->salt))
+		if (!fips_rand_bytes(state->salt, sizeof(state->salt)))
 			return 0;
 		if (setvar(&k_salt, sizeof(k_salt),
 			   (const uint8_t *)state->salt, sizeof(state->salt)))
@@ -108,7 +110,8 @@ static int load_state(struct u2f_state *state)
 			 * We have never used u2f before - generate
 			 * new seed.
 			 */
-			if (!DCRYPTO_ladder_random(state->salt_kek))
+			if (!fips_rand_bytes(state->salt_kek,
+					     sizeof(state->salt_kek)))
 				return 0;
 		}
 		if (write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK,
@@ -125,7 +128,7 @@ static int load_state(struct u2f_state *state)
 		 * We have never used u2f before - generate
 		 * new seed.
 		 */
-		if (!DCRYPTO_ladder_random(state->salt_kh))
+		if (!fips_rand_bytes(state->salt_kh, sizeof(state->salt_kh)))
 			return 0;
 
 		if (write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT,
@@ -149,23 +152,35 @@ static struct u2f_state *get_state(void)
 	return state_loaded ? &state : NULL;
 }
 
-/* ---- chip-specific U2F crypto ---- */
+void u2f_zeroize(void)
+{
+	uint8_t zero[SHA256_DIGEST_SIZE] = {};
 
+	/* wipe content first */
+	setvar(&k_salt, sizeof(k_salt), zero, SHA256_DIGEST_SIZE);
+	/* delete now */
+	setvar(&k_salt, sizeof(k_salt), NULL, 0);
+
+	wipe_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK);
+	wipe_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT);
+}
+/* ---- chip-specific U2F crypto ---- */
+/* output = HMAC(DeviceID[appid], input) */
 static int _derive_key(enum dcrypto_appid appid, const uint32_t input[8],
 		       uint32_t output[8])
 {
-	struct APPKEY_CTX ctx;
 	int result;
 
-	/* Setup USR-based application key. */
-	if (!DCRYPTO_appkey_init(appid, &ctx))
+	/* Load (if not already done) application-specific DeviceID */
+	if (!DCRYPTO_appkey_init(appid, NULL))
 		return 0;
 	result = DCRYPTO_appkey_derive(appid, input, output);
 
-	DCRYPTO_appkey_finish(&ctx);
+	DCRYPTO_appkey_finish();
 	return result;
 }
 
+/* legacy key generation, not used in FIPS mode */
 int u2f_origin_key(const uint8_t *seed, p256_int *d)
 {
 	uint32_t tmp[P256_NDIGITS];
@@ -177,6 +192,7 @@ int u2f_origin_key(const uint8_t *seed, p256_int *d)
 					   (const uint8_t *)tmp) == 0;
 }
 
+/* key_handle = nonce || HMAC(salt_kek, origin || user || nonce) */
 int u2f_origin_user_keyhandle(const uint8_t *origin,
 			      const uint8_t *user,
 			      const uint8_t *origin_seed,
@@ -215,26 +231,57 @@ int u2f_origin_user_keypair(const uint8_t *key_handle,
 	if (!state)
 		return EC_ERROR_UNKNOWN;
 
+	/* generate device-specific salt */
 	if (!_derive_key(U2F_ORIGIN, state->salt_kek, dev_salt))
 		return EC_ERROR_UNKNOWN;
 
+	/**
+	 * initialize HMAC_DRBG with random value generated earlier for
+	 * for a particular owner and use device-specific constant as
+	 * as additional input
+	 */
 	hmac_drbg_init(&drbg, state->salt_kh, P256_NBYTES, dev_salt,
 		       P256_NBYTES, NULL, 0);
 
+	/**
+	 * use key-handle as additional input. this results in
+	 * key generation that can be reproduced later given same
+	 * device-ids, stored random and key handle which itself contains
+	 * a digest of origin and user.
+	 */
 	hmac_drbg_generate(&drbg,
 			   key_seed, sizeof(key_seed),
 			   key_handle, P256_NBYTES * 2);
 
+	/**
+	 * According to NISP SP 800-133r1,
+	 * Let K be either a symmetric key or the random value to be used
+	 * as input to an approved asymmetric-key pair generation algorithm.
+	 * K shall be a bit string value of the following form:
+	 *        K = U ⊕ V
+	 * where
+	 * • U is a bit string of the desired length that is obtained as the
+	 * output of an approved RBG that is capable of supporting the desired
+	 * security strength required to protect the target data,
+	 * • V is a bit string of the same length as U, and
+	 * The value of V is determined in a manner that is independent of the
+	 * value of U (and vice-versa).
+	 *
+	 * In our case, V is a constant (selected independently of the value
+	 * of U). (Note, that if V is a string of binary zeroes, then K = U,
+	 * i.e., the output of an approved RBG.)
+	 */
 	if (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, key_seed))
 		return EC_ERROR_TRY_AGAIN;
-
+	drbg_exit(&drbg);
 	return EC_SUCCESS;
 }
 
+/* combination of counter, label and zero octet for KDF */
+static const char k_u2fkek[] = "\0\0\0\0U2F_KEK\0";
 int u2f_gen_kek(const uint8_t *origin, uint8_t *kek, size_t key_len)
 {
 	uint32_t buf[P256_NDIGITS];
-
 	struct u2f_state *state = get_state();
 
 	if (!state)
@@ -244,10 +291,26 @@ int u2f_gen_kek(const uint8_t *origin, uint8_t *kek, size_t key_len)
 		return EC_ERROR_UNKNOWN;
 	if (!_derive_key(U2F_WRAP, state->salt_kek, buf))
 		return EC_ERROR_UNKNOWN;
-	memcpy(kek, buf, key_len);
+
+	if (board_fips_enforced()) {
+		LITE_HMAC_CTX ctx;
+
+		/**
+		 * implement KDF in counter mode SP800-108, 5.1
+		 * salt_kek originally derived from DRBG
+		 * HMAC (salt_kek, [i]2 || Label || 0x00 || Context || [L]2)
+		 */
+		DCRYPTO_HMAC_SHA256_init(&ctx, state->salt_kek,
+					 SHA256_DIGEST_SIZE);
+		HASH_update(&ctx.hash, k_u2fkek, sizeof(k_u2fkek));
+		HASH_update(&ctx.hash, buf, P256_NBYTES);
+		memcpy(kek, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
+	} else
+		memcpy(kek, buf, key_len);
 
 	return EC_SUCCESS;
 }
+
 
 int g2f_individual_keypair(p256_int *d, p256_int *pk_x, p256_int *pk_y)
 {
@@ -262,7 +325,53 @@ int g2f_individual_keypair(p256_int *d, p256_int *pk_x, p256_int *pk_y)
 	if (!_derive_key(U2F_ATTEST, state->salt, (uint32_t *)buf))
 		return EC_ERROR_UNKNOWN;
 
-	/* Generate unbiased private key */
+	if (board_fips_enforced()) {
+		struct drbg_ctx drbg;
+
+		/**
+		 * initialize HMAC_DRBG with random value generated earlier for
+		 * for a particular owner and use device-specific constant as
+		 * as additional input
+		 */
+		hmac_drbg_init(&drbg, state->salt, sizeof(state->salt), buf,
+			       sizeof(buf), NULL, 0);
+
+		/**
+		 * use key-handle as additional input. this results in
+		 * key generation that can be reproduced later given same
+		 * device-ids, stored random and key handle which itself
+		 * contains a digest of origin and user.
+		 */
+		hmac_drbg_generate(&drbg, buf, sizeof(buf), NULL, 0);
+
+		/**
+		 * According to NISP SP 800-133r1,
+		 * Let K be either a symmetric key or the random value to be
+		 * used as input to an approved asymmetric-key pair generation
+		 * algorithm. K shall be a bit string value of the following
+		 * form: K = U ⊕ V where • U is a bit string of the desired
+		 * length that is obtained as the output of an approved RBG that
+		 * is capable of supporting the desired security strength
+		 * required to protect the target data, • V is a bit string of
+		 * the same length as U, and The value of V is determined in a
+		 * manner that is independent of the value of U (and
+		 * vice-versa).
+		 *
+		 * In our case, V is a constant (selected independently of the
+		 * value of U). (Note, that if V is a string of binary zeroes,
+		 * then K = U, i.e., the output of an approved RBG.)
+		 */
+		while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, buf)) {
+			if (!hmac_drbg_generate(&drbg, buf, sizeof(buf), NULL,
+						0))
+				return EC_ERROR_BUSY;
+		}
+		drbg_exit(&drbg);
+
+		return EC_SUCCESS;
+	}
+
+	/* Generate unbiased private key in legacy way */
 	while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, buf)) {
 		HASH_CTX sha;
 
@@ -281,7 +390,7 @@ int u2f_gen_kek_seed(int commit)
 	if (!state)
 		return EC_ERROR_UNKNOWN;
 
-	if (!DCRYPTO_ladder_random(state->salt_kek))
+	if (!fips_rand_bytes(state->salt_kek, sizeof(state->salt_kek)))
 		return EC_ERROR_HW_INTERNAL;
 
 	if (write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK, sizeof(state->salt_kek),
