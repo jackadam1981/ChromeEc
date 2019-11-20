@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "464cf801_40a1c2f1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-20T23:51:42Z",
+      "side": 1,
+      "message": "super nit: nearly all cases of a single defined test use \"#ifdef\" instead of \"#if defined(...)\"",
+      "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33a721d_471be89c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2435,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-20T23:51:42Z",
+      "side": 1,
+      "message": "missing semicolon",
+      "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4908043c_771abcda",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2529,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-20T23:51:42Z",
+      "side": 1,
+      "message": "missing semicolon",
+      "range": {
+        "startLine": 2529,
+        "startChar": 2,
+        "endLine": 2529,
+        "endChar": 8
+      },
+      "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
