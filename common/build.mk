@@ -144,6 +144,7 @@ common-$(CONFIG_USB_POWER_DELIVERY)+=usb_common.o
 ifeq ($(CONFIG_USB_SM_FRAMEWORK),)
 common-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_protocol.o usb_pd_policy.o
 endif
+common-y+=updater_commands.o
 common-$(CONFIG_USB_PD_LOGGING)+=event_log.o pd_log.o
 common-$(CONFIG_USB_PD_TCPC)+=usb_pd_tcpc.o
 common-$(CONFIG_USB_UPDATE)+=usb_update.o update_fw.o
