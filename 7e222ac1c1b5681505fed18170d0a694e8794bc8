@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "732596bb_a3aa6337",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-20T07:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb1b2b6_2f9a3a4e",
+      "revId": "7e222ac1c1b5681505fed18170d0a694e8794bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a0d95d_f750d835",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 3
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "...and is this correct?\nmt6370_enable_hidden_mode() does not exist on RT9466.",
       "parentUuid": "21a0d95d_f750d835",
+      "range": {
+        "startLine": 331,
+        "startChar": 17,
+        "endLine": 331,
+        "endChar": 18
+      },
+      "revId": "7e222ac1c1b5681505fed18170d0a694e8794bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d7e4ff_d452f938",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-20T07:58:09Z",
+      "side": 1,
+      "message": "rt9466 support that, but mt6370_enable_hidden_mode doesn\u0027t implement the function on rt9466.",
+      "parentUuid": "de9287de_0030609b",
       "range": {
         "startLine": 331,
         "startChar": 17,
