@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb1b2b6_2f9a3a4e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-20T06:53:52Z",
+      "side": 1,
+      "message": "nit:\n/*\n * Vsys short protection:",
+      "revId": "7e222ac1c1b5681505fed18170d0a694e8794bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a0d95d_f750d835",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-20T06:53:52Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 331,
+        "startChar": 17,
+        "endLine": 331,
+        "endChar": 18
+      },
+      "revId": "7e222ac1c1b5681505fed18170d0a694e8794bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
