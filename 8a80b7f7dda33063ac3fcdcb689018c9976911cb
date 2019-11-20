@@ -411,6 +411,24 @@
     },
     {
       "key": {
+        "uuid": "e044031a_c442be9b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T04:37:11Z",
+      "side": 1,
+      "message": "I really messed up somewhere with the rebase because I remember removing this. In any event\nI apologize for the repeated work.",
+      "parentUuid": "ebcb7d1a_45d26dc8",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbcbbe7b_fe059dac",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -534,6 +552,24 @@
     },
     {
       "key": {
+        "uuid": "79e3fd7d_b00abf67",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T04:37:11Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "parentUuid": "20debd04_cbecd781",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18df1a65_c13c768e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -622,6 +658,24 @@
     },
     {
       "key": {
+        "uuid": "d84912fc_aad6cda6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T04:37:11Z",
+      "side": 1,
+      "message": "Same comment above. But I think this should be off because it prevents non-auto drp toggle and this breaks some unit tests.",
+      "parentUuid": "44b1cf51_af907395",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -690,6 +744,30 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f183997c_e365c6c7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T04:37:11Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "parentUuid": "61b05cfc_d1b1d4ed",
+      "range": {
+        "startLine": 2193,
+        "startChar": 31,
+        "endLine": 2193,
+        "endChar": 46
+      },
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -778,6 +856,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8576cf5_de6ea9c1",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T04:37:11Z",
+      "side": 1,
+      "message": "Same reply to the comments in usb_tc_drp...",
+      "parentUuid": "135c4c2d_6134eb73",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
