@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <assert.h>
 #include <ctype.h>
 #include <errno.h>
 #include <getopt.h>
@@ -250,6 +251,8 @@ const char help_str[] =
 	"      Set 16 bit duty cycle of given PWM\n"
 	"  rand <num_bytes>\n"
 	"      generate <num_bytes> of random numbers\n"
+	"  raw <cmd> [ver] [out_file|-] [in_file|-]\n"
+	"      issue a raw cmd using files/stdio as the data\n"
 	"  readtest <patternoffset> <size>\n"
 	"      Reads a pattern from the EC via LPC\n"
 	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump>"
@@ -1168,6 +1171,113 @@ int cmd_rand(int argc, char *argv[])
 	}
 
 	return 0;
+}
+
+int cmd_raw(int argc, char *argv[])
+{
+	char *e;
+	int cmd, ver = 0;
+	/* out - outgoing to EC | in - incoming from EC */
+	FILE *out = stdin, *in = stdout;
+	char *out_buf = NULL, *in_buf = NULL;
+	size_t out_buf_size = 1, in_buf_size = 1024;
+	size_t out_len = 0, in_len = 0;
+	int rv = -1;
+	int ch;
+
+	if (argc < 2 || argc > 5) {
+		fprintf(stderr, "Usage: %s <cmd> [ver] [out_file|-] [in_file|-]\n", argv[0]);
+		goto cleanup;
+	}
+
+	cmd = (int)strtol(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid cmd argument\n");
+		goto cleanup;
+	}
+
+	if (argc >= 3) {
+		ver = (int)strtol(argv[2], &e, 0);
+		if ((e && *e) || (errno == ERANGE)) {
+			fprintf(stderr, "Invalid ver argument\n");
+			goto cleanup;
+		}
+	}
+
+	if (argc >= 4) {
+		if (strcmp(argv[3], "-") != 0) {
+			out = fopen(argv[3], "rb");
+			if (out == NULL) {
+				perror("Failed to open out file");
+				goto cleanup;
+			}
+		}
+	}
+
+	if (argc == 5) {
+		if (strcmp(argv[4], "-") != 0) {
+			in = fopen(argv[4], "wb");
+			if (in == NULL) {
+				perror("Failed to open in file");
+				goto cleanup;
+			}
+		}
+	}
+
+	fprintf(stderr, "# Reading out data\n");
+	fflush(stderr);
+
+	/* Read in all of the outgoing data */
+	out_buf = malloc(out_buf_size);
+	if (out_buf == NULL) {
+		perror("Failed to allocate out buffer");
+		goto cleanup;
+	}
+	assert(out_buf_size > 0);
+	for (ch = fgetc(out); ch != EOF; ch = fgetc(out)) {
+		if (out_len >= out_buf_size) {
+			out_buf_size *= 2;
+			out_buf = realloc(out_buf, out_buf_size);
+			if (out_buf == NULL) {
+				perror("Failed to reallocate out buffer");
+				goto cleanup;
+			}
+		}
+		out_buf[out_len++] = (char)ch;
+	}
+	if (ferror(out)) {
+		fprintf(stderr, "Failed to read from out\n");
+		goto cleanup;
+	}
+	fprintf(stderr, "# Read in %zu bytes for outgoing\n", out_len);
+
+	/* Setup massive incoming buffer */
+	in_buf = malloc(in_buf_size);
+	if (in_buf == NULL) {
+		perror("Failed to allocate in buffer");
+		goto cleanup;
+	}
+
+	fprintf(stderr, "# Issuing EC command %x (ver=%x outlen=%d inlen=%d)\n",
+		cmd, ver, (int)out_len, (int)in_buf_size);
+	rv = ec_command(cmd, ver, out_buf, (int)out_len, in_buf, (int)in_buf_size);
+	fprintf(stderr, "# Received %d from EC command\n", rv);
+	if (rv < 0) {
+		goto cleanup;
+	}
+	in_len = rv;
+	/* returned length should be larger than the actual data */
+	fprintf(stderr, "# Read in %zu bytes for incoming\n", in_len);
+	assert(in_len <= in_buf_size);
+
+	fwrite(in_buf, 1, in_len, in);
+	fflush(in);
+
+	rv = 0;
+cleanup:
+	free(out_buf);
+	free(in_buf);
+	return rv;
 }
 
 int cmd_flash_spi_info(int argc, char *argv[])
@@ -9230,6 +9340,7 @@ const struct command commands[] = {
 	{"pwmsetkblight", cmd_pwm_set_keyboard_backlight},
 	{"pwmsetduty", cmd_pwm_set_duty},
 	{"rand", cmd_rand},
+	{"raw", cmd_raw},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
 	{"rollbackinfo", cmd_rollback_info},
