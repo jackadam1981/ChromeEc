@@ -343,43 +343,125 @@ int battery_get_avg_voltage(void)
 
 void battery_get_params(struct batt_params *batt)
 {
+	static struct batt_params prev_batt = {0};
 	struct batt_params batt_new = {0};
-	int v;
+	int v, rv;
 
-	if (sb_read(SB_TEMPERATURE, &batt_new.temperature))
-		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
+	rv = sb_read(SB_TEMPERATURE, &batt_new.temperature);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
+		else
+			batt_new.temperature = prev_batt.temperature;
 
-	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge)
-	    && fake_state_of_charge < 0)
-		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+		CPRINTS("hx01: temperature=%d, rv=%d", batt_new.temperature, rv);
+	} else {
+		prev_batt.temperature = batt_new.temperature;
+	}
 
-	/* If soc is faked, override with faked data */
-	if (fake_state_of_charge >= 0)
+	rv = sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge);
+	if (fake_state_of_charge < 0) {
+		if (rv) {
+			if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+				batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+			else
+				batt_new.state_of_charge = prev_batt.state_of_charge;
+
+			CPRINTS("hx02: state_of_charge=%d, rv=%d", batt_new.state_of_charge, rv);
+		} else {
+			prev_batt.state_of_charge = batt_new.state_of_charge;
+		}
+	} else {
+		/* If soc is faked, override with faked data */
 		batt_new.state_of_charge = fake_state_of_charge;
+		prev_batt.temperature = fake_state_of_charge;
+	}
 
-	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
-		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	rv = sb_read(SB_VOLTAGE, &batt_new.voltage);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+		else
+			batt_new.voltage = prev_batt.voltage;
+
+		CPRINTS("hx03: voltage=%d, rv=%d", batt_new.voltage, rv);
+	} else {
+		prev_batt.voltage = batt_new.voltage;
+	}
 
 	/* This is a signed 16-bit value. */
-	if (sb_read(SB_CURRENT, &v))
-		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
-	else
+	rv = sb_read(SB_CURRENT, &v);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+		else
+			batt_new.current = prev_batt.current;
+
+		CPRINTS("hx04: current=%d, rv=%d", batt_new.current, rv);
+	} else {
 		batt_new.current = (int16_t)v;
+		prev_batt.current = (int16_t)v;
+	}
 
-	if (sb_read(SB_CHARGING_VOLTAGE, &batt_new.desired_voltage))
-		batt_new.flags |= BATT_FLAG_BAD_DESIRED_VOLTAGE;
+	rv = sb_read(SB_CHARGING_VOLTAGE, &batt_new.desired_voltage);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_DESIRED_VOLTAGE;
+		else
+			batt_new.desired_voltage = prev_batt.desired_voltage;
 
-	if (sb_read(SB_CHARGING_CURRENT, &batt_new.desired_current))
-		batt_new.flags |= BATT_FLAG_BAD_DESIRED_CURRENT;
+		CPRINTS("hx05: desired_voltage=%d, rv=%d", batt_new.desired_voltage, rv);
+	} else {
+		prev_batt.desired_voltage = batt_new.desired_voltage;
+	}
 
-	if (battery_remaining_capacity(&batt_new.remaining_capacity))
-		batt_new.flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
+	rv = sb_read(SB_CHARGING_CURRENT, &batt_new.desired_current);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_DESIRED_CURRENT;
+		else
+			batt_new.desired_current = prev_batt.desired_current;
 
-	if (battery_full_charge_capacity(&batt_new.full_capacity))
-		batt_new.flags |= BATT_FLAG_BAD_FULL_CAPACITY;
+		CPRINTS("hx06: desired_current=%d, rv=%d", batt_new.desired_current, rv);
+	} else {
+		prev_batt.desired_current = batt_new.desired_current;
+	}
 
-	if (battery_status(&batt_new.status))
-		batt_new.flags |= BATT_FLAG_BAD_STATUS;
+	rv = battery_remaining_capacity(&batt_new.remaining_capacity);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
+		else
+			batt_new.remaining_capacity = prev_batt.remaining_capacity;
+
+		CPRINTS("hx07: remaining_capacity=%d, rv=%d", batt_new.remaining_capacity, rv);
+	} else {
+		prev_batt.remaining_capacity = batt_new.remaining_capacity;
+	}
+
+	rv = battery_full_charge_capacity(&batt_new.full_capacity);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_FULL_CAPACITY;
+		else
+			batt_new.full_capacity = prev_batt.full_capacity;
+
+		CPRINTS("hx08: full_capacity=%d, rv=%d", batt_new.full_capacity, rv);
+	} else {
+		prev_batt.full_capacity = batt_new.full_capacity;
+	}
+
+	rv = battery_status(&batt_new.status);
+	if (rv) {
+		if (rv != EC_ERROR_CRC && rv != EC_ERROR_BUSY)
+			batt_new.flags |= BATT_FLAG_BAD_STATUS;
+		else
+			batt_new.status = prev_batt.status;
+
+		CPRINTS("hx09: status=%d, rv=%d", batt_new.status, rv);
+	} else {
+		prev_batt.status = batt_new.status;
+	}
 
 	/* If any of those reads worked, the battery is responsive */
 	if ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
