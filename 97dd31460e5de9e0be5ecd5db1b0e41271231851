@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4dab673_15d30418",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "When locking a mutex, it is helpful to have a comment of why this is needed.\n\nThis comment doesn\u0027t blocks this CL from landing, but we should add it very soon, please",
+      "range": {
+        "startLine": 922,
+        "startChar": 1,
+        "endLine": 922,
+        "endChar": 36
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3563dc92_a6f8f50e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "this function no longer waits to the TCPC to exist low power mode.\n\nThis function is used by other tasks, like host command handler, to wait until the TCPC is properly woken up and ready to be communicated with.\n\n\nThis needs to be fixed before landing this CL",
+      "range": {
+        "startLine": 1552,
+        "startChar": 5,
+        "endLine": 1552,
+        "endChar": 27
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd938ddc_d5cf6113",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "why only update the low power time from PD task? What if the host command task is accessing the TCPC device, we should still update it then, right?",
+      "range": {
+        "startLine": 1564,
+        "startChar": 1,
+        "endLine": 1565,
+        "endChar": 64
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "961ab338_9382a01f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "this is the kind of code structure we are trying to get rid of\n\ncontinuation of if else statements with #ifdef gaurds. This is very hard to reason about especially as we add more config and code forks.\n\nWe need to clean this up\n\n\n\n----\n\nAlso, why do we need to support dual role auto toggle to go in to low power mode in Sink mode?",
+      "range": {
+        "startLine": 1766,
+        "startChar": 0,
+        "endLine": 1768,
+        "endChar": 49
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e4b89d6_7bec2e0d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2616,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "how did we get here if DRP toggle is off? IF that is a real case, can you add a comment because it seems like it shouldn\u0027t happen",
+      "range": {
+        "startLine": 2616,
+        "startChar": 5,
+        "endLine": 2616,
+        "endChar": 40
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f9bde0_6f3cb678",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2653,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "what is setting cc_state from the cc1 and cc2 read from line 2640?",
+      "range": {
+        "startLine": 2653,
+        "startChar": 6,
+        "endLine": 2653,
+        "endChar": 23
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "934a53e8_50627c3c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2693,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T15:16:04Z",
+      "side": 1,
+      "message": "if we went to low power mode from SRC or SNK states, shouldn\u0027t we transition back to those states if we want to wake up?",
+      "range": {
+        "startLine": 2693,
+        "startChar": 2,
+        "endLine": 2693,
+        "endChar": 41
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
