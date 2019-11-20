@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed166c3b_e2606ddb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-20T17:12:08Z",
+      "side": 1,
+      "message": "It is possible, but I don\u0027t think this situation is worth worrying about.",
+      "parentUuid": "3de23910_6051fa8b",
+      "range": {
+        "startLine": 727,
+        "startChar": 1,
+        "endLine": 727,
+        "endChar": 54
+      },
+      "revId": "61693986b905102a1d0818b567cba129eb5e2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eefb69d2_dc02ea53",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-20T04:09:49Z",
       "side": 1,
       "message": "shall we do \"rw_signed_for_prod \u003d ro_signed_for_prod \u0026\u0026 (FWR7 \u003d\u003d 0);\" instead?",
+      "range": {
+        "startLine": 728,
+        "startChar": 1,
+        "endLine": 728,
+        "endChar": 53
+      },
+      "revId": "61693986b905102a1d0818b567cba129eb5e2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c06967f_9604a825",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-20T17:12:08Z",
+      "side": 1,
+      "message": "this is where it gets fuzzy. It is possible to have a dev signed RO which is running a prod signed RW, right?\n\nMaybe we need to re-think the meaning of this, and not worry about individual images\u0027 signing state, but the common Cr50 firmware state - is the prod ladder enabled or not.",
+      "parentUuid": "eefb69d2_dc02ea53",
       "range": {
         "startLine": 728,
         "startChar": 1,
