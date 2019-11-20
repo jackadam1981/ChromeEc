@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0488932e_7a95819e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 2811,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:19:18Z",
+      "side": 1,
+      "message": "when is this flag supposed to get cleared?\n\nWithout clearing, this means that any WAIT message in the history of reboot will make the swap to DFP code try 5 times even if it was rejected.",
+      "range": {
+        "startLine": 2811,
+        "startChar": 5,
+        "endLine": 2811,
+        "endChar": 44
+      },
+      "revId": "e5652df73f98bd6c6100ce890192d384e99ba9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
