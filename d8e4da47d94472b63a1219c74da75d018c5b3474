@@ -69,6 +69,24 @@
       "revId": "d8e4da47d94472b63a1219c74da75d018c5b3474",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b3cc09_c71608cf",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-20T07:06:03Z",
+      "side": 1,
+      "message": "Both rt946x and mt6370 need this delay.",
+      "parentUuid": "c39d2f40_39533d3b",
+      "revId": "d8e4da47d94472b63a1219c74da75d018c5b3474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
