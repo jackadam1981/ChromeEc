@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c8064f9_d5bbc0de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2820,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-20T14:21:04Z",
+      "side": 1,
+      "message": "I understand the idea behind intptr_t but it feels wrong to assign an explicitly cast intptr_t to an int.  I would think for completeness that casting the intptr_t to be an int seems to be right to keep left and right of the same explicit type.",
+      "range": {
+        "startLine": 2820,
+        "startChar": 1,
+        "endLine": 2820,
+        "endChar": 31
+      },
+      "revId": "d54dfeb9be84888c6c536f77fd921560b412e568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
