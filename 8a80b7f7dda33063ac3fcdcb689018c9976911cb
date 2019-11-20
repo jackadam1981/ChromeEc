@@ -784,6 +784,24 @@
     },
     {
       "key": {
+        "uuid": "e39712f5_e06442f0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T22:27:13Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to put done but I think it matches TCPMv1 now.",
+      "parentUuid": "bf864ce6_1af5db0c",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
