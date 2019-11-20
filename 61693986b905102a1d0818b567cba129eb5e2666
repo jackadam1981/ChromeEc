@@ -93,6 +93,30 @@
       "revId": "61693986b905102a1d0818b567cba129eb5e2666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bb4eb0_373f317d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-20T18:47:13Z",
+      "side": 1,
+      "message": "Can we do both?\nRO keyid: keyid(prod/dev)\nRW keyid: keyid(prod/dev)\nProd Keyladder:  yes/no\nwhere prod keyladder is ro_signed_for_prod \u0026\u0026 rw_signed_for_prod",
+      "parentUuid": "8c06967f_9604a825",
+      "range": {
+        "startLine": 728,
+        "startChar": 1,
+        "endLine": 728,
+        "endChar": 53
+      },
+      "revId": "61693986b905102a1d0818b567cba129eb5e2666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
