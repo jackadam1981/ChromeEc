@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ebd7b72_ac46e7c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:41:13Z",
+      "side": 1,
+      "message": "there is a lot of BIST, jitter calculations, and other stuff that is in this CL. Can you keep this CL just the console add and break the other stuff out, please",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "752ac40925d698b067818a79bb2a417adbe85f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
