@@ -22,6 +22,30 @@
       "revId": "393524e15bdc825c24fd675109b30f4088b57314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf8a5c1_34db1ba2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-20T23:27:44Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not certain about that. Wouldn\u0027t simply modulating by a prime number just shift the window of allowed ranges? In the cyclical collision event, it could be that the event still lands within that range.\n\nHere we\u0027re relying on the fact that that the cyclical event isn\u0027t exactly cyclical to the microsecond and then using that to generate the variance.",
+      "parentUuid": "7c654784_f24c64fd",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
