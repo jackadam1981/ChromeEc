@@ -158,6 +158,10 @@ static const uint32_t ISR_SALT[8] = {
 /* Map of populated USR registers. */
 static int usr_ready[8]  = {};
 
+/**
+ *  H1 specific method to access DeviceID from keyladder
+ *  sets usr[appid] = HMAC(DeviceID, usr_salt)
+ */
 int dcrypto_ladder_compute_usr(enum dcrypto_appid id,
 			       const uint32_t usr_salt[8])
 {
@@ -253,8 +257,8 @@ fail:
 	return !error;
 }
 
-int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
-			  const uint32_t input[8], uint32_t output[8])
+int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t input[8],
+			  uint32_t output[8])
 {
 	int error;
 

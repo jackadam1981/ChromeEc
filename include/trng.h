@@ -27,7 +27,7 @@ void init_trng(void);
 void exit_trng(void);
 
 /**
- * Retrieve a 32 bit random value.
+ * Retrieve a 32 bit random value directly from entropy source
  *
  * Not supported on all platforms.
  **/
@@ -36,7 +36,7 @@ uint32_t rand(void);
 #endif
 
 /**
- * Output len random bytes into buffer.
+ * Output len random bytes into buffer directly from entropy source.
  *
  * Not supported on all platforms.
  **/

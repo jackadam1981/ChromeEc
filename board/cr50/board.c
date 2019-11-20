@@ -12,6 +12,7 @@
 #include "ec_version.h"
 #include "endian.h"
 #include "extension.h"
+#include "fips.h"
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
@@ -179,6 +180,11 @@ int board_has_ina_support(void)
 int board_tpm_mode_change_allowed(void)
 {
 	return !!(board_properties & BOARD_ALLOW_CHANGE_TPM_MODE);
+}
+
+int board_fips_power_up_done(void)
+{
+	return !!(board_properties & BOARD_FIPS_POWERUP_DONE);
 }
 
 /* Get header address of the backup RW copy. */
@@ -730,8 +736,6 @@ static void board_init(void)
 		(GREG32(KEYMGR, HKEY_RWR7) == 0xaa66150f);
 
 	init_runlevel(PERMISSION_MEDIUM);
-	/* Initialize NvMem partitions */
-	nvmem_init();
 
 	/*
 	 * If this was a low power wake and not a rollback, restore the ccd
@@ -1404,11 +1408,66 @@ static uint32_t get_properties(void)
 	return properties;
 }
 
+/* Nvmem variable name for FIPS config */
+static const uint8_t k_fips_config = NVMEM_VAR_FIPS_CONFIG;
+void board_set_fips_policy(char asserted)
+{
+	setvar(&k_fips_config, sizeof(k_fips_config), &asserted,
+	       sizeof(asserted));
+}
+
+static int board_get_fips_policy(void)
+{
+	const struct tuple *t;
+	int fips;
+
+	t = getvar(&k_fips_config, sizeof(k_fips_config));
+	fips = (t) ? tuple_val(t)[0] : 0;
+	freevar(t);
+
+	return fips;
+}
+
+int board_fips_enforced(void)
+{
+	/**
+	 * combined flag which caches fips state and the fact it was cached
+	 * bit 7 is set when bit 0 contains fips status
+	 */
+	static uint8_t fips_state;
+
+	if (fips_state & 128)
+		return fips_state & 1;
+	fips_state = board_fwmp_fips_mode_enabled() || board_get_fips_policy();
+	fips_state |= 128;
+	return fips_state & 1;
+}
+
 static void init_board_properties(void)
 {
 	uint32_t properties;
 
 	properties = GREG32(PMU, LONG_LIFE_SCRATCH1);
+
+	/**
+	 * Initialize NvMem partitions. Moved here from board_init() as
+	 * we need to know FIPS policy early to disable console output
+	 * and leave system in RESET until power-up tests are completed.
+	 * Previously nvmem_init was called after.
+	 * init_runlevel(PERMISSION_MEDIUM);
+	 */
+	nvmem_init();
+	if (board_fips_enforced()) {
+		/* AP stay in reset until FIPS power-up tests completed */
+		assert_sys_rst();
+		/**
+		 * FIPS requires all security related output to be disabled
+		 * until power-up tests are completed. We don't have any
+		 * security related output, but since any issue can be treated
+		 * as security related, disable it
+		 */
+		console_disable_output();
+	}
 
 	/*
 	 * This must be a power on reset or maybe restart due to a software

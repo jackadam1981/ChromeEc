@@ -18,6 +18,16 @@
 static uint32_t channel_mask = CC_DEFAULT;
 static uint32_t channel_mask_saved = CC_DEFAULT;
 
+void console_disable_output(void)
+{
+	channel_mask = 0;
+}
+
+void console_enable_output(void)
+{
+	channel_mask = CC_DEFAULT;
+}
+
 /*
  * List of channel names;
  *
