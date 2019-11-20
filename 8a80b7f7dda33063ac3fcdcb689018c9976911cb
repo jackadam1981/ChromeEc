@@ -676,6 +676,24 @@
     },
     {
       "key": {
+        "uuid": "313a1114_7473bbe9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T16:51:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand \"I think this should be off because it prevents non-auto drp toggle\".\n\nThis \"/* DRP Toggle */ set_state_tc(port, TC_UNATTACHED_SRC);\" is the non-auto drp toggle, which we should be doing when \"drp_state[port] \u003d\u003d PD_DRP_TOGGLE_ON\", not when \"drp_state[port] \u003d\u003d PD_DRP_TOGGLE_OFF\".\n\nNow I\u0027m looking at this again, there is also a problem with swapping the other way in tc_unattached_src_run() on line 2210 not checking drp_state policy at all.\n\nCompare to the old TCPMv1 implementation: usb_pd_protocol.c lines 3332 and 3955.",
+      "parentUuid": "d84912fc_aad6cda6",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
