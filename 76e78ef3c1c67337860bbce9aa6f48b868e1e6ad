@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ba45c3a_d7995f4f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:34:40Z",
+      "side": 1,
+      "message": "This isn\u0027t a flag, but a state enum. This doesn\u0027t seem correct",
+      "range": {
+        "startLine": 1594,
+        "startChar": 4,
+        "endLine": 1594,
+        "endChar": 32
+      },
+      "revId": "76e78ef3c1c67337860bbce9aa6f48b868e1e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
