@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c8c8941_0c1a3cf7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2432,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T20:47:31Z",
+      "side": 1,
+      "message": "can you convert this into\n\nif (!IS_ENABLED(CONFIG_BATTERY))\n return;\n\nat the beginning of the function?\n\nWe may need to ensure that the function protoypes are defined in all cases (but they definitely wouldn\u0027t link)",
+      "range": {
+        "startLine": 2431,
+        "startChar": 0,
+        "endLine": 2432,
+        "endChar": 27
+      },
+      "revId": "e2bd8022cf24953d4c655c6be31cea4420d10422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7542f2_ca600c8a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T20:47:31Z",
+      "side": 1,
+      "message": "we shouldn\u0027t\u0027 need this guard right since the battery case can never get into the state, right?\n\n--\n\n\nActually do we need any of these guards for these function at all?",
+      "range": {
+        "startLine": 2512,
+        "startChar": 0,
+        "endLine": 2512,
+        "endChar": 27
+      },
+      "revId": "e2bd8022cf24953d4c655c6be31cea4420d10422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
