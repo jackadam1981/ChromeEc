@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "7c9e290b_6a85275a",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-20T19:54:33Z",
+      "side": 1,
+      "message": "Can you use \u0027bool\u0027 (in stdbool.h)?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "e01818b2aa468cda9b524a5c6f6f0b7269a4fb0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e79245d6_65002876",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "3c832003_38cd9c29",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-20T19:54:33Z",
+      "side": 1,
+      "message": "Instead of adding a new command, have you thought about adding EC_REBOOT_G3 to enum ec_reboot_cmd?\n\nCan handle_pending_reboot simply do:\n\n\tswitch (cmd) {\n\t...\n\tcase EC_REBOOT_G3:\n\t\twant_reboot_at_g3 \u003d true;\n\t\treturn EC_RES_SUCCESS;\n\t...\n\t}\n\n?",
+      "range": {
+        "startLine": 1518,
+        "startChar": 21,
+        "endLine": 1518,
+        "endChar": 40
+      },
+      "revId": "e01818b2aa468cda9b524a5c6f6f0b7269a4fb0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "823f7584_6657c37d",
         "filename": "include/common.h",
         "patchSetId": 1
@@ -64,6 +110,29 @@
         "startChar": 0,
         "endLine": 249,
         "endChar": 33
+      },
+      "revId": "e01818b2aa468cda9b524a5c6f6f0b7269a4fb0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f72ac67_3e16ebed",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-20T19:54:33Z",
+      "side": 1,
+      "message": "Why not CPRINTS?",
+      "range": {
+        "startLine": 311,
+        "startChar": 3,
+        "endLine": 311,
+        "endChar": 10
       },
       "revId": "e01818b2aa468cda9b524a5c6f6f0b7269a4fb0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
