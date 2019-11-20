@@ -111,6 +111,62 @@ DECLARE_CONSOLE_COMMAND_FLAGS
 	 "[.b|.h|.s] addr [count]",
 	 "dump memory values, optionally specifying the format",
 	 CMD_FLAG_RESTRICTED);
+
+static int command_mem_hash(int argc, char **argv)
+{
+	uint32_t address, i, num = 1;
+	char *e;
+	enum format fmt = FMT_WORD;
+
+	if (argc > 1) {
+		if ((argv[1][0] == '.') && (strlen(argv[1]) == 2)) {
+			switch (argv[1][1]) {
+			case 'b':
+				fmt = FMT_BYTE;
+				break;
+			case 'h':
+				fmt = FMT_HALF;
+				break;
+			case 's':
+				fmt = FMT_STRING;
+				break;
+			default:
+				return EC_ERROR_PARAM1;
+			}
+			argc--;
+			argv++;
+		}
+	}
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	address = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	if (argc >= 3)
+		num = strtoi(argv[2], &e, 0);
+
+	for (i = 0; i < num; i++) {
+		show_val(address, i, fmt);
+		/* Lots of output could take a while.
+		 * Let other things happen, too */
+		if (!(i % 0x100)) {
+			watchdog_reload();
+			usleep(10 * MSEC);
+		}
+	}
+	ccprintf("\n");
+	cflush();
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND_FLAGS
+	(mhash, command_mem_hash,
+	 "addr [count]",
+	 "hash ranges of memory",
+	 CMD_FLAG_RESTRICTED);
 #endif /* CONFIG_CMD_MD */
 
 #ifdef CONFIG_CMD_RW
