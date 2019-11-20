@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c654784_f24c64fd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T20:59:02Z",
+      "side": 1,
+      "message": "Just wanted to add my opinion. I think if we instead modulate by a prime number like 83 or 137, we would actually see much variance in our jitter.\n\n(I am not opposed to patchset 3, just wanted to give an alternative)",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
