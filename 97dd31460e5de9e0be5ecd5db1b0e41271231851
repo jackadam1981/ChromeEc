@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "20528ed1_b6b6c778",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2616,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T16:39:27Z",
+      "side": 1,
+      "message": "See previous comment: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1904974/2/common/usbc/usb_tc_drp_acc_trysrc_sm.c#2681\nSo this is avoiding calling tcpm_enable_drp_toggle() in the case that we exited tc_low_power_mode_run() but then tc_drp_auto_toggle_run() will call drp_auto_toggle_next_state() to check drp_state to send us to a different state.\n\nBut I agree, preferably this whole flow could be re-worked to be clearer, or if not, at least add a large comment!",
+      "parentUuid": "2e4b89d6_7bec2e0d",
+      "range": {
+        "startLine": 2616,
+        "startChar": 5,
+        "endLine": 2616,
+        "endChar": 40
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f9bde0_6f3cb678",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 19
@@ -151,6 +175,30 @@
       "writtenOn": "2019-11-20T15:16:04Z",
       "side": 1,
       "message": "if we went to low power mode from SRC or SNK states, shouldn\u0027t we transition back to those states if we want to wake up?",
+      "range": {
+        "startLine": 2693,
+        "startChar": 2,
+        "endLine": 2693,
+        "endChar": 41
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ba35e5_e1b07f10",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2693,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T16:39:27Z",
+      "side": 1,
+      "message": "See previous comment: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1904974/2/common/usbc/usb_tc_drp_acc_trysrc_sm.c#2681",
+      "parentUuid": "934a53e8_50627c3c",
       "range": {
         "startLine": 2693,
         "startChar": 2,
