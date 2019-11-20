@@ -280,7 +280,8 @@ void rwsig_task(void *u)
 
 	/* Jump now if we timed out, or were told to continue. */
 	if (evt == TASK_EVENT_TIMER || evt == TASK_EVENT_CONTINUE)
-		rwsig_jump_now();
+		// rwsig_jump_now();
+		CPRINTF("Ignoring jump to RW\n");
 	else
 		rwsig_status = RWSIG_ABORTED;
 
