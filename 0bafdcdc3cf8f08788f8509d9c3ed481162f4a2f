@@ -16,6 +16,24 @@
       "revId": "0bafdcdc3cf8f08788f8509d9c3ed481162f4a2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a54d6d_e04804d7",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-20T20:48:42Z",
+      "side": 1,
+      "message": "yes that was what I was avoiding :-)",
+      "parentUuid": "158b4a37_830959c7",
+      "revId": "0bafdcdc3cf8f08788f8509d9c3ed481162f4a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
