@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f7cac8b_cac1f106",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b94bee2_665e5f3a",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a8c8c0a_ef51350d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42ccc0c_a0908951",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "4a8c8c0a_ef51350d",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 45
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "05311517_2b8d783a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "3f1e1404_f07483fb",
+      "range": {
+        "startLine": 2143,
+        "startChar": 2,
+        "endLine": 2150,
+        "endChar": 51
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca4e5b9b_4a8271c6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 22
@@ -91,6 +163,30 @@
       "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea92fbd4_e95b951a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca4e5b9b_4a8271c6",
+      "range": {
+        "startLine": 2160,
+        "startChar": 1,
+        "endLine": 2198,
+        "endChar": 45
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "789ac118_721ea884",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2212,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "I can\u0027t answer that question but the spec. does allow for TypeC only devices. But if you think this is the case, let\u0027s remove all the Policy engine guards in a separate CL.",
+      "parentUuid": "8c6df86b_acd61f22",
+      "range": {
+        "startLine": 2212,
+        "startChar": 0,
+        "endLine": 2212,
+        "endChar": 23
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e621507_ab10c4c4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 22
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "024cb7f1_21ef0586",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2411,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "the PRL might be in the init state and I wanted to make sure it was in the run state but it does seem unnecessary.",
+      "parentUuid": "6e621507_ab10c4c4",
+      "range": {
+        "startLine": 2411,
+        "startChar": 1,
+        "endLine": 2411,
+        "endChar": 50
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbe363d5_4ade0dc7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 22
@@ -160,6 +304,30 @@
       "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b557e6_1c5960a0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-20T19:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe363d5_4ade0dc7",
+      "range": {
+        "startLine": 2437,
+        "startChar": 31,
+        "endLine": 2437,
+        "endChar": 36
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
