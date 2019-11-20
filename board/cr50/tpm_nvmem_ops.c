@@ -13,6 +13,7 @@
 #include "Implementation.h"
 #include "NV_fp.h"
 #include "tpm_types.h"
+#include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_TASK, format, ## args)
 
@@ -91,4 +92,27 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 		ret = tpm_write_fail;
 
 	return ret;
+}
+
+enum tpm_read_rv wipe_tpm_nvmem_hidden(uint16_t object_index)
+{
+	TPM_HANDLE handle = object_index | HR_HIDDEN;
+	NV_INDEX nvIndex;
+
+	if (!NvIsDefinedHiddenObject(handle))
+		return tpm_read_not_found;
+
+	/* Get properties of this index as stored in nvmem. */
+	NvGetIndexInfo(handle, &nvIndex);
+	{
+		uint8_t zero[nvIndex.publicArea.dataSize];
+
+		memset(zero, 0, nvIndex.publicArea.dataSize);
+		/* write all zeros */
+		NvWriteHiddenObject(handle, nvIndex.publicArea.dataSize, zero);
+		NvCommit();
+	}
+	NvDeleteEntity(handle);
+	NvCommit();
+	return tpm_read_success;
 }

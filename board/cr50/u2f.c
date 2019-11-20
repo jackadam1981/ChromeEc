@@ -57,9 +57,9 @@ enum touch_state pop_check_presence(int consume)
 /* ---- non-volatile U2F state ---- */
 
 struct u2f_state {
-	uint32_t salt[8];
-	uint32_t salt_kek[8];
-	uint32_t salt_kh[8];
+	uint32_t salt[SHA256_DIGEST_WORDS];
+	uint32_t salt_kek[SHA256_DIGEST_WORDS];
+	uint32_t salt_kh[SHA256_DIGEST_WORDS];
 };
 
 static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
@@ -149,6 +149,18 @@ static struct u2f_state *get_state(void)
 	return state_loaded ? &state : NULL;
 }
 
+void u2f_zeroize(void)
+{
+	uint8_t zero[SHA256_DIGEST_SIZE] = {};
+
+	/* wipe content first */
+	setvar(&k_salt, sizeof(k_salt), zero, SHA256_DIGEST_SIZE);
+	/* delete now */
+	setvar(&k_salt, sizeof(k_salt), NULL, 0);
+
+	wipe_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK);
+	wipe_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT);
+}
 /* ---- chip-specific U2F crypto ---- */
 
 static int _derive_key(enum dcrypto_appid appid, const uint32_t input[8],

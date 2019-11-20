@@ -181,6 +181,17 @@ int board_tpm_mode_change_allowed(void)
 	return !!(board_properties & BOARD_ALLOW_CHANGE_TPM_MODE);
 }
 
+int board_fips_power_up_done(void)
+{
+	return !!(board_properties & BOARD_FIPS_POWERUP_DONE);
+}
+
+int board_fips_simulated(void)
+{
+	return !!(board_properties & BOARD_FIPS_SIMULATED);
+}
+
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {

@@ -86,6 +86,18 @@
 #define BOARD_ALLOW_CHANGE_TPM_MODE       BIT(20)
 
 /*
+ * Indicates successful completion of FIPS power up
+ * tests earlier. Reduces wake up time.
+ */
+#define BOARD_FIPS_POWERUP_DONE       BIT(21)
+
+/*
+ * Indicates successful completion of FIPS power up
+ * tests earlier. Reduces wake up time.
+ */
+#define BOARD_FIPS_SIMULATED       BIT(22)
+
+/*
  * Macro to capture all properties related to board strapping pins. This must be
  * updated if additional strap related properties are added.
  */
