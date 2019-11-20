@@ -12,6 +12,8 @@
 #include "ec_version.h"
 #include "endian.h"
 #include "extension.h"
+#include "fips.h"
+#include "fips_rand.h"
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
@@ -718,6 +720,7 @@ static void board_init(void)
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
+	fips_init_clear();
 	maybe_trigger_ite_sync();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
