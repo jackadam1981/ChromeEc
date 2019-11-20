@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5377af4_4432b5ec",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-20T22:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e7a3fdf_78e44a01",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "2afd7b8711c30140bcef35192b843f923b0badd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f4679f6_b8df9323",
         "filename": "board/volteer/board.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-20T21:10:39Z",
       "side": 1,
       "message": "I don\u0027t understand the mapping - why isn\u0027t this port 0? USB-C port 0 connects to the TCP0_* signals on the processor, and USB-C port 1 connects to TCP1 signals.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "2afd7b8711c30140bcef35192b843f923b0badd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5dfc77_023039f4",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-20T22:29:52Z",
+      "side": 1,
+      "message": "added comment",
+      "parentUuid": "1f4679f6_b8df9323",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "2afd7b8711c30140bcef35192b843f923b0badd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51873911_bc7183ef",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-20T22:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2083200_9f6eb838",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "2afd7b8711c30140bcef35192b843f923b0badd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
