@@ -21,10 +21,17 @@ void init_trng(void)
 	if (!runlevel_is_high())
 		return;
 #endif
-
-	GWRITE(TRNG, POST_PROCESSING_CTRL,
-		GC_TRNG_POST_PROCESSING_CTRL_SHUFFLE_BITS_MASK |
-		GC_TRNG_POST_PROCESSING_CTRL_CHURN_MODE_MASK);
+	/**
+	 *  According to NIST SP 800-90B only vetted conditioning mechanism
+	 * should be used for post-processing raw entropy.
+	 * See SP 800-90B, 3.1.5.1 Using Vetted Conditioning Components.
+	 * Use of non-vetted algorithms is governed in 3.1.5.2, but
+	 * assumes conservative coefficient 0.85 for entropy estimate,
+	 * which increase number of requests to TRNG to get desirable
+	 * entropy.
+	 * TRNG configured to use 2-bit alphabet internally
+	 */
+	GWRITE(TRNG, POST_PROCESSING_CTRL, 0);
 	GWRITE(TRNG, SLICE_MAX_UPPER_LIMIT, 1);
 	GWRITE(TRNG, SLICE_MIN_LOWER_LIMIT, 0);
 	GWRITE(TRNG, TIMEOUT_COUNTER, 0x7ff);
