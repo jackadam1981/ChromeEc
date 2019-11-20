@@ -100,6 +100,6 @@ int motion_sense_fifo_read(int capacity_bytes, int max_count, void *out,
 /**
  * Reset the internal data structures of the motion sense fifo.
  */
-__test_only void motion_sense_fifo_reset(void);
+void motion_sense_fifo_reset(void);
 
 #endif /*__CROS_EC_MOTION_SENSE_FIFO_H */
