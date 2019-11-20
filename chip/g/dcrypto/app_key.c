@@ -58,11 +58,14 @@ static void name_hash(enum dcrypto_appid appid,
 		digest[x] = __builtin_bswap32(digest[x]);
 }
 
+/**
+ * Prepare Application-specific device ID in usr[appid]
+ * usr[appid] = HMAC(DeviceID, SHA256(appname[appid]))
+ */
 int DCRYPTO_appkey_init(enum dcrypto_appid appid, struct APPKEY_CTX *ctx)
 {
 	uint32_t digest[SHA256_DIGEST_WORDS];
 
-	memset(ctx, 0, sizeof(*ctx));
 	name_hash(appid, digest);
 
 	if (!dcrypto_ladder_compute_usr(appid, digest))
@@ -71,17 +74,13 @@ int DCRYPTO_appkey_init(enum dcrypto_appid appid, struct APPKEY_CTX *ctx)
 	return 1;
 }
 
-void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx)
+void DCRYPTO_appkey_finish(void)
 {
-	always_memset(ctx, 0, sizeof(struct APPKEY_CTX));
 	GREG32(KEYMGR, AES_WIPE_SECRETS) = 1;
 }
 
 int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
 			  uint32_t output[8])
 {
-	uint32_t digest[SHA256_DIGEST_WORDS];
-
-	name_hash(appid, digest);
-	return !!dcrypto_ladder_derive(appid, digest, input, output);
+	return !!dcrypto_ladder_derive(appid, input, output);
 }

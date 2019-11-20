@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 #include "dcrypto.h"
+#ifdef BOARD_CR50
+#include "fips_rand.h"
+#endif
 #include "internal.h"
 #include "registers.h"
 #include "trng.h"
@@ -835,12 +838,25 @@ int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 	dcrypto_ecc_init();
 	result = dcrypto_call(CF_p256init_adr);
 
-	/* Pick uniform 0 < k < R */
+	/**
+	 * A new secret random number k shall be generated prior to the
+	 * generation of each digital signature for use during the signature
+	 * generation process. This secret number shall be protected from
+	 * unauthorized disclosure and modification.
+	 * Pick uniform 0 < k < R
+	 */
+#ifdef BOARD_CR50
+	do {
+		result |= fips_hmac_drbg_generate_reseed(drbg, &rnd,
+							 sizeof(rnd), NULL, 0);
+	} while (p256_cmp(&SECP256r1_nMin2, &rnd) < 0 && !result);
+	/* it's now caller's responsibility to call drbg_exit(drbg); */
+#else
 	do {
 		hmac_drbg_generate_p256(drbg, &rnd);
 	} while (p256_cmp(&SECP256r1_nMin2, &rnd) < 0);
 	drbg_exit(drbg);
-
+#endif
 	p256_add_d(&rnd, 1, &k);
 
 	CP8W(k, &k);

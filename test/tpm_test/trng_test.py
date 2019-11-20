@@ -11,7 +11,7 @@ import struct
 import subcmd
 import utils
 
-TRNG_TEST_FMT = '>H'
+TRNG_TEST_FMT = '>HB'
 TRNG_TEST_RSP_FMT = '>H2IH'
 TRNG_TEST_CC = 0x33
 
@@ -20,8 +20,8 @@ TRNG_SAMPLE_BITS = 1
 # NIST require at least 1000000 of 1-bit samples
 TRNG_SAMPLE_COUNT = 1000000
 
-def get_random_command(size):
-  return struct.pack(TRNG_TEST_FMT, size)
+def get_random_command(size, op):
+  return struct.pack(TRNG_TEST_FMT, size, op)
 
 def get_random_command_rsp(size):
   return struct.pack(TRNG_TEST_RSP_FMT, 0x8001,
@@ -46,21 +46,25 @@ def to_bitstring(s, n = 1):
     val_left = val
   return out
 
-def trng_test(tpm, trng_output):
+def trng_test(tpm, trng_mode, trng_output):
   """Download entropy samples from TRNG
 
     Command structure, shared out of band with the test running on the target:
 
     field     |    size  |                  note
-    ===================================================================
+    ========================================================================
     text_len  |    2     | size of the text to process, big endian
-
+    type      |    1     | 0 = TRNG, 1 = CR50 DRBG, 2 = get fips trng
   Args:
     tpm: a tpm object used to communicate with the device
+    trng_mode: type of RNG which data will be collected
 
   Raises:
     subcmd.TpmTestError: on unexpected target responses
   """
+  if trng_mode not in [0,1,2]:
+    print('%sUnknown random source: %d' % (utils.cursor_back(), trng_mode))
+    return
   # minimal recommended by NIST is 1000 samples per block
   # TRNG_SAMPLE_BITS is internal setting for TRNG which is important for
   # entropy analysis. TRNG internally gets a 16 bit sample (measurement of
@@ -86,7 +90,8 @@ def trng_test(tpm, trng_output):
   with open(trng_output, 'wb') as f:
     while remaining_samples:
       wrapped_response = tpm.command(tpm.wrap_ext_command(TRNG_TEST_CC,
-                                     get_random_command(sample_size)))
+                                     get_random_command(sample_size),
+				     trng_mode))
       if wrapped_response[:12] != get_random_command_rsp(sample_size):
         raise subcmd.TpmTestError("Unexpected response to '%s': %s" %
                                  ("trng", utils.hex_dump(wrapped_response)))

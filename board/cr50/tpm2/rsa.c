@@ -8,6 +8,7 @@
 #include "Hierarchy_fp.h"
 
 #include "dcrypto.h"
+#include "fips.h"
 #include "trng.h"
 
 #include "cryptoc/util.h"
@@ -102,7 +103,8 @@ CRYPT_RESULT _cpri__EncryptRSA(uint32_t *out_len, uint8_t *out,
 		return CRYPT_FAIL;
 	if (!check_encrypt_params(padding_alg, hash_alg, &padding, &hashing))
 		return CRYPT_FAIL;
-
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	reverse_tpm2b(key->publicKey);
 	rsa.e = key->exponent;
 	rsa.N.dmax = key->publicKey->size / sizeof(uint32_t);
@@ -135,7 +137,8 @@ CRYPT_RESULT _cpri__DecryptRSA(uint32_t *out_len, uint8_t *out,
 		return CRYPT_FAIL;
 	if (!check_encrypt_params(padding_alg, hash_alg, &padding, &hashing))
 		return CRYPT_FAIL;
-
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	reverse_tpm2b(key->publicKey);
 	reverse_tpm2b(key->privateKey);
 
@@ -170,7 +173,8 @@ CRYPT_RESULT _cpri__SignRSA(uint32_t *out_len, uint8_t *out,
 		return CRYPT_FAIL;
 	if (!check_sign_params(padding_alg, hash_alg, &padding, &hashing))
 		return CRYPT_FAIL;
-
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	reverse_tpm2b(key->publicKey);
 	reverse_tpm2b(key->privateKey);
 
@@ -208,7 +212,8 @@ CRYPT_RESULT _cpri__ValidateSignatureRSA(
 		return CRYPT_FAIL;
 	if (!check_sign_params(padding_alg, hash_alg, &padding, &hashing))
 		return CRYPT_FAIL;
-
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	reverse_tpm2b(key->publicKey);
 
 	rsa.e = key->exponent;
@@ -245,7 +250,8 @@ CRYPT_RESULT _cpri__TestKeyRSA(TPM2B *d_buf, uint32_t e,
 		return CRYPT_PARAMETER;  /* Insufficient output buffer space. */
 	if (N_buf->size > RSA_MAX_BYTES)
 		return CRYPT_PARAMETER;  /* Unsupported key size. */
-
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	DCRYPTO_bn_wrap(&N, N_buf->buffer, N_buf->size);
 	DCRYPTO_bn_wrap(&p, p_buf->buffer, p_buf->size);
 	reverse_tpm2b(N_buf);

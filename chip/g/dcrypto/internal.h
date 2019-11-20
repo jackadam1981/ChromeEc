@@ -130,6 +130,11 @@ struct drbg_ctx {
 /*
  * NIST SP 800-90A HMAC DRBG.
  */
+enum hmac_result {
+	HMAC_DRBG_SUCCESS = 0,
+	HMAC_DRBG_INVALID_PARAM = 1,
+	HMAC_DRBG_RESEED_REQUIRED = 2
+};
 
 /* Standard initialization. */
 void hmac_drbg_init(struct drbg_ctx *ctx,
@@ -146,15 +151,22 @@ void hmac_drbg_reseed(struct drbg_ctx *ctx,
 		      const void *p0, size_t p0_len,
 		      const void *p1, size_t p1_len,
 		      const void *p2, size_t p2_len);
-int hmac_drbg_generate(struct drbg_ctx *ctx,
+enum hmac_result hmac_drbg_generate(struct drbg_ctx *ctx,
 		       void *out, size_t out_len,
 		       const void *input, size_t input_len);
 /* Generate p256, with no additional input. */
-void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
+enum hmac_result hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
 void drbg_exit(struct drbg_ctx *ctx);
+
 
 /*
  * Accelerated p256. FIPS PUB 186-4
+ */
+/**
+ * dcrypto_p256_ecdsa_sign signs a message using provided HMAC_DRBG
+ * to pick uniform 0 < k < R.
+ * Caller should clean drbg if needed.
+ * @return 0 if error, non-zero if success
  */
 int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 			    const p256_int *message, p256_int *r, p256_int *s)
@@ -197,8 +209,11 @@ enum dcrypto_appid;      /* Forward declaration. */
 
 int dcrypto_ladder_compute_usr(enum dcrypto_appid id,
 			const uint32_t usr_salt[8]);
-int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
-			  const uint32_t input[8], uint32_t output[8]);
+/**
+ * output = HMAC(USR[appid], input)
+ */
+int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t input[8],
+			  uint32_t output[8]);
 #endif
 
 #ifdef __cplusplus

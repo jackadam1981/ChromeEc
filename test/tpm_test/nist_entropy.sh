@@ -13,7 +13,7 @@ rm -rf "${TMP_PATH}"
 git clone --depth 1 "${NIST_URL}" "${TMP_PATH}"
 make -j -C "${TMP_PATH}/cpp/" non_iid restart
 rm -f "${TRNG_OUT}"
-./tpmtest.py -t -o "${TRNG_OUT}"
+./tpmtest.py -t0 -o "${TRNG_OUT}"
 if [ ! -f "${TRNG_OUT}" ]; then
     echo "${TRNG_OUT} does not exist"
     exit 1

@@ -8,6 +8,9 @@
 #include "console.h"
 #include "endian.h"
 #include "extension.h"
+#ifdef BOARD_CR50
+#include "fips.h"
+#endif
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -124,10 +127,47 @@ static void alert_interrupt_process(int alert)
 	}
 
 GLOBALSEC_ALERT_COUNTER(CAMO0_BREACH);
+#ifndef BOARD_CR50
 GLOBALSEC_ALERT_COUNTER(CRYPTO0_DMEM_PARITY);
 GLOBALSEC_ALERT_COUNTER(CRYPTO0_DRF_PARITY);
 GLOBALSEC_ALERT_COUNTER(CRYPTO0_IMEM_PARITY);
 GLOBALSEC_ALERT_COUNTER(CRYPTO0_PGM_FAULT);
+#else
+/*
+ * ISRs reacting to CRYPTO alerts by setting FIPS error
+ */
+static void crypto_dmem_parity(void)
+{
+	alert_interrupt_process(ALERT_NUM_CRYPTO0_DMEM_PARITY);
+	fips_set_status(FIPS_FATAL_OTHER);
+}
+DECLARE_IRQ(GC_IRQNUM_GLOBALSEC_CRYPTO0_DMEM_PARITY_ALERT_INT,
+	    crypto_dmem_parity, 1);
+
+static void crypto_drf_parity(void)
+{
+	alert_interrupt_process(ALERT_NUM_CRYPTO0_DRF_PARITY);
+	fips_set_status(FIPS_FATAL_OTHER);
+}
+DECLARE_IRQ(GC_IRQNUM_GLOBALSEC_CRYPTO0_DRF_PARITY_ALERT_INT,
+	    crypto_drf_parity, 1);
+
+static void crypto_imem_parity(void)
+{
+	alert_interrupt_process(ALERT_NUM_CRYPTO0_IMEM_PARITY);
+	fips_set_status(FIPS_FATAL_OTHER);
+}
+DECLARE_IRQ(GC_IRQNUM_GLOBALSEC_CRYPTO0_IMEM_PARITY_ALERT_INT,
+	    crypto_imem_parity, 1);
+
+static void crypto_pgm_fault(void)
+{
+	alert_interrupt_process(ALERT_NUM_CRYPTO0_PGM_FAULT);
+	fips_set_status(FIPS_FATAL_OTHER);
+}
+DECLARE_IRQ(GC_IRQNUM_GLOBALSEC_CRYPTO0_PGM_FAULT_ALERT_INT,
+	    crypto_pgm_fault, 1);
+#endif
 GLOBALSEC_ALERT_COUNTER(DBCTRL_CPU0_D_IF_BUS_ERR);
 GLOBALSEC_ALERT_COUNTER(DBCTRL_CPU0_D_IF_UPDATE_WATCHDOG);
 GLOBALSEC_ALERT_COUNTER(DBCTRL_CPU0_I_IF_BUS_ERR);
@@ -163,7 +203,21 @@ GLOBALSEC_ALERT_COUNTER(RTC0_RTC_DEAD);
 GLOBALSEC_ALERT_COUNTER(TEMP0_MAX_TEMP);
 GLOBALSEC_ALERT_COUNTER(TEMP0_MAX_TEMP_DIFF);
 GLOBALSEC_ALERT_COUNTER(TEMP0_MIN_TEMP);
+#ifndef BOARD_CR50
 GLOBALSEC_ALERT_COUNTER(TRNG0_OUT_OF_SPEC);
+#else
+/*
+ * ISR reacting to TRNG alert on TRNG_SECURE_POST_PROCESSING_CTRL_MONITOR_STATS
+ */
+static void trng_out_of_spec(void)
+{
+	alert_interrupt_process(ALERT_NUM_TRNG0_OUT_OF_SPEC);
+	fips_set_status(FIPS_FATAL_TRNG_OTHER);
+}
+DECLARE_IRQ(GC_IRQNUM_GLOBALSEC_TRNG0_OUT_OF_SPEC_ALERT_INT, trng_out_of_spec,
+	    1);
+#endif
+
 GLOBALSEC_ALERT_COUNTER(TRNG0_TIMEOUT);
 GLOBALSEC_ALERT_COUNTER(VOLT0_VOLT_ERR);
 GLOBALSEC_ALERT_COUNTER(XO0_JITTERY_TRIM_DIS);
