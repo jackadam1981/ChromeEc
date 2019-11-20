@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0028f78_dc456327",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-20T08:33:21Z",
+      "side": 1,
+      "message": "This is wrong.\n\nyou should use:\n\n*ieoc \u003d RT946X_IEOC_MIN + RT946X_IEOC_STEP * reg_ieoc;",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 61
+      },
+      "revId": "40db0540b9cefd990496c00167fffa8a57d342db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
