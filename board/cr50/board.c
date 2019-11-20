@@ -12,6 +12,7 @@
 #include "ec_version.h"
 #include "endian.h"
 #include "extension.h"
+#include "fips.h"
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
@@ -179,6 +180,11 @@ int board_has_ina_support(void)
 int board_tpm_mode_change_allowed(void)
 {
 	return !!(board_properties & BOARD_ALLOW_CHANGE_TPM_MODE);
+}
+
+int board_fips_power_up_done(void)
+{
+	return !!(board_properties & BOARD_FIPS_POWERUP_DONE);
 }
 
 /* Get header address of the backup RW copy. */
@@ -731,7 +737,7 @@ static void board_init(void)
 
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
-	nvmem_init();
+	/* nvmem_init(); */
 
 	/*
 	 * If this was a low power wake and not a rollback, restore the ccd
@@ -1409,6 +1415,11 @@ static void init_board_properties(void)
 	uint32_t properties;
 
 	properties = GREG32(PMU, LONG_LIFE_SCRATCH1);
+
+	/* Initialize NvMem partitions */
+	nvmem_init();
+	if (fips_enforced())
+		console_disable_output();
 
 	/*
 	 * This must be a power on reset or maybe restart due to a software
