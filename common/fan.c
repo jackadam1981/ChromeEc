@@ -20,6 +20,7 @@
  * things manually. */
 static int thermal_control_enabled[CONFIG_FANS];
 
+
 #ifdef CONFIG_FAN_UPDATE_PERIOD
 /* Should we ignore the fans for a while? */
 static int fan_update_counter[CONFIG_FANS];
@@ -96,7 +97,7 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 	fan_set_rpm_target(FAN_CH(fan), new_rpm);
 }
 
-static void set_enabled(int fan, int enable)
+void set_enabled(int fan, int enable)
 {
 	fan_set_enabled(FAN_CH(fan), enable);
 
