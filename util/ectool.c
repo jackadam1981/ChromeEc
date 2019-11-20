@@ -250,6 +250,8 @@ const char help_str[] =
 	"      Set 16 bit duty cycle of given PWM\n"
 	"  rand <num_bytes>\n"
 	"      generate <num_bytes> of random numbers\n"
+	"  raw <cmd_id> [cmd_data_in_file|-] [cmd_data_out_file|-]\n"
+	"      issue a raw cmd using files/stdio as the data\n"
 	"  readtest <patternoffset> <size>\n"
 	"      Reads a pattern from the EC via LPC\n"
 	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump>"
@@ -1168,6 +1170,61 @@ int cmd_rand(int argc, char *argv[])
 	}
 
 	return 0;
+}
+
+int cmd_raw(int argc, char *argv[])
+{
+	size_t r_size;
+	int cmd, ver;
+	/* out - outgoing to EC | in - incoming from EC */
+	FILE *out = stdin, *in = stdout;
+	char out_buf[1024], in_buf[1024];
+	size_t out_size;
+	int rv;
+
+	if (argc < 3 || argc > 4) {
+		fprintf(stderr, "Usage: %s <cmd> <ver> [out_file|-] [in_file|-]\n", argv[0]);
+		return -1;
+	}
+
+	cmd = strtoi(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid cmd argument\n");
+		return -1;
+	}
+
+	ver = strtoi(argv[2], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid ver argument\n");
+		return -1;
+	}
+
+	if (argc >= 3) {
+		if (strcmp(argv[3], "-") != 0) {
+			out = fopen(argv[3], "r");
+			if (out == NULL) {
+				perror("Failed to open out file");
+				return -1;
+			}
+		}
+	}
+
+	if (argc == 4) {
+		if (strcmp(argv[4], "-") != 0) {
+			in = fopen(argv[4], "w");
+			if (in == NULL) {
+				perror("Failed to open in file");
+				return -1;
+			}
+		}
+	}
+
+	out_size = fread(out_buf, 1, sizeof(out_buf), out);
+	rv = ec_command(cmd, ver, out_buf, (int)out_size, in_buf, sizeof(in_buf));
+	/* Fix in_buf size */
+	fwrite(in_buf, 1, sizeof(in_buf), in);
+
+	return rv;
 }
 
 int cmd_flash_spi_info(int argc, char *argv[])
@@ -9230,6 +9287,7 @@ const struct command commands[] = {
 	{"pwmsetkblight", cmd_pwm_set_keyboard_backlight},
 	{"pwmsetduty", cmd_pwm_set_duty},
 	{"rand", cmd_rand},
+	{"raw", cmd_raw},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
 	{"rollbackinfo", cmd_rollback_info},
