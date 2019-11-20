@@ -142,6 +142,12 @@
 #define CONFIG_WATCHDOG_PERIOD_MS 10000
 
 /*
+ * Enable sha1sum and sha256sum for RO and RW.
+ */
+#define CONFIG_SHA1
+#define CONFIG_SHA256
+
+/*
  * Add rollback protection
  */
 #define CONFIG_ROLLBACK
