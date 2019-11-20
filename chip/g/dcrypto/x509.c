@@ -4,7 +4,9 @@
  */
 
 #include "dcrypto.h"
-
+#ifdef BOARD_CR50
+#include "fips_rand.h"
+#endif
 #include <stdint.h>
 
 /* Limit the size of long form encoded objects to < 64 kB. */
@@ -427,7 +429,9 @@ int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 	struct asn1 ctx = {cert, 0};
 	HASH_CTX sha;
 	p256_int h, r, s;
+#ifndef BOARD_CR50
 	struct drbg_ctx drbg;
+#endif
 
 	SEQ_START(ctx, V_SEQ, SEQ_LARGE) {  /* outer seq */
 	/*
@@ -516,9 +520,17 @@ int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 	DCRYPTO_SHA256_init(&sha, 0);
 	HASH_update(&sha, body, (ctx.p + ctx.n) - body);
 	p256_from_bin(HASH_final(&sha), &h);
-	hmac_drbg_init_rfc6979(&drbg, d, &h);
-	if (!dcrypto_p256_ecdsa_sign(&drbg, d, &h, &r, &s))
+
+#ifdef BOARD_CR50
+	if (!fips_p256_ecdsa_sign(d, &h, &r, &s))
 		return 0;
+#else
+	hmac_drbg_init_rfc6979(&drbg, d, &h);
+	if (!dcrypto_p256_ecdsa_sign(&drbg, d, &h, &r, &s)) {
+		drbg_exit(&drbg);
+		return 0;
+	}
+#endif
 
 	/* Append X509 signature */
 	SEQ_START(ctx, V_SEQ, SEQ_SMALL);

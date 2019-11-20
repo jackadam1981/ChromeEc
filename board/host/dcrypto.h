@@ -68,7 +68,7 @@ struct APPKEY_CTX {};
 
 int DCRYPTO_appkey_init(enum dcrypto_appid appid, struct APPKEY_CTX *ctx);
 
-void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
+void DCRYPTO_appkey_finish(void);
 
 int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
 			  uint32_t output[8]);

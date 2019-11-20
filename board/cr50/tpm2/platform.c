@@ -7,6 +7,7 @@
 #include "TPM_Types.h"
 
 #include "ccd_config.h"
+#include "fips_rand.h"
 #include "pinweaver.h"
 #include "tpm_nvmem.h"
 #include "trng.h"
@@ -17,7 +18,7 @@
 uint16_t _cpri__GenerateRandom(size_t random_size,
 			uint8_t *buffer)
 {
-	rand_bytes(buffer, random_size);
+	fips_rand_bytes(buffer, random_size);
 	return random_size;
 }
 
@@ -94,5 +95,5 @@ BOOL _plat__ShallSurviveOwnerClear(uint32_t  index)
 void _plat__OwnerClearCallback(void)
 {
 	/* Invalidate existing u2f registrations. */
-	u2f_gen_kek_seed(0 /* commit */);
+	u2f_zeroize();
 }

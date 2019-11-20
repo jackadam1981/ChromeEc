@@ -10,7 +10,7 @@ make -C /tmp/ea/cpp/ non_iid
 make -C /tmp/ea/cpp/ restart
 TRNG_OUT=/tmp/trng_output
 rm -f $TRNG_OUT
-./tpmtest.py -t
+./tpmtest.py -t0
 if [ ! -f "$TRNG_OUT" ]; then
     echo "$TRNG_OUT does not exist"
     exit 1

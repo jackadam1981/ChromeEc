@@ -59,7 +59,7 @@ int u2f_origin_key(const uint8_t *seed, p256_int *d);
  * @param origin pointer to origin id
  * @param user pointer to user secret
  * @param pointer to origin-specific random seed
- *
+ * @param key_handle out HMAC(salt_kek, origin || user || seed)
  * @return EC_SUCCESS if a valid keypair was created.
  */
 int u2f_origin_user_keyhandle(const uint8_t *origin,
@@ -69,7 +69,10 @@ int u2f_origin_user_keyhandle(const uint8_t *origin,
 
 /**
  * Generate an origin and user-specific ECDSA keypair from the specified
- * key handle.
+ * key handle, which contains additional data for DRBG and itself
+ * is computed using seed random value. Thus, if keypair can't be created
+ * caller should try to generate key_handle again with a new random seed
+ * and try again.
  *
  * If pk_x and pk_y are NULL, public key generation will be skipped.
  *
@@ -93,6 +96,11 @@ int u2f_origin_user_keypair(const uint8_t *key_handle,
  * @return EC_SUCCESS if a valid key was created.
  */
 int u2f_gen_kek(const uint8_t *origin, uint8_t *kek, size_t key_len);
+
+/***
+ * Zeroize all seeds used to generate U2F keys
+ */
+void u2f_zeroize(void);
 
 /**
  * Generate a hardware derived ECDSA keypair for individual attestation.

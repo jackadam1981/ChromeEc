@@ -5,6 +5,7 @@
 
 #include "CryptoEngine.h"
 #include "dcrypto.h"
+#include "fips.h"
 
 #include <assert.h>
 
@@ -18,6 +19,8 @@ CRYPT_RESULT _cpri__AESDecryptCBC(
 {
 	CRYPT_RESULT result;
 
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	if (len == 0)
 		return CRYPT_SUCCESS;
 	assert(key != NULL && iv != NULL && in != NULL && out != NULL);
@@ -37,6 +40,8 @@ CRYPT_RESULT _cpri__AESDecryptCFB(uint8_t *out, uint32_t num_bits,
 				uint8_t *key, uint8_t *iv, uint32_t len,
 				uint8_t *in)
 {
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	if (len == 0)
 		return CRYPT_SUCCESS;
 	assert(key != NULL && iv != NULL && out != NULL && in != NULL);
@@ -72,6 +77,8 @@ CRYPT_RESULT _cpri__AESDecryptECB(
 	uint8_t *in)
 {
 	assert(key != NULL);
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	/* Initialize AES hardware. */
 	if (!DCRYPTO_aes_init(key, num_bits, NULL,
 				CIPHER_MODE_ECB, DECRYPT_MODE))
@@ -104,6 +111,8 @@ CRYPT_RESULT _cpri__AESEncryptCBC(
 	CRYPT_RESULT result;
 
 	assert(key != NULL && iv != NULL);
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	if (!DCRYPTO_aes_init(key, num_bits, iv, CIPHER_MODE_CBC, ENCRYPT_MODE))
 		return CRYPT_PARAMETER;
 
@@ -124,6 +133,9 @@ CRYPT_RESULT _cpri__AESEncryptCFB(
 
 	assert(out != NULL && key != NULL && iv != NULL && in != NULL);
 	assert(len <= INT32_MAX);
+
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	if (!DCRYPTO_aes_init(key, num_bits, iv, CIPHER_MODE_CTR, ENCRYPT_MODE))
 		return CRYPT_PARAMETER;
 
@@ -167,6 +179,8 @@ CRYPT_RESULT _cpri__AESEncryptECB(
 	uint8_t *in)
 {
 	assert(key != NULL);
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	/* Initialize AES hardware. */
 	if (!DCRYPTO_aes_init(key, num_bits, NULL,
 			      CIPHER_MODE_ECB, ENCRYPT_MODE))
@@ -187,6 +201,8 @@ CRYPT_RESULT _cpri__AESEncryptOFB(
 
 	assert(out != NULL && key != NULL && iv != NULL && in != NULL);
 	assert(len <= INT32_MAX);
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	slen = (int32_t) len;
 	/* Initialize AES hardware. */
 	if (!DCRYPTO_aes_init(key, num_bits, NULL,

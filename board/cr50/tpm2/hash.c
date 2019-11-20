@@ -4,7 +4,7 @@
  */
 
 #include "CryptoEngine.h"
-
+#include "fips.h"
 #include "util.h"
 #include "dcrypto.h"
 
@@ -60,6 +60,9 @@ uint16_t _cpri__HashBlock(TPM_ALG_ID alg, uint32_t in_len, uint8_t *in,
 	uint8_t digest[SHA_DIGEST_MAX_BYTES];
 	const uint16_t digest_len = _cpri__GetDigestSize(alg);
 
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
+
 	if (digest_len == 0)
 		return 0;
 
@@ -95,6 +98,8 @@ uint16_t _cpri__StartHash(TPM_ALG_ID alg, BOOL sequence,
 	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
 	uint16_t result;
 
+	if (!fips_crypto_allowed())
+		return CRYPT_FAIL;
 	/* NOTE: as per bug http://crosbug.com/p/55331#26 (NVMEM
 	 * encryption), always use the software hash implementation
 	 * for TPM related calculations, since we have no guarantee
@@ -135,6 +140,8 @@ void _cpri__UpdateHash(CPRI_HASH_STATE *state, uint32_t in_len,
 {
 	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
 
+	if (!fips_crypto_allowed())
+		return;
 	HASH_update(ctx, in, in_len);
 }
 
@@ -143,6 +150,8 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 {
 	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
 
+	if (!fips_crypto_allowed())
+		return 0;
 	out_len = MIN(HASH_size(ctx), out_len);
 	memcpy(out, HASH_final(ctx), out_len);
 	return out_len;
