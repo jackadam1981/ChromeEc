@@ -121,6 +121,10 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT]   = { .channel = 3, .flags = 0, .freq = 100 },
 	[PWM_CH_FAN] = {.channel = 5, .flags = PWM_CONFIG_OPEN_DRAIN,
 			.freq = 25000},
+#if (CONFIG_FANS == 2)
+	[PWM_CH_FAN2] = {.channel = 6, .flags = PWM_CONFIG_OPEN_DRAIN,
+			.freq = 25000},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -277,6 +281,15 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = GPIO_EN_PP5000_FAN,
 };
 
+#if (CONFIG_FANS == 2)
+const struct fan_conf fan_conf_1 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = MFT_CH_1,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+#endif
+
 /* Default */
 const struct fan_rpm fan_rpm_0 = {
 	.rpm_min = 3100,
@@ -284,14 +297,28 @@ const struct fan_rpm fan_rpm_0 = {
 	.rpm_max = 6900,
 };
 
+#if (CONFIG_FANS == 2)
+const struct fan_rpm fan_rpm_1 = {
+	.rpm_min = 2900,
+	.rpm_start = 2900,
+	.rpm_max = 5500,
+};
+#endif
+
 const struct fan_t fans[FAN_CH_COUNT] = {
 	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+#if (CONFIG_FANS == 2)
+	[FAN_CH_1] = { .conf = &fan_conf_1, .rpm = &fan_rpm_1, },
+#endif
 };
 
 /******************************************************************************/
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
 	[MFT_CH_0] = {NPCX_MFT_MODULE_1, TCKC_LFCLK, PWM_CH_FAN},
+#if (CONFIG_FANS == 2)
+	[MFT_CH_1] = {NPCX_MFT_MODULE_2, TCKC_LFCLK, PWM_CH_FAN2},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
