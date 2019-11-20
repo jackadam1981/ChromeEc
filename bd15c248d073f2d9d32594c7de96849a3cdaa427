@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "627a16ae_eaf76b77",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-20T10:54:18Z",
+      "side": 1,
+      "message": "I think we should not enable LED on start up. This line should be dropped.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 69
+      },
+      "revId": "bd15c248d073f2d9d32594c7de96849a3cdaa427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
