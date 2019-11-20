@@ -176,7 +176,8 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			      int read_len,
 			      int write_len)
 {
-	int val;
+	static int prev_batt_mode_cache = 0;
+	int val, rv;
 	/*
 	 * We cache battery operational mode locally for both read and write
 	 * commands. If MODE_CAPACITY bit is set, battery capacity will be
@@ -199,22 +200,32 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			batt_mode_cache = batt_cmd_head[1] |
 					  (batt_cmd_head[2] << 8);
 		} else if (read_len > 0) {
-			if (batt_mode_cache == BATT_MODE_UNINITIALIZED)
+			if (batt_mode_cache == BATT_MODE_UNINITIALIZED) {
 				/*
 				 * Read the battery operational mode from
 				 * the battery to initialize batt_mode_cache.
 				 * This may cause an i2c transaction.
 				 */
-				if (battery_get_mode(&batt_mode_cache) ==
-				    EC_ERROR_UNIMPLEMENTED)
-					/*
-					 * Register not supported, choose
-					 * typical SB defaults.
-					 */
-					batt_mode_cache =
-					   MODE_INTERNAL_CHARGE_CONTROLLER |
-					   MODE_ALARM |
-					   MODE_CHARGER;
+				rv = battery_get_mode(&batt_mode_cache);
+				if (rv) {
+					if (rv == EC_ERROR_UNIMPLEMENTED)
+						/*
+						 * Register not supported, choose
+						 * typical SB defaults.
+						 */
+						batt_mode_cache =
+						   MODE_INTERNAL_CHARGE_CONTROLLER |
+						   MODE_ALARM |
+						   MODE_CHARGER;
+					else {
+						batt_mode_cache = prev_batt_mode_cache;
+
+						CPRINTS("hx10: mode=0x%X, rv=%d", batt_mode_cache, rv);
+					}
+				} else {
+					prev_batt_mode_cache = batt_mode_cache;
+				}
+			}
 
 			memcpy(dest, &batt_mode_cache, bounded_read_len);
 		}
