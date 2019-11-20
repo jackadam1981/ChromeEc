@@ -5,15 +5,17 @@
 """Tests for trng."""
 from __future__ import print_function
 import struct
-
 import subcmd
 import utils
 
 TRNG_TEST_FMT = '>H'
 TRNG_TEST_RSP_FMT = '>H2IH'
 TRNG_TEST_CC = 0x33
-TRNG_SAMPLE_SIZE = 1000 # minimal recommended by NIST is 1000 bytes per sample
-TRNG_SAMPLE_COUNT = 1000 # NIST require at least 1000000 of 8-bit samples
+
+# should be in sync with TRNG configuration
+TRNG_SAMPLE_BITS = 1
+# NIST require at least 1000000 of 1-bit samples
+TRNG_SAMPLE_COUNT = 1000000
 
 def get_random_command(size):
   return struct.pack(TRNG_TEST_FMT, size)
@@ -22,6 +24,25 @@ def get_random_command_rsp(size):
   return struct.pack(TRNG_TEST_RSP_FMT, 0x8001,
                      struct.calcsize(TRNG_TEST_RSP_FMT) + size, 0, TRNG_TEST_CC)
 
+# convert input packed byte array to n-bits in a byte representation
+# used by NIST tests. It's designed to recover sequence of samples
+# as it comes from TRNG, including the fact that rand_bytes() reverse
+# byte order in every 32-bit chunk.
+def to_bitstring(s, n = 1):
+  out = ''
+  val_left = 0
+  bits_left = 0
+  while len(s):
+    (val) = struct.unpack('>I', s[0:4].rjust(4,'\0'))
+    val = (val[0] << bits_left) + val_left
+    bits_left += 8 * len(s[0:4])
+    s = s[4:]
+    while bits_left >= n:
+      out = out + struct.pack('B', val & ((1 << n) - 1))
+      val >>= n
+      bits_left -= n
+    val_left = val
+  return out
 
 def trng_test(tpm):
   """Download entropy samples from TRNG
@@ -38,13 +59,23 @@ def trng_test(tpm):
   Raises:
     subcmd.TpmTestError: on unexpected target responses
   """
+  # minimal recommended by NIST is 1000 samples per block
+  # this variable should be divisible by 4 to match 32bit reads from TRNG
+  # make sure number of bytes divides to 4 * TRNG_SAMPLE_BITS
+  sample_size = int(1024 / (32 * TRNG_SAMPLE_BITS)) * 32 * TRNG_SAMPLE_BITS
+  remaining_samples = TRNG_SAMPLE_COUNT
   with open('/tmp/trng_output', 'wb') as f:
-    for x in range(0, TRNG_SAMPLE_COUNT):
+    while remaining_samples:
       wrapped_response = tpm.command(tpm.wrap_ext_command(TRNG_TEST_CC,
-                                     get_random_command(TRNG_SAMPLE_SIZE)))
-      if wrapped_response[:12] != get_random_command_rsp(TRNG_SAMPLE_SIZE):
+                                     get_random_command(sample_size)))
+      if wrapped_response[:12] != get_random_command_rsp(sample_size):
         raise subcmd.TpmTestError("Unexpected response to '%s': %s" %
                                  ("trng", utils.hex_dump(wrapped_response)))
-      f.write(wrapped_response[12:])
-      print('%s %d%%\r' %( utils.cursor_back(), (x/10)), end=""),
+      bits = to_bitstring(wrapped_response[12:], TRNG_SAMPLE_BITS)
+      bits = bits[:remaining_samples]
+      f.write(bits)
+      remaining_samples -= len(bits)
+      print('%s %d%%\r' %( utils.cursor_back(),
+                        (((TRNG_SAMPLE_COUNT - remaining_samples)*100)
+                         / TRNG_SAMPLE_COUNT)), end="")
   print('%sSUCCESS: %s' % (utils.cursor_back(), 'trng'))

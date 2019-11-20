@@ -15,7 +15,11 @@ if [ ! -f "$TRNG_OUT" ]; then
     echo "$TRNG_OUT does not exist"
     exit 1
 fi
+rm -f ea_non_iid.log
 /tmp/ea/cpp/ea_non_iid -a $TRNG_OUT | tee ea_non_iid.log
 entropy=`grep min ea_non_iid.log | awk '{ print $5 }'`
+if [ -z $entropy ]; then
+    entropy=`grep H_original ea_non_iid.log | awk '{ print $2 }'`
+fi
 echo "Minimal entropy" $entropy
 /tmp/ea/cpp/ea_restart $TRNG_OUT $entropy | tee -a ea_non_iid.log
