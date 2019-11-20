@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "931b1e9e_2852cb01",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3089,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-20T16:42:27Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem right. Why would we want to disabled PD in the try wait. PD is still valid here, right?",
+      "range": {
+        "startLine": 3089,
+        "startChar": 1,
+        "endLine": 3089,
+        "endChar": 24
+      },
+      "revId": "faff8bffc698369bf60e758026bc9796ad4f7d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
