@@ -39,6 +39,30 @@
       "revId": "7e222ac1c1b5681505fed18170d0a694e8794bc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9287de_0030609b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-20T07:03:13Z",
+      "side": 1,
+      "message": "...and is this correct?\nmt6370_enable_hidden_mode() does not exist on RT9466.",
+      "parentUuid": "21a0d95d_f750d835",
+      "range": {
+        "startLine": 331,
+        "startChar": 17,
+        "endLine": 331,
+        "endChar": 18
+      },
+      "revId": "7e222ac1c1b5681505fed18170d0a694e8794bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
