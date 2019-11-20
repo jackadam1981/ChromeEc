@@ -150,8 +150,9 @@ int hmac_drbg_generate(struct drbg_ctx *ctx,
 		       void *out, size_t out_len,
 		       const void *input, size_t input_len);
 /* Generate p256, with no additional input. */
-void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
+int hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
 void drbg_exit(struct drbg_ctx *ctx);
+
 
 /*
  * Accelerated p256. FIPS PUB 186-4

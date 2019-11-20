@@ -43,4 +43,6 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 					 void *obj_value,
 					 int commit);
 
+enum tpm_read_rv wipe_tpm_nvmem_hidden(uint16_t object_index);
+
 #endif  /* ! __EC_BOARD_CR50_TPM_NVMEM_OPS_H */
