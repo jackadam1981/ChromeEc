@@ -712,6 +712,24 @@
     },
     {
       "key": {
+        "uuid": "dbbd78c7_158c75cf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T19:49:15Z",
+      "side": 1,
+      "message": "I disagree: the drp_state policy applies equally to auto or non-auto toggling, see the comments documenting enum pd_dual_role_states. TCPMv2 should match TCPMv1 behavior. Support for this policy needs to be added to TCPMv2 for both auto and non-auto toggling.\n\n\u003e It was only added to prevent drp toggling when auto toggle is enabled.\n\nThat\u0027s a different flag PD_FLAGS_TCPC_DRP_TOGGLE in TCPMv1. In TCPMv2 I don\u0027t think you\u0027ll need the same flag, because things are better organized into different states.\n\nAdding support for drp_state policy could be moved out of this CL into its own if you want to unblock this one.",
+      "parentUuid": "6286b10e_bf8df773",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
