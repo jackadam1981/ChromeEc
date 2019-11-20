@@ -393,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "ebcb7d1a_45d26dc8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T02:49:47Z",
+      "side": 1,
+      "message": "This has not been done: TC_FLAGS_TCPC_DRP_TOGGLE should be removed.",
+      "parentUuid": "b7c29ec8_2e76a748",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbcbbe7b_fe059dac",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -498,6 +516,24 @@
     },
     {
       "key": {
+        "uuid": "20debd04_cbecd781",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T02:49:47Z",
+      "side": 1,
+      "message": "This has not been done: this comment should be removed.",
+      "parentUuid": "aab001fd_4aeae99e",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18df1a65_c13c768e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -568,6 +604,24 @@
     },
     {
       "key": {
+        "uuid": "44b1cf51_af907395",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T02:49:47Z",
+      "side": 1,
+      "message": "This has not been done: check should be PD_DRP_TOGGLE_ON",
+      "parentUuid": "f4e71c22_39cf1caf",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -612,6 +666,30 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61b05cfc_d1b1d4ed",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T02:49:47Z",
+      "side": 1,
+      "message": "This has not been done: comment should change to just \"Attempt TCPC auto DRP toggle\".",
+      "parentUuid": "291e3029_60f404c2",
+      "range": {
+        "startLine": 2193,
+        "startChar": 31,
+        "endLine": 2193,
+        "endChar": 46
+      },
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -682,6 +760,24 @@
       "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "135c4c2d_6134eb73",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T02:49:47Z",
+      "side": 1,
+      "message": "This has not been done: should change while loop to \"task_wait_event(paused ? -1 : USBC_EVENT_TIMEOUT)\"",
+      "parentUuid": "4b703f39_7cb77cc5",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
