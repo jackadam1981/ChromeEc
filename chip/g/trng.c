@@ -9,6 +9,10 @@
 #include "registers.h"
 #include "trng.h"
 
+#ifndef TRNG_SAMPLE_BITS
+#define TRNG_SAMPLE_BITS 1
+#endif
+
 void init_trng(void)
 {
 #if (!(defined(CONFIG_CUSTOMIZED_RO) && defined(SECTION_IS_RO)))
@@ -21,12 +25,33 @@ void init_trng(void)
 	if (!runlevel_is_high())
 		return;
 #endif
+	/**
+	 * According to NIST SP 800-90B only vetted conditioning mechanism
+	 * should be used for post-processing raw entropy.
+	 * See SP 800-90B, 3.1.5.1 Using Vetted Conditioning Components.
+	 * Use of non-vetted algorithms is governed in 3.1.5.2, but
+	 * assumes conservative coefficient 0.85 for entropy estimate,
+	 * which increase number of requests to TRNG to get desirable
+	 * entropy and prevents from getting full entropy.
+	 */
+	GWRITE(TRNG, POST_PROCESSING_CTRL, 0);
 
-	GWRITE(TRNG, POST_PROCESSING_CTRL,
-		GC_TRNG_POST_PROCESSING_CTRL_SHUFFLE_BITS_MASK |
-		GC_TRNG_POST_PROCESSING_CTRL_CHURN_MODE_MASK);
-	GWRITE(TRNG, SLICE_MAX_UPPER_LIMIT, 1);
+	/**
+	 * TRNG can return up to 16 bits at a time, but highest bits
+	 * have lower entropy. Practically on Cr50 only 13 bits can be
+	 * used - setting to higher value makes TRNG_EMPTY always set.
+	 * Entropy seems to be reasonable for up to 8 bits [7..0].
+	 * Time for getting 32bit random is roughly equal to 1/N,
+	 * where N is number of bits in sample.
+	 */
+	GWRITE(TRNG, SLICE_MAX_UPPER_LIMIT, TRNG_SAMPLE_BITS - 1);
+
+	/* lowest bit have highest entropy, so always start from it */
 	GWRITE(TRNG, SLICE_MIN_LOWER_LIMIT, 0);
+
+	/* Enable bit frequency monitoring, NIST spec */
+	GWRITE(TRNG, SECURE_POST_PROCESSING_CTRL, 0x3);
+
 	GWRITE(TRNG, TIMEOUT_COUNTER, 0x7ff);
 	GWRITE(TRNG, TIMEOUT_MAX_TRY_NUM, 4);
 	GWRITE(TRNG, POWER_DOWN_B, 1);

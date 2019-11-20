@@ -17,5 +17,8 @@ if [ ! -f "$TRNG_OUT" ]; then
 fi
 /tmp/ea/cpp/ea_non_iid -a $TRNG_OUT | tee ea_non_iid.log
 entropy=`grep min ea_non_iid.log | awk '{ print $5 }'`
+if [ -z $entropy ]; then
+    entropy=`grep H_original ea_non_iid.log | awk '{ print $2 }'`
+fi
 echo "Minimal entropy" $entropy
 /tmp/ea/cpp/ea_restart $TRNG_OUT $entropy | tee -a ea_non_iid.log
