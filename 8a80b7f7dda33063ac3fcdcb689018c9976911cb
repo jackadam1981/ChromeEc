@@ -730,6 +730,24 @@
     },
     {
       "key": {
+        "uuid": "9cf9ac9b_cb213650",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-20T20:30:38Z",
+      "side": 1,
+      "message": "Hello, I sat with Sam to understand this. I think there\u0027s maybe a miscommunication. My thoughts:\n\n(1) PD_DRP_TOGGLE_OFF should be renamed -- it is super confusing, as it *really* means \"Toggle Unidirectionally Until We\u0027re a Sink\". There\u0027s no such requirement in the Type-C spec -- this is purely a policy flag.\n\nPD_DRP_TOGGLE_ON makes sense as is -- it means \"OK to Jump Between The Two SRC.Unattach\u003c-\u003eSNK.Unattach bubbles\". This is more of a Type-C state machine flag, but still policy.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/usb_pd_protocol.c#2591\n\n(2) Clarifying above, there is no \"single\" state for DRP (Auto)Toggling in the Type-C spec. There are two distinct bubbles in the USB Type-C R2.0 State Diagram, so I am in favor or burning CPU cycles to stay compliant.\n\nFigure 4-16 Connection State Diagram: DRP with Accessory and Try.SRC Support (p166)\n\nWe should avoid creating \"new\" bubbles that are ChromeOS specific wherever possible. In this case, I would strongly not want to add a new [DRP-Autotoggle] bubble. (Pardon if I this doesn\u0027t fit into discussion above.)\n\n\n\nHow I\u0027d write the line under question (I am not a coder, this is what I grok from above):\n\nelse if (get_time().val \u003e tc[port].next_role_swap \u0026\u0026\n\t\tdrp_state[port] \u003d\u003d PD_DRP_TOGGLE_ON \u0026\u0026   #This is a POLICY choice\n                drp_state[port] !\u003d PD_DRP_TOGGLE_UNIDIRECTIONALLY_TO_SINK ) #This is the rename...\n\n#Toggle to source",
+      "parentUuid": "dbbd78c7_158c75cf",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
