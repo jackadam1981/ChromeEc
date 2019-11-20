@@ -766,6 +766,24 @@
     },
     {
       "key": {
+        "uuid": "bf864ce6_1af5db0c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T22:10:27Z",
+      "side": 1,
+      "message": "Totally agree that PD_DRP_TOGGLE_OFF is not a good name! But it is an important one to get right, since that is our policy while in suspend.\n\n\u003e it *really* means \"Toggle Unidirectionally Until We\u0027re a Sink\"\n\nI don\u0027t think so: it means don\u0027t do any toggling, if we are currently sourcing then allow that to continue, but after unplug, then only allow sinking.\n\n\u003e Okay. Implemented as Edward requested.\n\nNope, doesn\u0027t yet match TCPMv1, please see the old TCPMv1 implementation: usb_pd_protocol.c lines 3332 and 3955. tc_unattached_snk_run() now matches, but tc_unattached_src_run() should be checking for PD_DRP_FORCE_SOURCE and PD_DRP_FREEZE.",
+      "parentUuid": "b320711c_5cf29af8",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
