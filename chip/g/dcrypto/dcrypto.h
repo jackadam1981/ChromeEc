@@ -390,11 +390,19 @@ struct APPKEY_CTX {
 };
 
 int DCRYPTO_ladder_compute_frk2(size_t major_fw_version, uint8_t *frk2);
+/** store 32 bytes of random by mixing 32 bytes of TRNG with content of RSR
+ *  output, RSR = SHA256(RSR || TRNG)
+ */
 int DCRYPTO_ladder_random(void *output);
 void DCRYPTO_ladder_revoke(void);
 
+/**
+ * Prepare Application-specific device ID in usr[appid]
+ * usr[appid] = HMAC(DeviceID, SHA256(appname[appid]))
+ * compute only once after reboot, stored in USR register
+ */
 int DCRYPTO_appkey_init(enum dcrypto_appid id, struct APPKEY_CTX *ctx);
-void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
+void DCRYPTO_appkey_finish(void);
 int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
 			  uint32_t output[8]);
 

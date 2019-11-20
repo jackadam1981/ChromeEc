@@ -10,6 +10,8 @@
 #include "cryptoc/sha256.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "fips.h"
+#include "fips_rand.h"
 #include "system.h"
 #include "u2f_impl.h"
 #include "u2f.h"
@@ -113,8 +115,7 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 
 	/* Generate origin-specific keypair */
 	do {
-		if (!DCRYPTO_ladder_random(&od_seed))
-			return VENDOR_RC_INTERNAL_ERROR;
+		fips_rand_bytes(&od_seed, sizeof(od_seed));
 
 		if (u2f_origin_user_keyhandle(req->appId, req->userSecret,
 					      od_seed, kh) != EC_SUCCESS)
@@ -203,8 +204,6 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	const U2F_SIGN_REQ *req = buf;
 	U2F_SIGN_RESP *resp;
 
-	struct drbg_ctx ctx;
-
 	/* Whether the key handle is owned by this device. */
 	int kh_owned;
 
@@ -253,7 +252,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Re-create origin-specific key. */
-	if (legacy_kh) {
+	if (legacy_kh && !fips_mode()) {
 		if (u2f_origin_key(legacy_origin_seed, &origin_d) != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 	} else {
@@ -266,8 +265,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	p256_from_bin(req->hash, &h);
 
 	/* Sign. */
-	hmac_drbg_init_rfc6979(&ctx, &origin_d, &h);
-	if (!dcrypto_p256_ecdsa_sign(&ctx, &origin_d, &h, &r, &s)) {
+	if (!fips_p256_ecdsa_sign(&origin_d, &h, &r, &s)) {
 		p256_clear(&origin_d);
 		return VENDOR_RC_INTERNAL_ERROR;
 	}
@@ -352,7 +350,6 @@ static enum vendor_cmd_rc u2f_attest(enum vendor_cmd_cc code,
 	int verify_ret;
 
 	HASH_CTX h_ctx;
-	struct drbg_ctx dr_ctx;
 
 	/* Data hash, and corresponding signature. */
 	p256_int h, r, s;
@@ -390,8 +387,7 @@ static enum vendor_cmd_rc u2f_attest(enum vendor_cmd_cc code,
 	}
 
 	/* Sign over the response w/ the attestation key */
-	hmac_drbg_init_rfc6979(&dr_ctx, &d, &h);
-	if (!dcrypto_p256_ecdsa_sign(&dr_ctx, &d, &h, &r, &s)) {
+	if (!fips_p256_ecdsa_sign(&d, &h, &r, &s)) {
 		CPRINTF("Signing error");
 		return VENDOR_RC_INTERNAL_ERROR;
 	}

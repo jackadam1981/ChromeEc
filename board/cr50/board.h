@@ -246,7 +246,7 @@ enum nvmem_vars {
 	NVMEM_VAR_U2F_SALT,
 	NVMEM_VAR_CCD_CONFIG,
 	NVMEM_VAR_G2F_SALT,
-
+	NVMEM_VAR_FIPS_CONFIG,
 	NVMEM_VARS_COUNT
 };
 
@@ -323,7 +323,10 @@ int board_tpm_mode_change_allowed(void);
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
-
+/* indicates completion of power-up tests earlier */
+int board_fips_power_up_done(void);
+/* status of fips_simulation */
+int board_fips_simulated(void);
 void power_button_record(void);
 
 /**

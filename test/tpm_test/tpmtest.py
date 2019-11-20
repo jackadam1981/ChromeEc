@@ -136,14 +136,15 @@ class TPM(object):
 
 def usage():
   print ('Syntax: tpmtest.py [-d | -t | -h ]\n'
-         '     -d   -  prints additional debug information during tests\n'
-         '     -t   -  dump raw output from TRNG to /tmp/trng_output\n'
-         '     -h   -  this help\n')
+         '  -d        - prints additional debug information during tests\n'
+         '  -t{0|1|2} - dump output from  random source to /tmp/trng_output\n'
+         '              0 - TRNG, 1 - cr50 HMAC DRBG, 2 - TRNG with FIPS\n'
+         '  -h        - this help\n')
   return
 
 if __name__ == '__main__':
   try:
-    opts, args = getopt.getopt(sys.argv[1:], 'dth','help')
+    opts, args = getopt.getopt(sys.argv[1:], 'dt:h','help')
   except getopt.GetoptError as err:
     print(str(err))
     usage()
@@ -155,13 +156,14 @@ if __name__ == '__main__':
       debug_needed = True
     elif o == '-t':
       trng_only = True
-    elif o == '-h' or o == '--help':
+      trng_mode = int(a)
+    elif o in ("-h", "--help"):
       usage()
       sys.exit(0)
   try:
     t = TPM(debug_mode=debug_needed)
     if trng_only:
-      trng_test.trng_test(t)
+      trng_test.trng_test(t, trng_mode)
       sys.exit(1)
     crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
     drbg_test.drbg_test(t)
