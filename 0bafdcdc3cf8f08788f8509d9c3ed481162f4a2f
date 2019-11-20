@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "158b4a37_830959c7",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-20T19:30:19Z",
+      "side": 1,
+      "message": "Is this to avoid setting MUX_POLARITY_INVERTED on TYPEC_MUX_NONE?\nIf so, ((mux_mode !\u003d TYPEC_MUX_NONE) \u0026\u0026 polarity) would be clearer, or rewrite as an if(...)",
+      "revId": "0bafdcdc3cf8f08788f8509d9c3ed481162f4a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
