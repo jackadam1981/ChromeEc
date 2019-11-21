@@ -307,6 +307,9 @@ enum power_state power_handle_state(enum power_state state)
 
 		hook_call_deferred(&release_pmic_force_reset_data, -1);
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 0);
+#endif
 
 		/* Power up to next state */
 		return POWER_S5;
@@ -433,6 +436,10 @@ enum power_state power_handle_state(enum power_state state)
 		/* Release the power button, in case it was long pressed. */
 		if (forcing_shutdown)
 			gpio_set_level(GPIO_PMIC_EN_ODL, 1);
+
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 0);
+#endif
 
 		/*
 		 * If PMIC is still not off, assert PMIC_FORCE_RESET_ODL.
