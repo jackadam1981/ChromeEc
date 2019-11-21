@@ -16,6 +16,24 @@
       "revId": "b3cb8a6f818f425bfe11b817d7b873dd36d239a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad15a2fd_8567acdc",
+        "filename": "board/servo_micro/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T20:35:22Z",
+      "side": 1,
+      "message": "Just to close the loop, this has been filed (b/144356961) and fixed CL:1922240",
+      "parentUuid": "619aa861_e48be599",
+      "revId": "b3cb8a6f818f425bfe11b817d7b873dd36d239a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
