@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85395c26_1ca525f8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "Can we make this a little more clear, please?\n\nThis a time we need to wait until before we can consider the current stable or is this the last time that the current was considered stable?\n\n\nI also think there should be a comment right here explaining how this prefer mv featuers works. for example, we wait until stable timer expires to do X. We invalidate the timer when we renegotiate a new power contract. This allows us to do Y better.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca6ea20_e7a9031c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "let\u0027s always define this",
+      "range": {
+        "startLine": 1559,
+        "startChar": 7,
+        "endLine": 1559,
+        "endChar": 30
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69cbe0e6_938b6b28",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "let\u0027s use if(IS_ENABLE(...)) here instead of ifdef\n\n\n---\n\nif you use STATIC_IF(CONFIG_USB_PD_PREFER_MV) for the globals this will compile correct when the config is defined and not defined",
+      "range": {
+        "startLine": 1586,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 6
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae3d535b_4d1f9ccd",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "same comment about using IS_ENABLED\n\n(here and throughout)",
+      "range": {
+        "startLine": 1696,
+        "startChar": 7,
+        "endLine": 1696,
+        "endChar": 30
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1bfe9b_ed27c1dc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "is this saying that we are trying to replace the battery output power exactly?\n\nI am having trouble understanding the reason behind this code. Can you elaborate more in the comment more than \"Update desired power\", please?",
+      "range": {
+        "startLine": 2005,
+        "startChar": 3,
+        "endLine": 2005,
+        "endChar": 58
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1e250d_da5d39a3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2008,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "how is the return value for board_get_desired_mv going to change from line 1196? Is that expected?",
+      "range": {
+        "startLine": 2008,
+        "startChar": 25,
+        "endLine": 2008,
+        "endChar": 45
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90eb8e3d_d9ff8bc6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2317,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "let\u0027s always define and let the linker drop them if they aren\u0027t used",
+      "range": {
+        "startLine": 2317,
+        "startChar": 0,
+        "endLine": 2317,
+        "endChar": 30
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78e1400_22c3f4f8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "you can use STATIC_IF_NOT here",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cd4733_ff0c02d8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "can we write this to assume that board_get_desired_mw also returns a meaningful value even if CONFIG_USB_PD_PREFER_MW isn\u0027t defined.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 39
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cda0674_f71b7ba5",
+        "filename": "common/usb_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "I feel like PD_PREFERR_HIGH_VOLTAGE should be multually exclusive with CONFIG_USB_PD_PREFER_MV. There should be a build time error if they are both enabled. IS that already enforced?",
+      "range": {
+        "startLine": 174,
+        "startChar": 24,
+        "endLine": 174,
+        "endChar": 46
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f0e720_e41660fc",
+        "filename": "common/usb_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "nit: this is a subject comment:\n\nWhat do you think about grouping the PD_PREFER_BUCK conditions within one if statement and the same for BOOST? It might make it easier to read (it might not though)\n\n\nif (cur_uw \u003c desireduw)\n ..\nelse if (type \u003d\u003d BULk) {\n   if (mv \u003e\u003d prefer_ \u0026\u0026 mc)\n     prefer_cur \u003d 1\n   else (cur_mv \u003c pref \u0026\u0026 ..)\n     prefer_cur \u003d 1\n} else if (type \u003d\u003d BOOST",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 20
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8350e873_5bd75905",
+        "filename": "common/usb_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "(!IS_ENABLED(CONFIG_USB_PD_PREFER_MV) \u0026\u0026 uw \u003e cur_uw)\n\nit make it easier to seem all of the logic boolean",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 57
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7527980e_35201c0d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need this reset here. We should have the reset in pd_set_input_current_limit, which is in the common charge manager code",
+      "range": {
+        "startLine": 1541,
+        "startChar": 1,
+        "endLine": 1542,
+        "endChar": 53
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff06feb_3f9c9c3f",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "Maybe we should use __override_proto here\nand also provide a sane __override version in the common c file.\n\nOr do you really want to make the complidation fail the the board doesn\u0027t provide their own version that isn\u0027t the common default implementation?",
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c7311a_d479ee52",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "can you make this part of the configuraiton struct instead, please?\n\nWe try not to have the overridable defines if possible",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 6
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b19063_6f74c893",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "Based on the other comments, this shouldn\u0027t need to be defined in the header file any more. This can be defined right next to the function overload that doesn\u0027t take in any parameters.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b12e3a_dc543986",
+        "filename": "include/usb_common.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "should this be BUCK instead of BULK?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8bbb8b3_d9d5050a",
+        "filename": "include/usb_common.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "is this the minimum power needed for the system?",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b37fc6_8411665c",
+        "filename": "include/usb_common.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this extern here. The STATIC_IF_NOT should take care of that for you",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 46
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

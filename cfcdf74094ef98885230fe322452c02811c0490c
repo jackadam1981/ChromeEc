@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "19ab52bf_3eee7ae8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "Ah, then let\u0027s create two different functions. One that takes no parameters and the other that takes in the override time",
+      "parentUuid": "84c9adf1_e8480390",
+      "range": {
+        "startLine": 1542,
+        "startChar": 30,
+        "endLine": 1542,
+        "endChar": 51
+      },
+      "revId": "cfcdf74094ef98885230fe322452c02811c0490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5c6a519_e94da07e",
         "filename": "include/charge_manager.h",
         "patchSetId": 14
