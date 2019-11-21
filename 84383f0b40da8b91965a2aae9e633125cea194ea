@@ -39,6 +39,24 @@
       "revId": "84383f0b40da8b91965a2aae9e633125cea194ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8a3bce_f5d81c86",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-11-21T23:14:54Z",
+      "side": 1,
+      "message": "You will have to revert this change for hatch to keep using 0,2.",
+      "parentUuid": "9d8d28b4_f72db61a",
+      "revId": "84383f0b40da8b91965a2aae9e633125cea194ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
