@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "dca1657b_bd526c27",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-11-21T23:47:02Z",
+      "side": 1,
+      "message": "to add context here Vadim, I want to incorporate this into the flow for validating servo micro and v4 firmware, and make sure there are no regression w.r.t dropping usb characters if we\u0027re sending excessive requests to those consoles",
+      "parentUuid": "9c1e4bef_74d6072b",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "28b6dd4ed167c0ca6b6932ccf1e583a86da10bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14869e4b_a4677ff5",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 6
