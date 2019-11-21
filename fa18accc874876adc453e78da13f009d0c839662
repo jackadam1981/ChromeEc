@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df0be161_682f107b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-21T21:23:33Z",
+      "side": 1,
+      "message": "btw, it just struck me: this timeout should be more than 60 s to avoid race condition in case the H1 clock is a bit faster than the host\u0027s",
+      "range": {
+        "startLine": 1213,
+        "startChar": 4,
+        "endLine": 1213,
+        "endChar": 13
+      },
+      "revId": "fa18accc874876adc453e78da13f009d0c839662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
