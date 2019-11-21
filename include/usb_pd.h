@@ -2278,7 +2278,6 @@ static inline uint8_t board_get_usb_pd_port_count(void)
 #endif /* CONFIG_USB_POWER_DELIVERY */
 #endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
 
-#ifdef CONFIG_USBC_VIRTUAL_MUX_RETIMER
 /**
  * Return true if specified PD port partner is UFP.
  *
@@ -2292,7 +2291,6 @@ int pd_partner_is_ufp(int port);
  * @param port USB-C port number
  */
 int pd_is_debug_acc(int port);
-#endif
 
 /*
  * Notify the AP that we have entered into DisplayPort Alternate Mode.  This

@@ -3829,9 +3829,6 @@
  * configration from defining these as well.
  */
 
-/* Type-C retimer used with virtual mux */
-#undef CONFIG_USBC_VIRTUAL_MUX_RETIMER
-
 /* Type-C retimer used with real mux */
 #undef CONFIG_USBC_MUX_RETIMER
 
@@ -4723,11 +4720,8 @@
  * for convenience. Any retimer driver that also needs USBC MUX Retimers
  * will not have to include it in their own board/baseboard.h file.
  */
-#ifdef CONFIG_USBC_RETIMER_INTEL_BB
-#define CONFIG_USBC_VIRTUAL_MUX_RETIMER
-#endif
-
-#ifdef CONFIG_USBC_RETIMER_PI3DPX1207
+#if	defined(CONFIG_USBC_RETIMER_INTEL_BB) || \
+	defined(CONFIG_USBC_RETIMER_PI3DPX1207)
 #define CONFIG_USBC_MUX_RETIMER
 #endif
 
