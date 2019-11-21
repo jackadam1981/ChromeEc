@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8d22174_da5baa3c",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-11-21T23:51:01Z",
+      "side": 1,
+      "message": "nit: I\u0027d just add a comment above explaining that AP is always over UART, so enforce this behavior",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 29
+      },
+      "revId": "345ff751b96919204bd0b4abc61ec06995bbfb1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
