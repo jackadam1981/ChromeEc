@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# This is a fast updater proof of concept
+
+IMAGE=${1:-./ec.bin}
+# IMAGE_RO=./ec.RO.bin
+# IMAGE_RW=./ec.RW.bin
+
+BLOCK_SIZE=$((128 * 1024))
+FLASH_BASE=0x8000000
+FLASH_SIZE=0x200000
+
+# dd if=$IMAGE bs=$BLOCK_SIZE skip=0 count=8 of=$IMAGE_RO
+# dd if=$IMAGE bs=$BLOCK_SIZE skip=8 count=8 of=$IMAGE_RW
+# sha1sum $IMAGE_RO
+# sha1sum $IMAGE_RW
+
+checksum-local() {
+	local block=$1
+	dd if=$IMAGE bs=$BLOCK_SIZE skip=$block count=1 2>/dev/null | sha1sum | cut -f1 -d' '
+}
+
+checksum-remote() {
+	local block=$1
+	local addr=$(( FLASH_BASE + (BLOCK_SIZE * i) ))
+	local len=$BLOCK_SIZE
+	./params 1 $addr $len | ectool  --name=cros_fp raw 0xCC 2>/dev/null | hexdump -e '16/1 "%02x" ""' | cut -f1 -d' '
+	echo
+}
+
+# get blocks that need to be updated
+blocks() {
+	for i in {8..15}; do
+		local l=$(checksum-local $i)
+		local r=$(checksum-remote $i)
+		echo "# Block $i" >&2
+		echo "# Local: '$l'" >&2
+		echo "# Remote: '$r'" >&2
+		if [[ "$l" = "$r" ]]; then
+			echo "# MATCH" >&2
+		else
+			echo "# NOMATCH" >&2
+			echo $i
+		fi
+		echo >&2
+	done
+}
+
+BLOCKS=( $(blocks) )
+echo "##########################################################"
+echo
+
+if [ ${#BLOCKS[@]} -eq 0 ]; then
+	echo "# No blocks need updating"
+fi
+
+tmpfile=$(mktemp /tmp/flash.XXXX)
+for i in "${BLOCKS[@]}"; do
+	echo "# Updating block $i"
+	dd if=$IMAGE bs=$BLOCK_SIZE skip=$i count=1 of=$tmpfile 2>/dev/null
+	ectool --name=cros_fp flasheraseasync $((BLOCK_SIZE * i)) $((BLOCK_SIZE))
+	ectool --name=cros_fp flashwrite $((BLOCK_SIZE * i)) $tmpfile
+	echo
+done
+echo
+
+echo "##########################################################"
+echo
+ectool --name=cros_fp version
