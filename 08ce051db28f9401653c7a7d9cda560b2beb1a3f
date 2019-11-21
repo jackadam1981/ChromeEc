@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d28bf29c_e1872e61",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-21T00:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464cf801_40a1c2f1",
+      "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a33a721d_471be89c",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8822ee87_8efddb41",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2435,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-21T00:39:19Z",
+      "side": 1,
+      "message": "Ha ha been writing too much Go lately...",
+      "parentUuid": "a33a721d_471be89c",
+      "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66266aaa_42203c9e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2529,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-11-21T00:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4908043c_771abcda",
+      "range": {
+        "startLine": 2529,
+        "startChar": 2,
+        "endLine": 2529,
+        "endChar": 8
+      },
+      "revId": "08ce051db28f9401653c7a7d9cda560b2beb1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
