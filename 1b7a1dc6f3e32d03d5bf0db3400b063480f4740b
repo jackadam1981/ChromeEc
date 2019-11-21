@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2421daf1_3b00adcc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-21T01:08:37Z",
+      "side": 1,
+      "message": "Added code to wait until TCPC is reset.",
+      "parentUuid": "5c9b4f55_e24dd60d",
+      "revId": "1b7a1dc6f3e32d03d5bf0db3400b063480f4740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57d754fc_947c6ef3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 24
@@ -33,6 +51,24 @@
       "revId": "1b7a1dc6f3e32d03d5bf0db3400b063480f4740b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2117f0_7d929f6b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 2714,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-21T01:08:37Z",
+      "side": 1,
+      "message": "Yes you are correct. I\u0027ve moved this code block to the exit_low_power function.",
+      "parentUuid": "57d754fc_947c6ef3",
+      "revId": "1b7a1dc6f3e32d03d5bf0db3400b063480f4740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
