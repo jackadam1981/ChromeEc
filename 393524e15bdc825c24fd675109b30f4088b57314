@@ -118,6 +118,30 @@
       "revId": "393524e15bdc825c24fd675109b30f4088b57314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10d3f38_c838e43a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-21T18:54:16Z",
+      "side": 1,
+      "message": "Also, for what it\u0027s worth. I wasn\u0027t able to reproduce two consecutive collisions with the code as is.",
+      "parentUuid": "7670c474_1db07a11",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
