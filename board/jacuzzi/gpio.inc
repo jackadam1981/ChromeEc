@@ -80,7 +80,18 @@ GPIO(EC_INT_L,             PIN(C, 7),  GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 GPIO(EC_BOARD_ID_EN_L,     PIN(C, 15), GPIO_ODR_HIGH) /* EC_BOARD_ID_EN_ODL */
 GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_ODR_LOW)
 GPIO(BOOTBLOCK_EN_L,       PIN(C, 1),  GPIO_ODR_HIGH)
+<<<<<<< HEAD   (40fb65 tcpm/fusb302: implement low power mode)
+=======
+GPIO(USB_C0_DISCHARGE,     PIN(B, 6),  GPIO_OUT_LOW)
+>>>>>>> CHANGE (313faa power/mt8183: correct EN_PP1800_S5_L enable timing)
 
+#ifdef BOARD_JACUZZI
+GPIO(LID_ACCEL_INT_ODL, PIN(A, 14), GPIO_INPUT)
+/* Jacuzzi doesn't have EN_PP1800_S5_L. */
+UNIMPLEMENTED(EN_PP1800_S5_L)
+#else
+GPIO(EN_PP1800_S5_L,       PIN(A, 14), GPIO_OUT_LOW)
+#endif
 /*
  * TODO(b:138352732): On IT88801 expander, To be readded once IT8801 driver and
  * gpio expander framework has landed.
