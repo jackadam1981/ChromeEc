@@ -33,6 +33,7 @@
 #include "version.h"
 
 #define USBC_EVENT_TIMEOUT (5 * MSEC)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 int tc_restart_tcpc(int port)
 {
@@ -121,8 +122,10 @@ void pd_interrupt_handler_task(void *p)
 
 	while (1) {
 		const int evt = task_wait_event(-1);
+		CPRINTS("%s: Received event", __func__);
 
 		if (evt & PD_PROCESS_INTERRUPT) {
+			CPRINTS("%s: PD process interrupt event", __func__);
 			/*
 			 * While the interrupt signal is asserted; we have more
 			 * work to do. This effectively makes the interrupt a
@@ -136,7 +139,10 @@ void pd_interrupt_handler_task(void *p)
 			 */
 			while ((tcpc_get_alert_status() & port_mask) &&
 					pd_is_port_enabled(port))
+			{
+				CPRINTS("%s: alert for port %d", __func__, port);
 				tcpc_alert(port);
+			}
 		}
 	}
 }

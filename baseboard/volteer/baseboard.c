@@ -275,6 +275,7 @@ uint16_t tcpc_get_alert_status(void)
 		status |= PD_STATUS_TCPC_ALERT_0;
 	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL))
 		status |= PD_STATUS_TCPC_ALERT_1;
+	CPRINTSUSB("%s: status = %d", __func__, status);
 
 	return status;
 }
@@ -312,6 +313,7 @@ int board_set_active_charge_port(int port)
 
 		/* Disable all ports. */
 		for (i = 0; i < ppc_cnt; i++) {
+			// TODO: This sure looks like it returns early
 			/*
 			 * Do not return early if one fails otherwise we can
 			 * get into a boot loop assertion failure.

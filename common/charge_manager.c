@@ -905,6 +905,12 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	}
 
 	if (change == CHANGE_CHARGE) {
+		/*
+		struct charge_port_info *info = &available_charge[supplier][port];
+		CPRINTS("p%d s%d changing I %d->%d, V %d->%d", port,
+				supplier, info->current, charge->current,
+				info->voltage, charge->voltage);
+				*/
 		available_charge[supplier][port].current = charge->current;
 		available_charge[supplier][port].voltage = charge->voltage;
 		registration_time[port] = get_time();

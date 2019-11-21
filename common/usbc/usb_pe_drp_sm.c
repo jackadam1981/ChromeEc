@@ -627,6 +627,7 @@ void pe_report_error(int port, enum pe_error e)
 	 * while in PE_Send_Soft_Reset state.
 	 */
 	if (get_state_pe(port) == PE_SEND_SOFT_RESET) {
+		CPRINTS("Sending soft reset: protocol error");
 		if (pe[port].power_role == PD_ROLE_SINK)
 			set_state_pe(port, PE_SNK_HARD_RESET);
 		else
@@ -1732,6 +1733,7 @@ static void pe_snk_wait_for_capabilities_run(int port)
 	 *  1) A Source_Capabilities Message is received.
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		CPRINTS("Wait for cap: message received");
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(emsg[port].header);
@@ -1742,11 +1744,13 @@ static void pe_snk_wait_for_capabilities_run(int port)
 			set_state_pe(port, PE_SNK_EVALUATE_CAPABILITY);
 			return;
 		}
+		CPRINTS("Not what we wanted");
 	}
 
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
 	if (get_time().val > pe[port].timeout) {
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
+		CPRINTS("Wait for caps: timeout");
 		set_state_pe(port, PE_SNK_HARD_RESET);
 	}
 }
@@ -1884,7 +1888,10 @@ static void pe_snk_select_capability_run(int port)
 
 	/* SenderResponsetimer timeout */
 	if (get_time().val > pe[port].sender_response_timer)
+	{
+		CPRINTS("Select caps: sender response timeout");
 		set_state_pe(port, PE_SNK_HARD_RESET);
+	}
 }
 
 /**
@@ -1924,6 +1931,7 @@ static void pe_snk_transition_sink_run(int port)
 		/*
 		 * Protocol Error
 		 */
+		CPRINTS("Sink transition: protocol error");
 		set_state_pe(port, PE_SNK_HARD_RESET);
 	}
 
@@ -1934,6 +1942,7 @@ static void pe_snk_transition_sink_run(int port)
 			pe[port].hard_reset_counter <= N_HARD_RESET_COUNT) {
 		PE_SET_FLAG(port, PE_FLAGS_PS_TRANSITION_TIMEOUT);
 
+		CPRINTS("Sink transition: timeout");
 		set_state_pe(port, PE_SNK_HARD_RESET);
 	}
 }
@@ -2037,7 +2046,10 @@ static void pe_snk_ready_run(int port)
 		if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
 			if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
+			{
+				CPRINTS("Something with DPM: Hard reset");
 				set_state_pe(port, PE_SNK_HARD_RESET);
+			}
 			else
 				set_state_pe(port, PE_DRS_SEND_SWAP);
 		} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP)) {
@@ -2148,7 +2160,10 @@ static void pe_snk_ready_run(int port)
 				break;
 			case PD_CTRL_DR_SWAP:
 				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
+				{
+					CPRINTS("Control message: hard reset");
 					set_state_pe(port, PE_SNK_HARD_RESET);
+				}
 				else
 					set_state_pe(port,
 							PE_DRS_EVALUATE_SWAP);
@@ -2308,7 +2323,9 @@ static void pe_send_soft_reset_run(int port)
 			PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 
+		CPRINTS("Send soft reset: sender response timeout or protocol error");
 		if (pe[port].power_role == PD_ROLE_SINK)
+			// TODO: WTF
 			set_state_pe(port, PE_SRC_HARD_RESET);
 		else
 			set_state_pe(port, PE_SRC_HARD_RESET);
@@ -2369,6 +2386,7 @@ static void  pe_soft_reset_run(int port)
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 
+		CPRINTS("Receive soft reset?: protocol error");
 		if (pe[port].power_role == PD_ROLE_SINK)
 			set_state_pe(port, PE_SNK_HARD_RESET);
 		else
@@ -3977,6 +3995,7 @@ static void pe_vcs_wait_for_vconn_swap_run(int port)
 	 *   1) The VCONNOnTimer times out.
 	 */
 	if (get_time().val > pe[port].vconn_on_timer) {
+		CPRINTS("Wait for VCONN swap: timeout");
 		if (pe[port].power_role == PD_ROLE_SOURCE)
 			set_state_pe(port, PE_SRC_HARD_RESET);
 		else
