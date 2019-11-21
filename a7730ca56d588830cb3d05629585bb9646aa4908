@@ -140,6 +140,30 @@
       "revId": "a7730ca56d588830cb3d05629585bb9646aa4908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b0f9d33_f4f44328",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 2710,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T19:02:45Z",
+      "side": 1,
+      "message": "I originally made the comment on auto toggle entry, but then realized low power mode entry would be the more appropriate choice and I just cut my comment and pasted here. I didn\u0027t realize that I called out auto toggle entry specifically.\n\nSorry that my comment was all messed up.\n\nWhat I meant to say was:\n\nIn low power mode entry I think we should clear TC_FLAGS_WAKE_FROM_LPM since any previous wake attempts are invalid since we haven\u0027t engaged LPM yet.\n\n(I do think we should change this, but it is not a show stopper)",
+      "parentUuid": "d9211d42_041f58c9",
+      "range": {
+        "startLine": 2710,
+        "startChar": 12,
+        "endLine": 2710,
+        "endChar": 35
+      },
+      "revId": "a7730ca56d588830cb3d05629585bb9646aa4908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
