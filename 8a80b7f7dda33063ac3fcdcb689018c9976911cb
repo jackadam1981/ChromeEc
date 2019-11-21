@@ -802,6 +802,24 @@
     },
     {
       "key": {
+        "uuid": "3a356764_bf045fa4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-21T00:15:25Z",
+      "side": 1,
+      "message": "Yep, I think we are good for the drp_state policy now, thanks!",
+      "parentUuid": "e39712f5_e06442f0",
+      "revId": "8a80b7f7dda33063ac3fcdcb689018c9976911cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a2246b6_c7630cef",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2

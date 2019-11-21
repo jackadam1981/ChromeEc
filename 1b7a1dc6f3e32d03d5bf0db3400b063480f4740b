@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c9b4f55_e24dd60d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-21T00:15:25Z",
+      "side": 1,
+      "message": "When a non-PD task calls this function, that task needs to wait inside this function until the TCPC reset completes.",
+      "revId": "1b7a1dc6f3e32d03d5bf0db3400b063480f4740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d754fc_947c6ef3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 2714,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-21T00:15:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this makes sense: won\u0027t it only ever be the PD task that would call tc_low_power_mode_exit()? The \"else\" block calling task_wait_event_mask() belongs in pd_wait_exit_low_power().",
+      "revId": "1b7a1dc6f3e32d03d5bf0db3400b063480f4740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
