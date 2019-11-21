@@ -2986,7 +2986,7 @@ static void pe_prs_src_snk_evaluate_swap_entry(int port)
 		/* PE_PRS_SRC_SNK_Reject_PR_Swap state embedded here */
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_REJECT);
 	} else {
-		pd_request_power_swap(port);
+		tc_request_power_swap(port);
 		/* PE_PRS_SRC_SNK_Accept_Swap state embedded here */
 		PE_SET_FLAG(port, PE_FLAGS_ACCEPT);
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
@@ -3172,7 +3172,7 @@ static void pe_prs_snk_src_evaluate_swap_entry(int port)
 		/* PE_PRS_SNK_SRC_Reject_Swap state embedded here */
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_REJECT);
 	} else {
-		pd_request_power_swap(port);
+		tc_request_power_swap(port);
 		/* PE_PRS_SNK_SRC_Accept_Swap state embedded here */
 		PE_SET_FLAG(port, PE_FLAGS_ACCEPT);
 		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
