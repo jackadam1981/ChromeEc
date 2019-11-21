@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "2441ff62_c40644fb",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-21T01:38:18Z",
+      "side": 1,
+      "message": "OK. Fixed it. This rule may not too strict.",
+      "parentUuid": "f89658b4_beb1fda7",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "ca4383436c53b1c9745069ae5e8b2b2cd55f5dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f863ad9_203bc73a",
         "filename": "board/trogdor/gpio.inc",
         "patchSetId": 4

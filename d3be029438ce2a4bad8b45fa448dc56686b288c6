@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9320fc5b_79a6776e",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-21T01:38:18Z",
+      "side": 1,
+      "message": "Actually the above ones are \"base\" (I changed the naming). It misses the lid accel, but Jim said the lid accel is a hold-over; should be DNS.",
+      "parentUuid": "c31719af_7814c5fc",
+      "revId": "d3be029438ce2a4bad8b45fa448dc56686b288c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28d1c355_c8c8ca46",
         "filename": "board/trogdor/board.h",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d8d3e2ac_64188f6b",
+        "filename": "board/trogdor/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-21T01:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28d1c355_c8c8ca46",
+      "range": {
+        "startLine": 54,
+        "startChar": 41,
+        "endLine": 54,
+        "endChar": 65
+      },
+      "revId": "d3be029438ce2a4bad8b45fa448dc56686b288c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1953afd1_4e8af134",
         "filename": "board/trogdor/ec.tasklist",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "d3be029438ce2a4bad8b45fa448dc56686b288c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa05768_6579e567",
+        "filename": "board/trogdor/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-21T01:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1953afd1_4e8af134",
+      "revId": "d3be029438ce2a4bad8b45fa448dc56686b288c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
