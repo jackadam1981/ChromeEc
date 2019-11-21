@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "701931fb_609d3976",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T17:07:56Z",
+      "side": 1,
+      "message": "Other tasks, like the host command, talk to the TCPC through i2c using the driver. This does not catch all cases. Please see TCPMv1 implementation",
+      "parentUuid": "6a282f6f_4eb47a35",
+      "range": {
+        "startLine": 1564,
+        "startChar": 1,
+        "endLine": 1565,
+        "endChar": 64
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "961ab338_9382a01f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 19
@@ -258,6 +282,30 @@
       "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c92b654_281a0077",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2616,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T17:07:56Z",
+      "side": 1,
+      "message": "I am fine doing this in another CL. How are you tracking this work? Adding a big comment here like Ed sugggested is one good way to explain what is happening and document the cleanup work that needs to be done. If we don\u0027t track it (either through comment or bug)",
+      "parentUuid": "5512d239_918bacf3",
+      "range": {
+        "startLine": 2616,
+        "startChar": 5,
+        "endLine": 2616,
+        "endChar": 40
+      },
+      "revId": "97dd31460e5de9e0be5ecd5db1b0e41271231851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

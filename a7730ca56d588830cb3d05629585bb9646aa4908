@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99cfe4c2_30686045",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T17:07:56Z",
+      "side": 1,
+      "message": "s/this this/the PD/",
+      "range": {
+        "startLine": 926,
+        "startChar": 33,
+        "endLine": 926,
+        "endChar": 42
+      },
+      "revId": "a7730ca56d588830cb3d05629585bb9646aa4908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19db4ccf_998b26a9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T17:07:56Z",
+      "side": 1,
+      "message": "if the device is accessed in another task, then the PD task needs to be woken up to handle putting the device back into low power mode after the low_power_time timer expires (since we don\u0027t want to put it into low power mode too quickly after an i2c transaction if more are pending)",
+      "range": {
+        "startLine": 1594,
+        "startChar": 1,
+        "endLine": 1595,
+        "endChar": 64
+      },
+      "revId": "a7730ca56d588830cb3d05629585bb9646aa4908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8fb7e12_1a3a4441",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 2710,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T17:07:56Z",
+      "side": 1,
+      "message": "we should clear PD_EXIT_LOW_POWER_EVENT_MASK in entry to auto toggle since this flag may have been set some other random time when a CC event changed (from line 841). When entering the auto toggle state we should not have any valid wake requests yet since we haven\u0027t engaged low power mode yet.\n\n(the clear must happen before setting LPM_ENGAGED otherwise we can have race conditions between tasks)\n\n(it is good that our flag access is atomic since this would require making the flag variable volatile or using atomic accessors)",
+      "range": {
+        "startLine": 2710,
+        "startChar": 12,
+        "endLine": 2710,
+        "endChar": 35
+      },
+      "revId": "a7730ca56d588830cb3d05629585bb9646aa4908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
