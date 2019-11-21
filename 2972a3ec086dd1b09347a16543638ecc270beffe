@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc9603c3_3c51ebb4",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-21T18:56:47Z",
+      "side": 1,
+      "message": "Why is this duplicated?",
+      "revId": "2972a3ec086dd1b09347a16543638ecc270beffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952b38a0_bb0ea193",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-21T18:56:47Z",
+      "side": 1,
+      "message": "Enabling the sink FET here in the interrupt handler seems wrong to me.\nWouldn\u0027t it be better to follow a similar flow to the overcurrent handling, and have the higher layer decide to re-enable the sink FET if appropriate?",
+      "revId": "2972a3ec086dd1b09347a16543638ecc270beffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
