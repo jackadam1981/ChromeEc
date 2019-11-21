@@ -70,6 +70,30 @@
       "revId": "393524e15bdc825c24fd675109b30f4088b57314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7834c3_108becee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-21T00:38:38Z",
+      "side": 1,
+      "message": "Of course, a collision is still possible (an initial collision is always possible). But cyclical collisions should be more rare.",
+      "parentUuid": "343e3312_e818f924",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
