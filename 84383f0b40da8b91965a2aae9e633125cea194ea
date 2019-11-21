@@ -22,6 +22,23 @@
       "revId": "84383f0b40da8b91965a2aae9e633125cea194ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8d28b4_f72db61a",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-11-21T16:08:16Z",
+      "side": 1,
+      "message": "BTW I was reading the bug again and I think this change never happened for Hatch: https://b.corp.google.com/issues/141476349#comment9",
+      "revId": "84383f0b40da8b91965a2aae9e633125cea194ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
