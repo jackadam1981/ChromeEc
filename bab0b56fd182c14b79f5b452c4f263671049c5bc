@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1494904f_4b953263",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-21T18:28:56Z",
+      "side": 1,
+      "message": "What about \"ectool pdchipinfo\" and \"ectool usbpdmuxinfo\"? These should succeed, with the TCPCs starting and ending in low power mode.",
+      "revId": "bab0b56fd182c14b79f5b452c4f263671049c5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
