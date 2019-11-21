@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cfaad4b_f5c80682",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-21T18:59:49Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be \u0027\u003e\u003d\u0027 ?",
+      "range": {
+        "startLine": 1171,
+        "startChar": 31,
+        "endLine": 1171,
+        "endChar": 33
+      },
+      "revId": "1935603210a3ffcba3968d78895a8c3e99b167ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5408861a_be8f95bd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-21T18:59:49Z",
+      "side": 1,
+      "message": "this check could be\n\nif (num_txed_sections \u0026\u0026 needs_delay)\n\nno need to keep track of last_offset",
+      "range": {
+        "startLine": 1209,
+        "startChar": 4,
+        "endLine": 1215,
+        "endChar": 25
+      },
+      "revId": "1935603210a3ffcba3968d78895a8c3e99b167ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
