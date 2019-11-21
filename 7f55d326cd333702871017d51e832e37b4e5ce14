@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3833ae14_9ab292de",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-21T20:23:48Z",
+      "side": 1,
+      "message": "irt is a fp_t, you can not use *.",
+      "revId": "7f55d326cd333702871017d51e832e37b4e5ce14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc8b850_9dc7ad78",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-21T20:23:48Z",
+      "side": 1,
+      "message": "is this one used? We have one in calibration already.",
+      "revId": "7f55d326cd333702871017d51e832e37b4e5ce14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "732c03d0_7ad1b4c6",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-11-21T20:23:48Z",
+      "side": 1,
+      "message": "Do we still need an array here?",
+      "revId": "7f55d326cd333702871017d51e832e37b4e5ce14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
