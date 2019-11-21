@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a1fef0c_4b9799b8",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-21T16:01:22Z",
+      "side": 1,
+      "message": "Tried on hatch (npcx chip), at least it boots and i2cscan looks good.\nAnd Dino Li also verified this on it83xx chip.",
+      "parentUuid": "7d5079f2_f9750a2b",
+      "revId": "8806b0910217be59e0df47ab3e3dfaa82060119f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa2bda56_3143814e",
         "filename": "common/i2c_master.c",
         "patchSetId": 2

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2706d826_88f0de63",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-21T16:01:22Z",
+      "side": 1,
+      "message": "The ending \u0027\\0\u0027 is required because caller usually expects the returned `data` be a c-style string.\nIt also exists in the original code (line 463)",
+      "revId": "8471db104908c6c02fb2e2fd5be8ec50675987da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
