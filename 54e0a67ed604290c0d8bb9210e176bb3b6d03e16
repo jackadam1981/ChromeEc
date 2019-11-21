@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "4e280183_fc4bfae7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2212,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T19:11:43Z",
+      "side": 1,
+      "message": "I agree this isn\u0027t the right CL for it.\n\nLet\u0027s remove all the policy guards in a separate CL as a follow up then. It might be a valid case for \"dumb\" dongles, but I highly doubt it will be something that Chrome OS ever supports.",
+      "parentUuid": "789ac118_721ea884",
+      "range": {
+        "startLine": 2212,
+        "startChar": 0,
+        "endLine": 2212,
+        "endChar": 23
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e621507_ab10c4c4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 22
@@ -305,6 +329,30 @@
       "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9f288dc_a48b015b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2411,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-21T19:11:43Z",
+      "side": 1,
+      "message": "Do we still need the pd_enable check as well? Isn\u0027t it impossible for these flags to get set if pd is disabled?",
+      "parentUuid": "024cb7f1_21ef0586",
+      "range": {
+        "startLine": 2411,
+        "startChar": 1,
+        "endLine": 2411,
+        "endChar": 50
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
