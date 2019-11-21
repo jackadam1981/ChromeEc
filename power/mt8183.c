@@ -230,6 +230,16 @@ static void power_seq_run(const struct power_seq_op *power_seq_ops,
 	}
 }
 
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+static void power_g3_seq_run(void)
+{
+	/* If we are still in G3, deassert the gpio. */
+	if (power_get_state() == POWER_G3)
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 1);
+}
+DECLARE_DEFERRED(power_g3_seq_run);
+#endif
+
 enum power_state power_handle_state(enum power_state state)
 {
 	/*
@@ -249,6 +259,12 @@ enum power_state power_handle_state(enum power_state state)
 
 	switch (state) {
 	case POWER_G3:
+
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		/* EN_PP1800_S5_L should be asserted after 20ms */
+		hook_call_deferred(&power_g3_seq_run_data, 20);
+#endif
+
 		/* Go back to S5->G3 if the PMIC unexpectedly starts again. */
 		if (power_get_signals() & IN_PGOOD_PMIC)
 			return POWER_S5G3;
@@ -307,6 +323,9 @@ enum power_state power_handle_state(enum power_state state)
 
 		hook_call_deferred(&release_pmic_force_reset_data, -1);
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 0);
+#endif
 
 		/* Power up to next state */
 		return POWER_S5;
