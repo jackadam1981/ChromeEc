@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "620e32eb_89761ead",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-11-21T02:39:06Z",
+      "side": 1,
+      "message": "May we know some details of these?\nWhat gets disabled and what\u0027s the impact of disabling these?\nFor example, we would want AC insertion to be able to trigger shipping mode exit.",
+      "range": {
+        "startLine": 1459,
+        "startChar": 0,
+        "endLine": 1463,
+        "endChar": 12
+      },
+      "revId": "3463fe177cf250174b12bf236b5568186a4fd036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
