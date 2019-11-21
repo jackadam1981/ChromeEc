@@ -46,6 +46,30 @@
       "revId": "393524e15bdc825c24fd675109b30f4088b57314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343e3312_e818f924",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-21T00:03:49Z",
+      "side": 1,
+      "message": "Sam and I just were testing with this. Both of these non-XORSHIFT methods collide, since they introduce less than 16 (0xf) bits of entropy. This suggests we need architectural improvements in (both) TCPC stacks to resolve handling of inbound messages at time of transmit.\n\nWe were observing collisions with Apple A2119 2019 HBR3 HDMI dongle + Nektek 90w charger (Fluffy) when Try.SRC\u0027img them. We resolved by utilizing excellent choice structure to increase windows.\n\nI will review TCPCI spec to see how a compliant TCPC is supposed to handle attempting to stuff the TX buffer, when the RX buffer is now has been filled (by inbound message). I was under the impression it blocked TX in this case.",
+      "parentUuid": "bdf8a5c1_34db1ba2",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
