@@ -94,6 +94,30 @@
       "revId": "393524e15bdc825c24fd675109b30f4088b57314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7670c474_1db07a11",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-21T18:35:25Z",
+      "side": 1,
+      "message": "I proposed 16 buckets because retries which are 6 ms part (e.g. 200 ms v.s. 206 ms) would still produce a collision.\n\nIf 200 ms v.s. 206 ms don\u0027t cause a collision, we can further reduce collision by making buckets smaller:\n\n\t(get_time().le.lo \u0026 0x3f) * 3 * MSEC; /* 64 buckets */\n\nI suspect smaller buckets than 64 wouldn\u0027t improve the collision rate.",
+      "parentUuid": "1f7834c3_108becee",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
