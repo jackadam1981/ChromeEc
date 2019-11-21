@@ -58,6 +58,14 @@
 #endif /* VARIANT_KUKUI_CHARGER */
 
 /*
+ * mt8183 has two different power sequence versions
+ * 0: for normal tablet and detachable form factor
+ * 1: for boards have GPIO_EN_PP1800_S5_L
+ * CONFIG_CHIPSET_POWER_SEQ_VERSION defaults to 0, re-define the power seq
+ * version if needed.
+ */
+
+/*
  * Variant pogo defines, if pick, VARIANT_KUKUI_POGO_KEYBOARD is mandatory
  * VARIANT_KUKUI_POGO_KEYBOARD
  * VARIANT_KUKUI_POGO_DOCK
