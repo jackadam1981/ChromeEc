@@ -57,6 +57,9 @@
  */
 #define PMIC_FORCE_RESET_TIME (10 * SECOND)
 
+/* Time delay in G3 to deassert EN_PP1800_S5_L */
+#define EN_PP1800_S5_L_DEASSERT_TIME (20 * MSEC)
+
 /* Data structure for a GPIO operation for power sequencing */
 struct power_seq_op {
 	/* enum gpio_signal in 8 bits */
@@ -230,6 +233,14 @@ static void power_seq_run(const struct power_seq_op *power_seq_ops,
 	}
 }
 
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+static void deassert_en_pp1800_s5_l(void)
+{
+	gpio_set_level(GPIO_EN_PP1800_S5_L, 1);
+}
+DECLARE_DEFERRED(deassert_en_pp1800_s5_l);
+#endif
+
 enum power_state power_handle_state(enum power_state state)
 {
 	/*
@@ -249,6 +260,12 @@ enum power_state power_handle_state(enum power_state state)
 
 	switch (state) {
 	case POWER_G3:
+
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		hook_call_deferred(&deassert_en_pp1800_s5_l_data,
+				   EN_PP1800_S5_L_DEASSERT_TIME);
+#endif
+
 		/* Go back to S5->G3 if the PMIC unexpectedly starts again. */
 		if (power_get_signals() & IN_PGOOD_PMIC)
 			return POWER_S5G3;
@@ -305,8 +322,14 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_G3S5:
 		forcing_shutdown = 0;
 
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		hook_call_deferred(&deassert_en_pp1800_s5_l_data, -1);
+#endif
 		hook_call_deferred(&release_pmic_force_reset_data, -1);
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
+		gpio_set_level(GPIO_EN_PP1800_S5_L, 0);
+#endif
 
 		/* Power up to next state */
 		return POWER_S5;
