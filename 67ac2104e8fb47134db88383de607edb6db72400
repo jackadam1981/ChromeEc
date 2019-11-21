@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6a70f6b_a2ec2f76",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-21T22:30:31Z",
+      "side": 1,
+      "message": "can we introduce some enum with self-documenting names for mode? (same for hash_mode)",
+      "range": {
+        "startLine": 417,
+        "startChar": 6,
+        "endLine": 417,
+        "endChar": 7
+      },
+      "revId": "67ac2104e8fb47134db88383de607edb6db72400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae039a5_f74594c8",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-21T22:30:31Z",
+      "side": 1,
+      "message": "nit: why these _cpri__ names? these are local functions, so we can use decent names fro them, like DoSoftwarHmac() and DoDcryptoHmac()?",
+      "range": {
+        "startLine": 421,
+        "startChar": 19,
+        "endLine": 421,
+        "endChar": 35
+      },
+      "revId": "67ac2104e8fb47134db88383de607edb6db72400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
