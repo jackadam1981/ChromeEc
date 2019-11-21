@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82a519e5_45b1354e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-11-21T04:10:04Z",
+      "side": 1,
+      "message": "Hi, phoenix.\naddr_flags \u0026\u003d ~I2C_FLAG_PEC should put together with chip_i2c_xfer()?",
+      "revId": "2380f8867fee73f09762e0799288b2a71e9bc9f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
