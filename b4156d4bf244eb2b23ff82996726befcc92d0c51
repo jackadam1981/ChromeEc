@@ -234,6 +234,30 @@
       "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2549c45_2b2a2d0a",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2483,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-21T14:14:06Z",
+      "side": 1,
+      "message": "You can have a pwm_led driver instead (by refactoring pwm_led.c). Like tcpc driver or usb_mux driver.",
+      "parentUuid": "ad0dc0f8_f8284612",
+      "range": {
+        "startLine": 2483,
+        "startChar": 32,
+        "endLine": 2483,
+        "endChar": 56
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
