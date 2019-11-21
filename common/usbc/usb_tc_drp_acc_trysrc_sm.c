@@ -371,6 +371,13 @@ void pd_set_new_power_request(int port)
 
 void pd_request_power_swap(int port)
 {
+#ifdef CONFIG_USB_PE_SM
+	pe_dpm_request(port, DPM_REQUEST_PR_SWAP);
+#endif
+}
+
+void tc_request_power_swap(int port)
+{
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		/*
 		 * Must be in Attached.SRC, Attached.SNK, UnorientedDbgAcc.SRC,
