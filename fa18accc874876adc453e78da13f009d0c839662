@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "32b7163d_719bffde",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-21T21:26:20Z",
+      "side": 1,
+      "message": "also, since the target closes connection in 5 seconds no matter what - is this send_done() really needed? Maybe sending it is a bit cleaner, up to you.",
+      "range": {
+        "startLine": 1209,
+        "startChar": 0,
+        "endLine": 1211,
+        "endChar": 0
+      },
+      "revId": "fa18accc874876adc453e78da13f009d0c839662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df0be161_682f107b",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
