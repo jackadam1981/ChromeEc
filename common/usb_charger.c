@@ -51,10 +51,10 @@ static void update_vbus_supplier(int port, int vbus_level)
 int usb_charger_port_is_sourcing_vbus(int port)
 {
 	if (port == 0)
-		return USB_5V_EN(0);
+		return 1;
 #if CONFIG_USB_PD_PORT_MAX_COUNT >= 2
 	else if (port == 1)
-		return USB_5V_EN(1);
+		return 1;
 #endif
 	/* Not a valid port */
 	return 0;

@@ -13,7 +13,6 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
-#include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -41,7 +40,6 @@
 #include "uart.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
-#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -69,22 +67,6 @@ const int keyboard_factory_scan_pins[][2] = {
 
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
-
-static void ppc_interrupt(enum gpio_signal signal)
-{
-	switch (signal) {
-	case GPIO_USB_C0_PPC_INT_ODL:
-		sn5s330_interrupt(0);
-		break;
-
-	case GPIO_USB_C1_PPC_INT_ODL:
-		sn5s330_interrupt(1);
-		break;
-
-	default:
-		break;
-	}
-}
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -178,7 +160,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	[USB_PD_PORT_TCPC_0] = {
-		.i2c_port = I2C_PORT_PPC0,
+		.i2c_port = I2C_PORT_TCPC0,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
 
@@ -482,3 +464,11 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+int pd_snk_is_vbus_provided(int port)
+{
+	/* TODO(b:138352732): read IT8801 GPIO EN_USBC_CHARGE_L */
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+

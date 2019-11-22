@@ -11,7 +11,6 @@
 #include "chipset.h"
 #include "console.h"
 #include "cros_board_info.h"
-#include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -26,7 +25,6 @@
 #include "system.h"
 #include "tcpci.h"
 #include "timer.h"
-#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -71,7 +69,6 @@ struct keyboard_scan_config keyscan_config = {
 /* I2C port map configuration */
 const struct i2c_port_t i2c_ports[] = {
 	{"sensor",  I2C_PORT_SENSOR,  100, GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"ppc0",    I2C_PORT_PPC0,    100, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"tcpc1",   I2C_PORT_TCPC1,   100, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"tcpc0",   I2C_PORT_TCPC0,   100, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
 #ifdef BOARD_AKEMI
@@ -126,8 +123,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 
 void board_hibernate(void)
 {
-	int port;
-
 	/*
 	 * To support hibernate from ectool, keyboard, and console,
 	 * ensure that the AP is fully shutdown before hibernating.
@@ -137,15 +132,6 @@ void board_hibernate(void)
 #endif
 
 	/*
-	 * If VBUS is not being provided by any of the PD ports,
-	 * then enable the SNK FET to allow AC to pass through
-	 * if it is later connected to ensure that AC_PRESENT
-	 * will wake up the EC from this state
-	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		ppc_vbus_sink_enable(port, 1);
-
-	/*
 	 * This seems like a hack, but the AP chipset state machine
 	 * needs time to work through the transitions.  Also, it
 	 * works.
@@ -153,33 +139,12 @@ void board_hibernate(void)
 	msleep(300);
 }
 
-/******************************************************************************/
-/* USB-C PPC Configuration */
-struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	[USB_PD_PORT_TCPC_0] = {
-		.i2c_port = I2C_PORT_PPC0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv
-	},
-
-	[USB_PD_PORT_TCPC_1] = {
-		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv
-	},
-};
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
 /* Power Delivery and charging functions */
 void baseboard_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
 		board_reset_pd_mcu();
-
-	/* Enable PPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
@@ -255,7 +220,6 @@ int board_set_active_charge_port(int port)
 {
 	int is_valid_port = (port >= 0 &&
 			    port < CONFIG_USB_PD_PORT_MAX_COUNT);
-	int i;
 
 	if (!is_valid_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
@@ -263,54 +227,12 @@ int board_set_active_charge_port(int port)
 	if (port == CHARGE_PORT_NONE) {
 		CPRINTSUSB("Disabling all charger ports");
 
-		/* Disable all ports. */
-		for (i = 0; i < ppc_cnt; i++) {
-			/*
-			 * Do not return early if one fails otherwise we can
-			 * get into a boot loop assertion failure.
-			 */
-			if (ppc_vbus_sink_enable(i, 0))
-				CPRINTSUSB("Disabling C%d as sink failed.", i);
-		}
-
 		return EC_SUCCESS;
-	}
-
-	/* Check if the port is sourcing VBUS. */
-	if (ppc_is_sourcing_vbus(port)) {
-		CPRINTFUSB("Skip enable C%d", port);
-		return EC_ERROR_INVAL;
 	}
 
 	CPRINTSUSB("New charge port: C%d", port);
 
-	/*
-	 * Turn off the other ports' sink path FETs, before enabling the
-	 * requested charge port.
-	 */
-	for (i = 0; i < ppc_cnt; i++) {
-		if (i == port)
-			continue;
-
-		if (ppc_vbus_sink_enable(i, 0))
-			CPRINTSUSB("C%d: sink path disable failed.", i);
-	}
-
-	/* Enable requested charge port. */
-	if (ppc_vbus_sink_enable(port, 1)) {
-		CPRINTSUSB("C%d: sink path enable failed.", port);
-		return EC_ERROR_UNKNOWN;
-	}
-
 	return EC_SUCCESS;
-}
-
-int ppc_get_alert_status(int port)
-{
-	if (port == USB_PD_PORT_TCPC_0)
-		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	else
-		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,

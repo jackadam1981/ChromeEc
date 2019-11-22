@@ -16,7 +16,6 @@
 #include "tcpm.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
-#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -112,10 +111,7 @@ void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
-	prev_en = ppc_is_sourcing_vbus(port);
-
-	/* Disable VBUS. */
-	ppc_vbus_source_enable(port, 0);
+	prev_en = 1;
 
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
@@ -135,14 +131,14 @@ int pd_set_power_supply_ready(int port)
 	int rv;
 
 	/* Disable charging. */
-	rv = ppc_vbus_sink_enable(port, 0);
+	rv = 0;
 	if (rv)
 		return rv;
 
 	pd_set_vbus_discharge(port, 0);
 
 	/* Provide Vbus. */
-	rv = ppc_vbus_source_enable(port, 1);
+	rv = 0;
 	if (rv)
 		return rv;
 
@@ -171,12 +167,12 @@ int pd_snk_is_vbus_provided(int port)
 
 void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
-	ppc_set_vbus_source_current_limit(port, rp);
+	rp = 2;
 }
 
 int board_vbus_source_enabled(int port)
 {
-	return ppc_is_sourcing_vbus(port);
+	return 1;
 }
 
 
