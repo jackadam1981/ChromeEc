@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b856754f_905082c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-22T13:46:28Z",
+      "side": 1,
+      "message": "I am not sure if this can be cleanly cherry-picked to kukui\u0027s firmware branch?  It contains some changes for jacuzzi family.",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "2608577962c27f867beb93a0666654e4579f79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4750480e_ff380158",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-22T13:46:28Z",
+      "side": 1,
+      "message": "The 5% tolerance comes from mt6370\u0027s spec. For ISL9238, you might check the ISL9238\u0027s spec.",
+      "range": {
+        "startLine": 61,
+        "startChar": 37,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "2608577962c27f867beb93a0666654e4579f79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
