@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d9b810f_1c4d55e2",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-22T01:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8903098_96442492",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8988080_d0c41752",
         "filename": "test/tpm_test/bn_test.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c96efff2_8f69d727",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-22T01:09:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a012668_849a11df",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "007682ef_af14b2d3",
         "filename": "test/tpm_test/bn_test.c",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49829e93_f3c8b293",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-22T01:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007682ef_af14b2d3",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +202,30 @@
       "side": 1,
       "message": "OpenSSL 1.0 was only working for little-endian architectures (x86) and had direct access to BIGNUM structure, so DCRYPTO_bn_wrap which just sets a pointer to user provided buffer as source for LITE_BIGNUM could be applied data in BIGNUM extracted by memcpy(). In OpenSSL 1.1 BIGNUM became opaque, so we need to use extra code to get data in little-endian format which used by DCRYPTO_*. It\u0027s actually replacement for memcpy()",
       "parentUuid": "8d9407c5_0810ecf7",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "52055d7700b5494b0488f43bc730ef3008d39405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a25e1eb_f9bde1e7",
+        "filename": "test/tpm_test/bn_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-22T01:09:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97585ddb_384e69b1",
       "range": {
         "startLine": 134,
         "startChar": 1,
