@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6983599_9bfa1386",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "nit: here and elsewhere\n    \n/*\n * Nothing on the first line\n * in multi-line comments.\n */",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f871021d_1f1ff791",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "Will this work? I didn\u0027t think you can configure a GPIO as both an input and output simultaneously. I thought that the pin direction is a single bit.",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1555938_02220fe2",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "I thought power button kicks off G3 exit.",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae84fca_1ea3432a",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "Can we move this last? We want to ensure that the PP1050_ST has actually gone away.",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0231d9d0_4a747f8e",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "Let\u0027s check the PP5000_A PGOOD before enabling the ROA rails.",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d92699a_8b7e77c4",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "We should wait 10ms before deasserting rsmrst_l here.",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2d0c65_9ebccd54",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-22T02:26:34Z",
+      "side": 1,
+      "message": "We need to look at CPU_C10_GATE_L before enabling S0 rails.\n\nAlso, we need to turn this on before enabling VCCIO. (per CML PDG note 14 page 640)\n\nLastly, we should make a separate function to handle C10_GATE_L changes as we can use that to turn off VCCSTG and VCCIO. (bold statement in pg. 598 of CML PDG).",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
