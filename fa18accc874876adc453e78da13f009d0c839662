@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7710cf35_32df8230",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-22T00:25:20Z",
+      "side": 1,
+      "message": "I think using send_done helps cr50 handle the delay more cleanly.",
+      "parentUuid": "32b7163d_719bffde",
+      "range": {
+        "startLine": 1209,
+        "startChar": 0,
+        "endLine": 1211,
+        "endChar": 0
+      },
+      "revId": "fa18accc874876adc453e78da13f009d0c839662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df0be161_682f107b",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "fa18accc874876adc453e78da13f009d0c839662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8976c1_197ad5d3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-11-22T00:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0be161_682f107b",
+      "range": {
+        "startLine": 1213,
+        "startChar": 4,
+        "endLine": 1213,
+        "endChar": 13
+      },
+      "revId": "fa18accc874876adc453e78da13f009d0c839662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
