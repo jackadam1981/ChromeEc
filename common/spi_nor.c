@@ -691,6 +691,11 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
 		erase_opcode = SPI_NOR_DRIVER_SPECIFIED_OPCODE_4KIB_ERASE;
 		erase_size = 4096;
 
+    /* Wait for the previous operation to finish. */
+    rv = spi_nor_wait(spi_nor_device);
+    if (rv)
+      goto err_free;
+
 #ifdef CONFIG_SPI_NOR_BLOCK_ERASE
 		if (!(offset % 65536) && size >= 65536) {
 			erase_opcode =
@@ -741,11 +746,6 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
 			continue;
 		}
 #endif
-		/* Wait for the previous operation to finish. */
-		rv = spi_nor_wait(spi_nor_device);
-		if (rv)
-			goto err_free;
-
 		/* Enable writing to serial NOR flash. */
 		rv = spi_nor_write_enable(spi_nor_device);
 		if (rv)
