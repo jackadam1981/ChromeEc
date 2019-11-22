@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7b9ae04_d567e822",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T00:24:54Z",
+      "side": 1,
+      "message": "Can you fix +80 lines?",
+      "range": {
+        "startLine": 1777,
+        "startChar": 60,
+        "endLine": 1777,
+        "endChar": 68
+      },
+      "revId": "255e82781c7bd431894f6d0e33b21a704711a1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002fce9d_9bedcfc9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T00:24:54Z",
+      "side": 1,
+      "message": "If we #define CONFIG_BATTERY_DEAD_UNTIL_VALUE as 1, can we unite the two cases?",
+      "range": {
+        "startLine": 1779,
+        "startChar": 7,
+        "endLine": 1779,
+        "endChar": 37
+      },
+      "revId": "255e82781c7bd431894f6d0e33b21a704711a1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32acc72_4cbfa266",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T00:24:54Z",
+      "side": 1,
+      "message": "ro",
+      "range": {
+        "startLine": 558,
+        "startChar": 14,
+        "endLine": 558,
+        "endChar": 16
+      },
+      "revId": "255e82781c7bd431894f6d0e33b21a704711a1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
