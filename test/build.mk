@@ -42,7 +42,7 @@ test-list-host+=bklight_lid bklight_passthru interrupt timer_dos button
 test-list-host+=math_util motion_lid sbs_charging_v2 battery_get_params_smart
 test-list-host+=lightbar inductive_charging usb_pd fan charge_manager
 test-list-host+=charge_manager_drp_charging charge_ramp
-test-list-host+=rsa rsa3 kasa float fp
+test-list-host+=rsa rsa3 kasa float fp mag_cal
 endif
 
 battery_get_params_smart-y=battery_get_params_smart.o
@@ -64,6 +64,7 @@ kb_8042-y=kb_8042.o
 kb_mkbp-y=kb_mkbp.o
 kb_scan-y=kb_scan.o
 lid_sw-y=lid_sw.o
+mag_cal-y=mag_cal.o
 math_util-y=math_util.o
 motion_lid-y=motion_lid.o
 kasa-y=kasa.o
