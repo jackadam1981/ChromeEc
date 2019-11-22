@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec7e85ca_c1e20576",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T00:43:00Z",
+      "side": 1,
+      "message": "I would add a comment.\n\nThere is no way to determine whether spidev is ready or not? Have you looked into the driver?",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 11
+      },
+      "revId": "cf37973a463278fd3ce600a7b6a266e7aa59e82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
