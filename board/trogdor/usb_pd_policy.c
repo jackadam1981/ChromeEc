@@ -341,11 +341,19 @@ static int is_dp_muxable(int port)
 	return 1;
 }
 
+/*
+ * Timestamp of the next possible toggle to ensure the 2-ms spacing
+ * between IRQ_HPD.
+ */
+static uint64_t hpd_deadline;
+
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
+	enum gpio_signal hpd = GPIO_DP_HOT_PLUG_DET;
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	const struct usb_mux *mux = &usb_muxes[port];
+	int cur_lvl = gpio_get_level(hpd);
 
 	dp_status[port] = payload[1];
 
@@ -383,8 +391,33 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 			    USB_SWITCH_CONNECT, pd_get_polarity(port));
 	}
 
-	/* Signal AP for the HPD event */
+	/* TODO(waihong): Keep only one of the following ways to signal AP */
+
+	/* Signal AP for the HPD event, through EC host event */
 	mux->hpd_update(port, lvl, irq);
+
+	/* Signal AP for the HPD event, through GPIO to AP */
+	if (irq & cur_lvl) {
+		uint64_t now = get_time().val;
+		/* Wait for the minimum spacing between IRQ_HPD if needed */
+		if (now < hpd_deadline)
+			usleep(hpd_deadline - now);
+
+		/* Generate IRQ_HPD pulse */
+		gpio_set_level(hpd, 0);
+		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
+		gpio_set_level(hpd, 1);
+
+		/* Set the minimum time delay (2ms) for the next HPD IRQ */
+		hpd_deadline = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	} else if (irq & !lvl) {
+		CPRINTF("ERR:HPD:IRQ&LOW\n");
+		return 0;  /* Nak */
+	} else {
+		gpio_set_level(hpd, lvl);
+		/* Set the minimum time delay (2ms) for the next HPD IRQ */
+		hpd_deadline = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	}
 
 	return 1;  /* Ack */
 }
