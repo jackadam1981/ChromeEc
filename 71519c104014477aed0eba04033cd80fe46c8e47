@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "84b7d4e2_a9d390d0",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-22T03:59:28Z",
+      "side": 1,
+      "message": "I was careful to use GPIO_INT_F_* which is orthogonal to the GPIO direction. From inspection of npcx/gpio.c this should work because the direction is set only to output but we\u0027re also setting some interrupt flags.\n\nI do notice these should be edge- rather than level-triggered though.",
+      "parentUuid": "f871021d_1f1ff791",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1555938_02220fe2",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174909ee_b4021505",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-22T03:59:28Z",
+      "side": 1,
+      "message": "Yes, I think you\u0027re right.",
+      "parentUuid": "f1555938_02220fe2",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
