@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2f41f03a_c365e593",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-11-22T22:57:18Z",
+      "side": 1,
+      "message": "This is not a kohaku specific change. It is being made in common code. Please add a tag accordingly.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "33eff2e865ac1354a190c0e0c8b8d68655606068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a1e9c2_4fff031c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-11-22T22:57:18Z",
+      "side": 1,
+      "message": "hatch",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "33eff2e865ac1354a190c0e0c8b8d68655606068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bcddf6b_e8058bc1",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
