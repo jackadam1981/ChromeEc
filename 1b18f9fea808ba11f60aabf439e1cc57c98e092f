@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c095776_19937b43",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T21:41:55Z",
+      "side": 1,
+      "message": "There is the same macro in TCPMv1 with a different value (200 ms). Why?",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330d616b_ce758f59",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T21:41:55Z",
+      "side": 1,
+      "message": "Can you unite them? The difference is only SRC_ and SNK_READY_HOLD_OFF_US.",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 3
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
