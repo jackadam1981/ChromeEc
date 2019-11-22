@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97fd3b23_97969b02",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-22T01:02:37Z",
+      "side": 1,
+      "message": "Ideally BACKOFF_TIME defined upgrade_fw.c should be defined in a shared .h file instead, but we are extremely unlikely to change the value, so this is fine.",
+      "revId": "0505c038d76852117e4504858a444ffcf7af9cb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
