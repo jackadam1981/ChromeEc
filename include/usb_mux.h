@@ -261,11 +261,9 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
  * Query superspeed mux status on type-C port.
  *
  * @param port port number.
- * @param dp_str pointer to the DP string to return.
- * @param usb_str pointer to the USB string to return.
  * @return Non-zero if superspeed connection is enabled; otherwise, zero.
  */
-int usb_mux_get(int port, const char **dp_str, const char **usb_str);
+int usb_mux_get(int port);
 
 /**
  * Flip the superspeed muxes on type-C port.
