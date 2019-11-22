@@ -11,26 +11,14 @@
 #include "math_util.h"
 #include "mat44.h"
 #include "vec4.h"
+#include "kasa.h"
 
 #define MAG_CAL_MAX_SAMPLES 0xffff
 #define MAG_CAL_MIN_BATCH_WINDOW_US    SECOND
 #define MAG_CAL_MIN_BATCH_SIZE      25      /* samples */
 
 struct mag_cal_t {
-	/*
-	 * Matric for sphere fitting:
-	 * +----+----+----+----+
-	 * | xx | xy | xz | x  |
-	 * +----+----+----+----+
-	 * | xy | yy | yz | y  |
-	 * +----+----+----+----+
-	 * | xz | yz | zz | z  |
-	 * +----+----+----+----+
-	 * | x  | y  | z  | 1  |
-	 * +----+----+----+----+
-	 */
-	mat44_fp_t acc;
-	fpv4_t acc_w;
+	struct kasa_fit kasa_fit;
 	fp_t radius;
 
 	intv3_t bias;
