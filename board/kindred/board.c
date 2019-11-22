@@ -47,6 +47,10 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+static void check_reboot_deferred(void);
+DECLARE_DEFERRED(check_reboot_deferred);
+static int system_in_resume_state = 0;
+
 /* GPIO to enable/disable the USB Type-A port. */
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_EN_USB_A_5V,
@@ -481,4 +485,21 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
+}
+static void all_sys_pgood_check_reboot(void)
+{
+	system_in_resume_state = 1;
+	hook_call_deferred(&check_reboot_deferred_data, 3000 * MSEC);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, all_sys_pgood_check_reboot, HOOK_PRIO_DEFAULT);
+static void all_sys_pgood_reset_reboot(void)
+{
+	system_in_resume_state = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, all_sys_pgood_reset_reboot, HOOK_PRIO_DEFAULT);
+static void check_reboot_deferred(void)
+{
+	if (!gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD) && system_in_resume_state == 1) {
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+	}
 }
