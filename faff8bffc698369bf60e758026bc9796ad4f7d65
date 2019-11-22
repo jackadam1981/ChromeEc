@@ -22,6 +22,30 @@
       "revId": "faff8bffc698369bf60e758026bc9796ad4f7d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c363907_1ed8b241",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3089,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-22T05:27:20Z",
+      "side": 1,
+      "message": "When we are a source, several SRC_CAPs are sent and resent on failure several times by the PRL layer. If we get TrySrc\u0027ed, disabling PD here will immediately stop the PRL from retrying.\n\nI don\u0027t think we need PD in this state but if we do, we can re-enable it a short time after disabling it.",
+      "parentUuid": "931b1e9e_2852cb01",
+      "range": {
+        "startLine": 3089,
+        "startChar": 1,
+        "endLine": 3089,
+        "endChar": 24
+      },
+      "revId": "faff8bffc698369bf60e758026bc9796ad4f7d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
