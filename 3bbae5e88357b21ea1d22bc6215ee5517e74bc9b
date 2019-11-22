@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cb9c8b0_6a3376c4",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-11-22T17:05:47Z",
+      "side": 1,
+      "message": "I suspect we need the AP wakeup logic that nocturne has too. It sounds likes it won\u0027t wakeup the AP when we assert this signal.",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
