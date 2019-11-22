@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bcddf6b_e8058bc1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T21:52:49Z",
+      "side": 1,
+      "message": "FYI: This can be probably removed if we use IS_ENABLED to negate the call (at line 1835?).",
+      "range": {
+        "startLine": 1479,
+        "startChar": 7,
+        "endLine": 1479,
+        "endChar": 46
+      },
+      "revId": "33eff2e865ac1354a190c0e0c8b8d68655606068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa91327_299250c6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-22T21:52:49Z",
+      "side": 1,
+      "message": "nit: return (batt_temp_c \u003e\u003d max_c) || (batt_temp_c \u003c\u003d min_c);",
+      "range": {
+        "startLine": 1501,
+        "startChar": 0,
+        "endLine": 1505,
+        "endChar": 10
+      },
+      "revId": "33eff2e865ac1354a190c0e0c8b8d68655606068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
