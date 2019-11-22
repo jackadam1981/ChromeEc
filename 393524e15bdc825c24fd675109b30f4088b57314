@@ -142,6 +142,30 @@
       "revId": "393524e15bdc825c24fd675109b30f4088b57314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bdb7742_7e31d577",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-22T07:54:42Z",
+      "side": 1,
+      "message": "Ack.\n\nWe had some other structure-specific issues in TCPMv2,\nAs a result we used your proposed approach with slightly longer windows.\n\nTomatoes tomatoes, and well explained. Thank you Daisuke!",
+      "parentUuid": "a10d3f38_c838e43a",
+      "range": {
+        "startLine": 1865,
+        "startChar": 7,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "393524e15bdc825c24fd675109b30f4088b57314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
