@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e43ab598_6283d01e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-22T14:26:43Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same accessor as prl_get_rev?",
+      "revId": "65369106211f8fc42e52c8c3a52170f99e652375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f09d527_4b0dc8ca",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-22T14:26:43Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same accessor as prl_get_rev?",
+      "revId": "65369106211f8fc42e52c8c3a52170f99e652375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d3fac0_cc692371",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-22T14:26:43Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same accessor as prl_get_rev?",
+      "revId": "65369106211f8fc42e52c8c3a52170f99e652375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
