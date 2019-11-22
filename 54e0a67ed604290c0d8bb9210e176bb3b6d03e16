@@ -380,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "643dfea5_f6f8c937",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 2411,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-22T03:56:05Z",
+      "side": 1,
+      "message": "Yes this check in not needed.",
+      "parentUuid": "d9f288dc_a48b015b",
+      "range": {
+        "startLine": 2411,
+        "startChar": 1,
+        "endLine": 2411,
+        "endChar": 50
+      },
+      "revId": "54e0a67ed604290c0d8bb9210e176bb3b6d03e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbe363d5_4ade0dc7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 22
