@@ -22,6 +22,30 @@
       "revId": "cf37973a463278fd3ce600a7b6a266e7aa59e82e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6c293b_92b8c762",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-11-23T00:16:34Z",
+      "side": 1,
+      "message": "I ripped into this a bit more and noticed that this is covering up an issue with the chip select line. See new bug b/145023809 .",
+      "parentUuid": "ec7e85ca_c1e20576",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 11
+      },
+      "revId": "cf37973a463278fd3ce600a7b6a266e7aa59e82e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
