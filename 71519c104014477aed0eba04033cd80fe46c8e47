@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb2f4034_f7ffdef7",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-24T22:54:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6983599_9bfa1386",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f871021d_1f1ff791",
         "filename": "board/puff/gpio.inc",
         "patchSetId": 1
@@ -106,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "053d8bae_fd26fa24",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-24T22:54:07Z",
+      "side": 1,
+      "message": "Figure 425 shows VCCST_PWRGD falling before VCCST itself (which may even remain powered), so that ordering doesn\u0027t seem to matter. \n\nMinimizing delay on VCCST_PG_OD seems better, to satistfy tCPU28a (keeping SLP_S3 assertion -\u003e VCCST_PWRGD under the 200 us max), and tCPU28b even appears to say that VCCST_PWRGD should fall before VCCST turns off.",
+      "parentUuid": "3ae84fca_1ea3432a",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0231d9d0_4a747f8e",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 1
@@ -120,6 +156,24 @@
       "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1aa664_150c9ca6",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-24T22:54:07Z",
+      "side": 1,
+      "message": "While PP3300_A does depend on PP5000_A for correct operation, it has an undervoltage lockout that should prevent bad startup and it can function correctly before PP5000_A ramps fully.\n\nOn the other hand waiting is probably more robust to BOM changes and PP5000_A should ramp in under a millisecond, so sure.",
+      "parentUuid": "0231d9d0_4a747f8e",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "42e70be4_b6dd1280",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-24T22:54:07Z",
+      "side": 1,
+      "message": "Yes, that\u0027s tPCH03.",
+      "parentUuid": "6d92699a_8b7e77c4",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b2d0c65_9ebccd54",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 1
@@ -154,6 +226,24 @@
       "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc8fe2e4_ee4edecc",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-24T22:54:07Z",
+      "side": 1,
+      "message": "There\u0027s a TODO further up to handle CPU_C10_GATE_L; the proto hardware should not do this gating because EN_S0_RAILS also controls power to the HDMI ports (in addition to PP1200_PLLOC and PP1050_STG) and we don\u0027t want to cut that power while still in S0. EC doesn\u0027t need to touch the VCCIO enable because CPU_C10_GATED_L is directly connected to the VCCIO regulator\u0027s LP_L input.\n\nMoved enable to before VCCIO.",
+      "parentUuid": "1b2d0c65_9ebccd54",
+      "revId": "71519c104014477aed0eba04033cd80fe46c8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
