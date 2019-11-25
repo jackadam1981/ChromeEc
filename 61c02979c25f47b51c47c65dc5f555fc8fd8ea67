@@ -22,6 +22,30 @@
       "revId": "61c02979c25f47b51c47c65dc5f555fc8fd8ea67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd30bee_392445c2",
+        "filename": "common/chargen.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-11-25T19:21:30Z",
+      "side": 1,
+      "message": "In case that Servo and Ccd are connected at the same time, and \u0027chargen x y usb\u0027 was requested through servo, tester might want to terminate it by pressing x through servo.",
+      "parentUuid": "c32915d7_12aea1de",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "61c02979c25f47b51c47c65dc5f555fc8fd8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
