@@ -159,6 +159,24 @@
       "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce3bfe8d_ac713596",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-25T17:47:03Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1931464/",
+      "parentUuid": "b2672667_a91eccde",
+      "revId": "de212d5fe2309a3aa95cd8f2011fbdc9c2acdc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
