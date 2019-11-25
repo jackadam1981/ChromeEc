@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2c085b5b_20b0d5d4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T21:38:26Z",
+      "side": 1,
+      "message": "Nathan, could you comment about the dock that failed?",
+      "parentUuid": "e65c3751_df917b13",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "330d616b_ce758f59",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
