@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0306ff9_96da4376",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:36:29Z",
+      "side": 1,
+      "message": "can we make this an enum with 0 value being TypeC/TypeC and 1 since TypeC Legacy TBT adapter, that way the code would document itself\n\nif (dev.resp.tbt_adapter \u003d\u003d TBT_ADAPTER_LEGACY)\n  ...\n\n\n\n--- or  ----\n\n\nMaybe we just rename tbt_adater to tbt_legacy_adapter since true if legacy and false is not legacy",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 26
+      },
+      "revId": "f6c1252ca5e6af24931d6022535f3ae426f97b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3a28bf_1cd956a7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:36:29Z",
+      "side": 1,
+      "message": "same enum comment",
+      "range": {
+        "startLine": 223,
+        "startChar": 6,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "f6c1252ca5e6af24931d6022535f3ae426f97b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77dddd02_eac8af98",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:36:29Z",
+      "side": 1,
+      "message": "can we rename this to unidir_lsrx_comm or something like that (or maybe we make it an enum)",
+      "range": {
+        "startLine": 232,
+        "startChar": 17,
+        "endLine": 232,
+        "endChar": 31
+      },
+      "revId": "f6c1252ca5e6af24931d6022535f3ae426f97b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c98b552c_1aab9c49",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:36:29Z",
+      "side": 1,
+      "message": "as a general note, it would be nice if comment spelled out thunderbolt (the code should still use tbt)",
+      "range": {
+        "startLine": 1871,
+        "startChar": 45,
+        "endLine": 1871,
+        "endChar": 48
+      },
+      "revId": "f6c1252ca5e6af24931d6022535f3ae426f97b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b3ae2f_b637f80c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1892,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:36:29Z",
+      "side": 1,
+      "message": "rename to get_cable_tbt_vdo instead? (since there can be many VDOs)\n\nI am assuming SVID 0x8087 is the thunderbolt SVDO, right? (If so can you add that to the function comment please)",
+      "range": {
+        "startLine": 1892,
+        "startChar": 27,
+        "endLine": 1892,
+        "endChar": 45
+      },
+      "revId": "f6c1252ca5e6af24931d6022535f3ae426f97b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
