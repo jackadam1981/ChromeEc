@@ -22,6 +22,30 @@
       "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9977970c_7c50ddf2",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-25T19:33:10Z",
+      "side": 1,
+      "message": "Checked that this GPIO (AP side) can be configured as a wake source. Is it enough?\n\nNot sure the Nocturne case; Aseda may tell the story.",
+      "parentUuid": "3cb9c8b0_6a3376c4",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
