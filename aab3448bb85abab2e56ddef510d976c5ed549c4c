@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9f4e415_12a185e7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-25T22:29:26Z",
+      "side": 0,
+      "message": "We can trap future mistakes:\n\n\tfunction dut-control() {\n        \techo \"You shouldn\u0027t call dut-control directly.\"\n        \texit -1\n\t}\n\nAnd\n\tDUT_CONTROL_CMD\u003d( \"/usr/bin/dut-control\" \"--port\u003d${FLAGS_port}\" )",
+      "range": {
+        "startLine": 455,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 13
+      },
+      "revId": "aab3448bb85abab2e56ddef510d976c5ed549c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
