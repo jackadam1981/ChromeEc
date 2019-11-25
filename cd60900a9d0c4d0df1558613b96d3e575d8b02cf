@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4d34ef5_64a7e42b",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-25T18:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12476fdd_5f36a88e",
+      "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "211a5a2e_747f9751",
         "filename": "include/usb_mux.h",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-25T18:33:17Z",
       "side": 1,
       "message": "Not sure what NVM means here, and only use seems to be to adjust an msleep delay, so maybe there is a better name.",
+      "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a70aa3_1c0ae1d2",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-25T18:59:39Z",
+      "side": 1,
+      "message": "The Intel BB retimer uses a shared non-volatile memory in their dual port chip.  This chip requires twice the time to initialize.  I was avoiding making any bigger changes than getting the API to be more standard.\n\nI will look at how this is used and will consider a CONFIG_USBC_RETIMER_INTEL_BB_SHARED_NVM flag instead and make this a compile time setup.",
+      "parentUuid": "211a5a2e_747f9751",
       "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
