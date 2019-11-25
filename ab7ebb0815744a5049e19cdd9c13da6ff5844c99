@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "035117af_bfac28ee",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-25T23:52:20Z",
+      "side": 1,
+      "message": "For the text field, suggest using it as input to hash or HMAC.\nThen rename \"text2\" to \"key\", and use it as key.\n\ni.e. for the purpose of HMAC, swap the use of text and text2. It will be cleaner and easier to understand for new reader that way.",
+      "revId": "ab7ebb0815744a5049e19cdd9c13da6ff5844c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ae96438_48806a9e",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-25T23:52:20Z",
+      "side": 1,
+      "message": "Since we are extending this command to work for both HMAC and hash, the use of CMD_START, CMD_CONTINUE and CMD_FINISH becomes ambiguous. So may be we change this to: CMD_HASH_START etc.",
+      "revId": "ab7ebb0815744a5049e19cdd9c13da6ff5844c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
