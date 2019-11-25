@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b275c95b_1c10bc42",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "these should have tbt in the function name, i.e. get_tbt_cable_speed",
+      "range": {
+        "startLine": 226,
+        "startChar": 28,
+        "endLine": 226,
+        "endChar": 43
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7a4850_f87509af",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "is it possible that this hasn\u0027t been intialized yet? What should be the correct response then? If we are okay with the 0th value, the add a comment saying that it is okay please",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 51
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb9d996_23038c16",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "same comment about uninitialized access to the data",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7579fb37_7e9bc680",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5439,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "let\u0027s scope this name more please, i.e. get_pd_control_flags\n\n(since this is such a large file)",
+      "range": {
+        "startLine": 5439,
+        "startChar": 15,
+        "endLine": 5439,
+        "endChar": 24
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147dea5b_19457d9c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5451,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "nit: let\u0027s use the same format as the other flags:\n\ncable_resp.tbt_retimer \u003c\u003c USB_PD_MUCT_TBT_ACTIVE_CABLE\n\nsince it documents the code well (let\u0027s you know what everything converts too) and the compiler will omit the unnecessary (\u003c\u003c 0) code",
+      "range": {
+        "startLine": 5451,
+        "startChar": 3,
+        "endLine": 5451,
+        "endChar": 25
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98524ea_603045ca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "do you think we are going to be adding any more fields in the near term?\n\nWe don\u0027t want to create a lot of versions of this command that no one is using.\n\nThis is different than our normal workflow where we make a new version of a command pretty infrequently. We have been iteratively adding new fields pretty quickly here.\n\nSince this development model for ec commands is different than our normal model, let\u0027s do something different for code development ;)\n\n\nI did a code search and no one is using _v2 outside of the platform/ec code base yet, so _v2 is still yet to be used. Since that is the case, let\u0027s add the new fields (flags, cable_speed, and cable_gen) to the _v2 struct and omit the _v3.\n\nLet\u0027s also put a comment on the v2 struct that says this version is still underdevelopment and can change. Let\u0027s also instruct the comment to remove that underdevelopment tag as soon as someone uses the _v2 struct outside of the platform/ec codebase. What are your thoughts?",
+      "range": {
+        "startLine": 5206,
+        "startChar": 0,
+        "endLine": 5206,
+        "endChar": 38
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b52c1b6_40b643ce",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T16:51:43Z",
+      "side": 1,
+      "message": "nit: let\u0027s spell out TBT as thunderbolt in comments please",
+      "range": {
+        "startLine": 1911,
+        "startChar": 10,
+        "endLine": 1911,
+        "endChar": 13
+      },
+      "revId": "3b35c5fd11bde6ede7ae73f8d3d928fb7f9e9c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
