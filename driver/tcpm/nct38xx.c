@@ -333,8 +333,34 @@ static void nct38xx_tcpc_alert(int port)
 	 * keep the status of Vendor Define bit. Otherwise, the status of ALERT
 	 * register will be cleared after tcpci_tcpc_alert() is executed.
 	 */
-	if (IS_ENABLED(CONFIG_IO_EXPANDER_NCT38XX))
+	if (IS_ENABLED(CONFIG_IO_EXPANDER_NCT38XX)) {
 		rv = tcpc_read16(port, TCPC_REG_ALERT, &alert);
+		if (rv)
+			CPRINTS("TCPC p%d Reading ALERT failed, rv=%d",
+				port, rv);
+	}
+
+	if (!rv && (alert & TCPC_REG_ALERT_FAULT)) {
+		int fault;
+		int fault_rv;
+
+		fault_rv = tcpc_read(port, TCPC_REG_FAULT_STATUS, &fault);
+		if (!fault_rv) {
+			CPRINTS("TCPC p%d alert=0x%04X, fault=0x%02X",
+				port, alert, fault);
+
+			/* Clear any faults that are set */
+			fault_rv = tcpc_write(port,
+					      TCPC_REG_FAULT_STATUS,
+					      fault);
+			if (fault_rv)
+				CPRINTS("TCPC p%d Writing FAULT failed, rv=%d",
+					port, fault_rv);
+		} else {
+			CPRINTS("TCPC p%d Reading FAULT failed, rv=%d",
+				port, fault_rv);
+		}
+	}
 
 	/* Process normal TCPC ALERT event and clear status */
 	tcpci_tcpc_alert(port);
