@@ -447,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "9e872570_03f258e6",
+        "filename": "common/usb_common.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "the looks great. If is very easier to read and understand now. Thank you!",
+      "parentUuid": "1c0d1fa7_36993290",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 20
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8350e873_5bd75905",
         "filename": "common/usb_common.c",
         "patchSetId": 18
@@ -667,6 +691,30 @@
       "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a5d3ed_b2a40980",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "You took care of this comment. I was just saying that this line would disappear from this file, which is did :)",
+      "parentUuid": "50ab6a9b_4b4c8494",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "3a6bd0a0a720489a7fc448635b1ce47a985b12af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

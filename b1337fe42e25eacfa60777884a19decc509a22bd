@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab9069c3_253a6dc8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "s/shuold/should/",
+      "range": {
+        "startLine": 100,
+        "startChar": 13,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f14f558_a9b2ee1f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "s/changed/changes/",
+      "range": {
+        "startLine": 100,
+        "startChar": 66,
+        "endLine": 100,
+        "endChar": 73
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa255b3_5dd18872",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "Can we make this if condition\n\nif (IS_ENABLED(CONFIG_USB_PD_PREFER_MV) \u0026\u0026 charge_manager_get_supplier() \u003d\u003d\n\t\t\t\t    CHARGE_SUPPLIER_PD))\n\notherwise, we don\u0027t need to do anything right?",
+      "range": {
+        "startLine": 2003,
+        "startChar": 6,
+        "endLine": 2003,
+        "endChar": 43
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a198d7_2678ceaa",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "nit: can we switch 1. and 2. to match the order it is in the code. I think it makes the comment either to follow while reading the code.\n\ncomment was helpful! I think I finally understand the intent after reading this comment and code a few times. Thank you!",
+      "range": {
+        "startLine": 2015,
+        "startChar": 6,
+        "endLine": 2024,
+        "endChar": 12
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56cb1224_85800088",
+        "filename": "common/usb_common.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "nit: can be simplifed to\n\n#if defined(CONFIG_USB_PD_PREFER_MV) + defined(PD_PREFER_HIGH_VOLTAGE) + defined(PD_PREFER_LOW_VOLTAGE) \u003e 1\n#error ...\n#endif",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89161eaa_9d063eb9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "hopefully we don\u0027t need this unused attribute\n\nif we do though we can use __maybe_unused macro instead",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc90999_1a3a7793",
+        "filename": "common/usb_common.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "can you initialize this to 0 just in case another code path that doesn\u0027t require CONFIG_USB_PD_PREFER_MV tries to use this uninitialized value in the future",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 15
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791e3995_922e7ebc",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "nit: double space here",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e35142e3_05b6f0af",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T21:04:44Z",
+      "side": 1,
+      "message": "can we call this charge_get_plt_plus_bat_desired_mw(void)\n\njust so the function name also has battery in it which seems important",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
