@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d853cf7_cf11cbef",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-25T18:11:37Z",
+      "side": 1,
+      "message": "I ran clang-format on all these CLs and it updated this, it was complaining that host_cmd_motion_sense was on a new line when it had room in the previous line. This line has a continuation indent. Would you like me to revert the clang-format?",
+      "parentUuid": "a125d95c_de3803ed",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "171ad783_57b51c71",
         "filename": "include/ec_commands.h",
         "patchSetId": 15
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a4763898_f9346da3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-25T18:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171ad783_57b51c71",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69049003_d84f3103",
         "filename": "include/ec_commands.h",
         "patchSetId": 15
@@ -50,6 +86,24 @@
       "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d93d0d9_9f1086fa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-25T18:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69049003_d84f3103",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
