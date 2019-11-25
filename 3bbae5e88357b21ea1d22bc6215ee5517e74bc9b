@@ -70,6 +70,30 @@
       "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32acfdf_dee193d9",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-11-25T23:24:56Z",
+      "side": 1,
+      "message": "Checked the background. It is needed for wake on dock, so added it.",
+      "parentUuid": "e29f65b8_6d550ca7",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
