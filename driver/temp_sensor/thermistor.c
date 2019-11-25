@@ -7,9 +7,12 @@
 
 #include "adc.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "thermistor.h"
 #include "util.h"
+
+static int fake_temp[4] = {-1, -1, -1, -1};
 
 int thermistor_linear_interpolate(uint16_t mv,
 		const struct thermistor_info *info)
@@ -87,6 +90,10 @@ static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 
 	*temp_ptr = thermistor_linear_interpolate(mv, info);
 	*temp_ptr = C_TO_K(*temp_ptr);
+
+	if (fake_temp[idx_adc] != -1)
+		*temp_ptr = C_TO_K(fake_temp[idx_adc]);
+
 	return EC_SUCCESS;
 }
 #endif
@@ -267,3 +274,47 @@ int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr)
 			&thermistor_info_31_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_30K9_47K_4050B */
+
+
+
+static int therm_set_fake_temp(int index, int degree_c)
+{
+	if ((index < 0) || (index >= 3))
+		return EC_ERROR_INVAL;
+
+	fake_temp[index] = degree_c;
+	ccprintf("New degree will be updated 1 sec later\n\n");
+
+	return EC_SUCCESS;
+}
+
+static int command_therm(int argc, char **argv)
+{
+	char *command;
+	char *e;
+	int data;
+	int offset;
+	int rv = 0;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	command = argv[1];
+	offset = strtoi(argv[2], &e, 0);
+	if (*e || offset < 0 || offset > 255)
+		return EC_ERROR_PARAM2;
+
+	data = strtoi(argv[3], &e, 0);
+
+	if (!strcasecmp(command, "fake")) {
+		ccprintf("Hook temperature\n");
+		rv = therm_set_fake_temp(offset, data);
+	} else
+		return EC_ERROR_PARAM1;
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(therm, command_therm,
+	"[fake <index> <value>]"
+	"Temps in Celsius.",
+	"Set fake temperature of thermistor");
