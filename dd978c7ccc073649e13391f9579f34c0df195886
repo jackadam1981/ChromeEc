@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42fd43dd_fa909e2d",
+        "filename": "board/volteer/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-11-25T21:42:49Z",
+      "side": 1,
+      "message": "Note that this function, along with some other task functions, ignore their arguments and get their port number from their task ID. See b/145150520.",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "dd978c7ccc073649e13391f9579f34c0df195886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
