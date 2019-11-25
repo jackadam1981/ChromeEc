@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93b0701b_bafbb317",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-25T18:22:25Z",
+      "side": 1,
+      "message": "I haven\u0027t been able to find which register this should go into. Do you have that? I\u0027ve been using this spec sheet: https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BMI160-DS000.pdf. Also, I\u0027m not 100% sure about that yet. From what I gather most chips don\u0027t have a way to store the temperature alongside the calibration offset. So it seems like this chip might be unique in that manner.",
+      "parentUuid": "040476d6_ff01bfad",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44b14752_60062fbf",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 5
