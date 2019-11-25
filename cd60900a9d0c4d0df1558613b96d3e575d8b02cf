@@ -87,6 +87,24 @@
       "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d03a86d_675322f7",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-25T19:27:37Z",
+      "side": 1,
+      "message": "The code is setup to handle a different value for a each port. So went a little more brute force but gets there without having to make this a generic TCPCI concept.",
+      "parentUuid": "7c3c075d_5f5c69a5",
+      "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
