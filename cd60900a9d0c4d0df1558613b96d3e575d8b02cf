@@ -69,6 +69,24 @@
       "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3c075d_5f5c69a5",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-25T19:07:10Z",
+      "side": 1,
+      "message": "I think something like CONFIG_USBC_RETIMER_INTEL_BB_INIT_DELAY_MS makes sense (similar to PS8XXX_RESET_DELAY_MS)",
+      "parentUuid": "c8a70aa3_1c0ae1d2",
+      "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
