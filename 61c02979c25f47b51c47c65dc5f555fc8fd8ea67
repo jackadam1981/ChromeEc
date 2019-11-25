@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c32915d7_12aea1de",
+        "filename": "common/chargen.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-25T19:15:08Z",
+      "side": 1,
+      "message": "is this needed in case neither CONFIG_USB_CONSOLE nor CONFIG_USB_CONSOLE_STREAM  is enabled?\n\nmaybe you should have a pointer to getc function as well and care only of the channel being tested?",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "61c02979c25f47b51c47c65dc5f555fc8fd8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
