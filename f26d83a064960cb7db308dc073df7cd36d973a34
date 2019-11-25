@@ -22,6 +22,30 @@
       "revId": "f26d83a064960cb7db308dc073df7cd36d973a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595ad9d9_a7b5a52a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T21:39:53Z",
+      "side": 1,
+      "message": "What\u0027s the pd file?",
+      "parentUuid": "126db95b_91eb88c8",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 0
+      },
+      "revId": "f26d83a064960cb7db308dc073df7cd36d973a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
