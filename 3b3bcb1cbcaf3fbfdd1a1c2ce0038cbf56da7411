@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fd5d57c_5bf37138",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T17:32:44Z",
+      "side": 1,
+      "message": "initiallize this value otherwise line 343 will use an uninitalized value",
+      "range": {
+        "startLine": 329,
+        "startChar": 12,
+        "endLine": 329,
+        "endChar": 14
+      },
+      "revId": "3b3bcb1cbcaf3fbfdd1a1c2ce0038cbf56da7411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
