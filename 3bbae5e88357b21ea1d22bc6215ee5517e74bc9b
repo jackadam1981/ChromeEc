@@ -46,6 +46,30 @@
       "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29f65b8_6d550ca7",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-25T21:18:35Z",
+      "side": 1,
+      "message": "It would be needed for the wake on dock mode feature. I\u0027m working on refactoring usb_pd_policy to avoid having to copy/paste this code across boards. See crbug.com/1021724",
+      "parentUuid": "9977970c_7c50ddf2",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "3bbae5e88357b21ea1d22bc6215ee5517e74bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
