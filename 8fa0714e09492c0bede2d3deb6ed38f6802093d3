@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "78c66d60_3b8a9bb4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T21:36:57Z",
+      "side": 1,
+      "message": "I changed the way this works",
+      "parentUuid": "7be7c8b7_64dd7005",
+      "revId": "8fa0714e09492c0bede2d3deb6ed38f6802093d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93773c30_d1ca09e0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 40
@@ -39,6 +57,53 @@
       "revId": "8fa0714e09492c0bede2d3deb6ed38f6802093d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4d8596_1a327a83",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T21:36:57Z",
+      "side": 1,
+      "message": "I changed the way this works.",
+      "parentUuid": "93773c30_d1ca09e0",
+      "range": {
+        "startLine": 1478,
+        "startChar": 0,
+        "endLine": 1490,
+        "endChar": 3
+      },
+      "revId": "8fa0714e09492c0bede2d3deb6ed38f6802093d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77069bec_f28e6772",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T21:36:57Z",
+      "side": 1,
+      "message": "I changed this and I need to write a unit test for it. I uploaded the code to make sure this is correct.",
+      "range": {
+        "startLine": 1596,
+        "startChar": 1,
+        "endLine": 1598,
+        "endChar": 22
+      },
+      "revId": "8fa0714e09492c0bede2d3deb6ed38f6802093d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
