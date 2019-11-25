@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5e60f693_59bc5d1f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-11-25T18:40:23Z",
+      "side": 1,
+      "message": "Maybe a short addition to the comment stating this so no one accidentally changes it back to 200ms because that is how the old code worked?",
+      "parentUuid": "8c19fa09_3ba4a73c",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "330d616b_ce758f59",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
