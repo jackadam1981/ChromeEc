@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d4257be4_a8a043c8",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-11-25T18:32:45Z",
+      "side": 1,
+      "message": "I\u0027ve updated to a static array initializer pattern that I\u0027ve used in the past. Please let me know if this is acceptable, if not I\u0027ll add a motion_sense_fifo_init() function and call it when motion_sense starts up.",
+      "parentUuid": "cc575917_ad76b70a",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86ea43b4_c9c9ce22",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 9
