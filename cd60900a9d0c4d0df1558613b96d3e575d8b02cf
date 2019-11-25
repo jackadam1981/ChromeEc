@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12476fdd_5f36a88e",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-25T18:33:17Z",
+      "side": 1,
+      "message": "This should be removed from here: now usb_mux.c is taking care of calling the retimer functions in addition to the mux functions.",
+      "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211a5a2e_747f9751",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-25T18:33:17Z",
+      "side": 1,
+      "message": "Not sure what NVM means here, and only use seems to be to adjust an msleep delay, so maybe there is a better name.",
+      "revId": "cd60900a9d0c4d0df1558613b96d3e575d8b02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
