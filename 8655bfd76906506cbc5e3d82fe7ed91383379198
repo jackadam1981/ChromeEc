@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aade1cc_cb674ced",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-25T18:19:12Z",
+      "side": 1,
+      "message": "why not move this entire code to power/common.c?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "8655bfd76906506cbc5e3d82fe7ed91383379198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
