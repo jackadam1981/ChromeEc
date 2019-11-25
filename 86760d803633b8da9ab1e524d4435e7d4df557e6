@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34feacf9_c9d41a70",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-25T22:05:02Z",
+      "side": 1,
+      "message": "Has this been already added to config.h?",
+      "range": {
+        "startLine": 1082,
+        "startChar": 18,
+        "endLine": 1082,
+        "endChar": 37
+      },
+      "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75124ce6_500857de",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-25T22:05:02Z",
+      "side": 1,
+      "message": "Can you rename this to _DYNAMIC_ instead of _ONLINE_ (including CONFIG_ONLINE_CALIB)?",
+      "range": {
+        "startLine": 1085,
+        "startChar": 5,
+        "endLine": 1085,
+        "endChar": 44
+      },
+      "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a9427f7_de67ba6e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-25T22:05:02Z",
+      "side": 1,
+      "message": "Why don\u0027t you extend MOTIONSENSE_FLAG_*, which are stored in \u0027flags\u0027 field of struct motion_sensor_t?",
+      "range": {
+        "startLine": 2778,
+        "startChar": 5,
+        "endLine": 2778,
+        "endChar": 32
+      },
+      "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
