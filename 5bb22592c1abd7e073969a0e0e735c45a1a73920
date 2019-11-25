@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4efc7d2_b3752c8f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T17:30:12Z",
+      "side": 1,
+      "message": "can we make this (double) const?\n\nconst struct usb_retimer * const retimer \u003d \u0026usb_retimers[ports];",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "5bb22592c1abd7e073969a0e0e735c45a1a73920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
