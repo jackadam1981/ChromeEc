@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "aad48963_42ee3544",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5024,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T17:04:33Z",
+      "side": 1,
+      "message": "why is there no response to this command? I would think you could return here since this is only setting a flag for later consumption.\n\nAlso, the recommended order should be \n\nectool ap-reboot-on-3 \u0026\u0026 shutdown -h now",
+      "range": {
+        "startLine": 5023,
+        "startChar": 50,
+        "endLine": 5024,
+        "endChar": 28
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22feb42d_c310c270",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -294,6 +317,52 @@
         "startChar": 0,
         "endLine": 603,
         "endChar": 3
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4c8b141_bd61df9d",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T17:04:33Z",
+      "side": 1,
+      "message": "why not set want_g3_exit \u003d 1 here instead? We don\u0027t need to wake the task since we are runing in the chipset task context",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 27
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d9b11e_519e9f17",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T17:04:33Z",
+      "side": 1,
+      "message": "let call this reboot_ap_on_g3",
+      "range": {
+        "startLine": 258,
+        "startChar": 4,
+        "endLine": 258,
+        "endChar": 16
       },
       "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
