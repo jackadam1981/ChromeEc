@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e9dcda9_7fb92090",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3542429_88f686e0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ccd9abe_693e2ad8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3719da0e_cd212d5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ccd9abe_693e2ad8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6bfa9e6_14f41dc5",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc65f1bd_4da8f6cd",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6bfa9e6_14f41dc5",
+      "range": {
+        "startLine": 66,
+        "startChar": 58,
+        "endLine": 66,
+        "endChar": 64
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9c7e9bf7_7c83c6c3",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370b8a0d_165a0104",
+      "range": {
+        "startLine": 1523,
+        "startChar": 0,
+        "endLine": 1523,
+        "endChar": 3
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87edae71_538a56af",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -137,6 +233,30 @@
       "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa9d4a42_13662cd5",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87edae71_538a56af",
+      "range": {
+        "startLine": 1528,
+        "startChar": 9,
+        "endLine": 1528,
+        "endChar": 12
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "1cd05443_6f671288",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5027,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "This command is not enabled with any special config, as it is used as an ectool command.\nThe user has to take care on when to use this command.",
+      "parentUuid": "22feb42d_c310c270",
+      "range": {
+        "startLine": 5026,
+        "startChar": 3,
+        "endLine": 5027,
+        "endChar": 11
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6b260d8_8904876b",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -197,6 +341,30 @@
       "writtenOn": "2019-11-21T15:46:28Z",
       "side": 1,
       "message": "Why is this not possible with script doing something like:\nec_uart_cmd:aps\n\u003cwait for n seconds\u003e\nec_uart_cmd:powerinfo --\u003e Check if system is in G3\nec_uart_cmd:powerbtn",
+      "range": {
+        "startLine": 5030,
+        "startChar": 6,
+        "endLine": 5030,
+        "endChar": 54
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b42f2df_207beacd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5030,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "It is possible with script as mentioned by you, but using servo. With this command, the dependency of servo is ruled out.",
+      "parentUuid": "d6b260d8_8904876b",
       "range": {
         "startLine": 5030,
         "startChar": 6,
@@ -232,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "889eaa1f_a06e7e2d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5031,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "In case, if shutdown takes longer time due to some platform issues, this command based cycling will not timeout.",
+      "parentUuid": "6586d96c_3da66ab4",
+      "range": {
+        "startLine": 5031,
+        "startChar": 6,
+        "endLine": 5031,
+        "endChar": 78
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23c20fcf_5dfcc5a8",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -243,6 +435,30 @@
       "writtenOn": "2019-11-21T15:46:28Z",
       "side": 1,
       "message": "What is DHC?",
+      "range": {
+        "startLine": 5032,
+        "startChar": 15,
+        "endLine": 5032,
+        "endChar": 18
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feab3781_56f38235",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5032,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "It is something internal to Intel. I will remove this.\nI will reframe entire comment",
+      "parentUuid": "23c20fcf_5dfcc5a8",
       "range": {
         "startLine": 5032,
         "startChar": 15,
@@ -275,6 +491,30 @@
       "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dde4266_7c64c519",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d09d9617_4b59b12c",
+      "range": {
+        "startLine": 599,
+        "startChar": 33,
+        "endLine": 599,
+        "endChar": 34
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -321,6 +561,54 @@
       "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da8ff71_01b80606",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9ec776_1d2a967b",
+      "range": {
+        "startLine": 603,
+        "startChar": 4,
+        "endLine": 603,
+        "endChar": 29
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "875c5555_fd284fb1",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-25T18:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de8f1d6_ad473c52",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 3
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
