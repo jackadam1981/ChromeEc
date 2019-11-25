@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c19fa09_3ba4a73c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T18:19:08Z",
+      "side": 1,
+      "message": "Nathan and I discovered a dock that didn\u0027t work with the 200 ms delay but the dock worked with 400 ms.",
+      "parentUuid": "8c095776_19937b43",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "330d616b_ce758f59",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
@@ -45,6 +69,30 @@
       "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6708b22d_004b4cd9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-11-25T18:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330d616b_ce758f59",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 3
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
