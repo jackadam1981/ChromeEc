@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31503db6_8202bd8f",
+        "filename": "baseboard/kukui/battery_mm8013.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-25T22:15:35Z",
+      "side": 0,
+      "message": "why did you remove this? Now we are setting the requested current even when we are not charging. That doesn\u0027t seem right. Can you help me understand?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "5a5d0fa673fafcf69b29d8c6281e0653e7c26376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
