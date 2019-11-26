@@ -283,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "f6131522_16a12120",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5024,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-26T18:31:26Z",
+      "side": 1,
+      "message": "This command will be mainly used for validation purpose \u0026 there is no response expected for it. The expectation is that, for the next preceding shutdown, it must reboot back from G3 to S0.\nHave included the recommendation order in the comment.",
+      "parentUuid": "aad48963_42ee3544",
+      "range": {
+        "startLine": 5023,
+        "startChar": 50,
+        "endLine": 5024,
+        "endChar": 28
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22feb42d_c310c270",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -635,6 +659,30 @@
     },
     {
       "key": {
+        "uuid": "4d58ad82_0faa42e8",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-26T18:31:26Z",
+      "side": 1,
+      "message": "Agree.",
+      "parentUuid": "e4c8b141_bd61df9d",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 27
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73d9b11e_519e9f17",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -655,6 +703,30 @@
       "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f122c8_299011de",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-26T18:31:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d9b11e_519e9f17",
+      "range": {
+        "startLine": 258,
+        "startChar": 4,
+        "endLine": 258,
+        "endChar": 16
+      },
+      "revId": "df1a454d217f8dd3bbb1b47ad3edccbc87c6e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
