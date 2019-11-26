@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a667ffaf_646aee8b",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T18:23:35Z",
+      "side": 1,
+      "message": "how about?\nif (want_g3_exit || want_reboot_ap_at_g3) {\nwant_g3_exit \u003d 0;\nwant_reboot_ap_at_g3 \u003d false;\n}",
+      "range": {
+        "startLine": 337,
+        "startChar": 18,
+        "endLine": 337,
+        "endChar": 20
+      },
+      "revId": "56bc6ccf40e97b7c3be83f5c5acad18c0e01c557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
