@@ -34,9 +34,9 @@
 
 #if defined(CHIP_VARIANT_IT83201BX)
 /* This is the physical size of the flash on the chip. */
-#define CONFIG_FLASH_SIZE           0x00080000
+#define CONFIG_FLASH_SIZE           0x00040000
 /* Embedded flash is KGD */
-#define IT83XX_CHIP_FLASH_IS_KGD
+#undef IT83XX_CHIP_FLASH_IS_KGD
 /* chip id is 3 bytes */
 #define IT83XX_CHIP_ID_3BYTES
 /*
