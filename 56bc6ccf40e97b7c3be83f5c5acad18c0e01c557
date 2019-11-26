@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e556da59_cf697834",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5032,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T18:26:46Z",
+      "side": 1,
+      "message": "EC_CMD_REBOOT_AP_ON_G3",
+      "range": {
+        "startLine": 5032,
+        "startChar": 8,
+        "endLine": 5032,
+        "endChar": 28
+      },
+      "revId": "56bc6ccf40e97b7c3be83f5c5acad18c0e01c557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d254e46_784fc772",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T18:26:46Z",
+      "side": 1,
+      "message": "_ap_",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "56bc6ccf40e97b7c3be83f5c5acad18c0e01c557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a667ffaf_646aee8b",
         "filename": "power/common.c",
         "patchSetId": 4
