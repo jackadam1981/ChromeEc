@@ -18,7 +18,7 @@
 
 /* True if we're listening to the thermal control task. False if we're setting
  * things manually. */
-static int thermal_control_enabled[CONFIG_FANS];
+int thermal_control_enabled[CONFIG_FANS];
 
 #ifdef CONFIG_FAN_UPDATE_PERIOD
 /* Should we ignore the fans for a while? */
