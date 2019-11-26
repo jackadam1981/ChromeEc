@@ -59,6 +59,9 @@ static void thermal_control(void)
 	int fmax;
 	int temp_fan_configured;
 
+	if (IS_ENABLED(CONFIG_CUSTOM_FAN_CONTROL))
+		int temp[TEMP_SENSOR_COUNT];
+
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));
 	memset(count_under, 0, sizeof(count_under));
@@ -72,6 +75,12 @@ static void thermal_control(void)
 
 		/* read one */
 		rv = temp_sensor_read(i, &t);
+
+		if (IS_ENABLED(CONFIG_CUSTOM_FAN_CONTROL)) {
+			/* Store all sensors value */
+			temp[i] = K_TO_C(t);
+		}
+
 		if (rv != EC_SUCCESS)
 			continue;
 		else
@@ -174,13 +183,23 @@ static void thermal_control(void)
 
 	if (temp_fan_configured) {
 #ifdef CONFIG_FANS
-	/* TODO(crosbug.com/p/23797): For now, we just treat all fans the
-	 * same. It would be better if we could assign different thermal
-	 * profiles to each fan - in case one fan cools the CPU while another
-	 * cools the radios or battery.
-	 */
-		for (i = 0; i < fan_get_count(); i++)
-			fan_set_percent_needed(i, fmax);
+		if (IS_ENABLED(CONFIG_CUSTOM_FAN_CONTROL)) {
+			for (i = 0; i < fan_get_count(); i++) {
+				if (!is_thermal_control_enabled(i))
+					continue;
+
+				board_override_fan_control(i, temp);
+			}
+		} else {
+			/* TODO(crosbug.com/p/23797): For now, we just treat all
+			 * fans the same. It would be better if we could assign
+			 * different thermal profiles to each fan - in case one
+			 * fan cools the CPU while another cools the radios or
+			 * battery.
+			 */
+			for (i = 0; i < fan_get_count(); i++)
+				fan_set_percent_needed(i, fmax);
+		}
 #endif
 	}
 }
