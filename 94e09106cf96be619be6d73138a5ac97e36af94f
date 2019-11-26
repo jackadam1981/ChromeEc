@@ -22,6 +22,30 @@
       "revId": "94e09106cf96be619be6d73138a5ac97e36af94f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59910919_9486c61d",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-26T23:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb1f5dd_f075d02e",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "94e09106cf96be619be6d73138a5ac97e36af94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
