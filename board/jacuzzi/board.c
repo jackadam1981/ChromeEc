@@ -250,6 +250,15 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void board_rev_init(void)
+{
+	/* Board revision specific configs. */
+
+	if (IS_ENABLED(BOARD_JUNIPER) && board_get_version() >= 1)
+		gpio_set_flags(GPIO_EN_PP1800_S5_L, GPIO_OUT_HIGH);
+}
+DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
+
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW
