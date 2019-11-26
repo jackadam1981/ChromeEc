@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20d3084e_4d30b21a",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-26T20:13:13Z",
+      "side": 1,
+      "message": "I have already checked this flag usage.There are cases where want_g3_exit flag is getting cleared before reaching G3 state itself. It is important to retain the flag untill G3 state.So, separate flag want_reboot_ap_at_g3  is required to ensure this.",
+      "parentUuid": "9ef207df_ffb80f9f",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "2ef2a865417fec0b0b80dd6df4fe0c963ce78c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36ce3b1d_688e4b55",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "2ef2a865417fec0b0b80dd6df4fe0c963ce78c98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7440839_7e4b0a3d",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2019-11-26T20:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ce3b1d_688e4b55",
+      "range": {
+        "startLine": 325,
+        "startChar": 5,
+        "endLine": 325,
+        "endChar": 39
+      },
+      "revId": "2ef2a865417fec0b0b80dd6df4fe0c963ce78c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
