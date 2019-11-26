@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4d03a0cc_6c301baa",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-26T23:40:47Z",
+      "side": 1,
+      "message": "I am not following:\n\nif verify_offset is zero and read_size is 4, doesnt\n\nwhile (verify_offset \u003c read_size) {\n...\nverify_offset +\u003d 4;\n}\n\nguarantee exactly one pass through the loop and verify_offset \u003d\u003d read_size once the loop is done?",
+      "parentUuid": "b05495c6_7d7141b5",
+      "range": {
+        "startLine": 732,
+        "startChar": 10,
+        "endLine": 732,
+        "endChar": 41
+      },
+      "revId": "b5785f6a3fbd452fce2412c1d22d18b4eeee6ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a07d201_b1ec4969",
         "filename": "common/spi_nor.c",
         "patchSetId": 4
