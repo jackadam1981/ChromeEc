@@ -62,6 +62,11 @@ GPIO(EC_SKU_ID,            PIN(B, 0),  GPIO_ANALOG)
 GPIO(WP_L,                 PIN(C, 8),  GPIO_INPUT) /* EC_FLASH_WP_ODL */
 GPIO(BOOT0,                PIN(F, 11), GPIO_INPUT)
 GPIO(CCD_MODE_ODL,         PIN(A, 1),  GPIO_INPUT)
+/*
+ * TODO: this pin is LID_ACCEL_INT_ODL in rev0.
+ * mark as input until rev0 deprecated.
+ */
+GPIO(EN_PP1800_S5_L,       PIN(A, 14), GPIO_INPUT)
 
 /* Other output pins */
 GPIO(EC_BATT_PRES_ODL,     PIN(A, 7),  GPIO_INPUT)
@@ -77,7 +82,6 @@ GPIO(EC_INT_L,             PIN(C, 7),  GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 GPIO(EC_BOARD_ID_EN_L,     PIN(C, 15), GPIO_ODR_HIGH) /* EC_BOARD_ID_EN_ODL */
 GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_ODR_LOW)
 GPIO(BOOTBLOCK_EN_L,       PIN(C, 1),  GPIO_ODR_HIGH)
-GPIO(EN_PP1800_S5_L,       PIN(A, 14), GPIO_OUT_HIGH)
 GPIO(USB_C0_DISCHARGE,     PIN(B, 6),  GPIO_OUT_LOW)
 
 /*
