@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "fc80e0a7_1a20f3ed",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-26T00:35:57Z",
+      "side": 1,
+      "message": "It wasn\u0027t a collision, it was a PD protocol traffic problem if we didn\u0027t let a partner \"get out\" its DR_SWAP after SRC_CAP-20v negotiation.\n\nI\u0027ve filed a bug. Please see b/145159372",
+      "parentUuid": "2c085b5b_20b0d5d4",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "330d616b_ce758f59",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
@@ -165,6 +189,30 @@
       "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dbc4aee_18b9bb77",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-11-26T00:35:57Z",
+      "side": 1,
+      "message": "Noting: We kept these separate because Aseda noted we needed to resolve *sooner* as SNK otherwise we were getting \"Low Power Charger Connected\" dialogs popping up.\n\nI suspect we may have to revisit this in the future as it is a tunable parameter.",
+      "parentUuid": "6708b22d_004b4cd9",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 3
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
