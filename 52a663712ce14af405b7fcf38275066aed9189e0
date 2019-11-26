@@ -259,6 +259,30 @@
       "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615d64e9_2eca38a2",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1315467
+      },
+      "writtenOn": "2019-11-26T22:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc53325_d9c9e56b",
+      "range": {
+        "startLine": 718,
+        "startChar": 3,
+        "endLine": 719,
+        "endChar": 10
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
