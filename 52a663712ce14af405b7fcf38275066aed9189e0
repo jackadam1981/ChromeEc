@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "642e40a0_3ae292c4",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1315467
+      },
+      "writtenOn": "2019-11-26T21:43:05Z",
+      "side": 1,
+      "message": "I forget this repository uses different white space than ours. I did use repo upload, but I was having a lot of trouble with it (I managed to lose the upstream tracking, so it was failing for reasons which were entirely not obvious, and in the end managed to use the no verify flag.)\n\nI\u0027ll see if i can fix the white space, it\u0027s caused me problems trying to change it in the past.\n\nI think I\u0027ve done it.",
+      "parentUuid": "c880a4cd_94413d8b",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 4
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d40db8a8_255877d7",
         "filename": "common/spi_nor.c",
         "patchSetId": 1
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f19a05fb_7caca248",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1315467
+      },
+      "writtenOn": "2019-11-26T21:43:05Z",
+      "side": 1,
+      "message": "As usual, I\u0027m trying not to change the previous underlying logic. You could (probably) get away with just the wait after the erase, but then you\u0027re relying on the previous code to have done the right thing. The pre-existing code was using the extra paranoia of waiting first, and it makes me more comfortable to leave it as it was.\n\nThe wait is very quick compared to an erase, so you buy practically nothing by messing with the code, but lose a safety check.",
+      "parentUuid": "655c0f5d_083c4946",
+      "range": {
+        "startLine": 694,
+        "startChar": 4,
+        "endLine": 697,
+        "endChar": 20
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "295e4da3_a98af2c2",
         "filename": "common/spi_nor.c",
         "patchSetId": 1
@@ -139,6 +187,30 @@
       "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d10ecd_4317e6f9",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1315467
+      },
+      "writtenOn": "2019-11-26T21:43:05Z",
+      "side": 1,
+      "message": "It does, but failing here just breaks out of the \"smart\" erase pre-verify phase, and it then goes to the actual erase. While that might be an interesting thing to know, swallowing it doesn\u0027t actually affect the erase logic.",
+      "parentUuid": "295e4da3_a98af2c2",
+      "range": {
+        "startLine": 718,
+        "startChar": 3,
+        "endLine": 719,
+        "endChar": 10
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
