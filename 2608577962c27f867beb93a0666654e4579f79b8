@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15319f55_f00913b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-26T06:32:21Z",
+      "side": 1,
+      "message": "No it can\u0027t. I will cherry pick this manually",
+      "parentUuid": "b856754f_905082c2",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "2608577962c27f867beb93a0666654e4579f79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4750480e_ff380158",
         "filename": "baseboard/kukui/baseboard.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2608577962c27f867beb93a0666654e4579f79b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d697a1b_85038aa9",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-26T06:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4750480e_ff380158",
+      "range": {
+        "startLine": 61,
+        "startChar": 37,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "2608577962c27f867beb93a0666654e4579f79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
