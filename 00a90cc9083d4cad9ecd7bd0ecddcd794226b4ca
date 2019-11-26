@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdd4d795_8ff5acfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T20:26:01Z",
+      "side": 1,
+      "message": "ectool command \u0027ectool reboot_on_g3\u0027 will reboot AP from G3 state\non initiation of DUT shutdown. Thus eliminating the dependency of servo to trigger wake events when testing AP cold boot cycles.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "00a90cc9083d4cad9ecd7bd0ecddcd794226b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1bba2a3_c8d36596",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T20:26:01Z",
+      "side": 1,
+      "message": "cab be removed",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "00a90cc9083d4cad9ecd7bd0ecddcd794226b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4fa7688_483f13ad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5024,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T20:26:01Z",
+      "side": 1,
+      "message": "return success or failure is the response.",
+      "range": {
+        "startLine": 5023,
+        "startChar": 50,
+        "endLine": 5024,
+        "endChar": 28
+      },
+      "revId": "00a90cc9083d4cad9ecd7bd0ecddcd794226b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1b7995_c5e61d1f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5028,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T20:26:01Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 5028,
+        "startChar": 71,
+        "endLine": 5028,
+        "endChar": 74
+      },
+      "revId": "00a90cc9083d4cad9ecd7bd0ecddcd794226b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1b87e2_9966a637",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5028,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T20:26:01Z",
+      "side": 1,
+      "message": "AP cold boot",
+      "range": {
+        "startLine": 5028,
+        "startChar": 26,
+        "endLine": 5028,
+        "endChar": 35
+      },
+      "revId": "00a90cc9083d4cad9ecd7bd0ecddcd794226b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37fc0a28_0276ebe8",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-26T20:26:01Z",
+      "side": 1,
+      "message": "from or on?",
+      "range": {
+        "startLine": 259,
+        "startChar": 19,
+        "endLine": 259,
+        "endChar": 25
+      },
+      "revId": "00a90cc9083d4cad9ecd7bd0ecddcd794226b4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
