@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b79f87bc_0ae82905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-26T15:38:54Z",
+      "side": 1,
+      "message": "great description, thank you!\n\nNote that the description is supposed to have TEST\u003d BUG\u003d and BRANCH\u003d clauses. When working in Chrome OS repo please use \u0027repo start\u0027 and \u0027repo upload\u0027 - this enforces preupload checks and saves a lot of time during reviews.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d19f4c6f_f89b3d1c",
         "filename": "common/spi_nor.c",
         "patchSetId": 1
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c880a4cd_94413d8b",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-26T15:38:54Z",
+      "side": 1,
+      "message": "yes, please use \u0027repo start\u0027 and \u0027repo upload\u0027 to make sure preupload checks are run.",
+      "parentUuid": "d19f4c6f_f89b3d1c",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 4
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d40db8a8_255877d7",
         "filename": "common/spi_nor.c",
         "patchSetId": 1
@@ -36,6 +83,30 @@
       "writtenOn": "2019-11-26T06:08:51Z",
       "side": 1,
       "message": "What operations need to have a wait after? Is it just erasing? If so, could we instead place this after the erase call to spi_transaction() below?\n\nOr is it after reading and erasing? If so, should we add one in the inner while loop after a call to spi_nor_read_internal()?",
+      "range": {
+        "startLine": 694,
+        "startChar": 4,
+        "endLine": 697,
+        "endChar": 20
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655c0f5d_083c4946",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-26T15:38:54Z",
+      "side": 1,
+      "message": "Also, is it possible that there was no erase for the previous block, so there is no operation in progress during this check - will this work?\n\nI agree that the wait should be immediately after the erase operation.",
+      "parentUuid": "d40db8a8_255877d7",
       "range": {
         "startLine": 694,
         "startChar": 4,
