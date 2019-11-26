@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b4a4561_3734ba52",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-11-26T18:58:28Z",
+      "side": 1,
+      "message": "This is a little bit misleading. Why don\u0027t we just say until we deprecate jacuzzi?\n\nAs far as I know there is no/will never be any jacuzzi that has rev1.",
+      "range": {
+        "startLine": 66,
+        "startChar": 42,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "43465b45da7769364f1fbbf1ab2bb60d9bb59c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
