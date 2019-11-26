@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "2e9cc719_ca16193d",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2019-11-26T22:04:34Z",
+      "side": 1,
+      "message": "So it sounds like the real requirements are that we wait before reading or erasing, and as a courtesy to the caller we should wait before returning. SGTM. Also looks like the spi_nor_wait() call pattern here now matches that used in spi_nor_write().",
+      "parentUuid": "f19a05fb_7caca248",
+      "range": {
+        "startLine": 694,
+        "startChar": 4,
+        "endLine": 697,
+        "endChar": 20
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "295e4da3_a98af2c2",
         "filename": "common/spi_nor.c",
         "patchSetId": 1
@@ -211,6 +235,30 @@
       "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc53325_d9c9e56b",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2019-11-26T22:04:34Z",
+      "side": 1,
+      "message": "Thanks - would be worth adding a clarifying comment to that effect while you\u0027re here, to aid future readers.",
+      "parentUuid": "64d10ecd_4317e6f9",
+      "range": {
+        "startLine": 718,
+        "startChar": 3,
+        "endLine": 719,
+        "endChar": 10
+      },
+      "revId": "52a663712ce14af405b7fcf38275066aed9189e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
