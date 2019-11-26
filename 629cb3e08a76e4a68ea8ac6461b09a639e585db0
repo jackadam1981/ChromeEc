@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a70c9b59_72df59bb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-26T01:26:58Z",
+      "side": 1,
+      "message": "it\u0027s now just 400ms right?",
+      "range": {
+        "startLine": 442,
+        "startChar": 48,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51c8e86_30303977",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-26T01:26:58Z",
+      "side": 1,
+      "message": "you\u0027re adding up to 368ms of jitter",
+      "range": {
+        "startLine": 1035,
+        "startChar": 26,
+        "endLine": 1035,
+        "endChar": 31
+      },
+      "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b02f7a2_55c6e2a7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-26T01:26:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1045,
+        "startChar": 5,
+        "endLine": 1045,
+        "endChar": 10
+      },
+      "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "3e183dff_a2ca5ad2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-11-26T01:26:58Z",
+      "side": 1,
+      "message": "Thanks for the background Nathan. Reading thru that, it\u0027s clear that the dock is at fault. Per the PD spec, all ports that support modes shall support the Discover Identity command.",
+      "parentUuid": "fc80e0a7_1a20f3ed",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "330d616b_ce758f59",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
