@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "315f1563_248384a4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-26T18:58:33Z",
+      "side": 1,
+      "message": "This seems good to be a macro, too:\n\n  #define MODE_DP_CABLE_RECEPTACLE(x) (((x) \u003e\u003e 6) \u0026 0x1)\n\nMODE_DP_CABLE_SHIFT isn\u0027t really used elsewhere.",
+      "range": {
+        "startLine": 892,
+        "startChar": 29,
+        "endLine": 892,
+        "endChar": 62
+      },
+      "revId": "74b7d56436e8045efb80d95c37395175183dbf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
