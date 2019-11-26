@@ -125,8 +125,13 @@ reset:
 	 */
 	mov55 $r5, $lp
 
+#if CONFIG_FLASH_SIZE <= 0x00080000
 	/* map/enable the 16kB of DLM at 0x00080000 */
 	li   $r0, 0x00080005
+#else
+	/* set the DLM base at 0x00100000 if flash size is greater than 512KB */
+	li   $r0, 0x0010000D
+#endif
 	mtsr $r0, $mr7
 
 	/* Set ROM address at 0x80000 (disabled). */
@@ -134,6 +139,16 @@ reset:
 	movi $r0, #0x8
 	sbi $r0, [$r1]
 
+#ifdef CHIP_FAMILY_IT8XXX1
+	/*
+	 * Because it8xxx1 series's DLM (Data Local Memory) is enabled by
+	 * default, so we just need to enable immu cache (bit0 @ 0xF02030 = 0).
+	 */
+	li  $r1, 0x00F02030
+	lbi $r0, [$r1]
+	andi $r0, $r0, 0xfe
+	sbi $r0, [$r1]
+#else
 	/* Enable DLM 8k~12K(bit2) and DLM 12k~16k(bit3) */
 	li  $r1, 0x00F02030
 	lbi $r0, [$r1]
@@ -151,6 +166,7 @@ reset:
 	lbi $r0, [$r1]
 	ori $r0, $r0, 0x7
 	sbi $r0, [$r1]
+#endif  /* !CHIP_FAMILY_IT8XXX1 */
 
 	/* Clear BSS */
 	la   $r0, _bss_start
