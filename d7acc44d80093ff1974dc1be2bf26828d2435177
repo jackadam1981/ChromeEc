@@ -46,6 +46,30 @@
       "revId": "d7acc44d80093ff1974dc1be2bf26828d2435177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b66a49c_b206dd38",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-26T17:42:09Z",
+      "side": 1,
+      "message": "Performing a full init when we are only requesting a tx_phy reset doesn\u0027t seem correct. I think the API is doing more than the contract is stating.\n\nI think we should only try to call the tx_phy_reset function if it exists (dropping the else clause basically)\n\n(This comment might not apply, depending of if we can make the it83xx_init function work with multiple calls)",
+      "parentUuid": "eadae037_f415c9bd",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 47
+      },
+      "revId": "d7acc44d80093ff1974dc1be2bf26828d2435177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
