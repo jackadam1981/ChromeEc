@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b05495c6_7d7141b5",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1315467
+      },
+      "writtenOn": "2019-11-26T23:33:25Z",
+      "side": 1,
+      "message": "After looking at this again, I don\u0027t think it\u0027s a bug.\n\nTake case of read_size\u003d\u003d4. \n\nThere needs to be 1 trip through the loop, and because of the \u003d (in the \u003c\u003d), this will take 1 trip through the loop, with a verify_offset\u003d0\n\nThe \u003d and -4 balance each other. Maybe not the clearest code.",
+      "parentUuid": "4be0fbf5_2d75b7a4",
+      "range": {
+        "startLine": 732,
+        "startChar": 10,
+        "endLine": 732,
+        "endChar": 41
+      },
+      "revId": "b5785f6a3fbd452fce2412c1d22d18b4eeee6ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a07d201_b1ec4969",
         "filename": "common/spi_nor.c",
         "patchSetId": 4
