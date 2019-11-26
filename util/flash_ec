@@ -815,7 +815,7 @@ function flash_flashrom() {
 	fi
 
 	# flashrom should report the image size at the end of the output.
-	FLASHROM_CMDLINE="sudo ${FLASHROM} ${FLASHROM_PARAM} --get-size"
+	FLASHROM_CMDLINE="sudo ${FLASHROM} ${FLASHROM_PARAM} --flash-size"
 	if [ "${FLAGS_verbose}" = ${FLAGS_TRUE} ]; then
 		echo "Running flashrom:" 1>&2
 		echo " ${FLASHROM_CMDLINE}" 1>&2
