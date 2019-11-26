@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_FAN_H
 #define __CROS_EC_FAN_H
 
+extern int thermal_control_enabled[CONFIG_FANS];
+
 struct fan_conf {
 	unsigned int flags;
 	/* Hardware channel number (the meaning is chip-specific) */
