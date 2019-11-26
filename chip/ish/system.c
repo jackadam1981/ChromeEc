@@ -175,6 +175,41 @@ void system_set_image_copy(enum system_image_copy_t copy)
 {
 }
 
+#ifdef CHIP_VARIANT_ISH5P4
+#define HBW_FABRIC_BASE		0x10000000
+#define PER0_FABRIC_BASE	0x04000000
+#define AGENT_STATUS		0x28
+#define ERROR_LOG		0x58
+
+static uint16_t hbw_ia_offset[] = {
+        0x1000,
+        0x3400,
+        0x3800,
+        0x5000,
+        0x5800,
+        0x6000
+};
+
+#define ARRAY_SIZE(x)   (sizeof(x) / sizeof((x)[0]))
+
+static inline void clear_register(uint32_t reg)
+{
+	REG32(reg) = REG32(reg);
+}
+
+void clear_fabric_error(void)
+{
+	unsigned int i;
+
+	for (i = 0; i < ARRAY_SIZE(hbw_ia_offset); i++) {
+		clear_register(HBW_FABRIC_BASE + hbw_ia_offset[i] + AGENT_STATUS);
+		clear_register(HBW_FABRIC_BASE + hbw_ia_offset[i] + ERROR_LOG);
+	}
+	clear_register(PER0_FABRIC_BASE + 0x1000 + AGENT_STATUS);
+	clear_register(PER0_FABRIC_BASE + 0x1000 + ERROR_LOG);
+}
+#endif
+
 static __maybe_unused void fabric_isr(void)
 {
 	/**
