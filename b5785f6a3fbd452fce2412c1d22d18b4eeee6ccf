@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c13c48a_25854196",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-26T23:12:01Z",
+      "side": 1,
+      "message": "not this patch\u0027s problem, but shouldn\u0027t this have been \n\n\u0027while (verified_offset \u003c read_size)\u0027\n\nno need to do the - 4 each iteration?",
+      "range": {
+        "startLine": 732,
+        "startChar": 10,
+        "endLine": 732,
+        "endChar": 41
+      },
+      "revId": "b5785f6a3fbd452fce2412c1d22d18b4eeee6ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a07d201_b1ec4969",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-26T23:12:01Z",
+      "side": 1,
+      "message": "This wait and the one in line 864 pretty much cover all spi_nor operations, so the paranoia you mentioned in the other comment is just that.\n\n\nI think it would have been better to have just one check right after the  operation both here and in spi_nor_write(). This would be sufficient and would have resulted in a bit smaller code too.\n\nWhat do you guys think?",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 0
+      },
+      "revId": "b5785f6a3fbd452fce2412c1d22d18b4eeee6ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
