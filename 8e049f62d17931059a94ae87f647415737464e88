@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac136b05_b463ad5f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-27T19:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48eee311_192c44ba",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 5
+      },
+      "revId": "8e049f62d17931059a94ae87f647415737464e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20c4b8b6_8c3ce140",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "8e049f62d17931059a94ae87f647415737464e88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4baf52_2e1690cc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-27T19:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c4b8b6_8c3ce140",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 10
+      },
+      "revId": "8e049f62d17931059a94ae87f647415737464e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da352d32_f40bcfee",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-27T19:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c68118_6591f39c",
+      "range": {
+        "startLine": 385,
+        "startChar": 5,
+        "endLine": 385,
+        "endChar": 46
+      },
+      "revId": "8e049f62d17931059a94ae87f647415737464e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ac3e008_bcfba050",
         "filename": "util/ectool.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "8e049f62d17931059a94ae87f647415737464e88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3a4d0d_45c14315",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 5686,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-27T19:37:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac3e008_bcfba050",
+      "range": {
+        "startLine": 5686,
+        "startChar": 20,
+        "endLine": 5686,
+        "endChar": 21
+      },
+      "revId": "8e049f62d17931059a94ae87f647415737464e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
