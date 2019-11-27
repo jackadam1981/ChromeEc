@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4a6849_fddd35dd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:05:15Z",
+      "side": 1,
+      "message": "return IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) \u0026\u0026\n        (cable[port].flags \u0026 CABLE_FLAGS_TBT_COMPAT_ENABLE)",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 14
+      },
+      "revId": "eb2286dfef76f488f8714b5c3800c0be51990c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c52ff396_1896140a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:05:15Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 275,
+        "startChar": 8,
+        "endLine": 275,
+        "endChar": 9
+      },
+      "revId": "eb2286dfef76f488f8714b5c3800c0be51990c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1241da48_6271423f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:05:15Z",
+      "side": 1,
+      "message": "return is_tbt_compat_enabled(port) \u0026\u0026 \n         is_vdo_present(cnt, VDO_INDEX_IDH) \u0026\u0026\n\t PD_IDH_IS_MODAL(payload[VDO_INDEX_IDH])\n\nso that we don\u0027t have to deal with true false",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 14
+      },
+      "revId": "eb2286dfef76f488f8714b5c3800c0be51990c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
