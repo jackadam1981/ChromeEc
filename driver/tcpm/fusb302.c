@@ -7,6 +7,7 @@
 
 /* Type-C port manager for Fairchild's FUSB302 */
 
+#include "chipset.h"
 #include "console.h"
 #include "fusb302.h"
 #include "task.h"
@@ -369,6 +370,23 @@ static int fusb302_tcpm_select_rp_value(int port, int rp)
 	return tcpc_write(port, TCPC_REG_CONTROL0, reg);
 }
 
+static int fusb302_set_toggle_mode(int port, int mode)
+{
+	int reg, rv;
+
+	rv = i2c_read8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, &reg);
+	if (rv)
+		return rv;
+
+	reg &= ~TCPC_REG_CONTROL2_MODE_MASK;
+	reg |= mode << TCPC_REG_CONTROL2_MODE_SHIFT;
+	return i2c_write8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, reg);
+}
+
 static int fusb302_tcpm_init(int port)
 {
 	int reg;
@@ -433,6 +451,15 @@ static int fusb302_tcpm_init(int port)
 	/* Set VCONN switch defaults */
 	tcpm_set_polarity(port, 0);
 	tcpm_set_vconn(port, 0);
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
+		if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
+			fusb302_set_toggle_mode(port,
+						TCPC_REG_CONTROL2_MODE_UFP);
+		else
+			fusb302_set_toggle_mode(port,
+						TCPC_REG_CONTROL2_MODE_DRP);
+	}
 
 	/* Turn on the power! */
 	/* TODO: Reduce power consumption */
@@ -1010,8 +1037,38 @@ void tcpm_set_bist_test_data(int port)
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static int fusb302_tcpm_enter_low_power_mode(int port)
 {
-	return tcpc_write(port, TCPC_REG_POWER, TCPC_REG_POWER_PWR_LOW);
+	int reg, rv;
+
+	rv = i2c_write8(tcpc_config[port].i2c_info.port,
+			  tcpc_config[port].i2c_info.addr_flags,
+			  TCPC_REG_POWER, TCPC_REG_POWER_PWR_LOW);
+	if (rv)
+		return rv;
+
+	usleep(250);
+	rv = i2c_read8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, &reg);
+	if (rv)
+		return rv;
+	reg |= TCPC_REG_CONTROL2_TOGGLE;
+	rv = i2c_write8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, reg);
+	return rv;
 }
+
+static void fusb302_chipset_resume(void)
+{
+	fusb302_set_toggle_mode(0, TCPC_REG_CONTROL2_MODE_DRP);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, fusb302_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void fusb302_chipset_suspend(void)
+{
+	fusb302_set_toggle_mode(0, TCPC_REG_CONTROL2_MODE_UFP);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, fusb302_chipset_suspend, HOOK_PRIO_DEFAULT);
 #endif
 
 const struct tcpm_drv fusb302_tcpm_drv = {
