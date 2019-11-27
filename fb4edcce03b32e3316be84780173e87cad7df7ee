@@ -46,6 +46,30 @@
       "revId": "fb4edcce03b32e3316be84780173e87cad7df7ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60cd49c5_fc31455c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5032,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-27T20:56:54Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t more specific, can you make this command 0x0127 and move it below 0x0126, please?",
+      "parentUuid": "22f36ff2_f4b581c9",
+      "range": {
+        "startLine": 5019,
+        "startChar": 0,
+        "endLine": 5032,
+        "endChar": 0
+      },
+      "revId": "fb4edcce03b32e3316be84780173e87cad7df7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
