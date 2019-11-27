@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e1531d3b_56e5b436",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5190,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T21:39:51Z",
+      "side": 1,
+      "message": "correction: as Jett suggested we can keep in V2",
+      "parentUuid": "492b8951_8efa18ae",
+      "range": {
+        "startLine": 5187,
+        "startChar": 1,
+        "endLine": 5190,
+        "endChar": 3
+      },
+      "revId": "d5c3cfa2fd14aab89a8002369a02d7f98421dfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a844415_210af208",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
