@@ -435,7 +435,6 @@ static int fusb302_tcpm_init(int port)
 	tcpm_set_vconn(port, 0);
 
 	/* Turn on the power! */
-	/* TODO: Reduce power consumption */
 	tcpc_write(port, TCPC_REG_POWER, TCPC_REG_POWER_PWR_ALL);
 
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
@@ -1008,9 +1007,51 @@ void tcpm_set_bist_test_data(int port)
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int fusb302_set_toggle_mode(int port, int mode)
+{
+	int reg, rv;
+
+	rv = i2c_read8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, &reg);
+	if (rv)
+		return rv;
+
+	reg &= ~TCPC_REG_CONTROL2_MODE_MASK;
+	reg |= mode << TCPC_REG_CONTROL2_MODE_SHIFT;
+	return i2c_write8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, reg);
+}
+
 static int fusb302_tcpm_enter_low_power_mode(int port)
 {
-	return tcpc_write(port, TCPC_REG_POWER, TCPC_REG_POWER_PWR_LOW);
+	int reg, rv;
+
+	rv = i2c_write8(tcpc_config[port].i2c_info.port,
+			  tcpc_config[port].i2c_info.addr_flags,
+			  TCPC_REG_POWER, TCPC_REG_POWER_PWR_LOW);
+	if (rv)
+		return rv;
+
+	/* TODO: support force sink here */
+	if (pd_get_dual_role(port) != PD_DRP_TOGGLE_ON)
+		fusb302_set_toggle_mode(port,
+					TCPC_REG_CONTROL2_MODE_UFP);
+	else
+		fusb302_set_toggle_mode(port,
+					TCPC_REG_CONTROL2_MODE_DRP);
+
+	usleep(250);
+	rv = i2c_read8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, &reg);
+	if (rv)
+		return rv;
+	reg |= TCPC_REG_CONTROL2_TOGGLE;
+	return i2c_write8(tcpc_config[port].i2c_info.port,
+		tcpc_config[port].i2c_info.addr_flags,
+		TCPC_REG_CONTROL2, reg);
 }
 #endif
 
