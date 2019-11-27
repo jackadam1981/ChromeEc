@@ -16,6 +16,24 @@
       "revId": "b7a7174a1b77b7d26a50b60d75fe0da30a3a2b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224e73bc_93a893bc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-27T21:38:08Z",
+      "side": 1,
+      "message": "agree, I totally didn\u0027t catch that this was commented out",
+      "parentUuid": "2852c496_0ab2f828",
+      "revId": "b7a7174a1b77b7d26a50b60d75fe0da30a3a2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
