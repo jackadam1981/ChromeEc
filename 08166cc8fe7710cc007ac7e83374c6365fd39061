@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d14ca028_1a887ad2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T00:29:33Z",
+      "side": 1,
+      "message": "we have this lready\nmux_state \u0026 USB_PD_MUX_TBT_COMPAT_ENABLED",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 34
+      },
+      "revId": "08166cc8fe7710cc007ac7e83374c6365fd39061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
