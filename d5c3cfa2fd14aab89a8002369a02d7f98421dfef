@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0834629_5a650ed4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:24:14Z",
+      "side": 1,
+      "message": "is this getting checked or variable is zero if not initialized?",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 51
+      },
+      "revId": "d5c3cfa2fd14aab89a8002369a02d7f98421dfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492b8951_8efa18ae",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5190,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:24:14Z",
+      "side": 1,
+      "message": "if verified can you please make V3?",
+      "range": {
+        "startLine": 5187,
+        "startChar": 1,
+        "endLine": 5190,
+        "endChar": 3
+      },
+      "revId": "d5c3cfa2fd14aab89a8002369a02d7f98421dfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a844415_210af208",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5199,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:24:14Z",
+      "side": 1,
+      "message": "how about tbt_flags",
+      "range": {
+        "startLine": 5199,
+        "startChar": 9,
+        "endLine": 5199,
+        "endChar": 14
+      },
+      "revId": "d5c3cfa2fd14aab89a8002369a02d7f98421dfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
