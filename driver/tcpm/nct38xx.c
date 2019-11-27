@@ -111,23 +111,6 @@ static int tcpci_nct38xx_select_rp_value(int port, int rp)
 	return EC_SUCCESS;
 }
 
-static int auto_discharge_disconnect(int port, int enable)
-{
-	int reg, rv;
-
-	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
-	if (rv)
-		return rv;
-
-	if (enable)
-		reg = reg | TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
-	else
-		reg = reg & ~TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
-	rv = tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
-	return rv;
-
-}
-
 static int tcpci_nct38xx_check_cable_polarity(int port)
 {
 	int cc, rv;
@@ -222,23 +205,9 @@ static int tcpci_nct38xx_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 
 int tcpci_nct38xx_drp_toggle(int port)
 {
-	int rv;
-
 	cable_polarity[port] = POLARITY_NONE;
 
-	/*
-	 * The port was disconnected so it is probably a good place to set
-	 * auto-discharge-disconnect to '0'
-	 *
-	 * TODO(crbug.com/951683: this should be removed when common code adds
-	 * auto discharge.
-	 */
-	rv = auto_discharge_disconnect(port, 0);
-	if (rv)
-		return rv;
-
 	return tcpci_tcpc_drp_toggle(port);
-
 }
 
 int tcpci_nct38xx_set_polarity(int port, int polarity)
@@ -252,16 +221,7 @@ int tcpci_nct38xx_set_polarity(int port, int polarity)
 	reg = polarity ? (reg | TCPC_REG_TCPC_CTRL_SET(1)) :
 			  (reg & ~TCPC_REG_TCPC_CTRL_SET(1));
 
-	rv = tcpc_write(port, TCPC_REG_TCPC_CTRL, reg);
-	if (rv)
-		return rv;
-
-	/*
-	 * Polarity is set after connection so it is probably a good time to set
-	 * auto-discharge-disconnect to '1'
-	 */
-	rv = auto_discharge_disconnect(port, 1);
-	return rv;
+	return tcpc_write(port, TCPC_REG_TCPC_CTRL, reg);
 }
 
 int tcpci_nct38xx_transmit(int port, enum tcpm_transmit_type type,
@@ -348,6 +308,7 @@ static void nct38xx_tcpc_alert(int port)
 			nct38xx_ioex_event_handler(port);
 
 }
+
 const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init			= &nct38xx_tcpm_init,
 	.release		= &tcpci_tcpm_release,
@@ -367,6 +328,8 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
+	.tcpc_connect_state_change =
+				  &tcpci_tcpc_connect_state_change,
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &tcpci_nct38xx_drp_toggle,
 #endif
