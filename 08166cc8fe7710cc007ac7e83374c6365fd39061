@@ -22,6 +22,30 @@
       "revId": "08166cc8fe7710cc007ac7e83374c6365fd39061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d998c72_be58e8c8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-11-27T19:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14ca028_1a887ad2",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 34
+      },
+      "revId": "08166cc8fe7710cc007ac7e83374c6365fd39061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
