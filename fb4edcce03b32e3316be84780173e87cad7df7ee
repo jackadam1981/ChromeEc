@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81d84b5e_a9cfcffa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5032,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-27T18:27:52Z",
+      "side": 1,
+      "message": "The does not need to in the \"Special commands\" section. The ec command returns to the AP. We should move into the normal section",
+      "range": {
+        "startLine": 5019,
+        "startChar": 0,
+        "endLine": 5032,
+        "endChar": 0
+      },
+      "revId": "fb4edcce03b32e3316be84780173e87cad7df7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
