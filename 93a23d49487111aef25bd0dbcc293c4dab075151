@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ba4a7b8_5460ffdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:38:49Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "93a23d49487111aef25bd0dbcc293c4dab075151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf38b3af_40f35a67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:38:49Z",
+      "side": 1,
+      "message": "on TGLRVP",
+      "revId": "93a23d49487111aef25bd0dbcc293c4dab075151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03bb224_90c096c3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-11-27T20:38:49Z",
+      "side": 1,
+      "message": "mux_state \u0026 USB_PD_MUX_USB4_ENABLED",
+      "range": {
+        "startLine": 252,
+        "startChar": 6,
+        "endLine": 252,
+        "endChar": 21
+      },
+      "revId": "93a23d49487111aef25bd0dbcc293c4dab075151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
