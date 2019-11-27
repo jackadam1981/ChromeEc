@@ -70,6 +70,12 @@ enum tcpc_transmit_complete {
 	TCPC_TX_COMPLETE_FAILED =    2,
 };
 
+/* Connect State Types */
+enum tcpc_connect_state {
+	TCPC_CONNECT_STATE_DISCONNECT = 0,
+	TCPC_CONNECT_STATE_CONNECT = 1,
+};
+
 /**
  * Returns whether the sink has detected a Rp resistor on the other side.
  */
@@ -265,6 +271,15 @@ struct tcpm_drv {
 	 * @param enable Discharge enable or disable
 	 */
 	void (*tcpc_discharge_vbus)(int port, int enable);
+
+	/**
+	 * Connection State Change
+	 *
+	 * @param port Type-C port number
+	 * @param state Connection state
+	 */
+	void (*tcpc_connect_state_change)(int port,
+					  enum tcpc_connect_state state);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	/**
