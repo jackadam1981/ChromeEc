@@ -22,6 +22,30 @@
       "revId": "bf926f5c291d765621f2f425a735412caf737f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70558c9f_f718aca2",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-11-27T18:33:11Z",
+      "side": 1,
+      "message": "Not on the firmware branch. I tried finding other commands to remove, and there really wasn\u0027t much available.\n\nI uploaded CL:1940775 to try to help with this situation. It is not ideal but it gives us a work around for now (and yes it is very similar to this CL 😊 )",
+      "parentUuid": "e7931ef5_a59da7bf",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "bf926f5c291d765621f2f425a735412caf737f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
