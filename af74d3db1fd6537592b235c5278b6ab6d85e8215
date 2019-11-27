@@ -63,6 +63,24 @@
       "revId": "af74d3db1fd6537592b235c5278b6ab6d85e8215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32a4aec_448fa768",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-27T10:27:24Z",
+      "side": 1,
+      "message": "sorry, at least 20 ms after entering G3, so move down to line 460 is not enough..",
+      "parentUuid": "2d42edea_ec448146",
+      "revId": "af74d3db1fd6537592b235c5278b6ab6d85e8215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
