@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2852c496_0ab2f828",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-11-27T20:03:50Z",
+      "side": 1,
+      "message": "I think it is worth a comment here to explain why the line is deliberately commented out.",
+      "revId": "b7a7174a1b77b7d26a50b60d75fe0da30a3a2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
