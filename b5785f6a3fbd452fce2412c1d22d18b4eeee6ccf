@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "00a5c874_4036e5dd",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-27T00:01:49Z",
+      "side": 1,
+      "message": "ah, I did not mean to say that the code is incorrect, I just meant to say that there is no need to do the calculation in the loop (read_size - 4).",
+      "parentUuid": "03969fea_1f718ffb",
+      "range": {
+        "startLine": 732,
+        "startChar": 10,
+        "endLine": 732,
+        "endChar": 41
+      },
+      "revId": "b5785f6a3fbd452fce2412c1d22d18b4eeee6ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a07d201_b1ec4969",
         "filename": "common/spi_nor.c",
         "patchSetId": 4
