@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "ps8xxx.h"
 #include "task.h"
 #include "tcpci.h"
@@ -241,7 +242,6 @@ int tcpci_tcpm_select_rp_value(int port, int rp)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 void tcpci_tcpc_discharge_vbus(int port, int enable)
 {
 	int reg;
@@ -256,7 +256,52 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
 
 	tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
 }
-#endif
+
+/*
+ * On a connection state change, it is necessary for TCPCI devices to
+ * set the AUTO_DISCHARGE_DISCONNECT bit appropriately.
+ */
+void tcpci_tcpc_auto_discharge_disconnect(int port, int connect)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+	if (rv) {
+		CPRINTS("%s: failed to read TCPCI POWER_CTRL", __func__);
+		return;
+	}
+
+	if (connect)
+		reg |= TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+	else
+		reg &= ~TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+
+	rv = tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+	if (rv)
+		CPRINTS("%s: failed to write TCPCI POWER_CTRL", __func__);
+}
+
+static void connect_state_change(int port, enum tcpc_connect_state state)
+{
+	const struct tcpm_drv *tcpc = tcpc_config[port].drv;
+
+	if (tcpc->tcpc_connect_state_change)
+		tcpc->tcpc_connect_state_change(port, state);
+}
+static void connect_hook(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	connect_state_change(port, TCPC_CONNECT_STATE_CONNECT);
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, connect_hook, HOOK_PRIO_DEFAULT);
+static void disconnect_hook(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	connect_state_change(port, TCPC_CONNECT_STATE_DISCONNECT);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, disconnect_hook, HOOK_PRIO_DEFAULT);
 
 static int set_role_ctrl(int port, int toggle, int rp, int pull)
 {
