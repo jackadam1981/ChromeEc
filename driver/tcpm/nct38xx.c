@@ -64,12 +64,16 @@ static int nct38xx_tcpm_init(int port)
 	if (rv)
 		return rv;
 
-	/* Enable VBus monitor and Disable FRS */
+	/*
+	 * Enable VBus monitor
+	 * Disable VBus Auto Discharge and Fast Role Swap
+	 */
 	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
 	if (rv)
 		return rv;
-	reg = reg & ~(TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS |
-		      TCPC_REG_POWER_CTRL_FRS_ENABLE);
+	reg = reg & ~(TCPC_REG_POWER_CTRL_FRS_ENABLE |
+		      TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS |
+		      TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT);
 	rv = tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
 	if (rv)
 		return rv;
