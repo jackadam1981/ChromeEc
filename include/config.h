@@ -906,6 +906,13 @@
 #undef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
 
 /*
+ * If this is defined, after the chip is reset, the VSYS_MIN register will be
+ * programmed with this value, otherwise the VSYS_MIN will be read out from
+ * the chip before the reset, and restored after the reset.
+ */
+#undef CONFIG_BQ25710_VSYSMIN_VALUE
+
+/*
  * Define to use Power Delivery State Machine Framework. Along with
  * CONFIG_USB_SM_FRAMEWORK, you must ensure the follow options are defined to
  * use the new statemachine for USB-C:
