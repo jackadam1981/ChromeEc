@@ -34,11 +34,6 @@ const uint32_t pd_src_pdo[] = {
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
 int board_vbus_source_enabled(int port)
 {
 	if (port != 0)
@@ -71,20 +66,10 @@ int pd_snk_is_vbus_provided(int port)
 	return !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L);
 }
 
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/* Allow data swap if we are a UFP, otherwise don't allow */
-	return (data_role == PD_ROLE_UFP) ? 1 : 0;
-}
-
-void pd_execute_data_swap(int port, int data_role)
+__override void pd_check_pr_role(int port, int pr_role, int flags)
 {
 }
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 
 void pd_check_pr_role(int port, int pr_role, int flags)
 {
@@ -318,3 +303,5 @@ const struct svdm_amode_fx supported_modes[] = {
 	}
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)

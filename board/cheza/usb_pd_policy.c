@@ -15,84 +15,13 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
-
-/* TODO(waihong): Fill in correct source and sink capabilities */
-const uint32_t pd_src_pdo[] = {
-	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-const uint32_t pd_src_pdo_max[] = {
-		PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
-
-const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-	PDO_BATT(4750, 21000, 15000),
-	PDO_VAR(4750, 21000, 3000),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
-
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/* Always allow data swap */
-	return 1;
-}
-
-void pd_check_dr_role(int port, int dr_role, int flags)
-{
-	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
-		pd_request_data_swap(port);
-}
-
-int pd_check_power_swap(int port)
-{
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
-void pd_check_pr_role(int port, int pr_role, int flags)
-{
-	/*
-	 * If partner is dual-role power and dualrole toggling is on, consider
-	 * if a power swap is necessary.
-	 */
-	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
-		/*
-		 * If we are a sink and partner is not externally powered, then
-		 * swap to become a source. If we are source and partner is
-		 * externally powered, swap to become a sink.
-		 */
-		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
-
-		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
-			pd_request_power_swap(port);
-	}
-}
-
 int pd_check_vconn_swap(int port)
 {
 	/* TODO(waihong): Check any case we do not allow. */
 	return 1;
 }
 
-void pd_execute_data_swap(int port, int data_role)
+__override void pd_execute_data_swap(int port, int data_role)
 {
 	int enable = (data_role == PD_ROLE_UFP);
 	int type;
@@ -128,6 +57,7 @@ void pd_execute_data_swap(int port, int data_role)
 		gpio_set_level(GPIO_USB_C1_HS_MUX_SEL, enable ? 1 : 0);
 }
 
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
@@ -135,6 +65,11 @@ int pd_is_valid_input_voltage(int mv)
 
 static uint8_t vbus_en[CONFIG_USB_PD_PORT_COUNT];
 static uint8_t vbus_rp[CONFIG_USB_PD_PORT_COUNT] = {TYPEC_RP_1A5, TYPEC_RP_1A5};
+=======
+static uint8_t vbus_en[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint8_t vbus_rp[CONFIG_USB_PD_PORT_MAX_COUNT] = {TYPEC_RP_1A5,
+							TYPEC_RP_1A5};
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 
 static void board_vbus_update_source_current(int port)
 {
@@ -206,17 +141,16 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS; /* we are ready */
 }
 
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
 int board_vbus_source_enabled(int port)
 {
 	return vbus_en[port];
 }
 
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 void typec_set_source_current_limit(int port, int rp)
+=======
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 {
 	vbus_rp[port] = rp;
 	board_vbus_update_source_current(port);
@@ -229,6 +163,7 @@ int pd_snk_is_vbus_provided(int port)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
 	.svids = NULL,
@@ -361,6 +296,8 @@ static void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 }
 
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 /**
  * Is the port fine to be muxed its DisplayPort lines?
  *
@@ -384,7 +321,8 @@ static int is_dp_muxable(int port)
 	return 1;
 }
 
-static int svdm_dp_attention(int port, uint32_t *payload)
+extern uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+__override int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
@@ -412,63 +350,3 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	/* ack */
 	return 1;
 }
-
-static void svdm_exit_dp_mode(int port)
-{
-	const struct usb_mux *mux = &usb_muxes[port];
-
-	svdm_safe_dp_mode(port);
-	mux->hpd_update(port, 0, 0);
-}
-
-static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
-{
-	/* Always enter GFU mode */
-	return 0;
-}
-
-static void svdm_exit_gfu_mode(int port)
-{
-}
-
-static int svdm_gfu_status(int port, uint32_t *payload)
-{
-	/*
-	 * This is called after enter mode is successful, send unstructured
-	 * VDM to read info.
-	 */
-	pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_READ_INFO, NULL, 0);
-	return 0;
-}
-
-static int svdm_gfu_config(int port, uint32_t *payload)
-{
-	return 0;
-}
-
-static int svdm_gfu_attention(int port, uint32_t *payload)
-{
-	return 0;
-}
-
-const struct svdm_amode_fx supported_modes[] = {
-	{
-		.svid = USB_SID_DISPLAYPORT,
-		.enter = &svdm_enter_dp_mode,
-		.status = &svdm_dp_status,
-		.config = &svdm_dp_config,
-		.post_config = &svdm_dp_post_config,
-		.attention = &svdm_dp_attention,
-		.exit = &svdm_exit_dp_mode,
-	},
-	{
-		.svid = USB_VID_GOOGLE,
-		.enter = &svdm_enter_gfu_mode,
-		.status = &svdm_gfu_status,
-		.config = &svdm_gfu_config,
-		.attention = &svdm_gfu_attention,
-		.exit = &svdm_exit_gfu_mode,
-	}
-};
-const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
-#endif /* CONFIG_USB_PD_ALT_MODE_DFP */

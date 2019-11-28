@@ -43,17 +43,6 @@ int pd_is_max_request_allowed(void)
 	return 1;
 }
 
-int pd_is_valid_input_voltage(int mv)
-{
-	/* Any voltage less than the max is allowed */
-	return 1;
-}
-
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
 int pd_snk_is_vbus_provided(int port)
 {
 	int mv = adc_read_channel(port == USBPD_PORT_A ?
@@ -77,20 +66,6 @@ void pd_power_supply_reset(int port)
 	board_pd_vbus_ctrl(port, 0);
 }
 
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_power_swap(int port)
-{
-	/* TODO: use battery level to decide to accept/reject power swap
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
 
 int pd_check_data_swap(int port, int data_role)
 {
@@ -106,6 +81,7 @@ int pd_check_vconn_swap(int port)
 	 */
 	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
 }
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 
 void pd_execute_data_swap(int port, int data_role)
 {
@@ -323,3 +299,5 @@ const struct svdm_amode_fx supported_modes[] = {
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)

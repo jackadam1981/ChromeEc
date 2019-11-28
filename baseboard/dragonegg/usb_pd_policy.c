@@ -22,99 +22,17 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
-
-const uint32_t pd_src_pdo[] = {
-	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-const uint32_t pd_src_pdo_max[] = {
-	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
-
-const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-	PDO_BATT(4750, 21000, 15000),
-	PDO_VAR(4750, 21000, 3000),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
-
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/*
-	 * Allow data swap if we are a UFP, otherwise don't allow.
-	 *
-	 * When we are still in the Read-Only firmware, avoid swapping roles
-	 * so we don't jump in RW as a SNK/DFP and potentially confuse the
-	 * power supply by sending a soft-reset with wrong data role.
-	 */
-	return (data_role == PD_ROLE_UFP) &&
-	       (system_get_image_copy() != SYSTEM_IMAGE_RO) ? 1 : 0;
-}
-
-void pd_check_dr_role(int port, int dr_role, int flags)
-{
-	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
-		pd_request_data_swap(port);
-}
-
-int pd_check_power_swap(int port)
-{
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
-void pd_check_pr_role(int port, int pr_role, int flags)
-{
-	/*
-	 * If partner is dual-role power and dualrole toggling is on, consider
-	 * if a power swap is necessary.
-	 */
-	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
-		/*
-		 * If we are a sink and partner is not externally powered, then
-		 * swap to become a source. If we are source and partner is
-		 * externally powered, swap to become a sink.
-		 */
-		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
-
-		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
-			pd_request_power_swap(port);
-	}
-}
-
 int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap if pp5000_A rail is enabled */
 	return gpio_get_level(GPIO_EN_PP5000);
 }
 
-void pd_execute_data_swap(int port, int data_role)
+__override void pd_execute_data_swap(int port, int data_role)
 {
 	/* On DragonEgg, only the first port can act as OTG */
 	if (port == 0)
 		gpio_set_level(GPIO_CHG_VAP_OTG_EN, (data_role == PD_ROLE_UFP));
-}
-
-int pd_is_valid_input_voltage(int mv)
-{
-	return 1;
 }
 
 void pd_power_supply_reset(int port)
@@ -166,11 +84,6 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 int pd_snk_is_vbus_provided(int port)
 {
@@ -194,15 +107,19 @@ int pd_snk_is_vbus_provided(int port)
 }
 #endif
 
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 void typec_set_source_current_limit(int port, int rp)
 {
 	ppc_set_vbus_source_current_limit(port, rp);
 }
 
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 
 
 /* ----------------- Vendor Defined Messages ------------------ */
@@ -425,3 +342,5 @@ const struct svdm_amode_fx supported_modes[] = {
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)

@@ -152,11 +152,18 @@ usb_sm_framework_h3-y=usb_sm_framework_h3.o
 usb_sm_framework_h2-y=usb_sm_framework_h3.o
 usb_sm_framework_h1-y=usb_sm_framework_h3.o
 usb_sm_framework_h0-y=usb_sm_framework_h3.o
-usb_typec_vpd-y=usb_typec_ctvpd.o vpd_api.o usb_sm_checks.o
-usb_typec_ctvpd-y=usb_typec_ctvpd.o vpd_api.o usb_sm_checks.o
+usb_typec_vpd-y=usb_typec_ctvpd.o vpd_api.o usb_sm_checks.o fake_usbc.o
+usb_typec_ctvpd-y=usb_typec_ctvpd.o vpd_api.o usb_sm_checks.o fake_usbc.o
 usb_typec_drp_acc_trysrc-y=usb_typec_drp_acc_trysrc.o vpd_api.o \
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 	usb_sm_checks.o
 usb_prl-y=usb_prl.o usb_sm_checks.o
+=======
+	usb_sm_checks.o fake_usbc.o
+usb_prl-y=usb_prl.o usb_sm_checks.o fake_usbc.o
+usb_pe_drp-y=usb_pe_drp.o usb_sm_checks.o \
+	fake_battery.o fake_prl.o fake_usbc.o
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 utils-y=utils.o
 utils_str-y=utils_str.o
 vboot-y=vboot.o

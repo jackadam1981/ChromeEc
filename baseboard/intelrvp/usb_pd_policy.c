@@ -12,37 +12,6 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
-
-/* TODO: fill in correct source and sink capabilities */
-const uint32_t pd_src_pdo[] = {
-	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-
-const uint32_t pd_src_pdo_max[] = {
-	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
-
-const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-	PDO_BATT(4750, 21000, 15000),
-	PDO_VAR(4750, 21000, 3000),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
-
-int pd_is_valid_input_voltage(int mv)
-{
-	return 1;
-}
-
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
 int pd_set_power_supply_ready(int port)
 {
 	/* Disable charging */
@@ -72,33 +41,13 @@ void pd_power_supply_reset(int port)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_power_swap(int port)
-{
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/* Allow data swap if we are a UFP, otherwise don't allow */
-	return data_role == PD_ROLE_UFP;
-}
-
 int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap if PP5000 rail is enabled */
 	return gpio_get_level(GPIO_EN_PP5000);
 }
 
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* Do nothing */
@@ -136,9 +85,13 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 }
 
 void typec_set_source_current_limit(int port, int rp)
+=======
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 {
 	board_set_vbus_source_current_limit(port, rp);
 }
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
@@ -367,3 +320,5 @@ const struct svdm_amode_fx supported_modes[] = {
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)

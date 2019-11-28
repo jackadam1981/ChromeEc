@@ -49,7 +49,12 @@
 #define CONFIG_USB_PD_LOGGING
 #undef  CONFIG_EVENT_LOG_SIZE
 #define CONFIG_EVENT_LOG_SIZE 256
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 #define CONFIG_USB_PD_PORT_COUNT 1
+=======
+#define CONFIG_USB_PD_CUSTOM_PDO
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_USB_PD_VBUS_DETECT_NONE

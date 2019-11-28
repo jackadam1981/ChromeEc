@@ -26,6 +26,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
@@ -58,6 +59,11 @@ void pd_transition_voltage(int idx)
 
 static uint8_t vbus_en[CONFIG_USB_PD_PORT_COUNT];
 static uint8_t vbus_rp[CONFIG_USB_PD_PORT_COUNT] = {TYPEC_RP_1A5, TYPEC_RP_1A5};
+=======
+static uint8_t vbus_en[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint8_t vbus_rp[CONFIG_USB_PD_PORT_MAX_COUNT] = {TYPEC_RP_1A5,
+							TYPEC_RP_1A5};
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
 
 int board_vbus_source_enabled(int port)
 {
@@ -129,39 +135,12 @@ void pd_power_supply_reset(int port)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_power_swap(int port)
-{
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/*
-	 * Allow data swap if we are a UFP, otherwise don't allow.
-	 *
-	 * When we are still in the Read-Only firmware, avoid swapping roles
-	 * so we don't jump in RW as a SNK/DFP and potentially confuse the
-	 * power supply by sending a soft-reset with wrong data role.
-	 */
-	return (data_role == PD_ROLE_UFP) &&
-	       (system_get_image_copy() != SYSTEM_IMAGE_RO) ? 1 : 0;
-}
-
 int pd_check_vconn_swap(int port)
 {
 	/* in G3, do not allow vconn swap since pp5000_A rail is off */
 	return gpio_get_level(GPIO_EN_PP5000);
 }
+<<<<<<< HEAD   (4af20f baseboard/kukui: enable CONFIG_USB_PD_PREFER_MV)
 
 void pd_execute_data_swap(int port, int data_role)
 {
@@ -416,3 +395,5 @@ const struct svdm_amode_fx supported_modes[] = {
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+=======
+>>>>>>> CHANGE (5ebaed usb_pd_policy: Make a lot of objects common)
