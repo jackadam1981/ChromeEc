@@ -22,6 +22,30 @@
       "revId": "3463fe177cf250174b12bf236b5568186a4fd036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "739b0011_c2f52b6e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2019-11-28T08:59:47Z",
+      "side": 1,
+      "message": "In order to reduce IQ, we have to disable charger ts auto sensing function when you enter shipping mode.\nIt still can exit shipping mode by AC insertion after you apply this patch.",
+      "parentUuid": "620e32eb_89761ead",
+      "range": {
+        "startLine": 1459,
+        "startChar": 0,
+        "endLine": 1463,
+        "endChar": 12
+      },
+      "revId": "3463fe177cf250174b12bf236b5568186a4fd036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
