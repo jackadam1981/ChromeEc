@@ -906,6 +906,11 @@
 #undef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
 
 /*
+ * Fix VSYS_MIN value on charger
+ */
+#undef CONFIG_CHARGER_VSYSMIN_VALUE
+
+/*
  * Define to use Power Delivery State Machine Framework. Along with
  * CONFIG_USB_SM_FRAMEWORK, you must ensure the follow options are defined to
  * use the new statemachine for USB-C:
