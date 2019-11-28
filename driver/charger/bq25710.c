@@ -186,7 +186,12 @@ static void bq25710_init(void)
 	 * MIN_SYSTEM_VOLTAGE register prior to setting the reset so that the
 	 * correct value is preserved.
 	 */
+#ifdef CONFIG_BQ25710_VSYSMIN_VALUE
+	rv = 0;
+	vsys = CONFIG_BQ25710_VSYSMIN_VALUE;
+#else
 	rv = raw_read16(BQ25710_REG_MIN_SYSTEM_VOLTAGE, &vsys);
+#endif
 	rv |= raw_read16(BQ25710_REG_CHARGE_OPTION_3, &reg);
 	if (!rv) {
 		reg |= BQ25710_CHARGE_OPTION_3_RESET_REG;
