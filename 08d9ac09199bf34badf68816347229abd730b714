@@ -16,6 +16,24 @@
       "revId": "08d9ac09199bf34badf68816347229abd730b714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47c2ab7_d50a8664",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-11-28T12:44:02Z",
+      "side": 1,
+      "message": "Hi Edward, I did an experiment today. It looks like neither pd_send_hard_reset nor board_reset_pd_mcu could impact the ppc OVP status. Seems the ppc stops the CC level from pd chip to connector because of ppc CC OVP_FET off. The AC adapter keeps Rp and can see the Rd all the time. VBUS is kept and the CC OVP is kept too. Could we think the DUT should be sink power if this CC OVP happens, so enable pp2 is a right operation?",
+      "parentUuid": "3c5d6a76_2f869ba7",
+      "revId": "08d9ac09199bf34badf68816347229abd730b714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
