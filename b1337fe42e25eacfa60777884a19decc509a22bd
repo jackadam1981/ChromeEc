@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4082233b_f5852d9b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f14f558_a9b2ee1f",
+      "range": {
+        "startLine": 100,
+        "startChar": 66,
+        "endLine": 100,
+        "endChar": 73
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "283761e6_28c5d428",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9069c3_253a6dc8",
+      "range": {
+        "startLine": 100,
+        "startChar": 13,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efa255b3_5dd18872",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 23
@@ -68,6 +116,30 @@
       "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0debd094_e4830f87",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "The if clause has to reset desired_mw when it\u0027s not charged by PD, so we can\u0027t do this.",
+      "parentUuid": "efa255b3_5dd18872",
+      "range": {
+        "startLine": 2003,
+        "startChar": 6,
+        "endLine": 2003,
+        "endChar": 43
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ff832eef_bb36ea4a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a198d7_2678ceaa",
+      "range": {
+        "startLine": 2015,
+        "startChar": 6,
+        "endLine": 2024,
+        "endChar": 12
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56cb1224_85800088",
         "filename": "common/usb_common.c",
         "patchSetId": 23
@@ -114,6 +210,30 @@
       "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93841d8f_964f612f",
+        "filename": "common/usb_common.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cb1224_85800088",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "1f7ea51c_7975742b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "We need this attribute. The user of this variable will be optimized out and cause a compilation error.",
+      "parentUuid": "89161eaa_9d063eb9",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc90999_1a3a7793",
         "filename": "common/usb_common.c",
         "patchSetId": 23
@@ -160,6 +304,30 @@
       "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20fccf4_4eb0451b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc90999_1a3a7793",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 15
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "cb044d8e_35aa876b",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "791e3995_922e7ebc",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e35142e3_05b6f0af",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 23
@@ -206,6 +398,30 @@
       "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c311a8c5_313ad6f6",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-28T09:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e35142e3_05b6f0af",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "b1337fe42e25eacfa60777884a19decc509a22bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
