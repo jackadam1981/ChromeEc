@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00f05b92_fa87a134",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-28T00:39:59Z",
+      "side": 1,
+      "message": "SIGN_MODE, HASHING, IN, DIGEST are ignored for TEST_POINT, TEST_KEYGEN, and TEST_KEYDERIVE. May be add a comment indicating that here.",
+      "revId": "82a6f6ca842bfb8bc45fcb11c8aa42b49cdc0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30dc1e11_93621d5d",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-28T00:39:59Z",
+      "side": 1,
+      "message": "for OP \u003d\u003d TEST_VERIFY_ANY || OP \u003d\u003d TEST_POINT:",
+      "revId": "82a6f6ca842bfb8bc45fcb11c8aa42b49cdc0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6517e7_9be419d8",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-28T00:39:59Z",
+      "side": 1,
+      "message": "This is not a requirement of the NIST test vectors, but because of a current limitation of how boringSSL\u0027s acvptool works - we should also add a TEST_SIGN_ANY operation where the private key d is passed in.\n\nAnother alternative is that qx, qy, and d are fixed just for the python tests. We can just get rid of this limitation and allow a d for TEST_SIGN and qx and qy for TEST_VERIFY and adjust the python tests accordingly.",
+      "revId": "82a6f6ca842bfb8bc45fcb11c8aa42b49cdc0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad9c1ce_2c023206",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-28T00:39:59Z",
+      "side": 1,
+      "message": "This is not related to this CL but _cpri__SignEcc and _cpri__ValidateSignatureEcc don\u0027t use the hashing parameter. May be good idea to at least add a sanity check here that this value \u003d SHA256 while you\u0027re working on this code.",
+      "revId": "82a6f6ca842bfb8bc45fcb11c8aa42b49cdc0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c351403_68bcea8f",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-28T00:39:59Z",
+      "side": 1,
+      "message": "Again, this is not related to this CL, but in the NIST test vectors there are cases where they deliberately create fake r and s of different sizes to ensure that verification fails. In this case, it is not correct to assume that r and s will be the same size.",
+      "revId": "82a6f6ca842bfb8bc45fcb11c8aa42b49cdc0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
