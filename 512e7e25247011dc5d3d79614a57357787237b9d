@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c2a2473_cc40e0e7",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2019-11-28T09:47:22Z",
+      "side": 1,
+      "message": "It is not clear from the data sheet how long the read command will take.\nDoes it merely read the data registers, or does it wait the integration time to complete?\n\n\u003e\u003eNeed check w/ vendor.",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3d7f981_4aada9d2",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2019-11-28T09:47:22Z",
+      "side": 1,
+      "message": "when rate is 0, ALS should go in suspend mode.\nShould PSM be change depending on the data rate: Mode 3 if rate \u003c 243mHz, Mode 0 otherwise.\n[it is not clear from datasheets what PM modes differences].\n\n\u003e\u003ePSM_SD\u003d1 can shutdown the sensor.\n\u003e\u003eKeep asking vendor for more information about PSM.",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3625499f_0050be78",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2019-11-28T09:47:22Z",
+      "side": 1,
+      "message": "when is drv_data-\u003eoffset updated?\n\nWe use offset for taking care of the glasss in front of the als. We use a linear function: Y \u003d a X + b, where X is the measured value, and Y the real value, a and b coefficients set depending on the glass in front of the ALS. (a, b) depends on the board.\n\n\u003e\u003eThere actually are three coefficient: scale, uscale, offset.\n\u003e\u003eIs it like Y\u003d scale*X + offset?",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
