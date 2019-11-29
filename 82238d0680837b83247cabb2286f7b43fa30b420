@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12011a7b_5b8dd843",
+        "filename": "board/lick/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2019-11-29T06:08:35Z",
+      "side": 1,
+      "message": "Are all these batteries supposed to be used for Lick?  thanks.",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05f36f1_8e938de7",
+        "filename": "board/lick/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2019-11-29T06:08:35Z",
+      "side": 1,
+      "message": "No SKU assigned to Lick right now. only 255 is available.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 16
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7246d2_5580068c",
+        "filename": "board/lick/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2019-11-29T06:08:35Z",
+      "side": 1,
+      "message": "If Lick will only have one SKU, one of the content in the \"if .. else .. \" is not necessary.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc1fa03_78649f93",
+        "filename": "board/lick/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2019-11-29T06:08:35Z",
+      "side": 1,
+      "message": "Is Lick a 360 device? thanks.",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
