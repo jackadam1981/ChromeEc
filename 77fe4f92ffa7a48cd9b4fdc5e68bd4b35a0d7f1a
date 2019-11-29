@@ -164,6 +164,30 @@
       "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7732f1_bfdb8555",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-11-29T03:34:59Z",
+      "side": 1,
+      "message": "Here\u0027s some code that implements the outlined logic, and a lot of code to verify it prevents brownouts.",
+      "parentUuid": "a0860dc1_58f2a02c",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "77fe4f92ffa7a48cd9b4fdc5e68bd4b35a0d7f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
