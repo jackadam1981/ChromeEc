@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5dc44d8_91aa37f2",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-29T06:05:48Z",
+      "side": 1,
+      "message": "should we setting up everything and then trigger the LPM? i.e. should this move to the last?",
+      "range": {
+        "startLine": 1031,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 0
+      },
+      "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5317be8_e901fc9e",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-29T06:05:48Z",
+      "side": 1,
+      "message": "Can we have a comment for this usleep?",
+      "range": {
+        "startLine": 1060,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 13
+      },
+      "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ee4b7e_40586ae0",
+        "filename": "driver/tcpm/fusb302.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-11-29T06:05:48Z",
+      "side": 1,
+      "message": "Is this the same as TCPC_REG_CONTROL2_MODE_SHIFT?",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
