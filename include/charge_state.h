@@ -35,6 +35,8 @@ enum charge_state {
 	PWR_STATE_IDLE,
 	/* Discharging */
 	PWR_STATE_DISCHARGE,
+	/* Discharging and fully charged */
+	PWR_STATE_DISCHARGE_FULL,
 	/* Charging */
 	PWR_STATE_CHARGE,
 	/* Charging, almost fully charged */
@@ -61,6 +63,7 @@ enum charge_state {
 		"idle0",	\
 		"idle",		\
 		"discharge",	\
+		"discharge_full",	\
 		"charge",	\
 		"charge_near_full",      \
 		"error"		\
@@ -87,6 +90,16 @@ uint32_t charge_get_flags(void);
  * Return current battery charge percentage.
  */
 int charge_get_percent(void);
+
+/**
+ * Check if board is consuming full input current
+ *
+ * This returns true if the battery charge percentage is between 2% and 95%
+ * exclusive.
+ *
+ * @return Board is consuming full input current
+ */
+int charge_is_consuming_full_input_current(void);
 
 /**
  * Return non-zero if discharging and battery so low we should shut down.
@@ -120,17 +133,9 @@ int charge_get_battery_temp(int idx, int *temp_ptr);
 const struct batt_params *charger_current_battery_params(void);
 
 
-/* Pick the right implementation */
-#ifdef CONFIG_CHARGER_V1
-#ifdef CONFIG_CHARGER_V2
-#error "Choose either CONFIG_CHARGER_V1 or CONFIG_CHARGER_V2, not both"
-#else
-#include "charge_state_v1.h"
-#endif
-#else  /* not V1 */
+/* Config Charger */
 #ifdef CONFIG_CHARGER_V2
 #include "charge_state_v2.h"
-#endif
-#endif	/* CONFIG_CHARGER_V1 */
+#endif	/* CONFIG_CHARGER_V2 */
 
 #endif	/* __CROS_EC_CHARGE_STATE_H */

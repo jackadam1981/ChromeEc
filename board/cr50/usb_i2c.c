@@ -3,8 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include "case_closed_debug.h"
+#include "ccd_config.h"
 #include "console.h"
-#include "device_state.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -16,14 +17,20 @@
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
-static int i2c_enabled(void)
+int usb_i2c_board_is_enabled(void)
 {
+	/*
+	 * Note that this signal requires an external pullup, because this is
+	 * one of the real open drain pins; we cannot pull it up or drive it
+	 * high.  On test boards without the pullup, this will mis-detect as
+	 * enabled.
+	 */
 	return !gpio_get_level(GPIO_EN_PP3300_INA_L);
 }
 
 static void ina_disconnect(void)
 {
-	CPRINTS("Disabling I2C");
+	CPRINTS("I2C disconnect");
 
 	/* Disonnect I2C0 SDA/SCL output to B1/B0 pads */
 	GWRITE(PINMUX, DIOB1_SEL, 0);
@@ -35,16 +42,13 @@ static void ina_disconnect(void)
 	/* Disable power to INA chips */
 	gpio_set_level(GPIO_EN_PP3300_INA_L, 1);
 }
-DECLARE_DEFERRED(ina_disconnect);
 
 static void ina_connect(void)
 {
-	CPRINTS("Enabling I2C");
+	CPRINTS("I2C connect");
 
 	/* Apply power to INA chips */
 	gpio_set_level(GPIO_EN_PP3300_INA_L, 0);
-	/* Allow enough time for power rail to come up */
-	usleep(25);
 
 	/*
 	 * Connect B0/B1 pads to I2C0 input SDA/SCL. Note, that the inputs
@@ -65,29 +69,30 @@ static void ina_connect(void)
 	i2cm_init();
 }
 
-void usb_i2c_board_disable(int debounce)
+void usb_i2c_board_disable(void)
 {
-	if (!i2c_enabled())
+	if (!usb_i2c_board_is_enabled())
 		return;
 
-	/*
-	 * Wait to disable i2c in case we are doing a bunch of i2c transactions
-	 * in a row.
-	 */
-	hook_call_deferred(&ina_disconnect_data, debounce ? 1 * SECOND : 0);
+	ina_disconnect();
 }
 
 int usb_i2c_board_enable(void)
 {
-	if (device_get_state(DEVICE_SERVO) != DEVICE_STATE_OFF) {
-		CPRINTS("Servo is attached I2C cannot be enabled");
-		usb_i2c_board_disable(0);
+	if (servo_is_connected()) {
+		CPRINTS("Servo attached; cannot enable I2C");
+		usb_i2c_board_disable();
 		return EC_ERROR_BUSY;
 	}
 
-	hook_call_deferred(&ina_disconnect_data, -1);
+	if (!ccd_ext_is_enabled())
+		return EC_ERROR_BUSY;
 
-	if (!i2c_enabled())
+	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
+		return EC_ERROR_ACCESS_DENIED;
+
+	if (!usb_i2c_board_is_enabled())
 		ina_connect();
+
 	return EC_SUCCESS;
 }

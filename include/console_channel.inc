@@ -19,6 +19,9 @@ CONSOLE_CHANNEL(CC_BLUETOOTH_HCI,"bluetooth_hci")
 #ifdef CONFIG_EXTENSION_COMMAND
 CONSOLE_CHANNEL(CC_EXTENSION,    "extension")
 #endif
+#if defined(CONFIG_PHYSICAL_PRESENCE)
+CONSOLE_CHANNEL(CC_CCD,          "ccd")
+#endif
 CONSOLE_CHANNEL(CC_CHARGER,      "charger")
 CONSOLE_CHANNEL(CC_CHIPSET,      "chipset")
 CONSOLE_CHANNEL(CC_CLOCK,        "clock")
@@ -26,6 +29,9 @@ CONSOLE_CHANNEL(CC_CLOCK,        "clock")
 CONSOLE_CHANNEL(CC_DMA,          "dma")
 #endif
 CONSOLE_CHANNEL(CC_EVENTS,       "events")
+#ifdef HAS_TASK_FPC1140
+CONSOLE_CHANNEL(CC_FP,           "fingerprint")
+#endif
 #ifdef CONFIG_GESTURE_SW_DETECTION
 CONSOLE_CHANNEL(CC_GESTURE,      "gesture")
 #endif

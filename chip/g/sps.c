@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "pmu.h"
 #include "registers.h"
@@ -58,6 +59,9 @@ static uint32_t sps_tx_count, sps_rx_count, tx_empty_count, max_rx_batch;
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SPS, outstr)
 #define CPRINTS(format, args...) cprints(CC_SPS, format, ## args)
+
+/* Flag indicating if there has been any data received while CS was asserted. */
+static uint8_t seen_data;
 
 void sps_tx_status(uint8_t byte)
 {
@@ -161,6 +165,15 @@ int sps_transmit(uint8_t *data, size_t data_size)
 	return bytes_sent;
 }
 
+static int sps_cs_asserted(void)
+{
+	/*
+	 * Read the current value on the SPS CS line and return the iversion
+	 * of it (CS is active low).
+	 */
+	return !GREAD_FIELD(SPS, VAL, CSB);
+}
+
 /** Configure the data transmission format
  *
  *  @param mode Clock polarity and phase mode (0 - 3)
@@ -181,6 +194,20 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode,
 	/* xfer 0xff when tx fifo is empty */
 	GREG32(SPS, DUMMY_WORD) = GC_SPS_DUMMY_WORD_DEFAULT;
 
+	if (sps_cs_asserted()) {
+		/*
+		 * Reset while the external controller is mid SPI
+		 * transaction.
+		 */
+		ccprintf("%s: reset while CS active\n", __func__);
+		/*
+		 * Wait for external controller to deassert CS before
+		 * continuing.
+		 */
+		while (sps_cs_asserted())
+			;
+	}
+
 	/* [5,4,3]           [2,1,0]
 	 * RX{DIS, EN, RST} TX{DIS, EN, RST}
 	 */
@@ -196,6 +223,8 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode,
 	GREG32(SPS, RXFIFO_THRESHOLD) = rx_fifo_threshold;
 
 	GWRITE_FIELD(SPS, ICTRL, RXFIFO_LVL, 1);
+
+	seen_data = 0;
 
 	/* Use CS_DEASSERT to retrieve all remaining bytes from RX FIFO. */
 	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
@@ -214,6 +243,9 @@ int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler,
 	task_disable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_disable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
 
+	if (!rx_handler)
+		return 0;
+
 	if (!rx_fifo_threshold)
 		rx_fifo_threshold = 8;  /* This is a sensible default. */
 	sps_rx_handler = rx_handler;
@@ -231,7 +263,7 @@ static void sps_init(void)
 	 * Check to see if slave SPI interface is required by the board before
 	 * initializing it. If SPI option is not set, then just return.
 	 */
-	if (!(system_get_board_properties() & BOARD_SLAVE_CONFIG_SPI))
+	if (!board_tpm_uses_spi())
 		return;
 
 	pmu_clock_en(PERIPH_SPS);
@@ -310,6 +342,7 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 		if (!data_size)
 			break;
 
+		seen_data = 1;
 		sps_rx_count += data_size;
 
 		if (sps_rx_handler)
@@ -321,13 +354,52 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 		sps_advance_rx(port, data_size);
 	}
 
-	if (cs_deasserted)
-		sps_rx_handler(NULL, 0, 1);
+	if (cs_deasserted) {
+		if (seen_data) {
+			/*
+			 * SPI does not provide inherent flow control. Let's
+			 * use this pin to signal the AP that the device has
+			 * finished processing received data.
+			 */
+
+			sps_rx_handler(NULL, 0, 1);
+			gpio_set_level(GPIO_INT_AP_L, 0);
+			gpio_set_level(GPIO_INT_AP_L, 1);
+			seen_data = 0;
+		}
+	}
 }
 
 static void sps_cs_deassert_interrupt(uint32_t port)
 {
 	/* Make sure the receive FIFO is drained. */
+
+	if (sps_cs_asserted()) {
+		/*
+		 * we must have been slow, this is the next CS assertion after
+		 * the 'wake up' pulse, but we have not processed the wake up
+		 * interrupt yet.
+		 *
+		 * There would be no other out of order CS assertions, as all
+		 * the 'real' ones (as opposed to the wake up pulses) are
+		 * confirmed by the H1 pulsing the AP interrupt line
+		 */
+
+		/*
+		 * Make sure we react to the next deassertion when it
+		 * happens.
+		 */
+		GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
+		GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 0);
+		if (sps_cs_asserted())
+			return;
+
+		/*
+		 * The CS went away while we were processing this interrupt,
+		 * this was the 'real' CS, need to process data.
+		 */
+	}
+
 	sps_rx_interrupt(port, 1);
 	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
 	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 0);
