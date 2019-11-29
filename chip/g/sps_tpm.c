@@ -254,6 +254,9 @@ static void process_rx_data(uint8_t *data, size_t data_size)
 
 static void tpm_rx_handler(uint8_t *data, size_t data_size, int cs_disabled)
 {
+	if (chip_factory_mode())
+		return;  /* Ignore TPM traffic in factory mode. */
+
 	if ((sps_tpm_state == SPS_TPM_STATE_RECEIVING_HEADER) ||
 	    (sps_tpm_state == SPS_TPM_STATE_RECEIVING_WRITE_DATA))
 		process_rx_data(data, data_size);
@@ -262,22 +265,28 @@ static void tpm_rx_handler(uint8_t *data, size_t data_size, int cs_disabled)
 		init_new_cycle();
 }
 
-static void sps_tpm_enable(void)
+static void sps_if_stop(void)
+{
+	/* Let's shut down the interface while TPM is being reset. */
+	sps_register_rx_handler(0, NULL, 0);
+}
+
+static void sps_if_start(void)
 {
 	/*
-	 * Let's make sure we get an interrupt as soon as the header is
-	 * received.
+	 * Threshold of 3 makes sure we get an interrupt as soon as the header
+	 * is received.
 	 */
-	sps_register_rx_handler(SPS_GENERIC_MODE, tpm_rx_handler, 3);
 	init_new_cycle();
+	sps_register_rx_handler(SPS_GENERIC_MODE, tpm_rx_handler, 3);
 }
 
 
 static void sps_if_register(void)
 {
-	if (!(system_get_board_properties() & BOARD_SLAVE_CONFIG_SPI))
+	if (!board_tpm_uses_spi())
 		return;
 
-	tpm_register_interface(sps_tpm_enable);
+	tpm_register_interface(sps_if_start, sps_if_stop);
 }
 DECLARE_HOOK(HOOK_INIT, sps_if_register, HOOK_PRIO_LAST);

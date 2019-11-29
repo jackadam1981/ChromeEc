@@ -52,10 +52,12 @@ extern const struct hook_data __hooks_tablet_mode_change[];
 extern const struct hook_data __hooks_tablet_mode_change_end[];
 extern const struct hook_data __hooks_pwrbtn_change[];
 extern const struct hook_data __hooks_pwrbtn_change_end[];
-extern const struct hook_data __hooks_charge_state_change[];
-extern const struct hook_data __hooks_charge_state_change_end[];
 extern const struct hook_data __hooks_battery_soc_change[];
 extern const struct hook_data __hooks_battery_soc_change_end[];
+#ifdef CONFIG_CASE_CLOSED_DEBUG_V1
+extern const struct hook_data __hooks_ccd_change[];
+extern const struct hook_data __hooks_ccd_change_end[];
+#endif
 extern const struct hook_data __hooks_tick[];
 extern const struct hook_data __hooks_tick_end[];
 extern const struct hook_data __hooks_second[];

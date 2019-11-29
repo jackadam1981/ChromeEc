@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_descriptor.h"
+#include "usb_hw.h"
 #include "watchdog.h"
 
 /****************************************************************************/
@@ -28,10 +29,7 @@
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
-#define USE_SERIAL_NUMBER (defined(CONFIG_USB_SERIALNO) && \
-			   defined(CONFIG_CASE_CLOSED_DEBUG))
-
-#if !USE_SERIAL_NUMBER
+#ifndef CONFIG_USB_SERIALNO
 #define USB_STR_SERIALNO 0
 #endif
 
@@ -186,8 +184,8 @@ static void showregs(void)
 /* Standard USB stuff */
 
 #ifdef CONFIG_USB_BOS
-/* v2.01 (vs 2.00) BOS Descriptor provided */
-#define USB_DEV_BCDUSB 0x0201
+/* v2.10 (vs 2.00) BOS Descriptor provided */
+#define USB_DEV_BCDUSB 0x0210
 #else
 #define USB_DEV_BCDUSB 0x0200
 #endif
@@ -198,14 +196,6 @@ static void showregs(void)
 
 #ifndef CONFIG_USB_BCD_DEV
 #define CONFIG_USB_BCD_DEV 0x0100		/* 1.00 */
-#endif
-
-#ifndef USB_BMATTRIBUTES
-#ifdef CONFIG_USB_SELF_POWERED
-#define USB_BMATTRIBUTES 0xc0  /* Self powered. */
-#else
-#define USB_BMATTRIBUTES 0x80  /* Bus powered. */
-#endif
 #endif
 
 /* USB Standard Device Descriptor */
@@ -234,7 +224,14 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bNumInterfaces = USB_IFACE_COUNT,
 	.bConfigurationValue = 1,		/* Caution: hard-coded value */
 	.iConfiguration = USB_STR_VERSION,
-	.bmAttributes = USB_BMATTRIBUTES, /* bus or self powered */
+	.bmAttributes = 0x80 /* Reserved bit */
+#ifdef CONFIG_USB_SELF_POWERED  /* bus or self powered */
+		      | 0x40
+#endif
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+		      | 0x20
+#endif
+	,
 	.bMaxPower = (CONFIG_USB_MAXPOWER_MA / 2),
 };
 
@@ -331,8 +328,12 @@ static enum {
 } device_state;
 static uint8_t configuration_value;
 
+#ifndef CONFIG_USB_SELECT_PHY_DEFAULT
+#define CONFIG_USB_SELECT_PHY_DEFAULT USB_SEL_PHY1
+#endif
+
 /* Default PHY to use */
-static uint32_t which_phy = USB_SEL_PHY1;
+static uint32_t which_phy = CONFIG_USB_SELECT_PHY_DEFAULT;
 
 void usb_select_phy(uint32_t phy)
 {
@@ -387,7 +388,7 @@ static void got_RX_packet(void)
 int load_in_fifo(const void *source, uint32_t len)
 {
 	uint8_t *buffer = ep0_in_buf;
-	int zero_packet = !len;
+	int zero_packet = (len % USB_MAX_PACKET_SIZE) == 0;
 	int d, l;
 
 	/* Copy the data into our FIFO buffer */
@@ -607,9 +608,8 @@ static int handle_setup_with_in_stage(enum table_case tc,
 		case USB_DT_STRING:
 			if (idx >= USB_STR_COUNT)
 				return -1;
-#if USE_SERIAL_NUMBER
-			if (idx == USB_STR_SERIALNO &&
-			    ccd_get_mode() == CCD_MODE_ENABLED)
+#ifdef CONFIG_USB_SERIALNO
+			if (idx == USB_STR_SERIALNO && ccd_ext_is_enabled())
 				data = usb_serialno_desc;
 			else
 #endif
@@ -618,6 +618,8 @@ static int handle_setup_with_in_stage(enum table_case tc,
 			break;
 		case USB_DT_DEVICE_QUALIFIER:
 			/* We're not high speed */
+			return -1;
+		case USB_DT_DEBUG:
 			return -1;
 		default:
 			report_error(type);
@@ -816,6 +818,20 @@ static void handle_setup(enum table_case tc)
 			print_later("  iface returned %d", bytes, 0, 0, 0, 0);
 		}
 	} else {
+#ifdef CONFIG_WEBUSB_URL
+		if (data_phase_in &&
+		    ((req->bmRequestType & USB_TYPE_MASK) == USB_TYPE_VENDOR)) {
+			if (req->bRequest == 0x01 &&
+			    req->wIndex == WEBUSB_REQ_GET_URL) {
+				bytes = *(uint8_t *)webusb_url;
+				bytes = MIN(req->wLength, bytes);
+				if (load_in_fifo(webusb_url, bytes) < 0)
+					bytes = -1;
+			} else {
+				report_error(-1);
+			}
+		} else
+#endif
 		/* Something we need to add support for? */
 		report_error(-1);
 	}
@@ -1205,6 +1221,15 @@ static void usb_softreset(void)
 		return;
 	}
 	/* TODO: Wait 3 PHY clocks before returning */
+
+#ifdef BOARD_CR50
+	/*
+	 * TODO(b/63867566): This delay is added to get usb to suspend after
+	 * resume from deep sleep. Find out what the root cause is and add a
+	 * fix.
+	 */
+	usleep(100);
+#endif
 }
 
 void usb_connect(void)
@@ -1220,6 +1245,41 @@ void usb_disconnect(void)
 
 	device_state = DS_DEFAULT;
 	configuration_value = 0;
+}
+
+void usb_save_suspended_state(void)
+{
+	int i;
+	uint32_t pid = 0;
+
+	/* Record the state the DATA PIDs toggling on each endpoint. */
+	for (i = 1; i < USB_EP_COUNT; i++) {
+		if (GR_USB_DOEPCTL(i) & DXEPCTL_DPID)
+			pid |= (1 << i);
+		if (GR_USB_DIEPCTL(i) & DXEPCTL_DPID)
+			pid |= (1 << (i + 16));
+	}
+	/* Save the USB device address */
+	GREG32(PMU, PWRDN_SCRATCH18) = GR_USB_DCFG;
+	GREG32(PMU, PWRDN_SCRATCH19) = pid;
+
+}
+
+void usb_restore_suspended_state(void)
+{
+	int i;
+	uint32_t pid;
+
+	/* restore the USB device address (the DEVADDR field). */
+	GR_USB_DCFG = GREG32(PMU, PWRDN_SCRATCH18);
+	/* Restore the DATA PIDs on endpoints. */
+	pid = GREG32(PMU, PWRDN_SCRATCH19);
+	for (i = 1; i < USB_EP_COUNT; i++) {
+		GR_USB_DOEPCTL(i) = pid & (1 << i) ?
+			DXEPCTL_SET_D1PID : DXEPCTL_SET_D0PID;
+		GR_USB_DIEPCTL(i) = pid & (1 << (i + 16)) ?
+			DXEPCTL_SET_D1PID : DXEPCTL_SET_D0PID;
+	}
 }
 
 void usb_init(void)
@@ -1262,6 +1322,9 @@ void usb_init(void)
 	GR_USB_DIEPMSK = 0;
 	GR_USB_DOEPMSK = 0;
 
+	/* Disable the PHY clock whenever usb suspend is detected */
+	GWRITE_FIELD(USB, PCGCCTL, STOPPCLK, 1);
+
 	/* Select the correct PHY */
 	usb_select_phy(which_phy);
 
@@ -1291,10 +1354,7 @@ void usb_init(void)
 		usb_disconnect();
 
 	if (resume)
-		/* DEVADDR is preserved in the USB module during deep sleep,
-		 * but it doesn't show up in USB_DCFG on resume. If we don't
-		 * restore it manually too, it doesn't work. */
-		GR_USB_DCFG = GREG32(PMU, PWRDN_SCRATCH18);
+		usb_restore_suspended_state();
 	else
 		/* Init: USB2 FS, Scatter/Gather DMA, DEVADDR = 0x00 */
 		GR_USB_DCFG |= DCFG_DEVSPD_FS48 | DCFG_DESCDMA;
@@ -1345,8 +1405,8 @@ void usb_init(void)
 		GINTMSK(RESETDET) |		/* TODO: Do we need this? */
 		/* Idle, Suspend detected. Should go to sleep. */
 		GINTMSK(ERLYSUSP) | GINTMSK(USBSUSP) |
-		/* Watch for first SOF */
-		GINTMSK(SOF);
+		/* Watch for first SOF and usb wakeup */
+		GINTMSK(SOF) | GINTMSK(WKUPINT);
 
 	/* Device registers have been setup */
 	GR_USB_DCTL |= DCTL_PWRONPRGDONE;
@@ -1363,7 +1423,7 @@ void usb_init(void)
 #endif
 }
 #ifndef CONFIG_USB_INHIBIT_INIT
-DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT - 2);
 #endif
 
 void usb_release(void)
@@ -1390,15 +1450,17 @@ static int command_usb(int argc, char **argv)
 	int val;
 
 	if (argc > 1) {
-		if (!strcasecmp("a", argv[1]))
-			usb_select_phy(USB_SEL_PHY0);
-		else if (!strcasecmp("b", argv[1]))
-			usb_select_phy(USB_SEL_PHY1);
-		else if (parse_bool(argv[1], &val)) {
+		if (parse_bool(argv[1], &val)) {
 			if (val)
 				usb_init();
 			else
 				usb_release();
+#ifdef CONFIG_USB_SELECT_PHY
+		} else if (!strcasecmp("a", argv[1])) {
+			usb_select_phy(USB_SEL_PHY0);
+		} else if (!strcasecmp("b", argv[1])) {
+			usb_select_phy(USB_SEL_PHY1);
+#endif
 		} else
 			return EC_ERROR_PARAM1;
 	}
@@ -1409,10 +1471,14 @@ static int command_usb(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(usb, command_usb,
+#ifdef CONFIG_USB_SELECT_PHY
 			"[<BOOLEAN> | a | b]",
+#else
+			"<BOOLEAN>",
+#endif
 			"Get/set the USB connection state and PHY selection");
 
-#if USE_SERIAL_NUMBER
+#ifdef CONFIG_USB_SERIALNO
 /* This will be subbed into USB_STR_SERIALNO. */
 struct usb_string_desc *usb_serialno_desc =
 	USB_WR_STRING_DESC(DEFAULT_SERIALNO);
@@ -1427,7 +1493,7 @@ static int usb_set_serial(const char *serialno)
 		return EC_ERROR_INVAL;
 
 	/* Convert into unicode usb string desc. */
-	for (i = 0; i < USB_STRING_LEN; i++) {
+	for (i = 0; i < CONFIG_SERIALNO_LEN; i++) {
 		sd->_data[i] = serialno[i];
 		if (serialno[i] == 0)
 			break;
@@ -1453,7 +1519,7 @@ DECLARE_HOOK(HOOK_INIT, usb_load_serialno, HOOK_PRIO_DEFAULT - 1);
 static int command_serialno(int argc, char **argv)
 {
 	struct usb_string_desc *sd = usb_serialno_desc;
-	char buf[USB_STRING_LEN];
+	char buf[CONFIG_SERIALNO_LEN];
 	int rv = EC_SUCCESS;
 	int i;
 
@@ -1462,7 +1528,7 @@ static int command_serialno(int argc, char **argv)
 		rv = usb_set_serial(argv[1]);
 	}
 
-	for (i = 0; i < USB_STRING_LEN; i++)
+	for (i = 0; i < CONFIG_SERIALNO_LEN; i++)
 		buf[i] = sd->_data[i];
 	ccprintf("Serial number: %s\n", buf);
 	return rv;

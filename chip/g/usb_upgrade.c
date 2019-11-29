@@ -144,6 +144,12 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			  count - offsetof(struct update_frame_header, cmd))) {
 		uint16_t *subcommand;
 		size_t response_size;
+		size_t request_size;
+		/*
+		 * Should be enough for any vendor command/response. We'll
+		 * generate an error if it is not.
+		 */
+		uint8_t subcommand_body[32];
 
 		/* looks good, let's process it. */
 		rv = 1;
@@ -152,13 +158,25 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 		queue_advance_head(consumer->queue, count);
 
 		subcommand = (uint16_t *)(cmd_buffer + 1);
-		extension_route_command(be16toh(*subcommand),
-					subcommand + 1,
-					count -
-					sizeof(struct update_frame_header),
-					&response_size);
+		request_size = count - sizeof(struct update_frame_header) -
+			sizeof(*subcommand);
 
-		QUEUE_ADD_UNITS(&upgrade_to_usb, subcommand + 1, response_size);
+		if (request_size > sizeof(subcommand_body)) {
+			CPRINTS("%s: vendor command payload too big (%d)",
+				__func__, request_size);
+			subcommand_body[0] = VENDOR_RC_REQUEST_TOO_BIG;
+			response_size = 1;
+		} else {
+			memcpy(subcommand_body, subcommand + 1, request_size);
+			response_size = sizeof(subcommand_body);
+			usb_extension_route_command(be16toh(*subcommand),
+						    subcommand_body,
+						    request_size,
+						    &response_size);
+		}
+
+		QUEUE_ADD_UNITS(&upgrade_to_usb,
+				subcommand_body, response_size);
 	}
 	shared_mem_release(cmd_buffer);
 
@@ -170,6 +188,12 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
  * timer.
  */
 static uint64_t prev_activity_timestamp;
+
+/*
+ * A flag indicating that at least one valid PDU containing flash update block
+ * has been received in the current transfer session.
+ */
+static uint8_t  data_was_transferred;
 
 /* Called to deal with data from the host */
 static void upgrade_out_handler(struct consumer const *consumer, size_t count)
@@ -235,8 +259,10 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 						    cmd),
 					   &resp_size);
 
-		if (!u.startup_resp.return_value)
+		if (!u.startup_resp.return_value) {
 			rx_state_ = rx_outside_block;  /* We're in business. */
+			data_was_transferred = 0;   /* No data received yet. */
+		}
 
 		/* Let the host know what upgrader had to say. */
 		QUEUE_ADD_UNITS(&upgrade_to_usb, &u.startup_resp, resp_size);
@@ -257,7 +283,11 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			if (command == UPGRADE_DONE) {
 				CPRINTS("FW update: done");
 
-				fw_upgrade_complete();
+				if (data_was_transferred) {
+					fw_upgrade_complete();
+					data_was_transferred = 0;
+				}
+
 				resp_value = 0;
 				QUEUE_ADD_UNITS(&upgrade_to_usb,
 						&resp_value, 1);
@@ -358,6 +388,11 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	 */
 	fw_upgrade_command_handler(block_buffer, block_index, &resp_size);
 
+	/*
+	 * There was at least an attempt to program the flash, set the
+	 * flag.
+	 */
+	data_was_transferred = 1;
 	resp_value = block_buffer[0];
 	QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, sizeof(resp_value));
 	rx_state_ = rx_outside_block;
