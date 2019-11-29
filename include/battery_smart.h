@@ -57,6 +57,7 @@
 #define SB_DEVICE_CHEMISTRY             0x22
 #define SB_MANUFACTURER_DATA            0x23
 /* Extension of smart battery spec, may not be supported on all platforms */
+#define SB_PACK_STATUS                  0x43
 #define SB_ALT_MANUFACTURER_ACCESS      0x44
 
 /* Battery mode */
@@ -141,11 +142,13 @@
 int sb_read(int cmd, int *param);
 
 /* Read sequence from battery */
-int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
-		   int len);
+int sb_read_string(int offset, uint8_t *data, int len);
 
 /* Write to battery */
 int sb_write(int cmd, int param);
+
+/* Read manufactures access data from the battery */
+int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len);
 
 #endif /* __CROS_EC_BATTERY_SMART_H */
 

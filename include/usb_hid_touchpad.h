@@ -5,24 +5,27 @@
  * USB HID definitions.
  */
 
-#ifndef __CROS_EC_USB_HID_KEYBOARD_H
-#define __CROS_EC_USB_HID_KEYBOARD_H
+#ifndef __CROS_EC_USB_HID_TOUCHPAD_H
+#define __CROS_EC_USB_HID_TOUCHPAD_H
 
-struct __attribute__((__packed__)) usb_hid_touchpad_report {
+#define USB_HID_TOUCHPAD_TIMESTAMP_UNIT 100 /* usec */
+
+struct usb_hid_touchpad_report {
 	uint8_t id; /* 0x01 */
-	struct __attribute__((__packed__)) {
-		uint8_t tip:1;
-		uint8_t inrange:1;
-		uint8_t id:6;
+	struct {
+		unsigned tip:1;
+		unsigned inrange:1;
+		unsigned id:4;
+		unsigned pressure:10;
 		unsigned width:12;
 		unsigned height:12;
 		unsigned x:12;
 		unsigned y:12;
-		uint8_t pressure;
-	} finger[5];
+	} __packed finger[5];
 	uint8_t count:7;
 	uint8_t button:1;
-};
+	uint16_t timestamp;
+} __packed;
 
 /* class implementation interfaces */
 void set_touchpad_report(struct usb_hid_touchpad_report *report);
