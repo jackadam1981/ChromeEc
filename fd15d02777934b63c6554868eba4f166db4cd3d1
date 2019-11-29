@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "289580e9_6cb96c7f",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-29T06:40:39Z",
+      "side": 1,
+      "message": "no, this must happen before enabling toggle",
+      "parentUuid": "e5dc44d8_91aa37f2",
+      "range": {
+        "startLine": 1031,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 0
+      },
+      "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5317be8_e901fc9e",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a21b4849_c5e6b13a",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-29T06:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5317be8_e901fc9e",
+      "range": {
+        "startLine": 1060,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 13
+      },
+      "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ee4b7e_40586ae0",
         "filename": "driver/tcpm/fusb302.h",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d608340_3c2c5963",
+        "filename": "driver/tcpm/fusb302.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-11-29T06:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ee4b7e_40586ae0",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "fd15d02777934b63c6554868eba4f166db4cd3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
