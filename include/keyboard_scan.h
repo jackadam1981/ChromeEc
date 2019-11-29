@@ -56,7 +56,7 @@ enum boot_key {
 	BOOT_KEY_LEFT_SHIFT = (1 << 2),
 };
 
-#ifdef HAS_TASK_KEYSCAN
+#if defined(HAS_TASK_KEYSCAN) && defined(CONFIG_KEYBOARD_BOOT_KEYS)
 /**
  * Returns mask of all the keys held down at boot time in addition to the
  * keyboard-controlled reset keys. If more than one boot key is held, mask bits
@@ -98,6 +98,11 @@ enum kb_scan_disable_masks {
  * @param mask Disable reasons from kb_scan_disable_masks
  */
 void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask);
+
+/**
+ * Clears typematic key
+ */
+void clear_typematic_key(void);
 #else
 static inline void keyboard_scan_enable(int enable,
 		enum kb_scan_disable_masks mask) { }

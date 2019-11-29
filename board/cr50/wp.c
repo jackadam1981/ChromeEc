@@ -3,66 +3,202 @@
  * found in the LICENSE file.
  */
 
-#include "common.h"
+#include "ccd_config.h"
 #include "console.h"
+#include "crc8.h"
 #include "extension.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "nvmem.h"
 #include "registers.h"
+#include "scratch_reg1.h"
 #include "system.h"
-#include "task.h"
-#include "timer.h"
+#include "system_chip.h"
+#include "tpm_nvmem_read.h"
 #include "tpm_registers.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
-static int command_wp(int argc, char **argv)
+/**
+ * Return non-zero if battery is present
+ */
+int board_battery_is_present(void)
 {
-	int val;
+	/* Invert because battery-present signal is active low */
+	return !gpio_get_level(GPIO_BATT_PRES_L);
+}
 
-	if (argc > 1) {
-		if (!parse_bool(argv[1], &val))
-			return EC_ERROR_PARAM1;
+/**
+ * Set the current write protect state in RBOX and long life scratch register.
+ *
+ * @param asserted: 0 to disable write protect, otherwise enable write protect.
+ */
+static void set_wp_state(int asserted)
+{
+	/* Enable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
 
-		/* Invert, because active low */
-		GREG32(RBOX, EC_WP_L) = !val;
+	if (asserted) {
+		GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_WP_ASSERTED;
+		GREG32(RBOX, EC_WP_L) = 0;
+	} else {
+		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_WP_ASSERTED;
+		GREG32(RBOX, EC_WP_L) = 1;
 	}
 
-	/* Invert, because active low */
-	val = !GREG32(RBOX, EC_WP_L);
+	/* Disable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+}
 
-	ccprintf("Flash WP is %s\n", val ? "enabled" : "disabled");
+/**
+ * Return the current WP state
+ *
+ * @return 0 if WP deasserted, 1 if WP asserted
+ */
+static int get_wp_state(void)
+{
+	/* Signal is active low, so invert */
+	return !GREG32(RBOX, EC_WP_L);
+}
+
+static void check_wp_battery_presence(void)
+{
+	int bp = board_battery_is_present();
+
+	/* If we're forcing WP, ignore battery detect */
+	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP)
+		return;
+
+	/* Otherwise, mirror battery */
+	if (bp != get_wp_state()) {
+		CPRINTS("WP %d", bp);
+		set_wp_state(bp);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, check_wp_battery_presence, HOOK_PRIO_DEFAULT);
+
+/**
+ * Force write protect state or follow battery presence.
+ *
+ * @param force: Force write protect to wp_en if non-zero, otherwise use battery
+ *               presence as the source.
+ * @param wp_en: 0: Deassert WP. 1: Assert WP.
+ */
+static void force_write_protect(int force, int wp_en)
+{
+	/* Enable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+
+	if (force) {
+		/* Force WP regardless of battery presence. */
+		GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_FORCING_WP;
+	} else {
+		/* Stop forcing write protect. */
+		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_FORCING_WP;
+		/* Use battery presence as the value for write protect. */
+		wp_en = board_battery_is_present();
+	}
+
+	/* Disable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	/* Update the WP state. */
+	set_wp_state(wp_en);
+}
+
+static int command_wp(int argc, char **argv)
+{
+	int val = 1;
+	int forced = 1;
+
+	if (argc > 1) {
+		/* Make sure we're allowed to override WP settings */
+		if (!ccd_is_cap_enabled(CCD_CAP_OVERRIDE_WP))
+			return EC_ERROR_ACCESS_DENIED;
+
+		/* Update WP */
+		if (strncasecmp(argv[1], "follow_batt_pres", 16) == 0)
+			forced = 0;
+		else if (parse_bool(argv[1], &val))
+			forced = 1;
+		else
+			return EC_ERROR_PARAM1;
+
+		force_write_protect(forced, val);
+
+		if (argc > 2 && !strcasecmp(argv[2], "atboot")) {
+			/* Change override at boot to match */
+			ccd_set_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT, forced);
+			ccd_set_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED, val);
+		}
+	}
+
+	forced = GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP;
+	ccprintf("Flash WP: %s%s\n", forced ? "forced " : "",
+		 get_wp_state() ? "enabled" : "disabled");
+
+	ccprintf(" at boot: ");
+	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT))
+		ccprintf("forced %s\n",
+			 ccd_get_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED)
+			 ? "enabled" : "disabled");
+	else
+		ccprintf("follow_batt_pres\n");
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(wp, command_wp,
-			"[<BOOLEAN>]",
-			"Get/set the flash HW write-protect signal");
+DECLARE_SAFE_CONSOLE_COMMAND(wp, command_wp,
+			     "[<BOOLEAN>/follow_batt_pres [atboot]]",
+			     "Get/set the flash HW write-protect signal");
 
-/* When the system is locked down, provide a means to unlock it */
-#ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
-
-/* Hand-built images may be initially unlocked; Buildbot images are not. */
-#ifdef CR50_DEV
-static int console_restricted_state;
-#else
-static int console_restricted_state = 1;
-#endif
-
-static void lock_the_console(void)
+void init_wp_state(void)
 {
-	CPRINTS("The console is locked");
-	console_restricted_state = 1;
+	/* Check system reset flags after CCD config is initially loaded */
+	if ((system_get_reset_flags() & RESET_FLAG_HIBERNATE) &&
+	    !system_rollback_detected()) {
+		/*
+		 * Deep sleep resume without rollback, so reload the WP state
+		 * that was saved to the long-life registers before the deep
+		 * sleep instead of going back to the at-boot default.
+		 */
+		if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP) {
+			/* Temporarily forcing WP */
+			set_wp_state(GREG32(PMU, LONG_LIFE_SCRATCH1) &
+				     BOARD_WP_ASSERTED);
+		} else {
+			/* Write protected if battery is present */
+			set_wp_state(board_battery_is_present());
+		}
+	} else if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)) {
+		/* Reset to at-boot state specified by CCD */
+		force_write_protect(1, ccd_get_flag(
+		    CCD_FLAG_OVERRIDE_WP_STATE_ENABLED));
+	} else {
+		/* Reset to WP based on battery-present (val is ignored) */
+		force_write_protect(0, 1);
+	}
 }
 
-static void unlock_the_console(void)
+/**
+ * Wipe the TPM
+ *
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int board_wipe_tpm(void)
 {
 	int rc;
 
+	/*
+	 * Blindly zapping the TPM space while the AP is awake and poking at
+	 * it will bork the TPM task and the AP itself, so force the whole
+	 * system off by holding the EC in reset.
+	 */
+	CPRINTS("%s: force EC off", __func__);
+	assert_ec_rst();
+
 	/* Wipe the TPM's memory and reset the TPM task. */
-	rc = tpm_reset(1, 1);
+	rc = tpm_reset_request(1, 1);
 	if (rc != EC_SUCCESS) {
 		/*
 		 * If anything goes wrong (which is unlikely), we REALLY don't
@@ -71,105 +207,124 @@ static void unlock_the_console(void)
 		 * bet for fixing the problem.
 		 */
 		CPRINTS("%s: Couldn't wipe nvmem! (rc %d)", __func__, rc);
-		system_reset(SYSTEM_RESET_HARD);
+		cflush();
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
+			     SYSTEM_RESET_HARD);
+
+		/*
+		 * That should never return, but if it did, release EC reset
+		 * and pass through the error we got.
+		 */
+		deassert_ec_rst();
+		return rc;
 	}
 
-	CPRINTS("TPM is erased, console is unlocked");
-	console_restricted_state = 0;
-}
+	CPRINTS("TPM is erased");
 
-int console_is_restricted(void)
-{
-	return console_restricted_state;
+	/* Tell the TPM task to re-enable NvMem commits. */
+	tpm_reinstate_nvmem_commits();
+
+	/* Let the rest of the system boot. */
+	CPRINTS("%s: release EC reset", __func__);
+	deassert_ec_rst();
+
+	return EC_SUCCESS;
 }
 
 /****************************************************************************/
-/* Stuff for the unlock sequence */
+/* FWMP TPM NVRAM space support */
 
 /*
- * The normal unlock sequence should take 5 minutes (unless the case is
- * opened). Hand-built images only need to be long enough to demonstrate that
- * they work.
+ * These definitions and the structure layout were manually copied from
+ * src/platform/vboot_reference/firmware/lib/include/rollback_index.h. at
+ * git sha c7282f6.
  */
+#define FWMP_NV_INDEX		    0x100a
+#define FWMP_HASH_SIZE		    32
+#define FWMP_DEV_DISABLE_CCD_UNLOCK (1 << 6)
+
+/* Firmware management parameters */
+struct RollbackSpaceFwmp {
+	/* CRC-8 of fields following struct_size */
+	uint8_t crc;
+	/* Structure size in bytes */
+	uint8_t struct_size;
+	/* Structure version */
+	uint8_t struct_version;
+	/* Reserved; ignored by current reader */
+	uint8_t reserved0;
+	/* Flags; see enum fwmp_flags */
+	uint32_t flags;
+	/* Hash of developer kernel key */
+	uint8_t dev_key_hash[FWMP_HASH_SIZE];
+} __packed;
+
+static int lock_enforced(const struct RollbackSpaceFwmp *fwmp)
+{
+	uint8_t crc;
+
+	/* Let's verify that the FWMP structure makes sense. */
+	if (fwmp->struct_size != sizeof(*fwmp)) {
+		CPRINTS("%s: fwmp size mismatch (%d)\n", __func__,
+			fwmp->struct_size);
+		return 1;
+	}
+
+	crc = crc8(&fwmp->struct_version, sizeof(struct RollbackSpaceFwmp) -
+		   offsetof(struct RollbackSpaceFwmp, struct_version));
+	if (fwmp->crc != crc) {
+		CPRINTS("%s: fwmp crc mismatch\n", __func__);
+		return 1;
+	}
+
+	return !!(fwmp->flags & FWMP_DEV_DISABLE_CCD_UNLOCK);
+}
+
+static int fwmp_allows_unlock;
+void read_fwmp(void)
+{
+	/* Let's see if FWMP disables console activation. */
+	struct RollbackSpaceFwmp fwmp;
+
+	switch (read_tpm_nvmem(FWMP_NV_INDEX,
+			       sizeof(struct RollbackSpaceFwmp), &fwmp)) {
+	default:
+		/* Something is messed up, let's not allow console unlock. */
+		fwmp_allows_unlock = 0;
+		break;
+
+	case tpm_read_not_found:
+		fwmp_allows_unlock = 1;
+		break;
+
+	case tpm_read_success:
+		fwmp_allows_unlock = !lock_enforced(&fwmp);
+		break;
+	}
+
+	CPRINTS("Console unlock %sallowed", fwmp_allows_unlock ? "" : "not ");
+}
+
+/**
+ * Return non-zero if FWMP allows unlock
+ */
+int board_fwmp_allows_unlock(void)
+{
+	/*
+	 * TODO(rspangler): This doesn't work right for CCD config unlock and
+	 * open, because read_fwmp() isn't called until TPM2_Startup is sent by
+	 * the AP.  But that means if the AP can't boot, it's not possible to
+	 * unlock or open CCD.
+	 *
+	 * CCD config isn't connected to anything else yet, so let's bypass
+	 * the fwmp check for now.  But we need to fix this before we make
+	 * a Cr50 release that could run on a MP device.
+	 */
 #ifdef CR50_DEV
-#define UNLOCK_SEQUENCE_DURATION (10 * SECOND)
+	return 1;
 #else
-#define UNLOCK_SEQUENCE_DURATION (300 * SECOND)
+	return fwmp_allows_unlock;
 #endif
-
-/* Max time that can elapse between power button pokes */
-static int unlock_beat;
-
-/* When will we have poked the power button for long enough? */
-static timestamp_t unlock_deadline;
-
-/* Are we expecting power button pokes? */
-static int unlock_in_progress;
-
-/* This is invoked only when the unlock sequence has ended */
-static void unlock_sequence_is_over(void)
-{
-	/* Disable the power button interrupt so we aren't bothered */
-	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_PWRB_IN_FED, 0);
-	task_disable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT);
-
-	if (unlock_in_progress) {
-		/* We didn't poke the button fast enough */
-		CPRINTS("Unlock process failed");
-	} else {
-		/* The last poke was after the final deadline, so we're done */
-		CPRINTS("Unlock process completed successfully");
-		unlock_the_console();
-	}
-
-	unlock_in_progress = 0;
-
-	/* Allow sleeping again */
-	enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
-}
-DECLARE_DEFERRED(unlock_sequence_is_over);
-
-static void power_button_poked(void)
-{
-	if (timestamp_expired(unlock_deadline, NULL)) {
-		/* We've been poking for long enough */
-		unlock_in_progress = 0;
-		hook_call_deferred(&unlock_sequence_is_over_data, 0);
-		CPRINTS("poke: enough already", __func__);
-	} else {
-		/* Wait for the next poke */
-		hook_call_deferred(&unlock_sequence_is_over_data, unlock_beat);
-		CPRINTS("poke: not yet %.6ld", unlock_deadline);
-	}
-
-	GWRITE_FIELD(RBOX, INT_STATE, INTR_PWRB_IN_FED, 1);
-}
-DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT, power_button_poked, 1);
-
-
-static void start_unlock_process(int total_poking_time, int max_poke_interval)
-{
-	unlock_in_progress = 1;
-
-	/* Clear any leftover power button interrupts */
-	GWRITE_FIELD(RBOX, INT_STATE, INTR_PWRB_IN_FED, 1);
-
-	/* Enable power button interrupt */
-	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_PWRB_IN_FED, 1);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT);
-
-	/* Must poke at least this often */
-	unlock_beat = max_poke_interval;
-
-	/* Keep poking until it's been long enough */
-	unlock_deadline = get_time();
-	unlock_deadline.val += total_poking_time;
-
-	/* Stay awake while we're doing this, just in case. */
-	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
-
-	/* Check progress after waiting long enough for one button press */
-	hook_call_deferred(&unlock_sequence_is_over_data, unlock_beat);
 }
 
 /****************************************************************************/
@@ -199,128 +354,17 @@ static enum vendor_cmd_rc vc_lock(enum vendor_cmd_cc code,
 		return VENDOR_RC_SUCCESS;
 	}
 
-	if (code == VENDOR_CC_SET_LOCK) {
-		/*
-		 * Lock the console if it isn't already. Note that there
-		 * intentionally isn't an unlock command. At most, we may want
-		 * to call start_unlock_process(), but we haven't yet decided.
-		 *
-		 *   Args: none
-		 *   Returns: none
-		 */
-		if (input_size != 0) {
-			*response_size = 0;
-			return VENDOR_RC_BOGUS_ARGS;
-		}
-
-		lock_the_console();
-		*response_size = 0;
-		return VENDOR_RC_SUCCESS;
-	}
-
 	/* I have no idea what you're talking about */
 	*response_size = 0;
 	return VENDOR_RC_NO_SUCH_COMMAND;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_LOCK, vc_lock);
-DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_LOCK, vc_lock);
 
-/****************************************************************************/
-static const char warning[] = "\n\t!!! WARNING !!!\n\n"
-	"\tThe AP will be impolitely shut down and the TPM persistent memory\n"
-	"\tERASED before the console is unlocked. If this is not what you\n"
-	"\twant, simply do nothing and the unlock process will fail.\n\n";
-
-static int command_lock(int argc, char **argv)
-{
-	int enabled;
-	int i;
-
-	if (argc > 1) {
-		if (!parse_bool(argv[1], &enabled))
-			return EC_ERROR_PARAM1;
-
-		/* Changing nothing does nothing */
-		if (enabled == console_is_restricted())
-			goto out;
-
-		/* Locking the console is always allowed */
-		if (enabled)  {
-			lock_the_console();
-			goto out;
-		}
-
-		/*
-		 * TODO(crosbug.com/p/55322, crosbug.com/p/55728): There may be
-		 * other preconditions which must be satisified before
-		 * continuing. We can return EC_ERROR_ACCESS_DENIED if those
-		 * aren't met.
-		 */
-
-		/* Don't count down if we know it's likely to fail */
-		if (unlock_in_progress) {
-			ccprintf("An unlock process is already in progress\n");
-			return EC_ERROR_BUSY;
-		}
-
-		/* Warn about the side effects of wiping nvmem */
-		ccputs(warning);
-
-		if (gpio_get_level(GPIO_BATT_PRES_L) == 1) {
-			/*
-			 * If the battery cable has been disconnected, we only
-			 * need to poke the power button once to prove physical
-			 * presence.
-			 */
-			ccprintf("Tap the power button once to confirm...\n\n");
-
-			/*
-			 * We'll be satisified with the first press (so the
-			 * unlock_deadine is now + 0us), but we're willing to
-			 * wait for up to 10 seconds for that first press to
-			 * happen. If we don't get one by then, the unlock will
-			 * fail.
-			 */
-			start_unlock_process(0, 10 * SECOND);
-
-		} else {
-			/*
-			 * If the battery is present, the user has to sit there
-			 * and poke the button repeatedly until enough time has
-			 * elapsed.
-			 */
-
-			ccprintf("Start poking the power button in ");
-			for (i = 10; i; i--) {
-				ccprintf("%d ", i);
-				sleep(1);
-			}
-			ccprintf("go!\n");
-
-			/*
-			 * We won't be happy until we've been poking the button
-			 * for a good long while, but we'll only wait a couple
-			 * of seconds between each press before deciding that
-			 * the user has given up.
-			 */
-			start_unlock_process(UNLOCK_SEQUENCE_DURATION,
-					     2 * SECOND);
-
-			ccprintf("Unlock sequence starting."
-				 " Continue until %.6ld\n", unlock_deadline);
-		}
-
-		return EC_SUCCESS;
-	}
-
-out:
-	ccprintf("The restricted console lock is %s\n",
-		 console_is_restricted() ? "enabled" : "disabled");
-
-	return EC_SUCCESS;
-}
-DECLARE_SAFE_CONSOLE_COMMAND(lock, command_lock,
-			     "[<BOOLEAN>]",
-			     "Get/Set the restricted console lock");
-
-#endif	/* CONFIG_RESTRICTED_CONSOLE_COMMANDS */
+/*
+ * TODO(rspangler): The old concept of 'lock the console' really meant
+ * something closer to 'reset CCD config', not the CCD V1 meaning of 'ccdlock'.
+ * This command is no longer supported, so will fail.  It was defined this
+ * way:
+ *
+ * DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_LOCK, vc_lock);
+ */

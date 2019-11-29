@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 
+#include "common.h"  /* For __packed. */
 
 /*
  * This file contains structures used to facilitate cr50 firmware updates,
@@ -112,7 +113,6 @@ struct first_response_pdu {
 	uint32_t keyid[2];
 };
 
-/* TODO: Handle this in upgrade_fw.c, not usb_upgrade.c */
 #define UPGRADE_DONE          0xB007AB1E
 
 void fw_upgrade_command_handler(void *body,
@@ -138,6 +138,9 @@ enum return_value {
 	UPGRADE_MALLOC_ERROR = 7,
 	UPGRADE_ROLLBACK_ERROR = 8,
 	UPGRADE_RATE_LIMIT_ERROR = 9,
+	UPGRADE_UNALIGNED_BLOCK_ERROR = 10,
+	UPGRADE_TRUNCATED_HEADER_ERROR = 11,
+	UPGRADE_BOARD_ID_ERROR = 12,
 };
 
 /*
