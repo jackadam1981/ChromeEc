@@ -81,12 +81,59 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
 }
 
+static void fix_single_param(int flag, int *cached, int *curr)
+{
+	if (flag)
+		*curr = *cached;
+	else
+		*cached = *curr;
+}
+
+static void fix_battery_params(struct batt_params *batt)
+{
+	static struct batt_params batt_cache = {0};
+
+	fix_single_param(batt->flags & BATT_FLAG_BAD_STATE_OF_CHARGE,
+			&batt_cache.state_of_charge,
+			&batt->state_of_charge);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_VOLTAGE,
+			&batt_cache.voltage,
+			&batt->voltage);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_CURRENT,
+			&batt_cache.current,
+			&batt->current);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_DESIRED_VOLTAGE,
+			&batt_cache.desired_voltage,
+			&batt->desired_voltage);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_DESIRED_VOLTAGE,
+			&batt_cache.desired_current,
+			&batt->desired_current);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_REMAINING_CAPACITY,
+			&batt_cache.remaining_capacity,
+			&batt->remaining_capacity);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_FULL_CAPACITY,
+			&batt_cache.full_capacity,
+			&batt->full_capacity);
+	fix_single_param(batt->flags & BATT_FLAG_BAD_STATUS,
+			&batt_cache.status,
+			&batt->status);
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
 	const struct battery_info *batt_info = battery_get_info();
 	static int normal_charge_lock, over_discharge_lock;
 	/* battery temp in 0.1 deg C */
 	int bat_temp_c = curr->batt.temperature - 2731;
+
+	/*
+	 * b:144195782: bitbang may fail randomly, and there's no way to
+	 * notify kernel side that bitbang read failed.
+	 * Thus, ff any value in batt_params is bad, replace it with a cached
+	 * good value, to make sure we never send random bad value to kernel
+	 * side.
+	 */
+	fix_battery_params(&curr->batt);
 
 	/*
 	 * SMP battery uses HW pre-charge circuit and pre-charge current is
