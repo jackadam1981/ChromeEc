@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "517be167_45df3621",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-12-02T22:27:17Z",
+      "side": 1,
+      "message": "I am curious why there are 2 interrupt_disable() calls.\nDo the register changes enable interrupts?",
+      "range": {
+        "startLine": 503,
+        "startChar": 1,
+        "endLine": 503,
+        "endChar": 18
+      },
+      "revId": "ddf23378843e6977553908f5759cf44008429417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
