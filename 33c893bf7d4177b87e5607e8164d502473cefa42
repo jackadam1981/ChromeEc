@@ -46,6 +46,30 @@
       "revId": "33c893bf7d4177b87e5607e8164d502473cefa42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77f130f5_89d8d64c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-02T23:23:26Z",
+      "side": 1,
+      "message": "Do we still need yet another field even if we have VARIANT_ID and BOARD_VERSION?\n\nFW_CONFIG seems too ambiguous because after all, all these fields are used to configure firmware behavior to the left or right.",
+      "parentUuid": "c7007247_f6173d41",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "33c893bf7d4177b87e5607e8164d502473cefa42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
