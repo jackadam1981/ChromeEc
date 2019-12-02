@@ -22,6 +22,30 @@
       "revId": "33c893bf7d4177b87e5607e8164d502473cefa42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7007247_f6173d41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-02T22:42:52Z",
+      "side": 1,
+      "message": "That is one of the things in the bug for sure.\n\nThis CL is implementing the line \n\n\"We need to add\n    * new CBI field: Firmware Configuration\"\n\n\nI am just trying to describe the purpose of this new field a little bit in this commit message.",
+      "parentUuid": "8e7bb7c7_392bea10",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "33c893bf7d4177b87e5607e8164d502473cefa42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
