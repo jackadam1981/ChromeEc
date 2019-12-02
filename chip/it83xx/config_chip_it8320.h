@@ -33,6 +33,8 @@
  * permanent, it can't be undone easily enough to support RMA.
  */
 #define CONFIG_FLASH_SIZE  0x00040000
+/* Chip IT8320 actually has PD port count */
+#define CONFIG_PD_PHY_PORT_COUNT    2
 /* For IT8320BX, we have to reload cc parameters after ec softreset. */
 #define IT83XX_USBPD_CC_PARAMETER_RELOAD
 /*
@@ -48,6 +50,8 @@
 #define IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 #elif defined(CHIP_VARIANT_IT8320DX)
 #define CONFIG_FLASH_SIZE  0x00080000
+/* Chip IT8320 actually has PD port count */
+#define CONFIG_PD_PHY_PORT_COUNT    2
 /*
  * Disable eSPI pad, then PLL change
  * (include EC clock frequency) is succeed even CS# is low.

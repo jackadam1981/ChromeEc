@@ -3808,6 +3808,9 @@
 /* Number of USB PD ports */
 #undef CONFIG_USB_PD_PORT_MAX_COUNT
 
+/* ITE Chip actually has PD port count */
+#undef CONFIG_PD_PHY_PORT_COUNT
+
 /* Simple DFP, such as power adapter, will not send discovery VDM on connect */
 #undef CONFIG_USB_PD_SIMPLE_DFP
 
@@ -3840,7 +3843,10 @@
 #undef CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_TCPM_TCPCI
 #undef CONFIG_USB_PD_TCPM_FUSB302
+/* CONFIG_USB_PD_TCPM_ITE83XX is for chip IT8320 series */
 #undef CONFIG_USB_PD_TCPM_ITE83XX
+/* CONFIG_USB_PD_TCPM_ITE83XX_V2 is for chip IT83201 or IT83202 series */
+#undef CONFIG_USB_PD_TCPM_ITE83XX_V2
 #undef CONFIG_USB_PD_TCPM_ANX3429
 #undef CONFIG_USB_PD_TCPM_ANX740X
 #undef CONFIG_USB_PD_TCPM_ANX741X

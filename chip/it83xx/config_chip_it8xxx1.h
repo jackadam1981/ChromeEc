@@ -3,37 +3,39 @@
  * found in the LICENSE file.
  */
 
-#ifndef __CROS_EC_CONFIG_CHIP_IT8XXX2_H
-#define __CROS_EC_CONFIG_CHIP_IT8XXX2_H
+#ifndef __CROS_EC_CONFIG_CHIP_IT8XXX1_H
+#define __CROS_EC_CONFIG_CHIP_IT8XXX1_H
 
 /* CPU core BFD configuration */
-#include "core/riscv-rv32i/config_core.h"
+#include "core/nds32/config_core.h"
 
- /* RISCV core */
-#define CHIP_CORE_RISCV
+/* N8 core */
+#define CHIP_CORE_NDS32
 #define CHIP_ILM_DLM_ORDER
 /* The base address of EC interrupt controller registers. */
-#define CHIP_EC_INTC_BASE           0x00F03F00
+#define CHIP_EC_INTC_BASE           0x00F01100
 
 /****************************************************************************/
 /* Memory mapping */
 
-#define CHIP_ILM_BASE               0x80000000
-#define CHIP_H2RAM_BASE             0x80081000 /* 0x80081000~0x80081FFF */
-#define CHIP_RAMCODE_BASE           0x80082000 /* 0x80082000~0x80082FFF */
-#define CHIP_EXTRA_STACK_SPACE      128
+/* CONFIG_RAM_BASE+0x1000 ~ CONFIG_RAM_BASE+0x1fff */
+#define CHIP_H2RAM_BASE             (CONFIG_RAM_BASE + 0x1000)
+/* CONFIG_RAM_BASE+0x2000 ~ CONFIG_RAM_BASE+0x2fff */
+#define CHIP_RAMCODE_BASE           (CONFIG_RAM_BASE + 0x2000)
+#define CHIP_EXTRA_STACK_SPACE      0
+
 /* We reserve 12KB space for ramcode, h2ram, and immu sections. */
 #define CHIP_RAM_SPACE_RESERVED     0x3000
 
-#define CONFIG_RAM_BASE             0x80080000
+#define CONFIG_RAM_BASE             0x00080000
 #define CONFIG_RAM_SIZE             0x00010000
 
-#define CONFIG_PROGRAM_MEMORY_BASE  (CHIP_ILM_BASE)
+#define CONFIG_PROGRAM_MEMORY_BASE  0x00000000
 
-#if defined(CHIP_VARIANT_IT83202BX)
-/* TODO(b/133460224): enable properly chip config option. */
+#if defined(CHIP_VARIANT_IT83201BX)
+/* This is the physical size of the flash on the chip. */
 #define CONFIG_FLASH_SIZE           0x00080000
-/* Chip IT83202 actually has PD port count */
+/* Chip IT83201 actually has PD port count */
 #define CONFIG_PD_PHY_PORT_COUNT    2
 /* Embedded flash is KGD */
 #define IT83XX_CHIP_FLASH_IS_KGD
@@ -58,7 +60,7 @@
 /* Enable detect type-c plug in interrupt. */
 #define IT83XX_INTC_PLUG_IN_SUPPORT
 #else
-#error "Unsupported chip variant!"
+#error "Unsupported chip variant of it8xxx1 series!"
 #endif
 
-#endif  /* __CROS_EC_CONFIG_CHIP_IT8XXX2_H */
+#endif  /* __CROS_EC_CONFIG_CHIP_IT8XXX1_H */
