@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddcb3f5f_8384604e",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T17:29:00Z",
+      "side": 1,
+      "message": "nit: as",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dae7319_6d54fa35",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T17:29:00Z",
+      "side": 1,
+      "message": "nit: temperature",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0f51ec_6bb00a08",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T17:29:00Z",
+      "side": 1,
+      "message": "Why is this necessary? oti502_get_val takes a pointer to a signed integer, so it seems like it would be worthwhile to return the actual temperature instead of cutting it off at zero. Many batteries have a minimum operating temperature below 0 (usually -20 or -10 C), so if the temperature is -30 C, where the battery is outside its operating temperature, and we report 0, the system will continue to run, possibly damaging the battery.",
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e506adf9_675c86d0",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T17:29:00Z",
+      "side": 1,
+      "message": "nit: as",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
