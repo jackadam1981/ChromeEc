@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f959b94_ce2e5d06",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "Members of this struct should be documented as to what they mean.",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108b9493_e92e439e",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "What if the arrays aren\u0027t the same size?",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c8d042d_a9a34664",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "Can you use an array here?",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b231dc9_968e0cce",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "What happens when one of the sensors is getting hotter and another one isn\u0027t (or possibly even getting colder)?",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e067ab7a_aa9aef33",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "Can you use this to set a pointer so that you don\u0027t have to duplicate the logic below for fan_table_tablet[] and fan_table_clamshell[]?",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9283c84f_f877322c",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "EVentually, you will have i \u003d\u003d -1, which will be very bad to use as an array index on the next line",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b7a4a4_701b2cae",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-02T18:02:44Z",
+      "side": 1,
+      "message": "why not name the struct members \"off4\" and \"on4\"?",
+      "range": {
+        "startLine": 84,
+        "startChar": 9,
+        "endLine": 84,
+        "endChar": 56
+      },
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
