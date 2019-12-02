@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60ce065b_c40fd63f",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-02T19:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035117af_bfac28ee",
+      "revId": "ab7ebb0815744a5049e19cdd9c13da6ff5844c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ae96438_48806a9e",
         "filename": "board/cr50/tpm2/hash.c",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "ab7ebb0815744a5049e19cdd9c13da6ff5844c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1dfb5f_921f660d",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-02T19:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae96438_48806a9e",
+      "revId": "ab7ebb0815744a5049e19cdd9c13da6ff5844c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
