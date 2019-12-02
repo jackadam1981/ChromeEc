@@ -34,6 +34,24 @@
       "revId": "08d9ac09199bf34badf68816347229abd730b714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b90c228_3db03907",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-02T22:49:24Z",
+      "side": 1,
+      "message": "My reading of the datasheet is that the CC OVP FET will turn back on once the high voltage is removed (tOVP_RECOVERY_CC: Time from OVP removal on C_CCx until the OVP FETs turn back on: 1ms).\nMaybe the problem is that we need to set CC_EN \u003d 1 again afterwards. Can you try reading CC_EN after the OVP?",
+      "parentUuid": "f47c2ab7_d50a8664",
+      "revId": "08d9ac09199bf34badf68816347229abd730b714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
