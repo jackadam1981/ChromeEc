@@ -4947,6 +4947,11 @@ enum cbi_data_tag {
 	CBI_TAG_SKU_ID = 2,        /* uint8_t */
 	CBI_TAG_DRAM_PART_NUM = 3, /* variable length ascii, nul terminated. */
 	CBI_TAG_OEM_NAME = 4,      /* variable length ascii, nul terminated. */
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+	CBI_TAG_MODEL_ID = 5,      /* uint32_t or smaller */
+	CBI_TAG_FW_CONFIG = 6,     /* uint32_t bit field */
+>>>>>>> CHANGE (25002a cbi: add FW_CONFIG CBI field)
 	CBI_TAG_COUNT,
 };
 
