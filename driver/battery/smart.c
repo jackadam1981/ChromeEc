@@ -444,6 +444,7 @@ void battery_get_params(struct batt_params *batt)
 	/* if there is no host, we don't care about compensation */
 	battery_compensate_params(&batt_new);
 #endif
+	board_battery_compensate_params(&batt_new);
 
 	/* Update visible battery parameters */
 	memcpy(batt, &batt_new, sizeof(*batt));
