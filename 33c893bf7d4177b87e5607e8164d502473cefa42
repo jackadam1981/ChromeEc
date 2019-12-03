@@ -70,6 +70,30 @@
       "revId": "33c893bf7d4177b87e5607e8164d502473cefa42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a503e80b_becf9ff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T20:54:20Z",
+      "side": 1,
+      "message": "Variant ID will no longer be used to make decision in the firmware. it will only put published up to the OS.\n\nFirmware Configuration will used only by the firmware (OS will not have access). Firmware code uses firmware configuration bit field to make branching decisions. If there is not branching decision needed in firmware, then the information does not need to be in the firmware configuration.\n\nPlease see go/fw-sku-and-hw-features for more information.",
+      "parentUuid": "77f130f5_89d8d64c",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "33c893bf7d4177b87e5607e8164d502473cefa42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
