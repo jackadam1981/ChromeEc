@@ -250,7 +250,8 @@ $(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
 
 endif
 
-ifeq ($(CONFIG_LIBCRYPTOC),y)
+# CONFIG_DCRYPTO is used by cr50 to indicate need to link against libcryptoc.
+ifeq ($(or $(CONFIG_LIBCRYPTOC), $(CONFIG_DCRYPTO)),y)
 CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
 ifneq ($(BOARD),host)
 CPPFLAGS += -I$(abspath ./builtin)
