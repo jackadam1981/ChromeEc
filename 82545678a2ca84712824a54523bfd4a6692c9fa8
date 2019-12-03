@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a7c33c_f433ac83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-03T20:25:09Z",
+      "side": 1,
+      "message": "This is lacking some description.  Maybe something like:\n\nbq25710: Restore VSYS_MIN after chip reset\n\nIt appears that the BQ25710 does not re-configure the VSYS_MIN parameter after a soft reset (register \"charge option 3\"), so the old value is wiped away when the register is reset.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "82545678a2ca84712824a54523bfd4a6692c9fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eedeb61d_ff04114a",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-03T20:25:09Z",
+      "side": 1,
+      "message": "Something like:\n\nIf this is defined, after the chip is reset, the VSYS_MIN register will be programmed with this value, otherwise the VSYS_MIN will be read out from the chip before the reset, and restored after the reset.",
+      "range": {
+        "startLine": 909,
+        "startChar": 3,
+        "endLine": 909,
+        "endChar": 32
+      },
+      "revId": "82545678a2ca84712824a54523bfd4a6692c9fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
