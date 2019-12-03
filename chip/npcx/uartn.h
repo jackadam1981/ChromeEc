@@ -14,6 +14,14 @@
  */
 void uartn_init(uint8_t uart_num);
 
+/**
+ * Enable/Disable UART
+ *
+ * @param uart_num UART# to enable or disable.
+ */
+void uartn_enable_irq(uint8_t uart_num);
+void uartn_disable_irq(uint8_t uart_num);
+
 /*
  * Re-enable the UART transmit interrupt.
  *

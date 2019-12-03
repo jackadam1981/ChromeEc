@@ -49,7 +49,7 @@ void npcx_uart2gpio(void);
  * Switch NPCX UART pins to UART mode (depending on the currently selected
  * pad, see uart.c).
  */
-void npcx_gpio2uart(void);
+void npcx_gpio2uart(uint8_t uart_num);
 
 /* Set input buffer of all 1.8v i2c ports. */
 void gpio_enable_1p8v_i2c_wake_up_input(int enable);

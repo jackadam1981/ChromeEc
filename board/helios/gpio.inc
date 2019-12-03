@@ -40,7 +40,7 @@ GPIO_INT(USB_C1_BC12_INT_ODL,  PIN(E, 4), GPIO_INT_FALLING, bc12_interrupt)
 
 /* Volume button interrupts */
 GPIO_INT(EC_VOLDN_BTN_ODL,     PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(EC_VOLUP_BTN_ODL,     PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+GPIO_INT(EC_VOLUP_BTN_ODL,     PIN(3, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 
 GPIO(SYS_RESET_L,              PIN(C, 5), GPIO_ODR_HIGH)        /* SYS_RST_ODL */
 GPIO(ENTERING_RW,              PIN(E, 3), GPIO_OUT_LOW)         /* EC_ENTERING_RW */
@@ -101,6 +101,12 @@ GPIO(I2C5_SDA,                 PIN(3, 6), GPIO_INPUT)           /* EC_I2C_POWER_
 GPIO(I2C7_SCL,                 PIN(B, 3), GPIO_INPUT)           /* EC_I2C_EEPROM_SCL */
 GPIO(I2C7_SDA,                 PIN(B, 2), GPIO_INPUT)           /* EC_I2C_EEPROM_SDA */
 
+/* Vboot/EFS */
+/* This is only for creating GPIO_CR50_UART_RX. The pin will be overridden as
+ * UART RX
+ */
+GPIO(CR50_UART_RX,             PIN(7, 5), GPIO_INPUT)
+
 /* Keyboard pins */
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
 GPIO(KBD_KSO2,                 PIN(1, 7), GPIO_OUT_LOW)        /* KSO_02 inverted */
@@ -118,8 +124,11 @@ ALTERNATE(PIN_MASK(D, 0x03), 0, MODULE_I2C, 0)                             /* I2
 ALTERNATE(PIN_MASK(3, 0x48), 0, MODULE_I2C, 0)                             /* I2C5 */
 ALTERNATE(PIN_MASK(B, 0x0C), 0, MODULE_I2C, 0)                             /* I2C7 */
 
-/* UART */
-ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)                            /* UART from EC to Servo */
+/*** UART ***/
+/* UART between EC and Servo */
+ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)
+/* UART from Cr50 to EC. PULL_UP is needed because DIOB7 is open-drain only. */
+ALTERNATE(PIN_MASK(7, 0x20), 0, MODULE_UART, (GPIO_INPUT | GPIO_PULL_UP))
 
 /* PWM */
 ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)                             /* PWM3 - Keyboard backlight */

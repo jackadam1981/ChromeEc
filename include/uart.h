@@ -15,7 +15,7 @@
 /**
  * Initialize the UART module.
  */
-void uart_init(void);
+void uart_init(uint8_t uart_num);
 
 /**
  * Return non-zero if UART init has completed.

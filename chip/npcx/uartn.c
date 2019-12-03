@@ -261,6 +261,16 @@ static void uartn_config(uint8_t uart_num)
 	NPCX_UART_RX_INT_EN(uart_num);
 }
 
+void uartn_enable_irq(uint8_t uart_num)
+{
+	task_enable_irq(uart_cfg[uart_num].irq);
+}
+
+void uartn_disable_irq(uint8_t uart_num)
+{
+	task_disable_irq(uart_cfg[uart_num].irq);
+}
+
 void uartn_init(uint8_t uart_num)
 {
 	uint32_t offset, mask;
@@ -269,8 +279,7 @@ void uartn_init(uint8_t uart_num)
 	mask = uart_cfg[uart_num].clk_en_msk;
 	clock_enable_peripheral(offset, mask, CGC_MODE_ALL);
 
-	if (uart_num == NPCX_UART_PORT0)
-		npcx_gpio2uart();
+	npcx_gpio2uart(uart_num);
 
 	/* Configure UARTs (identically) */
 	uartn_config(uart_num);
@@ -280,5 +289,4 @@ void uartn_init(uint8_t uart_num)
 	 * until the LPC bus is initialized.
 	 */
 	uartn_clear_rx_fifo(uart_num);
-	task_enable_irq(uart_cfg[uart_num].irq);
 }
