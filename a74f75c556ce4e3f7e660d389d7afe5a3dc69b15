@@ -57,6 +57,30 @@
       "revId": "a74f75c556ce4e3f7e660d389d7afe5a3dc69b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd83f3a_50431844",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-03T22:07:46Z",
+      "side": 1,
+      "message": "Oh yeah, I saw that but I was confused as to why that existed. Do you happen to know why?\n\nOh, I think I see now. It\u0027s being used to query the pin mode from the AP.",
+      "parentUuid": "9b09ea6e_0ec41371",
+      "range": {
+        "startLine": 638,
+        "startChar": 16,
+        "endLine": 638,
+        "endChar": 38
+      },
+      "revId": "a74f75c556ce4e3f7e660d389d7afe5a3dc69b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
