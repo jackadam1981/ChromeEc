@@ -1767,6 +1767,14 @@ static void tc_disabled_exit(const int port)
 		}
 	}
 
+	/*
+	 * Make the assumption that we start as disconnected and
+	 * then determine, based on the actual connections, what the
+	 * real state is.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+
 	CPRINTS("TCPC p%d resumed!", port);
 }
 
@@ -1820,6 +1828,15 @@ static void tc_unattached_snk_entry(const int port)
 		CLR_ALL_BUT_LPM_FLAGS(port);
 		tc[port].pd_enable = 0;
 	}
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    get_last_state_tc(port) != TC_DRP_AUTO_TOGGLE)
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+#else
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+#endif
 }
 
 static void tc_unattached_snk_run(const int port)
@@ -1895,6 +1912,9 @@ static void tc_attach_wait_snk_entry(const int port)
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attach_wait_snk_run(const int port)
@@ -2483,6 +2503,15 @@ static void tc_unattached_src_entry(const int port)
 	}
 
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    get_last_state_tc(port) != TC_DRP_AUTO_TOGGLE)
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+#else
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+#endif
 }
 
 static void tc_unattached_src_run(const int port)
@@ -2556,6 +2585,9 @@ static void tc_attach_wait_src_entry(const int port)
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attach_wait_src_run(const int port)
