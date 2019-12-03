@@ -1767,6 +1767,14 @@ static void tc_disabled_exit(const int port)
 		}
 	}
 
+	/*
+	 * Make the assumption that we start as disconnected and
+	 * then determined based on the actual connections what the
+	 * real state is.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+
 	CPRINTS("TCPC p%d resumed!", port);
 }
 
@@ -2039,6 +2047,17 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc[port].pd_enable = 1;
+
+	/*
+	 * This hook should be notified when the CC lines and VBus are
+	 * steady.  In order to make sure this happens, this is called
+	 * after all possible hardware changes have been made in this
+	 * state.  If this is moved closer to the start, make sure all
+	 * of the hardware is already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2148,6 +2167,8 @@ static void tc_attached_snk_run(const int port)
 
 static void tc_attached_snk_exit(const int port)
 {
+	int currently_performing_pr_swap;
+
 	/*
 	 * If supplying VCONN, the port shall cease to supply
 	 * it within tVCONNOFF of exiting Attached.SNK if not PR swapping.
@@ -2156,11 +2177,25 @@ static void tc_attached_snk_exit(const int port)
 	    !TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP))
 		set_vconn(port, 0);
 
+	/* Keep track if we are performing pr swap */
+	currently_performing_pr_swap = TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
 	/* Clear flags after checking Vconn status */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP | TC_FLAGS_POWER_OFF_SNK);
 
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	/*
+	 * This hook should be notified when we are completely disconnected.
+	 * In order to make sure this happens, this is called after all
+	 * possible hardware changes have been made in this state.  If this
+	 * is moved closer to the start, make sure all of the hardware is
+	 * already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !currently_performing_pr_swap)
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 /**
@@ -2219,6 +2254,17 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_sink_is_connected(port, 1);
+
+	/*
+	 * This hook should be notified when the CC lines and VBus are
+	 * steady.  In order to make sure this happens, this is called
+	 * after all possible hardware changes have been made in this
+	 * state.  If this is moved closer to the start, make sure all
+	 * of the hardware is already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_unoriented_dbg_acc_src_run(const int port)
@@ -2311,14 +2357,30 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 
 static void tc_unoriented_dbg_acc_src_exit(const int port)
 {
+	int currently_performing_pr_swap;
+
 	/*
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
 	 * UnorientedDbg.SRC.
 	 */
 	tc_src_power_off(port);
 
+	/* Keep track if we are performing pr swap */
+	currently_performing_pr_swap = TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
 	/* Clear PR swap flag */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
+	/*
+	 * This hook should be notified when we are completely disconnected.
+	 * In order to make sure this happens, this is called after all
+	 * possible hardware changes have been made in this state.  If this
+	 * is moved closer to the start, make sure all of the hardware is
+	 * already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !currently_performing_pr_swap)
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 /**
@@ -2377,6 +2439,17 @@ static void tc_dbg_acc_snk_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
+
+	/*
+	 * This hook should be notified when the CC lines and VBus are
+	 * steady.  In order to make sure this happens, this is called
+	 * after all possible hardware changes have been made in this
+	 * state.  If this is moved closer to the start, make sure all
+	 * of the hardware is already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_dbg_acc_snk_run(const int port)
@@ -2447,10 +2520,26 @@ static void tc_dbg_acc_snk_run(const int port)
 
 static void tc_dbg_acc_snk_exit(const int port)
 {
+	int currently_performing_pr_swap;
+
+	/* Keep track if we are performing pr swap */
+	currently_performing_pr_swap = TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP | TC_FLAGS_POWER_OFF_SNK);
 
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	/*
+	 * This hook should be notified when we are completely disconnected.
+	 * In order to make sure this happens, this is called after all
+	 * possible hardware changes have been made in this state.  If this
+	 * is moved closer to the start, make sure all of the hardware is
+	 * already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !currently_performing_pr_swap)
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 /**
@@ -2716,6 +2805,17 @@ static void tc_attached_src_entry(const int port)
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_sink_is_connected(port, 1);
+
+	/*
+	 * This hook should be notified when the CC lines and VBus are
+	 * steady.  In order to make sure this happens, this is called
+	 * after all possible hardware changes have been made in this
+	 * state.  If this is moved closer to the start, make sure all
+	 * of the hardware is already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_src_run(const int port)
@@ -2865,6 +2965,8 @@ static void tc_attached_src_run(const int port)
 
 static void tc_attached_src_exit(const int port)
 {
+	int currently_performing_pr_swap;
+
 	/*
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
 	 * Attached.SRC.
@@ -2876,8 +2978,22 @@ static void tc_attached_src_exit(const int port)
 	    !TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP))
 		set_vconn(port, 0);
 
+	/* Keep track if we are performing pr swap */
+	currently_performing_pr_swap = TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
 	/* Clear PR swap flag after checking for Vconn */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
+	/*
+	 * This hook should be notified when we are completely disconnected.
+	 * In order to make sure this happens, this is called after all
+	 * possible hardware changes have been made in this state.  If this
+	 * is moved closer to the start, make sure all of the hardware is
+	 * already setup to guarantee this.
+	 */
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !currently_performing_pr_swap)
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
