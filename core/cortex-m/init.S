@@ -11,8 +11,47 @@
 .syntax unified
 .code 16
 
+/*
+ * mov r0, #0
+ * mov r1, =addr_start
+ * mov r2, =addr_end
+ * memset r0, r1, r2
+ */
+.macro memset reg_c, reg_addr_start, reg_addr_end
+1:
+	cmp \reg_addr_start , \reg_addr_end
+	it lt
+	strlt \reg_c , [\reg_addr_start], #4
+	blt 1b
+.endm
+
+.macro reset_ram_fill_cond_branch cond_reg, cond_mask, label
+	ldr r0, =\cond_reg
+	ldr r0, [r0]
+	ldr r1, =\cond_mask
+	cmp r0, #0xFFFFFFFF
+	itttt ne
+	ldrne r0, [r0]
+	ldrne r1, [r1]
+	andsne r0, r1
+	bne \label
+.endm
+
+.macro reset_ram_fill_cond_branch cond_reg, cond_mask, cond_test, label
+	ldr r0, =\cond_reg
+	ldr r0, [r0]
+	ldr r1, =\cond_mask
+	cmp r0, #0xFFFFFFFF
+	itttt ne
+	ldrne r0, [r0]
+	ldrne r1, [r1]
+	andsne r0, r1
+	bne \label
+.endm
+
 .global reset
 .thumb_func
+.type	reset, %function
 reset:
 	/*
 	 * Ensure we're in privileged mode with main stack.  Necessary if
@@ -31,15 +70,59 @@ reset:
 	ldr r2, =0xE000ED08   /* VTABLE register in SCB*/
 	str r1, [r2]
 
+#ifdef CONFIG_RESET_RAM_FILL
+	/* Check reset_ram_fill_cond0 */
+	reset_ram_fill_cond_branch         \
+		reset_ram_fill_cond0_reg,  \
+		reset_ram_fill_cond0_mask, \
+		reset_ram_fill
+
+	/* Check reset_ram_fill_cond1 */
+	reset_ram_fill_cond_branch         \
+		reset_ram_fill_cond1_reg,  \
+		reset_ram_fill_cond1_mask, \
+		reset_ram_fill
+
+	b bss_init
+
+reset_ram_fill:
+	/* Clear all RAM */
+	ptr        .req r0
+	ptr_end     .req r1
+	zero       .req r2
+	addr_start .req r3
+	addr_end   .req r4
+
+	/* Set ptr to the first entry of ram_clear_table */
+	ldr ptr, =ram_table
+	/* Set ptr_end to one entry past the end of ram_clear_table */
+	ldr ptr_end, =ram_table_size
+	ldr ptr_end, [ptr_end]
+	add ptr_end, ptr
+
+reset_ram_fill_loop:
+	cmp ptr, ptr_end
+	bge bss_init_skip
+	ldr addr_start, [ptr], #4
+	ldr addr_end,   [ptr], #4
+	mov zero, #0
+	memset zero, addr_start, addr_end
+	b reset_ram_fill_loop
+
+	.unreq zero
+	.unreq addr_end
+	.unreq addr_start
+	.unreq ptr_end
+	.unreq ptr
+#endif /* CONFIG_RESET_RAM_FILL */
+
 	/* Clear BSS */
+bss_init:
 	mov r0, #0
 	ldr r1,_bss_start
 	ldr r2,_bss_end
-bss_loop:
-	cmp r1, r2
-	it lt
-	strlt r0, [r1], #4
-	blt bss_loop
+	memset r0, r1, r2
+bss_init_skip:
 
 	/* Copy initialized data to Internal RAM */
 	ldr r0,_data_lma_start
@@ -90,6 +173,7 @@ data_loop:
 	/* That should not return.  If it does, loop forever. */
 fini_loop:
 	b fini_loop
+.size	reset, .-reset
 
 .align 2
 _bss_start:

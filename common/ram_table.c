@@ -1,0 +1,33 @@
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/**
+ * @file
+ * @brief Holds the table for startup RAM clearing
+ *
+ * This table is used in init.S to clear all RAM on startup.
+ */
+#include <common.h>
+#include <stddef.h>
+
+struct mem_range {
+	void *start;
+	void *end;
+};
+
+const struct mem_range ram_table[] = {
+	{(void *)CONFIG_RAM_BASE, (void *)(CONFIG_RAM_BASE+CONFIG_RAM_SIZE)},
+#ifdef CONFIG_CHIP_MEMORY_REGIONS
+	/*
+	 * We currently list all sections for clearing,
+	 * irrespective of their permission.
+	 */
+#	define REGION(name, attr, start, size) \
+	{(void *)(start), (void *)((start)+(size))},
+#	include "memory_regions.inc"
+#endif
+};
+
+const size_t ram_table_size = sizeof(ram_table);
