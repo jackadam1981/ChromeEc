@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "222112c7_a43b734a",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-03T22:22:33Z",
+      "side": 1,
+      "message": "Then, shall we use BUILD_ASSERT for struct fan_t fans[]?",
+      "parentUuid": "46f1af8d_50d744a7",
+      "range": {
+        "startLine": 225,
+        "startChar": 39,
+        "endLine": 225,
+        "endChar": 41
+      },
+      "revId": "bffffbea55ae8cbe32535ee0588b42338db76608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ed36d30_37f08161",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
