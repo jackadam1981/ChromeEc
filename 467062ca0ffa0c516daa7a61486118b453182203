@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7dac50fa_ec20e5db",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:36:56Z",
+      "side": 1,
+      "message": "And FP is not used at all, given you do a FP_TO_INT immediately.\n*temp \u003d temp16 \u003e\u003e 8 would work as well.",
+      "parentUuid": "f573690b_a2334256",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d21aaa86_abdfe652",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 4
