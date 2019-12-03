@@ -88,6 +88,11 @@ GPIO(EC_PCH_INT_ODL,           PIN(D, 6), GPIO_ODR_HIGH) /* TODO - b/140557015 -
 /* USB and USBC Signals */
 GPIO(EN_PP3300_AG,		PIN(8, 5), GPIO_OUT_LOW)
 
+/* TODO: Add USB_C1_RT_RST_ODL, add comment for rest */
+UNIMPLEMENTED(USB_C1_LS_EN)
+UNIMPLEMENTED(USB_C1_RT_RST_ODL)
+UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
+
 /* Misc Signals */
 /* This selects between an LED module on the motherboard and one on the daughter
  * board, to be controlled by LED{1,2,3}. Select the one on the motherboard by
