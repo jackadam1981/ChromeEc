@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "857c471c_26e5c762",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 2354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T23:15:12Z",
+      "side": 1,
+      "message": "do we need this ifdef, can\u0027t we always define thse functions even for test builds?",
+      "range": {
+        "startLine": 2354,
+        "startChar": 0,
+        "endLine": 2354,
+        "endChar": 18
+      },
+      "revId": "87de1ff5464448d2d5dfbc2cd842810c58e474ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc622844_cbc4707b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T23:15:12Z",
+      "side": 1,
+      "message": "hm, with static_if_not you shouldn\u0027t need __maybe_unused (or the raw equivalent)",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "87de1ff5464448d2d5dfbc2cd842810c58e474ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
