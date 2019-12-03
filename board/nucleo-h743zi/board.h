@@ -176,6 +176,12 @@
 #define CONFIG_RSA_EXPONENT_3
 
 /*
+ * This is okay to run in both RO and RW because the reset cause register
+ * should be cleared when RW is jumped to.
+ */
+#define CONFIG_RESET_RAM_FILL
+
+/*
  * We do not use any "locally" generated entropy: this is normally used
  * to add local entropy when the main source of entropy is remote.
  */

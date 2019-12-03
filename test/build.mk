@@ -147,6 +147,7 @@ power_button-y=power_button.o
 powerdemo-y=powerdemo.o
 printf-y=printf.o
 queue-y=queue.o
+ram_fill-y=ram_fill.o
 rma_auth-y=rma_auth.o
 rsa-y=rsa.o
 rsa3-y=rsa.o
