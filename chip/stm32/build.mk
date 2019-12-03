@@ -71,6 +71,7 @@ chip-$(CONFIG_STM32_CHARGER_DETECT)+=charger_detect.o
 chip-$(CONFIG_DEBUG_PRINTF)+=debug_printf.o
 chip-$(CONFIG_OTP)+=otp-$(CHIP_FAMILY).o
 chip-$(CONFIG_PWM)+=pwm.o
+chip-$(CONFIG_RESET_RAM_FILL)+=reset_ram_fill.o
 chip-$(CONFIG_RNG)+=trng.o
 
 ifeq ($(CHIP_FAMILY),stm32f4)

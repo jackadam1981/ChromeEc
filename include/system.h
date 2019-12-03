@@ -263,6 +263,12 @@ const char *system_get_build_info(void);
  * Indicate that this reset was triggered by an AP watchdog
  */
 #define SYSTEM_RESET_AP_WATCHDOG        BIT(5)
+/*
+ * Request a reset with ram fill on startup. No other reset flags will be
+ * honered or preserved. The MCU will wake up with amnesia, but a cpu reset
+ * and ram-fill flags will ne noted.
+ */
+#define SYSTEM_RESET_RAM_FILL           BIT(6)
 
 /**
  * Reset the system.

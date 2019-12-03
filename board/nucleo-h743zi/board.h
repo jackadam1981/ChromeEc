@@ -24,4 +24,11 @@
 #define CONFIG_CONSOLE_COMMAND_FLAGS
 #define CONFIG_RESTRICTED_CONSOLE_COMMANDS
 
+
+/*
+ * This is okay to run in both RO and RW because the reset cause register
+ * should be cleared when RW is jumped to.
+ */
+#define CONFIG_RESET_RAM_FILL
+
 #endif /* __BOARD_H */
