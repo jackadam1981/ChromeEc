@@ -22,6 +22,30 @@
       "revId": "a2de678f2382c47a8104defa92c3bc55f23161e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90372cf_d96590ef",
+        "filename": "baseboard/hatch/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-03T23:44:28Z",
+      "side": 1,
+      "message": "Hmm, yes this was one of the things that I was going to look at later. But having taken a quick look now, I see that it\u0027s simply issuing a request for the MST chip power state. Otherwise, it\u0027s pretty much the same as the default case; I\u0027ll move it into common.",
+      "parentUuid": "add5187b_289252c7",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 27
+      },
+      "revId": "a2de678f2382c47a8104defa92c3bc55f23161e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
