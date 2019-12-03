@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a45a169_8eb76d7d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:28:08Z",
+      "side": 1,
+      "message": "are all that casting really necessary?\ntemp16 \u003d (raw[1]) \u003c\u003c 8) | raw[0] should work, as the output type is u16.",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f573690b_a2334256",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:28:08Z",
+      "side": 1,
+      "message": "INT_TO_FP(256) will work as well.",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21aaa86_abdfe652",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:28:08Z",
+      "side": 1,
+      "message": "match indentation.",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
