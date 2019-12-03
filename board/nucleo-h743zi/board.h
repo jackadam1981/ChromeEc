@@ -167,6 +167,7 @@
 	 */
 #	define CONFIG_MALLOC
 #else /* !SECTION_IS_RW */
+#	define CONFIG_RESET_RAM_FILL
 	/* RO verifies the RW partition signature */
 #	define CONFIG_RSA
 #	define CONFIG_RSA_KEY_SIZE 3072
