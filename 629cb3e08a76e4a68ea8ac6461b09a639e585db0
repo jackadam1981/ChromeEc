@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b60fdaf9_34962967",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-03T17:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a70c9b59_72df59bb",
+      "range": {
+        "startLine": 442,
+        "startChar": 48,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51c8e86_30303977",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 30
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6002a98e_11565555",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-03T17:41:04Z",
+      "side": 1,
+      "message": "Yes, I was multiplying 16 instead of 15.\n\n(get_time().le.lo \u0026 0xf) * 23 * MSEC;\n\n15 * 23ms \u003d 345ms",
+      "parentUuid": "e51c8e86_30303977",
+      "range": {
+        "startLine": 1035,
+        "startChar": 26,
+        "endLine": 1035,
+        "endChar": 31
+      },
+      "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b02f7a2_55c6e2a7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 30
@@ -68,6 +116,30 @@
       "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c21b717_a6143581",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-03T17:41:04Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "5b02f7a2_55c6e2a7",
+      "range": {
+        "startLine": 1045,
+        "startChar": 5,
+        "endLine": 1045,
+        "endChar": 10
+      },
+      "revId": "629cb3e08a76e4a68ea8ac6461b09a639e585db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
