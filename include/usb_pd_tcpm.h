@@ -426,4 +426,13 @@ int board_tcpc_post_init(int port) __attribute__((weak));
  */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled);
 
+/**
+ * Get the VBUS voltage from the charger
+ *
+ * @param port Type-C port number
+ *
+ * @return VBUS voltage in mV.
+ */
+int tcpc_get_vbus_voltage(int port);
+
 #endif /* __CROS_EC_USB_PD_TCPM_H */
