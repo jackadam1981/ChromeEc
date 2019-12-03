@@ -11,6 +11,20 @@
 .syntax unified
 .code 16
 
+/*
+ * mov r0, #0
+ * mov r1, =addr_start
+ * mov r2, =addr_end
+ * memset r0, r1, r2
+ */
+.macro memset reg_c, reg_addr_start, reg_addr_end
+1:
+	cmp \reg_addr_start , \reg_addr_end
+	it lt
+	strlt \reg_c , [\reg_addr_start], #4
+	blt 1b
+.endm
+
 .global reset
 .thumb_func
 reset:
@@ -31,15 +45,45 @@ reset:
 	ldr r2, =0xE000ED08   /* VTABLE register in SCB*/
 	str r1, [r2]
 
+#ifdef CONFIG_STARTUP_RAM_ZERO
+sramclear:
+	/* Clear main SRAM bank */
+	ptr        .req r0
+	ptrend     .req r1
+	zero       .req r2
+	addr_start .req r3
+	addr_end   .req r4
+
+	/* Set ptr to the first entry of ram_clear_table */
+	ldr ptr, =ram_clear_table
+	/* Set ptrend to one entry past the end of ram_clear_table */
+	ldr ptrend, =ram_clear_table_size
+	ldr ptrend, [ptrend]
+	add ptrend, ptr
+
+sramclear_loop:
+	cmp ptr, ptrend
+	bge sramclear_finish
+	ldr addr_start, [ptr], #4
+	ldr addr_end,   [ptr], #4
+	mov zero, #0
+	memset zero, addr_start, addr_end
+	b sramclear_loop
+
+	.unreq zero
+	.unreq addr_end
+	.unreq addr_start
+	.unreq ptrend
+	.unreq ptr
+sramclear_finish:
+#else /* !CONFIG_RAM_CLEAR */
+bssclear:
 	/* Clear BSS */
 	mov r0, #0
 	ldr r1,_bss_start
 	ldr r2,_bss_end
-bss_loop:
-	cmp r1, r2
-	it lt
-	strlt r0, [r1], #4
-	blt bss_loop
+	memset r0, r1, r2
+#endif /* CONFIG_RAM_CLEAR */
 
 	/* Copy initialized data to Internal RAM */
 	ldr r0,_data_lma_start

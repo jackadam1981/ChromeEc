@@ -203,6 +203,11 @@ static void check_reset_cause(void)
 	if (raw_cause & RESET_CAUSE_PIN)
 		flags |= EC_RESET_FLAG_RESET_PIN;
 
+#ifdef RESET_CAUSE_BOR
+	if (raw_cause & RESET_CAUSE_BOR)
+		flags |= EC_RESET_FLAG_BROWNOUT;
+#endif
+
 	if (pwr_status & RESET_CAUSE_SBF)
 		/* Hibernated and subsequently awakened */
 		flags |= EC_RESET_FLAG_HIBERNATE;
