@@ -202,12 +202,13 @@ const struct fan_rpm fan_rpm_0 = {
 	.rpm_max = 5900,
 };
 
-const struct fan_t fans[FAN_CH_COUNT] = {
+const struct fan_t fans[] = {
 	[FAN_CH_0] = {
 		.conf = &fan_conf_0,
 		.rpm = &fan_rpm_0,
 	},
 };
+BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
 /******************************************************************************/
 /* MFT channels. These are logically separate from pwm_channels. */
