@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5bebb5b_f197c6d5",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2019-12-03T06:56:28Z",
+      "side": 1,
+      "message": "Nice write-up!",
+      "revId": "8beac6cb5436879af3255721c515a7f15663e432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860feed1_f2c1fd59",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2019-12-03T06:56:28Z",
+      "side": 1,
+      "message": "Where does this count come from?",
+      "range": {
+        "startLine": 66,
+        "startChar": 49,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "8beac6cb5436879af3255721c515a7f15663e432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
