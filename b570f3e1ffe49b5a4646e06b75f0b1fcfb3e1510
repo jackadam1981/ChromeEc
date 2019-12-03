@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8354eff_2ad172d9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2043,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T22:21:11Z",
+      "side": 1,
+      "message": "let\u0027s add the intent comment that this should be the last thing we do.\n\nAlso I would say that we are notifying an Listeners that CC lines and vbus are steady after a connection or something to that effect",
+      "range": {
+        "startLine": 2043,
+        "startChar": 5,
+        "endLine": 2043,
+        "endChar": 15
+      },
+      "revId": "b570f3e1ffe49b5a4646e06b75f0b1fcfb3e1510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c099aef4_3e29ce0b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T22:21:11Z",
+      "side": 1,
+      "message": "this should be TC_FLAGS_DO_PR_SWAP, but it is also cleared on 2164\n\n(the intent is correct though)",
+      "range": {
+        "startLine": 2170,
+        "startChar": 24,
+        "endLine": 2170,
+        "endChar": 52
+      },
+      "revId": "b570f3e1ffe49b5a4646e06b75f0b1fcfb3e1510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b017ddce_181d1655",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T22:21:11Z",
+      "side": 1,
+      "message": "we should probably add the attaches and disconnects to this state too",
+      "range": {
+        "startLine": 2181,
+        "startChar": 12,
+        "endLine": 2181,
+        "endChar": 43
+      },
+      "revId": "b570f3e1ffe49b5a4646e06b75f0b1fcfb3e1510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8165dcc0_cf6d6c0e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T22:21:11Z",
+      "side": 1,
+      "message": "wrong flag",
+      "range": {
+        "startLine": 2336,
+        "startChar": 24,
+        "endLine": 2336,
+        "endChar": 52
+      },
+      "revId": "b570f3e1ffe49b5a4646e06b75f0b1fcfb3e1510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fabcad_237e1395",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2476,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T22:21:11Z",
+      "side": 1,
+      "message": "TC_FLAGS_DO_PR_SWAP",
+      "range": {
+        "startLine": 2476,
+        "startChar": 24,
+        "endLine": 2476,
+        "endChar": 52
+      },
+      "revId": "b570f3e1ffe49b5a4646e06b75f0b1fcfb3e1510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb85b802_b9199899",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2911,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-03T22:21:11Z",
+      "side": 1,
+      "message": "TC_FLAGS_DO_PR_SWAP",
+      "range": {
+        "startLine": 2911,
+        "startChar": 24,
+        "endLine": 2911,
+        "endChar": 52
+      },
+      "revId": "b570f3e1ffe49b5a4646e06b75f0b1fcfb3e1510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
