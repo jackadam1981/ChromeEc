@@ -341,6 +341,12 @@ static int sn5s330_init(int port)
 	 */
 	clr_flags(port, SN5S330_INT_MASK_RISE_REG2, SN5S330_VCONN_ILIM);
 
+       /*
+	* Unmask the CC1/CC2 OVP interrupt so we can print CC1/CC2 OVP events
+	*/
+	clr_flags(port, SN5S330_INT_MASK_RISE_REG2, SN5S330_CC1_CON);
+	clr_flags(port, SN5S330_INT_MASK_RISE_REG2, SN5S330_CC2_CON);
+
 	/*
 	 * Don't proceed with the rest of initialization if we're sysjumping.
 	 * We would have already done this before.
@@ -689,6 +695,10 @@ static void sn5s330_handle_interrupt(int port)
 		if (rise & SN5S330_VCONN_ILIM)
 			CPRINTS("ppc p%d: VCONN OC!", port);
 
+		if (rise & SN5S330_CC1_CON || rise & SN5S330_CC2_CON) {
+			CPRINTS("ppc p%d: CC OV!", port);
+			pd_handle_overvoltage(port);
+		}
 		/* Clear the interrupt sources. */
 		write_reg(port, SN5S330_INT_TRIP_RISE_REG2, rise);
 		write_reg(port, SN5S330_INT_TRIP_FALL_REG2, fall);

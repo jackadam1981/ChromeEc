@@ -1764,6 +1764,14 @@ int pd_get_partner_data_swap_capable(int port);
 void pd_handle_overcurrent(int port);
 
 /**
+ * Handle an overvoltage protection event.  The port acting as a sink has
+ * reported an overvoltage event.
+ *
+ * @param port: USB-C port number.
+ */
+void pd_handle_overvoltage(int port);
+
+/**
  * Request power swap command to be issued
  *
  * @param port USB-C port number
