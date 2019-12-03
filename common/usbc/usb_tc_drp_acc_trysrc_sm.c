@@ -2039,6 +2039,10 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc[port].pd_enable = 1;
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2161,6 +2165,10 @@ static void tc_attached_snk_exit(const int port)
 
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 /**
@@ -2219,6 +2227,10 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_sink_is_connected(port, 1);
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_unoriented_dbg_acc_src_run(const int port)
@@ -2319,6 +2331,10 @@ static void tc_unoriented_dbg_acc_src_exit(const int port)
 
 	/* Clear PR swap flag */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 /**
@@ -2377,6 +2393,10 @@ static void tc_dbg_acc_snk_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_dbg_acc_snk_run(const int port)
@@ -2451,6 +2471,10 @@ static void tc_dbg_acc_snk_exit(const int port)
 
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 /**
@@ -2716,6 +2740,10 @@ static void tc_attached_src_entry(const int port)
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_sink_is_connected(port, 1);
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_src_run(const int port)
@@ -2878,6 +2906,10 @@ static void tc_attached_src_exit(const int port)
 
 	/* Clear PR swap flag after checking for Vconn */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
+
+	if (IS_ENABLED(CONFIG_COMMON_RUNTIME) &&
+	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_DISCONNECT);
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
