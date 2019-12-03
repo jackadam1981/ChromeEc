@@ -4612,6 +4612,16 @@
  */
 #undef CONFIG_INTEL_VIRTUAL_MUX
 
+
+/*
+ * Clear all known memory regions early in boot.
+ *
+ * This is currently only valid for RO images, since
+ * this feature does not avoid zeroing jump data.
+ * It does, however, ensure that that panic data is preserved.
+ */
+#undef CONFIG_RESET_RAM_FILL
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
