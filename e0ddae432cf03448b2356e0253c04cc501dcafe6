@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d88c7f1c_e1062daf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-03T18:56:21Z",
+      "side": 1,
+      "message": "Nathan, where in the spec. does it state that we should not start an AMS when performing a PR_SWAP?",
+      "range": {
+        "startLine": 1600,
+        "startChar": 2,
+        "endLine": 1600,
+        "endChar": 22
+      },
+      "revId": "e0ddae432cf03448b2356e0253c04cc501dcafe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
