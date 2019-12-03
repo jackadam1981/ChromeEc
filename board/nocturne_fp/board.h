@@ -129,6 +129,7 @@
 #define FP_TEMPLATE_SECTION __SECTION(ahb)
 
 #else /* SECTION_IS_RO */
+#define CONFIG_RESET_RAM_FILL
 /* RO verifies the RW partition signature */
 #define CONFIG_RSA
 #define CONFIG_RSA_KEY_SIZE 3072
