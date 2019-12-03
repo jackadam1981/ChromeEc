@@ -34,6 +34,24 @@
       "revId": "b7a7174a1b77b7d26a50b60d75fe0da30a3a2b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d559807_55beda35",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-03T18:55:24Z",
+      "side": 1,
+      "message": "removed it and added a routine that will handle things as they are found... until then it just puts debug output to the console.",
+      "parentUuid": "224e73bc_93a893bc",
+      "revId": "b7a7174a1b77b7d26a50b60d75fe0da30a3a2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
