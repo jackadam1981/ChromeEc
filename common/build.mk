@@ -126,6 +126,7 @@ common-$(CONFIG_CMD_SPI_XFER)+=spi_commands.o
 common-$(CONFIG_SPI_FLASH)+=spi_flash.o spi_flash_reg.o
 common-$(CONFIG_SPI_FLASH_REGS)+=spi_flash_reg.o
 common-$(CONFIG_SPI_NOR)+=spi_nor.o
+common-$(CONFIG_STARTUP_RAM_ZERO)+=ram_clear_table.o
 common-$(CONFIG_SWITCH)+=switch.o
 common-$(CONFIG_SW_CRC)+=crc.o
 common-$(CONFIG_TABLET_MODE)+=tablet_mode.o

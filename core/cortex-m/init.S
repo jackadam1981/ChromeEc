@@ -11,6 +11,21 @@
 .syntax unified
 .code 16
 
+/*
+ * mov r0, =addr_start
+ * mov r1, #0
+ * mov r2, =size
+ * memset r0, r1, r2
+ */
+.macro memset reg_addr_start, reg_c, reg_size
+	add \reg_size , \reg_addr_start
+1:
+	cmp \reg_addr_start , \reg_size
+	it lt
+	strlt \reg_c , [\reg_addr_start], #4
+	blt 1b
+.endm
+
 .global reset
 .thumb_func
 reset:
@@ -31,6 +46,40 @@ reset:
 	ldr r2, =0xE000ED08   /* VTABLE register in SCB*/
 	str r1, [r2]
 
+#ifdef CONFIG_STARTUP_RAM_ZERO
+sramclear:
+	/* Clear main SRAM bank */
+	ptr .req r0
+	ptrend .req r1
+	addr .req r2
+	size .req r3
+	zero .req r4
+
+	/* Set ptr to the first entry of ram_clear_table */
+	ldr ptr, =ram_clear_table
+	/* Set ptrend to one entry past the end of ram_clear_table */
+	ldr ptrend, =ram_clear_table_size
+	ldr ptrend, [ptrend]
+	add ptrend, ptr
+
+sramclear_loop:
+	cmp ptr, ptrend
+	blt sramclear_finish
+	ldr addr, [ptr], #4
+	ldr size, [ptr], #4
+	mov zero, #0
+	memset addr zero size
+	b sramclear_loop
+
+	.unreq zero
+	.unreq size
+	.unreq addr
+	.unreq ptrend
+	.unreq ptr
+sramclear_finish:
+#endif /* CONFIG_RAM_CLEAR */
+
+bssclear:
 	/* Clear BSS */
 	mov r0, #0
 	ldr r1,_bss_start
