@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe87ed68_57a2704a",
+        "filename": "baseboard/dragonegg/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-12-03T21:12:49Z",
+      "side": 0,
+      "message": "Way to go! This is going to save tons of effort.\n\nExample:\n* crbug.com/1022256\n* crrev/c/1903647\n\nThis \"de-dupe\" CL will lead the charge in fixing the Policy\u003c-\u003ePD boundary separation.\n\nThank you!",
+      "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
