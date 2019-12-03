@@ -65,6 +65,72 @@
     },
     {
       "key": {
+        "uuid": "b333559a_b1f007db",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-03T01:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcb3f5f_8384604e",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0de171f1_78eeb4d5",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-03T01:20:11Z",
+      "side": 1,
+      "message": "This is not for battery, this sensor is detecting skin temperature through IR, please see the bug for more spec detail. In our others platform we don\u0027t consider this case for application.",
+      "parentUuid": "2d0f51ec_6bb00a08",
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d27b92_c9edf41d",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-03T01:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dae7319_6d54fa35",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e506adf9_675c86d0",
         "filename": "driver/temp_sensor/oti502.c",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a0e1c6_54d99a10",
+        "filename": "driver/temp_sensor/oti502.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-03T01:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e506adf9_675c86d0",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "79f245d505f0c5cd24663fbdcfbfa9cd3456c073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
