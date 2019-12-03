@@ -21,13 +21,7 @@
 #include "uartn.h"
 #include "util.h"
 
-#define CONSOLE_UART            CONFIG_CONSOLE_UART
-
-#if CONSOLE_UART
-#define CONSOLE_UART_IRQ        NPCX_IRQ_UART2
-#else
-#define CONSOLE_UART_IRQ        NPCX_IRQ_UART
-#endif
+static uint8_t console_uart = CONFIG_CONSOLE_UART;
 
 static int init_done;
 
@@ -81,7 +75,7 @@ void npcx_uart2gpio(void)
  * off the old one, to avoid having no pad selected at a given time, see
  * b/65526215#c26.
  */
-void npcx_gpio2uart(void)
+void npcx_gpio2uart(uint8_t uart_num)
 {
 #ifdef CONFIG_UART_PAD_SWITCH
 	if (pad == UART_ALTERNATE_PAD) {
@@ -91,8 +85,15 @@ void npcx_gpio2uart(void)
 	}
 #endif
 
-	SET_BIT(NPCX_UART_DEVALT, NPCX_UART_DEVALT_SL);
-	CLEAR_BIT(NPCX_UART_ALT_DEVALT, NPCX_UART_ALT_DEVALT_SL);
+	if (uart_num == NPCX_UART_PORT0) {
+		SET_BIT(NPCX_UART_DEVALT, NPCX_UART_DEVALT_SL);
+		CLEAR_BIT(NPCX_UART_ALT_DEVALT, NPCX_UART_ALT_DEVALT_SL);
+		/* GPIO75/32KHZ_OUT/RXD, GPIO86/TXD are selected */
+		CLEAR_BIT(NPCX_UART2_DEVALT, NPCX_UART2_DEVALT_SL);
+	} else { /* uart_num == NPCX_UART_PORT1 */
+		/* CR_SIN2, CR_SOUT2 are selected */
+		SET_BIT(NPCX_UART2_DEVALT, NPCX_UART2_DEVALT_SL);
+	}
 
 #if !NPCX_UART_MODULE2 && defined(CHIP_FAMILY_NPCX7)
 	/* UART module 1 belongs to KSO since wake-up functionality in npcx7. */
@@ -112,45 +113,45 @@ void uart_tx_start(void)
 		/* disable MIWU */
 		uart_enable_wakeup(0);
 		/* Set pin-mask for UART */
-		npcx_gpio2uart();
+		npcx_gpio2uart(NPCX_UART_PORT0);
 		/* enable uart again from MIWU mode */
-		task_enable_irq(NPCX_IRQ_UART);
+		uartn_enable_irq(console_uart);
 	}
 #endif
 
-	uartn_tx_start(CONSOLE_UART);
+	uartn_tx_start(console_uart);
 }
 
 void uart_tx_stop(void)
 {
 #ifdef NPCX_UART_FIFO_SUPPORT
-	uartn_tx_stop(CONSOLE_UART, 0);
+	uartn_tx_stop(console_uart, 0);
 #else
 	uint8_t sleep_ena;
 
 	sleep_ena = (pad == UART_DEFAULT_PAD) ? 1 : 0;
-	uartn_tx_stop(CONSOLE_UART, sleep_ena);
+	uartn_tx_stop(console_uart, sleep_ena);
 #endif
 }
 
 void uart_tx_flush(void)
 {
-	uartn_tx_flush(CONSOLE_UART);
+	uartn_tx_flush(console_uart);
 }
 
 int uart_tx_ready(void)
 {
-	return uartn_tx_ready(CONSOLE_UART);
+	return uartn_tx_ready(console_uart);
 }
 
 int uart_tx_in_progress(void)
 {
-	return uartn_tx_in_progress(CONSOLE_UART);
+	return uartn_tx_in_progress(console_uart);
 }
 
 int uart_rx_available(void)
 {
-	int rx_available = uartn_rx_available(CONSOLE_UART);
+	int rx_available = uartn_rx_available(console_uart);
 
 	if (rx_available && pad == UART_DEFAULT_PAD) {
 #ifdef CONFIG_LOW_POWER_IDLE
@@ -171,12 +172,12 @@ int uart_rx_available(void)
 
 void uart_write_char(char c)
 {
-	uartn_write_char(CONSOLE_UART, c);
+	uartn_write_char(console_uart, c);
 }
 
 int uart_read_char(void)
 {
-	return uartn_read_char(CONSOLE_UART);
+	return uartn_read_char(console_uart);
 }
 
 /* Interrupt handler for Console UART */
@@ -201,9 +202,9 @@ void uart_ec_interrupt(void)
 	}
 #endif
 #ifdef NPCX_UART_FIFO_SUPPORT
-	if (!uartn_tx_in_progress(CONSOLE_UART)) {
+	if (!uartn_tx_in_progress(console_uart)) {
 		if (uart_buffer_empty()) {
-			uartn_enable_tx_complete_int(CONSOLE_UART, 0);
+			uartn_enable_tx_complete_int(console_uart, 0);
 			enable_sleep(SLEEP_MASK_UART);
 		}
 	}
@@ -215,9 +216,11 @@ void uart_ec_interrupt(void)
 	uart_process_output();
 }
 #ifdef NPCX_UART_FIFO_SUPPORT
-DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_UART, uart_ec_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_UART2, uart_ec_interrupt, 4);
 #else
-DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 1);
+DECLARE_IRQ(NPCX_IRQ_UART, uart_ec_interrupt, 1);
+DECLARE_IRQ(NPCX_IRQ_UART2, uart_ec_interrupt, 1);
 #endif
 
 #ifdef CONFIG_UART_PAD_SWITCH
@@ -231,7 +234,7 @@ void uart_reset_default_pad_panic(void)
 	pad = UART_DEFAULT_PAD;
 
 	/* Configure new pad. */
-	npcx_gpio2uart();
+	npcx_gpio2uart(NPCX_UART_PORT0);
 
 	/* Wait for ~2 bytes, to help the receiver resync. */
 	udelay(200);
@@ -245,7 +248,7 @@ static void uart_set_pad(enum uart_pad newpad)
 #else
 	NPCX_UICTRL(NPCX_UART_PORT0) = 0x00;
 #endif
-	task_disable_irq(NPCX_IRQ_UART);
+	task_disable_irq(console_uart);
 
 	/* Flush the last byte */
 	uartn_tx_flush(NPCX_UART_PORT0);
@@ -263,7 +266,7 @@ static void uart_set_pad(enum uart_pad newpad)
 	pad = newpad;
 
 	/* Configure new pad. */
-	npcx_gpio2uart();
+	npcx_gpio2uart(NPCX_UART_PORT0);
 
 	/* Re-enable receive interrupt. */
 	uartn_rx_int_en(NPCX_UART_PORT0);
@@ -276,7 +279,7 @@ static void uart_set_pad(enum uart_pad newpad)
 	udelay(100);
 	uartn_clear_rx_fifo(NPCX_UART_PORT0);
 
-	task_enable_irq(NPCX_IRQ_UART);
+	task_enable_irq(console_uart);
 }
 
 /* TODO(b:67026316): Remove this and replace with software flow control. */
@@ -362,9 +365,13 @@ out:
 	return ret;
 }
 #endif
-void uart_init(void)
+void uart_init(uint8_t uart_num)
 {
-
-	uartn_init(CONSOLE_UART);
+	if (init_done && console_uart == uart_num)
+		return;
+	uartn_disable_irq(console_uart);
+	uartn_init(uart_num);
+	console_uart = uart_num;
+	uartn_enable_irq(console_uart);
 	init_done = 1;
 }

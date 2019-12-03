@@ -225,7 +225,7 @@ static void uartn_config(uint8_t uart_num)
 #endif
 
 	/* Configure pins from GPIOs to CR_UART */
-	gpio_config_module(MODULE_UART, 1);
+	gpio_config_module(uart_num ? MODULE_UART2 : MODULE_UART, 1);
 
 #ifdef CONFIG_LOW_POWER_IDLE
 	/*
@@ -261,6 +261,16 @@ static void uartn_config(uint8_t uart_num)
 	NPCX_UART_RX_INT_EN(uart_num);
 }
 
+void uartn_enable_irq(uint8_t uart_num)
+{
+	task_enable_irq(uart_cfg[uart_num].irq);
+}
+
+void uartn_disable_irq(uint8_t uart_num)
+{
+	task_disable_irq(uart_cfg[uart_num].irq);
+}
+
 void uartn_init(uint8_t uart_num)
 {
 	uint32_t offset, mask;
@@ -269,16 +279,14 @@ void uartn_init(uint8_t uart_num)
 	mask = uart_cfg[uart_num].clk_en_msk;
 	clock_enable_peripheral(offset, mask, CGC_MODE_ALL);
 
-	if (uart_num == NPCX_UART_PORT0)
-		npcx_gpio2uart();
-
 	/* Configure UARTs (identically) */
 	uartn_config(uart_num);
+
+	npcx_gpio2uart(uart_num);
 
 	/*
 	 * Enable interrupts for UART0 only. Host UART will have to wait
 	 * until the LPC bus is initialized.
 	 */
 	uartn_clear_rx_fifo(uart_num);
-	task_enable_irq(uart_cfg[uart_num].irq);
 }

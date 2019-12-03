@@ -293,7 +293,8 @@
 #endif
 
 /* Pin-Mux for UART2/32KHZ_OUT */
-#if defined(NPCX_SECOND_UART) && (CONFIG_CONSOLE_UART == 1)
+#if defined(NPCX_SECOND_UART) && \
+	((CONFIG_CONSOLE_UART == 1) || !defined(NPCX_32KHZ_OUT))
 #define NPCX_ALT_GPIO_7_5 ALT(7, 5, NPCX_ALT(A, UART2_SL))    /* CR_SIN2 */
 #else
 #define NPCX_ALT_GPIO_7_5 ALT(7, 5, NPCX_ALT(A, 32K_OUT_SL))  /* 32KHZ_OUT */

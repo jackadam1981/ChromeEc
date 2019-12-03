@@ -96,7 +96,7 @@ struct cr50_comm_packet {
 
 #define CR50_COMM_MAX_PACKET_SIZE	(sizeof(struct cr50_comm_packet) + 32)
 #define CR50_UART_RX_BUFFER_SIZE	32	/* TODO: Get from Cr50 header */
-#define CR50_COMM_TIMEOUT		(200 * MSEC)	/* TODO: tune */
+#define CR50_COMM_TIMEOUT		(500 * MSEC)	/* TODO: tune */
 
 /* commands */
 #define CR50_COMM_CMD_HELLO		0x0

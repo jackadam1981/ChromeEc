@@ -131,7 +131,7 @@ test_mockable __keep int main(void)
 #endif
 
 	/* Initialize UART.  Console output functions may now be used. */
-	uart_init();
+	uart_init(CONFIG_CONSOLE_UART);
 
 	/* be less verbose if we boot for USB resume to meet spec timings */
 	if (!(system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME)) {
@@ -200,7 +200,8 @@ test_mockable __keep int main(void)
 	 * Execute PMIC reset in case we're here after watchdog reset to unwedge
 	 * AP. This has to be done here because vboot_main may jump to RW.
 	 */
-	chipset_handle_reboot();
+	if (IS_ENABLED(CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET))
+		chipset_handle_reboot();
 	/*
 	 * For RO, it behaves as follows:
 	 *   In recovery, it enables PD communication and returns.

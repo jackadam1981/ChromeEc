@@ -23,6 +23,11 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* EFS/Vboot */
+#define CONFIG_CR50_UART	NPCX_UART_PORT1
+#define CONFIG_VBOOT_EFS
+#define CONFIG_VBOOT_HASH
+
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 

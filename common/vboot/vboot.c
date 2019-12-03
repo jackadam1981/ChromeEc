@@ -26,6 +26,7 @@
 #include "version.h"
 #include "vboot.h"
 #include "vb21_struct.h"
+#include "watchdog.h"
 
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
@@ -33,20 +34,45 @@
 static int send_to_cr50_raw(const uint8_t *data, size_t size)
 {
 	uint64_t until = get_time().val + CR50_COMM_TIMEOUT;
+	int c;
 
+	CPRINTS("Sending packet");
 	uart_flush_output();
 	uart_clear_input();
-	/* No traffic control, assuming Cr50 consumes stream much faster. */
+
+	/*
+	 * Send packet over (shared) TX.
+	 * No traffic control, assuming Cr50 consumes stream much faster.
+	 * TX buffer shouldn't overflow because it's much bigger than the max
+	 * packet size.
+	 */
 	uart_put_raw(data, size);
+	uart_flush_output();
+
+	/*
+	 * Wait until this point before switching to UART2 because TX is needed
+	 * to send a packet. The pin is expected to be configured as ALTERNATE
+	 * & PULL_UP so that we won't create a pulse.
+	 */
+	uart_init(CONFIG_CR50_UART);
 
 	/* Wait for response from Cr50 */
 	while (get_time().val < until) {
-		int c = uart_getc();
+		watchdog_reload();
+		c = uart_getc();
 		if (c != -1)
-			return c;
+			goto exit;
 		msleep(10);
 	}
-	return CR50_COMM_ERROR_TIMEOUT;
+	c = CR50_COMM_ERROR_TIMEOUT;
+exit:
+	/* Switch console back to UART1. Disable PULL_UP. */
+	uart_init(CONFIG_CONSOLE_UART);
+	gpio_set_flags(GPIO_CR50_UART_RX, GPIO_INPUT);
+
+	CPRINTS("Received 0x%02x", c);
+
+	return c;
 }
 
 static int verify_hash(const uint8_t *hash, size_t size)
@@ -56,6 +82,16 @@ static int verify_hash(const uint8_t *hash, size_t size)
 		uint8_t packet[CR50_COMM_MAX_PACKET_SIZE];
 	} __packed s;
 	struct cr50_comm_packet *p = (struct cr50_comm_packet *)s.packet;
+
+	CPRINTS("Enabling packet mode");
+	cflush();
+
+	/*
+	 * This will wake up (if it's sleeping) and interrupt Cr50 by DIOB7.
+	 * The pin is already configured as GPIO and INPUT. All we need to do
+	 * is to enable PULL_UP.
+	 */
+	gpio_set_flags(GPIO_CR50_UART_RX, GPIO_INPUT | GPIO_PULL_UP);
 
 	/* compose stream = preamble + packet */
 	memset(s.preamble, 0xec, sizeof(s.preamble));
@@ -196,7 +232,7 @@ void vboot_main(void)
 		return;
 	}
 
-	if (!(flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED)) {
+	if (!(flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED) && 0) {
 		/*
 		 * If hardware WP is disabled, PD communication is enabled.
 		 * We can return and wait for more power.

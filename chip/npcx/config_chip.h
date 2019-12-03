@@ -69,4 +69,7 @@
 #define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
+/* Enable 32KHZ_OUT signal. Can't be used with CONFIG_CONSOLE_UART=1. */
+#undef NPCX_32KHZ_OUT
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
