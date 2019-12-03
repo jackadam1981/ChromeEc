@@ -19,6 +19,8 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "tcpci.h"
+#include "tcpm.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_charge.h"
@@ -725,6 +727,8 @@ static inline void set_state(int port, enum pd_states next_state)
 	/* If we're entering DRP_AUTO_TOGGLE, there is no sink connected. */
 	if (next_state == PD_STATE_DRP_AUTO_TOGGLE) {
 		ppc_sink_is_connected(port, 0);
+		/* Disable Auto Discharge Disconnect */
+		tcpm_auto_discharge_disconnect(port, 0);
 		/*
 		 * Clear the overcurrent event counter
 		 * since we've detected a disconnect.
@@ -749,7 +753,6 @@ static inline void set_state(int port, enum pd_states next_state)
 
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
 	    next_state == PD_STATE_SNK_DISCONNECTED) {
-#ifdef CONFIG_USBC_PPC
 		enum tcpc_cc_voltage_status cc1, cc2;
 
 		tcpm_get_cc(port, &cc1, &cc2);
@@ -758,14 +761,18 @@ static inline void set_state(int port, enum pd_states next_state)
 		 * Tell the PPC module that there is no sink connected.
 		 */
 		if (!cc_is_at_least_one_rd(cc1, cc2)) {
+#ifdef CONFIG_USBC_PPC
 			ppc_sink_is_connected(port, 0);
 			/*
 			 * Clear the overcurrent event counter
 			 * since we've detected a disconnect.
 			 */
 			ppc_clear_oc_event_counter(port);
-		}
 #endif /* CONFIG_USBC_PPC */
+
+			/* Disable Auto Discharge Disconnect */
+			tcpm_auto_discharge_disconnect(port, 0);
+		}
 		/* Clear the holdoff timer since the port is disconnected. */
 		pd[port].ready_state_holdoff_timer = 0;
 
@@ -3313,6 +3320,9 @@ void pd_task(void *u)
 				break;
 
 			/* Debounce complete */
+			if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+				hook_notify(HOOK_USB_PD_CONNECT);
+
 #ifdef CONFIG_USBC_PPC
 			/*
 			 * If the port is latched off, just continue to
@@ -3397,11 +3407,11 @@ void pd_task(void *u)
 				hard_reset_count = 0;
 				timeout = 5*MSEC;
 
-				if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
-					hook_notify(HOOK_USB_PD_CONNECT);
-
 				set_state(port, PD_STATE_SRC_STARTUP);
 			}
+			/* Enable Auto Discharge Disconnect */
+			tcpm_auto_discharge_disconnect(port, 1);
+
 			/*
 			 * AUDIO_ACC will remain in this state indefinitely
 			 * until disconnect.
@@ -3965,8 +3975,12 @@ void pd_task(void *u)
 			}
 
 			/* We are attached */
+			if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+				hook_notify(HOOK_USB_PD_CONNECT);
 			pd[port].polarity = get_snk_polarity(cc1, cc2);
 			set_polarity(port, pd[port].polarity);
+			/* Enable Auto Discharge Disconnect */
+			tcpm_auto_discharge_disconnect(port, 1);
 			/* reset message ID  on connection */
 			pd[port].msg_id = 0;
 			/* initial data role for sink is UFP */
@@ -3999,8 +4013,6 @@ void pd_task(void *u)
 					&pd_usb_billboard_deferred_data,
 					PD_T_AME);
 			}
-			if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
-				hook_notify(HOOK_USB_PD_CONNECT);
 			break;
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
 			if (pd[port].last_state != pd[port].task_state)
