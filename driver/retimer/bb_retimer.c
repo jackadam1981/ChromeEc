@@ -90,10 +90,7 @@ static void bb_retimer_power_handle(int port, int on_off)
 		 * time for both retimers to be initialized. Else allow 20ms
 		 * to initialize.
 		 */
-		if ((USB_PORT0_BB_RETIMER_SHARED_NVM &&
-				(port == TYPE_C_PORT_0)) ||
-		    (USB_PORT1_BB_RETIMER_SHARED_NVM &&
-				(port == TYPE_C_PORT_1)))
+		if (retimer->shared_nvm)
 			msleep(40);
 		else
 			msleep(20);
