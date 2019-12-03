@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edfd1d76_59ff2ca6",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-03T22:21:12Z",
+      "side": 1,
+      "message": "Perhaps:\n#ifdef BOARD_JACUZZI\nGPIO(LID_ACCEL_INT_ODL, PIN(A, 14), GPIO_INPUT);\n/* Jacuzzi doesn\u0027t have EN_PP1800_S5_L. */\nUNIMPLEMENTED(EN_PP1800_S5_L);\n#else\n...",
+      "revId": "282de5583ee85fcb12728d0259f2ca3cda283151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
