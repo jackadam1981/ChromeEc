@@ -310,3 +310,133 @@ __attribute__((weak)) uint8_t board_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
+<<<<<<< HEAD   (aabfb6 hatch: refactor PD_MAX_VOLTAGE/PD_MAX_CURRENT/PD_MAX_POWER/P)
+=======
+
+enum pd_drp_next_states drp_auto_toggle_next_state(
+	uint64_t *drp_sink_time,
+	enum pd_power_role power_role,
+	enum pd_dual_role_states drp_state,
+	enum tcpc_cc_voltage_status cc1,
+	enum tcpc_cc_voltage_status cc2)
+{
+	/* Set to appropriate port state */
+	if (cc_is_open(cc1, cc2)) {
+		/*
+		 * If nothing is attached then use drp_state to determine next
+		 * state. If DRP auto toggle is still on, then remain in the
+		 * DRP_AUTO_TOGGLE state. Otherwise, stop dual role toggling
+		 * and go to a disconnected state.
+		 */
+		switch (drp_state) {
+		case PD_DRP_TOGGLE_OFF:
+			return DRP_TC_DEFAULT;
+		case PD_DRP_FREEZE:
+			if (power_role == PD_ROLE_SINK)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_UNATTACHED_SRC;
+		case PD_DRP_FORCE_SINK:
+			return DRP_TC_UNATTACHED_SNK;
+		case PD_DRP_FORCE_SOURCE:
+			return DRP_TC_UNATTACHED_SRC;
+		case PD_DRP_TOGGLE_ON:
+		default:
+			return DRP_TC_DRP_AUTO_TOGGLE;
+		}
+	} else if ((cc_is_rp(cc1) || cc_is_rp(cc2)) &&
+		drp_state != PD_DRP_FORCE_SOURCE) {
+		/* SNK allowed unless ForceSRC */
+		return DRP_TC_UNATTACHED_SNK;
+	} else if (cc_is_at_least_one_rd(cc1, cc2) ||
+					cc_is_audio_acc(cc1, cc2)) {
+		/*
+		 * SRC allowed unless ForceSNK or Toggle Off
+		 *
+		 * Ideally we wouldn't use auto-toggle when drp_state is
+		 * TOGGLE_OFF/FORCE_SINK, but for some TCPCs, auto-toggle can't
+		 * be prevented in low power mode. Try being a sink in case the
+		 * connected device is dual-role (this ensures reliable charging
+		 * from a hub, b/72007056). 100 ms is enough time for a
+		 * dual-role partner to switch from sink to source. If the
+		 * connected device is sink-only, then we will attempt
+		 * TC_UNATTACHED_SNK twice (due to debounce time), then return
+		 * to low power mode (and stay there). After 200 ms, reset
+		 * ready for a new connection.
+		 */
+		if (drp_state == PD_DRP_TOGGLE_OFF ||
+			drp_state == PD_DRP_FORCE_SINK) {
+			if (get_time().val > *drp_sink_time + 200*MSEC)
+				*drp_sink_time = get_time().val;
+			if (get_time().val < *drp_sink_time + 100*MSEC)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_DRP_AUTO_TOGGLE;
+		} else {
+			return DRP_TC_UNATTACHED_SRC;
+		}
+	} else {
+		/* Anything else, keep toggling */
+		return DRP_TC_DRP_AUTO_TOGGLE;
+	}
+}
+
+#ifdef CONFIG_USBC_PPC
+
+static void pd_send_hard_reset(int port)
+{
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET, 0);
+}
+
+static uint32_t port_oc_reset_req;
+
+static void re_enable_ports(void)
+{
+	uint32_t ports = atomic_read_clear(&port_oc_reset_req);
+
+	while (ports) {
+		int port = __fls(ports);
+
+		ports &= ~BIT(port);
+
+		/*
+		 * Let the board know that the overcurrent is
+		 * over since we're going to attempt re-enabling
+		 * the port.
+		 */
+		board_overcurrent_event(port, 0);
+
+		pd_send_hard_reset(port);
+		/*
+		 * TODO(b/117854867): PD3.0 to send an alert message
+		 * indicating OCP after explicit contract.
+		 */
+	}
+}
+DECLARE_DEFERRED(re_enable_ports);
+
+void pd_handle_overcurrent(int port)
+{
+	/* Keep track of the overcurrent events. */
+	CPRINTS("C%d: overcurrent!", port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_LOGGING))
+		pd_log_event(PD_EVENT_PS_FAULT, PD_LOG_PORT_SIZE(port, 0),
+			PS_FAULT_OCP, NULL);
+
+	ppc_add_oc_event(port);
+	/* Let the board specific code know about the OC event. */
+	board_overcurrent_event(port, 1);
+
+	/* Wait 1s before trying to re-enable the port. */
+	atomic_or(&port_oc_reset_req, BIT(port));
+	hook_call_deferred(&re_enable_ports_data, SECOND);
+}
+
+void pd_handle_cc_overvoltage(int port)
+{
+	pd_send_hard_reset(port);
+}
+
+#endif /* CONFIG_USBC_PPC */
+>>>>>>> CHANGE (fbe977 ppc: Use hard reset to recover from CC overvoltage)
