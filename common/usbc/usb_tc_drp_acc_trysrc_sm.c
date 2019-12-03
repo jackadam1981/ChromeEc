@@ -1747,8 +1747,10 @@ static void tc_error_recovery_run(const int port)
  */
 static void tc_unattached_snk_entry(const int port)
 {
-	if (get_last_state_tc(port) != TC_UNATTACHED_SRC)
+	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		print_current_state(port);
+		tcpm_auto_discharge_disconnect(port, 0);
+	}
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
@@ -1935,6 +1937,8 @@ static void tc_attached_snk_entry(const int port)
 
 	/* Clear Low Power Mode Request */
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED);
+
+	tcpm_auto_discharge_disconnect(port, 1);
 
 #ifdef CONFIG_USB_PE_SM
 	if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
@@ -2408,8 +2412,10 @@ static void tc_dbg_acc_snk_exit(const int port)
  */
 static void tc_unattached_src_entry(const int port)
 {
-	if (get_last_state_tc(port) != TC_UNATTACHED_SNK)
+	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		print_current_state(port);
+		tcpm_auto_discharge_disconnect(port, 0);
+	}
 
 	if (IS_ENABLED(CONFIG_USBC_PPC)) {
 		/* There is no sink connected. */
@@ -2576,6 +2582,8 @@ static void tc_attached_src_entry(const int port)
 
 	/* Clear Low Power Mode Request */
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED);
+
+	tcpm_auto_discharge_disconnect(port, 1);
 
 #if defined(CONFIG_USB_PE_SM)
 	if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
