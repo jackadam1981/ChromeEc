@@ -3634,6 +3634,24 @@
 #undef CONFIG_PRESERVE_LOGS
 
 /*
+ * Allocate a buffer at the beginning or the main RAM bank that
+ * will persistent across reboots.
+ * 
+ * Usage:
+ * Unless there are security concerns, RO could use a much larger
+ * CONFIG_PRESERVED_REGION_SIZE than RW, which allows for expansion
+ * later.
+ * 
+ * If CONFIG_PRESERVED_REGION_JUMPTAG is defined, the perserved
+ * region parameters will automatically be passed as a jump tag.
+ * This flag is only needed in RO and getter functions will be
+ * available in RW.
+ */
+#undef CONFIG_PRESERVED_REGION
+#define CONFIG_PRESERVED_REGION_SIZE (4*1024)
+#undef CONFIG_PRESERVED_REGION_JUMPTAG
+
+/*
  * UART receive buffer size in bytes.  Must be a power of 2 for macros in
  * common/uart_buffering.c to work properly.  Must be larger than
  * CONFIG_CONSOLE_INPUT_LINE_SIZE to copy and paste scripts.

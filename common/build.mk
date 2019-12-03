@@ -164,6 +164,8 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
 
+common-$(CONFIG_PRESERVED_REGION)+=preserved_region.o
+
 ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
 common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
 endif
