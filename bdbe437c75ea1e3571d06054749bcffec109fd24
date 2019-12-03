@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af1e9409_1c7d29ee",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-12-03T23:39:17Z",
+      "side": 1,
+      "message": "nit: just curious if we can keep utilizing get_program_memory_addr().\n\nstruct {\n    uint32_t info_map_offsest;\n    uint16_t header_a_offset[2];\n} headers[] \u003d { { .info_map_offsets \u003d INFO_RO_MAP_OFFSET,\n                  .header_a_offset \u003d { SYSTEM_IMAGE_RO, SYSTEM_IMAGE_RO_B } },\n                { .info_map_offsets \u003d INFO_RW_MAP_OFFSET,\n                  .header_a_offset \u003d { SYSTEM_IMAGE_RW, SYSTEM_IMAGE_RW_B } } };\n\nThen, line 747 can be\nsh \u003d (const struct SignedHeader) get_program_memory_addr(headers[i].header_a_offset[j])",
+      "range": {
+        "startLine": 748,
+        "startChar": 13,
+        "endLine": 750,
+        "endChar": 25
+      },
+      "revId": "bdbe437c75ea1e3571d06054749bcffec109fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
