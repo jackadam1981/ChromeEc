@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c12b749f_bec5ca31",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:42:52Z",
+      "side": 1,
+      "message": "SENSOR_COUNT is defined, we are using it line 55.",
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad499c14_e8b5cdaa",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:42:52Z",
+      "side": 1,
+      "message": "Won\u0027t we read temperature too often when we stage for every event?",
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "121a45c5_4a183d1d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-03T23:42:52Z",
+      "side": 1,
+      "message": "Use same function for line 544-546 and 482-484",
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
