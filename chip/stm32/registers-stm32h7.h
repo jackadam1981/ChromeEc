@@ -560,6 +560,7 @@
 #define  RESET_CAUSE_SFT                0x01000000
 #define  RESET_CAUSE_POR                0x00800000
 #define  RESET_CAUSE_PIN                0x00400000
+#define  RESET_CAUSE_CPU                BIT(17)
 #define  RESET_CAUSE_OTHER              0xfffe0000
 #define  RESET_CAUSE_RMVF               0x00010000
 /* Power cause in PWR CPUCR register (Standby&Stop modes) */
