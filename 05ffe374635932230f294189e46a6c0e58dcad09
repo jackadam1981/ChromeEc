@@ -16,6 +16,29 @@
       "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153a12e9_b6a5660f",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-03T23:10:28Z",
+      "side": 0,
+      "message": "Should the commit message mention that this consolidation contains some functionality changes, ex. allowing swap to sink when not dual role?  \n\nI\u0027m happy boards are changing to this logic, as it makes a lot of sense, but the commit message doesn\u0027t reflect the expected change.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 59
+      },
+      "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
