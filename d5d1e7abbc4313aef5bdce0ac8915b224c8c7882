@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "603855ac_4651cb2b",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-03T06:27:54Z",
+      "side": 1,
+      "message": "Should we move this before battery_compensate_params()?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 44
+      },
+      "revId": "d5d1e7abbc4313aef5bdce0ac8915b224c8c7882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
