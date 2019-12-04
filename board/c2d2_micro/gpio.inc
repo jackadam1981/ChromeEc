@@ -1,0 +1,67 @@
+/* -*- mode:c -*-
+ *
+ * Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Declare symbolic names for all the GPIOs that we care about.
+ * Note: Those with interrupt handlers must be declared first. */
+
+/* UARTs */
+GPIO(UART_DBG_TX,			  PIN(A, 14), GPIO_INPUT)
+GPIO(UART_DBG_RX,			  PIN(A, 15), GPIO_INPUT)
+GPIO(UART_DBG_TX_H1_RX,			  PIN(A, 0),  GPIO_INPUT)
+GPIO(UART_H1_TX_DBG_RX,			  PIN(A, 1),  GPIO_INPUT)
+GPIO(UART_DBG_TX_EC_RX_SCL,		  PIN(B, 6),  GPIO_INPUT)
+GPIO(UART_EC_TX_DBG_RX_SDA,		  PIN(B, 7),  GPIO_INPUT)
+GPIO(UART_DBG_TX_AP_RX_INA_SCL,		  PIN(B, 10), GPIO_INPUT)
+GPIO(UART_AP_TX_DBG_RX_INA_SDA,		  PIN(B, 11), GPIO_INPUT)
+
+/* UART enables */
+/* TODO(aaboagye): Tie these to COMP2 output. input being PA3 */
+GPIO(EN_CLK_CSN_EC_UART,		  PIN(A, 7),  GPIO_OUT_LOW)
+GPIO(EN_MISO_MOSI_H1_UART,		  PIN(A, 2),  GPIO_OUT_LOW)
+
+/* SPI VREFs */
+GPIO(SPIVREF_RSVD_H1VREF_H1_RST_ODL,	  PIN(A, 3),  GPIO_ANALOG)
+GPIO(SPIVREF_HOLDN_ECVREF_H1_PWRBTN_ODL,  PIN(A, 4),  GPIO_ANALOG)
+GPIO(EN_SPIVREF_RSVD_H1VREF_H1_RST,	  PIN(B, 2),  GPIO_OUT_LOW)
+GPIO(EN_SPIVREF_HOLDN_ECVREF_H1_PWRBTN,	  PIN(B, 3),  GPIO_OUT_LOW)
+GPIO(SEL_SPIVREF_H1VREF_3V3,		  PIN(B, 4),  GPIO_OUT_LOW)
+GPIO(SEL_SPIVREF_ECVREF_3V3,		  PIN(B, 5),  GPIO_OUT_LOW)
+GPIO(COMP_VREF_DAC,			  PIN(A, 5),  GPIO_ANALOG)
+
+GPIO(C2D2_MUX_UART_ODL,			  PIN(B, 8),  GPIO_ODR_HIGH)
+
+/* SPI - these pins are shorted to the EC and AP UARTs */
+GPIO(SPI_CSN,				  PIN(B, 12), GPIO_INPUT)
+GPIO(SPI_CLK,				  PIN(B, 13), GPIO_INPUT)
+GPIO(SPI_MISO,				  PIN(B, 14), GPIO_INPUT)
+GPIO(SPI_MOSI,				  PIN(B, 15), GPIO_INPUT)
+
+/* Not connected pins */
+/* UNUSED(PIN(A, 5)) */
+UNUSED(PIN(A, 6))
+UNUSED(PIN(A, 8))
+UNUSED(PIN(A, 9))
+UNUSED(PIN(A, 10))
+UNUSED(PIN(A, 13))
+UNUSED(PIN(B, 0))
+UNUSED(PIN(B, 1))
+UNUSED(PIN(B, 9))
+UNUSED(PIN(C, 13))
+UNUSED(PIN(C, 14))
+UNUSED(PIN(C, 15))
+UNUSED(PIN(F, 0))
+UNUSED(PIN(F, 1))
+
+/* Unimplemented signals since we are not an EC */
+UNIMPLEMENTED(ENTERING_RW)
+UNIMPLEMENTED(WP_L)
+
+/* Alternate Functions */
+ALTERNATE(PIN_MASK(B, 0x00C0), 0, MODULE_USART, 0) /* USART1: PB6,PB7 */
+ALTERNATE(PIN_MASK(A, 0xC000), 1, MODULE_UART, 0)  /* USART2: PA14,PA15 */
+ALTERNATE(PIN_MASK(B, 0x0C00), 4, MODULE_USART, 0) /* USART3: PB10,PB11 */
+ALTERNATE(PIN_MASK(A, 0x0003), 4, MODULE_USART, 0) /* USART4: PA0,PA1 */
