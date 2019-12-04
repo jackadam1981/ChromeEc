@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "241c18d5_c296513e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:04:39Z",
+      "side": 1,
+      "message": "Should have !! to ensure bool type.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 54
+      },
+      "revId": "59f2f8c3092601604bfec47dc4fabe430853ba4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65894821_d0d936f0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:04:39Z",
+      "side": 1,
+      "message": "Nit \"Enable\"",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 11
+      },
+      "revId": "59f2f8c3092601604bfec47dc4fabe430853ba4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
