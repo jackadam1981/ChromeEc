@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28eaa17b_31052c24",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-04T19:52:42Z",
+      "side": 1,
+      "message": "most of our compile-time macro tricks like this we now have in common.h. Is this the appropriate time to move BUILD_ASSERT to common.h?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "272ae663_03b0d02f",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-04T19:52:42Z",
+      "side": 1,
+      "message": "In C++, it\u0027s static_assert. Since there\u0027s a little bit of C++ code for the cr50 fuzzer, we should provide C/C++ compatiblity",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1035440_ba644807",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-04T19:52:42Z",
+      "side": 1,
+      "message": "Since we won\u0027t need the __LINE__ hack anymore, we may be able to get rid of the levels of _BA0_ and _BA1_",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cb73cb_f7d7f30b",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-04T19:52:42Z",
+      "side": 1,
+      "message": "I think the __LINE__ hack was to prevent using duplicate identifiers when multiple BUILD_ASSERTs happened in the same file. _Static_assert should show the file and line number, and we don\u0027t have the identifier concern anymore, so we can get rid of this hack.",
+      "range": {
+        "startLine": 16,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84a9950_576b1f27",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-04T19:52:42Z",
+      "side": 1,
+      "message": "Are we able to update this to static assert as well by putting in the ({ ... }) thing?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
