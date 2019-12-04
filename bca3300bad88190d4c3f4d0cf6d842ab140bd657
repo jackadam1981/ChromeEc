@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e604088_1d821006",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:56:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be if (dev_resp.tbt_adapater \u003d\u003d TBT_ADAPTER_LEGACY)?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 48
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cb6818_801d7a7b",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:56:01Z",
+      "side": 1,
+      "message": "In the BB spec, table 14 calls this bit \"Re-Timer_Driver\" and table 16 calls it \"Active_cable\".  What\u0027s the reason for calling this \"TBT_COMPAT_ACTIVE\"?\nThe latest spec I find is v1.21",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 36
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54610b9_1315d309",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:56:01Z",
+      "side": 1,
+      "message": "Same here - what\u0027s the reason for adding \"TBT_COMPAT\" to the bit names? I\u0027d prefer these bit names match the specification.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291351b0_08fadbc9",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:56:01Z",
+      "side": 1,
+      "message": "Spec calls this TBT_ACTIVE_LINK_TRAINING?  Bit set and bit clear both refer to different LSRX communication modes, so at minimum this name isn\u0027t conveying useful information.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fddfc180_3c02915b",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-04T20:56:01Z",
+      "side": 1,
+      "message": "Please mask (x) with the bit field size for these macros. 0x7 and 0x3, respectively.\nAlso rename to match spec",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
