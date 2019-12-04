@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2aaa7782_52d4903f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-04T10:43:33Z",
+      "side": 1,
+      "message": "More precisely, I should say current implementation of virtual_battery_handler never report I/O errors to host. If anything failed, virtual_battery_handler will return whatever junk value it has back to host.\n\nMy main goal is to let host side never see these junk values.\nThere\u0027s two possible way to fix this:\n1) hide the errors (this is what I\u0027m doing in this CL)\n2) fix virtual_battery_handler to report the error back to host, which I will explain below.\n\nThe problem is not inside kernel, it\u0027s the applications that read battery attributes.\nWe can notify host about i2c read failure, by returning EC_ERROR_INVAL in virtual_battery_handler, applications trying to access the bad attributes will receive an I/O error.\nBut I\u0027m afraid some application (for example, factory tests?) don\u0027t expect things like `cat /sys/class/.../charge_now` will fail, and cause some unexpected behavior.\n\nNot sure which one is better. \nOr maybe I should try method 2) and see what will happen..?",
+      "parentUuid": "4af09989_dbb829e3",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "bcc6a6e7d03eb44fb16884311c9add3d0d97c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cc5f943_e562cf67",
         "filename": "include/battery.h",
         "patchSetId": 3
