@@ -63,6 +63,29 @@
       "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9ee0a0_51f8d76b",
+        "filename": "board/strago/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-04T17:07:47Z",
+      "side": 0,
+      "message": "Does this need an override since it doesn\u0027t define an hpd_update function to call?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 6
+      },
+      "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

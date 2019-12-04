@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f094752_a521d0e2",
+        "filename": "board/puff/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-04T17:07:47Z",
+      "side": 1,
+      "message": "Can this use the common now?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "84d36375f4c304e08bf7ab56e499c180e42bbe63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3d4085_fa06e010",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-04T17:07:47Z",
+      "side": 1,
+      "message": "timestamp_t? Or is that a change for another time?",
+      "range": {
+        "startLine": 670,
+        "startChar": 1,
+        "endLine": 670,
+        "endChar": 9
+      },
+      "revId": "84d36375f4c304e08bf7ab56e499c180e42bbe63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
