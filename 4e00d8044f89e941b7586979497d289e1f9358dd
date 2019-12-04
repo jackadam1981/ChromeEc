@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9916adbe_c475c456",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-04T18:25:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure why we removed this. It\u0027s in the spec.",
+      "range": {
+        "startLine": 2294,
+        "startChar": 2,
+        "endLine": 2294,
+        "endChar": 22
+      },
+      "revId": "4e00d8044f89e941b7586979497d289e1f9358dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
