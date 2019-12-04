@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "85130b74_eb907921",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-04T15:54:03Z",
+      "side": 1,
+      "message": "Since the code will fail if the array are different sizes, please use a compile-time assert to prevent this problem.",
+      "parentUuid": "bf80b1b4_db91436b",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c8d042d_a9a34664",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 4

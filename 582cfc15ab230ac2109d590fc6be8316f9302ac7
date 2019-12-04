@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08998c38_1024fea9",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-04T15:54:03Z",
+      "side": 1,
+      "message": "Please put these comments in the definition of the struct (lines 21-23 above), instead of on each member of the struct in each element of the array.",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa612a62_8cdbad21",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-04T15:54:03Z",
+      "side": 1,
+      "message": "It would be helpful to comment that the -1 is because we\u0027re not using TEMP_SENSOR2 to determine the fan speed. Just comment on it once, instead of copying it to each array element.",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472bda7b_08e38787",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-04T15:54:03Z",
+      "side": 1,
+      "message": "Same comments apply here as for fan_table_clamshell",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
