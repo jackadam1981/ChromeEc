@@ -86,6 +86,30 @@
       "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c10e4f9_9890c2b2",
+        "filename": "board/strago/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-04T19:48:02Z",
+      "side": 0,
+      "message": "Good catch. Maybe I can just put a check in the common code if the function exists?",
+      "parentUuid": "cd9ee0a0_51f8d76b",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 6
+      },
+      "revId": "05ffe374635932230f294189e46a6c0e58dcad09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
