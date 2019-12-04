@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "679eac8d_f5d703b1",
+        "filename": "board/lick/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1375315
+      },
+      "writtenOn": "2019-12-04T02:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12011a7b_5b8dd843",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c05f36f1_8e938de7",
         "filename": "board/lick/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f755ab45_4e32e469",
+        "filename": "board/lick/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1375315
+      },
+      "writtenOn": "2019-12-04T02:17:58Z",
+      "side": 1,
+      "message": "Done. Remove other sku id.",
+      "parentUuid": "c05f36f1_8e938de7",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 16
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f200a6c7_c94cb157",
+        "filename": "board/lick/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1375315
+      },
+      "writtenOn": "2019-12-04T02:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7246d2_5580068c",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bc1fa03_78649f93",
         "filename": "board/lick/board.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9550329f_d561bf4f",
+        "filename": "board/lick/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1375315
+      },
+      "writtenOn": "2019-12-04T02:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bc1fa03_78649f93",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "82238d0680837b83247cabb2286f7b43fa30b420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
