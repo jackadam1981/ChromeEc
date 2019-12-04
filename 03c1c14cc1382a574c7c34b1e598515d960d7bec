@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab214fb5_cd33e7c0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:51:05Z",
+      "side": 1,
+      "message": "In the latest patchset of the CL that creates this field, it\u0027s a uint32_t, but this function returns a uint8_t. Can it have a consistent type?",
+      "range": {
+        "startLine": 233,
+        "startChar": 36,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "03c1c14cc1382a574c7c34b1e598515d960d7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
