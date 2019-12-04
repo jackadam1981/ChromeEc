@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd6a9661_95634ac8",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f959b94_ce2e5d06",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "108b9493_e92e439e",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-02T18:02:44Z",
       "side": 1,
       "message": "What if the arrays aren\u0027t the same size?",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf80b1b4_db91436b",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "This should be the same size as our thermal guys provided. we can define as static if has concern.",
+      "parentUuid": "108b9493_e92e439e",
       "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8911095f_247192a4",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c8d042d_a9a34664",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b231dc9_968e0cce",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2019-12-02T18:02:44Z",
       "side": 1,
       "message": "What happens when one of the sensors is getting hotter and another one isn\u0027t (or possibly even getting colder)?",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc36a8e8_6af58c79",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "Any one sensors is getting hotter/colder it will go to increase patch/decrease path. To prevent\nfan step up and down. Our thermal guy is suggest \"AND\" operation with decrease path.",
+      "parentUuid": "1b231dc9_968e0cce",
       "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -84,6 +156,24 @@
       "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3210670e_fc71049b",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e067ab7a_aa9aef33",
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "a6a6c132_b2982b39",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9283c84f_f877322c",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97b7a4a4_701b2cae",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 4
@@ -130,6 +244,30 @@
       "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d04410_190f7d75",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-04T01:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97b7a4a4_701b2cae",
+      "range": {
+        "startLine": 84,
+        "startChar": 9,
+        "endLine": 84,
+        "endChar": 56
+      },
+      "revId": "ced71a3c6fbd983e23e3e60e70b0fa3615f384b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
