@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c964bbe_dcca6752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-04T21:07:11Z",
+      "side": 1,
+      "message": "Suggest rewriting this to just say \"Change nct38xx driver to use HOOK_USB_PD_CONNECT/DISCONNECT to set/clear TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT according to the spec.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "15b3f926ed2a5c8e1b43843472f62215c90075a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2535798_591d5d5e",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-04T21:07:11Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, since it bypasses the policy checks for when to enable auto toggle.\nShouldn\u0027t tcpci_nct38xx_set_cc() handle this when called from the PD state machine?",
+      "revId": "15b3f926ed2a5c8e1b43843472f62215c90075a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f2c4d1_81ab2d19",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-04T21:07:11Z",
+      "side": 1,
+      "message": "Suggest removing \"enum tcpc_connect_state\" and just using \"int connect\" everywhere.\nThat would allow setting \".tcpc_connect_state_change \u003d tcpci_tcpc_auto_discharge_disconnect\" for a driver that doesn\u0027t need to customize.",
+      "range": {
+        "startLine": 264,
+        "startChar": 52,
+        "endLine": 264,
+        "endChar": 63
+      },
+      "revId": "15b3f926ed2a5c8e1b43843472f62215c90075a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
