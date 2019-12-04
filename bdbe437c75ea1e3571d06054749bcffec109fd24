@@ -22,6 +22,30 @@
       "revId": "bdbe437c75ea1e3571d06054749bcffec109fd24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d5aa23_28c2763c",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-04T23:29:31Z",
+      "side": 1,
+      "message": "good idea, done.",
+      "parentUuid": "af1e9409_1c7d29ee",
+      "range": {
+        "startLine": 748,
+        "startChar": 13,
+        "endLine": 750,
+        "endChar": 25
+      },
+      "revId": "bdbe437c75ea1e3571d06054749bcffec109fd24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
