@@ -22,6 +22,30 @@
       "revId": "e0ddae432cf03448b2356e0253c04cc501dcafe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb9cc51_83876a8a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-04T01:31:58Z",
+      "side": 1,
+      "message": "Personally, I couldn\u0027t find anything. Table 8-4 shows PR_SWAP as non-interruptible.",
+      "parentUuid": "d88c7f1c_e1062daf",
+      "range": {
+        "startLine": 1600,
+        "startChar": 2,
+        "endLine": 1600,
+        "endChar": 22
+      },
+      "revId": "e0ddae432cf03448b2356e0253c04cc501dcafe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
