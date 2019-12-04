@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5db43101_189c5360",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:50:58Z",
+      "side": 1,
+      "message": "Nit: Thunderbolt-compatible?",
+      "range": {
+        "startLine": 209,
+        "startChar": 48,
+        "endLine": 210,
+        "endChar": 14
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e604088_1d821006",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 6
