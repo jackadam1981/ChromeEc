@@ -22,6 +22,30 @@
       "revId": "84a618fc76aec52917950681671bcc47178fbed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb46493b_b480b00e",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-12-04T00:54:53Z",
+      "side": 1,
+      "message": "In that case, would CONFIG_LIBCRYPTOC in chip/g/config_chip.h play the same role as CONFIG_DCRYPTO in cr50/board? What would be the difference between these two configs then?",
+      "parentUuid": "1b7094fa_2b1090c9",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 77
+      },
+      "revId": "84a618fc76aec52917950681671bcc47178fbed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
