@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8dd73ca_68eb2169",
+        "filename": "baseboard/intelrvp/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Can these be if(IS_ENABLED)?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 6
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4417de99_8f42f148",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Nit: Thunderbolt-compatible?",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 331,
+        "endChar": 33
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2a54fb_4dcf413b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Is it practical to just use USB_PD_MUX_TBT_COMPAT_ENABLED, per the above TODO?",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d574dcb2_1cae05c9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer consistent capitalization in situations like this.",
+      "range": {
+        "startLine": 725,
+        "startChar": 61,
+        "endLine": 725,
+        "endChar": 72
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71bd3d3_d7ec520d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Are the fields listed here in the opposite order of the structs to match the formatting in the spec?",
+      "range": {
+        "startLine": 725,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 31
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fffa02_cf8a7788",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Should these names more closely match the comments?",
+      "range": {
+        "startLine": 735,
+        "startChar": 13,
+        "endLine": 735,
+        "endChar": 18
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086b4a31_ceac0e52",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "e",
+      "range": {
+        "startLine": 755,
+        "startChar": 8,
+        "endLine": 755,
+        "endChar": 10
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681a25de_f8452186",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "training",
+      "range": {
+        "startLine": 758,
+        "startChar": 36,
+        "endLine": 758,
+        "endChar": 43
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24634e4f_3e7b3327",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "The comment doesn\u0027t list this value. Is it valid?",
+      "range": {
+        "startLine": 770,
+        "startChar": 1,
+        "endLine": 770,
+        "endChar": 15
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba40be05_97f02bf4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "This seems like a natural candidate for uint16_t.",
+      "range": {
+        "startLine": 787,
+        "startChar": 3,
+        "endLine": 787,
+        "endChar": 11
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043aa5ae_4589600f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "A fixed-width integer type seems like an odd choice for a bit field with a different width. Should there be an enum for this?",
+      "range": {
+        "startLine": 789,
+        "startChar": 3,
+        "endLine": 789,
+        "endChar": 11
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fe05b9_f562d61f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Conversely, a bool seems more natural here.",
+      "range": {
+        "startLine": 791,
+        "startChar": 3,
+        "endLine": 791,
+        "endChar": 11
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b713ca_a627bf99",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-04T21:40:26Z",
+      "side": 1,
+      "message": "Nit: Could this be an enum?",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 49
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
