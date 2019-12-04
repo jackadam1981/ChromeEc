@@ -46,6 +46,30 @@
       "revId": "84a618fc76aec52917950681671bcc47178fbed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744f060b_7e481707",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-04T01:26:53Z",
+      "side": 1,
+      "message": "CONFIG_DCRYPTO refers to the crypto hardware which is available on H1, the code falls back to cryptoc if the hardware is busy or for some functions which are not supported by the hardware.\n\nAt the time H1 based boards were the only users of cryptoc, so one config option was sufficient. Now looks like other boards want to use cryptoc, but H1 crypto  hardware is not available on those boards. This is why it makes sense to have to separate config options.\n\nIt would be better to name CONFIG_DCRYPTO CONFIG_H1_CRYPTO instead, but this would require changes to many files in private-cr5x trees.",
+      "parentUuid": "bb46493b_b480b00e",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 77
+      },
+      "revId": "84a618fc76aec52917950681671bcc47178fbed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
