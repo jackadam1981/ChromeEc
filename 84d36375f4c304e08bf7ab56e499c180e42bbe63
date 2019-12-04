@@ -93,6 +93,30 @@
       "revId": "84d36375f4c304e08bf7ab56e499c180e42bbe63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdea0420_68b5afdd",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-04T20:19:18Z",
+      "side": 1,
+      "message": "Sounds good",
+      "parentUuid": "505b02b7_e6947c40",
+      "range": {
+        "startLine": 670,
+        "startChar": 1,
+        "endLine": 670,
+        "endChar": 9
+      },
+      "revId": "84d36375f4c304e08bf7ab56e499c180e42bbe63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
