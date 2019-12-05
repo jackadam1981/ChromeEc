@@ -70,6 +70,30 @@
       "revId": "e0ddae432cf03448b2356e0253c04cc501dcafe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c96e67c_c515be0b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-05T00:38:43Z",
+      "side": 1,
+      "message": "Briefly talked with Nathan, he was saying in a sink initiated power role swap, where we are the source, we should not set SinkTxNG when responding to the messages. Yes, the PR_SWAP is an AMS, but the source should only set SinkTxNG when it is about to *initiate* an AMS.",
+      "parentUuid": "0e5088a5_4fadb712",
+      "range": {
+        "startLine": 1600,
+        "startChar": 2,
+        "endLine": 1600,
+        "endChar": 22
+      },
+      "revId": "e0ddae432cf03448b2356e0253c04cc501dcafe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
