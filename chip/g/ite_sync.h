@@ -20,7 +20,7 @@
  * zero_one:
  * both_one: values to write at gpio_addr to set the tow lines to these
  *          stattes
- * half_period_ticks: number of interations of the tight loop to last for half
+ * half_period_ticks: number of iterations of the tight loop to last for half
  *          the period of the higher frequency
  * total_ticks_required: total ticks required to generate the sequence of the
  *          necessary duration.

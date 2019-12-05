@@ -13,7 +13,7 @@ encryption submode, if necessary (say ECB for AES).
 
 The rest of the attributes are self explanatory. The default format for the
 clear_text element is ASCII, for the rest - hex. This default could be
-overridded using the 'format' property.
+overridden using the 'format' property.
 
 The ascii strings are stripped of leading and trailing whitespace and then
 joined using space as a separator. Whitespace in hes strings is ignored.

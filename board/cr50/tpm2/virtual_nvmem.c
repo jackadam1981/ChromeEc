@@ -20,7 +20,7 @@
  * Functions to allow access to non-NVRam data through NVRam Indexes.
  *
  * These functions map virtual NV indexes to virtual offsets, and allow
- * reads from those virtual offsets. The functions are contrained based on the
+ * reads from those virtual offsets. The functions are constrained based on the
  * implementation of the calling TPM functions; these constraints and other
  * assumptions are described below.
  *

@@ -245,7 +245,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	 * When decreasing accel ODR, we don't need to drop sample if
 	 * frequency is less than 52Hz.
 	 * At most, we need to drop one sample, but Android requirement specify
-	 * that chaning one sensor ODR should not affect other sensors.
+	 * that changing one sensor ODR should not affect other sensors.
 	 * Leave the bad sample alone, it will be a single glitch in the
 	 * accelerometer data stream.
 	 */

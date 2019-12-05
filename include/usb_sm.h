@@ -73,7 +73,7 @@ void run_state(int port, struct sm_ctx *ctx);
 struct test_sm_data {
 	/* Base pointer of the state machine array */
 	const usb_state_ptr base;
-	/* Size fo the state machine array above */
+	/* Size of the state machine array above */
 	const int size;
 	/* The array of names for states, can be NULL */
 	const char * const * const names;

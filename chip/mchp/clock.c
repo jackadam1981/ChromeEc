@@ -377,7 +377,7 @@ static void prepare_for_deep_sleep(void)
 #ifdef CONFIG_ADC
 	/*
 	 * Clear ADC activate bit. If a conversion is in progress the
-	 * ADC block will not enter low power until the converstion is
+	 * ADC block will not enter low power until the conversion is
 	 * complete.
 	 */
 	MCHP_ADC_CTRL &= ~1;
