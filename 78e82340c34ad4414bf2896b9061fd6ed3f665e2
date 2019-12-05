@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "89c8eeae_31234d5d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-05T21:06:34Z",
+      "side": 1,
+      "message": "and these can be the parameters to the init function",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6eecd1_ffb4d702",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-05T21:06:34Z",
+      "side": 1,
+      "message": "Instead of a #include here, you can #define that init list under a name and use the name here",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8584527_e937b982",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-05T21:06:34Z",
+      "side": 1,
+      "message": "and it can be defined to empty if !defined(CONFIG_ONLINE_CALIB)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad499c14_e8b5cdaa",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 13
