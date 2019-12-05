@@ -621,6 +621,8 @@ $(npcx-monitor-hdr-rw-bin):$(out)/$(npcx-monitor-hdr)_rw.o
 xrefs: $(call targ_if_prog,etags,$(out)/TAGS) \
 	$(call targ_if_prog,ctags,$(out)/tags)
 
+openocd-cfg-debug = $(or $(wildcard $(BDIR)/openocd.cfg),\
+	$(error Board $(BOARD) doesn't support OpenOCD debugging))
 openocd-cfg-flash = $(or $(wildcard $(BDIR)/openocd-flash.cfg),\
 	$(error Board $(BOARD) doesn't support OpenOCD flashing))
 
@@ -637,6 +639,12 @@ flash_ec: $(out)/ec.bin
 .PHONY: flash_dfu
 flash_dfu: $(out)/ec.bin
 	sudo ./$(BDIR)/dfu $(out)/ec.bin
+
+.PHONY: debug
+debug: # Do not touch any artifacts
+	openocd -c "set BOARD $(BOARD)"\
+		-c "set BUILD_DIR $(out)"\
+		-f $(openocd-cfg-debug)
 
 .PHONY: print-baseboard
 print-baseboard:
@@ -690,6 +698,7 @@ help:
 	@echo "  flash     [BOARD=]   - Use OpenOCD to flash the latest image"
 	@echo "  flash_ec  [BOARD=]   - Use flash_ec to flash the latest image"
 	@echo "  flash_dfu [BOARD=]   - Use DFU to flash the latest image"
+	@echo "  debug     [BOARD=]   - Launch OpenOCD for debugging"
 	@echo ""
 	@echo "  print-tests          - Prints all device specific test targets"
 	@echo "  print-host-tests     - Prints all host test targets"
