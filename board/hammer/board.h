@@ -297,6 +297,7 @@
 #endif
 
 #define CONFIG_RWSIG_TYPE_RWSIG
+#define CONFIG_RO_PUBKEY_SIZE 832
 
 /*
  * Add rollback protection, and independent RW region protection.
