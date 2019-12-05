@@ -637,3 +637,6 @@ cheese_v1.1.1755-4da9520
 ```
 
 [Firmware Write Protection]: ./docs/write_protection.md
+
+Testing out the Tricium spellchecker: https://crrev.com/c/1953804. asdlfj some
+typo. Something aka somethign else.
