@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2794b094_f4375984",
+        "filename": "common/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-05T00:32:48Z",
+      "side": 1,
+      "message": "nit: Can you remove this guard because it\u0027s not necessary?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "2867cf99fc6d139959e8b9bab2965401d2b08e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d7c5c9_2954ce32",
+        "filename": "common/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-05T00:32:48Z",
+      "side": 1,
+      "message": "nit: Can you use if (IS_ENABLED(CONFIG_DPTF_FAIL_SAFE_OFFSET)) ...? Then, we can remove the guard at line 55.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "2867cf99fc6d139959e8b9bab2965401d2b08e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deeb90d7_d784361e",
+        "filename": "common/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-05T00:32:48Z",
+      "side": 1,
+      "message": "This basically is the same logic I raised a concern about in patchset 4. It disables the fail-safe mechanism of EC. It means we\u0027ll be forced to always trust DPTF unconditionally.\n\nMy understand is that we let the EC control the fan during boot and let DPTF control the fan while the OS is running but we should keep the fail-safe mechanism (e.g. chipset_force_shutdown) always enabled. Fan control and the fail-safe are orthogonal.\n\nDo you see any problem or conflict between the fail-safe and DPTF?",
+      "range": {
+        "startLine": 164,
+        "startChar": 40,
+        "endLine": 164,
+        "endChar": 67
+      },
+      "revId": "2867cf99fc6d139959e8b9bab2965401d2b08e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537750b1_86521936",
+        "filename": "common/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-05T00:32:48Z",
+      "side": 1,
+      "message": "Could you explain why this check is pushed back? If num_sensors_read \u003d\u003d 0, we have no temperatures to take action on.",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 22
+      },
+      "revId": "2867cf99fc6d139959e8b9bab2965401d2b08e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f8ce22_613ad9bb",
+        "filename": "common/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-05T00:32:48Z",
+      "side": 1,
+      "message": "We need to call fan_get_count because fan_count can be dynamically changed by design.",
+      "range": {
+        "startLine": 218,
+        "startChar": 17,
+        "endLine": 218,
+        "endChar": 28
+      },
+      "revId": "2867cf99fc6d139959e8b9bab2965401d2b08e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
