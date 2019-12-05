@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34739631_9af1f7fa",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T22:02:20Z",
+      "side": 1,
+      "message": "Should use atomic_or / atomic_clear (or static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT])?",
+      "revId": "e3ffa76b5c6b4e895dbb9a49962ef83148493f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
