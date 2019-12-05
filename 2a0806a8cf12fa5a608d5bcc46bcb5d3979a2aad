@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "e2a43007_d7a6def4",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-05T18:20:25Z",
+      "side": 1,
+      "message": "the standard in this file is to just ignore error returns and do nothing.  I added the prints because I don\u0027t like ignoring problems... but then glados didn\u0027t have room.  So I have removed them for good and stayed with the common pattern that is throughout this file.",
+      "parentUuid": "f45edefc_1df00ff2",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03bc5da_1a84ba27",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 16
@@ -138,6 +156,24 @@
       "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3bddfc_170232da",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-05T18:20:25Z",
+      "side": 1,
+      "message": "it will for all generic TCPCIs claiming to be tcpci_tcpcm_drv",
+      "parentUuid": "d03bc5da_1a84ba27",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
