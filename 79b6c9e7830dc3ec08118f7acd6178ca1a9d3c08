@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b5ce81a_232ba79d",
+        "filename": "include/stillness_detector.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-05T21:10:47Z",
+      "side": 1,
+      "message": "nit: typically, these get aligned onto the right margin (at least, that\u0027s how clang-format will put it",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 25
+      },
+      "revId": "79b6c9e7830dc3ec08118f7acd6178ca1a9d3c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
