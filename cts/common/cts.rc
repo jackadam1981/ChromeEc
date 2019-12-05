@@ -6,7 +6,7 @@
 /*
  * This file is included by cts_common.h as an enumeration of error codes,
  * as well as being processed by cts.py to get error code names. The format
- * must be either of the followings:
+ * must be either of the following:
  *
  *   CTS_RC_<NAME>,
  *   CTS_RC_<NAME> = X,

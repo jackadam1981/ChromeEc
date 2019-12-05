@@ -67,7 +67,7 @@ static const uintptr_t nvmem_base_addr[NVMEM_NUM_PARTITIONS] = {
 /* NvMem user buffer start offset table */
 static uint32_t nvmem_user_start_offset[NVMEM_NUM_USERS];
 
-/* A/B partion that is most up to date */
+/* A/B partition that is most up to date */
 static int nvmem_act_partition;
 
 /* NvMem cache memory structure */

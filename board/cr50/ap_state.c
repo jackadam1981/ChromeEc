@@ -146,7 +146,7 @@ void board_closed_loop_reset(void)
 
 	/*
 	 * DETECT_TPM_RST_L_ASSERTED is edge triggered. If TPM_RST_L is already
-	 * low, tpm_rst_asserted wont get called. Alert tpm_rst_asserted
+	 * low, tpm_rst_asserted won't get called. Alert tpm_rst_asserted
 	 * manually if the signal is already low.
 	 */
 	if (!gpio_get_level(GPIO_DETECT_TPM_RST_L_ASSERTED))
@@ -170,7 +170,7 @@ static void init_ap_detect(void)
 	 *
 	 * During this reset, the ap state will not be set to 'on' until the AP
 	 * enters and then leaves reset. The tpm waits until the ap is on before
-	 * allowing any tpm activity, so it wont do anything until the reset is
+	 * allowing any tpm activity, so it won't do anything until the reset is
 	 * complete.
 	 */
 	if (board_uses_closed_loop_reset() &&
@@ -186,7 +186,7 @@ static void init_ap_detect(void)
 		 *
 		 * DONT alert tpm_rst_isr if the board is waiting for the closed
 		 * loop reset to finish. The isr is edge triggered, so
-		 * tpm_rst_deasserted wont be called until the AP enters and
+		 * tpm_rst_deasserted won't be called until the AP enters and
 		 * exits reset. That is what we want. The TPM and other
 		 * peripherals check ap_is_on before enabling interactions with
 		 * the AP, and we want these to be disabled until the closed

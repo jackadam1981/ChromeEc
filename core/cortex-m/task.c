@@ -89,7 +89,7 @@ void __idle(void)
 		 * idle mode starts getting services while the Core transitions
 		 * into idle mode. The results in a hard fault when the Core,
 		 * shortly therefore, resumes execution on exiting idle mode.
-		 * Workaround: Replace the idle function with the followings
+		 * Workaround: Replace the idle function with the following
 		 */
 		asm (
 			"cpsid i\n"             /* Disable interrupt */

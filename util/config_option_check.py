@@ -130,7 +130,7 @@ def obtain_config_options_in_use():
   return options_in_use
 
 def print_missing_config_options(hunks, config_options):
-  """Searches thru all the changes in hunks for missing options and prints them.
+  """Searches through all the changes in hunks for missing options and prints them.
 
   Args:
     hunks: A list of Hunk objects which represent the hunks from the git

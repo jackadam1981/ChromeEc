@@ -130,7 +130,7 @@ struct bmm150_private_data {
 #define BMM150_MAG_MAX_FREQ(_preset) __BMM150_MAG_MAX_FREQ(_preset)
 #endif
 
-/* Specific initialization of BMM150 when behing BMI160 */
+/* Specific initialization of BMM150 when behind BMI160 */
 int bmm150_init(const struct motion_sensor_t *s);
 
 /* Command to normalize and apply temperature compensation */

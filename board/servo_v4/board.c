@@ -443,7 +443,7 @@ static void board_init(void)
 
 	/*
 	 * Disable SBU mux. The polarity is set each time a presence is detected
-	 * on SBU, and wired thorugh. On missing voltage on SBU. SBU wires are
+	 * on SBU, and wired through. On missing voltage on SBU. SBU wires are
 	 * disconnected.
 	 */
 	gpio_set_level(GPIO_SBU_MUX_EN, 0);
