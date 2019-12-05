@@ -829,7 +829,7 @@ int main(int argc, char *argv[])
 	if (api_file_pointer)
 		fclose(api_file_pointer);
 
-	/* Delete temprary header file. */
+	/* Delete temporary header file. */
 	remove(g_hdr_input_name);
 
 	/* Say Bye Bye */
@@ -1865,7 +1865,7 @@ int main_bin(struct tbinparams binary_params)
  *		unsigned int header offset from first byte in
  *		the binary (I)
  * Return:	TRUE if successful
- * Description:	 Go thru bin file and calculate checksum
+ * Description:	 Go through bin file and calculate checksum
  *******************************************************************
  */
 int calc_header_crc_bin(unsigned int *p_cksum)
@@ -1877,7 +1877,7 @@ int calc_header_crc_bin(unsigned int *p_cksum)
 
 	init_calculation(&calc_header_checksum_crc);
 
-	/* Go thru the BIN File and calculate the Checksum */
+	/* Go through the BIN File and calculate the Checksum */
 	if (fseek(g_hfd_pointer, 0x00000000, SEEK_SET) < 0)
 		return FALSE;
 

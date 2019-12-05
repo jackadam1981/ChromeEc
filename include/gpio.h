@@ -57,7 +57,7 @@
 /* Convert GPIO mask to GPIO number / index. */
 #define GPIO_MASK_TO_NUM(mask) (__fls(mask))
 
-/* NOTE: This is normally included from board.h, thru config.h and common.h But,
+/* NOTE: This is normally included from board.h, through config.h and common.h But,
  * some boards and unit tests don't have a gpio_signal enum defined, so we
  * define an empty one here.*/
 #ifndef __CROS_EC_GPIO_SIGNAL_H

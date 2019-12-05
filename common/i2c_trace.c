@@ -96,7 +96,7 @@ static int command_i2ctrace_enable(int port, int slave_addr_lo,
 		return EC_ERROR_PARAM3;
 
 	/*
-	 * Scan thru existing entries to see if there is one we can
+	 * Scan through existing entries to see if there is one we can
 	 * extend instead of making a new entry
 	 */
 	for (t = trace_entries;

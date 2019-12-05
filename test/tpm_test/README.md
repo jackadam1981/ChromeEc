@@ -34,7 +34,7 @@ Script nist_entropy.sh automated this testing by
 2. Gathering 1000000 of 8-bit samples from H1 TRNG and
    storing it in /tmp/trng_output using tpmtest.py -t
 3. Running NIST tool in non-IID (independent and identically distributed) mode
-   to estimate entropy. This specific mode is choosed as there is no formal
+   to estimate entropy. This specific mode is chosen as there is no formal
    proof that TRNG data is independent and identically distributed.
    It follows manual in
    [https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90B.pdf]

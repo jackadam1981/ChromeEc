@@ -66,7 +66,7 @@ static int rpm_pre[FAN_CH_COUNT];
 
 /*
  * Fan specifications. If they (PULSES_ROUND and RPM_DEVIATION) cannot meet
- * the followings, please replace them with correct one in board-level driver.
+ * the following, please replace them with correct one in board-level driver.
  */
 
 /* Pulses per round */

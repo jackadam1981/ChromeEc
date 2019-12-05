@@ -66,7 +66,7 @@
 /*
  * Release the SCL signal to be pulled up to high level.
  * Note: The SCL might be still driven low either by I2C module or external
- * devices connected to ths bus.
+ * devices connected to the bus.
  */
 #define I2C_SCL_FREE(ctrl) \
 		(NPCX_SMBCTL3(ctrl) |= BIT(NPCX_SMBCTL3_SCL_LVL) | \

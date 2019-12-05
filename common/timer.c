@@ -34,7 +34,7 @@ static void expire_timer(task_id_t tskid)
 {
 	/* we are done with this timer */
 	atomic_clear(&timer_running, 1 << tskid);
-	/* wake up the taks waiting for this timer */
+	/* wake up the tasks waiting for this timer */
 	task_set_event(tskid, TASK_EVENT_TIMER, 0);
 }
 

@@ -993,7 +993,7 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
 	/*
 	 * According to USB-C spec 1.3 Table 4-17 "Precedence of power source
 	 * usage", the priority should be: USB-C 3.0A, 1.5A > BC1.2 > USB-C
-	 * under 1.5A.  Choosed the corresponding supplier type, according to
+	 * under 1.5A.  Choose the corresponding supplier type, according to
 	 * charge current, to update.
 	 */
 	if (charge.current < 1500)

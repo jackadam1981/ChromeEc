@@ -81,7 +81,7 @@ enum power_state power_handle_state(enum power_state state)
 
 	/* Pass-through DSW_PWROK to CNL. */
 	if (dswpwrok_in != dswpwrok_out) {
-		CPRINTS("Pass thru GPIO_DSW_PWROK: %d", dswpwrok_in);
+		CPRINTS("Pass through GPIO_DSW_PWROK: %d", dswpwrok_in);
 		gpio_set_level(GPIO_PCH_DSW_PWROK, dswpwrok_in);
 		dswpwrok_out = dswpwrok_in;
 	}
@@ -106,10 +106,10 @@ enum power_state power_handle_state(enum power_state state)
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 
-		/* Pass thru DSWPWROK again since we changed it. */
+		/* Pass through DSWPWROK again since we changed it. */
 		dswpwrok_in = gpio_get_level(GPIO_PMIC_DPWROK);
 		gpio_set_level(GPIO_PCH_DSW_PWROK, dswpwrok_in);
-		CPRINTS("Pass thru GPIO_DSW_PWROK: %d", dswpwrok_in);
+		CPRINTS("Pass through GPIO_DSW_PWROK: %d", dswpwrok_in);
 		dswpwrok_out = dswpwrok_in;
 
 		/* Enable the 5V rail. */

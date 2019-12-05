@@ -403,7 +403,7 @@ enum ec_error_list {
 /**
  * Makes a global variable static when a config option is enabled,
  * extern otherwise (with the intention to cause linker errors if the
- * variable is used outside of a config context, for example thru
+ * variable is used outside of a config context, for example through
  * IS_ENABLED, that it should be).
  *
  * This follows the same constraints as IS_ENABLED, the config option

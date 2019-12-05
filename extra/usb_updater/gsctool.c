@@ -2975,7 +2975,7 @@ int main(int argc, char *argv[])
 		}
 
 		/*
-		 * Move USB updater sate machine to idle state so that vendor
+		 * Move USB updater state machine to idle state so that vendor
 		 * commands can be processed later, if any.
 		 */
 		if (td.ep_type == usb_xfer)

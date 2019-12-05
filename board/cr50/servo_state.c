@@ -120,7 +120,7 @@ void servo_ignore(int enable)
 {
 	if (enable) {
 		/*
-		 * Set servo state to IGNORE, so servo presence wont prevent
+		 * Set servo state to IGNORE, so servo presence won't prevent
 		 * cr50 from enabling EC and AP uart.
 		 */
 		set_state(DEVICE_STATE_IGNORED);

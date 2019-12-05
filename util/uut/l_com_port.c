@@ -293,7 +293,7 @@ int com_port_open(const char *com_port_dev_name,
 	}
 
 	/*
-	 * Drain the console, so what ever is already in the EC console wont
+	 * Drain the console, so what ever is already in the EC console won't
 	 * interfere with programming.
 	 */
 	discard_input(port_handler);

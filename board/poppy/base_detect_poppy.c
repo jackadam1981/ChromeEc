@@ -38,7 +38,7 @@
  * >=rev1: Lid has 604K pull-up, base has 30.1K pull-down, so the
  * ADC value should be around 30.1/(604+30.1)*3300 = 156
  *
- * We add a significant marging on the maximum value, due to noise on the line,
+ * We add a significant margin on the maximum value, due to noise on the line,
  * especially when PWM is active. See b/64193554 for details.
  */
 #define BASE_DETECT_MIN_MV 120

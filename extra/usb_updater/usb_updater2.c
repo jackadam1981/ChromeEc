@@ -923,7 +923,7 @@ static int transfer_image(struct transfer_descriptor *td,
 		}
 
 	/*
-	 * Move USB receiver sate machine to idle state so that vendor
+	 * Move USB receiver state machine to idle state so that vendor
 	 * commands can be processed later, if any.
 	 */
 	send_done(&td->uep);

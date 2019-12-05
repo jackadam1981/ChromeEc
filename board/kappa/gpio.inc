@@ -81,7 +81,7 @@ GPIO(EN_PP1800_S5_L,       PIN(A, 14), GPIO_OUT_LOW)
 GPIO(USB_C0_DISCHARGE,     PIN(B, 6),  GPIO_OUT_LOW)
 
 /*
- * TODO(b:138352732): On IT88801 expander, To be readded once IT8801 driver and
+ * TODO(b:138352732): On IT88801 expander, To be read once IT8801 driver and
  * gpio expander framework has landed.
  */
 UNIMPLEMENTED(EN_PP5000_USBC)

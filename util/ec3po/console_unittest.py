@@ -1149,7 +1149,7 @@ class TestConsoleCompatibility(unittest.TestCase):
 
   @mock.patch('console.Console.CheckForEnhancedECImage')
   def test_ActAsPassThruInNonEnhancedMode(self, mock_check):
-    """Verify we simply pass everything thru to non-enhanced ECs.
+    """Verify we simply pass everything through to non-enhanced ECs.
 
     Args:
       mock_check: A MagicMock object replacing the CheckForEnhancedECImage()
@@ -1183,7 +1183,7 @@ class TestConsoleCompatibility(unittest.TestCase):
     # Verify that the calls happened.
     self.console.cmd_pipe.send.assert_has_calls(expected_calls)
 
-    # Since we're acting as a pass-thru, the input buffer should be empty and
+    # Since we're acting as a pass-through, the input buffer should be empty and
     # input_buffer_pos is 0.
     CheckInputBuffer(self, '')
     CheckInputBufferPosition(self, 0)

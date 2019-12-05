@@ -88,7 +88,7 @@ static inline struct ec_response_motion_sensor_data *get_fifo_head(void)
 }
 
 /**
- * Pop one entry from the motion sense fifo. Poping will give priority to
+ * Pop one entry from the motion sense fifo. Popping will give priority to
  * committed data (data residing between the head and tail of the queue). If no
  * committed data is available (all the data is staged), then this function will
  * remove the oldest staged data by moving both the head and tail.
@@ -110,7 +110,7 @@ static void fifo_pop(void)
 
 	/*
 	 * If all the data is staged (nothing in the committed queue), we'll
-	 * need to move the head and the tail over to simulate poping from the
+	 * need to move the head and the tail over to simulate popping from the
 	 * staged data.
 	 */
 	if (!initial_count)

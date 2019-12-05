@@ -31,7 +31,7 @@
  * In most of the time, aontask is in halt state, and waiting for PMU wakeup
  * interrupt to wakeup (reset prep interrupt also can wakeup aontask
  * if CONFIG_ISH_PM_RESET_PREP defined), after wakeup, aontask will handle the
- * low power states exit process and finaly switch back to main FW.
+ * low power states exit process and finally switch back to main FW.
  *
  * aontask is running in the 32bit protection mode with flat memory segment
  * settings, paging and cache are disabled (cache will be power gated).

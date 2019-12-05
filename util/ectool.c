@@ -1940,7 +1940,7 @@ static int in_gfu_mode(int *opos, int port)
 		return -1;
 	}
 
-	*opos = 0; /* invalid ... must be 1 thru 6 */
+	*opos = 0; /* invalid ... must be 1 through 6 */
 	for (i = 0; i < PDO_MODES; i++) {
 		if (r->vdo[i] == MODE_GOOGLE_FU) {
 			*opos = i + 1;
