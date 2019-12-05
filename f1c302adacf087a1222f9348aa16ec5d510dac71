@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b34aeac_0ef05adc",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T20:24:10Z",
+      "side": 1,
+      "message": "I like making a function to do the read/modify/write.\nLooking at the way these are used, another option would be:\n\n    int tcpc_set_or_clear(int port, int reg, uint8_t mask, int set)\n\nwhich would then set mask when set\u003d1 and clear mask when set\u003d0.\nI think this might be easier to read where it is used. It doesn\u0027t allow clearing and setting different masks at the same time, but then that isn\u0027t currently needed.",
+      "revId": "f1c302adacf087a1222f9348aa16ec5d510dac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
