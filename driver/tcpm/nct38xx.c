@@ -56,21 +56,19 @@ static int nct38xx_tcpm_init(int port)
 		return rv;
 
 	/* Disable OVP */
-	rv = tcpc_read(port, TCPC_REG_FAULT_CTRL, &reg);
-	if (rv)
-		return rv;
-	reg = reg | TCPC_REG_FAULT_CTRL_VBUS_OVP_FAULT_DIS;
-	rv = tcpc_write(port, TCPC_REG_FAULT_CTRL, reg);
+	rv = tcpc_update(port,
+			 TCPC_REG_FAULT_CTRL,
+			 TCPC_REG_FAULT_CTRL_VBUS_OVP_FAULT_DIS,
+			 1);
 	if (rv)
 		return rv;
 
 	/* Enable VBus monitor and Disable FRS */
-	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
-	if (rv)
-		return rv;
-	reg = reg & ~(TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS |
-		      TCPC_REG_POWER_CTRL_FRS_ENABLE);
-	rv = tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+	rv = tcpc_update(port,
+			 TCPC_REG_POWER_CTRL,
+			 (TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS |
+			  TCPC_REG_POWER_CTRL_FRS_ENABLE),
+			 0);
 	if (rv)
 		return rv;
 
@@ -95,13 +93,12 @@ static int nct38xx_tcpm_init(int port)
 	 * Enable the Vendor Define alert event only when the IO expander
 	 * feature is defined
 	 */
-	if (IS_ENABLED(CONFIG_IO_EXPANDER_NCT38XX)) {
-		int mask;
+	if (IS_ENABLED(CONFIG_IO_EXPANDER_NCT38XX))
+		rv |= tcpc_update16(port,
+				    TCPC_REG_ALERT_MASK,
+				    TCPC_REG_ALERT_VENDOR_DEF,
+				    1);
 
-		rv |= tcpc_read16(port, TCPC_REG_ALERT_MASK, &mask);
-		mask |= TCPC_REG_ALERT_VENDOR_DEF;
-		rv |= tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
-	}
 	return rv;
 }
 
@@ -204,20 +201,6 @@ int tcpci_nct38xx_drp_toggle(int port)
 	return tcpci_tcpc_drp_toggle(port);
 }
 
-int tcpci_nct38xx_set_polarity(int port, int polarity)
-{
-	int rv, reg;
-
-	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &reg);
-	if (rv)
-		return rv;
-
-	reg = polarity ? (reg | TCPC_REG_TCPC_CTRL_SET(1)) :
-			  (reg & ~TCPC_REG_TCPC_CTRL_SET(1));
-
-	return tcpc_write(port, TCPC_REG_TCPC_CTRL, reg);
-}
-
 int tcpci_nct38xx_transmit(int port, enum tcpm_transmit_type type,
 			uint16_t header, const uint32_t *data)
 {
@@ -312,7 +295,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_nct38xx_set_cc,
-	.set_polarity		= &tcpci_nct38xx_set_polarity,
+	.set_polarity		= &tcpci_tcpm_set_polarity,
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
