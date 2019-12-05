@@ -43,12 +43,12 @@ int tc_restart_tcpc(int port)
 
 void tc_pause_event_loop(int port)
 {
-	paused = 1;
+	paused |= (1 << port);
 }
 
 void tc_start_event_loop(int port)
 {
-	paused = 0;
+	paused &= ~(1 << port);
 	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
 }
 
@@ -178,7 +178,9 @@ void pd_task(void *u)
 	while (1) {
 		/* wait for next event/packet or timeout expiration */
 		const uint32_t evt =
-			task_wait_event(paused ? -1 : USBC_EVENT_TIMEOUT);
+			task_wait_event((paused & (1 << port))
+						? -1
+						: USBC_EVENT_TIMEOUT);
 
 		/* handle events that affect the state machine as a whole */
 		tc_event_check(port, evt);
