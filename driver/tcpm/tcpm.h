@@ -108,6 +108,10 @@ static inline int tcpc_read(int port, int reg, int *val)
 			      tcpc_config[port].i2c_info.addr_flags, reg, val);
 }
 
+/* perform read, AND~, OR, WRITE operation */
+int tcpc_update(int port, int reg, uint8_t clr_mask, uint8_t set_mask);
+int tcpc_update16(int port, int reg, uint16_t clr_mask, uint16_t set_mask);
+
 static inline void tcpc_lock(int port, int lock)
 {
 	i2c_lock(tcpc_config[port].i2c_info.port, lock);
