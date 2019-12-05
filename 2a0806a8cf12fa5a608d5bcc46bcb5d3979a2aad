@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5137dd69_82294146",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T16:14:47Z",
+      "side": 1,
+      "message": "This can be replaced by tcpci_tcpm_select_rp_value().",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461154b9_2cd901f3",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T16:14:47Z",
+      "side": 1,
+      "message": "Would like to replace this with tcpci_tcpc_drp_toggle() but I guess we have to keep it for setting cable_polarity until crbug.com/951681 is fixed.",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62ed93e_587862e5",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T16:14:47Z",
+      "side": 1,
+      "message": "I think this can be replaced by tcpci_tcpm_set_polarity() now.",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45edefc_1df00ff2",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T16:14:47Z",
+      "side": 1,
+      "message": "Why not leave prints enabled?",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03bc5da_1a84ba27",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-05T16:14:47Z",
+      "side": 1,
+      "message": "So this will start setting/clearing AUTO_DISCHARGE_DISCONNECT for all boards using this driver?",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
