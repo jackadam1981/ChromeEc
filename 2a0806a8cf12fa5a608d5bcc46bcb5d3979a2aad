@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a51f7d87_06730d1c",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-05T18:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5137dd69_82294146",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "461154b9_2cd901f3",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 16
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9ca621ee_bc6b3287",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-05T18:05:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "461154b9_2cd901f3",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b62ed93e_587862e5",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 16
@@ -50,6 +86,24 @@
       "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9110e685_3f51a158",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-05T18:05:53Z",
+      "side": 1,
+      "message": "We don\u0027t need to retain the other bit values in this register?  Or should this implementation become the generic TCPCI implementation?  I will move this over to TCPCI in another CL",
+      "parentUuid": "b62ed93e_587862e5",
+      "revId": "2a0806a8cf12fa5a608d5bcc46bcb5d3979a2aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
