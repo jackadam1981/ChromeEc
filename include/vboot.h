@@ -2,10 +2,68 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#ifndef __CROS_EC_INCLUDE_VBOOT_H
+#define __CROS_EC_INCLUDE_VBOOT_H
 
 #include "common.h"
 #include "vb21_struct.h"
 #include "rsa.h"
+
+#define CR50_COMM_PREFIX                0xec
+#define MIN_LENGTH_PREFIX               4
+#define CR50_COMM_MAGIC_CHAR0           'E'
+#define CR50_COMM_MAGIC_CHAR1           'C'
+#define CR50_COMM_MAGIC_WORD            ((CR50_COMM_MAGIC_CHAR1 << 8) | \
+					 CR50_COMM_MAGIC_CHAR0)
+
+/**
+ * EC-Cr50 data stream looks like as follows:
+ *
+ *   [preamble]|[header][payload]
+ *
+ * preamble: 0xec ...
+ * header: struct cr50_comm_packet
+ * payload: data[]
+ */
+struct cr50_comm_packet {
+	/* Header */
+	uint16_t magic;	/* CR50_COMM_MAGIC_WORD */
+	uint8_t crc;	/* checksum computed from all bytes after crc */
+	uint16_t cmd;	/* CR50_COMM_CMD_* (or control packet with no data) */
+	uint8_t size;	/* Payload size. Max 32 bytes. */
+	uint8_t data[];	/* Payload */
+} __packed;
+
+#define CR50_COMM_MAX_DATA_SIZE         32
+#define CR50_COMM_MAX_PACKET_SIZE       (sizeof(struct cr50_comm_packet) + \
+					 CR50_COMM_MAX_DATA_SIZE)
+
+/* commands */
+#define CR50_COMM_CMD_SET_BOOT_MODE     0x01
+#define CR50_COMM_CMD_VERIFY_HASH       0x02
+
+/* return code */
+#define CR50_COMM_READY                 0x60
+#define CR50_COMM_SUCCESS               0xec
+#define CR50_COMM_ERROR_UNKNOWN         0xe0
+#define CR50_COMM_ERROR_MAGIC           0xe1
+#define CR50_COMM_ERROR_CRC             0xe2
+#define CR50_COMM_ERROR_ROLLBACK        0xe3
+#define CR50_COMM_ERROR_TIMEOUT         0xe4
+#define CR50_COMM_ERROR_UNSUPPORTED     0xe5
+#define CR50_COMM_ERROR_SIZE            0xe6
+#define CR50_COMM_HASH_MISMATCH         0xe7
+
+enum ec_efs_boot_mode {
+	EC_EFS_BOOT_MODE_RESET            = 0xff,
+	EC_EFS_BOOT_MODE_NORMAL           = 0x00,
+	EC_EFS_BOOT_MODE_RECOVERY         = 0x01,
+	EC_EFS_BOOT_MODE_NO_BOOT          = 0x02,
+	EC_EFS_BOOT_MODE_NO_BOOT_RECOVERY = 0x03,
+
+	/* boot_mode is uint8_t */
+	EC_EFS_BOOT_MODE_LIMIT            = 255,
+};
 
 /**
  * Validate key contents.
@@ -58,3 +116,5 @@ void vboot_main(void);
  * @return 1: need PD communication. 0: PD communication is not needed.
  */
 int vboot_need_pd_comm(void);
+
+#endif  /* __CROS_EC_INCLUDE_VBOOT_H */
