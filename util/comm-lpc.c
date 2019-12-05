@@ -52,7 +52,7 @@ static int ec_command_lpc(int command, int version,
 {
 	struct ec_lpc_host_args args;
 	const uint8_t *d;
-	uint8_t *dout;
+	uint8_t *doubt;
 	int csum;
 	int i;
 
@@ -90,8 +90,8 @@ static int ec_command_lpc(int command, int version,
 	}
 
 	/* Read back args */
-	for (i = 0, dout = (uint8_t *)&args; i < sizeof(args); i++, dout++)
-		*dout = inb(EC_LPC_ADDR_HOST_ARGS + i);
+	for (i = 0, doubt = (uint8_t *)&args; i < sizeof(args); i++, doubt++)
+		*doubt = inb(EC_LPC_ADDR_HOST_ARGS + i);
 
 	/*
 	 * If EC didn't modify args flags, then somehow we sent a new-style
@@ -112,10 +112,10 @@ static int ec_command_lpc(int command, int version,
 	csum = command + args.flags + args.command_version + args.data_size;
 
 	/* Read response and update checksum */
-	for (i = 0, dout = (uint8_t *)indata; i < args.data_size;
-	     i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PARAM + i);
-		csum += *dout;
+	for (i = 0, doubt = (uint8_t *)indata; i < args.data_size;
+	     i++, doubt++) {
+		*doubt = inb(EC_LPC_ADDR_HOST_PARAM + i);
+		csum += *doubt;
 	}
 
 	/* Verify checksum */
@@ -135,7 +135,7 @@ static int ec_command_lpc_3(int command, int version,
 	struct ec_host_request rq;
 	struct ec_host_response rs;
 	const uint8_t *d;
-	uint8_t *dout;
+	uint8_t *doubt;
 	int csum = 0;
 	int i;
 
@@ -186,9 +186,9 @@ static int ec_command_lpc_3(int command, int version,
 
 	/* Read back response header and start checksum */
 	csum = 0;
-	for (i = 0, dout = (uint8_t *)&rs; i < sizeof(rs); i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PACKET + i);
-		csum += *dout;
+	for (i = 0, doubt = (uint8_t *)&rs; i < sizeof(rs); i++, doubt++) {
+		*doubt = inb(EC_LPC_ADDR_HOST_PACKET + i);
+		csum += *doubt;
 	}
 
 	if (rs.struct_version != EC_HOST_RESPONSE_VERSION) {
@@ -207,9 +207,9 @@ static int ec_command_lpc_3(int command, int version,
 	}
 
 	/* Read back data and update checksum */
-	for (i = 0, dout = (uint8_t *)indata; i < rs.data_len; i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PACKET + sizeof(rs) + i);
-		csum += *dout;
+	for (i = 0, doubt = (uint8_t *)indata; i < rs.data_len; i++, doubt++) {
+		*doubt = inb(EC_LPC_ADDR_HOST_PACKET + sizeof(rs) + i);
+		csum += *doubt;
 	}
 
 	/* Verify checksum */

@@ -250,7 +250,7 @@ static int bmp280_set_range(const struct motion_sensor_t *s,
 	struct bmp280_drv_data_t *data = BMP280_GET_DATA(s);
 	/*
 	 * ->range contains the number of bit to right shift in order for the
-	 * measurment to fit into 16 bits (or less if the AP wants to).
+	 * measurement to fit into 16 bits (or less if the AP wants to).
 	 */
 	data->range = 15 - __builtin_clz(range);
 	return EC_SUCCESS;

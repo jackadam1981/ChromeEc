@@ -591,7 +591,7 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
  */
 int board_set_active_charge_port(int charge_port)
 {
-	/* charge port is a realy physical port */
+	/* charge port is a really physical port */
 	int is_real_port = (charge_port >= 0 &&
 			    charge_port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	/* check if we are source vbus on that port */
@@ -854,7 +854,7 @@ static void sb_update(void)
  * and is configured for continuous reading mode by default.
  * DS1624 does not implement temperature limits or other features of
  * sensors like the TMP411.
- * Output format is 16-bit MSB first signed celcius temperature in units
+ * Output format is 16-bit MSB first signed celsius temperature in units
  * of 0.0625 degree Celsius.
  * b[15]=sign bit
  * b[14]=2^6, b[13]=2^5, ..., b[8]=2^0

@@ -225,7 +225,7 @@ struct usb_power_config {
 	/* USB endpoint state.*/
 	struct dwc_usb_ep *ep;
 
-	/* Interface and endpoint indicies. */
+	/* Interface and endpoint indices. */
 	int interface;
 	int endpoint;
 

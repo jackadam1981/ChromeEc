@@ -574,7 +574,7 @@ DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
 
 void battery_compensate_params(struct batt_params *batt)
 {
-	int numer, denom;
+	int number, denom;
 	int remain = batt->remaining_capacity;
 	int full = batt->full_capacity;
 	int lfcc = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
@@ -606,10 +606,10 @@ void battery_compensate_params(struct batt_params *batt)
 	 *   charge = 100 * remain/full;
 	 *   100 * (charge - shutdown_pct) / (full_factor - shutdown_pct);
 	 */
-	numer = (100 * remain - lfcc * batt_host_shutdown_pct) * 1000;
+	number = (100 * remain - lfcc * batt_host_shutdown_pct) * 1000;
 	denom = lfcc * (100 - batt_host_shutdown_pct);
 	/* Rounding (instead of truncating) */
-	batt->display_charge = (numer + denom / 2) / denom;
+	batt->display_charge = (number + denom / 2) / denom;
 	if (batt->display_charge < 0)
 		batt->display_charge = 0;
 }

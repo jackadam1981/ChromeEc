@@ -136,14 +136,14 @@ int usart_get_parity(struct usart_config const *config)
  */
 void usart_set_parity(struct usart_config const *config, int parity)
 {
-	uint32_t ue;
+	uint32_t due;
 	intptr_t base = config->hw->base;
 
 	if ((parity < 0) || (parity > 2))
 		return;
 
 	/* Record active state and disable the UART. */
-	ue = STM32_USART_CR1(base) & STM32_USART_CR1_UE;
+	due = STM32_USART_CR1(base) & STM32_USART_CR1_UE;
 	STM32_USART_CR1(base) &= ~STM32_USART_CR1_UE;
 
 	if (parity) {
@@ -162,7 +162,7 @@ void usart_set_parity(struct usart_config const *config, int parity)
 	}
 
 	/* Restore active state. */
-	STM32_USART_CR1(base) |= ue;
+	STM32_USART_CR1(base) |= due;
 }
 
 void usart_interrupt(struct usart_config const *config)

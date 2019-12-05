@@ -72,7 +72,7 @@
 
 /* ChargeCurrent Register - 0x14
  * The ChargeCurrent register controls a DAC. Therefore
- * the below definitions are cummulative. */
+ * the below definitions are cumulative. */
 #define CHARGE_I_64MA                   BIT(6)
 #define CHARGE_I_128MA                  BIT(7)
 #define CHARGE_I_256MA                  BIT(8)
@@ -87,7 +87,7 @@
 
 /* MaxChargeVoltage Register - 0x15
  * The MaxChargeVoltage register controls a DAC. Therefore
- * the below definitions are cummulative. */
+ * the below definitions are cumulative. */
 #define CHARGE_V_16MV                   BIT(4)
 #define CHARGE_V_32MV                   BIT(5)
 #define CHARGE_V_64MV                   BIT(6)
@@ -104,7 +104,7 @@
 
 /* MinSystemVoltage Register - 0x3e
  * The MinSystemVoltage register controls a DAC. Therefore
- * the below definitions are cummulative. */
+ * the below definitions are cumulative. */
 #define MIN_SYS_V_256MV                 BIT(8)
 #define MIN_SYS_V_512MV                 BIT(9)
 #define MIN_SYS_V_1024MV                BIT(10)
@@ -115,7 +115,7 @@
 
 /* InputCurrent Register - 0x3f
  * The InputCurrent register controls a DAC. Therefore
- * the below definitions are cummulative. */
+ * the below definitions are cumulative. */
 #define INPUT_I_64MA                   BIT(6)
 #define INPUT_I_128MA                  BIT(7)
 #define INPUT_I_256MA                  BIT(8)

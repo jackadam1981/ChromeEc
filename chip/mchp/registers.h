@@ -926,7 +926,7 @@
 /* Port80 Capture */
 #define MCHP_P80_BASE(x)	(0x400f8000 + ((x) << 10))
 #define MCHP_P80_HOST_DATA(x)	REG8(MCHP_P80_BASE(x))
-/* Data catpure with timestamp register */
+/* Data capture with timestamp register */
 #define MCHP_P80_CAP(x)		REG32(MCHP_P80_BASE(x) + 0x100)
 #define MCHP_P80_CFG(x)		REG8(MCHP_P80_BASE(x) + 0x104)
 #define MCHP_P80_STS(x)		REG8(MCHP_P80_BASE(x) + 0x108)

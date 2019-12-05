@@ -105,7 +105,7 @@ class Console(object):
       bidirectional pipe.  Console commands and responses utilize this pipe.
     dbg_pipe: A socket.socket or multiprocessing.Connection object which
       represents the console's read-only side of the debug pipe.  This must be a
-      unidirectional pipe attached to the intepreter.  EC debug messages use
+      unidirectional pipe attached to the interpreter.  EC debug messages use
       this pipe.
     oobm_queue: A Queue.Queue or multiprocessing.Queue which is used for out of
       band management for the interactive console.
@@ -140,7 +140,7 @@ class Console(object):
 
   def __init__(self, master_pty, user_pty, interface_pty, cmd_pipe, dbg_pipe,
                name=None):
-    """Initalises a Console object with the provided arguments.
+    """Initialises a Console object with the provided arguments.
 
     Args:
     master_pty: File descriptor to the master side of the PTY.  Used for driving
@@ -153,7 +153,7 @@ class Console(object):
       bidirectional pipe.  Console commands and responses utilize this pipe.
     dbg_pipe: A socket.socket or multiprocessing.Connection object which
       represents the console's read-only side of the debug pipe.  This must be a
-      unidirectional pipe attached to the intepreter.  EC debug messages use
+      unidirectional pipe attached to the interpreter.  EC debug messages use
       this pipe.
     name: the console source name
     """
@@ -873,7 +873,7 @@ def StartLoop(console, command_active, shutdown_pipe=None):
   """Starts the infinite loop of console processing.
 
   Args:
-    console: A Console object that has been properly initialzed.
+    console: A Console object that has been properly initialized.
     command_active: ctypes data object or multiprocessing.Value indicating if
       servod owns the console, or user owns the console. This prevents input
       collisions.

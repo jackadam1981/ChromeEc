@@ -160,7 +160,7 @@ static void adc_interval_read(int ain_id, int interval_ms)
 {
 	adc_configure(ain_id, STM32_ADC_SMPR_DEFAULT);
 
-	/* EXTEN=01 -> hardware trigger detection on rising edge */
+	/* EXTENT=01 -> hardware trigger detection on rising edge */
 	STM32_ADC_CFGR1 = (STM32_ADC_CFGR1 & ~STM32_ADC_CFGR1_EXTEN_MASK)
 		| STM32_ADC_CFGR1_EXTEN_RISE;
 
@@ -192,7 +192,7 @@ static void adc_interval_read(int ain_id, int interval_ms)
 
 static void adc_interval_stop(void)
 {
-	/* EXTEN=00 -> hardware trigger detection disabled */
+	/* EXTENT=00 -> hardware trigger detection disabled */
 	STM32_ADC_CFGR1 &= ~STM32_ADC_CFGR1_EXTEN_MASK;
 
 	/* Set ADSTP to clear ADSTART */

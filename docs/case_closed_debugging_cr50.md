@@ -581,7 +581,7 @@ need to remove the screw.
 
 #### AP Off
 
-Cr50 puts the device in reset to flash the AP. Due to hardware limitiations Cr50
+Cr50 puts the device in reset to flash the AP. Due to hardware limitations Cr50
 may not be able to disable write protect while the device is in reset. If you
 want to reflash RO firmware using CCD and your board has issues disabling HW WP,
 you may need to disable SW write protect.

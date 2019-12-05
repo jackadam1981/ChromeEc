@@ -122,7 +122,7 @@
 #ifdef CHIP_VARIANT_ISH5P4
 /* Use combined ISR for ipc communication between host and ISH */
 #define CONFIG_ISH_HOST2ISH_COMBINED_ISR
-/* Use Synopsys Designware uart */
+/* Use Synopsis Designware uart */
 #define CONFIG_ISH_DW_UART
 #else
 /* Need to clear ISH fabric error */

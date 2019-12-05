@@ -135,7 +135,7 @@ static void scp_cache_init(void)
 		 * address in the mean time.  This may break the loaded
 		 * memory layout, and thus break the system.  Cache-size
 		 * should only be be configured in kernel driver before
-		 * laoding the firmware. b/137920815#comment18
+		 * loading the firmware. b/137920815#comment18
 		 */
 		SCP_CACHE_CON(c) &= (SCP_CACHE_CON_CACHESIZE_MASK |
 				     SCP_CACHE_CON_WAYEN);

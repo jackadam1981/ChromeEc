@@ -28,7 +28,7 @@ uint32_t check_board_id_vs_header(const struct board_id *id,
  *
  * @param id	Pointer to a Board ID structure to fill
  *
- * @return EC_SUCCESS of an error code in cases of vairous failures to read.
+ * @return EC_SUCCESS of an error code in cases of various failures to read.
  */
 int read_board_id(struct board_id *id);
 

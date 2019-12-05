@@ -161,7 +161,7 @@ void task_trigger_test_interrupt(void (*isr)(void))
 		return;
 	}
 
-	/* Suspend current task and excute ISR */
+	/* Suspend current task and execute ISR */
 	pending_isr = isr;
 	if (task_started) {
 		pthread_kill(tasks[running_task_id].thread, SIGNAL_INTERRUPT);
@@ -508,7 +508,7 @@ static void task_enable_all_tasks_callback(void)
 {
 	int i;
 
-	/* Initialize the remaning tasks. */
+	/* Initialize the remaining tasks. */
 	for (i = 0; i < TASK_ID_COUNT; ++i) {
 		if (tasks[i].thread != (pthread_t)NULL)
 			continue;

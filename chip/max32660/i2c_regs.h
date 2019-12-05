@@ -1190,7 +1190,7 @@ typedef struct {
 						   Setting */
 
 /**
- * Interrupt Staus Register 1.
+ * Interrupt Status Register 1.
  */
 #define MXC_F_I2C_INT_EN1_RX_OVERFLOW_POS \
 	0 /**< INT_EN1_RX_OVERFLOW Position                                    \

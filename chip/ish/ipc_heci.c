@@ -38,7 +38,7 @@
 #define CPRINTF(format, args...) cprintf(CC_LPC, format, ## args)
 
 /*
- * comminucation protocol is defined in Linux Documentation
+ * communication protocol is defined in Linux Documentation
  * <kernel_root>/Documentation/hid/intel-ish-hid.txt
  */
 
@@ -402,7 +402,7 @@ static void handle_busy_clear_interrupt(const uint32_t peer_id)
 	IPC_BUSY_CLEAR = ctx->clr_busy_bit;
 
 	/*
-	 * No need to use sync mechanism here since the accesing the queue
+	 * No need to use sync mechanism here since the accessing the queue
 	 * happens only when either this IRQ is disabled or
 	 * in ISR context(here) of this IRQ.
 	 */

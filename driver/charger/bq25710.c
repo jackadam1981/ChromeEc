@@ -197,13 +197,13 @@ static void bq25710_init(void)
 	}
 
 	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
-		/* Disbale VDPM prochot profile at initialization */
+		/* Disable VDPM prochot profile at initialization */
 		reg &= ~BQ25710_PROCHOT_PROFILE_VDPM;
 		/*
 		 * Enable PROCHOT to be asserted with VSYS min detection. Note
 		 * that when no battery is present, then VSYS will be set to the
 		 * value in register 0x3E (MinSysVoltage) which means that when
-		 * no battery is present prochot will continuosly be asserted.
+		 * no battery is present prochot will continuously be asserted.
 		 */
 		reg |= BQ25710_PROCHOT_PROFILE_VSYS;
 #ifdef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA

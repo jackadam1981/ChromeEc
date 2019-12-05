@@ -313,7 +313,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 uint32_t board_override_feature_flags0(uint32_t flags0)
 {
 	/*
-	 * We always compile in backlight support for Meep/Dorp, but only some
+	 * We always compile in backlight support for Meep/Drop, but only some
 	 * SKUs come with the hardware. Therefore, check if the current
 	 * device is one of them and return the default value - with backlight
 	 * here.

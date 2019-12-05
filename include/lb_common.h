@@ -20,7 +20,7 @@ void lb_set_rgb(unsigned int led, int red, int green, int blue);
 int lb_get_rgb(unsigned int led, uint8_t *red, uint8_t *green, uint8_t *blue);
 /* Set the overall brightness level. */
 void lb_set_brightness(unsigned int newval);
-/* Get the overall brighness level. */
+/* Get the overall brightness level. */
 uint8_t lb_get_brightness(void);
 /* Initialize the IC controller registers to sane values. */
 void lb_init(int use_lock);

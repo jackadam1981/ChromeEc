@@ -9,7 +9,7 @@
 #define __CROS_EC_OTP_H
 
 /*
- * OTP: One Time Programable memory is used for storing persistent data.
+ * OTP: One Time Programmable memory is used for storing persistent data.
  */
 
 /**

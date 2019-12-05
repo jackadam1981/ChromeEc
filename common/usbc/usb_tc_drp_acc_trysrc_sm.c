@@ -947,7 +947,7 @@ void tc_event_check(int port, int evt)
 }
 
 /*
- * CC values for regular sources and Debug sources (aka DTS)
+ * CC values for regular sources and Debug sources (a.k.a. DTS)
  *
  * Source type  Mode of Operation   CC1    CC2
  * ---------------------------------------------

@@ -38,7 +38,7 @@ class PinweaverModel {
   uint32_t ApplyRequest(const fuzz::pinweaver::Request& pinweaver,
                         fuzz::span<uint8_t> buffer);
 
-  // Clears any state. This shoudl be called at the beginning of each fuzzing
+  // Clears any state. This should be called at the beginning of each fuzzing
   // iteration.
   void Reset();
 

@@ -1864,7 +1864,7 @@ static void display_usage(const char *program)
 	fprintf(stderr, "-R, --range base[:size] : Allow to read or write"
 		" just a slice\n"
 		"\tof the file, starting at <base>:<size> bytes, or til\n"
-		"\tthe end of the file if <size> is not specified, expressed\n"
+		"\the end of the file if <size> is not specified, expressed\n"
 		"\tin hex.\n");
 	fprintf(stderr, "-r, --read <file> : Read the flash content and"
 			" write it into <file>.\n");

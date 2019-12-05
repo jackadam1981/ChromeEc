@@ -2524,7 +2524,7 @@ struct ec_response_motion_sense_fifo_info {
 	/* Amount of space used in the fifo */
 	uint16_t count;
 	/* Timestamp recorded in us.
-	 * aka accurate timestamp when host event was triggered.
+	 * a.k.a. accurate timestamp when host event was triggered.
 	 */
 	uint32_t timestamp;
 	/* Total amount of vector lost */
@@ -2620,7 +2620,7 @@ struct ec_params_motion_sense {
 		 */
 		struct __ec_todo_unpacked {
 			/* Data to set or EC_MOTION_SENSE_NO_VALUE to read.
-			 * kb_wake_angle: angle to wakup AP.
+			 * kb_wake_angle: angle to wakeup AP.
 			 */
 			int16_t data;
 		} kb_wake_angle;

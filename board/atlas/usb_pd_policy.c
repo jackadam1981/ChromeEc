@@ -327,7 +327,7 @@ static int svdm_dp_status(int port, uint32_t *payload)
 			 CMD_DP_STATUS | VDO_OPOS(opos));
 	/*
 	 * VESA DisplayPort Alt Mode on USB Type-C Standard Version 1.0b:
-	 * 5.2.3 requries DP_FLAGS_DP_ON permanently set for DFP_D
+	 * 5.2.3 requires DP_FLAGS_DP_ON permanently set for DFP_D
 	 */
 	payload[1] = VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
 				   0, /* HPD level ... not applicable */

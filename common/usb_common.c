@@ -28,7 +28,7 @@ int usb_get_battery_soc(void)
 }
 
 /*
- * CC values for regular sources and Debug sources (aka DTS)
+ * CC values for regular sources and Debug sources (a.k.a. DTS)
  *
  * Source type  Mode of Operation   CC1    CC2
  * ---------------------------------------------

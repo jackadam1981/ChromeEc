@@ -796,7 +796,7 @@ void system_common_pre_init(void)
 		/*
 		 * If the jump data structure isn't the same size as the
 		 * current one, shift the jump tags to immediately before the
-		 * current jump data structure, to make room for initalizing
+		 * current jump data structure, to make room for initializing
 		 * the new fields below.
 		 */
 		if (jdata->version == 1)

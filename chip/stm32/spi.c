@@ -675,7 +675,7 @@ static void spi_init(void)
 
 	/*
 	 * Select the right DMA request for the variants using it.
-	 * This is not required for STM32F4 since the channel (aka request) is
+	 * This is not required for STM32F4 since the channel (a.k.a. request) is
 	 * set directly in the respective dma_option. In fact, it would be
 	 * overridden in dma-stm32f4::prepare_stream().
 	 */

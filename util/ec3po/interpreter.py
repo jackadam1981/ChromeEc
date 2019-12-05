@@ -41,7 +41,7 @@ class LoggerAdapter(logging.LoggerAdapter):
 class Interpreter(object):
   """Class which provides the interpretation layer between the EC and user.
 
-  This class essentially performs all of the intepretation for the EC and the
+  This class essentially performs all of the interpretation for the EC and the
   user.  It handles all of the automatic command retrying as well as the
   formation of commands for EC images which support that.
 
@@ -59,7 +59,7 @@ class Interpreter(object):
     cmd_retries: An integer representing the number of attempts the console
       should retry commands if it receives an error.
     log_level: An integer representing the numeric value of the log level.
-    inputs: A list of objects that the intpreter selects for reading.
+    inputs: A list of objects that the interpreter selects for reading.
       Initially, these are the EC UART and the command pipe.
     outputs: A list of objects that the interpreter selects for writing.
     ec_cmd_queue: A FIFO queue used for sending commands down to the EC UART.
@@ -77,7 +77,7 @@ class Interpreter(object):
   """
   def __init__(self, ec_uart_pty, cmd_pipe, dbg_pipe, log_level=logging.INFO,
                name=None):
-    """Intializes an Interpreter object with the provided args.
+    """Initializes an Interpreter object with the provided args.
 
     Args:
       ec_uart_pty: A string representing the EC UART to connect to.
@@ -157,7 +157,7 @@ class Interpreter(object):
       | |    ||    ||  |-- the raw console command.
       | |    ||    ||-- 1 ampersand.
       | |    ||____|--- 2 hex digits representing the CRC8 of cmd.
-      | |____|-- 2 hex digits reprsenting the length of cmd.
+      | |____|-- 2 hex digits representing the length of cmd.
       |-- 2 ampersands
 
     Args:

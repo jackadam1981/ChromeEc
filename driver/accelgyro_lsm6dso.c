@@ -229,7 +229,7 @@ void lsm6dso_interrupt(enum gpio_signal signal)
 }
 
 /**
- * irq_handler - bottom half of the interrupt task sheduled by consumer
+ * irq_handler - bottom half of the interrupt task scheduled by consumer
  */
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {

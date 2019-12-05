@@ -69,7 +69,7 @@ void NvGetReserved(UINT32 index, NV_RESERVED_ITEM *ri)
 	       sizeof(index_size));
 
 	if (index_size == ~0)
-		/* Must be starting with empty flash memeory. */
+		/* Must be starting with empty flash memory. */
 		index_size = 0;
 
 	ri->size = index_size + sizeof(index_size);
@@ -332,7 +332,7 @@ void drop_evictable_obj(void *obj)
 	read_from_cache(obj_addr - sizeof(next_addr), sizeof(next_addr),
 			&next_addr);
 	ccprintf("%s:%d dropping obj at cache addr %x, offset %x, addr %pP "
-		 "next addr %x aka %x (off s_evictNvStart)\n",
+		 "next addr %x a.k.a. %x (off s_evictNvStart)\n",
 		 __func__, __LINE__, obj_addr - s_evictNvStart, obj_addr, obj,
 		 next_addr, next_addr - s_evictNvStart);
 

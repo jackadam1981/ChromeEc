@@ -320,8 +320,8 @@ void uart_init(void)
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) \
 || defined(CHIP_FAMILY_STM32H7)
 	/*
-	 * Wake up on start bit detection. WUS can only be written when UE=0,
-	 * so clear UE first.
+	 * Wake up on start bit detection. WUS can only be written when DUE=0,
+	 * so clear DUE first.
 	 */
 	STM32_USART_CR1(UARTN_BASE) &= ~STM32_USART_CR1_UE;
 

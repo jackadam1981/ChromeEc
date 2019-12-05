@@ -59,7 +59,7 @@
 
 /* NOTE: This is normally included from board.h, thru config.h and common.h But,
  * some boards and unit tests don't have a gpio_signal enum defined, so we
- * define an emtpy one here.*/
+ * define an empty one here.*/
 #ifndef __CROS_EC_GPIO_SIGNAL_H
 enum gpio_signal {
 	GPIO_COUNT
@@ -266,7 +266,7 @@ void gpio_reset(enum gpio_signal signal);
  * an interrupt handler.  Normally called by the module which handles the
  * interrupt, once it's ready to start processing interrupts.
  *
- * @param signal	Signal to enable interrrupts for
+ * @param signal	Signal to enable interrupts for
  * @return EC_SUCCESS, or non-zero if error.
  */
 int gpio_enable_interrupt(enum gpio_signal signal);

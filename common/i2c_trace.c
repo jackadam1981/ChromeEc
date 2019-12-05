@@ -108,7 +108,7 @@ static int command_i2ctrace_enable(int port, int slave_addr_lo,
 			    t->slave_addr_hi >= slave_addr_hi)
 				return EC_SUCCESS;
 
-			/* Extends exising range on both directions, replace */
+			/* Extends existing range on both directions, replace */
 			if (t->slave_addr_lo >= slave_addr_lo &&
 			    t->slave_addr_hi <= slave_addr_hi) {
 				t->enabled = 0;

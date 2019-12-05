@@ -59,7 +59,7 @@ __aeabi_uldivmod:
 	@ denom(r7:r6) = r3:r2 << 32
 
 	@ TODO(crosbug.com/p/36128): Loops like this (which occur in several
-	@ places in this file) are inefficent in ARMv6-m.
+	@ places in this file) are inefficient in ARMv6-m.
 
 	movs	r5, #1		@ bitmask
 	adds	r7, r2, #0	@ dont shift if denominator would overflow

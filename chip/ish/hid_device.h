@@ -38,7 +38,7 @@ struct hid_callbacks {
 	int (*get_feature_report)(const hid_handle_t handle,
 				  const uint8_t report_id, uint8_t *buf,
 				  const size_t buf_size);
-	/* return tranferred data size. if returns <= 0, error */
+	/* return transferred data size. if returns <= 0, error */
 	int (*set_feature_report)(const hid_handle_t handle,
 				  const uint8_t report_id, const uint8_t *data,
 				  const size_t data_size);

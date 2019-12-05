@@ -238,7 +238,7 @@ static void connect_pinmux(struct pinmux const *p)
 		/* We don't have to setup any muxes for directly connected
 		 * pads. The only ones that we are likely to ever care about
 		 * are tied to the SPS and SPI peripherals, and they're all
-		 * inouts, so we can just enable the digital input for them
+		 * inputs, so we can just enable the digital input for them
 		 * regardless. */
 		is_input = 1;
 	} else {
@@ -517,7 +517,7 @@ static const char * const int_str[] = {
 static void show_gpiocfg(int n)
 {
 	uint32_t din = GR_GPIO_DATAIN(n);
-	uint32_t dout = GR_GPIO_DOUT(n);
+	uint32_t doubt = GR_GPIO_DOUT(n);
 	uint32_t outen = GR_GPIO_SETDOUTEN(n);
 	uint32_t inten = GR_GPIO_SETINTEN(n);
 	uint32_t intpol = GR_GPIO_SETINTPOL(n);
@@ -532,7 +532,7 @@ static void show_gpiocfg(int n)
 
 		ccprintf("GPIO%d_GPIO%d:\tread %d", n, i, !!(din & mask));
 		if (outen & mask)
-			ccprintf(" drive %d", !!(dout & mask));
+			ccprintf(" drive %d", !!(doubt & mask));
 		if (inten & mask) {
 			j = ((intpol & mask) ? 2 : 0) +
 				((inttype & mask) ? 1 : 0);

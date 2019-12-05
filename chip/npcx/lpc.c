@@ -796,10 +796,10 @@ static void lpc_init(void)
 #endif
 
 	/*
-	 * Use SMI/SCI postive polarity as default.
+	 * Use SMI/SCI positive polarity as default.
 	 * Negative polarity must be enabled in the case that SMI/SCI is
 	 * generated automatically by hardware. In current design,
-	 * SMI/SCI is conntrolled by FW. Use postive polarity is more
+	 * SMI/SCI is conntrolled by FW. Use positive polarity is more
 	 * intuitive.
 	 */
 	CLEAR_BIT(NPCX_HIPMCTL(PMC_ACPI), NPCX_HIPMCTL_SCIPOL);
@@ -810,7 +810,7 @@ static void lpc_init(void)
 #ifndef CONFIG_SCI_GPIO
 	/*
 	 * Allow SMI/SCI generated from PM module.
-	 * Either hardware autimatically generates,
+	 * Either hardware automatically generates,
 	 * or set SCIB/SMIB bit in HIPMIC register.
 	 */
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);

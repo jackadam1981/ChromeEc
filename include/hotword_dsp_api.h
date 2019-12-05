@@ -38,7 +38,7 @@ int GoogleHotwordDspProcess(const void *samples, int num_samples,
  */
 void GoogleHotwordDspReset(void);
 
-/* Returns the maximum possible audio preamble length in miliseconds. */
+/* Returns the maximum possible audio preamble length in milliseconds. */
 int GoogleHotwordDspGetMaximumAudioPreambleMs(void);
 
 /* Returns an internal version number that this library was built at. */

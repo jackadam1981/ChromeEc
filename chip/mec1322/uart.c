@@ -113,7 +113,7 @@ DECLARE_IRQ(MEC1322_IRQ_UART, uart_ec_interrupt, 1);
 
 void uart_init(void)
 {
-	/* Set UART to reset on VCC1_RESET instaed of nSIO_RESET */
+	/* Set UART to reset on VCC1_RESET instead of nSIO_RESET */
 	MEC1322_UART_CFG &= ~BIT(1);
 
 	/* Baud rate = 115200. 1.8432MHz clock. Divisor = 1 */
