@@ -72,7 +72,7 @@ enum tcs3400_mode {
 
 #define TCS_I2C_AUX_ASL_INT_ENABLE          BIT(5)
 
-/* Light data resides at 0x94 thru 0x98 */
+/* Light data resides at 0x94 through 0x98 */
 #define TCS_DATA_START_LOCATION             TCS_I2C_CDATAL
 #define TCS_CLEAR_DATA_SIZE                 2
 #define TCS_RGBC_DATA_SIZE                  8

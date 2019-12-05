@@ -1102,7 +1102,7 @@ void system_jump_to_booter(void)
 		flash_used,        /* Number of bytes to download      */
 		SIGN_NO_CHECK,     /* Need CRC check or not               */
 		addr_entry,        /* jump to this address after download */
-		&status            /* Status fo download */
+		&status            /* Status of download */
 	);
 #endif
 }

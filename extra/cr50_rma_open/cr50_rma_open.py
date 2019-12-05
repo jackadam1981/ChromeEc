@@ -90,7 +90,7 @@ serialname.
 
 DEBUG_CONNECTION = """
 DEBUG CONNECTION:
-Found the USB device but cant communicate with any of the consoles.
+Found the USB device but can't communicate with any of the consoles.
 
 Try Running cr50_rma_open again. If it still fails unplug the ccd cable
 for 5 seconds and plug it back in.

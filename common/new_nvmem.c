@@ -229,7 +229,7 @@
  *
  * So, during initialization the flash could be in one of three states:
  *
- * - thre is an erased transaction delimiter at the top
+ * - there is an erased transaction delimiter at the top
  *   . this is the normal state after successful commit operation.
  *
  * - there is transaction delimiter at the top, but it is not erased.

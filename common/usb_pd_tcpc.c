@@ -1379,7 +1379,7 @@ void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
 	if (len == 0) {
 		/*
 		 * if this is a read, we must call send_response() for
-		 * i2c transaction to finishe properly
+		 * i2c transaction to finish properly
 		 */
 		if (read)
 			(*send_response)(0);

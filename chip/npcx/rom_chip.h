@@ -58,7 +58,7 @@ typedef void (*download_from_flash_ptr) (
 	uint32_t size,       /* Number of bytes to download */
 	enum API_SIGN_OPTIONS_T sign, /* Need CRC check or not */
 	uint32_t exe_addr, /* jump to this address after download if not zero */
-	enum API_RETURN_STATUS_T *status /* Status fo download */
+	enum API_RETURN_STATUS_T *status /* Status of download */
 );
 
 

@@ -120,7 +120,7 @@ static void process_read_access(uint16_t reg_size,
 
 	/*
 	 * Now, this is a hack, but we are short on SRAM, so let's reuse the
-	 * receive buffer for the FIFO data sotrage. We know that the ISR has
+	 * receive buffer for the FIFO data storage. We know that the ISR has
 	 * a 64 byte buffer were it moves received data.
 	 */
 	/* Back pointer up by one to point to beginning of buffer */
