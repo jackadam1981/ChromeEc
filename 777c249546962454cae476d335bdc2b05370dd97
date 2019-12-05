@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20ec873a_d101abf8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-05T17:22:56Z",
+      "side": 1,
+      "message": "Since these are the same, can we just put them in usb_common.c?",
+      "revId": "777c249546962454cae476d335bdc2b05370dd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
