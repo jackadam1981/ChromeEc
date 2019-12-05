@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9651f89_ccb0f08f",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T17:14:08Z",
+      "side": 1,
+      "message": "This is the only time MSG is actually used. Might as well call it seed.",
+      "revId": "da4e93fb3ecb7ea623c6b2d87c4dba73011ed180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca06e8a_da10df40",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T17:14:08Z",
+      "side": 1,
+      "message": "May be I\u0027m missing something, but it doesn\u0027t look like \"in\" is actually used in the call to the signing operation. Only the digest which is passed in separately is used. In that case, it\u0027s simpler to remove msg from the command for signing.",
+      "revId": "da4e93fb3ecb7ea623c6b2d87c4dba73011ed180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
