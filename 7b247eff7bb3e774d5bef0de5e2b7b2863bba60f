@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6cea3aa_1be1a174",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-05T14:42:01Z",
+      "side": 1,
+      "message": "I think it is kind of nice that compile time marcros like this are separate.\n\nI could honestly see CONCAT and STRINGIGY moving into this file, where as the other defines within common.h seem more related to the EC codebase versus compile/build time helpers.\n\nIf we want to combine the files, then that should be a separate CL",
+      "parentUuid": "28eaa17b_31052c24",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "272ae663_03b0d02f",
         "filename": "include/compile_time_macros.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87101f33_3d4e3539",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-05T14:42:01Z",
+      "side": 1,
+      "message": "the C++ fuzzer tests run with this code as is. There must already be a compatibility layer in",
+      "parentUuid": "272ae663_03b0d02f",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c04b9bb0_e3eb3ea9",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-05T14:42:01Z",
+      "side": 1,
+      "message": "I updated to print the __FILE__ and __LINE__ along with the optional message. That makes the first error line you see contain the most useful information.\n\nI added this example to the commit message, but here is the output\n\n...\n  CC      RW/chip/npcx/gpio.o\n  CC      RW/chip/npcx/header.o\nIn file included from include/common.h:13,\n                 from include/adc.h:11,\n                 from board/phaser/board.c:8:\ninclude/compile_time_macros.h:13:2: error: static assertion failed: \"board/phaser/board.c:74: Size mismatch\"\n  _Static_assert(cond, file \":\" #line \": \" msg)\n\n....",
+      "parentUuid": "f1035440_ba644807",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25cb73cb_f7d7f30b",
         "filename": "include/compile_time_macros.h",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "bbe54e14_c3e1632f",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-05T14:42:01Z",
+      "side": 1,
+      "message": "Agreed that was probably one of the reasons for it, but I think adding __FILE__ and __LINE__ make it more readable now",
+      "parentUuid": "25cb73cb_f7d7f30b",
+      "range": {
+        "startLine": 16,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a84a9950_576b1f27",
         "filename": "include/compile_time_macros.h",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb13dbe_68af509f",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-05T14:42:01Z",
+      "side": 1,
+      "message": "Follow up CL.",
+      "parentUuid": "a84a9950_576b1f27",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "7b247eff7bb3e774d5bef0de5e2b7b2863bba60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
