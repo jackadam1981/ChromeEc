@@ -22,6 +22,30 @@
       "revId": "231a611cb61deb3d141ebbe7f5f46163a978a809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74479bd7_1276f2ba",
+        "filename": "board/stryke/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-06T20:15:40Z",
+      "side": 1,
+      "message": "My understanding is that the PD stack will only allow sinking of \u003e 3A when it has detected that the cable can support that, otherwise it will limit it to 3A (or less if the board requests that), regardless of what the max requested is.",
+      "parentUuid": "d687b8d0_8c7527d5",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "231a611cb61deb3d141ebbe7f5f46163a978a809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
