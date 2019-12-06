@@ -46,6 +46,30 @@
       "revId": "18cd6ee0ac545870090f3e9440d033f1bb187abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b6b81b_472a8cfc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T17:33:21Z",
+      "side": 1,
+      "message": "Alright, I see what you are saying about more atomic AMSs than not. And we do want to implement the AMS logic correct according to the spec, agreed.\n\nI traced the interrutible logic and here is my recommendation:\n - Leave the check of !PE_FLAGS_INTERRUPTIBLE_AMS in pe_error (as it exists)\n - Remove all other instances of set and clr PE_FLAGS_INTERRUPTIBLE_AMS\n - Add set PE_FLAGS_INTERRUPTIBLE_AMS to the entry and clr PE_FLAGS_INTERRUPTIBLE_AMS to exit of the following 3 states\n  - pe_vdm_request\n  - pe_vdm_response\n  - pe_handle_custom_vdm_request\n\nThat should cover all code path that are actually sending (i.e. transmitting) a non-atomic AMS. The current setting of flags is too board, for example we set PE_FLAGS_INTERRUPTIBLE_AMS before doing do_discovery, but that code path may go down a power role swap which is an atomic AMS, so it is incorrect.\n\nI think with the above code suggestions, I think we will be operating correct with AMS.",
+      "parentUuid": "3d568cae_48382b43",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "18cd6ee0ac545870090f3e9440d033f1bb187abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
