@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbf21726_41f4257a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T17:44:46Z",
+      "side": 1,
+      "message": "more subjective, put this would be nice if we had a enum here and it read SET_MASK or CLEAR_MASK instead of 1 and 0.\n\n\nIf we don\u0027t use an enum, then all of the nakes 1s and 0s need a comment saying what they are doing like /* Set Bits */ or /* Clear bits */",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "225c29c8a0e73215e4e668f741048e3ce5dab695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ecac84_e5e53ba1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T17:44:46Z",
+      "side": 1,
+      "message": "(not in this CL). Honestly, we should probably elevate this to the i2c common code (we would still have to have the tcpc passthrough version too though). This is a very common paradigm",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "225c29c8a0e73215e4e668f741048e3ce5dab695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c546c236_8ecef624",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T17:44:46Z",
+      "side": 1,
+      "message": "this needs more explanation. Please exicitly call out that if set is true then the mask bit will be set to 1, and if set is 0 then those mask bits will be clear. This also will not perform another write if the setting value would be unchanged from the read value (which is what most people want, but it could be possible that someone wouldn\u0027t want that, so we should call that assumption out in the header)",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 45
+      },
+      "revId": "225c29c8a0e73215e4e668f741048e3ce5dab695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
