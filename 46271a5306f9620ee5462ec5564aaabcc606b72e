@@ -22,6 +22,30 @@
       "revId": "46271a5306f9620ee5462ec5564aaabcc606b72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb09e39_483e259e",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-06T00:41:15Z",
+      "side": 1,
+      "message": "No. You are right.\nAll of these lines were 1 space more to the right.",
+      "parentUuid": "227ed74b_6f26536b",
+      "range": {
+        "startLine": 687,
+        "startChar": 31,
+        "endLine": 687,
+        "endChar": 34
+      },
+      "revId": "46271a5306f9620ee5462ec5564aaabcc606b72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
