@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "012930c1_74020716",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T15:06:08Z",
+      "side": 1,
+      "message": "this is unnecessary since this file won\u0027t be compiled without this flag enabled. please remove",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 34
+      },
+      "revId": "a97a8ba2e60c52f31ba22b808ffa9d841369e473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
