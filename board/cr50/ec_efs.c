@@ -8,6 +8,7 @@
 #include "console.h"
 #include "crc8.h"
 #include "ec_commands.h"
+#include "extension.h"
 #include "hooks.h"
 #include "registers.h"
 #include "system.h"
@@ -166,6 +167,44 @@ static void deferred_ec_reset(void)
 }
 DECLARE_DEFERRED(deferred_ec_reset);
 
+/**
+ * TPM vendor command handler to respond with EC Boot Mode.
+ *
+ * @return VENDOR_RC_SUCCESS
+ *
+ */
+static enum vendor_cmd_rc get_boot_mode_(struct vendor_cmd_params *p)
+{
+	uint8_t *buffer;
+
+	if (!board_has_ec_cr50_comm_support())
+		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
+
+	buffer = (uint8_t *)p->buffer;
+	buffer[0] = (uint8_t)ec_efs_ctx.scratch.b.boot_mode;
+
+	p->out_size = 1;
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_GET_BOOT_MODE, get_boot_mode_);
+
+/**
+ * TPM vendor command handler to reset EC.
+ *
+ * @return VEDOR_RC_SUCCESS
+ */
+static enum vendor_cmd_rc reset_ec_(struct vendor_cmd_params *p)
+{
+	if (!board_has_ec_cr50_comm_support())
+		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
+
+	hook_call_deferred(&deferred_ec_reset_data, 50 * MSEC);
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_RESET_EC, reset_ec_);
+
 /*
  * A console command, printing EC-EFS status.
  */
@@ -178,30 +217,37 @@ static int command_ec_efs(int argc, char **argv)
 
 #ifdef CR50_RELAXED
 	if (argc > 1) {
-		char *ptr;
-		int len;
+		if (!strcasecmp(argv[1], "hash")) {
+			char *ptr;
+			int len;
 
-		if (strcasecmp(argv[1], "hash"))
+			if (argc < 2)
+				return EC_ERROR_PARAM2;
+
+			ccprintf("dumping hash...\n");
+
+			/* Overwrite EC hash code with argv[2] */
+			len = 0;
+			ptr = (char *)&argv[2][0];
+			while (*ptr) {
+				char in[2] = {'\0', '\0'};
+				uint8_t out;
+
+				in[0] = *ptr;
+				out = strtoul(in, NULL, 16);
+
+				if (len % 2)
+					ec_efs_ctx.hash[len/2] |= out;
+				else
+					ec_efs_ctx.hash[len/2] = out << 4;
+
+				len++;
+				ptr++;
+			}
+		} else {
 			return EC_ERROR_PARAM1;
-
-		if (argc < 2)
-			return EC_ERROR_PARAM2;
-
-		/* Overwrite EC hash code with argv[2] */
-		len = 0;
-		ptr = (char *)&argv[2][0];
-		while (*ptr) {
-			char in = *ptr;
-			uint8_t out = strtoul(&in, NULL, 16);
-
-			if (len % 2)
-				ec_efs_ctx.hash[len/2] |= out;
-			else
-				ec_efs_ctx.hash[len/2] = out << 4;
-
-			len++;
-			ptr++;
 		}
+		ccprintf("\n");
 	}
 #endif
 
