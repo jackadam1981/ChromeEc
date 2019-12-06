@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f7de597_8c97fb99",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:27:15Z",
+      "side": 1,
+      "message": "could we make a derived CONFIG_FP_SENSOR that is defined if any of the FP_SENSORs are defined like we do for other derived configs. That way if we need this CONFIG_FP_SENSOR condition anywhere else we don\u0027t have to duplicate code and we only have to update one location.\n\nThoughts?",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 71
+      },
+      "revId": "ba721096809e77e5b1ab402142bc477379a6d276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
