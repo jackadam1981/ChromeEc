@@ -416,6 +416,9 @@ uint16_t ec_efs_set_boot_mode(const char *data, const uint8_t size);
 /* Verify the given hash data against the EC-FW hash from kernel secdata */
 uint16_t ec_efs_verify_hash(const char *hash_data, const uint8_t size);
 
+/* Re-load EC Hash code from TPM Kernel Secdata */
+void ec_efs_refresh(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
