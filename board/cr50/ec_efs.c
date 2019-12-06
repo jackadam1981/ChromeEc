@@ -6,11 +6,13 @@
  */
 #include "common.h"
 #include "console.h"
+#include "crc8.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "registers.h"
-#include "sha256.h"
 #include "system.h"
+#include "tpm_nvmem.h"
+#include "tpm_nvmem_ops.h"
 #include "vboot.h"
 
 #define CPRINTS(format, args...) cprints(CC_TASK, "EC-EFS: " format, ## args)
@@ -19,8 +21,11 @@
  * Context of EC-EFS
  */
 static struct ec_efs_context_ {
-	uint32_t boot_mode:8;	/* enum ec_efs_boot_mode */
-	uint32_t reserved:24;
+	uint32_t boot_mode:8;	        /* enum ec_efs_boot_mode */
+	uint32_t hash_is_loaded:1;	/* Is EC hash loaded from nvmem */
+	uint32_t reserved:23;
+
+	uint32_t secdata_error_code;
 
 	uint8_t hash[SHA256_DIGEST_SIZE];	/* EC-RW digest */
 } ec_efs_ctx;
@@ -53,6 +58,72 @@ static inline void set_boot_mode_(uint8_t mode_val)
 	ec_efs_ctx.boot_mode = mode_val;
 }
 
+static void load_ec_hash_(struct ec_efs_context_ *ctx)
+{
+	uint8_t buf[256];
+	struct vb2_secdata_kernel *secdata = (struct vb2_secdata_kernel *)buf;
+	const uint32_t secdata_size = sizeof(struct vb2_secdata_kernel);
+	uint32_t size_to_crc;
+	uint32_t struct_size;
+	uint8_t crc;
+
+	if (read_tpm_nvmem(KERNEL_NV_INDEX, secdata_size,
+			   &buf) != tpm_read_success) {
+		CPRINTS("secdata_kernel: read error");
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA;
+		return;
+	}
+
+	/*
+	 * Check Struct Version. CRC offset may be different with old struct
+	 * version
+	 */
+	if (secdata->struct_version < VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN) {
+		CPRINTS("secdata_kernel: version incompatible");
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_INCOMPATIBLE;
+		return;
+	}
+
+	/*
+	 * Check struct size.
+	 */
+	struct_size = secdata->struct_size;
+	if (struct_size < secdata_size) {
+		CPRINTS("secdata_kernel: undersized (%d bytes)", struct_size);
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_UNDERSIZED;
+		return;
+	}
+
+	/*
+	 * If it is bigger than secdata_size, then
+	 * the whole struct should be read so that CRC can be checked.
+	 */
+	if (struct_size > secdata_size) {
+		if (read_tpm_nvmem(KERNEL_NV_INDEX, struct_size, &buf)
+		    != tpm_read_success) {
+			CPRINTS("secdata_kernel: read error");
+			ctx->secdata_error_code = EC_ERROR_VBOOT_DATA;
+			return;
+		}
+	}
+
+	/* Check CRC */
+	size_to_crc = struct_size -
+		      offsetof(struct vb2_secdata_kernel, crc8) -
+		      sizeof(secdata->crc8);
+	crc = crc8((uint8_t *)&secdata->reserved0, size_to_crc);
+	if (crc != secdata->crc8) {
+		CPRINTS("secdata_kernel: bad CRC");
+		ctx->secdata_error_code = EC_ERROR_CRC;
+		return;
+	}
+
+	/* Read hash and copy to hash */
+	memcpy(ctx->hash, secdata->ec_hash, sizeof(secdata->ec_hash));
+	ctx->hash_is_loaded = 1;
+	ctx->secdata_error_code = EC_SUCCESS;
+}
+
 /*
  * Initialize EC-EFS context.
  */
@@ -71,7 +142,11 @@ static void ec_efs_init_(void)
 	else
 		ec_efs_reset();
 
-	/* TODO(crbug/1020578): Read Hash from Kernel NV Index */
+	/* Read an EC hash in kernel secdata (TPM kernel NV index). */
+	if (ec_efs_ctx.hash_is_loaded)
+		return;
+
+	load_ec_hash_(&ec_efs_ctx);
 }
 DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
 
@@ -138,6 +213,10 @@ static int command_ec_efs(int argc, char **argv)
 	ccprintf("[EC-EFS Context]\n");
 	ccprintf("boot_mode          : 0x%02x\n", get_boot_mode_());
 
+	ccprintf("ec_hash is loaded  : %s\n",
+		 ec_efs_ctx.hash_is_loaded ? "YES" : "NO");
+	ccprintf("secdata_error_code : 0x%08x\n",
+		 ec_efs_ctx.secdata_error_code);
 #ifdef CR50_RELAXED
 	ccprintf("ec_hash_secdata    : %ph\n",
 		 HEX_BUF(ec_efs_ctx.hash, SHA256_DIGEST_SIZE));
@@ -201,6 +280,9 @@ uint16_t ec_efs_verify_hash(const char *hash_data, const int size)
 	if (size != SHA256_DIGEST_SIZE)
 		return CR50_COMM_ERROR_SIZE;
 
+	if (!ec_efs_ctx.hash_is_loaded)
+		load_ec_hash_(&ec_efs_ctx);
+
 	if (memcmp(hash_data, ec_efs_ctx.hash, SHA256_DIGEST_SIZE)) {
 		/* Verification failed */
 		set_boot_mode_(EC_EFS_BOOT_MODE_NO_BOOT);
@@ -213,4 +295,11 @@ uint16_t ec_efs_verify_hash(const char *hash_data, const int size)
 	}
 
 	return CR50_COMM_SUCCESS;
+}
+
+void ec_efs_refresh(void)
+{
+	ec_efs_ctx.hash_is_loaded = 0;
+
+	load_ec_hash_(&ec_efs_ctx);
 }
