@@ -72,6 +72,23 @@
     },
     {
       "key": {
+        "uuid": "3645ef76_7f8a9489",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-06T22:56:41Z",
+      "side": 1,
+      "message": "Instead of the additional raw_state[] variable, how about storing into state[] here, and ending the loop here.  Then verify consistency, before finally doing a new loop over the colums, to add simulated keys, and masking coordinates that do not correspond to actual keys?\n\nFurther, with such a layout, instead of detecting inconsistencies and reporting them with an error, you could update state[] such that if two columns share any rows, then take the logical or of the set of each column, and assign that value to both columns.  Since the scan was obviously done during a transition, if the scan had happened microseconds before or after, we could have got the reading that is computed as above, so it would be safe.  has_ghosting() may later invalidate the whole scan, as usual.",
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d3c8ff3_08b5bb08",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -83,6 +100,30 @@
       "writtenOn": "2019-12-06T22:02:28Z",
       "side": 1,
       "message": "This part doesn\u0027t really change \u0027r\u0027 in normal cases. So, can we just use pass \u0027state\u0027 to state_inconsistent()?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 0
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c86ed2_32069348",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-06T22:56:41Z",
+      "side": 1,
+      "message": "Huh, I assume it is pretty normal to have some coordinates not correspond to an actual key.  In such cases, we can have three keys pressed, two sharing a row and two sharing a column, without that being a problem.  The line 300 would remove the fourth \"ghost\" key, and doing state_inconsistant() on state[] would falsely think there was an inconsistency.",
+      "parentUuid": "0d3c8ff3_08b5bb08",
       "range": {
         "startLine": 290,
         "startChar": 0,
