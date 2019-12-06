@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a769cbb_4fba9ec5",
+        "filename": "chip/it83xx/intc.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "nit: you can(should) define the function prototype in the header file without the config guards.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999bfa28_f5c9616e",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "nit: please use BIT(6)",
+      "range": {
+        "startLine": 965,
+        "startChar": 37,
+        "endLine": 965,
+        "endChar": 45
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda61637_f47978cd",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "is this \u003d 0 needed? in other words is this enum value serialize on the binary interface between EC and AP?\n\nIf not, let\u0027s drop it. If it is, let\u0027s add the \u003d X to the rest of the enum values please.",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e3dc967_5fc2af04",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "let\u0027s add a final SPI_STATE_COUNT at the end, then we can add\n\nBUILD_ASSERT(ARRAY_SIZE(spi_response_state) \u003d\u003d SPI_STATE_COUNT);\n\nbelow the array then we know the lookup is always valid",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f58b6eaf_a5f242a3",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "nit: s/Enalbe/Enable/",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc319a6_03ce63a8",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "this should also take in the memory address (and size) of the buffer to write to the TX buffer instead of assuming it is out_msg",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 47
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e3f8495_ae7547ab",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "do we need fifo1 and 2 to have a larger output ability?",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fe5698_8de516b6",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "this an error case, can we print out an error message here please?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 9
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ca2352_52ddc093",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "do we need to disable the fifo1 access after we copy the data?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d15ff8_738cc8da",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "we should not be using a global here, the function should take in an input parameter where to write the data along with the count. The caller should pass in the correct destination memory address",
+      "range": {
+        "startLine": 170,
+        "startChar": 25,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca092e33_3a7263c7",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "so this would be \n\nspi_host_request_date(in_msg, sizeof(*r));",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 35
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc6338ba_111f9005",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "can this would be\n\nspi_host_request_data(in_msg + sizeof(*r), pkt_size - sizeof(*r));",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b848bda7_9bef1c9a",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "we already have a define for this above, please reuse",
+      "range": {
+        "startLine": 210,
+        "startChar": 28,
+        "endLine": 211,
+        "endChar": 52
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3655200a_b49917b2",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "what if the message doesn\u0027t fill up the RX buffer and we detect the end before that. What prevents us from through everything away in reset_rx_fifo?\n\nIs there a high water mark and minimum size in the fifo that we can get an interrupt for after X bytes (and RX fifo isn\u0027t full already)?",
+      "range": {
+        "startLine": 249,
+        "startChar": 18,
+        "endLine": 249,
+        "endChar": 39
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1725863_6f2bbe56",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:56:33Z",
+      "side": 1,
+      "message": "can you replace this with a call to spi_chipset_startup()",
+      "range": {
+        "startLine": 340,
+        "startChar": 2,
+        "endLine": 351,
+        "endChar": 40
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
