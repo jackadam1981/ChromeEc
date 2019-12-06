@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba44b00c_f15068da",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 5772,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:06:21Z",
+      "side": 1,
+      "message": "nit: add a newline before Order of command usage, please\n\nAlso can you add a comment saying there are no request or response structs either (just to be explicit)",
+      "range": {
+        "startLine": 5771,
+        "startChar": 3,
+        "endLine": 5772,
+        "endChar": 26
+      },
+      "revId": "58081701b8d8de8b3141f563a188feb13858d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4ae66b_fbff0fa9",
+        "filename": "util/ectool.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T16:06:21Z",
+      "side": 1,
+      "message": "nit: Requests that the EC will automatically reboot the AP the next time we enter the G3 power state.",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 259,
+        "endChar": 26
+      },
+      "revId": "58081701b8d8de8b3141f563a188feb13858d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
