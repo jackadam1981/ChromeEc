@@ -46,6 +46,30 @@
       "revId": "231a611cb61deb3d141ebbe7f5f46163a978a809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e581ec0_afb49cdf",
+        "filename": "board/stryke/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-12-06T21:02:46Z",
+      "side": 1,
+      "message": "My opinion is that unless there is some justification for these changes, of which I\u0027m skeptical, I don\u0027t think this change is required and I would prefer to revert it so that we don\u0027t have to duplicate the same 4 constants for each and every hatch device.",
+      "parentUuid": "74479bd7_1276f2ba",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "231a611cb61deb3d141ebbe7f5f46163a978a809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
