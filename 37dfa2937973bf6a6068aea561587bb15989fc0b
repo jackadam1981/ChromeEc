@@ -22,6 +22,30 @@
       "revId": "37dfa2937973bf6a6068aea561587bb15989fc0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b9bde8_82ea2298",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-06T00:41:53Z",
+      "side": 1,
+      "message": "That\u0027s right. The wildcard function only returns the paths of valid files. If no valid file matches the pattern, then \"\" is returned.\n\nAlso, the other trick happening here is the use of deferred expansion.\nBasically, none of these function will be called/evalled until they are used. That\u0027s the typical GNU Make variable (unless you use a :\u003d ).\nSo, the could only be emitted when it is used.\n\nWe rely on this type of trickery in many other places in our make process. Do you think we need a comment?",
+      "parentUuid": "b14a6647_d54ae62a",
+      "range": {
+        "startLine": 624,
+        "startChar": 27,
+        "endLine": 624,
+        "endChar": 35
+      },
+      "revId": "37dfa2937973bf6a6068aea561587bb15989fc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
