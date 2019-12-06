@@ -7,13 +7,17 @@
 #include "common.h"
 #include "console.h"
 #include "ec_comm.h"
+#include "crc8.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "registers.h"
 #include "system.h"
+#include "tpm_nvmem.h"
+#include "tpm_nvmem_ops.h"
 #include "vboot.h"
 
-#ifdef CR50_DEV
+#undef EC_EFS_DEBUG
+#ifdef EC_EFS_DEBUG
 #define CPRINTS(format, args...) cprints(CC_TASK, "EC-EFS: " format, ## args)
 #else
 #define CPRINTS(format, args...) do { } while (0)
@@ -48,6 +52,56 @@ static void set_boot_mode_(uint8_t mode_val)
 	GREG32(PMU, PWRDN_SCRATCH20) |= mode_val;
 }
 
+static void load_ec_hash_(struct ec_efs_context_ *ctx)
+{
+	struct vb2_secdata_kernel secdata;
+	const uint8_t secdata_size = sizeof(struct vb2_secdata_kernel);
+	uint8_t size_to_crc;
+	uint8_t struct_size;
+	uint8_t crc;
+
+	if (read_tpm_nvmem(KERNEL_NV_INDEX, secdata_size,
+			   (void *)&secdata) != tpm_read_success) {
+		CPRINTS("secdata read error");
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_UNDERSIZED;
+		return;
+	}
+
+	/*
+	 * Check Struct Version. CRC offset may be different with old struct
+	 * version
+	 */
+	if (secdata.struct_version < VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN) {
+		CPRINTS("secdata version error");
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_INCOMPATIBLE;
+		return;
+	}
+
+	/* Check struct size. */
+	struct_size = secdata.struct_size;
+	if (struct_size != secdata_size) {
+		CPRINTS("secdata size mismatch (%d bytes)", struct_size);
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA;
+		return;
+	}
+
+	/* Check CRC */
+	size_to_crc = struct_size -
+		      offsetof(struct vb2_secdata_kernel, crc8) -
+		      sizeof(secdata.crc8);
+	crc = crc8((uint8_t *)&secdata.reserved0, size_to_crc);
+	if (crc != secdata.crc8) {
+		CPRINTS("secdata CRC error");
+		ctx->secdata_error_code = EC_ERROR_CRC;
+		return;
+	}
+
+	/* Read hash and copy to hash */
+	memcpy(ctx->hash, secdata.ec_hash, sizeof(secdata.ec_hash));
+	ctx->hash_is_loaded = 1;
+	ctx->secdata_error_code = EC_SUCCESS;
+}
+
 /*
  * Initialize EC-EFS context.
  */
@@ -66,7 +120,11 @@ static void ec_efs_init_(void)
 	else
 		ec_efs_reset();
 
-	/* TODO(crbug/1020578): Read Hash from Kernel NV Index */
+	/* Read an EC hash in kernel secdata (TPM kernel NV index). */
+	if (ec_efs_ctx.hash_is_loaded)
+		return;
+
+	load_ec_hash_(&ec_efs_ctx);
 }
 DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
 
