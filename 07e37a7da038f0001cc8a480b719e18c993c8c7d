@@ -22,6 +22,30 @@
       "revId": "07e37a7da038f0001cc8a480b719e18c993c8c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d697302_3377f81b",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-12-06T21:12:37Z",
+      "side": 1,
+      "message": "Wait so is the board ID only the number before the colon? Or the whole number?",
+      "parentUuid": "66c8c1cf_aec32a6e",
+      "range": {
+        "startLine": 585,
+        "startChar": 8,
+        "endLine": 585,
+        "endChar": 34
+      },
+      "revId": "07e37a7da038f0001cc8a480b719e18c993c8c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
