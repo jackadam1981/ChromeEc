@@ -239,6 +239,9 @@ enum ec_error_list {
 	/* Verified boot data errors */
 	EC_ERROR_VBOOT_DATA = 0x1200,
 	EC_ERROR_VBOOT_DATA_VERIFY = 0x1201,
+	EC_ERROR_VBOOT_DATA_INCOMPATIBLE = 0x1202,
+	EC_ERROR_VBOOT_DATA_UNDERSIZED = 0x1203,
+	EC_ERROR_VBOOT_DATA_OVERSIZED = 0x1204,
 
 	/* Module-internal error codes may use this range.   */
 	EC_ERROR_INTERNAL_FIRST = 0x10000,
