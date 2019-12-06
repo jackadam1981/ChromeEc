@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7956ccf_f1dfcfa1",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-12-06T01:14:14Z",
+      "side": 1,
+      "message": "I\u0027m not convinced this is going to work. See common in rwsig.h:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/rwsig.h#66\n\n/*\n * rwsig type: 1024 bytes is enough to fit RSA-3072 public key.\n *\n * TODO(crosbug.com/p/62321): This still wastes space. We could pack the key at\n * any arbitrary location, but we need proper signer support to make sure it\n * can overwrite the key correctly.\n */\n#define CONFIG_RO_PUBKEY_SIZE 1024\n#else\n#define CONFIG_RO_PUBKEY_SIZE RSA_PUBLIC_KEY_SIZE\n#endif\n\nMy memory is fading, but I suspect signing tools do require 1024 bytes alignment.",
+      "revId": "ce89580a769f8397889f3dd00eab3fcc06fa8509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
