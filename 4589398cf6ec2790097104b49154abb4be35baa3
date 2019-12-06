@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "605fecf7_efa3bb45",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-06T23:24:00Z",
+      "side": 1,
+      "message": "The table is indexed by the register offset by the TCPCI_REG macro.  This results in a sparsely populated array, but since this is a debug command only, I decided the extra space used was okay.  The unused offsets in the table are zero initialized and are skipped by the switch statement.\n\nI\u0027ll add a comment on the default statement to make this clearer.",
+      "parentUuid": "7178e006_03fbd89b",
+      "range": {
+        "startLine": 1111,
+        "startChar": 19,
+        "endLine": 1111,
+        "endChar": 20
+      },
+      "revId": "4589398cf6ec2790097104b49154abb4be35baa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "192dba72_62e6fb89",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4589398cf6ec2790097104b49154abb4be35baa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c706802_f0d3e93a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-06T23:24:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "192dba72_62e6fb89",
+      "range": {
+        "startLine": 1120,
+        "startChar": 2,
+        "endLine": 1121,
+        "endChar": 9
+      },
+      "revId": "4589398cf6ec2790097104b49154abb4be35baa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
