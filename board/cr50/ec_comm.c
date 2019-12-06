@@ -86,7 +86,7 @@ DECLARE_HOOK(HOOK_INIT, ec_comm_init_, HOOK_PRIO_DEFAULT + 1);
  *         CR50_COMM_ERROR_CRC if CRC is incorrect,
  *         CR50_COMM_ERROR_UNDEFINED_CMD if the cmd is unknown,
  *         CR50_COMM_ERROR_SIZE if data size is not as expected, or
- *         CR50_COMM_ERROR_HASH_MISMATCH if the given hash and the hash in NVM
+ *         CR50_COMM_ERROR_BAD_PAYLOAD if the given hash and the hash in NVM
  *                                       are not same.
  *         0 if it deosn't have to respond to EC.
  */
