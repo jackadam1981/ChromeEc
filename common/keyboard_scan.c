@@ -223,6 +223,37 @@ static void simulate_key(int row, int col, int pressed)
 }
 
 /**
+ * Check if the raw state looks inconsistant.
+ *
+ * @param state		Keyboard raw state to check.
+ *
+ * @return 1 if inconsistant state detected, else 0.
+ */
+static int state_inconsistant(const uint8_t *state)
+{
+	int c, c2;
+
+	for (c = 0; c < keyboard_cols; c++) {
+		if (!state[c])
+			continue;
+
+		for (c2 = c + 1; c2 < keyboard_cols; c2++) {
+			uint8_t common = state[c] & state[c2];
+
+			/**
+			 * If two columns shares at least one key but their
+			 * states are different, maybe the state changed during
+			 * read_matrix().
+			 */
+			if (common && (state[c] != state[c2]))
+				return 1;
+		}
+	}
+
+	return 0;
+}
+
+/**
  * Read the raw keyboard matrix state.
  *
  * Used in pre-init, so must not make task-switching-dependent calls; udelay()
@@ -230,13 +261,14 @@ static void simulate_key(int row, int col, int pressed)
  *
  * @param state		Destination for new state (must be KEYBOARD_COLS_MAX long).
  *
- * @return 1 if at least one key is pressed, else zero.
+ * @return < 0 on error, 1 if at least one key is pressed, else zero.
  */
 static int read_matrix(uint8_t *state)
 {
 	int c;
 	uint8_t r;
 	int pressed = 0;
+	uint8_t raw_state[KEYBOARD_COLS_MAX] = {0};
 
 	for (c = 0; c < keyboard_cols; c++) {
 		/*
@@ -252,6 +284,7 @@ static int read_matrix(uint8_t *state)
 
 		/* Read the row state */
 		r = keyboard_raw_read_rows();
+		raw_state[c] = r;
 
 		/* Add in simulated keypresses */
 		r |= simulated_key[c];
@@ -276,6 +309,9 @@ static int read_matrix(uint8_t *state)
 	}
 
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+
+	if (state_inconsistant(raw_state))
+		return -EC_ERROR_TRY_AGAIN;
 
 	return pressed ? 1 : 0;
 }
@@ -467,6 +503,10 @@ static int check_keys_changed(uint8_t *state)
 
 	/* Read the raw key state */
 	any_pressed = read_matrix(new_state);
+
+	/* Ignore if new_state is inconsistant */
+	if (any_pressed < 0)
+		return any_pressed;
 
 	/* Ignore if so many keys are pressed that we're ghosting. */
 	if (has_ghosting(new_state))
