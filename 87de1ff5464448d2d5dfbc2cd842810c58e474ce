@@ -93,6 +93,30 @@
       "revId": "87de1ff5464448d2d5dfbc2cd842810c58e474ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78adb5f_88f2d277",
+        "filename": "common/usb_common.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T14:56:31Z",
+      "side": 1,
+      "message": "Ah, I get it now. the STATIC_IF version doesn\u0027t need the __maybe unused, but I see that this does now :).",
+      "parentUuid": "bd7b8160_80bb4a1c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "87de1ff5464448d2d5dfbc2cd842810c58e474ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
