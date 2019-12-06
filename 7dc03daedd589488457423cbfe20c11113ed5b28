@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9589e3db_7e79b119",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-06T18:49:15Z",
+      "side": 1,
+      "message": "I meant that, if you have TYPEC_MUX_TBT_COMPAT \u003d USB_PD_MUX_TBT_COMPAT_ENABLED, can you just remove the #define MUX_TBT_ENABLED line?",
+      "parentUuid": "8bb36376_ce3824e1",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d574dcb2_1cae05c9",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
@@ -187,6 +211,30 @@
       "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74c20824_74a9e34e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-06T18:49:15Z",
+      "side": 1,
+      "message": "I was unclear. If \"No\" is capitalized, I think \"yes\" should also be capitalized. I don\u0027t have a strong opinion about capitalizing the titles of the bit fields, as long as it\u0027s done consistently.",
+      "parentUuid": "3422a198_c8ce145e",
+      "range": {
+        "startLine": 725,
+        "startChar": 61,
+        "endLine": 725,
+        "endChar": 72
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -566,6 +614,30 @@
     },
     {
       "key": {
+        "uuid": "26795005_7ad691fa",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-06T18:49:15Z",
+      "side": 1,
+      "message": "I didn\u0027t necessarily mean to get rid of the field width specifiers when changing the types, although I don\u0027t think it makes a difference for tbt_alt_mode as a uint16_t and reserved0 as a uint8_t. For tbt_timer, note that the natural width of bool is not 1 bit.",
+      "parentUuid": "70afd1c7_51bb0cbd",
+      "range": {
+        "startLine": 791,
+        "startChar": 3,
+        "endLine": 791,
+        "endChar": 11
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17b713ca_a627bf99",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
@@ -610,6 +682,30 @@
       "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf692f2e_ff7d6bfd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-06T18:49:15Z",
+      "side": 1,
+      "message": "Are the BIT(n) values still needed?",
+      "parentUuid": "1d77bd64_761b0e10",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 49
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
