@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3d38c9d_41863098",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-12-06T11:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db43101_189c5360",
+      "range": {
+        "startLine": 209,
+        "startChar": 48,
+        "endLine": 210,
+        "endChar": 14
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e604088_1d821006",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2277b3ff_a2b1ab7b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-12-06T11:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e604088_1d821006",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 48
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3df9ce4c_6e0d4acd",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-12-06T11:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45cb6818_801d7a7b",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 36
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d54610b9_1315d309",
         "filename": "driver/retimer/bb_retimer.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e84cdc_f4f2f8b4",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-12-06T11:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d54610b9_1315d309",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f4c0a3bb_68b4b5dd",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-12-06T11:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291351b0_08fadbc9",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fddfc180_3c02915b",
         "filename": "driver/retimer/bb_retimer.h",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a94021_e6277bf2",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-12-06T11:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fddfc180_3c02915b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "bca3300bad88190d4c3f4d0cf6d842ab140bd657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
