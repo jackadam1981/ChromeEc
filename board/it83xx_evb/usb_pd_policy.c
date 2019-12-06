@@ -20,7 +20,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_EXTERNAL  | PDO_FIXED_COMM_CAP)
+			 PDO_FIXED_UNCONSTRAINED  | PDO_FIXED_COMM_CAP)
 
 /* Threshold voltage of VBUS provided (mV) */
 #define PD_VBUS_PROVIDED_THRESHOLD 3900
@@ -120,10 +120,10 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
 	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
 		/*
-		 * If we are source and partner is externally powered,
+		 * If we are source and partner is unconstrained,
 		 * swap to become a sink.
 		 */
-		if ((flags & PD_FLAGS_PARTNER_EXTPOWER) &&
+		if ((flags & PD_FLAGS_PARTNER_UNCONSTR) &&
 		    pr_role == PD_ROLE_SOURCE)
 			pd_request_power_swap(port);
 	}
