@@ -46,6 +46,30 @@
       "revId": "07e37a7da038f0001cc8a480b719e18c993c8c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d75484_f66003d1",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-12-06T21:14:33Z",
+      "side": 1,
+      "message": "It\u0027s the number before the colon.",
+      "parentUuid": "9d697302_3377f81b",
+      "range": {
+        "startLine": 585,
+        "startChar": 8,
+        "endLine": 585,
+        "endChar": 34
+      },
+      "revId": "07e37a7da038f0001cc8a480b719e18c993c8c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
