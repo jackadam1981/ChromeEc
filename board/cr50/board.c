@@ -1089,6 +1089,8 @@ void assert_ec_rst(void)
 	/* Prevent bit bang interrupt storm. */
 	if (uart_bitbang_is_enabled())
 		task_disable_irq(bitbang_config.rx_irq);
+	else
+		ec_comm_setup();  /* Setup EC-CR50-Comm */
 
 	wait_ec_rst(1);
 
