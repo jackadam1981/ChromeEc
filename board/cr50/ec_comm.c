@@ -9,11 +9,13 @@
 #include "common.h"
 #include "console.h"
 #include "crc8.h"
+#include "extension.h"
 #include "hooks.h"
 #include "registers.h"
 #include "timer.h"
 #include "tpm_nvmem.h"
 #include "tpm_nvmem_ops.h"
+#include "tpm_vendor_cmds.h"
 #include "vboot.h"
 
 #ifdef CR50_RELAXED
@@ -26,6 +28,14 @@
  * Context of EC-EFS
  */
 static struct ec_efs_context_ {
+	union {
+		struct context_in_pwdn_scratch_ {
+			uint32_t boot_mode:8;	/* enum ec_efs_boot_mode */
+			uint32_t reserved:24;
+		} b;
+		uint32_t val;
+	} scratch;
+
 	uint32_t efs_enabled:1;
 	uint32_t hash_is_loaded:1;		/* Is EC hash loaded       */
 						/* from kernel secdata?    */
@@ -34,6 +44,18 @@ static struct ec_efs_context_ {
 
 	uint8_t hash[VB2_SHA256_DIGEST_SIZE];	/* EC-RW digest */
 } ec_efs_ctx;
+
+/**
+ * Set AP to the off state. Disable functionality that should only be available
+ * when the AP is on.
+ */
+static void deferred_reset_ec(void)
+{
+	CPRINTS("reset EC");
+
+	board_reboot_ec();
+}
+DECLARE_DEFERRED(deferred_reset_ec);
 
 /**
  * Initialize EC-EFS context.
@@ -91,8 +113,60 @@ void ec_comm_init(void)
 	if (!ec_efs_ctx.efs_enabled)
 		return;
 
+	CPRINTS("Initializtion");
+	/* TODO(): recover this from PWDN_SCRATCH value */
+	ec_efs_ctx.scratch.b.boot_mode = EC_EFS_BOOT_MODE_RESET;
+
 	init_ec_efs_();
 }
+
+void ec_comm_setup(void)
+{
+	if (!ec_efs_ctx.efs_enabled)
+		return;
+
+	CPRINTS("Setup");
+
+	ec_efs_ctx.scratch.b.boot_mode = EC_EFS_BOOT_MODE_RESET;
+}
+
+/**
+ * TPM vendor command handler to respond with EC Boot Mode.
+ *
+ * @return VENDOR_RC_SUCCESS
+ *
+ */
+static enum vendor_cmd_rc get_boot_mode_(struct vendor_cmd_params *p)
+{
+	uint8_t *buffer;
+
+	if (!ec_efs_ctx.efs_enabled)
+		return VENDOR_RC_NOT_ALLOWED;
+
+	buffer = (uint8_t *)p->buffer;
+	buffer[0] = (uint8_t)ec_efs_ctx.scratch.b.boot_mode;
+
+	p->out_size = 1;
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_GET_BOOT_MODE, get_boot_mode_);
+
+/**
+ * TPM vendor command handler to reset EC.
+ *
+ * @return VEDOR_RC_SUCCESS
+ */
+static enum vendor_cmd_rc reset_ec_(struct vendor_cmd_params *p)
+{
+	if (!ec_efs_ctx.efs_enabled)
+		return VENDOR_RC_NOT_ALLOWED;
+
+	hook_call_deferred(&deferred_reset_ec_data, 50 * MSEC);
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_RESET_EC, reset_ec_);
 
 #ifdef CR50_RELAXED
 /**
@@ -115,6 +189,9 @@ static int command_ec_comm(int argc, char **argv)
 		 ec_efs_ctx.hash_is_loaded ? "YES" : "NO");
 	ccprintf("secdata_error_code : 0x%08x\n",
 		 ec_efs_ctx.secdata_error_code);
+
+	ccprintf("boot_mode          : 0x%02x\n",
+		 ec_efs_ctx.scratch.b.boot_mode);
 	ccprintf("ec_hash_secdata    : %ph\n",
 		 HEX_BUF(ec_efs_ctx.hash, VB2_SHA256_DIGEST_SIZE));
 
