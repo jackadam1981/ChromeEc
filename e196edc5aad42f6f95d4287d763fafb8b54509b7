@@ -45,6 +45,29 @@
       "revId": "e196edc5aad42f6f95d4287d763fafb8b54509b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2300896f_403735c0",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-06T17:46:40Z",
+      "side": 1,
+      "message": "This also needs to check that retimer port is valid by checking  usb_retimer[port].driver !\u003d NULL.   All the users of the usb_retimer[] array in usb_mux.c appear to have proper checks.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 0
+      },
+      "revId": "e196edc5aad42f6f95d4287d763fafb8b54509b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
