@@ -320,6 +320,12 @@ int board_uses_closed_loop_reset(void);
 int board_has_ina_support(void);
 /* The board allows vendor commands to enable/disable tpm. */
 int board_tpm_mode_change_allowed(void);
+/**
+ * The board supports EC-CR50-Communication. (Note: http://go/ec-cr50-comm)
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
+int board_ec_cr50_comm_support(void);
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
@@ -377,6 +383,9 @@ void board_start_ite_sync(void);
 void board_unwedge_i2cs(void);
 
 int board_in_prod_mode(void);
+
+/* Initialize EC-CR50 communication and prepare data for EC-EFS */
+void ec_comm_init(void);
 
 #endif /* !__ASSEMBLER__ */
 
