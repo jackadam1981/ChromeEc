@@ -7,10 +7,13 @@
 #include "common.h"
 #include "console.h"
 #include "ec_comm.h"
+#include "crc8.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "registers.h"
 #include "system.h"
+#include "tpm_nvmem.h"
+#include "tpm_nvmem_ops.h"
 #include "vboot.h"
 
 #ifdef CR50_DEV
@@ -48,6 +51,72 @@ static void set_boot_mode_(uint8_t mode_val)
 	GREG32(PMU, PWRDN_SCRATCH20) |= mode_val;
 }
 
+static void load_ec_hash_(struct ec_efs_context_ *ctx)
+{
+	uint8_t buf[256];
+	struct vb2_secdata_kernel *secdata = (struct vb2_secdata_kernel *)buf;
+	const uint8_t secdata_size = sizeof(struct vb2_secdata_kernel);
+	uint8_t size_to_crc;
+	uint8_t struct_size;
+	uint8_t crc;
+
+	if (read_tpm_nvmem(KERNEL_NV_INDEX, secdata_size,
+			   &buf) != tpm_read_success) {
+		CPRINTS("secdata_kernel: old version or doesn't exist");
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_UNDERSIZED;
+		return;
+	}
+
+	/*
+	 * Check Struct Version. CRC offset may be different with old struct
+	 * version
+	 */
+	if (secdata->struct_version < VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN) {
+		CPRINTS("secdata_kernel: version incompatible");
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_INCOMPATIBLE;
+		return;
+	}
+
+	/*
+	 * Check struct size.
+	 */
+	struct_size = secdata->struct_size;
+	if (struct_size < secdata_size) {
+		CPRINTS("secdata_kernel: undersized (%d bytes)", struct_size);
+		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_UNDERSIZED;
+		return;
+	}
+
+	/*
+	 * If it is bigger than secdata_size, then
+	 * the whole struct should be read so that CRC can be checked.
+	 */
+	if (struct_size > secdata_size) {
+		if (read_tpm_nvmem(KERNEL_NV_INDEX, struct_size, &buf)
+		    != tpm_read_success) {
+			CPRINTS("secdata_kernel: read error");
+			ctx->secdata_error_code = EC_ERROR_VBOOT_DATA;
+			return;
+		}
+	}
+
+	/* Check CRC */
+	size_to_crc = struct_size -
+		      offsetof(struct vb2_secdata_kernel, crc8) -
+		      sizeof(secdata->crc8);
+	crc = crc8((uint8_t *)&secdata->reserved0, size_to_crc);
+	if (crc != secdata->crc8) {
+		CPRINTS("secdata_kernel: bad CRC");
+		ctx->secdata_error_code = EC_ERROR_CRC;
+		return;
+	}
+
+	/* Read hash and copy to hash */
+	memcpy(ctx->hash, secdata->ec_hash, sizeof(secdata->ec_hash));
+	ctx->hash_is_loaded = 1;
+	ctx->secdata_error_code = EC_SUCCESS;
+}
+
 /*
  * Initialize EC-EFS context.
  */
@@ -66,10 +135,76 @@ static void ec_efs_init_(void)
 	else
 		ec_efs_reset();
 
-	/* TODO(crbug/1020578): Read Hash from Kernel NV Index */
+	/* Read an EC hash in kernel secdata (TPM kernel NV index). */
+	if (ec_efs_ctx.hash_is_loaded)
+		return;
+
+	load_ec_hash_(&ec_efs_ctx);
 }
 DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
 
+/*
+ * A console command, printing EC-EFS status.
+ */
+static int command_ec_efs(int argc, char **argv)
+{
+	if (!board_has_ec_cr50_comm_support()) {
+		CPRINTS("This board does not support ec-efs.");
+		return EC_ERROR_INVAL;
+	}
+
+#ifdef CR50_RELAXED
+	if (argc > 1) {
+		if (!strcasecmp(argv[1], "hash")) {
+			char *ptr;
+			int len;
+
+			if (argc < 2)
+				return EC_ERROR_PARAM2;
+
+			ccprintf("dumping hash...\n");
+
+			/* Overwrite EC hash code with argv[2] */
+			len = 0;
+			ptr = (char *)&argv[2][0];
+			while (*ptr) {
+				char in[2] = {'\0', '\0'};
+				uint8_t out;
+
+				in[0] = *ptr;
+				out = strtoul(in, NULL, 16);
+
+				if (len % 2)
+					ec_efs_ctx.hash[len/2] |= out;
+				else
+					ec_efs_ctx.hash[len/2] = out << 4;
+
+				len++;
+				ptr++;
+			}
+		} else {
+			return EC_ERROR_PARAM1;
+		}
+		ccprintf("\n");
+	}
+#endif
+
+	/*
+	 * EC-EFS Context
+	 */
+	ccprintf("ec_hash is loaded  : %s\n",
+		 ec_efs_ctx.hash_is_loaded ? "YES" : "NO");
+	ccprintf("secdata_error_code : 0x%08x\n",
+		 ec_efs_ctx.secdata_error_code);
+#ifdef CR50_RELAXED
+	ccprintf("ec_hash_secdata    : %ph\n",
+		 HEX_BUF(ec_efs_ctx.hash, SHA256_DIGEST_SIZE));
+#endif
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(ec_efs, command_ec_efs, NULL,
+			     "Display EC-EFS status");
 
 void ec_efs_reset(void)
 {
