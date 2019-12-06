@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ded453a_b0a4fc19",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-06T16:21:25Z",
+      "side": 1,
+      "message": "LGTM, but this config is currently specific to BQ25710, so I think it should reflect that in the name, maybe CONFIG_BQ25710_VSYSMIN_VALUE ?",
+      "range": {
+        "startLine": 913,
+        "startChar": 7,
+        "endLine": 913,
+        "endChar": 35
+      },
+      "revId": "87cd48fb09411971a84393cb195d7e3c74b0ff04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
