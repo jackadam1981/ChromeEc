@@ -9,11 +9,13 @@
 #include "common.h"
 #include "console.h"
 #include "crc8.h"
+#include "extension.h"
 #include "hooks.h"
 #include "registers.h"
 #include "timer.h"
 #include "tpm_nvmem.h"
 #include "tpm_nvmem_ops.h"
+#include "tpm_vendor_cmds.h"
 #include "vboot.h"
 
 #ifdef CR50_RELAXED
@@ -31,8 +33,21 @@ static struct ec_efs_context_ {
 	uint32_t reserved:31;
 	uint32_t secdata_error_code;
 
+	enum ec_efs_boot_mode boot_mode;
 	uint8_t hash[VB2_SHA256_DIGEST_SIZE];	/* EC-RW digest */
 } ec_efs_ctx;
+
+/**
+ * Set AP to the off state. Disable functionality that should only be available
+ * when the AP is on.
+ */
+static void deferred_reset_ec(void)
+{
+	CPRINTS("reset EC");
+
+	board_reboot_ec();
+}
+DECLARE_DEFERRED(deferred_reset_ec);
 
 /**
  * Initialize EC-EFS context.
@@ -93,6 +108,52 @@ void ec_comm_init(void)
 	init_ec_efs_();
 }
 
+void ec_comm_setup(void)
+{
+	if (!board_ec_cr50_comm_support())
+		return;
+
+	ec_efs_ctx.boot_mode = EC_EFS_BOOT_MODE_RESET;
+}
+
+/**
+ * TPM vendor command handler to respond with EC Boot Mode.
+ *
+ * @return VENDOR_RC_SUCCESS
+ *
+ */
+static enum vendor_cmd_rc get_boot_mode_(struct vendor_cmd_params *p)
+{
+	uint8_t *buffer;
+
+	if (!board_ec_cr50_comm_support())
+		return VENDOR_RC_NOT_ALLOWED;
+
+	buffer = (uint8_t *)p->buffer;
+	buffer[0] = (uint8_t)ec_efs_ctx.boot_mode;
+
+	p->out_size = 1;
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_GET_BOOT_MODE, get_boot_mode_);
+
+/**
+ * TPM vendor command handler to reset EC.
+ *
+ * @return VEDOR_RC_SUCCESS
+ */
+static enum vendor_cmd_rc reset_ec_(struct vendor_cmd_params *p)
+{
+	if (!board_ec_cr50_comm_support())
+		return VENDOR_RC_NOT_ALLOWED;
+
+	hook_call_deferred(&deferred_reset_ec_data, 50 * MSEC);
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_RESET_EC, reset_ec_);
+
 #ifdef CR50_RELAXED
 /**
  * A console command, printing EC-CR50-Comm status.
@@ -112,6 +173,7 @@ static int command_ec_comm(int argc, char **argv)
 		 ec_efs_ctx.hash_is_loaded ? "YES" : "NO");
 	ccprintf("secdata_error_code : 0x%08x\n",
 		 ec_efs_ctx.secdata_error_code);
+	ccprintf("boot_mode          : 0x%02x\n", ec_efs_ctx.boot_mode);
 	ccprintf("ec_hash_secdata    : %ph\n",
 		 HEX_BUF(ec_efs_ctx.hash, VB2_SHA256_DIGEST_SIZE));
 

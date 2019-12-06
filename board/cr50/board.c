@@ -1107,6 +1107,8 @@ void deassert_ec_rst(void)
 
 	if (uart_bitbang_is_enabled())
 		task_enable_irq(bitbang_config.rx_irq);
+	else
+		ec_comm_setup();  /* Setup EC-CR50-Comm */
 }
 
 int is_ec_rst_asserted(void)

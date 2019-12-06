@@ -389,6 +389,8 @@ int board_in_prod_mode(void);
 
 /* Initialize EC-CR50 communication and prepare data for EC-EFS */
 void ec_comm_init(void);
+/* Setup EC-CR50-Comm channel status. Should be called on EC reset. */
+void ec_comm_setup(void);
 
 #endif /* !__ASSEMBLER__ */
 
