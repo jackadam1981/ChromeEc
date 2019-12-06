@@ -6,11 +6,13 @@
  */
 #include "common.h"
 #include "console.h"
+#include "crc8.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "registers.h"
-#include "sha256.h"
 #include "system.h"
+#include "tpm_nvmem.h"
+#include "tpm_nvmem_ops.h"
 #include "vboot.h"
 
 #define CPRINTS(format, args...) cprints(CC_TASK, "EC-EFS: " format, ## args)
@@ -26,6 +28,11 @@ static struct ec_efs_context_ {
 		} b;
 		uint32_t val;
 	} scratch;
+
+	uint32_t hash_is_loaded:1;		/* Is EC hash loaded       */
+						/* from kernel secdata?    */
+	uint32_t reserved:31;
+	uint32_t secdata_error_code;
 
 	uint8_t hash[SHA256_DIGEST_SIZE];	/* EC-RW digest */
 } ec_efs_ctx;
@@ -60,6 +67,9 @@ static inline void set_boot_mode_(uint8_t mode_val)
  */
 static void ec_efs_init_(void)
 {
+	struct vb2_secdata_kernel sec;
+	uint8_t crc;
+
 	if (!board_has_ec_cr50_comm_support())
 		return;
 
@@ -73,7 +83,47 @@ static void ec_efs_init_(void)
 	else
 		ec_efs_reset();
 
-	/* TODO(crbug/1020578): Read Hash from Kernel NV Index */
+	/* Read an EC hash in kernel secdata (TPM kernel NV index). */
+	if (ec_efs_ctx.hash_is_loaded)
+		return;
+
+	if (read_tpm_nvmem(KERNEL_NV_INDEX, sizeof(sec), &sec) !=
+	    tpm_read_success) {
+		CPRINTS("secdata_kernel: read error");
+		ec_efs_ctx.secdata_error_code = EC_ERROR_VBOOT_DATA;
+		return;
+	}
+
+	/*
+	 * Check Struct Version. CRC offset may be different with old struct
+	 * version
+	 */
+	if (sec.struct_version < VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN) {
+		CPRINTS("secdata_kernel: version incompatible");
+		ec_efs_ctx.secdata_error_code =
+			EC_ERROR_VBOOT_DATA_INCOMPATIBLE;
+		return;
+	}
+
+	/* Verify UID */
+	if (sec.uid != VB2_SECDATA_KERNEL_UID) {
+		CPRINTS("secdata_kernel: bad UID");
+		ec_efs_ctx.secdata_error_code = EC_ERROR_VBOOT_DATA_VERIFY;
+		return;
+	}
+
+	/* Check CRC */
+	crc = crc8((uint8_t *)&sec, offsetof(struct vb2_secdata_kernel, crc8));
+	if (crc != sec.crc8) {
+		CPRINTS("secdata_kernel: bad CRC");
+		ec_efs_ctx.secdata_error_code = EC_ERROR_CRC;
+		return;
+	}
+
+	/* Read hash and copy to hash */
+	memcpy(ec_efs_ctx.hash, sec.ec_hash, sizeof(sec.ec_hash));
+	ec_efs_ctx.hash_is_loaded = 1;
+	ec_efs_ctx.secdata_error_code = EC_SUCCESS;
 }
 DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
 
@@ -105,6 +155,12 @@ static int command_ec_efs(int argc, char **argv)
 	ccprintf("boot_mode          : 0x%02x\n",
 		 ec_efs_ctx.scratch.b.boot_mode);
 
+	ccprintf("ec_hash_is_loaded  : %s\n",
+		 ec_efs_ctx.hash_is_loaded ? "YES" : "NO");
+	ccprintf("secdata_error_code : 0x%08x\n",
+		 ec_efs_ctx.secdata_error_code);
+	ccprintf("ec_hash_secdata    : %ph\n",
+		 HEX_BUF(ec_efs_ctx.hash, SHA256_DIGEST_SIZE));
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(ec_efs, command_ec_efs, NULL, "Dump EC-EFS status");
