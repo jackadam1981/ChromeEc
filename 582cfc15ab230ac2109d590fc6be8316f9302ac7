@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa383e91_750ccded",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-06T18:15:24Z",
+      "side": 1,
+      "message": "\"This patch allows the EC to manage two fans\" ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b936d95_b645b9ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-06T18:15:24Z",
+      "side": 1,
+      "message": "Currently",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08998c38_1024fea9",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 5
