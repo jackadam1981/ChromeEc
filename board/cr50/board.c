@@ -758,6 +758,8 @@ static void board_init(void)
 	check_board_id_mismatch();
 	check_board_id_mismatch();
 
+	ec_comm_init();
+
 	/*
 	 * Start monitoring AC detect to wake Cr50 from deep sleep.  This is
 	 * needed to detect RDD cable changes in deep sleep.  AC detect is also
