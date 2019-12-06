@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7effaf77_e570153c",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-06T19:31:43Z",
+      "side": 1,
+      "message": "Here, the line oscillates between 0 and 3.3V. Even if line 49 is removed, the oscillation doesn\u0027t stop.",
+      "revId": "48b02ccecf4c7fb4677fe03b5bbdbe7f83c6dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccd05cc_b30a057d",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-06T19:31:43Z",
+      "side": 1,
+      "message": "Here, the GPIO75 stays at 3.3V.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "48b02ccecf4c7fb4677fe03b5bbdbe7f83c6dd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
