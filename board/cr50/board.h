@@ -378,6 +378,9 @@ void board_unwedge_i2cs(void);
 
 int board_in_prod_mode(void);
 
+/* Initialize EC-CR50 communication and prepare data for EC-EFS */
+void ec_comm_init(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */

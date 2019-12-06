@@ -32,7 +32,7 @@ struct cr50_comm_packet {
 	uint16_t cmd;	/* CR50_COMM_CMD_* (or control packet with no data) */
 	uint8_t size;	/* Payload size. Max 32 bytes. */
 	uint8_t data[];	/* Payload */
-} __packed;
+}  __packed;
 
 #define CR50_COMM_MAX_DATA_SIZE		32
 #define CR50_COMM_MAX_PACKET_SIZE	(sizeof(struct cr50_comm_packet) + \
@@ -64,6 +64,30 @@ enum boot_mode {
 	/* boot_mode is uint8_t */
 	BOOT_MODE_LIMIT = 255,
 };
+
+/****************************************************************************
+ * This is quoted from 2secdata_struct.h in the directory,
+ * src/platform/vboot_reference/firmware/2lib/include/.
+ ****************************************************************************/
+
+/* Kernel secure storage space */
+#define VB2_SHA256_DIGEST_SIZE          32
+#define VB2_SECDATA_KERNEL_VERSION_MIN  3
+#define VB2_SECDATA_KERNEL_UID          0x4752574c  /* 'LWRG' */
+struct vb2_secdata_kernel {
+	/* Struct version, for backwards compatibility */
+	uint8_t struct_version;
+	/* Unique ID to detect space redefinition */
+	uint32_t uid;
+	/* Kernel versions */
+	uint32_t kernel_versions;
+	/* New field for struct_version >= 3 */
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
+	/* Reserved for future expansion */
+	uint8_t reserved[3];
+	/* CRC; must be last field in struct */
+	uint8_t crc8;
+} __packed;
 
 /**
  * Validate key contents.
