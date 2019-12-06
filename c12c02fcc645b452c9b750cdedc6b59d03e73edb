@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "358ee552_62f2df5c",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-06T18:29:25Z",
+      "side": 1,
+      "message": "probably these alerts should also set FIPS error",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "c12c02fcc645b452c9b750cdedc6b59d03e73edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
