@@ -181,6 +181,15 @@ int board_tpm_mode_change_allowed(void)
 	return !!(board_properties & BOARD_ALLOW_CHANGE_TPM_MODE);
 }
 
+int board_ec_cr50_comm_support(void)
+{
+	/*
+	 * TODO(crbug/1027660): define a strap for ec-efs2, and
+	 *                      check the board property.
+	 */
+	return 0;
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {
@@ -757,6 +766,8 @@ static void board_init(void)
 	 */
 	check_board_id_mismatch();
 	check_board_id_mismatch();
+
+	ec_comm_init();
 
 	/*
 	 * Start monitoring AC detect to wake Cr50 from deep sleep.  This is
