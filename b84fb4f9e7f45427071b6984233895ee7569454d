@@ -22,6 +22,30 @@
       "revId": "b84fb4f9e7f45427071b6984233895ee7569454d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368b6cb2_254218a7",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-12-06T23:50:16Z",
+      "side": 1,
+      "message": "\\S+ matches all the non whitespace characters greedily if you omit the ?. So if you have \"12345678:12345678,\" you\u0027ll still capture \"12345678:12345678\".",
+      "parentUuid": "82cf77fb_4bb02532",
+      "range": {
+        "startLine": 584,
+        "startChar": 39,
+        "endLine": 584,
+        "endChar": 40
+      },
+      "revId": "b84fb4f9e7f45427071b6984233895ee7569454d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
