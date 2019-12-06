@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3116e292_971aeab2",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4680,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-06T09:42:59Z",
+      "side": 1,
+      "message": "need to add\n\n#undef CONFIG_USB_PD_VBUS_MEASURE_TCPC",
+      "range": {
+        "startLine": 4680,
+        "startChar": 0,
+        "endLine": 4680,
+        "endChar": 39
+      },
+      "revId": "52f3af2ef60cb89355f2d98425b2052eea2303b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
