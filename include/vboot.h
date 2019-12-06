@@ -8,6 +8,7 @@
 #include "common.h"
 #include "vb21_struct.h"
 #include "rsa.h"
+#include "sha256.h"
 
 #define CR50_COMM_PREAMBLE              0xec
 #define MIN_LENGTH_PREAMBLE             4
@@ -52,8 +53,10 @@ struct cr50_comm_packet {
 #define CR50_COMM_ERROR_CRC             CR50_COMM_RESPONSE(0x03)
 #define CR50_COMM_ERROR_SIZE            CR50_COMM_RESPONSE(0x04)
 #define CR50_COMM_ERROR_TIMEOUT         CR50_COMM_RESPONSE(0x05)
-#define CR50_COMM_ERROR_HASH_MISMATCH   CR50_COMM_RESPONSE(0x06)
-#define CR50_COMM_ERROR_UNDEFINED_CMD   CR50_COMM_RESPONSE(0x07)
+#define CR50_COMM_ERROR_UNDEFINED_CMD   CR50_COMM_RESPONSE(0x06)
+#define CR50_COMM_ERROR_BAD_PAYLOAD     CR50_COMM_RESPONSE(0x07)
+#define CR50_COMM_ERROR_STRUCT_VERSION  CR50_COMM_RESPONSE(0x08)
+#define CR50_COMM_ERROR_NVMEM           CR50_COMM_RESPONSE(0x09)
 
 /*
  * BIT(0) : NO_BOOT flag
@@ -66,6 +69,24 @@ enum ec_efs_boot_mode {
 	/* boot_mode is uint8_t */
 	EC_EFS_BOOT_MODE_LIMIT            = 255,
 };
+
+/****************************************************************************
+ * This is quoted from 2secdata_struct.h in the directory,
+ * src/platform/vboot_reference/firmware/2lib/include/.
+ ****************************************************************************/
+
+/* Kernel secure storage space */
+#define VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN  0x10
+#define VB2_SECDATA_KERNEL_UID          0x4752574c  /* 'LWRG' */
+struct vb2_secdata_kernel {
+	uint8_t struct_version;		/* top-half:major. bottom-half:minor. */
+	uint8_t struct_size;		/* Whole structure size */
+	uint8_t crc8;			/* CRC for everything below */
+	uint8_t reserved0;
+
+	uint32_t kernel_versions;	/* Kernel versions */
+	uint8_t ec_hash[SHA256_DIGEST_SIZE];
+} __packed;
 
 /**
  * Validate key contents.
