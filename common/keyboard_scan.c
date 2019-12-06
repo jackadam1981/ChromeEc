@@ -234,8 +234,7 @@ static void simulate_key(int row, int col, int pressed)
  */
 static int read_matrix(uint8_t *state)
 {
-	int c;
-	uint8_t r;
+	int c, c2;
 	int pressed = 0;
 
 	for (c = 0; c < keyboard_cols; c++) {
@@ -243,36 +242,61 @@ static int read_matrix(uint8_t *state)
 		 * Stop if scanning becomes disabled. Note, scanning is enabled
 		 * on boot by default.
 		 */
-		if (!keyboard_scan_is_enabled())
-			break;
+		if (!keyboard_scan_is_enabled()) {
+			state[c] = 0;
+			continue;
+		}
 
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
-		r = keyboard_raw_read_rows();
+		state[c] = keyboard_raw_read_rows();
 
+#ifdef CONFIG_KEYBOARD_TEST
+		/* Use simulated keyscan sequence instead if testing active */
+		state[c] = keyscan_seq_get_scan(c, state[c]);
+#endif
+	}
+
+	for (c = 0; c < keyboard_cols; c++) {
+		for (c2 = 0; c2 < c; c2++) {
+			uint8_t common = state[c] & state[c2];
+
+			/*
+			 * If two columns shares at least one key but their
+			 * states are different, maybe the state changed between
+			 * two "keyboard_raw_read_rows"s. If this happened,
+			 * update both columns to the union of them.
+			 *
+			 * Note that in theory we need to rescan from col 0 if
+			 * anything is updated, to make sure the newly added
+			 * bits does not introduce more inconsistency.
+			 * Let's ignore this rare case for now.
+			 */
+			if (common && (state[c] != state[c2])) {
+				int merged = state[c] | state[c2];
+
+				state[c] = state[c2] = merged;
+			}
+		}
+	}
+
+	for (c = 0; c < keyboard_cols; c++) {
 		/* Add in simulated keypresses */
-		r |= simulated_key[c];
+		state[c] |= simulated_key[c];
 
 		/*
 		 * Keep track of what keys appear to be pressed.  Even if they
 		 * don't exist in the matrix, they'll keep triggering
 		 * interrupts, so we can't leave scanning mode.
 		 */
-		pressed |= r;
+		pressed |= state[c];
 
 		/* Mask off keys that don't exist on the actual keyboard */
-		r &= keyscan_config.actual_key_mask[c];
+		state[c] &= keyscan_config.actual_key_mask[c];
 
-#ifdef CONFIG_KEYBOARD_TEST
-		/* Use simulated keyscan sequence instead if testing active */
-		r = keyscan_seq_get_scan(c, r);
-#endif
-
-		/* Store the masked state */
-		state[c] = r;
 	}
 
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
