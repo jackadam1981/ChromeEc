@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d687b8d0_8c7527d5",
+        "filename": "board/stryke/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-12-06T20:00:33Z",
+      "side": 1,
+      "message": "What\u0027s the justification for the change of these values. Or rather, why is this board different than pretty much every other chomeos device that supports USB-PD. Should we really advertise 3250 mA as the max current level? It\u0027s my understanding that more than 3A current is only allowed with e-mark cables.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "231a611cb61deb3d141ebbe7f5f46163a978a809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
