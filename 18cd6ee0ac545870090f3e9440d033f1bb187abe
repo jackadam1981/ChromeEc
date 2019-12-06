@@ -22,6 +22,30 @@
       "revId": "18cd6ee0ac545870090f3e9440d033f1bb187abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d568cae_48382b43",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-06T16:34:54Z",
+      "side": 1,
+      "message": "I think we should keep the flag. It is used to generate soft resets when a protocol error happens during an AMS. See Section 6.8.1 of spec.\n\nThere are fewer interruptilbe messages so I it more efficient to check for them than doing it the other way. But I\u0027m open to changing it to non-interruptible.",
+      "parentUuid": "aa07273c_9bc6e6d3",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "18cd6ee0ac545870090f3e9440d033f1bb187abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
