@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ccd0cea7_d7081443",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-06T22:02:28Z",
+      "side": 1,
+      "message": "This logic reads when one row is active in common between two columns, all the other rows also have to be identical (because they should show up as ghosts). I think it makes sense.\n\nCan you explain how this will fix the bug (introduced by cl:1579905)?\n\nI\u0027m wondering if we have a better way to fix the bug.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d333b4ce_9447ebbd",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -18,6 +41,76 @@
         "startChar": 41,
         "endLine": 271,
         "endChar": 43
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf18644_81098c3a",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-06T22:02:28Z",
+      "side": 1,
+      "message": "or we do \u0027\u003d {}\u0027 lately.",
+      "parentUuid": "d333b4ce_9447ebbd",
+      "range": {
+        "startLine": 271,
+        "startChar": 41,
+        "endLine": 271,
+        "endChar": 43
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3c8ff3_08b5bb08",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-06T22:02:28Z",
+      "side": 1,
+      "message": "This part doesn\u0027t really change \u0027r\u0027 in normal cases. So, can we just use pass \u0027state\u0027 to state_inconsistent()?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 0
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568f9aed_ff6a8170",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-06T22:02:28Z",
+      "side": 1,
+      "message": "If we can use new_state for inconsistency detection, we can call is_inconsistent below:\n\n  if (is_inconsistent(new_state) || has_ghosting(new_state))\n    return any_pressed;",
+      "range": {
+        "startLine": 505,
+        "startChar": 27,
+        "endLine": 505,
+        "endChar": 36
       },
       "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
