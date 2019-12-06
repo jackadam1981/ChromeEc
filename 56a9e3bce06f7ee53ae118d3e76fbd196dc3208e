@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12e264e8_41c634be",
+        "filename": "board/nucleo-h743zi/dev_key.pem",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-06T17:48:05Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, why can we check a private key into public repo? If it is okay, please include justification in commit description",
+      "range": {
+        "startLine": 1,
+        "startChar": 11,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "56a9e3bce06f7ee53ae118d3e76fbd196dc3208e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
