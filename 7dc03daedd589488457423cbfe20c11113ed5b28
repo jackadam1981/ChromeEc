@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "83819436_d51aa51d",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-07T00:07:26Z",
+      "side": 1,
+      "message": "Hi Abe: I have filed a bug for it b:145796172 .\nIs it okay if we clean it in another CL?",
+      "parentUuid": "9589e3db_7e79b119",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d574dcb2_1cae05c9",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
