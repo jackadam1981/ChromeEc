@@ -22,6 +22,30 @@
       "revId": "4e8dbf5c9b1dee8e6ee1734af58f2ba204045e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54f8eec_00701ccd",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-12-07T05:40:42Z",
+      "side": 0,
+      "message": "Should we just reduce the timeout in wait_switchcap_power_good() and wait_pmic_pwron()?\nFrom the log in the bug link, WDT fires even before the timeout warning messages pop up.\nDoes it make sense?",
+      "parentUuid": "64928e3f_987aaf35",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 38
+      },
+      "revId": "4e8dbf5c9b1dee8e6ee1734af58f2ba204045e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
