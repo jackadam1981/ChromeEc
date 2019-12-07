@@ -46,6 +46,30 @@
       "revId": "4e8dbf5c9b1dee8e6ee1734af58f2ba204045e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a81108_33981f7d",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-12-07T06:20:37Z",
+      "side": 0,
+      "message": "The VBOB rail is NC. We verified it works without this VBOB rail. We can simply remove this line of code.\n\nThe init hook is a single thread execution. Waiting a signal will slower the boot up time.",
+      "parentUuid": "d54f8eec_00701ccd",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 38
+      },
+      "revId": "4e8dbf5c9b1dee8e6ee1734af58f2ba204045e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
