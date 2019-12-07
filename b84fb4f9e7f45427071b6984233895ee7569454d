@@ -70,6 +70,30 @@
       "revId": "b84fb4f9e7f45427071b6984233895ee7569454d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3190a2fe_b08059d8",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-12-07T00:22:13Z",
+      "side": 1,
+      "message": "Is that better? This seems a bit more robust, ie \"go till you see something that\u0027s definitely not a board ID character\". \n\nI guess then we\u0027re debating the likelihood the separator character will change vs the likelihood the board ID length will change (or be printed incorrectly).",
+      "parentUuid": "084593cb_f1a77675",
+      "range": {
+        "startLine": 584,
+        "startChar": 39,
+        "endLine": 584,
+        "endChar": 40
+      },
+      "revId": "b84fb4f9e7f45427071b6984233895ee7569454d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
