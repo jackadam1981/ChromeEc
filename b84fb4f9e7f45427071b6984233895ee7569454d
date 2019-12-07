@@ -46,6 +46,30 @@
       "revId": "b84fb4f9e7f45427071b6984233895ee7569454d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084593cb_f1a77675",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-12-07T00:16:30Z",
+      "side": 1,
+      "message": "Oh. I see. Want to change the + to a {8} then? and remove the [:,]. The board id is always a 8 character [0-9a-f] string.\n\u0027Board ID: (\\S{8})",
+      "parentUuid": "368b6cb2_254218a7",
+      "range": {
+        "startLine": 584,
+        "startChar": 39,
+        "endLine": 584,
+        "endChar": 40
+      },
+      "revId": "b84fb4f9e7f45427071b6984233895ee7569454d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
