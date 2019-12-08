@@ -116,6 +116,30 @@
       "revId": "225c29c8a0e73215e4e668f741048e3ce5dab695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106c0eae_a0ebadb5",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-08T21:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c546c236_8ecef624",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 45
+      },
+      "revId": "225c29c8a0e73215e4e668f741048e3ce5dab695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
