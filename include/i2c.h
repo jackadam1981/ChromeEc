@@ -77,6 +77,16 @@ enum i2c_freq {
 	I2C_FREQ_COUNT,
 };
 
+/*
+ * I2C mask update actions.
+ *      MASK_SET will OR the mask into the old value
+ *      MASK_CLR will AND the ~mask from the old value
+ */
+enum mask_update_action {
+	MASK_CLR,
+	MASK_SET
+};
+
 struct i2c_info_t {
 	uint16_t port;	/* Physical port for device */
 	uint16_t addr_flags;
@@ -333,6 +343,54 @@ int i2c_read8(const int port,
 int i2c_write8(const int port,
 	       const uint16_t slave_addr_flags,
 	       int offset, int data);
+
+/**
+ * Read, modify, write an 8-bit register to the slave at 7-bit slave address
+ * <slaveaddr>, at the specified 8-bit <offset> in the slave's address space.
+ * The <action> will specify whether this is setting the mask value or clearing
+ * them.
+ */
+int i2c_update8(const int port,
+		const uint16_t slave_addr_flags,
+		const int offset,
+		const uint8_t mask,
+		const enum mask_update_action action);
+
+/**
+ * Read, modify, write a 16-bit register to the slave at 7-bit slave address
+ * <slaveaddr>, at the specified 8-bit <offset> in the slave's address space.
+ * The <action> will specify whether this is setting the mask value or clearing
+ * them.
+ */
+int i2c_update16(const int port,
+		 const uint16_t slave_addr_flags,
+		 const int offset,
+		 const uint16_t mask,
+		 const enum mask_update_action action);
+
+/**
+ * Read, modify, write field of an 8-bit register to the slave at 7-bit
+ * slave address <slaveaddr>, at the specified 8-bit <offset> in the slave's
+ * address space.  The <clr_mask> mask field will be cleared and then the
+ * <set_mask> value will be set
+ */
+int i2c_field_update8(const int port,
+		      const uint16_t slave_addr_flags,
+		      const int offset,
+		      const uint8_t clr_mask,
+		      const uint8_t set_mask);
+
+/**
+ * Read, modify, write field of a 16-bit register to the slave at 7-bit
+ * slave address <slaveaddr>, at the specified 8-bit <offset> in the slave's
+ * address space.  The <clr_mask> mask field will be cleared and then the
+ * <set_mask> value will be set
+ */
+int i2c_field_update16(const int port,
+		       const uint16_t slave_addr_flags,
+		       const int offset,
+		       const uint16_t clr_mask,
+		       const uint16_t set_mask);
 
 /**
  * Read one or two bytes data from the slave at 7-bit slave address
