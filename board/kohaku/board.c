@@ -325,7 +325,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.max_frequency = 10,
 		.config = {
 			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 100000,
+				.odr = 10000,
 				.ec_rate = 0,
 			},
 		},
