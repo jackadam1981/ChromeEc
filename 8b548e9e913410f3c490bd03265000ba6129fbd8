@@ -22,6 +22,30 @@
       "revId": "8b548e9e913410f3c490bd03265000ba6129fbd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eecf0123_b9b0a8b3",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-08T21:20:31Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "3bb2dfd3_c2f79bcb",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "8b548e9e913410f3c490bd03265000ba6129fbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
