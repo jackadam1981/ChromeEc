@@ -221,7 +221,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.config = {
 			/* EC use accel for angle detection */
 			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 100000 | ROUND_UP_FLAG,
+				.odr = 10000 | ROUND_UP_FLAG,
 				.ec_rate = 100 * MSEC,
 			},
 		}
@@ -244,7 +244,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.config = {
 			/* EC use accel for angle detection */
 			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 100000 | ROUND_UP_FLAG,
+				.odr = 10000 | ROUND_UP_FLAG,
 				.ec_rate = 100 * MSEC,
 			},
 		},
