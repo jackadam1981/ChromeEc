@@ -595,6 +595,7 @@
 #define  RESET_CAUSE_SFT                BIT(28)
 #define  RESET_CAUSE_POR                BIT(27)
 #define  RESET_CAUSE_PIN                BIT(26)
+#define  RESET_CAUSE_BOR                BIT(25)
 #define  RESET_CAUSE_OTHER              (BIT(31)|BIT(30)|BIT(29)|BIT(28)| \
 					 BIT(27)|BIT(26)|BIT(25))
 #define  RESET_CAUSE_RMVF                BIT(24)
