@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "dd1497c7_7e170652",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-09T19:07:09Z",
+      "side": 1,
+      "message": "Thank you for making the bug. Please update the to do on line 33 to \"TODO(b/145796172): ...\" to help us keep track of the context.\n\nI\u0027m not asking you to clean up the use of the existing redundant macros. I\u0027m just asking you not to add a new one, since there\u0027s already a TODO to eliminate the existing ones. MUX_TBT_COMPAT_ENABLED isn\u0027t used except in this line.\n\nIt\u0027s not a deal-breaker for me if the new macro goes in, but is there a specific reason it needs to be here?",
+      "parentUuid": "83819436_d51aa51d",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d574dcb2_1cae05c9",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
