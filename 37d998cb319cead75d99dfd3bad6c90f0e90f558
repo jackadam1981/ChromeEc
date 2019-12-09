@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca307962_e70382b8",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-12-09T22:41:02Z",
+      "side": 1,
+      "message": "Where does this define get used?",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "37d998cb319cead75d99dfd3bad6c90f0e90f558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
