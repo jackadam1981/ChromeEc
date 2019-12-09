@@ -37,6 +37,7 @@ defined(SECTION_IS_RO)))
 #define QUEUE_SIZE_UART_IN QUEUE_SIZE
 #endif
 
+#define USE_EC_CR50_COMM  (USE_UART_INTERRUPTS && defined(CONFIG_STREAM_USART2))
 
 #ifdef CONFIG_STREAM_USART1
 struct usb_stream_config const ap_usb;
@@ -148,24 +149,40 @@ void send_data_to_usb(struct usart_config const *config)
 	struct queue const *uart_in = config->producer.queue;
 	int uart = config->uart;
 	size_t count;
-	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t q_room = queue_space(uart_in);
+	const size_t mask = uart_in->buffer_units_mask;
 
-	q_room = queue_space(uart_in);
-
-	if (!q_room)
-		return;
-
-	mask = uart_in->buffer_units_mask;
-	tail = uart_in->state->tail & mask;
+	tail = uart_in->state->tail;
 	count = 0;
 
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
+#if USE_EC_CR50_COMM
+	if (ec_comm_is_uart_in_packet_mode(uart)) {
+		while (uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
+
+			if (ec_comm_process_packet(ch))
+				continue;
+
+			if (count != q_room) {
+				uart_in->buffer[tail & mask] = ch;
+				tail++;
+				count++;
+			}
+		}
+	} else
+#endif  /* ! USE_EC_CR50_COMM */
+	{
+		if (!q_room)
+			return;
+
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail & mask] = uartn_read_char(uart);
+			tail++;
+			count++;
+		}
 	}
+
 	if (count)
 		queue_advance_tail(uart_in, count);
 }
