@@ -2,7 +2,7 @@ Case Closed Debugging (CCD)
 ===========================
 
 Case closed debugging is a feature of the EC codebase that can bridge UART
-consoles and SPI busses from a DUT (Device Under Test) to the host machine via
+consoles and SPI buses from a DUT (Device Under Test) to the host machine via
 USB.  This allows the host to access and update much of the DUT's state.  Use
 cases include automated hardware testing as well as simplified debug console
 access and firmware flashing for kernel and system developers.

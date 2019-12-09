@@ -101,7 +101,7 @@ void exception_panic(
 	/*
 	 * If a panic were to occur during the reset procedure, we want
 	 * to make sure that this panic will certainly cause a hard
-	 * reset, rather than aontaskfw reset. Track if paniced once
+	 * reset, rather than aontaskfw reset. Track if panicked once
 	 * already.
 	 */
 	static int panic_once;

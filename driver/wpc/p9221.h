@@ -296,20 +296,20 @@ void p9221_notify_vbus_change(int vbus);
 /**
  * get the fod (foreign-object detection) parameters for bpp charger type
  *
- * @param fod: return the real value of fod paramerters,
- *             return NULL if fod paramerters not set.
+ * @param fod: return the real value of fod parameters,
+ *             return NULL if fod parameters not set.
  *
- * @return the count bytes of fod paramerters.
+ * @return the count bytes of fod parameters.
  */
 int board_get_fod(uint8_t **fod);
 
 /**
  * get the fod (foreign-object detection) parameters for epp chager type
  *
- * @param fod: return the real value of fod paramerters,
- *             return NULL if fod paramerters not set.
+ * @param fod: return the real value of fod parameters,
+ *             return NULL if fod parameters not set.
  *
- * @return the count bytes of fod paramerters.
+ * @return the count bytes of fod parameters.
  */
 int board_get_epp_fod(uint8_t **fod);
 

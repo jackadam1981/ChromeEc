@@ -58,7 +58,7 @@ static void set_ioapic_redtbl_raw(const uint32_t irq, const uint32_t val)
 uint64_t ioapic_irq_mask_bitmap;
 
 /**
- * disable current all enabled intrrupts
+ * disable current all enabled interrupts
  * return current irq mask bitmap
  * power management typically use 'disable_all_interrupts' to disable current
  * all interrupts and save current interrupts enabling settings before enter
@@ -166,7 +166,7 @@ static const irq_desc_t system_irqs[] = {
 };
 
 /**
- * The macro below is used to define 20 exeption handler routines, each
+ * The macro below is used to define 20 exception handler routines, each
  * of which will push their corresponding interrupt vector number to
  * the stack, and then call exception_panic. The remaining arguments to
  * exception_panic were pushed by the hardware when the exception was

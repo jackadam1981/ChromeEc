@@ -247,7 +247,7 @@ static int SetMode(struct mpsse_context *mpsse, int endianness)
 		mpsse->pstop &= ~SK;
 
 		/*
-		 * SPI mode 0 propogates data on the falling edge and read
+		 * SPI mode 0 propagates data on the falling edge and read
 		 * data on the rising edge of the clock
 		 */
 		mpsse->tx |= MPSSE_WRITE_NEG;

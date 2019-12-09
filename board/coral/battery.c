@@ -77,7 +77,7 @@ static int disch_on_ac;
  * start_charging_min/max and charging_min/max are not used for the charger.
  * The effective temperature limits are given by discharging_min/max_c.
  *
- * Fuel Gauge (FG) parameters which are used for determing if the battery
+ * Fuel Gauge (FG) parameters which are used for determining if the battery
  * is connected, the appropriate ship mode (battery cutoff) command, and the
  * charge/discharge FETs status.
  *
@@ -645,7 +645,7 @@ enum battery_present battery_is_present(void)
 		 * When this path is taken, the _timer_started flag must be
 		 * reset so the 'else if' path will be entered and the
 		 * battery_report_present flag can be set by the deferred
-		 * call. This handles the case of the battery being disconected
+		 * call. This handles the case of the battery being disconnected
 		 * and reconnected while running or if battery_init() returns an
 		 * error due to a failed sb_read.
 		 */

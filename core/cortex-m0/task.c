@@ -283,14 +283,14 @@ void task_start_irq_handler(void *excep_return)
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
-	 * can't pre-empt itself.
+	 * can't preempt itself.
 	 */
 	if (irq < ARRAY_SIZE(irq_dist))
 		irq_dist[irq]++;
 
 	/*
 	 * Continue iff the tasks are ready and we are not called from another
-	 * exception (as the time accouting is done in the outer irq).
+	 * exception (as the time accounting is done in the outer irq).
 	 */
 	if (!start_called || ((uint32_t)excep_return & 0xf) == 1)
 		return;
@@ -308,7 +308,7 @@ void task_end_irq_handler(void *excep_return)
 	uint32_t t = get_time().le.lo;
 	/*
 	 * Continue iff the tasks are ready and we are not called from another
-	 * exception (as the time accouting is done in the outer irq).
+	 * exception (as the time accounting is done in the outer irq).
 	 */
 	if (!start_called || ((uint32_t)excep_return & 0xf) == 1)
 		return;

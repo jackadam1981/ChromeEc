@@ -1219,7 +1219,7 @@ static void maybe_restore_struct(void *new_p, void *old_p, size_t size,
 }
 
 /*
- * Note that PCRs are not marshaled here, but the rest of the structre, below
+ * Note that PCRs are not marshaled here, but the rest of the structure, below
  * and above the PCR array is.
  */
 static uint16_t marshal_state_clear(STATE_CLEAR_DATA *scd, uint8_t *dst)
@@ -1326,7 +1326,7 @@ static uint16_t marshal_state_reset_data(STATE_RESET_DATA *srd, uint8_t *dst)
 }
 
 /*
- * Migrate all reserved objects found in the NVMEM cache after intializing
+ * Migrate all reserved objects found in the NVMEM cache after initializing
  * from legacy NVMEM storage.
  */
 static enum ec_error_list migrate_tpm_reserved(struct nn_container *ch)
@@ -1395,7 +1395,7 @@ static enum ec_error_list migrate_tpm_reserved(struct nn_container *ch)
 }
 
 /*
- * Migrate all evictable objects found in the NVMEM cache after intializing
+ * Migrate all evictable objects found in the NVMEM cache after initializing
  * from legacy NVMEM storage.
  */
 static enum ec_error_list migrate_objects(struct nn_container *ch)
@@ -1476,7 +1476,7 @@ static enum ec_error_list save_var(const uint8_t *key, uint8_t key_len,
 }
 
 /*
- * Migrate all (key, value) pairs found in the NVMEM cache after intializing
+ * Migrate all (key, value) pairs found in the NVMEM cache after initializing
  * from legacy NVMEM storage.
  */
 static enum ec_error_list migrate_vars(struct nn_container *ch)
@@ -2998,7 +2998,7 @@ static void dump_contents(const struct nn_container *ch)
 /*
  * Clear tpm data from nvmem. First fill up the current top page with erased
  * objects, then compact the flash storage, removing all TPM related objects.
- * This would guarantee that all pages where TPM objecs were stored would be
+ * This would guarantee that all pages where TPM objects were stored would be
  * erased.
  */
 int nvmem_erase_tpm_data(void)

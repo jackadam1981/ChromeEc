@@ -158,7 +158,7 @@ static void rx_fifo_handler(void)
 	/*
 	 * When we've handled all the bytes in the queue ("rx_in_fifo ==
 	 * rx_handled" and "rx_left == 0" indicate the same thing), we can
-	 * reenable the USB HW to go fetch more.
+	 * re-enable the USB HW to go fetch more.
 	 */
 	if (!rx_left) {
 		rx_handled = 0;

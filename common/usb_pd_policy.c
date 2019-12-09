@@ -942,7 +942,7 @@ static int command_cable(int argc, char **argv)
 		 */
 		ccprintf("Max vbus voltage: %s\n",
 			cable[port].attr.p_rev30.vbus_max >
-				ARRAY_SIZE(vbus_max) ? "Invaild" :
+				ARRAY_SIZE(vbus_max) ? "Invalid" :
 				vbus_max[cable[port].attr.p_rev30.vbus_max]);
 
 		/* For Rev 3.0 Active cables */

@@ -421,7 +421,7 @@ enum apm_dmic_rate apm_get_vad_dmic_rate(void)
 }
 
 /**
- * Sets VAD Input chanel.
+ * Sets VAD Input channel.
  *
  * @param   chan_src                - Processed digital microphone channel
  *                                    selection.
@@ -485,7 +485,7 @@ void apm_vad_restart(void)
  * Restarts VAD functionality.
  *
  * @param   gain_coupling   - ADC digital gain coupling (independent or
- *                            rigth tracks left).
+ *                            right tracks left).
  * @param   left_chan_gain  - Left channel ADC digital gain programming value.
  * @param   right_chan_gain - Right channel ADC digital gain programming value.
  * @return  EC_ERROR_INVAL or EC_SUCCESS

@@ -36,7 +36,7 @@ static void ina_disconnect(void)
 {
 	CPRINTS("I2C disconnect");
 
-	/* Disonnect I2C0 SDA/SCL output to B1/B0 pads */
+	/* Disconnect I2C0 SDA/SCL output to B1/B0 pads */
 	GWRITE(PINMUX, DIOB1_SEL, 0);
 	GWRITE(PINMUX, DIOB0_SEL, 0);
 	/* Disconnect B1/B0 pads to I2C0 input SDA/SCL */

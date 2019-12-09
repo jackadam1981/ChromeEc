@@ -23,7 +23,7 @@
  * Two GPIOs used as who outputs of the two clocks. Luckily both GPIOs can be
  * controlled by the same SOC register, the input values of 'both_zero',
  * 'one_zero', 'zero_one', and 'both_one' are the values to be written
- * into the register to set the two GPIOs to the respecitve values.
+ * into the register to set the two GPIOs to the respective values.
  *
 
 static uint32_t tick;               # Free running tick counter, runs from

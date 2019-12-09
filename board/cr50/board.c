@@ -511,7 +511,7 @@ void pmu_wakeup_interrupt(void)
 	if (wakeup_src & GC_PMU_EXITPD_SRC_RBOX_WAKEUP_MASK)
 		rbox_clear_wakeup();
 
-	/* Disable rbox wakeup. It will be reenabled before entering sleep. */
+	/* Disable rbox wakeup. It will be re-enabled before entering sleep. */
 	GREG32(RBOX, WAKEUP) = 0;
 
 	if (wakeup_src & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK) {
@@ -538,7 +538,7 @@ void board_configure_deep_sleep_wakepins(void)
 {
 	/*
 	 * Disable the i2c and spi slave wake sources since the TPM is
-	 * not being used and reenable them in their init functions on
+	 * not being used and re-enable them in their init functions on
 	 * resume.
 	 */
 	GWRITE_FIELD(PINMUX, EXITEN0, DIOA12, 0); /* SPS_CS_L */
@@ -1249,7 +1249,7 @@ static int get_strap_config(uint8_t *config)
 	 *         internal pullup resistor.
 	 *      c. b0 = gpio_get_level(pin)
 	 *
-	 * To be considered a valid strap configuraiton, the upper 4 bits must
+	 * To be considered a valid strap configuration, the upper 4 bits must
 	 * have no pullups and at least one pullup in the lower 4 bits or vice
 	 * versa. So can use 0xA0 and 0x0A as masks to check for each
 	 * condition. Once this check is passed, the 4 bits which are used to

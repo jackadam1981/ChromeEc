@@ -806,7 +806,7 @@ class TestConsoleEditingMethods(unittest.TestCase):
     CheckConsoleOutput(self, exp_console_out)
 
   def test_InsertingCharacters(self):
-    """Verify that we can insert charcters within the line."""
+    """Verify that we can insert characters within the line."""
     test_str = 'accel 0 1' # Here we forgot the 'read' part in 'accelread'
     input_stream = StringToByteList(test_str)
     # We need to move over to the 'l' and add read.

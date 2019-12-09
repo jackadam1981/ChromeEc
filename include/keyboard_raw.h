@@ -31,7 +31,7 @@ enum keyboard_column_index {
 void keyboard_raw_init(void);
 
 /**
- * Finish intitialization after task scheduling has started.
+ * Finish initialization after task scheduling has started.
  *
  * Call from the keyboard scan task.
  */

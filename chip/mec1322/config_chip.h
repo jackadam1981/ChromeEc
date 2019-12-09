@@ -36,7 +36,7 @@
  * The memory region for RAM is actually 0x00100000-0x00120000.
  * RAM for RO/RW = 20k
  * CODE size of the Loader is 3k
- * As per the above configuartion the upper 20k
+ * As per the above configuration the upper 20k
  * is used to store data.The rest is for code.
  * the lower 107K is flash[ 3k Loader and 104k RO/RW],
  * and the higher 20K is RAM shared by loader and RO/RW.

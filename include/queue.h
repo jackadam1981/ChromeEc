@@ -140,7 +140,7 @@ struct queue_chunk {
  * |--***---|
  *
  * A call to queue_get_write_chunk(&q, 0) will return 3 entries starting at T.
- * To be able to also write the 2 leading writable indicies, we'll need to use
+ * To be able to also write the 2 leading writable indices, we'll need to use
  * queue_get_write_chunk(&q, 3), which will return 2 entries at queue index 0.
  */
 struct queue_chunk queue_get_write_chunk(struct queue const *q, size_t offset);

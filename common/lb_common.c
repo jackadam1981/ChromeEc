@@ -51,7 +51,7 @@
  * that the current through each of the emitter's LEDs doesn't exceed the
  * manufacturer's specifications. For example, if a particular LED can't handle
  * more than 5 mA, and the emitter is made up of four LEDs in parallel, the
- * maxiumum limit for that particular ISC would be 20 mA.
+ * maximum limit for that particular ISC would be 20 mA.
  *
  * Although the specified maximum currents are usually similar, the three
  * different colors of LEDs have different brightnesses. For any given current,

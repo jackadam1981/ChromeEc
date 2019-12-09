@@ -340,7 +340,7 @@ int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
 	 * This is optimized for smaller Tx data size.
 	 * If need to write big data ( > ISH_I2C_FIFO_SIZE ),
 	 * it is better to use Tx FIFO threshold interrupt(as in Rx) for
-	 * better CPU usuage.
+	 * better CPU usage.
 	 * */
 	expire_ts = __hw_clock_source_read() + I2C_TX_FLUSH_TIMEOUT_USEC;
 	if (in_size > (ISH_I2C_FIFO_SIZE - out_size)) {

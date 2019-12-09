@@ -85,7 +85,7 @@ GPIO(CLKRUN,		PIN(5, 6), GPIO_INPUT)	/* CLKRUN */
 GPIO(SER_IRQ_eSPI_ALERT,PIN(5, 7), GPIO_INPUT)	/* SER_IRQ / eSPI_ALERT */
 #endif
 
-/* Unused pins 3.3V & Interruptable */
+/* Unused pins 3.3V & Interruptible */
 GPIO(NC_04,	PIN(0, 4), GPIO_INPUT | GPIO_PULL_UP)
 
 GPIO(NC_40,	PIN(4, 0), GPIO_INPUT)	/* TA1_TACH1 */
@@ -124,7 +124,7 @@ GPIO(NC_D3,	PIN(D, 3), GPIO_INPUT)	/* TB1 */
 
 GPIO(NC_E7,	PIN(E, 7), GPIO_INPUT)	/* 32K_CLKIN */
 
-/* Unused pins: VSPI 3.3V or 1.8V & Interruptable */
+/* Unused pins: VSPI 3.3V or 1.8V & Interruptible */
 GPIO(NC_94,	PIN(9, 4), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(NC_95,	PIN(9, 5), GPIO_INPUT | GPIO_PULL_UP)
 
@@ -140,7 +140,7 @@ GPIO(NC_66,	PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)
 
 GPIO(NC_B6,	PIN(B, 6), GPIO_INPUT)	/* PWM4 */
 
-/* eSPI: VHIF Unused pins 1.8V & Interruptable */
+/* eSPI: VHIF Unused pins 1.8V & Interruptible */
 GPIO(NC_50,	PIN(5, 0), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Alternate pins for UART */

@@ -358,7 +358,7 @@ void __idle(void)
 				 * 'max_sleep_time' value should be big
 				 * enough so that hibernation timer's interrupt
 				 * triggers only after 'wfi' completes its
-				 * excution.
+				 * execution.
 				 */
 				max_sleep_time -= (get_time().le.lo - t0.le.lo);
 

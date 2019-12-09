@@ -57,7 +57,7 @@ BOOL _cpri__Startup(
    *               reinitialization is required?
    * _cpri__RsaStartup() - not sure what needs to be done in HW
    * _cpri__EccStartup() - not sure what needs to be done in HW
-   * _cpri__SymStartup() - this function is emtpy in the TPM2 library
+   * _cpri__SymStartup() - this function is empty in the TPM2 library
    *                implementation.
    */
   return 1;

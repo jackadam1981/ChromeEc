@@ -33,7 +33,7 @@
 #define vsafe0v_max (800/25)
 /*
  * These interface are workable while ADC is enabled, before
- * calling them should make sure ec driver finished chip initilization.
+ * calling them should make sure ec driver finished chip initialization.
  */
 #define is_equal_greater_safe5v(port) \
 		(((anx7447_get_vbus_voltage(port))) > vsafe5v_min)

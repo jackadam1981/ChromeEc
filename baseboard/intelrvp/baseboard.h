@@ -211,7 +211,7 @@ struct vconn_gpio_t {
 };
 
 struct tcpc_gpio_config_t {
-	/* VBUS interrput */
+	/* VBUS interrupt */
 	struct tcpc_gpio_t vbus;
 	/* Source enable */
 	struct tcpc_gpio_t src;

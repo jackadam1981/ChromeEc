@@ -41,7 +41,7 @@ enum ipc_protocol {
 	IPC_PROTOCOL_COUNT
 };
 /*
- * IPC handle enconding only supports 16 protocols which is the
+ * IPC handle encoding only supports 16 protocols which is the
  * maximum protocols supported by IPC doorbell encoding.
  */
 BUILD_ASSERT(IPC_PROTOCOL_COUNT <= 0x0F);

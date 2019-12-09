@@ -175,7 +175,7 @@ static void ep0_send_descriptor(const uint8_t *desc, int len,
 			desc_left ? 0 : EP_STATUS_OUT);
 }
 
-/* Requests on the control endpoint (aka EP0) */
+/* Requests on the control endpoint (a.k.a. EP0) */
 static void ep0_rx(void)
 {
 	uint16_t req = ep0_buf_rx[0]; /* bRequestType | bRequest */

@@ -24,9 +24,9 @@ The main source code for fingerprint sensor functionality lives in the
 The following "boards" (specified by the `BOARD` environment variable when
 building the EC code) are for fingerprint:
 
-*   [`nocturne_fp`] aka [`nami_fp`] aka [`dartmonkey`]
+*   [`nocturne_fp`] a.k.a. [`nami_fp`] a.k.a. [`dartmonkey`]
     *   Based on [STM32H743] (Cortex-M7).
-*   [`hatch_fp`] aka [`bloonchipper`]
+*   [`hatch_fp`] a.k.a. [`bloonchipper`]
     *   Based on [STM32F412] (Cortex-M4).
     *   Support for the STM32F412 for the FPMCU is not yet fully complete,
         but it is functional enough for testing.

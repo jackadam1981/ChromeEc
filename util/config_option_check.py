@@ -189,7 +189,7 @@ def print_missing_config_options(hunks, config_options):
                   'descriptions.\n\n' % CONFIG_FILE)
             print_banner = False
             missing_config_option = True
-          # Print the misssing config option.
+          # Print the missing config option.
           print('> %-*s %s:%s' % (max_option_length, option,
                                   h.filename,
                                   l.line_num))

@@ -15,7 +15,7 @@ ENTRY(ish_aon_main);
 
 /**
  * resered 8 bytes for GDB showing correct stack
- * information during source code level debuging
+ * information during source code level debugging
  */
 #define RESERVED_GDB_SIZE  (8)
 

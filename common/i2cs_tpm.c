@@ -18,7 +18,7 @@
  * The adaptation layer is stateless, it processes the i2cs "write complete"
  * interrupts on the interrupt context.
  *
- * Each "write complete" interrupt is associated with some data receved from
+ * Each "write complete" interrupt is associated with some data received from
  * the master. If the package received from the master contains just one byte
  * payload, the value of this byte is considered the address of the TPM2
  * register to reach, read or write.

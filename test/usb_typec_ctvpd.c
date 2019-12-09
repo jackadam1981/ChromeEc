@@ -257,7 +257,7 @@ static int check_host_cc_open(void)
 	if (mock_get_cc_rpusb_odh() != GPO_HZ)
 		return 0;
 
-	/* Make sure CC_RP3A0_RD_L is set to comparitor */
+	/* Make sure CC_RP3A0_RD_L is set to comparator */
 	if (mock_get_cfg_cc_rp3a0_rd_l() != PIN_CMP)
 		return 0;
 

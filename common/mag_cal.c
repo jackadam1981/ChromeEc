@@ -29,7 +29,7 @@
 /*
  * eigen value magnitude and ratio test
  *
- * Using the magnetometer information, caculate the 3 eigen values/vectors
+ * Using the magnetometer information, calculate the 3 eigen values/vectors
  * for the transformation. Check the eigen values are sane.
  */
 static int moc_eigen_test(struct mag_cal_t *moc)

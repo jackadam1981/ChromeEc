@@ -325,7 +325,7 @@ void __attribute__((used)) _i2cs_write_complete_int(void)
 	i2cs_sda_low_count = 0;
 
 	/*
-	 * Could be the end of a TPM trasaction. Set sleep to be reenabled in 1
+	 * Could be the end of a TPM transaction. Set sleep to be re-enabled in 1
 	 * second. If this is not the end of a TPM response, then sleep will be
 	 * disabled again in the next I2CS interrupt.
 	 */
@@ -457,7 +457,7 @@ size_t i2cs_zero_read_fifo_buffer_depth(void)
 	if (depth)
 		last_read_pointer = (uint16_t)hw_read_pointer;
 	/*
-	 * Return number of bytes queued when this funciton is called so it can
+	 * Return number of bytes queued when this function is called so it can
 	 * be tracked or logged by caller if desired.
 	 */
 	return depth;

@@ -47,7 +47,7 @@ int parser_find_board(const char *hash_file_name, const char board_id[4]);
  * the entry.
  *
  * Return value set to zero on success, or to OS error if one occurs. EIO is
- * used if an attmept to get next range is made before hash database file was
+ * used if an attempt to get next range is made before hash database file was
  * opened and board entry in it was found.
  */
 int parser_get_next_range(struct addr_range **range);

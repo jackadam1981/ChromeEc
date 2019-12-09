@@ -200,7 +200,7 @@ class StatsManager(object):
       dec_length = len(prefix)
       # trim title to be at most as long as the longest line without the prefix
       title = self._title[:(line_length - dec_length)]
-      # line is a seperator line consisting of -----
+      # line is a separator line consisting of -----
       line = '%s%s' % (prefix, '-' * (line_length - dec_length))
       # prepend the prefix to the centered title
       padded_title = '%s%s' % (prefix, title.center(line_length)[dec_length:])

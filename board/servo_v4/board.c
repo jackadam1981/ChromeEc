@@ -442,7 +442,7 @@ static void board_init(void)
 	system_set_bbram(SYSTEM_BBRAM_IDX_PD1, 0);
 
 	/*
-	 * Disable SBU mux. The polarity is set each time a presense is detected
+	 * Disable SBU mux. The polarity is set each time a presence is detected
 	 * on SBU, and wired thorugh. On missing voltage on SBU. SBU wires are
 	 * disconnected.
 	 */

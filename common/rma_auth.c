@@ -128,7 +128,7 @@ static void p256_get_pub_key_and_secret(uint8_t pub_key[P256_NBYTES],
 	/*
 	 * By convention with the RMA server the Y coordinate of the Cr50
 	 * public key component is required to be an odd value. Keep trying
-	 * until the genreated bublic key has the compliant Y coordinate.
+	 * until the generated bublic key has the compliant Y coordinate.
 	 */
 	while (1) {
 		HASH_CTX sha;

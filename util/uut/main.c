@@ -727,7 +727,7 @@ static void exit_uart_app(int32_t exit_status)
  * Parameters:
  *		success - SUCCESS for successful message, FAIL for erroneous
  *			  massage.
- *		fmt     - Massage to dispaly (format and arguments).
+ *		fmt     - Massage to display (format and arguments).
  *
  * Returns:	none
  * Side effects: Using DISPLAY_MSG macro.

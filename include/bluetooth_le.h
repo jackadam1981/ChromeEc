@@ -365,7 +365,7 @@ int ble_rx(struct ble_pdu *pdu, int timeout, int adv);
 int ble_radio_init(uint32_t access_address, uint32_t crc_init_val);
 
 /*
- * Uses the algorithm defined in the BLE core specifcation
+ * Uses the algorithm defined in the BLE core specification
  * 4.1 Vol 6 4.5.8 to select the next data channel
  */
 uint8_t get_next_data_channel(struct remapping_table *rt);

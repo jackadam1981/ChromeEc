@@ -54,7 +54,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-/* Dispaly port hardware can connect to port 0, 1 or neither. */
+/* Display port hardware can connect to port 0, 1 or neither. */
 #define PD_PORT_NONE -1
 
 void pd_mcu_interrupt(enum gpio_signal signal)
