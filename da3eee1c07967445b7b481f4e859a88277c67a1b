@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1e559bbf_fac6cfcd",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-09T20:29:27Z",
+      "side": 1,
+      "message": "This slows down the scan. I\u0027m not sure whether we\u0027re improving or introducing other obscure cases...",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 30
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c853706_030f05b8",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -69,6 +92,29 @@
       "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38ad0d9a_350ca7c6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-09T20:29:27Z",
+      "side": 1,
+      "message": "When c1 and c2 have at least one row is active in common,\n\n  1. no other rows in c2 are active -\u003e success\n  2. at least another row is active in common -\u003e ghost -\u003e reject\n  3. another row in c2 is active -\u003e new key press -\u003e reject\n\nIf I understand correctly, we can finish scanning only in case of #1. Then, the scan loop should be much tighter and more efficient (than this CL or the current loop).\n\n  r \u003d keyboard_raw_read_rows();\n  if (s \u0026 r \u0026\u0026 count_bits(r) \u003e 1)\n    return ERROR_MAYBE_GHOST;\n  state[c] \u003d r;\n  s |\u003d r;",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 42
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
