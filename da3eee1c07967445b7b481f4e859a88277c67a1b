@@ -163,6 +163,30 @@
       "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c0a0dc_27aa9c00",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-09T22:05:51Z",
+      "side": 1,
+      "message": "What I meant is https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1957897.\n\n\u003e in case one or more of the four coordinate points do not\n\u003e correspond to a actual keys,\n\nYou\u0027re talking about actual_key_mask, right? It\u0027s applied by read_matrix. So, it\u0027s covered (by CL:1957897).",
+      "parentUuid": "c636ff36_0ec5b385",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 42
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
