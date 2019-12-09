@@ -22,6 +22,30 @@
       "revId": "53814df98d5042886c2a8f31e6b0250e7112ff5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0c2da9_d62f05ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-09T22:35:54Z",
+      "side": 1,
+      "message": "No, Tricium is entirely a server-side process: go/luci/tricium\n\nI have a separate CL to add the codespell tool to the chroot: https://crrev.com/c/1958568. They share the same dictionary, so we should be able to run codespell as part of \"repo upload\" if desired.",
+      "parentUuid": "ec137aac_1587a50d",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "53814df98d5042886c2a8f31e6b0250e7112ff5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
