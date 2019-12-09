@@ -137,7 +137,7 @@ enum power_state chipset_force_g3(void)
  */
 __overridable void board_icl_tgl_all_sys_pwrgood(void)
 {
-
+	msleep(50);
 }
 
 static void enable_pp5000_rail(void)
