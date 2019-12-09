@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "793686a9_beb31601",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-12-09T19:54:55Z",
+      "side": 1,
+      "message": "./bcmp pointed out that \u0027p\u0027 isn\u0027t defined.\n\nAlso manuf_word_count is unused.",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 23
+      },
+      "revId": "f5b0405bc3cfe675ed9b30e4556c462d2fe49a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
