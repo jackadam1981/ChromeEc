@@ -62,9 +62,6 @@ struct cr50_comm_packet {
 enum ec_efs_boot_mode {
 	EC_EFS_BOOT_MODE_NORMAL           = 0x00,
 	EC_EFS_BOOT_MODE_NO_BOOT          = 0x01,
-	EC_EFS_BOOT_MODE_RECOVERY         = 0x02,
-	EC_EFS_BOOT_MODE_NO_BOOT_RECOVERY = 0x03,
-	EC_EFS_BOOT_MODE_RESET            = 0xff,
 
 	/* boot_mode is uint8_t */
 	EC_EFS_BOOT_MODE_LIMIT            = 255,
