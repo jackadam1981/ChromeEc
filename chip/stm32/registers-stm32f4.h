@@ -597,6 +597,7 @@
 #define  RESET_CAUSE_PIN                0x04000000
 #define  RESET_CAUSE_OTHER              0xfe000000
 #define  RESET_CAUSE_RMVF               0x01000000
+#define  RESET_CAUSE_BOR                BIT(25)
 /* Power cause in PWR CSR register */
 #define STM32_PWR_RESET_CAUSE STM32_PWR_CSR
 #define STM32_PWR_RESET_CAUSE_CLR STM32_PWR_CR
