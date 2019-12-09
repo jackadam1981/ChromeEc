@@ -57,6 +57,24 @@
       "revId": "96e9a5198ecc91670f14dcc6d8667863bc6350db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8490ec13_1c4236ee",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-12-09T22:16:27Z",
+      "side": 1,
+      "message": "When the soft reset happens, VSYS_MIN will get reset to the lowest default value. But, that\u0027s why we read the value prior to doing the soft reset, so it can be restored to the value determined by the voltage divider at power on reset. Are you saying that it\u0027s not being written back after the soft reset?",
+      "parentUuid": "a0a23cb3_72b541f8",
+      "revId": "96e9a5198ecc91670f14dcc6d8667863bc6350db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
