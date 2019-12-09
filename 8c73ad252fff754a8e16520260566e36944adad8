@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c918df55_b8a8a321",
+        "filename": "chip/it83xx/intc.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a769cbb_4fba9ec5",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "999bfa28_f5c9616e",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "nit: please use BIT(6)",
+      "range": {
+        "startLine": 965,
+        "startChar": 37,
+        "endLine": 965,
+        "endChar": 45
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afd11d3_2dc1d3cb",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999bfa28_f5c9616e",
       "range": {
         "startLine": 965,
         "startChar": 37,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dac60b5b_a71b4004",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda61637_f47978cd",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e3dc967_5fc2af04",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -82,6 +154,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "let\u0027s add a final SPI_STATE_COUNT at the end, then we can add\n\nBUILD_ASSERT(ARRAY_SIZE(spi_response_state) \u003d\u003d SPI_STATE_COUNT);\n\nbelow the array then we know the lookup is always valid",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b5b545_9a94e4a8",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e3dc967_5fc2af04",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a6734f19_74cc45c1",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58b6eaf_a5f242a3",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dc319a6_03ce63a8",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -128,6 +248,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "this should also take in the memory address (and size) of the buffer to write to the TX buffer instead of assuming it is out_msg",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 47
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdd6f21_66682cdc",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dc319a6_03ce63a8",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8263a78c_9ccfb3af",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Some responded data will exceed one FIFO 128 bytes data.",
+      "parentUuid": "1e3f8495_ae7547ab",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52fe5698_8de516b6",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -174,6 +342,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "this an error case, can we print out an error message here please?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 9
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbb0fd8_3e2d94dc",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52fe5698_8de516b6",
       "range": {
         "startLine": 145,
         "startChar": 1,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d74e8d11_4fb0fc6e",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "In function of reset_rx_fifo, we will end Rx FIFO access.",
+      "parentUuid": "48ca2352_52ddc093",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99d15ff8_738cc8da",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -220,6 +436,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "we should not be using a global here, the function should take in an input parameter where to write the data along with the count. The caller should pass in the correct destination memory address",
+      "range": {
+        "startLine": 170,
+        "startChar": 25,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0161997c_04955b73",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d15ff8_738cc8da",
       "range": {
         "startLine": 170,
         "startChar": 25,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "89d5bfb2_363cbf5b",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca092e33_3a7263c7",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 35
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc6338ba_111f9005",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -266,6 +530,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "can this would be\n\nspi_host_request_data(in_msg + sizeof(*r), pkt_size - sizeof(*r));",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cedaeff_d52e8469",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc6338ba_111f9005",
       "range": {
         "startLine": 196,
         "startChar": 2,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "420ebde8_7e6be170",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b848bda7_9bef1c9a",
+      "range": {
+        "startLine": 210,
+        "startChar": 28,
+        "endLine": 211,
+        "endChar": 52
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3655200a_b49917b2",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "ea2eb39e_f7fc78ee",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "The SPI handshake procedure is slave received data from host and responded to the host after processing. The host will get a corresponding response first before end detection. So if the end is detected when the Rx FIFO is not full, this transaction will abort. \n\nWe will wait the data until Rx FIFO full then to process because Rx FIFO does not receive the data when the CPU starts accessing FIFO after receiving X bytes data. This will lead to error in receiving the next X bytes data.",
+      "parentUuid": "3655200a_b49917b2",
+      "range": {
+        "startLine": 249,
+        "startChar": 18,
+        "endLine": 249,
+        "endChar": 39
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1725863_6f2bbe56",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 17
@@ -335,6 +671,30 @@
       "writtenOn": "2019-12-06T16:56:33Z",
       "side": 1,
       "message": "can you replace this with a call to spi_chipset_startup()",
+      "range": {
+        "startLine": 340,
+        "startChar": 2,
+        "endLine": 351,
+        "endChar": 40
+      },
+      "revId": "8c73ad252fff754a8e16520260566e36944adad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f129bc3_a8d8372f",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-12-09T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1725863_6f2bbe56",
       "range": {
         "startLine": 340,
         "startChar": 2,
