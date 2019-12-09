@@ -94,8 +94,6 @@ static int load_ec_hash_(uint8_t * const ec_hash)
  */
 static void ec_efs_init_(void)
 {
-	int rv;
-
 	if (!board_has_ec_cr50_comm_support())
 		return;
 
@@ -113,6 +111,86 @@ static void ec_efs_init_(void)
 	if (ec_efs_ctx.hash_is_loaded)
 		return;
 
+	ec_efs_refresh();
+}
+DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
+
+void ec_efs_reset(void)
+{
+	set_boot_mode_(EC_EFS_BOOT_MODE_NORMAL);
+}
+
+/*
+ * Change the EC boot mode value.
+ *
+ * @param data Pointer to the EC-CR50 packet
+ * @param size Data (payload) size in EC-CR50 packet
+ * @return CR50_COMM_SUCCESS if the packet has been processed successfully,
+ *         CR50_COMM_ERROR_SIZE if data size is not as expected, or
+ *         0 if it does not respond to EC.
+ */
+uint16_t ec_efs_set_boot_mode(const char * const data, const uint8_t size)
+{
+	uint8_t boot_mode;
+
+	if (size != 1)
+		return CR50_COMM_ERROR_SIZE;
+
+	boot_mode = data[0];
+
+	if (boot_mode != EC_EFS_BOOT_MODE_NORMAL) {
+		board_reboot_ec_deferred(0);
+		return 0;
+	}
+
+	set_boot_mode_(boot_mode);
+	return CR50_COMM_SUCCESS;
+}
+
+/*
+ * Verify the given EC-FW hash against one in kernel secdata.
+ *
+ * @param data Pointer to the EC-CR50 packet
+ * @param size Data (payload) size in EC-CR50 packet
+ * @return CR50_COMM_SUCCESS if the packet has been processed successfully,
+ *         CR50_COMM_ERROR_SIZE if data size is not as expected, or
+ *         CR50_COMM_ERROR_BAD_PAYLOAD if the given hash and the hash in NVM
+ *                                     are not same.
+ *         0 if it deosn't have to respond to EC.
+ */
+uint16_t ec_efs_verify_hash(const char *hash_data, const uint8_t size)
+{
+	if (size != SHA256_DIGEST_SIZE)
+		return CR50_COMM_ERROR_SIZE;
+
+	if (!ec_efs_ctx.hash_is_loaded) {
+		if (ec_efs_ctx.secdata_error_code == EC_SUCCESS)
+			ec_efs_refresh();
+
+		if (ec_efs_ctx.secdata_error_code != EC_SUCCESS)
+			return CR50_COMM_ERROR_NVMEM;
+	}
+
+	if (safe_memcmp(hash_data, ec_efs_ctx.hash, SHA256_DIGEST_SIZE)) {
+		/* Verification failed */
+		set_boot_mode_(EC_EFS_BOOT_MODE_NO_BOOT);
+		return CR50_COMM_ERROR_BAD_PAYLOAD;
+	}
+
+	if (ec_efs_ctx.boot_mode != EC_EFS_BOOT_MODE_NORMAL) {
+		board_reboot_ec_deferred(0);
+		return 0;
+	}
+
+	return CR50_COMM_SUCCESS;
+}
+
+void ec_efs_refresh(void)
+{
+	int rv;
+
+	ec_efs_ctx.hash_is_loaded = 0;
+
 	rv = load_ec_hash_(ec_efs_ctx.hash);
 	if (rv == EC_SUCCESS)
 		ec_efs_ctx.hash_is_loaded = 1;
@@ -120,9 +198,17 @@ static void ec_efs_init_(void)
 		cprints(CC_SYSTEM, "load_ec_hash error: 0x%x\n", rv);
 	ec_efs_ctx.secdata_error_code = rv;
 }
-DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
 
-void ec_efs_reset(void)
+void ec_efs_print_status(void)
 {
-	set_boot_mode_(EC_EFS_BOOT_MODE_NORMAL);
+	/* EC-EFS Context */
+	ccprintf("ec_hash            : %sLOADED\n",
+		 ec_efs_ctx.hash_is_loaded ? "" : "UN");
+	ccprintf("secdata_error_code : 0x%08x\n",
+		 ec_efs_ctx.secdata_error_code);
+
+#ifdef CR50_RELAXED
+	ccprintf("ec_hash_secdata    : %ph\n",
+		 HEX_BUF(ec_efs_ctx.hash, SHA256_DIGEST_SIZE));
+#endif
 }
