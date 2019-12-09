@@ -218,17 +218,34 @@ void send_data_to_usb(struct usart_config const *config)
 		if (!ec_bridge_enabled_)
 			inc = 0;
 	}
+
+	if (ec_comm_is_uart_in_packet_mode(uart)) {
+		/*
+		 * Even if UART-to-USB data queue is full (count == q_room),
+		 * It should drain UART queue, so that an EC packet
+		 * can be processed. In this case, EC console data
+		 * shall be lost anyway.
+		 */
+		while (uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
+
+			if (ec_comm_process_packet(ch))
+				continue;
+
+			if (count != q_room) {
+				uart_in->buffer[tail] = ch;
+				tail = (tail + inc) & mask;
+				count += inc;
+			}
+		}
+	} else
 #endif  /* BOARD_CR50 */
-	/*
-	 * TODO(b/119329144): Process packet data separately,
-	 * and filter console data based on ccd capability.
-	 * if (ec_comm_is_uart_in_packet_mode(uart))
-	 *	...
-	 */
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + inc) & mask;
-		count += inc;
+	{
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail] = uartn_read_char(uart);
+			tail = (tail + inc) & mask;
+			count += inc;
+		}
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);
