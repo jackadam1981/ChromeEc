@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9387c575_3f622eda",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-09T08:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a358a1e6_7efb8e04",
+      "revId": "bcc6a6e7d03eb44fb16884311c9add3d0d97c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cc5f943_e562cf67",
         "filename": "include/battery.h",
         "patchSetId": 3
