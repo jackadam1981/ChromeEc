@@ -6,6 +6,7 @@
 #include "case_closed_debug.h"  /* For ccd_ext_is_enabled() */
 #include "ccd_config.h"
 #include "console.h"
+#include "ec_comm.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -207,8 +208,12 @@ static void ccd_state_change_hook(void)
 	/* Start out by figuring what flags we might want enabled */
 
 	/*
-	 * Enable EC/AP UART RX.
-	 * They shall be disabled later if that device is off.
+	 * Enable AP|EC UART RX.
+	 * In the last check, it will check if AP or EC is off and clear
+	 * CCD_ENABLE_UART_{AP|EC} flag from flags_want. By doing so,
+	 * this function can accommodate any logics overriding those flags,
+	 * but still be sure that UART RX will not be enabled as long as the
+	 * device is off.
 	 */
 	flags_want = CCD_ENABLE_UART_AP | CCD_ENABLE_UART_EC;
 
