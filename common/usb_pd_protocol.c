@@ -931,7 +931,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			/*
 			 * Inform Sink that it can't transmit. If a sink
-			 * transmition is in progress and a collsion occurs,
+			 * transmission is in progress and a collsion occurs,
 			 * a reset is generated. This should be rare because
 			 * all extended messages are chunked. This effectively
 			 * defaults to PD REV 2.0 collision avoidance.
@@ -2149,7 +2149,7 @@ static inline int pdo_busy(int port)
 {
 	/*
 	 * Note, main PDO state machine (pd_task) uses READY state exclusively
-	 * to denote port partners have successfully negociated a contract.  All
+	 * to denote port partners have successfully negotiated a contract.  All
 	 * other protocol actions force state transitions.
 	 */
 	int rv = (pd[port].task_state != PD_STATE_SRC_READY);

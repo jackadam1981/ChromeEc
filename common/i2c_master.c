@@ -848,7 +848,7 @@ int i2c_raw_mode(int port, int enable)
 /*
  * Unwedge the i2c bus for the given port.
  *
- * Some devices on our i2c busses keep power even if we get a reset.  That
+ * Some devices on our i2c buses keep power even if we get a reset.  That
  * means that they could be part way through a transaction and could be
  * driving the bus in a way that makes it hard for us to talk on the bus.
  * ...or they might listen to the next transaction and interpret it in a

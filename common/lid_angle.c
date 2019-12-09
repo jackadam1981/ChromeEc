@@ -23,7 +23,7 @@
 /*
  * Define the number of previous lid angle measurements to keep for determining
  * whether to enable or disable peripherals that are only needed for laptop
- * mode. These incude keyboard and trackpad. Note, that in order to change the
+ * mode. These include keyboard and trackpad. Note, that in order to change the
  * enable/disable state of these peripherals, all stored measurements of the
  * lid angle buffer must be in the specified range.
  */

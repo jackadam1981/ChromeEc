@@ -258,7 +258,7 @@ int charger_post_init(void)
 }
 
 /*****************************************************************************/
-/* Hardware current ramping (aka ICO: Input Current Optimizer) */
+/* Hardware current ramping (a.k.a. ICO: Input Current Optimizer) */
 
 #ifdef CONFIG_CHARGE_RAMP_HW
 int charger_set_hw_ramp(int enable)
@@ -312,7 +312,7 @@ static void bq2589x_init(void)
 	int val;
 
 	if (charger_device_id(&val) || val != BQ2589X_DEVICE_ID) {
-		CPRINTF("BQ2589X incorrent ID: 0x%02x\n", val);
+		CPRINTF("BQ2589X incorrect ID: 0x%02x\n", val);
 		return;
 	}
 

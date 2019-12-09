@@ -185,7 +185,7 @@ CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
 ifneq ($(CHIP_MK_INCLUDED_ONCE),)
 #
 # When building a node locked cr50 image for an H1 device with prod RO, the
-# manifest needs to be modifed to include the device ID of the chip the image
+# manifest needs to be modified to include the device ID of the chip the image
 # is built for.
 #
 # The device ID consists of two 32 bit numbers which can be retrieved by

@@ -1293,7 +1293,7 @@ class StackAnalyzer(object):
 
           # We want to find the new longest matching prefix of remove path with
           # the suffix of the current traversing path. Because the new longest
-          # matching path won't be longer than the prevous one now, and part of
+          # matching path won't be longer than the previous one now, and part of
           # the suffix matches the prefix of remove path, we can get the needed
           # suffix from the previous matching prefix of the invalid path.
           suffix = remove_path[:position] + [curr_func]

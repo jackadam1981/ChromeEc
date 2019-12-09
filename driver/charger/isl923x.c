@@ -297,7 +297,7 @@ int charger_post_init(void)
 	 * ICs which become unpowered when AC is not present.  Therefore, upon
 	 * AC becoming present again, the chargers need to be reinitialized.
 	 * The ISL9237/8 can be powered from VSYS and therefore do not need to
-	 * be reinitialized everytime.  This is why isl923x_init() is called
+	 * be reinitialized every time.  This is why isl923x_init() is called
 	 * once at HOOK_INIT time.
 	 */
 	return EC_SUCCESS;

@@ -171,7 +171,7 @@ static int svdm_response_svids(int port, uint32_t *payload)
 
 /*
  * Will only ever be a single mode for this UFP_D device as it has no real USB
- * support making it only PIN_E configureable
+ * support making it only PIN_E configurable
  */
 #define MODE_CNT 1
 #define OPOS 1

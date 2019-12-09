@@ -62,8 +62,8 @@ all the USB-C port related components (eg the low speed mux `U24`
 shown here and the high speed mux that is not part of this example
 page)
 2. Controls the isolation FET (two parts of `Q1`,two parts of `Q6`) to
-disconnet the CC lines when power is off or the MCU is
-intializing. When power is enabled the enable will put the gate at
+disconnect the CC lines when power is off or the MCU is
+initializing. When power is enabled the enable will put the gate at
 3.3V and ensure no higher voltage on CC will reach the MCU.
 3. Disables the Dead Battery pulldown once the MCU is ready for
 operation. The Dead Battery Rd pulldown is provided by a FET (two

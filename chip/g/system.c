@@ -599,7 +599,7 @@ const char *system_get_build_info(void)
 /**
  * Modify info1 RW rollback mask to match the passed in header(s).
  *
- * If both headers' addressses are passed in, the INFO1 rollback mask field is
+ * If both headers' addresses are passed in, the INFO1 rollback mask field is
  * erased in case both headers have a zero in the appropriate bit. If only one
  * header address is passed (the other one is set to zero), only the valid
  * header is considered when updating INFO1.

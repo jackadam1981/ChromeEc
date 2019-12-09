@@ -224,7 +224,7 @@ extern struct wov_config wov_conf;
 void wov_fmul2_set_clk_divider(enum fmul2_clk_divider clk_div);
 
 /**
- * WoV Call back function decleration.
+ * WoV Call back function declaration.
  *
  * @param   event - the event that cause the call to the callback
  *		    function.
@@ -280,7 +280,7 @@ enum wov_modes wov_get_mode(void);
  * Configure WoV.
  *
  * @param	samples_per_second - Valid sample rate.
- * @return	In case sample rate is valid return EC_SUCCESS othewise return
+ * @return	In case sample rate is valid return EC_SUCCESS otherwise return
  * error code.
  */
 int wov_set_sample_rate(uint32_t samples_per_second);
@@ -297,7 +297,7 @@ uint32_t wov_get_sample_rate(void);
  * Sets sampling depth.
  *
  * @param	bits_num - Valid sample depth in bits.
- * @return	In case sample depth is valid return EC_SUCCESS othewise return
+ * @return	In case sample depth is valid return EC_SUCCESS otherwise return
  * error code.
  */
 int wov_set_sample_depth(int bits_num);
@@ -314,7 +314,7 @@ int wov_get_sample_depth(void);
  * Sets microphone source.
  *
  * @param	mic_src - Valid microphone source
- * @return	return EC_SUCCESS if mic source valid othewise
+ * @return	return EC_SUCCESS if mic source valid otherwise
  * return error code.
  */
 int wov_set_mic_source(enum wov_mic_source mic_src);
@@ -441,7 +441,7 @@ enum ec_error_list wov_set_i2s_tdm_config(int ch0_delay, int ch1_delay,
 				uint32_t flags);
 
 /**
- * Configure FMUL2 clock tunning.
+ * Configure FMUL2 clock tuning.
  *
  * @param   None
  * @return  None
@@ -626,7 +626,7 @@ void wov_handle_event(enum wov_events event);
  * @param   in_pull_en    - Enable a pull-up or a pull-down resistor on
  *                          I2S input
  * @param   in_pull_mode  - Select a pull-up or a pull-down resistor on
- *                          I2S intput
+ *                          I2S input
  * @param   test_mode     - Selects I2S test mode
  *
  * @return  EC_ERROR_INVAL or EC_SUCCESS
@@ -645,7 +645,7 @@ enum ec_error_list wov_i2s_global_config(
  *
  * @param  channel_num     - I2S channel number, 0 or 1.
  * @param  bit_count       - I2S channel bit count.
- * @param  trigger         - Define the I2S chanel trigger 1->0 or 0->1
+ * @param  trigger         - Define the I2S channel trigger 1->0 or 0->1
  * @param  start_delay     - Defines the delay from the trigger defined for
  *                           the channel till the first bit (MSB) of the data.
  *

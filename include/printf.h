@@ -77,7 +77,7 @@ __stdlib_compat int vfnprintf(int (*addchar)(void *context, int c),
 			      void *context, const char *format, va_list args);
 
 /**
- * Print formatted outut to a string.
+ * Print formatted output to a string.
  *
  * Guarantees null-termination if size!=0.
  *

@@ -448,7 +448,7 @@ static int fusb302_tcpm_init(int port)
 	tcpc_write(port, TCPC_REG_POWER, TCPC_REG_POWER_PWR_ALL);
 
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
-	/* Wait for the reference voltage to stablize */
+	/* Wait for the reference voltage to stabilize */
 	usleep(250);
 	/*
 	 * Initialize VBUS supplier when VBUS is already present before
@@ -692,7 +692,7 @@ static int fusb302_tcpm_set_rx_enable(int port, int enable)
 
 	if (enable) {
 		switch (state[port].cc_polarity) {
-		/* if CC polarity hasnt been determined, can't enable */
+		/* if CC polarity hasn't been determined, can't enable */
 		case -1:
 			return EC_ERROR_UNKNOWN;
 		case 0:

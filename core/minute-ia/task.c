@@ -280,7 +280,7 @@ void __keep task_start_irq_handler(void *data)
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
-	 * can't pre-empt itself. If less than 0, then the vector did not map
+	 * can't preempt itself. If less than 0, then the vector did not map
 	 * to an IRQ but was for a synchronous exception instead (TS_VECTOR)
 	 */
 	if (irq < CONFIG_IRQ_COUNT)

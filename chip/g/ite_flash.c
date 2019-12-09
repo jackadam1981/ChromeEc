@@ -57,8 +57,8 @@ void generate_ite_sync(void)
 				  (both_one >> 8) * 4);
 
 	/*
-	 * Let's take over the i2c master pins. Connect pads DIOB0(aka i2c
-	 * scl) to gpio0.12 and DIOB1(aka sda) to gpio0.13. I2c master
+	 * Let's take over the i2c master pins. Connect pads DIOB0(a.k.a. i2c
+	 * scl) to gpio0.12 and DIOB1(a.k.a. sda) to gpio0.13. I2c master
 	 * controller is disconnected from the pads.
 	 */
 	REG32(GBASE(PINMUX) + GOFFSET(PINMUX, DIOB0_SEL)) =

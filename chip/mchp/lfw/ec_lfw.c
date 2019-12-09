@@ -281,7 +281,7 @@ void jump_to_image(uintptr_t init_addr)
 
 void uart_init(void)
 {
-	/* Set UART to reset on VCC1_RESET instaed of nSIO_RESET */
+	/* Set UART to reset on VCC1_RESET instead of nSIO_RESET */
 	MCHP_UART_CFG(0) &= ~BIT(1);
 
 	/* Baud rate = 115200. 1.8432MHz clock. Divisor = 1 */

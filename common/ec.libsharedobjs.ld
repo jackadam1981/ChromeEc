@@ -7,7 +7,7 @@ SECTIONS
 {
 	.roshared : { KEEP(*(.roshared*)) }
 	/*
-	* Save the .ARM.atrributes section to make the linker not complain
+	* Save the .ARM.attributes section to make the linker not complain
 	* about conflicting CPU architectures when linking with the RW objs.
 	* This section will be discarded by the main EC linker script.
 	*/

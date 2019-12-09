@@ -264,7 +264,7 @@ static void set_wp_follow_ccd_config(void)
 void board_wp_follow_ccd_config(void)
 {
 	/*
-	 * Battery presence can be overidden using CCD. Get that setting before
+	 * Battery presence can be overridden using CCD. Get that setting before
 	 * configuring write protect.
 	 */
 	set_bp_follow_ccd_config();
@@ -276,7 +276,7 @@ void board_wp_follow_ccd_config(void)
 void init_wp_state(void)
 {
 	/*
-	 * Battery presence can be overidden using CCD. Get that setting before
+	 * Battery presence can be overridden using CCD. Get that setting before
 	 * configuring write protect.
 	 */
 	set_bp_follow_ccd_config();

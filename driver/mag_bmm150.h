@@ -122,7 +122,7 @@ struct bmm150_private_data {
 #include "accelgyro_bmi160.h"
 /*
  * Behind a BMI160, the BMM150 is in forced mode. Be sure to choose a frequency
- * comptible with BMI160.
+ * compatible with BMI160.
  */
 #define BMM150_MAG_MAX_FREQ(_preset) \
 	BMI160_REG_TO_ODR(BMI160_ODR_TO_REG(__BMM150_MAG_MAX_FREQ(_preset)))

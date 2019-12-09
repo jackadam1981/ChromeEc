@@ -547,7 +547,7 @@ static int charge_manager_get_ceil(int port)
 }
 
 /**
- * Select the 'best' charge port, as defined by the supplier heirarchy and the
+ * Select the 'best' charge port, as defined by the supplier hierarchy and the
  * ability of the port to provide power.
  *
  * @param new_port	Pointer to the best charge port by definition.

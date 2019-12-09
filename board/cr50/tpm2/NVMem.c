@@ -89,7 +89,7 @@ int _plat__IsNvAvailable(void)
 	int rv;
 
 	/*
-	 * sNv_IsAvailable is a state variable that can be accesed by the
+	 * sNv_IsAvailable is a state variable that can be accessed by the
 	 * simmulator to control access to NvMemory. This variable and
 	 * the on chip NvMem area must be in the correct state for NvMem
 	 * to be in 'NV is available' state.

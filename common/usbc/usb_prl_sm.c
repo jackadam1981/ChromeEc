@@ -684,7 +684,7 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 	/*
 	 * NOTE: The TCPC will set xmit_status to TCPC_TX_COMPLETE_DISCARDED
 	 *       when a GoodCRC containing an incorrect MessageID is received.
-	 *       This condition satifies the PRL_Tx_Match_MessageID state
+	 *       This condition satisfies the PRL_Tx_Match_MessageID state
 	 *       requirement.
 	 */
 
@@ -1300,7 +1300,7 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 					(uint8_t *)emsg[port].buf,
 					emsg[port].len);
 				/*
-				 * Pad length to 4-byte boundery and
+				 * Pad length to 4-byte boundary and
 				 * convert to number of 32-bit objects.
 				 * Since the value is shifted right by 2,
 				 * no need to explicitly clear the lower

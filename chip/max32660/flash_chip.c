@@ -376,7 +376,7 @@ static int command_flash_test1(int argc, char **argv)
 		ptr = (uint8_t *)flash_address;
 		for (i = 0; i < BUFFER_SIZE; i++) {
 			if (*ptr++ != (i + page)) {
-				CPRINTS("Error with verifing written test "
+				CPRINTS("Error with verifying written test "
 					"data\n");
 				return EC_ERROR_UNKNOWN;
 			}

@@ -1967,7 +1967,7 @@ wait_for_it:
 		curr.requested_current =
 			charger_closest_current(curr.requested_current);
 
-		/* Charger only accpets request when AC is on. */
+		/* Charger only accepts request when AC is on. */
 		if (curr.ac) {
 			/*
 			 * Some batteries would wake up after cut-off if we keep

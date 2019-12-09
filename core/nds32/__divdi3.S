@@ -196,13 +196,13 @@ __udivmoddi4:
 	sll	NUMLO, NUMLO, $r0	! n0 <<= bm
 	or	P1L, W1, W0		! n1 = (n1 << bm) | (n0 >> b)
 	srl	P1H, NUMHI, $ta		! n2 = n1 >> b
-	bal	fudiv_qrnnd		! caculate q1, n1
+	bal	fudiv_qrnnd		! calculate q1, n1
 	swi	P1H, [$sp+(32+OFFSET_H)]! q1
 	move	NUMHI, P1L		! n1
 .L29:
 	movd44	$r0, NREGS		! (n1,n0)
 	move	$r2, DENLO		! d0
-	bal	fudiv_qrnnd		! calcuate q0, n0
+	bal	fudiv_qrnnd		! calculate q0, n0
 	swi	P1H, [$sp+(32+OFFSET_L)]
 	move	NUMLO, P1L
 

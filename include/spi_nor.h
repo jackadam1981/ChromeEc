@@ -75,7 +75,7 @@ extern const unsigned int spi_nor_devices_used;
 #define SPI_NOR_OPCODE_RDEAR         0xc8 /* Read extended address register */
 
 /* Flags for SPI_NOR_OPCODE_READ_STATUS */
-#define SPI_NOR_STATUS_REGISTER_WIP BIT(0)  /* Write in progres */
+#define SPI_NOR_STATUS_REGISTER_WIP BIT(0)  /* Write in progress */
 #define SPI_NOR_STATUS_REGISTER_WEL BIT(1)  /* Write enabled latch */
 
 /* If needed in the future this driver can be extended to discover SFDP

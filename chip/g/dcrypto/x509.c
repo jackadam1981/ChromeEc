@@ -340,7 +340,7 @@ static size_t asn1_parse_signature_value(const uint8_t **p, size_t *available,
 }
 
 /* This method verifies that the provided X509 certificate was issued
- * by the specified certifcate authority.
+ * by the specified certificate authority.
  *
  * cert is a pointer to a DER encoded X509 certificate, as specified
  * in https://tools.ietf.org/html/rfc5280#section-4.1.  In ASN.1

@@ -36,7 +36,7 @@ Googlers, and Partners involved in ITE EC projects, see [The State of ITE CrOS E
 
 ### Prerequisites for CR50 CCD
 
-This section applies whether using CR50 CCD via [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) or [SuzyQ aka SuzyQable](https://www.sparkfun.com/products/14746).
+This section applies whether using CR50 CCD via [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) or [SuzyQ a.k.a. SuzyQable](https://www.sparkfun.com/products/14746).
 
 CR50 MP minimum firmware version: `0.3.15`
 <br>
@@ -103,7 +103,7 @@ These instructions apply when using any kind of Servo, including those with no s
 
 ## CR50 CCD sans servod alternative {#ccd-sans-servod}
 
-This section applies whether using CR50 CCD via [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) or [SuzyQ aka SuzyQable](https://www.sparkfun.com/products/14746).
+This section applies whether using CR50 CCD via [Servo v4](https://www.chromium.org/chromium-os/servo/servov4) or [SuzyQ a.k.a. SuzyQable](https://www.sparkfun.com/products/14746).
 
 When using CR50 CCD, it is possible to reflash without servod, which _must not_ be running when using this method.
 

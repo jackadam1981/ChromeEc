@@ -103,7 +103,7 @@ static void rbox_init(void)
 	/* Clear any wakeup bits */
 	rbox_clear_wakeup();
 
-	/* Disable rbox wakeup. It will be reenabled before entering sleep. */
+	/* Disable rbox wakeup. It will be re-enabled before entering sleep. */
 	GREG32(RBOX, WAKEUP) = 0;
 
 	/* Override rbox fuses and setup correct behavior */

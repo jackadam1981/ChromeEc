@@ -254,7 +254,7 @@ Cr50 will disable write protect if you remove the battery.
 
                 AP > flashrom --wp-status
 
-5.  (optional) Reconnecting the battery will reenable write protect. You can
+5.  (optional) Reconnecting the battery will re-enable write protect. You can
     disable SW write protect if you want to be able to rewrite RO firmware
     without needing to keep the battery disconnected.
 

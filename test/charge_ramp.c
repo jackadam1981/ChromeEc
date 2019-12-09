@@ -275,7 +275,7 @@ static int test_overcurrent_after_switch_outlet(void)
 	usleep(SECOND * 1.5);
 	plug_charger(CHARGE_SUPPLIER_TEST5, 0, 500, 3000, 1500);
 
-	/* Okay the user is satisified */
+	/* Okay the user is satisfied */
 	while (task_wait_event(RAMP_STABLE_DELAY) == TASK_EVENT_OVERCURRENT) {
 		/* Charger goes away but comes back after 0.6 seconds */
 		unplug_charger();

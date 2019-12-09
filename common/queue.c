@@ -48,9 +48,9 @@ int queue_is_full(struct queue const *q)
 
 /*
  * These pictures make the logic below clearer.  The H and T markers are the
- * head and tail indicies after they have been modded by the queue size.  The
+ * head and tail indices after they have been modded by the queue size.  The
  * Empty and Full states are disambiguated by looking at the pre-modded
- * indicies.
+ * indices.
  *
  * Empty:       T
  * T == H       H

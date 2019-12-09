@@ -59,7 +59,7 @@ enum apm_adc_frequency {
 
 /* DMIC source. */
 enum apm_dmic_src {
-	APM_CURRENT_DMIC_CHANNEL = 0x01, /* Current channel, left or rigth. */
+	APM_CURRENT_DMIC_CHANNEL = 0x01, /* Current channel, left or right. */
 	APM_AVERAGE_DMIC_CHANNEL = 0x02  /* Average between left & right.   */
 };
 
@@ -380,7 +380,7 @@ void apm_vad_enable(int enable);
 void apm_vad_adc_wakeup_enable(int enable);
 
 /**
- * Sets VAD Input chanel.
+ * Sets VAD Input channel.
  *
  * @param   chan_src	- Processed digital microphone channel
  *			  selection.
@@ -416,7 +416,7 @@ void apm_vad_restart(void);
  * Restarts VAD functionality.
  *
  * @param   gain_coupling   - ADC digital gain coupling (independent or
- *                            rigth tracks left).
+ *                            right tracks left).
  * @param   left_chan_gain  - Left channel ADC digital gain programming value.
  * @param   right_chan_gain - Right channel ADC digital gain programming value.
  * @return  EC_ERROR_INVAL or EC_SUCCESS

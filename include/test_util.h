@@ -41,7 +41,7 @@
 #define TEST_OPERATOR(a, b, op, fmt) \
 	do { \
 		if (!((a) op (b))) { \
-			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
+			ccprintf("%d: ASSERTION failed: %s " #op " %s\n", \
 				 __LINE__, #a, #b); \
 			ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", \
 				 (a), (b)); \

@@ -81,7 +81,7 @@ void ipc_handler(void);
  * This may disorder the actual timing to on/off the IRQ when there are many
  * tasks try to operate on it.  As a result, any access to the SCP_IRQ_*
  * should go through ipi_{en,dis}able_irq(), which support a counter to
- * enable/disable the IRQ at correct timeing.
+ * enable/disable the IRQ at correct timing.
  */
 /* Disable IPI IRQ. */
 void ipi_disable_irq(int irq);

@@ -252,7 +252,7 @@ int FtdiSpiInit(uint32_t freq, int enable_debug)
 	if (!mpsse_)
 		return false;
 
-	/* Just in case, make sure bootsrap is not triggered. */
+	/* Just in case, make sure bootstrap is not triggered. */
 	PinLow(mpsse_, GPIOL0);
 
 	FtdiSpiPoke();

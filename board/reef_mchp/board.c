@@ -382,7 +382,7 @@ const enum gpio_signal hibernate_wake_pins[] = {
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 /*
- * PS8751 TCPM DRP low power idle behavour is causing I2C errors.
+ * PS8751 TCPM DRP low power idle behaviour is causing I2C errors.
  * Upon receiving DRP low power idle command, PS8751 holds SCL and
  * SDA low for ~480us. It simultaneously releases both pins which is
  * defined as a bus error condition by I2C spec. No ACK received.

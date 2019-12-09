@@ -24,7 +24,7 @@
  * access are also can wakeup ISH. ISH's PMU (power management unit HW) will
  * manage these wakeup sources and transfer to a PMU wakeup interrupt which
  * can wakeup aontask, and aontask will handle it, when aontask got up, and
- * swiched back to main FW, main FW will receive the original wakeup source
+ * switched back to main FW, main FW will receive the original wakeup source
  * interrupt which triggered the PMU wakeup interrupt in aontask, then main FW
  * handle the original interrupt normally.
  *
@@ -159,7 +159,7 @@ void ish_aon_main(void);
 
 /**
  * 8 bytes reserved on stack, just for GDB to show the correct stack
- * information when doing source code level debuging
+ * information when doing source code level debugging
  */
 #define AON_SP_RESERVED (8)
 
@@ -178,7 +178,7 @@ static struct tss_entry aon_tss = {
 	.ss2 = 0,
 	.reserved4 = 0,
 	.cr3 = 0,
-	/* task excute entry point */
+	/* task execute entry point */
 	.eip = (uint32_t)&ish_aon_main,
 	.eflags = 0,
 	.eax = 0,
@@ -223,7 +223,7 @@ static struct tss_entry aon_tss = {
 };
 
 /**
- * define code and data LDT segements for aontask
+ * define code and data LDT segments for aontask
  * code : base = 0x0, limit = 0xFFFFFFFF, Present = 1, DPL = 0
  * data : base = 0x0, limit = 0xFFFFFFFF, Present = 1, DPL = 0
  */
@@ -587,7 +587,7 @@ static void handle_reset(enum ish_pm_state pm_state)
 		 * DMA_ENABLED_MASK bit, then ISH FW received reset_prep
 		 * interrupt, ISH will stay in this while loop (most time in
 		 * halt state), waiting for DMA_ENABLED_MASK bit was set and
-		 * reset ISH then. Since ISH ROM have no power managment, stay
+		 * reset ISH then. Since ISH ROM have no power management, stay
 		 * in aontask can save more power especially if system stay in
 		 * Sx for long time.
 		 *

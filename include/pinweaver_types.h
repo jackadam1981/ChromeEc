@@ -136,7 +136,7 @@ struct PW_PACKED valid_pcr_value_t {
 #define PW_SECRET_SIZE 32
 
 struct PW_PACKED leaf_version_t {
-	/* minor comes first so this struct will be compatibile with uint32_t
+	/* minor comes first so this struct will be compatible with uint32_t
 	 * comparisons for little endian to make version comparisons easier.
 	 *
 	 * Changes to minor versions are allowed to add new fields, but not

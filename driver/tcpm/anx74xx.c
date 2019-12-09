@@ -311,7 +311,7 @@ static int anx74xx_tcpm_mux_exit(int port)
 
 	/*
 	 * Safe mode must be entered before any changes are made to the mux
-	 * settings used to enable ALT_DP mode. This funciton is called either
+	 * settings used to enable ALT_DP mode. This function is called either
 	 * from anx74xx_tcpm_mux_set when TYPEC_MUX_NONE is selected as the new
 	 * mux state, or when both cc lines are determined to be
 	 * TYPEC_CC_VOLT_OPEN. Therefore, safe mode must be entered and exited

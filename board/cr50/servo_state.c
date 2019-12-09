@@ -129,7 +129,7 @@ void servo_ignore(int enable)
 		/*
 		 * To be on the safe side 'connect' servo when we stop ignoring
 		 * the servo state. If servo is disconnected, then cr50 will
-		 * notice within 1 second and reenable ccd.
+		 * notice within 1 second and re-enable ccd.
 		 */
 		servo_connect();
 	}

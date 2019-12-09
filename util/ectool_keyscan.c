@@ -40,7 +40,7 @@ struct keyscan_test {
 	char *name;		/* name of test */
 	char *expect;		/* resulting input we expect to see */
 	int item_count;		/* number of items in data */
-	int item_alloced;	/* number of items alloced in data */
+	int item_alloced;	/* number of items allocated in data */
 	struct keyscan_test_item *items;	/* key data for EC */
 };
 
@@ -424,7 +424,7 @@ static int keyscan_process_file(FILE *f, struct keyscan_info *keyscan)
 			}
 			break;
 		default:
-			fprintf(stderr, "Line %d: Uknown command '%1.*s'\n",
+			fprintf(stderr, "Line %d: Unknown command '%1.*s'\n",
 				linenum, (int)(end - str), str);
 			return -1;
 		}
@@ -487,7 +487,7 @@ static void set_to_raw(int tty_fd, int raw)
 }
 
 /**
- * Read input for a whlie until wee see no more
+ * Read input for a while until wee see no more
  *
  * @param fd		File descriptor for input
  * @param input		Place to put input string

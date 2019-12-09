@@ -187,7 +187,7 @@ void board_update_sensor_config_from_sku(void)
 	}
 }
 
-/* bmi160 or lsm6dsm need differenct interrupt function */
+/* bmi160 or lsm6dsm need different interrupt function */
 void board_bmi160_lsm6dsm_interrupt(enum gpio_signal signal)
 {
 	if (board_use_st_sensor())

@@ -14,7 +14,7 @@ void scp_memmap_init(void);
  * Translate AP addr to SCP addr.
  *
  * @param ap_addr		AP address to translate
- * @param scp_addr		Tranlated AP address
+ * @param scp_addr		Translated AP address
  * @return			EC_SUCCESS or EC_ERROR_INVAL
  */
 int memmap_ap_to_scp(uintptr_t ap_addr, uintptr_t *scp_addr);
@@ -22,7 +22,7 @@ int memmap_ap_to_scp(uintptr_t ap_addr, uintptr_t *scp_addr);
 /**
  * Translate SCP addr to AP addr.
  *
- * @param scp_addr		SCP address to tranlate
+ * @param scp_addr		SCP address to translate
  * @param ap_addr		Translated SCP address
  * @return			EC_SUCCESS or EC_ERROR_INVAL
  */
@@ -32,7 +32,7 @@ int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr);
  * Translate AP addr to SCP cache addr.
  *
  * @param ap_addr		AP address to translate
- * @param scp_addr		Tranlated AP cache address
+ * @param scp_addr		Translated AP cache address
  * @return			EC_SUCCESS or EC_ERROR_INVAL
  */
 int memmap_ap_to_scp_cache(uintptr_t ap_addr, uintptr_t *scp_addr);
@@ -40,7 +40,7 @@ int memmap_ap_to_scp_cache(uintptr_t ap_addr, uintptr_t *scp_addr);
 /**
  * Translate SCP addr to AP addr.
  *
- * @param scp_addr		SCP cache address to tranlate
+ * @param scp_addr		SCP cache address to translate
  * @param ap_addr		Translated SCP cache address
  * @return			EC_SUCCESS or EC_ERROR_INVAL
  */

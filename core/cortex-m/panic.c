@@ -130,7 +130,7 @@ static const char * const dfsr_name[] = {
  * Helper function to display a separator after the previous item
  *
  * If items have been displayed already, we display a comma separator.
- * In any case, the count of items displayed is incremeneted.
+ * In any case, the count of items displayed is incremented.
  *
  * @param count		Number of items displayed so far (0 for none)
  */

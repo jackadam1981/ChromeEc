@@ -183,7 +183,7 @@ static void p256_key_and_secret_seed(uint8_t pub_key[32],
 	memcpy(pub_key, buf + 1, 32);
 
 	/*
-	 * We have our private key and the server's point coordinates (aka
+	 * We have our private key and the server's point coordinates (a.k.a.
 	 * server public key). Let's multiply the coordinates by our private
 	 * key to get the shared secret.
 	 */

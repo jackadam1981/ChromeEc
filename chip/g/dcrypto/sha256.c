@@ -121,7 +121,7 @@ void dcrypto_sha_update(struct HASH_CTX *unused,
 		n -= 4;
 	}
 
-	/* Feed remaing bytes. */
+	/* Feed remaining bytes. */
 	bp = (uint8_t *) wp;
 	while (n != 0) {
 		GREG8(KEYMGR, SHA_INPUT_FIFO) = *bp++;

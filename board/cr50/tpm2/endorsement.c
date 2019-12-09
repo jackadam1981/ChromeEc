@@ -603,7 +603,7 @@ enum manufacturing_status tpm_endorse(void)
 			CPRINTF("%s: bad cert region hmac;", __func__);
 #ifdef CR50_INCLUDE_FALLBACK_CERT
 			/* HMAC verification failure indicates either
-			 * a manufacture fault, or mis-match in
+			 * a manufacture fault, or mismatch in
 			 * production mode and currently running
 			 * firmware (e.g. PRODUCTION mode chip, now
 			 * flashed with DEV mode firmware.
@@ -641,7 +641,7 @@ enum manufacturing_status tpm_endorse(void)
 			 * problems when TPM identity is required.
 			 */
 			result = mnf_unverified_cert;
-			CPRINTF("instaling UNVERIFIED certs\n");
+			CPRINTF("installing UNVERIFIED certs\n");
 #endif
 		}
 

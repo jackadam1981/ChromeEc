@@ -100,7 +100,7 @@ enum console_channel {
 /**
  * Put a string to the console channel.
  *
- * @param channel	Output chanel
+ * @param channel	Output channel
  * @param outstr	String to write
  *
  * @return non-zero if output was truncated.
@@ -110,7 +110,7 @@ int cputs(enum console_channel channel, const char *outstr);
 /**
  * Print formatted output to the console channel.
  *
- * @param channel	Output chanel
+ * @param channel	Output channel
  * @param format	Format string; see printf.h for valid formatting codes
  *
  * @return non-zero if output was truncated.

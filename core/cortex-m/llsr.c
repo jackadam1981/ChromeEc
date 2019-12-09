@@ -31,7 +31,7 @@ uint64_t __attribute__((used)) __aeabi_llsr(uint64_t v, uint32_t shift)
 
 static int command_llsr(int argc, char **argv)
 {
-	/* Volatile to prevent compilier optimization from interfering. */
+	/* Volatile to prevent compiler optimization from interfering. */
 	volatile uint64_t start = 0x123456789ABCDEF0ull;
 	uint32_t x;
 

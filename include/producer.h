@@ -22,7 +22,7 @@ struct producer;
 struct producer_ops {
 	/*
 	 * Inform the producer that count units were read from the queue.  This
-	 * gives it the oportunity to write additional units to the queue or to
+	 * gives it the opportunity to write additional units to the queue or to
 	 * wake up a task or interrupt to do the same.  If a producer has no
 	 * need for this information it can set this to NULL.
 	 */

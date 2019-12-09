@@ -5,7 +5,7 @@
  * Inter-Processor Communication (IPC) and Inter-Processor Interrupt (IPI)
  *
  * IPC is a communication bridge between AP and SCP.  AP/SCP sends an IPC
- * interrupt to SCP/AP to inform to collect the commmunication mesesages in the
+ * interrupt to SCP/AP to inform to collect the communication mesesages in the
  * shared buffer.
  *
  * There are 4 IPCs in the current architecture, from IPC0 to IPC3.  The

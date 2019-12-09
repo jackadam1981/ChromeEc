@@ -84,7 +84,7 @@ void tfdp_enable(uint8_t en, uint8_t pin_cfg)
  * @return uint8_t always TRUE
  * @note Function implements critical section.
  * Uses tool kit __disable_irq()/__enable_irq() pair which may use
- * priviledged Cortex-Mx instructions.
+ * privileged Cortex-Mx instructions.
  */
 void TFDPTrace0(uint16_t nbr)
 {
@@ -118,7 +118,7 @@ void TFDPTrace0(uint16_t nbr)
  * @return uint8_t always TRUE
  * @note Function implements critical section.
  * Uses tool kit __disable_irq()/__enable_irq() pair which may use
- * priviledged Cortex-Mx instructions.
+ * privileged Cortex-Mx instructions.
  */
 void TFDPTrace1(uint16_t nbr, uint32_t p1)
 {
@@ -157,7 +157,7 @@ void TFDPTrace1(uint16_t nbr, uint32_t p1)
  * @return uint8_t always TRUE
  * @note Uses tool kit functions to save/disable/restore
  *       interrupts for critical section. These may use
- *       priviledged instructions.
+ *       privileged instructions.
  */
 void TFDPTrace2(uint16_t nbr, uint32_t p1, uint32_t p2)
 {
@@ -201,7 +201,7 @@ void TFDPTrace2(uint16_t nbr, uint32_t p1, uint32_t p2)
  * @return uint8_t always TRUE
  * @note Uses tool kit functions to save/disable/restore
  *       interrupts for critical section. These may use
- *       priviledged instructions.
+ *       privileged instructions.
  */
 void TFDPTrace3(uint16_t nbr, uint32_t p1,
 		uint32_t p2, uint32_t p3)
@@ -251,7 +251,7 @@ void TFDPTrace3(uint16_t nbr, uint32_t p1,
  * @return uint8_t always TRUE
  * @note Uses tool kit functions to save/disable/restore
  *       interrupts for critical section. These may use
- *       priviledged instructions.
+ *       privileged instructions.
  */
 void TFDPTrace4(uint16_t nbr, uint32_t p1, uint32_t p2,
 		 uint32_t p3, uint32_t p4)

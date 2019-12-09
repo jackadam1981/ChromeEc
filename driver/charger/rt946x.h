@@ -786,7 +786,7 @@ int mt6370_backlight_set_dim(uint16_t dim);
  * vbst: VBST config in mv.
  * vpos: VPOS config in mv.
  * vneg: VNEG config in mv.
- * return: EC_SUCCESS on succes, and EC_ERROR_* otherwise.
+ * return: EC_SUCCESS on success, and EC_ERROR_* otherwise.
  */
 int mt6370_db_set_voltages(int vbst, int vpos, int vneg);
 

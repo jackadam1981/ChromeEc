@@ -505,7 +505,7 @@ the attacker, only future enrollments.
 To ensure that a device is clean after e.g. refurbishing, the RMA procedure
 would require that the operator disabled the WP bit from Haven and toggled BOOT0
 to switch to bootloader mode. After that a known good RO and RW firmware can be
-written to the Flash and the operator will reenable the WP bit from Haven.
+written to the Flash and the operator will re-enable the WP bit from Haven.
 
 ## Security Considerations
 

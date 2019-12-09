@@ -167,7 +167,7 @@ errors, and pixel error deviation limit must fall within the acceptance criteria
 limits specified in "4.3.5 Acceptance Criteria Test Image CB / iCB" in the `MTS`
 document for the sensor being tested.
 
-#### Hardware Reset Test (aka IRQ test)
+#### Hardware Reset Test (a.k.a. IRQ test)
 
 ##### Purpose
 

@@ -223,7 +223,7 @@ DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 1);
 #ifdef CONFIG_UART_PAD_SWITCH
 /*
  * Switch back to default UART pad, without flushing RX/TX buffers: If we are
- * about to panic, we just want to switch immmediately, and we don't care if we
+ * about to panic, we just want to switch immediately, and we don't care if we
  * output a bit of garbage.
  */
 void uart_reset_default_pad_panic(void)

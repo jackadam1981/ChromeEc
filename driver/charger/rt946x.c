@@ -823,7 +823,7 @@ int charger_set_current(int current)
 	const struct charger_info *const info = charger_get_info();
 
 	/*
-	 * mt6370's minimun regulated current is 500mA REG17[7:2] 0b100,
+	 * mt6370's minimum regulated current is 500mA REG17[7:2] 0b100,
 	 * values below 0b100 are preserved.
 	 */
 	if (IS_ENABLED(CONFIG_CHARGER_MT6370))
@@ -849,7 +849,7 @@ int charger_set_current(int current)
 
 		/*
 		 * workaround to make IEOC accurate:
-		 * witht normal charging (ICC >= 900mA), the power path is fully
+		 * with normal charging (ICC >= 900mA), the power path is fully
 		 * turned on. But at low charging current state (ICC < 900mA),
 		 * the power path will only be partially turned on. So under
 		 * such situation, the IEOC is inaccurate.
@@ -949,7 +949,7 @@ int charger_post_init(void)
 	return EC_SUCCESS;
 }
 
-/* Hardware current ramping (aka AICL: Average Input Current Level) */
+/* Hardware current ramping (a.k.a. AICL: Average Input Current Level) */
 #ifdef CONFIG_CHARGE_RAMP_HW
 static int rt946x_get_mivr(int *mivr)
 {

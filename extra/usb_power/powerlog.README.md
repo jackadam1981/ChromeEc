@@ -153,12 +153,12 @@ and storing statistics and raw data.
   ```
 
   If `<directory>` is specified, this will save stats as:
-  `<directory>/sweetberry<timestemp>/summary.txt`.
+  `<directory>/sweetberry<timestamp>/summary.txt`.
   If `<directory>` does not exist, it will be created.
 
   If `<directory>` is not specified but the flag is set, this will save stats
   under the directory which `powerlog.py` is in:
-  `<directory of powerlog.py>/sweetberry<timestemp>/summary.txt`.
+  `<directory of powerlog.py>/sweetberry<timestamp>/summary.txt`.
 
   If `--save_stats` flag is not set, stats will not be saved.
 
@@ -169,12 +169,12 @@ and storing statistics and raw data.
   ```
 
   If `<directory>` is specified, this will save raw data in:
-  `<directory>/sweetberry<timestemp>/raw_data/`.
+  `<directory>/sweetberry<timestamp>/raw_data/`.
   If `<directory>` does not exist, it will be created.
 
   If `<directory>` is not specified but the flag is set, this will save raw data
   under the directory which `powerlog.py` is in:
-  `<directory of powerlog.py>/sweetberry<timestemp>/raw_data/`.
+  `<directory of powerlog.py>/sweetberry<timestamp>/raw_data/`.
 
   If `--save_raw_data` flag is not set, raw data will not be saved.
 
@@ -185,12 +185,12 @@ and storing statistics and raw data.
   ```
 
   If `<directory>` is specified, this will save MEANS in json as:
-  `<directory>/sweetberry<timestemp>/summary.json`.
+  `<directory>/sweetberry<timestamp>/summary.json`.
   If `<directory>` does not exist, it will be created.
 
   If `<directory>` is not specified but the flag is set, this will save MEANS in
   json under the directory which `powerlog.py` is in:
-  `<directory of powerlog.py>/sweetberry<timestemp>/summary.json`.
+  `<directory of powerlog.py>/sweetberry<timestamp>/summary.json`.
 
   If `--save_stats` flag is not set, stats will not be saved.
 

@@ -148,7 +148,7 @@ DECLARE_HOOK(HOOK_INIT, board_charge_init, HOOK_PRIO_DEFAULT);
 int board_set_active_charge_port(int port)
 {
 	int i;
-	/* charge port is a realy physical port */
+	/* charge port is a really physical port */
 	int is_real_port = (port >= 0 &&
 			port < CHARGE_PORT_COUNT);
 	/* check if we are source vbus on that port */

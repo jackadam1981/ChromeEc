@@ -369,7 +369,7 @@ void __keep task_start_irq_handler(void *excep_return)
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
-	 * can't pre-empt itself.
+	 * can't preempt itself.
 	 */
 	if (irq < ARRAY_SIZE(irq_dist))
 		irq_dist[irq]++;

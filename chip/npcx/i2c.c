@@ -598,7 +598,7 @@ static void i2c_fifo_handle_receive(int controller)
 			task_disable_irq(i2c_irqs[controller]);
 			/*
 			 * The I2C bus will be freed from stalled and continue
-			 * to recevie data when reading data from FIFO.
+			 * to receive data when reading data from FIFO.
 			 * Pull SCL signal down to stall the bus manually.
 			 * SCL signal will be freed when it gets a new I2C
 			 * transaction call from common layer.
@@ -612,7 +612,7 @@ static void i2c_fifo_handle_receive(int controller)
 		CPRINTS("-FR");
 		/*
 		 * The I2C bus will be freed from stalled and continue to
-		 * recevie data when reading data from FIFO.
+		 * receive data when reading data from FIFO.
 		 * This may caue driver cannot set the new Rx threshold in time.
 		 * Manually stall SCL signal until the new Rx threshold is set.
 		 */

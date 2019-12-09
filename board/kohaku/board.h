@@ -62,7 +62,7 @@
 /* Parameter to calculate LUX on Kohaku */
 #define CONFIG_ALS_BH1730_LUXTH_PARAMS
 /*
- * Calulation formula depends on characteristic of optical window.
+ * Calculation formula depends on characteristic of optical window.
  * In case of kohaku, we can select two different formula
  * as characteristic of optical window.
  * BH1730_LUXTH1_1K is charateristic of optical window.

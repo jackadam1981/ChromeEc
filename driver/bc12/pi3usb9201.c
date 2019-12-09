@@ -152,7 +152,7 @@ static void bc12_update_charge_manager(int port, int client_status)
 	new_chg.voltage = USB_CHARGER_VOLTAGE_MV;
 
 	/*
-	 * Find set bit position. Note that this funciton is only called if a
+	 * Find set bit position. Note that this function is only called if a
 	 * bit was set in client_status, so bit_pos won't be negative.
 	 */
 	bit_pos = __builtin_ffs(client_status) - 1;

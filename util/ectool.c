@@ -1517,8 +1517,8 @@ int cmd_apreset(int argc, char *argv[])
  * @param info a pointer to store the struct ec_response_fp_info retrieved by
  * this command.
  * @param index the specific frame to retrieve, might be:
- *  -1 (aka FP_FRAME_INDEX_SIMPLE_IMAGE) for the a single grayscale image.
- *   0  (aka FP_FRAME_INDEX_RAW_IMAGE) for the full vendor raw finger image.
+ *  -1 (a.k.a. FP_FRAME_INDEX_SIMPLE_IMAGE) for the a single grayscale image.
+ *   0  (a.k.a. FP_FRAME_INDEX_RAW_IMAGE) for the full vendor raw finger image.
  *   1..n for a finger template.
  *
  * @returns a pointer to the buffer allocated to contain the frame or NULL

@@ -178,7 +178,7 @@ struct usb_retimer_driver {
 struct usb_retimer {
 	/*
 	 * All of the fields are provided on an as needed basis.
-	 * If your retimer does not use the provided machanism then
+	 * If your retimer does not use the provided mechanism then
 	 * values would not be set (defaulted to 0/NULL).  This
 	 * defaulting includes the driver field, which would indicate
 	 * no retimer driver is to be called.

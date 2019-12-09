@@ -996,7 +996,7 @@ int tcpc_alert_status_clear(int port, uint16_t mask)
 
 int tcpc_alert_mask_set(int port, uint16_t mask)
 {
-	/* Update the alert mask as specificied by the TCPM */
+	/* Update the alert mask as specified by the TCPM */
 	pd[port].alert_mask = mask;
 	return EC_SUCCESS;
 }

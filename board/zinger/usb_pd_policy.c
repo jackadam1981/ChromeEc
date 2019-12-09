@@ -410,7 +410,7 @@ int pd_board_checks(void)
 		debug_printf("Reset fault\n");
 		/*
 		 * Reset the PD state and communication on both side,
-		 * so we can now re-negociate a voltage.
+		 * so we can now re-negotiate a voltage.
 		 */
 		return EC_ERROR_INVAL;
 	}

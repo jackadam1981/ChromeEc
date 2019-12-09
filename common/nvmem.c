@@ -157,7 +157,7 @@ static void nvmem_lock_cache(void)
 	/*
 	 * Need to protect the cache contents value from other tasks
 	 * attempting to do nvmem write operations. However, since this
-	 * function may be called mutliple times prior to the mutex lock being
+	 * function may be called multiple times prior to the mutex lock being
 	 * released, there is a check first to see if the current task holds
 	 * the lock. If it does then the task number will equal the value in
 	 * cache.task, no need to wait.

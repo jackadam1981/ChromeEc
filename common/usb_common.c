@@ -51,7 +51,7 @@ STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
 /*
- * CC values for regular sources and Debug sources (aka DTS)
+ * CC values for regular sources and Debug sources (a.k.a. DTS)
  *
  * Source type  Mode of Operation   CC1    CC2
  * ---------------------------------------------

@@ -76,7 +76,7 @@ static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 #ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
 	/*
 	 * If the power rail for the thermistor circuit is not enabled, then
-	 * need to ignore any ADC measurments.
+	 * need to ignore any ADC measurements.
 	 */
 	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
 		return EC_ERROR_NOT_POWERED;

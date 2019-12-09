@@ -344,7 +344,7 @@ void __ram_code start_irq_handler(void)
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
-	 * can't pre-empt itself.
+	 * can't preempt itself.
 	 */
 	if ((ec_int > 0) && (ec_int < ARRAY_SIZE(irq_dist)))
 		irq_dist[ec_int]++;

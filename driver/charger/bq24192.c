@@ -219,7 +219,7 @@ static void bq24192_init(void)
 	int val;
 
 	if (charger_device_id(&val) || val != BQ24192_DEVICE_ID) {
-		CPRINTF("BQ24192 incorrent ID: 0x%02x\n", val);
+		CPRINTF("BQ24192 incorrect ID: 0x%02x\n", val);
 		return;
 	}
 

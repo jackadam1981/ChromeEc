@@ -52,7 +52,7 @@ struct tuple {
  * CONFIG_FLASH_NVMEM_VARS stores all variables in one user region, so if
  * variable access by multiple tasks is required, the tasks should establish
  * their own locks or mutexes to fit their usage. In general that would mean
- * aquiring a lock before calling getvar() or setvar(), and releasing it after
+ * acquiring a lock before calling getvar() or setvar(), and releasing it after
  * calling writevars().
  */
 

@@ -36,7 +36,7 @@ timestamp_t _get_time(void)
 	/*
 	 * We just monotonically increase the microsecond every time we check
 	 * the time. Do not depend on host system time as this introduces
-	 * flakyness in tests. The time is periodically fast forwarded with
+	 * flakiness in tests. The time is periodically fast forwarded with
 	 * force_time() during the host's task scheduler implementation.
 	 */
 	++time.val;

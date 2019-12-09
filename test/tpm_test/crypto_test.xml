@@ -7,7 +7,7 @@ found in the LICENSE file.
 This file describes test vectors for various encryption schemes.
 
 Each description is encapsulated in a 'crypto_test' element. This element must
-have the name property set. The name starts witht the encryption scheme's name
+have the name property set. The name starts with the encryption scheme's name
 (say AES or DES), delimited by a colon, and followed by a three character
 encryption submode, if necessary (say ECB for AES).
 

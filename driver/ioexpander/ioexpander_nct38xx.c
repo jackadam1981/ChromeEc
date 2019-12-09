@@ -18,7 +18,7 @@
 
 /*
  * Store the GPIO_ALERT_MASK_0/1 and chip ID registers locally. In this way,
- * we don't have to read it via I2C transaction everytime.
+ * we don't have to read it via I2C transaction every time.
  */
 struct nct38xx_chip_data {
 	uint8_t int_mask[2];

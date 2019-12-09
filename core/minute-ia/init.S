@@ -300,13 +300,13 @@ __gdt:
 	# Entry 1: Code descriptor
 	# Base: 0x0
 	# Limit: 0xffffffff
-	# Flags: 0x9b (Code E/R, Present, DPL0, Acessed=1)
+	# Flags: 0x9b (Code E/R, Present, DPL0, Accessed=1)
 	.long GEN_GDT_DESC_LO(0x0, 0xffffffff, GDT_DESC_CODE_FLAGS)
 	.long GEN_GDT_DESC_UP(0x0, 0xffffffff, GDT_DESC_CODE_FLAGS)
 	# Entry 2: Data descriptor
 	# Base: 0x0
 	# Limit: 0xffffffff
-	# Flags: 0x93 (Data R/W, Present, DPL0, Acessed=1)
+	# Flags: 0x93 (Data R/W, Present, DPL0, Accessed=1)
 	.long GEN_GDT_DESC_LO(0x0, 0xffffffff, GDT_DESC_DATA_FLAGS)
 	.long GEN_GDT_DESC_UP(0x0, 0xffffffff, GDT_DESC_DATA_FLAGS)
 #if defined(CONFIG_ISH_PM_AONTASK)

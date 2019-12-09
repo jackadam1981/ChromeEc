@@ -914,7 +914,7 @@ DECLARE_CONSOLE_COMMAND(cc, command_cc,
 
 static void fake_disconnect_end(void)
 {
-	/* Reenable CC lines with previous dts and src modes */
+	/* Re-enable CC lines with previous dts and src modes */
 	do_cc(cc_config & ~CC_DETACH);
 }
 DECLARE_DEFERRED(fake_disconnect_end);

@@ -242,7 +242,7 @@ void cmd_build_sync(struct command_node *cmd_buf, uint32_t *cmd_num)
  * Returns:	none.
  * Side effects:
  * Description:
- *		Build an Excute command buffer.
+ *		Build an Execute command buffer.
  *		Command does not expect the executed code to return, that is,
  *		only FCALL protocol
  *		command code is expected.
@@ -271,7 +271,7 @@ void cmd_build_exec_exit(uint32_t addr, struct command_node *cmd_buf,
  * Returns:	none.
  * Side effects:
  * Description:
- *		Build an Excute command buffer.
+ *		Build an Execute command buffer.
  *		Command expects the executed code to return, that is,
  *		FCALL_RSLT protocol command
  *		code is expected, together with the execution result.

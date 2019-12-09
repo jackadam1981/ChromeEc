@@ -316,7 +316,7 @@ static void pd_send_ec_int(void)
  */
 int board_set_active_charge_port(int charge_port)
 {
-	/* charge port is a realy physical port */
+	/* charge port is a really physical port */
 	int is_real_port = (charge_port >= 0 &&
 			    charge_port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	/* check if we are source vbus on that port */

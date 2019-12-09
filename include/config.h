@@ -187,7 +187,7 @@
  */
 #undef CONFIG_ACCEL_STD_REF_FRAME_OLD
 
-/* Set when INT2 is an ouptut */
+/* Set when INT2 is an output */
 #undef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
 
 /* Specify type of Gyrometers attached. */
@@ -236,7 +236,7 @@
  */
 #undef CONFIG_SYNC_INT_EVENT
 
-/* Compile chip support for analog-to-digital convertor */
+/* Compile chip support for analog-to-digital converter */
 #undef CONFIG_ADC
 
 /*
@@ -1657,7 +1657,7 @@
 
 /*
  * We normally check and update the fans once per second (HOOK_SECOND). If this
- * is #defined to a postive integer N, we will only update the fans every N
+ * is #defined to a positive integer N, we will only update the fans every N
  * seconds instead.
  */
 #undef CONFIG_FAN_UPDATE_PERIOD
@@ -1963,7 +1963,7 @@
  * which to check for relatively calm periods. In between the two impulses
  * there is a minimum and maximum interstice time allowed.
  *
- * Define an acceleration threshold to dectect a tap, in mg.
+ * Define an acceleration threshold to detect a tap, in mg.
  */
 #undef CONFIG_GESTURE_TAP_OUTER_WINDOW_T
 #undef CONFIG_GESTURE_TAP_INNER_WINDOW_T
@@ -2042,7 +2042,7 @@
 /* ISH boot start address */
 #undef CONFIG_ISH_BOOT_START
 /*
- * Define the minimal amount of time (in ms) betwen running motion sense task
+ * Define the minimal amount of time (in ms) between running motion sense task
  * loop.
  */
 #define CONFIG_MOTION_MIN_SENSE_WAIT_TIME 3
@@ -2621,7 +2621,7 @@
  * Compile lid switch support.
  *
  * This is enabled by default because all boards other than reference boards
- * are for laptops with lid switchs.  Reference boards #undef it.
+ * are for laptops with lid switches.  Reference boards #undef it.
  */
 #define CONFIG_LID_SWITCH
 
@@ -2708,7 +2708,7 @@
 #undef CONFIG_HOSTCMD_ESPI
 
 /*
- * SLP signals (SLP_S3 and SLP_S4) use virtual wires intead of physical pins
+ * SLP signals (SLP_S3 and SLP_S4) use virtual wires instead of physical pins
  * with eSPI interface.
  */
 #undef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
@@ -2862,7 +2862,7 @@
 #undef CONFIG_PECI_COMMON
 
 /*
- * Maximum operating temperature in degrees Celcius used on some x86
+ * Maximum operating temperature in degrees Celsius used on some x86
  * processors. CPU chip temperature is reported relative to this value and
  * is never reported greater than this value. Processor asserts PROCHOT#
  * and starts throttling frequency and voltage at this temp. Operation may
@@ -2962,7 +2962,7 @@
 
 /*
  * Detect power signal interrupt storms, defined as more than
- * CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD occurences of a single
+ * CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD occurrences of a single
  * power signal interrupt within one second.
  */
 #undef CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
@@ -3857,7 +3857,7 @@
  * driver's need basis.  After including the board/baseboard.h files
  * the drivers will be checked and if one of these are needed it will
  * automatically be included.  This does not stop a board/basebord.h
- * configration from defining these as well.
+ * configuration from defining these as well.
  */
 #undef CONFIG_USBC_MUX_RETIMER
 

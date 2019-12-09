@@ -13,7 +13,7 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
-/* I2C bus configuraiton */
+/* I2C bus configuration */
 #define I2C_PORT_ACCEL	I2C_PORT_SENSOR
 
 /* EC console commands  */

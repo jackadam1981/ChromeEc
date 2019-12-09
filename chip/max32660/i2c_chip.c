@@ -33,7 +33,7 @@
 #define T_HIGH_MIN (60) /* tHIGH minimum in nanoseconds */
 #define T_R_MAX_HS (40) /* tR maximum for high speed mode in nanoseconds */
 #define T_F_MAX_HS (40) /* tF maximum for high speed mode in nanoseconds */
-#define T_AF_MIN (10)	/* tAF minimun in nanoseconds */
+#define T_AF_MIN (10)	/* tAF minimum in nanoseconds */
 
 /**
  * typedef i2c_speed_t - I2C speed modes.
@@ -292,7 +292,7 @@ void i2c_init(void)
 }
 
 /**
- *  I2C Slave Implentation
+ *  I2C Slave Implementation
  */
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR_FLAGS
 /* IRQ for each I2C */
@@ -656,7 +656,7 @@ static void i2c_send_board_response(int len)
 	/* Set the number of bytes to send to the I2C master. */
 	req_slave.tx_remain = len;
 
-	/* Call the handler for transmition of response packet. */
+	/* Call the handler for transmission of response packet. */
 	i2c_slave_handler(i2c_bus_ports[I2C_PORT_EC]);
 }
 

@@ -30,7 +30,7 @@ test_mockable int chg_ramp_allowed(int supplier)
 	/* default: fall through */
 	}
 
-	/* Othewise ask the BC1.2 detect module */
+	/* Otherwise ask the BC1.2 detect module */
 	return usb_charger_ramp_allowed(supplier);
 }
 

@@ -35,7 +35,7 @@ and [video](http://youtu.be/Ie7LRGgCXC8) from the
 
 ### EC
 
-EC (aka Embedded Controller) can refer to many things in the Chrome OS
+EC (a.k.a. Embedded Controller) can refer to many things in the Chrome OS
 documentation due to historical reasons. If you just see the term "EC", it
 probably refers to "the" EC (i.e. the first one that existed). Most Chrome OS
 devices have an MCU, known as "the EC" that controls lots of things (key

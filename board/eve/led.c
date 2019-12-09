@@ -341,7 +341,7 @@ static void led_change_color(int old_idx, int new_idx, enum led_side side)
 			 * current level of R, G, or B is higher than both
 			 * the next step in the transition table and and the
 			 * target level, then move to the larger of the two. The
-			 * MAX is used to make sure that it doens't drop below
+			 * MAX is used to make sure that it doesn't drop below
 			 * the target level.
 			 */
 			for (i = 0; i < PWM_CHAN_PER_LED; i++) {

@@ -16,7 +16,7 @@
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
 
-/* Forwad declaration. */
+/* Forward declaration. */
 static struct consumer const event_vdec_consumer;
 static void event_vdec_written(struct consumer const *consumer, size_t count);
 

@@ -78,7 +78,7 @@
  *     +-------------+---+---+--------------+
  *
  *   - read payload might not fit into a single USB packets. Remaining will be
- *     transimitted witout header. Receiving side should concatenate them.
+ *     transimitted without header. Receiving side should concatenate them.
  *
  *     status: 2 byte status
  *         0x0000: Success

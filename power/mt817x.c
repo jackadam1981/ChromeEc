@@ -85,7 +85,7 @@
 
 /*
  * The hold time for pulling down the PMIC_WARM_RESET_H pin so that
- * the AP can entery the recovery mode (flash SPI flash from USB).
+ * the AP can entry the recovery mode (flash SPI flash from USB).
  */
 #define PMIC_WARM_RESET_H_HOLD_TIME (4 * MSEC)
 

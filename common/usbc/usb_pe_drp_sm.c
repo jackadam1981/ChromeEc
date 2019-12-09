@@ -267,7 +267,7 @@ static const char * const pe_state_names[] = {
 /*
  * NOTE:
  *	DO_PORT_DISCOVERY_START is not actually a vdm command. It is used
- *	to start the port partner discovery proccess.
+ *	to start the port partner discovery process.
  */
 enum vdm_cmd {
 	DO_PORT_DISCOVERY_START,
@@ -2740,7 +2740,7 @@ static void pe_drs_evaluate_swap_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
-		/* Accept Message sent. Transtion to PE_DRS_Change */
+		/* Accept Message sent. Transition to PE_DRS_Change */
 		if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
 			PE_CLR_FLAG(port, PE_FLAGS_ACCEPT);
 			set_state_pe(port, PE_DRS_CHANGE);

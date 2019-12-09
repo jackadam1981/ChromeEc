@@ -192,7 +192,7 @@ static int raw_write8(const int port,
 	 * From Bosch:  BMI160 needs a delay of 450us after each write if it
 	 * is in suspend mode, otherwise the operation may be ignored by
 	 * the sensor. Given we are only doing write during init, add
-	 * the delay inconditionally.
+	 * the delay unconditionally.
 	 */
 	msleep(1);
 	return rv;

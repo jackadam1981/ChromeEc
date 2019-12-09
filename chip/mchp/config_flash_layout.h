@@ -88,7 +88,7 @@
  * after the header.
  * Second half of SPI flash contains:
  * Header(128 bytes) + EC_RW
- * EC flash erase/write commands check alginment base on
+ * EC flash erase/write commands check alignment base on
  * CONFIG_FLASH_ERASE_SIZE defined in config_chip.h
  * NOTE: EC_RO and EC_RW must start at CONFIG_FLASH_ERASE_SIZE or
  * greater aligned boundaries.

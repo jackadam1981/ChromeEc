@@ -12,7 +12,7 @@
  * On systems with protection from a failing RW update: read the retry counter
  * and act on it.
  *
- * @return EC_SUCCESS if no flash write errors were encounterd.
+ * @return EC_SUCCESS if no flash write errors were encountered.
  */
 int system_process_retry_counter(void);
 

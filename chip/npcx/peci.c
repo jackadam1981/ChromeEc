@@ -87,7 +87,7 @@ static uint32_t peci_trans(
 	/* Set basic transaction parameters */
 	NPCX_PECI_ADDR = PROC_SOCKET;
 	NPCX_PECI_CMD = cmd_code;
-	/* Aviod over space */
+	/* Avoid over space */
 	if (rd_length > PECI_MAX_FIFO_SIZE)
 		rd_length = PECI_MAX_FIFO_SIZE;
 	/* Read-Length */

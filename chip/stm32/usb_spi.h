@@ -104,7 +104,7 @@ struct usb_spi_config {
 	struct usb_spi_state *state;
 
 	/*
-	 * Interface and endpoint indicies.
+	 * Interface and endpoint indices.
 	 */
 	int interface;
 	int endpoint;

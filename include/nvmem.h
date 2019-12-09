@@ -43,7 +43,7 @@ extern "C" {
  *
  * A generation number is used to distinguish between two valid partitions with
  * the newsest generation number (in a circular sense) marking the correct
- * partition to use. The parition number 0/1 is tracked via a static
+ * partition to use. The partition number 0/1 is tracked via a static
  * variable. When the NvMem contents need to be updated, the flash erase/write
  * of the updated partition will use the inactive partition space in NvMem. This
  * way if there is a critical failure (i.e. loss of power) during the erase or

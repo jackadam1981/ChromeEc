@@ -411,7 +411,7 @@ class Spower(object):
     """Set sweetberry time to match host time.
 
     Args:
-      timestamp_us: host timestmap in us.
+      timestamp_us: host timestamp in us.
     """
     # 0x0005 , 8 byte timestamp
     cmd = struct.pack("<HQ", self.CMD_SETTIME, timestamp_us)
@@ -548,7 +548,7 @@ class Spower(object):
     """Load a board config.
 
     Args:
-      brdfile:	Filename of a json file decribing the INA wiring of this board.
+      brdfile:	Filename of a json file describing the INA wiring of this board.
     """
     with open(process_filename(brdfile)) as data_file:
         data = json.load(data_file)

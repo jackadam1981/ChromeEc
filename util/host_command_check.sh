@@ -47,7 +47,7 @@ check_cmd() {
 # Arguments:
 #   string - potential ec host command
 # Returns:
-#   0 if command is formated properly, else 1
+#   0 if command is formatted properly, else 1
 ########################################
 should_check() {
   IFS=" "
@@ -104,7 +104,7 @@ main() {
     fi
   done
 
-  # Search all file occurrances of "EC_PRV_CMD" and store in array
+  # Search all file occurrences of "EC_PRV_CMD" and store in array
   IFS=$'\n'
   ec_prv_cmds=($(grep -r "EC_PRV_CMD"))
 

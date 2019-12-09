@@ -6,7 +6,7 @@ interface.  Load module i2c-pseudo for this.
 
 Use cases for this module include:
 
-[A] Using local I2C device drivers, particularly i2c-dev, with I2C busses on
+[A] Using local I2C device drivers, particularly i2c-dev, with I2C buses on
 remote systems.  For example, interacting with a Device Under Test (DUT)
 connected to a Linux host through a debug interface, or interacting with a
 remote host over a network.
@@ -22,7 +22,7 @@ thanks to the far greater code reuse possibilities (libraries), the plethora of
 programming language options for rapid iteration, and not needing to understand
 how to implement Linux kernel drivers.
 
-This is not intended to replace kernel drivers for actual I2C busses on the
+This is not intended to replace kernel drivers for actual I2C buses on the
 local host machine.
 
 

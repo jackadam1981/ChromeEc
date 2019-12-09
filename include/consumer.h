@@ -22,7 +22,7 @@ struct producer;
 struct consumer_ops {
 	/*
 	 * Inform the consumer that count units were written to the queue.
-	 * This gives it the oportunity to read additional units from the queue
+	 * This gives it the opportunity to read additional units from the queue
 	 * or to wake up a task or interrupt to do the same.  If a consumer has
 	 * no need for this information it can set this to NULL.
 	 */

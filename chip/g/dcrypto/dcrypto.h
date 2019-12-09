@@ -89,7 +89,7 @@ void DCRYPTO_gcm_aad(struct GCM_CTX *ctx, const uint8_t *aad_data, size_t len);
  * may be called repeatedly with incremental data.
  *
  * NOTE: if in_len is not a integral multiple of 16, then out_len must
- * be atleast in_len - (in_len % 16) + 16 bytes.
+ * be at least in_len - (in_len % 16) + 16 bytes.
  */
 int DCRYPTO_gcm_encrypt(struct GCM_CTX *ctx, uint8_t *out, size_t out_len,
 			const uint8_t *in, size_t in_len);
@@ -315,7 +315,7 @@ size_t DCRYPTO_asn1_pubp(uint8_t *buf, const p256_int *x, const p256_int *y);
  *  X509.
  */
 /* DCRYPTO_x509_verify verifies that the provided X509 certificate was issued
- * by the specified certifcate authority.
+ * by the specified certificate authority.
  *
  * cert is a pointer to a DER encoded X509 certificate, as specified
  * in https://tools.ietf.org/html/rfc5280#section-4.1.  In ASN.1

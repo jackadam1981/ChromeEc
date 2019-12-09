@@ -70,8 +70,8 @@
 struct wov_pll_set_options_val {
 	uint8_t pll_indv;     /* Input Divider */
 	uint16_t pll_fbdv;    /* Feedback Divider */
-	uint8_t pll_otdv1;    /* Output devide 1. */
-	uint8_t pll_otdv2;    /* Output devide 2. */
+	uint8_t pll_otdv1;    /* Output divide 1. */
+	uint8_t pll_otdv2;    /* Output divide 2. */
 	uint32_t pll_ext_div; /* Index for the table pll_ext_div */
 };
 
@@ -465,7 +465,7 @@ static void wov_i2s_channel1_disable(int disable)
  *VAD_INSEL	    |  (left)	|    (right)	|    (average)	|  applicable
  *
  * @param   None.
- * @return  return EC_SUCCESS if mic source valid othewise return error code.
+ * @return  return EC_SUCCESS if mic source valid otherwise return error code.
  */
 static enum ec_error_list wov_set_mic_source_l(void)
 {
@@ -681,7 +681,7 @@ struct wov_fmul2_multiplier_setting_val {
 };
 
 /**
- * Configure FMUL2 clock tunning.
+ * Configure FMUL2 clock tuning.
  *
  * @param   None
  * @return  None
@@ -1274,7 +1274,7 @@ int wov_set_buffer(uint32_t *buf, int size_in_words)
  */
 void wov_apm_active(int enable)
 {
-	/* For APM it is negativ logic. */
+	/* For APM it is negative logic. */
 	if (enable)
 		CLEAR_BIT(NPCX_WOV_APM_CTRL, NPCX_WOV_APM_CTRL_APM_RST);
 	else
@@ -1294,7 +1294,7 @@ void wov_apm_active(int enable)
  * @param   in_pull_en    - Enable a pull-up or a pull-down resistor on
  *                          I2S input
  * @param   in_pull_mode  - Select a pull-up or a pull-down resistor on
- *                          I2S intput
+ *                          I2S input
  * @param   test_mode     - Selects I2S test mode
  *
  * @return  EC_ERROR_INVAL or EC_SUCCESS
@@ -1370,7 +1370,7 @@ enum ec_error_list wov_i2s_global_config(
  *
  * @param  channel_num     - I2S channel number, 0 or 1.
  * @param  bit_count       - I2S channel bit count.
- * @param  trigger         - Define the I2S chanel trigger 1->0 or 0->1
+ * @param  trigger         - Define the I2S channel trigger 1->0 or 0->1
  * @param  start_delay     - Defines the delay from the trigger defined for
  *                           the channel till the first bit (MSB) of the data.
  *
@@ -1381,7 +1381,7 @@ enum ec_error_list wov_i2s_channel_config(uint32_t channel_num,
 					enum wov_i2s_chan_trigger trigger,
 					int32_t start_delay)
 {
-	/* Check the parameters correctnes. */
+	/* Check the parameters correctness. */
 	if ((channel_num != 0) && (channel_num != 1))
 		return EC_ERROR_INVAL;
 
@@ -1416,7 +1416,7 @@ enum ec_error_list wov_i2s_channel_config(uint32_t channel_num,
  * Sets sampling rate.
  *
  * @param   samples_per_second - Valid sample rate.
- * @return  In case sample rate is valid return EC_SUCCESS othewise return
+ * @return  In case sample rate is valid return EC_SUCCESS otherwise return
  *          error code.
  */
 int wov_set_sample_rate(uint32_t samples_per_second)
@@ -1453,7 +1453,7 @@ uint32_t wov_get_sample_rate(void)
  * Sets sampling depth.
  *
  * @param   bits_num - Valid sample depth in bits.
- * @return  In case sample depth is valid return EC_SUCCESS othewise return
+ * @return  In case sample depth is valid return EC_SUCCESS otherwise return
  *          error code.
  */
 int wov_set_sample_depth(int bits_num)
@@ -1485,7 +1485,7 @@ int wov_get_sample_depth(void)
  * Sets microphone source.
  *
  * @param   mic_src - Valid microphone source
- * @return  return EC_SUCCESS if mic source valid othewise return error code.
+ * @return  return EC_SUCCESS if mic source valid otherwise return error code.
  */
 int wov_set_mic_source(enum wov_mic_source mic_src)
 {
@@ -1845,7 +1845,7 @@ static int command_wov(int argc, char **argv)
 			if (wov_set_buffer((uint32_t *)voice_buffer,
 				sizeof(voice_buffer) / sizeof(uint32_t))
 					== EC_SUCCESS) {
-				CPRINTS("Start RAM Catpure...");
+				CPRINTS("Start RAM Capture...");
 				wov_start_ram_capture();
 				return EC_SUCCESS;
 			}

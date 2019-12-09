@@ -248,7 +248,7 @@ CRYPT_RESULT _cpri__SignEcc(
 	case TPM_ALG_ECDSA:
 		if (!check_p256_param(d))
 			return CRYPT_PARAMETER;
-		/* Trucate / zero-pad the digest as appropriate. */
+		/* Truncate / zero-pad the digest as appropriate. */
 		memset(digest_local, 0, sizeof(digest_local));
 		memcpy(digest_local + sizeof(digest_local) - digest_len,
 			digest->buffer, digest_len);
@@ -293,7 +293,7 @@ CRYPT_RESULT _cpri__ValidateSignatureEcc(
 
 	switch (scheme) {
 	case TPM_ALG_ECDSA:
-		/* Trucate / zero-pad the digest as appropriate. */
+		/* Truncate / zero-pad the digest as appropriate. */
 		memset(digest_local, 0, sizeof(digest_local));
 		memcpy(digest_local + sizeof(digest_local) - digest_len,
 			digest->buffer, digest_len);

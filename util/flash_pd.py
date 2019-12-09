@@ -160,7 +160,7 @@ class FlashPD(client.ServoClient):
     return self.pd_command(flash_cmd, expect, retries, ignore_fail)
 
   def get_version(self):
-    """Retreive PSU firmware version.
+    """Retrieve PSU firmware version.
 
     Looks like: 'version: zinger_v1.1.1917-bfd'
 

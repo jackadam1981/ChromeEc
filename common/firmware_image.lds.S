@@ -8,7 +8,7 @@
 
 #ifdef NPCX_RO_HEADER
 /* Replace *_MEM_OFF with *_STORAGE_OFF to indicate flat file contains header
- * or some struture which doesn't belong to FW */
+ * or some structure which doesn't belong to FW */
 #define IMAGE_RO_AT (CONFIG_PROGRAM_MEMORY_BASE + \
                         CONFIG_EC_PROTECTED_STORAGE_OFF)
 /* npcx uses *STORAGE_OFF to plan the layout of flash image */

@@ -1389,7 +1389,7 @@ static enum vendor_cmd_rc ccd_get_info(struct vendor_cmd_params *p)
 
 /*
  * Common TPM Vendor command handler used to demultiplex various CCD commands
- * which need to be available both throuh CLI and over /dev/tpm0.
+ * which need to be available both through CLI and over /dev/tpm0.
  */
 static enum vendor_cmd_rc ccd_vendor(struct vendor_cmd_params *p)
 {

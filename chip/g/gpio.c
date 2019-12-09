@@ -238,7 +238,7 @@ static void connect_pinmux(struct pinmux const *p)
 		/* We don't have to setup any muxes for directly connected
 		 * pads. The only ones that we are likely to ever care about
 		 * are tied to the SPS and SPI peripherals, and they're all
-		 * inouts, so we can just enable the digital input for them
+		 * inputs, so we can just enable the digital input for them
 		 * regardless. */
 		is_input = 1;
 	} else {

@@ -240,7 +240,7 @@ int espi_vw_enable_wire_int(enum espi_vw_signal signal)
 	 * sequence signal.
 	 * IT83xx only use a bit (bit7@IT83XX_ESPI_VWCTRL0) to enable VW
 	 * interrupt.
-	 * VW interrupt will be triggerd with any updated VW index flag
+	 * VW interrupt will be triggered with any updated VW index flag
 	 * if this control bit is set.
 	 * So we will always return success here.
 	 */
@@ -449,7 +449,7 @@ static int espi_get_reset_enable_config(void)
 	const struct gpio_info *espi_rst = gpio_list + GPIO_ESPI_RESET_L;
 
 	/*
-	 * Determine if eSPI HW reset is connected to eiter B7 or D2.
+	 * Determine if eSPI HW reset is connected to either B7 or D2.
 	 * bit[2-1]:
 	 * 00b: reserved.
 	 * 01b: espi_reset# is enabled on GPB7.

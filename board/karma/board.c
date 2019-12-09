@@ -24,7 +24,7 @@ __override void oz554_board_init(void)
 		break;
 	case 0x05:
 		CPRINTS("PANEL_LM_SSK1");
-		/* Reigster 0x02: Setting LED current: 55(mA) */
+		/* Register 0x02: Setting LED current: 55(mA) */
 		if (oz554_set_config(2, 0x55))
 			CPRINTS("oz554 config failed");
 		break;
