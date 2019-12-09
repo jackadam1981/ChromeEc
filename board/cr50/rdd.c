@@ -300,6 +300,16 @@ static void ccd_state_change_hook(void)
 	if (!(flags_want & CCD_ENABLE_UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
 
+	/*
+	 * If the packet mode is enabled and not in bitbang mode, then enable
+	 * UART_EC, so that it can receive an EC packet.
+	 */
+	if (ec_comm_packet_mode_is_enabled())
+		if (!(flags_want & CCD_ENABLE_UART_EC_BITBANG)) {
+			flags_want |= CCD_ENABLE_UART_EC;
+			flags_want &= ~CCD_ENABLE_UART_EC_TX;
+		}
+
 	/* If no change, we're done */
 	if (flags_now == flags_want)
 		return;
