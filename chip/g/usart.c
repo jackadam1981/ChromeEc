@@ -173,34 +173,47 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t count;
 	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t mask = uart_in->buffer_units_mask;
 
 	q_room = queue_space(uart_in);
-
-	if (!q_room)
-		return;
-
-	mask = uart_in->buffer_units_mask;
-	tail = uart_in->state->tail & mask;
+	tail = uart_in->state->tail;
 	count = 0;
 
 #if USE_EC_CR50_COMM
 	if (ec_comm_is_uart_in_packet_mode(uart)) {
-		if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX)) {
-			/*
-			 * TODO(b/119329144): Process packet data separately,
-			 * and filter console data based on ccd capability.
-			 */
-			while (uartn_rx_available(uart))
-				uartn_read_char(uart);
-			return;
+		/*
+		 * If UART_EC RX is not allowed, then do not forward any input
+		 * data from UART to USB. Mark the queue free space as zero.
+		 */
+		if (ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
+			q_room = 0;
+
+		/*
+		 * Even if UART-to-USB data queue is full (count == q_room),
+		 * It should drain UART queue, so that an EC packet
+		 * can be processed. In this case, EC console data
+		 * shall be lost anyway.
+		 */
+		while (uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
+
+			if (ec_comm_process_packet(ch))
+				continue;
+
+			if (count != q_room) {
+				uart_in->buffer[tail & mask] = ch;
+				tail++;
+				count++;
+			}
 		}
-	}
-#endif
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
+	} else
+#endif  /* ! USE_EC_CR50_COMM */
+	{
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail & mask] = uartn_read_char(uart);
+			tail++;
+			count++;
+		}
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);
