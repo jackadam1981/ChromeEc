@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4c853706_030f05b8",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-09T16:58:04Z",
+      "side": 1,
+      "message": "I do not know if we should say \"hopefully\".  Actually, I would hope that one of the four coordinates involved does not correspond to an actual key, so that ghosting is avoided, and the Chromebook registers three keypresses.  (The three keys would have all been pressed at some point in time during the keyboard scanning, though one or more were pressed/released during the scan.)  But if that is not the case, ghosting detection will kick in if all the keys had been held down for the entire scan, as usual.",
+      "range": {
+        "startLine": 266,
+        "startChar": 16,
+        "endLine": 266,
+        "endChar": 25
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9259357f_4acd89cd",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -22,6 +45,30 @@
       "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a822a24_7685a35d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-09T16:58:04Z",
+      "side": 1,
+      "message": "Yes, as far as I can tell, this would have to involve at least three distinct keys in the process of being pressed/released at the time of keyboard matrix scanning, which I assume is rather unlikely.",
+      "parentUuid": "9259357f_4acd89cd",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 42
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
