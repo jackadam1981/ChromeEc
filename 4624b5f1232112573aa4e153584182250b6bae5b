@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "141cd5c5_dd723b12",
+        "filename": "core/cortex-m/init.S",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-09T21:41:56Z",
+      "side": 1,
+      "message": "nit: maybe ptr_end? For some reason I was initially trying to read as \"p-trend\".",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "4624b5f1232112573aa4e153584182250b6bae5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
