@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0deff97a_9e26d8a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-09T03:27:42Z",
+      "side": 1,
+      "message": "Note to self: when info_4 indicates calibration is supported, iio device must add _offset attributes.\n[iio] services that read raw data will need to read the offset_ attributes periodically for compensation.\nDown the line, iio service will have to expose a pseudo sensor [uncalibrated] that a user can call, and iio service will not apply the  _offset to it.",
+      "revId": "7462776ec4cb8b1bff0ae6b1d81eb5fb591160c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6563d8f5_f185aa52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-09T03:27:42Z",
+      "side": 1,
+      "message": "Add code in ectool.c to decode info_4.",
+      "revId": "7462776ec4cb8b1bff0ae6b1d81eb5fb591160c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01884335_674e33e6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-09T03:27:42Z",
+      "side": 1,
+      "message": "you don\u0027t need to recopy these line.\ndo like in [kerne]drivers/mmc/core/mmc.c: mmc_decode_ext_csd():\n...\nargs-\u003eresponse_size \u003d sizeof(out-\u003einfo);\nif (args-\u003eversion \u003e\u003d 3) {\n\tout-\u003einfo_3.min_frequency \u003d sensor-\u003emin_frequency;\n\tout-\u003einfo_3.max_frequency \u003d sensor-\u003emax_frequency;\n\tout-\u003einfo_3.fifo_max_event_count \u003d MAX_FIFO_EVENT_COUNT;\n\targs-\u003eresponse_size \u003d sizeof(out-\u003einfo_3);\n}\nif (args-\u003eversion \u003e\u003d 4) {\n\tif (IS_ENABLED(CONFIG_ONLINE_CALIB) \u0026\u0026\n\t    sensor-\u003edrv-\u003eread_temp)\n\t\tout-\u003einfo_4.flags |\u003d\n\t\t\tMOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB;\n\targs-\u003eresponse_size \u003d sizeof(out-\u003einfo_4);\n}",
+      "revId": "7462776ec4cb8b1bff0ae6b1d81eb5fb591160c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
