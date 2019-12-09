@@ -163,6 +163,8 @@
 
 #include "gpio_signal.h"
 
+#include <stdint.h>
+
 /* USB string indexes */
 enum usb_strings {
 	USB_STR_DESC = 0,
@@ -391,6 +393,28 @@ void ec_comm_packet_mode_dis(enum gpio_signal unsed);
  * communication is on-going.
  */
 int ec_comm_is_uart_in_packet_mode(int uart);
+
+/*
+ * Try to process the given char as a EC-CR50 communication packet.
+ * If EC-CR50 communication is broken or uninitiated yet, then
+ * it does not process it.
+ *
+ * @return 1 if the given char was detected and processed as a part of packet.
+ *         0 otherwise.
+ */
+int ec_comm_process_packet(uint8_t ch);
+
+/* Reset EC EFS context */
+void ec_efs_reset(void);
+
+/* Process EC-EFS context before deep sleep */
+void ec_efs_ready_for_sleep(void);
+
+/* Set EC-EFS boot_mode */
+uint16_t ec_efs_set_boot_mode(const char *data, const int size);
+
+/* Verify the given hash data against the EC-FW hash from kernel secdata */
+uint16_t ec_efs_verify_hash(const char *hash_data, const int size);
 
 #endif /* !__ASSEMBLER__ */
 
