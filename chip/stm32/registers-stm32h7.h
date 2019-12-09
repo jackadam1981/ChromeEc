@@ -560,12 +560,12 @@
 #define  RESET_CAUSE_SFT                BIT(24)
 #define  RESET_CAUSE_POR                BIT(23)
 #define  RESET_CAUSE_PIN                BIT(22)
+#define  RESET_CAUSE_BOR                BIT(21)
 #define  RESET_CAUSE_OTHER              (BIT(31)|BIT(30)|BIT(29)|BIT(28)| \
 					 BIT(27)|BIT(26)|BIT(25)|BIT(24)| \
 					 BIT(23)|BIT(22)|BIT(21)|BIT(20)| \
 					 BIT(19)|BIT(18)|BIT(17))
 #define  RESET_CAUSE_RMVF               BIT(16)
-
 /* Power cause in PWR CPUCR register (Standby&Stop modes) */
 #define STM32_PWR_RESET_CAUSE STM32_PWR_CPUCR
 #define STM32_PWR_RESET_CAUSE_CLR STM32_PWR_CPUCR
@@ -727,6 +727,11 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_FLASH_OPTSR_CUR(bank)       STM32_FLASH_REG(bank, 0x1C)
 #define STM32_FLASH_OPTSR_PRG(bank)       STM32_FLASH_REG(bank, 0x20)
 #define  FLASH_OPTSR_BUSY                 BIT(0)   /* only in OPTSR_CUR */
+#define  FLASH_OPTSR_BOR_LEV_MASK         (0x3 << 2)
+#define  FLASH_OPTSR_BOR_LEV_0            (0 << 2)
+#define  FLASH_OPTSR_BOR_LEV_1            (1 << 2)
+#define  FLASH_OPTSR_BOR_LEV_2            (2 << 2)
+#define  FLASH_OPTSR_BOR_LEV_3            (3 << 2)
 #define  FLASH_OPTSR_RDP_MASK             (0xFF << 8)
 #define  FLASH_OPTSR_RDP_LEVEL_0          (0xAA << 8)
 /* RDP Level 1: Anything but 0xAA/0xCC */
