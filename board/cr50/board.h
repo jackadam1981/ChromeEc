@@ -390,6 +390,25 @@ void ec_comm_init(void);
 /* Setup EC-CR50-Comm channel status. Should be called on EC reset. */
 void ec_comm_setup(void);
 
+/**
+ * Try to process the given char to EC-CR50 communication packet.
+ * If EC-CR50 communication is broken or uninitiated yet, then
+ * do not process it.
+ *
+ * @return 1 if the given char was detected and processed as a part of packet.
+ *         0 otherwise.
+ */
+int ec_comm_process_packet(unsigned char ch);
+
+/*
+ *
+ */
+int ec_comm_packet_mode_is_enabled(void);
+
+/*
+ */
+unsigned char ec_comm_get_uart(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */

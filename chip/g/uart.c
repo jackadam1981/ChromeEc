@@ -21,8 +21,6 @@ enum init_values {
 
 static enum init_values done_uart_init_yet;
 
-#define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
-			       defined(SECTION_IS_RO)))
 #ifndef UARTN
 #define UARTN 0
 #endif

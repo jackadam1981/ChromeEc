@@ -43,7 +43,6 @@ struct cr50_comm_packet {
 #define CR50_COMM_CMD_VERIFY_HASH       0x02
 
 /* return code */
-#define CR50_COMM_READY                 0x60
 #define CR50_COMM_SUCCESS               0xec
 #define CR50_COMM_ERROR_UNKNOWN         0xe0
 #define CR50_COMM_ERROR_MAGIC           0xe1

@@ -133,6 +133,28 @@ void uartn_tx_disconnect(int uart)
 }
 
 /*
+ * Return if DIOB7 is selected to UART2_TX.
+ */
+static int uart_tx_alt_is_connected(void)
+{
+	return GREAD(PINMUX, DIOB7_SEL) == GC_PINMUX_UART2_TX_SEL;
+}
+
+void uartn_tx_alt_connect(void)
+{
+	if (!ec_is_on())
+		return;
+
+	/* Do not bother to check servo or ccd connection */
+	GWRITE(PINMUX, DIOB7_SEL, GC_PINMUX_UART2_TX_SEL);
+}
+
+void uartn_tx_alt_disconnect(void)
+{
+	GWRITE(PINMUX, DIOB7_SEL, 0);
+}
+
+/*
  * Flags for the current CCD device state.  This is used for determining what
  * hardware devices we've enabled now, and which we want enabled.
  */
@@ -162,6 +184,15 @@ enum ccd_state_flag {
 
 	/* SPI port is enabled for AP and/or EC flash */
 	CCD_ENABLE_SPI			= BIT(6),
+
+	/*
+	 * Alternative EC UART transmit is enabled, which is for EC-CR50
+	 * communication channel. DIOB7 pin will be UART TX for CR50 response
+	 * to EC. This flag can be set not by any console commands,
+	 * but by EC's request.
+	 * For more information, visit http://go/ec-cr50-comm.
+	 */
+	CCD_ENABLE_UART_EC_TX_ALT	= BIT(7),
 };
 
 int console_is_restricted(void)
@@ -196,6 +227,9 @@ static uint32_t get_state_flags(void)
 	if (ccd_usb_spi.state->enabled_device)
 		flags_now |= CCD_ENABLE_SPI;
 
+	if (uart_tx_alt_is_connected())
+		flags_now |= CCD_ENABLE_UART_EC_TX_ALT;
+
 	return flags_now;
 }
 
@@ -215,6 +249,8 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 		cprintf(channel, " UARTEC");
 	if (flags & CCD_ENABLE_UART_EC_TX)
 		cprintf(channel, "+TX");
+	if (flags & CCD_ENABLE_UART_EC_TX_ALT)
+		cprintf(channel, "+TX_ALT");
 	if (flags & CCD_ENABLE_UART_EC_BITBANG)
 		cprintf(channel, "+BB");
 	if (flags & CCD_ENABLE_I2C)
@@ -300,6 +336,18 @@ static void ccd_state_change_hook(void)
 	if (!(flags_want & CCD_ENABLE_UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
 
+	/*
+	 * If the board supports EC-CR50 communication and
+	 * the packet mode is enabled, then enable UART_EC and UART_EC_TX_ALT.
+	 */
+	if (board_ec_cr50_comm_support())
+		if (ec_comm_packet_mode_is_enabled())
+			if (!(flags_want & CCD_ENABLE_UART_EC_BITBANG)) {
+				flags_want |= CCD_ENABLE_UART_EC;
+				flags_want |= CCD_ENABLE_UART_EC_TX_ALT;
+				flags_want &= ~CCD_ENABLE_UART_EC_TX;
+			}
+
 	/* If no change, we're done */
 	if (flags_now == flags_want)
 		return;
@@ -318,6 +366,8 @@ static void ccd_state_change_hook(void)
 		uartn_disable(UART_EC);
 	if (delta & CCD_ENABLE_UART_EC_TX)
 		uartn_tx_disconnect(UART_EC);
+	if (delta & CCD_ENABLE_UART_EC_TX_ALT)
+		uartn_tx_alt_disconnect();
 #ifdef CONFIG_UART_BITBANG
 	if (delta & CCD_ENABLE_UART_EC_BITBANG)
 		uart_bitbang_disable();
@@ -337,6 +387,8 @@ static void ccd_state_change_hook(void)
 		uartn_enable(UART_EC);
 	if (delta & CCD_ENABLE_UART_EC_TX)
 		uartn_tx_connect(UART_EC);
+	if (delta & CCD_ENABLE_UART_EC_TX_ALT)
+		uartn_tx_alt_connect();
 #ifdef CONFIG_UART_BITBANG
 	if (delta & CCD_ENABLE_UART_EC_BITBANG) {
 		/*

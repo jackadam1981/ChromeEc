@@ -11,7 +11,7 @@
 
 void init_trng(void)
 {
-#if (!(defined(CONFIG_CUSTOMIZED_RO) && defined(SECTION_IS_RO)))
+#if USE_UART_INTERRUPTS
 	/*
 	 * Most of the trng initialization requires high permissions. If RO has
 	 * dropped the permission level, dont try to read or write these high
@@ -20,7 +20,7 @@ void init_trng(void)
 	 */
 	if (!runlevel_is_high())
 		return;
-#endif
+#endif  /* USE_UART_INTERRUPTS */
 
 	GWRITE(TRNG, POST_PROCESSING_CTRL,
 		GC_TRNG_POST_PROCESSING_CTRL_SHUFFLE_BITS_MASK |

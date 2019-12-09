@@ -5087,4 +5087,7 @@
 #define CONFIG_CRC8
 #endif
 
+#define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
+				defined(SECTION_IS_RO)))
+#define USE_EC_CR50_COMM  (USE_UART_INTERRUPTS && defined(CONFIG_STREAM_USART2))
 #endif  /* __CROS_EC_CONFIG_H */

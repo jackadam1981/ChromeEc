@@ -15,8 +15,6 @@
 #include "usart.h"
 #include "usb-stream.h"
 
-#define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
-defined(SECTION_IS_RO)))
 #define QUEUE_SIZE 64
 /*
  * Want to be able to accumulate larger amounts of data while USB is
@@ -129,6 +127,19 @@ USB_STREAM_CONFIG(ec_usb,
 		  ec_uart_to_usb)
 #endif
 
+#if USE_EC_CR50_COMM
+__attribute__((weak)) int ec_comm_process_packet(uint8_t ch)
+{
+	return 0;
+}
+
+__attribute__((weak)) uint8_t ec_comm_get_uart(void)
+{
+	return 0xff;
+}
+
+#endif  /* USE_EC_CR50_COMM */
+
 void get_data_from_usb(struct usart_config const *config)
 {
 	struct queue const *uart_out = config->consumer.queue;
@@ -150,22 +161,36 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t count;
 	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t mask = uart_in->buffer_units_mask;
 
 	q_room = queue_space(uart_in);
 
 	if (!q_room)
 		return;
 
-	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
 	count = 0;
 
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
-	}
+#if USE_EC_CR50_COMM
+	if (ec_comm_get_uart() == uart)
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
+
+			if (ec_comm_process_packet(ch))
+				continue;
+
+			uart_in->buffer[tail] = ch;
+			tail = (tail + 1) & mask;
+			count++;
+		}
+	else
+#endif  /* USE_EC_CR50_COMM */
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail] = uartn_read_char(uart);
+			tail = (tail + 1) & mask;
+			count++;
+		}
+
 	if (count)
 		queue_advance_tail(uart_in, count);
 }
