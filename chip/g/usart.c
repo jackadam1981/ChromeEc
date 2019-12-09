@@ -17,6 +17,8 @@
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 defined(SECTION_IS_RO)))
+#define USE_EC_CR50_COMM  (USE_UART_INTERRUPTS && defined(CONFIG_STREAM_USART2))
+
 #define QUEUE_SIZE 64
 /*
  * Want to be able to accumulate larger amounts of data while USB is
@@ -134,6 +136,15 @@ void get_data_from_usb(struct usart_config const *config)
 	struct queue const *uart_out = config->consumer.queue;
 	int c;
 
+#if USE_EC_CR50_COMM
+	/*
+	 * If EC-CR50 communication is on-going, then let's not forward
+	 * console input to EC.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(config->uart))
+		return;
+#endif
+
 	/* Copy output from buffer until TX fifo full or output buffer empty */
 	while (queue_count(uart_out) && QUEUE_REMOVE_UNITS(uart_out, &c, 1))
 		uartn_write_char(config->uart, c);
@@ -148,24 +159,41 @@ void send_data_to_usb(struct usart_config const *config)
 	struct queue const *uart_in = config->producer.queue;
 	int uart = config->uart;
 	size_t count;
-	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t q_room = queue_space(uart_in);
+	const size_t mask = uart_in->buffer_units_mask;
 
-	q_room = queue_space(uart_in);
-
-	if (!q_room)
-		return;
-
-	mask = uart_in->buffer_units_mask;
-	tail = uart_in->state->tail & mask;
+	tail = uart_in->state->tail;
 	count = 0;
 
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
-	}
+#if USE_EC_CR50_COMM
+	if (ec_comm_is_uart_in_packet_mode(uart))
+		/*
+		 * Even if UART-to-USB data queue is full (q_room == count),
+		 * It should drain UART queue, so that an EC packet
+		 * can be processed. In this case, EC console data
+		 * shall be lost anyway.
+		 */
+		while (uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
+
+			if (ec_comm_process_packet(ch))
+				continue;
+
+			if (count != q_room) {
+				uart_in->buffer[tail & mask] = ch;
+				tail++;
+				count++;
+			}
+		}
+	else
+#endif  /* ! USE_EC_CR50_COMM */
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail & mask] = uartn_read_char(uart);
+			tail++;
+			count++;
+		}
+
 	if (count)
 		queue_advance_tail(uart_in, count);
 }
