@@ -187,6 +187,30 @@
       "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfda0f3e_8aed2381",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-09T23:18:24Z",
+      "side": 1,
+      "message": "I was not aware of CL:1957897 until now.  I was trying to argue that the code you proposed\nif (s \u0026 r \u0026\u0026 count_bits(r) \u003e 1) return ERROR_MAYBE_GHOST;\nis a significant deviation from our current way of suppressing ghosts, and likely has adverse impact.  I will reply separately in CL:1957897.\n\nI lean towards the proposal in this CL.",
+      "parentUuid": "61c0a0dc_27aa9c00",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 42
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
