@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31ada96d_473580f6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-09T10:15:53Z",
+      "side": 1,
+      "message": "commit message updated",
+      "parentUuid": "ccd0cea7_d7081443",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d333b4ce_9447ebbd",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5dc97b77_ad9e1af5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-09T10:15:53Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "5cf18644_81098c3a",
+      "range": {
+        "startLine": 271,
+        "startChar": 41,
+        "endLine": 271,
+        "endChar": 43
+      },
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3645ef76_7f8a9489",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -83,6 +131,24 @@
       "writtenOn": "2019-12-06T22:56:41Z",
       "side": 1,
       "message": "Instead of the additional raw_state[] variable, how about storing into state[] here, and ending the loop here.  Then verify consistency, before finally doing a new loop over the colums, to add simulated keys, and masking coordinates that do not correspond to actual keys?\n\nFurther, with such a layout, instead of detecting inconsistencies and reporting them with an error, you could update state[] such that if two columns share any rows, then take the logical or of the set of each column, and assign that value to both columns.  Since the scan was obviously done during a transition, if the scan had happened microseconds before or after, we could have got the reading that is computed as above, so it would be safe.  has_ghosting() may later invalidate the whole scan, as usual.",
+      "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73490491_2c98cfa6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-09T10:15:53Z",
+      "side": 1,
+      "message": "Updated, thanks!",
+      "parentUuid": "3645ef76_7f8a9489",
       "revId": "2b36d26807cad92fe2f4398cb7cbb2530bb7243b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
