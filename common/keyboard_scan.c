@@ -222,6 +222,17 @@ static void simulate_key(int row, int col, int pressed)
 	ensure_keyboard_scanned(kbd_polls);
 }
 
+static int count_bits(uint8_t r)
+{
+	int i;
+	int count = 0;
+	for (i = 0; i < 8; i++) {
+		if (r & 1)
+			count++;
+		r = r >> 1;
+	}
+	return count;
+}
 /**
  * Read the raw keyboard matrix state.
  *
@@ -236,6 +247,7 @@ static int read_matrix(uint8_t *state)
 {
 	int c;
 	uint8_t r;
+	uint8_t s = 0;
 	int pressed = 0;
 
 	for (c = 0; c < keyboard_cols; c++) {
@@ -265,6 +277,10 @@ static int read_matrix(uint8_t *state)
 
 		/* Mask off keys that don't exist on the actual keyboard */
 		r &= keyscan_config.actual_key_mask[c];
+
+		if ((s & r) && count_bits(r) > 1)
+			return -1;
+		s |= r;
 
 #ifdef CONFIG_KEYBOARD_TEST
 		/* Use simulated keyscan sequence instead if testing active */
@@ -409,43 +425,6 @@ static int check_runtime_keys(const uint8_t *state)
 #endif /* CONFIG_KEYBOARD_RUNTIME_KEYS */
 
 /**
- * Check for ghosting in the keyboard state.
- *
- * Assumes that the state has already been masked with the actual key mask, so
- * that coords which don't correspond with actual keys don't trigger ghosting
- * detection.
- *
- * @param state		Keyboard state to check.
- *
- * @return 1 if ghosting detected, else 0.
- */
-static int has_ghosting(const uint8_t *state)
-{
-	int c, c2;
-
-	for (c = 0; c < keyboard_cols; c++) {
-		if (!state[c])
-			continue;
-
-		for (c2 = c + 1; c2 < keyboard_cols; c2++) {
-			/*
-			 * A little bit of cleverness here.  Ghosting happens
-			 * if 2 columns share at least 2 keys.  So we OR the
-			 * columns together and then see if more than one bit
-			 * is set.  x&(x-1) is non-zero only if x has more than
-			 * one bit set.
-			 */
-			uint8_t common = state[c] & state[c2];
-
-			if (common & (common - 1))
-				return 1;
-		}
-	}
-
-	return 0;
-}
-
-/**
  * Update keyboard state using low-level interface to read keyboard.
  *
  * @param state		Keyboard state to update.
@@ -469,8 +448,8 @@ static int check_keys_changed(uint8_t *state)
 	any_pressed = read_matrix(new_state);
 
 	/* Ignore if so many keys are pressed that we're ghosting. */
-	if (has_ghosting(new_state))
-		return any_pressed;
+	if (any_pressed < 0)
+		return 1;
 
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < keyboard_cols; c++) {
