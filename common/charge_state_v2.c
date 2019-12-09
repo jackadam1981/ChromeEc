@@ -1267,12 +1267,16 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 	return EC_SUCCESS;
 }
 
-/* True if we know the battery temp is too high or too low */
 static inline int battery_too_hot(int batt_temp_c)
 {
 	return (!(curr.batt.flags & BATT_FLAG_BAD_TEMPERATURE) &&
-		(batt_temp_c > batt_info->discharging_max_c ||
-		 batt_temp_c < batt_info->discharging_min_c));
+		(batt_temp_c > batt_info->discharging_max_c));
+}
+
+static inline int battery_too_cold_for_discharge(int batt_temp_c)
+{
+	return (!(curr.batt.flags & BATT_FLAG_BAD_TEMPERATURE) &&
+		(batt_temp_c < batt_info->discharging_min_c));
 }
 
 /* True if we know the charge is too low, or we know the voltage is too low. */
@@ -1284,6 +1288,50 @@ static inline int battery_too_low(void)
 		 curr.batt.voltage <= batt_info->voltage_min));
 }
 
+<<<<<<< HEAD   (9d4bfa lick: correct some sensor definition.)
+=======
+__attribute__((weak))
+enum critical_shutdown board_critical_shutdown_check(
+		struct charge_state_data *curr)
+{
+#ifdef CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
+	return CRITICAL_SHUTDOWN_CUTOFF;
+#elif defined(CONFIG_HIBERNATE)
+	return CRITICAL_SHUTDOWN_HIBERNATE;
+#else
+	return CRITICAL_SHUTDOWN_IGNORE;
+#endif
+}
+
+static int is_battery_critical(void)
+{
+	int batt_temp_c = DECI_KELVIN_TO_CELSIUS(curr.batt.temperature);
+
+	/*
+	 * TODO(crosbug.com/p/27642): The thermal loop should watch the battery
+	 * temp, so it can turn fans on.
+	 */
+	if (battery_too_hot(batt_temp_c)) {
+		CPRINTS("Batt too hot: %dC", batt_temp_c);
+		return 1;
+	}
+
+	/* Note: the battery may run on AC without discharging when too cold */
+	if (!curr.ac && battery_too_cold_for_discharge(batt_temp_c)) {
+		CPRINTS("Batt too cold: %dC", batt_temp_c);
+		return 1;
+	}
+
+	if (battery_too_low() && !curr.batt_is_charging) {
+		CPRINTS("Low battery: %d%%, %dmV",
+			curr.batt.state_of_charge, curr.batt.voltage);
+		return 1;
+	}
+
+	return 0;
+}
+
+>>>>>>> CHANGE (92e1c8 Charge state v2: Only shutdown on cold discharge)
  /*
   * If the battery is at extremely low charge (and discharging) or extremely
   * high temperature, the EC will notify the AP and start a timer. If the
