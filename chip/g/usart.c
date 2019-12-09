@@ -3,7 +3,10 @@
  * found in the LICENSE file.
  */
 
+#ifdef BOARD_CR50
 #include "ccd_config.h"
+#include "ec_comm.h"
+#endif
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -215,10 +218,12 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t count;
 	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t mask = uart_in->buffer_units_mask;
 	size_t inc = 1;
 
 	q_room = queue_space(uart_in);
+	tail = uart_in->state->tail & mask;
+	count = 0;
 
 #ifdef BOARD_CR50
 	if (uart == UART_EC) {
@@ -229,23 +234,34 @@ void send_data_to_usb(struct usart_config const *config)
 		if (!usb_from_uartn_is_enabled_(uart))
 			inc = 0;
 	}
-#endif
 
-	mask = uart_in->buffer_units_mask;
-	tail = uart_in->state->tail & mask;
-	count = 0;
+	if (ec_comm_is_uart_in_packet_mode(uart)) {
+		/*
+		 * Even if UART-to-USB data queue is full (count == q_room),
+		 * It should drain UART queue, so that an EC packet
+		 * can be processed. In this case, EC console data
+		 * shall be lost anyway.
+		 */
+		while (uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
 
-	/*
-	 * TODO(b/119329144): Process packet data separately,
-	 * and filter console data based on ccd capability.
-	 * if (ec_comm_is_uart_in_packet_mode(uart))
-	 *	...
-	 */
+			if (ec_comm_process_packet(ch))
+				continue;
 
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + inc) & mask;
-		count += inc;
+			if (count != q_room) {
+				uart_in->buffer[tail] = ch;
+				tail = (tail + inc) & mask;
+				count += inc;
+			}
+		}
+	} else
+#endif  /* BOARD_CR50 */
+	{
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail] = uartn_read_char(uart);
+			tail = (tail + inc) & mask;
+			count += inc;
+		}
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);
