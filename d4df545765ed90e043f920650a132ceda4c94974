@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a1425b_02bac450",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-09T23:23:23Z",
+      "side": 1,
+      "message": "This logic is a significant deviation from the existing has_ghosting().  I do not believe it is acceptable.\n\nFor instance, if column 1 and 2 and row 1 and 2 are all registering as pressed (four coordinates), but (1, 1) does not correspond to an actual key, then on the first iteration, s would get a value with bit 2 set (since bit 1 is masked by actual_key_mask), on second iteration, r will have bit 1 and 2 set, and would then run foul of this check, since r has two bits, and the intersection with s is non-empty.\n\nYet, such three keys pressed, without any inconsistency due to non-atomic scanning, is something that the existing has_ghosting handles by interpreting as the three keys all being pressed, which is what we want.",
+      "revId": "d4df545765ed90e043f920650a132ceda4c94974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
