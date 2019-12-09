@@ -22,6 +22,23 @@
       "revId": "96e9a5198ecc91670f14dcc6d8667863bc6350db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf88eb2e_f83feae6",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-12-09T19:34:02Z",
+      "side": 1,
+      "message": "This value should be set based on a voltage divider reading during POR. The driver never writes this register. I don\u0027t think we should be setting this via a config option",
+      "revId": "96e9a5198ecc91670f14dcc6d8667863bc6350db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
