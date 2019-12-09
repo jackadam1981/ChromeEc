@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6e22f54_bc603ffa",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-09T18:00:05Z",
+      "side": 1,
+      "message": "nit: these docs should go in header",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 3
+      },
+      "revId": "e6c72779a2fb30936b016ba6f4767ae35aff4455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84dd6f5e_445b8140",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-09T18:00:05Z",
+      "side": 1,
+      "message": "nit: blank line between brace and next function def",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 1
+      },
+      "revId": "e6c72779a2fb30936b016ba6f4767ae35aff4455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
