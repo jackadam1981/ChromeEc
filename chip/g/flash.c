@@ -480,11 +480,12 @@ static int command_erase_flash_info(int argc, char **argv)
 		return rv;
 	}
 
-	/* Read the entire info1. */
-	p = (uint32_t *)info1;
-	for (i = 0; i < (sizeof(*info1) / sizeof(*p)); i++) {
-		if (flash_physical_info_read_word(i * sizeof(*p), p + i) !=
-		    EC_SUCCESS) {
+	/* Preserve manufacturing information. */
+	for (i = 0; i < manuf_word_count; i++) {
+		if (flash_physical_info_read_word
+		    (FLASH_INFO_MANUFACTURE_STATE_OFFSET +
+		     i * sizeof(uint32_t),
+		     preserved_manufacture_state + i) != EC_SUCCESS) {
 			ccprintf("Failed to read word %d!\n", i);
 			goto exit;
 		}
