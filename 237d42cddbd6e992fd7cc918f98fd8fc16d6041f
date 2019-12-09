@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f41b0391_f3680510",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-09T18:20:40Z",
+      "side": 1,
+      "message": "very nice to read!",
+      "range": {
+        "startLine": 453,
+        "startChar": 1,
+        "endLine": 456,
+        "endChar": 39
+      },
+      "revId": "237d42cddbd6e992fd7cc918f98fd8fc16d6041f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f5e1009_a40c3616",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-09T18:20:40Z",
+      "side": 1,
+      "message": "you probably don\u0027t need this comment (it is okay to leave though) since line 26 comment applies here too",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "237d42cddbd6e992fd7cc918f98fd8fc16d6041f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
