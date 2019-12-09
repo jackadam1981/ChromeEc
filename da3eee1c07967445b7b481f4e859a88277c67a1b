@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f830d67_465178e8",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-09T20:58:59Z",
+      "side": 1,
+      "message": "This is a fair point. How about breaking into three loops of c \u003d 0; c \u003c keyboard_cols.  So first only the scanning, then this fixing (using two nested loops), and finally the reporting loop.\n\nDoing so would make the window for inconsistencies even smaller than before this change.",
+      "parentUuid": "1e559bbf_fac6cfcd",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 30
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c853706_030f05b8",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -106,6 +130,30 @@
       "writtenOn": "2019-12-09T20:29:27Z",
       "side": 1,
       "message": "When c1 and c2 have at least one row is active in common,\n\n  1. no other rows in c2 are active -\u003e success\n  2. at least another row is active in common -\u003e ghost -\u003e reject\n  3. another row in c2 is active -\u003e new key press -\u003e reject\n\nIf I understand correctly, we can finish scanning only in case of #1. Then, the scan loop should be much tighter and more efficient (than this CL or the current loop).\n\n  r \u003d keyboard_raw_read_rows();\n  if (s \u0026 r \u0026\u0026 count_bits(r) \u003e 1)\n    return ERROR_MAYBE_GHOST;\n  state[c] \u003d r;\n  s |\u003d r;",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 42
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c636ff36_0ec5b385",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-12-09T20:58:59Z",
+      "side": 1,
+      "message": "Your second point is not always the case, in case one or more of the four coordinate points do not correspond to a actual keys, there is no ghosting even when c1 and c2 have two rows in common.  Whether this is the case is decided further down, using actual_key_mask, and the in has_ghosting.\n\nMy hope what that detecting ghosting could continue to be done using the same code, and that read_matrix would do this \"transitive closure\" to hide the fact that keys could have changed state during the scan.",
+      "parentUuid": "38ad0d9a_350ca7c6",
       "range": {
         "startLine": 261,
         "startChar": 0,
