@@ -560,12 +560,12 @@
 #define  RESET_CAUSE_SFT                BIT(24)
 #define  RESET_CAUSE_POR                BIT(23)
 #define  RESET_CAUSE_PIN                BIT(22)
+#define  RESET_CAUSE_BOR                BIT(21)
 #define  RESET_CAUSE_OTHER              (BIT(31)|BIT(30)|BIT(29)|BIT(28)| \
 					 BIT(27)|BIT(26)|BIT(25)|BIT(24)| \
 					 BIT(23)|BIT(22)|BIT(21)|BIT(20)| \
 					 BIT(19)|BIT(18)|BIT(17))
 #define  RESET_CAUSE_RMVF               BIT(16)
-
 /* Power cause in PWR CPUCR register (Standby&Stop modes) */
 #define STM32_PWR_RESET_CAUSE STM32_PWR_CPUCR
 #define STM32_PWR_RESET_CAUSE_CLR STM32_PWR_CPUCR
