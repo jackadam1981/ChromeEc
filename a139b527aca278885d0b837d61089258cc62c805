@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7f8f659_0e55051a",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-09T18:18:38Z",
+      "side": 1,
+      "message": "also let\u0027s call out that the write operation will be skipped if the new value matches the read value.\n\n\n--\n\nif you want (you don\u0027t have to) you can have i2c_update8 and i2c_update16 share the same comment header",
+      "range": {
+        "startLine": 348,
+        "startChar": 5,
+        "endLine": 351,
+        "endChar": 8
+      },
+      "revId": "a139b527aca278885d0b837d61089258cc62c805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d2802f_53daa21d",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-09T18:18:38Z",
+      "side": 1,
+      "message": "nit: can we rename clr_mask to field_mask?\nand\nLet\u0027s also add that we will clear the field mask and set mask (basically your comment in the .c file)\n\nAlso what happens if set_mask bits are set outside of field_mask? should we even allow that? Either way, we should call that out in the comments.",
+      "range": {
+        "startLine": 372,
+        "startChar": 3,
+        "endLine": 374,
+        "endChar": 17
+      },
+      "revId": "a139b527aca278885d0b837d61089258cc62c805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
