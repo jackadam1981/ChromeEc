@@ -398,6 +398,22 @@ void ec_comm_init(void);
 /* Setup EC-CR50-Comm channel status. Should be called on EC reset. */
 void ec_comm_setup(void);
 
+/*
+ * Try to process the given char as a EC-CR50 communication packet.
+ * If EC-CR50 communication is broken or uninitiated yet, then
+ * it does not process it.
+ *
+ * @return 1 if the given char was detected and processed as a part of packet.
+ *         0 otherwise.
+ */
+int ec_comm_process_packet(unsigned char ch);
+
+/* Return True if EC-CR50 communication is enabled. */
+int ec_comm_packet_mode_is_enabled(void);
+
+/* Return True if the given UART is in the EC-CR50 communication mode. */
+int ec_comm_is_uart_in_packet_mode(int uart);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
