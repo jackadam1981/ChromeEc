@@ -105,6 +105,34 @@ __maybe_unused static int lis2ds_config_interrupt(const struct motion_sensor_t *
 			return ret;
 	}
 
+#ifdef CONFIG_GESTURE_SENSOR_DOUBLE_TAP
+	/* Enable tap detection. */
+	ret = st_write_data_with_mask(s, LIS2DS_CTRL3_ADDR,
+				      LIS2DS_TAP_EN_MASK, LIS2DS_TAP_EN_ALL);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Configure tap detection as suggest AN. */
+	ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+			    LIS2DS_TAP_6D_THS_ADDR, 0x0C);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+			    LIS2DS_INT_DUR_ADDR, 0x7f);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+			    LIS2DS_WAKE_UP_THS_ADDR, 0x80);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Enable double tap event on int1 (default). */
+	ret = st_write_data_with_mask(s, LIS2DS_CTRL4_ADDR,
+				      LIS2DS_INT1_D_TAP, LIS2DS_EN_BIT);
+#endif /* CONFIG_GESTURE_SENSOR_DOUBLE_TAP */
+
 	return ret;
 }
 
@@ -158,6 +186,19 @@ __maybe_unused static int lis2ds_irq_handler(struct motion_sensor_t *s,
 		if (ret > 0)
 			motion_sense_fifo_commit_data();
 	}
+
+#ifdef CONFIG_GESTURE_SENSOR_DOUBLE_TAP
+	{
+		int status = 0;
+
+		/* Read Status register to check D-TAP events. */
+		st_raw_read8(s->port, s->i2c_spi_addr_flags,
+			     LIS2DS_TAP_SRC_ADDR, &status);
+		if (status & LIS2DS_DOUBLE_TAP_MASK)
+			*event |= TASK_EVENT_MOTION_ACTIVITY_INTERRUPT(
+					MOTIONSENSE_ACTIVITY_DOUBLE_TAP);
+	}
+#endif /* CONFIG_GESTURE_SENSOR_DOUBLE_TAP */
 
 	return ret;
 }
