@@ -392,7 +392,7 @@ static int calculate_lid_angle(const intv3_t base, const intv3_t lid,
 #ifndef CONFIG_ACCEL_STD_REF_FRAME_OLD
 	/*
 	 * Angle is between the keyboard and the front of screen: we need to
-	 * anlge between keyboard and back of screen:
+	 * angle between keyboard and back of screen:
 	 * 180 instead of 0 when lid and base are flat on surface.
 	 * 0 instead of 180 when lid is closed on keyboard.
 	 */

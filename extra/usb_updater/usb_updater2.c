@@ -881,7 +881,7 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 
 /*
  * Indicate to the target that update image transfer has been completed. Upon
- * receiveing of this message the target state machine transitions into the
+ * receiving of this message the target state machine transitions into the
  * 'rx_idle' state. The host may send an extension command to reset the target
  * after this.
  */

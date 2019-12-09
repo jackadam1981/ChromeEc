@@ -16,13 +16,13 @@
 #define PI3USB9201_REG_CLIENT_STS 0x2
 #define PI3USB9201_REG_HOST_STS 0x3
 
-/* Control_1 regiter bit definitions */
+/* Control_1 register bit definitions */
 #define PI3USB9201_REG_CTRL_1_INT_MASK BIT(0)
 #define PI3USB9201_REG_CTRL_1_MODE_SHIFT 1
 #define PI3USB9201_REG_CTRL_1_MODE_MASK (0x7 << \
 					 PI3USB9201_REG_CTRL_1_MODE_SHIFT)
 
-/* Control_2 regiter bit definitions */
+/* Control_2 register bit definitions */
 #define PI3USB9201_REG_CTRL_2_AUTO_SW BIT(1)
 #define PI3USB9201_REG_CTRL_2_START_DET BIT(3)
 

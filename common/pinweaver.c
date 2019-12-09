@@ -439,7 +439,7 @@ static int validate_pcr_value(const struct valid_pcr_value_t
 			return PW_ERR_PCR_NOT_MATCH;
 		}
 
-		/* Check if the curent PCR digest is the same as expected by
+		/* Check if the current PCR digest is the same as expected by
 		 * criteria.
 		 */
 		if (memcmp(sha256_of_selected_pcr,

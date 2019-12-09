@@ -38,7 +38,7 @@ firmware jumps to it.
 
 ## Hardware Write Protect {#hw_wp}
 
-On modern Chrome OS devices, the Cr50 (aka GSC / TPM) provides a "hardware
+On modern Chrome OS devices, the Cr50 (a.k.a. GSC / TPM) provides a "hardware
 write protect" GPIO that is connected to the AP SPI flash, EC SPI flash,
 EEPROM, and FPMCU via a [GPIO][write_protect_gpio].  This "hardware write
 protect" can only be disabled with servo or suzyq (["CCD open"]) and

@@ -863,7 +863,7 @@ static void transfer_section(struct transfer_descriptor *td,
 					 &rxed_size,
 					 EXTENSION_FW_UPGRADE) < 0) {
 				fprintf(stderr,
-					"Failed to trasfer block, %zd to go\n",
+					"Failed to transfer block, %zd to go\n",
 					data_len);
 				exit(update_error);
 			}
@@ -1151,7 +1151,7 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 
 /*
  * Indicate to the target that update image transfer has been completed. Upon
- * receiveing of this message the target state machine transitions into the
+ * receiving of this message the target state machine transitions into the
  * 'rx_idle' state. The host may send an extension command to reset the target
  * after this.
  */

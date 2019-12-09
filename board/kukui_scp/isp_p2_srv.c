@@ -15,7 +15,7 @@
 
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
 
-/* Forwad declaration. */
+/* Forward declaration. */
 static struct consumer const event_dip_consumer;
 static void event_dip_written(struct consumer const *consumer, size_t count);
 

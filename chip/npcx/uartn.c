@@ -153,7 +153,7 @@ void uartn_tx_stop(uint8_t uart_num, uint8_t sleep_ena)
 	/* Disable TX interrupt */
 	NPCX_UART_TX_EMPTY_INT_DIS(uart_num);
 	/*
-	 * Re-allow deep sleep when transmiting on the default pad (deep sleep
+	 * Re-allow deep sleep when transmitting on the default pad (deep sleep
 	 * is always disabled when alternate pad is selected).
 	 */
 	if (sleep_ena == 1)

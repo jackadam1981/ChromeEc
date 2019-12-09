@@ -2795,7 +2795,7 @@ static ssize_t i2cp_cdev_write(struct file *filep, const char __user *buf,
 	 * select between mutex_trylock and mutex_lock*, even in the
 	 * latter case the lock should never be blocked on I/O, on userspace, or
 	 * on anything else outside the control of this driver.  It IS
-	 * permissable for the lock to be blocked on processing of previous or
+	 * permissible for the lock to be blocked on processing of previous or
 	 * concurrent write input, so long as that processing does not violate
 	 * these rules.
 	 */

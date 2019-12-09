@@ -89,7 +89,7 @@ static inline uint64_t scale_ticks2us(uint64_t ticks)
 
 /*
  * HPET Control & Status register may indicate that a value which has
- * been written still needs propogated by hardware. Before updating
+ * been written still needs propagated by hardware. Before updating
  * HPET_TIMER_CONF_CAP(N), be sure to wait on the value settling with
  * the corresponding mask (see hpet.h).
  */

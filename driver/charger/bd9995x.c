@@ -346,7 +346,7 @@ static int bd9995x_get_charger_op_status(int *status)
 
 #ifdef HAS_TASK_USB_CHG
 static int bc12_detected_type[CONFIG_USB_PD_PORT_MAX_COUNT];
-/* Mutex for UCD_SET regsiters, lock before read / mask / write. */
+/* Mutex for UCD_SET registers, lock before read / mask / write. */
 static struct mutex ucd_set_mutex[BD9995X_CHARGE_PORT_COUNT];
 
 static int bd9995x_get_bc12_device_type(int port)
@@ -1322,7 +1322,7 @@ void usb_charger_task(void *u)
 				 * available still, then function will return
 				 * 1. Set up additional 100 msec wait. Note that
 				 * if VBUS is no longer provided when this call
-				 * happens the funciton will return 0.
+				 * happens the function will return 0.
 				 */
 				bc12_det_mark[port] =
 					bd9995x_bc12_check_type(port) ?

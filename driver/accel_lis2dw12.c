@@ -143,7 +143,7 @@ static int lis2dw12_config_interrupt(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	/* Enable interrupt on FIFO watermask and route to int1. */
+	/* Enable interrupt on FIFO watermark and route to int1. */
 	ret = st_write_data_with_mask(s, LIS2DW12_INT1_FTH_ADDR,
 				      LIS2DW12_INT1_FTH_MASK, LIS2DW12_EN_BIT);
 	if (ret != EC_SUCCESS)
@@ -558,7 +558,7 @@ static int init(const struct motion_sensor_t *s)
 #endif
 
 #ifdef CONFIG_ACCEL_LIS2DWL
-	/* lis2dwl supports 14 bit resolution only at high perfomance mode */
+	/* lis2dwl supports 14 bit resolution only at high performance mode */
 	ret = set_power_mode(s, LIS2DW12_HIGH_PERF, 0);
 #else
 	/* Set default Mode and Low Power Mode. */

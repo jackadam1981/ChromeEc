@@ -77,7 +77,7 @@ enum fpc_error_code_internal {
 	FPC_ERROR_INTERNAL_32 = 32, /* API level not support in dp calibration.                         */
 	FPC_ERROR_INTERNAL_33 = 33, /* The image data in parameter is invalid.                          */
 	FPC_ERROR_INTERNAL_34 = 34, /* PAL delay function has failed.                                   */
-	FPC_ERROR_INTERNAL_35 = 35, /* AFD sensor commad did not complete.                              */
+	FPC_ERROR_INTERNAL_35 = 35, /* AFD sensor command did not complete.                              */
 	FPC_ERROR_INTERNAL_36 = 36, /* AFD wrong runlevel detected after calibration.                   */
 	FPC_ERROR_INTERNAL_37 = 37, /* Wrong rrs size.                                                  */
 	FPC_ERROR_INTERNAL_38 = 38, /* There was a finger on the sensor when calibrating finger detect. */
@@ -86,7 +86,7 @@ enum fpc_error_code_internal {
 	FPC_ERROR_INTERNAL_41 = 41, /* The oscillator calibration resulted in a too high or low value   */
 	FPC_ERROR_INTERNAL_42 = 42, /* Sensor driver was opened with NULL configuration                 */
 	FPC_ERROR_INTERNAL_43 = 43, /* Sensor driver as opened with NULL hw descriptor                  */
-	FPC_ERROR_INTERNAL_44 = 44, /* Error occured during image drive test                            */
+	FPC_ERROR_INTERNAL_44 = 44, /* Error occurred during image drive test                            */
 };
 
 /* FPC specific initialization function to fill their context */

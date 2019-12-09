@@ -43,7 +43,7 @@ static inline uint32_t ticks_to_usecs(uint32_t ticks)
 }
 
 /*
- * The below calulation is more tricky, this is very inefficient and requires
+ * The below calculation is more tricky, this is very inefficient and requires
  * 64-bit division:
  * return ((uint64_t)(usecs) * TIMER_FREQ_HZ / SECOND);
  * Instead use 32 bit vals, divide first, and add back the loss of precision.

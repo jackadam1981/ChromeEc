@@ -93,13 +93,13 @@ GPIO(LFRAME_ESPI_CS,	PIN(M, 5), GPIO_INPUT)
 GPIO(SERIRQ_ALERT,	PIN(M, 6), GPIO_INPUT)
 #endif
 
-/* Unused pins 3.3V & Interruptable */
+/* Unused pins 3.3V & Interruptible */
 
-/* Unused pins: VSPI 3.3V or 1.8V & Interruptable */
+/* Unused pins: VSPI 3.3V or 1.8V & Interruptible */
 
 /* Unused pins 3.3V & Non-Interruptable */
 
-/* eSPI: VHIF Unused pins 1.8V & Interruptable */
+/* eSPI: VHIF Unused pins 1.8V & Interruptible */
 
 /* eSPI: VHIF Unused pins 1.8V & Non-Interruptable */
 

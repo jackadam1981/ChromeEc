@@ -36,7 +36,7 @@ They are described for each *board* in the
 
 They also have a static fixed priority implicitly defined at compile-time by
 their order in the [ec.tasklist](../board/host/ec.tasklist) file (the top-most
-one being the lowest priority aka *task* *1*).
+one being the lowest priority a.k.a. *task* *1*).
 As a consequence, two different tasks cannot have the same priority.
 
 In order to store its context, each task has its own stack whose (*small*) size
@@ -129,7 +129,7 @@ There are 3 distinct cases where this can happen:
 - a task sets an event on another task.
   The runtime will trigger a software interrupt to force a re-scheduling at its
   exit.
-- the running task voluntarily relinguish its current execution rights by
+- the running task voluntarily relinquish its current execution rights by
   calling `task_wait_event()` or a similar function.
   This will call the software interrupt similarly to the previous case.
 
@@ -141,7 +141,7 @@ context from there.
 
 ### hooks and deferred function
 
-The lowest priority task (ie Task 1, aka TASK_ID_HOOKS) is reserved to execute
+The lowest priority task (ie Task 1, a.k.a. TASK_ID_HOOKS) is reserved to execute
 repetitive actions and future actions deferred in time without blocking the
 current task or creating a dedicated task (whose stack memory allocation would
 be wasting precious RAM).
@@ -289,10 +289,10 @@ space). Some architectures implement memory protection mechanism albeit only to
 differentiate executable area (eg `.code`) from writable area (eg `.bss` or
 `.data`) as there is a **single** **privilege** level for all execution contexts.
 
-As all the memory is implicitely shared between the task, the inter-task
+As all the memory is implicitly shared between the task, the inter-task
 communication can be done by simply writing the data structures in memory
 and using events to wake the other task (given we properly thought the concurrent
-accesses on thoses structures).
+accesses on those structures).
 
 ### heap
 

@@ -193,7 +193,7 @@ struct test_info {
 	size_t test_blob_size;
 	struct ciph_stats enc_stats;
 	struct ciph_stats dec_stats;
-	char *p; /* Pointer to an allcoated buffer of test_blob_size bytes. */
+	char *p; /* Pointer to an allocated buffer of test_blob_size bytes. */
 };
 
 static void init_stats(struct ciph_stats *stats)

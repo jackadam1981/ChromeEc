@@ -148,7 +148,7 @@ cmd_etags = etags -o $@ $(shell cat $<)
 cmd_ctags = ctags -o $@ $(shell cat $<)
 targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
 
-# If outputing to tty and column command exists, pipe into column.
+# If outputting to tty and column command exists, pipe into column.
 # Otherwise, print in newline format.
 cmd_pretty_print_list = @echo $(1) \
 				| tr ' ' '\n'                        \

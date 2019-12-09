@@ -473,7 +473,7 @@ static void usb_reset_all_ep_pids(void)
 
 static void usb_reset_ep_pid(int ep)
 {
-	if (ep & 0x80)	 /* IN enpoint */
+	if (ep & 0x80)	 /* IN endpoint */
 		GR_USB_DIEPCTL(ep & 0x7f) |= DXEPCTL_SET_D0PID;
 	else
 		GR_USB_DOEPCTL(ep) |= DXEPCTL_SET_D0PID;
@@ -1024,7 +1024,7 @@ static void ep0_interrupt(uint32_t intr_on_out, uint32_t intr_on_in)
 			print_later("IN has been detected...", 0, 0, 0, 0, 0);
 			/* Let the IN proceed */
 			GR_USB_DIEPCTL(0) = DXEPCTL_CNAK | DXEPCTL_EPENA;
-			/* Reenable the previously prepared OUT descriptor. */
+			/* Re-enable the previously prepared OUT descriptor. */
 			GR_USB_DOEPCTL(0) = DXEPCTL_CNAK | DXEPCTL_EPENA;
 			break;
 		}

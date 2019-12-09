@@ -723,7 +723,7 @@ struct pd_cable {
 	enum idh_ptype type;
 	/* Cable flags. See CABLE_FLAGS_* */
 	uint8_t flags;
-	/* Cable attribues */
+	/* Cable attributes */
 	struct cable_vdo attr;
 	/* Cable revision */
 	uint8_t rev;

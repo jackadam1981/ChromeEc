@@ -36,37 +36,37 @@ struct oz554_value {
 /* This ordering is suggested by vendor. */
 static struct oz554_value oz554_conf[] = {
 	/*
-	 * Reigster 0x01: Operation frequency control
+	 * Register 0x01: Operation frequency control
 	 * Frequency selection: 300(KHz)
 	 * Short circuit protection: 8(V)
 	 */
 	{.offset = 1, .data = 0x43},
 	/*
-	 * Reigster 0x02: LED current amplitude control
+	 * Register 0x02: LED current amplitude control
 	 * ISET Resistor: 10.2(Kohm)
 	 * Maximum LED current: 1636/10.2 = 160.4(mA)
 	 * Setting LED current: 65(mA)
 	 */
 	{.offset = 2, .data = 0x65},
 	/*
-	 * Reigster 0x03: LED backlight Status
+	 * Register 0x03: LED backlight Status
 	 * Status function: Read only
 	 */
 	{.offset = 3, .data = 0x00},
 	/*
-	 * Reigster 0x04: LED current control with SMBus
+	 * Register 0x04: LED current control with SMBus
 	 * SMBus PWM function: None Use
 	 */
 	{.offset = 4, .data = 0x00},
 	/*
-	 * Reigster 0x05: OVP, OCP control
+	 * Register 0x05: OVP, OCP control
 	 * Over Current Protection: 0.5(V)
 	 * Panel LED Voltage(Max): 47.8(V)
 	 * OVP setting: 54(V)
 	 */
 	{.offset = 5, .data = 0x97},
 	/*
-	 * Reigster 0x00: Dimming mode and string ON/OFF control
+	 * Register 0x00: Dimming mode and string ON/OFF control
 	 * String Selection: 4(Number)
 	 * Interface Selection: 1
 	 * Brightness mode: 3

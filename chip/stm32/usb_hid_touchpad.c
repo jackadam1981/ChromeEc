@@ -321,7 +321,7 @@ static void hid_touchpad_process_queue(void)
 
 		if (trimming) {
 			/*
-			 * If we stil fail to resume, this will discard the
+			 * If we still fail to resume, this will discard the
 			 * event after the timeout expires.
 			 */
 			hook_call_deferred(&hid_touchpad_process_queue_data,

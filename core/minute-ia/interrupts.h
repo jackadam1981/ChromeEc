@@ -52,7 +52,7 @@ void mask_interrupt(unsigned int irq);
 void unmask_interrupt(unsigned int irq);
 
 /**
- * disable current all enabled intrrupts
+ * disable current all enabled interrupts
  * return current irq mask bitmap
  * power management typically use 'disable_all_interrupts' to disable current
  * all interrupts and save current interrupts enabling settings before enter

@@ -448,7 +448,7 @@ static void shi_write_half_outbuf(void)
 
 /*
  * This routine write SHI output buffer from msg buffer over halt of it.
- * It make sure we have enought time to handle next operations.
+ * It make sure we have enough time to handle next operations.
  */
 static void shi_write_first_pkg_outbuf(uint16_t szbytes)
 {
@@ -553,7 +553,7 @@ static uint8_t shi_read_buf_pointer(void)
 	return stat;
 }
 
-/* This routine handles shi recevied unexcepted data */
+/* This routine handles shi received unexcepted data */
 static void shi_bad_received_data(void)
 {
 	uint16_t i;

@@ -75,7 +75,7 @@
 
 /* Optional features */
 /*
- * TODO(b:65697962): Reenable low-power-idle on wand without breaking EC-EC
+ * TODO(b:65697962): Re-enable low-power-idle on wand without breaking EC-EC
  * communication
  */
 #ifndef BOARD_WAND

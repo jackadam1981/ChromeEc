@@ -235,7 +235,7 @@ int spi_transaction_wait(const struct spi_device_t *spi_device)
 
 /*
  * called from common/spi_flash.c
- * For tranfers reading less than the size of QMSPI RX FIFO call
+ * For transfers reading less than the size of QMSPI RX FIFO call
  * a routine where reads use FIFO only no DMA.
  * GP-SPI only has a one byte RX FIFO but small data transfers will be OK
  * without the overhead of DMA setup.

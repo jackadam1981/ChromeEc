@@ -155,7 +155,7 @@ static int tpm_fw_ver_index __attribute__((section(".bss.Tpm2_common")));
  * Used to store the full version string, which includes version of the two RO
  * and two RW regions in the flash as well as the version string of the four
  * cr50 image components. The number is somewhat arbitrary, calculated for the
- * worst case scenario when all compontent trees are 'dirty'.
+ * worst case scenario when all component trees are 'dirty'.
  */
 static uint8_t tpm_fw_ver[80]  __attribute__((section(".bss.Tpm2_common")));
 
@@ -237,7 +237,7 @@ static void copy_bytes(uint8_t *dest, uint32_t data_size, uint32_t value)
 static void access_reg_write(uint8_t data)
 {
 	if (!single_bit_set(data)) {
-		CPRINTF("%s: attempt to set acces reg to %02x\n",
+		CPRINTF("%s: attempt to set access reg to %02x\n",
 			__func__, data);
 		return;
 	}

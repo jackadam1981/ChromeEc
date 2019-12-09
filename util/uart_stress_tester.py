@@ -296,7 +296,7 @@ class UartSerial(object):
 
         for ch_cap in captured:
           if ch_cap not in CHARGEN_TXT:
-            # If it is not alpha-numeric, terminate the test.
+            # If it is not alphanumeric, terminate the test.
             if ch_cap not in CRLF:
               # If it is neither a CR nor LF, then it is an error case.
               self.logger.error('Whole captured characters: %r', captured)
@@ -311,7 +311,7 @@ class UartSerial(object):
             break
 
           if ch_exp != ch_cap:
-            # If it is alpha-numeric but not continuous, then some characters
+            # If it is alphanumeric but not continuous, then some characters
             # are lost.
             self.logger.error(err_msg, 'Char loss detected',
                               ch_exp, repr(ch_cap), self.num_ch_cap)
