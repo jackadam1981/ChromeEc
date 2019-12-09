@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb2da4a2_19f7c4f2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-09T23:50:43Z",
+      "side": 1,
+      "message": "Does it make sense to change this to if (is_transmit_msg_sop_prime()) instead?  The superspeed check is independent of thunderbolt support, correct?",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64dbde25_7419c252",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-09T23:50:43Z",
+      "side": 1,
+      "message": "This is always be true when called by pd_svdm(). This function\u0027s purpose is clearer when not tied directly to TBT.",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 36
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b23e97_d24913cb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-09T23:50:43Z",
+      "side": 1,
+      "message": "This function also isn\u0027t strictly TBT specific, correct?  As implemented, you do need is is_tbt_compat_enabled() check to do the correct thing in the DISCOVER_SVID processing, but I would prefer the is_tbt_compat_enabled() check to be moved outside of this function.\n\nThis could be done when moving to the TCPMv2 stack.",
+      "range": {
+        "startLine": 281,
+        "startChar": 12,
+        "endLine": 281,
+        "endChar": 25
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bfe12f5_54b915a5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-09T23:50:43Z",
+      "side": 1,
+      "message": "As Abe mentioned in an earlier patchset, please include the width specifier with all fields here.  Otherwise, I\u0027m not sure the compiler guarantees that all these bitfields will be packed into the same 32-bit memory location.",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 0
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
