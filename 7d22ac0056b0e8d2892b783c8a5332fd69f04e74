@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "e25a9afc_3e8ec130",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2019-12-10T15:21:33Z",
+      "side": 1,
+      "message": "Sorry Gwendal,\n\nyou mean translate LIS2DS_TAP_6D_THS_ADDR to a number or transform 0x0C to a new define (or none of this :-))",
+      "parentUuid": "7b75608f_f54a31ba",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c296aa06_2f224a57",
         "filename": "driver/accel_lis2ds.c",
         "patchSetId": 2
