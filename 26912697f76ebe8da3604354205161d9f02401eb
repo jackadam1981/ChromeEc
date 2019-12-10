@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d64fe83_94999809",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T03:47:03Z",
+      "side": 1,
+      "message": "static const",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "26912697f76ebe8da3604354205161d9f02401eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec70663_a2c7698c",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T03:47:03Z",
+      "side": 1,
+      "message": "static const",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 6
+      },
+      "revId": "26912697f76ebe8da3604354205161d9f02401eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c099cf4_bfc7ee94",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T03:47:03Z",
+      "side": 1,
+      "message": "What about an assert here that current_level \u003c NUM_FAN_LEVELS ?",
+      "revId": "26912697f76ebe8da3604354205161d9f02401eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
