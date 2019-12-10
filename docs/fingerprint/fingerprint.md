@@ -73,6 +73,8 @@ prevent you from uploading.
 
 ## Building and running unit tests
 
+See the [Unit Tests] documentation for details on the tests.
+
 List available unit tests:
 
 ```bash
@@ -301,3 +303,4 @@ This would make it a lot easier during both development and testing.
 [`board/nocturne_fp/dev_key.pem`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/nocturne_fp/dev_key.pem
 [`timberslide`]: https://chromium.googlesource.com/chromiumos/platform2/+/master/timberslide
 [cros_ec_debugfs]: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/9db44685934a2e4bc9180ea2de87a6c429672395/drivers/platform/chrome/cros_ec_debugfs.c
+[Unit Tests]: ../unit_tests.md
