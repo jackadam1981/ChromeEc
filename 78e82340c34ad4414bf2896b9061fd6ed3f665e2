@@ -105,6 +105,23 @@
     },
     {
       "key": {
+        "uuid": "cd5f53fc_170391d7",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:38:58Z",
+      "side": 1,
+      "message": "Why not use sensor_temp_cache[motion_sensors - sensor]  directly? It is assume that if we can not read the sensor, read_temp() will not modify temp.\n\nAlso, later CLs is revisiting that code, you may want to merge properly.",
+      "revId": "78e82340c34ad4414bf2896b9061fd6ed3f665e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "121a45c5_4a183d1d",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 13
