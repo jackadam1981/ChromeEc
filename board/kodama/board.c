@@ -22,6 +22,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c-stm32f0.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -236,6 +237,16 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void board_rev_init(void)
+{
+	if (board_get_version() >= 2) {
+		const struct i2c_port_t i2c_port = {
+			"other", 1, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA,
+		};
+		stm32f0_i2c_init_port(&i2c_port);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW
