@@ -22,6 +22,40 @@
       "revId": "827c015528cde1d54c684b8531efcb8769d008f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc0da51_540c10c4",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T10:35:52Z",
+      "side": 1,
+      "message": "fpv3_dot returns a fp_t.",
+      "revId": "827c015528cde1d54c684b8531efcb8769d008f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b42845_265cb0e8",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T10:35:52Z",
+      "side": 1,
+      "message": "Since you started converting to fp... use them all the way.",
+      "revId": "827c015528cde1d54c684b8531efcb8769d008f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
