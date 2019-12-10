@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "44608099_c93ad2a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-10T01:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b936d95_b645b9ac",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78e697c7_1faf4ecc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-10T01:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa383e91_750ccded",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08998c38_1024fea9",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 5
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "bcf408bb_2df1cda2",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-10T01:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08998c38_1024fea9",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "472bda7b_08e38787",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 5
@@ -114,6 +186,30 @@
       "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ccc8f77_a5a4e29a",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-10T01:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472bda7b_08e38787",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "582cfc15ab230ac2109d590fc6be8316f9302ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
