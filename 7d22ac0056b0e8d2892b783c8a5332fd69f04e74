@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07ee6629_86693853",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T09:36:48Z",
+      "side": 1,
+      "message": "remove tab",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86367f2_05d629ad",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T09:36:48Z",
+      "side": 1,
+      "message": "For double tap, does it make sense to only enable the Z axis? Tablet and laptop do not have much surface area in the X or Y axis. That will limit the amount of false positive.",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b75608f_f54a31ba",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T09:36:48Z",
+      "side": 1,
+      "message": "Use constants.",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c296aa06_2f224a57",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T09:36:48Z",
+      "side": 1,
+      "message": "Double tap is not always enabled. You need a manage_activity entry point that set double tap on host request. see accelgyro_bmi160.c.",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5129f175_ac090844",
+        "filename": "driver/accel_lis2ds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T09:36:48Z",
+      "side": 1,
+      "message": "Given EVENT_DETECT was never used, it should not be in the previous CL.\nYou may consider adding double tap only reg in this CL.",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
