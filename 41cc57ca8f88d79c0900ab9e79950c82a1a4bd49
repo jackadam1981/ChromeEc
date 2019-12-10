@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "02ec1fc9_f0c7e190",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T20:36:22Z",
+      "side": 1,
+      "message": "Nope, it will get a new CL number when it lands in the CrOS tree.",
+      "parentUuid": "65e901e8_5874ee7c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5640b88d_1c7e994b",
         "filename": "board/mushu/battery.c",
         "patchSetId": 4
