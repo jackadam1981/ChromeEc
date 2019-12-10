@@ -22,6 +22,46 @@
       "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a00035_935b7218",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-10T20:50:45Z",
+      "side": 1,
+      "message": "Perhaps add a\n\n#ifndef CONFIG_I2C_BITBANG\n#define I2C_BITBANG_PORT_COUNT 0\n#endif",
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b61234cd_64f26f96",
+        "filename": "include/config.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-10T20:50:45Z",
+      "side": 1,
+      "message": "Maybe remove",
+      "range": {
+        "startLine": 2319,
+        "startChar": 0,
+        "endLine": 2319,
+        "endChar": 32
+      },
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
