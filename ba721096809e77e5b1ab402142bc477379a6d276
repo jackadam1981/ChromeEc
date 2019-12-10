@@ -118,6 +118,30 @@
       "revId": "ba721096809e77e5b1ab402142bc477379a6d276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a37529_d744a4fc",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-10T16:58:50Z",
+      "side": 1,
+      "message": "Current iteration seems reasonable to me. If you have a fingerprint task or driver, then enable the channel",
+      "parentUuid": "ac5893c1_2d35129d",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 71
+      },
+      "revId": "ba721096809e77e5b1ab402142bc477379a6d276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
