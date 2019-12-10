@@ -141,6 +141,8 @@ void __ram_code clock_ec_pll_ctrl(enum ec_pll_ctrl mode)
 	IT83XX_ECPM_PLLCTRL = mode;
 	/* for deep doze / sleep mode */
 	IT83XX_ECPM_PLLCTRL = mode;
+
+	IT83XX_SMFI_SMECCS |= BIT(5);
 	/*
 	 * barrier: ensure low power mode setting is taken into control
 	 * register before standby instruction.
