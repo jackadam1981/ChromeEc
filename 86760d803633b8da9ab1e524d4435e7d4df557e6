@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30856cb2_d4417ef7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T21:21:45Z",
+      "side": 1,
+      "message": "Added in https://crrev.com/c/1833157",
+      "parentUuid": "34feacf9_c9d41a70",
+      "range": {
+        "startLine": 1082,
+        "startChar": 18,
+        "endLine": 1082,
+        "endChar": 37
+      },
+      "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75124ce6_500857de",
         "filename": "common/motion_sense.c",
         "patchSetId": 18
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a230dced_6e8295ca",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T21:21:45Z",
+      "side": 1,
+      "message": "Using the term online is the industry standard and is also the term used in AOSP. I prefer to stay consistent.",
+      "parentUuid": "75124ce6_500857de",
+      "range": {
+        "startLine": 1085,
+        "startChar": 5,
+        "endLine": 1085,
+        "endChar": 44
+      },
+      "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a9427f7_de67ba6e",
         "filename": "include/ec_commands.h",
         "patchSetId": 18
@@ -68,6 +116,30 @@
       "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3562bd10_14e50a1e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T21:21:45Z",
+      "side": 1,
+      "message": "AFAIK motion_sensor_t isn\u0027t sent up to the AP, the idea here is to notify the Kernel which sensors will support online calibration. This will allow the kernel (and eventually the iioservice) to report both a calibrated and uncalibrated version of these sensors.",
+      "parentUuid": "9a9427f7_de67ba6e",
+      "range": {
+        "startLine": 2778,
+        "startChar": 5,
+        "endLine": 2778,
+        "endChar": 32
+      },
+      "revId": "86760d803633b8da9ab1e524d4435e7d4df557e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

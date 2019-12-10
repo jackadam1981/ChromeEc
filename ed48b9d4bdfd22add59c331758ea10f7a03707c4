@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a265b822_685c382a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T21:21:45Z",
+      "side": 1,
+      "message": "Marking as resolved",
+      "parentUuid": "1d853cf7_cf11cbef",
+      "revId": "ed48b9d4bdfd22add59c331758ea10f7a03707c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "171ad783_57b51c71",
         "filename": "include/ec_commands.h",
         "patchSetId": 15
