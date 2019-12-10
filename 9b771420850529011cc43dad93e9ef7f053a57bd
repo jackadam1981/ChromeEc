@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7d510174_b8134b67",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:45:01Z",
+      "side": 1,
+      "message": "I have added a comment",
+      "parentUuid": "64dbde25_7419c252",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 36
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5b23e97_d24913cb",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 15
@@ -83,6 +107,30 @@
       "writtenOn": "2019-12-09T23:50:43Z",
       "side": 1,
       "message": "This function also isn\u0027t strictly TBT specific, correct?  As implemented, you do need is is_tbt_compat_enabled() check to do the correct thing in the DISCOVER_SVID processing, but I would prefer the is_tbt_compat_enabled() check to be moved outside of this function.\n\nThis could be done when moving to the TCPMv2 stack.",
+      "range": {
+        "startLine": 281,
+        "startChar": 12,
+        "endLine": 281,
+        "endChar": 25
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c69657b_30f3b7b0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:45:01Z",
+      "side": 1,
+      "message": "this is for TBT3 only else we lower the speed and enter TBT Ge n2",
+      "parentUuid": "c5b23e97_d24913cb",
       "range": {
         "startLine": 281,
         "startChar": 12,
