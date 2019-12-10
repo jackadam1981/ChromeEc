@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8afef95_659eecfb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 5343,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-10T22:34:53Z",
+      "side": 1,
+      "message": "This isn\u0027t correct. The USB_PD_MUX_* are bitmask values.  e.g. USB_PD_MUX_TBT_LINK \u003d\u003d 0x8.  You need to either remove the BIT() macro in the USB_PD_MUX_* definition, or convert this to something like:\n\ncontrol_flags |\u003d (cable_resp.lsrx) ? USB_PD_MUX_TBT_LINK : 0;\ncontrol_flags |\u003d (cable_resp.tbt_cable) ? USB_PD_MUX_TBT_CABLE_TYPE : 0;\n\nMy preference is keep USB_PD_MUX_* macros as bitmask values.",
+      "range": {
+        "startLine": 5343,
+        "startChar": 0,
+        "endLine": 5343,
+        "endChar": 56
+      },
+      "revId": "c8bfd5c3dcacf68e717ec089c8744b8f22da21a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
