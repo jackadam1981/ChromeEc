@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb12abc4_673e63fb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-10T00:12:45Z",
+      "side": 1,
+      "message": "Should these also be changed to \"Thunderbolt-compatible\"?",
+      "range": {
+        "startLine": 940,
+        "startChar": 27,
+        "endLine": 940,
+        "endChar": 37
+      },
+      "revId": "5282bfca4d03d7614b75dc35e2b822726f07b871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6cb22f_5a92e1d2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-10T00:12:45Z",
+      "side": 1,
+      "message": "Why was this turned back into macros?",
+      "range": {
+        "startLine": 846,
+        "startChar": 0,
+        "endLine": 856,
+        "endChar": 49
+      },
+      "revId": "5282bfca4d03d7614b75dc35e2b822726f07b871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
