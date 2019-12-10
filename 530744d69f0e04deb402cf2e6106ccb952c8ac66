@@ -22,6 +22,30 @@
       "revId": "530744d69f0e04deb402cf2e6106ccb952c8ac66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "404d07db_545489c6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-10T17:12:46Z",
+      "side": 1,
+      "message": "Can do.\n\nFor our overall battery state, I believe we consider the lack of AC enough to know we\u0027re discharging (see line 1789).  Looking at the configs, it seems like there is a feature to discharge while on AC, but it\u0027s considered a test option so I\u0027m not certain whether we\u0027d want to consider that a scenario to shut down.",
+      "parentUuid": "76d47d9a_5d3325c7",
+      "range": {
+        "startLine": 1350,
+        "startChar": 1,
+        "endLine": 1350,
+        "endChar": 49
+      },
+      "revId": "530744d69f0e04deb402cf2e6106ccb952c8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
