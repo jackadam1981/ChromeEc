@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81423301_f25416f1",
+        "filename": "board/arcada_ish/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "Who consume more stack space? Can be prove HUGE is good enough?",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05180c92_e42037e2",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "Use ASYNC_EVENT_ODR. You may need to add ASYNC_EVENT_FLUSH as well.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407526f2_af1096c1",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "timestamp not used.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4d6f3f_6fbe2992",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "/*\n * for multi line comments.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13edcff8_6079bef8",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "The API to the host just changed. Where is it used, given timestamp precedes the data.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd1bc00_daac3783",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "move this code to math library, with range as argument.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0304427_eada19e7",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "older kernel will not like it. To ensure rollbacks can work, we need to update kernels ASAP.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebbe628_28fe7eff",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:39:23Z",
+      "side": 1,
+      "message": "This code belongs to another CL. It looks like you found a bug when ODR event are inserted into the fifo.",
+      "revId": "fe54635f5e5624a79974fb466ebc0cacf9291ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
