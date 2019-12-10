@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd6578c3_fe58d2de",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T22:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a45a169_8eb76d7d",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f573690b_a2334256",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 4
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "64d20af6_ab084073",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T22:26:18Z",
+      "side": 1,
+      "message": "Sounds like I can just collapse everything into:\n*temp \u003d C_TO_K(26 + (int)raw[1]);",
+      "parentUuid": "7dac50fa_ec20e5db",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d21aaa86_abdfe652",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 4
@@ -68,6 +104,24 @@
       "revId": "467062ca0ffa0c516daa7a61486118b453182203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd805d6_b563100e",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T22:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21aaa86_abdfe652",
+      "revId": "467062ca0ffa0c516daa7a61486118b453182203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
