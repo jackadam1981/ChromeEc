@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60638fd0_12e38699",
+        "filename": "include/accel_cal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T11:40:02Z",
+      "side": 1,
+      "message": "is it accelerometer specific? Can we use it for gyroscope as well, when we find stable bias?",
+      "revId": "c0ec299e9b85fb93359ca7664bfd1ea44ed722cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
