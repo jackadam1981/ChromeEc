@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "335196dc_65d8f795",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-10T20:44:27Z",
+      "side": 1,
+      "message": "nit: Don\u0027t forget about this, perhaps just replace it with a CPRINTS error if i2c_port-\u003ekbps is not I2C_FREQ_100KHZ",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
