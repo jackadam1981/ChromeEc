@@ -22,6 +22,29 @@
       "revId": "1496b2132cfbc19c613f987734a73b928ae2f656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a622550a_3dd3cd34",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-10T17:50:15Z",
+      "side": 1,
+      "message": "Where is this defined in the spec?  I don\u0027t find any reference to this in the USB PD spec or the USB Type C cable spec.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 51
+      },
+      "revId": "1496b2132cfbc19c613f987734a73b928ae2f656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
