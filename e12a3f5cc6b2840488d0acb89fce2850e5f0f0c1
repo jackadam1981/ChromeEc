@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4737159a_6885b435",
+        "filename": "common/queue.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T10:35:43Z",
+      "side": 1,
+      "message": "Is it expected to stop iterating? We should print an error.",
+      "revId": "e12a3f5cc6b2840488d0acb89fce2850e5f0f0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ced85da_9ac6e721",
+        "filename": "common/queue.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-10T10:35:43Z",
+      "side": 1,
+      "message": "it-\u003e_state.head instead to be consistent with line 282.",
+      "revId": "e12a3f5cc6b2840488d0acb89fce2850e5f0f0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
