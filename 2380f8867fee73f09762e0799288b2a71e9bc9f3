@@ -16,6 +16,24 @@
       "revId": "2380f8867fee73f09762e0799288b2a71e9bc9f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d83bdb7_c32a1a08",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-10T11:27:17Z",
+      "side": 1,
+      "message": "no, i2c_bitbang does not use the I2C_FLAG_PEC flag.",
+      "parentUuid": "82a519e5_45b1354e",
+      "revId": "2380f8867fee73f09762e0799288b2a71e9bc9f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
