@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "611f16f3_f162f0d5",
+        "filename": "board/puff/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-10T23:28:30Z",
+      "side": 1,
+      "message": "Once you add back in CONFIG_CHARGE_MANAGER, you won\u0027t need to add this.",
+      "revId": "a51aca78a2a80c7ec9176637e401efc78870e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
