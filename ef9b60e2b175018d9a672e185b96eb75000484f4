@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69778f12_40d2ca46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T20:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "426a8a99_506c0ea9",
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56b5af42_84afa3bc",
         "filename": "common/accel_cal.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ba906ee_47618b41",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T20:55:08Z",
+      "side": 1,
+      "message": "In the next CL. I can move it here if you\u0027d like",
+      "parentUuid": "56b5af42_84afa3bc",
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9c69f688_564be4ad",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T20:55:08Z",
+      "side": 1,
+      "message": "No longer needed",
+      "parentUuid": "3945f494_085b0d50",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60eacb44_6501cdca",
         "filename": "common/accel_cal.c",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "ec950a58_4dc07a31",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T20:55:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60eacb44_6501cdca",
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c36303c_7f9c78d4",
         "filename": "common/accel_cal.c",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c319b64e_51f59a52",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T20:55:08Z",
+      "side": 1,
+      "message": "Kasa works in most cases, but it also fails horribly in others. Android uses the eigen value test but as I\u0027ve mentioned in my research, that test requires us to have very symmetric samples which are highly unlikely on Chromebooks. The newton fit approach corrects this running when kasa provides what we might consider an unreasonable result (I didn\u0027t compute the % of times this happens but I can if you\u0027d like). This value also changes depending on how the device is handled. For example, a device that doesn\u0027t move much and has only 4 orientations would get a mean error of 6mg using only the kasa algorithm, whereas using this hybrid it would get a mean error of only 1.6mg (you can read more on page 10 of my report (https://drive.google.com/a/google.com/file/d/13QI2HFulGQ6tfK9DqP33X7L0VW7Udbex/view?usp\u003dsharing)",
+      "parentUuid": "8c36303c_7f9c78d4",
+      "revId": "ef9b60e2b175018d9a672e185b96eb75000484f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

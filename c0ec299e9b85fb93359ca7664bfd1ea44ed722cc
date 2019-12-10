@@ -16,6 +16,24 @@
       "revId": "c0ec299e9b85fb93359ca7664bfd1ea44ed722cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac858c2_dcf99898",
+        "filename": "include/accel_cal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-10T20:55:08Z",
+      "side": 1,
+      "message": "I\u0027ll be importing the gyro calibration from https://cs.corp.google.com/android/device/google/contexthub/firmware/os/algos/calibration/gyroscope/ soon. The reason its different is that it leverages the accelerometer AND magnetometer (when available).",
+      "parentUuid": "60638fd0_12e38699",
+      "revId": "c0ec299e9b85fb93359ca7664bfd1ea44ed722cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
