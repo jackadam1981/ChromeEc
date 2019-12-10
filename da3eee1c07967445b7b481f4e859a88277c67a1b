@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "058df753_0664fab6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-10T16:59:51Z",
+      "side": 1,
+      "message": "Could you add a comment? Thanks,",
+      "parentUuid": "42bd3c1c_16de24eb",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e559bbf_fac6cfcd",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -392,6 +416,30 @@
       "side": 1,
       "message": "Moved.\n\nDidn\u0027t found anyone using CONFIG_KEYBOARD_TEST, so I didn\u0027t check whether this change breaks anything.\nIs it used in FAFT or something else?",
       "parentUuid": "83ca0b33_396196b2",
+      "range": {
+        "startLine": 298,
+        "startChar": 2,
+        "endLine": 298,
+        "endChar": 47
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2deeac61_6e6b2535",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-10T16:59:51Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s used by anything, then. We can keep it so that we can use it to develop unit tests and a fuzzer.",
+      "parentUuid": "1ca56d0b_3135784f",
       "range": {
         "startLine": 298,
         "startChar": 2,
