@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d8f4eef_73c643bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2019-12-10T20:25:09Z",
+      "side": 1,
+      "message": "On a related note, is there a syntax to verify that a coreboot.org CL is landed?",
+      "parentUuid": "7a13806a_038443f1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5640b88d_1c7e994b",
         "filename": "board/mushu/battery.c",
         "patchSetId": 4
