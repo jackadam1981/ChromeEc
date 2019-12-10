@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a13806a_038443f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T16:57:17Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#cq-depend for the new syntax",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5640b88d_1c7e994b",
+        "filename": "board/mushu/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T16:57:17Z",
+      "side": 1,
+      "message": "Mushu",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7293c3c_3e4913c3",
+        "filename": "board/mushu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T16:57:17Z",
+      "side": 1,
+      "message": "Mushu",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50ae5f73_c27c7751",
+        "filename": "board/mushu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T16:57:17Z",
+      "side": 1,
+      "message": "Mushu",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d937fd_9f425699",
+        "filename": "board/mushu/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-10T16:57:17Z",
+      "side": 1,
+      "message": "Mushu",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 42
+      },
+      "revId": "41cc57ca8f88d79c0900ab9e79950c82a1a4bd49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
