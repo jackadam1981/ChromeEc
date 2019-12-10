@@ -20,6 +20,10 @@
 *   [Fingerprint Authentication Design Doc](./fingerprint/fingerprint-authentication-design-doc.md)
 *   [Fingerprint Factory Requirements](./fingerprint/fingerprint-factory-requirements.md)
 
+## Testing
+
+*   [Unit Tests](./unit_tests.md)
+
 ## Updaters
 
 *   [USB Updater](./usb_updater.md)
