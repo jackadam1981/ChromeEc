@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab29f804_79ed6e5a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-10T00:55:37Z",
+      "side": 1,
+      "message": "Based on the comment, and the BB spec, this still looks incorrect.  The Type-C cable spec indicates TBT Adapter types of 0b\u003dTBT2 Legacy Adapter, and 1b\u003dTBT3 Adapter.  In my reading, TBT_TYPE in the BB should be set only for a legacy TBT adapter.  So this should be\nif (dev_resp.tbt_adapter \u003d\u003d TBT_ADAPTER_LEGACY)\n\nIf the BB meaning of \"Legacy Adapter\" is different than the Type-C connector spec, please add a detailed comment.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 47
+      },
+      "revId": "5c7e19723528c80a59c033c2c61c83e32431d4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
