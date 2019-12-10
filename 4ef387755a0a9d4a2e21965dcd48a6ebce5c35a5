@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "28d521a8_488450e9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T20:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2a8094_6eb7f804",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "4ef387755a0a9d4a2e21965dcd48a6ebce5c35a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f02e411_235dd2c3",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 17
