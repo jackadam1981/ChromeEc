@@ -94,6 +94,30 @@
       "revId": "ba721096809e77e5b1ab402142bc477379a6d276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5893c1_2d35129d",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-10T01:40:12Z",
+      "side": 1,
+      "message": "Right, but you can have the driver without the managing fpsensor task.\nThis allows you to supply your own logic for running the fp sensor.\n\nThe intended usage is for running direct tests against the fingerprint sensor (go to sleep, wakeup, match, ...).\nThis is also handy for quickly determining if the fpsensor task is at fault for some bad behavior, by simply removing the fpsensor task.\n\nI guess I understand the idea that we would want to deter having config combinations that \"don\u0027t make sense\", say having the fp sensor driver without the logic to use the fp sensor driver, but by the same logic having the nucleo-????? board projects also don\u0027t make sense for a real EC.\n\nThe gain with both the nucleo-h743zi board and this fix is that we improve the developer experience, by making it easier to test and more flexible to try new ideas.",
+      "parentUuid": "24207029_68259973",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 43,
+        "endChar": 71
+      },
+      "revId": "ba721096809e77e5b1ab402142bc477379a6d276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
