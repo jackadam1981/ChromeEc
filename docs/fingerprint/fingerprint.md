@@ -95,6 +95,8 @@ prevent you from uploading.
 
 ## Building and running unit tests
 
+See the [Unit Tests] documentation for details on the tests.
+
 List available unit tests:
 
 ```bash
@@ -410,3 +412,4 @@ detail.
 [biod release firmware]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/4ea72b588af3394cb9fd1c330dcf726472183dfd/chromeos-base/biod/biod-9999.ebuild#49
 [firmware ebuild]: https://chrome-internal.googlesource.com/chromeos/overlays/chromeos-overlay/+/refs/heads/master/chromeos-base/chromeos-firmware-fpmcu/chromeos-firmware-fpmcu-9999.ebuild#40
 [`chromeos-fpmcu-release*` ebuilds]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/sys-firmware
+[Unit Tests]: ../unit_tests.md
