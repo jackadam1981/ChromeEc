@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "564f3492_b886d599",
+        "filename": "board/nucleo-h743zi/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-10T17:07:54Z",
+      "side": 1,
+      "message": "why not define in terms of bytes here, or why not define RO section in terms of flash_bank. How do we know that the offset is on a flash bank boundary?",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "57cd7e8f4c0ee551b298bd8b96b240dba6fc2391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b51c15a5_f6efac4f",
+        "filename": "board/nucleo-h743zi/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-10T17:07:54Z",
+      "side": 1,
+      "message": "can you sort all of the undefs with themselves, please (as removed functionality)",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "57cd7e8f4c0ee551b298bd8b96b240dba6fc2391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb91979c_f718155c",
+        "filename": "board/nucleo-h743zi/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-10T17:07:54Z",
+      "side": 1,
+      "message": "are these on-board (or on device) tests? How do you run them?\n\nCould you add that to the readme?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "57cd7e8f4c0ee551b298bd8b96b240dba6fc2391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
