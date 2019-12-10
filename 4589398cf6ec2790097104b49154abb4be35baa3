@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f767fbf4_0bef6544",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-10T01:28:36Z",
+      "side": 1,
+      "message": "Thanks for the clarification.",
+      "parentUuid": "605fecf7_efa3bb45",
+      "range": {
+        "startLine": 1111,
+        "startChar": 19,
+        "endLine": 1111,
+        "endChar": 20
+      },
+      "revId": "4589398cf6ec2790097104b49154abb4be35baa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "192dba72_62e6fb89",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
