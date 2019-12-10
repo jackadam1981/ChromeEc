@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b32fd8aa_6b4e4f40",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:23:35Z",
+      "side": 1,
+      "message": "once we store cable response we disable transmit sop prime so it can\u0027t be used",
+      "parentUuid": "eb2da4a2_19f7c4f2",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64dbde25_7419c252",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 15
@@ -87,6 +111,53 @@
         "startChar": 0,
         "endLine": 802,
         "endChar": 0
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5cebfb_8abb328d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bfe12f5_54b915a5",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 0
+      },
+      "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368a8054_1f539a9d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:23:35Z",
+      "side": 1,
+      "message": "we need BIT as we do clear \u0026 set in the code for different modes",
+      "range": {
+        "startLine": 826,
+        "startChar": 0,
+        "endLine": 826,
+        "endChar": 5
       },
       "revId": "9b771420850529011cc43dad93e9ef7f053a57bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
