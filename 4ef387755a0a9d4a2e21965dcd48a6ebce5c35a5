@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c2a8094_6eb7f804",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T19:24:18Z",
+      "side": 1,
+      "message": "Ack\nI will add a TODO",
+      "parentUuid": "99a32cc0_17e2af6c",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "4ef387755a0a9d4a2e21965dcd48a6ebce5c35a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f02e411_235dd2c3",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-10T17:28:56Z",
       "side": 1,
       "message": "Does this comment belong under the CMD_DISCOVER_MDOES case?  Once active cables are supported, the TBT3 Cable Enter Mode Command is sent first, correct?\n\nAs implemented, does enter_tbt_compat_mode() send TBT3 Device Enter Mode, TBT3 Cable Enter Mode, or can it send either?",
+      "range": {
+        "startLine": 926,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 0
+      },
+      "revId": "4ef387755a0a9d4a2e21965dcd48a6ebce5c35a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15843f4b_fb3de28d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T19:24:18Z",
+      "side": 1,
+      "message": "I think its okay to keep this comment here as cable decision is made at CMD_DISCOVER_IDENT.\nfir enter TBT3 cable (SOP\u0027 or SOP\u0027\u0027) then enter TBT3 device(SOP)",
+      "parentUuid": "2f02e411_235dd2c3",
       "range": {
         "startLine": 926,
         "startChar": 0,
