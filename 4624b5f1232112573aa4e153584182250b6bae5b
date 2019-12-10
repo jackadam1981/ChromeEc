@@ -22,6 +22,30 @@
       "revId": "4624b5f1232112573aa4e153584182250b6bae5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95d45ba_2089b15a",
+        "filename": "core/cortex-m/init.S",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-10T18:33:10Z",
+      "side": 1,
+      "message": "Fair.\nDone",
+      "parentUuid": "141cd5c5_dd723b12",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "4624b5f1232112573aa4e153584182250b6bae5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
