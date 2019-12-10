@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "309c1ff2_7325a173",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9968b0_b6ccdef7",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d574dcb2_1cae05c9",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
@@ -307,6 +331,30 @@
       "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4062e34b_146acd58",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c20824_74a9e34e",
+      "range": {
+        "startLine": 725,
+        "startChar": 61,
+        "endLine": 725,
+        "endChar": 72
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -710,6 +758,30 @@
     },
     {
       "key": {
+        "uuid": "ab4a9a2d_a6eb3adb",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26795005_7ad691fa",
+      "range": {
+        "startLine": 791,
+        "startChar": 3,
+        "endLine": 791,
+        "endChar": 11
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17b713ca_a627bf99",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
@@ -769,6 +841,30 @@
       "side": 1,
       "message": "Are the BIT(n) values still needed?",
       "parentUuid": "1d77bd64_761b0e10",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 49
+      },
+      "revId": "7dc03daedd589488457423cbfe20c11113ed5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "288ed9d9_8369afd3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "yes we need these BIT for bit-wise operation on flags",
+      "parentUuid": "bf692f2e_ff7d6bfd",
       "range": {
         "startLine": 819,
         "startChar": 0,

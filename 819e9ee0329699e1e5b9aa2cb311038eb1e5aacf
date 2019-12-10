@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82a1da59_d89231d8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "\u003e \"comaptible\" is a possible misspelling of \"compatible\".\n\nPlease Fix",
+      "parentUuid": "0122a260_f2c746cf",
+      "range": {
+        "startLine": 932,
+        "startChar": 37,
+        "endLine": 932,
+        "endChar": 47
+      },
+      "revId": "819e9ee0329699e1e5b9aa2cb311038eb1e5aacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

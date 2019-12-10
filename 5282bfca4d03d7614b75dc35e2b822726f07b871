@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7a6a69d_1410beb4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb12abc4_673e63fb",
+      "range": {
+        "startLine": 940,
+        "startChar": 27,
+        "endLine": 940,
+        "endChar": 37
+      },
+      "revId": "5282bfca4d03d7614b75dc35e2b822726f07b871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad6cb22f_5a92e1d2",
         "filename": "include/usb_pd.h",
         "patchSetId": 16
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-10T00:12:45Z",
       "side": 1,
       "message": "Why was this turned back into macros?",
+      "range": {
+        "startLine": 846,
+        "startChar": 0,
+        "endLine": 856,
+        "endChar": 49
+      },
+      "revId": "5282bfca4d03d7614b75dc35e2b822726f07b871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca14ac0_da9a1b8e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-10T00:37:59Z",
+      "side": 1,
+      "message": "we are doing bit operations to set and clear these flags hence need BITs",
+      "parentUuid": "ad6cb22f_5a92e1d2",
       "range": {
         "startLine": 846,
         "startChar": 0,
