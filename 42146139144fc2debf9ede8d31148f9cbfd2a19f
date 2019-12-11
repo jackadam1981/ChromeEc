@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4e6a8bfc_23c37cc8",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-11T00:08:09Z",
+      "side": 1,
+      "message": "Right, but these host test commands don\u0027t use the BOARD param",
+      "parentUuid": "3c6a6ee1_1742a7ea",
+      "range": {
+        "startLine": 85,
+        "startChar": 40,
+        "endLine": 85,
+        "endChar": 57
+      },
+      "revId": "42146139144fc2debf9ede8d31148f9cbfd2a19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6478aab8_e927b0bf",
         "filename": "docs/fingerprint/fingerprint.md",
         "patchSetId": 3
