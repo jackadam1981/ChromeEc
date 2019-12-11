@@ -282,6 +282,19 @@ static int syv682x_init(int port)
 	int rv;
 	int regval;
 
+	/* Set max current for over-current protection.
+	 * TODO(b/145562693): Leave this as the default 3.3A once we figure out
+	 * how to stop the current spikes that cause OCP to trigger.
+	 */
+	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
+	if (rv)
+		return rv;
+	/* HV_ILIM == 0b11 => 5.5A limit. */
+	regval |= SYV682X_CONTROL_1_HV_ILIM;
+	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
+	if (rv)
+		return rv;
+
 	/* Set VBUS discharge to manual mode */
 	rv = read_reg(port, SYV682X_CONTROL_2_REG, &regval);
 	if (rv)

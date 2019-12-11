@@ -28,6 +28,7 @@
 /* Control Register 1 */
 #define SYV682X_CONTROL_1_CH_SEL	BIT(1)
 #define SYV682X_CONTROL_1_HV_DR		BIT(2)
+#define SYV682X_CONTROL_1_HV_ILIM	(BIT(6) | BIT(5))
 #define SYV682X_CONTROL_1_PWR_ENB	BIT(7)
 
 #define SYV682X_ILIM_MASK		0x18
