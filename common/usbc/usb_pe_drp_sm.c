@@ -815,6 +815,58 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 	return pe[port].ctx.current - &pe_states[0];
 }
 
+static int common_src_snk_dpm_requests(int port)
+{
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_VCONN_SWAP)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_VCONN_SWAP);
+		set_state_pe(port, PE_VCS_SEND_SWAP);
+		return 1;
+	} else if (PE_CHK_DPM_REQUEST(port,
+				DPM_REQUEST_DISCOVER_IDENTITY)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DISCOVER_IDENTITY);
+
+		pe[port].partner_type = CABLE;
+		pe[port].vdm_cmd = DISCOVER_IDENTITY;
+		pe[port].vdm_data[0] = VDO(
+				USB_SID_PD,
+				1, /* structured */
+				VDO_SVDM_VERS(1) | DISCOVER_IDENTITY);
+		pe[port].vdm_cnt = 1;
+		set_state_pe(port, PE_VDM_REQUEST);
+		return 1;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_BIST_RX)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_RX);
+		set_state_pe(port, PE_BIST_RX);
+		return 1;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_BIST_TX)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
+		set_state_pe(port, PE_BIST_TX);
+		return 1;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_SNK_STARTUP)) {
+		PE_CLR_DPM_REQUEST(port,
+					DPM_REQUEST_SNK_STARTUP);
+		set_state_pe(port, PE_SNK_STARTUP);
+		return 1;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_SRC_STARTUP)) {
+		PE_CLR_DPM_REQUEST(port,
+					DPM_REQUEST_SRC_STARTUP);
+		set_state_pe(port, PE_SRC_STARTUP);
+		return 1;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_SOFT_RESET_SEND)) {
+		PE_CLR_DPM_REQUEST(port,
+					DPM_REQUEST_SOFT_RESET_SEND);
+		set_state_pe(port, PE_SEND_SOFT_RESET);
+		return 1;
+	}
+
+	return 0;
+}
+
 /* Get the previous TypeC state. */
 static enum usb_pe_state get_last_state_pe(const int port)
 {
@@ -1486,6 +1538,15 @@ static void pe_src_ready_run(int port)
 	uint8_t cnt;
 	uint8_t ext;
 
+	/*
+	 * Don't delay handling a hard reset from the device policy manager.
+	 */
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND);
+		set_state_pe(port, PE_SRC_HARD_RESET);
+		return;
+	}
+
 	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
 		get_time().val > pe[port].wait_and_add_jitter_timer) {
 
@@ -1515,6 +1576,8 @@ static void pe_src_ready_run(int port)
 					DPM_REQUEST_SOURCE_CAP);
 
 		if (pe[port].dpm_request) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+
 			if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
 				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
@@ -1525,11 +1588,6 @@ static void pe_src_ready_run(int port)
 						DPM_REQUEST_PR_SWAP)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 				set_state_pe(port, PE_PRS_SRC_SNK_SEND_SWAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_VCONN_SWAP)) {
-				PE_CLR_DPM_REQUEST(port,
-							DPM_REQUEST_VCONN_SWAP);
-				set_state_pe(port, PE_VCS_SEND_SWAP);
 			} else if (PE_CHK_DPM_REQUEST(port,
 							DPM_REQUEST_GOTO_MIN)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GOTO_MIN);
@@ -1543,30 +1601,19 @@ static void pe_src_ready_run(int port)
 						DPM_REQUEST_SEND_PING)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SEND_PING);
 				set_state_pe(port, PE_SRC_PING);
-			} else if (PE_CHK_DPM_REQUEST(port,
-					DPM_REQUEST_DISCOVER_IDENTITY)) {
-				PE_CLR_DPM_REQUEST(port,
-						DPM_REQUEST_DISCOVER_IDENTITY);
-				pe[port].partner_type = CABLE;
-				pe[port].vdm_cmd = DISCOVER_IDENTITY;
-				pe[port].vdm_data[0] = VDO(
-						USB_SID_PD,
-						1, /* structured */
-						VDO_SVDM_VERS(1) |
-						DISCOVER_IDENTITY);
-				pe[port].vdm_cnt = 1;
-				set_state_pe(port, PE_VDM_REQUEST);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_BIST_RX)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_RX);
-				set_state_pe(port, PE_BIST_RX);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_BIST_TX)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
-				set_state_pe(port, PE_BIST_TX);
+			}  else if (common_src_snk_dpm_requests(port)) {
+				/*
+				 * Do nothing here. The state change was done
+				 * in common_src_snk_dpm_requests function.
+				 */
+
+			} else {
+				ccprintf("Unhandled DPM Request %x received\n",
+					pe[port].dpm_request);
+				PE_CLR_FLAG(port,
+					PE_FLAGS_LOCALLY_INITIATED_AMS);
 			}
 
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			return;
 		}
 	}
@@ -2211,8 +2258,17 @@ static void pe_snk_ready_run(int port)
 	uint8_t cnt;
 	uint8_t ext;
 
+	/*
+	 * Don't delay handling a hard reset from the device policy manager.
+	 */
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND);
+		set_state_pe(port, PE_SNK_HARD_RESET);
+		return;
+	}
+
 	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
-			get_time().val > pe[port].wait_and_add_jitter_timer) {
+		get_time().val > pe[port].wait_and_add_jitter_timer) {
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
 
@@ -2244,6 +2300,8 @@ static void pe_snk_ready_run(int port)
 					DPM_REQUEST_SEND_PING);
 
 		if (pe[port].dpm_request) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+
 			if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
 				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
@@ -2255,11 +2313,6 @@ static void pe_snk_ready_run(int port)
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 				set_state_pe(port, PE_PRS_SNK_SRC_SEND_SWAP);
 			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_VCONN_SWAP)) {
-				PE_CLR_DPM_REQUEST(port,
-							DPM_REQUEST_VCONN_SWAP);
-				set_state_pe(port, PE_VCS_SEND_SWAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
 						DPM_REQUEST_SOURCE_CAP)) {
 				PE_CLR_DPM_REQUEST(port,
 							DPM_REQUEST_SOURCE_CAP);
@@ -2270,35 +2323,22 @@ static void pe_snk_ready_run(int port)
 						DPM_REQUEST_NEW_POWER_LEVEL);
 				set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 			} else if (PE_CHK_DPM_REQUEST(port,
-					DPM_REQUEST_DISCOVER_IDENTITY)) {
-				PE_CLR_DPM_REQUEST(port,
-					   DPM_REQUEST_DISCOVER_IDENTITY);
-
-				pe[port].partner_type = CABLE;
-				pe[port].vdm_cmd = DISCOVER_IDENTITY;
-				pe[port].vdm_data[0] = VDO(
-					USB_SID_PD,
-					1, /* structured */
-					VDO_SVDM_VERS(1) | DISCOVER_IDENTITY);
-				pe[port].vdm_cnt = 1;
-
-				set_state_pe(port, PE_VDM_REQUEST);
-			} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_GET_SNK_CAPS)) {
 				PE_CLR_DPM_REQUEST(port,
 						DPM_REQUEST_GET_SNK_CAPS);
 				set_state_pe(port, PE_DR_SNK_GET_SINK_CAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_BIST_RX)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_RX);
-				set_state_pe(port, PE_BIST_RX);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_BIST_TX)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
-				set_state_pe(port, PE_BIST_TX);
+			} else if (common_src_snk_dpm_requests(port)) {
+				/*
+				 * Do nothing here. The state change was done
+				 * in common_src_snk_dpm_requests function.
+				 */
+			} else {
+				ccprintf("Unhandled DPM Request %x received\n",
+					pe[port].dpm_request);
+				PE_CLR_FLAG(port,
+					PE_FLAGS_LOCALLY_INITIATED_AMS);
 			}
 
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			return;
 		}
 	}

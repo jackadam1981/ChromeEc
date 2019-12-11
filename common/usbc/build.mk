@@ -21,4 +21,5 @@ all-obj-$(CONFIG_USB_TYPEC_VPD)+=$(_usbc_dir)usb_tc_vpd_sm.o
 all-obj-$(CONFIG_USB_TYPEC_CTVPD)+=$(_usbc_dir)usb_tc_ctvpd_sm.o
 all-obj-$(CONFIG_USB_TYPEC_DRP_ACC_TRYSRC)+=\
 			$(_usbc_dir)usb_tc_drp_acc_trysrc_sm.o
+all-obj-$(CONFIG_CMD_PD)+=$(_usbc_dir)usb_pd_console.o
 endif

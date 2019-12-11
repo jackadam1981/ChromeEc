@@ -37,6 +37,10 @@ enum pe_dpm_request {
 	DPM_REQUEST_SVDM                = BIT(11),
 	DPM_REQUEST_BIST_RX             = BIT(12),
 	DPM_REQUEST_BIST_TX             = BIT(13),
+	DPM_REQUEST_SNK_STARTUP         = BIT(14),
+	DPM_REQUEST_SRC_STARTUP         = BIT(15),
+	DPM_REQUEST_HARD_RESET_SEND     = BIT(16),
+	DPM_REQUEST_SOFT_RESET_SEND     = BIT(17),
 };
 
 /**

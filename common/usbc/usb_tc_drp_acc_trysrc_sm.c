@@ -202,7 +202,7 @@ static struct type_c {
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
 	/* Higher-level power deliver state machines are enabled if true. */
-	uint8_t pd_enable;
+	uint32_t pd_enable;
 	/*
 	 * Timer for handling TOGGLE_OFF/FORCE_SINK mode when auto-toggle
 	 * enabled. See drp_auto_toggle_next_state() for details.
@@ -972,11 +972,12 @@ void tc_set_power_role(int port, enum pd_power_role role)
 /*
  * Private Functions
  */
-
+#ifdef CONFIG_USB_PE_SM
 static uint8_t tc_is_pd_master_enabled(int port)
 {
 	return tc[port].pd_enable & MASTER_ENABLE;
 }
+#endif
 
 /* Set the TypeC state machine to a new state. */
 static void set_state_tc(const int port, const enum usb_tc_state new_state)
@@ -2775,7 +2776,8 @@ static void tc_attached_src_run(const int port)
 		}
 
 		if (!tc_get_pd_enabled(port))
-	}		return;
+			return;
+	}
 
 	/*
 	 * Handle Hard Reset from Policy Engine
