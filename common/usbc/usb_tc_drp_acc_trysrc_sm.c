@@ -98,6 +98,19 @@
 /* 100 ms is enough time for any TCPC transaction to complete. */
 #define PD_LPM_DEBOUNCE_US (100 * MSEC)
 
+/*
+ * The TypeC state machine uses this bit to disable/enable PD
+ * This bit corresponds to bit-0 of pd_disabled_mask
+ */
+#define PD_DISABLED_NO_CONNECTION  BIT(0)
+/*
+ * Console and Host commands use this bit to override the
+ * PD_DISABLED_NO_CONNECTION bit that was set by the TypeC
+ * state machine.
+ * This bit corresponds to bit-1 of pd_disabled_mask
+ */
+#define PD_DISABLED_BY_POLICY       BIT(1)
+
 enum ps_reset_sequence {
 	PS_STATE0,
 	PS_STATE1,
@@ -181,8 +194,12 @@ static struct type_c {
 	enum pd_power_role power_role;
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
-	/* Higher-level power deliver state machines are enabled if true. */
-	uint8_t pd_enable;
+	/*
+	 * Higher-level power deliver state machines are enabled if false,
+	 * else their disabled if bits PD_DISABLED_NO_CONNECTION or
+	 * PD_DISABLED_BY_POLICY are set.
+	 */
+	uint32_t pd_disabled_mask;
 	/*
 	 * Timer for handling TOGGLE_OFF/FORCE_SINK mode when auto-toggle
 	 * enabled. See drp_auto_toggle_next_state() for details.
@@ -278,11 +295,19 @@ test_export_static enum usb_tc_state get_state_tc(const int port);
 
 #ifdef CONFIG_USB_PD_TRY_SRC
 /* Enable variable for Try.SRC states */
-static uint8_t pd_try_src_enable;
+static uint32_t pd_try_src;
+static volatile enum try_src_override_t pd_try_src_override;
 static void pd_update_try_source(void);
 #endif
 
 static void sink_stop_drawing_current(int port);
+
+static bool is_try_src_enabled(int port)
+{
+	return IS_ENABLED(CONFIG_USB_PD_TRY_SRC) &&
+		((pd_try_src_override == TRY_SRC_OVERRIDE_ON) ||
+		(pd_try_src_override == TRY_SRC_NO_OVERRIDE && pd_try_src));
+}
 
 /*
  * Public Functions
@@ -383,6 +408,33 @@ void tc_request_power_swap(int port)
 	}
 }
 
+static void tc_policy_pd_enable(int port, int en)
+{
+	if (en)
+		atomic_clear(&tc[port].pd_disabled_mask, PD_DISABLED_BY_POLICY);
+	else
+		atomic_or(&tc[port].pd_disabled_mask, PD_DISABLED_BY_POLICY);
+}
+
+static void tc_enable_pd(int port, int en)
+{
+	if (en)
+		atomic_clear(&tc[port].pd_disabled_mask,
+						PD_DISABLED_NO_CONNECTION);
+	else
+		atomic_or(&tc[port].pd_disabled_mask,
+						PD_DISABLED_NO_CONNECTION);
+
+}
+
+static void tc_enable_try_src(int en)
+{
+	if (en)
+		atomic_or(&pd_try_src, 1);
+	else
+		atomic_clear(&pd_try_src, 1);
+}
+
 static inline void pd_set_dual_role_no_wakeup(int port,
 				enum pd_dual_role_states state)
 {
@@ -410,7 +462,7 @@ int pd_get_partner_data_swap_capable(int port)
 
 int pd_comm_is_enabled(int port)
 {
-	return tc[port].pd_enable;
+	return tc_get_pd_enabled(port);
 }
 
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
@@ -461,6 +513,19 @@ enum pd_dual_role_states pd_get_dual_role(int port)
 	return drp_state[port];
 }
 
+#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
+static inline void pd_dev_dump_info(uint16_t dev_id, uint32_t *hash)
+{
+	int j;
+
+	ccprintf("DevId:%d.%d Hash:", HW_DEV_ID_MAJ(dev_id),
+		 HW_DEV_ID_MIN(dev_id));
+	for (j = 0; j < PD_RW_HASH_SIZE / 4; j++)
+		ccprintf(" %08x ", hash[i]);
+	ccprintf("\n");
+}
+#endif /* CONFIG_CMD_PD_DEV_DUMP_INFO */
+
 int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 					uint32_t current_image)
 {
@@ -469,8 +534,7 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 	tc[port].dev_id = dev_id;
 	memcpy(tc[port].dev_rw_hash, rw_hash, PD_RW_HASH_SIZE);
 #ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
-	if (debug_level >= 2)
-		pd_dev_dump_info(dev_id, (uint8_t *)rw_hash);
+	pd_dev_dump_info(dev_id, rw_hash);
 #endif
 	tc[port].current_image = current_image;
 
@@ -486,6 +550,28 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 void pd_got_frs_signal(int port)
 {
 	pe_got_frs_signal(port);
+}
+
+const char *tc_get_current_state(int port)
+{
+	return tc_state_names[get_state_tc(port)];
+}
+
+uint32_t tc_get_flags(int port)
+{
+	return tc[port].flags;
+}
+
+void tc_print_dev_info(int port)
+{
+	int i;
+
+	ccprintf("Hash ");
+	for (i = 0; i < PD_RW_HASH_SIZE / 4; i++)
+		ccprintf("%08x ", tc[port].dev_rw_hash[i]);
+
+	ccprintf("\nImage %s\n", system_image_copy_t_to_string(
+		(enum system_image_copy_t)tc[port].current_image));
 }
 
 int tc_is_attached_src(int port)
@@ -602,6 +688,27 @@ void tc_disc_ident_complete(int port)
 }
 #endif /* CONFIG_USB_PE_SM */
 
+void tc_try_src_override(enum try_src_override_t ov)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC)) {
+		switch (ov) {
+		case TRY_SRC_OVERRIDE_OFF: /* 0 */
+			pd_try_src_override = TRY_SRC_OVERRIDE_OFF;
+			break;
+		case TRY_SRC_OVERRIDE_ON: /* 1 */
+			pd_try_src_override = TRY_SRC_OVERRIDE_ON;
+			break;
+		default:
+			pd_try_src_override = TRY_SRC_NO_OVERRIDE;
+		}
+	}
+}
+
+enum try_src_override_t tc_get_try_src_override(void)
+{
+	return pd_try_src_override;
+}
+
 void tc_snk_power_off(int port)
 {
 	if (get_state_tc(port) == TC_ATTACHED_SNK ||
@@ -712,7 +819,7 @@ void pd_prepare_sysjump(void)
 			 * We can't be in an alternate mode if PD comm is
 			 * disabled, so no need to send the event
 			 */
-			if (!pd_comm_is_enabled(i))
+			if (tc_get_pd_enabled(i))
 				continue;
 
 			sysjump_task_waiting = task_get_current();
@@ -748,7 +855,7 @@ static __maybe_unused void bc12_role_change_handler(int port)
 }
 
 #ifdef CONFIG_USB_PE_SM
-static void tc_perform_src_hard_reset(int port)
+static bool tc_perform_src_hard_reset(int port)
 {
 	switch (tc[port].ps_reset_state) {
 	case PS_STATE0:
@@ -763,7 +870,7 @@ static void tc_perform_src_hard_reset(int port)
 
 		tc[port].ps_reset_state = PS_STATE1;
 		tc[port].timeout = get_time().val + PD_T_SRC_RECOVER;
-		return;
+		return 0;
 	case PS_STATE1:
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
@@ -774,15 +881,14 @@ static void tc_perform_src_hard_reset(int port)
 		tc[port].ps_reset_state = PS_STATE3;
 		tc[port].timeout = get_time().val +
 				PD_POWER_SUPPLY_TURN_ON_DELAY;
-		return;
+		return 0;
 	case PS_STATE2:
 	case PS_STATE3:
 		/* Tell Policy Engine Hard Reset is complete */
 		pe_ps_reset_complete(port);
 
-		TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET);
 		tc[port].ps_reset_state = PS_STATE0;
-		return;
+		return 1;
 	}
 }
 #endif
@@ -857,7 +963,7 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 #endif
 
 #ifdef CONFIG_USB_PE_SM
-	tc[port].pd_enable = 0;
+	tc_enable_pd(port, 0);
 	tc[port].ps_reset_state = PS_STATE0;
 #endif
 }
@@ -875,6 +981,15 @@ void tc_state_init(int port)
 	 * after PD_LPM_DEBOUNCE_US.
 	 */
 	tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+
+	/* Allow system to set try src enable */
+	tc_try_src_override(TRY_SRC_NO_OVERRIDE);
+
+	/*
+	 * Allowing PD by policy and host or console commands
+	 * can disable PD by policy later.
+	 */
+	tc_policy_pd_enable(port, 1);
 }
 
 enum pd_cable_plug tc_get_cable_plug(int port)
@@ -886,6 +1001,11 @@ enum pd_cable_plug tc_get_cable_plug(int port)
 	return PD_PLUG_FROM_DFP_UFP;
 }
 
+void pd_comm_enable(int port, int en)
+{
+	tc_policy_pd_enable(port, en);
+}
+
 uint8_t tc_get_polarity(int port)
 {
 	return tc[port].polarity;
@@ -893,7 +1013,7 @@ uint8_t tc_get_polarity(int port)
 
 uint8_t tc_get_pd_enabled(int port)
 {
-	return tc[port].pd_enable;
+	return !tc[port].pd_disabled_mask;
 }
 
 void tc_set_power_role(int port, enum pd_power_role role)
@@ -1024,37 +1144,26 @@ static void sink_stop_drawing_current(int port)
 static void pd_update_try_source(void)
 {
 	int i;
-	int try_src = 0;
-	static struct mutex pd_try_src_enable_lock;
-
 	int batt_soc = usb_get_battery_soc();
+	bool new_pd_try_src_state = 0;
 
-	try_src = 0;
 	for (i = 0; i < board_get_usb_pd_port_count(); i++)
-		try_src |= drp_state[i] == PD_DRP_TOGGLE_ON;
-
-	/*
-	 * This function is called from this PD task and the hooks tasks.
-	 * A lock is added here to serialize access to the
-	 * pd_try_source_enable variable.
-	 */
-	mutex_lock(&pd_try_src_enable_lock);
+		new_pd_try_src_state |= drp_state[i] == PD_DRP_TOGGLE_ON;
 
 	/*
 	 * Enable try source when dual-role toggling AND battery is present
 	 * and at some minimum percentage.
 	 */
-	pd_try_src_enable = try_src &&
-			    batt_soc >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC;
+	new_pd_try_src_state &= batt_soc >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC;
 
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
 	/*
-	 * Don't attempt Try.Src if the battery is in the disconnect state.  The
+	 * Don't attempt Try.Src if the battery is in the disconnect state. The
 	 * discharge FET may not be enabled and so attempting Try.Src may cut
 	 * off our only power source at the time.
 	 */
-	pd_try_src_enable &= (battery_get_disconnect_state() ==
-			BATTERY_NOT_DISCONNECTED);
+	new_pd_try_src_state &=
+		battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED;
 #elif defined(CONFIG_BATTERY_PRESENT_CUSTOM) || \
 			defined(CONFIG_BATTERY_PRESENT_GPIO)
 	/*
@@ -1062,28 +1171,13 @@ static void pd_update_try_source(void)
 	 * check if battery is present with its state of charge.
 	 * Also check if battery is initialized and ready to provide power.
 	 */
-	pd_try_src_enable &= (battery_is_present() == BP_YES);
+	new_pd_try_src_state &= battery_is_present() == BP_YES;
 #endif /* CONFIG_BATTERY_PRESENT_[CUSTOM|GPIO] */
 
-	mutex_unlock(&pd_try_src_enable_lock);
+	tc_enable_try_src(new_pd_try_src_state);
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_try_source, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_USB_PD_TRY_SRC */
-
-#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
-static inline void pd_dev_dump_info(uint16_t dev_id, uint8_t *hash)
-{
-	int j;
-
-	ccprintf("DevId:%d.%d Hash:", HW_DEV_ID_MAJ(dev_id),
-		 HW_DEV_ID_MIN(dev_id));
-	for (j = 0; j < PD_RW_HASH_SIZE; j += 4) {
-		ccprintf(" 0x%02x%02x%02x%02x", hash[j + 3], hash[j + 2],
-			 hash[j + 1], hash[j]);
-	}
-	ccprintf("\n");
-}
-#endif /* CONFIG_CMD_PD_DEV_DUMP_INFO */
 
 static void set_vconn(int port, int enable)
 {
@@ -1251,7 +1345,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 
 	switch (args->version) {
 	case 0:
-		r->enabled = pd_comm_is_enabled(p->port);
+		r->enabled = tc_get_pd_enabled(p->port);
 		r->role = tc[p->port].power_role;
 		r->polarity = tc[p->port].polarity;
 		r->state = get_state_tc(p->port);
@@ -1263,7 +1357,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 
 		r_v2->enabled =
-			(pd_comm_is_enabled(p->port) ?
+			(tc_get_pd_enabled(p->port) ?
 			PD_CTRL_RESP_ENABLED_COMMS : 0) |
 			(pd_is_connected(p->port) ?
 				PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
@@ -1811,7 +1905,7 @@ static void tc_unattached_snk_entry(const int port)
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		CLR_ALL_BUT_LPM_FLAGS(port);
-		tc[port].pd_enable = 0;
+		tc_enable_pd(port, 0);
 	}
 }
 
@@ -1949,11 +2043,9 @@ static void tc_attach_wait_snk_run(const int port)
 	 */
 	if (pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
-#ifdef CONFIG_USB_PD_TRY_SRC
-			if (pd_try_src_enable)
+			if (is_try_src_enabled(port))
 				set_state_tc(port, TC_TRY_SRC);
 			else
-#endif
 				set_state_tc(port, TC_ATTACHED_SNK);
 		} else {
 			/* new_cc_state is PD_CC_DFP_DEBUG_ACC */
@@ -2031,7 +2123,7 @@ static void tc_attached_snk_entry(const int port)
 
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
-		tc[port].pd_enable = 1;
+		tc_enable_pd(port, 1);
 
 	/* VBus should be powered, turn on auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 1);
@@ -2070,7 +2162,7 @@ static void tc_attached_snk_run(const int port)
 	/*
 	 * PD swap commands
 	 */
-	if (tc[port].pd_enable && prl_is_running(port)) {
+	if (tc_get_pd_enabled(port) && prl_is_running(port)) {
 		/*
 		 * Power Role Swap
 		 */
@@ -2211,7 +2303,7 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		}
 
 #ifdef CONFIG_USB_PE_SM
-		tc[port].pd_enable = 0;
+		tc_enable_pd(port, 0);
 		tc[port].timeout = get_time().val +
 					PD_POWER_SUPPLY_TURN_ON_DELAY;
 #endif
@@ -2228,29 +2320,30 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 	enum pd_cc_states new_cc_state;
 
 #ifdef CONFIG_USB_PE_SM
-	/* Enable PD communications after power supply has fully turned on */
-	if (tc[port].pd_enable == 0 &&
-				get_time().val > tc[port].timeout) {
-
-		tc[port].pd_enable = 1;
+	/*
+	 * Enable PD communications after power supply has fully
+	 * turned on
+	 */
+	if (get_time().val > tc[port].timeout) {
+		tc_enable_pd(port, 1);
 		tc[port].timeout = 0;
 	}
 
-	if (tc[port].pd_enable == 0)
+	if (!tc_get_pd_enabled(port))
 		return;
 
 	/*
 	 * Handle Hard Reset from Policy Engine
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET)) {
+		/* Ignoring Hard Resets while the power supply is resetting.*/
 		if (get_time().val < tc[port].timeout)
 			return;
 
-		/*
-		 * This function clears TC_FLAGS_HARD_RESET
-		 * when the hard reset is complete.
-		 */
-		tc_perform_src_hard_reset(port);
+		if (tc_perform_src_hard_reset(port))
+			TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET);
+
+		return;
 	}
 #endif
 
@@ -2278,7 +2371,6 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 			!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS) &&
 			!TC_CHK_FLAG(port, TC_FLAGS_DISC_IDENT_IN_PROGRESS)) {
 
-		tc[port].pd_enable = 0;
 		set_state_tc(port, TC_UNATTACHED_SNK);
 	}
 
@@ -2286,7 +2378,7 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 	/*
 	 * PD swap commands
 	 */
-	if (tc[port].pd_enable) {
+	if (tc_get_pd_enabled(port)) {
 		/*
 		 * Power Role Swap Request
 		 */
@@ -2377,7 +2469,7 @@ static void tc_dbg_acc_snk_entry(const int port)
 	}
 
 	/* Enable PD */
-	tc[port].pd_enable = 1;
+	tc_enable_pd(port, 1);
 }
 
 static void tc_dbg_acc_snk_run(const int port)
@@ -2493,7 +2585,7 @@ static void tc_unattached_src_entry(const int port)
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		CLR_ALL_BUT_LPM_FLAGS(port);
-		tc[port].pd_enable = 0;
+		tc_enable_pd(port, 0);
 	}
 
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
@@ -2692,7 +2784,7 @@ static void tc_attached_src_entry(const int port)
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
 
-		tc[port].pd_enable = 0;
+		tc_enable_pd(port, 0);
 		tc[port].timeout = get_time().val +
 			MAX(PD_POWER_SUPPLY_TURN_ON_DELAY, PD_T_VCONN_STABLE);
 	}
@@ -2741,28 +2833,30 @@ static void tc_attached_src_run(const int port)
 	enum pd_cc_states new_cc_state;
 
 #ifdef CONFIG_USB_PE_SM
-	/* Enable PD communications after power supply has fully turned on */
-	if (tc[port].pd_enable == 0 &&
-				get_time().val > tc[port].timeout) {
-
-		tc[port].pd_enable = 1;
+	/*
+	 * Enable PD communications after power supply has fully
+	 * turned on
+	 */
+	if (get_time().val > tc[port].timeout) {
+		tc_enable_pd(port, 1);
 		tc[port].timeout = 0;
 	}
 
-	if (tc[port].pd_enable == 0)
+	if (!tc_get_pd_enabled(port))
 		return;
 
 	/*
 	 * Handle Hard Reset from Policy Engine
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET)) {
+		/* Ignoring Hard Resets while the power supply is resetting.*/
 		if (get_time().val < tc[port].timeout)
 			return;
-		/*
-		 * This function clears TC_FLAGS_HARD_RESET
-		 * when the hard reset is complete.
-		 */
-		tc_perform_src_hard_reset(port);
+
+		if (tc_perform_src_hard_reset(port))
+			TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET);
+
+		return;
 	}
 #endif
 
@@ -2812,7 +2906,7 @@ static void tc_attached_src_run(const int port)
 	/*
 	 * PD swap commands
 	 */
-	if (tc[port].pd_enable && prl_is_running(port)) {
+	if (tc_get_pd_enabled(port) && prl_is_running(port)) {
 		/*
 		 * Power Role Swap Request
 		 */
@@ -3103,7 +3197,7 @@ static void tc_try_wait_snk_entry(const int port)
 {
 	print_current_state(port);
 
-	tc[port].pd_enable = 0;
+	tc_enable_pd(port, 0);
 	tc[port].cc_state = PD_CC_UNSET;
 	tc[port].try_wait_debounce = get_time().val + PD_T_CC_DEBOUNCE;
 }
@@ -3173,7 +3267,7 @@ static void tc_ct_unattached_snk_entry(int port)
 	 * The policy engine is in the disabled state. Disable PD and
 	 * re-enable it
 	 */
-	tc[port].pd_enable = 0;
+	tc_enable_pd(port, 0);
 
 	tc[port].timeout = get_time().val + PD_POWER_SUPPLY_TURN_ON_DELAY;
 }
@@ -3185,7 +3279,7 @@ static void tc_ct_unattached_snk_run(int port)
 	enum pd_cc_states new_cc_state;
 
 	if (tc[port].timeout > 0 && get_time().val > tc[port].timeout) {
-		tc[port].pd_enable = 1;
+		tc_enable_pd(port, 1);
 		tc[port].timeout = 0;
 	}
 
