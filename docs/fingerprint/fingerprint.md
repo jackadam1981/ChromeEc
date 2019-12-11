@@ -78,19 +78,19 @@ See the [Unit Tests] documentation for details on the tests.
 List available unit tests:
 
 ```bash
-(chroot) ~/trunk/src/platform/ec $ make BOARD=nocturne_fp print-host-tests
+(chroot) ~/trunk/src/platform/ec $ make print-host-tests
 ```
 
 Build and run a specific unit test:
 
 ```bash
-(chroot) ~/trunk/src/platform/ec $ make BOARD=nocturne_fp run-fpsensor
+(chroot) ~/trunk/src/platform/ec $ make run-fpsensor
 ```
 
 Build and run all unit tests:
 
 ```bash
-(chroot) ~/trunk/src/platform/ec $ make BOARD=nocturne_fp runhosttests -j
+(chroot) ~/trunk/src/platform/ec $ make runhosttests -j
 ```
 
 ## Build ectool
@@ -102,7 +102,7 @@ Build and run all unit tests:
 ## Build and run the `host_command` fuzz test
 
 ```bash
-(chroot) ~/trunk/src/platform/ec $ make BOARD=nocturne_fp run-host_command_fuzz
+(chroot) ~/trunk/src/platform/ec $ make run-host_command_fuzz
 ```
 
 ## Logs
