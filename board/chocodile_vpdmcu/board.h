@@ -38,6 +38,7 @@
 #define CONFIG_UART_CONSOLE 1
 
 /* Optional features */
+#undef CONFIG_CMD_PD
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
 #define CONFIG_ADC_SAMPLE_TIME STM32_ADC_SMPR_41_5_CY
