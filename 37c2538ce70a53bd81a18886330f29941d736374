@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1a0a874_7792535b",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-12-11T06:10:22Z",
+      "side": 1,
+      "message": "IMHO, The priority should be higher than HOOK_PRIO_INIT_I2C. ie; HOOK_PRIO_INIT_I2C - 1",
+      "range": {
+        "startLine": 249,
+        "startChar": 40,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "37c2538ce70a53bd81a18886330f29941d736374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
