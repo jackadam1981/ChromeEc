@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94e568a1_003c96af",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-11T06:16:47Z",
+      "side": 1,
+      "message": "You can simplify:\nFP_TO_INT(fp_mul(INT_TO_FP(crgb_data[1] + crgb_data[2] + crgb_data[3] - crgb_data[0]),\n\t\t rgb_drv_data-\u003ecalibration.irt) / 2));",
+      "revId": "311257663a7413c7f2d1e008fdac03868ae99096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d68d1a_d59a123c",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-11T06:16:47Z",
+      "side": 1,
+      "message": "is this one used? Aren\u0027t we using data-\u003ecalibration.irt?",
+      "revId": "311257663a7413c7f2d1e008fdac03868ae99096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
