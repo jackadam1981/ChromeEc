@@ -177,6 +177,7 @@ void chip_pre_init(void)
 		STM32_RCC_PB2_TIM11;
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* TODO(b/67081508) */
+	STM32_DBGMCU_CR |= BIT(0)|BIT(1)|BIT(2) | BIT(7)|BIT(8);
 #endif
 
 	if (apb1fz_reg)
