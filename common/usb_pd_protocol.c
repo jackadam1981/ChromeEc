@@ -850,7 +850,13 @@ static inline void set_state(int port, enum pd_states next_state)
 			hook_notify(HOOK_USB_PD_DISCONNECT);
 
 		/* Disable Auto Discharge Disconnect */
+#if defined(CONFIG_USB_PD_DUAL_ROLE) && \
+	defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)
+		if (last_state != PD_STATE_DRP_AUTO_TOGGLE)
+			tcpm_enable_auto_discharge_disconnect(port, 0);
+#else
 		tcpm_enable_auto_discharge_disconnect(port, 0);
+#endif
 	}
 
 #ifdef CONFIG_LOW_POWER_IDLE

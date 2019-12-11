@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "ps8xxx.h"
 #include "task.h"
 #include "tcpci.h"
@@ -30,9 +31,19 @@ static int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-/* Save the selected rp value */
+/* Cache cable polarity to reduce I2C traffic */
+static enum {
+	POLARITY_NONE = -1,
+	POLARITY_NORMAL = 0,
+	POLARITY_FLIPPED = 1,
+} cable_polarity[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/* Save the selected role values */
 static int selected_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#ifndef CONFIG_USB_SM_FRAMEWORK
+static int selected_pull[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
@@ -232,36 +243,6 @@ static int clear_power_status_mask(int port)
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK, 0);
 }
 
-int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
-	enum tcpc_cc_voltage_status *cc2)
-{
-	int status;
-	int rv;
-
-	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
-
-	/* If tcpc read fails, return error and CC as open */
-	if (rv) {
-		*cc1 = TYPEC_CC_VOLT_OPEN;
-		*cc2 = TYPEC_CC_VOLT_OPEN;
-		return rv;
-	}
-
-	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
-	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
-
-	/*
-	 * If status is not open, then OR in termination to convert to
-	 * enum tcpc_cc_voltage_status.
-	 */
-	if (*cc1 != TYPEC_CC_VOLT_OPEN)
-		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
-	if (*cc2 != TYPEC_CC_VOLT_OPEN)
-		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
-
-	return rv;
-}
-
 static int tcpci_tcpm_get_power_status(int port, int *status)
 {
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
@@ -294,22 +275,119 @@ void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 		     (enable) ? MASK_SET : MASK_CLR);
 }
 
+static int get_cable_polarity(int port)
+{
+	int cc, rv;
+	int polarity = cable_polarity[port];
+
+	/* Use the cached value unless it has been cleared */
+	if (polarity != POLARITY_NONE)
+		return polarity;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &cc);
+	if (rv)
+		return POLARITY_NONE;
+
+	if (TCPC_REG_CC_STATUS_TERM(cc)) {
+		/* TCPC is presenting RD (Sink mode) */
+		if ((TCPC_REG_CC_STATUS_CC1(cc) != TYPEC_CC_VOLT_OPEN) &&
+		    (TCPC_REG_CC_STATUS_CC2(cc) == TYPEC_CC_VOLT_OPEN)) {
+			/* CC1 active && CC2 open */
+			polarity = POLARITY_NORMAL;
+		}
+		if ((TCPC_REG_CC_STATUS_CC1(cc) == TYPEC_CC_VOLT_OPEN) &&
+		    (TCPC_REG_CC_STATUS_CC2(cc) != TYPEC_CC_VOLT_OPEN)) {
+			/* CC1 open && CC2 active */
+			polarity = POLARITY_FLIPPED;
+		}
+	} else {
+		/* TCPC is presenting RP (Source mode) */
+		if ((TCPC_REG_CC_STATUS_CC1(cc) == TYPEC_CC_VOLT_RD) &&
+		    (TCPC_REG_CC_STATUS_CC2(cc) != TYPEC_CC_VOLT_RD)) {
+			/* CC1 active && CC2 open */
+			polarity = POLARITY_NORMAL;
+		}
+		if ((TCPC_REG_CC_STATUS_CC1(cc) != TYPEC_CC_VOLT_RD) &&
+		    (TCPC_REG_CC_STATUS_CC2(cc) == TYPEC_CC_VOLT_RD)) {
+			/* CC1 open && CC2 active */
+			polarity = POLARITY_FLIPPED;
+		}
+	}
+	cable_polarity[port] = polarity;
+	return polarity;
+}
+
 static int set_role_ctrl(int port, int toggle, int rp, int pull)
 {
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(toggle, rp, pull, pull));
 }
 
+int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
+{
+	int status;
+	int rv;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+
+	/* If tcpc read fails, return error and CC as open */
+	if (rv) {
+		*cc1 = TYPEC_CC_VOLT_OPEN;
+		*cc2 = TYPEC_CC_VOLT_OPEN;
+		return rv;
+	}
+
+	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
+	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
+
+	/*
+	 * If status is not open, then OR in termination to convert to
+	 * enum tcpc_cc_voltage_status.
+	 */
+	if (*cc1 != TYPEC_CC_VOLT_OPEN)
+		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+	if (*cc2 != TYPEC_CC_VOLT_OPEN)
+		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+
+	return rv;
+}
+
 int tcpci_tcpm_set_cc(int port, int pull)
 {
-	/* Set manual control, and set both CC lines to the same pull */
-	return set_role_ctrl(port, 0, selected_rp[port], pull);
+	int rv;
+	int cc1, cc2;
+	int polarity;
+
+	cc1 = cc2 = pull;
+
+#ifndef CONFIG_USB_SM_FRAMEWORK
+	/* Keep track of current CC pull value */
+	selected_pull[port] = pull;
+#endif
+
+	polarity = get_cable_polarity(port);
+
+	if (polarity == POLARITY_NORMAL)
+		cc2 = TYPEC_CC_OPEN;
+	else if (polarity == POLARITY_FLIPPED)
+		cc1 = TYPEC_CC_OPEN;
+
+	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			TCPC_REG_ROLE_CTRL_SET(0,
+					       selected_rp[port],
+					       cc1,
+					       cc2));
+	return rv;
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_tcpc_drp_toggle(int port)
 {
 	int rv;
+
+	/* Clear the cable polarity for this port */
+	cable_polarity[port] = POLARITY_NONE;
 
 	/* Set auto drp toggle */
 	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);
@@ -320,6 +398,50 @@ int tcpci_tcpc_drp_toggle(int port)
 
 	return rv;
 }
+#endif
+
+#ifndef CONFIG_USB_SM_FRAMEWORK
+static void disconnect_hook(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	/* Clear the cable polarity for this port */
+	cable_polarity[port] = POLARITY_NONE;
+
+	/*
+	 * On disconnect we need to set the resistor on both CC lines so
+	 * we can detect a connection with either polarity.  If we are in
+	 * dual role toggle, then this will happen automatically as it
+	 * needs, so don't adjust the role in that case.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
+		if (pd_get_dual_role(port) != PD_DRP_TOGGLE_ON &&
+		    selected_pull[port] != TYPEC_CC_OPEN) {
+			int rv;
+
+			rv = set_role_ctrl(port,
+					   0,
+					   selected_rp[port],
+					   selected_pull[port]);
+			if (rv)
+				CPRINTS("C%d failed to set pull on disconnect",
+					port);
+		}
+	} else {
+		if (selected_pull[port] != TYPEC_CC_OPEN) {
+			int rv;
+
+			rv = set_role_ctrl(port,
+					   0,
+					   selected_rp[port],
+					   selected_pull[port]);
+			if (rv)
+				CPRINTS("C%d failed to set pull on disconnect",
+					port);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, disconnect_hook, HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -872,6 +994,14 @@ int tcpci_tcpm_init(int port)
 	int error;
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
+
+#ifndef CONFIG_USB_SM_FRAMEWORK
+	/* Start with an unknown connection */
+	selected_pull[port] = TYPEC_CC_OPEN;
+#endif
+
+	/* Clear the cable polarity for this port */
+	cable_polarity[port] = POLARITY_NONE;
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_ERROR_INVAL;
