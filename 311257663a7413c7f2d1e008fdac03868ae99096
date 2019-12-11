@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "593cd786_f3fa3ef3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-12-11T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e568a1_003c96af",
+      "revId": "311257663a7413c7f2d1e008fdac03868ae99096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28d68d1a_d59a123c",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "311257663a7413c7f2d1e008fdac03868ae99096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99884721_f6e9ccfc",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-12-11T18:57:08Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "28d68d1a_d59a123c",
+      "revId": "311257663a7413c7f2d1e008fdac03868ae99096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
