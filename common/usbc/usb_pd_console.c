@@ -94,19 +94,6 @@ test_export_static int remote_flashing(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
-static inline void pd_dev_dump_info(uint16_t dev_id, uint8_t *hash)
-{
-	int j;
-
-	ccprintf("DevId:%d.%d Hash:", HW_DEV_ID_MAJ(dev_id),
-		 HW_DEV_ID_MIN(dev_id));
-	for (j = 0; j < PD_RW_HASH_SIZE/4; j++)
-		ccprintf(" 0x%08x", *((uint32_t *)hash + j));
-	ccprintf("\n");
-}
-#endif /* CONFIG_CMD_PD_DEV_DUMP_INFO */
-
 test_export_static int command_pd(int argc, char **argv)
 {
 	int port;
@@ -116,16 +103,20 @@ test_export_static int command_pd(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 	else if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC) &&
 				!strncasecmp(argv[1], "trysrc", 6)) {
-		int enable = 0;
+		int ov = tc_get_try_src_override();
 
 		if (argc >= 3) {
-			enable = strtoi(argv[2], &e, 10);
+			ov = strtoi(argv[2], &e, 10);
 			if (*e)
 				return EC_ERROR_PARAM3;
-			tc_set_try_src(enable);
+			tc_try_src_override(ov);
 		}
 
-		ccprintf("Try.SRC %s\n", enable ? "on" : "off");
+		if (ov > 1)
+			ccprintf("Try.SRC System controlled\n");
+		else
+			ccprintf("Try.SRC Forced %s\n", ov ? "ON" : "OFF");
+
 		return EC_SUCCESS;
 	}
 
@@ -260,9 +251,9 @@ test_export_static int command_pd(int argc, char **argv)
 		ccprintf("Port C%d CC%d, %s - Role: %s-%s",
 		port, pd_get_polarity(port) + 1,
 		pd_comm_is_enabled(port) ? "Enable" : "Disable",
-		tc_get_power_role(port) ==
+		pd_get_power_role(port) ==
 					PD_ROLE_SOURCE ? "SRC" : "SNK",
-		tc_get_data_role(port) == PD_ROLE_DFP ? "DFP" : "UFP");
+		pd_get_data_role(port) == PD_ROLE_DFP ? "DFP" : "UFP");
 
 		if (IS_ENABLED(CONFIG_USBC_VCONN))
 			ccprintf("%s ", tc_is_vconn_src(port) ? "-VC" : "");
