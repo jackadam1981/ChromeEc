@@ -46,6 +46,30 @@
       "revId": "37c2538ce70a53bd81a18886330f29941d736374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e25d29_e331d5ff",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-12-11T06:38:35Z",
+      "side": 1,
+      "message": "oh...then, how could you make sure no one will access i2c before this?",
+      "parentUuid": "76b2f326_16975757",
+      "range": {
+        "startLine": 249,
+        "startChar": 40,
+        "endLine": 249,
+        "endChar": 58
+      },
+      "revId": "37c2538ce70a53bd81a18886330f29941d736374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
