@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1b428049_bdaac635",
+        "filename": "docs/unit_tests.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-11T21:21:24Z",
+      "side": 1,
+      "message": "we should recommend TEST_EQ and TEST_NE instead. They print out more helpful information",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "f9ac6deee32ecc409864a19d8ee43d230ec72526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "972b2aa5_4806f82d",
         "filename": "docs/unit_tests.md",
         "patchSetId": 6
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 63,
         "endChar": 3
+      },
+      "revId": "f9ac6deee32ecc409864a19d8ee43d230ec72526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34a3d4f_83b25ce1",
+        "filename": "docs/unit_tests.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-11T21:21:24Z",
+      "side": 1,
+      "message": "let\u0027s also add that using the before_test override hhok can reset the state before each test is run",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
       },
       "revId": "f9ac6deee32ecc409864a19d8ee43d230ec72526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
