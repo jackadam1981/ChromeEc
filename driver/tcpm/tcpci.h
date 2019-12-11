@@ -55,10 +55,13 @@
 #define TCPC_REG_TCPC_CTRL_POLARITY(reg) ((reg) & 0x1)
 
 #define TCPC_REG_ROLE_CTRL         0x1a
+#define TCPC_REG_ROLE_CTRL_DRP_MASK                    BIT(6)
+#define TCPC_REG_ROLE_CTRL_RP_MASK                     (BIT(5)+BIT(4))
+#define TCPC_REG_ROLE_CTRL_CC2_MASK                    (BIT(3)+BIT(2))
+#define TCPC_REG_ROLE_CTRL_CC1_MASK                    (BIT(1)+BIT(0))
 #define TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2) \
 		((drp) << 6 | (rp) << 4 | (cc2) << 2 | (cc1))
 #define TCPC_REG_ROLE_CTRL_DRP(reg) (((reg) & 0x40) >> 6)
-#define TCPC_REG_ROLE_CTRL_RP_MASK  0x30
 #define TCPC_REG_ROLE_CTRL_RP(reg)  (((reg) & TCPC_REG_ROLE_CTRL_RP_MASK) >> 4)
 #define TCPC_REG_ROLE_CTRL_CC2(reg) (((reg) & 0xc) >> 2)
 #define TCPC_REG_ROLE_CTRL_CC1(reg) ((reg) & 0x3)
@@ -75,6 +78,10 @@
 #define TCPC_REG_POWER_CTRL_VCONN(reg)    ((reg) & 0x1)
 
 #define TCPC_REG_CC_STATUS         0x1d
+#define TCPC_REG_CC_STATUS_LOOK4CONNECTION_MASK        BIT(5)
+#define TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK         BIT(4)
+#define TCPC_REG_CC_STATUS_CC2_STATE_MASK              (BIT(3)+BIT(2))
+#define TCPC_REG_CC_STATUS_CC1_STATE_MASK              (BIT(1)+BIT(0))
 #define TCPC_REG_CC_STATUS_LOOK4CONNECTION(reg) ((reg & 0x20) >> 5)
 #define TCPC_REG_CC_STATUS_SET(term, cc1, cc2) \
 		((term) << 4 | ((cc2) & 0x3) << 2 | ((cc1) & 0x3))
@@ -165,7 +172,7 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 int tcpci_tcpm_get_vbus_level(int port);
 int tcpci_tcpm_select_rp_value(int port, int rp);
 int tcpci_tcpm_set_cc(int port, int pull);
-int tcpci_tcpm_set_polarity(int port, int polarity);
+int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
 int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);
@@ -175,6 +182,8 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 int tcpci_tcpm_release(int port);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_tcpc_drp_toggle(int port);
+int tcpci_tcpc_drp_toggle_detect(int port, int pull,
+			enum tcpc_cc_polarity *polarity);
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpci_enter_low_power_mode(int port);

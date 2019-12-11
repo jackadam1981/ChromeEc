@@ -90,6 +90,7 @@ static inline int tcpc_update8(int port, int reg,
 			   tcpc_config[port].i2c_info.addr_flags,
 			   reg, mask, action);
 }
+
 static inline int tcpc_update16(int port, int reg,
 				uint16_t mask,
 				enum mask_update_action action)
@@ -97,6 +98,15 @@ static inline int tcpc_update16(int port, int reg,
 	return i2c_update16(tcpc_config[port].i2c_info.port,
 			    tcpc_config[port].i2c_info.addr_flags,
 			    reg, mask, action);
+}
+
+static inline int tcpc_field_update8(int port, int reg,
+				     uint8_t field_mask,
+				     uint8_t set_value)
+{
+	return i2c_field_update8(tcpc_config[port].i2c_info.port,
+				 tcpc_config[port].i2c_info.addr_flags,
+				 reg, field_mask, set_value);
 }
 
 
@@ -116,6 +126,8 @@ int tcpc_update8(int port, int reg,
 		 uint8_t mask, enum mask_update_action action);
 int tcpc_update16(int port, int reg,
 		  uint16_t mask, enum mask_update_action action);
+int tcpc_field_update8(int port, int reg,
+		       uint8_t field_mask, uint8_t set_value);
 
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
@@ -178,7 +190,7 @@ static inline int tcpm_set_cc(int port, int pull)
 	return tcpc_config[port].drv->set_cc(port, pull);
 }
 
-static inline int tcpm_set_polarity(int port, int polarity)
+static inline int tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	return tcpc_config[port].drv->set_polarity(port, polarity);
 }
@@ -256,6 +268,18 @@ static inline int tcpm_auto_toggle_supported(int port)
 static inline int tcpm_enable_drp_toggle(int port)
 {
 	return tcpc_config[port].drv->drp_toggle(port);
+}
+
+static inline int tcpm_drp_toggle_detect(int port,
+					 int pull,
+					 enum tcpc_cc_polarity *polarity)
+{
+	if (tcpc_config[port].drv->drp_toggle_detect)
+		return tcpc_config[port].drv->drp_toggle_detect(port,
+								pull,
+								polarity);
+	else
+		return EC_ERROR_UNIMPLEMENTED;
 }
 #endif
 
@@ -344,17 +368,17 @@ int tcpm_set_cc(int port, int pull);
  * Set polarity
  *
  * @param port Type-C port number
- * @param polarity 0=> transmit on CC1, 1=> transmit on CC2
+ * @param polarity -1=> unattached 0=> transmit on CC1, 1=> transmit on CC2
  *
  * @return EC_SUCCESS or error
  */
-int tcpm_set_polarity(int port, int polarity);
+int tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
 
 /**
  * Set Vconn.
  *
  * @param port Type-C port number
- * @param polarity Polarity of the CC line to read
+ * @param enable Enable/Disable Vconn
  *
  * @return EC_SUCCESS or error
  */
