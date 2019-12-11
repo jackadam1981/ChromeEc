@@ -181,6 +181,8 @@ static struct type_c {
 	enum pd_power_role power_role;
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
+	/* Overrides pd_enable when not true */
+	uint8_t pd_master_enable;
 	/* Higher-level power deliver state machines are enabled if true. */
 	uint8_t pd_enable;
 	/*
@@ -278,6 +280,7 @@ test_export_static enum usb_tc_state get_state_tc(const int port);
 
 #ifdef CONFIG_USB_PD_TRY_SRC
 /* Enable variable for Try.SRC states */
+static uint8_t pd_try_src_master_enable;
 static uint8_t pd_try_src_enable;
 static void pd_update_try_source(void);
 #endif
@@ -486,6 +489,33 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 void pd_got_frs_signal(int port)
 {
 	pe_got_frs_signal(port);
+}
+
+const char *tc_get_current_state(int port)
+{
+	return tc_state_names[get_state_tc(port)];
+}
+
+uint32_t tc_get_flags(int port)
+{
+	return tc[port].flags;
+}
+
+void tc_print_dev_info(int port)
+{
+	int i;
+
+	ccprintf("Hash ");
+	for (i = 0; i < PD_RW_HASH_SIZE / 4; i++)
+		ccprintf("%08x ", tc[port].dev_rw_hash[i]);
+
+	ccprintf("\nImage %s\n", system_image_copy_t_to_string(
+		(enum system_image_copy_t)tc[port].current_image));
+}
+
+void tc_set_try_src(int en)
+{
+	pd_try_src_master_enable = en ? 1 : 0;
 }
 
 int tc_is_attached_src(int port)
@@ -840,6 +870,12 @@ void tc_state_init(int port)
 	 * after PD_LPM_DEBOUNCE_US.
 	 */
 	tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+
+	/* Allow system to set try src enable */
+	pd_try_src_master_enable = 1;
+
+	/* Allow pd_enable to enable/dissable higher level state machines */
+	tc[port].pd_master_enable = 1;
 }
 
 enum pd_power_role tc_get_power_role(int port)
@@ -861,6 +897,11 @@ enum pd_cable_plug tc_get_cable_plug(int port)
 	return PD_PLUG_FROM_DFP_UFP;
 }
 
+void pd_comm_enable(int port, int en)
+{
+	tc[port].pd_master_enable = en;
+}
+
 uint8_t tc_get_polarity(int port)
 {
 	return tc[port].polarity;
@@ -868,7 +909,7 @@ uint8_t tc_get_polarity(int port)
 
 uint8_t tc_get_pd_enabled(int port)
 {
-	return tc[port].pd_enable;
+	return tc[port].pd_enable && tc[port].pd_master_enable;
 }
 
 void tc_set_power_role(int port, enum pd_power_role role)
@@ -1903,7 +1944,7 @@ static void tc_attach_wait_snk_run(const int port)
 	if (pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
 #ifdef CONFIG_USB_PD_TRY_SRC
-			if (pd_try_src_enable)
+			if (pd_try_src_master_enable && pd_try_src_enable)
 				set_state_tc(port, TC_TRY_SRC);
 			else
 #endif
