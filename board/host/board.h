@@ -9,6 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 /* Optional features */
+#undef CONFIG_CMD_PD
 #define CONFIG_EXTPOWER_GPIO
 #undef CONFIG_FMAP
 #define CONFIG_POWER_BUTTON

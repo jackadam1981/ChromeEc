@@ -1486,6 +1486,15 @@ static void pe_src_ready_run(int port)
 	uint8_t cnt;
 	uint8_t ext;
 
+	/*
+	 * Don't delay handling a hard reset from the device policy manager.
+	 */
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND);
+		set_state_pe(port, PE_SRC_HARD_RESET);
+		return;
+	}
+
 	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
 		get_time().val > pe[port].wait_and_add_jitter_timer) {
 
@@ -1564,6 +1573,21 @@ static void pe_src_ready_run(int port)
 						DPM_REQUEST_BIST_TX)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
 				set_state_pe(port, PE_BIST_TX);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SNK_STARTUP)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SNK_STARTUP);
+				set_state_pe(port, PE_SNK_STARTUP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SRC_STARTUP)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SRC_STARTUP);
+				set_state_pe(port, PE_SRC_STARTUP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SOFT_RESET_SEND)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SOFT_RESET_SEND);
+				set_state_pe(port, PE_SEND_SOFT_RESET);
 			}
 
 			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
@@ -2211,8 +2235,17 @@ static void pe_snk_ready_run(int port)
 	uint8_t cnt;
 	uint8_t ext;
 
+	/*
+	 * Don't delay handling a hard reset from the device policy manager.
+	 */
+	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_HARD_RESET_SEND);
+		set_state_pe(port, PE_SNK_HARD_RESET);
+		return;
+	}
+
 	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
-			get_time().val > pe[port].wait_and_add_jitter_timer) {
+		get_time().val > pe[port].wait_and_add_jitter_timer) {
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
 
@@ -2296,6 +2329,21 @@ static void pe_snk_ready_run(int port)
 						DPM_REQUEST_BIST_TX)) {
 				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
 				set_state_pe(port, PE_BIST_TX);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SNK_STARTUP)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SNK_STARTUP);
+				set_state_pe(port, PE_SNK_STARTUP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SRC_STARTUP)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SRC_STARTUP);
+				set_state_pe(port, PE_SRC_STARTUP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SOFT_RESET_SEND)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SOFT_RESET_SEND);
+				set_state_pe(port, PE_SEND_SOFT_RESET);
 			}
 
 			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
