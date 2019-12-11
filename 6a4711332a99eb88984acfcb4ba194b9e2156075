@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04bf2fb2_c6945dfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-11T17:43:51Z",
+      "side": 1,
+      "message": "Has this also been tested with other port partners to ensure there aren\u0027t regressions for discovering other modes (ex. DP)?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 70
+      },
+      "revId": "6a4711332a99eb88984acfcb4ba194b9e2156075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4360e7ef_fb8ba94b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-11T17:43:51Z",
+      "side": 1,
+      "message": "Should this be encapsulated by an \"ifdef CONFIG_USB_PD_TBT_COMPAT_MODE\"?",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 2
+      },
+      "revId": "6a4711332a99eb88984acfcb4ba194b9e2156075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a8de08_b9319961",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-11T17:43:51Z",
+      "side": 1,
+      "message": "\u0026\u0026",
+      "range": {
+        "startLine": 310,
+        "startChar": 39,
+        "endLine": 310,
+        "endChar": 40
+      },
+      "revId": "6a4711332a99eb88984acfcb4ba194b9e2156075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373ebdb3_15df5f54",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-11T17:43:51Z",
+      "side": 1,
+      "message": "This function appears to return a bool, but it\u0027s being used to populate a variable indicating the response size?",
+      "range": {
+        "startLine": 912,
+        "startChar": 5,
+        "endLine": 913,
+        "endChar": 15
+      },
+      "revId": "6a4711332a99eb88984acfcb4ba194b9e2156075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
