@@ -941,6 +941,12 @@
 #undef CONFIG_TEST_USB_PE_SM
 
 /*
+ * Define to enable PD command console. This is an override
+ * that is used to just pull in PD command console for unit testing.
+ */
+#undef CONFIG_TEST_CMD_PD
+
+/*
  * Board specific maximum input current limit, in mA.
  */
 #undef CONFIG_CHARGER_MAX_INPUT_CURRENT
