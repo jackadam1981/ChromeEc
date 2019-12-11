@@ -20,8 +20,14 @@ int hex8tou32(char *str, uint32_t *val);
 int command_pd(int argc, char **argv);
 int remote_flashing(int argc, char **argv);
 
+enum try_src_override_t {
+	TRY_SRC_OVERRIDE_OFF,
+	TRY_SRC_OVERRIDE_ON,
+	TRY_SRC_NO_OVERRIDE
+};
+static enum try_src_override_t try_src_override;
+
 static int test_port;
-static int try_src;
 static enum pe_dpm_request request;
 static int max_volt;
 static int comm_enable;
@@ -110,9 +116,25 @@ const char *tc_get_current_state(int port)
 	return 0;
 }
 
-void tc_set_try_src(int en)
+void tc_try_src_override(int ov)
 {
-	try_src = en;
+	if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC)) {
+		switch (ov) {
+		case TRY_SRC_OVERRIDE_OFF: /* 0 */
+			try_src_override = TRY_SRC_OVERRIDE_OFF;
+			break;
+		case TRY_SRC_OVERRIDE_ON: /* 1 */
+			try_src_override = TRY_SRC_OVERRIDE_ON;
+			break;
+		default:
+			try_src_override = TRY_SRC_NO_OVERRIDE;
+		}
+	}
+}
+
+int tc_get_try_src_override(void)
+{
+	return try_src_override;
 }
 
 static int test_hex8tou32(void)
@@ -154,15 +176,19 @@ static int test_command_pd_port_num(void)
 static int test_command_pd_try_src(void)
 {
 	int argc = 3;
-	char *argv[] = {"pd", "trysrc", "1", 0, 0};
+	char *argv[] = {"pd", "trysrc", "2", 0, 0};
 
-	try_src = 0;
+	try_src_override = 0;
 	TEST_ASSERT(command_pd(argc, argv) == EC_SUCCESS);
-	TEST_ASSERT(try_src == 1);
+	TEST_ASSERT(try_src_override == TRY_SRC_NO_OVERRIDE);
+
+	argv[2] = "1";
+	TEST_ASSERT(command_pd(argc, argv) == EC_SUCCESS);
+	TEST_ASSERT(try_src_override == TRY_SRC_OVERRIDE_ON);
 
 	argv[2] = "0";
 	TEST_ASSERT(command_pd(argc, argv) == EC_SUCCESS);
-	TEST_ASSERT(try_src == 0);
+	TEST_ASSERT(try_src_override == TRY_SRC_OVERRIDE_OFF);
 
 	return EC_SUCCESS;
 }
