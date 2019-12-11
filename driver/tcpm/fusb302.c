@@ -553,10 +553,13 @@ static int fusb302_tcpm_set_cc(int port, int pull)
 	return 0;
 }
 
-static int fusb302_tcpm_set_polarity(int port, int polarity)
+static int fusb302_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	int reg;
+
+	if (polarity == TYPEC_POLARITY_NONE)
+		return EC_SUCCESS;
 
 	tcpc_read(port, TCPC_REG_SWITCHES0, &reg);
 

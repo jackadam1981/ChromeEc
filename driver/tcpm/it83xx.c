@@ -470,8 +470,11 @@ static int it83xx_tcpm_set_cc(int port, int pull)
 	return it83xx_set_cc(port, pull);
 }
 
-static int it83xx_tcpm_set_polarity(int port, int polarity)
+static int it83xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
+	if (polarity == TYPEC_POLARITY_NONE)
+		return EC_SUCCESS;
+
 	it83xx_select_polarity(port, polarity);
 
 	return EC_SUCCESS;
