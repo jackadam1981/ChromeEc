@@ -342,6 +342,47 @@ void tc_start_event_loop(int port);
  */
 void tc_pause_event_loop(int port);
 
+/**
+ * Allow system to override the control of TrySrc
+ *
+ * @param en	0 - Force TrySrc OFF
+ *		1 - Force TrySrc ON
+ *		2 - Allow TypeC state machine to control TrySrc
+ */
+void tc_try_src_override(int ov);
+
+/**
+ * Get state of try_src_override
+ *
+ * @return	0 - TrySrc is forced OFF
+ *		1 - TrySrc is forced ON
+ *		2 - TypeC state machine contols TrySrc
+ */
+int tc_get_try_src_override(void);
+
+/**
+ * Returns the name of the current typeC state
+ *
+ * @param port USB-C port number
+ * @return name of current typeC state
+ */
+const char *tc_get_current_state(int port);
+
+/**
+ * Returns the flag mask of the typeC state machine
+ *
+ * @param port USB-C port number
+ * @return flag mask of the typeC state machine
+ */
+uint32_t tc_get_flags(int port);
+
+/*
+ * Prints the rw hash and sysjump image string.
+ *
+ * @param port USB-C port number
+ */
+void tc_print_dev_info(int port);
+
 #ifdef CONFIG_USB_TYPEC_CTVPD
 
 /**
