@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5dbae7b3_cdf48902",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-11T06:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058df753_0664fab6",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "da3eee1c07967445b7b481f4e859a88277c67a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e559bbf_fac6cfcd",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
