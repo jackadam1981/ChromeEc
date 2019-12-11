@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "993ea155_33dbd2c3",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-11T19:55:45Z",
+      "side": 1,
+      "message": "I think we should let [Unit Tests] describe print-host-tests instead of repeating it here:\n\n  See [Unit Tests] to list available tests.\u0027\n\nSame comment for runhosttests.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 56
+      },
+      "revId": "153e7fca5ee2e86b5450bfc356b320b71dd4b064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
