@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "efcd6672_ed6c62ff",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-11T06:19:12Z",
+      "side": 1,
+      "message": "Sorry, I meant use defines for 0x0C, 0x7f and 0x80.",
+      "parentUuid": "e25a9afc_3e8ec130",
+      "revId": "7d22ac0056b0e8d2892b783c8a5332fd69f04e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c296aa06_2f224a57",
         "filename": "driver/accel_lis2ds.c",
         "patchSetId": 2
