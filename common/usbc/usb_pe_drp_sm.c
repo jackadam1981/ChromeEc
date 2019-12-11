@@ -2274,7 +2274,12 @@ static void pe_snk_ready_run(int port)
 				PE_CLR_DPM_REQUEST(port,
 						DPM_REQUEST_GET_SNK_CAPS);
 				set_state_pe(port, PE_DR_SNK_GET_SINK_CAP);
-			} else if (!common_src_snk_dpm_requests(port)) {
+			} else if (common_src_snk_dpm_requests(port)) {
+				/*
+				 * Do nothing here. The state change was done
+				 * in common_src_snk_dpm_requests function.
+				 */
+			} else {
 				ccprintf("Unhandled DPM Request %x received\n",
 					pe[port].dpm_request);
 				PE_CLR_FLAG(port,
@@ -3151,6 +3156,7 @@ static void pe_prs_src_snk_send_swap_run(int port)
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {
+				tc_request_power_swap(port);
 				set_state_pe(port,
 					PE_PRS_SRC_SNK_TRANSITION_TO_OFF);
 			} else if ((type == PD_CTRL_REJECT) ||
