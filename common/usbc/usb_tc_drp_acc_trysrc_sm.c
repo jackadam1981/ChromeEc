@@ -263,7 +263,9 @@ static struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #endif
 
 /* Forward declare common, private functions */
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static __maybe_unused int reset_device_and_notify(int port);
+#endif
 
 #ifdef CONFIG_POWER_COMMON
 static void handle_new_power_state(int port);
@@ -921,8 +923,10 @@ void tc_event_check(int port, int evt)
 	}
 
 	/* if TCPC has reset, then need to initialize it again */
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	if (evt & PD_EVENT_TCPC_RESET)
 		reset_device_and_notify(port);
+#endif
 
 #ifdef CONFIG_POWER_COMMON
 	if (IS_ENABLED(CONFIG_POWER_COMMON)) {
