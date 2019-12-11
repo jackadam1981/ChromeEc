@@ -63,6 +63,24 @@
       "revId": "ae3bc07d263d7b699a712b73eaeafcc6cee4cc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ffb962_2513ab70",
+        "filename": "common/usb_common.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-11T02:59:32Z",
+      "side": 1,
+      "message": "Hi Abe,\nis it okay to remove IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)?",
+      "parentUuid": "1efbb774_f96987f3",
+      "revId": "ae3bc07d263d7b699a712b73eaeafcc6cee4cc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
