@@ -758,9 +758,12 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
-static int anx74xx_tcpm_set_polarity(int port, int polarity)
+static int anx74xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
+
+	if (polarity == TYPEC_POLARITY_NONE)
+		return EC_SUCCESS;
 
 	rv |= tcpc_read(port, ANX74XX_REG_CC_SOFTWARE_CTRL, &reg);
 	if (polarity) /* Inform ANX to use CC2 */

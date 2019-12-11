@@ -2319,7 +2319,7 @@ void pd_transmit_complete(int port, int status);
  *
  * @param port USB-C port number
  */
-int pd_get_polarity(int port);
+enum tcpc_cc_polarity pd_get_polarity(int port);
 
 /**
  * Get port partner data swap capable status
