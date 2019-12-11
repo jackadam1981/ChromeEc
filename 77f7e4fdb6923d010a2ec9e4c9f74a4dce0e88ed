@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a239c3d_3275ec39",
+        "filename": "chip/stm32/reset_ram_fill.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-11T17:39:34Z",
+      "side": 1,
+      "message": "Probably expand this to trigger on explicit pin-reset too.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 59
+      },
+      "revId": "77f7e4fdb6923d010a2ec9e4c9f74a4dce0e88ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
