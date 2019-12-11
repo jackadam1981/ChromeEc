@@ -46,6 +46,23 @@
       "revId": "ae3bc07d263d7b699a712b73eaeafcc6cee4cc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1efbb774_f96987f3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-11T02:26:29Z",
+      "side": 1,
+      "message": "Not everything will support thunderbolt alternate mode right? I\u0027d guard around this with a CONFIG_* option.",
+      "revId": "ae3bc07d263d7b699a712b73eaeafcc6cee4cc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
