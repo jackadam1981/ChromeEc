@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "519fc2a0_130343a0",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-11T19:55:47Z",
+      "side": 1,
+      "message": "Hmm, I guess if we had an init you could do it there, but that means modifying struct i2c_drv to add another function that its sole purpose will be to maybe to a printf.\n\nYeah, this is hard. Maybe spammy is ok? The setter of the speed should probably test his patches, even an i2cscan will make it obvious it\u0027s the wrong speed.",
+      "parentUuid": "a2e82fc1_38ce6f82",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57a00035_935b7218",
         "filename": "common/i2c_master.c",
         "patchSetId": 28
