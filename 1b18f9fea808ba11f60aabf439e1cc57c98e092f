@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "215b6312_c20af219",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-11T17:14:18Z",
+      "side": 1,
+      "message": "Let\u0027s leave this at 400ms since it doesn\u0027t have any adverse effects and we can work with one more broken dock.",
+      "parentUuid": "3e183dff_a2ca5ad2",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "330d616b_ce758f59",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
@@ -237,6 +261,30 @@
       "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554c271a_d85e294f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-11T17:14:18Z",
+      "side": 1,
+      "message": "Let\u0027s leave as is for now and we can split them if needed in the future.",
+      "parentUuid": "3dbc4aee_18b9bb77",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 3
+      },
+      "revId": "1b18f9fea808ba11f60aabf439e1cc57c98e092f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
