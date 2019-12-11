@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64730d0f_106f2324",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-11T00:52:26Z",
+      "side": 1,
+      "message": "To match test point, and give definitive answer for FIPS tests, this case should set *response_size \u003d 1; with *out \u003d 0.",
+      "revId": "ee1472da2c5b2bf49b7b6bc2d3b6196c9a3d4ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e33ad3_dba3e1b1",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-11T00:52:26Z",
+      "side": 1,
+      "message": "For FIPS tests, this should return the generated key(d, qx, qy), not just a success indicator. For unambiguous parsing of the result, it would also help to have the size of each value in the result.",
+      "revId": "ee1472da2c5b2bf49b7b6bc2d3b6196c9a3d4ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
