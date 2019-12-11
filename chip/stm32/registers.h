@@ -257,6 +257,8 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 /* --- Real-Time Clock --- */
 /* --- Debug --- */
 #define STM32_DBGMCU_IDCODE         REG32(STM32_DBGMCU_BASE + 0x00)
+#define  STM32_DBGMCU_IDCODE_REV_ID(idcode) (((idcode) >> 16) & 0xFFFF)
+#define  STM32_DBGMCU_IDCODE_DEV_ID(idcode) ((idcode) & 0x0FFF)
 #define STM32_DBGMCU_CR             REG32(STM32_DBGMCU_BASE + 0x04)
 /* --- Routing interface --- */
 /* STM32L1xx only */
