@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2e82fc1_38ce6f82",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-11T09:25:24Z",
+      "side": 1,
+      "message": "print error on every i2c_xfer call seems too spammy. any suggestion?",
+      "parentUuid": "335196dc_65d8f795",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57a00035_935b7218",
         "filename": "common/i2c_master.c",
         "patchSetId": 28
@@ -39,6 +63,24 @@
       "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8babc558_72d029b3",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-11T09:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57a00035_935b7218",
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b349455e_db8f53f2",
+        "filename": "include/config.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-11T09:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b61234cd_64f26f96",
+      "range": {
+        "startLine": 2319,
+        "startChar": 0,
+        "endLine": 2319,
+        "endChar": 32
+      },
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
