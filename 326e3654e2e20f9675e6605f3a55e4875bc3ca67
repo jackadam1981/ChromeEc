@@ -16,6 +16,24 @@
       "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d228e4e_633ab777",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-11T09:51:57Z",
+      "side": 1,
+      "message": "hmm.. battery access is much earlier than I thought: init_battery_type runs at HOOK_PRIO_INIT_I2C + 1.\n\nMoved this task to HOOK_PRIO_INIT_I2C.",
+      "parentUuid": "a3c34dc9_116ab6c1",
+      "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
