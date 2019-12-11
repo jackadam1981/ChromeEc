@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0ac4ade4_2d5f496d",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-11T06:33:53Z",
+      "side": 1,
+      "message": "Just gather the temperature. Ideally, the temperature should be store in the VPD.\nThen, when setting calibration information (in set_offset()), we could tweak the offset to take care of the temperature drift between the temperature at the factory and the current temperature.\nHowever, when reading the spec, drifts is not defined, just the range, so this is moot.",
+      "parentUuid": "93b0701b_bafbb317",
+      "revId": "67765fcb2f0aadb6ee4896f329cb7f9ee535205e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44b14752_60062fbf",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 5
