@@ -52,6 +52,24 @@
       "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62eea6bc_4a0c0dd8",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-11T10:36:09Z",
+      "side": 1,
+      "message": "The init order on my device is good (using master branch + patchset 5 of this CL)\nSeems like kukui branch needs CL:1772490",
+      "parentUuid": "700a112d_74d45a54",
+      "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
