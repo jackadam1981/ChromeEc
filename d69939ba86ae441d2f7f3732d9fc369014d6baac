@@ -140,6 +140,30 @@
       "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d708fab4_aaeea71b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-11T23:08:01Z",
+      "side": 1,
+      "message": "Per our general state machine flow, it\u0027s designed to send a DiscMode for every SVID we received from DiscSVID.  So for example, if you have an Apple 3-in-1 dongle it will have both a DP SVID and also an Apple SVID.  The current flow iterates over these and sends a DiscMode for each, before entering DP mode. \n\nSo the dfp_discover_modes() function will just fill in the next SVID we received during discovery here.  This works if the only 2 received are the Intel SVID, but would not work otherwise.",
+      "parentUuid": "437b20ca_1f692a04",
+      "range": {
+        "startLine": 915,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 37
+      },
+      "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
