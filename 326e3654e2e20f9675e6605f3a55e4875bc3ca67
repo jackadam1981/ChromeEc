@@ -34,6 +34,24 @@
       "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700a112d_74d45a54",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-11T10:24:02Z",
+      "side": 1,
+      "message": "API board_i2c_init() is called earlier than API i2c_init(), i2c2 frequency is still 400KHz.",
+      "parentUuid": "1d228e4e_633ab777",
+      "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
