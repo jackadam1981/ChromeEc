@@ -142,7 +142,7 @@ void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
 {
 }
 
-int pd_comm_is_enabled(int port)
+__overridable int pd_comm_is_enabled(int port)
 {
 	return 0;
 }
@@ -192,11 +192,11 @@ bool pd_is_disconnected(int port)
 #endif /* !CONFIG_USB_DRP_ACC_TRYSRC && !CONFIG_USB_CTVPD */
 
 #ifndef CONFIG_USB_DRP_ACC_TRYSRC
-void pd_set_dual_role(int port, enum pd_dual_role_states state)
+__overridable void pd_set_dual_role(int port, enum pd_dual_role_states state)
 {
 }
 
-enum tcpc_cc_polarity pd_get_polarity(int port)
+__overridable enum tcpc_cc_polarity pd_get_polarity(int port)
 {
 	return POLARITY_CC1;
 }

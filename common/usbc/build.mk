@@ -15,6 +15,7 @@ ifneq ($(CONFIG_USB_PE_SM),)
 all-obj-$(CONFIG_USB_VPD)+=$(_usbc_dir)usb_pe_ctvpd_sm.o
 all-obj-$(CONFIG_USB_CTVPD)+=$(_usbc_dir)usb_pe_ctvpd_sm.o
 all-obj-$(CONFIG_USB_DRP_ACC_TRYSRC)+=$(_usbc_dir)usb_pe_drp_sm.o
+all-obj-$(CONFIG_CMD_PD)+=$(_usbc_dir)usb_pd_console.o
 all-obj-$(CONFIG_TEST_USB_PE_SM)+=$(_usbc_dir)usb_pe_drp_sm.o
 endif
 all-obj-$(CONFIG_USB_VPD)+=$(_usbc_dir)usb_tc_vpd_sm.o
