@@ -716,6 +716,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_LOW_POWER_IDLE
 	int i;
 #endif
+	int disable_auto_discharge_disconnect = 1;
 
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
@@ -739,9 +740,12 @@ static inline void set_state(int port, enum pd_states next_state)
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	/* Clear flag to allow DRP auto toggle when possible */
 	if (last_state != PD_STATE_DRP_AUTO_TOGGLE)
+		/* Clear flag to allow DRP auto toggle when possible */
 		pd[port].flags &= ~PD_FLAGS_TCPC_DRP_TOGGLE;
+	else
+		/* Leave auto discharge disconnect enabled */
+		disable_auto_discharge_disconnect = 0;
 #endif
 
 	/* Ignore dual-role toggling between sink and source */
@@ -850,7 +854,8 @@ static inline void set_state(int port, enum pd_states next_state)
 			hook_notify(HOOK_USB_PD_DISCONNECT);
 
 		/* Disable Auto Discharge Disconnect */
-		tcpm_enable_auto_discharge_disconnect(port, 0);
+		if (disable_auto_discharge_disconnect)
+			tcpm_enable_auto_discharge_disconnect(port, 0);
 	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
