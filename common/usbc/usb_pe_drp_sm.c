@@ -193,7 +193,8 @@ enum usb_pe_state {
 	PE_VDM_RESPONSE,
 	PE_HANDLE_CUSTOM_VDM_REQUEST,
 	PE_WAIT_FOR_ERROR_RECOVERY,
-	PE_BIST,
+	PE_BIST_TX,
+	PE_BIST_RX,
 	PE_DR_SNK_GET_SINK_CAP,
 
 	/* Super States */
@@ -259,7 +260,8 @@ static const char * const pe_state_names[] = {
 	[PE_VDM_RESPONSE] = "PE_VDM_Response",
 	[PE_HANDLE_CUSTOM_VDM_REQUEST] = "PE_Handle_Custom_Vdm_Request",
 	[PE_WAIT_FOR_ERROR_RECOVERY] = "PE_Wait_For_Error_Recovery",
-	[PE_BIST] = "PE_Bist",
+	[PE_BIST_TX] = "PE_Bist_TX",
+	[PE_BIST_RX] = "PE_Bist_RX",
 	[PE_DR_SNK_GET_SINK_CAP] = "PE_DR_SNK_Get_Sink_Cap",
 };
 #endif
@@ -1489,6 +1491,14 @@ static void pe_src_ready_run(int port)
 					VDO_SVDM_VERS(1) | DISCOVER_IDENTITY);
 			pe[port].vdm_cnt = 1;
 			set_state_pe(port, PE_VDM_REQUEST);
+		} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_BIST_RX)) {
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_RX);
+			set_state_pe(port, PE_BIST_RX);
+		} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_BIST_TX)) {
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
+			set_state_pe(port, PE_BIST_TX);
 		}
 
 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
@@ -1541,7 +1551,7 @@ static void pe_src_ready_run(int port)
 				}
 				break;
 			case PD_DATA_BIST:
-				set_state_pe(port, PE_BIST);
+				set_state_pe(port, PE_BIST_TX);
 				break;
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
@@ -2188,7 +2198,16 @@ static void pe_snk_ready_run(int port)
 					      DPM_REQUEST_GET_SNK_CAPS)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GET_SNK_CAPS);
 			set_state_pe(port, PE_DR_SNK_GET_SINK_CAP);
+		} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_BIST_RX)) {
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_RX);
+			set_state_pe(port, PE_BIST_RX);
+		} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_BIST_TX)) {
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_BIST_TX);
+			set_state_pe(port, PE_BIST_TX);
 		}
+
 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		return;
 	}
@@ -2238,7 +2257,7 @@ static void pe_snk_ready_run(int port)
 				}
 				break;
 			case PD_DATA_BIST:
-				set_state_pe(port, PE_BIST);
+				set_state_pe(port, PE_BIST_TX);
 				break;
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
@@ -3371,9 +3390,9 @@ static void pe_prs_frs_shared_exit(int port)
 }
 
 /**
- * BIST
+ * BIST TX
  */
-static void pe_bist_entry(int port)
+static void pe_bist_tx_entry(int port)
 {
 	uint32_t *payload = (uint32_t *)emsg[port].buf;
 	uint8_t mode = BIST_MODE(payload[0]);
@@ -3403,7 +3422,7 @@ static void pe_bist_entry(int port)
 		pe[port].bist_cont_mode_timer = TIMER_DISABLED;
 }
 
-static void pe_bist_run(int port)
+static void pe_bist_tx_run(int port)
 {
 	if (get_time().val > pe[port].bist_cont_mode_timer) {
 
@@ -3420,6 +3439,36 @@ static void pe_bist_run(int port)
 		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED))
 			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	}
+}
+
+/**
+ * BIST RX
+ */
+static void pe_bist_rx_entry(int port)
+{
+	/* currently only support sending bist carrier 2 */
+	uint32_t bdo = BDO(BDO_MODE_CARRIER2, 0);
+
+	print_current_state(port);
+
+	emsg[port].len = 4;
+	memcpy(emsg[port].buf, (uint8_t *)&bdo, emsg[port].len);
+	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_BIST);
+
+	/* Delay at least enough for partner to finish BIST */
+	pe[port].bist_cont_mode_timer =
+				get_time().val + PD_T_BIST_RECEIVE;
+}
+
+static void pe_bist_rx_run(int port)
+{
+	if (get_time().val < pe[port].bist_cont_mode_timer)
+		return;
+
+	if (pe[port].power_role == PD_ROLE_SOURCE)
+		set_state_pe(port, PE_SRC_TRANSITION_TO_DEFAULT);
+	else
+		set_state_pe(port, PE_SNK_TRANSITION_TO_DEFAULT);
 }
 
 /**
@@ -5221,9 +5270,13 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_wait_for_error_recovery_entry,
 		.run   = pe_wait_for_error_recovery_run,
 	},
-	[PE_BIST] = {
-		.entry = pe_bist_entry,
-		.run   = pe_bist_run,
+	[PE_BIST_TX] = {
+		.entry = pe_bist_tx_entry,
+		.run   = pe_bist_tx_run,
+	},
+	[PE_BIST_RX] = {
+		.entry = pe_bist_rx_entry,
+		.run   = pe_bist_rx_run,
 	},
 	[PE_DR_SNK_GET_SINK_CAP] = {
 		.entry = pe_dr_snk_get_sink_cap_entry,
