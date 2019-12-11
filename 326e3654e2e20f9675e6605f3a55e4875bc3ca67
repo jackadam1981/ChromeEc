@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3c34dc9_116ab6c1",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-11T08:39:09Z",
+      "side": 1,
+      "message": "Hi, Ting,\nDefault i2c2 frequency is 400kHz, which is not good for EVT DUT. Init battery and charger before calling board_i2c_init(). We must make sure only 100kHz is appropriate for battery, otherwise will report logs as below.                           \n2019-12-11 16:31:27 RT946X init succeeded                                          \n2019-12-11 16:31:27 RTC: 0x00010a55 (68181.00 s)                                   \n2019-12-11 16:31:27 [0.024568 battery not found]                                   \n2019-12-11 16:31:27 [0.024798 SW 0x01]                                             \n2019-12-11 16:31:27 [0.024974 hash start 0x0001f000 0x0001b008]",
+      "revId": "326e3654e2e20f9675e6605f3a55e4875bc3ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
