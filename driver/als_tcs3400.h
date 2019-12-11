@@ -141,6 +141,13 @@ enum tcs3400_mode {
 #define TSC_SATURATION_LOW_BAND_LEVEL   (TCS_SATURATION_LEVEL * \
 					 TSC_SATURATION_LOW_BAND_PERCENT / 100)
 
+/*
+ * Offset should only be added if the LUX value is high enough.
+ * If lux value >= MIN_LUX_OFFSET_COMPENSATION LUX value, then
+ * include the offset.
+ */
+#define MIN_LUX_OFFSET_COMPENSATION 300
+
 enum crbg_index {
 	CLEAR_CRGB_IDX = 0,
 	RED_CRGB_IDX,

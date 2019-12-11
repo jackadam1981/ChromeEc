@@ -293,7 +293,7 @@ static void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 		const struct rgb_channel_calibration_t *p =
 				&rgb_drv_data->calibration.rgb_cal[i];
 
-		xyz_data[i] = p->offset + FP_TO_INT(
+		xyz_data[i] = FP_TO_INT(
 			(fp_inter_t)p->coeff[RED_CRGB_IDX] *
 					crgb_prime[RED_CRGB_IDX] +
 			(fp_inter_t)p->coeff[GREEN_CRGB_IDX] *
@@ -302,6 +302,10 @@ static void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 					crgb_prime[BLUE_CRGB_IDX] +
 			(fp_inter_t)p->coeff[CLEAR_CRGB_IDX] *
 					crgb_prime[CLEAR_CRGB_IDX]);
+
+		/* Add in offset if lux value high enough */
+		if (xyz_data[i] >= MIN_LUX_OFFSET_COMPENSATION)
+			xyz_data[i] += p->offset;
 
 		if (xyz_data[i] < 0)
 			xyz_data[i] = 0;
