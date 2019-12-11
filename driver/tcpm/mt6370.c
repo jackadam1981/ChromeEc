@@ -159,9 +159,12 @@ static int mt6370_enter_low_power_mode(int port)
 }
 #endif
 
-static int mt6370_set_polarity(int port, int polarity)
+static int mt6370_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
+
+	if (polarity == TYPEC_POLARITY_NONE)
+		return EC_SUCCESS;
 
 	mt6370_polarity = polarity;
 	mt6370_get_cc(port, &cc1, &cc2);

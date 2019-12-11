@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "ps8xxx.h"
 #include "task.h"
 #include "tcpci.h"
@@ -30,9 +31,9 @@ static int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-/* Save the selected rp value */
+/* Save the selected role values */
 static int selected_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
-
+static enum tcpc_cc_pull selected_pull[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
@@ -159,6 +160,7 @@ int tcpc_update8(int port, int reg,
 	pd_device_accessed(port);
 	return rv;
 }
+
 int tcpc_update16(int port, int reg,
 		  uint16_t mask,
 		  enum mask_update_action action)
@@ -232,36 +234,6 @@ static int clear_power_status_mask(int port)
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK, 0);
 }
 
-int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
-	enum tcpc_cc_voltage_status *cc2)
-{
-	int status;
-	int rv;
-
-	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
-
-	/* If tcpc read fails, return error and CC as open */
-	if (rv) {
-		*cc1 = TYPEC_CC_VOLT_OPEN;
-		*cc2 = TYPEC_CC_VOLT_OPEN;
-		return rv;
-	}
-
-	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
-	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
-
-	/*
-	 * If status is not open, then OR in termination to convert to
-	 * enum tcpc_cc_voltage_status.
-	 */
-	if (*cc1 != TYPEC_CC_VOLT_OPEN)
-		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
-	if (*cc2 != TYPEC_CC_VOLT_OPEN)
-		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
-
-	return rv;
-}
-
 static int tcpci_tcpm_get_power_status(int port, int *status)
 {
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
@@ -294,19 +266,65 @@ void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 		     (enable) ? MASK_SET : MASK_CLR);
 }
 
+int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
+{
+	int status;
+	int rv;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+
+	/* If tcpc read fails, return error and CC as open */
+	if (rv) {
+		*cc1 = TYPEC_CC_VOLT_OPEN;
+		*cc2 = TYPEC_CC_VOLT_OPEN;
+		return rv;
+	}
+
+	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
+	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
+
+	/*
+	 * If status is not open, then OR in termination to convert to
+	 * enum tcpc_cc_voltage_status.
+	 */
+	if (*cc1 != TYPEC_CC_VOLT_OPEN)
+		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+	if (*cc2 != TYPEC_CC_VOLT_OPEN)
+		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+
+	return rv;
+}
+
+int tcpci_tcpm_set_cc(int port, int pull)
+{
+	int cc1, cc2;
+	enum tcpc_cc_polarity polarity;
+
+	cc1 = cc2 = pull;
+
+	/* Keep track of current CC pull value */
+	if (!IS_ENABLED(CONFIG_USB_SM_FRAMEWORK))
+		selected_pull[port] = pull;
+
+	polarity = pd_get_polarity(port);
+	if (polarity == TYPEC_POLARITY_NORMAL)
+		cc2 = TYPEC_CC_OPEN;
+	else if (polarity == TYPEC_POLARITY_FLIPPED)
+		cc1 = TYPEC_CC_OPEN;
+
+	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_SET(0, selected_rp[port],
+						 cc1, cc2));
+}
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static int set_role_ctrl(int port, int toggle, int rp, int pull)
 {
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(toggle, rp, pull, pull));
 }
 
-int tcpci_tcpm_set_cc(int port, int pull)
-{
-	/* Set manual control, and set both CC lines to the same pull */
-	return set_role_ctrl(port, 0, selected_rp[port], pull);
-}
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_tcpc_drp_toggle(int port)
 {
 	int rv;
@@ -320,6 +338,70 @@ int tcpci_tcpc_drp_toggle(int port)
 
 	return rv;
 }
+
+int tcpci_tcpc_drp_toggle_detect(int port, int pull,
+				 enum tcpc_cc_polarity *polarity)
+{
+	int rv;
+	int cc1, cc2;
+	int cc_status;
+
+	cc1 = cc2 = pull;
+
+	/* Keep track of current CC pull value */
+	if (!IS_ENABLED(CONFIG_USB_SM_FRAMEWORK))
+		selected_pull[port] = pull;
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &cc_status);
+	if (rv)
+		return rv;
+
+	/* determine if this is Rd or Rp */
+	if (cc_status & TCPC_REG_CC_STATUS_CC1_STATE_MASK) {
+		cc2 = TYPEC_CC_OPEN;
+		*polarity = TYPEC_POLARITY_NORMAL;
+	} else if (cc_status & TCPC_REG_CC_STATUS_CC2_STATE_MASK) {
+		cc1 = TYPEC_CC_OPEN;
+		*polarity = TYPEC_POLARITY_FLIPPED;
+	} else {
+		*polarity = TYPEC_POLARITY_NONE;
+	}
+
+	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_SET(0, selected_rp[port],
+						 cc1, cc2));
+}
+#endif
+
+#ifndef CONFIG_USB_SM_FRAMEWORK
+static void disconnect_hook(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+	int can_do_set_cc;
+
+	/*
+	 * On disconnect we need to set the resistor on both CC lines so
+	 * we can detect a connection with either polarity.  If we are in
+	 * dual role toggle, then this will happen automatically as it
+	 * needs, so don't adjust the role in that case.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
+	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON)
+		can_do_set_cc = 0;
+	else
+		can_do_set_cc = 1;
+
+	if (can_do_set_cc &&
+	    selected_pull[port] != TYPEC_CC_OPEN) {
+		int rv;
+
+		rv = tcpm_set_cc(port, selected_pull[port]);
+		if (rv)
+			CPRINTS("C%d failed to set pull on disconnect",
+				port);
+	}
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, disconnect_hook, HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -329,8 +411,18 @@ int tcpci_enter_low_power_mode(int port)
 }
 #endif
 
-int tcpci_tcpm_set_polarity(int port, int polarity)
+int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
+	int rv;
+
+	/* Change CC lines to only set the correct ones */
+	rv = tcpm_set_cc(port, selected_pull[port]);
+	if (rv)
+		return rv;
+
+	if (polarity == TYPEC_POLARITY_NONE)
+		return EC_SUCCESS;
+
 	return tcpc_update8(port,
 			    TCPC_REG_TCPC_CTRL,
 			    TCPC_REG_TCPC_CTRL_SET(1),
@@ -872,6 +964,10 @@ int tcpci_tcpm_init(int port)
 	int error;
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
+
+	/* Start with an unknown connection */
+	if (!IS_ENABLED(CONFIG_USB_SM_FRAMEWORK))
+		selected_pull[port] = TYPEC_CC_OPEN;
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_ERROR_INVAL;
