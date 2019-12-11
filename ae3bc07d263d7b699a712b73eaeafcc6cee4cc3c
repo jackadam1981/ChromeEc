@@ -22,6 +22,30 @@
       "revId": "ae3bc07d263d7b699a712b73eaeafcc6cee4cc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b3fb89d_e73bac7a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-11T01:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0828472_e5ba793a",
+      "range": {
+        "startLine": 934,
+        "startChar": 1,
+        "endLine": 949,
+        "endChar": 0
+      },
+      "revId": "ae3bc07d263d7b699a712b73eaeafcc6cee4cc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
