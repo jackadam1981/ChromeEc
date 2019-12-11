@@ -140,6 +140,16 @@ int pd_comm_is_enabled(int port)
 	return 0;
 }
 
+void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
+			uint32_t *current_image)
+{
+}
+
+__overridable int pd_comm_is_enabled(int port)
+{
+	return 0;
+}
+
 bool pd_get_partner_data_swap_capable(int port)
 {
 	return true;
@@ -190,11 +200,11 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 {
 }
 
-void pd_set_dual_role(int port, enum pd_dual_role_states state)
+__overridable void pd_set_dual_role(int port, enum pd_dual_role_states state)
 {
 }
 
-enum tcpc_cc_polarity pd_get_polarity(int port)
+__overridable enum tcpc_cc_polarity pd_get_polarity(int port)
 {
 	return POLARITY_CC1;
 }
