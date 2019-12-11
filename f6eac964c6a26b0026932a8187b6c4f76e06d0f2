@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e8ba913_c87229ae",
+        "filename": "OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-11T00:07:52Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "aa74bdb7_c207291b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "f6eac964c6a26b0026932a8187b6c4f76e06d0f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91b14e10_362f3c8a",
         "filename": "common/fpsensor/OWNERS",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "f6eac964c6a26b0026932a8187b6c4f76e06d0f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c545192b_bdd099c2",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-11T00:07:52Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "91b14e10_362f3c8a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "f6eac964c6a26b0026932a8187b6c4f76e06d0f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bb811346_0d7cafb5",
+        "filename": "docs/fingerprint/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-11T00:07:52Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "32ca28ff_940c6ba6",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "f6eac964c6a26b0026932a8187b6c4f76e06d0f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d388840_bd74f864",
         "filename": "driver/fingerprint/OWNERS",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "f6eac964c6a26b0026932a8187b6c4f76e06d0f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05038b7_a77e526d",
+        "filename": "driver/fingerprint/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-11T00:07:52Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7d388840_bd74f864",
+      "revId": "f6eac964c6a26b0026932a8187b6c4f76e06d0f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
