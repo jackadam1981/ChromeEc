@@ -49,6 +49,12 @@ enum tcpc_rp_value {
 	TYPEC_RP_RESERVED = 3,
 };
 
+enum tcpc_cc_polarity {
+	TYPEC_POLARITY_NONE = -1,
+	TYPEC_POLARITY_NORMAL = 0,
+	TYPEC_POLARITY_FLIPPED = 1,
+};
+
 enum tcpm_transmit_type {
 	TCPC_TX_SOP = 0,
 	TCPC_TX_SOP_PRIME = 1,
@@ -189,11 +195,12 @@ struct tcpm_drv {
 	 * Set polarity
 	 *
 	 * @param port Type-C port number
-	 * @param polarity 0=> transmit on CC1, 1=> transmit on CC2
+	 * @param polarity -1=> unattached 0=> transmit on CC1,
+	 *                 1=> transmit on CC2
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*set_polarity)(int port, int polarity);
+	int (*set_polarity)(int port, enum tcpc_cc_polarity polarity);
 
 	/**
 	 * Set Vconn.
