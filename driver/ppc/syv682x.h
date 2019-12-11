@@ -37,6 +37,18 @@
 #define SYV682X_ILIM_2_25		2
 #define SYV682X_ILIM_3_30		3
 
+#define SYV682X_HV_ILIM_MASK		(BIT(6) | BIT(5))
+#define SYV682X_HV_ILIM_BIT_SHIFT	5
+
+/* Values for high-voltage current limit (HV_ILIM) in Control Register 1. */
+enum syv682x_hv_ilim {
+	SYV682X_HV_ILIM_1_25 = 0,
+	SYV682X_HV_ILIM_1_75 = 1,
+	SYV682X_HV_ILIM_3_3 = 2,
+	SYV682X_HV_ILIM_5_5 = 3,
+};
+
+
 /* Control Register 2 */
 #define SYV682X_CONTROL_2_SDSG		BIT(1)
 #define SYV682X_CONTROL_2_FDSG		BIT(0)
@@ -64,5 +76,13 @@
 
 struct ppc_drv;
 extern const struct ppc_drv syv682x_drv;
+
+/* Sets the current limit for over-current protection on the high-voltage
+ * channel.
+ * port: The port number
+ * limit: The current limit to apply
+ * Returns an error code.
+ */
+int syv682x_set_hv_ilim(int port, enum syv682x_hv_ilim limit);
 
 #endif /* defined(__CROS_EC_SYV682X_H) */

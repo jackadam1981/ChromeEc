@@ -381,6 +381,16 @@ BUILD_ASSERT(ARRAY_SIZE(usb_retimers) == USBC_PORT_COUNT);
 
 static void baseboard_tcpc_init(void)
 {
+	int result;
+
+	/* Increase the current limit on C1.
+	 * TODO(b/145562693): Leave this at the default value once current
+	 * spikes are fixed.
+	 */
+	result = syv682x_set_hv_ilim(USBC_PORT_C1, SYV682X_HV_ILIM_5_5);
+	if (result)
+		CPRINTSUSB("C1: Could not set current limit to 5.5A");
+
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
