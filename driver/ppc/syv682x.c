@@ -329,6 +329,22 @@ static int syv682x_init(int port)
 	return EC_SUCCESS;
 }
 
+int syv682x_set_hv_ilim(int port, enum syv682x_hv_ilim limit)
+{
+	int rv;
+	int regval;
+
+	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
+	if (rv)
+		return rv;
+	regval &= ~SYV682X_HV_ILIM_MASK;
+	regval |= limit << SYV682X_HV_ILIM_BIT_SHIFT;
+	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
+	if (rv)
+		return rv;
+	return EC_SUCCESS;
+}
+
 const struct ppc_drv syv682x_drv = {
 	.init = &syv682x_init,
 	.is_sourcing_vbus = &syv682x_is_sourcing_vbus,
