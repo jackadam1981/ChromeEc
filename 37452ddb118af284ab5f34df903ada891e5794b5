@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ea7940_acbaa395",
+        "filename": "board/puff/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-11T07:35:36Z",
+      "side": 1,
+      "message": "This will work for up to 60W, but for higher power sources we need to add an API to adjust the current limit setting for the PPC. Right now, it\u0027s hard coded to ~3A.  (http://shortn/_bOtxHgJMn5)",
+      "revId": "37452ddb118af284ab5f34df903ada891e5794b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
