@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c90e6ea4_9318365a",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-12T08:08:14Z",
+      "side": 0,
+      "message": "Shouldn\u0027t we turn it off if it\u0027s not charging?\n\nI think we have to tell it\u0027s a bitbang error or just not charging.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "76f923047f4395993d4df7bae0c7d7d515075887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
