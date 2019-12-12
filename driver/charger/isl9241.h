@@ -61,8 +61,6 @@
  *         <111> 256mA
  */
 #define ISL9241_CONTROL2_TRICKLE_CHG_CURR(curr)	((((curr) >> 5) - 1) << 13)
-/* 12 - Two-Level Adapter Current Limit */
-#define ISL9241_CONTROL2_TWO_LEVEL_ADP_CURR	BIT(12)
 /* 10:9 PROCHOT# debounce time in uS */
 #define ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000	(3 << 9)
 
@@ -97,6 +95,8 @@
 #define ISL9241_INFORMATION2_ACOK_PIN		BIT(14)
 
 #define ISL9241_REG_CONTROL4		0x4E
+#define ISL9241_CONTROL4_SLEW_RATE_EN	BIT(12)
+
 #define ISL9241_REG_CONTROL5		0x4F
 #define ISL9241_REG_NTC_ADC_RESULTS	0x80
 #define ISL9241_REG_VBAT_ADC_RESULTS	0x81
