@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7b614c_3547ebf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-12T14:51:25Z",
+      "side": 1,
+      "message": "more than 1 fan",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2505e295_feb25b8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-12T14:51:25Z",
+      "side": 1,
+      "message": "This CL implements a board-specific thermal policy with multiple fans.",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d540d7f_03e4674b",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-12T14:51:25Z",
+      "side": 1,
+      "message": "You mentioned in an earlier patchset that your thermal engineer was recommending a logical-AND here before reducing the fan speeds. I agree with that assessment; the fan should slow down only when all of the relevant temperatures are below the thresholds for that fan speed.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4988ce_4059d3f7",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-12T14:51:25Z",
+      "side": 1,
+      "message": "Does this also need to be added to include/config.h as a #undef\u0027ed symbol?\nSee include/config.h, starting on line 1639. Options that might get configured are added to this file with #undef, and then the board-specific files will #define them.",
+      "range": {
+        "startLine": 182,
+        "startChar": 17,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
