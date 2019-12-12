@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "55c0c9de_fad16ad6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-12T03:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ef58e0_fed3098e",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 19
+      },
+      "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c5aa5fe_5e7adbe9",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 22
@@ -93,6 +117,30 @@
       "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c841b8f_0bb03cef",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-12T03:06:04Z",
+      "side": 1,
+      "message": "Done\n\nRevisited, looks like function name is okay, checking for Intel TBT mode in response",
+      "parentUuid": "ee43407e_d8a77983",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 0
+      },
+      "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +212,30 @@
       "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "debcdf12_3ace8405",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-12T03:06:04Z",
+      "side": 1,
+      "message": "Done\n\nchecking for Intel TBT mode in is_tbt_compat_mode()",
+      "parentUuid": "d708fab4_aaeea71b",
+      "range": {
+        "startLine": 915,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 37
+      },
+      "revId": "d69939ba86ae441d2f7f3732d9fc369014d6baac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
