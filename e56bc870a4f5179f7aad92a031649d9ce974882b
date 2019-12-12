@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf3bc02_ad5de584",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-12T20:44:13Z",
+      "side": 1,
+      "message": "I think a good approach is to move this block to a public function.  \nSomething like syv628x_set_hv_limit(int port, enum hv_ilim)\nThis way the all the SYV register accesses are still contained in this file.   The linker should prune the routine from the final build if there aren\u0027t any callers.  This is cleaner that adding another CONFIG option, and provides for some potential re-use.",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 0
+      },
+      "revId": "e56bc870a4f5179f7aad92a031649d9ce974882b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d50422_74c07f06",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-12T20:44:13Z",
+      "side": 1,
+      "message": "For consistency with the other register definitions, change this to \nSYV682X_HV_ILIM_MASK, and then create separate macros for the various HV_ILIM options. Follow the SYV682X_ILIM_MASK example below.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "e56bc870a4f5179f7aad92a031649d9ce974882b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
