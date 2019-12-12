@@ -258,6 +258,30 @@
       "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11577da2_a272f58d",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2483,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-12T08:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2549c45_2b2a2d0a",
+      "range": {
+        "startLine": 2483,
+        "startChar": 32,
+        "endLine": 2483,
+        "endChar": 56
+      },
+      "revId": "b4156d4bf244eb2b23ff82996726befcc92d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
