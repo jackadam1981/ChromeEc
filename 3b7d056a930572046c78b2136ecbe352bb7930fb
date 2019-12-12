@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dcf83ed_c280ddd6",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-12T22:33:23Z",
+      "side": 1,
+      "message": "This is already bad when doing JTAG.\n\nJTAG probably wants to hold these signals by itself.\n\nThis function should just be bypassed completely when jtagging.",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 184,
+        "endChar": 17
+      },
+      "revId": "3b7d056a930572046c78b2136ecbe352bb7930fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7529b06e_d51ad0ab",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-12T22:33:23Z",
+      "side": 1,
+      "message": "There\u0027s downsides to always doing this to a lot of people at bringup time. I wouldn\u0027t merge this or even use it unless I personally use jtag and don\u0027t care about coreboot/depthcharge being happy about TPM.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 22
+      },
+      "revId": "3b7d056a930572046c78b2136ecbe352bb7930fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
