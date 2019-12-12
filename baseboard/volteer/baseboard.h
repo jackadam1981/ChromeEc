@@ -60,6 +60,41 @@
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
 
 /* Sensors */
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+#define CONFIG_ACCEL_INTERRUPTS
+
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+
+/* Sensor console commands */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+
+/* BMA253 accelerometer in base */
+#define CONFIG_ACCEL_BMA255
+
+/* Camera VSYNC */
+#define CONFIG_SYNC
+#define CONFIG_SYNC_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
+
+/* TCS3400 ALS */
+#define CONFIG_ALS
+#define ALS_COUNT		1
+/* #define I2C_PORT_ALS		I2C_PORT_SENSOR */
+#define CONFIG_ALS_TCS3400
+#define CONFIG_ALS_TCS3400_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	(BIT(BASE_ACCEL) | BIT(CLEAR_ALS))
 
 /* Thermal features */
 #define CONFIG_FANS			FAN_CH_COUNT
@@ -218,6 +253,14 @@ enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
 	USBC_PORT_COUNT
+};
+
+enum sensor_id {
+	BASE_ACCEL = 0,
+	CLEAR_ALS,
+	RGB_ALS,
+	VSYNC,
+	SENSOR_COUNT,
 };
 
 void board_reset_pd_mcu(void);
