@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bc8c509_02e584df",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-12T10:34:58Z",
+      "side": 1,
+      "message": "would the code be smaller with loops and fpv3_t?",
+      "revId": "31f594c39d9ab40bd28f44b423e22d511cabac9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460857b1_0ead9397",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-12T10:34:58Z",
+      "side": 1,
+      "message": "/*\n * Compute",
+      "revId": "31f594c39d9ab40bd28f44b423e22d511cabac9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

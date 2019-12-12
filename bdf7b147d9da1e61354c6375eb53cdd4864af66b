@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f190b5c0_e1910abb",
+        "filename": "include/stillness_detector.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-12T10:34:58Z",
+      "side": 1,
+      "message": "Does it have to be 32 bits?",
+      "revId": "bdf7b147d9da1e61354c6375eb53cdd4864af66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe91a8e_4253472c",
+        "filename": "include/stillness_detector.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-12T10:34:58Z",
+      "side": 1,
+      "message": "Use fp_t vectors and loop.",
+      "revId": "bdf7b147d9da1e61354c6375eb53cdd4864af66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
