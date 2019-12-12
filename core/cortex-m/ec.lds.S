@@ -397,6 +397,16 @@ SECTIONS
 		/* NOTHING MAY GO AFTER THIS! */
 	} > IRAM AT > DATA_LMA_MEM_REGION
 
+	ASSERT(__bss_start == CONFIG_RAM_BASE, "__bss_start must start at the start of RAM")
+	/*
+	 * The following assertion doesn't hold -- there is one unused 4byte word between them.
+	 * On helios board, __bss_end is 0x200c7214 and __data_start is 0x200c7218.
+	 * - Nothing changes when you remove the ALIGN(4)'s
+	 * - The last symbol is at 0x200c7210 (dptf_temp_threshold) and is only 4bytes long
+	 */
+	/*ASSERT(__bss_end == __data_start, "__bss_end to __data_start must have no gap")*/
+	ASSERT(__data_end == __shared_mem_buf, "__data_start to __shared_mem_buf must have no gap")
+
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
 	       "Not enough space for shared memory.")
