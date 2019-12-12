@@ -8,6 +8,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "intel_x86.h"
 #include "power.h"
 #include "power_button.h"
@@ -129,6 +130,8 @@ void chipset_pre_init_callback(void)
 	 * power_wait_signals() as PP5000_A_PGOOD is included in the
 	 * CHIPSET_G3S5_POWERUP_SIGNAL macro.
 	 */
+
+	hook_notify(HOOK_CHIPSET_PRE_INIT);
 }
 
 enum power_state power_handle_state(enum power_state state)
