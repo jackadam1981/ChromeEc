@@ -1748,6 +1748,9 @@ static void tc_unattached_snk_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC)
 		print_current_state(port);
 
+	/* VBus should be SafeV0, turn off auto discharge disconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
+
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
 
@@ -1985,6 +1988,9 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc[port].pd_enable = 1;
+
+	/* VBus should be powered, turn on auto discharge disconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2094,13 +2100,18 @@ static void tc_attached_snk_run(const int port)
 
 static void tc_attached_snk_exit(const int port)
 {
-	/*
-	 * If supplying VCONN, the port shall cease to supply
-	 * it within tVCONNOFF of exiting Attached.SNK if not PR swapping.
-	 */
-	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON) &&
-	    !TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP))
-		set_vconn(port, 0);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
+		/*
+		 * If supplying VCONN, the port shall cease to supply
+		 * it within tVCONNOFF of exiting Attached.SNK if not
+		 * PR swapping.
+		 */
+		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
+			set_vconn(port, 0);
+
+		/* Unattached should not have a polarity */
+		tc[port].polarity = TYPEC_POLARITY_NONE;
+	}
 
 	/* Clear flags after checking Vconn status */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP | TC_FLAGS_POWER_OFF_SNK);
@@ -2409,6 +2420,9 @@ static void tc_unattached_src_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK)
 		print_current_state(port);
 
+	/* VBus should be SafeV0, turn off auto discharge disconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
+
 	if (IS_ENABLED(CONFIG_USBC_PPC)) {
 		/* There is no sink connected. */
 		ppc_sink_is_connected(port, 0);
@@ -2662,6 +2676,9 @@ static void tc_attached_src_entry(const int port)
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_sink_is_connected(port, 1);
+
+	/* VBus should be powered, turn on auto discharge disconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_src_run(const int port)
@@ -2816,10 +2833,14 @@ static void tc_attached_src_exit(const int port)
 	 */
 	tc_src_power_off(port);
 
-	/* Disable VCONN if not power role swapping */
-	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON) &&
-	    !TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP))
-		set_vconn(port, 0);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
+		/* Disable VCONN if not power role swapping */
+		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
+			set_vconn(port, 0);
+
+		/* Unattached should not have a polarity */
+		tc[port].polarity = TYPEC_POLARITY_NONE;
+	}
 
 	/* Clear PR swap flag after checking for Vconn */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
