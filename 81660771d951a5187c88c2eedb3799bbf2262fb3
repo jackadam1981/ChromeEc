@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f09f0cb7_2e4cccd0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-12T22:17:23Z",
+      "side": 1,
+      "message": "I\u0027m concerned that this code creates inconsistencies in our svids[] array.  Since both the SOP and SOP\u0027 discover SVID responses are parsed with dfp_consume_svids(), I\u0027d expect there to be two entries for the Intel SVID present in the array.  However, we\u0027re only incrementing our svid_idx (which walks the svids array during mode parsing) for the SOP\u0027 response.  \n\nWould you be able to confirm the contents of your svids[] array and whether it appears consistent with your thunderbolt port partner\u0027s mode responses?\n\nIt would be more consistent for all mode responses to populate the array and increment the index, or for only SOP modes to be placed in the svids array.  It would probably also be more precise to detect the dev_mode and cable_mode via checking the SVID of the response (which I believe would be in payload[0], the VDM header).",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 3
+      },
+      "revId": "81660771d951a5187c88c2eedb3799bbf2262fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
