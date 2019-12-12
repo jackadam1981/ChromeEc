@@ -94,6 +94,30 @@
       "revId": "76f923047f4395993d4df7bae0c7d7d515075887",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37867752_27e1aff1",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-12T09:35:09Z",
+      "side": 0,
+      "message": "Charger should terminate charging current automatically because enable MT6370 EOC function.\nAlthough limit the smallest request current as 500mA, in fact charging current would be 0.",
+      "parentUuid": "0ee64acc_a1dfc064",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "76f923047f4395993d4df7bae0c7d7d515075887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
