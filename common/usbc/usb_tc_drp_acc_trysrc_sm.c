@@ -84,6 +84,8 @@
 #define TC_FLAGS_POWER_STATE_CHANGE     BIT(23)
 /* Flag to note the TCPM supports auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(24)
+/* Flag to note state of TCPM Auto Discharge */
+#define TC_FLAGS_AUTO_DISCHARGE_DISCON  BIT(25)
 
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
@@ -1748,6 +1750,11 @@ static void tc_unattached_snk_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC)
 		print_current_state(port);
 
+	if (TC_CHK_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCON)) {
+		TC_CLR_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCON);
+		tcpm_enable_auto_discharge_disconnect(port, 0);
+	}
+
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
 
@@ -1931,6 +1938,13 @@ static void tc_attached_snk_entry(const int port)
 
 	print_current_state(port);
 
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+		/* Connected as Sink */
+		CPRINTS("C%d CONNECTED as SINK", port);
+		if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+			hook_notify(HOOK_USB_PD_CONNECT);
+	}
+
 	/* Clear Low Power Mode Request */
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED);
 
@@ -1975,6 +1989,11 @@ static void tc_attached_snk_entry(const int port)
 				pd_is_port_partner_dualrole(port) ?
 				CAP_DUALROLE : CAP_DEDICATED);
 		}
+	}
+
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+		TC_SET_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCON);
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
 
 	/* Apply Rd */
@@ -2094,13 +2113,20 @@ static void tc_attached_snk_run(const int port)
 
 static void tc_attached_snk_exit(const int port)
 {
-	/*
-	 * If supplying VCONN, the port shall cease to supply
-	 * it within tVCONNOFF of exiting Attached.SNK if not PR swapping.
-	 */
-	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON) &&
-	    !TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP))
-		set_vconn(port, 0);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
+		/*
+		 * If supplying VCONN, the port shall cease to supply
+		 * it within tVCONNOFF of exiting Attached.SNK if not
+		 * PR swapping.
+		 */
+		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
+			set_vconn(port, 0);
+
+		/* Disconnect as Sink */
+		CPRINTS("C%d DISCONNECTED as SINK", port);
+		if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+			hook_notify(HOOK_USB_PD_DISCONNECT);
+	}
 
 	/* Clear flags after checking Vconn status */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP | TC_FLAGS_POWER_OFF_SNK);
@@ -2409,6 +2435,11 @@ static void tc_unattached_src_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK)
 		print_current_state(port);
 
+	if (TC_CHK_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCON)) {
+		TC_CLR_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCON);
+		tcpm_enable_auto_discharge_disconnect(port, 0);
+	}
+
 	if (IS_ENABLED(CONFIG_USBC_PPC)) {
 		/* There is no sink connected. */
 		ppc_sink_is_connected(port, 0);
@@ -2569,6 +2600,13 @@ static void tc_attached_src_entry(const int port)
 
 	print_current_state(port);
 
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+		/* Connected as Source */
+		CPRINTS("C%d CONNECTED as SOURCE", port);
+		if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+			hook_notify(HOOK_USB_PD_CONNECT);
+	}
+
 	/* Run function relies on timeout being 0 or meaningful */
 	tc[port].timeout = 0;
 
@@ -2658,6 +2696,11 @@ static void tc_attached_src_entry(const int port)
 			USB_SWITCH_DISCONNECT, tc[port].polarity);
 	}
 #endif /* CONFIG_USB_PE_SM */
+
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+		TC_SET_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCON);
+		tcpm_enable_auto_discharge_disconnect(port, 1);
+	}
 
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
@@ -2816,10 +2859,16 @@ static void tc_attached_src_exit(const int port)
 	 */
 	tc_src_power_off(port);
 
-	/* Disable VCONN if not power role swapping */
-	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON) &&
-	    !TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP))
-		set_vconn(port, 0);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
+		/* Disable VCONN if not power role swapping */
+		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
+			set_vconn(port, 0);
+
+		/* Disconnect as Source */
+		CPRINTS("C%d DISCONNECTED as SOURCE", port);
+		if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
+			hook_notify(HOOK_USB_PD_DISCONNECT);
+	}
 
 	/* Clear PR swap flag after checking for Vconn */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
