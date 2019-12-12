@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1bd87e26_3b5d218e",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-12T06:24:18Z",
+      "side": 1,
+      "message": "Does ADC get inited before HOOK_INIT? Or how do we ensure ADC works?",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 48
+      },
+      "revId": "8e1632a23501b486365127d44a8a775209834eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "951c94a9_22247c77",
         "filename": "board/kodama/board.c",
         "patchSetId": 5
