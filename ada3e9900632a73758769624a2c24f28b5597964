@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46a5ac44_6c658317",
+        "filename": "power/cometlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2019-12-12T09:05:12Z",
+      "side": 1,
+      "message": "Add hook_notify(HOOK_CHIPSET_PRE_INIT) because issue always happened before S5-\u003eS3.",
+      "revId": "ada3e9900632a73758769624a2c24f28b5597964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
