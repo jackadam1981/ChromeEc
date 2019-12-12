@@ -201,6 +201,12 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 	} else {
 		if (ap_rst_overdriven) {
 			/*
+			 * The following logic affects the JTAG work flow,
+			 * check b/145901185. Not execute it in the early
+			 * bringup phase.
+			 */
+#ifndef CONFIG_BRINGUP
+			/*
 			 * Servo or Cr50 releases the WARM_RESET_L signal.
 			 *
 			 * Cold reset the PMIC, doing S0->S5->S0 transition,
@@ -210,10 +216,10 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 			 * high-Z both AP_RST_L and PS_HOLD.
 			 */
 			request_cold_reset();
+#endif
 		}
 		/* If not overdriven, just a normal power-up, do nothing. */
 	}
-
 	power_signal_interrupt(signal);
 }
 
