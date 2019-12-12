@@ -16,6 +16,24 @@
       "revId": "9c012f68635eee0e63a5f462f23e6e8b721f1f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec710611_70e38e84",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-12-12T19:42:31Z",
+      "side": 1,
+      "message": "We can certainly exclude \"reenable\" like I did with other words (see the --ignore-words-list in the command), although as I\u0027m typing this Chrome is telling me that it\u0027s misspelled...\n\nhttps://www.merriam-webster.com/dictionary/reenable",
+      "parentUuid": "c626a0f3_59f27042",
+      "revId": "9c012f68635eee0e63a5f462f23e6e8b721f1f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
