@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd7930a7_3ed8edad",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-12T23:39:35Z",
+      "side": 1,
+      "message": "You should mask this with SYV682X_HV_ILIM_MASK to prevent overflow into bit 7.",
+      "range": {
+        "startLine": 341,
+        "startChar": 11,
+        "endLine": 341,
+        "endChar": 45
+      },
+      "revId": "536f205a24b481a1ff75620bb602fcf627154602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acccbd35_06e47748",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-12T23:39:35Z",
+      "side": 1,
+      "message": "No longer used.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "536f205a24b481a1ff75620bb602fcf627154602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3ab54f_3e3f3a76",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-12T23:39:35Z",
+      "side": 1,
+      "message": "nit - I would prefer (BIT(6)|BIT(5)) here. I find it clearer when referring back to the spec that the macro is correct.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "536f205a24b481a1ff75620bb602fcf627154602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf3421a_4aa49d98",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-12T23:39:35Z",
+      "side": 1,
+      "message": "Nit - document the parameters.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 73
+      },
+      "revId": "536f205a24b481a1ff75620bb602fcf627154602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
