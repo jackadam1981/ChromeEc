@@ -384,3 +384,9 @@ static void cbi_init(void)
 	CPRINTS("Board ID: %d", board_id);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+
+/* Default no action in baseboard.c */
+__attribute__((weak)) void all_sys_pgood_check_reboot(void)
+{
+	return;
+}
