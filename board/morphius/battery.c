@@ -59,7 +59,89 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c    = 75,
 		},
 	},
+	/* SMP SB10x63140 */
+	[BATTERY_SMP] = {
+		.fuel_gauge = {
+			.manuf_name = "SMP",
+			.ship_mode = {
+				.reg_addr = 0x34,
+				.reg_data = { 0x0000, 0x1000 },
+			},
+			.fet = {
+				.reg_addr = 0x34,
+				.reg_mask = 0x0100,
+				.disconnect_val = 0x0100,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 8800, /* mV */
+			.voltage_normal		= 7680, /* mV */
+			.voltage_min		= 6000,  /* mV */
+			.precharge_current	= 332,	 /* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 50,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= -20,
+			.discharging_max_c	= 60,
+		},
+	},
+	/* LGC SB10X63137  */
+	[BATTERY_LGC] = {
+		.fuel_gauge = {
+			.manuf_name = "LGC",
+			.ship_mode = {
+				.reg_addr = 0x34,
+				.reg_data = { 0x0000, 0x1000 },
+			},
+			.fet = {
+				.reg_addr = 0x34,
+				.reg_mask = 0x0100,
+				.disconnect_val = 0x0100,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 8800, /* mV */
+			.voltage_normal		= 7700, /* mV */
+			.voltage_min		= 6000,  /* mV */
+			.precharge_current	= 181,	 /* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 50,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= -20,
+			.discharging_max_c	= 73,
+		},
+	},
+	/* Sunwoda L18D3PG1  */
+	[BATTERY_SUNWODA] = {
+		.fuel_gauge = {
+			.manuf_name = "SUNWODA",
+			.ship_mode = {
+				.reg_addr = 0x34,
+				.reg_data = { 0x0000, 0x1000 },
+			},
+			.fet = {
+				.reg_addr = 0x34,
+				.reg_mask = 0x0100,
+				.disconnect_val = 0x0100,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 8800, /* mV */
+			.voltage_normal		= 7680, /* mV */
+			.voltage_min		= 6000,  /* mV */
+			.precharge_current	= 333,	 /* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 60,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= -20,
+			.discharging_max_c	= 60,
+		},
+	},
 };
+
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_AP18F4M;
