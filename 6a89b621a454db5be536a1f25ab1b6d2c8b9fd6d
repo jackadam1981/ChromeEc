@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "df6b7054_5979c195",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-12T16:12:15Z",
+      "side": 1,
+      "message": "I mentioned creating a function elsewhere to retrieve these, so this can be kept static",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc4988ce_4059d3f7",
         "filename": "common/thermal.c",
         "patchSetId": 7
@@ -87,6 +110,75 @@
         "startChar": 17,
         "endLine": 182,
         "endChar": 42
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325a47e4_2f1daf91",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-12T16:12:15Z",
+      "side": 1,
+      "message": "So you\u0027ve got a loop here over all fans, and then board_override_fan_control also loops over all of the fans, so there\u0027s redundancy here.  You could either just call board_override_fan_control() and let it deal with all of the fans, or keep the loop here and pass an index into board_override_fan_control() indicating which fan to control.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 44
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ab8bcc_623a9aba",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-12T16:12:15Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be needed",
+      "range": {
+        "startLine": 187,
+        "startChar": 31,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0715d69c_96505c05",
+        "filename": "include/fan.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-12T16:12:15Z",
+      "side": 1,
+      "message": "We tend to avoid using extern to get access to variables from other modules.  What about a function like is_thermal_control_enabled(int idx) ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 6
       },
       "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
