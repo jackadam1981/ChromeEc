@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9d961574_b6bc7a76",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-12T04:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519fc2a0_130343a0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "b53bfe88e0a2f8d31cb10fe38c66a486b68598a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57a00035_935b7218",
         "filename": "common/i2c_master.c",
         "patchSetId": 28
