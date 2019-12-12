@@ -22,6 +22,30 @@
       "revId": "76f923047f4395993d4df7bae0c7d7d515075887",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64165760_00fb5d8e",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-12T08:28:12Z",
+      "side": 0,
+      "message": "Hi Eric.\nIf set requested voltage and current as 0, in fact MT6370 VOREG is 3.9V and ICHG is 500mA.\nIf MT6370 VOREG is 3.9V, I encounter an abnormal situation that battery starts to \ndischarge after battery is charged to full and set requested voltage and current as 0 \nwith adapter.\nI communicatｅd with charger vendor who suggest to keep VOREG as 4.4V all the time.",
+      "parentUuid": "c90e6ea4_9318365a",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "76f923047f4395993d4df7bae0c7d7d515075887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

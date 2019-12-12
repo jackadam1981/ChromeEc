@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "888483f1_226d34b7",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-12T08:28:12Z",
+      "side": 1,
+      "message": "\u003e \"minimun\" is a possible misspelling of \"minimum\".\n\nPlease Fix",
+      "parentUuid": "8a972f53_d59f0517",
+      "range": {
+        "startLine": 133,
+        "startChar": 13,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "ead53cb1c10afe8a7f8b35eece7d2cc7abc108c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
