@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "071cfeed_cdc22908",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-13T18:31:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2491d762_21e19556",
+      "revId": "d73daaf3fd5f1bd9a89fa9ed1e177ffe9fb24bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2280d92a_2682887c",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 1
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "d4475e97_acce24d9",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-13T18:31:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b49433ad_8457ff61",
+      "range": {
+        "startLine": 351,
+        "startChar": 10,
+        "endLine": 351,
+        "endChar": 39
+      },
+      "revId": "d73daaf3fd5f1bd9a89fa9ed1e177ffe9fb24bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84f6f014_c977a86e",
         "filename": "driver/charger/isl9241.h",
         "patchSetId": 1
@@ -119,6 +161,30 @@
       "side": 1,
       "message": "Yes. But, I\u0027m not sure this is necessary now. It (bit 13) does fix the current spike at the beginning if 2-level adapter current is enabled, but I can\u0027t replicate the original issue now that the 2-level current limit is disabled. This was an error but I wouldn\u0027t see it. This should be 2 CLs maybe anyway because this attempts to fix 2 distint behaviors",
       "parentUuid": "84f6f014_c977a86e",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 44
+      },
+      "revId": "d73daaf3fd5f1bd9a89fa9ed1e177ffe9fb24bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34d5d8d_425a4e02",
+        "filename": "driver/charger/isl9241.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-13T18:31:28Z",
+      "side": 1,
+      "message": "In that case, would you remove this line from the CL? In general, it\u0027s good for the registers and fields to be represented in the code, but this line no longer has anything to do with this change, and Control 4 isn\u0027t used at all in the code.",
+      "parentUuid": "b8dba58d_21b6d5e0",
       "range": {
         "startLine": 98,
         "startChar": 42,
