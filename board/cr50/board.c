@@ -294,6 +294,12 @@ static struct board_cfg board_cfg_table[] = {
 			BOARD_CLOSED_SOURCE_SET1 | BOARD_NO_INA_SUPPORT |
 			BOARD_ALLOW_CHANGE_TPM_MODE,
 	},
+	/* Dedede/Puff/Volteer: DIOA9 = 5K PU, DIO1 = 1M PU */
+	{
+		.strap_cfg = 0x0E,
+		.board_properties = BOARD_SLAVE_CONFIG_SPI |
+			BOARD_USE_PLT_RESET,
+	},
 
 };
 
