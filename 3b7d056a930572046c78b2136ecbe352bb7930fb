@@ -45,6 +45,30 @@
       "revId": "3b7d056a930572046c78b2136ecbe352bb7930fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562d5790_4f91a0bb",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-12-13T02:05:03Z",
+      "side": 1,
+      "message": "Make sense. Most of the people don\u0027t need this patch. Probably the few people who uses JTAG compile their own EC without this whole interrupt logic.",
+      "parentUuid": "7529b06e_d51ad0ab",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 22
+      },
+      "revId": "3b7d056a930572046c78b2136ecbe352bb7930fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
