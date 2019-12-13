@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "51c31b62_60ccb1e2",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T22:59:25Z",
+      "side": 1,
+      "message": "Yes, I2C_PORT_ALS is only used by the AL3010, ISL29035, and OPT3001 drivers.\nThese drivers appear to be deprecated and do not support the motionsense task.",
+      "parentUuid": "66e89b14_900e638d",
+      "revId": "66ab96868509108dc560f29fc191d75be4313f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f162a54_844b1f73",
         "filename": "board/volteer/gpio.inc",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "66ab96868509108dc560f29fc191d75be4313f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cf4765_3c5b9254",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T22:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f162a54_844b1f73",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "66ab96868509108dc560f29fc191d75be4313f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
