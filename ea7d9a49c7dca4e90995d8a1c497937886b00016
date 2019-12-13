@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abc779ad_dd3a3e92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-13T18:58:06Z",
+      "side": 1,
+      "message": "Replace tag with \u0027isl9241\u0027 and just say change register settings for OCP",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "ea7d9a49c7dca4e90995d8a1c497937886b00016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8230ae6d_40918b92",
+        "filename": "driver/charger/isl9241.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-13T18:58:06Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d remove this since this change isn\u0027t using this at all.",
+      "revId": "ea7d9a49c7dca4e90995d8a1c497937886b00016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
