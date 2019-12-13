@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "142d8287_b47b64cd",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-13T20:36:23Z",
+      "side": 1,
+      "message": "I could go either way on this (if you feel strongly about it i\u0027ll update), I don\u0027t think it affects the final output binary and I went with this because it was more readable to have explicit names for each bin.",
+      "parentUuid": "1bc8c509_02e584df",
+      "revId": "31f594c39d9ab40bd28f44b423e22d511cabac9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "460857b1_0ead9397",
         "filename": "common/stillness_detector.c",
         "patchSetId": 18
@@ -33,6 +51,24 @@
       "revId": "31f594c39d9ab40bd28f44b423e22d511cabac9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133b6530_02447564",
+        "filename": "common/stillness_detector.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-13T20:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "460857b1_0ead9397",
+      "revId": "31f594c39d9ab40bd28f44b423e22d511cabac9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d34e45c8_fd3eed50",
+        "filename": "include/stillness_detector.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-13T20:36:23Z",
+      "side": 1,
+      "message": "Probably not, I image we can do 16.",
+      "parentUuid": "f190b5c0_e1910abb",
+      "revId": "bdf7b147d9da1e61354c6375eb53cdd4864af66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fe91a8e_4253472c",
         "filename": "include/stillness_detector.h",
         "patchSetId": 20
@@ -33,6 +51,24 @@
       "revId": "bdf7b147d9da1e61354c6375eb53cdd4864af66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68fe8111_6edc1fa5",
+        "filename": "include/stillness_detector.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-12-13T20:36:23Z",
+      "side": 1,
+      "message": "See my comment on the .c file. I don\u0027t think it actually makes a difference and I personally prefer readability. If you feel strongly about it I\u0027ll change to an array.",
+      "parentUuid": "2fe91a8e_4253472c",
+      "revId": "bdf7b147d9da1e61354c6375eb53cdd4864af66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
