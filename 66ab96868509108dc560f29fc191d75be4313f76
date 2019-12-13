@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66e89b14_900e638d",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-13T17:49:18Z",
+      "side": 1,
+      "message": "This is accurate. Is I2C_PORT_ALS not needed?",
+      "revId": "66ab96868509108dc560f29fc191d75be4313f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f162a54_844b1f73",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2019-12-13T17:49:18Z",
+      "side": 1,
+      "message": "EC_ALS_RGB_INT_L?",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "66ab96868509108dc560f29fc191d75be4313f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
