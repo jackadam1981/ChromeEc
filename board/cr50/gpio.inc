@@ -210,7 +210,6 @@ UNIMPLEMENTED(ENTERING_RW)
 PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
                                                 /* We can't pull it up */
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
-PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
 PINMUX(GPIO(MONITOR_I2CS_SDA), A1, GPIO_INPUT)
 
 /*
