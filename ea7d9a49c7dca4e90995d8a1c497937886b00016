@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6267b0e9_0a3ceab5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2019-12-13T23:52:22Z",
+      "side": 1,
+      "message": "Good point",
+      "parentUuid": "abc779ad_dd3a3e92",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "ea7d9a49c7dca4e90995d8a1c497937886b00016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8230ae6d_40918b92",
         "filename": "driver/charger/isl9241.h",
         "patchSetId": 2
