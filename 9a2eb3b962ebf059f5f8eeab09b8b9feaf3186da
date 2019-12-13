@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bf6e2bb_fa145148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-12-13T20:58:39Z",
+      "side": 1,
+      "message": "We should probably add warnings on why this is a bad idea to use all the time (and how to identify such a case), just in case someone forgets this is on.\n\nFurther reading:\nb/112564635\n\"EC warm reset is failing due to crashdump cookies being set.\"\n\n\"Everything that reboots the CPU should perform a TPM reset. Otherwise, as you can see in above logs, firmware won\u0027t be happy. Having a reset that always puts you in recovery mode isn\u0027t that useful.\"\n\nb/112723105\n\"One of the caveats is that there might have been a SPMI transaction in progress and things might get wedged. It\u0027s probably fine during programming, but when we come out we should make sure things are in good state.\"\n\nSome of those concerns might be mitigated by the JTAG scripts knowing what to do with the SOC, but the overall system might still not be too happy regarding the TPM.",
+      "revId": "9a2eb3b962ebf059f5f8eeab09b8b9feaf3186da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
