@@ -36,9 +36,12 @@ GPIO_INT(DEPRECATED_AP_RST_REQ, PIN(C, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN | GPIO
  * to make it low. Overload the interrupt function chipset_warm_reset_interrupt
  * for not only signalling power_signal_interrupt but also handling the logic
  * of WARM_RESET_L which is pulled-up by the same rail of POWER_GOOD.
+ *
+ * XXX: Hack to replace chipset_warm_reset_interrupt with power_signal_interrupt
+ * that makes JTAG work.
  */
-GPIO_INT(POWER_GOOD,        PIN(5, 4), GPIO_INT_BOTH | GPIO_PULL_DOWN, chipset_power_good_interrupt)  /* SRC_PP1800_S10A from PMIC */
-GPIO_INT(WARM_RESET_L,      PIN(F, 4), GPIO_INT_BOTH | GPIO_SEL_1P8V, chipset_warm_reset_interrupt)  /* AP warm reset */
+GPIO_INT(POWER_GOOD,        PIN(5, 4), GPIO_INT_BOTH | GPIO_PULL_DOWN, power_signal_interrupt)  /* SRC_PP1800_S10A from PMIC */
+GPIO_INT(WARM_RESET_L,      PIN(F, 4), GPIO_INT_BOTH | GPIO_SEL_1P8V, power_signal_interrupt)  /* AP warm reset */
 GPIO_INT(AP_EC_SPI_CS_L,    PIN(5, 3), GPIO_INT_FALLING | GPIO_PULL_DOWN, shi_cs_event)  /* EC SPI Chip Select */
 
 /* Sensor interrupts */
