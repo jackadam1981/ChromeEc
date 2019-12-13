@@ -46,6 +46,30 @@
       "revId": "784e6f244fd4aeac349b1bf570afc1b0f51890e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f61e27b_ef5e1150",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-12-13T03:45:14Z",
+      "side": 1,
+      "message": "Based on issue comment#19, issue still can be reproduced with current HW fix .\nAfter confirm with EE, still need this work-around for all HW version.\nIf you need more information for this work-around, we will ask EE to explain detail on issue.",
+      "parentUuid": "1c779f05_3b54635f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "784e6f244fd4aeac349b1bf570afc1b0f51890e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
