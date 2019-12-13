@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f31fe5c3_e16ccba8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Convert to IS_ENABLED()",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db24576_ad10201d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Please split the enum definition from the cable_polarity definition. Then you can use the enum as the return type for get-cable_polarity.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca7c97f9_96c7a463",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Use enum tcpc_cc_pull",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e728ee_e736fbae",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Use enum - see above.",
+      "range": {
+        "startLine": 278,
+        "startChar": 7,
+        "endLine": 278,
+        "endChar": 10
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5261b3_d0d3dc6a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Use enum",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 4
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16cab918_98262b59",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "use enum",
+      "range": {
+        "startLine": 360,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 4
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4232057_f7530bfc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Use IS_ENABLED()",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 31
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a47cb6_339a33b9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-13T21:34:55Z",
+      "side": 1,
+      "message": "Duplicated code in these two paths.  Maybe create a local bool that is set to true based on the logic above, and the pull the common code into a common if before the function return.",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
