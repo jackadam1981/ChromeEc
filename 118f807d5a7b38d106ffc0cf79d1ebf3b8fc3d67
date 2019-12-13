@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13df7ea7_b644636e",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-13T23:49:48Z",
+      "side": 1,
+      "message": "RESET_CAUSE_WDG specifically, indicates if either of the two watchdog mechanisms caused the reset.",
+      "parentUuid": "5b563931_4eedda0f",
+      "range": {
+        "startLine": 563,
+        "startChar": 65,
+        "endLine": 564,
+        "endChar": 21
+      },
+      "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9caf51_7bbb522f",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2b2349eb_edf73ab2",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-13T23:49:48Z",
+      "side": 1,
+      "message": "Technically they should be, but this mechanism is not actually correct, so I figured I would fix/change this behavior in a follow up CL.\n\na. It grabs reserved bits that are sometimes set\nb. Not all causes are named here, so the composition would be mixed BIT and names.\n\nI figured I should just convert these to their BIT equivalent now, and then fix/change the behavior in a follow up CL.",
+      "parentUuid": "6a9caf51_7bbb522f",
+      "range": {
+        "startLine": 564,
+        "startChar": 30,
+        "endLine": 565,
+        "endChar": 21
+      },
+      "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f670f7e6_a88b825b",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-13T20:43:19Z",
       "side": 1,
       "message": "Are these from \u0027Table 51. Reset source identification (RCC_RSR)\u0027? Why don\u0027t we name each bit?",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 46
+      },
+      "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82bdd0a0_4093cd1e",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-13T23:49:48Z",
+      "side": 1,
+      "message": "These specifically are not represented in Table 51, since these are from a different register, STM32_PWR_CPUCR.\n\nI agree, all bits should be documented in the registers headers. I intended to straighten out these power/reset registers discrepancies in follow up CLs",
+      "parentUuid": "f670f7e6_a88b825b",
       "range": {
         "startLine": 559,
         "startChar": 0,
