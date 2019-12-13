@@ -45,6 +45,29 @@
       "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f670f7e6_a88b825b",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-13T20:43:19Z",
+      "side": 1,
+      "message": "Are these from \u0027Table 51. Reset source identification (RCC_RSR)\u0027? Why don\u0027t we name each bit?",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 46
+      },
+      "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
