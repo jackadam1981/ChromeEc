@@ -13,8 +13,6 @@
 #include "ioexpander.h"
 #include "usb_mux.h"
 
-#define I2C_MAX_RETRIES 2
-
 /* Stack space is limited, so put the buffer somewhere else */
 static uint8_t buf[PI3DPX1207_NUM_REGISTERS];
 
@@ -27,7 +25,6 @@ static int pi3dpx1207_i2c_write(int i2c_port,
 				uint8_t val)
 {
 	int rv = EC_SUCCESS;
-	int attempt;
 
 	if (offset >= PI3DPX1207_NUM_REGISTERS)
 		return EC_ERROR_INVAL;
@@ -42,23 +39,14 @@ static int pi3dpx1207_i2c_write(int i2c_port,
 	 * in case this happens.
 	 */
 	if (offset > 0) {
-		attempt = 0;
-		do {
-			attempt++;
-			rv = i2c_xfer(i2c_port, addr_flags,
-				      NULL, 0, buf, offset);
-		} while ((rv != EC_SUCCESS) && (attempt < I2C_MAX_RETRIES));
+		rv = i2c_xfer(i2c_port, addr_flags,
+			      NULL, 0, buf, offset);
 	}
 
 	if (rv == EC_SUCCESS) {
 		buf[offset] = val;
-
-		attempt = 0;
-		do {
-			attempt++;
-			rv = i2c_xfer(i2c_port, addr_flags,
-				      buf, offset + 1, NULL, 0);
-		} while ((rv != EC_SUCCESS) && (attempt < I2C_MAX_RETRIES));
+		rv = i2c_xfer(i2c_port, addr_flags,
+			      buf, offset + 1, NULL, 0);
 	}
 	return rv;
 }

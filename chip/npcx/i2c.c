@@ -38,6 +38,11 @@
 #define I2C_MIN_TIMEOUT 25
 
 /*
+ * Number of retries to perform for chip_i2c_xfer
+ */
+#define I2C_XFER_MAX_RETRIES 2
+
+/*
  * I2C module that supports FIFO mode has 32 bytes Tx FIFO and
  * 32 bytes Rx FIFO.
  */
@@ -876,7 +881,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-int chip_i2c_xfer(const int port,
+static int do_i2c_xfer(const int port,
 		  const uint16_t slave_addr_flags,
 		  const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
@@ -942,6 +947,23 @@ int chip_i2c_xfer(const int port,
 	CPRINTS("-Err:0x%02x", p_status->err_code);
 
 	return (p_status->err_code == SMB_OK) ? EC_SUCCESS : EC_ERROR_UNKNOWN;
+}
+
+int chip_i2c_xfer(const int port,
+		  const uint16_t slave_addr_flags,
+		  const uint8_t *out, int out_size,
+		  uint8_t *in, int in_size, int flags)
+{
+	int rv = EC_SUCCESS;
+	int attempt = 0;
+
+	do {
+		attempt++;
+		rv = do_i2c_xfer(port, slave_addr_flags,
+				 out, out_size,
+				 in, in_size, flags);
+	} while ((rv != EC_SUCCESS) && (attempt < I2C_XFER_MAX_RETRIES));
+	return rv;
 }
 
 /**
