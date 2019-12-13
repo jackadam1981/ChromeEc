@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b563931_4eedda0f",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-13T20:35:07Z",
+      "side": 1,
+      "message": "RESET_CAUSE_WDG?",
+      "range": {
+        "startLine": 563,
+        "startChar": 65,
+        "endLine": 564,
+        "endChar": 21
+      },
+      "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9caf51_7bbb522f",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-13T20:35:07Z",
+      "side": 1,
+      "message": "These are named, right?",
+      "range": {
+        "startLine": 564,
+        "startChar": 30,
+        "endLine": 565,
+        "endChar": 21
+      },
+      "revId": "118f807d5a7b38d106ffc0cf79d1ebf3b8fc3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
