@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "342afb01_f5dde730",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e7b614c_3547ebf3",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2505e295_feb25b8f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a1da7e24_7c99cd63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2505e295_feb25b8f",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d540d7f_03e4674b",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 7
@@ -64,6 +112,29 @@
         "startChar": 0,
         "endLine": 170,
         "endChar": 0
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82f237a_5ffa84ba",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Seems there is a misunderstanding, our thermal engineer was recommending \"AND\" operation here.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 53
       },
       "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -94,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "a3114b1b_5b59712b",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df6b7054_5979c195",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc4988ce_4059d3f7",
         "filename": "common/thermal.c",
         "patchSetId": 7
@@ -114,6 +209,30 @@
       "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0429f3a_00ba333d",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4988ce_4059d3f7",
+      "range": {
+        "startLine": 182,
+        "startChar": 17,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +282,54 @@
     },
     {
       "key": {
+        "uuid": "25125683_5655690f",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "thanks for this catch. 😊",
+      "parentUuid": "325a47e4_2f1daf91",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 44
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a79a56_17dedec2",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ab8bcc_623a9aba",
+      "range": {
+        "startLine": 187,
+        "startChar": 31,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0715d69c_96505c05",
         "filename": "include/fan.h",
         "patchSetId": 7
@@ -183,6 +350,30 @@
       "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8259d41_7d4e5c71",
+        "filename": "include/fan.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-13T03:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0715d69c_96505c05",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "6a89b621a454db5be536a1f25ab1b6d2c8b9fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
