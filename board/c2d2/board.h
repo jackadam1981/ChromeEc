@@ -1,0 +1,111 @@
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Servo micro configuration */
+
+#ifndef __CROS_EC_BOARD_H
+#define __CROS_EC_BOARD_H
+
+/*
+ * Allow dangerous commands all the time, since we don't have a write protect
+ * switch.
+ */
+#define CONFIG_SYSTEM_UNLOCKED
+
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
+
+#define CONFIG_BOARD_PRE_INIT
+
+/* Enable USART */
+#define CONFIG_STREAM_USART
+#define CONFIG_STREAM_USART1	/* EC USART */
+#define CONFIG_STREAM_USART3	/* AP USART - not connected by default */
+#define CONFIG_STREAM_USART4	/* H1 USART */
+#define CONFIG_STREAM_USB
+#define CONFIG_CMD_USART_INFO
+
+/* The UART console is on USART2 (PA14/PA15) */
+#undef CONFIG_UART_CONSOLE
+#define CONFIG_UART_CONSOLE 2
+#undef CONFIG_UART_TX_DMA
+#undef CONFIG_UART_RX_DMA
+
+/* Optional features */
+#define CONFIG_STM_HWTIMER32
+#define CONFIG_HW_CRC
+
+/* USB Configuration */
+#define CONFIG_USB
+#define CONFIG_USB_CONSOLE
+#define CONFIG_USB_PID 0x5041
+#define CONFIG_USB_SERIALNO
+#define DEFAULT_SERIALNO "Uninitialized"
+#define CONFIG_USB_UPDATE
+
+
+/* USB interface indexes (use define rather than enum to expand them)
+ *
+ * Note these values are used in servo_interface.py for the 'interface' value
+ */
+#define USB_IFACE_USART4_STREAM	0	/* H1 */
+#define USB_IFACE_UPDATE	1
+#define USB_IFACE_SPI		2
+#define USB_IFACE_CONSOLE	3
+#define USB_IFACE_I2C		4
+#define USB_IFACE_USART3_STREAM	5	/* AP (not connected by default) */
+#define USB_IFACE_USART1_STREAM	6	/* EC */
+#define USB_IFACE_COUNT		7
+
+/* USB endpoint indexes (use define rather than enum to expand them) */
+#define USB_EP_CONTROL		0
+#define USB_EP_USART4_STREAM	1
+#define USB_EP_UPDATE		2
+#define USB_EP_SPI		3
+#define USB_EP_CONSOLE		4
+#define USB_EP_I2C		5
+#define USB_EP_USART3_STREAM	6
+#define USB_EP_USART1_STREAM	7
+#define USB_EP_COUNT		8
+
+/* Options features */
+#define CONFIG_ADC
+
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+
+#ifndef __ASSEMBLER__
+
+/* Timer selection */
+#define TIM_CLOCK32 2
+#define TIM_ADC     3
+
+#include "gpio_signal.h"
+
+/* USB string indexes */
+enum usb_strings {
+	USB_STR_DESC,
+	USB_STR_VENDOR,
+	USB_STR_PRODUCT,
+	USB_STR_SERIALNO,
+	USB_STR_VERSION,
+	USB_STR_USART4_STREAM_NAME,
+	USB_STR_UPDATE_NAME,
+	USB_STR_CONSOLE_NAME,
+	USB_STR_I2C_NAME,
+	USB_STR_USART3_STREAM_NAME,
+	USB_STR_USART1_STREAM_NAME,
+	USB_STR_COUNT
+};
+
+enum adc_channel {
+	ADC_H1_VREF,
+	ADC_EC_VREF,
+	ADC_CH_COUNT,
+};
+
+#endif /* !__ASSEMBLER__ */
+#endif /* __CROS_EC_BOARD_H */
