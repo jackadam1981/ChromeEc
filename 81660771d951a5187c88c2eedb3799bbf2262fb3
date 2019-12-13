@@ -22,6 +22,30 @@
       "revId": "81660771d951a5187c88c2eedb3799bbf2262fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26071d35_c739e95a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-13T17:30:13Z",
+      "side": 1,
+      "message": "Done\n\nmodified it only for TBT discover modes",
+      "parentUuid": "f09f0cb7_2e4cccd0",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 3
+      },
+      "revId": "81660771d951a5187c88c2eedb3799bbf2262fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
