@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2e56d6e_8f610235",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Due to the way PD_STATE_DRP_AUTO_TOGGLE is defined when auto toggle is not, this is not possible... but I moved the logic on whether to do this or not to above code that is already gating the same thing.",
+      "parentUuid": "f31fe5c3_e16ccba8",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6db24576_ad10201d",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2be68db4d610cb7d0836e980e9303373039836af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f530b656_e7f8c3f8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db24576_ad10201d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88a7ac7d_625f476b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca7c97f9_96c7a463",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62e728ee_e736fbae",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "2be68db4d610cb7d0836e980e9303373039836af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc7a01a5_4c18f1a5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62e728ee_e736fbae",
+      "range": {
+        "startLine": 278,
+        "startChar": 7,
+        "endLine": 278,
+        "endChar": 10
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "eac64af7_9d8e0a3c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5261b3_d0d3dc6a",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 4
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16cab918_98262b59",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "2be68db4d610cb7d0836e980e9303373039836af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81f20812_1ede53d0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16cab918_98262b59",
+      "range": {
+        "startLine": 360,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 4
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d91ad8d1_03cf49ea",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4232057_f7530bfc",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 31
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a47cb6_339a33b9",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "2be68db4d610cb7d0836e980e9303373039836af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea26bb7_00934229",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:10:34Z",
+      "side": 1,
+      "message": "This would be compiled down to just one option based on CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE, but will removed the appearance of duplicated code.\n\nDone",
+      "parentUuid": "d7a47cb6_339a33b9",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
