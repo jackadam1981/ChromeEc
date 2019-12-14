@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8c6e4fe_0985ab85",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1732,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-14T01:15:02Z",
+      "side": 1,
+      "message": "should it rather be (h-\u003eepoch \u003d\u003d 0) \u0026\u0026 ((h-\u003emajor_ \u003c\u003d 2) || (h-\u003emajor_ \u003c\u003d 4 \u0026\u0026 h-\u003eminor_ \u003c\u003d 18))\notherwise, 0.5.11 or 1.0.0 would still trigger the check",
+      "range": {
+        "startLine": 1732,
+        "startChar": 8,
+        "endLine": 1732,
+        "endChar": 46
+      },
+      "revId": "fa6119dc2cd69e711e9127241c2736e57706321c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
