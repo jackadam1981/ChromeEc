@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c9b062f_cfa29e57",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:11:26Z",
+      "side": 1,
+      "message": "When using IS_ENABLED, the code inside has to still be able to be compiled, in most cases.  Since definitions are not setup when BC12 TRIGGERS are not being used, these all fail.",
+      "parentUuid": "e3f2a7ae_133fad9c",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 977,
+        "endChar": 43
+      },
+      "revId": "73c265a5d1a05965da75e2c6ad257b4b327993cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c876a3f3_3e5559b6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "04535b75_18021051",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:11:26Z",
+      "side": 1,
+      "message": "When using IS_ENABLED, the code inside has to still be able to be compiled, in most cases.  Since definitions are not setup when BC12 TRIGGERS are not being used, these all fail.",
+      "parentUuid": "c876a3f3_3e5559b6",
+      "range": {
+        "startLine": 1767,
+        "startChar": 0,
+        "endLine": 1767,
+        "endChar": 43
+      },
+      "revId": "73c265a5d1a05965da75e2c6ad257b4b327993cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7947cf54_09535816",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "73c265a5d1a05965da75e2c6ad257b4b327993cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba21f74_61597394",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-14T20:11:26Z",
+      "side": 1,
+      "message": "When using IS_ENABLED, the code inside has to still be able to be compiled, in most cases.  Since definitions are not setup when BC12 TRIGGERS are not being used, these all fail.",
+      "parentUuid": "7947cf54_09535816",
+      "range": {
+        "startLine": 2462,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 43
+      },
+      "revId": "73c265a5d1a05965da75e2c6ad257b4b327993cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
