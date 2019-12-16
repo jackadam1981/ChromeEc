@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d967b3d4_e524679a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-16T20:40:57Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "b50146b1_72cb8ddf",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 19
+      },
+      "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec8bd08_5ba498a2",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8e86a3c5_3335afce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-16T20:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec8bd08_5ba498a2",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 33
+      },
+      "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6479a1c_530c1b1a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcec1dc9_7f21fbc7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-16T20:40:57Z",
+      "side": 1,
+      "message": "Yes, pd communication is gated on pd_master_enable.",
+      "parentUuid": "d6479a1c_530c1b1a",
+      "range": {
+        "startLine": 877,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 31
+      },
+      "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
