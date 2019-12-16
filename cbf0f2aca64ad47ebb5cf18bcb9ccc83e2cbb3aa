@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4c7753d_e275e798",
+        "filename": "common/usbc/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T16:32:28Z",
+      "side": 1,
+      "message": "should this be behind CONFIG_PD_CMD instead?",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "cbf0f2aca64ad47ebb5cf18bcb9ccc83e2cbb3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2026db2c_5dd67397",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T16:32:28Z",
+      "side": 1,
+      "message": "this seems like it should guard the entire file in the build.mk file",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "cbf0f2aca64ad47ebb5cf18bcb9ccc83e2cbb3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d01530_38499b38",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T16:32:28Z",
+      "side": 1,
+      "message": "you can restruct this to use IS_ENABLED. you might want to put \"state\" first though to make the logic easier to read",
+      "range": {
+        "startLine": 67,
+        "startChar": 38,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "cbf0f2aca64ad47ebb5cf18bcb9ccc83e2cbb3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23f99ac_d903e869",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T16:32:28Z",
+      "side": 1,
+      "message": "IS_ENABLED(..)",
+      "range": {
+        "startLine": 110,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "cbf0f2aca64ad47ebb5cf18bcb9ccc83e2cbb3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a400065_17e23802",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T16:32:28Z",
+      "side": 1,
+      "message": "IS_ENABLED",
+      "range": {
+        "startLine": 141,
+        "startChar": 30,
+        "endLine": 141,
+        "endChar": 57
+      },
+      "revId": "cbf0f2aca64ad47ebb5cf18bcb9ccc83e2cbb3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac19c8b_b0dc11a3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T16:32:28Z",
+      "side": 1,
+      "message": "is this code block the same as SNK_READY? If so, we should pull it out in to a single re-useable block",
+      "range": {
+        "startLine": 1472,
+        "startChar": 1,
+        "endLine": 1528,
+        "endChar": 13
+      },
+      "revId": "cbf0f2aca64ad47ebb5cf18bcb9ccc83e2cbb3aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
