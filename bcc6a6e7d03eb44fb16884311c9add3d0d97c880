@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f1c29551_2ecdcbc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-16T19:01:32Z",
+      "side": 1,
+      "message": "Returning random values is definitely bad but masking errors (and keep returning staled values perpetually) is also bad.\n\ni. We need to debug the bitbang issue first (since it\u0027s the root cause).\n\nii. Then, we should make virtual_battery_handler return errors legitimately (as you mentioned in #2).\n\niii. Then, we can probably return cached values (as done by the CL) within some time window (if it\u0027s still effective after i and ii are addressed).",
+      "parentUuid": "2aaa7782_52d4903f",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "bcc6a6e7d03eb44fb16884311c9add3d0d97c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a358a1e6_7efb8e04",
         "filename": "board/kodama/battery.c",
         "patchSetId": 3
