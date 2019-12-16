@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a394cb35_40dd60a4",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-16T17:41:40Z",
+      "side": 1,
+      "message": "what happened here?",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 672,
+        "endChar": 6
+      },
+      "revId": "548300e760399d2118282b422670fc8d7833f1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a46e385a_1730e015",
         "filename": "util/kconfig/Makefile.inc",
         "patchSetId": 1
