@@ -95,6 +95,26 @@ int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
 	return EC_ERROR_UNKNOWN;
 }
 
+int chip_i2c_set_freq(int port, int kbps)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+enum i2c_freq chip_i2c_get_freq(int port)
+{
+	switch (i2c_ports[port].kbps) {
+	case 1000:
+		return I2C_FREQ_1000KHZ;
+	case 400:
+		return I2C_FREQ_400KHZ;
+	case 100:
+		return I2C_FREQ_100KHZ;
+	}
+
+	/* fallback to 100k */
+	return I2C_FREQ_100KHZ;
+}
+
 int i2c_raw_get_scl(int port)
 {
 	return 1;
