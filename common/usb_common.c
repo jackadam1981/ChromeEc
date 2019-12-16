@@ -647,7 +647,7 @@ __overridable int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 			 * already known to be the latest update RW.
 			 */
 			if (!is_rw || !is_latest)
-				pd_send_host_event(PD_EVENT_UPDATE_DEVICE);
+				/* pd_send_host_event(PD_EVENT_UPDATE_DEVICE); */
 
 			CPRINTF("DevId:%d.%d SW:%d RW:%d\n",
 				HW_DEV_ID_MAJ(dev_id),
@@ -692,9 +692,9 @@ __overridable void svdm_safe_dp_mode(int port)
 	/* make DP interface safe until configure */
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
-	usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
+	/* usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
 		TYPEC_MUX_SAFE : TYPEC_MUX_NONE,
-		USB_SWITCH_CONNECT, pd_get_polarity(port));
+		USB_SWITCH_CONNECT, pd_get_polarity(port)); */
 
 	/* Isolate the SBU lines. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
@@ -778,7 +778,7 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 	/* Connect the SBU and USB lines to the connector. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 1);
-	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT, pd_get_polarity(port));
+	/* usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT, pd_get_polarity(port)); */
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
@@ -800,7 +800,7 @@ STATIC_IF(CONFIG_USB_PD_DP_HPD_GPIO)
 
 __overridable void svdm_dp_post_config(int port)
 {
-	const struct usb_mux *mux = &usb_muxes[port];
+	/* const struct usb_mux *mux = &usb_muxes[port]; */
 
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
@@ -813,8 +813,8 @@ __overridable void svdm_dp_post_config(int port)
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
-	if (mux->hpd_update)
-		mux->hpd_update(port, 1, 0);
+	/* if (mux->hpd_update)
+		mux->hpd_update(port, 1, 0); */
 
 #ifdef USB_PD_PORT_TCPC_MST
 	if (port == USB_PD_PORT_TCPC_MST)
@@ -826,7 +826,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
-	const struct usb_mux *mux = &usb_muxes[port];
+	/* const struct usb_mux *mux = &usb_muxes[port]; */
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	enum gpio_signal hpd = PORT_TO_HPD(port);
 	int cur_lvl = gpio_get_level(hpd);
@@ -878,8 +878,8 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	}
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
-	if (mux->hpd_update)
-		mux->hpd_update(port, lvl, irq);
+	/* if (mux->hpd_update)
+		mux->hpd_update(port, lvl, irq); */
 
 #ifdef USB_PD_PORT_TCPC_MST
 	if (port == USB_PD_PORT_TCPC_MST)
@@ -892,14 +892,14 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 
 __overridable void svdm_exit_dp_mode(int port)
 {
-	const struct usb_mux *mux = &usb_muxes[port];
+	/* const struct usb_mux *mux = &usb_muxes[port]; */
 
 	svdm_safe_dp_mode(port);
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	gpio_set_level(PORT_TO_HPD(port), 0);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
-	if (mux->hpd_update)
-		mux->hpd_update(port, 0, 0);
+	/* if (mux->hpd_update)
+		mux->hpd_update(port, 0, 0); */
 #ifdef USB_PD_PORT_TCPC_MST
 	if (port == USB_PD_PORT_TCPC_MST)
 		baseboard_mst_enable_control(port, 0);

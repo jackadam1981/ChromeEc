@@ -33,14 +33,38 @@
 #include "util.h"
 
 #if IT83XX_PD_EVB
+#define USB_PD_PORT_ITE_0       0
+#define USB_PD_PORT_ITE_1       1
+#define USB_PD_PORT_ITE_2       2
+
 int board_get_battery_soc(void)
 {
+	ccprints("get battery");
 	return 100;
 }
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{-1, -1, &it83xx_tcpm_drv},
-	{-1, -1, &it83xx_tcpm_drv},
+	[USB_PD_PORT_ITE_0] = {
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	[USB_PD_PORT_ITE_1] = {
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	[USB_PD_PORT_ITE_2] = {
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
 };
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
@@ -52,38 +76,59 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	else
 		cc1_enabled = enabled;
 
-	if (port) {
-		gpio_set_level(GPIO_USBPD_PORTB_CC2_VCONN, cc2_enabled);
-		gpio_set_level(GPIO_USBPD_PORTB_CC1_VCONN, cc1_enabled);
-	} else {
+	if (port == USBPD_PORT_A) {
 		gpio_set_level(GPIO_USBPD_PORTA_CC2_VCONN, cc2_enabled);
 		gpio_set_level(GPIO_USBPD_PORTA_CC1_VCONN, cc1_enabled);
+	} else if (port == USBPD_PORT_B) {
+		gpio_set_level(GPIO_USBPD_PORTB_CC2_VCONN, cc2_enabled);
+		gpio_set_level(GPIO_USBPD_PORTB_CC1_VCONN, cc1_enabled);
+	} else if (port == USBPD_PORT_C) {
+		gpio_set_level(GPIO_USBPD_PORTC_CC2_VCONN, cc2_enabled);
+		gpio_set_level(GPIO_USBPD_PORTC_CC1_VCONN, cc1_enabled);
 	}
+
+	ccprints("p%d Vconn cc1 %d, cc2 %d (On/Off)", port, cc1_enabled, cc2_enabled);
 }
 
 void board_pd_vbus_ctrl(int port, int enabled)
 {
-	if (port) {
-		gpio_set_level(GPIO_USBPD_PORTB_VBUS_INPUT, !enabled);
-		gpio_set_level(GPIO_USBPD_PORTB_VBUS_OUTPUT, enabled);
-		if (!enabled) {
-			gpio_set_level(GPIO_USBPD_PORTB_VBUS_DROP, 1);
-			udelay(MSEC);
-		}
-		gpio_set_level(GPIO_USBPD_PORTB_VBUS_DROP, 0);
-	} else {
+	ccprints("p%d Vbus %d(En/Dis)", port, enabled);
+	if (port == USBPD_PORT_A) {
 		gpio_set_level(GPIO_USBPD_PORTA_VBUS_INPUT, !enabled);
 		gpio_set_level(GPIO_USBPD_PORTA_VBUS_OUTPUT, enabled);
 		if (!enabled) {
 			gpio_set_level(GPIO_USBPD_PORTA_VBUS_DROP, 1);
-			udelay(MSEC);
+			udelay(10*MSEC);
 		}
 		gpio_set_level(GPIO_USBPD_PORTA_VBUS_DROP, 0);
+	} else if (port == USBPD_PORT_B) {
+		gpio_set_level(GPIO_USBPD_PORTB_VBUS_INPUT, !enabled);
+		gpio_set_level(GPIO_USBPD_PORTB_VBUS_OUTPUT, enabled);
+		if (!enabled) {
+			gpio_set_level(GPIO_USBPD_PORTB_VBUS_DROP, 1);
+			udelay(10*MSEC);
+		}
+		gpio_set_level(GPIO_USBPD_PORTB_VBUS_DROP, 0);
+	} else if (port == USBPD_PORT_C) {
+		gpio_set_level(GPIO_USBPD_PORTC_VBUS_INPUT, !enabled);
+		gpio_set_level(GPIO_USBPD_PORTC_VBUS_OUTPUT, enabled);
+		if (!enabled) {
+			gpio_set_level(GPIO_USBPD_PORTC_VBUS_DROP, 1);
+			udelay(10*MSEC);
+		}
+		gpio_set_level(GPIO_USBPD_PORTC_VBUS_DROP, 0);
 	}
+	if (enabled)
+		udelay(10*MSEC);
+}
+
+void pd_set_input_current_limit(int port, uint32_t max_ma,
+				uint32_t supply_voltage)
+{
 }
 #else
 /* EC EVB */
-void pd_task(void)
+void pd_task(void *u)
 {
 	while (1)
 		task_wait_event(-1);
@@ -99,8 +144,8 @@ void pd_task(void)
  * number of pwm channel greater than three.
  */
 const struct pwm_t pwm_channels[] = {
-	{7, 0,                     30000, PWM_PRESCALER_C4},
-	{0, PWM_CONFIG_DSLEEP,     100,   PWM_PRESCALER_C6},
+	{2, 0,                     30000, PWM_PRESCALER_C4},
+	{3, PWM_CONFIG_DSLEEP,     100,   PWM_PRESCALER_C6},
 };
 
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
@@ -156,8 +201,8 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
 	/* Convert to mV (3000mV/1024). */
-	{"ADC_VBUSSA", 3000, 1024, 0, CHIP_ADC_CH0}, /* GPI0, ADC0 */
-	{"ADC_VBUSSB", 3000, 1024, 0, CHIP_ADC_CH1}, /* GPI1, ADC1 */
+	{"ADC_VBUSSA", 3000, 1024, 0, CHIP_ADC_CH7}, /* GPI7, ADC7 */
+	{"ADC_VBUSSB", 3000, 1024, 0, CHIP_ADC_CH3}, /* GPI3, ADC3 */
 	{"ADC_EVB_CH_13", 3000, 1024, 0, CHIP_ADC_CH13}, /* GPL0, ADC13 */
 	{"ADC_EVB_CH_14", 3000, 1024, 0, CHIP_ADC_CH14}, /* GPL1, ADC14 */
 	{"ADC_EVB_CH_15", 3000, 1024, 0, CHIP_ADC_CH15}, /* GPL2, ADC15 */
@@ -207,7 +252,7 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* SPI devices */
-const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_FLASH_PORT, 0, -1},
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+//const struct spi_device_t spi_devices[] = {
+//	{ CONFIG_SPI_FLASH_PORT, 0, -1},
+//};
+//const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);

@@ -38,6 +38,8 @@ static int print_one_adc(int channel)
 	v = adc_read_channel(channel);
 	if (v == ADC_READ_ERROR)
 		return EC_ERROR_UNKNOWN;
+	if ((channel = CHIP_ADC_CH7) || (channel = CHIP_ADC_CH3))
+		v *= 11; // transfer to mv, adc value somehow lower than actual
 	ccprintf("  %s = %d\n", adc_channels[channel].name, v);
 	return EC_SUCCESS;
 }

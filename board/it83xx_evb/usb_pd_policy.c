@@ -9,6 +9,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "it83xx_pd.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -49,7 +50,7 @@ int pd_snk_is_vbus_provided(int port)
 					ADC_VBUSSA : ADC_VBUSSB);
 
 	/* level shift voltage of VBUS > threshold */
-	return (mv * 23 / 3) > PD_VBUS_PROVIDED_THRESHOLD;
+	return (mv * 11) > PD_VBUS_PROVIDED_THRESHOLD; //bcs ratio, vbus not precise
 }
 
 int pd_set_power_supply_ready(int port)

@@ -34,7 +34,7 @@
 /* TODO(b/133460224): enable properly chip config option. */
 #define CONFIG_FLASH_SIZE           0x00080000
 /* Chip IT83202 actually has PD port count */
-#define CONFIG_PD_PHY_PORT_COUNT    2
+#define CONFIG_PD_PHY_PORT_COUNT    3
 /* Embedded flash is KGD */
 #define IT83XX_CHIP_FLASH_IS_KGD
 /* chip id is 3 bytes */
