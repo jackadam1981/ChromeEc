@@ -45,6 +45,29 @@
       "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6479a1c_530c1b1a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-12-16T19:14:10Z",
+      "side": 1,
+      "message": "Is PD communication gated on this?  I also just realized that we may not be prohibiting PD communications in RO in the new stack. That should definitely be there. You may want to add that in a separate CL.",
+      "range": {
+        "startLine": 877,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 31
+      },
+      "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
