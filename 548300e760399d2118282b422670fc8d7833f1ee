@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "249e20cf_3329c2fc",
+        "filename": "util/kconfig/Makefile.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-12-16T10:51:21Z",
+      "side": 1,
+      "message": "It\u0027s a copy of my (pending) work over at https://review.coreboot.org/c/coreboot/+/37152/5/util/kconfig/Makefile.inc, which is for coreboot. If it helps to keep our projects synchronized, I\u0027ll happily replace \"coreboot specific\" with \"project specific\" or \"local\" in my CL.\n\nThe overall idea is to keep as many parts of Linux kconfig, including its build system, intact, so that we can merge in changes more easily. For this purpose, this Makefile wraps Linux\u0027s, providing just enough facilities to act as an adapter between the two build system schemes.",
+      "parentUuid": "a46e385a_1730e015",
+      "range": {
+        "startLine": 3,
+        "startChar": 8,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "548300e760399d2118282b422670fc8d7833f1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6883e54_82aae973",
         "filename": "util/kconfig/Makefile.inc",
         "patchSetId": 1
@@ -68,6 +92,30 @@
       "revId": "548300e760399d2118282b422670fc8d7833f1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85bfbec_22766f6c",
+        "filename": "util/kconfig/Makefile.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-12-16T10:51:21Z",
+      "side": 1,
+      "message": "In the Linux Makefile, which is passed through sed in lines 10-15, then includes in line 17.",
+      "parentUuid": "b6883e54_82aae973",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 14
+      },
+      "revId": "548300e760399d2118282b422670fc8d7833f1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
