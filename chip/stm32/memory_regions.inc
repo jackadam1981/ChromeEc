@@ -16,3 +16,7 @@ REGION(ahb4,   rw, 0x38000000, 0x10000) /* AHB-SRAM4: 64kB */
 REGION(backup, rw, 0x38800000, 0x01000) /* Backup RAM: 4kB */
 REGION(bkpreg, rw, 0x58004000+0x50, 128) /* RTC Backup Registers */
 #endif /* CHIP_VARIANT_STM32H7X3 */
+
+#ifdef CHIP_FAMILY_STM32F4
+REGION(bkpreg, rw, 0x40002800+0x50, 80) /* RTC Backup Registers */
+#endif /* CHIP_FAMILY_STM32F4 */
