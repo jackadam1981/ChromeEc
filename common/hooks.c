@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -56,6 +56,8 @@ static const struct hook_ptrs hook_list[] = {
 #endif
 	{__hooks_tick, __hooks_tick_end},
 	{__hooks_second, __hooks_second_end},
+	{__hooks_usb_pd_disconnect, __hooks_usb_pd_disconnect_end},
+	{__hooks_usb_pd_connect, __hooks_usb_pd_connect_end},
 };
 
 /* Times for deferrable functions */
@@ -188,7 +190,7 @@ void hook_task(void *u)
 		/* Handle deferred routines */
 		for (i = 0; i < DEFERRED_FUNCS_COUNT; i++) {
 			if (__deferred_until[i] && __deferred_until[i] < t) {
-				CPRINTS("hook call deferred 0x%p",
+				CPRINTS("hook call deferred 0x%pP",
 					__deferred_funcs[i].routine);
 				/*
 				 * Call deferred function.  Clear timer first,

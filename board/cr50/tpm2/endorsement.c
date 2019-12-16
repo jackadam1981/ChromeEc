@@ -443,11 +443,6 @@ static int store_cert(enum cros_perso_component_type component_type,
 	return 0;
 }
 
-static void flash_info_read_disable(void)
-{
-	GREG32(GLOBALSEC, FLASH_REGION7_CTRL) = 0;
-}
-
 static void flash_cert_region_enable(void)
 {
 	/* Enable R access to CERT block. */
@@ -472,10 +467,6 @@ static int get_decrypted_eps(uint8_t eps[PRIMARY_SEED_SIZE])
 	if (!DCRYPTO_ladder_compute_frk2(K_CROS_FW_MAJOR_VERSION, frk2))
 		return 0;
 
-	/* Setup flash region mapping. */
-	flash_info_read_enable(FLASH_INFO_MANUFACTURE_STATE_OFFSET,
-			       FLASH_INFO_MANUFACTURE_STATE_SIZE);
-
 	for (i = 0; i < INFO1_EPS_SIZE; i += sizeof(uint32_t)) {
 		uint32_t word;
 
@@ -486,9 +477,6 @@ static int get_decrypted_eps(uint8_t eps[PRIMARY_SEED_SIZE])
 		}
 		memcpy(eps + i, &word, sizeof(word));
 	}
-
-	/* Remove flash region mapping. */
-	flash_info_read_disable();
 
 	/* One-time-pad decrypt EPS. */
 	for (i = 0; i < PRIMARY_SEED_SIZE; i++)
@@ -611,7 +599,6 @@ enum manufacturing_status tpm_endorse(void)
 		HASH_update(&hmac.hash, p, RO_CERTS_REGION_SIZE - 32);
 		if (!DCRYPTO_equals(p + RO_CERTS_REGION_SIZE - 32,
 				   DCRYPTO_HMAC_final(&hmac), 32)) {
-			const struct SignedHeader *h;
 
 			CPRINTF("%s: bad cert region hmac;", __func__);
 #ifdef CR50_INCLUDE_FALLBACK_CERT
@@ -632,10 +619,7 @@ enum manufacturing_status tpm_endorse(void)
 				break;
 			}
 #else
-			h = (const struct SignedHeader *)
-				get_program_memory_addr
-				(system_get_image_copy());
-			if (G_SIGNED_FOR_PROD(h)) {
+			if (board_in_prod_mode()) {
 
 				/* TODO(ngm): is this state considered
 				 * endorsement failure?

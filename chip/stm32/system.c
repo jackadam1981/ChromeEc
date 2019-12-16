@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,6 +9,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "flash.h"
+#include "gpio_chip.h"
 #include "host_command.h"
 #include "registers.h"
 #include "panic.h"
@@ -33,9 +34,26 @@
 /* We use 16-bit BKP / BBRAM entries. */
 #define STM32_BKP_ENTRIES (STM32_BKP_BYTES / 2)
 
+/*
+ * Use 32-bit for reset flags, if we have space for it:
+ *  - 2 indexes are used unconditionally (SCRATCHPAD and SAVED_RESET_FLAGS)
+ *  - VBNV_CONTEXT requires 8 indexes, so a total of 10 (which is the total
+ *    number of entries on some STM32 variants).
+ *  - Other config options are not a problem (they only take a few entries)
+ *
+ * Given this, we can only add an extra entry for the top 16-bit of reset flags
+ * if VBNV_CONTEXT is not enabled, or if we have more than 10 entries.
+ */
+#if !defined(CONFIG_HOSTCMD_VBNV_CONTEXT) || STM32_BKP_ENTRIES > 10
+#define CONFIG_STM32_RESET_FLAGS_EXTENDED
+#endif
+
 enum bkpdata_index {
 	BKPDATA_INDEX_SCRATCHPAD,	     /* General-purpose scratchpad */
 	BKPDATA_INDEX_SAVED_RESET_FLAGS,     /* Saved reset flags */
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	BKPDATA_INDEX_SAVED_RESET_FLAGS_2,   /* Saved reset flags (cont) */
+#endif
 #ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
 	BKPDATA_INDEX_VBNV_CONTEXT0,
 	BKPDATA_INDEX_VBNV_CONTEXT1,
@@ -54,13 +72,14 @@ enum bkpdata_index {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	BKPDATA_INDEX_PD0,		     /* USB-PD saved port0 state */
 	BKPDATA_INDEX_PD1,		     /* USB-PD saved port1 state */
+	BKPDATA_INDEX_PD2,		     /* USB-PD saved port2 state */
 #endif
 	BKPDATA_COUNT
 };
 BUILD_ASSERT(STM32_BKP_ENTRIES >= BKPDATA_COUNT);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT <= 2);
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= 3);
 #endif
 
 /**
@@ -152,37 +171,44 @@ static void check_reset_cause(void)
 	uint32_t raw_cause = STM32_RCC_RESET_CAUSE;
 	uint32_t pwr_status = STM32_PWR_RESET_CAUSE;
 
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	flags |= bkpdata_read(BKPDATA_INDEX_SAVED_RESET_FLAGS_2) << 16;
+#endif
+
 	/* Clear the hardware reset cause by setting the RMVF bit */
 	STM32_RCC_RESET_CAUSE |= RESET_CAUSE_RMVF;
 	/* Clear SBF in PWR_CSR */
 	STM32_PWR_RESET_CAUSE_CLR |= RESET_CAUSE_SBF_CLR;
 	/* Clear saved reset flags */
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, 0);
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, 0);
+#endif
 
 	if (raw_cause & RESET_CAUSE_WDG) {
 		/*
 		 * IWDG or WWDG, if the watchdog was not used as an hard reset
 		 * mechanism
 		 */
-		if (!(flags & RESET_FLAG_HARD))
-			flags |= RESET_FLAG_WATCHDOG;
+		if (!(flags & EC_RESET_FLAG_HARD))
+			flags |= EC_RESET_FLAG_WATCHDOG;
 	}
 
 	if (raw_cause & RESET_CAUSE_SFT)
-		flags |= RESET_FLAG_SOFT;
+		flags |= EC_RESET_FLAG_SOFT;
 
 	if (raw_cause & RESET_CAUSE_POR)
-		flags |= RESET_FLAG_POWER_ON;
+		flags |= EC_RESET_FLAG_POWER_ON;
 
 	if (raw_cause & RESET_CAUSE_PIN)
-		flags |= RESET_FLAG_RESET_PIN;
+		flags |= EC_RESET_FLAG_RESET_PIN;
 
 	if (pwr_status & RESET_CAUSE_SBF)
 		/* Hibernated and subsequently awakened */
-		flags |= RESET_FLAG_HIBERNATE;
+		flags |= EC_RESET_FLAG_HIBERNATE;
 
 	if (!flags && (raw_cause & RESET_CAUSE_OTHER))
-		flags |= RESET_FLAG_OTHER;
+		flags |= EC_RESET_FLAG_OTHER;
 
 	/*
 	 * WORKAROUND: as we cannot de-activate the watchdog during
@@ -191,8 +217,8 @@ static void check_reset_cause(void)
 	 * watchdog initialized this time.
 	 * The RTC deadline (if any) is already set.
 	 */
-	if ((flags & (RESET_FLAG_HIBERNATE | RESET_FLAG_WATCHDOG)) ==
-		     (RESET_FLAG_HIBERNATE | RESET_FLAG_WATCHDOG)) {
+	if ((flags & EC_RESET_FLAG_HIBERNATE) &&
+	    (flags & EC_RESET_FLAG_WATCHDOG)) {
 		__enter_hibernate(0, 0);
 	}
 
@@ -261,24 +287,24 @@ void system_pre_init(void)
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_BKPSRAMEN;
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* enable backup registers */
-	STM32_RCC_AHB4ENR |= 1 << 28;
+	STM32_RCC_AHB4ENR |= BIT(28);
 #else
 	/* enable backup registers */
-	STM32_RCC_APB1ENR |= 1 << 27;
+	STM32_RCC_APB1ENR |= BIT(27);
 #endif
 	/* Delay 1 APB clock cycle after the clock is enabled */
 	clock_wait_bus_cycles(BUS_APB, 1);
 	/* Enable access to RCC CSR register and RTC backup registers */
-	STM32_PWR_CR |= 1 << 8;
+	STM32_PWR_CR |= BIT(8);
 #ifdef CHIP_VARIANT_STM32L476
 	/* Enable Vddio2 */
-	STM32_PWR_CR2 |= 1 << 9;
+	STM32_PWR_CR2 |= BIT(9);
 #endif
 
 	/* switch on LSI */
-	STM32_RCC_CSR |= 1 << 0;
+	STM32_RCC_CSR |= BIT(0);
 	/* Wait for LSI to be ready */
-	while (!(STM32_RCC_CSR & (1 << 1)))
+	while (!(STM32_RCC_CSR & BIT(1)))
 		;
 	/* re-configure RTC if needed */
 #ifdef CHIP_FAMILY_STM32L
@@ -334,18 +360,26 @@ void system_reset(int flags)
 
 	/* Save current reset reasons if necessary */
 	if (flags & SYSTEM_RESET_PRESERVE_FLAGS)
-		save_flags = system_get_reset_flags() | RESET_FLAG_PRESERVED;
+		save_flags = system_get_reset_flags() | EC_RESET_FLAG_PRESERVED;
 
 	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
-		save_flags |= RESET_FLAG_AP_OFF;
+		save_flags |= EC_RESET_FLAG_AP_OFF;
 
 	/* Remember that the software asked us to hard reboot */
 	if (flags & SYSTEM_RESET_HARD)
-		save_flags |= RESET_FLAG_HARD;
+		save_flags |= EC_RESET_FLAG_HARD;
 
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	if (flags & SYSTEM_RESET_AP_WATCHDOG)
+		save_flags |= EC_RESET_FLAG_AP_WATCHDOG;
+
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags & 0xffff);
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, save_flags >> 16);
+#else
 	/* Reset flags are 32-bits, but BBRAM entry is only 16 bits. */
 	ASSERT(!(save_flags >> 16));
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags);
+#endif
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
@@ -385,6 +419,36 @@ void system_reset(int flags)
 		STM32_FLASH_OPTKEYR = FLASH_OPTKEYR_KEY2;
 		STM32_FLASH_CR |= FLASH_CR_OBL_LAUNCH;
 #else
+		/*
+		 * RM0433 Rev 6
+		 * Section 44.3.3
+		 * https://www.st.com/resource/en/reference_manual/dm00314099.pdf#page=1898
+		 *
+		 * When the window option is not used, the IWDG can be
+		 * configured as follows:
+		 *
+		 * 1. Enable the IWDG by writing 0x0000 CCCC in the Key
+		 *    register (IWDG_KR).
+		 * 2. Enable register access by writing 0x0000 5555 in the Key
+		 *    register (IWDG_KR).
+		 * 3. Write the prescaler by programming the Prescaler register
+		 *    (IWDG_PR) from 0 to 7.
+		 * 4. Write the Reload register (IWDG_RLR).
+		 * 5. Wait for the registers to be updated
+		 *    (IWDG_SR = 0x0000 0000).
+		 * 6. Refresh the counter value with IWDG_RLR
+		 *    (IWDG_KR = 0x0000 AAAA)
+		 */
+
+		/*
+		 * Enable IWDG, which shouldn't be necessary since the IWDG
+		 * only needs to be started once, but STM32F412 hangs unless
+		 * this is added.
+		 *
+		 * See http://b/137045370.
+		 */
+		STM32_IWDG_KR = STM32_IWDG_KR_START;
+
 		/* Ask the watchdog to trigger a hard reboot */
 		STM32_IWDG_KR = STM32_IWDG_KR_UNLOCK;
 		STM32_IWDG_RLR = 0x1;
@@ -465,6 +529,8 @@ static int bkpdata_index_lookup(enum system_bbram_idx idx, int *msb)
 		return BKPDATA_INDEX_PD0;
 	if (idx == SYSTEM_BBRAM_IDX_PD1)
 		return BKPDATA_INDEX_PD1;
+	if (idx == SYSTEM_BBRAM_IDX_PD2)
+		return BKPDATA_INDEX_PD2;
 #endif
 	return -1;
 }
@@ -502,6 +568,17 @@ int system_set_bbram(enum system_bbram_idx idx, uint8_t value)
 
 int system_is_reboot_warm(void)
 {
+	/*
+	 * Detecting if the system is warm is relevant for a
+	 * few reasons.
+	 * One such reason is that some firmwares transition from
+	 * RO to RW images. When this happens, we may not need to
+	 * restart certain clocks. On the flip side, we may need
+	 * to restart the clocks if the RW requires a different
+	 * set of clocks. Thus, the clock configurations need to
+	 * be checked for a perfect match.
+	 */
+
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
 	return ((STM32_RCC_AHBENR & 0x7e0000) == 0x7e0000);
 #elif defined(CHIP_FAMILY_STM32L)
@@ -511,7 +588,7 @@ int system_is_reboot_warm(void)
 			== STM32_RCC_AHB2ENR_GPIOMASK);
 #elif defined(CHIP_FAMILY_STM32F4)
 	return ((STM32_RCC_AHB1ENR & STM32_RCC_AHB1ENR_GPIOMASK)
-			== STM32_RCC_AHB1ENR_GPIOMASK);
+			== gpio_required_clocks());
 #elif defined(CHIP_FAMILY_STM32H7)
 	return ((STM32_RCC_AHB4ENR & STM32_RCC_AHB4ENR_GPIOMASK)
 			== STM32_RCC_AHB4ENR_GPIOMASK);

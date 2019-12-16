@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -351,7 +351,7 @@ static void ep0_event(enum usb_ep_event evt)
 	if (evt != USB_EVENT_RESET)
 		return;
 
-	STM32_USB_EP(0) = (1 << 9) /* control EP */ |
+	STM32_USB_EP(0) = BIT(9) /* control EP */ |
 			  (2 << 4) /* TX NAK */ |
 			  (3 << 12) /* RX VALID */;
 
@@ -673,8 +673,8 @@ void usb_init(void)
 	STM32_USB_BTABLE = 0;
 
 	/* EXTI18 is USB wake up interrupt */
-	/* STM32_EXTI_RTSR |= 1 << 18; */
-	/* STM32_EXTI_IMR |= 1 << 18; */
+	/* STM32_EXTI_RTSR |= BIT(18); */
+	/* STM32_EXTI_IMR |= BIT(18); */
 
 	/* Enable interrupt handlers */
 	task_enable_irq(STM32_IRQ_USB_LP);

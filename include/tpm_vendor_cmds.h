@@ -7,6 +7,7 @@
 #define __INCLUDE_TPM_VENDOR_CMDS_H
 
 #include "common.h"  /* For __packed. */
+#include "compile_time_macros.h"  /* For BIT. */
 
 /*
  * This file includes definitions of extended/vendor TPM2 commands and their
@@ -32,6 +33,12 @@ enum vendor_cmd_cc {
 	VENDOR_CC_GET_LOCK = 16,
 	VENDOR_CC_SET_LOCK = 17,
 	VENDOR_CC_SYSINFO = 18,
+	/*
+	 * VENDOR_CC_IMMEDIATE_RESET may have an argument, which is a (uint16_t)
+	 * time delay (in milliseconds) in doing a reset. Max value is 1000.
+	 * The command may also be called without an argument, which will be
+	 * regarded as zero time delay.
+	 */
 	VENDOR_CC_IMMEDIATE_RESET = 19,
 	VENDOR_CC_INVALIDATE_INACTIVE_RW = 20,
 	VENDOR_CC_COMMIT_NVMEM = 21,
@@ -77,14 +84,84 @@ enum vendor_cmd_cc {
 	 * in 'enum tpm_modes', tpm_registers.h.
 	 * If the input size is zero, it won't change TPM_MODE.
 	 * If either the input size is zero or the input value is valid,
-	 * it will response with the current tpm_mode value in uint8_t format.
+	 * it will respond with the current tpm_mode value in uint8_t format.
+	 *
+	 *  Return code:
+	 *   VENDOR_RC_SUCCESS: completed successfully.
+	 *   VENDOR_RC_INTERNAL_ERROR: failed for an internal reason.
+	 *   VENDOR_RC_NOT_ALLOWED: failed in changing TPM_MODE,
+	 *                          since it is already set.
+	 *   VENDOR_RC_NO_SUCH_SUBCOMMAND: failed because the given input
+	 *                                 is undefined.
 	 */
 	VENDOR_CC_TPM_MODE = 40,
+	/*
+	 * Initializes INFO1 SN data space, and sets SN hash. Takes three
+	 * int32 as parameters, which are written as the SN hash.
+	 */
+	VENDOR_CC_SN_SET_HASH = 41,
+	/*
+	 * Increments the RMA count in the INFO1 SN data space. The space must
+	 * have been previously initialized with the _SET_HASH command above for
+	 * this to succeed. Takes one byte as parameter, which indicates the
+	 * number to increment the RMA count by; this is typically 1 or 0.
+	 *
+	 * Incrementing the RMA count by 0 will set the RMA indicator, but not
+	 * incremement the count. This is useful to mark that a device has been
+	 * RMA'd, but that we were not able to log the new serial number.
+	 *
+	 * Incrementing the count by the maximum RMA count (currently 7) will
+	 * always set the RMA count to the maximum value, regardless of the
+	 * previous value. This can be used with any device, regardless of
+	 * current state, to mark it as RMA'd but with an unknown RMA count.
+	 */
+	VENDOR_CC_SN_INC_RMA = 42,
+
+	/*
+	 * Gets the latched state of a power button press to indicate user
+	 * recent user presence. The power button state is automatically cleared
+	 * after PRESENCE_TIMEOUT.
+	 */
+	VENDOR_CC_GET_PWR_BTN = 43,
+
+	/*
+	 * U2F commands.
+	 */
+	VENDOR_CC_U2F_GENERATE = 44,
+	VENDOR_CC_U2F_SIGN = 45,
+	VENDOR_CC_U2F_ATTEST = 46,
+
+	VENDOR_CC_FLOG_TIMESTAMP = 47,
+	VENDOR_CC_ENDORSEMENT_SEED = 48,
+
+	VENDOR_CC_U2F_MODE = 49,
+
+	/*
+	 * HMAC-SHA256 DRBG invocation for ACVP tests
+	 */
+	VENDOR_CC_DRBG_TEST = 50,
+
+	VENDOR_CC_TRNG_TEST = 51,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
 
-/* Error codes reported by extension and vendor commands. */
+/*
+ * Error codes reported by extension and vendor commands.
+ *
+ * As defined by the TPM2 spec, the TPM response code is all zero for success,
+ * and errors are a little complicated:
+ *
+ *   Bits 31:12 must be zero.
+ *
+ *   Bit 11     S=0   Error
+ *   Bit 10     T=1   Vendor defined response code
+ *   Bit  9     r=0   reserved
+ *   Bit  8     V=1   Conforms to TPMv2 spec
+ *   Bit  7     F=0   Confirms to Table 14, Format-Zero Response Codes
+ *   Bits 6:0   num   128 possible failure reasons
+ */
+
 enum vendor_cmd_rc {
 	/* EXTENSION_HASH error codes */
 	/* Attempt to start a session on an active handle. */
@@ -106,8 +183,15 @@ enum vendor_cmd_rc {
 	VENDOR_RC_IN_PROGRESS = 9,
 	VENDOR_RC_PASSWORD_REQUIRED = 10,
 
-	/* Only 7 bits available; max is 127 */
+	/* Maximum possible failure reason. */
 	VENDOR_RC_NO_SUCH_COMMAND = 127,
+
+	/*
+	 * Bits 10 and 8 set, this is to be ORed with the rest of the error
+	 * values to make the combined value compliant with the spec
+	 * requirements.
+	 */
+	VENDOR_RC_ERR = 0x500,
 };
 
 /*
@@ -121,21 +205,6 @@ enum vendor_cmd_rc {
 #define VENDOR_CC_MASK         0x0000ffff
 /* Our vendor-specific command codes go here */
 #define TPM_CC_VENDOR_CR50         0x0000
-
-/*
- * The TPM response code is all zero for success.
- * Errors are a little complicated:
- *
- *   Bits 31:12 must be zero.
- *
- *   Bit 11     S=0   Error
- *   Bit 10     T=1   Vendor defined response code
- *   Bit  9     r=0   reserved
- *   Bit  8     V=1   Conforms to TPMv2 spec
- *   Bit  7     F=0   Confirms to Table 14, Format-Zero Response Codes
- *   Bits 6:0   num   128 possible failure reasons
- */
-#define VENDOR_RC_ERR 0x00000500
 
 /*** Structures and constants for VENDOR_CC_SPI_HASH ***/
 
@@ -156,7 +225,7 @@ enum vendor_cc_spi_hash_request_subcmd {
 
 enum vendor_cc_spi_hash_request_flags {
 	/* EC uses gang programmer mode */
-	SPI_HASH_FLAG_EC_GANG = (1 << 0),
+	SPI_HASH_FLAG_EC_GANG = BIT(0),
 };
 
 /* Structure for VENDOR_CC_SPI_HASH request which follows tpm_header */
@@ -174,10 +243,10 @@ struct vendor_cc_spi_hash_request {
 /*
  * Subcommand code, used to set write protect.
  */
-#define WPV_UPDATE		(1 << 0)
-#define WPV_ENABLE		(1 << 1)
-#define WPV_FORCE		(1 << 2)
-#define WPV_ATBOOT_SET		(1 << 3)
-#define WPV_ATBOOT_ENABLE	(1 << 4)
+#define WPV_UPDATE		BIT(0)
+#define WPV_ENABLE		BIT(1)
+#define WPV_FORCE		BIT(2)
+#define WPV_ATBOOT_SET		BIT(3)
+#define WPV_ATBOOT_ENABLE	BIT(4)
 
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */

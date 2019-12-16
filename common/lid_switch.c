@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -151,7 +151,7 @@ DECLARE_CONSOLE_COMMAND(lidstate, command_lidstate,
 /**
  * Host command to enable/disable lid opened.
  */
-static int hc_force_lid_open(struct host_cmd_handler_args *args)
+static enum ec_status hc_force_lid_open(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_force_lid_open *p = args->params;
 

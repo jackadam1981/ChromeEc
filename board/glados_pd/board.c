@@ -37,7 +37,7 @@ void pd_send_ec_int(void)
 void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
-	STM32_RCC_APB2ENR |= 1 << 0;
+	STM32_RCC_APB2ENR |= BIT(0);
 	/*
 	 * the DMA mapping is :
 	 *  Chan 2 : TIM1_CH1  (C0 RX)
@@ -126,7 +126,7 @@ DECLARE_CONSOLE_COMMAND(ecint, command_ec_int,
 			"",
 			"Toggle EC interrupt line");
 
-static int ec_status_host_cmd(struct host_cmd_handler_args *args)
+static enum ec_status ec_status_host_cmd(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_status *p = args->params;
 	struct ec_response_pd_status *r = args->response;

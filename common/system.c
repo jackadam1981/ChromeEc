@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -6,6 +6,7 @@
 /* System module for Chrome EC : common functions */
 #include "battery.h"
 #include "charge_manager.h"
+#include "chipset.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -26,11 +27,13 @@
 #include "mpu.h"
 #endif
 #include "panic.h"
+#include "sysjump.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 #include "version.h"
 #include "watchdog.h"
@@ -52,53 +55,17 @@ struct jump_tag {
 	/* Followed by data_size bytes of data */
 };
 
-/*
- * Data passed between the current image and the next one when jumping between
- * images.
- */
-#define JUMP_DATA_MAGIC 0x706d754a  /* "Jump" */
-#define JUMP_DATA_VERSION 3
-#define JUMP_DATA_SIZE_V2 16  /* Size of version 2 jump data struct */
-struct jump_data {
-	/*
-	 * Add new fields to the _start_ of the struct, since we copy it to the
-	 * _end_ of RAM between images.  This way, the magic number will always
-	 * be the last word in RAM regardless of how many fields are added.
-	 */
-
-	/* Fields from version 3 */
-	uint8_t reserved0;    /* (used in proto1 to signal recovery mode) */
-	int struct_size;      /* Size of struct jump_data */
-
-	/* Fields from version 2 */
-	int jump_tag_total;   /* Total size of all jump tags */
-
-	/* Fields from version 1 */
-	uint32_t reset_flags; /* Reset flags from the previous boot */
-	int version;          /* Version (JUMP_DATA_VERSION) */
-	int magic;            /* Magic number (JUMP_DATA_MAGIC).  If this
-			       * doesn't match at pre-init time, assume no valid
-			       * data from the previous image. */
-};
-
 /* Jump data (at end of RAM, or preceding panic data) */
 static struct jump_data *jdata;
-
-/*
- * Reset flag descriptions.  Must be in same order as bits of RESET_FLAG_
- * constants.
- */
-static const char * const reset_flag_descs[] = {
-	"other", "reset-pin", "brownout", "power-on", "watchdog", "soft",
-	"hibernate", "rtc-alarm", "wake-pin", "low-battery", "sysjump",
-	"hard", "ap-off", "preserved", "usb-resume", "rdd", "rbox",
-	"security" };
 
 static uint32_t reset_flags;
 static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
+
+STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_seconds;
+STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_microseconds;
 
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
@@ -239,17 +206,18 @@ void system_encode_save_flags(int reset_flags, uint32_t *save_flags)
 
 	/* Save current reset reasons if necessary */
 	if (reset_flags & SYSTEM_RESET_PRESERVE_FLAGS)
-		*save_flags = system_get_reset_flags() | RESET_FLAG_PRESERVED;
+		*save_flags = system_get_reset_flags() |
+			      EC_RESET_FLAG_PRESERVED;
 
 	/* Add in AP off flag into saved flags. */
 	if (reset_flags & SYSTEM_RESET_LEAVE_AP_OFF)
-		*save_flags |= RESET_FLAG_AP_OFF;
+		*save_flags |= EC_RESET_FLAG_AP_OFF;
 
 	/* Save reset flag */
 	if (reset_flags & (SYSTEM_RESET_HARD | SYSTEM_RESET_WAIT_EXT))
-		*save_flags |= RESET_FLAG_HARD;
+		*save_flags |= EC_RESET_FLAG_HARD;
 	else
-		*save_flags |= RESET_FLAG_SOFT;
+		*save_flags |= EC_RESET_FLAG_SOFT;
 }
 
 uint32_t system_get_reset_flags(void)
@@ -271,6 +239,9 @@ void system_print_reset_flags(void)
 {
 	int count = 0;
 	int i;
+	static const char * const reset_flag_descs[] = {
+		#include "reset_flag_desc.inc"
+	};
 
 	if (!reset_flags) {
 		CPUTS("unknown");
@@ -278,12 +249,19 @@ void system_print_reset_flags(void)
 	}
 
 	for (i = 0; i < ARRAY_SIZE(reset_flag_descs); i++) {
-		if (reset_flags & (1 << i)) {
+		if (reset_flags & BIT(i)) {
 			if (count++)
 				CPUTS(" ");
 
 			CPUTS(reset_flag_descs[i]);
 		}
+	}
+
+	if (reset_flags >= BIT(i)) {
+		if (count)
+			CPUTS(" ");
+
+		CPUTS("no-desc");
 	}
 }
 
@@ -359,14 +337,15 @@ void system_disable_jump(void)
 		 */
 		ret = mpu_protect_data_ram();
 		if (ret == EC_SUCCESS) {
-			CPRINTS("data RAM locked. Exclusion %08x-%08x",
-				&__iram_text_start, &__iram_text_end);
+			CPRINTS("data RAM locked. Exclusion %pP-%pP",
+				&__iram_text_start,
+				&__iram_text_end);
 		} else {
 			CPRINTS("Failed to lock data RAM (%d)", ret);
 			return;
 		}
 
-#ifdef CONFIG_EXTERNAL_STORAGE
+#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
 		/*
 		 * Protect code RAM from being overwritten
 		 */
@@ -499,10 +478,6 @@ const char *system_image_copy_t_to_string(enum system_image_copy_t copy)
 static void jump_to_image(uintptr_t init_addr)
 {
 	void (*resetvec)(void);
-#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
-	uint8_t *buf;
-	int rv;
-#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
@@ -516,6 +491,11 @@ static void jump_to_image(uintptr_t init_addr)
 	gpio_set_level(GPIO_ENTERING_RW, 1);
 	usleep(MSEC);
 	gpio_set_level(GPIO_ENTERING_RW, 0);
+
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+	/* Note: must be before i2c module is locked down */
+	pd_prepare_sysjump();
+#endif
 
 #ifdef CONFIG_I2C_MASTER
 	/* Prepare I2C module for sysjump */
@@ -535,32 +515,6 @@ static void jump_to_image(uintptr_t init_addr)
 
 	/* Call other hooks; these may add tags */
 	hook_notify(HOOK_SYSJUMP);
-
-#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
-	/*
-	 * We've used the region in which the loader resided as data space for
-	 * the .bss.slow section.  Therefore, we need to reload the loader from
-	 * the external storage back into program memory so that we can load a
-	 * different image.
-	 */
-	buf = (uint8_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_LOADER_MEM_OFF);
-	rv = flash_read((CONFIG_EC_PROTECTED_STORAGE_OFF +
-			 CONFIG_LOADER_STORAGE_OFF),
-			CONFIG_LOADER_SIZE, buf);
-	/*
-	 * If there's a problem with the flash_read, we might randomly crash in
-	 * the loader.  There's nothing we can really do at this point.  On
-	 * reset, we'll just load the loader from external flash again and boot
-	 * from RO.  Log a message to indicate what happened though.
-	 */
-	if (rv) {
-		CPRINTS("ldr fail!");
-		cflush();
-	}
-
-	/* Now that the lfw is loaded again, get the reset vector. */
-	init_addr = system_get_lfw_address();
-#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
 	/* Disable interrupts before jump */
 	interrupt_disable();
@@ -616,32 +570,27 @@ test_mockable int system_run_image_copy(enum system_image_copy_t copy)
 	if (base == 0xffffffff)
 		return EC_ERROR_INVAL;
 
-#ifdef CONFIG_EXTERNAL_STORAGE
-#ifndef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
-	/* Jump to loader */
-	init_addr = system_get_lfw_address();
-#endif /* !defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
-	system_set_image_copy(copy);
-#else
-#ifdef CONFIG_FW_RESET_VECTOR
-	/* Get reset vector */
-	init_addr = system_get_fw_reset_vector(base);
-#else
-#if defined(CONFIG_RO_HEAD_ROOM)
-	/* Skip any head room in the RO image */
-	if (copy == SYSTEM_IMAGE_RO)
-		/* Don't change base, though! */
-		init_addr = *(uintptr_t *)(base + CONFIG_RO_HEAD_ROOM + 4);
-	else
-#endif
-	init_addr = *(uintptr_t *)(base + 4);
-#endif
-#ifndef EMU_BUILD
-	/* Make sure the reset vector is inside the destination image */
-	if (init_addr < base || init_addr >= base + get_size(copy))
-		return EC_ERROR_UNKNOWN;
-#endif
-#endif
+	if (IS_ENABLED(CONFIG_EXTERNAL_STORAGE)) {
+		/* Jump to loader */
+		init_addr = system_get_lfw_address();
+		system_set_image_copy(copy);
+	} else if (IS_ENABLED(CONFIG_FW_RESET_VECTOR)) {
+		/* Get reset vector */
+		init_addr = system_get_fw_reset_vector(base);
+	} else {
+		uintptr_t init = base + 4;
+
+		/* Skip any head room in the RO image */
+		if (copy == SYSTEM_IMAGE_RO)
+			init += CONFIG_RO_HEAD_ROOM;
+
+		init_addr = *(uintptr_t *)(init);
+
+		/* Make sure the reset vector is inside the destination image */
+		if (!IS_ENABLED(EMU_BUILD) &&
+		    (init_addr < base || init_addr >= base + get_size(copy)))
+			return EC_ERROR_UNKNOWN;
+	}
 
 	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
 
@@ -692,8 +641,7 @@ uint32_t flash_get_rw_offset(enum system_image_copy_t copy)
 	return CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
 }
 
-static const struct image_data *system_get_image_data(
-					enum system_image_copy_t copy)
+const struct image_data *system_get_image_data(enum system_image_copy_t copy)
 {
 	static struct image_data data;
 
@@ -807,7 +755,7 @@ void system_common_pre_init(void)
 	 * was not already logged. This must happen before calculating
 	 * jump_data address because it might change panic pointer.
 	 */
-	if (system_get_reset_flags() & RESET_FLAG_WATCHDOG) {
+	if (system_get_reset_flags() & EC_RESET_FLAG_WATCHDOG) {
 		uint32_t reason;
 		uint32_t info;
 		uint8_t exception;
@@ -843,7 +791,7 @@ void system_common_pre_init(void)
 		/* Yes, we jumped to this image */
 		jumped_to_image = 1;
 		/* Restore the reset flags */
-		reset_flags = jdata->reset_flags | RESET_FLAG_SYSJUMP;
+		reset_flags = jdata->reset_flags | EC_RESET_FLAG_SYSJUMP;
 
 		/*
 		 * If the jump data structure isn't the same size as the
@@ -900,7 +848,20 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
 #ifdef HAS_TASK_PDCMD
-		/* Reboot the PD chip as well */
+		/*
+		 * Reboot the PD chip(s) as well, but first suspend the ports
+		 * if this board has PD tasks running so they don't query the
+		 * TCPCs while they reset.
+		 */
+#ifdef HAS_TASK_PD_C0
+		{
+			int port;
+
+			for (port = 0; port < board_get_usb_pd_port_count();
+			     port++)
+				pd_set_suspend(port, 1);
+		}
+#endif
 		board_reset_pd_mcu();
 #endif
 
@@ -911,20 +872,24 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_DISABLE_JUMP:
 		system_disable_jump();
 		return EC_SUCCESS;
-#ifdef CONFIG_HIBERNATE
 	case EC_REBOOT_HIBERNATE_CLEAR_AP_OFF:
-#ifdef CONFIG_POWER_BUTTON_INIT_IDLE
-		CPRINTS("Clearing AP_OFF");
-		chip_save_reset_flags(
-				chip_read_reset_flags() & ~RESET_FLAG_AP_OFF);
-#endif
+		if (!IS_ENABLED(CONFIG_HIBERNATE))
+			return EC_ERROR_INVAL;
+
+		if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)) {
+			CPRINTS("Clearing AP_OFF");
+			chip_save_reset_flags(chip_read_reset_flags() &
+					      ~EC_RESET_FLAG_AP_OFF);
+		}
 		/* Intentional fall-through */
 	case EC_REBOOT_HIBERNATE:
+		if (!IS_ENABLED(CONFIG_HIBERNATE))
+			return EC_ERROR_INVAL;
+
 		CPRINTS("system hibernating");
-		system_hibernate(0, 0);
+		system_hibernate(hibernate_seconds, hibernate_microseconds);
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
-#endif
 	default:
 		return EC_ERROR_INVAL;
 	}
@@ -995,8 +960,7 @@ DECLARE_CONSOLE_COMMAND(scratchpad, command_scratchpad,
 			"Get or set scratchpad value");
 #endif /* CONFIG_CMD_SCRATCHPAD */
 
-#ifdef CONFIG_HIBERNATE
-static int command_hibernate(int argc, char **argv)
+__maybe_unused static int command_hibernate(int argc, char **argv)
 {
 	int seconds = 0;
 	int microseconds = 0;
@@ -1011,10 +975,24 @@ static int command_hibernate(int argc, char **argv)
 	else
 		ccprintf("Hibernating until wake pin asserted.\n");
 
-	system_hibernate(seconds, microseconds);
+	/*
+	 * If chipset is already off, then call system_hibernate directly. Else,
+	 * let chipset_task bring down the power rails and transition to proper
+	 * state before system_hibernate is called.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		system_hibernate(seconds, microseconds);
+	else {
+		reboot_at_shutdown = EC_REBOOT_HIBERNATE;
+		hibernate_seconds = seconds;
+		hibernate_microseconds = microseconds;
+
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
+	}
 
 	return EC_SUCCESS;
 }
+#ifdef CONFIG_HIBERNATE
 DECLARE_CONSOLE_COMMAND(hibernate, command_hibernate,
 			"[sec] [usec]",
 			"Hibernate the EC");
@@ -1307,7 +1285,8 @@ DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq,
 /*****************************************************************************/
 /* Host commands */
 
-static int host_command_get_version(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_version *r = args->response;
 	enum system_image_copy_t active_slot = system_get_active_copy();
@@ -1340,7 +1319,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_VERSION,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_HOSTCMD_SKUID
-static int host_command_get_sku_id(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_sku_id(struct host_cmd_handler_args *args)
 {
 	struct ec_sku_id_info *r = args->response;
 
@@ -1355,7 +1335,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_SKU_ID,
 #endif
 
 #ifdef CONFIG_HOSTCMD_AP_SET_SKUID
-static int host_command_set_sku_id(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_set_sku_id(struct host_cmd_handler_args *args)
 {
 	const struct ec_sku_id_info *p = args->params;
 
@@ -1369,7 +1350,8 @@ DECLARE_HOST_COMMAND(EC_CMD_SET_SKU_ID,
 #endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
-static int host_command_get_keyboard_id(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_keyboard_id(struct host_cmd_handler_args *args)
 {
 	struct ec_response_keyboard_id *r = args->response;
 
@@ -1383,7 +1365,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBOARD_ID,
 		     EC_VER_MASK(0));
 #endif
 
-static int host_command_build_info(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_build_info(struct host_cmd_handler_args *args)
 {
 	strzcpy(args->response, system_get_build_info(), args->response_max);
 	args->response_size = strlen(args->response) + 1;
@@ -1394,7 +1377,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BUILD_INFO,
 		     host_command_build_info,
 		     EC_VER_MASK(0));
 
-static int host_command_get_chip_info(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_chip_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_chip_info *r = args->response;
 
@@ -1411,7 +1395,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CHIP_INFO,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_BOARD_VERSION
-int host_command_get_board_version(struct host_cmd_handler_args *args)
+enum ec_status
+host_command_get_board_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_board_version *r = args->response;
 	int board_version;
@@ -1433,7 +1418,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
 #endif
 
 #ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
-int host_command_vbnvcontext(struct host_cmd_handler_args *args)
+enum ec_status host_command_vbnvcontext(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_vbnvcontext *p = args->params;
 	struct ec_response_vbnvcontext *r;
@@ -1465,7 +1450,7 @@ DECLARE_HOST_COMMAND(EC_CMD_VBNV_CONTEXT,
 		     EC_VER_MASK(EC_VER_VBNV_CONTEXT));
 #endif /* CONFIG_HOSTCMD_VBNV_CONTEXT */
 
-int host_command_reboot(struct host_cmd_handler_args *args)
+enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 {
 	struct ec_params_reboot_ec p;
 
@@ -1524,61 +1509,70 @@ DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC,
 
 int system_can_boot_ap(void)
 {
-	int power_good = 0;
 	int soc = -1;
 	int pow = -1;
 
-#ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+#if defined(CONFIG_BATTERY) && \
+	defined(CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 	/* Require a minimum battery level to power on. If battery isn't
 	 * present, battery_state_of_charge_abs returns false. */
 	if (battery_state_of_charge_abs(&soc) == EC_SUCCESS &&
 			soc >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
-		power_good = 1;
+		return 1;
 #endif
 
-#ifdef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
-#ifdef CONFIG_CHARGE_MANAGER
-	if (!power_good) {
-		pow = charge_manager_get_power_limit_uw() / 1000;
-		if (pow >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON)
-			power_good = 1;
-	}
-#endif /* CONFIG_CHARGE_MANAGER */
-#endif /* CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
+#if defined(CONFIG_CHARGE_MANAGER) && \
+	defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON)
+	pow = charge_manager_get_power_limit_uw() / 1000;
+	if (pow >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON)
+		return 1;
+#else
+	/* For fixed AC system */
+	return 1;
+#endif
 
-	if (!power_good)
-		CPRINTS("Not enough power to boot: chg=%d pwr=%d", soc, pow);
-
-	return power_good;
+	CPRINTS("Not enough power to boot (%d %%, %d mW)", soc, pow);
+	return 0;
 }
 
 #ifdef CONFIG_SERIALNO_LEN
 /* By default, read serial number from flash, can be overridden. */
-#if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
-__attribute__((weak))
-const char *board_read_serial(void)
+__overridable const char *board_read_serial(void)
 {
-	return flash_read_pstate_serial();
+	if (IS_ENABLED(CONFIG_FLASH_PSTATE) &&
+	    IS_ENABLED(CONFIG_FLASH_PSTATE_BANK))
+		return flash_read_pstate_serial();
+	else if (IS_ENABLED(CONFIG_OTP))
+		return otp_read_serial();
+	else
+		return "";
 }
-#elif defined(CONFIG_OTP)
-__attribute__((weak))
-const char *board_read_serial(void)
-{
-	return otp_read_serial();
-}
-#endif
 
-#if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
-__attribute__((weak))
-int board_write_serial(const char *serialno)
+__overridable int board_write_serial(const char *serialno)
 {
-	return flash_write_pstate_serial(serialno);
+	if (IS_ENABLED(CONFIG_FLASH_PSTATE) &&
+	    IS_ENABLED(CONFIG_FLASH_PSTATE_BANK))
+		return flash_write_pstate_serial(serialno);
+	else if (IS_ENABLED(CONFIG_OTP))
+		return otp_write_serial(serialno);
+	else
+		return EC_ERROR_UNIMPLEMENTED;
 }
-#elif defined(CONFIG_OTP)
-__attribute__((weak))
-int board_write_serial(const char *serialno)
-{
-	return otp_write_serial(serialno);
-}
-#endif
 #endif  /* CONFIG_SERIALNO_LEN */
+
+
+__attribute__((weak))
+void clock_enable_module(enum module_id module, int enable)
+{
+	/*
+	 * Default weak implementation - for chips that don't support this
+	 * function.
+	 */
+}
+
+__test_only void system_common_reset_state(void)
+{
+	jdata = 0;
+	reset_flags = 0;
+	jumped_to_image = 0;
+}

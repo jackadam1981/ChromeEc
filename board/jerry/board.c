@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -48,7 +48,7 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
-	STM32_RCC_APB2ENR |= 1 << 0;
+	STM32_RCC_APB2ENR |= BIT(0);
 
 	/* Remap USART DMA to match the USART driver */
 	/*
@@ -58,5 +58,5 @@ void board_config_pre_init(void)
 	 *  Chan 4 : USART1_TX
 	 *  Chan 5 : USART1_RX
 	 */
-	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10); /* Remap USART1 RX/TX DMA */
+	STM32_SYSCFG_CFGR1 |= BIT(9) | BIT(10); /* Remap USART1 RX/TX DMA */
 }

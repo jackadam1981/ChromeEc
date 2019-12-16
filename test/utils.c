@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -35,13 +35,13 @@ static int test_memmove(void)
 		memmove(buf + 101, buf, len);  /* unaligned */
 	t1 = get_time();
 	TEST_ASSERT_ARRAY_EQ(buf + 101, buf, len);
-	ccprintf(" (speed gain: %d ->", t1.val-t0.val);
+	ccprintf(" (speed gain: %" PRId64 " ->", t1.val-t0.val);
 
 	t2 = get_time();
 	for (i = 0; i < iteration; ++i)
 		memmove(buf + 100, buf, len);	  /* aligned */
 	t3 = get_time();
-	ccprintf(" %d us) ", t3.val-t2.val);
+	ccprintf(" %" PRId64 " us) ", t3.val-t2.val);
 	TEST_ASSERT_ARRAY_EQ(buf + 100, buf, len);
 
 	/* Expected about 4x speed gain. Use 3x because it fluctuates */
@@ -86,13 +86,13 @@ static int test_memcpy(void)
 		memcpy(buf + dest_offset + 1, buf, len);  /* unaligned */
 	t1 = get_time();
 	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf, len);
-	ccprintf(" (speed gain: %d ->", t1.val-t0.val);
+	ccprintf(" (speed gain: %" PRId64 " ->", t1.val-t0.val);
 
 	t2 = get_time();
 	for (i = 0; i < iteration; ++i)
 		memcpy(buf + dest_offset, buf, len);	  /* aligned */
 	t3 = get_time();
-	ccprintf(" %d us) ", t3.val-t2.val);
+	ccprintf(" %" PRId64 " us) ", t3.val-t2.val);
 	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, len);
 
 	/* Expected about 4x speed gain. Use 3x because it fluctuates */
@@ -148,14 +148,14 @@ static int test_memset(void)
 		dumb_memset(buf, 1, len);
 	t1 = get_time();
 	TEST_ASSERT_MEMSET(buf, (char)1, len);
-	ccprintf(" (speed gain: %d ->", t1.val-t0.val);
+	ccprintf(" (speed gain: %" PRId64 " ->", t1.val-t0.val);
 
 	t2 = get_time();
 	for (i = 0; i < iteration; ++i)
 		memset(buf, 1, len);
 	t3 = get_time();
 	TEST_ASSERT_MEMSET(buf, (char)1, len);
-	ccprintf(" %d us) ", t3.val-t2.val);
+	ccprintf(" %" PRId64 " us) ", t3.val-t2.val);
 
 	/* Expected about 4x speed gain. Use 3x because it fluctuates */
 #ifndef EMU_BUILD
@@ -386,6 +386,44 @@ static int test_mula32(void)
 	return EC_SUCCESS;
 }
 
+#define SWAP_TEST_HARNESS(t, x, y) \
+	do { \
+		t a = x, b = y; \
+		swap(a, b); \
+		TEST_ASSERT(a == y); \
+		TEST_ASSERT(b == x); \
+	} while (0)
+
+
+static int test_swap(void)
+{
+	SWAP_TEST_HARNESS(uint8_t, UINT8_MAX, 0);
+	SWAP_TEST_HARNESS(uint16_t, UINT16_MAX, 0);
+	SWAP_TEST_HARNESS(uint32_t, UINT32_MAX, 0);
+	SWAP_TEST_HARNESS(float, 1, 0);
+	SWAP_TEST_HARNESS(double, 1, 0);
+	return EC_SUCCESS;
+}
+
+static int test_bytes_are_trivial(void)
+{
+	static const uint8_t all0x00[] = { 0x00, 0x00, 0x00 };
+	static const uint8_t all0xff[] = { 0xff, 0xff, 0xff, 0xff };
+	static const uint8_t nontrivial1[] = { 0x00, 0x01, 0x02 };
+	static const uint8_t nontrivial2[] = { 0xdd, 0xee, 0xff };
+	static const uint8_t nontrivial3[] = { 0x00, 0x00, 0x00, 0xff };
+	static const uint8_t nontrivial4[] = { 0xff, 0x00, 0x00, 0x00 };
+
+	TEST_ASSERT(bytes_are_trivial(all0x00, sizeof(all0x00)));
+	TEST_ASSERT(bytes_are_trivial(all0xff, sizeof(all0xff)));
+	TEST_ASSERT(!bytes_are_trivial(nontrivial1, sizeof(nontrivial1)));
+	TEST_ASSERT(!bytes_are_trivial(nontrivial2, sizeof(nontrivial2)));
+	TEST_ASSERT(!bytes_are_trivial(nontrivial3, sizeof(nontrivial3)));
+	TEST_ASSERT(!bytes_are_trivial(nontrivial4, sizeof(nontrivial4)));
+
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	test_reset();
@@ -402,6 +440,8 @@ void run_test(void)
 	RUN_TEST(test_scratchpad);
 	RUN_TEST(test_cond_t);
 	RUN_TEST(test_mula32);
+	RUN_TEST(test_swap);
+	RUN_TEST(test_bytes_are_trivial);
 
 	test_print_result();
 }

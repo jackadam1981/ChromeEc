@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -58,7 +58,7 @@ void pd_log_recv_vdm(int port, int cnt, uint32_t *payload)
 }
 
 /* we are a PD MCU/EC, send back the events to the host */
-static int hc_pd_get_log_entry(struct host_cmd_handler_args *args)
+static enum ec_status hc_pd_get_log_entry(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pd_log *r = args->response;
 
@@ -68,7 +68,7 @@ dequeue_retry:
 	if (r->type == PD_EVENT_NO_ENTRY) {
 		int i, res;
 		incoming_logs = 0;
-		for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; ++i) {
+		for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
 			/* only accessories who knows Google logging format */
 			if (pd_get_identity_vid(i) != USB_VID_GOOGLE)
 				continue;
@@ -88,7 +88,7 @@ DECLARE_HOST_COMMAND(EC_CMD_PD_GET_LOG_ENTRY,
 		     hc_pd_get_log_entry,
 		     EC_VER_MASK(0));
 
-static int hc_pd_write_log_entry(struct host_cmd_handler_args *args)
+static enum ec_status hc_pd_write_log_entry(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_write_log_entry *p = args->params;
 	uint8_t type = p->type;
@@ -96,13 +96,15 @@ static int hc_pd_write_log_entry(struct host_cmd_handler_args *args)
 
 	if (type < PD_EVENT_MCU_BASE || type >= PD_EVENT_ACC_BASE)
 		return EC_RES_INVALID_PARAM;
-	if (port > 0 && port >= CONFIG_USB_PD_PORT_COUNT)
+	if (port > 0 && port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	switch (type) {
 	/* Charge event: Log data for all ports */
 	case PD_EVENT_MCU_CHARGE:
+#ifdef CONFIG_CHARGE_MANAGER
 		charge_manager_save_log(port);
+#endif
 		break;
 
 	/* Other events: no extra data, just log event type + port */

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -87,7 +87,7 @@ const struct adc_t adc_channels[] = {
 	 * now.
 	 */
 	{"BatteryTemp", LM4_ADC_SEQ2, 1, 1, 0,
-	 LM4_AIN(10), 0x06 /* IE0 | END0 */, LM4_GPIO_B, (1<<4)},
+	 LM4_AIN(10), 0x06 /* IE0 | END0 */, LM4_GPIO_B, BIT(4)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -118,7 +118,7 @@ const struct fan_rpm fan_rpm_0 = {
 	.rpm_max = 6350,
 };
 
-struct fan_t fans[] = {
+const struct fan_t fans[] = {
 	{ .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 	{ .conf = &fan_conf_1, .rpm = &fan_rpm_0, },
 };
@@ -132,27 +132,33 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-#define TEMP_U40_REG_ADDR	((0x40 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U41_REG_ADDR	((0x44 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U42_REG_ADDR	((0x41 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U43_REG_ADDR	((0x45 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U115_REG_ADDR	((0x42 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U116_REG_ADDR	((0x43 << 1) | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U40_REG_ADDR_FLAGS		(0x40 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U41_REG_ADDR_FLAGS		(0x44 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U42_REG_ADDR_FLAGS		(0x41 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U43_REG_ADDR_FLAGS		(0x45 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U115_REG_ADDR_FLAGS	(0x42 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U116_REG_ADDR_FLAGS	(0x43 | I2C_FLAG_BIG_ENDIAN)
 
-#define TEMP_U40_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U40_REG_ADDR)
-#define TEMP_U41_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U41_REG_ADDR)
-#define TEMP_U42_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U42_REG_ADDR)
-#define TEMP_U43_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U43_REG_ADDR)
-#define TEMP_U115_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U115_REG_ADDR)
-#define TEMP_U116_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U116_REG_ADDR)
+#define TEMP_U40_ADDR_FLAGS TMP006_ADDR(I2C_PORT_THERMAL,\
+					TEMP_U40_REG_ADDR_FLAGS)
+#define TEMP_U41_ADDR_FLAGS TMP006_ADDR(I2C_PORT_THERMAL,\
+					TEMP_U41_REG_ADDR_FLAGS)
+#define TEMP_U42_ADDR_FLAGS TMP006_ADDR(I2C_PORT_THERMAL,\
+					TEMP_U42_REG_ADDR_FLAGS)
+#define TEMP_U43_ADDR_FLAGS TMP006_ADDR(I2C_PORT_THERMAL,\
+					TEMP_U43_REG_ADDR_FLAGS)
+#define TEMP_U115_ADDR_FLAGS TMP006_ADDR(I2C_PORT_THERMAL,\
+					 TEMP_U115_REG_ADDR_FLAGS)
+#define TEMP_U116_ADDR_FLAGS TMP006_ADDR(I2C_PORT_THERMAL,\
+					 TEMP_U116_REG_ADDR_FLAGS)
 
 const struct tmp006_t tmp006_sensors[TMP006_COUNT] = {
-	{"Charger", TEMP_U40_ADDR},
-	{"CPU", TEMP_U41_ADDR},
-	{"Left C", TEMP_U42_ADDR},
-	{"Right C", TEMP_U43_ADDR},
-	{"Right D", TEMP_U115_ADDR},
-	{"Left D", TEMP_U116_ADDR},
+	{"Charger", TEMP_U40_ADDR_FLAGS},
+	{"CPU", TEMP_U41_ADDR_FLAGS},
+	{"Left C", TEMP_U42_ADDR_FLAGS},
+	{"Right C", TEMP_U43_ADDR_FLAGS},
+	{"Right D", TEMP_U115_ADDR_FLAGS},
+	{"Left D", TEMP_U116_ADDR_FLAGS},
 };
 BUILD_ASSERT(ARRAY_SIZE(tmp006_sensors) == TMP006_COUNT);
 
@@ -299,13 +305,13 @@ struct lsm6ds0_data g_saved_data[2];
 
 /* Four Motion sensors */
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0, FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
 
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ 0,  FLOAT_TO_FP(1),  0},
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  0, FLOAT_TO_FP(-1)}
@@ -326,7 +332,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_saved_data[0],
 	 .port = I2C_PORT_ACCEL,
-	 .addr = LSM6DS0_ADDR1,
+	 .i2c_spi_addr_flags = LSM6DS0_ADDR1_FLAGS,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .min_frequency = LSM6DS0_ACCEL_MIN_FREQ,
@@ -358,7 +364,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_kxcj9_data,
 	 .port = I2C_PORT_ACCEL,
-	 .addr = KXCJ9_ADDR0,
+	 .i2c_spi_addr_flags = KXCJ9_ADDR0_FLAGS,
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
@@ -381,7 +387,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_saved_data[1],
 	 .port = I2C_PORT_ACCEL,
-	 .addr = LSM6DS0_ADDR1,
+	 .i2c_spi_addr_flags = LSM6DS0_ADDR1_FLAGS,
 	 .rot_standard_ref = NULL,
 	 .default_range = 2000,  /* g, enough for laptop. */
 	 .min_frequency = LSM6DS0_GYRO_MIN_FREQ,
@@ -460,4 +466,25 @@ enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
 		lightbar_sequence(LIGHTBAR_KONAMI);
 	}
 	return EC_SUCCESS;
+}
+
+/*
+ * Use to define going in to hibernate early if low on battery.
+ * HIBERNATE_BATT_PCT specifies the low battery threshold
+ * for going into hibernate early, and HIBERNATE_BATT_SEC defines
+ * the minimum amount of time to stay in G3 before checking for low
+ * battery hibernate.
+ */
+#define HIBERNATE_BATT_PCT 10
+#define HIBERNATE_BATT_SEC (3600 * 24)
+
+__override enum critical_shutdown board_system_is_idle(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
+{
+	if (charge_get_percent() <= HIBERNATE_BATT_PCT) {
+		uint64_t t = last_shutdown_time + HIBERNATE_BATT_SEC * SEC_UL;
+		*target = MIN(*target, t);
+	}
+	return now > *target ?
+			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
 }

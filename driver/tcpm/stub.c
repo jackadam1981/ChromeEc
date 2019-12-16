@@ -9,23 +9,8 @@
 #include "tcpci.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
-
-extern int tcpc_alert_status(int port, int *alert);
-extern int tcpc_alert_status_clear(int port, uint16_t mask);
-extern int tcpc_alert_mask_set(int port, uint16_t mask);
-extern int tcpc_get_cc(int port, int *cc1, int *cc2);
-extern int tcpc_select_rp_value(int port, int rp);
-extern int tcpc_set_cc(int port, int pull);
-extern int tcpc_set_polarity(int port, int polarity);
-extern int tcpc_set_power_status_mask(int port, uint8_t mask);
-extern int tcpc_set_vconn(int port, int enable);
-extern int tcpc_set_msg_header(int port, int power_role, int data_role);
-extern int tcpc_set_rx_enable(int port, int enable);
-
-extern int tcpc_get_message(int port, uint32_t *payload, int *head);
-extern int tcpc_transmit(int port, enum tcpm_transmit_type type,
-			 uint16_t header, const uint32_t *data);
 
 static int init_alert_mask(int port)
 {
@@ -62,7 +47,8 @@ int tcpm_init(int port)
 	return init_power_status_mask(port);
 }
 
-int tcpm_get_cc(int port, int *cc1, int *cc2)
+int tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
 {
 	return tcpc_get_cc(port, cc1, cc2);
 }
@@ -103,7 +89,12 @@ int tcpm_set_rx_enable(int port, int enable)
 	return tcpc_set_rx_enable(port, enable);
 }
 
-int tcpm_get_message(int port, uint32_t *payload, int *head)
+int tcpm_has_pending_message(int port)
+{
+	return !rx_buf_is_empty(port);
+}
+
+int tcpm_dequeue_message(int port, uint32_t *payload, int *head)
 {
 	int ret = tcpc_get_message(port, payload, head);
 
@@ -111,6 +102,11 @@ int tcpm_get_message(int port, uint32_t *payload, int *head)
 	tcpc_alert_status_clear(port, TCPC_REG_ALERT_RX_STATUS);
 
 	return ret;
+}
+
+void tcpm_clear_pending_messages(int port)
+{
+	rx_buf_clear(port);
 }
 
 int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
@@ -141,9 +137,8 @@ void tcpc_alert(int port)
 	if (status & TCPC_REG_ALERT_RX_STATUS) {
 		/*
 		 * message received. since TCPC is compiled in, we
-		 * already received PD_EVENT_RX from phy layer in
-		 * pd_rx_event(), so we don't need to set another
-		 * event.
+		 * already woke the PD task up from the phy layer via
+		 * pd_rx_event(), so we don't need to wake it again.
 		 */
 	}
 	if (status & TCPC_REG_ALERT_RX_HARD_RST) {

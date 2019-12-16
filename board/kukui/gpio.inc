@@ -25,56 +25,39 @@ GPIO_INT(AP_IN_SLEEP_L,     PIN(C, 12), GPIO_INT_BOTH | GPIO_PULL_DOWN,
 GPIO_INT(PMIC_EC_RESETB,    PIN(B, 7),  GPIO_INT_BOTH | GPIO_PULL_DOWN,
          power_signal_interrupt)
 GPIO_INT(WARM_RESET_REQ,    PIN(A, 3),  GPIO_INT_RISING | GPIO_PULL_DOWN,
-         warm_reset_request_interrupt)
-GPIO_INT(AP_EC_WATCHDOG_L,  PIN(C, 2),  GPIO_INT_BOTH,
-         ap_watchdog_interrupt)
+         chipset_reset_request_interrupt)
+GPIO_INT(AP_EC_WATCHDOG_L,  PIN(C, 2),  GPIO_INT_FALLING,
+         chipset_watchdog_interrupt)
 
 GPIO_INT_RW(ACCEL_INT_ODL,  PIN(A, 4), GPIO_INT_FALLING | GPIO_SEL_1P8V | GPIO_PULL_UP,
          bmi160_interrupt)
 GPIO_INT(CHARGER_INT_ODL,   PIN(C, 13), GPIO_INT_FALLING | GPIO_PULL_UP,
          rt946x_interrupt)
-#if BOARD_REV == 0
 GPIO_INT_RO(EMMC_CMD,       PIN(B, 15), GPIO_INT_FALLING,
-         emmc_cmd_interrupt)
-GPIO_INT_RW(SYNC_INT,       PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
-         sync_interrupt)
-/*
- * rev0 has an interrupt conflict between SPI1_NSS and EMMC_CMD (PIN(x, 15)),
- * let's just ignore interrupts as host command won't work anyway.
- */
-GPIO(SPI1_NSS,              PIN(A, 15), GPIO_INPUT)
-#elif BOARD_REV >= 1
-GPIO_INT_RO(EMMC_CMD,       PIN(A, 14), GPIO_INT_FALLING,
          emmc_cmd_interrupt)
 GPIO_INT(SPI1_NSS,          PIN(A, 15), GPIO_INT_BOTH,
          spi_event)
 GPIO_INT_RW(SYNC_INT,       PIN(A, 8),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
-GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_FALLING,
-         hall_interrupt)
+GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_BOTH,
+         lid_interrupt)
 GPIO_INT(GAUGE_INT_ODL,     PIN(C, 9),  GPIO_INT_FALLING | GPIO_PULL_UP,
          gauge_interrupt)
-#endif
+GPIO_INT(POGO_ADC_INT_L,    PIN(A, 6),  GPIO_INT_BOTH,
+         pogo_adc_interrupt)
 
-/* Interrupts not implemented yet */
-#if BOARD_REV >= 1
-GPIO(ALS_INT_ODL,           PIN(A, 6), GPIO_INPUT)
-#endif
+/* unused */
+GPIO(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_INPUT)
+/* unused after board rev 5 */
+GPIO(USB_C0_DP_POLARITY,   PIN(C, 14), GPIO_INPUT)
+GPIO(USB_C0_DP_OE_L,       PIN(A, 5),  GPIO_INPUT)
 
-/* Voltage rails control pins */
-GPIO(PP3300_S0_EN,         PIN(B, 6),  GPIO_OUT_LOW)
-GPIO(PP1800_S3_EN,         PIN(C, 7),  GPIO_OUT_LOW)
-#if BOARD_REV == 0
-GPIO(PP3300_S3_EN,         PIN(A, 8),  GPIO_OUT_LOW)
-#elif BOARD_REV >= 1
-GPIO(PP3300_S3_EN,         PIN(D, 2),  GPIO_OUT_LOW)
-#endif
 
 /* Reset pins */
 GPIO(AP_SYS_RST_L,         PIN(C, 11), GPIO_OUT_LOW)
 GPIO(PMIC_WATCHDOG_L,      PIN(C, 3),  GPIO_OUT_LOW)
 GPIO(PMIC_EN_ODL,          PIN(C, 10), GPIO_ODR_HIGH)
-GPIO(PMIC_FORCE_RESET,     PIN(A, 2),  GPIO_OUT_LOW)
+GPIO(PMIC_FORCE_RESET_ODL, PIN(A, 2),  GPIO_ODR_HIGH)
 GPIO(MT6370_RST_L,         PIN(F, 0),  GPIO_OUT_LOW)
 
 /*
@@ -87,34 +70,26 @@ GPIO(I2C2_SCL,             PIN(A, 11), GPIO_INPUT)
 GPIO(I2C2_SDA,             PIN(A, 12), GPIO_INPUT)
 
 /* Analog pins */
+GPIO(BATT_ID,              PIN(A, 7),  GPIO_ANALOG)
 GPIO(BOARD_ID,             PIN(C, 0),  GPIO_ANALOG)
+GPIO(EC_SKU_ID,            PIN(B, 0),  GPIO_ANALOG)
 
 /* Other input pins */
 GPIO(WP_L,                 PIN(C, 8),  GPIO_INPUT) /* EC_FLASH_WP_ODL */
 GPIO(BOOT0,                PIN(F, 11), GPIO_INPUT)
-#if BOARD_REV == 0
-GPIO(CCD_MODE_ODL,         PIN(C, 9),  GPIO_INPUT)
-#elif BOARD_REV >= 1
 GPIO(CCD_MODE_ODL,         PIN(A, 1),  GPIO_INPUT)
-GPIO(BATT_ID,              PIN(A, 7),  GPIO_INPUT)
-#endif
 
 /* Other output pins */
 GPIO(ENTERING_RW,          PIN(C, 6),  GPIO_ODR_HIGH) /* EC_ENTERING_RW_ODL */
 GPIO(EC_INT_L,             PIN(B, 12), GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 GPIO(EC_BOARD_ID_EN_L,     PIN(C, 15), GPIO_ODR_HIGH) /* EC_BOARD_ID_EN_ODL */
-GPIO(USB_C0_DISCHARGE,     PIN(B, 0),  GPIO_OUT_LOW)
-GPIO(USB_C0_DP_POLARITY,   PIN(C, 14), GPIO_OUT_LOW)
-GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_OUT_LOW)
-GPIO(BOOTBLOCK_MUX_OE,     PIN(C, 4),  GPIO_ODR_HIGH)
+GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_ODR_LOW)
 GPIO(BOOTBLOCK_EN_L,       PIN(C, 1),  GPIO_ODR_HIGH)
-#if BOARD_REV == 0
-GPIO(USB_C0_DP_OE_L,       PIN(C, 5),  GPIO_OUT_HIGH)
-GPIO(OTG_EN,               PIN(A, 6),  GPIO_OUT_LOW)
-#elif BOARD_REV >= 1
-GPIO(USB_C0_DP_OE_L,       PIN(A, 5),  GPIO_OUT_HIGH)
-GPIO(USB_ID,               PIN(A, 13), GPIO_ODR_HIGH)
-#endif
+GPIO(EN_PP3300_POGO,     PIN(A, 13), GPIO_OUT_LOW)
+GPIO(EN_POGO_CHARGE_L,   PIN(B, 6),  GPIO_OUT_HIGH)
+GPIO(EN_USBC_CHARGE_L,   PIN(C, 7),  GPIO_OUT_LOW)
+GPIO(EN_PP5000_USBC,     PIN(D, 2),  GPIO_OUT_LOW)
+GPIO(BC12_DET_EN,        PIN(C, 4),  GPIO_OUT_LOW)
 
 /* USART1: PA9/PA10 */
 ALTERNATE(PIN_MASK(A, 0x0600), 1, MODULE_UART,       0)

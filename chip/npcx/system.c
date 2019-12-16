@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -16,6 +16,7 @@
 #include "hwtimer_chip.h"
 #include "registers.h"
 #include "rom_chip.h"
+#include "sib_chip.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
@@ -25,7 +26,7 @@
 
 /* Delay after writing TTC for value to latch */
 #define MTC_TTC_LOAD_DELAY_US 250
-#define MTC_ALARM_MASK     ((1 << 25) - 1)
+#define MTC_ALARM_MASK     (BIT(25) - 1)
 #define MTC_WUI_GROUP      MIWU_GROUP_4
 #define MTC_WUI_MASK       MASK_PIN7
 
@@ -43,9 +44,7 @@
 void system_watchdog_reset(void)
 {
 	/* Unlock & stop watchdog registers */
-	NPCX_WDSDM = 0x87;
-	NPCX_WDSDM = 0x61;
-	NPCX_WDSDM = 0x63;
+	watchdog_stop_and_unlock();
 
 	/* Reset TWCFG */
 	NPCX_TWCFG = 0;
@@ -78,10 +77,9 @@ static int bbram_is_byte_access(enum bbram_data_index index)
 {
 	return (index >= BBRM_DATA_INDEX_VBNVCNTXT &&
 		index <  BBRM_DATA_INDEX_RAMLOG)
-#ifdef CONFIG_USB_PD_DUAL_ROLE
 		|| index == BBRM_DATA_INDEX_PD0
 		|| index == BBRM_DATA_INDEX_PD1
-#endif
+		|| index == BBRM_DATA_INDEX_PD2
 		|| index == BBRM_DATA_INDEX_PANIC_FLAGS
 	;
 }
@@ -98,8 +96,13 @@ void system_check_bbram_on_reset(void)
 			IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS))
 			CPRINTF("VBAT drop!\n");
 
-		/* Clear IBBR bit */
-		SET_BIT(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR);
+		/*
+		 * npcx5/npcx7m6g/npcx7m6f:
+		 *   Clear IBBR bit
+		 * npcx7m6fb/npcx7m6fc/npcx7m7wb/npcx7m7wc:
+		 *   Clear IBBR/VSBY_STS/VCC1_STS bit
+		 */
+		NPCX_BKUP_STS = NPCX_BKUP_STS_ALL_MASK;
 	}
 }
 
@@ -112,7 +115,7 @@ static int bbram_valid(enum bbram_data_index index, int bytes)
 
 	/* Check BBRAM is valid */
 	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {
-		SET_BIT(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR);
+		NPCX_BKUP_STS = BIT(NPCX_BKUP_STS_IBBR);
 		panic_printf("IBBR set: BBRAM corrupted!\n");
 		return 0;
 	}
@@ -177,20 +180,14 @@ static int bbram_idx_lookup(enum system_bbram_idx idx)
 	    idx <= SYSTEM_BBRAM_IDX_VBNVBLOCK15)
 		return BBRM_DATA_INDEX_VBNVCNTXT +
 		       idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0;
-#ifdef CONFIG_USB_PD_DUAL_ROLE
 	if (idx == SYSTEM_BBRAM_IDX_PD0)
 		return BBRM_DATA_INDEX_PD0;
 	if (idx == SYSTEM_BBRAM_IDX_PD1)
 		return BBRM_DATA_INDEX_PD1;
-#if CONFIG_USB_PD_PORT_COUNT >= 3
 	if (idx == SYSTEM_BBRAM_IDX_PD2)
 		return BBRM_DATA_INDEX_PD2;
-#endif /* CONFIG_USB_PD_PORT_COUNT >= 3 */
-#endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
-#ifdef CONFIG_VBOOT_EFS
 	if (idx == SYSTEM_BBRAM_IDX_TRY_SLOT)
 		return BBRM_DATA_INDEX_TRY_SLOT;
-#endif
 	return -1;
 }
 
@@ -261,7 +258,7 @@ void system_set_rtc(uint32_t seconds)
 #define BKUP_LREG3		(BBRM_DATA_INDEX_PANIC_BKUP + 16)
 #define BKUP_LREG4		(BBRM_DATA_INDEX_PANIC_BKUP + 20)
 
-#define BKUP_PANIC_DATA_VALID	(1 << 0)
+#define BKUP_PANIC_DATA_VALID	BIT(0)
 
 void chip_panic_data_backup(void)
 {
@@ -311,7 +308,7 @@ static void chip_panic_data_restore(void)
 }
 #endif /* CONFIG_CHIP_PANIC_BACKUP */
 
-void chip_save_reset_flags(int flags)
+void chip_save_reset_flags(uint32_t flags)
 {
 	bbram_data_write(BBRM_DATA_INDEX_SAVED_RESET_FLAGS, flags);
 }
@@ -332,9 +329,9 @@ uint32_t chip_read_reset_flags(void)
 static void board_chipset_startup(void)
 {
 	uint32_t flags = bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS);
-	flags &= ~RESET_FLAG_AP_OFF;
+	flags &= ~EC_RESET_FLAG_AP_OFF;
 	chip_save_reset_flags(flags);
-	system_clear_reset_flags(RESET_FLAG_AP_OFF);
+	system_clear_reset_flags(EC_RESET_FLAG_AP_OFF);
 	CPRINTS("Cleared AP_OFF flag");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
@@ -342,9 +339,9 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 static void board_chipset_shutdown(void)
 {
 	uint32_t flags = bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS);
-	flags |= RESET_FLAG_AP_OFF;
+	flags |= EC_RESET_FLAG_AP_OFF;
 	chip_save_reset_flags(flags);
-	system_set_reset_flags(RESET_FLAG_AP_OFF);
+	system_set_reset_flags(EC_RESET_FLAG_AP_OFF);
 	CPRINTS("Set AP_OFF flag");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
@@ -361,7 +358,7 @@ static void check_reset_cause(void)
 	/* Clear saved reset flags in bbram */
 #ifdef CONFIG_POWER_BUTTON_INIT_IDLE
 	/* We'll clear AP_OFF on S5->S3 transition */
-	chip_save_reset_flags(flags & RESET_FLAG_AP_OFF);
+	chip_save_reset_flags(flags & EC_RESET_FLAG_AP_OFF);
 #else
 	chip_save_reset_flags(0);
 #endif
@@ -372,13 +369,13 @@ static void check_reset_cause(void)
 	if (!IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_SCRATCH)) {
 #ifdef CONFIG_BOARD_FORCE_RESET_PIN
 		/* Treat all resets as RESET_PIN */
-		flags |= RESET_FLAG_RESET_PIN;
+		flags |= EC_RESET_FLAG_RESET_PIN;
 #else
 		/* Check for VCC1 reset */
 		if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS))
-			flags |= RESET_FLAG_RESET_PIN;
+			flags |= EC_RESET_FLAG_RESET_PIN;
 		else
-			flags |= RESET_FLAG_POWER_ON;
+			flags |= EC_RESET_FLAG_POWER_ON;
 #endif
 	}
 
@@ -391,27 +388,27 @@ static void check_reset_cause(void)
 
 	/* Software debugger reset */
 	if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_DBGRST_STS)) {
-		flags |= RESET_FLAG_SOFT;
+		flags |= EC_RESET_FLAG_SOFT;
 		/* Clear debugger reset status initially*/
 		SET_BIT(NPCX_RSTCTL, NPCX_RSTCTL_DBGRST_STS);
 	}
 
 	/* Reset by hibernate */
 	if (hib_wake_flags & HIBERNATE_WAKE_PIN)
-		flags |= RESET_FLAG_WAKE_PIN | RESET_FLAG_HIBERNATE;
+		flags |= EC_RESET_FLAG_WAKE_PIN | EC_RESET_FLAG_HIBERNATE;
 	else if (hib_wake_flags & HIBERNATE_WAKE_MTC)
-		flags |= RESET_FLAG_RTC_ALARM | RESET_FLAG_HIBERNATE;
+		flags |= EC_RESET_FLAG_RTC_ALARM | EC_RESET_FLAG_HIBERNATE;
 
 	/* Watchdog Reset */
 	if (IS_BIT_SET(NPCX_T0CSR, NPCX_T0CSR_WDRST_STS)) {
 		/*
-		 * Don't set RESET_FLAG_WATCHDOG flag if watchdog is issued by
-		 * system_reset or hibernate in order to distinguish reset cause
-		 * is panic reason or not.
+		 * Don't set EC_RESET_FLAG_WATCHDOG flag if watchdog is issued
+		 * by system_reset or hibernate in order to distinguish reset
+		 * cause is panic reason or not.
 		 */
-		if (!(flags & (RESET_FLAG_SOFT | RESET_FLAG_HARD |
-				RESET_FLAG_HIBERNATE)))
-			flags |= RESET_FLAG_WATCHDOG;
+		if (!(flags & (EC_RESET_FLAG_SOFT | EC_RESET_FLAG_HARD |
+				EC_RESET_FLAG_HIBERNATE)))
+			flags |= EC_RESET_FLAG_WATCHDOG;
 
 		/* Clear watchdog reset status initially*/
 		SET_BIT(NPCX_T0CSR, NPCX_T0CSR_WDRST_STS);
@@ -486,17 +483,15 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	/* Disable interrupt */
 	interrupt_disable();
 
+	/* Unlock & stop watchdog */
+	watchdog_stop_and_unlock();
+
 	/* ITIM event module disable */
 	CLEAR_BIT(NPCX_ITCTS(ITIM_EVENT_NO), NPCX_ITCTS_ITEN);
 	/* ITIM time module disable */
 	CLEAR_BIT(NPCX_ITCTS(ITIM32), NPCX_ITCTS_ITEN);
 	/* ITIM watchdog warn module disable */
 	CLEAR_BIT(NPCX_ITCTS(ITIM_WDG_NO), NPCX_ITCTS_ITEN);
-
-	/* Unlock & stop watchdog */
-	NPCX_WDSDM = 0x87;
-	NPCX_WDSDM = 0x61;
-	NPCX_WDSDM = 0x63;
 
 	/* Initialize watchdog */
 	NPCX_TWCFG = 0; /* Select T0IN clock as watchdog prescaler clock */
@@ -665,6 +660,28 @@ void chip_pre_init(void)
 	CLEAR_BIT(NPCX_DEVALT(ALT_GROUP_5), NPCX_DEVALT5_NJEN0_EN);
 #endif
 #endif
+
+#ifndef CONFIG_ENABLE_JTAG_SELECTION
+	/*
+	 * (b/129908668)
+	 * This is the workaround to disable the JTAG0 which is enabled
+	 * accidentally by a special key combination.
+	 */
+	if (!IS_BIT_SET(NPCX_DEVALT(5), NPCX_DEVALT5_NJEN0_EN)) {
+		int data;
+		/* Set DEVALT5.nJEN0_EN to disable JTAG0 */
+		SET_BIT(NPCX_DEVALT(5), NPCX_DEVALT5_NJEN0_EN);
+		/* Enable Core-to-Host Modules Access */
+		SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
+		/* Clear SIOCFD.JEN0_HSL to disable JTAG0 */
+		data = sib_read_reg(SIO_OFFSET, 0x2D);
+		data &= ~0x80;
+		sib_write_reg(SIO_OFFSET, 0x2D, data);
+		/* Disable Core-to-Host Modules Access */
+		CLEAR_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
+	}
+#endif
+
 }
 
 void system_pre_init(void)
@@ -688,15 +705,16 @@ void system_pre_init(void)
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_5) = 0xF8;
 
 	pwdwn6 = 0x70 |
-		(1 << NPCX_PWDWN_CTL6_ITIM6_PD) |
-		(1 << NPCX_PWDWN_CTL6_ITIM4_PD); /* Skip ITIM5_PD */
+		BIT(NPCX_PWDWN_CTL6_ITIM6_PD) |
+		BIT(NPCX_PWDWN_CTL6_ITIM4_PD); /* Skip ITIM5_PD */
 #if !defined(CONFIG_HOSTCMD_ESPI)
 	pwdwn6 |= 1 << NPCX_PWDWN_CTL6_ESPI_PD;
 #endif
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_6) = pwdwn6;
 
 #if defined(CHIP_FAMILY_NPCX7)
-#if defined(CHIP_VARIANT_NPCX7M6FB) || defined(CHIP_VARIANT_NPCX7M7WB)
+#if defined(CHIP_VARIANT_NPCX7M6FB) || defined(CHIP_VARIANT_NPCX7M6FC) || \
+	defined(CHIP_VARIANT_NPCX7M7WB) || defined(CHIP_VARIANT_NPCX7M7WC)
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0xE7;
 #else
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0x07;
@@ -808,8 +826,10 @@ const char *system_get_chip_name(void)
 	case 0x1F:
 		return "NPCX787G";
 	case 0x21:
+	case 0x29:
 		return "NPCX796F";
 	case 0x24:
+	case 0x2C:
 		return "NPCX797W";
 #endif
 	default:
@@ -828,6 +848,9 @@ const char *system_get_chip_revision(void)
 	uint8_t chip_gen = NPCX_SRID_CR;
 	/* Read ROM data for chip revision directly */
 	uint8_t rev_num = *((uint8_t *)CHIP_REV_ADDR);
+#ifdef CHIP_FAMILY_NPCX7
+	uint8_t chip_id = NPCX_DEVICE_ID_CR;
+#endif
 
 	switch (chip_gen) {
 #if defined(CHIP_FAMILY_NPCX5)
@@ -839,7 +862,10 @@ const char *system_get_chip_revision(void)
 		*p++ = 'A';
 		break;
 	case 0x07:
-		*p++ = 'B';
+		if (chip_id == 0x21 || chip_id == 0x24)
+			*p++ = 'B';
+		else
+			*p++ = 'C';
 		break;
 #endif
 	default:
@@ -888,12 +914,12 @@ int system_is_reboot_warm(void)
 	check_reset_cause();
 	reset_flags = system_get_reset_flags();
 
-	if ((reset_flags & RESET_FLAG_RESET_PIN) ||
-	    (reset_flags & RESET_FLAG_POWER_ON) ||
-	    (reset_flags & RESET_FLAG_WATCHDOG) ||
-	    (reset_flags & RESET_FLAG_HARD) ||
-	    (reset_flags & RESET_FLAG_SOFT) ||
-	    (reset_flags & RESET_FLAG_HIBERNATE))
+	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||
+	    (reset_flags & EC_RESET_FLAG_POWER_ON) ||
+	    (reset_flags & EC_RESET_FLAG_WATCHDOG) ||
+	    (reset_flags & EC_RESET_FLAG_HARD) ||
+	    (reset_flags & EC_RESET_FLAG_SOFT) ||
+	    (reset_flags & EC_RESET_FLAG_HIBERNATE))
 		return 0;
 	else
 		return 1;
@@ -901,7 +927,6 @@ int system_is_reboot_warm(void)
 
 /*****************************************************************************/
 /* Console commands */
-#ifdef CONFIG_CMD_RTC
 void print_system_rtc(enum console_channel ch)
 {
 	uint32_t sec = system_get_rtc_sec();
@@ -909,6 +934,7 @@ void print_system_rtc(enum console_channel ch)
 	cprintf(ch, "RTC: 0x%08x (%d.00 s)\n", sec, sec);
 }
 
+#ifdef CONFIG_CMD_RTC
 static int command_system_rtc(int argc, char **argv)
 {
 	if (argc == 3 && !strcasecmp(argv[1], "set")) {
@@ -969,7 +995,7 @@ DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
 /* Host commands */
 
 #ifdef CONFIG_HOSTCMD_RTC
-static int system_rtc_get_value(struct host_cmd_handler_args *args)
+static enum ec_status system_rtc_get_value(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rtc *r = args->response;
 
@@ -982,7 +1008,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_VALUE,
 		system_rtc_get_value,
 		EC_VER_MASK(0));
 
-static int system_rtc_set_value(struct host_cmd_handler_args *args)
+static enum ec_status system_rtc_set_value(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rtc *p = args->params;
 
@@ -993,7 +1019,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE,
 		system_rtc_set_value,
 		EC_VER_MASK(0));
 
-static int system_rtc_set_alarm(struct host_cmd_handler_args *args)
+static enum ec_status system_rtc_set_alarm(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rtc *p = args->params;
 
@@ -1004,7 +1030,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_ALARM,
 		system_rtc_set_alarm,
 		EC_VER_MASK(0));
 
-static int system_rtc_get_alarm(struct host_cmd_handler_args *args)
+static enum ec_status system_rtc_get_alarm(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rtc *r = args->response;
 

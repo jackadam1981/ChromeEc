@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -92,7 +92,8 @@ static void print_gpio_info(int gpio)
 #endif
 	changed = last_val_changed(gpio, v);
 
-	ccprintf("  %d%c %s%s%s%s%s%s%s%s%s%s\n", v, (changed ? '*' : ' '),
+	ccprintf("  %d%c %s%s%s%s%s%s%s%s%s%s%s%s\n", v,
+		 (changed ? '*' : ' '),
 		 (flags & GPIO_INPUT ? "I " : ""),
 		 (flags & GPIO_OUTPUT ? "O " : ""),
 		 (flags & GPIO_LOW ? "L " : ""),
@@ -102,6 +103,8 @@ static void print_gpio_info(int gpio)
 		 (flags & GPIO_PULL_UP ? "PU " : ""),
 		 (flags & GPIO_PULL_DOWN ? "PD " : ""),
 		 (flags & GPIO_ALTERNATE ? "ALT " : ""),
+		 (flags & GPIO_SEL_1P8V ? "1P8 " : ""),
+		 (flags & GPIO_LOCKED ? "LCK " : ""),
 		 gpio_get_name(gpio));
 
 	/* Flush console to avoid truncating output */
@@ -204,7 +207,7 @@ DECLARE_CONSOLE_COMMAND(gpioset, command_gpio_set,
 /*****************************************************************************/
 /* Host commands */
 
-static int gpio_command_get(struct host_cmd_handler_args *args)
+static enum ec_status gpio_command_get(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_gpio_get_v1 *p_v1 = args->params;
 	struct ec_response_gpio_get_v1 *r_v1 = args->response;
@@ -257,7 +260,7 @@ static int gpio_command_get(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GPIO_GET, gpio_command_get,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
-static int gpio_command_set(struct host_cmd_handler_args *args)
+static enum ec_status gpio_command_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_gpio_set *p = args->params;
 

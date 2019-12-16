@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,6 +18,11 @@
 #undef CONFIG_VBOOT_HASH
 #undef CONFIG_USB_PD_LOGGING
 
+#ifdef TEST_AES
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#endif
+
 #ifdef TEST_BASE32
 #define CONFIG_BASE32
 #endif
@@ -31,6 +36,15 @@
 #define CONFIG_BACKLIGHT_REQ_GPIO GPIO_PCH_BKLTEN
 #endif
 
+#ifdef TEST_FLASH_LOG
+#define CONFIG_CRC8
+#define CONFIG_FLASH_ERASED_VALUE32 (-1U)
+#define CONFIG_FLASH_LOG
+#define CONFIG_FLASH_LOG_BASE (CONFIG_PROGRAM_MEMORY_BASE + 0x800)
+#define CONFIG_FLASH_LOG_SPACE 0x800
+#define CONFIG_MALLOC
+#endif
+
 #ifdef TEST_KB_8042
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #endif
@@ -38,24 +52,69 @@
 #ifdef TEST_KB_MKBP
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 #endif
 
 #ifdef TEST_KB_SCAN
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 #endif
 
 #ifdef TEST_MATH_UTIL
 #define CONFIG_MATH_UTIL
 #endif
 
-#ifdef TEST_MOTION_LID
+#ifdef TEST_FLOAT
+#define CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_FP
+#undef CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_FPSENSOR
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
+#define CONFIG_SHA256
+#endif
+
+#ifdef TEST_MOTION_SENSE_FIFO
+#define CONFIG_ACCEL_FIFO
+#define CONFIG_ACCEL_FIFO_SIZE 256
+#define CONFIG_ACCEL_FIFO_THRES 10
+#endif
+
+#if defined(TEST_MOTION_LID) || defined(TEST_MOTION_ANGLE) || \
+	defined(TEST_MOTION_ANGLE_TABLET) || defined(TEST_MOTION_SENSE_FIFO)
+enum sensor_id {
+	BASE,
+	LID,
+	SENSOR_COUNT,
+};
+
 #define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_INVALID_CHECK
-#define CONFIG_LID_ANGLE_TABLET_MODE
-#define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 1
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE
+#define CONFIG_LID_ANGLE_SENSOR_LID LID
 #define CONFIG_TABLET_MODE
+#define CONFIG_MOTION_FILL_LPC_SENSE_DATA
+
+#endif
+
+#if defined(TEST_MOTION_ANGLE)
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	((1 << CONFIG_LID_ANGLE_SENSOR_BASE) | \
+	 (1 << CONFIG_LID_ANGLE_SENSOR_LID))
+#define CONFIG_ACCEL_STD_REF_FRAME_OLD
+#endif
+
+#if defined(TEST_MOTION_ANGLE_TABLET)
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	((1 << CONFIG_LID_ANGLE_SENSOR_BASE) | \
+	 (1 << CONFIG_LID_ANGLE_SENSOR_LID))
 #endif
 
 #ifdef TEST_RMA_AUTH
@@ -121,7 +180,6 @@
 #define CONFIG_BATTERY_MOCK
 #define CONFIG_BATTERY_SMART
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
 #define CONFIG_CHARGER_INPUT_CURRENT 4032
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -178,11 +236,136 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_ALS_LIGHTBAR_DIMMING 0
 #endif
 
+#ifdef TEST_USB_COMMON
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H3)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H2)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H1)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_SM_FRAMEWORK_H0)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#endif
+
+#if defined(TEST_USB_PRL)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_SM_FRAMEWORK
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif
+
+#if defined(TEST_USB_PE_DRP)
+#define CONFIG_TEST_USB_PE_SM
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PID 0x5036
+#define CONFIG_USB_POWER_DELIVERY
+#undef CONFIG_USB_PRL_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#undef CONFIG_USB_TYPEC_SM
+#define CONFIG_USBC_VCONN
+#define PD_VCONN_SWAP_DELAY 5000 /* us */
+#define CONFIG_USB_PD_DISCHARGE_GPIO
+#endif
+
+/* Common TypeC tests defines */
+#if defined(TEST_USB_TYPEC_VPD) || \
+	defined(TEST_USB_TYPEC_CTVPD)
+#define CONFIG_USB_PID 0x5036
+#define VPD_HW_VERSION 0x0001
+#define VPD_FW_VERSION 0x0001
+#define USB_BCD_DEVICE 0
+
+/* Vbus impedance in milliohms */
+#define VPD_VBUS_IMPEDANCE 65
+
+/* GND impedance in milliohms */
+#define VPD_GND_IMPEDANCE 33
+
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_SM_FRAMEWORK
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_SW_CRC
+#endif /* Common TypeC test defines */
+
+#ifdef TEST_USB_TYPEC_VPD
+#define CONFIG_USB_TYPEC_VPD
+#endif
+
+#ifdef TEST_USB_TYPEC_CTVPD
+#define CONFIG_USB_TYPEC_CTVPD
+#endif
+
+#ifdef TEST_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_SM_FRAMEWORK
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_POWER_DELIVERY
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
+#endif
+
+#ifdef TEST_USB_PD_INT
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif
+
 #if defined(TEST_USB_PD) || defined(TEST_USB_PD_GIVEBACK) || \
 	defined(TEST_USB_PD_REV30)
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_SHA256
@@ -196,10 +379,19 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #endif
 #endif /* TEST_USB_PD || TEST_USB_PD_GIVEBACK || TEST_USB_PD_REV30 */
 
+#ifdef TEST_USB_PPC
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_VBUS_DETECT_PPC
+#define CONFIG_USBC_PPC
+#define CONFIG_USBC_PPC_POLARITY
+#define CONFIG_USBC_PPC_SBU
+#define CONFIG_USBC_PPC_VCONN
+#endif
+
 #if defined(TEST_CHARGE_MANAGER) || defined(TEST_CHARGE_MANAGER_DRP_CHARGING)
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_BATTERY
 #define CONFIG_BATTERY_SMART
 #define CONFIG_I2C
@@ -215,57 +407,42 @@ int ncp15wb_calculate_temp(uint16_t adc);
 
 #ifdef TEST_CHARGE_RAMP
 #define CONFIG_CHARGE_RAMP_SW
-#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #endif
 
-#ifdef TEST_NVMEM
+#if defined(TEST_NVMEM) || defined(TEST_NVMEM_VARS)
+#define CONFIG_CRC8
+#define CONFIG_FLASH_ERASED_VALUE32 (-1U)
+#define CONFIG_FLASH_LOG
+#define CONFIG_FLASH_LOG_BASE CONFIG_PROGRAM_MEMORY_BASE
+#define CONFIG_FLASH_LOG_SPACE 0x800
 #define CONFIG_FLASH_NVMEM
-#define CONFIG_FLASH_NVMEM_OFFSET_A 0x1000
-#define CONFIG_FLASH_NVMEM_OFFSET_B 0x4000
-#define CONFIG_FLASH_NVMEM_BASE_A (CONFIG_PROGRAM_MEMORY_BASE + \
-				 CONFIG_FLASH_NVMEM_OFFSET_A)
-#define CONFIG_FLASH_NVMEM_BASE_B (CONFIG_PROGRAM_MEMORY_BASE + \
-				 CONFIG_FLASH_NVMEM_OFFSET_B)
-#define CONFIG_FLASH_NVMEM_SIZE 0x4000
-#define CONFIG_SW_CRC
-
-#define NVMEM_PARTITION_SIZE \
-	(CONFIG_FLASH_NVMEM_SIZE / NVMEM_NUM_PARTITIONS)
-/* User buffer definitions for test purposes */
-#define NVMEM_USER_2_SIZE 0x201
-#define NVMEM_USER_1_SIZE 0x402
-#define NVMEM_USER_0_SIZE (NVMEM_PARTITION_SIZE - \
-			   NVMEM_USER_2_SIZE - NVMEM_USER_1_SIZE - \
-			   sizeof(struct nvmem_tag))
-
-#ifndef __ASSEMBLER__
-enum nvmem_users {
-	NVMEM_USER_0,
-	NVMEM_USER_1,
-	NVMEM_USER_2,
-	NVMEM_NUM_USERS
-};
-#endif
-#endif
-
-#ifdef TEST_NVMEM_VARS
+#define CONFIG_FLASH_NVMEM_OFFSET_A 0x3d000
+#define CONFIG_FLASH_NVMEM_OFFSET_B 0x7d000
+#define CONFIG_FLASH_NVMEM_BASE_A                                              \
+	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_FLASH_NVMEM_OFFSET_A)
+#define CONFIG_FLASH_NVMEM_BASE_B                                              \
+	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_FLASH_NVMEM_OFFSET_B)
+#define CONFIG_FLASH_NEW_NVMEM_BASE_A (CONFIG_FLASH_NVMEM_BASE_A + 0x800)
+#define CONFIG_FLASH_NEW_NVMEM_BASE_B (CONFIG_FLASH_NVMEM_BASE_B + 0x800)
+#define CONFIG_MALLOC
+/* This is legacy NVMEM partition size. */
 #define NVMEM_PARTITION_SIZE 0x3000
+#define NEW_FLASH_HALF_NVMEM_SIZE                                              \
+	(NVMEM_PARTITION_SIZE - CONFIG_FLASH_BANK_SIZE)
+#define NEW_NVMEM_PARTITION_SIZE (NVMEM_PARTITION_SIZE - CONFIG_FLASH_BANK_SIZE)
+#define NEW_NVMEM_TOTAL_PAGES                                                  \
+	(2 * NEW_NVMEM_PARTITION_SIZE / CONFIG_FLASH_BANK_SIZE)
+#define CONFIG_SW_CRC
 #define CONFIG_FLASH_NVMEM_VARS
+
 #ifndef __ASSEMBLER__
-/* Define the user region numbers */
-enum nvmem_users {
-	CONFIG_FLASH_NVMEM_VARS_USER_NUM,
-	NVMEM_NUM_USERS
-};
-/* Define a test var. */
-enum nvmem_vars {
-	NVMEM_VAR_TEST_VAR,
-};
+enum nvmem_users { NVMEM_TPM = 0, NVMEM_CR50, NVMEM_NUM_USERS };
 #endif
-#define CONFIG_FLASH_NVMEM_VARS_USER_SIZE 600
-#endif	/* TEST_NVMEM_VARS */
+#endif
 
 #ifdef TEST_PINWEAVER
+#define CONFIG_DCRYPTO_MOCK
 #define CONFIG_PINWEAVER
 #define CONFIG_SHA256
 #endif /* TEST_PINWEAVER */
@@ -297,24 +474,6 @@ enum nvmem_vars {
 #ifdef TEST_X25519
 #define CONFIG_CURVE25519
 #endif /* TEST_X25519 */
-
-#ifdef TEST_FUZZ
-/* Disable hibernate: We never want to exit while fuzzing. */
-#undef CONFIG_HIBERNATE
-#endif
-
-#ifdef TEST_HOST_COMMAND_FUZZ
-#undef CONFIG_HOSTCMD_DEBUG_MODE
-
-/* Defining this make fuzzing slower, but exercises additional code paths. */
-#define FUZZ_HOSTCMD_VERBOSE
-
-#ifdef FUZZ_HOSTCMD_VERBOSE
-#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_PARAMS
-#else
-#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
-#endif /* ! FUZZ_HOSTCMD_VERBOSE */
-#endif /* TEST_HOST_COMMAND_FUZZ */
 
 #endif  /* TEST_BUILD */
 #endif  /* __TEST_TEST_CONFIG_H */

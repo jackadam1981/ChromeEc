@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -53,17 +53,11 @@
 /* Address of RAM log used by Booter */
 #define ADDR_BOOT_RAMLOG        0x100C7FC0
 
-/* SPI Flash Spec of W25Q20CV */
-#define CONFIG_FLASH_BANK_SIZE	0x00001000  /* protect bank size 4K bytes */
-#define CONFIG_FLASH_ERASE_SIZE	0x00001000  /* sector erase size 4K bytes */
-#define CONFIG_FLASH_WRITE_SIZE	0x00000001  /* minimum write size */
-
-#define CONFIG_FLASH_WRITE_IDEAL_SIZE 256   /* one page size for write */
-
 #include "config_flash_layout.h"
 
 /* Optional features present on this chip */
 #define CONFIG_ADC
+#define CONFIG_RTC
 #define CONFIG_SWITCH
 #define CONFIG_MPU
 
@@ -72,7 +66,7 @@
 /* Default use UART1 as console */
 #define CONFIG_CONSOLE_UART    0
 
-#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
+#define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

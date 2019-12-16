@@ -6,7 +6,9 @@
 #include "ccd_config.h"
 #include "console.h"
 #include "crc8.h"
+#include "ec_commands.h"
 #include "extension.h"
+#include "flash_log.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -14,20 +16,30 @@
 #include "system.h"
 #include "system_chip.h"
 #include "tpm_nvmem.h"
-#include "tpm_nvmem_read.h"
+#include "tpm_nvmem_ops.h"
 #include "tpm_registers.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
+uint8_t bp_connect;
+uint8_t bp_forced;
 /**
  * Return non-zero if battery is present
  */
 int board_battery_is_present(void)
 {
 	/* Invert because battery-present signal is active low */
-	return !gpio_get_level(GPIO_BATT_PRES_L);
+	return bp_forced ? bp_connect : !gpio_get_level(GPIO_BATT_PRES_L);
+}
+
+/**
+ * Return non-zero if the wp state is being overridden.
+ */
+static int board_forcing_wp(void)
+{
+	return GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP;
 }
 
 /**
@@ -57,7 +69,7 @@ static void set_wp_state(int asserted)
  *
  * @return 0 if WP deasserted, 1 if WP asserted
  */
-static int get_wp_state(void)
+int wp_is_asserted(void)
 {
 	/* Signal is active low, so invert */
 	return !GREG32(RBOX, EC_WP_L);
@@ -68,11 +80,11 @@ static void check_wp_battery_presence(void)
 	int bp = board_battery_is_present();
 
 	/* If we're forcing WP, ignore battery detect */
-	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP)
+	if (board_forcing_wp())
 		return;
 
 	/* Otherwise, mirror battery */
-	if (bp != get_wp_state()) {
+	if (bp != wp_is_asserted()) {
 		CPRINTS("WP %d", bp);
 		set_wp_state(bp);
 	}
@@ -121,9 +133,9 @@ static enum vendor_cmd_rc vc_set_wp(enum vendor_cmd_cc code,
 		return VENDOR_RC_BOGUS_ARGS;
 
 	/* Get current wp settings */
-	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP)
+	if (board_forcing_wp())
 		response |= WPV_FORCE;
-	if (get_wp_state())
+	if (wp_is_asserted())
 		response |= WPV_ENABLE;
 	/* Get atboot wp settings */
 	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)) {
@@ -137,10 +149,56 @@ static enum vendor_cmd_rc vc_set_wp(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_WP, vc_set_wp);
 
-static int command_wp(int argc, char **argv)
+static int command_bpforce(int argc, char **argv)
 {
 	int val = 1;
 	int forced = 1;
+
+	if (argc > 1) {
+		/* Make sure we're allowed to override battery presence */
+		if (!ccd_is_cap_enabled(CCD_CAP_OVERRIDE_BATT_STATE))
+			return EC_ERROR_ACCESS_DENIED;
+
+		/* Update BP */
+		if (!strncasecmp(argv[1], "follow", 6))
+			forced = 0;
+		else if (!strncasecmp(argv[1], "dis", 3))
+			val = 0;
+		else if (strncasecmp(argv[1], "con", 3))
+			return EC_ERROR_PARAM2;
+
+		bp_forced = forced;
+		bp_connect = val;
+
+		if (argc > 2 && !strcasecmp(argv[2], "atboot")) {
+			/* Change override at boot to match */
+			ccd_set_flag(CCD_FLAG_OVERRIDE_BATT_AT_BOOT, bp_forced);
+			ccd_set_flag(CCD_FLAG_OVERRIDE_BATT_STATE_CONNECT,
+				     bp_connect);
+		}
+		/* Update the WP state based on new battery presence setting */
+		check_wp_battery_presence();
+	}
+
+	ccprintf("batt pres: %s%sconnect\n", bp_forced ? "forced " : "",
+		 board_battery_is_present() ? "" : "dis");
+	ccprintf("  at boot: ");
+	if (ccd_get_flag(CCD_FLAG_OVERRIDE_BATT_AT_BOOT))
+		ccprintf("forced %sconnect\n",
+			 ccd_get_flag(CCD_FLAG_OVERRIDE_BATT_STATE_CONNECT) ? ""
+			 : "dis");
+	else
+		ccprintf("follow_batt_pres\n");
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(bpforce, command_bpforce,
+			     "[connect|disconnect|follow_batt_pres [atboot]]",
+			     "Get/set BATT_PRES_L signal override");
+
+static int command_wp(int argc, char **argv)
+{
+	int val;
+	int forced;
 
 	if (argc > 1) {
 		/* Make sure we're allowed to override WP settings */
@@ -148,7 +206,7 @@ static int command_wp(int argc, char **argv)
 			return EC_ERROR_ACCESS_DENIED;
 
 		/* Update WP */
-		if (strncasecmp(argv[1], "follow_batt_pres", 16) == 0)
+		if (!strncasecmp(argv[1], "follow", 6))
 			forced = 0;
 		else if (parse_bool(argv[1], &val))
 			forced = 1;
@@ -164,15 +222,13 @@ static int command_wp(int argc, char **argv)
 		}
 	}
 
-	forced = GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP;
-	ccprintf("Flash WP: %s%s\n", forced ? "forced " : "",
-		 get_wp_state() ? "enabled" : "disabled");
-
+	ccprintf("Flash WP: %s%sabled\n", board_forcing_wp() ? "forced " : "",
+		 wp_is_asserted() ? "en" : "dis");
 	ccprintf(" at boot: ");
 	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT))
-		ccprintf("forced %s\n",
+		ccprintf("forced %sabled\n",
 			 ccd_get_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED)
-			 ? "enabled" : "disabled");
+			 ? "en" : "dis");
 	else
 		ccprintf("follow_batt_pres\n");
 
@@ -182,7 +238,18 @@ DECLARE_SAFE_CONSOLE_COMMAND(wp, command_wp,
 			     "[<BOOLEAN>/follow_batt_pres [atboot]]",
 			     "Get/set the flash HW write-protect signal");
 
-void set_wp_follow_ccd_config(void)
+void set_bp_follow_ccd_config(void)
+{
+	if (ccd_get_flag(CCD_FLAG_OVERRIDE_BATT_AT_BOOT)) {
+		/* Reset to at-boot state specified by CCD */
+		bp_forced = 1;
+		bp_connect = ccd_get_flag(CCD_FLAG_OVERRIDE_BATT_STATE_CONNECT);
+	} else {
+		bp_forced = 0;
+	}
+}
+
+static void set_wp_follow_ccd_config(void)
 {
 	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)) {
 		/* Reset to at-boot state specified by CCD */
@@ -194,17 +261,35 @@ void set_wp_follow_ccd_config(void)
 	}
 }
 
+void board_wp_follow_ccd_config(void)
+{
+	/*
+	 * Battery presence can be overidden using CCD. Get that setting before
+	 * configuring write protect.
+	 */
+	set_bp_follow_ccd_config();
+
+	/* Update write protect setting based on ccd config */
+	set_wp_follow_ccd_config();
+}
+
 void init_wp_state(void)
 {
+	/*
+	 * Battery presence can be overidden using CCD. Get that setting before
+	 * configuring write protect.
+	 */
+	set_bp_follow_ccd_config();
+
 	/* Check system reset flags after CCD config is initially loaded */
-	if ((system_get_reset_flags() & RESET_FLAG_HIBERNATE) &&
+	if ((system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
 	    !system_rollback_detected()) {
 		/*
 		 * Deep sleep resume without rollback, so reload the WP state
 		 * that was saved to the long-life registers before the deep
 		 * sleep instead of going back to the at-boot default.
 		 */
-		if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP) {
+		if (board_forcing_wp()) {
 			/* Temporarily forcing WP */
 			set_wp_state(GREG32(PMU, LONG_LIFE_SCRATCH1) &
 				     BOARD_WP_ASSERTED);
@@ -220,23 +305,18 @@ void init_wp_state(void)
 /**
  * Wipe the TPM
  *
+ * @param reset_required: reset the system after wiping the TPM.
+ *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int board_wipe_tpm(void)
+int board_wipe_tpm(int reset_required)
 {
 	int rc;
-
-	/*
-	 * Blindly zapping the TPM space while the AP is awake and poking at
-	 * it will bork the TPM task and the AP itself, so force the whole
-	 * system off by holding the EC in reset.
-	 */
-	CPRINTS("%s: force EC off", __func__);
-	assert_ec_rst();
 
 	/* Wipe the TPM's memory and reset the TPM task. */
 	rc = tpm_reset_request(1, 1);
 	if (rc != EC_SUCCESS) {
+		flash_log_add_event(FE_LOG_TPM_WIPE_ERROR, 0, NULL);
 		/*
 		 * If anything goes wrong (which is unlikely), we REALLY don't
 		 * want to unlock the console. It's possible to fail without
@@ -249,22 +329,39 @@ int board_wipe_tpm(void)
 			     SYSTEM_RESET_HARD);
 
 		/*
-		 * That should never return, but if it did, release EC reset
-		 * and pass through the error we got.
+		 * That should never return, but if it did, reset the EC and
+		 * through the error we got.
 		 */
-		deassert_ec_rst();
+		board_reboot_ec();
 		return rc;
 	}
+
+	/*
+	 * TPM was wiped out successfully, let's prevent further communications
+	 * from the AP until next reboot. The reboot will be triggered below if
+	 * a reset is requested. If we aren't resetting the system now, the TPM
+	 * will stay disabled until the user resets the system.
+	 * This should be done as soon as possible after tpm_reset_request
+	 * completes.
+	 */
+	tpm_stop();
 
 	CPRINTS("TPM is erased");
 
 	/* Tell the TPM task to re-enable NvMem commits. */
 	tpm_reinstate_nvmem_commits();
 
-	/* Let the rest of the system boot. */
-	CPRINTS("%s: release EC reset", __func__);
-	deassert_ec_rst();
-
+	/*
+	 * Use board_reboot_ec to ensure the system resets instead of
+	 * deassert_ec_reset. Some boards don't reset immediately when EC_RST_L
+	 * is asserted. board_reboot_ec will ensure the system has actually
+	 * reset before releasing it. If the system has a normal reset scheme,
+	 * EC reset will be released immediately.
+	 */
+	if (reset_required) {
+		CPRINTS("%s: reset EC", __func__);
+		board_reboot_ec();
+	}
 	return EC_SUCCESS;
 }
 
@@ -273,11 +370,12 @@ int board_wipe_tpm(void)
 
 /*
  * These definitions and the structure layout were manually copied from
- * src/platform/vboot_reference/firmware/lib/include/rollback_index.h. at
- * git sha c7282f6.
+ * src/platform/vboot_reference/firmware/2lib/include/2secdata.h. at
+ * git sha 38d7d1c.
  */
 #define FWMP_HASH_SIZE		    32
-#define FWMP_DEV_DISABLE_CCD_UNLOCK (1 << 6)
+#define FWMP_DEV_DISABLE_CCD_UNLOCK BIT(6)
+#define FWMP_DEV_FIPS_MODE	    BIT(7)
 #define FIRMWARE_FLAG_DEV_MODE      0x02
 
 struct RollbackSpaceFirmware {
@@ -316,7 +414,7 @@ static int lock_enforced(const struct RollbackSpaceFwmp *fwmp)
 
 	/* Let's verify that the FWMP structure makes sense. */
 	if (fwmp->struct_size != sizeof(*fwmp)) {
-		CPRINTS("%s: fwmp size mismatch (%d)\n", __func__,
+		CPRINTS("%s: fwmp size mismatch (%d)", __func__,
 			fwmp->struct_size);
 		return 1;
 	}
@@ -324,7 +422,7 @@ static int lock_enforced(const struct RollbackSpaceFwmp *fwmp)
 	crc = crc8(&fwmp->struct_version, sizeof(struct RollbackSpaceFwmp) -
 		   offsetof(struct RollbackSpaceFwmp, struct_version));
 	if (fwmp->crc != crc) {
-		CPRINTS("%s: fwmp crc mismatch\n", __func__);
+		CPRINTS("%s: fwmp crc mismatch", __func__);
 		return 1;
 	}
 
@@ -361,6 +459,19 @@ int board_fwmp_allows_unlock(void)
 
 	return allows_unlock;
 #endif
+}
+
+int board_fwmp_fips_mode_enabled(void)
+{
+	struct RollbackSpaceFirmware fw;
+
+	if (tpm_read_success ==
+	    read_tpm_nvmem(FIRMWARE_NV_INDEX, sizeof(fw), &fw)) {
+		return !!(fw.flags & FWMP_DEV_FIPS_MODE);
+	}
+
+	/* If not found or other error, assume fips mode is disabled */
+	return 0;
 }
 
 int board_vboot_dev_mode_enabled(void)

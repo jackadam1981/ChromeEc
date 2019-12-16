@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -10,6 +10,7 @@
 #include "host_command.h"
 #include "panic.h"
 #include "printf.h"
+#include "software_panic.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -18,6 +19,31 @@
 
 /* Panic data goes at the end of RAM. */
 static struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
+
+/* Common SW Panic reasons strings */
+const char * const panic_sw_reasons[] = {
+#ifdef CONFIG_SOFTWARE_PANIC
+	"PANIC_SW_DIV_ZERO",
+	"PANIC_SW_STACK_OVERFLOW",
+	"PANIC_SW_PD_CRASH",
+	"PANIC_SW_ASSERT",
+	"PANIC_SW_WATCHDOG",
+	"PANIC_SW_RNG",
+	"PANIC_SW_PMIC_FAULT",
+#endif
+};
+
+/**
+ * Check an interrupt vector as being a valid software panic
+ * @param reason	Reason for panic
+ * @return 0 if not a valid software panic reason, otherwise non-zero.
+ */
+int panic_sw_reason_is_valid(uint32_t reason)
+{
+	return (IS_ENABLED(CONFIG_SOFTWARE_PANIC) &&
+		reason >= PANIC_SW_BASE &&
+		(reason - PANIC_SW_BASE) < ARRAY_SIZE(panic_sw_reasons));
+}
 
 /**
  * Add a character directly to the UART buffer.
@@ -114,6 +140,7 @@ void panic(const char *msg)
 
 struct panic_data *panic_get_data(void)
 {
+	BUILD_ASSERT(sizeof(struct panic_data) <= CONFIG_PANIC_DATA_SIZE);
 	return pdata_ptr->magic == PANIC_DATA_MAGIC ? pdata_ptr : NULL;
 }
 
@@ -167,12 +194,12 @@ static int command_crash(int argc, char **argv)
 		volatile int zero = 0;
 
 		cflush();
-		ccprintf("%08x", (long)1 / zero);
+		ccprintf("%08x", 1 / zero);
 	} else if (!strcasecmp(argv[1], "udivzero")) {
 		volatile int zero = 0;
 
 		cflush();
-		ccprintf("%08x", (unsigned long)1 / zero);
+		ccprintf("%08x", 1 / zero);
 #ifdef CONFIG_CMD_STACKOVERFLOW
 	} else if (!strcasecmp(argv[1], "stack")) {
 		stack_overflow_recurse(1);
@@ -227,7 +254,7 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo,
 /*****************************************************************************/
 /* Host commands */
 
-int host_command_panic_info(struct host_cmd_handler_args *args)
+enum ec_status host_command_panic_info(struct host_cmd_handler_args *args)
 {
 	if (pdata_ptr->magic == PANIC_DATA_MAGIC) {
 		ASSERT(pdata_ptr->struct_size <= args->response_max);

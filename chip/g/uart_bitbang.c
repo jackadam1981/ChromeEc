@@ -26,6 +26,7 @@
 	 (rate == 115200))
 
 #define TIMEUS_CLK_FREQ 24 /* units: MHz */
+#define RX_BUF_SIZE	257
 
 /* Flag indicating whether bit banging is enabled or not. */
 static uint8_t bitbang_enabled;
@@ -212,7 +213,7 @@ static void uart_bitbang_write_char(char c)
 	/* 8 data bits. */
 	ones = 0;
 	for (i = 0; i < 8; i++) {
-		val = !!(c & (1 << i));
+		val = !!(c & BIT(i));
 		gpio_set_level(bitbang_config.tx_gpio, val);
 
 		/* Count 1's in order to handle parity bit. */
@@ -270,7 +271,7 @@ static int uart_bitbang_receive_char(uint8_t *rxed_char, uint32_t *next_tick)
 	for (i = 0; i < 8; i++) {
 		if (gpio_get_level(bitbang_config.rx_gpio)) {
 			ones++;
-			rx_char |= (1 << i);
+			rx_char |= BIT(i);
 		}
 		wait_ticks(next_tick);
 	}
@@ -318,9 +319,9 @@ static int uart_bitbang_receive_char(uint8_t *rxed_char, uint32_t *next_tick)
 	return EC_SUCCESS;
 }
 
-void uart_bitbang_irq(void)
+void __attribute__((used)) uart_bitbang_irq(void)
 {
-	uint8_t rx_buffer[20];
+	uint8_t rx_buffer[RX_BUF_SIZE];
 	size_t i = 0;
 	uint32_t next_tick;
 
@@ -336,7 +337,7 @@ new_char:
 		if (rv != EC_SUCCESS)
 			break;
 
-		if (++i == sizeof(rx_buffer))
+		if (++i == RX_BUF_SIZE)
 			break;
 		/*
 		 * For the duration of one byte wait for another byte from the
@@ -475,11 +476,6 @@ static int command_bitbang_dump_stats(int argc, char **argv)
 	ccprintf("%d received\n", rx_buff_rx_char_cnt);
 	ccprintf("%d chars inserted\n", rx_buff_inserted_cnt);
 	ccprintf("%d chars read\n", read_char_cnt);
-	ccprintf("Contents\n");
-	ccprintf("[");
-	for (i = 0; i < RX_BUF_SIZE; i++)
-		ccprintf(" %02x ", rx_buf[i] & 0xFF);
-	ccprintf("]\n");
 	ccprintf("Discards\nparity: ");
 	ccprintf("[");
 	for (i = 0; i < DISCARD_LOG; i++)

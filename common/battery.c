@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -20,6 +20,11 @@
 
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
+/* See config.h for details */
+const static int batt_full_factor = CONFIG_BATT_FULL_FACTOR;
+const static int batt_host_full_factor = CONFIG_BATT_HOST_FULL_FACTOR;
+const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
 
 #ifdef CONFIG_BATTERY_V2
 /*
@@ -198,7 +203,14 @@ static void print_battery_info(void)
 
 	print_item_name("Cap-full:");
 	if (check_print_error(battery_full_charge_capacity(&value)))
-		ccprintf("%d mAh\n", value);
+		ccprintf("%d mAh (%d mAh with %d %% compensation)\n",
+			 value, value*batt_full_factor/100, batt_full_factor);
+
+#ifdef CONFIG_CHARGER
+	print_item_name("Display:");
+	value = charge_get_display_charge();
+	ccprintf("%d.%d %%\n", value / 10, value % 10);
+#endif
 
 	print_item_name("  Design:");
 	if (check_print_error(battery_design_capacity(&value)))
@@ -293,9 +305,9 @@ static void pending_cutoff_deferred(void)
 	rv = board_cut_off_battery();
 
 	if (rv == EC_RES_SUCCESS)
-		CPRINTF("[%T Battery cut off succeeded.]\n");
+		CPRINTS("Battery cut off succeeded.");
 	else
-		CPRINTF("[%T Battery cut off failed!]\n");
+		CPRINTS("Battery cut off failed!");
 }
 DECLARE_DEFERRED(pending_cutoff_deferred);
 
@@ -308,7 +320,7 @@ static void clear_pending_cutoff(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
 
-static int battery_command_cutoff(struct host_cmd_handler_args *args)
+static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_cutoff *p;
 	int rv;
@@ -338,7 +350,7 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
 static void check_pending_cutoff(void)
 {
 	if (battery_cutoff_state == BATTERY_CUTOFF_STATE_PENDING) {
-		CPRINTF("[%T Cutting off battery in %d second(s)]\n",
+		CPRINTS("Cutting off battery in %d second(s)",
 			CONFIG_BATTERY_CUTOFF_DELAY_US / SECOND);
 		hook_call_deferred(&pending_cutoff_deferred_data,
 				   CONFIG_BATTERY_CUTOFF_DELAY_US);
@@ -361,7 +373,7 @@ static int command_cutoff(int argc, char **argv)
 
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
-		ccprintf("[%T Battery cut off]\n");
+		ccprints("Battery cut off");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 		return EC_SUCCESS;
 	}
@@ -417,7 +429,8 @@ DECLARE_CONSOLE_COMMAND(battparam, console_command_battery_vendor_param,
 			"<param> [value]",
 			"Get or set battery vendor parameters");
 
-static int host_command_battery_vendor_param(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 {
 	int rv;
 	const struct ec_params_battery_vendor_param *p = args->params;
@@ -445,14 +458,16 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
 
 #ifdef CONFIG_BATTERY_V2
 #ifdef CONFIG_HOSTCMD_BATTERY_V2
-static int host_command_battery_get_static(struct host_cmd_handler_args *args)
+static void battery_update(enum battery_index i);
+static enum ec_status
+host_command_battery_get_static(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_static_info *p = args->params;
 	struct ec_response_battery_static_info *r = args->response;
 
 	if (p->index < 0 || p->index >= CONFIG_BATTERY_COUNT)
 		return EC_RES_INVALID_PARAM;
-
+	battery_update(p->index);
 	args->response_size = sizeof(*r);
 	memcpy(r, &battery_static[p->index], sizeof(*r));
 
@@ -462,7 +477,8 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_STATIC,
 		     host_command_battery_get_static,
 		     EC_VER_MASK(0));
 
-static int host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_dynamic_info *p = args->params;
 	struct ec_response_battery_dynamic_info *r = args->response;
@@ -555,3 +571,56 @@ static void battery_init(void)
 DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
 #endif /* HAS_TASK_HOSTCMD */
 #endif /* CONFIG_BATTERY_V2 */
+
+void battery_compensate_params(struct batt_params *batt)
+{
+	int numer, denom;
+	int remain = batt->remaining_capacity;
+	int full = batt->full_capacity;
+	int lfcc = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+
+	if ((batt->flags & BATT_FLAG_BAD_FULL_CAPACITY) ||
+			(batt->flags & BATT_FLAG_BAD_REMAINING_CAPACITY))
+		return;
+
+	if (remain <= 0 || full <= 0)
+		return;
+
+	/* full_factor != 100 isn't supported. EC and host are not able to
+	 * act on soc changes synchronously. */
+	if (batt_host_full_factor != 100)
+		return;
+
+	/* full_factor is effectively disabled in powerd. */
+	batt->full_capacity = full * batt_full_factor / 100;
+	if (lfcc == 0)
+		/* EC just reset. Assume host full is equal. */
+		lfcc = batt->full_capacity;
+	if (remain > lfcc) {
+		batt->remaining_capacity = lfcc;
+		remain = batt->remaining_capacity;
+	}
+
+	/*
+	 * Powerd uses the following equation to calculate display percentage:
+	 *   charge = 100 * remain/full;
+	 *   100 * (charge - shutdown_pct) / (full_factor - shutdown_pct);
+	 */
+	numer = (100 * remain - lfcc * batt_host_shutdown_pct) * 1000;
+	denom = lfcc * (100 - batt_host_shutdown_pct);
+	/* Rounding (instead of truncating) */
+	batt->display_charge = (numer + denom / 2) / denom;
+	if (batt->display_charge < 0)
+		batt->display_charge = 0;
+}
+
+__attribute__((weak)) int get_battery_manufacturer_name(char *dest, int size)
+{
+	strzcpy(dest, "<unkn>", size);
+	return EC_SUCCESS;
+}
+
+int battery_manufacturer_name(char *dest, int size)
+{
+	return get_battery_manufacturer_name(dest, size);
+}

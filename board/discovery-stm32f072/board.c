@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -160,7 +160,7 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 void usb_spi_board_enable(struct usb_spi_config const *config)
 {
 	/* Remap SPI2 to DMA channels 6 and 7 */
-	STM32_SYSCFG_CFGR1 |= (1 << 24);
+	STM32_SYSCFG_CFGR1 |= BIT(24);
 
 	/* Configure SPI GPIOs */
 	gpio_config_module(MODULE_SPI_FLASH, 1);

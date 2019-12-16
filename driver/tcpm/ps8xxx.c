@@ -36,21 +36,21 @@
  * timestamp of the next possible toggle to ensure the 2-ms spacing
  * between IRQ_HPD.
  */
-static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
+static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int dp_set_hpd(int port, int enable)
 {
 	int reg;
 	int rv;
 
-	rv = tcpc_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
+	rv = mux_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
 	if (rv)
 		return rv;
 	if (enable)
 		reg |= IN_HPD;
 	else
 		reg &= ~IN_HPD;
-	return tcpc_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
+	return mux_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
 static int dp_set_irq(int port, int enable)
@@ -59,14 +59,14 @@ static int dp_set_irq(int port, int enable)
 	int reg;
 	int rv;
 
-	rv = tcpc_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
+	rv = mux_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
 	if (rv)
 		return rv;
 	if (enable)
 		reg |= HPD_IRQ;
 	else
 		reg &= ~HPD_IRQ;
-	return tcpc_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
+	return mux_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
 void ps8xxx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
@@ -85,11 +85,6 @@ void ps8xxx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
-}
-
-int ps8xxx_tcpc_get_fw_version(int port, int *version)
-{
-	return tcpc_read(port, FW_VER_REG, version);
 }
 
 static int ps8xxx_tcpc_bist_mode_2(int port)
@@ -136,8 +131,123 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+static int ps8xxx_get_chip_info(int port, int live,
+			struct ec_response_pd_chip_info_v1 **chip_info)
+{
+	int val;
+	int rv = tcpci_get_chip_info(port, live, chip_info);
+
+	if (rv)
+		return rv;
+
+	if (!live) {
+		(*chip_info)->vendor_id = PS8XXX_VENDOR_ID;
+		(*chip_info)->product_id = PS8XXX_PRODUCT_ID;
+	}
+
+	if ((*chip_info)->fw_version_number == 0 ||
+	    (*chip_info)->fw_version_number == -1 || live) {
+		rv = tcpc_read(port, FW_VER_REG, &val);
+
+		if (rv)
+			return rv;
+
+		(*chip_info)->fw_version_number = val;
+	}
+
+#if defined(CONFIG_USB_PD_TCPM_PS8751) && \
+	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC)
+	/*
+	 * Min firmware version of PS8751 to ensure that it can detect Vbus
+	 * properly. See b/109769787#comment7
+	 */
+	(*chip_info)->min_req_fw_version_number = 0x39;
+#endif
+
+	return rv;
+}
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int ps8xxx_enter_low_power_mode(int port)
+{
+	return EC_SUCCESS;
+}
+#endif
+
+/*
+ * DCI is enabled by default and burns about 40 mW when the port is in
+ * USB2 mode or when a C-to-A dongle is attached, so force it off.
+ */
+
+static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
+{
+	int status;
+	int dci;
+
+	status = tcpc_addr_read(port, i2c_addr, i2c_reg, &dci);
+	if (status != EC_SUCCESS)
+		return status;
+	if ((dci & PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK) !=
+	    PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF) {
+		dci &= ~PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK;
+		dci |= PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF;
+		if (tcpc_addr_write(port, i2c_addr, i2c_reg, dci) != EC_SUCCESS)
+			return status;
+	}
+	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_USB_PD_TCPM_PS8805
+static int ps8xxx_dci_disable(int port)
+{
+	int status, e;
+	int p1_addr;
+
+	status = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
+			    PS8XXX_REG_I2C_DEBUGGING_ENABLE_ON);
+	if (status != EC_SUCCESS)
+		return status;
+
+	p1_addr = tcpc_config[port].i2c_info.addr_flags -
+		(PS8751_I2C_ADDR1_FLAGS - PS8751_I2C_ADDR1_P1_FLAGS);
+	status = ps8xxx_addr_dci_disable(port, p1_addr,
+					 PS8805_P1_REG_MUX_USB_DCI_CFG);
+
+	e = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
+		       PS8XXX_REG_I2C_DEBUGGING_ENABLE_OFF);
+	if (e != EC_SUCCESS) {
+		if (status == EC_SUCCESS)
+			status = e;
+	}
+
+	return status;
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8805 */
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+static int ps8xxx_dci_disable(int port)
+{
+	int p3_addr;
+
+	p3_addr = tcpc_config[port].i2c_info.addr_flags;
+	return ps8xxx_addr_dci_disable(port, p3_addr,
+				       PS8751_REG_MUX_USB_DCI_CFG);
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8751 */
+
+static int ps8xxx_tcpm_init(int port)
+{
+	int status;
+
+	status = tcpci_tcpm_init(port);
+	if (status != EC_SUCCESS)
+		return status;
+
+	return ps8xxx_dci_disable(port);
+}
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
-	.init			= &tcpci_tcpm_init,
+	.init			= &ps8xxx_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
@@ -149,7 +259,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
-	.get_message		= &tcpci_tcpm_get_message,
+	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &ps8xxx_tcpm_transmit,
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
@@ -162,9 +272,9 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
-	.get_chip_info		= &tcpci_get_chip_info,
+	.get_chip_info		= &ps8xxx_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+	.enter_low_power_mode	= &ps8xxx_enter_low_power_mode,
 #endif
 };
 
@@ -179,3 +289,33 @@ struct i2c_stress_test_dev ps8xxx_i2c_stress_test_dev = {
 	.i2c_write = &tcpc_i2c_write,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_TCPC */
+
+static int ps8xxx_mux_init(int port)
+{
+	tcpci_tcpm_mux_init(port);
+
+	/* If this MUX is also the TCPC, then skip init */
+	if (!(usb_muxes[port].flags & USB_MUX_FLAG_NOT_TCPC))
+		return EC_SUCCESS;
+
+	/* We always want to be a sink when this device is only being used as a mux
+	 * to support external peripherals better.
+	 */
+	return mux_write(port, TCPC_REG_ROLE_CTRL,
+		TCPC_REG_ROLE_CTRL_SET(0, 1, TYPEC_CC_RD, TYPEC_CC_RD));
+}
+
+static int ps8xxx_mux_enter_low_power_mode(int port)
+{
+	mux_write(port, TCPC_REG_ROLE_CTRL,
+		TCPC_REG_ROLE_CTRL_SET(0, 0, TYPEC_CC_RP, TYPEC_CC_RP));
+	return tcpci_tcpm_mux_enter_low_power(port);
+}
+
+/* This is meant for mux-only applications */
+const struct usb_mux_driver ps8xxx_usb_mux_driver = {
+	.init = &ps8xxx_mux_init,
+	.set = &tcpci_tcpm_mux_set,
+	.get = &tcpci_tcpm_mux_get,
+	.enter_low_power_mode = &ps8xxx_mux_enter_low_power_mode,
+};

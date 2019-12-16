@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -70,7 +70,7 @@ static enum faults fault;
 static timestamp_t fault_deadline;
 
 /* ADC in 12-bit mode */
-#define ADC_SCALE (1 << 12)
+#define ADC_SCALE BIT(12)
 /* ADC power supply : VDDA = 3.3V */
 #define VDDA_MV   3300
 /* Current sense resistor : 5 milliOhm */
@@ -524,7 +524,7 @@ const struct svdm_response svdm_rsp = {
 	.exit_mode = &svdm_exit_mode,
 };
 
-int pd_custom_vdm(int port, int cnt, uint32_t *payload,
+__override int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		  uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
@@ -533,7 +533,8 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	if (PD_VDO_VID(payload[0]) != USB_VID_GOOGLE || !gfu_mode)
 		return 0;
 
-	debug_printf("%T] VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
+	debug_printf("%pT] VDM/%d [%d] %08x\n",
+		     PRINTF_TIMESTAMP_NOW, cnt, cmd, payload[0]);
 	*rpayload = payload;
 
 	rsize = pd_custom_flash_vdm(port, cnt, payload);

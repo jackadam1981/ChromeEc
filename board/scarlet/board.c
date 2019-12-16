@@ -49,10 +49,7 @@
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
+	schedule_deferred_pd_interrupt(0 /* port */);
 }
 
 static void overtemp_interrupt(enum gpio_signal signal)
@@ -125,13 +122,19 @@ const struct spi_device_t spi_devices[] = {
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
 /******************************************************************************/
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC0, FUSB302_I2C_SLAVE_ADDR, &fusb302_tcpm_drv},
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC0,
+			.addr_flags = FUSB302_I2C_SLAVE_ADDR_FLAGS,
+		},
+		.drv = &fusb302_tcpm_drv,
+	},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
@@ -141,10 +144,14 @@ void board_reset_pd_mcu(void)
 {
 }
 
-int board_critical_shutdown_check(struct charge_state_data *curr)
+enum critical_shutdown board_critical_shutdown_check(
+		struct charge_state_data *curr)
 {
-	return ((curr->batt.flags & BATT_FLAG_BAD_VOLTAGE) ||
-		(curr->batt.voltage <= BAT_LOW_VOLTAGE_THRESH));
+	if ((curr->batt.flags & BATT_FLAG_BAD_VOLTAGE) ||
+		(curr->batt.voltage <= BAT_LOW_VOLTAGE_THRESH))
+		return CRITICAL_SHUTDOWN_CUTOFF;
+	else
+		return CRITICAL_SHUTDOWN_IGNORE;
 }
 
 uint16_t tcpc_get_alert_status(void)
@@ -372,7 +379,7 @@ static struct mutex g_base_mutex;
 static struct bmi160_drv_data_t g_bmi160_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
@@ -394,7 +401,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = CONFIG_SPI_ACCEL_PORT,
-	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
+	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_SPI_ACCEL_PORT),
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 4,  /* g */
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
@@ -417,7 +424,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = CONFIG_SPI_ACCEL_PORT,
-	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
+	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_SPI_ACCEL_PORT),
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
@@ -441,12 +448,6 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 int board_allow_i2c_passthru(int port)
 {
 	return (port == I2C_PORT_VIRTUAL_BATTERY);
-}
-
-int tablet_get_mode(void)
-{
-	/* Always in tablet mode */
-	return 1;
 }
 
 void usb_charger_set_switches(int port, enum usb_switch setting)

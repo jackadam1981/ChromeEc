@@ -46,7 +46,7 @@ static void gcm_init_iv(
 
 	if (iv_len == 12) {
 		memcpy(counter, iv, 12);
-		counter[3] = 1 << 24;
+		counter[3] = BIT(24);
 	} else {
 		size_t i;
 		uint32_t len = iv_len;
@@ -82,8 +82,8 @@ static void gcm_init_iv(
 	}
 }
 
-void DCRYPTO_gcm_init(struct GCM_CTX *ctx, const uint8_t *key,
-		const uint8_t *iv, size_t iv_len)
+void DCRYPTO_gcm_init(struct GCM_CTX *ctx, uint32_t key_bits,
+		const uint8_t *key, const uint8_t *iv, size_t iv_len)
 {
 	int i;
 	const uint32_t zero[4] = {0, 0, 0, 0};
@@ -93,7 +93,7 @@ void DCRYPTO_gcm_init(struct GCM_CTX *ctx, const uint8_t *key,
 	memset(ctx, 0, sizeof(struct GCM_CTX));
 
 	/* Initialize AES engine in CTR mode, and set the counter to 0. */
-	DCRYPTO_aes_init(key, 128, (const uint8_t *) zero,
+	DCRYPTO_aes_init(key, key_bits, (const uint8_t *) zero,
 			 CIPHER_MODE_CTR, ENCRYPT_MODE);
 	/* Set H to AES(ZERO). */
 	DCRYPTO_aes_block((const uint8_t *) zero, (uint8_t *) H);

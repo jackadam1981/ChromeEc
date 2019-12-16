@@ -34,6 +34,7 @@ enum hibdata_index {
 	HIBDATA_INDEX_SAVED_RESET_FLAGS, /* Saved reset flags */
 	HIBDATA_INDEX_PD0,		/* USB-PD0 saved port state */
 	HIBDATA_INDEX_PD1,		/* USB-PD1 saved port state */
+	HIBDATA_INDEX_PD2,		/* USB-PD2 saved port state */
 };
 
 static void check_reset_cause(void)
@@ -60,16 +61,16 @@ static void check_reset_cause(void)
 	 * BIT[6] determine VTR reset
 	 */
 	if (rst_sts & MCHP_PWR_RST_STS_VTR)
-		flags |= RESET_FLAG_RESET_PIN;
+		flags |= EC_RESET_FLAG_RESET_PIN;
 
 
 	flags |= MCHP_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS);
 	MCHP_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) = 0;
 
-	if ((status & MCHP_VBAT_STS_WDT) && !(flags & (RESET_FLAG_SOFT |
-					    RESET_FLAG_HARD |
-					    RESET_FLAG_HIBERNATE)))
-		flags |= RESET_FLAG_WATCHDOG;
+	if ((status & MCHP_VBAT_STS_WDT) && !(flags & (EC_RESET_FLAG_SOFT |
+					    EC_RESET_FLAG_HARD |
+					    EC_RESET_FLAG_HIBERNATE)))
+		flags |= EC_RESET_FLAG_WATCHDOG;
 
 	trace11(0, MEC, 0, "check_reset_cause: EC reset flags = 0x%08x", flags);
 
@@ -86,11 +87,11 @@ int system_is_reboot_warm(void)
 	check_reset_cause();
 	reset_flags = system_get_reset_flags();
 
-	if ((reset_flags & RESET_FLAG_RESET_PIN) ||
-		(reset_flags & RESET_FLAG_POWER_ON) ||
-		(reset_flags & RESET_FLAG_WATCHDOG) ||
-		(reset_flags & RESET_FLAG_HARD) ||
-		(reset_flags & RESET_FLAG_SOFT))
+	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||
+		(reset_flags & EC_RESET_FLAG_POWER_ON) ||
+		(reset_flags & EC_RESET_FLAG_WATCHDOG) ||
+		(reset_flags & EC_RESET_FLAG_HARD) ||
+		(reset_flags & EC_RESET_FLAG_SOFT))
 		return 0;
 	else
 		return 1;
@@ -199,7 +200,7 @@ void system_pre_init(void)
 	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
 }
 
-void chip_save_reset_flags(int flags)
+void chip_save_reset_flags(uint32_t flags)
 {
 	MCHP_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) = flags;
 }
@@ -218,17 +219,17 @@ void __attribute__((noreturn)) _system_reset(int flags,
 
 	/* Save current reset reasons if necessary */
 	if (flags & SYSTEM_RESET_PRESERVE_FLAGS)
-		save_flags = system_get_reset_flags() | RESET_FLAG_PRESERVED;
+		save_flags = system_get_reset_flags() | EC_RESET_FLAG_PRESERVED;
 
 	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
-		save_flags |= RESET_FLAG_AP_OFF;
+		save_flags |= EC_RESET_FLAG_AP_OFF;
 
 	if (wake_from_hibernate)
-		save_flags |= RESET_FLAG_HIBERNATE;
+		save_flags |= EC_RESET_FLAG_HIBERNATE;
 	else if (flags & SYSTEM_RESET_HARD)
-		save_flags |= RESET_FLAG_HARD;
+		save_flags |= EC_RESET_FLAG_HARD;
 	else
-		save_flags |= RESET_FLAG_SOFT;
+		save_flags |= EC_RESET_FLAG_SOFT;
 
 	chip_save_reset_flags(save_flags);
 
@@ -291,12 +292,12 @@ const char *system_get_chip_revision(void)
 static int bbram_idx_lookup(enum system_bbram_idx idx)
 {
 	switch (idx) {
-#ifdef CONFIG_USB_PD_DUAL_ROLE
 	case SYSTEM_BBRAM_IDX_PD0:
 		return HIBDATA_INDEX_PD0;
 	case SYSTEM_BBRAM_IDX_PD1:
 		return HIBDATA_INDEX_PD1;
-#endif
+	case SYSTEM_BBRAM_IDX_PD2:
+		return HIBDATA_INDEX_PD2;
 	default:
 		return 1;
 	}

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -241,8 +241,8 @@ out:
 }
 
 #ifdef HAS_TASK_RWSIG
-#define TASK_EVENT_ABORT TASK_EVENT_CUSTOM(1)
-#define TASK_EVENT_CONTINUE TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_ABORT TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_CONTINUE TASK_EVENT_CUSTOM_BIT(1)
 
 static enum rwsig_status rwsig_status;
 
@@ -290,7 +290,7 @@ exit:
 		task_wait_event(-1);
 }
 
-int rwsig_cmd_action(struct host_cmd_handler_args *args)
+enum ec_status rwsig_cmd_action(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rwsig_action *p = args->params;
 
@@ -312,7 +312,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RWSIG_ACTION,
 		     EC_VER_MASK(0));
 
 #else /* !HAS_TASK_RWSIG */
-int rwsig_cmd_check_status(struct host_cmd_handler_args *args)
+enum ec_status rwsig_cmd_check_status(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rwsig_check_status *r = args->response;
 

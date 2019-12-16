@@ -19,7 +19,7 @@ enum sps_mode {
 };
 
 /* Receive and transmit FIFO size and mask. */
-#define SPS_FIFO_SIZE		(1 << 10)
+#define SPS_FIFO_SIZE		BIT(10)
 #define SPS_FIFO_MASK		(SPS_FIFO_SIZE - 1)
 
 /*
@@ -50,6 +50,5 @@ int sps_register_rx_handler(enum sps_mode mode,
 			    unsigned rx_fifo_threshold);
 int sps_unregister_rx_handler(void);
 void sps_tx_status(uint8_t byte);
-unsigned sps_rx_fifo_wrptr(void);
 
 #endif

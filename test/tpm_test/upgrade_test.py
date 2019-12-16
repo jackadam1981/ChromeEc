@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -37,9 +37,9 @@ def upgrade(tpm):
     raise subcmd.TpmTestError('Initialization error %d' %
                               ord(base_str[0]))
   base = struct.unpack_from('>4I', base_str)[3]
-  if base == 0x84000:
+  if base == 0x44000:
     fname = 'build/cr50/RW/ec.RW_B.flat'
-  elif base == 0x44000:
+  elif base == 0x4000:
     fname = 'build/cr50/RW/ec.RW.flat'
   else:
     raise subcmd.TpmTestError('Unknown base address 0x%x' % base)

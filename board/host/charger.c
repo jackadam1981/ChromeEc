@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -24,7 +24,7 @@ static const struct charger_info mock_charger_info = {
 	.input_current_step = 128,
 };
 
-#define OPTION_CHARGE_INHIBIT (1 << 0)
+#define OPTION_CHARGE_INHIBIT BIT(0)
 
 static uint32_t mock_option;
 static uint32_t mock_mode;

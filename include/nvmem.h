@@ -8,6 +8,10 @@
 
 #include "crypto_api.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * In order to provide maximum robustness for NvMem operations, the NvMem space
  * is divided into two equal sized partitions. A partition contains a tag
@@ -67,7 +71,7 @@ extern uint32_t nvmem_user_sizes[NVMEM_NUM_USERS];
 #define NVMEM_NUM_PARTITIONS 2
 #define NVMEM_SHA_SIZE CIPHER_SALT_SIZE
 #define NVMEM_GENERATION_BITS 8
-#define NVMEM_GENERATION_MASK ((1 << NVMEM_GENERATION_BITS) - 1)
+#define NVMEM_GENERATION_MASK (BIT(NVMEM_GENERATION_BITS) - 1)
 #define NVMEM_PADDING_SIZE 16
 #define NVMEM_LAYOUT_VERSION 0
 
@@ -174,15 +178,6 @@ int nvmem_move(uint32_t src_offset, uint32_t dest_offset, uint32_t size,
 int nvmem_commit(void);
 
 /*
- * Clear out a user's data across all partitions.
- *
- * @param user:   The user who's data should be cleared.
- * @return        EC_SUCCESS if the user's data across all partitions was
- *                cleared.  Error othrwise.
- */
-int nvmem_erase_user_data(enum nvmem_users user);
-
-/*
  * Temporarily stopping NVMEM commits could be beneficial. One use case is
  * when TPM operations need to be sped up.
  *
@@ -200,5 +195,25 @@ void nvmem_disable_commits(void);
  *         fails, EC_SUCCESS otherwise.
  */
 int nvmem_enable_commits(void);
+
+/*
+ * Function to retrieve the base address of the nvmem cache of the appropriate
+ * user. After migration there is only one user and one base address, this
+ * function will be eliminated.
+ *
+ * @return pointer to the base address.
+ */
+void *nvmem_cache_base(enum nvmem_users user);
+
+/*
+ * Clear all NVMEM cache in SRAM.
+ */
+void nvmem_clear_cache(void);
+
+void nvmem_wipe_cache(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_NVMEM_UTILS_H */

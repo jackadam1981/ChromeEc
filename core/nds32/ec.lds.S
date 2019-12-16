@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -21,7 +21,7 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
-#ifdef CONFIG_HOSTCMD_X86
+#if defined(CONFIG_HOSTCMD_X86) || defined(CONFIG_I2C_SLAVE)
     H2RAM (rw) : ORIGIN = CONFIG_H2RAM_BASE, LENGTH = CONFIG_H2RAM_SIZE
 #endif
 }
@@ -48,6 +48,7 @@ SECTIONS
         ASSERT((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
                 "__flash_dma_size < IT83XX_ILM_BLOCK_SIZE");
         . = ALIGN(IT83XX_ILM_BLOCK_SIZE);
+        __flash_text_start = .;
         *(.text*)
     } > FLASH
     . = ALIGN(4);
@@ -155,6 +156,14 @@ SECTIONS
         KEEP(*(.rodata.HOOK_SECOND))
         __hooks_second_end = .;
 
+        __hooks_usb_pd_disconnect = .;
+        KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
+        __hooks_usb_pd_disconnect_end = .;
+
+        __hooks_usb_pd_connect = .;
+        KEEP(*(.rodata.HOOK_USB_PD_CONNECT))
+        __hooks_usb_pd_connect_end = .;
+
         __deferred_funcs = .;
         KEEP(*(.rodata.deferred))
         __deferred_funcs_end = .;
@@ -168,7 +177,7 @@ SECTIONS
 #endif
         . = ALIGN(4);
     } >FLASH
-    __ro_end = . ;
+    __data_lma_start = . ;
 
     .data : {
         . = ALIGN(4);
@@ -227,16 +236,26 @@ SECTIONS
     ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
                (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
            "Not enough space for shared memory.")
+    __ram_free = (CONFIG_RAM_BASE + CONFIG_RAM_SIZE) -
+        (__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE);
 
     __image_size = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
 
-#ifdef CONFIG_HOSTCMD_X86
+#if defined(CONFIG_HOSTCMD_X86) || defined(CONFIG_I2C_SLAVE)
     .h2ram (NOLOAD) : {
         . += CONFIG_H2RAM_HOST_LPC_IO_BASE;
         *(.h2ram.pool.hostcmd)
         . = ALIGN(256);
         *(.h2ram.pool.acpiec)
+#ifdef CONFIG_I2C_SLAVE
+        . = ALIGN(256);
+        *(.h2ram.pool.i2cslv)
+#endif
+        __h2ram_end = .;
     } > H2RAM
+
+    ASSERT((__h2ram_end) <= (CONFIG_H2RAM_BASE + CONFIG_H2RAM_SIZE),
+            "Not enough space for h2ram section.")
 #endif
 
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))

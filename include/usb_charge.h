@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,40 +9,32 @@
 #define __CROS_EC_USB_CHARGE_H
 
 #include "common.h"
+#include "ec_commands.h"
 
 /* USB charger voltage */
 #define USB_CHARGER_VOLTAGE_MV  5000
 /* USB charger minimum current */
 #define USB_CHARGER_MIN_CURR_MA 500
 
-enum usb_charge_mode {
-	/* Disable USB port. */
-	USB_CHARGE_MODE_DISABLED,
-	/* Set USB port to Standard Downstream Port, USB 2.0 mode. */
-	USB_CHARGE_MODE_SDP2,
-	/* Set USB port to Charging Downstream Port, BC 1.2. */
-	USB_CHARGE_MODE_CDP,
-	/* Set USB port to Dedicated Charging Port, BC 1.2. */
-	USB_CHARGE_MODE_DCP_SHORT,
-	/* Enable USB port (for dumb ports). */
-	USB_CHARGE_MODE_ENABLED,
-
-	USB_CHARGE_MODE_COUNT
-};
-
 /**
  * Set USB charge mode for the port.
  *
- * @param usb_port_id	Port to set.
- * @param mode		New mode for port.
+ * @param usb_port_id		Port to set.
+ * @param mode			New mode for port.
+ * @param inhibit_charge	Inhibit charging during system suspend.
  * @return EC_SUCCESS, or non-zero if error.
  */
-int usb_charge_set_mode(int usb_port_id, enum usb_charge_mode mode);
+int usb_charge_set_mode(int usb_port_id, enum usb_charge_mode mode,
+			enum usb_suspend_charge inhibit_charge);
 
 #ifdef HAS_TASK_USB_CHG_P0
-#define USB_CHG_EVENT_BC12 TASK_EVENT_CUSTOM(1)
-#define USB_CHG_EVENT_VBUS TASK_EVENT_CUSTOM(2)
-#define USB_CHG_EVENT_INTR TASK_EVENT_CUSTOM(4)
+#define USB_CHG_EVENT_BC12	TASK_EVENT_CUSTOM_BIT(0)
+#define USB_CHG_EVENT_VBUS	TASK_EVENT_CUSTOM_BIT(1)
+#define USB_CHG_EVENT_INTR	TASK_EVENT_CUSTOM_BIT(2)
+#define USB_CHG_EVENT_DR_UFP	TASK_EVENT_CUSTOM_BIT(3)
+#define USB_CHG_EVENT_DR_DFP	TASK_EVENT_CUSTOM_BIT(4)
+#define USB_CHG_EVENT_CC_OPEN	TASK_EVENT_CUSTOM_BIT(5)
+#define USB_CHG_EVENT_MUX	TASK_EVENT_CUSTOM_BIT(6)
 #endif
 
 /*
@@ -106,4 +98,12 @@ int usb_charger_ramp_allowed(int supplier);
  * @return Maximum current in mA
  */
 int usb_charger_ramp_max(int supplier, int sup_curr);
+
+
+/**
+ * Reset available BC 1.2 chargers on all ports
+ * @param port
+ */
+void usb_charger_reset_charge(int port);
+
 #endif  /* __CROS_EC_USB_CHARGE_H */

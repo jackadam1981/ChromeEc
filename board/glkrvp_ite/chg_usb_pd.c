@@ -19,10 +19,10 @@
 #define PTN5110_EXT_GPIO_CONFIG		0x92
 #define PTN5110_EXT_GPIO_CONTROL	0x93
 
-#define PTN5110_EXT_GPIO_FRS_EN			(1 << 6)
-#define PTN5110_EXT_GPIO_EN_SRC			(1 << 5)
-#define PTN5110_EXT_GPIO_EN_SNK1		(1 << 4)
-#define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	(1 << 3)
+#define PTN5110_EXT_GPIO_FRS_EN			BIT(6)
+#define PTN5110_EXT_GPIO_EN_SRC			BIT(5)
+#define PTN5110_EXT_GPIO_EN_SNK1		BIT(4)
+#define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	BIT(3)
 
 enum glkrvp_charge_ports {
 	TYPE_C_PORT_0,
@@ -30,19 +30,33 @@ enum glkrvp_charge_ports {
 	DC_JACK_PORT_0 = DEDICATED_CHARGE_PORT,
 };
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{IT83XX_I2C_CH_B, 0xA0, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{IT83XX_I2C_CH_B, 0xA4, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-};
-BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_COUNT);
-
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = 0x20,
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = IT83XX_I2C_CH_B,
+			.addr_flags = 0x50,
+		},
+		.drv = &tcpci_tcpm_drv,
+	},
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = IT83XX_I2C_CH_B,
+			.addr_flags = 0x52,
+		},
+		.drv = &tcpci_tcpm_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.port_addr = 0x10,
 		.driver = &ps874x_usb_mux_driver,
 	},
 	{
-		.port_addr = 0x22,
+		.port_addr = 0x11,
 		.driver = &ps874x_usb_mux_driver,
 	},
 };
@@ -166,16 +180,11 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_dc_jack_handle, HOOK_PRIO_FIRST);
 static void board_charge_init(void)
 {
 	int port, supplier;
-	struct charge_port_info charge_init = {
-		.current = 0,
-		.voltage = USB_CHARGER_VOLTAGE_MV,
-	};
 
 	/* Initialize all charge suppliers to seed the charge manager */
 	for (port = 0; port < CHARGE_PORT_COUNT; port++) {
 		for (supplier = 0; supplier < CHARGE_SUPPLIER_COUNT; supplier++)
-			charge_manager_update_charge(supplier, port,
-				&charge_init);
+			charge_manager_update_charge(supplier, port, NULL);
 	}
 
 	board_dc_jack_handle();

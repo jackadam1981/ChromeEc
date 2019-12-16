@@ -32,7 +32,13 @@
  * with /4 prescaler (2^2): period 125 us, full range ~8s
  */
 #define LPTIM_PRESCALER_LOG2 2
-#define LPTIM_PRESCALER (1 << LPTIM_PRESCALER_LOG2)
+/*
+ * LPTIM_PRESCALER and LPTIM_PERIOD_US have to be signed, because we compare
+ * them to an int to decide whether to go to deep sleep. Simply using BIT()
+ * makes them unsigned, which causes a bug in deep sleep behavior.
+ * TODO(b/140538084): Explain exactly what the bug is.
+ */
+#define LPTIM_PRESCALER ((int)BIT(LPTIM_PRESCALER_LOG2))
 #define LPTIM_PERIOD_US (SECOND / (STM32_LSI_CLOCK / LPTIM_PRESCALER))
 
 /*
@@ -145,6 +151,14 @@ static void clock_switch_osc(enum clock_osc osc)
 		;
 }
 
+static void switch_voltage_scale(uint32_t vos)
+{
+	STM32_PWR_D3CR &= ~STM32_PWR_D3CR_VOSMASK;
+	STM32_PWR_D3CR |= vos;
+	while (!(STM32_PWR_D3CR & STM32_PWR_D3CR_VOSRDY))
+		;
+}
+
 static void clock_set_osc(enum clock_osc osc)
 {
 	if (osc == current_osc)
@@ -165,9 +179,11 @@ static void clock_set_osc(enum clock_osc osc)
 		clock_flash_latency(FLASH_ACLK_64MHZ);
 		/* Turn off the PLL1 to save power */
 		STM32_RCC_CR &= ~STM32_RCC_CR_PLL1ON;
+		switch_voltage_scale(STM32_PWR_D3CR_VOS3);
 		break;
 
 	case OSC_PLL:
+		switch_voltage_scale(STM32_PWR_D3CR_VOS1);
 		/* Configure PLL1 using 64 Mhz HSI as input */
 		STM32_RCC_PLLCKSELR = STM32_RCC_PLLCKSEL_PLLSRC_HSI |
 				      STM32_RCC_PLLCKSEL_DIVM1(PLL1_DIVM);
@@ -239,8 +255,8 @@ static void low_power_init(void)
 	task_enable_irq(STM32_IRQ_LPTIM1);
 
 	/* Wake-up interrupts from EXTI for USART and LPTIM */
-	STM32_EXTI_CPUIMR1 |= 1 << 26; /* [26] wkup26: USART1 wake-up */
-	STM32_EXTI_CPUIMR2 |= 1 << 15; /* [15] wkup47: LPTIM1 wake-up */
+	STM32_EXTI_CPUIMR1 |= BIT(26); /* [26] wkup26: USART1 wake-up */
+	STM32_EXTI_CPUIMR2 |= BIT(15); /* [15] wkup47: LPTIM1 wake-up */
 
 	/* optimize power vs latency in STOP mode */
 	STM32_PWR_CR = (STM32_PWR_CR & ~STM32_PWR_CR_SVOS_MASK)
@@ -359,9 +375,9 @@ static int command_idle_stats(int argc, char **argv)
 
 	ccprintf("Num idle calls that sleep:           %d\n", idle_sleep_cnt);
 	ccprintf("Num idle calls that deep-sleep:      %d\n", idle_dsleep_cnt);
-	ccprintf("Time spent in deep-sleep:            %.6lds\n",
+	ccprintf("Time spent in deep-sleep:            %.6llds\n",
 			idle_dsleep_time_us);
-	ccprintf("Total time on:                       %.6lds\n", ts.val);
+	ccprintf("Total time on:                       %.6llds\n", ts.val);
 	ccprintf("Deep-sleep closest to wake deadline: %dus\n",
 			dsleep_recovery_margin_us);
 

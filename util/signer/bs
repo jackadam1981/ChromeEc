@@ -16,7 +16,7 @@ progname=$(basename $0)
 OD="/usr/bin/od"
 
 tmpf="/tmp/bs_manifest.$$"
-trap "{ rm -rf [01].flat ${tmpf} ; }" EXIT
+trap "{ if [[ -f 1.flat ]]; then rm -rf [01].flat ${tmpf} ; fi; }" EXIT
 
 usage() {
   local rv="${1}"
@@ -99,8 +99,15 @@ tweak_manifest () {
     exit 1
   fi
 
-  # Convert board RLZ code from ASCII to hex
-  rlz="0x$(echo -n ${bid_params[0]} | hexdump -ve '/1 "%02x"')"
+  if [[ "${bid_params[0]}" == "0" ]] ; then
+    rlz="0"
+  elif [[ ${#bid_params[0]} == 4 ]] ; then
+    # Convert 4 char board RLZ code from ASCII to hex
+    rlz="0x$(echo -n ${bid_params[0]} | hexdump -ve '/1 "%02x"')"
+  else
+    echo "Invalid RLZ ${bid_params[0]}"
+    exit 1
+  fi
 
   # Prepare text of all three board ID related nodes
   sub="$(printf "\\\n\"board_id\": %s,\\\n" "${rlz}")"
@@ -250,7 +257,20 @@ if [[ -n "${do_prod}" && -n "${do_b1}" ]]; then
   exit 1
 fi
 
-rma_key_base="$(determine_rma_key_base ${elves[@]})"
+# If signing a chip factory image (version 0.0.22) do not try figuring out the
+# RMA keys.
+ignore_rma_keys="$(awk '
+  BEGIN {count = 0};
+   /"major": 0,/ {count += 1};
+   /"minor": 22,/ {count += 1};
+   END {{if (count == 2) {print "yes"};}}' \
+        "${EC_BIN_ROOT}/ec_RW-manifest-prod.json")"
+
+if [ "${ignore_rma_keys}" != "yes" ]; then
+  rma_key_base="$(determine_rma_key_base ${elves[@]})"
+else
+  echo "Ignofing RMA keys for factory branch"
+fi
 
 signer_command_params=()
 signer_command_params+=(--b -x ${EC_BIN_ROOT}/fuses.xml)
@@ -260,7 +280,9 @@ else
   cp "${EC_BIN_ROOT}/ec_RW-manifest-prod.json" "${tmpf}"
   signer_command_params+=(-k ${EC_BIN_ROOT}/cr50_RW-prod.pem.pub)
   # Swap test public RMA server key with the prod version.
-  signer_command_params+=(-S "${rma_key_base}.test","${rma_key_base}.prod")
+  if [ "${ignore_rma_keys}" != "yes" ]; then
+    signer_command_params+=(-S "${rma_key_base}.test","${rma_key_base}.prod")
+  fi
 fi
 signer_command_params+=(-j ${tmpf})
 
@@ -276,8 +298,8 @@ tweak_manifest
 count=0
 for elf in ${elves[@]}; do
   if [[ -n "${do_prod}" ]]; then
-    if strings "${elf}" | grep -q "DBG/cr50"; then
-      echo "Will not sign debug image with prod keys" >&2
+    if strings "${elf}" | egrep -q "(DBG|SQA)/cr50"; then
+      echo "Will not sign debug or SQA image with prod keys" >&2
       exit 1
     fi
   fi
@@ -285,22 +307,24 @@ for elf in ${elves[@]}; do
 
   # Make sure output file is not owned by root
   touch "${signed_file}"
-  if ! "${SIGNER}" ${signer_command_params[@]} \
-       -i ${elf} -o "${signed_file}"; then
-    echo "${progname}: ${SIGNER} failed" >&2
+  command="${SIGNER} ${signer_command_params[@]} -i ${elf} -o ${signed_file}"
+  if ! ${command}; then
+    echo "${progname}: \"${command}\" failed" >&2
     exit 1
   fi
 
-  if find_blob_in_blob  "${signed_file}" "${rma_key_base}.test"; then
-    echo "${progname}: test RMA key in the signed image!" >&2
-    rm *."${dst_suffix}"
-    exit 1
-  fi
+  if [ "${ignore_rma_keys}" != "yes" ]; then
+    if find_blob_in_blob  "${signed_file}" "${rma_key_base}.test"; then
+      echo "${progname}: test RMA key in the signed image!" >&2
+      rm *."${dst_suffix}"
+      exit 1
+    fi
 
-  if ! find_blob_in_blob "${signed_file}" "${rma_key_base}.prod"; then
-    echo "${progname}: prod RMA key not in the signed image!" >&2
-    rm *."${dst_suffix}"
-    exit 1
+    if ! find_blob_in_blob "${signed_file}" "${rma_key_base}.prod"; then
+      echo "${progname}: prod RMA key not in the signed image!" >&2
+      rm *."${dst_suffix}"
+      exit 1
+    fi
   fi
   : $(( count++ ))
 done

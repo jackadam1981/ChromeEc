@@ -22,16 +22,16 @@ extern const struct accelgyro_drv bma2x2_accel_drv;
 * BMA250E
 * BMA222E
 */
-#define BMA2x2_I2C_ADDR1                    0x30
-#define BMA2x2_I2C_ADDR2                    0x19
+#define BMA2x2_I2C_ADDR1_FLAGS              0x18
+#define BMA2x2_I2C_ADDR2_FLAGS              0x19
 
 /* The following definition of I2C address is used for the following sensors
 * BMC150
 * BMC056
 * BMC156
 */
-#define BMA2x2_I2C_ADDR3                    0x10
-#define BMA2x2_I2C_ADDR4                    0x11
+#define BMA2x2_I2C_ADDR3_FLAGS              0x10
+#define BMA2x2_I2C_ADDR4_FLAGS              0x11
 
 /*** Chip-specific registers ***/
 /* REGISTER ADDRESS DEFINITIONS */
@@ -160,5 +160,6 @@ extern const struct accelgyro_drv bma2x2_accel_drv;
 
 /* Min and Max sampling frequency in mHz */
 #define BMA255_ACCEL_MIN_FREQ           7810
-#define BMA255_ACCEL_MAX_FREQ           1000000
+#define BMA255_ACCEL_MAX_FREQ \
+	MOTION_MAX_SENSOR_FREQUENCY(1000000, 15625)
 #endif /* __CROS_EC_ACCEL_BMA2x2_H */

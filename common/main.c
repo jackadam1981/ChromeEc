@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -17,8 +17,10 @@
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "lpc.h"
+#include "i2c.h"
 #include "keyboard_scan.h"
+#include "link_defs.h"
+#include "lpc.h"
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
@@ -38,15 +40,23 @@
 
 test_mockable __keep int main(void)
 {
-#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
-	/*
-	 * Now that we have started execution, we no longer need the loader.
-	 * Instead, variables placed in the .bss.slow section will use this
-	 * space.  Therefore, clear out this region now.
-	 */
-	memset((void *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_LOADER_MEM_OFF), 0,
-	       CONFIG_LOADER_SIZE);
-#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
+	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
+		/*
+		 * Initialize tx buffer head and tail. This needs to be done
+		 * before any updates of uart tx input because we need to
+		 * verify if the values remain the same after every EC reset.
+		 */
+		uart_init_buffer();
+
+		/*
+		 * Initialize reset logs. Needs to be done before any updates of
+		 * reset logs because we need to verify if the values remain
+		 * the same after every EC reset.
+		 */
+		if (IS_ENABLED(CONFIG_CMD_AP_RESET_LOG))
+			init_reset_log();
+	}
+
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
@@ -84,6 +94,14 @@ test_mockable __keep int main(void)
 	system_pre_init();
 	system_common_pre_init();
 
+#ifdef CONFIG_DRAM_BASE
+	/* Now that DRAM is initialized, clear up DRAM .bss, copy .data over. */
+	memset(&__dram_bss_start, 0,
+	       (uintptr_t)(&__dram_bss_end) - (uintptr_t)(&__dram_bss_start));
+	memcpy(&__dram_data_start, &__dram_data_lma_start,
+	       (uintptr_t)(&__dram_data_end) - (uintptr_t)(&__dram_data_start));
+#endif
+
 #if defined(CONFIG_FLASH_PHYSICAL)
 	/*
 	 * Initialize flash and apply write protect if necessary.  Requires
@@ -116,7 +134,7 @@ test_mockable __keep int main(void)
 	uart_init();
 
 	/* be less verbose if we boot for USB resume to meet spec timings */
-	if (!(system_get_reset_flags() & RESET_FLAG_USB_RESUME)) {
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME)) {
 		if (system_jumped_to_this_image()) {
 			CPRINTS("UART initialized after sysjump");
 		} else {
@@ -163,6 +181,13 @@ test_mockable __keep int main(void)
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_init_mask();
 #endif
+	if (IS_ENABLED(CONFIG_I2C_MASTER)) {
+		/*
+		 * Some devices (like the I2C keyboards, CBI) need I2C access
+		 * pretty early, so let's initialize the controller now.
+		 */
+		i2c_init();
+	}
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
 #endif
@@ -195,9 +220,9 @@ test_mockable __keep int main(void)
 		 * If system was reset by reset-pin, do not jump and wait for
 		 * command from host
 		 */
-		if (system_get_reset_flags() == RESET_FLAG_RESET_PIN) {
+		if (system_get_reset_flags() == EC_RESET_FLAG_RESET_PIN)
 			CPRINTS("Hard pin-reset detected, disable RW jump");
-		} else
+		else
 #endif
 		{
 			if (rwsig_check_signature())

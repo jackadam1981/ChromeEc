@@ -5,6 +5,8 @@
 #ifndef __EC_CHIP_G_FLASH_CONFIG_H
 #define __EC_CHIP_G_FLASH_CONFIG_H
 
+#include "stdint.h"
+
 #define FLASH_INFO_SIZE                      (2 * 1024)
 #define FLASH_INFO_MEMORY_BASE              0x28000
 /* INFO is a 2-KB flash page that consists of four regions.  The
@@ -15,9 +17,9 @@
 #define FLASH_INFO_MANUFACTURE_STATE_SIZE   0x200
 
 
-#define FLASH_REGION_EN_ALL ((1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_EN_LSB) |\
-			     (1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_RD_EN_LSB) |\
-			     (1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_WR_EN_LSB))
+#define FLASH_REGION_EN_ALL (BIT(GC_GLOBALSEC_FLASH_REGION0_CTRL_EN_LSB) |\
+			     BIT(GC_GLOBALSEC_FLASH_REGION0_CTRL_RD_EN_LSB) |\
+			     BIT(GC_GLOBALSEC_FLASH_REGION0_CTRL_WR_EN_LSB))
 
 /*
  * The below structure describes a single flash region (the hardware supports

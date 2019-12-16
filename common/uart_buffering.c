@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -28,6 +28,10 @@
 #define TX_BUF_DIFF(i, j) (((i) - (j)) & (CONFIG_UART_TX_BUF_SIZE - 1))
 #define RX_BUF_DIFF(i, j) (((i) - (j)) & (CONFIG_UART_RX_BUF_SIZE - 1))
 
+/* Check if both UART TX/RX buffer sizes are power of two. */
+BUILD_ASSERT((CONFIG_UART_TX_BUF_SIZE & (CONFIG_UART_TX_BUF_SIZE - 1)) == 0);
+BUILD_ASSERT((CONFIG_UART_RX_BUF_SIZE & (CONFIG_UART_RX_BUF_SIZE - 1)) == 0);
+
 /*
  * Interval between rechecking the receive DMA head pointer, after a character
  * of input has been detected by the normal tick task.  There will be
@@ -37,9 +41,10 @@
 				 (CONFIG_UART_RX_DMA_RECHECKS + 1))
 
 /* Transmit and receive buffers */
-static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
-static volatile int tx_buf_head;
-static volatile int tx_buf_tail;
+static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE]
+			__uncached __preserved_logs(tx_buf);
+static volatile int tx_buf_head __preserved_logs(tx_buf_head);
+static volatile int tx_buf_tail __preserved_logs(tx_buf_tail);
 static volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE] __uncached;
 static volatile int rx_buf_head;
 static volatile int rx_buf_tail;
@@ -47,6 +52,24 @@ static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int tx_last_snapshot_head;
 static int tx_next_snapshot_head;
+static int tx_checksum __preserved_logs(tx_checksum);
+
+static int uart_buffer_calc_checksum(void)
+{
+	return tx_buf_head ^ tx_buf_tail;
+}
+
+
+void uart_init_buffer(void)
+{
+	if (tx_checksum != uart_buffer_calc_checksum() ||
+	    !IN_RANGE(tx_buf_head, 0, CONFIG_UART_TX_BUF_SIZE) ||
+	    !IN_RANGE(tx_buf_tail, 0, CONFIG_UART_TX_BUF_SIZE)) {
+		tx_buf_head = 0;
+		tx_buf_tail = 0;
+		tx_checksum = 0;
+	}
+}
 
 /**
  * Put a single character into the transmit buffer.
@@ -92,6 +115,9 @@ static int __tx_char(void *context, int c)
 
 	tx_buf[tx_buf_head] = c;
 	tx_buf_head = tx_buf_next;
+
+	if (IS_ENABLED(CONFIG_PRESERVE_LOGS))
+		tx_checksum = uart_buffer_calc_checksum();
 #endif
 	return 0;
 }
@@ -121,6 +147,9 @@ void uart_process_output(void)
 		tx_buf_tail = (tx_buf_tail + tx_dma_in_progress) &
 			(CONFIG_UART_TX_BUF_SIZE - 1);
 		tx_dma_in_progress = 0;
+
+		if (IS_ENABLED(CONFIG_PRESERVE_LOGS))
+			tx_checksum = uart_buffer_calc_checksum();
 	}
 
 	/* Disable DMA-done interrupt if nothing to send */
@@ -147,6 +176,9 @@ void uart_process_output(void)
 	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
 		uart_write_char(tx_buf[tx_buf_tail]);
 		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
+
+		if (IS_ENABLED(CONFIG_PRESERVE_LOGS))
+			tx_checksum = uart_buffer_calc_checksum();
 	}
 
 	/* If output buffer is empty, disable transmit interrupt */
@@ -219,6 +251,14 @@ void uart_process_input(void)
 		console_has_input();
 }
 
+void uart_clear_input(void)
+{
+	int scratch __attribute__ ((unused));
+	while (uart_rx_available())
+		scratch = uart_read_char();
+	rx_buf_head = rx_buf_tail = 0;
+}
+
 #endif /* !CONFIG_UART_RX_DMA */
 
 int uart_putc(int c)
@@ -242,6 +282,20 @@ int uart_puts(const char *outstr)
 
 	/* Successful if we consumed all output */
 	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+}
+
+int uart_put(const char *out, int len)
+{
+	/* Put all characters in the output buffer */
+	while (len--) {
+		if (__tx_char(NULL, *out++) != 0)
+			break;
+	}
+
+	uart_tx_start();
+
+	/* Successful if we consumed all output */
+	return len ? EC_ERROR_OVERFLOW : EC_SUCCESS;
 }
 
 int uart_vprintf(const char *format, va_list args)
@@ -316,6 +370,11 @@ int uart_buffer_empty(void)
 	return tx_buf_head == tx_buf_tail;
 }
 
+int uart_buffer_full(void)
+{
+	return TX_BUF_NEXT(tx_buf_head) == tx_buf_tail;
+}
+
 #ifdef CONFIG_UART_RX_DMA
 static void uart_rx_dma_init(void)
 {
@@ -328,7 +387,8 @@ DECLARE_HOOK(HOOK_INIT, uart_rx_dma_init, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Host commands */
 
-static int host_command_console_snapshot(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_console_snapshot(struct host_cmd_handler_args *args)
 {
 	return uart_console_read_buffer_init();
 }
@@ -336,8 +396,8 @@ DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_SNAPSHOT,
 		     host_command_console_snapshot,
 		     EC_VER_MASK(0));
 
-
-static int host_command_console_read(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_console_read(struct host_cmd_handler_args *args)
 {
 	if (args->version == 0) {
 		/*
@@ -373,7 +433,7 @@ DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ,
 #endif
 		     );
 
-int uart_console_read_buffer_init(void)
+enum ec_status uart_console_read_buffer_init(void)
 {
 	/* Assume the whole circular buffer is full */
 	tx_snapshot_head = tx_buf_head;

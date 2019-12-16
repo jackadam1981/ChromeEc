@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -23,7 +23,7 @@
 #define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
 
-#define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
+#define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM_BIT(0)
 
 /* Maximum delay to skip printing repeated host command debug output */
 #define HCDEBUG_MAX_REPEAT_DELAY (50 * MSEC)
@@ -32,9 +32,6 @@
 #define HCDEBUG_MAX_REPEAT_COUNT 5
 
 static struct host_cmd_handler_args *pending_args;
-
-/* Verify Boot Mode */
-static int g_vboot_mode;
 
 #ifndef CONFIG_HOSTCMD_X86
 /*
@@ -96,11 +93,6 @@ uint8_t *host_get_memmap(int offset)
 #else
 	return host_memmap + offset;
 #endif
-}
-
-int host_get_vboot_mode(void)
-{
-	return g_vboot_mode;
 }
 
 test_mockable void host_send_response(struct host_cmd_handler_args *args)
@@ -193,7 +185,7 @@ void host_command_received(struct host_cmd_handler_args *args)
 
 	/*
 	 * TODO (crosbug.com/p/29315): This is typically running in interrupt
-	 * context, so it woud be better not to send the response here, and to
+	 * context, so it would be better not to send the response here, and to
 	 * let the host command task send the response.
 	 */
 	/* Send the response now */
@@ -363,7 +355,7 @@ void host_packet_receive(struct host_packet *pkt)
 host_packet_bad:
 	/*
 	 * TODO (crosbug.com/p/29315): This is typically running in interrupt
-	 * context, so it woud be better not to send the response here, and to
+	 * context, so it would be better not to send the response here, and to
 	 * let the host command task send the response.
 	 */
 	/* Improperly formed packet from host, so send an error response */
@@ -469,7 +461,8 @@ void host_command_task(void *u)
 /* Host commands */
 
 /* TODO(crosbug.com/p/11223): Remove this once the kernel no longer cares */
-static int host_command_proto_version(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_proto_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_proto_version *r = args->response;
 
@@ -482,7 +475,7 @@ DECLARE_HOST_COMMAND(EC_CMD_PROTO_VERSION,
 		     host_command_proto_version,
 		     EC_VER_MASK(0));
 
-static int host_command_hello(struct host_cmd_handler_args *args)
+static enum ec_status host_command_hello(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_hello *p = args->params;
 	struct ec_response_hello *r = args->response;
@@ -497,7 +490,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HELLO,
 		     host_command_hello,
 		     EC_VER_MASK(0));
 
-static int host_command_read_test(struct host_cmd_handler_args *args)
+static enum ec_status host_command_read_test(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_read_test *p = args->params;
 	struct ec_response_read_test *r = args->response;
@@ -525,7 +518,8 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_TEST,
  * Host command to read memory map is not needed on LPC, because LPC can
  * directly map the data to the host's memory space.
  */
-static int host_command_read_memmap(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_read_memmap(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_read_memmap *p = args->params;
 
@@ -552,7 +546,8 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP,
 		     EC_VER_MASK(0));
 #endif
 
-static int host_command_get_cmd_versions(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_get_cmd_versions *p = args->params;
 	const struct ec_params_get_cmd_versions_v1 *p_v1 = args->params;
@@ -601,7 +596,7 @@ static void dump_host_command_suppressed(int force)
 	if (!force && !timestamp_expired(suppressed_cmd_deadline, NULL))
 		return;
 
-	CPRINTF("[%T HC Suppressed:");
+	CPRINTF("[%pT HC Suppressed:", PRINTF_TIMESTAMP_NOW);
 	for (i = 0; i < ARRAY_SIZE(hc_suppressed_cmd); i++) {
 		CPRINTF(" 0x%x=%d", hc_suppressed_cmd[i], hc_suppressed_cnt[i]);
 		hc_suppressed_cnt[i] = 0;
@@ -663,8 +658,9 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	}
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
-		CPRINTS("HC 0x%02x.%d:%.*h", args->command,
-			args->version, args->params_size, args->params);
+		CPRINTS("HC 0x%02x.%d:%ph", args->command,
+			args->version,
+			HEX_BUF(args->params, args->params_size));
 	else
 		CPRINTS("HC 0x%02x", args->command);
 }
@@ -676,6 +672,20 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 
 	if (hcdebug)
 		host_command_debug_request(args);
+
+	/*
+	 * Pre-emptively clear the entire response buffer so we do not
+	 * have any left over contents from previous host commands.
+	 * For example, this prevents the last portion of a char array buffer
+	 * from containing data from the last host command if the string does
+	 * not take the entire width of the char array buffer.
+	 *
+	 * Note that if request and response buffers pointed to the same memory
+	 * location, then the chip implementation already needed to provide a
+	 * request_temp buffer in which the request data was already copied
+	 * by this point (see host_packet_receive function).
+	 */
+	memset(args->response, 0, args->response_max);
 
 #ifdef CONFIG_HOSTCMD_PD
 	if (args->command >= EC_CMD_PASSTHRU_OFFSET(1) &&
@@ -708,22 +718,23 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 		CPRINTS("HC 0x%02x err %d", args->command, rv);
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->response_size)
-		CPRINTS("HC resp:%.*h", args->response_size,
-			args->response);
+		CPRINTS("HC resp:%ph",
+			HEX_BUF(args->response, args->response_size));
 
 	return rv;
 }
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */
-static int host_command_get_comms_status(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_comms_status(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_comms_status *r = args->response;
 
 	r->flags = command_pending ? EC_COMMS_STATUS_PROCESSING : 0;
 	args->response_size = sizeof(*r);
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 
 DECLARE_HOST_COMMAND(EC_CMD_GET_COMMS_STATUS,
@@ -731,7 +742,8 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_COMMS_STATUS,
 		     EC_VER_MASK(0));
 
 /* Resend the last saved response */
-static int host_command_resend_response(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_resend_response(struct host_cmd_handler_args *args)
 {
 	/* Handle resending response */
 	args->result = saved_result;
@@ -739,7 +751,7 @@ static int host_command_resend_response(struct host_cmd_handler_args *args)
 
 	saved_result = EC_RES_UNAVAILABLE;
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 
 DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
@@ -747,20 +759,9 @@ DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_HOST_COMMAND_STATUS */
 
-
-static int host_command_entering_mode(struct host_cmd_handler_args *args)
-{
-	struct ec_params_entering_mode *param =
-		(struct ec_params_entering_mode *)args->params;
-	args->response_size = 0;
-	g_vboot_mode = param->vboot_mode;
-	return EC_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_ENTERING_MODE,
-		host_command_entering_mode, EC_VER_MASK(0));
-
 /* Returns what we tell it to. */
-static int host_command_test_protocol(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_test_protocol(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_test_protocol *p = args->params;
 	struct ec_response_test_protocol *r = args->response;
@@ -777,7 +778,8 @@ DECLARE_HOST_COMMAND(EC_CMD_TEST_PROTOCOL,
 		     EC_VER_MASK(0));
 
 /* Returns supported features. */
-static int host_command_get_features(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_get_features(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_features *r = args->response;
 	args->response_size = sizeof(*r);
@@ -885,7 +887,8 @@ static int command_host_command(int argc, char **argv)
 	if (res != EC_RES_SUCCESS)
 		ccprintf("Command returned %d\n", res);
 	else if (args.response_size)
-		ccprintf("Response: %.*h\n", args.response_size, cmd_params);
+		ccprintf("Response: %ph\n",
+			 HEX_BUF(cmd_params, args.response_size));
 	else
 		ccprintf("Command succeeded; no response.\n");
 

@@ -1,10 +1,11 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 #include "board_id.h"
 #include "ccd_config.h"
 #include "clock.h"
+#include "closed_source_set1.h"
 #include "common.h"
 #include "console.h"
 #include "dcrypto/dcrypto.h"
@@ -14,6 +15,7 @@
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
+#include "ite_sync.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "i2cs.h"
@@ -22,6 +24,7 @@
 #include "nvmem_vars.h"
 #include "rbox.h"
 #include "rdd.h"
+#include "recovery_button.h"
 #include "registers.h"
 #include "scratch_reg1.h"
 #include "signed_header.h"
@@ -88,13 +91,14 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 /*  Board specific configuration settings */
 static uint32_t board_properties; /* Mainly used as a cache for strap config. */
 static uint8_t reboot_request_posted;
+static uint8_t in_prod_mode;
 
 /* Which UARTs we'd like to be able to bitbang. */
 struct uart_bitbang_properties bitbang_config = {
 	.uart = UART_EC,
 	.tx_gpio = GPIO_DETECT_SERVO, /* This is TX to EC console. */
 	.rx_gpio = GPIO_EC_TX_CR50_RX,
-	.rx_irq = GC_IRQNUM_GPIO1_GPIO4INT, /* Must match gpoi.inc */
+	.rx_irq = GC_IRQNUM_GPIO1_GPIO11INT, /* Must match gpoi.inc */
 	/*
 	 * The rx/tx_pinmux_regval values MUST agree with the pin config for
 	 * both the TX and RX GPIOs in gpio.inc.  Don't change one without
@@ -103,10 +107,10 @@ struct uart_bitbang_properties bitbang_config = {
 	.tx_pinmux_reg = GBASE(PINMUX) + GOFFSET(PINMUX, DIOB5_SEL),
 	.tx_pinmux_regval = GC_PINMUX_GPIO1_GPIO3_SEL,
 	.rx_pinmux_reg = GBASE(PINMUX) + GOFFSET(PINMUX, DIOB6_SEL),
-	.rx_pinmux_regval = GC_PINMUX_GPIO1_GPIO4_SEL,
+	.rx_pinmux_regval = GC_PINMUX_GPIO1_GPIO11_SEL,
 };
 
-DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIO4INT, uart_bitbang_irq, 0);
+DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIO11INT, uart_bitbang_irq, 0);
 
 const char *device_state_names[] = {
 	"init",
@@ -118,7 +122,8 @@ const char *device_state_names[] = {
 	"connected",
 	"on",
 	"debouncing",
-	"unknown"
+	"unknown",
+	"ignored"
 };
 BUILD_ASSERT(ARRAY_SIZE(device_state_names) == DEVICE_STATE_COUNT);
 
@@ -154,6 +159,26 @@ int board_tpm_uses_i2c(void)
 int board_tpm_uses_spi(void)
 {
 	return !!(board_properties & BOARD_SLAVE_CONFIG_SPI);
+}
+
+int board_uses_closed_source_set1(void)
+{
+	return !!(board_properties & BOARD_CLOSED_SOURCE_SET1);
+}
+
+int board_uses_closed_loop_reset(void)
+{
+	return !!(board_properties & BOARD_CLOSED_LOOP_RESET);
+}
+
+int board_has_ina_support(void)
+{
+	return !(board_properties & BOARD_NO_INA_SUPPORT);
+}
+
+int board_tpm_mode_change_allowed(void)
+{
+	return !!(board_properties & BOARD_ALLOW_CHANGE_TPM_MODE);
 }
 
 /* Get header address of the backup RW copy. */
@@ -224,16 +249,52 @@ const struct strap_desc strap_regs[] = {
 static struct board_cfg board_cfg_table[] = {
 	/* SPI Variants: DIOA12 = 1M PD, DIOA6 = 1M PD */
 	/* Kevin/Gru: DI0A9 = 5k PD, DIOA1 = 1M PU */
-	{ 0x02, BOARD_SLAVE_CONFIG_SPI | BOARD_NEEDS_SYS_RST_PULL_UP },
+	{
+		.strap_cfg = 0x02,
+		.board_properties = BOARD_SLAVE_CONFIG_SPI |
+			BOARD_NEEDS_SYS_RST_PULL_UP,
+	},
 	/* Poppy: DI0A9 = 1M PU, DIOA1 = 1M PU */
-	{ 0x0A, BOARD_SLAVE_CONFIG_SPI | BOARD_USE_PLT_RESET },
-
+	{
+		.strap_cfg = 0x0A,
+		.board_properties = BOARD_SLAVE_CONFIG_SPI |
+			BOARD_USE_PLT_RESET,
+	},
+	/* Mistral: DI0A9 = 1M PU, DIOA1 = 5k PU */
+	{
+		.strap_cfg = 0x0B,
+		.board_properties = BOARD_SLAVE_CONFIG_SPI |
+			BOARD_USE_PLT_RESET | BOARD_NO_INA_SUPPORT |
+			BOARD_CLOSED_LOOP_RESET,
+	},
+	/* Kukui: DI0A9 = 5k PU, DIOA1 = 5k PU */
+	{
+		.strap_cfg = 0x0F,
+		.board_properties = BOARD_SLAVE_CONFIG_SPI |
+			BOARD_USE_PLT_RESET,
+	},
 	/* I2C Variants: DIOA9 = 1M PD, DIOA1 = 1M PD */
 	/* Reef/Eve: DIOA12 = 5k PD, DIOA6 = 1M PU */
-	{ 0x20, BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET },
+	{
+		.strap_cfg = 0x20,
+		.board_properties = BOARD_SLAVE_CONFIG_I2C |
+			BOARD_USE_PLT_RESET,
+	},
 	/* Rowan: DIOA12 = 5k PD, DIOA6 = 5k PU */
-	{ 0x30, BOARD_SLAVE_CONFIG_I2C | BOARD_DEEP_SLEEP_DISABLED |
-	  BOARD_DETECT_AP_WITH_UART },
+	{
+		.strap_cfg = 0x30,
+		.board_properties = BOARD_SLAVE_CONFIG_I2C |
+			BOARD_DEEP_SLEEP_DISABLED | BOARD_DETECT_AP_WITH_UART,
+	},
+	/* Sarien/Arcada: DIOA12 = 1M PD, DIOA6 = 5k PU */
+	{
+		.strap_cfg = 0x70,
+		.board_properties = BOARD_SLAVE_CONFIG_I2C |
+			BOARD_USE_PLT_RESET | BOARD_WP_DISABLE_DELAY |
+			BOARD_CLOSED_SOURCE_SET1 | BOARD_NO_INA_SUPPORT |
+			BOARD_ALLOW_CHANGE_TPM_MODE,
+	},
+
 };
 
 void post_reboot_request(void)
@@ -541,7 +602,10 @@ static void configure_board_specific_gpios(void)
 	 */
 	if (board_use_plt_rst()) {
 		/* Use plt_rst_l as the tpm reset signal. */
+		/* Select for TPM_RST_L */
 		GWRITE(PINMUX, GPIO1_GPIO0_SEL, GC_PINMUX_DIOM3_SEL);
+		/* Select for DETECT_TPM_RST_L_ASSERTED */
+		GWRITE(PINMUX, GPIO1_GPIO4_SEL, GC_PINMUX_DIOM3_SEL);
 
 		/* Enable the input */
 		GWRITE_FIELD(PINMUX, DIOM3_CTL, IE, 1);
@@ -563,7 +627,10 @@ static void configure_board_specific_gpios(void)
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
 	} else {
 		/* Use sys_rst_l as the tpm reset signal. */
+		/* Select for TPM_RST_L */
 		GWRITE(PINMUX, GPIO1_GPIO0_SEL, GC_PINMUX_DIOM0_SEL);
+		/* Select for DETECT_TPM_RST_L_ASSERTED */
+		GWRITE(PINMUX, GPIO1_GPIO4_SEL, GC_PINMUX_DIOM0_SEL);
 		/* Enable the input */
 		GWRITE_FIELD(PINMUX, DIOM0_CTL, IE, 1);
 
@@ -574,17 +641,9 @@ static void configure_board_specific_gpios(void)
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
-}
 
-void decrement_retry_counter(void)
-{
-	uint32_t counter = GREG32(PMU, LONG_LIFE_SCRATCH0);
-
-	if (counter) {
-		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 1);
-		GREG32(PMU, LONG_LIFE_SCRATCH0) = counter - 1;
-		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 0);
-	}
+	if (board_uses_closed_source_set1())
+		closed_source_set1_configure_gpios();
 }
 
 static uint8_t mismatched_board_id;
@@ -620,6 +679,27 @@ static void  check_board_id_mismatch(void)
 	system_reset(0);
 }
 
+/*
+ * Check if ITE SYNC sequence generation was requested before the reset, if so
+ * - clear the request and call the function to generate the sequence.
+ */
+static void maybe_trigger_ite_sync(void)
+{
+	uint32_t lls1;
+
+	lls1 = GREG32(PMU, LONG_LIFE_SCRATCH1);
+
+	if (!(lls1 & BOARD_ITE_EC_SYNC_NEEDED))
+		return;
+
+	/* Clear the sync required bit, this should work only once. */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+	GREG32(PMU, LONG_LIFE_SCRATCH1) = lls1 & ~BOARD_ITE_EC_SYNC_NEEDED;
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	generate_ite_sync();
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -633,24 +713,31 @@ static void board_init(void)
 	 * Deep sleep resets should be considered valid and should not impact
 	 * the rolling reboot count.
 	 */
-	if (system_get_reset_flags() & RESET_FLAG_HIBERNATE)
-		decrement_retry_counter();
+	if (system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE)
+		system_decrement_retry_counter();
 	configure_board_specific_gpios();
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
+	maybe_trigger_ite_sync();
 	init_jittery_clock(1);
+
+	/*
+	 * Need to cache this, because key manager registers are not available
+	 * after run level is lowered.
+	 */
+	in_prod_mode = (GREG32(KEYMGR, HKEY_FWR7) == 0) &&
+		(GREG32(KEYMGR, HKEY_RWR7) == 0xaa66150f);
+
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
-	/* Initialize the persistent storage. */
-	initvars();
 
 	/*
 	 * If this was a low power wake and not a rollback, restore the ccd
 	 * state from the long-life register.
 	 */
-	if ((system_get_reset_flags() & RESET_FLAG_HIBERNATE) &&
+	if ((system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
 	    !system_rollback_detected()) {
 		ccd_init_state = (GREG32(PMU, LONG_LIFE_SCRATCH1) &
 				  BOARD_CCD_STATE) >> BOARD_CCD_SHIFT;
@@ -672,19 +759,6 @@ static void board_init(void)
 	check_board_id_mismatch();
 
 	/*
-	 * Enable TPM reset GPIO interrupt.
-	 *
-	 * If the TPM_RST_L signal is already high when cr50 wakes up or
-	 * transitions to high before we are able to configure the gpio then we
-	 * will have missed the edge and the tpm reset isr will not get
-	 * called. Check that we haven't already missed the rising edge. If we
-	 * have alert tpm_rst_isr.
-	 */
-	gpio_enable_interrupt(GPIO_TPM_RST_L);
-	if (gpio_get_level(GPIO_TPM_RST_L))
-		hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
-
-	/*
 	 * Start monitoring AC detect to wake Cr50 from deep sleep.  This is
 	 * needed to detect RDD cable changes in deep sleep.  AC detect is also
 	 * used for battery cutoff software support on detachable devices.
@@ -701,6 +775,16 @@ static void board_init(void)
 	 * supported.
 	 */
 	bitbang_config.uart_in = ec_uart.producer.queue;
+
+	/*
+	 * Enable interrupt handler for RBOX key combo so it can be used to
+	 * store the recovery request.
+	 */
+	if (board_uses_closed_source_set1()) {
+		/* Enable interrupt handler for reset button combo */
+		task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT);
+		GWRITE_FIELD(RBOX, INT_ENABLE, INTR_BUTTON_COMBO0_RDY, 1);
+	}
 
 	/*
 	 * Note that the AP, EC, and servo state machines do not have explicit
@@ -723,6 +807,9 @@ static void board_ccd_config_changed(void)
 	GREG32(PMU, LONG_LIFE_SCRATCH1) |= (ccd_get_state() << BOARD_CCD_SHIFT)
 			& BOARD_CCD_STATE;
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	if (board_uses_closed_source_set1())
+		closed_source_set1_update_factory_mode();
 
 	/* Update CCD state */
 	ccd_update_state();
@@ -849,40 +936,23 @@ void tpm_rst_deasserted(enum gpio_signal signal)
 
 void assert_sys_rst(void)
 {
-	/*
-	 * We don't have a good (any?) way to easily look up the pinmux/gpio
-	 * assignments in gpio.inc, so they're hard-coded in this routine. This
-	 * assertion is just to ensure it hasn't changed.
-	 */
-	ASSERT(GREAD(PINMUX, GPIO0_GPIO4_SEL) == GC_PINMUX_DIOM0_SEL);
-
-	/* Set SYS_RST_L_OUT as an output, connected to the pad */
-	GWRITE(PINMUX, DIOM0_SEL, GC_PINMUX_GPIO0_GPIO4_SEL);
-	gpio_set_flags(GPIO_SYS_RST_L_OUT, GPIO_OUT_HIGH);
-
 	/* Assert it */
 	gpio_set_level(GPIO_SYS_RST_L_OUT, 0);
 }
 
 void deassert_sys_rst(void)
 {
-	ASSERT(GREAD(PINMUX, GPIO0_GPIO4_SEL) == GC_PINMUX_DIOM0_SEL);
-
-	/* Deassert SYS_RST_L */
+	/* Deassert it */
 	gpio_set_level(GPIO_SYS_RST_L_OUT, 1);
-
-	/* Set SYS_RST_L_OUT as an input, disconnected from the pad */
-	gpio_set_flags(GPIO_SYS_RST_L_OUT, GPIO_INPUT);
-	GWRITE(PINMUX, DIOM0_SEL, 0);
 }
 
-int is_sys_rst_asserted(void)
+static int is_sys_rst_asserted(void)
 {
-	return (GREAD(PINMUX, DIOM0_SEL) == GC_PINMUX_GPIO0_GPIO4_SEL)
-#ifdef CONFIG_CMD_GPIO_EXTENDED
-		&& (gpio_get_flags(GPIO_SYS_RST_L_OUT) & GPIO_OUTPUT)
-#endif
-		&& (gpio_get_level(GPIO_SYS_RST_L_OUT) == 0);
+	/*
+	 * SYS_RST_L is pseudo open drain. It is only an output when it's
+	 * asserted.
+	 */
+	return gpio_get_flags(GPIO_SYS_RST_L_OUT) & GPIO_OUTPUT;
 }
 
 /**
@@ -890,10 +960,39 @@ int is_sys_rst_asserted(void)
  */
 void board_reboot_ap(void)
 {
+	if (board_uses_closed_loop_reset()) {
+		board_closed_loop_reset();
+		return;
+	}
 	assert_sys_rst();
 	msleep(20);
 	deassert_sys_rst();
 }
+
+/**
+ * Reboot the EC
+ */
+void board_reboot_ec(void)
+{
+	if (board_uses_closed_loop_reset()) {
+		board_closed_loop_reset();
+		return;
+	}
+	assert_ec_rst();
+	deassert_ec_rst();
+}
+
+/*
+ * This interrupt handler will be called if the RBOX key combo is detected.
+ */
+static void key_combo0_irq(void)
+{
+	GWRITE_FIELD(RBOX, INT_STATE, INTR_BUTTON_COMBO0_RDY, 1);
+	recovery_button_record();
+	board_reboot_ec();
+	CPRINTS("Recovery Requested");
+}
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT, key_combo0_irq, 0);
 
 /**
  * Console command to toggle system (AP) reset
@@ -937,17 +1036,63 @@ DECLARE_SAFE_CONSOLE_COMMAND(sysrst, command_sys_rst,
 	"[pulse [time] | <BOOLEAN>]",
 	"Assert/deassert SYS_RST_L to reset the AP");
 
+/*
+ * Set RBOX register controlling EC reset and wait until RBOX updates the
+ * output.
+ *
+ * Input parameter is treated as a Boolean, 1 means reset needs to be
+ * asserted, 0 means reset needs to be deasserted.
+ */
+static void wait_ec_rst(int level)
+{
+	int i;
+
+
+	/* Just in case. */
+	level = !!level;
+
+	GWRITE(RBOX, ASSERT_EC_RST, level);
+
+	/*
+	 * If ec_rst value is being explicitly set while power button is held
+	 * pressed after reset, do not let "power button release" ISR change
+	 * the ec_rst value.
+	 */
+	power_button_release_enable_interrupt(0);
+
+	/*
+	 * RBOX is running on its own clock, let's make sure we don't exit
+	 * this function until the ecr_rst output matches the desired setting.
+	 * 1000 cycles is way more than needed for RBOX to react.
+	 *
+	 * Note that the read back value is the inversion of the value written
+	 * into the register once it propagates through RBOX.
+	 */
+	for (i = 0; i < 1000; i++)
+		if (GREAD_FIELD(RBOX, CHECK_OUTPUT, EC_RST) != level)
+			break;
+}
+
 void assert_ec_rst(void)
 {
 	/* Prevent bit bang interrupt storm. */
 	if (uart_bitbang_is_enabled())
 		task_disable_irq(bitbang_config.rx_irq);
 
-	GWRITE(RBOX, ASSERT_EC_RST, 1);
+	wait_ec_rst(1);
+
+	/*
+	 * On closed source set1, the EC requires a minimum 30 ms pulse to
+	 * properly reset. Ensure EC reset is always asserted for more than
+	 * this time.
+	 */
+	if (board_uses_closed_source_set1())
+		msleep(30);
 }
+
 void deassert_ec_rst(void)
 {
-	GWRITE(RBOX, ASSERT_EC_RST, 0);
+	wait_ec_rst(0);
 
 	if (uart_bitbang_is_enabled())
 		task_enable_irq(bitbang_config.rx_irq);
@@ -969,11 +1114,12 @@ static int command_ec_rst(int argc, char **argv)
 		if (!ccd_is_cap_enabled(CCD_CAP_REBOOT_EC_AP))
 			return EC_ERROR_ACCESS_DENIED;
 
-		if (!strcasecmp("pulse", argv[1])) {
+		if (!strcasecmp("cl", argv[1])) {
+			/* Assert EC_RST_L until TPM_RST_L is asserted */
+			board_closed_loop_reset();
+		} else if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing EC reset\n");
-			assert_ec_rst();
-			usleep(200);
-			deassert_ec_rst();
+			board_reboot_ec();
 		} else if (parse_bool(argv[1], &val)) {
 			if (val)
 				assert_ec_rst();
@@ -989,7 +1135,7 @@ static int command_ec_rst(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ecrst, command_ec_rst,
-	"[pulse | <BOOLEAN>]",
+	"[cl | pulse | <BOOLEAN>]",
 	"Assert/deassert EC_RST_L to reset the EC (and AP)");
 
 /*
@@ -1056,8 +1202,10 @@ static int get_strap_config(uint8_t *config)
 	enum strap_list s0;
 	int lvl;
 	int flags;
-	uint8_t pull_a;
-	uint8_t pull_b;
+	uint8_t use_i2c;
+	uint8_t i2c_prop;
+	uint8_t use_spi;
+	uint8_t spi_prop;
 
 	/*
 	 * There are 4 pins that are used to determine Cr50 board strapping
@@ -1163,13 +1311,37 @@ static int get_strap_config(uint8_t *config)
 	 * config table entries.
 	 */
 
-	pull_a = *config & 0xa0;
-	pull_b = *config & 0xa;
-	if ((!pull_a && !pull_b) || (pull_a && pull_b))
+	use_i2c = *config & 0xa0;
+	use_spi = *config & 0x0a;
+	/*
+	 * The strap signals should have at least one pullup. Nothing can
+	 * interfere with these. If we did not read any pullups, these are
+	 * invalid straps. The config can't be salvaged.
+	 */
+	if (!use_i2c && !use_spi)
 		return EC_ERROR_INVAL;
+	/*
+	 * The unused strap signals are used for the bus to the AP. If the AP
+	 * has added pullups to the signals, it could interfere with the strap
+	 * readings. If pullups are found on both the SPI and I2C straps, use
+	 * the board properties to determine SPI vs I2C. We can use this to mask
+	 * unused config pins the AP is interfering with.
+	 */
+	if (use_i2c && use_spi) {
+		spi_prop = (GREG32(PMU, LONG_LIFE_SCRATCH1) &
+			    BOARD_SLAVE_CONFIG_SPI);
+		i2c_prop = (GREG32(PMU, LONG_LIFE_SCRATCH1) &
+			    BOARD_SLAVE_CONFIG_I2C);
+		/* Make sure exactly one interface is selected */
+		if ((i2c_prop && spi_prop) || (!spi_prop && !i2c_prop))
+			return EC_ERROR_INVAL;
+		use_spi = spi_prop;
+		CPRINTS("Ambiguous strap config. Use %s based on old "
+			"brdprop.", use_spi ? "spi" : "i2c");
+	}
 
 	/* Now that I2C vs SPI is known, mask the unused strap bits. */
-	*config &= *config & 0xa ? 0xf : 0xf0;
+	*config &= use_spi ? 0xf : 0xf0;
 
 	return EC_SUCCESS;
 }
@@ -1185,6 +1357,10 @@ static uint32_t get_properties(void)
 		return BOARD_SLAVE_CONFIG_SPI;
 	}
 
+#ifdef H1_RED_BOARD
+	CPRINTS("Unconditionally enabling SPI and platform reset");
+	return (BOARD_SLAVE_CONFIG_SPI | BOARD_USE_PLT_RESET);
+#endif
 	if (get_strap_config(&config) != EC_SUCCESS) {
 		/*
 		 * No pullups were detected on any of the strap pins so there
@@ -1210,10 +1386,19 @@ static uint32_t get_properties(void)
 	/*
 	 * Reached the end of the table and didn't find a matching config entry.
 	 * However, the SPI vs I2C determination can still be made as
-	 *get_strap_config() returned EC_SUCCESS.
+	 * get_strap_config() returned EC_SUCCESS.
 	 */
-	properties = config & 0xa ? BOARD_SLAVE_CONFIG_SPI :
-		BOARD_PROPERTIES_DEFAULT;
+	if (config & 0xa) {
+		properties = BOARD_SLAVE_CONFIG_SPI;
+		/*
+		 * Determine PLT_RST_L vs SYS_RST_L. Any board with a pullup on
+		 * DIOA9 uses PLT_RST_L.
+		 */
+		properties |= config & 0x8 ? BOARD_USE_PLT_RESET : 0;
+	} else {
+		/* All I2C boards use same default properties. */
+		properties = BOARD_PROPERTIES_DEFAULT;
+	}
 	CPRINTS("strap_cfg 0x%x has no table entry, prop = 0x%x",
 		config, properties);
 	return properties;
@@ -1230,7 +1415,7 @@ static void init_board_properties(void)
 	 * update from a version not setting the register.
 	 */
 	if (!(properties & BOARD_ALL_PROPERTIES) || (system_get_reset_flags() &
-						     RESET_FLAG_HARD)) {
+						     EC_RESET_FLAG_HARD)) {
 		/*
 		 * Mask board properties because following hard reset, they
 		 * won't be cleared.
@@ -1282,22 +1467,13 @@ void i2cs_set_pinmux(void)
 	GWRITE_FIELD(PINMUX, EXITEN0, DIOA1, 1);   /* enable powerdown exit */
 }
 
-/* Determine key type based on the key ID. */
-static const char *key_type(const struct SignedHeader *h)
-{
-	if (G_SIGNED_FOR_PROD(h))
-		return "prod";
-	else
-		return "dev";
-}
-
 static int command_sysinfo(int argc, char **argv)
 {
 	enum system_image_copy_t active;
 	uintptr_t vaddr;
 	const struct SignedHeader *h;
 	int reset_count = GREG32(PMU, LONG_LIFE_SCRATCH0);
-	char rollback_str[15];
+	char rollback_str[30];
 	uint8_t tpm_mode;
 
 	ccprintf("Reset flags: 0x%08x (", system_get_reset_flags());
@@ -1313,23 +1489,26 @@ static int command_sysinfo(int argc, char **argv)
 	active = system_get_ro_image_copy();
 	vaddr = get_program_memory_addr(active);
 	h = (const struct SignedHeader *)vaddr;
-	ccprintf("RO keyid:    0x%08x(%s)\n", h->keyid, key_type(h));
+	ccprintf("RO keyid:    0x%08x\n", h->keyid);
 
 	active = system_get_image_copy();
 	vaddr = get_program_memory_addr(active);
 	h = (const struct SignedHeader *)vaddr;
-	ccprintf("RW keyid:    0x%08x(%s)\n", h->keyid, key_type(h));
+	ccprintf("RW keyid:    0x%08x\n", h->keyid);
 
 	ccprintf("DEV_ID:      0x%08x 0x%08x\n",
 		 GREG32(FUSE, DEV_ID0), GREG32(FUSE, DEV_ID1));
 
 	system_get_rollback_bits(rollback_str, sizeof(rollback_str));
-	ccprintf("Rollback:    %s\n", rollback_str);
+	ccprintf("Rollback:   %s\n", rollback_str);
 
 	tpm_mode = get_tpm_mode();
 	ccprintf("TPM MODE:    %s (%d)\n",
 		(tpm_mode == TPM_MODE_DISABLED) ? "disabled" : "enabled",
 		tpm_mode);
+	ccprintf("Key Ladder:  %s\n",
+		DCRYPTO_ladder_is_enabled() ?
+		 (board_in_prod_mode() ? "prod" : "dev") : "disabled");
 
 	return EC_SUCCESS;
 }
@@ -1470,7 +1649,7 @@ int chip_factory_mode(void)
 	return mode_set & 1;
 }
 
-#ifdef CR50_DEV
+#ifdef CR50_RELAXED
 static int command_rollback(int argc, char **argv)
 {
 	system_ensure_rollback();
@@ -1480,6 +1659,62 @@ static int command_rollback(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rollback, command_rollback,
+DECLARE_SAFE_CONSOLE_COMMAND(rollback, command_rollback,
 	"", "Force rollback to escape DEV image.");
 #endif
+
+/*
+ * Set long life register bit requesting generating of the ITE SYNC sequence
+ * and reboot.
+ */
+static void deferred_ite_sync_reset(void)
+{
+	/* Enable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+	GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_ITE_EC_SYNC_NEEDED;
+	/* Disable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
+		     SYSTEM_RESET_HARD);
+}
+DECLARE_DEFERRED(deferred_ite_sync_reset);
+
+void board_start_ite_sync(void)
+{
+	/* Let the usb reply to make it to the host. */
+	hook_call_deferred(&deferred_ite_sync_reset_data, 10 * MSEC);
+}
+
+void board_unwedge_i2cs(void)
+{
+	/*
+	 * Create connection between i2cs_scl and the 'unwedge_scl' GPIO, and
+	 * generate the i2c stop sequence which will reset the i2cs FSM.
+	 *
+	 * First, disconnect the external pin from the i2cs_scl input.
+	 */
+	GWRITE(PINMUX, DIOA9_SEL, 0);
+
+	/* Connect the 'unwedge' GPIO to the i2cs_scl input. */
+	GWRITE(PINMUX, GPIO1_GPIO5_SEL, GC_PINMUX_I2CS0_SCL_SEL);
+
+	/* Generate a 'stop' condition. */
+	gpio_set_level(GPIO_UNWEDGE_I2CS_SCL, 1);
+	usleep(2);
+	GWRITE_FIELD(I2CS, CTRL_SDA_VAL, READ0_S, 1);
+	usleep(2);
+	GWRITE_FIELD(I2CS, CTRL_SDA_VAL, READ0_S, 0);
+	usleep(2);
+
+	/* Disconnect the 'unwedge' mode SCL. */
+	GWRITE(PINMUX, GPIO1_GPIO5_SEL, 0);
+
+	/* Restore external pin connection to the i2cs_scl. */
+	GWRITE(PINMUX, DIOA9_SEL, GC_PINMUX_I2CS0_SCL_SEL);
+}
+
+int board_in_prod_mode(void)
+{
+	return in_prod_mode;
+}

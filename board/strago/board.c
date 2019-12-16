@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -105,8 +105,15 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &tcpci_tcpm_drv},
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC,
+			.addr_flags = CONFIG_TCPC_I2C_BASE_ADDR_FLAGS,
+		},
+		.drv = &tcpci_tcpm_drv,
+	},
 };
 
 /* SPI master ports */
@@ -132,9 +139,9 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = 0xaa,
+		.port_addr = 0x55,
 		.driver = &pi3usb30532_usb_mux_driver,
 	},
 };
@@ -183,62 +190,64 @@ static struct mutex g_kxcj9_mutex[2];
 struct kionix_accel_data g_kxcj9_data[2];
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ 0,  FLOAT_TO_FP(1),  0},
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  0,  FLOAT_TO_FP(1)}
 };
 
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0, FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	{.name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_KXCJ9,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &kionix_accel_drv,
-	 .mutex = &g_kxcj9_mutex[0],
-	 .drv_data = &g_kxcj9_data[0],
-	 .port = I2C_PORT_ACCEL,
-	 .addr = KXCJ9_ADDR1,
-	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 2,  /* g, enough for laptop. */
-	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
-	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
-	 .config = {
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 100000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
-		 },
-	 }
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_KXCJ9,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &kionix_accel_drv,
+		.mutex = &g_kxcj9_mutex[0],
+		.drv_data = &g_kxcj9_data[0],
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = KXCJ9_ADDR1_FLAGS,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 2,  /* g, enough for laptop. */
+		.min_frequency = KXCJ9_ACCEL_MIN_FREQ,
+		.max_frequency = KXCJ9_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 100000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+		}
 	},
-	{.name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_KXCJ9,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kionix_accel_drv,
-	 .mutex = &g_kxcj9_mutex[1],
-	 .drv_data = &g_kxcj9_data[1],
-	 .port = I2C_PORT_ACCEL,
-	 .addr = KXCJ9_ADDR0,
-	 .rot_standard_ref = &lid_standard_ref,
-	 .default_range = 2,  /* g, enough for laptop. */
-	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
-	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
-	 .config = {
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 100000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
-		 },
-	 },
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_KXCJ9,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &kionix_accel_drv,
+		.mutex = &g_kxcj9_mutex[1],
+		.drv_data = &g_kxcj9_data[1],
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = KXCJ9_ADDR0_FLAGS,
+		.rot_standard_ref = &lid_standard_ref,
+		.default_range = 2,  /* g, enough for laptop. */
+		.min_frequency = KXCJ9_ACCEL_MIN_FREQ,
+		.max_frequency = KXCJ9_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 100000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+		},
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -276,7 +285,7 @@ int board_set_active_charge_port(int charge_port)
 {
 	/* charge port is a realy physical port */
 	int is_real_port = (charge_port >= 0 &&
-			    charge_port < CONFIG_USB_PD_PORT_COUNT);
+			    charge_port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	/* check if we are source vbus on that port */
 	int source = gpio_get_level(GPIO_USB_C0_5V_EN);
 

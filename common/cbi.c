@@ -34,11 +34,27 @@ uint8_t *cbi_set_data(uint8_t *p, enum cbi_data_tag tag,
 		      const void *buf, int size)
 {
 	struct cbi_data *d = (struct cbi_data *)p;
+
+	/*
+	 * If size of the data to be added is zero, then no need to add the tag
+	 * as well.
+	 */
+	if (size == 0)
+		return p;
+
 	d->tag = tag;
 	d->size = size;
 	memcpy(d->value, buf, size);
 	p += sizeof(*d) + size;
 	return p;
+}
+
+uint8_t *cbi_set_string(uint8_t *p, enum cbi_data_tag tag, const char *str)
+{
+	if (str == NULL)
+		return p;
+
+	return cbi_set_data(p, tag, str, strlen(str) + 1);
 }
 
 struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag)
@@ -72,8 +88,8 @@ static struct cbi_header * const head = (struct cbi_header *)cbi;
 
 static int read_eeprom(uint8_t offset, uint8_t *in, int in_size)
 {
-	return i2c_read_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM, offset,
-			in, in_size);
+	return i2c_read_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
+			      offset, in, in_size);
 }
 
 /*
@@ -138,6 +154,12 @@ static int read_board_info(void)
 	return cached_read_result;
 }
 
+__attribute__((weak))
+int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	return EC_SUCCESS;
+}
+
 int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 {
 	const struct cbi_data *d;
@@ -158,7 +180,19 @@ int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 	/* Copy the value */
 	memcpy(buf, d->value, d->size);
 	*size = d->size;
-	return EC_SUCCESS;
+
+	return cbi_board_override(tag, buf, size);
+}
+
+static void cbi_remove_tag(void *const cbi, struct cbi_data *const d)
+{
+	struct cbi_header *const h = cbi;
+	const size_t size = sizeof(*d) + d->size;
+	const uint8_t *next = (uint8_t *)d + size;
+	const size_t bytes_after = ((uint8_t *)cbi + h->total_size) - next;
+
+	memmove(d, next, bytes_after);
+	h->total_size -= size;
 }
 
 int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
@@ -166,20 +200,26 @@ int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
 	struct cbi_data *d;
 
 	d = cbi_find_tag(cbi, tag);
+
+	/* If we found the entry, but the size doesn't match, delete it */
+	if (d && d->size != size) {
+		cbi_remove_tag(cbi, d);
+		d = NULL;
+	}
+
 	if (!d) {
+		uint8_t *p;
 		/* Not found. Check if new item would fit */
 		if (sizeof(cbi) < head->total_size + sizeof(*d) + size)
 			return EC_ERROR_OVERFLOW;
 		/* Append new item */
-		cbi_set_data(&cbi[head->total_size], tag, buf, size);
-		head->total_size += (sizeof(*d) + size);
-		return EC_SUCCESS;
+		p = cbi_set_data(&cbi[head->total_size], tag, buf, size);
+		head->total_size = p - cbi;
+	} else {
+		/* Overwrite existing item */
+		memcpy(d->value, buf, d->size);
 	}
-	/* No expand or shrink. Items are tightly packed. */
-	if (d->size != size)
-		return EC_ERROR_INVAL;
-	/* Overwrite existing item */
-	memcpy(d->value, buf, d->size);
+
 	return EC_SUCCESS;
 }
 
@@ -204,8 +244,8 @@ static int write_board_info(void)
 	while (rest > 0) {
 		int size = MIN(EEPROM_PAGE_WRITE_SIZE, rest);
 		int rv;
-		rv = i2c_write_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM,
-				p - cbi, p, size);
+		rv = i2c_write_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
+				     p - cbi, p, size);
 		if (rv) {
 			CPRINTS("Failed to write for %d", rv);
 			return rv;
@@ -237,7 +277,13 @@ int cbi_get_oem_id(uint32_t *id)
 	return cbi_get_board_info(CBI_TAG_OEM_ID, (uint8_t *)id, &size);
 }
 
-static int hc_cbi_get(struct host_cmd_handler_args *args)
+int cbi_get_model_id(uint32_t *id)
+{
+	uint8_t size = sizeof(*id);
+	return cbi_get_board_info(CBI_TAG_MODEL_ID, (uint8_t *)id, &size);
+}
+
+static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
 	uint8_t size = MIN(args->response_max, UINT8_MAX);
@@ -255,10 +301,18 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CROS_BOARD_INFO,
 		     hc_cbi_get,
 		     EC_VER_MASK(0));
 
-static int hc_cbi_set(struct host_cmd_handler_args *args)
+static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_set_cbi *p = args->params;
-	int rv;
+
+	/*
+	 * If we ultimately cannot write to the flash, then fail early unless
+	 * we are explicitly trying to write to the in-memory CBI only
+	 */
+	if (eeprom_is_write_protected() && !(p->flag & CBI_SET_NO_SYNC)) {
+		CPRINTS("Failed to write for WP");
+		return EC_RES_ACCESS_DENIED;
+	}
 
 #ifndef CONFIG_SYSTEM_UNLOCKED
 	/* These fields are not allowed to be reprogrammed regardless the
@@ -290,10 +344,9 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 	if (p->flag & CBI_SET_NO_SYNC)
 		return EC_RES_SUCCESS;
 
-	rv = write_board_info();
-	if (rv)
-		return (rv == EC_ERROR_ACCESS_DENIED) ?
-				EC_RES_ACCESS_DENIED : EC_RES_ERROR;
+	/* We already checked write protect failure case. */
+	if (write_board_info())
+		return EC_RES_ERROR;
 
 	return EC_RES_SUCCESS;
 }
@@ -301,19 +354,17 @@ DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
 		     hc_cbi_set,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_CMD_CBI
 static void dump_flash(void)
 {
 	uint8_t buf[16];
 	int i;
 	for (i = 0; i < CBI_EEPROM_SIZE; i += sizeof(buf)) {
-		int j;
 		if (read_eeprom(i, buf, sizeof(buf))) {
 			ccprintf("\nFailed to read EEPROM\n");
 			return;
 		}
-		for (j = 0; j < sizeof(buf); j++)
-			ccprintf(" %02x", buf[j]);
-		ccprintf("\n");
+		hexdump(buf, sizeof(buf));
 	}
 }
 
@@ -344,6 +395,7 @@ static void dump_cbi(void)
 
 	print_tag("BOARD_VERSION", cbi_get_board_version(&val), &val);
 	print_tag("OEM_ID", cbi_get_oem_id(&val), &val);
+	print_tag("MODEL_ID", cbi_get_model_id(&val), &val);
 	print_tag("SKU_ID", cbi_get_sku_id(&val), &val);
 }
 
@@ -354,4 +406,6 @@ static int cc_cbi(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, "Print Cros Board Info from flash");
+#endif /* CONFIG_CMD_CBI */
+
 #endif /* !HOST_TOOLS_BUILD */

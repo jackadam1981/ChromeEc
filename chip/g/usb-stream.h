@@ -16,6 +16,8 @@
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 
+#define MAX_IN_DESC	2
+
 /*
  * Compile time Per-USB stream configuration stored in flash.  Instances of this
  * structure are provided by the user of the USB stream.  This structure binds
@@ -25,20 +27,23 @@ struct usb_stream_config {
 	/*
 	 * Endpoint index, and pointers to the USB packet RAM buffers.
 	 */
-	int endpoint;
+	uint16_t endpoint;
+	uint16_t is_uart_console;
 
-	int *is_reset;
+	/* USB TX transfer is in progress */
+	uint8_t *tx_in_progress;
+	uint8_t *kicker_running;
+	uint8_t *is_reset;
 
 	/*
 	 * Deferred function to call to handle USB and Queue request.
 	 */
-	const struct deferred_data *deferred_tx;
 	const struct deferred_data *deferred_rx;
+	const struct deferred_data *tx_kicker;
 
 	int tx_size;
 	int rx_size;
 
-	uint8_t *tx_ram;
 	uint8_t *rx_ram;
 
 	struct consumer consumer;
@@ -46,6 +51,12 @@ struct usb_stream_config {
 
 	struct g_usb_desc *out_desc;
 	struct g_usb_desc *in_desc;
+
+	int *rx_handled;
+	/* Number of buffer units in TX queue in transit.
+	 * This is to advance queue tail pointer when the transfer is done.
+	 */
+	size_t *tx_handled;
 };
 
 /*
@@ -55,6 +66,13 @@ struct usb_stream_config {
 extern struct consumer_ops const usb_stream_consumer_ops;
 extern struct producer_ops const usb_stream_producer_ops;
 
+/* Need to define these so that other than Cr50 boards compile cleanly. */
+#ifndef USB_EP_EC
+#define USB_EP_EC -1
+#endif
+#ifndef USB_EP_AP
+#define USB_EP_AP -1
+#endif
 
 /*
  * Convenience macro for defining USB streams and their associated state and
@@ -105,24 +123,31 @@ extern struct producer_ops const usb_stream_producer_ops;
 			       TX_QUEUE)				\
 									\
 	static struct g_usb_desc CONCAT2(NAME, _out_desc_);		\
-	static struct g_usb_desc CONCAT2(NAME, _in_desc_);		\
+	static struct g_usb_desc CONCAT2(NAME, _in_desc_)[MAX_IN_DESC];	\
 	static uint8_t CONCAT2(NAME, _buf_rx_)[RX_SIZE];		\
-	static uint8_t CONCAT2(NAME, _buf_tx_)[TX_SIZE];		\
-	static int CONCAT2(NAME, _is_reset_);				\
-	static void CONCAT2(NAME, _deferred_tx_)(void);			\
-	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_tx_));			\
+	static uint8_t CONCAT2(NAME, _tx_in_progress_);			\
+	static uint8_t CONCAT2(NAME, _kicker_running_);			\
+	static uint8_t CONCAT2(NAME, _is_reset_);			\
 	static void CONCAT2(NAME, _deferred_rx_)(void);			\
+	static void CONCAT2(NAME, _tx_kicker_)(void);			\
 	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_rx_));			\
+	DECLARE_DEFERRED(CONCAT2(NAME, _tx_kicker_));			\
+	static int CONCAT2(NAME, _rx_handled);				\
+	static size_t CONCAT2(NAME, _tx_handled);			\
 	struct usb_stream_config const NAME = {				\
 		.endpoint     = ENDPOINT,				\
+		.is_uart_console = ((ENDPOINT == USB_EP_EC) ||		\
+				    (ENDPOINT == USB_EP_CONSOLE) ||	\
+				    (ENDPOINT == USB_EP_AP)),		\
+		.tx_in_progress = &CONCAT2(NAME, _tx_in_progress_),	\
+		.kicker_running = &CONCAT2(NAME, _kicker_running_),	\
 		.is_reset     = &CONCAT2(NAME, _is_reset_),		\
-		.in_desc      = &CONCAT2(NAME, _in_desc_),		\
+		.in_desc      = &CONCAT2(NAME, _in_desc_)[0],		\
 		.out_desc     = &CONCAT2(NAME, _out_desc_),		\
-		.deferred_tx  = &CONCAT2(NAME, _deferred_tx__data),	\
 		.deferred_rx  = &CONCAT2(NAME, _deferred_rx__data),	\
+		.tx_kicker    = &CONCAT2(NAME, _tx_kicker__data),	\
 		.tx_size      = TX_SIZE,				\
 		.rx_size      = RX_SIZE,				\
-		.tx_ram       = CONCAT2(NAME, _buf_tx_),		\
 		.rx_ram       = CONCAT2(NAME, _buf_rx_),		\
 		.consumer  = {						\
 			.queue = &TX_QUEUE,				\
@@ -132,6 +157,8 @@ extern struct producer_ops const usb_stream_producer_ops;
 			.queue = &RX_QUEUE,				\
 			.ops   = &usb_stream_producer_ops,		\
 		},							\
+		.rx_handled   = &CONCAT2(NAME, _rx_handled),		\
+		.tx_handled   = &CONCAT2(NAME, _tx_handled),		\
 	};								\
 	const struct usb_interface_descriptor				\
 	USB_IFACE_DESC(INTERFACE) = {					\
@@ -163,10 +190,10 @@ extern struct producer_ops const usb_stream_producer_ops;
 		.wMaxPacketSize   = RX_SIZE,				\
 		.bInterval        = 0,					\
 	};								\
-	static void CONCAT2(NAME, _deferred_tx_)(void)			\
-	{ tx_stream_handler(&NAME); }					\
 	static void CONCAT2(NAME, _deferred_rx_)(void)			\
 	{ rx_stream_handler(&NAME); }					\
+	static void CONCAT2(NAME, _tx_kicker_)(void)			\
+	{ tx_stream_kicker(&NAME); }					\
 	static void CONCAT2(NAME, _ep_tx)(void)				\
 	{								\
 		usb_stream_tx(&NAME);					\
@@ -208,8 +235,8 @@ extern struct producer_ops const usb_stream_producer_ops;
 /*
  * Handle USB and Queue request in a deferred callback.
  */
-int rx_stream_handler(struct usb_stream_config const *config);
-int tx_stream_handler(struct usb_stream_config const *config);
+void rx_stream_handler(struct usb_stream_config const *config);
+void tx_stream_kicker(struct usb_stream_config const *config);
 
 /*
  * These functions are used by the trampoline functions defined above to
@@ -219,4 +246,8 @@ void usb_stream_tx(struct usb_stream_config const *config);
 void usb_stream_rx(struct usb_stream_config const *config);
 void usb_stream_reset(struct usb_stream_config const *config);
 
+/*
+ * Return non-zero if the USB stream is reset, or 0 otherwise
+ */
+int tx_fifo_is_ready(struct usb_stream_config const *config);
 #endif /* __CROS_EC_USB_STREAM_H */

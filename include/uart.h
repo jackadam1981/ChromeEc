@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -48,12 +48,22 @@ int uart_putc(int c);
 int uart_puts(const char *outstr);
 
 /**
+ * Put byte stream to the UART
+ *
+ * @param out		Pointer to data to send
+ * @param len		Length of transfer in bytes
+ * @return EC_SUCCESS, or non-zero if output was truncated.
+ */
+int uart_put(const char *out, int len);
+
+/**
  * Print formatted output to the UART, like printf().
  *
  * See printf.h for valid formatting codes.
  *
  * @return EC_SUCCESS, or non-zero if output was truncated.
  */
+__attribute__((__format__(__printf__, 1, 2)))
 int uart_printf(const char *format, ...);
 
 /**
@@ -182,6 +192,11 @@ void uart_tx_stop(void);
 void uart_process_input(void);
 
 /**
+ * Clear input buffer
+ */
+void uart_clear_input(void);
+
+/**
  * Helper for processing UART output.
  *
  * Fills the output FIFO until the transmit buffer is empty or the FIFO full.
@@ -193,6 +208,11 @@ void uart_process_output(void);
  * Return boolean expressing whether UART buffer is empty or not.
  */
 int uart_buffer_empty(void);
+
+/**
+ * Return boolean expressing whether UART buffer is full or not.
+ */
+int uart_buffer_full(void);
 
 /**
  * Disable the EC console UART and convert the UART RX pin to a generic GPIO
@@ -306,7 +326,7 @@ void uart_default_pad_rx_interrupt(enum gpio_signal signal);
  *
  * @return result status (EC_RES_*)
  */
-int uart_console_read_buffer_init(void);
+enum ec_status uart_console_read_buffer_init(void);
 
 /**
  * Read from uart buffer.
@@ -333,3 +353,8 @@ int uart_console_read_buffer(uint8_t type,
 			     uint16_t *write_count);
 
 #endif  /* __CROS_EC_UART_H */
+
+/**
+ * Initialize tx buffer head and tail
+ */
+void uart_init_buffer(void);

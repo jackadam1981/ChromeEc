@@ -96,7 +96,9 @@ static const uint8_t k_ccd_config = NVMEM_VAR_CCD_CONFIG;
 /* Flags which can be set via ccd_set_flag() */
 static const uint32_t k_public_flags =
 		CCD_FLAG_OVERRIDE_WP_AT_BOOT |
-		CCD_FLAG_OVERRIDE_WP_STATE_ENABLED;
+		CCD_FLAG_OVERRIDE_WP_STATE_ENABLED |
+		CCD_FLAG_OVERRIDE_BATT_AT_BOOT |
+		CCD_FLAG_OVERRIDE_BATT_STATE_CONNECT;
 
 /* List of CCD capability info; must be in same order as enum ccd_capability */
 static const struct ccd_capability_info cap_info[CCD_CAP_COUNT] = CAP_INFO_DATA;
@@ -162,7 +164,10 @@ static void raw_set_flag(enum ccd_flag flag, int value)
 static enum ccd_capability_state raw_get_cap(enum ccd_capability cap,
 					     int translate_default)
 {
-	int c =	(config.capabilities[cap / 4] >> (2 * (cap % 4))) & 3;
+	const uint32_t index = cap / CCD_CAPS_PER_BYTE;
+	const uint32_t shift = (cap % CCD_CAPS_PER_BYTE) * CCD_CAP_BITS;
+
+	int c =	(config.capabilities[index] >> shift) & CCD_CAP_BITMASK;
 
 	if (c == CCD_CAP_STATE_DEFAULT && translate_default)
 		c = cap_info[cap].default_state;
@@ -182,8 +187,28 @@ static enum ccd_capability_state raw_get_cap(enum ccd_capability cap,
 static void raw_set_cap(enum ccd_capability cap,
 			    enum ccd_capability_state state)
 {
-	config.capabilities[cap / 4] &= ~(3 << (2 * (cap % 4)));
-	config.capabilities[cap / 4] |= (state & 3) << (2 * (cap % 4));
+	const uint32_t index = cap / CCD_CAPS_PER_BYTE;
+	const uint32_t shift = (cap % CCD_CAPS_PER_BYTE) * CCD_CAP_BITS;
+
+	config.capabilities[index] &= ~(CCD_CAP_BITMASK << shift);
+	config.capabilities[index] |= (state & CCD_CAP_BITMASK) << shift;
+}
+
+/**
+ * Check CCD configuration is reset to default value.
+ *
+ * @return 1 if it is in default mode.
+ *         0 otherwise.
+ */
+static int raw_check_all_caps_default(void)
+{
+	uint32_t i;
+
+	for (i = 0; i < CCD_CAP_COUNT; i++)
+		if (raw_get_cap(i, 0) != CCD_CAP_STATE_DEFAULT)
+			return 0;
+
+	return 1;
 }
 
 /**
@@ -346,8 +371,7 @@ static void ccd_load_config(void)
 			CPRINTS("CCD using default config");
 			ccd_reset_config(CCD_RESET_TEST_LAB);
 		}
-		ccd_config_loaded = 1;
-		return;
+		goto ccd_is_loaded;
 	}
 
 	/* Copy the tuple data */
@@ -365,6 +389,9 @@ static void ccd_load_config(void)
 		ccd_reset_config(t->val_len < 2 ? CCD_RESET_TEST_LAB : 0);
 	}
 
+	freevar(t);
+
+ccd_is_loaded:
 	ccd_config_loaded = 1;
 
 	/* Notify CCD users of configuration change */
@@ -385,10 +412,14 @@ static int ccd_save_config(void)
 	if (rv)
 		return rv;
 
-	rv = writevars();
-
-	/* Notify CCD users of configuration change */
-	hook_notify(HOOK_CCD_CHANGE);
+	/*
+	 * Notify CCD users of configuration change.
+	 * Protect this notify with the ccd_config_loaded flag so recipients of
+	 * HOOK_CCD_CHANGE don't call ccd_get/ccd_set before the CCD
+	 * initialization is complete.
+	 */
+	if (ccd_config_loaded)
+		hook_notify(HOOK_CCD_CHANGE);
 
 	return rv;
 }
@@ -441,6 +472,8 @@ int ccd_reset_config(unsigned int flags)
 		/* Reset the entire config */
 		memset(&config, 0, sizeof(config));
 		config.version = CCD_CONFIG_VERSION;
+		/* Update write protect after resetting the config */
+		board_wp_follow_ccd_config();
 	}
 
 	if (flags & CCD_RESET_FACTORY) {
@@ -451,9 +484,12 @@ int ccd_reset_config(unsigned int flags)
 		for (i = 0; i < CCD_CAP_COUNT; i++)
 			raw_set_cap(i, CCD_CAP_STATE_ALWAYS);
 
+		raw_set_flag(CCD_FLAG_FACTORY_MODE_ENABLED, 1);
+
 		/* Force WP disabled at boot */
 		raw_set_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT, 1);
 		raw_set_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED, 0);
+		board_wp_follow_ccd_config();
 	}
 
 	/* Restore test lab flag unless explicitly resetting it */
@@ -528,12 +564,18 @@ static void ccd_open_done(int sync)
 {
 	int rv;
 
+	/*
+	 * Wiping the TPM may take a while. Delay sleep long enough for the
+	 * open process to finish.
+	 */
+	delay_sleep_by(DISABLE_SLEEP_TIME_TPM_WIPE);
+
 	if (!ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_TPM_WIPE)) {
 		/* Can't open unless wipe succeeds */
 		if (sync)
 			rv = tpm_sync_reset(1);
 		else
-			rv = board_wipe_tpm();
+			rv = board_wipe_tpm(1);
 
 		if (rv != EC_SUCCESS) {
 			CPRINTS("CCD open TPM wipe failed");
@@ -655,6 +697,11 @@ void ccd_disable(void)
 	ccd_set_state(CCD_STATE_LOCKED);
 }
 
+int ccd_get_factory_mode(void)
+{
+	return ccd_get_flag(CCD_FLAG_FACTORY_MODE_ENABLED);
+}
+
 /******************************************************************************/
 /* Console commands */
 
@@ -667,7 +714,7 @@ static int command_ccd_info(void)
 	ccprintf("Password: %s\n", raw_has_password() ? "set" : "none");
 	ccprintf("Flags: 0x%06x\n", raw_get_flags());
 
-	ccprintf("Capabilities: %.8h\n", config.capabilities);
+	ccprintf("Capabilities: %ph\n", HEX_BUF(config.capabilities, 8));
 	for (i = 0; i < CCD_CAP_COUNT; i++) {
 		int c = raw_get_cap(i, 0);
 
@@ -685,6 +732,9 @@ static int command_ccd_info(void)
 	ccprintf("TPM:%s%s\n",
 		 board_fwmp_allows_unlock() ? "" : " fwmp_lock",
 		 board_vboot_dev_mode_enabled() ? " dev_mode" : "");
+
+	ccprintf("Capabilities are %s.\n", raw_check_all_caps_default() ?
+		 "default" : "modified");
 
 	ccputs("Use 'ccd help' to print subcommands\n");
 	return EC_SUCCESS;
@@ -880,22 +930,22 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 		}
 	} else if (!board_battery_is_present()) {
 		/* Open allowed with no password if battery is removed */
-	} else if (board_vboot_dev_mode_enabled() &&
-		   !(p->flags & VENDOR_CMD_FROM_USB)) {
+	} else if ((ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_DEV_MODE) ||
+		    (board_vboot_dev_mode_enabled())) &&
+		   (ccd_is_cap_enabled(CCD_CAP_OPEN_FROM_USB) ||
+		    !(p->flags & VENDOR_CMD_FROM_USB))) {
 		/*
 		 * Open allowed with no password if dev mode enabled and
-		 * command came from the AP.
+		 * command came from the AP. CCD capabilities can be used to
+		 * bypass these checks.
 		 */
 	} else {
-#ifndef CONFIG_CCD_OPEN_PREPVT
 		/*
-		 * - Password not set
 		 * - Battery is present
 		 * - Either not in developer mode or the command came from USB
 		 */
-		why_denied = "nopwd";
+		why_denied = "open from AP in devmode or remove batt";
 		goto denied;
-#endif
 	}
 
 	/* Fail and abort if already checking physical presence */
@@ -1310,8 +1360,8 @@ static enum vendor_cmd_rc ccd_get_info(struct vendor_cmd_params *p)
 		int shift;
 
 		/* Each capability takes 2 bits. */
-		index = i / (32/2);
-		shift = (i % (32/2)) * 2;
+		index = i / (32 / CCD_CAP_BITS);
+		shift = (i % (32 / CCD_CAP_BITS)) * CCD_CAP_BITS;
 		response.ccd_caps_current[index] |= raw_get_cap(i, 1) << shift;
 		response.ccd_caps_defaults[index] |=
 			cap_info[i].default_state << shift;
@@ -1319,7 +1369,10 @@ static enum vendor_cmd_rc ccd_get_info(struct vendor_cmd_params *p)
 
 	response.ccd_flags = htobe32(raw_get_flags());
 	response.ccd_state = ccd_get_state();
-	response.ccd_has_password = raw_has_password();
+	response.ccd_indicator_bitmap = raw_has_password() ?
+				CCD_INDICATOR_BIT_HAS_PASSWORD : 0;
+	response.ccd_indicator_bitmap |= raw_check_all_caps_default() ?
+				CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT : 0;
 	response.ccd_force_disabled = force_disabled;
 	for (i = 0; i < ARRAY_SIZE(response.ccd_caps_current); i++) {
 		response.ccd_caps_current[i] =
@@ -1394,7 +1447,7 @@ static enum vendor_cmd_rc ccd_vendor(struct vendor_cmd_params *p)
 		break;
 
 	default:
-		CPRINTS("%s:%d - unknown subcommand\n", __func__, __LINE__);
+		CPRINTS("%s:%d - unknown subcommand", __func__, __LINE__);
 		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
 	}
 
@@ -1478,7 +1531,14 @@ static enum vendor_cmd_rc ccd_disable_factory_mode(enum vendor_cmd_cc code,
 		 * TODO(rspangler): sort out CCD state and WP correlation,
 		 * b/73075443.
 		 */
-		set_wp_follow_ccd_config();
+		board_wp_follow_ccd_config();
+
+		/*
+		 * Use raw_set_flag() because the factory mode flag is internal
+		 */
+		mutex_lock(&ccd_config_mutex);
+		raw_set_flag(CCD_FLAG_FACTORY_MODE_ENABLED, 0);
+		mutex_unlock(&ccd_config_mutex);
 
 		*response_size = 0;
 		return VENDOR_RC_SUCCESS;

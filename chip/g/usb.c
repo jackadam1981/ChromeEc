@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -90,7 +90,7 @@ static void do_print_later(void)
 			 copy_of_overflow);
 
 	while (lines_per_loop && stuff_out != copy_of_stuff_in) {
-		ccprintf("at %.6ld: ", stuff_to_print[stuff_out].t);
+		ccprintf("at %.6lld: ", stuff_to_print[stuff_out].t);
 		ccprintf(stuff_to_print[stuff_out].fmt,
 			 stuff_to_print[stuff_out].a0,
 			 stuff_to_print[stuff_out].a1,
@@ -136,7 +136,7 @@ static void showbits(uint32_t b)
 	int i;
 
 	for (i = 0; i < 32; i++)
-		if (b & (1 << i)) {
+		if (b & BIT(i)) {
 			if (deezbits[i])
 				ccprintf(" %s", deezbits[i]);
 			else
@@ -461,6 +461,24 @@ static void stall_both_fifos(void)
 	GR_USB_DIEPCTL(0) = DXEPCTL_STALL | DXEPCTL_EPENA;
 }
 
+static void usb_reset_all_ep_pids(void)
+{
+	int i;
+
+	for (i = 1; i < USB_EP_COUNT; i++) {
+		GR_USB_DOEPCTL(i) |= DXEPCTL_SET_D0PID;
+		GR_USB_DIEPCTL(i) |= DXEPCTL_SET_D0PID;
+	}
+}
+
+static void usb_reset_ep_pid(int ep)
+{
+	if (ep & 0x80)	 /* IN enpoint */
+		GR_USB_DIEPCTL(ep & 0x7f) |= DXEPCTL_SET_D0PID;
+	else
+		GR_USB_DOEPCTL(ep) |= DXEPCTL_SET_D0PID;
+}
+
 /* The next packet from the host should be a Setup packet. Get ready for it. */
 static void expect_setup_packet(void)
 {
@@ -760,7 +778,7 @@ static int handle_setup_with_no_data_stage(enum table_case tc,
 			device_state = DS_ADDRESS;
 			break;
 		case 1:	    /* Caution: Only one config descriptor TODAY */
-			/* TODO: All endpoints set to DATA0 toggle state */
+			usb_reset_all_ep_pids();
 			configuration_value = req->wValue;
 			device_state = DS_CONFIGURED;
 			break;
@@ -793,12 +811,14 @@ static void handle_setup(enum table_case tc)
 	int data_phase_in = req->bmRequestType & USB_DIR_IN;
 	int data_phase_out = !data_phase_in && req->wLength;
 	int bytes = -1;				/* default is to stall */
+	uint8_t rtype = req->bmRequestType & USB_TYPE_MASK;
+	uint8_t recip = req->bmRequestType & USB_RECIP_MASK;
 
 	print_later("R: %02x %02x %04x %04x %04x",
 		    req->bmRequestType, req->bRequest,
 		    req->wValue, req->wIndex, req->wLength);
 
-	if (0 == (req->bmRequestType & (USB_TYPE_MASK | USB_RECIP_MASK))) {
+	if (rtype == USB_TYPE_STANDARD && recip == USB_RECIP_DEVICE) {
 		/* Standard Device requests */
 		if (data_phase_in)
 			bytes = handle_setup_with_in_stage(tc, req);
@@ -806,8 +826,7 @@ static void handle_setup(enum table_case tc)
 			bytes = handle_setup_with_out_stage(tc, req);
 		else
 			bytes = handle_setup_with_no_data_stage(tc, req);
-	} else if (USB_RECIP_INTERFACE ==
-		   (req->bmRequestType & USB_RECIP_MASK)) {
+	} else if (recip == USB_RECIP_INTERFACE) {
 		/* Interface-specific requests */
 		uint8_t iface = req->wIndex & 0xff;
 
@@ -817,21 +836,40 @@ static void handle_setup(enum table_case tc)
 			bytes = usb_iface_request[iface](req);
 			print_later("  iface returned %d", bytes, 0, 0, 0, 0);
 		}
-	} else {
-#ifdef CONFIG_WEBUSB_URL
-		if (data_phase_in &&
-		    ((req->bmRequestType & USB_TYPE_MASK) == USB_TYPE_VENDOR)) {
-			if (req->bRequest == 0x01 &&
-			    req->wIndex == WEBUSB_REQ_GET_URL) {
-				bytes = *(uint8_t *)webusb_url;
-				bytes = MIN(req->wLength, bytes);
-				if (load_in_fifo(webusb_url, bytes) < 0)
-					bytes = -1;
+	} else if (rtype == USB_TYPE_STANDARD && recip == USB_RECIP_ENDPOINT) {
+		/* standard endpoint-specific requests */
+		print_later("ep %d request (vs %d)",
+			    req->wIndex, USB_EP_COUNT, 0, 0, 0);
+		if ((req->wIndex & 0x7f) < USB_EP_COUNT) {
+			/*
+			 * This could call out to
+			 * handle_setup_with_no_data_stage(tc, req) etc but only
+			 * clearing the stall is implemented, and that would
+			 * activate a bunch of other untested code paths.
+			 */
+			if (req->bRequest == USB_REQ_CLEAR_FEATURE) {
+				/* Case for CLEAR_FEATURE(endpoint_halt) */
+				usb_reset_ep_pid(req->wIndex);
+				bytes = 0;
 			} else {
 				report_error(-1);
 			}
-		} else
+		} else {
+			report_error(-1);
+		}
+#ifdef CONFIG_WEBUSB_URL
+	} else if (data_phase_in && rtype == USB_TYPE_VENDOR) {
+		if (req->bRequest == USB_REQ_CLEAR_FEATURE &&
+		    req->wIndex == WEBUSB_REQ_GET_URL) {
+			bytes = *(uint8_t *)webusb_url;
+			bytes = MIN(req->wLength, bytes);
+			if (load_in_fifo(webusb_url, bytes) < 0)
+				bytes = -1;
+		} else {
+			report_error(-1);
+		}
 #endif
+	} else {
 		/* Something we need to add support for? */
 		report_error(-1);
 	}
@@ -1255,7 +1293,7 @@ void usb_save_suspended_state(void)
 	/* Record the state the DATA PIDs toggling on each endpoint. */
 	for (i = 1; i < USB_EP_COUNT; i++) {
 		if (GR_USB_DOEPCTL(i) & DXEPCTL_DPID)
-			pid |= (1 << i);
+			pid |= BIT(i);
 		if (GR_USB_DIEPCTL(i) & DXEPCTL_DPID)
 			pid |= (1 << (i + 16));
 	}
@@ -1275,7 +1313,7 @@ void usb_restore_suspended_state(void)
 	/* Restore the DATA PIDs on endpoints. */
 	pid = GREG32(PMU, PWRDN_SCRATCH19);
 	for (i = 1; i < USB_EP_COUNT; i++) {
-		GR_USB_DOEPCTL(i) = pid & (1 << i) ?
+		GR_USB_DOEPCTL(i) = pid & BIT(i) ?
 			DXEPCTL_SET_D1PID : DXEPCTL_SET_D0PID;
 		GR_USB_DIEPCTL(i) = pid & (1 << (i + 16)) ?
 			DXEPCTL_SET_D1PID : DXEPCTL_SET_D0PID;
@@ -1296,7 +1334,7 @@ void usb_init(void)
 	 * for some other reason, we just do a normal USB reset. The host
 	 * doesn't mind.
 	 */
-	resume = ((system_get_reset_flags() & RESET_FLAG_USB_RESUME) &&
+	resume = ((system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME) &&
 		   (GR_USB_GINTSTS & GC_USB_GINTSTS_WKUPINT_MASK));
 
 	/* TODO(crosbug.com/p/46813): Clean this up. Do only what's needed, and

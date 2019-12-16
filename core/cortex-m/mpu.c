@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -95,7 +95,7 @@ static int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
 	blocks = size >> (size_bit - 2);
 
 	/* Represent occupied blocks of two regions with srd mask. */
-	srd1 = (1 << blocks) - 1;
+	srd1 = BIT(blocks) - 1;
 	srd2 = (1 << ((size >> (size_bit - 5)) & 0x7)) - 1;
 
 	/*
@@ -147,7 +147,7 @@ void mpu_enable(void)
 	MPU_CTRL |= MPU_CTRL_PRIVDEFEN | MPU_CTRL_HFNMIENA | MPU_CTRL_ENABLE;
 }
 
-void mpu_disable(void)
+static void mpu_disable(void)
 {
 	MPU_CTRL &= ~(MPU_CTRL_PRIVDEFEN | MPU_CTRL_HFNMIENA | MPU_CTRL_ENABLE);
 }
@@ -179,13 +179,13 @@ int mpu_protect_data_ram(void)
 		MPU_ATTR_INTERNAL_SRAM);
 }
 
-#ifdef CONFIG_EXTERNAL_STORAGE
+#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
 int mpu_protect_code_ram(void)
 {
 	/* Prevent write access to code RAM */
 	return mpu_config_region(REGION_STORAGE,
 				 CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RO_MEM_OFF,
-				 CONFIG_RO_SIZE,
+				 CONFIG_CODE_RAM_SIZE,
 				 MPU_ATTR_RO_NO | MPU_ATTR_INTERNAL_SRAM,
 				 1);
 }

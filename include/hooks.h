@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -21,7 +21,12 @@ enum hook_priority {
 	HOOK_PRIO_INIT_DMA = HOOK_PRIO_FIRST + 1,
 	/* LPC inits before modules which need memory-mapped I/O */
 	HOOK_PRIO_INIT_LPC = HOOK_PRIO_FIRST + 1,
-	/* I2C is needed before chipset inits (battery communications). */
+	/*
+	 * I2C dependents (battery, sensors, etc), everything but the
+	 * controllers. I2C controller is now initialized in main.c
+	 * TODO(b/138384267): Split this hook up and name the resulting
+	 * ones more semantically.
+	 */
 	HOOK_PRIO_INIT_I2C = HOOK_PRIO_FIRST + 2,
 	/* Chipset inits before modules which need to know its initial state. */
 	HOOK_PRIO_INIT_CHIPSET = HOOK_PRIO_FIRST + 3,
@@ -43,6 +48,8 @@ enum hook_priority {
 	HOOK_PRIO_INIT_VBOOT_HASH = HOOK_PRIO_FIRST + 11,
 	/* Init charge manager before usage in board init */
 	HOOK_PRIO_CHARGE_MANAGER_INIT = HOOK_PRIO_FIRST + 12,
+
+	HOOK_PRIO_INIT_ADC = HOOK_PRIO_DEFAULT,
 
 	/* Specific values to lump temperature-related hooks together */
 	HOOK_PRIO_TEMP_SENSOR = 6000,
@@ -201,6 +208,18 @@ enum hook_type {
 	 * Hook routines will be called from the TICK task.
 	 */
 	HOOK_SECOND,
+
+	/*
+	 * USB PD cc disconnect event.
+	 */
+	HOOK_USB_PD_DISCONNECT,
+
+	/*
+	 * USB PD cc connection event.
+	 *
+	 * CC lines and VBus are stable when this hook is called.
+	 */
+	HOOK_USB_PD_CONNECT,
 };
 
 struct hook_data {

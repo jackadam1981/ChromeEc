@@ -10,6 +10,7 @@
 #include "battery.h"
 #include "charge_manager.h"
 #include "chipset.h"
+#include "clock.h"
 #include "console.h"
 #include "flash.h"
 #include "hooks.h"
@@ -112,7 +113,7 @@ static int verify_slot(enum system_image_copy_t slot)
 	return EC_SUCCESS;
 }
 
-static int hc_verify_slot(struct host_cmd_handler_args *args)
+static enum ec_status hc_verify_slot(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_efs_verify *p = args->params;
 	enum system_image_copy_t slot;
@@ -243,8 +244,10 @@ void vboot_main(void)
 		return;
 	}
 
+	clock_enable_module(MODULE_FAST_CPU, 1);
 	/* If successful, this won't return. */
 	verify_and_jump();
+	clock_enable_module(MODULE_FAST_CPU, 0);
 
 	/* Failed to jump. Need recovery. */
 	request_recovery();

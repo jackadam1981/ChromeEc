@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -19,6 +19,11 @@ static int fail_on_first, fail_on_last;
 static int read_count, write_count;
 struct batt_params batt;
 
+
+void battery_compensate_params(struct batt_params *batt)
+{
+}
+
 static void reset_and_fail_on(int first, int last)
 {
 	/* We're not initializing the fake battery, so everything reads zero */
@@ -35,12 +40,14 @@ int sb_read(int cmd, int *param)
 	if (read_count >= fail_on_first && read_count <= fail_on_last)
 		return EC_ERROR_UNKNOWN;
 
-	return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, param);
+	return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+			  cmd, param);
 }
 int sb_write(int cmd, int param)
 {
 	write_count++;
-	return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, param);
+	return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+			   cmd, param);
 }
 
 

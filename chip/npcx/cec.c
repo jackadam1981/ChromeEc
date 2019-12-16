@@ -34,7 +34,7 @@
 #endif
 
 /* Notification from interrupt to CEC task that data has been received */
-#define TASK_EVENT_RECEIVED_DATA TASK_EVENT_CUSTOM(1 << 0)
+#define TASK_EVENT_RECEIVED_DATA TASK_EVENT_CUSTOM_BIT(0)
 
 /* CEC broadcast address. Also the highest possible CEC address */
 #define CEC_BROADCAST_ADDR 15
@@ -791,7 +791,7 @@ void cec_isr(void)
 	/* Retrieve events NPCX_TECTRL_TAXND */
 	events = GET_FIELD(NPCX_TECTRL(mdl), FIELD(0, 4));
 
-	if (events & (1 << NPCX_TECTRL_TAPND)) {
+	if (events & BIT(NPCX_TECTRL_TAPND)) {
 		/* Capture event */
 		cec_event_cap();
 	} else {
@@ -801,11 +801,11 @@ void cec_isr(void)
 		 * happening, since we will get both events in the
 		 * edge-trigger case
 		 */
-		if (events & (1 << NPCX_TECTRL_TCPND))
+		if (events & BIT(NPCX_TECTRL_TCPND))
 			cec_event_timeout();
 	}
 	/* Oneshot timer, a transfer has been initiated from AP */
-	if (events & (1 << NPCX_TECTRL_TDPND)) {
+	if (events & BIT(NPCX_TECTRL_TDPND)) {
 		tmr2_stop();
 		cec_event_tx();
 	}
@@ -836,7 +836,7 @@ static int cec_send(const uint8_t *msg, uint8_t len)
 	return 0;
 }
 
-static int hc_cec_write(struct host_cmd_handler_args *args)
+static enum ec_status hc_cec_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_cec_write *params = args->params;
 
@@ -923,7 +923,7 @@ static int cec_set_logical_addr(uint8_t logical_addr)
 	return EC_RES_SUCCESS;
 }
 
-static int hc_cec_set(struct host_cmd_handler_args *args)
+static enum ec_status hc_cec_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_cec_set *params = args->params;
 
@@ -939,7 +939,7 @@ static int hc_cec_set(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_CEC_SET, hc_cec_set, EC_VER_MASK(0));
 
 
-static int hc_cec_get(struct host_cmd_handler_args *args)
+static enum ec_status hc_cec_get(struct host_cmd_handler_args *args)
 {
 	struct ec_response_cec_get *response = args->response;
 	const struct ec_params_cec_get *params = args->params;
@@ -1002,6 +1002,12 @@ static void cec_init(void)
 
 	/* Enable capture TCNT1 into TCRA and preset TCNT1. */
 	SET_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEN);
+
+	/* If RO doesn't set it, RW needs to set it explicitly. */
+	gpio_set_level(CEC_GPIO_PULL_UP, 1);
+
+	/* Ensure the CEC bus is not pulled low by default on startup. */
+	gpio_set_level(CEC_GPIO_OUT, 1);
 
 	CPRINTS("CEC initialized");
 }

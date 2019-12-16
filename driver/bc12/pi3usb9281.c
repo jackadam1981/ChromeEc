@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -23,23 +23,20 @@
 #define CPUTS(outstr) cputs(CC_USBCHARGE, outstr)
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
-/* 8-bit I2C address */
-#define PI3USB9281_I2C_ADDR (0x25 << 1)
+/* I2C address */
+#define PI3USB9281_I2C_ADDR_FLAGS 0x25
 
 /* Delay values */
 #define PI3USB9281_SW_RESET_DELAY 20
 
 /* Wait after a charger is detected to debounce pin contact order */
-#define PI3USB9281_DETECT_DEBOUNCE_DELAY_MS 1000
-/*
- * Wait after reset, before re-enabling attach interrupt, so that the
- * spurious attach interrupt from certain ports is ignored.
- */
-#define PI3USB9281_RESET_DEBOUNCE_DELAY_MS 100
+#define PI3USB9281_DETECT_DEBOUNCE_MS			1000
+#define PI3USB9281_RESET_DEBOUNCE_MS			100
+#define PI3USB9281_RESET_STARTUP_DELAY			(200 * MSEC)
+#define PI3USB9281_RESET_STARTUP_DELAY_INTERVAL_MS	40
 
 /* Store the state of our USB data switches so that they can be restored. */
-static int usb_switch_state[CONFIG_USB_PD_PORT_COUNT];
-static struct mutex usb_switch_lock[CONFIG_USB_PD_PORT_COUNT];
+static int usb_switch_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int pi3usb9281_reset(int port);
 static int pi3usb9281_get_interrupts(int port);
@@ -72,7 +69,8 @@ static uint8_t pi3usb9281_do_read(int port, uint8_t reg, int with_lock)
 	if (with_lock)
 		select_chip(port);
 
-	res = i2c_read8(chip->i2c_port, PI3USB9281_I2C_ADDR, reg, &val);
+	res = i2c_read8(chip->i2c_port, PI3USB9281_I2C_ADDR_FLAGS,
+			reg, &val);
 
 	if (with_lock)
 		unselect_chip(port);
@@ -102,7 +100,8 @@ static int pi3usb9281_do_write(
 	if (with_lock)
 		select_chip(port);
 
-	res = i2c_write8(chip->i2c_port, PI3USB9281_I2C_ADDR, reg, val);
+	res = i2c_write8(chip->i2c_port, PI3USB9281_I2C_ADDR_FLAGS,
+			 reg, val);
 
 	if (with_lock)
 		unselect_chip(port);
@@ -135,6 +134,10 @@ static int pi3usb9281_write_ctrl_u(int port, uint8_t ctrl)
 	return pi3usb9281_do_write_ctrl(port, ctrl, 0);
 }
 
+/*
+ * Mask particular interrupts (e.g. attach, detach, ovp, ocp).
+ * 1: UnMask (enable). 0: Mask (disable)
+ */
 static int pi3usb9281_set_interrupt_mask(int port, uint8_t mask)
 {
 	return pi3usb9281_write(port, PI3USB9281_REG_INT_MASK, ~mask);
@@ -150,15 +153,15 @@ static void pi3usb9281_init(int port)
 		CPRINTS("PI3USB9281 invalid ID 0x%02x", dev_id);
 
 	pi3usb9281_reset(port);
-	pi3usb9281_set_interrupt_mask(port, 0xff);
 	pi3usb9281_enable_interrupts(port);
 }
 
 
 int pi3usb9281_enable_interrupts(int port)
 {
-	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
-
+	uint8_t ctrl;
+	pi3usb9281_set_interrupt_mask(port, PI3USB9281_INT_ATTACH_DETACH);
+	ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
 	if (ctrl == 0xee)
 		return EC_ERROR_UNKNOWN;
 
@@ -183,7 +186,7 @@ static int pi3usb9281_get_interrupts(int port)
 	return pi3usb9281_read(port, PI3USB9281_REG_INT);
 }
 
-static int pi3usb9281_get_device_type(int port)
+int pi3usb9281_get_device_type(int port)
 {
 	return pi3usb9281_read(port, PI3USB9281_REG_DEV_TYPE) & 0x77;
 }
@@ -276,35 +279,50 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 	/* If switch is not changing then return */
 	if (setting == usb_switch_state[port])
 		return;
-
-	mutex_lock(&usb_switch_lock[port]);
 	if (setting != USB_SWITCH_RESTORE)
 		usb_switch_state[port] = setting;
-
-	pi3usb9281_set_switches(port, usb_switch_state[port]);
-
-	mutex_unlock(&usb_switch_lock[port]);
+	CPRINTS("USB MUX %d", usb_switch_state[port]);
+	task_set_event(TASK_ID_USB_CHG_P0 + port, USB_CHG_EVENT_MUX, 0);
 }
 
-static void bc12_detect(int port)
+static int pc3usb9281_read_interrupt(int port)
 {
-	int device_type, charger_status;
-	struct charge_port_info charge;
-	int type;
+	timestamp_t timeout;
+	timeout.val = get_time().val + PI3USB9281_RESET_STARTUP_DELAY;
+	do {
+		/* Read (& clear) possible attach & detach interrupt */
+		if (pi3usb9281_get_interrupts(port) &
+				PI3USB9281_INT_ATTACH_DETACH)
+			return EC_SUCCESS;
+		msleep(PI3USB9281_RESET_STARTUP_DELAY_INTERVAL_MS);
+	} while (get_time().val < timeout.val);
+	return EC_ERROR_TIMEOUT;
+}
 
-	charge.voltage = USB_CHARGER_VOLTAGE_MV;
+/*
+ * Handle BC 1.2 attach & detach event
+ *
+ * On attach, it resets pi3usb9281 for debounce. This reset should immediately
+ * trigger another attach or detach interrupt. If other (unexpected) event is
+ * observed, it forwards the event so that the caller can handle it.
+ */
+static uint32_t bc12_detect(int port)
+{
+	int device_type, chg_status;
+	uint32_t evt = 0;
 
 	if (usb_charger_port_is_sourcing_vbus(port)) {
 		/* If we're sourcing VBUS then we're not charging */
-		device_type = charger_status = 0;
+		device_type = PI3USB9281_TYPE_NONE;
+		chg_status = PI3USB9281_CHG_NONE;
 	} else {
 		/* Set device type */
 		device_type = pi3usb9281_get_device_type(port);
-		charger_status = pi3usb9281_get_charger_status(port);
+		chg_status = pi3usb9281_get_charger_status(port);
 	}
 
 	/* Debounce pin plug order if we detect a charger */
-	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
+	if (device_type || PI3USB9281_CHG_STATUS_ANY(chg_status)) {
 		/* next operation might trigger a detach interrupt */
 		pi3usb9281_disable_interrupts(port);
 		/*
@@ -316,44 +334,62 @@ static void bc12_detect(int port)
 		pi3usb9281_set_pins(port, 0);
 
 		/* Delay to debounce pin attach order */
-		msleep(PI3USB9281_DETECT_DEBOUNCE_DELAY_MS);
+		msleep(PI3USB9281_DETECT_DEBOUNCE_MS);
 
 		/*
-		 * Trigger chip reset to refresh detection registers.
+		 * Reset PI3USB9281 to refresh detection registers. After reset,
+		 * - Interrupt is globally disabled
+		 * - All interrupts are unmasked (=enabled)
+		 *
 		 * WARNING: This reset is acceptable for samus_pd,
 		 * but may not be acceptable for devices that have
 		 * an OTG / device mode, as we may be interrupting
 		 * the connection.
 		 */
 		pi3usb9281_reset(port);
+
 		/*
 		 * Restore data switch settings - switches return to
 		 * closed on reset until restored.
 		 */
 		usb_charger_set_switches(port, USB_SWITCH_RESTORE);
-		/* Clear possible disconnect interrupt */
-		pi3usb9281_get_interrupts(port);
-		/* Mask attach interrupt */
-		pi3usb9281_set_interrupt_mask(port,
-					      0xff &
-					      ~PI3USB9281_INT_ATTACH);
+
+		/*
+		 * Wait after reset, before re-enabling interrupt, so that
+		 * spurious interrupts from this port are ignored.
+		 */
+		msleep(PI3USB9281_RESET_DEBOUNCE_MS);
+
 		/* Re-enable interrupts */
 		pi3usb9281_enable_interrupts(port);
-		msleep(PI3USB9281_RESET_DEBOUNCE_DELAY_MS);
 
-		/* Clear possible attach interrupt */
-		pi3usb9281_get_interrupts(port);
-		/* Re-enable attach interrupt */
-		pi3usb9281_set_interrupt_mask(port, 0xff);
+		/*
+		 * Consume interrupt (expectedly) triggered by the reset.
+		 * If it's other event (e.g. VBUS), return immediately.
+		 */
+		evt = task_wait_event(PI3USB9281_RESET_DEBOUNCE_MS * MSEC);
+		if (evt & USB_CHG_EVENT_BC12)
+			evt &= ~USB_CHG_EVENT_BC12;
+		else if (evt & USB_CHG_EVENT_INTR)
+			evt &= ~USB_CHG_EVENT_INTR;
+		else
+			return evt;
 
-		/* Re-read ID registers */
-		device_type = pi3usb9281_get_device_type(port);
-		charger_status = pi3usb9281_get_charger_status(port);
+		/* Debounce is done. Registers should have trustworthy values */
+		device_type = PI3USB9281_TYPE_NONE;
+		chg_status = PI3USB9281_CHG_NONE;
+		if (pc3usb9281_read_interrupt(port) == EC_SUCCESS) {
+			device_type = pi3usb9281_get_device_type(port);
+			chg_status = pi3usb9281_get_charger_status(port);
+		}
 	}
 
 	/* Attachment: decode + update available charge */
-	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
-		if (PI3USB9281_CHG_STATUS_ANY(charger_status))
+	if (device_type || PI3USB9281_CHG_STATUS_ANY(chg_status)) {
+		struct charge_port_info chg;
+		int type;
+
+		if (PI3USB9281_CHG_STATUS_ANY(chg_status))
 			type = CHARGE_SUPPLIER_PROPRIETARY;
 		else if (device_type & PI3USB9281_TYPE_CDP)
 			type = CHARGE_SUPPLIER_BC12_CDP;
@@ -364,61 +400,43 @@ static void bc12_detect(int port)
 		else
 			type = CHARGE_SUPPLIER_OTHER;
 
-		charge.current = pi3usb9281_get_ilim(device_type,
-						     charger_status);
-		charge_manager_update_charge(type, port, &charge);
-	} else { /* Detachment: update available charge to 0 */
-		charge.current = 0;
-		charge_manager_update_charge(
-					CHARGE_SUPPLIER_PROPRIETARY,
-					port,
-					&charge);
-		charge_manager_update_charge(
-					CHARGE_SUPPLIER_BC12_CDP,
-					port,
-					&charge);
-		charge_manager_update_charge(
-					CHARGE_SUPPLIER_BC12_DCP,
-					port,
-					&charge);
-		charge_manager_update_charge(
-					CHARGE_SUPPLIER_BC12_SDP,
-					port,
-					&charge);
-		charge_manager_update_charge(
-					CHARGE_SUPPLIER_OTHER,
-					port,
-					&charge);
+		chg.voltage = USB_CHARGER_VOLTAGE_MV;
+		chg.current = pi3usb9281_get_ilim(device_type, chg_status);
+		charge_manager_update_charge(type, port, &chg);
+	} else {
+		/* Detachment: update available charge to 0 */
+		usb_charger_reset_charge(port);
 	}
+
+	return evt;
 }
 
 void usb_charger_task(void *u)
 {
-	const int attach_mask = PI3USB9281_INT_ATTACH | PI3USB9281_INT_DETACH;
 	int port = (task_get_current() == TASK_ID_USB_CHG_P0 ? 0 : 1);
-	int interrupt;
 	uint32_t evt;
 
 	/* Initialize chip and enable interrupts */
 	pi3usb9281_init(port);
 
-	bc12_detect(port);
+	evt = bc12_detect(port);
 
 	while (1) {
-		/* Wait for interrupt */
-		evt = task_wait_event(-1);
-
 		/* Interrupt from the Pericom chip, determine charger type */
 		if (evt & USB_CHG_EVENT_BC12) {
 			/* Read interrupt register to clear on chip */
 			pi3usb9281_get_interrupts(port);
-			bc12_detect(port);
+			evt = bc12_detect(port);
 		} else if (evt & USB_CHG_EVENT_INTR) {
+			/* USB_CHG_EVENT_INTR & _BC12 are mutually exclusive */
 			/* Check the interrupt register, and clear on chip */
-			interrupt = pi3usb9281_get_interrupts(port);
-			if (interrupt & attach_mask)
-				bc12_detect(port);
+			if (pi3usb9281_get_interrupts(port) &
+					PI3USB9281_INT_ATTACH_DETACH)
+				evt = bc12_detect(port);
 		}
+
+		if (evt & USB_CHG_EVENT_MUX)
+			pi3usb9281_set_switches(port, usb_switch_state[port]);
 
 		/*
 		 * Re-enable interrupts on pericom charger detector since the
@@ -433,6 +451,8 @@ void usb_charger_task(void *u)
 				pd_snk_is_vbus_provided(port));
 #endif
 		}
+
+		evt = task_wait_event(-1);
 	}
 }
 

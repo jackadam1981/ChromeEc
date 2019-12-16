@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,11 +9,12 @@
 #define __CROS_EC_USB_PD_H
 
 #include "common.h"
+#include "usb_pd_tcpm.h"
 
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
-#ifdef CONFIG_USB_PD_PORT_COUNT
+#ifdef CONFIG_USB_PD_PORT_MAX_COUNT
 /*
  * Define PD_PORT_TO_TASK_ID() and TASK_ID_TO_PD_PORT() macros to
  * go between PD port number and task ID. Assume that TASK_ID_PD_C0 is the
@@ -26,7 +27,7 @@
 #define PD_PORT_TO_TASK_ID(port) -1 /* dummy task ID */
 #define TASK_ID_TO_PD_PORT(id) 0
 #endif /* CONFIG_COMMON_RUNTIME */
-#endif /* CONFIG_USB_PD_PORT_COUNT */
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
 
 enum pd_rx_errors {
 	PD_RX_ERR_INVAL = -1,           /* Invalid packet */
@@ -38,17 +39,37 @@ enum pd_rx_errors {
 };
 
 /* Events for USB PD task */
-#define PD_EVENT_RX               (1<<2) /* Incoming packet event */
-#define PD_EVENT_TX               (1<<3) /* Outgoing packet event */
-#define PD_EVENT_CC               (1<<4) /* CC line change event */
-#define PD_EVENT_TCPC_RESET       (1<<5) /* TCPC has reset */
-#define PD_EVENT_UPDATE_DUAL_ROLE (1<<6) /* DRP state has changed */
+
+/* Outgoing packet event */
+#define PD_EVENT_TX			TASK_EVENT_CUSTOM_BIT(3)
+/* CC line change event */
+#define PD_EVENT_CC			TASK_EVENT_CUSTOM_BIT(4)
+/* TCPC has reset */
+#define PD_EVENT_TCPC_RESET		TASK_EVENT_CUSTOM_BIT(5)
+/* DRP state has changed */
+#define PD_EVENT_UPDATE_DUAL_ROLE	TASK_EVENT_CUSTOM_BIT(6)
 /*
  * A task, other than the task owning the PD port, accessed the TCPC. The task
  * that owns the port does not send itself this event.
  */
-#define PD_EVENT_DEVICE_ACCESSED  (1<<7)
-#define PD_EVENT_DP_DISCONNECT    (1<<8) /* DisplayPort disconnect requested */
+#define PD_EVENT_DEVICE_ACCESSED	TASK_EVENT_CUSTOM_BIT(7)
+/* Chipset power state changed */
+#define PD_EVENT_POWER_STATE_CHANGE	TASK_EVENT_CUSTOM_BIT(8)
+/* Issue a Hard Reset. */
+#define PD_EVENT_SEND_HARD_RESET	TASK_EVENT_CUSTOM_BIT(9)
+/* PD State machine event */
+#define PD_EVENT_SM			TASK_EVENT_CUSTOM_BIT(10)
+/* Prepare for sysjump */
+#define PD_EVENT_SYSJUMP		TASK_EVENT_CUSTOM_BIT(11)
+/* First free event on PD task */
+#define PD_EVENT_FIRST_FREE_BIT		12
+
+/* Ensure TCPC is out of low power mode before handling these events. */
+#define PD_EXIT_LOW_POWER_EVENT_MASK \
+	(PD_EVENT_CC | \
+	 PD_EVENT_UPDATE_DUAL_ROLE | \
+	 PD_EVENT_POWER_STATE_CHANGE | \
+	 TASK_EVENT_WAKE)
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
@@ -67,16 +88,21 @@ enum pd_rx_errors {
  *     above by examining bits <29:28> to determine the additional PDO function.
  */
 #define PDO_TYPE_FIXED     (0 << 30)
-#define PDO_TYPE_BATTERY   (1 << 30)
+#define PDO_TYPE_BATTERY   BIT(30)
 #define PDO_TYPE_VARIABLE  (2 << 30)
 #define PDO_TYPE_AUGMENTED (3 << 30)
 #define PDO_TYPE_MASK      (3 << 30)
 
-#define PDO_FIXED_DUAL_ROLE (1 << 29) /* Dual role device */
-#define PDO_FIXED_SUSPEND   (1 << 28) /* USB Suspend supported */
-#define PDO_FIXED_EXTERNAL  (1 << 27) /* Externally powered */
-#define PDO_FIXED_COMM_CAP  (1 << 26) /* USB Communications Capable */
-#define PDO_FIXED_DATA_SWAP (1 << 25) /* Data role swap command supported */
+#define PDO_FIXED_DUAL_ROLE BIT(29) /* Dual role device */
+#define PDO_FIXED_SUSPEND   BIT(28) /* USB Suspend supported */
+#define PDO_FIXED_EXTERNAL  BIT(27) /* Externally powered */
+#define PDO_FIXED_COMM_CAP  BIT(26) /* USB Communications Capable */
+#define PDO_FIXED_DATA_SWAP BIT(25) /* Data role swap command supported */
+#define PDO_FIXED_FRS_CURR_MASK (3 << 23) /* [23..24] FRS current */
+#define PDO_FIXED_FRS_CURR_NOT_SUPPORTED  (0 << 23)
+#define PDO_FIXED_FRS_CURR_DFLT_USB_POWER (1 << 23)
+#define PDO_FIXED_FRS_CURR_1A5_AT_5V      (2 << 23)
+#define PDO_FIXED_FRS_CURR_3A0_AT_5V      (3 << 23)
 #define PDO_FIXED_PEAK_CURR () /* [21..20] Peak current */
 #define PDO_FIXED_VOLT(mv)  (((mv)/50) << 10) /* Voltage in 50mV units */
 #define PDO_FIXED_CURR(ma)  (((ma)/10) << 0)  /* Max current in 10mA units */
@@ -107,10 +133,10 @@ enum pd_rx_errors {
 /* RDO : Request Data Object */
 #define RDO_OBJ_POS(n)             (((n) & 0x7) << 28)
 #define RDO_POS(rdo)               (((rdo) >> 28) & 0x7)
-#define RDO_GIVE_BACK              (1 << 27)
-#define RDO_CAP_MISMATCH           (1 << 26)
-#define RDO_COMM_CAP               (1 << 25)
-#define RDO_NO_SUSPEND             (1 << 24)
+#define RDO_GIVE_BACK              BIT(27)
+#define RDO_CAP_MISMATCH           BIT(26)
+#define RDO_COMM_CAP               BIT(25)
+#define RDO_NO_SUSPEND             BIT(24)
 #define RDO_FIXED_VAR_OP_CURR(ma)  ((((ma) / 10) & 0x3FF) << 10)
 #define RDO_FIXED_VAR_MAX_CURR(ma) ((((ma) / 10) & 0x3FF) << 0)
 
@@ -130,7 +156,7 @@ enum pd_rx_errors {
 
 /* BDO : BIST Data Object */
 #define BDO_MODE_RECV       (0 << 28)
-#define BDO_MODE_TRANSMIT   (1 << 28)
+#define BDO_MODE_TRANSMIT   BIT(28)
 #define BDO_MODE_COUNTERS   (2 << 28)
 #define BDO_MODE_CARRIER0   (3 << 28)
 #define BDO_MODE_CARRIER1   (4 << 28)
@@ -140,27 +166,42 @@ enum pd_rx_errors {
 
 #define BDO(mode, cnt)      ((mode) | ((cnt) & 0xFFFF))
 
+#define BIST_MODE(n)          ((n) >> 28)
+#define BIST_ERROR_COUNTER(n) ((n) & 0xffff)
+#define BIST_RECEIVER_MODE    0
+#define BIST_TRANSMIT_MODE    1
+#define BIST_RETURNED_COUNTER 2
+#define BIST_CARRIER_MODE_0   3
+#define BIST_CARRIER_MODE_1   4
+#define BIST_CARRIER_MODE_2   5
+#define BIST_CARRIER_MODE_3   6
+#define BIST_EYE_PATTERN      7
+#define BIST_TEST_DATA        8
+
 #define SVID_DISCOVERY_MAX 16
 
 /* Timers */
-#define PD_T_SINK_TX          (18*MSEC) /* between 16ms and 20 */
-#define PD_T_CHUNK_SENDER_RSP (24*MSEC) /* between 24ms and 30ms */
-#define PD_T_CHUNK_SENDER_REQ (24*MSEC) /* between 24ms and 30ms */
-#define PD_T_SEND_SOURCE_CAP  (100*MSEC) /* between 100ms and 200ms */
-#define PD_T_SINK_WAIT_CAP    (600*MSEC) /* between 310ms and 620ms */
-#define PD_T_SINK_TRANSITION   (35*MSEC) /* between 20ms and 35ms */
-#define PD_T_SOURCE_ACTIVITY   (45*MSEC) /* between 40ms and 50ms */
-#define PD_T_SENDER_RESPONSE   (30*MSEC) /* between 24ms and 30ms */
-#define PD_T_PS_TRANSITION    (500*MSEC) /* between 450ms and 550ms */
-#define PD_T_PS_SOURCE_ON     (480*MSEC) /* between 390ms and 480ms */
-#define PD_T_PS_SOURCE_OFF    (920*MSEC) /* between 750ms and 920ms */
-#define PD_T_PS_HARD_RESET     (25*MSEC) /* between 25ms and 35ms */
-#define PD_T_ERROR_RECOVERY    (25*MSEC) /* 25ms */
+#define PD_T_SINK_TX            (18*MSEC) /* between 16ms and 20 */
+#define PD_T_CHUNK_SENDER_RSP   (24*MSEC) /* between 24ms and 30ms */
+#define PD_T_CHUNK_SENDER_REQ   (24*MSEC) /* between 24ms and 30ms */
+#define PD_T_HARD_RESET_COMPLETE (5*MSEC) /* between 4ms and 5ms*/
+#define PD_T_HARD_RESET_RETRY    (1*MSEC) /* 1ms */
+#define PD_T_SEND_SOURCE_CAP   (100*MSEC) /* between 100ms and 200ms */
+#define PD_T_SINK_WAIT_CAP     (600*MSEC) /* between 310ms and 620ms */
+#define PD_T_SINK_TRANSITION    (35*MSEC) /* between 20ms and 35ms */
+#define PD_T_SOURCE_ACTIVITY    (45*MSEC) /* between 40ms and 50ms */
+#define PD_T_SENDER_RESPONSE    (30*MSEC) /* between 24ms and 30ms */
+#define PD_T_PS_TRANSITION     (500*MSEC) /* between 450ms and 550ms */
+#define PD_T_PS_SOURCE_ON      (480*MSEC) /* between 390ms and 480ms */
+#define PD_T_PS_SOURCE_OFF     (920*MSEC) /* between 750ms and 920ms */
+#define PD_T_PS_HARD_RESET      (25*MSEC) /* between 25ms and 35ms */
+#define PD_T_ERROR_RECOVERY     (25*MSEC) /* 25ms */
 #define PD_T_CC_DEBOUNCE       (100*MSEC) /* between 100ms and 200ms */
 /* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
 #define PD_T_DRP_SNK           (40*MSEC) /* toggle time for sink DRP */
 #define PD_T_DRP_SRC           (30*MSEC) /* toggle time for source DRP */
 #define PD_T_DEBOUNCE          (15*MSEC) /* between 10ms and 20ms */
+#define PD_T_TRY_CC_DEBOUNCE   (15*MSEC) /* between 10ms and 20ms */
 #define PD_T_SINK_ADJ          (55*MSEC) /* between PD_T_DEBOUNCE and 60ms */
 #define PD_T_SRC_RECOVER      (760*MSEC) /* between 660ms and 1000ms */
 #define PD_T_SRC_RECOVER_MAX (1000*MSEC) /* 1000ms */
@@ -169,10 +210,20 @@ enum pd_rx_errors {
 #define PD_T_NO_RESPONSE     (5500*MSEC) /* between 4.5s and 5.5s */
 #define PD_T_BIST_TRANSMIT     (50*MSEC) /* 50ms (used for task_wait arg) */
 #define PD_T_BIST_RECEIVE      (60*MSEC) /* 60ms (max time to process bist) */
+#define PD_T_BIST_CONT_MODE    (60*MSEC) /* 30ms to 60ms */
 #define PD_T_VCONN_SOURCE_ON  (100*MSEC) /* 100ms */
-#define PD_T_TRY_SRC          (125*MSEC) /* Max time for Try.SRC state */
+#define PD_T_DRP_TRY          (125*MSEC) /* btween 75 and 150ms(monitor Vbus) */
+#define PD_T_TRY_TIMEOUT      (550*MSEC) /* between 550ms and 1100ms */
 #define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
 #define PD_T_SINK_REQUEST     (100*MSEC) /* Wait 100ms before next request */
+#define PD_T_PD_DEBOUNCE      (15*MSEC)  /* between 10ms and 20ms */
+#define PD_T_CHUNK_SENDER_RESPONSE (25*MSEC) /* 25ms */
+#define PD_T_CHUNK_SENDER_REQUEST  (25*MSEC) /* 25ms */
+#define PD_T_SWAP_SOURCE_START     (25*MSEC) /* Min of 20ms */
+#define PD_T_RP_VALUE_CHANGE       (20*MSEC) /* 20ms */
+#define PD_T_SRC_DISCONNECT        (15*MSEC) /* 15ms */
+#define PD_T_VCONN_STABLE          (50*MSEC) /* 50ms */
+#define PD_T_DISCOVER_IDENTITY     (45*MSEC) /* between 40ms and 50ms */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
@@ -182,11 +233,16 @@ enum pd_rx_errors {
 #define PD_T_AME (1*SECOND) /* timeout from UFP attach to Alt Mode Entry */
 
 /* VDM Timers ( USB PD Spec Rev2.0 Table 6-30 )*/
-#define PD_T_VDM_BUSY         (100*MSEC) /* at least 100ms */
-#define PD_T_VDM_E_MODE        (25*MSEC) /* enter/exit the same max */
-#define PD_T_VDM_RCVR_RSP      (15*MSEC) /* max of 15ms */
-#define PD_T_VDM_SNDR_RSP      (30*MSEC) /* max of 30ms */
-#define PD_T_VDM_WAIT_MODE_E  (100*MSEC) /* enter/exit the same max */
+#define PD_T_VDM_BUSY          (100*MSEC) /* at least 100ms */
+#define PD_T_VDM_E_MODE         (25*MSEC) /* enter/exit the same max */
+#define PD_T_VDM_RCVR_RSP       (15*MSEC) /* max of 15ms */
+#define PD_T_VDM_SNDR_RSP       (30*MSEC) /* max of 30ms */
+#define PD_T_VDM_WAIT_MODE_E   (100*MSEC) /* enter/exit the same max */
+
+/* CTVPD Timers ( USB Type-C ECN Table 4-27 ) */
+#define PD_T_VPDDETACH        (20*MSEC) /* max of 20*MSEC */
+#define PD_T_VPDCTDD           (4*MSEC) /* max of 4ms */
+#define PD_T_VPDDISABLE       (25*MSEC) /* min of 25ms */
 
 /* function table for entered mode */
 struct amode_fx {
@@ -244,8 +300,8 @@ enum hpd_event {
 };
 
 /* DisplayPort flags */
-#define DP_FLAGS_DP_ON              (1 << 0) /* Display port mode is on */
-#define DP_FLAGS_HPD_HI_PENDING     (1 << 1) /* Pending HPD_HI */
+#define DP_FLAGS_DP_ON              BIT(0) /* Display port mode is on */
+#define DP_FLAGS_HPD_HI_PENDING     BIT(1) /* Pending HPD_HI */
 
 /* supported alternate modes */
 enum pd_alternate_modes {
@@ -275,11 +331,13 @@ struct pd_policy {
  * VDO : Vendor Defined Message Object
  * VDM object is minimum of VDM header + 6 additional data objects.
  */
-
+#define VDO_HDR_SIZE 1
 #define VDO_MAX_SIZE 7
 
 #define VDM_VER10 0
 #define VDM_VER20 1
+
+#define PD_VDO_INVALID -1
 
 /*
  * VDM header
@@ -298,7 +356,7 @@ struct pd_policy {
 	((type) << 15) |       \
 	((custom) & 0x7FFF))
 
-#define VDO_SVDM_TYPE     (1 << 15)
+#define VDO_SVDM_TYPE     BIT(15)
 #define VDO_SVDM_VERS(x)  (x << 13)
 #define VDO_OPOS(x)       (x << 8)
 #define VDO_CMDT(x)       (x << 6)
@@ -313,7 +371,7 @@ struct pd_policy {
 
 /* reserved for SVDM ... for Google UVDM */
 #define VDO_SRC_INITIATOR (0 << 5)
-#define VDO_SRC_RESPONDER (1 << 5)
+#define VDO_SRC_RESPONDER BIT(5)
 
 #define CMD_DISCOVER_IDENT  1
 #define CMD_DISCOVER_SVID   2
@@ -351,20 +409,25 @@ struct pd_policy {
  *
  * Request is simply properly formatted SVDM header
  *
- * Response is 4 data objects:
+ * Response is 4 data objects.
+ * In case of Active cables, the response is 5 data objects:
  * [0] :: SVDM header
  * [1] :: Identitiy header
  * [2] :: Cert Stat VDO
  * [3] :: (Product | Cable) VDO
  * [4] :: AMA VDO
+ * [4] :: Product type Cable VDO 1
+ * [5] :: Product type Cable VDO 2
  *
  */
-#define VDO_INDEX_HDR     0
-#define VDO_INDEX_IDH     1
-#define VDO_INDEX_CSTAT   2
-#define VDO_INDEX_CABLE   3
-#define VDO_INDEX_PRODUCT 3
-#define VDO_INDEX_AMA     4
+#define VDO_INDEX_HDR          0
+#define VDO_INDEX_IDH          1
+#define VDO_INDEX_CSTAT        2
+#define VDO_INDEX_CABLE        3
+#define VDO_INDEX_PRODUCT      3
+#define VDO_INDEX_AMA          4
+#define VDO_INDEX_PTYPE_CABLE1 4
+#define VDO_INDEX_PTYPE_CABLE2 5
 #define VDO_I(name) VDO_INDEX_##name
 
 /*
@@ -377,13 +440,17 @@ struct pd_policy {
  * <25:16>  :: SBZ
  * <15:0>   :: USB-IF assigned VID for this cable vendor
  */
-#define IDH_PTYPE_UNDEF  0
-#define IDH_PTYPE_HUB    1
-#define IDH_PTYPE_PERIPH 2
-#define IDH_PTYPE_PCABLE 3
-#define IDH_PTYPE_ACABLE 4
-#define IDH_PTYPE_AMA    5
 
+enum idh_ptype {
+	IDH_PTYPE_UNDEF,
+	IDH_PTYPE_HUB,
+	IDH_PTYPE_PERIPH,
+	IDH_PTYPE_PCABLE,
+	IDH_PTYPE_ACABLE,
+	IDH_PTYPE_AMA,
+	IDH_PTYPE_VPD,
+	IDH_PTYPE_COUNT,
+};
 #define VDO_IDH(usbh, usbd, ptype, is_modal, vid)		\
 	((usbh) << 31 | (usbd) << 30 | ((ptype) & 0x7) << 27	\
 	 | (is_modal) << 26 | ((vid) & 0xffff))
@@ -410,15 +477,15 @@ struct pd_policy {
 #define PD_PRODUCT_PID(vdo) (((vdo) >> 16) & 0xffff)
 
 /*
- * Cable VDO
+ * Cable VDO (Ref: PD Spec 2.0 Version 1.3 - Table 6-28 and 6-29)
  * ---------
  * <31:28> :: Cable HW version
  * <27:24> :: Cable FW version
- * <23:20> :: SBZ
- * <19:18> :: type-C to Type-A/B/C (00b == A, 01 == B, 10 == C)
- * <17>    :: Type-C to Plug/Receptacle (0b == plug, 1b == receptacle)
- * <16:13> :: cable latency (0001 == <10ns(~1m length))
- * <12:11> :: cable termination type (11b == both ends active VCONN req)
+ * <23:20> :: Reserved
+ * <19:18> :: Type-C to Type-A/B/C (00b == A, 01 == B, 10 == C)
+ * <17>    :: Reserved
+ * <16:13> :: Cable latency (0001 == <10ns(~1m length))
+ * <12:11> :: Cable termination type (11b == both ends active VCONN req)
  * <10>    :: SSTX1 Directionality support (0b == fixed, 1b == cfgable)
  * <9>     :: SSTX2 Directionality support
  * <8>     :: SSRX1 Directionality support
@@ -428,23 +495,244 @@ struct pd_policy {
  * <3>     :: SOP" controller present? (0b == no, 1b == yes)
  * <2:0>   :: USB SS Signaling support
  */
-#define CABLE_ATYPE 0
-#define CABLE_BTYPE 1
-#define CABLE_CTYPE 2
-#define CABLE_PLUG       0
-#define CABLE_RECEPTACLE 1
-#define CABLE_CURR_1A5   0
-#define CABLE_CURR_3A    1
-#define CABLE_CURR_5A    2
-#define CABLE_USBSS_U2_ONLY  0
-#define CABLE_USBSS_U31_GEN1 1
-#define CABLE_USBSS_U31_GEN2 2
-#define VDO_CABLE(hw, fw, cbl, gdr, lat, term, tx1d, tx2d, rx1d, rx2d, cur, vps, sopp, usbss) \
-	(((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((cbl) & 0x3) << 18	\
-	 | (gdr) << 17 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11	\
-	 | (tx1d) << 10 | (tx2d) << 9 | (rx1d) << 8 | (rx2d) << 7	\
-	 | ((cur) & 0x3) << 5 | (vps) << 4 | (sopp) << 3		\
+enum usb_ss_support {
+	USB_SS_U2_ONLY,
+	USB_SS_U31_GEN1,
+	USB_SS_U31_GEN2,
+};
+
+enum cable_outlet {
+	CABLE_PLUG = 0,
+	CABLE_RECEPTACLE = 1,
+};
+
+enum current_capacity {
+	CABLE_CURRENT_3A = 1,
+	CABLE_CURRENT_5A,
+};
+
+enum cable_dir_support {
+	CABLE_FIXED,
+	CABLE_CHANGEABLE,
+};
+
+enum connector_type {
+	CONNECTOR_ATYPE,
+	CONNECTOR_BTYPE,
+	CONNECTOR_CTYPE,
+	CONNECTOR_CAPTIVE,
+};
+
+struct vdo_rev20 {
+	enum usb_ss_support ss: 3;
+	uint32_t controller : 1;
+	uint32_t vbus_cable : 1;
+	enum current_capacity current : 2;
+	enum cable_dir_support ssrx2 : 1;
+	enum cable_dir_support ssrx1 : 1;
+	enum cable_dir_support sstx2 : 1;
+	enum cable_dir_support sstx1 : 1;
+	uint32_t termination : 2;
+	uint32_t latency : 4;
+	uint32_t reserved0 : 1;
+	enum connector_type connector : 2;
+	uint32_t reserved1 : 4;
+	uint32_t fw_version : 4;
+	uint32_t hw_version : 4;
+};
+
+#define VDO_CABLE(hw, fw, cbl, lat, term, tx1d, tx2d, rx1d, rx2d, cur, vps, \
+		  sopp, usbss) \
+	 (((hw) & 0xF) << 28 | ((fw) & 0xF) << 24 | ((cbl) & 0x3) << 18	\
+	 | ((lat) & 0xF) << 13 | ((term) & 0x3) << 11 | ((tx1d) & 0x1) << 10 \
+	 | ((tx2d) & 0x1) << 9 | ((rx1d) & 0x1) << 8 | ((rx2d) & 0x1) << 7 \
+	 | ((cur) & 0x3) << 5 | ((vps) & 0x1) << 4 | ((sopp) & 0x1) << 3 \
 	 | ((usbss) & 0x7))
+
+/*
+ * Passive Cable VDO (Ref: PD Spec 3.0 Version 1.2 - Table 6-35)
+ * ---------
+ * <31:28> :: Cable HW version
+ * <27:24> :: Cable FW version
+ * <23:21> :: VDO version
+ * <20>    :: Reserved
+ * <19:18> :: Connector Type (10b == USB-C, 11b == Captive)
+ * <17>    :: Reserved
+ * <16:13> :: Cable latency (0001 == <10ns(~1m length))
+ * <12:11> :: Cable termination type (00b == VCONN not req, 01b = VCONN req)
+ * <10:9>  :: Maximum cable vbus voltage
+ * <8:7>   :: Reserved
+ * <6:5>   :: Vbus current handling capability
+ * <4:3>   :: Reserved
+ * <2:0>   :: USB SS Signaling support
+ */
+enum max_vbus_vtg {
+	CABLE_VBUS_20V,
+	CABLE_VBUS_30V,
+	CABLE_VBUS_40V,
+	CABLE_VBUS_50V,
+};
+
+struct passive_cable_vdo_rev30 {
+	enum usb_ss_support ss: 3;
+	uint32_t reserved0 : 2;
+	enum current_capacity current : 2;
+	uint32_t reserved1 : 2;
+	enum max_vbus_vtg vbus_max : 2;
+	uint32_t termination : 2;
+	uint32_t latency : 4;
+	uint32_t reserved2 : 1;
+	enum connector_type connector : 2;
+	uint32_t reserved3 : 1;
+	uint32_t vdo_version : 3;
+	uint32_t fw_version : 4;
+	uint32_t hw_version : 4;
+};
+
+#define PASSIVE_VDO_CABLE_REV3(hw, fw, vdover, cbl, lat, term, vbusv, \
+			      cur, usbss) \
+	(((hw) & 0xF) << 28 | ((fw) & 0xF) << 24 | ((vdov & 0x7) << 21) \
+	| ((cbl) & 0x3) << 18 | ((lat) & 0xF) << 13 | ((term) & 0x3) << 11 \
+	| ((vbusv) & 0x3) << 9 | ((cur) & 0x3) << 5 | ((usbss) & 0x7))
+
+/*
+ * Active Cable VDO1 (Ref: PD Spec 3.0 Version 1.2 - Table 6-36)
+ * ---------
+ * <31:28> :: Cable HW version
+ * <27:24> :: Cable FW version
+ * <23:21> :: VDO version
+ * <20>    :: Reserved
+ * <19:18> :: Connector Type (10b == USB-C, 11b == Captive)
+ * <17>    :: Reserved
+ * <16:13> :: Cable latency (0001 == <10ns(~1m length))
+ * <12:11> :: Cable termination type (11b == both ends active VCONN req)
+ * <10:9>  :: Maximum cable vbus voltage
+ * <8>     :: SBU Supported? (0b == yes, 1b == no)
+ * <7>     :: SBU Type (0b == passive, 1b == active)
+ * <6:5>   :: Vbus current handling capability
+ * <4>     :: Vbus through cable (0b == no, 1b == yes)
+ * <3>     :: SOP" controller present? (0b == no, 1b == yes)
+ * <2:0>   :: Reserved
+ */
+struct active_cable_vdo_rev30 {
+	uint32_t reserved0 : 3;
+	uint32_t controller : 1;
+	uint32_t vbus_cable : 1;
+	enum current_capacity current : 2;
+	uint32_t sbu_type : 1;
+	uint32_t sbu_support : 1;
+	enum max_vbus_vtg vbus_max : 2;
+	uint32_t termination : 2;
+	uint32_t latency : 4;
+	uint32_t reserved1 : 1;
+	enum connector_type connector : 2;
+	uint32_t reserved2 : 1;
+	uint32_t vdo_version : 3;
+	uint32_t cable_fw_version : 4;
+	uint32_t cable_hw_version : 4;
+};
+#define ACTIVE_VDO1_CABLE_REV3(hw, fw, vdover, cbl, lat, term, vbusv, sbus, \
+			       sbut, cur, vps, sopp) \
+	(((hw) & 0xF) << 28 | ((fw) & 0xF) << 24 | ((vdov) & 0x7) << 21 \
+	| ((cbl) & 0x3) << 18 | ((lat) & 0xF) << 13 | ((term) & 0x3) << 11 \
+	| ((vbusv) & 0x3) << 9 | ((sbus) & 0x1) << 8 | ((sbut) & 0x1) << 7 \
+	| ((cur) & 0x3) << 5 | ((vps) & 0x1) << 4 | ((sopp) & 0x1) << 3)
+
+struct cable_vdo {
+	union {
+		struct vdo_rev20 rev20;
+		struct passive_cable_vdo_rev30 p_rev30;
+		struct active_cable_vdo_rev30 a_rev30;
+		uint32_t raw_value;
+	};
+};
+
+/*
+ * Active Cable VDO2 (Ref: PD Spec 3.0 Version 1.2 - Table 6-37)
+ * ---------
+ * <31:24> :: Maximum operating temperature
+ * <23:16> :: Shutdown temperature
+ * <15>    :: Reserved
+ * <14:12> :: USB3 power (000 == >10mW)
+ * <11>    :: U3 to U0 transition
+ * <10:8>  :: Reserved
+ * <7:6>   :: USB 2.0 Hub Hops Consumed
+ * <5>     :: USB 2.0 Supported? (0b == yes, 1b == no)
+ * <4>     :: SS Supported? (0b == yes, 1b == no)
+ * <3>     :: SS lanes supported (0b == one, 1b == two)
+ * <2>     :: Reserved
+ * <1:0>   :: SS signaling (0b == Gen1, 01b == Gen2)
+ */
+#define ACTIVE_CABLE_VDO2_CABLE_REV3(opt, sdt, usb3p, u3u0, hhc, usb2, \
+				      ss, ssl, sss) \
+	(((opt) & 0xFF) << 24 | ((sdt) & 0xFF) << 16 | ((usb3p) & 0x7) << 12 \
+	| ((u3u0) & 0x1) << 11 | ((usb2) & 0x3) << 6 | ((ss) & 0x1)  << 4 \
+	| ((ssl) & 0x1)  << 3 | (sss) & 0x3)
+
+enum ss_signaling {
+	USB_SS_SIGNAL_SS_GEN1,
+	USB_SS_SIGNAL_SS_GEN2,
+};
+
+enum ss_lane_support {
+	USB_SS_ONE_LANE,
+	USB_SS_TWO_LANES,
+};
+
+enum u0u3_transition_mode {
+	U0_U3_DIRECT,
+	U0_U3_U3S,
+};
+
+enum u3_power_support {
+	U3_POWER_10mW,
+	U3_POWER_5_10mW,
+	U3_POWER_1_5mW,
+	U3_POWER_500_1000uW,
+	U3_POWER_200_500uW,
+	U3_POWER_50_200uW,
+	U3_POWER_0_50uW,
+};
+
+struct active_cable_vdo2_rev30 {
+	enum ss_signaling sss: 2;
+	uint32_t reserved0 : 1;
+	enum ss_lane_support lanes : 1;
+	uint32_t usb_ss_support : 1;
+	uint32_t usb2_support : 1;
+	uint32_t usb2_hub_hops : 2;
+	uint32_t reserved1 : 3;
+	enum u0u3_transition_mode u0u3: 1;
+	enum u3_power_support u3_power : 3;
+	uint32_t reserved2: 1;
+	uint32_t shutdown_temp;
+	uint32_t max_operating_temp;
+};
+
+struct active_cable_vdo2 {
+	union {
+		struct active_cable_vdo2_rev30 a2_rev30;
+		uint32_t raw_value;
+	};
+};
+
+/* Cable structure for storing cable attributes */
+struct pd_cable {
+	uint8_t is_identified;
+	/* Type of cable */
+	enum idh_ptype type;
+	/* Cable flags. See CABLE_FLAGS_* */
+	uint8_t flags;
+	/* Cable attribues */
+	struct cable_vdo attr;
+	/* Cable revision */
+	uint8_t rev;
+	/* For USB PD REV3, active cable has 2 VDOs */
+	struct active_cable_vdo2 attr2;
+};
+
+/* Flag for sending SOP Prime packet */
+#define CABLE_FLAGS_SOP_PRIME_ENABLE	BIT(0)
 
 /*
  * AMA VDO
@@ -483,6 +771,34 @@ struct pd_policy {
 #define AMA_USBSS_BBONLY   3
 
 /*
+ * VPD VDO
+ * ---------
+ *  <31:28> :: HW version
+ *  <27:24> :: FW version
+ *  <23:21> :: VDO version
+ *  <20:17> :: SBZ
+ *  <16:15> :: Maximum VBUS Voltage
+ *  <14:13> :: SBZ
+ *  <12:7>  :: VBUS Impedance
+ *  <6:1>   :: Ground Impedance
+ *  <0>     :: Charge Through Support
+ */
+#define VDO_VPD(hw, fw, vbus, vbusz, gndz, cts)  \
+	(((hw) & 0xf) << 28 | ((fw) & 0xf) << 24 \
+	 | ((vbus) & 0x3) << 15                  \
+	 | ((vbusz) & 0x3f) << 7                 \
+	 | ((gndz) & 0x3f) << 1 | (cts))
+
+#define VPD_MAX_VBUS_20V       0
+#define VPD_MAX_VBUS_30V       1
+#define VPD_MAX_VBUS_40V       2
+#define VPD_MAX_VBUS_50V       3
+#define VPD_VBUS_IMP(mo)       ((mo + 1) >> 1)
+#define VPD_GND_IMP(mo)        (mo)
+#define VPD_CTS_SUPPORTED      1
+#define VPD_CTS_NOT_SUPPORTED  0
+
+/*
  * SVDM Discover SVIDs request -> response
  *
  * Request is properly formatted VDM Header with discover SVIDs command.
@@ -493,6 +809,11 @@ struct pd_policy {
 #define VDO_SVID(svid0, svid1) (((svid0) & 0xffff) << 16 | ((svid1) & 0xffff))
 #define PD_VDO_SVID_SVID0(vdo) ((vdo) >> 16)
 #define PD_VDO_SVID_SVID1(vdo) ((vdo) & 0xffff)
+
+#define VPD_VDO_MAX_VBUS(vdo) (((vdo) >> 15) & 0x3)
+#define VPD_VDO_VBUS_IMP(vdo) (((vdo) >> 7) & 0x3f)
+#define VPD_VDO_GND_IMP(vdo)  (((vdo) >> 1) & 0x3f)
+#define VPD_VDO_CTS(vdo)      ((vdo) & 1)
 
 /*
  * Google modes capabilities
@@ -526,8 +847,6 @@ struct pd_policy {
 	(((snkp) & 0xff) << 16 | ((srcp) & 0xff) << 8			\
 	 | ((usb) & 1) << 7 | ((gdr) & 1) << 6 | ((sign) & 0xF) << 2	\
 	 | ((sdir) & 0x3))
-#define PD_DP_PIN_CAPS(x) ((((x) >> 6) & 0x1) ? (((x) >> 16) & 0x3f)	\
-			   : (((x) >> 8) & 0x3f))
 
 #define MODE_DP_PIN_A 0x01
 #define MODE_DP_PIN_B 0x02
@@ -535,6 +854,10 @@ struct pd_policy {
 #define MODE_DP_PIN_D 0x08
 #define MODE_DP_PIN_E 0x10
 #define MODE_DP_PIN_F 0x20
+#define MODE_DP_PIN_ALL 0x3f
+
+#define MODE_DP_DFP_PIN_SHIFT 8
+#define MODE_DP_UFP_PIN_SHIFT 16
 
 /* Pin configs B/D/F support multi-function */
 #define MODE_DP_PIN_MF_MASK 0x2a
@@ -542,6 +865,8 @@ struct pd_policy {
 #define MODE_DP_PIN_BR2_MASK 0x3
 /* Pin configs C/D/E/F support DP signaling levels */
 #define MODE_DP_PIN_DP_MASK 0x3c
+/* Pin configs A/B/C/D/E/F */
+#define MODE_DP_PIN_CAPS_MASK 0x3f
 
 #define MODE_DP_V13  0x1
 #define MODE_DP_GEN2 0x2
@@ -549,6 +874,24 @@ struct pd_policy {
 #define MODE_DP_SNK  0x1
 #define MODE_DP_SRC  0x2
 #define MODE_DP_BOTH 0x3
+
+#define MODE_DP_CABLE_SHIFT 6
+
+/*
+ * Determine which pin assignments are valid for DP
+ *
+ * Based on whether the DP adapter identifies itself as a plug (permanently
+ * attached cable) or a receptacle, the pin assignments may be in the DFP_D
+ * field or the UFP_D field.
+ *
+ * Refer to DisplayPort Alt Mode On USB Type-C Standard version 1.0, table 5-2
+ * depending on state of receptacle bit, use pins for DFP_D (if receptacle==0)
+ * or UFP_D (if receptacle==1)
+ * Also refer to DisplayPort Alt Mode Capabilities Clarification (4/30/2015)
+ */
+#define PD_DP_PIN_CAPS(x) ((((x) >> MODE_DP_CABLE_SHIFT) & 0x1) \
+	? (((x) >> MODE_DP_UFP_PIN_SHIFT) & MODE_DP_PIN_CAPS_MASK) \
+	: (((x) >> MODE_DP_DFP_PIN_SHIFT) & MODE_DP_PIN_CAPS_MASK))
 
 /*
  * DisplayPort Status VDO
@@ -568,6 +911,8 @@ struct pd_policy {
 	(((irq) & 1) << 8 | ((lvl) & 1) << 7 | ((amode) & 1) << 6	\
 	 | ((usbc) & 1) << 5 | ((mf) & 1) << 4 | ((en) & 1) << 3	\
 	 | ((lp) & 1) << 2 | ((conn & 0x3) << 0))
+
+#define PD_VDO_DPSTS_MF_MASK BIT(4)
 
 #define PD_VDO_DPSTS_HPD_IRQ(x) (((x) >> 8) & 1)
 #define PD_VDO_DPSTS_HPD_LVL(x) (((x) >> 7) & 1)
@@ -640,6 +985,8 @@ struct pd_policy {
 
 /* Other Vendor IDs */
 #define USB_VID_APPLE  0x05ac
+#define USB_PID1_APPLE 0x1012
+#define USB_PID2_APPLE 0x1013
 
 /* Timeout for message receive in microseconds */
 #define USB_PD_RX_TMOUT_US 1800
@@ -647,88 +994,122 @@ struct pd_policy {
 /* --- Protocol layer functions --- */
 
 enum pd_states {
-	PD_STATE_DISABLED,
-	PD_STATE_SUSPENDED,
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-	PD_STATE_SNK_DISCONNECTED,
-	PD_STATE_SNK_DISCONNECTED_DEBOUNCE,
-	PD_STATE_SNK_HARD_RESET_RECOVER,
-	PD_STATE_SNK_DISCOVERY,
-	PD_STATE_SNK_REQUESTED,
-	PD_STATE_SNK_TRANSITION,
-	PD_STATE_SNK_READY,
-
-	PD_STATE_SNK_SWAP_INIT,
-	PD_STATE_SNK_SWAP_SNK_DISABLE,
-	PD_STATE_SNK_SWAP_SRC_DISABLE,
-	PD_STATE_SNK_SWAP_STANDBY,
-	PD_STATE_SNK_SWAP_COMPLETE,
-#endif /* CONFIG_USB_PD_DUAL_ROLE */
-
-	PD_STATE_SRC_DISCONNECTED,
-	PD_STATE_SRC_DISCONNECTED_DEBOUNCE,
-	PD_STATE_SRC_HARD_RESET_RECOVER,
-	PD_STATE_SRC_STARTUP,
-	PD_STATE_SRC_DISCOVERY,
-	PD_STATE_SRC_NEGOCIATE,
-	PD_STATE_SRC_ACCEPTED,
-	PD_STATE_SRC_POWERED,
-	PD_STATE_SRC_TRANSITION,
-	PD_STATE_SRC_READY,
-	PD_STATE_SRC_GET_SINK_CAP,
-	PD_STATE_DR_SWAP,
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-	PD_STATE_SRC_SWAP_INIT,
-	PD_STATE_SRC_SWAP_SNK_DISABLE,
-	PD_STATE_SRC_SWAP_SRC_DISABLE,
-	PD_STATE_SRC_SWAP_STANDBY,
-
-#ifdef CONFIG_USBC_VCONN_SWAP
-	PD_STATE_VCONN_SWAP_SEND,
-	PD_STATE_VCONN_SWAP_INIT,
-	PD_STATE_VCONN_SWAP_READY,
-#endif /* CONFIG_USBC_VCONN_SWAP */
-#endif /* CONFIG_USB_PD_DUAL_ROLE */
-
-	PD_STATE_SOFT_RESET,
-	PD_STATE_HARD_RESET_SEND,
-	PD_STATE_HARD_RESET_EXECUTE,
-#ifdef CONFIG_COMMON_RUNTIME
-	PD_STATE_BIST_RX,
-	PD_STATE_BIST_TX,
-#endif
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	PD_STATE_DRP_AUTO_TOGGLE,
-#endif
+	PD_STATE_DISABLED,			/* C0  */
+	PD_STATE_SUSPENDED,			/* C1  */
+	PD_STATE_SNK_DISCONNECTED,		/* C2  */
+	PD_STATE_SNK_DISCONNECTED_DEBOUNCE,	/* C3  */
+	PD_STATE_SNK_HARD_RESET_RECOVER,	/* C4  */
+	PD_STATE_SNK_DISCOVERY,			/* C5  */
+	PD_STATE_SNK_REQUESTED,			/* C6  */
+	PD_STATE_SNK_TRANSITION,		/* C7  */
+	PD_STATE_SNK_READY,			/* C8  */
+	PD_STATE_SNK_SWAP_INIT,			/* C9  */
+	PD_STATE_SNK_SWAP_SNK_DISABLE,		/* C10 */
+	PD_STATE_SNK_SWAP_SRC_DISABLE,		/* C11 */
+	PD_STATE_SNK_SWAP_STANDBY,		/* C12 */
+	PD_STATE_SNK_SWAP_COMPLETE,		/* C13 */
+	PD_STATE_SRC_DISCONNECTED,		/* C14 */
+	PD_STATE_SRC_DISCONNECTED_DEBOUNCE,	/* C15 */
+	PD_STATE_SRC_HARD_RESET_RECOVER,	/* C16 */
+	PD_STATE_SRC_STARTUP,			/* C17 */
+	PD_STATE_SRC_DISCOVERY,			/* C18 */
+	PD_STATE_SRC_NEGOCIATE,			/* C19 */
+	PD_STATE_SRC_ACCEPTED,			/* C20 */
+	PD_STATE_SRC_POWERED,			/* C21 */
+	PD_STATE_SRC_TRANSITION,		/* C22 */
+	PD_STATE_SRC_READY,			/* C23 */
+	PD_STATE_SRC_GET_SINK_CAP,		/* C24 */
+	PD_STATE_DR_SWAP,			/* C25 */
+	PD_STATE_SRC_SWAP_INIT,			/* C26 */
+	PD_STATE_SRC_SWAP_SNK_DISABLE,		/* C27 */
+	PD_STATE_SRC_SWAP_SRC_DISABLE,		/* C28 */
+	PD_STATE_SRC_SWAP_STANDBY,		/* C29 */
+	PD_STATE_VCONN_SWAP_SEND,		/* C30 */
+	PD_STATE_VCONN_SWAP_INIT,		/* C31 */
+	PD_STATE_VCONN_SWAP_READY,		/* C32 */
+	PD_STATE_SOFT_RESET,			/* C33 */
+	PD_STATE_HARD_RESET_SEND,		/* C34 */
+	PD_STATE_HARD_RESET_EXECUTE,		/* C35 */
+	PD_STATE_BIST_RX,			/* C36 */
+	PD_STATE_BIST_TX,			/* C37 */
+	PD_STATE_DRP_AUTO_TOGGLE,		/* C38 */
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,
 };
 
-#define PD_FLAGS_PING_ENABLED      (1 << 0) /* SRC_READY pings enabled */
-#define PD_FLAGS_PARTNER_DR_POWER  (1 << 1) /* port partner is dualrole power */
-#define PD_FLAGS_PARTNER_DR_DATA   (1 << 2) /* port partner is dualrole data */
-#define PD_FLAGS_CHECK_IDENTITY    (1 << 3) /* discover identity in READY */
-#define PD_FLAGS_SNK_CAP_RECVD     (1 << 4) /* sink capabilities received */
-#define PD_FLAGS_TCPC_DRP_TOGGLE   (1 << 5) /* TCPC-controlled DRP toggling */
-#define PD_FLAGS_EXPLICIT_CONTRACT (1 << 6) /* explicit pwr contract in place */
-#define PD_FLAGS_VBUS_NEVER_LOW    (1 << 7) /* VBUS input has never been low */
-#define PD_FLAGS_PREVIOUS_PD_CONN  (1 << 8) /* previously PD connected */
-#define PD_FLAGS_CHECK_PR_ROLE     (1 << 9) /* check power role in READY */
-#define PD_FLAGS_CHECK_DR_ROLE     (1 << 10)/* check data role in READY */
-#define PD_FLAGS_PARTNER_EXTPOWER  (1 << 11)/* port partner has external pwr */
-#define PD_FLAGS_VCONN_ON          (1 << 12)/* vconn is being sourced */
-#define PD_FLAGS_TRY_SRC           (1 << 13)/* Try.SRC states are active */
-#define PD_FLAGS_PARTNER_USB_COMM  (1 << 14)/* port partner is USB comms */
-#define PD_FLAGS_UPDATE_SRC_CAPS   (1 << 15)/* send new source capabilities */
-#define PD_FLAGS_TS_DTS_PARTNER    (1 << 16)/* partner has rp/rp or rd/rd */
+/* Generate compile-time errors for unsupported states */
+#ifndef CONFIG_USB_PD_DUAL_ROLE
+#define PD_STATE_SNK_DISCONNECTED UNSUPPORTED_PD_STATE_SNK_DISCONNECTED
+#define PD_STATE_SNK_DISCONNECTED_DEBOUNCE UNSUPPORTED_SNK_DISCONNECTED_DEBOUNCE
+#define PD_STATE_SNK_HARD_RESET_RECOVER UNSUPPORTED_SNK_HARD_RESET_RECOVER
+#define PD_STATE_SNK_DISCOVERY UNSUPPORTED_PD_STATE_SNK_DISCOVERY
+#define PD_STATE_SNK_REQUESTED UNSUPPORTED_PD_STATE_SNK_REQUESTED
+#define PD_STATE_SNK_TRANSITION UNSUPPORTED_PD_STATE_SNK_TRANSITION
+#define PD_STATE_SNK_READY UNSUPPORTED_PD_STATE_SNK_READY
+#define PD_STATE_SNK_SWAP_INIT UNSUPPORTED_PD_STATE_SNK_SWAP_INIT
+#define PD_STATE_SNK_SWAP_SNK_DISABLE UNSUPPORTED_PD_STATE_SNK_SWAP_SNK_DISABLE
+#define PD_STATE_SNK_SWAP_SRC_DISABLE UNSUPPORTED_PD_STATE_SNK_SWAP_SRC_DISABLE
+#define PD_STATE_SNK_SWAP_STANDBY UNSUPPORTED_PD_STATE_SNK_SWAP_STANDBY
+#define PD_STATE_SNK_SWAP_COMPLETE UNSUPPORTED_PD_STATE_SNK_SWAP_COMPLETE
+#define PD_STATE_SRC_SWAP_INIT UNSUPPORTED_PD_STATE_SRC_SWAP_INIT
+#define PD_STATE_SRC_SWAP_SNK_DISABLE UNSUPPORTED_PD_STATE_SRC_SWAP_SNK_DISABLE
+#define PD_STATE_SRC_SWAP_SRC_DISABLE UNSUPPORTED_PD_STATE_SRC_SWAP_SRC_DISABLE
+#define PD_STATE_SRC_SWAP_STANDBY UNSUPPORTED_PD_STATE_SRC_SWAP_STANDBY
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
+
+/* Generate compile-time errors for unsupported states */
+#if !defined(CONFIG_USBC_VCONN_SWAP) || !defined(CONFIG_USB_PD_DUAL_ROLE)
+#define PD_STATE_VCONN_SWAP_SEND UNSUPPORTED_PD_STATE_VCONN_SWAP_SEND
+#define PD_STATE_VCONN_SWAP_INIT UNSUPPORTED_PD_STATE_VCONN_SWAP_INIT
+#define PD_STATE_VCONN_SWAP_READY UNSUPPORTED_PD_STATE_VCONN_SWAP_READY
+#endif
+
+/* Generate compile-time errors for unsupported states */
+#ifndef CONFIG_COMMON_RUNTIME
+#define PD_STATE_BIST_RX UNSUPPORTED_PD_STATE_BIST_RX
+#define PD_STATE_BIST_TX UNSUPPORTED_PD_STATE_BIST_TX
+#endif
+
+/* Generate compile-time errors for unsupported states */
+#ifndef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define PD_STATE_DRP_AUTO_TOGGLE UNSUPPORTED_PD_STATE_DRP_AUTO_TOGGLE
+#endif
+
+#define PD_FLAGS_PING_ENABLED      BIT(0) /* SRC_READY pings enabled */
+#define PD_FLAGS_PARTNER_DR_POWER  BIT(1) /* port partner is dualrole power */
+#define PD_FLAGS_PARTNER_DR_DATA   BIT(2) /* port partner is dualrole data */
+#define PD_FLAGS_CHECK_IDENTITY    BIT(3) /* discover identity in READY */
+#define PD_FLAGS_SNK_CAP_RECVD     BIT(4) /* sink capabilities received */
+#define PD_FLAGS_TCPC_DRP_TOGGLE   BIT(5) /* TCPC-controlled DRP toggling */
+#define PD_FLAGS_EXPLICIT_CONTRACT BIT(6) /* explicit pwr contract in place */
+#define PD_FLAGS_VBUS_NEVER_LOW    BIT(7) /* VBUS input has never been low */
+#define PD_FLAGS_PREVIOUS_PD_CONN  BIT(8) /* previously PD connected */
+#define PD_FLAGS_CHECK_PR_ROLE     BIT(9) /* check power role in READY */
+#define PD_FLAGS_CHECK_DR_ROLE     BIT(10)/* check data role in READY */
+#define PD_FLAGS_PARTNER_EXTPOWER  BIT(11)/* port partner has external pwr */
+#define PD_FLAGS_VCONN_ON          BIT(12)/* vconn is being sourced */
+#define PD_FLAGS_TRY_SRC           BIT(13)/* Try.SRC states are active */
+#define PD_FLAGS_PARTNER_USB_COMM  BIT(14)/* port partner is USB comms */
+#define PD_FLAGS_UPDATE_SRC_CAPS   BIT(15)/* send new source capabilities */
+#define PD_FLAGS_TS_DTS_PARTNER    BIT(16)/* partner has rp/rp or rd/rd */
 /*
  * These PD_FLAGS_LPM* flags track the software state (PD_LPM_FLAGS_REQUESTED)
- * and hardware state (PD_LPM_FLAGS_ENGAGED) of the TCPC lower power mode.
+ * and hardware state (PD_LPM_FLAGS_ENGAGED) of the TCPC low power mode.
+ * PD_FLAGS_LPM_TRANSITION is set while the HW is transitioning into or out of
+ * low power (when PD_LPM_FLAGS_ENGAGED is changing).
  */
-#define PD_FLAGS_LPM_REQUESTED     (1 << 17)/* Tracks SW LPM state */
-#define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+#define PD_FLAGS_LPM_REQUESTED     BIT(17)/* Tracks SW LPM state */
+#define PD_FLAGS_LPM_ENGAGED       BIT(18)/* Tracks HW LPM state */
+#define PD_FLAGS_LPM_TRANSITION    BIT(19)/* Tracks HW LPM transition */
+#endif
+
+/*
+ * Tracks whether port negotiation may have stalled due to not starting reset
+ * timers in SNK_DISCOVERY
+ */
+#define PD_FLAGS_SNK_WAITING_BATT BIT(20)
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -744,27 +1125,18 @@ enum pd_states {
 					   PD_FLAGS_TRY_SRC | \
 					   PD_FLAGS_PARTNER_USB_COMM | \
 					   PD_FLAGS_UPDATE_SRC_CAPS | \
-					   PD_FLAGS_TS_DTS_PARTNER)
+					   PD_FLAGS_TS_DTS_PARTNER | \
+					   PD_FLAGS_SNK_WAITING_BATT)
 
 /* Per-port battery backed RAM flags */
-#define PD_BBRMFLG_EXPLICIT_CONTRACT (1 << 0)
-#define PD_BBRMFLG_POWER_ROLE        (1 << 1)
-#define PD_BBRMFLG_DATA_ROLE         (1 << 2)
+#define PD_BBRMFLG_EXPLICIT_CONTRACT BIT(0)
+#define PD_BBRMFLG_POWER_ROLE        BIT(1)
+#define PD_BBRMFLG_DATA_ROLE         BIT(2)
+#define PD_BBRMFLG_VCONN_ROLE        BIT(3)
 
-enum pd_cc_states {
-	PD_CC_NONE,
+/* Initial value for CC debounce variable */
+#define PD_CC_UNSET -1
 
-	/* From DFP perspective */
-	PD_CC_NO_UFP,
-	PD_CC_AUDIO_ACC,
-	PD_CC_DEBUG_ACC,
-	PD_CC_UFP_ATTACHED,
-
-	/* From UFP perspective */
-	PD_CC_DFP_ATTACHED
-};
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE
 enum pd_dual_role_states {
 	/* While disconnected, toggle between src and sink */
 	PD_DRP_TOGGLE_ON,
@@ -800,8 +1172,6 @@ void pd_set_dual_role(int port, enum pd_dual_role_states state);
  */
 int pd_get_role(int port);
 
-#endif
-
 /* Control Message type */
 enum pd_ctrl_msg_type {
 	/* 0 Reserved */
@@ -833,10 +1203,10 @@ enum pd_ctrl_msg_type {
 /* Battery Status Data Object fields for REV 3.0 */
 #define BSDO_CAP_UNKNOWN 0xffff
 #define BSDO_CAP(n)      (((n) & 0xffff) << 16)
-#define BSDO_INVALID     (1 << 8)
-#define BSDO_PRESENT     (1 << 9)
-#define BSDO_DISCHARGING (1 << 10)
-#define BSDO_IDLE        (1 << 11)
+#define BSDO_INVALID     BIT(8)
+#define BSDO_PRESENT     BIT(9)
+#define BSDO_DISCHARGING BIT(10)
+#define BSDO_IDLE        BIT(11)
 
 /* Get Battery Cap Message fields for REV 3.0 */
 #define BATT_CAP_REF(n)  (((n) >> 16) & 0xff)
@@ -876,18 +1246,47 @@ enum pd_data_msg_type {
 	PD_DATA_VENDOR_DEF = 15,
 };
 
-/* Protocol revision */
-#define PD_REV10 0
-#define PD_REV20 1
-#define PD_REV30 2
+/* CC Polarity type */
+enum pd_cc_polarity_type {
+	POLARITY_CC1 = 0,
+	POLARITY_CC2 = 1,
+};
 
-/* Power role */
-#define PD_ROLE_SINK   0
-#define PD_ROLE_SOURCE 1
-/* Data role */
-#define PD_ROLE_UFP          0
-#define PD_ROLE_DFP          1
-#define PD_ROLE_DISCONNECTED 2
+/* Protocol revision */
+enum pd_rev_type {
+	PD_REV10,
+	PD_REV20,
+	PD_REV30
+};
+
+/*
+ * Power role. See 6.2.1.1.4 Port Power Role. Only applies to SOP packets.
+ * Replaced by pd_cable_plug for SOP' and SOP" packets.
+ */
+enum pd_power_role {
+	PD_ROLE_SINK = 0,
+	PD_ROLE_SOURCE = 1
+};
+
+/*
+ * Data role. See 6.2.1.1.6 Port Data Role. Only applies to SOP.
+ * Replaced by reserved field for SOP' and SOP" packets.
+ */
+enum pd_data_role {
+	PD_ROLE_UFP = 0,
+	PD_ROLE_DFP = 1,
+	PD_ROLE_DISCONNECTED = 2,
+};
+
+/*
+ * Cable plug. See 6.2.1.1.7 Cable Plug. Only applies to SOP' and SOP".
+ * Replaced by pd_power_role for SOP packets.
+ */
+enum pd_cable_plug {
+	PD_PLUG_FROM_DFP_UFP = 0,
+	PD_PLUG_FROM_CABLE = 1
+};
+
 /* Vconn role */
 #define PD_ROLE_VCONN_OFF 0
 #define PD_ROLE_VCONN_ON  1
@@ -921,7 +1320,7 @@ enum pd_data_msg_type {
 /* build extended message header */
 /* All extended messages are chunked, so set bit 15 */
 #define PD_EXT_HEADER(cnum, rchk, dsize) \
-	 ((1 << 15) | ((cnum) << 11) | \
+	 (BIT(15) | ((cnum) << 11) | \
 	 ((rchk) << 10) | (dsize))
 
 /* build message header */
@@ -933,16 +1332,38 @@ enum pd_data_msg_type {
 /* Used for processing pd header */
 #define PD_HEADER_EXT(header)   (((header) >> 15) & 1)
 #define PD_HEADER_CNT(header)   (((header) >> 12) & 7)
-#define PD_HEADER_TYPE(header)  ((header) & 0xF)
+/*
+ * NOTE: bit 4 was added in PD 3.0, and should be reserved and set to 0 in PD
+ * 2.0 messages
+ */
+#define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
+#define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
 #define PD_HEADER_REV(header)   (((header) >> 6) & 3)
 #define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
+
+/*
+ * The message header is a 16-bit value that's stored in a 32-bit data type.
+ * SOP* is encoded in bits 31 to 28 of the 32-bit data type.
+ * NOTE: This is not part of the PD spec.
+ */
+#define PD_HEADER_GET_SOP(header) (((header) >> 28) & 0xf)
+#define PD_HEADER_SOP(sop) ((sop) << 28)
+#define PD_MSG_SOP         0
+#define PD_MSG_SOPP        1
+#define PD_MSG_SOPPP       2
+#define PD_MSG_SOP_DBGP    3
+#define PD_MSG_SOP_DBGPP   4
+#define PD_MSG_SOP_CBL_RST 5
 
 /* Used for processing pd extended header */
 #define PD_EXT_HEADER_CHUNKED(header)   (((header) >> 15) & 1)
 #define PD_EXT_HEADER_CHUNK_NUM(header) (((header) >> 11) & 0xf)
 #define PD_EXT_HEADER_REQ_CHUNK(header) (((header) >> 10) & 1)
 #define PD_EXT_HEADER_DATA_SIZE(header) ((header) & 0x1ff)
+
+/* Used to get extended header from the first 32-bit word of the message */
+#define GET_EXT_HEADER(msg) (msg & 0xffff)
 
 /* K-codes for special symbols */
 #define PD_SYNC1 0x18
@@ -973,6 +1394,9 @@ enum pd_data_msg_type {
 
 /* --- Policy layer functions --- */
 
+/** Schedules the interrupt handler for the TCPC on a high priority task. */
+void schedule_deferred_pd_interrupt(int port);
+
 /* Request types for pd_build_request() */
 enum pd_request_type {
 	PD_REQUEST_VSAFE5V,
@@ -999,18 +1423,6 @@ int pd_get_vdo_ver(int port);
 #define pd_get_rev(n)     PD_REV20
 #define pd_get_vdo_ver(n) VDM_VER10
 #endif
-/**
- * Decide which PDO to choose from the source capabilities.
- *
- * @param port USB-C port number
- * @param rdo  requested Request Data Object.
- * @param ma  selected current limit (stored on success)
- * @param mv  selected supply voltage (stored on success)
- * @param req_type request type
- * @return <0 if invalid, else EC_SUCCESS
- */
-int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
-		     enum pd_request_type req_type);
 
 /**
  * Check if max voltage request is allowed (only used if
@@ -1019,6 +1431,15 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
  * @return True if max voltage request allowed, False otherwise
  */
 int pd_is_max_request_allowed(void);
+
+/**
+ * Waits for the TCPC to exit low power mode (including re-initializing) if it
+ * is currently in low power mode. If not, then the function immediately
+ * returns.
+ *
+ * @param port USB-C port number
+ */
+void pd_wait_exit_low_power(int port);
 
 /**
  * Informs the TCPM state machine that code within the EC has accessed the TCPC
@@ -1032,22 +1453,16 @@ int pd_is_max_request_allowed(void);
 void pd_device_accessed(int port);
 
 /**
- * Returns true if this TCPC is in low power mode and a failed i2c transaction
- * should be retried after waiting for the device to wake up via
- * pd_wait_for_wakeup()
+ * Prevents the TCPC from going back into low power mode. Invocations must be
+ * called in a pair from the same task, otherwise the TCPC will never re-enter
+ * low power mode.
+ *
+ * Note: This will not wake the device up if it is in LPM.
  *
  * @param port USB-C port number
- * @return True if device is in LPM and i2c transaction should be retried
+ * @param prevent 1 to prevent this port from entering LPM
  */
-int pd_device_in_low_power(int port);
-
-/**
- * Requests that the PD task wakeup the TCPC out of low power mode properly, and
- * waits for the wakeup operation to complete.
- *
- * @param port USB-C port number
- */
-void pd_wait_for_wakeup(int port);
+void pd_prevent_low_power_mode(int port, int prevent);
 
 /**
  * Process source capabilities packet
@@ -1057,26 +1472,6 @@ void pd_wait_for_wakeup(int port);
  * @param src_caps Power Data Objects representing the source capabilities.
  */
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps);
-
-/**
- * Find PDO index that offers the most amount of power and stays within
- * max_mv voltage.
- *
- * @param port USB-C port number
- * @param max_mv maximum voltage (or -1 if no limit)
- * @param pdo raw pdo corresponding to index, or index 0 on error (output)
- * @return index of PDO within source cap packet
- */
-int pd_find_pdo_index(int port, int max_mv, uint32_t *pdo);
-
-/**
- * Extract power information out of a Power Data Object (PDO)
- *
- * @param pdo raw pdo to extract
- * @param ma current of the PDO (output)
- * @param mv voltage of the PDO (output)
- */
-void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv);
 
 /**
  * Reduce the sink power consumption to a minimum value.
@@ -1105,7 +1500,7 @@ unsigned pd_get_max_voltage(void);
  * @mv input voltage
  * @return 1 if voltage supported, 0 if not
  */
-int pd_is_valid_input_voltage(int mv);
+__override_proto int pd_is_valid_input_voltage(int mv);
 
 /**
  * Request a new operating voltage.
@@ -1130,7 +1525,7 @@ int pd_board_check_request(uint32_t rdo, int pdo_cnt);
  *
  * param idx index of the new voltage in the source PDO table.
  */
-void pd_transition_voltage(int idx);
+__override_proto void pd_transition_voltage(int idx);
 
 /**
  * Go back to the default/safe state of the power supply
@@ -1193,7 +1588,7 @@ void pd_update_contract(int port);
 
 /* Encode DTS status of port partner in current limit parameter */
 typedef uint32_t typec_current_t;
-#define TYPEC_CURRENT_DTS_MASK (1 << 31)
+#define TYPEC_CURRENT_DTS_MASK BIT(31)
 #define TYPEC_CURRENT_ILIM_MASK (~TYPEC_CURRENT_DTS_MASK)
 
 /**
@@ -1203,8 +1598,9 @@ typedef uint32_t typec_current_t;
  * @param max_ma Maximum current limit
  * @param supply_voltage Voltage at which current limit is applied
  */
-void typec_set_input_current_limit(int port, typec_current_t max_ma,
-				   uint32_t supply_voltage);
+__override_proto void typec_set_input_current_limit(int port,
+						    typec_current_t max_ma,
+						    uint32_t supply_voltage);
 
 /**
  * Set the type-C current limit when sourcing current..
@@ -1212,14 +1608,14 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
  * @param port USB-C port number
  * @param rp One of enum tcpc_rp_value (eg TYPEC_RP_3A0) defining the limit.
  */
-void typec_set_source_current_limit(int port, int rp);
+void typec_set_source_current_limit(int port, enum tcpc_rp_value rp);
 
 /**
  * Verify board specific health status : current, voltages...
  *
  * @return EC_SUCCESS if the board is good, <0 else.
  */
-int pd_board_checks(void);
+__override_proto int pd_board_checks(void);
 
 /**
  * Return if VBUS is detected on type-C port
@@ -1242,7 +1638,7 @@ void pd_vbus_low(int port);
  * @param port USB-C port number
  * @return True if power swap is allowed, False otherwise
  */
-int pd_check_power_swap(int port);
+__override_proto int pd_check_power_swap(int port);
 
 /**
  * Check if data swap is allowed.
@@ -1251,7 +1647,7 @@ int pd_check_power_swap(int port);
  * @param data_role current data role
  * @return True if data swap is allowed, False otherwise
  */
-int pd_check_data_swap(int port, int data_role);
+__override_proto int pd_check_data_swap(int port, int data_role);
 
 /**
  * Check if vconn swap is allowed.
@@ -1269,7 +1665,7 @@ int pd_check_vconn_swap(int port);
  * @param pr_role Our power role
  * @param flags PD flags
  */
-void pd_check_pr_role(int port, int pr_role, int flags);
+__override_proto void pd_check_pr_role(int port, int pr_role, int flags);
 
 /**
  * Check current data role for potential data swap
@@ -1278,7 +1674,7 @@ void pd_check_pr_role(int port, int pr_role, int flags);
  * @param dr_role Our data role
  * @param flags PD flags
  */
-void pd_check_dr_role(int port, int dr_role, int flags);
+__override_proto void pd_check_dr_role(int port, int dr_role, int flags);
 
 /**
  * Check if we should charge from this device. This is
@@ -1297,7 +1693,7 @@ int pd_charge_from_device(uint16_t vid, uint16_t pid);
  * @param port USB-C port number
  * @param data_role new data role
  */
-void pd_execute_data_swap(int port, int data_role);
+__override_proto void pd_execute_data_swap(int port, int data_role);
 
 /**
  * Get PD device info used for VDO_CMD_SEND_INFO / VDO_CMD_READ_INFO
@@ -1315,7 +1711,8 @@ void pd_get_info(uint32_t *info_data);
  * @param rpayload pointer to the data to send back.
  * @return if >0, number of VDOs to send back.
  */
-int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
+__override_proto int pd_custom_vdm(int port, int cnt, uint32_t *payload,
+				   uint32_t **rpayload);
 
 /**
  * Handle Structured Vendor Defined Messages
@@ -1391,6 +1788,33 @@ uint16_t pd_get_identity_vid(int port);
 uint16_t pd_get_identity_pid(int port);
 
 /**
+ * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ * @param data_role	current data role
+ * @param pd_flags	current pd flags
+ * @return		For rev3.0, true if vconn is on
+ *			For rev2.0, true if vconn is on and data_role is dfp
+ *			False otherwise
+ */
+uint8_t is_sop_prime_ready(int port, uint8_t data_role, uint32_t pd_flags);
+
+/**
+ * Reset Cable type, Cable attributes and cable flags
+ *
+ * @param port     USB-C port number
+ */
+void reset_pd_cable(int port);
+
+/**
+ * Return the type of cable attached
+ *
+ * @param port	USB-C port number
+ * @return	cable type
+ */
+enum idh_ptype get_usb_pd_mux_cable_type(int port);
+
+/**
  * Store Device ID & RW hash of device
  *
  * @param port			USB-C port number
@@ -1402,6 +1826,13 @@ uint16_t pd_get_identity_pid(int port);
  */
 int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 			 uint32_t ec_current_image);
+
+/**
+ * Fast Role Swap was detected
+ *
+ * @param port			USB-C port number
+ */
+void pd_got_frs_signal(int port);
 
 /**
  * Try to fetch one PD log entry from accessory
@@ -1433,7 +1864,7 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 		 int count);
 
 /* Power Data Objects for the source and the sink */
-extern const uint32_t pd_src_pdo[];
+__override_proto extern const uint32_t pd_src_pdo[];
 extern const int pd_src_pdo_cnt;
 extern const uint32_t pd_src_pdo_max[];
 extern const int pd_src_pdo_max_cnt;
@@ -1623,6 +2054,12 @@ int pd_rx_started(int port);
 void pd_set_suspend(int port, int enable);
 
 /**
+ * Resume the PD task for a port after a period of time has elapsed.
+ * @param port USB-C port number
+ */
+void pd_deferred_resume(int port);
+
+/**
  * Check if the port has been initialized and PD task has not been
  * suspended.
  *
@@ -1727,6 +2164,21 @@ int pd_get_polarity(int port);
 int pd_get_partner_data_swap_capable(int port);
 
 /**
+ * Handle an overcurrent protection event.  The port acting as a source has
+ * reported an overcurrent event.
+ *
+ * @param port: USB-C port number.
+ */
+void pd_handle_overcurrent(int port);
+
+/**
+ * Handle a CC overvoltage protection event.
+ *
+ * @param port: USB-C port number.
+ */
+void pd_handle_cc_overvoltage(int port);
+
+/**
  * Request power swap command to be issued
  *
  * @param port USB-C port number
@@ -1797,11 +2249,85 @@ int pd_ts_dts_plugged(int port);
 int pd_capable(int port);
 
 /**
+ * Returns the source caps list
+ *
+ * @param port USB-C port number
+ */
+const uint32_t * const pd_get_src_caps(int port);
+
+/**
+ * Returns the number of source caps
+ *
+ * @param port USB-C port number
+ */
+uint8_t pd_get_src_cap_cnt(int port);
+
+/**
+ * Return true if partner port is capable of communication over USB data
+ * lines.
+ *
+ * @param port USB-C port number
+ */
+int pd_get_partner_usb_comm_capable(int port);
+
+/**
  * Return true if vbus is present on the specified port.
  *
  * @param port USB-C port number
  */
 int pd_is_vbus_present(int port);
+
+/**
+ * Get current DisplayPort pin mode on the specified port.
+ *
+ * @param port USB-C port number
+ * @return MODE_DP_PIN_[A-E] if used else 0
+ */
+__override_proto uint8_t get_dp_pin_mode(int port);
+
+#ifdef CONFIG_USB_PD_PORT_MAX_COUNT
+#ifdef CONFIG_USB_POWER_DELIVERY
+/**
+ * Get board specific usb pd port count
+ *
+ * @return <= CONFIG_USB_PD_PORT_MAX_COUNT if configured in board file,
+ *         else return CONFIG_USB_PD_PORT_MAX_COUNT
+ */
+uint8_t board_get_usb_pd_port_count(void);
+#else
+static inline uint8_t board_get_usb_pd_port_count(void)
+{
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+#endif /* CONFIG_USB_POWER_DELIVERY */
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
+
+/**
+ * Return true if specified PD port partner is UFP.
+ *
+ * @param port USB-C port number
+ */
+int pd_partner_is_ufp(int port);
+
+/**
+ * Return true if specified PD port is debug accessory.
+ *
+ * @param port USB-C port number
+ */
+int pd_is_debug_acc(int port);
+
+/*
+ * Notify the AP that we have entered into DisplayPort Alternate Mode.  This
+ * sets a DP_ALT_MODE_ENTERED MKBP event which may wake the AP.
+ */
+void pd_notify_dp_alt_mode_entry(void);
+
+/*
+ * Determines the PD state of the port partner according to Table 4-10 in USB PD
+ * specification.
+ */
+enum pd_cc_states pd_get_cc_state(
+	enum tcpc_cc_voltage_status cc1, enum tcpc_cc_voltage_status cc2);
 
 /*
  * Optional, get the board-specific SRC DTS polarity.
@@ -1842,4 +2368,133 @@ static inline void pd_log_event(uint8_t type, uint8_t size_port,
 static inline int pd_vdm_get_log_entry(uint32_t *payload) { return 0; }
 #endif /* CONFIG_USB_PD_LOGGING */
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+/**
+ * Prepare for a sysjump by exiting any alternate modes, if PD communication is
+ * allowed.
+ *
+ * Note: this call will block until the PD task has finished its exit mode and
+ * re-awoken the calling task.
+ */
+void pd_prepare_sysjump(void);
+#endif
+
+/* ----- SVDM handlers ----- */
+
+/* DisplayPort Alternate Mode */
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+extern int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+extern uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+/**
+ * Configure the pins used for DisplayPort Alternate Mode into safe state.
+ *
+ * @param port The PD port number
+ */
+__override_proto void svdm_safe_dp_mode(int port);
+
+/**
+ * Enter DisplayPort Alternate Mode.
+ *
+ * The default implementation will only enter DP Alt Mode if the SoC is on.
+ * Also, it may notify the AP that the mode was entered.
+ *
+ * @param port The PD port number
+ * @param mode_caps Bitmask indicating DisplayPort mode capabilities
+ * @return 0 if mode is entered, -1 otherwise.
+ */
+__override_proto int svdm_enter_dp_mode(int port, uint32_t mode_caps);
+
+/**
+ * Construct a DP status response.
+ *
+ * @param port The PD port number
+ * @param payload Pointer to the PDO payload which is filled with the DPStatus
+ *                information.
+ * @return number of VDOs
+ */
+__override_proto int svdm_dp_status(int port, uint32_t *payload);
+
+/**
+ * Configure the pins used for DisplayPort Alternate Mode.
+ *
+ * @param port The PD port number
+ * @payload payload Pointer to the PDO payload which is filled with the
+ *                  DPConfigure response message
+ * @return number of VDOs
+ */
+__override_proto int svdm_dp_config(int port, uint32_t *payload);
+
+/**
+ * Perform any other work required after configuring the pins for DP Alt Mode.
+ *
+ * Typically, this involves sending the HPD signal from either the EC or TCPC to
+ * the GPU.
+ * @param port The PD port number
+ */
+__override_proto void svdm_dp_post_config(int port);
+
+/**
+ * Called when a DisplayPort Attention command is received
+ *
+ * The default implementation will parse the Attention message and indicate the
+ * HPD level to the GPU.
+ *
+ * @param port The PD port number
+ * @param payload Pointer to the payload received from the attention command
+ * @return 0 for NAK, 1 for ACK
+ */
+__override_proto int svdm_dp_attention(int port, uint32_t *payload);
+
+/**
+ * Exit DisplayPort Alternate Mode.
+ *
+ * @param port The PD port number
+ */
+__override_proto void svdm_exit_dp_mode(int port);
+
+/* Google Firmware Update Alternate Mode */
+/**
+ * Enter Google Firmware Update (GFU) Mode.
+ *
+ * @param port The PD port number
+ * @param mode_caps Unused for GFU
+ * @return 0 to enter the mode, -1 otherwise
+ */
+__override_proto int svdm_enter_gfu_mode(int port, uint32_t mode_caps);
+
+/**
+ * Exit Google Firmware Update Mode.
+ *
+ * @param port The PD port number
+ */
+__override_proto void svdm_exit_gfu_mode(int port);
+
+/**
+ * Called after successful entry into GFU Mode
+ *
+ * The default implementation sends VDO_CMD_READ_INFO.
+ * @param port The PD port number
+ * @param payload Unused for GFU
+ * @return The number of VDOs
+ */
+__override_proto int svdm_gfu_status(int port, uint32_t *payload);
+
+/**
+ * Configure any pins needed for GFU Mode
+ *
+ * @param port The PD port number
+ * @param payload Unused for GFU
+ * @return The number of VDOs
+ */
+__override_proto int svdm_gfu_config(int port, uint32_t *payload);
+
+/**
+ * Called when an Attention Message is received
+ *
+ * @param port The PD port number
+ * @param payload Unusued for GFU
+ * @return The number of VDOs
+ */
+__override_proto int svdm_gfu_attention(int port, uint32_t *payload);
 #endif  /* __CROS_EC_USB_PD_H */

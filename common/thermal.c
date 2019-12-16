@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -119,8 +119,15 @@ static void thermal_control(void)
 		 * bringup of a new board, where we haven't debugged the I2C
 		 * bus to the sensors; forcing a shutdown in that case would
 		 * merely hamper board bringup.
+		 *
+		 * If in G3, then there is no need trigger an SMI event since
+		 * the AP is off and this can be an expected state if
+		 * temperature sensors are powered by a power rail that's only
+		 * on if the AP is out of G3. Note this could be 'ANY_OFF' as
+		 * well, but that causes the thermal unit test to fail.
 		 */
-		smi_sensor_failure_warning();
+		if (!chipset_in_state(CHIPSET_STATE_HARD_OFF))
+			smi_sensor_failure_warning();
 		return;
 	}
 
@@ -172,7 +179,7 @@ static void thermal_control(void)
 	 * profiles to each fan - in case one fan cools the CPU while another
 	 * cools the radios or battery.
 	 */
-		for (i = 0; i < CONFIG_FANS; i++)
+		for (i = 0; i < fan_get_count(); i++)
 			fan_set_percent_needed(i, fmax);
 #endif
 	}
@@ -258,7 +265,8 @@ DECLARE_CONSOLE_COMMAND(thermalset, command_thermalset,
  * not version 0. Different structs, different meanings.
  */
 
-static int thermal_command_set_threshold(struct host_cmd_handler_args *args)
+static enum ec_status
+thermal_command_set_threshold(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_thermal_set_threshold_v1 *p = args->params;
 
@@ -273,7 +281,8 @@ DECLARE_HOST_COMMAND(EC_CMD_THERMAL_SET_THRESHOLD,
 		     thermal_command_set_threshold,
 		     EC_VER_MASK(1));
 
-static int thermal_command_get_threshold(struct host_cmd_handler_args *args)
+static enum ec_status
+thermal_command_get_threshold(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_thermal_get_threshold_v1 *p = args->params;
 	struct ec_thermal_config *r = args->response;

@@ -1,5 +1,5 @@
 /* -*- mode:c -*-
- * Copyright (c) 2016 The Chromium OS Authors. All rights reserved.
+ * Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -45,6 +45,39 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /*
+ * A manually maintained tally of all GPIO ports configured in this file.
+ *
+ * GPIO0.0   int_ap_l
+ * GPIO0.1   ec_flash_select
+ * GPIO0.2   ap_flash_select
+ * GPIO0.4   sys_rst_l_out
+ * GPIO0.5   ccd_mode_l
+ * GPIO0.6   batt_pres_l
+ * GPIO0.7   spi_mosi
+ * GPIO0.8   spi_clk
+ * GPIO0.9   spi_cs_l
+ * GPIO0.10  diob4
+ * GPIO0.11  en_pp3300_ina
+ * GPIO0.12  i2c_scl_ina
+ * GPIO0.13  i2c_sda_ina
+ * GPIO0.14  i2cs_sda poll
+ * GPIO0.15  ec_tx_cr50_rx_out
+ * GPIO1.0   tpm_rst_l
+ * GPIO1.1   detect_ap_uart
+ * GPIO1.2   detect_ec_uart
+ * GPIO1.3   detect_servo
+ * GPIO1.4   detect_tpm_rst_asserted
+ * GPIO1.5   unwedge_i2cs_scl
+ * GPIO1.6   monitor_i2cs_sda
+ * GPIO1.11  ec_tx_cr50_rx_in
+ * GPIO1.12  strap_a0
+ * GPIO1.13  strap_a1
+ * GPIO1.14  strap_b0
+ * GPIO1.15  strap_b1
+ */
+/*****************************************************************************/
+/* INTERRUPT GPIOs - interrupts processed in chip/g/gpio.c */
+/*
  * The system reset signal can be from two different pins depending on what the
  * board type is. One board uses plt_rst_l (diom3) and the other board type uses
  * sys_rst_l (diom0) to detect a warm reset. The pin is selected based on the
@@ -56,8 +89,8 @@
  * system resets.
  */
 GPIO_INT(TPM_RST_L,       PIN(1, 0),  GPIO_INT_RISING, tpm_rst_deasserted)
-GPIO_INT(DETECT_AP,       PIN(1, 1),  GPIO_INT_HIGH, ap_detect_asserted)
-GPIO_INT(DETECT_EC,       PIN(1, 2),  GPIO_INT_HIGH, ec_detect_asserted)
+GPIO_INT(DETECT_AP_UART,  PIN(1, 1),  GPIO_INT_HIGH, ap_detect_asserted)
+GPIO_INT(DETECT_EC_UART,  PIN(1, 2),  GPIO_INT_HIGH, ec_detect_asserted)
 /*
  * DETECT_SERVO and EC_TX_CR50_RX pins must NOT be changed without also changing
  * the pinmux_regval fields in the bitbang_config in board.c.  The pinmux values
@@ -65,10 +98,26 @@ GPIO_INT(DETECT_EC,       PIN(1, 2),  GPIO_INT_HIGH, ec_detect_asserted)
  */
 GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
 	 servo_detect_asserted)
+/*
+ * Whan TPM_RST_L is asserted, the AP is in reset. Use this for detecting when
+ * the AP is off.
+ */
+GPIO_INT(DETECT_TPM_RST_L_ASSERTED, PIN(1, 4),  GPIO_INT_FALLING,
+         tpm_rst_asserted)
 
-/* This is used for EC flash bit bang programming. */
-GPIO(EC_TX_CR50_RX,   PIN(1, 4),  GPIO_INPUT)
+/*****************************************************************************/
+/* NON STANDARD INTERRUPT GPIOs - handlers defined and configured in board.c */
+/*
+ * This signal is used as an interrupt for uart bitbang. This is setup manually
+ * in board.c instead of using chip/g/gpio.c, so the interrupts can be processed
+ * more quickly. This increases the max bitbang programming speed.
+ *
+ * If this gpio is changed, you must update the information in board.c.
+ */
+GPIO(EC_TX_CR50_RX,   PIN(1, 11),  GPIO_INPUT)
 
+/*****************************************************************************/
+/* GPIOs */
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
 
@@ -76,14 +125,18 @@ GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
 GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
 GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
 
-/* Pull this low to reset the AP. (We reset the EC with the RBOX.) */
-GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
+/*
+ * Pull this low to reset the AP. (We reset the EC with the RBOX.)
+ * This is pseudo open drain.
+ */
+GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_ODR_HIGH)
 
 /*
  * Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
  * it decided instead.
+ * This is pseudo open drain.
  */
-GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_ODR_HIGH | GPIO_PULL_UP)
 
 /* Battery present signal is active low */
 GPIO(BATT_PRES_L,     PIN(0, 6), GPIO_INPUT)
@@ -102,6 +155,18 @@ GPIO(STRAP_A1,        PIN(1, 13), GPIO_INPUT)
 GPIO(STRAP_B0,        PIN(1, 14), GPIO_INPUT)
 GPIO(STRAP_B1,        PIN(1, 15), GPIO_INPUT)
 
+GPIO(UNWEDGE_I2CS_SCL, PIN(1, 5), GPIO_OUT_HIGH)
+
+/*
+ * A GPIO to sample the current state of the I2CS SDA line, allowing to detect
+ * the 'wedged I2C bus' condition.
+ */
+GPIO(MONITOR_I2CS_SDA, PIN(1, 6), GPIO_INPUT)
+
+/*
+ * If you change the names of EN_PP3300_INA_L, I2C_SCL_INA, or I2C_SDA_INA,
+ * you also need to update the usage in closed_source_set1.c
+ */
 /* Control the load switch powering the INA 3.3V rail */
 GPIO(EN_PP3300_INA_L, PIN(0, 11), GPIO_ODR_HIGH)
 /* GPIOs used for I2CM pins for INAs */
@@ -125,8 +190,11 @@ GPIO(I2CS_SDA,        PIN(0, 14), GPIO_INPUT)
  */
 GPIO(EC_TX_CR50_RX_OUT, PIN(0, 15), GPIO_ODR_HIGH)
 
-/* Unimplemented signals which we need to emulate for now */
-/* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
+/*
+ * ENTERING_RW is not a GPIO in H1, but an input pin to RBOX module.
+ * However, we declare it as 'UNIMPLEMENTED' to avoid a compile error in
+ * common/system.c.
+ */
 UNIMPLEMENTED(ENTERING_RW)
 
 /*
@@ -143,20 +211,20 @@ PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
                                                 /* We can't pull it up */
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
+PINMUX(GPIO(MONITOR_I2CS_SDA), A1, GPIO_INPUT)
+
+/*
+ * Update closed_source_set1.c if pinmux for EN_PP3300_INA_L is changed or
+ * removed.
+ */
 PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
-/*
- * To allow the EC to drive the signal we set sys_rst_l_out as an input here and
- * only change it to an output when we want to assert the signal.
- */
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
-/*
- * CCD_MODE_L is an input above, but we need to be able to drive it as
- * an output if Rdd detects the debug cable.  So set DIO_OUTPUT as
- * well.  It will be tristated initially, because we don't set
- * GPIO_OUTPUT above.
- */
-PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT | DIO_OUTPUT)
+PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
+/*
+ * Update closed_source_set1.c if pinmux for I2C_SCL_INA or I2C_SDA_INA is
+ * changed or removed.
+ */
 PINMUX(GPIO(I2C_SCL_INA),     B0, DIO_INPUT)
 PINMUX(GPIO(I2C_SDA_INA),     B1, DIO_INPUT)
 /* UARTs */
@@ -181,8 +249,8 @@ PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)	/* EC console */
  * driving the cr50 uart TX at the same time as servo is driving those pins may
  * damage both servo and cr50.
  */
-PINMUX(GPIO(DETECT_AP),         A3, DIO_INPUT)
-PINMUX(GPIO(DETECT_EC),         B6, DIO_INPUT)
+PINMUX(GPIO(DETECT_AP_UART),    A3, DIO_INPUT)
+PINMUX(GPIO(DETECT_EC_UART),    B6, DIO_INPUT)
 PINMUX(GPIO(EC_TX_CR50_RX),     B6, DIO_INPUT)
 PINMUX(GPIO(EC_TX_CR50_RX_OUT), B6, DIO_INPUT)
 PINMUX(GPIO(DETECT_SERVO),      B5, DIO_INPUT)

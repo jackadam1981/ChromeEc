@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -58,12 +58,13 @@
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED
 #define CONFIG_USB_PD_COMM_LOCKED
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_FLASH_ERASE_CHECK
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_LOGGING
-#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
@@ -89,7 +90,7 @@
 
 /* slave address for host commands */
 #ifdef HAS_TASK_HOSTCMD
-#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR CONFIG_USB_PD_I2C_SLAVE_ADDR
+#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR_FLAGS CONFIG_USB_PD_I2C_SLAVE_ADDR_FLAGS
 #endif
 
 #ifndef __ASSEMBLER__
@@ -143,9 +144,6 @@ enum pwm_channel {
 
 /* Map current in milli-amps to PWM duty cycle percentage */
 #define MA_TO_PWM(curr) (((curr) - PWM_0_MA) * 100 / (PWM_100_MA - PWM_0_MA))
-
-/* Get the last received battery level. */
-int board_get_battery_soc(void);
 
 #endif /* !__ASSEMBLER__ */
 

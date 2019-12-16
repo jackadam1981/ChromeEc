@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -179,7 +179,8 @@ static int command_powerbtn(int argc, char **argv)
 	power_button_is_stable = 0;
 	hook_call_deferred(&power_button_change_deferred_data, 0);
 
-	msleep(ms);
+	if (ms > 0)
+		msleep(ms);
 
 	ccprintf("Simulating power button release.\n");
 	simulate_power_pressed = 0;

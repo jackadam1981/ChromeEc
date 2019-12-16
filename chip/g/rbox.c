@@ -4,14 +4,13 @@
  */
 
 #include "clock.h"
+#include "ec_commands.h"
 #include "hooks.h"
 #include "rdd.h"
 #include "registers.h"
 #include "system.h"
 #include "timer.h"
 
-#define DELAY_EC_BOOT_USEC	(2 * SECOND)
-DECLARE_DEFERRED(deassert_ec_rst);
 
 void rbox_clear_wakeup(void)
 {
@@ -34,17 +33,54 @@ int rbox_powerbtn_is_pressed(void)
 	return !GREAD_FIELD(RBOX, CHECK_OUTPUT, PWRB_OUT);
 }
 
+/*
+ * This is 4X as RDD_MAX_WAIT_TIME_COUNTER default value, which should be
+ *  long enough for rdd_is_detected() to represent a stable RDD status
+ */
+#define RDD_WAIT_TIME		(40 * MSEC)
+
+/*
+ * Delay EC_RST_L release if RDD cable is connected, or release EC_RST_L
+ * otherwise.
+ */
+static void rbox_check_rdd(void)
+{
+#ifdef CR50_DEV
+	print_rdd_state();
+#endif
+	if (rbox_powerbtn_is_pressed() && rdd_is_detected()) {
+		power_button_release_enable_interrupt(1);
+		return;
+	}
+
+	deassert_ec_rst();
+}
+DECLARE_DEFERRED(rbox_check_rdd);
+
 static void rbox_release_ec_reset(void)
 {
 	/* Unfreeze the PINMUX */
 	GREG32(PINMUX, HOLD) = 0;
 
-	/* After a POR, if it finds RDD cable plugged and Power button pressed,
-	 * then it delays booting EC by DELAY_EC_BOOT_USEC.
+	/*
+	 * If the board uses closed loop reset, the short EC_RST_L pulse may
+	 * not actually put the system in reset. Don't release EC_RST_L here.
+	 * Let ap_state.c handle it once it sees the system is reset.
+	 *
+	 * Release PINMUX HOLD, so the board can detect changes on TPM_RST_L.
 	 */
-	if ((system_get_reset_flags() & RESET_FLAG_POWER_ON) &&
-	    rdd_is_detected() && rbox_powerbtn_is_pressed()) {
-		hook_call_deferred(&deassert_ec_rst_data, DELAY_EC_BOOT_USEC);
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
+	    board_uses_closed_loop_reset()) {
+		return;
+	}
+
+	/*
+	 * After a POR, if the power button is held, then delay releasing
+	 * EC_RST_L.
+	 */
+	if ((system_get_reset_flags() & EC_RESET_FLAG_POWER_ON) &&
+	    rbox_powerbtn_is_pressed()) {
+		hook_call_deferred(&rbox_check_rdd_data, RDD_WAIT_TIME);
 		return;
 	}
 

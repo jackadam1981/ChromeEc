@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -196,8 +196,8 @@ void sspi_flash_physical_erase(int offset, int size)
 	sspi_flash_tristate(0);
 
 	/* Alignment has been checked in upper layer */
-	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE,
-		offset += CONFIG_FLASH_ERASE_SIZE) {
+	for (; size > 0; size -= NPCX_MONITOR_FLASH_ERASE_SIZE,
+		offset += NPCX_MONITOR_FLASH_ERASE_SIZE) {
 		/* Enable write */
 		sspi_flash_write_enable();
 		/* Set erase address */

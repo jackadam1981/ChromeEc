@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -128,7 +128,7 @@ void print_charger_debug(void)
 	/* option */
 	print_item_name("Option:");
 	if (check_print_error(charger_get_option(&d)))
-		ccprintf("%016b (0x%04x)\n", d, d);
+		ccprintf("%pb (0x%04x)\n", BINARY_VALUE(d, 16), d);
 
 	/* manufacturer id */
 	print_item_name("Man id:");
@@ -188,17 +188,13 @@ static int command_charger(int argc, char **argv)
 		d = strtoi(argv[2], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM2;
-#ifdef CONFIG_CHARGER_V2
 		chgstate_set_manual_current(d);
-#endif /* CONFIG_CHARGER_V2 */
 		return charger_set_current(d);
 	} else if (strcasecmp(argv[1], "voltage") == 0) {
 		d = strtoi(argv[2], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM2;
-#ifdef CONFIG_CHARGER_V2
 		chgstate_set_manual_voltage(d);
-#endif /* CONFIG_CHARGER_V2 */
 		return charger_set_voltage(d);
 	} else if (strcasecmp(argv[1], "dptf") == 0) {
 		d = strtoi(argv[2], &e, 0);
