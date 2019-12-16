@@ -38,7 +38,26 @@
 /*
  * Bit operation macros.
  */
+#define BITS_PER_WORD           (sizeof(unsigned)*8)
+#define BITS_PER_LONG_LONG      (sizeof(unsigned long long)*8)
+
 #define BIT(nr)			(1U << (nr))
 #define BIT_ULL(nr)		(1ULL << (nr))
+/*
+ * Create a continuous bit mask from least significant bit |l|
+ * to bit |h|, inclusive.
+ *
+ * Examples:
+ * GENMASK(31, 0) ==> 0xFF_FF_FF_FF
+ * GENMASK(3, 0)  ==> 0x00_00_00_0F
+ * GENMASK(7, 4)  ==> 0x00_00_00_F0
+ */
+#define GENMASK(h, l) \
+	(((~U(0)) - (U(1) << (l)) + 1) & \
+	 (~U(0) >> (BITS_PER_WORD - 1 - (h))))
+
+#define GENMASK_ULL(h, l) \
+	(((~ULL(0)) - (ULL(1) << (l)) + 1) & \
+	 (~ULL(0) >> (BITS_PER_LONG_LONG - 1 - (h))))
 
 #endif /* __CROS_EC_COMPILE_TIME_MACROS_H */
