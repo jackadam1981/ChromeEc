@@ -229,6 +229,13 @@ static void disable_transmit_sop_prime(int port)
 void pd_dfp_pe_init(int port)
 {
 	memset(&pe[port], 0, sizeof(struct pd_policy));
+
+	/* policy pe[].amodes[].fx pointers point to board support alt mode functions
+	 * avoid pe[].amodes[].fx point to NULL, if executing will cause EC reset
+	 */
+	for (int i = 0; i < PD_AMODE_COUNT; i++)
+		pe[port].amodes[i].fx = &supported_modes[i];
+		//memcpy(&pe[port].amodes[i].fx, &supported_modes[i], sizeof(struct svdm_amode_fx));//m cause reset
 }
 
 static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
@@ -357,11 +364,16 @@ static void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 static int get_mode_idx(int port, uint16_t svid)
 {
 	int i;
+	uint16_t j;
 
 	for (i = 0; i < PD_AMODE_COUNT; i++) {
-		if (pe[port].amodes[i].fx->svid == svid)
+		if (pe[port].amodes[i].fx->svid == svid) {
+			j = pe[port].amodes[i].fx->svid;
+			ccprints("p%d get mode match, svid %xh, mode index %xh", port, j, i);
 			return i;
+		}
 	}
+	ccprints("p%d get mode mismatch, mode index -1", port);
 	return -1;
 }
 
@@ -388,6 +400,7 @@ int allocate_mode(int port, uint16_t svid)
 	if (mode_idx != -1)
 		return mode_idx;
 
+
 	/* There's no space to enter another mode */
 	if (pe[port].amode_idx == PD_AMODE_COUNT) {
 		CPRINTF("ERR:NO AMODE SPACE\n");
@@ -406,6 +419,7 @@ int allocate_mode(int port, uint16_t svid)
 			modep->fx = &supported_modes[i];
 			modep->data = &pe[port].svids[j];
 			pe[port].amode_idx++;
+			ccprints("p%d allocate match pe[port].amode_idx = %d", port, pe[port].amode_idx - 1);
 			return pe[port].amode_idx - 1;
 		}
 	}
@@ -421,9 +435,12 @@ uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
 	int mode_idx = allocate_mode(port, svid);
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
+	int (*func)(int port, uint32_t mode_caps) = pe[port].amodes[0].fx->enter;
 
+	ccprints("p%d allocate_mode done, mode_idx = %d", port, mode_idx);
 	if (mode_idx == -1)
 		return 0;
+
 	modep = &pe[port].amodes[mode_idx];
 
 	if (!opos) {
@@ -437,9 +454,17 @@ uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
 	}
 
 	mode_caps = modep->data->mode_vdo[modep->opos - 1];
-	if (modep->fx->enter(port, mode_caps) == -1)
-		return 0;
 
+	ccprints("enter addr %xh", func);
+
+	cflush();
+
+	//if (pe[port].amodes[mode_idx].fx) {
+		if (modep->fx->enter(port, mode_caps) == -1)
+			return 0;
+	//}
+
+	ccprints("p%d enter func execute", port);
 	/* SVDM to send to UFP for mode entry */
 	return VDO(modep->fx->svid, 1, CMD_ENTER_MODE | VDO_OPOS(modep->opos));
 }
