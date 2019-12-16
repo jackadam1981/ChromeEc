@@ -8,7 +8,7 @@
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
 
-GPIO_INT(AC_PRESENT,     PIN(E, 1), GPIO_INT_BOTH,    extpower_interrupt)
+GPIO_INT(AC_PRESENT,     PIN(E, 1), GPIO_INT_BOTH | GPIO_PULL_UP,    extpower_interrupt)
 GPIO_INT(LID_OPEN,       PIN(E, 2), GPIO_INT_BOTH,    lid_interrupt)          /* LID switch detection */
 GPIO_INT(SUSPEND_L,      PIN(E, 3), GPIO_INT_BOTH,    power_signal_interrupt) /* AP suspend/resume state */
 GPIO_INT(SOC_POWER_GOOD, PIN(F, 0), GPIO_INT_BOTH,    power_signal_interrupt)
@@ -16,6 +16,7 @@ GPIO_INT(PD_MCU_INT,     PIN(F, 1), GPIO_INT_RISING,  pd_mcu_interrupt)       /*
 GPIO_INT(BC12_CABLE_INT, PIN(F, 2), GPIO_INT_FALLING | GPIO_PULL_UP, usb_evt) /* interrupt from BC12 and CABLE_DET */
 GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH    | GPIO_PULL_UP, power_button_interrupt)
 GPIO_INT(SPI0_CS,       PIN(O, 1),  GPIO_INT_FALLING | GPIO_PULL_UP,  spi_event)              /* SPI Chip Select */
+//GPIO_INT(SPI0_CS,       PIN(M, 5),  GPIO_INT_FALLING | GPIO_PULL_UP,  spi_event)              /* SPI Chip Select */
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
@@ -76,6 +77,7 @@ ALTERNATE(PIN_MASK(B, 0x18), 1, MODULE_I2C, 0)             /* I2C A SCL/SDA */
 ALTERNATE(PIN_MASK(C, 0x06), 1, MODULE_I2C, 0)             /* I2C B SCL/SDA */
 /* Analog pins */
 ALTERNATE(PIN_MASK(I, 0x07), 1, MODULE_ADC, 0)             /* ADC 0/1/2 */
+//ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0)      /* SPI SLAVE */
 ALTERNATE(PIN_MASK(O, 0x0F), 0, MODULE_SPI,        0)      /* SPI SLAVE */
 ALTERNATE(PIN_MASK(A, 0x40), 3, MODULE_SPI_MASTER, 0)      /* SSCK of SPI */
 ALTERNATE(PIN_MASK(C, 0x28), 3, MODULE_SPI_MASTER, 0)      /* SMOSI/SMISO of SPI */
