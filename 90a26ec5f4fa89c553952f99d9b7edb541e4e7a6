@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bb8c25b_f486d91a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T17:47:18Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment saying something like\n\nthe TCPCI spec dictates that we disable auto discharge when we disconnect (Section 12.2.3)\n\nhere and when we enabled it",
+      "range": {
+        "startLine": 1753,
+        "startChar": 1,
+        "endLine": 1756,
+        "endChar": 2
+      },
+      "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
