@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c451ae5_faddf6f1",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-16T17:05:44Z",
+      "side": 1,
+      "message": "This function isn\u0027t effectively doing anything...",
+      "range": {
+        "startLine": 77,
+        "startChar": 12,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "83761997d3f5982d5e08dcd72e4819d1da76394b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ae683e_bc1cf57a",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-16T17:05:44Z",
+      "side": 1,
+      "message": "This guard makes the boards without this macro unable to trigger chipset_force_shutdown or prochot, (and throttle_ap is removed).\n\nMaybe if you describe what you\u0027re trying to do in a text, I can probably upload a patchset?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "83761997d3f5982d5e08dcd72e4819d1da76394b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
