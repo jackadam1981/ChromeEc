@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b50146b1_72cb8ddf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T15:00:12Z",
+      "side": 1,
+      "message": "can we turn this into an enum instead of two boolean; it would be easier to reason about the state\n\nAlso, we should describe in the enum definition who uses or what each state is or means",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 19
+      },
+      "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec8bd08_5ba498a2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T15:00:12Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 33
+      },
+      "revId": "a42aa70406558eef6466989074e85571cbc8a2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
