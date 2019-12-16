@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5432befa_e1473a08",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T18:41:38Z",
+      "side": 1,
+      "message": "let\u0027s take in port and kbps as parameters here, otherwise be might using something else that the chip_i2c_set_freq isn\u0027t passing us",
+      "range": {
+        "startLine": 138,
+        "startChar": 25,
+        "endLine": 138,
+        "endChar": 51
+      },
+      "revId": "6c96840993870e50b7c67a7456acb6aab354f8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69323646_4a54ef64",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T18:41:38Z",
+      "side": 1,
+      "message": "let\u0027s add a print (that is always printed) with the new frequency and the results of the call.\n\nAlso, can we only perform this operation if it is changing?\nWe might need a get frequency too.\n\nAlso, we should only allow this on ports that have explicitly opted into run-time frequency change. Let\u0027s make a new flag that we use in i2c_port_t.kpbs field like \n\n#define I2C_DYNAMIC_SPEED BIT(31)\n\nand then config struct\n\n.kbps \u003d I2C_DYNAMIC_SPEED | 400 /* 400 is initial speed */\n\n\nAnd if the config doesn\u0027t have I2C_DYNAMIC_SPEED, then we fail to change the i2c bus speed",
+      "revId": "6c96840993870e50b7c67a7456acb6aab354f8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "457f9a20_52f1d36e",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-16T18:41:38Z",
+      "side": 1,
+      "message": "let\u0027s move this and the other chip_i2c prototypes into i2c_master.c, then only acceptable user of these functions",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 42
+      },
+      "revId": "6c96840993870e50b7c67a7456acb6aab354f8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
