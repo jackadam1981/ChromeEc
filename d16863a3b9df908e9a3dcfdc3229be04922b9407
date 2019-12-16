@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27ee60a6_7d393264",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-16T06:42:50Z",
+      "side": 1,
+      "message": "Isn\u0027t the main goal of this CL to fix crbug.com/951681 and follow the spec: \"Do not drive CC line that has VCONN connected\" when in Attached.Src state. So maybe an easier path to a fix would be to check VCONN when setting CC pull?",
+      "revId": "d16863a3b9df908e9a3dcfdc3229be04922b9407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
