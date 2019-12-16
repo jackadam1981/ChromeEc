@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e9f8394_f81c9d22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-16T19:24:05Z",
+      "side": 1,
+      "message": "Other functions (status, exit, config) are not checked, either.\n\nIn general, CrOS EC codebase doesn\u0027t do protective pointer checks if the pointers can\u0027t be NULL in the given code path. We do perform NULL checks for pointers determined at run time.\n\nPlease note supported_modes is defined as const in usb_common.c. After recent unification of board/*/usb_pd_policy.c, it\u0027s even clearer that these functions can\u0027t be NULL.\n\nIf we think otherwise, we would have to add the check everywhere  these functions are called. I think we chose not to do so for the sake of code size and readability.\n\nBesides, this CL looks like mostly WIP?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
