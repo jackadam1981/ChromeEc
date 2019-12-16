@@ -12,7 +12,6 @@
 #include "host_command.h"
 #include "hwtimer.h"
 #include "i2c.h"
-#include "i2c-stm32f0.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -136,9 +135,10 @@ static void i2c_set_freq_port(const struct i2c_port_t *p,
  *
  * @param p		the I2c port
  */
-void stm32f0_i2c_init_port(const struct i2c_port_t *p)
+static int i2c_init_port(const struct i2c_port_t *p)
 {
 	int port = p->port;
+	int ret = EC_SUCCESS;
 	enum stm32_i2c_clk_src src = I2C_CLK_SRC_48MHZ;
 	enum i2c_freq freq;
 
@@ -180,6 +180,7 @@ defined(CONFIG_LOW_POWER_IDLE) && \
 	default: /* unknown speed, defaults to 100kBps */
 		CPRINTS("I2C bad speed %d kBps", p->kbps);
 		freq = I2C_FREQ_100KHZ;
+		ret = EC_ERROR_INVAL;
 	}
 
 	/* Set up initial bus frequencies */
@@ -187,6 +188,18 @@ defined(CONFIG_LOW_POWER_IDLE) && \
 
 	/* Set up default timeout */
 	i2c_set_timeout(port, 0);
+
+	return ret;
+}
+
+int chip_i2c_set_freq(int port, int kbps)
+{
+	const struct i2c_port_t p = {
+		.port = port,
+		.kbps = kbps,
+	};
+
+	return i2c_init_port(&p);
 }
 
 /*****************************************************************************/
@@ -604,7 +617,7 @@ void i2c_init(void)
 	int i;
 
 	for (i = 0; i < i2c_ports_used; i++, p++)
-		stm32f0_i2c_init_port(p);
+		i2c_init_port(p);
 
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR_FLAGS
 	STM32_I2C_CR1(I2C_PORT_EC) |= STM32_I2C_CR1_RXIE | STM32_I2C_CR1_ERRIE

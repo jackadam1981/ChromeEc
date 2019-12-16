@@ -95,6 +95,11 @@ int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
 	return EC_ERROR_UNKNOWN;
 }
 
+int chip_i2c_set_freq(int port, int kbps)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 int i2c_raw_get_scl(int port)
 {
 	return 1;

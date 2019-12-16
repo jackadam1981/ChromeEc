@@ -985,6 +985,16 @@ unwedge_done:
 	return ret;
 }
 
+int i2c_set_freq(int port, int kbps)
+{
+	int ret;
+
+	i2c_lock(port, 1);
+	ret = chip_i2c_set_freq(port, kbps);
+	i2c_lock(port, 0);
+	return ret;
+}
+
 /*****************************************************************************/
 /* Host commands */
 
