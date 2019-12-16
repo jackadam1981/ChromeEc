@@ -9,10 +9,10 @@
 #define __CROS_EC_ALS_OPT3001_H
 
 /* I2C interface */
-#define OPT3001_I2C_ADDR1		(0x44 << 1)
-#define OPT3001_I2C_ADDR2		(0x45 << 1)
-#define OPT3001_I2C_ADDR3		(0x46 << 1)
-#define OPT3001_I2C_ADDR4		(0x47 << 1)
+#define OPT3001_I2C_ADDR1_FLAGS		0x44
+#define OPT3001_I2C_ADDR2_FLAGS		0x45
+#define OPT3001_I2C_ADDR3_FLAGS		0x46
+#define OPT3001_I2C_ADDR4_FLAGS		0x47
 
 /* OPT3001 registers */
 #define OPT3001_REG_RESULT		0x00
@@ -39,6 +39,9 @@ enum opt3001_mode {
 /* Min and Max sampling frequency in mHz */
 #define OPT3001_LIGHT_MIN_FREQ          1250
 #define OPT3001_LIGHT_MAX_FREQ          10000
+#if (CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ <= OPT3001_LIGHT_MAX_FREQ)
+#error "EC too slow for light sensor"
+#endif
 
 #ifdef HAS_TASK_ALS
 int opt3001_init(void);

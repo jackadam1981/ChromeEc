@@ -41,7 +41,7 @@
 
 /* Enable a different power-on sequence than the one on gru */
 #undef CONFIG_CHIPSET_POWER_SEQ_VERSION
-#define CONFIG_CHIPSET_POWER_SEQ_VERSION 2
+#define CONFIG_CHIPSET_POWER_SEQ_VERSION 1
 
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
@@ -69,7 +69,6 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_RT9467
 #define CONFIG_CHARGER_INPUT_CURRENT 512
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
@@ -86,18 +85,24 @@
 /* Motion Sensors */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
 /* Camera VSYNC */
 #define CONFIG_SYNC
 #define CONFIG_SYNC_COMMAND
-#define CONFIG_SYNC_INT_EVENT TASK_EVENT_CUSTOM(5)
+#define CONFIG_SYNC_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 
 /* To be able to indicate the device is in tablet mode. */
+#define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
 
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs. */
 #define CONFIG_ACCEL_FIFO_THRES 10
 
 /* USB PD config */
@@ -108,8 +113,9 @@
 #define CONFIG_USB_PD_DISCHARGE_GPIO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_LOGGING
-#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_FUSB302
+#define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
 #define CONFIG_USBC_SS_MUX
@@ -117,8 +123,6 @@
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USB_PD_COMM_LOCKED
 
-#define CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
-#define CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_RETRY_NACK
@@ -172,15 +176,16 @@
 #define I2C_PORT_TCPC0    1
 
 /* Route sbs host requests to virtual battery driver */
-#define VIRTUAL_BATTERY_ADDR 0x16
+#define VIRTUAL_BATTERY_ADDR_FLAGS 0x0B
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
 
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
-/* Define the MKBP events which are allowed to wakeup AP in S3. */
-#define CONFIG_MKBP_WAKEUP_MASK \
+#define CONFIG_MKBP_USE_GPIO
+/* Define the host events which are allowed to wakeup AP in S3. */
+#define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
@@ -208,6 +213,7 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
 	VSYNC,
+	SENSOR_COUNT,
 };
 
 #include "gpio_signal.h"

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -30,7 +30,7 @@ void throttle_ap(enum throttle_level level,
 
 	mutex_lock(&throttle_mutex);
 
-	bitmask = (1 << source);
+	bitmask = BIT(source);
 
 	switch (level) {
 	case THROTTLE_ON:

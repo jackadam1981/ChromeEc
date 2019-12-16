@@ -19,6 +19,10 @@
 
 int usb_i2c_board_is_enabled(void)
 {
+	/* board options use the INA pins as GPIOs */
+	if (!board_has_ina_support())
+		return 0;
+
 	/*
 	 * Note that this signal requires an external pullup, because this is
 	 * one of the real open drain pins; we cannot pull it up or drive it
@@ -79,6 +83,10 @@ void usb_i2c_board_disable(void)
 
 int usb_i2c_board_enable(void)
 {
+	/* board options use the INA pins as GPIOs */
+	if (!board_has_ina_support())
+		return EC_SUCCESS;
+
 	if (servo_is_connected()) {
 		CPRINTS("Servo attached; cannot enable I2C");
 		usb_i2c_board_disable();

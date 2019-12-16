@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7,10 +7,12 @@
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "mkbp_event.h"
 #include "registers.h"
 #include "rsa.h"
 #include "sha256.h"
@@ -20,6 +22,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_api.h"
+#include "usb_common.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "version.h"
@@ -33,6 +36,21 @@
 #endif
 
 static int rw_flash_changed = 1;
+
+#ifdef CONFIG_MKBP_EVENT
+static int dp_alt_mode_entry_get_next_event(uint8_t *data)
+{
+	return EC_SUCCESS;
+}
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED,
+		     dp_alt_mode_entry_get_next_event);
+
+void pd_notify_dp_alt_mode_entry(void)
+{
+	CPRINTS("Notifying AP of DP Alt Mode Entry...");
+	mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
+}
+#endif /* CONFIG_MKBP_EVENT */
 
 int pd_check_requested_voltage(uint32_t rdo, const int port)
 {
@@ -62,7 +80,7 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	if (max_ma > pdo_ma && !(rdo & RDO_CAP_MISMATCH))
 		return EC_ERROR_INVAL; /* too much max current */
 
-	CPRINTF("Requested %d V %d mA (for %d/%d mA)\n",
+	CPRINTF("Requested %d mV %d mA (for %d/%d mA)\n",
 		 ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
 		 op_ma * 10, max_ma * 10);
 
@@ -81,151 +99,24 @@ __attribute__((weak)) int pd_board_check_request(uint32_t rdo, int pdo_cnt)
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Last received source cap */
-static uint32_t pd_src_caps[CONFIG_USB_PD_PORT_COUNT][PDO_MAX_OBJECTS];
-static uint8_t pd_src_cap_cnt[CONFIG_USB_PD_PORT_COUNT];
+static uint32_t pd_src_caps[CONFIG_USB_PD_PORT_MAX_COUNT][PDO_MAX_OBJECTS];
+static uint8_t pd_src_cap_cnt[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_request_mv = PD_MAX_VOLTAGE_MV; /* no cap */
 
-int pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)
+const uint32_t * const pd_get_src_caps(int port)
 {
-	int i, uw, mv, ma;
-	int ret = 0;
-	int __attribute__((unused)) cur_mv = 0;
-	int cur_uw = 0;
-	int prefer_cur;
-	const uint32_t *src_caps = pd_src_caps[port];
+	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
-	/* max voltage is always limited by this boards max request */
-	max_mv = MIN(max_mv, PD_MAX_VOLTAGE_MV);
-
-	/* Get max power that is under our max voltage input */
-	for (i = 0; i < pd_src_cap_cnt[port]; i++) {
-		/* its an unsupported Augmented PDO (PD3.0) */
-		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
-			continue;
-
-		mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
-		/* Skip invalid voltage */
-		if (!mv)
-			continue;
-		/* Skip any voltage not supported by this board */
-		if (!pd_is_valid_input_voltage(mv))
-			continue;
-
-		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-			uw = 250000 * (src_caps[i] & 0x3FF);
-		} else {
-			ma = (src_caps[i] & 0x3FF) * 10;
-			ma = MIN(ma, PD_MAX_CURRENT_MA);
-			uw = ma * mv;
-		}
-
-		if (mv > max_mv)
-			continue;
-		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
-		prefer_cur = 0;
-
-		/* Apply special rules in case of 'tie' */
-#ifdef PD_PREFER_LOW_VOLTAGE
-		if (uw == cur_uw && mv < cur_mv)
-			prefer_cur = 1;
-#elif defined(PD_PREFER_HIGH_VOLTAGE)
-		if (uw == cur_uw && mv > cur_mv)
-			prefer_cur = 1;
-#endif
-		/* Prefer higher power, except for tiebreaker */
-		if (uw > cur_uw || prefer_cur) {
-			ret = i;
-			cur_uw = uw;
-			cur_mv = mv;
-		}
-	}
-
-	if (selected_pdo)
-		*selected_pdo = src_caps[ret];
-
-	return ret;
+	return pd_src_caps[port];
 }
 
-void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
+uint8_t pd_get_src_cap_cnt(int port)
 {
-	int max_ma, uw;
+	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
-	*mv = ((pdo >> 10) & 0x3FF) * 50;
-
-	if (*mv == 0) {
-		CPRINTF("ERR:PDO mv=0\n");
-		*ma = 0;
-		return;
-	}
-
-	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		uw = 250000 * (pdo & 0x3FF);
-		max_ma = 1000 * MIN(1000 * uw, PD_MAX_POWER_MW) / *mv;
-	} else {
-		max_ma = 10 * (pdo & 0x3FF);
-		max_ma = MIN(max_ma, PD_MAX_POWER_MW * 1000 / *mv);
-	}
-
-	*ma = MIN(max_ma, PD_MAX_CURRENT_MA);
-}
-
-int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
-		     enum pd_request_type req_type)
-{
-	uint32_t pdo;
-	int pdo_index, flags = 0;
-	int uw;
-	int max_or_min_ma;
-	int max_or_min_mw;
-
-	if (req_type == PD_REQUEST_VSAFE5V) {
-		/* src cap 0 should be vSafe5V */
-		pdo_index = 0;
-		pdo = pd_src_caps[port][0];
-	} else {
-		/* find pdo index for max voltage we can request */
-		pdo_index = pd_find_pdo_index(port, max_request_mv, &pdo);
-	}
-
-	pd_extract_pdo_power(pdo, ma, mv);
-	uw = *ma * *mv;
-	/* Mismatch bit set if less power offered than the operating power */
-	if (uw < (1000 * PD_OPERATING_POWER_MW))
-		flags |= RDO_CAP_MISMATCH;
-
-#ifdef CONFIG_USB_PD_GIVE_BACK
-	/* Tell source we are give back capable. */
-	flags |= RDO_GIVE_BACK;
-
-	/*
-	 * BATTERY PDO: Inform the source that the sink will reduce
-	 * power to this minimum level on receipt of a GotoMin Request.
-	 */
-	max_or_min_mw = PD_MIN_POWER_MW;
-
-	/*
-	 * FIXED or VARIABLE PDO: Inform the source that the sink will reduce
-	 * current to this minimum level on receipt of a GotoMin Request.
-	 */
-	max_or_min_ma = PD_MIN_CURRENT_MA;
-#else
-	/*
-	 * Can't give back, so set maximum current and power to operating
-	 * level.
-	 */
-	max_or_min_ma = *ma;
-	max_or_min_mw = uw / 1000;
-#endif
-
-	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		int mw = uw / 1000;
-		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
-	} else {
-		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
-	}
-	return EC_SUCCESS;
+	return pd_src_cap_cnt[port];
 }
 
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
@@ -241,7 +132,8 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 
 #ifdef CONFIG_CHARGE_MANAGER
 	/* Get max power info that we could request */
-	pd_find_pdo_index(port, PD_MAX_VOLTAGE_MV, &pdo);
+	pd_find_pdo_index(pd_get_src_cap_cnt(port), pd_get_src_caps(port),
+						PD_MAX_VOLTAGE_MV, &pdo);
 	pd_extract_pdo_power(pdo, &ma, &mv);
 
 	/* Set max. limit, but apply 500mA ceiling */
@@ -272,11 +164,67 @@ int pd_charge_from_device(uint16_t vid, uint16_t pid)
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
+static struct pd_cable cable[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static uint8_t is_transmit_msg_sop_prime(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		return !!(cable[port].flags & CABLE_FLAGS_SOP_PRIME_ENABLE);
+
+	return 0;
+}
+
+uint8_t is_sop_prime_ready(int port, uint8_t data_role, uint32_t pd_flags)
+{
+	/*
+	 * Ref: USB PD 3.0 sec 2.5.4: When an Explicit Contract is in place the
+	 * VCONN Source (either the DFP or the UFP) can communicate with the
+	 * Cable Plug(s) using SOP’/SOP’’ Packets
+	 *
+	 * Ref: USB PD 2.0 sec 2.4.4: When an Explicit Contract is in place the
+	 * DFP (either the Source or the Sink) can communicate with the
+	 * Cable Plug(s) using SOP’/SOP” Packets.
+	 * Sec 3.6.11 : Before communicating with a Cable Plug a Port Should
+	 * ensure that it is the Vconn Source
+	 */
+	if (pd_flags & PD_FLAGS_VCONN_ON && (IS_ENABLED(CONFIG_USB_PD_REV30) ||
+		data_role == PD_ROLE_DFP))
+		return is_transmit_msg_sop_prime(port);
+
+	return 0;
+}
+
+void reset_pd_cable(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		memset(&cable[port], 0, sizeof(cable[port]));
+}
+
+enum idh_ptype get_usb_pd_mux_cable_type(int port)
+{
+	return cable[port].type;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 
-static struct pd_policy pe[CONFIG_USB_PD_PORT_COUNT];
+static struct pd_policy pe[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static int is_vdo_present(int cnt, int index)
+{
+	return cnt > index;
+}
+
+static void enable_transmit_sop_prime(int port)
+{
+	cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
+static void disable_transmit_sop_prime(int port)
+{
+	cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
 
 void pd_dfp_pe_init(int port)
 {
@@ -309,16 +257,47 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	}
 }
 
-static int dfp_discover_svids(int port, uint32_t *payload)
+static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
+{
+	if (cable[port].is_identified)
+		return;
+
+	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {
+		cable[port].type = PD_IDH_PTYPE(payload[VDO_INDEX_IDH]);
+		if (is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1))
+			cable[port].attr.raw_value =
+					payload[VDO_INDEX_PTYPE_CABLE1];
+	}
+	/*
+	 * Ref USB PD Spec 3.0  Pg 145. For active cable there are two VDOs.
+	 * Hence storing the second VDO.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
+	    cable[port].type == IDH_PTYPE_ACABLE) {
+		cable[port].rev = PD_REV30;
+		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
+	}
+	cable[port].is_identified = 1;
+}
+
+static int dfp_discover_ident(uint32_t *payload)
+{
+	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
+	return 1;
+}
+
+static int dfp_discover_svids(uint32_t *payload)
 {
 	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
 	return 1;
 }
 
-static void dfp_consume_svids(int port, uint32_t *payload)
+static void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 {
 	int i;
 	uint32_t *ptr = payload + 1;
+	int vdo = 1;
 	uint16_t svid0, svid1;
 
 	for (i = pe[port].svid_cnt; i < pe[port].svid_cnt + 12; i += 2) {
@@ -326,6 +305,12 @@ static void dfp_consume_svids(int port, uint32_t *payload)
 			CPRINTF("ERR:SVIDCNT\n");
 			break;
 		}
+		/*
+		 * Verify we're still within the valid packet (count will be one
+		 * for the VDM header + xVDOs)
+		 */
+		if (vdo >= cnt)
+			break;
 
 		svid0 = PD_VDO_SVID_SVID0(*ptr);
 		if (!svid0)
@@ -339,6 +324,7 @@ static void dfp_consume_svids(int port, uint32_t *payload)
 		pe[port].svids[i + 1].svid = svid1;
 		pe[port].svid_cnt++;
 		ptr++;
+		vdo++;
 	}
 	/* TODO(tbroch) need to re-issue discover svids if > 12 */
 	if (i && ((i % 12) == 0))
@@ -410,9 +396,6 @@ int allocate_mode(int port, uint16_t svid)
 
 	/* Allocate ...  if SVID == 0 enter default supported policy */
 	for (i = 0; i < supported_modes_cnt; i++) {
-		if (!&supported_modes[i])
-			continue;
-
 		for (j = 0; j < pe[port].svid_cnt; j++) {
 			struct svdm_svid_data *svidp = &pe[port].svids[j];
 			if ((svidp->svid != supported_modes[i].svid) ||
@@ -646,7 +629,7 @@ static int command_pe(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 	/* command: pe <port> <subcmd> <args> */
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= CONFIG_USB_PD_PORT_COUNT)
+	if (*e || port >= board_get_usb_pd_port_count())
 		return EC_ERROR_PARAM2;
 	if (!strncasecmp(argv[2], "dump", 4))
 		dump_pe(port);
@@ -687,10 +670,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			func = svdm_rsp.enter_mode;
 			break;
 		case CMD_DP_STATUS:
-			func = svdm_rsp.amode->status;
+			if (svdm_rsp.amode)
+				func = svdm_rsp.amode->status;
 			break;
 		case CMD_DP_CONFIG:
-			func = svdm_rsp.amode->config;
+			if (svdm_rsp.amode)
+				func = svdm_rsp.amode->config;
 			break;
 		case CMD_EXIT_MODE:
 			func = svdm_rsp.exit_mode;
@@ -731,8 +716,24 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		switch (cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			dfp_consume_identity(port, cnt, payload);
-			rsize = dfp_discover_svids(port, payload);
+			/* Received a SOP Prime Discover Ident msg */
+			if (is_transmit_msg_sop_prime(port)) {
+				/* Store cable type */
+				dfp_consume_cable_response(port, cnt, payload);
+				disable_transmit_sop_prime(port);
+				rsize = dfp_discover_svids(payload);
+			/* Received a SOP Discover Ident Message */
+			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+				dfp_consume_identity(port, cnt, payload);
+				/* Send SOP' Discover Ident message */
+				if (!cable[port].is_identified) {
+					rsize = dfp_discover_ident(payload);
+					enable_transmit_sop_prime(port);
+				}
+			} else {
+				dfp_consume_identity(port, cnt, payload);
+				rsize = dfp_discover_svids(payload);
+			}
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd_charge_from_device(pd_get_identity_vid(port),
 						  pd_get_identity_pid(port)))
@@ -741,7 +742,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 #endif
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, payload);
+			dfp_consume_svids(port, cnt, payload);
 			rsize = dfp_discover_modes(port, payload);
 			break;
 		case CMD_DISCOVER_MODES:
@@ -820,8 +821,13 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			rsize = 0;
 		}
 	} else if (cmd_type == CMDT_RSP_NAK) {
-		/* nothing to do */
 		rsize = 0;
+		/* Send SOP' Discover Ident message, if not already received. */
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+		    !cable[port].is_identified && (cmd == CMD_DISCOVER_IDENT)) {
+			rsize = dfp_discover_ident(payload);
+			enable_transmit_sop_prime(port);
+		}
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 	} else {
 		CPRINTF("ERR:CMDT:%d\n", cmd);
@@ -839,6 +845,121 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 }
 
 #endif /* CONFIG_USB_PD_ALT_MODE */
+
+#ifdef CONFIG_CMD_USB_PD_CABLE
+static const char * const cable_type[] = {
+	[IDH_PTYPE_PCABLE] = "Passive",
+	[IDH_PTYPE_ACABLE] = "Active",
+};
+
+static const char * const cable_curr[] = {
+	[CABLE_CURRENT_3A] = "3A",
+	[CABLE_CURRENT_5A] = "5A",
+};
+
+static const char * const cable_ss_support[] = {
+	[USB_SS_U2_ONLY] = "Not supported",
+	[USB_SS_U31_GEN1] = "Gen 1",
+	[USB_SS_U31_GEN2] = "Gen 1 and Gen 2",
+};
+
+static const char * const vbus_max[] = {
+	[CABLE_VBUS_20V] = "20V",
+	[CABLE_VBUS_30V] = "30V",
+	[CABLE_VBUS_40V] = "40V",
+	[CABLE_VBUS_50V] = "50V",
+};
+static const char * const conn_type[] = {
+	[CONNECTOR_ATYPE] = "Type A",
+	[CONNECTOR_BTYPE] = "Type B",
+	[CONNECTOR_CTYPE] = "Type C",
+	[CONNECTOR_CAPTIVE] = "Captive",
+};
+
+static int command_cable(int argc, char **argv)
+{
+	int port;
+	char *e;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+	port = strtoi(argv[1], &e, 0);
+	if (*e || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM2;
+
+	if (!cable[port].is_identified) {
+		ccprintf("Cable not identified.\n");
+		return EC_SUCCESS;
+	}
+
+	ccprintf("Cable Type: ");
+	if (cable[port].type != IDH_PTYPE_PCABLE &&
+	    cable[port].type != IDH_PTYPE_ACABLE) {
+		ccprintf("Not Emark Cable\n");
+		return EC_SUCCESS;
+	}
+	ccprintf("%s\n", cable_type[cable[port].type]);
+
+	/*
+	 * For rev 2.0, rev 3.0 active and passive cables have same bits for
+	 * connector type (Bit 19:18) and current handling capability bit 6:5
+	 */
+	ccprintf("Connector Type: %s\n",
+		cable[port].attr.rev20.connector > ARRAY_SIZE(conn_type) ?
+		      "Invalid" : conn_type[cable[port].attr.rev20.connector]);
+
+	if (cable[port].attr.rev20.current) {
+		ccprintf("Cable Current: %s\n",
+		      cable[port].attr.rev20.current > ARRAY_SIZE(cable_curr) ?
+		      "Invalid" : cable_curr[cable[port].attr.rev20.current]);
+	} else
+		ccprintf("Cable Current: Invalid\n");
+
+	/*
+	 * For Rev 3.0 passive cables and Rev 2.0 active and passive cables,
+	 * USB Superspeed Signaling support have same bits 2:0
+	 */
+	if (cable[port].type == IDH_PTYPE_PCABLE) {
+		ccprintf("USB Superspeed Signaling support: %s\n",
+			cable[port].attr.rev20.ss >
+				ARRAY_SIZE(cable_ss_support) ? "Invalid" :
+				cable_ss_support[cable[port].attr.p_rev30.ss]);
+	}
+
+	/*
+	 * For Rev 3.0 active cables and Rev 2.0 active and passive cables,
+	 * SOP" controller preset have same bit 3
+	 */
+	if (cable[port].type == IDH_PTYPE_ACABLE) {
+		ccprintf("SOP' ' Controller: %s present\n",
+			cable[port].attr.rev20.controller ? "" : "Not");
+	}
+
+	if (cable[port].rev == PD_REV30) {
+		/*
+		 * For Rev 3.0 active and passive cables, Max Vbus vtg have
+		 * same bits 10:9.
+		 */
+		ccprintf("Max vbus voltage: %s\n",
+			cable[port].attr.p_rev30.vbus_max >
+				ARRAY_SIZE(vbus_max) ? "Invaild" :
+				vbus_max[cable[port].attr.p_rev30.vbus_max]);
+
+		/* For Rev 3.0 Active cables */
+		if (cable[port].type == IDH_PTYPE_ACABLE) {
+			ccprintf("SS signaling: USB_SS_GEN%u\n",
+					cable[port].attr2.a2_rev30.sss ? 2 : 1);
+			ccprintf("Number of SS lanes supported: %u\n",
+					cable[port].attr2.a2_rev30.lanes);
+		}
+	}
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(pdcable, command_cable,
+			"<port>",
+			"Cable Characteristics");
+#endif /* CONFIG_CMD_USB_PD_CABLE */
 
 static void pd_usb_billboard_deferred(void)
 {
@@ -858,12 +979,12 @@ static void pd_usb_billboard_deferred(void)
 DECLARE_DEFERRED(pd_usb_billboard_deferred);
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-static int hc_remote_pd_discovery(struct host_cmd_handler_args *args)
+static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 {
 	const uint8_t *port = args->params;
 	struct ec_params_usb_pd_discovery_entry *r = args->response;
 
-	if (*port >= CONFIG_USB_PD_PORT_COUNT)
+	if (*port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	r->vid = pd_get_identity_vid(*port);
@@ -879,13 +1000,13 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DISCOVERY,
 		     hc_remote_pd_discovery,
 		     EC_VER_MASK(0));
 
-static int hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
+static enum ec_status hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 {
 	struct svdm_amode_data *modep;
 	const struct ec_params_usb_pd_get_mode_request *p = args->params;
 	struct ec_params_usb_pd_get_mode_response *r = args->response;
 
-	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
+	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	/* no more to send */
@@ -943,7 +1064,7 @@ void pd_get_info(uint32_t *info_data)
 	defined(CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR)
 	info_data[5] = VDO_INFO(CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR,
 				CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR,
-				ver_get_numcommits(),
+				ver_get_num_commits(system_get_image_copy()),
 				(system_get_image_copy() != SYSTEM_IMAGE_RO));
 #else
 	info_data[5] = 0;
@@ -1014,17 +1135,17 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 #ifdef CONFIG_USB_PD_DISCHARGE
 void pd_set_vbus_discharge(int port, int enable)
 {
-	static struct mutex discharge_lock[CONFIG_USB_PD_PORT_COUNT];
+	static struct mutex discharge_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 	mutex_lock(&discharge_lock[port]);
 	enable &= !board_vbus_source_enabled(port);
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
 	if (!port)
 		gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);
-#if CONFIG_USB_PD_PORT_COUNT > 1
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	else
 		gpio_set_level(GPIO_USB_C1_DISCHARGE, enable);
-#endif /* CONFIG_USB_PD_PORT_COUNT */
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
 #elif defined(CONFIG_USB_PD_DISCHARGE_TCPC)
 	tcpc_discharge_vbus(port, enable);
 #elif defined(CONFIG_USB_PD_DISCHARGE_PPC)

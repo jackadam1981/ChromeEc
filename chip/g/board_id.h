@@ -7,24 +7,10 @@
 #ifndef __EC_CHIP_G_BOARD_ID_H
 #define __EC_CHIP_G_BOARD_ID_H
 
+#include "board_space.h"
 #include "common.h"
 #include "signed_header.h"
 #include "util.h"
-
-/* Structure holding Board ID */
-struct board_id {
-	uint32_t type;		/* Board type */
-	uint32_t type_inv;	/* Board type (inverted) */
-	uint32_t flags;		/* Flags */
-};
-
-/* Info1 Board space contents. */
-struct info1_board_space {
-	struct board_id bid;
-};
-
-#define INFO_BOARD_ID_SIZE		sizeof(struct board_id)
-#define INFO_BOARD_SPACE_PROTECT_SIZE	16
 
 /**
  * Check the current header vs. the supplied Board ID
@@ -55,14 +41,31 @@ const struct SignedHeader *get_current_image_header(void);
  * Check if board ID in the image matches board ID field in the INFO1.
  *
  * Pass the pointer to the image header to check. If the pointer is set to
- * NULL, check board ID against the currently running image's header.
+ * NULL, check board ID against the currently running image's header. All 1
+ * bits in header Board ID flags must be present in the board id from flash.
+ *
+ * If the board id from flash is blank, board_id_type field from the header is
+ * ignored and only board_if_flags field is verified to match.
  *
  * Return true if there is a mismatch (the code should not run).
  */
 uint32_t board_id_mismatch(const struct SignedHeader *h);
 
-BUILD_ASSERT((offsetof(struct info1_board_space, bid) & 3) == 0);
-BUILD_ASSERT((INFO_BOARD_ID_SIZE & 3) == 0);
-BUILD_ASSERT(sizeof(struct info1_board_space) <= INFO_BOARD_SPACE_PROTECT_SIZE);
+/**
+ * Check if every field of the board id is 0xffffffff
+ *
+ * @param id	Pointer to a Board ID structure
+ *
+ * @return True if the board id is all 0xffffffff.
+ */
+int board_id_is_blank(const struct board_id *id);
 
+/**
+ * Check if the board id type and type_inv are 0xffffffff.
+ *
+ * @param id	Pointer to a Board ID structure
+ *
+ * @return True if the board id type and type_inv are 0xffffffff.
+ */
+int board_id_type_is_blank(const struct board_id *id);
 #endif  /* ! __EC_CHIP_G_BOARD_ID_H */

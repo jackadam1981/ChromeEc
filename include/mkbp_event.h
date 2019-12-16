@@ -29,6 +29,13 @@ extern uint32_t mkbp_last_event_time;
 int mkbp_send_event(uint8_t event_type);
 
 /*
+ * Communicate an MKBP event to the AP via custom method.
+ *
+ * This can be used if a board has a custom method.
+ */
+int mkbp_set_host_active_via_custom(int active, uint32_t *timestamp);
+
+/*
  * The struct to store the event source definition.  The get_data routine is
  * responsible for returning the event data when queried by the AP.  The
  * parameter 'data' points to where the event data needs to be stored, and

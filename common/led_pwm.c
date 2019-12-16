@@ -33,23 +33,23 @@
 
 static uint8_t led_is_pulsing;
 
-static int ignore_set_led_color(enum pwm_led_id id, int color)
+static int get_led_id_color(enum pwm_led_id id, int color)
 {
 #ifdef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY
 	int active_chg_port = charge_manager_get_active_charge_port();
 
-	/* We should always be able to turn off a LED.*/
+	/* We should always be able to turn off a LED. */
 	if (color == -1)
-		return 0;
+		return -1;
 
 	if (led_is_pulsing)
-		return 0;
+		return color;
 
+	/* The inactive charge port LEDs should be off. */
 	if ((int)id != active_chg_port)
-		return 1;
+		return -1;
 #endif /* CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY */
-
-	return 0;
+	return color;
 }
 
 void set_pwm_led_color(enum pwm_led_id id, int color)
@@ -82,20 +82,38 @@ static void set_led_color(int color)
 	 */
 	if ((led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) ||
 	    (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)))
-		if (!ignore_set_led_color(PWM_LED0, color))
-			set_pwm_led_color(PWM_LED0, color);
+		set_pwm_led_color(PWM_LED0, get_led_id_color(PWM_LED0, color));
 
 #if CONFIG_LED_PWM_COUNT >= 2
 	if (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED))
-		if (!ignore_set_led_color(PWM_LED1, color))
-			set_pwm_led_color(PWM_LED1, color);
+		set_pwm_led_color(PWM_LED1, get_led_id_color(PWM_LED1, color));
 #endif /* CONFIG_LED_PWM_COUNT >= 2 */
+}
+
+static void set_pwm_led_enable(enum pwm_led_id id, int enable)
+{
+	if ((id >= CONFIG_LED_PWM_COUNT) || (id < 0))
+		return;
+
+	if (pwm_leds[id].ch0 != PWM_LED_NO_CHANNEL)
+		pwm_enable(pwm_leds[id].ch0, enable);
+	if (pwm_leds[id].ch1 != PWM_LED_NO_CHANNEL)
+		pwm_enable(pwm_leds[id].ch1, enable);
+	if (pwm_leds[id].ch2 != PWM_LED_NO_CHANNEL)
+		pwm_enable(pwm_leds[id].ch2, enable);
 }
 
 static void init_leds_off(void)
 {
-	/* Turn off LEDs such that they are in a known state. */
+	/* Turn off LEDs such that they are in a known state with zero duty. */
 	set_led_color(-1);
+
+	/* Enable pwm modules for each channels of LEDs */
+	set_pwm_led_enable(PWM_LED0, 1);
+
+#if CONFIG_LED_PWM_COUNT >= 2
+	set_pwm_led_enable(PWM_LED1, 1);
+#endif /* CONFIG_LED_PWM_COUNT >= 2 */
 }
 DECLARE_HOOK(HOOK_INIT, init_leds_off, HOOK_PRIO_INIT_PWM + 1);
 
@@ -153,7 +171,8 @@ static int show_charge_state(void)
 	if (chg_st == PWR_STATE_CHARGE) {
 		led_is_pulsing = 0;
 		set_led_color(CONFIG_LED_PWM_CHARGE_COLOR);
-	} else if (chg_st == PWR_STATE_CHARGE_NEAR_FULL) {
+	} else if (chg_st == PWR_STATE_CHARGE_NEAR_FULL ||
+		   chg_st == PWR_STATE_DISCHARGE_FULL) {
 		led_is_pulsing = 0;
 		set_led_color(CONFIG_LED_PWM_NEAR_FULL_COLOR);
 	} else if ((battery_is_present() != BP_YES) ||
@@ -162,12 +181,20 @@ static int show_charge_state(void)
 		pulse_leds(CONFIG_LED_PWM_CHARGE_ERROR_COLOR, 1, 2);
 	} else {
 		/* Discharging or not charging. */
+#ifdef CONFIG_LED_PWM_CHARGE_STATE_ONLY
+		/*
+		 * If we only show the charge state, the only reason we
+		 * would pulse the LEDs is if we had an error.  If it no longer
+		 * exists, stop pulsing the LEDs.
+		 */
+		led_is_pulsing = 0;
+#endif /* CONFIG_LED_PWM_CHARGE_STATE_ONLY */
 		return 0;
 	}
 	return 1;
 }
 
-#ifndef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY
+#ifndef CONFIG_LED_PWM_CHARGE_STATE_ONLY
 static int show_battery_state(void)
 {
 	int batt_percentage = charge_get_percent();
@@ -207,7 +234,7 @@ static int show_chipset_state(void)
 	}
 	return 1;
 }
-#endif /* CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY */
+#endif /* CONFIG_LED_PWM_CHARGE_STATE_ONLY */
 
 static void update_leds(void)
 {
@@ -215,13 +242,13 @@ static void update_leds(void)
 	if (show_charge_state())
 		return;
 
-#ifndef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY
+#ifndef CONFIG_LED_PWM_CHARGE_STATE_ONLY
 	if (show_battery_state())
 		return;
 
 	if (show_chipset_state())
 		return;
-#endif /* CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY */
+#endif /* CONFIG_LED_PWM_CHARGE_STATE_ONLY */
 
 	set_led_color(-1);
 }

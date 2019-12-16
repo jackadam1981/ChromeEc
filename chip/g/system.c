@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -16,6 +16,7 @@
 #include "task.h"
 #include "version.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 /*
  * Value of the retry counter which, if exceeded, indicates that the currently
  * running RW image is not well and is rebooting before bringing the system
@@ -39,7 +40,7 @@ static void check_reset_cause(void)
 
 	if (g_rstsrc & GC_PMU_RSTSRC_POR_MASK) {
 		/* If power-on reset is true, that's the only thing */
-		system_set_reset_flags(RESET_FLAG_POWER_ON);
+		system_set_reset_flags(EC_RESET_FLAG_POWER_ON);
 		return;
 	}
 
@@ -48,39 +49,39 @@ static void check_reset_cause(void)
 		/* This register is cleared by reading it */
 		uint32_t g_exitpd = GR_PMU_EXITPD_SRC;
 
-		flags |= RESET_FLAG_HIBERNATE;
+		flags |= EC_RESET_FLAG_HIBERNATE;
 
 		if (g_exitpd & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK)
-			flags |= RESET_FLAG_WAKE_PIN;
+			flags |= EC_RESET_FLAG_WAKE_PIN;
 		if (g_exitpd & GC_PMU_EXITPD_SRC_UTMI_SUSPEND_N_MASK)
-			flags |= RESET_FLAG_USB_RESUME;
+			flags |= EC_RESET_FLAG_USB_RESUME;
 		if (g_exitpd & (GC_PMU_EXITPD_SRC_TIMELS0_PD_EXIT_TIMER0_MASK |
 				GC_PMU_EXITPD_SRC_TIMELS0_PD_EXIT_TIMER1_MASK))
-			flags |= RESET_FLAG_RTC_ALARM;
+			flags |= EC_RESET_FLAG_RTC_ALARM;
 		if (g_exitpd & GC_PMU_EXITPD_SRC_RDD0_PD_EXIT_TIMER_MASK)
-			flags |= RESET_FLAG_RDD;
+			flags |= EC_RESET_FLAG_RDD;
 		if (g_exitpd & GC_PMU_EXITPD_SRC_RBOX_WAKEUP_MASK)
-			flags |= RESET_FLAG_RBOX;
+			flags |= EC_RESET_FLAG_RBOX;
 	}
 
 	if (g_rstsrc & GC_PMU_RSTSRC_SOFTWARE_MASK)
-		flags |= RESET_FLAG_HARD;
+		flags |= EC_RESET_FLAG_HARD;
 
 	if (g_rstsrc & GC_PMU_RSTSRC_SYSRESET_MASK)
-		flags |= RESET_FLAG_SOFT;
+		flags |= EC_RESET_FLAG_SOFT;
 
 	if (g_rstsrc & GC_PMU_RSTSRC_FST_BRNOUT_MASK)
-		flags |= RESET_FLAG_BROWNOUT;
+		flags |= EC_RESET_FLAG_BROWNOUT;
 
 	/*
 	 * GC_PMU_RSTSRC_WDOG and GC_PMU_RSTSRC_LOCKUP are considered security
 	 * threats. They won't show up as a direct reset cause.
 	 */
 	if (g_rstsrc & GC_PMU_RSTSRC_SEC_THREAT_MASK)
-		flags |= RESET_FLAG_SECURITY;
+		flags |= EC_RESET_FLAG_SECURITY;
 
 	if (g_rstsrc && !flags)
-		flags |= RESET_FLAG_OTHER;
+		flags |= EC_RESET_FLAG_OTHER;
 
 	system_set_reset_flags(flags);
 }
@@ -475,8 +476,8 @@ static int corrupt_header(volatile struct SignedHeader *header)
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
 
-	ccprintf("%s: RW fallback must have happened, magic at %p before: %x\n",
-		 __func__, &header->magic, header->magic);
+	CPRINTS("%s: RW fallback must have happened, magic at %pP before: %x",
+		__func__, &header->magic, header->magic);
 
 	rv = flash_physical_write((intptr_t)&header->magic -
 			     CONFIG_PROGRAM_MEMORY_BASE,
@@ -484,8 +485,7 @@ static int corrupt_header(volatile struct SignedHeader *header)
 
 	/* Disable W access to the other header. */
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 0);
-	ccprintf("%s: magic after: %x\n",
-		 __func__, header->magic);
+	CPRINTS("%s: magic after: %x", __func__, header->magic);
 
 	header_corrupted = !rv;
 	return rv;
@@ -528,7 +528,7 @@ int system_process_retry_counter(void)
 {
 	struct SignedHeader *newer_image;
 
-	ccprintf("%s: retry counter %d\n", __func__,
+	CPRINTS("%s: retry counter %d", __func__,
 		GREG32(PMU, LONG_LIFE_SCRATCH0));
 	system_clear_retry_counter();
 
@@ -536,14 +536,14 @@ int system_process_retry_counter(void)
 		return EC_SUCCESS;
 
 	if (current_image_is_newer(&newer_image)) {
-		ccprintf("%s: "
-			 "this is odd, I am newer, but retry counter indicates "
-			 "the system rolledback\n", __func__);
+		CPRINTS("%s: "
+			"this is odd, I am newer, but retry counter indicates "
+			"the system rolledback", __func__);
 		return EC_SUCCESS;
 	}
 
 	if (header_corrupted) {
-		ccprintf("%s: header already corrupted\n", __func__);
+		CPRINTS("%s: header already corrupted", __func__);
 		return EC_SUCCESS;
 	}
 
@@ -569,8 +569,8 @@ int system_rolling_reboot_suspected(void)
 		 * cleared. There must be something wrong going, the chip is
 		 * likely in rolling reboot.
 		 */
-		ccprintf("%s: Try powercycling to clear this condition.\n",
-			 __func__);
+		CPRINTS("%s: Try powercycling to clear this condition.",
+			__func__);
 		return 1;
 	}
 
@@ -604,24 +604,19 @@ const char *system_get_build_info(void)
  * header address is passed (the other one is set to zero), only the valid
  * header is considered when updating INFO1.
  */
-static void update_rollback_mask(const struct SignedHeader *header_a,
-				 const struct SignedHeader *header_b)
+static void update_rollback_mask(uint32_t addr_a, uint32_t addr_b,
+				 uint32_t info_base_offset)
 {
 #ifndef CR50_DEV
+	const struct SignedHeader *header_a;
+	const struct SignedHeader *header_b;
 	int updated_words_count = 0;
 	int i;
 	int write_enabled = 0;
 	uint32_t header_mask = 0;
 
-	/*
-	 * Make sure INFO1 RW map space is readable.
-	 */
-	if (flash_info_read_enable(INFO_RW_MAP_OFFSET, INFO_RW_MAP_SIZE) !=
-	    EC_SUCCESS) {
-		ccprintf("%s: failed to enable read access to info\n",
-			 __func__);
-		return;
-	}
+	header_a = (const struct SignedHeader *)addr_a;
+	header_b = (const struct SignedHeader *)addr_b;
 
 	/*
 	 * The infomap field in the image header has a matching space in the
@@ -665,15 +660,15 @@ static void update_rollback_mask(const struct SignedHeader *header_a,
 			 * adjacent at the LSB of the info mask field. Stop as
 			 * soon as a non-zeroed bit is encountered.
 			 */
-			ccprintf("%s: bailing out at bit %d\n", __func__, i);
+			CPRINTS("%s: bailing out at bit %d", __func__, i);
 			break;
 		}
 
-		byte_offset = (INFO_MAX + i) * sizeof(uint32_t);
+		byte_offset = info_base_offset + i * sizeof(uint32_t);
 
 		if (flash_physical_info_read_word(byte_offset, &word) !=
 		    EC_SUCCESS) {
-			ccprintf("failed to read info mask word %d\n", i);
+			CPRINTS("failed to read info mask word %d", i);
 			continue;
 		}
 
@@ -681,13 +676,7 @@ static void update_rollback_mask(const struct SignedHeader *header_a,
 			continue; /* This word has been zeroed already. */
 
 		if (!write_enabled) {
-			if (flash_info_write_enable(
-				INFO_RW_MAP_OFFSET,
-				INFO_RW_MAP_SIZE) != EC_SUCCESS) {
-				ccprintf("%s: failed to enable write access to"
-					 " info\n", __func__);
-				return;
-			}
+			flash_info_write_enable();
 			write_enabled = 1;
 		}
 
@@ -696,7 +685,7 @@ static void update_rollback_mask(const struct SignedHeader *header_a,
 					      sizeof(word),
 					      (const char *) &word) !=
 		    EC_SUCCESS) {
-			ccprintf("failed to write info mask word %d\n", i);
+			CPRINTS("failed to write info mask word %d", i);
 			continue;
 		}
 		updated_words_count++;
@@ -706,63 +695,77 @@ static void update_rollback_mask(const struct SignedHeader *header_a,
 		return;
 
 	flash_info_write_disable();
-	ccprintf("updated %d info map words\n", updated_words_count);
+	CPRINTS("updated %d info map words", updated_words_count);
 #endif  /*  CR50_DEV ^^^^^^^^ NOT defined. */
 }
 
 void system_update_rollback_mask_with_active_img(void)
 {
-	update_rollback_mask((const struct SignedHeader *)
-			     get_program_memory_addr(system_get_image_copy()),
-			     0);
+	update_rollback_mask(
+		get_program_memory_addr(system_get_ro_image_copy()), 0,
+		INFO_RO_MAP_OFFSET);
+	update_rollback_mask(get_program_memory_addr(system_get_image_copy()),
+			     0, INFO_RW_MAP_OFFSET);
 }
 
 void system_update_rollback_mask_with_both_imgs(void)
 {
-	update_rollback_mask((const struct SignedHeader *)
-			     get_program_memory_addr(SYSTEM_IMAGE_RW),
-			     (const struct SignedHeader *)
-			     get_program_memory_addr(SYSTEM_IMAGE_RW_B));
+	update_rollback_mask(get_program_memory_addr(SYSTEM_IMAGE_RO),
+			     get_program_memory_addr(SYSTEM_IMAGE_RO_B),
+			     INFO_RO_MAP_OFFSET);
+	update_rollback_mask(get_program_memory_addr(SYSTEM_IMAGE_RW),
+			     get_program_memory_addr(SYSTEM_IMAGE_RW_B),
+			     INFO_RW_MAP_OFFSET);
 }
 
 void system_get_rollback_bits(char *value, size_t value_size)
 {
-	int info_count;
 	int i;
+	size_t str_offset = 0;
 	struct {
-		int count;
-		const struct SignedHeader *h;
+		uint32_t info_map_offset;
+		uint32_t image_types[2];
 	} headers[] = {
-		{.h = (const struct SignedHeader *)
-		 get_program_memory_addr(SYSTEM_IMAGE_RW)},
-
-		{.h = (const struct SignedHeader *)
-		 get_program_memory_addr(SYSTEM_IMAGE_RW_B)},
+		{ .info_map_offset = INFO_RO_MAP_OFFSET,
+		  .image_types = { SYSTEM_IMAGE_RO, SYSTEM_IMAGE_RO_B } },
+		{ .info_map_offset = INFO_RW_MAP_OFFSET,
+		  .image_types = { SYSTEM_IMAGE_RW, SYSTEM_IMAGE_RW_B } }
 	};
-
-	flash_info_read_enable(INFO_RW_MAP_OFFSET, INFO_RW_MAP_SIZE);
-	for (i = 0; i < INFO_MAX; i++) {
-		uint32_t w;
-
-		flash_physical_info_read_word(INFO_RW_MAP_OFFSET +
-					      i * sizeof(uint32_t),
-					      &w);
-		if (w)
-			break;
-	}
-	info_count = i;
 
 	for (i = 0; i < ARRAY_SIZE(headers); i++) {
 		int j;
 
-		for (j = 0; j < INFO_MAX; j++)
-			if (headers[i].h->infomap[j/32] & (1 << (j%32)))
-				break;
-		headers[i].count = j;
-	}
+		/* First see how many bits are cleared in the INFO space. */
+		for (j = 0; j < INFO_MAX; j++) {
+			uint32_t w;
 
-	snprintf(value, value_size, "%d/%d/%d", info_count,
-		 headers[0].count, headers[1].count);
+			flash_physical_info_read_word(
+				headers[i].info_map_offset +
+					j * sizeof(uint32_t),
+				&w);
+			if (w)
+				break;
+		}
+		/* Count of INFO space bits. */
+		str_offset += snprintf(value + str_offset,
+				       value_size - str_offset, " %d", j);
+
+		/* Iterate over two sections, A and B. */
+		for (j = 0; j < ARRAY_SIZE(headers[i].image_types); j++) {
+			int k;
+			const struct SignedHeader *sh;
+
+			sh = (const struct SignedHeader *)
+				get_program_memory_addr(
+					headers[i].image_types[j]);
+			for (k = 0; k < INFO_MAX; k++)
+				if (sh->infomap[k/32] & (1 << (k%32)))
+					break;
+			str_offset += snprintf(value + str_offset,
+					       value_size - str_offset, "/%d",
+					       k);
+		}
+	}
 }
 
 #ifdef CONFIG_EXTENDED_VERSION_INFO

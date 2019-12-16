@@ -14,7 +14,7 @@
  */
 #define IT83XX_USBPD_CC_PIN_CONFIG 0x86
 
-#define TASK_EVENT_PHY_TX_DONE TASK_EVENT_CUSTOM((1 << 17))
+#define TASK_EVENT_PHY_TX_DONE TASK_EVENT_CUSTOM_BIT(PD_EVENT_FIRST_FREE_BIT)
 
 #define SET_MASK(reg, bit_mask)      ((reg) |= (bit_mask))
 #define CLEAR_MASK(reg, bit_mask)    ((reg) &= (~(bit_mask)))
@@ -51,9 +51,9 @@
 #define USBPD_GET_POWER_ROLE(port)                  \
 	(IT83XX_USBPD_PDMSR(port) & 1)
 #define USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) \
-	(IT83XX_USBPD_CCGCR(port) & (1 << 1))
+	(IT83XX_USBPD_CCGCR(port) & BIT(1))
 #define USBPD_GET_CC2_PULL_REGISTER_SELECTION(port) \
-	(IT83XX_USBPD_BMCSR(port) & (1 << 3))
+	(IT83XX_USBPD_BMCSR(port) & BIT(3))
 #define USBPD_GET_PULL_CC_SELECTION(port)           \
 	(IT83XX_USBPD_CCGCR(port) & 1)
 
@@ -70,11 +70,10 @@
 	IS_MASK_SET(IT83XX_USBPD_ISR(port), USBPD_REG_MASK_MSG_TX_DONE)
 #define USBPD_IS_RX_DONE(port)           \
 	IS_MASK_SET(IT83XX_USBPD_ISR(port), USBPD_REG_MASK_MSG_RX_DONE)
-
-enum usbpd_cc_pin {
-	USBPD_CC_PIN_1,
-	USBPD_CC_PIN_2,
-};
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+#define USBPD_IS_PLUG_IN_OUT_DETECT(port)\
+	IS_MASK_SET(IT83XX_USBPD_TCDCR(port), USBPD_REG_PLUG_IN_OUT_DETECT_STAT)
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 
 enum usbpd_ufp_volt_status {
 	USBPD_UFP_STATE_SNK_OPEN = 0,

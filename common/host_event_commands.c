@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -209,6 +209,26 @@ void lpc_s3_resume_clear_masks(void)
 	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
 }
 
+/*
+ * Clear events that are not part of SCI/SMI mask so as to prevent
+ * premature wakes on next suspend(S0ix). This is not needed on
+ * suspending to S3 as coreboot clears all events on path to suspend.
+ *
+ * We preserve events that are part of SCI/SMI mask to help kernel
+ * identify the wake reason on resume. For events that are not set
+ * in SCI mask but are part of S0iX WAKE masks, kernel drivers should
+ * have other ways (physical/virtual interrupt) pin to identify when
+ * they trigger wakes.
+ */
+#ifdef CONFIG_POWER_S0IX
+void clear_non_sci_events(void)
+{
+	host_clear_events(~lpc_get_host_event_mask(LPC_HOST_EVENT_SCI) &
+			  ~lpc_get_host_event_mask(LPC_HOST_EVENT_SMI));
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clear_non_sci_events, HOOK_PRIO_DEFAULT);
+#endif
+
 #endif
 
 /*
@@ -217,10 +237,14 @@ void lpc_s3_resume_clear_masks(void)
  * The primary copy is mirrored in mapped memory and used to trigger interrupts
  * on the host via ACPI/SCI/SMI/GPIO.
  *
- * The secondary (B) copy is used to track events at a non-interrupt level (for
- * example, so a user-level process can find out what events have happened
- * since the last call, even though a kernel-level process is consuming events
- * from the first copy).
+ * The secondary (B) copy is used by entities other than ACPI to query the state
+ * of host events on EC. Currently events_copy_b is used for
+ *      1. Logging recovery mode switch in coreboot.
+ *      2. Used by depthcharge on devices with no 8042 and no MKBP interrupt.
+ *      3. Logging wake reason in coreboot.
+ * Current query of a event from copy_b is immediately followed by clear of the
+ * same event. Further uses of copy_b should make sure this semantics is
+ * followed and none of the above mentioned use cases are broken.
  *
  * Setting an event sets both copies.  Copies are cleared separately.
  */
@@ -418,6 +442,16 @@ test_mockable void host_throttle_cpu(int throttle)
 		host_set_single_event(EC_HOST_EVENT_THROTTLE_STOP);
 }
 
+/*
+ * Events copy b is used by coreboot for logging the wake reason. For this to
+ * work, events_copy_b needs to be cleared on every suspend.
+ */
+void clear_events_copy_b(void)
+{
+	events_copy_b = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clear_events_copy_b, HOOK_PRIO_DEFAULT);
+
 /*****************************************************************************/
 /* Console commands */
 static int command_host_event(int argc, char **argv)
@@ -474,7 +508,8 @@ DECLARE_CONSOLE_COMMAND(hostevent, command_host_event,
 
 #ifdef CONFIG_HOSTCMD_X86
 
-static int host_event_get_smi_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_get_smi_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -487,7 +522,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SMI_MASK,
 		     host_event_get_smi_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_get_sci_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_get_sci_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -500,7 +536,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SCI_MASK,
 		     host_event_get_sci_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_get_wake_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_get_wake_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -513,7 +550,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
 		     host_event_get_wake_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_set_smi_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_set_smi_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -524,7 +562,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SMI_MASK,
 		     host_event_set_smi_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_set_sci_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_set_sci_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -535,7 +574,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SCI_MASK,
 		     host_event_set_sci_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_set_wake_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_set_wake_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -554,7 +594,7 @@ uint8_t lpc_is_active_wm_set_by_host(void)
 
 #endif  /* CONFIG_HOSTCMD_X86 */
 
-static int host_event_get_b(struct host_cmd_handler_args *args)
+static enum ec_status host_event_get_b(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -567,7 +607,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_B,
 		     host_event_get_b,
 		     EC_VER_MASK(0));
 
-static int host_event_clear(struct host_cmd_handler_args *args)
+static enum ec_status host_event_clear(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -578,7 +618,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR,
 		     host_event_clear,
 		     EC_VER_MASK(0));
 
-static int host_event_clear_b(struct host_cmd_handler_args *args)
+static enum ec_status host_event_clear_b(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -589,7 +629,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR_B,
 		     host_event_clear_b,
 		     EC_VER_MASK(0));
 
-static int host_event_action_get(struct host_cmd_handler_args *args)
+static enum ec_status host_event_action_get(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event *r = args->response;
 	const struct ec_params_host_event *p = args->params;
@@ -636,7 +676,7 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_event_action_set(struct host_cmd_handler_args *args)
+static enum ec_status host_event_action_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 	int result = EC_RES_SUCCESS;
@@ -678,7 +718,8 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_event_action_clear(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_action_clear(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 	int result = EC_RES_SUCCESS;
@@ -698,7 +739,8 @@ static int host_event_action_clear(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_command_host_event(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_host_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 

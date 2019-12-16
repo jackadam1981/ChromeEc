@@ -1,10 +1,11 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /* Verified boot hash computing module for Chrome EC */
 
+#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "flash.h"
@@ -118,6 +119,7 @@ static void vboot_hash_next_chunk(void)
 	/* Handle abort */
 	if (want_abort) {
 		in_progress = 0;
+		clock_enable_module(MODULE_FAST_CPU, 0);
 		vboot_hash_abort();
 		return;
 	}
@@ -139,9 +141,11 @@ static void vboot_hash_next_chunk(void)
 	if (curr_pos >= data_size) {
 		/* Store the final hash */
 		hash = SHA256_final(&ctx);
-		CPRINTS("hash done %.*h", SHA256_PRINT_SIZE, hash);
+		CPRINTS("hash done %ph", HEX_BUF(hash, SHA256_PRINT_SIZE));
 
 		in_progress = 0;
+
+		clock_enable_module(MODULE_FAST_CPU, 0);
 
 		/* Handle receiving abort during finalize */
 		if (want_abort)
@@ -176,6 +180,7 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 		return EC_ERROR_INVAL;
 	}
 
+	clock_enable_module(MODULE_FAST_CPU, 1);
 	/* Save new hash request */
 	data_offset = offset;
 	data_size = size;
@@ -326,7 +331,7 @@ static int command_hash(int argc, char **argv)
 		else if (in_progress)
 			ccprintf("(in progress)\n");
 		else if (hash)
-			ccprintf("%.*h\n", SHA256_DIGEST_SIZE, hash);
+			ccprintf("%ph\n", HEX_BUF(hash, SHA256_DIGEST_SIZE));
 		else
 			ccprintf("(invalid)\n");
 
@@ -433,7 +438,8 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 		return EC_RES_ERROR;
 }
 
-static int host_command_vboot_hash(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_vboot_hash(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_vboot_hash *p = args->params;
 	struct ec_response_vboot_hash *r = args->response;

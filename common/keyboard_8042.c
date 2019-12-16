@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -126,7 +126,7 @@ static enum scancode_set_list scancode_set = SCANCODE_SET_2;
  *   the inter-char delay = (2 ** B) * (D + 8) / 240 (sec)
  * Default: 500ms delay, 10.9 chars/sec.
  */
-#define DEFAULT_TYPEMATIC_VALUE ((1 << 5) | (1 << 3) | (3 << 0))
+#define DEFAULT_TYPEMATIC_VALUE (BIT(5) | BIT(3) | (3 << 0))
 static uint8_t typematic_value_from_host;
 static int typematic_first_delay;
 static int typematic_inter_delay;
@@ -306,10 +306,10 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	ASSERT(scan_code);
 	ASSERT(len);
 
-	if (row >= KEYBOARD_ROWS || col >= KEYBOARD_COLS)
+	if (row >= KEYBOARD_ROWS || col >= keyboard_cols)
 		return EC_ERROR_INVAL;
 
-	make_code = scancode_set2[row][col];
+	make_code = scancode_set2[col][row];
 
 #ifdef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 	{
@@ -384,7 +384,15 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 	int32_t len = 0;
 	enum ec_error_list ret;
 
-	CPRINTS5("KB (%d,%d)=%d", row, col, is_pressed);
+#ifdef CONFIG_KEYBOARD_DEBUG
+	char mylabel = keycap_label[col][row];
+
+	if (mylabel & KEYCAP_LONG_LABEL_BIT)
+		CPRINTS("KB (%d,%d)=%d %s", row, col, is_pressed,
+		  keycap_long_label[mylabel & KEYCAP_LONG_LABEL_INDEX_BITMASK]);
+	else
+		CPRINTS("KB (%d,%d)=%d %c", row, col, is_pressed, mylabel);
+#endif
 
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
 			      &len);
@@ -523,7 +531,7 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 	case STATE_WRITE_OUTPUT_PORT:
 		CPRINTS5("KB eaten by STATE_WRITE_OUTPUT_PORT: 0x%02x",
 			 data);
-		A20_status = (data & (1 << 1)) ? 1 : 0;
+		A20_status = (data & BIT(1)) ? 1 : 0;
 		data_port_state = STATE_NORMAL;
 		break;
 
@@ -601,12 +609,10 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 			keyboard_clear_buffer();
 			break;
 
-		case I8042_CMD_RESET_BAT:
+		case I8042_CMD_RESET:
 			reset_rate_and_delay();
 			keyboard_clear_buffer();
 			output[out_len++] = I8042_RET_ACK;
-			output[out_len++] = I8042_RET_BAT;
-			output[out_len++] = I8042_RET_BAT;
 			break;
 
 		case I8042_CMD_RESEND:
@@ -688,9 +694,9 @@ static int handle_keyboard_command(uint8_t command, uint8_t *output)
 
 	case I8042_READ_OUTPUT_PORT:
 		output[out_len++] =
-			(lpc_keyboard_input_pending() ? (1 << 5) : 0) |
-			(lpc_keyboard_has_char() ? (1 << 4) : 0) |
-			(A20_status ? (1 << 1) : 0) |
+			(lpc_keyboard_input_pending() ? BIT(5) : 0) |
+			(lpc_keyboard_has_char() ? BIT(4) : 0) |
+			(A20_status ? BIT(1) : 0) |
 			1;  /* Main processor in normal mode */
 		break;
 
@@ -748,7 +754,7 @@ static int handle_keyboard_command(uint8_t command, uint8_t *output)
 			 *   b0=0 to reset CPU, see I8042_SYSTEM_RESET above
 			 *   b1=0 to disable A20 line
 			 */
-			A20_status = command & (1 << 1) ? 1 : 0;
+			A20_status = command & BIT(1) ? 1 : 0;
 		} else {
 			CPRINTS("KB unsupported cmd: 0x%02x", command);
 			reset_rate_and_delay();
@@ -910,8 +916,8 @@ static int command_typematic(int argc, char **argv)
 	ccprintf("From host:   0x%02x\n", typematic_value_from_host);
 	ccprintf("First delay: %3d ms\n", typematic_first_delay / 1000);
 	ccprintf("Inter delay: %3d ms\n", typematic_inter_delay / 1000);
-	ccprintf("Now:         %.6ld\n", get_time().val);
-	ccprintf("Deadline:    %.6ld\n", typematic_deadline.val);
+	ccprintf("Now:         %.6" PRId64 "\n", get_time().val);
+	ccprintf("Deadline:    %.6" PRId64 "\n", typematic_deadline.val);
 
 	ccputs("Repeat scan code: {");
 	for (i = 0; i < typematic_len; ++i)

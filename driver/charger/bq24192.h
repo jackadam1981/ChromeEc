@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BQ24192_H
 #define __CROS_EC_BQ24192_H
 
-#define BQ24192_ADDR 0xd6
+#define BQ24192_ADDR_FLAGS 0x6b
 
 /* Registers */
 #define BQ24192_REG_INPUT_CTRL      0x0

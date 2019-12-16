@@ -1,5 +1,5 @@
 # -*- makefile -*-
-# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -9,17 +9,16 @@ CFLAGS_CPU+=-march=armv7-m -mcpu=cortex-m3
 
 ifeq ($(CONFIG_DCRYPTO),y)
 INCLUDE_ROOT := $(abspath ./include)
-CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
 CPPFLAGS += -I$(abspath .)
 CPPFLAGS += -I$(abspath ./builtin)
 CPPFLAGS += -I$(abspath ./chip/$(CHIP))
 CPPFLAGS += -I$(INCLUDE_ROOT)
-CPPFLAGS += -I$(CRYPTOCLIB)/include
 endif
 
 # Required chip modules
 chip-y = clock.o gpio.o hwtimer.o pre_init.o system.o
 chip-$(CONFIG_BOARD_ID_SUPPORT) += board_id.o
+chip-$(CONFIG_SN_BITS_SUPPORT) += sn_bits.o
 ifeq ($(CONFIG_POLLING_UART),y)
 chip-y += polling_uart.o
 else
@@ -39,10 +38,10 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/dcrypto_bn.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/dcrypto_p256.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/compare.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/dcrypto_runtime.o
-chip-$(CONFIG_DCRYPTO)+= dcrypto/drbg_rfc6979.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/gcm.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/hkdf.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/hmac.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/hmac_drbg.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/key_ladder.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ec.o
@@ -66,6 +65,8 @@ chip-y+= jitter.o
 chip-y+= pmu.o
 chip-y+= trng.o
 chip-y+= runlevel.o
+chip-$(CONFIG_CCD_ITE_PROGRAMMING)+= ite_flash.o
+chip-$(CONFIG_CCD_ITE_PROGRAMMING)+= ite_sync.o
 chip-$(CONFIG_ENABLE_H1_ALERTS)+= alerts.o
 chip-$(CONFIG_USB_FW_UPDATE)+= usb_upgrade.o
 chip-$(CONFIG_NON_HC_FW_UPDATE)+= upgrade_fw.o post_reset.o upgrade.o
@@ -123,8 +124,21 @@ ifneq ($(CONFIG_RW_B),)
 $(out)/$(PROJECT).obj: $(out)/RW/ec.RW_B.flat
 endif
 
+CR50_OPTS=
+
 ifneq ($(CR50_DEV),)
 CPPFLAGS += -DCR50_DEV=$(CR50_DEV)
+CR50_OPTS+=CR50_DEV
+endif
+
+ifneq ($(CR50_SQA),)
+CPPFLAGS += -DCR50_SQA=$(CR50_SQA)
+CR50_OPTS+=CR50_SQA
+endif
+
+# Test if more than one Cr50 build option is specified
+ifneq ($(wordlist 2,3,$(CR50_OPTS)),)
+$(error Incompatible CR50 build options specified: $(CR50_OPTS))
 endif
 
 MANIFEST := util/signer/ec_RW-manifest-dev.json
@@ -163,7 +177,7 @@ ifeq ($(H1_DEVIDS),)
 # Signing with non-secret test key.
 CR50_RW_KEY = loader-testkey-A.pem
 # Make sure manifset Key ID field matches the actual key.
-DUM := $(shell sed 's/1187158727/764428053/' $(MANIFEST) > $(SIGNER_MANIFEST))
+DUM := $(shell sed 's/860844255/-764428053/' $(MANIFEST) > $(SIGNER_MANIFEST))
 else
 # The private key comes from the sighing fob.
 CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
@@ -213,17 +227,5 @@ endif  # H1_DEVIDS defined
 ifneq ($(CHIP_MK_INCLUDED_ONCE),)
 $(out)/RW/ec.RW_B.flat: $(out)/RW/ec.RW.flat
 $(out)/RW/ec.RW.flat $(out)/RW/ec.RW_B.flat: SIGNER_EXTRAS = $(RW_SIGNER_EXTRAS)
-
-ifeq ($(CONFIG_DCRYPTO),y)
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/cryptoc \
-						-lcryptoc
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
-
-# Force the external build each time, so it can look for changed sources.
-.PHONY: $(out)/cryptoc/libcryptoc.a
-$(out)/cryptoc/libcryptoc.a:
-	$(MAKE) obj=$(realpath $(out))/cryptoc SUPPORT_UNALIGNED=1 \
-		CONFIG_UPTO_SHA512=$(CONFIG_UPTO_SHA512) -C $(CRYPTOCLIB)
-endif   # end CONFIG_DCRYPTO
 
 endif   # CHIP_MK_INCLUDED_ONCE is nonempty

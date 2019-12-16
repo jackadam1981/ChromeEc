@@ -13,6 +13,10 @@
 #include <common.h>
 #include <pinweaver_types.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define PW_STORAGE_VERSION 0
 
 #define BITS_PER_LEVEL_MIN 1
@@ -62,18 +66,6 @@ struct PW_PACKED pw_log_storage_t {
 	uint16_t storage_version;
 	uint32_t restart_count;
 	struct pw_get_log_entry_t entries[PW_LOG_ENTRY_COUNT];
-};
-
-/* Do not remove fields within the same PW_LEAF_MAJOR_VERSION. */
-/* Unencrypted part of the leaf data.
- */
-struct PW_PACKED leaf_public_data_t {
-	struct label_t label;
-	struct delay_schedule_entry_t delay_schedule[PW_SCHED_COUNT];
-
-	/* State used to rate limit. */
-	struct pw_timestamp_t timestamp;
-	struct attempt_count_t attempt_count;
 };
 
 /* Do not remove fields within the same PW_LEAF_MAJOR_VERSION. */
@@ -142,7 +134,7 @@ void pinweaver_init(void);
  * merkle_tree->root needs to be updated with new_root outside of this function.
  */
 int pw_handle_request(struct merkle_tree_t *merkle_tree,
-		      const struct pw_request_t *request,
+		      struct pw_request_t *request,
 		      struct pw_response_t *response);
 
 /******************************************************************************/
@@ -188,5 +180,9 @@ int log_insert_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE],
 int log_remove_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE]);
 int log_auth(struct label_t label, const uint8_t root[PW_HASH_SIZE], int code,
 	     struct pw_timestamp_t timestamp);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  /* __CROS_EC_INCLUDE_PINWEAVER_H */

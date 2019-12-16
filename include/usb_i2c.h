@@ -107,6 +107,10 @@ enum usb_i2c_error {
 	USB_I2C_PORT_INVALID        = 0x0005,
 	USB_I2C_DISABLED            = 0x0006,
 	USB_I2C_MISSING_HANDLER     = 0x0007,
+<<<<<<< HEAD   (c9fc91 servo_v4: fix in displaying CCD polarity)
+=======
+	USB_I2C_UNSUPPORTED_COMMAND = 0x0008,
+>>>>>>> BRANCH (536eb9 puff: Add USB Type C power delivery config)
 	USB_I2C_UNKNOWN_ERROR       = 0x8000,
 };
 
@@ -217,7 +221,11 @@ int usb_i2c_board_is_enabled(void);
  * Special i2c address to use when the client is required to execute some
  * command which does not directly involve the i2c master driver.
  */
+<<<<<<< HEAD   (c9fc91 servo_v4: fix in displaying CCD polarity)
 #define USB_I2C_CMD_ADDR 0xf0
+=======
+#define USB_I2C_CMD_ADDR_FLAGS 0x78
+>>>>>>> BRANCH (536eb9 puff: Add USB Type C power delivery config)
 
 /*
  * Function to call to register a handler for commands sent to the special i2c

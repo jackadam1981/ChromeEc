@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -28,7 +28,11 @@
 /* Describe the flash layout */
 #define CONFIG_PROGRAM_MEMORY_BASE     0x40000
 #define CONFIG_FLASH_SIZE              (512 * 1024)
+#define CONFIG_FLASH_ERASED_VALUE32    (-1U)
+
+#undef CONFIG_RO_HEAD_ROOM
 #define CONFIG_RO_HEAD_ROOM	       1024	/* Room for ROM signature. */
+#undef CONFIG_RW_HEAD_ROOM
 #define CONFIG_RW_HEAD_ROOM	       CONFIG_RO_HEAD_ROOM  /* same for RW */
 
 /* Memory-mapped internal flash */
@@ -98,7 +102,7 @@
  * use these two areas for the same thing, it's just more convenient to make
  * them the same size.
  */
-#define CFG_TOP_SIZE  0x3800
+#define CFG_TOP_SIZE  0x3000
 #define CFG_TOP_A_OFF (CFG_FLASH_HALF - CFG_TOP_SIZE)
 #define CFG_TOP_B_OFF (CONFIG_FLASH_SIZE - CFG_TOP_SIZE)
 
@@ -146,4 +150,16 @@
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 2
 
-#endif	/* __CROS_EC_CONFIG_CHIP_H */
+#define CONFIG_FLASH_LOG_SPACE CONFIG_FLASH_BANK_SIZE
+
+/*
+ * Flash log occupies space in the top of RO_B section, its counterpart in
+ * RO_A is occupied by the certs.
+ */
+#define CONFIG_FLASH_LOG_BASE                                                  \
+	(CONFIG_PROGRAM_MEMORY_BASE + CHIP_RO_B_MEM_OFF + CONFIG_RO_SIZE -     \
+	 CONFIG_FLASH_LOG_SPACE)
+
+/* Use software crypto (libcryptoc). */
+#define CONFIG_LIBCRYPTOC
+#endif /* __CROS_EC_CONFIG_CHIP_H */

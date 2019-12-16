@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -96,6 +96,14 @@ SECTIONS {
     __hooks_second = .;
     *(.rodata.HOOK_SECOND)
     __hooks_second_end = .;
+
+    __hooks_usb_pd_disconnect = .;
+    *(.rodata.HOOK_USB_PD_DISCONNECT)
+    __hooks_usb_pd_disconnect_end = .;
+
+    __hooks_usb_pd_connect = .;
+    KEEP(*(.rodata.HOOK_USB_PD_CONNECT))
+    __hooks_usb_pd_connect_end = .;
 
     __deferred_funcs = .;
     *(.rodata.deferred)

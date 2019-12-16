@@ -14,6 +14,8 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define BLANK_FIELD 0xffffffff
+
 /**
  * Return the image header for the current image copy
  */
@@ -21,6 +23,21 @@ const struct SignedHeader *get_current_image_header(void)
 {
 	return (const struct SignedHeader *)
 			get_program_memory_addr(system_get_image_copy());
+}
+
+int board_id_type_is_blank(const struct board_id *id)
+{
+	return (id->type & id->type_inv) == BLANK_FIELD;
+}
+
+static int board_id_flags_are_blank(const struct board_id *id)
+{
+	return id->flags == BLANK_FIELD;
+}
+
+int board_id_is_blank(const struct board_id *id)
+{
+	return board_id_type_is_blank(id) && board_id_flags_are_blank(id);
 }
 
 uint32_t check_board_id_vs_header(const struct board_id *id,
@@ -32,7 +49,7 @@ uint32_t check_board_id_vs_header(const struct board_id *id,
 	uint32_t header_board_id_flags;
 
 	/* Blank Board ID matches all headers */
-	if (~(id->type & id->type_inv & id->flags) == 0)
+	if (board_id_is_blank(id))
 		return 0;
 
 	header_board_id_type = SIGNED_HEADER_PADDING ^ h->board_id_type;
@@ -40,20 +57,20 @@ uint32_t check_board_id_vs_header(const struct board_id *id,
 	header_board_id_flags = SIGNED_HEADER_PADDING ^ h->board_id_flags;
 
 	/*
-	 * Masked bits in header Board ID type must match type and inverse from
-	 * flash.
-	 */
-	mismatch = header_board_id_type ^ id->type;
-	mismatch |= header_board_id_type ^ ~id->type_inv;
-	mismatch &= header_board_id_mask;
-
-	/*
 	 * All 1-bits in header Board ID flags must be present in flags from
 	 * flash
 	 */
-	mismatch |=
+	mismatch =
 		((header_board_id_flags & id->flags) != header_board_id_flags);
-
+	/*
+	 * Masked bits in header Board ID type must match type and inverse from
+	 * flash.
+	 */
+	if (!mismatch && !board_id_type_is_blank(id)) {
+		mismatch = header_board_id_type ^ id->type;
+		mismatch |= header_board_id_type ^ ~id->type_inv;
+		mismatch &= header_board_id_mask;
+	}
 	return mismatch;
 }
 
@@ -69,21 +86,11 @@ int read_board_id(struct board_id *id)
 
 	id_p = (uint32_t *)id;
 
-	/* Make sure INFO1 board ID space is readable */
-	if (flash_info_read_enable(INFO_BOARD_SPACE_OFFSET,
-				   INFO_BOARD_SPACE_PROTECT_SIZE) !=
-	    EC_SUCCESS) {
-		CPRINTS("%s: failed to enable read access to info", __func__);
-		return EC_ERROR_ACCESS_DENIED;
-	}
-
 	for (i = 0; i < sizeof(*id); i += sizeof(uint32_t)) {
 		int rv;
 
 		rv = flash_physical_info_read_word
-			(INFO_BOARD_SPACE_OFFSET +
-			 offsetof(struct info1_board_space, bid) + i,
-			 id_p);
+			(INFO_BOARD_ID_OFFSET + i, id_p);
 		if (rv != EC_SUCCESS) {
 			CPRINTF("%s: failed to read word %d, error %d\n",
 				__func__, i, rv);
@@ -126,10 +133,26 @@ uint32_t board_id_mismatch(const struct SignedHeader *sh)
  * @return EC_SUCCESS or an error code in cases of various failures to read or
  *              if the space has been already initialized.
  */
-static int write_board_id(const struct board_id *id)
+static int write_board_id(struct board_id *id)
 {
 	struct board_id id_test;
 	uint32_t rv;
+
+	/* Fail if Board ID is already programmed */
+	rv = read_board_id(&id_test);
+	if (rv != EC_SUCCESS) {
+		CPRINTS("%s: error reading Board ID", __func__);
+		return rv;
+	}
+
+	if (!board_id_is_blank(&id_test)) {
+		if (!board_id_type_is_blank(&id_test)) {
+			CPRINTS("%s: Board ID already programmed", __func__);
+			return EC_ERROR_ACCESS_DENIED;
+		}
+		CPRINTS("%s: using old flags.", __func__);
+		id->flags = id_test.flags;
+	}
 
 	/*
 	 * Make sure the current header will still validate against the
@@ -141,34 +164,15 @@ static int write_board_id(const struct board_id *id)
 		return EC_ERROR_INVAL;
 	}
 
-	/* Fail if Board ID is already programmed */
-	rv = read_board_id(&id_test);
-	if (rv != EC_SUCCESS) {
-		CPRINTS("%s: error reading Board ID", __func__);
-		return rv;
-	}
-
-	if (~(id_test.type & id_test.type_inv & id_test.flags) != 0) {
-		CPRINTS("%s: Board ID already programmed", __func__);
-		return EC_ERROR_ACCESS_DENIED;
-	}
-
-	/* Enable write access */
-	if (flash_info_write_enable(INFO_BOARD_SPACE_OFFSET,
-				    INFO_BOARD_SPACE_PROTECT_SIZE) !=
-	    EC_SUCCESS) {
-		CPRINTS("%s: failed to enable write access", __func__);
-		return EC_ERROR_ACCESS_DENIED;
-	}
+	flash_info_write_enable();
 
 	/* Write Board ID */
-	rv = flash_info_physical_write(INFO_BOARD_SPACE_OFFSET +
+	rv = flash_info_physical_write(INFO_BOARD_ID_OFFSET +
 			 offsetof(struct info1_board_space, bid),
 				       sizeof(*id), (const char *)id);
 	if (rv != EC_SUCCESS)
 		CPRINTS("%s: write failed", __func__);
 
-	/* Disable write access */
 	flash_info_write_disable();
 
 	return rv;
@@ -192,7 +196,10 @@ static enum vendor_cmd_rc vc_set_board_id(enum vendor_cmd_cc code,
 
 	memcpy(&id.type, pbuf, sizeof(id.type));
 	id.type = be32toh(id.type);
-	id.type_inv = ~id.type;
+	if (id.type == BLANK_FIELD)
+		id.type_inv = BLANK_FIELD;
+	else
+		id.type_inv = ~id.type;
 
 	memcpy(&id.flags, pbuf + sizeof(id.type), sizeof(id.flags));
 	id.flags = be32toh(id.flags);
@@ -216,12 +223,13 @@ static int command_board_id(int argc, char **argv)
 			ccprintf("Failed to read board ID space\n");
 			return rv;
 		}
-		ccprintf("Board ID: %08x, flags %08x\n", id.type, id.flags);
+		ccprintf("Board ID: %08x:%08x, flags %08x\n", id.type,
+			 id.type_inv, id.flags);
 
-		if ((~id.type | ~id.type_inv | ~id.flags) == 0)
+		if (board_id_is_blank(&id))
 			return rv; /* The space is not initialized. */
 
-		if (id.type != ~id.type_inv)
+		if (!board_id_type_is_blank(&id) && id.type != ~id.type_inv)
 			ccprintf("Inv Type Mismatch (%08x instead of %08x)!\n",
 				 id.type_inv, ~id.type);
 	}
@@ -236,17 +244,18 @@ static int command_board_id(int argc, char **argv)
 		id.flags = strtoi(argv[2], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM2;
-
 		rv = write_board_id(&id);
-	} else {
-		ccprintf("specify board type and flags\n");
-		rv = EC_ERROR_PARAM_COUNT;
 	}
 #endif
 	return rv;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(bid,
-			     command_board_id, NULL, "Set/Get Board ID");
+DECLARE_SAFE_CONSOLE_COMMAND(bid, command_board_id,
+#ifdef CR50_DEV
+			     "[bid flags]",
+#else
+			     NULL,
+#endif
+			     "Set/Get Board ID");
 
 static enum vendor_cmd_rc vc_get_board_id(enum vendor_cmd_cc code,
 					  void *buf,

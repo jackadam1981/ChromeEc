@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -32,6 +32,12 @@ test_mockable void run_test(void) { }
 
 /* Default dummy test init */
 test_mockable void test_init(void) { }
+
+/* Default dummy before test */
+test_mockable void before_test(void) { }
+
+/* Default dummy after test */
+test_mockable void after_test(void) { }
 
 #ifdef TEST_COVERAGE
 extern void __gcov_flush(void);

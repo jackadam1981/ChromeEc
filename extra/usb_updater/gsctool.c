@@ -12,6 +12,8 @@
 #include <getopt.h>
 #include <libusb.h>
 #include <openssl/sha.h>
+#include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,6 +26,7 @@
 
 #include "ccd_config.h"
 #include "compile_time_macros.h"
+#include "flash_log.h"
 #include "generated_version.h"
 #include "gsctool.h"
 #include "misc_util.h"
@@ -33,12 +36,6 @@
 #include "upgrade_fw.h"
 #include "usb_descriptor.h"
 #include "verify_ro.h"
-
-#ifdef DEBUG
-#define debug printf
-#else
-#define debug(fmt, args...)
-#endif
 
 /*
  * This file contains the source code of a Linux application used to update
@@ -187,6 +184,24 @@ struct upgrade_pkt {
 	};
 } __packed;
 
+/*
+ * Structure used to simplify mapping command line options into Boolean
+ * variables. If an option is present, the corresponding integer value is set
+ * to 1.
+ */
+struct options_map {
+	char opt;
+	int *flag;
+};
+
+/*
+ * Structure used to combine option description used by getopt_long() and help
+ * text for the option.
+ */
+struct option_container {
+	struct option opt;
+	const char *help_text;
+};
 
 /*
  * This by far exceeds the largest vendor command response size we ever
@@ -194,40 +209,131 @@ struct upgrade_pkt {
  */
 #define MAX_BUF_SIZE	500
 
+/*
+ * Max. length of the board ID string representation.
+ *
+ * Board ID is either a 4-character ASCII alphanumeric string or an 8-digit
+ * hex.
+ */
+#define MAX_BOARD_ID_LENGTH 9
+
+/*
+ * Length, in bytes, of the SN Bits serial number bits.
+ */
+#define SN_BITS_SIZE  (96 >> 3)
+
+/*
+ * Max. length of FW version in the format of <epoch>.<major>.<minor>
+ * (3 uint32_t string representation + 2 separators + NULL terminator).
+ */
+#define MAX_FW_VER_LENGTH 33
+
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikmO:oPprstUuVvw";
-static const struct option long_opts[] = {
-	/* name    hasarg *flag val */
-	{"any",		                0,   NULL, 'a'},
-	{"background_update_supported", 0,   NULL, 'B'},
-	{"binvers",	                0,   NULL, 'b'},
-	{"board_id",                    2,   NULL, 'i'},
-	{"ccd_info",                    0,   NULL, 'I'},
-	{"ccd_lock",                    0,   NULL, 'k'},
-	{"ccd_open",                    0,   NULL, 'o'},
-	{"ccd_unlock",                  0,   NULL, 'U'},
-	{"corrupt",	                0,   NULL, 'c'},
-	{"device",	                1,   NULL, 'd'},
-	{"factory",	                1,   NULL, 'F'},
-	{"fwver",	                0,   NULL, 'f'},
-	{"help",	                0,   NULL, 'h'},
-	{"openbox_rma",                 1,   NULL, 'O'},
-	{"password",	                0,   NULL, 'P'},
-	{"post_reset",	                0,   NULL, 'p'},
-	{"rma_auth",	                2,   NULL, 'r'},
-	{"systemdev",	                0,   NULL, 's'},
-	{"tpm_mode",                    1,   NULL, 'm'},
-	{"trunks_send",	                0,   NULL, 't'},
-	{"verbose",	                0,   NULL, 'V'},
-	{"version",	                0,   NULL, 'v'},
-	{"wp",		                0,   NULL, 'w'},
-	{"upstart",	                0,   NULL, 'u'},
-	{},
+
+/*
+ * List of command line options, ***sorted by the short form***.
+ *
+ * The help_text field does not include the short and long option strings,
+ * they are retrieved from the opt structure. In case the help text needs to
+ * have something printed immediately after the option strings (for example,
+ * an optional parameter), it should be included in the beginning of help_text
+ * string separated by the % character.
+ *
+ * usage() function which prints out the help message will concatenate the
+ * short and long options and the optional parameter, if present, and then
+ * print the rest of the text message at a fixed indentation.
+ */
+static const struct option_container cmd_line_options[] = {
+	/* name   has_arg    *flag  val */
+	{{"any", no_argument, NULL, 'a'},
+	 "Try any interfaces to find Cr50"
+	 " (-d, -s, -t are all ignored)"},
+	{{"background_update_supported", no_argument, NULL, 'B'},
+	 "Force background update mode (relevant"
+	 " only when interacting"
+	 " with Cr50 versions before 0.0.19)"
+	},
+	{{"binvers", no_argument, NULL, 'b'},
+	 "Report versions of Cr50 image's "
+	 "RW and RO headers, do not update"},
+	{{"corrupt", no_argument, NULL, 'c'},
+	 "Corrupt the inactive rw"},
+	{{"device", required_argument, NULL, 'd'},
+	 " VID:PID%USB device (default 18d1:5014)"},
+	{{"endorsement_seed", optional_argument, NULL, 'e'},
+	 "[state]%get/set the endorsement key seed"},
+	{{"fwver", no_argument, NULL, 'f'},
+	 "Report running Cr50 firmware versions"},
+	{{"factory", required_argument, NULL, 'F'},
+	 "[enable|disable]%Control factory mode"},
+	{{"help", no_argument, NULL, 'h'},
+	 "Show this message"},
+	{{"ccd_info", no_argument, NULL, 'I'},
+	 "Get information about CCD state"},
+	{{"board_id", optional_argument, NULL, 'i'},
+	 "[ID[:FLAGS]]%Get or set Info1 board ID fields. ID could be 32 bit "
+	 "hex or 4 character string."},
+	{{"ccd_lock", no_argument, NULL, 'k'},
+	 "Lock CCD"},
+	{{"flog", optional_argument, NULL, 'L'},
+	 "[prev entry]%Retrieve contents of the flash log"
+	 " (newer than <prev entry> if specified)"},
+	{{"machine", no_argument, NULL, 'M'},
+	 "Output in a machine-friendly way. "
+	 "Effective with -b, -f, -i, and -O."},
+	{{"tpm_mode", optional_argument, NULL, 'm'},
+	 "[enable|disable]%Change or query tpm_mode"},
+	{{"serial", required_argument, NULL, 'n'},
+	 "Cr50 CCD serial number"},
+	{{"openbox_rma", required_argument, NULL, 'O'},
+	 "<desc_file>%Verify other device's RO integrity using information "
+	 "provided in <desc file>"},
+	{{"ccd_open", no_argument, NULL, 'o'},
+	 "Start CCD open sequence"},
+	{{"password", no_argument, NULL, 'P'},
+	 "Set or clear CCD password. Use 'clear:<cur password>' to clear it"},
+	{{"post_reset", no_argument, NULL, 'p'},
+	 "Request post reset after transfer"},
+	{{"force_ro", no_argument, NULL, 'q'},
+	 "Force inactive RO update"},
+	{{"sn_rma_inc", required_argument, NULL, 'R'},
+	 "RMA_INC%Increment SN RMA count by RMA_INC. RMA_INC should be 0-7."},
+	{{"rma_auth", optional_argument, NULL, 'r'},
+	 "[auth_code]%Request RMA challenge, process "
+	 "RMA authentication code"},
+	{{"sn_bits", required_argument, NULL, 'S'},
+	 "SN_BITS%Set Info1 SN bits fields. SN_BITS should be 96 bit hex."},
+	{{"systemdev", no_argument, NULL, 's'},
+	 "Use /dev/tpm0 (-d is ignored)"},
+	{{"tstamp", optional_argument, NULL, 'T'},
+	 "[<tstamp>]%Get or set flash log timestamp base"},
+	{{"trunks_send", no_argument, NULL, 't'},
+	 "Use `trunks_send --raw' (-d is ignored)"},
+	{{"ccd_unlock", no_argument, NULL, 'U'},
+	 "Start CCD unlock sequence"},
+	{{"upstart", no_argument, NULL, 'u'},
+	 "Upstart mode (strict header checks)"},
+	{{"verbose", no_argument, NULL, 'V'},
+	 "Enable debug messages"},
+	{{"version", no_argument, NULL, 'v'},
+	 "Report this utility version"},
+	{{"wp", no_argument, NULL, 'w'},
+	 "Get the current wp setting"}
 };
 
+/* Helper to print debug messages when verbose flag is specified. */
+static void debug(const char *fmt, ...)
+{
+	va_list args;
 
+	if (verbose_mode) {
+		va_start(args, fmt);
+		vprintf(fmt, args);
+		va_end(args);
+	}
+}
 
 /* Helpers to convert between binary and hex ascii and back. */
 static char to_hexascii(uint8_t c)
@@ -395,16 +501,16 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 
 	out->length = htobe32(len);
 	memcpy(payload, data, size);
-#ifdef DEBUG
-	{
+
+	if (verbose_mode) {
 		int i;
 
 		debug("Writing %d bytes to TPM at %x\n", len, addr);
-		for (i = 0; i < 20; i++)
+		for (i = 0; i < MIN(len, 20); i++)
 			debug("%2.2x ", outbuf[i]);
 		debug("\n");
 	}
-#endif
+
 	switch (td->ep_type) {
 	case dev_xfer:
 		done = write(td->tpm_fd, out, len);
@@ -454,7 +560,6 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 		break;
 	}
 
-#ifdef DEBUG
 	debug("Read %d bytes from TPM\n", len);
 	if (len > 0) {
 		int i;
@@ -463,7 +568,6 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 			debug("%2.2x ", outbuf[i]);
 		debug("\n");
 	}
-#endif
 	len = len - response_offset;
 	if (len < 0) {
 		fprintf(stderr, "Problems reading from TPM, got %d bytes\n",
@@ -491,67 +595,73 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 /* Release USB device and return error to the OS. */
 static void shut_down(struct usb_endpoint *uep)
 {
-	libusb_close(uep->devh);
-	libusb_exit(NULL);
+	usb_shut_down(uep);
 	exit(update_error);
 }
 
 static void usage(int errs)
 {
+	size_t i;
+	const int indent = 27; /* This is the size used by gsctool all along. */
+
 	printf("\nUsage: %s [options] [<binary image>]\n"
 	       "\n"
 	       "This utility allows to update Cr50 RW firmware, configure\n"
 	       "various aspects of Cr50 operation, analyze Cr50 binary\n"
-	       "images, etc.\n"
-	       "The required argument is the file name of a full RO+RW\n"
-	       "binary image.\n"
-	       "A typical Chromebook use would exepect -s -t options\n"
-	       "included in the command line.\n"
+	       "images, etc.\n\n"
+	       "<binary image> is the file name of a full RO+RW binary image.\n"
 	       "\n"
-	       "Options:\n"
-	       "\n"
-	       "  -a,--any                 Try any interfaces to find Cr50"
-	       " (-d, -s, -t are all ignored)\n"
-	       "  -b,--binvers             Report versions of Cr50 image's "
-				"RW and RO headers, do not update\n"
-	       "  -c,--corrupt             Corrupt the inactive rw\n"
-	       "  -d,--device  VID:PID     USB device (default %04x:%04x)\n"
-	       "  -f,--fwver               "
-	       "Report running Cr50 firmware versions\n"
-	       "  -F,--factory [enable|disable]\n"
-	       "                           Control factory mode\n"
-	       "  -h,--help                Show this message\n"
-	       "  -I,--ccd_info            Get information about CCD state\n"
-	       "  -i,--board_id [ID[:FLAGS]]\n"
-	       "                           Get or set Info1 board ID fields\n"
-	       "                           ID could be 32 bit hex or 4 "
-	       "character string.\n"
-	       "  -k,--ccd_lock            Lock CCD\n"
-	       "  -m,--tpm_mode [enable|disable]\n"
-	       "                           Change or query tpm_mode\n"
-	       "  -O,--openbox_rma <desc_file>\n"
-	       "                           Verify other device's RO integrity\n"
-	       "                           using information provided in "
-	       "<desc file>\n"
-	       "  -o,--ccd_open            Start CCD open sequence\n"
-	       "  -P,--password\n"
-	       "                           Set or clear CCD password. Use\n"
-	       "                           'clear:<cur password>' to clear it\n"
-	       "  -p,--post_reset          Request post reset after transfer\n"
-	       "  -r,--rma_auth [auth_code]\n"
-	       "                           Request RMA challenge, process "
-	       "RMA authentication code\n"
-	       "  -s,--systemdev           Use /dev/tpm0 (-d is ignored)\n"
-	       "  -t,--trunks_send         Use `trunks_send --raw' "
-	       "(-d is ignored)\n"
-	       "  -U,--ccd_unlock          Start CCD unlock sequence\n"
-	       "  -u,--upstart             "
-			"Upstart mode (strict header checks)\n"
-	       "  -V,--verbose             Enable debug messages\n"
-	       "  -v,--version             Report this utility version\n"
-	       "  -w,--wp                  Get the current wp setting\n"
-	       "\n", progname, VID, PID);
+	       "Options:\n\n",
+	       progname);
 
+	for (i = 0; i < ARRAY_SIZE(cmd_line_options); i++) {
+		const char *help_text = cmd_line_options[i].help_text;
+		int printed_length;
+		const char *separator;
+
+		/*
+		 * First print the short and long forms of the command line
+		 * option.
+		 */
+		printed_length = printf(" -%c,--%s",
+					cmd_line_options[i].opt.val,
+					cmd_line_options[i].opt.name);
+
+		/*
+		 * If there is something to print immediately after the
+		 * options, print it.
+		 */
+		separator = strchr(help_text, '%');
+		if (separator) {
+			char buffer[80];
+			size_t extra_size;
+
+			extra_size = separator - help_text;
+			if (extra_size >= sizeof(buffer)) {
+				fprintf(stderr, "misformatted help text: %s\n",
+					help_text);
+				exit(-1);
+			}
+			memcpy(buffer, help_text, extra_size);
+			buffer[extra_size] = '\0';
+			printed_length += printf(" %s", buffer);
+			help_text = separator + 1;
+		}
+
+		/*
+		 * If printed length exceeds or is too close to indent, print
+		 * help text on the next line.
+		 */
+		if (printed_length >= (indent - 1)) {
+			printf("\n");
+			printed_length = 0;
+		}
+
+		while (printed_length++ < indent)
+			printf(" ");
+		printf("%s\n", help_text);
+	}
+	printf("\n");
 	exit(errs ? update_error : noop);
 }
 
@@ -592,120 +702,6 @@ static uint8_t *get_file_or_die(const char *filename, size_t *len_ptr)
 	return data;
 }
 
-#define USB_ERROR(m, r) \
-	fprintf(stderr, "%s:%d, %s returned %d (%s)\n", __FILE__, __LINE__, \
-		m, r, libusb_strerror(r))
-
-/*
- * Actual USB transfer function, the 'allow_less' flag indicates that the
- * valid response could be shortef than allotted memory, the 'rxed_count'
- * pointer, if provided along with 'allow_less' lets the caller know how mavy
- * bytes were received.
- */
-static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
-		    void *inbuf, int inlen, int allow_less,
-		    size_t *rxed_count)
-{
-
-	int r, actual;
-
-	/* Send data out */
-	if (outbuf && outlen) {
-		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num,
-					 outbuf, outlen,
-					 &actual, 1000);
-		if (r < 0) {
-			USB_ERROR("libusb_bulk_transfer", r);
-			exit(update_error);
-		}
-		if (actual != outlen) {
-			fprintf(stderr, "%s:%d, only sent %d/%d bytes\n",
-				__FILE__, __LINE__, actual, outlen);
-			shut_down(uep);
-		}
-	}
-
-	/* Read reply back */
-	if (inbuf && inlen) {
-
-		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80,
-					 inbuf, inlen,
-					 &actual, 1000);
-		if (r < 0) {
-			USB_ERROR("libusb_bulk_transfer", r);
-			exit(update_error);
-		}
-		if ((actual != inlen) && !allow_less) {
-			fprintf(stderr, "%s:%d, only received %d/%d bytes\n",
-				__FILE__, __LINE__, actual, inlen);
-			shut_down(uep);
-		}
-
-		if (rxed_count)
-			*rxed_count = actual;
-	}
-}
-
-static void xfer(struct usb_endpoint *uep, void *outbuf,
-		 size_t outlen, void *inbuf, size_t inlen)
-{
-	do_xfer(uep, outbuf, outlen, inbuf, inlen, 0, NULL);
-}
-
-/* Return 0 on error, since it's never gonna be EP 0 */
-static int find_endpoint(const struct libusb_interface_descriptor *iface,
-			 struct usb_endpoint *uep)
-{
-	const struct libusb_endpoint_descriptor *ep;
-
-	if (iface->bInterfaceClass == 255 &&
-	    iface->bInterfaceSubClass == SUBCLASS &&
-	    iface->bInterfaceProtocol == PROTOCOL &&
-	    iface->bNumEndpoints) {
-		ep = &iface->endpoint[0];
-		uep->ep_num = ep->bEndpointAddress & 0x7f;
-		uep->chunk_len = ep->wMaxPacketSize;
-		return 1;
-	}
-
-	return 0;
-}
-
-/* Return -1 on error */
-static int find_interface(struct usb_endpoint *uep)
-{
-	int iface_num = -1;
-	int r, i, j;
-	struct libusb_device *dev;
-	struct libusb_config_descriptor *conf = 0;
-	const struct libusb_interface *iface0;
-	const struct libusb_interface_descriptor *iface;
-
-	dev = libusb_get_device(uep->devh);
-	r = libusb_get_active_config_descriptor(dev, &conf);
-	if (r < 0) {
-		USB_ERROR("libusb_get_active_config_descriptor", r);
-		goto out;
-	}
-
-	for (i = 0; i < conf->bNumInterfaces; i++) {
-		iface0 = &conf->interface[i];
-		for (j = 0; j < iface0->num_altsetting; j++) {
-			iface = &iface0->altsetting[j];
-			if (find_endpoint(iface, uep)) {
-				iface_num = i;
-				goto out;
-			}
-		}
-	}
-
-out:
-	libusb_free_config_descriptor(conf);
-	return iface_num;
-}
-
 /* Returns true if parsed. */
 static int parse_vidpid(const char *input, uint16_t *vid_ptr, uint16_t *pid_ptr)
 {
@@ -729,55 +725,18 @@ static int parse_vidpid(const char *input, uint16_t *vid_ptr, uint16_t *pid_ptr)
 	return 1;
 }
 
-
-static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
-{
-	int iface_num, r;
-
-	memset(uep, 0, sizeof(*uep));
-
-	r = libusb_init(NULL);
-	if (r < 0) {
-		USB_ERROR("libusb_init", r);
-		exit(update_error);
-	}
-
-	printf("open_device %04x:%04x\n", vid, pid);
-	/* NOTE: This doesn't handle multiple matches! */
-	uep->devh = libusb_open_device_with_vid_pid(NULL, vid, pid);
-	if (!uep->devh) {
-		fprintf(stderr, "Can't find device\n");
-		exit(update_error);
-	}
-
-	iface_num = find_interface(uep);
-	if (iface_num < 0) {
-		fprintf(stderr, "USB FW update not supported by that device\n");
-		shut_down(uep);
-	}
-	if (!uep->chunk_len) {
-		fprintf(stderr, "wMaxPacketSize isn't valid\n");
-		shut_down(uep);
-	}
-
-	printf("found interface %d endpoint %d, chunk_len %d\n",
-	       iface_num, uep->ep_num, uep->chunk_len);
-
-	libusb_set_auto_detach_kernel_driver(uep->devh, 1);
-	r = libusb_claim_interface(uep->devh, iface_num);
-	if (r < 0) {
-		USB_ERROR("libusb_claim_interface", r);
-		shut_down(uep);
-	}
-
-	printf("READY\n-------\n");
-}
-
 struct update_pdu {
 	uint32_t block_size; /* Total block size, include this field's size. */
 	struct upgrade_command cmd;
 	/* The actual payload goes here. */
 };
+
+static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
+		    void *inbuf, int inlen, int allow_less, size_t *rxed_count)
+{
+	if (usb_trx(uep, outbuf, outlen, inbuf, inlen, allow_less, rxed_count))
+		shut_down(uep);
+}
 
 static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 			  uint8_t *transfer_data_ptr, size_t payload_size)
@@ -788,14 +747,14 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 	int r;
 
 	/* First send the header. */
-	xfer(uep, updu, sizeof(*updu), NULL, 0);
+	do_xfer(uep, updu, sizeof(*updu), NULL, 0, 0, NULL);
 
 	/* Now send the block, chunk by chunk. */
 	for (transfer_size = 0; transfer_size < payload_size;) {
 		int chunk_size;
 
 		chunk_size = MIN(uep->chunk_len, payload_size - transfer_size);
-		xfer(uep, transfer_data_ptr, chunk_size, NULL, 0);
+		do_xfer(uep, transfer_data_ptr, chunk_size, NULL, 0, 0, NULL);
 		transfer_data_ptr += chunk_size;
 		transfer_size += chunk_size;
 	}
@@ -841,6 +800,12 @@ static void transfer_section(struct transfer_descriptor *td,
 	 */
 	while (data_len && (data_ptr[data_len - 1] == 0xff))
 		data_len--;
+
+	/*
+	 * Make sure total size is 4 bytes aligned, this is required for
+	 * successful flashing.
+	 */
+	data_len = (data_len + 3) &  ~3;
 
 	printf("sending 0x%zx bytes to %#x\n", data_len, section_addr);
 	while (data_len) {
@@ -1050,7 +1015,8 @@ static void pick_sections(struct transfer_descriptor *td)
 		 * Is it newer in the new image than the running RO section on
 		 * the device?
 		 */
-		if (a_newer_than_b(&sections[i].shv, &targ.shv[0]))
+		if (a_newer_than_b(&sections[i].shv, &targ.shv[0]) ||
+		    td->force_ro)
 			sections[i].ustatus = needed;
 	}
 }
@@ -1198,24 +1164,78 @@ static void send_done(struct usb_endpoint *uep)
 
 	/* Send stop request, ignoring reply. */
 	out = htobe32(UPGRADE_DONE);
-	xfer(uep, &out, sizeof(out), &out, 1);
+	do_xfer(uep, &out, sizeof(out), &out, 1, 0, NULL);
+}
+
+/*
+ * Old cr50 images fail the update if sections are sent out of order. They
+ * require each block to have an offset greater than the block that was sent
+ * before. RO has a lower offset than RW, so old cr50 images reject RO if it's
+ * sent right after RW.
+ * This offset restriction expires after 60 seconds. Delay the RO update long
+ * enough for cr50 to not care that it has a lower offset than RW.
+ *
+ * Make the delay 65 seconds instead of 60 to cover differences in the speed of
+ * H1's clock and the host clock.
+ */
+#define NEXT_SECTION_DELAY 65
+
+/* Support for flashing RO immediately after RW was added in 0.3.20/0.4.20. */
+static int supports_reordered_section_updates(struct signed_header_version *rw)
+{
+	return (rw->epoch || rw->major > 4 ||
+		(rw->major >= 3 && rw->minor >= 20));
 }
 
 /* Returns number of successfully transmitted image sections. */
 static int transfer_image(struct transfer_descriptor *td,
 			       uint8_t *data, size_t data_len)
 {
-	size_t i;
+	size_t j;
 	int num_txed_sections = 0;
+	int needs_delay = !supports_reordered_section_updates(&targ.shv[1]);
 
-	for (i = 0; i < ARRAY_SIZE(sections); i++)
-		if (sections[i].ustatus == needed) {
+	/*
+	 * In case both RO and RW updates are required, make sure the RW
+	 * section is updated before the RO. The array below keeps sections
+	 * offsets in the required order.
+	 */
+	const size_t update_order[] = {CONFIG_RW_MEM_OFF,
+				       CONFIG_RW_B_MEM_OFF,
+				       CONFIG_RO_MEM_OFF,
+				       CHIP_RO_B_MEM_OFF};
+
+	for (j = 0; j < ARRAY_SIZE(update_order); j++) {
+		size_t i;
+
+		for (i = 0; i < ARRAY_SIZE(sections); i++) {
+			if (sections[i].offset != update_order[j])
+				continue;
+
+			if (sections[i].ustatus != needed)
+				break;
+			if (num_txed_sections && needs_delay) {
+				/*
+				 * Delays more than 5 seconds cause the update
+				 * to timeout. End the update before the delay
+				 * and set it up after to recover from the
+				 * timeout.
+				 */
+				if (td->ep_type == usb_xfer)
+					send_done(&td->uep);
+				printf("Waiting %ds for %s update.\n",
+				       NEXT_SECTION_DELAY, sections[i].name);
+				sleep(NEXT_SECTION_DELAY);
+				setup_connection(td);
+			}
+
 			transfer_section(td,
 					 data + sections[i].offset,
 					 sections[i].offset,
 					 sections[i].size);
 			num_txed_sections++;
 		}
+	}
 
 	if (!num_txed_sections)
 		printf("nothing to do\n");
@@ -1393,65 +1413,183 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	printf("reboot %s\n", reset_type);
 }
 
-static int show_headers_versions(const void *image)
+/*
+ * Machine output is formatted as "key=value", one key-value pair per line, and
+ * parsed by other programs (e.g., debugd). The value part should be specified
+ * in the printf-like way. For example:
+ *
+ *           print_machine_output("date", "%d/%d/%d", 2018, 1, 1),
+ *
+ * which outputs this line in console:
+ *
+ *           date=2018/1/1
+ *
+ * The key part should not contain '=' or newline. The value part may contain
+ * special characters like spaces, quotes, brackets, but not newlines. The
+ * newline character means end of value.
+ *
+ * Any output format change in this function may require similar changes on the
+ * programs that are using this gsctool.
+ */
+__attribute__((__format__(__printf__, 2, 3)))
+static void print_machine_output(const char *key, const char *format, ...)
 {
+	va_list args;
+
+	if (strchr(key, '=') != NULL || strchr(key, '\n') != NULL) {
+		fprintf(stderr,
+			"Error: key %s contains '=' or a newline character.\n",
+			key);
+		return;
+	}
+
+	if (strchr(format, '\n') != NULL) {
+		fprintf(stderr,
+			"Error: value format %s contains a newline character. "
+			"\n",
+			format);
+		return;
+	}
+
+	va_start(args, format);
+
+	printf("%s=", key);
+	vprintf(format, args);
+	printf("\n");
+
+	va_end(args);
+}
+
+/*
+ * Prints out the header, including FW versions and board IDs, of the given
+ * image. Output in a machine-friendly format if show_machine_output is true.
+ */
+static int show_headers_versions(const void *image, bool show_machine_output)
+{
+	/*
+	 * There are 2 FW slots in an image, and each slot has 2 sections, RO
+	 * and RW. The 2 slots should have identical FW versions and board
+	 * IDs.
+	 */
 	const struct {
 		const char *name;
-		uint32_t    offset;
+		uint32_t offset;
 	} sections[] = {
-		{"RO_A", CONFIG_RO_MEM_OFF},
-		{"RW_A", CONFIG_RW_MEM_OFF},
-		{"RO_B", CHIP_RO_B_MEM_OFF},
-		{"RW_B", CONFIG_RW_B_MEM_OFF}
+		/* Slot A. */
+		{"RO", CONFIG_RO_MEM_OFF},
+		{"RW", CONFIG_RW_MEM_OFF},
+		/* Slot B. */
+		{"RO", CHIP_RO_B_MEM_OFF},
+		{"RW", CONFIG_RW_B_MEM_OFF}
 	};
+	const size_t kNumSlots = 2;
+	const size_t kNumSectionsPerSlot = 2;
+
+	/*
+	 * String representation of FW version (<epoch>:<major>:<minor>), one
+	 * string for each FW section.
+	 */
+	char ro_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
+	char rw_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
+
+	uint32_t dev_id0_[kNumSlots];
+	uint32_t dev_id1_[kNumSlots];
+	uint32_t print_devid = 0;
+
+	struct board_id {
+		uint32_t id;
+		uint32_t mask;
+		uint32_t flags;
+	} bid[kNumSlots];
+
+	char bid_string[kNumSlots][MAX_BOARD_ID_LENGTH];
+
 	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++) {
-		const struct SignedHeader *h;
+		const struct SignedHeader *h =
+			(const struct SignedHeader *)
+				((uintptr_t)image + sections[i].offset);
+		const size_t slot_idx = i / kNumSectionsPerSlot;
+
+		uint32_t cur_bid;
 		size_t j;
-		uint32_t bid;
-		uint32_t bid_mask;
-		uint32_t bid_flags;
 
-		h = (const struct SignedHeader *)((uintptr_t)image +
-						  sections[i].offset);
-		printf("%s%s:%d.%d.%d", i ? " " : "", sections[i].name,
-		       h->epoch_, h->major_, h->minor_);
-
-		if (sections[i].name[1] != 'W')
+		if (sections[i].name[1] == 'O') {
+			/* RO. */
+			snprintf(ro_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
+				 "%d.%d.%d", h->epoch_, h->major_, h->minor_);
+			/* No need to read board ID in an RO section. */
 			continue;
-
-		/*
-		 * For read/write sections print the board ID fields'
-		 * contents, which are stored XORed with a padding value.
-		 */
-		bid = h->board_id_type ^ SIGNED_HEADER_PADDING;
-		bid_mask = h->board_id_type_mask ^ SIGNED_HEADER_PADDING;
-		bid_flags = h->board_id_flags ^ SIGNED_HEADER_PADDING;
-
-		/* Beginning of a board ID section of the string. */
-		printf("[");
-
-		/*
-		 * If board ID is an ASCII string (as it ought to be), print
-		 * it as 4 symbols, otherwise print it as an 8 digit hex.
-		 */
-		for (j = 0; j < sizeof(bid); j++)
-			if (!isalnum(((const char *)&bid)[j]))
-				break;
-
-		if (j == sizeof(bid)) {
-			/* Convert it for proper string representation. */
-			bid = be32toh(bid);
-			printf("%.4s", (const char *)&bid);
 		} else {
-			printf("%08x", bid);
+			/* RW. */
+			snprintf(rw_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
+				 "%d.%d.%d", h->epoch_, h->major_, h->minor_);
 		}
 
-		/* Print the rest of the board ID fields. */
-		printf(":%08x:%08x]", bid_mask, bid_flags);
+		/*
+		 * For RW sections, retrieves the board ID fields' contents,
+		 * which are stored XORed with a padding value.
+		 */
+		bid[slot_idx].id = h->board_id_type ^ SIGNED_HEADER_PADDING;
+		bid[slot_idx].mask =
+			h->board_id_type_mask ^ SIGNED_HEADER_PADDING;
+		bid[slot_idx].flags = h->board_id_flags ^ SIGNED_HEADER_PADDING;
+
+		dev_id0_[slot_idx] = h->dev_id0_;
+		dev_id1_[slot_idx] = h->dev_id1_;
+		/* Print the devid if any slot has a non-zero devid. */
+		print_devid |= h->dev_id0_ | h->dev_id1_;
+
+		/*
+		 * If board ID is a 4-uppercase-letter string (as it ought to
+		 * be), print it as 4 letters, otherwise print it as an 8-digit
+		 * hex.
+		 */
+		cur_bid = bid[slot_idx].id;
+		for (j = 0; j < sizeof(cur_bid); ++j)
+			if (!isupper(((const char *)&cur_bid)[j]))
+				break;
+
+		if (j == sizeof(cur_bid)) {
+			cur_bid = be32toh(cur_bid);
+			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
+				 "%.4s", (const char *)&cur_bid);
+		} else {
+			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
+				 "%08x", cur_bid);
+		}
 	}
-	printf("\n");
+
+	if (show_machine_output) {
+		print_machine_output("IMAGE_RO_FW_VER", "%s", ro_fw_ver[0]);
+		print_machine_output("IMAGE_RW_FW_VER", "%s", rw_fw_ver[0]);
+		print_machine_output("IMAGE_BID_STRING", "%s", bid_string[0]);
+		print_machine_output("IMAGE_BID_MASK", "%08x", bid[0].mask);
+		print_machine_output("IMAGE_BID_FLAGS", "%08x", bid[0].flags);
+	} else {
+		printf("RO_A:%s RW_A:%s[%s:%08x:%08x] ",
+		       ro_fw_ver[0], rw_fw_ver[0],
+		       bid_string[0], bid[0].mask, bid[0].flags);
+		printf("RO_B:%s RW_B:%s[%s:%08x:%08x]\n",
+		       ro_fw_ver[1], rw_fw_ver[1],
+		       bid_string[1], bid[1].mask, bid[1].flags);
+
+		if (print_devid) {
+			printf("DEVID: 0x%08x 0x%08x", dev_id0_[0],
+			       dev_id1_[0]);
+			/*
+			 * Only print the second devid if it's different.
+			 * Separate the devids with tabs, so it's easier to
+			 * read.
+			 */
+			if (dev_id0_[0] != dev_id0_[1] ||
+			    dev_id1_[0] != dev_id1_[1])
+				printf("\t\t\t\tDEVID_B: 0x%08x 0x%08x",
+				       dev_id0_[1], dev_id1_[1]);
+			printf("\n");
+		}
+	}
 
 	return 0;
 }
@@ -1515,6 +1653,57 @@ static int parse_bid(const char *opt,
 			return 0;
 	}
 
+	return 1;
+}
+
+/*
+ * Reads a two-character hexadecimal byte from a string. If the string is
+ * ill-formed, returns 0. Otherwise, |byte| contains the byte value and the
+ * return value is non-zero.
+ */
+static int read_hex_byte(const char* s, uint8_t* byte) {
+	uint8_t b = 0;
+	for (const char* end = s + 2; s < end; ++s) {
+		if (*s >= '0' && *s <= '9')
+			b = b * 16 + *s - '0';
+		else if (*s >= 'A' && *s <= 'F')
+			b = b * 16 + 10 + *s - 'A';
+		else if (*s >= 'a' && *s <= 'f')
+			b = b * 16 + 10 + *s - 'a';
+		else
+			return 0;
+	}
+	*byte = b;
+	return 1;
+}
+
+static int parse_sn_bits(const char *opt, uint8_t *sn_bits)
+{
+	size_t len = strlen(opt);
+
+	if (!strncmp(opt, "0x", 2)) {
+		opt += 2;
+		len -= 2;
+	}
+	if (len != SN_BITS_SIZE * 2) return 0;
+
+	for (int i = 0; i < SN_BITS_SIZE; ++i, opt +=2)
+		if (!read_hex_byte(opt, sn_bits++)) return 0;
+
+	return 1;
+}
+
+static int parse_sn_inc_rma(const char *opt, uint8_t *arg)
+{
+	uint32_t inc;
+	char *e;
+
+	inc = (uint32_t)strtoul(opt, &e, 0);
+
+	if (opt == e || *e != '\0' || inc > 7)
+		return 0;
+
+	*arg = inc;
 	return 1;
 }
 
@@ -1674,7 +1863,8 @@ static void print_ccd_info(void *response, size_t response_size)
 	/* Now report CCD state on the console. */
 	printf("State: %s\n", ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
 	       "Error" : state_names[ccd_info.ccd_state]);
-	printf("Password: %s\n", ccd_info.ccd_has_password ? "Set" : "None");
+	printf("Password: %s\n", (ccd_info.ccd_indicator_bitmap &
+		      CCD_INDICATOR_BIT_HAS_PASSWORD) ? "Set" : "None");
 	printf("Flags: %#06x\n", ccd_info.ccd_flags);
 	printf("Capabilities, current and default:\n");
 	for (i = 0; i < CCD_CAP_COUNT; i++) {
@@ -1684,11 +1874,13 @@ static void print_ccd_info(void *response, size_t response_size)
 		int cap_current;
 		int cap_default;
 
-		index = i / (32/2);
-		shift = (i % (32/2)) * 2;
+		index = i / (32 / CCD_CAP_BITS);
+		shift = (i % (32 / CCD_CAP_BITS)) * CCD_CAP_BITS;
 
-		cap_current = (ccd_info.ccd_caps_current[index] >> shift) & 3;
-		cap_default = (ccd_info.ccd_caps_defaults[index] >> shift) & 3;
+		cap_current = (ccd_info.ccd_caps_current[index] >> shift)
+							 & CCD_CAP_BITMASK;
+		cap_default = (ccd_info.ccd_caps_defaults[index] >> shift)
+							 & CCD_CAP_BITMASK;
 
 		if (ccd_info.ccd_force_disabled) {
 			is_enabled = 0;
@@ -1722,6 +1914,8 @@ static void print_ccd_info(void *response, size_t response_size)
 			caps_bitmap |= (1 << i);
 	}
 	printf("CCD caps bitmap: %#x\n", caps_bitmap);
+	printf("Capabilities are %s.\n", (ccd_info.ccd_indicator_bitmap &
+		 CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT) ? "default" : "modified");
 }
 
 static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
@@ -1812,7 +2006,8 @@ static void process_wp(struct transfer_descriptor *td)
 
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
-		 struct board_id *bid)
+		 struct board_id *bid,
+		 bool show_machine_output)
 {
 	size_t response_size;
 
@@ -1823,16 +2018,46 @@ void process_bid(struct transfer_descriptor *td,
 				    bid, sizeof(*bid),
 				    bid, &response_size);
 
-		if (response_size == sizeof(*bid)) {
-			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid->type), be32toh(bid->type_inv),
-			       be32toh(bid->flags));
-			return;
+		if (response_size != sizeof(*bid)) {
+			fprintf(stderr,
+				"Error reading board ID: response size %zd, "
+				"first byte %#02x\n",
+				response_size,
+				response_size ? *(uint8_t *)&bid : -1);
+			exit(update_error);
 		}
-		fprintf(stderr, "Error reading board ID: response size %zd,"
-			" first byte %#02x\n", response_size,
-			response_size ? *(uint8_t *)&bid : -1);
-		exit(update_error);
+
+		if (show_machine_output) {
+			print_machine_output(
+				"BID_TYPE", "%08x", be32toh(bid->type));
+			print_machine_output(
+				"BID_TYPE_INV", "%08x", be32toh(bid->type_inv));
+			print_machine_output(
+				"BID_FLAGS", "%08x", be32toh(bid->flags));
+
+			for (int i = 0; i < 4; i++) {
+				if (!isupper(((const char *)bid)[i])) {
+					print_machine_output(
+						"BID_RLZ", "%s", "????");
+					return;
+				}
+			}
+
+			print_machine_output(
+				"BID_RLZ", "%c%c%c%c",
+				((const char *)bid)[0],
+				((const char *)bid)[1],
+				((const char *)bid)[2],
+				((const char *)bid)[3]);
+		} else {
+			printf("Board ID space: %08x:%08x:%08x\n",
+			       be32toh(bid->type),
+			       be32toh(bid->type_inv),
+			       be32toh(bid->flags));
+
+		}
+
+		return;
 	}
 
 	if (bid_action == bid_set) {
@@ -1867,6 +2092,133 @@ void process_bid(struct transfer_descriptor *td,
 		}
 		exit(update_error);
 	}
+}
+
+static void process_sn_bits(struct transfer_descriptor *td,
+			    uint8_t *sn_bits)
+{
+	int rv;
+	uint8_t response_code;
+	size_t response_size = sizeof(response_code);
+
+	rv = send_vendor_command(td, VENDOR_CC_SN_SET_HASH,
+				 sn_bits, SN_BITS_SIZE,
+				 &response_code, &response_size);
+
+	if (rv) {
+		fprintf(stderr, "Error %d while sending vendor command\n", rv);
+		exit(update_error);
+	}
+
+	if (response_size != 1) {
+		fprintf(stderr,
+			"Unexpected response size while setting sn bits\n");
+		exit(update_error);
+	}
+
+	if (response_code != 0) {
+		fprintf(stderr, "Error %d while setting sn bits\n",
+			response_code);
+		exit(update_error);
+	}
+}
+
+static void process_sn_inc_rma(struct transfer_descriptor *td,
+			       uint8_t arg)
+{
+	int rv;
+	uint8_t response_code;
+	size_t response_size = sizeof(response_code);
+
+	rv = send_vendor_command(td, VENDOR_CC_SN_INC_RMA,
+				 &arg, sizeof(arg),
+				 &response_code, &response_size);
+	if (rv) {
+		fprintf(stderr, "Error %d while sending vendor command\n", rv);
+		exit(update_error);
+	}
+
+	if (response_size != 1) {
+		fprintf(stderr,
+			"Unexpected response size while "
+			"incrementing sn rma count\n");
+		exit(update_error);
+	}
+
+	if (response_code != 0) {
+		fprintf(stderr, "Error %d while incrementing rma count\n",
+			response_code);
+		exit(update_error);
+	}
+}
+
+/* Get/Set the primary seed of the info1 manufacture state. */
+static int process_endorsement_seed(struct transfer_descriptor *td,
+				    const char *endorsement_seed_str)
+{
+	uint8_t endorsement_seed[32];
+	uint8_t response_seed[32];
+	size_t seed_size = sizeof(endorsement_seed);
+	size_t response_size = sizeof(response_seed);
+	size_t i;
+	int rv;
+
+	if (!endorsement_seed_str) {
+		rv = send_vendor_command(td, VENDOR_CC_ENDORSEMENT_SEED, NULL,
+					 0, response_seed, &response_size);
+		if (rv) {
+			fprintf(stderr, "Error sending vendor command %d\n",
+				rv);
+			return update_error;
+		}
+		printf("Endorsement key seed: ");
+		for (i = 0; i < response_size; i++)
+			printf("%02x", response_seed[i]);
+		printf("\n");
+		return 0;
+	}
+	if (seed_size * 2 != strlen(endorsement_seed_str)) {
+		printf("Invalid seed %s\n", endorsement_seed_str);
+		return update_error;
+	}
+
+	for (i = 0; i < seed_size; i++) {
+		int nibble;
+		char c;
+
+		c = endorsement_seed_str[2 * i];
+		nibble = from_hexascii(c);
+		if (nibble < 0) {
+			fprintf(stderr,	"Error: Non hex character in seed %c\n",
+				c);
+			return update_error;
+		}
+		endorsement_seed[i] = nibble << 4;
+
+		c = endorsement_seed_str[2 * i + 1];
+		nibble = from_hexascii(c);
+		if (nibble < 0) {
+			fprintf(stderr,	"Error: Non hex character in seed %c\n",
+				c);
+			return update_error;
+		}
+		endorsement_seed[i] |= nibble;
+	}
+
+	printf("Setting seed: %s\n", endorsement_seed_str);
+	rv = send_vendor_command(td, VENDOR_CC_ENDORSEMENT_SEED,
+				 endorsement_seed, seed_size,
+				 response_seed, &response_size);
+	if (rv == VENDOR_RC_NOT_ALLOWED) {
+		fprintf(stderr, "Seed already set\n");
+		return update_error;
+	}
+	if (rv) {
+		fprintf(stderr, "Error sending vendor command %d\n", rv);
+		return update_error;
+	}
+	printf("Updated endorsement key seed.\n");
+	return 0;
 }
 
 /*
@@ -1906,13 +2258,19 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 		return;
 	}
 
+	if (!*authcode) {
+		printf("Empty response.\n");
+		exit(update_error);
+		return;
+	}
+
 	if (!strcmp(authcode, "disable")) {
 		printf("Invalid arg. Try using 'gsctool -F disable'\n");
 		exit(update_error);
 		return;
 	}
 
-	printf("Processing response...");
+	printf("Processing response...\n");
 	auth_size = strlen(authcode);
 	response_size = sizeof(rma_response);
 
@@ -1921,8 +2279,19 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 			    rma_response, &response_size);
 
 	if (response_size == 1) {
-		fprintf(stderr, "\nrma unlock failed, code %d\n",
+		fprintf(stderr, "\nrma unlock failed, code %d ",
 			*rma_response);
+		switch (*rma_response) {
+		case VENDOR_RC_BOGUS_ARGS:
+			fprintf(stderr, "(wrong authcode size)\n");
+			break;
+		case VENDOR_RC_INTERNAL_ERROR:
+			fprintf(stderr, "(authcode mismatch)\n");
+			break;
+		default:
+			fprintf(stderr, "(unknown error)\n");
+			break;
+		}
 		if (td->ep_type == usb_xfer)
 			shut_down(&td->uep);
 		exit(update_error);
@@ -1971,9 +2340,10 @@ static void process_factory_mode(struct transfer_descriptor *td,
 static void report_version(void)
 {
 	/* Get version from the generated file, ignore the underscore prefix. */
-	const char *v = VERSION + 1;
+	const char *v = strchr(VERSION, '_');
 
-	printf("Version: %s, built on %s by %s\n", v, DATE, BUILDER);
+	printf("Version: %s, built on %s by %s\n", v ? v + 1 : "?",
+	       DATE, BUILDER);
 	exit(0);
 }
 
@@ -2027,13 +2397,233 @@ static int process_tpm_mode(struct transfer_descriptor *td,
 	return rv;
 }
 
+/*
+ * Retrieve from H1 flash log entries which are newer than the passed in
+ * timestamp.
+ *
+ * On error retry a few times just in case flash log is locked by a concurrent
+ * access.
+ */
+static int process_get_flog(struct transfer_descriptor *td, uint32_t prev_stamp)
+{
+	int rv;
+	const int max_retries = 3;
+	int retries = max_retries;
+
+	while (retries--) {
+		union entry_u entry;
+		size_t resp_size;
+		size_t i;
+
+		resp_size = sizeof(entry);
+		rv = send_vendor_command(td, VENDOR_CC_POP_LOG_ENTRY,
+					 &prev_stamp, sizeof(prev_stamp),
+					 &entry, &resp_size);
+
+		if (rv) {
+			/*
+			 * Flash log could be momentarily locked by a
+			 * concurrent access, let it settle and try again, 10
+			 * ms should be enough.
+			 */
+			usleep(10 * 1000);
+			continue;
+		}
+
+		if (resp_size == 0)
+			/* No more entries. */
+			return 0;
+
+		memcpy(&prev_stamp, &entry.r.timestamp, sizeof(prev_stamp));
+		printf("%10u:%02x", prev_stamp, entry.r.type);
+		for (i = 0; i < FLASH_LOG_PAYLOAD_SIZE(entry.r.size); i++)
+			printf(" %02x", entry.r.payload[i]);
+		printf("\n");
+		retries = max_retries;
+	}
+
+	fprintf(stderr, "%s: error %d\n", __func__, rv);
+
+	return rv;
+}
+
+static int process_tstamp(struct transfer_descriptor *td,
+			  const char *tstamp_ascii)
+{
+	char *e;
+	size_t expected_response_size;
+	size_t message_size;
+	size_t response_size;
+	uint32_t rv;
+	uint32_t tstamp = 0;
+	uint8_t max_response[sizeof(uint32_t)];
+
+	if (tstamp_ascii) {
+		tstamp = strtoul(tstamp_ascii, &e, 10);
+		if (*e) {
+			fprintf(stderr, "invalid base timestamp value \"%s\"\n",
+				tstamp_ascii);
+			return -1;
+		}
+		tstamp = htobe32(tstamp);
+		expected_response_size = 0;
+		message_size = sizeof(tstamp);
+	} else {
+		expected_response_size = 4;
+		message_size = 0;
+	}
+
+	response_size = sizeof(max_response);
+	rv = send_vendor_command(td, VENDOR_CC_FLOG_TIMESTAMP, &tstamp,
+				 message_size, max_response, &response_size);
+
+	if (rv) {
+		fprintf(stderr, "error: return value %d\n", rv);
+		return rv;
+	}
+	if (response_size != expected_response_size) {
+		fprintf(stderr, "error: got %zd bytes, expected %zd\n",
+			response_size, expected_response_size);
+		return -1; /* Should never happen. */
+	}
+
+	if (response_size) {
+		memcpy(&tstamp, max_response, sizeof(tstamp));
+		printf("Current H1 time is %d\n", be32toh(tstamp));
+	}
+	return 0;
+}
+
+/*
+ * Search the passed in zero terminated array of options_map structures for
+ * option 'option'.
+ *
+ * If found - set the corresponding integer to 1 and return 1. If not found -
+ * return 0.
+ */
+static int check_boolean(const struct options_map *omap, char option)
+{
+	do {
+		if (omap->opt != option)
+			continue;
+
+		*omap->flag = 1;
+		return 1;
+	} while ((++omap)->opt);
+
+	return 0;
+}
+
+/*
+ * Set the long_opts table and short_opts string.
+ *
+ * This function allows to avoid maintaining two command line option
+ * descriptions, for short and long forms.
+ *
+ * The long_opts table is built based on the cmd_line_options table contents,
+ * and the short form is built based on the long_opts table contents.
+ *
+ * The 'required_argument' short options are followed by ':'.
+ *
+ * The passed in long_opts array and short_opts string are guaranteed to
+ * accommodate all necessary objects/characters.
+ */
+static void set_opt_descriptors(struct option *long_opts, char *short_opts)
+{
+	size_t i;
+	int j;
+
+	for (i = j = 0; i < ARRAY_SIZE(cmd_line_options); i++) {
+		long_opts[i] = cmd_line_options[i].opt;
+		short_opts[j++] = long_opts[i].val;
+		if (long_opts[i].has_arg == required_argument)
+			short_opts[j++] = ':';
+	}
+}
+
+/*
+ * Find the long_opts table index where .val field is set to the passed in
+ * short option value.
+ */
+static int get_longindex(int short_opt, const struct option *long_opts)
+{
+	int i;
+
+	for (i = 0; long_opts[i].name; i++)
+		if (long_opts[i].val == short_opt)
+			return i;
+
+	/*
+	 * We could never come here as the short options list is compiled
+	 * based on long options table.
+	 */
+	fprintf(stderr, "could not find long opt table index for %d\n",
+		short_opt);
+	exit(1);
+
+	return -1; /* Not reached. */
+}
+
+/*
+ * Combine searching for command line parameters and optional arguments.
+ *
+ * The canonical short options description string does not allow to specify
+ * that a command line argument expects an optional parameter. but gsctool
+ * users expect to be able to use the following styles for optional
+ * parameters:
+ *
+ * a)   -x <param value>
+ * b)  --x_long <param_value>
+ * c)  --x_long=<param_value>
+ *
+ * Styles a) and b) are not supported standard getopt_long(), this function
+ * adds ability to handle cases a) and b).
+ */
+static int getopt_all(int argc, char *argv[])
+{
+	int longindex = -1;
+	static char short_opts[2 * ARRAY_SIZE(cmd_line_options)] = {};
+	static struct option long_opts[ARRAY_SIZE(cmd_line_options) + 1] = {};
+	int i;
+
+	if (!short_opts[0])
+		set_opt_descriptors(long_opts, short_opts);
+
+	i = getopt_long(argc, argv, short_opts, long_opts, &longindex);
+	if (i != -1) {
+
+		if (longindex < 0) {
+			/*
+			 * longindex is not set, this must have been the short
+			 * option case, Find the long_opts table index based
+			 * on the short option value.
+			 */
+			longindex = get_longindex(i, long_opts);
+		}
+
+		if (long_opts[longindex].has_arg == optional_argument) {
+			/*
+			 * This command line option may include an argument,
+			 * let's check if it is there as the next token in the
+			 * command line.
+			 */
+			if (!optarg && argv[optind] && argv[optind][0] != '-')
+				/* Yes, it is. */
+				optarg = argv[optind++];
+		}
+	}
+
+	return i;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
 	int errorcnt;
 	uint8_t *data = 0;
 	size_t data_len = 0;
-	uint16_t vid = VID, pid = PID;
+	uint16_t vid = 0;
+	uint16_t pid = 0;
 	int i;
 	size_t j;
 	int transferred_sections = 0;
@@ -2041,6 +2631,8 @@ int main(int argc, char *argv[])
 	int show_fw_ver = 0;
 	int rma = 0;
 	const char *rma_auth_code;
+	int get_endorsement_seed = 0;
+	const char *endorsement_seed_str;
 	int corrupt_inactive_rw = 0;
 	struct board_id bid;
 	enum board_id_action bid_action;
@@ -2049,9 +2641,14 @@ int main(int argc, char *argv[])
 	int ccd_unlock = 0;
 	int ccd_lock = 0;
 	int ccd_info = 0;
+	int get_flog = 0;
+	uint32_t prev_log_entry = 0;
 	int wp = 0;
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
+	bool show_machine_output = false;
+	int tstamp = 0;
+	const char *tstamp_arg = NULL;
 
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -2059,6 +2656,40 @@ int main(int argc, char *argv[])
 	int factory_mode = 0;
 	char *factory_mode_arg;
 	char *tpm_mode_arg = NULL;
+	char *serial = NULL;
+	int sn_bits = 0;
+	uint8_t sn_bits_arg[SN_BITS_SIZE];
+	int sn_inc_rma = 0;
+	uint8_t sn_inc_rma_arg;
+
+	/*
+	 * All options which result in setting a Boolean flag to True, along
+	 * with addresses of the flags. Terminated by a zeroed entry.
+	 */
+	const struct options_map omap[] = {
+		{ 'B', &td.background_update_supported},
+		{ 'b', &binary_vers },
+		{ 'c', &corrupt_inactive_rw },
+		{ 'f', &show_fw_ver },
+		{ 'I', &ccd_info },
+		{ 'k', &ccd_lock },
+		{ 'o', &ccd_open },
+		{ 'P', &password },
+		{ 'p', &td.post_reset },
+		{ 'U', &ccd_unlock },
+		{ 'u', &td.upstart_mode },
+		{ 'V', &verbose_mode },
+		{ 'w', &wp },
+		{},
+	};
+
+	/*
+	 * Explicitly sets buffering type to line buffered so that output
+	 * lines can be written to pipe instantly. This is needed when the
+	 * cr50-verify-ro.sh execution in verify_ro is moved from crosh to
+	 * debugd.
+	 */
+	setlinebuf(stdout);
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -2073,7 +2704,10 @@ int main(int argc, char *argv[])
 	bid_action = bid_none;
 	errorcnt = 0;
 	opterr = 0;				/* quiet, you */
-	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
+
+	while ((i = getopt_all(argc, argv)) != -1) {
+		if (check_boolean(omap, i))
+			continue;
 		switch (i) {
 		case 'a':
 			if (td.ep_type) {
@@ -2085,15 +2719,6 @@ int main(int argc, char *argv[])
 			/* Try dev_xfer first. */
 			td.ep_type = dev_xfer;
 			break;
-		case 'B':
-			td.background_update_supported = 1;
-			break;
-		case 'b':
-			binary_vers = 1;
-			break;
-		case 'c':
-			corrupt_inactive_rw = 1;
-			break;
 		case 'd':
 			if (!parse_vidpid(optarg, &vid, &pid)) {
 				fprintf(stderr,
@@ -2102,24 +2727,18 @@ int main(int argc, char *argv[])
 				errorcnt++;
 			}
 			break;
+		case 'e':
+			get_endorsement_seed = 1;
+			endorsement_seed_str = optarg;
+			break;
 		case 'F':
 			factory_mode = 1;
 			factory_mode_arg = optarg;
 			break;
-		case 'f':
-			show_fw_ver = 1;
-			break;
 		case 'h':
 			usage(errorcnt);
 			break;
-		case 'I':
-			ccd_info = 1;
-			break;
 		case 'i':
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
 			if (!parse_bid(optarg, &bid, &bid_action)) {
 				fprintf(stderr,
 					"Invalid board id argument: \"%s\"\n",
@@ -2127,36 +2746,40 @@ int main(int argc, char *argv[])
 				errorcnt++;
 			}
 			break;
-		case 'k':
-			ccd_lock = 1;
+		case 'L':
+			get_flog = 1;
+			if (optarg)
+				prev_log_entry = strtoul(optarg, NULL, 0);
+			break;
+		case 'M':
+			show_machine_output = true;
 			break;
 		case 'm':
 			tpm_mode = 1;
-			if (!optarg && argv[optind] && argv[optind][0] != '-') {
-				optarg = argv[optind++];
-				tpm_mode_arg = optarg;
-			}
+			tpm_mode_arg = optarg;
+			break;
+		case 'n':
+			serial = optarg;
 			break;
 		case 'O':
 			openbox_desc_file = optarg;
 			break;
-		case 'o':
-			ccd_open = 1;
-			break;
-		case 'p':
-			td.post_reset = 1;
-			break;
-		case 'P':
-			password = 1;
+		case 'q':
+			td.force_ro = 1;
 			break;
 		case 'r':
 			rma = 1;
-
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
 			rma_auth_code = optarg;
+			break;
+		case 'R':
+			sn_inc_rma = 1;
+			if (!parse_sn_inc_rma(optarg, &sn_inc_rma_arg)) {
+				fprintf(stderr,
+					"Invalid sn_rma_inc argument: \"%s\"\n",
+					optarg);
+				errorcnt++;
+			}
+
 			break;
 		case 's':
 			if (td.ep_type || try_all_transfer) {
@@ -2166,6 +2789,16 @@ int main(int argc, char *argv[])
 			}
 			td.ep_type = dev_xfer;
 			break;
+		case 'S':
+			sn_bits = 1;
+			if (!parse_sn_bits(optarg, sn_bits_arg)) {
+				fprintf(stderr,
+					"Invalid sn_bits argument: \"%s\"\n",
+					optarg);
+				errorcnt++;
+			}
+
+			break;
 		case 't':
 			if (td.ep_type || try_all_transfer) {
 				errorcnt++;
@@ -2174,20 +2807,12 @@ int main(int argc, char *argv[])
 			}
 			td.ep_type = ts_xfer;
 			break;
-		case 'U':
-			ccd_unlock = 1;
-			break;
-		case 'u':
-			td.upstart_mode = 1;
-			break;
-		case 'V':
-			verbose_mode = 1;
+		case 'T':
+			tstamp = 1;
+			tstamp_arg = optarg;
 			break;
 		case 'v':
 			report_version();  /* This will call exit(). */
-			break;
-		case 'w':
-			wp = 1;
 			break;
 		case 0:				/* auto-handled option */
 			break;
@@ -2215,17 +2840,31 @@ int main(int argc, char *argv[])
 	if (errorcnt)
 		usage(errorcnt);
 
+	/*
+	 * If no usb device information was given, default to the using cr50
+	 * vendor and product id to find the usb device.
+	 */
+	if (!serial && !vid && !pid) {
+		vid = VID;
+		pid = PID;
+	}
+
 	if ((bid_action == bid_none) &&
 	    !ccd_info &&
 	    !ccd_lock &&
 	    !ccd_open &&
 	    !ccd_unlock &&
 	    !corrupt_inactive_rw &&
+	    !get_flog &&
+	    !get_endorsement_seed &&
 	    !factory_mode &&
 	    !password &&
 	    !rma &&
 	    !show_fw_ver &&
+	    !sn_bits &&
+	    !sn_inc_rma &&
 	    !openbox_desc_file &&
+	    !tstamp &&
 	    !tpm_mode &&
 	    !wp) {
 		if (optind >= argc) {
@@ -2246,23 +2885,29 @@ int main(int argc, char *argv[])
 		fetch_header_versions(data);
 
 		if (binary_vers)
-			exit(show_headers_versions(data));
+			exit(show_headers_versions(data, show_machine_output));
 	} else {
 		if (optind < argc)
 			printf("Ignoring binary image %s\n", argv[optind]);
 	}
 
-	if (((bid_action != bid_none) + !!rma + !!password +
-	     !!ccd_open + !!ccd_unlock + !!ccd_lock + !!ccd_info +
-	     !!openbox_desc_file + !!factory_mode + !!wp) > 2) {
-		fprintf(stderr, "ERROR: "
-			"options -F, -I, -i, -k, -O, -o, -P, -r, -u and -w "
+
+	if (((bid_action != bid_none) + !!rma + !!password + !!ccd_open +
+	     !!ccd_unlock + !!ccd_lock + !!ccd_info + !!get_flog +
+	     !!openbox_desc_file + !!factory_mode + !!wp +
+	     !!get_endorsement_seed) > 1) {
+		fprintf(stderr,
+			"ERROR: options"
+			"-e, -F, -I, -i, -k, -L, -O, -o, -P, -r, -U and -w "
 			"are mutually exclusive\n");
 		exit(update_error);
 	}
 
 	if (td.ep_type == usb_xfer) {
-		usb_findit(vid, pid, &td.uep);
+		if (usb_findit(serial, vid, pid, USB_SUBCLASS_GOOGLE_CR50,
+			       USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE,
+			       &td.uep))
+			exit(update_error);
 	} else if (td.ep_type == dev_xfer) {
 		td.tpm_fd = open("/dev/tpm0", O_RDWR);
 		if (td.tpm_fd < 0) {
@@ -2275,7 +2920,7 @@ int main(int argc, char *argv[])
 	}
 
 	if (openbox_desc_file)
-		return verify_ro(&td, openbox_desc_file);
+		return verify_ro(&td, openbox_desc_file, show_machine_output);
 
 	if (ccd_unlock || ccd_open || ccd_lock || ccd_info)
 		process_ccd_state(&td, ccd_unlock, ccd_open,
@@ -2285,7 +2930,10 @@ int main(int argc, char *argv[])
 		process_password(&td);
 
 	if (bid_action != bid_none)
-		process_bid(&td, bid_action, &bid);
+		process_bid(&td, bid_action, &bid, show_machine_output);
+
+	if (get_endorsement_seed)
+		exit(process_endorsement_seed(&td, endorsement_seed_str));
 
 	if (rma)
 		process_rma(&td, rma_auth_code);
@@ -2303,6 +2951,18 @@ int main(int argc, char *argv[])
 
 		exit(rv);
 	}
+
+	if (tstamp)
+		return process_tstamp(&td, tstamp_arg);
+
+	if (sn_bits)
+		process_sn_bits(&td, sn_bits_arg);
+
+	if (sn_inc_rma)
+		process_sn_inc_rma(&td, sn_inc_rma_arg);
+
+	if (get_flog)
+		process_get_flog(&td, prev_log_entry);
 
 	if (data || show_fw_ver) {
 
@@ -2325,13 +2985,22 @@ int main(int argc, char *argv[])
 			generate_reset_request(&td);
 
 		if (show_fw_ver) {
-			printf("Current versions:\n");
-			printf("RO %d.%d.%d\n", targ.shv[0].epoch,
-			       targ.shv[0].major,
-			       targ.shv[0].minor);
-			printf("RW %d.%d.%d\n", targ.shv[1].epoch,
-			       targ.shv[1].major,
-			       targ.shv[1].minor);
+			if (show_machine_output) {
+				print_machine_output("RO_FW_VER", "%d.%d.%d",
+						     targ.shv[0].epoch,
+						     targ.shv[0].major,
+						     targ.shv[0].minor);
+				print_machine_output("RW_FW_VER", "%d.%d.%d",
+						     targ.shv[1].epoch,
+						     targ.shv[1].major,
+						     targ.shv[1].minor);
+			} else {
+				printf("Current versions:\n");
+				printf("RO %d.%d.%d\n", targ.shv[0].epoch,
+				       targ.shv[0].major, targ.shv[0].minor);
+				printf("RW %d.%d.%d\n", targ.shv[1].epoch,
+				       targ.shv[1].major, targ.shv[1].minor);
+			}
 		}
 	}
 

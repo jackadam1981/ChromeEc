@@ -28,6 +28,9 @@ extern "C" {
 #define U2F_CTR_SIZE            4       // Size of counter field
 #define U2F_APPID_SIZE          32      // Size of application id
 #define U2F_CHAL_SIZE           32      // Size of challenge
+#define U2F_MAX_ATTEST_SIZE     256     // Size of largest blob to sign
+#define U2F_P256_SIZE           32
+#define U2F_FIXED_KH_SIZE       64      // Size of fixed size key handles
 
 #define ENC_SIZE(x)             ((x + 7) & 0xfff8)
 
@@ -41,55 +44,49 @@ typedef struct {
     uint8_t y[U2F_EC_KEY_SIZE];         // Y-value
 } U2F_EC_POINT;
 
-// U2F native commands
-
-#define U2F_REGISTER            0x01    // Registration command
-#define U2F_AUTHENTICATE        0x02    // Authenticate/sign command
-#define U2F_VERSION             0x03    // Read version string command
-
-#define U2F_VENDOR_FIRST        0x40    // First vendor defined command
-#define U2F_VENDOR_LAST         0xbf    // Last vendor defined command
-
-// U2F_CMD_REGISTER command defines
-
-#define U2F_REGISTER_ID         0x05    // Version 2 registration identifier
-#define U2F_REGISTER_HASH_ID    0x00    // Version 2 hash identintifier
-
-typedef struct {
-    uint8_t chal[U2F_CHAL_SIZE];        // Challenge
-    uint8_t appId[U2F_APPID_SIZE];      // Application id
-} U2F_REGISTER_REQ;
-
-typedef struct {
-    uint8_t registerId;                 // Registration identifier (U2F_REGISTER_ID_V2)
-    U2F_EC_POINT pubKey;                // Generated public key
-    uint8_t keyHandleLen;               // Length of key handle
-    uint8_t keyHandleCertSig[
-        U2F_MAX_KH_SIZE +               // Key handle
-        U2F_MAX_ATT_CERT_SIZE +         // Attestation certificate
-        U2F_MAX_EC_SIG_SIZE];           // Registration signature
-} U2F_REGISTER_RESP;
-
-// U2F_CMD_AUTHENTICATE command defines
-
-// Authentication control byte
+// Request Flags.
 
 #define U2F_AUTH_ENFORCE        0x03    // Enforce user presence and sign
 #define U2F_AUTH_CHECK_ONLY     0x07    // Check only
 #define U2F_AUTH_FLAG_TUP       0x01    // Test of user presence set
 
-typedef struct {
-    uint8_t chal[U2F_CHAL_SIZE];        // Challenge
-    uint8_t appId[U2F_APPID_SIZE];      // Application id
-    uint8_t keyHandleLen;               // Length of key handle
-    uint8_t keyHandle[U2F_MAX_KH_SIZE]; // Key handle
-} U2F_AUTHENTICATE_REQ;
+// TODO(louiscollard): Add Descriptions.
 
 typedef struct {
-    uint8_t flags;                      // U2F_AUTH_FLAG_ values
-    uint8_t ctr[U2F_CTR_SIZE];          // Counter field (big-endian)
-    uint8_t sig[U2F_MAX_EC_SIG_SIZE];   // Signature
-} U2F_AUTHENTICATE_RESP;
+    uint8_t appId[U2F_APPID_SIZE];      // Application id
+    uint8_t userSecret[U2F_P256_SIZE];
+    uint8_t flags;
+} U2F_GENERATE_REQ;
+
+typedef struct {
+    U2F_EC_POINT pubKey;                   // Generated public key
+    uint8_t keyHandle[U2F_FIXED_KH_SIZE];  // Key handle
+} U2F_GENERATE_RESP;
+
+typedef struct {
+    uint8_t appId[U2F_APPID_SIZE];         // Application id
+    uint8_t userSecret[U2F_P256_SIZE];
+    uint8_t keyHandle[U2F_FIXED_KH_SIZE];  // Key handle
+    uint8_t hash[U2F_P256_SIZE];
+    uint8_t flags;
+} U2F_SIGN_REQ;
+
+typedef struct {
+    uint8_t sig_r[U2F_P256_SIZE];   // Signature
+    uint8_t sig_s[U2F_P256_SIZE];   // Signature
+} U2F_SIGN_RESP;
+
+typedef struct {
+    uint8_t userSecret[U2F_P256_SIZE];
+    uint8_t format;
+    uint8_t dataLen;
+    uint8_t data[U2F_MAX_ATTEST_SIZE];
+} U2F_ATTEST_REQ;
+
+typedef struct {
+    uint8_t sig_r[U2F_P256_SIZE];
+    uint8_t sig_s[U2F_P256_SIZE];
+} U2F_ATTEST_RESP;
 
 // Command status responses
 
@@ -98,6 +95,29 @@ typedef struct {
 #define U2F_SW_CONDITIONS_NOT_SATISFIED 0x6985 // SW_CONDITIONS_NOT_SATISFIED
 #define U2F_SW_COMMAND_NOT_ALLOWED      0x6986 // SW_COMMAND_NOT_ALLOWED
 #define U2F_SW_INS_NOT_SUPPORTED        0x6D00 // SW_INS_NOT_SUPPORTED
+
+// Protocol extensions
+
+// Non-standardized command status responses
+#define U2F_SW_CLA_NOT_SUPPORTED        0x6E00
+#define U2F_SW_WRONG_LENGTH             0x6700
+#define U2F_SW_WTF                      0x6f00
+
+// Additional flags for P1 field
+#define G2F_ATTEST      0x80    // Fixed attestation key
+#define G2F_CONSUME     0x02    // Consume presence
+
+// The key handle format was changed when support for user secrets was added.
+// U2F_SIGN requests that specify this flag will first try to validate the
+// key handle as a new format key handle, and if that fails, will fall back
+// to treating it as a legacy key handle (without user secrets).
+#define SIGN_LEGACY_KH  0x40
+
+// U2F Attest format for U2F Register Response.
+#define U2F_ATTEST_FORMAT_REG_RESP      0
+
+// Vendor command to enable/disable the extensions
+#define U2F_VENDOR_MODE U2F_VENDOR_LAST
 
 #ifdef __cplusplus
 }

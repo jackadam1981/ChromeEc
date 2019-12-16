@@ -39,21 +39,30 @@
  */
 
 #include "common.h"
+#include "board_id.h"
 #include "console.h"
 #include "cryptoc/util.h"
+#include "extension.h"
 #include "flash.h"
-#include "flash_config.h"
-#include "flash_info.h"
+#include "flash_log.h"
 #include "registers.h"
 #include "shared_mem.h"
 #include "task.h"
 #include "timer.h"
 #include "watchdog.h"
 
+#define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
 /* Mutex to prevent concurrent accesses to flash engine. */
 static struct mutex flash_mtx;
+
+#ifdef CONFIG_FLASH_LOG
+static void flash_log_space_control(int enable)
+{
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION5_CTRL, WR_EN, !!enable);
+}
+#endif
 
 int flash_pre_init(void)
 {
@@ -84,6 +93,24 @@ int flash_pre_init(void)
 			i * 4;
 		REG32(reg_base) = regions[i].reg_perms;
 	}
+
+#ifdef CONFIG_FLASH_LOG
+	/*
+	 * Allow access to flash elog space and register the access control
+	 * function.
+	 */
+	GREG32(GLOBALSEC, FLASH_REGION5_BASE_ADDR) = CONFIG_FLASH_LOG_BASE;
+	GREG32(GLOBALSEC, FLASH_REGION5_SIZE) = CONFIG_FLASH_LOG_SPACE - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION5_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION5_CTRL, RD_EN, 1);
+	flash_log_register_flash_control_callback(flash_log_space_control);
+#endif
+
+	/* Create a flash region window for INFO1 access. */
+	GREG32(GLOBALSEC, FLASH_REGION7_BASE_ADDR) = FLASH_INFO_MEMORY_BASE;
+	GREG32(GLOBALSEC, FLASH_REGION7_SIZE) = FLASH_INFO_SIZE - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION7_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION7_CTRL, RD_EN, 1);
 
 	return EC_SUCCESS;
 }
@@ -172,7 +199,7 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 	/* What are we doing? */
 	switch (op) {
 	case OP_ERASE_BLOCK:
-#ifndef CR50_DEV
+#ifndef CR50_RELAXED
 		if (is_info_bank)
 			/* Erasing the INFO bank from the RW section is
 			 * unsupported. */
@@ -233,6 +260,8 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 
 		/* Timed out waiting for control register to clear */
 		if (tmp) {
+			/* Stop the failed operation. */
+			*fsh_pe_control = 0;
 			CPRINTF("%s:%d\n", __func__, __LINE__);
 			return EC_ERROR_UNKNOWN;
 		}
@@ -241,7 +270,7 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 
 		if (errors && (errors != prev_error)) {
 			prev_error = errors;
-			CPRINTF("%s:%d errors %x fsh_pe_control %p\n",
+			CPRINTF("%s:%d errors %x fsh_pe_control %pP\n",
 				__func__, __LINE__, errors, fsh_pe_control);
 		}
 		/* Error status is self-clearing. Read it until it does
@@ -370,62 +399,14 @@ int flash_physical_info_read_word(int byte_offset, uint32_t *dst)
 	return ret;
 }
 
-/*
- * Verify that the range's size is power of 2, the range offset is aligned by
- * size, and the range does not cross the INFO space boundary.
- */
-static int valid_info_range(uint32_t offset, size_t size)
+void flash_info_write_enable(void)
 {
-	if (!size || (size & (size - 1)))
-		return 0;
-
-	if (offset & (size - 1))
-		return 0;
-
-	if ((offset + size) > FLASH_INFO_SIZE)
-		return 0;
-
-	return 1;
-
-}
-
-/* Write access is a superset of read access. */
-static int flash_info_configure_access(uint32_t offset,
-				       size_t size, int write_mode)
-{
-	int mask;
-
-	if (!valid_info_range(offset, size))
-		return EC_ERROR_INVAL;
-
-	mask = GREG32(GLOBALSEC, FLASH_REGION6_CTRL);
-	mask |= GC_GLOBALSEC_FLASH_REGION6_CTRL_EN_MASK |
-		GC_GLOBALSEC_FLASH_REGION6_CTRL_RD_EN_MASK;
-	if (write_mode)
-		mask |= GC_GLOBALSEC_FLASH_REGION6_CTRL_WR_EN_MASK;
-
-	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) =
-		FLASH_INFO_MEMORY_BASE + offset;
-
-	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size - 1;
-	GREG32(GLOBALSEC, FLASH_REGION6_CTRL) = mask;
-
-	return EC_SUCCESS;
-}
-
-int flash_info_read_enable(uint32_t offset, size_t size)
-{
-	return flash_info_configure_access(offset, size, 0);
-}
-
-int flash_info_write_enable(uint32_t offset, size_t size)
-{
-	return flash_info_configure_access(offset, size, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION7_CTRL, WR_EN, 1);
 }
 
 void flash_info_write_disable(void)
 {
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 0);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION7_CTRL, WR_EN, 0);
 }
 
 int flash_info_physical_write(int byte_offset, int num_bytes, const char *data)
@@ -484,37 +465,140 @@ void flash_open_ro_window(uint32_t offset, size_t size_b)
 }
 
 #ifdef CR50_DEV
+/*
+ * The seed is the first 32 bytes of the manufacture state space. That is all
+ * we care about. We can ignore the rest of the manufacture state.
+ */
+#define ENDORSEMENT_SEED_SIZE 32
 
+static enum vendor_cmd_rc vc_endorsement_seed(enum vendor_cmd_cc code,
+					      void *buf,
+					      size_t input_size,
+					      size_t *response_size)
+{
+	uint8_t endorsement_seed[ENDORSEMENT_SEED_SIZE];
+	int rv = VENDOR_RC_SUCCESS;
+	int is_erased = 1;
+	int set_seed = input_size == ENDORSEMENT_SEED_SIZE;
+	int i;
+	uint32_t *p;
+	int offset;
+
+	*response_size = 0;
+	if (input_size && !set_seed) {
+		CPRINTS("%s: invalid seed", __func__);
+		return VENDOR_RC_BOGUS_ARGS;
+	}
+
+	/* Read the endorsement key seed. */
+	p = (uint32_t *)endorsement_seed;
+	for (i = 0; i < (ENDORSEMENT_SEED_SIZE / sizeof(*p)); i++) {
+		offset = FLASH_INFO_MANUFACTURE_STATE_OFFSET + i * sizeof(*p);
+		if (flash_physical_info_read_word(offset, p + i) !=
+		    EC_SUCCESS) {
+			CPRINTS("%s: failed read", __func__);
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
+		if (p[i] != 0xffffffff)
+			is_erased = 0;
+	}
+
+	if (set_seed && !is_erased)  {
+		CPRINTS("%s: seed already set!", __func__);
+		return VENDOR_RC_NOT_ALLOWED;
+	}
+
+	if (!input_size) {
+		*response_size = ENDORSEMENT_SEED_SIZE;
+		memcpy(buf, endorsement_seed, *response_size);
+		return VENDOR_RC_SUCCESS;
+	}
+
+	flash_info_write_enable();
+	if (flash_info_physical_write(FLASH_INFO_MANUFACTURE_STATE_OFFSET,
+				      input_size,
+				      (char *)buf) != EC_SUCCESS) {
+		CPRINTS("%s: failed write", __func__);
+		rv = VENDOR_RC_INTERNAL_ERROR;
+	}
+	flash_info_write_disable();
+	return rv;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_ENDORSEMENT_SEED, vc_endorsement_seed);
+#endif
+#ifdef CR50_RELAXED
 static int command_erase_flash_info(int argc, char **argv)
 {
-	uint32_t *preserved_manufacture_state;
-	const size_t manuf_word_count = FLASH_INFO_MANUFACTURE_STATE_SIZE /
-		sizeof(uint32_t);
 	int i;
-	int rv = EC_ERROR_BUSY;
+	int rv;
+	struct info1_layout *info1;
+	uint32_t *p;
 
-	if (shared_mem_acquire(FLASH_INFO_MANUFACTURE_STATE_SIZE,
-			       (char **)&preserved_manufacture_state) !=
-	    EC_SUCCESS) {
-		ccprintf("Failed to allocate memory for manufacture state!\n");
+	rv = shared_mem_acquire(sizeof(*info1), (char **)&info1);
+	if (rv != EC_SUCCESS) {
+		ccprintf("Failed to allocate memory for info1!\n");
 		return rv;
 	}
 
-	flash_info_read_enable(0, 2048);
-	flash_info_write_enable(0, 2048);
-
-	/* Preserve manufacturing information. */
-	for (i = 0; i < manuf_word_count; i++) {
-		if (flash_physical_info_read_word
-		    (FLASH_INFO_MANUFACTURE_STATE_OFFSET +
-		     i * sizeof(uint32_t),
-		     preserved_manufacture_state + i) != EC_SUCCESS) {
+	/* Read the entire info1. */
+	p = (uint32_t *)info1;
+	for (i = 0; i < (sizeof(*info1) / sizeof(*p)); i++) {
+		if (flash_physical_info_read_word(i * sizeof(*p), p + i) !=
+		    EC_SUCCESS) {
 			ccprintf("Failed to read word %d!\n", i);
 			goto exit;
 		}
 	}
 
+#ifdef CR50_SQA
+	/*
+	 * SQA images erase INFO1 RW mask, but do not allow erasing board ID.
+	 *
+	 * If compiled with CR50_SQA=1, board ID flags will set to zero, if
+	 * compiled with CR50_SQA=2 or greater, board ID flags can be set to
+	 * an arbitrary value passed in on the command line, but guaranteeing
+	 * not to lock out the currently running image.
+	 */
+	{
+		uint32_t flags = 0;
+#if CR50_SQA > 1
+		if (argc > 1) {
+			char *e;
+
+			flags = strtoi(argv[1], &e, 0);
+			if (*e) {
+				rv = EC_ERROR_PARAM1;
+				goto exit;
+			}
+		}
+#endif
+		if (board_id_is_blank(&info1->board_space.bid)) {
+			ccprintf("BID is erased. Not modifying flags\n");
+		} else {
+			ccprintf("setting BID flags to %x\n", flags);
+			info1->board_space.bid.flags = flags;
+		}
+		if (check_board_id_vs_header(&info1->board_space.bid,
+					     get_current_image_header())) {
+			ccprintf("Flags %x would lock out current image\n",
+				 flags);
+			rv = EC_ERROR_PARAM1;
+			goto exit;
+		}
+	}
+#else  /* CR50_SQA   ^^^^^^ defined    vvvvvvv Not defined. */
+	/*
+	 * This must be CR50_DEV=1 image, just erase the board information
+	 * space.
+	 */
+	memset(&info1->board_space, 0xff, sizeof(info1->board_space));
+#endif /* CR50_SQA Not defined. */
+
+	memset(info1->rw_info_map, 0xff, sizeof(info1->rw_info_map));
+
 	mutex_lock(&flash_mtx);
+
+	flash_info_write_enable();
 
 	rv = do_flash_op(OP_ERASE_BLOCK, 1, 0, 512);
 
@@ -525,23 +609,21 @@ static int command_erase_flash_info(int argc, char **argv)
 		goto exit;
 	}
 
-	if (flash_info_physical_write
-	    (FLASH_INFO_MANUFACTURE_STATE_OFFSET,
-	     FLASH_INFO_MANUFACTURE_STATE_SIZE,
-	     (char *)preserved_manufacture_state) != EC_SUCCESS) {
-		ccprintf("Failed to restore manufacture state!\n");
-		goto exit;
-	}
+	rv = flash_info_physical_write(0, sizeof(*info1), (char *)info1);
+	if (rv != EC_SUCCESS)
+		ccprintf("Failed write back info1 contents!\n");
 
-	rv = EC_SUCCESS;
  exit:
-	always_memset(preserved_manufacture_state, 0,
-		      FLASH_INFO_MANUFACTURE_STATE_SIZE);
-	shared_mem_release(preserved_manufacture_state);
 	flash_info_write_disable();
+	always_memset(info1, 0, sizeof(*info1));
+	shared_mem_release(info1);
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info,
-			"",
-			"Erase INFO1 flash space");
+DECLARE_SAFE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info,
+#if defined(CR50_SQA) && (CR50_SQA > 1)
+			     "[bid flags]",
+			     "Erase INFO1 flash space and set Board ID flags");
+#else
+			     "", "Erase INFO1 flash space");
+#endif
 #endif

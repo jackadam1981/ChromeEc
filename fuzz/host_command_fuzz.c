@@ -20,8 +20,8 @@
 /* Only test requests with valid size and checksum (makes fuzzing faster) */
 #define VALID_REQUEST_ONLY
 
-#define TASK_EVENT_FUZZ TASK_EVENT_CUSTOM(1)
-#define TASK_EVENT_HOSTCMD_DONE TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_FUZZ TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_HOSTCMD_DONE TASK_EVENT_CUSTOM_BIT(1)
 
 /* Request/response buffer size (and maximum command length) */
 #define BUFFER_SIZE 128
@@ -113,8 +113,8 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	 * issues.
 	 */
 	if (first) {
-		ccprintf("Request: cmd=%04x data=%.*h\n",
-			req->command, req_size, req_buf);
+		ccprintf("Request: cmd=%04x data=%ph\n",
+			req->command, HEX_BUF(req_buf, req_size));
 		first = 0;
 	}
 

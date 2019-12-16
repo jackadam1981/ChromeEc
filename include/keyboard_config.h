@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -15,9 +15,27 @@
 #define KEYBOARD_IDS 2
 #endif
 
-/* Keyboard matrix is 13 output columns x 8 input rows */
-#define KEYBOARD_COLS 13
+/* Keyboard matrix is 13 (or 15 with keypad) output columns x 8 input rows */
+#define KEYBOARD_COLS_WITH_KEYPAD	15
+#define KEYBOARD_COLS_NO_KEYPAD		13
+
+/*
+ * KEYBOARD_COLS_MAX has the build time column size. It's used to allocate
+ * exact spaces for arrays. Actual keyboard scanning is done using
+ * keyboard_cols, which holds a runtime column size.
+ */
+#ifdef CONFIG_KEYBOARD_KEYPAD
+#define KEYBOARD_COLS_MAX KEYBOARD_COLS_WITH_KEYPAD
+#else
+#define KEYBOARD_COLS_MAX KEYBOARD_COLS_NO_KEYPAD
+#endif
 #define KEYBOARD_ROWS 8
+
+/*
+ * WARNING: Do not directly modify it. You should call keyboard_raw_set_cols,
+ * instead. It checks whether you're eligible or not.
+ */
+extern uint8_t keyboard_cols;
 
 #define KEYBOARD_ROW_TO_MASK(r) (1 << (r))
 

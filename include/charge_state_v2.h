@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -6,6 +6,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
+#include "chipset.h"
 #include "ec_ec_comm_master.h"
 #include "timer.h"
 
@@ -13,7 +14,7 @@
 #define __CROS_EC_CHARGE_STATE_V2_H
 
 #if defined(CONFIG_I2C_VIRTUAL_BATTERY) && defined(CONFIG_BATTERY_SMART)
-#define VIRTUAL_BATTERY_ADDR BATTERY_ADDR
+#define VIRTUAL_BATTERY_ADDR_FLAGS BATTERY_ADDR_FLAGS
 #endif
 /*
  * The values exported by charge_get_state() and charge_get_flags() are used
@@ -110,10 +111,60 @@ void board_enable_base_power(int enable);
 void board_base_reset(void);
 
 /**
- * Don't cut off battery in critical battery condition when this
- * board-specific routine returns 0.
+ * Callback with which boards determine action on critical low battery
+ *
+ * The default implementation is provided in charge_state_v2.c. Overwrite it
+ * to customize it.
+ *
+ * @param curr Pointer to struct charge_state_data
+ * @return Action to take.
  */
-int board_critical_shutdown_check(struct charge_state_data *curr);
+enum critical_shutdown board_critical_shutdown_check(
+		struct charge_state_data *curr);
+
+/**
+ * Callback to set battery level for shutdown
+ *
+ * A board can implement this to customize shutdown battery level at runtime.
+ *
+ * @return battery level for shutdown
+ */
+uint8_t board_set_battery_level_shutdown(void);
+
+/**
+ * Return system PLT power and battery's desired power.
+ *
+ * @return desired power in mW
+ */
+int charge_get_plt_plus_bat_desired_mw(void);
+
+/**
+ * Get the stable battery charging current. The current will be
+ * CHARGE_CURRENT_UNINITIALIZED if not yet stable.
+ *
+ * @return stable battery charging current in mA
+ */
+int charge_get_stable_current(void);
+
+/**
+ * Set the stable current.
+ *
+ * @param ma: battery charging current in mA
+ */
+void charge_set_stable_current(int ma);
+
+/**
+ * Reset stable current counter stable_ts. Calling this function would set
+ * stable_current to CHARGE_CURRENT_UNINITIALIZED.
+ */
+void charge_reset_stable_current(void);
+
+/**
+ * Reset stable current counter stable_ts. Calling this function would set
+ * stable_current to CHARGE_CURRENT_UNINITIALIZED.
+ *
+ * @param us: sample stable current until us later.
+ */
+void charge_reset_stable_current_us(uint64_t us);
 
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
-

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -13,7 +13,13 @@
 #include "uartn.h"
 #include "util.h"
 
-static int done_uart_init_yet;
+enum init_values {
+	INIT_NOT_START,
+	INIT_IN_PROGRESS,
+	INIT_DONE
+};
+
+static enum init_values done_uart_init_yet;
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 			       defined(SECTION_IS_RO)))
@@ -21,9 +27,17 @@ static int done_uart_init_yet;
 #define UARTN 0
 #endif
 
+static int uart_init_check_pinhold(void)
+{
+	if (!GREAD(PINMUX, HOLD) && done_uart_init_yet == INIT_IN_PROGRESS)
+		done_uart_init_yet = INIT_DONE;
+	return done_uart_init_yet == INIT_DONE;
+}
+
 int uart_init_done(void)
 {
-	return done_uart_init_yet;
+	return (done_uart_init_yet == INIT_DONE) ||
+		uart_init_check_pinhold();
 }
 
 void uart_tx_start(void)
@@ -34,7 +48,6 @@ void uart_tx_start(void)
 void uart_tx_stop(void)
 {
 	uartn_tx_stop(UARTN);
-
 }
 
 int uart_tx_in_progress(void)
@@ -74,7 +87,7 @@ int uart_read_char(void)
 /**
  * Interrupt handlers for UART0
  */
-void uart_ec_tx_interrupt(void)
+static void uart_console_tx_interrupt(void)
 {
 	/* Clear transmit interrupt status */
 	GR_UART_ISTATECLR(UARTN) = GC_UART_ISTATECLR_TX_MASK;
@@ -82,9 +95,9 @@ void uart_ec_tx_interrupt(void)
 	/* Fill output FIFO */
 	uart_process_output();
 }
-DECLARE_IRQ(GC_IRQNUM_UART0_TXINT, uart_ec_tx_interrupt, 1);
+DECLARE_IRQ(GC_IRQNUM_UART0_TXINT, uart_console_tx_interrupt, 1);
 
-void uart_ec_rx_interrupt(void)
+static void uart_console_rx_interrupt(void)
 {
 	/* Clear receive interrupt status */
 	GR_UART_ISTATECLR(UARTN) = GC_UART_ISTATECLR_RX_MASK;
@@ -92,7 +105,7 @@ void uart_ec_rx_interrupt(void)
 	/* Read input FIFO until empty */
 	uart_process_input();
 }
-DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
+DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_console_rx_interrupt, 1);
 #endif  /* USE_UART_INTERRUPTS */
 
 void uart_init(void)
@@ -109,6 +122,5 @@ void uart_init(void)
 #ifdef UART_EC
 	uartn_init(UART_EC);
 #endif
-
-	done_uart_init_yet = 1;
+	done_uart_init_yet = INIT_IN_PROGRESS;
 }

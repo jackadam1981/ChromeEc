@@ -1,5 +1,5 @@
 # -*- makefile -*-
-# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -15,6 +15,16 @@ CHIP_VARIANT ?= cr50_fpga
 # a guard so that recipe definitions and variable extensions only happen the
 # second time.
 ifeq ($(BOARD_MK_INCLUDED_ONCE),)
+
+# List of variables which can be defined in the environment or set in the make
+# command line.
+ENV_VARS := CR50_DEV CR50_SQA CRYPTO_TEST H1_RED_BOARD
+
+ifneq ($(CRYPTO_TEST),)
+CPPFLAGS += -DCRYPTO_TEST_SETUP
+endif
+
+
 BOARD_MK_INCLUDED_ONCE=1
 SIG_EXTRA = --cros
 else
@@ -31,6 +41,7 @@ dirs-y += $(BDIR)/tpm2
 # Objects that we need to build
 board-y =  board.o
 board-y += ap_state.o
+board-y += closed_source_set1.o
 board-y += ec_state.o
 board-y += power_button.o
 board-y += servo_state.o
@@ -49,6 +60,7 @@ board-y += tpm2/hash.o
 board-y += tpm2/hash_data.o
 board-y += tpm2/hkdf.o
 board-y += tpm2/manufacture.o
+board-y += tpm2/nvmem_ops.o
 board-y += tpm2/platform.o
 board-y += tpm2/rsa.o
 board-y += tpm2/stubs.o
@@ -56,9 +68,13 @@ board-y += tpm2/tpm_mode.o
 board-y += tpm2/tpm_state.o
 board-y += tpm2/trng.o
 board-y += tpm2/virtual_nvmem.o
-board-y += tpm_nvmem_read.o
+board-y += tpm_nvmem_ops.o
 board-y += wp.o
 board-$(CONFIG_U2F) += u2f.o
+
+ifneq ($(H1_RED_BOARD),)
+CPPFLAGS += -DH1_RED_BOARD=$(EMPTY)
+endif
 
 # Build and link with an external library
 EXTLIB := $(realpath ../../third_party/tpm2)
@@ -90,16 +106,16 @@ CFLAGS += -DEMBEDDED_MODE=1
 # Configure cryptoc headers to handle unaligned accesses.
 CFLAGS += -DSUPPORT_UNALIGNED=1
 
+TPM2_OBJS = $(shell find $(out)/tpm2 -name '*.cp.o')
 # Add dependencies on that library
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a
-
-#$(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(TPM2_OBJS)
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: copied_objs
 
 # Force the external build each time, so it can look for changed sources.
-.PHONY: $(out)/tpm2/libtpm2.a
-$(out)/tpm2/libtpm2.a:
-	$(MAKE) obj=$(realpath $(out))/tpm2 EMBEDDED_MODE=1 OBJ_PREFIX=Tpm2_ -C $(EXTLIB)
+.PHONY: copied_objs
+copied_objs:
+	$(MAKE) obj=$(realpath $(out))/tpm2 EMBEDDED_MODE=1 \
+		-C $(EXTLIB) copied_objs
 
 endif   # BOARD_MK_INCLUDED_ONCE is nonempty
 

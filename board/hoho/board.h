@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -34,6 +34,7 @@
 #define CONFIG_USB_INHIBIT_CONNECT
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR USB_PD_HW_DEV_ID_HOHO
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR 2
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -44,7 +45,7 @@
 #define CONFIG_USB_PD_LOGGING
 #undef  CONFIG_EVENT_LOG_SIZE
 #define CONFIG_EVENT_LOG_SIZE 256
-#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_USB_PD_VBUS_DETECT_NONE
@@ -62,6 +63,7 @@
 
 /* No Write-protect GPIO, force the write-protection */
 #define CONFIG_WP_ALWAYS
+#define CONFIG_FLASH_READOUT_PROTECTION
 
 #ifndef __ASSEMBLER__
 

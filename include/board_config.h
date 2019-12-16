@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -61,10 +61,11 @@ void board_before_rsmrst(int rsmrst);
  */
 void chip_pre_init(void);
 
-#ifdef CONFIG_EC_FEATURE_BOARD_OVERRIDE
-/* function for board specific overrides to default feature flags */
-uint32_t board_override_feature_flags0(uint32_t flags0);
-uint32_t board_override_feature_flags1(uint32_t flags1);
-#endif
+/*
+ * Allow board to override the feature bitmap provided through host command
+ * and ACPI.
+ */
+__override_proto uint32_t board_override_feature_flags0(uint32_t flags0);
+__override_proto uint32_t board_override_feature_flags1(uint32_t flags1);
 
 #endif /* __CROS_EC_BOARD_CONFIG_H */

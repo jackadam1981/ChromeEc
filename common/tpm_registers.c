@@ -13,25 +13,33 @@
 #include "console.h"
 #include "extension.h"
 #include "link_defs.h"
-#include "nvmem.h"
+#include "new_nvmem.h"
 #include "printf.h"
 #include "signed_header.h"
 #include "sps.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
-#include "tpm_log.h"
 #include "tpm_manufacture.h"
 #include "tpm_registers.h"
 #include "util.h"
 #include "watchdog.h"
 #include "wp.h"
 
+/*
+ * Do not enable TPM if crypto test is enabled - there is no room in the flash
+ * for both.
+ */
+#ifndef CRYPTO_TEST_SETUP
+#define ENABLE_TPM
+
 /* TPM2 library includes. */
 #include "ExecCommand_fp.h"
 #include "Platform.h"
 #include "_TPM_Init_fp.h"
 #include "Manufacture_fp.h"
+
+#endif
 
 /****************************************************************************/
 /*
@@ -42,16 +50,16 @@
  * executable, because the loader can just zero .bss prior to running the
  * program.
  *
- * However, the tpm_reset_request() function will zero the .bss section for THIS
- * FILE and all files in the TPM library. Any uninitialized variables defined in
- * this file that must be preserved across tpm_reset_request() must be placed in
- * a separate section.
+ * In addition to that, the tpm_reset_request() function will zero the .bss of
+ * all modules of the TPM library and variables of this file explicitly added
+ * to the .bss.Tpm2_common section, which will allow restarting TPM without
+ * rebooting the device.
  *
  * On the other hand, initialized variables (in the .data section) are NOT
  * affected by tpm_reset_request(), so any variables that should be
  * reinitialized must be dealt with manually in the tpm_reset_request()
  * function. To prevent initialized variables from being added to the TPM
- * library without notice, the compiler will reject any that aren't explicitly
+ * library without notice, the linker will reject any that aren't explicitly
  * flagged.
  */
 
@@ -114,42 +122,42 @@ static struct {
 	uint32_t fifo_read_index;   /* for read commands */
 	uint32_t fifo_write_index;  /* for write commands */
 	struct tpm_register_file  regs;
-} tpm_;
+} tpm_  __attribute__((section(".bss.Tpm2_common")));
 
 /* Bit definitions for some TPM registers. */
 enum tpm_access_bits {
-	tpm_reg_valid_sts = (1 << 7),
-	active_locality = (1 << 5),
-	request_use = (1 << 1),
-	tpm_establishment = (1 << 0),
+	tpm_reg_valid_sts = BIT(7),
+	active_locality = BIT(5),
+	request_use = BIT(1),
+	tpm_establishment = BIT(0),
 };
 
 enum tpm_sts_bits {
 	tpm_family_shift = 26,
-	tpm_family_mask = ((1 << 2) - 1),  /* 2 bits wide */
+	tpm_family_mask = (BIT(2) - 1),  /* 2 bits wide */
 	tpm_family_tpm2 = 1,
-	reset_establishment_bit = (1 << 25),
-	command_cancel = (1 << 24),
+	reset_establishment_bit = BIT(25),
+	command_cancel = BIT(24),
 	burst_count_shift = 8,
-	burst_count_mask = ((1 << 16) - 1),  /* 16 bits wide */
-	sts_valid = (1 << 7),
-	command_ready = (1 << 6),
-	tpm_go = (1 << 5),
-	data_avail = (1 << 4),
-	expect = (1 << 3),
-	self_test_done = (1 << 2),
-	response_retry = (1 << 1),
+	burst_count_mask = (BIT(16) - 1),  /* 16 bits wide */
+	sts_valid = BIT(7),
+	command_ready = BIT(6),
+	tpm_go = BIT(5),
+	data_avail = BIT(4),
+	expect = BIT(3),
+	self_test_done = BIT(2),
+	response_retry = BIT(1),
 };
 
 /* Used to count bytes read in version string */
-static int tpm_fw_ver_index;
+static int tpm_fw_ver_index __attribute__((section(".bss.Tpm2_common")));
 /*
  * Used to store the full version string, which includes version of the two RO
  * and two RW regions in the flash as well as the version string of the four
  * cr50 image components. The number is somewhat arbitrary, calculated for the
  * worst case scenario when all compontent trees are 'dirty'.
  */
-static uint8_t tpm_fw_ver[80];
+static uint8_t tpm_fw_ver[80]  __attribute__((section(".bss.Tpm2_common")));
 
 /*
  * We need to be able to report firmware version to the host, both RO and RW
@@ -188,6 +196,13 @@ static void set_tpm_state(enum tpm_states state)
 		/* Make sure FIFO is empty. */
 		tpm_.fifo_read_index = 0;
 		tpm_.fifo_write_index = 0;
+		/*
+		 * Set proper fields of the status register: FIFO depth 63,
+		 * not ready, no data available.
+		 */
+		tpm_.regs.sts &= ~((burst_count_mask << burst_count_shift) |
+				   command_ready | data_avail);
+		tpm_.regs.sts |= 63 << burst_count_shift;
 	}
 }
 
@@ -280,7 +295,6 @@ static void sts_reg_write_cr(void)
 	case tpm_state_executing_cmd:
 	case tpm_state_receiving_cmd:
 		set_tpm_state(tpm_state_idle);
-		tpm_.regs.sts &= ~command_ready;
 		break;
 	}
 }
@@ -410,9 +424,6 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 {
 	uint32_t i;
 
-	if (reset_in_progress)
-		return;
-
 	CPRINTF("%s(0x%03x, %d,", __func__, regaddr, data_size);
 	for (i = 0; i < data_size && i < 4; i++)
 		CPRINTF(" %02x", data[i]);
@@ -445,7 +456,7 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 
 }
 
-void fifo_reg_read(uint8_t *dest, uint32_t data_size)
+static void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 {
 	uint32_t still_in_fifo = tpm_.fifo_write_index -
 		tpm_.fifo_read_index;
@@ -483,6 +494,8 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 {
 	int i;
+
+	reset_in_progress = 0;
 
 	CPRINTF("%s(0x%06x, %d)", __func__, regaddr, data_size);
 	switch (regaddr) {
@@ -544,12 +557,13 @@ void tpm_register_interface(interface_control_func interface_start,
 
 static void tpm_init(void)
 {
+#ifdef ENABLE_TPM
 	/*
 	 * 0xc0 Means successful endorsement. Actual endorsement reasult code
 	 * is added in lower bits to indicate endorsement failure, if any.
 	 */
 	uint8_t underrun_char = 0xc0;
-
+#endif
 	/* This is more related to TPM task activity than TPM transactions */
 	cprints(CC_TASK, "%s", __func__);
 
@@ -568,11 +582,12 @@ static void tpm_init(void)
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
 		(63 << burst_count_shift) | sts_valid;
 
-	/* TPM2 library functions. */
-	_plat__Signal_PowerOn();
-
 	/* Create version string to be read by host */
 	set_version_string();
+
+#ifdef ENABLE_TPM
+	/* TPM2 library functions. */
+	_plat__Signal_PowerOn();
 
 	watchdog_reload();
 
@@ -598,14 +613,14 @@ static void tpm_init(void)
 		_plat__SetNvAvail();
 		endorse_result = tpm_endorse();
 
-		ccprintf("[%T Endorsement %s]\n",
+		ccprints("Endorsement %s",
 			 (endorse_result == mnf_success) ?
 			 "succeeded" : "failed");
 
 		if (chip_factory_mode()) {
 			underrun_char |= endorse_result;
 
-			ccprintf("[%T Setting underrun character to 0x%x]\n",
+			ccprints("Setting underrun character to 0x%x",
 				 underrun_char);
 			sps_tx_status(underrun_char);
 		}
@@ -615,6 +630,7 @@ static void tpm_init(void)
 
 		_plat__SetNvAvail();
 	}
+#endif
 }
 
 size_t tpm_get_burst_size(void)
@@ -627,7 +643,7 @@ size_t tpm_get_burst_size(void)
 /* Recognize both original extension and new vendor-specific command codes */
 #define IS_CUSTOM_CODE(code)					\
 	((code == CONFIG_EXTENSION_COMMAND) ||			\
-	 (code & TPM_CC_VENDOR_BIT_MASK))
+	 (code == TPM_CC_VENDOR_BIT_MASK))
 
 static void call_extension_command(struct tpm_cmd_header *tpmh,
 				   size_t *total_size,
@@ -672,9 +688,9 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
  * Events used on the TPM task context. Make sure there is no collision with
  * event(s) defined in chip/g/dcrypto/dcrypto_runtime.c
  */
-#define TPM_EVENT_RESET TASK_EVENT_CUSTOM(1 << 1)
-#define TPM_EVENT_COMMIT TASK_EVENT_CUSTOM(1 << 2)
-#define TPM_EVENT_ALT_EXTENSION TASK_EVENT_CUSTOM(1 << 3)
+#define TPM_EVENT_RESET TASK_EVENT_CUSTOM_BIT(1)
+#define TPM_EVENT_COMMIT TASK_EVENT_CUSTOM_BIT(2)
+#define TPM_EVENT_ALT_EXTENSION TASK_EVENT_CUSTOM_BIT(3)
 
 /*
  * Result of executing of the TPM command on the alternative path, could have
@@ -746,7 +762,7 @@ static __preserved int wipe_result;
 /*
  * Did tpm_reset_request() request nvmem wipe? (intentionally cleared on reset)
  */
-static int wipe_requested;
+static int wipe_requested __attribute__((section(".bss.Tpm2_common")));
 
 int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 {
@@ -759,10 +775,6 @@ int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 		cprints(CC_TASK, "%s: already scheduled", __func__);
 		return EC_ERROR_BUSY;
 	}
-
-	/* Record input parameters as two bits in the data field. */
-	tpm_log_event(TPM_EVENT_INIT,
-		      (!!wait_until_done << 1) | !!wipe_nvmem_first);
 
 	reset_in_progress = 1;
 	wipe_result = EC_SUCCESS;
@@ -829,18 +841,9 @@ static void tpm_reset_now(int wipe_first)
 
 	if (wipe_first)
 		/* Now wipe the TPM's nvmem */
-		wipe_result = nvmem_erase_user_data(NVMEM_TPM);
+		wipe_result = nvmem_erase_tpm_data();
 	else
 		wipe_result = EC_SUCCESS;
-
-	/*
-	 * Clear the TPM library's zero-init data.  Note that the linker script
-	 * includes this file's .bss in the same section, so it will be cleared
-	 * at the same time.
-	 */
-	memset(&__bss_libtpm2_start, 0,
-	       (uintptr_t)(&__bss_libtpm2_end) -
-	       (uintptr_t)(&__bss_libtpm2_start));
 
 	/*
 	 * NOTE: If any __initialized variables need reinitializing after
@@ -852,6 +855,15 @@ static void tpm_reset_now(int wipe_first)
 	 * might have accumulated.
 	 */
 	nvmem_enable_commits();
+
+	/*
+	 * Clear the TPM library's zero-init data.  Note that the linker script
+	 * includes this file's .bss in the same section, so it will be cleared
+	 * at the same time.
+	 */
+	memset(&__bss_libtpm2_start, 0,
+	       (uintptr_t)(&__bss_libtpm2_end) -
+		       (uintptr_t)(&__bss_libtpm2_start));
 
 	/*
 	 * Prevent NVRAM commits until further notice, unless running in
@@ -877,8 +889,6 @@ static void tpm_reset_now(int wipe_first)
 	 */
 	hook_call_deferred(&reinstate_nvmem_commits_data, 3 * SECOND);
 
-	reset_in_progress = 0;
-
 	/*
 	 * In chip factory mode SPI idle byte sent on MISO is used for
 	 * progress reporting. TPM flow control messes it up, do not start TPM
@@ -897,10 +907,12 @@ int tpm_sync_reset(int wipe_first)
 
 void tpm_stop(void)
 {
-	if_stop();
+	/* Stop the TPM interface if it has been initialized. */
+	if (if_stop)
+		if_stop();
 }
 
-void tpm_task(void)
+void tpm_task(void *u)
 {
 	uint32_t evt = 0;
 
@@ -936,7 +948,7 @@ void tpm_task(void)
 
 	tpm_reset_now(0);
 	while (1) {
-		uint8_t *response;
+		uint8_t *response = NULL;
 		unsigned response_size;
 		uint32_t command_code;
 		struct tpm_cmd_header *tpmh;
@@ -1020,10 +1032,30 @@ void tpm_task(void)
 				memcpy(response, tpm_broken_response,
 				       response_size);
 			} else {
+#ifdef ENABLE_TPM
 				ExecuteCommand(tpm_.fifo_write_index,
 					       (uint8_t *)tpmh,
 					       &response_size,
 					       &response);
+#else
+				{
+					/*
+					 * This response is sent by actual
+					 * TPM2 when replying to gibberish
+					 * input. Copy it here to avoid the
+					 * need to add conditional compilation
+					 * cases below.
+					 */
+					const uint8_t bad_cmd_resp[] = {
+						0x00, 0xc4, 0x00, 0x00, 0x00,
+						0x0a, 0x00, 0x00, 0x00, 0x1e
+					};
+					response = (uint8_t *)tpmh;
+					response_size = sizeof(bad_cmd_resp);
+					memcpy(response, bad_cmd_resp,
+					       response_size);
+				}
+#endif
 			}
 		}
 		CPRINTF("got %d bytes in response\n", response_size);

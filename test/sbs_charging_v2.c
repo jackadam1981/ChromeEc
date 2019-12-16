@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -26,14 +26,19 @@ static int is_hibernated;
 static int override_voltage, override_current, override_usec;
 
 /* The simulation doesn't really hibernate, so we must reset this ourselves */
-extern timestamp_t shutdown_warning_time;
+extern timestamp_t shutdown_target_time;
 
 static void reset_mocks(void)
 {
 	mock_chipset_state = CHIPSET_STATE_ON;
 	is_shutdown = is_force_discharge = is_hibernated = 0;
 	override_voltage = override_current = override_usec = 0;
-	shutdown_warning_time.val = 0ULL;
+	shutdown_target_time.val = 0ULL;
+}
+
+int board_cut_off_battery(void)
+{
+	return EC_SUCCESS;
 }
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
@@ -175,7 +180,7 @@ static int test_charge_state(void)
 
 	/* Detach battery, charging error */
 	ccprintf("[CHARGING TEST] Detach battery\n");
-	TEST_ASSERT(test_detach_i2c(I2C_PORT_BATTERY, BATTERY_ADDR) ==
+	TEST_ASSERT(test_detach_i2c(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS) ==
 		    EC_SUCCESS);
 	msleep(BATTERY_DETACH_DELAY);
 	state = wait_charging_state();
@@ -183,7 +188,7 @@ static int test_charge_state(void)
 
 	/* Attach battery again, charging */
 	ccprintf("[CHARGING TEST] Attach battery\n");
-	test_attach_i2c(I2C_PORT_BATTERY, BATTERY_ADDR);
+	test_attach_i2c(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS);
 	/* And changing full capacity should trigger a host event */
 	ev_clear(EC_HOST_EVENT_BATTERY);
 	sb_write(SB_FULL_CHARGE_CAPACITY, 0xeff0);

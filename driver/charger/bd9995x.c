@@ -131,7 +131,7 @@ static inline int ch_raw_read16(int cmd, int *param,
 	/* Map the Charge command code to appropriate region */
 	mutex_lock(&bd9995x_map_mutex);
 	if (charger_map_cmd != map_cmd) {
-		rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+		rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
 				 BD9995X_CMD_MAP_SET, map_cmd);
 		if (rv) {
 			charger_map_cmd = BD9995X_INVALID_COMMAND;
@@ -141,7 +141,8 @@ static inline int ch_raw_read16(int cmd, int *param,
 		charger_map_cmd = map_cmd;
 	}
 
-	rv = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, cmd, param);
+	rv = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			cmd, param);
 
 bd9995x_read_cleanup:
 	mutex_unlock(&bd9995x_map_mutex);
@@ -157,8 +158,8 @@ static inline int ch_raw_write16(int cmd, int param,
 	/* Map the Charge command code to appropriate region */
 	mutex_lock(&bd9995x_map_mutex);
 	if (charger_map_cmd != map_cmd) {
-		rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
-					BD9995X_CMD_MAP_SET, map_cmd);
+		rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+				 BD9995X_CMD_MAP_SET, map_cmd);
 		if (rv) {
 			charger_map_cmd = BD9995X_INVALID_COMMAND;
 			goto bd9995x_write_cleanup;
@@ -167,7 +168,8 @@ static inline int ch_raw_write16(int cmd, int param,
 		charger_map_cmd = map_cmd;
 	}
 
-	rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, cmd, param);
+	rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			 cmd, param);
 
 bd9995x_write_cleanup:
 	mutex_unlock(&bd9995x_map_mutex);
@@ -343,7 +345,7 @@ static int bd9995x_get_charger_op_status(int *status)
 }
 
 #ifdef HAS_TASK_USB_CHG
-static int bc12_detected_type[CONFIG_USB_PD_PORT_COUNT];
+static int bc12_detected_type[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Mutex for UCD_SET regsiters, lock before read / mask / write. */
 static struct mutex ucd_set_mutex[BD9995X_CHARGE_PORT_COUNT];
 
@@ -438,13 +440,8 @@ static int bd9995x_bc12_check_type(int port)
 
 static void bd9995x_bc12_detach(int port, int type)
 {
-	struct charge_port_info charge = {
-		.voltage = USB_CHARGER_VOLTAGE_MV,
-		.current = 0,
-	};
-
 	/* Update charge manager */
-	charge_manager_update_charge(type, port, &charge);
+	charge_manager_update_charge(type, port, NULL);
 
 	/* Disable charging trigger by BC1.2 detection */
 	bd9995x_bc12_enable_charging(port, 0);
@@ -1266,7 +1263,7 @@ void usb_charger_task(void *u)
 	static int initialized;
 	int changed, port, interrupts;
 	int sleep_usec;
-	uint64_t bc12_det_mark[CONFIG_USB_PD_PORT_COUNT];
+	uint64_t bc12_det_mark[CONFIG_USB_PD_PORT_MAX_COUNT];
 #ifdef CONFIG_USB_PD_DISCHARGE
 	int vbus_reg, voltage;
 #endif
@@ -1276,7 +1273,7 @@ void usb_charger_task(void *u)
 	vbus_voltage = 0;
 #endif
 
-	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
 		bc12_detected_type[port] = CHARGE_SUPPLIER_NONE;
 		bd9995x_enable_vbus_detect_interrupts(port, 1);
 		bc12_det_mark[port] = 0;
@@ -1285,7 +1282,7 @@ void usb_charger_task(void *u)
 	while (1) {
 		sleep_usec = -1;
 		changed = 0;
-		for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+		for (port = 0; port < board_get_usb_pd_port_count(); port++) {
 			/* Get port interrupts */
 			interrupts = bd9995x_get_interrupts(port);
 			if (interrupts & BD9995X_CMD_INT_VBUS_DET ||
@@ -1512,7 +1509,7 @@ static int bd9995x_psys_charger_adc(void)
 	 * Calculate power in mW
 	 * PSYS = VACP×IACP+VBAT×IBAT = IPMON / GPMON
 	 */
-	return (int) ((ipmon * 1000) / ((1 << BD9995X_PSYS_GAIN_SELECT) *
+	return (int) ((ipmon * 1000) / (BIT(BD9995X_PSYS_GAIN_SELECT) *
 		BD9995X_PMON_IOUT_ADC_READ_COUNT));
 }
 

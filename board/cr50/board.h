@@ -1,10 +1,12 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
+
+#define CONFIG_LTO
 
 /*
  * The default watchdog timeout is 1.6 seconds, but there are some legitimate
@@ -36,6 +38,9 @@
 #undef CONFIG_FLASH
 #endif
 
+/* Enable getting gpio flags to tell if open drain pins are asserted */
+#define CONFIG_GPIO_GET_EXTENDED
+
 /* Flash configuration */
 #undef CONFIG_FLASH_PSTATE
 #define CONFIG_WP_ALWAYS
@@ -43,26 +48,28 @@
 
 #define CONFIG_CRC8
 
-/* Non-volatile counter storage for U2F */
-#define CONFIG_FLASH_NVCOUNTER
-#define CONFIG_FLASH_NVCTR_SIZE CONFIG_FLASH_BANK_SIZE
-#define CONFIG_FLASH_NVCTR_BASE_A (CONFIG_PROGRAM_MEMORY_BASE + \
-				   CFG_TOP_A_OFF)
-#define CONFIG_FLASH_NVCTR_BASE_B (CONFIG_PROGRAM_MEMORY_BASE + \
-				   CFG_TOP_B_OFF)
 /* We're using TOP_A for partition 0, TOP_B for partition 1 */
 #define CONFIG_FLASH_NVMEM
 /* Offset to start of NvMem area from base of flash */
-#define CONFIG_FLASH_NVMEM_OFFSET_A (CFG_TOP_A_OFF + CONFIG_FLASH_NVCTR_SIZE)
-#define CONFIG_FLASH_NVMEM_OFFSET_B (CFG_TOP_B_OFF + CONFIG_FLASH_NVCTR_SIZE)
+#define CONFIG_FLASH_NVMEM_OFFSET_A (CFG_TOP_A_OFF)
+#define CONFIG_FLASH_NVMEM_OFFSET_B (CFG_TOP_B_OFF)
 /* Address of start of Nvmem area */
-#define CONFIG_FLASH_NVMEM_BASE_A (CONFIG_PROGRAM_MEMORY_BASE + \
-				 CONFIG_FLASH_NVMEM_OFFSET_A)
-#define CONFIG_FLASH_NVMEM_BASE_B (CONFIG_PROGRAM_MEMORY_BASE + \
-				 CONFIG_FLASH_NVMEM_OFFSET_B)
+#define CONFIG_FLASH_NVMEM_BASE_A                                              \
+	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_FLASH_NVMEM_OFFSET_A)
+#define CONFIG_FLASH_NVMEM_BASE_B                                              \
+	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_FLASH_NVMEM_OFFSET_B)
+#define CONFIG_FLASH_NEW_NVMEM_BASE_A                                          \
+	(CONFIG_FLASH_NVMEM_BASE_A + CONFIG_FLASH_BANK_SIZE)
+#define CONFIG_FLASH_NEW_NVMEM_BASE_B                                          \
+	(CONFIG_FLASH_NVMEM_BASE_B + CONFIG_FLASH_BANK_SIZE)
+
 /* Size partition in NvMem */
-#define NVMEM_PARTITION_SIZE (CFG_TOP_SIZE - CONFIG_FLASH_NVCTR_SIZE)
+#define NVMEM_PARTITION_SIZE (CFG_TOP_SIZE)
+#define NEW_NVMEM_PARTITION_SIZE (NVMEM_PARTITION_SIZE - CONFIG_FLASH_BANK_SIZE)
+#define NEW_NVMEM_TOTAL_PAGES                                                  \
+	(2 * NEW_NVMEM_PARTITION_SIZE / CONFIG_FLASH_BANK_SIZE)
 /* Size in bytes of NvMem area */
+#define CONFIG_FLASH_LOG
 #define CONFIG_FLASH_NVMEM_SIZE (NVMEM_PARTITION_SIZE * NVMEM_NUM_PARTITIONS)
 /* Enable <key, value> variable support. */
 #define CONFIG_FLASH_NVMEM_VARS
@@ -84,7 +91,9 @@
 
 /* USB configuration */
 #define CONFIG_USB
-#define CONFIG_USB_CONSOLE
+#define CONFIG_USB_CONSOLE_STREAM
+#undef CONFIG_USB_CONSOLE_TX_BUF_SIZE
+#define CONFIG_USB_CONSOLE_TX_BUF_SIZE		4096
 #define CONFIG_USB_I2C
 #define CONFIG_USB_INHIBIT_INIT
 #define CONFIG_USB_SPI
@@ -105,7 +114,11 @@
 #ifdef CR50_DEV
 /* Enable unsafe dev features for CCD in dev builds */
 #define CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
+#define CONFIG_CMD_FLASH_LOG
 #define CONFIG_PHYSICAL_PRESENCE_DEBUG_UNSAFE
+#endif
+#if defined(CR50_DEV) || defined(CR50_SQA)
+#define CR50_RELAXED
 #endif
 
 #define CONFIG_USB_PID 0x5014
@@ -145,8 +158,6 @@
 
 /* Implement custom udelay, due to usec hwtimer imprecision. */
 #define CONFIG_HW_SPECIFIC_UDELAY
-
-#define CONFIG_TPM_LOGGING
 
 #ifndef __ASSEMBLER__
 
@@ -213,6 +224,9 @@ enum device_state {
 	/* Device state is unknown.  Used only by legacy device_state code. */
 	DEVICE_STATE_UNKNOWN,
 
+	/* The state is being ignored. */
+	DEVICE_STATE_IGNORED,
+
 	/* Number of device states */
 	DEVICE_STATE_COUNT
 };
@@ -231,6 +245,7 @@ enum nvmem_vars {
 	NVMEM_VAR_TEST_VAR,
 	NVMEM_VAR_U2F_SALT,
 	NVMEM_VAR_CCD_CONFIG,
+	NVMEM_VAR_G2F_SALT,
 
 	NVMEM_VARS_COUNT
 };
@@ -238,19 +253,20 @@ enum nvmem_vars {
 void board_configure_deep_sleep_wakepins(void);
 void ap_detect_asserted(enum gpio_signal signal);
 void ec_detect_asserted(enum gpio_signal signal);
-void ec_tx_cr50_rx(enum gpio_signal signal);
 void servo_detect_asserted(enum gpio_signal signal);
 void tpm_rst_deasserted(enum gpio_signal signal);
+void tpm_rst_asserted(enum gpio_signal signal);
 
 void post_reboot_request(void);
 
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
 void deassert_sys_rst(void);
-int is_sys_rst_asserted(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
+/* Ignore the servo state. */
+void servo_ignore(int enable);
 
 /**
  * Set up a deferred call to update CCD state.
@@ -259,23 +275,74 @@ int is_ec_rst_asserted(void);
  */
 void ccd_update_state(void);
 
+/**
+ * Return the state of the BOARD_USE_PLT_RST board strap option.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
 int board_use_plt_rst(void);
+/**
+ * Return the state of the BOARD_NEEDS_SYS_RST_PULL_UP board strap option.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
 int board_rst_pullup_needed(void);
+/**
+ * Return the state of the BOARD_SLAVE_CONFIG_I2C board strap option.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
 int board_tpm_uses_i2c(void);
+/**
+ * Return the state of the BOARD_SLAVE_CONFIG_SPI board strap option.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
 int board_tpm_uses_spi(void);
+/**
+ * Return the state of the BOARD_CLOSED_SOURCE_SET1 board strap option.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
+int board_uses_closed_source_set1(void);
+/**
+ * The board needs to wait until TPM_RST_L is asserted before deasserting
+ * system reset signals.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
+int board_uses_closed_loop_reset(void);
+/**
+ * The board has all necessary I2C pins connected for INA support.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
+int board_has_ina_support(void);
+/* The board allows vendor commands to enable/disable tpm. */
+int board_tpm_mode_change_allowed(void);
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
 
 void power_button_record(void);
 
+/**
+ * Enable/disable power button release interrupt.
+ *
+ * @param enable	Enable (!=0) or disable (==0)
+ */
+void power_button_release_enable_interrupt(int enable);
+
 /* Functions needed by CCD config */
 int board_battery_is_present(void);
 int board_fwmp_allows_unlock(void);
 int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);
-int board_wipe_tpm(void);
+void board_reboot_ec(void);
+void board_closed_loop_reset(void);
+int board_wipe_tpm(int reset_required);
 int board_is_first_factory_boot(void);
+int board_fwmp_fips_mode_enabled(void);
 
 int usb_i2c_board_enable(void);
 void usb_i2c_board_disable(void);
@@ -295,6 +362,21 @@ void set_ap_on(void);
 
 /* Returns True if chip is brought up in a factory test harness. */
 int chip_factory_mode(void);
+
+/*
+ * Trigger generation of the ITE SYNC sequence on the way up after next
+ * reboot.
+ */
+void board_start_ite_sync(void);
+
+/*
+ * Board specific function (needs information about pinmux settings) which
+ * allows to take the i2cs controller out of the 'wedged' state where the
+ * master stopped i2c access mid transaction and the slave is holding SDA low,
+ */
+void board_unwedge_i2cs(void);
+
+int board_in_prod_mode(void);
 
 #endif /* !__ASSEMBLER__ */
 
@@ -348,6 +430,7 @@ enum nvmem_users {
 #define CONFIG_TPM_I2CS
 
 #define CONFIG_BOARD_ID_SUPPORT
+#define CONFIG_SN_BITS_SUPPORT
 #define CONFIG_EXTENDED_VERSION_INFO
 
 #define I2C_PORT_MASTER 0
@@ -370,4 +453,32 @@ enum nvmem_users {
 #ifndef CONFIG_RMA_AUTH_USE_P256
 #define CONFIG_CURVE25519
 #endif
+
+#define CONFIG_CCD_ITE_PROGRAMMING
+
+/*
+ * Increase sizes of USB over I2C read and write queues. Sizes are are such
+ * that when appropriate overheads are included, total buffer sizes are powers
+ * of 2 (2^9 in both cases below).
+ */
+#undef CONFIG_USB_I2C_MAX_WRITE_COUNT
+#undef CONFIG_USB_I2C_MAX_READ_COUNT
+#define CONFIG_USB_I2C_MAX_WRITE_COUNT 508
+#define CONFIG_USB_I2C_MAX_READ_COUNT 506
+
+/* The below time constants are way longer than should be required in practice:
+ *
+ * Time it takes to finish processing TPM command
+ */
+#define TPM_PROCESSING_TIME (1 * SECOND)
+
+/*
+ * Time it takse TPM reset function to wipe out the NVMEM and reboot the
+ * device.
+ */
+#define TPM_RESET_TIME (10 * SECOND)
+
+/* Total time deep sleep should not be allowed while wiping the TPM. */
+#define DISABLE_SLEEP_TIME_TPM_WIPE (TPM_PROCESSING_TIME + TPM_RESET_TIME)
+
 #endif /* __CROS_EC_BOARD_H */

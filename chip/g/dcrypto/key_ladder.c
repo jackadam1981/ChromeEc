@@ -238,30 +238,12 @@ int DCRYPTO_ladder_random(void *output)
 {
 	int error = 1;
 	uint32_t tmp[8];
-	int i;
 
 	if (!dcrypto_grab_sha_hw())
 		goto fail;
 
 	rand_bytes(tmp, sizeof(tmp));
-	error = ladder_step(KEYMGR_CERT_28, tmp);
-	if (error)
-		goto fail;
-
-	if (!compute_certs(FRK2_CERTS_PREFIX, ARRAY_SIZE(FRK2_CERTS_PREFIX)))
-		goto fail;
-	/* USR generation requires running the key-ladder till
-	 * the end (version 0), plus one additional iteration.
-	 */
-	for (i = 0; i < MAX_MAJOR_FW_VERSION - 0 + 1; i++)
-		if (ladder_step(KEYMGR_CERT_25, NULL))
-			goto fail;
-	if (i != MAX_MAJOR_FW_VERSION - 0 + 1)
-		goto fail;
-	if (ladder_step(KEYMGR_CERT_34, ISR_SALT))
-		goto fail;
-
-	rand_bytes(tmp, sizeof(tmp));
+	/* Mix TRNG bytes with RSR entropy */
 	error = ladder_step(KEYMGR_CERT_27, tmp);
 	if (!error)
 		ladder_out(output);
@@ -286,4 +268,33 @@ int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 
 	dcrypto_release_sha_hw();
 	return !error;
+}
+
+void DCRYPTO_ladder_revoke(void)
+{
+	/* Revoke certificates */
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL0, 0xffffffff);
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL1, 0xffffffff);
+
+	/* Wipe out the hidden keys cached in AES and SHA engines. */
+	GWRITE_FIELD(KEYMGR, AES_USE_HIDDEN_KEY, ENABLE, 0);
+	GWRITE_FIELD(KEYMGR, SHA_USE_HIDDEN_KEY, ENABLE, 0);
+
+	/* Clear usr_ready[] */
+	memset(usr_ready, 0, sizeof(usr_ready));
+}
+
+#define KEYMGR_CERT_REVOKE_CTRL0_DEFAULT_VAL	0xa8028a82
+#define KEYMGR_CERT_REVOKE_CTRL1_DEFAULT_VAL	0xaaaaaaaa
+
+int DCRYPTO_ladder_is_enabled(void)
+{
+	uint32_t ctrl0;
+	uint32_t ctrl1;
+
+	ctrl0 = GREAD(KEYMGR, CERT_REVOKE_CTRL0);
+	ctrl1 = GREAD(KEYMGR, CERT_REVOKE_CTRL1);
+
+	return  ctrl0 == KEYMGR_CERT_REVOKE_CTRL0_DEFAULT_VAL &&
+		ctrl1 == KEYMGR_CERT_REVOKE_CTRL1_DEFAULT_VAL;
 }

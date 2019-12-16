@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -158,13 +158,13 @@ int need_resched;
  * can do their init within a task switching context.  The hooks task will then
  * make a call to enable all tasks.
  */
-static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
+static uint32_t tasks_ready = BIT(TASK_ID_HOOKS);
 /*
  * Initially allow only the HOOKS and IDLE task to run, regardless of ready
  * status, in order for HOOK_INIT to complete before other tasks.
  * task_enable_all_tasks() will open the flood gates.
  */
-static uint32_t tasks_enabled = (1 << TASK_ID_HOOKS) | (1 << TASK_ID_IDLE);
+static uint32_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
 
 int start_called;  /* Has task swapping started */
 
@@ -214,7 +214,7 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
 void __ram_code interrupt_disable(void)
 {
 	/* Mask all interrupts, only keep division by zero exception */
-	uint32_t val = (1 << 30);
+	uint32_t val = BIT(30);
 	asm volatile ("mtsr %0, $INT_MASK" : : "r"(val));
 	asm volatile ("dsb");
 }
@@ -222,7 +222,7 @@ void __ram_code interrupt_disable(void)
 void __ram_code interrupt_enable(void)
 {
 	/* Enable HW2 ~ HW15 and division by zero exception interrupts */
-	uint32_t val = ((1 << 30) | 0xFFFC);
+	uint32_t val = (BIT(30) | 0xFFFC);
 	asm volatile ("mtsr %0, $INT_MASK" : : "r"(val));
 }
 
@@ -544,9 +544,22 @@ void set_int_ctrl(uint32_t val)
 void task_enable_all_tasks(void)
 {
 	/* Mark all tasks as ready and able to run. */
-	tasks_ready = tasks_enabled = (1 << TASK_ID_COUNT) - 1;
+	tasks_ready = tasks_enabled = BIT(TASK_ID_COUNT) - 1;
 	/* Reschedule the highest priority task. */
 	__schedule(0, 0, 0);
+}
+
+void task_enable_task(task_id_t tskid)
+{
+	atomic_or(&tasks_enabled, BIT(tskid));
+}
+
+void task_disable_task(task_id_t tskid)
+{
+	atomic_clear(&tasks_enabled, BIT(tskid));
+
+	if (!in_interrupt_context() && tskid == task_get_current())
+		__schedule(0, 0, 0);
 }
 
 void __ram_code task_enable_irq(int irq)
@@ -600,7 +613,7 @@ static void ivic_init_irqs(void)
 	 * bit0 @ INT_CTRL = 0,
 	 * Interrupts still keep programmable priority level.
 	 */
-	set_int_ctrl((get_int_ctrl() & ~(1 << 0)));
+	set_int_ctrl((get_int_ctrl() & ~BIT(0)));
 
 	/*
 	 * Re-enable global interrupts in case they're disabled.  On a reboot,
@@ -656,7 +669,7 @@ void __ram_code mutex_unlock(struct mutex *mtx)
 
 	while (waiters) {
 		task_id_t id = __fls(waiters);
-		waiters &= ~(1 << id);
+		waiters &= ~BIT(id);
 
 		/* Somebody is waiting on the mutex */
 		task_set_event(id, TASK_EVENT_MUTEX, 0);
@@ -683,7 +696,7 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
+		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
 			 task_names[i], tasks[i].events, tasks[i].runtime,
 			 stackused, tasks_init[i].stack_size);
 		cflush();
@@ -712,10 +725,10 @@ int command_task_info(int argc, char **argv)
 	ccprintf("Service calls:          %11d\n", svc_calls);
 	ccprintf("Total exceptions:       %11d\n", total + svc_calls);
 	ccprintf("Task switches:          %11d\n", task_switches);
-	ccprintf("Task switching started: %11.6ld s\n", task_start_time);
-	ccprintf("Time in tasks:          %11.6ld s\n",
+	ccprintf("Task switching started: %11.6lld s\n", task_start_time);
+	ccprintf("Time in tasks:          %11.6lld s\n",
 		 get_time().val - task_start_time);
-	ccprintf("Time in exceptions:     %11.6ld s\n", exc_total_time);
+	ccprintf("Time in exceptions:     %11.6lld s\n", exc_total_time);
 #endif
 
 	return EC_SUCCESS;

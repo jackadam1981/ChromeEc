@@ -15,80 +15,73 @@
 
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 
-static uint8_t ccd_hook_active;
+static uint8_t wait_for_factory_ccd_change;
+static uint8_t reset_required_;
 
-static void ccd_config_changed(void)
+static void factory_config_saved(int saved)
 {
-	if (!ccd_hook_active)
+	wait_for_factory_ccd_change = 0;
+
+	CPRINTS("%s: %s%s", __func__, saved ? "done" : "failed",
+		reset_required_ ? ", rebooting" : "");
+
+	if (!reset_required_)
 		return;
 
-	CPRINTS("%s: saved, rebooting\n", __func__);
 	cflush();
 	system_reset(SYSTEM_RESET_HARD);
 }
+
+static void ccd_config_changed(void)
+{
+	if (!wait_for_factory_ccd_change)
+		return;
+
+	factory_config_saved(1);
+}
 DECLARE_HOOK(HOOK_CCD_CHANGE, ccd_config_changed, HOOK_PRIO_LAST);
 
-static void factory_enable_failed(void)
+static void force_system_reset(void)
 {
-	ccd_hook_active = 0;
-	CPRINTS("factory enable failed");
-	deassert_ec_rst();
+	CPRINTS("ccd hook didn't reset the system");
+	factory_config_saved(0);
 }
-DECLARE_DEFERRED(factory_enable_failed);
-
-/* The below time constants are way longer than should be required in practice:
- *
- * Time it takes to finish processing TPM command
- */
-#define TPM_PROCESSING_TIME (1 * SECOND)
-
-/*
- * Time it takse TPM reset function to wipe out the NVMEM and reboot the
- * device.
- */
-#define TPM_RESET_TIME (10 * SECOND)
-
-/* Total time deep sleep should not be allowed. */
-#define DISABLE_SLEEP_TIME (TPM_PROCESSING_TIME + TPM_RESET_TIME)
+DECLARE_DEFERRED(force_system_reset);
 
 static void factory_enable_deferred(void)
 {
 	int rv;
 
-	CPRINTS("%s: reset TPM\n", __func__);
-
-	/*
-	 * Let's make sure the rest of the system is out of the way while TPM
-	 * is being wiped out.
-	 */
-	assert_ec_rst();
-
-	if (tpm_reset_request(1, 1) != EC_SUCCESS) {
-		CPRINTS("%s: TPM reset failed\n", __func__);
-		deassert_ec_rst();
+	if (board_wipe_tpm(reset_required_) != EC_SUCCESS)
 		return;
-	}
 
-	tpm_reinstate_nvmem_commits();
+	CPRINTS("%s: TPM reset done, enabling factory mode", __func__);
 
-	CPRINTS("%s: TPM reset done, enabling factory mode\n", __func__);
-
-	ccd_hook_active = 1;
+	wait_for_factory_ccd_change = 1;
 	rv = ccd_reset_config(CCD_RESET_FACTORY);
 	if (rv != EC_SUCCESS)
-		factory_enable_failed();
+		factory_config_saved(0);
 
-	/*
-	 * Make sure we never end up with the EC held in reset, no matter what
-	 * prevents the proper factory reset flow from succeeding.
-	 */
-	hook_call_deferred(&factory_enable_failed_data, TPM_RESET_TIME);
+	if (reset_required_) {
+		/*
+		 * Cr50 will reset once factory mode is enabled. If it hasn't in
+		 * TPM_RESET_TIME, declare factory enable failed and force the
+		 * reset.
+		 */
+		hook_call_deferred(&force_system_reset_data, TPM_RESET_TIME);
+	}
 }
 DECLARE_DEFERRED(factory_enable_deferred);
 
-void enable_ccd_factory_mode(void)
+void enable_ccd_factory_mode(int reset_required)
 {
-	delay_sleep_by(DISABLE_SLEEP_TIME);
+	/*
+	 * Wiping the TPM may take a while. Delay sleep long enough for the
+	 * factory enable process to finish.
+	 */
+	delay_sleep_by(DISABLE_SLEEP_TIME_TPM_WIPE);
+
+	reset_required_ |= !!reset_required;
 	hook_call_deferred(&factory_enable_deferred_data,
 		TPM_PROCESSING_TIME);
 }

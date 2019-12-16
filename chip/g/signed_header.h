@@ -6,6 +6,7 @@
 #define __CROS_EC_SIGNED_HEADER_H
 
 #include "compile_time_macros.h"
+#include "stdint.h"
 
 #define FUSE_PADDING 0x55555555  /* baked in hw! */
 #define FUSE_IGNORE 0xa3badaac   /* baked in rom! */
@@ -99,7 +100,7 @@ BUILD_ASSERT(offsetof(struct SignedHeader, info_chk_) == 1020);
  *
  * This convention is enforced at the key generation time.
  */
-#define G_SIGNED_FOR_PROD(h) ((h)->keyid & (1 << 2))
+#define G_SIGNED_FOR_PROD(h) ((h)->keyid & BIT(2))
 
 
 #endif /* __CROS_EC_SIGNED_HEADER_H */

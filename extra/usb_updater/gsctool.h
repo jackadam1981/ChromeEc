@@ -7,15 +7,11 @@
 #ifndef __EXTRA_USB_UPDATER_GSCTOOL_H
 #define __EXTRA_USB_UPDATER_GSCTOOL_H
 
+#include <stdbool.h>
 #include <stdint.h>
 #include <sys/types.h>
 
-/* This describes USB endpoint used to communicate with Cr50. */
-struct usb_endpoint {
-	struct libusb_device_handle *devh;
-	uint8_t ep_num;
-	int     chunk_len;
-};
+#include "usb_if.h"
 
 /*
  * gsctool uses this structure to keep information about the communications
@@ -30,20 +26,26 @@ struct transfer_descriptor {
 	 * RW images with the same version, as they get started based on the
 	 * header timestamp.
 	 */
-	uint32_t upstart_mode;
+	int upstart_mode;
 	/*
 	 * Override in case updater is used w/ boards that do not follow
 	 * the cr50 versioning scheme.
 	 */
-	uint32_t background_update_supported;
-
+	int background_update_supported;
+	/*
+	 * Unconditionally update the inactive RO, helps to make sure both RO
+	 * sections are at the same level.
+	 */
+	int force_ro;
 	/*
 	 * offsets of RO and WR sections available for update (not currently
 	 * active).
 	 */
 	uint32_t ro_offset;
 	uint32_t rw_offset;
-	uint32_t post_reset;
+
+	/* Do not reset the H1 immediately after update, wait for TPM reset. */
+	int post_reset;
 
 	/* Type of channel used to communicate with Cr50. */
 	enum transfer_type {
@@ -84,11 +86,13 @@ enum board_id_action {
 
 /*
  * This function allows to retrieve or set (if not initialized) board ID of
- * the H1 chip.
+ * the H1 chip. If bid_action is bid_get and show_machine_output is set,
+ * prints out board ID in a machine-friendly format.
  */
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
-		 struct board_id *bid);
+		 struct board_id *bid,
+		 bool show_machine_output);
 
 /*
  * This function can be used to retrieve the current PP status from Cr50 and

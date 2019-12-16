@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -26,8 +26,6 @@ static uint8_t flag_prot_inconsistent;
 /* SR regs aren't readable when UMA lock is on, so save a copy */
 static uint8_t saved_sr1;
 static uint8_t saved_sr2;
-
-#define FLASH_ABORT_TIMEOUT     10000
 
 #ifdef CONFIG_EXTERNAL_STORAGE
 #define TRISTATE_FLASH(x)
@@ -79,18 +77,20 @@ static void flash_cs_level(int level)
 	UPDATE_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_SW_CS1, level);
 }
 
-static int flash_wait_ready(int timeout)
+static int flash_wait_ready(void)
 {
 	uint8_t mask = SPI_FLASH_SR1_BUSY;
-
-	if (timeout <= 0)
-		return EC_ERROR_INVAL;
+	const timestamp_t start = get_time();
+	const uint32_t timeout_us = 10 * SECOND;
+	const timestamp_t deadline = {
+		.val = start.val + timeout_us,
+	};
 
 	/* Chip Select down. */
 	flash_cs_level(0);
 	/* Command for Read status register */
 	flash_execute_cmd(CMD_READ_STATUS_REG, MASK_CMD_ONLY);
-	while (timeout > 0) {
+	do {
 		/* Read status register */
 		NPCX_UMA_CTS  = MASK_RD_1BYTE;
 		while (IS_BIT_SET(NPCX_UMA_CTS, NPCX_UMA_CTS_EXEC_DONE))
@@ -98,14 +98,13 @@ static int flash_wait_ready(int timeout)
 		/* Busy bit is clear */
 		if ((NPCX_UMA_DB0 & mask) == 0)
 			break;
-		if (--timeout > 0)
-			msleep(1);
-	}; /* Wait for Busy clear */
+		usleep(10);
+	} while (!timestamp_expired(deadline, NULL)); /* Wait for Busy clear */
 
 	/* Chip Select high. */
 	flash_cs_level(1);
 
-	if (timeout == 0)
+	if (timestamp_expired(deadline, NULL))
 		return EC_ERROR_TIMEOUT;
 
 	return EC_SUCCESS;
@@ -116,7 +115,7 @@ static int flash_write_enable(void)
 	uint8_t mask = SPI_FLASH_SR1_WEL;
 	int rv;
 	/* Wait for previous operation to complete */
-	rv = flash_wait_ready(FLASH_ABORT_TIMEOUT);
+	rv = flash_wait_ready();
 	if (rv)
 		return rv;
 
@@ -124,7 +123,7 @@ static int flash_write_enable(void)
 	flash_execute_cmd(CMD_WRITE_EN, MASK_CMD_ONLY);
 
 	/* Wait for flash is not busy */
-	rv = flash_wait_ready(FLASH_ABORT_TIMEOUT);
+	rv = flash_wait_ready();
 	if (rv)
 		return rv;
 
@@ -194,13 +193,18 @@ static uint8_t flash_get_status2(void)
 }
 
 #ifdef NPCX_INT_FLASH_SUPPORT
+static int is_int_flash_protected(void)
+{
+	return IS_BIT_SET(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF);
+}
+
 static void flash_protect_int_flash(int enable)
 {
 	/*
 	 * Please notice the type of WP_IF bit is R/W1S. Once it's set,
 	 * only rebooting EC can clear it.
 	 */
-	if (enable && !IS_BIT_SET(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF))
+	if (enable && !is_int_flash_protected())
 		SET_BIT(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF);
 }
 #endif
@@ -272,6 +276,11 @@ static int flash_set_status_for_prot(int reg1, int reg2)
 	 * is deasserted then remove the lock and allow the write.
 	 */
 	if (all_protected) {
+#ifdef NPCX_INT_FLASH_SUPPORT
+		if (is_int_flash_protected())
+			return EC_ERROR_ACCESS_DENIED;
+#endif
+
 		if (flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED)
 			return EC_ERROR_ACCESS_DENIED;
 		flash_uma_lock(0);
@@ -418,7 +427,7 @@ static int flash_program_bytes(uint32_t offset, uint32_t bytes,
 		flash_burst_write(offset, write_size, data);
 
 		/* Wait write completed */
-		rv = flash_wait_ready(FLASH_ABORT_TIMEOUT);
+		rv = flash_wait_ready();
 		if (rv)
 			return rv;
 
@@ -559,10 +568,10 @@ int flash_physical_erase(int offset, int size)
 		/* Set erase address */
 		flash_set_address(offset);
 		/* Start erase */
-		flash_execute_cmd(CMD_SECTOR_ERASE, MASK_CMD_ADR);
+		flash_execute_cmd(NPCX_ERASE_COMMAND, MASK_CMD_ADR);
 
 		/* Wait erase completed */
-		rv = flash_wait_ready(FLASH_ABORT_TIMEOUT);
+		rv = flash_wait_ready();
 		if (rv)
 			break;
 	}
@@ -714,7 +723,7 @@ void flash_lock_mapped_storage(int lock)
 #if defined(CONFIG_HOSTCMD_FLASH_SPI_INFO) && !defined(BOARD_NPCX_EVB)
 /* NPCX EVB uses implementation from spi_flash.c */
 
-static int flash_command_spi_info(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_spi_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_flash_spi_info *r = args->response;
 

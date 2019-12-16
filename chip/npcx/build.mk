@@ -1,5 +1,5 @@
 # -*- makefile -*-
-# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -17,11 +17,12 @@ CHIP_FAMILY:=npcx5
 endif
 
 # Required chip modules
-chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o uartn.o
+chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o uartn.o sib.o
 chip-y+=system-$(CHIP_FAMILY).o
 
 # Optional chip modules
 chip-$(CONFIG_ADC)+=adc.o
+chip-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o i2c-$(CHIP_FAMILY).o
@@ -34,7 +35,9 @@ chip-$(CONFIG_CEC)+=cec.o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+ifndef CONFIG_KEYBOARD_NOT_RAW
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
+endif
 chip-$(CONFIG_WAKE_ON_VOICE)+=apm.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=wov.o
 

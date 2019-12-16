@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -30,9 +30,9 @@ enum hibdata_index {
 };
 
 /* Flags for HIBDATA_INDEX_WAKE */
-#define HIBDATA_WAKE_RTC        (1 << 0)  /* RTC alarm */
-#define HIBDATA_WAKE_HARD_RESET (1 << 1)  /* Hard reset via short RTC alarm */
-#define HIBDATA_WAKE_PIN        (1 << 2)  /* Wake pin */
+#define HIBDATA_WAKE_RTC        BIT(0)  /* RTC alarm */
+#define HIBDATA_WAKE_HARD_RESET BIT(1)  /* Hard reset via short RTC alarm */
+#define HIBDATA_WAKE_PIN        BIT(2)  /* Wake pin */
 
 /*
  * Time to hibernate to trigger a power-on reset.  50 ms is sufficient for the
@@ -123,7 +123,7 @@ static void check_reset_cause(void)
 		 * Note that this is also triggered by hibernation, because
 		 * that de-powers the chip.
 		 */
-		flags |= RESET_FLAG_POWER_ON;
+		flags |= EC_RESET_FLAG_POWER_ON;
 	} else if (!flags && (raw_reset_cause & 0x01)) {
 		/*
 		 * LM4 signals the reset pin in RESC for all power-on resets,
@@ -131,42 +131,42 @@ static void check_reset_cause(void)
 		 * this flag mutually-exclusive with power on flag, so we can
 		 * use it to indicate a keyboard-triggered reset.
 		 */
-		flags |= RESET_FLAG_RESET_PIN;
+		flags |= EC_RESET_FLAG_RESET_PIN;
 	}
 
 	if (raw_reset_cause & 0x04)
-		flags |= RESET_FLAG_BROWNOUT;
+		flags |= EC_RESET_FLAG_BROWNOUT;
 
 	if (raw_reset_cause & 0x10)
-		flags |= RESET_FLAG_SOFT;
+		flags |= EC_RESET_FLAG_SOFT;
 
 	if (raw_reset_cause & 0x28) {
 		/* Watchdog timer 0 or 1 */
-		flags |= RESET_FLAG_WATCHDOG;
+		flags |= EC_RESET_FLAG_WATCHDOG;
 	}
 
 	/* Handle other raw reset causes */
 	if (raw_reset_cause && !flags)
-		flags |= RESET_FLAG_OTHER;
+		flags |= EC_RESET_FLAG_OTHER;
 
 
 	if ((hib_status & 0x09) &&
 	    (hib_wake_flags & HIBDATA_WAKE_HARD_RESET)) {
 		/* Hibernation caused by software-triggered hard reset */
-		flags |= RESET_FLAG_HARD;
+		flags |= EC_RESET_FLAG_HARD;
 
 		/* Consume the hibernate reasons so we don't see them below */
 		hib_status &= ~0x09;
 	}
 
 	if ((hib_status & 0x01) && (hib_wake_flags & HIBDATA_WAKE_RTC))
-		flags |= RESET_FLAG_RTC_ALARM;
+		flags |= EC_RESET_FLAG_RTC_ALARM;
 
 	if ((hib_status & 0x08) && (hib_wake_flags & HIBDATA_WAKE_PIN))
-		flags |= RESET_FLAG_WAKE_PIN;
+		flags |= EC_RESET_FLAG_WAKE_PIN;
 
 	if (hib_status & 0x04)
-		flags |= RESET_FLAG_LOW_BATTERY;
+		flags |= EC_RESET_FLAG_LOW_BATTERY;
 
 	/* Restore then clear saved reset flags */
 	flags |= hibdata_read(HIBDATA_INDEX_SAVED_RESET_FLAGS);
@@ -524,10 +524,10 @@ void system_reset(int flags)
 
 	/* Save current reset reasons if necessary */
 	if (flags & SYSTEM_RESET_PRESERVE_FLAGS)
-		save_flags = system_get_reset_flags() | RESET_FLAG_PRESERVED;
+		save_flags = system_get_reset_flags() | EC_RESET_FLAG_PRESERVED;
 
 	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
-		save_flags |= RESET_FLAG_AP_OFF;
+		save_flags |= EC_RESET_FLAG_AP_OFF;
 
 	hibdata_write(HIBDATA_INDEX_SAVED_RESET_FLAGS, save_flags);
 
@@ -660,7 +660,6 @@ const char *system_get_chip_revision(void)
 
 /*****************************************************************************/
 /* Console commands */
-#ifdef CONFIG_CMD_RTC
 void print_system_rtc(enum console_channel ch)
 {
 	uint32_t rtc;
@@ -671,6 +670,7 @@ void print_system_rtc(enum console_channel ch)
 		 rtc, rtcss, rtc, HIB_RTC_SUBSEC_TO_USEC(rtcss));
 }
 
+#ifdef CONFIG_CMD_RTC
 static int command_system_rtc(int argc, char **argv)
 {
 	if (argc == 3 && !strcasecmp(argv[1], "set")) {
@@ -731,7 +731,7 @@ DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
 /* Host commands */
 
 #ifdef CONFIG_HOSTCMD_RTC
-static int system_rtc_get_value(struct host_cmd_handler_args *args)
+static enum ec_status system_rtc_get_value(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rtc *r = args->response;
 
@@ -744,7 +744,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_VALUE,
 		     system_rtc_get_value,
 		     EC_VER_MASK(0));
 
-static int system_rtc_set_value(struct host_cmd_handler_args *args)
+static enum ec_status system_rtc_set_value(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rtc *p = args->params;
 

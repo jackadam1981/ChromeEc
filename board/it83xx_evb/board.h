@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -24,11 +24,12 @@
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LOW_POWER_S0
 #define CONFIG_PECI
+#define CONFIG_PECI_COMMON
 #define CONFIG_PECI_TJMAX 100
 #define CONFIG_POWER_BUTTON
 #define CONFIG_PWM
 /* Use CS0 of SSPI */
-#define CONFIG_SPI
+#define CONFIG_SPI_MASTER
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_UART_HOST
 #define CONFIG_HOSTCMD_LPC
@@ -38,8 +39,9 @@
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT    2
+#define CONFIG_USB_PD_PORT_MAX_COUNT    2
 #define CONFIG_USB_PD_TCPM_ITE83XX
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
@@ -106,8 +108,6 @@ enum adc_channel {
 /* delay to turn on/off vconn */
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
 
-int board_get_battery_soc(void);
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 void board_pd_vbus_ctrl(int port, int enabled);
 #endif
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -6,7 +6,6 @@
 /* PWM control module for IT83xx. */
 
 #include "clock.h"
-#include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "pwm.h"

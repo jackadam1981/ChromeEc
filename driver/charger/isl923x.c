@@ -34,6 +34,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 static int learn_mode;
 
@@ -56,17 +57,20 @@ static const struct charger_info isl9237_charger_info = {
 
 static inline int raw_read8(int offset, int *value)
 {
-	return i2c_read8(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+	return i2c_read8(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			 offset, value);
 }
 
 static inline int raw_read16(int offset, int *value)
 {
-	return i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+	return i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			  offset, value);
 }
 
 static inline int raw_write16(int offset, int value)
 {
-	return i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+	return i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			   offset, value);
 }
 
 static int isl9237_set_current(uint16_t current)
@@ -299,14 +303,46 @@ int charger_post_init(void)
 	return EC_SUCCESS;
 }
 
+int isl923x_set_ac_prochot(uint16_t ma)
+{
+	int rv;
+
+	if (ma > ISL923X_AC_PROCHOT_CURRENT_MAX) {
+		CPRINTS("%s: invalid current (%d mA)\n", __func__, ma);
+		return EC_ERROR_INVAL;
+	}
+
+	rv = raw_write16(ISL923X_REG_PROCHOT_AC, ma);
+	if (rv)
+		CPRINTS("%s failed (%d)", __func__, rv);
+	return rv;
+}
+
+int isl923x_set_dc_prochot(uint16_t ma)
+{
+	int rv;
+
+	if (ma > ISL923X_DC_PROCHOT_CURRENT_MAX) {
+		CPRINTS("%s: invalid current (%d mA)\n", __func__, ma);
+		return EC_ERROR_INVAL;
+	}
+
+	rv = raw_write16(ISL923X_REG_PROCHOT_DC, ma);
+	if (rv)
+		CPRINTS("%s failed (%d)", __func__, rv);
+	return rv;
+}
+
 static void isl923x_init(void)
 {
 	int reg;
 
 #ifdef CONFIG_TRICKLE_CHARGING
 	const struct battery_info *bi = battery_get_info();
+	int precharge_voltage = bi->precharge_voltage ?
+		bi->precharge_voltage : bi->voltage_min;
 
-	if (raw_write16(ISL923X_REG_SYS_VOLTAGE_MIN, bi->voltage_min))
+	if (raw_write16(ISL923X_REG_SYS_VOLTAGE_MIN, precharge_voltage))
 		goto init_fail;
 #endif
 
@@ -365,6 +401,12 @@ static void isl923x_init(void)
 		goto init_fail;
 	reg |= ISL9238_C3_NO_RELOAD_ACLIM_ON_ACIN |
 		ISL9238_C3_NO_REREAD_PROG_PIN;
+	/*
+	 * Disable autonomous charging initially since 1) it causes boot loop
+	 * issues with 2S batteries, and 2) it will automatically get disabled
+	 * as soon as we manually set the current limit anyway.
+	 */
+	reg |= ISL9238_C3_DISABLE_AUTO_CHARING;
 	if (raw_write16(ISL9238_REG_CONTROL3, reg))
 		goto init_fail;
 
@@ -384,7 +426,7 @@ static void isl923x_init(void)
 
 	return;
 init_fail:
-	CPRINTF("isl923x_init failed!");
+	CPRINTS("%s failed!", __func__);
 }
 DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -558,8 +600,8 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 	int adc, curr, reg, ret;
 
 #ifdef CONFIG_CHARGER_ISL9238
-	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
-			ISL9238_REG_CONTROL3, &reg);
+	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			 ISL9238_REG_CONTROL3, &reg);
 	if (ret)
 		return ret;
 
@@ -568,15 +610,15 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 		reg |= ISL9238_C3_AMON_BMON_DIRECTION;
 	else
 		reg &= ~ISL9238_C3_AMON_BMON_DIRECTION;
-	ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
-			ISL9238_REG_CONTROL3, reg);
+	ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+			  ISL9238_REG_CONTROL3, reg);
 	if (ret)
 		return ret;
 #endif
 
 	mutex_lock(&control1_mutex);
 
-	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
 			 ISL923X_REG_CONTROL1, &reg);
 	if (!ret) {
 		/* Switch between AMON/BMON */
@@ -587,8 +629,8 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 
 		/* Enable monitor */
 		reg &= ~ISL923X_C1_DISABLE_MON;
-		ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
-				ISL923X_REG_CONTROL1, reg);
+		ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+				  ISL923X_REG_CONTROL1, reg);
 	}
 
 	mutex_unlock(&control1_mutex);
@@ -672,8 +714,8 @@ static void dump_reg_range(int low, int high)
 
 	for (reg = low; reg <= high; reg++) {
 		CPRINTF("[%Xh] = ", reg);
-		rv = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, reg,
-				&regval);
+		rv = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
+				reg, &regval);
 		if (!rv)
 			CPRINTF("0x%04x\n", regval);
 		else

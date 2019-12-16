@@ -260,7 +260,7 @@ static int prepare_running(struct test_info *pinfo)
 	pinfo->test_blob_size |= 7;
 
 	ccprintf("running %d iterations\n", number_of_iterations);
-	ccprintf("blob size %d at %p\n", pinfo->test_blob_size, pinfo->p);
+	ccprintf("blob size %d at %pP\n", pinfo->test_blob_size, pinfo->p);
 
 	init_stats(&(pinfo->enc_stats));
 	init_stats(&(pinfo->dec_stats));
@@ -282,7 +282,7 @@ static int basic_check(struct test_info *pinfo)
 	int i;
 	uint32_t *p;
 
-	ccprintf("original data  %.16h\n", pinfo->p);
+	ccprintf("original data  %ph\n", HEX_BUF(pinfo->p, 16));
 
 	half = (pinfo->test_blob_size/2) & ~3;
 	if (!DCRYPTO_app_cipher(NVMEM, pinfo->p, pinfo->p,
@@ -301,7 +301,7 @@ static int basic_check(struct test_info *pinfo)
 			return EC_ERROR_UNKNOWN;
 		}
 
-	ccprintf("hashed data    %.16h\n", pinfo->p);
+	ccprintf("hashed data    %ph\n", HEX_BUF(pinfo->p, 16));
 
 	return EC_SUCCESS;
 }
@@ -407,13 +407,13 @@ static void run_cipher_cmd(void)
 		report_stats("Encryption", &info.enc_stats);
 		report_stats("Decryption", &info.dec_stats);
 	} else if (info.p) {
-		ccprintf("current data   %.16h\n", info.p);
+		ccprintf("current data   %ph\n", HEX_BUF(info.p, 16));
 	}
 
 	if (info.p)
 		shared_mem_release(info.p);
 
-	task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+	task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM_BIT(0), 0);
 }
 DECLARE_DEFERRED(run_cipher_cmd);
 
@@ -440,8 +440,8 @@ static int cmd_cipher(int argc, char **argv)
 
 	ccprintf("Will wait up to %d ms\n", (max_time + 500)/1000);
 
-	events = task_wait_event_mask(TASK_EVENT_CUSTOM(1), max_time);
-	if (!(events & TASK_EVENT_CUSTOM(1))) {
+	events = task_wait_event_mask(TASK_EVENT_CUSTOM_BIT(0), max_time);
+	if (!(events & TASK_EVENT_CUSTOM_BIT(0))) {
 		ccprintf("Timed out, you might want to reboot...\n");
 		return EC_ERROR_TIMEOUT;
 	}

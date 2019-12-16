@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -113,6 +113,18 @@ static const char * const state_names[] = {
 static uint64_t tnext_state;
 
 /*
+ * Record the time when power button task starts. It can be used by any code
+ * path that needs to compare the current time with power button task start time
+ * to identify any timeouts e.g. PB state machine checks current time to
+ * identify if it should wait more for charger and battery to be initialized. In
+ * case of recovery using buttons (where the user could be holding the buttons
+ * for >30seconds), it is not right to compare current time with the time when
+ * EC was reset since the tasks would not have started. Hence, this variable is
+ * being added to record the time at which power button task starts.
+ */
+static uint64_t tpb_task_start;
+
+/*
  * Determines whether to execute power button pulse (t0 stage)
  */
 static int power_button_pulse_enabled = 1;
@@ -218,7 +230,7 @@ static void set_initial_pwrbtn_state(void)
 			CPRINTS("PB init-jumped");
 		}
 		return;
-	} else if ((reset_flags & RESET_FLAG_AP_OFF) ||
+	} else if ((reset_flags & EC_RESET_FLAG_AP_OFF) ||
 		   (keyboard_scan_get_boot_keys() == BOOT_KEY_DOWN_ARROW)) {
 		/*
 		 * Reset triggered by keyboard-controlled reset, and down-arrow
@@ -309,26 +321,32 @@ static void state_machine(uint64_t tnow)
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		break;
 	case PWRBTN_STATE_INIT_ON:
-		/*
-		 * Before attempting to power the system on, we need to wait for
-		 * charger and battery to be ready to supply sufficient power.
-		 * Check every 100 milliseconds, and give up after 1 second.
-		 */
-		if (tnow > CONFIG_POWER_BUTTON_INIT_TIMEOUT * SECOND) {
-			pwrbtn_state = PWRBTN_STATE_IDLE;
-			break;
-		}
 
-#ifdef CONFIG_CHARGER
 		/*
-		 * If not able to power on, try again later, to allow time for
-		 * charger, battery and USB-C PD initialization.
+		 * Before attempting to power the system on, we need to allow
+		 * time for charger, battery and USB-C PD initialization to be
+		 * ready to supply sufficient power. Check every 100
+		 * milliseconds, and give up CONFIG_POWER_BUTTON_INIT_TIMEOUT
+		 * seconds after the PB task was started. Here, it is
+		 * important to check the current time against PB task start
+		 * time to prevent unnecessary timeouts happening in recovery
+		 * case where the tasks could start as late as 30 seconds
+		 * after EC reset.
 		 */
-		if (charge_prevent_power_on(0)) {
-			tnext_state = tnow + 100 * MSEC;
-			break;
+
+		if (!IS_ENABLED(CONFIG_CHARGER) || charge_prevent_power_on(0)) {
+			if (tnow >
+				(tpb_task_start +
+				 CONFIG_POWER_BUTTON_INIT_TIMEOUT * SECOND)) {
+				pwrbtn_state = PWRBTN_STATE_IDLE;
+				break;
+			}
+
+			if (IS_ENABLED(CONFIG_CHARGER)) {
+				tnext_state = tnow + 100 * MSEC;
+				break;
+			}
 		}
-#endif
 
 		/*
 		 * Power the system on if possible.  Gating due to insufficient
@@ -347,16 +365,7 @@ static void state_machine(uint64_t tnow)
 
 		set_pwrbtn_to_pch(0, 1);
 		tnext_state = get_time().val + PWRBTN_INITIAL_US;
-
-		if (power_button_is_pressed()) {
-			if (system_get_reset_flags() & RESET_FLAG_RESET_PIN)
-				pwrbtn_state = PWRBTN_STATE_BOOT_KB_RESET;
-			else
-				pwrbtn_state = PWRBTN_STATE_WAS_OFF;
-		} else {
-			pwrbtn_state = PWRBTN_STATE_RELEASED;
-		}
-
+		pwrbtn_state = PWRBTN_STATE_BOOT_KB_RESET;
 		break;
 
 	case PWRBTN_STATE_BOOT_KB_RESET:
@@ -393,6 +402,12 @@ void power_button_task(void *u)
 {
 	uint64_t t;
 	uint64_t tsleep;
+
+	/*
+	 * Record the time when the task starts so that the state machine can
+	 * use this to identify any timeouts.
+	 */
+	tpb_task_start = get_time().val;
 
 	while (1) {
 		t = get_time().val;
@@ -488,7 +503,7 @@ DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_x86_changed, HOOK_PRIO_DEFAULT);
 /**
  * Handle configuring the power button behavior through a host command
  */
-static int hc_config_powerbtn_x86(struct host_cmd_handler_args *args)
+static enum ec_status hc_config_powerbtn_x86(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_config_power_button *p = args->params;
 

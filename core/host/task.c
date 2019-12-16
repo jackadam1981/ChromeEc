@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -65,6 +65,23 @@ CONFIG_TEST_TASK_LIST
 CONFIG_CTS_TASK_LIST
 #undef TASK
 
+/* usleep that uses OS functions, instead of emulated timer. */
+void _usleep(int usec)
+{
+	struct timespec req;
+
+	req.tv_sec = usec / 1000000;
+	req.tv_nsec = (usec % 1000000) * 1000;
+
+	nanosleep(&req, NULL);
+}
+
+/* msleep that uses OS functions, instead of emulated timer. */
+void _msleep(int msec)
+{
+	_usleep(1000 * msec);
+}
+
 /* Idle task */
 void __idle(void *d)
 {
@@ -78,7 +95,7 @@ void _run_test(void *d)
 }
 
 #define TASK(n, r, d, s) {r, d},
-struct task_args task_info[TASK_ID_COUNT] = {
+const struct task_args task_info[TASK_ID_COUNT] = {
 	{__idle, NULL},
 	CONFIG_TASK_LIST
 	CONFIG_TEST_TASK_LIST
@@ -156,7 +173,7 @@ void task_trigger_test_interrupt(void (*isr)(void))
 	/* Wait for ISR to complete */
 	sem_wait(&interrupt_sem);
 	while (in_interrupt)
-		;
+		_usleep(10);
 	pending_isr = NULL;
 
 	pthread_mutex_unlock(&interrupt_lock);
@@ -187,6 +204,11 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
 	if (wait)
 		return task_wait_event(-1);
 	return 0;
+}
+
+uint32_t *task_get_event_bitmap(task_id_t tskid)
+{
+	return &tasks[tskid].event;
 }
 
 uint32_t task_wait_event(int timeout_us)
@@ -285,13 +307,16 @@ static void _wait_for_task_started(int can_sleep)
 
 	while (1) {
 		ok = 1;
-		for (i = 0; i < TASK_ID_COUNT - 1; ++i)
+		for (i = 0; i < TASK_ID_COUNT - 1; ++i) {
 			if (!tasks[i].started) {
 				if (can_sleep)
 					msleep(10);
+				else
+					_msleep(10);
 				ok = 0;
 				break;
 			}
+		}
 		if (ok)
 			return;
 	}
@@ -402,7 +427,7 @@ void task_scheduler(void)
 void *_task_start_impl(void *a)
 {
 	long tid = (long)a;
-	struct task_args *arg = task_info + tid;
+	const struct task_args *arg = task_info + tid;
 	my_task_id = tid;
 	pthread_mutex_lock(&run_lock);
 

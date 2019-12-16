@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -63,7 +63,11 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) = {
 static usb_uint ep_buf_tx[USB_MAX_PACKET_SIZE / 2] __usb_ram;
 static usb_uint ep_buf_rx[USB_MAX_PACKET_SIZE / 2] __usb_ram;
 
+<<<<<<< HEAD   (c9fc91 servo_v4: fix in displaying CCD polarity)
 /* Forward declaraction */
+=======
+/* Forward declaration */
+>>>>>>> BRANCH (536eb9 puff: Add USB Type C power delivery config)
 static void handle_output(void);
 
 static void con_ep_tx(void)

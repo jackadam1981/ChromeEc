@@ -57,26 +57,6 @@
 
 #include "gpio_list.h"
 
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-#ifdef CONFIG_POWER_S0IX
-	{GPIO_PCH_SLP_S0_L,
-		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
-		"SLP_S0_DEASSERTED"},
-#endif
-	{GPIO_RSMRST_L_PGOOD, POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L"},
-	{GPIO_PCH_SLP_S3_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{GPIO_PCH_SLP_S4_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-	{GPIO_SUSPWRNACK,     POWER_SIGNAL_ACTIVE_HIGH,
-	 "SUSPWRNACK_DEASSERTED"},
-
-	{GPIO_ALL_SYS_PGOOD,  POWER_SIGNAL_ACTIVE_HIGH, "ALL_SYS_PGOOD"},
-	{GPIO_PP3300_PG,      POWER_SIGNAL_ACTIVE_HIGH, "PP3300_PG"},
-	{GPIO_PP5000_PG,      POWER_SIGNAL_ACTIVE_HIGH, "PP5000_PG"},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
-
-/* ADC channels */
 const struct adc_t adc_channels[] = {
 	/* Convert to mV (3000mV/1024). */
 	{"CHARGER",     3000, 1024, 0, CHIP_ADC_CH1}, /* GPI1 */
@@ -93,16 +73,22 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{-1, -1, &it83xx_tcpm_drv, 0},
-	{-1, -1, &it83xx_tcpm_drv, 0},
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		.drv = &it83xx_tcpm_drv
+	},
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		.drv = &it83xx_tcpm_drv
+	},
 };
 
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 	int cc1_enabled = 0, cc2_enabled = 0;
 
-	if (cc_pin)
+	if (cc_pin != USBPD_CC_PIN_1)
 		cc2_enabled = enabled;
 	else
 		cc1_enabled = enabled;
@@ -123,7 +109,8 @@ void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
  */
 static uint32_t pd_host_event_status __aligned(4);
 
-static int hc_pd_host_event_status(struct host_cmd_handler_args *args)
+static enum ec_status
+hc_pd_host_event_status(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_status *r = args->response;
 
@@ -173,14 +160,14 @@ static void it83xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = 0xa8,
+		.port_addr = 0x54,
 		.driver = &pi3usb30532_usb_mux_driver,
 		.hpd_update = &it83xx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = 0x20,
+		.port_addr = 0x10,
 		.driver = &ps874x_usb_mux_driver,
 		.hpd_update = &it83xx_tcpc_update_hpd_status,
 	},
@@ -260,7 +247,7 @@ static void board_init(void)
 	* Initialize HPD to low; after sysjump SOC needs to see
 	* HPD pulse to enable video path
 	*/
-	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++)
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
 		usb_muxes[port].hpd_update(port, 0, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_I2C + 1);

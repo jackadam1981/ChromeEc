@@ -5,6 +5,7 @@
 
 /* Poppy/Soraka base detection code */
 
+#include "acpi.h"
 #include "adc.h"
 #include "adc_chip.h"
 #include "board.h"
@@ -96,6 +97,12 @@ static void base_detect_change(enum base_status status)
 	gpio_set_level(GPIO_PP3300_DX_BASE, connected);
 	tablet_set_mode(!connected);
 	current_base_status = status;
+
+	if (connected)
+		acpi_dptf_set_profile_num(DPTF_PROFILE_BASE_ATTACHED);
+	else
+		acpi_dptf_set_profile_num(DPTF_PROFILE_BASE_DETACHED);
+
 }
 
 /* Measure detection pin pulse duration (used to wake AP from deep S3). */
@@ -238,3 +245,19 @@ static void base_init(void)
 		base_enable();
 }
 DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
+
+void base_force_state(int state)
+{
+	if (state == 1) {
+		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		base_detect_change(BASE_CONNECTED);
+		CPRINTS("BD forced connected");
+	} else if (state == 0) {
+		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		base_detect_change(BASE_DISCONNECTED);
+		CPRINTS("BD forced disconnected");
+	} else {
+		base_enable();
+		CPRINTS("BD forced reset");
+	}
+}

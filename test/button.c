@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -16,9 +16,12 @@
 #include "gpio.h"
 #include "test_util.h"
 #include "timer.h"
+#include "keyboard_config.h"
 #include "keyboard_protocol.h"
 
 #define UNCHANGED -1
+
+uint8_t keyboard_cols = KEYBOARD_COLS_MAX;
 
 static const struct button_config *button_vol_down =
 	&buttons[BUTTON_VOLUME_DOWN];
@@ -143,7 +146,7 @@ static void button_test_init(void)
 {
 	int i;
 
-	ccprintf("[%T Setting button GPIOs to inactive state.]\n");
+	ccprints("Setting button GPIOs to inactive state");
 	for (i = 0; i < BUTTON_COUNT; i++)
 		gpio_set_level(buttons[i].gpio,
 			       !(buttons[i].flags & BUTTON_FLAG_ACTIVE_HIGH));

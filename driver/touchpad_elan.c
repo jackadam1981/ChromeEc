@@ -12,6 +12,7 @@
 #include "sha256.h"
 #include "shared_mem.h"
 #include "task.h"
+#include "tablet_mode.h"
 #include "timer.h"
 #include "touchpad.h"
 #include "update_fw.h"
@@ -25,8 +26,7 @@
 #define CPRINTF(format, args...) cprintf(CC_TOUCHPAD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_TOUCHPAD, format, ## args)
 
-#define TASK_EVENT_POWERON  TASK_EVENT_CUSTOM(1)
-#define TASK_EVENT_POWEROFF  TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_POWER  TASK_EVENT_CUSTOM_BIT(0)
 
 /******************************************************************************/
 /* How to talk to the controller */
@@ -75,15 +75,15 @@
 #define ETP_I2C_IAP_RESET_CMD		0x0314
 #define ETP_I2C_IAP_RESET		0xF0F0
 #define ETP_I2C_IAP_CTRL_CMD		0x0310
-#define ETP_I2C_MAIN_MODE_ON		(1 << 9)
+#define ETP_I2C_MAIN_MODE_ON		BIT(9)
 #define ETP_I2C_IAP_CMD			0x0311
 #define ETP_I2C_IAP_PASSWORD		0x1EA5
 
 #define ETP_I2C_IAP_REG_L		0x01
 #define ETP_I2C_IAP_REG_H		0x06
 
-#define ETP_FW_IAP_PAGE_ERR		(1 << 5)
-#define ETP_FW_IAP_INTF_ERR		(1 << 4)
+#define ETP_FW_IAP_PAGE_ERR		BIT(5)
+#define ETP_FW_IAP_INTF_ERR		BIT(4)
 
 #ifdef CONFIG_USB_UPDATE
 /* The actual FW_SIZE depends on IC. */
@@ -116,8 +116,9 @@ static int elan_tp_read_cmd(uint16_t reg, uint16_t *val)
 	buf[0] = reg;
 	buf[1] = reg >> 8;
 
-	return i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      buf, sizeof(buf), (uint8_t *)val, sizeof(*val));
+	return i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+			CONFIG_TOUCHPAD_I2C_ADDR_FLAGS,
+			buf, sizeof(buf), (uint8_t *)val, sizeof(*val));
 }
 
 static int elan_tp_write_cmd(uint16_t reg, uint16_t val)
@@ -129,8 +130,9 @@ static int elan_tp_write_cmd(uint16_t reg, uint16_t val)
 	buf[2] = val;
 	buf[3] = val >> 8;
 
-	return i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      buf, sizeof(buf), NULL, 0);
+	return i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+			CONFIG_TOUCHPAD_I2C_ADDR_FLAGS,
+			buf, sizeof(buf), NULL, 0);
 }
 
 /* Power is on by default. */
@@ -190,7 +192,8 @@ static int elan_tp_read_report(void)
 	/* Compute and save timestamp early in case another interrupt comes. */
 	timestamp = irq_ts / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
 
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
+	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+		      CONFIG_TOUCHPAD_I2C_ADDR_FLAGS,
 		      NULL, 0, tp_buf, ETP_I2C_REPORT_LEN);
 
 	if (rv) {
@@ -224,6 +227,7 @@ static int elan_tp_read_report(void)
 			height = MIN(4095, height * elan_tp_params.width_y);
 			pressure = MIN(1023, pressure);
 
+			report.finger[ri].confidence = 1;
 			report.finger[ri].tip = 1;
 			report.finger[ri].inrange = 1;
 			report.finger[ri].id = i;
@@ -240,6 +244,8 @@ static int elan_tp_read_report(void)
 			finger_status[i] = 1;
 		} else if (finger_status[i]) {
 			report.finger[ri].id = i;
+			/* When a finger is leaving, it's not a plam */
+			report.finger[ri].confidence = 1;
 			ri++;
 			finger_status[i] = 0;
 		}
@@ -275,7 +281,8 @@ static void elan_tp_init(void)
 
 	elan_tp_write_cmd(ETP_I2C_STAND_CMD, ETP_I2C_RESET);
 	msleep(100);
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
+	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+		      CONFIG_TOUCHPAD_I2C_ADDR_FLAGS,
 		      NULL, 0, val, sizeof(val));
 
 	CPRINTS("reset rv %d buf=%04x", rv, *((uint16_t *)val));
@@ -406,6 +413,7 @@ static int elan_get_ic_page_count(void)
 	case 0x0D:
 		return 896;
 	case 0x00:
+	case 0x10:
 		return 1024;
 	}
 	return -1;
@@ -465,7 +473,8 @@ static int touchpad_update_page(const uint8_t *data)
 	page_store[FW_PAGE_SIZE + 2 + 0] = checksum & 0xff;
 	page_store[FW_PAGE_SIZE + 2 + 1] = (checksum >> 8) & 0xff;
 
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
+	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+		      CONFIG_TOUCHPAD_I2C_ADDR_FLAGS,
 		      page_store, sizeof(page_store), NULL, 0);
 	if (rv)
 		return rv;
@@ -523,9 +532,10 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 		rv = touchpad_update_page(data + addr - offset);
 		if (rv)
 			return rv;
-		CPRINTS("%s: page %d updated.", __func__, addr / FW_PAGE_SIZE);
+		CPRINTF("/p%d", addr / FW_PAGE_SIZE);
 		watchdog_reload();
 	}
+	CPRINTF("\n");
 
 	if (offset + size == FW_SIZE) {
 		CPRINTS("%s: End update, wait for reset.", __func__);
@@ -630,7 +640,7 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		}
 
 		rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
-			      CONFIG_TOUCHPAD_I2C_ADDR,
+			      CONFIG_TOUCHPAD_I2C_ADDR_FLAGS,
 			      &param[offset], write_length,
 			      buffer, read_length);
 
@@ -696,11 +706,35 @@ void touchpad_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_TOUCHPAD);
 }
 
+/* Make a decision on touchpad power, based on USB and tablet mode status. */
+static void touchpad_power_control(void)
+{
+	static int enabled = 1;
+	int enable = 1;
+
+#ifdef CONFIG_USB_SUSPEND
+	enable = enable &&
+		(!usb_is_suspended() || usb_is_remote_wakeup_enabled());
+#endif
+
+#ifdef CONFIG_TABLET_MODE
+	enable = enable && !tablet_get_mode();
+#endif
+
+	if (enabled == enable)
+		return;
+
+	elan_tp_set_power(enable);
+
+	enabled = enable;
+}
+
 void touchpad_task(void *u)
 {
 	uint32_t event;
 
 	elan_tp_init();
+	touchpad_power_control();
 
 	while (1) {
 		event = task_wait_event(-1);
@@ -708,24 +742,24 @@ void touchpad_task(void *u)
 		if (event & TASK_EVENT_WAKE)
 			elan_tp_read_report_retry();
 
-		if (event & TASK_EVENT_POWERON)
-			elan_tp_set_power(1);
-		else if (event & TASK_EVENT_POWEROFF)
-			elan_tp_set_power(0);
+		if (event & TASK_EVENT_POWER)
+			touchpad_power_control();
 	}
 }
 
-#ifdef CONFIG_USB_SUSPEND
-static void touchpad_usb_pm_change(void)
+/*
+ * When USB PM status changes, or tablet mode changes, call in the main task to
+ * decide whether to turn touchpad on or off.
+ */
+#if defined(CONFIG_USB_SUSPEND) || defined(CONFIG_TABLET_MODE)
+static void touchpad_power_change(void)
 {
-	/*
-	 * If USB interface is suspended, and host is not asking us to do remote
-	 * wakeup, we can turn off the touchpad.
-	 */
-	if (usb_is_suspended() && !usb_is_remote_wakeup_enabled())
-		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWEROFF, 0);
-	else
-		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWERON, 0);
+	task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWER, 0);
 }
-DECLARE_HOOK(HOOK_USB_PM_CHANGE, touchpad_usb_pm_change, HOOK_PRIO_DEFAULT);
+#endif
+#ifdef CONFIG_USB_SUSPEND
+DECLARE_HOOK(HOOK_USB_PM_CHANGE, touchpad_power_change, HOOK_PRIO_DEFAULT);
+#endif
+#ifdef CONFIG_TABLET_MODE
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, touchpad_power_change, HOOK_PRIO_DEFAULT);
 #endif

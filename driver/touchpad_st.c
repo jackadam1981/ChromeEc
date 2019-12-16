@@ -14,6 +14,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
+#include "tablet_mode.h"
 #include "timer.h"
 #include "touchpad.h"
 #include "touchpad_st.h"
@@ -22,6 +23,7 @@
 #include "usb_hid_touchpad.h"
 #include "usb_isochronous.h"
 #include "util.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CC_TOUCHPAD CC_USB
@@ -29,8 +31,8 @@
 #define CPRINTF(format, args...) cprintf(CC_TOUCHPAD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_TOUCHPAD, format, ## args)
 
-#define TASK_EVENT_POWERON  TASK_EVENT_CUSTOM(1)
-#define TASK_EVENT_POWEROFF  TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_POWER  TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_TP_UPDATED  TASK_EVENT_CUSTOM_BIT(1)
 
 #define SPI (&(spi_devices[SPI_ST_TP_DEVICE_ID]))
 
@@ -38,12 +40,14 @@ BUILD_ASSERT(sizeof(struct st_tp_event_t) == 8);
 BUILD_ASSERT(BYTES_PER_PIXEL == 1);
 
 /* Function prototypes */
-static int st_tp_read_all_events(void);
+static int st_tp_panel_init(int full);
+static int st_tp_read_all_events(int show_error);
 static int st_tp_read_host_buffer_header(void);
 static int st_tp_send_ack(void);
 static int st_tp_start_scan(void);
 static int st_tp_stop_scan(void);
 static int st_tp_update_system_state(int new_state, int mask);
+static void touchpad_power_control(void);
 
 /* Global variables */
 /*
@@ -51,11 +55,40 @@ static int st_tp_update_system_state(int new_state, int mask);
  */
 static int system_state;
 
-#define SYSTEM_STATE_DEBUG_MODE		(1 << 0)
-#define SYSTEM_STATE_ENABLE_HEAT_MAP	(1 << 1)
-#define SYSTEM_STATE_ENABLE_DOME_SWITCH	(1 << 2)
-#define SYSTEM_STATE_ACTIVE_MODE	(1 << 3)
-#define SYSTEM_STATE_DOME_SWITCH_LEVEL  (1 << 4)
+#define SYSTEM_STATE_DEBUG_MODE		BIT(0)
+#define SYSTEM_STATE_ENABLE_HEAT_MAP	BIT(1)
+#define SYSTEM_STATE_ENABLE_DOME_SWITCH	BIT(2)
+#define SYSTEM_STATE_ACTIVE_MODE	BIT(3)
+#define SYSTEM_STATE_DOME_SWITCH_LEVEL	BIT(4)
+#define SYSTEM_STATE_READY		BIT(5)
+
+/*
+ * Pending action for touchpad.
+ */
+static int tp_control;
+
+#define TP_CONTROL_SHALL_HALT		BIT(0)
+#define TP_CONTROL_SHALL_RESET		BIT(1)
+#define TP_CONTROL_SHALL_INIT		BIT(2)
+#define TP_CONTROL_SHALL_INIT_FULL	BIT(3)
+#define TP_CONTROL_SHALL_DUMP_ERROR	BIT(4)
+#define TP_CONTROL_RESETTING		BIT(5)
+#define TP_CONTROL_INIT			BIT(6)
+#define TP_CONTROL_INIT_FULL		BIT(7)
+
+/*
+ * Number of times we have reset the touchpad because of errors.
+ */
+static int tp_reset_retry_count;
+
+#define MAX_TP_RESET_RETRY_COUNT 3
+
+static int dump_memory_on_error;
+
+/*
+ * Bitmap to track if a finger exists.
+ */
+static int touch_slot;
 
 /*
  * Timestamp of last interrupt (32 bits are enough as we divide the value by 100
@@ -78,6 +111,7 @@ static struct {
 		struct st_tp_host_buffer_heat_map_t heat_map;
 		struct st_tp_host_data_header_t data_header;
 		struct st_tp_event_t events[32];
+		uint32_t dump_info[32];
 	} /* anonymous */;
 } __packed rx_buf;
 
@@ -90,7 +124,7 @@ static struct {
 struct packet_header_t {
 	uint8_t index;
 
-#define HEADER_FLAGS_NEW_FRAME	(1 << 0)
+#define HEADER_FLAGS_NEW_FRAME	BIT(0)
 	uint8_t flags;
 } __packed;
 BUILD_ASSERT(sizeof(struct packet_header_t) < USB_ISO_PACKET_SIZE);
@@ -99,7 +133,7 @@ static struct packet_header_t packet_header;
 
 /* What will be sent to USB interface. */
 struct st_tp_usb_packet_t {
-#define USB_FRAME_FLAGS_BUTTON	(1 << 0)
+#define USB_FRAME_FLAGS_BUTTON	BIT(0)
 	/*
 	 * This will be true if user clicked on touchpad.
 	 * TODO(b/70482333): add corresponding code for button signal.
@@ -153,32 +187,46 @@ static int st_tp_parse_finger(struct usb_hid_touchpad_report *report,
 			      struct st_tp_event_t *event,
 			      int i)
 {
-	/* We cannot report more fingers */
-	if (i >= ARRAY_SIZE(report->finger))
-		return i;
+	const int id = event->finger.touch_id;
 
 	/* This is not a finger */
 	if (event->finger.touch_type == ST_TP_TOUCH_TYPE_INVALID)
 		return i;
 
+	if (event->evt_id ==  ST_TP_EVENT_ID_ENTER_POINTER)
+		touch_slot |= 1 << id;
+	else if (event->evt_id ==  ST_TP_EVENT_ID_LEAVE_POINTER)
+		touch_slot &= ~BIT(id);
+
+	/* We cannot report more fingers */
+	if (i >= ARRAY_SIZE(report->finger)) {
+		CPRINTS("WARN: ST reports more than %d fingers", i);
+		return i;
+	}
+
 	switch (event->evt_id) {
 	case ST_TP_EVENT_ID_ENTER_POINTER:
 	case ST_TP_EVENT_ID_MOTION_POINTER:
+		/* Pressure == 255 is a palm. */
+		report->finger[i].confidence = (event->finger.z < 255);
 		report->finger[i].tip = 1;
 		report->finger[i].inrange = 1;
-		report->finger[i].id = event->finger.touch_id;
+		report->finger[i].id = id;
 		report->finger[i].pressure = event->finger.z;
 		report->finger[i].width = (event->finger.minor |
-					   (event->minor_high << 4));
+					   (event->minor_high << 4)) << 5;
 		report->finger[i].height = (event->finger.major |
-					    (event->major_high << 4));
+					    (event->major_high << 4)) << 5;
+
 		report->finger[i].x = (CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X -
 				       event->finger.x);
 		report->finger[i].y = (CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y -
 				       event->finger.y);
 		break;
 	case ST_TP_EVENT_ID_LEAVE_POINTER:
-		report->finger[i].id = event->finger.touch_id;
+		report->finger[i].id = id;
+		/* When a finger is leaving, it's not a palm */
+		report->finger[i].confidence = 1;
 		break;
 	}
 	return i + 1;
@@ -225,12 +273,12 @@ static int st_tp_write_hid_report(void)
 	domeswitch_changed = ((old_system_state ^ system_state) &
 			      SYSTEM_STATE_DOME_SWITCH_LEVEL);
 
-	num_events = st_tp_read_all_events();
-	if (num_events < 0)
-		return -num_events;
+	num_events = st_tp_read_all_events(1);
+	if (tp_control)
+		return 1;
 
 	memset(&report, 0, sizeof(report));
-	report.id = 0x1;
+	report.id = REPORT_ID_TOUCHPAD;
 	num_finger = 0;
 
 	for (i = 0; i < num_events; i++) {
@@ -250,7 +298,9 @@ static int st_tp_write_hid_report(void)
 	if (!num_finger && !domeswitch_changed)  /* nothing changed */
 		return 0;
 
-	report.button = !!(system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL);
+	/* Don't report 0 finger click. */
+	if (num_finger && (system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL))
+		report.button = 1;
 	report.count = num_finger;
 	report.timestamp = irq_ts / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
 
@@ -324,12 +374,15 @@ static int st_tp_update_system_state(int new_state, int mask)
 			0
 		};
 		if (new_state & SYSTEM_STATE_ENABLE_HEAT_MAP) {
-			CPRINTS("Enable Heatmap");
-			tx_buf[2] |= 1 << 0;
+			CPRINTS("Heatmap enabled");
+			tx_buf[2] |= BIT(0);
 			need_locked_scan_mode = 1;
+		} else {
+			CPRINTS("Heatmap disabled");
 		}
+
 		if (new_state & SYSTEM_STATE_ENABLE_DOME_SWITCH)
-			tx_buf[2] |= 1 << 1;
+			tx_buf[2] |= BIT(1);
 		ret = spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
 		if (ret)
 			return ret;
@@ -386,11 +439,13 @@ static int st_tp_start_scan(void)
 	int mask = new_state;
 	int ret;
 
+	CPRINTS("ST: Start scanning");
 	ret = st_tp_update_system_state(new_state, mask);
 	if (ret)
 		return ret;
 	st_tp_send_ack();
 	st_tp_enable_interrupt(1);
+
 	return ret;
 }
 
@@ -409,8 +464,10 @@ static int st_tp_stop_scan(void)
 	int mask = SYSTEM_STATE_ACTIVE_MODE;
 	int ret;
 
+	CPRINTS("ST: Stop scanning");
 	ret = st_tp_update_system_state(new_state, mask);
 	st_tp_enable_interrupt(0);
+
 	return ret;
 }
 
@@ -487,46 +544,217 @@ static int st_tp_read_system_info(int reload)
 	ST_TP_SHOW(chip0_ver);
 	ST_TP_SHOW(scr_tx_len);
 	ST_TP_SHOW(scr_rx_len);
-	ST_TP_SHOW(release_info);
+#define ST_TP_SHOW64(attr) CPRINTS(#attr ": %04llx", system_info.attr)
+	ST_TP_SHOW64(release_info);
 #undef ST_TP_SHOW
+#undef ST_TP_SHOW64
 	return ret;
 }
 
 /*
- * Handles error reports.
+ * Enable / disable deep sleep on memory and bus.
  *
- * @return 0 for minor errors, non-zero for major errors (must halt).
- * TODO(stimim): check for major errors.
+ * Before calling dump_error() and dump_error(), deep sleep should be disabled,
+ * otherwise response data might be garbage.
  */
-static int st_tp_handle_error_report(struct st_tp_event_t *e)
+static void enable_deep_sleep(int enable)
 {
-	if (e->magic != ST_TP_EVENT_MAGIC ||
-	    e->evt_id != ST_TP_EVENT_ID_ERROR_REPORT)
-		return 0;
+	uint8_t cmd[] = {0xFA, 0x20, 0x00, 0x00, 0x68, enable ? 0x0B : 0x08};
 
-	CPRINTS("Touchpad error: %x %x", e->report.report_type,
-		((e->report.info[0] << 24) | (e->report.info[1] << 16) |
-		 (e->report.info[2] << 8) | (e->report.info[3] << 0)));
+	spi_transaction(SPI, cmd, sizeof(cmd), NULL, 0);
+}
 
-	return 0;
+static void dump_error(void)
+{
+	uint8_t tx_buf[] = {0xFB, 0x20, 0x01, 0xEF, 0x80};
+	int rx_len = sizeof(rx_buf.dump_info) + ST_TP_DUMMY_BYTE;
+	int i;
+
+	spi_transaction(SPI, tx_buf, sizeof(tx_buf),
+			(uint8_t *)&rx_buf, rx_len);
+
+	for (i = 0; i < ARRAY_SIZE(rx_buf.dump_info); i += 4)
+		CPRINTS("%08x %08x %08x %08x",
+			rx_buf.dump_info[i + 0], rx_buf.dump_info[i + 1],
+			rx_buf.dump_info[i + 2], rx_buf.dump_info[i + 3]);
+	msleep(8);
+}
+
+/*
+ * Dump entire 64K memory on touchpad.
+ *
+ * This is very time consuming.  For now, let's disable this in production
+ * build.
+ */
+static void dump_memory(void)
+{
+	uint32_t size = 0x10000, rx_len = 512 + ST_TP_DUMMY_BYTE;
+	uint32_t offset, i;
+	uint8_t cmd[] = {0xFB, 0x00, 0x10, 0x00, 0x00};
+
+	if (!dump_memory_on_error)
+		return;
+
+	for (offset = 0; offset < size; offset += 512) {
+		cmd[3] = (offset >> 8) & 0xFF;
+		cmd[4] = (offset >> 0) & 0xFF;
+		spi_transaction(SPI, cmd, sizeof(cmd),
+				(uint8_t *)&rx_buf, rx_len);
+
+		for (i = 0; i < rx_len - ST_TP_DUMMY_BYTE; i += 32) {
+			CPRINTF("%ph %ph %ph %ph "
+				"%ph %ph %ph %ph\n",
+				HEX_BUF(rx_buf.bytes + i + 4 * 0, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 1, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 2, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 3, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 4, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 5, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 6, 4),
+				HEX_BUF(rx_buf.bytes + i + 4 * 7, 4));
+			msleep(8);
+		}
+	}
+	CPRINTF("===============================\n");
+	msleep(8);
+}
+
+/*
+ * Set `tp_control` if there are any actions should be taken.
+ */
+static void st_tp_handle_error(uint8_t error_type)
+{
+	tp_control |= TP_CONTROL_SHALL_DUMP_ERROR;
+
+	/*
+	 * Suggest action: memory dump and power cycle.
+	 */
+	if (error_type <= 0x06 ||
+	    error_type == 0xF1 ||
+	    error_type == 0xF2 ||
+	    error_type == 0xF3 ||
+	    (error_type >= 0x47 && error_type <= 0x4E)) {
+		tp_control |= TP_CONTROL_SHALL_RESET;
+		return;
+	}
+
+	/*
+	 * Suggest action: FW shall halt, consult ST.
+	 */
+	if ((error_type >= 0x20 && error_type <= 0x23) ||
+	    error_type == 0x25 ||
+	    (error_type >= 0x2E && error_type <= 0x46)) {
+		CPRINTS("tp shall halt");
+		tp_control |= TP_CONTROL_SHALL_HALT;
+		return;
+	}
+
+	/*
+	 * Corrupted panel configuration, a panel init should fix it.
+	 */
+	if (error_type >= 0x28 && error_type <= 0x29) {
+		tp_control |= TP_CONTROL_SHALL_INIT;
+		return;
+	}
+
+	/*
+	 * Corrupted CX section, a full panel init should fix it.
+	 */
+	if (error_type >= 0xA0 && error_type <= 0xA6) {
+		tp_control |= TP_CONTROL_SHALL_INIT_FULL;
+		return;
+	}
+
+	/*
+	 * When 0xFF is received, it's very likely ST touchpad is down.
+	 * Try if touchpad can be recovered by reset.
+	 */
+	if (error_type == 0xFF) {
+		if (tp_reset_retry_count < MAX_TP_RESET_RETRY_COUNT) {
+			tp_control |= TP_CONTROL_SHALL_RESET;
+			tp_reset_retry_count++;
+		} else {
+			tp_control |= TP_CONTROL_SHALL_HALT;
+		}
+		return;
+	}
+}
+
+/*
+ * Handles error reports.
+ */
+static void st_tp_handle_error_report(struct st_tp_event_t *e)
+{
+	uint8_t error_type = e->report.report_type;
+
+	CPRINTS("Touchpad error: %x %x", error_type,
+		((e->report.info[0] << 0) | (e->report.info[1] << 8) |
+		 (e->report.info[2] << 16) | (e->report.info[3] << 24)));
+
+	st_tp_handle_error(error_type);
+}
+
+static void st_tp_handle_status_report(struct st_tp_event_t *e)
+{
+	static uint32_t prev_idle_count;
+	uint32_t info = ((e->report.info[0] << 0) |
+			 (e->report.info[1] << 8) |
+			 (e->report.info[2] << 16) |
+			 (e->report.info[3] << 24));
+
+	if (e->report.report_type == ST_TP_STATUS_FCAL ||
+	    e->report.report_type == ST_TP_STATUS_FRAME_DROP)
+		CPRINTS("TP STATUS REPORT: %02x %08x",
+			e->report.report_type, info);
+
+	/*
+	 * Idle count might not change if ST FW is busy (for example, when the
+	 * user puts a big palm on touchpad).  Therefore if idle count doesn't
+	 * change, we need to double check with touch count.
+	 *
+	 * If touch count is 0, and idle count doesn't change, it means that:
+	 *
+	 *   1) ST doesn't think there are any fingers.
+	 *   2) ST is busy on something, can't get into idle mode, and this
+	 *      might cause (1).
+	 *
+	 * Resetting touchpad should be the correct action.
+	 */
+	if (e->report.report_type == ST_TP_STATUS_BEACON) {
+#if 0
+		const uint8_t touch_count = e->report.reserved;
+
+		CPRINTS("BEACON: idle count=%08x", info);
+		CPRINTS("  touch count=%d  touch slot=%04x",
+			touch_count, touch_slot);
+#endif
+		if (prev_idle_count == info && touch_slot == 0) {
+			CPRINTS("  idle count=%08x not changed", info);
+			tp_control |= TP_CONTROL_SHALL_RESET;
+			return;
+		}
+		prev_idle_count = info;
+	}
 }
 
 /*
  * Read all events, and handle errors.
  *
- * @return number of events available on success, or negative error code on
- *         failure.
+ * When there are error events, suggested action will be saved in `tp_control`.
+ *
+ * @param show_error: weather EC should read and dump error or not.
+ *   ***If this is true, rx_buf.events[] will be cleared.***
+ *
+ * @return number of events available
  */
-static int st_tp_read_all_events(void)
+static int st_tp_read_all_events(int show_error)
 {
 	uint8_t cmd = ST_TP_CMD_READ_ALL_EVENTS;
 	int rx_len = sizeof(rx_buf.events) + ST_TP_DUMMY_BYTE;
-	int ret;
 	int i;
 
-	ret = spi_transaction(SPI, &cmd, 1, (uint8_t *)&rx_buf, rx_len);
-	if (ret)
-		return -ret;
+	if (spi_transaction(SPI, &cmd, 1, (uint8_t *)&rx_buf, rx_len))
+		return 0;
 
 	for (i = 0; i < ARRAY_SIZE(rx_buf.events); i++) {
 		struct st_tp_event_t *e = &rx_buf.events[i];
@@ -534,12 +762,26 @@ static int st_tp_read_all_events(void)
 		if (e->magic != ST_TP_EVENT_MAGIC)
 			break;
 
-		if (e->evt_id == ST_TP_EVENT_ID_ERROR_REPORT) {
-			ret = st_tp_handle_error_report(e);
-			if (ret)
-				return -ret;
+		switch (e->evt_id) {
+		case ST_TP_EVENT_ID_ERROR_REPORT:
+			st_tp_handle_error_report(e);
+			break;
+		case ST_TP_EVENT_ID_STATUS_REPORT:
+			st_tp_handle_status_report(e);
+			break;
 		}
 	}
+
+	if (show_error && (tp_control & TP_CONTROL_SHALL_DUMP_ERROR)) {
+		enable_deep_sleep(0);
+		dump_error();
+		dump_memory();
+		enable_deep_sleep(1);
+		/* rx_buf.events[] is invalid now */
+		i = 0;
+	}
+	tp_control &= ~TP_CONTROL_SHALL_DUMP_ERROR;
+
 	return i;
 }
 
@@ -554,15 +796,23 @@ static int st_tp_reset(void)
 	board_touchpad_reset();
 
 	while (retry--) {
-		num_events = st_tp_read_all_events();
-		if (num_events < 0)
-			return -num_events;
+		num_events = st_tp_read_all_events(0);
+
+		/*
+		 * We are not doing full panel initialization, and error code
+		 * suggest us to reset or halt.
+		 */
+		if (!(tp_control & (TP_CONTROL_INIT | TP_CONTROL_INIT_FULL)) &&
+		    (tp_control & (TP_CONTROL_SHALL_HALT |
+				   TP_CONTROL_SHALL_RESET)))
+			break;
 
 		for (i = 0; i < num_events; i++) {
 			struct st_tp_event_t *e = &rx_buf.events[i];
 
 			if (e->evt_id == ST_TP_EVENT_ID_CONTROLLER_READY) {
 				CPRINTS("Touchpad ready");
+				tp_reset_retry_count = 0;
 				return 0;
 			}
 		}
@@ -576,18 +826,28 @@ static int st_tp_reset(void)
 /* Initialize the controller ICs after reset */
 static void st_tp_init(void)
 {
+	tp_control = 0;
+	system_state = 0;
+
 	if (st_tp_reset())
 		return;
+
+	if (tp_control) {
+		CPRINTS("tp_control = %x", tp_control);
+		return;
+	}
 	/*
 	 * On boot, ST firmware will load system info to host data memory,
 	 * So we don't need to reload it.
 	 */
 	st_tp_read_system_info(0);
 
-	system_state = 0;
+	system_state = SYSTEM_STATE_READY;
+	touch_slot = 0;
 
-	st_tp_start_scan();
+	touchpad_power_control();
 }
+DECLARE_DEFERRED(st_tp_init);
 
 #ifdef CONFIG_USB_UPDATE
 int touchpad_get_info(struct touchpad_info *tp)
@@ -661,7 +921,7 @@ static int wait_for_flash_ready(uint8_t type)
 
 	while (retry--) {
 		ret = spi_transaction(SPI, tx_buf, sizeof(tx_buf),
-				      (uint8_t *)&rx_buf, 2);
+				      (uint8_t *)&rx_buf, 1 + ST_TP_DUMMY_BYTE);
 		if (ret == EC_SUCCESS && !(rx_buf.bytes[0] & 0x80))
 			break;
 		msleep(50);
@@ -669,12 +929,15 @@ static int wait_for_flash_ready(uint8_t type)
 	return retry >= 0 ? ret : EC_ERROR_TIMEOUT;
 }
 
-static int erase_flash(void)
+static int erase_flash(int full_init_required)
 {
 	int ret;
 
-	/* Erase everything, except CX */
-	ret = write_hwreg_cmd32(0x20000128, 0xFFFFFF83);
+	if (full_init_required)
+		ret = write_hwreg_cmd32(0x20000128, 0xFFFFFFFF);
+	else
+		/* Erase everything, except CX */
+		ret = write_hwreg_cmd32(0x20000128, 0xFFFFFF83);
 	if (ret)
 		return ret;
 	ret = write_hwreg_cmd8(0x2000006B, 0x00);
@@ -686,7 +949,7 @@ static int erase_flash(void)
 	return wait_for_flash_ready(0x6A);
 }
 
-static int st_tp_prepare_for_update(void)
+static int st_tp_prepare_for_update(int full_init_required)
 {
 	/* hold m3 */
 	write_hwreg_cmd8(0x20000024, 0x01);
@@ -694,7 +957,7 @@ static int st_tp_prepare_for_update(void)
 	write_hwreg_cmd8(0x20000025, 0x20);
 	/* unlock flash erase */
 	write_hwreg_cmd8(0x200000DE, 0x03);
-	erase_flash();
+	erase_flash(full_init_required);
 
 	return EC_SUCCESS;
 }
@@ -798,13 +1061,10 @@ static int st_tp_write_flash(int offset, int size, const uint8_t *data)
 	return EC_SUCCESS;
 }
 
-static int st_tp_check_command_echo(const uint8_t *cmd,
-				    const size_t len)
+static int st_tp_check_command_echo(const uint8_t *cmd, const size_t len)
 {
 	int num_events, i;
-	num_events = st_tp_read_all_events();
-	if (num_events < 0)
-		return -num_events;
+	num_events = st_tp_read_all_events(0);
 
 	for (i = 0; i < num_events; i++) {
 		struct st_tp_event_t *e = &rx_buf.events[i];
@@ -812,42 +1072,92 @@ static int st_tp_check_command_echo(const uint8_t *cmd,
 		if (e->evt_id == ST_TP_EVENT_ID_STATUS_REPORT &&
 		    e->report.report_type == ST_TP_STATUS_CMD_ECHO &&
 		    memcmp(e->report.info, cmd, MIN(4, len)) == 0)
-			return 0;
+			return EC_SUCCESS;
 	}
-	return -EC_ERROR_BUSY;
+	return EC_ERROR_BUSY;
 }
 
-static void st_tp_full_initialize_end(void);
-DECLARE_DEFERRED(st_tp_full_initialize_end);
-
-static void st_tp_full_initialize_end(void)
+static uint8_t get_cx_version(uint8_t tp_version)
 {
-	int ret;
-	uint8_t tx_buf[] = { ST_TP_CMD_WRITE_SYSTEM_COMMAND, 0x00, 0x03 };
+	/*
+	 * CX version is tracked by ST release note: go/whiskers-st-release-note
+	 */
 
-	ret = st_tp_check_command_echo(tx_buf, sizeof(tx_buf));
-	if (ret == EC_SUCCESS) {
-		CPRINTS("Full panel initialization completed.");
-		st_tp_init();
-	} else if (ret == -EC_ERROR_BUSY) {
-		hook_call_deferred(&st_tp_full_initialize_end_data, 100 * MSEC);
-	} else {
-		CPRINTS("Full Panel initialization failed: %x", -ret);
-	}
+	if (tp_version >= 32)
+		return 3;
+
+	if (tp_version >= 20)
+		return 2;
+
+	if (tp_version >= 18)
+		return 1;
+	return 0;
 }
 
-static void st_tp_full_initialize_start(void)
+/*
+ * Perform panel initialization.
+ *
+ * This function will wait until the initialization is done, or 10 second
+ * timeout is reached.
+ *
+ * @param full: 1 => force "full" panel initialization.  Otherwise, tp_control
+ *              will be checked to decide if full panel initialization is
+ *              required.
+ *
+ * @return EC_SUCCESS or error code.
+ */
+static int st_tp_panel_init(int full)
 {
-	uint8_t tx_buf[] = { ST_TP_CMD_WRITE_SYSTEM_COMMAND, 0x00, 0x03 };
+	uint8_t tx_buf[] = {
+		ST_TP_CMD_WRITE_SYSTEM_COMMAND, 0x00, 0x02
+	};
+	int ret, retry;
+
+	if (tp_control & (TP_CONTROL_INIT | TP_CONTROL_INIT_FULL))
+		return EC_ERROR_BUSY;
 
 	st_tp_stop_scan();
-	if (st_tp_reset())
-		return;
+	ret = st_tp_reset();
+	/*
+	 * TODO(b:118312397): Figure out how to handle st_tp_reset errors (if
+	 * needed at all).
+	 */
+	CPRINTS("st_tp_reset ret=%d", ret);
 
-	CPRINTS("Start full initialization");
+	full |= tp_control & TP_CONTROL_SHALL_INIT_FULL;
+	if (full) {
+		/* should perform full panel initialization */
+		tx_buf[2] = 0x3;
+		tp_control = TP_CONTROL_INIT_FULL;
+	} else {
+		tp_control = TP_CONTROL_INIT;
+	}
+
+	CPRINTS("Start panel initialization (full=%d)", full);
 	spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
 
-	hook_call_deferred(&st_tp_full_initialize_end_data, 100 * MSEC);
+	retry = 100;
+	while (retry--) {
+		watchdog_reload();
+		msleep(100);
+
+		ret = st_tp_check_command_echo(tx_buf, sizeof(tx_buf));
+		if (ret == EC_SUCCESS) {
+			CPRINTS("Panel initialization completed.");
+			tp_control &= ~(TP_CONTROL_INIT | TP_CONTROL_INIT_FULL);
+			st_tp_init();
+			return EC_SUCCESS;
+		} else if (ret == EC_ERROR_BUSY) {
+			CPRINTS("Panel initialization on going...");
+		} else if (tp_control & ~(TP_CONTROL_INIT |
+					  TP_CONTROL_INIT_FULL)) {
+			/* there are other kind of errors. */
+			CPRINTS("Panel initialization failed, tp_control: %x",
+				tp_control);
+			return EC_ERROR_UNKNOWN;
+		}
+	}
+	return EC_ERROR_TIMEOUT;
 }
 
 /*
@@ -858,34 +1168,63 @@ static void st_tp_full_initialize_start(void)
  */
 int touchpad_update_write(int offset, int size, const uint8_t *data)
 {
-	int ret;
+	static int full_init_required;
+	int ret, flash_offset;
 
 	CPRINTS("%s %08x %d", __func__, offset, size);
 	if (offset == 0) {
+		const struct st_tp_fw_header_t *header;
+		uint8_t old_cx_version;
+		uint8_t new_cx_version;
+		int retry;
+
+		header = (const struct st_tp_fw_header_t *)data;
+		if (header->signature != 0xAA55AA55)
+			return EC_ERROR_INVAL;
+
+		for (retry = 50; retry > 0; retry--) {
+			watchdog_reload();
+			if (system_state & SYSTEM_STATE_READY)
+				break;
+			if (retry % 10 == 0)
+				CPRINTS("TP not ready for update, "
+					"will check again");
+			msleep(100);
+		}
+
+		old_cx_version = get_cx_version(system_info.release_info);
+		new_cx_version = get_cx_version(header->release_info);
+
+		full_init_required = old_cx_version != new_cx_version;
+
 		/* stop scanning, interrupt, etc... */
 		st_tp_stop_scan();
 
-		ret = st_tp_prepare_for_update();
+		ret = st_tp_prepare_for_update(full_init_required);
 		if (ret)
 			return ret;
+		return EC_SUCCESS;
 	}
 
-	if (offset % ST_TP_DMA_CHUNK_SIZE)
+	flash_offset = offset - CONFIG_UPDATE_PDU_SIZE;
+	if (flash_offset % ST_TP_DMA_CHUNK_SIZE)
 		return EC_ERROR_INVAL;
 
-	if (offset >= ST_TP_FLASH_OFFSET_CX &&
-	    offset < ST_TP_FLASH_OFFSET_CONFIG)
-		/* don't update CX section */
+	if (flash_offset >= ST_TP_FLASH_OFFSET_PANEL_CFG &&
+	    flash_offset < ST_TP_FLASH_OFFSET_CONFIG)
+		/* don't update CX section && panel config section */
 		return EC_SUCCESS;
 
-	ret = st_tp_write_flash(offset, size, data);
+	ret = st_tp_write_flash(flash_offset, size, data);
 	if (ret)
 		return ret;
 
 	if (offset + size == CONFIG_TOUCHPAD_VIRTUAL_SIZE) {
 		CPRINTS("%s: End update, wait for reset.", __func__);
 
-		st_tp_full_initialize_start();
+		ret = st_tp_panel_init(full_init_required);
+		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_TP_UPDATED, 0);
+		return ret;
 	}
 
 	return EC_SUCCESS;
@@ -894,15 +1233,57 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		   uint8_t **data, unsigned int *data_size)
 {
+	static uint8_t buf[8];
+	int num_events;
+
 	if (param_size != 1)
 		return EC_RES_INVALID_PARAM;
 
 	switch (*param) {
+	case ST_TP_DEBUG_CMD_RESET_TOUCHPAD:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_stop_scan();
+		hook_call_deferred(&st_tp_init_data, 100 * MSEC);
+		return EC_SUCCESS;
 	case ST_TP_DEBUG_CMD_CALIBRATE:
 		/* no return value */
 		*data = NULL;
 		*data_size = 0;
-		st_tp_full_initialize_start();
+		st_tp_panel_init(1);
+		return EC_SUCCESS;
+	case ST_TP_DEBUG_CMD_START_SCAN:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_start_scan();
+		return EC_SUCCESS;
+	case ST_TP_DEBUG_CMD_STOP_SCAN:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_stop_scan();
+		return EC_SUCCESS;
+	case ST_TP_DEBUG_CMD_READ_BUF_HEADER:
+		*data = buf;
+		*data_size = 8;
+		st_tp_read_host_buffer_header();
+		memcpy(buf, rx_buf.bytes, *data_size);
+		CPRINTS("header: %ph", HEX_BUF(buf, *data_size));
+		return EC_SUCCESS;
+	case ST_TP_DEBUG_CMD_READ_EVENTS:
+		num_events = st_tp_read_all_events(0);
+		if (num_events) {
+			int i;
+
+			for (i = 0; i < num_events; i++) {
+				CPRINTS("event[%d]: id=%d, type=%d",
+					i, rx_buf.events[i].evt_id,
+					rx_buf.events[i].report.report_type);
+			}
+		}
+		*data = buf;
+		*data_size = 1;
+		*data[0] = num_events;
+		st_tp_send_ack();
 		return EC_SUCCESS;
 	}
 	return EC_RES_INVALID_PARAM;
@@ -916,35 +1297,226 @@ void touchpad_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_TOUCHPAD);
 }
 
+static int touchpad_should_enable(void)
+{
+	/* touchpad is not ready. */
+	if (tp_control)
+		return 0;
+
+#ifdef CONFIG_USB_SUSPEND
+	if (usb_is_suspended() && !usb_is_remote_wakeup_enabled())
+		return 0;
+#endif
+
+#ifdef CONFIG_TABLET_MODE
+	if (tablet_get_mode())
+		return 0;
+#endif
+	return 1;
+}
+
+/* Make a decision on touchpad power, based on USB and tablet mode status. */
+static void touchpad_power_control(void)
+{
+	const int enabled = !!(system_state & SYSTEM_STATE_ACTIVE_MODE);
+	int enable = touchpad_should_enable();
+
+	if (enabled == enable)
+		return;
+
+	if (enable)
+		st_tp_start_scan();
+	else
+		st_tp_stop_scan();
+}
+
+static void touchpad_read_idle_count(void)
+{
+	static uint32_t prev_count;
+	uint32_t count;
+	int ret;
+	int rx_len = 2 + ST_TP_DUMMY_BYTE;
+	uint8_t cmd_read_counter[] = {
+		0xFB, 0x00, 0x10, 0xff, 0xff
+	};
+
+	/* Find address of idle count. */
+	ret = st_tp_load_host_data(ST_TP_MEM_ID_SYSTEM_INFO);
+	if (ret)
+		return;
+	st_tp_read_host_data_memory(0x0082, &rx_buf, rx_len);
+
+	/* Fill in address of idle count, the byte order is reversed. */
+	cmd_read_counter[3] = rx_buf.bytes[1];
+	cmd_read_counter[4] = rx_buf.bytes[0];
+
+	/* Read idle count */
+	spi_transaction(SPI, cmd_read_counter, sizeof(cmd_read_counter),
+			(uint8_t *)&rx_buf, 4 + ST_TP_DUMMY_BYTE);
+
+	count = rx_buf.dump_info[0];
+
+	CPRINTS("idle_count = %08x", count);
+	if (count == prev_count)
+		CPRINTS("counter doesn't change...");
+	else
+		prev_count = count;
+}
+
+/*
+ * Try to collect symptoms of type B error.
+ *
+ * There are three possible symptoms:
+ *   1. error dump section is corrupted / contains error.
+ *   2. memory stack is corrupted (not 0xCC).
+ *   3. idle count is not changing.
+ */
+static void touchpad_collect_error(void)
+{
+	const uint8_t tx_dump_error[] = {
+		0xFB, 0x20, 0x01, 0xEF, 0x80
+	};
+	uint32_t dump_info[2];
+	const uint8_t tx_dump_memory[] = {
+		0xFB, 0x00, 0x10, 0x00, 0x00
+	};
+	uint32_t dump_memory[16];
+	int i;
+
+	enable_deep_sleep(0);
+	spi_transaction(SPI, tx_dump_error, sizeof(tx_dump_error),
+			(uint8_t *)&rx_buf,
+			sizeof(dump_info) + ST_TP_DUMMY_BYTE);
+	memcpy(dump_info, rx_buf.bytes, sizeof(dump_info));
+
+	spi_transaction(SPI, tx_dump_memory, sizeof(tx_dump_memory),
+			(uint8_t *)&rx_buf,
+			sizeof(dump_memory) + ST_TP_DUMMY_BYTE);
+	memcpy(dump_memory, rx_buf.bytes, sizeof(dump_memory));
+
+	CPRINTS("check error dump: %08x %08x", dump_info[0], dump_info[1]);
+	CPRINTS("check memory dump:");
+	for (i = 0; i < ARRAY_SIZE(dump_memory); i += 8) {
+		CPRINTF("%08x %08x %08x %08x %08x %08x %08x %08x\n",
+			dump_memory[i + 0],
+			dump_memory[i + 1],
+			dump_memory[i + 2],
+			dump_memory[i + 3],
+			dump_memory[i + 4],
+			dump_memory[i + 5],
+			dump_memory[i + 6],
+			dump_memory[i + 7]);
+	}
+
+	for (i = 0; i < 3; i++)
+		touchpad_read_idle_count();
+	enable_deep_sleep(1);
+
+	tp_control |= TP_CONTROL_SHALL_RESET;
+}
+
 void touchpad_task(void *u)
 {
 	uint32_t event;
 
-	st_tp_init();
+	while (1) {
+		uint32_t retry;
+
+		for (retry = 0; retry < 3; retry++) {
+			CPRINTS("st_tp_init: trial %d", retry + 1);
+			st_tp_init();
+
+			if (system_state & SYSTEM_STATE_READY)
+				break;
+			/*
+			 * React on touchpad errors.
+			 */
+			if (tp_control & TP_CONTROL_SHALL_INIT_FULL) {
+				/* suppress other handlers */
+				tp_control = TP_CONTROL_SHALL_INIT_FULL;
+				st_tp_panel_init(1);
+			} else if (tp_control & TP_CONTROL_SHALL_INIT) {
+				/* suppress other handlers */
+				tp_control = TP_CONTROL_SHALL_INIT;
+				st_tp_panel_init(0);
+			} else if (tp_control & TP_CONTROL_SHALL_RESET) {
+				/* suppress other handlers */
+				tp_control = TP_CONTROL_SHALL_RESET;
+			} else if (tp_control & TP_CONTROL_SHALL_HALT) {
+				CPRINTS("shall halt");
+				tp_control = 0;
+				break;
+			}
+		}
+
+		if (system_state & SYSTEM_STATE_READY)
+			break;
+
+		/* failed to init, mark it as ready to allow upgrade */
+		system_state = SYSTEM_STATE_READY;
+		/* wait for upgrade complete */
+		task_wait_event_mask(TASK_EVENT_TP_UPDATED, -1);
+	}
+	touchpad_power_control();
 
 	while (1) {
-		event = task_wait_event(-1);
+		/* wait for at most 3 seconds */
+		event = task_wait_event(3 * 1000 * 1000);
+
+		if ((event & TASK_EVENT_TIMER) &&
+		    (system_state & SYSTEM_STATE_ACTIVE_MODE))
+			/*
+			 * Haven't received anything for 3 seconds, and we are
+			 * supposed to be in active mode.  This is not normal,
+			 * check for errors and reset.
+			 */
+			touchpad_collect_error();
 
 		if (event & TASK_EVENT_WAKE)
-			while (!gpio_get_level(GPIO_TOUCHPAD_INT))
+			while (!tp_control &&
+			       !gpio_get_level(GPIO_TOUCHPAD_INT))
 				st_tp_read_report();
 
-		if (event & TASK_EVENT_POWERON)
-			st_tp_start_scan();
-		else if (event & TASK_EVENT_POWEROFF)
+		/*
+		 * React on touchpad errors.
+		 */
+		if (tp_control & TP_CONTROL_SHALL_INIT_FULL) {
+			/* suppress other handlers */
+			tp_control = TP_CONTROL_SHALL_INIT_FULL;
+			st_tp_panel_init(1);
+		} else if (tp_control & TP_CONTROL_SHALL_INIT) {
+			/* suppress other handlers */
+			tp_control = TP_CONTROL_SHALL_INIT;
+			st_tp_panel_init(0);
+		} else if (tp_control & TP_CONTROL_SHALL_RESET) {
+			/* suppress other handlers */
+			tp_control = TP_CONTROL_SHALL_RESET;
+			st_tp_init();
+		} else if (tp_control & TP_CONTROL_SHALL_HALT) {
+			tp_control = 0;
 			st_tp_stop_scan();
+		}
+
+		if (event & TASK_EVENT_POWER)
+			touchpad_power_control();
 	}
 }
 
-#ifdef CONFIG_USB_SUSPEND
-static void touchpad_usb_pm_change(void)
+/*
+ * When USB PM status changes, or tablet mode changes, call in the main task to
+ * decide whether to turn touchpad on or off.
+ */
+#if defined(CONFIG_USB_SUSPEND) || defined(CONFIG_TABLET_MODE)
+static void touchpad_power_change(void)
 {
-	if (usb_is_suspended() && !usb_is_remote_wakeup_enabled())
-		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWEROFF, 0);
-	else
-		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWERON, 0);
+	task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWER, 0);
 }
-DECLARE_HOOK(HOOK_USB_PM_CHANGE, touchpad_usb_pm_change, HOOK_PRIO_DEFAULT);
+#endif
+#ifdef CONFIG_USB_SUSPEND
+DECLARE_HOOK(HOOK_USB_PM_CHANGE, touchpad_power_change, HOOK_PRIO_DEFAULT);
+#endif
+#ifdef CONFIG_TABLET_MODE
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, touchpad_power_change, HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_USB_ISOCHRONOUS
@@ -1029,6 +1601,12 @@ static int st_tp_read_frame(void)
 	uint8_t *rx_buf = usb_packet[spi_buffer_index & 1].frame;
 #endif
 
+	st_tp_read_all_events(1);
+	if (tp_control) {
+		ret = EC_ERROR_UNKNOWN;
+		goto failed;
+	}
+
 	if (heat_map_addr < 0)
 		goto failed;
 
@@ -1074,8 +1652,8 @@ static void st_tp_usb_tx_callback(struct usb_isochronous_config const *config);
 USB_ISOCHRONOUS_CONFIG_FULL(usb_st_tp_heatmap_config,
 			    USB_IFACE_ST_TOUCHPAD,
 			    USB_CLASS_VENDOR_SPEC,
-			    0,  /* subclass */
-			    0,  /* protocol */
+			    USB_SUBCLASS_GOOGLE_HEATMAP,
+			    USB_PROTOCOL_GOOGLE_HEATMAP,
 			    USB_STR_HEATMAP_NAME,  /* interface name */
 			    USB_EP_ST_TOUCHPAD,
 			    USB_ISO_PACKET_SIZE,
@@ -1174,14 +1752,15 @@ static int heatmap_send_packet(struct usb_isochronous_config const *config)
 static int st_tp_usb_set_interface(usb_uint alternate_setting,
 				   usb_uint interface)
 {
-	if ((system_info.release_info & 0xFF) < ST_TP_MIN_HEATMAP_VERSION) {
-		CPRINTS("release version %04x doesn't support heatmap",
-			system_info.release_info);
-		/* Heatmap mode is not supported in this version. */
-		return -1;
-	}
-
 	if (alternate_setting == 1) {
+		if ((system_info.release_info & 0xFF) <
+		    ST_TP_MIN_HEATMAP_VERSION) {
+			CPRINTS("release version %04llx doesn't support heatmap",
+				system_info.release_info);
+			/* Heatmap mode is not supported in this version. */
+			return -1;
+		}
+
 		hook_call_deferred(&st_tp_enable_heat_map_data, 0);
 		return 0;
 	} else if (alternate_setting == 0) {
@@ -1206,7 +1785,7 @@ static int get_heat_map_addr(void)
 }
 
 struct st_tp_interrupt_t {
-#define ST_TP_INT_FRAME_AVAILABLE	(1 << 0)
+#define ST_TP_INT_FRAME_AVAILABLE	BIT(0)
 	uint8_t flags;
 } __packed;
 
@@ -1269,13 +1848,13 @@ USB_DECLARE_EP(USB_EP_ST_TOUCHPAD_INT, st_tp_interrupt_tx, st_tp_interrupt_tx,
 /* Debugging commands */
 static int command_touchpad_st(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 	if (strcasecmp(argv[1], "version") == 0) {
 		st_tp_read_system_info(1);
 		return EC_SUCCESS;
 	} else if (strcasecmp(argv[1], "calibrate") == 0) {
-		st_tp_full_initialize_start();
+		st_tp_panel_init(1);
 		return EC_SUCCESS;
 	} else if (strcasecmp(argv[1], "enable") == 0) {
 #ifdef CONFIG_USB_ISOCHRONOUS
@@ -1294,10 +1873,23 @@ static int command_touchpad_st(int argc, char **argv)
 #else
 		return EC_ERROR_NOT_HANDLED;
 #endif
+	} else if (strcasecmp(argv[1], "dump") == 0) {
+		enable_deep_sleep(0);
+		dump_error();
+		dump_memory();
+		enable_deep_sleep(1);
+		return EC_SUCCESS;
+	} else if (strcasecmp(argv[1], "memory_dump") == 0) {
+		if (argc == 3 && !parse_bool(argv[2], &dump_memory_on_error))
+			return EC_ERROR_PARAM2;
+
+		ccprintf("memory_dump: %d\n", dump_memory_on_error);
+		return EC_SUCCESS;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
 }
 DECLARE_CONSOLE_COMMAND(touchpad_st, command_touchpad_st,
-			"<enable|disable|version>",
+			"<enable | disable | version | calibrate | dump | "
+			"memory_dump <enable|disable>>",
 			"Read write spi. id is spi_devices array index");

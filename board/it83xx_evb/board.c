@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -38,16 +38,16 @@ int board_get_battery_soc(void)
 	return 100;
 }
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{-1, -1, &it83xx_tcpm_drv},
 	{-1, -1, &it83xx_tcpm_drv},
 };
 
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 	int cc1_enabled = 0, cc2_enabled = 0;
 
-	if (cc_pin)
+	if (cc_pin != USBPD_CC_PIN_1)
 		cc2_enabled = enabled;
 	else
 		cc1_enabled = enabled;
@@ -118,7 +118,7 @@ const struct fan_rpm fan_rpm_0 = {
 	.rpm_max = 6500,
 };
 
-struct fan_t fans[] = {
+const struct fan_t fans[] = {
 	{ .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == CONFIG_FANS);

@@ -18,6 +18,10 @@
 #include "cryptoc/sha384.h"
 #include "cryptoc/sha512.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * SHA.
  */
@@ -117,21 +121,40 @@ int dcrypto_modexp_blinded(struct LITE_BIGNUM *output,
 			const struct LITE_BIGNUM *N,
 			uint32_t pubexp);
 
-/*
- * RFC6979 based DRBG for ECDSA signature.
- */
 struct drbg_ctx {
 	uint32_t k[SHA256_DIGEST_WORDS];
 	uint32_t v[SHA256_DIGEST_WORDS];
+	uint32_t reseed_counter;
 };
-void drbg_rfc6979_init(struct drbg_ctx *ctx, const p256_int *key,
-		       const p256_int *message);
-void drbg_rand_init(struct drbg_ctx *ctx);
-void drbg_generate(struct drbg_ctx *ctx, p256_int *k_out);
+
+/*
+ * NIST SP 800-90A HMAC DRBG.
+ */
+
+/* Standard initialization. */
+void hmac_drbg_init(struct drbg_ctx *ctx,
+		    const void *p0, size_t p0_len,
+		    const void *p1, size_t p1_len,
+		    const void *p2, size_t p2_len);
+/* Initialize for use as RFC6979 DRBG. */
+void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx,
+			    const p256_int *key,
+			    const p256_int *message);
+/* Initialize with at least nbits of random entropy. */
+void hmac_drbg_init_rand(struct drbg_ctx *ctx, size_t nbits);
+void hmac_drbg_reseed(struct drbg_ctx *ctx,
+		      const void *p0, size_t p0_len,
+		      const void *p1, size_t p1_len,
+		      const void *p2, size_t p2_len);
+int hmac_drbg_generate(struct drbg_ctx *ctx,
+		       void *out, size_t out_len,
+		       const void *input, size_t input_len);
+/* Generate p256, with no additional input. */
+void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
 void drbg_exit(struct drbg_ctx *ctx);
 
 /*
- * Accelerated p256.
+ * Accelerated p256. FIPS PUB 186-4
  */
 int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 			    const p256_int *message, p256_int *r, p256_int *s)
@@ -169,12 +192,17 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words);
 /*
  * Key ladder.
  */
+#ifndef __cplusplus
 enum dcrypto_appid;      /* Forward declaration. */
 
 int dcrypto_ladder_compute_usr(enum dcrypto_appid id,
 			const uint32_t usr_salt[8]);
 int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 			  const uint32_t input[8], uint32_t output[8]);
+#endif
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif  /* ! __EC_CHIP_G_DCRYPTO_INTERNAL_H */

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -105,7 +105,7 @@ static void adc_disable_channel(int ch)
 static int adc_data_valid(enum chip_adc_channel adc_ch)
 {
 	return (adc_ch <= CHIP_ADC_CH7) ?
-		(IT83XX_ADC_ADCDVSTS & (1 << adc_ch)) :
+		(IT83XX_ADC_ADCDVSTS & BIT(adc_ch)) :
 		(IT83XX_ADC_ADCDVSTS2 & (1 << (adc_ch - CHIP_ADC_CH13)));
 }
 
@@ -138,7 +138,7 @@ int adc_read_channel(enum adc_channel ch)
 
 			/* W/C data valid flag */
 			if (adc_ch <= CHIP_ADC_CH7)
-				IT83XX_ADC_ADCDVSTS = (1 << adc_ch);
+				IT83XX_ADC_ADCDVSTS = BIT(adc_ch);
 			else
 				IT83XX_ADC_ADCDVSTS2 =
 					(1 << (adc_ch - CHIP_ADC_CH13));
@@ -222,8 +222,8 @@ static void adc_init(void)
 	 * NOTE: A sample time delay (60us) also need to be included in
 	 * conversion time, so the final result is ~= 121.6us.
 	 */
-	IT83XX_ADC_ADCSTS &= ~(1 << 7);
-	IT83XX_ADC_ADCCFG &= ~(1 << 5);
+	IT83XX_ADC_ADCSTS &= ~BIT(7);
+	IT83XX_ADC_ADCCFG &= ~BIT(5);
 	IT83XX_ADC_ADCCTL = 1;
 
 	task_waiting = TASK_ID_INVALID;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -6,6 +6,7 @@
 /* Watchdog driver */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
@@ -19,10 +20,10 @@
 /* Watchdog expiration */
 #define WATCHDOG_PERIOD (CONFIG_WATCHDOG_PERIOD_MS * (PCLK_FREQ / 1000))
 
-void trace_and_reset(uint32_t excep_lr, uint32_t excep_sp)
+void __attribute__((used)) trace_and_reset(uint32_t excep_lr, uint32_t excep_sp)
 {
 	watchdog_trace(excep_lr, excep_sp);
-	system_reset(RESET_FLAG_WATCHDOG);
+	system_reset(EC_RESET_FLAG_WATCHDOG);
 }
 
 /* Warning interrupt at the middle of the watchdog period */

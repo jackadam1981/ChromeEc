@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -37,12 +37,14 @@ static const struct charger_info bq24725_charger_info = {
 
 static inline int sbc_read(int cmd, int *param)
 {
-	return i2c_read16(I2C_PORT_CHARGER, CHARGER_ADDR, cmd, param);
+	return i2c_read16(I2C_PORT_CHARGER, CHARGER_ADDR_FLAGS,
+			  cmd, param);
 }
 
 static inline int sbc_write(int cmd, int param)
 {
-	return i2c_write16(I2C_PORT_CHARGER, CHARGER_ADDR, cmd, param);
+	return i2c_write16(I2C_PORT_CHARGER, CHARGER_ADDR_FLAGS,
+			   cmd, param);
 }
 
 int charger_set_input_current(int input_current)

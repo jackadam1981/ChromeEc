@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -45,8 +45,8 @@
 /* Flags for persist_state.flags */
 /* Protect persist state and RO firmware at boot */
 #define PERSIST_FLAG_PROTECT_RO 0x02
-#define PSTATE_VALID_FLAGS	(1 << 0)
-#define PSTATE_VALID_SERIALNO	(1 << 1)
+#define PSTATE_VALID_FLAGS	BIT(0)
+#define PSTATE_VALID_SERIALNO	BIT(1)
 
 struct persist_state {
 	uint8_t version;            /* Version of this struct */
@@ -113,21 +113,50 @@ const uint32_t pstate_data __attribute__((section(".rodata.pstate"))) =
 #endif /* CONFIG_FLASH_PSTATE */
 
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
-int flash_bank_size(int bank)
+const struct ec_flash_bank *flash_bank_info(int bank)
 {
 	int i;
-
 	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
 		if (bank < flash_bank_array[i].count)
-			return 1 << flash_bank_array[i].size_exp;
+			return &flash_bank_array[i];
 		bank -= flash_bank_array[i].count;
 	}
-	return -1;
+
+	return NULL;
+}
+
+int flash_bank_size(int bank)
+{
+	int rv;
+	const struct ec_flash_bank *info = flash_bank_info(bank);
+
+	if (!info)
+		return -1;
+
+	rv = BIT(info->size_exp);
+	ASSERT(rv > 0);
+	return rv;
+}
+
+int flash_bank_erase_size(int bank)
+{
+	int rv;
+	const struct ec_flash_bank *info = flash_bank_info(bank);
+
+	if (!info)
+		return -1;
+
+	rv = BIT(info->erase_size_exp);
+	ASSERT(rv > 0);
+	return rv;
 }
 
 int flash_bank_index(int offset)
 {
 	int bank_offset = 0, i;
+
+	if (offset == 0)
+		return bank_offset;
 
 	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
 		int all_sector_size = flash_bank_array[i].count <<
@@ -155,9 +184,30 @@ int flash_bank_count(int offset, int size)
 		return -1;
 	return end - begin;
 }
+
+int flash_bank_start_offset(int bank)
+{
+	int i;
+	int offset;
+	int bank_size;
+
+	if (bank < 0)
+		return -1;
+
+	offset = 0;
+	for (i = 0; i < bank; i++) {
+		bank_size = flash_bank_size(i);
+		if (bank_size < 0)
+			return -1;
+		offset += bank_size;
+	}
+
+	return offset;
+}
+
 #endif  /* CONFIG_FLASH_MULTIPLE_REGION */
 
-int flash_range_ok(int offset, int size_req, int align)
+static int flash_range_ok(int offset, int size_req, int align)
 {
 	if (offset < 0 || size_req < 0 ||
 	    offset > CONFIG_FLASH_SIZE ||
@@ -1055,7 +1105,7 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
 #define EC_FLASH_REGION_START MIN(CONFIG_EC_PROTECTED_STORAGE_OFF, \
 				  CONFIG_EC_WRITABLE_STORAGE_OFF)
 
-static int flash_command_get_info(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_info_2 *p_2 = args->params;
 	struct ec_response_flash_info_2 *r_2 = args->response;
@@ -1150,7 +1200,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_INFO,
 		     flash_command_get_info, FLASH_INFO_VER);
 
 
-static int flash_command_read(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_read *p = args->params;
 	uint32_t offset = p->offset + EC_FLASH_REGION_START;
@@ -1175,7 +1225,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_READ,
  * Version 0 and 1 are equivalent from the EC-side; the only difference is
  * that the host can only send 64 bytes of data at a time in version 0.
  */
-static int flash_command_write(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_write *p = args->params;
 	uint32_t offset = p->offset + EC_FLASH_REGION_START;
@@ -1209,7 +1259,7 @@ BUILD_ASSERT(CONFIG_RO_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
 BUILD_ASSERT(CONFIG_RW_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
 #endif
 
-static int flash_command_erase(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_erase *p = args->params;
 	int rc = EC_RES_SUCCESS, cmd = FLASH_ERASE_SECTOR;
@@ -1278,7 +1328,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase,
 #endif
 		);
 
-static int flash_command_protect(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_protect *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
@@ -1322,7 +1372,8 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT,
 		     flash_command_protect,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
-static int flash_command_region_info(struct host_cmd_handler_args *args)
+static enum ec_status
+flash_command_region_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_region_info *p = args->params;
 	struct ec_response_flash_region_info *r = args->response;
@@ -1363,7 +1414,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_REGION_INFO,
 
 #ifdef CONFIG_FLASH_SELECT_REQUIRED
 
-static int flash_command_select(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_select(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_select *p = args->params;
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -178,7 +178,7 @@ static int is_recovery_boot(void)
 	if (system_jumped_to_this_image())
 		return 0;
 	if (!(system_get_reset_flags() &
-	    (RESET_FLAG_RESET_PIN | RESET_FLAG_POWER_ON)))
+	    (EC_RESET_FLAG_RESET_PIN | EC_RESET_FLAG_POWER_ON)))
 		return 0;
 	if (!is_recovery_button_pressed())
 		return 0;
@@ -203,7 +203,7 @@ void button_init(void)
 
 #ifdef CONFIG_BUTTON_TRIGGERED_RECOVERY
 	if (is_recovery_boot()) {
-		system_clear_reset_flags(RESET_FLAG_AP_OFF);
+		system_clear_reset_flags(EC_RESET_FLAG_AP_OFF);
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 		button_check_hw_reinit_required();
 	}
@@ -353,7 +353,7 @@ static int console_command_button(int argc, char **argv)
 		if (button == BUTTON_COUNT)
 			return EC_ERROR_PARAM1 + argv_idx - 1;
 
-		button_mask |= (1 << button);
+		button_mask |= BIT(button);
 	}
 
 	if (!button_mask)
@@ -363,15 +363,16 @@ static int console_command_button(int argc, char **argv)
 
 	/* Press the button(s) */
 	for (button_idx = 0; button_idx < BUTTON_COUNT; button_idx++)
-		if (button_mask & (1 << button_idx))
+		if (button_mask & BIT(button_idx))
 			button_interrupt_simulate(button_idx);
 
 	/* Hold the button(s) */
-	msleep(press_ms);
+	if (press_ms > 0)
+		msleep(press_ms);
 
 	/* Release the button(s) */
 	for (button_idx = 0; button_idx < BUTTON_COUNT; button_idx++)
-		if (button_mask & (1 << button_idx))
+		if (button_mask & BIT(button_idx))
 			button_interrupt_simulate(button_idx);
 
 	/* Wait till button processing is finished */
@@ -436,9 +437,9 @@ enum debug_state {
 	STATE_WARM_RESET_EXEC,
 };
 
-#define DEBUG_BTN_POWER         (1 << 0)
-#define DEBUG_BTN_VOL_UP        (1 << 1)
-#define DEBUG_BTN_VOL_DN        (1 << 2)
+#define DEBUG_BTN_POWER         BIT(0)
+#define DEBUG_BTN_VOL_UP        BIT(1)
+#define DEBUG_BTN_VOL_DN        BIT(2)
 #define DEBUG_TIMEOUT           (10 * SECOND)
 
 static enum debug_state curr_debug_state = STATE_DEBUG_NONE;
@@ -470,11 +471,13 @@ static int debug_button_pressed(int mask)
 	return debug_button_mask() == mask;
 }
 
+#ifdef CONFIG_LED_COMMON
 static int debug_mode_blink_led(void)
 {
 	return ((curr_debug_state != STATE_DEBUG_NONE) &&
 		(curr_debug_state != STATE_DEBUG_CHECK));
 }
+#endif
 
 static void debug_mode_transition(enum debug_state next_state)
 {

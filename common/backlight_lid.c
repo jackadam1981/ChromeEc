@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -69,7 +69,8 @@ void backlight_interrupt(enum gpio_signal signal)
  * The requested state will persist until the next lid-switch or request-gpio
  * transition.
  */
-static int switch_command_enable_backlight(struct host_cmd_handler_args *args)
+static enum ec_status
+switch_command_enable_backlight(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_switch_enable_backlight *p = args->params;
 

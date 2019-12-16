@@ -16,6 +16,8 @@
 
 #include "test_util.h"
 
+#include <stdlib.h>
+
 struct pw_test_data_t {
 	union {
 		struct pw_request_t request;
@@ -67,6 +69,8 @@ const struct leaf_data_t DEFAULT_LEAF = {
 		{0, 0},
 		/* attempt_count */
 		{0},
+		/* valid_pcr_criteria */
+		{{{0, 0}, {0} }, {{0, 0}, {0} } },
 	},
 	/*sec*/
 	{
@@ -139,17 +143,21 @@ const uint8_t ROOT_WITH_OTHER_HMAC[] = {
 		0xaf, 0x66, 0xb6, 0xf0, 0x61, 0x05, 0x9d, 0xc0,
 };
 
+const uint8_t DEFAULT_PCR_DIGEST[] = {
+		0xdf, 0xce, 0xf4, 0xba, 0x18, 0xe8, 0xd0, 0x1d,
+		0xcb, 0x3b, 0x29, 0x41, 0x44, 0x01, 0x6e, 0x72,
+		0xe3, 0x19, 0x9a, 0x44, 0x62, 0x44, 0x2a, 0xf1,
+		0xaf, 0x66, 0xb6, 0xf0, 0x61, 0x05, 0x9d, 0xc0,
+};
+
 /******************************************************************************/
 /* Config Variables and defines for Mocks.
  */
 
-struct tuple MOCK_pw_tuple;
 struct pw_long_term_storage_t MOCK_pw_long_term_storage;
 struct pw_log_storage_t MOCK_pw_log_storage;
 int MOCK_getvar_ret = EC_SUCCESS;
 int MOCK_setvar_ret = EC_SUCCESS;
-int MOCK_writevars_ret = EC_SUCCESS;
-void *MOCK_tuple_val_ret;
 
 const uint8_t *MOCK_rand_bytes_src;
 size_t MOCK_rand_bytes_offset;
@@ -167,12 +175,33 @@ int MOCK_aes_fail;
 int MOCK_appkey_derive_fail;
 enum dcrypto_appid MOCK_hwctx_appkey;
 
+#define PW_VALID_PCR_CRITERIA_SIZE \
+		(sizeof(struct valid_pcr_value_t) * PW_MAX_PCR_CRITERIA_COUNT)
+
 /******************************************************************************/
 /* Helper functions
  */
+
+static void convert_response_to_new_version(uint8_t req_type,
+						struct pw_response_t *response)
+{
+	if (response->header.version == 0) {
+		if (req_type == PW_TRY_AUTH) {
+			unsigned char *src = (unsigned char *)
+				(&response->data.try_auth.reset_secret);
+			memmove(src + PW_SECRET_SIZE, src,
+				PW_LEAF_PAYLOAD_SIZE);
+			memcpy(src, DEFAULT_LEAF.sec.reset_secret,
+			       PW_SECRET_SIZE);
+			response->header.data_length += PW_SECRET_SIZE;
+		}
+	}
+}
+
 static int do_request(struct merkle_tree_t *merkle_tree,
 		      struct pw_test_data_t *buf)
 {
+	uint8_t req_type = buf->request.header.type.v;
 	int ret = pw_handle_request(merkle_tree, &buf->request, &buf->response);
 	size_t offset = buf->response.header.data_length +
 			sizeof(buf->response.header);
@@ -180,6 +209,10 @@ static int do_request(struct merkle_tree_t *merkle_tree,
 	/* Zero out bytes that won't be sent for testing.*/
 	memset(buf->tpm_buffer_size + offset, 0,
 	       sizeof(buf->tpm_buffer_size) - offset);
+
+	if (buf->request.header.version < PW_PROTOCOL_VERSION)
+		convert_response_to_new_version(req_type, &buf->response);
+
 	return ret;
 }
 
@@ -308,7 +341,6 @@ static void setup_storage(int num_operations)
 {
 	MOCK_getvar_ret = EC_SUCCESS;
 	MOCK_setvar_ret = EC_SUCCESS;
-	MOCK_writevars_ret = EC_SUCCESS;
 
 	memset(&MOCK_pw_long_term_storage, 0,
 	       sizeof(MOCK_pw_long_term_storage));
@@ -398,18 +430,19 @@ static void setup_default_empty_path(uint8_t hashes[][PW_HASH_SIZE])
 static void setup_default_unimported_leaf_data_and_hashes(
 		const struct leaf_data_t *leaf_data,
 		const uint8_t hmac[PW_HASH_SIZE],
+		const struct leaf_header_t *header,
 		struct unimported_leaf_data_t *data)
 {
-	memcpy(&data->head, &DEFAULT_HEAD, sizeof(DEFAULT_HEAD));
+	memcpy(&data->head, header, sizeof(*header));
 	memcpy(data->hmac, hmac, sizeof(data->hmac));
 	memcpy(data->iv, DEFAULT_IV, sizeof(DEFAULT_IV));
-	memcpy(data->payload, &leaf_data->pub, sizeof(leaf_data->pub));
-	DCRYPTO_aes_ctr(data->payload + sizeof(leaf_data->pub),
+	memcpy(data->payload, &leaf_data->pub, header->pub_len);
+	DCRYPTO_aes_ctr(data->payload + header->pub_len,
 			EMPTY_TREE.wrap_key, sizeof(EMPTY_TREE.wrap_key) * 8,
 			DEFAULT_IV, (const uint8_t *)&leaf_data->sec,
-			sizeof(leaf_data->sec));
-	setup_default_empty_path((void *)(data->payload + DEFAULT_HEAD.pub_len +
-					  DEFAULT_HEAD.sec_len));
+			header->sec_len);
+	setup_default_empty_path((void *)(data->payload + header->pub_len +
+					  header->sec_len));
 }
 
 static void setup_reset_tree_defaults(struct merkle_tree_t *merkle_tree,
@@ -435,7 +468,6 @@ static void setup_reset_tree_defaults(struct merkle_tree_t *merkle_tree,
 	MOCK_rand_bytes_len = sizeof(EMPTY_TREE.key_derivation_nonce);
 	MOCK_appkey_derive_fail = EC_SUCCESS;
 	MOCK_setvar_ret = EC_SUCCESS;
-	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_insert_leaf_defaults(struct merkle_tree_t *merkle_tree,
@@ -457,6 +489,9 @@ static void setup_insert_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	memcpy(&request->data.insert_leaf.delay_schedule,
 	       &DEFAULT_LEAF.pub.delay_schedule,
 	       sizeof(DEFAULT_LEAF.pub.delay_schedule));
+	memcpy(&request->data.insert_leaf.valid_pcr_criteria,
+	       &DEFAULT_LEAF.pub.valid_pcr_criteria,
+	       sizeof(DEFAULT_LEAF.pub.valid_pcr_criteria));
 	memcpy(&request->data.insert_leaf.low_entropy_secret,
 	       &DEFAULT_LEAF.sec.low_entropy_secret,
 	       sizeof(DEFAULT_LEAF.sec.low_entropy_secret));
@@ -475,7 +510,6 @@ static void setup_insert_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	MOCK_hmac = DEFAULT_HMAC;
 	MOCK_aes_fail = 0;
 	MOCK_setvar_ret = EC_SUCCESS;
-	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_remove_leaf_defaults(struct merkle_tree_t *merkle_tree,
@@ -502,14 +536,17 @@ static void setup_remove_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	setup_default_empty_path(request->data.remove_leaf.path_hashes);
 
 	MOCK_setvar_ret = EC_SUCCESS;
-	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_try_auth_defaults_with_leaf(
 		const struct leaf_data_t *leaf_data,
+		uint8_t protocol_version,
+		uint8_t minor_version,
 		struct merkle_tree_t *merkle_tree,
 		struct pw_request_t *request)
 {
+	struct leaf_header_t header = DEFAULT_HEAD;
+
 	MOCK_DECRYPTO_init_counter = 0;
 	MOCK_DECRYPTO_release_counter = 0;
 
@@ -525,9 +562,10 @@ static void setup_try_auth_defaults_with_leaf(
 		/* Gets overwritten by auth_hash_update_cb. */
 		MOCK_hmac = EMPTY_HMAC;
 
+	header.leaf_version.minor = minor_version;
 	memset(&MOCK_pw_log_storage, 0, sizeof(MOCK_pw_log_storage));
 
-	request->header.version = PW_PROTOCOL_VERSION;
+	request->header.version = protocol_version;
 	request->header.type.v = PW_TRY_AUTH;
 	request->header.data_length =
 			sizeof(struct pw_request_try_auth_t) +
@@ -535,11 +573,16 @@ static void setup_try_auth_defaults_with_leaf(
 			get_path_auxiliary_hash_count(&EMPTY_TREE) *
 			PW_HASH_SIZE;
 
+	if (minor_version == 0) {
+		header.pub_len -= PW_VALID_PCR_CRITERIA_SIZE;
+		request->header.data_length -= PW_VALID_PCR_CRITERIA_SIZE;
+	}
+
 	memcpy(request->data.try_auth.low_entropy_secret,
 	       DEFAULT_LEAF.sec.low_entropy_secret,
 	       sizeof(request->data.try_auth.low_entropy_secret));
 	setup_default_unimported_leaf_data_and_hashes(
-			leaf_data, MOCK_hmac,
+			leaf_data, MOCK_hmac, &header,
 			&request->data.try_auth.unimported_leaf_data);
 
 	force_restart_count(0);
@@ -550,13 +593,14 @@ static void setup_try_auth_defaults_with_leaf(
 	MOCK_hash_update_cb = auth_hash_update_cb;
 	MOCK_aes_fail = 0;
 	MOCK_setvar_ret = EC_SUCCESS;
-	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_try_auth_defaults(struct merkle_tree_t *merkle_tree,
 				    struct pw_request_t *request)
 {
-	setup_try_auth_defaults_with_leaf(&DEFAULT_LEAF, merkle_tree, request);
+	setup_try_auth_defaults_with_leaf(&DEFAULT_LEAF, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, merkle_tree,
+					  request);
 }
 
 static void setup_reset_auth_defaults(struct merkle_tree_t *merkle_tree,
@@ -584,7 +628,7 @@ static void setup_reset_auth_defaults(struct merkle_tree_t *merkle_tree,
 	       sizeof(request->data.reset_auth.reset_secret));
 
 	setup_default_unimported_leaf_data_and_hashes(
-			&DEFAULT_LEAF, EMPTY_HMAC,
+			&DEFAULT_LEAF, EMPTY_HMAC, &DEFAULT_HEAD,
 			&request->data.try_auth.unimported_leaf_data);
 	pub->attempt_count.v = 6;
 
@@ -595,7 +639,6 @@ static void setup_reset_auth_defaults(struct merkle_tree_t *merkle_tree,
 	MOCK_hmac = EMPTY_HMAC; /* Gets overwritten by auth_hash_update_cb. */
 	MOCK_aes_fail = 0;
 	MOCK_setvar_ret = EC_SUCCESS;
-	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_get_log_defaults(struct merkle_tree_t *merkle_tree,
@@ -646,7 +689,7 @@ static void setup_log_replay_defaults_with_leaf(
 	       sizeof(ROOT_WITH_DEFAULT_HMAC));
 
 	setup_default_unimported_leaf_data_and_hashes(
-			leaf_data, MOCK_hmac,
+			leaf_data, MOCK_hmac, &DEFAULT_HEAD,
 			&request->data.try_auth.unimported_leaf_data);
 
 	MOCK_hash_update_cb = auth_hash_update_cb;
@@ -740,38 +783,69 @@ void get_storage_seed(void *buf, size_t *len)
 	memcpy(buf, DEFAULT_STORAGE_SEED, *len);
 }
 
+uint8_t get_current_pcr_digest(const uint8_t bitmask[2],
+			       uint8_t sha256_of_selected_pcr[32])
+{
+	memcpy(sha256_of_selected_pcr, DEFAULT_PCR_DIGEST, 32);
+	return 0;
+}
+
 /******************************************************************************/
 /* Mock implementations of nvmem_vars functionality.
  */
 const struct tuple *getvar(const uint8_t *key, uint8_t key_len)
 {
+	struct tuple *var = NULL;
+	size_t i;
+
+	const struct {
+		size_t key_len;
+		const void *key;
+		size_t val_size;
+		const void *val;
+	} vars[] = {
+		{sizeof(PW_TREE_VAR) - 1, PW_TREE_VAR,
+		 sizeof(MOCK_pw_long_term_storage), &MOCK_pw_long_term_storage},
+		{sizeof(PW_LOG_VAR0) - 1, PW_LOG_VAR0,
+		 sizeof(MOCK_pw_log_storage), &MOCK_pw_log_storage},
+	};
+
+	if (!key || !key_len)
+		return NULL;
+
 	if (MOCK_getvar_ret != EC_SUCCESS)
 		return NULL;
 
-	MOCK_pw_tuple.flags = 0;
-	MOCK_pw_tuple.key_len = key_len;
+	for (i = 0; i < ARRAY_SIZE(vars); i++) {
+		if ((key_len != vars[i].key_len) ||
+		    memcmp(key, vars[i].key, key_len)) {
+			continue;
+		}
+		var = malloc(sizeof(struct tuple) + key_len + vars[i].val_size);
+		var->flags = 0;
+		var->val_len = vars[i].val_size;
+		memcpy(var->data_ + var->key_len, vars[i].val, var->val_len);
+		break;
+	}
 
-	if (key_len == (sizeof(PW_TREE_VAR) - 1) &&
-	    memcmp(key, PW_TREE_VAR, (sizeof(PW_TREE_VAR) - 1)) == 0) {
-		MOCK_pw_tuple.val_len = sizeof(MOCK_pw_long_term_storage);
-		MOCK_tuple_val_ret = &MOCK_pw_long_term_storage;
-		return &MOCK_pw_tuple;
-	} else if (key_len == (sizeof(PW_LOG_VAR0) - 1) &&
-		   memcmp(key, PW_LOG_VAR0, (sizeof(PW_LOG_VAR0) - 1)) == 0) {
-		MOCK_pw_tuple.val_len = sizeof(struct pw_log_storage_t);
-		MOCK_tuple_val_ret = &MOCK_pw_log_storage;
-		return &MOCK_pw_tuple;
-	} else
-		return NULL;
+	return var;
 }
 
+void freevar(const struct tuple *var)
+{
+	if (!var)
+		return;
+
+	/* This typecast is OK because we know that 'var' came from malloc. */
+	free((void *)var);
+}
 const uint8_t *tuple_val(const struct tuple *tpl)
 {
-	return MOCK_tuple_val_ret;
+	return tpl->data_ + tpl->key_len;
 }
 
-int setvar(const uint8_t *key, uint8_t key_len,
-	   const uint8_t *val, uint8_t val_len)
+int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+	   uint8_t val_len)
 {
 	if (MOCK_setvar_ret != EC_SUCCESS)
 		return MOCK_setvar_ret;
@@ -788,11 +862,6 @@ int setvar(const uint8_t *key, uint8_t key_len,
 		return EC_SUCCESS;
 	} else
 		return EC_ERROR_UNKNOWN;
-}
-
-int writevars(void)
-{
-	return MOCK_writevars_ret;
 }
 
 /******************************************************************************/
@@ -917,7 +986,7 @@ static int check_dcrypto_mutex_usage(void)
 {
 	if (MOCK_DECRYPTO_init_counter == MOCK_DECRYPTO_release_counter)
 		return EC_SUCCESS;
-	ccprintf("ASSERTION failed: DCRYPTO init(%d) != DCRYPTO release(%d)\n",
+	ccprintf("ASSERTION failed: DCRYPTO init(%zd) != DCRYPTO release(%zd)\n",
 		 MOCK_DECRYPTO_init_counter, MOCK_DECRYPTO_release_counter);
 	return EC_ERROR_UNKNOWN;
 }
@@ -1157,7 +1226,7 @@ static int handle_reset_tree_nv_fail(void)
 
 	setup_reset_tree_defaults(&merkle_tree, &buf.request);
 
-	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+	MOCK_setvar_ret = PW_ERR_NV_LENGTH_MISMATCH;
 
 	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf, merkle_tree.root),
 		    PW_ERR_NV_LENGTH_MISMATCH);
@@ -1307,7 +1376,7 @@ static int handle_insert_leaf_nv_fail(void)
 
 	setup_insert_leaf_defaults(&merkle_tree, &buf.request);
 
-	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+	MOCK_setvar_ret = PW_ERR_NV_LENGTH_MISMATCH;
 
 	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf, merkle_tree.root),
 		    PW_ERR_NV_LENGTH_MISMATCH);
@@ -1329,6 +1398,66 @@ static int handle_insert_leaf_success(void)
 	TEST_RET_EQ(do_request(&merkle_tree, &buf), EC_SUCCESS);
 
 	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+	TEST_ASSERT(buf.response.header.data_length ==
+				    sizeof(buf.response.data.insert_leaf) +
+				    PW_LEAF_PAYLOAD_SIZE);
+	TEST_RET_EQ(buf.response.header.result_code, EC_SUCCESS);
+
+	TEST_ASSERT_ARRAY_EQ(buf.response.header.root, ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+	TEST_ASSERT_ARRAY_EQ(buf.response.header.root, merkle_tree.root,
+			     PW_HASH_SIZE);
+	TEST_ASSERT_ARRAY_EQ(
+			buf.response.data.insert_leaf.unimported_leaf_data.hmac,
+			DEFAULT_HMAC, sizeof(DEFAULT_HMAC));
+	TEST_ASSERT_ARRAY_EQ(
+			(uint8_t *)&wrapped_leaf_data->pub,
+			(uint8_t *)&DEFAULT_LEAF.pub, sizeof(DEFAULT_LEAF.pub));
+	for (x = 0; x < sizeof(DEFAULT_LEAF.sec); ++x)
+		TEST_ASSERT(plain_text[x] ==
+			    (wrapped_leaf_data->cipher_text[x] ^
+			     MOCK_AES_XOR_BYTE(x)));
+
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_INSERT_LEAF);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].label.v ==
+		    DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].leaf_hmac,
+			     DEFAULT_HMAC,
+			     sizeof(DEFAULT_HMAC));
+
+	return check_dcrypto_mutex_usage();
+}
+
+static int handle_insert_leaf_old_protocol_success(void)
+{
+	struct merkle_tree_t merkle_tree;
+	struct pw_test_data_t buf;
+	size_t x;
+	int hash_count;
+	unsigned char *src;
+	const uint8_t *plain_text = (const uint8_t *)&DEFAULT_LEAF.sec;
+	struct wrapped_leaf_data_t *wrapped_leaf_data =
+			(void *)&buf.response.data.insert_leaf
+					.unimported_leaf_data;
+
+	setup_insert_leaf_defaults(&merkle_tree, &buf.request);
+
+	// Make changes to simulate the protocol 0 request.
+	buf.request.header.version = 0;
+	hash_count =
+		get_path_auxiliary_hash_count(&merkle_tree);
+	src = (unsigned char *)
+		(&buf.request.data.insert_leaf.valid_pcr_criteria);
+	memmove(src, src + PW_VALID_PCR_CRITERIA_SIZE,
+		hash_count * PW_HASH_SIZE);
+	buf.request.header.data_length -= PW_VALID_PCR_CRITERIA_SIZE;
+
+	TEST_RET_EQ(do_request(&merkle_tree, &buf), EC_SUCCESS);
+
+	TEST_ASSERT(buf.response.header.version == 0);
 	TEST_ASSERT(buf.response.header.data_length ==
 				    sizeof(buf.response.data.insert_leaf) +
 				    PW_LEAF_PAYLOAD_SIZE);
@@ -1418,7 +1547,7 @@ static int handle_remove_leaf_nv_fail(void)
 
 	setup_remove_leaf_defaults(&merkle_tree, &buf.request);
 
-	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+	MOCK_setvar_ret = PW_ERR_NV_LENGTH_MISMATCH;
 
 	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf, merkle_tree.root),
 		    PW_ERR_NV_LENGTH_MISMATCH);
@@ -1481,7 +1610,8 @@ static int handle_try_auth_label_invalid(void)
 
 	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(DEFAULT_LEAF));
 	leaf_data.pub.label.v |= 0x030000;
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
 
 	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf,
@@ -1585,7 +1715,8 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.attempt_count.v = 51;
 	force_restart_count(1);
 	force_time((timestamp_t){.val = 7200llu * SECOND});
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
 
 	TEST_RET_EQ(check_try_auth_rate_limit_reached_response(
@@ -1601,7 +1732,8 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.attempt_count.v = 6;
 	force_restart_count(1);
 	force_time((timestamp_t){.val = 7200llu * SECOND});
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
 
 	TEST_RET_EQ(check_try_auth_rate_limit_reached_response(
@@ -1617,7 +1749,8 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.attempt_count.v = 6;
 	force_restart_count(1);
 	force_time((timestamp_t){.val = 7200llu * SECOND});
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
 
 	TEST_RET_EQ(check_try_auth_rate_limit_reached_response(
@@ -1630,7 +1763,8 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.attempt_count.v = 10;
 	leaf_data.pub.timestamp.boot_count = 0;
 	leaf_data.pub.timestamp.timer_value = 7200llu;
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
 	force_restart_count(0);
 	force_time((timestamp_t){.val = (leaf_data.pub.timestamp.timer_value +
@@ -1645,7 +1779,8 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.attempt_count.v = 10;
 	leaf_data.pub.timestamp.boot_count = 0;
 	leaf_data.pub.timestamp.timer_value = 7200llu;
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
 	force_restart_count(1);
 	force_time((timestamp_t){.val = 3599llu * SECOND});
@@ -1666,7 +1801,7 @@ static int handle_try_auth_nv_fail(void)
 	force_restart_count(0);
 	force_time((timestamp_t){.val = 65 * SECOND});
 
-	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+	MOCK_setvar_ret = PW_ERR_NV_LENGTH_MISMATCH;
 
 	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf, merkle_tree.root),
 		    PW_ERR_NV_LENGTH_MISMATCH);
@@ -1690,8 +1825,11 @@ static int handle_try_auth_lowent_auth_failed(void)
 			sizeof(leaf_data.sec.low_entropy_secret) - 1] =
 				~leaf_data.sec.low_entropy_secret[
 				 sizeof(leaf_data.sec.low_entropy_secret) - 1];
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
 					  &buf.request);
+
 	force_restart_count(1);
 	force_time((timestamp_t){.val = (65ull * SECOND)});
 
@@ -1750,7 +1888,30 @@ static int handle_try_auth_lowent_auth_failed(void)
 	return check_dcrypto_mutex_usage();
 }
 
-static int handle_try_auth_success(void)
+static int handle_try_auth_pcr_mismatch(void)
+{
+	struct merkle_tree_t merkle_tree;
+	struct pw_test_data_t buf;
+	struct leaf_data_t leaf_data = {};
+
+	/* Test same boot_count case. */
+	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
+	leaf_data.pub.attempt_count.v = 6;
+	leaf_data.pub.valid_pcr_criteria[0].bitmask[0] = 1;
+	memset(leaf_data.pub.valid_pcr_criteria[0].digest, 0, 32);
+	setup_try_auth_defaults_with_leaf(&leaf_data, PW_PROTOCOL_VERSION,
+					  PW_LEAF_MINOR_VERSION, &merkle_tree,
+					  &buf.request);
+	force_restart_count(0);
+	force_time((timestamp_t){.val = 65 * SECOND});
+
+	TEST_RET_EQ(do_request(&merkle_tree, &buf), PW_ERR_PCR_NOT_MATCH);
+
+	return check_dcrypto_mutex_usage();
+}
+
+static int try_auth_success(uint8_t protocol_version,
+			     uint8_t minor_version)
 {
 	struct merkle_tree_t merkle_tree;
 	struct pw_test_data_t buf;
@@ -1764,14 +1925,18 @@ static int handle_try_auth_success(void)
 	/* Test same boot_count case. */
 	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
 	leaf_data.pub.attempt_count.v = 6;
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	leaf_data.pub.valid_pcr_criteria[0].bitmask[0] = 1;
+	memcpy(leaf_data.pub.valid_pcr_criteria[0].digest,
+	       DEFAULT_PCR_DIGEST, 32);
+	setup_try_auth_defaults_with_leaf(&leaf_data, protocol_version,
+					  minor_version, &merkle_tree,
 					  &buf.request);
 	force_restart_count(0);
 	force_time((timestamp_t){.val = 65 * SECOND});
 
 	TEST_RET_EQ(do_request(&merkle_tree, &buf), EC_SUCCESS);
 
-	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+	TEST_ASSERT(buf.response.header.version == protocol_version);
 	TEST_ASSERT(buf.response.header.data_length ==
 				    sizeof(struct pw_response_try_auth_t) +
 				    PW_LEAF_PAYLOAD_SIZE);
@@ -1795,13 +1960,20 @@ static int handle_try_auth_success(void)
 			(uint8_t *)&pub->delay_schedule,
 			(uint8_t *)&leaf_data.pub.delay_schedule,
 			sizeof(leaf_data.pub.delay_schedule));
-	TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec, (uint8_t *)&DEFAULT_LEAF.sec,
-			     sizeof(DEFAULT_LEAF.sec));
+	if (protocol_version == PW_PROTOCOL_VERSION) {
+		TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec,
+				     (uint8_t *)&DEFAULT_LEAF.sec,
+				     sizeof(DEFAULT_LEAF.sec));
+	}
 	TEST_ASSERT(pub->attempt_count.v == 0);
 
 	TEST_ASSERT_ARRAY_EQ(buf.response.data.try_auth.high_entropy_secret,
 			     DEFAULT_LEAF.sec.high_entropy_secret,
 			     sizeof(DEFAULT_LEAF.sec.high_entropy_secret));
+
+	TEST_ASSERT_ARRAY_EQ(buf.response.data.try_auth.reset_secret,
+			     DEFAULT_LEAF.sec.reset_secret,
+			     sizeof(DEFAULT_LEAF.sec.reset_secret));
 
 	/* Validate the log entry on success. */
 	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_TRY_AUTH);
@@ -1820,14 +1992,15 @@ static int handle_try_auth_success(void)
 	leaf_data.pub.attempt_count.v = 6;
 	leaf_data.pub.timestamp.boot_count = 0;
 	leaf_data.pub.timestamp.timer_value = 7200llu;
-	setup_try_auth_defaults_with_leaf(&leaf_data, &merkle_tree,
+	setup_try_auth_defaults_with_leaf(&leaf_data, protocol_version,
+					  minor_version, &merkle_tree,
 					  &buf.request);
 	force_restart_count(1);
 	force_time((timestamp_t){.val = 65llu * SECOND});
 
 	TEST_RET_EQ(do_request(&merkle_tree, &buf), EC_SUCCESS);
 
-	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+	TEST_ASSERT(buf.response.header.version == protocol_version);
 	TEST_ASSERT(buf.response.header.data_length ==
 		    sizeof(struct pw_response_try_auth_t) +
 		    PW_LEAF_PAYLOAD_SIZE);
@@ -1851,14 +2024,31 @@ static int handle_try_auth_success(void)
 			(uint8_t *)&pub->delay_schedule,
 			(uint8_t *)&leaf_data.pub.delay_schedule,
 			sizeof(leaf_data.pub.delay_schedule));
-	TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec, (uint8_t *)&DEFAULT_LEAF.sec,
-			     sizeof(DEFAULT_LEAF.sec));
+	if (protocol_version == PW_PROTOCOL_VERSION) {
+		TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec,
+				     (uint8_t *)&DEFAULT_LEAF.sec,
+				     sizeof(DEFAULT_LEAF.sec));
+	}
 	TEST_ASSERT(pub->attempt_count.v == 0);
-
 	TEST_ASSERT_ARRAY_EQ(buf.response.data.try_auth.high_entropy_secret,
 			     DEFAULT_LEAF.sec.high_entropy_secret,
 			     sizeof(DEFAULT_LEAF.sec.high_entropy_secret));
 	return check_dcrypto_mutex_usage();
+}
+
+static int handle_try_auth_success(void)
+{
+	return try_auth_success(PW_PROTOCOL_VERSION, PW_LEAF_MINOR_VERSION);
+}
+
+static int handle_try_auth_old_protocol_old_leaf_success(void)
+{
+	return try_auth_success(0, 0);
+}
+
+static int handle_try_auth_old_protocol_new_leaf_success(void)
+{
+	return try_auth_success(0, PW_LEAF_MINOR_VERSION);
 }
 
 /******************************************************************************/
@@ -1958,7 +2148,7 @@ static int handle_reset_auth_nv_fail(void)
 
 	setup_reset_auth_defaults(&merkle_tree, &buf.request);
 
-	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+	MOCK_setvar_ret = PW_ERR_NV_LENGTH_MISMATCH;
 
 	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf, merkle_tree.root),
 		    PW_ERR_NV_LENGTH_MISMATCH);
@@ -2437,6 +2627,7 @@ void run_test(void)
 	RUN_TEST(handle_insert_leaf_crypto_failure);
 	RUN_TEST(handle_insert_leaf_nv_fail);
 	RUN_TEST(handle_insert_leaf_success);
+	RUN_TEST(handle_insert_leaf_old_protocol_success);
 
 	/* Test remove leaf. */
 	RUN_TEST(handle_remove_leaf_invalid_length);
@@ -2455,7 +2646,10 @@ void run_test(void)
 	RUN_TEST(handle_try_auth_rate_limit_reached);
 	RUN_TEST(handle_try_auth_nv_fail);
 	RUN_TEST(handle_try_auth_lowent_auth_failed);
+	RUN_TEST(handle_try_auth_pcr_mismatch);
 	RUN_TEST(handle_try_auth_success);
+	RUN_TEST(handle_try_auth_old_protocol_old_leaf_success);
+	RUN_TEST(handle_try_auth_old_protocol_new_leaf_success);
 
 	/* Test reset auth. */
 	RUN_TEST(handle_reset_auth_invalid_length);

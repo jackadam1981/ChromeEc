@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -73,6 +73,7 @@
 #define CONFIG_MAPPED_STORAGE_BASE CONFIG_PROGRAM_MEMORY_BASE
 
 #if !defined(CHIP_FAMILY_STM32F4) && \
+	!defined(CHIP_FAMILY_STM32F7) && \
 	!defined(CHIP_FAMILY_STM32H7) && \
 	!defined(CHIP_VARIANT_STM32F09X)
 /* Compute the rest of the flash params from these */
@@ -118,6 +119,9 @@
 /* Use DMA */
 #define CONFIG_DMA
 
+/* STM32 features RTC (optional feature) */
+#define CONFIG_RTC
+
 /* Number of peripheral request signals per DMA channel */
 #define STM32_DMA_PERIPHERALS_PER_CHANNEL	4
 
@@ -137,7 +141,7 @@
 #define CONFIG_CHIP_PRE_INIT
 
 #define GPIO_NAME_BY_PIN(port, index) #port#index
-#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
+#define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 /* Prescaler values for PLL. Currently used only by STM32L476. */

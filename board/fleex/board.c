@@ -12,10 +12,10 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
+#include "console.h"
 #include "cros_board_info.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
-#include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
@@ -48,17 +48,7 @@
 #define USB_PD_PORT_ANX7447	0
 #define USB_PD_PORT_PS8751	1
 
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
-
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
+static uint8_t sku_id;
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -90,15 +80,6 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
-enum adc_channel board_get_vbus_adc(int port)
-{
-	if (port == USB_PD_PORT_ANX7447)
-		return  ADC_VBUS_C0;
-	if (port == USB_PD_PORT_PS8751)
-		return  ADC_VBUS_C1;
-	return ADC_VBUS_C0;
-}
-
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
 				 .type = TEMP_SENSOR_TYPE_BATTERY,
@@ -124,13 +105,13 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
 };
 
- const matrix_3x3_t base_standard_ref = {
+ const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
@@ -138,95 +119,125 @@ const matrix_3x3_t lid_standard_ref = {
 
 /* sensor private data */
 static struct stprivate_data g_lis2dh_data;
-static struct lsm6dsm_data lsm6dsm_g_data;
-static struct lsm6dsm_data lsm6dsm_a_data;
+static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
-	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_LIS2DE,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &lis2dh_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_lis2dh_data,
-	 .port = I2C_PORT_SENSOR,
-	 .addr = LIS2DH_ADDR1,
-	 .rot_standard_ref = &lid_standard_ref,
-	 .default_range = 2, /* g */
-	  /* We only use 2g because its resolution is only 8-bits */
-	 .min_frequency = LIS2DH_ODR_MIN_VAL,
-	 .max_frequency = LIS2DH_ODR_MAX_VAL,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LIS2DE,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lis2dh_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_lis2dh_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LIS2DH_ADDR1_FLAGS,
+		.rot_standard_ref = &lid_standard_ref,
+		.default_range = 2, /* g */
+		/* We only use 2g because its resolution is only 8-bits */
+		.min_frequency = LIS2DH_ODR_MIN_VAL,
+		.max_frequency = LIS2DH_ODR_MAX_VAL,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
 		},
-		 /* Sensor on for lid angle detection */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	 },
 	},
 
 	[BASE_ACCEL] = {
-	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
-	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &lsm6dsm_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &lsm6dsm_a_data,
-	 .port = I2C_PORT_SENSOR,
-	 .addr = LSM6DSM_ADDR0,
-	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 4,  /* g */
-	 .min_frequency = LSM6DSM_ODR_MIN_VAL,
-	 .max_frequency = LSM6DSM_ODR_MAX_VAL,
-	 .config = {
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 13000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
-		 },
-		 /* Sensor on for angle detection */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
-		 },
-	 },
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+				MOTIONSENSE_TYPE_ACCEL),
+		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
+		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 4,  /* g */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on for angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+		},
 	},
 
 	[BASE_GYRO] = {
-	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &lsm6dsm_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &lsm6dsm_g_data,
-	 .port = I2C_PORT_SENSOR,
-	 .addr = LSM6DSM_ADDR0,
-	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = &base_standard_ref,
-	 .min_frequency = LSM6DSM_ODR_MIN_VAL,
-	 .max_frequency = LSM6DSM_ODR_MAX_VAL,
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+				MOTIONSENSE_TYPE_GYRO),
+		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
+		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
 	},
 };
 
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
-/* Initialize board. */
-static void board_init(void)
+static int board_is_convertible(void)
 {
-	/* Enable Base Accel interrupt */
-	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+	return sku_id == 0x21 || sku_id == 0x22 || sku_id == 0x23
+		|| sku_id == 0xff;
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_update_sensor_config_from_sku(void)
+{
+	if (board_is_convertible()) {
+		motion_sensor_count = ARRAY_SIZE(motion_sensors);
+		/* Enable Base Accel interrupt */
+		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+	} else {
+		motion_sensor_count = 0;
+		gmr_tablet_switch_disable();
+		/* Base accel is not stuffed, don't allow line to float */
+		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
+			       GPIO_INPUT | GPIO_PULL_DOWN);
+	}
+}
+
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) == EC_SUCCESS)
+		sku_id = val;
+	ccprints("SKU: 0x%04x", sku_id);
+
+	board_update_sensor_config_from_sku();
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
@@ -239,37 +250,17 @@ void lid_angle_peripheral_enable(int enable)
 	 */
 	if (tablet_get_mode())
 		enable = 0;
-
-	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
 
-/*
- * Set gpio flags based on board ID, can be removed when proto is no longer
- * supported
- */
-static void update_gpios_from_board_id(void)
+void board_overcurrent_event(int port, int is_overcurrented)
 {
-	uint32_t board_id = 0;
+	/* Sanity check the port. */
+	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
+		return;
 
-	/* Errors will count as board_id 0 */
-	cbi_get_board_version(&board_id);
-
-	if (board_id == 0) {
-		/*
-		 * USB2_OTG_ID is a 1.8V pin on the SoC side with an internal
-		 * pull-up. However, it is 3.3V on the EC side. So, configure
-		 * it as ODR so that the EC never drives it high.
-		 */
-		gpio_set_flags(GPIO_USB_C0_PD_RST, GPIO_ODR_LOW);
-	} else {
-		int flags = GPIO_OUTPUT;
-
-		if (!system_is_reboot_warm() && !system_jumped_to_this_image())
-			flags |= GPIO_LOW;
-
-		gpio_set_flags(GPIO_USB_C0_PD_RST, flags);
-	}
+	/* Note that the level is inverted because the pin is active low. */
+	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
 }
-
-DECLARE_HOOK(HOOK_INIT, update_gpios_from_board_id, HOOK_PRIO_INIT_I2C + 1);

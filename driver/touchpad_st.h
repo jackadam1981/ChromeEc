@@ -33,10 +33,10 @@
 /* Max number of bytes that can be written in I2C to the DMA */
 #define ST_TP_DMA_CHUNK_SIZE		32
 
-#define ST_HOST_BUFFER_DATA_VALID	(1 << 0)
-#define ST_HOST_BUFFER_MT_READY		(1 << 3)
-#define ST_HOST_BUFFER_SF_READY		(1 << 4)
-#define ST_HOST_BUFFER_SS_READY		(1 << 5)
+#define ST_HOST_BUFFER_DATA_VALID	BIT(0)
+#define ST_HOST_BUFFER_MT_READY		BIT(3)
+#define ST_HOST_BUFFER_SF_READY		BIT(4)
+#define ST_HOST_BUFFER_SS_READY		BIT(5)
 
 #define ST_TP_SCAN_MODE_ACTIVE		0x00
 #define ST_TP_SCAN_MODE_LOW_POWER	0x01
@@ -59,9 +59,10 @@
 
 #define ST_TP_MEM_ID_SYSTEM_INFO	0x01
 
-#define ST_TP_FLASH_OFFSET_CODE (0x0000 << 2)
-#define ST_TP_FLASH_OFFSET_CONFIG (0x7C00 << 2)
-#define ST_TP_FLASH_OFFSET_CX (0x7000 << 2)
+#define ST_TP_FLASH_OFFSET_CODE		(0x0000 << 2)
+#define ST_TP_FLASH_OFFSET_PANEL_CFG	(0x6800 << 2)
+#define ST_TP_FLASH_OFFSET_CX		(0x7000 << 2)
+#define ST_TP_FLASH_OFFSET_CONFIG	(0x7C00 << 2)
 
 
 struct st_tp_host_data_header_t {
@@ -170,13 +171,13 @@ struct st_tp_system_info_t {
 				 ST_TP_SYSTEM_INFO_PART_1_RESERVED)
 
 struct st_tp_host_buffer_header_t {
-#define ST_TP_BUFFER_HEADER_DATA_VALID		(1 << 0)
-#define ST_TP_BUFFER_HEADER_EVT_FIFO_NOT_EMPTY	(1 << 1)
-#define ST_TP_BUFFER_HEADER_SYS_FAULT		(1 << 2)
-#define ST_TP_BUFFER_HEADER_HEAT_MAP_MT_RDY	(1 << 3)
-#define ST_TP_BUFFER_HEADER_HEAT_MAP_SF_RDY	(1 << 4)
-#define ST_TP_BUFFER_HEADER_HEAT_MAP_SS_RDY	(1 << 5)
-#define ST_TP_BUFFER_HEADER_DOMESWITCH_LVL	(1 << 6)
+#define ST_TP_BUFFER_HEADER_DATA_VALID		BIT(0)
+#define ST_TP_BUFFER_HEADER_EVT_FIFO_NOT_EMPTY	BIT(1)
+#define ST_TP_BUFFER_HEADER_SYS_FAULT		BIT(2)
+#define ST_TP_BUFFER_HEADER_HEAT_MAP_MT_RDY	BIT(3)
+#define ST_TP_BUFFER_HEADER_HEAT_MAP_SF_RDY	BIT(4)
+#define ST_TP_BUFFER_HEADER_HEAT_MAP_SS_RDY	BIT(5)
+#define ST_TP_BUFFER_HEADER_DOMESWITCH_LVL	BIT(6)
 	uint8_t flags;
 	uint8_t reserved[3];
 	uint8_t heatmap_miss_count;
@@ -223,7 +224,10 @@ struct st_tp_event_t {
 		} __packed finger;
 
 		struct {
-#define ST_TP_STATUS_CMD_ECHO 0x1
+#define ST_TP_STATUS_CMD_ECHO	0x1
+#define ST_TP_STATUS_FRAME_DROP	0x3
+#define ST_TP_STATUS_FCAL	0x5
+#define ST_TP_STATUS_BEACON	0x9
 			uint8_t report_type;
 			uint8_t info[4];
 			uint8_t reserved;
@@ -235,12 +239,31 @@ struct st_tp_event_t {
 	unsigned evt_left:5;
 } __packed;
 
+struct st_tp_fw_header_t {
+	uint32_t signature;
+	uint32_t ftb_ver;
+	uint32_t chip_id;
+	uint32_t svn_ver;
+	uint32_t fw_ver;
+	uint32_t config_id;
+	uint32_t config_ver;
+	uint8_t reserved[8];
+	uint64_t release_info;
+	uint32_t sec_size[4];
+	uint32_t crc;
+} __packed;
+
 enum ST_TP_MODE {
 	X_Y_MODE = 0,
 	HEAT_MAP_MODE,
 };
 
-#define ST_TP_DEBUG_CMD_CALIBRATE 0x1
+#define ST_TP_DEBUG_CMD_RESET_TOUCHPAD		0x00
+#define ST_TP_DEBUG_CMD_CALIBRATE		0x01
+#define ST_TP_DEBUG_CMD_START_SCAN		0x02
+#define ST_TP_DEBUG_CMD_STOP_SCAN		0x03
+#define ST_TP_DEBUG_CMD_READ_BUF_HEADER		0x04
+#define ST_TP_DEBUG_CMD_READ_EVENTS		0x05
 
 #define ST_TP_HEAT_MAP_THRESHOLD 10
 

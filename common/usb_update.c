@@ -16,11 +16,13 @@
 #include "rwsig.h"
 #include "sha256.h"
 #include "system.h"
+#include "uart.h"
 #include "update_fw.h"
 #include "usb-stream.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
 /*
  * This file is an adaptation layer between the USB interface and the firmware
@@ -221,7 +223,8 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 
 		switch (subcommand) {
 		case UPDATE_EXTRA_CMD_IMMEDIATE_RESET:
-			CPRINTS("Rebooting!\n\n\n");
+			CPRINTS("Rebooting!");
+			CPRINTF("\n\n");
 			cflush();
 			system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
 			/* Unreachable, unless something bad happens. */
@@ -349,6 +352,37 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 				return EC_RES_BUSY;
 
 			QUEUE_ADD_UNITS(&update_to_usb, data, write_count);
+			return 1;
+		}
+#endif
+#ifdef CONFIG_USB_CONSOLE_READ
+		/*
+		 * TODO(b/112877237): move this to a new interface, so we can
+		 * support reading log and other commands at the same time?
+		 */
+		case UPDATE_EXTRA_CMD_CONSOLE_READ_INIT:
+			response = uart_console_read_buffer_init();
+			break;
+		case UPDATE_EXTRA_CMD_CONSOLE_READ_NEXT: {
+			uint8_t *data = buffer + header_size;
+			uint8_t output[64];
+			uint16_t write_count = 0;
+
+			if (data_count != 1) {
+				response = EC_RES_INVALID_PARAM;
+				break;
+			}
+
+			response = uart_console_read_buffer(
+					data[0],
+					(char *)output,
+					MIN(sizeof(output),
+					    queue_space(&update_to_usb)),
+					&write_count);
+			if (response != EC_RES_SUCCESS || write_count == 0)
+				break;
+
+			QUEUE_ADD_UNITS(&update_to_usb, output, write_count);
 			return 1;
 		}
 #endif

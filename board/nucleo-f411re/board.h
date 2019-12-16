@@ -53,6 +53,7 @@
 #define TIM_WATCHDOG 11
 
 #define CONFIG_WP_ALWAYS
+#define CONFIG_FLASH_READOUT_PROTECTION
 
 /* ADC signal */
 enum adc_channel {
@@ -67,6 +68,7 @@ enum adc_channel {
 enum sensor_id {
 	BASE_ACCEL = 0,
 	BASE_GYRO,
+	SENSOR_COUNT,
 };
 
 #include "gpio_signal.h"

@@ -22,7 +22,6 @@
 
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
-#define MAX_BYTES_IN_ONE_READING 254
 
 
 USB_I2C_CONFIG(i2c,
@@ -107,9 +106,13 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 	/* Payload is ready to execute. */
 	uint32_t count      = usb_i2c_read_packet(config);
 	int portindex       = (config->buffer[0] >> 0) & 0xf;
+<<<<<<< HEAD   (c9fc91 servo_v4: fix in displaying CCD polarity)
 	/* Convert 7-bit slave address to chromium EC 8-bit address. */
 	uint8_t slave_addr  = (config->buffer[0] >> 7) & 0xfe;
 
+=======
+	uint16_t addr_flags = (config->buffer[0] >> 8) & 0x7f;
+>>>>>>> BRANCH (536eb9 puff: Add USB Type C power delivery config)
 	int write_count     = ((config->buffer[0] << 4) & 0xf00) |
 		((config->buffer[1] >> 0) & 0xff);
 	int read_count      = (config->buffer[1] >> 8) & 0xff;
@@ -136,7 +139,11 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 		config->buffer[0] = USB_I2C_READ_COUNT_INVALID;
 	} else if (portindex >= i2c_ports_used) {
 		config->buffer[0] = USB_I2C_PORT_INVALID;
+<<<<<<< HEAD   (c9fc91 servo_v4: fix in displaying CCD polarity)
 	} else if (slave_addr == USB_I2C_CMD_ADDR) {
+=======
+	} else if (addr_flags == USB_I2C_CMD_ADDR_FLAGS) {
+>>>>>>> BRANCH (536eb9 puff: Add USB Type C power delivery config)
 		/*
 		 * This is a non-i2c command, invoke the handler if it has
 		 * been registered, if not - report the appropriate error.
@@ -157,12 +164,11 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 		 * knows about.  It should behave closer to
 		 * EC_CMD_I2C_PASSTHRU, which can protect ports and ranges.
 		 */
-		ret = i2c_xfer(i2c_ports[portindex].port,
-				 slave_addr,
-				 (uint8_t *)(config->buffer + 2) + offset,
-				 write_count,
-				 (uint8_t *)(config->buffer + 2),
-				 read_count);
+		ret = i2c_xfer(i2c_ports[portindex].port, addr_flags,
+			       (uint8_t *)(config->buffer + 2) + offset,
+			       write_count,
+			       (uint8_t *)(config->buffer + 2),
+			       read_count);
 		config->buffer[0] = usb_i2c_map_error(ret);
 	}
 	usb_i2c_write_packet(config, read_count + 4);

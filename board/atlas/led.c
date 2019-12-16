@@ -17,15 +17,14 @@ const enum ec_led_id supported_led_ids[] = {
 };
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
-/* We may not be using the blue channel long term. */
 struct pwm_led led_color_map[EC_LED_COLOR_COUNT] = {
 				/* Red, Green, Blue */
 	[EC_LED_COLOR_RED]    = {  70,   0,   0 },
 	[EC_LED_COLOR_GREEN]  = {   0,  35,   0 },
 	[EC_LED_COLOR_BLUE]   = {   0,   0, 100 },
 	[EC_LED_COLOR_YELLOW] = {  55,  15,   0 },
-	[EC_LED_COLOR_WHITE]  = {  50,  30,  15 },
-	[EC_LED_COLOR_AMBER]  = {  65,   5,   0 },
+	[EC_LED_COLOR_WHITE]  = {  62, 100,  31 },
+	[EC_LED_COLOR_AMBER]  = { 100,  31,   0 },
 };
 
 /*

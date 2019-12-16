@@ -7,8 +7,9 @@
 #ifndef __CROS_EC_CCD_CONFIG_H
 #define __CROS_EC_CCD_CONFIG_H
 
-#include <common.h>
 #include <stdint.h>
+#include "common.h"
+#include "compile_time_macros.h"
 
 /* Case-closed debugging state */
 enum ccd_state {
@@ -31,26 +32,40 @@ enum ccd_flag {
 	 * Note: This is used internally by CCD config.  Do NOT test this
 	 * to control other things; use capabilities for those.
 	 */
-	CCD_FLAG_TEST_LAB = (1 << 0),
+	CCD_FLAG_TEST_LAB = BIT(0),
 
 	/*
 	 * What state were we in when the password was set?
 	 * (0=opened, 1=unlocked)
 	 */
-	CCD_FLAG_PASSWORD_SET_WHEN_UNLOCKED = (1 << 1),
+	CCD_FLAG_PASSWORD_SET_WHEN_UNLOCKED = BIT(1),
+
+	/*
+	 * Factory mode state
+	 */
+	CCD_FLAG_FACTORY_MODE_ENABLED = BIT(2),
 
 	/* (flags in the middle are unused) */
 
 	/* Flags that can be set via ccd_set_flags(); fill from top down */
 
+	/* Override BATT_PRES_L at boot */
+	CCD_FLAG_OVERRIDE_BATT_AT_BOOT = BIT(20),
+
+	/*
+	 * If overriding BATT_PRES_L at boot, set it to what value
+	 * (0=disconnect, 1=connected)
+	 */
+	CCD_FLAG_OVERRIDE_BATT_STATE_CONNECT = BIT(21),
+
 	/* Override write protect at boot */
-	CCD_FLAG_OVERRIDE_WP_AT_BOOT = (1 << 22),
+	CCD_FLAG_OVERRIDE_WP_AT_BOOT = BIT(22),
 
 	/*
 	 * If overriding WP at boot, set it to what value
 	 * (0=disabled, 1=enabled)
 	 */
-	CCD_FLAG_OVERRIDE_WP_STATE_ENABLED = (1 << 23),
+	CCD_FLAG_OVERRIDE_WP_STATE_ENABLED = BIT(23),
 };
 
 /* Capabilities */
@@ -100,6 +115,15 @@ enum ccd_capability {
 	/* Read-only access to hash or dump EC or AP flash */
 	CCD_CAP_FLASH_READ = 16,
 
+	/* Allow ccd open without dev mode enabled */
+	CCD_CAP_OPEN_WITHOUT_DEV_MODE = 17,
+
+	/* Allow ccd open from usb */
+	CCD_CAP_OPEN_FROM_USB = 18,
+
+	/* Override battery presence temporarily or at boot */
+	CCD_CAP_OVERRIDE_BATT_STATE = 19,
+
 	/* Number of currently defined capabilities */
 	CCD_CAP_COUNT
 };
@@ -130,6 +154,14 @@ struct ccd_capability_info {
 	enum ccd_capability_state default_state;
 };
 
+#ifdef CONFIG_CCD_OPEN_PREPVT
+/* In prepvt images always allow ccd open from the console without dev mode */
+#define CCD_CAP_STATE_OPEN_REQ CCD_CAP_STATE_ALWAYS
+#else
+/* In prod images restrict how ccd can be opened */
+#define CCD_CAP_STATE_OPEN_REQ CCD_CAP_STATE_IF_OPENED
+#endif
+
 #define CAP_INFO_DATA {					  \
 	{"UartGscRxAPTx",	CCD_CAP_STATE_ALWAYS},	  \
 	{"UartGscTxAPRx",	CCD_CAP_STATE_ALWAYS},	  \
@@ -151,10 +183,18 @@ struct ccd_capability_info {
 	{"UpdateNoTPMWipe",	CCD_CAP_STATE_ALWAYS},	  \
 	{"I2C",			CCD_CAP_STATE_IF_OPENED}, \
 	{"FlashRead",		CCD_CAP_STATE_ALWAYS},	  \
+	{"OpenNoDevMode",	CCD_CAP_STATE_OPEN_REQ}, \
+	{"OpenFromUSB",		CCD_CAP_STATE_OPEN_REQ}, \
+	{"OverrideBatt",	CCD_CAP_STATE_IF_OPENED}, \
 	}
 
 #define CCD_STATE_NAMES { "Locked", "Unlocked", "Opened" }
 #define CCD_CAP_STATE_NAMES { "Default", "Always", "UnlessLocked", "IfOpened" }
+
+/* Macros regarding ccd_capabilities */
+#define CCD_CAP_BITS		2
+#define CCD_CAP_BITMASK	(BIT(CCD_CAP_BITS) - 1)
+#define CCD_CAPS_PER_BYTE	(8 / CCD_CAP_BITS)
 
 /*
  * Subcommand code, used to pass different CCD commands using the same TPM
@@ -185,8 +225,20 @@ struct ccd_info_response {
 	uint32_t ccd_flags;
 	uint8_t ccd_state;
 	uint8_t ccd_force_disabled;
-	uint8_t ccd_has_password;
+	/*
+	 * A bitmap indicating ccd internal state.
+	 * See "enum ccd_indicator_bits" below.
+	 */
+	uint8_t ccd_indicator_bitmap;
 } __packed;
+
+enum ccd_indicator_bits {
+	/* has_password? */
+	CCD_INDICATOR_BIT_HAS_PASSWORD = BIT(0),
+
+	/* Are CCD capabilities in CCD_CAP_STATE_DEFAULT */
+	CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT = BIT(1),
+};
 
 /**
  * Initialize CCD configuration at boot.
@@ -246,19 +298,26 @@ enum ccd_state ccd_get_state(void);
  */
 void ccd_disable(void);
 
+/**
+ * Get the factory mode state.
+ *
+ * @return 0 if factory mode is disabled, !=0 if factory mode is enabled.
+ */
+int ccd_get_factory_mode(void);
+
 /* Flags for ccd_reset_config() */
 enum ccd_reset_config_flags {
 	/* Also reset test lab flag */
-	CCD_RESET_TEST_LAB = (1 << 0),
+	CCD_RESET_TEST_LAB = BIT(0),
 
 	/* Only reset Always/UnlessLocked settings */
-	CCD_RESET_UNLOCKED_ONLY = (1 << 1),
+	CCD_RESET_UNLOCKED_ONLY = BIT(1),
 
 	/*
 	 * Do a factory reset to enable factory mode. Factory mode sets all ccd
 	 * capabilities to always and disables write protect
 	 */
-	CCD_RESET_FACTORY = (1 << 2)
+	CCD_RESET_FACTORY = BIT(2)
 };
 
 /**
@@ -285,8 +344,16 @@ void ccd_tpm_reset_callback(void);
 int ccd_has_password(void);
 
 /**
- * Enter CCD factory mode. This will clear the TPM and do a hard reboot after
- * updating the ccd config.
+ * Enter CCD factory mode. This will clear the TPM, update the ccd config, and
+ * then do a hard reboot if 'reset_required' is True.
  */
-void enable_ccd_factory_mode(void);
+void enable_ccd_factory_mode(int reset_required);
+
+/*
+ * Enable factory mode but not necessarily rebooting the device. This will
+ * clear the TPM and disable flash write protection. Will trigger system reset
+ * only if 'reset_required' is True.
+ */
+void factory_enable(int reset_required);
+
 #endif /* __CROS_EC_CCD_CONFIG_H */

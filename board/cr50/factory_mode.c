@@ -6,6 +6,7 @@
 #include "board_id.h"
 #include "console.h"
 #include "ccd_config.h"
+#include "ec_commands.h"
 #include "extension.h"
 #include "system.h"
 
@@ -25,8 +26,7 @@ static int board_id_is_erased(void)
 		return 0;
 	}
 
-	/* If all of the fields are all 0xffffffff, the board id is not set */
-	if (~(id.type & id.type_inv & id.flags) == 0) {
+	if (board_id_is_blank(&id)) {
 		CPRINTS("BID erased");
 		return 1;
 	}
@@ -74,7 +74,7 @@ static int inactive_image_is_guc_image(void)
  */
 int board_is_first_factory_boot(void)
 {
-	return (!(system_get_reset_flags() & RESET_FLAG_HIBERNATE) &&
+	return (!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
 		inactive_image_is_guc_image() && board_id_is_erased());
 }
 
@@ -112,7 +112,7 @@ static enum vendor_cmd_rc vc_factory_reset(enum vendor_cmd_cc code,
 		return VENDOR_RC_NOT_ALLOWED;
 
 	CPRINTF("factory reset\n");
-	enable_ccd_factory_mode();
+	enable_ccd_factory_mode(1);
 
 	return VENDOR_RC_SUCCESS;
 }

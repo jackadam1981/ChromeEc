@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -181,7 +181,7 @@ void pch_evt(enum gpio_signal signal)
 void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
-	STM32_RCC_APB2ENR |= 1 << 0;
+	STM32_RCC_APB2ENR |= BIT(0);
 	/*
 	 * the DMA mapping is :
 	 *  Chan 2 : TIM1_CH1  (C0 RX)
@@ -196,7 +196,7 @@ void board_config_pre_init(void)
 	 * Remap USART1 RX/TX DMA to match uart driver. Remap SPI2 RX/TX and
 	 * TIM3_CH1 for unique DMA channels.
 	 */
-	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10) | (1 << 24) | (1 << 30);
+	STM32_SYSCFG_CFGR1 |= BIT(9) | BIT(10) | BIT(24) | BIT(30);
 }
 
 #include "gpio_list.h"
@@ -318,7 +318,7 @@ int board_set_active_charge_port(int charge_port)
 {
 	/* charge port is a realy physical port */
 	int is_real_port = (charge_port >= 0 &&
-			    charge_port < CONFIG_USB_PD_PORT_COUNT);
+			    charge_port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	/* check if we are source vbus on that port */
 	if (is_real_port && usb_charger_port_is_sourcing_vbus(charge_port)) {
 		CPRINTS("Skip enable p%d", charge_port);
@@ -338,7 +338,7 @@ int board_set_active_charge_port(int charge_port)
 		gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
 		charge_state = PD_CHARGE_NONE;
 		pd_status.active_charge_port = charge_port;
-		CPRINTS("Chg: None\n");
+		CPRINTS("Chg: None");
 		return EC_SUCCESS;
 	}
 
@@ -528,7 +528,7 @@ DECLARE_CONSOLE_COMMAND(pdevent, command_pd_host_event,
 
 /****************************************************************************/
 /* Host commands */
-static int ec_status_host_cmd(struct host_cmd_handler_args *args)
+static enum ec_status ec_status_host_cmd(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_status *p = args->params;
 	struct ec_response_pd_status *r = args->response;
@@ -595,7 +595,8 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_PD_EXCHANGE_STATUS, ec_status_host_cmd,
 		     EC_VER_MASK(EC_VER_PD_EXCHANGE_STATUS));
 
-static int host_event_status_host_cmd(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_status_host_cmd(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_status *r = args->response;
 
