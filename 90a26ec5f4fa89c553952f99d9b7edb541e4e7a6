@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e4018af_cdcf89ad",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-16T23:11:53Z",
+      "side": 1,
+      "message": "Why do we need this flag? Why not always call tcpm_enable_auto_discharge_disconnect(port, 0) from tc_unattached_snk_entry(), for example?",
+      "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bb8c25b_f486d91a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -19,6 +36,23 @@
         "endLine": 1756,
         "endChar": 2
       },
+      "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a8d4ce_bf5269a3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1946,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-16T23:11:53Z",
+      "side": 1,
+      "message": "nit: adding connect/disconnect hook_notify could be a separate CL, since it seems independent of auto discharge disconnect.",
       "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
