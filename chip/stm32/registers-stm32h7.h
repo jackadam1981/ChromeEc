@@ -341,7 +341,18 @@
 
 /* --- Power / Reset / Clocks --- */
 #define STM32_PWR_CSR               REG32(STM32_PWR_BASE + 0x04)
+#define  STM32_PWR_CSR_PVDO          BIT(4)
+#define  STM32_PWR_CSR_ACTVOSRDY     BIT(13)
+#define  STM32_PWR_CSR_AVDOS_MASK    GENMASK(15, 14)
+#define  STM32_PWR_CSR_AVDO          BIT(16)
 #define STM32_PWR_CR2               REG32(STM32_PWR_BASE + 0x08)
+#define  STM32_PWR_CR2_BREN          BIT(0)
+#define  STM32_PWR_CR2_MONEN         BIT(4)
+#define  STM32_PWR_CR2_BRRDY         BIT(16)
+#define  STM32_PWR_CR2_VBATL         BIT(20)
+#define  STM32_PWR_CR2_VBATH         BIT(21)
+#define  STM32_PWR_CR2_TEMPL         BIT(22)
+#define  STM32_PWR_CR2_TEMPH         BIT(23)
 #define STM32_PWR_CR3               REG32(STM32_PWR_BASE + 0x0C)
 #define  STM32_PWR_CR3_BYPASS        BIT(0)
 #define  STM32_PWR_CR3_LDOEN         BIT(1)
