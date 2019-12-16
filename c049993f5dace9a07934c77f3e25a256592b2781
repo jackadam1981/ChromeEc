@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e2d99b7_d00bdef5",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-16T02:14:56Z",
+      "side": 1,
+      "message": "Could you see the issue b/141259174 #25? We can discuss with our thermal engineer here.",
+      "parentUuid": "356a0dd6_17134584",
+      "range": {
+        "startLine": 171,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "c049993f5dace9a07934c77f3e25a256592b2781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2556dcc6_48a8f71c",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-13T17:39:53Z",
       "side": 1,
       "message": "This needs comments to explain why the logic (here it is a mixed of \u0026\u0026 and ||) is different than everywhere else in this code.",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 184,
+        "endChar": 52
+      },
+      "revId": "c049993f5dace9a07934c77f3e25a256592b2781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5969ec8_8976c145",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-16T02:14:56Z",
+      "side": 1,
+      "message": "The same comment above, I can add comments if needed.",
+      "parentUuid": "2556dcc6_48a8f71c",
       "range": {
         "startLine": 182,
         "startChar": 3,
