@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9db565_21d23c8c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-12-16T17:58:03Z",
+      "side": 1,
+      "message": "Since the call to pd_dfp_enter_mode() fills in modep-\u003eopos in most cases, this isn\u0027t interchangeable with the previous if structure",
+      "range": {
+        "startLine": 975,
+        "startChar": 0,
+        "endLine": 981,
+        "endChar": 5
+      },
+      "revId": "92f3c6eeed1f2530f2ee83fb221ddd66c038ebc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
