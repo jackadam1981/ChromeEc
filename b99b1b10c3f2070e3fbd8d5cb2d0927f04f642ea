@@ -46,6 +46,30 @@
       "revId": "b99b1b10c3f2070e3fbd8d5cb2d0927f04f642ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b07a19f_338f04e7",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2019-12-16T09:56:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "366b558e_ad5d1c9d",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "b99b1b10c3f2070e3fbd8d5cb2d0927f04f642ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
