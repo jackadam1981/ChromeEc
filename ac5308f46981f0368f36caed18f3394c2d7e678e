@@ -46,6 +46,30 @@
       "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d74653_994ba47b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-17T18:48:31Z",
+      "side": 1,
+      "message": "It\u0027s here: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/usb_pd_policy.c#406.",
+      "parentUuid": "c9ad031f_8c486c66",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
