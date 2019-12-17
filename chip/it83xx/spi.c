@@ -267,7 +267,9 @@ void spi_slv_int_handler(void)
 	 */
 	if (spi_status & IT83XX_SPI_ENDDETECTINT) {
 		/* Reset fifo and prepare to receive next transaction */
-		reset_rx_fifo();
+		//reset_rx_fifo();
+		/* Enable Rx FIFO full interrupt */
+		IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
 		/* Ready to receive */
 		spi_set_state(SPI_STATE_READY_TO_RECV);
 		/*
@@ -279,6 +281,12 @@ void spi_slv_int_handler(void)
 
 	/* Write clear the slave status */
 	IT83XX_SPI_ISR = spi_status;
+
+	if (IT83XX_SPI_RX_VLISR & BIT(0)) {
+		IT83XX_SPI_RX_VLISR = BIT(0);
+		/* Parse header for version of spi-protocol */
+		spi_parse_header();
+	}
 	/* Clear the interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
 }
@@ -335,10 +343,12 @@ static void spi_init(void)
 	/* Set dummy blcoked byte */
 	IT83XX_SPI_HPR2 = 0x00;
 	/* Set FIFO data target count */
-	IT83XX_SPI_FTCB1R = SPI_RX_MAX_FIFO_SIZE >> 8;
-	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
+	//IT83XX_SPI_FTCB1R = SPI_RX_MAX_FIFO_SIZE >> 8;
+	//IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
 	/* SPI slave controller enable */
 	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
+	IT83XX_SPI_GCR2 = 0x19;
+	IT83XX_SPI_RX_VLISMR &= ~BIT(0);
 
 	if (system_jumped_to_this_image() &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
