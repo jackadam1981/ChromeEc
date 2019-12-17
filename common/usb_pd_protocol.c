@@ -1708,6 +1708,8 @@ static void handle_data_request(int port, uint16_t head,
 #ifdef CONFIG_USB_PD_REV30
 	case PD_DATA_BATTERY_STATUS:
 		break;
+	case PD_DATA_ENTER_USB:
+		break;
 #endif
 	case PD_DATA_VENDOR_DEF:
 		handle_vdm_request(port, cnt, payload);
@@ -2806,13 +2808,29 @@ void pd_interrupt_handler_task(void *p)
 }
 #endif /* HAS_TASK_PD_INT_C0 || HAS_TASK_PD_INT_C1 || HAS_TASK_PD_INT_C2 */
 
-void set_tbt_compat_mode_ready(int port)
+static void pd_send_enter_usb(int port)
 {
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX) &&
-	    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
-		/* Set usb mux to Thunderbolt-compatible mode */
-		usb_mux_set(port, TYPEC_MUX_TBT_COMPAT, USB_SWITCH_CONNECT,
-			pd[port].polarity);
+	uint32_t usb4_payload;
+	uint16_t header;
+
+	if (!IS_ENABLED(CONFIG_USBC_SS_MUX) || !IS_ENABLED(CONFIG_USB_PD_USB4))
+		return;
+
+	usb4_payload = get_enter_usb_msg_payload(port);
+	header = PD_HEADER(PD_DATA_ENTER_USB,
+			pd[port].power_role,
+			pd[port].data_role,
+			pd[port].msg_id,
+			1,
+			PD_REV30,
+			0);
+	if (pd_transmit(port, TCPC_TX_SOP, header, &usb4_payload) == 1) {
+		avoid_usb4_reentry(port);
+
+		/* Set usb mux to USB4 mode */
+		usb_mux_set(port, TYPEC_MUX_USB4, USB_SWITCH_CONNECT,
+			   pd[port].polarity);
+	}
 }
 
 void pd_task(void *u)
@@ -3024,6 +3042,9 @@ void pd_task(void *u)
 		/* send any pending messages */
 		pd_ca_send_pending(port);
 #endif
+		if (is_enter_usb4_mode(port))
+			pd_send_enter_usb(port);
+
 		/* process VDM messages last */
 		pd_vdm_send_state_machine(port);
 
