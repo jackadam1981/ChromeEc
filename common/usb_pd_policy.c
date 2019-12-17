@@ -233,6 +233,71 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable[port].cable_mode_resp.tbt_rounded;
 }
 
+static bool is_usb4_mode_enabled(int port)
+{
+	return (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	       (cable[port].flags & CABLE_FLAGS_USB4_CAPABLE));
+}
+
+static void enable_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+	       cable[port].flags |= CABLE_FLAGS_USB4_CAPABLE;
+}
+
+static void disable_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		cable[port].flags &= ~CABLE_FLAGS_USB4_CAPABLE;
+}
+
+bool is_enable_enter_usb4_mode(int port)
+{
+	return (is_usb4_mode_enabled(port) &&
+	       (cable[port].flags & CABLE_FLAGS_ENTER_USB));
+}
+
+void enable_enter_usb4_mode(int port)
+{
+	if (is_usb4_mode_enabled(port))
+		cable[port].flags |= CABLE_FLAGS_ENTER_USB;
+}
+
+void disable_enter_usb4_mode(int port)
+{
+	if (is_usb4_mode_enabled(port))
+		cable[port].flags &= ~CABLE_FLAGS_ENTER_USB;
+}
+
+union enter_usb_data_obj get_enter_usb_payload(int port)
+{
+	union enter_usb_data_obj eudo;
+
+	eudo.payload.mode = USB_PD_4;
+	eudo.payload.usb4_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB4);
+	eudo.payload.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_REV30);
+	eudo.payload.cable_speed = cable[port].cable_gen;
+	eudo.payload.cable_type = get_usb_pd_mux_cable_type(port) ==
+			       IDH_PTYPE_ACABLE ? CABLE_TYPE_ACTIVE_RETIMER :
+						  CABLE_TYPE_PASSIVE;
+	switch (cable[port].attr.rev20.current) {
+	case CABLE_CURRENT_3A:
+		eudo.payload.cable_current = USB4_CABLE_CURRENT_3A;
+		break;
+	case CABLE_CURRENT_5A:
+		eudo.payload.cable_current = USB4_CABLE_CURRENT_5A;
+		break;
+	default:
+		eudo.payload.cable_current = USB4_CABLE_CURRENT_INVALID;
+		break;
+	}
+	eudo.payload.pcie_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
+	eudo.payload.dp_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
+	eudo.payload.tbt_supported = IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE);
+	eudo.payload.host_present = 1;
+
+	return eudo;
+}
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
@@ -322,7 +387,7 @@ static bool is_intel_svid(int port, int prev_svid_cnt)
 	 * Check if SVID0 = USB_VID_INTEL
 	 * (Ref: USB Type-C cable and connector specification, Table F-9)
 	 */
-	if (is_tbt_compat_enabled(port)) {
+	if (is_tbt_compat_enabled(port) || is_usb4_mode_enabled(port)) {
 		/*
 		 * errata: All the Thunderbolt certified cables and docks
 		 * tested have SVID1 = 0x8087
@@ -358,6 +423,78 @@ static inline void limit_cable_speed(int port)
 static inline bool is_limit_cable_speed(int port)
 {
 	return !!(cable[port].flags & CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
+}
+
+static inline void usb4_enable_enter_usb(int port)
+{
+	cable[port].flags |= CABLE_FLAGS_ENTER_USB;
+}
+
+static bool is_dfp_gen3_capable(int port)
+{
+	/* TODO: Check if dfp is Gen3 capable */
+	return true;
+}
+
+static bool is_cable_usb4_capable(int port)
+{
+	/*
+	 * Ref:USB Type-C Cable and Connector Specification
+	 * Figure 5-1 USB4 Discovery and Entry Flow Model
+	 *
+	 * For passive cables:
+	 * -----------------------------------------------------
+	 * USB Signaling      Enter
+	 * -----------------------------------------------------
+	 * USB4 Gen3          USB4 with USB4 Gen3 passive cable
+	 * -----------------------------------------------------
+	 * USB3.2 Gen2        USB4 with TBT3 Gen3 passive cable
+	 * with DFP capable
+	 * ----------------------------------------------------
+	 * USB3.2 Gen2        USB4 with USB3.2 Gen2 passive cable
+	 * without DFP cap
+	 * -----------------------------------------------------
+	 * USB3.2 Gen1        USB4 with USB3.2 Gen1 passive cable
+	 * ------------------------------------------------------
+	 * USB2.0             Exit USB4 discovery
+	 * ------------------------------------------------------
+	 */
+
+	/* TODO: USB4 enter mode for Active cables */
+	if (is_usb4_mode_enabled(port) &&
+	   (get_usb_pd_mux_cable_type(port) == IDH_PTYPE_PCABLE)) {
+		switch (cable[port].attr.p_rev30.ss) {
+		/* USB signaling USB4 Gen 3 */
+		case USB_SS_U40_GEN3:
+			cable[port].cable_gen = PCABLE_USB4_GEN3;
+			break;
+		/* USB signaling USB3.2 Gen 2 */
+		case USB_SS_U31_GEN2:
+			cable[port].cable_gen = PCABLE_USB32_GEN2;
+			if (is_dfp_gen3_capable(port))
+				return false;
+			break;
+		/* USB signaling USB3.2 Gen 1 */
+		case USB_SS_U31_GEN1:
+			cable[port].cable_gen = PCABLE_USB32_GEN2;
+			break;
+		/* USB signaling USB2.0 */
+		default:
+			disable_usb4_mode(port);
+			return false;
+		}
+	}
+
+	return true;
+}
+
+static bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
+{
+	return is_usb4_mode_enabled(port) &&
+		is_vdo_present(cnt, VDO_INDEX_PRODUCT) &&
+		(PD_IDH_PTYPE(payload[VDO_INDEX_IDH] == IDH_PTYPE_HUB) ||
+		PD_IDH_PTYPE(payload[VDO_INDEX_IDH] == IDH_PTYPE_PERIPH)) &&
+		PD_PRODUCT_IS_USB4(payload[VDO_INDEX_PRODUCT]);
 }
 
 void pd_dfp_pe_init(int port)
@@ -412,7 +549,8 @@ static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
 	 * Ref USB PD Spec 3.0  Pg 145. For active cable there are two VDOs.
 	 * Hence storing the second VDO.
 	 */
-	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	if ((IS_ENABLED(CONFIG_USB_PD_REV30) ||
+	     IS_ENABLED(CONFIG_USB_PD_USB4)) &&
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
 	    cable[port].type == IDH_PTYPE_ACABLE) {
 		cable[port].rev = PD_REV30;
@@ -906,6 +1044,15 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			if (is_transmit_msg_sop_prime(port)) {
 				/* Store cable type */
 				dfp_consume_cable_response(port, cnt, payload);
+
+				/*
+				 * Disable USB4 mode if the cable
+				 * does nit support USB4 opertaion
+				 */
+				if (!is_usb4_mode_enabled(port) ||
+					!is_cable_usb4_capable(port))
+					disable_usb4_mode(port);
+
 				/*
 				 * Disable Thunderbolt-compatible mode if cable
 				 * doesn't support superspeed
@@ -922,6 +1069,10 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 				if (!cable[port].is_identified) {
 					rsize = dfp_discover_ident(payload);
 					enable_transmit_sop_prime(port);
+				/* Enable USB4 mode if USB4 VDO not present */
+				} else if (is_usb4_vdo(port, cnt, payload)) {
+					enable_usb4_mode(port);
+					rsize = dfp_discover_svids(payload);
 				/*
 				 * Disable Thunderbolt-compatible mode
 				 * if modal op not supported
@@ -966,8 +1117,14 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			} else if (is_tbt_compat_enabled(port) &&
 				   is_transmit_msg_sop_prime(port)) {
 				limit_cable_speed(port);
+			} else if (is_usb4_mode_enabled(port)) {
+				usb_pd_mux_enter_safe_mode(port);
+				rsize = dfp_discover_modes(port,
+							   payload);
+				break;
 			} else {
 				disable_tbt_compat_mode(port);
+				disable_usb4_mode(port);
 			}
 
 			rsize = dfp_discover_modes(port, payload);
@@ -979,6 +1136,10 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			if (is_tbt_compat_mode(port, cnt, payload)) {
 				rsize = process_tbt_compat_discover_modes(
 						port, payload);
+				break;
+			} else if (is_usb4_mode_enabled(port)) {
+				enable_enter_usb4_mode(port);
+				rsize = 0;
 				break;
 			}
 

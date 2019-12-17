@@ -62,7 +62,7 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= EC_USB_PD_MAX_PORTS);
 #ifdef CONFIG_USB_PD_DEBUG_LEVEL
 static const int debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
 #else
-static int debug_level;
+static int debug_level = 3;
 #endif
 
 /*
@@ -2821,6 +2821,45 @@ void set_tbt_compat_mode_ready(int port)
 			pd[port].polarity);
 }
 
+void usb_pd_mux_enter_safe_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX) && IS_ENABLED(CONFIG_USB_PD_USB4))
+		/* Set usb mux to safe mode */
+		usb_mux_set(port, TYPEC_MUX_SAFE, USB_SWITCH_CONNECT,
+			    pd_get_polarity(port));
+}
+
+void usb_pd_mux_enter_usb(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX) && IS_ENABLED(CONFIG_USB_PD_USB4))
+		/* Set usb mux to USB4 mode */
+		usb_mux_set(port, TYPEC_MUX_USB4, USB_SWITCH_CONNECT,
+			   pd[port].polarity);
+}
+
+static void pd_send_enter_usb(int port)
+{
+	uint16_t header;
+	union enter_usb_data_obj usb4_payload = get_enter_usb_payload(port);
+
+	/* Prepare header */
+	header = PD_HEADER(PD_DATA_ENTER_USB,
+			   pd[port].power_role,
+			   pd[port].data_role,
+			   pd[port].msg_id,
+			   (int)pd[port].vdo_count,
+			   PD_REV30, 0);
+
+	if (pd_transmit(port, TCPC_TX_SOP, header,
+		&usb4_payload.raw_value) < 0) {
+		pd[port].vdm_state = VDM_STATE_ERR_SEND;
+	} else {
+		pd[port].vdm_state = VDM_STATE_BUSY;
+		pd[port].vdm_timeout.val = get_time().val +
+			vdm_get_ready_timeout(pd[port].vdo_data[0]);
+	}
+}
+
 void pd_task(void *u)
 {
 	int head;
@@ -3030,8 +3069,13 @@ void pd_task(void *u)
 		/* send any pending messages */
 		pd_ca_send_pending(port);
 #endif
-		/* process VDM messages last */
-		pd_vdm_send_state_machine(port);
+		if (is_enable_enter_usb4_mode(port)) {
+			pd_send_enter_usb(port);
+			disable_enter_usb4_mode(port);
+		} else {
+			/* process VDM messages last */
+			pd_vdm_send_state_machine(port);
+		}
 
 		/* Verify board specific health status : current, voltages... */
 		res = pd_board_checks();
