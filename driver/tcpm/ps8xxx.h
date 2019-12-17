@@ -67,6 +67,16 @@
 #define IN_HPD  BIT(0)
 #define HPD_IRQ BIT(1)
 
+#elif defined(CONFIG_USB_PD_TCPM_PS8815)
+/* Vendor defined registers */
+
+//#define PS8815_PRODUCT_ID       0x8815				// %%% verify
+#define PS8XXX_PRODUCT_ID	0x8815				// verify
+#define FW_VER_REG                              0x82		// %%% verify
+#define MUX_IN_HPD_ASSERTION_REG                0xD0		// %%% verify
+#define IN_HPD  BIT(0)						// %%% verify
+#define HPD_IRQ BIT(1)						// %%% verify
+
 #endif
 
 extern const struct tcpm_drv ps8xxx_tcpm_drv;

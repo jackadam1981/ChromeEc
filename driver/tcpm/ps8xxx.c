@@ -9,6 +9,7 @@
  * Supported TCPCs:
  * - PS8751
  * - PS8805
+ * - PS8815
  */
 
 #include "common.h"
@@ -19,7 +20,8 @@
 #include "usb_pd.h"
 
 #if !defined(CONFIG_USB_PD_TCPM_PS8751) && \
-	!defined(CONFIG_USB_PD_TCPM_PS8805)
+	!defined(CONFIG_USB_PD_TCPM_PS8805) && \
+	!defined(CONFIG_USB_PD_TCPM_PS8815)
 #error "Unsupported PS8xxx TCPC."
 #endif
 
@@ -196,6 +198,16 @@ static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
 	}
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_USB_PD_TCPM_PS8815
+static int ps8xxx_dci_disable(int port)
+{
+	// TODO(caveh): disable DCI?
+	if (0)
+		ps8xxx_addr_dci_disable(0, 0, 0);
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8805 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8805
 static int ps8xxx_dci_disable(int port)
