@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ae802ee_21f1bcd9",
+        "filename": "board/nucleo-f412zg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T14:36:40Z",
+      "side": 1,
+      "message": "just making sure this isn\u0027t a typo:\nThe size ratio for\nRO  : rollback : RW\n1   :    2     : 5\n\nright? Just seems skewed (and the above ascii art is a little skewed too)",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78be1d33_ce796df6",
+        "filename": "board/nucleo-f412zg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T14:36:40Z",
+      "side": 1,
+      "message": "can you add a bug number or remove please",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde2df9f_affe82f6",
+        "filename": "board/nucleo-f412zg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T14:36:40Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 7
+      },
+      "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
