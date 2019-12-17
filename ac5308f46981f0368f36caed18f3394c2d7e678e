@@ -22,6 +22,30 @@
       "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ad031f_8c486c66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-12-17T07:33:48Z",
+      "side": 1,
+      "message": "Yes, this CL is WIP. I\u0027m developing and verifying our ite new chip with tcpc driver version 2.\n\nThanks for your reply, I am aware of what you’re talking about. And I find without following codes\n\nfor (int i \u003d 0; i \u003c PD_AMODE_COUNT; i++)\n\t\tpe[port].amodes[i].fx \u003d \u0026supported_modes[i];\n\nit won\u0027t happen EC reset on board ampton or reef_it8320.\nI don\u0027t find and know when or how does the code let the pointer fx point to supported_modes[ ]. Could you give me a few pointers about when and how?",
+      "parentUuid": "1e9f8394_f81c9d22",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
