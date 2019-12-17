@@ -234,6 +234,58 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable[port].cable_mode_resp.tbt_rounded;
 }
 
+uint32_t get_enter_usb_msg_payload(int port)
+{
+	/*
+	 * Ref: USB Power Delivery Specification Revision 3.0, Version 2.0
+	 *Table 6-47 Enter_USB Data Object
+	 */
+	union enter_usb_data_obj eudo;
+
+	eudo.payload.mode = USB_PD_4;
+	eudo.payload.usb4_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB4);
+	eudo.payload.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_REV30);
+	eudo.payload.cable_speed = cable[port].attr.p_rev30.ss;
+	eudo.payload.cable_type = get_usb_pd_mux_cable_type(port) ==
+			       IDH_PTYPE_ACABLE ? CABLE_TYPE_ACTIVE_RETIMER :
+						  CABLE_TYPE_PASSIVE;
+	switch (cable[port].attr.p_rev20.vbus_cur) {
+	case USB_VBUS_CUR_3A:
+		eudo.payload.cable_current = USB4_CABLE_CURRENT_3A;
+		break;
+	case USB_VBUS_CUR_5A:
+		eudo.payload.cable_current = USB4_CABLE_CURRENT_5A;
+		break;
+	default:
+		eudo.payload.cable_current = USB4_CABLE_CURRENT_INVALID;
+		break;
+	}
+	eudo.payload.pcie_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
+	eudo.payload.dp_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
+	eudo.payload.tbt_supported = IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE);
+	eudo.payload.host_present = 1;
+
+	return eudo.raw_value;
+}
+
+bool is_enter_usb4_mode(int port)
+{
+	return IS_ENABLED(CONFIG_USB_PD_USB4) &&
+		cable[port].flags & CABLE_FLAGS_ENTER_USB_MODE;
+}
+
+void enter_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		cable[port].flags |= CABLE_FLAGS_ENTER_USB_MODE;
+}
+
+void avoid_usb4_reentry(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		cable[port].flags &= ~CABLE_FLAGS_ENTER_USB_MODE;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
@@ -275,13 +327,27 @@ static inline void disable_tbt_compat_mode(int port)
 		cable[port].flags &= ~CABLE_FLAGS_TBT_COMPAT_ENABLE;
 }
 
-
 static void set_tbt_compat_mode_ready(int port)
 {
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX) &&
 	    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		/* Set usb mux to Thunderbolt-compatible mode */
 		usb_mux_set(port, TYPEC_MUX_TBT_COMPAT, USB_SWITCH_CONNECT,
+			pd_get_polarity(port));
+}
+
+/*
+ * Before entering into alternate mode, state of the USB-C MUX
+ * needs to be in safe mode.
+ * Ref: USB Type-C Cable and Connector Specification
+ * Section E.2.2 Alternate Mode Electrical Requirements
+ */
+static void usb_pd_mux_enter_safe_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX) && IS_ENABLED(CONFIG_USB_PD_USB4))
+		/* Set usb mux to safe mode */
+		usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
+			TYPEC_MUX_SAFE : TYPEC_MUX_NONE, USB_SWITCH_CONNECT,
 			pd_get_polarity(port));
 }
 
@@ -364,6 +430,81 @@ static inline void limit_tbt_cable_speed(int port)
 static inline bool is_limit_tbt_cable_speed(int port)
 {
 	return !!(cable[port].flags & CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
+}
+
+static inline bool is_usb4_mode_enabled(int port)
+{
+	return (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	       (cable[port].flags & CABLE_FLAGS_USB4_CAPABLE));
+}
+
+static inline void enable_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		cable[port].flags |= CABLE_FLAGS_USB4_CAPABLE;
+}
+
+static inline void disable_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		cable[port].flags &= ~CABLE_FLAGS_USB4_CAPABLE;
+}
+
+static bool is_cable_usb4_capable(int port)
+{
+	/*
+	 * Ref: USB Type-C Cable and Connector Specification
+	 * Figure 5-1 USB4 Discovery and Entry Flow Model
+	 *
+	 * For passive cables:
+	 * -----------------------------------------------------
+	 * USB Signaling      Enter
+	 * -----------------------------------------------------
+	 * USB4 Gen3          USB4 with USB4 Gen3 passive cable
+	 * -----------------------------------------------------
+	 * USB3.2 Gen2        USB4 with TBT3 Gen3 passive cable
+	 * with DFP capable
+	 * ----------------------------------------------------
+	 * USB3.2 Gen2        USB4 with USB3.2 Gen2 passive cable
+	 * without DFP cap
+	 * -----------------------------------------------------
+	 * USB3.2 Gen1        USB4 with USB3.2 Gen1 passive cable
+	 * ------------------------------------------------------
+	 * USB2.0             Exit USB4 discovery
+	 * ------------------------------------------------------
+	 */
+
+	/* TODO: USB4 enter mode for Active cables */
+	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	   (get_usb_pd_mux_cable_type(port) == IDH_PTYPE_PCABLE)) {
+		switch (cable[port].attr.p_rev30.ss) {
+		case USB_R30_SS_U40_GEN3:
+		case USB_R30_SS_U32_GEN1:
+		/*
+		 * USB signaling USB3.2/USB4 Gen 2
+		 * TODO: Check if DFP is Gen3 capable
+		 */
+		case USB_R30_SS_U32_USB40_GEN2:
+			break;
+		default:
+			disable_usb4_mode(port);
+			return false;
+		}
+	}
+
+	return true;
+}
+
+static bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
+{
+	/*
+	 * Ref: USB Type-C Cable and Connector Specification
+	 * Figure 5-1 USB4 Discovery and Entry Flow Model
+	 * Device USB4 VDO detection.
+	 */
+	return IS_ENABLED(CONFIG_USB_PD_USB4) &&
+		is_vdo_present(cnt, VDO_INDEX_PTYPE_DEVICE) &&
+		PD_PRODUCT_IS_USB4(payload[VDO_INDEX_PTYPE_DEVICE]);
 }
 
 void pd_dfp_pe_init(int port)
@@ -602,15 +743,7 @@ static int enter_tbt_compat_mode(int port, uint32_t *payload)
 	if (is_transmit_msg_sop_prime(port))
 		return 1;
 
-	/*
-	 * Before entering into alternate mode, state of the USB-C MUX
-	 * needs to be in safe mode.
-	 * Ref: USB Type-C Cable and Connector Specification
-	 * Section E.2.2 Alternate Mode Electrical Requirements
-	 */
-	usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
-		TYPEC_MUX_SAFE : TYPEC_MUX_NONE, USB_SWITCH_CONNECT,
-			pd_get_polarity(port));
+	usb_pd_mux_enter_safe_mode(port);
 
 	/* Table F-13 TBT3 Device Enter Mode Command */
 	enter_dev_mode.vendor_spec_b1 =
@@ -951,6 +1084,21 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			if (is_transmit_msg_sop_prime(port)) {
 				/* Store cable type */
 				dfp_consume_cable_response(port, cnt, payload);
+
+				/*
+				 * Enter USB4 mode if the cable supports USB4
+				 * operation and has USB4 VDO.
+				 */
+				if (is_usb4_mode_enabled(port) &&
+					is_cable_usb4_capable(port)) {
+					enter_usb4_mode(port);
+					usb_pd_mux_enter_safe_mode(port);
+					disable_transmit_sop_prime(port);
+					disable_tbt_compat_mode(port);
+					rsize = 0;
+					break;
+				}
+
 				/*
 				 * Enable Thunderbolt-compatible mode if cable
 				 * supports superspeed
@@ -965,6 +1113,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			/* Received a SOP Discover Ident Message */
 			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
 				dfp_consume_identity(port, cnt, payload);
+
+				/* Enable USB4 mode if USB4 VDO present */
+				if (is_usb4_vdo(port, cnt, payload)) {
+					enable_usb4_mode(port);
+				}
+
 				/* Send SOP' Discover Ident message */
 				if (!cable[port].is_identified) {
 					rsize = dfp_discover_ident(payload);
