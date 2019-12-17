@@ -5523,6 +5523,7 @@ struct ec_params_usb_pd_mux_info {
 #define USB_PD_MUX_HPD_LVL            BIT(4) /* HPD level is asserted */
 #define USB_PD_MUX_SAFE_MODE          BIT(5) /* DP is in safe mode */
 #define USB_PD_MUX_TBT_COMPAT_ENABLED BIT(6) /* TBT compat enabled */
+#define USB_PD_MUX_USB4_ENABLED       BIT(7) /* USB4 enabled */
 
 struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
