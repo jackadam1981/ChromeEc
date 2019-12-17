@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64422e62_679cc8af",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-17T00:02:11Z",
+      "side": 1,
+      "message": "I have a CL in flight to set it to 2g, as it is not seen by Android, just for lid angle calculation. (CL/1957375).",
+      "revId": "5dc25b8f709e44aadcf02fbf11fd97f9a7406fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67a160b_597a0da8",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-17T00:02:11Z",
+      "side": 1,
+      "message": "remove all sensors to ALS, to have SENSOR_COUNT that match the size of the sensor array.",
+      "revId": "5dc25b8f709e44aadcf02fbf11fd97f9a7406fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
