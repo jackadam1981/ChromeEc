@@ -293,6 +293,7 @@ static const char * const pd_state_names[] = {
 	"SOFT_RESET", "HARD_RESET_SEND", "HARD_RESET_EXECUTE", "BIST_RX",
 	"BIST_TX",
 	"DRP_AUTO_TOGGLE",
+	"ENTER_USB",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_state_names) == PD_STATE_COUNT);
 #endif
@@ -1703,6 +1704,12 @@ static void handle_data_request(int port, uint16_t head,
 #ifdef CONFIG_USB_PD_REV30
 	case PD_DATA_BATTERY_STATUS:
 		break;
+	/* TODO : Add case PD_DATA_RESET for exiting USB4 */
+
+	/*
+	 * TODO : Add case PD_DATA_ENTER_USB to accept or reject
+	 * Enter_USB request from port partner.
+	 */
 #endif
 	case PD_DATA_VENDOR_DEF:
 		handle_vdm_request(port, cnt, payload, head);
@@ -2807,6 +2814,51 @@ void pd_interrupt_handler_task(void *p)
 }
 #endif /* HAS_TASK_PD_INT_C0 || HAS_TASK_PD_INT_C1 || HAS_TASK_PD_INT_C2 */
 
+static void pd_send_enter_usb(int port, int *timeout)
+{
+	uint32_t usb4_payload = get_enter_usb_msg_payload(port);
+	uint16_t header;
+	int res;
+
+	/*
+	 * TODO: Enable Enter USB for cables (SOP').
+	 * This is needed for active cables
+	 */
+	if (!IS_ENABLED(CONFIG_USBC_SS_MUX) || !IS_ENABLED(CONFIG_USB_PD_USB4))
+		return;
+
+	header = PD_HEADER(PD_DATA_ENTER_USB,
+		pd[port].power_role,
+		pd[port].data_role,
+		pd[port].msg_id,
+		1,
+		PD_REV30,
+		0);
+
+	res = pd_transmit(port, TCPC_TX_SOP, header, &usb4_payload);
+	if (res < 0) {
+		*timeout = 10*MSEC;
+		/*
+		 * If failed to get goodCRC, send
+		 * soft reset, otherwise ignore
+		 * failure.
+		 */
+		set_state(port, res == -1 ?
+			   PD_STATE_SOFT_RESET :
+			   READY_RETURN_STATE(port));
+		return;
+	}
+
+	/* Disable Enter USB4 mode prevent re-entry */
+	disable_enter_usb4_mode(port);
+
+	/* Wait for accept or reject */
+	set_state_timeout(port,
+			  get_time().val +
+			  PD_T_SENDER_RESPONSE,
+			  PD_STATE_ENTER_USB);
+}
+
 void pd_task(void *u)
 {
 	int head;
@@ -3674,6 +3726,15 @@ void pd_task(void *u)
 				break;
 			}
 
+			/*
+			 * Enter_USB if port partner and cable are
+			 * USB4 compatible.
+			 */
+			if (should_enter_usb4_mode(port)) {
+				pd_send_enter_usb(port, &timeout);
+				break;
+			}
+
 			if (!(pd[port].flags & PD_FLAGS_PING_ENABLED))
 				break;
 
@@ -4287,6 +4348,15 @@ void pd_task(void *u)
 				break;
 			}
 
+			/*
+			 * Enter_USB if port partner and cable are
+			 * USB4 compatible.
+			 */
+			if (should_enter_usb4_mode(port)) {
+				pd_send_enter_usb(port, &timeout);
+				break;
+			}
+
 			/* Sent all messages, don't need to wake very often */
 			timeout = 200*MSEC;
 			break;
@@ -4660,6 +4730,41 @@ void pd_task(void *u)
 			break;
 		}
 #endif
+		case PD_STATE_ENTER_USB:
+			if (!IS_ENABLED(CONFIG_USBC_SS_MUX))
+				break;
+
+			switch (PD_HEADER_TYPE(head)) {
+			case PD_CTRL_ACCEPT:
+				/*
+				 * Connect the SBU and USB lines to
+				 * the connector.
+				 */
+				if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+					ppc_set_sbu(port, 1);
+
+				/* Set usb mux t0o USB4 mode */
+				usb_mux_set(port, TYPEC_MUX_USB4,
+					    USB_SWITCH_CONNECT,
+					    pd[port].polarity);
+				break;
+			case PD_CTRL_REJECT:
+				/*
+				 * Since Enter USB sets the mux state to
+				 * SAFE mode, resetting the mux state
+				 * back to USB mode on recieveing a NACK
+				 */
+				usb_mux_set(port, TYPEC_MUX_USB,
+					    USB_SWITCH_CONNECT,
+					    pd[port].polarity);
+				break;
+			default:
+				break;
+			}
+
+			set_state(port, READY_RETURN_STATE(port));
+			break;
+
 		default:
 			break;
 		}
