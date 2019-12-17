@@ -141,10 +141,6 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
-/* Console command removed on ToT only. Do not cherry pick to servo branch */
-#undef CONFIG_CMD_PD
-#undef CONFIG_CMD_USART_INFO
-
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
