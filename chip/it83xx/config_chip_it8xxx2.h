@@ -26,7 +26,7 @@
 #define CHIP_RAM_SPACE_RESERVED     0x3000
 
 #define CONFIG_RAM_BASE             0x80080000
-#define CONFIG_RAM_SIZE             0x00010000
+#define CONFIG_RAM_SIZE             0x0000D000
 
 #define CONFIG_PROGRAM_MEMORY_BASE  (CHIP_ILM_BASE)
 

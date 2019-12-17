@@ -70,6 +70,12 @@ void usb_evt(enum gpio_signal signal)
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
+void dummy_task(void)
+{
+	while (1)
+		task_wait_event(-1);
+}
+
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */

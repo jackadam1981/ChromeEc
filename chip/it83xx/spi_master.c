@@ -59,7 +59,7 @@ static void sspi_frequency(enum sspi_clk_sel freq)
 	 * SSCK frequency is [freq] MHz and mode 3.
 	 * note, clk_sspi need equal to 48MHz above.
 	 */
-	IT83XX_SSPI_SPICTRL1 |= (0x60 | (freq << 2));
+	IT83XX_SSPI_SPICTRL1 |= (0x20 | (freq << 2));
 }
 
 static void sspi_transmission_end(void)
@@ -136,6 +136,18 @@ int spi_transaction(const struct spi_device_t *spi_device,
 		rxdata[idx] = IT83XX_SSPI_SPIDATA;
 	}
 
+#if 1
+	while (1) {
+		if (port == SSPI_CH_CS1)
+			/* Write 1 to start the data transmission of CS1 */
+			IT83XX_SSPI_SPISTS |= 0x08;
+		else
+			/* Write 1 to start the data transmission of CS0 */
+			IT83XX_SSPI_SPISTS |= 0x10;
+		if (IT83XX_SSPI_SPIDATA == 0xed)
+			break;
+	}
+#endif
 	sspi_transmission_end();
 	mutex_unlock(&spi_mutex);
 
@@ -147,7 +159,7 @@ static void sspi_init(void)
 	int i;
 
 	clock_enable_peripheral(CGC_OFFSET_SSPI, 0, 0);
-	sspi_frequency(sspi_clk_8mhz);
+	sspi_frequency(sspi_clk_6mhz);
 
 	/*
 	 * bit[5:3] Byte Width (BYTEWIDTH)
@@ -169,3 +181,47 @@ static void sspi_init(void)
 		spi_enable(spi_devices[i].port, 0);
 }
 DECLARE_HOOK(HOOK_INIT, sspi_init, HOOK_PRIO_INIT_SPI);
+
+
+static uint8_t rx_fifo[256];
+
+static int command_spislv_hello(int argc, char **argv)
+{
+	int i;
+	uint8_t tx_buf[] = {0x03, 0xEE, 0x01, 0x00, 0x00,
+		0x00, 0x04, 0x00, 0x01, 0x02, 0x03, 0x04};
+
+	ccprints("[SSPI] rx_fifo=%pP", rx_fifo);
+
+	for (i = 0; i < 1; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+		spi_transaction(&spi_devices[i], tx_buf,
+			12, rx_fifo, 200);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spihello, command_spislv_hello,
+			"spihello",
+			"SPI hello cmmand");
+
+
+static int command_spislv_rdata(int argc, char **argv)
+{
+	int i;
+	char *e;
+	int len = strtoi(argv[1], &e, 0);
+
+	ccprints("[SSPI] rx_fifo=%pP", rx_fifo);
+
+	for (i = 0; i < 1; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+		spi_transaction(&spi_devices[i], NULL, 0,
+			rx_fifo, len);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spiread, command_spislv_rdata,
+			"spiread [length]",
+			"SPI read data");

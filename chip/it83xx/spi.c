@@ -310,6 +310,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, spi_chipset_startup, HOOK_PRIO_FIRST);
 
 static void spi_chipset_shutdown(void)
 {
+	return;
 	/* SPI not enabled */
 	spi_set_state(SPI_STATE_DISABLED);
 	/* Disable SPI interrupt */
@@ -346,6 +347,8 @@ static void spi_init(void)
 		/* SPI not enabled */
 		spi_set_state(SPI_STATE_DISABLED);
 	}
+	spi_chipset_startup();
+	disable_sleep(SLEEP_MASK_SPI);
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 
