@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "106a182a_e3f404d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "can you manually test these newly added console command too please?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20e1198_be6f0083",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "Can you add a comment here saying we converted a 8 character ascii string with hex digits (without 0x prefix) into its signed 32-bit equivalent\n\n\n(also it is weird that this isn\u0027t in common or something already, but I couldn\u0027t find a great place for it, so we can leave it here for now)",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00565696_8192677b",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "just in case we pass in NULL, and you check for while(ptr \u0026\u0026 *ptr)",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1374262d_f3d8a1f3",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "This would be a great function to add unit tests for, please add",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215ffe98_e6c7117d",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "I think this can be reduce to ccprintf(\"0x%08x\", hash[j]). Does that work?",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 22
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0265876f_d6ac9604",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "we should be able to use IS_ENABLE here",
+      "range": {
+        "startLine": 116,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd741227_f0ee211d",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "I don\u0027t think this is worth the space savings, can we write Enabled and Disable here instead? \n\n(Also the format string is missing \"able\" after the %s in its current form)",
+      "range": {
+        "startLine": 263,
+        "startChar": 30,
+        "endLine": 263,
+        "endChar": 43
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b4fdd5_d122f1fe",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "if you break this up into multiple ccprintf calls, we can use IS_ENABLED here as well",
+      "range": {
+        "startLine": 267,
+        "startChar": 6,
+        "endLine": 271,
+        "endChar": 6
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b2a4d4_92871e09",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "Just to be explicit, these are fine to keep",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 28
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab6678e0_f5f2b7c0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T17:02:13Z",
+      "side": 1,
+      "message": "Should we add an else clause that prints that something when unhandled.\n\nOr better yet, can we write a unit test that ensures we are always handling all of the DPM requests",
+      "range": {
+        "startLine": 1591,
+        "startChar": 3,
+        "endLine": 1591,
+        "endChar": 4
+      },
+      "revId": "2b0e2c808421cc3ad526bca17304461255d0d46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
