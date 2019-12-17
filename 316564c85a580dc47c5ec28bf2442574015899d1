@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee639a14_31ed26bd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T18:27:37Z",
+      "side": 1,
+      "message": "I am still confused about what the difference between master and non-master is. Is one for console command override, are they for different layers?\n\nCan we describe when these should be used?\n\nIf all bits must be present to allow communication, then is seem like we should flip the logic and call this pd_disabled, and only if no bits are present are we allow communication.\n\nAlso are all 4 permutations of the enable bits valid?\n\n---\n\nBe should also use BIT(0) and BIT(1) if we are truly a bit flag (and most likely not use an enum type either)",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05dba913_54b44192",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T18:27:37Z",
+      "side": 1,
+      "message": "fyi, this mutex does not protect the pd_try_src_enable variable correctly. You need a single mutex declared at global scope to handle this, not multiple mutexes declared at function scope.\n\n\nAlso, we should just use atomic bit operations here instead of using a mutex",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 44
+      },
+      "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216fb486_fb524a23",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-17T18:27:37Z",
+      "side": 1,
+      "message": "if you are going to access this outside of the mutex (which is okay since it is just a read), you shoudl read this value once at the beginning of the function and use that cached value for the entire function otherwise you can be using different values through the execution of this function, which is bad",
+      "range": {
+        "startLine": 1126,
+        "startChar": 5,
+        "endLine": 1126,
+        "endChar": 22
+      },
+      "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
