@@ -11,6 +11,7 @@
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
+#include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tusb422.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "fan.h"
@@ -323,9 +324,9 @@ const struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1,
-			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
 		},
-		.drv = &tusb422_tcpm_drv,
+		.drv = &ps8xxx_tcpm_drv,
 		.usb23 = USBC_PORT_1_USB2_NUM | (USBC_PORT_1_USB3_NUM << 4),
 	},
 };
