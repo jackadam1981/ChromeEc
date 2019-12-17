@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81c0ecc4_58f81742",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-17T23:31:52Z",
+      "side": 1,
+      "message": "Added note that VSYNC isn\u0027t yet tested.  I don\u0027t have a camera module and the board requires rework to fix the EC interrupt output to the AP.",
+      "parentUuid": "3e2272ef_c05a4a93",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "e708a6ec923bed7ca5b9ad95290036aa3716023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7683659_bf232c9c",
         "filename": "baseboard/volteer/sensors.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-16T18:28:04Z",
       "side": 1,
       "message": "nit: 5?",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "e708a6ec923bed7ca5b9ad95290036aa3716023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5324aaea_c456ae82",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-17T23:31:52Z",
+      "side": 1,
+      "message": "Device used on Volteer is a Bosch BMA253.",
+      "parentUuid": "a7683659_bf232c9c",
       "range": {
         "startLine": 22,
         "startChar": 44,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3fcc5eea_83aa89eb",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-17T23:31:52Z",
+      "side": 1,
+      "message": "Based on Kohaku and b:139366662, the calibration data is stored by the EC.  So these fields will be updated once b:146166425 is addressed.",
+      "parentUuid": "b8eea504_cc7e0a53",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "e708a6ec923bed7ca5b9ad95290036aa3716023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22fe801f_e904109f",
         "filename": "baseboard/volteer/sensors.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "e708a6ec923bed7ca5b9ad95290036aa3716023f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6d37d3_a34b3160",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-17T23:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22fe801f_e904109f",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "e708a6ec923bed7ca5b9ad95290036aa3716023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
