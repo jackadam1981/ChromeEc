@@ -430,6 +430,7 @@ struct pd_policy {
 #define VDO_INDEX_CABLE        3
 #define VDO_INDEX_PRODUCT      3
 #define VDO_INDEX_AMA          4
+#define VDO_INDEX_PTYPE_DEVICE 4
 #define VDO_INDEX_PTYPE_CABLE1 4
 #define VDO_INDEX_PTYPE_CABLE2 5
 #define VDO_I(name) VDO_INDEX_##name
@@ -527,6 +528,10 @@ struct pd_cable {
 #define CABLE_FLAGS_TBT_COMPAT_READY       BIT(3)
 /* Flag to limit speed to TBT Gen 2 passive cable */
 #define CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED BIT(4)
+/* Flag for checking if device is USB4.0 capable */
+#define CABLE_FLAGS_USB4_CAPABLE           BIT(5)
+/* Flag for entering ENTER_USB mode */
+#define CABLE_FLAGS_ENTER_USB_MODE         BIT(6)
 
 /*
  * SVDM Discover SVIDs request -> response
@@ -969,6 +974,7 @@ enum pd_data_msg_type {
 	PD_DATA_ALERT = 6,
 	PD_DATA_GET_COUNTRY_INFO = 7,
 	/* 8-14 Reserved for REV 3.0 */
+	PD_DATA_ENTER_USB = 8,
 	PD_DATA_VENDOR_DEF = 15,
 };
 
@@ -1546,6 +1552,34 @@ void reset_pd_cable(int port);
  * @return	cable type
  */
 enum idh_ptype get_usb_pd_mux_cable_type(int port);
+
+/**
+ * Return enter USB message payload
+ *
+ * @param port	USB-C port number
+ */
+uint32_t get_enter_usb_msg_payload(int port);
+
+/**
+ * Enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void enter_usb4_mode(int port);
+
+/**
+ * Clear enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void avoid_usb4_reentry(int port);
+
+/**
+ * Return if need to enter into USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+bool is_enter_usb4_mode(int port);
 
 /**
  * Return the response of discover mode SOP prime, with SVID = 0x8087
