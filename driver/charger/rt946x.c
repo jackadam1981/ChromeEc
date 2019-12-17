@@ -13,6 +13,7 @@
 #include "compile_time_macros.h"
 #include "config.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
@@ -1219,9 +1220,27 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 	}
 }
 
+static void check_ac_state(void)
+{
+	static uint8_t ac;
+
+	if (ac != extpower_is_present()) {
+		ac = !ac;
+		hook_notify(HOOK_AC_CHANGE);
+	}
+}
+DECLARE_DEFERRED(check_ac_state);
+
 void rt946x_interrupt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_USB_CHG);
+	/*
+	 * Generally, VBUS detection can be done immediately when the port
+	 * plug/unplug happens. But if it's a PD plug(and will generate an
+	 * interrupt), then it will take a few milliseconds to raise VBUS
+	 * by PD negotiation.
+	 */
+	hook_call_deferred(&check_ac_state_data, 50 * MSEC);
 }
 
 int rt946x_toggle_bc12_detection(void)
@@ -1267,6 +1286,7 @@ static void rt946x_usb_connect(void)
 		/* delay extra 50 ms to ensure SrcCap received */
 		hook_call_deferred(&check_pd_capable_data,
 				   PD_T_SINK_WAIT_CAP + 50 * MSEC);
+	hook_call_deferred(&check_ac_state_data, 0);
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, rt946x_usb_connect, HOOK_PRIO_DEFAULT);
 
@@ -1274,6 +1294,7 @@ static void rt946x_pd_disconnect(void)
 {
 	/* Type-C disconnected, disable deferred check. */
 	hook_call_deferred(&check_pd_capable_data, -1);
+	hook_call_deferred(&check_ac_state_data, 0);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, rt946x_pd_disconnect, HOOK_PRIO_DEFAULT);
 
