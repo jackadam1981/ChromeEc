@@ -430,6 +430,7 @@ struct pd_policy {
 #define VDO_INDEX_CABLE        3
 #define VDO_INDEX_PRODUCT      3
 #define VDO_INDEX_AMA          4
+#define VDO_INDEX_PTYPE_DEVICE 4
 #define VDO_INDEX_PTYPE_CABLE1 4
 #define VDO_INDEX_PTYPE_CABLE2 5
 #define VDO_I(name) VDO_INDEX_##name
@@ -527,6 +528,10 @@ struct pd_cable {
 #define CABLE_FLAGS_TBT_COMPAT_READY       BIT(3)
 /* Flag to limit speed to TBT Gen 2 passive cable */
 #define CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED BIT(4)
+/* Flag for checking if device is USB4.0 capable */
+#define CABLE_FLAGS_USB4_CAPABLE           BIT(5)
+/* Flag for entering ENTER_USB mode */
+#define CABLE_FLAGS_ENTER_USB_MODE         BIT(6)
 
 /*
  * AMA VDO
@@ -786,6 +791,76 @@ struct pd_cable {
 /* Timeout for message receive in microseconds */
 #define USB_PD_RX_TMOUT_US 1800
 
+/*
+ * Enter USB Data Object (Ref: USB PD 3.2 Version 2.0 Table 6-47)
+ * -----------------------
+ * <31>    : Reserved
+ * <30:28> : USB Mode (000b == USB2.0, 001b == USB3.2, 010b ==USB4)
+ * <27>    : Reserved
+ * <26>    : USB4 DRD capable ? (0b == No, 1b == Yes)
+ * <25>    : USB3 DRD capable ? (0b == No, 1b == Yes)
+ * <24>    : Reserved
+ * <23:21> : Cable Speed (000b == USB2.0,
+ *                        001b == USB3.2 Gen1,
+ *                        010b == USB3.2 Gen2 and USB4 Gen2
+ *                        011b == USB4 Gen3)
+ * <20:19> : Cable Type (00b == Passive,
+ *                       01b == Active Re-timer,
+ *                       10b == Active Re-driver,
+ *                       11b == Optically Isolated)
+ * <18:17> : Cable Current (00b == Vbus not supported,
+ *                          01b == Reserved,
+ *                          10b == 3A,
+ *                          11b == 5A)
+ * <16>    : PCIe Supported ? (1b == Yes, 0b == No)
+ * <15     : DP Supported ? (1b == Yes, 0b == No)
+ * <14>    : TBT Supported ? (1b == Yes, 0b == No)
+ * <13>    : Host present ? (1b == Yes, 0b == No)
+ * <12:0>  : Reserved
+ */
+
+enum usb_mode {
+	USB_PD_20,
+	USB_PD_32,
+	USB_PD_4,
+};
+
+enum usb4_cable_current {
+	USB4_CABLE_CURRENT_INVALID,
+	USB4_CABLE_CURRENT_RESERVED,
+	USB4_CABLE_CURRENT_3A,
+	USB4_CABLE_CURRENT_5A,
+};
+
+enum usb4_cable_type {
+	CABLE_TYPE_PASSIVE,
+	CABLE_TYPE_ACTIVE_RETIMER,
+	CABLE_TYPE_ACTIVE_REDRIVER,
+	CABLE_TYPE_ISOLATED,
+};
+
+struct enter_usb_payload {
+	uint32_t reserved3 : 13;
+	uint32_t host_present : 1;
+	uint32_t tbt_supported : 1;
+	uint32_t dp_supported : 1;
+	uint32_t pcie_supported : 1;
+	enum usb4_cable_current cable_current : 2;
+	enum usb4_cable_type cable_type : 2;
+	enum usb_rev30_ss cable_speed : 3;
+	uint32_t reserved2 : 1;
+	uint32_t usb3_drd_cap : 1;
+	uint32_t usb4_drd_cap : 1;
+	uint32_t reserved1 : 1;
+	enum usb_mode mode : 3;
+	uint32_t reserved0 : 1;
+};
+
+union enter_usb_data_obj {
+	struct enter_usb_payload payload;
+	uint32_t raw_value;
+};
+
 /* --- Protocol layer functions --- */
 
 enum pd_states {
@@ -1038,6 +1113,7 @@ enum pd_data_msg_type {
 	PD_DATA_ALERT = 6,
 	PD_DATA_GET_COUNTRY_INFO = 7,
 	/* 8-14 Reserved for REV 3.0 */
+	PD_DATA_ENTER_USB = 8,
 	PD_DATA_VENDOR_DEF = 15,
 };
 
@@ -1613,6 +1689,34 @@ void reset_pd_cable(int port);
  * @return	cable type
  */
 enum idh_ptype get_usb_pd_mux_cable_type(int port);
+
+/**
+ * Return enter USB message payload
+ *
+ * @param port	USB-C port number
+ */
+uint32_t get_enter_usb_msg_payload(int port);
+
+/**
+ * Enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void enter_usb4_mode(int port);
+
+/**
+ * Clear enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void avoid_usb4_reentry(int port);
+
+/**
+ * Return if need to enter into USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+bool is_enter_usb4_mode(int port);
 
 /**
  * Return the response of discover mode SOP prime, with SVID = 0x8087
