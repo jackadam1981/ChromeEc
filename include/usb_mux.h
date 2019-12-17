@@ -49,6 +49,7 @@ enum typec_mux {
 	TYPEC_MUX_SAFE = MUX_SAFE_MODE,    /* Safe mode */
 	/* Thunderbolt-compatible only */
 	TYPEC_MUX_TBT_COMPAT = USB_PD_MUX_TBT_COMPAT_ENABLED,
+	TYPEC_MUX_USB4 = USB_PD_MUX_USB4_ENABLED, /* USB4 mode only */
 };
 
 /* Mux driver function pointers */
