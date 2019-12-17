@@ -193,6 +193,9 @@ static void clock_set_pll(enum pll_freq_idx idx)
 {
 	int pll;
 
+	freq = 48000000;
+	return;
+
 	pll_div_fnd  = clock_pll_ctrl[idx].div_fnd;
 	pll_div_ec   = clock_pll_ctrl[idx].div_ec;
 	pll_div_jtag = clock_pll_ctrl[idx].div_jtag;
@@ -554,6 +557,8 @@ void __idle(void)
 	 * their task inits and have gone to sleep.
 	 */
 	CPRINTS("low power idle task started");
+
+	while (1);
 
 	while (1) {
 		/* Disable interrupts */

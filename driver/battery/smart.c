@@ -17,7 +17,7 @@
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr);
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-#define BATTERY_NO_RESPONSE_TIMEOUT	(1000*MSEC)
+#define BATTERY_NO_RESPONSE_TIMEOUT	(100*MSEC)
 
 static int fake_state_of_charge = -1;
 static int fake_temperature = -1;
