@@ -192,6 +192,24 @@ $(out)/RW/common/aes-gcm.o: CFLAGS+=-std=c99 -Wno-declaration-after-statement
 $(out)/RO/common/aes-gcm.o: CFLAGS+=-std=c99 -Wno-declaration-after-statement
 
 ifneq ($(CONFIG_BOOTBLOCK),)
+
+ifndef BOOTBLOCK
+
+ifdef BUILDALL
+# generate a dummy bootblock file if we are running `make buildall`
+BOOTBLOCK := $(out)/.dummy-bootblock
+DUMMY_BOOTBLOCK_SIZE ?= 0
+
+.PHONY: $(out)/.dummy-bootblock
+$(out)/.dummy-bootblock:
+	dd if=/dev/zero of=$@ bs=1 count=$(DUMMY_BOOTBLOCK_SIZE)
+else
+# Fail if CONFIG_BOOTBLOCK is defined but BOOTBLOCK not specified.
+$(error BOOTBLOCK not defined)
+endif # BUILDALL
+
+endif # BOOTBLOCK
+
 build-util-bin += gen_emmc_transfer_data
 
 # Bootblock is only packed in RO image.
