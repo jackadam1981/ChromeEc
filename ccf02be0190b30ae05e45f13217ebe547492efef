@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e663cff4_c2fa383e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-12-18T08:33:18Z",
+      "side": 1,
+      "message": "I think we don\u0027t need __func__ level verbosity, but will it help if we add \u0027rt946x\u0027 as module level indicator in messages? i.e.,\n\n#define CPRINTS(format, args...) \\\n cprints(CC_CHARGER, \"%s\" format, \"CHG rt946x \", ## args)\n\nThis can also save 2 bytes per each (\"CHG \" \u003d\u003e \"%s\") message",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c258f28a_3524cec8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-12-18T08:33:18Z",
+      "side": 1,
+      "message": "why add timestamps (prints)?",
+      "range": {
+        "startLine": 435,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 8
+      },
+      "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5405321c_c2464542",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-12-18T08:33:18Z",
+      "side": 1,
+      "message": "maybe add (ret\u003d%d) ?",
+      "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
