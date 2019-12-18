@@ -17,6 +17,7 @@
 /****************************************************************************/
 /* Memory mapping */
 
+#define CHIP_ILM_BASE               0x00000000
 #define CHIP_H2RAM_BASE             0x0008D000 /* 0x0008D000~0x0008DFFF */
 #define CHIP_RAMCODE_BASE           0x0008E000 /* 0x0008E000~0x0008EFFF */
 #define CHIP_EXTRA_STACK_SPACE      0
