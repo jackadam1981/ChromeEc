@@ -70,6 +70,53 @@
       "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a250897_ada0579a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-12-18T10:44:19Z",
+      "side": 1,
+      "message": "Thank you, Daisuke.\nI find here the pointer modep let pe[port].amodes[ ].fx point to supported_modes[ ]:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/usb_pd_policy.c#547",
+      "parentUuid": "40d74653_994ba47b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44b31b4_a69b3d39",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-12-18T10:44:19Z",
+      "side": 1,
+      "message": "The problem is here, this memset let the structure pointer fx memeber point to code address 0.\nWhen we rx ack of discover mode, we will input svid 0 to pd_dfp_enter_mode(), and unfortunately in risc-v the value of code address 0 and 1 is 0x0000.  It means that we will get the both match mode index value 0 in allocate_mode(), but now the pe[ ].amodes[ ].fx point to NULL, and later executing enter mode happens EC reset.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 48
+      },
+      "revId": "ac5308f46981f0368f36caed18f3394c2d7e678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
