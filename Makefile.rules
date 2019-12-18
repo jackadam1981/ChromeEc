@@ -123,7 +123,7 @@ cmd_tp_hash = $(out)/util/gen_touchpad_hash \
 		$(if $(TOUCHPAD_FW),-f $(TOUCHPAD_FW)) -o $@
 
 cmd_emmc_bootblock = $(out)/util/gen_emmc_transfer_data \
-		$(if $(BOOTBLOCK),-i $(BOOTBLOCK)) -o $@
+		-i $(BOOTBLOCK) -o $@
 
 cmd_ipi_table = $(out)/util/gen_ipi_table $@
 cmd_cp_script = cp "$<" "$@" && chmod +x "$@"
@@ -221,12 +221,12 @@ endif # CONFIG_EXPERIMENTAL_CONSOLE=y
 proj-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/$*
 	@echo "======= building $*"
-	$(MAKE) --no-print-directory BOARD=$* V=$(V)
+	$(MAKE) --no-print-directory BOARD=$* V=$(V) BUILDALL=y
 	@rm $(FAILED_BOARDS_DIR)/$*
 
 tests-%:
 	@echo "======= building $* tests"
-	$(MAKE) --no-print-directory BOARD=$* V=$(V) tests
+	$(MAKE) --no-print-directory BOARD=$* V=$(V) BUILDALL=y tests
 
 dis-y := $(out)/RW/$(PROJECT).RW.dis
 dis-$(CONFIG_FW_INCLUDE_RO) += $(out)/RO/$(PROJECT).RO.dis

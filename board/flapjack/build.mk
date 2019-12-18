@@ -7,6 +7,11 @@
 #
 #
 # STmicro STM32F098VC
+
+ifeq ($(BUILDALL),y)
+BOOTBLOCK := $(out)/dummy-bootblock
+endif
+
 CHIP:=stm32
 CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f09x
@@ -16,3 +21,8 @@ board-$(CONFIG_BOOTBLOCK)+=emmc.o
 board-$(BOARD_KRANE)+=base_detect_krane.o
 
 $(out)/RO/board/$(BOARD)/emmc.o: $(out)/bootblock_data.h
+
+# Use the size of bootblock in Flapjack 12753.0 as dummy file size
+.PHONY: $(out)/dummy-bootblock
+$(out)/dummy-bootblock:
+	dd if=/dev/zero of=$@ bs=1 count=20992

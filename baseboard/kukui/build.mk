@@ -6,6 +6,10 @@
 # Baseboard specific files build
 #
 
+ifeq ($(BUILDALL),y)
+BOOTBLOCK := $(out)/dummy-bootblock
+endif
+
 baseboard-y=baseboard.o
 baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
 baseboard-$(CONFIG_BOOTBLOCK)+=emmc.o
@@ -19,3 +23,8 @@ baseboard-$(VARIANT_KUKUI_CHARGER_MT6370)+=charger_mt6370.o
 baseboard-$(VARIANT_KUKUI_POGO_KEYBOARD)+=base_detect_kukui.o
 
 $(out)/RO/baseboard/$(BASEBOARD)/emmc.o: $(out)/bootblock_data.h
+
+# Use the size of bootblock in Kukui 12753.0 as dummy file size
+.PHONY: $(out)/dummy-bootblock
+$(out)/dummy-bootblock:
+	dd if=/dev/zero of=$@ bs=1 count=20992

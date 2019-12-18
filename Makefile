@@ -60,10 +60,6 @@ config=$(out)/.config
 # If no key file is provided, use the default dev key
 PEM ?= $(BDIR)/dev_key.pem
 
-# If CONFIG_BOOTBLOCK is set, includes AP-FW bootblock in the EC image.
-# If no bootblock is provided, just pack an empty file.
-BOOTBLOCK ?=
-
 # Port for flash_ec. Defaults to 9999.
 PORT ?= 9999
 
@@ -221,6 +217,13 @@ ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
 		- < $(BDIR)/ec.irqlist | grep "EN_IRQ .*" | cut -c8-)
 	CPPFLAGS+=$(foreach irq,$(_irq_list),\
 		    -D"irq_$(irq)_handler_optional=irq_$(irq)_handler")
+endif
+
+# Fail if CONFIG_BOOTBLOCK is defined but BOOTBLOCK not specified.
+ifdef CONFIG_BOOTBLOCK
+ifndef BOOTBLOCK
+$(error BOOTBLOCK not defined)
+endif
 endif
 
 # Compute RW firmware size and offset
