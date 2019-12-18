@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cea69294_048a8965",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-18T19:48:21Z",
+      "side": 1,
+      "message": "How about CUTOFF_PRINTS?",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "0c12075803fc59cf82087cc42abaf8ff1576a7bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea64af96_59ae2e4c",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-18T19:48:21Z",
+      "side": 1,
+      "message": "you should simply do:\n  CPRINTS(\"Battery cut off %s\", info)",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "0c12075803fc59cf82087cc42abaf8ff1576a7bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
