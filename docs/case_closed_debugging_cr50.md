@@ -703,3 +703,86 @@ to read power from the INAs if they’re populated.
 Suzyq doesn’t have all of the necessary things to replace servo for FAFT, but
 you should be able to use it for normal debugging functionality. You will need
 a type c servo v4 for ccd if you need to run FAFT.
+
+# UART Rescue mode
+
+## Overview
+
+UART Rescue Mode is a feature of the Cr50 RO firmware that supports programming
+the RW firmware using only the UART interface. This is used to recovery a bad
+RW firmware update (which should be rare).
+
+This is also useful when bringing up new designs, as this allows to update Cr50
+image even before USB CCD or TPM interfaces are operational.
+
+UART rescue works on all existing devices, all it requires is that Cr50 console
+is mapped to a `/dev/xxx` device on the workstation (the same device used to
+attach a terminal to the console).
+
+Rescue works as follows: when the RO starts, it prints out on the console a
+certain string and momentarily waits for the host to send a sync symbol, to
+indicate that an alternative RW will have to be loaded over UART. The RO also
+enters this mode if there is no valid RW to run.
+
+When rescue mode is triggered, the RO is expecting the host to transfer a
+single RW image in hex format.
+
+## Preparing an RW image
+
+*To prepare the signed hex RW image*, fetch a released image from Google
+storage, which can be found by running:
+
+`gsutil ls gs://chromeos-localmirror/distfiles/cr50*`
+
+(depending on your setup you might have to do this inside chroot). Copy the
+image you want to use for rescue to your workstation and extract cr50.bin.prod
+from the tarball.
+
+The latest cr50 images can be found in the [chromeos-cr50 ebuild]. Generally,
+you should always use the PROD_IMAGE indicated in that file. Once rescued, the
+user can update to the PREPVT image later if needed.
+
+Once the binary image is ready, use the following commands to carve out the RW
+A section out of it and convert it into hex format:
+
+`dd if=<cr50 bin file> of=cr50.rw.bin skip=16384 count=233472 bs=1`<br>
+`objcopy -I binary -O ihex --change-addresses 0x44000 cr50.rw.bin cr50.rw.hex`
+
+then you can use `cr50.rw.hex` as the image passed to `cr50-rescue`.
+
+## Programming the RW image with rescue mode
+
+With servo_micro (or servo_v2 reworked for connecting to Cr50 console), run
+servod and disable cr50 ec3po and uart timestamp:
+```bash
+dut-control cr50_uart_timestamp:off
+dut-control cr50_ec3po_interp_connect:off
+```
+
+Get a raw cr50 uart device path and use it for cr50-rescue argument ‘-d’ below.
+```bash
+dut-control raw_cr50_uart_pty
+```
+
+The rescue procedure requires *disconnecting the terminal from the cr50 console
+UART* and starting the `cr50-rescue` utility as follows:
+
+```bash
+sudo emerge cr50-utils  # provides cr50-rescue
+cr50-rescue -v -i <path to the signed hex RW image> \
+        -d <cr50 console UART tty>
+```
+
+Note that `<cr50 console UART tty>` above has to be a direct FTDI interface,
+`pty` devices created by servod do not work for this purpose. Use either
+servo-micro or a USB/UART cable. Note that multifunctional *SPI-UART/FTDI/USB
+cables might not work*, as they impose a significant delay in the UART stream,
+which makes the synchronization described below impossible.
+
+`cr50-rescue` starts listening on the console UART and printing it out to the
+terminal. When the target is reset, `cr50-rescue` detects the `Bldr |` string
+in the target output, at this point the utility intercepts the boot process and
+the target proceeds to receiving the new RW  image and saving it into flash.
+Note the currently present RW and RW_B images will be wiped out first.
+
+[chromeos-cr50 ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/chromeos-base/chromeos-cr50/chromeos-cr50-0.0.1.ebuild
