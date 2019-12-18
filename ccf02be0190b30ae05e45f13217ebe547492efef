@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "435b24a6_8b47b656",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-18T08:55:11Z",
+      "side": 1,
+      "message": "Done. But I\u0027d like to give up the \"CHG rt946x\" strings, since it doesn\u0027t help much that we all know which charger it is used in the board.",
+      "parentUuid": "e663cff4_c2fa383e",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c258f28a_3524cec8",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2af5ea6a_75c2b6a9",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-18T08:55:11Z",
+      "side": 1,
+      "message": "It\u0027s better to print with timestamp if possible, and it can save extra bytes \u0027\\n\u0027.\n\nCPRINTF is used at console command mostly (that doesn\u0027t need timestamp).",
+      "parentUuid": "c258f28a_3524cec8",
+      "range": {
+        "startLine": 435,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 8
+      },
+      "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5405321c_c2464542",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64962feb_a342e7cd",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-12-18T08:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5405321c_c2464542",
+      "revId": "ccf02be0190b30ae05e45f13217ebe547492efef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
