@@ -192,8 +192,11 @@ static struct type_c {
 	/* Power supply reset sequence during a hard reset */
 	enum ps_reset_sequence ps_reset_state;
 #endif
-	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
-	uint8_t polarity;
+	/*
+	 * Port polarity : -1 => unattached
+	 *                 0 => CC1 is CC line, 1 => CC2 is CC line
+	 */
+	enum tcpc_cc_polarity polarity;
 	/* port flags, see TC_FLAGS_* */
 	uint32_t flags;
 	/* event timeout */
@@ -659,6 +662,20 @@ enum tcpc_cc_polarity pd_get_polarity(int port)
 	return tc[port].polarity;
 }
 
+void pd_toggle_detect_polarity(int port)
+{
+	enum tcpc_cc_voltage_status cc1, cc2;
+
+	tcpm_get_cc(port, &cc1, &cc2);
+
+	if (cc1 == cc2)
+		tc[port].polarity = TYPEC_POLARITY_NONE;
+	else if (cc1 != TYPEC_CC_VOLT_OPEN)
+		tc[port].polarity = TYPEC_POLARITY_NORMAL;
+	else
+		tc[port].polarity = TYPEC_POLARITY_FLIPPED;
+}
+
 int pd_get_role(int port)
 {
 	return tc[port].data_role;
@@ -832,6 +849,9 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 
 void tc_state_init(int port)
 {
+	/* Start as not connected */
+	tc[port].polarity = TYPEC_POLARITY_NONE;
+
 	/* Unattached.SNK is the default starting state. */
 	restart_tc_sm(port, TC_UNATTACHED_SNK);
 
@@ -2911,9 +2931,13 @@ static void tc_drp_auto_toggle_run(const int port)
 		set_state_tc(port, PD_DEFAULT_STATE(port));
 		break;
 	case DRP_TC_UNATTACHED_SNK:
+		if (drp_state[port] == PD_DRP_TOGGLE_ON)
+			pd_toggle_detect_polarity(port);
 		set_state_tc(port, TC_UNATTACHED_SNK);
 		break;
 	case DRP_TC_UNATTACHED_SRC:
+		if (drp_state[port] == PD_DRP_TOGGLE_ON)
+			pd_toggle_detect_polarity(port);
 		set_state_tc(port, TC_UNATTACHED_SRC);
 		break;
 	case DRP_TC_DRP_AUTO_TOGGLE:
