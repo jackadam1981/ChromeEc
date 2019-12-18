@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95b301e6_82e6b838",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-18T20:47:24Z",
+      "side": 1,
+      "message": "Yes the console command overrides the local enable bit.",
+      "parentUuid": "ee639a14_31ed26bd",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05dba913_54b44192",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "57841b70_3c7fb87f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-18T20:47:24Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "05dba913_54b44192",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 44
+      },
+      "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "216fb486_fb524a23",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c08edc2_d2a96cb2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-18T20:47:24Z",
+      "side": 1,
+      "message": "This variable is only read once in this function so this should be okay.",
+      "parentUuid": "216fb486_fb524a23",
+      "range": {
+        "startLine": 1126,
+        "startChar": 5,
+        "endLine": 1126,
+        "endChar": 22
+      },
+      "revId": "316564c85a580dc47c5ec28bf2442574015899d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
