@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1702dc9e_eba8a971",
+        "filename": "docs/ec-3po-design.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-12-18T20:31:34Z",
+      "side": 1,
+      "message": "Change this to 2016-02-07 while you\u0027re at it.\n\nFrom the start this really should have been a link to the actual change, but definitely not asking you to try to look that up now, probably of little value at this point.  (But do keep the date and reformat it in ISO 8601 format.)",
+      "range": {
+        "startLine": 96,
+        "startChar": 19,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "be2b990c9bc027a58abaa3818499b5987d8ef0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053ca012_593a7663",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-12-18T20:31:34Z",
+      "side": 1,
+      "message": "Replace {} with () to make this a link.",
+      "range": {
+        "startLine": 159,
+        "startChar": 21,
+        "endLine": 159,
+        "endChar": 47
+      },
+      "revId": "be2b990c9bc027a58abaa3818499b5987d8ef0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
