@@ -364,6 +364,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 {
 	switch (state) {
 	case POWER_G3:
+		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 		break;
 
 	case POWER_S5:
