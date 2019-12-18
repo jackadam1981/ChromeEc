@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0ed0ec34_299ff72b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-18T10:32:40Z",
+      "side": 1,
+      "message": "For i., our observation is that bitbang driver sometimes being interrupted by other tasks, and make the wavefrom stretch longer than some acceptable level. We\u0027ve tried to mitigate this by increasing the task priority, but it still happens sometimes (~4 failure in 10000 i2c_read\u0027s in i2c stress test).\n\nii. implemented CL:1972161. If this works well, then we probably don\u0027t need iii.",
+      "parentUuid": "f1c29551_2ecdcbc8",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "bcc6a6e7d03eb44fb16884311c9add3d0d97c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a358a1e6_7efb8e04",
         "filename": "board/kodama/battery.c",
         "patchSetId": 3
