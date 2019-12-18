@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ef11e2b_80daeb15",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2019-12-18T13:22:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c451ae5_faddf6f1",
+      "range": {
+        "startLine": 77,
+        "startChar": 12,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "83761997d3f5982d5e08dcd72e4819d1da76394b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55ae683e_bc1cf57a",
         "filename": "common/thermal.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "83761997d3f5982d5e08dcd72e4819d1da76394b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16064575_ed4324ea",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2019-12-18T13:22:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "55ae683e_bc1cf57a",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "83761997d3f5982d5e08dcd72e4819d1da76394b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
