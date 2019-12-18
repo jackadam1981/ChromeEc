@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f13f9ec_4d46cb74",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-12-18T08:43:22Z",
+      "side": 1,
+      "message": "what if we generate the dummy one only if BOOTBLOCK is empty AND BUILDALL?\nThen we can still catch the right size if the bootblock was really built.\n\n ifndef BOOTBLOCK\n\n ifdef BUILDALL\n  BOOTBLOCK...\n else\n  $(error BOOTBLOCK not defined)\n endif\n endif",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 5
+      },
+      "revId": "8242f953a578acccaf0662a1afe952d9c140f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
