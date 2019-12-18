@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df7c5de_f2d51d59",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-18T20:41:42Z",
+      "side": 1,
+      "message": "pe[port].amodes[i].fx \u0026\u0026 pe[port].amodes[i].fx-\u003esvid \u003d\u003d svid",
+      "range": {
+        "startLine": 370,
+        "startChar": 6,
+        "endLine": 370,
+        "endChar": 41
+      },
+      "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
