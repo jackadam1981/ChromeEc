@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d5ba97c5_c0975e79",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-18T19:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e56d6e_8f610235",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 0
+      },
+      "revId": "2be68db4d610cb7d0836e980e9303373039836af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db24576_ad10201d",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1

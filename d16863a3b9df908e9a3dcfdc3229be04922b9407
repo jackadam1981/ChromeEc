@@ -16,6 +16,24 @@
       "revId": "d16863a3b9df908e9a3dcfdc3229be04922b9407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4757f949_bd35c9db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-18T19:52:40Z",
+      "side": 1,
+      "message": "I tried basing my decisions on VConn and it didn\u0027t work out so well. If you want me to try again, please create a bug for this and I will work on it.  What I have in this CL works and I don\u0027t want to postpone merging it in if it is not required.",
+      "parentUuid": "27ee60a6_7d393264",
+      "revId": "d16863a3b9df908e9a3dcfdc3229be04922b9407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
