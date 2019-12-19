@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d0373d7f_ce8d8995",
+        "filename": "test/compile_time_macros.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-19T20:57:19Z",
+      "side": 1,
+      "message": "nit: next line",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "8b41dd693c7126bef192eb9596860fc64cb461d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f13990d3_ddb93b61",
         "filename": "test/compile_time_macros.c",
         "patchSetId": 6
