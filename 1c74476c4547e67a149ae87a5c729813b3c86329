@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d93a10b_042286b3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-19T19:46:35Z",
+      "side": 1,
+      "message": "Other than changing the name to PD_MASTER_ENABLE and TRY_SRC_MASTER_ENABLE, I can\u0027t seem to think of any other name that would make their function clearer. I\u0027m a little confused as to what you want me to do here. I\u0027m using the master enable to gate the setting of enable and I\u0027ve added a truth table to reflect this.\n\nAlso, when pd is disabled, all state machines except the type-c state machine are disabled. The disabled state is entered when the port is disabled, not just PD.",
+      "parentUuid": "2be2a2b9_ee133de8",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d15552e3_d29c6c91",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fa8d11dc_6af8a4c8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-19T19:46:35Z",
+      "side": 1,
+      "message": "yes I missed this one.",
+      "parentUuid": "d15552e3_d29c6c91",
+      "range": {
+        "startLine": 406,
+        "startChar": 2,
+        "endLine": 406,
+        "endChar": 29
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eb39041_80a163a4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "184c2fee_04ad190b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-19T19:46:35Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "3eb39041_80a163a4",
+      "range": {
+        "startLine": 2251,
+        "startChar": 0,
+        "endLine": 2257,
+        "endChar": 0
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
