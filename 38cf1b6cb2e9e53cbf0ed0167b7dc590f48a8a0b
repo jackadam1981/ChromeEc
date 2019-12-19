@@ -46,6 +46,30 @@
       "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5e98d2_b08f3dd3",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-19T20:38:30Z",
+      "side": 1,
+      "message": "Is patchset 4 is the one to be reviewed? I don\u0027t see the change I proposed.",
+      "parentUuid": "c491d62f_e7d4cbee",
+      "range": {
+        "startLine": 370,
+        "startChar": 6,
+        "endLine": 370,
+        "endChar": 41
+      },
+      "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
