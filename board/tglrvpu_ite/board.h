@@ -94,6 +94,13 @@
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
 
+/* Enabling USB4 mode */
+#define CONFIG_USB_PD_USB4
+
+/* Enable USB-PD REV 3.0 */
+#define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PID 0x8086
+
 #ifndef __ASSEMBLER__
 
 enum tglrvp_charge_ports {
