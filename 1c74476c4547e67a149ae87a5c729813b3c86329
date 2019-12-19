@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2be2a2b9_ee133de8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:18:04Z",
+      "side": 1,
+      "message": "The comment helps, but \"master\" still doesn\u0027t have much meaning here. Let\u0027s make the names more specific.\n\nI think the pd_enabled and try_src states have difference semantics.\n\nI would think that if master try_src was enabled, that would mean that try source mode was enabled. Not that it was enabled if other parts of the system also thought it should be enabled.\n\nAnd pd_enabled should be pd_disabled and it is a disable mask meaning multiple sources can disabled pd (e.g. protocol, security policy, etc.). Only if no one is disabling PD, do we allow PD. This is similar to the sleep mask.\n\nAlso when a pd_disabled flags is added, we should immediate reset the state machine to a disabled state (most likely through an event that the main loop processes) -- see below comment about infinite loop.\n\n\nTry source on the other hand probably is closer to a true override, meaning the \"master\" (either through console command or host command) overrides the current try source state regardless of what the state machine would normally set due to SoC state transitions.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15552e3_d29c6c91",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:18:04Z",
+      "side": 1,
+      "message": "we should probably protect access here atomically too.\n\nWho are the expected callers?",
+      "range": {
+        "startLine": 406,
+        "startChar": 2,
+        "endLine": 406,
+        "endChar": 29
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb39041_80a163a4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:18:04Z",
+      "side": 1,
+      "message": "If the master enable is switched off here, then we infinitely loop in this state here.",
+      "range": {
+        "startLine": 2251,
+        "startChar": 0,
+        "endLine": 2257,
+        "endChar": 0
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
