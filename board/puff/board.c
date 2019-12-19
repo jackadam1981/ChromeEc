@@ -391,3 +391,4 @@ void board_overcurrent_event(int port, int is_overcurrented)
 		return;
 	usbc_overcurrent = is_overcurrented;
 }
+
