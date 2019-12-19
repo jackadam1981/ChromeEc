@@ -22,6 +22,30 @@
       "revId": "d099f24ddb1b20495ca45d87f45219a4aa204fde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5a6d04_a7b0155e",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-12-19T18:07:29Z",
+      "side": 1,
+      "message": "pd_alt_mode() may return -1 if the entry of USB_SID_DISPLAYPORT not found.\n\nThis function doesn\u0027t handle the -1 case. The caller does a similar check for the entry not found case, so it is OK to not handle the -1 case.",
+      "parentUuid": "3a5fa59a_fb911482",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "d099f24ddb1b20495ca45d87f45219a4aa204fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
