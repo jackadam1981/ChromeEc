@@ -44,8 +44,10 @@ GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_BOTH,
 GPIO_INT(POGO_ADC_INT_L,    PIN(A, 6),  GPIO_INT_BOTH,
          pogo_adc_interrupt)
 
-/* unused */
-GPIO(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_INPUT)
+/*
+ * unused, comment out this line to save flash space.
+ * GPIO(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_INPUT)
+*/
 
 
 /* Reset pins */
