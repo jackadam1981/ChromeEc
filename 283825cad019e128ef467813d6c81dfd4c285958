@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28fde5d6_26eef723",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T20:13:18Z",
+      "side": 1,
+      "message": "nit: we can use bool type here  (requires stdbool.h)",
+      "range": {
+        "startLine": 818,
+        "startChar": 7,
+        "endLine": 818,
+        "endChar": 10
+      },
+      "revId": "283825cad019e128ef467813d6c81dfd4c285958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773defdb_0d02ce99",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T20:13:18Z",
+      "side": 1,
+      "message": "you could change this to just\n\nelse if (!common_src_snk_dpm_rseet(port)) {\n  //repot error\n}",
+      "range": {
+        "startLine": 1604,
+        "startChar": 6,
+        "endLine": 1610,
+        "endChar": 11
+      },
+      "revId": "283825cad019e128ef467813d6c81dfd4c285958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
