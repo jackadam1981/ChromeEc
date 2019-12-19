@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a56d09_93c9dc29",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-12-19T22:19:38Z",
+      "side": 1,
+      "message": "What is calling this? It may be better to find the caller and use CONFIG_BATTERY to remove any battery dependency.",
+      "range": {
+        "startLine": 395,
+        "startChar": 5,
+        "endLine": 395,
+        "endChar": 20
+      },
+      "revId": "e66c70a96432cb10a36fd904c5b62abb060be430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
