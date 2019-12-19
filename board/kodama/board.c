@@ -378,6 +378,7 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	 */
 	return charger_get_vbus_voltage(port) < 4400;
 }
+<<<<<<< HEAD   (6f29e7 kukui: Remove CONFIG_SYSTEM_UNLOCKED)
 
 __override int board_charge_port_is_sink(int port)
 {
@@ -405,3 +406,5 @@ int board_get_battery_i2c(void)
 {
 	return board_get_version() >= 2 ? 2 : 1;
 }
+=======
+>>>>>>> CHANGE (cc68af kodama: remove dedicated charge port customization)
