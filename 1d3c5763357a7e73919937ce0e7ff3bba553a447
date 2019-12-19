@@ -76,6 +76,29 @@
     },
     {
       "key": {
+        "uuid": "f682588c_49ce6fa7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:01:49Z",
+      "side": 1,
+      "message": "I think we can just add this code to usb_pd_protocol.c (since only the old stack needs this, right?)",
+      "range": {
+        "startLine": 376,
+        "startChar": 8,
+        "endLine": 377,
+        "endChar": 27
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1554d8cb_ab9cfac3",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -92,6 +115,29 @@
         "startChar": 5,
         "endLine": 394,
         "endChar": 18
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c0cb754_25f84b2b",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:01:49Z",
+      "side": 1,
+      "message": "We typically use\n(BIT(5) | BIT(4))\n\n----\n\nCL:1974356 which is going to be submitted today will allow you to use GENMASK(5, 4)",
+      "range": {
+        "startLine": 59,
+        "startChar": 56,
+        "endLine": 59,
+        "endChar": 69
       },
       "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
