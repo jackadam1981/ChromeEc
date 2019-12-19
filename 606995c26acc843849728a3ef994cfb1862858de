@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4756bbbf_d893c15e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3545,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T20:09:26Z",
+      "side": 1,
+      "message": "nit: use sizeof(bdo) so it connects to what we are doing",
+      "range": {
+        "startLine": 3545,
+        "startChar": 18,
+        "endLine": 3545,
+        "endChar": 20
+      },
+      "revId": "606995c26acc843849728a3ef994cfb1862858de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

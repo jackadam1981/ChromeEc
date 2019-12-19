@@ -93,6 +93,30 @@
       "revId": "21fa650179594e96a94947a9c80bc16a31b14d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0a3ccb9_bb6c5f84",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3546,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T20:09:26Z",
+      "side": 1,
+      "message": "Ah, I was thinking of src and dst backwards. This if fine",
+      "parentUuid": "063a74b9_6bb31f3b",
+      "range": {
+        "startLine": 3544,
+        "startChar": 0,
+        "endLine": 3546,
+        "endChar": 57
+      },
+      "revId": "21fa650179594e96a94947a9c80bc16a31b14d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
