@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a6b6a22_aae23409",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e4018af_cdcf89ad",
+      "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bb8c25b_f486d91a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6bbca5b6_4452593a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bb8c25b_f486d91a",
+      "range": {
+        "startLine": 1753,
+        "startChar": 1,
+        "endLine": 1756,
+        "endChar": 2
+      },
+      "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57a8d4ce_bf5269a3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "233c51e8_8f89d9ec",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1946,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57a8d4ce_bf5269a3",
+      "revId": "90a26ec5f4fa89c553952f99d9b7edb541e4e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
