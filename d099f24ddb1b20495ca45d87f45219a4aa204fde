@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a5fa59a_fb911482",
+        "filename": "board/trogdor/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-12-19T05:09:05Z",
+      "side": 1,
+      "message": "Does this need to be signed? Why not a u8 or something like that?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "d099f24ddb1b20495ca45d87f45219a4aa204fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
