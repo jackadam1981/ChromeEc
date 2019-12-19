@@ -444,8 +444,11 @@ static void init_ac_detect(void)
  * compiler error if we try. The workaround is to use the pinmux to connect
  * two GPIOs to the same input and configure each one for a separate edge.
  */
+#define GPIO_INT_ALL (GPIO_INT_F_RISING|GPIO_INT_F_FALLING|GPIO_INT_F_LOW \
+			|GPIO_INT_F_HIGH)
 #define GPIO_INT(name, pin, flags, signal)	\
-	BUILD_ASSERT(((flags) & GPIO_INT_BOTH) != GPIO_INT_BOTH);
+	BUILD_ASSERT((((flags) & GPIO_INT_ALL)	\
+			& (((flags) & GPIO_INT_ALL) - 1)) == 0);
 #include "gpio.wrap"
 
 /**
@@ -587,6 +590,9 @@ void board_configure_deep_sleep_wakepins(void)
 		/* enable powerdown exit */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
+
+	if (board_ec_cr50_comm_support())
+		ec_comm_configure_wakepin();
 }
 
 static void deferred_tpm_rst_isr(void);

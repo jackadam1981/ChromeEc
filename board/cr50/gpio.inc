@@ -69,6 +69,8 @@
  * GPIO1.4   detect_tpm_rst_asserted
  * GPIO1.5   unwedge_i2cs_scl
  * GPIO1.6   monitor_i2cs_sda
+ * GPIO1.7   ec_packet_mode_en
+ * GPIO1.8   ec_packet_mode_dis
  * GPIO1.11  ec_tx_cr50_rx_in
  * GPIO1.12  strap_a0
  * GPIO1.13  strap_a1
@@ -104,6 +106,17 @@ GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
  */
 GPIO_INT(DETECT_TPM_RST_L_ASSERTED, PIN(1, 4),  GPIO_INT_FALLING,
          tpm_rst_asserted)
+
+/*
+ * For EC-CR50 communication, DIOB7 shall be used to control packet mode by EC.
+ * In packet mode, DIOB7 shall be an alternative UART_CR50_TX_EC_RX for packet
+ * response.
+ * More information is available at http://go/ec-cr50-comm.
+ * NOTE: If this gpio is changed, you must update the information in
+ *       board/cr50/ec_comm.c.
+ */
+GPIO_INT(EC_PACKET_MODE_EN, PIN(1, 7), GPIO_INT_RISING, ec_comm_packet_mode_en)
+GPIO_INT(EC_PACKET_MODE_DIS, PIN(1, 8), GPIO_INT_FALLING, ec_comm_packet_mode_dis)
 
 /*****************************************************************************/
 /* NON STANDARD INTERRUPT GPIOs - handlers defined and configured in board.c */
@@ -207,8 +220,7 @@ UNIMPLEMENTED(ENTERING_RW)
 #endif
 
 /* GPIOs - mark outputs as inputs too, to read back from the driven pad */
-PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
-                                                /* We can't pull it up */
+PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
 PINMUX(GPIO(MONITOR_I2CS_SDA), A1, GPIO_INPUT)
@@ -221,6 +233,14 @@ PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
+
+/*
+ * Connect GPIO(1, 11) to B7. If this configuration is changed, board/cr50/
+ * ec_comm.c must be updated.
+ */
+PINMUX(GPIO(EC_PACKET_MODE_EN),   B7, DIO_INPUT)
+PINMUX(GPIO(EC_PACKET_MODE_DIS),  B7, DIO_INPUT)
+
 /*
  * Update closed_source_set1.c if pinmux for I2C_SCL_INA or I2C_SDA_INA is
  * changed or removed.

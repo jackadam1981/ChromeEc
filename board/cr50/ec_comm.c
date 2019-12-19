@@ -10,8 +10,10 @@
 #include "console.h"
 #include "crc8.h"
 #include "extension.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "task.h"
 #include "timer.h"
 #include "tpm_nvmem.h"
 #include "tpm_nvmem_ops.h"
@@ -23,6 +25,8 @@
 #else
 #define CPRINTS(format, args...)
 #endif
+
+#define EC_BOOT_MODE_MASK              0xff
 
 /**
  * Context of EC-EFS
@@ -100,15 +104,55 @@ static void init_ec_efs_(void)
 	ec_efs_ctx.secdata_error_code = EC_SUCCESS;
 }
 
+void ec_comm_packet_mode_en(enum gpio_signal signal)
+{
+	ccd_update_state();
+}
+
+void ec_comm_packet_mode_dis(enum gpio_signal signal)
+{
+	ccd_update_state();
+}
+
+void ec_comm_configure_wakepin(void)
+{
+	/* Disable DIOB7 as a wake pin */
+	GWRITE_FIELD(PINMUX, EXITEN0,   DIOB7, 0);
+	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOB7, 1); /* edge triggered */
+	GWRITE_FIELD(PINMUX, EXITINV0,  DIOB7, 0); /* wake on rising */
+	/* enable powerdown exit */
+	GWRITE_FIELD(PINMUX, EXITEN0,   DIOB7, 1);
+
+	/* Store Boot Flag to PWDN_SCRATCH20 */
+	GREG32(PMU, PWRDN_SCRATCH20) = ec_efs_ctx.boot_mode & EC_BOOT_MODE_MASK;
+}
+
 void ec_comm_init(void)
 {
-	if (!board_ec_cr50_comm_support())
-		return;
+	gpio_disable_interrupt(GPIO_EC_PACKET_MODE_EN);
+	gpio_disable_interrupt(GPIO_EC_PACKET_MODE_DIS);
 
-	/* TODO(): recover this from PWDN_SCRATCH value */
-	ec_efs_ctx.boot_mode = EC_EFS_BOOT_MODE_RESET;
+	if (!board_ec_cr50_comm_support()) {
+		GWRITE(PINMUX, GPIO1_GPIO7_SEL, 0);
+		GWRITE(PINMUX, GPIO1_GPIO8_SEL, 0);
+		return;
+	}
+
+	CPRINTS("Initializtion");
 
 	init_ec_efs_();
+
+	ec_efs_ctx.boot_mode = GREG32(PMU, PWRDN_SCRATCH20) & EC_BOOT_MODE_MASK;
+
+	/*
+	 * If it is a reset not a wakeup from deep sleep,
+	 * boot_mode is zero. Let's reset boot_mode.
+	 */
+	if (ec_efs_ctx.boot_mode == 0)
+		ec_efs_ctx.boot_mode = EC_EFS_BOOT_MODE_RESET;
+
+	gpio_enable_interrupt(GPIO_EC_PACKET_MODE_EN);
+	gpio_enable_interrupt(GPIO_EC_PACKET_MODE_DIS);
 }
 
 void ec_comm_setup(void)
@@ -116,7 +160,12 @@ void ec_comm_setup(void)
 	if (!board_ec_cr50_comm_support())
 		return;
 
+	CPRINTS("Setup");
+
 	ec_efs_ctx.boot_mode = EC_EFS_BOOT_MODE_RESET;
+
+	gpio_enable_interrupt(GPIO_EC_PACKET_MODE_EN);
+	gpio_enable_interrupt(GPIO_EC_PACKET_MODE_DIS);
 }
 
 /**
@@ -150,6 +199,8 @@ static enum vendor_cmd_rc reset_ec_(struct vendor_cmd_params *p)
 {
 	if (!board_ec_cr50_comm_support())
 		return VENDOR_RC_NOT_ALLOWED;
+
+	CPRINTS("VENDOR_CC_RESET_EC");
 
 	hook_call_deferred(&deferred_reset_ec_data, 50 * MSEC);
 

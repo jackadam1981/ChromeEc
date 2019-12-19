@@ -387,6 +387,12 @@ void board_unwedge_i2cs(void);
 
 int board_in_prod_mode(void);
 
+/* GPIO Interrupt handler for DIOB7 rising edge */
+void ec_comm_packet_mode_en(enum gpio_signal signal);
+/* GPIO Interrupt handler for DIOB7 falling edge */
+void ec_comm_packet_mode_dis(enum gpio_signal signal);
+/* Configure DIOB7 as wake-pin */
+void ec_comm_configure_wakepin(void);
 /* Initialize EC-CR50 communication and prepare data for EC-EFS */
 void ec_comm_init(void);
 /* Setup EC-CR50-Comm channel status. Should be called on EC reset. */
