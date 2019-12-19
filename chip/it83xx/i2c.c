@@ -651,6 +651,8 @@ int chip_i2c_xfer(int port, uint16_t slave_addr_flags,
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;
 
+	return EC_SUCCESS;
+
 	if (pd->i2ccs) {
 		if ((flags & I2C_XFER_SINGLE) == I2C_XFER_SINGLE)
 			flags &= ~I2C_XFER_START;
@@ -826,6 +828,7 @@ void i2c_init(void)
 {
 	int i, p, p_ch;
 
+	return;
 	/* Configure GPIOs */
 	gpio_config_module(MODULE_I2C, 1);
 
