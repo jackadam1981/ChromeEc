@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abb83d68_6be0e050",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:29:56Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need this new option if we change the build.mk file to pull out the\nall-obj-$(CONFIG_CMD_PD)+\u003d$(_usbc_dir)usb_pd_console.o\nline from the SM section",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 25
+      },
+      "revId": "ea482d1bcd02069b7025af7b7e9e9e184b59d11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c94677_2eabc596",
+        "filename": "test/usb_pd_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T17:29:56Z",
+      "side": 1,
+      "message": "nice unit tests!",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 1
+      },
+      "revId": "ea482d1bcd02069b7025af7b7e9e9e184b59d11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
