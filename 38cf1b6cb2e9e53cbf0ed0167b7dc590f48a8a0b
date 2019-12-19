@@ -22,6 +22,30 @@
       "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c491d62f_e7d4cbee",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-12-19T10:11:38Z",
+      "side": 1,
+      "message": "Ok, I had verified only this change on reef_it83xx, ampton, PD EVB with risc-v core. \nUnfortunately, my notebook crash 😞, after I fix it, I will upload new patch.",
+      "parentUuid": "4df7c5de_f2d51d59",
+      "range": {
+        "startLine": 370,
+        "startChar": 6,
+        "endLine": 370,
+        "endChar": 41
+      },
+      "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
