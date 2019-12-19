@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "179ec7d5_20d78dc6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-19T20:34:18Z",
+      "side": 1,
+      "message": "Here are my suggestions:\n\n\n1) I am suggesting pd_enable becomes pd_disabled_mask.\nThen anyone checking the value will perform !pd_disabled_mask instead of pd_enable \u003d\u003d BIT(0) | BIT(1)\n\n2) For pd_disabled_mask, use names like CONNECTION_NOT_PRESENT BIT(0) and POLICY_PD_DISABLE BIT(1) as the flag names. bit0 might need a better name, but it represents the current use of pd_enable\n\n3) For try_src since the semantics are different, keep the existing variable just 0 and 1, and add a new variable that is try_src_override that has 3 values: NO_OVERRIDE, OVERRIDE_ON, and OVERRIDE_OFF\nThen try_src on logic is (override_try_src \u003d\u003d OVERRIDE_ON) || (override_try_src \u003d\u003d NO_OVERRIDE \u0026\u0026 try_src_enabled)\n\n(You could encode both try_src_enable and override_try_src in a single bit field var, but it doesn\u0027t seem like it is worth the overhead mixing a pure boolean field with a enum field within the same variable)\n\nThis will allow the override to always be able to set the try source state reguardless of what the power state of the SoC is, and also allow the SM to reset to what is \"should\" be after overriding is done.",
+      "parentUuid": "2d93a10b_042286b3",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d15552e3_d29c6c91",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
