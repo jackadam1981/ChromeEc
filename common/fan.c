@@ -603,5 +603,4 @@ static void pwm_fan_start(void)
 	 */
 	pwm_fan_control(1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESET, pwm_fan_start, HOOK_PRIO_FIRST);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pwm_fan_start, HOOK_PRIO_DEFAULT);
