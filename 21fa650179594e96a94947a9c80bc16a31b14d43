@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a543138c_056431b3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3540,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-19T19:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b55cf0_0b5650cd",
+      "range": {
+        "startLine": 3540,
+        "startChar": 27,
+        "endLine": 3540,
+        "endChar": 34
+      },
+      "revId": "21fa650179594e96a94947a9c80bc16a31b14d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0a8c849_986c6592",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "21fa650179594e96a94947a9c80bc16a31b14d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "063a74b9_6bb31f3b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3546,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-12-19T19:46:47Z",
+      "side": 1,
+      "message": "buf is 260 bytes in length and we are only adding 4 bytes to the buffer. Since this is hard coded to 4 bytes, I don\u0027t think we need to perform a bounds check.",
+      "parentUuid": "a0a8c849_986c6592",
+      "range": {
+        "startLine": 3544,
+        "startChar": 0,
+        "endLine": 3546,
+        "endChar": 57
+      },
+      "revId": "21fa650179594e96a94947a9c80bc16a31b14d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
