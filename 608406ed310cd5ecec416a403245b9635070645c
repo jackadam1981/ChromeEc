@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41fe5915_b5628cc6",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-19T04:00:53Z",
+      "side": 1,
+      "message": "As A side note, pre-calculate this reduces two more bytes in the function, but doesn\u0027t affect the overall size.",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "608406ed310cd5ecec416a403245b9635070645c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
