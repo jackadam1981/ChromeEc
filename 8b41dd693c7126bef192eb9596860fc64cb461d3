@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4a6d198_09d3da79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-19T22:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1dabe7_6fab12ac",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "8b41dd693c7126bef192eb9596860fc64cb461d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0373d7f_ce8d8995",
         "filename": "test/compile_time_macros.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "741a826d_5845b04a",
+        "filename": "test/compile_time_macros.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-19T22:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0373d7f_ce8d8995",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "8b41dd693c7126bef192eb9596860fc64cb461d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f13990d3_ddb93b61",
         "filename": "test/compile_time_macros.c",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "8b41dd693c7126bef192eb9596860fc64cb461d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d32fdeb_fa7391f0",
+        "filename": "test/compile_time_macros.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-19T22:21:39Z",
+      "side": 1,
+      "message": "Of course!",
+      "parentUuid": "f13990d3_ddb93b61",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "8b41dd693c7126bef192eb9596860fc64cb461d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
