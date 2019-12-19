@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b62f1048_f1b98558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2804b46_4ac173ac",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ca4b55_40f8274f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e833d26_485bf4b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ca4b55_40f8274f",
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "4d680235_b7420d64",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "added the change to set_polarity late in the changes and didn\u0027t remember that I had excluded selected_pull. thanks",
+      "parentUuid": "c7b24fcb_6e6608dc",
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c03ba21_9622ec40",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -73,6 +133,24 @@
       "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86123285_de3eeae1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c03ba21_9622ec40",
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "858cb54b_ac573e4e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "disconnect hook is typically used by two different chargers. I thought declaring a hook would create a list of functions to call, but that does not seem to be the case. So I am backing out Ed\u0027s disconnect handler and doing the action in usb_pd_protocol",
+      "parentUuid": "f682588c_49ce6fa7",
+      "range": {
+        "startLine": 376,
+        "startChar": 8,
+        "endLine": 377,
+        "endChar": 27
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1554d8cb_ab9cfac3",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "cb7111ad_dd5bf568",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1554d8cb_ab9cfac3",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c0cb754_25f84b2b",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 5
@@ -142,6 +268,30 @@
       "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755b5fd6_2bf1440b",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-19T20:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c0cb754_25f84b2b",
+      "range": {
+        "startLine": 59,
+        "startChar": 56,
+        "endLine": 59,
+        "endChar": 69
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
