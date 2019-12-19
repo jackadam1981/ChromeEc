@@ -992,6 +992,20 @@ void tc_set_data_role(int port, enum pd_data_role role)
 	 */
 	pd_execute_data_swap(port, role);
 
+	/*
+	 * For BC1.2 detection that is triggered on data role change events
+	 * instead of VBUS changes, need to set an event to wake up the USB_CHG
+	 * task and indicate the current data role.
+	 */
+#ifdef CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
+	if (role == PD_ROLE_UFP)
+		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+			       USB_CHG_EVENT_DR_UFP, 0);
+	else if (role == PD_ROLE_DFP)
+		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+			       USB_CHG_EVENT_DR_DFP, 0);
+#endif
+
 	/* Notify TCPC of role update */
 	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
 }
@@ -1768,6 +1782,16 @@ static void tc_unattached_snk_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC)
 		print_current_state(port);
 
+	/*
+	 * When data role set events are used to enable BC1.2, then CC
+	 * detach events are used to notify BC1.2 that it can be powered
+	 * down.
+	 */
+#ifdef CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
+	task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+		       USB_CHG_EVENT_CC_OPEN, 0);
+#endif
+
 	/* VBus should be SafeV0, turn off auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 0);
 
@@ -2439,6 +2463,16 @@ static void tc_unattached_src_entry(const int port)
 {
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK)
 		print_current_state(port);
+
+	/*
+	 * When data role set events are used to enable BC1.2, then CC
+	 * detach events are used to notify BC1.2 that it can be powered
+	 * down.
+	 */
+#ifdef CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
+	task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+		       USB_CHG_EVENT_CC_OPEN, 0);
+#endif
 
 	/* VBus should be SafeV0, turn off auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 0);
