@@ -1319,41 +1319,35 @@ static __maybe_unused int pd_is_disconnected(int port)
 static void set_usb_mux_with_current_data_role(int port)
 {
 #ifdef CONFIG_USBC_SS_MUX
+	enum typec_mux mux_mode = TYPEC_MUX_USB;
+
 	/*
 	 * If the SoC is down, then we disconnect the MUX to save power since
 	 * no one cares about the data lines.
-	 */
-#ifdef CONFIG_POWER_COMMON
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
-		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
-			    pd[port].polarity);
-		return;
-	}
-#endif /* CONFIG_POWER_COMMON */
-
-	/*
+	 *
 	 * When PD stack is disconnected, then mux should be disconnected, which
 	 * is also what happens in the set_state disconnection code. Once the
 	 * PD state machine progresses out of disconnect, the MUX state will
 	 * be set correctly again.
-	 */
-	if (pd_is_disconnected(port))
-		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
-			    pd[port].polarity);
-	/*
+	 *
 	 * If new data role isn't DFP and we only support DFP, also disconnect.
-	 */
-	else if (IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
-		 pd[port].data_role != PD_ROLE_DFP)
-		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
-			    pd[port].polarity);
-	/*
+	 *
+	 * If the power role is sink and the partner device is not capable
+	 * of USB communication then disconnect.
+	 *
 	 * Otherwise connect mux since we are in S3+
 	 */
-	else
-		usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
-			    pd[port].polarity);
+	if ((IS_ENABLED(CONFIG_POWER_COMMON) &&
+		chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) ||
+		pd_is_disconnected(port) ||
+		(IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
+		pd[port].data_role != PD_ROLE_DFP) ||
+		(pd[port].power_role == PD_ROLE_SINK &&
+		!(pd[port].flags & PD_FLAGS_PARTNER_USB_COMM)))
+		mux_mode = TYPEC_MUX_NONE;
 
+	usb_mux_set(port, mux_mode, mux_mode == TYPEC_MUX_NONE ?
+		USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT, pd[port].polarity);
 #endif /* CONFIG_USBC_SS_MUX */
 }
 
