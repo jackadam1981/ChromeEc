@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2804b46_4ac173ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-19T06:34:53Z",
+      "side": 1,
+      "message": "Change summary to \"Only drive one CC line when attached\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ca4b55_40f8274f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-19T06:34:53Z",
+      "side": 1,
+      "message": "Should call out change to tcpci_tcpm_set_cc() behavior, and addition of tcpci_tcpc_drp_toggle_detect() and disconnect_hook().",
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b24fcb_6e6608dc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-19T06:34:53Z",
+      "side": 1,
+      "message": "Why not save selected_pull for TCPMv2? disconnect_hook is TCPMv1 only, but tcpci_tcpm_set_polarity() is currently using selected_pull for both TCPMv1 and TCPMv2.",
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c03ba21_9622ec40",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-19T06:34:53Z",
+      "side": 1,
+      "message": "I think we can avoid adding this new function to tcpci.c: instead, add a function in usb_pd_protocol.c that just calls tcpm_get_cc() and sets pd[port].polarity. Call that function instead of calling tcpm_drp_toggle_detect(), and then the following tcpm_set_cc() should be ok.",
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1554d8cb_ab9cfac3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-19T06:34:53Z",
+      "side": 1,
+      "message": "Get rid of can_do_set_cc and merge the 2 ifs into 1.",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "1d3c5763357a7e73919937ce0e7ff3bba553a447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
