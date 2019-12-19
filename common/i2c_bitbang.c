@@ -40,8 +40,7 @@ static void i2c_bitbang_unwedge(const struct i2c_port_t *i2c_port)
 				 * If we get here, a slave is holding the clock
 				 * low and there is nothing we can do.
 				 */
-				CPRINTS("I2C%d unwedge failed, "
-					"SCL is held low", i2c_port->port);
+				CPRINTS("Unwedge failed, SCL low");
 				return;
 			}
 			i2c_delay();
@@ -52,8 +51,6 @@ static void i2c_bitbang_unwedge(const struct i2c_port_t *i2c_port)
 
 	if (gpio_get_level(i2c_port->sda))
 		return;
-
-	CPRINTS("I2C%d unwedge called with SDA held low", i2c_port->port);
 
 	/* Keep trying to unwedge the SDA line until we run out of attempts. */
 	for (i = 0; i < UNWEDGE_SDA_ATTEMPTS; i++) {
@@ -89,9 +86,9 @@ static void i2c_bitbang_unwedge(const struct i2c_port_t *i2c_port)
 	}
 
 	if (!gpio_get_level(i2c_port->sda))
-		CPRINTS("I2C%d unwedge failed, SDA still low", i2c_port->port);
+		CPRINTS("Unwedge failed, SDA low");
 	if (!gpio_get_level(i2c_port->scl))
-		CPRINTS("I2C%d unwedge failed, SCL still low", i2c_port->port);
+		CPRINTS("Unwedge failed, SCL low");
 }
 
 static void i2c_stop_cond(const struct i2c_port_t *i2c_port)
@@ -170,7 +167,7 @@ static int i2c_start_cond(const struct i2c_port_t *i2c_port)
 		i2c_delay();
 
 		if (gpio_get_level(i2c_port->sda) == 0) {
-			CPRINTS("%s: arbitration lost", __func__);
+			CPRINTS("arbitration lost");
 			started = 0;
 			return EC_ERROR_UNKNOWN;
 		}
@@ -204,7 +201,7 @@ static int i2c_write_bit(const struct i2c_port_t *i2c_port, int bit)
 	i2c_delay();
 
 	if (bit && gpio_get_level(i2c_port->sda) == 0) {
-		CPRINTS("%s: arbitration lost", __func__);
+		CPRINTS("arbitration lost");
 		started = 0;
 		return EC_ERROR_UNKNOWN;
 	}
@@ -288,7 +285,7 @@ static int i2c_bitbang_xfer(const struct i2c_port_t *i2c_port,
 	int i = 0;
 
 	if (i2c_port->kbps != 100)
-		CPRINTS("warning: bitbang driver only supports 100kbps");
+		CPRINTS("Warning: bitbang only supports 100kbps");
 
 	if (out_size) {
 		if (flags & I2C_XFER_START) {
