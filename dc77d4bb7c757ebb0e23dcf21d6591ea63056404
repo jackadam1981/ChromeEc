@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7415d813_dd6466b5",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T17:11:36Z",
+      "side": 1,
+      "message": "this should probably just return i2c_ports variable value",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72776523_3bacaf82",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T17:11:36Z",
+      "side": 1,
+      "message": "we should be able to use IS_ENABLED macro here instead of #ifdefs",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf246a7_9303c22d",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T17:11:36Z",
+      "side": 1,
+      "message": "let\u0027s add that this is only support for ports with the DYNAMIC flag",
+      "range": {
+        "startLine": 567,
+        "startChar": 3,
+        "endLine": 567,
+        "endChar": 14
+      },
+      "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
