@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "536e85a2_24c796bf",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "why TEST_TRNG needs to be a separate condition in addition to CRYPTO_TEST_SETUP?",
+      "range": {
+        "startLine": 143,
+        "startChar": 10,
+        "endLine": 143,
+        "endChar": 19
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f80e41_5c0bda6d",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "Sorry, I reviewed this file submission originally, but I missed a lot of issues worth mentioning :), let me fix that.",
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af328f92_a1158062",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "this script ignores all errors, maybe at least add\n\nset -e\n\nto prevent it from continuing if errors happen.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e40b7054_37e0bc57",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "this should be a variable.\n\nall strings should be quoted",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bfd5734_5e85e326",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "This and the next line should be replaced with\n\nmake  -j -C  \"${TMP_PATH}/cpp\" non_iid restart",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f49607_939965b1",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "all variables need to be included in brackets and qouted",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f9ccb4_f2216c82",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "log file name should be a variable.",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e073c05_56681dbe",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "this could be replaced with\n\nentropy\u003d\"$(awk \u0027/min/ {print $5}\u0027 \"${logfiel}\")\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d58f1d8_3af6633a",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "likewise, \n\nentropy\u003d\"$(awk \u0027/H1_original/ {print $2}\u0027 \"${logfiel}\")\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eceea16_641037fd",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "include $entropy in the qouted string",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb8ccec_3986c22e",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "why is it needed to shadow variable \u0027val\u0027 below?\n\nalso, you seem to be using only the first element, maybe\n\nnew_val \u003d struct.unpack(...)[0]",
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223cc91c_ff778d19",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:52:58Z",
+      "side": 1,
+      "message": "I don\u0027t understand this calculation, why is TRNG_SAMPLE_BITS multiplied by 32?\n\nWhat is the meaning of TRNG_SAMPLE_BITS - I thought it was the number of bits from a sample to use, where sample size is 32 bits?\n\nMaybe we should chat about this offline, or maybe a better comment would help.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
