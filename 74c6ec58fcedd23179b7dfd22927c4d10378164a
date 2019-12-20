@@ -22,6 +22,30 @@
       "revId": "74c6ec58fcedd23179b7dfd22927c4d10378164a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858f5136_e6d37960",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-12-20T00:02:09Z",
+      "side": 1,
+      "message": "Hmmmm, yes, these simple examples probably don\u0027t need visual separation.\n\nBut still, don\u0027t you think it makes it easier to count the number of digits being used?",
+      "parentUuid": "b0ae596b_d1017bdf",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "74c6ec58fcedd23179b7dfd22927c4d10378164a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
