@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "412d5e4d_a08e0c6f",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "It would be good to add subsections to break up the wall of text.\nSuggested subsections: Overview, Preparing an RW image, Running Rescue Mode",
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed28d752_4e1d4b60",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "This full history isn\u0027t really needed.  I suggest rewording to just say what UART rescue mode is:\n\n\"UART Rescue Mode is a feature of the Cr50 RO firmware that supports programming the RW firmware using only the UART interface.  This is used to recover a bad RW firmware update (which should be rare).",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 8
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f24f53_5cb1b677",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "change to \"USB CCD\"",
+      "range": {
+        "startLine": 638,
+        "startChar": 18,
+        "endLine": 638,
+        "endChar": 21
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18657ef0_0e52b9d4",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "Wrap with with bash format and you can remove the \u003cbr\u003e statements\n\n```bash\ndut-control...\ndut-control...\n```",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 0
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a75634f_bc4d0a26",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "Wrap with ```bash",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 31
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1cd602_d83a6ad6",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 659,
+        "startChar": 10,
+        "endLine": 659,
+        "endChar": 24
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60af1450_e5281c85",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "Wrap with ```bash.\nAlso, might was well include the emerge step in this block, and then delete the \"if it is not there\" comment above.",
+      "range": {
+        "startLine": 665,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 0
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6877c7d1_f31a7c99",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "Move this section to before the instructions for actually running rescue mode.  Having a RW hex file is a prerequisite, so it flows better if the user does this first.",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 680,
+        "endChar": 22
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a49a85f_3136ab28",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "Delete, as partners aren\u0027t able to build their own images.",
+      "range": {
+        "startLine": 680,
+        "startChar": 37,
+        "endLine": 681,
+        "endChar": 49
+      },
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5536fe_4aae281e",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-20T18:31:20Z",
+      "side": 1,
+      "message": "The latest Cr50 images can be found in the chromeos-cr50 overlay\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/chromeos-base/chromeos-cr50/chromeos-cr50-0.0.1.ebuild\nWe should point to this file so the user knows which image to use.  We should may recommend always using the latest PROD_IMAGE.  The user can upgrade to the PREPVT image later if desired.",
+      "revId": "03863dedbf408f20497d15c8d79948b887b2f01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
