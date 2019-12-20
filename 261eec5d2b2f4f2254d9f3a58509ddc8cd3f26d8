@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9fefbad_2eb7ceb5",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-20T22:15:17Z",
+      "side": 1,
+      "message": "This is pretty generic (and looks useful). We can have this in common/battery.c (and have each board select it by CONFIG_COMPENSATE_BATT_PARAMS).",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "261eec5d2b2f4f2254d9f3a58509ddc8cd3f26d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54d5e8c_d77ec069",
+        "filename": "common/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-20T22:15:17Z",
+      "side": 1,
+      "message": "You can move the code here (and optionally remove __overridable).",
+      "revId": "261eec5d2b2f4f2254d9f3a58509ddc8cd3f26d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b4174f_40b35a16",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-20T22:15:17Z",
+      "side": 1,
+      "message": "Here we can do:\n\n  if (IS_ENABLED(CONFIG_BATT_COMPENSATE_PARAMS))\n    board_battery_compensate_params(\u0026batt_new);",
+      "range": {
+        "startLine": 446,
+        "startChar": 1,
+        "endLine": 446,
+        "endChar": 44
+      },
+      "revId": "261eec5d2b2f4f2254d9f3a58509ddc8cd3f26d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
