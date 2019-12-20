@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "93ee69de_727881e3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this comment about the values since that is well defined in the enum definition (and you are using that type)",
+      "range": {
+        "startLine": 178,
+        "startChar": 19,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c604a917_6d6837c8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "there are cases when we go from SNK_DISCONNECTED_DEBOUNCE back to SNK_DISCONNECTED. Those aren\u0027t actual disconnects either.\n\nWhat are we trying to prevent, duplicating work or it is actually bad to perform this actual_disconnect \u003d\u003d true stuff again?",
+      "range": {
+        "startLine": 751,
+        "startChar": 2,
+        "endLine": 753,
+        "endChar": 0
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8d9c7d4_b707901b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -84,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "2218e8c0_313b93d8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "Agreed, the logic for setting pd[port].polarity \u003d NONE is very similar to calling tcpm_set_polirity(NONE). Hopefully it can be the exact same to trigger both.",
+      "parentUuid": "d8d9c7d4_b707901b",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cf9f613_e5889313",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -116,6 +180,29 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c1fcfbc_37490c3f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2636,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "we need to account for DTS polarity as well, the existing get_snk_polarity does this for DTS.\n\nI think we should augment get_snk_polarity to handle the \u003d\u003d case, but otherwise the logic there is correct for determining NORMAL vs FLIPPED (so we should into that function). See also comment for combining tcpc_polarity and pd_polarity enums -- there can be only one ;)",
+      "range": {
+        "startLine": 2631,
+        "startChar": 1,
+        "endLine": 2636,
+        "endChar": 45
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -189,6 +276,23 @@
     },
     {
       "key": {
+        "uuid": "19053017_2d41648b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "if we are setting CC to open, don\u0027t we still need to tell the TCPC to do that? I don\u0027t understand why we can skip setting the ctrl register. Please add comment in code for what I am missing.",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ca68609_36166c42",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
@@ -221,6 +325,47 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32f88582_8eff0be0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "Comment is good, you could also just reference the spec since that calls it out as expected behavior (even though we haven\u0027t ever really done it)\n\nAlso I would call out explicitly in the comment that we keeping cc1 and cc2 the same for the POLARITY_NONE case",
+      "parentUuid": "6ca68609_36166c42",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e855ae2_6cf77d01",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "should we also start with polarity none?",
+      "range": {
+        "startLine": 905,
+        "startChar": 2,
+        "endLine": 906,
+        "endChar": 37
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -326,6 +471,52 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cab178f9_0f38aa22",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "nit: should specify values here since user will be using enum (shouldn\u0027t matter what enum defines the int value to)",
+      "range": {
+        "startLine": 347,
+        "startChar": 19,
+        "endLine": 347,
+        "endChar": 75
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e5a358_8c14d4a5",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:54:52Z",
+      "side": 1,
+      "message": "just realized that there is already a\n\nenum pd_cc_polarity_type in usb_pd.h\n\nWe should only have one polarity enum; it is confusing to have more than one. I am okay with calling tcpc_ or pd_, your call.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
