@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e2b43736_0b970740",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-20T05:32:21Z",
+      "side": 1,
+      "message": "Hi Ting,\nWhen error occurs in 5 seconds, just overwrite register value and not clear BATT_FLAG_***   correspondingly. So EC still report EC_ERROR_BUSY to OS if we apply CL:1972161 and OS need to handle this type error. I\u0027m not sure current OS whether to handle it.　\nＡt least we encountered some abnormal situation when running command \u0027power_supply_info\u0027 in VT2.",
+      "revId": "f79f18f22b3b8ba61a0bb15dc60500f4752555ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3cea59a_7dab8c93",
         "filename": "board/kodama/battery.c",
         "patchSetId": 8
