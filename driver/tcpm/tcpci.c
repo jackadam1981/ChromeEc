@@ -268,17 +268,21 @@ void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
 {
+	int role;
 	int status;
 	int rv;
 
-	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	/* errors will return CC as open */
+	*cc1 = TYPEC_CC_VOLT_OPEN;
+	*cc2 = TYPEC_CC_VOLT_OPEN;
 
-	/* If tcpc read fails, return error and CC as open */
-	if (rv) {
-		*cc1 = TYPEC_CC_VOLT_OPEN;
-		*cc2 = TYPEC_CC_VOLT_OPEN;
+	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+	if (rv)
 		return rv;
-	}
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	if (rv)
+		return rv;
 
 	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
 	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
@@ -287,10 +291,12 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	 * If status is not open, then OR in termination to convert to
 	 * enum tcpc_cc_voltage_status.
 	 */
-	if (*cc1 != TYPEC_CC_VOLT_OPEN)
-		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
-	if (*cc2 != TYPEC_CC_VOLT_OPEN)
-		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+	if (!TCPC_REG_ROLE_CTRL_DRP(role)) {
+		if (*cc1 != TYPEC_CC_VOLT_OPEN)
+			*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+		if (*cc2 != TYPEC_CC_VOLT_OPEN)
+			*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+	}
 
 	return rv;
 }
