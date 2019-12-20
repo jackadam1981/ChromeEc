@@ -183,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "d550eda1_1144cd93",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2625,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:57:25Z",
+      "side": 1,
+      "message": "you can used __maybe_unused and keep it static without the ifdef guards",
+      "parentUuid": "8e1962b0_a1bad60a",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c1fcfbc_37490c3f",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
