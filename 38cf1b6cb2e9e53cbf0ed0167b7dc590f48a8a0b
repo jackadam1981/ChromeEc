@@ -70,6 +70,30 @@
       "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed8812c_a0a64d31",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-12-20T09:12:04Z",
+      "side": 1,
+      "message": "No, it\u0027s not. I\u0027m re-installing ubuntu OS and depot tool on mty notebook. I will upload patchset 5 to be reviewed, maybe next week.",
+      "parentUuid": "bc5e98d2_b08f3dd3",
+      "range": {
+        "startLine": 370,
+        "startChar": 6,
+        "endLine": 370,
+        "endChar": 41
+      },
+      "revId": "38cf1b6cb2e9e53cbf0ed0167b7dc590f48a8a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
