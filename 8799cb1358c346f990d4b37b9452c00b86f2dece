@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6d1c4fc_f8d25b6e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:33:06Z",
+      "side": 1,
+      "message": "There are things in this routine that are not defined or are defined to cause a compile time error.  Going to leave the guard as it is.",
+      "parentUuid": "56c76ba5_795a4926",
+      "range": {
+        "startLine": 735,
+        "startChar": 7,
+        "endLine": 735,
+        "endChar": 43
+      },
+      "revId": "8799cb1358c346f990d4b37b9452c00b86f2dece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ee2030_ad6cf783",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "8799cb1358c346f990d4b37b9452c00b86f2dece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9e647c_313d0555",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:33:06Z",
+      "side": 1,
+      "message": "I would prefer to not change the order of execution.  Maybe this would be a possible later cleanup?",
+      "parentUuid": "a1ee2030_ad6cf783",
+      "range": {
+        "startLine": 1824,
+        "startChar": 1,
+        "endLine": 1824,
+        "endChar": 49
+      },
+      "revId": "8799cb1358c346f990d4b37b9452c00b86f2dece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
