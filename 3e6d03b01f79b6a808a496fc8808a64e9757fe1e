@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e52ca3c_da8cda23",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-20T22:32:08Z",
+      "side": 0,
+      "message": "Maybe we should keep these for debugging \u0027#ifdef RT946X_DEBUG ... #endif\u0027.",
+      "range": {
+        "startLine": 1032,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 43
+      },
+      "revId": "3e6d03b01f79b6a808a496fc8808a64e9757fe1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
