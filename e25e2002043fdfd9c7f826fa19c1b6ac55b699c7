@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2103ea8_4878fe1a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:59:58Z",
+      "side": 1,
+      "message": "what\u0027s the latest on why is this function needed? You can always tell if this is a power on or resume from deep sleep, and decide if you need to run the FIPS power up sequence based on that?",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "e25e2002043fdfd9c7f826fa19c1b6ac55b699c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69557378_130a424e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:59:58Z",
+      "side": 1,
+      "message": "what happens with EC at this time? It could get confused trying to boot AP and not seeing it coming up.\n\nKeeping EC in reset will guarantee that AP is also in reset. Devices without EC would be a special case.\n\nAlso, note that taking EC out of reset happens in https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/g/rbox.c#60 which runs on the lowest init priority.",
+      "range": {
+        "startLine": 1461,
+        "startChar": 3,
+        "endLine": 1462,
+        "endChar": 19
+      },
+      "revId": "e25e2002043fdfd9c7f826fa19c1b6ac55b699c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f944aa3_db5c2894",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:59:58Z",
+      "side": 1,
+      "message": "what about having FIPS mode always enabled - what are disadvantages of this?\n\nAs for advantages - no need to support two modes of operation, managing fips mode through FWMP, reporting FIPS state to the AP, etc.",
+      "revId": "e25e2002043fdfd9c7f826fa19c1b6ac55b699c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211b4af6_213b7096",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:59:58Z",
+      "side": 1,
+      "message": "how would one change this value should it be necessary?\n\nYou can a check to see if it is supplied in the command line, and use the supplied value in that case.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "e25e2002043fdfd9c7f826fa19c1b6ac55b699c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a654390_81fbe4ad",
+        "filename": "board/cr50/fips.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-20T01:59:58Z",
+      "side": 1,
+      "message": "I think the latest rage is using BIT(N) macro for this.",
+      "range": {
+        "startLine": 15,
+        "startChar": 23,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "e25e2002043fdfd9c7f826fa19c1b6ac55b699c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
