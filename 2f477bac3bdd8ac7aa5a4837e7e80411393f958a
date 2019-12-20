@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6de0aede_92573aea",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T22:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbed32b_68404bfc",
+      "range": {
+        "startLine": 665,
+        "startChar": 5,
+        "endLine": 665,
+        "endChar": 30
+      },
+      "revId": "2f477bac3bdd8ac7aa5a4837e7e80411393f958a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41409823_2376fb65",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
