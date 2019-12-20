@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa5fa5c_f06a8e6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "Don\u0027t see any tcpci_tcpm_set_cc_last? Did you find a way to eliminate it?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d9c7d4_b707901b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "I like this better than the disconnect_hook.\nnit: does this tcpm_set_polarity call belong better next to where we set \"pd[port].polarity \u003d TYPEC_POLARITY_NONE\" (line 857)?",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf9f613_e5889313",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2625,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "nit: can make static",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7968c0_c9961294",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4638,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "This is much nicer, thanks!",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13decf21_2ddc6dfc",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "Just noticed this tcpci_nct38xx_get_cc: ideally this would also be tcpci_tcpm_get_cc.\nWill add that cleanup to the todo list (for a future CL).",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca68609_36166c42",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "Suggest adding comment here:\n/* Only drive one CC line when attached crbug.com/951681 */",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1b0b22_16cd2c0c",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "0x40 -\u003e TCPC_REG_ROLE_CTRL_DRP_MASK\n0xc -\u003e TCPC_REG_ROLE_CTRL_CC2_MASK\n0x3 -\u003e TCPC_REG_ROLE_CTRL_CC1_MASK",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531e235e_d24a76e0",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "0x20 -\u003e TCPC_REG_CC_STATUS_LOOK4CONNECTION_MASK\n0x10 -\u003e TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK\n0xc -\u003e TCPC_REG_CC_STATUS_CC2_STATE_MASK\n0x3 -\u003e TCPC_REG_CC_STATUS_CC1_STATE_MASK",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "623dcb60_a10dffdf",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-20T00:44:00Z",
+      "side": 1,
+      "message": "remove tcpci_tcpc_drp_toggle_detect",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
