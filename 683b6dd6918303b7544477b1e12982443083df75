@@ -70,6 +70,30 @@
       "revId": "683b6dd6918303b7544477b1e12982443083df75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbebdf04_83f4ece6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-20T19:29:37Z",
+      "side": 1,
+      "message": "looks like we have this function in a separate file for new stack.\nI have file a bug and assigned to Sam b:146623068",
+      "parentUuid": "7b397dc3_71eb4849",
+      "range": {
+        "startLine": 1346,
+        "startChar": 13,
+        "endLine": 1346,
+        "endChar": 46
+      },
+      "revId": "683b6dd6918303b7544477b1e12982443083df75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
