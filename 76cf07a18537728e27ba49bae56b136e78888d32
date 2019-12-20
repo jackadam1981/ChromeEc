@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b4d3741_ac539a16",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-12-20T06:29:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2151e5f_acb783e1",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 9
+      },
+      "revId": "76cf07a18537728e27ba49bae56b136e78888d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47595ec_125273b1",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "76cf07a18537728e27ba49bae56b136e78888d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ae98b0_a66827f1",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-12-20T06:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47595ec_125273b1",
+      "range": {
+        "startLine": 1209,
+        "startChar": 32,
+        "endLine": 1209,
+        "endChar": 38
+      },
+      "revId": "76cf07a18537728e27ba49bae56b136e78888d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
