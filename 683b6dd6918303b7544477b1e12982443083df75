@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceed12db_fb5bbd7c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T14:22:51Z",
+      "side": 1,
+      "message": "I don\u0027t know how reliable this flag being present is.\n\nI know that it is not being set on the new stack, which will cause problems.\n\nIt also looks like this flag won\u0027t be set for non-PD devices like a thumbdrive. Have you tested this change to ensure that non-PD flashdrive still communicates correctly?",
+      "range": {
+        "startLine": 1346,
+        "startChar": 13,
+        "endLine": 1346,
+        "endChar": 46
+      },
+      "revId": "683b6dd6918303b7544477b1e12982443083df75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
