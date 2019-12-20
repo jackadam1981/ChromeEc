@@ -57,6 +57,30 @@
       "revId": "f79f18f22b3b8ba61a0bb15dc60500f4752555ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6762f8_ed3272aa",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-12-20T05:43:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cea59a_7dab8c93",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "f79f18f22b3b8ba61a0bb15dc60500f4752555ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
