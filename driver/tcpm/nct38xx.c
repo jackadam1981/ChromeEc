@@ -180,6 +180,7 @@ static int tcpci_nct38xx_set_cc(int port, int pull)
 	return rv;
 }
 
+<<<<<<< HEAD   (82d9c2 tcpci: add tcpc_update routines for read/mod/write)
 static int tcpci_nct38xx_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 		enum tcpc_cc_voltage_status *cc2)
 {
@@ -250,6 +251,8 @@ int tcpci_nct38xx_set_polarity(int port, int polarity)
 	return rv;
 }
 
+=======
+>>>>>>> CHANGE (8c5001 tcpci: nct38xx: make get cc standard under tcpci)
 int tcpci_nct38xx_transmit(int port, enum tcpm_transmit_type type,
 			uint16_t header, const uint32_t *data)
 {
@@ -337,7 +340,7 @@ static void nct38xx_tcpc_alert(int port)
 const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init			= &nct38xx_tcpm_init,
 	.release		= &tcpci_tcpm_release,
-	.get_cc			= &tcpci_nct38xx_get_cc,
+	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.get_vbus_level		= &tcpci_tcpm_get_vbus_level,
 #endif
