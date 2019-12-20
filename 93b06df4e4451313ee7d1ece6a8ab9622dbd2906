@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9104fd2e_9541f0d3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93ee69de_727881e3",
+      "range": {
+        "startLine": 178,
+        "startChar": 19,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c604a917_6d6837c8",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -92,6 +116,30 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25de662c_c9b5d96b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "if we are toggling, it breaks the code.  I will change the name to \"not_toggling\"",
+      "parentUuid": "c604a917_6d6837c8",
+      "range": {
+        "startLine": 751,
+        "startChar": 2,
+        "endLine": 753,
+        "endChar": 0
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "2dcbdddc_4576cf7b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "My code is showing I already moved this... I will verify that I didn\u0027t get it into the wrong CL",
+      "parentUuid": "2218e8c0_313b93d8",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cf9f613_e5889313",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -198,6 +264,24 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16074eaf_aa8b4b1c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2625,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d550eda1_1144cd93",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -294,6 +378,24 @@
     },
     {
       "key": {
+        "uuid": "a4e7d1a8_0aacf122",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "I did this and then everything broke... so will wait on it until the rest have landed",
+      "parentUuid": "653ae5ca_9f12fa5a",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19053017_2d41648b",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
@@ -308,6 +410,24 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98281345_5924ec57",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19053017_2d41648b",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -364,6 +484,24 @@
     },
     {
       "key": {
+        "uuid": "2a6f27fd_b8214394",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f88582_8eff0be0",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e855ae2_6cf77d01",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
@@ -384,6 +522,30 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a4a4c6_8dcc0935",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "we do but tcpci is not the keeper of polarity",
+      "parentUuid": "3e855ae2_6cf77d01",
+      "range": {
+        "startLine": 905,
+        "startChar": 2,
+        "endLine": 906,
+        "endChar": 37
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -515,6 +677,30 @@
     },
     {
       "key": {
+        "uuid": "4b9ec0fd_fda45662",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cab178f9_0f38aa22",
+      "range": {
+        "startLine": 347,
+        "startChar": 19,
+        "endLine": 347,
+        "endChar": 75
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02e5a358_8c14d4a5",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 7
@@ -535,6 +721,30 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bdf0c7_3c70d6e9",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e5a358_8c14d4a5",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
