@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fbed32b_68404bfc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T15:13:35Z",
+      "side": 1,
+      "message": "this should be single sourced in usb_common now",
+      "range": {
+        "startLine": 665,
+        "startChar": 5,
+        "endLine": 665,
+        "endChar": 30
+      },
+      "revId": "2f477bac3bdd8ac7aa5a4837e7e80411393f958a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41409823_2376fb65",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2936,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T15:13:35Z",
+      "side": 1,
+      "message": "hmm, this is making think that we should be transitioning to TC_ATTACH_WAIT_SNK instead\n\nand Unattached entry would actually set polarity to NONE (instead of exit from attached and init)",
+      "range": {
+        "startLine": 2936,
+        "startChar": 21,
+        "endLine": 2936,
+        "endChar": 38
+      },
+      "revId": "2f477bac3bdd8ac7aa5a4837e7e80411393f958a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d890d199_e9765951",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T15:13:35Z",
+      "side": 1,
+      "message": "here to TC_ATTACH_WAIT_SRC",
+      "range": {
+        "startLine": 2941,
+        "startChar": 21,
+        "endLine": 2941,
+        "endChar": 38
+      },
+      "revId": "2f477bac3bdd8ac7aa5a4837e7e80411393f958a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
