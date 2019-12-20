@@ -406,9 +406,22 @@ err_free:
 int spi_transaction_flush(const struct spi_device_t *spi_device)
 {
 	int rv = spi_dma_wait(spi_device->port);
+
+#ifndef BOARD_SERVO_MICRO
+	/*
+	 * TODO: b:144846350 SPI transactions with the flash chips have a low
+	 * probability of transactions failing if we disable the SPI peripheral
+	 * after each transaction. This error doesn't return an error code and the
+	 * memory returned is 0x00's or 0xFF's. There is no checksums or validation
+	 * in the message format and this will cause an intermittent failure when
+	 * verifying the flash image. As Servo Micro is a development tool with USB
+	 * power, the moderate power consumption increase by not disabling the
+	 * peripheral after transactions is a better trade off for reliability.
+	 */
 	stm32_spi_regs_t *spi = SPI_REGS[spi_device->port];
 
 	spi->cr1 &= ~STM32_SPI_CR1_SPE;
+#endif
 	/* Drive SS high */
 	gpio_set_level(spi_device->gpio_cs, 1);
 
