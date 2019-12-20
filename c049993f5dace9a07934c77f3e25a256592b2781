@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f51e996a_dd63c494",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-20T17:11:48Z",
+      "side": 1,
+      "message": "nit: RPM can\u0027t be negative, so unsigned helps enforce that",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 4
+      },
+      "revId": "c049993f5dace9a07934c77f3e25a256592b2781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d98272_0071815c",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-20T17:11:48Z",
+      "side": 1,
+      "message": "If I understand this correctly, all of these on and off values could just be set to -1, correct?  Both fans are off, so what\u0027s the purpose of having different temperature thresholds ?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "c049993f5dace9a07934c77f3e25a256592b2781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "356a0dd6_17134584",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 8
