@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55cca252_4e0f8c9a",
+        "filename": "board/kodama/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-12-20T03:54:21Z",
+      "side": 1,
+      "message": "Hi, Ting.\n\nIt\u0027s better to check BATT_FLAG_BAD_TEMPERATURE too.\nfix_single_param(batt-\u003eflags \u0026 BATT_FLAG_BAD_TEMPERATURE,\n\t\t\t\u0026batt_cache.temperature,\n\t\t\t\u0026batt-\u003etemperature);",
+      "revId": "d4a9154b6e773b8cffe0e420146f0a11db6af043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
