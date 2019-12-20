@@ -28,11 +28,19 @@
 
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 
+<<<<<<< HEAD   (6846d4 kukui: reduce board id mapping array size)
 #define CONFIG_I2C_BITBANG
 #define I2C_BITBANG_PORT_COUNT 1
 #undef CONFIG_I2C_NACK_RETRY_COUNT
 #define CONFIG_I2C_NACK_RETRY_COUNT 3
 #define CONFIG_SMBUS_PEC
+=======
+/* free flash space */
+#ifdef SECTION_IS_RO
+#undef CONFIG_USB_PD_DEBUG_LEVEL
+#define CONFIG_USB_PD_DEBUG_LEVEL 0
+#endif
+>>>>>>> CHANGE (a9c8b4 kodama: disable PD detail log)
 
 /* Battery */
 #define BATTERY_DESIRED_CHARGING_CURRENT    2000  /* mA */
