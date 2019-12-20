@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4a91417_73235f48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "I decided adding an additional interface was the wrong way to go. Thanks for catching this.",
+      "parentUuid": "eaa5fa5c_f06a8e6c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8d9c7d4_b707901b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a38b066_f390cff2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8d9c7d4_b707901b",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "8e1962b0_a1bad60a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2625,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "It is only used in DUAL ROLE AUTO TOGGLE enabled code.  I will make this static but that will need a #ifdef which I was trying to avoid.",
+      "parentUuid": "9cf9f613_e5889313",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c7968c0_c9961294",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -73,6 +133,24 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be592bac_244d2dc0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4638,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c7968c0_c9961294",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "653ae5ca_9f12fa5a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13decf21_2ddc6dfc",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ca68609_36166c42",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
@@ -107,6 +203,24 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a4c8c3_92b97272",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca68609_36166c42",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "d8a27c78_ecc28ef6",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1b0b22_16cd2c0c",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "531e235e_d24a76e0",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 7
@@ -144,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "06916033_aae1b7e7",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "531e235e_d24a76e0",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "623dcb60_a10dffdf",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 7
@@ -158,6 +308,24 @@
       "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d300e81b_628bbea8",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-20T14:27:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "623dcb60_a10dffdf",
+      "revId": "93b06df4e4451313ee7d1ece6a8ab9622dbd2906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
