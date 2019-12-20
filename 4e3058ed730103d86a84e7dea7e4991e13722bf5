@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd59f568_4fe737a9",
+        "filename": "board/jinlon/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-12-20T00:06:56Z",
+      "side": 1,
+      "message": "If the register address is 0x0, then I don\u0027t think mfgacc_support is required.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "4e3058ed730103d86a84e7dea7e4991e13722bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
