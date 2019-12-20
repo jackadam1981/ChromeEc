@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c76ba5_795a4926",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T15:16:52Z",
+      "side": 1,
+      "message": "you can get rid or guards and use IS_ENABLED if you used __maybe_unsed",
+      "range": {
+        "startLine": 735,
+        "startChar": 7,
+        "endLine": 735,
+        "endChar": 43
+      },
+      "revId": "8799cb1358c346f990d4b37b9452c00b86f2dece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ee2030_ad6cf783",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T15:16:52Z",
+      "side": 1,
+      "message": "should this be combined with your changes in this function?",
+      "range": {
+        "startLine": 1824,
+        "startChar": 1,
+        "endLine": 1824,
+        "endChar": 49
+      },
+      "revId": "8799cb1358c346f990d4b37b9452c00b86f2dece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
