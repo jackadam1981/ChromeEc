@@ -3574,9 +3574,11 @@ void pd_task(void *u)
 			 * of messages if we try to immediately send our
 			 * interrogations.
 			 */
+			#if 0
 			if (get_time().val <=
 			    pd[port].ready_state_holdoff_timer)
 				break;
+			#endif
 
 			/*
 			 * Don't send any PD traffic if we woke up due to
