@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69feb9f1_d20ba98d",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-12-20T23:25:07Z",
+      "side": 1,
+      "message": "There is EC_ACCEL_INT_L from BMA253, will this interrupt pin be used later?",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 18
+      },
+      "revId": "2276bb75eb372924a60cfc8183e57f7917bad56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
