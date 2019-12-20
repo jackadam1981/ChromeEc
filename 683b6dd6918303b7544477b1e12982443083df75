@@ -46,6 +46,30 @@
       "revId": "683b6dd6918303b7544477b1e12982443083df75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b397dc3_71eb4849",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-12-20T17:05:41Z",
+      "side": 1,
+      "message": "Okay, then we just need to ensure that the new stack sets this flag correctly before we submit this change then",
+      "parentUuid": "0889eef6_9043059f",
+      "range": {
+        "startLine": 1346,
+        "startChar": 13,
+        "endLine": 1346,
+        "endChar": 46
+      },
+      "revId": "683b6dd6918303b7544477b1e12982443083df75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
