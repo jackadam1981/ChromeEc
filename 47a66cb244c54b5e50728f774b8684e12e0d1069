@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07bbfd46_2b45f40f",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "i don\u0027t know where TEST_TRNG is used and why it existed, so just left it as is",
+      "parentUuid": "536e85a2_24c796bf",
+      "range": {
+        "startLine": 143,
+        "startChar": 10,
+        "endLine": 143,
+        "endChar": 19
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6f80e41_5c0bda6d",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf38cdd_ae580c5b",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6f80e41_5c0bda6d",
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8837d1e3_f23e4c3d",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af328f92_a1158062",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e40b7054_37e0bc57",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 10
@@ -85,6 +151,30 @@
       "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11326c07_ca5c53dc",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e40b7054_37e0bc57",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "27e0d57f_234cb873",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bfd5734_5e85e326",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91f49607_939965b1",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 10
@@ -131,6 +245,30 @@
       "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e16799b_b7c760a7",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f49607_939965b1",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "9b950e1e_58e47d32",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f9ccb4_f2216c82",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e073c05_56681dbe",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 10
@@ -177,6 +339,30 @@
       "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1c65b3_74d8c06d",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e073c05_56681dbe",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "2e5e2849_3087b71f",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d58f1d8_3af6633a",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1eceea16_641037fd",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 10
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "1d7b9142_214ba779",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eceea16_641037fd",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcb8ccec_3986c22e",
         "filename": "test/tpm_test/trng_test.py",
         "patchSetId": 10
@@ -240,6 +474,24 @@
       "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16993dc5_5770239f",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "yep, will tide it",
+      "parentUuid": "bcb8ccec_3986c22e",
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +515,30 @@
       "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c752720_66d172a8",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-12-21T01:46:27Z",
+      "side": 1,
+      "message": "TRNG_SAMPLE_BITS is internal setting for TRNG which is important for entropy analysis. TRNG internally gets a 16 bit sample (measurement of time to collapse ring oscillator). Then some slice of these bits [0:TRNG_SAMPLE_BITS] is added (packed) to TRNG FIFO which has internal size of 2048(?) bits. when I read TRNG, I read 32 bits from this FIFO. Now, I need to reverse this process to split read 32-bit into number of readings, each size TRNG_SAMPLE_BITS bits. Since I can read only 32 bits at once and TRNG_SAMPLE_BITS can be anything from 1 to 16, including non-power of 2, I want readings to result in non-fractional number of samples. At the same time NIST requires minimum 1000 samples at once. This calculation tries to meet this requirement.",
+      "parentUuid": "223cc91c_ff778d19",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "47a66cb244c54b5e50728f774b8684e12e0d1069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
