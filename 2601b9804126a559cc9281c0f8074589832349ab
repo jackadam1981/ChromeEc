@@ -1,0 +1,120 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90a077b4_cfdf65de",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-21T02:16:31Z",
+      "side": 1,
+      "message": "\u003e \"approches\" is a possible misspelling of \"approaches\".\n\nPlease fix.",
+      "parentUuid": "df4025fc_8136babb",
+      "range": {
+        "startLine": 22,
+        "startChar": 23,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "2601b9804126a559cc9281c0f8074589832349ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc72391d_e54db239",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-21T02:16:31Z",
+      "side": 1,
+      "message": "the whole $() string here and in line 26 should be also qouted",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "2601b9804126a559cc9281c0f8074589832349ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246cd4b9_c414b02b",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-21T02:16:31Z",
+      "side": 1,
+      "message": "also, I forgot to mention this: the bash style calls for using [[ ]] conditional brackets, in which case it is not required to put ${} in quotes.",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "2601b9804126a559cc9281c0f8074589832349ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39795e18_cf705317",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-21T02:16:31Z",
+      "side": 1,
+      "message": "is this guaranteed to be divisible by 8?",
+      "range": {
+        "startLine": 81,
+        "startChar": 15,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "2601b9804126a559cc9281c0f8074589832349ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b2e8b1_d19560a8",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-12-21T02:16:31Z",
+      "side": 1,
+      "message": "what is 1500 in this case?",
+      "range": {
+        "startLine": 84,
+        "startChar": 28,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "2601b9804126a559cc9281c0f8074589832349ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
