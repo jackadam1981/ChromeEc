@@ -22,6 +22,30 @@
       "revId": "2276bb75eb372924a60cfc8183e57f7917bad56d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25a3644_2868193e",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-12-21T16:58:26Z",
+      "side": 1,
+      "message": "This interrupt will not be used, unless the lid accelerometer changes. Sensor devices that do not provide a hardware FIFO are all polled by the MOTIONSENSE task and do not use interrupts.",
+      "parentUuid": "69feb9f1_d20ba98d",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 18
+      },
+      "revId": "2276bb75eb372924a60cfc8183e57f7917bad56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
