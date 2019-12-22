@@ -939,14 +939,6 @@ __overridable int svdm_gfu_attention(int port, uint32_t *payload)
 #ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
 __overridable int svdm_tbt_compat_enter_mode(int port, uint32_t mode_caps)
 {
-	/*
-	 * Before entering into alternate mode, state of the USB-C MUX needs to
-	 * be in safe mode Ref: USB Type-C Cable and Connector Specification
-	 * Section E.2.2 Alternate Mode Electrical Requirements
-	 */
-	usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
-		TYPEC_MUX_SAFE : TYPEC_MUX_NONE, USB_SWITCH_CONNECT,
-		pd_get_polarity(port));
 	return 0;
 }
 

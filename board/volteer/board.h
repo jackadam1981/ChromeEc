@@ -11,6 +11,17 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/* Enabling SOP* communication */
+#define CONFIG_USB_PD_DECODE_SOP
+
+/* Enabling Thunderbolt-compatible mode */
+#define CONFIG_USB_PD_TBT_COMPAT_MODE
+#define CONFIG_CMD_USB_PD_PE
+#define CONFIG_CMD_USB_PD_CABLE
+
+/* Enable USB-PD REV 3.0 */
+#define CONFIG_USB_PD_REV30
+
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
