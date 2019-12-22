@@ -127,10 +127,14 @@ struct usb_mux {
 	 * TODO: Move this function to usb_mux_driver struct.
 	 */
 	void (*hpd_update)(int port, int hpd_lvl, int hpd_irq);
+
+	/* control GPIOs */
+	const enum gpio_signal usb_ls_en_gpio;  /* Load switch enable */
 };
 
 /* Supported USB mux drivers */
 extern const struct usb_mux_driver amd_fp5_usb_mux_driver;
+extern const struct usb_mux_driver anx7440_usb_mux_driver;
 extern const struct usb_mux_driver it5205_usb_mux_driver;
 extern const struct usb_mux_driver pi3usb30532_usb_mux_driver;
 extern const struct usb_mux_driver ps874x_usb_mux_driver;
