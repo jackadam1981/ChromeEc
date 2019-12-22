@@ -62,7 +62,7 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= EC_USB_PD_MAX_PORTS);
 #ifdef CONFIG_USB_PD_DEBUG_LEVEL
 static const int debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
 #else
-static int debug_level;
+static int debug_level = 3;
 #endif
 
 /*
@@ -5333,8 +5333,8 @@ static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
  */
 static uint8_t get_pd_control_flags(int port)
 {
-	struct tbt_mode_resp_cable cable_resp = get_cable_tbt_vdo(port);
-	struct tbt_mode_resp_device device_resp = get_dev_tbt_vdo(port);
+	union tbt_mode_resp_cable cable_resp = get_cable_tbt_vdo(port);
+	union tbt_mode_resp_device device_resp = get_dev_tbt_vdo(port);
 
 	/*
 	 * Ref: USB Type-C Cable and Connector Specification
