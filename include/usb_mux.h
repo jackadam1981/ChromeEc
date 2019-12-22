@@ -289,4 +289,7 @@ mux_state_t usb_mux_get(int port);
  * @param port port number.
  */
 void usb_mux_flip(int port);
+
+void usb_mux_set_safe_mode(int port);
+
 #endif
