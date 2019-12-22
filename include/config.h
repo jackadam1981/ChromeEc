@@ -1096,6 +1096,7 @@
 #undef CONFIG_CHIPSET_ECDRIVEN		/* Dummy power module */
 #undef CONFIG_CHIPSET_GEMINILAKE	/* Intel Geminilake (x86) */
 #undef CONFIG_CHIPSET_ICELAKE		/* Intel Icelake (x86) */
+#undef CONFIG_CHIPSET_JASPERLAKE	/* Intel Jasperlake (x86) */
 #undef CONFIG_CHIPSET_MT817X		/* MediaTek MT817x */
 #undef CONFIG_CHIPSET_MT8183		/* MediaTek MT8183 */
 #undef CONFIG_CHIPSET_RK3288		/* Rockchip rk3288 */
@@ -1108,6 +1109,7 @@
 
 /* Shared chipset support; automatically gets defined below. */
 #undef CONFIG_CHIPSET_APL_GLK		/* Apollolake & Geminilake */
+#undef CONFIG_CHIPSET_ICL_JSL		/* Icelake & Jasperlake */
 #undef CONFIG_CHIPSET_ICL_TGL		/* Icelake & Tigerlake */
 
 /* Support chipset throttling */
@@ -4849,6 +4851,7 @@
 #undef CONFIG_CHIPSET_COMETLAKE
 #undef CONFIG_CHIPSET_GEMINILAKE
 #undef CONFIG_CHIPSET_ICELAKE
+#undef CONFIG_CHIPSET_JASPERLAKE
 #undef CONFIG_CHIPSET_MT817X
 #undef CONFIG_CHIPSET_MT8183
 #undef CONFIG_CHIPSET_RK3399
@@ -4949,6 +4952,11 @@
 #endif
 
 #if defined(CONFIG_CHIPSET_ICELAKE) || \
+	defined(CONFIG_CHIPSET_JASPERLAKE)
+#define CONFIG_CHIPSET_ICL_JSL
+#endif
+
+#if defined(CONFIG_CHIPSET_ICELAKE) || \
 	defined(CONFIG_CHIPSET_TIGERLAKE)
 #define CONFIG_CHIPSET_ICL_TGL
 #endif
@@ -4964,6 +4972,7 @@
 	defined(CONFIG_CHIPSET_COMETLAKE_DISCRETE) || \
 	defined(CONFIG_CHIPSET_GEMINILAKE) || \
 	defined(CONFIG_CHIPSET_ICELAKE) || \
+	defined(CONFIG_CHIPSET_JASPERLAKE) || \
 	defined(CONFIG_CHIPSET_SKYLAKE) || \
 	defined(CONFIG_CHIPSET_TIGERLAKE)
 #define CONFIG_POWER_COMMON
@@ -4971,6 +4980,7 @@
 
 #if defined(CONFIG_CHIPSET_CANNONLAKE) || \
 	defined(CONFIG_CHIPSET_ICELAKE) || \
+	defined(CONFIG_CHIPSET_JASPERLAKE) || \
 	defined(CONFIG_CHIPSET_SKYLAKE) || \
 	defined(CONFIG_CHIPSET_TIGERLAKE)
 #define CONFIG_CHIPSET_X86_RSMRST_DELAY
