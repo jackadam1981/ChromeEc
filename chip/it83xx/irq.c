@@ -59,7 +59,7 @@ static const struct {
 	IRQ_GROUP(28, { 2,  2,  2,  2,  2,  2, -1, -1}),
 };
 
-#if defined(CHIP_FAMILY_IT8320)    /* N8 core */
+#if defined(CHIP_FAMILY_IT8320) || defined(CHIP_FAMILY_IT8XXX1) /* N8 core */
 /* Number of CPU hardware interrupts (HW0 ~ HW15) */
 int cpu_int_entry_number;
 #endif
@@ -68,7 +68,7 @@ int chip_get_ec_int(void)
 {
 	extern volatile int ec_int;
 
-#if defined(CHIP_FAMILY_IT8320)    /* N8 core */
+#if defined(CHIP_FAMILY_IT8320) || defined(CHIP_FAMILY_IT8XXX1) /* N8 core */
 	int i;
 
 	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {

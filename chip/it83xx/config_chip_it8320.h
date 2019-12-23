@@ -20,6 +20,7 @@
 #define CHIP_H2RAM_BASE             0x0008D000 /* 0x0008D000~0x0008DFFF */
 #define CHIP_RAMCODE_BASE           0x0008E000 /* 0x0008E000~0x0008EFFF */
 #define CHIP_EXTRA_STACK_SPACE      0
+#define CHIP_RAM_SPACE_RESERVED     0
 
 #define CONFIG_RAM_BASE             0x00080000
 #define CONFIG_RAM_SIZE             0x0000C000

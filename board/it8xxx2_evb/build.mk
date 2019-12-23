@@ -7,8 +7,8 @@
 
 # the IC is ITE IT8xxx2
 CHIP:=it83xx
-CHIP_FAMILY:=it8xxx2
-CHIP_VARIANT:=it81202ax_1024
+CHIP_FAMILY:=it8xxx1
+CHIP_VARIANT:=it83201bx
 BASEBOARD:=ite_evb
 
 board-y=board.o
