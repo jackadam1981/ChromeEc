@@ -22,6 +22,30 @@
       "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1141d752_9edbb9fc",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-23T16:10:34Z",
+      "side": 1,
+      "message": "I think CONFIG_CHIPSET_ICL_JSL looks okay as\n1. CONFIG_CHIPSET_ICL_JSL_TGL** list will increase if future chips use same ICL sequencing \n2. if any workarounds during PO, it gives us opportunity to add ifdef only for JSL or TGL etc",
+      "parentUuid": "eb4afc27_b00f637f",
+      "range": {
+        "startLine": 1112,
+        "startChar": 7,
+        "endLine": 1112,
+        "endChar": 29
+      },
+      "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
