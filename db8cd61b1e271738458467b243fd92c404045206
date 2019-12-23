@@ -63,6 +63,30 @@
       "revId": "db8cd61b1e271738458467b243fd92c404045206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14da5158_fee89300",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-23T19:52:10Z",
+      "side": 1,
+      "message": "If this is just for that part, then this cannot go in common code.  Does the part require a load switch or is this just for power savings?",
+      "parentUuid": "e9b4888f_28429368",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
