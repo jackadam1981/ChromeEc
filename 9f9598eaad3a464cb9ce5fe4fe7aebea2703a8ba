@@ -94,6 +94,30 @@
       "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014f1d34_37f5b9c0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-12-23T18:16:11Z",
+      "side": 1,
+      "message": "Right, that looks more reasonable to me.",
+      "parentUuid": "c972624e_6cea0d85",
+      "range": {
+        "startLine": 1112,
+        "startChar": 7,
+        "endLine": 1112,
+        "endChar": 29
+      },
+      "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
