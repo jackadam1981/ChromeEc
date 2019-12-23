@@ -22,6 +22,30 @@
       "revId": "85ea6b204dc9baf02cc2697c059029b3971649e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967024b9_b4ae6bf3",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2019-12-23T04:54:00Z",
+      "side": 1,
+      "message": "Discussed this offline; the common mechanism for debouncing is exactly what we do here (deferred calls), so there isn\u0027t really anything to do for debouncing.\n\nIt might be interesting to have common code that handles this kind of online-only selection, but it\u0027s unclear what that might even look like or if it would be useful (since we only have one board that does it, plus now puff).",
+      "parentUuid": "da7a0839_7128e8ac",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 23
+      },
+      "revId": "85ea6b204dc9baf02cc2697c059029b3971649e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
