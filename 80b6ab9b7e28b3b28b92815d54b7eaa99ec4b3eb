@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66ffd531_24224d8d",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-23T20:19:55Z",
+      "side": 1,
+      "message": "Used the mechanism scan uses instead and that works consistently",
+      "parentUuid": "12c18a76_85bd8cac",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "80b6ab9b7e28b3b28b92815d54b7eaa99ec4b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "511bbfb5_b0e201e4",
         "filename": "driver/retimer/ps8802.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "80b6ab9b7e28b3b28b92815d54b7eaa99ec4b3eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c0182a_a4eaacfd",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-23T20:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "511bbfb5_b0e201e4",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "80b6ab9b7e28b3b28b92815d54b7eaa99ec4b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
