@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f76a3185_6c8e994e",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-23T02:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51e996a_dd63c494",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 4
+      },
+      "revId": "c049993f5dace9a07934c77f3e25a256592b2781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68d98272_0071815c",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-20T17:11:48Z",
       "side": 1,
       "message": "If I understand this correctly, all of these on and off values could just be set to -1, correct?  Both fans are off, so what\u0027s the purpose of having different temperature thresholds ?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "c049993f5dace9a07934c77f3e25a256592b2781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7339667_6b455eb9",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-12-23T02:51:15Z",
+      "side": 1,
+      "message": "Since this table is not final, our thermal engineer just reserved those levels for future. they may not both off.",
+      "parentUuid": "68d98272_0071815c",
       "range": {
         "startLine": 94,
         "startChar": 0,
