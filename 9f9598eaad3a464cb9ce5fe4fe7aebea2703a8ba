@@ -70,6 +70,30 @@
       "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c972624e_6cea0d85",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-23T18:05:04Z",
+      "side": 1,
+      "message": "Nice catch Justin, we can rename CONFIG_CHIPSET_ICL_TGL to CONFIG_CHIPSET_ICELAKE\nthen add this\n#if defined(CONFIG_CHIPSET_TIGERLAKE) || \\\n    defined(CONFIG_CHIPSET_JASPERLAKE)\n#define CONFIG_CHIPSET_ICELAKE\n#endif",
+      "parentUuid": "f24a638d_e1bb2c5e",
+      "range": {
+        "startLine": 1112,
+        "startChar": 7,
+        "endLine": 1112,
+        "endChar": 29
+      },
+      "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
