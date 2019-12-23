@@ -128,6 +128,30 @@
       "revId": "db8cd61b1e271738458467b243fd92c404045206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d3c000_83fe93ef",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-23T19:57:45Z",
+      "side": 1,
+      "message": "most of the MUX have either reset_en or power_en pin, we can remove it in this CL and add it as part of board level code.\nIn next CL we can plan to add it as part of structure based on the real need.",
+      "parentUuid": "1fa1eb6e_8d1186c7",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
