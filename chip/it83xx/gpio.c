@@ -18,6 +18,32 @@
 #include "timer.h"
 #include "util.h"
 
+/* Data structure to define KSI/KSO GPIO mode control registers. */
+struct kbs_gpio_ctrl_t {
+	/* GPIO mode control register. */
+	volatile uint8_t *gpio_mode;
+	/* GPIO output enable register. */
+	volatile uint8_t *gpio_out;
+	/* GPIO data register for output. */
+	volatile uint8_t *gpio_level;
+	/* GPIO data mirror register for input. */
+	volatile uint8_t *gpio_mirror;
+	/* GPIO open-drain register. */
+	volatile uint8_t *gpio_od;
+};
+
+static const struct kbs_gpio_ctrl_t kbs_gpio_ctrl_regs[] = {
+	/* KSI pins 7:0 */
+	{ &IT83XX_KBS_KSIGCTRL,  &IT83XX_KBS_KSIGOEN, &IT83XX_KBS_KSIGDAT,
+		&IT83XX_KBS_KSIGDMRR, &IT83XX_KBS_KSIGPODR},
+	/* KSO pins 15:8 */
+	{ &IT83XX_KBS_KSOHGCTRL, &IT83XX_KBS_KSOHGOEN, &IT83XX_KBS_KSOH1,
+		&IT83XX_KBS_KSOHGDMRR, &IT83XX_KBS_KSOHGPODR},
+	/* KSO pins 7:0 */
+	{ &IT83XX_KBS_KSOLGCTRL, &IT83XX_KBS_KSOLGOEN, &IT83XX_KBS_KSOL,
+		&IT83XX_KBS_KSOLGDMRR, &IT83XX_KBS_KSOLGPODR},
+};
+
 /**
  * Convert wake-up controller (WUC) group to the corresponding wake-up edge
  * sense register (WUESR). Return pointer to the register.
@@ -421,6 +447,24 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask,
 				enum gpio_alternate_func func)
 {
 	uint32_t pin = 0;
+
+	if (port > GPIO_PORT_COUNT) {
+		port -= GPIO_PORT_COUNT;
+		/*
+		 * If func is non-negative, set for keyboard scan function.
+		 * Otherwise, turn the pin into a GPIO input.
+		 */
+		if (func >= 0) {
+			/* KBS mode */
+			*kbs_gpio_ctrl_regs[port].gpio_mode &= ~mask;
+		} else {
+			/* input */
+			*kbs_gpio_ctrl_regs[port].gpio_out &= ~mask;
+			/* GPIO mode */
+			*kbs_gpio_ctrl_regs[port].gpio_mode |= mask;
+		}
+		return;
+	}
 
 	/* For each bit high in the mask, set that pin to use alt. func. */
 	while (mask > 0) {
