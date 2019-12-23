@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2afd40fe_f7e04507",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-12-23T16:40:52Z",
+      "side": 1,
+      "message": "Nit: Single line comment is sufficient.",
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f517c2fc_b47d67d4",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-12-23T16:40:52Z",
+      "side": 1,
+      "message": "It seems this gpio config is required only by ANX7440. Not sure if it is worth to enable it only for ANX7440. Aseda/Diana to comment on that.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
