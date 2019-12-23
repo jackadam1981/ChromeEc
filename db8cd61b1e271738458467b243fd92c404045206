@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "983f61e3_e0c53f62",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-23T20:02:41Z",
+      "side": 1,
+      "message": "pls remove this now.\nAdd a TODO with crosbug, keep usb_ls_en_gpio always high in gpio.inc",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 48
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02e3c569_341e9a83",
         "filename": "include/config.h",
         "patchSetId": 1
