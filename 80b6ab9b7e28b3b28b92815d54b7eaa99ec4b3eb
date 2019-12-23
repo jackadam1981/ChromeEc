@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12c18a76_85bd8cac",
+        "filename": "driver/retimer/ps8802.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-23T17:37:42Z",
+      "side": 1,
+      "message": "I bumped this up to i \u003c 3 and it became more stable.  Should get more specifics on what will wake this chip up so we know that the code will do what it is supposed to be doing",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "80b6ab9b7e28b3b28b92815d54b7eaa99ec4b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511bbfb5_b0e201e4",
+        "filename": "driver/retimer/ps8802.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-23T17:37:42Z",
+      "side": 1,
+      "message": "0x08",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "80b6ab9b7e28b3b28b92815d54b7eaa99ec4b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
