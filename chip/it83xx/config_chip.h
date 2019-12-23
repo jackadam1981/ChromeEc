@@ -8,6 +8,8 @@
 
 #if defined(CHIP_FAMILY_IT8320)    /* N8 core */
 #include "config_chip_it8320.h"
+#elif defined(CHIP_FAMILY_IT8XXX1) /* N8 core */
+#include "config_chip_it8xxx1.h"
 #elif defined(CHIP_FAMILY_IT8XXX2) /* RISCV core */
 #include "config_chip_it8xxx2.h"
 #else
