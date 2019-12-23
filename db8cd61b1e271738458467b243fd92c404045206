@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bd0fe419_2328a006",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2019-12-23T20:38:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2afd40fe_f7e04507",
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "983f61e3_e0c53f62",
         "filename": "driver/usb_mux/anx7440.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b6a5c1cc_e6e5b315",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2019-12-23T20:38:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "983f61e3_e0c53f62",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 48
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02e3c569_341e9a83",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "db8cd61b1e271738458467b243fd92c404045206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8723a07d_be10be3f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4235,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2019-12-23T20:38:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02e3c569_341e9a83",
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +235,30 @@
       "revId": "db8cd61b1e271738458467b243fd92c404045206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5816f8b_4d9a1aa0",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2019-12-23T20:38:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38d3c000_83fe93ef",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
