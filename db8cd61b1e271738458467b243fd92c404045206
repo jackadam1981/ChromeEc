@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "02e3c569_341e9a83",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4235,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-23T19:53:02Z",
+      "side": 1,
+      "message": "please add a newline between undefs and next comment",
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f517c2fc_b47d67d4",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -77,6 +94,30 @@
       "writtenOn": "2019-12-23T19:52:10Z",
       "side": 1,
       "message": "If this is just for that part, then this cannot go in common code.  Does the part require a load switch or is this just for power savings?",
+      "parentUuid": "e9b4888f_28429368",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "db8cd61b1e271738458467b243fd92c404045206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa1eb6e_8d1186c7",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-23T19:53:02Z",
+      "side": 1,
+      "message": "I did something similar in the retimer driver and opted to put the gpio values in the structure because a couple of the devices needed this. If this is the only usb_mux that has this need then use the define name in the 7440 driver.  If you are going to leave it in the structure, move it up closer to the port_addr/flags field.",
       "parentUuid": "e9b4888f_28429368",
       "range": {
         "startLine": 132,
