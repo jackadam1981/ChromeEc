@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4afc27_b00f637f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-12-23T10:40:53Z",
+      "side": 1,
+      "message": "Any reason why we cannot just use CONFIG_CHIPSET_ICL_JSL_TGL since all three seem to be making use of the same power sequencing code? That can let us avoid some of the duplicated code that is being added as part of this CL.",
+      "range": {
+        "startLine": 1112,
+        "startChar": 7,
+        "endLine": 1112,
+        "endChar": 29
+      },
+      "revId": "9f9598eaad3a464cb9ce5fe4fe7aebea2703a8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
