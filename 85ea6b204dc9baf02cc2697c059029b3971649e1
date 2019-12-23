@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7a0839_7128e8ac",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2019-12-23T04:36:30Z",
+      "side": 1,
+      "message": "Please add a TODO to consider moving this BJ debounce into some common code.",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 23
+      },
+      "revId": "85ea6b204dc9baf02cc2697c059029b3971649e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
