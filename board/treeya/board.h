@@ -71,6 +71,9 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+extern struct mutex g_lid_mutex;
+extern struct mutex g_base_mutex;
+
 void board_bmi160_lsm6dsm_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
