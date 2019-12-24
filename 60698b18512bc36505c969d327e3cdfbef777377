@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38894f0_bec7758a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4969,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-12-24T01:41:05Z",
+      "side": 1,
+      "message": "Aren\u0027t these checks kind of redundant now since CONFIG_CHIPSET_ICELAKE will always be true if CONFIG_CHIPSET_JASPERLAKE or CONFIG_CHIPSET_TIGERLAKE are selected?",
+      "range": {
+        "startLine": 4969,
+        "startChar": 1,
+        "endLine": 4969,
+        "endChar": 35
+      },
+      "revId": "60698b18512bc36505c969d327e3cdfbef777377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cba7362_d986b14c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4977,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-12-24T01:41:05Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 4977,
+        "startChar": 9,
+        "endLine": 4977,
+        "endChar": 34
+      },
+      "revId": "60698b18512bc36505c969d327e3cdfbef777377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
