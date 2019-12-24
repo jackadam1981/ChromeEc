@@ -19,6 +19,12 @@
 #include "switch.h"
 #include "tablet_mode.h"
 #include "task.h"
+#include "watchdog.h"
+#include "hooks.h"
+#include "compile_time_macros.h"
+#include "math_util.h"
+
+#include "util.h"
 
 #include "gpio_list.h"
 
@@ -150,13 +156,6 @@ struct motion_sensor_t base_gyro_1 = {
 	.max_frequency = LSM6DSM_ODR_MAX_VAL,
 };
 
-static int board_use_st_sensor(void)
-{
-	/* sku_id 0xa8-0xa9 use ST sensors */
-	uint32_t sku_id = system_get_sku_id();
-
-	return sku_id == 0xa8 || sku_id == 0xa9;
-}
 
 /* treeya board will use two sets of lid/base sensor, we need update
  * sensors info according to sku id.
@@ -164,6 +163,7 @@ static int board_use_st_sensor(void)
 void board_update_sensor_config_from_sku(void)
 {
 	if (board_is_convertible()) {
+		#if 0
 		/* sku_id a8-a9 use ST sensors */
 		if (board_use_st_sensor()) {
 			motion_sensors[LID_ACCEL] = lid_accel_1;
@@ -174,9 +174,10 @@ void board_update_sensor_config_from_sku(void)
 			motion_sensors[BASE_ACCEL].rot_standard_ref = &treeya_standard_ref;
 			motion_sensors[BASE_GYRO].rot_standard_ref = &treeya_standard_ref;
 		}
-
 		/* Enable Gyro interrupts */
 		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+		#endif
+		motion_sensor_count = 0;
 	} else {
 		motion_sensor_count = 0;
 		/* Device is clamshell only */
@@ -187,13 +188,71 @@ void board_update_sensor_config_from_sku(void)
 	}
 }
 
+static uint8_t sensor_id;
+
 /* bmi160 or lsm6dsm need differenct interrupt function */
 void board_bmi160_lsm6dsm_interrupt(enum gpio_signal signal)
 {
-	if (board_use_st_sensor())
+	if (sensor_id)
 		lsm6dsm_interrupt(signal);
 	else
 		bmi160_interrupt(signal);
 }
+
+
+
+#define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
+
+
+static void sensor_probe(void)
+{
+	uint8_t tmp, i;
+	uint8_t init_count = 3;
+	uint8_t sensors[] = {LSM6DSM_ADDR0_FLAGS, BMI160_ADDR0_FLAGS};
+
+	CPRINTS("******begin try time is %d", init_count);
+	/* only RW will enable sensor */
+	if (!system_jumped_to_this_image())
+		return;
+
+	while (init_count--) {
+		CPRINTS("try time is %d done", init_count);
+		for (i = 0; i < ARRAY_SIZE(sensors); i++) {
+			watchdog_reload();
+			i2c_lock(I2C_PORT_SENSOR, 1);
+			if (!i2c_xfer_unlocked(I2C_PORT_SENSOR, sensors[i],
+					 NULL, 0, &tmp, 1, I2C_XFER_SINGLE)) {
+				CPRINTS("sensor polled 0x%02x", sensors[i]);
+				if (sensors[i] == LSM6DSM_ADDR0_FLAGS) {
+					ccprintf("\nupdate lsm6dsm %d", sensors[i]);
+					motion_sensors[LID_ACCEL] = lid_accel_1;
+					motion_sensors[BASE_ACCEL] = base_accel_1;
+					motion_sensors[BASE_GYRO] = base_gyro_1;
+				} else {
+					/*Need to change matrix for treeya*/
+					motion_sensors[BASE_ACCEL].rot_standard_ref =
+									&treeya_standard_ref;
+					motion_sensors[BASE_GYRO].rot_standard_ref =
+									&treeya_standard_ref;
+					CPRINTS("update bmi160 %d", sensors[i]);
+				}
+				sensor_id = i;
+				/* Enable Gyro interrupts */
+				motion_sensor_count = 3;
+				gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+				CPRINTS("sensor_id is %d motion_sensor_count is %d",
+							sensor_id, motion_sensor_count);
+				i2c_lock(I2C_PORT_SENSOR, 0);
+				return;
+
+			}
+			i2c_lock(I2C_PORT_SENSOR, 0);
+		}
+
+	}
+
+};
+/* Initial after sensor power up*/
+DECLARE_HOOK(HOOK_INIT, sensor_probe, HOOK_PRIO_DEFAULT);
 
 #endif
