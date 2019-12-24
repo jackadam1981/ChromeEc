@@ -544,8 +544,8 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 #ifdef HAS_TASK_MOTIONSENSE
 
 /* Motion sensors */
-static struct mutex g_lid_mutex;
-static struct mutex g_base_mutex;
+struct mutex g_lid_mutex;
+struct mutex g_base_mutex;
 
 /* sensor private data */
 static struct kionix_accel_data g_kx022_data;
