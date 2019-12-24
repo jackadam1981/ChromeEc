@@ -22,6 +22,30 @@
       "revId": "2e181de33d78437873f9e808bbb8beadcdb0c5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7b4bbb_0d6a71c5",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-12-24T02:47:26Z",
+      "side": 1,
+      "message": "I think its okay to have this. Useful when F/W update is done and image is invalid.",
+      "parentUuid": "9ac6ef86_6af934a2",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "2e181de33d78437873f9e808bbb8beadcdb0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
