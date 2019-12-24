@@ -22,6 +22,30 @@
       "revId": "98f7e1897d2e46802641186a855ba261efefad73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23169463_3aa8d842",
+        "filename": "board/jslrvp_ite/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2019-12-24T06:35:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0792abbb_7f25ccef",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "98f7e1897d2e46802641186a855ba261efefad73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
