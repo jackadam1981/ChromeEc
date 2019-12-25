@@ -9,6 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 /* Optional modules */
+#define CONFIG_PS2
 #define CONFIG_ADC
 #define CONFIG_PWM
 #define CONFIG_SPI
@@ -40,8 +41,9 @@
 #define CONFIG_CMD_SPI_FLASH
 #define CONFIG_CMD_SCRATCHPAD
 #define CONFIG_CMD_I2CWEDGE
+#define CONFIG_CMD_PS2
 
-#define CONFIG_FANS                     1
+#define CONFIG_FANS                     0
 
 /* Optional feature - used by nuvoton */
 #define NPCX_UART_MODULE2    0 /* 0:GPIO10/11 1:GPIO64/65 as UART */

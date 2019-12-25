@@ -21,6 +21,8 @@
 #define BOARD_VERSION  2
 #endif
 
+#define CONFIG_PS2
+
 /* EC modules */
 #define CONFIG_ADC
 #define CONFIG_PWM
@@ -38,7 +40,7 @@
 #define CONFIG_I2C_MASTER
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
-#undef  CONFIG_LOW_POWER_IDLE /* Deep Sleep Support */
+#define  CONFIG_LOW_POWER_IDLE /* Deep Sleep Support */
 #define CONFIG_POWER_BUTTON
 #undef  CONFIG_PSTORE
 #define CONFIG_PWM_KBLIGHT
@@ -53,6 +55,7 @@
 #define CONFIG_CMD_SPI_FLASH
 #define CONFIG_CMD_SCRATCHPAD
 #define CONFIG_CMD_I2CWEDGE
+#define CONFIG_CMD_PS2
 
 /* I2C port for CONFIG_CMD_I2CWEDGE */
 #define I2C_PORT_MASTER NPCX_I2C_PORT0_0
@@ -79,9 +82,9 @@
 #define CONFIG_HIBERNATE_PSL /* Use PSL (Power Switch Logic) for hibernate */
 #define CONFIG_CLOCK_SRC_EXTERNAL /* Use external 32kHz OSC as LFCLK source */
 #if defined(CHIP_VARIANT_NPCX7M7WB) || defined(CHIP_VARIANT_NPCX7M7WC)
-#define CONFIG_AUDIO_CODEC
-#define CONFIG_AUDIO_CODEC_DMIC
-#define CONFIG_AUDIO_CODEC_I2S_RX /* Use Audio front-end for Wake-on-Voice */
+#undef CONFIG_AUDIO_CODEC
+#undef CONFIG_AUDIO_CODEC_DMIC
+#undef CONFIG_AUDIO_CODEC_I2S_RX /* Use Audio front-end for Wake-on-Voice */
 #endif
 #undef CONFIG_FANS /* Remove fan application */
 #define CONFIG_FANS 0
