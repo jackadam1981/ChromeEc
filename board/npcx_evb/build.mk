@@ -13,3 +13,5 @@ CHIP_FAMILY:=npcx5
 CHIP_VARIANT:=npcx5m5g
 
 board-y=board.o
+
+board-y+=ps2_task.o
