@@ -1261,6 +1261,7 @@
 #define CONFIG_CMD_PWR_AVG
 #define CONFIG_CMD_POWER_AP
 #undef  CONFIG_CMD_PPC_DUMP
+#undef  CONFIG_CMD_PS2
 #undef  CONFIG_CMD_RAND
 #define CONFIG_CMD_REGULATOR
 #undef  CONFIG_CMD_RTC
@@ -2997,6 +2998,9 @@
  * On x86 systems, define this option if the CPU_PROCHOT signal is active low.
  */
 #undef CONFIG_CPU_PROCHOT_ACTIVE_LOW
+
+/* Support PS/2 interface */
+#undef CONFIG_PS2
 
 /*****************************************************************************/
 /* Support PWM control */

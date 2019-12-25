@@ -41,6 +41,8 @@ endif
 chip-$(CONFIG_WAKE_ON_VOICE)+=apm.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=wov.o
 
+chip-$(CONFIG_PS2)+=ps2.o
+
 # spi monitor program fw for openocd and UUT(UART Update Tool)
 npcx-monitor-fw=chip/npcx/spiflashfw/npcx_monitor
 npcx-monitor-fw-bin=${out}/$(npcx-monitor-fw).bin
