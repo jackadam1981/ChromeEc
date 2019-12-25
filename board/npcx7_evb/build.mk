@@ -18,6 +18,8 @@
 
 CHIP:=npcx
 CHIP_FAMILY:=npcx7
-CHIP_VARIANT:=npcx7m7wb
+CHIP_VARIANT:=npcx7m6g
 
 board-y=board.o
+
+board-y+=ps2_task.o
