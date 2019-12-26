@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06fa98e0_acf88213",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-26T17:28:17Z",
+      "side": 1,
+      "message": "This is specific to Kindred only.  How about moving this to a hook function in kindred\u0027s board.c file?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "856f3019fbfbdb026795c99ffc95f48976b6874f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a9822a_b8f2778d",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-26T17:28:17Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 46
+      },
+      "revId": "856f3019fbfbdb026795c99ffc95f48976b6874f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
