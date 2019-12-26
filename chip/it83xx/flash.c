@@ -332,7 +332,7 @@ int FLASH_DMA_CODE dma_flash_verify(int addr, int size, const char *data)
 {
 	int i;
 	uint8_t *wbuf = (uint8_t *)data;
-	uint8_t *flash = (uint8_t *)addr;
+	uint8_t *flash = (uint8_t *)(addr | CONFIG_MAPPED_STORAGE_BASE);
 
 	/* verify for erase */
 	if (data == NULL) {
