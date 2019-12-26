@@ -75,6 +75,9 @@ static void scp_enable_pirq(void)
 
 void system_pre_init(void)
 {
+	SCP_AP_RESOURCE = 1;
+	SCP_BUS_RESOURCE = 1;
+
 	/* CM4 Modification */
 	scp_cm4_mod();
 	/* Clock */
