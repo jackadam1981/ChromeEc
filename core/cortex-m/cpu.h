@@ -69,6 +69,8 @@ void cpu_init(void);
 void cpu_enable_caches(void);
 /* Invalidate the D-cache */
 void cpu_invalidate_dcache(void);
+/* Invalidate the I-cache */
+void cpu_invalidate_icache(void);
 /* Clean and Invalidate the D-cache to the Point of Coherency */
 void cpu_clean_invalidate_dcache(void);
 
