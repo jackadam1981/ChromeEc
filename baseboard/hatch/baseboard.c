@@ -104,6 +104,12 @@ static void baseboard_chipset_resume(void)
 {
 	if (board_has_kb_backlight())
 		gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+
+	/*Resume set GPIOB7 to INPUT type */
+	gpio_set_flags(GPIO_FAN_PWM5, GPIO_INPUT | GPIO_LOW);
+
+	/* Resume set GPIOB7 to PWM function*/
+	gpio_set_alternate_function(GPIO_B, 0x80, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -112,6 +118,11 @@ static void baseboard_chipset_suspend(void)
 {
 	if (board_has_kb_backlight())
 		gpio_set_level(GPIO_EC_KB_BL_EN, 0);
+
+	/* Set GPIOB7 to GPIO type from PWM when suspend*/
+	CLEAR_BIT(NPCX_DEVALT(4), NPCX_DEVALT4_PWM5_SL);
+	/* Set GPIOB7 to OUTPUT HI*/
+	gpio_set_flags(GPIO_FAN_PWM5, GPIO_OUT_HIGH);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
