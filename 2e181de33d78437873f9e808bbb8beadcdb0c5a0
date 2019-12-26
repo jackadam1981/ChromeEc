@@ -94,6 +94,30 @@
       "revId": "2e181de33d78437873f9e808bbb8beadcdb0c5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63868b61_5347b17a",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-26T16:29:11Z",
+      "side": 1,
+      "message": "Zork has multiple retimer options and they don\u0027t want to require different firmware for each, so they are detected at run time.  So the idea of run time detection is not a bad one.\n\nWill this work for boards that the chipset is not always on?  If it requires the AP, the decision may be when we do not have power.  With the PS8802/PS8818 code, the decision is made when we have chipset power and it is in the .set routine.\n\nSee the following\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1980391\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1980392",
+      "parentUuid": "3c9537d1_bd2c7ec2",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "2e181de33d78437873f9e808bbb8beadcdb0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
