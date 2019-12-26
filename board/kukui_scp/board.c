@@ -36,8 +36,10 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 		ccprints("AP suspend");
 		for (i = 0; i < ARRAY_SIZE(s3_suspend_tasks); ++i)
 			task_disable_task(s3_suspend_tasks[i]);
+		SCP_BUS_RESOURCE = 0;
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		ccprints("AP resume");
+		SCP_BUS_RESOURCE = 1;
 		for (i = 0; i < ARRAY_SIZE(s3_suspend_tasks); ++i)
 			task_enable_task(s3_suspend_tasks[i]);
 	}
