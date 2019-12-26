@@ -25,6 +25,7 @@
 #include "host_command.h"
 #include "ipi_chip.h"
 #include "mkbp_event.h"
+#include "power.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -83,6 +84,16 @@ static inline void try_to_wakeup_ap(int32_t id)
 		SCP_SPM_INT = SPM_INT_A2SPM;
 }
 
+static int is_wakeup_src(int32_t id)
+{
+#ifdef CONFIG_RPMSG_NAME_SERVICE
+	if (id == IPI_NS_SERVICE)
+		return 0;
+#endif
+
+	return *ipi_wakeup_table[id];
+}
+
 void ipi_disable_irq(int irq)
 {
 	/* Only support SCP_IRQ_IPC0 for now. */
@@ -123,11 +134,53 @@ void ipi_enable_irq(int irq)
 	mutex_unlock(&ipc0_lock);
 }
 
+static void turn_off_bus(void)
+{
+	SCP_BUS_RESOURCE = 0;
+}
+DECLARE_DEFERRED(turn_off_bus);
+
+static int ap_suspend;
+
+__override void
+power_chipset_handle_host_sleep_event(enum host_sleep_event state,
+				      struct host_sleep_event_context *ctx)
+{
+	int i;
+	const task_id_t s3_suspend_tasks[] = {
+#ifndef S3_SUSPEND_TASK_LIST
+#define S3_SUSPEND_TASK_LIST
+#endif
+#define TASK(n, ...) TASK_ID_##n,
+		S3_SUSPEND_TASK_LIST
+	};
+
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
+		ccprints("AP suspend");
+		for (i = 0; i < ARRAY_SIZE(s3_suspend_tasks); ++i)
+			task_disable_task(s3_suspend_tasks[i]);
+		ap_suspend = 1;
+		hook_call_deferred(&turn_off_bus_data, 1 * SECOND);
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		ccprints("AP resume");
+		hook_call_deferred(&turn_off_bus_data, -1);
+		SCP_BUS_RESOURCE = 1;
+		for (i = 0; i < ARRAY_SIZE(s3_suspend_tasks); ++i)
+			task_enable_task(s3_suspend_tasks[i]);
+		ap_suspend = 0;
+	}
+}
+
 /* Send data from SCP to AP. */
 int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 {
 	if (!ipi_ready)
 		return EC_ERROR_BUSY;
+
+	if (!is_wakeup_src(id) && ap_suspend) {
+		CPRINTS("Err: IPI %d send message when AP suspend", id);
+		return EC_ERROR_BUSY;
+	}
 
 	/* TODO(b:117917141): Remove this check completely. */
 	if (in_interrupt_context()) {
