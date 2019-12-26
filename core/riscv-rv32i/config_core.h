@@ -11,6 +11,7 @@
 #define BFD_FORMAT "elf32-littleriscv"
 
 #define CONFIG_SOFTWARE_CLZ
+#define CONFIG_SOFTWARE_CTZ
 #define CONFIG_SOFTWARE_PANIC
 
 #endif /* __CROS_EC_CONFIG_CORE_H */
