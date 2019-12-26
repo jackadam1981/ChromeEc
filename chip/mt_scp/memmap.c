@@ -57,7 +57,7 @@ BUILD_ASSERT(CONFIG_DRAM_BASE_LOAD == CACHE_TRANS_AP_ADDR);
 BUILD_ASSERT(CONFIG_DRAM_BASE == CACHE_TRANS_SCP_CACHE_ADDR);
 #endif
 
-static void cpu_invalidate_icache(void)
+void cpu_invalidate_icache(void)
 {
 	SCP_CACHE_OP(CACHE_ICACHE) &= ~SCP_CACHE_OP_OP_MASK;
 	SCP_CACHE_OP(CACHE_ICACHE) |=
