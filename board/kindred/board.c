@@ -477,3 +477,24 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 	else
 		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
 }
+
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	/*Resume set GPIOB7 to INPUT type */
+	gpio_set_flags(GPIO_FAN_PWM5, GPIO_INPUT | GPIO_LOW);
+
+	/* Resume set GPIOB7 to PWM function*/
+	gpio_set_alternate_function(GPIO_B, 0x80, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT-1);
+
+/* Called on AP S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	/* Set GPIOB7 to GPIO type from PWM when suspend*/
+	CLEAR_BIT(NPCX_DEVALT(4), NPCX_DEVALT4_PWM5_SL);
+	/* Set GPIOB7 to OUTPUT HI*/
+	gpio_set_flags(GPIO_FAN_PWM5, GPIO_OUT_HIGH);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT+1);

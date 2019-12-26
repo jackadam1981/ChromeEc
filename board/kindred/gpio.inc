@@ -90,6 +90,8 @@ GPIO(EDP_BKLTEN_OD,            PIN(D, 3), GPIO_ODR_HIGH)        /* Display backl
 GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
 GPIO(EN_MST,                   PIN(9, 6), GPIO_OUT_LOW)
 
+/* others */
+GPIO(FAN_PWM5,                 PIN(B, 7), GPIO_INPUT)
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(I2C0_SCL,                 PIN(B, 5), GPIO_INPUT |
