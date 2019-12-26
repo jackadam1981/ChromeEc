@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd698ee1_95879242",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-12-26T19:49:51Z",
+      "side": 1,
+      "message": "This test won\u0027t work to verify divide by zero is fixed once the kernel is fixed to pass a translated value.  Perhaps change this to \n\necho \"0\" \u003e /sys/bus/iio/devices/iio\\:device6/in_illuminance_calibscale",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 77
+      },
+      "revId": "4fc51b7c1365dbeacf53a8c598fbea3c10b28323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
