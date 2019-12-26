@@ -118,6 +118,30 @@
       "revId": "2e181de33d78437873f9e808bbb8beadcdb0c5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8039ef27_1a1ee884",
+        "filename": "driver/usb_mux/anx7440.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-26T20:32:35Z",
+      "side": 1,
+      "message": "It\u0027s not necessarily hurting anything, it just wastes Flash space.  I guess it\u0027s OK to leave it in for now, but I think this suggests the idea that maybe we should have a sort of framework in the EC codebase for runtime probing/detection of different ICs.",
+      "parentUuid": "63868b61_5347b17a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "2e181de33d78437873f9e808bbb8beadcdb0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
