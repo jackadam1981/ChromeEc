@@ -22,6 +22,29 @@
       "revId": "7e1cc0338abf053ab5f941e19a1ca8a3f73cfcd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b89abe9_102482ad",
+        "filename": "common/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-26T20:35:37Z",
+      "side": 1,
+      "message": "should this just be a \"continue\" so that other fans can still run?  Perhaps thermal control will only be enabled for one fan at a time for a different board.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "7e1cc0338abf053ab5f941e19a1ca8a3f73cfcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
