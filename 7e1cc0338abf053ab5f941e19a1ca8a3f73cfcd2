@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6617146b_5427f2e3",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-26T18:23:33Z",
+      "side": 1,
+      "message": "This set of parentheses is redundant",
+      "range": {
+        "startLine": 171,
+        "startChar": 7,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "7e1cc0338abf053ab5f941e19a1ca8a3f73cfcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
