@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ccd_config.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -17,6 +18,8 @@
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 defined(SECTION_IS_RO)))
+#define USE_EC_CR50_COMM  (USE_UART_INTERRUPTS && defined(CONFIG_STREAM_USART2))
+
 #define QUEUE_SIZE 64
 /*
  * Want to be able to accumulate larger amounts of data while USB is
@@ -134,6 +137,19 @@ void get_data_from_usb(struct usart_config const *config)
 	struct queue const *uart_out = config->consumer.queue;
 	int c;
 
+
+#if USE_EC_CR50_COMM
+	/*
+	 * UART_EC might be enabled for EC-CR50 communication at any time.
+	 * Do not let any console input data transferred at all if the ccd
+	 * capability disables it.
+	 */
+	if (config->uart == UART_EC) {
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
+			queue_advance_head(uart_out, queue_count(uart_out));
+	}
+#endif
+
 	/* Copy output from buffer until TX fifo full or output buffer empty */
 	while (queue_count(uart_out) && QUEUE_REMOVE_UNITS(uart_out, &c, 1))
 		uartn_write_char(config->uart, c);
@@ -161,6 +177,19 @@ void send_data_to_usb(struct usart_config const *config)
 	tail = uart_in->state->tail & mask;
 	count = 0;
 
+#if USE_EC_CR50_COMM
+	if (ec_comm_is_uart_in_packet_mode(uart)) {
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX)) {
+			/*
+			 * TODO(b/119329144): Process packet data separately,
+			 * and filter console data based on ccd capability.
+			 */
+			while (uartn_rx_available(uart))
+				uartn_read_char(uart);
+			return;
+		}
+	}
+#endif
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
 		tail = (tail + 1) & mask;
