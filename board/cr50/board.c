@@ -431,12 +431,14 @@ static void init_ac_detect(void)
 /*****************************************************************************/
 
 /*
- * There's no way to trigger on both rising and falling edges, so force a
- * compiler error if we try. The workaround is to use the pinmux to connect
- * two GPIOs to the same input and configure each one for a separate edge.
+ * b/19378957: There's no way to have more than one trigger condition on a GPIO,
+ * so force a compiler error if we try. The workaround is to use the pinmux to
+ * connect as many GPIOs as the number of trigger conditions to the same input
+ * and configure each one for a separate condition.
  */
+#define GPIO_INT_COND(x) ((x) & GPIO_INT_ANY & ~GPIO_INPUT)
 #define GPIO_INT(name, pin, flags, signal)	\
-	BUILD_ASSERT(((flags) & GPIO_INT_BOTH) != GPIO_INT_BOTH);
+	BUILD_ASSERT((GPIO_INT_COND(flags) & (GPIO_INT_COND(flags) - 1)) == 0);
 #include "gpio.wrap"
 
 /**
@@ -578,6 +580,8 @@ void board_configure_deep_sleep_wakepins(void)
 		/* enable powerdown exit */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
+
+	ec_comm_configure_wakepin();
 }
 
 static void deferred_tpm_rst_isr(void);
@@ -1647,8 +1651,26 @@ int chip_factory_mode(void)
 	 * Bit 0x2 used to indicate that mode has been set, bit 0x1 is the
 	 * actual indicator of the chip factory mode.
 	 */
-	if (!mode_set)
+	if (!mode_set) {
+		uint8_t pinmux_value_backup = GREAD(PINMUX, DIOB4_SEL);
+		/*
+		 * GPIO_AP_FLASH_SELECT (0, 2) and GPIO_DIOB4 (0, 10) are
+		 * sharing DIO B4 pin. Disconnect GPIO_AP_FLASH_SEL, attributed
+		 * as GPIO_OUT_LOW, from DIO B4.
+		 */
+		if (ec_comm_is_enabled()) {
+
+
+			/* Make DIO B4 have no GPIO output connected. */
+			GWRITE(PINMUX, DIOB4_SEL, 0);
+			udelay(STRAP_PIN_DELAY_USEC);
+		}
+
 		mode_set = 2 | !!gpio_get_level(GPIO_DIOB4);
+
+		/* Recover DIO B4 connection. */
+		GWRITE(PINMUX, DIOB4_SEL, pinmux_value_backup);
+	}
 
 	return mode_set & 1;
 }
