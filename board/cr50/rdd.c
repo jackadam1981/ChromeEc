@@ -100,6 +100,15 @@ static void uart_select_tx(int uart, int signal)
 void uartn_tx_connect(int uart)
 {
 	/*
+	 * If EC-CR50 communication is activated, then do not skip connecting
+	 * TX.
+	 */
+	if ((uart == UART_EC) && ec_comm_is_uart_in_packet_mode(UART_EC)) {
+		uart_select_tx(UART_EC, GC_PINMUX_UART2_TX_SEL);
+		return;
+	}
+
+	/*
 	 * Don't drive TX unless the debug cable is connected (we have
 	 * something to transmit) and servo is disconnected (we won't be
 	 * drive-fighting with servo).
@@ -228,6 +237,8 @@ static void ccd_state_change_hook(void)
 	uint32_t flags_now;
 	uint32_t flags_want = 0;
 	uint32_t delta;
+	/* Is EC-CR50 communication active, i.e., in a packet mode? */
+	int ec_comm_activated = ec_comm_is_uart_in_packet_mode(UART_EC);
 
 	/* Check what's enabled now */
 	flags_now = get_state_flags();
@@ -252,27 +263,49 @@ static void ccd_state_change_hook(void)
 	if (ccd_ext_is_enabled())
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
 			       CCD_ENABLE_I2C | CCD_ENABLE_SPI);
+	else if (ec_comm_activated)
+		flags_want |= CCD_ENABLE_UART_EC_TX;
 	else
 		flags_want = 0;
 
 	/* Then disable flags we can't have */
 
 	/* Servo takes over UART TX, I2C, and SPI. */
-	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
-		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
-				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
-				CCD_ENABLE_SPI);
+	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED)) {
+		uint32_t flags_exclusive_to_servo = CCD_ENABLE_UART_AP_TX |
+				CCD_ENABLE_UART_EC_BITBANG |
+				CCD_ENABLE_I2C |
+				CCD_ENABLE_SPI;
+		/*
+		 * UART_EC_TX should not be disabled,
+		 * if EC-CR50 communication is active.
+		 * Note: In boards supporting EC-CR50 communication,
+		 *       CCD is supposed to dominate UART channel over servo
+		 *       by hardware design.
+		 */
+		if (!ec_comm_activated)
+			flags_exclusive_to_servo |= CCD_ENABLE_UART_EC_TX;
+
+		flags_want &= ~flags_exclusive_to_servo;
+	}
 
 	/* Disable based on capabilities */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_AP_TX))
 		flags_want &= ~CCD_ENABLE_UART_AP;
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
-	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
-		flags_want &= ~CCD_ENABLE_UART_EC;
-	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
-		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
-				CCD_ENABLE_UART_EC_BITBANG);
+
+	/*
+	 * Do not disable UART EC based on CCD capabilities,
+	 * if EC-CR50 communication is active.
+	 */
+	if (!ec_comm_activated) {
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
+			flags_want &= ~CCD_ENABLE_UART_EC;
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
+			flags_want &= ~(CCD_ENABLE_UART_EC_TX |
+					CCD_ENABLE_UART_EC_BITBANG);
+	}
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
 
@@ -351,6 +384,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	/*
+	 * USB->UART bridging was blocked during the EC-CR50 communcation.
+	 * Let's flush any blocked console input data if any.
+	 */
+	if (board_has_ec_cr50_comm_support()) {
+		if (uart_tx_is_connected(UART_EC))
+			task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+	}
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
