@@ -140,6 +140,15 @@ void get_data_from_usb(struct usart_config const *config)
 		return;
 	}
 
+#ifdef BOARD_CR50
+	/*
+	 * If EC-CR50 communication is on-going, then let's not forward
+	 * console input to EC for now.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(config->uart))
+		return;
+#endif
+
 	/* Copy output from buffer until TX fifo full or output buffer empty */
 	while (queue_count(uart_out) && QUEUE_REMOVE_UNITS(uart_out, &c, 1))
 		uartn_write_char(config->uart, c);
@@ -170,6 +179,13 @@ void send_data_to_usb(struct usart_config const *config)
 	 */
 	if (!usb_from_uartn_is_enabled(uart))
 		q_room = 0;
+
+	/*
+	 * TODO(b/119329144): Process packet data separately,
+	 * and filter console data based on ccd capability.
+	 * if (ec_comm_is_uart_in_packet_mode(uart))
+	 *	...
+	 */
 
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
@@ -251,6 +267,22 @@ void usb_from_uartn_enable(int uart)
 void usb_to_uartn_enable(int uart)
 {
 	flag_usb_to_uartn |= BIT(uart);
+
+#if USE_UART_INTERRUPTS
+	/* Let's flush any blocked console input data if any. */
+#ifdef CONFIG_STREAM_USART1
+	if (uart == UART_AP) {
+		task_trigger_irq(GC_IRQNUM_UART1_TXINT);
+		return;
+	}
+#endif
+#ifdef CONFIG_STREAM_USART2
+	if (uart == UART_EC) {
+		task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+		return;
+	}
+#endif
+#endif
 }
 
 void usb_from_uartn_disable(int uart)
@@ -262,4 +294,3 @@ void usb_to_uartn_disable(int uart)
 {
 	flag_usb_to_uartn &= ~BIT(uart);
 }
-

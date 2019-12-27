@@ -229,6 +229,7 @@ static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
 	uint32_t flags_want = 0;
+	uint32_t flags_conflict_to_servo;
 	uint32_t delta;
 
 	/* Check what's enabled now */
@@ -253,27 +254,43 @@ static void ccd_state_change_hook(void)
 		flags_want |= CCD_ENABLE_UART_EC_BITBANG;
 #endif
 
+	flags_conflict_to_servo = CCD_ENABLE_UART_AP_TX |
+				  CCD_ENABLE_UART_EC_TX |
+				  CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
+				  CCD_ENABLE_SPI;
+
 	/*
 	 * External CCD will try to enable all the ports. If it's disabled,
 	 * disable all ports.
 	 */
-	if (ccd_ext_is_enabled())
+	if (ccd_ext_is_enabled()) {
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
 			       CCD_ENABLE_I2C | CCD_ENABLE_SPI |
 			       CCD_ENABLE_USB_FROM_UART_AP |
 			       CCD_ENABLE_USB_TO_UART_AP |
 			       CCD_ENABLE_USB_FROM_UART_EC |
 			       CCD_ENABLE_USB_TO_UART_EC);
-	else
+	} else if (ec_comm_is_uart_in_packet_mode(UART_EC)) {
+		/* EC-CR50 comm needs UART_EC RX/TX enabled. */
+		flags_want = (flags_want & CCD_ENABLE_UART_EC) |
+			     CCD_ENABLE_UART_EC_TX;
+
+		/*
+		 * Do not yield UART_EC TX to servo.
+		 * Note: With the board property, BOARD_EC_CR50_COMM_SUPPORT,
+		 *       H1-EC UART connection is supposed to dominate over
+		 *       servo-EC uart by HW design.
+		 */
+		flags_conflict_to_servo &= ~CCD_ENABLE_UART_EC_TX;
+	} else {
 		flags_want = 0;
+	}
 
 	/* Then disable flags we can't have */
 
 	/* Servo takes over UART TX, I2C, and SPI. */
 	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
-		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
-				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
-				CCD_ENABLE_SPI);
+		flags_want &= ~flags_conflict_to_servo;
 
 	/* Disable based on capabilities */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_AP_TX))
@@ -303,7 +320,8 @@ static void ccd_state_change_hook(void)
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
-	if (ccd_block & CCD_BLOCK_EC_UART)
+	if ((ccd_block & CCD_BLOCK_EC_UART) &&
+	    !ec_comm_is_uart_in_packet_mode(UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
