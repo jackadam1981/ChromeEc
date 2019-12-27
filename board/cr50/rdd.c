@@ -300,6 +300,20 @@ static void ccd_state_change_hook(void)
 	if (!(flags_want & CCD_ENABLE_UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
 
+	/*
+	 * If the packet mode is enabled and not in bitbang mode, then enable
+	 * both UART_EC RX and TX, so that it can receive an EC packet and
+	 * respond back.
+	 *
+	 * Note: In boards supporting EC-CR50 communication, CCD is supposed to
+	 *       dominate UART channel over servo by hardware design.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC))
+		if (!(flags_want & CCD_ENABLE_UART_EC_BITBANG)) {
+			flags_want |= CCD_ENABLE_UART_EC;
+			flags_want |= CCD_ENABLE_UART_EC_TX;
+		}
+
 	/* If no change, we're done */
 	if (flags_now == flags_want)
 		return;
