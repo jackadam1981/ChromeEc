@@ -313,6 +313,7 @@ static void sps_advance_rx(int port, int data_size)
  * size and the CS indication, this allows the client to delineate received
  * packets.
  */
+int missed_assertions[3];
 static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 {
 	for (;;) {
@@ -346,7 +347,8 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 			gpio_set_level(GPIO_INT_AP_L, 0);
 			gpio_set_level(GPIO_INT_AP_L, 1);
 			seen_data = 0;
-		}
+		} else
+			missed_assertions[2]++;
 	}
 }
 
@@ -369,13 +371,15 @@ static void sps_cs_deassert_interrupt(uint32_t port)
 		 */
 		GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
 		GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 0);
-		if (sps_cs_asserted())
+		if (sps_cs_asserted()) {
+			missed_assertions[0]++;
 			return;
-
+		}
 		/*
 		 * The CS went away while we were processing this interrupt,
 		 * this was the 'real' CS, need to process data.
 		 */
+		missed_assertions[1]++;
 	}
 
 	/* Make sure the receive FIFO is drained. */
