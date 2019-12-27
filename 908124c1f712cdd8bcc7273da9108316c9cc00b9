@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c25dbc66_182fc031",
+        "filename": "board/akemi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-27T16:36:48Z",
+      "side": 1,
+      "message": "What revision of the SBS is this?  Revision 1.1 shows this register addr is 0x3e.",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 44
+      },
+      "revId": "908124c1f712cdd8bcc7273da9108316c9cc00b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
