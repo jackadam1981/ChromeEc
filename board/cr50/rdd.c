@@ -229,6 +229,8 @@ static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
 	uint32_t flags_want = 0;
+	uint32_t flags_to_yield_to_servo;
+	uint32_t flags_mask;
 	uint32_t delta;
 
 	/* Check what's enabled now */
@@ -267,13 +269,28 @@ static void ccd_state_change_hook(void)
 	else
 		flags_want = 0;
 
+	flags_to_yield_to_servo = CCD_ENABLE_UART_AP_TX |
+				  CCD_ENABLE_UART_EC_TX |
+				  CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
+				  CCD_ENABLE_SPI;
+
+	if (ec_comm_is_uart_in_packet_mode(UART_EC) & ec_is_rx_allowed()) {
+		/* EC-CR50 comm needs UART_EC RX/TX enabled. */
+		flags_want |= (CCD_ENABLE_UART_EC | CCD_ENABLE_UART_EC_TX);
+		/*
+		 * Do not yield UART_EC TX to servo.
+		 * Note: With the board property, BOARD_EC_CR50_COMM_SUPPORT,
+		 *       H1-EC UART connection is supposed to dominate over
+		 *       servo-EC uart by HW design.
+		 */
+		flags_to_yield_to_servo &= ~CCD_ENABLE_UART_EC_TX;
+	}
+
 	/* Then disable flags we can't have */
 
 	/* Servo takes over UART TX, I2C, and SPI. */
 	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
-		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
-				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
-				CCD_ENABLE_SPI);
+		flags_want &= ~flags_to_yield_to_servo;
 
 	/* Disable based on capabilities */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_AP_TX))
@@ -303,7 +320,8 @@ static void ccd_state_change_hook(void)
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
-	if (ccd_block & CCD_BLOCK_EC_UART)
+	if ((ccd_block & CCD_BLOCK_EC_UART) &&
+	    !ec_comm_is_uart_in_packet_mode(UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
@@ -381,6 +399,15 @@ static void ccd_state_change_hook(void)
 		usb_from_uartn_enable(UART_EC);
 	if (delta & CCD_ENABLE_USB_TO_UART_EC)
 		usb_to_uartn_enable(UART_EC);
+
+	/* Let's flush any blocked console input data if any. */
+	flags_mask = CCD_ENABLE_UART_AP_TX | CCD_ENABLE_USB_TO_UART_AP;
+	if ((flags_want & flags_mask) == flags_mask)
+		task_trigger_irq(GC_IRQNUM_UART1_TXINT);
+
+	flags_mask = CCD_ENABLE_UART_EC_TX | CCD_ENABLE_USB_TO_UART_EC;
+	if ((flags_want & flags_mask) == flags_mask)
+		task_trigger_irq(GC_IRQNUM_UART2_TXINT);
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
