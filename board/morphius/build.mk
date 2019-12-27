@@ -13,3 +13,5 @@ BASEBOARD:=zork
 
 board-y=board.o led.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+
+board-y+=ps2_task.o

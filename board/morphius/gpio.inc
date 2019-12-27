@@ -35,6 +35,7 @@ GPIO(PROCHOT_ODL,		PIN(D, 5), GPIO_ODR_HIGH)			/* PROCHOT to SOC */
 GPIO(EC_BATT_PRES_ODL,		PIN(4, 1), GPIO_INPUT)				/* Battery Present */
 GPIO(EC_AP_INT_ODL,		PIN(A, 3), GPIO_ODR_HIGH)			/* Sensor MKBP event to SOC */
 GPIO(EN_PWR_A,			PIN(B, 7), GPIO_OUT_LOW)			/* Enable Power */
+GPIO(EN_PWR_TOUCHPAD_PS2,			PIN(C, 2), GPIO_OUT_LOW)			/* Enable Power PP3300_PS2 */
 GPIO(EC_EDP_BL_DISABLE,		PIN(A, 2), GPIO_OUT_HIGH)			/* Enable Backlight */
 GPIO(EC_ENTERING_RW,		PIN(E, 5), GPIO_OUT_LOW)			/* EC Entering RW */
 GPIO(EC_FCH_PWR_BTN_L,		PIN(6, 2), GPIO_OUT_HIGH)			/* Power Button to SOC */
@@ -50,6 +51,7 @@ GPIO(USB_C0_HPD,		PIN(F, 5), GPIO_OUT_LOW)			/* C0 DP Hotplug Detect */
 GPIO(USB_C0_IN_HPD,		PIN(7, 3), GPIO_OUT_LOW)			/* C0 IN Hotplug Detect */
 GPIO(DP1_HPD,			PIN(F, 4), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
 GPIO(DP2_HPD,			PIN(C, 1), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
+GPIO(EC_PS2_RESET,			PIN(3, 2), GPIO_OUT_LOW)			/* Trackpoint reset pin */
 
 GPIO(LED_FULL_L,		PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(LED_CHRG_L,		PIN(C, 0), GPIO_OUT_HIGH)
@@ -131,3 +133,7 @@ ALTERNATE(PIN_MASK(0, 0xE0), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH)		/* KSO_10-
 /* Power Switch Logic (PSL) inputs */
 ALTERNATE(PIN_MASK(0, BIT(0) | BIT(1) | BIT(2)), 0, MODULE_PMU, 0)		/* AC_PRESENT, POWER_BUTTON_L, EC_RST_ODL */
 ALTERNATE(PIN_MASK(D, BIT(2)), 0, MODULE_PMU, 0)				/* LID_OPEN */
+
+/* PS/2 channel 0 for trackpoint */
+ALTERNATE(PIN_MASK(6, 0x80), 1,  MODULE_PS2, 0) /* PS2_CLK0 GPIO67 */
+ALTERNATE(PIN_MASK(7, 0x01), 1,  MODULE_PS2, 0) /* PS2_DAT0 GPIO70 */
