@@ -27,6 +27,8 @@
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 
 #define AOZ1380_FLAGS_SOURCE_ENABLED    BIT(0)
+#define AOZ1380_FLAGS_SINK_ENABLED      BIT(1)
+#define AOZ1380_FLAGS_INTERRUPTED       BIT(2)
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int aoz1380_init(int port)
@@ -41,6 +43,14 @@ static int aoz1380_vbus_sink_enable(int port, int enable)
 	int rv;
 
 	rv = tcpm_set_snk_ctrl(port, enable);
+	if (rv)
+		return rv;
+
+	if (enable)
+		flags[port] |= AOZ1380_FLAGS_SINK_ENABLED;
+	else
+		flags[port] &= ~AOZ1380_FLAGS_SINK_ENABLED;
+	flags[port] &= ~AOZ1380_FLAGS_INTERRUPTED;
 
 	return rv;
 }
@@ -57,6 +67,8 @@ static int aoz1380_vbus_source_enable(int port, int enable)
 		flags[port] |= AOZ1380_FLAGS_SOURCE_ENABLED;
 	else
 		flags[port] &= ~AOZ1380_FLAGS_SOURCE_ENABLED;
+
+	flags[port] &= ~AOZ1380_FLAGS_INTERRUPTED;
 
 	return rv;
 }
@@ -82,10 +94,27 @@ static int aoz1380_set_vbus_source_current_limit(int port,
 static void aoz1380_handle_interrupt(int port)
 {
 	/*
-	 * This is a over current/temperature condition
+	 * We can get a false positive on disconnect that we
+	 * had an over current/temperature event when we are no
+	 * longer connected as sink or source.  Ignore it if
+	 * that is the case.
 	 */
-	CPRINTS("C%d: PPC detected Vbus overcurrent/temperature!", port);
-	pd_handle_overcurrent(port);
+	if (flags[port] != 0) {
+		/*
+		 * This is a over current/temperature condition
+		 */
+		CPRINTS("C%d PPC Vbus overcurrent/temperature", port);
+		pd_handle_overcurrent(port);
+	} else {
+		/*
+		 * Just in case there is a condition that we will
+		 * continue an interrupt storm, track that we have
+		 * already been here once and will take the other
+		 * path if we do this again before setting the
+		 * sink/source as enabled or disabled again.
+		 */
+		flags[port] |= AOZ1380_FLAGS_INTERRUPTED;
+	}
 }
 
 static void aoz1380_irq_deferred(void)
