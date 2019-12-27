@@ -11,6 +11,7 @@
  * controlled PPC chips that are similar to the AOZ1380
  */
 
+#include "atomic.h"
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/aoz1380.h"
@@ -27,11 +28,18 @@
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 
 #define AOZ1380_FLAGS_SOURCE_ENABLED    BIT(0)
-static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+#define AOZ1380_FLAGS_SINK_ENABLED      BIT(1)
+#define AOZ1380_FLAGS_INTERRUPTED       BIT(2)
+static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+#define AOZ1380_SET_FLAG(port, flag) atomic_or(&flags[port], (flag))
+#define AOZ1380_CLR_FLAG(port, flag) atomic_clear(&flags[port], (flag))
 
 static int aoz1380_init(int port)
 {
-	flags[port] = 0;
+	AOZ1380_CLR_FLAG(port, (AOZ1380_FLAGS_SOURCE_ENABLED |
+				AOZ1380_FLAGS_SINK_ENABLED |
+				AOZ1380_FLAGS_INTERRUPTED));
 
 	return EC_SUCCESS;
 }
@@ -41,8 +49,18 @@ static int aoz1380_vbus_sink_enable(int port, int enable)
 	int rv;
 
 	rv = tcpm_set_snk_ctrl(port, enable);
+	if (rv)
+		return rv;
 
-	return rv;
+	if (enable) {
+		AOZ1380_SET_FLAG(port, AOZ1380_FLAGS_SINK_ENABLED);
+		AOZ1380_CLR_FLAG(port, AOZ1380_FLAGS_INTERRUPTED);
+	} else {
+		AOZ1380_CLR_FLAG(port, (AOZ1380_FLAGS_SINK_ENABLED |
+					AOZ1380_FLAGS_INTERRUPTED));
+	}
+
+	return EC_SUCCESS;
 }
 
 static int aoz1380_vbus_source_enable(int port, int enable)
@@ -53,12 +71,15 @@ static int aoz1380_vbus_source_enable(int port, int enable)
 	if (rv)
 		return rv;
 
-	if (enable)
-		flags[port] |= AOZ1380_FLAGS_SOURCE_ENABLED;
-	else
-		flags[port] &= ~AOZ1380_FLAGS_SOURCE_ENABLED;
+	if (enable) {
+		AOZ1380_SET_FLAG(port, AOZ1380_FLAGS_SOURCE_ENABLED);
+		AOZ1380_CLR_FLAG(port, AOZ1380_FLAGS_INTERRUPTED);
+	} else {
+		AOZ1380_CLR_FLAG(port, (AOZ1380_FLAGS_SOURCE_ENABLED |
+					AOZ1380_FLAGS_INTERRUPTED));
+	}
 
-	return rv;
+	return EC_SUCCESS;
 }
 
 static int aoz1380_is_sourcing_vbus(int port)
@@ -82,10 +103,27 @@ static int aoz1380_set_vbus_source_current_limit(int port,
 static void aoz1380_handle_interrupt(int port)
 {
 	/*
-	 * This is a over current/temperature condition
+	 * We can get a false positive on disconnect that we
+	 * had an over current/temperature event when we are no
+	 * longer connected as sink or source.  Ignore it if
+	 * that is the case.
 	 */
-	CPRINTS("C%d: PPC detected Vbus overcurrent/temperature!", port);
-	pd_handle_overcurrent(port);
+	if (flags[port] != 0) {
+		/*
+		 * This is a over current/temperature condition
+		 */
+		CPRINTS("C%d PPC Vbus overcurrent/temperature", port);
+		pd_handle_overcurrent(port);
+	} else {
+		/*
+		 * Just in case there is a condition that we will
+		 * continue an interrupt storm, track that we have
+		 * already been here once and will take the other
+		 * path if we do this again before setting the
+		 * sink/source as enabled or disabled again.
+		 */
+		AOZ1380_SET_FLAG(port, AOZ1380_FLAGS_INTERRUPTED);
+	}
 }
 
 static void aoz1380_irq_deferred(void)
