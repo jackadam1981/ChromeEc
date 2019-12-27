@@ -27,6 +27,7 @@ USB_SPI_CONFIG(ccd_usb_spi, USB_IFACE_SPI, USB_EP_SPI);
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
 static enum device_state state = DEVICE_STATE_INIT;
+static uint32_t ccd_state_flags_want;
 
 /* Flags for CCD blocking */
 enum ccd_block_flags {
@@ -141,6 +142,18 @@ int console_is_restricted(void)
 	return !ccd_is_cap_enabled(CCD_CAP_GSC_RESTRICTED_CONSOLE);
 }
 
+int ccd_uart_is_allowed(int uart, int is_tx)
+{
+	uint32_t flag_mask = 0;
+
+	if (uart == UART_EC)
+		flag_mask = is_tx ? CCD_ENABLE_UART_EC_TX : CCD_ENABLE_UART_EC;
+	else if (uart == UART_AP)
+		flag_mask = is_tx ? CCD_ENABLE_UART_AP_TX : CCD_ENABLE_UART_AP;
+
+	return !!(ccd_state_flags_want & flag_mask);
+}
+
 /**
  * Return the currently enabled state flags (see enum ccd_state_flag).
  */
@@ -199,6 +212,7 @@ static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
 	uint32_t flags_want = 0;
+	uint32_t flags_need_ec_comm = 0;
 	uint32_t delta;
 
 	/* Check what's enabled now */
@@ -209,8 +223,20 @@ static void ccd_state_change_hook(void)
 	/* Enable EC/AP UART RX if that device is on */
 	if (ap_uart_is_on())
 		flags_want |= CCD_ENABLE_UART_AP;
-	if (ec_is_rx_allowed())
+	if (ec_is_rx_allowed()) {
 		flags_want |= CCD_ENABLE_UART_EC;
+		/*
+		 * If the packet mode is enabled, both UART_EC RX and TX are
+		 * needed, so that it can receive an EC packet and respond back.
+		 *
+		 * Note: In boards supporting EC-CR50 communication, CCD is
+		 *       supposed to dominate UART channel over servo by
+		 *        hardware design.
+		 */
+		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+			flags_need_ec_comm |= (CCD_ENABLE_UART_EC |
+					       CCD_ENABLE_UART_EC_TX);
+	}
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())
@@ -257,8 +283,11 @@ static void ccd_state_change_hook(void)
 		flags_want &= ~CCD_ENABLE_SPI;
 
 	/* EC UART TX blocked by bit-banging */
-	if (flags_want & CCD_ENABLE_UART_EC_BITBANG)
+	if (flags_want & CCD_ENABLE_UART_EC_BITBANG) {
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
+		/* Under bitbang mode, ec_comm is supposed to work. */
+		flags_need_ec_comm = 0;
+	}
 
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
@@ -271,6 +300,9 @@ static void ccd_state_change_hook(void)
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
 	if (!(flags_want & CCD_ENABLE_UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
+
+	ccd_state_flags_want = flags_want;  /* Keep the original 'flags_want' */
+	flags_want |= flags_need_ec_comm;  /* Merge flags_want and flags_need */
 
 	/* If no change, we're done */
 	if (flags_now == flags_want)
@@ -323,6 +355,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	/*
+	 * USB->UART bridging was blocked during the EC-CR50 communication.
+	 * Let's flush any blocked console input data if any.
+	 */
+	if (board_has_ec_cr50_comm_support()) {
+		if (ccd_state_flags_want & CCD_ENABLE_UART_EC_TX)
+			task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+	}
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
