@@ -9,9 +9,13 @@
 #include "common.h"
 #include "console.h"
 #include "crc8.h"
+#include "ec_commands.h"
 #include "extension.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "system.h"
+#include "task.h"
 #include "timer.h"
 #include "tpm_nvmem.h"
 #include "tpm_nvmem_ops.h"
@@ -108,14 +112,109 @@ static void init_ec_efs_(void)
 	ec_efs_ctx.secdata_error_code = EC_SUCCESS;
 }
 
-void ec_comm_init(void)
+int ec_comm_is_enabled(void)
+{
+	return !!ec_efs_ctx.efs_enabled;
+}
+
+void ec_comm_packet_mode_en(enum gpio_signal signal)
+{
+	ccd_update_state();
+}
+
+void ec_comm_packet_mode_dis(enum gpio_signal signal)
+{
+	ccd_update_state();
+}
+
+void ec_comm_configure_wakepin(void)
 {
 	if (!ec_efs_ctx.efs_enabled)
 		return;
 
+	/* Disable DIOB7 as a wake pin */
+	GWRITE_FIELD(PINMUX, EXITEN0,   DIOB3, 0);
+	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOB3, 1); /* edge triggered */
+	GWRITE_FIELD(PINMUX, EXITINV0,  DIOB3, 0); /* wake on rising */
+	/* enable powerdown exit */
+	GWRITE_FIELD(PINMUX, EXITEN0,   DIOB3, 1);
+
+	/* Store Boot Flag to PWDN_SCRATCH20 */
+	GREG32(PMU, PWRDN_SCRATCH20) = ec_efs_ctx.scratch.val;
+}
+
+void ec_comm_init(void)
+{
+	uint32_t ctl_backup = GREAD(PINMUX, DIOB3_CTL);
+	uint32_t sel_backup = GREAD(PINMUX, DIOB3_SEL);
+
+	/*
+	 * Apply pull-up resistor on DIOB3 and read the level.
+	 * If the level is high, the board supports EC-CR50 communication.
+	 * Otherwise, it does not.
+	 */
+
+	/* Disable FED/RED interrupt on DIOB3 temporarily. */
+	gpio_disable_interrupt(GPIO_EC_PACKET_MODE_EN);
+	gpio_disable_interrupt(GPIO_EC_PACKET_MODE_DIS);
+
+	/*
+	 * Disconnect output pinmux of DIOB3 since GPIO_AP_FLASH_SEL flag is
+	 * GPIO_OUT_LOW.
+	 */
+	GWRITE(PINMUX, DIOB3_SEL, 0);
+	udelay(100);
+
+	/* Configure DIOB3 as DIO_CTL_IE_MASK | GPIO_PULL_UP. */
+	REG_WRITE_MLV(GREG32(PINMUX, DIOB3_CTL),
+		(DIO_CTL_IE_MASK | DIO_CTL_PU_MASK | DIO_CTL_PD_MASK), 0,
+		(DIO_CTL_IE_MASK | DIO_CTL_PU_MASK));
+	udelay(100);
+
+	/*
+	 * Read the level of DIOB3.
+	 * Boards supporting EC-EFS have a 1M pull-down on DIOB3, and
+	 * The other boards have a 10K pull-down.
+	 */
+	ec_efs_ctx.efs_enabled = !!gpio_get_level(GPIO_EC_PACKET_MODE_EN);
+
+	/* Recover the DIOB3 pinmux control register value. */
+	GWRITE(PINMUX, DIOB3_CTL, ctl_backup);
+
+	if (ec_efs_ctx.efs_enabled) {
+		/* Connect GPIO_AP_FLASH_SELECT to DIOB4. */
+		GWRITE(PINMUX, DIOB4_SEL, GC_PINMUX_GPIO0_GPIO2_SEL);
+		GWRITE(PINMUX, GPIO0_GPIO2_SEL, GC_PINMUX_DIOB4_SEL);
+
+		/* Enable FED/RED interrupt on DIOB3 */
+		gpio_enable_interrupt(GPIO_EC_PACKET_MODE_EN);
+		gpio_enable_interrupt(GPIO_EC_PACKET_MODE_DIS);
+	} else {
+		/* Recover the DIOB3 pinmux select register value. */
+		GWRITE(PINMUX, DIOB3_SEL, sel_backup);
+
+		/*
+		 * Disconnect GPIO_EC_PACKET_MODE_EN and
+		 *  GPIO_EC_PACKET_MODE_DIS from DIOB3.
+		 */
+		GWRITE(PINMUX, GPIO1_GPIO7_SEL, 0);
+		GWRITE(PINMUX, GPIO1_GPIO8_SEL, 0);
+
+		/* No need to proceed */
+		return;
+	}
+
 	CPRINTS("Initializtion");
-	/* TODO(): recover this from PWDN_SCRATCH value */
-	ec_efs_ctx.scratch.b.boot_mode = EC_EFS_BOOT_MODE_RESET;
+
+	/*
+	 * If it is a wakeup from deep sleep, then recover some core EC-EFS
+	 * context values, including the boot_mode value, from a PWRD_SCRATCH
+	 * register. Otherwise, reset boot_mode.
+	 */
+	if (system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE)
+		ec_efs_ctx.scratch.val = GREG32(PMU, PWRDN_SCRATCH20);
+	else
+		ec_efs_ctx.scratch.b.boot_mode = EC_EFS_BOOT_MODE_RESET;
 
 	init_ec_efs_();
 }
@@ -161,6 +260,8 @@ static enum vendor_cmd_rc reset_ec_(struct vendor_cmd_params *p)
 {
 	if (!ec_efs_ctx.efs_enabled)
 		return VENDOR_RC_NOT_ALLOWED;
+
+	CPRINTS("VENDOR_CC_RESET_EC");
 
 	hook_call_deferred(&deferred_reset_ec_data, 50 * MSEC);
 

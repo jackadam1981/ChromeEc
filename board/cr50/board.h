@@ -381,6 +381,18 @@ void board_unwedge_i2cs(void);
 
 int board_in_prod_mode(void);
 
+/**
+ * The board supports EC-CR50-Communication. (Note: http://go/ec-cr50-comm)
+ *
+ * @return 1 if EC-CR50 communication is enabled, or 0 otherwise.
+ */
+int ec_comm_is_enabled(void);
+/* GPIO Interrupt handler for DIOB7 rising edge */
+void ec_comm_packet_mode_en(enum gpio_signal signal);
+/* GPIO Interrupt handler for DIOB7 falling edge */
+void ec_comm_packet_mode_dis(enum gpio_signal signal);
+/* Configure DIOB7 as wake-pin */
+void ec_comm_configure_wakepin(void);
 /* Initialize EC-CR50 communication and prepare data for EC-EFS */
 void ec_comm_init(void);
 /* Setup EC-CR50-Comm channel status. Should be called on EC reset. */
