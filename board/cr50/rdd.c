@@ -100,6 +100,15 @@ static void uart_select_tx(int uart, int signal)
 void uartn_tx_connect(int uart)
 {
 	/*
+	 * If EC-CR50 communication is activated, then do not skip connecting
+	 * TX.
+	 */
+	if ((uart == UART_EC) && ec_comm_is_uart_in_packet_mode(UART_EC)) {
+		uart_select_tx(UART_EC, GC_PINMUX_UART2_TX_SEL);
+		return;
+	}
+
+	/*
 	 * Don't drive TX unless the debug cable is connected (we have
 	 * something to transmit) and servo is disconnected (we won't be
 	 * drive-fighting with servo).
@@ -284,20 +293,30 @@ static void ccd_state_change_hook(void)
 	    !ccd_is_cap_enabled(CCD_CAP_EC_FLASH))
 		flags_want &= ~CCD_ENABLE_SPI;
 
-	/* EC UART TX blocked by bit-banging */
-	if (flags_want & CCD_ENABLE_UART_EC_BITBANG)
-		flags_want &= ~CCD_ENABLE_UART_EC_TX;
-
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
-	if (ccd_block & CCD_BLOCK_EC_UART)
+	/*
+	 * If the packet mode is enabled and not in bitbang mode, then enable
+	 * both UART_EC RX and TX, so that it can receive an EC packet and
+	 * respond back.
+	 *
+	 * Note: In boards supporting EC-CR50 communication, CCD is supposed to
+	 *       dominate UART channel over servo by hardware design.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC) && ec_is_rx_allowed())
+		flags_want |= (CCD_ENABLE_UART_EC | CCD_ENABLE_UART_EC_TX);
+	else if (ccd_block & CCD_BLOCK_EC_UART)
 		flags_want &= ~CCD_ENABLE_UART_EC;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
 	if (!(flags_want & CCD_ENABLE_UART_AP))
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
 	if (!(flags_want & CCD_ENABLE_UART_EC))
+		flags_want &= ~CCD_ENABLE_UART_EC_TX;
+
+	/* EC UART TX blocked by bit-banging */
+	if (flags_want & CCD_ENABLE_UART_EC_BITBANG)
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
 
 	/* If no change, we're done */
@@ -351,6 +370,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	/*
+	 * USB->UART bridging was blocked during the EC-CR50 communication.
+	 * Let's flush any blocked console input data if any.
+	 */
+	if (board_has_ec_cr50_comm_support()) {
+		if (uart_tx_is_connected(UART_EC))
+			task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+	}
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
