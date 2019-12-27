@@ -42,6 +42,7 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "battery_smart.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -389,3 +390,40 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 	else
 		return flags0;
 }
+
+/* Battery functions */
+#define SB_OPTIONALMFG_FUNCTION2        0x26
+#define SB_QUICK_CHARGE_ENABLE          1
+#define SB_QUICK_CHARGE_DISABLE         0
+
+static void sb_quick_charge_mode(int enable)
+{
+	int val, rv;
+
+	rv = sb_read(SB_OPTIONALMFG_FUNCTION2, &val);
+	if (rv)
+		return;
+
+	if (enable)
+		val |= 0x03;    /* Set 0x26 bit0/1 to enable fast charge*/
+	else
+		val &= ~0x03;   /* Clear 0x26 bit0/1 to disable fast charge*/
+
+	sb_write(SB_OPTIONALMFG_FUNCTION2, val);
+}
+
+/* Called on AP S5 -> S0 transition */
+static void board_chipset_startup(void)
+{
+	/* Normal charge current */
+	sb_quick_charge_mode(SB_QUICK_CHARGE_DISABLE);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S5 transition */
+static void board_chipset_shutdown(void)
+{
+	/* Quick charge current */
+	sb_quick_charge_mode(SB_QUICK_CHARGE_ENABLE);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
