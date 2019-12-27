@@ -45,6 +45,9 @@ static void set_state(enum device_state new_state)
 	state = new_state;
 }
 
+static void deferred_set_ap_off(void);
+DECLARE_DEFERRED(deferred_set_ap_off);
+
 /**
  * Set AP to the off state. Disable functionality that should only be available
  * when the AP is on.
@@ -67,6 +70,14 @@ static void deferred_set_ap_off(void)
 	ccd_update_state();
 
 	/*
+	 * If EC-CR50 communication is active, then delay deep-sleeping.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC)) {
+		hook_call_deferred(&deferred_set_ap_off_data, SECOND);
+		return;
+	}
+
+	/*
 	 * We don't enable deep sleep on ARM devices yet, as its processing
 	 * there will require more support on the AP side than is available
 	 * now.
@@ -77,7 +88,6 @@ static void deferred_set_ap_off(void)
 	if (board_deep_sleep_allowed())
 		enable_deep_sleep();
 }
-DECLARE_DEFERRED(deferred_set_ap_off);
 
 /**
  * Move the AP to the ON state
