@@ -435,8 +435,11 @@ static void init_ac_detect(void)
  * compiler error if we try. The workaround is to use the pinmux to connect
  * two GPIOs to the same input and configure each one for a separate edge.
  */
+#define GPIO_INT_ALL (GPIO_INT_F_RISING|GPIO_INT_F_FALLING|GPIO_INT_F_LOW \
+			|GPIO_INT_F_HIGH)
 #define GPIO_INT(name, pin, flags, signal)	\
-	BUILD_ASSERT(((flags) & GPIO_INT_BOTH) != GPIO_INT_BOTH);
+	BUILD_ASSERT((((flags) & GPIO_INT_ALL)	\
+			& (((flags) & GPIO_INT_ALL) - 1)) == 0);
 #include "gpio.wrap"
 
 /**
@@ -578,6 +581,8 @@ void board_configure_deep_sleep_wakepins(void)
 		/* enable powerdown exit */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
+
+	ec_comm_configure_wakepin();
 }
 
 static void deferred_tpm_rst_isr(void);
@@ -1647,8 +1652,25 @@ int chip_factory_mode(void)
 	 * Bit 0x2 used to indicate that mode has been set, bit 0x1 is the
 	 * actual indicator of the chip factory mode.
 	 */
-	if (!mode_set)
-		mode_set = 2 | !!gpio_get_level(GPIO_DIOB4);
+	if (!mode_set) {
+		/*
+		 * TODO: Check whether this is necessary.
+		 * GPIO(0, 2), AP_FLASH_SEL and GPIO(0, 10), DIOB4 are sharing
+		 * DIOB4 pin. Disconnect AP_FLASH_SEL.
+		 */
+		if (ec_comm_is_enabled()) {
+			uint8_t pinmux_value_backup = GREAD(PINMUX, DIOB4_SEL);
+
+			GWRITE(PINMUX, DIOB4_SEL, 0);
+			udelay(STRAP_PIN_DELAY_USEC);
+
+			mode_set = 2 | !!gpio_get_level(GPIO_DIOB4);
+
+			GWRITE(PINMUX, DIOB4_SEL, pinmux_value_backup);
+		} else {
+			mode_set = 2 | !!gpio_get_level(GPIO_DIOB4);
+		}
+	}
 
 	return mode_set & 1;
 }
