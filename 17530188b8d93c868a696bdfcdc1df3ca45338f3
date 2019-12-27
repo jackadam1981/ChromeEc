@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01cb6633_552c6e7a",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-27T16:52:14Z",
+      "side": 1,
+      "message": "Also a comment as to why the priority is set that way would be nice 😊",
+      "parentUuid": "fb930c1a_b2de9bdd",
+      "range": {
+        "startLine": 490,
+        "startChar": 56,
+        "endLine": 490,
+        "endChar": 73
+      },
+      "revId": "17530188b8d93c868a696bdfcdc1df3ca45338f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2665395a_e16465a7",
         "filename": "board/kindred/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-27T16:51:30Z",
       "side": 1,
       "message": "Similarly to above, common/fan.c has a hook function for CHIPSET_SUSPEND that disables PWM fan control, so I think we want this to happen after the PWM is turned off, so this should probably be HOOK_PRIO_DEFAULT + 1.",
+      "range": {
+        "startLine": 500,
+        "startChar": 58,
+        "endLine": 500,
+        "endChar": 75
+      },
+      "revId": "17530188b8d93c868a696bdfcdc1df3ca45338f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e622a8b6_f50dfb4f",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-12-27T16:52:14Z",
+      "side": 1,
+      "message": "Also a comment as to why the priority is set that way would be nice 😊",
+      "parentUuid": "2665395a_e16465a7",
       "range": {
         "startLine": 500,
         "startChar": 58,
