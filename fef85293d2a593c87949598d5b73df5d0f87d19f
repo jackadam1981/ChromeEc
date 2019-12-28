@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24cc5b1f_c2a9715c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2116,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-28T05:43:59Z",
+      "side": 1,
+      "message": "Set polarity to NONE on entry to unattached instead of here?",
+      "revId": "fef85293d2a593c87949598d5b73df5d0f87d19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "060f09f5_f508bbac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2845,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-28T05:43:59Z",
+      "side": 1,
+      "message": "Set polarity to NONE on entry to unattached instead of here?",
+      "revId": "fef85293d2a593c87949598d5b73df5d0f87d19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd9b05b_fc604a1b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2924,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-28T05:43:59Z",
+      "side": 1,
+      "message": "Can this check be removed?",
+      "range": {
+        "startLine": 2924,
+        "startChar": 6,
+        "endLine": 2924,
+        "endChar": 41
+      },
+      "revId": "fef85293d2a593c87949598d5b73df5d0f87d19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646df75e_451e027c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2938,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-28T05:43:59Z",
+      "side": 1,
+      "message": "Same comment as for TCPMv1: should be get_src_polarity()",
+      "range": {
+        "startLine": 2938,
+        "startChar": 23,
+        "endLine": 2938,
+        "endChar": 39
+      },
+      "revId": "fef85293d2a593c87949598d5b73df5d0f87d19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
