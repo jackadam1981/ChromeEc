@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "175cc857_1f9ebeb1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 4638,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-28T05:33:48Z",
+      "side": 1,
+      "message": "Calling get_snk_polarity() when we are becoming SRC, not SNK, doesn\u0027t seem right.\nThe correct SRC check seems to be (cc1 !\u003d TYPEC_CC_VOLT_RD)\neg\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usb_pd_protocol.c#3356\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usbc/usb_tc_drp_acc_trysrc_sm.c#2600\nPerhaps create a get_src_polarity() function to do that check?",
+      "revId": "f3e12672ec97de9a68319765741192b0893520d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d689d76_e0744126",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-12-28T05:33:48Z",
+      "side": 1,
+      "message": "Can this check be eliminated, perhaps by fixing the caller? If the caller didn\u0027t want to set both CC lines open, why did they set_polarity(POLARITY_NONE)?",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 20
+      },
+      "revId": "f3e12672ec97de9a68319765741192b0893520d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
