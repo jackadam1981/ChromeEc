@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e569b682_c7c5d99d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 4638,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-29T20:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "175cc857_1f9ebeb1",
+      "revId": "f3e12672ec97de9a68319765741192b0893520d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d689d76_e0744126",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 18
@@ -39,6 +57,30 @@
       "revId": "f3e12672ec97de9a68319765741192b0893520d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2f13cb3_823cd05f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-12-29T20:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d689d76_e0744126",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 20
+      },
+      "revId": "f3e12672ec97de9a68319765741192b0893520d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
