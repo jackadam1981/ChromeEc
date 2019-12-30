@@ -220,7 +220,7 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 			 * 0 - Type-C to Type-C Cable
 			 * 1 - Type-C Legacy TBT Adapter
 			 */
-			if (dev_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY)
+			if (dev_resp.tbt_adapter != TBT_ADAPTER_TBT2_LEGACY)
 				set_retimer_con |= BB_RETIMER_TBT_TYPE;
 
 			/*
