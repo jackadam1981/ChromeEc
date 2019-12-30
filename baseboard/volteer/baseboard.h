@@ -185,6 +185,12 @@
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
 
+/* Enabling USB4 mode */
+#define CONFIG_USB_PD_USB4
+
+/* Enable USB-PD REV 3.0 */
+#define CONFIG_USB_PD_REV30
+
 /* TODO: b/144165680 - measure and check these values on Volteer */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
