@@ -124,6 +124,10 @@ static const unsigned char mt6370_reg_en_hidden_mode[] = {
 static const unsigned char mt6370_val_en_hidden_mode[] = {
 	0x96, 0x69, 0xC3, 0x3C,
 };
+
+static const unsigned char mt6370_val_en_test_mode[] = {
+	0x69, 0x96, 0x63, 0x70
+};
 #endif /* CONFIG_CHARGER_MT6370 */
 
 #if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
@@ -351,6 +355,37 @@ static int mt6370_ichg_workaround(int new_ichg)
 
 	mt6370_enable_hidden_mode(0);
 	return rv;
+}
+
+static int mt6370_reduce_db_bl_driving(void)
+{
+	int rv;
+
+	/* Enter test mode */
+	rv = rt946x_block_write(MT6370_REG_TM_PAS_CODE1,
+				mt6370_val_en_test_mode,
+				ARRAY_SIZE(mt6370_val_en_test_mode));
+	if (rv)
+		return rv;
+	msleep(1);
+	rv = rt946x_write8(MT6370_REG_BANK, MT6370_MASK_REG_TM);
+	if (rv)
+		return rv;
+	msleep(1);
+	/* reduce bl driving */
+	rv = rt946x_update_bits(MT6370_TM_REG_BL3, MT6370_TM_MASK_BL3_SL,
+				MT6370_TM_REDUCE_BL3_SL);
+	if (rv)
+		return rv;
+	msleep(1);
+	/* reduce db driving */
+	rv = rt946x_update_bits(MT6370_TM_REG_DSV1, MT6370_TM_MASK_DSV1_SL,
+				MT6370_TM_REDUCE_DSV1_SL);
+	if (rv)
+		return rv;
+	msleep(1);
+	/* Leave test mode */
+	return rt946x_write8(MT6370_REG_TM_PAS_CODE1, MT6370_LEAVE_TM);
 }
 #endif /* CONFIG_CHARGER_MT6370 */
 
@@ -630,6 +665,12 @@ static int rt946x_init_setting(void)
 	rt946x_update_bits(MT6370_BACKLIGHT_BLPWM, MT6370_MASK_BLPWM_BLED_PWM,
 			   BIT(MT6370_SHIFT_BLPWM_BLED_PWM));
 #endif
+
+#ifdef CONFIG_CHARGER_MT6370
+	rv = mt6370_reduce_db_bl_driving();
+	if (rv)
+		return rv;
+#endif /* CONFIG_CHARGER_MT6370 */
 
 	return rt946x_init_irq();
 }
