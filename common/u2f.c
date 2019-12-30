@@ -111,6 +111,11 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
 		return VENDOR_RC_NOT_ALLOWED;
 
+	/* Maybe check fingerprint match as user presence. */
+	if (req->flags == U2F_AUTH_FP)
+	    // TODO(yichengli): Check FPMCU gpio line.
+	    return VENDOR_RC_NOT_ALLOWED;
+
 	/* Generate origin-specific keypair */
 	do {
 		if (!DCRYPTO_ladder_random(&od_seed))
