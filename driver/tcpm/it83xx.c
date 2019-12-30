@@ -34,7 +34,7 @@ const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{&IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0},
 	{&IT83XX_GPIO_GPCRH1, &IT83XX_GPIO_GPCRH2, IT83XX_IRQ_USBPD1},
 };
-BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) == USBPD_PORT_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) == CONFIG_PD_PHY_PORT_COUNT);
 
 /*
  * This function disables integrated pd module and enables 5.1K resistor for
@@ -77,7 +77,7 @@ static enum tcpc_cc_voltage_status it83xx_get_cc(
 		SET_MASK(cc_state, BIT(2));
 
 	/* sink */
-	if (USBPD_GET_POWER_ROLE(port) == USBPD_POWER_ROLE_CONSUMER) {
+	if (USBPD_GET_POWER_ROLE(port) == USBPD_POWER_ROLE_SNK) {
 		if (cc_pin == USBPD_CC_PIN_1)
 			ufp_volt = IT83XX_USBPD_UFPVDR(port) & 0x7;
 		else
