@@ -49,6 +49,7 @@ typedef struct {
 #define U2F_AUTH_ENFORCE        0x03    // Enforce user presence and sign
 #define U2F_AUTH_CHECK_ONLY     0x07    // Check only
 #define U2F_AUTH_FLAG_TUP       0x01    // Test of user presence set
+#define U2F_AUTH_FP             0x10    // Use fingerprint match as presence
 
 // TODO(louiscollard): Add Descriptions.
 
