@@ -22,7 +22,7 @@ chip-y+=system-$(CHIP_FAMILY).o
 
 # Optional chip modules
 chip-$(CONFIG_ADC)+=adc.o
-chip-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
+#chip-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o i2c-$(CHIP_FAMILY).o
@@ -38,6 +38,10 @@ chip-$(CONFIG_WATCHDOG)+=watchdog.o
 ifndef CONFIG_KEYBOARD_NOT_RAW
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 endif
+chip-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
+chip-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
+chip-$(CONFIG_AUDIO_CODEC_I2S_RX)+=wov.o
+chip-$(CONFIG_AUDIO_CODEC_I2S_RX)+=apm.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=apm.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=wov.o
 
