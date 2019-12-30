@@ -10,6 +10,7 @@
 #include "cryptoc/sha256.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "gpio.h"
 #include "system.h"
 #include "u2f_impl.h"
 #include "u2f.h"
@@ -109,6 +110,10 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	/* Maybe enforce user presence, w/ optional consume */
 	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES &&
 	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
+		return VENDOR_RC_NOT_ALLOWED;
+
+	/* Maybe check fingerprint match as user presence. */
+	if (req->flags == U2F_AUTH_FP && gpio_get_level(GPIO_DIOM4))
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Generate origin-specific keypair */
@@ -270,7 +275,12 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 		return VENDOR_RC_SUCCESS;
 
 	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
+	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES &&
+	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
+		return VENDOR_RC_NOT_ALLOWED;
+
+	/* Maybe check fingerprint match as user presence. */
+	if (req->flags == U2F_AUTH_FP && gpio_get_level(GPIO_DIOM4))
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Re-create origin-specific key. */
