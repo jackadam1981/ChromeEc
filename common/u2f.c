@@ -106,9 +106,9 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	    response_buf_size < sizeof(U2F_GENERATE_RESP))
 		return VENDOR_RC_BOGUS_ARGS;
 
-	/* Maybe enforce user presence, w/ optional consume */
+	/* Always enforce user presence, with optional consume. */
 	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES &&
-	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
+	    !(is_pp_asserted()))
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Generate origin-specific keypair */
@@ -270,7 +270,8 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 		return VENDOR_RC_SUCCESS;
 
 	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
+	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES &&
+	    !(is_pp_asserted()))
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Re-create origin-specific key. */

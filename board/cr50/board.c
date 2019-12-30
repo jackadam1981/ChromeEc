@@ -1175,6 +1175,11 @@ int is_ec_rst_asserted(void)
 	return GREAD(RBOX, ASSERT_EC_RST);
 }
 
+int is_pp_asserted(void)
+{
+	return !gpio_get_level(GPIO_DIOM4);
+}
+
 /**
  * Console command to toggle EC reset
  */

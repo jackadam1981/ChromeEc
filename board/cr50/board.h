@@ -265,6 +265,7 @@ void deassert_sys_rst(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
+int is_pp_asserted(void);
 /* Ignore the servo state. */
 void servo_ignore(int enable);
 
