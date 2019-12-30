@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71026296_0777b5b0",
+        "filename": "board/dood/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-12-30T14:43:40Z",
+      "side": 1,
+      "message": "The spec mentioned\"Set : ≦-1°C\" of \"Low Temperature Charge Start Protection\" so should we set -1 here? Or 0 is a good one?\n\nOn the other hand, may I confirm the reference you used for start_charging_[min|max] is from \"[Low|High] Temperature Charge Start Protection\"? If yes, in these 3 specs values are the same. So why they are different here for three battery packs? like -1 ~ 50 and 0 ~ 45?",
+      "revId": "96b4a85e2cb18a67c9c5279e46d0aed14acefaf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
