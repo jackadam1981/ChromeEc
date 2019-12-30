@@ -35,6 +35,7 @@ GPIO(PROCHOT_ODL,		PIN(D, 5), GPIO_ODR_HIGH)			/* PROCHOT to SOC */
 GPIO(EC_BATT_PRES_ODL,		PIN(4, 1), GPIO_INPUT)				/* Battery Present */
 GPIO(EC_AP_INT_ODL,		PIN(A, 3), GPIO_ODR_HIGH)			/* Sensor MKBP event to SOC */
 GPIO(EN_PWR_A,			PIN(B, 7), GPIO_OUT_LOW)			/* Enable Power */
+GPIO(EN_PWR_TOUCHPAD_PS2,			PIN(C, 2), GPIO_OUT_LOW)			/* Enable Power PP3300_PS2 */
 GPIO(EC_EDP_BL_DISABLE,		PIN(A, 2), GPIO_OUT_HIGH)			/* Enable Backlight */
 GPIO(EC_ENTERING_RW,		PIN(E, 5), GPIO_OUT_LOW)			/* EC Entering RW */
 GPIO(EC_FCH_PWR_BTN_L,		PIN(6, 2), GPIO_OUT_HIGH)			/* Power Button to SOC */

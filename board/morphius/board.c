@@ -9,6 +9,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -41,3 +42,15 @@ void board_update_sensor_config_from_sku(void)
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 }
+
+static void board_chipset_startup(void)
+{
+	gpio_set_level(GPIO_EN_PWR_TOUCHPAD_PS2, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_shutdown(void)
+{
+	gpio_set_level(GPIO_EN_PWR_TOUCHPAD_PS2, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
