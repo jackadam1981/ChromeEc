@@ -137,6 +137,15 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 
+/* Enabling SOP* communication */
+#define CONFIG_USB_PD_DECODE_SOP
+
+/* Enabling Thunderbolt-compatible mode */
+#define CONFIG_USB_PD_TBT_COMPAT_MODE
+
+/* Enabling USB4 mode */
+#define CONFIG_USB_PD_USB4
+
 /* TODO: b/144165680 - measure and check these values on Volteer */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
