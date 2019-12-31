@@ -22,6 +22,30 @@
       "revId": "908124c1f712cdd8bcc7273da9108316c9cc00b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c42622_c7b035de",
+        "filename": "board/akemi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1374233
+      },
+      "writtenOn": "2019-12-31T02:57:06Z",
+      "side": 1,
+      "message": "Hi Tim\nFast charging enable register is 0x26 in Lenovo spec.\nPlease review https://partnerissuetracker.corp.google.com/issues/146540037\n\nI haven\u0027t found this definition of fast charging enable register in SBS specification V1.1\nLooks like it\u0027s an extension register, which has no uniform definition. \nLenovo\u0027s specification specifies that fast charging register is 0x26 in the lastest revision.",
+      "parentUuid": "c25dbc66_182fc031",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 44
+      },
+      "revId": "908124c1f712cdd8bcc7273da9108316c9cc00b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
