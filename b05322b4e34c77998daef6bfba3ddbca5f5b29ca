@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06331d33_ad5d0bdb",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-01-02T11:32:03Z",
+      "side": 1,
+      "message": "We can remove defined(BOARD_KODAMA) because Kodama has separated board.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/kukui/base_detect_kukui.c#172\n#if defined(BOARD_KUKUI) || defined(BOARD_KAKADU)",
+      "revId": "b05322b4e34c77998daef6bfba3ddbca5f5b29ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
