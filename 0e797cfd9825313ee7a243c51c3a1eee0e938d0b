@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbfe3d5c_c7e29b69",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-02T22:11:49Z",
+      "side": 1,
+      "message": "I like that this is terse, but it\u0027s a little bit of work to parse. Would you be open to\n1) Indenting in a way that reflects the levels of parenthesization,\n2) Interleaving the comment blocks and conditional subclauses, and/or\n3) Surrounding the body with curly braces, despite it being only one line?",
+      "range": {
+        "startLine": 1340,
+        "startChar": 4,
+        "endLine": 1346,
+        "endChar": 49
+      },
+      "revId": "0e797cfd9825313ee7a243c51c3a1eee0e938d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c435ae_22db81b4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-02T22:11:49Z",
+      "side": 1,
+      "message": "I would also prefer if the use of whitespace here more closely aligned with the precedence of the operators. Could you keep this argument on one line or make a separate variable assignment for it?",
+      "range": {
+        "startLine": 1349,
+        "startChar": 29,
+        "endLine": 1350,
+        "endChar": 44
+      },
+      "revId": "0e797cfd9825313ee7a243c51c3a1eee0e938d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
