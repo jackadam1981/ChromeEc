@@ -9,7 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 /* NOTE: 0->ec evb, non-zero->pd evb */
-#define IT83XX_PD_EVB  0
+#define IT83XX_PD_EVB  1
 
 /* Optional features */
 #define CONFIG_BATTERY_SMART
@@ -41,13 +41,18 @@
 #define CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_MAX_COUNT    2
-#define CONFIG_USB_PD_TCPM_ITE83XX
+#define CONFIG_USB_PD_PORT_MAX_COUNT    3
+#define CONFIG_USB_PD_TCPM_ITE83XX_V2
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_VBOOT_HASH
+#else
+#define CONFIG_USB_PD_PORT_MAX_COUNT    0
 #endif
 
 /* Optional console commands */
@@ -82,7 +87,7 @@ enum pwm_channel {
 enum adc_channel {
 	ADC_VBUSSA,
 	ADC_VBUSSB,
-	ADC_EVB_CH_13,
+	ADC_VBUSSC,
 	ADC_EVB_CH_14,
 	ADC_EVB_CH_15,
 	ADC_EVB_CH_16,
