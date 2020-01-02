@@ -1180,6 +1180,36 @@ int cmd_rand(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_rwsig_info(int argc, char **argv)
+{
+	struct ec_response_rwsig_info r;
+	int rv;
+	int i;
+
+	if (argc > 1) {
+		fprintf(stderr, "Usage: %s\n", argv[0]);
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_RWSIG_INFO, EC_VER_RWSIG_INFO, NULL, 0, &r,
+			sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "EFS info command failed\n");
+		return -1;
+	}
+
+	printf("sig_alg: %d\n", r.sig_alg);
+	printf("key_version: %d\n", r.key_version);
+	printf("hash_alg: %d\n", r.hash_alg);
+	printf("key_is_valid: %d\n", r.key_is_valid);
+	printf("key_id: ");
+	for (i = 0; i < sizeof(r.key_id); i++)
+		printf("%x", r.key_id[i]);
+	printf("\n");
+
+	return 0;
+}
+
 int cmd_flash_spi_info(int argc, char *argv[])
 {
 	struct ec_response_flash_spi_info r;
@@ -9295,6 +9325,7 @@ const struct command commands[] = {
 	{"rtcsetalarm", cmd_rtc_set_alarm},
 	{"rwhashpd", cmd_rw_hash_pd},
 	{"rwsigaction", cmd_rwsig_action},
+	{"rwsiginfo", cmd_rwsig_info },
 	{"rwsigstatus", cmd_rwsig_status},
 	{"sertest", cmd_serial_test},
 	{"stress", cmd_stress_test},
