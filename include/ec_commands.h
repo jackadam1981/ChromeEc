@@ -9,7 +9,9 @@
 #define __CROS_EC_EC_COMMANDS_H
 
 #if !defined(__ACPI__) && !defined(__KERNEL__)
+#include <stdbool.h>
 #include <stdint.h>
+#include "vb21_struct.h"
 #endif
 
 #ifdef __cplusplus
@@ -1784,6 +1786,35 @@ struct ec_response_rand_num {
 } __ec_align4;
 
 BUILD_ASSERT(sizeof(struct ec_response_rand_num) == 0);
+
+/**
+ * Get information about the verified boot key.
+ * For more details on the fields, see "struct vb21_packed_key".
+ */
+#define EC_CMD_VBOOT_INFO 0x001B
+#define EC_VER_VBOOT_INFO 0
+
+struct ec_response_vboot_info {
+	/**
+	 * Signature algorithm used by the key
+	 * (enum vb2_signature_algorithm).
+	 */
+	uint16_t sig_alg;
+
+	/**
+	 * Hash digest algorithm used with the key
+	 * (enum vb2_hash_algorithm).
+	 */
+	uint16_t hash_alg;
+
+	/** Key version. */
+	uint32_t key_version;
+
+	/** Key ID. */
+	struct vb2_id key_id;
+
+	bool key_is_valid;
+} __ec_align4;
 
 /*****************************************************************************/
 /* PWM commands */
