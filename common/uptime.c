@@ -23,10 +23,12 @@ host_command_get_uptime_info(struct host_cmd_handler_args *args)
 	 */
 	struct ec_response_uptime_info *r = args->response;
 	timestamp_t now = get_time();
-	uint32_t now_ms = (uint32_t)(now.val / MSEC);
 	enum ec_error_list rc;
 
-	r->time_since_ec_boot_ms = now_ms;
+	/* Change time unit to millisecond. */
+	uint64divmod(&now.val, MSEC);
+
+	r->time_since_ec_boot_ms = now.le.lo;
 	r->ec_reset_flags = system_get_reset_flags();
 
 	memset(r->recent_ap_reset, 0, sizeof(r->recent_ap_reset));
