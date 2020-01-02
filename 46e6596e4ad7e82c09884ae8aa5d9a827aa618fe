@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b971ccc6_cc15492e",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-02T01:31:56Z",
+      "side": 1,
+      "message": "IMHO, you can just add this defined in the board/kukui/board.c and then creating a link called kakadu which points to kukui. With that, you don\u0027t need to copy the same data from the kukui.",
+      "range": {
+        "startLine": 260,
+        "startChar": 53,
+        "endLine": 260,
+        "endChar": 74
+      },
+      "revId": "46e6596e4ad7e82c09884ae8aa5d9a827aa618fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
