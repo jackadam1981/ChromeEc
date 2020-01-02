@@ -46,6 +46,30 @@
       "revId": "46e6596e4ad7e82c09884ae8aa5d9a827aa618fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1e179f_77a442a2",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1368272
+      },
+      "writtenOn": "2020-01-02T08:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b361e991_e3b9128b",
+      "range": {
+        "startLine": 260,
+        "startChar": 53,
+        "endLine": 260,
+        "endChar": 74
+      },
+      "revId": "46e6596e4ad7e82c09884ae8aa5d9a827aa618fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
