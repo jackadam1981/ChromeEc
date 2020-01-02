@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5f512d4d_0f47fff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-02T22:44:39Z",
+      "side": 1,
+      "message": "so, if the final check would fail anyways - what\u0027s the point of explicitly checking this value - just to return sooner?",
+      "parentUuid": "4f6cf31b_ad47a9e6",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "e913dca12c9a7d95d622b8635ed1e50474c9b6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d17e9cf_b3446537",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "that we may need to care about endianness on different platforms. copy-pasted from u2f_generate()",
       "parentUuid": "1a071935_65bd6127",
+      "range": {
+        "startLine": 162,
+        "startChar": 38,
+        "endLine": 162,
+        "endChar": 49
+      },
+      "revId": "e913dca12c9a7d95d622b8635ed1e50474c9b6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b34150_10501d7a",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-02T22:44:39Z",
+      "side": 1,
+      "message": "Not sure how much value this comment adds, it is confusing to the reader (at least to some of them ;)",
+      "parentUuid": "fcc8205e_0742e040",
       "range": {
         "startLine": 162,
         "startChar": 38,
