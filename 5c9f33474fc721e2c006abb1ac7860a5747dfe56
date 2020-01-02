@@ -46,6 +46,30 @@
       "revId": "5c9f33474fc721e2c006abb1ac7860a5747dfe56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3d8bd2_c5d28b34",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-02T22:37:32Z",
+      "side": 1,
+      "message": "good point.",
+      "parentUuid": "1495acae_c2aa1803",
+      "range": {
+        "startLine": 398,
+        "startChar": 5,
+        "endLine": 399,
+        "endChar": 65
+      },
+      "revId": "5c9f33474fc721e2c006abb1ac7860a5747dfe56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
