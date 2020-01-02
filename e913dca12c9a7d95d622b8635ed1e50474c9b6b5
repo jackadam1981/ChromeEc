@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "99884d63_64789dcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-02T22:50:15Z",
+      "side": 1,
+      "message": "to prevent attackers from getting signatures by the attestation key over invalid data, even though in this case the data is far from being arbitrary and it\u0027s hard to execute an attack by changing just this one byte.",
+      "parentUuid": "5f512d4d_0f47fff6",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "e913dca12c9a7d95d622b8635ed1e50474c9b6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d17e9cf_b3446537",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -235,6 +259,30 @@
       "revId": "e913dca12c9a7d95d622b8635ed1e50474c9b6b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0658807e_aad1f7df",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-02T22:50:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b34150_10501d7a",
+      "range": {
+        "startLine": 162,
+        "startChar": 38,
+        "endLine": 162,
+        "endChar": 49
+      },
+      "revId": "e913dca12c9a7d95d622b8635ed1e50474c9b6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
