@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d19f01ea_e03c9da8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-01-02T23:56:19Z",
+      "side": 1,
+      "message": "There are 2 daughter boards, one uses this and the other uses the TUSB422",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "605483aeebbac25d8e8a5a83304e5f92fa59cdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca9d9cf2_cda82cad",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-01-02T23:56:19Z",
+      "side": 1,
+      "message": "Do we need to do something with this?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "605483aeebbac25d8e8a5a83304e5f92fa59cdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
