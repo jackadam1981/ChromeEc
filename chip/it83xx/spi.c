@@ -22,7 +22,7 @@
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SPI, format, ## args)
 
-#define SPI_RX_MAX_FIFO_SIZE 128
+#define SPI_RX_MAX_FIFO_SIZE 256
 #define SPI_TX_MAX_FIFO_SIZE 256
 
 #define EC_SPI_PREAMBLE_LENGTH 4
@@ -310,6 +310,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, spi_chipset_startup, HOOK_PRIO_FIRST);
 
 static void spi_chipset_shutdown(void)
 {
+	return;
 	/* SPI not enabled */
 	spi_set_state(SPI_STATE_DISABLED);
 	/* Disable SPI interrupt */
@@ -334,8 +335,8 @@ static void spi_init(void)
 	/* Set dummy blcoked byte */
 	IT83XX_SPI_HPR2 = 0x00;
 	/* Set FIFO data target count */
-	IT83XX_SPI_FTCB1R = SPI_RX_MAX_FIFO_SIZE >> 8;
-	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
+	//IT83XX_SPI_FTCB1R = SPI_RX_MAX_FIFO_SIZE >> 8;
+	//IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
 	/* SPI slave controller enable */
 	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
 
@@ -346,6 +347,8 @@ static void spi_init(void)
 		/* SPI not enabled */
 		spi_set_state(SPI_STATE_DISABLED);
 	}
+	spi_chipset_startup();
+	disable_sleep(SLEEP_MASK_SPI);
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 

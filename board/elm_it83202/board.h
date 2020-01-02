@@ -14,6 +14,8 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#undef CONFIG_WATCHDOG
+
 /* Accelero meter and gyro sensor */
 #define CONFIG_ACCEL_KX022
 #define CONFIG_CMD_ACCELS

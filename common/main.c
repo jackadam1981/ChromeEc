@@ -107,11 +107,11 @@ test_mockable __keep int main(void)
 	 * Initialize flash and apply write protect if necessary.  Requires
 	 * the reset flags calculated by system initialization.
 	 */
-	flash_pre_init();
+	//flash_pre_init();
 #endif
 
 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */
-	clock_init();
+	//clock_init();
 
 	/*
 	 * Initialize timer.  Everything after this can be benchmarked.
@@ -189,7 +189,7 @@ test_mockable __keep int main(void)
 		i2c_init();
 	}
 #ifdef HAS_TASK_KEYSCAN
-	keyboard_scan_init();
+	//keyboard_scan_init();
 #endif
 #if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
 	button_init();
