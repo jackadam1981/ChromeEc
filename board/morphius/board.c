@@ -46,6 +46,10 @@ void board_update_sensor_config_from_sku(void)
 static void board_chipset_startup(void)
 {
 	gpio_set_level(GPIO_EN_PWR_TOUCHPAD_PS2, 1);
+	gpio_set_level(GPIO_EC_PS2_RESET, 1);
+	msleep(5);
+	gpio_set_level(GPIO_EC_PS2_RESET, 0);
+	ccprints("Track point reset done");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
