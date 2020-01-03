@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c28cca3c_a7c4085b",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-01-03T01:01:38Z",
+      "side": 1,
+      "message": "Can you arrange this so that the printout only occurs when a change actually happens?\ni.e maybe move lines 472/473 (port number validate) to the start, then lines 475/476 (check against current value) after that, and then the printout.\nThough I observe here that if CHARGE_PORT_NONE is selected, the active_port value is not changed.\nIs this deliberate? It may mean that the active_port value does not represent the real state, and this may cause problems with successive calls.",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 8
+      },
+      "revId": "aa30881afdbc60df01d5cf7cb790be2da0c00533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
