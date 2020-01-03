@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff6499be_3d715749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-03T19:27:59Z",
+      "side": 1,
+      "message": "Refactor would imply no functional changes, when it appears there are at least several functional differences.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8fcad9_2395d28c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-03T19:27:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem equivalent to the old code, which checked the VDO2 SS field",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 15
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de409c2_2b4d9a38",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-03T19:27:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow.  So we initially send an SOP Discover Identity, then send a SOP\u0027 if the config is enabled.  Then here, we\u0027d re-send the SOP again?",
+      "range": {
+        "startLine": 959,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 41
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f272620_22078134",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-03T19:27:59Z",
+      "side": 1,
+      "message": "Why not proceed to discover SVIDs like we usually would?",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 35
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a620b1f2_783119e3",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-03T19:27:59Z",
+      "side": 1,
+      "message": "Why is this separate from the regular passive VDO 2.0 structure?  They should be the same, correct?",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a445682_1fcb8f09",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-03T19:27:59Z",
+      "side": 1,
+      "message": "Same question here?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
