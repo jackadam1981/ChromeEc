@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1bac939_f6d20a5c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-03T00:13:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "401f7732_879e9cbd",
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79eabc91_11b03221",
         "filename": "include/usb_pd_tbt.h",
         "patchSetId": 11
@@ -30,6 +48,30 @@
       "writtenOn": "2020-01-03T00:03:48Z",
       "side": 1,
       "message": "Does this correspond to a data structure?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14712f5f_efc0c2a2",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-03T00:13:19Z",
+      "side": 1,
+      "message": "not in current current code. Will publish code to use this code in new CL.\nI felt think is a good info to keep it in this CL itself.",
+      "parentUuid": "79eabc91_11b03221",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "303e498b_0292ea8c",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-03T00:13:19Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "776c3c5f_0b7af453",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cfa8e37_7f9cc61d",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 11
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "41d79a89_4ff8030f",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-03T00:13:19Z",
+      "side": 1,
+      "message": "currently there is no usage of these bits in the code, I think we can add enums based on the need.",
+      "parentUuid": "4cfa8e37_7f9cc61d",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 25
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52c76c35_b4110d4c",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 11
@@ -99,6 +189,30 @@
       "writtenOn": "2020-01-03T00:03:48Z",
       "side": 1,
       "message": "Why is no structure defined for this VDO?",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53dffa7a_6d9167e4",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-03T00:13:19Z",
+      "side": 1,
+      "message": "contently no usage of these structures",
+      "parentUuid": "52c76c35_b4110d4c",
       "range": {
         "startLine": 316,
         "startChar": 0,
