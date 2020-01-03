@@ -22,6 +22,30 @@
       "revId": "7aa2710c37f819a2edc040b8a69e7e41ea9ef717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56262929_fd1a53a5",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-03T06:03:23Z",
+      "side": 1,
+      "message": "Not necessarily, I\u0027ve found that when undefined the array is simply of size 0. The above line does compile.",
+      "parentUuid": "6b886f97_3b0fc201",
+      "range": {
+        "startLine": 56,
+        "startChar": 32,
+        "endLine": 56,
+        "endChar": 57
+      },
+      "revId": "7aa2710c37f819a2edc040b8a69e7e41ea9ef717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

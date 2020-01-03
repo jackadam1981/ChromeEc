@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ec4005af_21690cff",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-03T06:03:23Z",
+      "side": 1,
+      "message": "Marking as resolved",
+      "parentUuid": "d4257be4_a8a043c8",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86ea43b4_c9c9ce22",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 9
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a40cc851_305c7d31",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-03T06:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86ea43b4_c9c9ce22",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be623f6c_acd392d4",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 9
@@ -68,6 +104,24 @@
       "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc2ff691_41080d88",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-03T06:03:23Z",
+      "side": 1,
+      "message": "reset also clears the next_timestamp_initialized field and also re-initializes the queue, we don\u0027t want that here because then we\u0027ll lose the next timestamp calculation (next_timestamp array). This is what keeps us from having the next commit place a timestamp in the past by accident by keeping state between samples.",
+      "parentUuid": "be623f6c_acd392d4",
+      "revId": "aafbb16110d0ba02bafac6dbb67a3b6408538ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
