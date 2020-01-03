@@ -22,6 +22,30 @@
       "revId": "aa30881afdbc60df01d5cf7cb790be2da0c00533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a26ee709_09e0d27a",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-01-03T01:30:53Z",
+      "side": 1,
+      "message": "active_port is always correct because it comes from the charge manager, and we already have a message when there is an actual change. I have changed this message to make it obvious that it\u0027s only a requested change.",
+      "parentUuid": "c28cca3c_a7c4085b",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 8
+      },
+      "revId": "aa30881afdbc60df01d5cf7cb790be2da0c00533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
