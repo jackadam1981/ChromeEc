@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f21b0579_c8f5b36c",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-01-03T06:06:19Z",
+      "side": 1,
+      "message": "This method will change GPB7 to PWM type from GPIO type.",
+      "parentUuid": "1f9206d6_b7709b76",
+      "range": {
+        "startLine": 488,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 28
+      },
+      "revId": "ff56b9b94d67cd8af7fc5299c7f0cfb944f9ca5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4452aa38_265407c6",
         "filename": "board/kindred/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-02T20:48:40Z",
       "side": 1,
       "message": "The commit description is a bit unclear to me. This change means the fan is off always when in S0iX mode?",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "ff56b9b94d67cd8af7fc5299c7f0cfb944f9ca5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe54e51_4ed29e62",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-01-03T06:06:19Z",
+      "side": 1,
+      "message": "This change GPB7 to GPIO type from PWM type. fan is off in s0ix",
+      "parentUuid": "4452aa38_265407c6",
       "range": {
         "startLine": 496,
         "startChar": 1,
