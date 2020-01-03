@@ -22,6 +22,30 @@
       "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969a4984_9414c6dc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-03T23:41:17Z",
+      "side": 1,
+      "message": "from the section 6.4.2.4\nIf the USB Communications Capable flag has been set to zero by a Sink, then the Source needs to be aware that USB Suspend rules cannot be observed by the Sink.\nhence keeping it under USB_COMM.\n\nthis request is for Source device while line 1348 is for mux.",
+      "parentUuid": "05ff6508_5dacff46",
+      "range": {
+        "startLine": 1564,
+        "startChar": 1,
+        "endLine": 1565,
+        "endChar": 25
+      },
+      "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
