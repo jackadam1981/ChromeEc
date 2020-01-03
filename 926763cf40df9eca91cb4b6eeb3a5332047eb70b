@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a285d2a2_937560e7",
+        "filename": "board/puff/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-01-03T01:13:30Z",
+      "side": 1,
+      "message": "Maybe add to RO section\n#undef CONFIG_CMD_CHARGEN",
+      "revId": "926763cf40df9eca91cb4b6eeb3a5332047eb70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b10d38_755cc7e9",
+        "filename": "board/puff/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-01-03T01:13:30Z",
+      "side": 1,
+      "message": "This is already undef\u0027ed",
+      "range": {
+        "startLine": 106,
+        "startChar": 7,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "926763cf40df9eca91cb4b6eeb3a5332047eb70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
