@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6134aed7_ba777363",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-03T00:07:29Z",
+      "side": 1,
+      "message": "Nit: As long as you\u0027re changing this check, I\u0027d prefer IS_ENABLED.",
+      "range": {
+        "startLine": 1359,
+        "startChar": 0,
+        "endLine": 1359,
+        "endChar": 25
+      },
+      "revId": "abf17068a4187d4dc7a483a60e4aa70e423760b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
