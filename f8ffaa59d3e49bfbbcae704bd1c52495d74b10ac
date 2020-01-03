@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "612ce218_a09758c1",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-01-03T02:13:56Z",
+      "side": 1,
+      "message": "Ah, I see that active_port is retrieved via that function. Sorry, thought it was a global.\nSince active_port is only used here, perhaps it is clearer to simply call charge_manager_get_active_charge_port(), otherwise it is retrieved and never used in some cases.",
+      "revId": "f8ffaa59d3e49bfbbcae704bd1c52495d74b10ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
