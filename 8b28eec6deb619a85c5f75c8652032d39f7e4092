@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "401f7732_879e9cbd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-03T00:03:48Z",
+      "side": 1,
+      "message": "Can you comment the meaning of the return value?",
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79eabc91_11b03221",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-03T00:03:48Z",
+      "side": 1,
+      "message": "Does this correspond to a data structure?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776c3c5f_0b7af453",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-03T00:03:48Z",
+      "side": 1,
+      "message": "Do these correspond to a data structure?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cfa8e37_7f9cc61d",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-03T00:03:48Z",
+      "side": 1,
+      "message": "Should some/all of these have associated enums? I think it\u0027s a bit weird to use an explicitly 8-bit type for an explicitly 4-bit bit field. Same question for some of the other structures in this CL.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 25
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c76c35_b4110d4c",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-03T00:03:48Z",
+      "side": 1,
+      "message": "Why is no structure defined for this VDO?",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
