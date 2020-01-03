@@ -21,7 +21,7 @@
 #endif
 
 /* Console output macros */
-#if !(DEBUG_WOV)
+#ifndef DEBUG_AUDIO_CODEC
 #define CPUTS(...)
 #define CPRINTS(...)
 #else
@@ -171,7 +171,9 @@ struct wov_config wov_conf;
 static struct wov_cfifo_buf cfifo_buf;
 static wov_call_back_t callback_fun;
 
+#ifdef DEBUG_AUDIO_CODEC
 static uint32_t voice_buffer[VOICE_BUF_SIZE] = {0};
+#endif
 
 #define WOV_RATE_ERROR_THRESH_MSEC 10
 #define WOV_RATE_ERROR_THRESH 5
@@ -1820,6 +1822,8 @@ void wov_handle_event(enum wov_events event)
 	if (event == WOV_EVENT_ERROR_CORE_FIFO_OVERRUN)
 		CPRINTS("error: cfifo overrun");
 }
+
+#ifdef DEBUG_AUDIO_CODEC
 /* voice data 16Khz 2ch 16bit 1s */
 static int command_wov(int argc, char **argv)
 {
@@ -2066,3 +2070,4 @@ DECLARE_CONSOLE_COMMAND(wov, command_wov,
 		"vadsens <0~31>\n"
 		"gain <0~31>",
 		"wov configuration");
+#endif
