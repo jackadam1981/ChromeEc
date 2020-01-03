@@ -803,6 +803,7 @@
 #undef CONFIG_CHARGER_RT9466
 #undef CONFIG_CHARGER_RT9467
 #undef CONFIG_CHARGER_SY21612
+#undef CONFIG_CHARGER_SM5803
 
 /* Allow run-time completion of the charger driver structure */
 #undef CONFIG_CHARGER_RUNTIME_CONFIG
