@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e65bb3c4_70fa11b6",
+        "filename": "power/cometlake.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-03T23:01:28Z",
+      "side": 1,
+      "message": "There should be some explanation here about why this hook notify is here. It\u0027s not really required for CML power sequencing, but rather to work around a HW glitch.\n\nAlso, instead of using the hook here, what about having a weak attribute default function that lives in baseboard.c which is a \"do nothing\" function. Then that function can be overidden in board.c for kindred to set the static variable and trigger the deferred callback?",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "0ebc1ef292258721cd69c97a9179bc96f57e2bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
