@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05ff6508_5dacff46",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-01-03T23:17:32Z",
+      "side": 1,
+      "message": "Why is this under PD_FLAGS_PARTNER_USB_COMM? Why not leave them seperetly - looking at line 1348 we disconnect in case of role_sink with no usb_comm",
+      "range": {
+        "startLine": 1564,
+        "startChar": 1,
+        "endLine": 1565,
+        "endChar": 25
+      },
+      "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
