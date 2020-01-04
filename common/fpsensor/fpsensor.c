@@ -46,6 +46,12 @@ static timestamp_t encryption_deadline;
 /* Delay between 2 s of the sensor to detect finger removal */
 #define FINGER_POLLING_DELAY (100*MSEC)
 
+/*
+ * After user performs fingerprint match, keep GPIO_USER_PRES_L activated for
+ * this duration.
+ */
+#define USER_PRES_L_DURATION (10*SECOND)
+
 /* Timing statistics. */
 static uint32_t capture_time_us;
 static uint32_t matching_time_us;
@@ -127,6 +133,12 @@ static uint32_t fp_process_enroll(void)
 	     | (percent << EC_MKBP_FP_ENROLL_PROGRESS_OFFSET);
 }
 
+static void deactivate_user_pres_gpio(void)
+{
+	gpio_set_level(GPIO_USER_PRES_L, 1);
+}
+DECLARE_DEFERRED(deactivate_user_pres_gpio);
+
 static uint32_t fp_process_match(void)
 {
 	timestamp_t t0 = get_time();
@@ -147,6 +159,9 @@ static uint32_t fp_process_match(void)
 		} else {
 			fp_enable_positive_match_secret(fgr,
 				&positive_match_secret_state);
+			gpio_set_level(GPIO_USER_PRES_L, 0);
+			hook_call_deferred(&deactivate_user_pres_gpio_data,
+					   USER_PRES_L_DURATION);
 		}
 		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 			templ_dirty |= updated;
