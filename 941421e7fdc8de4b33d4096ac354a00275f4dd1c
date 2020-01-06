@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e79365d_563e0920",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-01-06T18:43:16Z",
+      "side": 1,
+      "message": "Instead of blocking all I2C activity for the port, is it worth only blocking i2c_set_freq()?\n\nDoes EC codebase have a RW lock?  Even if not, could use a separate lock that\u0027s only for getting or setting the speed, with i2c_set_freq() obtaining both locks.\n\nI guess whether this is worthwhile depends on when i2c_get_freq() will be used.",
+      "revId": "941421e7fdc8de4b33d4096ac354a00275f4dd1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
