@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e7f78a_d0451364",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-06T19:08:33Z",
+      "side": 1,
+      "message": "The dual use of GPIO_DIVIDER_HIGHSIDE is somewhat unfortunate, but shouldn\u0027t cause any issues.\n\nSanity check: This also assumes that no code after this point will call get_fp_sensor_type and get_fp_transport_type.",
+      "revId": "59ae75689e1cecbff91df099af28f2def1e780ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
