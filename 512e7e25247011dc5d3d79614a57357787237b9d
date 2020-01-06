@@ -50,6 +50,91 @@
       "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa78930_b0e0e217",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-06T19:09:56Z",
+      "side": 1,
+      "message": "This code means the sensor will be running all the time. It should only be done when requested. (see previous comment).",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f5988e_be69cfb2",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-06T19:09:56Z",
+      "side": 1,
+      "message": "nit: mHz\nThe .c code says 800ms.",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971b7126_625e6fd1",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-06T19:09:56Z",
+      "side": 1,
+      "message": "CM32181E_LIGHT_MAX_FREQ  should match line 22: it can not be more than 700 (mHz).",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040c6bda_7b8bdfc4",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-06T19:09:56Z",
+      "side": 1,
+      "message": "not used.",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370cea12_d51d2a0a",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-06T19:09:56Z",
+      "side": 1,
+      "message": "not used. Scale and offset is critical to adapt to screen glass cover.",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
