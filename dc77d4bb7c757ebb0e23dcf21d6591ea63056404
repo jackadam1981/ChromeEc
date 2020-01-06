@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "289db46f_73a15fdf",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-06T11:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7415d813_dd6466b5",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72776523_3bacaf82",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-20T17:11:36Z",
       "side": 1,
       "message": "we should be able to use IS_ENABLED macro here instead of #ifdefs",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518cc85e_6c5d4704",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-06T11:58:21Z",
+      "side": 1,
+      "message": "No, because CONFIG_HOSTCMD_I2C_SLAVE_ADDR_FLAGS is not blank, and the \"I2C_PORT_EC \u003d\u003d STM32_I2C1_PORT\" part can only be done in preprocessor phase.\n\nRe-indent this part to make it looks better.",
+      "parentUuid": "72776523_3bacaf82",
       "range": {
         "startLine": 120,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707d0fab_da631921",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-06T11:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cf246a7_9303c22d",
+      "range": {
+        "startLine": 567,
+        "startChar": 3,
+        "endLine": 567,
+        "endChar": 14
+      },
+      "revId": "dc77d4bb7c757ebb0e23dcf21d6591ea63056404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
