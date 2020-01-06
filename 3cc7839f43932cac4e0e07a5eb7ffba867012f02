@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5ec1e25_83fa53bc",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-06T19:42:58Z",
+      "side": 1,
+      "message": "nit: maybe this could be fan_step_table ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e55488_ede4342d",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-06T19:42:58Z",
+      "side": 1,
+      "message": "the \u0026...[0] is redundant, you can just use, if you take my naming suggestion, fan_step_table \u003d fan_table_tablet.  Same on line #157.",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b9ab92_c4367cda",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-06T19:42:58Z",
+      "side": 1,
+      "message": "nit: extra tab not necessary",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8370d8_131dce37",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-06T19:42:58Z",
+      "side": 1,
+      "message": "nit: extra tab not necessary",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 3
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
