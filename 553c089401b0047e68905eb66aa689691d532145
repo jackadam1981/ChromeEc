@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd2b7930_ae539ade",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-06T15:44:35Z",
+      "side": 1,
+      "message": "I think this line should describe the change or fix, not the bug symptoms.",
+      "revId": "553c089401b0047e68905eb66aa689691d532145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ada03a_45716f50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-06T15:44:35Z",
+      "side": 1,
+      "message": "This is very confusing. Please re-word to explain the change that was made and why. Comment #2 on the bug seems to have the relevant details.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "553c089401b0047e68905eb66aa689691d532145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
