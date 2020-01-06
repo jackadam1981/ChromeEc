@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b63c087_7c7b5d03",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-06T20:23:34Z",
+      "side": 1,
+      "message": "Dynamic probing is not right, as i2c_xfer will timeout and impact the boot time.\nWhy can we use set the sensors based on the sku id?",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
