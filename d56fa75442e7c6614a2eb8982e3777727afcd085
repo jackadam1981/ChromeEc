@@ -22,6 +22,30 @@
       "revId": "d56fa75442e7c6614a2eb8982e3777727afcd085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8060828_53504103",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-06T18:18:09Z",
+      "side": 1,
+      "message": "Is there a specific standard we need to adhere to?\n\nI think the behavior you\u0027re describing is defined in common code in the case where we have an EC_LED_ID_LEFT_LED and an EC_LED_ID_RIGHT_LED. In this case, we only have one LED from the POV of the LED framework. It would be a little bit of extra work to make it act like there were two, and I don\u0027t know if we could exactly emulate the common behavior.",
+      "parentUuid": "3223f489_64c8f978",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "d56fa75442e7c6614a2eb8982e3777727afcd085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
