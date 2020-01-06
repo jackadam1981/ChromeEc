@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d291d4_c1ef0443",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-06T23:41:20Z",
+      "side": 1,
+      "message": "I2C_PORT_ACCEL isn\u0027t used by your board.c, please delete.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
