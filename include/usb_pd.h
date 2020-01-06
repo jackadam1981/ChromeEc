@@ -834,6 +834,9 @@ enum pd_states {
  */
 #define PD_FLAGS_SNK_WAITING_BATT BIT(20)
 
+/* Enable Vconn swap during explicit contract */
+#define PD_FLAGS_VCONN_SWAP_ENABLE BIT(21)
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -1410,6 +1413,15 @@ __override_proto void pd_check_pr_role(int port,
 __override_proto void pd_check_dr_role(int port,
 				enum pd_data_role dr_role,
 				int flags);
+
+/**
+ * Check for a potential Vconn swap if the port isn't
+ * supplying Vconn
+ *
+ * @param port USB-C port number
+ * @param flags PD flags
+ */
+__override_proto void pd_check_vconn_src(int port, int flags);
 
 /**
  * Check if we should charge from this device. This is
