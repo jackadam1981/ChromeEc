@@ -3586,6 +3586,16 @@ void pd_task(void *u)
 
 				/* it's time to ping regularly the sink */
 				set_state(port, PD_STATE_SRC_READY);
+
+				/*
+				 * USB PD version 1.3 section 2.6.1:
+				 * During Explicit contract the Source can
+				 * initiate or receive a request for an
+				 * exchange of VCONN Source. Hence, enable
+				 * Vconn swap during explicit contract
+				 */
+				pd[port].flags |= PD_FLAGS_VCONN_SWAP_ENABLE;
+
 			} else {
 				/* The sink did not ack, cut the power... */
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
@@ -3652,6 +3662,16 @@ void pd_task(void *u)
 				pd_check_dr_role(port, pd[port].data_role,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_DR_ROLE;
+				break;
+			}
+
+			/* Check for Vconn source, which may trigger a swap */
+			if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+			    IS_ENABLED(CONFIG_USBC_VCONN_SWAP) &&
+			    !(pd[port].flags & PD_FLAGS_VCONN_ON) &&
+			    (pd[port].flags & PD_FLAGS_VCONN_SWAP_ENABLE)) {
+				pd_try_vconn_src(port);
+				pd[port].flags &= ~PD_FLAGS_VCONN_SWAP_ENABLE;
 				break;
 			}
 
@@ -4207,6 +4227,15 @@ void pd_task(void *u)
 						  get_time().val +
 						  PD_T_PS_TRANSITION,
 						  PD_STATE_HARD_RESET_SEND);
+
+			/*
+			 * USB PD  version 1.3 section 2.6.2:
+			 * During Explicit contract the Sink can
+			 * initiate or receive a request for an
+			 * exchange of VCONN Source. Hence, enable
+			 * Vconn swap during explicit contract
+			 */
+			pd[port].flags |= PD_FLAGS_VCONN_SWAP_ENABLE;
 			break;
 		case PD_STATE_SNK_READY:
 			timeout = 20*MSEC;
@@ -4251,6 +4280,16 @@ void pd_task(void *u)
 				pd_check_dr_role(port, pd[port].data_role,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_DR_ROLE;
+				break;
+			}
+
+			/* Check for Vconn source, which may trigger a swap */
+			if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+			    IS_ENABLED(CONFIG_USBC_VCONN_SWAP) &&
+			    !(pd[port].flags & PD_FLAGS_VCONN_ON) &&
+			    (pd[port].flags & PD_FLAGS_VCONN_SWAP_ENABLE)) {
+				pd_try_vconn_src(port);
+				pd[port].flags &= ~PD_FLAGS_VCONN_SWAP_ENABLE;
 				break;
 			}
 
