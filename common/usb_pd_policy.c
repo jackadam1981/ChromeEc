@@ -920,6 +920,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 				dfp_consume_identity(port, cnt, payload);
 				/* Send SOP' Discover Ident message */
 				if (!cable[port].is_identified) {
+					/*
+					 * If the port communicating with the
+					 * cable plug isn't the Vconn source,
+					 * request for a Vconn swap.
+					 */
+					pd_try_vconn_src(port);
 					rsize = dfp_discover_ident(payload);
 					enable_transmit_sop_prime(port);
 				/*
