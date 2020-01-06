@@ -59,6 +59,8 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+#define SAFE_RESET_VBUS_MV 5000
+
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
 	GPIO_AC_PRESENT,
@@ -906,3 +908,25 @@ static void baseboard_init(void)
 	setup_fans();
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
+
+void board_hibernate(void)
+{
+	int port;
+
+	/*
+	 * If we are charging, then drop the Vbus level down to 5V to ensure
+	 * that we don't get locked out of the 6.8V OVLO for our PPCs in
+	 * dead-battery mode. This is needed when the TCPC/PPC rails go away.
+	 * (b/79218851, b/143778351, b/147007265)
+	 */
+	port = charge_manager_get_active_charge_port();
+	if (port != CHARGE_PORT_NONE)
+		pd_request_source_voltage(port, SAFE_RESET_VBUS_MV);
+
+	/*
+	 * Delay allows AP power state machine to settle down along
+	 * with any PD contract renegotiation, and tcpm to put TCPC into low
+	 * power mode if required.
+	 */
+	msleep(300);
+}
