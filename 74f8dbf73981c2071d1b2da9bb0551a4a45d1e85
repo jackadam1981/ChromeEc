@@ -46,6 +46,29 @@
       "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99578888_ab71ef52",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-06T23:32:28Z",
+      "side": 1,
+      "message": "Can this check be moved to usb_common.c:pd_build_request()?  Then this change will be picked up by both the TCPMv1 and TCPMv2 stacks.",
+      "range": {
+        "startLine": 1551,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 25
+      },
+      "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
