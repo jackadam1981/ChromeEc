@@ -117,6 +117,30 @@
       "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ead11d58_d60792de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-06T23:53:11Z",
+      "side": 1,
+      "message": "PD_FLAGS_PARTNER_USB_COMM is already in usb_pd.h, but you\u0027re correctly that only the TCPMv1 stack sets this bit.\n\nIf you move this logic check into pd_build_request(), it should continue to work on TCPMv1 and will do nothing on TCPMv2 until PD_FLAGS_PARTNER_USB_COMM support is added to the TCPMv2 stack.",
+      "parentUuid": "8f5f4755_7a6169fc",
+      "range": {
+        "startLine": 1551,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 25
+      },
+      "revId": "74f8dbf73981c2071d1b2da9bb0551a4a45d1e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
