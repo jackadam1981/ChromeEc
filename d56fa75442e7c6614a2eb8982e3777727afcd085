@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3223f489_64c8f978",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-06T17:13:04Z",
+      "side": 1,
+      "message": "Isn\u0027t the desired behavior that we\u0027ll drive either the motherboard LED or the daughterboard LED, based on which port has a charger connected?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "d56fa75442e7c6614a2eb8982e3777727afcd085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
