@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a4234c_07f97da0",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T20:53:29Z",
+      "side": 1,
+      "message": "you use use the atomic get_and_clear instead, so it is always 0 and we dont\u0027 have to worry about updating this line of code",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "618083cc855604d156c554424fceeb6ad69e2c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
