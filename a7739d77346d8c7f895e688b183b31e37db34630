@@ -22,6 +22,29 @@
       "revId": "a7739d77346d8c7f895e688b183b31e37db34630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1eed43d_cf851026",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T14:37:42Z",
+      "side": 1,
+      "message": "In the tcpci_tcpm_set_polarity version, we call set CC before returning in the NONE case. Why don\u0027t we also need to do that here (and the other drivers in this CL)?\n\nIf that isn\u0027t an oversight, can you add a comment here (and other drivers) explaining why we want to exit early",
+      "range": {
+        "startLine": 765,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 0
+      },
+      "revId": "a7739d77346d8c7f895e688b183b31e37db34630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
