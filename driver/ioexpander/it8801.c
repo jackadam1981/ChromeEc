@@ -7,6 +7,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "ioexpander.h"
 #include "it8801.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
@@ -15,6 +16,7 @@
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_GPIO, format, ## args)
 
 static int it8801_read(int reg, int *data)
 {
@@ -198,6 +200,221 @@ void io_expander_it8801_interrupt(enum gpio_signal signal)
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
+
+#ifdef CONFIG_IO_EXPANDER
+
+static int it8801_ioex_read(int ioex, int reg, int *data)
+{
+	struct ioexpander_config_t *ioex_p = &ioex_config[ioex];
+
+	return i2c_read8(ioex_p->i2c_host_port, ioex_p->i2c_slave_addr,
+			 reg, data);
+}
+
+static int it8801_ioex_write(int ioex, int reg, int data)
+{
+	struct ioexpander_config_t *ioex_p = &ioex_config[ioex];
+
+	return i2c_write8(ioex_p->i2c_host_port, ioex_p->i2c_slave_addr,
+			  reg, data);
+}
+
+/*
+ *Initialize the general purpose I/O port(GPIO)
+ */
+static int it8801_ioex_init(int ioex)
+{
+	int ret;
+
+	/*  Verify Vendor ID registers. */
+	ret = it8801_check_vendor_id();
+	if (ret) {
+		CPRINTS("Failed to read IT8801 vendor id %x", ret);
+		return ret;
+	}
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_check_is_valid(int ioex, int port, int mask)
+{
+	switch (port) {
+	case 0:
+		if (mask & ~IT8801_VALID_GPIO_G0_MASK) {
+			CPRINTF("GPIO0%d is not support in IT8801\n",
+				__fls(mask));
+			return EC_ERROR_INVAL;
+		}
+		break;
+	case 1:
+		if (mask & ~IT8801_VALID_GPIO_G1_MASK) {
+			CPRINTF("GPIO1%d is not support in IT8801\n",
+				__fls(mask));
+			return EC_ERROR_INVAL;
+		}
+		break;
+	case 2:
+		if (mask & ~IT8801_VALID_GPIO_G2_MASK) {
+			CPRINTF("GPIO2%d is not support in IT8801\n",
+				__fls(mask));
+			return EC_ERROR_INVAL;
+		}
+		break;
+	default:
+		CPRINTF("Port%d is not support in IT8801\n", port);
+		break;
+	}
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_get_level(int ioex, int port, int mask, int *val)
+{
+	int rv, reg;
+
+	rv = it8801_ioex_check_is_valid(ioex, port, mask);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	reg = IT8801_REG_GPIO_IPSR(port);
+	rv = it8801_ioex_read(ioex, reg, val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	*val = !!(*val & mask);
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_set_level(int ioex, int port, int mask, int value)
+{
+	int rv, reg, val;
+
+	rv = it8801_ioex_check_is_valid(ioex, port, mask);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	reg = IT8801_REG_GPIO_SOVR(port);
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (value)
+		val |= mask;
+	else
+		val &= ~mask;
+	rv = it8801_ioex_write(ioex, reg, val);
+
+	return rv;
+}
+
+static int it8801_ioex_get_flags_by_mask(int ioex, int port,
+		int mask, int *flags)
+{
+	int rv, reg, val;
+
+	rv = it8801_ioex_check_is_valid(ioex, port, mask);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	reg = IT8801_REG_GPIO_CR(port, mask);
+	/* Select open drain 0:push-pull 1:open-drain */
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (val & IT8801_GPIODIR)
+		*flags |= GPIO_OUTPUT;
+	else
+		*flags |= GPIO_INPUT;
+
+	/* Select GPIO direction */
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (val & IT8801_GPIOIOT)
+		*flags |= GPIO_OPEN_DRAIN;
+
+	reg = IT8801_REG_GPIO_IPSR(port);
+	/* Configure the output level */
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (val & mask)
+		*flags |= GPIO_HIGH;
+	else
+		*flags |= GPIO_LOW;
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_set_flags_by_mask(int ioex, int port,
+		int mask, int flags)
+{
+	int rv, reg, val;
+
+	rv = it8801_ioex_check_is_valid(ioex, port, mask);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	val = flags & ~IT8801_SUPPORT_GPIO_FLAGS;
+	if (val) {
+		ccprintf("Flag 0x%08x is not supported\n", val);
+		return EC_ERROR_INVAL;
+	}
+
+	reg = IT8801_REG_GPIO_CR(port, mask);
+	/* Select open drain 0:push-pull 1:open-drain */
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (flags & GPIO_OPEN_DRAIN)
+		val |= IT8801_GPIOIOT;
+	else
+		val &= ~IT8801_GPIOIOT;
+	rv = it8801_ioex_write(ioex, reg, val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	/* Select GPIO direction */
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (flags & GPIO_OUTPUT)
+		val |= IT8801_GPIODIR;
+	else
+		val &= ~IT8801_GPIODIR;
+	rv = it8801_ioex_write(ioex, reg, val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	reg = IT8801_REG_GPIO_SOVR(port);
+	/* Configure the output level */
+	rv = it8801_ioex_read(ioex, reg, &val);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (flags & GPIO_HIGH)
+		val |= mask;
+	else if (flags & GPIO_LOW)
+		val &= ~mask;
+	rv = it8801_ioex_write(ioex, reg, val);
+
+	return rv;
+}
+
+const struct ioexpander_drv it8801_ioexpander_drv = {
+	.init              = &it8801_ioex_init,
+	.get_level         = &it8801_ioex_get_level,
+	.set_level         = &it8801_ioex_set_level,
+	.get_flags_by_mask = &it8801_ioex_get_flags_by_mask,
+	.set_flags_by_mask = &it8801_ioex_set_flags_by_mask,
+};
+#endif /* CONFIG_IO_EXPANDER */
 
 static void dump_register(int reg)
 {
