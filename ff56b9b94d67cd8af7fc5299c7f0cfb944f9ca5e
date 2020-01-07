@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e0765f6e_322671be",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-07T21:14:19Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what the alternate function does, my question is that if you do this step, do you need to bother with changing the GPIO from output to input, since setting the alternate function change will disable the GPIO function anyway.",
+      "parentUuid": "f21b0579_c8f5b36c",
+      "range": {
+        "startLine": 488,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 28
+      },
+      "revId": "ff56b9b94d67cd8af7fc5299c7f0cfb944f9ca5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4452aa38_265407c6",
         "filename": "board/kindred/board.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "This change GPB7 to GPIO type from PWM type. fan is off in s0ix",
       "parentUuid": "4452aa38_265407c6",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "ff56b9b94d67cd8af7fc5299c7f0cfb944f9ca5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8acf71_c9bb70de",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-07T21:14:19Z",
+      "side": 1,
+      "message": "Should the fan be under EC control when in S0ix mode? As opposed to just off?",
+      "parentUuid": "dbe54e51_4ed29e62",
       "range": {
         "startLine": 496,
         "startChar": 1,
