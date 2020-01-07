@@ -534,16 +534,21 @@ int flash_pre_init(void)
 		return EC_SUCCESS;
 
 	/*
-	 * If the last reboot was a power-on reset, it should have cleared
-	 * write-protect.  If it didn't, then the flash write protect registers
-	 * have been permanently committed and we can't fix that.
+	 * If the last reboot was a power-on reset or a manually issued
+	 * hard reset, it should have cleared write-protect.
+	 * If it didn't, then the flash write protect registers have been
+	 * permanently committed using commit_optb and we can't fix that.
 	 */
-	if (reset_flags & EC_RESET_FLAG_POWER_ON) {
+	if (reset_flags & (EC_RESET_FLAG_POWER_ON | EC_RESET_FLAG_HARD)) {
 		stuck_locked = 1;
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
-	/* Otherwise, do a hard boot to clear the flash protection registers */
+	/*
+	 * Otherwise, do a hard reset to clear the flash protection registers.
+	 * For the STM32H743, this could only help if the final commit_optb
+	 * step failed to run (some sort of soft reset/fault before).
+	 */
 	system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_PRESERVE_FLAGS);
 
 	/* That doesn't return, so if we're still here that's an error */
