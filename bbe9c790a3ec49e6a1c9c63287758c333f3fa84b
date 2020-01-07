@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b8028e1_75aa979b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-07T18:57:12Z",
+      "side": 1,
+      "message": "Can either update b:146623068 or file a new bug to move this routine to usb_common.c.  This functionality is duplicated by usb_pd_protocol.c and usbc_task.c, with the only difference is how current data_role and polarity is determined.\n\nI\u0027d prefer you moved this now, but I\u0027m not sure of the impact of checking PD_FLAGS_PARTNER_USB_COMM with the new stack as Jett noted in patchset 1.",
+      "range": {
+        "startLine": 1355,
+        "startChar": 12,
+        "endLine": 1355,
+        "endChar": 46
+      },
+      "revId": "bbe9c790a3ec49e6a1c9c63287758c333f3fa84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
