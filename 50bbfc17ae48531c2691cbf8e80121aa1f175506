@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "334657e5_7f19d50a",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-07T22:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33f7ad7a_2627cb75",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "50bbfc17ae48531c2691cbf8e80121aa1f175506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10bfd4b7_7cc87410",
         "filename": "power/intel_x86.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "50bbfc17ae48531c2691cbf8e80121aa1f175506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77192f18_6a6d8c29",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-07T22:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10bfd4b7_7cc87410",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "50bbfc17ae48531c2691cbf8e80121aa1f175506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
