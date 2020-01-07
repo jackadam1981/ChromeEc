@@ -180,17 +180,55 @@ static int commit_optb(void)
  *  ...
  *  Bit 31 --> Sectors 124 to 127
  */
-static void protect_blocks(uint64_t blocks)
+static int protect_blocks(uint64_t blocks)
 {
 	uint32_t bank1_mask = blocks & BLOCKS_HWBANK_MASK;
 	uint32_t bank2_mask = (blocks>>(BLOCKS_PER_HWBANK/CONFIG_FLASH_WP_BANKS)) & BLOCKS_HWBANK_MASK;
 
-	if (unlock_optb())
-		return;
-	STM32_FLASH_WPSN_PRG(0) &= ~(bank1_mask);
-	STM32_FLASH_WPSN_PRG(1) &= ~(bank2_mask);
-	commit_optb();
+	int rv = unlock_optb();
+
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	STM32_FLASH_WPSN_PRG(0) &= ~bank1_mask;
+	STM32_FLASH_WPSN_PRG(1) &= ~bank2_mask;
+	return commit_optb();
 }
+
+static int unprotect_blocks(uint64_t blocks)
+{
+
+	uint32_t bank1_mask = blocks & BLOCKS_HWBANK_MASK;
+	uint32_t bank2_mask = (blocks>>(BLOCKS_PER_HWBANK/CONFIG_FLASH_WP_BANKS)) & BLOCKS_HWBANK_MASK;
+
+	int rv = unlock_optb();
+
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	STM32_FLASH_WPSN_PRG(0) |= bank1_mask;
+	STM32_FLASH_WPSN_PRG(1) |= bank2_mask;
+	return commit_optb();
+}
+
+static int command_flash_protect(int argc, char **argv)
+{
+	int val;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (parse_bool(argv[1], &val)) {
+		if (val)
+			return protect_blocks(RO_WP_RANGE);
+		else
+			return unprotect_blocks(RO_WP_RANGE);
+	}
+
+	return EC_ERROR_PARAM1;
+}
+DECLARE_CONSOLE_COMMAND(flashprotect, command_flash_protect,
+			"true|false", "Force flash write protect on/off");
 
 /*
  * If RDP as PSTATE option is defined, use that as 'Write Protect enabled' flag:
@@ -232,6 +270,12 @@ static int set_wp(int enabled)
 			FLASH_OPTSR_RDP_LEVEL_1;
 	}
 #else
+	/*
+	 * We use the user configuration status bit 1 (FLASH_OTSR_RSS1)
+	 * to indicate our own wp status across resets.
+	 * Originally, this bit was marked free for any use, but is now
+	 * marked as reserved in the ST reference manual.
+	 */
 	if (enabled)
 		STM32_FLASH_OPTSR_PRG(0) |= FLASH_OPTSR_RSS1;
 	else
