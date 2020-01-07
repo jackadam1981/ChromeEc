@@ -22,6 +22,30 @@
       "revId": "618083cc855604d156c554424fceeb6ad69e2c06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5bc0e8_7edbd0b9",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-07T21:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a4234c_07f97da0",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "618083cc855604d156c554424fceeb6ad69e2c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
