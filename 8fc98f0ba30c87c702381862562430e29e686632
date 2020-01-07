@@ -34,6 +34,24 @@
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc23b023_852469e7",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-07T07:31:05Z",
+      "side": 1,
+      "message": "Seems it\u0027s fine for treeya board at least. The i2c irq will occur if the address is not right on the ninth clock of the i2c transmission.\nNEGACK(Negative Acknowledge). Set by hardware when a transmission is not acknowledged on the ninth clock(in this case SDAST is not set to 1). When NEGACK is set, the SMBus is stalled.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/npcx/i2c.c#779",
+      "parentUuid": "33893e30_e452c8be",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
