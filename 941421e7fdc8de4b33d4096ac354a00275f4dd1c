@@ -16,6 +16,24 @@
       "revId": "941421e7fdc8de4b33d4096ac354a00275f4dd1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7b0327_6e7e5b53",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-07T07:35:17Z",
+      "side": 1,
+      "message": "Thanks for catching this.\n\nYes we don\u0027t need to lock i2c_get_freq() at this level. This should be safe without lock on most platforms if it\u0027s just reading some register or returning a cached value.\nChip implementation can add a lock in chip_i2c_* if they really need one.",
+      "parentUuid": "2e79365d_563e0920",
+      "revId": "941421e7fdc8de4b33d4096ac354a00275f4dd1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
