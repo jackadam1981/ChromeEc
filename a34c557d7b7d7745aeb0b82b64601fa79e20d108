@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fa2dfcd_dc7326e4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T17:08:26Z",
+      "side": 1,
+      "message": "let\u0027s make this interface two method instead\n\ntcpci_set_cached_pull(port) and tcpci_get_cached_pull(port)",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 32
+      },
+      "revId": "a34c557d7b7d7745aeb0b82b64601fa79e20d108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
