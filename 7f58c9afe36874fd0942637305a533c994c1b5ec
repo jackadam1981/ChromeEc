@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95de4480_6f09b804",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T01:11:00Z",
+      "side": 1,
+      "message": "-t [-o \u003cfile\u003e]",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "7f58c9afe36874fd0942637305a533c994c1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a19acb47_76391939",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T01:11:00Z",
+      "side": 1,
+      "message": "if the requirement is just min 1000 samples at once, then we can actually do better that packing the max number of LCM(1000*TSB, 32) blocks into a packet, since we don\u0027t care about the number of blocks per packet at all (as long as it\u0027s more than 1).\nwhat we need is the biggest number that divides by 4 and TSB, which is not bigger that 2032. \n(we also need to check that this number is at least 1000*TSB/8 \u003d 125*TSB. but we are guaranteed to find this number in the top TSB*4, and ((2032 - TSB*4) / TSB) * TSB \u003d (2032 / TSB) * TSB - 4 * TSB \u003e 2032 - 5*TSB \u003e 125*TSB, for TSB \u003c\u003d 15; and for 16, 2032 is divisable by both 4 and 16, so again 2032 \u003e 2000, so always holds for TSB in 1..16 range, no need to check)\n\nexample for TSB\u003d1. what we get with the current calculation is:\nsample_size \u003d GCD(125*1,4) \u003d 512\nsample_size \u003d (2032/512) * 512 \u003d 3*512 \u003d 1536\nto get to TRNG_SAMPLE_COUNT of 1000000, we need (1000000+1535)/1536 \u003d 652 calls.\n\nif we went with (2032 / TSB) * TSB, we\u0027d get full 2032 samples out from every request, so would do only (1000000+2031)/2032 \u003d 493 calls. This way, no need to waste time on processing 159 extra requests. More time exercising TRNG, less time in communication stack.",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "7f58c9afe36874fd0942637305a533c994c1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc715246_e32a651a",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T01:11:00Z",
+      "side": 1,
+      "message": "multiple, not multiplier",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "7f58c9afe36874fd0942637305a533c994c1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1796878d_88bf43fa",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T01:11:00Z",
+      "side": 1,
+      "message": "nit: instead of sample_size, I\u0027d call it sample_count or samples_per_request, since what we are actually calculating is how many samples we want to get out of a single TRNG_TEST_CC",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "7f58c9afe36874fd0942637305a533c994c1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f13231_1e89f3d4",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T01:11:00Z",
+      "side": 1,
+      "message": "nit:\nnote that LCM(1000*TSB, 32)/8 \u003d LCM(8*125*TSB, 8*4)/8 \u003d 8 * LCM(125*TSB, 4) / 8 \u003d LCM(125*TSB, 4) \u003d 125*TSB*4 / GCD(125*TSB, 4)\nwhich operates on smaller values, so is likely a bit better (faster? lower risk of overflow?)\n\nor another way to look at it: we convert to bytes before calculating LCM",
+      "range": {
+        "startLine": 81,
+        "startChar": 17,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "7f58c9afe36874fd0942637305a533c994c1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
