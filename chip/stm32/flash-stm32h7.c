@@ -54,6 +54,9 @@
  */
 #define DEFAULT_PSIZE FLASH_CR_PSIZE_DWORD
 
+#define WP_RANGE(start, count) (((1 << (count)) - 1) << (start))
+#define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
+
 /* Can no longer write/erase flash until next reboot */
 static int access_disabled;
 /* Can no longer modify write-protection in option bytes until next reboot */
@@ -150,15 +153,50 @@ static int commit_optb(void)
 	return (timeout > 0) ? EC_SUCCESS : EC_ERROR_TIMEOUT;
 }
 
-static void protect_blocks(uint32_t blocks)
+static int protect_blocks(uint32_t blocks)
 {
-	if (unlock_optb())
-		return;
+	int rv = unlock_optb();
+
+	if (rv != EC_SUCCESS)
+		return rv;
+
 	STM32_FLASH_WPSN_PRG(0) &= ~(blocks & BLOCKS_HWBANK_MASK);
 	STM32_FLASH_WPSN_PRG(1) &= ~((blocks >> BLOCKS_PER_HWBANK)
 				& BLOCKS_HWBANK_MASK);
-	commit_optb();
+	return commit_optb();
 }
+
+static int unprotect_blocks(uint32_t blocks)
+{
+	int rv = unlock_optb();
+
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	STM32_FLASH_WPSN_PRG(0) |= (blocks & BLOCKS_HWBANK_MASK);
+	STM32_FLASH_WPSN_PRG(1) |= ((blocks >> BLOCKS_PER_HWBANK)
+				& BLOCKS_HWBANK_MASK);
+	return commit_optb();
+}
+
+static int command_flash_protect(int argc, char **argv)
+{
+	int val;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (parse_bool(argv[1], &val)) {
+		if (val)
+			return protect_blocks(RO_WP_RANGE);
+		else
+			return unprotect_blocks(RO_WP_RANGE);
+	}
+
+	return EC_ERROR_PARAM1;
+}
+DECLARE_CONSOLE_COMMAND(flashprotect, command_flash_protect,
+			"true|false", "Force flash write protect on/off");
 
 /*
  * If RDP as PSTATE option is defined, use that as 'Write Protect enabled' flag:
@@ -200,6 +238,12 @@ static int set_wp(int enabled)
 			FLASH_OPTSR_RDP_LEVEL_1;
 	}
 #else
+	/*
+	 * We use the user configuration status bit 1 (FLASH_OTSR_RSS1)
+	 * to indicate our own wp status across resets.
+	 * Originally, this bit was marked free for any use, but is now
+	 * marked as reserved in the ST reference manual.
+	 */
 	if (enabled)
 		STM32_FLASH_OPTSR_PRG(0) |= FLASH_OPTSR_RSS1;
 	else
@@ -395,8 +439,7 @@ uint32_t flash_physical_get_protect_flags(void)
 	return flags;
 }
 
-#define WP_RANGE(start, count) (((1 << (count)) - 1) << (start))
-#define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
+
 
 int flash_physical_protect_now(int all)
 {
