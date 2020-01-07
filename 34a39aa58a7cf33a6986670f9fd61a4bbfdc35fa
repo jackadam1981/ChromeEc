@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "d74f800f_f5dddb9f",
+        "filename": "board/volteer_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-07T15:07:45Z",
+      "side": 1,
+      "message": "remove line 37 46, set rot_standard_ref to NULL (identity matrix).",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d639049f_30ae513e",
+        "filename": "board/volteer_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-07T15:07:45Z",
+      "side": 1,
+      "message": "we need 2 sensors for angle detection. \nRemove code until enabled (line 65 - 74).",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8946556b_e6e4b72d",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-07T15:07:45Z",
+      "side": 1,
+      "message": "be sure logging for the host commands are disabled (see CC_DEFAULT)",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45551bec_48d9157d",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-07T15:07:45Z",
+      "side": 1,
+      "message": "Check if the EC can use a bigger FIFO.",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f67bebd_d75d90ec",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-07T15:07:45Z",
+      "side": 1,
+      "message": "Rename I2C_PORT_LID_SENSOR if you plan a different i2c port for the base.",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3d291d4_c1ef0443",
         "filename": "board/volteer_ish/board.h",
         "patchSetId": 2
