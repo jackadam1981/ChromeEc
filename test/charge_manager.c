@@ -87,7 +87,7 @@ static void pd_set_role(int port, int role)
 	power_role[port] = role;
 }
 
-int pd_get_role(int port)
+enum pd_power_role pd_get_power_role(int port)
 {
 	return power_role[port];
 }
@@ -470,7 +470,7 @@ static int test_override(void)
 	charge_manager_update_dualrole(0, CAP_DUALROLE);
 	charge_manager_set_override(OVERRIDE_DONT_CHARGE);
 	wait_for_charge_manager_refresh();
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 
 	/*
 	 * Verify that an override request to a dual-role source port
@@ -483,14 +483,14 @@ static int test_override(void)
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 200);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SINK);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SINK);
 
 	/* Set override to "don't charge", then verify we're not charging */
 	charge_manager_set_override(OVERRIDE_DONT_CHARGE);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
 	TEST_ASSERT(active_charge_limit == 0);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 
 	/* Update a charge supplier, verify that we still aren't charging */
 	charge.current = 200;
@@ -498,14 +498,14 @@ static int test_override(void)
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
 	TEST_ASSERT(active_charge_limit == 0);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 
 	/* Turn override off, verify that we go back to the correct charge */
 	charge_manager_set_override(OVERRIDE_OFF);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 500);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 
 	return EC_SUCCESS;
 }
@@ -538,7 +538,7 @@ static int test_dual_role(void)
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 500);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SINK);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SINK);
 
 	/* Remove override and verify we go back to previous state */
 	charge_manager_set_override(OVERRIDE_OFF);
@@ -549,7 +549,7 @@ static int test_dual_role(void)
 #else
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
 	TEST_ASSERT(active_charge_limit == 0);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 #endif
 
 	/* Mark P0 as the override port, verify that we again charge. */
@@ -559,7 +559,7 @@ static int test_dual_role(void)
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 550);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SINK);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SINK);
 
 	/*
 	 * Insert a dual-role charger into P1 and set the override. Verify
@@ -572,8 +572,8 @@ static int test_dual_role(void)
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 500);
-	TEST_ASSERT(pd_get_role(1) == PD_ROLE_SINK);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(1) == PD_ROLE_SINK);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 
 	/* Set override back to P0 and verify switch */
 	charge_manager_set_override(0);
@@ -582,8 +582,8 @@ static int test_dual_role(void)
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 600);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SINK);
-	TEST_ASSERT(pd_get_role(1) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SINK);
+	TEST_ASSERT(pd_get_power_role(1) == PD_ROLE_SOURCE);
 
 	/* Insert a dedicated charger and verify override is removed */
 	charge.current = 0;
@@ -599,7 +599,7 @@ static int test_dual_role(void)
 #else
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 400);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 #endif
 
 	/*
@@ -638,7 +638,7 @@ static int test_dual_role(void)
 	 */
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 200);
-	TEST_ASSERT(pd_get_role(0) == PD_ROLE_SOURCE);
+	TEST_ASSERT(pd_get_power_role(0) == PD_ROLE_SOURCE);
 #endif
 
 	return EC_SUCCESS;

@@ -1290,11 +1290,18 @@ enum pd_dual_role_states pd_get_dual_role(int port);
 void pd_set_dual_role(int port, enum pd_dual_role_states state);
 
 /**
- * Get role, from among PD_ROLE_SINK and PD_ROLE_SOURCE
+ * Get power role, from among PD_ROLE_SINK and PD_ROLE_SOURCE
  *
- * @param port Port number from which to get role
+ * @param port Port number from which to get power role
  */
-int pd_get_role(int port);
+enum pd_power_role pd_get_power_role(int port);
+
+/**
+ * Get data role, from among PD_ROLE_UFP, PD_ROLE_UFP and PD_ROLE_DISCONNECTED
+ *
+ * @param port Port number from which to get data role
+ */
+enum pd_data_role pd_get_data_role(int port);
 
 /* Control Message type */
 enum pd_ctrl_msg_type {
@@ -1388,8 +1395,8 @@ enum pd_rev_type {
  * Replaced by pd_cable_plug for SOP' and SOP" packets.
  */
 enum pd_power_role {
-	PD_ROLE_SINK = 0,
-	PD_ROLE_SOURCE = 1
+	PD_ROLE_SINK,
+	PD_ROLE_SOURCE,
 };
 
 /*
@@ -1397,9 +1404,9 @@ enum pd_power_role {
  * Replaced by reserved field for SOP' and SOP" packets.
  */
 enum pd_data_role {
-	PD_ROLE_UFP = 0,
-	PD_ROLE_DFP = 1,
-	PD_ROLE_DISCONNECTED = 2,
+	PD_ROLE_UFP,
+	PD_ROLE_DFP,
+	PD_ROLE_DISCONNECTED,
 };
 
 /*
@@ -2433,7 +2440,14 @@ uint8_t pd_get_src_cap_cnt(int port);
  *
  * @param port USB-C port number
  */
-int pd_get_partner_usb_comm_capable(int port);
+bool pd_get_partner_usb_comm_capable(int port);
+
+/**
+ * Return true if PD is in disconnect state
+ *
+ * @param port USB-C port number
+ */
+bool pd_is_disconnected(int port);
 
 /**
  * Return true if vbus is present on the specified port.

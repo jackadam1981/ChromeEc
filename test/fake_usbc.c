@@ -46,6 +46,11 @@ __overridable void tc_set_power_role(int port, enum pd_power_role role)
 	power_role = role;
 }
 
+__overridable bool pd_get_partner_usb_comm_capable(int port)
+{
+	return true;
+}
+
 __overridable enum pd_cable_plug tc_get_cable_plug(int port)
 {
 	return PD_PLUG_FROM_DFP_UFP;
@@ -132,7 +137,7 @@ enum pd_dual_role_states pd_get_dual_role(int port)
 	return PD_DRP_TOGGLE_ON;
 }
 
-__overridable int pd_get_role(int port)
+__overridable enum pd_power_role pd_get_power_role(int port)
 {
 	return PD_ROLE_SINK;
 }
