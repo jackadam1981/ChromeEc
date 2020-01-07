@@ -69,6 +69,8 @@ GPIO(EN_PP1050_BYPASS,		PIN(9, 7), GPIO_OUT_LOW)
 GPIO(EN_DRAM_VDD1,		PIN(9, 6), GPIO_OUT_LOW)
 #endif
 
+GPIO(EN_PPVAR_VCCIN,	PIN(4, 3), GPIO_OUT_LOW)
+
 /* Other wake sources */
 /*
  * GPIO_INT_BOTH is required for PSL wake from hibernate, but we don't need an
