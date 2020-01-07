@@ -46,6 +46,30 @@
       "revId": "d56fa75442e7c6614a2eb8982e3777727afcd085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98396a0_9dceddf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-07T22:02:07Z",
+      "side": 1,
+      "message": "Per OOB discussion with Jett and Eric, the intended behavior is for only the LED next to the active charging port to be illuminated. I added a TODO for this. In the meantime, this shows that the daughter board LED and mux work.",
+      "parentUuid": "d8060828_53504103",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "d56fa75442e7c6614a2eb8982e3777727afcd085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
