@@ -626,14 +626,27 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO: b/140561826 - check correct operation for Volteer */
 }
 
-/*
- * Delay assertion of PCH_SYS_PWROK from assertion of the PG_EC_ALL_SYS_PWRGD
- * input. This ensures PCH_SYS_PWROK is asserted only after all rails have
- * stabilized. See b/144478941 for full discussion.
- */
-__override void board_icl_tgl_all_sys_pwrgood(void)
+__override void board_icl_tgl_all_sys_pwrgood(int value)
 {
-	msleep(50);
+	/*
+	 * On Volteer, EN_PPVAR_VCCIN is used to delay generation of the
+	 * VCCST_PWRGD (VCCST_PG_OD_R net) to the CPU. Tigerlake requires a 2ms
+	 * delay from VCCST stable to assertion of VCCST_PWRGD.  Delay 5ms
+	 * after PG_EC_ALL_SYS_PWRGD to meet this requirement.
+	 */
+	if (value)
+		msleep(5);
+	gpio_set_level_verbose(CC_CHIPSET, GPIO_EN_PPVAR_VCCIN, value);
+
+	/*
+	 * Delay assertion of PCH_SYS_PWROK from assertion of the
+	 * PG_EC_ALL_SYS_PWRGD input. This ensures PCH_SYS_PWROK is asserted
+	 * only after all rails have stabilized. 50 ms is the desired delay,
+	 * and we have already delay 5 ms above. See b/144478941 for full
+	 * discussion.
+	 */
+	if (value)
+		msleep(45);
 }
 
 static void baseboard_init(void)

@@ -82,6 +82,10 @@ __overridable int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 	return gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD);
 }
 
+/*
+ * TODO (b/150726713) - combine this with board_icl_tgl_all_sys_pwrgood() as
+ * part of power sequencing cleanup.
+ */
 __overridable void board_jsl_all_sys_pwrgd(int value)
 {
 
@@ -150,8 +154,11 @@ enum power_state chipset_force_g3(void)
  * Ice Lake and Tiger Lake permit PCH_PWROK and SYS_PWROK signals coming
  * up in any order.  If the platform needs extra time for peripherals to come
  * up, the board can override this function.
+ *
+ * TODO (b/150726713) - combine this with board_jsl_all_sys_pwrgd() as part
+ * of power sequencing cleanup.
  */
-__overridable void board_icl_tgl_all_sys_pwrgood(void)
+__overridable void board_icl_tgl_all_sys_pwrgood(int value)
 {
 
 }
@@ -319,8 +326,7 @@ enum power_state power_handle_state(enum power_state state)
 		all_sys_pwrgd_out = gpio_get_level(GPIO_PCH_SYS_PWROK);
 
 		if (all_sys_pwrgd_in != all_sys_pwrgd_out) {
-			if (all_sys_pwrgd_in)
-				board_icl_tgl_all_sys_pwrgood();
+			board_icl_tgl_all_sys_pwrgood(all_sys_pwrgd_in);
 			GPIO_SET_LEVEL(GPIO_PCH_SYS_PWROK, all_sys_pwrgd_in);
 		}
 		break;
