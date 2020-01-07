@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f41d8d6_a1484799",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T14:19:46Z",
+      "side": 1,
+      "message": "let\u0027s add a comment for why we need this sleep (to give the PD task and PPC chip enough time to respond to the request).",
+      "range": {
+        "startLine": 925,
+        "startChar": 2,
+        "endLine": 925,
+        "endChar": 14
+      },
+      "revId": "be6ac4a64dc9c409f37b247560028a7819223644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
