@@ -16,6 +16,24 @@
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33893e30_e452c8be",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-07T02:03:59Z",
+      "side": 1,
+      "message": "I added CPRINTS() before and after i2c_xfer_unlocked(), and executed 3 times per 2 sensor addresses on treeya board. The first time is about 1.6ms, and the reset times are about 500 us per time. It looks like if sensor numbers is X, the latency time is 1.6ms + 0.5ms*(X-1) in the worst case. Actually I only tested on treeya board, not sure other boards and EC chips.\nIt will enlarge sku ids. For example, the project already has 4 sku id, we have to add another 4 sku id if adding a new sensor. We want to konw if there is a good way to fix it.",
+      "parentUuid": "5b63c087_7c7b5d03",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
