@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ae65ab8_6f5f62a2",
+        "filename": "board/akemi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-07T16:46:42Z",
+      "side": 1,
+      "message": "nit: When using I2C/SMBus in the startup hook, using \"HOOK_PRIO_INIT_I2C + 1\" is a little more robust, just in case the priority values ever change.  It will still work this way.",
+      "range": {
+        "startLine": 426,
+        "startChar": 58,
+        "endLine": 426,
+        "endChar": 75
+      },
+      "revId": "280b6099e9139a94b4be46f83df8b1cda8634128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
