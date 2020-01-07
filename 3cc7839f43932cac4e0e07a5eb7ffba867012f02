@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b8f825ea_693ce5d9",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-07T10:09:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5ec1e25_83fa53bc",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49e55488_ede4342d",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625ff531_8a6455d6",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-07T10:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49e55488_ede4342d",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7e371d46_3a3f7872",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-07T10:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4b9ab92_c4367cda",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de8370d8_131dce37",
         "filename": "board/jinlon/thermal.c",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f7f7e4_f5c94b91",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-07T10:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de8370d8_131dce37",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 3
+      },
+      "revId": "3cc7839f43932cac4e0e07a5eb7ffba867012f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
