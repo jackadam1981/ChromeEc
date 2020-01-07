@@ -22,6 +22,30 @@
       "revId": "0ebc1ef292258721cd69c97a9179bc96f57e2bed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0400c952_94bfdb9f",
+        "filename": "power/cometlake.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-01-07T00:36:42Z",
+      "side": 1,
+      "message": "This hook notify is necessary here.\nIn fail case, SLP_S0/SLP_S3/SLP_S4 didn\u0027t pull low so EC can\u0027t use HOOK_CHIPSET_RESUME or HOOK_CHIPSET_STARTUP.\nWe can only use HOOK_CHIPSET_PRE_INIT here.\nA weak attribute default function still need a HOOK to trigger.\nOr we can use HOOK_SECOND to trigger this workaround?",
+      "parentUuid": "e65bb3c4_70fa11b6",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "0ebc1ef292258721cd69c97a9179bc96f57e2bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
