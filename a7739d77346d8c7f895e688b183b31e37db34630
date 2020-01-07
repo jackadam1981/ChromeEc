@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22b632a3_55e3ccdd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 3132,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-07T16:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ee005a_e1010d7c",
+      "range": {
+        "startLine": 3132,
+        "startChar": 7,
+        "endLine": 3132,
+        "endChar": 30
+      },
+      "revId": "a7739d77346d8c7f895e688b183b31e37db34630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1eed43d_cf851026",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "a7739d77346d8c7f895e688b183b31e37db34630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01547a76_a858d364",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-07T16:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1eed43d_cf851026",
+      "range": {
+        "startLine": 765,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 0
+      },
+      "revId": "a7739d77346d8c7f895e688b183b31e37db34630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
