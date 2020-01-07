@@ -22,6 +22,30 @@
       "revId": "b83d18b949ac864512dd287aef82dce551f9be44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355c8e6c_faee7f6a",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-07T18:24:34Z",
+      "side": 1,
+      "message": "With the way usb_common.c coded this, I am not sure this is as easy as one would expect.  If you really want this done, I would prefer it be in a different CL",
+      "parentUuid": "621d57dd_cf2390c7",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 16
+      },
+      "revId": "b83d18b949ac864512dd287aef82dce551f9be44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
