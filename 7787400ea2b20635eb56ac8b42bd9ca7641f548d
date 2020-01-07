@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca1ba2d_b6e2f9f8",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T16:57:51Z",
+      "side": 1,
+      "message": "we should be atomically setting this flag since this read modify write is happening in multiple tasks (i.e. hooks and PD task).\n\n\nhere and all other uses of flags[port] variable",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "7787400ea2b20635eb56ac8b42bd9ca7641f548d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
