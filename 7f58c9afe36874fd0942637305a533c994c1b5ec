@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e03bed90_eeb2d2fb",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T01:21:46Z",
+      "side": 1,
+      "message": "basically, I\u0027m suggesting to use\n\nlcm \u003d LCM(TSB,4) \u003d TSB * 4 / gcd(TSB,4)\nsamples_per_request \u003d int((2032 / lcm)) * lcm;\nassert(samples_per_reqeust \u003e\u003d 1000)",
+      "parentUuid": "a19acb47_76391939",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "7f58c9afe36874fd0942637305a533c994c1b5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc715246_e32a651a",
         "filename": "test/tpm_test/trng_test.py",
         "patchSetId": 15
