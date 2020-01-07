@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06b7c49e_6b7f1ff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-01-07T16:34:13Z",
+      "side": 1,
+      "message": "I found it while debugging the boot hang because arc-mount was failing to start. It\u0027s because it was unable to find an arc config because the sku id didn\u0027t match.",
+      "parentUuid": "9dbd8d91_fcaccefa",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "9064449d099469ad1d636009b2a718cd5d9bd343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e83e8db_7959f7bb",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "9064449d099469ad1d636009b2a718cd5d9bd343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587f4f98_35976370",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-01-07T16:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e83e8db_7959f7bb",
+      "revId": "9064449d099469ad1d636009b2a718cd5d9bd343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
