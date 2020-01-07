@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10db1970_85582477",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T14:47:08Z",
+      "side": 1,
+      "message": "we shoudl be able to use __maybe_unused instead of using ifdef",
+      "range": {
+        "startLine": 719,
+        "startChar": 12,
+        "endLine": 719,
+        "endChar": 36
+      },
+      "revId": "d601438a9096cbfb8ff848ee8e333833b52a4467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "941a1540_5460a2ea",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T14:47:08Z",
+      "side": 1,
+      "message": "can you also add a clean up CL to change the return type of this function to enum pd_power_role, please?\n\nAnd add a comment saying that it is the power of this device (not the port partner)",
+      "range": {
+        "startLine": 724,
+        "startChar": 9,
+        "endLine": 724,
+        "endChar": 20
+      },
+      "revId": "d601438a9096cbfb8ff848ee8e333833b52a4467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3039dfb7_438bec28",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-07T14:47:08Z",
+      "side": 1,
+      "message": "with __Maybe_unsed we can use IS_ENABLED",
+      "range": {
+        "startLine": 1006,
+        "startChar": 7,
+        "endLine": 1006,
+        "endChar": 43
+      },
+      "revId": "d601438a9096cbfb8ff848ee8e333833b52a4467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
