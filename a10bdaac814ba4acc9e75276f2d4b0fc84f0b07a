@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60b58e44_67a2e669",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-07T17:51:24Z",
+      "side": 1,
+      "message": "This cast is unnecessary, tmp is already an \"int *\"",
+      "range": {
+        "startLine": 219,
+        "startChar": 25,
+        "endLine": 219,
+        "endChar": 32
+      },
+      "revId": "a10bdaac814ba4acc9e75276f2d4b0fc84f0b07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
