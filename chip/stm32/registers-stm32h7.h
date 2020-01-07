@@ -874,8 +874,8 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 // FIXME(hesling): These two constants are invalid for both MCUs,
 //                 but they are used in flash-stm32h7.c.
 // These are invalid for STM32H743 and STM32H7A
-#define  FLASH_OPTSR_RSS1                    BIT(26)
-#define  FLASH_OPTSR_RSS2                    BIT(27)
+#define  FLASH_OPTSR_RSS1                    BIT(26) /* User option status bit 1 */
+#define  FLASH_OPTSR_RSS2                    BIT(27) /* User option status bit 2 */
 #endif
 
 #define STM32_FLASH_OPTCCR(bank)         STM32_FLASH_REG(bank, 0x24)
