@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13ef6690_bd64be6e",
+        "filename": "board/volteer_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-08T19:58:32Z",
+      "side": 1,
+      "message": "This will still need to be updated for the next board phase once the BMA253 moves to the lid.  Please reference bug  b:146144170 here.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "46257527d8ac57d9ee6bb3c473d1097bd2bace5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
