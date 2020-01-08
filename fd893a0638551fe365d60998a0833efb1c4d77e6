@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4bb44db8_6f0e28dc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T01:02:27Z",
+      "side": 1,
+      "message": "correction: GEN1 is also supported (10Gbps), I will update it.\nNice catch",
+      "parentUuid": "4dd6610f_3d2bd00c",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 0
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "938febd4_1d2e46ef",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 14
