@@ -258,7 +258,8 @@ void system_pre_init(void)
 #endif
 }
 
-void system_reset(int flags)
+
+__attribute__((weak)) void system_reset(int flags)
 {
 	uint32_t save_flags = 0;
 
