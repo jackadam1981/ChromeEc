@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c39bbc5f_29c63477",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-08T23:32:43Z",
+      "side": 1,
+      "message": "I would use a loop and set instead. Would read much cleaner...\n\n\n   for (size_t i \u003d 0; i \u003c ARRAY_SIZE(sensor_temp_cache); i++) {\n           sensor_temp_cache[i].temp \u003d -1;\n   }",
+      "range": {
+        "startLine": 323,
+        "startChar": 2,
+        "endLine": 323,
+        "endChar": 8
+      },
+      "revId": "8b290d4717e53d344f506f03c90b30d072d2e8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a32cf42_19319bdc",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-08T23:32:43Z",
+      "side": 1,
+      "message": "use time_since32 instead?",
+      "range": {
+        "startLine": 381,
+        "startChar": 6,
+        "endLine": 381,
+        "endChar": 17
+      },
+      "revId": "8b290d4717e53d344f506f03c90b30d072d2e8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecaa4ea9_ea5bd874",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-08T23:32:43Z",
+      "side": 1,
+      "message": "call motion_sense_fifo_init to avoid the repeated code",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 61
+      },
+      "revId": "8b290d4717e53d344f506f03c90b30d072d2e8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
