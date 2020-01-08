@@ -25,6 +25,7 @@ int audio_codec_i2s_rx_enable(void)
 	/* Mode must be WOV_MODE_OFF to change sample rate */
 	wov_set_mode(WOV_MODE_OFF);
 	wov_set_sample_rate(48000);
+	wov_set_i2s_bclk(48000 * 64);
 
 	return wov_set_mode(WOV_MODE_I2S);
 }
