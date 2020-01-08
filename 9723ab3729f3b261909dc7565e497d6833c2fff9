@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b819fd2c_a49920b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-08T08:49:13Z",
+      "side": 1,
+      "message": "Please add BUG\u003db:1712887, thanks",
+      "revId": "9723ab3729f3b261909dc7565e497d6833c2fff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff06fee_9b00f284",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-08T08:49:13Z",
+      "side": 1,
+      "message": "Please check the return value of all it8801_ioex_read/write calls.",
+      "revId": "9723ab3729f3b261909dc7565e497d6833c2fff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ea8a74_d0aad0a2",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-08T08:49:13Z",
+      "side": 1,
+      "message": "Clear the `flags` variable before writing into it.",
+      "revId": "9723ab3729f3b261909dc7565e497d6833c2fff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
