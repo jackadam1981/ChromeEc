@@ -10,10 +10,16 @@ GPIO_INT(SPI1_NSS,        PIN(A, 4), GPIO_INPUT, spi_event)
 
 GPIO_INT(PCH_SLP_S0_L,    PIN(D,13), GPIO_INT_BOTH, slp_event)
 GPIO_INT(PCH_SLP_S3_L,    PIN(A,11), GPIO_INT_BOTH, slp_event)
+
+#ifdef APPLY_RESET_LOOP_FIX
+GPIO_INT(WP,              PIN(B, 7), GPIO_INT_BOTH, wp_event)
+#endif
+
 GPIO(PCH_SLP_S4_L,        PIN(D, 8), GPIO_INPUT)
 GPIO(PCH_SLP_SUS_L,       PIN(D, 3), GPIO_INPUT)
-
+#ifndef APPLY_RESET_LOOP_FIX
 GPIO(WP,                  PIN(B, 7), GPIO_INPUT)
+#endif
 
 /* Outputs */
 GPIO(EC_INT_L,            PIN(A, 1),  GPIO_OUT_HIGH)
