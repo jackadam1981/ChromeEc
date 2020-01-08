@@ -46,6 +46,30 @@
       "revId": "bbe9c790a3ec49e6a1c9c63287758c333f3fa84b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce18289c_ca7bdc72",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-08T23:31:20Z",
+      "side": 1,
+      "message": "What are you looking for here?  The TCPMv2 project was started because the maintenance of TCPMv1 was growing too large.  PD 3.0 support seemed like a good time to start TCPMv2.",
+      "parentUuid": "a3966832_8206ed7b",
+      "range": {
+        "startLine": 1355,
+        "startChar": 12,
+        "endLine": 1355,
+        "endChar": 46
+      },
+      "revId": "bbe9c790a3ec49e6a1c9c63287758c333f3fa84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
