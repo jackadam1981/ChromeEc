@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6a4dcca_709a0776",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-08T01:20:10Z",
+      "side": 1,
+      "message": "nit: delete this comment, since these are static, not public, and the other comment you have above tcpci_set_cached_rp() covers this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "a46da497caf1d8394470350cd27b186dad609943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
