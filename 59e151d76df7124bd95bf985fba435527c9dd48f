@@ -200,6 +200,75 @@
       "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394fc554_bde16fd9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T18:51:00Z",
+      "side": 1,
+      "message": "I think \"avoid\" is an odd way to phrase this. Usually, functions are named for what they do, not what they don\u0027t do. How about something like \"clear_enter_usb4_mode\"?",
+      "range": {
+        "startLine": 1575,
+        "startChar": 5,
+        "endLine": 1575,
+        "endChar": 23
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a917f2_522c9097",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T18:51:00Z",
+      "side": 1,
+      "message": "For readers of code calling this function, their understanding will depend on what the meaning of \"is\" is. My first thought looking at this is that it would return true if we\u0027re actively entering into USB4 mode. How about \"should_enter_usb4_mode\" or \"need_to_enter_usb4_mode\"?",
+      "range": {
+        "startLine": 1582,
+        "startChar": 5,
+        "endLine": 1582,
+        "endChar": 23
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd00ab5f_40095b72",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T18:51:00Z",
+      "side": 1,
+      "message": "Can you comment the bits of \"Device Capability\" like the spec does in the table, so it\u0027s clear that the macro is checking the right one?",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
