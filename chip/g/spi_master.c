@@ -126,11 +126,7 @@ err_cs_high:
 	return rv;
 }
 
-/*
- * Configure the SPI port's clock mode. The SPI port must be re-enabled after
- * changing the clocking mode.
- */
-void set_spi_clock_mode(int port, enum spi_clock_mode mode)
+void spi_set_clock_mode(int port, enum spi_clock_mode mode)
 {
 	clock_mode[port] = mode;
 }
@@ -188,11 +184,9 @@ int spi_enable(int port, int enable)
 
 		/* configure the SPI clock mode */
 		GWRITE_FIELD_I(SPI, port, CTRL, CPOL,
-			       (clock_mode[port] == SPI_CLOCK_MODE2) ||
-			       (clock_mode[port] == SPI_CLOCK_MODE3));
+			       SPI_CLOCK_POL_EN(clock_mode[port]));
 		GWRITE_FIELD_I(SPI, port, CTRL, CPHA,
-			       (clock_mode[port] == SPI_CLOCK_MODE1) ||
-			       (clock_mode[port] == SPI_CLOCK_MODE3));
+			       SPI_CLOCK_PHA_EN(clock_mode[port]));
 
 		/* Enforce the default setup and hold times. */
 		GWRITE_FIELD_I(SPI, port, CTRL, CSBSU, 0);
@@ -252,9 +246,6 @@ static void spi_init(void)
 #endif
 
 	for (i = 0; i < SPI_NUM_PORTS; i++) {
-		/* Configure the SPI ports to default to mode0. */
-		set_spi_clock_mode(i, SPI_CLOCK_MODE0);
-
 		/* Ensure the SPI ports are disabled to prevent us from
 		 * interfering with the main chipset when we're not explicitly
 		 * using the SPI bus. */
