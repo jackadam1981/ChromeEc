@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ff59acc3_68c2d328",
+        "filename": "board/volteer_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-01-08T02:46:00Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d639049f_30ae513e",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8946556b_e6e4b72d",
         "filename": "board/volteer_ish/board.h",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68db55b1_d056fd5d",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-01-08T02:46:00Z",
+      "side": 1,
+      "message": "Here use \"#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF\" to reduce HC prints. only HC with err printed.",
+      "parentUuid": "8946556b_e6e4b72d",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "71f9f705_728ef142",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-01-08T02:46:00Z",
+      "side": 1,
+      "message": "ISH has big memory. So I increased to 512. Which is the method used to calculate how big the fifo size should be?",
+      "parentUuid": "45551bec_48d9157d",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f67bebd_d75d90ec",
         "filename": "board/volteer_ish/board.h",
         "patchSetId": 2
@@ -84,6 +138,24 @@
       "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d400ce5_18cd35e2",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-01-08T02:46:00Z",
+      "side": 1,
+      "message": "Lid and base sensors share same I2C port. so one name is used.",
+      "parentUuid": "3f67bebd_d75d90ec",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +179,30 @@
       "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e26d9e_06ddd007",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-01-08T02:46:00Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c3d291d4_c1ef0443",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
