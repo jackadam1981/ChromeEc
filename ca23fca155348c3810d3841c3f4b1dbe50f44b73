@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84582045_4f6ba46e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9b194e5_2846f0e2",
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "890eca13_1effce4d",
         "filename": "board/c2d2/board.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2599257d_9fa8873f",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "I changed to to the longest which is 239.5 clock cycles (it is in the board.h file)",
+      "parentUuid": "890eca13_1effce4d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8ea61d91_4754690c",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "Talked offline, and I agree that this is a cool feature that we can probably do soon.\n\nOut flash_ap script will take care of the on and off business now, and we can easily change that when we implement the auto detection feature. I would want that to be a follow up CL. I will file a bug for it",
+      "parentUuid": "17ba346c_55a175e1",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 52
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e509d19a_caa7a56e",
         "filename": "board/c2d2/board.c",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0605bff_48c4adec",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "Per our conversation, the initial version will handle the manually setting Vref for the SPI lines. I am filing bugs for this request.",
+      "parentUuid": "e509d19a_caa7a56e",
+      "range": {
+        "startLine": 479,
+        "startChar": 25,
+        "endLine": 479,
+        "endChar": 65
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "d2871216_1c04ab62",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "correct, once spi mode is disabled, then we detect a disconnect",
+      "parentUuid": "223b8202_e7d30502",
+      "range": {
+        "startLine": 572,
+        "startChar": 3,
+        "endLine": 572,
+        "endChar": 48
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d36bf98e_5db1959f",
         "filename": "board/c2d2/board.c",
         "patchSetId": 1
@@ -125,6 +239,24 @@
       "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c17888_7ddb419b",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "I bumped up the ADC read time to the longest and drop this active discharge. I still had a problem when the c2d2 was sitting on my desk with nothing attached. It would float around 1.675V, which trips the 1800 Vref.\n\nThis active discharge in all of the scenarios I have seen thus far. We can keep trying to figure out a better way though (future CL)",
+      "parentUuid": "d36bf98e_5db1959f",
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "720d697b_5d43ea5e",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "yes it will, but the switch will never be enabled, so we will only be holding the stm side low.\n\nI added a comment",
+      "parentUuid": "e12e1c7b_781f3fd7",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 712,
+        "endChar": 8
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302cfda2_29633b3a",
         "filename": "board/c2d2/board.c",
         "patchSetId": 1
@@ -171,6 +327,30 @@
       "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202d2d0e_ad9097fe",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "302cfda2_29633b3a",
+      "range": {
+        "startLine": 836,
+        "startChar": 26,
+        "endLine": 836,
+        "endChar": 38
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "9576de21_f7c903b6",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f40e41fb_e453415a",
+      "range": {
+        "startLine": 848,
+        "startChar": 1,
+        "endLine": 848,
+        "endChar": 51
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66e3bae7_085baae1",
         "filename": "board/c2d2/board.h",
         "patchSetId": 1
@@ -217,6 +421,30 @@
       "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba5917a4_2ed55c64",
+        "filename": "board/c2d2/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-08T23:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e3bae7_085baae1",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 12
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
