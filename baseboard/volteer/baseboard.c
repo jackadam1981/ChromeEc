@@ -191,6 +191,11 @@ const struct pwm_t pwm_channels[] = {
 		.flags = PWM_CONFIG_OPEN_DRAIN,
 		.freq = 25000
 	},
+	[PWM_CH_KBLIGHT] = {
+		.channel = 3,
+		.flags = 0,
+		.freq = 100
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
