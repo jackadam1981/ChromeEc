@@ -42,6 +42,52 @@
     },
     {
       "key": {
+        "uuid": "e509d19a_caa7a56e",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T21:08:47Z",
+      "side": 1,
+      "message": "we shouldn\u0027t have to specify the SPI Vref.\nWhen the mux is swung to SPI mode, the H1 VREF signal becomes the SPI VREF voltage (and technically the EC VREF signal is also the SPI VREF voltage).  So we should detect it.\n\nEven more importantly, if we swing the mux and do not see a voltage on SPI_VREF/H1_VREF, that means the flash chip is unpowered and we should probably return an error code.  The user should have used the Cr50 UART to assert AP_FLASH_ENABLE to force power onto the SPI flash before switching into SPI mode.",
+      "range": {
+        "startLine": 479,
+        "startChar": 25,
+        "endLine": 479,
+        "endChar": 65
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223b8202_e7d30502",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T21:08:47Z",
+      "side": 1,
+      "message": "so we can\u0027t detect disconnects when in SPI mode?",
+      "range": {
+        "startLine": 572,
+        "startChar": 3,
+        "endLine": 572,
+        "endChar": 48
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36bf98e_5db1959f",
         "filename": "board/c2d2/board.c",
         "patchSetId": 1
