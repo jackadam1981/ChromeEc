@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a08a88dc_8cf3ff02",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:25:43Z",
+      "side": 1,
+      "message": "What about just commenting the whole function with something like, \"Returns the number of objects in |payload|\"? You should also comment what the function assumes about the size of the object pointed to by payload.",
+      "parentUuid": "ad978016_de8d63dd",
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79eabc91_11b03221",
         "filename": "include/usb_pd_tbt.h",
         "patchSetId": 11
@@ -196,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "4dd4cd92_c1064879",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:25:43Z",
+      "side": 1,
+      "message": "If you don\u0027t plan to use these fields, can you add that in a comment? If you do plan to use them, can you add a TODO at an appropriate location?",
+      "parentUuid": "41d79a89_4ff8030f",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 25
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52c76c35_b4110d4c",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 11
@@ -231,6 +273,30 @@
       "side": 1,
       "message": "contently no usage of these structures",
       "parentUuid": "52c76c35_b4110d4c",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f2301d_7f605b8a",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:25:43Z",
+      "side": 1,
+      "message": "Will there be a usage?",
+      "parentUuid": "53dffa7a_6d9167e4",
       "range": {
         "startLine": 316,
         "startChar": 0,
