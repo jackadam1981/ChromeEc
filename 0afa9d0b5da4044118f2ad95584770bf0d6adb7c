@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d361e7aa_2eab97cf",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-08T19:13:35Z",
+      "side": 1,
+      "message": "Should we clarify with Renesas for this?  My best guess for the data sheet\u0027s suggestion would be that the dead battery Rd is no longer needed once we\u0027re ready to source, but I\u0027d wonder if it needs removed once we\u0027re ready for dual-role toggling.",
+      "parentUuid": "cd40d476_c5adb702",
+      "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed95a75b_6339a41e",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cb97135b_7c1c1267",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-08T19:13:35Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "ed95a75b_6339a41e",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1d91cdc_bb41af5b",
         "filename": "driver/tcpm/raa489000.h",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a351eb_4e69f6b1",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-08T19:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d91cdc_bb41af5b",
+      "range": {
+        "startLine": 5,
+        "startChar": 19,
+        "endLine": 5,
+        "endChar": 25
+      },
+      "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
