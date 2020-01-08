@@ -57,6 +57,9 @@ void slp_event(enum gpio_signal signal)
 	hook_call_deferred(&ap_deferred_data, 0);
 }
 
+/* Defined in fixes.c */
+void wp_event(enum gpio_signal signal);
+
 #include "gpio_list.h"
 
 /* SPI devices */
