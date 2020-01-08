@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd40d476_c5adb702",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-08T19:00:59Z",
+      "side": 1,
+      "message": "I\u0027m a little confused by the datasheet for this. Setting this to 1 in my opinion seems to suggest that the dead battery Rd is no longer used. So my question is, why should we only set this for the Rp case? Would setting it to 1 unconditionally allow either the Rp/Rd to be enabled?",
+      "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed95a75b_6339a41e",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-08T19:00:59Z",
+      "side": 1,
+      "message": "raa489000_tcpm_drv?",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d91cdc_bb41af5b",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-08T19:00:59Z",
+      "side": 1,
+      "message": "typo: \u0027Renesas\u0027",
+      "range": {
+        "startLine": 5,
+        "startChar": 19,
+        "endLine": 5,
+        "endChar": 25
+      },
+      "revId": "0afa9d0b5da4044118f2ad95584770bf0d6adb7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
