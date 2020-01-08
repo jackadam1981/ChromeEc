@@ -475,11 +475,17 @@ int charger_set_hw_ramp(int enable)
 	if (enable) {
 		/*
 		 * ICO mode can only be used when a battery is present. If there
-		 * is no battery, then enabling ICO mode will lead to VSYS
-		 * dropping out.
+		 * is no battery or battery disconnect, then enabling ICO mode
+		 * will lead to VSYS dropping out.
 		 */
-		if (!battery_is_present()) {
-			CPRINTF("bq25710: no battery, skip ICO enable\n");
+		if (!battery_is_present()
+#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
+			|| battery_get_disconnect_state() !=
+				BATTERY_NOT_DISCONNECTED
+#endif
+		) {
+			CPRINTF("bq25710: no battery or battery disconnect"
+				 ",skip ICO enable\n");
 			return EC_ERROR_UNKNOWN;
 		}
 
