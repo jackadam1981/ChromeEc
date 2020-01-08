@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "9aa5ec44_48018d61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:35:59Z",
+      "side": 1,
+      "message": "the port",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "49b4c7f672458afe6aae675dae92f1a1154b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1236e1ce_cf175e8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:35:59Z",
+      "side": 1,
+      "message": "If",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "49b4c7f672458afe6aae675dae92f1a1154b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8e41bd_529ec50f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:35:59Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer consistent use of non-use of a/an/the in the commit message body.",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "49b4c7f672458afe6aae675dae92f1a1154b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb92787_117fbece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:35:59Z",
+      "side": 1,
+      "message": "the port requests",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "49b4c7f672458afe6aae675dae92f1a1154b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997856e5_6e3d4b25",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-08T20:35:59Z",
+      "side": 1,
+      "message": "Nit: delete",
+      "range": {
+        "startLine": 926,
+        "startChar": 16,
+        "endLine": 926,
+        "endChar": 19
+      },
+      "revId": "49b4c7f672458afe6aae675dae92f1a1154b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7eb10ad_f17e6e57",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
