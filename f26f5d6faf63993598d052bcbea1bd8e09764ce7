@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df6bf48_686e2712",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-08T03:03:52Z",
+      "side": 1,
+      "message": "Is it really false positive? We should work with AOZ to debug it. Can you open a bug for that please?",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f5c6f3_31029368",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-08T03:03:52Z",
+      "side": 1,
+      "message": "Not sure I understand why AOZ1380_FLAGS_INTERRUPTED is needed. Is it so we don\u0027t ignore a second interrupt while disconnected? Is there some way to re-write the code to make that clearer?",
+      "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
