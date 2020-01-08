@@ -81,6 +81,24 @@
       "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ef9dc3_1978ead8",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-08T21:11:14Z",
+      "side": 1,
+      "message": "I changed the code a bit and created a bug to get partner info on if this is normal or why it is not.",
+      "parentUuid": "e126a931_7812250c",
+      "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
