@@ -16,6 +16,24 @@
       "revId": "c193eca9cdc2d277a4241785b2f361183a819262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec15f4f_e343b837",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-08T13:48:12Z",
+      "side": 1,
+      "message": "I came to that same conclusion and have the code written for most of this cleanup and some of the cleanup for returning pd_data_role as well.  Tracked under b/147314832 and b/147290482",
+      "parentUuid": "d8588192_69af19e1",
+      "revId": "c193eca9cdc2d277a4241785b2f361183a819262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
