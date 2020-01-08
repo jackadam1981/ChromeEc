@@ -584,6 +584,7 @@ void __idle(void)
 		interrupt_disable();
 		/* Check if the EC can enter deep doze mode or not */
 		if (DEEP_SLEEP_ALLOWED && clock_allow_low_power_idle()) {
+			//ccprints("ALLOW DEEP SLEEP, sleep_mask = %xh(0)", sleep_mask); //cause uart set SLEEP_MASK_UART
 			/* reset low power mode hw timer */
 			IT83XX_ETWD_ETXCTRL(LOW_POWER_EXT_TIMER) |= BIT(1);
 			sleep_mode_t0 = get_time();
@@ -599,6 +600,7 @@ void __idle(void)
 			clock_ec_pll_ctrl(EC_PLL_DEEP_DOZE);
 			idle_sleep_cnt++;
 		} else {
+			//ccprints("ALLOW DOZE, sleep_mask = %xh(any 1)", sleep_mask);
 			/* doze mode */
 			clock_ec_pll_ctrl(EC_PLL_DOZE);
 			idle_doze_cnt++;

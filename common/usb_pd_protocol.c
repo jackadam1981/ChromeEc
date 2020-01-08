@@ -856,13 +856,21 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_LOW_POWER_IDLE
 	/* If a PD device is attached then disable deep sleep */
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
-		if (pd_capable(i))
-			break;
+		if (IS_ENABLED(CONFIG_USB_PD_TCPC_WITHIN_EC_CHIP))
+			if (pd_is_connected(i))
+		else
+			if (pd_capable(i))
+				break;
 	}
-	if (i == board_get_usb_pd_port_count())
+	if (i == board_get_usb_pd_port_count()) {
+		ccprints("driver sleep_mask = %xh", sleep_mask);
 		enable_sleep(SLEEP_MASK_USB_PD);
-	else
+		ccprints("driver clr sleep_mask = %xh", sleep_mask);
+	} else {
+		ccprints("driver sleep_mask = %xh", sleep_mask);
 		disable_sleep(SLEEP_MASK_USB_PD);
+		ccprints("driver set sleep_mask = %xh", sleep_mask);
+	}
 #endif
 
 	if (debug_level > 0)

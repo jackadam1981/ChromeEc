@@ -3837,6 +3837,9 @@
 /* Use TCPC module (type-C port controller) */
 #undef CONFIG_USB_PD_TCPC
 
+/* Define EC and TCPC modules are in one integrated chip */
+#undef CONFIG_USB_PD_TCPC_WITHIN_EC_CHIP
+
 /* Enable TCPC to enter low power mode */
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
 
