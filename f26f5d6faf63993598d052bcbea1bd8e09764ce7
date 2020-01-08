@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5acca5a_ba1a5cfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-08T13:48:37Z",
+      "side": 1,
+      "message": "I am seeing this pretty consistently on a disconnect.  Our disconnect ordering may be wrong to cause this, but I am 99.99% sure this is not a real over current/temp condition",
+      "parentUuid": "3df6bf48_686e2712",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0f5c6f3_31029368",
         "filename": "driver/ppc/aoz1380.c",
         "patchSetId": 11
@@ -39,6 +63,24 @@
       "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e126a931_7812250c",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-08T13:48:37Z",
+      "side": 1,
+      "message": "I want to skip the first interrupt, sort of a debounce.  On disconnect, I am seeing an interrupt and since we are not connected, I really don\u0027t think we are having an over current/temperature issue there. I don\u0027t want to just ignore all interrupts and the number of retries does not make sense to go past 1. So using a bit seemed better than using a counter.",
+      "parentUuid": "e0f5c6f3_31029368",
+      "revId": "f26f5d6faf63993598d052bcbea1bd8e09764ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
