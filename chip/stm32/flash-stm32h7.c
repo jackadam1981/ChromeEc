@@ -153,6 +153,14 @@ static int commit_optb(void)
 	return (timeout > 0) ? EC_SUCCESS : EC_ERROR_TIMEOUT;
 }
 
+__unused
+static int disable_optb(void) {
+	/* cannot modify the WP bits in the option bytes until reboot */
+	STM32_FLASH_OPTKEYR(0) = 0xffffffff;
+	option_disabled = 1;
+	return EC_SUCCESS;
+}
+
 static int protect_blocks(uint32_t blocks)
 {
 	int rv = unlock_optb();
@@ -573,8 +581,13 @@ int flash_pre_init(void)
 	}
 
 	/* If there are no unwanted flags, done */
-	if (!(prot_flags & unwanted_prot_flags))
+	if (!(prot_flags & unwanted_prot_flags)) {
+		if (prot_flags & EC_FLASH_PROTECT_RO_NOW) {
+			// Lock in ro_now
+			// disable_optb();
+		}
 		return EC_SUCCESS;
+	}
 
 	/*
 	 * If the last reboot was a power-on reset or a manually issued
