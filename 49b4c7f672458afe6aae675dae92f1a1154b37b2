@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7eb10ad_f17e6e57",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-08T04:13:53Z",
+      "side": 1,
+      "message": "This is an insufficient call to establish we are the Vconn source before communicating with the cable plug.  The Vconn swap request won\u0027t be sent until the PD state machine progresses, and may be rejected.",
+      "range": {
+        "startLine": 923,
+        "startChar": 0,
+        "endLine": 928,
+        "endChar": 28
+      },
+      "revId": "49b4c7f672458afe6aae675dae92f1a1154b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
