@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9b194e5_2846f0e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "test vref detection?\ntest disconnect detection?",
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890eca13_1effce4d",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "where is the ADC sampling time set?  we may want to lengthen it due to the weak drive of the h1 vref signal",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 66
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36bf98e_5db1959f",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "as a first pass this is fine, but longer-term I\u0027d rather not be draining the vref lines to 0 every time we need to detect the vref.\n\nmy thoughts in detail here: https://buganizer.corp.google.com/issues/145314772#comment6",
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12e1c7b_781f3fd7",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "in some cases, couldn\u0027t this result in at least one of the VREF gpios being continually held low?",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 712,
+        "endChar": 8
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302cfda2_29633b3a",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "c2d2s",
+      "range": {
+        "startLine": 836,
+        "startChar": 26,
+        "endLine": 836,
+        "endChar": 38
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40e41fb_e453415a",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "do this before shutting down usarts and SPIs?",
+      "range": {
+        "startLine": 848,
+        "startChar": 1,
+        "endLine": 848,
+        "endChar": 51
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e3bae7_085baae1",
+        "filename": "board/c2d2/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-08T20:56:49Z",
+      "side": 1,
+      "message": "this is also SPI vref",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 12
+      },
+      "revId": "ca23fca155348c3810d3841c3f4b1dbe50f44b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
