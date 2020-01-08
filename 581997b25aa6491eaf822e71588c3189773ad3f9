@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa1dc90_af416cf1",
+        "filename": "board/jinlon/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-08T18:00:38Z",
+      "side": 1,
+      "message": "This isn\u0027t a PD I2C bus, it\u0027s for a temperature sensor",
+      "range": {
+        "startLine": 95,
+        "startChar": 67,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "581997b25aa6491eaf822e71588c3189773ad3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
