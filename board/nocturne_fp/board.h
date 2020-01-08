@@ -166,6 +166,13 @@
 #define CONFIG_CMD_FLASH
 #define CONFIG_CMD_SPI_XFER
 
+#ifdef SECTION_IS_RW
+	/*
+	 * Mitigating the effects of b/146428434.
+	 */
+#	define APPLY_RESET_LOOP_FIX
+#endif
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
@@ -175,6 +182,9 @@
 #include "gpio_signal.h"
 
 void fps_event(enum gpio_signal signal);
+
+/* Defined in fixes.c */
+void wp_event(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
