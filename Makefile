@@ -272,6 +272,7 @@ endif
 ifneq ($(PBDIR),)
 include $(PBDIR)/build.mk
 endif
+include util/build.mk
 include test/build.mk
 
 includes+=$(includes-y)
