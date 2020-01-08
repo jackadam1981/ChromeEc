@@ -22,6 +22,30 @@
       "revId": "b305b313f6cf24e52842f692cdc765fd0dffda4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5daf96de_d1cd0cf7",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-08T22:06:59Z",
+      "side": 1,
+      "message": "I didn\u0027t notice flicker during my testing.  Other boards aren\u0027t consistent on this setting, I find a mix of 100, 1200, and 10000 used on other boards.\n\nI took some power measurements, and there is evidence that higher frequencies are better.  The average power for the PP5000_A rail (which drives the KB backlight) was similar regardless of PWM frequency (about 1200 mW, with 50 mW variation).  However the maximum power recorded is 900 mW lower when using a PWM frequency of 2400 Hz (max power 1433 mW) compared to 100 Hz (max power 2358 mW).",
+      "parentUuid": "7b0385be_c7ae6686",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 197,
+        "endChar": 13
+      },
+      "revId": "b305b313f6cf24e52842f692cdc765fd0dffda4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
