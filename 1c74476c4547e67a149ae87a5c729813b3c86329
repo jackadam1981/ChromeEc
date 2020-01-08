@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2c16e1ea_d359f6fb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-01-08T17:09:20Z",
+      "side": 1,
+      "message": "I understand how you want try_src to work but I don\u0027t think we need override_on. From my understanding, override_try_src allows the state machine to turn on/off try_src (set/clear try_src_enable).\n\nSo if override_try_src is OFF, the state machine can\u0027t turn it on and try_src is turned off it\u0027s currently on. and if override_try_src is NO_OVERRIDE then the state machine is free to turn on/off try src.\n\nAlso, the current api only allows for override_try_src to be set to 2-values.",
+      "parentUuid": "179ec7d5_20d78dc6",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d15552e3_d29c6c91",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
