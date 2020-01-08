@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8588192_69af19e1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-08T01:02:43Z",
+      "side": 1,
+      "message": "Thanks to Jett\u0027s comment, I just noticed a problem here with power vs data role confusion.\nFor this CL, you can just change this pd_get_role() to tc_get_data_role(), which returns enum pd_data_role, which is what you want here.\nThere is a bigger problem with pd_get_role(), which should return power_role (as in usb_pd_protocol.c), but usb_tc_drp_acc_trysrc_sm.c is returning data_role.\nSuggest fixing this by renaming pd_get_role to pd_get_power_role and merge this with tc_get_power_role, and change tc_get_data_role to pd_get_data_role.",
+      "revId": "c193eca9cdc2d277a4241785b2f361183a819262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
