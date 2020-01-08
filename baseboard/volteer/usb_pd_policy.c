@@ -15,6 +15,23 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+int pd_check_data_swap(int port, int data_role)
+{
+	/* Allow data swap if we are a UFP, otherwise don't allow. */
+	return (data_role == PD_ROLE_UFP);
+}
+
+int pd_check_power_swap(int port)
+{
+	/*
+	 * Allow power swap if we are acting as a dual role device.  If we are
+	 * not acting as dual role (ex. suspended), then only allow power swap
+	 * if we are sourcing when we could be sinking.
+	 */
+	return (pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ||
+		pd_get_role(port) == PD_ROLE_SOURCE);
+}
+
 int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap if pp5000_A rail is enabled */
