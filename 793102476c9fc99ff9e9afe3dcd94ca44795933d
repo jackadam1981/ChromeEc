@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31203be3_a30998b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-08T23:57:02Z",
+      "side": 1,
+      "message": "b:147359722",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "793102476c9fc99ff9e9afe3dcd94ca44795933d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eebdcc2_083fece1",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-08T23:57:02Z",
+      "side": 1,
+      "message": "nit: move up to join the other TODOs on this function.",
+      "revId": "793102476c9fc99ff9e9afe3dcd94ca44795933d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
