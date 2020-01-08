@@ -144,7 +144,9 @@
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT		TYPEC_RP_3A0
 #define CONFIG_USB_PD_PORT_MAX_COUNT			2
 /* TODO: b/145250123: Enabling low-power mode breaks USB SNK detection */
+#if 0
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
+#endif
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TCPM_TUSB422	/* USBC port C0 */
 #define CONFIG_USB_PD_TRY_SRC
