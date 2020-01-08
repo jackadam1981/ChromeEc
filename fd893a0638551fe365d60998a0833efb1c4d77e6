@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "165466bc_5bbb6f27",
+        "filename": "common/usb_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T00:29:07Z",
+      "side": 1,
+      "message": "I though about it but we have ppc_set_sbu() also, this will mix other drivers too. Would you prefer it to be part of usb_mux.c?",
+      "parentUuid": "dec9dd1c_a4d5277c",
+      "range": {
+        "startLine": 687,
+        "startChar": 5,
+        "endLine": 687,
+        "endChar": 26
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "962544f2_0eda375c",
         "filename": "common/usb_common.c",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-08T00:11:39Z",
       "side": 1,
       "message": "Does this need a call to usb_mux_set_safe_mode()?",
+      "range": {
+        "startLine": 952,
+        "startChar": 18,
+        "endLine": 952,
+        "endChar": 44
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0baaab4a_85c2a79b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T00:29:07Z",
+      "side": 1,
+      "message": "added in enter_tbt_compat_mode() so that we dont have to enter safe mode multiple times (SOP\u0027\u0027, SOP\u0027, SOP)",
+      "parentUuid": "962544f2_0eda375c",
       "range": {
         "startLine": 952,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4dd6610f_3d2bd00c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T00:29:07Z",
+      "side": 1,
+      "message": "Ack, yes need gen2 \u0026 above, will add it",
+      "parentUuid": "62a5bd96_091ad098",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 0
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "938febd4_1d2e46ef",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 14
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "97213a43_c698d0dc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T00:29:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "938febd4_1d2e46ef",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 53
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "922ed77f_fcd2eb9d",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 14
@@ -105,6 +201,30 @@
       "writtenOn": "2020-01-08T00:11:39Z",
       "side": 1,
       "message": "I don\u0027t see a path that will ever clear this bit. So I think if you connect a non TBT3 cable, you will always be stuck in passive GEN2 even if you disconnect the non-TBT3 cable and connect a TBT3 cable.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 57
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b28e6e_603a530e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T00:29:07Z",
+      "side": 1,
+      "message": "reset_pd_cable() handles this when disconnect happens",
+      "parentUuid": "922ed77f_fcd2eb9d",
       "range": {
         "startLine": 365,
         "startChar": 0,
@@ -137,6 +257,30 @@
       "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7c728f_8728e5c2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T00:29:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3d98d67_04d47a44",
+      "range": {
+        "startLine": 859,
+        "startChar": 0,
+        "endLine": 861,
+        "endChar": 0
+      },
+      "revId": "fd893a0638551fe365d60998a0833efb1c4d77e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
