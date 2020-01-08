@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "c20ee8b8_f953d0eb",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-08T18:21:57Z",
+      "side": 1,
+      "message": "checked with the TBT team,, looks like this is error in the USBC connector spec, I will remove it.\nThank you for noticing Diana",
+      "parentUuid": "8190d1b6_18f2d7a6",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a445682_1fcb8f09",
         "filename": "include/usb_pd_tbt.h",
         "patchSetId": 12
