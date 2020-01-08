@@ -46,6 +46,30 @@
       "revId": "0ebc1ef292258721cd69c97a9179bc96f57e2bed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac38b4c4_369abe32",
+        "filename": "power/cometlake.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-08T01:13:39Z",
+      "side": 1,
+      "message": "I should have clarified my comment better. The first comment is I think there should be an explanation as to why the hook is being added here in the code. I meant comments associated with the hook call.\n\nBut, then I think that instead of using a hook, I\u0027m thinking a weak attribute function might be a better solution since the chipset pre_init hook isn\u0027t needed for CML, but just as a means to have a FW recovery for the HW issue.",
+      "parentUuid": "0400c952_94bfdb9f",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "0ebc1ef292258721cd69c97a9179bc96f57e2bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
