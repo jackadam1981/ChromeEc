@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6e947ad_6b35e57e",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "afaikt this gets called when the SPI endpoint gets opened (i.e., flashrom opens).  so it would be better for this to do the equivalent of \"spi_enable [detect Vref]\" here.\n\ndoing so would also avoid any glitches between gpio_config_module and gpio_set_flags, although I didn\u0027t see any glitch in my scope shot.",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 25
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f688a40b_0aaaa824",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "in the clk hack below I mess around with the MODER pins.  I realize now that this could be used to avoid the endpoint crash when not in SPI mode.\nSimply always have the SPI block enabled, but set the GPIO MODER to be inputs.\nWhen this function gets called, instead of configuring the module from scratch, just update the MODER as appropriate (keeping in mind the CLK hack below).\nProbably still want to do some of the block reset stuff below, though, just for sanity\u0027s sake.",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 19
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65145df_700c598a",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "this is actually quite sloppy, and causes a significant glitch (extra rising edge of clk) between here and the next line.\n\nit would be better instead to do the equivalent of \"spi_enable 0\" here, which could be as simple as resetting the SPI block and swinging MODER.\n\nafaikt this gets called when the SPI endpoint gets closed (i.e., flashrom quits)",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 41
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dba2764_ee4b0238",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "this overrides the alternate mode setting with a simple output low.\nlater, spi_master.c will enable and disable the alternate mode function as late/early as possible to hand off with the HW SPI logic block",
+      "range": {
+        "startLine": 556,
+        "startChar": 3,
+        "endLine": 556,
+        "endChar": 46
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae6543a_2bbcb494",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "is mode0 the default? I guess this could just be removed",
+      "range": {
+        "startLine": 563,
+        "startChar": 3,
+        "endLine": 563,
+        "endChar": 21
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6cc943_83c2b986",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "PB13 is SPI_CLK.  probably should be selected based on port number (1 vs 2) in a proper implementation",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 49
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3f1024_d6702ebd",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "no need to optimize this.  the key detail is that the mode is switched after all bits have been sent but *before* we disable the digital SPI block (clearing SPE)",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbfe829_3c497d11",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "I moved this in the hope of minimizing the window for glitches, but at this point I\u0027m pretty certain it\u0027s not necessary to do so.",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 397,
+        "endChar": 40
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09c75aa_92c59021",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "originally I tried pre-calculating cr1 so that it could be set immediately after MODER, avoiding a race entirely.\nIt resulted in about 200ns of floating, which was enough of a glitch to trigger the level shifter\u0027s one-shot high-pulse when there\u0027s less capacitive loading.  With a real Hatch board, the floating was not sufficient to trigger the one-shot (and write+verification worked), but it was a large enough spike to cause concern.\n\nThe concern with this implementation is if there\u0027s any delay between enabling the SPI block and setting the pin alternate mode, clocks could be lost and the whole transaction will be bit-shifted.  Maybe disabling interrupts before and after is sufficient; it\u0027s just two register assignments.\n\nWith this ordering, the waveform looks perfect.  It\u0027s not clipping the first rising edge at all.",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 28
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5cbff9_e7dd24a5",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "again, no need to optimize this block, as long as it happens before SPE is cleared.",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 42
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a21eba5_f93cb59f",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "exact same critical section as above",
+      "range": {
+        "startLine": 437,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 29
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c823fe24_1a94b71f",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:09:27Z",
+      "side": 1,
+      "message": "you guessed it, no need to optimize this, as long as it happens before SPE is cleared.",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 42
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
