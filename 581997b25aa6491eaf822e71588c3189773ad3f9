@@ -46,6 +46,30 @@
       "revId": "581997b25aa6491eaf822e71588c3189773ad3f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51c394d_7f8661e6",
+        "filename": "board/jinlon/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-09T03:32:41Z",
+      "side": 1,
+      "message": "Haha, I see.  If it matches what the schematic says, then I guess keep it for now.  Maybe add a note why it is that way?",
+      "parentUuid": "043a7c32_ce2bb6a3",
+      "range": {
+        "startLine": 95,
+        "startChar": 67,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "581997b25aa6491eaf822e71588c3189773ad3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
