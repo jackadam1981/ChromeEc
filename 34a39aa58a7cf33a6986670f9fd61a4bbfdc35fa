@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "b5bdacf7_5bd4222e",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-09T17:13:55Z",
+      "side": 1,
+      "message": "That could work. look at the console while the sensors are running.",
+      "parentUuid": "68db55b1_d056fd5d",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45551bec_48d9157d",
         "filename": "board/volteer_ish/board.h",
         "patchSetId": 2
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "ISH has big memory. So I increased to 512. Which is the method used to calculate how big the fifo size should be?",
       "parentUuid": "45551bec_48d9157d",
+      "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2c802a7_18bcbf51",
+        "filename": "board/volteer_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-09T17:13:55Z",
+      "side": 1,
+      "message": "I increase until I get a compilation error, then I divide by 2...",
+      "parentUuid": "71f9f705_728ef142",
       "revId": "34a39aa58a7cf33a6986670f9fd61a4bbfdc35fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
