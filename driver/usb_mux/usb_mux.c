@@ -25,7 +25,44 @@ static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define USB_MUX_FLAG_IN_LPM BIT(0) /* Device is in low power mode. */
 
+enum retimer_config {
+	RETIMER_CONFIG_INIT,
+	RETIMER_CONFIG_LOW_POWER,
+	RETIMER_CONFIG_SET_MODE,
+};
 
+static void configure_retimer(int port, enum retimer_config config,
+				mux_state_t mux_state)
+{
+	if (IS_ENABLED(CONFIG_USBC_MUX_RETIMER)) {
+		int res = 0;
+		const struct usb_retimer *retimer = &usb_retimers[port];
+
+		if (!retimer->driver)
+			return;
+
+		switch(config) {
+		case RETIMER_CONFIG_INIT:
+			if (retimer->driver->init)
+				res = retimer->driver->init(port);
+			break;
+		case RETIMER_CONFIG_LOW_POWER:
+			if (retimer->driver->enter_low_power_mode)
+				res = retimer->driver->enter_low_power_mode(port);
+			break;
+		case RETIMER_CONFIG_SET_MODE:
+			if (retimer->driver->set)
+				res = retimer->driver->set(port, mux_state);
+			break;
+		default:
+			break;
+		}
+
+		if (res)
+			CPRINTS("Config:%d, retimer port(%d): %d",
+				config, port, res);
+	}
+}
 static void enter_low_power_mode(int port)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
@@ -48,18 +85,7 @@ static void enter_low_power_mode(int port)
 		}
 	}
 
-	if (IS_ENABLED(CONFIG_USBC_MUX_RETIMER)) {
-		const struct usb_retimer *retimer = &usb_retimers[port];
-
-		if (retimer->driver && retimer->driver->enter_low_power_mode) {
-			res = retimer->driver->enter_low_power_mode(port);
-			if (res) {
-				CPRINTS("Err: %s retimer port(%d): %d",
-					__func__, port, res);
-				return;
-			}
-		}
-	}
+	configure_retimer(port, RETIMER_CONFIG_LOW_POWER, USB_PD_MUX_NONE);
 }
 
 static inline void exit_low_power_mode(int port)
@@ -67,6 +93,8 @@ static inline void exit_low_power_mode(int port)
 	/* If we are in low power, initialize device (which clears LPM flag) */
 	if (flags[port] & USB_MUX_FLAG_IN_LPM)
 		usb_mux_init(port);
+
+	configure_retimer(port, RETIMER_CONFIG_INIT, USB_PD_MUX_NONE);
 }
 
 void usb_mux_init(int port)
@@ -82,18 +110,7 @@ void usb_mux_init(int port)
 		return;
 	}
 
-	if (IS_ENABLED(CONFIG_USBC_MUX_RETIMER)) {
-		const struct usb_retimer *retimer = &usb_retimers[port];
-
-		if (retimer->driver && retimer->driver->init) {
-			res = retimer->driver->init(port);
-			if (res) {
-				CPRINTS("Err: init retimer port(%d): %d",
-					port, res);
-				return;
-			}
-		}
-	}
+	configure_retimer(port, RETIMER_CONFIG_INIT, USB_PD_MUX_NONE);
 
 	/* Device is always out of LPM after initialization. */
 	flags[port] &= ~USB_MUX_FLAG_IN_LPM;
@@ -145,18 +162,7 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 		return;
 	}
 
-	if (IS_ENABLED(CONFIG_USBC_MUX_RETIMER)) {
-		const struct usb_retimer *retimer = &usb_retimers[port];
-
-		if (retimer->driver && retimer->driver->set) {
-			res = retimer->driver->set(port, mux_state);
-			if (res) {
-				CPRINTS("Err: set retimer port(%d): %d",
-					port, res);
-				return;
-			}
-		}
-	}
+	configure_retimer(port, RETIMER_CONFIG_SET_MODE, mux_state);
 
 	if (enable_debug_prints)
 		CPRINTS(
@@ -210,6 +216,23 @@ void usb_mux_flip(int port)
 	res = mux->driver->set(port, mux_state);
 	if (res)
 		CPRINTS("Err: set mux port(%d): %d", port, res);
+
+	configure_retimer(port, RETIMER_CONFIG_SET_MODE, mux_state);
+}
+
+void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	const struct usb_mux *mux = &usb_muxes[port];
+	mux_state_t mux_state;
+
+	if (mux->hpd_update)
+		mux->hpd_update(port, hpd_lvl, hpd_irq);
+
+	if (!mux->driver->get(port, &mux_state)) {
+		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
+			(hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
+		configure_retimer(port, RETIMER_CONFIG_SET_MODE, mux_state);
+	}
 }
 
 #ifdef CONFIG_CMD_TYPEC
@@ -282,8 +305,11 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
 	    (r->flags & USB_PD_MUX_HPD_IRQ) &&
-	    (mux->hpd_update == &virtual_hpd_update))
+	    (mux->hpd_update == &virtual_hpd_update)) {
 		mux->hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
+		r->flags &= ~USB_PD_MUX_HPD_IRQ;
+		configure_retimer(port, RETIMER_CONFIG_SET_MODE, r->flags);
+	}
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;

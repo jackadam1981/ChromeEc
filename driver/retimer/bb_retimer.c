@@ -265,6 +265,7 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 		set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(
 					       cable_resp.tbt_rounded);
 	}
+	ccprintf("*********mux=0x%x, data=0x%x\n", mux_state, set_retimer_con);
 	/* Writing the register4 */
 	return bb_retimer_write(port, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);

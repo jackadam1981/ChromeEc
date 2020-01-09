@@ -289,4 +289,6 @@ mux_state_t usb_mux_get(int port);
  * @param port port number.
  */
 void usb_mux_flip(int port);
+
+void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
 #endif
