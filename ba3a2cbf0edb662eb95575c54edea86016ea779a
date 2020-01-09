@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "723d6127_08fdab5d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-09T20:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b6b977_8122abb3",
+      "revId": "ba3a2cbf0edb662eb95575c54edea86016ea779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d0c2d1_3dcc29c3",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "ba3a2cbf0edb662eb95575c54edea86016ea779a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2833d001_2f96b395",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-09T20:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d0c2d1_3dcc29c3",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 61
+      },
+      "revId": "ba3a2cbf0edb662eb95575c54edea86016ea779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
