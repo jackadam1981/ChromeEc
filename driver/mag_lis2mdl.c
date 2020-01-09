@@ -57,7 +57,9 @@ void lis2mdl_normalize(const struct motion_sensor_t *s,
 	for (i = X; i <= Z; i++)
 		v[i] = LIS2MDL_RATIO(v[i]);
 
+#ifdef CONFIG_MAG_CALIBRATE
 	mag_cal_update(cal, v);
+#endif
 
 	v[X] += cal->bias[X];
 	v[Y] += cal->bias[Y];
@@ -170,8 +172,12 @@ int lis2mdl_thru_lsm6dsm_init(const struct motion_sensor_t *s)
 		goto err_unlock;
 
 	mutex_unlock(s->mutex);
+#ifdef CONFIG_MAG_CALIBRATE
 	init_mag_cal(cal);
 	cal->radius = 0.0f;
+#else
+	memset(cal, 0, sizeof(*cal));
+#endif
 	data->resol = LIS2DSL_RESOLUTION;
 	return sensor_init_done(s);
 
@@ -294,8 +300,12 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return ret;
 
+#ifdef CONFIG_MAG_CALIBRATE
 	init_mag_cal(cal);
 	cal->radius = 0.0f;
+#else
+	memset(cal, 0, sizeof(*cal));
+#endif
 	data->resol = LIS2DSL_RESOLUTION;
 	return sensor_init_done(s);
 
@@ -351,7 +361,9 @@ int lis2mdl_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	if (normalized_rate == data->base.odr)
 		return ret;
 
+#ifdef CONFIG_MAG_CALIBRATE
 	init_mag_cal(cal);
+#endif
 
 	if (normalized_rate > 0)
 		cal->batch_size = MAX(
