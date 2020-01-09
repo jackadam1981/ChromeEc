@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d42cfed7_52a5c673",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T08:42:42Z",
+      "side": 1,
+      "message": "After some testing, it seems mode3 alone isn\u0027t going to work on actual boards, as the SoC drags down the line and makes it very difficult to maintain a high idle.  It ends up being glitchy and terrible.\n\nI\u0027ve been able to get mode0 to work with some modifications to the stm32\u0027s spi_master.c.  The same technique could probably be used to make mode3 work better as well, but mode0 seems cleaner to me if we can achieve it.\n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1993122 for details and explanation",
+      "range": {
+        "startLine": 559,
+        "startChar": 8,
+        "endLine": 559,
+        "endChar": 23
+      },
+      "revId": "5c201f6e94c82f0aab3151a67361ae746e0841f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
