@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "3e5a8ff6_604abf99",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T18:57:38Z",
+      "side": 1,
+      "message": "Yes, but that requirement is only stated in the rev 1.4 spec and above as far as I know.  So older active cables may not support superspeed.  Having said that, the older cables won\u0027t return the TBT SVID, so they\u0027ll still disable_tbt_compat_mode(), just at a later point in the process.",
+      "parentUuid": "b09ef9fc_cc7e96e2",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 15
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8de409c2_2b4d9a38",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 12
