@@ -68,6 +68,30 @@
       "revId": "f526c751e19a5b8be66a422cf8cc5f72f9dd2927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30e5fef_397d4730",
+        "filename": "board/volteer_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-01-09T20:30:27Z",
+      "side": 1,
+      "message": "Moved.",
+      "parentUuid": "d37a3974_3327983d",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 61
+      },
+      "revId": "f526c751e19a5b8be66a422cf8cc5f72f9dd2927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
