@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b09ef9fc_cc7e96e2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-09T18:24:56Z",
+      "side": 1,
+      "message": "The TBT3 discovery flow explicitly indicates that superspeed support is only checked for passive cables. Further, chapter 6 in the Type-C speci indicates \n\"Active cables shall minimally support USB 3.2 Gen 2x1 and may support USB 3.2 Gen 1x2 or Gen 2x2.\"",
+      "parentUuid": "78b5cb3a_77df4e08",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 15
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8de409c2_2b4d9a38",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 12
