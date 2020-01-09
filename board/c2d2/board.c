@@ -239,6 +239,7 @@ void usb_spi_board_enable(struct usb_spi_config const *config)
 {
 	/* Configure SPI GPIOs */
 	gpio_config_module(MODULE_SPI_FLASH, 1);
+	gpio_set_flags(GPIO_SPI_CLK, GPIO_OUT_LOW);
 
 	/* Set all four SPI pins to high speed */
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
@@ -262,6 +263,8 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 
 	/* Release SPI GPIOs */
 	gpio_config_module(MODULE_SPI_FLASH, 0);
+	gpio_set_flags(GPIO_SPI_CLK, GPIO_OUT_LOW);
+	gpio_set_flags(GPIO_SPI_CSN, GPIO_OUT_HIGH);
 
 	/* Reset all four SPI pins to low speed */
 	STM32_GPIO_OSPEEDR(GPIO_B) &= ~0xff000000;
@@ -508,6 +511,7 @@ static int command_enable_spi(int argc, char **argv)
 
 			/* Set default state for chip select */
 			gpio_set_flags(GPIO_SPI_CSN, GPIO_INPUT);
+			gpio_set_flags(GPIO_SPI_CLK, GPIO_INPUT);
 
 			/* Enable UARTs that are mutually exclusive with SPI */
 			usart_init(&usart1);
@@ -549,6 +553,7 @@ static int command_enable_spi(int argc, char **argv)
 
 			/* Set default state for chip select */
 			gpio_set_flags(GPIO_SPI_CSN, GPIO_OUT_HIGH);
+			gpio_set_flags(GPIO_SPI_CLK, GPIO_OUT_LOW);
 
 			/*
 			 * The idle state for CLK is high because of the ~5k
@@ -556,7 +561,7 @@ static int command_enable_spi(int argc, char **argv)
 			 * SPI MODE3.
 			 */
 			spi_set_clock_mode(CONFIG_SPI_FLASH_PORT,
-					   SPI_CLOCK_MODE3);
+					   SPI_CLOCK_MODE0);
 
 			/* Enable SPI */
 			usb_spi_enable(&usb_spi, 1);

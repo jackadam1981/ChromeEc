@@ -264,6 +264,7 @@ static int spi_master_initialize(int port)
 static int spi_master_shutdown(int port)
 {
 	int rv = EC_SUCCESS;
+	int moder = 0;
 
 	stm32_spi_regs_t *spi = SPI_REGS[port];
 
@@ -273,6 +274,10 @@ static int spi_master_shutdown(int port)
 	/* Disable DMA streams */
 	dma_disable(dma_tx_option[port].channel);
 	dma_disable(dma_rx_option[port].channel);
+
+	/* release clk (return to driving low) */
+	moder = STM32_GPIO_MODER(GPIO_B) & ~(3<<(13*2));
+	STM32_GPIO_MODER(GPIO_B) = moder | (1<<(13*2));
 
 	/* Disable SPI */
 	spi->cr1 &= ~STM32_SPI_CR1_SPE;
@@ -360,6 +365,7 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 			  uint8_t *rxdata, int rxlen)
 {
 	int rv = EC_SUCCESS;
+	int moder = 0;
 	int port = spi_device->port;
 	int full_readback = 0;
 
@@ -376,10 +382,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 			return rv;
 	}
 #endif
-
-	/* Drive SS low */
-	gpio_set_level(spi_device->gpio_cs, 0);
-
 	spi_clear_rx_fifo(spi);
 
 	rv = spi_dma_start(port, txdata, buf, txlen);
@@ -389,7 +391,20 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 #ifdef CONFIG_SPI_HALFDUPLEX
 	spi->cr1 |= STM32_SPI_CR1_BIDIOE;
 #endif
-	spi->cr1 |= STM32_SPI_CR1_SPE;
+
+
+	/* Drive SS low */
+	gpio_set_level(spi_device->gpio_cs, 0);
+
+	/* take over clk */
+	moder = STM32_GPIO_MODER(GPIO_B) & ~(3<<(13*2));
+	moder |= 2<<(13*2);
+
+	/* begin race! */
+        spi->cr1 |= STM32_SPI_CR1_SPE;
+	/* ^ minimize this gap v */
+	STM32_GPIO_MODER(GPIO_B) = moder;
+	/* end race */
 
 	if (full_readback)
 		return EC_SUCCESS;
@@ -397,6 +412,10 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	rv = spi_dma_wait(port);
 	if (rv != EC_SUCCESS)
 		goto err_free;
+
+	/* release clk (return to driving low) */
+	moder = STM32_GPIO_MODER(GPIO_B) & ~(3<<(13*2));
+	STM32_GPIO_MODER(GPIO_B) = moder | (1<<(13*2));
 
 	spi_clear_tx_fifo(spi);
 
@@ -409,7 +428,15 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 #ifdef CONFIG_SPI_HALFDUPLEX
 		spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
 #endif
+		/* take over clk */
+		moder = STM32_GPIO_MODER(GPIO_B) & ~(3<<(13*2));
+		moder |= 2<<(13*2);
+
+		/* begin race! */
 		spi->cr1 |= STM32_SPI_CR1_SPE;
+		/* ^ minimize this gap v */
+		STM32_GPIO_MODER(GPIO_B) = moder;
+		/* end race */
 	}
 
 err_free:
@@ -424,6 +451,10 @@ int spi_transaction_flush(const struct spi_device_t *spi_device)
 {
 	int rv = spi_dma_wait(spi_device->port);
 	stm32_spi_regs_t *spi = SPI_REGS[spi_device->port];
+
+	/* release clk (return to driving low) */
+	int moder = STM32_GPIO_MODER(GPIO_B) & ~(3<<(13*2));
+	STM32_GPIO_MODER(GPIO_B) = moder | (1<<(13*2));
 
 	spi->cr1 &= ~STM32_SPI_CR1_SPE;
 	/* Drive SS high */
