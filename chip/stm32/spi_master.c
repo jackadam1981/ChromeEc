@@ -103,6 +103,7 @@ static const struct dma_option dma_rx_option[] = {
 };
 
 static uint8_t spi_enabled[ARRAY_SIZE(SPI_REGS)];
+static enum spi_clock_mode clock_mode[ARRAY_SIZE(SPI_REGS)];
 
 static int spi_tx_done(stm32_spi_regs_t *spi)
 {
@@ -141,6 +142,11 @@ static int spi_clear_tx_fifo(stm32_spi_regs_t *spi)
 			return EC_ERROR_TIMEOUT;
 	}
 	return EC_SUCCESS;
+}
+
+void spi_set_clock_mode(int port, enum spi_clock_mode mode)
+{
+	clock_mode[port] = mode;
 }
 
 /**
@@ -227,6 +233,17 @@ static int spi_master_initialize(int port)
 #ifdef CONFIG_SPI_HALFDUPLEX
 	spi->cr1 |= STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE;
 #endif
+
+	/* Set polarity and phase based on SPI mode */
+	if (SPI_CLOCK_PHA_EN(clock_mode[port]))
+		spi->cr1 |= STM32_SPI_CR1_CPHA;
+	else
+		spi->cr1 &= ~STM32_SPI_CR1_CPHA;
+
+	if (SPI_CLOCK_POL_EN(clock_mode[port]))
+		spi->cr1 |= STM32_SPI_CR1_CPOL;
+	else
+		spi->cr1 &= ~STM32_SPI_CR1_CPOL;
 
 	for (i = 0; i < spi_devices_used; i++) {
 		if (spi_devices[i].port != port)

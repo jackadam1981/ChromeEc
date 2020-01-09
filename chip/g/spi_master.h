@@ -10,6 +10,5 @@
 #include "spi.h"
 
 void configure_spi0_passthrough(int enable);
-void set_spi_clock_mode(int port, enum spi_clock_mode mode);
 
 #endif

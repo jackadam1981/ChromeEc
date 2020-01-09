@@ -27,6 +27,9 @@ enum spi_clock_mode {
 	SPI_CLOCK_MODE3 = 3
 };
 
+#define SPI_CLOCK_PHA_EN(mode) (!!(mode & BIT(0)))
+#define SPI_CLOCK_POL_EN(mode) (!!(mode & BIT(1)))
+
 struct spi_device_t {
 	/*
 	 * SPI port the device is connected to.
@@ -63,6 +66,12 @@ extern const unsigned int spi_devices_used;
  * @param enable  1 to enable the port, 0 to disable it.
  */
 int spi_enable(int port, int enable);
+
+/*
+ * Set the clock mode to be used for the given port upon enabling the SPI port
+ * next. Does not takes effect until port is re-enabled.
+ */
+void spi_set_clock_mode(int port, enum spi_clock_mode mode);
 
 #define SPI_READBACK_ALL (-1)
 
