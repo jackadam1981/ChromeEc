@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c0471e2_ec56d1a1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T18:15:24Z",
+      "side": 1,
+      "message": "I think it would make more sense to keep the VDO2 structure separate from this union, since it represents a different uint32_t in the response",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 40
+      },
+      "revId": "40dc3e4c68b6742c568b295198e469281a2c9212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

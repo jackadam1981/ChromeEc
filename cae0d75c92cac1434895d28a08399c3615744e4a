@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "78b5cb3a_77df4e08",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T18:15:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the rationale behind not checking? The active cable VDO1 has a field for \"USB Highest Speed\", which can indicate no super speed support",
+      "parentUuid": "b101ff8c_e66a6c27",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 15
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8de409c2_2b4d9a38",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 12
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "from: Figure F-1 TBT3 Discovery Flow, I have corrected the flow\nwe send SOP\u0027 -\u003e SOP -\u003e SOP\u0027",
       "parentUuid": "8de409c2_2b4d9a38",
+      "range": {
+        "startLine": 959,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 41
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd491162_4b5c2be3",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T18:15:24Z",
+      "side": 1,
+      "message": "I see that the diagram shows SOP\u0027-\u003eSOP, but will the SOP message be at all different if we send it a second time?  Unless there\u0027s something I\u0027m missing here, the SOP -\u003e SOP\u0027 discovery we currently do by default would be equivalent?",
+      "parentUuid": "b1102d07_9e34d389",
       "range": {
         "startLine": 959,
         "startChar": 0,
@@ -187,6 +235,30 @@
       "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9ceebe_eeb5dbd5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T18:15:24Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "defcff66_8e0673c3",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 35
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
