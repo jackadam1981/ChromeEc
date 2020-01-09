@@ -22,6 +22,30 @@
       "revId": "581997b25aa6491eaf822e71588c3189773ad3f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043a7c32_ce2bb6a3",
+        "filename": "board/jinlon/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-09T02:59:26Z",
+      "side": 1,
+      "message": "We should correct HW schematic net name as well. :)",
+      "parentUuid": "1aa1dc90_af416cf1",
+      "range": {
+        "startLine": 95,
+        "startChar": 67,
+        "endLine": 95,
+        "endChar": 87
+      },
+      "revId": "581997b25aa6491eaf822e71588c3189773ad3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
