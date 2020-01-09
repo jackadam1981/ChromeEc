@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4280f12_83e39257",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "None that I know of",
+      "parentUuid": "0c1152ac_fad09fad",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 22
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f493839b_4fb41318",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 14
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "7aba8cfe_55d0218c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e6d841_1ba434bb",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 62
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "173df607_b99ff6cd",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 14
@@ -91,6 +139,30 @@
       "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751c0a92_4e89d04c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "173df607_b99ff6cd",
+      "range": {
+        "startLine": 488,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 13
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ac2bb6de_88912687",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f770e6a5_2c118336",
+      "range": {
+        "startLine": 1093,
+        "startChar": 5,
+        "endLine": 1093,
+        "endChar": 35
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4be74bb_e714787a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "4989079c_2a201cd8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "Checking for Accept or Reject in the handle_ctrl_request itself",
+      "parentUuid": "c4be74bb_e714787a",
+      "range": {
+        "startLine": 1712,
+        "startChar": 0,
+        "endLine": 1713,
+        "endChar": 8
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5636e83_fa1f04b3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -154,6 +274,24 @@
       "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ba60d82_3a6a3509",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5636e83_fa1f04b3",
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "feacd2a7_d5b0be38",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2828,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "I have added a Todo for active cable. According to fig 5-1 from USB Type-C cable and connector spec, only active cables enter USB4 mode.",
+      "parentUuid": "5867c728_bc5b8a2d",
+      "range": {
+        "startLine": 2828,
+        "startChar": 1,
+        "endLine": 2828,
+        "endChar": 64
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08e50608_11fdb6b5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -191,6 +353,30 @@
       "writtenOn": "2020-01-03T18:07:28Z",
       "side": 1,
       "message": "Reading the PD spec, I believe we shouldn\u0027t set these until after receiving an Accept.  Given the architecture of our non-VDM state machine, this may need its own state in this file so we can act after receiving our Accept.  \n\nBased on the sequence diagrams in the PD spec (section 8.3.2.15) and the above Type-C spec reference, I would guess we should do: Enter_USB SOP\u0027 -\u003e Accept SOP\u0027 -\u003e Enter_USB SOP -\u003e Accept SOP -\u003e start USB4 operation.",
+      "range": {
+        "startLine": 2836,
+        "startChar": 0,
+        "endLine": 2837,
+        "endChar": 25
+      },
+      "revId": "59e151d76df7124bd95bf985fba435527c9dd48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23addeeb_3c2e372e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2837,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-09T23:44:46Z",
+      "side": 1,
+      "message": "Moved mux setting to a new state",
+      "parentUuid": "08e50608_11fdb6b5",
       "range": {
         "startLine": 2836,
         "startChar": 0,
