@@ -43,6 +43,9 @@ struct ec_flash_bank const flash_bank_array[] = {
 		.protect_size_exp = __fls(SIZE_256KB),
 	},
 };
+/* elee: just noting while skimming code.  Why is a STM32f4 flag in
+ * flash-stm32f3.c?  Is also on line 103
+ */
 #elif defined(CHIP_FAMILY_STM32F4)
 /*
  * STM32F412xE has 512 KB flash

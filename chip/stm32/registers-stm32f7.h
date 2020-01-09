@@ -476,6 +476,17 @@
 #define STM32_RCC_APB2RSTR              REG32(STM32_RCC_BASE + 0x24)
 
 #define STM32_RCC_AHB1ENR               REG32(STM32_RCC_BASE + 0x30)
+
+/* elee, hack, just copy from STM32F4 registers */
+#define STM32_RCC_AHB1ENR_GPIO_PORTA	BIT(0)
+#define STM32_RCC_AHB1ENR_GPIO_PORTB	BIT(1)
+#define STM32_RCC_AHB1ENR_GPIO_PORTC	BIT(2)
+#define STM32_RCC_AHB1ENR_GPIO_PORTD	BIT(3)
+#define STM32_RCC_AHB1ENR_GPIO_PORTE	BIT(4)
+#define STM32_RCC_AHB1ENR_GPIO_PORTF	BIT(5)
+#define STM32_RCC_AHB1ENR_GPIO_PORTG	BIT(6)
+#define STM32_RCC_AHB1ENR_GPIO_PORTH	BIT(7)
+
 #define STM32_RCC_AHB1ENR_GPIOMASK	(0xff << 0)
 #define STM32_RCC_AHB1ENR_BKPSRAMEN	BIT(18)
 #define STM32_RCC_AHB1ENR_DMA1EN	BIT(21)
@@ -809,6 +820,10 @@ enum dma_channel {
 	STM32_DMAC_SPI4_RX = STM32_DMA2_STREAM4, /* STM32H7 */
 };
 
+/* elee: hack, maybe not needed anymore? */
+#define STM32_DMAC_PER_CTLR 8
+
+
 #define STM32_REQ_USART1_TX 4
 #define STM32_REQ_USART1_RX 4
 
@@ -845,6 +860,11 @@ struct stm32_dma_stream {
 	uint32_t	sm1ar;		/*  address 1 for double buffer */
 	uint32_t	sfcr;		/* FIFO control */
 };
+
+/* elee: early hack, maybe not needed anymore? */
+/* Always use stm32_dma_chan_t so volatile keyword is included! */
+/* typedef volatile struct stm32_dma_chan stm32_dma_chan_t; */
+
 
 /* Always use stm32_dma_stream_t so volatile keyword is included! */
 typedef volatile struct stm32_dma_stream stm32_dma_stream_t;

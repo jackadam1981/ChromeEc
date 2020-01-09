@@ -42,7 +42,8 @@
 #include "config-stm32f76x.h"
 #elif defined(CHIP_FAMILY_STM32F4)
 /* STM32F4 family */
-#include "config-stm32f446.h"
+/* #include "config-stm32f446.h" */
+#include "config-stm32f76x.h" /* elee, hack */
 #elif defined(CHIP_VARIANT_STM32F373)
 #include "config-stm32f373.h"
 #elif defined(CHIP_VARIANT_STM32F09X)

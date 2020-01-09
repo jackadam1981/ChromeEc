@@ -803,6 +803,7 @@ static void ep0_interrupt(uint32_t intr_on_out, uint32_t intr_on_in)
 	enum table_case tc;
 	int out_complete, out_setup, in_complete;
 
+	CPRINTF("U3");
 	/* Determine the interrupt cause and clear the bits quickly, but only
 	 * if they really apply. I don't think they're trustworthy if we didn't
 	 * actually get an interrupt.
@@ -880,6 +881,7 @@ static void ep0_interrupt(uint32_t intr_on_out, uint32_t intr_on_in)
 		expect_setup_packet();
 		break;
 	}
+	CPRINTF("U4");
 }
 
 /****************************************************************************/
@@ -1006,6 +1008,8 @@ void usb_interrupt(void)
 	uint32_t iepint = status & GINTSTS(IEPINT);
 	int ep;
 
+	CPRINTF("U1");
+
 	if (status & GINTSTS(ENUMDONE))
 		usb_enumdone();
 
@@ -1047,9 +1051,11 @@ void usb_interrupt(void)
 	}
 
 	GR_USB_GINTSTS = status;
+
+	CPRINTF("U2");
 }
 DECLARE_IRQ(STM32_IRQ_OTG_FS, usb_interrupt, 1);
-DECLARE_IRQ(STM32_IRQ_OTG_HS, usb_interrupt, 1);
+/* DECLARE_IRQ(STM32_IRQ_OTG_HS, usb_interrupt, 1); */
 
 static void usb_softreset(void)
 {
@@ -1067,11 +1073,12 @@ static void usb_softreset(void)
 	timeout = 10000;
 	while ((GR_USB_GRSTCTL & GRSTCTL_CSFTRST) && timeout-- > 0)
 		;
+	CPRINTF("Eric01\n");
 	if (GR_USB_GRSTCTL & GRSTCTL_CSFTRST) {
 		CPRINTF("USB: reset failed\n");
 		return;
 	}
-
+	CPRINTF("Eric02\n");
 	/* Some more idle? */
 	timeout = 10000;
 	while (!(GR_USB_GRSTCTL & GRSTCTL_AHBIDLE) && timeout-- > 0)
@@ -1082,6 +1089,7 @@ static void usb_softreset(void)
 		return;
 	}
 	/* TODO: Wait 3 PHY clocks before returning */
+	CPRINTF("Eric03\n");
 }
 
 void usb_connect(void)
