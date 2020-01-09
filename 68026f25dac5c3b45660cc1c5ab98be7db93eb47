@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da9165ff_817f93e0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-09T00:09:33Z",
+      "side": 1,
+      "message": "Remove this and use pd_get_power_role() instead.",
+      "revId": "68026f25dac5c3b45660cc1c5ab98be7db93eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c012ed9e_9aa654c5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-09T00:09:33Z",
+      "side": 1,
+      "message": "Remove this and use pd_get_data_role() instead.",
+      "revId": "68026f25dac5c3b45660cc1c5ab98be7db93eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a8d69c_d996e525",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-09T00:09:33Z",
+      "side": 1,
+      "message": "Add pd_get_data_role() here.",
+      "revId": "68026f25dac5c3b45660cc1c5ab98be7db93eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
