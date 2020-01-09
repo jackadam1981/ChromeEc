@@ -138,6 +138,30 @@
     },
     {
       "key": {
+        "uuid": "818234de_6cb3801d",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-09T15:46:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14712f5f_efc0c2a2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "776c3c5f_0b7af453",
         "filename": "include/usb_pd_tbt.h",
         "patchSetId": 11
@@ -182,6 +206,30 @@
       "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5805bc3d_c690e37a",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-09T15:46:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "303e498b_0292ea8c",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -372,6 +420,30 @@
       "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de584bcc_cfcea1ae",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-09T15:46:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39aeadd2_0761aba4",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "8b28eec6deb619a85c5f75c8652032d39f7e4092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
