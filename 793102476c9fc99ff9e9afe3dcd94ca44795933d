@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66664d35_9898fa60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-09T14:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31203be3_a30998b9",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "793102476c9fc99ff9e9afe3dcd94ca44795933d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eebdcc2_083fece1",
         "filename": "driver/ppc/aoz1380.c",
         "patchSetId": 14
@@ -39,6 +63,24 @@
       "revId": "793102476c9fc99ff9e9afe3dcd94ca44795933d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e34831a_26df6973",
+        "filename": "driver/ppc/aoz1380.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-09T14:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eebdcc2_083fece1",
+      "revId": "793102476c9fc99ff9e9afe3dcd94ca44795933d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
