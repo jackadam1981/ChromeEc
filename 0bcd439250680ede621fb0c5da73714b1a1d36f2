@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "522f4ad9_d9d3126e",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-09T09:13:59Z",
+      "side": 1,
+      "message": "actually, the larger stm32f072s have 3 possible pins for each SPI*_CLK.\n\nSo a generic implementation should probably just have the configuration include a gpio_clk field.  Setting this field could also be the indicator for whether to do this drive optimization trickery or not, if selectable at runtime.",
+      "parentUuid": "4a6cc943_83c2b986",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 49
+      },
+      "revId": "0bcd439250680ede621fb0c5da73714b1a1d36f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b3f1024_d6702ebd",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 1
