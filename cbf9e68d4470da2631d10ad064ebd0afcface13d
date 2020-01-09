@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7fe546d1_5666c4c3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3597,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T16:02:46Z",
+      "side": 1,
+      "message": "Since this flag only would make sense if we became the source through a PR swap, perhaps put the flag setting in that path?",
+      "range": {
+        "startLine": 3597,
+        "startChar": 4,
+        "endLine": 3597,
+        "endChar": 49
+      },
+      "revId": "cbf9e68d4470da2631d10ad064ebd0afcface13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e966743_05c4949e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -41,6 +64,29 @@
         "startChar": 33,
         "endLine": 4236,
         "endChar": 41
+      },
+      "revId": "cbf9e68d4470da2631d10ad064ebd0afcface13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a1a796_77b265c0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-09T16:02:46Z",
+      "side": 1,
+      "message": "Similar to \"check_pr_role\" or \"check_dr_role\" I\u0027d say this could be to check the vconn state",
+      "range": {
+        "startLine": 1257,
+        "startChar": 8,
+        "endLine": 1257,
+        "endChar": 34
       },
       "revId": "cbf9e68d4470da2631d10ad064ebd0afcface13d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
