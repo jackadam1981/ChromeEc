@@ -651,6 +651,7 @@ static void it83xx_disable_cc_module(int port)
 	IT83XX_USBPD_CCGCR(port) = 0xdf;
 	IT83XX_USBPD_CCCSR(port) = 0xff;
 	IT83XX_USBPD_CCPSR(port) = 0x66;
+	ccprints("p%d disable_cc_module", port);
 }
 
 void gpio_pre_init(void)
