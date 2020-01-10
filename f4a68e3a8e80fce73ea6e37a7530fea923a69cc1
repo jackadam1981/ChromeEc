@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6eb306d_56e58d0a",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-10T20:40:21Z",
+      "side": 1,
+      "message": "nit: can you put this encolsed in a comment section like\n\n/*****************************************************\n * Custom zork Mux driver ...",
+      "range": {
+        "startLine": 530,
+        "startChar": 1,
+        "endLine": 539,
+        "endChar": 0
+      },
+      "revId": "f4a68e3a8e80fce73ea6e37a7530fea923a69cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69d39d53_b94068b5",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-10T20:40:21Z",
+      "side": 1,
+      "message": "this doesn\u0027t account for port 0 and port 1 differences, can you store saved_polarity_state for each port",
+      "range": {
+        "startLine": 568,
+        "startChar": 15,
+        "endLine": 568,
+        "endChar": 35
+      },
+      "revId": "f4a68e3a8e80fce73ea6e37a7530fea923a69cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
