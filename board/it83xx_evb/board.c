@@ -9,6 +9,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "driver/ioexpander/it8801.h"
 #include "it83xx_pd.h"
 #include "fan.h"
 #include "gpio.h"
@@ -179,6 +180,18 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+#if 0
+/* Column mapping to KSO of IT8801 */
+const uint8_t kso_mapping[KEYBOARD_COLS_MAX] = {
+	0, 1, 2, 3, 4, 5, 6,
+	18, 19, 20, 21, 11, 12,
+#ifdef CONFIG_KEYBOARD_KEYPAD
+	 13, 14
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(kso_mapping) <= 18);
+#endif
+
 /*
  * I2C channels (A, B, and C) are using the same timing registers (00h~07h)
  * at default.
@@ -211,3 +224,15 @@ const struct spi_device_t spi_devices[] = {
 	{ CONFIG_SPI_FLASH_PORT, 0, -1},
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+#ifdef CONFIG_IO_EXPANDER
+#define IO_EXPANDER_PORT_0 0
+struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
+	/* Port 0 for IT8801, use I2C port0_0 with address 0x38 (7-bit)*/
+	[IO_EXPANDER_PORT_0] = {
+		.i2c_host_port = I2C_PORT_IO_EXPANDER_IT8801,
+		.i2c_slave_addr = IT8801_I2C_ADDR,
+		.drv = &it8801_ioexpander_drv,
+	},
+};
+#endif
