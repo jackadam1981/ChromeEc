@@ -15,7 +15,7 @@ GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button
 GPIO_INT(LID_OPEN,       PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_UP,   lid_interrupt)
 GPIO_INT(WP_L,           PIN(I, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_interrupt)         /* Write protect input */
 #ifdef CONFIG_LOW_POWER_IDLE
-GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
+GPIO_INT(UART1_RX,       PIN(H, 1), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
 
 #if IT83XX_PD_EVB
@@ -91,9 +91,9 @@ UNIMPLEMENTED(GATE_A20_H)
 UNIMPLEMENTED(LPC_CLKRUN_L)
 
 ALTERNATE(PIN_MASK(B, 0x03), 1, MODULE_UART, GPIO_PULL_UP) /* UART1 */
-#ifdef CONFIG_UART_HOST
+//#ifdef CONFIG_UART_HOST
 ALTERNATE(PIN_MASK(H, 0x06), 1, MODULE_UART, 0)            /* UART2 */
-#endif
+//#endif
 //ALTERNATE(PIN_MASK(A, 0x40), 3, MODULE_SPI_MASTER, 0) //GPA6=Vbus out   /* SSCK of SPI */
 //ALTERNATE(PIN_MASK(C, 0x28), 3, MODULE_SPI_MASTER, 0) //GPC3=Vbus OV OC /* SMOSI/SMISO of SPI */
 ALTERNATE(PIN_MASK(G, 0x01), 3, MODULE_SPI_MASTER, 0)      /* SSCE1# of SPI */
