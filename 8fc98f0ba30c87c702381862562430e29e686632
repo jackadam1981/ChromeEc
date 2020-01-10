@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "f94d0b47_05d8d096",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "always true, TASK_ALWAYS(MOTIONSENSE defined in ec.tasklist. Remove.",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92c3f68_4a718f83",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "Save memory by reusing grunt mutexes.",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "506fb9df_4e0357bd",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "Remove, Setting .rot_standard_ref to NULL means identity matrix (and is faster).",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c4fc5c_f280329d",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "Use a more descriptive suffix (lid_alt_accel maybe).",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e36d11_abca9525",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "Remove code when not needed, do not use #if 0.",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b63c087_7c7b5d03",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
@@ -49,6 +134,41 @@
       "side": 1,
       "message": "Seems it\u0027s fine for treeya board at least. The i2c irq will occur if the address is not right on the ninth clock of the i2c transmission.\nNEGACK(Negative Acknowledge). Set by hardware when a transmission is not acknowledged on the ninth clock(in this case SDAST is not set to 1). When NEGACK is set, the SMBus is stalled.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/npcx/i2c.c#779",
       "parentUuid": "33893e30_e452c8be",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d485c7_7856bb91",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "8 sku looks safer and more deterministic: you could use a bit in the skuid to determine which sensors you are using.\nThis code assumes the sensor has \"booted\" when EC is running. \n- That may not be true depending on the power domain. (from .active_mask, it seems the sensors are powered off in S5).\n- If the sensor is a little slow (see driver/accel_kionix.c init() function).",
+      "parentUuid": "cc23b023_852469e7",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f6cf4b_0d6aa0cf",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-10T08:21:18Z",
+      "side": 1,
+      "message": "Calling sensor_probe is on the same priority than other sensor related hook (motion_sense_startup). You need a higher priority.",
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
