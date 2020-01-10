@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "58148c87_bd0dd87e",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-01-10T19:44:54Z",
+      "side": 1,
+      "message": "We may run into a problem due to there being different ports. Say I enable ports 0 and 1, later I one of the ports, SPE will now be off even though 1 of the ports is still active. Before that didn\u0027t really matter since SPE was enabled and disabled each call.\n\nI\u0027d expect spi_master_shutdown to at least disable the dma_disable() since that\u0027s clearly specific to a port. But I\u0027m not so certain about the spi_clear_rx_fifo(spi) along with the calls to disable parts in CR1 and CR2.\n\nShould those other calls be conditioned on all(spi_enabled) \u003d\u003d 0?",
+      "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2c0dd66_dd636309",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 1
