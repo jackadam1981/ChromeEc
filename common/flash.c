@@ -11,6 +11,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "hwwp.h"
 #include "otp.h"
 #include "rwsig.h"
 #include "shared_mem.h"
@@ -656,11 +657,8 @@ uint32_t flash_get_protect(void)
 	/* Read write protect GPIO */
 #ifdef CONFIG_WP_ALWAYS
 	flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
-#elif defined(CONFIG_WP_ACTIVE_HIGH)
-	if (gpio_get_level(GPIO_WP))
-		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
 #else
-	if (!gpio_get_level(GPIO_WP_L))
+	if (hwwp_isasserted())
 		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
 #endif
 
