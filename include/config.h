@@ -3837,6 +3837,9 @@
 /* Use TCPC module (type-C port controller) */
 #undef CONFIG_USB_PD_TCPC
 
+/* Define EC and TCPC modules are in one integrated chip */
+#undef CONFIG_USB_PD_TCPC_WITHIN_EC_CHIP
+
 /* Enable TCPC to enter low power mode */
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
 
@@ -4746,6 +4749,16 @@
  */
 #if defined(CONFIG_USB_PD_TCPM_FUSB302)
 #define CONFIG_USB_PD_VBUS_MEASURE_TCPC
+#endif
+
+/*****************************************************************************/
+/*
+ * Define CONFIG_USB_PD_TCPC_WITHIN_EC_CHIP if we use ITE83XX series TCPM driver
+ * on the board.
+ */
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX) ||  \
+	defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
+#define CONFIG_USB_PD_TCPC_WITHIN_EC_CHIP
 #endif
 
 /*****************************************************************************/
