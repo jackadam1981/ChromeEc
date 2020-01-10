@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4481af47_a0cfeeeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-10T21:30:27Z",
+      "side": 1,
+      "message": "I think the comment is wrong, but I do remember seeing the chip stop responding when I was first playing around with write protection. I think I probably had both HW and SW write protect enabled and then disabled HW write protection and rebooted. However, that shouldn\u0027t trigger an RDP state change.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "59f8b55b540ce14a1104c95a721765e511836b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
