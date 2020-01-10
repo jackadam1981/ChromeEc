@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6150489_fa7d17cd",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "This should just be replaced with a it8801_ioex_set_level call instead.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 43
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854c0c5c_2cb081b1",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "If you do the stuff I suggested on line 88, this #ifdef might be annoying, because stuff outside will want it8801_ioex_set_level.\n\nHow much extra space does CONFIG_IO_EXPANDER take? Do we want to assume we always want it when IT8801 is on our board? It will simplify this logic.\nIf it\u0027s too big maybe we could put the main login from it8801_ioex_set_level outside this #ifdef block.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72360e00_2232ea37",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "Seems weird to have these functions when you already have it8801_read.\n\nI see that you\u0027re extracting the host and addr from the struct.\n\nIdeally this driver should only have one call to i2c_read and write.",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82a4381_2e6c26eb",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "nit: add \u0027 \u0027",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c5d30a_d076deec",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "I am not too happy with this.\nYes, this might be a good naive implementation to do it. But barring the it8801 chip itself changing this register(which i hope it doesn\u0027t, right?), this driver should know what the SOVR is, since it\u0027s the one always setting it.\n\nWe should cache this value instead and use that instead of sending another transaction.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 63
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a7bbba_ab4628df",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "If we\u0027re at this line, inside a low priority task, and another higher priority task interrupts us and sets another gpio on the same port, when we resume this task, we\u0027ll have an old \"val\" thus clobbering the higher priority task\u0027s gpio change.\n\nThe way it is now (not considering caching either), I think this needs at least some per port locking.",
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e843a0a9_2a8020ed",
+        "filename": "driver/ioexpander/it8801.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:36:05Z",
+      "side": 1,
+      "message": "This probably needs to be rewritten to use IT8801_REG_GPIO_SOVR(2), since it\u0027s a little hidden right now.\nI was looking at the SOVR registers and searched for IT8801_REG_GPIO_SOVR hoping to find them all, but this one bypasses that macro.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
