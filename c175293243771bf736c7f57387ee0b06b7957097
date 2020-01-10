@@ -69,6 +69,30 @@
       "revId": "c175293243771bf736c7f57387ee0b06b7957097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16302ef9_4182a29a",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8136,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-10T22:54:07Z",
+      "side": 1,
+      "message": "Should event types change in the future, someone will need to go update this, which may be less clear if we are just leaving it in a comment. So probably best to leave return -1 instead of assuming...",
+      "parentUuid": "719e7ea6_5bd4cb3a",
+      "range": {
+        "startLine": 8133,
+        "startChar": 0,
+        "endLine": 8136,
+        "endChar": 12
+      },
+      "revId": "c175293243771bf736c7f57387ee0b06b7957097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
