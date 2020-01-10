@@ -655,6 +655,7 @@ void it83xx_disable_cc_module(int port)
 	/* Disconnect CC 5V tolerant */
 	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
 				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+	ccprints("p%d disable_cc_module", port);
 }
 
 void gpio_pre_init(void)
