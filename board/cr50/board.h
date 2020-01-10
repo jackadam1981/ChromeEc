@@ -381,6 +381,19 @@ void board_unwedge_i2cs(void);
 
 int board_in_prod_mode(void);
 
+/**
+ * Check if the board supports EC-CR50-Communication.
+ * (Note: http://go/ec-cr50-comm)
+ *
+ * @return 1 if EC-CR50 communication is supported, or 0 otherwise.
+ */
+int ec_comm_is_supported(void);
+
+/**
+ * Initialize EC-CR50 communication and prepare data for EC-EFS.
+ */
+void ec_comm_init(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
@@ -484,4 +497,5 @@ enum nvmem_users {
 /* Total time deep sleep should not be allowed while wiping the TPM. */
 #define DISABLE_SLEEP_TIME_TPM_WIPE (TPM_PROCESSING_TIME + TPM_RESET_TIME)
 
+#define STRAP_PIN_DELAY_USEC  100
 #endif /* __CROS_EC_BOARD_H */

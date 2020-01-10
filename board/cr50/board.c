@@ -208,7 +208,6 @@ const struct i2c_port_t i2c_ports[]  = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* Strapping pin info structure */
-#define STRAP_PIN_DELAY_USEC  100
 enum strap_list {
 	a0,
 	a1,
@@ -757,6 +756,12 @@ static void board_init(void)
 	 */
 	check_board_id_mismatch();
 	check_board_id_mismatch();
+
+	/*
+	 * Read DIOB3 strap, and initialize EC-CR50-comm if the strap marks
+	 * as it is supported.
+	 */
+	ec_comm_init();
 
 	/*
 	 * Start monitoring AC detect to wake Cr50 from deep sleep.  This is
@@ -1643,10 +1648,33 @@ int chip_factory_mode(void)
 	 * Bit 0x2 used to indicate that mode has been set, bit 0x1 is the
 	 * actual indicator of the chip factory mode.
 	 */
-	if (!mode_set)
-		mode_set = 2 | !!gpio_get_level(GPIO_DIOB4);
+	if (!mode_set) {
+		if (ec_comm_is_supported()) {
+			/*
+			 * In the board where EC-CR50 comm is supported,
+			 * GPIO_AP_FLASH_SELECT (0, 2) and GPIO_BOOT0 (0, 10)
+			 * share DIOB4 pin. To read the true value of BOOT0,
+			 * let's disconnect GPIO_AP_FLASH_SELECT from DIOB4.
+			 */
+			uint8_t sel_backup = GREAD(PINMUX, DIOB4_SEL);
+			uint8_t ctl_backup = GREAD(PINMUX, DIOB4_CTL);
 
-	return mode_set & 1;
+			/* Make DIO B4 have no GPIO output connected. */
+			GWRITE(PINMUX, DIOB4_SEL, 0);
+			GWRITE(PINMUX, DIOB4_CTL, 0);
+			udelay(STRAP_PIN_DELAY_USEC);
+
+			mode_set = BIT(1) | !!gpio_get_level(GPIO_BOOT0);
+
+			/* Recover DIO B4 connection. */
+			GWRITE(PINMUX, DIOB4_SEL, sel_backup);
+			GWRITE(PINMUX, DIOB4_CTL, ctl_backup);
+		} else {
+			mode_set = BIT(1) | !!gpio_get_level(GPIO_BOOT0);
+		}
+	}
+
+	return mode_set & BIT(0);
 }
 
 #ifdef CR50_RELAXED

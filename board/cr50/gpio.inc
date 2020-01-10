@@ -56,7 +56,7 @@
  * GPIO0.7   spi_mosi
  * GPIO0.8   spi_clk
  * GPIO0.9   spi_cs_l
- * GPIO0.10  diob4
+ * GPIO0.10  boot0
  * GPIO0.11  en_pp3300_ina
  * GPIO0.12  i2c_scl_ina
  * GPIO0.13  i2c_sda_ina
@@ -147,7 +147,7 @@ GPIO(SPI_CLK,         PIN(0, 8), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(SPI_CS_L,        PIN(0, 9), GPIO_INPUT)
 
 /* Used during *chip* factory process. */
-GPIO(DIOB4,           PIN(0, 10), GPIO_INPUT | GPIO_PULL_DOWN)
+GPIO(BOOT0,           PIN(0, 10), GPIO_INPUT | GPIO_PULL_DOWN)
 
 /* GPIOs used for Cr50 strapping options */
 GPIO(STRAP_A0,        PIN(1, 12), GPIO_INPUT)
@@ -207,9 +207,13 @@ UNIMPLEMENTED(ENTERING_RW)
 #endif
 
 /* GPIOs - mark outputs as inputs too, to read back from the driven pad */
-PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
-                                                /* We can't pull it up */
+PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
+/*
+ * CAUTION: In boards that support EC-CR50 communication, AP_FLASH_SELECT shall
+ *          be connected to B4 instead. For more details, check go/ec-cr50-comm
+ *          and board/cr50/ec_comm.c.
+ */
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
 PINMUX(GPIO(MONITOR_I2CS_SDA), A1, GPIO_INPUT)
 
@@ -289,7 +293,11 @@ PINMUX(GPIO(SPI_MOSI),           A4, DIO_OUTPUT)
 PINMUX(GPIO(SPI_CLK),            A8, DIO_OUTPUT)
 PINMUX(GPIO(SPI_CS_L),          A14, DIO_OUTPUT)
 
-PINMUX(GPIO(DIOB4),              B4, DIO_INPUT)
+/*
+ * DIOB4 is used for BOOT0, but boards that support EC-CR50
+ * communication, have GPIO_AP_FLASH_SEL connected to DIOB4.
+ */
+PINMUX(GPIO(BOOT0),              B4, DIO_INPUT)
 
 
 #undef PINMUX
