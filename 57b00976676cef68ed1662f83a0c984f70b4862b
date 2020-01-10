@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22aa3bb1_65c9b2e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-10T02:37:01Z",
+      "side": 1,
+      "message": "Please can you verify that I2S output looks good on Trembyle HW (and add to TEST\u003d)?",
+      "revId": "57b00976676cef68ed1662f83a0c984f70b4862b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b30aea7_29871ec6",
+        "filename": "board/trembyle/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-10T02:37:01Z",
+      "side": 1,
+      "message": "This block of CONFIG_* was intended to just be motion sense.\nPlease can you move these CONFIG_AUDIO_CODEC* into zork/baseboard.h (since all zork devices will do the same for the audio).",
+      "revId": "57b00976676cef68ed1662f83a0c984f70b4862b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6e779b_05579b78",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-10T02:37:01Z",
+      "side": 1,
+      "message": "No need for the #if, since these GPIOs aren\u0027t used for anything else and can be always configured for their alternate function.",
+      "revId": "57b00976676cef68ed1662f83a0c984f70b4862b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
