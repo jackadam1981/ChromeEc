@@ -68,6 +68,30 @@
       "revId": "fa1e4b95dd07d851ae512c283f28540b3b5c2119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84518024_4776292b",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-10T18:28:08Z",
+      "side": 1,
+      "message": "Instructions should also say that the H1 needs to be reset again by removing AC+DC from the board.",
+      "parentUuid": "c41ad39a_b84c83ba",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 775,
+        "endChar": 34
+      },
+      "revId": "fa1e4b95dd07d851ae512c283f28540b3b5c2119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
