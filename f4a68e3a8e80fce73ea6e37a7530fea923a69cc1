@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ccca7b1_260a5fef",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-10T21:10:07Z",
+      "side": 1,
+      "message": "Will do for retimer and mux customizations",
+      "parentUuid": "e6eb306d_56e58d0a",
+      "range": {
+        "startLine": 530,
+        "startChar": 1,
+        "endLine": 539,
+        "endChar": 0
+      },
+      "revId": "f4a68e3a8e80fce73ea6e37a7530fea923a69cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69d39d53_b94068b5",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f4a68e3a8e80fce73ea6e37a7530fea923a69cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b97287_e1a731f0",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-10T21:10:07Z",
+      "side": 1,
+      "message": "This modification, as the name indicates, is only for USB-C1.  Want me to change this and the zork_c1_retimer to be an array to handle the C1 that it uses as well as the C0 that will not?",
+      "parentUuid": "69d39d53_b94068b5",
+      "range": {
+        "startLine": 568,
+        "startChar": 15,
+        "endLine": 568,
+        "endChar": 35
+      },
+      "revId": "f4a68e3a8e80fce73ea6e37a7530fea923a69cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
