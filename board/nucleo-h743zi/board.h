@@ -189,12 +189,21 @@
 #define CONFIG_ROLLBACK
 #define CONFIG_ROLLBACK_MPU_PROTECT
 
+#ifdef SECTION_IS_RW
+	/*
+	 * Mitigating the effects of b/146428434.
+	 */
+#	define APPLY_RESET_LOOP_FIX
+#endif
+
 #ifndef __ASSEMBLER__
 	/* Timer selection */
 #	define TIM_CLOCK32 2
 #	define TIM_WATCHDOG 16
 
 #	include "gpio_signal.h"
+	/* Defined in fixes.c */
+	void wp_event(enum gpio_signal signal);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */
