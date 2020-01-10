@@ -867,7 +867,7 @@ void i2c_init(void)
 			case IT83XX_I2C_CH_D:
 				#ifndef CONFIG_UART_HOST
 				/* Enable SMBus D channel */
-				IT83XX_GPIO_GRC2 |= 0x20;
+				//IT83XX_GPIO_GRC2 |= 0x20;
 				#endif
 				break;
 			case IT83XX_I2C_CH_E:
