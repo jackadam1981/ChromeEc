@@ -1524,7 +1524,17 @@ static int pd_send_request_msg(int port, int always_send_request)
 	int res;
 
 #ifdef CONFIG_CHARGE_MANAGER
-	int charging = (charge_manager_get_active_charge_port() == port);
+	/*
+	 * If this port is the current charge port, or if there isn't an active
+	 * charge port, set this value to true. If CHARGE_PORT_NONE isn't
+	 * considered, then there can be a race condition in PD negotiation and
+	 * the charge manager which forces an incorrect request for
+	 * VSave5V. This can then lead to a brownout condition when the input
+	 * current limit gets incorrectly set to 0.5A.
+	 */
+	int charging = ((charge_manager_get_active_charge_port() == port) ||
+			(charge_manager_get_active_charge_port() ==
+			 CHARGE_PORT_NONE));
 #else
 	const int charging = 1;
 #endif
