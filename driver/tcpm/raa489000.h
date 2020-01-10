@@ -34,4 +34,5 @@
 /* CC debounce enable */
 #define RAA489000_SETTING1_CC_DB_EN	BIT(0)
 
+extern const struct tcpm_drv raa489000_tcpm_drv;
 #endif
