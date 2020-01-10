@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "0c5f1419_933a753a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-10T01:20:34Z",
+      "side": 1,
+      "message": "checked, its okay to SOP \u0026 SOP\u0027 too",
+      "parentUuid": "a39cb79f_e2709b53",
+      "range": {
+        "startLine": 959,
+        "startChar": 0,
+        "endLine": 961,
+        "endChar": 41
+      },
+      "revId": "cae0d75c92cac1434895d28a08399c3615744e4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f272620_22078134",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 12
