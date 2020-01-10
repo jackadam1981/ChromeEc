@@ -156,6 +156,7 @@ common-$(CONFIG_VOLUME_BUTTONS)+=button.o
 common-$(CONFIG_VSTORE)+=vstore.o
 common-$(CONFIG_WEBUSB_URL)+=webusb_desc.o
 common-$(CONFIG_WIRELESS)+=wireless.o
+common-$(CONFIG_WP)+=hwwp.o
 common-$(HAS_TASK_CHIPSET)+=chipset.o
 common-$(HAS_TASK_CONSOLE)+=console.o console_output.o uart_buffering.o
 common-$(CONFIG_CMD_MEM)+=memory_commands.o
