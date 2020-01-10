@@ -10,6 +10,45 @@
 #include "tcpci.h"
 #include "tcpm.h"
 
+int raa489000_init(int port)
+{
+	int rv;
+
+	/* Perform unlock sequence */
+	rv = tcpc_write16(port, 0xAA, 0xDAA0);
+	if (rv)
+		ccprintf("c%d: failed unlock step1\n", port);
+	rv = tcpc_write16(port, 0xAA, 0xACE0);
+	if (rv)
+		ccprintf("c%d: failed unlock step2\n", port);
+	rv = tcpc_write16(port, 0xAA, 0x0D0B);
+	if (rv)
+		ccprintf("c%d: failed unlock step3\n", port);
+
+	/* Note: registers may not be ready until TCPCI init succeeds */
+	rv = tcpci_tcpm_init(port);
+	if (rv)
+		return rv;
+
+	/*
+	 * Set some vendor defined registers to enable the CC comparators and
+	 * remove the dead battery resistors.
+	 */
+	tcpc_write16(port, RAA489000_TYPEC_SETTING1,
+		     RAA489000_SETTING1_RDOE | RAA489000_SETTING1_CC2_CMP3_EN |
+		     RAA489000_SETTING1_CC2_CMP2_EN |
+		     RAA489000_SETTING1_CC2_CMP1_EN |
+		     RAA489000_SETTING1_CC1_CMP3_EN |
+		     RAA489000_SETTING1_CC1_CMP2_EN |
+		     RAA489000_SETTING1_CC1_CMP1_EN |
+		     RAA489000_SETTING1_CC_DB_EN);
+
+        rv = tcpc_write(port, TCPC_REG_COMMAND,
+                        TCPC_REG_COMMAND_ENABLE_VBUS_DETECT);
+
+	return rv;
+}
+
 int raa489000_tcpm_set_cc(int port, int pull)
 {
 	int rv;
@@ -28,7 +67,7 @@ int raa489000_tcpm_set_cc(int port, int pull)
 
 /* RAA489000 is a TCPCI compatible port controller */
 const struct tcpm_drv raa489000_tcpm_drv = {
-	.init                   = &tcpci_tcpm_init,
+	.init                   = &raa489000_init,
 	.release                = &tcpci_tcpm_release,
 	.get_cc                 = &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
@@ -54,4 +93,3 @@ const struct tcpm_drv raa489000_tcpm_drv = {
 	.enter_low_power_mode   = &tcpci_enter_low_power_mode,
 #endif
 };
-

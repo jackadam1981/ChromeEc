@@ -428,6 +428,8 @@ int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	if (polarity == POLARITY_NONE)
 		return EC_SUCCESS;
 
+	CPRINTS("c%d: Setting polarity to %d", port, polarity);
+
 	return tcpc_update8(port,
 			    TCPC_REG_TCPC_CTRL,
 			    TCPC_REG_TCPC_CTRL_SET(1),
@@ -501,6 +503,8 @@ static int tcpm_alert_ext_status(int port, int *alert_ext)
 int tcpci_tcpm_set_rx_enable(int port, int enable)
 {
 	int detect_sop_en = 0;
+
+	CPRINTS("C%d: rx_enable with %d", port, enable);
 
 	if (enable) {
 		detect_sop_en = TCPC_REG_RX_DETECT_SOP_HRST_MASK;
@@ -782,6 +786,7 @@ void tcpci_tcpc_alert(int port)
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
 
+	CPRINTS("c%d: alert register 0x%04x", port, status);
 	/* Get Extended Alert register if needed */
 	if (status & TCPC_REG_ALERT_ALERT_EXT)
 		tcpm_alert_ext_status(port, &alert_ext);
@@ -1134,6 +1139,10 @@ static const struct tcpci_reg tcpci_regs[] = {
 	TCPCI_REG(TCPC_REG_PD_INT_REV, 2),
 	TCPCI_REG(TCPC_REG_ALERT, 2),
 	TCPCI_REG(TCPC_REG_ALERT_MASK, 2),
+	TCPCI_REG(TCPC_REG_POWER_STATUS_MASK, 1),
+	TCPCI_REG(TCPC_REG_FAULT_STATUS_MASK, 1),
+	TCPCI_REG(TCPC_REG_EXTENDED_STATUS_MASK, 1),
+	TCPCI_REG(TCPC_REG_ALERT_EXTENDED_MASK, 1),
 	TCPCI_REG(TCPC_REG_CONFIG_STD_OUTPUT, 1),
 	TCPCI_REG(TCPC_REG_TCPC_CTRL, 1),
 	TCPCI_REG(TCPC_REG_ROLE_CTRL, 1),
