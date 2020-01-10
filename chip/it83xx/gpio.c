@@ -664,11 +664,20 @@ void gpio_pre_init(void)
 
 	/*
 	 * To prevent cc pins leakage ...
-	 * If we don't use ITE TCPC: disable all ITE port cc modules.
+	 * 1) If we don't use ITE TCPC: disable all ITE port cc modules.
 	 */
 	if (!IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX) &&
 		!IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX_V2)) {
 		for (i = 0; i < IT83XX_USBPD_PHY_PORT_COUNT; i++)
+			it83xx_disable_cc_module(i);
+	/*
+	 * 2) If we use ITE TCPC following port index order: TCPC physical
+	 * support port counts > board active ITE pd port counts, then disable
+	 * ITE TCPC not active ports.
+	 */
+	} else if (IT83XX_USBPD_PHY_PORT_COUNT > CONFIG_USB_PD_PORT_MAX_COUNT) {
+		for (i = CONFIG_USB_PD_PORT_MAX_COUNT;
+		     i < IT83XX_USBPD_PHY_PORT_COUNT; i++)
 			it83xx_disable_cc_module(i);
 	}
 
