@@ -17,6 +17,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 #ifndef CONFIG_CHARGER_NARROW_VDC
@@ -341,10 +342,29 @@ static void isl923x_init(void)
 	const struct battery_info *bi = battery_get_info();
 	int precharge_voltage = bi->precharge_voltage ?
 		bi->precharge_voltage : bi->voltage_min;
+#endif /* CONFIG_TRICKLE_CHARGING */
 
+#ifdef CONFIG_CHARGER_RAA489000
+	if (CONFIG_CHARGER_SENSE_RESISTOR ==
+	    CONFIG_CHARGER_SENSE_RESISTOR_AC) {
+		/*
+		 * A 1:1 ratio for Rs1:Rs2 is allowed, but Control4 register
+		 * Bit<11> must be set.
+		 */
+		if (raw_read16(ISL9238_REG_CONTROL4, &reg))
+			goto init_fail;
+
+		if (raw_write16(ISL9238_REG_CONTROL4,
+				reg |
+				RAA489000_C4_PSYS_RSNS_RATIO_1_TO_1))
+			goto init_fail;
+	}
+#endif /* CONFIG_CHARGER_RAA489000 */
+
+#ifdef CONFIG_TRICKLE_CHARGING
 	if (raw_write16(ISL923X_REG_SYS_VOLTAGE_MIN, precharge_voltage))
 		goto init_fail;
-#endif
+#endif /* CONFIG_TRICKLE_CHARGING */
 
 	/*
 	 * [10:9]: Prochot# Debounce time
@@ -355,7 +375,9 @@ static void isl923x_init(void)
 
 	if (raw_write16(ISL923X_REG_CONTROL2,
 			reg |
+#ifndef CONFIG_CHARGER_RAA489000
 			ISL923X_C2_OTG_DEBOUNCE_150 |
+#endif /* CONFIG_CHARGER_RAA489000 */
 			ISL923X_C2_PROCHOT_DEBOUNCE_1000 |
 			ISL923X_C2_ADAPTER_DEBOUNCE_150))
 		goto init_fail;
@@ -375,9 +397,17 @@ static void isl923x_init(void)
 	/*
 	 * For the ISL9238, set the input voltage regulation to 4.439V.  Note,
 	 * the voltage is set in 341.3 mV steps.
+	 *
+	 * For the RAA489000, set the input voltage regulation to 4.437V.  Note,
+	 * that the voltage is set in 85.33 mV steps.
 	 */
+#ifdef CONFIG_CHARGER_RAA489000
+	reg = (4437 / RAA489000_INPUT_VOLTAGE_REF_STEP)
+		<< RAA489000_INPUT_VOLTAGE_REF_SHIFT;
+#else
 	reg = (4439 / ISL9238_INPUT_VOLTAGE_REF_STEP)
 		<< ISL9238_INPUT_VOLTAGE_REF_SHIFT;
+#endif /* CONFIG_CHARGER_RAA489000 */
 
 	if (raw_write16(ISL9238_REG_INPUT_VOLTAGE, reg))
 		goto init_fail;
@@ -393,14 +423,18 @@ static void isl923x_init(void)
 		goto init_fail;
 #endif /* defined(CONFIG_CHARGE_RAMP_HW) */
 
-#ifdef CONFIG_CHARGER_ISL9238
+#if defined(CONFIG_CHARGER_ISL9238) || defined(CONFIG_CHARGER_RAA489000)
 	/*
-	 * Don't reread the prog pin and don't reload the ILIM on ACIN.
+	 * Don't reread the prog pin and don't reload the ILIM on ACIN.  For the
+	 * RAA489000, just don't reload ACLIM.
 	 */
 	if (raw_read16(ISL9238_REG_CONTROL3, &reg))
 		goto init_fail;
-	reg |= ISL9238_C3_NO_RELOAD_ACLIM_ON_ACIN |
-		ISL9238_C3_NO_REREAD_PROG_PIN;
+	reg |= ISL9238_C3_NO_RELOAD_ACLIM_ON_ACIN;
+	reg |= 0x01; /* Turn on ADC */
+#ifndef CONFIG_CHARGER_RAA489000
+	reg |= ISL9238_C3_NO_REREAD_PROG_PIN;
+#endif
 	/*
 	 * Disable autonomous charging initially since 1) it causes boot loop
 	 * issues with 2S batteries, and 2) it will automatically get disabled
@@ -426,7 +460,7 @@ static void isl923x_init(void)
 
 	return;
 init_fail:
-	CPRINTS("%s failed!", __func__);
+	CPRINTS("%s init failed!", CHARGER_NAME);
 }
 DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -729,9 +763,9 @@ static int command_isl923x_dump(int argc, char **argv)
 	dump_reg_range(0x14, 0x15);
 	dump_reg_range(0x38, 0x3F);
 	dump_reg_range(0x47, 0x4A);
-#ifdef CONFIG_CHARGER_ISL9238
+#if defined(CONFIG_CHARGER_ISL9238) || defined(CONFIG_CHARGER_RAA489000)
 	dump_reg_range(0x4B, 0x4E);
-#endif /* CONFIG_CHARGER_ISL9238 */
+#endif /* CONFIG_CHARGER_ISL9238 || CONFIG_CHARGER_RAA489000 */
 	dump_reg_range(0xFE, 0xFF);
 
 	return EC_SUCCESS;
@@ -739,3 +773,31 @@ static int command_isl923x_dump(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(charger_dump, command_isl923x_dump, "",
 			"Dumps ISL923x registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
+
+#ifdef CONFIG_CHARGER_RAA489000
+int charger_get_vbus_voltage(int port)
+{
+	int val;
+	int rv;
+	int i2c_port;
+
+	/*
+	 * TODO(b:147440290): We should have a structure for charger ICs and
+	 * consult that instead.  This hack happens to work because the charger
+	 * IC is also the TCPC.
+	 */
+	i2c_port = tcpc_config[port].i2c_info.port;
+	rv = i2c_read16(i2c_port, I2C_ADDR_CHARGER_FLAGS,
+			RAA489000_REG_ADC_VBUS,
+			&val);
+	if (rv)
+		return 0;
+
+	/* The VBUS voltage is returned in bits 13:6. The LSB is 96mV. */
+	val &= 0x3FC;
+	val = val >> 6;
+	val *= 96;
+
+	return val;
+}
+#endif
