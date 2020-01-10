@@ -228,6 +228,9 @@ static int spi_master_initialize(int port)
 	spi->cr1 |= STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE;
 #endif
 
+	/* Enable SPI hardware module. This will actively drive the CLK pin */
+	spi->cr1 |= STM32_SPI_CR1_SPE;
+
 	for (i = 0; i < spi_devices_used; i++) {
 		if (spi_devices[i].port != port)
 			continue;
@@ -257,7 +260,7 @@ static int spi_master_shutdown(int port)
 	dma_disable(dma_tx_option[port].channel);
 	dma_disable(dma_rx_option[port].channel);
 
-	/* Disable SPI */
+	/* Disable SPI. Let's CLK pin float. */
 	spi->cr1 &= ~STM32_SPI_CR1_SPE;
 
 	spi_clear_rx_fifo(spi);
@@ -372,7 +375,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 #ifdef CONFIG_SPI_HALFDUPLEX
 	spi->cr1 |= STM32_SPI_CR1_BIDIOE;
 #endif
-	spi->cr1 |= STM32_SPI_CR1_SPE;
 
 	if (full_readback)
 		return EC_SUCCESS;
@@ -383,8 +385,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 
 	spi_clear_tx_fifo(spi);
 
-	spi->cr1 &= ~STM32_SPI_CR1_SPE;
-
 	if (rxlen) {
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
@@ -392,7 +392,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 #ifdef CONFIG_SPI_HALFDUPLEX
 		spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
 #endif
-		spi->cr1 |= STM32_SPI_CR1_SPE;
 	}
 
 err_free:
@@ -406,9 +405,7 @@ err_free:
 int spi_transaction_flush(const struct spi_device_t *spi_device)
 {
 	int rv = spi_dma_wait(spi_device->port);
-	stm32_spi_regs_t *spi = SPI_REGS[spi_device->port];
 
-	spi->cr1 &= ~STM32_SPI_CR1_SPE;
 	/* Drive SS high */
 	gpio_set_level(spi_device->gpio_cs, 1);
 
