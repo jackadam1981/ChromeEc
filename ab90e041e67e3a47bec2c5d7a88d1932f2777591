@@ -134,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "770efa05_b44859f1",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-10T20:37:57Z",
+      "side": 1,
+      "message": "If these lines are a NOOP and nothing changed we still waste time sending the write later on.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e843a0a9_2a8020ed",
         "filename": "driver/ioexpander/it8801.h",
         "patchSetId": 10
