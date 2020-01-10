@@ -130,6 +130,12 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 {
 	ccprints("p%d %s", port, __func__);
 }
+
+void pd_task_idle(void *u)
+{
+	while (1)
+		task_wait_event(-1);
+}
 #else
 /* EC EVB */
 void pd_task(void *u)
