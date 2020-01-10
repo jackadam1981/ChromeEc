@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6b13954_8a110baa",
+        "filename": "chip/stm32/flash-stm32f3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2020-01-10T18:51:51Z",
+      "side": 1,
+      "message": "Nit: match comment style with empty line at top.\n\nNot sure the comment needs to be checked in, although it is a good question.",
+      "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d09590_10816ca9",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2020-01-10T18:51:51Z",
+      "side": 1,
+      "message": "Can\u0027t check in obviously.",
+      "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
