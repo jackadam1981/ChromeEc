@@ -4605,30 +4605,12 @@ void pd_task(void *u)
 			}
 
 			if (next_state == DRP_TC_UNATTACHED_SNK) {
-				/*
-				 * The TCPCI comes out of auto toggle with
-				 * a prospective connection.  It is expecting
-				 * us to set the CC lines to what it is
-				 * thinking is best or it goes direct back to
-				 * unattached.  So get the SNK polarity to
-				 * be able to setup the CC lines to avoid this.
-				 */
-				pd[port].polarity = get_snk_polarity(cc1, cc2);
 
 				tcpm_set_cc(port, TYPEC_CC_RD);
 				pd_set_power_role(port, PD_ROLE_SINK);
 				timeout = 2*MSEC;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
 			} else if (next_state == DRP_TC_UNATTACHED_SRC) {
-				/*
-				 * The TCPCI comes out of auto toggle with
-				 * a prospective connection.  It is expecting
-				 * us to set the CC lines to what it is
-				 * thinking is best or it goes direct back to
-				 * unattached.  So get the SNK polarity to
-				 * be able to setup the CC lines to avoid this.
-				 */
-				pd[port].polarity = get_src_polarity(cc1, cc2);
 
 				tcpm_set_cc(port, TYPEC_CC_RP);
 				pd_set_power_role(port, PD_ROLE_SOURCE);
