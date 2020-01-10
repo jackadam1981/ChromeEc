@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d7afe8b_6f6b7a7e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-10T23:31:25Z",
+      "side": 1,
+      "message": "It\u0027s kind of weird to add the CHARGE_PORT_NONE condition to a variable called \"charging\", as it explicitly isn\u0027t charging when there is no port selected.  Could we rename this to something like \"charging_allowed_on_port\" ?",
+      "range": {
+        "startLine": 1535,
+        "startChar": 5,
+        "endLine": 1535,
+        "endChar": 13
+      },
+      "revId": "9d4ac9fc7e500c0cfafeda4b13f48868c8d654ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
