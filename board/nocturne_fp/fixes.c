@@ -15,6 +15,7 @@
 #include "ec_commands.h" /* Reset cause */
 #include "gpio.h"
 #include "hooks.h"
+#include "hwwp.h"
 #include "panic.h" /* system_reset */
 #include "system.h"
 #include "task.h"
@@ -69,7 +70,7 @@ __override
 void bkpdata_write_reset_flags(uint32_t save_flags)
 {
 	/* Preserve flags in case a reset pulse occurs */
-	if (!gpio_get_level(GPIO_WP))
+	if (!hwwp_isasserted())
 		save_flags |= FORGE_PORFLAG_FLAGS;
 
 #ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED

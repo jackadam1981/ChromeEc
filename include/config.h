@@ -4392,6 +4392,13 @@
 #undef CONFIG_WLAN_POWER_ACTIVE_LOW
 
 /*
+ * Enables the accessors for the write protect gpio signal.
+ * It uses either GPIO_WP or GPIO_WP_L based on the status of
+ * CONFIG_WP_ACTIVE_HIGH.
+ */
+#undef CONFIG_WP
+
+/*
  * Write protect signal is active-high.  If this is defined, there must be a
  * GPIO named GPIO_WP; if not defined, there must be a GPIO names GPIO_WP_L.
  */
@@ -4861,6 +4868,15 @@
 	defined(CONFIG_FP_SENSOR_FPC1035) || \
 	defined(CONFIG_FP_SENSOR_FPC1145)
 #define CONFIG_FP_SENSOR
+#endif
+
+/*
+ * Automatically define CONFIG_WP if dependenees are enabled.
+ * Note, we really need a way to express dependencies in configs.
+ */
+#if	defined(CONFIG_FLASH) || \
+	defined(CONFIG_CROS_BOARD_INFO)
+#define CONFIG_WP
 #endif
 
 /*****************************************************************************/
