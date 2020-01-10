@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3792058_cc2586bb",
+        "filename": "chip/npcx/audio_codec_dmic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-10T06:15:26Z",
+      "side": 1,
+      "message": "Any reason these have to be global? Looks like they could be made local to audio_codec_dmic_set_gain_idx() and audio_codec_dmic_get_gain_idx()",
+      "revId": "6cfc06acbccf74233244978ab184753d65599891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ba35a0_2fd7d608",
+        "filename": "chip/npcx/audio_codec_i2s_rx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-10T06:15:26Z",
+      "side": 1,
+      "message": "Having a name start with an underscore looks odd to me, haven\u0027t seen this in EC code generally. Maybe better to use a different name?",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "6cfc06acbccf74233244978ab184753d65599891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d763c31d_03275dd2",
+        "filename": "chip/npcx/audio_codec_i2s_rx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-10T06:15:26Z",
+      "side": 1,
+      "message": "Same comment about underscore.",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "6cfc06acbccf74233244978ab184753d65599891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
