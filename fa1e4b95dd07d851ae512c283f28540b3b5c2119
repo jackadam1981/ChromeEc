@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4f0baa8_54f42f99",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-10T18:12:19Z",
+      "side": 1,
+      "message": "Nit - no longer need italics here.",
+      "range": {
+        "startLine": 732,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 36
+      },
+      "revId": "fa1e4b95dd07d851ae512c283f28540b3b5c2119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f59b104_a060ba63",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-10T18:12:19Z",
+      "side": 1,
+      "message": "Split this out as a separate step with the text \"Install the cr50-rescue\" utility in your chroot\".",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 46
+      },
+      "revId": "fa1e4b95dd07d851ae512c283f28540b3b5c2119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c41ad39a_b84c83ba",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-10T18:12:19Z",
+      "side": 1,
+      "message": "Need to note that the board needs to be completely powered off - disconnected from AC and from the battery before running this command.\nAfter starting the command, provide power to the board and rescue mode will start automatically.\n\nIt would be good to provide example output of the command running.  I\u0027ll try to capture that for you.",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 775,
+        "endChar": 34
+      },
+      "revId": "fa1e4b95dd07d851ae512c283f28540b3b5c2119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
