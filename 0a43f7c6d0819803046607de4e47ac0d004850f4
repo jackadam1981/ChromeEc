@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69d5728d_7b141868",
+        "filename": "driver/tcpm/raa489000.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-10T16:45:16Z",
+      "side": 1,
+      "message": "Needs to be \u0027const struct tcpm_drv\u0027",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "0a43f7c6d0819803046607de4e47ac0d004850f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
