@@ -46,6 +46,29 @@
       "revId": "c175293243771bf736c7f57387ee0b06b7957097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "719e7ea6_5bd4cb3a",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8136,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-10T22:47:21Z",
+      "side": 1,
+      "message": "How about \n\n\telse /* p.event_type \u003d\u003d EC_MKBP_EVENT_SWITCH */\n\t\tsupported \u003d r.switches;\n\n?",
+      "range": {
+        "startLine": 8133,
+        "startChar": 0,
+        "endLine": 8136,
+        "endChar": 12
+      },
+      "revId": "c175293243771bf736c7f57387ee0b06b7957097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
