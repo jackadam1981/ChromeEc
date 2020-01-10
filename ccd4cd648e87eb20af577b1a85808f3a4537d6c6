@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2f1e831_c32d9138",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-10T22:24:46Z",
+      "side": 1,
+      "message": "nit: I think the EC style generally doesn\u0027t indent these",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aebf2fb0_d7b0270d",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-10T22:24:46Z",
+      "side": 1,
+      "message": "I think you can do this to make sure it\u0027s only compiled for the RW image:\n\n  board-rw\u003dfixes.o",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01a624ef_e44d09d3",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-10T22:24:46Z",
+      "side": 1,
+      "message": "Even though it\u0027s redundant, you may want to do\n\n #if defined(APPLY_RESET_LOOP_FIX) \u0026\u0026 defined(SECTION_IS_RW)",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 27
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c9c98f_70a91a2d",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-10T22:24:46Z",
+      "side": 1,
+      "message": "Is this the only difference between system_reset in chip/stm32/system.c?\n\nIf so, it might be a little cleaner (reduce duplication) to add a callback mechanism that allows specifying custom flags:\n\n  save_flags |\u003d board_get_reset_flags();\n\nYou could make board_get_reset_flags be weak and return 0 by default; then override in this file.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed798ac8_efe118b3",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-10T22:24:46Z",
+      "side": 1,
+      "message": "nit: I think they added some defines for these: https://chromium.googlesource.com/chromiumos/platform/ec/+/ccd4cd648e87eb20af577b1a85808f3a4537d6c6/include/common.h#278",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 21
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
