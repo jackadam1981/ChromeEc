@@ -97,18 +97,21 @@ void clock_init(void)
 
 	/*
 	 * Configure frequency multiplier M/N values according to
-	 * the requested OSC_CLK (Unit:Hz).
+	 * the requested OSC_CLK (Unit:Hz) if needed.
 	 */
-	NPCX_HFCGN  = HFCGN;
-	NPCX_HFCGML = HFCGML;
-	NPCX_HFCGMH = HFCGMH;
+	if (NPCX_HFCGN != HFCGN || NPCX_HFCGML != HFCGML
+				|| NPCX_HFCGMH != HFCGMH) {
 
-	/* Load M and N values into the frequency multiplier */
-	SET_BIT(NPCX_HFCGCTRL, NPCX_HFCGCTRL_LOAD);
+		NPCX_HFCGN  = HFCGN;
+		NPCX_HFCGML = HFCGML;
+		NPCX_HFCGMH = HFCGMH;
 
-	/* Wait for stable */
-	while (IS_BIT_SET(NPCX_HFCGCTRL, NPCX_HFCGCTRL_CLK_CHNG))
-		;
+		/* Load M and N values into the frequency multiplier */
+		SET_BIT(NPCX_HFCGCTRL, NPCX_HFCGCTRL_LOAD);
+		/* Wait for stable */
+		while (IS_BIT_SET(NPCX_HFCGCTRL, NPCX_HFCGCTRL_CLK_CHNG))
+			;
+	}
 
 	/* Set all clock prescalers of core and peripherals. */
 #if defined(CHIP_FAMILY_NPCX5)
