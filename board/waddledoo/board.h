@@ -11,12 +11,30 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
+/* Charger */
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_RAA489000
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+
+/* EC console commands */
+#define CONFIG_CMD_TCPCI_DUMP
+
+/* USB */
+#define CONFIG_BC12_DETECT_PI3USB9201
+
+/* USB PD */
+#define CONFIG_USB_PD_TCPM_RAA489000
+
 /* I2C configuration */
 #define I2C_PORT_EEPROM     NPCX_I2C_PORT7_0
 #define I2C_PORT_BATTERY    NPCX_I2C_PORT5_0
 #define I2C_PORT_SENSOR     NPCX_I2C_PORT0_0
 #define I2C_PORT_USB_C0     NPCX_I2C_PORT1_0
 #define I2C_PORT_SUB_USB_C1 NPCX_I2C_PORT2_0
+#define I2C_PORT_USB_MUX    I2C_PORT_USB_C0
+/* TODO(b:147440290): Need to handle multiple charger ICs */
+#define I2C_PORT_CHARGER    I2C_PORT_USB_C0
 
 #define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
 

@@ -147,6 +147,8 @@ void pd_interrupt_handler_task(void *p)
 			 * interrupts. Upon existing suspend, we schedule a
 			 * PD_PROCESS_INTERRUPT to check if we missed anything.
 			 */
+			ccprints("%s: process irq evt", __func__);
+			ccprints("tcpc_alert_status = 0x%x", tcpc_get_alert_status());
 			while ((tcpc_get_alert_status() & port_mask) &&
 					pd_is_port_enabled(port))
 				tcpc_alert(port);
