@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99361388_1979dd28",
+        "filename": "board/nucleo-f767/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1387258
+      },
+      "writtenOn": "2020-01-10T22:19:12Z",
+      "side": 1,
+      "message": "I don\u0027t think so, I\u0027ll remove them (I just copied CONFIG_MKBP_EVENT as part of commit 6b3575c0a).",
+      "parentUuid": "82d3ccfd_aa287be5",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 74
+      },
+      "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e848e488_7cfd7bf1",
         "filename": "board/nucleo-f767/board.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-10T20:04:53Z",
       "side": 1,
       "message": "Do you need these?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce65e2f6_07fb43c4",
+        "filename": "board/nucleo-f767/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1387258
+      },
+      "writtenOn": "2020-01-10T22:19:12Z",
+      "side": 1,
+      "message": "I guess no, but I\u0027m a bit vague on how the RO / RW jumps occur, and the RW signature.  \nI\u0027ll try taking it out.  \n\nI do see the servo_micro looks like it does jump to RW so perhaps that is needed for this board also?  But I\u0027ll try removing the signature verification anyway.",
+      "parentUuid": "e848e488_7cfd7bf1",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "6230bd98_0cfcc8fc",
+        "filename": "chip/stm32/flash-stm32f3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1387258
+      },
+      "writtenOn": "2020-01-10T22:19:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6b13954_8a110baa",
+      "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14d09590_10816ca9",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2020-01-10T18:51:51Z",
       "side": 1,
       "message": "Can\u0027t check in obviously.",
+      "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d312fcc_133fce0a",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1387258
+      },
+      "writtenOn": "2020-01-10T22:19:12Z",
+      "side": 1,
+      "message": "Yes, my guess was the \"right\" way to do it would be to look for all the places CHIP_FAMILY_STM32F4 is used, and OR it with CHIP_FAMILY_STM32F7 (if the functionality is the same).  \nThen the build.mk could use \"CHIP_FAMILY:\u003dstm32f7\"",
+      "parentUuid": "14d09590_10816ca9",
       "revId": "705ae1c3e0d9400280c9c0ff18a88b3fac1f0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
