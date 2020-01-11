@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eac9009d_12163f52",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-11T01:18:52Z",
+      "side": 1,
+      "message": "Do we need (arr)[0]?",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "c90754ca3123273db0f48c717800d2fc69566f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
