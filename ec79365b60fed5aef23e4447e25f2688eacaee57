@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8845768_67295cad",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-11T05:51:13Z",
+      "side": 1,
+      "message": "Looking at this again, I\u0027m now thinking we should be treating the PS8802 as the mux, not the retimer: it is being used as the full mux. So my suggestion is to move the PS8802 calls into our custom C1 mux driver, and then the PS8802 can take care of saving the polarity state to return to mux get. But then that might complicate the PS8802 / PS8818 detection. At some point we can use FW_CONFIG for that, but for Trembyle it is convenient to be able to mix and match DBs.",
+      "revId": "ec79365b60fed5aef23e4447e25f2688eacaee57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
