@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4eaab38c_3c39da6b",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-11T03:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f1e831_c32d9138",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aebf2fb0_d7b0270d",
         "filename": "board/nocturne_fp/build.mk",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cde0223_3ac6b325",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-11T03:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aebf2fb0_d7b0270d",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5cdda378_edcc565f",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-11T03:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a624ef_e44d09d3",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 27
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0c9c98f_70a91a2d",
         "filename": "board/nocturne_fp/fixes.c",
         "patchSetId": 14
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-10T22:24:46Z",
       "side": 1,
       "message": "Is this the only difference between system_reset in chip/stm32/system.c?\n\nIf so, it might be a little cleaner (reduce duplication) to add a callback mechanism that allows specifying custom flags:\n\n  save_flags |\u003d board_get_reset_flags();\n\nYou could make board_get_reset_flags be weak and return 0 by default; then override in this file.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50167157_63e17001",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-11T03:20:28Z",
+      "side": 1,
+      "message": "Yep, that\u0027s the only difference.\n\nI agree that it would be cleaner/more-maintainable from the fingerprint perspective, but it makes the common code harder to understand. Plus, I can\u0027t come up with any other reason a board would need to set extra reset flags.\n\nI really wanted to isolate our bug from the common code.\n\n---\n\nCheckout the latest PS. There is much less duplication, and the solution is more to-the-point.",
+      "parentUuid": "b0c9c98f_70a91a2d",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -114,6 +210,30 @@
       "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682da3ed_1855559c",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-11T03:20:28Z",
+      "side": 1,
+      "message": "Ohhh great find.\nDone",
+      "parentUuid": "ed798ac8_efe118b3",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 21
+      },
+      "revId": "ccd4cd648e87eb20af577b1a85808f3a4537d6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
