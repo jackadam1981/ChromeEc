@@ -16,6 +16,24 @@
       "revId": "ec79365b60fed5aef23e4447e25f2688eacaee57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6f45a9_8e1df864",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-11T18:07:02Z",
+      "side": 1,
+      "message": "This combination does not have the flip in the FP5 but it has to do the rest.  The FP5 is not a retimer, it is a MUX.  Can we land this CL and discuss this more when you are available in Boulder?",
+      "parentUuid": "a8845768_67295cad",
+      "revId": "ec79365b60fed5aef23e4447e25f2688eacaee57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
