@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "195e5cf8_acd71125",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-12T06:19:31Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 663,
+        "startChar": 7,
+        "endLine": 663,
+        "endChar": 11
+      },
+      "revId": "01d7cd01a251617cab14883b2cf7c4b2d45f86a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "802040b5_a6a8705c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-12T06:19:31Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 668,
+        "startChar": 28,
+        "endLine": 668,
+        "endChar": 35
+      },
+      "revId": "01d7cd01a251617cab14883b2cf7c4b2d45f86a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9df3670_c8108570",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-12T06:19:31Z",
+      "side": 1,
+      "message": "its 3 bit, can you check if this is bit wise?",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 710,
+        "endChar": 15
+      },
+      "revId": "01d7cd01a251617cab14883b2cf7c4b2d45f86a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
