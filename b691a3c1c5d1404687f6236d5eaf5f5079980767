@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a460955_9d5b6077",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T22:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d42e82_6506a5a7",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 697,
+        "endChar": 30
+      },
+      "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a447ddb8_a2b7a580",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "074cd154_a49e46f6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T22:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a447ddb8_a2b7a580",
+      "range": {
+        "startLine": 1397,
+        "startChar": 2,
+        "endLine": 1399,
+        "endChar": 16
+      },
+      "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284919f1_b7ad4e92",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e60ffd_cb500a21",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T22:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284919f1_b7ad4e92",
+      "range": {
+        "startLine": 1407,
+        "startChar": 1,
+        "endLine": 1408,
+        "endChar": 13
+      },
+      "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
