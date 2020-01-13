@@ -16,20 +16,24 @@ struct usb_retimer usb_retimers[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT0_BB_RETIMER,
 		.i2c_addr_flags = I2C_PORT0_BB_RETIMER_ADDR,
-		.shared_nvm = USB_PORT0_BB_RETIMER_SHARED_NVM,
-		.usb_ls_en_gpio = GPIO_USB_C0_LS_EN,
-		.retimer_rst_gpio = GPIO_USB_C0_RETIMER_RST,
-		.force_power_gpio = GPIO_USB_C0_RETIMER_FORCE_PWR,
+		.ctrl = {
+			.shared_nvm = USB_PORT0_BB_RETIMER_SHARED_NVM,
+			.usb_ls_en_gpio = GPIO_USB_C0_LS_EN,
+			.retimer_rst_gpio = GPIO_USB_C0_RETIMER_RST,
+			.force_power_gpio = GPIO_USB_C0_RETIMER_FORCE_PWR,
+		},
 	},
 #ifdef HAS_TASK_PD_C1
 	[TYPE_C_PORT_1] = {
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT1_BB_RETIMER,
 		.i2c_addr_flags = I2C_PORT1_BB_RETIMER_ADDR,
-		.shared_nvm = USB_PORT1_BB_RETIMER_SHARED_NVM,
-		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
-		.retimer_rst_gpio = GPIO_USB_C1_RETIMER_RST,
-		.force_power_gpio = GPIO_USB_C1_RETIMER_FORCE_PWR,
+		.ctrl = {
+			.shared_nvm = USB_PORT1_BB_RETIMER_SHARED_NVM,
+			.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
+			.retimer_rst_gpio = GPIO_USB_C1_RETIMER_RST,
+			.force_power_gpio = GPIO_USB_C1_RETIMER_FORCE_PWR,
+		},
 	},
 #endif /* HAS_TASK_PD_C1 */
 };

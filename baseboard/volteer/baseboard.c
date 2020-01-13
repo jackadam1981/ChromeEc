@@ -390,10 +390,12 @@ struct usb_retimer usb_retimers[] = {
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT_USB_1_MIX,
 		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
-		.shared_nvm = false,
-		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
-		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
-		.force_power_gpio = GPIO_USB_C1_RT_FORCE_PWR,
+		.ctrl = {
+			.shared_nvm = false,
+			.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
+			.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
+			.force_power_gpio = GPIO_USB_C1_RT_FORCE_PWR,
+		},
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_retimers) == USBC_PORT_COUNT);
