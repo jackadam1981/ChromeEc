@@ -522,8 +522,10 @@ struct usb_retimer usb_retimers[] = {
 		.driver = &pi3dpx1207_usb_retimer,
 		.i2c_port = I2C_PORT_TCPC0,
 		.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
-		.gpio_enable = IOEX_USB_C0_DATA_EN,
-		.gpio_dp_enable = GPIO_USB_C0_IN_HPD,
+		.ctrl = {
+			.enable_gpio = IOEX_USB_C0_DATA_EN,
+			.dp_enable_gpio = GPIO_USB_C0_IN_HPD,
+		},
 	},
 	[USBC_PORT_C1] = {
 		.driver = &zork_c1_usb_retimer,

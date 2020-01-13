@@ -194,16 +194,25 @@ struct usb_retimer {
 	const int i2c_port;
 	uint16_t i2c_addr_flags;
 
-	/* NVM flag if shared with multiple retimers */
-	const bool shared_nvm;
-
-	/* Retimer control GPIOs */
-	const enum gpio_signal gpio_enable;     /* Retimer enable */
-	const enum gpio_signal gpio_dp_enable;  /* DP Mode enable */
-
-	const enum gpio_signal usb_ls_en_gpio;  /* Load switch enable */
-	const enum gpio_signal retimer_rst_gpio;/* Retimer reset */
-	const enum gpio_signal force_power_gpio;/* Force power (active/low) */
+	/* Hardware specific optional control signals */
+	union {
+		struct {
+			/* Retimer enable */
+			const enum gpio_signal enable_gpio;
+			/* DP Mode enable */
+			const enum gpio_signal dp_enable_gpio;
+		};
+		struct {
+			/* NVM flag if shared with multiple retimers */
+			const bool shared_nvm;
+			/* Load switch enable */
+			const enum gpio_signal usb_ls_en_gpio;
+			/* Retimer reset */
+			const enum gpio_signal retimer_rst_gpio;
+			/* Force power (active/low) */
+			const enum gpio_signal force_power_gpio;
+		};
+	} ctrl;
 
 	/* Driver interfaces for this retimer */
 	const struct usb_retimer_driver *driver;
