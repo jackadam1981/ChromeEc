@@ -45,6 +45,30 @@
       "revId": "d13536dbccfcfe4a7ddf1c07584e2ecb98f79c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67175cd_9e68bd0d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-13T22:59:52Z",
+      "side": 1,
+      "message": "I thought it was the V vs v thing. I will fix this.",
+      "parentUuid": "5f0c5b45_04c98e60",
+      "range": {
+        "startLine": 1532,
+        "startChar": 4,
+        "endLine": 1532,
+        "endChar": 11
+      },
+      "revId": "d13536dbccfcfe4a7ddf1c07584e2ecb98f79c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
