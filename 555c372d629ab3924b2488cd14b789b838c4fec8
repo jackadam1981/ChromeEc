@@ -70,6 +70,30 @@
       "revId": "555c372d629ab3924b2488cd14b789b838c4fec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37542e4a_a7ecede9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-13T21:35:36Z",
+      "side": 1,
+      "message": "It sounds like two refactors would be appropriate:\n1. Rename functions in this file to avoid confusing use of the word, \"check.\"\n2. Convert pd_request_power_swap, pd_request_vconn_swap, and pd_try_vconn_src to use IS_ENABLED.\n\nThose would be pretty out-of-scope for this CL, so you don\u0027t need to do them now, if it\u0027s inconvenient.",
+      "parentUuid": "ddf8e135_0ec817c2",
+      "range": {
+        "startLine": 591,
+        "startChar": 19,
+        "endLine": 591,
+        "endChar": 39
+      },
+      "revId": "555c372d629ab3924b2488cd14b789b838c4fec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
