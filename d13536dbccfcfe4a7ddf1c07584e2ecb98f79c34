@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eab1c335_d8ba23dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-13T23:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ffc57e_63fde63f",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "d13536dbccfcfe4a7ddf1c07584e2ecb98f79c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f0c5b45_04c98e60",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "it was both :)",
       "parentUuid": "e67175cd_9e68bd0d",
+      "range": {
+        "startLine": 1532,
+        "startChar": 4,
+        "endLine": 1532,
+        "endChar": 11
+      },
+      "revId": "d13536dbccfcfe4a7ddf1c07584e2ecb98f79c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2690662_7f78a7fc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-13T23:42:49Z",
+      "side": 1,
+      "message": "Now it says vSafe5V",
+      "parentUuid": "77cd9915_62f2b8ea",
       "range": {
         "startLine": 1532,
         "startChar": 4,
