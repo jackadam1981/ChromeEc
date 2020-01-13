@@ -39,6 +39,24 @@
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22f98c6_84a3cfeb",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T23:31:53Z",
+      "side": 1,
+      "message": "can you check, generally bool is not allowed in bit wise structure, bool is still \u003d 8bit",
+      "parentUuid": "c068cddd_39c0cb6a",
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
