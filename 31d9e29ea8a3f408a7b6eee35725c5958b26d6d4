@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bdcea90_826fd5b2",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T18:27:46Z",
+      "side": 1,
+      "message": "let\u0027s add a note saying something like:\n\nresting the OSC_CLK (even to the same value) will make the clock unstable for a little which can affect peripheral communication like eSPI. Skip this if not needed (e.g. RW jump)",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "31d9e29ea8a3f408a7b6eee35725c5958b26d6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
