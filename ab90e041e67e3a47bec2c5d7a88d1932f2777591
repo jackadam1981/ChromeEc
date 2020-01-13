@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea985052_dc907831",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6150489_fa7d17cd",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 43
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "854c0c5c_2cb081b1",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987fb0d4_7a904a07",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "854c0c5c_2cb081b1",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1034d1d8_e7345b8b",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Host port and slave address can get in board.h and it8801.h, and ioex has not been used. So we can use it8801_read instead of this function.",
+      "parentUuid": "72360e00_2232ea37",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e82a4381_2e6c26eb",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aae3a74_1bedff04",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82a4381_2e6c26eb",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "329d0dd9_e0790e52",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Declare global variable of it8801_gpio_sov[].",
+      "parentUuid": "e5c5d30a_d076deec",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 63
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09a7bbba_ab4628df",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 10
@@ -131,6 +251,24 @@
       "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c98aab1a_4b6f018c",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a7bbba_ab4628df",
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "ca0af5bb_88757c54",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770efa05_b44859f1",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e843a0a9_2a8020ed",
         "filename": "driver/ioexpander/it8801.h",
         "patchSetId": 10
@@ -177,6 +339,30 @@
       "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8996590_3d525da3",
+        "filename": "driver/ioexpander/it8801.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-13T11:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e843a0a9_2a8020ed",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
