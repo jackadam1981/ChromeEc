@@ -46,6 +46,30 @@
       "revId": "ef78ce58231816252caa2acfee9c2d8bd565eb3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921932db_c4a3e7f2",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-13T22:35:42Z",
+      "side": 1,
+      "message": "Correct, chrome can decide whether it wants to or not. People often mistakenly break this feature we have where you can have a convertible with an external display connected and still want to use the internal keyboard and trackpad.",
+      "parentUuid": "37863e3b_2194d714",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "ef78ce58231816252caa2acfee9c2d8bd565eb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
