@@ -70,6 +70,30 @@
       "revId": "c90754ca3123273db0f48c717800d2fc69566f4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9bd4463_88f3475b",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-13T16:53:26Z",
+      "side": 1,
+      "message": "Good catch, added.",
+      "parentUuid": "34759e1d_6cc71442",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "c90754ca3123273db0f48c717800d2fc69566f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
