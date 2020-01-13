@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d830b796_89e12d46",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T21:26:36Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "67bb7633_08f49651",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 31
+      },
+      "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58148c87_bd0dd87e",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b53fde_5252b170",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T21:26:36Z",
+      "side": 1,
+      "message": "There is ControlRegister1 and ControlRegister2 for each SPI port, so we are only turning on and off the SPE bit for a single SPI port at a time.\n\nThe clear fifo is also reading that ports SPI data as well.\n\nAs I read the code, it does appear that all of the code in shutdown is targeted towards a specific port.\n\nI appreciate you taking the time to think through this! Thanks for the review 😊",
+      "parentUuid": "58148c87_bd0dd87e",
+      "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a929ad28_639d24bd",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c0dd66_dd636309",
+      "range": {
+        "startLine": 263,
+        "startChar": 17,
+        "endLine": 263,
+        "endChar": 22
+      },
+      "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42294f51_8bea058e",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa07adf1_cdfda9ea",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T21:26:36Z",
+      "side": 1,
+      "message": "I added the check.",
+      "parentUuid": "42294f51_8bea058e",
+      "revId": "bf3e489730ab891605cbd290f1aeb29e0e234c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
