@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b08006cd_6a96640b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-13T19:13:14Z",
+      "side": 1,
+      "message": "Nit: In the case",
+      "range": {
+        "startLine": 636,
+        "startChar": 4,
+        "endLine": 636,
+        "endChar": 10
+      },
+      "revId": "01d7cd01a251617cab14883b2cf7c4b2d45f86a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "195e5cf8_acd71125",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 19
@@ -40,6 +63,29 @@
         "startLine": 668,
         "startChar": 28,
         "endLine": 668,
+        "endChar": 35
+      },
+      "revId": "01d7cd01a251617cab14883b2cf7c4b2d45f86a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10bee3a5_e5f3c87b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-13T19:13:14Z",
+      "side": 1,
+      "message": "Nit: I think braces around the if body would make this a little easier to read.",
+      "range": {
+        "startLine": 1155,
+        "startChar": 5,
+        "endLine": 1155,
         "endChar": 35
       },
       "revId": "01d7cd01a251617cab14883b2cf7c4b2d45f86a9",

@@ -93,6 +93,30 @@
       "revId": "c3cb5529c1f03793177003a09f1f6efae4a88cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8551173c_43e6c53a",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-13T19:13:14Z",
+      "side": 1,
+      "message": "It seems odd to me to use fixed-width types for bit fields whose widths are different than the type widths. In particular, the 1-bit fields seem like natural bools.",
+      "parentUuid": "36fdf0dd_8eb077f3",
+      "range": {
+        "startLine": 732,
+        "startChar": 2,
+        "endLine": 732,
+        "endChar": 10
+      },
+      "revId": "c3cb5529c1f03793177003a09f1f6efae4a88cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
