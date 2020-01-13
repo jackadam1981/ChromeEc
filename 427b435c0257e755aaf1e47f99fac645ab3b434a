@@ -22,6 +22,30 @@
       "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03098316_de2d4879",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T20:32:49Z",
+      "side": 1,
+      "message": "we need a retimer for TBT. P0 doesn\u0027t have it",
+      "parentUuid": "b1095dab_4fdf6c84",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
