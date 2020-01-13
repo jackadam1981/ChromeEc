@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "30479d6b_e734a71a",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T23:25:17Z",
+      "side": 1,
+      "message": "Yes, but need to verify in P2",
+      "parentUuid": "d55215a1_917b0ae0",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c605394_8d9f02c4",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -87,6 +111,24 @@
       "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec4861e_04e30631",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T23:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c605394_8d9f02c4",
+      "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +152,30 @@
       "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea3620c_335e17cf",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-13T23:25:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5809809d_ee36e2d2",
+      "range": {
+        "startLine": 1592,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 0
+      },
+      "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
