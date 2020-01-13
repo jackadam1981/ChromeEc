@@ -1589,6 +1589,18 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port);
 enum tbt_compat_rounded_support get_tbt_rounded_support(int port);
 
 /**
+ * Return maximum allowed speed for Thunderbolt-compatible mode
+ *
+ * Thunderbolt-compatible mode has electrical and PCB requirements for signal
+ * routing and length. Default speed is set for connected cable's speed.
+ * Board level function can override the cable speed based on the design.
+ *
+ * @param port USB-C port number
+ * @return cable speed
+ */
+__override_proto enum tbt_compat_cable_speed board_get_max_tbt_speed(int port);
+
+/**
  * Store Device ID & RW hash of device
  *
  * @param port			USB-C port number
