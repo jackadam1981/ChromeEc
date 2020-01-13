@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b7de713_2a5bf92f",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15623ced_64dbd47f",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "Do we still need BOARD_KUKUI?",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 23
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113383d9_deeb307d",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "modify this based on Kakadu setting.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 2
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aaf161c_df77f64a",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 416,
+        "startChar": 7,
+        "endLine": 416,
+        "endChar": 18
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2aa935e_ae7734e1",
+        "filename": "board/kakadu/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e7a850_f3e306aa",
+        "filename": "board/kakadu/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "Kodama",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412b7a22_d0dace36",
+        "filename": "board/kakadu/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4e0782_c3612389",
+        "filename": "board/kakadu/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b74d6d_b6b87eba",
+        "filename": "board/kakadu/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c02477_5f160d13",
+        "filename": "board/kakadu/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "354d032a_c9582ec7",
+        "filename": "board/kakadu/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5dab87_74319102",
+        "filename": "board/kakadu/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "Kakadu",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8030b411_0ed0c9e4",
+        "filename": "board/kakadu/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "kakadu",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98e549b0_dd6b403f",
+        "filename": "board/kakadu/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-01-13T02:47:14Z",
+      "side": 1,
+      "message": "kakadu.",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 17
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
