@@ -171,9 +171,8 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 		return;
 
 	exit_low_power_mode(port);
-
 	/* Configure superspeed lanes */
-	mux_state = ((mux_mode != TYPEC_MUX_NONE) && polarity)
+	mux_state = (polarity)
 			? mux_mode | MUX_POLARITY_INVERTED
 			: mux_mode;
 
