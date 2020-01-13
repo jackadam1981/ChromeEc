@@ -7,6 +7,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "ioexpander.h"
 #include "it8801.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
@@ -84,8 +85,9 @@ void keyboard_raw_init(void)
 		it8801_write(IT8801_REG_GPIO23_KSO20, IT8801_REG_MASK_GPIODIR);
 
 		/* Start with KEYBOARD_COLUMN_ALL, output high(so selected). */
-		it8801_read(IT8801_REG_GPIOG2SOVR, &val);
-		it8801_write(IT8801_REG_GPIOG2SOVR, val | IT8801_REG_GPIO23SOV);
+		it8801_read(IT8801_REG_GPIO_SOVR(2), &val);
+		it8801_write(IT8801_REG_GPIO_SOVR(2), val |
+			IT8801_REG_GPIO23SOV);
 	}
 
 	/* Keyboard scan in interrupt enable register */
@@ -122,8 +124,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 
 		if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED)) {
 			/* Output low(so not selected). */
-			it8801_read(IT8801_REG_GPIOG2SOVR, &val);
-			it8801_write(IT8801_REG_GPIOG2SOVR, val &
+			it8801_read(IT8801_REG_GPIO_SOVR(2), &val);
+			it8801_write(IT8801_REG_GPIO_SOVR(2), val &
 				~IT8801_REG_GPIO23SOV);
 		}
 	}
@@ -134,8 +136,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 
 		if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED)) {
 			/* Output high(so selected). */
-			it8801_read(IT8801_REG_GPIOG2SOVR, &val);
-			it8801_write(IT8801_REG_GPIOG2SOVR, val |
+			it8801_read(IT8801_REG_GPIO_SOVR(2), &val);
+			it8801_write(IT8801_REG_GPIO_SOVR(2), val |
 				IT8801_REG_GPIO23SOV);
 		}
 	} else {
@@ -152,13 +154,13 @@ test_mockable void keyboard_raw_drive_column(int col)
 			/* GPIO23 is inverted. */
 			if (col == IT8801_REG_MASK_SELKSO2) {
 				/* Output high(so selected). */
-				it8801_read(IT8801_REG_GPIOG2SOVR, &val);
-				it8801_write(IT8801_REG_GPIOG2SOVR, val |
+				it8801_read(IT8801_REG_GPIO_SOVR(2), &val);
+				it8801_write(IT8801_REG_GPIO_SOVR(2), val |
 					IT8801_REG_GPIO23SOV);
 			} else {
 				/* Output low(so not selected). */
-				it8801_read(IT8801_REG_GPIOG2SOVR, &val);
-				it8801_write(IT8801_REG_GPIOG2SOVR, val &
+				it8801_read(IT8801_REG_GPIO_SOVR(2), &val);
+				it8801_write(IT8801_REG_GPIO_SOVR(2), val &
 					~IT8801_REG_GPIO23SOV);
 			}
 		}
@@ -198,6 +200,175 @@ void io_expander_it8801_interrupt(enum gpio_signal signal)
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
+
+/*
+ * Initialize the general purpose I/O port(GPIO)
+ */
+static int it8801_ioex_init(int ioex)
+{
+	int ret;
+
+	/*  Verify Vendor ID registers. */
+	ret = it8801_check_vendor_id();
+	if (ret) {
+		CPRINTS("Failed to read IT8801 vendor id %x", ret);
+		return ret;
+	}
+
+	return EC_SUCCESS;
+}
+
+static const int it8801_valid_gpio_group[] = {
+	IT8801_VALID_GPIO_G0_MASK,
+	IT8801_VALID_GPIO_G1_MASK,
+	IT8801_VALID_GPIO_G2_MASK,
+};
+
+/* Mutexes */
+static struct mutex ioex_mutex;
+
+static int it8801_gpio_sov[ARRAY_SIZE(it8801_valid_gpio_group)];
+
+static int ioex_check_is_not_valid(int port, int mask)
+{
+	if (port >= ARRAY_SIZE(it8801_valid_gpio_group)) {
+		ccprintf("Port%d is not support in IT8801\n", port);
+		return EC_ERROR_INVAL;
+	}
+
+	if (mask & ~it8801_valid_gpio_group[port]) {
+		ccprintf("GPIO%d-%d is not support in IT8801\n", port
+			, __fls(mask));
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_get_level(int ioex, int port, int mask, int *val)
+{
+	int rv;
+
+	if (ioex_check_is_not_valid(port, mask))
+		return EC_ERROR_INVAL;
+
+	rv = it8801_read(IT8801_REG_GPIO_IPSR(port), val);
+	if (rv)
+		return rv;
+
+	*val = !!(*val & mask);
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_set_level(int ioex, int port, int mask, int value)
+{
+	int rv = 0;
+
+	if (ioex_check_is_not_valid(port, mask))
+		return EC_ERROR_INVAL;
+
+	mutex_lock(&ioex_mutex);
+	if (mask ^ it8801_gpio_sov[port]) {
+		if (value)
+			it8801_gpio_sov[port] |= mask;
+		else
+			it8801_gpio_sov[port] &= ~mask;
+
+		rv = it8801_write(IT8801_REG_GPIO_SOVR(port),
+					 it8801_gpio_sov[port]);
+
+	}
+	mutex_unlock(&ioex_mutex);
+
+	return rv ? rv : EC_SUCCESS;
+}
+
+static int it8801_ioex_get_flags_by_mask(int ioex, int port,
+		int mask, int *flags)
+{
+	int rv, val;
+
+	if (ioex_check_is_not_valid(port, mask))
+		return EC_ERROR_INVAL;
+
+	rv = it8801_read(IT8801_REG_GPIO_CR(port, mask), &val);
+
+	*flags = 0;
+
+	/* Get GPIO direction */
+	*flags |= (val & IT8801_GPIODIR) ? GPIO_OUTPUT : GPIO_INPUT;
+
+	/* Get GPIO type, 0:push-pull 1:open-drain */
+	if (val & IT8801_GPIOIOT)
+		*flags |= GPIO_OPEN_DRAIN;
+
+	rv |= it8801_read(IT8801_REG_GPIO_IPSR(port), &val);
+	if (rv)
+		return rv;
+
+	/* Get GPIO output level */
+	*flags |= (val & mask) ? GPIO_HIGH : GPIO_LOW;
+
+	return EC_SUCCESS;
+}
+
+static int it8801_ioex_set_flags_by_mask(int ioex, int port,
+		int mask, int flags)
+{
+	int rv, val;
+
+	if (ioex_check_is_not_valid(port, mask))
+		return EC_ERROR_INVAL;
+
+	if (flags & ~IT8801_SUPPORT_GPIO_FLAGS) {
+		ccprintf("Flag 0x%08x is not supported at port %d, mask %d\n",
+					flags, port, mask);
+		return EC_ERROR_INVAL;
+	}
+
+	/* GPIO alternate function switching(GPIO[00]). */
+	if (IT8801_REG_GPIO_CR(port, mask) == IT8801_REG_GPIO00_KSO19) {
+		it8801_write(IT8801_REG_GPIO00_KSO19,
+				IT8801_REG_MASK_GPIOAFS_FUNC1);
+	}
+
+	mutex_lock(&ioex_mutex);
+	rv = it8801_read(IT8801_REG_GPIO_CR(port, mask), &val);
+
+	/* Select open drain 0:push-pull 1:open-drain */
+	if (flags & GPIO_OPEN_DRAIN)
+		val |= IT8801_GPIOIOT;
+	else
+		val &= ~IT8801_GPIOIOT;
+
+	/* Select GPIO direction */
+	if (flags & GPIO_OUTPUT) {
+		if (mask ^ it8801_gpio_sov[port]) {
+			/* Configure the output level */
+			if (flags & GPIO_HIGH)
+				it8801_gpio_sov[port] |= mask;
+			else
+				it8801_gpio_sov[port] &= ~mask;
+		}
+		val |= IT8801_GPIODIR;
+	} else
+		val &= ~IT8801_GPIODIR;
+
+	rv |= it8801_write(IT8801_REG_GPIO_SOVR(port), it8801_gpio_sov[port]);
+	rv |= it8801_write(IT8801_REG_GPIO_CR(port, mask), val);
+	mutex_unlock(&ioex_mutex);
+
+	return rv ? rv : EC_SUCCESS;
+}
+
+const struct ioexpander_drv it8801_ioexpander_drv = {
+	.init              = &it8801_ioex_init,
+	.get_level         = &it8801_ioex_get_level,
+	.set_level         = &it8801_ioex_set_level,
+	.get_flags_by_mask = &it8801_ioex_get_flags_by_mask,
+	.set_flags_by_mask = &it8801_ioex_set_flags_by_mask,
+};
 
 static void dump_register(int reg)
 {
