@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "d804193f_c8b32fdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-13T18:35:55Z",
+      "side": 1,
+      "message": "Need to add the b: prefix.",
+      "revId": "9d4ac9fc7e500c0cfafeda4b13f48868c8d654ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77c3514_90e640a9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-13T18:35:55Z",
+      "side": 1,
+      "message": "typo: \u0027vSafe5V\u0027",
+      "range": {
+        "startLine": 1532,
+        "startChar": 4,
+        "endLine": 1532,
+        "endChar": 11
+      },
+      "revId": "9d4ac9fc7e500c0cfafeda4b13f48868c8d654ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d7afe8b_6f6b7a7e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -18,6 +58,53 @@
         "startChar": 5,
         "endLine": 1535,
         "endChar": 13
+      },
+      "revId": "9d4ac9fc7e500c0cfafeda4b13f48868c8d654ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed6ba040_77f0fa19",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-13T18:35:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8d7afe8b_6f6b7a7e",
+      "range": {
+        "startLine": 1535,
+        "startChar": 5,
+        "endLine": 1535,
+        "endChar": 13
+      },
+      "revId": "9d4ac9fc7e500c0cfafeda4b13f48868c8d654ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e445d3_02ac5c44",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-13T18:35:55Z",
+      "side": 1,
+      "message": "and maybe rephrase this.",
+      "range": {
+        "startLine": 1553,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 1
       },
       "revId": "9d4ac9fc7e500c0cfafeda4b13f48868c8d654ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
