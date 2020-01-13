@@ -13,6 +13,7 @@
 #include "queue.h"
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /*
  * Per-USART state stored in RAM.  This structure will be zero initialized by
@@ -31,6 +32,9 @@ struct usart_state {
 	 * that were lost due to overrun conditions.
 	 */
 	uint32_t rx_overrun;
+
+	/* Current enable state of UART */
+	bool enabled;
 };
 
 struct usart_config;
