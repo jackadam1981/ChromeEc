@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c66dc0e_ef8841c3",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T17:01:45Z",
+      "side": 1,
+      "message": "should be enum i2c_freq freq",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "8d316f329ee9fbb67e22b450d2f14a44973c3323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7fde98e_f0279c9c",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T17:01:45Z",
+      "side": 1,
+      "message": "put this if within the #ifdefs\n\n\nAlso, please add a comment for why we are carving out this special case",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "8d316f329ee9fbb67e22b450d2f14a44973c3323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d617f388_c821a924",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T17:01:45Z",
+      "side": 1,
+      "message": "does buildall work on the EC. I would think there would be linker error for other chip implementations.\n\nIf that is the case, then I would recommend adding\n\n__overridable implementaiton for chip_i2c[gs]et_freq in this file",
+      "range": {
+        "startLine": 1004,
+        "startChar": 8,
+        "endLine": 1004,
+        "endChar": 25
+      },
+      "revId": "8d316f329ee9fbb67e22b450d2f14a44973c3323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
