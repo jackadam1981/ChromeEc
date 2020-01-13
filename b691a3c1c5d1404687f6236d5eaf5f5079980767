@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8d42e82_6506a5a7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T17:07:13Z",
+      "side": 1,
+      "message": "should we return !pd_is_connected instead?",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 697,
+        "endChar": 30
+      },
+      "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a447ddb8_a2b7a580",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T17:07:13Z",
+      "side": 1,
+      "message": "let\u0027s keep the 0 and 1 since they are serialize as such in the spec",
+      "range": {
+        "startLine": 1397,
+        "startChar": 2,
+        "endLine": 1399,
+        "endChar": 16
+      },
+      "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284919f1_b7ad4e92",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T17:07:13Z",
+      "side": 1,
+      "message": "same, let\u0027s keep 0 and 1\n\nDISCONNECTED should be removed (you don\u0027t have to do that in this CL)",
+      "range": {
+        "startLine": 1407,
+        "startChar": 1,
+        "endLine": 1408,
+        "endChar": 13
+      },
+      "revId": "b691a3c1c5d1404687f6236d5eaf5f5079980767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
