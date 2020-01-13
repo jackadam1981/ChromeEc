@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9482b677_4f6be90e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-13T19:26:38Z",
+      "side": 1,
+      "message": "\"Check\" is an odd way to name/describe this function. The function doesn\u0027t return anything, which is to say that the \"check\" can\u0027t fail. If the configuration supports VCONN swapping, it will try to switch to VCONN source.\n\nIs there a better way to describe this? Should these config checks just be part of pd_try_vconn_src?",
+      "range": {
+        "startLine": 591,
+        "startChar": 19,
+        "endLine": 591,
+        "endChar": 39
+      },
+      "revId": "555c372d629ab3924b2488cd14b789b838c4fec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
