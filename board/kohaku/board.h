@@ -26,6 +26,15 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* Don't wake up from suspend on any MKBP event */
+#undef CONFIG_MKBP_EVENT_WAKEUP_MASK
+#define CONFIG_MKBP_EVENT_WAKEUP_MASK EC_MKBP_EVENT_DP_ALT_MODE_ENTERED
+
+/*
+#undef CONFIG_MKBP_USE_GPIO
+#define CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
+*/
+
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 

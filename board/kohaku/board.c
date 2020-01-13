@@ -25,6 +25,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "mkbp_event.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -457,6 +458,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_WFCAM_VSYNC);
 	/* Enable interrupt for the TCS3400 color light sensor */
 	gpio_enable_interrupt(GPIO_TCS3400_INT_ODL);
+	CPRINTS(" @@ TDW This is the right BAD VERSION\n");
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -469,3 +471,11 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC_ODL, !is_overcurrented);
 }
+
+static int foo(int argc, char **argv)
+{
+	mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
+	CPRINTS("Sending fake DP Alt Mode MKBP event (gpio + host event)...");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(foo, foo, "fake mkbp","fake");
