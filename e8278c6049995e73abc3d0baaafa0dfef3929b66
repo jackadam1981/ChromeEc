@@ -46,6 +46,30 @@
       "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f63d1f49_8cb9ab9e",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-13T18:13:01Z",
+      "side": 1,
+      "message": "If the DPTF is alive, it\u0027s expected DPTF calls dptf_set_fan_duty_target through ACPI. Is it not happening?",
+      "parentUuid": "f796c32f_027f3148",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
