@@ -77,10 +77,14 @@ void usart_init(struct usart_config const *config)
 	 * succeed.
 	 */
 	STM32_USART_CR1(base) |= STM32_USART_CR1_UE;
+
+	config->state->enabled = 1;
 }
 
 void usart_shutdown(struct usart_config const *config)
 {
+	config->state->enabled = 0;
+
 	STM32_USART_CR1(config->hw->base) &= ~STM32_USART_CR1_UE;
 
 	config->hw->ops->disable(config);
