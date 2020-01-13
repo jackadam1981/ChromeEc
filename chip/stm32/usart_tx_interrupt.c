@@ -24,6 +24,13 @@ static void usart_written(struct consumer const *consumer, size_t count)
 	struct usart_config const *config =
 		DOWNCAST(consumer, struct usart_config, consumer);
 
+	/* Drop data from USB before sending to UART if disabled */
+	if (!config->state->enabled) {
+		/* Remove all data in queue */
+		queue_advance_head(config->consumer.queue, -1);
+		return;
+	}
+
 	/*
 	 * Enable USART interrupt.  This causes the USART interrupt handler to
 	 * start fetching from the TX queue if it wasn't already.
