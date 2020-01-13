@@ -34,6 +34,24 @@
       "revId": "ec79365b60fed5aef23e4447e25f2688eacaee57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f65f16_5798c6ca",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-13T19:18:29Z",
+      "side": 1,
+      "message": "I will do some cleanup in \n\nhttps://buganizer.corp.google.com/issues/147593165\nhttps://buganizer.corp.google.com/issues/147593660",
+      "parentUuid": "7d6f45a9_8e1df864",
+      "revId": "ec79365b60fed5aef23e4447e25f2688eacaee57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
