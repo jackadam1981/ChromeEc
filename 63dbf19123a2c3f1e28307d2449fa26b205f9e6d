@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1849040_5736612d",
+        "filename": "core/riscv-rv32i/config_core.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-13T14:31:18Z",
+      "side": 1,
+      "message": "actually, can you add a comment here in the code that is similar to the comment in the CL: that the hardware doesn\u0027t support the risc-v bit manipulation extension so we need to provide a software implementation",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "63dbf19123a2c3f1e28307d2449fa26b205f9e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
