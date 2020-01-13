@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4b7a70b_37684f0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-01-13T19:23:33Z",
+      "side": 1,
+      "message": "lock ADC before cut-off",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "230c77d9a3fd99ca4528e6f126166606135678ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3593866e_87c81b84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-01-13T19:23:33Z",
+      "side": 1,
+      "message": "If ADC is under used when cut-off, this will cause a power leakge.\nThis CL lock the ADC before cut-off to prevent such case.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "230c77d9a3fd99ca4528e6f126166606135678ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4367a877_d8a0ce78",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-01-13T19:23:33Z",
+      "side": 1,
+      "message": "/*\n * We should lock ADC usage to prevent from using ADC while\n * cut-off. Or this might cause the ADC power not trning off.\n */",
+      "revId": "230c77d9a3fd99ca4528e6f126166606135678ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
