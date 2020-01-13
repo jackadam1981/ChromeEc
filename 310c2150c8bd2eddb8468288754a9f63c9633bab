@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "80e1c242_6f1860a2",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-13T21:12:41Z",
+      "side": 1,
+      "message": "What is this line supposed to do?\n\nAre you trying to find out if there would be a change of the SOV register?\n\nI think that mask^it8801_gpio_sov[port] will give you the value of the sov as if you toggled the pin, not sure why you have that as your if condition, it\u0027s very likely it\u0027s always nonzero.\n\nI think you want something like this (but i haven\u0027t tried it, you should)\n\nfuture_register_value \u003d (it8801_gpio_sov[port] \u0026 (~mask)) | (mask * value) // original register with anything at mask cleared, then ored with our mask depending on if value is set\nif (future_register_value !\u003d it8801_gpio_sov[port]) {\n    it8801_gpio_sov[port] \u003d future_register_value;\n    rv \u003d it8801_write(IT8801_REG_GPIO_SOVR(port), it8801_gpio_sov[port]);\n}\n\nor\n\nif (!!(it8801_gpio_sov[port] \u0026 mask) ^ value) // is the bit at mask different than our value\n// and keep the rest of your code",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "310c2150c8bd2eddb8468288754a9f63c9633bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53a6569d_85deb66b",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 13
@@ -65,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "358de926_89412756",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-13T21:12:41Z",
+      "side": 1,
+      "message": "This might be wrong too again.\n\nAnd this will not prevent the it8801_write(IT8801_REG_GPIO_SOVR from running when the SOVR didn\u0027t change either. Not to mention that the _CR doesn\u0027t have a cache either so there\u0027s extra writes there too.\n\nBy implementing caching here the idea would be that a second consecutive call to it8801_ioex_set_flags_by_mask with the same arguments will not cause any i2c transactions to go out. Right now you still have the exact same amount of i2c transactions.\n\nRegardless, i don\u0027t know how necessary caching is to it8801_ioex_set_flags_by_mask, it might not be an important enough function to worry about it.\n\nMy main concern with caching was for the set_level in keyboard_raw_drive_column, since that reduces i2c transactions by half.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 37
+      },
+      "revId": "310c2150c8bd2eddb8468288754a9f63c9633bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df2df87e_cb411f1c",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 13
@@ -76,6 +122,30 @@
       "writtenOn": "2020-01-13T11:31:25Z",
       "side": 1,
       "message": "move this under \"if (flags \u0026 GPIO_OUTPUT)\" block, and use ioex_mutex protect this block too.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 12
+      },
+      "revId": "310c2150c8bd2eddb8468288754a9f63c9633bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce8db92_7d5202fb",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-13T21:12:41Z",
+      "side": 1,
+      "message": "Yep, for every register where you\u0027re doing both read and write (especially if in separate places) you should use this mutex. I would check the keyboard stuff too, if you\u0027re touching/reading the same registers.",
+      "parentUuid": "df2df87e_cb411f1c",
       "range": {
         "startLine": 353,
         "startChar": 0,

@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ae61ff42_5ef4988f",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-13T21:12:41Z",
+      "side": 1,
+      "message": "But now it\u0027s weird that we\u0027re ignoring i2c_host_port, i2c_slave_addr. Someone might be modifying those at this line: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1677977/37/board/it83xx_evb/board.c#233 and wondering why the driver is not changing behavior.\n\nMaybe it\u0027s better how you had it before.",
+      "parentUuid": "1034d1d8_e7345b8b",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "ab90e041e67e3a47bec2c5d7a88d1932f2777591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e82a4381_2e6c26eb",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 10
