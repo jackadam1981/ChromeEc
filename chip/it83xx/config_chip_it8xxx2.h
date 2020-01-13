@@ -33,6 +33,8 @@
 #if defined(CHIP_VARIANT_IT83202BX)
 /* TODO(b/133460224): enable properly chip config option. */
 #define CONFIG_FLASH_SIZE           0x00080000
+/* ADC channel pin order changes */
+#define IT83XX_CHIP_ADC_PIN_ORDER_CHANGE
 /* Embedded flash is KGD */
 #define IT83XX_CHIP_FLASH_IS_KGD
 /* Don't let internal flash go into deep power down mode. */
