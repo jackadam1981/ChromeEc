@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1095dab_4fdf6c84",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-01-13T20:11:43Z",
+      "side": 1,
+      "message": "USBC_PORT_C0 meets intel\u0027s requirements to support USB3.2 gen2, not gen1",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "427b435c0257e755aaf1e47f99fac645ab3b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
