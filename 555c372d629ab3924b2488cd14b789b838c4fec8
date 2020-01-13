@@ -22,6 +22,30 @@
       "revId": "555c372d629ab3924b2488cd14b789b838c4fec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf8e135_0ec817c2",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-13T21:05:26Z",
+      "side": 1,
+      "message": "Tried to keep the names similar as check_dr_role and check_pw_role where we swap the data and power roles respectively. But makes sense to change the name since it isn\u0027t returning anything.\nI\u0027ll rename it to pd_try_execute_vconn_swap.\npd_try_vconn_src has #ifdefs so, not checking these configs here, causes error in make build all -j",
+      "parentUuid": "9482b677_4f6be90e",
+      "range": {
+        "startLine": 591,
+        "startChar": 19,
+        "endLine": 591,
+        "endChar": 39
+      },
+      "revId": "555c372d629ab3924b2488cd14b789b838c4fec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
