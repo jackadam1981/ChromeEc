@@ -22,6 +22,23 @@
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c068cddd_39c0cb6a",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-13T21:40:07Z",
+      "side": 1,
+      "message": "If I understand the way this will be used, these still need to be 1-bit bit fields. I suggested bool as a type because, semantically, it only has 2 possible values. However, it still has a size greater than one bit, unless bit fields are used.",
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
