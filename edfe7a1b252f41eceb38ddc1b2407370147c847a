@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a1076a5_896a759b",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-14T22:05:27Z",
+      "side": 1,
+      "message": "yes, no TBT works on this port. CL:2001221 covers it",
+      "parentUuid": "9890ba78_1802cb72",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "edfe7a1b252f41eceb38ddc1b2407370147c847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36492841_742fb90e",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-14T20:55:57Z",
       "side": 1,
       "message": "Perhaps return the maximum speed possible as default?  I understand we\u0027re limited by the cable\u0027s speed, but this function represents a board level limitation which will be applied later to the cable speed field",
+      "range": {
+        "startLine": 855,
+        "startChar": 1,
+        "endLine": 855,
+        "endChar": 52
+      },
+      "revId": "edfe7a1b252f41eceb38ddc1b2407370147c847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b806c8ce_c04629ef",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-14T22:05:27Z",
+      "side": 1,
+      "message": "this is the actual cable speed we got, I will add a comment",
+      "parentUuid": "36492841_742fb90e",
       "range": {
         "startLine": 855,
         "startChar": 1,
@@ -68,6 +116,30 @@
       "revId": "edfe7a1b252f41eceb38ddc1b2407370147c847a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a7e1e43_13ab2dc6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-14T22:05:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e035b370_3c84fb3f",
+      "range": {
+        "startLine": 861,
+        "startChar": 29,
+        "endLine": 861,
+        "endChar": 44
+      },
+      "revId": "edfe7a1b252f41eceb38ddc1b2407370147c847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
