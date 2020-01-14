@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "326f3adb_d15b42dd",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-14T22:38:02Z",
+      "side": 1,
+      "message": "I like grouping things by driver, should we label the first struct as being for pi3dpx1207_usb_retimer and the second for bb_usb_retimer?\nBut I have 2 objections to using a union:\n1) No protection against accessing the wrong field (eg bb_usb_retimer driver using enable_gpio).\n2) It would be better if the driver specific fields didn\u0027t all have to appear in usb_mux.h and could instead be hidden away in each driver header.",
+      "revId": "c6df1ec295f44d986e1726f2029cba2cc79f4fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
