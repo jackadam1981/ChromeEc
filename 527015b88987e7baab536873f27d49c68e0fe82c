@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2953f44d_93516ceb",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2020-01-14T09:53:11Z",
+      "side": 1,
+      "message": "Should we enable VARIANT_KUKUI_POGO_KEYBOARD for Kakadu?\nIf yes, I sugguest that we remove kukui_pogo_extpower_present() and pogo_adc_interrupt() in this file. \nIf we enable VARIANT_KUKUI_POGO_KEYBOARD, we will have these functions in ./baseboard/kukui/base_detect_kukui.c.",
+      "parentUuid": "15623ced_64dbd47f",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 23
+      },
+      "revId": "527015b88987e7baab536873f27d49c68e0fe82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "113383d9_deeb307d",
         "filename": "board/kakadu/board.c",
         "patchSetId": 8
