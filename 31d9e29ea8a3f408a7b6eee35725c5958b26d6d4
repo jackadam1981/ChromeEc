@@ -22,6 +22,30 @@
       "revId": "31d9e29ea8a3f408a7b6eee35725c5958b26d6d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed89d393_084061df",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-01-14T02:31:27Z",
+      "side": 1,
+      "message": "Thanks for the comment.\nI have added the note and moved down the original comment down after the if statement.",
+      "parentUuid": "1bdcea90_826fd5b2",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "31d9e29ea8a3f408a7b6eee35725c5958b26d6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
