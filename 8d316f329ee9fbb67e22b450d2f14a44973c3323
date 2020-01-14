@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2972a490_295c4752",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-01-14T22:09:25Z",
+      "side": 1,
+      "message": "[marking as resolved, I think that was your intention]",
+      "parentUuid": "7af3708f_5d6e0f73",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "8d316f329ee9fbb67e22b450d2f14a44973c3323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7fde98e_f0279c9c",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
