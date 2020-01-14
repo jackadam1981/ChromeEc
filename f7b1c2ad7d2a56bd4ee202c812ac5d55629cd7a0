@@ -2,6 +2,282 @@
   "comments": [
     {
       "key": {
+        "uuid": "886e4286_d3feb326",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Should all paths that return false disable USB4 mode?  This could be done by the caller.",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 33
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd584f77_93e040cf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "As noted in usb_pd.h, I think you\u0027re mixing enums here.",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 28
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf61edc4_794d5b0e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the CABLE_FLAGS_TBT_COMPAT_ENABLE flag already be set?  The Discover Ident SOP handling sets this if is_modal() returns true.  This function is only called after both Discover Ident SOP and Discover Ident SOP\u0027 are called.",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c93d02_4a6871d9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Does this also need to check is_vdo_present()?  This check is shown in figure 5.1.\n\nYou could also put this check into is_cable_usb4_capable() so you could check VDO_INDEX_PTYPE_CABLE1 VDO_INDEX_PTYPE_CABLE2 as appropriate.",
+      "range": {
+        "startLine": 1134,
+        "startChar": 4,
+        "endLine": 1135,
+        "endChar": 33
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39db47b_f95cfcc9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Where is the Discover SVID SOP\u0027 (and Discover Mode SOP\u0027) sent in the USB4 sequence?  It looks like you\u0027re stopping the remaining sequence here by setting rsize to 0.",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 11
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2832cef_be451d99",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Is this path only executed for REV2.0 cables?  It looks like with REV3.0 cables, if USB32 GEN1 or above supported, you will break out at line 1147. With a REV3.0 cable that only support USB2, then disable_usb4_mode() is called.",
+      "range": {
+        "startLine": 1168,
+        "startChar": 4,
+        "endLine": 1170,
+        "endChar": 0
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e126cff4_cf3a6702",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "See comment from line 1168.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 7,
+        "endLine": 1242,
+        "endChar": 27
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d7e8bc_ed22cccd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Is this code path possible? The code block from 1134-1148 disables TBT compatibility mode.  So I don\u0027t follow what conditions this will happen (unless it\u0027s only for REV 2.0 cables).",
+      "range": {
+        "startLine": 1254,
+        "startChar": 0,
+        "endLine": 1254,
+        "endChar": 37
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a3be15_59ae1c7b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "It would be good to comment that USB4 mode set the mux state to SAFE mode, so it needs to be reset to USB mode here.",
+      "range": {
+        "startLine": 1934,
+        "startChar": 4,
+        "endLine": 1934,
+        "endChar": 15
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b6aae2_946305ea",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "Please update comment to match new index below.",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 34
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f36586_48efe405",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "I\u0027m wondering if VDO_INDEX_PTYPE_DEVICE is the best name.\nWhen is_usb4_vdo() checks this VDO, what is the actual product type returned in the ID Header VDO (Hub, peripheral, PSD, VPD)?  If it is specifically only one of these types, please update the name (e.g. VDO_INDEX_PTYPE_VPD). If multiple types are possible, just note in the comment above that \"DEVICE\" includes PSD, VPD, etc.",
+      "range": {
+        "startLine": 433,
+        "startChar": 8,
+        "endLine": 433,
+        "endChar": 30
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2d993a_55f3f8ca",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "This field is set by dfp_consume_cable_response() using PD_HEADER_REV() which retrieves the PD revision from the message header (PD 3.0 Section 6.2.1.1.5).  The enum pd_rev_type was added for the TCPMv2 stack, but should be used here instead.",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 20
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68a94e96_2dfeff9a",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 20
@@ -54,6 +330,24 @@
       "side": 1,
       "message": "can you check, generally bool is not allowed in bit wise structure, bool is still \u003d 8bit",
       "parentUuid": "c068cddd_39c0cb6a",
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccf8eaa_4f70e59d",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T01:14:57Z",
+      "side": 1,
+      "message": "The compiler does seem to honor the bit wise specifier for bool.  However, mixing the types in the bitfield requires the packed attribute to get the correct size.\n\nIt also looks like we need to set the -Wno-packed-bitfield-compat compiler flag if we want to mix the types like.  See https://gcc.gnu.org/gcc-4.4/changes.html",
+      "parentUuid": "d22f98c6_84a3cfeb",
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
