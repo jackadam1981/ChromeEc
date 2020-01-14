@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4753d093_87e4189d",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94d0b47_05d8d096",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b92c3f68_4a718f83",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f630a58_6b1c1f4a",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92c3f68_4a718f83",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d414a6e4_3c86383c",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506fb9df_4e0357bd",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5c4fc5c_f280329d",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b99d41_2e79fd5b",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5c4fc5c_f280329d",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "cab59f4f_2b66ff7f",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e36d11_abca9525",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb27e0f3_6ef02f79",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2020-01-14T03:18:17Z",
       "side": 1,
       "message": "Is this true? If we enter recovery mode then AP will be in S0 and EC will be in RO then in this case, as I know the sensor is still enabled?",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2113632_12ebabe1",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "I think it\u0027s the limitation of this proposal. Recovery mode will disable sensors. It\u0027s not easy to cover all the active_mask(e.g. some sensors powered by S3, some by S5, some by S0) in RO stage.",
+      "parentUuid": "eb27e0f3_6ef02f79",
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -193,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "e6caaef6_952e414b",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "That may not be true depending on the power domain. (from .active_mask, it seems the sensors are powered off in S5).\n\u003e\u003e\u003eThat\u0027s why sensor probing is only executed in RW stage. It is in S0 state in RW stage when HOOK_INIT is executed. Must the power state be S0 when execute HOOK_INIT in RW stage? If not, that would be a problem.\n\nIf the sensor is a little slow (see driver/accel_kionix.c init() function).\n\u003e\u003e\u003eMaybe the impact is little. And comparing with current code,sensor probing is much later. Maybe more than 2 or 3 seconds delays. One is S3 power state in RO, the other is HOOK INIT in RW. \nFor future, adding a probe function in every sensor driver operation struct may be a more better choice. Not only for some sensors init(), but also for probing sensors :)",
+      "parentUuid": "474dccbe_ac88f43f",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f6cf4b_0d6aa0cf",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
@@ -207,6 +333,24 @@
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7dc69d0_2ef53c95",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-14T10:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f6cf4b_0d6aa0cf",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
