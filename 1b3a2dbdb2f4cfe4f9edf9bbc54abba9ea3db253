@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfaa09b9_ca20c245",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-14T21:01:25Z",
+      "side": 1,
+      "message": "Change to PREAMBLE",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a8ba0b_7acdcb83",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-14T21:01:25Z",
+      "side": 1,
+      "message": "(CR50_COMM_PREAMBLE \u003c\u003c 8)",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3f3354_1359520e",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-14T21:01:25Z",
+      "side": 1,
+      "message": "Should we or this with the return codes when sending/receiving instead of doing it with every return code here?",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
