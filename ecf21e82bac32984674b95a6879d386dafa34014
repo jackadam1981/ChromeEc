@@ -22,6 +22,30 @@
       "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc65876a_e107a989",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-14T23:18:11Z",
+      "side": 1,
+      "message": "This is what will keep the CLK signal driven low while the level-shifters are enabled. I can try playing around with the dynamic SPI stuff again now that everything else seems to be working well.",
+      "parentUuid": "9f20ceae_7d5a0803",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 31
+      },
+      "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
