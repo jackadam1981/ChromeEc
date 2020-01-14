@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74b1bd51_4044b02b",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-14T22:08:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34c04d5c_891343ad",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a140407_e705f3c7",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-14T21:45:19Z",
       "side": 1,
       "message": "I\u0027m torn about enabling this here, since it\u0027s one of the charger registers... should it just be part of the charger init?  Or would you like to keep these here until we\u0027re using charger driver structures so port 1 gets set?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 35
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f960a97_3d04ca95",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-14T22:08:38Z",
+      "side": 1,
+      "message": "Yeah, this is what I was referring to last week. My thinking was that this is TCPM related so do it in the TCPM init. It\u0027s unfortunate that the register is in the charger section though.\n\nThe other question would be if this part is not being used as a TCPC, would one want to enable the ADC or not?",
+      "parentUuid": "3a140407_e705f3c7",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f5fe8400_ea19bf4e",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-14T22:08:38Z",
+      "side": 1,
+      "message": "Yeah, maybe that would be a better place for it.",
+      "parentUuid": "8cac133f_2f21a7d1",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 41
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "150c4bf1_4b4f286f",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a66b0c5_18d8d34a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-14T22:08:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "150c4bf1_4b4f286f",
+      "range": {
+        "startLine": 1137,
+        "startChar": 1,
+        "endLine": 1137,
+        "endChar": 42
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
