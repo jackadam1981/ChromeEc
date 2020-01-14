@@ -188,6 +188,30 @@
       "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57d9ce5a_1e43d552",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-14T21:40:47Z",
+      "side": 1,
+      "message": "\u003e I would write 0xec00, 0xec01, 0xec02, 0xec03, ... for easier search.\n\nAh, I missed this comment. All comments above sgtm though.",
+      "parentUuid": "a76299c6_ed6e7076",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
