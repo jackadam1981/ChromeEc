@@ -22,6 +22,30 @@
       "revId": "bf33c546e393e3dfc91ee134bce5fa86b5453eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7c9316_25378d38",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-14T00:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a99c8713_32007615",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "bf33c546e393e3dfc91ee134bce5fa86b5453eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
