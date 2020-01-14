@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
+#include "it83xx_pd.h"
 #include "kmsc_chip.h"
 #include "registers.h"
 #include "switch.h"
@@ -633,6 +634,25 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 	return EC_SUCCESS;
 }
 
+/*
+ * To prevent cc pins leakage, disables integrated cc module and disconnect 5.1K
+ * dead battery resistor.
+ */
+static void it83xx_disable_cc_module(int port)
+{
+	/*
+	 * Power down all CC,
+	 * Disable CC voltage detector,
+	 * Dis-connect CC analog module (ex.UP/RD/DET/TX/RX),
+	 * Dis-connect CC with 5.1K resister to GND,
+	 * Dis-connect CC with 5.1K DB resister to GND,
+	 * Dis-connect CC 5V tolerant.
+	 */
+	IT83XX_USBPD_CCGCR(port) = 0xdf;
+	IT83XX_USBPD_CCCSR(port) = 0xff;
+	IT83XX_USBPD_CCPSR(port) = 0x66;
+}
+
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
@@ -642,20 +662,15 @@ void gpio_pre_init(void)
 
 	IT83XX_GPIO_GCR = 0x06;
 
-#ifndef CONFIG_USB_PD_TCPM_ITE83XX
-	/* To prevent cc pins leakage if we don't use pd module */
-	for (i = 0; i < IT83XX_USBPD_PHY_PORT_COUNT; i++) {
-		IT83XX_USBPD_CCGCR(i) = 0x1f;
-		/*
-		 * bit7 and bit3: Dis-connect CC with UP/RD/DET/TX/RX.
-		 * bit6 and bit2: Dis-connect CC with 5.1K resister to GND.
-		 * bit5 and bit1: Disable CC voltage detector.
-		 * bit4 and bit0: Disable CC.
-		 */
-		IT83XX_USBPD_CCCSR(i) = 0xff;
-		IT83XX_USBPD_CCPSR(i) = 0x66;
+	/*
+	 * To prevent cc pins leakage ...
+	 * If we don't use ITE TCPC: disable all ITE port cc modules.
+	 */
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX) &&
+		!IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX_V2)) {
+		for (i = 0; i < IT83XX_USBPD_PHY_PORT_COUNT; i++)
+			it83xx_disable_cc_module(i);
 	}
-#endif
 
 #ifndef CONFIG_USB
 	/*
