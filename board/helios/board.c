@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
+#include "driver/charger/bq25710.h"
 #include "common.h"
 #include "cros_board_info.h"
 #include "driver/accel_bma2x2.h"
@@ -383,6 +384,10 @@ static void board_init(void)
 	setup_fans();
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+
+	/* Restorage Charger BQ25710 MinSystemVoltage to 3 cell setting */
+	i2c_write16(I2C_PORT_POWER, BQ25710_SMBUS_ADDR1_FLAGS,
+		    BQ25710_REG_MIN_SYSTEM_VOLTAGE, 0x2400);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
