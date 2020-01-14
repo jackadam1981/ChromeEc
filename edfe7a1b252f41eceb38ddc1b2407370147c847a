@@ -140,6 +140,29 @@
       "revId": "edfe7a1b252f41eceb38ddc1b2407370147c847a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fa02e73_b5005a27",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1601,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T23:53:26Z",
+      "side": 1,
+      "message": "Echoing Diana\u0027s comment from CL:2001221.  Chromebooks require that all Type C ports behave the same. \nPlease add a comment that only development phase chromebooks are permitted to support different speeds on different ports - and this is strongly discouraged.",
+      "range": {
+        "startLine": 1598,
+        "startChar": 0,
+        "endLine": 1601,
+        "endChar": 0
+      },
+      "revId": "edfe7a1b252f41eceb38ddc1b2407370147c847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
