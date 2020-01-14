@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad7203b6_1afb1bca",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-14T20:41:53Z",
+      "side": 1,
+      "message": "Add a comment here that if the pin changes, you need to update the AP_FLASH_SELECT pinmux setup in board.c",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "c3fc45b89cc171fa10754e75762e5e7368f32824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
