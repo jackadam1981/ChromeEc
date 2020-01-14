@@ -118,6 +118,11 @@ main() {
     popd > /dev/null
   done
 
+  if [[ -n "${EC_CUSTOM_VERSION}" ]]; then
+    ver="${EC_CUSTOM_VERSION}"
+    tool_ver="${EC_CUSTOM_VERSION}"
+  fi
+
   # On some boards where the version number consists of multiple components we
   # want to separate the first word of the version string as the version of the
   # EC tree.
@@ -143,7 +148,9 @@ main() {
     echo "#define BUILDER \"${USER}@`hostname`\""
   fi
 
-  if [ -n "$global_dirty" ]; then
+  if [[ -n "${EC_CUSTOM_DATE}" ]]; then
+    echo "#define DATE \"${EC_CUSTOM_DATE}\""
+  elif [ -n "$global_dirty" ]; then
     most_recent_file="$(git status --porcelain | \
                awk '$1 ~ /[M|A|?]/ {print $2}' |  \
                xargs ls -t | head -1)"
