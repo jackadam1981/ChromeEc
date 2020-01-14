@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9227680_89a9f34e",
+        "filename": "include/vboot.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-14T22:13:01Z",
+      "side": 1,
+      "message": "(CR50_COMM_PREAMBLE \u003c\u003c 8) is more accurate here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "c7a9407ac5aca30e225fc4ddc86cf6b2c350ba83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
