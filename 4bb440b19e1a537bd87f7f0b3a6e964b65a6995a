@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e66c016_f96c9fac",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-14T01:22:30Z",
+      "side": 1,
+      "message": "Note that some repo (such as coreboot [1]) also has a copy of ec_commands.h, so we would probably want to make it self-contained in these repos (see CHROMIUM_EC macro).\n\n[1] https://github.com/coreboot/coreboot/blob/master/src/ec/google/chromeec/ec_commands.h",
+      "revId": "4bb440b19e1a537bd87f7f0b3a6e964b65a6995a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
