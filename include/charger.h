@@ -40,6 +40,80 @@ struct charger_params {
 	int flags;
 };
 
+struct charger_drv {
+	/* Function to call during HOOK_INIT after i2c init */
+	void (*init)(int chgnum);
+
+	/* Power state machine post init */
+	int (*post_init)(int chgnum);
+
+	/* Get charger information */
+	const struct charger_info * (*get_info)(void);
+
+	/* Get smart battery charger status. Supported flags may vary. */
+	int (*get_status)(int chgnum, int *status);
+
+	/* Set smart battery charger mode. Supported modes may vary. */
+	int (*set_mode)(int chgnum, int mode);
+
+	/*
+	 * For chargers that are able to supply output power for OTG dongle,
+	 * this function enables or disables power output.
+	 */
+	int (*enable_otg_power)(int chgnum, int enabled);
+
+	/*
+	 * Sets OTG current limit and voltage (independent of whether OTG
+	 * power is currently enabled).
+	 */
+	int (*set_otg_current_voltage)(int chgnum, int output_current,
+				       int output_voltage);
+
+	/* Get/set charge current limit in mA */
+	int (*get_current)(int chgnum, int *current);
+	int (*set_current)(int chgnum, int current);
+
+	/* Get/set charge voltage limit in mV */
+	int (*get_voltage)(int chgnum, int *voltage);
+	int (*set_voltage)(int chgnum, int voltage);
+
+	/* Discharge battery when on AC power. */
+	int (*discharge_on_ac)(int chgnum, int enable);
+
+	/* Get the VBUS voltage (mV) from the charger */
+	int (*get_vbus_voltage)(int chgnum, int port);
+
+	/* Set desired input current value */
+	int (*set_input_current)(int chgnum, int input_current);
+
+	/* Get actual input current value */
+	int (*get_input_current)(int chgnum, int *input_current);
+
+	int (*manufacturer_id)(int chgnum, int *id);
+	int (*device_id)(int chgnum, int *id);
+	int (*get_option)(int chgnum, int *option);
+	int (*set_option)(int chgnum, int option);
+
+	/* Charge ramp functions */
+	int (*set_hw_ramp)(int chgnum, int enable);
+	int (*ramp_is_stable)(int chgnum);
+	int (*ramp_is_detected)(int chgnum);
+	int (*ramp_get_current_limit)(int chgnum);
+};
+
+struct charger_config_t {
+	int i2c_port;
+	uint16_t i2c_addr_flags;
+	const struct charger_drv *drv;
+};
+
+#ifndef CONFIG_CHARGER_RUNTIME_CONFIG
+extern const struct charger_config_t chg_chips[];
+#else
+extern struct charger_config_t chg_chips[];
+#endif
+extern const unsigned int chg_cnt;
+
 /* Get the current charger_params. Failures are reported in .flags */
 void charger_get_params(struct charger_params *chg);
 
@@ -51,6 +125,26 @@ void charger_get_params(struct charger_params *chg);
 #define CHG_FLAG_BAD_OPTION		0x00000010
 /* All of the above CHG_FLAG_BAD_* bits */
 #define CHG_FLAG_BAD_ANY                0x0000001f
+
+/**
+ * Return the closest match the charger can supply to the requested current.
+ *
+ * @param current	Requested current in mA.
+ *
+ * @return Current the charger will actually supply if <current> is requested.
+ */
+int charger_closest_current(int current);
+
+/**
+ * Return the closest match the charger can supply to the requested voltage.
+ *
+ * @param voltage	Requested voltage in mV.
+ *
+ * @return Voltage the charger will actually supply if <voltage> is requested.
+ */
+int charger_closest_voltage(int voltage);
+
+/* Driver wrapper functions */
 
 /* Power state machine post init */
 int charger_post_init(void);
@@ -95,24 +189,6 @@ int charger_set_otg_current_voltage(int output_current, int output_voltage);
  * @return 1 if sourcing VBUS, 0 if not.
  */
 int charger_is_sourcing_otg_power(int port);
-
-/**
- * Return the closest match the charger can supply to the requested current.
- *
- * @param current	Requested current in mA.
- *
- * @return Current the charger will actually supply if <current> is requested.
- */
-int charger_closest_current(int current);
-
-/**
- * Return the closest match the charger can supply to the requested voltage.
- *
- * @param voltage	Requested voltage in mV.
- *
- * @return Voltage the charger will actually supply if <voltage> is requested.
- */
-int charger_closest_voltage(int voltage);
 
 /* Get/set charge current limit in mA */
 int charger_get_current(int *current);
