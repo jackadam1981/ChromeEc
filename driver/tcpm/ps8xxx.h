@@ -10,6 +10,7 @@
 
 /* I2C interface */
 #define PS8751_I2C_ADDR1_P1_FLAGS 0x09
+#define PS8751_I2C_ADDR1_P2_FLAGS 0x0a
 #define PS8751_I2C_ADDR1_FLAGS    0x0B
 #define PS8751_I2C_ADDR2_FLAGS    0x1B
 #define PS8751_I2C_ADDR3_FLAGS    0x2B
@@ -20,6 +21,11 @@
 
 /* Delay between releasing reset and the first I2C read */
 #define PS8805_FW_INIT_DELAY_MS 10
+
+/* Delay from power on to reset de-asserted */
+#define PS8815_PWR_H_RST_H_DELAY_MS 20
+/* Delay between releasing reset and the first I2C read */
+#define PS8815_FW_INIT_DELAY_MS 10
 
 #define PS8751_BIST_TIMER_FREQ  15000000
 #define PS8751_BIST_DELAY_MS    50
