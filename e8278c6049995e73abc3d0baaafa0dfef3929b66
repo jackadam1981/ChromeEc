@@ -70,6 +70,30 @@
       "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ec63f0_764577fa",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-01-14T14:12:01Z",
+      "side": 1,
+      "message": "As per this current patch flow is that if the DPTF is alive, handover the fan control from EC to DPTF and its happening by using the this patch. \n\nFor your above previous comments,\n\u003e\u003e I think all you need to do is to check the DPTF health and call set_thermal_control_enabled if it\u0027s not responding? \n\nWe need to check for dptf_get_fan_duty_target() for duty mode along with DPTF health check. For this reason we have added this check as,\n      if ((dptf_get_fan_duty_target() !\u003d -1) \u0026\u0026 (get_dptf_alive_status())) \n\nAs per your below another comment,\n\u003e\u003e if (!get_dptf_alive_status())\n   \u003e\u003e   set_thermal_control_enabled(1); \nAs per existing code flow, “dptf_set_fan_duty_target(1)” function internally calls “set_thermal_control_enabled( )” function to control the fan. So, we have used and called \"dptf_set_fan_duty_target(1);\" as per this current patch, \n      {\n            dptf_set_fan_duty_target(1);\n      }",
+      "parentUuid": "f63d1f49_8cb9ab9e",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
