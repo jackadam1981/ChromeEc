@@ -797,6 +797,9 @@
 #undef CONFIG_CHARGER_RT9467
 #undef CONFIG_CHARGER_SY21612
 
+/* Allow run-time completion of the charger driver structure */
+#undef CONFIG_CHARGER_RUNTIME_CONFIG
+
 /*
  * Enable the CHG_EN at initialization to turn-on the BGATE which allows voltage
  * to be applied to the battery PACK & wakes the battery if it is in shipmode.
