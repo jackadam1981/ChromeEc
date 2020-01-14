@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e72c5f3_290740b4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "CABLE_REV20 doesn\u0027t disable USB4 mode. It returns false to check if the cable is thunderbolt-compatible (Sends Discover SVID SOP\u0027 and Discover mode SOP\u0027) to enter into USB4 mode with thunderbolt passive cable.",
+      "parentUuid": "886e4286_d3feb326",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 33
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd584f77_93e040cf",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c123ef_6d4ee834",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd584f77_93e040cf",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 28
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bf919338_81b40ee7",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf61edc4_794d5b0e",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36c93d02_4a6871d9",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a4cb290a_a63b8aa5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36c93d02_4a6871d9",
+      "range": {
+        "startLine": 1134,
+        "startChar": 4,
+        "endLine": 1135,
+        "endChar": 33
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f39db47b_f95cfcc9",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
@@ -105,6 +201,30 @@
       "writtenOn": "2020-01-14T01:14:57Z",
       "side": 1,
       "message": "Where is the Discover SVID SOP\u0027 (and Discover Mode SOP\u0027) sent in the USB4 sequence?  It looks like you\u0027re stopping the remaining sequence here by setting rsize to 0.",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 11
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678557c0_0334a8f6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "According to Figure 5-1. If the device is USB4 capable and cable is Gen 3 capable, we directly enter USB mode (without entering Discover SVID SOP\u0027 and Discover mode SOP\u0027)",
+      "parentUuid": "f39db47b_f95cfcc9",
       "range": {
         "startLine": 1147,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6b6ca301_58c3f706",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Yes this path is for Rev2.0 cables. For USB2, we disable_usb4_mode() after sending Discovery Identity SOP itself since is_usb4_vdo will return false.",
+      "parentUuid": "d2832cef_be451d99",
+      "range": {
+        "startLine": 1168,
+        "startChar": 4,
+        "endLine": 1170,
+        "endChar": 0
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e126cff4_cf3a6702",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
@@ -151,6 +295,30 @@
       "writtenOn": "2020-01-14T01:14:57Z",
       "side": 1,
       "message": "See comment from line 1168.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 7,
+        "endLine": 1242,
+        "endChar": 27
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ecbff1_1649aac4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "e126cff4_cf3a6702",
       "range": {
         "startLine": 1242,
         "startChar": 7,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "38be6342_7e9eee09",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "This path is only for Rev2.0 cables",
+      "parentUuid": "e5d7e8bc_ed22cccd",
+      "range": {
+        "startLine": 1254,
+        "startChar": 0,
+        "endLine": 1254,
+        "endChar": 37
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2a3be15_59ae1c7b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 20
@@ -206,6 +398,30 @@
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5402fdbe_0a24c06c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a3be15_59ae1c7b",
+      "range": {
+        "startLine": 1934,
+        "startChar": 4,
+        "endLine": 1934,
+        "endChar": 15
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "ddb05161_b4e8bdd1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9b6aae2_946305ea",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 34
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f36586_48efe405",
         "filename": "include/usb_pd.h",
         "patchSetId": 20
@@ -252,6 +492,30 @@
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1f5e61_d36594f5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f36586_48efe405",
+      "range": {
+        "startLine": 433,
+        "startChar": 8,
+        "endLine": 433,
+        "endChar": 30
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "998f78d1_66d86e4f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2d993a_55f3f8ca",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 20
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a94e96_2dfeff9a",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 20
@@ -298,6 +586,30 @@
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab83b5cd_24caa0a5",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68a94e96_2dfeff9a",
+      "range": {
+        "startLine": 713,
+        "startChar": 1,
+        "endLine": 713,
+        "endChar": 9
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -348,6 +660,24 @@
       "side": 1,
       "message": "The compiler does seem to honor the bit wise specifier for bool.  However, mixing the types in the bitfield requires the packed attribute to get the correct size.\n\nIt also looks like we need to set the -Wno-packed-bitfield-compat compiler flag if we want to mix the types like.  See https://gcc.gnu.org/gcc-4.4/changes.html",
       "parentUuid": "d22f98c6_84a3cfeb",
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88594855_861a0c34",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-14T20:23:16Z",
+      "side": 1,
+      "message": "I tried using bool and __attribute__((packed)). I am unable to get correct values for individual fields using the same - bits seem to be shifted",
+      "parentUuid": "4ccf8eaa_4f70e59d",
       "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
