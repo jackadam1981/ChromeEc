@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f20ceae_7d5a0803",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-14T18:42:08Z",
+      "side": 1,
+      "message": "this is still heavyweight, right?  can we do the same thing as uart on SPI?",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 31
+      },
+      "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
