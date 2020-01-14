@@ -16,6 +16,24 @@
       "revId": "fb6e1ca1b0a703230f11453fd03018e613e8da73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b789b0d8_94f5e6ad",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-14T21:34:33Z",
+      "side": 1,
+      "message": "To remove the workaround when we get updated firmware :)",
+      "parentUuid": "55d258d4_63393540",
+      "revId": "fb6e1ca1b0a703230f11453fd03018e613e8da73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
