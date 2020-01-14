@@ -42,3 +42,9 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 	/* Thunderbolt-compatible mode not supported */
 	return TBT_SS_RES_0;
 }
+
+__override bool board_is_tbt_usb4_port(int port)
+{
+	/* On Proto-1 only Port 1 supports TBT & USB4 */
+	return port == USBC_PORT_C1;
+}
