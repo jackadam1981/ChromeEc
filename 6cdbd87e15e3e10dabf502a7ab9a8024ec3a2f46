@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c04d5c_891343ad",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-14T21:45:19Z",
+      "side": 1,
+      "message": "Ports might end up coming in handy here",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a140407_e705f3c7",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-14T21:45:19Z",
+      "side": 1,
+      "message": "I\u0027m torn about enabling this here, since it\u0027s one of the charger registers... should it just be part of the charger init?  Or would you like to keep these here until we\u0027re using charger driver structures so port 1 gets set?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 35
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cac133f_2f21a7d1",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-14T21:45:19Z",
+      "side": 1,
+      "message": "I believe this should be part of the chip init?  And add register defines as we need them?",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 41
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150c4bf1_4b4f286f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-14T21:45:19Z",
+      "side": 1,
+      "message": "Maybe break out the tcpci_dump improvements to their own CL?",
+      "range": {
+        "startLine": 1137,
+        "startChar": 1,
+        "endLine": 1137,
+        "endChar": 42
+      },
+      "revId": "6cdbd87e15e3e10dabf502a7ab9a8024ec3a2f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
