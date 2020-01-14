@@ -46,6 +46,30 @@
       "revId": "c7a9407ac5aca30e225fc4ddc86cf6b2c350ba83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff16c6df_aa3e4263",
+        "filename": "include/vboot.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-14T22:32:29Z",
+      "side": 1,
+      "message": "does not seem a coincidence to me - the same value used for two purposes and it makes sense.",
+      "parentUuid": "a84948a1_16d06fc5",
+      "range": {
+        "startLine": 46,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "c7a9407ac5aca30e225fc4ddc86cf6b2c350ba83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
