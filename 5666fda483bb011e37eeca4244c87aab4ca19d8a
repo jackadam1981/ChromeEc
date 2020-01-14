@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c804241d_f13408f7",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-14T05:11:27Z",
+      "side": 1,
+      "message": "Reorder these lines to:\n\nmt6370_enable_hidden_mode(0);\nif (rv)\n    goto out;\n\nAnd remove the \"out_hidden\" label below",
+      "range": {
+        "startLine": 1469,
+        "startChar": 0,
+        "endLine": 1472,
+        "endChar": 30
+      },
+      "revId": "5666fda483bb011e37eeca4244c87aab4ca19d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b73983_0e92def2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-14T05:11:27Z",
+      "side": 1,
+      "message": "Call mutex_unlock before return",
+      "revId": "5666fda483bb011e37eeca4244c87aab4ca19d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
