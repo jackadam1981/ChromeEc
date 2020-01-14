@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b0a2377_39b75eee",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-14T22:48:40Z",
+      "side": 1,
+      "message": "This is still weird to have here, this if doesn\u0027t really add anything.\n\nYou\u0027re essentially asking if there needs to be a change in a variable, then change the variable, there\u0027s no side effect except that variable and if you were to just execute the change code without checking it would be a noop to that variable. This if is not guarding the i2c transaction, so it doesn\u0027t add anything.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 63
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
