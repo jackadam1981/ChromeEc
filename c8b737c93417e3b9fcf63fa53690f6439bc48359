@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d64eced_f958dc07",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T23:45:23Z",
+      "side": 1,
+      "message": "After reading the spec again, I think this logic is incorrect here.  Your switch at line 482 is on the PD specification revision returned by the cable, but figure 5-1 indicates you should be checking the \"USB Highest Speed\" field from the Passive Cable VDO.\n\nYour check should be:\nswitch (cable[port].attr.p_rev30.ss)\n  default: /* not USB4 */\n  case USB_R30_SS_U40_GEN3: /* USB4 with USB4 Gen3 passive cable */\n  case USB_R30_SS_U32_U40_GEN1: /* USB4 with USB 3.2 Gen1 passive cable */\n  case USB_R30_SS_U32_U40_GEN2: /* Send SVID/Mode if board supports Gen3 */\n\nSo, the last case is the only time you\u0027ll move forward with the SVID SOP\u0027 and Mode SOP\u0027 messages to determine TBT support.\n\nAlso, since the Enter_USB message isn\u0027t supported by PD 2.0, you probably just want to disable USB4 if the cable\u0027s PD revision is 2.0.",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

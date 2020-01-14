@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "3edf03d5_f05b7d67",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-14T23:45:23Z",
+      "side": 1,
+      "message": "Thanks, I see that now.  I didn\u0027t recognize the all the exit points from Figure 5-1.",
+      "parentUuid": "678557c0_0334a8f6",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 11
+      },
+      "revId": "f7b1c2ad7d2a56bd4ee202c812ac5d55629cd7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2832cef_be451d99",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
