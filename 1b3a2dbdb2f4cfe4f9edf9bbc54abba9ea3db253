@@ -92,6 +92,30 @@
       "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53b3df2_b05dbcf1",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-14T21:30:38Z",
+      "side": 1,
+      "message": "I would write 0xec00, 0xec01, 0xec02, 0xec03, ... for easier search.",
+      "parentUuid": "1c289541_ea819bbb",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
