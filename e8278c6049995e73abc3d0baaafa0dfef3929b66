@@ -94,6 +94,30 @@
       "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf71619_67e39d6a",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-14T16:39:08Z",
+      "side": 1,
+      "message": "If DPTF is alive, DPTF should call dptf_set_fan_duty_target, which allows DPTF take over the fan control from EC, right? Why do we need another call (i.e. line 202)?\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/acpi.c#323",
+      "parentUuid": "c7ec63f0_764577fa",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
