@@ -123,9 +123,9 @@ enum usb_tc_state {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	TC_DRP_AUTO_TOGGLE,
 #endif
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+/* #ifdef CONFIG_USB_PD_TCPC_LOW_POWER */
 	TC_LOW_POWER_MODE,
-#endif
+/* #endif */
 #ifdef CONFIG_USB_PE_SM
 	TC_CT_UNATTACHED_SNK,
 	TC_CT_ATTACHED_SNK,
@@ -1573,7 +1573,6 @@ int tc_is_vconn_src(int port)
 }
 #endif
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static int reset_device_and_notify(int port)
 {
 	int rv;
@@ -1615,6 +1614,7 @@ static int reset_device_and_notify(int port)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 void pd_wait_exit_low_power(int port)
 {
 	if (TC_CHK_FLAG(port, TC_FLAGS_LPM_ENGAGED)) {
