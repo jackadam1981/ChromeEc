@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21bf0778_8302951e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-14T19:24:04Z",
+      "side": 1,
+      "message": "This is unnecessary since it is specified so in gpio.inc.",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 52
+      },
+      "revId": "580d8f13914539e49ae5756a80644fd6b956b7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
