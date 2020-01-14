@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b19cfdf_622b07df",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-14T17:48:34Z",
+      "side": 1,
+      "message": "looks like not all ports can support LSX interface, I will plan to add code to do TBT \u0026 USB4 per port based too",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "cdd02e5b14cc0bb6b7c1e2ac8acf9ad965a59dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
