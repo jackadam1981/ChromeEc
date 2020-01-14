@@ -22,6 +22,30 @@
       "revId": "c7a9407ac5aca30e225fc4ddc86cf6b2c350ba83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84948a1_16d06fc5",
+        "filename": "include/vboot.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-14T22:21:27Z",
+      "side": 1,
+      "message": "It is a coincidence to have the same value 0xec as preamle pattern and as prefix in response code, rather than intentionally designed, I believe.\nLet me restore CR50_COMM_RESPONSE_PRE definition from patchset#9.",
+      "parentUuid": "b9227680_89a9f34e",
+      "range": {
+        "startLine": 46,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "c7a9407ac5aca30e225fc4ddc86cf6b2c350ba83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
