@@ -22,6 +22,30 @@
       "revId": "74383db7abad5c6318f9a24c9b256aee2cdf5cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b6f9b3_9bb01a2a",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-14T23:14:18Z",
+      "side": 1,
+      "message": "Yes, The way I was doing it before required that restriction, but it is no longer the case :)",
+      "parentUuid": "2e39f0a8_607f71a6",
+      "range": {
+        "startLine": 292,
+        "startChar": 3,
+        "endLine": 292,
+        "endChar": 31
+      },
+      "revId": "74383db7abad5c6318f9a24c9b256aee2cdf5cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
