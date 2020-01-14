@@ -87,6 +87,23 @@
     },
     {
       "key": {
+        "uuid": "eb27e0f3_6ef02f79",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-01-14T03:18:17Z",
+      "side": 1,
+      "message": "Is this true? If we enter recovery mode then AP will be in S0 and EC will be in RO then in this case, as I know the sensor is still enabled?",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b63c087_7c7b5d03",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
@@ -152,6 +169,24 @@
       "side": 1,
       "message": "8 sku looks safer and more deterministic: you could use a bit in the skuid to determine which sensors you are using.\nThis code assumes the sensor has \"booted\" when EC is running. \n- That may not be true depending on the power domain. (from .active_mask, it seems the sensors are powered off in S5).\n- If the sensor is a little slow (see driver/accel_kionix.c init() function).",
       "parentUuid": "cc23b023_852469e7",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474dccbe_ac88f43f",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-01-14T03:18:17Z",
+      "side": 1,
+      "message": "8 sku ids are just the example and\n    - we could end up to have more sku ids initially (ex: 8)\n    - we might end up to support more then two set sensors as well (ex: 3)\nThen finally we will have 24 sku ids.\n\nAnd partners is inputing the comment like judging the SKU ID in RMA center without factory server and BOM database is hard for them; as a result with to not increate the complexity of determining the SKU ID.",
+      "parentUuid": "51d485c7_7856bb91",
       "revId": "8fc98f0ba30c87c702381862562430e29e686632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
