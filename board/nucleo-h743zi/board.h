@@ -12,6 +12,8 @@
 
 #undef CONFIG_SYSTEM_UNLOCKED
 
+/* Test Me */
+
 /*
  * Flash layout:
  *

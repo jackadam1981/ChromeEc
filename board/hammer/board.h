@@ -10,6 +10,8 @@
 
 #include "variants.h"
 
+/* Test me */
+
 /* TODO: Remove CONFIG_SYSTEM_UNLOCKED prior to building MP FW. */
 #define CONFIG_SYSTEM_UNLOCKED
 /* TODO(b:63378217): Define FLASH_PSTATE_LOCKED prior to building MP FW. */
