@@ -128,6 +128,24 @@
       "revId": "230c77d9a3fd99ca4528e6f126166606135678ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cb0bbf_4416d4b0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-01-14T02:13:43Z",
+      "side": 1,
+      "message": "please align the indention. need extra tab. and please move it to line 1449.",
+      "parentUuid": "99c846a2_9b5b89ee",
+      "revId": "230c77d9a3fd99ca4528e6f126166606135678ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
