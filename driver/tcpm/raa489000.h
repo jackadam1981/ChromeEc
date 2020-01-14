@@ -15,6 +15,7 @@
 
 /* Vendor registers */
 #define RAA489000_TYPEC_SETTING1	0xC0
+#define RAA489000_PD_PHYSICAL_SETTING1  0xE0
 
 /* Enables for reverse current protection */
 #define RAA489000_SETTING1_IP2_EN	BIT(9)
@@ -33,6 +34,11 @@
 
 /* CC debounce enable */
 #define RAA489000_SETTING1_CC_DB_EN	BIT(0)
+
+/* PD_PHYSICAL_SETTING_1 */
+#define RAA489000_PD_PHY_SETTING1_RECEIVER_EN BIT(9)
+#define RAA489000_PD_PHY_SETTING1_SQUELCH_EN  BIT(8)
+#define RAA489000_PD_PHY_SETTING1_TX_LDO11_EN BIT(0)
 
 extern const struct tcpm_drv raa489000_tcpm_drv;
 
