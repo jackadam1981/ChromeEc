@@ -8,6 +8,7 @@
 #include "bb_retimer.h"
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "cros_board_info.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
@@ -328,7 +329,7 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /******************************************************************************/
 /* USBC TCPC configuration */
-const struct tcpc_config_t tcpc_config[] = {
+struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -584,3 +585,71 @@ static void baseboard_init(void)
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
+
+/*
+ * Daughterboard type is encoded in the lower 4 bits
+ * of the FW_CONFIG CBI tag.
+ */
+
+enum db_type {
+	DB_NONE = 0,
+	DB_USB4 = 1,
+	DB_USB3 = 2,
+	DB_COUNT,
+};
+
+#define CBI_FW_CONFIG_DB_MASK	0x0f
+#define CBI_FW_CONFIG_DB_SHIFT	0
+#define CBI_FW_CONFIG_DB_TYPE(bits) \
+	(((bits) & CBI_FW_CONFIG_DB_MASK) >> CBI_FW_CONFIG_DB_SHIFT)
+
+static uint8_t board_id;
+static uint8_t db_type = DB_NONE;
+
+uint8_t get_board_id(void)
+{
+	return board_id;
+}
+
+/*
+ * Read CBI from i2c eeprom and initialize variables for board variants
+ *
+ * Example for configuring for a USB3 DB:
+ *   ectool cbi set 6 2 4 10
+ */
+static void cbi_init(void)
+{
+	uint32_t val;
+	uint32_t db_val;
+
+	/* Board ID */
+	if (cbi_get_board_version(&val) != EC_SUCCESS || val > UINT8_MAX)
+		CPRINTS("CBI: Read Board ID failed");
+
+	board_id = val;
+
+	CPRINTS("Board ID: %d", board_id);
+
+	/* FW config */
+
+	if (cbi_get_fw_config(&val) != EC_SUCCESS) {
+		CPRINTS("CBI: Read FW config failed, assuming USB4");
+		db_val = DB_USB4;
+	} else {
+		db_val = CBI_FW_CONFIG_DB_TYPE(val);
+	}
+
+	switch (db_val) {
+	case DB_NONE:
+		CPRINTS("Daughterboard type: None");
+		break;
+	case DB_USB4:
+		CPRINTS("Daughterboard type: USB4");
+		break;
+	default:
+		CPRINTS("Daughterboard ID %d not supported", db_val);
+		db_val = DB_NONE;
+	}
+	db_type = db_val;
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
