@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d011db4_80933c9a",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-14T21:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfaa09b9_ca20c245",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5a8ba0b_7acdcb83",
         "filename": "include/vboot.h",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51dd73f3_b44a8df9",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-14T21:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a8ba0b_7acdcb83",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +164,30 @@
       "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76299c6_ed6e7076",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-14T21:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c289541_ea819bbb",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "1b3a2dbdb2f4cfe4f9edf9bbc54abba9ea3db253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
