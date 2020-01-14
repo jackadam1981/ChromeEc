@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506c4c53_b2095961",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-14T21:31:40Z",
+      "side": 1,
+      "message": "This needs a big note mentioning that this is only acceptable for products in development (i.e. proto boards).  For customer products, all type-c ports need to support the same features",
+      "range": {
+        "startLine": 1608,
+        "startChar": 3,
+        "endLine": 1608,
+        "endChar": 55
+      },
+      "revId": "13cb2887442d5f2a8ea86bcf600a2f3b7ff972e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
