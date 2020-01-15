@@ -153,8 +153,10 @@
 #define TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK 0x27
 #define TCPC_REG_RX_BYTE_CNT       0x30
 #define TCPC_REG_RX_BUF_FRAME_TYPE 0x31
+/* #define TCPC_REG_RX_BUF_FRAME_TYPE 0x30 */
 
 #define TCPC_REG_RX_HDR            0x32
+/* #define TCPC_REG_RX_HDR            0x30 */
 #define TCPC_REG_RX_DATA           0x34 /* through 0x4f */
 
 #define TCPC_REG_TRANSMIT          0x50
