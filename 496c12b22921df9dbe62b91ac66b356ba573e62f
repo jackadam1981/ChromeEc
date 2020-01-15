@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46bfa3ed_969a54ed",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-15T18:08:25Z",
+      "side": 1,
+      "message": "udelay(0) made the duration to be 9~15 usec.\nI am using a for-loop instead for smaller duration than that.",
+      "range": {
+        "startLine": 355,
+        "startChar": 3,
+        "endLine": 356,
+        "endChar": 9
+      },
+      "revId": "496c12b22921df9dbe62b91ac66b356ba573e62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
