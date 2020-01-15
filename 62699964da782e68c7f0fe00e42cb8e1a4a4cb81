@@ -22,6 +22,30 @@
       "revId": "62699964da782e68c7f0fe00e42cb8e1a4a4cb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b277617b_ba380444",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-01-15T22:55:39Z",
+      "side": 1,
+      "message": "It\u0027s sort of hard to change hardware with software 😉 Are you suggesting to always leave SBU lines connected through the PPC?",
+      "parentUuid": "a1aaf383_fbc4fd2d",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "62699964da782e68c7f0fe00e42cb8e1a4a4cb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
