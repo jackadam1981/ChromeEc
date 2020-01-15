@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "951c4bd5_d65f4655",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-15T23:27:29Z",
+      "side": 1,
+      "message": "This should work for both ports I believe? We\u0027re enabling the ADCs in the TCPC init so I believe both ports should work?",
+      "parentUuid": "66e98324_9cda21ac",
+      "range": {
+        "startLine": 785,
+        "startChar": 4,
+        "endLine": 787,
+        "endChar": 24
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12b5adbc_c0a2f9a1",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 6

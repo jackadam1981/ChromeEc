@@ -22,6 +22,30 @@
       "revId": "a8ca1c5dec1afaacf319013bcfcf804e0babb207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8bc08bb_9eae36bb",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-15T23:27:29Z",
+      "side": 1,
+      "message": "My thinking was to only add the new definitions if we were actually going to use it on the new chip. I imagine there are a number of bits that have changed, but we might not be using yet. What do you think?",
+      "parentUuid": "d94c43ff_7ab32c6a",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 45
+      },
+      "revId": "a8ca1c5dec1afaacf319013bcfcf804e0babb207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
