@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd63a907_1c97554b",
+        "filename": "chip/stm32/bkpdata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-15T17:44:49Z",
+      "side": 1,
+      "message": "can you move the function headers in the c file to here now that they are public",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 62
+      },
+      "revId": "d995e3ccae660002db4fd6b9b3fe8777929c2ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
