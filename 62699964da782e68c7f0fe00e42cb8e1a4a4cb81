@@ -46,6 +46,30 @@
       "revId": "62699964da782e68c7f0fe00e42cb8e1a4a4cb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a15b78_5fad5338",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-01-15T23:14:14Z",
+      "side": 1,
+      "message": "The DP alt-mode policy may disable the SBU line. And yes, if EC is crashed during that time, no more CCD.\n\nThis code is to reflect the current hardware, to re-enable the SBU line if CCD is detected. For the next hardware change, tracked in b/146452947.",
+      "parentUuid": "b277617b_ba380444",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "62699964da782e68c7f0fe00e42cb8e1a4a4cb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
