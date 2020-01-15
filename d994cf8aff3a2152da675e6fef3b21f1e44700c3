@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60319ebf_03a72fe2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-01-15T22:03:52Z",
+      "side": 1,
+      "message": "Kernel doesn\u0027t enter into safe state if usb_mux_set_safe_mode(port) is executed after sending Enter mode command for SOP\u0027, SOP\u0027\u0027",
+      "parentUuid": "decd6af2_f42f87e6",
+      "range": {
+        "startLine": 900,
+        "startChar": 2,
+        "endLine": 900,
+        "endChar": 23
+      },
+      "revId": "d994cf8aff3a2152da675e6fef3b21f1e44700c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c83aa57b_ed707702",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "d994cf8aff3a2152da675e6fef3b21f1e44700c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25385e5_0c6657a0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-01-15T22:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c83aa57b_ed707702",
+      "revId": "d994cf8aff3a2152da675e6fef3b21f1e44700c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "d994cf8aff3a2152da675e6fef3b21f1e44700c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39fffe3_529a194f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-01-15T22:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3429e216_f9b9acb1",
+      "range": {
+        "startLine": 1089,
+        "startChar": 1,
+        "endLine": 1089,
+        "endChar": 12
+      },
+      "revId": "d994cf8aff3a2152da675e6fef3b21f1e44700c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
