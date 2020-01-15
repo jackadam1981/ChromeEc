@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1aaf383_fbc4fd2d",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-15T22:29:57Z",
+      "side": 1,
+      "message": "Wait, do we actively need to do this? Do we ever disable those sbu lines? What happens if the EC is crashed, now there\u0027s no more CCD?\n\nI would just rather move the ccd connection before the PPC.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "62699964da782e68c7f0fe00e42cb8e1a4a4cb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
