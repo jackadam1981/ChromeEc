@@ -22,6 +22,30 @@
       "revId": "13cb2887442d5f2a8ea86bcf600a2f3b7ff972e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15086d17_27942919",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-15T00:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506c4c53_b2095961",
+      "range": {
+        "startLine": 1608,
+        "startChar": 3,
+        "endLine": 1608,
+        "endChar": 55
+      },
+      "revId": "13cb2887442d5f2a8ea86bcf600a2f3b7ff972e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
