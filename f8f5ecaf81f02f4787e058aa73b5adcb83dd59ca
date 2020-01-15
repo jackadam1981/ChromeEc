@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddf622b2_bd33e61c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-15T17:48:50Z",
+      "side": 1,
+      "message": "Nit - Different cable speeds per port is limited to proto boards.  Production/customer boards could choose to limit cable speed to the lowest common speed supported by all ports, and would meet the Chromebook requirement.\n\nSuggested reword:\n\"NOTE: Chromebooks require that all USB-C ports support the same features, so the maximum speed returned by this function should be set to the lowest speed supported by all ports. Products in development (i.e. proto boards) can support different speeds on each port for validation testing.\"",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1609,
+        "endChar": 0
+      },
+      "revId": "f8f5ecaf81f02f4787e058aa73b5adcb83dd59ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
