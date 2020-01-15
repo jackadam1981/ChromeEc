@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1cd1473e_c0da7d9b",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-15T21:59:11Z",
+      "side": 1,
+      "message": "I often use the script when I do actually expect differences. It\u0027s convenient to be able to have easy access to the full results for diffing specific files or comparing the build output. We could still do this with mktemp, but I think it makes it harder since it ends up in a different directory and arbitrary name (you can print out the directories or use a template with mktemp, but I\u0027m not convinced it buys a lot).",
+      "parentUuid": "dbecbc2b_e475f9f3",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "536258aa0fcf0603fbd8033d4628720deb39ca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "872d09c4_c1c88c93",
         "filename": "util/compare_build.sh",
         "patchSetId": 2
