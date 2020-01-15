@@ -337,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "5008fb1d_ac555d3c",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-15T04:19:05Z",
+      "side": 1,
+      "message": "You mean in S5 when running in EC RW stage，then enter hibernate? I test a coral board and a treeya board, EC would be as the same as EC power up. That means running RO first, then RW. This   function is indeed not controlled by active_mask, so I choose HOOK INIT and RW stage the two conditions to make sure the sensor can be probed sucessfully( might fail if not S0 at this moment, but i have no idea of similar scenario). As my suggestio above, maybe the better way to probe sensor is implement sensor_probe() in every sensor driver operation struct like sensor init().",
+      "parentUuid": "aafce4a3_075db2bb",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f6cf4b_0d6aa0cf",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
