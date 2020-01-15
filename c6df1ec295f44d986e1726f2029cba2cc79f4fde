@@ -16,6 +16,24 @@
       "revId": "c6df1ec295f44d986e1726f2029cba2cc79f4fde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1e72c0_86257eb1",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-15T16:39:36Z",
+      "side": 1,
+      "message": "I had to ponder this for a while but conclude your direction is the better approach. thanks",
+      "parentUuid": "326f3adb_d15b42dd",
+      "revId": "c6df1ec295f44d986e1726f2029cba2cc79f4fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
