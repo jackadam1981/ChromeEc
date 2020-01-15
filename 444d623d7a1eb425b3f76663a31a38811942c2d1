@@ -22,6 +22,30 @@
       "revId": "444d623d7a1eb425b3f76663a31a38811942c2d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b69f47_bd7b6b59",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-15T18:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcbfe229_5472bb96",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "444d623d7a1eb425b3f76663a31a38811942c2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
