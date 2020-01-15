@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b82908_84672f4e",
+        "filename": "include/config.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 3872,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-15T15:18:00Z",
+      "side": 1,
+      "message": "keep undef here.\n\nafter line @4562 add enable part",
+      "range": {
+        "startLine": 3867,
+        "startChar": 0,
+        "endLine": 3872,
+        "endChar": 42
+      },
+      "revId": "c3e1cac42624b76c715bc56ca6cffab2a7fa1fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
