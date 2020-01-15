@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19079535_82f7344a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-15T16:39:51Z",
+      "side": 1,
+      "message": "We should do this within chip code instead of comment PD code.\n\nFor example, the chips that have embedded TCPC, should ignore the USB_PD sleep mask.\n\nDoes this meant that chips with embedded TCPCs will never sleep? That doesn\u0027t seem good",
+      "range": {
+        "startLine": 877,
+        "startChar": 2,
+        "endLine": 883,
+        "endChar": 3
+      },
+      "revId": "00ba71bb3816a76e366b56745b8838a2f29af1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
