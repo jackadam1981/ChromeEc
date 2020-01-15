@@ -46,6 +46,30 @@
       "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f63e079_09cd0fe8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-15T17:15:53Z",
+      "side": 1,
+      "message": "Thanks for your patience as I come up to speed on this.\nBased on figure 5-1, I interpret that if you detect Cable revision 3.0, with USB 3.2 Gen2 speed, then you need to send SVID SOP\u0027 and Mode SOP\u0027 to detect of TBT Gen3 is available.\n\nFrom section 5.4.3.2.1\n\"If the USB Signaling field [B2…0] in the Passive Cable VDO response is 010b ( USB 3.2 Gen2) but the DFP is capable of USB4 Gen3 operation, then the DFP shall use the USB PD Alternate Mode process to determine if the cable also can be identified as a TBT3 Gen3 cable. Refer to Section 5.4.3.2.3 for TBT3 cable discovery process. If the Cable Speed field of the Discover Modes VDO response is set to 011b, then the USB4 discovery process is complete and USB4 operation up to as high as Gen3 is supported using the TBT3 passive cable (see Table F-11).\"\n\nI don\u0027t see anything from figure 5-1 or the accompanying text that references anything for Cable revision 2.0.  I agree that revision 2.0 cables may support TBT modes, but where is the information that revision 2.0 cables can support USB4 mode?\n\nI can also setup a quick conference call to discuss if you would prefer.",
+      "parentUuid": "896c02fb_eebbe310",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
