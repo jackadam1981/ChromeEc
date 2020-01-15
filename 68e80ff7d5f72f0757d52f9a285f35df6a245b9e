@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "cf32ac70_46056c58",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-15T00:44:52Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1712887/14/driver/ioexpander/it8801.c#280 Ting probably wants a comment here on what this actually does.\n\nAn idea: /* Is the bit in SOV different than the one we were about to set it to? */",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b0a2377_39b75eee",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 14
@@ -60,6 +83,30 @@
       "side": 1,
       "message": "please add a comment for this if. (it takes me a few minutes to understand what this means..)\n\nalso GPIO_HIGH is not on BIT(0), so you can\u0027t use bitwise-xor here.",
       "parentUuid": "6b0a2377_39b75eee",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 63
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccea4086_622cd623",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-15T00:44:52Z",
+      "side": 1,
+      "message": "Yeah, please remove this if then. It doesn\u0027t do anything productive here, and it\u0027s also wrong (according to what Ting said).",
+      "parentUuid": "3319dff4_ade601ee",
       "range": {
         "startLine": 360,
         "startChar": 0,
