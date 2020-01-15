@@ -234,40 +234,104 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
-void usb_spi_board_enable(struct usb_spi_config const *config)
+
+
+static void spi_turn_on_enable(void)
 {
-	/* Configure SPI GPIOs */
+	/* We are transitioning from UART to SPI mode: */
+	/* Turn off comparator interrupt for Vref detection */
+	STM32_EXTI_IMR &= ~EXTI_COMP2_EVENT;
+
+	/* Disable level shifters to avoid glitching output */
+	gpio_set_level(GPIO_EN_MISO_MOSI_H1_UART, 0);
+	gpio_set_level(GPIO_EN_CLK_CSN_EC_UART, 0);
+
+	/*
+	* De-select UART on all UARTs pins to avoid drive
+	* fights with SPI pins.
+	*/
+	gpio_config_module(MODULE_USART, 0);
+
+	/*  TODO make 3300 dynamic */
+	/* Set requested Vref voltage */
+	gpio_set_level(GPIO_SEL_SPIVREF_H1VREF_3V3,
+			1);
+	gpio_set_level(GPIO_SEL_SPIVREF_ECVREF_3V3,
+			1);
+
+	/* Set default state for chip select */
+	gpio_set_flags(GPIO_SPI_CSN, GPIO_OUT_HIGH);
+
+	/* Configure SPI pins to SPI module */
 	gpio_config_module(MODULE_SPI_FLASH, 1);
 
-	/* Set all four SPI pins to high speed */
-	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+	/* Enable level shifters passthrough */
+	gpio_set_level(GPIO_EN_MISO_MOSI_H1_UART, 1);
+	gpio_set_level(GPIO_EN_CLK_CSN_EC_UART, 1);
 
-	/* Enable clocks to SPI2 module */
-	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+	/* Ensure DUT's muxes are switched to SPI mode */
+	gpio_set_level(GPIO_C2D2_MUX_UART_ODL, 1);
 
-	/* Reset SPI2 */
-	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
-	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
-
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	vref_monitor_disable |= VREF_MON_DIS_SPI_MODE;
+	uart_state |= UART_STATE_SPI_MODE;
 }
 
-void usb_spi_board_disable(struct usb_spi_config const *config)
+void spi_turn_off_enable(void)
 {
-	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
+	/* We are transitioning from SPI to UART mode: */
+	/* Disable level shifter pass through */
+	gpio_set_level(GPIO_EN_MISO_MOSI_H1_UART, 0);
+	gpio_set_level(GPIO_EN_CLK_CSN_EC_UART, 0);
 
-	/* Disable clocks to SPI2 module */
-	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
-
-	/* Release SPI GPIOs */
+	/* Set SPI GPIOs to inputs. */
 	gpio_config_module(MODULE_SPI_FLASH, 0);
 
-	/* Reset all four SPI pins to low speed */
-	STM32_GPIO_OSPEEDR(GPIO_B) &= ~0xff000000;
+	/* Set default state for chip select */
+	gpio_set_flags(GPIO_SPI_CSN, GPIO_INPUT);
+
+	/* Re-enable all UARTs pins as UART alternate mode. */
+	gpio_config_module(MODULE_USART, 1);
+
+	/* Ensure DUT's muxes are switched to UART mode */
+	gpio_set_level(GPIO_C2D2_MUX_UART_ODL, 0);
+
+	/* Update state and defer Vrefs update  */
+	vref_monitor_disable &= ~VREF_MON_DIS_SPI_MODE;
+	uart_state &= ~UART_STATE_SPI_MODE;
+	hook_call_deferred(&update_vrefs_and_shifters_data, 0);
 }
 
+
+static uint32_t requested_spi_state;
+uint32_t current_spi_state;
+
+static void spi_update(void)
+{
+	if (requested_spi_state == current_spi_state) {
+		/* Do nothing. No change */
+		ccprintf("Leaving SPI at %d\n", current_spi_state);
+	} else if (requested_spi_state) {
+		spi_turn_on_enable();
+		current_spi_state = 1;
+	} else {
+		spi_turn_off_enable();
+		current_spi_state =  0;
+	}
+}
+DECLARE_DEFERRED(spi_update);
+
+void usb_spi_board_enable(struct usb_spi_config const *config)
+{
+	requested_spi_state = 1;
+	hook_call_deferred(&spi_update_data, 0);
+}
+void usb_spi_board_disable(struct usb_spi_config const *config)
+{
+	requested_spi_state = 0;
+	hook_call_deferred(&spi_update_data, 1000 * MSEC);
+}
 USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI,
-	       USB_SPI_CONFIG_FLAGS_IGNORE_HOST_SIDE_ENABLE);
+	       0);
 
 /******************************************************************************
  * Check parity setting on usarts.
@@ -430,8 +494,6 @@ DECLARE_CONSOLE_COMMAND(hold_usart_low, command_hold_usart_low,
 /******************************************************************************
  * Console commands SPI programming
  */
-
-
 
 enum vref {
 	OFF = 0,
@@ -797,6 +859,21 @@ static void board_init(void)
 	/* Set Vrefs and enabled level shifters */
 	set_up_comparator();
 
+	/* Set all four SPI pins to high speed */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+
+	/* Enable clocks to SPI2 module */
+	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+
+	/* Reset SPI2 */
+	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
+
+	/* Enable HW SPI module. Pins aren't selected to SPI though */
+	/* Enable SPI. Sets SPI pins to SPI alternate mode. */
+	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	usb_spi_enable(&usb_spi, 1);
+
 	/*
 	 * Ensure we set up vrefs at least once. Don't call here because
 	 * there are delays in the reads
@@ -826,5 +903,6 @@ static void board_jump(void)
 
 	/* Ensure SPI2 is disabled as well */
 	usb_spi_enable(&usb_spi, 0);
+	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, board_jump, HOOK_PRIO_DEFAULT);
