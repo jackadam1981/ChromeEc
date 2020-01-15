@@ -1092,12 +1092,15 @@ enum cable_outlet {
  */
 #define PD_HEADER_GET_SOP(header) (((header) >> 28) & 0xf)
 #define PD_HEADER_SOP(sop) ((sop) << 28)
-#define PD_MSG_SOP         0
-#define PD_MSG_SOPP        1
-#define PD_MSG_SOPPP       2
-#define PD_MSG_SOP_DBGP    3
-#define PD_MSG_SOP_DBGPP   4
-#define PD_MSG_SOP_CBL_RST 5
+
+enum pd_msg_type {
+	PD_MSG_SOP,
+	PD_MSG_SOP_P,
+	PD_MSG_SOP_PP,
+	PD_MSG_SOP_DBG_P,
+	PD_MSG_SOP_DBG_PP,
+	PD_MSG_SOP_CBL_RST,
+};
 
 /* Used for processing pd extended header */
 #define PD_EXT_HEADER_CHUNKED(header)   (((header) >> 15) & 1)
@@ -1548,18 +1551,16 @@ uint16_t pd_get_identity_vid(int port);
 uint16_t pd_get_identity_pid(int port);
 
 /**
- * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
+ * Returns the type of communication (SOP/SOP'/SOP'')
  *
  * @param port		USB-C port number
  * @param data_role	current data role
  * @param pd_flags	current pd flags
- * @return		For rev3.0, true if vconn is on
- *			For rev2.0, true if vconn is on and data_role is dfp
- *			False otherwise
+ * @return		Type of message to be transmitted
  */
-uint8_t is_sop_prime_ready(int port,
-			enum pd_data_role data_role,
-			uint32_t pd_flags);
+enum pd_msg_type pd_msg_tx_type(int port,
+				enum pd_data_role data_role,
+				uint32_t pd_flags);
 
 /**
  * Reset Cable type, Cable attributes and cable flags

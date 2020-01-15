@@ -2185,6 +2185,8 @@ static void pd_vdm_send_state_machine(int port)
 {
 	int res;
 	uint16_t header;
+	enum pd_msg_type msg_type =
+		pd_msg_tx_type(port, pd[port].data_role, pd[port].flags);
 
 	switch (pd[port].vdm_state) {
 	case VDM_STATE_READY:
@@ -2212,8 +2214,7 @@ static void pd_vdm_send_state_machine(int port)
 		 * data role swap takes place during source and sink
 		 * negotiation and in case of failure, a soft reset is issued.
 		 */
-		if (is_sop_prime_ready(port, pd[port].data_role,
-				pd[port].flags)) {
+		if ((msg_type & PD_MSG_SOP_P) || (msg_type & PD_MSG_SOP_PP)) {
 			/* Prepare SOP'/SOP'' header and send VDM */
 			header = PD_HEADER(
 				PD_DATA_VENDOR_DEF,
@@ -2223,13 +2224,23 @@ static void pd_vdm_send_state_machine(int port)
 				(int)pd[port].vdo_count,
 				pd_get_rev(port),
 				0);
-			res = pd_transmit(port, TCPC_TX_SOP_PRIME, header,
+			res = pd_transmit(port,
+					  msg_type & PD_MSG_SOP_P ?
+					  TCPC_TX_SOP_PRIME :
+					  TCPC_TX_SOP_PRIME_PRIME,
+					  header,
 					  pd[port].vdo_data);
 			/*
-			 * If there is no ack from the cable, its a non-emark
-			 * cable and since, the pd flow should continue
-			 * irrespective of cable response, sending
+			 * In case of SOP', if there is no ack from the cable,
+			 * its a non-emark cable and since, the pd flow should
+			 * continue irrespective of cable response, sending
 			 * discover_identity so the pd flow remains intact.
+			 *
+			 * In case of SOP'', if there is no ack from the cable,
+			 * exit Thunderbolt-Compatible mode discovery, reset the
+			 * mux state since the mux will be set to safe state
+			 * before entering Thunderbolt-Compatible mode and
+			 * enter appropriate mode.
 			 */
 			if (res < 0) {
 				header = PD_HEADER(PD_DATA_VENDOR_DEF,
@@ -2238,11 +2249,22 @@ static void pd_vdm_send_state_machine(int port)
 						   pd[port].msg_id,
 						   (int)pd[port].vdo_count,
 						   pd_get_rev(port), 0);
+
 				pd[port].vdo_data[0] =
-					VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
+						VDO(USB_SID_PD, 1,
+						msg_type & PD_MSG_SOP_P ?
+						CMD_DISCOVER_SVID :
+						CMD_ENTER_MODE);
 				res = pd_transmit(port, TCPC_TX_SOP, header,
 						  pd[port].vdo_data);
 				reset_pd_cable(port);
+
+				if ((msg_type & PD_MSG_SOP_PP) &&
+				     IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+					usb_mux_set(port, TYPEC_MUX_USB,
+						    USB_SWITCH_CONNECT,
+						    pd_get_polarity(port));
+				}
 			}
 		} else {
 			/* Prepare SOP header and send VDM */
