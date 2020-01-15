@@ -63,6 +63,7 @@ extern enum gpio_signal GPIO_PCH_SYS_PWROK;
 enum battery_type {
 	BATTERY_SMP,
 	BATTERY_SUNWODA,
+	BATTERY_LG,
 	BATTERY_TYPE_COUNT,
 };
 
