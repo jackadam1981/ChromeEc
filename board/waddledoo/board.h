@@ -11,6 +11,8 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
+#define CONFIG_I2C_DEBUG
+
 /* Charger */
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_RAA489000
@@ -39,6 +41,7 @@
 
 /* USB PD */
 #define CONFIG_USB_PD_TCPM_RAA489000
+/* #define CONFIG_USB_PD_DECODE_SOP */
 
 /* I2C configuration */
 #define I2C_PORT_EEPROM     NPCX_I2C_PORT7_0

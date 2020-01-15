@@ -559,11 +559,14 @@ int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 
 	/* RX_BYTE_CNT includes 3 bytes for frame type and header */
 	if (rv != EC_SUCCESS || cnt < 3) {
+		CPRINTS("c%d: failed to get RX cnt", port);
 		rv = EC_ERROR_UNKNOWN;
 		goto clear;
 	}
+	CPRINTS("c%d: RX_BYTE_CNT: %d", port, cnt);
 	cnt -= 3;
 	if (cnt > member_size(struct cached_tcpm_message, payload)) {
+		CPRINTS("c%d: that's too many (no more than %d)", port,member_size(struct cached_tcpm_message, payload));
 		rv = EC_ERROR_UNKNOWN;
 		goto clear;
 	}
@@ -577,6 +580,8 @@ int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 #endif
 
 	rv = tcpc_read16(port, TCPC_REG_RX_HDR, (int *)head);
+	if (rv)
+		CPRINTS("c%d: failed to read TCPC_REG_RX_HDR", port);
 
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	/* Encode message address in bits 31 to 28 */
@@ -586,6 +591,11 @@ int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 	if (rv == EC_SUCCESS && cnt > 0) {
 		tcpc_read_block(port, reg, (uint8_t *)payload, cnt);
 	}
+
+	CPRINTS("payload: ");
+	for(int i = 0; i < 7; i++)
+		ccprintf(" %04x ", payload[i]);
+	ccprintf("\n");
 
 clear:
 	/* Read complete, clear RX status alert bit */

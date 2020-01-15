@@ -78,6 +78,19 @@ int raa489000_init(int port)
 	rv |= tcpc_write16(port, RAA489000_PD_PHYSICAL_SETTING1, regval);
 	if (rv)
 		CPRINTS("c%d: failed to set PD PHY setting1", port);
+
+	/* Enable VBUS auto discharge. needed to goodcrc */
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &regval);
+	regval |= TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+	rv |= tcpc_write(port, TCPC_REG_POWER_CTRL, regval);
+	if (rv)
+		CPRINTS("c%d: failed to set auto discharge", port);
+
+	/* Enable TCPMv1 */
+	rv = tcpc_write16(port, 0x80, 0x1);
+	if (rv)
+		CPRINTS("c%d: failed to set TCPCIv1.0 mode", port);
+
 	return rv;
 }
 

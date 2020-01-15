@@ -32,7 +32,8 @@
 #include "usbc_ppc.h"
 #include "version.h"
 
-#define USBC_EVENT_TIMEOUT (5 * MSEC)
+/* #define USBC_EVENT_TIMEOUT (5 * MSEC) */
+#define USBC_EVENT_TIMEOUT (20 * MSEC)
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
 
