@@ -46,6 +46,30 @@
       "revId": "496c12b22921df9dbe62b91ac66b356ba573e62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "067772dd_cf24e3d5",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-15T23:32:11Z",
+      "side": 1,
+      "message": "but, come to think of it, was time measurement done on a platform with SPI or I2C? The SPI variant includes line 358, but I2C does not have it.",
+      "parentUuid": "fd1071d6_800b1efa",
+      "range": {
+        "startLine": 355,
+        "startChar": 3,
+        "endLine": 356,
+        "endChar": 9
+      },
+      "revId": "496c12b22921df9dbe62b91ac66b356ba573e62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
