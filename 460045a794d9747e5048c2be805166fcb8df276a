@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "66e98324_9cda21ac",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-15T14:59:11Z",
+      "side": 1,
+      "message": "I\u0027m working on a driver structure for the chargers now, so that we can support having two chargers on separate ports.  Until then, we might have some stop-gaps like this to support progress on waddledoo.\n\nAre we pretty much limiting ourselves to being able to detect Vbus on port 1 for now?",
+      "parentUuid": "955a27a3_bd9d1c6c",
+      "range": {
+        "startLine": 785,
+        "startChar": 4,
+        "endLine": 787,
+        "endChar": 24
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12b5adbc_c0a2f9a1",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 6
