@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "940d075c_f311c74a",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-15T07:31:26Z",
+      "side": 1,
+      "message": "The result is the same.",
+      "parentUuid": "efe2c28e_6132fc39",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf32ac70_46056c58",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e97d14bc_5390fd76",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-15T07:31:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf32ac70_46056c58",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +164,30 @@
       "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6493afce_f34fbf24",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-01-15T07:31:26Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "ccea4086_622cd623",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 63
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
