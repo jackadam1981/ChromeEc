@@ -22,6 +22,30 @@
       "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896c02fb_eebbe310",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-15T00:44:59Z",
+      "side": 1,
+      "message": "Cable Rev 20           | Cable Rev 30      |  TBT\n---------------------------------------------------\n3.1 Gen1 (10gbps)      |                   | Gen1 (10gbps)\n----------------------------------------------------------\n3.1 Gen1gen2 (20gbps)  | 3.2 Gen1 (20gbps) | Gen1_Gen2 (20gbps)\n                       | 3.2 Gen2 (20gbps) |\n-------------------------------------------------------------\n                       | 4.0 Gen3 (40gbps) | Gen3 (40gbps)\n\n*Note that cable Rev and cable gen are different.\n\nIn case of Cable rev2, since it supports both 10gbps and 20gbps, we need to determine if it has thunderbolt capability to support tbt_Gen1_Gen2 or tbt_Gen3.\nIn case of Cable rev3, since we anyways support only 20 and 40gbps, we can directly enter into USB4 mode.",
+      "parentUuid": "0d64eced_f958dc07",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
