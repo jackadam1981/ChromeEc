@@ -15,9 +15,14 @@
 /* Pass in an option message to display after condition */
 #define BUILD_ASSERT(cond, ...) _BA0_(cond, __FILE__, __LINE__, __VA_ARGS__)
 
-/*
- * Test an important condition inside code path at run time, taking advantage of
- * -Werror=div-by-zero.
+/** Same as BUILD_ASSERT, but can be used inside blocks. */
+#define BUILD_ASSERT_INLINE(expression, message) \
+	do { _Static_assert(expression, message); } while (0)
+
+/**
+ * Test an important condition inside code path at build time, taking
+ * advantage of -Werror=div-by-zero. BUILD_ASSERT_INLINE should be preferred
+ * unless it cannot be used (e.g., if used as part of assignment).
  */
 #define BUILD_CHECK_INLINE(value, cond_true) ((value) / (!!(cond_true)))
 
