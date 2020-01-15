@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "50777602_da3b09d4",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-15T18:11:11Z",
+      "side": 1,
+      "message": "Same as previous CL, needs a bug filed and a TODO to remove this.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "b9d79d0c828777e03ec49a36ab8645c5aebba2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e67ff37_b06fe154",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 4
