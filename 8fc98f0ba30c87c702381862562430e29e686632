@@ -319,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "aafce4a3_075db2bb",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-15T01:37:53Z",
+      "side": 1,
+      "message": "\u003e That may not be true depending on the power domain. (from .active_mask, it seems the sensors are powered off in S5).\n\u003e \u003e\u003e\u003eThat\u0027s why sensor probing is only executed in RW stage. It is in S0 state in RW stage when HOOK_INIT is executed. Must the power state be S0 when execute HOOK_INIT in RW stage? If not, that would be a problem.\nI am concern when the EC hibernates while in S5. If it resumes while in S5, the sensor may not be working.\n\u003e \n\u003e If the sensor is a little slow (see driver/accel_kionix.c init() function).\n\u003e \u003e\u003e\u003eMaybe the impact is little. And comparing with current code,sensor probing is much later. Maybe more than 2 or 3 seconds delays. One is S3 power state in RO, the other is HOOK INIT in RW. \n\u003e For future, adding a probe function in every sensor driver operation struct may be a more better choice. Not only for some sensors init(), but also for probing sensors :)",
+      "parentUuid": "e6caaef6_952e414b",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f6cf4b_0d6aa0cf",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
