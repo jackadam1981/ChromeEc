@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e67ff37_b06fe154",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-15T17:57:15Z",
+      "side": 1,
+      "message": "After Ayushee\u0027s CL for enabling USB4 is approved, this check should be guarded with IS_ENABLED(CONFIG_USB_PD_USB4).",
+      "range": {
+        "startLine": 1000,
+        "startChar": 4,
+        "endLine": 1000,
+        "endChar": 32
+      },
+      "revId": "b9d79d0c828777e03ec49a36ab8645c5aebba2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
