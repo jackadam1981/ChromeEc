@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c02170a_23ef6913",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-15T01:37:48Z",
+      "side": 1,
+      "message": "What about this (and others)?",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 333,
+        "endChar": 36
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097d9193_98735f2c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-15T01:37:48Z",
+      "side": 1,
+      "message": "IS_ENABLED?",
+      "range": {
+        "startLine": 347,
+        "startChar": 7,
+        "endLine": 347,
+        "endChar": 31
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901127da_591f3945",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-15T01:37:48Z",
+      "side": 1,
+      "message": "Should be also named?",
+      "range": {
+        "startLine": 434,
+        "startChar": 8,
+        "endLine": 434,
+        "endChar": 12
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4597496d_97f354f7",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-15T01:37:48Z",
+      "side": 1,
+      "message": "Do you need this guard?",
+      "range": {
+        "startLine": 777,
+        "startChar": 7,
+        "endLine": 777,
+        "endChar": 31
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dc3b1e_caa35e81",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-15T01:37:48Z",
+      "side": 1,
+      "message": "How about I2C_PORT_CHARGER?",
+      "range": {
+        "startLine": 785,
+        "startChar": 4,
+        "endLine": 787,
+        "endChar": 24
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b5adbc_c0a2f9a1",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-15T01:37:48Z",
+      "side": 1,
+      "message": "Is this right?\n\nYou can use GENMASK(13, 6).",
+      "range": {
+        "startLine": 797,
+        "startChar": 8,
+        "endLine": 797,
+        "endChar": 13
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
