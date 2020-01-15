@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcbfe229_5472bb96",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-15T18:45:15Z",
+      "side": 1,
+      "message": "Nit - please avoid use of specific board phases in comments.\nChange to \"Need to fix once USB-C feature set is known for Volteer\".",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "444d623d7a1eb425b3f76663a31a38811942c2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
