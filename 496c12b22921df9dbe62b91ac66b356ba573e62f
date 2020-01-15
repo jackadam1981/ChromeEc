@@ -94,6 +94,30 @@
       "revId": "496c12b22921df9dbe62b91ac66b356ba573e62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04111ce8_52f2cadb",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-15T23:41:46Z",
+      "side": 1,
+      "message": "great, maybe it is worth mentioning in the comments why udelay() was not used and how much delay this provided.\n\nAlso, how about moving seen_data assignment out of the flow so that it is exactly the same on SPI and I2C devices.",
+      "parentUuid": "716bc9be_13a4a84e",
+      "range": {
+        "startLine": 355,
+        "startChar": 3,
+        "endLine": 356,
+        "endChar": 9
+      },
+      "revId": "496c12b22921df9dbe62b91ac66b356ba573e62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
