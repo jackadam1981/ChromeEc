@@ -16,6 +16,24 @@
       "revId": "4bb440b19e1a537bd87f7f0b3a6e964b65a6995a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda30c3e_8c9f1d6d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-15T22:33:43Z",
+      "side": 1,
+      "message": "I changed it so that the header is only included inside CHROMIUM_EC macro.",
+      "parentUuid": "2e66c016_f96c9fac",
+      "revId": "4bb440b19e1a537bd87f7f0b3a6e964b65a6995a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
