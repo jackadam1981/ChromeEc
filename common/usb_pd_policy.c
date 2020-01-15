@@ -173,9 +173,15 @@ static bool is_transmit_msg_sop_prime(int port)
 		(cable[port].flags & CABLE_FLAGS_SOP_PRIME_ENABLE));
 }
 
-uint8_t is_sop_prime_ready(int port,
-			   enum pd_data_role data_role,
-			   uint32_t pd_flags)
+static bool is_transmit_msg_sop_prime_prime(int port)
+{
+	return (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+		(cable[port].flags & CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE));
+}
+
+enum pd_msg_type pd_msg_tx_type(int port,
+				enum pd_data_role data_role,
+				uint32_t pd_flags)
 {
 	/*
 	 * Ref: USB PD 3.0 sec 2.5.4: When an Explicit Contract is in place the
@@ -189,10 +195,13 @@ uint8_t is_sop_prime_ready(int port,
 	 * ensure that it is the Vconn Source
 	 */
 	if (pd_flags & PD_FLAGS_VCONN_ON && (IS_ENABLED(CONFIG_USB_PD_REV30) ||
-		data_role == PD_ROLE_DFP))
-		return is_transmit_msg_sop_prime(port);
-
-	return 0;
+		data_role == PD_ROLE_DFP)) {
+		if (is_transmit_msg_sop_prime(port))
+			return PD_MSG_SOPP;
+		if (is_transmit_msg_sop_prime_prime(port))
+			return PD_MSG_SOPPP;
+	}
+	return PD_MSG_SOP;
 }
 
 void reset_pd_cable(int port)
@@ -257,6 +266,18 @@ static void disable_transmit_sop_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
+static void enable_transmit_sop_prime_prime(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
+}
+
+static void disable_transmit_sop_prime_prime(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
 }
 
 static bool is_tbt_compat_enabled(int port)
@@ -615,10 +636,9 @@ static int enter_tbt_compat_mode(int port, uint32_t *payload)
 					VDO_SVDM_VERS(VDM_VER20);
 
 	/* For TBT3 Cable Enter Mode Command, number of Objects is 1 */
-	if (is_transmit_msg_sop_prime(port))
+	if (is_transmit_msg_sop_prime(port) ||
+	    is_transmit_msg_sop_prime_prime(port))
 		return 1;
-
-	usb_mux_set_safe_mode(port);
 
 	/* Table F-13 TBT3 Device Enter Mode Command */
 	enter_dev_mode.vendor_spec_b1 =
@@ -873,6 +893,12 @@ static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 		if (get_usb_pd_mux_cable_type(port) == IDH_PTYPE_PCABLE)
 			disable_transmit_sop_prime(port);
 
+		/*
+		 * Set USB mux to safe state before entering
+		 * Thunderbolt-Compatible mode.
+		 */
+		usb_mux_set_safe_mode(port);
+
 		rsize = enter_tbt_compat_mode(port, payload);
 	} else {
 		/* Store Discover Mode SOP response */
@@ -1058,6 +1084,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			if (is_tbt_compat_enabled(port)) {
 				if (is_transmit_msg_sop_prime(port)) {
 					disable_transmit_sop_prime(port);
+					enable_transmit_sop_prime_prime(port);
+					rsize = enter_tbt_compat_mode(port,
+								payload);
+				} else if (
+					is_transmit_msg_sop_prime_prime(port)) {
+					disable_transmit_sop_prime_prime(port);
 					rsize = enter_tbt_compat_mode(port,
 								payload);
 				} else {
