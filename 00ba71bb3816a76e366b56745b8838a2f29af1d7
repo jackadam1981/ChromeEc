@@ -22,6 +22,30 @@
       "revId": "00ba71bb3816a76e366b56745b8838a2f29af1d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cadc7bf_7e25b211",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-01-16T10:45:57Z",
+      "side": 1,
+      "message": "Ok, I am moving this to chip code.\nNo, with patchset#4, the chip doesn\u0027t go to deep sleep (but can go to doze) if one of port connects with pd capable device, this behavior is same as without changes. And if all ports are nothing plug-in, the chip go to deep sleep.",
+      "parentUuid": "19079535_82f7344a",
+      "range": {
+        "startLine": 877,
+        "startChar": 2,
+        "endLine": 883,
+        "endChar": 3
+      },
+      "revId": "00ba71bb3816a76e366b56745b8838a2f29af1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
