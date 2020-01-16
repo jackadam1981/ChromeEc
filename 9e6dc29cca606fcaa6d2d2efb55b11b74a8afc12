@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddf91565_5dc0873e",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-16T23:21:38Z",
+      "side": 0,
+      "message": "This is redundant to the loop condition check in line 164 at the very first iteration where count is zero.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "9e6dc29cca606fcaa6d2d2efb55b11b74a8afc12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
