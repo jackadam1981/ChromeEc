@@ -143,3 +143,38 @@ const struct usb_retimer_driver pi3dpx1207_usb_retimer = {
 	.set = pi3dpx1207_set_mux,
 	.enter_low_power_mode = pi3dpx1207_enter_low_power_mode,
 };
+
+static int read_regs(void)
+{
+	const int i2c_port = usb_retimers[0].i2c_port;
+	const uint16_t i2c_addr_flags = usb_retimers[0].i2c_addr_flags;
+
+	int rv = EC_SUCCESS;
+	int attempt = 0;
+
+	do {
+		attempt++;
+		rv = i2c_xfer(i2c_port, i2c_addr_flags, NULL, 0, buf,
+			PI3DPX1207_NUM_REGISTERS);
+	} while ((rv != EC_SUCCESS) && (attempt < I2C_MAX_RETRIES));
+
+	return rv;
+}
+
+
+static int console_pi3dpx1207_dump_regs(int argc, char **argv)
+{
+	int i;
+
+	read_regs();
+
+	for (i = 0; i < PI3DPX1207_NUM_REGISTERS; ++i) {
+		ccprintf("BYTE %4d:  %4x\n", i, buf[i]);
+		cflush();
+	}
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(pi3dpx_dump, console_pi3dpx1207_dump_regs,
+			NULL,
+			"Dump all pi3dpx1207 registers");
