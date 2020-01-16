@@ -481,6 +481,10 @@ accel_cleanup:
 	return ret;
 }
 
+static int round_divide(int64_t val, int divisor)
+{
+	return (val + (val > 0 ? 1 : -1) * divisor / 2) / divisor;
+}
 static int get_data_rate(const struct motion_sensor_t *s)
 {
 	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
@@ -506,8 +510,10 @@ static int get_offset(const struct motion_sensor_t *s,
 				  BMI160_OFFSET_ACC70 + i, &val);
 			if (val > 0x7f)
 				val = -256 + val;
-			v[i] = val * BMI160_OFFSET_ACC_MULTI_MG /
-				BMI160_OFFSET_ACC_DIV_MG;
+			v[i] = round_divide(
+				(int64_t)val * BMI160_OFFSET_ACC_MULTI_MG,
+				BMI160_OFFSET_ACC_DIV_MG);
+
 		}
 		break;
 	case MOTIONSENSE_TYPE_GYRO:
@@ -526,8 +532,9 @@ static int get_offset(const struct motion_sensor_t *s,
 			val |= ((val98 >> (2 * i)) & 0x3) << 8;
 			if (val > 0x1ff)
 				val = -1024 + val;
-			v[i] = val * BMI160_OFFSET_GYRO_MULTI_MDS /
-				BMI160_OFFSET_GYRO_DIV_MDS;
+			v[i] = round_divide(
+				(int64_t)val * BMI160_OFFSET_GYRO_MULTI_MDS,
+				BMI160_OFFSET_GYRO_DIV_MDS);
 		}
 		break;
 #ifdef CONFIG_MAG_BMI160_BMM150
@@ -565,8 +572,9 @@ static int set_offset(const struct motion_sensor_t *s,
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
 		for (i = X; i <= Z; i++) {
-			val = v[i] * BMI160_OFFSET_ACC_DIV_MG /
-				BMI160_OFFSET_ACC_MULTI_MG;
+			val = round_divide(
+				(int64_t)v[i] * BMI160_OFFSET_ACC_DIV_MG,
+				BMI160_OFFSET_ACC_MULTI_MG);
 			if (val > 127)
 				val = 127;
 			if (val < -128)
@@ -582,8 +590,9 @@ static int set_offset(const struct motion_sensor_t *s,
 		break;
 	case MOTIONSENSE_TYPE_GYRO:
 		for (i = X; i <= Z; i++) {
-			val = v[i] * BMI160_OFFSET_GYRO_DIV_MDS /
-				BMI160_OFFSET_GYRO_MULTI_MDS;
+			val = round_divide(
+				(int64_t)v[i] * BMI160_OFFSET_GYRO_DIV_MDS,
+				BMI160_OFFSET_GYRO_MULTI_MDS);
 			if (val > 511)
 				val = 511;
 			if (val < -512)
