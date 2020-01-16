@@ -147,6 +147,8 @@ struct motion_sensor_t {
 	void *drv_data;
 	/* Only valid if flags & MOTIONSENSE_FLAG_INT_SIGNAL is true. */
 	enum gpio_signal int_signal;
+	/* Data used for online calibraiton, must match the sensor type. */
+	void *online_calib_data;
 
 	/* i2c port */
 	uint8_t port;
