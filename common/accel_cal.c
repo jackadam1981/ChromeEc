@@ -31,8 +31,9 @@ static inline int compute_temp_gate(const struct accel_cal *cal, fp_t temp)
 		? gate : (cal->num_temp_windows - 1);
 }
 
-bool accel_cal_accumulate(struct accel_cal *cal, uint32_t sample_time, fp_t x,
-			  fp_t y, fp_t z, fp_t temp)
+test_mockable bool accel_cal_accumulate(
+	struct accel_cal *cal, uint32_t sample_time, fp_t x, fp_t y, fp_t z,
+	fp_t temp)
 {
 	struct accel_cal_algo *algo;
 
