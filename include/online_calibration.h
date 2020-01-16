@@ -26,4 +26,22 @@ int online_calibration_process_data(
 	struct motion_sensor_t *sensor,
 	uint32_t timestamp);
 
+/**
+ * Check if new calibration values are available since the last read.
+ *
+ * @return True if the calibration values have changed.
+ */
+bool online_calibration_has_new_values(void);
+
+/**
+ * Read available calibration values and reset dirty bits.
+ *
+ * @param capacity_bytes The number of bytes available to be written to `out`.
+ * @param max_count The maximum number of entries to be placed in `out`.
+ * @param out The target to copy the data into.
+ * @return The number of entries written to `out`.
+ */
+int online_calibration_read(int capacity_bytes, int max_count,
+			    struct ec_response_online_calibration_data *out);
+
 #endif /* __CROS_EC_ONLINE_CALIBRATION_H */

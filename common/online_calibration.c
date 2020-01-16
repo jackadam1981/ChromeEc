@@ -4,9 +4,20 @@
  */
 
 #include "accelgyro.h"
+#include "atomic.h"
 #include "hwtimer.h"
 #include "online_calibration.h"
 #include "common.h"
+#include "util.h"
+#include "vec3.h"
+#include "task.h"
+#include "ec_commands.h"
+#include "accel_cal.h"
+#include "mkbp_event.h"
+
+#define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
+
+#define SIZEOF_CAL_DATA sizeof(struct ec_response_online_calibration_data)
 
 /** Entry of the temperature cache */
 struct temp_cache_entry {
@@ -18,6 +29,16 @@ struct temp_cache_entry {
 
 /** Cache for internal sensor temperatures. */
 static struct temp_cache_entry sensor_temp_cache[SENSOR_COUNT];
+
+/** Cache for online calibration values. */
+static int16_t sensor_calib_cache[SENSOR_COUNT * 3];
+
+/** Bitmap telling which online calibration values are valid. */
+static uint8_t sensor_calib_cache_valid_map;
+/** Bitmap telling which online calibration values are dirty. */
+static uint8_t sensor_calib_cache_dirty_map;
+
+struct mutex g_calib_cache_mutex;
 
 static int get_temperature(struct motion_sensor_t *sensor, fp_t *temp)
 {
@@ -45,12 +66,82 @@ static int get_temperature(struct motion_sensor_t *sensor, fp_t *temp)
 	return EC_SUCCESS;
 }
 
+static void data_int16_to_fp(const struct motion_sensor_t *s,
+			     const int16_t *data, fpv3_t out)
+{
+	int i;
+	fp_t range = INT_TO_FP(s->drv->get_range(s));
+
+	for (i = 0; i < 3; ++i) {
+		fp_t v = INT_TO_FP((int32_t)data[i]);
+
+		out[i] = fp_div(v, INT_TO_FP((data[i] >= 0) ? 0x7fff : 0x8000));
+		out[i] = fp_mul(out[i], range);
+		/* Check for overflow */
+		out[i] = CLAMP(out[i], -range, range);
+	}
+}
+
+static void data_fp_to_int16(const struct motion_sensor_t *s,
+			     const fpv3_t data, int16_t *out)
+{
+	int i;
+	fp_t range = INT_TO_FP(s->drv->get_range(s));
+
+	for (i = 0; i < 3; ++i) {
+		int32_t iv;
+		fp_t v = fp_div(data[i], range);
+
+		v = fp_mul(v, INT_TO_FP(
+			(data[i] >= INT_TO_FP(0)) ? 0x7fff : 0x8000));
+		iv = FP_TO_INT(v);
+		/* Check for overflow */
+		out[i] = CLAMP(iv, (int32_t)0xffff8000, (int32_t)0x00007fff);
+	}
+}
+
 void online_calibration_init(void)
 {
 	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(sensor_temp_cache); i++)
 		sensor_temp_cache[i].temp = -1;
+}
+
+bool online_calibration_has_new_values(void)
+{
+	bool has_dirty;
+
+	mutex_lock(&g_calib_cache_mutex);
+	has_dirty = sensor_calib_cache_dirty_map != 0;
+	mutex_unlock(&g_calib_cache_mutex);
+
+	return has_dirty;
+}
+
+int online_calibration_read(int capacity_bytes, int max_count,
+			    struct ec_response_online_calibration_data *out)
+{
+	int i, count, sensor_num;
+
+	mutex_lock(&g_calib_cache_mutex);
+	count = MIN(capacity_bytes / SIZEOF_CAL_DATA,
+		    MIN(__builtin_popcount(sensor_calib_cache_dirty_map),
+			max_count));
+	for (i = 0; i < count; ++i) {
+		/* Get the sensor number. */
+		sensor_num = __builtin_ctz(sensor_calib_cache_dirty_map);
+		/* Update data in out */
+		out->sensor_num = sensor_num;
+		memcpy(out->data, &sensor_calib_cache[sensor_num * 3], 6);
+		/* Clear dirty bit */
+		sensor_calib_cache_dirty_map &= ~(1 << sensor_num);
+		/* Move out pointer to next entry */
+		++out;
+	}
+	mutex_unlock(&g_calib_cache_mutex);
+
+	return count;
 }
 
 int online_calibration_process_data(
@@ -62,6 +153,39 @@ int online_calibration_process_data(
 	fp_t temperature;
 
 	rc = get_temperature(sensor, &temperature);
-	return rc;
+	if (rc != EC_SUCCESS)
+		return rc;
+
+	switch (sensor->type) {
+	case MOTIONSENSE_TYPE_ACCEL: {
+		struct accel_cal *cal =
+			(struct accel_cal *) (sensor->online_calib_data);
+		fpv3_t fdata;
+
+		data_int16_to_fp(sensor, data->data, fdata);
+		if (accel_cal_accumulate(cal, timestamp, fdata[X], fdata[Y],
+					 fdata[Z], temperature)) {
+			int sensor_num = motion_sensors - sensor;
+
+			mutex_lock(&g_calib_cache_mutex);
+			/* Convert result to the right scale. */
+			data_fp_to_int16(
+				sensor, cal->bias,
+				&sensor_calib_cache[sensor_num * 3]);
+			/* Set valid and dirty. */
+			sensor_calib_cache_valid_map |=	BIT(sensor_num);
+			sensor_calib_cache_dirty_map |=	BIT(sensor_num);
+			mutex_unlock(&g_calib_cache_mutex);
+			/* Notify the AP. */
+			mkbp_send_event(EC_MKBP_EVENT_ONLINE_CALIBRATION);
+		}
+		break;
+	}
+	default:
+		CPRINTS("Calibration not yet enabled for sensor type %d",
+			sensor->type);
+	}
+
+	return EC_SUCCESS;
 }
 

@@ -101,16 +101,23 @@
 #ifdef TEST_KASA
 #define CONFIG_FPU
 #define CONFIG_ONLINE_CALIB
+#define CONFIG_MKBP_USE_GPIO
 #endif
 
 #ifdef TEST_NEWTON_FIT
 #define CONFIG_FPU
 #define CONFIG_ONLINE_CALIB
+#define CONFIG_MKBP_USE_GPIO
+#endif
+
+#ifdef TEST_STILLNESS_DETECTOR
+#define CONFIG_MKBP_USE_GPIO
 #endif
 
 #ifdef TEST_ONLINE_CALIBRATION
 #define CONFIG_GPU
 #define CONFIG_ONLINE_CALIB
+#define CONFIG_MKBP_USE_GPIO
 #endif
 
 #if defined(CONFIG_ONLINE_CALIB) && \
