@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56566434_435092b5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-16T18:15:31Z",
+      "side": 1,
+      "message": "you may want to keep it in original location as passive Gen1 cable wont respond for discover mode\nCL:2003506",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 30
+      },
+      "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac59913_40aa4f87",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2188,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-16T18:15:31Z",
+      "side": 1,
+      "message": "bring it to new line, all params will fit in same line",
+      "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64616a3c_a87cf3bd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2676,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-16T18:15:31Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 2676,
+        "startChar": 2,
+        "endLine": 2676,
+        "endChar": 5
+      },
+      "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
