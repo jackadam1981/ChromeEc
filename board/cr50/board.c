@@ -556,6 +556,23 @@ void pmu_wakeup_interrupt(void)
 }
 DECLARE_IRQ(GC_IRQNUM_PMU_INTR_WAKEUP_INT, pmu_wakeup_interrupt, 1);
 
+/* Macros to set a pin as a wakepin on a certain condtion */
+#define COND_LEVEL            (0 << 1)
+#define COND_EDGE             (1 << 1)
+#define COND_LOW              (COND_LEVEL | 1)
+#define COND_HIGH             (COND_LEVEL | 0)
+#define COND_FALLING          (COND_EDGE  | 1)
+#define COND_RISING           (COND_EDGE  | 0)
+#define SET_WAKEPIN(pinname, cond)                                             \
+	do {                                                                   \
+		/* disable pwdn exit */                                        \
+		GWRITE_FIELD(PINMUX, EXITEN0,   pinname, 0);                   \
+		GWRITE_FIELD(PINMUX, EXITEDGE0, pinname, !!(cond & BIT(1)));   \
+		GWRITE_FIELD(PINMUX, EXITINV0,  pinname, !!(cond & BIT(0)));   \
+		/* enable pwdn exit */                                         \
+		GWRITE_FIELD(PINMUX, EXITEN0,   pinname, 1);                   \
+	} while (0)
+
 void board_configure_deep_sleep_wakepins(void)
 {
 	/*
@@ -581,34 +598,15 @@ void board_configure_deep_sleep_wakepins(void)
 	 * resuming from deep sleep the TPM will be reset. Cr50 doesn't need to
 	 * read the low value and then reset.
 	 */
-	if (board_use_plt_rst()) {
+	if (board_use_plt_rst())
 		/* Configure plt_rst_l to wake on high */
-		/* Disable plt_rst_l as a wake pin */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 0);
-		/* Reconfigure the pin */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 0); /* level sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 0);  /* wake on high */
-		/* enable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
-	} else {
+		SET_WAKEPIN(DIOM3, COND_HIGH);
+	else
 		/* Configure plt_rst_l to wake on high */
-		/* Disable sys_rst_l as a wake pin */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 0);
-		/* Reconfigure the pin */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM0, 0); /* level sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 0);  /* wake on high */
-		/* enable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
-	}
+		SET_WAKEPIN(DIOM0, COND_HIGH);
 
-	if (board_has_ec_cr50_comm_support()) {
-		/* disable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0,   DIOB3, 0);
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOB3, 0); /* level sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0,  DIOB3, 0); /* wake on high */
-		 /* enable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0,   DIOB3, 1);
-	}
+	if (board_has_ec_cr50_comm_support())
+		SET_WAKEPIN(DIOB3, COND_HIGH);
 }
 
 static void deferred_tpm_rst_isr(void);
@@ -651,11 +649,7 @@ static void configure_board_specific_gpios(void)
 		 * It takes at most 150 us to wake up, and the pulse is at
 		 * least 1ms long.
 		 */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 0);
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 1);
-
-		/* Enable powerdown exit on DIOM3 */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
+		SET_WAKEPIN(DIOM3, COND_LOW);
 	} else {
 		/* Use sys_rst_l as the tpm reset signal. */
 		/* Select for TPM_RST_L */
@@ -665,12 +659,7 @@ static void configure_board_specific_gpios(void)
 		/* Enable the input */
 		GWRITE_FIELD(PINMUX, DIOM0_CTL, IE, 1);
 
-		/* Set to be level sensitive */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM0, 0);
-		/* wake on low */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);
-		/* Enable powerdown exit on DIOM0 */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
+		SET_WAKEPIN(DIOM0, COND_LOW);
 	}
 
 	if (board_uses_closed_source_set1())
@@ -1508,14 +1497,10 @@ void i2cs_set_pinmux(void)
 	GWRITE(PINMUX, GPIO0_GPIO14_SEL, GC_PINMUX_DIOA1_SEL);
 
 	/* Allow I2CS_SCL to wake from sleep */
-	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA9, 1); /* edge sensitive */
-	GWRITE_FIELD(PINMUX, EXITINV0, DIOA9, 1);  /* wake on low */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA9, 1);   /* enable powerdown exit */
+	SET_WAKEPIN(DIOA9, COND_FALLING);
 
 	/* Allow I2CS_SDA to wake from sleep */
-	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA1, 1); /* edge sensitive */
-	GWRITE_FIELD(PINMUX, EXITINV0, DIOA1, 1);  /* wake on low */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA1, 1);   /* enable powerdown exit */
+	SET_WAKEPIN(DIOA1, COND_FALLING);
 }
 
 static int command_sysinfo(int argc, char **argv)
