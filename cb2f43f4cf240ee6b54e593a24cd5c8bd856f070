@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d61acf98_bd135839",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-16T18:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56566434_435092b5",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 30
+      },
+      "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ac59913_40aa4f87",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f30e91ed_b0bc16ee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2188,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-16T18:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ac59913_40aa4f87",
+      "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100ec4c8_edf03daf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2676,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-16T18:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64616a3c_a87cf3bd",
+      "range": {
+        "startLine": 2676,
+        "startChar": 2,
+        "endLine": 2676,
+        "endChar": 5
+      },
+      "revId": "cb2f43f4cf240ee6b54e593a24cd5c8bd856f070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
