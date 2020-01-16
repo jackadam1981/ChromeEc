@@ -22,6 +22,30 @@
       "revId": "871f6b1256a3db5e587740e7e474284f38fe3ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392aabd4_d007ec55",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-16T03:56:19Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "9e6dff86_4cb810e5",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "871f6b1256a3db5e587740e7e474284f38fe3ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
