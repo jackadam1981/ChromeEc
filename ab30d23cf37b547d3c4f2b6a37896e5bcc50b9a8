@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2dd76c7_87f43432",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-16T22:32:41Z",
+      "side": 1,
+      "message": "it we use the HOOK_INIT to call a deferred function (so not blocking start up), would that alleviate any boot up slowness concerns, right?",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 61
+      },
+      "revId": "ab30d23cf37b547d3c4f2b6a37896e5bcc50b9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
