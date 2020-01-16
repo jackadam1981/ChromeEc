@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "60eb5b9e_1fd666b3",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-01-16T04:18:15Z",
+      "side": 1,
+      "message": "It\u0027s different.\n\nIf `mask` has more than one bit set (for example, called from set_flags_by_mask),\nthis line should print the first invalid bit in the mask, not the first bit in the mask",
+      "parentUuid": "940d075c_f311c74a",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "68e80ff7d5f72f0757d52f9a285f35df6a245b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf32ac70_46056c58",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 14
