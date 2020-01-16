@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "7968d296_d8687959",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-16T23:00:30Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2892b8a_561cb58d",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-16T23:00:30Z",
+      "side": 1,
+      "message": "Remove this",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06ea130d_1181ee78",
         "filename": "board/nocturne_fp/fixes.c",
         "patchSetId": 17
@@ -71,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "c049860f_fa97f3e2",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-16T23:00:30Z",
+      "side": 1,
+      "message": "If HW WP is re-asserted, we no longer need to this fix, thus we return the reset backup reg back to the normal state (zeroed out). This minimizes the difference between our intended good behavior (no fix needed) and our repaired behavior (HW WP enabled with our reset patch). Say an autotest that re-enables HW WP (assuming we clear the rst bkpdata), the logs will look the same as they did before, without an extra reset.\n\nAhh, only controlled system reboots (system_reset func) will hit bkpdata_write_reset_flags before resetting. All others rely on the bkpdata to have already been configured.\n\n* reboot, exception, panic, sw panic --\u003e system_reset --\u003e bkpdata_write_reset_flags\n\n* reset pulse (maybe quick POR, maybe double fault?) --\u003e reset bkpdata needs to already be set\n\n\n----\n\nOriginally, the idea was just to change the reset bkpdata entry based on HW-WP\u0027s status, but the issue was that system_reset would overwrite the reset bkpdata entry. If we only mod bkpdata in system_reset, the reset pulses are not covered.",
+      "parentUuid": "934dfaed_4d6a39bf",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "165ccbb5_fcff25a5",
         "filename": "chip/stm32/system.c",
         "patchSetId": 17
@@ -82,6 +152,30 @@
       "writtenOn": "2020-01-16T01:35:14Z",
       "side": 1,
       "message": "Did you intend to leave this? If so, can you replace with TODO(bug_num) so it\u0027s tracked?",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 68
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e388b7c_d1f42641",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-16T23:00:30Z",
+      "side": 1,
+      "message": "Yes, intended. Fair.",
+      "parentUuid": "165ccbb5_fcff25a5",
       "range": {
         "startLine": 262,
         "startChar": 3,
