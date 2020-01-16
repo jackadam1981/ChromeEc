@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33d78b61_6b253a37",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-16T01:35:14Z",
+      "side": 1,
+      "message": "nit: How about \"ro_workarounds\" as the name of the file instead of fixes? It makes it a bit more obvious that it\u0027s not generic fixes, but specific to RO bugs.",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ea130d_1181ee78",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-16T01:35:14Z",
+      "side": 1,
+      "message": "know",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "934dfaed_4d6a39bf",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-16T01:35:14Z",
+      "side": 1,
+      "message": "What\u0027s the flow where we need to clear the reset flags on interrupt? Do all paths (exception, etc) not go through bkpdata_write_reset_flags, which checks gpio_get_level(GPIO_WP)?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165ccbb5_fcff25a5",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-16T01:35:14Z",
+      "side": 1,
+      "message": "Did you intend to leave this? If so, can you replace with TODO(bug_num) so it\u0027s tracked?",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 68
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
