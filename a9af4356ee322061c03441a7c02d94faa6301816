@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38ce6705_44f18a13",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-01-16T08:45:18Z",
+      "side": 1,
+      "message": "Oops... yes, this should be CC_PS2.",
+      "parentUuid": "32912bf9_09cfd961",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f930973_5cf88dfb",
         "filename": "chip/npcx/ps2.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-01-16T00:18:02Z",
       "side": 1,
       "message": "I don\u0027t think function pointers are widely used in the EC code. Would it be simpler to re-work this to remove this function pointer, and just have a single global callback function (defined by the higher layer), and pass the channel as the first param?",
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7720481a_6240f327",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-01-16T08:45:18Z",
+      "side": 1,
+      "message": "Do you mean we just create a single global callback function to handle the receiving data from all the PS/2 channels depending on the channel number passed?\nIf so, would you suggest that where should be the global function in the higher layer?",
+      "parentUuid": "6f930973_5cf88dfb",
       "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "70f817f1_f5023a76",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-01-16T08:45:18Z",
+      "side": 1,
+      "message": "These four PS/2 channels in npcx chip share one PS/2 protocol hardware module (we called it Automatic Hardware Shift Mechanism, see section 4.8.4 in the datasheet.)\nShift Mechanism hardware is protected by the mutex ps2_lock to make sure only one task can use it at one time. Hence. we don\u0027t need the per-channel task_waiting.\n(The task_waiting is used in between mutex_lock and mutex_unlock.)",
+      "parentUuid": "61919beb_01f2ba62",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a328f0b_296a1443",
         "filename": "chip/npcx/ps2.c",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2020-01-16T00:18:02Z",
       "side": 1,
       "message": "Why would preemption be a problem here?",
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7939980d_dab08d05",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-01-16T08:45:18Z",
+      "side": 1,
+      "message": "The channel_eanbled_mask and NPCX_PS2_PSOSIG will be accessed here and in the ps2_int_handler.\nWe have to let line 118 and line 120 (and also line 124 and 125) to be atomic.\nOtherwise, the channel_enabled_mask and NPCX_PS2_PSOSIG may not consistent if preemption occurs during executing these two lines.",
+      "parentUuid": "6a328f0b_296a1443",
       "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -102,6 +186,30 @@
       "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87bdefdf_18d4b6f5",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-01-16T08:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf275226_9ea2a674",
+      "range": {
+        "startLine": 179,
+        "startChar": 19,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
