@@ -916,3 +916,24 @@ static int command_lpc(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]", "Trigger SCI/SMI");
 
 #endif
+
+static int command_kbcmouse(int argc, char **argv)
+{
+	char *e;
+	uint8_t chr;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM1;
+
+	chr = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	lpc_mouse_put_char(chr);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(kbcmouse, command_kbcmouse,
+			"MOUSE_DATA IRQ_SEND",
+			"send mouse data by HIMDO");
+

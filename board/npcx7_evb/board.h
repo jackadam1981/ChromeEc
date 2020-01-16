@@ -22,6 +22,7 @@
 #endif
 
 /* EC modules */
+#define CONFIG_PS2
 #define CONFIG_ADC
 #define CONFIG_PWM
 #define CONFIG_SPI
