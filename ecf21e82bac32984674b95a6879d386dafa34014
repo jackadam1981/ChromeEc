@@ -46,6 +46,29 @@
       "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ace7fd3a_d953cc93",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-16T23:30:48Z",
+      "side": 1,
+      "message": "We need to add logical hysteresis for vref in order to properly handle devices going to sleep.\n\nSince DUTs won\u0027t dynamically change vrefs for a given interface, a drop below min should be treated as the DUT going to sleep, and we need to turn off the level shifters.  If we do not, in the 3.3V vref case, the pull-ups leak from UART into Vref and Vref can hover between 1.8_min and 3.3_min...no bueno.\n\nOnce the level shifters are off, we would expect vref to drop to 0 (if not, we could optionally detect this and warn about potential internal leakage on the DUT).\n\nIf the voltage *then* goes above 1.8V_min, either the DUT was disconnected and a new one was connected, or the DUT woke up.  Re-detect Vref and enable the shifters.\n\nSo something like:\n\n[(A) disconnected; comparator\u003d1.8_min]\nwait for vref \u003e 1.8_min\n[(B) DUT enabled; detect Vref and set 1.8/3.3, enable level shifters, comparator\u003d*_min]\nwait for vref \u003c *_min\nif vref was 1.8V, goto A\n[(C) 3.3V DUT going to sleep; disable level shifters, comparator\u003d3.3_min, occasionally poll for vref \u003c 1.8_min]\nif vref \u003e 1.8_min for 1s(?) -\u003e warn about leakage\nif vref \u003c 1.8_min -\u003e goto (A)\nwhen vref \u003e 3.3_min, goto (B)\n\nmaybe up for debate on that last chunk, but hopefully the issue makes sense.",
+      "range": {
+        "startLine": 764,
+        "startChar": 12,
+        "endLine": 764,
+        "endChar": 26
+      },
+      "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
