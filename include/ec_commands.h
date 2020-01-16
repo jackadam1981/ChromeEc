@@ -2517,6 +2517,14 @@ struct ec_response_motion_sensor_data {
 	};
 } __ec_todo_packed;
 
+/* Response to AP reporting calibration data for a given sensor. */
+struct ec_response_online_calibration_data {
+	/** The calibration values. */
+	int16_t data[3];
+	/** Sensor number the data comes from. */
+	uint8_t sensor_num;
+};
+
 /* Note: used in ec_response_get_next_data */
 struct ec_response_motion_sense_fifo_info {
 	/* Size of the fifo */
@@ -3548,6 +3556,9 @@ enum ec_mkbp_event {
 
 	/* We have entered DisplayPort Alternate Mode on a Type-C port. */
 	EC_MKBP_EVENT_DP_ALT_MODE_ENTERED = 10,
+
+	/* New online calibration values are available. */
+	EC_MKBP_EVENT_ONLINE_CALIBRATION = 11,
 
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
