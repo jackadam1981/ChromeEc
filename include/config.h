@@ -1795,6 +1795,8 @@
 #undef CONFIG_FP_SENSOR_FPC1025
 #undef CONFIG_FP_SENSOR_FPC1035
 #undef CONFIG_FP_SENSOR_FPC1145
+#undef CONFIG_FP_SENSOR_ELAN80
+#undef CONFIG_FP_SENSOR_ELAN515
 
 /*****************************************************************************/
 /* NvMem Configuration */
@@ -4859,7 +4861,9 @@
 /* Fingerprint Sensor Configuration */
 #if defined(CONFIG_FP_SENSOR_FPC1025) || \
 	defined(CONFIG_FP_SENSOR_FPC1035) || \
-	defined(CONFIG_FP_SENSOR_FPC1145)
+	defined(CONFIG_FP_SENSOR_FPC1145) || \
+	defined(CONFIG_FP_SENSOR_ELAN80) || \
+	defined(CONFIG_FP_SENSOR_ELAN515)
 #define CONFIG_FP_SENSOR
 #endif
 
