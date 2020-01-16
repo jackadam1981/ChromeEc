@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "f971e8ad_7709be40",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-16T17:58:06Z",
+      "side": 1,
+      "message": "Yeah, for the time being. Did you have something else in mind?",
+      "parentUuid": "cebef7b7_3cce86ff",
+      "range": {
+        "startLine": 785,
+        "startChar": 4,
+        "endLine": 787,
+        "endChar": 24
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12b5adbc_c0a2f9a1",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 6
