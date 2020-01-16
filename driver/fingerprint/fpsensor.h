@@ -8,7 +8,11 @@
 
 #if defined(HAVE_PRIVATE) && !defined(TEST_BUILD)
 #define HAVE_FP_PRIVATE_DRIVER
+#if defined(CONFIG_FP_SENSOR_ELAN)
+#include "elan/elan_setting.h"
+#else
 #include "fpc/fpc_sensor.h"
+#endif
 #else
 /* These values are used by the host (emulator) tests. */
 #define FP_SENSOR_IMAGE_SIZE 0
