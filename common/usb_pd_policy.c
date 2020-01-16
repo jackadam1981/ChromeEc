@@ -919,6 +919,9 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 	payload[0] &= ~VDO_CMDT_MASK;
 	*rpayload = payload;
 
+	CPRINTS("PD_SVDM, port %d, cnt %d, cmd %d, cmd_type %d",
+		port, cnt, cmd, cmd_type);
+
 	if (cmd_type == CMDT_INIT) {
 		switch (cmd) {
 		case CMD_DISCOVER_IDENT:

@@ -821,6 +821,10 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	 * when the SoC is off as opposed to suspend where adding a display
 	 * could cause a wake up.)
 	 */
+
+	CPRINTS("SVDM_ENTER_DP_MODE, port %d, mode_caps %u, DPSNK? %u\n",
+		port, mode_caps, mode_caps & MODE_DP_SNK);
+
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return -1;
 
@@ -937,6 +941,9 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 
 	dp_status[port] = payload[1];
 
+	CPRINTS("SVDM_DP_ATTENTION, port %d, irq %d, level %d\n",
+		port, irq, lvl);
+
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
 	    (irq || lvl))
 		/*
@@ -996,6 +1003,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 
 __overridable void svdm_exit_dp_mode(int port)
 {
+	CPRINTS("SVDM_EXIT_DP_MODE, port %d\n", port);
 	svdm_safe_dp_mode(port);
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	gpio_set_level(PORT_TO_HPD(port), 0);

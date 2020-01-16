@@ -1298,6 +1298,9 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload,
 	int rlen = 0;
 	uint32_t *rdata;
 
+	CPRINTS("HANDLE_VDM_REQUEST, port %d, cnt %d, vdm_state %d\n",
+		port, cnt, pd[port].vdm_state);
+
 	if (pd[port].vdm_state == VDM_STATE_BUSY) {
 		/* If UFP responded busy retry after timeout */
 		if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
@@ -1705,6 +1708,7 @@ static void handle_data_request(int port, uint16_t head,
 		break;
 #endif
 	case PD_DATA_VENDOR_DEF:
+		CPRINTS("received PD_DATA_VENDOR_DEF!, calling handle_vdM_request");
 		handle_vdm_request(port, cnt, payload, head);
 		break;
 	default:
