@@ -308,7 +308,8 @@ static struct board_cfg board_cfg_table[] = {
 	{
 		.strap_cfg = 0x0E,
 		.board_properties = BOARD_SLAVE_CONFIG_SPI |
-			BOARD_USE_PLT_RESET | BOARD_EC_CR50_COMM_SUPPORT,
+			BOARD_USE_PLT_RESET | BOARD_EC_CR50_COMM_SUPPORT |
+			BOARD_CCD_REC_LID_PIN_DIOA9,
 	},
 	/* Zork: DIOA12 = 5K PU, DIOA6 = 1M PU */
 	{
