@@ -46,6 +46,30 @@
       "revId": "a8ca1c5dec1afaacf319013bcfcf804e0babb207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef2bb32_bf7c0b8e",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-16T14:54:44Z",
+      "side": 1,
+      "message": "That can work.  We\u0027ll just have to be attentive about which chip\u0027s bits are set in the common sections.  It looks like these are guarded by an ifdef for the ISL9238 chip, so they should be safe.",
+      "parentUuid": "a8bc08bb_9eae36bb",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 45
+      },
+      "revId": "a8ca1c5dec1afaacf319013bcfcf804e0babb207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
