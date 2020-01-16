@@ -333,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "c36663d2_0533f1e2",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-16T20:13:43Z",
+      "side": 1,
+      "message": "Nope, just wanted to make sure I knew what to expect on my Doo :)",
+      "parentUuid": "f971e8ad_7709be40",
+      "range": {
+        "startLine": 785,
+        "startChar": 4,
+        "endLine": 787,
+        "endChar": 24
+      },
+      "revId": "460045a794d9747e5048c2be805166fcb8df276a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12b5adbc_c0a2f9a1",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 6
