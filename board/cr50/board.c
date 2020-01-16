@@ -186,6 +186,11 @@ int board_has_ec_cr50_comm_support(void)
 	return !!(board_properties & BOARD_EC_CR50_COMM_SUPPORT);
 }
 
+int board_get_ccd_rec_lid_pin(void)
+{
+	return board_properties & BOARD_CCD_REC_LID_PIN;
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {
@@ -656,6 +661,26 @@ static void configure_board_specific_gpios(void)
 		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
+	}
+	/* Connect the correct pin to the lid open/recovery switch gpio. */
+	switch (board_get_ccd_rec_lid_pin()) {
+	case BOARD_CCD_REC_LID_PIN_DIOA1:
+		GWRITE(PINMUX, GPIO1_GPIO10_SEL, GC_PINMUX_DIOA1_SEL);
+		GWRITE(PINMUX, DIOA1_SEL, GC_PINMUX_GPIO1_GPIO10_SEL);
+		GWRITE_FIELD(PINMUX, DIOA1_CTL, IE, 1);
+		break;
+	case BOARD_CCD_REC_LID_PIN_DIOA9:
+		GWRITE(PINMUX, GPIO1_GPIO10_SEL, GC_PINMUX_DIOA9_SEL);
+		GWRITE(PINMUX, DIOA9_SEL, GC_PINMUX_GPIO1_GPIO10_SEL);
+		GWRITE_FIELD(PINMUX, DIOA9_CTL, IE, 1);
+		break;
+	case BOARD_CCD_REC_LID_PIN_DIOA12:
+		GWRITE(PINMUX, GPIO1_GPIO10_SEL, GC_PINMUX_DIOA12_SEL);
+		GWRITE(PINMUX, DIOA12_SEL, GC_PINMUX_GPIO1_GPIO10_SEL);
+		GWRITE_FIELD(PINMUX, DIOA12_CTL, IE, 1);
+		break;
+	default:
+		gpio_set_flags(GPIO_CCD_REC_LID_SWITCH, 0);
 	}
 
 	if (board_uses_closed_source_set1())
