@@ -183,7 +183,7 @@ static int ps8xxx_enter_low_power_mode(int port)
 }
 #endif
 
-#if defined(CONFIG_USB_PD_TCPM_PS8751) || defined(CONFIG_USB_PD_TCPM_PS8805)
+#ifdef CONFIG_USB_PD_TCPM_PS8751
 /*
  * DCI is enabled by default and burns about 40 mW when the port is in
  * USB2 mode or when a C-to-A dongle is attached, so force it off.
@@ -206,7 +206,7 @@ static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
 	}
 	return EC_SUCCESS;
 }
-#endif /* CONFIG_USB_PD_TCPM_PS8751 || CONFIG_USB_PD_TCPM_PS8805 */
+#endif /* CONFIG_USB_PD_TCPM_PS8751 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8815
 static int ps8xxx_dci_disable(int port)
@@ -219,27 +219,13 @@ static int ps8xxx_dci_disable(int port)
 #ifdef CONFIG_USB_PD_TCPM_PS8805
 static int ps8xxx_dci_disable(int port)
 {
-	int status, e;
-	int p1_addr;
-
-	status = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
-			    PS8XXX_REG_I2C_DEBUGGING_ENABLE_ON);
-	if (status != EC_SUCCESS)
-		return status;
-
-	p1_addr = tcpc_config[port].i2c_info.addr_flags -
-		(PS8751_I2C_ADDR1_FLAGS - PS8751_I2C_ADDR1_P1_FLAGS);
-	status = ps8xxx_addr_dci_disable(port, p1_addr,
-					 PS8805_P1_REG_MUX_USB_DCI_CFG);
-
-	e = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
-		       PS8XXX_REG_I2C_DEBUGGING_ENABLE_OFF);
-	if (e != EC_SUCCESS) {
-		if (status == EC_SUCCESS)
-			status = e;
-	}
-
-	return status;
+	/*
+	 * TODO(b:147772854): Add the DCI disable logic back.
+	 *
+	 * In the latest TCPC fw 0xc, disabling the DCI mode makes the TCPC
+	 * I2C device down. So don't disable DCI mode until this bug is fixed.
+	 */
+	return EC_SUCCESS;
 }
 #endif /* CONFIG_USB_PD_TCPM_PS8805 */
 
