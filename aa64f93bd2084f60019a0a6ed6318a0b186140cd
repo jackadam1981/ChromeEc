@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bbbe887_9973cef2",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-16T03:55:22Z",
+      "side": 1,
+      "message": "Ah okay, that makes sense. Let me add a TODO.",
+      "parentUuid": "6ef14fbd_ed35a0ef",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "aa64f93bd2084f60019a0a6ed6318a0b186140cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6c5953b_c2d214e1",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "aa64f93bd2084f60019a0a6ed6318a0b186140cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddceff5f_e4477f3d",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-16T03:55:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6c5953b_c2d214e1",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "aa64f93bd2084f60019a0a6ed6318a0b186140cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
