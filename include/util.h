@@ -45,6 +45,10 @@ extern "C" {
 #define NULL ((void *)0)
 #endif
 
+#ifndef CLAMP
+#define CLAMP(v, min, max) MIN(max, MAX(v, min))
+#endif /* CLAMP */
+
 /*
  * Convert a pointer to a base struct into a pointer to the struct that
  * contains the base struct.  This requires knowing where in the contained
