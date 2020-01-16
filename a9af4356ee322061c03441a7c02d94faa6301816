@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32912bf9_09cfd961",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-16T00:18:02Z",
+      "side": 1,
+      "message": "CC_PS2?",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f930973_5cf88dfb",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-16T00:18:02Z",
+      "side": 1,
+      "message": "I don\u0027t think function pointers are widely used in the EC code. Would it be simpler to re-work this to remove this function pointer, and just have a single global callback function (defined by the higher layer), and pass the channel as the first param?",
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61919beb_01f2ba62",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-16T00:18:02Z",
+      "side": 1,
+      "message": "Do we need per-channel task_waiting?",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a328f0b_296a1443",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-16T00:18:02Z",
+      "side": 1,
+      "message": "Why would preemption be a problem here?",
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf275226_9ea2a674",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-16T00:18:02Z",
+      "side": 1,
+      "message": "Please add a #define for this constant.",
+      "range": {
+        "startLine": 179,
+        "startChar": 19,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
