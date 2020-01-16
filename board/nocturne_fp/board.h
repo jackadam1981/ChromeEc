@@ -116,7 +116,7 @@
 #define CONFIG_SPI_MASTER
 #define CONFIG_SPI_FP_PORT  2 /* SPI4: third master config */
 #ifdef SECTION_IS_RW
-#define CONFIG_FP_SENSOR_FPC1145
+#define CONFIG_FP_SENSOR_ELAN515
 #define CONFIG_CMD_FPSENSOR_DEBUG
 /*
  * Use the malloc code only in the RW section (for the private library),
