@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "2ac7841f_ff216f16",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-01-17T22:47:43Z",
+      "side": 1,
+      "message": "After talking to Nathan, we determined that it would be useful to force trySrc ON as well as OFF. So I\u0027ve implemented your original code suggestion.",
+      "parentUuid": "dbab5e11_53431c47",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "1c74476c4547e67a149ae87a5c729813b3c86329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d15552e3_d29c6c91",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
