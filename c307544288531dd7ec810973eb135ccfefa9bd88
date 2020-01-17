@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65301f4e_d2e5d1f6",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-17T23:32:37Z",
+      "side": 1,
+      "message": "new_variant.py does a lot more than just copying the EC files. If this documentation will only cover the EC, then we should point out platform/dev/contrib/variant/create_initial_ec_image.sh, which will only copy the code for the EC, and nothing else.",
+      "range": {
+        "startLine": 106,
+        "startChar": 64,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ebee0df_7457b05e",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-17T23:32:37Z",
+      "side": 1,
+      "message": "minor nit: I stopped using \"clone\" (even though it\u0027s more accurate, especially if the reader had a childhood rich in sci-fi literature) because we already have \u0027git clone\u0027 and the association of \"clone\" with \"git\" was causing some confusion. I\u0027ve been changing my documentation slowly, and probably missed a bunch of uses.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70595d6d_5785811b",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-17T23:32:37Z",
+      "side": 1,
+      "message": "create_initial_ec_image.sh does this. new_variant.py just calls create_initial_ec_image.sh to do the work.\nUnfortunately, create_initial_ec_image.sh only builds the EC for the new board, while the repo upload hook still wants a `make buildall -j`",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
