@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "245b956e_5b000d09",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-17T23:54:06Z",
+      "side": 1,
+      "message": "Let\u0027s clarify that the user will usually call new_variant.py to create the variant in coreboot and EC, plus modify the yaml files, etc. However, for a baseboard that is not yet supported by new_variant.py, the user can call create_initial_ec_image.sh directly just to copy the EC code.",
+      "parentUuid": "65301f4e_d2e5d1f6",
+      "range": {
+        "startLine": 106,
+        "startChar": 64,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ebee0df_7457b05e",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 7
