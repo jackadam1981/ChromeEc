@@ -292,6 +292,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 			.port = I2C_PORT_USB_C0,
 			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
 		},
+		.flags = TCPC_FLAGS_TCPCI_V2_0,
 		.drv = &raa489000_tcpm_drv,
 	},
 
@@ -301,6 +302,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 			.port = I2C_PORT_SUB_USB_C1,
 			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
 		},
+		.flags = TCPC_FLAGS_TCPCI_V2_0,
 		.drv = &raa489000_tcpm_drv,
 	},
 };
