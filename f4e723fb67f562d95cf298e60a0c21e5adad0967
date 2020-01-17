@@ -22,6 +22,30 @@
       "revId": "f4e723fb67f562d95cf298e60a0c21e5adad0967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa5f0d95_065146d6",
+        "filename": "core/riscv-rv32i/include/math.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-01-17T08:10:59Z",
+      "side": 1,
+      "message": "Yes, I have tried compiling and no error occurred.\nDo you want me to guard it with CONFIG_FPU?",
+      "parentUuid": "0684e601_7bec5ae4",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "f4e723fb67f562d95cf298e60a0c21e5adad0967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
