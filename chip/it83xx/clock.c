@@ -33,6 +33,7 @@
 BUILD_ASSERT(ADC_TIMEOUT_US < SLEEP_SET_HTIMER_DELAY_USEC);
 #endif
 
+int pd_need_awake;
 static timestamp_t sleep_mode_t0;
 static timestamp_t sleep_mode_t1;
 static int idle_doze_cnt;
@@ -407,6 +408,9 @@ static void clock_htimer_enable(void)
 
 static int clock_allow_low_power_idle(void)
 {
+	if (pd_need_awake)
+		return 0;
+
 	if (!(IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) & BIT(0)))
 		return 0;
 
@@ -631,4 +635,20 @@ DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
 			"Print last idle stats");
 
 #endif /* CONFIG_CMD_IDLE_STATS */
+
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX)
+/**
+ * Print the pd_need_awake global variable which controls access to deep sleep
+ * mode in the idle task.
+ */
+static int command_pdawake(int argc, char **argv)
+{
+	ccprintf("pd need awake: %08x\n", pd_need_awake);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pdawake, command_pdawake,
+			"",
+			"Print pd_need_awake global variable");
+#endif
 #endif /* CONFIG_LOW_POWER_IDLE */
