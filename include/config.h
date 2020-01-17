@@ -2263,6 +2263,12 @@
 #undef CONFIG_I2C_XFER_LARGE_READ
 
 /*
+ * If defined, i2c_xfer() will sleep the given number of microseconds between
+ * read chunks. This can be useful for fixing timing issues with I2C slaves.
+ */
+#undef CONFIG_I2C_XFER_LARGE_READ_DELAY_US
+
+/*
  * If defined, makes i2c_xfer callback into board-provided functions before the
  * start and after the end of every I2C transaction. This can be used by boards
  * to implement any I2C device specific quirks e.g. requiring minimum bus-free

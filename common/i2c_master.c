@@ -145,6 +145,9 @@ static int i2c_xfer_no_retry(const int port,
 	ret = chip_i2c_xfer_with_notify(port, slave_addr_flags,
 					out, out_size, in,
 					in_chunk_size, out_flags);
+#if defined(CONFIG_I2C_XFER_LARGE_READ_DELAY_US)
+	usleep(CONFIG_I2C_XFER_LARGE_READ_DELAY_US);
+#endif
 	in += in_chunk_size;
 	while (in_size && ret == EC_SUCCESS) {
 		in_chunk_size = MIN(in_size, CONFIG_I2C_CHIP_MAX_READ_SIZE);
@@ -152,6 +155,9 @@ static int i2c_xfer_no_retry(const int port,
 		ret = chip_i2c_xfer_with_notify(port, slave_addr_flags,
 			NULL, 0, in,
 			in_chunk_size, !in_size ? (flags & I2C_XFER_STOP) : 0);
+#if defined(CONFIG_I2C_XFER_LARGE_READ_DELAY_US)
+		usleep(CONFIG_I2C_XFER_LARGE_READ_DELAY_US);
+#endif
 		in += in_chunk_size;
 	}
 	return ret;

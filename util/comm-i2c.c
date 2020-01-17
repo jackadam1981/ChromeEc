@@ -177,9 +177,21 @@ static int ec_command_i2c_3(int command, int version,
 
 	if ((uint8_t)sum_bytes(&resp_buf[I2C_RESPONSE_HEADER_SIZE], resp_buf[1])
 			!= 0) {
-		debug("Bad checksum on EC response.\n");
-		ret = -EC_RES_INVALID_CHECKSUM;
-		goto done;
+		/*
+		 * HACK: in case the size byte in the header has overflowed, try
+		 * using insize instead.
+		 */
+		if ((uint8_t)sum_bytes(&resp_buf[I2C_RESPONSE_HEADER_SIZE],
+				       sizeof(struct ec_host_response) + insize)
+				!= 0) {
+			debug("Bad checksum on EC response.\n");
+			ret = -EC_RES_INVALID_CHECKSUM;
+			goto done;
+		} else {
+			fprintf(stderr, "Warning: checksum was incorrect when using the header size (%d), but correct when using the expected response size (%ld).\n",
+				resp_buf[1],
+				sizeof(struct ec_host_response) + insize);
+		}
 	}
 
 	memcpy(indata, &resp_buf[I2C_RESPONSE_HEADER_SIZE

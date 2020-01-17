@@ -58,7 +58,7 @@
  * Max data size for a version 3 request/response packet. This is
  * big enough for EC_CMD_GET_VERSION plus header info.
  */
-#define I2C_MAX_HOST_PACKET_SIZE 128
+#define I2C_MAX_HOST_PACKET_SIZE 1024
 
 /* The size of the header for a version 3 request packet sent over I2C. */
 #define I2C_REQUEST_HEADER_SIZE 1
