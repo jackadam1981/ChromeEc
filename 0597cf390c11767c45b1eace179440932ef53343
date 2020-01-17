@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae03f10_ce6c1c4a",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-17T18:46:45Z",
+      "side": 1,
+      "message": "I believe some functions will still run after this call on other boards, right?  Do we need to confirm it\u0027s okay to not run those?  And make a note in the calling area that this may not return on some boards?",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "0597cf390c11767c45b1eace179440932ef53343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
