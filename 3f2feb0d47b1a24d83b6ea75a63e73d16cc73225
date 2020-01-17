@@ -94,6 +94,29 @@
       "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547b1868_6ee90773",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-17T22:59:25Z",
+      "side": 1,
+      "message": "If the cable sent a NAK, should we proceed to discover SOP SVIDs?  Otherwise it seems like we\u0027d stop our discovery progression after the NAK",
+      "range": {
+        "startLine": 1181,
+        "startChar": 3,
+        "endLine": 1181,
+        "endChar": 4
+      },
+      "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
