@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "daf2ead8_10acbd76",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T18:40:36Z",
+      "side": 1,
+      "message": "Thx!",
+      "parentUuid": "35c6a874_df463fa5",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 63
+      },
+      "revId": "02d831c435b1c0119b73f57a4e9c060ad8ca5770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09e8c555_db6d0712",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 7
@@ -69,6 +93,30 @@
       "revId": "02d831c435b1c0119b73f57a4e9c060ad8ca5770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b84d81_34ddd757",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T18:40:36Z",
+      "side": 1,
+      "message": "Patchset#8 has some filtering codes in bridging USB-UART.\nCr50 drops USB\u003c-\u003eUART_EC data if ccd_capability is disabled.",
+      "parentUuid": "09e8c555_db6d0712",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 45
+      },
+      "revId": "02d831c435b1c0119b73f57a4e9c060ad8ca5770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
