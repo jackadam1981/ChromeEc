@@ -22,6 +22,30 @@
       "revId": "0597cf390c11767c45b1eace179440932ef53343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0519f68e_ebb04c87",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-17T19:26:12Z",
+      "side": 1,
+      "message": "For us, it should be okay as the EC will be powered off entirely. There shouldn\u0027t be anything else to do and it should just wake up when power is re-applied.\n\nI can add a note at the call-site though that this may not return.",
+      "parentUuid": "dae03f10_ce6c1c4a",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "0597cf390c11767c45b1eace179440932ef53343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
