@@ -257,6 +257,30 @@
       "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fff761_e4b8bf23",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T02:00:12Z",
+      "side": 1,
+      "message": "can you address this too please, would make board_get_ccd_rec_lid_pin() much easier to read.",
+      "parentUuid": "f13812a6_bf7a916c",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

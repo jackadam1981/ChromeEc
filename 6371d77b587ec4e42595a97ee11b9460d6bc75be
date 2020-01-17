@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08d70cc3_f3d1da2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T02:00:12Z",
+      "side": 1,
+      "message": "maybe something like:\n\nThis change introduces a mechanism which allows to use one of board strap pins as the CCD gpio, and makes DIOA9 the CCD pin on boards with strap os 0xE.",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "6371d77b587ec4e42595a97ee11b9460d6bc75be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
