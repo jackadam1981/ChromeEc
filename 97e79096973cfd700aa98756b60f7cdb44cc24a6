@@ -22,6 +22,30 @@
       "revId": "97e79096973cfd700aa98756b60f7cdb44cc24a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1bea217_af7b12ca",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-01-17T08:16:40Z",
+      "side": 1,
+      "message": "Done.\nThis only apply to risc-v core chip. Because base address of internal flash and ILM are the same on N8 core.",
+      "parentUuid": "8ce81144_b149fd97",
+      "range": {
+        "startLine": 335,
+        "startChar": 37,
+        "endLine": 335,
+        "endChar": 63
+      },
+      "revId": "97e79096973cfd700aa98756b60f7cdb44cc24a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
