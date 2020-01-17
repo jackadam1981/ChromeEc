@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c40f8bda_7af97785",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T00:36:38Z",
+      "side": 1,
+      "message": "0 means no ccd pin.\nthen we have 3 more nonzero states we can use.\nDo I need to add this explanation?",
+      "parentUuid": "3b3f7fee_88ddfc50",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfcf30b9_5e81645f",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2020-01-17T00:04:47Z",
       "side": 1,
       "message": "where is this field in board properties written?",
+      "range": {
+        "startLine": 191,
+        "startChar": 8,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88fc6e62_902c96e2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T00:36:38Z",
+      "side": 1,
+      "message": "I merged the two patches. Now it\u0027s in the Dedede/Puff/Volteer strap.",
+      "parentUuid": "dfcf30b9_5e81645f",
       "range": {
         "startLine": 191,
         "startChar": 8,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f2c92ae4_e11aaa47",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T00:36:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e58686c_909efbf4",
+      "range": {
+        "startLine": 668,
+        "startChar": 2,
+        "endLine": 670,
+        "endChar": 41
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "086e7b9c_41935f7e",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -114,6 +186,30 @@
       "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f53427f_0d5c68f7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "086e7b9c_41935f7e",
+      "range": {
+        "startLine": 683,
+        "startChar": 3,
+        "endLine": 683,
+        "endChar": 15
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
