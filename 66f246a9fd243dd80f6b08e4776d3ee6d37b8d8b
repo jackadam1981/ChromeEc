@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "0317518f_654ab1a2",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-17T18:58:41Z",
+      "side": 1,
+      "message": "I updated my latest CL to include that fix.",
+      "parentUuid": "fdeac269_3187d803",
+      "range": {
+        "startLine": 330,
+        "startChar": 3,
+        "endLine": 330,
+        "endChar": 50
+      },
+      "revId": "66f246a9fd243dd80f6b08e4776d3ee6d37b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43dc241f_284312d2",
         "filename": "board/waddledoo/usb_pd_policy.c",
         "patchSetId": 2
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "For the old stack, I believe we\u0027d just call into this function to decide when we receive a Vconn swap request.  I\u0027ll have to check out what the new stack does though",
       "parentUuid": "6f68ffbb_b5f833e5",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "66f246a9fd243dd80f6b08e4776d3ee6d37b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062170aa_69f4fc58",
+        "filename": "board/waddledoo/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-17T18:58:41Z",
+      "side": 1,
+      "message": "It looks like the new stack has a flag in the Type-C layer to reject VCONN swaps, but I believe it\u0027s only set for charge-thru VPD\u0027s right now.\n\nI still think that that decision should be made higher up instead of within board PD policy. Also, if we wanted to talk to the cable, we could always try swapping if necessary.",
+      "parentUuid": "0356f2f0_a4428794",
       "range": {
         "startLine": 18,
         "startChar": 0,
