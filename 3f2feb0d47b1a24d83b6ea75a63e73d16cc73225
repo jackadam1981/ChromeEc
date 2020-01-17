@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fca58d16_9cd74be6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-17T16:59:14Z",
+      "side": 1,
+      "message": "Don\u0027t you still need to update dev_mode_resp.raw_value in this path? You\u0027ve received the Discover TBT3 Mode SOP response to get into this function, and enter_tbt_compat_mode() uses the dev_mdoe_resp fields to update the enter_dev_mode message.",
+      "range": {
+        "startLine": 874,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 2
+      },
+      "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
