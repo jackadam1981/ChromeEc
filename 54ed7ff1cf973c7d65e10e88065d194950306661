@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5e4f518d_65c1b780",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-17T20:31:32Z",
+      "side": 1,
+      "message": "Also, you might as well consider separate \u0027rwsig\u0027 and \u0027info\u0027 for more extensibility:\n\n  ectool rwsig info\n  ectool rwsig dump [sig/key/hash]\n  ectool rwsig ...",
+      "parentUuid": "032fd844_866c551a",
+      "range": {
+        "startLine": 1201,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 14
+      },
+      "revId": "54ed7ff1cf973c7d65e10e88065d194950306661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cefcfbe7_033f8964",
         "filename": "util/ectool.c",
         "patchSetId": 3
