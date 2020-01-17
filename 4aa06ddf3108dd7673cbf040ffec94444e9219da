@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f48a07b_f65638b6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T21:42:53Z",
+      "side": 1,
+      "message": "If ccd isn\u0027t enabled, then ap uart and bitbang shouldn\u0027t be enabled.\nAlso we shouldn\u0027t enable the USB part of ec uart. I don\u0027t know how big of a deal that part is.",
+      "range": {
+        "startLine": 267,
+        "startChar": 16,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5981150f_4b5306f1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T21:42:53Z",
+      "side": 1,
+      "message": "I didn\u0027t think about this part. The way you had it initially was more straight forward. Or we could move the original 261-264 into the if statement at 263.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 2
+      },
+      "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
