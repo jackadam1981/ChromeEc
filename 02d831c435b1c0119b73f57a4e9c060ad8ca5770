@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d70b1290_27da049b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T03:05:03Z",
+      "side": 1,
+      "message": "How long should the level be sustained to wake H1?\nLine 651~652 says that 150 usec. \nIf so, dnojiri@, is 150 usec duration acceptable?",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 63
+      },
+      "revId": "02d831c435b1c0119b73f57a4e9c060ad8ca5770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09e8c555_db6d0712",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 7
