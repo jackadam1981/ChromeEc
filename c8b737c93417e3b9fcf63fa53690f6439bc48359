@@ -70,6 +70,30 @@
       "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98982b84_bcf74fe2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-17T01:08:31Z",
+      "side": 1,
+      "message": "Sorry, I misinterpreted the figure. After reading the section 5.4.3.2.1, you are correct, the port should go ahead and check for Thunderbolt compatible cable for rev3 passive cables.\n\nAs far as cable rev 2 is concerned, information about this is present on the USB-IF forum. I have added details about the terminology information on b:140819518",
+      "parentUuid": "6f63e079_09cd0fe8",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 0
+      },
+      "revId": "c8b737c93417e3b9fcf63fa53690f6439bc48359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
