@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83207b1e_dd42db49",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-17T15:02:12Z",
+      "side": 1,
+      "message": "Should EC_TEMP_THRESH_HIGH be lower than EC_TEMP_THRESH_HALT? Here is it the same. Lower down, it is higher than the halt temperature.",
+      "range": {
+        "startLine": 333,
+        "startChar": 3,
+        "endLine": 333,
+        "endChar": 36
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8715d060_5ffd4cb5",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-17T15:02:12Z",
+      "side": 1,
+      "message": "Should EC_TEMP_THRESH_HIGH be lower than EC_TEMP_THRESH_HALT?",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 37
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
