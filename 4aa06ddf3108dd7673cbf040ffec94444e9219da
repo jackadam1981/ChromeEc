@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebbf128d_5cbed253",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T23:49:53Z",
+      "side": 1,
+      "message": "Reverting to patchset#8",
+      "parentUuid": "7f48a07b_f65638b6",
+      "range": {
+        "startLine": 267,
+        "startChar": 16,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5981150f_4b5306f1",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 12
@@ -45,6 +69,77 @@
       "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57ecb48_14f4213e",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T23:49:53Z",
+      "side": 1,
+      "message": "Reverting to patchset#8",
+      "parentUuid": "5981150f_4b5306f1",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 2
+      },
+      "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3b60bc8_1d6a747e",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T23:49:53Z",
+      "side": 1,
+      "message": "Goes to line 335.",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 39
+      },
+      "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0092e2a4_98ca7eb4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-17T23:49:53Z",
+      "side": 1,
+      "message": "\u003e \"communcation\" is a possible misspelling of \"communication\".\n\nPlease fix.",
+      "parentUuid": "708f9d37_611feafc",
+      "range": {
+        "startLine": 389,
+        "startChar": 54,
+        "endLine": 389,
+        "endChar": 66
+      },
+      "revId": "4aa06ddf3108dd7673cbf040ffec94444e9219da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
