@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b3f7fee_88ddfc50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:04:47Z",
+      "side": 1,
+      "message": "this is not clear: can\u0027t you use two bits to specify one of four pins? Why limiting to three?  What 2 bits are you referring to?\n\nShould be explained that the bit used for CCD will be stored in the board properties register,  one combination is reserved for \u0027unsupported\u0027 and we want to limit the number of bits, so we limit ourselves to 3 out of 4 possible pins. (do I understand it right?)\n\nPatch description would be much clearer if it was split in paragraphs.",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff24ad6d_aad129e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:04:47Z",
+      "side": 1,
+      "message": "why DIOA6 can\u0027t be used? Is there something inherently wrong with using it, or is it picked for some specific reason?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfcf30b9_5e81645f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:04:47Z",
+      "side": 1,
+      "message": "where is this field in board properties written?",
+      "range": {
+        "startLine": 191,
+        "startChar": 8,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e58686c_909efbf4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:04:47Z",
+      "side": 1,
+      "message": "I wish there was a function for cross connecting an entity inside the chip and a ball, and enabling the input. Maybe as a separate refactoring patch.",
+      "range": {
+        "startLine": 668,
+        "startChar": 2,
+        "endLine": 670,
+        "endChar": 41
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086e7b9c_41935f7e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:04:47Z",
+      "side": 1,
+      "message": "should be a break in this clause too.",
+      "range": {
+        "startLine": 683,
+        "startChar": 3,
+        "endLine": 683,
+        "endChar": 15
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13812a6_bf7a916c",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:04:47Z",
+      "side": 1,
+      "message": "should this be called BOARD_CCD_REC_LID_PIN_MASK?",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "c638c80e01ca412b7581d6cb073c576a695741a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
