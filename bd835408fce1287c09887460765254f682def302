@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67b5ec1a_cdab27be",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-17T23:42:20Z",
+      "side": 1,
+      "message": "This isn\u0027t handling the following case:\n  Cable speed: USB 3.2 Gen2\n  DFP is Gen3\n  TBT cable speed is Gen3\n\nIn this case the speed should be USB4 with TBT3 Gen3 correct?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 48
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a991eb0d_d30ece8f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-17T23:42:20Z",
+      "side": 1,
+      "message": "This also requires the cable supports TBT Gen3.\nPlease also add an entry for USB 3.2 Gen2, DFP Gen3, not TBT Gen3 -\u003e USB4 with TBT Gen2 passive cable.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 0
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9904ba4_de98f7c5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-17T23:42:20Z",
+      "side": 1,
+      "message": "Please note in the comment, if DFP is Gen3 capable, we need to check TBT speed by continuing the TBT discovery.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 39
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17310872_73c7cfd1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-17T23:42:20Z",
+      "side": 1,
+      "message": "Since figure 5-1 doesn\u0027t explicitly discuss PD rev 2.0, please add a comment here.  Specifically indicating the conditions in which a PD rev 2.0 cable can support USB4 operation.\n\nI think this set is USB 3.1 Gen2, and TBT Gen2.  Are there any others expected from a rev 2.0 cable?",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 16
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
