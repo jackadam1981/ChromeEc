@@ -141,4 +141,24 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+#ifdef CONFIG_COMMON_RUNTIME
+static enum ec_status hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
+{
+	const uint8_t *port = args->params;
+	struct ec_params_usb_pd_rw_hash_entry *r = args->response;
+
+	if (*port >= board_get_usb_pd_port_count())
+		return EC_RES_INVALID_PARAM;
+
+	pd_dev_get_rw_hash(*port, &r->dev_id, r->dev_rw_hash,
+				&r->current_image);
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO,
+		     hc_remote_pd_dev_info,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_COMMON_RUNTIME */
+
 #endif /* HAS_TASK_HOSTCMD */
