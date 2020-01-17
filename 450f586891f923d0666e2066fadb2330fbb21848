@@ -91,6 +91,29 @@
       "revId": "450f586891f923d0666e2066fadb2330fbb21848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a573b38_10aa3cf5",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:23:00Z",
+      "side": 1,
+      "message": "You can ignore my other suggestions and just use this here if you want. I just wanted to keep the same general format where we start by adding flags then the second stage is removing them based on capabilities. I don\u0027t know if we want to start adding and removing flags in different sections, because I think it makes it more difficult to track how flags are added/removed.\nUp to you.\n\nflags_want \u003d (flags_want \u0026 CCD_ENABLE_UART_EC) | CCD_ENABLE_UART_EC_TX",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 39
+      },
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
