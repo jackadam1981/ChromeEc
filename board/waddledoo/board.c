@@ -292,6 +292,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 			.port = I2C_PORT_USB_C0,
 			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
 		},
+		.flags = TCPC_FLAGS_TCPCI_V2_0,
 		.drv = &raa489000_tcpm_drv,
 	},
 
@@ -301,6 +302,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 			.port = I2C_PORT_SUB_USB_C1,
 			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
 		},
+		.flags = TCPC_FLAGS_TCPCI_V2_0,
 		.drv = &raa489000_tcpm_drv,
 	},
 };
@@ -333,7 +335,8 @@ uint16_t tcpc_get_alert_status(void)
 		 */
 		if (!tcpc_read16(0, TCPC_REG_ALERT, &regval)) {
 			/* The TCPCI v1.0 spec says to ignore bits 14:12. */
-			regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
+			if (!(tcpc_config[0].flags & TCPC_FLAGS_TCPCI_V2_0))
+				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
 
 			if (regval)
 				status |= PD_STATUS_TCPC_ALERT_0;
@@ -347,7 +350,8 @@ uint16_t tcpc_get_alert_status(void)
 		 */
 		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
 			/* TCPCI spec v1.0 says to ignore bits 14:12. */
-			regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
+			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_V2_0))
+				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
 
 			if (regval)
 				status |= PD_STATUS_TCPC_ALERT_1;
