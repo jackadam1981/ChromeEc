@@ -22,6 +22,30 @@
       "revId": "63dbf19123a2c3f1e28307d2449fa26b205f9e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6871569b_8a61001f",
+        "filename": "core/riscv-rv32i/config_core.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-01-17T08:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1849040_5736612d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "63dbf19123a2c3f1e28307d2449fa26b205f9e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
