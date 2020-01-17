@@ -22,6 +22,30 @@
       "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7243411b_3f119efb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-17T18:10:27Z",
+      "side": 1,
+      "message": "we have received the info already as this section will be executed only after Discover Mode SOP.\nflow: SVID SOP -\u003e SVID SOP\u0027-\u003e MODE SOP -\u003e MODE SOP\u0027\n1. If SVID SOP\u0027error then @1184 we move to MODE SOP\n2. If SVID SOP\u0027success we come to this function @1069",
+      "parentUuid": "fca58d16_9cd74be6",
+      "range": {
+        "startLine": 874,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 2
+      },
+      "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
