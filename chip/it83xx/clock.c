@@ -33,6 +33,7 @@
 BUILD_ASSERT(ADC_TIMEOUT_US < SLEEP_SET_HTIMER_DELAY_USEC);
 #endif
 
+uint8_t pd_sleep_mask;
 static timestamp_t sleep_mode_t0;
 static timestamp_t sleep_mode_t1;
 static int idle_doze_cnt;
@@ -407,6 +408,9 @@ static void clock_htimer_enable(void)
 
 static int clock_allow_low_power_idle(void)
 {
+	if (pd_sleep_mask == 1)
+		return 0;
+
 	if (!(IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) & BIT(0)))
 		return 0;
 
