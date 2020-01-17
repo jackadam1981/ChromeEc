@@ -153,6 +153,7 @@
 #define TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK 0x27
 #define TCPC_REG_RX_BYTE_CNT       0x30
 #define TCPC_REG_RX_BUF_FRAME_TYPE 0x31
+#define TCPC_REG_RX_BUFFER         0x30
 
 #define TCPC_REG_RX_HDR            0x32
 #define TCPC_REG_RX_DATA           0x34 /* through 0x4f */
@@ -167,6 +168,7 @@
 #define TCPC_REG_TX_BYTE_CNT       0x51
 #define TCPC_REG_TX_HDR            0x52
 #define TCPC_REG_TX_DATA           0x54 /* through 0x6f */
+#define TCPC_REG_TX_BUFFER         0x51
 
 #define TCPC_REG_VBUS_VOLTAGE                0x70
 #define TCPC_REG_VBUS_SINK_DISCONNECT_THRESH 0x72
