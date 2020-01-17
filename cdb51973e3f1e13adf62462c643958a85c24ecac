@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54373a7a_2b3983a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-17T01:01:12Z",
+      "side": 1,
+      "message": "Add prefix, check other commits.",
+      "revId": "cdb51973e3f1e13adf62462c643958a85c24ecac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e54009_a9e5cbc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-17T01:01:12Z",
+      "side": 1,
+      "message": "At least, it could be uploaded to octopus branch.",
+      "revId": "cdb51973e3f1e13adf62462c643958a85c24ecac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d0b3dd_c4983e9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-17T01:01:12Z",
+      "side": 1,
+      "message": "Did you test with ToT EC firmware or on top of the octopus FW branch [firmware-octopus-11297.B]?",
+      "revId": "cdb51973e3f1e13adf62462c643958a85c24ecac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27fe5bc_3ec38eb3",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-17T01:01:12Z",
+      "side": 1,
+      "message": "this is code is not sensor specific, it should be in math library.",
+      "revId": "cdb51973e3f1e13adf62462c643958a85c24ecac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ea01699_c6c5f3bc",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-17T01:01:12Z",
+      "side": 1,
+      "message": "Looking at https://stackoverflow.com/questions/2422712/rounding-integer-division-instead-of-truncating, that will not work if divisor is \u003c 0.",
+      "revId": "cdb51973e3f1e13adf62462c643958a85c24ecac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
