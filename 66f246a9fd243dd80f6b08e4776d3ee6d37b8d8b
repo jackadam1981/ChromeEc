@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "fdeac269_3187d803",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-17T15:49:28Z",
+      "side": 1,
+      "message": "Okay, I\u0027m good with that being changed with the TCPCI v2.0 update",
+      "parentUuid": "9b86e8aa_4c6157e8",
+      "range": {
+        "startLine": 330,
+        "startChar": 3,
+        "endLine": 330,
+        "endChar": 50
+      },
+      "revId": "66f246a9fd243dd80f6b08e4776d3ee6d37b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43dc241f_284312d2",
         "filename": "board/waddledoo/usb_pd_policy.c",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Hmm, we could, but shouldn\u0027t that decision be made in common code in the policy engine?",
       "parentUuid": "43dc241f_284312d2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "66f246a9fd243dd80f6b08e4776d3ee6d37b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0356f2f0_a4428794",
+        "filename": "board/waddledoo/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-17T15:49:28Z",
+      "side": 1,
+      "message": "For the old stack, I believe we\u0027d just call into this function to decide when we receive a Vconn swap request.  I\u0027ll have to check out what the new stack does though",
+      "parentUuid": "6f68ffbb_b5f833e5",
       "range": {
         "startLine": 18,
         "startChar": 0,
