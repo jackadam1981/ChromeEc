@@ -5,8 +5,12 @@
 
 #include <ctype.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <getopt.h>
 #include <inttypes.h>
+#include <limits.h>
+#include <linux/i2c.h>
+#include <linux/i2c-dev.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -176,6 +180,10 @@ const char help_str[] =
 	"      Protect EC's I2C bus\n"
 	"  i2cread\n"
 	"      Read I2C bus\n"
+	"  i2ctunnel <port>\n"
+	"      Create a fake I2C bus on the host, which transparently proxies\n"
+	"      traffic to and from the given port on the EC. Requires the\n"
+	"      i2c-pseudo Kernel module.\n"
 	"  i2cwrite\n"
 	"      Write I2C bus\n"
 	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
@@ -6630,6 +6638,260 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	return 0;
 }
 
+/**
+ * The parameters from one i2c-pseudo I2C_XFER_REQ command. See the i2c-pseudo
+ * documentation for the meaning of each field.
+ */
+struct i2c_tunnel_xfer_req {
+	int xfer_id;
+	int msg_id;
+	uint16_t addr;
+	uint16_t flags;
+	size_t data_len;
+	uint8_t *data;
+};
+
+static struct i2c_tunnel_xfer_req i2c_tunnel_reqs[I2C_RDWR_IOCTL_MAX_MSGS];
+static size_t i2c_tunnel_num_reqs;
+
+static void i2c_tunnel_begin_xfer(char **end_token)
+{
+	if (i2c_tunnel_num_reqs != 0) {
+		fprintf(stderr,
+			"Error: I2C_BEGIN_XFER received before I2C_COMMIT_XFER; dropping %ld unsent messages. This is probably a bug in i2c-pseudo.\n",
+			i2c_tunnel_num_reqs);
+		i2c_tunnel_num_reqs = 0;
+	}
+}
+
+static int i2c_tunnel_next_int(char **end_token, size_t max_value,
+			       char **bad_token)
+{
+	char *end;
+	long value;
+	char *token = strtok_r(NULL, " \t", end_token);
+
+	if (token == NULL)
+		goto error;
+	value = strtol(token, &end, 0);
+	if (end == token || value < 0 || value > max_value)
+		goto error;
+	return value;
+error:
+	*bad_token = token;
+	return -1;
+}
+
+static uint8_t *i2c_tunnel_parse_data_token(char *data_token, size_t data_len)
+{
+	char *data_token_end;
+	char *byte_token;
+	int i;
+	uint8_t *data = malloc(data_len);
+
+	if (data == NULL) {
+		fprintf(stderr, "Error: Couldn't allocate memory for data; dropping message.\n");
+		return NULL;
+	}
+	byte_token = strtok_r(data_token, ":", &data_token_end);
+	for (i = 0; i < data_len; i++) {
+		char *end;
+
+		if (byte_token == NULL) {
+			fprintf(stderr, "Error: too few bytes given for write (%d out of %ld); dropping message. This is probably a bug in i2c-pseudo.\n",
+				i, data_len);
+			return NULL;
+		}
+		data[i] = strtol(byte_token, &end, 16);
+		if (end == byte_token) {
+			fprintf(stderr,
+				"Error: invalid byte '%s'; dropping message.\n",
+				byte_token);
+			return NULL;
+		}
+
+		byte_token = strtok_r(NULL, ":", &data_token_end);
+	}
+	if (byte_token != NULL) {
+		fprintf(stderr, "Error: too many bytes given for write; dropping message. This is probably a bug in i2c-pseudo.\n");
+		return NULL;
+	}
+
+	return data;
+}
+
+static void i2c_tunnel_xfer_req(char **end_token)
+{
+	struct i2c_tunnel_xfer_req *req = &i2c_tunnel_reqs[i2c_tunnel_num_reqs];
+	int last_xfer_id =
+		i2c_tunnel_num_reqs >= 1
+			? i2c_tunnel_reqs[i2c_tunnel_num_reqs - 1].xfer_id : -1;
+	char *bad_token;
+
+	if (i2c_tunnel_num_reqs >= I2C_RDWR_IOCTL_MAX_MSGS) {
+		fprintf(stderr, "Error: too many requests for one transaction (maximum %d).\n",
+			I2C_RDWR_IOCTL_MAX_MSGS);
+		return;
+	}
+
+	req->xfer_id = i2c_tunnel_next_int(end_token, INT_MAX, &bad_token);
+	if (i2c_tunnel_num_reqs >= 1 && req->xfer_id != last_xfer_id) {
+		fprintf(stderr, "Error: mismatched xfer IDs (%d and %d); dropping message. This is probably a bug in i2c-pseudo.\n",
+			req->xfer_id, last_xfer_id);
+		return;
+	}
+
+	req->msg_id = i2c_tunnel_next_int(end_token, INT_MAX, &bad_token);
+	req->addr = i2c_tunnel_next_int(end_token, UINT16_MAX, &bad_token);
+	req->flags = i2c_tunnel_next_int(end_token, UINT16_MAX, &bad_token);
+	req->data_len = i2c_tunnel_next_int(end_token, SIZE_MAX, &bad_token);
+	if (req->xfer_id == -1 || req->msg_id == -1 || req->addr == -1 ||
+	    req->flags == -1 || req->data_len == -1) {
+		fprintf(stderr, "Error: invalid value '%s' in I2C_XFER_REQ.\n",
+			bad_token);
+		return;
+	}
+
+	if (!(req->flags & I2C_M_RD) && req->data_len > 0) {
+		req->data = i2c_tunnel_parse_data_token(
+				strtok_r(NULL, " \t", end_token),
+				req->data_len);
+		if (req->data == NULL)
+			return;
+	}
+
+	i2c_tunnel_num_reqs++;
+}
+
+static void i2c_tunnel_commit_xfer(int fd, unsigned int port, char **end_token)
+{
+	int i;
+
+	for (i = 0; i < i2c_tunnel_num_reqs; i++) {
+		struct i2c_tunnel_xfer_req *req = &i2c_tunnel_reqs[i];
+		int rv;
+
+		if (req->flags & I2C_M_RD) {
+			int j;
+			uint8_t *read_buf;
+
+			printf("Reading %ld bytes:", req->data_len);
+			rv = do_i2c_xfer(port, req->addr, NULL, 0, &read_buf,
+					 req->data_len);
+			dprintf(fd, "I2C_XFER_REPLY %d %d 0x%04X 0x%04X %d",
+				req->xfer_id, req->msg_id, req->addr,
+				req->flags, rv == 0 ? 0 : 1);
+
+			if (rv != 0) {
+				printf(" error (rv = %d).\n", rv);
+				continue;
+			}
+			if (req->data_len > 0) {
+				printf(" 0x%02X", read_buf[0]);
+				dprintf(fd, " %02X", read_buf[0]);
+				for (j = 1; j < req->data_len; j++) {
+					printf(" %02X", read_buf[j]);
+					dprintf(fd, ":%02X", read_buf[j]);
+				}
+			}
+
+			printf("\n");
+			dprintf(fd, "\n");
+		} else {
+			printf("Writing %ld bytes.\n", req->data_len);
+			rv = do_i2c_xfer(port, req->addr, req->data,
+					 req->data_len, NULL, 0);
+			dprintf(fd, "I2C_XFER_REPLY %d %d 0x%04X 0x%04X %d\n",
+				req->xfer_id, req->msg_id, req->addr,
+				req->flags, rv == 0 ? 0 : 1);
+		}
+	}
+
+	i2c_tunnel_num_reqs = 0;
+}
+
+static void i2c_tunnel_adapter_num(char **end_token)
+{
+	char *adapter_num = strtok_r(NULL, " \t", end_token);
+
+	printf("Adapter started with bus number %s (device node /dev/i2c-%s).\n",
+	       adapter_num, adapter_num);
+}
+
+static void i2c_tunnel_process_command(int fd, unsigned int port, char *line)
+{
+	char *end_token;
+	char *token;
+
+	printf("Command: %s\n", line);
+	token = strtok_r(line, " \t", &end_token);
+
+	/* Ignore blank lines. */
+	if (token == NULL)
+		return;
+
+	if (strcmp(token, "I2C_BEGIN_XFER") == 0)
+		i2c_tunnel_begin_xfer(&end_token);
+	else if (strcmp(token, "I2C_XFER_REQ") == 0)
+		i2c_tunnel_xfer_req(&end_token);
+	else if (strcmp(token, "I2C_COMMIT_XFER") == 0)
+		i2c_tunnel_commit_xfer(fd, port, &end_token);
+	else if (strcmp(token, "I2C_ADAPTER_NUM") == 0)
+		i2c_tunnel_adapter_num(&end_token);
+	else
+		fprintf(stderr, "Warning: dropping unrecognized command %s.\n",
+			token);
+}
+
+int cmd_i2c_tunnel(int argc, char *argv[])
+{
+	const char *pseudo_dev_path = "/dev/i2c-pseudo-controller";
+	int fd;
+	unsigned int port;
+	char buf[1<<12];
+	char *end;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
+		return -1;
+	}
+
+	port = strtol(argv[1], &end, 0);
+	if (end == argv[1]) {
+		fprintf(stderr, "'%s' is not a valid port number.\n", argv[1]);
+		return -1;
+	}
+
+	fd = open(pseudo_dev_path, O_RDWR);
+	if (fd < 0) {
+		perror("Error: couldn't open I2C pseudo device");
+		fprintf(stderr, "Check that you have permission to access %s, and that the i2c-pseudo Kernel module is installed.\n",
+			pseudo_dev_path);
+		return -1;
+	}
+
+	/* Create the I2C adapter. */
+	dprintf(fd, "ADAPTER_START\n");
+	dprintf(fd, "GET_ADAPTER_NUM\n");
+	while (true) {
+		ssize_t bytes_read = read(fd, buf, sizeof(buf));
+		char *end_line;
+		char *line = strtok_r(buf, "\n", &end_line);
+
+		/*
+		 * There's a bug in strtok_r where if passed a single-token
+		 * string (e.g. "I2C_ADAPTER_NUM 11", no newline), it returns a
+		 * second token past the end of the allocated string, hence the
+		 * bounds check here.
+		 */
+		while (line != NULL && line < &buf[0] + bytes_read) {
+			i2c_tunnel_process_command(fd, port, line);
+			line = strtok_r(NULL, "\n", &end_line);
+		}
+	}
+	return 0;
+}
+
 static void cmd_locate_chip_help(const char *const cmd)
 {
 	fprintf(stderr,
@@ -9248,6 +9510,7 @@ const struct command commands[] = {
 	{"locatechip", cmd_locate_chip},
 	{"i2cprotect", cmd_i2c_protect},
 	{"i2cread", cmd_i2c_read},
+	{"i2ctunnel", cmd_i2c_tunnel},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
 	{"infopddev", cmd_pd_device_info},
