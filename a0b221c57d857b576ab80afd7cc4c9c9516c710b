@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69f4736d_ae591d9c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T01:13:53Z",
+      "side": 1,
+      "message": "\u003e \"condtion\" is a possible misspelling of \"condition\".\n\nPlease fix.",
+      "parentUuid": "ef97c2f4_c5a5abf4",
+      "range": {
+        "startLine": 559,
+        "startChar": 49,
+        "endLine": 559,
+        "endChar": 57
+      },
+      "revId": "a0b221c57d857b576ab80afd7cc4c9c9516c710b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171d659e_e1875828",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T01:13:53Z",
+      "side": 1,
+      "message": "I wonder if this disable needed - in some cases this patch refactors it is not there, not sure why it needs to be disabled: if the processor is running executing this code, there would be no powerdown exit anyways.",
+      "range": {
+        "startLine": 569,
+        "startChar": 2,
+        "endLine": 569,
+        "endChar": 48
+      },
+      "revId": "a0b221c57d857b576ab80afd7cc4c9c9516c710b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
