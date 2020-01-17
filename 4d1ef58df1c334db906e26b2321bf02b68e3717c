@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "853094f0_37672fc2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-01-17T00:12:44Z",
+      "side": 1,
+      "message": "could this be further refactored like\n\n#define LEVEL 0\n#define EDGE 1\n#define LOW 1\n#define HIGH 0\n\n#define SET_WAKEPIN(pinname, level_edge, high_low)\n    do {                                                     \\\n\t\t/* disable pwdn exit */                          \\\n\t\tGWRITE_FIELD(PINMUX, EXITEN0, pinname, 0);       \\\n\t\t/* level or edge */                            \\\n\t\tGWRITE_FIELD(PINMUX, EXITEDGE0, pinname, level_edge);     \\\n\t\t/* wake on high or low */                               \\\n\t\tGWRITE_FIELD(PINMUX, EXITINV0, pinname, high_low);      \\\n\t\t/* enable pwdn exit */                           \\\n\t\tGWRITE_FIELD(PINMUX, EXITEN0, pinname, 1);       \\\n\t} while (0)",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 0
+      },
+      "revId": "4d1ef58df1c334db906e26b2321bf02b68e3717c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
