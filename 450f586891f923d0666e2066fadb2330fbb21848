@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e36c9ed_132a7a91",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:13:39Z",
+      "side": 1,
+      "message": "This tells you if EC TX CR50 RX is allowed. You need to keep only enabling EC RX if CCD_ENABLE_UART_EC is set here. \nIf you always enable RX when ec_comm_is_uart_in_packet_mode, then there will be interrupt storms on Cr50 when EC TX CR50 RX isn\u0027t pulled up (This happens on some boards when the EC enters hibernate).",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 23
+      },
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d4199d_efb543bd",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:13:39Z",
+      "side": 1,
+      "message": "I am not sure how bitbang logic will work with ec_comm_is_uart_in_packet_mode.",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 261,
+        "endChar": 42
+      },
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e15c52b_5ba7b3fc",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:13:39Z",
+      "side": 1,
+      "message": "Set that you want the EC uart enabled here\nelse if (ec_comm_is_uart_in_packet_mode())\n    flags_want \u003d (flags_want \u0026 CCD_ENABLE_UART_EC) | CCD_ENABLE_UART_EC_TX",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 5
+      },
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2949d3_e203349d",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:13:39Z",
+      "side": 1,
+      "message": "Skip this if ec_comm_is_uart_in_packet_mode",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 32
+      },
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
