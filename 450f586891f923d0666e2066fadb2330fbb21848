@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d399e37_af47a91d",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:33:47Z",
+      "side": 1,
+      "message": "Cr50  probably shouldn\u0027t enter any form of sleep during packet mode.\n\nYou can add a new mask or change one of the ones in include/system.h that noone uses.\n\ndisable_sleep(SLEEP_MASK_EC_COMM)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b759d2_c7138e09",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:33:47Z",
+      "side": 1,
+      "message": "Enable sleep in here\nenable_sleep(SLEEP_MASK_EC_COMM)",
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd105aaa_03ce337f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-17T19:33:47Z",
+      "side": 1,
+      "message": "How does this flush the usb console data?",
+      "revId": "450f586891f923d0666e2066fadb2330fbb21848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e36c9ed_132a7a91",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 10
