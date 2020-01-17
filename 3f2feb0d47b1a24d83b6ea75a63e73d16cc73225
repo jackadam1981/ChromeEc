@@ -46,6 +46,30 @@
       "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7b0d05_b945e47d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-17T22:40:17Z",
+      "side": 1,
+      "message": "I still don\u0027t see where you\u0027re saving the payload from MODE SOP into dev_mode_resp if SVID SOP\u0027 generated a NACK.\nThe flow will be SVID SOP -\u003e SVID SOP\u0027 -\u003e NACK limit_tbt_cable_speed() -\u003e MODE SOP -\u003e call process_tbt_compat_discover_modes().\nBecause is_limit_tbt_cable_speed() is true, you never execute line 908 to store the MODE SOP payload.\nAppreciate your patience if I\u0027m still misunderstanding.",
+      "parentUuid": "7243411b_3f119efb",
+      "range": {
+        "startLine": 874,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 2
+      },
+      "revId": "3f2feb0d47b1a24d83b6ea75a63e73d16cc73225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
