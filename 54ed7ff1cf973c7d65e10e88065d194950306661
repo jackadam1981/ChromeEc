@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f89a65a_fa73596b",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-17T00:37:42Z",
+      "side": 1,
+      "message": "How about \u0027cmd_rwsig\u0027? EFS is also part of VBOOT but it doesn\u0027t use any of these.",
+      "range": {
+        "startLine": 1201,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 14
+      },
+      "revId": "54ed7ff1cf973c7d65e10e88065d194950306661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
