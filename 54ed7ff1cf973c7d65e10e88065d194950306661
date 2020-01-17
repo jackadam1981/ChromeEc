@@ -22,6 +22,29 @@
       "revId": "54ed7ff1cf973c7d65e10e88065d194950306661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefcfbe7_033f8964",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9348,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-17T18:05:01Z",
+      "side": 1,
+      "message": "Can this be \u0027rwsig\u0027? EFS is also part of VBOOT but it doesn\u0027t use any of the stuff between line 1201 and 1207.",
+      "range": {
+        "startLine": 9348,
+        "startChar": 3,
+        "endLine": 9348,
+        "endChar": 13
+      },
+      "revId": "54ed7ff1cf973c7d65e10e88065d194950306661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
