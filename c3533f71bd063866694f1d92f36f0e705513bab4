@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71777998_5be9da7b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-18T00:11:27Z",
+      "side": 1,
+      "message": "I think path now belongs under the else at line 917 to avoid some code duplication.\n\nelse\n  /* Store Discover Mode SOP response */\n  ...\n  if (is_limit_tbt_cable_speed())\n    /* Enter TBT mode */\n  else\n    /*Discovery modes for SOP\u0027 */",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 893,
+        "endChar": 0
+      },
+      "revId": "c3533f71bd063866694f1d92f36f0e705513bab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
