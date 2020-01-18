@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0376c613_f74dbb29",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-18T00:36:52Z",
+      "side": 1,
+      "message": "This should be struct_version.\nFor reference: https://cs.corp.google.com/chromeos_public/src/platform/vboot_reference/firmware/2lib/2secdata_kernel.c?rcl\u003d582453dd62a9616a95a19b42a36f6adb8988e329\u0026l\u003d51\n\nHowever, VB2_SECDATA_KERNEL_VERSION is a confusing name.",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "4b213e38e3cac660ad43531ef6452715aa990cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
