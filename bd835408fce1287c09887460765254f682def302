@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e4df66f6_3df200ae",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-18T01:30:11Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "67b5ec1a_cdab27be",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 48
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a991eb0d_d30ece8f",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 25
@@ -45,6 +69,30 @@
       "revId": "bd835408fce1287c09887460765254f682def302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722e5313_a92c08fe",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-18T01:30:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a991eb0d_d30ece8f",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 0
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ea67346_1562e229",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-18T01:30:11Z",
+      "side": 1,
+      "message": "When we return false, we further go on checking if the cable is thunderbolt compatible. When we return true, we directly enter into thunderbolt mode.",
+      "parentUuid": "e9904ba4_de98f7c5",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 39
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17310872_73c7cfd1",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 25
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-17T23:42:20Z",
       "side": 1,
       "message": "Since figure 5-1 doesn\u0027t explicitly discuss PD rev 2.0, please add a comment here.  Specifically indicating the conditions in which a PD rev 2.0 cable can support USB4 operation.\n\nI think this set is USB 3.1 Gen2, and TBT Gen2.  Are there any others expected from a rev 2.0 cable?",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 16
+      },
+      "revId": "bd835408fce1287c09887460765254f682def302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ca7e3f_100044fb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-18T01:30:11Z",
+      "side": 1,
+      "message": "Done\n\nOnly when it is a rev2 gen 2 cable, the port is expected to check for Thunderbolt capability.",
+      "parentUuid": "17310872_73c7cfd1",
       "range": {
         "startLine": 497,
         "startChar": 0,
