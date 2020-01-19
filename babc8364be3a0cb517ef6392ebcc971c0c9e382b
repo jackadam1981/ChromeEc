@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d53e7d11_144e344e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2933,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-19T08:35:52Z",
+      "side": 1,
+      "message": "I had to change this to an ifdef because TC_LOW_POWER_MODE is being referenced with just IS_ENABLED. And if I remove the ifdef around the enum, the unit test that checks for no empty state breaks.",
+      "revId": "babc8364be3a0cb517ef6392ebcc971c0c9e382b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
