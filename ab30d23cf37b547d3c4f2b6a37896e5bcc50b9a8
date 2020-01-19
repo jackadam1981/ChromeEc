@@ -22,6 +22,30 @@
       "revId": "ab30d23cf37b547d3c4f2b6a37896e5bcc50b9a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e38d9c_2b8a9656",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-01-19T08:59:46Z",
+      "side": 1,
+      "message": "Seems there is a lot of work to be done if calling a deferred function. We may need to execute sensor_probe() firstly, then motion_sense_init(). But motion_sense_init() is called in HOOK_INIT. I have no idea how to modify the motion_sense_startup() now.",
+      "parentUuid": "c2dd76c7_87f43432",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 61
+      },
+      "revId": "ab30d23cf37b547d3c4f2b6a37896e5bcc50b9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
