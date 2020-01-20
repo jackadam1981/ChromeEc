@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4717e8f_42fc8f5d",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-20T18:07:02Z",
+      "side": 1,
+      "message": "Looks like we can remove this with the below code, though I think the TCPCI driver is just servicing bit 14 now, correct?",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 5
+      },
+      "revId": "9e8ac9bb3be46d97a1d01ca6d8e66aee386975d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
