@@ -572,14 +572,15 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 	}
 
 	/* If any PD port is connected, then disable deep sleep */
-	for (i = 0; i < board_get_usb_pd_port_count(); ++i)
-		if (IT83XX_USBPD_GCR(i) | USBPD_REG_MASK_BMC_PHY)
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
+		if (IT83XX_USBPD_GCR(i) & USBPD_REG_MASK_BMC_PHY)
 			break;
+	}
 
 	if (i == board_get_usb_pd_port_count())
-		enable_sleep(SLEEP_MASK_USB_PD);
+		pd_need_awake = 0;
 	else
-		disable_sleep(SLEEP_MASK_USB_PD);
+		pd_need_awake = 1;
 
 	return EC_SUCCESS;
 }
