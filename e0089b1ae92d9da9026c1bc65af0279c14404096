@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "051dfea7_85c6b558",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-01-20T02:07:21Z",
+      "side": 1,
+      "message": "Weirdly, fizz has the #define the other way around.\nAll the other boards have a number for the CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON #define,\nso maybe the fizz pattern should be followed.\nI don\u0027t know the exact meaning of these #defines and how they are different.\nMy quick scan of where they are used seem to indicate that CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON represents the minimum power required before the AP gets turned on, and PD_OPERATING_POWER_MW indicates how much power is required before USB power delivery is enabled? So it would seem clearer to have a real number for CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON.",
+      "revId": "e0089b1ae92d9da9026c1bc65af0279c14404096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
