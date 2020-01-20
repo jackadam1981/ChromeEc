@@ -355,6 +355,24 @@
     },
     {
       "key": {
+        "uuid": "1238e50f_4e83f494",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-20T01:06:09Z",
+      "side": 1,
+      "message": "Once again, i2c is not meant to be discovered at run time: the bus topology is supposed to be well defined at build time.\nIf we can not use sku_id to identify which sensors we are using, can we  add a new property to  cbi eeprom to indicate which sensors we are using?",
+      "parentUuid": "5008fb1d_ac555d3c",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f6cf4b_0d6aa0cf",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
