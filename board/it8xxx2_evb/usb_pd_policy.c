@@ -9,6 +9,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "it83xx_pd.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -45,11 +46,21 @@ int pd_is_max_request_allowed(void)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	int mv = adc_read_channel(port == USBPD_PORT_A ?
-					ADC_VBUSSA : ADC_VBUSSB);
+	int mv = ADC_READ_ERROR;
 
-	/* level shift voltage of VBUS > threshold */
-	return (mv * 23 / 3) > PD_VBUS_PROVIDED_THRESHOLD;
+	switch (port) {
+	case USBPD_PORT_A:
+		mv = adc_read_channel(ADC_VBUSSA);
+		break;
+	case USBPD_PORT_B:
+		mv = adc_read_channel(ADC_VBUSSB);
+		break;
+	case USBPD_PORT_C:
+		mv = adc_read_channel(ADC_VBUSSC);
+		break;
+	}
+
+	return mv > PD_VBUS_PROVIDED_THRESHOLD;
 }
 
 int pd_set_power_supply_ready(int port)
@@ -66,8 +77,7 @@ void pd_power_supply_reset(int port)
 	board_pd_vbus_ctrl(port, 0);
 }
 
-
-int pd_check_data_swap(int port, int data_role)
+__override int pd_check_data_swap(int port, enum pd_data_role data_role)
 {
 	/* Always allow data swap: we can be DFP or UFP for USB */
 	return 1;
@@ -81,3 +91,48 @@ int pd_check_vconn_swap(int port)
 	 */
 	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
 }
+
+__override int svdm_enter_dp_mode(int port, uint32_t mode_caps)
+{
+	/*
+	 * Do not enter dp mode, we let VDM enumeration stop after discover
+	 * modes have done.
+	 */
+	return -1;
+}
+
+__override void svdm_dp_post_config(int port)
+{
+}
+
+__override int svdm_dp_attention(int port, uint32_t *payload)
+{
+	/* ack */
+	return 1;
+}
+
+__override void svdm_exit_dp_mode(int port)
+{
+}
+
+__override int pd_custom_vdm(int port, int cnt, uint32_t *payload,
+				uint32_t **rpayload)
+{
+	return 0;
+}
+
+__override int svdm_dp_config(int port, uint32_t *payload)
+{
+	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+	uint8_t pin_mode = get_dp_pin_mode(port);
+
+	if (!pin_mode)
+		return 0;
+
+	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
+			 CMD_DP_CONFIG | VDO_OPOS(opos));
+	payload[1] = VDO_DP_CFG(pin_mode,      /* pin mode */
+				1,	       /* DPv1.3 signaling */
+				2);	       /* UFP connected */
+	return 2;
+};
