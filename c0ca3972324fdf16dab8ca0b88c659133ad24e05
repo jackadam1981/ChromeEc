@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60f9930a_4c26582d",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-20T07:01:02Z",
+      "side": 1,
+      "message": "Does EC_TEMP_THRESH_HIGH have function? should we set to 0 to disable it?",
+      "parentUuid": "83207b1e_dd42db49",
+      "range": {
+        "startLine": 333,
+        "startChar": 3,
+        "endLine": 333,
+        "endChar": 36
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8715d060_5ffd4cb5",
         "filename": "board/dratini/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f1d4e6_b937fb3c",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-20T07:01:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8715d060_5ffd4cb5",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 37
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
