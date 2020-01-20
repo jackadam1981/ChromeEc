@@ -163,8 +163,9 @@
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
+/* Less than this much blocks AP power-on. */
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON PD_OPERATING_POWER_MW
 #undef CONFIG_CHARGE_MANAGER_SAFE_MODE
-#define CONFIG_CHARGER_INPUT_CURRENT 512 /* Allow low-current USB charging */
 
 /* USB type C */
 /* TODO: (b/147255678) Use TCPMv2 */
