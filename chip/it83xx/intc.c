@@ -12,7 +12,8 @@
 #include "tcpm.h"
 #include "usb_pd.h"
 
-#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX) || \
+	defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
 static void chip_pd_irq(enum usbpd_port port)
 {
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
@@ -23,41 +24,54 @@ static void chip_pd_irq(enum usbpd_port port)
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
-	} else {
-		if (USBPD_IS_RX_DONE(port)) {
-			tcpm_enqueue_message(port);
-			/* clear RX done interrupt */
-			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
-		}
-		if (USBPD_IS_TX_DONE(port)) {
-			/* clear TX done interrupt */
-			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
-			task_set_event(PD_PORT_TO_TASK_ID(port),
-				TASK_EVENT_PHY_TX_DONE, 0);
-		}
-#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
-		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
-			/*
-			 * When tcpc detect type-c plug in, then disable
-			 * this interrupt. Because any cc volt changes
-			 * (include pd negotiation) would trigger plug in
-			 * interrupt, frequently plug in interrupt and wakeup
-			 * pd task may cause task starvation or device dead
-			 * (ex.transmit lots SRC_Cap).
-			 *
-			 * When polling disconnect will enable detect type-c
-			 * plug in again.
-			 *
-			 * Clear detect type-c plug in interrupt status.
-			 */
-			IT83XX_USBPD_TCDCR(port) |=
-				(USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
-				 USBPD_REG_PLUG_IN_OUT_DETECT_STAT);
-			task_set_event(PD_PORT_TO_TASK_ID(port),
-				PD_EVENT_CC, 0);
-		}
-#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	}
+
+	if (USBPD_IS_RX_DONE(port)) {
+		tcpm_enqueue_message(port);
+		/* clear RX done interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
+	}
+
+	if (USBPD_IS_TX_DONE(port)) {
+#ifdef CONFIG_USB_PD_TCPM_ITE83XX_V2
+		extern uint8_t tx_error_status[IT83XX_USBPD_PHY_PORT_COUNT];
+
+		tx_error_status[port] = 0;
+		/* check TX status, clear by TX_DONE status too */
+		if (USBPD_IS_TX_ERR(port))
+			tx_error_status[port] = IT83XX_USBPD_MTCR(port) &
+					(USBPD_REG_MASK_TX_NOT_EN_STAT |
+					 USBPD_REG_MASK_TX_DISCARD_STAT |
+					 USBPD_REG_MASK_TX_NO_RESPONSE_STAT);
+#endif
+		/* clear TX done interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			TASK_EVENT_PHY_TX_DONE, 0);
+	}
+
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+		/*
+		 * When tcpc detect type-c plug in, then disable
+		 * this interrupt. Because any cc volt changes
+		 * (include pd negotiation) would trigger plug in
+		 * interrupt, frequently plug in interrupt and wakeup
+		 * pd task may cause task starvation or device dead
+		 * (ex.transmit lots SRC_Cap).
+		 *
+		 * When polling disconnect will enable detect type-c
+		 * plug in again.
+		 *
+		 * Clear detect type-c plug in interrupt status.
+		 */
+		IT83XX_USBPD_TCDCR(port) |=
+			(USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
+			 USBPD_REG_PLUG_IN_OUT_DETECT_STAT);
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			PD_EVENT_CC, 0);
+	}
+#endif
 }
 #endif
 
@@ -135,7 +149,8 @@ void intc_cpu_int_group_12(void)
 		espi_vw_interrupt();
 		break;
 #endif
-#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX) || \
+	defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
 	case IT83XX_IRQ_USBPD0:
 		chip_pd_irq(USBPD_PORT_A);
 		break;
@@ -143,7 +158,12 @@ void intc_cpu_int_group_12(void)
 	case IT83XX_IRQ_USBPD1:
 		chip_pd_irq(USBPD_PORT_B);
 		break;
-#endif /* CONFIG_USB_PD_TCPM_ITE83XX */
+#endif
+#ifdef CONFIG_USB_PD_TCPM_ITE83XX_V2
+	case IT83XX_IRQ_USBPD2:
+		chip_pd_irq(USBPD_PORT_C);
+		break;
+#endif
 #ifdef CONFIG_SPI
 	case IT83XX_IRQ_SPI_SLAVE:
 		spi_slv_int_handler();

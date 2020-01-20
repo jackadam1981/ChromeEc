@@ -489,14 +489,15 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 		ext_timer_start(FREE_EXT_TIMER_L, 0);
 	}
 
-#ifdef CONFIG_USB_PD_TCPM_ITE83XX
-	/*
-	 * Disable integrated pd modules in hibernate for
-	 * better power consumption.
-	 */
-	for (i = 0; i < IT83XX_USBPD_PHY_PORT_COUNT; i++)
-		it83xx_disable_pd_module(i);
-#endif
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX) ||
+		 IS_ENABLED(CONFIG_USB_PD_TCPM_ITE83XX_V2)) {
+		/*
+		 * Disable integrated pd modules in hibernate for
+		 * better power consumption.
+		 */
+		for (i = 0; i < IT83XX_USBPD_PHY_PORT_COUNT; i++)
+			it83xx_disable_pd_module(i);
+	}
 
 	for (i = 0; i < hibernate_wake_pins_used; ++i)
 		gpio_enable_interrupt(hibernate_wake_pins[i]);
@@ -636,7 +637,8 @@ DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
 
 #endif /* CONFIG_CMD_IDLE_STATS */
 
-#if defined(CONFIG_USB_PD_TCPM_ITE83XX)
+#if defined(CONFIG_USB_PD_TCPM_ITE83XX) || \
+	defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
 /**
  * Print the pd_need_awake global variable which controls access to deep sleep
  * mode in the idle task.
