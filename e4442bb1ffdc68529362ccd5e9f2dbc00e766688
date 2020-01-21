@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "6c4994de_cbd8f5ae",
+        "filename": "board/damu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T20:43:08Z",
+      "side": 1,
+      "message": "Alrighty, that\u0027s fair.",
+      "parentUuid": "aac1872a_a8fe9573",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5a4fb46_687c9096",
         "filename": "common/charger.c",
         "patchSetId": 2
@@ -151,6 +169,24 @@
       "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ba6a07_361700fe",
+        "filename": "common/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T20:43:08Z",
+      "side": 1,
+      "message": "If you\u0027re planning to switch boards all at once, that\u0027s fine. No need for the tag then.",
+      "parentUuid": "60e4ff05_9a49f805",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
