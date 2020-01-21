@@ -12,6 +12,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 
+#define T_TIMEOUT (35 * MSEC)  /* Detect clock low timeout, 25~35 ms */
+
 static int started;
 
 /* TODO: respect i2c_port->kbps setting */
@@ -94,17 +96,49 @@ static void i2c_bitbang_unwedge(const struct i2c_port_t *i2c_port)
 		CPRINTS("I2C%d unwedge failed, SCL still low", i2c_port->port);
 }
 
-static void i2c_stop_cond(const struct i2c_port_t *i2c_port)
+/* wait until given gpio became high, or timeout */
+static int i2c_wait_gpio(enum gpio_signal signal, int expected, int timeout_us)
 {
 	int i;
 
+	/*
+	 * get_time()/timestamp_expired() seems to have performance impact here,
+	 * So use raw loop instead.
+	 */
+	for (i = 0; i < timeout_us; i++) {
+		if (gpio_get_level(signal) == expected)
+			return EC_SUCCESS;
+		udelay(1);
+	}
+	return EC_ERROR_TIMEOUT;
+}
+
+static int clock_stretching(const struct i2c_port_t *i2c_port)
+{
+	int err;
+
+	i2c_delay();
+	err = i2c_wait_gpio(i2c_port->scl, 1, T_TIMEOUT);
+
+	if (err)
+		CPRINTS("bitbang CLK timeout");
+	return err;
+}
+
+static int i2c_stop_cond(const struct i2c_port_t *i2c_port)
+{
+	int err;
+
 	if (!started)
-		return;
+		return EC_SUCCESS;
 
 	gpio_set_level(i2c_port->sda, 0);
 	i2c_delay();
 
 	gpio_set_level(i2c_port->scl, 1);
+	err = clock_stretching(i2c_port);
+	if (err)
+		return err;
 
 	/*
 	 * SMBus 3.0, 4.2.5
@@ -114,45 +148,15 @@ static void i2c_stop_cond(const struct i2c_port_t *i2c_port)
 	 *  hold SMBCLK low for at least tTIMEOUT,MAX in an attempt to reset the
 	 *  SMBus interface of all of the devices on the bus.
 	 */
-	for (i = 0; i < 7000; i++) {
-		if (gpio_get_level(i2c_port->scl))
-			break;
-		i2c_delay();
-	}
-	i2c_delay();
-
-	/* SCL is high, set SDA from 0 to 1 */
 	gpio_set_level(i2c_port->sda, 1);
 	i2c_delay();
+	err = i2c_wait_gpio(i2c_port->sda, 1, T_TIMEOUT);
+	if (err)
+		CPRINTS("bitbang DAT timeout");
 
-	started = 0;
-}
-
-static int clock_stretching(const struct i2c_port_t *i2c_port)
-{
-	int i;
-
+	/* Delay tBUF(=4.7us) between STOP and next START */
 	i2c_delay();
-	/* 5us * 7000 iterations ~= 35ms */
-	for (i = 0; i < 7000; i++) {
-		if (gpio_get_level(i2c_port->scl))
-			return 0;
-		i2c_delay();
-	}
-
-	/*
-	 * SMBus 3.0, Note 3
-	 * Devices participating in a transfer can abort the transfer in
-	 * progress and release the bus when any single clock low interval
-	 * exceeds the value of tTIMEOUT,MIN(=25ms).
-	 * After the master in a transaction detects this condition, it must
-	 * generate a stop condition within or after the current data byte in
-	 * the transfer process.
-	 */
-	i2c_stop_cond(i2c_port);
-	CPRINTS("clock low timeout");
-
-	return EC_ERROR_TIMEOUT;
+	return err;
 }
 
 static int i2c_start_cond(const struct i2c_port_t *i2c_port)
@@ -167,7 +171,6 @@ static int i2c_start_cond(const struct i2c_port_t *i2c_port)
 		err = clock_stretching(i2c_port);
 		if (err)
 			return err;
-		i2c_delay();
 
 		if (gpio_get_level(i2c_port->sda) == 0) {
 			CPRINTS("%s: arbitration lost", __func__);
@@ -187,7 +190,7 @@ static int i2c_start_cond(const struct i2c_port_t *i2c_port)
 	gpio_set_level(i2c_port->scl, 0);
 	started = 1;
 
-	return 0;
+	return EC_SUCCESS;
 }
 
 static int i2c_write_bit(const struct i2c_port_t *i2c_port, int bit)
@@ -201,7 +204,6 @@ static int i2c_write_bit(const struct i2c_port_t *i2c_port, int bit)
 	err = clock_stretching(i2c_port);
 	if (err)
 		return err;
-	i2c_delay();
 
 	if (bit && gpio_get_level(i2c_port->sda) == 0) {
 		CPRINTS("%s: arbitration lost", __func__);
@@ -211,7 +213,7 @@ static int i2c_write_bit(const struct i2c_port_t *i2c_port, int bit)
 
 	gpio_set_level(i2c_port->scl, 0);
 
-	return 0;
+	return EC_SUCCESS;
 }
 
 static int i2c_read_bit(const struct i2c_port_t *i2c_port, int *bit)
@@ -225,12 +227,11 @@ static int i2c_read_bit(const struct i2c_port_t *i2c_port, int *bit)
 	err = clock_stretching(i2c_port);
 	if (err)
 		return err;
-	i2c_delay();
 	*bit = gpio_get_level(i2c_port->sda);
 
 	gpio_set_level(i2c_port->scl, 0);
 
-	return 0;
+	return EC_SUCCESS;
 }
 
 static int i2c_write_byte(const struct i2c_port_t *i2c_port, uint8_t byte)
@@ -247,18 +248,11 @@ static int i2c_write_byte(const struct i2c_port_t *i2c_port, uint8_t byte)
 	if (err)
 		return err;
 
-	if (nack) {
-		/*
-		 * The slave device detects an invalid command or invalid data.
-		 * In this case the slave device must NACK the received byte.
-		 * The master upon detection of this condition must generate a
-		 * STOP condition and retry the transaction
-		 */
-		i2c_stop_cond(i2c_port);
+	if (nack)
 		/* return EC_ERROR_BUSY to indicate i2c_xfer() to retry */
 		return EC_ERROR_BUSY;
-	}
-	return 0;
+
+	return EC_SUCCESS;
 }
 
 static int i2c_read_byte(const struct i2c_port_t *i2c_port, uint8_t *byte,
@@ -326,12 +320,24 @@ static int i2c_bitbang_xfer(const struct i2c_port_t *i2c_port,
 	}
 
 	if (flags & I2C_XFER_STOP)
-		i2c_stop_cond(i2c_port);
+		err = i2c_stop_cond(i2c_port);
 
 exit:
+	/*
+	 * SMBus 3.0, Note 3
+	 * Devices participating in a transfer can abort the transfer in
+	 * progress and release the bus when any single clock low interval
+	 * exceeds the value of tTIMEOUT,MIN(=25ms).
+	 * After the master in a transaction detects this condition, it must
+	 * generate a stop condition within or after the current data byte in
+	 * the transfer process.
+	 */
 	if (err) {
-		i2c_bitbang_unwedge(i2c_port);
+		if (i2c_stop_cond(i2c_port))
+			/* slave holding the bus, try force unwedge */
+			i2c_bitbang_unwedge(i2c_port);
 		started = 0;
+		CPRINTS("bitbang error: %d", err);
 	}
 	return err;
 }
@@ -346,9 +352,9 @@ int bitbang_start_cond(const struct i2c_port_t *i2c_port)
 	return i2c_start_cond(i2c_port);
 }
 
-void bitbang_stop_cond(const struct i2c_port_t *i2c_port)
+int bitbang_stop_cond(const struct i2c_port_t *i2c_port)
 {
-	i2c_stop_cond(i2c_port);
+	return i2c_stop_cond(i2c_port);
 }
 
 int bitbang_write_byte(const struct i2c_port_t *i2c_port, uint8_t byte)

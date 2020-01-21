@@ -155,10 +155,6 @@ static int test_i2c_write(void)
 		{0, 1},
 		{1, 1},
 		{0, 1},
-		/* stop */
-		{0, 0},
-		{1, 0},
-		{1, 1},
 	};
 	int i, ret;
 
