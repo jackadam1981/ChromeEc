@@ -7,10 +7,14 @@
 
 #include <string.h>
 
+#include "battery.h"
+#include "charge_manager.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "task.h"
 #include "tcpm.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -368,6 +372,113 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 		     hc_usb_pd_control,
 		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
+
+#ifdef CONFIG_HOSTCMD_FLASHPD
+/* TCPMv2 does not have VDM states hence return VDM_STATE_DONE */
+__overridable enum vdm_states pd_get_vdm_state(int port)
+{
+	return VDM_STATE_DONE;
+}
+
+static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_fw_update *p = args->params;
+	int port = p->port;
+	const uint32_t *data = &(p->size) + 1;
+	int i, size, rv = EC_RES_SUCCESS;
+	timestamp_t timeout;
+
+	if (port >= board_get_usb_pd_port_count())
+		return EC_RES_INVALID_PARAM;
+
+	if (p->size + sizeof(*p) > args->params_size)
+		return EC_RES_INVALID_PARAM;
+
+	/*
+	 * Do not allow PD firmware update if no battery and this port
+	 * is sinking power, because we will lose power.
+	 */
+#if defined(CONFIG_BATTERY) && \
+	(defined(CONFIG_BATTERY_PRESENT_CUSTOM) ||   \
+	 defined(CONFIG_BATTERY_PRESENT_GPIO))
+	if (battery_is_present() != BP_YES &&
+	    charge_manager_get_active_charge_port() == port)
+		return EC_RES_UNAVAILABLE;
+#endif
+
+	/*
+	 * Busy still with a VDM that host likely generated.  1 deep VDM queue
+	 * so just return for retry logic on host side to deal with.
+	 */
+	if (pd_get_vdm_state(port) > VDM_STATE_DONE)
+		return EC_RES_BUSY;
+
+	switch (p->cmd) {
+	case USB_PD_FW_REBOOT:
+		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_REBOOT, NULL, 0);
+
+		/*
+		 * Return immediately to free pending i2c bus.	Host needs to
+		 * manage this delay.
+		 */
+		return EC_RES_SUCCESS;
+
+	case USB_PD_FW_FLASH_ERASE:
+		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE, NULL, 0);
+
+		/*
+		 * Return immediately.	Host needs to manage delays here which
+		 * can be as long as 1.2 seconds on 64KB RW flash.
+		 */
+		return EC_RES_SUCCESS;
+
+	case USB_PD_FW_ERASE_SIG:
+		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_ERASE_SIG, NULL, 0);
+		timeout.val = get_time().val + 500*MSEC;
+		break;
+
+	case USB_PD_FW_FLASH_WRITE:
+		/* Data size must be a multiple of 4 */
+		if (!p->size || p->size % 4)
+			return EC_RES_INVALID_PARAM;
+
+		size = p->size / 4;
+		for (i = 0; i < size; i += VDO_MAX_SIZE - 1) {
+			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_WRITE,
+				    data + i, MIN(size - i, VDO_MAX_SIZE - 1));
+			timeout.val = get_time().val + 500*MSEC;
+
+			/* Wait until VDM is done */
+			while ((pd_get_vdm_state(port) > VDM_STATE_DONE) &&
+			       (get_time().val < timeout.val))
+				task_wait_event(10*MSEC);
+
+			if (pd_get_vdm_state(port) > VDM_STATE_DONE)
+				return EC_RES_TIMEOUT;
+		}
+		return EC_RES_SUCCESS;
+
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+
+	/* Wait until VDM is done or timeout */
+	while (pd_get_vdm_state(port) > VDM_STATE_DONE &&
+		get_time().val < timeout.val)
+		task_wait_event(50*MSEC);
+
+	if (pd_get_vdm_state(port) > VDM_STATE_DONE ||
+	    pd_get_vdm_state(port) == VDM_STATE_ERR_TMOUT)
+		rv = EC_RES_TIMEOUT;
+	else if (pd_get_vdm_state(port) < VDM_STATE_DONE)
+		rv = EC_RES_ERROR;
+
+	return rv;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE,
+		     hc_remote_flash,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_HOSTCMD_FLASHPD */
 #endif /* CONFIG_COMMON_RUNTIME */
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
