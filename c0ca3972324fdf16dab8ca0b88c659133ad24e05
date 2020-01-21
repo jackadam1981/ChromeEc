@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6338fa1a_f6771006",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-01-21T15:47:51Z",
+      "side": 1,
+      "message": "See https://cs.corp.google.com/chromeos_public/src/platform/ec/common/thermal.c?q\u003dEC_TEMP_THRESH_WARN\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026l\u003d167\u0026dr\u003dC\n\nAt EC_TEMP_THRESH_WARN, the AP is throttled. At EC_TEMP_THRESH_HIGH, the AP is throttled more aggressively to attempt to keep it from getting even hotter. At EC_TEMP_THRESH_HALT, the AP is forced to shut down immediately.\n\nThese temperatures should be defined by the platform builder, but if one is disabled by setting it the same as or higher than the next one, there should be a comment in the code that this is deliberate.",
+      "parentUuid": "60f9930a_4c26582d",
+      "range": {
+        "startLine": 333,
+        "startChar": 3,
+        "endLine": 333,
+        "endChar": 36
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8715d060_5ffd4cb5",
         "filename": "board/dratini/board.c",
         "patchSetId": 4
