@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e09aeec_7097dfc8",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-21T18:08:51Z",
+      "side": 1,
+      "message": "Since the port can\u0027t be both 0 and 1 at the same time, this might make more sense as an if-statement, if (port \u003d\u003d UBS_PD_PORT_TCPC_0) ...",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 411,
+        "endChar": 0
+      },
+      "revId": "dd438d61591e60e39e870e74a0443bdbc7cec248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
