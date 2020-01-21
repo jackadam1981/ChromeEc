@@ -27,6 +27,7 @@ USB_SPI_CONFIG(ccd_usb_spi, USB_IFACE_SPI, USB_EP_SPI);
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
 static enum device_state state = DEVICE_STATE_INIT;
+static uint32_t ccd_state_flags_want;
 
 /* Flags for CCD blocking */
 enum ccd_block_flags {
@@ -78,25 +79,6 @@ int uart_tx_is_connected(int uart)
 	return !uart_bitbang_is_enabled() && GREAD(PINMUX, DIOB5_SEL);
 }
 
-/**
- * Connect the UART pin to the given signal
- *
- * @param uart		the uart peripheral number
- * @param signal	the pinmux selector value for the gpio or peripheral
- *			function. 0 to disable the output.
- */
-static void uart_select_tx(int uart, int signal)
-{
-	if (uart == UART_AP) {
-		GWRITE(PINMUX, DIOA7_SEL, signal);
-	} else {
-		GWRITE(PINMUX, DIOB5_SEL, signal);
-
-		/* Remove the pulldown when we are driving the signal */
-		GWRITE_FIELD(PINMUX, DIOB5_CTL, PD, signal ? 0 : 1);
-	}
-}
-
 void uartn_tx_connect(int uart)
 {
 	/*
@@ -104,32 +86,30 @@ void uartn_tx_connect(int uart)
 	 * something to transmit) and servo is disconnected (we won't be
 	 * drive-fighting with servo).
 	 */
-	if (servo_is_connected() || !ccd_ext_is_enabled())
+	if (!ccd_uart_is_allowed(uart, 1))
 		return;
 
 	if (uart == UART_AP) {
-		if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
-			return;
-
-		if (!ap_uart_is_on())
-			return;
-
-		uart_select_tx(UART_AP, GC_PINMUX_UART1_TX_SEL);
+		GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_UART1_TX_SEL);
 	} else {
-		if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
-			return;
+		GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_UART2_TX_SEL);
 
-		if (!ec_is_on())
-			return;
-
-		uart_select_tx(UART_EC, GC_PINMUX_UART2_TX_SEL);
+		/* Remove the pulldown when we are driving the signal */
+		GWRITE_FIELD(PINMUX, DIOB5_CTL, PD, 0);
 	}
 }
 
 void uartn_tx_disconnect(int uart)
 {
 	/* Disconnect the TX pin from UART peripheral */
-	uart_select_tx(uart, 0);
+	if (uart == UART_AP) {
+		GWRITE(PINMUX, DIOA7_SEL, 0);
+	} else {
+		GWRITE(PINMUX, DIOB5_SEL, 0);
+
+		/* Set up the pulldown */
+		GWRITE_FIELD(PINMUX, DIOB5_CTL, PD, 1);
+	}
 }
 
 /*
@@ -167,6 +147,18 @@ enum ccd_state_flag {
 int console_is_restricted(void)
 {
 	return !ccd_is_cap_enabled(CCD_CAP_GSC_RESTRICTED_CONSOLE);
+}
+
+int ccd_uart_is_allowed(int uart, int is_tx)
+{
+	uint32_t flag_mask = 0;
+
+	if (uart == UART_EC)
+		flag_mask = is_tx ? CCD_ENABLE_UART_EC_TX : CCD_ENABLE_UART_EC;
+	else if (uart == UART_AP)
+		flag_mask = is_tx ? CCD_ENABLE_UART_AP_TX : CCD_ENABLE_UART_AP;
+
+	return !!(ccd_state_flags_want & flag_mask);
 }
 
 /**
@@ -299,6 +291,8 @@ static void ccd_state_change_hook(void)
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
 	if (!(flags_want & CCD_ENABLE_UART_EC))
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
+
+	ccd_state_flags_want = flags_want;  /* Keep the original 'flags_want' */
 
 	/* If no change, we're done */
 	if (flags_now == flags_want)

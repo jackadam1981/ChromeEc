@@ -276,6 +276,15 @@ void servo_ignore(int enable);
 void ccd_update_state(void);
 
 /**
+ * Return if the uart TX (or RX) is allowed.
+ *
+ * @param uart: should be either UART_AP or UART_EC.
+ * @param is_tx: 1 stands for UART TX, and 0 for UART RX
+ * @return 1 if it is allowed, and 0 otherwise.
+ */
+int ccd_uart_is_allowed(int uart, int is_tx);
+
+/**
  * Return the state of the BOARD_USE_PLT_RST board strap option.
  *
  * @return 0 if option is not set, !=0 if option set.
