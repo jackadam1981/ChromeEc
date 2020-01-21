@@ -117,7 +117,7 @@ static void i2c_stop_cond(const struct i2c_port_t *i2c_port)
 	for (i = 0; i < 7000; i++) {
 		if (gpio_get_level(i2c_port->scl))
 			break;
-		i2c_delay();
+		usleep(1);
 	}
 	i2c_delay();
 
@@ -130,14 +130,15 @@ static void i2c_stop_cond(const struct i2c_port_t *i2c_port)
 
 static int clock_stretching(const struct i2c_port_t *i2c_port)
 {
-	int i;
+	timestamp_t ts = get_time();
+
+	ts.val += 35 * MSEC;
 
 	i2c_delay();
-	/* 5us * 7000 iterations ~= 35ms */
-	for (i = 0; i < 7000; i++) {
+	while (!timestamp_expired(ts, NULL)) {
 		if (gpio_get_level(i2c_port->scl))
 			return 0;
-		i2c_delay();
+		usleep(1);
 	}
 
 	/*
@@ -167,7 +168,6 @@ static int i2c_start_cond(const struct i2c_port_t *i2c_port)
 		err = clock_stretching(i2c_port);
 		if (err)
 			return err;
-		i2c_delay();
 
 		if (gpio_get_level(i2c_port->sda) == 0) {
 			CPRINTS("%s: arbitration lost", __func__);
@@ -201,7 +201,6 @@ static int i2c_write_bit(const struct i2c_port_t *i2c_port, int bit)
 	err = clock_stretching(i2c_port);
 	if (err)
 		return err;
-	i2c_delay();
 
 	if (bit && gpio_get_level(i2c_port->sda) == 0) {
 		CPRINTS("%s: arbitration lost", __func__);
@@ -225,7 +224,6 @@ static int i2c_read_bit(const struct i2c_port_t *i2c_port, int *bit)
 	err = clock_stretching(i2c_port);
 	if (err)
 		return err;
-	i2c_delay();
 	*bit = gpio_get_level(i2c_port->sda);
 
 	gpio_set_level(i2c_port->scl, 0);
