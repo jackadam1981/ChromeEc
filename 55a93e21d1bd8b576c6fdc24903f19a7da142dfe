@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceca7f78_9a83ad42",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T20:34:31Z",
+      "side": 1,
+      "message": "use enum",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 5
+      },
+      "revId": "55a93e21d1bd8b576c6fdc24903f19a7da142dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0273b43b_cc4366b5",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T20:34:31Z",
+      "side": 1,
+      "message": "also an error if ov isn\u0027t a valid enum value",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 10
+      },
+      "revId": "55a93e21d1bd8b576c6fdc24903f19a7da142dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "792f7876_f0dabb02",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T20:34:31Z",
+      "side": 1,
+      "message": "use enum value please",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "55a93e21d1bd8b576c6fdc24903f19a7da142dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7c5a7a_29ff42df",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T20:34:31Z",
+      "side": 1,
+      "message": "is this 0|1|2 apply to trysrc? If so should it be in the ifdef? If it doesn\u0027t should we add the 0|1|2 for trysrc?",
+      "range": {
+        "startLine": 272,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 10
+      },
+      "revId": "55a93e21d1bd8b576c6fdc24903f19a7da142dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ed7a20_a3db791a",
+        "filename": "test/usb_pd_console.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T20:34:31Z",
+      "side": 1,
+      "message": "let\u0027s use enum values",
+      "range": {
+        "startLine": 183,
+        "startChar": 33,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "55a93e21d1bd8b576c6fdc24903f19a7da142dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
