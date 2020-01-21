@@ -1,0 +1,466 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f162940_365a3d4d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "\u003e \"disabe\" is a possible misspelling of \"disable\".\n\nPlease fix.",
+      "parentUuid": "499778dd_73d62e9e",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 50
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1621da5_da3f2d6b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment here and at pd_disabled_mask declaration that point to each other.\n\nYou might want to prefix all of these with PD_DISABLED_\nlike\n\nPD_DISABLED_NO_CONNECTION\nPD_DISABLED_BY_POLICY\n\nso it match with the pd_disabled variable (and you know they go together)",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "809abdcf_d0c2686b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "from your uses, I don\u0027t actually think we need the mutex since we are never read/modify/write.\n\nWe either read only or write only, and serializing those two operations isn\u0027t really needed (since it is a race who goes first anyway)\n\nMight be worth adding that a mutex isn\u0027t needed as a comment though. Also making it volatile would ensure the the compiler always reads and writes when we expect it to (and doesn\u0027t perform any optimizations)",
+      "range": {
+        "startLine": 294,
+        "startChar": 20,
+        "endLine": 294,
+        "endChar": 44
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d71bf2_848fdfcb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "nit: can we use bool here?",
+      "range": {
+        "startLine": 296,
+        "startChar": 7,
+        "endLine": 296,
+        "endChar": 19
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a739fb12_d3362913",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "nit: can\u0027t we print this out with 0x%08x and hash as a uint32_t* (then we don\u0027t have to cast it either on line 530)\n\nsimilar to tc_print_dev_info",
+      "range": {
+        "startLine": 515,
+        "startChar": 34,
+        "endLine": 516,
+        "endChar": 25
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d578ff_936ef456",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "take in the enum type please",
+      "range": {
+        "startLine": 684,
+        "startChar": 25,
+        "endLine": 684,
+        "endChar": 28
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e886f85e_b1f90008",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "good comment! Can you move the locking to within the IS_ENABLED branch since we don\u0027t need to lock otherwise",
+      "range": {
+        "startLine": 686,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 39
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93142716_1acba8f3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "use the enum type",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 3
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d4c05b_8a561ba9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "nit: maybe\n\nStart with allowing PD by policy and host or console command can disabled PD by policy later\n\n\n-----\n\nAlso, If the state machine is pause then started again, shouldn\u0027t we keep the host/console disable state?\n\nThis code as written might clear it. Since the variable are static and the state we want is the 0-value for both variables, maybe we omit these line completely? Thoughts?",
+      "range": {
+        "startLine": 992,
+        "startChar": 4,
+        "endLine": 993,
+        "endChar": 12
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a44abe79_b983a438",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "what do you think about refactoring this to have a local\n\nbool new_pd_try_src_state;\n\nand we use similar logic expect apply it to new_pd_try_src_state variable\n\nthen at the end, we call tc_enable_try_src(new_pd_try_src_state)\n\n\nSince this function should really only set once. Also the way it is written there is a subtle read/modify/write issue that isn\u0027t being protected with a mutex",
+      "range": {
+        "startLine": 1157,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 38
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7196d0a_28dacb0a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2053,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "can we put this behind a inline fucntion\n\nstatic bool is_try_src_enabled(int port)\n{\n   return IS_ENABLED(CONFIG_USB_PD_TRY_SRC) \u0026\u0026\n\t\t\t\t((pd_try_src_override \u003d\u003d TRY_SRC_OVERRIDE_ON) ||\n\t\t\t\t(pd_try_src_override \u003d\u003d TRY_SRC_NO_OVERRIDE \u0026\u0026 pd_try_src);\n\n}",
+      "range": {
+        "startLine": 2050,
+        "startChar": 7,
+        "endLine": 2053,
+        "endChar": 15
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3c45dd_28e94c7a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2344,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "it is subtle that we are using the internal knowledge of tc_enable_pd flags here.\n\nCan we re-write this as\n\nif (tc[port].timeout \u0026\u0026 get_time().val \u003e tc[port].timeout) {\n\ttc_enable_pd(port, 1);\n\ttc[port].timeout \u003d 0;\n}\n\nif (!tc_get_pd_enabled(port) {\n     return;\n}",
+      "range": {
+        "startLine": 2330,
+        "startChar": 1,
+        "endLine": 2344,
+        "endChar": 2
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a279c3_6e112bd6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2351,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "let\u0027s add a comment that says we are ignoring hard resets while we are resetting our power supply. Should we also clear the flag here?",
+      "range": {
+        "startLine": 2350,
+        "startChar": 2,
+        "endLine": 2351,
+        "endChar": 10
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2904af2_8e4442b7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "should we be returning after this line?",
+      "range": {
+        "startLine": 2357,
+        "startChar": 2,
+        "endLine": 2357,
+        "endChar": 34
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a166a7a_d458722a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "this is already taken care of in TC_UNATTACHED_SNK_entry() right?",
+      "range": {
+        "startLine": 2385,
+        "startChar": 2,
+        "endLine": 2385,
+        "endChar": 24
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecfce0f0_fc0a91bc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2848,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "same comment as above",
+      "range": {
+        "startLine": 2848,
+        "startChar": 1,
+        "endLine": 2848,
+        "endChar": 56
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4073f2e0_cd91246b",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "use enum type",
+      "range": {
+        "startLine": 352,
+        "startChar": 25,
+        "endLine": 352,
+        "endChar": 28
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539e954d_a6d69d9a",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "\u003e \"contols\" is a possible misspelling of \"controls\".\n\nPlease fix.",
+      "parentUuid": "d88f4161_2be28fb1",
+      "range": {
+        "startLine": 359,
+        "startChar": 28,
+        "endLine": 359,
+        "endChar": 35
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe70707_52d4e964",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "use enum type",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 3
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "809c366c_93c645d1",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T19:12:32Z",
+      "side": 1,
+      "message": "I don\u0027t this this function addition belongs in this CL",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 0
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
