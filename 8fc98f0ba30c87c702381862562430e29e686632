@@ -373,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "9362bf95_d7dda9da",
+        "filename": "board/treeya/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T21:04:09Z",
+      "side": 1,
+      "message": "Hey Lu, thank you for putting this prototype together.\n\nUltimately it doesn\u0027t look it is going to work. I updated b/137567681 with reasoning (but main from this CL).\n\nLooks like we are going to need to keep using sku_id to differentiate the different boards. Otherwise we need to solve the HWID problem (of getting this 2nd-sourced sensor information into the HWID) in addition to the start up concerns.",
+      "parentUuid": "1238e50f_4e83f494",
+      "revId": "8fc98f0ba30c87c702381862562430e29e686632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f6cf4b_0d6aa0cf",
         "filename": "board/treeya/board.c",
         "patchSetId": 3
