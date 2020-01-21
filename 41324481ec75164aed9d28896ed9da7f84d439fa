@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7604e062_8a704e69",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-01-21T22:20:55Z",
+      "side": 1,
+      "message": "I  find  the structure of this a little confusing. Port 1 has one  setting and port 0 needs something else. So only 1 tcpc write is done on any given call.\n\nIf (port \u003d\u003d USB_PD_PORT_TCPC_0)\n        rv \u003d tcpc_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);\nelse if (port \u003d\u003d USB_PD_PORT_TCPC_1)\n        rv \u003d tcpc_write(port, PS8XXX_REG_MUX_USB_C2SS_HS_THRESHOLD, 0x80);\nelse\n        rv \u003d EC_SUCCESS;\n\nreturn rv;",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 34
+      },
+      "revId": "41324481ec75164aed9d28896ed9da7f84d439fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
