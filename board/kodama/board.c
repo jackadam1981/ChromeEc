@@ -229,6 +229,8 @@ static void board_init(void)
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
 	}
 
+	rt946x_enable_charge_eoc(0);
+
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 
