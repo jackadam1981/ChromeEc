@@ -340,6 +340,18 @@ struct pd_policy {
 	int amode_idx;
 };
 
+/* PD states for Vendor Defined Messages */
+enum vdm_states {
+	VDM_STATE_ERR_BUSY = -3,
+	VDM_STATE_ERR_SEND = -2,
+	VDM_STATE_ERR_TMOUT = -1,
+	VDM_STATE_DONE = 0,
+	/* Anything >0 represents an active state */
+	VDM_STATE_READY = 1,
+	VDM_STATE_BUSY = 2,
+	VDM_STATE_WAIT_RSP_BUSY = 3,
+};
+
 /*
  * VDO : Vendor Defined Message Object
  * VDM object is minimum of VDM header + 6 additional data objects.
@@ -915,6 +927,14 @@ enum pd_data_role pd_get_data_role(int port);
  * @param port Port number from which to get power role
  */
 enum pd_power_role pd_get_power_role(int port);
+
+/*
+ * Get curent PD state of Vendor Defined Messages
+ *
+ * @param port Port number from which VDM state is needed
+ * @return Current VDM state
+ */
+__override_proto enum vdm_states pd_get_vdm_state(int port);
 
 /* Control Message type */
 enum pd_ctrl_msg_type {

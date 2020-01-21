@@ -140,3 +140,8 @@ __override void pd_dev_get_rw_hash(int port, uint16_t *dev_id,
 				uint8_t *rw_hash, uint32_t *current_image)
 {
 }
+
+__override void pd_send_vdm(int port, uint32_t vid, int cmd,
+				const uint32_t *data, int count)
+{
+}
