@@ -22,6 +22,30 @@
       "revId": "bb268eb7dfa8458cf5240131f1f000fca49dfe99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3658f20_5fc74ba0",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T20:10:39Z",
+      "side": 1,
+      "message": "Yeah, I wanted to leave the name as it is in the spec, but I can add a comment.",
+      "parentUuid": "761c4441_8f933396",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "bb268eb7dfa8458cf5240131f1f000fca49dfe99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
