@@ -46,6 +46,30 @@
       "revId": "f4e723fb67f562d95cf298e60a0c21e5adad0967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edad76c_388bd6ce",
+        "filename": "core/riscv-rv32i/include/math.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T17:26:32Z",
+      "side": 1,
+      "message": "If buildall works, then we should be okay",
+      "parentUuid": "aa5f0d95_065146d6",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "f4e723fb67f562d95cf298e60a0c21e5adad0967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
