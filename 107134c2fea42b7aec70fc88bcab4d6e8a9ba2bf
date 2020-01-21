@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "05da058b_26d4a0af",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T22:40:57Z",
+      "side": 1,
+      "message": "We can.  It doesn\u0027t need it, but if we\u0027re concerned about the function feeling left out :)",
+      "parentUuid": "853c0068_bbf3ca03",
+      "range": {
+        "startLine": 315,
+        "startChar": 31,
+        "endLine": 315,
+        "endChar": 11
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c902f82_851e20c7",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -140,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "60c3951e_5febd960",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T22:40:57Z",
+      "side": 1,
+      "message": "We can.  Changing the usage would require dipping into 7 board files and 2 common files, so I\"m not sure if that should be in the initial structure creation or a separate CL",
+      "parentUuid": "8def444a_fd8b8f8d",
+      "range": {
+        "startLine": 465,
+        "startChar": 4,
+        "endLine": 465,
+        "endChar": 28
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64d8053a_31ed8f0d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
@@ -151,6 +199,30 @@
       "writtenOn": "2020-01-21T22:19:20Z",
       "side": 1,
       "message": "I think we should just use the same priority. This just means that this is going to go a little sooner, which I don\u0027t think it going to cause issues.\n\nJust my opinion, you\u0027re call",
+      "range": {
+        "startLine": 926,
+        "startChar": 12,
+        "endLine": 926,
+        "endChar": 54
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6872d0_c697f9a6",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T22:40:57Z",
+      "side": 1,
+      "message": "As a general philosophy, I\u0027m trying to avoid any functional changes in the initial refactor.  The idea being that if some board\u0027s behavior changes, people don\u0027t have to dig through a 1700 line CL to see how it affected their board.",
+      "parentUuid": "64d8053a_31ed8f0d",
       "range": {
         "startLine": 926,
         "startChar": 12,
@@ -186,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "a4d47946_33f6d142",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T22:40:57Z",
+      "side": 1,
+      "message": "On the one hand, that would clean up all the hard-coded 0\u0027s.  On the other, I\u0027m hesitant to confuse things by having a global constant with the same name as a variable for the driver functions... perhaps a define to 0 instead?",
+      "parentUuid": "94d02207_bbeaeecb",
+      "range": {
+        "startLine": 1082,
+        "startChar": 19,
+        "endLine": 1082,
+        "endChar": 20
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47879869_256aee9b",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 3
@@ -197,6 +293,30 @@
       "writtenOn": "2020-01-21T22:19:20Z",
       "side": 1,
       "message": "why didn\u0027t think change to rt946x_ prefix?",
+      "range": {
+        "startLine": 665,
+        "startChar": 4,
+        "endLine": 665,
+        "endChar": 33
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61896a6d_d6e14054",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T22:40:57Z",
+      "side": 1,
+      "message": "This function is defined in a charger driver for 2 chips, and in board files for 3 boards.  So it was less of a straightforward candidate for integrating into the charger driver",
+      "parentUuid": "47879869_256aee9b",
       "range": {
         "startLine": 665,
         "startChar": 4,
