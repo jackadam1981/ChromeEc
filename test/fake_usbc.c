@@ -157,6 +157,11 @@ bool pd_capable(int port)
 	return true;
 }
 
+void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
+		int count)
+{
+}
+
 #ifndef CONFIG_TEST_USB_PE_SM
 enum idh_ptype get_usb_pd_mux_cable_type(int port)
 {
