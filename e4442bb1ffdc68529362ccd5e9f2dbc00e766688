@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d46f13f2_25981b71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T07:49:19Z",
+      "side": 1,
+      "message": "Maybe add a short bit about the new config_* option you added.",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad0a40a_e2044fe0",
+        "filename": "board/damu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T07:49:19Z",
+      "side": 1,
+      "message": "\u0027port\u0027?",
+      "range": {
+        "startLine": 136,
+        "startChar": 46,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac2f15eb_b5e73a7b",
+        "filename": "board/damu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T07:49:19Z",
+      "side": 1,
+      "message": "I think it\u0027s possible for the charger\u0027s init() function to be called with the wrong i2c port since the hook priority is higher than this one. Should we explicitly call the charger init() function after determining the right port?",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a4fb46_687c9096",
+        "filename": "common/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T07:49:19Z",
+      "side": 1,
+      "message": "should this be tagged with __overridable ? Or is the plan to replace this all at once?",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57be9b0e_4a2588d9",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T07:49:19Z",
+      "side": 1,
+      "message": "We\u0027ll probably revisit this once we have more of the logic in deciding what to do with primary chargers vs secondary chargers. Running in a loop doesn\u0027t sound too bad, but perhaps if it\u0027s some action that needs to be only done on one versus the other, maybe we could set a flag and check during the hook if the charger is the primary or secondary. Does that make sense?",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 25
+      },
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
