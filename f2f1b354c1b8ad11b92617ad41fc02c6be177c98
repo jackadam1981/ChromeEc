@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1c32be5_c9de13b7",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T17:14:27Z",
+      "side": 0,
+      "message": "I don\u0027t see how this CL actually affects behavior\n\nsince disable_sleep(SLEEP_MASK_USB_PD)\n\nshould make\n\nDEEP_SLEEP_ALLOWED return false\n\nand the condition `if (DEEP_SLEEP_ALLOWED \u0026\u0026 clock_allow_low_power_idle())` in it83xx/clock.c should return false before and after this CL.\n\nCan you help me understand why this CL affects behavior? Is there a race condition somewhere?\n\n\nOr is the only bug fix needed on line 576? I think that one line change fixes the problem and nothing else is needed.",
+      "range": {
+        "startLine": 582,
+        "startChar": 2,
+        "endLine": 582,
+        "endChar": 35
+      },
+      "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
