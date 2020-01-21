@@ -22,6 +22,30 @@
       "revId": "b640d91cff142e9c44cc260e5ada71af7d090ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8275f6fc_b6ef5c78",
+        "filename": "common/usb_pd_host_cmd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-21T23:27:00Z",
+      "side": 1,
+      "message": "okay.\nInitially I was anticipating more data in this file, looks like we dont have enough data to put in this file. I will remove this entire file and add add it in usb_pd.h",
+      "parentUuid": "be458f26_5e19a28a",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "b640d91cff142e9c44cc260e5ada71af7d090ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
