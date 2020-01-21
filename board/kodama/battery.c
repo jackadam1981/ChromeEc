@@ -10,6 +10,7 @@
 #include "console.h"
 #include "driver/charger/rt946x.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "power.h"
 #include "timer.h"
 #include "usb_pd.h"
@@ -155,6 +156,13 @@ __override void board_battery_compensate_params(struct batt_params *batt)
 	batt->flags &= ~BATT_FLAG_BAD_ANY;
 }
 
+static void charge_enable_eoc_and_te(void)
+{
+	rt946x_enable_charge_eoc(1);
+	rt946x_enable_charge_termination(1);
+}
+DECLARE_DEFERRED(charge_enable_eoc_and_te);
+
 int charger_profile_override(struct charge_state_data *curr)
 {
 	const struct battery_info *batt_info = battery_get_info();
@@ -183,8 +191,19 @@ int charger_profile_override(struct charge_state_data *curr)
 
 			if (!normal_charge_lock) {
 				normal_charge_lock = 1;
-				rt946x_enable_charge_eoc(1);
-				rt946x_enable_charge_termination(1);
+
+				/*
+				 * b/148045048: When the battery is activated in
+				 * shutdown mode, the battery needs H/W Initialization
+				 * and Cu Deposition Checking in 4.2 second.
+				 * Meanwhile, if the charger EOC function is enabled,
+				 * charger will close/open the charging path repeatedly
+				 * and will pull PMIC's VSYSSNS power. It's a workaround
+				 * to delay 4.5 second to enable charger EOC function.
+				 */
+				hook_call_deferred(
+						&charge_enable_eoc_and_te_data,
+						(4.5 * SECOND));
 			}
 		}
 	}
