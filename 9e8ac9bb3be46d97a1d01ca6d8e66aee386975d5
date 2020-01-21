@@ -22,6 +22,30 @@
       "revId": "9e8ac9bb3be46d97a1d01ca6d8e66aee386975d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253b2d3c_681bf983",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-21T06:09:18Z",
+      "side": 1,
+      "message": "Sorry, I got a little tunnel visioned and missed this. \u0026\u0026 Yes, you\u0027re correct; it\u0027s only servicing bit 14 at the moment.",
+      "parentUuid": "a4717e8f_42fc8f5d",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 5
+      },
+      "revId": "9e8ac9bb3be46d97a1d01ca6d8e66aee386975d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
