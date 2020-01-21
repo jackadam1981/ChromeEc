@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da725757_5cd965dd",
+        "filename": "board/damu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "I bet that we should just set this to 2, and future board version won\u0027t need it and can omit charger_config_complete and CONFIG_CHARGER_RUNTIME_CONFIG",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 13
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d2c74a_7dad1f10",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "honestly, I would move this down to the after 239 to indicate that it only for that shim layer",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f05077_d1a0ee03",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "Should this note move to the header file?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 4
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853c0068_bbf3ca03",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "should this take in the chgnum?",
+      "range": {
+        "startLine": 315,
+        "startChar": 31,
+        "endLine": 315,
+        "endChar": 11
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c902f82_851e20c7",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "let\u0027s use ec_error_list",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 3
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8def444a_fd8b8f8d",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "should we change this to have an out parameter to be consistent with the rest of the driver?",
+      "range": {
+        "startLine": 465,
+        "startChar": 4,
+        "endLine": 465,
+        "endChar": 28
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d8053a_31ed8f0d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "I think we should just use the same priority. This just means that this is going to go a little sooner, which I don\u0027t think it going to cause issues.\n\nJust my opinion, you\u0027re call",
+      "range": {
+        "startLine": 926,
+        "startChar": 12,
+        "endLine": 926,
+        "endChar": 54
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d02207_bbeaeecb",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "for these, what do you think about making a `const int chgnum \u003d 0;` at the top of each function (instead of hard coding 0 in all of the function calls)",
+      "range": {
+        "startLine": 1082,
+        "startChar": 19,
+        "endLine": 1082,
+        "endChar": 20
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47879869_256aee9b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "why didn\u0027t think change to rt946x_ prefix?",
+      "range": {
+        "startLine": 665,
+        "startChar": 4,
+        "endLine": 665,
+        "endChar": 33
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3963f4_c042f122",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-21T22:19:20Z",
+      "side": 1,
+      "message": "Maybe also add a note that the board.c is expected to define this array going forward",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 7
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
