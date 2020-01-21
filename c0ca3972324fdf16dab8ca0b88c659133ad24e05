@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a8a0e40c_74b24361",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-21T15:58:07Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/thermal.c#167",
+      "parentUuid": "6338fa1a_f6771006",
+      "range": {
+        "startLine": 333,
+        "startChar": 3,
+        "endLine": 333,
+        "endChar": 36
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8715d060_5ffd4cb5",
         "filename": "board/dratini/board.c",
         "patchSetId": 4
