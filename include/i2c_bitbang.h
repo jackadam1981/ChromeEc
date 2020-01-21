@@ -15,7 +15,7 @@ extern const unsigned int i2c_bitbang_ports_used;
 /* expose static functions for testing */
 #ifdef TEST_BUILD
 int bitbang_start_cond(const struct i2c_port_t *i2c_port);
-void bitbang_stop_cond(const struct i2c_port_t *i2c_port);
+int bitbang_stop_cond(const struct i2c_port_t *i2c_port);
 int bitbang_write_byte(const struct i2c_port_t *i2c_port, uint8_t byte);
 void bitbang_set_started(int val);
 #endif
