@@ -283,6 +283,7 @@ void mt6370_charger_profile_override(struct charge_state_data *curr)
 
 }
 
+#ifndef BOARD_KODAMA
 static void board_charge_termination(void)
 {
 	static uint8_t te;
@@ -295,6 +296,7 @@ static void board_charge_termination(void)
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
 	     board_charge_termination,
 	     HOOK_PRIO_DEFAULT);
+#endif
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
