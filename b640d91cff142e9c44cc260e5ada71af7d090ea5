@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be458f26_5e19a28a",
+        "filename": "common/usb_pd_host_cmd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-21T23:19:33Z",
+      "side": 1,
+      "message": "This file should probably be under the ./include directory.  There are currently no other header files in the ./common directory.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "b640d91cff142e9c44cc260e5ada71af7d090ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
