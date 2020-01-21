@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9dcc1be_6646d59b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "Is this correct?\n\nFrom the spec, I was under the impression that we\u0027ll always need to use the TBT field specifically when: \n- we are gen 3 capable\n- passive cable is 3.2 gen 2\n\nSo it seems like the above check should be for passive cable !\u003d 3.2 gen2 or board !\u003d gen3 capable",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 52
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f802f162_bea89d67",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "This still doesn\u0027t make much sense.  The field is for USB 3.2 device support, whereas this config indicates PD 3.0",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 53
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c519489c_4efed390",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "Do we need to reference active cable VDO2 for redriver vs. retimer?  Or will that be a part of the active cable CL?",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 27
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbeb4d43_30bb9413",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "The naming on this function seems incorrect.  The name would imply that a return of false indicates the cable can\u0027t do USB4, but in this case the false return indicates we can do USB4 but we need to proceed further in the discovery process to know the cable speed, correct?",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 16
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc14d08_104395ea",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "I\u0027m not certain about the intent here?  The defines make it look like this would be a check on the AMA VDO, but the bitfield being confirmed is the UFP VDO.  Additionally, I don\u0027t see any check on the product type to verify we can use the UFP or AMA VDOs (ex. PDUSB periperhal/hub to use UFP, AMA to use AMA)",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 51
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f7572d_6e4e4139",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "In terms of the code and transitions it makes, this seems like a strange bypass of the existing TBT flow.  What\u0027s the motivation here?  Just to make sure we send Enter_usb fast enough where applicable?  What kind of timing are you seeing at this point (both with cables that enter usb after discover identity, and with cables that need the extra steps)?",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 4
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f0ecfe_d7a54edf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "Are we not planning to do USB4 with any alternate modes then?  Because setting rsize \u003d 0 appears to abruptly stop our usual discover SVIDs/discover Modes/enter mode process so we wouldn\u0027t be able to use TBT or DP alternate modes",
+      "range": {
+        "startLine": 1199,
+        "startChar": 0,
+        "endLine": 1207,
+        "endChar": 11
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83fddc3a_54b4fe99",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t make sense to me.  Why backtrack all the way to discover SVID?  It would make more sense to have the TBT discovery progress normally, and enter USB4 if it makes sense here",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1327,
+        "endChar": 37
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d6ff83_902c6280",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "We\u0027re also required to issue an accept or reject if a port partner sends Enter_USB",
+      "range": {
+        "startLine": 1707,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 51
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc94dfd_ac7eefca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 2840,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "Also sanity check partner rev \u003e\u003d 3.0 since enter_usb is an invalid message to send to a 2.0 partner",
+      "range": {
+        "startLine": 2839,
+        "startChar": 0,
+        "endLine": 2840,
+        "endChar": 9
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0acd0ccf_2c4b77ba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3066,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "This should be sent from one of our READY states.  This part of the loop is not guaranteed to be in a steady state (ex. we could be swapping or in the middle of another AMS which we should not interrupt)",
+      "range": {
+        "startLine": 3065,
+        "startChar": 2,
+        "endLine": 3066,
+        "endChar": 27
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d6b123_7c63d246",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 4709,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "Try to model your new state off the existing ones (ex. PD_STATE_SRC_GET_SINK_CAP).  The state should be set after sending the message, and be the indicator of how to react to an accept or reject message.  We also need to run a SenderResponseTimer after sending the message.",
+      "range": {
+        "startLine": 4709,
+        "startChar": 2,
+        "endLine": 4709,
+        "endChar": 26
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7544bebf_cba3e34e",
+        "filename": "include/config.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 3867,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T14:31:26Z",
+      "side": 1,
+      "message": "Specify which technology Gen 3 is tied to (TBT, I\u0027m guessing?)",
+      "range": {
+        "startLine": 3866,
+        "startChar": 0,
+        "endLine": 3867,
+        "endChar": 39
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
