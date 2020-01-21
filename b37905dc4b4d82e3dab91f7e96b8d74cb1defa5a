@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf773c02_af53053a",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-21T23:55:33Z",
+      "side": 1,
+      "message": "in this case, is it better to return VENDOR_RC_NO_SUCH_SUBCOMMAND to indicate that the functionality is not supported? or is there a difference for AP which of the two cases is true: (a) EC may support EC-EFS2, but cr50 revision is just too old, (b) this device and it\u0027s EC don\u0027t support EC-EFS2. if no difference, let\u0027s use NO_SUCH_SUBCOMMAND.\nsame below.",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 30
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f9fddf_6e5a1e81",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-21T23:55:33Z",
+      "side": 1,
+      "message": "nit: is it _MODE or _FLAG? DD uses _FLAG, I\u0027m fine with either as long as it\u0027s consistent.",
+      "range": {
+        "startLine": 162,
+        "startChar": 25,
+        "endLine": 162,
+        "endChar": 48
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7812f1f3_1b36cd18",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-21T23:55:33Z",
+      "side": 1,
+      "message": "do we also need to explicitly reset ec_efs_ctx.scratch.b.boot_mode to 0xFF or it is guaranteed to happen during reset?",
+      "range": {
+        "startLine": 174,
+        "startChar": 21,
+        "endLine": 174,
+        "endChar": 43
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba36f31e_f5efeb6e",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-21T23:55:33Z",
+      "side": 1,
+      "message": "not useful for external readers. I\u0027d just mention EC EFS2 without any links.",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
