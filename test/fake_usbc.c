@@ -145,3 +145,18 @@ __override void pd_send_vdm(int port, uint32_t vid, int cmd,
 				const uint32_t *data, int count)
 {
 }
+
+int pd_comm_is_enabled(int port)
+{
+	return 0;
+}
+
+int pd_get_partner_data_swap_capable(int port)
+{
+	return false;
+}
+
+int pd_capable(int port)
+{
+	return true;
+}

@@ -34,6 +34,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	/* Do Nothing, but needed for linking */
 }
 
+enum idh_ptype get_usb_pd_mux_cable_type(int port)
+{
+	return IDH_PTYPE_UNDEF;
+}
+
 __maybe_unused static int test_mux_con_dis_as_src(void)
 {
 	/* Update CC lines send state machine event to process */

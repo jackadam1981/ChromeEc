@@ -936,6 +936,61 @@ enum pd_power_role pd_get_power_role(int port);
  */
 __override_proto enum vdm_states pd_get_vdm_state(int port);
 
+/**
+ * Request for VCONN swap
+ *
+ * @param port USB-C Port number
+ */
+void pd_request_vconn_swap(int port);
+
+/**
+ * Get the current CC line states from PD task
+ *
+ * @param port USB-C Port number
+ * @return CC state
+ */
+enum pd_cc_states pd_get_task_cc_state(int port);
+
+/**
+ * Get the current PD state of USB-C port
+ *
+ * @param port USB-C Port number
+ * @return PD state
+ */
+uint8_t pd_get_task_state(int port);
+
+/**
+ * Get the current PD state name of USB-C port
+ *
+ * @param port USB-C Port number
+ * @return Pointer to PD state name
+ */
+const char *pd_get_task_state_name(int port);
+
+/**
+ * Get current VCONN state of USB-C port
+ *
+ * @param port USB-C Port number
+ * @return true if VCONN is on else false
+ */
+bool pd_get_vconn_state(int port);
+
+/**
+ * Check if port partner is dual role power
+ *
+ * @param port USB-C Port number
+ * @return true if partner is dual role power else false
+ */
+bool pd_get_partner_dual_role_power(int port);
+
+/**
+ * Check if port partner is unconstrained power
+ *
+ * @param port USB-C Port number
+ * @return true if partner is unconstrained power else false
+ */
+bool pd_get_partner_unconstr_power(int port);
+
 /* Control Message type */
 enum pd_ctrl_msg_type {
 	/* 0 Reserved */

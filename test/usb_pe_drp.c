@@ -36,6 +36,50 @@ void tc_request_power_swap(int port)
 	/* Do nothing */
 }
 
+void pd_set_dual_role(int port, enum pd_dual_role_states state)
+{
+}
+
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return POLARITY_CC1;
+}
+
+bool pd_get_vconn_state(int port)
+{
+	return false;
+}
+
+bool pd_get_partner_dual_role_power(int port)
+{
+	return false;
+}
+
+uint8_t pd_get_task_state(int port)
+{
+	return 0;
+}
+
+enum pd_cc_states pd_get_task_cc_state(int port)
+{
+	return PD_CC_NONE;
+}
+
+int pd_is_connected(int port)
+{
+	return true;
+}
+
+bool pd_get_partner_unconstr_power(int port)
+{
+	return 0;
+}
+
+const char *pd_get_task_state_name(int port)
+{
+	return NULL;
+}
+
 /**
  * Test section
  */
