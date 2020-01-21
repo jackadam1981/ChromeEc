@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "20e92f8a_ce1fadc4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-21T23:16:12Z",
+      "side": 1,
+      "message": "I agree the function is_cable_usb4_capable() needs a better name.  Maybe \"is_cable_ready_to_enter_usb4()\".  A comment before the function that documented the return values would also help.",
+      "parentUuid": "fbeb4d43_30bb9413",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 16
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acc14d08_104395ea",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
