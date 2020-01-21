@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "761c4441_8f933396",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-21T15:40:09Z",
+      "side": 1,
+      "message": "with the new overloaded registers for RX_BUFFER and TX_BUFFER under v2.0, does it make sense to make it more clear that these are for V1/V2?  I don\u0027t know if there needs to be a name change to specify but at least a comment here would be good",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "bb268eb7dfa8458cf5240131f1f000fca49dfe99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
