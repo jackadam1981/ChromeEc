@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "61806782_0619f440",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T16:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46f13f2_25981b71",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad0a40a_e2044fe0",
         "filename": "board/damu/board.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "89b35054_ed6142c3",
+        "filename": "board/damu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T16:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad0a40a_e2044fe0",
+      "range": {
+        "startLine": 136,
+        "startChar": 46,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac2f15eb_b5e73a7b",
         "filename": "board/damu/board.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2020-01-21T07:49:19Z",
       "side": 1,
       "message": "I think it\u0027s possible for the charger\u0027s init() function to be called with the wrong i2c port since the hook priority is higher than this one. Should we explicitly call the charger init() function after determining the right port?",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac1872a_a8fe9573",
+        "filename": "board/damu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T16:47:08Z",
+      "side": 1,
+      "message": "Possibly?  I\u0027m aiming for functionality to be the same with the previous code, and I\u0027m not certain that previous code was initing the correct port either, since it was still calling the charger init before the ADCs were ready.  I\u0027ll see if I can find someone from damu/jaccuzzi to confirm that suspicion with.",
+      "parentUuid": "ac2f15eb_b5e73a7b",
       "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "60e4ff05_9a49f805",
+        "filename": "common/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T16:47:08Z",
+      "side": 1,
+      "message": "My plan was to create one commit to switch boards over to the new structure, but we could do it a few boards at a time as well.  Jett, any thoughts here?",
+      "parentUuid": "a5a4fb46_687c9096",
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57be9b0e_4a2588d9",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 2
@@ -87,6 +165,30 @@
       "writtenOn": "2020-01-21T07:49:19Z",
       "side": 1,
       "message": "We\u0027ll probably revisit this once we have more of the logic in deciding what to do with primary chargers vs secondary chargers. Running in a loop doesn\u0027t sound too bad, but perhaps if it\u0027s some action that needs to be only done on one versus the other, maybe we could set a flag and check during the hook if the charger is the primary or secondary. Does that make sense?",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 25
+      },
+      "revId": "e4442bb1ffdc68529362ccd5e9f2dbc00e766688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312453a1_f5814b76",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-21T16:47:08Z",
+      "side": 1,
+      "message": "Yes.  If it\u0027s something only the primary charger needs to do, I suppose we could also create a define to indicate the primary charger number.  I\u0027ll have to think about this more as we get a design more solidified for the multiple charger chips.",
+      "parentUuid": "57be9b0e_4a2588d9",
       "range": {
         "startLine": 518,
         "startChar": 0,
