@@ -488,7 +488,7 @@ void all_sys_pgood_check_reboot(void)
 	hook_call_deferred(&check_reboot_deferred_data, 3000 * MSEC);
 }
 
-static void all_sys_pgood_reset_reboot(void)
+void all_sys_pgood_reset_reboot(void)
 {
 	system_in_resume_state = 0;
 }

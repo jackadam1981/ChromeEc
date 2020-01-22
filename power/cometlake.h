@@ -40,5 +40,6 @@ enum power_signal {
 };
 
 void all_sys_pgood_check_reboot(void);
+void all_sys_pgood_reset_reboot(void);
 
 #endif /* __CROS_EC_COMETLAKE_H */
