@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54d1d09d_a71a177f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T20:56:36Z",
+      "side": 1,
+      "message": "In patchset#18, it is replaced with ccd_state_flags_want, which will exclude the case EC-CR50 communication is activated while UART EC TX is not allowed.",
+      "parentUuid": "3f535d43_f23cb448",
+      "range": {
+        "startLine": 379,
+        "startChar": 6,
+        "endLine": 379,
+        "endChar": 35
+      },
+      "revId": "4fba7d5436b0abc6b17cbb6597545e3fa7e0329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41fdc5c0_ce62057a",
         "filename": "chip/g/usart.c",
         "patchSetId": 15
