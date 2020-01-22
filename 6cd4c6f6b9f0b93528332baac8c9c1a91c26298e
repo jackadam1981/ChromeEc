@@ -22,6 +22,30 @@
       "revId": "6cd4c6f6b9f0b93528332baac8c9c1a91c26298e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c23aff_bdf6a574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-01-22T02:13:19Z",
+      "side": 1,
+      "message": "Yes, I tested this change on both N8 and RISC-V core chips.",
+      "parentUuid": "b7fa360d_e42ffcad",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "6cd4c6f6b9f0b93528332baac8c9c1a91c26298e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
