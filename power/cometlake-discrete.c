@@ -194,6 +194,12 @@ static void shutdown_s5_rails(void)
 #endif
 }
 
+/*
+ * Flags that we're forcing a shutdown to G3, skipping typical pause in S5.
+ * This gets reset when in POWER_G3 state.
+ */
+static uint8_t forcing_shutdown;
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
@@ -202,19 +208,10 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	shutdown_s0_rails();
 	/* S3 is automatic based on SLP_S3 driving memory rails */
 	shutdown_s5_rails();
+	forcing_shutdown = 1;
 }
 
-void chipset_handle_espi_reset_assert(void)
-{
-	/*
-	 * If eSPI_Reset# pin is asserted without SLP_SUS# being asserted, then
-	 * it means that there is an unexpected power loss (global reset
-	 * event). In this case, check if shutdown was being forced by pressing
-	 * power button. If yes, release power button.
-	 */
-	if ((power_get_signals() & IN_PGOOD_ALL_CORE))
-		power_button_pch_release();
-}
+void chipset_handle_espi_reset_assert(void) {}
 
 enum power_state chipset_force_g3(void)
 {
@@ -344,6 +341,16 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S0S3:
 		shutdown_s0_rails();
+		break;
+
+	case POWER_S5:
+		/* Don't linger in S5 if forcing shutdown. */
+		if (forcing_shutdown)
+			return POWER_G3;
+		break;
+
+	case POWER_G3:
+		forcing_shutdown = 0;
 		break;
 
 	default:
