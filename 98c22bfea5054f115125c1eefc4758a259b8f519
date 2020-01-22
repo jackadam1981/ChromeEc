@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d00a596a_ee85b1c9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9dcc1be_6646d59b",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 52
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f802f162_bea89d67",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c4d30429_6f97bcfe",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f802f162_bea89d67",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 53
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c519489c_4efed390",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -68,6 +116,30 @@
       "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a838405d_2ebbd127",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c519489c_4efed390",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 27
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "3d2efbc1_5e5ded4e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbeb4d43_30bb9413",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 16
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acc14d08_104395ea",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "907db2e7_4a615444",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc14d08_104395ea",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 51
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84f7572d_6e4e4139",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -152,6 +272,30 @@
       "writtenOn": "2020-01-21T14:31:26Z",
       "side": 1,
       "message": "In terms of the code and transitions it makes, this seems like a strange bypass of the existing TBT flow.  What\u0027s the motivation here?  Just to make sure we send Enter_usb fast enough where applicable?  What kind of timing are you seeing at this point (both with cables that enter usb after discover identity, and with cables that need the extra steps)?",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 4
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a45a9f_cccaa1a9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Since we know that the device is USB4 capable, we skip checking for a thunderbolt compatible device and only check for a thunderbolt compatible cable Ref:fig 5-1 USB Type-C Cable and connector specification.\n \nWe don\u0027t have Revision 3.0 cable yet. So all the cables that I have tested go through thunderbolt flow. I am yet to check on the timing part.\n\nWill be adding data reset and timing check in a separate CL",
+      "parentUuid": "84f7572d_6e4e4139",
       "range": {
         "startLine": 674,
         "startChar": 0,
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "e8cd849d_27062e0e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "To exit from USB4 mode and enter into TBT/DP mode, the port sends a data reset command (will be implementing it in a separate CL) and then enters a different alternate. Reference: Section 5.4.4 USB Type-C Cable and Connector specification.\n\nAlso, for TBT and DP, we need to send discover SVID SOP and discover mode SOP which isn\u0027t a part of USB4 PD flow. So the flow should be revised if we want to enter either modes.",
+      "parentUuid": "31f0ecfe_d7a54edf",
+      "range": {
+        "startLine": 1199,
+        "startChar": 0,
+        "endLine": 1207,
+        "endChar": 11
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83fddc3a_54b4fe99",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -198,6 +366,30 @@
       "writtenOn": "2020-01-21T14:31:26Z",
       "side": 1,
       "message": "This doesn\u0027t make sense to me.  Why backtrack all the way to discover SVID?  It would make more sense to have the TBT discovery progress normally, and enter USB4 if it makes sense here",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1327,
+        "endChar": 37
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e336bb_967b9fa0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "The USB4 flow doesn\u0027t include sending Discover SVID SOP and discover mode SOP. (We directly query for discover SVID SOP\u0027 and discover mode SOP\u0027) so going back all the way to discover SVID.",
+      "parentUuid": "83fddc3a_54b4fe99",
       "range": {
         "startLine": 1325,
         "startChar": 0,
@@ -233,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "effe318f_80ab1d20",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d6ff83_902c6280",
+      "range": {
+        "startLine": 1707,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 51
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efc94dfd_ac7eefca",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 27
@@ -244,6 +460,30 @@
       "writtenOn": "2020-01-21T14:31:26Z",
       "side": 1,
       "message": "Also sanity check partner rev \u003e\u003d 3.0 since enter_usb is an invalid message to send to a 2.0 partner",
+      "range": {
+        "startLine": 2839,
+        "startChar": 0,
+        "endLine": 2840,
+        "endChar": 9
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a451b2a_dde69931",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 2840,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Adding this check before enabling USB4 mode",
+      "parentUuid": "efc94dfd_ac7eefca",
       "range": {
         "startLine": 2839,
         "startChar": 0,
@@ -279,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "84ca1896_dce3fbf4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3066,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acd0ccf_2c4b77ba",
+      "range": {
+        "startLine": 3065,
+        "startChar": 2,
+        "endLine": 3066,
+        "endChar": 27
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6d6b123_7c63d246",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 27
@@ -302,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "d6aef4ab_f7c1afea",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 4709,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6d6b123_7c63d246",
+      "range": {
+        "startLine": 4709,
+        "startChar": 2,
+        "endLine": 4709,
+        "endChar": 26
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7544bebf_cba3e34e",
         "filename": "include/config.h",
         "patchSetId": 27
@@ -322,6 +610,30 @@
       "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82cb74d_7fb2ff84",
+        "filename": "include/config.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 3867,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7544bebf_cba3e34e",
+      "range": {
+        "startLine": 3866,
+        "startChar": 0,
+        "endLine": 3867,
+        "endChar": 39
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
