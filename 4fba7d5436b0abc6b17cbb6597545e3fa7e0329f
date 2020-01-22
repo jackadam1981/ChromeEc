@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f535d43_f23cb448",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T01:25:50Z",
+      "side": 1,
+      "message": "The condition should filter out the case when UART_EC TX is enabled by EC-CR50 communication packet mode.",
+      "range": {
+        "startLine": 379,
+        "startChar": 6,
+        "endLine": 379,
+        "endChar": 35
+      },
+      "revId": "4fba7d5436b0abc6b17cbb6597545e3fa7e0329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41fdc5c0_ce62057a",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T01:25:50Z",
+      "side": 1,
+      "message": "This should cover all the cases that CCD_ENABLE_UART_EC_TX gets disabled as in ccd_state_change_hook() in board/cr50/rdd.c.",
+      "range": {
+        "startLine": 148,
+        "startChar": 6,
+        "endLine": 148,
+        "endChar": 47
+      },
+      "revId": "4fba7d5436b0abc6b17cbb6597545e3fa7e0329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4286eb56_0b25d399",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T01:25:50Z",
+      "side": 1,
+      "message": "This should cover all the cases that CCD_ENABLE_UART_EC gets disabled as in ccd_state_change_hook() in chip/g/rdd.c.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 50
+      },
+      "revId": "4fba7d5436b0abc6b17cbb6597545e3fa7e0329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
