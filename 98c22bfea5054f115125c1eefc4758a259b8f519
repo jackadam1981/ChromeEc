@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "02854e39_0e0ee325",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T21:43:10Z",
+      "side": 1,
+      "message": "In the interest of keeping the code flow and PD traces understandable though, I\u0027d prefer to not jump around in ways that will be difficult to follow.  If we can still get to Enter_USB within tEnterUSB while sending the packets we\u0027d need for TBT, then that would be easier for future developers to understand.  If we can\u0027t make it in tEnterUSB with the SOP packets in the flow, then we could consider cutting them out.  Does that make sense?",
+      "parentUuid": "54a45a9f_cccaa1a9",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 4
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f0ecfe_d7a54edf",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -355,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "4b848543_5a6e3ca8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T21:43:10Z",
+      "side": 1,
+      "message": "Ah, I\u0027d misread that section of the spec.  So we only support some alternate modes when in USB4 and that excludes TBT/DP?",
+      "parentUuid": "e8cd849d_27062e0e",
+      "range": {
+        "startLine": 1199,
+        "startChar": 0,
+        "endLine": 1207,
+        "endChar": 11
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83fddc3a_54b4fe99",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -390,6 +438,30 @@
       "side": 1,
       "message": "The USB4 flow doesn\u0027t include sending Discover SVID SOP and discover mode SOP. (We directly query for discover SVID SOP\u0027 and discover mode SOP\u0027) so going back all the way to discover SVID.",
       "parentUuid": "83fddc3a_54b4fe99",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1327,
+        "endChar": 37
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ddb9ea_baa4ace9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T21:43:10Z",
+      "side": 1,
+      "message": "In terms of code flow, I\u0027d prefer we not backtrack unless we need to in order to meet timing requirements",
+      "parentUuid": "f5e336bb_967b9fa0",
       "range": {
         "startLine": 1325,
         "startChar": 0,
