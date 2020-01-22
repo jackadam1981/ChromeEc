@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "186cdd3d_d52cb41c",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-22T18:22:21Z",
+      "side": 1,
+      "message": "Is the format of this tag consistent across boards or unique to each board that supports it? Are the other 28 (?) bits used for anything?",
+      "range": {
+        "startLine": 590,
+        "startChar": 3,
+        "endLine": 591,
+        "endChar": 28
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599dbe32_fd19591d",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-22T18:22:21Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to reuse names for variables and enum tags.",
+      "range": {
+        "startLine": 607,
+        "startChar": 15,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052089a3_8b720c01",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-22T18:22:21Z",
+      "side": 1,
+      "message": "enum db_type?",
+      "range": {
+        "startLine": 607,
+        "startChar": 7,
+        "endLine": 607,
+        "endChar": 14
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22fc876a_77bb9e06",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-22T18:22:21Z",
+      "side": 1,
+      "message": "Should this be declared in a header? Should there be some sort of check or comment to avoid calling it before cbi_init runs?",
+      "range": {
+        "startLine": 609,
+        "startChar": 8,
+        "endLine": 609,
+        "endChar": 20
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3830010e_831dd05d",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-22T18:22:21Z",
+      "side": 1,
+      "message": "Nit: Can this have a more expressive name?",
+      "range": {
+        "startLine": 622,
+        "startChar": 10,
+        "endLine": 622,
+        "endChar": 13
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32daadd7_90c7a01d",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-22T18:22:21Z",
+      "side": 1,
+      "message": "It seems like this would be a better fit for a change that changed tcpc_config during cbi_init, which I assume is coming.",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
