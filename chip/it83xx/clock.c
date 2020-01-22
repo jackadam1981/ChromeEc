@@ -33,6 +33,7 @@
 BUILD_ASSERT(ADC_TIMEOUT_US < SLEEP_SET_HTIMER_DELAY_USEC);
 #endif
 
+int pd_need_awake;
 static timestamp_t sleep_mode_t0;
 static timestamp_t sleep_mode_t1;
 static int idle_doze_cnt;
@@ -407,13 +408,29 @@ static void clock_htimer_enable(void)
 
 static int clock_allow_low_power_idle(void)
 {
+	/*
+	 * TCPC Rx is enabled, avoiding miss messages from partner, we don't
+	 * go to sleep mode.
+	 */
+	if (pd_need_awake)
+		return 0;
+
+	/*
+	 * Avoiding using low frequency clock run the same count as awaken in
+	 * sleep mode, so don't go to sleep mode before timer reload count.
+	 */
 	if (!(IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) & BIT(0)))
 		return 0;
 
+	/* If timer interrupt status is set, don't go to sleep mode. */
 	if (*et_ctrl_regs[EVENT_EXT_TIMER].isr &
 		et_ctrl_regs[EVENT_EXT_TIMER].mask)
 		return 0;
 
+	/*
+	 * If timer is less than 250us to expire, then we don't go to sleep
+	 * mode.
+	 */
 #ifdef IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 	if (EVENT_TIMER_COUNT_TO_US(ext_observation_reg_read(EVENT_EXT_TIMER)) <
 #else
@@ -422,11 +439,17 @@ static int clock_allow_low_power_idle(void)
 		SLEEP_SET_HTIMER_DELAY_USEC)
 		return 0;
 
+	/*
+	 * We calculate 32bit free clock overflow counts for 64bit value,
+	 * if clock almost reach overflow, we don't go to sleep mode for
+	 * avoiding miss overflow count.
+	 */
 	sleep_mode_t0 = get_time();
 	if ((sleep_mode_t0.le.lo > (0xffffffff - SLEEP_FTIMER_SKIP_USEC)) ||
 		(sleep_mode_t0.le.lo < SLEEP_FTIMER_SKIP_USEC))
 		return 0;
 
+	/* If we are waked up by console, then keep awake at least 5s. */
 	if (sleep_mode_t0.val < console_expire_time.val)
 		return 0;
 
