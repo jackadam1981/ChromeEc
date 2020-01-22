@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81495014_c1d66815",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-22T03:17:53Z",
+      "side": 1,
+      "message": "Please never put build phase in comments.\nYou can say\n\n for revision X (X should be a numeric number as hw rev)\n\nOr just say \"for incoming build\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "65242ba95d6f6e96b357588a929096eeffd60368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
