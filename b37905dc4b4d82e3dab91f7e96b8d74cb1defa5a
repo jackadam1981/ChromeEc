@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92e321a5_728c3e28",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T00:30:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf773c02_af53053a",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 30
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8f9fddf_6e5a1e81",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-21T23:55:33Z",
       "side": 1,
       "message": "nit: is it _MODE or _FLAG? DD uses _FLAG, I\u0027m fine with either as long as it\u0027s consistent.",
+      "range": {
+        "startLine": 162,
+        "startChar": 25,
+        "endLine": 162,
+        "endChar": 48
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34bd41e_1d2e6aa4",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T00:30:57Z",
+      "side": 1,
+      "message": "Ack. Per doc, the command name is VENDOR_CC_GET_BOOT_FLAG. Missed the most recent update.\nBut, still the design doc describes this with two expressions \u0027Flags\u0027 and \u0027Mood\u0027.\nThis is how I understand the design description: There are two kinds boot flags \"NO_BOOT (Bit 1)\" and \"RECOVERY (BIT 0)\". A combination of these two bits is a mode, and there are four kinds of boot_mode.\n\ndnojiri@, would you confirm if my understanding is correct? can we consolidate these expressions?",
+      "parentUuid": "e8f9fddf_6e5a1e81",
       "range": {
         "startLine": 162,
         "startChar": 25,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f0f58dd2_45c8cbe3",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T00:30:57Z",
+      "side": 1,
+      "message": "It is guaranteed to happen during reset by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1961145.\n\nboard/cr50/board.c, assert_ec_reset() will call ec_efs_reset(), which changes boot_mode.",
+      "parentUuid": "7812f1f3_1b36cd18",
+      "range": {
+        "startLine": 174,
+        "startChar": 21,
+        "endLine": 174,
+        "endChar": 43
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba36f31e_f5efeb6e",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-21T23:55:33Z",
       "side": 1,
       "message": "not useful for external readers. I\u0027d just mention EC EFS2 without any links.",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a2ea5c_88f138c8",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T00:30:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba36f31e_f5efeb6e",
       "range": {
         "startLine": 147,
         "startChar": 10,
