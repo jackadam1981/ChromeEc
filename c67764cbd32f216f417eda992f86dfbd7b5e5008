@@ -22,6 +22,30 @@
       "revId": "c67764cbd32f216f417eda992f86dfbd7b5e5008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a133e9d2_96a42dbe",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-22T01:42:27Z",
+      "side": 1,
+      "message": "Removing this. Also I am converting uartn_tx_connect() and uartn_tx_disconnect() into static.",
+      "parentUuid": "a5240af6_64101a1c",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "c67764cbd32f216f417eda992f86dfbd7b5e5008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
