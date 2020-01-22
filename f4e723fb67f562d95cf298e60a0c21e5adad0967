@@ -70,6 +70,30 @@
       "revId": "f4e723fb67f562d95cf298e60a0c21e5adad0967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b14fa4d_13d42ff2",
+        "filename": "core/riscv-rv32i/include/math.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-01-22T02:12:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6edad76c_388bd6ce",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "f4e723fb67f562d95cf298e60a0c21e5adad0967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
