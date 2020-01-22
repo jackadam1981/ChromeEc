@@ -235,7 +235,7 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 		 * Set to "0" when passive cable plug
 		 */
 		if (cable_resp.lsrx_comm == UNIDIR_LSRX_COMM &&
-		   (get_usb_pd_mux_cable_type(port) & IDH_PTYPE_ACABLE))
+		   (get_usb_pd_cable_type(port) & IDH_PTYPE_ACABLE))
 			set_retimer_con |= BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
 
 		/*
@@ -243,7 +243,7 @@ static int retimer_set_state(int port, mux_state_t mux_state)
 		 * 0 - Passive cable
 		 * 1 - Active cable
 		 */
-		if (get_usb_pd_mux_cable_type(port) == IDH_PTYPE_ACABLE)
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
 		/*
