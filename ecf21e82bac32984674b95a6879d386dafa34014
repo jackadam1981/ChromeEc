@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "547d775d_6fed6dc9",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-22T23:17:22Z",
+      "side": 1,
+      "message": "Still haven\u0027t gotten the dynamic spi stuff to work. Since we have flash_ap support, it will be easy to update everyone to using dynamic spi later.\n\nHowever we still need to send a dut control to power the AP SPI flash, so we might as well set the SPI mode there too.",
+      "parentUuid": "cc65876a_e107a989",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 31
+      },
+      "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ace7fd3a_d953cc93",
         "filename": "board/c2d2/board.c",
         "patchSetId": 10
@@ -69,6 +93,30 @@
       "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d1a178_66205c4b",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-22T23:17:22Z",
+      "side": 1,
+      "message": "After talking offline, we decided that turning off the level shifters while we are draining and measuring the Vref via ADC will prevent any leak paths. Done",
+      "parentUuid": "ace7fd3a_d953cc93",
+      "range": {
+        "startLine": 764,
+        "startChar": 12,
+        "endLine": 764,
+        "endChar": 26
+      },
+      "revId": "ecf21e82bac32984674b95a6879d386dafa34014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

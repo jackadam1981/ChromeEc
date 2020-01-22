@@ -22,6 +22,30 @@
       "revId": "5c201f6e94c82f0aab3151a67361ae746e0841f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e50ff5e_5d1f5286",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-22T23:17:22Z",
+      "side": 1,
+      "message": "We are using mode0 now",
+      "parentUuid": "d42cfed7_52a5c673",
+      "range": {
+        "startLine": 559,
+        "startChar": 8,
+        "endLine": 559,
+        "endChar": 23
+      },
+      "revId": "5c201f6e94c82f0aab3151a67361ae746e0841f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
