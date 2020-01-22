@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3003758d_1d9efc85",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-01-22T01:06:41Z",
+      "side": 1,
+      "message": "From the /common/thermal.c, EC_TEMP_THRESH_HIGH will trigger throttle_ap, but i didn\u0027t see any define for CONFIG_CHIPSET_CAN_THROTTLE (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/throttle_ap.c#53). At EC_TEMP_THRESH_WARN will issue EC_HOST_EVENT_THROTTLE_START and EC_HOST_EVENT_THROTTLE_STOP event. Does coreboot response those events?",
+      "parentUuid": "b0e6cf81_50441a22",
+      "range": {
+        "startLine": 333,
+        "startChar": 3,
+        "endLine": 333,
+        "endChar": 36
+      },
+      "revId": "c0ca3972324fdf16dab8ca0b88c659133ad24e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8715d060_5ffd4cb5",
         "filename": "board/dratini/board.c",
         "patchSetId": 4
