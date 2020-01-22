@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3625dc2_f624879c",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-01-22T08:53:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2f6bfd_fb9978d1",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 11
+      },
+      "revId": "5c4aafcd443143faa2182d4259645c34c54fa8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec9bc6ea_7ac90bf0",
         "filename": "chip/it83xx/clock.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-21T17:14:27Z",
       "side": 1,
       "message": "I don\u0027t think we need this console command. We can always use the rw command if we really need to. (I can see how this would have been helpful for development, but I don\u0027t think we need to keep this long term)",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 6
+      },
+      "revId": "5c4aafcd443143faa2182d4259645c34c54fa8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96979140_38592654",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-01-22T08:53:57Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "ec9bc6ea_7ac90bf0",
       "range": {
         "startLine": 639,
         "startChar": 0,

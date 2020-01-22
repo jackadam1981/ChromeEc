@@ -22,6 +22,30 @@
       "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "121a2b45_ab7e257e",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-01-22T08:53:57Z",
+      "side": 0,
+      "message": "Q:Can you help me understand why this CL affects behavior? Is there a race condition somewhere?\nA:Ok, because set_state() function in usb_pd_prtocol.c check if port partner is pd capable or not via receiving SRC_Cap or GoodCRC, and then enable (not pd capable) or disable (pd capable) the SLEEP_MASK_USB_PD again. This means that it83xx_tcpm_set_rx_enable() setting SLEEP_MASK_USB_PD value will be overwritten. So I add another global variable for sleep mode via checking rx enable or not, if SLEEP_MASK_USB_PD and pd_need_awake both allow turning off pd module clock then we can go to sleep mode.  \n\n\nQ:Or is the only bug fix needed on line 576? I think that one line change fixes the problem and nothing else is needed.\nA:No, we need fix both enable/disable sleep mode and line 576.\nOnly fix line 576, the SLEEP_MASK_USB_PD will be overwritten by set_state(), then TCPC still miss messages from partner.",
+      "parentUuid": "c1c32be5_c9de13b7",
+      "range": {
+        "startLine": 582,
+        "startChar": 2,
+        "endLine": 582,
+        "endChar": 35
+      },
+      "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
