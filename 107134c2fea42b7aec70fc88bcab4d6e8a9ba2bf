@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e73592e_e8d479c6",
+        "filename": "board/damu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Amstan@, any guidance on which default would be better?  And do you know if the existing charger init code is functioning correctly?  Since it runs before the ADC init, I\u0027m not clear on whether the current code works",
+      "parentUuid": "da725757_5cd965dd",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 13
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95d2c74a_7dad1f10",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b75943ea_201d65c2",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d2c74a_7dad1f10",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9f05077_d1a0ee03",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48b2d38_99942e0f",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f05077_d1a0ee03",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 4
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "60ed43f1_a3f5175d",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05da058b_26d4a0af",
+      "range": {
+        "startLine": 315,
+        "startChar": 31,
+        "endLine": 315,
+        "endChar": 11
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c902f82_851e20c7",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -138,6 +234,30 @@
       "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62cf7be1_9c1de40f",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c902f82_851e20c7",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 3
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "d61120b6_59073539",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "I\u0027ll make this a follow-up CL on this stack.  It should be done though, especially as I\u0027ve noticed in the course of adding enum returns that one driver actually isn\u0027t actually returning the vbus voltage?",
+      "parentUuid": "60c3951e_5febd960",
+      "range": {
+        "startLine": 465,
+        "startChar": 4,
+        "endLine": 465,
+        "endChar": 28
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d8053a_31ed8f0d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
@@ -232,6 +376,30 @@
       "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef4e649_10e4c9a7",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Not planning to change this, in the interest of avoiding functional changes here",
+      "parentUuid": "dc6872d0_c697f9a6",
+      "range": {
+        "startLine": 926,
+        "startChar": 12,
+        "endLine": 926,
+        "endChar": 54
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "cd5520eb_bc96a175",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Okay, created a define which we will use for all references within drivers to chip 0.  If a board uses multiple chargers, then they\u0027ll need to undef the single chip config, which should then generate some nice build errors if their driver is still referencing the hardcoded 0 somewhere.",
+      "parentUuid": "a4d47946_33f6d142",
+      "range": {
+        "startLine": 1082,
+        "startChar": 19,
+        "endLine": 1082,
+        "endChar": 20
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47879869_256aee9b",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 3
@@ -329,6 +521,30 @@
     },
     {
       "key": {
+        "uuid": "8dd8de11_efe818ea",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Leaving with charger_ prefix since the function is non-standard",
+      "parentUuid": "61896a6d_d6e14054",
+      "range": {
+        "startLine": 665,
+        "startChar": 4,
+        "endLine": 665,
+        "endChar": 33
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e3963f4_c042f122",
         "filename": "include/charger.h",
         "patchSetId": 3
@@ -349,6 +565,30 @@
       "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d384e3ec_a5a5c58e",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-22T18:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3963f4_c042f122",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 7
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
