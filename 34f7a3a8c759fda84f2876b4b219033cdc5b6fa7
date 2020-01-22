@@ -25,6 +25,76 @@
     },
     {
       "key": {
+        "uuid": "e31403a5_a2d05984",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-22T21:02:37Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md\nThe FW_CONFIG field is not shared across boards - each board is free to define FW_CONFIG as it needs.",
+      "parentUuid": "186cdd3d_d52cb41c",
+      "range": {
+        "startLine": 590,
+        "startChar": 3,
+        "endLine": 591,
+        "endChar": 28
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3b4a4a_09d2b57d",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-22T21:02:37Z",
+      "side": 1,
+      "message": "3 bits (8 USB daughter board combos) should be plenty for single board variant.  Each variant can decode the DB_TYPE bits differently if needed. Variants are likely to select different TCPC/PPC chip combos, but once that happens the tcpc_config[] and ppc_ports[] will move into board/volteer/board.c (and the variant board.c)",
+      "range": {
+        "startLine": 601,
+        "startChar": 30,
+        "endLine": 601,
+        "endChar": 34
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cfbb3a8_8ead7aed",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-22T21:02:37Z",
+      "side": 1,
+      "message": "If we intend the FW_CONFIG bit allocation to be shared by all Volteer variants, then we should move these to baseboard.h.\nIf we want to allow each board variant to define it\u0027s own FW_CONFIG bits, then we should move this to board/volteer/board.c\n\nI prefer 1st option (share FW_CONFIG bits) until we\u0027re forced to do something different.",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 0
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "599dbe32_fd19591d",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
