@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "c33568b5_71cf9b88",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T23:50:44Z",
+      "side": 1,
+      "message": "Makes sense. I\u0027ll keep the thunderbolt flow as it is. While implementing the timing check, if I find issues, I can then jump through the flow.",
+      "parentUuid": "02854e39_0e0ee325",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 4
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f0ecfe_d7a54edf",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 27
@@ -391,6 +415,30 @@
       "side": 1,
       "message": "Ah, I\u0027d misread that section of the spec.  So we only support some alternate modes when in USB4 and that excludes TBT/DP?",
       "parentUuid": "e8cd849d_27062e0e",
+      "range": {
+        "startLine": 1199,
+        "startChar": 0,
+        "endLine": 1207,
+        "endChar": 11
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91fda27c_53605e2a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T23:50:44Z",
+      "side": 1,
+      "message": "From my interpretation, to switch out of USB4 to any other mode(tbt, DP) we need a data reset",
+      "parentUuid": "4b848543_5a6e3ca8",
       "range": {
         "startLine": 1199,
         "startChar": 0,
@@ -471,6 +519,30 @@
       "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98404111_e9bbb883",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T23:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ddb9ea_baa4ace9",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1327,
+        "endChar": 37
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -565,6 +637,30 @@
       "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ff262a_06b0d215",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 2840,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-22T23:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a451b2a_dde69931",
+      "range": {
+        "startLine": 2839,
+        "startChar": 0,
+        "endLine": 2840,
+        "endChar": 9
+      },
+      "revId": "98c22bfea5054f115125c1eefc4758a259b8f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
