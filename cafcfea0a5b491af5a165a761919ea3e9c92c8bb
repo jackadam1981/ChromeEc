@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fff50f8_0cd720bb",
+        "filename": "board/puff/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-01-22T22:12:43Z",
+      "side": 1,
+      "message": "OUT_LOW so this is off by default.",
+      "range": {
+        "startLine": 89,
+        "startChar": 42,
+        "endLine": 89,
+        "endChar": 55
+      },
+      "revId": "cafcfea0a5b491af5a165a761919ea3e9c92c8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
