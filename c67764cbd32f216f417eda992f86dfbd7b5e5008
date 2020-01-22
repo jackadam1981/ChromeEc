@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5240af6_64101a1c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-22T01:21:41Z",
+      "side": 1,
+      "message": "If uartn_tx_connect is only called after checking the flags, why do we need to check them again?\n\nIt seems like this whole check is unnecessary. It\u0027s probably left over from our old uart ccd \"connection\" mechanism.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "c67764cbd32f216f417eda992f86dfbd7b5e5008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
