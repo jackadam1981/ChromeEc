@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e471c1a_7fc53c8e",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-01-23T01:00:37Z",
+      "side": 1,
+      "message": "this works, but I think the polling should be significantly faster and/or the logic to force H1_VREF to OFF should be removed.\n\nUse case:\n\n1. Attach to DUT with Z-state support\n2. Use EC console to hibernate (enter Z-state)\n3. Monitor Cr50 console\n4. Hit physical power button to wake system\n\nYou are guaranteed to hit the \"DUT power button held\" condition.  In the meantime, you miss pretty much a full second of H1 boot spew, and there\u0027s a risk of missing more EC console log than necessary (with the current code, up to 1 second of logs after you release the power button).",
+      "range": {
+        "startLine": 746,
+        "startChar": 54,
+        "endLine": 746,
+        "endChar": 60
+      },
+      "revId": "46846ea93766a4cf54fa74b5fb7df46df4645c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
