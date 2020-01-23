@@ -482,7 +482,7 @@ static int zork_c1_set_retimer_mux(int port, mux_state_t mux_state)
 	 * none and error otherwise.
 	 */
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
-		return (mux_state == TYPEC_MUX_NONE)
+		return (mux_state == USB_PD_MUX_NONE)
 			? EC_SUCCESS
 			: EC_ERROR_NOT_POWERED;
 
@@ -547,7 +547,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_retimers) == USBC_PORT_COUNT);
  * to do flip if this is a PS8802 retimer.  I will save the
  * polarity state so we can reproduce it on the mux_get
  */
-static mux_state_t zork_c1_saved_polarity_state = TYPEC_MUX_NONE;
+static mux_state_t zork_c1_saved_polarity_state = USB_PD_MUX_NONE;
 
 static int zork_c1_init_mux(int port)
 {
@@ -560,16 +560,16 @@ static int zork_c1_set_mux(int port, mux_state_t mux_state)
 	if (zork_c1_retimer == C1_RETIMER_UNKNOWN) {
 		int rv;
 
-		rv = zork_c1_set_retimer_mux(port, TYPEC_MUX_NONE);
+		rv = zork_c1_set_retimer_mux(port, USB_PD_MUX_NONE);
 		if (rv)
 			return rv;
 	}
 
 	/* PS8802 requires us not to flip in AMD_FP5 mux */
-	zork_c1_saved_polarity_state = TYPEC_MUX_NONE;
+	zork_c1_saved_polarity_state = USB_PD_MUX_NONE;
 	if (zork_c1_retimer == C1_RETIMER_PS8802) {
-		zork_c1_saved_polarity_state = MUX_POLARITY_INVERTED;
-		mux_state &= ~MUX_POLARITY_INVERTED;
+		zork_c1_saved_polarity_state = USB_PD_MUX_POLARITY_INVERTED;
+		mux_state &= ~USB_PD_MUX_POLARITY_INVERTED;
 	}
 
 	return amd_fp5_usb_mux_driver.set(port, mux_state);
