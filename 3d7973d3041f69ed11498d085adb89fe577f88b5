@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1e9999c_050446cf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-23T18:30:16Z",
+      "side": 1,
+      "message": "usb_rev30_ss?",
+      "range": {
+        "startLine": 239,
+        "startChar": 7,
+        "endLine": 239,
+        "endChar": 14
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb959933_b79610bc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-23T18:30:16Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer braces here for consistency with the previous clause.",
+      "range": {
+        "startLine": 269,
+        "startChar": 7,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59bf7a85_c7b9051f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-23T18:30:16Z",
+      "side": 1,
+      "message": "Can you comment at a high level when this function returns true?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 43
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504c8d8e_828d4d2b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-23T18:30:16Z",
+      "side": 1,
+      "message": "Nit: Weird line break placement",
+      "range": {
+        "startLine": 2842,
+        "startChar": 4,
+        "endLine": 2844,
+        "endChar": 13
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74351d31_ebcf582d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 2858,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-23T18:30:16Z",
+      "side": 1,
+      "message": "Nit: This should fit on one line",
+      "range": {
+        "startLine": 2857,
+        "startChar": 5,
+        "endLine": 2858,
+        "endChar": 26
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf2732b_285c9a4c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 4746,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-01-23T18:30:16Z",
+      "side": 1,
+      "message": "Spelling",
+      "range": {
+        "startLine": 4746,
+        "startChar": 19,
+        "endLine": 4746,
+        "endChar": 22
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
