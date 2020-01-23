@@ -56,11 +56,11 @@ static int ps8802_set_mux(int port, mux_state_t mux_state)
 	if (rv)
 		return rv;
 
-	if (mux_state & MUX_USB_ENABLED)
+	if (mux_state & USB_PD_MUX_USB_ENABLED)
 		val |= PS8802_MODE_USB_ENABLE;
-	if (mux_state & MUX_DP_ENABLED)
+	if (mux_state & USB_PD_MUX_DP_ENABLED)
 		val |= PS8802_MODE_DP_ENABLE;
-	if (mux_state & MUX_POLARITY_INVERTED)
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		val |= PS8802_MODE_FLIP_ENABLE;
 
 	return ps8802_i2c_write(port, PS8802_REG_MODE, val);

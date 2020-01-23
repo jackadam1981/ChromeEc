@@ -136,3 +136,10 @@ enum pd_dual_role_states pd_get_dual_role(int port)
 {
 	return PD_DRP_TOGGLE_ON;
 }
+
+#ifndef CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+bool pd_is_disconnected(int port)
+{
+	return false;
+}
+#endif /* CONFIG_USB_TYPEC_DRP_ACC_TRYSRC */
