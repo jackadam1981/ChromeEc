@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e877776e_772cfea3",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:16Z",
+      "side": 1,
+      "message": "sryz, old debug code.",
+      "parentUuid": "4ce55a46_d6121825",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 13
+      },
+      "revId": "d1a9090a73afe276dfa8379b7d329d5c86b3f5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f72874cb_9e81e141",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
@@ -213,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "5a64f129_f43bfb9b",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bfb6cc5_ad21d492",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 44
+      },
+      "revId": "d1a9090a73afe276dfa8379b7d329d5c86b3f5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f014b16f_702691c1",
         "filename": "board/volteer/gpio.inc",
         "patchSetId": 1
@@ -233,6 +281,30 @@
       "revId": "d1a9090a73afe276dfa8379b7d329d5c86b3f5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b854b552_b5b43ce3",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:16Z",
+      "side": 1,
+      "message": "i\u0027ve verified that asserting USB_C1_RT_RST_ODL resets the chip\nusing gpioset on the EC console.\nby \"verified\", i mean the chip no longer responds to i2cscan\nand comes back after deasserting the GPIO.",
+      "parentUuid": "f014b16f_702691c1",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 68
+      },
+      "revId": "d1a9090a73afe276dfa8379b7d329d5c86b3f5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
