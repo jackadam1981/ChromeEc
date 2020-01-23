@@ -38,6 +38,7 @@
 
 /* Masks for power signals */
 #define IN_POWER_GOOD		POWER_SIGNAL_MASK(SC7180_POWER_GOOD)
+#define IN_SWITCHCAP_PG		POWER_SIGNAL_MASK(SC7180_SWITCHCAP_PG)
 #define IN_AP_RST_ASSERTED	POWER_SIGNAL_MASK(SC7180_AP_RST_ASSERTED)
 
 
@@ -411,7 +412,7 @@ enum power_state power_chipset_init(void)
 		init_power_state = POWER_G3;
 	} else {
 		/* In the SYSJUMP case, we check if the AP is on */
-		if (power_get_signals() & IN_POWER_GOOD) {
+		if (power_has_signals(IN_SWITCHCAP_PG | IN_POWER_GOOD)) {
 			CPRINTS("SOC ON");
 			init_power_state = POWER_S0;
 		} else {
@@ -565,7 +566,7 @@ static uint8_t check_for_power_on_event(void)
 	}
 
 	/* check if system is already ON */
-	if (power_get_signals() & IN_POWER_GOOD) {
+	if (power_has_signals(IN_SWITCHCAP_PG | IN_POWER_GOOD)) {
 		if (ap_off_flag) {
 			CPRINTS("system is on, but EC_RESET_FLAG_AP_OFF is on");
 			return POWER_ON_CANCEL;
