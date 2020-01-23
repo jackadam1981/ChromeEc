@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04d9bfd0_08132cca",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-23T22:51:12Z",
+      "side": 1,
+      "message": "Considering the flow for Rev 2 cables, we will be querying if the cable is thunderbolt capable Rev 2 active cable. In this case, cable_mode_resp.retimer_type gives information about the retiemer type. I am adding a Todo for now and I will modify this in the active cable USB4 flow",
+      "parentUuid": "476e6267_ba400eb2",
+      "range": {
+        "startLine": 267,
+        "startChar": 47,
+        "endLine": 267,
+        "endChar": 59
+      },
+      "revId": "f96ab463f9588c49898decbf13dde0fa9df6492f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bbaaa4b_e6aad5fd",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 30
@@ -45,6 +69,30 @@
       "revId": "f96ab463f9588c49898decbf13dde0fa9df6492f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270c68dc_0c9b3217",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-23T22:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bbaaa4b_e6aad5fd",
+      "range": {
+        "startLine": 307,
+        "startChar": 10,
+        "endLine": 307,
+        "endChar": 22
+      },
+      "revId": "f96ab463f9588c49898decbf13dde0fa9df6492f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
