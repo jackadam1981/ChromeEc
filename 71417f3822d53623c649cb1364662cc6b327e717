@@ -22,6 +22,30 @@
       "revId": "71417f3822d53623c649cb1364662cc6b327e717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc0cafc0_7e29cb71",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-01-23T02:44:44Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a little bit clearer.",
+      "parentUuid": "f7e17f91_6e4afcc6",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 25
+      },
+      "revId": "71417f3822d53623c649cb1364662cc6b327e717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
