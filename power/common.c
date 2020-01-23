@@ -122,6 +122,9 @@ int power_signal_enable_interrupt(enum gpio_signal signal)
 
 int power_signal_is_asserted(const struct power_signal_info *s)
 {
+	if (s->alt_func)
+		return s->alt_func();
+
 	return power_signal_get_level(s->gpio) ==
 		!!(s->flags & POWER_SIGNAL_ACTIVE_STATE);
 }
