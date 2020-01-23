@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70f2a1d9_7e4c2790",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-23T00:42:46Z",
+      "side": 1,
+      "message": "how about?\n2 for SOP\n1 for SOP\u0027 or SOP\u0027\u0027\n0 for ACK",
+      "range": {
+        "startLine": 952,
+        "startChar": 1,
+        "endLine": 955,
+        "endChar": 17
+      },
+      "revId": "3623ec9cb2dcb0ba3ea14f46f77b9cdf01d970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
