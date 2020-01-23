@@ -122,6 +122,9 @@ int power_signal_enable_interrupt(enum gpio_signal signal)
 
 int power_signal_is_asserted(const struct power_signal_info *s)
 {
+	if (s->alt_func)
+		return s->alt_func();
+
 	return power_signal_get_level(s->gpio) ==
 		!!(s->flags & POWER_SIGNAL_ACTIVE_STATE);
 }
@@ -601,7 +604,7 @@ static void power_common_init(void)
 	 */
 	power_update_signals();
 }
-DECLARE_HOOK(HOOK_INIT, power_common_init, HOOK_PRIO_INIT_CHIPSET);
+DECLARE_HOOK(HOOK_INIT, power_common_init, HOOK_PRIO_INIT_ADC + 1);
 
 static void power_lid_change(void)
 {

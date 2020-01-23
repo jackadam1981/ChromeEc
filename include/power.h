@@ -63,6 +63,11 @@ struct power_signal_info {
 	enum gpio_signal gpio;	/* GPIO for signal */
 	uint32_t flags;		/* See POWER_SIGNAL_* macros */
 	const char *name;	/* Name of signal */
+	int (*alt_func)(void); /*
+				* Alternate function to reference for signal
+				* evaluation when it's not a straightforward
+				* high/low comparison.
+				*/
 };
 
 /*

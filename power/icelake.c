@@ -62,11 +62,13 @@ const struct power_signal_info power_signal_list[] = {
 		.gpio = GPIO_PG_EC_DSW_PWROK,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "DSW_DPWROK",
+		.alt_func = &intel_x86_get_pg_ec_dsw_pwrok,
 	},
 	[X86_ALL_SYS_PGOOD] = {
 		.gpio = GPIO_PG_EC_ALL_SYS_PWRGD,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "ALL_SYS_PWRGD",
+		.alt_func = &intel_x86_get_pg_ec_all_sys_pwrgd,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
