@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c562c9fd_939fab36",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-23T17:00:04Z",
+      "side": 1,
+      "message": "is this indicating the software can do, even if it is disabled by CONFIG_USB_PD_DUAL_ROLE not being defined?",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be6dd4d_96a56683",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5886,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-23T17:00:04Z",
+      "side": 1,
+      "message": "For completeness, does it make sense to add LOCATION_FRONT_LEFT and LOCATION_FRONT_RIGHT?",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82268ff3_1f93162e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-23T17:00:04Z",
+      "side": 1,
+      "message": "should you include \"ec_commands.h\" and not rely on the includer to have these available for you?",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
