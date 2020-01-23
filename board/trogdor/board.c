@@ -203,6 +203,10 @@ const struct power_signal_info power_signal_list[] = {
 		GPIO_WARM_RESET_L,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"WARM_RESET_L"},
+	[SC7180_SWITCHCAP_PG] = {
+		GPIO_DA9313_GPIO0,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"SWITCHCAP_PG"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
