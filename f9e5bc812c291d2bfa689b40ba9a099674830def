@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d9514d57_7a29ba1e",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-23T23:55:02Z",
+      "side": 1,
+      "message": "fixed merge conflict",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "f9e5bc812c291d2bfa689b40ba9a099674830def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5d4d8b7_3b869f0a",
         "filename": "test/usb_pe_drp.c",
         "patchSetId": 2
