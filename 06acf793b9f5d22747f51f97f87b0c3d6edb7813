@@ -22,6 +22,30 @@
       "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb13f11_3af2bd83",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-01-23T17:45:04Z",
+      "side": 1,
+      "message": "Right, but the AES and sha tests are global.\nAny other boards (hammer, hatch_fp, nocturne_fp, nucleo-h743zi) that use these tests will need a larger stack.\nThis seems like the test\u0027s issue to ensure stack size, but this is a happy middle ground.",
+      "parentUuid": "4d7dcdd9_970f9257",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
