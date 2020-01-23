@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cdfd819_6a0eca98",
+        "filename": "include/gpio.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T15:35:00Z",
+      "side": 0,
+      "message": "Chancing this definition should not be harmful, I believe. Besides, this config macro is not used in any boards as of Today, as I checked.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "a6f7d01bded9658655ef31fefa41e789c48e9079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

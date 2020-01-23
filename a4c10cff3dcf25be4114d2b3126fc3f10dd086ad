@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9ae62149_48936a41",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T15:35:00Z",
+      "side": 1,
+      "message": "I am reverting the change in this function. Instead I make two new functions, gpio_enable_wakepin()/gpio_disable_wakepin() for quicker wakepin configuration.",
+      "parentUuid": "140bf274_c772021b",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aab5ac44_134a2ee0",
         "filename": "chip/g/gpio.c",
         "patchSetId": 4
