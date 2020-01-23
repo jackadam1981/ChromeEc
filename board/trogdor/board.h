@@ -200,6 +200,7 @@ enum power_signal {
 	SC7180_PMIC_FAULT_L,
 	SC7180_POWER_GOOD,
 	SC7180_WARM_RESET,
+	SC7180_SWITCHCAP_PG,
 	/* Number of power signals */
 	POWER_SIGNAL_COUNT
 };
