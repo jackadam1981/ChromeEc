@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a1fe937_4a1f972c",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-23T22:42:17Z",
+      "side": 1,
+      "message": "chromite.lib isn\u0027t included on labstations. If we want to use this as part of automated testing, I think we will need to use some other library or just plain logging.",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "1b069b47a24c20351adcefa1e87ae1dfd9faf9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
