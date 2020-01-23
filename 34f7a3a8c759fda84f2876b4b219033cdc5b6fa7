@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "986195ad_17e75638",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e31403a5_a2d05984",
+      "range": {
+        "startLine": 590,
+        "startChar": 3,
+        "endLine": 591,
+        "endChar": 28
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb3b4a4a_09d2b57d",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c8227435_044c0dfa",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "my prediction is that there\u0027ll be a variant that will define a few bits for itself from the unused bits but otherwise share the definitions\nwith the baseboard.\n\ni don\u0027t think it\u0027s useful to squeeze this down to 3 bits today.\ntechnically, we already have 9 daughter board types, although\nonly 3 can mate in this slot.\n\ni\u0027m going to prefix everything with USB_DB instead of DB because\nwe might similarly need to identify the audio DB, etc.",
+      "parentUuid": "fb3b4a4a_09d2b57d",
+      "range": {
+        "startLine": 601,
+        "startChar": 30,
+        "endLine": 601,
+        "endChar": 34
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cfbb3a8_8ead7aed",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "069e5e22_46d0596d",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cfbb3a8_8ead7aed",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 0
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +213,54 @@
     },
     {
       "key": {
+        "uuid": "cb804439_7ad58fcb",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "052089a3_8b720c01",
+      "range": {
+        "startLine": 607,
+        "startChar": 7,
+        "endLine": 607,
+        "endChar": 14
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6102f4e_a6058532",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "599dbe32_fd19591d",
+      "range": {
+        "startLine": 607,
+        "startChar": 15,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22fc876a_77bb9e06",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
@@ -161,6 +281,30 @@
       "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472dd0ed_f7c53253",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "yes, added to header.\n\ncbi_init runs in an init hook, so that\u0027s pretty early - before\ngeneral tasks get to run.  an earlier could get into trouble - hopefully the author of init hooks will work out the ordering.",
+      "parentUuid": "22fc876a_77bb9e06",
+      "range": {
+        "startLine": 609,
+        "startChar": 8,
+        "endLine": 609,
+        "endChar": 20
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "07be17e8_0858300e",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3830010e_831dd05d",
+      "range": {
+        "startLine": 622,
+        "startChar": 10,
+        "endLine": 622,
+        "endChar": 13
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32daadd7_90c7a01d",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 1
@@ -207,6 +375,30 @@
       "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4dbcf6d_96547a38",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-01-23T08:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32daadd7_90c7a01d",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "34f7a3a8c759fda84f2876b4b219033cdc5b6fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
