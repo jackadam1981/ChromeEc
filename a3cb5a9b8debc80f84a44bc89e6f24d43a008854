@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30d07d13_29b7dca0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-23T19:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd0395f1_49c25672",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "a3cb5a9b8debc80f84a44bc89e6f24d43a008854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ca8a062_d33a2d38",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f33d2687_1401f996",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-23T19:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca8a062_d33a2d38",
+      "range": {
+        "startLine": 950,
+        "startChar": 3,
+        "endLine": 950,
+        "endChar": 7
+      },
+      "revId": "a3cb5a9b8debc80f84a44bc89e6f24d43a008854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e091946d_5d1fb0a6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "a3cb5a9b8debc80f84a44bc89e6f24d43a008854",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a7a62f_b15a7846",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2245,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-23T19:52:30Z",
+      "side": 1,
+      "message": "It means no response from the cable",
+      "parentUuid": "e091946d_5d1fb0a6",
+      "range": {
+        "startLine": 2241,
+        "startChar": 0,
+        "endLine": 2245,
+        "endChar": 42
+      },
+      "revId": "a3cb5a9b8debc80f84a44bc89e6f24d43a008854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
