@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e17f91_6e4afcc6",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-01-23T01:13:04Z",
+      "side": 1,
+      "message": "I was thinking that since there are only 2 options here (CHARGE_PORT_BARRELJACK and CHARGE_PORT_TYPEC0) that the logic could perhaps be simplified to something like:\n  bool value of GPIO_EN... !\u003d port selected is BJ\n\nbut playing around with the combinations, didn\u0027t get anything that was significantly simpler.\nThe only reason is to try and make the logic more obvious what it is doing.\nYou could consider:\n\n  bj_active \u003d !gpio_get_level(GPIO_EN_PPVAR_BJ_ADP_L);\n  bj_selected \u003d (port \u003d\u003d CHARGE_PORT_BARRELJACK);\n  if (bj_selected !\u003d bj_active)\n     return EC_ERROR_INVAL; // Selected port does not match active port\n\nThis logic may be clearer, if this is indeed the core of what you are checking (the way I read it).",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 25
+      },
+      "revId": "71417f3822d53623c649cb1364662cc6b327e717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
