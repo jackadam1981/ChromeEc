@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d7dcdd9_970f9257",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-23T01:57:21Z",
+      "side": 1,
+      "message": "We probably have enough free SRAM on the FPMCU boards to always use the 4096 stack size?\n\n(There\u0027s a console command to show the amount of available RAM)\n\nIf so, might be simpler to just always use that (we can always change it in the future if we need to save more).",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
