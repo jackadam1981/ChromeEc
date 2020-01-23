@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b27ef72d_9d6c9c57",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-23T17:20:21Z",
+      "side": 1,
+      "message": "Yes, is dual-role data dependent on dual-role power?  In the code, there is no dependency on CONFIG_UBS_PD_DUAL_ROLE in order to call pd_dr_swap()",
+      "parentUuid": "c562c9fd_939fab36",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3be6dd4d_96a56683",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-23T17:00:04Z",
       "side": 1,
       "message": "For completeness, does it make sense to add LOCATION_FRONT_LEFT and LOCATION_FRONT_RIGHT?",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cbb1e0_d94fe550",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5886,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-23T17:20:21Z",
+      "side": 1,
+      "message": "These are intentionally taken straight from power_manager.",
+      "parentUuid": "3be6dd4d_96a56683",
       "revId": "058db528657331342d8b32d6a46623bd891ac819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "058db528657331342d8b32d6a46623bd891ac819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6765e9_47beba5c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-23T17:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82268ff3_1f93162e",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
