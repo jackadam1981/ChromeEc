@@ -155,8 +155,15 @@ static int is_manual_recovery(void)
 
 static bool is_battery_ready(void)
 {
-	/* TODO: Add battery check */
-	return true;
+	int soc;
+	struct batt_params batt;
+
+	if (battery_state_of_charge_abs(&soc)
+				|| soc < CONFIG_SOC_REQUIRED_FOR_RECOVERY)
+		return false;
+
+	battery_get_params(&batt);
+	return batt.flags & BATT_FLAG_BAD_ANY;
 }
 
 __overridable void led_critical(void)
