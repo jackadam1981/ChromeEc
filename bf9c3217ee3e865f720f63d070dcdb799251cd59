@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cf3f95eb_b9941f95",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 1,
+      "message": "http://crrev.com/c/2016093 removes this, per comment at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2006213/2/board/cr50/board.c#569",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abda838_40ef01e2",
         "filename": "chip/g/gpio.c",
         "patchSetId": 2
@@ -46,6 +69,30 @@
       "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62a6070_6171303b",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d8c09c_2888b66d",
+      "range": {
+        "startLine": 143,
+        "startChar": 13,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "c6f2bba5_630d45b2",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 1,
+      "message": "I\u0027m removing this, and bring line 55 and 56 to here.\nWith that, we can have 1:1 mapping between GPIO_HIB_WAKE_\u003ccond\u003e and DIO_WAKE_\u003ccond\u003e.\nParsing can be plainer and readable, imho.",
+      "parentUuid": "92480e0c_8067a75a",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13255f97_69b9c8fb",
         "filename": "include/gpio.h",
         "patchSetId": 2
@@ -229,6 +300,24 @@
       "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273cc9fb_13087797",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 1,
+      "message": "Removing this. Instead made a pair of functions, gpio_enable_wakepin() and gpio_disable_wakepin().",
+      "parentUuid": "9d71ba2e_f775d1e9",
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

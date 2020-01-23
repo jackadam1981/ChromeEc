@@ -46,6 +46,30 @@
       "revId": "3609e935063c4095901e5271e1450eae43d08f2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f9315e_73e27dc5",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 0,
+      "message": "Removing line 243~244 because configure_wakepin() handles it.",
+      "parentUuid": "47b11003_ee9f4bdb",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 37
+      },
+      "revId": "3609e935063c4095901e5271e1450eae43d08f2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

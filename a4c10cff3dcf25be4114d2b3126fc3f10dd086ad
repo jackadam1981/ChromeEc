@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f8eb2fde_58fa8d08",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2983a27f_0ec6a499",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 18
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d136ebe1_f42d6c6c",
         "filename": "include/gpio.h",
         "patchSetId": 4
@@ -107,6 +131,30 @@
       "writtenOn": "2017-09-07T20:52:57Z",
       "side": 1,
       "message": "I understand the concern is that someone might accidentally use gpio_set_flags() to turn on/off a pullup or set direction and lose the wake flag.\n\nIt might be better to make some safer functions than gpio_set_flags().  For example:\n\ngpio_add_flags(signal, flags_to_add)\ngpio_sub_flags(signal, flags_to_remove)\n\nOr maybe:\n\ngpio_addsub_flags(signal, to_add, to_remove)\ngpio_change_flags(signal, mask, value)\n\nEither that, or we need to make sure gpio_get_flags() is available and that we use it:\n\ngpio_set_flags((gpio_get_flags() \u0026 ~GPIO_INPUT) | GPIO_OUT_HIGH);",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbbab851_7bc70b3a",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-23T02:27:40Z",
+      "side": 1,
+      "message": "Made gpio_enable_wakepin()/gpio_disable_wakepin().",
+      "parentUuid": "d136ebe1_f42d6c6c",
       "range": {
         "startLine": 39,
         "startChar": 0,
