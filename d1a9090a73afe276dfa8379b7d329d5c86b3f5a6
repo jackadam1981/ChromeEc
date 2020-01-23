@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d9cf3b06_ebfce6ae",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-23T01:13:51Z",
+      "side": 1,
+      "message": "What I really don\u0027t like here is the raw number used for the I2C slave address.  Although, I now see you are access address 0x0A, but tcpc_config[] sets the slave address to 0x0B.  Is this intentional - is there a special slave address used for these transactions?  If so, you need  a comment here and should create a macro in ps8xxxx.h for this alternate slave address.",
+      "parentUuid": "5dc56cb9_cba3cad6",
+      "range": {
+        "startLine": 478,
+        "startChar": 5,
+        "endLine": 478,
+        "endChar": 14
+      },
+      "revId": "d1a9090a73afe276dfa8379b7d329d5c86b3f5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6beae9a8_846c519e",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
