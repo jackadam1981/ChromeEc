@@ -22,6 +22,30 @@
       "revId": "f9e5bc812c291d2bfa689b40ba9a099674830def",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6661e17f_df82cf3b",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-23T23:20:26Z",
+      "side": 1,
+      "message": "usb_pe_drp.exe gives error saying undefined reference to `tcpc_config\u0027",
+      "parentUuid": "f5d4d8b7_3b869f0a",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "f9e5bc812c291d2bfa689b40ba9a099674830def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
