@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "8dac5283_0075f24b",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-23T18:14:27Z",
+      "side": 1,
+      "message": "Sorry, not sure what I was thinking, EC uses functions pointers for many other drivers, so I think this is fine as it is.",
+      "parentUuid": "7720481a_6240f327",
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61919beb_01f2ba62",
         "filename": "chip/npcx/ps2.c",
         "patchSetId": 3
@@ -131,6 +149,30 @@
     },
     {
       "key": {
+        "uuid": "0174cfff_15acdfc0",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-23T18:14:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70f817f1_f5023a76",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a328f0b_296a1443",
         "filename": "chip/npcx/ps2.c",
         "patchSetId": 3
@@ -163,6 +205,24 @@
       "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca371112_90950821",
+        "filename": "chip/npcx/ps2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-01-23T18:14:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7939980d_dab08d05",
+      "revId": "a9af4356ee322061c03441a7c02d94faa6301816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
