@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cd164235_c978b8f8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-23T17:35:35Z",
+      "side": 1,
+      "message": "You are right that this was the wrong check but depends on which stack options you use in the new stack.  There are three usb_tc_XXXXXXX_sm.c files.  The answer is probably different for at least one of them and I think for two... You can tell by the definition of pd_get_data_role(port), if it only has the hardcoded return PD_ROLE_UFP, then it does not support DUAL_ROLE.  Your answer is correct if CONFIG_USB_TYPEC_DRP_ACC_TRYSRC is defined but there are two other options.",
+      "parentUuid": "b27ef72d_9d6c9c57",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3be6dd4d_96a56683",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "These are intentionally taken straight from power_manager.",
       "parentUuid": "3be6dd4d_96a56683",
+      "revId": "058db528657331342d8b32d6a46623bd891ac819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329335ef_c616d221",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5886,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-23T17:35:35Z",
+      "side": 1,
+      "message": "Maybe it is just not a current use case, but maybe it belongs in both... just for completeness.  Would not hurt to be present and not used.",
+      "parentUuid": "a9cbb1e0_d94fe550",
       "revId": "058db528657331342d8b32d6a46623bd891ac819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
