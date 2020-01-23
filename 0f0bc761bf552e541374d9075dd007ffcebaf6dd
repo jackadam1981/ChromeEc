@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c116a5a8_594f2c4f",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-23T23:39:16Z",
+      "side": 1,
+      "message": "I think __override should be deleted here for consistency with the reset of the file.  I believe you need to put a test_mockable attribute on the definitions in usb_pd_protocol.c and usb_tc_drp_acc_trysrc_sm.c.  This will mark the respective routines weak when building tests.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 10
+      },
+      "revId": "0f0bc761bf552e541374d9075dd007ffcebaf6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
