@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f621766b_9a0696ad",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-23T20:53:48Z",
+      "side": 1,
+      "message": "Ayushee, I think Abe meant convert tbt_cable_speed to p_rev30.ss the return \np_rev30.ss so that all data is w.r.t REV3 for USB4",
+      "parentUuid": "4ea41cfb_0dacc83c",
+      "range": {
+        "startLine": 239,
+        "startChar": 7,
+        "endLine": 239,
+        "endChar": 14
+      },
+      "revId": "3d7973d3041f69ed11498d085adb89fe577f88b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb959933_b79610bc",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 29
