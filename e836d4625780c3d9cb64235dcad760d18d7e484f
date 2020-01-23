@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6f5333d_68d8de7a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-23T21:57:26Z",
+      "side": 1,
+      "message": "This will break bitbang because you need CCD_ENABLE_UART_EC | CCD_ENABLE_UART_EC_BITBANG for the RX part.\n\nI think having the CCD_ENABLE_UART_EC* flags control both enabling the uart and enabling the usb when they need to be enabled at separate times is complicating this a lot.\nI think it would be clearer if we had two new flags to track the usb part of this.\nCCD_ENABLE_USB_EC and CCD_ENABLE_USB_EC_TX.\nThis would mean you don\u0027t need to change the CCD_ENABLE_UART_EC logic as much. You would need to add logic for determining if usb is enabled and a function to make usb_usart enabled/disabled and readonly.\nI think this would be more consistent with how ccd_state_change currently works.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "e836d4625780c3d9cb64235dcad760d18d7e484f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
