@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "112fcc1f_96390b6e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-24T21:55:04Z",
+      "side": 1,
+      "message": "Line 1348 disables tbt mode if we don\u0027t have either SVID0 or SVID1 as 0x8087. It checks all the SVIDs for 0x8087\n\nThe dfp_discover_mode on the line 1368(patchset #33) will change the resize value.\n\nIn the case where SVID0\u003d0xff01 and SVID1\u003d0x8087, is_tbt_compat_enabled will return false since we discover mode with 0xff01 first and, we won\u0027t be entering USB4 even though the device responded with 0x8087 SVID.",
+      "parentUuid": "2e249c85_ff13f24c",
+      "range": {
+        "startLine": 1371,
+        "startChar": 3,
+        "endLine": 1371,
+        "endChar": 14
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5334b4a_5b5cd7ce",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 32
