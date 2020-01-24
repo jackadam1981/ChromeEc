@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "875ddd33_89ad5aae",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-24T21:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d3d79d_338e6610",
+      "range": {
+        "startLine": 1262,
+        "startChar": 0,
+        "endLine": 1267,
+        "endChar": 8
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "196206fb_d56a191c",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 32
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-24T16:33:24Z",
       "side": 1,
       "message": "I\u0027m not sure I understand this check?  I believe it won\u0027t ever be true, as rsize is initialized to 1 at the beginning of the function and not touched before this.",
+      "range": {
+        "startLine": 1371,
+        "startChar": 3,
+        "endLine": 1371,
+        "endChar": 14
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f84d85_5a982fc4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-24T21:27:26Z",
+      "side": 1,
+      "message": "Disabling thunderbolt only if we don\u0027t get any SVID\u003d0x8087. The previous condition only checked for SVID0 \u003d 0x8087 and disabled Thunderbolt mode if the condition wasn\u0027t satisfied.",
+      "parentUuid": "196206fb_d56a191c",
       "range": {
         "startLine": 1371,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "456d40b3_391d69d2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 2857,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-24T21:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5334b4a_5b5cd7ce",
+      "range": {
+        "startLine": 2855,
+        "startChar": 1,
+        "endLine": 2857,
+        "endChar": 25
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8a2c556_4b643693",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 32
@@ -91,6 +163,30 @@
       "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25669244_f0a30a32",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 4736,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-24T21:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8a2c556_4b643693",
+      "range": {
+        "startLine": 4735,
+        "startChar": 3,
+        "endLine": 4736,
+        "endChar": 23
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
