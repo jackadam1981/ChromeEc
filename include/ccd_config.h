@@ -146,6 +146,11 @@ enum ccd_capability_state {
 	CCD_CAP_STATE_COUNT
 };
 
+enum ccd_bridge_dir {
+	CCD_BRIDGE_RX = 0,
+	CCD_BRIDGE_TX = 1,
+};
+
 struct ccd_capability_info {
 	/* Capability name */
 	const char *name;
@@ -356,4 +361,10 @@ void enable_ccd_factory_mode(int reset_required);
  */
 void factory_enable(int reset_required);
 
+/*
+ * Return non-zero if EC USB UART bridge is enabled, or 0 otherwise.
+ * @param dir     1 for bridge from USB to UART.
+ *                0 for bridge from UART to USB.
+ */
+int ccd_is_enabled_ec_usb_uart_bridge(enum ccd_bridge_dir dir);
 #endif /* __CROS_EC_CCD_CONFIG_H */

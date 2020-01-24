@@ -4,6 +4,7 @@
  */
 
 #ifdef BOARD_CR50
+#include "ccd_config.h"
 #include "ec_comm.h"
 #endif
 #include "queue.h"
@@ -138,12 +139,25 @@ void get_data_from_usb(struct usart_config const *config)
 	int c;
 
 #ifdef BOARD_CR50
-	/*
-	 * If EC-CR50 communication is on-going, then let's not forward
-	 * console input to EC for now.
-	 */
-	if (ec_comm_is_uart_in_packet_mode(config->uart))
-		return;
+	if (config->uart == UART_EC) {
+		/*
+		 * If USB-to-UART bridging is disabled, drop all input data.
+		 * Otherwise, data could be pushed into UART TX FIFO, and
+		 * transferred to EC eventually once EC-CR50 communication
+		 * enables EC UART.
+		 */
+		if (!ccd_is_enabled_ec_usb_uart_bridge(CCD_BRIDGE_TX)) {
+			queue_advance_head(uart_out, queue_count(uart_out));
+			return;
+		}
+
+		/*
+		 * If EC-CR50 communication is on-going, then let's not forward
+		 * console input to EC for now.
+		 */
+		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+			return;
+	}
 #endif
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */
@@ -162,28 +176,50 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t count;
 	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t mask = uart_in->buffer_units_mask;
+	size_t inc = 1;
 
 	q_room = queue_space(uart_in);
-
-	if (!q_room)
-		return;
-
-	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
 	count = 0;
 
-	/*
-	 * TODO(b/119329144): Process packet data separately,
-	 * and filter console data based on ccd capability.
-	 * if (ec_comm_is_uart_in_packet_mode(uart))
-	 *	...
-	 */
+#ifdef BOARD_CR50
+	if (uart == UART_EC) {
+		/*
+		 * If UART-to-USB bridging is not allowed, do not put any output
+		 * data to uart_in queue.
+		 */
+		if (!ccd_is_enabled_ec_usb_uart_bridge(CCD_BRIDGE_RX))
+			inc = 0;
+	}
 
-	while ((count != q_room) && uartn_rx_available(uart)) {
-		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
+	if (ec_comm_is_uart_in_packet_mode(uart)) {
+		/*
+		 * Even if UART-to-USB data queue is full (count == q_room),
+		 * It should drain UART queue, so that an EC packet
+		 * can be processed. In this case, EC console data
+		 * shall be lost anyway.
+		 */
+		while (uartn_rx_available(uart)) {
+			uint8_t ch = uartn_read_char(uart);
+
+			if (ec_comm_process_packet(ch))
+				continue;
+
+			if (count != q_room) {
+				uart_in->buffer[tail] = ch;
+				tail = (tail + inc) & mask;
+				count += inc;
+			}
+		}
+	} else
+#endif  /* BOARD_CR50 */
+	{
+		while ((count != q_room) && uartn_rx_available(uart)) {
+			uart_in->buffer[tail] = uartn_read_char(uart);
+			tail = (tail + inc) & mask;
+			count += inc;
+		}
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);
