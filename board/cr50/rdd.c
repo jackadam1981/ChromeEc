@@ -15,6 +15,7 @@
 #include "system.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
+#include "usart.h"
 #include "usb_api.h"
 #include "usb_console.h"
 #include "usb_i2c.h"
@@ -134,6 +135,18 @@ enum ccd_state_flag {
 
 	/* SPI port is enabled for AP and/or EC flash */
 	CCD_ENABLE_SPI			= BIT(6),
+
+	/* AP data bridging from UART to USB is enabled. */
+	CCD_ENABLE_USB_FROM_UART_AP	= BIT(7),
+
+	/* AP data bridging from USB to UART is enabled. */
+	CCD_ENABLE_USB_TO_UART_AP	= BIT(8),
+
+	/* EC data bridging from UART to USB is enabled. */
+	CCD_ENABLE_USB_FROM_UART_EC	= BIT(9),
+
+	/* EC data bridging from USB to UART is enabled. */
+	CCD_ENABLE_USB_TO_UART_EC	= BIT(10),
 };
 
 int console_is_restricted(void)
@@ -168,6 +181,15 @@ static uint32_t get_state_flags(void)
 	if (ccd_usb_spi.state->enabled_device)
 		flags_now |= CCD_ENABLE_SPI;
 
+	if (usb_from_uartn_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_USB_FROM_UART_AP;
+	if (usb_to_uartn_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_USB_TO_UART_AP;
+	if (usb_from_uartn_is_enabled(UART_EC))
+		flags_now |= CCD_ENABLE_USB_FROM_UART_EC;
+	if (usb_to_uartn_is_enabled(UART_EC))
+		flags_now |= CCD_ENABLE_USB_TO_UART_EC;
+
 	return flags_now;
 }
 
@@ -193,57 +215,101 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 		cprintf(channel, " I2C");
 	if (flags & CCD_ENABLE_SPI)
 		cprintf(channel, " SPI");
+	if (flags & CCD_ENABLE_USB_FROM_UART_AP)
+		cprintf(channel, " USB_AP");
+	if (flags & CCD_ENABLE_USB_TO_UART_AP)
+		cprintf(channel, "+RX");
+	if (flags & CCD_ENABLE_USB_FROM_UART_EC)
+		cprintf(channel, " USB_EC");
+	if (flags & CCD_ENABLE_USB_TO_UART_EC)
+		cprintf(channel, "+RX");
 }
 
 static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
 	uint32_t flags_want = 0;
+	uint32_t flags_to_clean_uart_ec_tx = CCD_ENABLE_UART_EC_TX;
 	uint32_t delta;
+	int ec_comm_is_active;
 
 	/* Check what's enabled now */
 	flags_now = get_state_flags();
 
 	/* Start out by figuring what flags we might want enabled */
 
-	/* Enable EC/AP UART RX if that device is on */
+	/*
+	 * Enable EC/AP UART RX if that device is on.
+	 * It will include CCD_ENABLE_UART_TO_USB flag so that any console
+	 * output data at the very beginning can be pushed into USB queue.
+	 */
 	if (ap_uart_is_on())
-		flags_want |= CCD_ENABLE_UART_AP;
+		flags_want |= (CCD_ENABLE_UART_AP |
+			       CCD_ENABLE_USB_FROM_UART_AP);
 	if (ec_is_rx_allowed())
-		flags_want |= CCD_ENABLE_UART_EC;
+		flags_want |= (CCD_ENABLE_UART_EC |
+			       CCD_ENABLE_USB_FROM_UART_EC);
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())
 		flags_want |= CCD_ENABLE_UART_EC_BITBANG;
 #endif
 
+	ec_comm_is_active = ec_comm_is_uart_in_packet_mode(UART_EC);
+	if (ec_comm_is_active) {
+		/*
+		 * Do not yield UART_EC TX to servo.
+		 * Note: With the board property, BOARD_EC_CR50_COMM_SUPPORT,
+		 *       H1-EC UART connection is supposed to dominate over
+		 *       servo-EC uart by HW design.
+		 */
+		flags_to_clean_uart_ec_tx = 0;
+	}
+
 	/*
 	 * External CCD will try to enable all the ports. If it's disabled,
 	 * disable all ports.
 	 */
-	if (ccd_ext_is_enabled())
+	if (ccd_ext_is_enabled()) {
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
-			       CCD_ENABLE_I2C | CCD_ENABLE_SPI);
-	else
+			       CCD_ENABLE_I2C | CCD_ENABLE_SPI |
+			       CCD_ENABLE_USB_FROM_UART_AP |
+			       CCD_ENABLE_USB_TO_UART_AP |
+			       CCD_ENABLE_USB_FROM_UART_EC |
+			       CCD_ENABLE_USB_TO_UART_EC);
+	} else if (ec_comm_is_active) {
+		/* EC-CR50 comm needs UART_EC RX/TX enabled. */
+		flags_want = (flags_want & CCD_ENABLE_UART_EC) |
+			     CCD_ENABLE_UART_EC_TX;
+	} else {
 		flags_want = 0;
+	}
 
 	/* Then disable flags we can't have */
 
 	/* Servo takes over UART TX, I2C, and SPI. */
 	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
-		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
+		flags_want &= ~(CCD_ENABLE_UART_AP_TX |
+				flags_to_clean_uart_ec_tx |
 				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
 				CCD_ENABLE_SPI);
 
 	/* Disable based on capabilities */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_AP_TX))
-		flags_want &= ~CCD_ENABLE_UART_AP;
+		flags_want &= ~CCD_ENABLE_USB_FROM_UART_AP;
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
-		flags_want &= ~CCD_ENABLE_UART_AP_TX;
+		flags_want &= ~(CCD_ENABLE_UART_AP_TX |
+				CCD_ENABLE_USB_TO_UART_AP);
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
-		flags_want &= ~CCD_ENABLE_UART_EC;
+		flags_want &= ~CCD_ENABLE_USB_FROM_UART_EC;
+	/*
+	 * UART_EC TX needs to be disconnected as well as USB RX, otherwise
+	 * Servo is not detectable. However, exceptionally, UART_EC TX should
+	 * not be disabled during EC-CR50 communication.
+	 */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
-		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
+		flags_want &= ~(flags_to_clean_uart_ec_tx |
+				CCD_ENABLE_USB_TO_UART_EC |
 				CCD_ENABLE_UART_EC_BITBANG);
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
@@ -263,7 +329,7 @@ static void ccd_state_change_hook(void)
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
-	if (ccd_block & CCD_BLOCK_EC_UART)
+	if ((ccd_block & CCD_BLOCK_EC_UART) && !ec_comm_is_active)
 		flags_want &= ~CCD_ENABLE_UART_EC;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
@@ -299,6 +365,15 @@ static void ccd_state_change_hook(void)
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 0);
 
+	if (delta & CCD_ENABLE_USB_FROM_UART_AP)
+		usb_from_uartn_disable(UART_AP);
+	if (delta & CCD_ENABLE_USB_TO_UART_AP)
+		usb_to_uartn_disable(UART_AP);
+	if (delta & CCD_ENABLE_USB_FROM_UART_EC)
+		usb_from_uartn_disable(UART_EC);
+	if (delta & CCD_ENABLE_USB_TO_UART_EC)
+		usb_to_uartn_disable(UART_EC);
+
 	/* Handle turning things on */
 	delta = flags_want & ~flags_now;
 	if (delta & CCD_ENABLE_UART_AP)
@@ -323,6 +398,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	if (delta & CCD_ENABLE_USB_FROM_UART_AP)
+		usb_from_uartn_enable(UART_AP);
+	if (delta & CCD_ENABLE_USB_TO_UART_AP)
+		usb_to_uartn_enable(UART_AP);
+	if (delta & CCD_ENABLE_USB_FROM_UART_EC)
+		usb_from_uartn_enable(UART_EC);
+	if (delta & CCD_ENABLE_USB_TO_UART_EC)
+		usb_to_uartn_enable(UART_EC);
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
@@ -343,6 +427,14 @@ static void ccd_ext_detect(void)
 	int enable = !gpio_get_level(GPIO_CCD_MODE_L);
 
 	if (enable == ccd_ext_is_enabled())
+		return;
+
+	/*
+	 * Do not change ccd_ext state during EC-CR50 comm, because
+	 * servo detection is delayed as well. Let it be detected in the
+	 * next second.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC))
 		return;
 
 	if (enable) {
