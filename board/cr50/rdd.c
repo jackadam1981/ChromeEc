@@ -15,6 +15,7 @@
 #include "system.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
+#include "usart.h"
 #include "usb_api.h"
 #include "usb_console.h"
 #include "usb_i2c.h"
@@ -134,6 +135,18 @@ enum ccd_state_flag {
 
 	/* SPI port is enabled for AP and/or EC flash */
 	CCD_ENABLE_SPI			= BIT(6),
+
+	/* AP data bridging from UART to USB is enabled. */
+	CCD_ENABLE_USB_FROM_UART_AP	= BIT(7),
+
+	/* AP data bridging from USB to UART is enabled. */
+	CCD_ENABLE_USB_TO_UART_AP	= BIT(8),
+
+	/* EC data bridging from UART to USB is enabled. */
+	CCD_ENABLE_USB_FROM_UART_EC	= BIT(9),
+
+	/* EC data bridging from USB to UART is enabled. */
+	CCD_ENABLE_USB_TO_UART_EC	= BIT(10),
 };
 
 int console_is_restricted(void)
@@ -168,6 +181,15 @@ static uint32_t get_state_flags(void)
 	if (ccd_usb_spi.state->enabled_device)
 		flags_now |= CCD_ENABLE_SPI;
 
+	if (usb_from_uartn_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_USB_FROM_UART_AP;
+	if (usb_to_uartn_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_USB_TO_UART_AP;
+	if (usb_from_uartn_is_enabled(UART_EC))
+		flags_now |= CCD_ENABLE_USB_FROM_UART_EC;
+	if (usb_to_uartn_is_enabled(UART_EC))
+		flags_now |= CCD_ENABLE_USB_TO_UART_EC;
+
 	return flags_now;
 }
 
@@ -179,13 +201,13 @@ static uint32_t get_state_flags(void)
  */
 static void print_state_flags(enum console_channel channel, uint32_t flags)
 {
-	if (flags & CCD_ENABLE_UART_AP)
+	if (flags & CCD_ENABLE_USB_FROM_UART_AP)
 		cprintf(channel, " UARTAP");
-	if (flags & CCD_ENABLE_UART_AP_TX)
+	if (flags & CCD_ENABLE_USB_TO_UART_AP)
 		cprintf(channel, "+TX");
-	if (flags & CCD_ENABLE_UART_EC)
+	if (flags & CCD_ENABLE_USB_FROM_UART_EC)
 		cprintf(channel, " UARTEC");
-	if (flags & CCD_ENABLE_UART_EC_TX)
+	if (flags & CCD_ENABLE_USB_TO_UART_EC)
 		cprintf(channel, "+TX");
 	if (flags & CCD_ENABLE_UART_EC_BITBANG)
 		cprintf(channel, "+BB");
@@ -193,6 +215,28 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 		cprintf(channel, " I2C");
 	if (flags & CCD_ENABLE_SPI)
 		cprintf(channel, " SPI");
+}
+
+/**
+ * Print the state flags to the specified output channel
+ *
+ * @param channel	Console channel
+ * @param flags		Flags to print
+ */
+static void print_uart_state(enum console_channel channel, uint32_t flags)
+{
+	cprintf(channel, "UART backend:");
+
+	if (flags & CCD_ENABLE_UART_AP)
+		cprintf(channel, " AP");
+	if (flags & CCD_ENABLE_UART_AP_TX)
+		cprintf(channel, "+TX");
+
+	if (flags & CCD_ENABLE_UART_EC)
+		cprintf(channel, " EC");
+	if (flags & CCD_ENABLE_UART_EC_TX)
+		cprintf(channel, "+TX");
+	cprintf(channel, "\n");
 }
 
 static void ccd_state_change_hook(void)
@@ -209,10 +253,16 @@ static void ccd_state_change_hook(void)
 	/* Start out by figuring what flags we might want enabled */
 
 	/* Enable EC/AP UART RX if that device is on */
+	/*
+	 * It will include CCD_ENABLE_UART_TO_USB flag so that any console
+	 * output data at the very beginning can be pushed into USB queue.
+	 */
 	if (ap_uart_is_on())
-		flags_want |= CCD_ENABLE_UART_AP;
+		flags_want |= (CCD_ENABLE_UART_AP |
+			       CCD_ENABLE_USB_FROM_UART_AP);
 	if (ec_is_rx_allowed())
-		flags_want |= CCD_ENABLE_UART_EC;
+		flags_want |= (CCD_ENABLE_UART_EC |
+			       CCD_ENABLE_USB_FROM_UART_EC);
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())
@@ -236,7 +286,11 @@ static void ccd_state_change_hook(void)
 	 */
 	if (ccd_ext_is_enabled())
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
-			       CCD_ENABLE_I2C | CCD_ENABLE_SPI);
+			       CCD_ENABLE_I2C | CCD_ENABLE_SPI |
+			       CCD_ENABLE_USB_FROM_UART_AP |
+			       CCD_ENABLE_USB_TO_UART_AP |
+			       CCD_ENABLE_USB_FROM_UART_EC |
+			       CCD_ENABLE_USB_TO_UART_EC);
 	else if (ec_comm_is_active)
 		/* EC-CR50 comm needs UART_EC RX/TX enabled. */
 		flags_want = (flags_want & CCD_ENABLE_UART_EC) |
@@ -255,13 +309,20 @@ static void ccd_state_change_hook(void)
 
 	/* Disable based on capabilities */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_AP_TX))
-		flags_want &= ~CCD_ENABLE_UART_AP;
+		flags_want &= ~CCD_ENABLE_USB_FROM_UART_AP;
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
-		flags_want &= ~CCD_ENABLE_UART_AP_TX;
+		flags_want &= ~(CCD_ENABLE_UART_AP_TX |
+				CCD_ENABLE_USB_TO_UART_AP);
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
-		flags_want &= ~CCD_ENABLE_UART_EC;
+		flags_want &= ~CCD_ENABLE_USB_FROM_UART_EC;
+	/*
+	 * UART_EC TX needs to be disconnected as well as USB RX, otherwise
+	 * Servo is not detectable. However, exceptionally, UART_EC TX should
+	 * not be disabled during EC-CR50 communication.
+	 */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
 		flags_want &= ~(flags_to_clean_uart_ec_tx |
+				CCD_ENABLE_USB_TO_UART_EC |
 				CCD_ENABLE_UART_EC_BITBANG);
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
@@ -297,6 +358,7 @@ static void ccd_state_change_hook(void)
 	CPRINTF("[%pT CCD state:", PRINTF_TIMESTAMP_NOW);
 	print_state_flags(CC_USB, flags_want);
 	CPRINTF("]\n");
+	print_uart_state(CC_USB, flags_want);
 
 	/* Handle turning things off */
 	delta = flags_now & ~flags_want;
@@ -316,6 +378,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_disable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 0);
+
+	if (delta & CCD_ENABLE_USB_FROM_UART_AP)
+		usb_from_uartn_disable(UART_AP);
+	if (delta & CCD_ENABLE_USB_TO_UART_AP)
+		usb_to_uartn_disable(UART_AP);
+	if (delta & CCD_ENABLE_USB_FROM_UART_EC)
+		usb_from_uartn_disable(UART_EC);
+	if (delta & CCD_ENABLE_USB_TO_UART_EC)
+		usb_to_uartn_disable(UART_EC);
 
 	/* Handle turning things on */
 	delta = flags_want & ~flags_now;
@@ -341,6 +412,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	if (delta & CCD_ENABLE_USB_FROM_UART_AP)
+		usb_from_uartn_enable(UART_AP);
+	if (delta & CCD_ENABLE_USB_TO_UART_AP)
+		usb_to_uartn_enable(UART_AP);
+	if (delta & CCD_ENABLE_USB_FROM_UART_EC)
+		usb_from_uartn_enable(UART_EC);
+	if (delta & CCD_ENABLE_USB_TO_UART_EC)
+		usb_to_uartn_enable(UART_EC);
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
@@ -418,6 +498,8 @@ static void print_ccd_ports_blocked(void)
 
 static int command_ccd_state(int argc, char **argv)
 {
+	uint32_t flags_now = get_state_flags();
+
 	print_ap_state();
 	print_ap_uart_state();
 	print_ec_state();
@@ -428,8 +510,9 @@ static int command_ccd_state(int argc, char **argv)
 		 ccd_ext_is_enabled() ? "enabled" : "disabled");
 
 	ccprintf("State flags:");
-	print_state_flags(CC_COMMAND, get_state_flags());
+	print_state_flags(CC_COMMAND, flags_now);
 	ccprintf("\n");
+	print_uart_state(CC_COMMAND, flags_now);
 
 	print_ccd_ports_blocked();
 
