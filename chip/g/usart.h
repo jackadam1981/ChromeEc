@@ -74,4 +74,48 @@ void get_data_from_usb(struct usart_config const *config);
 /* Helper for UART bitbang mode. */
 extern struct usart_config const ec_uart;
 
+/**
+ * Return non-zero if UART-to-USB bridging is enabled.
+ *
+ * @param uart		UART to check
+ * @return 1 if UART-to-USB bridging is enabled, 0 if disabled.
+ */
+int usb_from_uartn_is_enabled(int uart);
+
+/**
+ * Return non-zero if UART-from-USB bridging is enabled.
+ *
+ * @param uart		UART to check
+ * @return 1 if UART-from-USB bridging is enabled, 0 if disabled.
+ */
+int usb_to_uartn_is_enabled(int uart);
+
+/**
+ * Enable UART-to-USB bridging.
+ *
+ * @param uart		UART to enable
+ */
+void usb_from_uartn_enable(int uart);
+
+/**
+ * Enable UART-from-USB bridging.
+ *
+ * @param uart		UART to enable
+ */
+void usb_to_uartn_enable(int uart);
+
+/**
+ * Disable UART-to-USB bridging.
+ *
+ * @param uart		UART to disable
+ */
+void usb_from_uartn_disable(int uart);
+
+/**
+ * Disable UART-from-USB bridging.
+ *
+ * @param uart		UART to disable
+ */
+void usb_to_uartn_disable(int uart);
+
 #endif  /* __CROS_FORWARD_UART_H */
