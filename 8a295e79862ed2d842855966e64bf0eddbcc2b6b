@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d3d79d_338e6610",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T16:33:24Z",
+      "side": 1,
+      "message": "Include citation from type-c spec 5.4.4.1 that we cannot enter alternate modes which reconfigure the port interface while in USB4 (i.e. DP and TBT)",
+      "range": {
+        "startLine": 1262,
+        "startChar": 0,
+        "endLine": 1267,
+        "endChar": 8
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196206fb_d56a191c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T16:33:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this check?  I believe it won\u0027t ever be true, as rsize is initialized to 1 at the beginning of the function and not touched before this.",
+      "range": {
+        "startLine": 1371,
+        "startChar": 3,
+        "endLine": 1371,
+        "endChar": 14
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5334b4a_5b5cd7ce",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 2857,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T16:33:24Z",
+      "side": 1,
+      "message": "Set state directly to the new one, and set the timeout from that state to go back to the appropriate ready state after the sender response timer",
+      "range": {
+        "startLine": 2855,
+        "startChar": 1,
+        "endLine": 2857,
+        "endChar": 25
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a2c556_4b643693",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 4736,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T16:33:24Z",
+      "side": 1,
+      "message": "Add your state into the handle_ctrl_request() function.  Checking head at this part of the PD task is iffy, since it may contain stale data, whereas the request handling code is definitely operating on a new message",
+      "range": {
+        "startLine": 4735,
+        "startChar": 3,
+        "endLine": 4736,
+        "endChar": 23
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
