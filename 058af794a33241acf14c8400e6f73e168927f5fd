@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "2d604316_11527c78",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0088ebe_a4dc7b99",
+      "range": {
+        "startLine": 271,
+        "startChar": 19,
+        "endLine": 273,
+        "endChar": 31
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b89ac809_ef92fd37",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 3
@@ -142,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "73aec511_0a65d3ec",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:02:50Z",
+      "side": 1,
+      "message": "I just realized that without CCD connection, everything shall be disabled by line 263. I guess we don\u0027t need to worry about UART power waste when CCD connection is detected but CCD is locked.",
+      "parentUuid": "4762d556_ffdfa7d3",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 47
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a37f21_5e221ff1",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 3
@@ -162,6 +210,30 @@
       "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03430008_0c14f370",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a37f21_5e221ff1",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 66
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "2518db4f_677d1d37",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4decb2c_b4ba8b5f",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47d0b089_a631630a",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 3
@@ -211,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "aebabf69_bc4f6b36",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d0b089_a631630a",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 45
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c1f9c1_358fc85b",
         "filename": "chip/g/uartn.c",
         "patchSetId": 3
@@ -231,6 +351,30 @@
       "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f6f8e7_1cfb79ac",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7c1f9c1_358fc85b",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
