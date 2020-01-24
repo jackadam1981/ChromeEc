@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e553c440_578d7eb5",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "Right now the usb portion doesn\u0027t actually care if the AP or EC are on. I don\u0027t think you need to add these here.",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 64
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e6f9f1f_c6f09dac",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "This is the thing that should dictate if usb is enabled. If a suzyq cable is connected, enable usb.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0088ebe_a4dc7b99",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "The USB portion doesn\u0027t matter here. We only care that the UART peripherals aren\u0027t connected to the pins. You can delete the USB flags here.",
+      "range": {
+        "startLine": 271,
+        "startChar": 19,
+        "endLine": 273,
+        "endChar": 31
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89ac809_ef92fd37",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "These capabilities are becoming the enable the usb part of the uart endpoints, so you don\u0027t really need the \u0026~ CCD_ENABLE_UART_EC part here. I don\u0027t know if this change is keeping the current behavior and the next change is what\u0027s going to change it so the capabilities only affect the usb part.",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 47
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a37f21_5e221ff1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "ccd_block is about blocking the uart pins. It has nothing to do with usb. This shouldn\u0027t be changed.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 66
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4decb2c_b4ba8b5f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "The plain UART_EC|AP* flags have nothing to do with usb now. Don\u0027t change this.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d0b089_a631630a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "Delete this.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 45
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c1f9c1_358fc85b",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T05:09:37Z",
+      "side": 1,
+      "message": "Move this to usart.c, because these don\u0027t have much to do with the uart part of the endpoints. Also I think it would be better to start with \u0027usb_...\u0027 because this is impacting the usb part of the bridge.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
