@@ -135,6 +135,12 @@ void get_data_from_usb(struct usart_config const *config)
 	int c;
 
 #ifdef BOARD_CR50
+	/* If UART-from-USB bridging is not allowed, drop all input data. */
+	if (!usb_to_uartn_is_enabled(config->uart)) {
+		queue_advance_head(uart_out, queue_count(uart_out));
+		return;
+	}
+
 	/*
 	 * If EC-CR50 communication is on-going, then let's not forward
 	 * console input to EC for now.
@@ -162,9 +168,14 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t mask;
 
 	q_room = queue_space(uart_in);
-
-	if (!q_room)
-		return;
+#ifdef BOARD_CR50
+	/*
+	 * If UART-to-USB bridging is not allowed, do not put any output data
+	 * to uart_in queue.
+	 */
+	if (!usb_from_uartn_is_enabled(uart))
+		q_room = 0;
+#endif
 
 	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
@@ -234,3 +245,53 @@ CONFIGURE_INTERRUPTS(ec_uart,
 		     GC_IRQNUM_UART2_TXINT)
 #endif
 #endif
+
+/* Flags indicating if uartn-usb bridge is enabled. */
+static uint16_t flag_usb_from_uartn;
+static uint16_t flag_usb_to_uartn;
+
+int usb_from_uartn_is_enabled(int uart)
+{
+	return !!(flag_usb_from_uartn & BIT(uart));
+}
+
+int usb_to_uartn_is_enabled(int uart)
+{
+	return !!(flag_usb_to_uartn & BIT(uart));
+}
+
+void usb_from_uartn_enable(int uart)
+{
+	flag_usb_from_uartn |= BIT(uart);
+}
+
+void usb_to_uartn_enable(int uart)
+{
+	flag_usb_to_uartn |= BIT(uart);
+
+#if USE_UART_INTERRUPTS
+	/* Let's flush any blocked console input data if any. */
+#ifdef CONFIG_STREAM_USART1
+	if (uart == UART_AP) {
+		task_trigger_irq(GC_IRQNUM_UART1_TXINT);
+		return;
+	}
+#endif
+#ifdef CONFIG_STREAM_USART2
+	if (uart == UART_EC) {
+		task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+		return;
+	}
+#endif
+#endif
+}
+
+void usb_from_uartn_disable(int uart)
+{
+	flag_usb_from_uartn &= ~BIT(uart);
+}
+
+void usb_to_uartn_disable(int uart)
+{
+	flag_usb_to_uartn &= ~BIT(uart);
+}
