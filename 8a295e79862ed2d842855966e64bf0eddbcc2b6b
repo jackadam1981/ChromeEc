@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2e249c85_ff13f24c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T21:43:10Z",
+      "side": 1,
+      "message": "How?  rsize is set to  1 at the top of this function, and isn\u0027t changed at any point before in this case (except above, which breaks).  How is it being set to indicate we should disable TBT?\n\nFor systems which don\u0027t have the intel SVID in the SOP discover SVIDs, shouldn\u0027t line 1348 already be disabling it?",
+      "parentUuid": "30f84d85_5a982fc4",
+      "range": {
+        "startLine": 1371,
+        "startChar": 3,
+        "endLine": 1371,
+        "endChar": 14
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5334b4a_5b5cd7ce",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 32
