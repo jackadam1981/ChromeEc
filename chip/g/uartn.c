@@ -153,3 +153,37 @@ void uartn_init(int uart)
 	uartn_enable_interrupt(uart);
 #endif
 }
+
+/* Flags indicating if uartn-usb bridge is enabled. */
+static uint16_t flag_uartn_to_usb;
+static uint16_t flag_uartn_from_usb;
+
+int uartn_to_usb_is_enabled(int uart)
+{
+	return !!(flag_uartn_to_usb & BIT(uart));
+}
+
+int uartn_from_usb_is_enabled(int uart)
+{
+	return !!(flag_uartn_from_usb & BIT(uart));
+}
+
+void uartn_to_usb_enable(int uart)
+{
+	flag_uartn_to_usb |= BIT(uart);
+}
+
+void uartn_from_usb_enable(int uart)
+{
+	flag_uartn_from_usb |= BIT(uart);
+}
+
+void uartn_to_usb_disable(int uart)
+{
+	flag_uartn_to_usb &= ~BIT(uart);
+}
+
+void uartn_from_usb_disable(int uart)
+{
+	flag_uartn_from_usb &= ~BIT(uart);
+}
