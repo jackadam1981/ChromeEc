@@ -46,6 +46,53 @@
       "revId": "e836d4625780c3d9cb64235dcad760d18d7e484f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93fed7c3_bb292e47",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T22:14:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f530fc41_7e4820cc",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "e836d4625780c3d9cb64235dcad760d18d7e484f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2734fe24_599af4a6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T22:14:07Z",
+      "side": 1,
+      "message": "is not supposed work.",
+      "range": {
+        "startLine": 288,
+        "startChar": 25,
+        "endLine": 288,
+        "endChar": 52
+      },
+      "revId": "e836d4625780c3d9cb64235dcad760d18d7e484f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
