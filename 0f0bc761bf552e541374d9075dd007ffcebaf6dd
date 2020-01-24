@@ -22,6 +22,30 @@
       "revId": "0f0bc761bf552e541374d9075dd007ffcebaf6dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a78f3d9_761049e3",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-24T00:21:57Z",
+      "side": 1,
+      "message": "Done\nAck\nLooks like we dont need __override",
+      "parentUuid": "c116a5a8_594f2c4f",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 10
+      },
+      "revId": "0f0bc761bf552e541374d9075dd007ffcebaf6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
