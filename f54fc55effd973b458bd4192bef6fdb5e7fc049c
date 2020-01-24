@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8a0ac9_90efd1d6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T04:15:17Z",
+      "side": 1,
+      "message": "What happens if we\u0027re setting flags to send SOP\u0027, but aren\u0027t the vconn source?  Are we at risk of sending SOP messages and interpreting the returns as SOP\u0027 due to our flags?",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 19
+      },
+      "revId": "f54fc55effd973b458bd4192bef6fdb5e7fc049c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d34e9787_8c87c751",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T04:15:17Z",
+      "side": 1,
+      "message": "Do you know if we need to send an Exit mode to the SOP\u0027 partner, since we\u0027ve already sent the SOP\u0027 Enter mode?",
+      "range": {
+        "startLine": 2241,
+        "startChar": 5,
+        "endLine": 2243,
+        "endChar": 16
+      },
+      "revId": "f54fc55effd973b458bd4192bef6fdb5e7fc049c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4773f216_8b935159",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2258,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T04:15:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand here, why would you want to enter mode with the PD SVID?",
+      "range": {
+        "startLine": 2256,
+        "startChar": 5,
+        "endLine": 2258,
+        "endChar": 40
+      },
+      "revId": "f54fc55effd973b458bd4192bef6fdb5e7fc049c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
