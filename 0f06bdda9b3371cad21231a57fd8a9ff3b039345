@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0368a7a_230c96e6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-24T18:15:54Z",
+      "side": 1,
+      "message": "USB_FROM_UART also needs to be or\u0027d here.",
+      "revId": "0f06bdda9b3371cad21231a57fd8a9ff3b039345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0859ccc_97d8dd3f",
         "filename": "chip/g/usart.c",
         "patchSetId": 4
