@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd65cf84_cd2547fe",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T17:09:19Z",
+      "side": 1,
+      "message": "There might be console output data before CCD connection is detected on power reset. \nUnless CCD_ENABLE_UART_TO_USB_* is enabled, those data shall be dropped. Since cr50 code in ToT enqueues those data unconditionally, I intend to do the same thing even with this patch. For that reason, I enable CCD_ENABE_UART_TO_USB_AP here.",
+      "parentUuid": "e553c440_578d7eb5",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 64
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e6f9f1f_c6f09dac",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 3
@@ -82,6 +106,30 @@
       "writtenOn": "2020-01-24T05:09:37Z",
       "side": 1,
       "message": "These capabilities are becoming the enable the usb part of the uart endpoints, so you don\u0027t really need the \u0026~ CCD_ENABLE_UART_EC part here. I don\u0027t know if this change is keeping the current behavior and the next change is what\u0027s going to change it so the capabilities only affect the usb part.",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 47
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4762d556_ffdfa7d3",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T17:09:19Z",
+      "side": 1,
+      "message": "Let\u0027s assume CCD is closed and we disable CCD_ENABLE_UART_TO_USB_EC only, not CCD_ENABLE_UART_EC. EC might be still talkative in UART, and H1 processes those data, but CR50 won\u0027t push those data into UART-USB queue.\nI think, we don\u0027t want H1 to process those data when CCD is closed, for power consumption reason. So I think we need to clear CCD_ENABLE_UART_EC in this case.",
+      "parentUuid": "b89ac809_ef92fd37",
       "range": {
         "startLine": 281,
         "startChar": 0,
