@@ -112,4 +112,49 @@ void uartn_enable(int uart);
  * done explicitly via uartn_tx_disconnect().
  */
 void uartn_disable(int uart);
+
+/**
+ * Return non-zero if UART-to-USB bridging is enabled.
+ *
+ * @param uart		UART to check
+ * @return 1 if UART-to-USB bridging is enabled, 0 if disabled.
+ */
+int uartn_to_usb_is_enabled(int uart);
+
+/**
+ * Return non-zero if UART-from-USB bridging is enabled.
+ *
+ * @param uart		UART to check
+ * @return 1 if UART-from-USB bridging is enabled, 0 if disabled.
+ */
+int uartn_from_usb_is_enabled(int uart);
+
+/**
+ * Enable UART-to-USB bridging.
+ *
+ * @param uart		UART to enable
+ */
+void uartn_to_usb_enable(int uart);
+
+/**
+ * Enable UART-from-USB bridging.
+ *
+ * @param uart		UART to enable
+ */
+void uartn_from_usb_enable(int uart);
+
+/**
+ * Disable UART-to-USB bridging.
+ *
+ * @param uart		UART to disable
+ */
+void uartn_to_usb_disable(int uart);
+
+/**
+ * Disable UART-from-USB bridging.
+ *
+ * @param uart		UART to disable
+ */
+void uartn_from_usb_disable(int uart);
+
 #endif  /* __CROS_EC_UARTN_H */

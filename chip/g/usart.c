@@ -134,6 +134,10 @@ void get_data_from_usb(struct usart_config const *config)
 	struct queue const *uart_out = config->consumer.queue;
 	int c;
 
+	/* If UART-from-USB bridging is not allowed, drop all input data. */
+	if (!uartn_from_usb_is_enabled(config->uart))
+		queue_advance_head(uart_out, queue_count(uart_out));
+
 	/* Copy output from buffer until TX fifo full or output buffer empty */
 	while (queue_count(uart_out) && QUEUE_REMOVE_UNITS(uart_out, &c, 1))
 		uartn_write_char(config->uart, c);
@@ -154,12 +158,16 @@ void send_data_to_usb(struct usart_config const *config)
 
 	q_room = queue_space(uart_in);
 
-	if (!q_room)
-		return;
-
 	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
 	count = 0;
+
+	/*
+	 * If UART-to-USB bridging is not allowed, do not put any output data
+	 * to uart_in queue.
+	 */
+	if (!uartn_to_usb_is_enabled(uart))
+		q_room = 0;
 
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
