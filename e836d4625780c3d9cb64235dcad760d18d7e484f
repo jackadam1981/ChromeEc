@@ -22,6 +22,30 @@
       "revId": "e836d4625780c3d9cb64235dcad760d18d7e484f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f530fc41_7e4820cc",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T04:08:52Z",
+      "side": 1,
+      "message": "With a fix line 150, flash_ec in bitbang works.\n flag_mask \u003d is_tx ? (CCD_ENABLE_UART_EC_TX | CCD_ENABLE_UART_EC_BITBANG) : CCD_ENABLE_UART_EC;\n\nAnyway, I upload a patch http://crrev.com/c/2018061, which reflects your comment.\nWill rebase this patch on it, once it lands.",
+      "parentUuid": "e6f5333d_68d8de7a",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "e836d4625780c3d9cb64235dcad760d18d7e484f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
