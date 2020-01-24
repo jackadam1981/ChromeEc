@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff1dd15_41b58661",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T04:02:38Z",
+      "side": 0,
+      "message": "Removing this as line 164 can check this condition. (count \u003d 0, q_room \u003d 0).",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "88549e6d2bf0f951d58b9a714033a08a72372df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
