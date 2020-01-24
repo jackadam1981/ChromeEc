@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "831f5931_ba4a96e8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-24T17:40:55Z",
+      "side": 1,
+      "message": "These fields don\u0027t match the names that are getting used by the Kernel cros_ec driver.  Need to coordinate with this CL:2002184",
+      "range": {
+        "startLine": 5229,
+        "startChar": 0,
+        "endLine": 5232,
+        "endChar": 58
+      },
+      "revId": "c4d4b1daff98c04dc11cb6dd7ba9c8d6aa707643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
