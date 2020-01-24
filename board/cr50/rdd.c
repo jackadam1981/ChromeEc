@@ -134,6 +134,18 @@ enum ccd_state_flag {
 
 	/* SPI port is enabled for AP and/or EC flash */
 	CCD_ENABLE_SPI			= BIT(6),
+
+	/* AP data bridging from UART to USB is enabled. */
+	CCD_ENABLE_UART_TO_USB_AP	= BIT(7),
+
+	/* AP data bridging from USB to UART is enabled. */
+	CCD_ENABLE_UART_FROM_USB_AP	= BIT(8),
+
+	/* EC data bridging from UART to USB is enabled. */
+	CCD_ENABLE_UART_TO_USB_EC	= BIT(9),
+
+	/* EC data bridging from USB to UART is enabled. */
+	CCD_ENABLE_UART_FROM_USB_EC	= BIT(10),
 };
 
 int console_is_restricted(void)
@@ -168,6 +180,15 @@ static uint32_t get_state_flags(void)
 	if (ccd_usb_spi.state->enabled_device)
 		flags_now |= CCD_ENABLE_SPI;
 
+	if (uartn_to_usb_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_UART_TO_USB_AP;
+	if (uartn_from_usb_is_enabled(UART_AP))
+		flags_now |= CCD_ENABLE_UART_FROM_USB_AP;
+	if (uartn_to_usb_is_enabled(UART_EC))
+		flags_now |= CCD_ENABLE_UART_TO_USB_EC;
+	if (uartn_from_usb_is_enabled(UART_EC))
+		flags_now |= CCD_ENABLE_UART_FROM_USB_EC;
+
 	return flags_now;
 }
 
@@ -193,6 +214,14 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 		cprintf(channel, " I2C");
 	if (flags & CCD_ENABLE_SPI)
 		cprintf(channel, " SPI");
+	if (flags & CCD_ENABLE_UART_TO_USB_AP)
+		cprintf(channel, " USB_AP");
+	if (flags & CCD_ENABLE_UART_FROM_USB_AP)
+		cprintf(channel, "+RX");
+	if (flags & CCD_ENABLE_UART_TO_USB_EC)
+		cprintf(channel, " USB_EC");
+	if (flags & CCD_ENABLE_UART_FROM_USB_EC)
+		cprintf(channel, "+RX");
 }
 
 static void ccd_state_change_hook(void)
@@ -206,11 +235,15 @@ static void ccd_state_change_hook(void)
 
 	/* Start out by figuring what flags we might want enabled */
 
-	/* Enable EC/AP UART RX if that device is on */
+	/*
+	 * Enable EC/AP UART RX if that device is on.
+	 * It will include CCD_ENABLE_UART_TO_USB flag so that any console
+	 * output data at the very beginning can be pushed into USB queue.
+	 */
 	if (ap_uart_is_on())
-		flags_want |= CCD_ENABLE_UART_AP;
+		flags_want |= (CCD_ENABLE_UART_AP | CCD_ENABLE_UART_TO_USB_AP);
 	if (ec_is_rx_allowed())
-		flags_want |= CCD_ENABLE_UART_EC;
+		flags_want |= (CCD_ENABLE_UART_EC | CCD_ENABLE_UART_TO_USB_EC);
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())
@@ -223,7 +256,9 @@ static void ccd_state_change_hook(void)
 	 */
 	if (ccd_ext_is_enabled())
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
-			       CCD_ENABLE_I2C | CCD_ENABLE_SPI);
+			       CCD_ENABLE_I2C | CCD_ENABLE_SPI |
+			       CCD_ENABLE_UART_FROM_USB_AP |
+			       CCD_ENABLE_UART_FROM_USB_EC);
 	else
 		flags_want = 0;
 
@@ -233,18 +268,22 @@ static void ccd_state_change_hook(void)
 	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
 		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
 				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
-				CCD_ENABLE_SPI);
+				CCD_ENABLE_SPI |
+				CCD_ENABLE_UART_FROM_USB_AP |
+				CCD_ENABLE_UART_FROM_USB_EC);
 
 	/* Disable based on capabilities */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_AP_TX))
-		flags_want &= ~CCD_ENABLE_UART_AP;
+		flags_want &= ~(CCD_ENABLE_UART_AP | CCD_ENABLE_UART_TO_USB_AP);
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
-		flags_want &= ~CCD_ENABLE_UART_AP_TX;
+		flags_want &= ~(CCD_ENABLE_UART_AP_TX |
+				CCD_ENABLE_UART_FROM_USB_AP);
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
-		flags_want &= ~CCD_ENABLE_UART_EC;
+		flags_want &= ~(CCD_ENABLE_UART_EC | CCD_ENABLE_UART_TO_USB_EC);
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
 		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
-				CCD_ENABLE_UART_EC_BITBANG);
+				CCD_ENABLE_UART_EC_BITBANG |
+				CCD_ENABLE_UART_FROM_USB_EC);
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
 
@@ -262,15 +301,26 @@ static void ccd_state_change_hook(void)
 
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
-		flags_want &= ~CCD_ENABLE_UART_AP;
+		flags_want &= ~(CCD_ENABLE_UART_AP | CCD_ENABLE_UART_TO_USB_AP);
 	if (ccd_block & CCD_BLOCK_EC_UART)
-		flags_want &= ~CCD_ENABLE_UART_EC;
+		flags_want &= ~(CCD_ENABLE_UART_EC | CCD_ENABLE_UART_TO_USB_EC);
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
 	if (!(flags_want & CCD_ENABLE_UART_AP))
-		flags_want &= ~CCD_ENABLE_UART_AP_TX;
+		flags_want &= ~(CCD_ENABLE_UART_AP_TX |
+				CCD_ENABLE_UART_TO_USB_AP |
+				CCD_ENABLE_UART_FROM_USB_AP);
 	if (!(flags_want & CCD_ENABLE_UART_EC))
-		flags_want &= ~CCD_ENABLE_UART_EC_TX;
+		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
+				CCD_ENABLE_UART_EC_BITBANG |
+				CCD_ENABLE_UART_TO_USB_EC |
+				CCD_ENABLE_UART_FROM_USB_EC);
+
+	if (!(flags_want & CCD_ENABLE_UART_AP_TX))
+		flags_want &= ~CCD_ENABLE_UART_FROM_USB_AP;
+	if (!(flags_want & (CCD_ENABLE_UART_EC_TX |
+			    CCD_ENABLE_UART_EC_BITBANG)))
+		flags_want &= ~CCD_ENABLE_UART_FROM_USB_EC;
 
 	/* If no change, we're done */
 	if (flags_now == flags_want)
@@ -299,6 +349,15 @@ static void ccd_state_change_hook(void)
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 0);
 
+	if (delta & CCD_ENABLE_UART_TO_USB_AP)
+		uartn_to_usb_disable(UART_AP);
+	if (delta & CCD_ENABLE_UART_FROM_USB_AP)
+		uartn_from_usb_disable(UART_AP);
+	if (delta & CCD_ENABLE_UART_TO_USB_EC)
+		uartn_to_usb_disable(UART_EC);
+	if (delta & CCD_ENABLE_UART_FROM_USB_EC)
+		uartn_from_usb_disable(UART_EC);
+
 	/* Handle turning things on */
 	delta = flags_want & ~flags_now;
 	if (delta & CCD_ENABLE_UART_AP)
@@ -323,6 +382,15 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	if (delta & CCD_ENABLE_UART_TO_USB_AP)
+		uartn_to_usb_enable(UART_AP);
+	if (delta & CCD_ENABLE_UART_FROM_USB_AP)
+		uartn_from_usb_enable(UART_AP);
+	if (delta & CCD_ENABLE_UART_TO_USB_EC)
+		uartn_to_usb_enable(UART_EC);
+	if (delta & CCD_ENABLE_UART_FROM_USB_EC)
+		uartn_from_usb_enable(UART_EC);
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
