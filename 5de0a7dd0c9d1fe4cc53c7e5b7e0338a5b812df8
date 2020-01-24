@@ -22,6 +22,30 @@
       "revId": "5de0a7dd0c9d1fe4cc53c7e5b7e0338a5b812df8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fffb2df4_442add3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-01-24T21:27:50Z",
+      "side": 1,
+      "message": "Yes I tested SPI over CCD on my Drallion and it still works, I also just verified that this does work on Sarien as well.",
+      "parentUuid": "9e5480e2_19fc5101",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "5de0a7dd0c9d1fe4cc53c7e5b7e0338a5b812df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
