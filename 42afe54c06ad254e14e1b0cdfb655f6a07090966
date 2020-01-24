@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4e10bb5_7e3fa006",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-24T02:24:34Z",
+      "side": 1,
+      "message": "nit: \u0027version\u0027 indicates the larger, the newer. ID doesn\u0027t.",
+      "range": {
+        "startLine": 615,
+        "startChar": 16,
+        "endLine": 615,
+        "endChar": 18
+      },
+      "revId": "42afe54c06ad254e14e1b0cdfb655f6a07090966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631755c3_8792e92f",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-24T02:24:34Z",
+      "side": 1,
+      "message": "FYI: You might as well try HOOK_PRIO_FIRST for fun. I2C is no longer initialized by HOOK_INIT.",
+      "range": {
+        "startLine": 639,
+        "startChar": 34,
+        "endLine": 639,
+        "endChar": 56
+      },
+      "revId": "42afe54c06ad254e14e1b0cdfb655f6a07090966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
