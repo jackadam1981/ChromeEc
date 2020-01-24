@@ -129,19 +129,59 @@ USB_STREAM_CONFIG(ec_usb,
 		  ec_uart_to_usb)
 #endif
 
+#ifdef BOARD_CR50
+static uint8_t ec_bridge_enabled_;
+static uint8_t ec_bridge_readwrite_;
+
+void uart_ec_bridge_enable(int enable, int write)
+{
+	write = enable && write;
+
+	if (write && !ec_bridge_readwrite_)
+		task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+
+	ec_bridge_enabled_ = enable;
+	ec_bridge_readwrite_ = write;
+}
+
+int uart_ec_bridge_is_enabled(void)
+{
+	return !!ec_bridge_enabled_;
+}
+
+int uart_ec_bridge_is_readwritable(void)
+{
+	return !!ec_bridge_readwrite_;
+}
+
+#endif  /* BOARD_CR50 */
+
 void get_data_from_usb(struct usart_config const *config)
 {
 	struct queue const *uart_out = config->consumer.queue;
 	int c;
 
 #ifdef BOARD_CR50
-	/*
-	 * If EC-CR50 communication is on-going, then let's not forward
-	 * console input to EC for now.
-	 */
-	if (ec_comm_is_uart_in_packet_mode(config->uart))
-		return;
-#endif
+	if (config->uart == UART_EC) {
+		/*
+		 * If USB-to-UART bridging is disabled, drop all input data.
+		 * Otherwise, data could be pushed into UART TX FIFO, and
+		 * transferred to EC eventually once EC-CR50 communication
+		 * enables EC UART.
+		 */
+		if (!ec_bridge_readwrite_) {
+			queue_advance_head(uart_out, queue_count(uart_out));
+			return;
+		}
+
+		/*
+		 * If EC-CR50 communication is on-going, then let's not forward
+		 * console input to EC for now.
+		 */
+		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+			return;
+	}
+#endif  /* BOARD_CR50 */
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */
 	while (queue_count(uart_out) && QUEUE_REMOVE_UNITS(uart_out, &c, 1))
@@ -159,28 +199,33 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t count;
 	size_t q_room;
 	size_t tail;
-	size_t mask;
+	const size_t mask = uart_in->buffer_units_mask;
+	size_t inc = 1;
 
 	q_room = queue_space(uart_in);
-
-	if (!q_room)
-		return;
-
-	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
 	count = 0;
 
+#ifdef BOARD_CR50
+	if (uart == UART_EC) {
+		/*
+		 * If UART-to-USB bridging is not allowed, do not put any output
+		 * data to uart_in queue.
+		 */
+		if (!ec_bridge_enabled_)
+			inc = 0;
+	}
+#endif  /* BOARD_CR50 */
 	/*
 	 * TODO(b/119329144): Process packet data separately,
 	 * and filter console data based on ccd capability.
 	 * if (ec_comm_is_uart_in_packet_mode(uart))
 	 *	...
 	 */
-
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
+		tail = (tail + inc) & mask;
+		count += inc;
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);
