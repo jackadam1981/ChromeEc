@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19d6e8ae_bfcfc8ce",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-24T00:19:37Z",
+      "side": 1,
+      "message": "This slave address doesn\u0027t match PS8751_I2C_ADDR1_FLAGS (0xb).  Can you add a comment to explain why?  Also can you add a macro to px8xxx.h for this slave address if this is a common secondary address exposed by the part?",
+      "range": {
+        "startLine": 478,
+        "startChar": 32,
+        "endLine": 478,
+        "endChar": 37
+      },
+      "revId": "e2995a1ac435910d5a5a02440edc5f2f7c727c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b763991b_cd9656ec",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-24T00:19:37Z",
+      "side": 1,
+      "message": "Please add a TODO for b/148243971 to update this GPIO for the next build.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 68
+      },
+      "revId": "e2995a1ac435910d5a5a02440edc5f2f7c727c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
