@@ -135,11 +135,52 @@ enum ccd_state_flag {
 
 	/* SPI port is enabled for AP and/or EC flash */
 	CCD_ENABLE_SPI			= BIT(6),
+
+	/* EC data bridging from UART to USB is enabled. */
+	CCD_ENABLE_USB_FROM_UART_EC	= BIT(7),
+
+	/* EC data bridging from USB to UART is enabled. */
+	CCD_ENABLE_USB_TO_UART_EC	= BIT(8),
 };
 
 int console_is_restricted(void)
 {
 	return !ccd_is_cap_enabled(CCD_CAP_GSC_RESTRICTED_CONSOLE);
+}
+
+/*
+ *Flags indicating if uartn-usb bridge is enabled.
+ * [0]: UART to USB bridge.
+ * [1]: USB to UART bridge.
+ */
+enum ccd_state_flag flag_bridge;
+int ccd_is_enabled_ec_usb_uart_bridge(enum ccd_bridge_dir dir)
+{
+	enum ccd_state_flag flag_mask = (dir == CCD_BRIDGE_RX) ?
+						CCD_ENABLE_USB_FROM_UART_EC :
+						CCD_ENABLE_USB_TO_UART_EC;
+	return flag_bridge & flag_mask;
+}
+
+static void set_ec_usb_uart_bridge_(int enable, enum ccd_bridge_dir dir)
+{
+	enum ccd_state_flag flag_mask = (dir == CCD_BRIDGE_RX) ?
+						CCD_ENABLE_USB_FROM_UART_EC :
+						CCD_ENABLE_USB_TO_UART_EC;
+	if (enable) {
+		flag_bridge |= flag_mask;
+
+		/* Let's flush any blocked console input data if any.
+		 *
+		 * NOTE: The current implementation is checking for EC UART
+		 * only, not AP UART yet. If it is required, then you should
+		 * update this code.
+		 */
+		if (dir == CCD_BRIDGE_TX)
+			task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+	} else {
+		flag_bridge &= ~flag_mask;
+	}
 }
 
 /**
@@ -169,6 +210,9 @@ static uint32_t get_state_flags(void)
 	if (ccd_usb_spi.state->enabled_device)
 		flags_now |= CCD_ENABLE_SPI;
 
+	flags_now |= (flag_bridge & (CCD_ENABLE_USB_FROM_UART_EC|
+				     CCD_ENABLE_USB_TO_UART_EC));
+
 	return flags_now;
 }
 
@@ -180,13 +224,18 @@ static uint32_t get_state_flags(void)
  */
 static void print_state_flags(enum console_channel channel, uint32_t flags)
 {
+	static const uint32_t ec_rx_mask = CCD_ENABLE_UART_EC |
+					   CCD_ENABLE_USB_FROM_UART_EC;
+	static const uint32_t ec_tx_mask = CCD_ENABLE_UART_EC_TX |
+					   CCD_ENABLE_USB_TO_UART_EC;
+
 	if (flags & CCD_ENABLE_UART_AP)
 		cprintf(channel, " UARTAP");
 	if (flags & CCD_ENABLE_UART_AP_TX)
 		cprintf(channel, "+TX");
-	if (flags & CCD_ENABLE_UART_EC)
+	if ((flags & ec_rx_mask) == ec_rx_mask)
 		cprintf(channel, " UARTEC");
-	if (flags & CCD_ENABLE_UART_EC_TX)
+	if ((flags & ec_tx_mask) == ec_tx_mask)
 		cprintf(channel, "+TX");
 	if (flags & CCD_ENABLE_UART_EC_BITBANG)
 		cprintf(channel, "+BB");
@@ -194,6 +243,10 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 		cprintf(channel, " I2C");
 	if (flags & CCD_ENABLE_SPI)
 		cprintf(channel, " SPI");
+	if (flags & CCD_ENABLE_USB_FROM_UART_EC)
+		cprintf(channel, " USBEC");
+	if (flags & CCD_ENABLE_USB_TO_UART_EC)
+		cprintf(channel, "+TX");
 }
 
 static void ccd_state_change_hook(void)
@@ -231,9 +284,17 @@ static void ccd_state_change_hook(void)
 	 */
 	if (ccd_ext_is_enabled())
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
+			       CCD_ENABLE_USB_TO_UART_EC |
 			       CCD_ENABLE_I2C | CCD_ENABLE_SPI);
 	else
 		flags_want = 0;
+
+	/*
+	 * Enable CCD_ENABLE_USB_FROM_UART_EC even when CCD is not connected.
+	 * By doing so, any console output data at the very beginning (before
+	 * ccd is detected) can be pushed into USB stream queue.
+	 */
+	flags_want |= CCD_ENABLE_USB_FROM_UART_EC;
 
 	/* Then disable flags we can't have */
 
@@ -249,9 +310,14 @@ static void ccd_state_change_hook(void)
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
-		flags_want &= ~CCD_ENABLE_UART_EC;
+		flags_want &= ~CCD_ENABLE_USB_FROM_UART_EC;
+	/*
+	 * UART_EC TX needs to be disconnected as well as USB RX, otherwise
+	 * Servo is not detectable.
+	 */
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
 		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
+				CCD_ENABLE_USB_TO_UART_EC |
 				CCD_ENABLE_UART_EC_BITBANG);
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
@@ -322,6 +388,11 @@ static void ccd_state_change_hook(void)
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 0);
 
+	if (delta & CCD_ENABLE_USB_FROM_UART_EC)
+		set_ec_usb_uart_bridge_(0, CCD_BRIDGE_RX);
+	if (delta & CCD_ENABLE_USB_TO_UART_EC)
+		set_ec_usb_uart_bridge_(0, CCD_BRIDGE_TX);
+
 	/* Handle turning things on */
 	delta = flags_want & ~flags_now;
 	if (delta & CCD_ENABLE_UART_AP)
@@ -346,6 +417,11 @@ static void ccd_state_change_hook(void)
 		usb_i2c_board_enable();
 	if (delta & CCD_ENABLE_SPI)
 		usb_spi_enable(&ccd_usb_spi, 1);
+
+	if (delta & CCD_ENABLE_USB_FROM_UART_EC)
+		set_ec_usb_uart_bridge_(1, CCD_BRIDGE_RX);
+	if (delta & CCD_ENABLE_USB_TO_UART_EC)
+		set_ec_usb_uart_bridge_(1, CCD_BRIDGE_TX);
 }
 DECLARE_DEFERRED(ccd_state_change_hook);
 
