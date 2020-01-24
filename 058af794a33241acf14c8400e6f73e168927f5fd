@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cb484a15_5e16b5a6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-24T18:29:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e6f9f1f_c6f09dac",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "058af794a33241acf14c8400e6f73e168927f5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0088ebe_a4dc7b99",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 3
