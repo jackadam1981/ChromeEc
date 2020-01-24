@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "9215f7b0_43d0724f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-24T23:16:46Z",
+      "side": 1,
+      "message": "Ah good call.I think it got called after resume for pause. LGTM",
+      "parentUuid": "7b4822c5_5d60ae99",
+      "range": {
+        "startLine": 992,
+        "startChar": 4,
+        "endLine": 993,
+        "endChar": 12
+      },
+      "revId": "2781d0c754866a3c9fa5807c40f78e4cd78b5316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a44abe79_b983a438",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
