@@ -15,6 +15,7 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
+#include "driver/retimer/nb7v904m.h"
 #include "driver/sync.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/tcpm/tcpci.h"
@@ -316,6 +317,15 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.port_addr = MUX_PORT_AND_ADDR(I2C_PORT_SUB_USB_C1, 0x54),
 		.driver = &pi3usb3x532_usb_mux_driver,
 	}
+};
+
+struct usb_retimer usb_retimers[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{ 0 },
+	{
+		.i2c_port = I2C_PORT_SUB_USB_C1,
+		.i2c_addr_flags = NB7V904M_I2C_ADDR0,
+		.driver = &nb7v904m_usb_redriver_drv,
+	},
 };
 
 uint16_t tcpc_get_alert_status(void)
