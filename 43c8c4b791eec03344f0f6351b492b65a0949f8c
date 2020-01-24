@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0fc353_fd53e19a",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-24T17:36:57Z",
+      "side": 1,
+      "message": "nit: could leave a comment that port 0 has no retimer to clarify the 0",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 7
+      },
+      "revId": "43c8c4b791eec03344f0f6351b492b65a0949f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
