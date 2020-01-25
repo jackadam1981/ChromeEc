@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f266e240_4dc467e1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-25T01:56:45Z",
+      "side": 1,
+      "message": "Actually we do need to keep disabling UART_EC_TX here, so servo detection doesn\u0027t break.",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 43
+      },
+      "revId": "f79c0d1c3b34c623fee46fcce8df95b2fdcc4d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
