@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f366d3e5_9e6491a3",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-25T01:41:24Z",
+      "side": 1,
+      "message": "It\u0027s required to have \u0027__override\u0027 prefix for these functions (for code searching and readability).",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 25
+      },
+      "revId": "f8080432406ff8e36deb6d09950da8525e47c99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
