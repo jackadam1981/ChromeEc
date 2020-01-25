@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c89fe4eb_8fe6699c",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-25T00:36:01Z",
+      "side": 1,
+      "message": "Always disable sleep. I think regular sleep could also interfere with this.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4cc640_8452f20a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-25T00:36:01Z",
+      "side": 1,
+      "message": "Wont these already be in flags_want? CCD_ENABLE_UART_EC definitely will.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 61
+      },
+      "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36513f15_1ee99e36",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-25T00:36:01Z",
+      "side": 1,
+      "message": "I thought we reset uart when it gets enabled. Will there actually be anything in the fifos or queues?",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 42
+      },
+      "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
