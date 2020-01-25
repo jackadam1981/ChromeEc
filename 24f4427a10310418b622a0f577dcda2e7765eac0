@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6cf8f3d_06beef10",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-25T01:53:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89fe4eb_8fe6699c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb4cc640_8452f20a",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 21
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d970192e_e17fa2f6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-25T01:53:43Z",
+      "side": 1,
+      "message": "This is for the case that ccd_ext_is_enabled() is false and flags_want \u003d 0 by line 270.",
+      "parentUuid": "cb4cc640_8452f20a",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 61
+      },
+      "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36513f15_1ee99e36",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 21
@@ -68,6 +116,30 @@
       "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27cf47f8_8a810583",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-25T01:53:43Z",
+      "side": 1,
+      "message": "As long as CCD capability is enabled, data could be in fifos, and ToT code doesn\u0027t drop them, and resetting uart doesn\u0027t affect any data in fifos.\n\nWith EC-CR50 comm, data might be blocked and remain in fifos during EC-CR50 communication.\n\nI am moving this to usb_to_uartn_enable() function.",
+      "parentUuid": "36513f15_1ee99e36",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 42
+      },
+      "revId": "24f4427a10310418b622a0f577dcda2e7765eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
