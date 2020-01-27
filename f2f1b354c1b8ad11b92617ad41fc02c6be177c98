@@ -46,6 +46,30 @@
       "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2faca7_6ceb64cd",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T15:06:23Z",
+      "side": 0,
+      "message": "Alright, I see it now, thanks for the explanation.\n\nLet\u0027s change the common code in usb_pd_protocol to skip enabling/disabling the sleep mask if\n\nCONFIG_TCPC_ON_CHIP is defined and then ite can define that. Thoughts?",
+      "parentUuid": "121a2b45_ab7e257e",
+      "range": {
+        "startLine": 582,
+        "startChar": 2,
+        "endLine": 582,
+        "endChar": 35
+      },
+      "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
