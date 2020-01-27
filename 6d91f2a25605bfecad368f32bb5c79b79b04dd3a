@@ -22,6 +22,30 @@
       "revId": "6d91f2a25605bfecad368f32bb5c79b79b04dd3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb7fe9c_4ab7e42e",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-01-27T21:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c38cff58_e2da653f",
+      "range": {
+        "startLine": 102,
+        "startChar": 60,
+        "endLine": 102,
+        "endChar": 61
+      },
+      "revId": "6d91f2a25605bfecad368f32bb5c79b79b04dd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
