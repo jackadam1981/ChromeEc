@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "2e00d8d8_d9077572",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-27T20:42:58Z",
+      "side": 1,
+      "message": "Ah, I understand in patchset #33.  Thank you for explaining!",
+      "parentUuid": "112fcc1f_96390b6e",
+      "range": {
+        "startLine": 1371,
+        "startChar": 3,
+        "endLine": 1371,
+        "endChar": 14
+      },
+      "revId": "8a295e79862ed2d842855966e64bf0eddbcc2b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5334b4a_5b5cd7ce",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 32
