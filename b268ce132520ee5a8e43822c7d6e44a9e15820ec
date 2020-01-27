@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "443c3339_19e28b9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-27T18:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8d2c5e_4b2eca12",
+      "range": {
+        "startLine": 7,
+        "startChar": 56,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2c8796d_70840956",
         "filename": "include/usb_mux.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36b21cb_42f0e2c3",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-27T18:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c8796d_70840956",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "822550d6_027a03d8",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-27T18:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "773ef8a7_c4d50b4b",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c73983c_58adac53",
         "filename": "include/usb_mux.h",
         "patchSetId": 2
@@ -85,6 +157,24 @@
       "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699d74d0_ec433fb3",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-27T18:32:53Z",
+      "side": 1,
+      "message": "Done\n\nyes keeping in ex_commads.h is useful, same macro can be used by Kernel also",
+      "parentUuid": "1c73983c_58adac53",
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
