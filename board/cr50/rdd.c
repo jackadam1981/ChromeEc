@@ -199,7 +199,9 @@ static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
 	uint32_t flags_want = 0;
+	uint32_t flags_to_clean_uart_ec_tx = CCD_ENABLE_UART_EC_TX;
 	uint32_t delta;
+	int ec_comm_is_active;
 
 	/* Check what's enabled now */
 	flags_now = get_state_flags();
@@ -217,6 +219,17 @@ static void ccd_state_change_hook(void)
 		flags_want |= CCD_ENABLE_UART_EC_BITBANG;
 #endif
 
+	ec_comm_is_active = ec_comm_is_uart_in_packet_mode(UART_EC);
+	if (ec_comm_is_active) {
+		/*
+		 * Do not yield UART_EC TX to servo.
+		 * Note: With the board property, BOARD_EC_CR50_COMM_SUPPORT,
+		 *       H1-EC UART connection is supposed to dominate over
+		 *       servo-EC uart by HW design.
+		 */
+		flags_to_clean_uart_ec_tx = 0;
+	}
+
 	/*
 	 * External CCD will try to enable all the ports. If it's disabled,
 	 * disable all ports.
@@ -224,6 +237,10 @@ static void ccd_state_change_hook(void)
 	if (ccd_ext_is_enabled())
 		flags_want |= (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
 			       CCD_ENABLE_I2C | CCD_ENABLE_SPI);
+	else if (ec_comm_is_active)
+		/* EC-CR50 comm needs UART_EC RX/TX enabled. */
+		flags_want = (flags_want & CCD_ENABLE_UART_EC) |
+			     CCD_ENABLE_UART_EC_TX;
 	else
 		flags_want = 0;
 
@@ -231,7 +248,8 @@ static void ccd_state_change_hook(void)
 
 	/* Servo takes over UART TX, I2C, and SPI. */
 	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
-		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
+		flags_want &= ~(CCD_ENABLE_UART_AP_TX |
+				flags_to_clean_uart_ec_tx |
 				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
 				CCD_ENABLE_SPI);
 
@@ -243,7 +261,7 @@ static void ccd_state_change_hook(void)
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
 		flags_want &= ~CCD_ENABLE_UART_EC;
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
-		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
+		flags_want &= ~(flags_to_clean_uart_ec_tx |
 				CCD_ENABLE_UART_EC_BITBANG);
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
@@ -263,7 +281,7 @@ static void ccd_state_change_hook(void)
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
-	if (ccd_block & CCD_BLOCK_EC_UART)
+	if ((ccd_block & CCD_BLOCK_EC_UART) && !ec_comm_is_active)
 		flags_want &= ~CCD_ENABLE_UART_EC;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
