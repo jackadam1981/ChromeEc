@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01f418a_e3d2eaee",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:43:05Z",
+      "side": 1,
+      "message": "don\u0027t you only want to call this if the daughterboard is in use?",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 494,
+        "endChar": 16
+      },
+      "revId": "0e658cf65e5476048ef4ccbf8bd7908cd8594785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
