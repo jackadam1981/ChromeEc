@@ -46,6 +46,30 @@
       "revId": "f8080432406ff8e36deb6d09950da8525e47c99a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4a4d4a_4199be0c",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-27T16:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cac51d_afd2f51c",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 25
+      },
+      "revId": "f8080432406ff8e36deb6d09950da8525e47c99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
