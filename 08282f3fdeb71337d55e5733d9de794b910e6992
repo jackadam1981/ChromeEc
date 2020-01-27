@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e25f68c8_fc6faa72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T14:35:49Z",
+      "side": 1,
+      "message": "why do we need a version 2?\n\nIs this just the driver for version it83201 and the existing driver is for it8302?\n\nHow different are they, the tcpc driver something we can share between them?\n\nWe should pull out as much common code as we can between the two drivers. This one should be called tcpm_it8320XX.c as well. V2 doesn\u0027t tell us enough about what the driver is used for",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "08282f3fdeb71337d55e5733d9de794b910e6992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
