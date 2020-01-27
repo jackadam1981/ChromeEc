@@ -22,6 +22,30 @@
       "revId": "f79c0d1c3b34c623fee46fcce8df95b2fdcc4d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ab799f_66523933",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-27T23:02:45Z",
+      "side": 1,
+      "message": "I am adding flags_to_clean_uart_ec_tx, which is valued as CCD_ENABLE_UART_EC_TX in default.",
+      "parentUuid": "f266e240_4dc467e1",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 43
+      },
+      "revId": "f79c0d1c3b34c623fee46fcce8df95b2fdcc4d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
