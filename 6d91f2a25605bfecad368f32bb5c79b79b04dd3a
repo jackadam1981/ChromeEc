@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c38cff58_e2da653f",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T20:58:16Z",
+      "side": 1,
+      "message": "nit: BIT(0)\n\nLet\u0027s add a BUILD_ASSERT of\n\nBUILD_ASSERT(POLARITY_COUNT\u003d\u003d4);\n\n(and addd POLARITY_COUNT) just so we know to update this function if we every change the definition",
+      "range": {
+        "startLine": 102,
+        "startChar": 60,
+        "endLine": 102,
+        "endChar": 61
+      },
+      "revId": "6d91f2a25605bfecad368f32bb5c79b79b04dd3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
