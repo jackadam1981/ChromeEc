@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c3e9162_331e0873",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:49:58Z",
+      "side": 1,
+      "message": "nit: let\u0027s change this to\n\ncc1 \u003d\u003d TYPEC_CC_VOLT_RD ? POLARITY_CC1 : POLARITY_CC2;\n\nsince we have more enum values to work with",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "397837650841c21a8c3648abfd870f87d887bfb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b122902_55b76f4d",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:49:58Z",
+      "side": 1,
+      "message": "let\u0027s add a comment that this if used when we have a known polarity for debug accessory, and we should continue to assert resistors on both lines.\n\nThe non-DTS version implies we should only assert resistors on that line.\n\nNONE means we are open or we are in unoriented debug accesssory more (as the SRC with a SNK DTS))",
+      "range": {
+        "startLine": 56,
+        "startChar": 18,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "397837650841c21a8c3648abfd870f87d887bfb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
