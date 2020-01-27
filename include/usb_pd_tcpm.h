@@ -53,6 +53,8 @@ enum tcpc_cc_polarity {
 	POLARITY_NONE = -1,
 	POLARITY_CC1 = 0,
 	POLARITY_CC2 = 1,
+	POLARITY_CC1_DTS = 2,
+	POLARITY_CC2_DTS = 3,
 };
 
 enum tcpm_transmit_type {
@@ -101,6 +103,15 @@ static inline int cc_is_snk_dbg_acc(enum tcpc_cc_voltage_status cc1,
 	enum tcpc_cc_voltage_status cc2)
 {
 	return cc1 == TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD;
+}
+
+/**
+ * Returns true if we detect the port partner is a src debug accessory.
+ */
+static inline int cc_is_src_dbg_acc(enum tcpc_cc_voltage_status cc1,
+	enum tcpc_cc_voltage_status cc2)
+{
+	return cc_is_rp(cc1) && cc_is_rp(cc2);
 }
 
 /**
