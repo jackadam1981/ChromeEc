@@ -198,7 +198,7 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
-	uint32_t flags_want = 0;
+	uint32_t flags_want;
 	uint32_t delta;
 
 	/* Check what's enabled now */
@@ -206,11 +206,11 @@ static void ccd_state_change_hook(void)
 
 	/* Start out by figuring what flags we might want enabled */
 
-	/* Enable EC/AP UART RX if that device is on */
-	if (ap_uart_is_on())
-		flags_want |= CCD_ENABLE_UART_AP;
-	if (ec_is_rx_allowed())
-		flags_want |= CCD_ENABLE_UART_EC;
+	/*
+	 * Enable EC/AP UART RX.
+	 * They shall be disabled later if that device is off.
+	 */
+	flags_want = CCD_ENABLE_UART_AP | CCD_ENABLE_UART_EC;
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())
@@ -256,15 +256,38 @@ static void ccd_state_change_hook(void)
 	    !ccd_is_cap_enabled(CCD_CAP_EC_FLASH))
 		flags_want &= ~CCD_ENABLE_SPI;
 
-	/* EC UART TX blocked by bit-banging */
-	if (flags_want & CCD_ENABLE_UART_EC_BITBANG)
-		flags_want &= ~CCD_ENABLE_UART_EC_TX;
-
 	/* UARTs can be specifically blocked by console command */
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
 	if (ccd_block & CCD_BLOCK_EC_UART)
 		flags_want &= ~CCD_ENABLE_UART_EC;
+
+	/*
+	 * To prioritize EC-CR50 communication (a.k.a. packet mode), we let CR50
+	 * check EC-CR50 packet mode after it clears flags_want for
+	 * ccd-capability, ccd-block, or servo|ccd detection reasons.
+	 * However, there are two conditions in enabling EC UART for the packet
+	 * mode: first, EC must be on (ec_is_rx_allowed() == True). Second,
+	 * cr50 is not bitbanging to EC UART
+	 * (flags_want & CCD_ENABLE_EC_BITBANG), which shall be checked soon
+	 * after this.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC))
+		flags_want |= (CCD_ENABLE_UART_EC | CCD_ENABLE_UART_EC_TX);
+
+	/*
+	 * NOTE: DO NOT PUT ANY CODES THAT ENABLE CCD CAPABILITIES BELOW THIS.
+	 */
+
+	/* Disable EC|AP UART RX if that device is off */
+	if (!ap_uart_is_on())
+		flags_want &= ~CCD_ENABLE_UART_AP;
+	if (!ec_is_rx_allowed())
+		flags_want &= ~CCD_ENABLE_UART_EC;
+
+	/* EC UART TX blocked by bit-banging */
+	if (flags_want & CCD_ENABLE_UART_EC_BITBANG)
+		flags_want &= ~CCD_ENABLE_UART_EC_TX;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
 	if (!(flags_want & CCD_ENABLE_UART_AP))
