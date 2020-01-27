@@ -198,7 +198,7 @@ static void print_state_flags(enum console_channel channel, uint32_t flags)
 static void ccd_state_change_hook(void)
 {
 	uint32_t flags_now;
-	uint32_t flags_want = 0;
+	uint32_t flags_want;
 	uint32_t delta;
 
 	/* Check what's enabled now */
@@ -206,11 +206,15 @@ static void ccd_state_change_hook(void)
 
 	/* Start out by figuring what flags we might want enabled */
 
-	/* Enable EC/AP UART RX if that device is on */
-	if (ap_uart_is_on())
-		flags_want |= CCD_ENABLE_UART_AP;
-	if (ec_is_rx_allowed())
-		flags_want |= CCD_ENABLE_UART_EC;
+	/*
+	 * Enable AP|EC UART RX.
+	 * In the last check, it will check if AP or EC is off and clear
+	 * CCD_ENABLE_UART_{AP|EC} flag from flags_want. By doing so,
+	 * this function can accommodate any logics overriding those flags,
+	 * but still be sure that UART RX will not be enabled as long as the
+	 * device is off.
+	 */
+	flags_want = CCD_ENABLE_UART_AP | CCD_ENABLE_UART_EC;
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())
@@ -264,6 +268,25 @@ static void ccd_state_change_hook(void)
 	if (ccd_block & CCD_BLOCK_AP_UART)
 		flags_want &= ~CCD_ENABLE_UART_AP;
 	if (ccd_block & CCD_BLOCK_EC_UART)
+		flags_want &= ~CCD_ENABLE_UART_EC;
+
+	/*
+	 * EC UART flags are cleared if ccd ext is not detected or if ccd block
+	 * EC UART is enabled. EC-CR50 comm trumps both of those conditions.
+	 * Re-enable the EC UART flags if EC-CR50 comm is enabled.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC) &&
+	    !(flags_want & CCD_ENABLE_UART_EC_BITBANG))
+		flags_want |= (CCD_ENABLE_UART_EC | CCD_ENABLE_UART_EC_TX);
+
+	/*
+	 * NOTE: DO NOT PUT ANY CODES THAT ENABLE CCD CAPABILITIES BELOW THIS.
+	 */
+
+	/* Disable EC|AP UART RX if that device is off */
+	if (!ap_uart_is_on())
+		flags_want &= ~CCD_ENABLE_UART_AP;
+	if (!ec_is_rx_allowed())
 		flags_want &= ~CCD_ENABLE_UART_EC;
 
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
