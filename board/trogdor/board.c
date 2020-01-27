@@ -207,6 +207,10 @@ const struct power_signal_info power_signal_list[] = {
 		GPIO_DA9313_GPIO0,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"SWITCHCAP_PG"},
+	[SC7180_AP_SUSPEND] = {
+		GPIO_AP_SUSPEND,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"AP_SUSPEND"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
