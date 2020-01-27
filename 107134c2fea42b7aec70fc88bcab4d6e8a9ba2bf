@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "57627f40_d492a1cc",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T15:57:52Z",
+      "side": 1,
+      "message": "Sounds good as a follow up CL. Thanks!",
+      "parentUuid": "d61120b6_59073539",
+      "range": {
+        "startLine": 465,
+        "startChar": 4,
+        "endLine": 465,
+        "endChar": 28
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d8053a_31ed8f0d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
@@ -391,6 +415,30 @@
       "side": 1,
       "message": "Not planning to change this, in the interest of avoiding functional changes here",
       "parentUuid": "dc6872d0_c697f9a6",
+      "range": {
+        "startLine": 926,
+        "startChar": 12,
+        "endLine": 926,
+        "endChar": 54
+      },
+      "revId": "107134c2fea42b7aec70fc88bcab4d6e8a9ba2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "290bce84_2255177a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T15:57:52Z",
+      "side": 1,
+      "message": "Good philosophy. SGTM",
+      "parentUuid": "8ef4e649_10e4c9a7",
       "range": {
         "startLine": 926,
         "startChar": 12,
