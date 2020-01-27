@@ -110,13 +110,16 @@ enum tcpc_cc_polarity get_snk_polarity(enum tcpc_cc_voltage_status cc1,
 	 * TYPEC_CC_VOLT_RP_1_5 > TYPEC_CC_VOLT_RP_DEF
 	 * TYPEC_CC_VOLT_RP_DEF > TYPEC_CC_VOLT_OPEN
 	 */
-	return cc2 > cc1;
+	if (cc_is_rp(cc1) && cc_is_rp(cc2))
+		return (cc2 > cc1) ? POLARITY_CC2_DTS : POLARITY_CC1_DTS;
+
+	return (cc2 > cc1) ? POLARITY_CC2 : POLARITY_CC1;
 }
 
 enum tcpc_cc_polarity get_src_polarity(enum tcpc_cc_voltage_status cc1,
 	enum tcpc_cc_voltage_status cc2)
 {
-	if (cc_is_open(cc1, cc2))
+	if (cc_is_open(cc1, cc2) || cc_is_snk_dbg_acc(cc1, cc2))
 		return POLARITY_NONE;
 
 	return cc1 != TYPEC_CC_VOLT_RD;

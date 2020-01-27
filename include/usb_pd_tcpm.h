@@ -53,6 +53,8 @@ enum tcpc_cc_polarity {
 	POLARITY_NONE = -1,
 	POLARITY_CC1 = 0,
 	POLARITY_CC2 = 1,
+	POLARITY_CC1_DTS = 2,
+	POLARITY_CC2_DTS = 3,
 };
 
 enum tcpm_transmit_type {
