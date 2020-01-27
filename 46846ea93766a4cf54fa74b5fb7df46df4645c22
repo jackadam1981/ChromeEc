@@ -22,6 +22,30 @@
       "revId": "46846ea93766a4cf54fa74b5fb7df46df4645c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f031a2_719f9dc5",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:07:33Z",
+      "side": 1,
+      "message": "I will reduce the wait time here.\n\nThere is a weird EC bug around deferred calls that I need to fully enumerate and file a bug for.\n\nThis code currently works around it\n\nI hope to make the CR50 console available the entire time, which I think I might be able to",
+      "parentUuid": "4e471c1a_7fc53c8e",
+      "range": {
+        "startLine": 746,
+        "startChar": 54,
+        "endLine": 746,
+        "endChar": 60
+      },
+      "revId": "46846ea93766a4cf54fa74b5fb7df46df4645c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
