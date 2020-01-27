@@ -166,7 +166,9 @@ static int anx7688_mux_set(int port, mux_state_t mux_state)
 
 	/* copy the polarity from TCPC_CTRL[0], take care clear then set */
 	reg &= ~TCPC_REG_TCPC_CTRL_POLARITY(1);
-	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
+	reg |= TCPC_REG_TCPC_CTRL_POLARITY((polarity == POLARITY_CC2 ||
+					    polarity == POLARITY_CC2_DTS)
+						? POLARITY_CC2 : POLARITY_CC1);
 	return mux_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
