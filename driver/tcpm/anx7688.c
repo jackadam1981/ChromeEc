@@ -166,7 +166,7 @@ static int anx7688_mux_set(int port, mux_state_t mux_state)
 
 	/* copy the polarity from TCPC_CTRL[0], take care clear then set */
 	reg &= ~TCPC_REG_TCPC_CTRL_POLARITY(1);
-	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
+	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity_is_flipped(polarity));
 	return mux_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 

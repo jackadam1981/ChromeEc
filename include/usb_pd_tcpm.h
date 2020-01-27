@@ -50,9 +50,26 @@ enum tcpc_rp_value {
 };
 
 enum tcpc_cc_polarity {
+	/*
+	 * _NONE: either disconnected or connected to a SNK Debug
+	 * Accessory
+	 */
 	POLARITY_NONE = -1,
+
+	/*
+	 * _CCx: is used to indicate the polarity while not connected to
+	 * a Debug Accessory.  Only one CC line will assert a resistor and
+	 * the other will be open.
+	 */
 	POLARITY_CC1 = 0,
 	POLARITY_CC2 = 1,
+
+	/*
+	 * CCx_DTS is used to indicate the polarity while connected to a
+	 * SRC Debug Accessory.  Assert resistors on both lines.
+	 */
+	POLARITY_CC1_DTS = 2,
+	POLARITY_CC2_DTS = 3,
 };
 
 enum tcpm_transmit_type {
@@ -75,6 +92,22 @@ enum tcpc_transmit_complete {
 	TCPC_TX_COMPLETE_DISCARDED = 1,
 	TCPC_TX_COMPLETE_FAILED =    2,
 };
+
+/**
+ * Returns whether the polarity is normal
+ */
+static inline int polarity_is_normal(enum tcpc_cc_polarity polarity)
+{
+	return !!(polarity == POLARITY_CC1 || polarity == POLARITY_CC1_DTS);
+}
+
+/**
+ * Returns whether the polarity is flipped
+ */
+static inline int polarity_is_flipped(enum tcpc_cc_polarity polarity)
+{
+	return !!(polarity == POLARITY_CC2 || polarity == POLARITY_CC2_DTS);
+}
 
 /**
  * Returns whether the sink has detected a Rp resistor on the other side.
@@ -101,6 +134,15 @@ static inline int cc_is_snk_dbg_acc(enum tcpc_cc_voltage_status cc1,
 	enum tcpc_cc_voltage_status cc2)
 {
 	return cc1 == TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD;
+}
+
+/**
+ * Returns true if we detect the port partner is a src debug accessory.
+ */
+static inline int cc_is_src_dbg_acc(enum tcpc_cc_voltage_status cc1,
+	enum tcpc_cc_voltage_status cc2)
+{
+	return cc_is_rp(cc1) && cc_is_rp(cc2);
 }
 
 /**
