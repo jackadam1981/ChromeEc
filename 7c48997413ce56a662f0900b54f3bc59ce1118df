@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46644d19_ccd60326",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T21:24:35Z",
+      "side": 1,
+      "message": "I do think that the BUILD_ASSERT should be here since this is the place most likely to need the change (and potential the only place that would need to change)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "7c48997413ce56a662f0900b54f3bc59ce1118df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
