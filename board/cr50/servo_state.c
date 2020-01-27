@@ -146,6 +146,16 @@ static void servo_detect(void)
 	if (state == DEVICE_STATE_IGNORED)
 		return;
 
+	/*
+	 * During EC-CR50 communication, do not change servo state because
+	 * GPIO_DETECT_SERVO (DIOB5) is not available. Instead let's return now,
+	 * and let it be detected in the next second.
+	 * We don't want it to be UNDETECTABLE because "servo_is_connected()"
+	 * could be false even when servo is connected.
+	 */
+	if (ec_comm_is_uart_in_packet_mode(UART_EC))
+		return;
+
 	/* If we're driving EC UART TX, we can't detect servo */
 	if (!servo_detectable()) {
 		/* We're driving one port; might as well drive them all */
