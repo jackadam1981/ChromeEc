@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a82ce5_918e846b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2206,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-27T19:12:30Z",
+      "side": 1,
+      "message": "Sending these back-to-back without waiting on a partner response will cause tricky behavior in the policy states as we parse responses.  Since this is just the v1 code (meant for testing more than shipping products), we could just exit with the cable plug and refrain from entering another mode.",
+      "range": {
+        "startLine": 2200,
+        "startChar": 0,
+        "endLine": 2206,
+        "endChar": 55
+      },
+      "revId": "9e1cd067c6120f9458244494aa371283c0fde4b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
