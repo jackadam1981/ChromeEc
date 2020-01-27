@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b8d2c5e_4b2eca12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:17:01Z",
+      "side": 1,
+      "message": "ec_command bit flag",
+      "range": {
+        "startLine": 7,
+        "startChar": 56,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c8796d_70840956",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:17:01Z",
+      "side": 1,
+      "message": "let\u0027s remove this note since it no longer applies",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773ef8a7_c4d50b4b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:17:01Z",
+      "side": 1,
+      "message": "Let\u0027s add a note that this is 8 bits right now to make ec_reponse_usb_pd_mux_info size",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c73983c_58adac53",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-27T17:17:01Z",
+      "side": 1,
+      "message": "I am slight torn between here or ec_commands.h, but I think ec_commands.h would be better since it is related to the other values. Thoughts?",
+      "revId": "b268ce132520ee5a8e43822c7d6e44a9e15820ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
