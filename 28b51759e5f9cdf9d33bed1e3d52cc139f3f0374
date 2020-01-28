@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e62ae34e_4bf7456e",
+        "filename": "chip/mchp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-28T21:35:11Z",
+      "side": 1,
+      "message": "can you use CONFIG_PROGRAM_MEMORY_BASE from build system here instead?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7f8bce_9584573f",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-28T21:35:11Z",
+      "side": 1,
+      "message": "let\u0027s add a comment for what this is (from datasheet) and use BIT(10) instead of 1 \u003c\u003c  10",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 37
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c370d0_7c41c8b9",
+        "filename": "chip/mchp/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-28T21:35:11Z",
+      "side": 1,
+      "message": "can you elaborate on what VCI is (Stands for, at least)\n\nlet\u0027s use BIT() marcro again (or maybe we should just define these bits in the header file)",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 30
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39e6c63_b0a6eac9",
+        "filename": "chip/mchp/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-28T21:35:11Z",
+      "side": 1,
+      "message": "let\u0027s add a comment for what/why we are calling vci_latch",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 12
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
