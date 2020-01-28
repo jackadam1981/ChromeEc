@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a07968e4_e885bde6",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-28T20:49:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11246bc6_cfba689d",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "220a0b7bffd0d0d51bb1140851dfe380caca90ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f167a191_488446b4",
         "filename": "driver/retimer/nb7v904m.c",
         "patchSetId": 1
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Reading wda@\u0027s comment in the bug and having fresh eyes seems to make sense to me. Does that help?",
       "parentUuid": "7a42aeca_1cdbfecc",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "220a0b7bffd0d0d51bb1140851dfe380caca90ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efa2e084_0400b5e3",
+        "filename": "driver/retimer/nb7v904m.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-28T20:49:29Z",
+      "side": 1,
+      "message": "Yes, I see it now too",
+      "parentUuid": "082ff965_b5b9e144",
       "range": {
         "startLine": 27,
         "startChar": 0,
