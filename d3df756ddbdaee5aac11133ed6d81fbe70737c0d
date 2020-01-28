@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "309dec48_47b907ba",
+        "filename": "common/vboot/vb21_lib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-28T21:25:01Z",
+      "side": 1,
+      "message": "Can you move this to vb21_lib.c?",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f36cff_de1ab0af",
+        "filename": "common/vboot/vb21_lib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-28T21:25:01Z",
+      "side": 1,
+      "message": "nit: Can you please use r-\u003ekey_id?",
+      "range": {
+        "startLine": 63,
+        "startChar": 44,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63252d9_2b8748d7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-28T21:25:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we want to use bool in ec_commands.h (since its size is ambiguous).",
+      "range": {
+        "startLine": 1823,
+        "startChar": 1,
+        "endLine": 1823,
+        "endChar": 19
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f78e1c8_b4f5cd33",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-28T21:25:01Z",
+      "side": 1,
+      "message": "Can you put this inside cmd_rwsig?",
+      "range": {
+        "startLine": 1609,
+        "startChar": 0,
+        "endLine": 1613,
+        "endChar": 2
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2355cc_7008c79c",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1619,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-28T21:25:01Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1619,
+        "startChar": 1,
+        "endLine": 1619,
+        "endChar": 7
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb7b165_c0631106",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-28T21:25:01Z",
+      "side": 1,
+      "message": "Can you do --argc, \u0026argc[1]?",
+      "range": {
+        "startLine": 1634,
+        "startChar": 39,
+        "endLine": 1634,
+        "endChar": 49
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
