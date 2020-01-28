@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fa8af937_c552360c",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-28T02:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92e321a5_728c3e28",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 30
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8f9fddf_6e5a1e81",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 9
@@ -187,6 +211,30 @@
       "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8ac507_3c0fd55e",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-28T02:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a2ea5c_88f138c8",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "b37905dc4b4d82e3dab91f7e96b8d74cb1defa5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
