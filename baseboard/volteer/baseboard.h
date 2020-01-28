@@ -180,6 +180,7 @@
 #define CONFIG_USBC_VCONN_SWAP
 
 /* Enabling SOP* communication */
+#define CONFIG_USB_PD_REV30
 #define CONFIG_CMD_USB_PD_CABLE
 #define CONFIG_USB_PD_DECODE_SOP
 
