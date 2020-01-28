@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2cc3f37_79e8213c",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-28T05:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c4eaf5_9aad3c4b",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "220a0b7bffd0d0d51bb1140851dfe380caca90ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eedaeec_908257ec",
         "filename": "driver/retimer/nb7v904m.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-24T17:35:07Z",
       "side": 1,
       "message": "Do we need to expressly enable all the channels, in case they were previously cleared for some reason?",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "220a0b7bffd0d0d51bb1140851dfe380caca90ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11246bc6_cfba689d",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-28T05:26:10Z",
+      "side": 1,
+      "message": "Yes, good catch!",
+      "parentUuid": "6eedaeec_908257ec",
       "range": {
         "startLine": 105,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a36b4e88_7bcec1d9",
+        "filename": "driver/retimer/nb7v904m.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-28T05:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f167a191_488446b4",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "220a0b7bffd0d0d51bb1140851dfe380caca90ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22e3d50e_a42976b9",
         "filename": "driver/retimer/nb7v904m.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-24T17:35:07Z",
       "side": 1,
       "message": "Out of curiosity, how is it we know which USB only configuration to use?  From the data sheet, it seems like there are 3 possible ones (100, 101, 111)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "220a0b7bffd0d0d51bb1140851dfe380caca90ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a42aeca_1cdbfecc",
+        "filename": "driver/retimer/nb7v904m.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-01-28T05:26:10Z",
+      "side": 1,
+      "message": "Looking at this closer, I\u0027m questioning the design in the schematics. I filed b/148424039.",
+      "parentUuid": "22e3d50e_a42976b9",
       "range": {
         "startLine": 27,
         "startChar": 0,
