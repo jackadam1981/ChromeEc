@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ed2ba49_e37f9f1d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-28T18:41:54Z",
+      "side": 1,
+      "message": "Can you move this rename to a separate CL?",
+      "range": {
+        "startLine": 523,
+        "startChar": 24,
+        "endLine": 523,
+        "endChar": 41
+      },
+      "revId": "1a0e36858fcb9529465daa5e9f54122d79fd1093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
