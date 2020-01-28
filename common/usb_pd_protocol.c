@@ -684,6 +684,13 @@ static int consume_repeat_message(int port, uint16_t msg_header)
 	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
 	    PD_HEADER_CNT(msg_header) == 0) {
 		return 0;
+	} else if (is_transmit_msg_sop_prime(port)) {
+		/*
+		 * From USB PD version 1.3 section 6.7.1, the port which
+		 * communicates using SOP* Packets Shall maintain copy
+		 * of the last MessageID for each type of SOP* it uses.
+		 */
+		return cable_consume_repeat_message(port, msg_id);
 	} else if (pd[port].last_msg_id != msg_id) {
 		pd[port].last_msg_id = msg_id;
 	} else if (pd[port].last_msg_id == msg_id) {
