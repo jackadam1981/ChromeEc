@@ -498,7 +498,6 @@ static void dfp_consume_svids(int port, int cnt, uint32_t *payload);
 static int dfp_discover_modes(int port, uint32_t *payload);
 static void dfp_consume_modes(int port, int cnt, uint32_t *payload);
 static int get_mode_idx(int port, uint16_t svid);
-static struct svdm_amode_data *get_modep(int port, uint16_t svid);
 #endif
 
 test_export_static enum usb_pe_state get_state_pe(const int port);
@@ -4721,7 +4720,7 @@ static int get_mode_idx(int port, uint16_t svid)
 	return -1;
 }
 
-static struct svdm_amode_data *get_modep(int port, uint16_t svid)
+struct svdm_amode_data *get_modep(int port, uint16_t svid)
 {
 	int idx = get_mode_idx(port, svid);
 
@@ -4946,6 +4945,21 @@ uint8_t pd_get_product_type(int port)
 	return PD_IDH_PTYPE(pe[port].am_policy.identity[0]);
 }
 
+int pd_get_svid_count(int port)
+{
+	return pe[port].am_policy.svid_cnt;
+}
+
+uint16_t pd_get_svid(int port, uint16_t svid_idx)
+{
+	return pe[port].am_policy.svids[svid_idx].svid;
+}
+
+uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
+{
+	return pe[port].am_policy.svids[svid_idx].mode_vdo;
+}
+
 #ifdef CONFIG_CMD_USB_PD_PE
 static void dump_pe(int port)
 {
@@ -5019,38 +5033,6 @@ DECLARE_CONSOLE_COMMAND(pe, command_pe,
 			"<port> dump",
 			"USB PE");
 #endif /* CONFIG_CMD_USB_PD_PE */
-
-static enum ec_status hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
-{
-	struct svdm_amode_data *modep;
-	const struct ec_params_usb_pd_get_mode_request *p = args->params;
-	struct ec_params_usb_pd_get_mode_response *r = args->response;
-
-	if (p->port >= board_get_usb_pd_port_count())
-		return EC_RES_INVALID_PARAM;
-
-	/* no more to send */
-	if (p->svid_idx >= pe[p->port].am_policy.svid_cnt) {
-		r->svid = 0;
-		args->response_size = sizeof(r->svid);
-		return EC_RES_SUCCESS;
-	}
-
-	r->svid = pe[p->port].am_policy.svids[p->svid_idx].svid;
-	r->opos = 0;
-	memcpy(r->vdo, pe[p->port].am_policy.svids[p->svid_idx].mode_vdo, 24);
-	modep = get_modep(p->port, r->svid);
-
-	if (modep)
-		r->opos = pd_alt_mode(p->port, r->svid);
-
-	args->response_size = sizeof(*r);
-	return EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
-	hc_remote_pd_get_amode,
-	EC_VER_MASK(0));
-
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 static const struct usb_state pe_states[] = {
