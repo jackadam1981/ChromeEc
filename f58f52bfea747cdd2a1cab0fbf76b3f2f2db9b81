@@ -45,6 +45,30 @@
       "revId": "f58f52bfea747cdd2a1cab0fbf76b3f2f2db9b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf13e3af_bec752f3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5386,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-28T22:36:43Z",
+      "side": 1,
+      "message": "yes that is correct, it is applicable to both USB4 \u0026 TBT.\nThis will change when we add USB4 patches.\nCurrently this data is from TBT cable response only.",
+      "parentUuid": "4fb63afb_de99f1c1",
+      "range": {
+        "startLine": 5386,
+        "startChar": 3,
+        "endLine": 5386,
+        "endChar": 33
+      },
+      "revId": "f58f52bfea747cdd2a1cab0fbf76b3f2f2db9b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
