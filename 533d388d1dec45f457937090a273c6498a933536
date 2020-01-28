@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c934620_1926e7e2",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-28T02:13:45Z",
+      "side": 1,
+      "message": "In this patch, ECFW hash is loaded from TPM nvmem at CR50 reset.\nHow to sync with TPM nvmem change to the cached copy in EC-EFS is missed though.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 44
+      },
+      "revId": "533d388d1dec45f457937090a273c6498a933536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
