@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53c86836_ec2710b1",
+        "filename": "common/mag_cal.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-28T18:59:17Z",
+      "side": 1,
+      "message": "move to math.h as it is not sensor specific.",
+      "revId": "3e9ee1677ced8a0e693697b6bf0bf6ec15310a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
