@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f0b6480_cf5b3913",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5374,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-28T21:22:26Z",
+      "side": 1,
+      "message": "Nit - remove the bit numbers in the comment as this is redundant with the #defines in ec_commmands.h.",
+      "range": {
+        "startLine": 5370,
+        "startChar": 0,
+        "endLine": 5374,
+        "endChar": 0
+      },
+      "revId": "f58f52bfea747cdd2a1cab0fbf76b3f2f2db9b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb63afb_de99f1c1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5386,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-28T21:22:26Z",
+      "side": 1,
+      "message": "The kernel driver is using this flag as the TBT USB4 indicator.  Is that correct?  From CL:2002184\n    mux_data-\u003emux_info.tbt_usb4_link \u003d\n\t    usb_pd_resp.control_flags \u0026 USB_PD_CTRL_ACTIVE_LINK_UNIDIR;\n\nI\u0027d like the names to be better aligned between the EC (USB_PD_CTRL_ACTIVE_LINK_UNIDR) and kernel (tbt_usb4_link).",
+      "range": {
+        "startLine": 5386,
+        "startChar": 3,
+        "endLine": 5386,
+        "endChar": 33
+      },
+      "revId": "f58f52bfea747cdd2a1cab0fbf76b3f2f2db9b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
