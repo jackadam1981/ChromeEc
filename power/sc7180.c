@@ -196,6 +196,8 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 			 * POWER_GOOD drop that triggers an interrupt to
 			 * high-Z both AP_RST_L and PS_HOLD.
 			 */
+			CPRINTS("Long warm reset ended, "
+				"cold resetting to restore sanity.");
 			request_cold_reset();
 		}
 		/* If not overdriven, just a normal power-up, do nothing. */
@@ -687,8 +689,10 @@ void chipset_reset(enum chipset_reset_reason reason)
 	rv = power_wait_signals_timeout(IN_AP_RST_ASSERTED,
 					PMIC_POWER_AP_RESPONSE_TIMEOUT);
 	/* Exception case: PMIC not work as expected, request a cold reset */
-	if (rv != EC_SUCCESS)
+	if (rv != EC_SUCCESS) {
+		CPRINTS("AP refuses to warm reset. Cold resetting.");
 		request_cold_reset();
+        }
 }
 
 /**
