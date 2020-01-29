@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "209943ec_19b4d3f8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-29T02:38:00Z",
+      "side": 1,
+      "message": "Yes you are right! Adding logic to disable SOP* (if enabled) if we can not talk to the cable",
+      "parentUuid": "331b55a1_30a4246f",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 19
+      },
+      "revId": "f54fc55effd973b458bd4192bef6fdb5e7fc049c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d34e9787_8c87c751",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
