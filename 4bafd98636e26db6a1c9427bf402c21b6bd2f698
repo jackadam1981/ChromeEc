@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5048a342_074d28e3",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "use BIT macro and make a corresponding #define",
+      "range": {
+        "startLine": 336,
+        "startChar": 22,
+        "endLine": 336,
+        "endChar": 31
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f047df1b_f67c75e1",
+        "filename": "chip/mchp/lfw/ec_lfw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "Make a #define for these",
+      "range": {
+        "startLine": 104,
+        "startChar": 22,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1456e563_aa389e60",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "use BIT macro and #define",
+      "range": {
+        "startLine": 480,
+        "startChar": 23,
+        "endLine": 480,
+        "endChar": 31
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075ffb19_f0a3d9c8",
+        "filename": "chip/mchp/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "binary operators should be surrounded by spaces on both sides.",
+      "range": {
+        "startLine": 483,
+        "startChar": 31,
+        "endLine": 483,
+        "endChar": 32
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc88510a_98d5f48c",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "don\u0027t use from imports except to import modules in the current project",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "741764ec_c8b94688",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "class and function definitions at the module scope should have two empty lines before and after.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20831eae_4d27edd2",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "maybe DRIVE_STRENGTH_TO_PARAMETER or something like that instead?",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d172c7_2069380d",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "Just use the dictionary instead of making function",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624b02ba_d30fd79d",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "This should be a constant somewhere",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a36f1eb_331084bb",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "prefer generator expressions to map",
+      "range": {
+        "startLine": 331,
+        "startChar": 73,
+        "endLine": 331,
+        "endChar": 80
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758c0374_7e8c3790",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T19:34:05Z",
+      "side": 1,
+      "message": "commas in applications should have a space after",
+      "range": {
+        "startLine": 331,
+        "startChar": 80,
+        "endLine": 331,
+        "endChar": 81
+      },
+      "revId": "4bafd98636e26db6a1c9427bf402c21b6bd2f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
