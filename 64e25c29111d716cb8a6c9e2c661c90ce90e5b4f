@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "351946ba_ca901ac1",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-01-29T18:55:36Z",
+      "side": 1,
+      "message": "I didn\u0027t plan make it compatible with TCPMv1. Does anyone think this is needed?",
+      "parentUuid": "3a7b3610_6348521e",
+      "range": {
+        "startLine": 97,
+        "startChar": 23,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "64e25c29111d716cb8a6c9e2c661c90ce90e5b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d0e57ec_e9a38a88",
         "filename": "test/usb_pd_console.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "64e25c29111d716cb8a6c9e2c661c90ce90e5b4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfd000d_fe2ce209",
+        "filename": "test/usb_pd_console.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-01-29T18:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d0e57ec_e9a38a88",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "64e25c29111d716cb8a6c9e2c661c90ce90e5b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
