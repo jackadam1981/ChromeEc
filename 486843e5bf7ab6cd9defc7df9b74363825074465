@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "94f669c6_40dd3e12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-29T18:25:43Z",
+      "side": 1,
+      "message": "independent",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63dd69de_76dee5d8",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2020-01-29T01:28:51Z",
       "side": 1,
       "message": "Hey Diana,\nThis can also be added as a part of struct pd_protocol. Which flow is more preferable? Adding it as a part of pd_cable or adding it as a part of pd_protocol.",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 27
+      },
+      "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "728c3c62_6d63db8d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-29T18:25:43Z",
+      "side": 1,
+      "message": "i think keeping it in pd_protocol makes it more readable. We can wait for Diana\u0027s feedback.",
+      "parentUuid": "63dd69de_76dee5d8",
       "range": {
         "startLine": 519,
         "startChar": 1,
