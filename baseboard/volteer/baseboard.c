@@ -396,6 +396,7 @@ const struct bb_usb_control bb_controls[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
 
+#ifdef CONFIG_USBC_MUX_RETIMER
 struct usb_retimer usb_retimers[] = {
 	[USBC_PORT_C0] = {
 		/* USB-C port 0 doesn't have a retimer */
@@ -407,6 +408,7 @@ struct usb_retimer usb_retimers[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_retimers) == USBC_PORT_COUNT);
+#endif /* CONFIG_USBC_MUX_RETIMER */
 
 static void baseboard_tcpc_init(void)
 {
