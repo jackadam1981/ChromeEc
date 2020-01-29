@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ca8a5a3_a7ec3fbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-29T22:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7fdeb10_fb81f317",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9db12b5_5ec2a0da",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-29T22:27:31Z",
       "side": 1,
       "message": "Is there anything we need to do to ensure we don\u0027t get stuck in a loop asking for Discover Identity SOP repeatedly if the partner refuses to let us source Vconn?",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54bb1e2_d0106bf0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-29T22:57:46Z",
+      "side": 1,
+      "message": "We are only checking if we are the Vconn source here. We request for swapping in Ready states itself before sending the VDM messages.",
+      "parentUuid": "c9db12b5_5ec2a0da",
       "range": {
         "startLine": 221,
         "startChar": 2,
@@ -68,6 +116,30 @@
       "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f66970f_45278abf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-29T22:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a6093a_31dc9fc0",
+      "range": {
+        "startLine": 2176,
+        "startChar": 12,
+        "endLine": 2176,
+        "endChar": 30
+      },
+      "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
