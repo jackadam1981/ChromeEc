@@ -22,6 +22,30 @@
       "revId": "d9a869beb6e1778cec38dcce64f289aba353a8d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835ffe61_27df8ebb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-29T18:45:18Z",
+      "side": 1,
+      "message": "After discussion, we\u0027ll track this in crbug:1046851",
+      "parentUuid": "2f220502_46b74278",
+      "range": {
+        "startLine": 2248,
+        "startChar": 4,
+        "endLine": 2250,
+        "endChar": 0
+      },
+      "revId": "d9a869beb6e1778cec38dcce64f289aba353a8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
