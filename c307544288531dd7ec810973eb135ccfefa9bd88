@@ -2,6 +2,644 @@
   "comments": [
     {
       "key": {
+        "uuid": "cc3b2942_05150417",
+        "filename": "docs/configuration/ap_power_sequencing.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "broken",
+      "range": {
+        "startLine": 16,
+        "startChar": 48,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ef8c41_fad02c91",
+        "filename": "docs/configuration/ap_power_sequencing.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "s/gates/proxies/\n\nthoughts?  since it is more of a pass thru scenario",
+      "range": {
+        "startLine": 53,
+        "startChar": 48,
+        "endLine": 53,
+        "endChar": 53
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfdfb099_5fcb2ca6",
+        "filename": "docs/configuration/ap_power_sequencing.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "driven by the PMIC or voltage regulators",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5756711_65d08292",
+        "filename": "docs/configuration/ap_power_sequencing.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "maybe put this up in config section too?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 15
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02436c1b_15ef0fd3",
+        "filename": "docs/configuration/config_ap_to_ec_comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "broken",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64213f2a_359cf54a",
+        "filename": "docs/configuration/ec_chipset.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "This is true for many of the other configuration pages, should we include this text there too? (or omit it here)?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 77
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bea4e1_04f14c25",
+        "filename": "docs/configuration/ec_chipset.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "this isn\u0027t strictly true (I don\u0027t know the full story here.\n\nI know that on octopus we define CONFIG_SPI_FLASH_W25Q80 since that is the internal flash chip on NPCX",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a194aa30_d46a8913",
+        "filename": "docs/configuration/ec_chipset.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "I didn\u0027t quite understand this, can you explain a little more for me please",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 78
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c62dde_b1836dfd",
+        "filename": "docs/configuration/ec_chipset.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "we only really need this if the reset net is attached to another gpio pin other than the HW reset pin (like PSL input for NPCX)",
+      "range": {
+        "startLine": 39,
+        "startChar": 72,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3538643b_96a951c9",
+        "filename": "docs/configuration/ec_chipset.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "I feel like we should like to cros partner site here for the requried wake up pins (although I couldn\u0027t find that page)\n\nShould we call out that the expected wake sources are: \n - AC power\n - power button\n - lid open\n\n-reset is just in implementation detail/workaround for NPCX PSL hardware designs",
+      "range": {
+        "startLine": 48,
+        "startChar": 51,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fedad692_6e3ecdc9",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "let\u0027s also call out that all GPIO_INT **must** come before all GPIO lines in the file\n\n(it won\u0027t compile correctly otherwise)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 79
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22793766_631d64da",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "let\u0027s switch the order of GPIO and GPIO_INT since GPIO_INT must be first in the file (subjective though)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27bde3f5_95cac6f5",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "need a \\n between header and next line for markdown always",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b9042ae_af1dd39e",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "I like this comment (calling out GPIO_INT_*) can you make this and the GPIO version for flags match",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a4ac47c_f30b81f1",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "Call out that this is chip specific. For STM32 this is the alternate mode number (raning from 0 to 7 sometimes).",
+      "range": {
+        "startLine": 84,
+        "startChar": 28,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d505e81_146a3b4d",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "we could elaborate here that enable_module and disable_module turn on and off these alternate mode pin assignments. Your call",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 43
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492308bf_0c371b6e",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "if you want you can use GENMASK(5, 4) in your examples\n\nyour call :)",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 34
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6b1398_d3104384",
+        "filename": "docs/configuration/i2c.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "Also might be worth calling out to pay attention to 1.8V voltage i2c buses (as that is somewhat common for sensor buses)",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed8257b_c1a0b960",
+        "filename": "docs/configuration/i2c.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "it might be worth explaining that it is atypical to define the pin as GPIO() and ALTERNATE at the same time. We do this so we can manually take control and bit bang the bus if it gets wedged",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577439a6_bdf08bf2",
+        "filename": "docs/configuration/i2c.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "might (or might not) be worth calling out new feature for dynamic i2c bus speed if using the I2C_PORT_FLAG_DYNAMIC_SPEED for .flags\n\nor at least call out .flags as something to look at",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 11
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135403ef_54264c43",
+        "filename": "docs/configuration/keyboard.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "I would call out that KSO_02 is typically inverted in polarity and cannot be set to an alternate mode\n\nDue to H1 requirements on system\n\n----\n\nAh looks like you do down below. I would call is out here and link to below section",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 84
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38076a7b_abbee9ca",
+        "filename": "docs/configuration/leds.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "broken link\n\nand also need a comma right after In config.h,",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22122d76_1f5bbc07",
+        "filename": "docs/configuration/leds.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "would also need to ensure that the MODULE PWM is enabled from board_init (I would have to double check this)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2228912d_a6efbc04",
+        "filename": "docs/configuration/leds.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "we can add gpioget and gpioset for GPIO based LEDs",
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2afa31_39b31a8b",
+        "filename": "docs/configuration/template.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "broken link",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf24fa8_bf7c223b",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "I might omit the word variant since it is overloaded term.\n\nIf we need a word, maybe target (like BOARD\u003d target)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbfe222_9de053aa",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "s/board/baseboard/",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a4a18d_601d5efa",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "configuration feature document",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65301f4e_d2e5d1f6",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 7
@@ -37,6 +675,30 @@
       "side": 1,
       "message": "Let\u0027s clarify that the user will usually call new_variant.py to create the variant in coreboot and EC, plus modify the yaml files, etc. However, for a baseboard that is not yet supported by new_variant.py, the user can call create_initial_ec_image.sh directly just to copy the EC code.",
       "parentUuid": "65301f4e_d2e5d1f6",
+      "range": {
+        "startLine": 106,
+        "startChar": 64,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3915a9ed_18022e68",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "Let\u0027s call out that new_variant.py is mainly used for subsequent boards after the initial checkin (right)?\n\nWe should call out an specify scripts for the very first add of anything",
+      "parentUuid": "245b956e_5b000d09",
       "range": {
         "startLine": 106,
         "startChar": 64,
@@ -88,6 +750,75 @@
         "startChar": 0,
         "endLine": 112,
         "endChar": 42
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91dacfd_a80de077",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "s/creating/submitting|landing/",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257e2b6f_f34bd0c5",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "Should we include gpio in this list?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ed9cd0_b1fa64b7",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T20:48:08Z",
+      "side": 1,
+      "message": "nit: can we sort this to where all the Needed for power on are at the top",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 65
       },
       "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
