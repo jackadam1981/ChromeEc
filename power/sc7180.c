@@ -161,7 +161,7 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 	if (!gpio_get_level(GPIO_WARM_RESET_L)) {
 		if (gpio_get_level(GPIO_POWER_GOOD)) {
 			/*
-			 * Servo or Cr50 holds the WARM_RESET_L signal.
+			 * Servo/Cr50 holds the WARM_RESET_L signal.
 			 *
 			 * Overdrive AP_RST_L to hold AP. Overdrive PS_HOLD to
 			 * emulate AP being up to trick the PMIC into thinking
@@ -186,21 +186,32 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 			ap_rst_overdriven = 0;
 		}
 	} else {
-		if (ap_rst_overdriven) {
+		if (gpio_get_level(GPIO_POWER_GOOD)) {
+			if (ap_rst_overdriven) {
+				/*
+				 * Servo/Cr50 releases the WARM_RESET_L signal.
+				 *
+				 * Cold reset the PMIC, doing S0->S5->S0
+				 * transition, by issuing a request to initiate
+				 * a reset sequence, to recover the system.
+				 * The transition to S5 makes POWER_GOOD drop
+				 * that triggers an interrupt to high-Z both
+				 * AP_RST_L and PS_HOLD.
+				 */
+				CPRINTS("Long warm reset ended, "
+					"cold resetting to restore sanity.");
+				request_cold_reset();
+			}
 			/*
-			 * Servo or Cr50 releases the WARM_RESET_L signal.
-			 *
-			 * Cold reset the PMIC, doing S0->S5->S0 transition,
-			 * by issuing a request to initiate a reset sequence,
-			 * to recover the system. The transition to S5 makes
-			 * POWER_GOOD drop that triggers an interrupt to
-			 * high-Z both AP_RST_L and PS_HOLD.
+			 * If not overdriven, just a normal power-up,
+			 * do nothing.
 			 */
-			CPRINTS("Long warm reset ended, "
-				"cold resetting to restore sanity.");
-			request_cold_reset();
 		}
-		/* If not overdriven, just a normal power-up, do nothing. */
+		/*
+		 * If POWER_GOOD low but WARM_RESET_L high, this is a temporary
+		 * state that WARM_RESET may need a bit more time to discharge
+		 * to low; ignore it.
+		 */
 	}
 
 	power_signal_interrupt(signal);
