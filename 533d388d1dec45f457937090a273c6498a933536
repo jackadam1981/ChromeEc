@@ -22,6 +22,30 @@
       "revId": "533d388d1dec45f457937090a273c6498a933536",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ae0962_f5b892ed",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-29T02:28:13Z",
+      "side": 1,
+      "message": "Patch#12 will let NvWrite() function (from tpm2 lib) inform cr50 about a NV index change.\n_plat__NvInformIndexDataChanged() in board/cr50/tpm2/NVMEM.c will reload ec-hash from kernel secdata (which is KERNEL NV Index).",
+      "parentUuid": "2c934620_1926e7e2",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 44
+      },
+      "revId": "533d388d1dec45f457937090a273c6498a933536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
