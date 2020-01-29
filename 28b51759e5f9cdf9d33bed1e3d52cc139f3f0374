@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b83914e8_222cdd94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-29T19:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae1df3e_e2f6101e",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e62ae34e_4bf7456e",
         "filename": "chip/mchp/build.mk",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24352391_8e677810",
+        "filename": "chip/mchp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-29T19:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62ae34e_4bf7456e",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "9f1c18c1_fcc70895",
+        "filename": "chip/mchp/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-29T19:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c370d0_7c41c8b9",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 30
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f39e6c63_b0a6eac9",
         "filename": "chip/mchp/lfw/ec_lfw.c",
         "patchSetId": 2
@@ -137,6 +209,30 @@
       "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41be04a3_13ea20fd",
+        "filename": "chip/mchp/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-29T19:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f39e6c63_b0a6eac9",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 12
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "5a021ede_c7ad1e19",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-29T19:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82da57b5_26640224",
+      "range": {
+        "startLine": 319,
+        "startChar": 44,
+        "endLine": 319,
+        "endChar": 58
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41f43e1f_9777bf76",
         "filename": "chip/mchp/util/pack_ec.py",
         "patchSetId": 2
@@ -206,6 +326,30 @@
       "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f80e58_c9241e93",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-01-29T19:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41f43e1f_9777bf76",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 23
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
