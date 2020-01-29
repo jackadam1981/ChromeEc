@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7fdeb10_fb81f317",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-29T22:27:31Z",
+      "side": 1,
+      "message": "Update to new behavior",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9db12b5_5ec2a0da",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-29T22:27:31Z",
+      "side": 1,
+      "message": "Is there anything we need to do to ensure we don\u0027t get stuck in a loop asking for Discover Identity SOP repeatedly if the partner refuses to let us source Vconn?",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a6093a_31dc9fc0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-29T22:27:31Z",
+      "side": 1,
+      "message": "Re-name based on new behavior",
+      "range": {
+        "startLine": 2176,
+        "startChar": 12,
+        "endLine": 2176,
+        "endChar": 30
+      },
+      "revId": "889d4071f15d1041a31d8c4acd4908254a09ba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
