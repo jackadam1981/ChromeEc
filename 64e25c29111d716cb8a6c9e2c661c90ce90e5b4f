@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9c81336d_1af80451",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-29T18:59:32Z",
+      "side": 1,
+      "message": "it will be easy to make changes for both revs if its compatible",
+      "parentUuid": "351946ba_ca901ac1",
+      "range": {
+        "startLine": 97,
+        "startChar": 23,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "64e25c29111d716cb8a6c9e2c661c90ce90e5b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d0e57ec_e9a38a88",
         "filename": "test/usb_pd_console.c",
         "patchSetId": 9
