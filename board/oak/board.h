@@ -123,7 +123,7 @@
 #define CONFIG_SYSTEM_UNLOCKED
 
 /* Optional features */
-#define CONFIG_CMD_HOSTCMD
+#undef CONFIG_CMD_HOSTCMD
 
 /* Drivers */
 /* USB Mux */
