@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "058afae0_80ccb3de",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-29T19:51:31Z",
+      "side": 1,
+      "message": "Thanks for fixing the logic here - looks like both implementations had a bug for these flags.",
+      "range": {
+        "startLine": 266,
+        "startChar": 9,
+        "endLine": 269,
+        "endChar": 32
+      },
+      "revId": "a5ad51fbe05370599c43e3816c2095e67a50bef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2ae1f4_81cfeca9",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-29T19:51:31Z",
+      "side": 1,
+      "message": "Should be PD_CTRL_RESP_ROLE_USB_COMM.",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 28
+      },
+      "revId": "a5ad51fbe05370599c43e3816c2095e67a50bef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f24f307_82b53f49",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-29T19:51:31Z",
+      "side": 1,
+      "message": "Original code had VCONN swap check within the PD dual role check.  So you need to add IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) to this check.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 0
+      },
+      "revId": "a5ad51fbe05370599c43e3816c2095e67a50bef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66f86475_12992015",
+        "filename": "common/usbc/usb_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-29T19:51:31Z",
+      "side": 1,
+      "message": "Please add a bug to this TODO.",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 7
+      },
+      "revId": "a5ad51fbe05370599c43e3816c2095e67a50bef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c789881e_5eb4731b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-29T19:51:31Z",
+      "side": 1,
+      "message": "Add a note that this returns \"enum pd_states\" for TCPMv1 and \"enum usb_tc_state\" for TCPMv2.",
+      "range": {
+        "startLine": 945,
+        "startChar": 0,
+        "endLine": 945,
+        "endChar": 19
+      },
+      "revId": "a5ad51fbe05370599c43e3816c2095e67a50bef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
