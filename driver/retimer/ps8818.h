@@ -24,6 +24,7 @@
 
 #define PS8818_REG0_DPHPD_CONFIG	0x02
 #define PS8818_DPHPD_CONFIG_INHPD_DISABLE	BIT(7)
+#define PS8818_DPHPD_PLUGGED			BIT(6)
 
 /*
  * PAGE 1 Register Definitions
