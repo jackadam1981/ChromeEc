@@ -117,6 +117,30 @@
       "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2039ed_cf75ea5d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-29T23:52:46Z",
+      "side": 1,
+      "message": "I\u0027ll upload tracking SOP\u0027\u0027 as a separate CL. Have added a TODO",
+      "parentUuid": "af5192cb_15bb152e",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 27
+      },
+      "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
