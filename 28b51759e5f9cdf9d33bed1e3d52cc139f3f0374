@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "aae1df3e_e2f6101e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T16:43:48Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e62ae34e_4bf7456e",
         "filename": "chip/mchp/build.mk",
         "patchSetId": 2
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "a1cc1247_98de1481",
+        "filename": "chip/mchp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T16:43:48Z",
+      "side": 1,
+      "message": "use BIT macro? Also a #define?",
+      "range": {
+        "startLine": 336,
+        "startChar": 23,
+        "endLine": 336,
+        "endChar": 30
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50c370d0_7c41c8b9",
         "filename": "chip/mchp/lfw/ec_lfw.c",
         "patchSetId": 2
@@ -87,6 +133,75 @@
         "startChar": 1,
         "endLine": 370,
         "endChar": 12
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f15c21e_7563fd81",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T16:43:48Z",
+      "side": 1,
+      "message": "prefer exceptions over complex assertions like this... this would be a ValueError",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 65
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82da57b5_26640224",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T16:43:48Z",
+      "side": 1,
+      "message": "build this from DRIVE_STRENGTH_LIST. Also validate the input by writing your own type\u003d which uses an enum.Enum...",
+      "range": {
+        "startLine": 319,
+        "startChar": 44,
+        "endLine": 319,
+        "endChar": 58
+      },
+      "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f43e1f_9777bf76",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-01-29T16:43:48Z",
+      "side": 1,
+      "message": "why is this here?!?!",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 23
       },
       "revId": "28b51759e5f9cdf9d33bed1e3d52cc139f3f0374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
