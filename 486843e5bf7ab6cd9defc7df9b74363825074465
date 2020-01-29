@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65b20c4b_f42f2633",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-29T18:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f669c6_40dd3e12",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63dd69de_76dee5d8",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
