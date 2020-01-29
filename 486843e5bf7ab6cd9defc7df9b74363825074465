@@ -93,6 +93,30 @@
       "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af5192cb_15bb152e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-29T22:38:33Z",
+      "side": 1,
+      "message": "Either way works.  I believe the new stack just maintains an array of message IDs to track each type, but the old stack is less well organized in the message processing.\n\nShould this track SOP\u0027\u0027 as well though?",
+      "parentUuid": "728c3c62_6d63db8d",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 27
+      },
+      "revId": "486843e5bf7ab6cd9defc7df9b74363825074465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
