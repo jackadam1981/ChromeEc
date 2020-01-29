@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f220502_46b74278",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-29T17:35:59Z",
+      "side": 1,
+      "message": "can we add a comment here since this should already have been done by the super state.\n\nWe need to call this again because we need to perform it after setting the polarity to NONE.\n\nAnother idea is to remove the RD super state from tc_dbg_acc_snk_entry since it is more of a Rdd superstate. Thoughts?",
+      "range": {
+        "startLine": 2248,
+        "startChar": 4,
+        "endLine": 2250,
+        "endChar": 0
+      },
+      "revId": "d9a869beb6e1778cec38dcce64f289aba353a8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
