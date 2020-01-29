@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "000dfb2c_c25cfa26",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-29T19:16:39Z",
+      "side": 1,
+      "message": "This print statements are delaying the response.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "37afd9d6ade75697b6ad2b8ef2c3259b66d825de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e964b11_7ae7445c",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-29T19:16:39Z",
+      "side": 1,
+      "message": "Print it after the response byte gets transferred.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 54
+      },
+      "revId": "37afd9d6ade75697b6ad2b8ef2c3259b66d825de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebfcdeb8_a1760c3e",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-29T19:16:39Z",
+      "side": 1,
+      "message": "Suppress printing text because it extends the response latency.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 44
+      },
+      "revId": "37afd9d6ade75697b6ad2b8ef2c3259b66d825de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
