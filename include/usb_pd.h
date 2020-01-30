@@ -1707,6 +1707,22 @@ int cable_consume_repeat_message(int port, uint8_t msg_id);
  */
 bool is_transmit_msg_sop_prime(int port);
 
+/*
+ * Return the pointer to PD alternate mode policy
+ *
+ * @param port  USB-C port number
+ * @return      pointer to PD alternate mode policy
+ */
+struct pd_policy *pd_get_am_policy(int port);
+
+/**
+ * Set DFP enter mode flags if available
+ *
+ * @param port  USB-C port number
+ * @param set   If true set the flag else clear
+ */
+void pd_set_dfp_enter_mode_flag(int port, bool set);
+
 /**
  * Returns the type of communication (SOP/SOP'/SOP'')
  *
