@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_ADC_CHIP_H
 #define __CROS_EC_ADC_CHIP_H
 
+#include "adc.h"
+
 /* Minimum and maximum values returned by raw ADC read. */
 #define ADC_READ_MIN 0
 #define ADC_READ_MAX 1023
@@ -45,4 +47,14 @@ struct adc_t {
  */
 extern const struct adc_t adc_channels[];
 
+struct npcx_adc_thresh_t {
+	enum adc_channel adc_ch;
+	void (* adc_thresh_cb)(void);
+	int lower_or_higher;
+	int thresh_assert;
+	int thresh_deassert;
+};
+
+void npcx_adc_register_thresh_irq(int threshold_idx,
+				  const struct npcx_adc_thresh_t *thresh_cfg);
 #endif /* __CROS_EC_ADC_CHIP_H */

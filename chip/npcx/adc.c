@@ -20,6 +20,9 @@
 #include "timer.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
 /* Maximum time we allow for an ADC conversion */
 #define ADC_TIMEOUT_US            SECOND
 #define ADC_CLK                   2000000
@@ -148,6 +151,85 @@ int adc_read_channel(enum adc_channel ch)
 	return value;
 }
 
+#ifdef CHIP_FAMILY_NPCX7
+/* Board should register these callbacks with npcx_adc_cfg_thresh_int(). */
+static void (* adc_thresh_irqs[NPCX_ADC_THRESH_CNT])(void);
+
+void npcx_adc_thresh_int_enable(int threshold_idx, int enable)
+{
+	enable = !!enable;
+
+	if ((threshold_idx < 1) || (threshold_idx > 3)) {
+		CPRINTS("Invalid ADC thresh index! (%d)",
+			threshold_idx);
+		return;
+	}
+	threshold_idx--; /* convert to 0-based */
+
+	if (enable)
+		SET_BIT(NPCX_THRCTS, NPCX_THRCTS_THR1_IEN+threshold_idx);
+	else
+		CLEAR_BIT(NPCX_THRCTS, NPCX_THRCTS_THR1_IEN+threshold_idx);
+}
+
+void npcx_adc_register_thresh_irq(int threshold_idx,
+				  const struct npcx_adc_thresh_t *thresh_cfg)
+{
+	int npcx_adc_ch;
+	int raw_val;
+	int mul;
+	int div;
+	int shift;
+
+	if ((threshold_idx < 1) || (threshold_idx > 3)) {
+		CPRINTS("Invalid ADC thresh index! (%d)",
+			threshold_idx);
+		return;
+	}
+	npcx_adc_ch = adc_channels[thresh_cfg->adc_ch].input_ch;
+
+	/* Should we de-register instead? */
+	if (!thresh_cfg->adc_thresh_cb)
+		return;
+
+	/* Fill in the table */
+	adc_thresh_irqs[threshold_idx-1] = thresh_cfg->adc_thresh_cb;
+
+	/* Select the channel */
+	SET_FIELD(NPCX_THRCTL(threshold_idx), NPCX_THRCTL_CHNSEL,
+		  npcx_adc_ch);
+
+	if (thresh_cfg->lower_or_higher)
+		SET_BIT(NPCX_THRCTL(threshold_idx), NPCX_THRCTL_L_H);
+	else
+		CLEAR_BIT(NPCX_THRCTL(threshold_idx), NPCX_THRCTL_L_H);
+
+	/*
+	 * Set the single threshold value.  This is also the assertion threshold
+	 * value if dual threshold configuration is being used.
+	 */
+	mul = adc_channels[thresh_cfg->adc_ch].factor_mul;
+	div = adc_channels[thresh_cfg->adc_ch].factor_div;
+	shift = adc_channels[thresh_cfg->adc_ch].shift;
+
+	raw_val = (thresh_cfg->thresh_assert - shift) * div / mul;
+	CPRINTS("ADC THR%d: Setting THRVAL = %d", threshold_idx, raw_val);
+	SET_FIELD(NPCX_THRCTL(threshold_idx), NPCX_THRCTL_THRVAL,
+		  raw_val);
+
+	/* Check to see if dual threshold detection is desired. */
+	if (thresh_cfg->thresh_deassert != -1) {
+		raw_val = (thresh_cfg->thresh_deassert - shift) * div / mul;
+		SET_FIELD(NPCX_THR_DCTL(threshold_idx),
+			  NPCX_THR_DCTL_THR_DVAL,
+			  raw_val);
+		SET_BIT(NPCX_THR_DCTL(threshold_idx), NPCX_THR_DCTL_THRD_EN);
+	} else {
+		CLEAR_BIT(NPCX_THR_DCTL(threshold_idx), NPCX_THR_DCTL_THRD_EN);
+	}
+}
+#endif /* CHIP_FAMILY_NPCX7 */
+
 /**
  * ADC interrupt handler
  *
@@ -157,6 +239,10 @@ int adc_read_channel(enum adc_channel ch)
  */
 void adc_interrupt(void)
 {
+#ifdef CHIP_FAMILY_NPCX7
+	int i;
+#endif /* CHIP_FAMILY_NPCX7 */
+
 	if (IS_BIT_SET(NPCX_ADCSTS, NPCX_ADCSTS_EOCEV)) {
 		/* Disable End-of-Conversion Interrupt */
 		CLEAR_BIT(NPCX_ADCCNF, NPCX_ADCCNF_INTECEN);
@@ -171,6 +257,17 @@ void adc_interrupt(void)
 		if (task_waiting != TASK_ID_INVALID)
 			task_set_event(task_waiting, TASK_EVENT_ADC_DONE, 0);
 	}
+
+#ifdef CHIP_FAMILY_NPCX7
+	for (i = NPCX_THRCTS_THR1_STS; i <= NPCX_THRCTS_THR3_STS; i++) {
+		if (IS_BIT_SET(NPCX_THRCTS, i)) {
+			/* Clear threshold status */
+			SET_BIT(NPCX_THRCTS, i);
+			if (adc_thresh_irqs[i])
+				adc_thresh_irqs[i]();
+		}
+	}
+#endif /* CHIP_FAMILY_NPCX7 */
 }
 DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 
