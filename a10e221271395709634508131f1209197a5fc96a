@@ -22,6 +22,30 @@
       "revId": "a10e221271395709634508131f1209197a5fc96a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11384e4_79e29eaf",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-01-30T19:12:06Z",
+      "side": 1,
+      "message": "I separated the interrupt handle into two. It\u0027d make the logic more clear.\n  crrev.com/c/2031647",
+      "parentUuid": "bca86a0a_ea9d7d7e",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 40
+      },
+      "revId": "a10e221271395709634508131f1209197a5fc96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
