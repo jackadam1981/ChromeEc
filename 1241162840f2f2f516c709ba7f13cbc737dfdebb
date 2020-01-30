@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae6a2cf1_c791a016",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:17:16Z",
+      "side": 1,
+      "message": "Since it isn\u0027t connected by default, I haven\u0027t. I would also need to solder something.\n\nI don\u0027t foresee any issues with it though. There is still i2c support that we can/should add to those pads as well. I will verify that then (See b/147381671).",
+      "parentUuid": "90e1fa7d_cd34c82d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07ebcdab_47112852",
         "filename": "board/c2d2/board.c",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "054239d9_494c7c61",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:17:16Z",
+      "side": 1,
+      "message": "I was using a regular express to say that it is optional\n\nvalid commands are\n\npower_button\npower_button 0\npower_button 1",
+      "parentUuid": "07ebcdab_47112852",
+      "range": {
+        "startLine": 626,
+        "startChar": 4,
+        "endLine": 626,
+        "endChar": 10
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8bcb49ee_df19e2b1",
+        "filename": "board/c2d2/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:17:16Z",
+      "side": 1,
+      "message": "Ah, I thought I got all those. There should be no more left. Thanks!",
+      "parentUuid": "61d56eae_54be923e",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38f1b887_865814be",
         "filename": "board/c2d2/gpio.inc",
         "patchSetId": 12
@@ -91,6 +163,30 @@
       "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea45299c_0a720a4c",
+        "filename": "board/c2d2/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f1b887_865814be",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a03f43b0_cfea4bae",
+        "filename": "board/c2d2/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:17:16Z",
+      "side": 1,
+      "message": "I used the new GENMASK :)",
+      "parentUuid": "e97ec593_87c58baa",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3873d9cb_c3187768",
         "filename": "board/c2d2/gpio.inc",
         "patchSetId": 12
@@ -137,6 +257,30 @@
       "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d68a8b7_f49db8f9",
+        "filename": "board/c2d2/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:17:16Z",
+      "side": 1,
+      "message": "12 is missing on purose since we manually control the CS line with gpio_set_level. Added note",
+      "parentUuid": "3873d9cb_c3187768",
+      "range": {
+        "startLine": 46,
+        "startChar": 22,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
