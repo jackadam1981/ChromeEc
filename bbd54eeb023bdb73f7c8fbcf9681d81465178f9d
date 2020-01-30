@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45bc1029_bcfa7e6d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-30T20:55:44Z",
+      "side": 1,
+      "message": "Nit - when you add SOP\u0027\u0027 support, can you create a macro for this value and used it here and in invalidate_last_message_id().  You can then move the comment to the macro definition.",
+      "range": {
+        "startLine": 235,
+        "startChar": 34,
+        "endLine": 235,
+        "endChar": 38
+      },
+      "revId": "bbd54eeb023bdb73f7c8fbcf9681d81465178f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
