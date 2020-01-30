@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d741bfa4_fb1eecdd",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-30T00:26:16Z",
+      "side": 1,
+      "message": "Caveh has changes for the USB3 daughter board to memset() the USBC_PORT_C1 member in this array at runtime.  Is there a similar runtime check that can be done for TCPMv2?\nSee CL:2013656",
+      "range": {
+        "startLine": 400,
+        "startChar": 19,
+        "endLine": 400,
+        "endChar": 31
+      },
+      "revId": "08be96fc2835c97095da138d8f90544d1be60ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9f6bd70_44fb9542",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 2
