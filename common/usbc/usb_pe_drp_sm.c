@@ -102,16 +102,19 @@
 #define PE_FLAGS_FAST_ROLE_SWAP_SIGNALED     BIT(22)
 /* For PD2.0, triggers a DR SWAP from UFP to DFP before sending a DiscID msg */
 #define PE_FLAGS_DR_SWAP_TO_DFP              BIT(23)
-/* Flag to trigger a message resend after receiving a WAIT from port partner */
-#define PE_FLAGS_WAITING_DR_SWAP             BIT(24)
 /* FLAG to track if port partner is dualrole capable */
-#define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(25)
+#define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(24)
 /* FLAG is set when an AMS is initiated locally. ie. AP requested a PR_SWAP */
-#define PE_FLAGS_LOCALLY_INITIATED_AMS       BIT(26)
+#define PE_FLAGS_LOCALLY_INITIATED_AMS       BIT(25)
 /* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
-#define PE_FLAGS_FIRST_MSG                   BIT(27)
+#define PE_FLAGS_FIRST_MSG                   BIT(26)
 /* Flag to continue port discovery if it was interrupted */
-#define PE_FLAGS_DISCOVER_PORT_CONTINUE      BIT(28)
+#define PE_FLAGS_DISCOVER_PORT_CONTINUE      BIT(27)
+/*
+ * Flag to continue a common swap request if it was interrupted
+ * by a received message
+ */
+#define PE_FLAGS_CONTINUE_COMMON_SWAP        BIT(28)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -135,6 +138,13 @@
  *   Discover Identity message.
  */
 #define N_DR_SWAP_ATTEMPT_COUNT 5
+
+/*
+ * ChromeOS policy:
+ *   If a wait message is received from the port partner, try to resend the
+ *   message a maximum of N_MAX_RETRIES before giving up.
+ */
+#define N_MAX_RETRIES 5
 
 #define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
 
@@ -214,7 +224,10 @@ enum usb_pe_state {
 	PE_BIST_TX,
 	PE_BIST_RX,
 	PE_DR_SNK_GET_SINK_CAP,
-
+	PE_COMMON_SWAP_SEND,
+	PE_COMMON_SWAP_WAIT,
+	PE_COMMON_SWAP_RESPONSE,
+	PE_COMMON_SWAP_RESEND,
 	/* Super States */
 	PE_PRS_FRS_SHARED,
 };
@@ -283,10 +296,24 @@ static const char * const pe_state_names[] = {
 	[PE_BIST_TX] = "PE_Bist_TX",
 	[PE_BIST_RX] = "PE_Bist_RX",
 	[PE_DR_SNK_GET_SINK_CAP] = "PE_DR_SNK_Get_Sink_Cap",
+	[PE_COMMON_SWAP_SEND] = "PE_COMMON_SWAP_Send",
+	[PE_COMMON_SWAP_WAIT] = "PE_COMMON_SWAP_Wait",
+	[PE_COMMON_SWAP_RESPONSE] = "PE_COMMON_SWAP_Response",
+	[PE_COMMON_SWAP_RESEND] = "PE_COMMON_SWAP_Resend",
 	/* Super States */
 	[PE_PRS_FRS_SHARED] = "SS:PE_PRS_FRS_SHARED",
 };
 #endif
+
+/*
+ * This enum is used to select what type of swap command to send
+ * to the port partner.
+ */
+enum send_swap {
+	SEND_SWAP_DRS,	/* Send data role swap */
+	SEND_SWAP_PRS_SRC_SNK,	/* Send power role swap */
+	SEND_SWAP_VCONN	/* Send vconn role swap */
+};
 
 /*
  * NOTE:
@@ -348,6 +375,12 @@ static struct policy_engine {
 	enum sub_state sub;
 
 	/* Cable DiscoverIdentity VDOs */
+	/* transmit sequence state machine variable*/
+	enum send_swap swap_cmd;
+
+	/* VDO */
+
+	/* TODO (b/148834626): Enable eMarker cable detection */
 	struct pd_cable cable;
 
 	/* TODO(b/150611251): Store full partner DiscoverIdentity response */
@@ -465,6 +498,12 @@ static struct policy_engine {
 	uint64_t wait_and_add_jitter_timer;
 
 	/* Counters */
+
+	/*
+	 * Maintains a count of the number of times a message has been
+	 * responded to with a Wait reply from the port partner.
+	 */
+	uint32_t wait_retry_counter;
 
 	/*
 	 * This counter is used to retry the Hard Reset whenever there is no
@@ -1094,10 +1133,8 @@ static void pe_attempt_port_discovery(int port)
 			 * port discovery. Also give up if the Port Partner
 			 * rejected the DR_SWAP.
 			 */
-			if ((pe[port].dr_swap_attempt_counter >=
-						N_DR_SWAP_ATTEMPT_COUNT) ||
-				(pe[port].dr_swap_attempt_counter > 0 &&
-				!PE_CHK_FLAG(port, PE_FLAGS_WAITING_DR_SWAP))) {
+			if (pe[port].dr_swap_attempt_counter >=
+						N_DR_SWAP_ATTEMPT_COUNT) {
 				PE_SET_FLAG(port,
 					PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 				pe[port].discover_port_identity_timer =
@@ -1115,9 +1152,6 @@ static void pe_attempt_port_discovery(int port)
 		PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 		pe[port].discover_port_identity_timer = TIMER_DISABLED;
 	}
-
-	/* Clear the PE_FLAGS_WAITING_DR_SWAP flag if it was set. */
-	PE_CLR_FLAG(port, PE_FLAGS_WAITING_DR_SWAP);
 }
 
 /*
@@ -1716,6 +1750,9 @@ static void pe_src_ready_run(int port)
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_CONTINUE_COMMON_SWAP)) {
+		PE_CLR_FLAG(port, PE_FLAGS_CONTINUE_COMMON_SWAP);
+		set_state_pe(port, PE_COMMON_SWAP_RESEND);
 	}
 
 	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
@@ -2453,6 +2490,9 @@ static void pe_snk_ready_run(int port)
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_CONTINUE_COMMON_SWAP)) {
+		PE_CLR_FLAG(port, PE_FLAGS_CONTINUE_COMMON_SWAP);
+		set_state_pe(port, PE_COMMON_SWAP_RESEND);
 	}
 
 	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
@@ -3054,90 +3094,12 @@ static void pe_drs_send_swap_entry(int port)
 	print_current_state(port);
 
 	/*
-	 * PE_DRS_UFP_DFP_Send_Swap and PE_DRS_DFP_UFP_Send_Swap
-	 * states embedded here.
+	 * These port specific state variables are
+	 * used by the common_send_swap function.
 	 */
-	/* Request the Protocol Layer to send a DR_Swap Message */
-	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DR_SWAP);
-
-	pe[port].sender_response_timer = TIMER_DISABLED;
-}
-
-static void pe_drs_send_swap_run(int port)
-{
-	int type;
-	int cnt;
-	int ext;
-
-	/* Wait until message is sent */
-	if (pe[port].sender_response_timer == TIMER_DISABLED) {
-		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-			/* Initialize and run SenderResponseTimer */
-			pe[port].sender_response_timer =
-					get_time().val + PD_T_SENDER_RESPONSE;
-		} else {
-			return;
-		}
-	}
-
-	/*
-	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
-	 *   1) Or the SenderResponseTimer times out.
-	 */
-	if (get_time().val > pe[port].sender_response_timer) {
-		if (pe[port].power_role == PD_ROLE_SINK)
-			set_state_pe(port, PE_SNK_READY);
-		else
-			set_state_pe(port, PE_SRC_READY);
-		return;
-	}
-
-	/*
-	 * Transition to PE_DRS_Change when:
-	 *   1) An Accept Message is received.
-	 *
-	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
-	 *   1) A Reject Message is received.
-	 *   2) Or a Wait Message is received.
-	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
-		type = PD_HEADER_TYPE(rx_emsg[port].header);
-		cnt = PD_HEADER_CNT(rx_emsg[port].header);
-		ext = PD_HEADER_EXT(rx_emsg[port].header);
-
-		if ((ext == 0) && (cnt == 0)) {
-			if (type == PD_CTRL_ACCEPT) {
-				set_state_pe(port, PE_DRS_CHANGE);
-				return;
-			} else if ((type == PD_CTRL_REJECT) ||
-						(type == PD_CTRL_WAIT)) {
-				if (type == PD_CTRL_WAIT)
-					PE_SET_FLAG(port,
-						PE_FLAGS_WAITING_DR_SWAP);
-
-				if (pe[port].power_role == PD_ROLE_SINK)
-					set_state_pe(port, PE_SNK_READY);
-				else
-					set_state_pe(port, PE_SRC_READY);
-				return;
-			}
-		}
-	}
-
-	/*
-	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
-	 *   1) the SenderResponseTimer times out.
-	 */
-	if (get_time().val > pe[port].sender_response_timer) {
-		if (pe[port].power_role == PD_ROLE_SINK)
-			set_state_pe(port, PE_SNK_READY);
-		else
-			set_state_pe(port, PE_SRC_READY);
-		return;
-	}
+	pe[port].wait_retry_counter = 0;
+	pe[port].swap_cmd = SEND_SWAP_DRS;
+	set_state_pe(port, PE_COMMON_SWAP_SEND);
 }
 
 /**
@@ -3272,59 +3234,13 @@ static void pe_prs_src_snk_send_swap_entry(int port)
 {
 	print_current_state(port);
 
-	/* Request the Protocol Layer to send a PR_Swap Message. */
-	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PR_SWAP);
-
-	/* Start the SenderResponseTimer */
-	pe[port].sender_response_timer =
-				get_time().val + PD_T_SENDER_RESPONSE;
-}
-
-static void pe_prs_src_snk_send_swap_run(int port)
-{
-	int type;
-	int cnt;
-	int ext;
-
 	/*
-	 * Transition to PE_SRC_Ready state when:
-	 *   1) Or the SenderResponseTimer times out.
+	 * These port specific state variables are
+	 * used by the common_send_swap function.
 	 */
-	if (get_time().val > pe[port].sender_response_timer) {
-		set_state_pe(port, PE_SRC_READY);
-		return;
-	}
-
-	/*
-	 * Transition to PE_PRS_SRC_SNK_Transition_To_Off when:
-	 *   1) An Accept Message is received.
-	 *
-	 * Transition to PE_SRC_Ready state when:
-	 *   1) A Reject Message is received.
-	 *   2) Or a Wait Message is received.
-	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
-		type = PD_HEADER_TYPE(rx_emsg[port].header);
-		cnt = PD_HEADER_CNT(rx_emsg[port].header);
-		ext = PD_HEADER_EXT(rx_emsg[port].header);
-
-		if ((ext == 0) && (cnt == 0)) {
-			if (type == PD_CTRL_ACCEPT)
-				set_state_pe(port,
-					PE_PRS_SRC_SNK_TRANSITION_TO_OFF);
-			else if ((type == PD_CTRL_REJECT) ||
-						(type == PD_CTRL_WAIT))
-				set_state_pe(port, PE_SRC_READY);
-		}
-	}
-}
-
-static void pe_prs_src_snk_send_swap_exit(int port)
-{
-	/* Clear TX Complete Flag if set */
-	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+	pe[port].wait_retry_counter = 0;
+	pe[port].swap_cmd = SEND_SWAP_PRS_SRC_SNK;
+	set_state_pe(port, PE_COMMON_SWAP_SEND);
 }
 
 /**
@@ -4544,80 +4460,13 @@ static void pe_vcs_send_swap_entry(int port)
 {
 	print_current_state(port);
 
-	/* Send a VCONN_Swap Message */
-	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_VCONN_SWAP);
-
-	pe[port].sender_response_timer = TIMER_DISABLED;
-}
-
-static void pe_vcs_send_swap_run(int port)
-{
-	uint8_t type;
-	uint8_t cnt;
-
-	/* Wait until message is sent */
-	if (pe[port].sender_response_timer == TIMER_DISABLED &&
-			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-		/* Start the SenderResponseTimer */
-		pe[port].sender_response_timer = get_time().val +
-						PD_T_SENDER_RESPONSE;
-	}
-
-	if (pe[port].sender_response_timer == TIMER_DISABLED)
-		return;
-
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
-		type = PD_HEADER_TYPE(rx_emsg[port].header);
-		cnt = PD_HEADER_CNT(rx_emsg[port].header);
-
-		/* Only look at control messages */
-		if (cnt == 0) {
-			/*
-			 * Transition to the PE_VCS_Wait_For_VCONN state when:
-			 *   1) Accept Message Received and
-			 *   2) The Port is presently the VCONN Source.
-			 *
-			 * Transition to the PE_VCS_Turn_On_VCONN state when:
-			 *   1) Accept Message Received and
-			 *   2) The Port is not presently the VCONN Source.
-			 */
-			if (type == PD_CTRL_ACCEPT) {
-				if (tc_is_vconn_src(port))
-					set_state_pe(port,
-						PE_VCS_WAIT_FOR_VCONN_SWAP);
-				else
-					set_state_pe(port,
-						PE_VCS_TURN_ON_VCONN_SWAP);
-				return;
-			}
-			/*
-			 * Transition back to either the PE_SRC_Ready or
-			 * PE_SNK_Ready state when:
-			 *   1) SenderResponseTimer Timeout or
-			 *   2) Reject message is received or
-			 *   3) Wait message Received.
-			 */
-			if (get_time().val > pe[port].sender_response_timer ||
-						type == PD_CTRL_REJECT ||
-							type == PD_CTRL_WAIT) {
-				if (pe[port].power_role == PD_ROLE_SOURCE)
-					set_state_pe(port, PE_SRC_READY);
-				else
-					set_state_pe(port, PE_SNK_READY);
-			}
-		}
-		/*
-		 * Unexpected Data Message Received
-		 */
-		else {
-			/* Send Soft Reset */
-			set_state_pe(port, PE_SEND_SOFT_RESET);
-			return;
-		}
-	}
+	/*
+	 * These port specific state variables are
+	 * used by the common_send_swap function.
+	 */
+	pe[port].wait_retry_counter = 0;
+	pe[port].swap_cmd = SEND_SWAP_VCONN;
+	set_state_pe(port, PE_COMMON_SWAP_SEND);
 }
 
 /*
@@ -4935,6 +4784,225 @@ void pd_set_dfp_enter_mode_flag(int port, bool set)
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+static void pe_common_swap_send_entry(int port)
+{
+	print_current_state(port);
+}
+
+static void pe_common_swap_send_run(int port)
+{
+	/*
+	 * Request the Protocol Layer to send a DR_Swap, PR_Swap,
+	 * or VCONN_Swap Message
+	 */
+	switch (pe[port].swap_cmd) {
+	case SEND_SWAP_DRS:
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DR_SWAP);
+		break;
+	case SEND_SWAP_PRS_SRC_SNK:
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PR_SWAP);
+		break;
+	/*
+	 * NOTE:
+	 *	The swap from PRS SNK to SRC is handled in the states
+	 *	prefixed with pe_prs_snk_src_.
+	 */
+	case SEND_SWAP_VCONN:
+		prl_send_ctrl_msg(port, TCPC_TX_SOP,
+						PD_CTRL_VCONN_SWAP);
+		break;
+	}
+
+	set_state_pe(port, PE_COMMON_SWAP_WAIT);
+}
+
+static void pe_common_swap_wait_entry(int port)
+{
+	print_current_state(port);
+}
+
+static void pe_common_swap_wait_run(int port)
+{
+	/* Wait until message is sent */
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		set_state_pe(port, PE_COMMON_SWAP_RESPONSE);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		set_state_pe(port, PE_SRC_HARD_RESET);
+	}
+}
+
+static void pe_common_swap_response_entry(int port)
+{
+	print_current_state(port);
+
+	/* Initialize and run SenderResponseTimer */
+	pe[port].sender_response_timer =
+			get_time().val + PD_T_SENDER_RESPONSE;
+}
+
+static void pe_common_swap_response_run(int port)
+{
+	int type;
+	int cnt;
+	int ext;
+
+	/*
+	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
+	 *   1) Or the SenderResponseTimer times out.
+	 */
+	if (get_time().val > pe[port].sender_response_timer) {
+		if (pe[port].swap_cmd == SEND_SWAP_DRS ||
+					pe[port].swap_cmd == SEND_SWAP_VCONN) {
+			if (pe[port].power_role == PD_ROLE_SINK)
+				set_state_pe(port, PE_SNK_READY);
+			else
+				set_state_pe(port, PE_SRC_READY);
+		} else {
+			/* pe[port].swap_cmd == SEND_SWAP_PRS_SRC_SNK */
+			set_state_pe(port, PE_SRC_READY);
+		}
+		return;
+	}
+
+	/*
+	 * Transition to PE_DRS_Change,
+	 *	PE_PRS_SRC_SNK_TRANSITION_TO_OFF,
+	 *	PE_VCS_WAIT_FOR_VCONN_SWAP,
+	 *	or PE_VCS_TURN_ON_VCONN_SWAP when:
+	 *   1) An Accept Message is received.
+	 *
+	 * Transition to PE_SRC_Ready or PE_SNK_Ready state when:
+	 *   1) A Reject Message is received.
+	 *   2) Or a Wait Message is received.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		type = PD_HEADER_TYPE(rx_emsg[port].header);
+		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		ext = PD_HEADER_EXT(rx_emsg[port].header);
+
+		if ((ext == 0) && (cnt == 0)) {
+			if (type == PD_CTRL_ACCEPT) {
+				/* Accept message received */
+				switch (pe[port].swap_cmd) {
+				case SEND_SWAP_DRS:
+					set_state_pe(port, PE_DRS_CHANGE);
+					break;
+				case SEND_SWAP_PRS_SRC_SNK:
+					tc_request_power_swap(port);
+					set_state_pe(port,
+				PE_PRS_SRC_SNK_TRANSITION_TO_OFF);
+					break;
+				case SEND_SWAP_VCONN:
+					if (tc_is_vconn_src(port))
+						set_state_pe(port,
+						PE_VCS_WAIT_FOR_VCONN_SWAP);
+					else
+						set_state_pe(port,
+						PE_VCS_TURN_ON_VCONN_SWAP);
+					break;
+				}
+			} else if (type == PD_CTRL_REJECT) {
+				/* Reject message received */
+				if (pe[port].swap_cmd == SEND_SWAP_DRS ||
+					pe[port].swap_cmd == SEND_SWAP_VCONN) {
+					if (pe[port].power_role == PD_ROLE_SINK)
+						set_state_pe(port,
+								PE_SNK_READY);
+					else
+						set_state_pe(port,
+								PE_SRC_READY);
+				} else {
+					/* swap_cmd == SEND_SWAP_PRS_SRC_SNK */
+					set_state_pe(port, PE_SRC_READY);
+				}
+			} else if (type == PD_CTRL_WAIT) {
+				/* Wait message received */
+				if (pe[port].wait_retry_counter ==
+							N_MAX_RETRIES) {
+					/*
+					 * To many waits received,
+					 * so give up.
+					 */
+					if (pe[port].swap_cmd ==
+						SEND_SWAP_DRS ||
+						pe[port].swap_cmd ==
+						SEND_SWAP_VCONN) {
+						if (pe[port].power_role ==
+							PD_ROLE_SINK)
+							set_state_pe(port,
+								PE_SNK_READY);
+						else
+							set_state_pe(port,
+								PE_SRC_READY);
+					} else {
+						/*
+						 * pe[port].swap_cmd ==
+						 * SEND_SWAP_PRS_SRC_SNK
+						 */
+						set_state_pe(port,
+								PE_SRC_READY);
+					}
+				} else {
+					/*
+					 * Try to resend the message
+					 * after RESEND_DELAY
+					 */
+					pe[port].wait_retry_counter++;
+					set_state_pe(port,
+							PE_COMMON_SWAP_RESEND);
+				}
+			} else {
+				/* Unexpected Data Message Received */
+				/* Send Soft Reset */
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+			}
+		} else {
+			/* Unexpected Data Message Received */
+			/* Send Soft Reset */
+			set_state_pe(port, PE_SEND_SOFT_RESET);
+		}
+	}
+}
+
+static void pe_common_swap_resend_entry(int port)
+{
+	print_current_state(port);
+
+	/*
+	 * Using sender_response_timer
+	 * as delay timer
+	 */
+	pe[port].sender_response_timer = get_time().val + PD_T_DR_SWAP_WAIT;
+}
+
+static void pe_common_swap_resend_run(int port)
+{
+	if (get_time().val > pe[port].sender_response_timer)
+		set_state_pe(port, PE_COMMON_SWAP_SEND);
+
+	/* Pass any received messages to PE_SRC_READY or PE_SNK_READY */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		/* Continue the swap after the message is handled */
+		PE_SET_FLAG(port, PE_FLAGS_CONTINUE_COMMON_SWAP);
+
+		if (pe[port].swap_cmd == SEND_SWAP_DRS ||
+					pe[port].swap_cmd == SEND_SWAP_VCONN) {
+			if (pe[port].power_role == PD_ROLE_SINK)
+				set_state_pe(port, PE_SNK_READY);
+			else
+				set_state_pe(port, PE_SRC_READY);
+		} else {
+			/* pe[port].swap_cmd == SEND_SWAP_PRS_SRC_SNK */
+			set_state_pe(port, PE_SRC_READY);
+		}
+	}
+}
+
+
 static const struct usb_state pe_states[] = {
 	/* Super States */
 	[PE_PRS_FRS_SHARED] = {
@@ -5066,7 +5134,6 @@ static const struct usb_state pe_states[] = {
 	},
 	[PE_DRS_SEND_SWAP] = {
 		.entry = pe_drs_send_swap_entry,
-		.run   = pe_drs_send_swap_run,
 	},
 	[PE_PRS_SRC_SNK_EVALUATE_SWAP] = {
 		.entry = pe_prs_src_snk_evaluate_swap_entry,
@@ -5082,8 +5149,6 @@ static const struct usb_state pe_states[] = {
 	},
 	[PE_PRS_SRC_SNK_SEND_SWAP] = {
 		.entry = pe_prs_src_snk_send_swap_entry,
-		.run   = pe_prs_src_snk_send_swap_run,
-		.exit  = pe_prs_src_snk_send_swap_exit,
 	},
 	[PE_PRS_SNK_SRC_EVALUATE_SWAP] = {
 		.entry = pe_prs_snk_src_evaluate_swap_entry,
@@ -5128,7 +5193,6 @@ static const struct usb_state pe_states[] = {
 	},
 	[PE_VCS_SEND_SWAP] = {
 		.entry = pe_vcs_send_swap_entry,
-		.run   = pe_vcs_send_swap_run,
 	},
 	[PE_VCS_WAIT_FOR_VCONN_SWAP] = {
 		.entry = pe_vcs_wait_for_vconn_swap_entry,
@@ -5195,6 +5259,22 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_dr_snk_get_sink_cap_entry,
 		.run   = pe_dr_snk_get_sink_cap_run,
 	},
+	[PE_COMMON_SWAP_SEND] = {
+		.entry = pe_common_swap_send_entry,
+		.run = pe_common_swap_send_run,
+	},
+	[PE_COMMON_SWAP_WAIT] = {
+		.entry = pe_common_swap_wait_entry,
+		.run = pe_common_swap_wait_run,
+	},
+	[PE_COMMON_SWAP_RESPONSE] = {
+		.entry = pe_common_swap_response_entry,
+		.run = pe_common_swap_response_run,
+	},
+	[PE_COMMON_SWAP_RESEND] = {
+		.entry = pe_common_swap_resend_entry,
+		.run = pe_common_swap_resend_run,
+	}
 };
 
 #ifdef TEST_BUILD
