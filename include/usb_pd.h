@@ -503,6 +503,13 @@ enum idh_ptype {
 #define VDO_PRODUCT(pid, bcd) (((pid) & 0xffff) << 16 | ((bcd) & 0xffff))
 #define PD_PRODUCT_PID(vdo) (((vdo) >> 16) & 0xffff)
 
+/*
+ * Message id starts from 0 to 7. If last_msg_id is initialized to 0,
+ * it will lead to repetitive message id with first received packet,
+ * so initialize it with an invalid value 0xff.
+ */
+#define INVALID_MSG_ID_COUNTER 0xff
+
 union cable_vdo {
 	/* Passive cable VDO */
 	union passive_cable_vdo_rev20 p_rev20;
@@ -1706,6 +1713,14 @@ int cable_consume_repeat_message(int port, uint8_t msg_id);
  * @return              Status of CABLE_FLAGS_SOP_PRIME_ENABLE flag
  */
 bool is_transmit_msg_sop_prime(int port);
+
+/**
+ * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ * @return		Status of CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
+ */
+bool is_transmit_msg_sop_prime_prime(int port);
 
 /**
  * Returns the type of communication (SOP/SOP'/SOP'')
