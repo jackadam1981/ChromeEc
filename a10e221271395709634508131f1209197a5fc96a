@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca86a0a_ea9d7d7e",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-01-30T00:30:10Z",
+      "side": 1,
+      "message": "I feel like these indirect conditions are asking for troubles. Sure... it\u0027s possible that gpio_get_level(GPIO_POWER_GOOD)\u003d\u003d1 is when we want to do this, but it\u0027s only indirectly why we want to do it there.\n\nIt all boils down to...\nWe want to print our \"warm reset ended\" and the trigger the cold reset exactly when .... Warm reset got deasserted.\n\nThis else{ executes in more cases than just when warm reset ended. How can we disambiguate clearly? How about we just \"if(signal\u003d\u003dGPIO_WARM_RESET_L)\"?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 40
+      },
+      "revId": "a10e221271395709634508131f1209197a5fc96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
