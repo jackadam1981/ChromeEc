@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery_smart.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "ec_commands.h"
@@ -46,6 +47,20 @@ static enum ec_status hc_locate_chip(struct host_cmd_handler_args *args)
 #else
 		return EC_RES_UNAVAILABLE;
 #endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
+		break;
+	case EC_CHIP_TYPE_SMART_BATTERY:
+#ifdef CONFIG_BATTERY_SMART
+		/* We only have one battery */
+		if (params->index > 0)
+			return EC_RES_OVERFLOW;
+
+		resp->bus_type = EC_BUS_TYPE_I2C;
+		resp->i2c_info.port = I2C_PORT_BATTERY;
+		resp->i2c_info.addr_flags = BATTERY_ADDR_FLAGS;
+#else
+		/* Lookup type is supported, but not present on system. */
+		return EC_RES_UNAVAILABLE;
+#endif /* CONFIG_BATTERY_SMART */
 		break;
 	default:
 		/* The type was unrecognized */
