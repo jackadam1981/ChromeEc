@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca0b1922_070c1c7a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-30T23:05:46Z",
+      "side": 1,
+      "message": "add a comment and keep it separate of these bit fields",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 0
+      },
+      "revId": "f3e8b77e72b0d60b8f374960b035e05a723943f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c745e2_e73bd093",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-01-30T23:05:46Z",
+      "side": 1,
+      "message": "nit: tab",
+      "range": {
+        "startLine": 1715,
+        "startChar": 11,
+        "endLine": 1715,
+        "endChar": 24
+      },
+      "revId": "f3e8b77e72b0d60b8f374960b035e05a723943f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
