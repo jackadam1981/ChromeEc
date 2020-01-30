@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb39787e_6896b74c",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-01-30T01:13:01Z",
+      "side": 1,
+      "message": "Can we have one function gpio_set_wakepin_flags and add support for flags\u003d0 to this, so we don\u0027t need to duplicate all of the gpio to dio_mask logic?",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 24
+      },
+      "revId": "d4744e32f762d99d73a4ba28f1aa235e16d7c505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
