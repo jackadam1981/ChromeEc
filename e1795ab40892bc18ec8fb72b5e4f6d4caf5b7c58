@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d37057fb_05ddf242",
+        "filename": "common/peripheral.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-30T19:59:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether we should call battery_is_present or not (and return error if it\u0027s not present). OS has other way to learn the battery presence. So, I guess it doesn\u0027t matter much but it\u0027s worth commenting (if not calling battery_is_present).",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "e1795ab40892bc18ec8fb72b5e4f6d4caf5b7c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
