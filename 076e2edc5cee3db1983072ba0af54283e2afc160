@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a2c79fe_afea8049",
+        "filename": "driver/retimer/ps8818.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:01:07Z",
+      "side": 1,
+      "message": "isn\u0027t this going to be board specific. \n\nSee ps8751_tune_mux in coral/board.c for an example",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "076e2edc5cee3db1983072ba0af54283e2afc160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28c0f13_2f86e867",
+        "filename": "driver/retimer/ps8818.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T19:01:07Z",
+      "side": 1,
+      "message": "same here for board specific needs.\n\nMaybe we need to create driver methods that the boards can call into to set their appropriate gains?",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 25
+      },
+      "revId": "076e2edc5cee3db1983072ba0af54283e2afc160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
