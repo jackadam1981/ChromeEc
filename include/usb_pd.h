@@ -534,6 +534,12 @@ enum pd_rev_type {
 	PD_REV30,
 };
 
+#ifdef CONFIG_USB_PD_REV20
+#define PD_REVISION     PD_REV20
+#else
+#define PD_REVISION     PD_REV30
+#endif
+
 /* Cable structure for storing cable attributes */
 struct pd_cable {
 	/* Last received SOP' message id counter*/
