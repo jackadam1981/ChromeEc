@@ -1263,8 +1263,8 @@ static void pe_src_send_capabilities_run(int port)
 			 * ports.
 			 */
 			prl_set_rev(port, TCPC_TX_SOP,
-				(PD_HEADER_REV(emsg[port].header) > PD_REV30) ?
-				PD_REV30 : PD_HEADER_REV(emsg[port].header));
+			(PD_HEADER_REV(emsg[port].header) > PD_REVISION) ?
+			PD_REVISION : PD_HEADER_REV(emsg[port].header));
 
 			/* We are PD connected */
 			PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
