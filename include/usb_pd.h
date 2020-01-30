@@ -1704,6 +1704,21 @@ int cable_consume_repeat_message(int port, uint8_t msg_id);
  */
 bool is_transmit_msg_sop_prime(int port);
 
+/*
+ * Return the pointer to PD policy engine
+ *
+ * @param port  USB-C port number
+ * @return      pointer to PD policy engine
+ */
+struct pd_policy *get_pd_policy(int port);
+
+/**
+ * Set DFP enter mode flags if available
+ *
+ * @param port  USB-C port number
+ */
+void pd_set_dfp_enter_mode_flag(int port);
+
 /**
  * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
  *
