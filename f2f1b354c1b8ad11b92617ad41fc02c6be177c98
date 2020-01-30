@@ -70,6 +70,30 @@
       "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f62dd3_ca40387f",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-01-30T08:56:56Z",
+      "side": 0,
+      "message": "agree",
+      "parentUuid": "da2faca7_6ceb64cd",
+      "range": {
+        "startLine": 582,
+        "startChar": 2,
+        "endLine": 582,
+        "endChar": 35
+      },
+      "revId": "f2f1b354c1b8ad11b92617ad41fc02c6be177c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
