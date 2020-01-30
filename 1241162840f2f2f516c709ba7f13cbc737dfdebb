@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "46049794_91dbfe56",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-30T20:13:54Z",
+      "side": 1,
+      "message": "For linux command-line options, usually the brackets imply optional.  Though our own commands seem to not necessarily have that consistency.",
+      "parentUuid": "054239d9_494c7c61",
+      "range": {
+        "startLine": 626,
+        "startChar": 4,
+        "endLine": 626,
+        "endChar": 10
+      },
+      "revId": "1241162840f2f2f516c709ba7f13cbc737dfdebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61d56eae_54be923e",
         "filename": "board/c2d2/board.h",
         "patchSetId": 12
