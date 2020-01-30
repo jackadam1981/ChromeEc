@@ -9,6 +9,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "pwm.h"
 #include "pwm_chip.h"
@@ -30,6 +31,26 @@ const struct adc_t adc_channels[] = {
 		0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+void update_pp3300_a_pgood(void)
+{
+	/* Check the status register of the ADC and update accordingly. */
+	pp3300_a_pgood = IS_BIT_SET(NPCX_THRCTS, NPCX_THRCTS_THR1_STS) ? 1 : 0;
+}
+
+const struct npcx_adc_thresh_t adc_threshold_int_cfg = {
+	.adc_ch = ADC_VSNS_PP3300_A,
+	.adc_thresh_cb = update_pp3300_a_pgood,
+	.thresh_assert = 2700,
+	.thresh_deassert = 600,
+};
+
+static void set_up_adc_irqs(void)
+{
+	/* Need to set interrupt thresholds for the ADC. */
+	npcx_adc_register_thresh_irq(1, &adc_threshold_int_cfg);
+}
+DECLARE_HOOK(HOOK_INIT, set_up_adc_irqs, HOOK_PRIO_INIT_ADC+1);
 
 /* I2C Ports */
 const struct i2c_port_t i2c_ports[] = {
