@@ -1,0 +1,579 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a2e4f9b_9c42a2a6",
+        "filename": "common/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "I think we might want to define a \n\nCONFIG_VBOOT_EFS_COMMON\n\ndepend on how many time we see this combination though",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 58
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ffe913_55708d15",
+        "filename": "common/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "let\u0027s explain why (since EFS2 doesn\u0027t have an A/B RW slot)",
+      "range": {
+        "startLine": 615,
+        "startChar": 7,
+        "endLine": 615,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493dad3f_9beadfa8",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "I haven\u0027t review this file yet, but I will on next pass. I figured there are enough comment so far :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b249e5_586fba1e",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "more comments, what is deferred until when?",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "020c79f8_d88d0d85",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "let\u0027s document these parameters please",
+      "range": {
+        "startLine": 173,
+        "startChar": 28,
+        "endLine": 174,
+        "endChar": 58
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb330f81_995a3fb8",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "if we aren\u0027t deferred, should we add any delays to ensure we don\u0027t starve lower priority tasks?\n\nAlso, what task is this performed in (or is it before any tasks are up)",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce02309_37df7e6b",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "can you add a note to explain why this isn\u0027t needed, please? It is not apparent to my why there would be a different here",
+      "range": {
+        "startLine": 245,
+        "startChar": 25,
+        "endLine": 245,
+        "endChar": 50
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1874ef9_67fb38f6",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "I commented below in header on name. How does\n\nvboot_get_rw_hash\n\nsound instead",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 288,
+        "endChar": 19
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0caf74a2_9a24493f",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "please document true as /* deferred context */\n\n(or you could use an enum instead like\n\nPROCESS_CONTEXT_DEFERRED\nPROCESS_CONTEXT_BLOCKING\n\njust an idea)",
+      "range": {
+        "startLine": 394,
+        "startChar": 20,
+        "endLine": 394,
+        "endChar": 24
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9e03ac_048c6cab",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4323,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "we should explain the difference between these two options.\n\nShould we have a common define that get auto defined when either EFS or EFS2 is defined?\n\n\nAlso, do we plan on transitioning all EFS1 users to EFS2 in the future?",
+      "range": {
+        "startLine": 4321,
+        "startChar": 0,
+        "endLine": 4323,
+        "endChar": 24
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d71a54_2082ba7e",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "what are the units?  As noted below, if we want a default for all boards, then we should define that here (and allow board.h to undef if needed, like UART_FIFO)",
+      "range": {
+        "startLine": 4325,
+        "startChar": 0,
+        "endLine": 4326,
+        "endChar": 39
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e6d376_5b4c58d3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2403,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "why is this defined here instead of in vboot.h?\n\nAlso why is this overrideable? what is providing multiple implementations?\n\nWe should document that EFS1 or EFS2 is expect to provide the real implementation, not a board.\n\nAlso can we define a static weak implementation in the vboot header file (with the declaration)? and then we don\u0027t need to define a weak one in usb_common.c",
+      "range": {
+        "startLine": 2403,
+        "startChar": 21,
+        "endLine": 2403,
+        "endChar": 39
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805dd30a_5213669b",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "This needs more comments. Say we are setting the default to 20 seconds?\n\nWhy don\u0027t we define this as 20 in config.h and let board.h undef it like UART_FIFO stuff?\n\nThis also needs units in the name",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c8ca38_c2217245",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "We can drop Unused right, that is an implementation detail that may change in the future if we need it to",
+      "range": {
+        "startLine": 81,
+        "startChar": 44,
+        "endLine": 81,
+        "endChar": 50
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32aa0ce0_a5838c80",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "let\u0027s finish the comment with gpio singal that cause interrupt (or let\u0027s drop the parameter line altogether)",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59105bec_fce54a16",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "let\u0027s add more comments to each of these\n\ne.g. COM_RETRY is the number of time EC will try to initial communication before aborting EFS flow ?(or something like that)",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2878a386_0e8aa2f4",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "The special, repeated preable byte that proceeds all EC packets on the UART line",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539f558a_8e0ba4fd",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "what is the pipe here for?",
+      "range": {
+        "startLine": 95,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733e3b5d_f51d177f",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "more of a code sharing question: Is this struct definition going to be shared between EC and CR50? It is right?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4922e3_28981676",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "should we put a version in here?",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 62
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cff0ebf_acc76c3e",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "this size doesn\u0027t make the 256 bytes comment above for size",
+      "range": {
+        "startLine": 111,
+        "startChar": 34,
+        "endLine": 111,
+        "endChar": 72
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a85f4b_b722ee36",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "why prefix everything with 0xec ? Why not just make it 0, 1, 2 etc?\n\nIf we make the 0xec part of the encoding, don\u0027t we only need one byte for error space?",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b729b8_d18120c7",
+        "filename": "include/vboot_hash.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "why sync?\n\ncan we call is \n\nvboot_get_rw_hash insetad?\n\n\nAlso can you document the required state of dst variable? Does anything need to be allocated before or does this return reference to commen memory that shouldn\u0027t be touched",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d37a6b8_b35e53f4",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "nit: should use || for logical or",
+      "range": {
+        "startLine": 740,
+        "startChar": 30,
+        "endLine": 740,
+        "endChar": 31
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2efb82d_904e94af",
+        "filename": "power/skylake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 1,
+      "message": "shoudl we update the code then?\n\n#if !defined(EFS) \u0026\u0026 !defined(EF2)",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 58
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

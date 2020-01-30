@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "065b3c97_fd1fde0f",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-30T20:57:18Z",
+      "side": 0,
+      "message": "why is EFS1 changing?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "2aceaf9b55715311385ca2c9b9a8c09110425413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
