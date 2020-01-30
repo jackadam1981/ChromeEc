@@ -22,6 +22,30 @@
       "revId": "d4744e32f762d99d73a4ba28f1aa235e16d7c505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453c9a0b_3d9f75fa",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-30T22:21:23Z",
+      "side": 1,
+      "message": "Done. Changed the comment and the patch description as well.",
+      "parentUuid": "bb39787e_6896b74c",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 24
+      },
+      "revId": "d4744e32f762d99d73a4ba28f1aa235e16d7c505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
