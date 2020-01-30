@@ -173,7 +173,7 @@ bool is_transmit_msg_sop_prime(int port)
 		(cable[port].flags & CABLE_FLAGS_SOP_PRIME_ENABLE));
 }
 
-static bool is_transmit_msg_sop_prime_prime(int port)
+bool is_transmit_msg_sop_prime_prime(int port)
 {
 	return (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
 		(cable[port].flags & CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE));
@@ -252,7 +252,7 @@ void reset_pd_cable(int port)
 		 * id with first received packet. Hence, initialize it with
 		 * an invalid value 0xff.
 		 */
-		cable[port].last_cable_msg_id = 0xff;
+		cable[port].last_cable_msg_id = INVALID_LAST_MSG_ID_COUNTER;
 	}
 }
 
