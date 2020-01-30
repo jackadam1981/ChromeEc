@@ -1603,6 +1603,14 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status);
 int pd_dfp_exit_mode(int port, uint16_t svid, int opos);
 
 /**
+ * Consume the SVDM attention data
+ *
+ * @param port USB-C port number
+ * @param payload  payload data.
+ */
+void dfp_consume_attention(int port, uint32_t *payload);
+
+/**
  * Initialize policy engine for DFP
  *
  * @param port     USB-C port number
@@ -1684,6 +1692,13 @@ struct pd_policy *get_pd_policy(int port);
  * @param port  USB-C port number
  */
 void pd_set_dfp_enter_mode_flag(int port);
+
+/**
+ * Clear DFP enter mode flags if available
+ *
+ * @param port  USB-C port number
+ */
+void pd_clear_dfp_enter_mode_flag(int port);
 
 /**
  * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
