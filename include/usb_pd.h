@@ -1671,6 +1671,21 @@ uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx);
 struct svdm_amode_data *pd_get_amode_data(int port, uint16_t svid);
 
 /**
+ * Return the pointer to PD policy engine
+ *
+ * @param port  USB-C port number
+ * @return      pointer to PD policy engine
+ */
+struct pd_policy *get_pd_policy(int port);
+
+/**
+ * Set DFP enter mode flags if available
+ *
+ * @param port  USB-C port number
+ */
+void pd_set_dfp_enter_mode_flag(int port);
+
+/**
  * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
  *
  * @param port		USB-C port number
