@@ -411,6 +411,7 @@ enum power_state power_chipset_init(void)
 	uint32_t reset_flags = system_get_reset_flags();
 
 	/* Enable interrupts */
+	gpio_enable_interrupt(GPIO_DEPRECATED_AP_RST_REQ);
 	gpio_enable_interrupt(GPIO_WARM_RESET_L);
 	gpio_enable_interrupt(GPIO_POWER_GOOD);
 
