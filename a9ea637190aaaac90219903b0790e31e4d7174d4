@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "703203fd_0493e872",
+        "filename": "board/waddledoo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-30T16:01:28Z",
+      "side": 0,
+      "message": "No need to do this now, but this should probably move into baseboard if it\u0027s corresponding array is there",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "a9ea637190aaaac90219903b0790e31e4d7174d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
