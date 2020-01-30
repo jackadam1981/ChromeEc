@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73e00e68_03796692",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1348029
+      },
+      "writtenOn": "2020-01-30T18:26:12Z",
+      "side": 1,
+      "message": "Can we be more explicit with this? Mabye:\n\"Test: C0 and C1 can both act as a SRC with a passive SNK connected\"\nThat was the original symptom, so is more targeted.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "f26c19ce5a449c618e280971609918d6e3df0b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
