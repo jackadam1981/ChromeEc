@@ -548,6 +548,7 @@ struct pd_cable {
 	union tbt_mode_resp_cable cable_mode_resp;
 };
 
+#define INVALID_LAST_MSG_ID_COUNTER 0xff
 /* Flag for sending SOP Prime packet */
 #define CABLE_FLAGS_SOP_PRIME_ENABLE	   BIT(0)
 /* Flag for sending SOP Prime Prime packet */
@@ -1706,6 +1707,14 @@ int cable_consume_repeat_message(int port, uint8_t msg_id);
  * @return              Status of CABLE_FLAGS_SOP_PRIME_ENABLE flag
  */
 bool is_transmit_msg_sop_prime(int port);
+
+/**
+ * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ * @return              Status of CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
+ */
+bool is_transmit_msg_sop_prime_prime(int port);
 
 /**
  * Returns the type of communication (SOP/SOP'/SOP'')

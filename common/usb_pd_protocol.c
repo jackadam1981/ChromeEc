@@ -682,7 +682,7 @@ static void invalidate_last_message_id(int port)
 	 * it will lead to repetitive message id with first received packet,
 	 * so initialize it with an invalid value 0xff.
 	 */
-	pd[port].last_msg_id = 0xff;
+	pd[port].last_msg_id = INVALID_LAST_MSG_ID_COUNTER;
 }
 
 /**
@@ -700,8 +700,8 @@ static int consume_repeat_message(int port, uint16_t msg_header)
 	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
 	    PD_HEADER_CNT(msg_header) == 0) {
 		return 0;
-	/* TODO: Check for incoming SOP'' messages */
-	} else if (is_transmit_msg_sop_prime(port)) {
+	} else if (is_transmit_msg_sop_prime(port) ||
+		   is_transmit_msg_sop_prime_prime(port)) {
 		/*
 		 * From USB PD version 1.3 section 6.7.1, the port which
 		 * communicates using SOP* Packets Shall maintain copy
