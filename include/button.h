@@ -11,6 +11,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "gpio.h"
+#include "hooks.h"
 
 #define BUTTON_FLAG_ACTIVE_HIGH BIT(0)
 
@@ -37,6 +38,7 @@ struct button_config {
 	enum gpio_signal gpio;
 	uint32_t debounce_us;
 	int flags;
+	const struct deferred_data *deferred_func;
 };
 
 enum button {

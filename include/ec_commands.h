@@ -5941,6 +5941,21 @@ struct ec_response_get_pd_port_caps {
 } __ec_align1;
 
 /*****************************************************************************/
+/*
+ * Button press simulation
+ *
+ * This command is used to simulate a button press.
+ * Supported button presses are vup (volume down) & vdown (volume down)
+ * Time duration for which the button needs to be pressed is an optional parameter.
+ */
+#define EC_CMD_BUTTON 0x0129
+
+struct ec_params_button {
+	uint8_t   btn_type;
+	uint32_t  press_ms;
+} __ec_align1;
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/

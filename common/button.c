@@ -12,7 +12,6 @@
 #include "console.h"
 #include "gpio.h"
 #include "host_command.h"
-#include "hooks.h"
 #include "keyboard_protocol.h"
 #include "led_common.h"
 #include "power_button.h"
@@ -33,7 +32,7 @@ static struct button_state_t __bss_slow state[BUTTON_COUNT];
 
 static uint64_t __bss_slow next_deferred_time;
 
-#ifdef CONFIG_CMD_BUTTON
+#if defined(CONFIG_CMD_BUTTON) || defined(CONFIG_HOSTCMD_BUTTON)
 static int siml_btn_presd;
 
 /*
@@ -74,7 +73,7 @@ static int simulated_button_pressed(const struct button_config *button)
 static int raw_button_pressed(const struct button_config *button)
 {
 	int raw_value =
-#ifdef CONFIG_CMD_BUTTON
+#if defined(CONFIG_CMD_BUTTON) || defined(CONFIG_HOSTCMD_BUTTON)
 			siml_btn_presd ?
 			simulated_button_pressed(button) :
 #endif
@@ -301,7 +300,7 @@ void button_interrupt(enum gpio_signal signal)
 	}
 }
 
-#ifdef CONFIG_CMD_BUTTON
+#if defined(CONFIG_CMD_BUTTON) || defined(CONFIG_HOSTCMD_BUTTON)
 static int button_present(enum keyboard_button_type type)
 {
 	int i;
@@ -320,14 +319,58 @@ static void button_interrupt_simulate(int button)
 	button_interrupt(buttons[button].gpio);
 }
 
+static void end_simulate_deferred(void)
+{
+	siml_btn_presd = 0;
+}
+DECLARE_DEFERRED(end_simulate_deferred);
+
+static void simulate_button_release(enum keyboard_button_type type)
+{
+	/* Release the button */
+	button_interrupt_simulate(button_present(type));
+
+	/* Wait till button processing is finished */
+	hook_call_deferred(&end_simulate_deferred_data, 100 * MSEC);
+}
+
+static void volumeup_simulate_deferred(void)
+{
+	simulate_button_release(KEYBOARD_BUTTON_VOLUME_UP);
+}
+DECLARE_DEFERRED(volumeup_simulate_deferred);
+
+static void volumedown_simulate_deferred(void)
+{
+	simulate_button_release(KEYBOARD_BUTTON_VOLUME_DOWN);
+}
+DECLARE_DEFERRED(volumedown_simulate_deferred);
+
+static void recovery_simulate_deferred(void)
+{
+	simulate_button_release(KEYBOARD_BUTTON_RECOVERY);
+}
+DECLARE_DEFERRED(recovery_simulate_deferred);
+
+static void simulate_button(int button, int press_ms)
+{
+	siml_btn_presd = 1;
+
+	/* Press the button */
+	button_interrupt_simulate(button);
+
+	/* Defer the button release for specified duration */
+	hook_call_deferred(buttons[button].deferred_func, press_ms * MSEC);
+}
+#endif /* defined(CONFIG_CMD_BUTTON) || defined(CONFIG_HOSTCMD_BUTTON) */
+
+#ifdef CONFIG_CMD_BUTTON
 static int console_command_button(int argc, char **argv)
 {
 	int press_ms = 50;
 	char *e;
 	int argv_idx;
-	int button;
-	int button_idx;
-	uint32_t button_mask = 0;
+	int button = BUTTON_COUNT;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
@@ -349,42 +392,34 @@ static int console_command_button(int argc, char **argv)
 			}
 			button = BUTTON_COUNT;
 		}
-
-		if (button == BUTTON_COUNT)
-			return EC_ERROR_PARAM1 + argv_idx - 1;
-
-		button_mask |= BIT(button);
 	}
 
-	if (!button_mask)
-		return EC_SUCCESS;
+	if (button == BUTTON_COUNT)
+		return EC_ERROR_PARAM1 + argv_idx - 1;
 
-	siml_btn_presd = 1;
+	simulate_button(button, press_ms);
 
-	/* Press the button(s) */
-	for (button_idx = 0; button_idx < BUTTON_COUNT; button_idx++)
-		if (button_mask & BIT(button_idx))
-			button_interrupt_simulate(button_idx);
-
-	/* Hold the button(s) */
-	if (press_ms > 0)
-		msleep(press_ms);
-
-	/* Release the button(s) */
-	for (button_idx = 0; button_idx < BUTTON_COUNT; button_idx++)
-		if (button_mask & BIT(button_idx))
-			button_interrupt_simulate(button_idx);
-
-	/* Wait till button processing is finished */
-	msleep(100);
-
-	siml_btn_presd = 0;
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(button, console_command_button,
 			"vup|vdown msec",
 			"Simulate button press");
-#endif
+#endif /* CONFIG_CMD_BUTTON */
+
+#ifdef CONFIG_HOSTCMD_BUTTON
+static enum ec_status host_command_button(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_button *p = args->params;
+	int button = button_present(p->btn_type);
+
+	simulate_button(button, p->press_ms);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BUTTON, host_command_button, EC_VER_MASK(0));
+
+#endif /* CONFIG_HOSTCMD_BUTTON */
+
 
 #ifdef CONFIG_EMULATED_SYSRQ
 
@@ -731,6 +766,7 @@ const struct button_config buttons[BUTTON_COUNT] = {
 		.gpio = GPIO_VOLUME_UP_L,
 		.debounce_us = 30 * MSEC,
 		.flags = 0,
+		.deferred_func = &volumeup_simulate_deferred_data,
 	},
 
 	[BUTTON_VOLUME_DOWN] = {
@@ -739,6 +775,7 @@ const struct button_config buttons[BUTTON_COUNT] = {
 		.gpio = GPIO_VOLUME_DOWN_L,
 		.debounce_us = 30 * MSEC,
 		.flags = 0,
+		.deferred_func = &volumedown_simulate_deferred_data,
 	},
 
 #elif defined(CONFIG_DEDICATED_RECOVERY_BUTTON)
@@ -748,6 +785,7 @@ const struct button_config buttons[BUTTON_COUNT] = {
 		.gpio = GPIO_RECOVERY_L,
 		.debounce_us = 30 * MSEC,
 		.flags = 0,
+		.deferred_func = &recovery_simulate_deferred_data,
 	}
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
 };
