@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb915afa_634e7644",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-31T21:54:27Z",
+      "side": 1,
+      "message": "nit: \"[[\" instead of \"[\"\n\nhttps://google.github.io/styleguide/shell.xml#Test,_%5B_and_%5B%5B\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/styleguide/shell.md#official-style-guide",
+      "range": {
+        "startLine": 107,
+        "startChar": 9,
+        "endLine": 107,
+        "endChar": 10
+      },
+      "revId": "fcfdc618f054502620bab8a99489ac49f8a3b44a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
