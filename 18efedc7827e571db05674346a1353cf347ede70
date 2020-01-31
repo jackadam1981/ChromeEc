@@ -22,6 +22,30 @@
       "revId": "18efedc7827e571db05674346a1353cf347ede70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36377aa1_31f2cfae",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-01-31T01:33:54Z",
+      "side": 1,
+      "message": "I already have CHIPSET_SHUTDOWN in kindred\u0027s board.c.\nBut chipset_force_shutdown didn\u0027t trigger any HOOKS.\nSo we need this here. Or we can add a new HOOK for CHIPSET_FORCE_SHUTDOWN?",
+      "parentUuid": "9ff0ab13_1fa866a1",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
