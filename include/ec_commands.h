@@ -1050,18 +1050,32 @@ struct ec_response_hello {
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
 
-enum ec_current_image {
+#if !defined(CHROMIUM_EC)
+enum ec_image {
 	EC_IMAGE_UNKNOWN = 0,
 	EC_IMAGE_RO,
-	EC_IMAGE_RW
+	EC_IMAGE_RW,
+	EC_IMAGE_RW_A = EC_IMAGE_RW,
+	EC_IMAGE_RO_B,
+	EC_IMAGE_RW_B
 };
+#else
+enum ec_image {
+	EC_IMAGE_UNKNOWN = 0,
+	EC_IMAGE_RO,
+	EC_IMAGE_RW,
+	EC_IMAGE_RW_A = EC_IMAGE_RW,
+	EC_IMAGE_RO_B,
+	EC_IMAGE_RW_B
+};
+#endif
 
 /**
  * struct ec_response_get_version - Response to the get version command.
  * @version_string_ro: Null-terminated RO firmware version string.
  * @version_string_rw: Null-terminated RW firmware version string.
  * @reserved: Unused bytes; was previously RW-B firmware version string.
- * @current_image: One of ec_current_image.
+ * @current_image: One of ec_image.
  */
 struct ec_response_get_version {
 	char version_string_ro[32];
@@ -5368,7 +5382,7 @@ struct ec_params_usb_pd_rw_hash_entry {
 				  * TODO(rspangler) but it's not aligned!
 				  * Should have been reserved[2].
 				  */
-	uint32_t current_image;  /* One of ec_current_image */
+	uint32_t current_image;  /* One of ec_image */
 } __ec_align1;
 
 /* Read USB-PD Accessory info */
