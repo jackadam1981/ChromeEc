@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f16d7a6_4ad73a40",
+        "filename": "common/vboot/vb21_lib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-31T17:32:23Z",
+      "side": 1,
+      "message": "This is in vb21_lib.c? Or maybe you want a helper function, which seems a bit cleaner?\n\nSomething like vb21_get_packed_key?",
+      "parentUuid": "309dec48_47b907ba",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19f36cff_de1ab0af",
         "filename": "common/vboot/vb21_lib.c",
         "patchSetId": 5
