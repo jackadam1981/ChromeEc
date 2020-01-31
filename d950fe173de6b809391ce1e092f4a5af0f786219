@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d05d92a8_1365861a",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-31T17:37:18Z",
+      "side": 1,
+      "message": "Does the 8815 need to flip the AUX lines based on cable orientation?  The BB retimer is doing this on the USB4 DB so that DP mode works with both cable orientations.\nIf you overwrite usb_muxes[] for port 1, then the EC will stop sending virtual mux info to the AP to adjust the high speed signals, so if we need to do a flip of AUX, it probably needs to be added to the retimer support.\nThis can be done as a separate CL.",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 0
+      },
+      "revId": "d950fe173de6b809391ce1e092f4a5af0f786219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
