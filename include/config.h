@@ -718,6 +718,9 @@
  */
 #undef CONFIG_VOLUME_BUTTONS
 
+/* Support simulation of a button press using EC tool command */
+#undef CONFIG_HOSTCMD_BUTTON
+
 /* Support V1 CCD configuration */
 #undef CONFIG_CASE_CLOSED_DEBUG_V1
 /* Allow unsafe debugging functionality in V1 configuration */

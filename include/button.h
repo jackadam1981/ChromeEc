@@ -11,25 +11,10 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "gpio.h"
+#include "hooks.h"
+#include "ec_commands.h"
 
 #define BUTTON_FLAG_ACTIVE_HIGH BIT(0)
-
-enum keyboard_button_type {
-	KEYBOARD_BUTTON_POWER = 0,
-	KEYBOARD_BUTTON_VOLUME_DOWN,
-	KEYBOARD_BUTTON_VOLUME_UP,
-	KEYBOARD_BUTTON_RECOVERY,
-	KEYBOARD_BUTTON_CAPSENSE_1,
-	KEYBOARD_BUTTON_CAPSENSE_2,
-	KEYBOARD_BUTTON_CAPSENSE_3,
-	KEYBOARD_BUTTON_CAPSENSE_4,
-	KEYBOARD_BUTTON_CAPSENSE_5,
-	KEYBOARD_BUTTON_CAPSENSE_6,
-	KEYBOARD_BUTTON_CAPSENSE_7,
-	KEYBOARD_BUTTON_CAPSENSE_8,
-
-	KEYBOARD_BUTTON_COUNT
-};
 
 struct button_config {
 	const char *name;
@@ -37,6 +22,9 @@ struct button_config {
 	enum gpio_signal gpio;
 	uint32_t debounce_us;
 	int flags;
+#if defined(CONFIG_CMD_BUTTON) || defined(CONFIG_HOSTCMD_BUTTON)
+	const struct deferred_data *deferred_func;
+#endif
 };
 
 enum button {
