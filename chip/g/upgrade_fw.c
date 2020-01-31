@@ -39,10 +39,10 @@ struct {
 static void set_valid_sections(void)
 {
 	 switch (system_get_ro_image_copy()) {
-	 case SYSTEM_IMAGE_RO:
+	 case EC_IMAGE_RO:
 		 valid_sections.ro_base_offset = CHIP_RO_B_MEM_OFF;
 		 break;
-	 case SYSTEM_IMAGE_RO_B:
+	 case EC_IMAGE_RO_B:
 		 valid_sections.ro_base_offset = CONFIG_RO_MEM_OFF;
 		 break;
 	 default:
@@ -51,10 +51,10 @@ static void set_valid_sections(void)
 	 }
 
 	switch (system_get_image_copy()) {
-	case SYSTEM_IMAGE_RW:
+	case EC_IMAGE_RW:
 		valid_sections.rw_base_offset = CONFIG_RW_B_MEM_OFF;
 		break;
-	case SYSTEM_IMAGE_RW_B:
+	case EC_IMAGE_RW_B:
 		valid_sections.rw_base_offset = CONFIG_RW_MEM_OFF;
 		break;
 	default:
