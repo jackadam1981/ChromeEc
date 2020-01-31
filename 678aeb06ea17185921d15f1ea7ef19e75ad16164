@@ -22,6 +22,30 @@
       "revId": "678aeb06ea17185921d15f1ea7ef19e75ad16164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da6253b_84d8a83c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-01-31T00:53:37Z",
+      "side": 1,
+      "message": "I think it\u0027s reasonable to put this way; we specifically call out failure handling as newly deferred.\n\nThis could be clarified some by noting that the sleep blocks the hooks task because it\u0027s already deferred, so must be replaced with a non-blocking continuation. The details are subtle enough that it takes some thought to realize the issue otherwise.",
+      "parentUuid": "ed7ef01f_1e9c9f35",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "678aeb06ea17185921d15f1ea7ef19e75ad16164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
