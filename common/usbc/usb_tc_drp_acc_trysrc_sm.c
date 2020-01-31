@@ -571,8 +571,8 @@ void tc_print_dev_info(int port)
 	for (i = 0; i < PD_RW_HASH_SIZE / 4; i++)
 		ccprintf("%08x ", tc[port].dev_rw_hash[i]);
 
-	ccprintf("\nImage %s\n", system_image_copy_t_to_string(
-		(enum system_image_copy_t)tc[port].current_image));
+	ccprintf("\nImage %s\n", ec_current_image_to_string(
+		tc[port].current_image));
 }
 
 int tc_is_attached_src(int port)
