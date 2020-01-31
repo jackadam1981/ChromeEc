@@ -265,6 +265,15 @@ int usb_spi_board_enable(struct usb_spi_config const *config)
 	else
 		enable_ap_spi();
 
+	/*
+	 * On some designs the AP_FLASH_SEL and EC_FLASH_SEL signals may
+	 * also enable power to the SPI chip. Delay to ensure the SPI flash
+	 * is power up timing requirements satisfied.
+	 *
+	 * This function is only called as a deferred routine.
+	 */
+	msleep(50);
+
 	enable_spi_pinmux();
 	return EC_SUCCESS;
 }
