@@ -201,19 +201,19 @@ bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id)
 	return true;
 }
 
-static void disable_transmit_sop_prime(int port)
+void disable_transmit_sop_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
 }
 
-static void disable_transmit_sop_prime_prime(int port)
+void disable_transmit_sop_prime_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
 }
 
-enum pd_msg_type pd_msg_tx_type(int port, enum pd_data_role data_role,
+enum tcpm_transmit_type pd_msg_tx_type(int port, enum pd_data_role data_role,
 				uint32_t pd_flags)
 {
 	/*
@@ -230,9 +230,9 @@ enum pd_msg_type pd_msg_tx_type(int port, enum pd_data_role data_role,
 	if (pd_flags & PD_FLAGS_VCONN_ON && (IS_ENABLED(CONFIG_USB_PD_REV30) ||
 		data_role == PD_ROLE_DFP)) {
 		if (is_transmit_msg_sop_prime(port))
-			return PD_MSG_SOP_PRIME;
+			return TCPC_TX_SOP_PRIME;
 		if (is_transmit_msg_sop_prime_prime(port))
-			return PD_MSG_SOP_PRIME_PRIME;
+			return TCPC_TX_SOP_PRIME_PRIME;
 	}
 
 	if (is_transmit_msg_sop_prime(port)) {
@@ -249,7 +249,7 @@ enum pd_msg_type pd_msg_tx_type(int port, enum pd_data_role data_role,
 		disable_transmit_sop_prime_prime(port);
 	}
 
-	return PD_MSG_SOP;
+	return TCPC_TX_SOP;
 }
 
 void reset_pd_cable(int port)
@@ -364,16 +364,42 @@ bool should_enter_usb4_mode(int port)
 		cable[port].flags & CABLE_FLAGS_ENTER_USB_MODE;
 }
 
+static void enable_transmit_sop_prime(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
+void enable_transmit_sop_prime_prime(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
+}
+
 void enable_enter_usb4_mode(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+	if (IS_ENABLED(CONFIG_USB_PD_USB4)) {
 		cable[port].flags |= CABLE_FLAGS_ENTER_USB_MODE;
+		if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
+		    (cable[port].rev == PD_REV30)) {
+			/*
+			 * For Rev 3 active cables Enter USB SOP',
+			 * SOP''(if applicable), SOP
+			 */
+			enable_transmit_sop_prime(port);
+		}
+	}
 }
 
 void disable_enter_usb4_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_USB4))
 		cable[port].flags &= ~CABLE_FLAGS_ENTER_USB_MODE;
+}
+
+bool is_sop_prime_prime_cntrl_preset(int port)
+{
+	return (cable[port].attr.a_rev30.sop_p_p & SOP_P_P_PRESENT);
 }
 
 #ifdef CONFIG_USB_PD_ALT_MODE
@@ -385,18 +411,6 @@ static struct pd_policy pe[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int is_vdo_present(int cnt, int index)
 {
 	return cnt > index;
-}
-
-static void enable_transmit_sop_prime(int port)
-{
-	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
-}
-
-static void enable_transmit_sop_prime_prime(int port)
-{
-	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
 }
 
 static bool is_tbt_compat_enabled(int port)
@@ -541,39 +555,50 @@ static inline void disable_usb4_mode(int port)
  * Note: USB Type-C Cable and Connector Specification
  * doesn't include details for Revision 2 cables.
  *
- *                         Passive Cable
+ *                              Cable
  *                                |
  *                -----------------------------------
  *                |                                 |
  *           Revision 2                        Revision 3
  *          USB Signalling                   USB Signalling
- *             |                                     |
- *     ------------------            -------------------------
- *     |       |        |            |       |       |       |
- * USB2.0   USB3.1    USB3.1       USB3.2   USB4   USB3.2   USB2
- *   |      Gen1      Gen1 Gen2    Gen2     Gen3   Gen1       |
- *   |       |          |           |        |       |       Exit
- *   --------           ------------         --------        USB4
- *      |                    |                  |          Discovery.
- *    Exit          Is DFP Gen3 Capable?     Enter USB4
- *    USB4                  |                with respective
- *   Discovery.   --- No ---|--- Yes ---     cable speed.
- *                |                    |
- *    Enter USB4 with             Is Cable TBT3
- *    respective cable                 |
- *    speed.                 --- No ---|--- Yes ---
- *                           |                    |
- *                   Enter USB4 with        Enter USB4 with
- *                   TBT Gen2 passive       TBT Gen3 passive
- *                   cable.                 cable.
+ *                |                                  |
+ *            -------------------                    |
+ *           |                  |                    |
+ *    Passive Cable        Active cable              |
+ *           |                  |                    |
+ *     ------------------       |          -------------------------
+ *     |       |        |       |          |       |       |       |
+ * USB2.0   USB3.1    USB3.1    |        USB3.2   USB4   USB3.2   USB2
+ *   |      Gen1      Gen1 Gen2 |        Gen2     Gen3   Gen1       |
+ *   |       |          |       |         |        |       |      Exit
+ *    --------          |       |    ----------    |       |      USB4
+ *       |              |       |    |        |    |       |     Discovery
+ *     Exit             |       | Passive   Active |       |
+ *     USB4             |       | cable     cable  |       |
+ *    Discovery         |       |    |        |    |       |
+ *                     --------------        --------------
+ *                       |                      |
+ *             Is DFP Gen3 Capable?           Enter USB4
+ *                      |                   with respective
+ *            --- No ---|--- Yes ---          cable speed.
+ *           |                     |
+ *    Enter USB4 with         Is Cable TBT3
+ *    respective cable             |
+ *    speed.             --- No ---|--- Yes ---
+ *                       |                    |
+ *                Enter USB4 with        Enter USB4 with
+ *                TBT Gen2 cable         TBT Gen3 cable
  *
  */
 static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 {
-	/* TODO: USB4 enter mode for Active cables */
-	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
-	   (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
-	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
+
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
+		return false;
+
+	if (((get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) ||
+		(get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)) &&
+		is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
 		switch (cable[port].rev) {
 		case PD_REV30:
 			switch (cable[port].attr.p_rev30.ss) {
@@ -581,7 +606,13 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 			case USB_R30_SS_U32_U40_GEN1:
 				return true;
 			case USB_R30_SS_U32_U40_GEN2:
-				/* Check if DFP is Gen 3 capable */
+				if (get_usb_pd_cable_type(port) ==
+							IDH_PTYPE_ACABLE)
+					return true;
+				/*
+				 * For passive cables, check if DFP is Gen 3
+				 * capable
+				 */
 				if (IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))
 					return false;
 				return true;
@@ -590,6 +621,10 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 				return false;
 			}
 		case PD_REV20:
+			if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
+			    IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE)) {
+				return false;
+			}
 			switch (cable[port].attr.p_rev20.ss) {
 			case USB_R20_SS_U31_GEN1_GEN2:
 				/* Check if DFP is Gen 3 capable */
@@ -1191,11 +1226,15 @@ static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 			 * Thunderbolt-compatible mode
 			 */
 			if (check_tbt_cable_speed(port)) {
-				enable_enter_usb4_mode(port);
-				usb_mux_set_safe_mode(port);
-				return 0;
+				if (get_usb_pd_cable_type(port) ==
+					IDH_PTYPE_PCABLE) {
+					enable_enter_usb4_mode(port);
+					usb_mux_set_safe_mode(port);
+					return 0;
+				}
+			} else {
+				disable_usb4_mode(port);
 			}
-			disable_usb4_mode(port);
 		}
 		rsize = enter_tbt_compat_mode(port, payload);
 	} else {
@@ -1252,8 +1291,13 @@ static int enter_mode_tbt_compat(int port, uint32_t *payload)
 		return enter_tbt_compat_mode(port, payload);
 	}
 
-	/* Update Mux state to Thunderbolt-compatible mode. */
-	set_tbt_compat_mode_ready(port);
+	if (is_usb4_mode_enabled(port)) {
+		enable_enter_usb4_mode(port);
+		usb_mux_set_safe_mode(port);
+	} else {
+		/* Update Mux state to Thunderbolt-compatible mode. */
+		set_tbt_compat_mode_ready(port);
+	}
 	/* No response once device (and cable) acks */
 	return 0;
 }
@@ -1344,18 +1388,18 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				 */
 				if (is_usb4_mode_enabled(port) &&
 				    is_cable_ready_to_enter_usb4(port, cnt)) {
-					enable_enter_usb4_mode(port);
 					usb_mux_set_safe_mode(port);
 					disable_transmit_sop_prime(port);
 					/*
 					 * To change the mode of operation from
 					 * USB4 the port needs to be
 					 * reconfigured.
-					 * Ref: USB Type-C Cable and Connectot
+					 * Ref: USB Type-C Cable and Connector
 					 * Specification section 5.4.4.
 					 *
 					 */
 					disable_tbt_compat_mode(port);
+					enable_enter_usb4_mode(port);
 					rsize = 0;
 					break;
 				}
