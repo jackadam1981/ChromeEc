@@ -46,6 +46,30 @@
       "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023b04e4_f9d43435",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-01-31T01:09:41Z",
+      "side": 1,
+      "message": "Yes, but AFAIK no one else is running tests on actual devices. It looks like hammer is the only one that is not under our control:\n\n  git grep \u0027test-list.*sha256\u0027\n\n  board/hammer/build.mk:test-list-y\u003dentropy rsa3 sha256 sha256_unrolled x25519\n  board/hatch_fp/build.mk:test-list-y\u003daes sha256 sha256_unrolled\n  board/nocturne_fp/build.mk:test-list-y\u003daes sha256 sha256_unrolled\n  board/nucleo-h743zi/build.mk:test-list-y\u003daes sha256 sha256_unrolled\n  test/build.mk:test-list-host +\u003d sha256\n  test/build.mk:test-list-host +\u003d sha256_unrolled\n\nWe don\u0027t want to intentionally break another board or make it hard for them to start doing so in the future, but there are already too many ifdefs in the EC code that make it hard to parse, so I\u0027d prefer not to add another one just for this.\n\nIt looks like this change wouldn\u0027t fix hammer either since it has a hardcoded console size of 1024 (not macro)? https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/board/hammer/ec.tasklist#15\n\nIf that\u0027s the case, I\u0027d prefer to just create a new #define for a larger size and use that for the boards we control (unless it becomes a problem) and send a note to drinkcat that they need to increase their console size for the tests if they want to run on the board.",
+      "parentUuid": "9fb13f11_3af2bd83",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
