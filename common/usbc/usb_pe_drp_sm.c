@@ -4601,13 +4601,6 @@ struct pd_policy *get_pd_policy(int port)
 	return &pe[port].am_policy;
 }
 
-int pd_alt_mode(int port, uint16_t svid)
-{
-	struct svdm_amode_data *modep = pd_get_amode_data(port, svid);
-
-	return (modep) ? modep->opos : -1;
-}
-
 void pd_set_dfp_enter_mode_flag(int port)
 {
 	PE_SET_FLAG(port, PE_FLAGS_MODAL_OPERATION);
@@ -4616,36 +4609,6 @@ void pd_set_dfp_enter_mode_flag(int port)
 void pd_clear_dfp_enter_mode_flag(int port)
 {
 	PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION);
-}
-
-uint16_t pd_get_identity_vid(int port)
-{
-	return PD_IDH_VID(pe[port].am_policy.identity[0]);
-}
-
-uint16_t pd_get_identity_pid(int port)
-{
-	return PD_PRODUCT_PID(pe[port].am_policy.identity[2]);
-}
-
-uint8_t pd_get_product_type(int port)
-{
-	return PD_IDH_PTYPE(pe[port].am_policy.identity[0]);
-}
-
-int pd_get_svid_count(int port)
-{
-	return pe[port].am_policy.svid_cnt;
-}
-
-uint16_t pd_get_svid(int port, uint16_t svid_idx)
-{
-	return pe[port].am_policy.svids[svid_idx].svid;
-}
-
-uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
-{
-	return pe[port].am_policy.svids[svid_idx].mode_vdo;
 }
 
 #ifdef CONFIG_CMD_USB_PD_PE
