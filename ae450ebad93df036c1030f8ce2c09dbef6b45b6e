@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea4d1ae4_74206908",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-31T18:16:31Z",
+      "side": 1,
+      "message": "Nit - delete this comment.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 0
+      },
+      "revId": "ae450ebad93df036c1030f8ce2c09dbef6b45b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf901ea8_97462e99",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-31T18:16:31Z",
+      "side": 1,
+      "message": "Based on this language, don\u0027t we need to save the message id for the SOP, SOP\u0027, and SOP\u0027\u0027 separately?  Your implementation is sharing the message ID for SOP\u0027 and SOP\u0027\u0027",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 0
+      },
+      "revId": "ae450ebad93df036c1030f8ce2c09dbef6b45b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
