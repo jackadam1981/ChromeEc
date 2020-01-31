@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aeaa3d03_581fdce7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-01-31T22:23:31Z",
+      "side": 1,
+      "message": "Can you break this out as a separate function consume_sop_repeat_msg()?\nThat will make this routine easier to read.",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 0
+      },
+      "revId": "b139d48189d69142f716c9964cdbba43dd217bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
