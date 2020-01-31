@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c29a09fa_79861fd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:12:16Z",
+      "side": 1,
+      "message": "should",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "f74818769de626318ccc2da80e70bff42f7006b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641c982e_0abcc945",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:12:16Z",
+      "side": 1,
+      "message": "Either \"during conversion\" or \"while proceeding\"?",
+      "range": {
+        "startLine": 114,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "f74818769de626318ccc2da80e70bff42f7006b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dccaabeb_5e148324",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:12:16Z",
+      "side": 1,
+      "message": "Maybe add (runs continuously) to make it clear what repetitive does?",
+      "range": {
+        "startLine": 125,
+        "startChar": 28,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "f74818769de626318ccc2da80e70bff42f7006b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa9b4dd_1d3dfd29",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:12:16Z",
+      "side": 1,
+      "message": "Does the channel also need cleared from ADCCS?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "f74818769de626318ccc2da80e70bff42f7006b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d470356_acd2521a",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:12:16Z",
+      "side": 1,
+      "message": "I\u0027d say print an error and return.  Unless you foresee a need to de-register rather than enable/disable?",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "f74818769de626318ccc2da80e70bff42f7006b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a645cd1b_b31f39ce",
+        "filename": "chip/npcx/adc_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:12:16Z",
+      "side": 1,
+      "message": "Good info, but it might benefit from a list approach, ex. \n\nadc_thresh_cb - called when interrupt fires\nlower_or_higher - if set, event asserted when lower than threshold\nthresh_assert - desired level to assert, set for dual and single detection\nthresh_deassert - desired level to de-assert, set to -1 for single detection\n\nMaybe include info about the range for the thresholds too?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "f74818769de626318ccc2da80e70bff42f7006b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
