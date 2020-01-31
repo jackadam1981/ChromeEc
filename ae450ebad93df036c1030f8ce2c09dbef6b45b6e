@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8c76440_7a69a247",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-31T21:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4d1ae4_74206908",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 0
+      },
+      "revId": "ae450ebad93df036c1030f8ce2c09dbef6b45b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf901ea8_97462e99",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "ae450ebad93df036c1030f8ce2c09dbef6b45b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8821c29b_7120ab63",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-01-31T21:49:50Z",
+      "side": 1,
+      "message": "I misinterpreted the spec. You are right. We need to store separate msgId for SOP, SOP\u0027 and SOP\u0027\u0027",
+      "parentUuid": "bf901ea8_97462e99",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 0
+      },
+      "revId": "ae450ebad93df036c1030f8ce2c09dbef6b45b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
