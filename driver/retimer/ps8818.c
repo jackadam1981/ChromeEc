@@ -46,6 +46,22 @@ int ps8818_i2c_write(int port, int page, int offset, int data)
 			  offset, data);
 }
 
+int ps8818_i2c_field_update8(int port, int page, int offset,
+			     uint8_t field_mask, uint8_t set_value)
+{
+	if (PS8818_DEBUG)
+		ccprintf("%s(%d:0x%02X, 0x%02X, 0x%02X, 0x%02X)\n", __func__,
+			 usb_retimers[port].i2c_port,
+			 usb_retimers[port].i2c_addr_flags + page,
+			 offset, field_mask, set_value);
+
+	return i2c_field_update8(usb_retimers[port].i2c_port,
+				 usb_retimers[port].i2c_addr_flags + page,
+				 offset,
+				 field_mask,
+				 set_value);
+}
+
 int ps8818_detect(int port)
 {
 	int rv = EC_ERROR_NOT_POWERED;

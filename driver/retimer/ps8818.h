@@ -96,5 +96,7 @@ int ps8818_detect(int port);
 
 int ps8818_i2c_read(int port, int page, int offset, int *data);
 int ps8818_i2c_write(int port, int page, int offset, int data);
+int ps8818_i2c_field_update8(int port, int page, int offset,
+			     uint8_t field_mask, uint8_t set_value);
 
 #endif /* __CROS_EC_USB_RETIMER_PS8818_H */

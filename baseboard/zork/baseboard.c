@@ -534,59 +534,67 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 	/* USB specific config */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/* Boost the USB gain */
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_APTX1EQ_10G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_APTX2EQ_10G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_APTX1EQ_5G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_APTX2EQ_5G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_CRX1EQ_10G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_CRX1EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_CRX2EQ_10G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_CRX2EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_CRX1EQ_5G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_CRX1EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_write(port,
-				      PS8818_REG_PAGE1,
-				      PS8818_REG1_CRX2EQ_5G_LEVEL,
-				      PS8818_EQ_LEVEL_UP_21DB);
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_CRX2EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_21DB);
 		if (rv)
 			return rv;
 	}
@@ -596,6 +604,11 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 		int val;
 
 		/* Boost the DP gain */
+		rv = ps8818_i2c_field_update8(port,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_DPEQ_LEVEL,
+					PS8818_DPEQ_LEVEL_UP_MASK,
+					PS8818_DPEQ_LEVEL_UP_21DB);
 		rv = ps8818_i2c_write(port,
 				      PS8818_REG_PAGE1,
 				      PS8818_REG1_DPEQ_LEVEL,
