@@ -82,6 +82,8 @@ const char help_str[] =
 	"      Read or write board-specific battery parameter\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
+	"  button [vup|vdown|rec] <Delay-ms>\n"
+	"      Simulates button press.\n"
 	"  cbi\n"
 	"      Get/Set Cros Board Info\n"
 	"  chargecurrentlimit\n"
@@ -1104,6 +1106,46 @@ int cmd_reboot_ap_on_g3(int argc, char *argv[])
 
 	rv = ec_command(EC_CMD_REBOOT_AP_ON_G3, 0, NULL, 0, NULL, 0);
 	return (rv < 0 ? rv : 0);
+}
+
+int cmd_button(int argc, char *argv[])
+{
+	struct ec_params_button p;
+	char *e;
+	int rv;
+
+	if ((argc < 2) || (argc > 3)) {
+		fprintf(stderr, "Invalid num param %d.\n", argc);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "vup"))
+		p.btn_type = KEYBOARD_BUTTON_VOLUME_UP;
+	else if (!strcasecmp(argv[1], "vdown"))
+		p.btn_type = KEYBOARD_BUTTON_VOLUME_DOWN;
+	else if (!strcasecmp(argv[1], "rec"))
+		p.btn_type = KEYBOARD_BUTTON_RECOVERY;
+	else {
+		fprintf(stderr, "Invalid button input.\n");
+		return -1;
+	}
+
+	if (argc == 3) {
+		p.press_ms = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad value.\n");
+			return -1;
+		}
+	} else {
+		p.press_ms = 50;
+	}
+
+	rv = ec_command(EC_CMD_BUTTON, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	printf("Button %d set to %d ms\n", p.btn_type, p.press_ms);
+	return 0;
 }
 
 int cmd_flash_info(int argc, char *argv[])
@@ -9350,6 +9392,7 @@ const struct command commands[] = {
 	{"batterycutoff", cmd_battery_cut_off},
 	{"batteryparam", cmd_battery_vendor_param},
 	{"boardversion", cmd_board_version},
+	{"button", cmd_button},
 	{"cbi", cmd_cbi},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},
