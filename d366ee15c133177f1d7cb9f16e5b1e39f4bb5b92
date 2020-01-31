@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdd636ec_44047756",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T17:37:24Z",
+      "side": 1,
+      "message": "looks like the correct diff, but that is some pretty bad naming...",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "d366ee15c133177f1d7cb9f16e5b1e39f4bb5b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf7cce2b_e59baf4e",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T17:37:24Z",
+      "side": 1,
+      "message": "should you remove the BOARD_REV \u003d\u003d OAK_REV1 code in board.h or make this look the same as that?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 51
+      },
+      "revId": "d366ee15c133177f1d7cb9f16e5b1e39f4bb5b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
