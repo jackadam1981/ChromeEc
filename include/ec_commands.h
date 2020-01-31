@@ -5941,6 +5941,38 @@ struct ec_response_get_pd_port_caps {
 } __ec_align1;
 
 /*****************************************************************************/
+/*
+ * Button press simulation
+ *
+ * This command is used to simulate a button press.
+ * Supported commands are vup(volume up) vdown(volume down) & rec(recovery)
+ * Time duration for which button needs to be pressed is an optional parameter.
+ */
+#define EC_CMD_BUTTON 0x0129
+
+struct ec_params_button {
+	uint8_t   btn_type; /* Button type (see enum keyboard_button_type) */
+	uint32_t  press_ms; /* Duration in milliseconds button needs to be pressed */
+} __ec_align1;
+
+enum keyboard_button_type {
+	KEYBOARD_BUTTON_POWER = 0,
+	KEYBOARD_BUTTON_VOLUME_DOWN,
+	KEYBOARD_BUTTON_VOLUME_UP,
+	KEYBOARD_BUTTON_RECOVERY,
+	KEYBOARD_BUTTON_CAPSENSE_1,
+	KEYBOARD_BUTTON_CAPSENSE_2,
+	KEYBOARD_BUTTON_CAPSENSE_3,
+	KEYBOARD_BUTTON_CAPSENSE_4,
+	KEYBOARD_BUTTON_CAPSENSE_5,
+	KEYBOARD_BUTTON_CAPSENSE_6,
+	KEYBOARD_BUTTON_CAPSENSE_7,
+	KEYBOARD_BUTTON_CAPSENSE_8,
+
+	KEYBOARD_BUTTON_COUNT
+};
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/
