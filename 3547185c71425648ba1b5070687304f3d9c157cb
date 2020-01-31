@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c273cc3_382d9fb6",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:27:27Z",
+      "side": 1,
+      "message": "Remove, and probably add a comment mentioning we can\u0027t read ADCs during interrupts?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "3547185c71425648ba1b5070687304f3d9c157cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e006737e_5c047842",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:27:27Z",
+      "side": 1,
+      "message": "Maybe defines for the threshold indexes?",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "3547185c71425648ba1b5070687304f3d9c157cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cdf8fd6_17cfc41f",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:27:27Z",
+      "side": 1,
+      "message": "Maybe voltage low interrupt, since deassert is already being used for a separate threshold which we aren\u0027t using?  Same for the function names, it might make more sense to use set/clear or high/low rather than assert/deassert",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "3547185c71425648ba1b5070687304f3d9c157cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddc08ec_0f8f1d57",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-01-31T20:27:27Z",
+      "side": 1,
+      "message": "I believe power_signal_interrupt will already call this",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "3547185c71425648ba1b5070687304f3d9c157cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
