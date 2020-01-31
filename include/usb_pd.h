@@ -1723,6 +1723,20 @@ bool is_transmit_msg_sop_prime(int port);
 bool is_transmit_msg_sop_prime_prime(int port);
 
 /**
+ * Clears CABLE_FLAGS_SOP_PRIME_ENABLE flags
+ *
+ * @param port		USB-C port number
+ */
+void disable_transmit_sop_prime(int port);
+
+/**
+ * Clears CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flags
+ *
+ * @param port		USB-C port number
+ */
+void disable_transmit_sop_prime_prime(int port);
+
+/**
  * Returns the type of communication (SOP/SOP'/SOP'')
  *
  * @param port		USB-C port number
@@ -1755,6 +1769,13 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  */
 uint32_t get_enter_usb_msg_payload(int port);
 
+
+/**
+ * Sets CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flags
+ *
+ * @param port		USB-C port number
+ */
+void enable_transmit_sop_prime_prime(int port);
 /**
  * Enter USB4 mode
  *
@@ -1775,6 +1796,15 @@ void disable_enter_usb4_mode(int port);
  * @param port	USB-C port number
  */
 bool should_enter_usb4_mode(int port);
+
+/**
+ * Returns True if SOP'' controller is present
+ *
+ * @param port	USB-C port number
+ * @returs	True if SOP'' controller is present
+ *		False Otherwise
+ */
+bool is_sop_prime_prime_cntrl_preset(int port);
 
 /**
  * Return the response of discover mode SOP prime, with SVID = 0x8087
