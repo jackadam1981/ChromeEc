@@ -22,6 +22,29 @@
       "revId": "d950fe173de6b809391ce1e092f4a5af0f786219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0888820_bc18f817",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T20:42:56Z",
+      "side": 1,
+      "message": "this needs to happen after i2c since i2c is required for CBI communication",
+      "range": {
+        "startLine": 709,
+        "startChar": 34,
+        "endLine": 709,
+        "endChar": 49
+      },
+      "revId": "d950fe173de6b809391ce1e092f4a5af0f786219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
