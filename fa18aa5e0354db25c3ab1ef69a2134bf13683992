@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f1b2fdc_f905ee2c",
+        "filename": "common/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Some lines are guarded only for EFS, some lines are only for EFS2, some lines are for both. So, I don\u0027t think it\u0027s a good idea to define a common macro.",
+      "parentUuid": "0a2e4f9b_9c42a2a6",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 58
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65ffe913_55708d15",
         "filename": "common/system.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091aca14_859a642e",
+        "filename": "common/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65ffe913_55708d15",
+      "range": {
+        "startLine": 615,
+        "startChar": 7,
+        "endLine": 615,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5e282780_0152fbe9",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b249e5_586fba1e",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "020c79f8_d88d0d85",
         "filename": "common/vboot_hash.c",
         "patchSetId": 8
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e3fe0714_5a95c665",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "020c79f8_d88d0d85",
+      "range": {
+        "startLine": 173,
+        "startChar": 28,
+        "endLine": 174,
+        "endChar": 58
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb330f81_995a3fb8",
         "filename": "common/vboot_hash.c",
         "patchSetId": 8
@@ -128,6 +224,30 @@
       "writtenOn": "2020-01-30T20:57:18Z",
       "side": 1,
       "message": "if we aren\u0027t deferred, should we add any delays to ensure we don\u0027t starve lower priority tasks?\n\nAlso, what task is this performed in (or is it before any tasks are up)",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52e899f_168cf0d9",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "It depends on the context. For EFS, this is called before tasks are initialized. Added note to the header.",
+      "parentUuid": "eb330f81_995a3fb8",
       "range": {
         "startLine": 208,
         "startChar": 2,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "cab85441_af646010",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ce02309_37df7e6b",
+      "range": {
+        "startLine": 245,
+        "startChar": 25,
+        "endLine": 245,
+        "endChar": 50
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1874ef9_67fb38f6",
         "filename": "common/vboot_hash.c",
         "patchSetId": 8
@@ -183,6 +327,30 @@
       "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e933fa_e24812dc",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1874ef9_67fb38f6",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 288,
+        "endChar": 19
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "510f2630_44a2b286",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0caf74a2_9a24493f",
+      "range": {
+        "startLine": 394,
+        "startChar": 20,
+        "endLine": 394,
+        "endChar": 24
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb9e03ac_048c6cab",
         "filename": "include/config.h",
         "patchSetId": 8
@@ -220,6 +412,30 @@
       "writtenOn": "2020-01-30T20:57:18Z",
       "side": 1,
       "message": "we should explain the difference between these two options.\n\nShould we have a common define that get auto defined when either EFS or EFS2 is defined?\n\n\nAlso, do we plan on transitioning all EFS1 users to EFS2 in the future?",
+      "range": {
+        "startLine": 4321,
+        "startChar": 0,
+        "endLine": 4323,
+        "endChar": 24
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdee6cce_764b4980",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4323,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "I explained above why common macro doesn\u0027t suit.\n\nWe can deprecate EFS1 entirely once EFS2 is finalized.",
+      "parentUuid": "fb9e03ac_048c6cab",
       "range": {
         "startLine": 4321,
         "startChar": 0,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "b3cebfd4_e1e3d53a",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d71a54_2082ba7e",
+      "range": {
+        "startLine": 4325,
+        "startChar": 0,
+        "endLine": 4326,
+        "endChar": 39
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8e6d376_5b4c58d3",
         "filename": "include/usb_pd.h",
         "patchSetId": 8
@@ -266,6 +506,30 @@
       "writtenOn": "2020-01-30T20:57:18Z",
       "side": 1,
       "message": "why is this defined here instead of in vboot.h?\n\nAlso why is this overrideable? what is providing multiple implementations?\n\nWe should document that EFS1 or EFS2 is expect to provide the real implementation, not a board.\n\nAlso can we define a static weak implementation in the vboot header file (with the declaration)? and then we don\u0027t need to define a weak one in usb_common.c",
+      "range": {
+        "startLine": 2403,
+        "startChar": 21,
+        "endLine": 2403,
+        "endChar": 39
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05787ebd_de9f3c25",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2403,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Moved to vboot.h and added comment. I don\u0027t think we can move an implementation to vboot.h because we\u0027ll have duplicate definitions in efs2.c or vboot.c.",
+      "parentUuid": "d8e6d376_5b4c58d3",
       "range": {
         "startLine": 2403,
         "startChar": 21,
@@ -301,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "051ba54f_e0467aed",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805dd30a_5213669b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2c8ca38_c2217245",
         "filename": "include/vboot.h",
         "patchSetId": 8
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "65ab9ee3_57b42446",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2c8ca38_c2217245",
+      "range": {
+        "startLine": 81,
+        "startChar": 44,
+        "endLine": 81,
+        "endChar": 50
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32aa0ce0_a5838c80",
         "filename": "include/vboot.h",
         "patchSetId": 8
@@ -344,6 +656,30 @@
       "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18e7629_7b0aabd5",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32aa0ce0_a5838c80",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +775,30 @@
     },
     {
       "key": {
+        "uuid": "d2af91ba_dfba43a5",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "733e3b5d_f51d177f",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 23
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d4922e3_28981676",
         "filename": "include/vboot.h",
         "patchSetId": 8
@@ -485,6 +845,30 @@
     },
     {
       "key": {
+        "uuid": "b183e1b3_e0e1d7e2",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cff0ebf_acc76c3e",
+      "range": {
+        "startLine": 111,
+        "startChar": 34,
+        "endLine": 111,
+        "endChar": 72
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a85f4b_b722ee36",
         "filename": "include/vboot.h",
         "patchSetId": 8
@@ -496,6 +880,30 @@
       "writtenOn": "2020-01-30T20:57:18Z",
       "side": 1,
       "message": "why prefix everything with 0xec ? Why not just make it 0, 1, 2 etc?\n\nIf we make the 0xec part of the encoding, don\u0027t we only need one byte for error space?",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5615054_40ff981b",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Currently, we don\u0027t need to send a response in a packet. So, 0xec doesn\u0027t look needed except providing some hint for EC to detect data corruption.\n\nWhen we have a reverse packet (cr50-\u003eec), EC will have a packet parser. Then, the error codes will be transferred in a packet using the type field and we don\u0027t need to change enum cr50_comm_pd.",
+      "parentUuid": "44a85f4b_b722ee36",
       "range": {
         "startLine": 124,
         "startChar": 5,
@@ -554,6 +962,30 @@
     },
     {
       "key": {
+        "uuid": "1a873c9d_5b53d192",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d37a6b8_b35e53f4",
+      "range": {
+        "startLine": 740,
+        "startChar": 30,
+        "endLine": 740,
+        "endChar": 31
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2efb82d_904e94af",
         "filename": "power/skylake.c",
         "patchSetId": 8
@@ -565,6 +997,30 @@
       "writtenOn": "2020-01-30T20:57:18Z",
       "side": 1,
       "message": "shoudl we update the code then?\n\n#if !defined(EFS) \u0026\u0026 !defined(EF2)",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 58
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30ec867_0009381b",
+        "filename": "power/skylake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 1,
+      "message": "Removed. I think it\u0027s confusing. I just wanted to mention that this #ifndef line isn\u0027t needed to be changed for EFS2 since no EFS2 boards have CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET.",
+      "parentUuid": "e2efb82d_904e94af",
       "range": {
         "startLine": 190,
         "startChar": 25,

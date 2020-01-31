@@ -22,6 +22,30 @@
       "revId": "2aceaf9b55715311385ca2c9b9a8c09110425413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4339f48_32871b2f",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-31T00:23:50Z",
+      "side": 0,
+      "message": "These are mostly just clean up but they\u0027ll make EFS1 code more comparable with EFS2 code.",
+      "parentUuid": "065b3c97_fd1fde0f",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "2aceaf9b55715311385ca2c9b9a8c09110425413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
