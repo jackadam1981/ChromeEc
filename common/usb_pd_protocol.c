@@ -1876,6 +1876,11 @@ static void handle_ctrl_request(int port, uint16_t head,
 			if (!IS_ENABLED(CONFIG_USBC_SS_MUX))
 				break;
 
+			if (is_transmit_msg_sop_prime(port))
+				disable_transmit_sop_prime(port);
+			else if (is_transmit_msg_sop_prime_prime(port))
+				disable_transmit_sop_prime_prime(port);
+
 			/*
 			 * Since Enter USB sets the mux state to SAFE mode,
 			 * resetting the mux state back to USB mode on
@@ -1957,9 +1962,17 @@ static void handle_ctrl_request(int port, uint16_t head,
 			if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 				ppc_set_sbu(port, 1);
 
-			/* Set usb mux to USB4 mode */
-			usb_mux_set(port, USB_PD_MUX_USB4_ENABLED,
-				USB_SWITCH_CONNECT, pd[port].polarity);
+			if (is_transmit_msg_sop_prime(port)) {
+				disable_transmit_sop_prime(port);
+				if (is_sop_prime_prime_cntrl_preset(port))
+					enable_transmit_sop_prime_prime(port);
+			} else if (is_transmit_msg_sop_prime_prime(port)) {
+				disable_transmit_sop_prime_prime(port);
+			} else {
+				/* Set usb mux to USB4 mode */
+				usb_mux_set(port, USB_PD_MUX_USB4_ENABLED,
+					USB_SWITCH_CONNECT, pd[port].polarity);
+			}
 
 			set_state(port, READY_RETURN_STATE(port));
 		} else if (pd[port].task_state == PD_STATE_SOFT_RESET) {
@@ -2246,7 +2259,7 @@ static void pd_vdm_send_state_machine(int port)
 {
 	int res;
 	uint16_t header;
-	enum pd_msg_type msg_type =
+	enum tcpm_transmit_type msg_type =
 		pd_msg_tx_type(port, pd[port].data_role, pd[port].flags);
 
 	switch (pd[port].vdm_state) {
@@ -2275,8 +2288,8 @@ static void pd_vdm_send_state_machine(int port)
 		 * data role swap takes place during source and sink
 		 * negotiation and in case of failure, a soft reset is issued.
 		 */
-		if ((msg_type == PD_MSG_SOP_PRIME) ||
-		    (msg_type == PD_MSG_SOP_PRIME_PRIME)) {
+		if ((msg_type == TCPC_TX_SOP_PRIME) ||
+		    (msg_type == TCPC_TX_SOP_PRIME_PRIME)) {
 			/* Prepare SOP'/SOP'' header and send VDM */
 			header = PD_HEADER(
 				PD_DATA_VENDOR_DEF,
@@ -2287,9 +2300,7 @@ static void pd_vdm_send_state_machine(int port)
 				pd_get_rev(port),
 				0);
 			res = pd_transmit(port,
-					  (msg_type == PD_MSG_SOP_PRIME) ?
-					  TCPC_TX_SOP_PRIME :
-					  TCPC_TX_SOP_PRIME_PRIME,
+					  msg_type,
 					  header,
 					  pd[port].vdo_data,
 					  AMS_START);
@@ -2315,10 +2326,10 @@ static void pd_vdm_send_state_machine(int port)
 						   (int)pd[port].vdo_count,
 						   pd_get_rev(port), 0);
 
-				if ((msg_type == PD_MSG_SOP_PRIME_PRIME) &&
+				if ((msg_type == TCPC_TX_SOP_PRIME_PRIME) &&
 				     IS_ENABLED(CONFIG_USBC_SS_MUX)) {
 					exit_tbt_mode_sop_prime(port);
-				} else if (msg_type == PD_MSG_SOP_PRIME) {
+				} else if (msg_type == TCPC_TX_SOP_PRIME) {
 					pd[port].vdo_data[0] = VDO(USB_SID_PD,
 						1, CMD_DISCOVER_SVID);
 				}
@@ -2937,23 +2948,34 @@ static void pd_send_enter_usb(int port, int *timeout)
 	uint32_t usb4_payload = get_enter_usb_msg_payload(port);
 	uint16_t header;
 	int res;
+	enum tcpm_transmit_type msg_type =
+		pd_msg_tx_type(port, pd[port].data_role, pd[port].flags);
 
-	/*
-	 * TODO: Enable Enter USB for cables (SOP').
-	 * This is needed for active cables
-	 */
 	if (!IS_ENABLED(CONFIG_USBC_SS_MUX) || !IS_ENABLED(CONFIG_USB_PD_USB4))
 		return;
 
-	header = PD_HEADER(PD_DATA_ENTER_USB,
-		pd[port].power_role,
-		pd[port].data_role,
-		pd[port].msg_id,
-		1,
-		PD_REV30,
-		0);
+	if ((msg_type == TCPC_TX_SOP_PRIME) ||
+	    (msg_type == TCPC_TX_SOP_PRIME_PRIME)) {
+		/* Prepare SOP'/SOP'' header and send VDM */
+		header = PD_HEADER(
+			PD_DATA_VENDOR_DEF,
+			PD_PLUG_FROM_DFP_UFP,
+			0,
+			pd[port].msg_id,
+			(int)pd[port].vdo_count,
+			PD_REV30,
+			0);
 
-	res = pd_transmit(port, TCPC_TX_SOP, header, &usb4_payload, AMS_START);
+	} else {
+		header = PD_HEADER(PD_DATA_ENTER_USB,
+			pd[port].power_role,
+			pd[port].data_role,
+			pd[port].msg_id,
+			1,
+			PD_REV30,
+			0);
+	}
+	res = pd_transmit(port, msg_type, header, &usb4_payload, AMS_START);
 	if (res < 0) {
 		*timeout = 10*MSEC;
 		/*
@@ -2966,8 +2988,9 @@ static void pd_send_enter_usb(int port, int *timeout)
 		return;
 	}
 
-	/* Disable Enter USB4 mode prevent re-entry */
-	disable_enter_usb4_mode(port);
+	/* Disable Enter USB4 mode prevent re-entry on sending Enter USB SOP*/
+	if (msg_type == TCPC_TX_SOP)
+		disable_enter_usb4_mode(port);
 
 	set_state(port, PD_STATE_ENTER_USB);
 }

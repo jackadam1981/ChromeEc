@@ -221,10 +221,15 @@ union passive_cable_vdo_rev30 {
  *           011b = [USB4] Gen3
  *           100b..111b = Reserved, Shall Not be used
  */
+enum sop_p_p_controller {
+	SOP_P_P_ABSENT,
+	SOP_P_P_PRESENT,
+};
+
 union active_cable_vdo1_rev30 {
 	struct {
 		enum usb_rev30_ss ss: 3;
-		uint8_t sop_p_p : 1;
+		enum sop_p_p_controller sop_p_p : 1;
 		uint8_t vbus_cable : 1;
 		enum usb_vbus_cur vbus_cur : 2;
 		uint8_t sbu_type : 1;
@@ -591,7 +596,7 @@ union passive_cable_vdo_rev20 {
 union active_cable_vdo_rev20 {
 	struct {
 		enum usb_rev20_ss ss: 3;
-		uint8_t sop_p_p : 1;
+		enum sop_p_p_controller sop_p_p : 1;
 		uint8_t vbus_cable : 1;
 		enum usb_vbus_cur vbus_cur : 2;
 		uint8_t ssrx2 : 1;
