@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23763ca1_cc14e7d8",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "This should be DECLARE_SAFE_CONSOLE_COMMAND.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 23
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e23b5ed_a6d0a248",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "This should be DECLARE_SAFE_CONSOLE_COMMAND.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 23
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd06d106_b5a99f91",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "Remove this or remove ec_reset_to_correct_boot_mode_() at all.\nSince EC_EFS_ERROR_PACKET_VIOLATION is deprecated in the design change,\nthis doesn\u0027t contribute much.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb94f7d2_5900388a",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "Per the design change in ec-efs2, this should be EC_EFS_BOOT_MODE_NORMAL (0).",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 159,
+        "endChar": 38
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a24f58df_e6917950",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "Should be removed. EC_EFS_ERROR_PACKET_VIOLATION is deprecated.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 2
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ad6854_017960ac",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "Per the design change, this should be simply like the below:\n\nif (boot_mode !\u003d EC_EFS_BOOT_MODE_NORMAL) {",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 54
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbabe81e_8c4d909c",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "Should be removed.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 0
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed8880fc_a131496d",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-01-31T22:29:49Z",
+      "side": 1,
+      "message": "Per design change, it should be like this:\n\nif (boot_mode !\u003d EC_EFS_BOOT_MODE_NORMAL)\n  ec_reset_to_correct_boot_mode_();\n  return 0;",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 41
+      },
+      "revId": "32a56247e19238f4365d0e19105021d7a7aaddd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
