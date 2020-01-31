@@ -447,3 +447,15 @@ int board_get_battery_i2c(void)
 {
 	return board_get_version() >= 1 ? 2 : 1;
 }
+
+#ifdef CONFIG_IO_EXPANDER
+#define IO_EXPANDER_PORT_0 0
+struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
+	/* Port 0 for IT8801, use I2C port0_0 with address 0x38 (7-bit)*/
+	[IO_EXPANDER_PORT_0] = {
+		.i2c_host_port = I2C_PORT_IO_EXPANDER_IT8801,
+		.i2c_slave_addr = IT8801_I2C_ADDR,
+		.drv = &it8801_ioexpander_drv,
+	},
+};
+#endif
