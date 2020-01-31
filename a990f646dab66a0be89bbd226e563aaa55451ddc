@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec9b9035_39db6b0c",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "why not make a string for recovery and recover_no_Boot?",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be49afc6_ee750e19",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "why is timeout special? is a timeout an invalid response somehow?",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd0152d_59f63e52",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "is this note for when cr50 could drive it and we are preventing a drive fight in that future?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30021c13_da444055",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "how do we know that some high priority task isn\u0027t writing to the UART buffer. We should have some locking mechisim here (that drops UART console prints when we are in packet mode)",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 26
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ccd993_69cbd3b5",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be a uint8_t (or char) since it is an 8-byte char. int doesn\u0027t seem like the correct type",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6559dd_15015d03",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "what is going on here? This definitely need more comments\n\nres is only 16-bits but you are shift 7*8 \u003d 56 bits??\n\n---\n\nWe need to update the design to return a structure response with crc and ability to expand response in future if needed",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b4fd75_4ce6c821",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "this is probably not relevant since the above code will change, but it is possible to have a valid code other that timeout here but you just happen to have also breached the timeout. Might be work seeing if return is valid first",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5bb1c10_59970f71",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "we should not but this on the stack, but in static space\n\njust add static here with a comment explaining that",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e486b382_b4bcfb19",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "nit: it might make the code less clean, but do you think it is worth waiting the 5ms even if we are on the last retry?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7462b94_f88b1c44",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "should we have a failed message like set_boot_mode after call?",
+      "range": {
+        "startLine": 148,
+        "startChar": 20,
+        "endLine": 148,
+        "endChar": 53
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976b9974_3d3562cd",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "why do we need to request power here? This doesn\u0027t need to be the case.",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 15
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e516bfbe_7234bff2",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "we should single source this with the pd_comm_enabled logic. We are assuming that the pd_comm_endabled method use this signal to enable PD\n\n--\n\nalso, I think we should still do the RW jump even if HW WP is deasserted (i.e. when battery is removed). We should still be testing the main jump flow when the battery is removed.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 2
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c392e23d_d781356f",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "NO_BOOT?\n\nLet\u0027s explain that this won\u0027t allow the user to fully boot to the OS",
+      "range": {
+        "startLine": 261,
+        "startChar": 51,
+        "endLine": 261,
+        "endChar": 62
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c7da06_97c634a6",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "We don\u0027t want to make LED flash critical during the normal software sync update process, right?",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 16
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e01de6c_7327e3bb",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "s/Flase/False/",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e6aefe_c394d2eb",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "looking at this concept, do we actually want to just perform the hashing in the deferred context if the task schedule has started otherwise we perform it synchonously? We would need to take in a parameter on the hash function then",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "514412bd_642f11ca",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "let\u0027s just call out behavior in comments here too.",
+      "range": {
+        "startLine": 185,
+        "startChar": 19,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b44c08_df339372",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "this is the EC\u0027s timeout for the CR50, right? (not the other way around). Since they share the same codebase, let\u0027s call that out please\n\n(applies to all of these define comments)",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4138a353_c699ec5d",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "is there a bug trackign this, or when do we think we will get this data?",
+      "range": {
+        "startLine": 115,
+        "startChar": 39,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f095a9a5_e3df8e0b",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "from impl code, this look like this should move when we add new commands, can you add a comment saying that this should be the last number command and represent the upper bound?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12689369_53ec4b49",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-01-31T18:20:38Z",
+      "side": 1,
+      "message": "nit: could return bool instead (your call though)",
+      "range": {
+        "startLine": 159,
+        "startChar": 17,
+        "endLine": 159,
+        "endChar": 20
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
