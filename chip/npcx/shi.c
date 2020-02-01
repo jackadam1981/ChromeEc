@@ -270,8 +270,10 @@ void shi_handle_host_package(void)
 					- shi_params.sz_received;
 
 		/* Read remaining bytes from input buffer directly */
-		if (!shi_read_inbuf_wait(remain_bytes))
+		if (!shi_read_inbuf_wait(remain_bytes)) {
+			CPRINTF("amstan remaining host %d %d\n", shi_params.sz_request, shi_params.sz_received);
 			return shi_bad_received_data();
+		}
 		/* Move to processing state immediately */
 		state = SHI_STATE_PROCESSING;
 		DEBUG_CPRINTF("PRC-");
@@ -319,8 +321,10 @@ static void shi_parse_header(void)
 	shi_params.rx_deadline.val += SHI_CMD_RX_TIMEOUT_US;
 
 	/* Wait for version, command, length bytes */
-	if (!shi_read_inbuf_wait(3))
+	if (!shi_read_inbuf_wait(3)) {
+		CPRINTF("amstan first 3\n");
 		return shi_bad_received_data();
+	}
 
 	if (in_msg[0] == EC_HOST_REQUEST_VERSION) {
 		/* Protocol version 3 */
@@ -333,13 +337,17 @@ static void shi_parse_header(void)
 		ASSERT(sizeof(*r) < SHI_IBUF_HALF_SIZE);
 
 		/* Wait for the rest of the command header */
-		if (!shi_read_inbuf_wait(sizeof(*r) - 3))
+		if (!shi_read_inbuf_wait(sizeof(*r) - 3)) {
+			CPRINTF("amstan reset of header\n");
 			return shi_bad_received_data();
+		}
 
 		/* Check how big the packet should be */
 		pkt_size = host_request_expected_size(r);
-		if (pkt_size == 0 || pkt_size > sizeof(in_msg))
+		if (pkt_size == 0 || pkt_size > sizeof(in_msg)) {
+			CPRINTF("amstan pkt size %d %d\n", pkt_size, sizeof(in_msg));
 			return shi_bad_received_data();
+		}
 
 		/* Computing total bytes need to receive */
 		shi_params.sz_request = pkt_size;
@@ -347,6 +355,7 @@ static void shi_parse_header(void)
 		shi_handle_host_package();
 	} else {
 		/* Invalid version number */
+		CPRINTF("amstan invalid version %d", in_msg[0]);
 		return shi_bad_received_data();
 	}
 }
