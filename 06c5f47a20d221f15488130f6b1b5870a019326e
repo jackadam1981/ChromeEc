@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "322b2610_64f59009",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-03T20:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec69ea59_54720c9b",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "06c5f47a20d221f15488130f6b1b5870a019326e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8134379b_a4afe572",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-03T16:47:21Z",
       "side": 1,
       "message": "What is figure 8?",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "06c5f47a20d221f15488130f6b1b5870a019326e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612a8602_9488e2dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-03T20:54:19Z",
+      "side": 1,
+      "message": "https://electronics.stackexchange.com/questions/22144/magnetometer-%E2%88%9E-shaped-calibration",
+      "parentUuid": "8134379b_a4afe572",
       "range": {
         "startLine": 12,
         "startChar": 20,
