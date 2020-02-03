@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98d7afd4_99825e3b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-03T23:14:46Z",
+      "side": 1,
+      "message": "super nit: I believe our coding style says that we should have curly braces around the else condition since the if condition did.",
+      "revId": "aed408ab52583fcf053cdfddd6a9d73301ccd5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
