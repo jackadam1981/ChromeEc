@@ -22,6 +22,30 @@
       "revId": "859bd02bf3d713246a50f2a7bb61c474fa5265ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996e3fbd_dbebec1b",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-03T23:54:42Z",
+      "side": 1,
+      "message": "I saw that ALL_SYS_PWRGD is handled solely within the S0 power state, but since this is a pass-thru, I was leaning toward checking all the time.",
+      "parentUuid": "75df93e1_d2b8231f",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 4
+      },
+      "revId": "859bd02bf3d713246a50f2a7bb61c474fa5265ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
