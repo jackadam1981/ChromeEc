@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "650292c5_bdb40198",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 17
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-03T23:57:53Z",
+      "side": 1,
+      "message": "Can we move this to line 123 where we set stm32mon_flags for the first time? (and then append STM32MON_READ_FLAGS and STM32MON_WRITE_FLAGS instead of direct assignment)",
+      "range": {
+        "startLine": 189,
+        "startChar": 22,
+        "endLine": 189,
+        "endChar": 33
+      },
+      "revId": "c0c982c3ab253c26313e1453d58b508db0c5af32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0473876f_fe865e24",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 17
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-03T23:57:53Z",
+      "side": 1,
+      "message": "Based on your previous comment, can we add a comment for this line like in https://crrev.com/c/1925174/8/util/flash_fp_mcu ?\n\nCan we just leave it with constant value instead of adding random?",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 23
+      },
+      "revId": "c0c982c3ab253c26313e1453d58b508db0c5af32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
