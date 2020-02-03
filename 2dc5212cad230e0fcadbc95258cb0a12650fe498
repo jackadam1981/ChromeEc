@@ -22,6 +22,30 @@
       "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68fa7725_d06b7e79",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-03T19:32:41Z",
+      "side": 1,
+      "message": "servo_detect has a higher priority (HOOK_PRIO_DEFAULT-1) over ccd_ext_detect (HOOK_PRIO_DEFAULT). I think it would be risky to allow ccd_ext_detect while servo_detect is delayed. If servo, ccd detection and ec_comm happened at the same time, then servo and ccd detection should be delayed to check in the next HOOK_SECOD based on their priority.",
+      "parentUuid": "da0131b5_962ff09c",
+      "range": {
+        "startLine": 367,
+        "startChar": 53,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
