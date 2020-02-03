@@ -46,6 +46,30 @@
       "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea8e71d_3acd1f19",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-03T20:29:25Z",
+      "side": 1,
+      "message": "My intention in this patch was to prevent servo from being \"undetectable\" because it was delayed, while ccd_ext was detected and it caused UART EC TX to be connected after EC-CR50 communication.\nMeanwhile one bad situation was addressed: what if EC-CR50 communication gets messed up, and the communication never ends, UART EC TX is never released, servo won\u0027t be ever detected... Then we need to be able to talk to cr50 and control it. For this reason, ccd_ext should be enabled during EC-CR50 communication.\n\nI think even with this bad situation, cr50 console uart through servo is available for debugger. Also I am planning to add a cr50 UART command that enables/disables EC-CR50 communication (crbug.com/1047287). Hope this resolve the concern above.",
+      "parentUuid": "68fa7725_d06b7e79",
+      "range": {
+        "startLine": 367,
+        "startChar": 53,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
