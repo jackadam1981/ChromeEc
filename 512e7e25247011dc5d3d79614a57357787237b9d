@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ac95911_73d4133e",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T11:26:24Z",
+      "side": 1,
+      "message": "It it merely read the data registers.\nWe just directly read register and it returned back immediately, but the frequency of data refresh controlled by other register. \nFor example, if we set refresh time as 1.5s, but we read per 0.5s, then we\u0027ll get same value in first 3 reading and get updated value when we do 4th reading.\n\nRefer spec \"table 2\".",
+      "parentUuid": "0c2a2473_cc40e0e7",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3d7f981_4aada9d2",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e082a5db_c53c972d",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T11:26:24Z",
+      "side": 1,
+      "message": "We can disable sensor by set ALS_SD in reg 0x00.\nPSM and PSM_EN in reg 0x03 is also using to control refresh time.\n\nRefer spec \"Command Register Format\".",
+      "parentUuid": "a3d7f981_4aada9d2",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "91229927_e2f91fdf",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T11:26:24Z",
+      "side": 1,
+      "message": "Update at patch 2.",
+      "parentUuid": "bfa78930_b0e0e217",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15f5988e_be69cfb2",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 2
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "e8ff8ad1_daa305ad",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T11:26:24Z",
+      "side": 1,
+      "message": "According spec, table 2, refresh time is determined by ALS_SM, PSM, and ALS_IT.\nThe .c only mention ALS_IT. I will update at patch 2 to description more details.",
+      "parentUuid": "15f5988e_be69cfb2",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "971b7126_625e6fd1",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 2
@@ -101,6 +173,24 @@
       "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38522d8d_c47bc62c",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T11:26:24Z",
+      "side": 1,
+      "message": "According spec, table 2, refresh time is determined by ALS_SM, PSM, and ALS_IT.\nI will update at patch 2 to description more details.",
+      "parentUuid": "971b7126_625e6fd1",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
