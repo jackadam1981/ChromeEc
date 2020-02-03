@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da0131b5_962ff09c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-03T19:21:19Z",
+      "side": 1,
+      "message": "What does ccd_ext_detect have to do with servo detection?\n\nccd ext detection should work fine during ec-cr50 comm",
+      "range": {
+        "startLine": 367,
+        "startChar": 53,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
