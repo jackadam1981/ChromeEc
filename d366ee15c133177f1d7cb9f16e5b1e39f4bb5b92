@@ -93,6 +93,30 @@
       "revId": "d366ee15c133177f1d7cb9f16e5b1e39f4bb5b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d306691a_ed6b2d24",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-03T17:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc32bb54_56b5c155",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 51
+      },
+      "revId": "d366ee15c133177f1d7cb9f16e5b1e39f4bb5b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
