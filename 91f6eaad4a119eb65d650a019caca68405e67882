@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c7e59be_b83c12e0",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-03T17:41:21Z",
+      "side": 1,
+      "message": "Shall we announce \u0027rwsigaction (deprecated)\u0027?",
+      "range": {
+        "startLine": 278,
+        "startChar": 4,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "91f6eaad4a119eb65d650a019caca68405e67882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2201a909_af37c870",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-03T17:41:21Z",
+      "side": 1,
+      "message": "nit: can you indent this move it to the line above?",
+      "range": {
+        "startLine": 1514,
+        "startChar": 1,
+        "endLine": 1514,
+        "endChar": 25
+      },
+      "revId": "91f6eaad4a119eb65d650a019caca68405e67882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a3fdcb8_2c4a7474",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-03T17:41:21Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1529,
+        "startChar": 19,
+        "endLine": 1529,
+        "endChar": 22
+      },
+      "revId": "91f6eaad4a119eb65d650a019caca68405e67882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8c22a8_c3a11629",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-03T17:41:21Z",
+      "side": 1,
+      "message": "Can you put this inside cmd_rwsig_info?",
+      "range": {
+        "startLine": 1572,
+        "startChar": 0,
+        "endLine": 1575,
+        "endChar": 2
+      },
+      "revId": "91f6eaad4a119eb65d650a019caca68405e67882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

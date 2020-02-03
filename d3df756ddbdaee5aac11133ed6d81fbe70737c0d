@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a5716b62_58146834",
+        "filename": "common/vboot/vb21_lib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-03T17:41:21Z",
+      "side": 1,
+      "message": "That\u0027s what I meant. Thank you,\n\nThere are other calls in rwsig.c and update_fw.c.",
+      "parentUuid": "6b9a61cb_9d8df267",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19f36cff_de1ab0af",
         "filename": "common/vboot/vb21_lib.c",
         "patchSetId": 5
