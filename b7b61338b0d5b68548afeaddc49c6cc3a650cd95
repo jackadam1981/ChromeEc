@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b031b06_a1c44c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-02-03T22:55:08Z",
+      "side": 1,
+      "message": "Does DisplayPort continue to work after suspend-resume?",
+      "revId": "b7b61338b0d5b68548afeaddc49c6cc3a650cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9dd95e1_d49b0648",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-02-03T22:55:08Z",
+      "side": 1,
+      "message": "Should this have a \n\n  Cq-Depend: chromium:2036592",
+      "revId": "b7b61338b0d5b68548afeaddc49c6cc3a650cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
