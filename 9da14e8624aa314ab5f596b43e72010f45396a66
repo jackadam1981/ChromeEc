@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0508c608_e9fa7f58",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-02-03T22:21:09Z",
+      "side": 1,
+      "message": "We do not want to Enter USB SOP\u0027 for Rev2.0 active cables as we enter tbt mode for Rev 2.0 active cables.",
+      "parentUuid": "9d6a9c03_d7682485",
+      "range": {
+        "startLine": 384,
+        "startChar": 6,
+        "endLine": 384,
+        "endChar": 37
+      },
+      "revId": "9da14e8624aa314ab5f596b43e72010f45396a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1a2a846_07561b19",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9da14e8624aa314ab5f596b43e72010f45396a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc030f38_63b0d71c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-02-03T22:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a2a846_07561b19",
+      "range": {
+        "startLine": 599,
+        "startChar": 1,
+        "endLine": 599,
+        "endChar": 46
+      },
+      "revId": "9da14e8624aa314ab5f596b43e72010f45396a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2fa33736_459198cd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-02-03T22:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "157e05db_2af5fea8",
+      "range": {
+        "startLine": 1971,
+        "startChar": 4,
+        "endLine": 1971,
+        "endChar": 34
+      },
+      "revId": "9da14e8624aa314ab5f596b43e72010f45396a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd164c0c_516e5094",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "9da14e8624aa314ab5f596b43e72010f45396a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10422e47_d515627c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2973,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-02-03T22:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd164c0c_516e5094",
+      "range": {
+        "startLine": 2971,
+        "startChar": 0,
+        "endLine": 2973,
+        "endChar": 30
+      },
+      "revId": "9da14e8624aa314ab5f596b43e72010f45396a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
