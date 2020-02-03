@@ -46,6 +46,30 @@
       "revId": "fc6acf219c3ae51c2acdc4d61566252aaf1484ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c637d09_2e57cf8d",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-03T23:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6dd9dda_19b1bb19",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "fc6acf219c3ae51c2acdc4d61566252aaf1484ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
