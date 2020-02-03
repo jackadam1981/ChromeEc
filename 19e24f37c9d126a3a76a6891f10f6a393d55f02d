@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c06bcbb7_0335db13",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-03T17:43:04Z",
+      "side": 1,
+      "message": "Nit - add comment saying enter mode flag not needed by TCPMv1.",
+      "range": {
+        "startLine": 758,
+        "startChar": 5,
+        "endLine": 758,
+        "endChar": 31
+      },
+      "revId": "19e24f37c9d126a3a76a6891f10f6a393d55f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f65a0f_e46440fa",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-03T17:43:04Z",
+      "side": 1,
+      "message": "This function is returning the current alternate mode policy. I suggest renaming to pd_get_am_policy().",
+      "range": {
+        "startLine": 1713,
+        "startChar": 18,
+        "endLine": 1713,
+        "endChar": 31
+      },
+      "revId": "19e24f37c9d126a3a76a6891f10f6a393d55f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
