@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2162c63c_bf4a74a5",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-03T17:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a26a5ff_e5798cd8",
+      "revId": "536258aa0fcf0603fbd8033d4628720deb39ca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbecbc2b_e475f9f3",
         "filename": "util/compare_build.sh",
         "patchSetId": 2
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "2bbc2ade_9a808b26",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-03T17:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd1473e_c0da7d9b",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "536258aa0fcf0603fbd8033d4628720deb39ca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "872d09c4_c1c88c93",
         "filename": "util/compare_build.sh",
         "patchSetId": 2
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "1a561234_d66414de",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-03T17:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "872d09c4_c1c88c93",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "536258aa0fcf0603fbd8033d4628720deb39ca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ad405a0_5f466420",
         "filename": "util/compare_build.sh",
         "patchSetId": 2
@@ -109,6 +175,30 @@
       "revId": "536258aa0fcf0603fbd8033d4628720deb39ca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2755469c_42cb6703",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-03T17:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad405a0_5f466420",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "536258aa0fcf0603fbd8033d4628720deb39ca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
