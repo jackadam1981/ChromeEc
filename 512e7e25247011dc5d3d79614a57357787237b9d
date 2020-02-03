@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e524161a_6a2bc5b1",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T13:31:12Z",
+      "side": 1,
+      "message": "Is it for calibration?\nIf so, will host notice us the umber, and we use into\nY\u003dscale*X+uscale*X+offset?\n(why we need uscale?)",
+      "parentUuid": "3625499f_0050be78",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfa78930_b0e0e217",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 2
@@ -211,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "b9abc013_e5d57955",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T13:31:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "040c6bda_7b8bdfc4",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "370cea12_d51d2a0a",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 2
@@ -225,6 +261,24 @@
       "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6eb0121_a6b166d4",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-02-03T13:31:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "370cea12_d51d2a0a",
+      "revId": "512e7e25247011dc5d3d79614a57357787237b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
