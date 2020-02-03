@@ -22,6 +22,30 @@
       "revId": "08282f3fdeb71337d55e5733d9de794b910e6992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe508bf_d08d53d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-03T09:46:30Z",
+      "side": 1,
+      "message": "Q:why do we need a version 2?\nA:Because of cost our HW removes redundant logic \u0026 register. And HW also reorganizes register map, this is more intuitive and easier to use for firmware. \n\nQ:Is this just the driver for version it83201 and the existing driver is for it8320?\nA:The existing driver is for it8320. Driver v2 is for new chip ex.it8xxx1 or it8xxx2 later series. \n\nQ:How different are they, the tcpc driver something we can share between them? We should pull out as much common code as we can between the two drivers. \nA:No, HW removes, adds, and reorganizes registers, so the new chips should use the new driver.\n\nQ:This one should be called tcpm_it8320XX.c as well. V2 doesn\u0027t tell us enough about what the driver is used for.\nA:Ok, but V2.c is already in tcpm folder, shall we still call it \"tcpm_ \" in name?",
+      "parentUuid": "e25f68c8_fc6faa72",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "08282f3fdeb71337d55e5733d9de794b910e6992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
