@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df628b9f_31bd34b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-04T05:28:09Z",
+      "side": 1,
+      "message": "enter mode for sop* ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "9a96700731478f62d41e650e557ee4f70fbb1bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be061461_9221d9e2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-04T05:28:09Z",
+      "side": 1,
+      "message": "add it in below if",
+      "range": {
+        "startLine": 596,
+        "startChar": 6,
+        "endLine": 596,
+        "endChar": 16
+      },
+      "revId": "9a96700731478f62d41e650e557ee4f70fbb1bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
