@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6924403a_e2b87874",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T18:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d962d088_1f8449a1",
+      "range": {
+        "startLine": 233,
+        "startChar": 21,
+        "endLine": 233,
+        "endChar": 23
+      },
+      "revId": "5754e2834aa813b45e7c2a0887695bb4014b2719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e61c1008_9ef79212",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 11
@@ -39,6 +63,24 @@
       "revId": "5754e2834aa813b45e7c2a0887695bb4014b2719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d84cb93_fee17797",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T18:36:03Z",
+      "side": 1,
+      "message": "As I understand, ccd_state_change_hook() will force to disable CCD_ENABLE_UART_XX_TX if CCD_ENABLE_UART_XX is disabled.\nECTX without ECRX should not happen, I think.",
+      "parentUuid": "e61c1008_9ef79212",
+      "revId": "5754e2834aa813b45e7c2a0887695bb4014b2719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
