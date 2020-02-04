@@ -46,6 +46,30 @@
       "revId": "0061137ee1635f5e4f493d5746fa933a6b4d3bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eeb5fcb_ba6d750e",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-02-04T23:17:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "022ba723_79b49c5b",
+      "range": {
+        "startLine": 613,
+        "startChar": 13,
+        "endLine": 613,
+        "endChar": 31
+      },
+      "revId": "0061137ee1635f5e4f493d5746fa933a6b4d3bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
