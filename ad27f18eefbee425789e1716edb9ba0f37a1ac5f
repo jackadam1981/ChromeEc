@@ -93,6 +93,30 @@
       "revId": "ad27f18eefbee425789e1716edb9ba0f37a1ac5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449cfdd0_24a876a6",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-04T21:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a8d3d5_80eace9f",
+      "range": {
+        "startLine": 1317,
+        "startChar": 63,
+        "endLine": 1317,
+        "endChar": 80
+      },
+      "revId": "ad27f18eefbee425789e1716edb9ba0f37a1ac5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
