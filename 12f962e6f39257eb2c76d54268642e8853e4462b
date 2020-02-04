@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34d8b11b_e33203f9",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-04T16:53:58Z",
+      "side": 1,
+      "message": "\u003e warning: Don\u0027t use ls | grep. Use a glob or a for loop with a condition to allow non-alphanumeric filenames.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2010\n\nPlease fix.",
+      "parentUuid": "1ecfb10e_3a485627",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 13
+      },
+      "revId": "12f962e6f39257eb2c76d54268642e8853e4462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
