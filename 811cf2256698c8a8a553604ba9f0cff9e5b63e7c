@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ee33efc_9a07d0b0",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-04T04:06:35Z",
+      "side": 1,
+      "message": "It sounds like the problematic scenario is having the fan running when the AP is off. Could we add a check in this function to only enable the fan if the AP is on or turning on?\n\nYou could use `chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)`.",
+      "revId": "811cf2256698c8a8a553604ba9f0cff9e5b63e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
