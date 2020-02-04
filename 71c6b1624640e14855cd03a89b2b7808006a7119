@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7d52621_63aa928f",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T03:22:35Z",
+      "side": 1,
+      "message": "do we even need this? can AP just directly communicate to EC and ask it to reboot?",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "71c6b1624640e14855cd03a89b2b7808006a7119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
