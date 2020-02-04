@@ -3827,6 +3827,24 @@ enum idh_ptype get_usb_pd_cable_type(int port)
 	return pe[port].cable.type;
 }
 
+void disable_transmit_sop_prime(int port)
+{
+}
+
+void disable_transmit_sop_prime_prime(int port)
+{
+}
+
+bool is_transmit_msg_sop_prime(int port)
+{
+	return false;
+}
+
+bool is_transmit_msg_sop_prime_prime(int port)
+{
+	return false;
+}
+
 /**
  * PE_VDM_Acked
  */
@@ -3858,22 +3876,18 @@ static void pe_vdm_acked_entry(int port)
 		switch (vdo_cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			dfp_consume_identity(port, cnt, payload);
-#ifdef CONFIG_CHARGE_MANAGER
-			if (pd_charge_from_device(pd_get_identity_vid(port),
-						pd_get_identity_pid(port))) {
-				charge_manager_update_dualrole(port,
-								CAP_DEDICATED);
-			}
-#endif
+			/* TODO: Pass head */
+			dfp_handle_acked_discover_ident(port, cnt, payload, 0);
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, cnt, payload);
+			dfp_handle_acked_discover_svid(port, cnt, payload);
 			break;
 		case CMD_DISCOVER_MODES:
-			dfp_consume_modes(port, cnt, payload);
+			dfp_handle_acked_discover_modes(port, cnt, payload);
 			break;
 		case CMD_ENTER_MODE:
+			/* modep is NA for TCPMv2 */
+			dfp_handle_acked_enter_mode(port, cnt, payload, NULL);
 			break;
 		case CMD_DP_STATUS:
 			/*

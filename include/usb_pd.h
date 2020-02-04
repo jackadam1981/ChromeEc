@@ -1672,6 +1672,16 @@ void dfp_consume_modes(int port, int cnt, uint32_t *payload);
  */
 int dfp_discover_modes(int port, uint32_t *payload);
 
+int dfp_handle_acked_discover_ident(int port, int cnt, uint32_t *payload,
+					uint16_t head);
+int dfp_handle_acked_discover_svid(int port, int cnt, uint32_t *payload);
+int dfp_handle_acked_discover_modes(int port, int cnt, uint32_t *payload);
+int dfp_handle_acked_enter_mode(int port, int cnt, uint32_t *payload,
+				struct svdm_amode_data *modep);
+int dfp_handle_nacked_discover_svid(int port, int cnt, uint32_t *payload);
+void disable_transmit_sop_prime(int port);
+void disable_transmit_sop_prime_prime(int port);
+
 /**
  * Initialize policy engine for DFP
  *
