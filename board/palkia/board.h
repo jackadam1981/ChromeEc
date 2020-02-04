@@ -25,6 +25,8 @@
 
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
+#define CONFIG_KEYBOARD_CUSTOMIZATION
+#define CONFIG_KEYBOARD_DEBUG
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_COMM_LOCKED
 #define CONFIG_USB_PD_TCPM_PS8751
