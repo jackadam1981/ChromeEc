@@ -285,6 +285,13 @@ SECTIONS
 
 	__data_lma_start = .;
 
+	.preserve_data(NOLOAD) : {
+		. = ALIGN(8);
+		*(SORT(.preserve_data.*))
+		. = ALIGN(8);
+		__preserve_data_end = .;
+	}
+
 #ifdef CONFIG_PRESERVE_LOGS
 	.preserve_logs(NOLOAD) : {
 		. = ALIGN(8);

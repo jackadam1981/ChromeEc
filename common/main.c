@@ -40,6 +40,10 @@
 
 test_mockable __keep int main(void)
 {
+#	ifdef CHIP_FAMILY_STM32H7
+	STM32_DBGMCU_CR |= BIT(0)|BIT(1)|BIT(2) | BIT(7)|BIT(8);
+#	endif
+
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
 		/*
 		 * Initialize tx buffer head and tail. This needs to be done
