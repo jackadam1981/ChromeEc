@@ -466,6 +466,32 @@ static void usb_resume(void)
 	}
 }
 
+static int command_usbresume(int argc, char **argv)
+{
+	interrupt_disable();
+	usb_resume();
+	interrupt_enable();
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(usbresume, command_usbresume,
+	NULL, "Force USB resume.");
+
+static int command_usbstate(int argc, char **argv)
+{
+	uint32_t state;
+
+	state = (STM32_USB_FNR & STM32_USB_FNR_RXDP_RXDM_MASK)
+		>> STM32_USB_FNR_RXDP_RXDM_SHIFT;
+
+	CPRINTF("state %d\n", state);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(usbstate, command_usbstate,
+	NULL, "USB state");
+
 #ifdef CONFIG_USB_REMOTE_WAKEUP
 /*
  * Makes sure usb_wake is only run once. When 0, wake is in progress.
