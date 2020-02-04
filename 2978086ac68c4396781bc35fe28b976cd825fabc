@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a09ec05_3c957c6f",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:46:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f330120d_64efdc28",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f055ed8c_0dbcdf48",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9dbbcc_16c3ad0e",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:46:25Z",
+      "side": 1,
+      "message": "I neglected the case console buffer is full. CR50 retries several times waiting for buffer space and exit after.\nI am making CPRINTS in this module defined only if it is a dev image.",
+      "parentUuid": "f055ed8c_0dbcdf48",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9ad7d4aa_26c45842",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:46:25Z",
+      "side": 1,
+      "message": "Acked. I intend to check whether secdata-\u003estruct_size has a valid value, and consistent to the actual structure size.",
+      "parentUuid": "982ddfe8_26c72ca7",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb7519b2_9a2572eb",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 14
@@ -91,6 +163,30 @@
       "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db07db32_41c04fff",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:46:25Z",
+      "side": 1,
+      "message": "\u0027secdata-\u003estruct_size\u0027 is 1 byte-sized, and the structure size can be at most.\nI am retyping struct_size as uint8_t.",
+      "parentUuid": "cb7519b2_9a2572eb",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 56
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
