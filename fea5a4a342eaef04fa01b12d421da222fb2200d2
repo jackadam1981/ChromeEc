@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e685fa3_10463383",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "nit: would be useful to document the assumptions about endianness (GSC and on the bus). here we send it in the local byte order, whatever it is (happens to be little-endian for H1). do we expect little-endian on EC side?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cbe2f42_d6f58ec2",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "shall we return 1 here? do we ever need to send CR50_COMM_PREAMBLE bytes to USB?\nor to avoid sending garbage CR50_COMM_PREAMBLE at the begiining of each EC comm packet, maybe monitor dropping out of PHASE_RECEIVING_PREAMBLE before getting MIN_LENGTH_PREAMBLE bytes, and *then* sending N CR50_COMM_PREAMBLE bytes to USB?",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 12
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c112bd9_392e4f03",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "the function below reboots EC, it doesn\u0027t turn off AP",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e5e971b_948836d4",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 170,
+        "startChar": 19,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f3916e_b126606f",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "shall this actually be uint8_t? since that\u0027s the type of the size field in the packet header. same for the next function.",
+      "range": {
+        "startLine": 172,
+        "startChar": 48,
+        "endLine": 172,
+        "endChar": 57
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28afa441_ce6b6706",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "nit: can we instead just define ec_comm_process_packet() as follows in general case?\n  #ifndef BOARD_CR50\n  static inline int ec_comm_process_packet(uint8_t ch) { return 0; }\n  #endif\nor even\n  #ifndef BOARD_CR50\n  #define ec_comm_process_packet(ch) (0)\n  #endif\n\nAnd for BOARD_CR50 have\nint ec_comm_process_packet(uint8_t ch) {\n  if (!ec_comm_is_uart_in_packet_mode(uart))\n    return 0;\n  ... the rest of the func ...\n}\n\nor is it critical to avoid unnecessary operations?",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b17731_677d1159",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "can this state change while we are reading bytes from uart in the loop below?",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 35
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a5dc09_b62f21c9",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T02:57:27Z",
+      "side": 1,
+      "message": "if it\u0027s ok to lose non-packet data when uart is in packet mode, can we then just never copy to uart_in-\u003ebuffer[]?\nI.e.\n#ifdef BOARD_CR50\n  while (ec_comm_is_uart_in_packet_mode(uart) \u0026\u0026 uartn_rx_available(uart)) {\n    ec_comm_process_packet(uartn_read_char(uart));\n  }\n#endif\n  while ((count !\u003d q_room) \u0026\u0026 uartn_rx_available(uart)) {\n    uart_in-\u003ebuffer[tail \u0026 mask] \u003d uartn_read_char(uart);\n    tail++;\n    count++;\n  }\n\nIf it\u0027s not ok to lose data, then let\u0027s do\n\n  while (uartn_rx_available(uart)) {\n    uint8_t ch \u003d uartn_read_char(uart);\n#ifdef BOARD_CR50\n    if (ec_comm_is_uart_in_packet_mode(uart) \u0026\u0026 ec_comm_process_packet(uart))\n      continue;\n#endif\n    if (count \u003d\u003d q_room)\n      break;\n    uart_in-\u003ebuffer[tail \u0026 mask] \u003d uartn_read_char(uart);\n    tail++;\n    count++;\n  }\n\nif you need optimization\n\n#ifdef BOARD_CR50\n  while (uartn_rx_available(uart)) {\n#else\n  while ((count !\u003d q_room) \u0026\u0026 uartn_rx_available(uart)) {\n#endif\n    uint8_t ch \u003d uartn_read_char(uart);\n#ifdef BOARD_CR50\n    if (ec_comm_is_uart_in_packet_mode(uart) \u0026\u0026 ec_comm_process_packet(ch))\n      continue; /* can cache in_packet_mode if it can\u0027t change while in this loop */\n    if (count \u003d\u003d q_room)\n      break;\n#endif\n    uart_in-\u003ebuffer[tail \u0026 mask] \u003d ch;\n    tail++;\n    count++;\n  }",
+      "range": {
+        "startLine": 188,
+        "startChar": 37,
+        "endLine": 189,
+        "endChar": 26
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
