@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f330120d_64efdc28",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T03:17:02Z",
+      "side": 1,
+      "message": "let\u0027s rephrase. maybe \"secdata_kernel: old version or doesn\u0027t exist\". and also set\nctx-\u003esecdata_error_code \u003d EC_ERROR_VBOOT_DATA_UNDERSIZED if read_tpm_nvmem() returns tpm_read_too_small.\n\n1) read_tpm_nvmem [as it is implemented now] can only return 2 error codes - tpm_read_not_found (if nvmem space doesn\u0027t exist) or tpm_read_too_small (if the requested size is bigger than the actual nvmem space).\n2) tpm_read_not_found is normal on the first boot: when we have already called load_ec_hash_() from ec_efs_init_(), but AP hasn\u0027t run yet and hasn\u0027t created the space yet.\n\nso, in fact, it\u0027s not a read_error. either there\u0027s no space or it is of the old format (smaller size). in both cases we already print something from inside read_tpm_nvmem(), but I wouldn\u0027t rely on that and still print something here.",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f055ed8c_0dbcdf48",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T03:17:02Z",
+      "side": 1,
+      "message": "note that all these CPRINTS can happen when processing EC request, delaying the response to it. just in case: is it ok? in some cases (\"undersized\", \"read error\") they may happen under normal conditions.\nand what happens if the console buffer is full - will cprintf wait for it to clear?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982ddfe8_26c72ca7",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T03:17:02Z",
+      "side": 1,
+      "message": "note that if struct_size \u003c secdata_size, we have already received an error from read_tpm_nvmem() since it returns an error if the requested size \u003e size of the actual nvram space.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7519b2_9a2572eb",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T03:17:02Z",
+      "side": 1,
+      "message": "this may read past the end of the buffer if struct_size \u003e 256.",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 56
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
