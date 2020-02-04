@@ -179,7 +179,11 @@ static int ps8xxx_get_chip_info(int port, int live,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static int ps8xxx_enter_low_power_mode(int port)
 {
+#ifdef CONFIG_USB_PD_TCPM_PS8805
+	return tcpci_enter_low_power_mode(port);
+#else
 	return EC_SUCCESS;
+#endif
 }
 #endif
 
