@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08e3a041_a6935c40",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "fpmul(e, e)",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9ecde3_dd9cfee4",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "Remove for production.",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b930a0_13505d01",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "Isn\u0027t prune \u003d\u003d true equivalent to queue_is_full()? Why would we remove sample if the queue is not full?",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a96c6f_833550a1",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "FLOAT_TO_FP(1.0f)",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7cf636_728db058",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "not possible, dot(delta, delta) is always a positive number x^2 + y^2 + z^2.",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d15b64_c4b6c5a4",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "Use mag \u003d fpv3_norm(delta)",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104b6ee5_4b4f4a88",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "remove extra ()",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ccb7e0_347c6189",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "not possible.",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ff439c2_4e7f6afa",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T21:48:37Z",
+      "side": 1,
+      "message": "fpv3_norm(delta)",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
