@@ -13,6 +13,8 @@
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "switch.h"
 #include "system.h"
 #include "usb_charge.h"
@@ -62,3 +64,22 @@ void ps2_pwr_en_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&trackpoint_reset_deferred_data, MSEC);
 }
+
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_KBLIGHT] = {
+		.channel = 3,
+		.flags = PWM_CONFIG_DSLEEP,
+		.freq = 100,
+	},
+	[PWM_CH_FAN] = {
+		.channel = 2,
+		.flags = PWM_CONFIG_OPEN_DRAIN,
+		.freq = 25000,
+	},
+	[PWM_CH_LOGO_LED] = {
+		.channel = 0,
+		.flags = PWM_CONFIG_DSLEEP,
+		.freq = 100,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
