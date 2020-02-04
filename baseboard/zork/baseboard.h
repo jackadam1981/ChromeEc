@@ -254,12 +254,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-enum pwm_channel {
-	PWM_CH_KBLIGHT = 0,
-	PWM_CH_FAN,
-	PWM_CH_COUNT
-};
-
 enum fan_channel {
 	FAN_CH_0 = 0,
 	/* Number of FAN channels */
