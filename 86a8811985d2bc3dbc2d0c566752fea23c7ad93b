@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bf11fb4_3dc048fb",
+        "filename": "board/helios/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-04T20:45:29Z",
+      "side": 1,
+      "message": "You can just set rv \u003d EC_SUCCESS here, and then the \u0027else\u0027 branch at the bottom is unnecessary",
+      "range": {
+        "startLine": 401,
+        "startChar": 5,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "86a8811985d2bc3dbc2d0c566752fea23c7ad93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
