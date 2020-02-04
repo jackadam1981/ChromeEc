@@ -64,6 +64,13 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+
+enum pwm_channel {
+	PWM_CH_KBLIGHT = 0,
+	PWM_CH_FAN,
+	PWM_CH_COUNT
+};
+
 #endif /* !__ASSEMBLER__ */
 
 
