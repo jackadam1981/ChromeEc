@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2d29c27e_e3e1d759",
+        "filename": "chip/npcx/adc_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-04T21:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27e4976c_1559cccf",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 78
+      },
+      "revId": "ad27f18eefbee425789e1716edb9ba0f37a1ac5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f165375b_b309bba2",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 3
