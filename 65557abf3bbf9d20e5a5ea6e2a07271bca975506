@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c3c52c0_94fcb940",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "Let\u0027s make #defines for the BIT(#) to name the purpose of the bits and we can combine though definitions here\n\n---\n\nAlso what does \"DB\" mean for the 5.1K resistor?",
+      "range": {
+        "startLine": 651,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 33
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d30bee1_3011909d",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "let\u0027s make this an API function call instead please. externs can get tricky to trace",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99217c18_5cf283e2",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "nit: can use IS_ENABLED(IT83XX_INTC_PLUG_IN_SUPPORT) here",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455cb0c0_3c890225",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "I have seen this combo of if defined a couple of times now. It is probably worth creating a derived CONFIG_ if either of these is defined (or we could use the CONFIG_USB_PD_ON_CHIP config we were talking about on another review)\n\n\nnot a requirement, but I think it could clean up the code a little",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e29173_01954fa9",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "nit: on ITE 83xxx2 devices",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50581b96_41e7c7ed",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "just a reminder to make this a function call instead of extern global, please",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b63d6d4_ff55f347",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "nit: let\u0027s make this static variable to limit scope",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c78dae_cce84655",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "this code seems very similar to the code in gpio.c; let\u0027s signle source it. Also I like this version better since you are using defined names.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ff36025_7b8a206a",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "please name these masks and shifts with defines",
+      "range": {
+        "startLine": 108,
+        "startChar": 43,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc4b3004_665f6cb3",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "why remove BIT(2)? cc_state should already have BIT(2) set if taking this path, right?\n\nWhy can\u0027t we just set the value like\n\ncc_state \u003d TYPEC_CC_VOLT_RP_1_5\n\ndo we need to use |\u003d ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1de598f_991789d0",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "same, why the need for |\u003d instead of just \u003d",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de78a6b4_a8d5ceb5",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "let\u0027s name bit with define",
+      "range": {
+        "startLine": 365,
+        "startChar": 37,
+        "endLine": 365,
+        "endChar": 44
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e414dcde_c462438f",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "name please",
+      "range": {
+        "startLine": 376,
+        "startChar": 37,
+        "endLine": 376,
+        "endChar": 44
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f502d11b_de0e1b89",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T17:32:01Z",
+      "side": 1,
+      "message": "let\u0027s name these defines please and then use them in code",
+      "range": {
+        "startLine": 425,
+        "startChar": 9,
+        "endLine": 427,
+        "endChar": 40
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
