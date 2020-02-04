@@ -23,6 +23,30 @@
       "revId": "12f962e6f39257eb2c76d54268642e8853e4462b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c6daea1_513a6bac",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-04T22:09:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d8b11b_e33203f9",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 13
+      },
+      "revId": "12f962e6f39257eb2c76d54268642e8853e4462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
