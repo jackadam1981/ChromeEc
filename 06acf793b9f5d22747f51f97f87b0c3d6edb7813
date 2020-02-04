@@ -70,6 +70,30 @@
       "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633474b6_ca7b3d58",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-02-04T01:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023b04e4_f9d43435",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "06acf793b9f5d22747f51f97f87b0c3d6edb7813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
