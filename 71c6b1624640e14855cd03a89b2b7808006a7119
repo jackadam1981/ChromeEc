@@ -70,6 +70,30 @@
       "revId": "71c6b1624640e14855cd03a89b2b7808006a7119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f70967ef_a0d8110d",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T18:27:04Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1961145/21\nboard/cr50/board.c, Line1166~1167: Boot Mode shall be reset whenever CR50 asserts ECRST.",
+      "parentUuid": "104022e8_d3baa5eb",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "71c6b1624640e14855cd03a89b2b7808006a7119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
