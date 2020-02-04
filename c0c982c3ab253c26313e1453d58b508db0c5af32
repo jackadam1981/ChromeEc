@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74822ad3_7064cca3",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 17
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-04T19:13:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650292c5_bdb40198",
+      "range": {
+        "startLine": 189,
+        "startChar": 22,
+        "endLine": 189,
+        "endChar": 33
+      },
+      "revId": "c0c982c3ab253c26313e1453d58b508db0c5af32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0473876f_fe865e24",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "c0c982c3ab253c26313e1453d58b508db0c5af32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e37a341_bb89bec4",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 17
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-04T19:13:24Z",
+      "side": 1,
+      "message": "IIRC, that issue only pertains to the moments after binding spidev and the moments after unbinding spidev, not across resets.\n\nYeah, we can probably remove it. The fractional-second randomness is intended to break any synchronous issues between this script and the chip, but honestly there probably aren\u0027t any at this specific point in the script.",
+      "parentUuid": "0473876f_fe865e24",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 23
+      },
+      "revId": "c0c982c3ab253c26313e1453d58b508db0c5af32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
