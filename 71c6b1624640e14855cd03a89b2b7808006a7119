@@ -46,6 +46,30 @@
       "revId": "71c6b1624640e14855cd03a89b2b7808006a7119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104022e8_d3baa5eb",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-04T18:13:08Z",
+      "side": 1,
+      "message": "but the handler for this command doesn\u0027t set boot_mode, it just does a deferred board_reboot_ec().",
+      "parentUuid": "6ee9554f_8424e38a",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "71c6b1624640e14855cd03a89b2b7808006a7119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
