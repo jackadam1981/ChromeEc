@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17637bd2_d6afc5ba",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-04T17:15:03Z",
+      "side": 1,
+      "message": "get_dptf_alive_status is the main purpose to check the status of dptf is alive/active on the system or not ?",
+      "parentUuid": "fa83dadf_c0b793b6",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5894d9a_6b760075",
         "filename": "common/thermal.c",
         "patchSetId": 7
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "In scenario#1, EC will take over the fan because get_dptf_alive_status returns false.\n\nIn scenario#2, DPTF takes back the fan because it calls dptf_set_fan_duty_target through ACPI. Once the control is transferred, DPTF keeps controlling it until it stops working or AP shuts down.\n\nCan you try patchset 8?",
       "parentUuid": "2018fe1b_40935688",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15fd6df_0dc3f556",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-04T17:15:03Z",
+      "side": 1,
+      "message": "Please read this comment https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1772861/7/common/thermal.c#203 \n\nWe went through patchset 8 code changes. We tested this and observed that these new changes in patchset 8 not appropriate or few changes are missing.",
+      "parentUuid": "4277dee4_dde5214c",
       "range": {
         "startLine": 200,
         "startChar": 0,

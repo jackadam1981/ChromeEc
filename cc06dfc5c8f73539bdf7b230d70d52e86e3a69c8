@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4cc8f60_6156f0f9",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-04T17:15:03Z",
+      "side": 1,
+      "message": "This might not satisfy anytime because this change 8 does not contain the define changes of “CONFIG_DPTF_FAIL_SAFE_OFFSET”. \nAs per this change https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1772861/8/include/config.h here it is undefined.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "cc06dfc5c8f73539bdf7b230d70d52e86e3a69c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5297e66e_1d4c2cb0",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-04T17:15:03Z",
+      "side": 1,
+      "message": "As per the below code the “set_thermal_control_enabled( )” will be called always because of missing { ... }, is this correct approach ?",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 30
+      },
+      "revId": "cc06dfc5c8f73539bdf7b230d70d52e86e3a69c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8c4a32_c4ca4183",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-04T17:15:03Z",
+      "side": 1,
+      "message": "It seems this will be always called, irrespective of “get_dptf_alive_Status( )” function return.",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "cc06dfc5c8f73539bdf7b230d70d52e86e3a69c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
