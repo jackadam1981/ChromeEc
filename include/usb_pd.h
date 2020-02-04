@@ -1780,6 +1780,14 @@ bool is_transmit_msg_sop_prime(int port);
  */
 struct pd_policy *pd_get_am_policy(int port);
 
+/*
+ * Return the pointer to PD cable attributes
+ *
+ * @param port  USB-C port number
+ * @return      pointer to PD cable attributes
+ */
+struct pd_cable *pd_get_cable_attributes(int port);
+
 /**
  * Set DFP enter mode flags if available
  *
