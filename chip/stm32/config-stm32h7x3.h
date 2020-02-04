@@ -9,6 +9,7 @@
 /* always use 256-bit writes due to ECC */
 #define CONFIG_FLASH_WRITE_SIZE          32   /* minimum write size */
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE    32
+#define CONFIG_FLASH_WP_BANKS            1
 
 /*
  * What the code is calling 'bank' is really the size of the block used for
