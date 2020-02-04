@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ae70167_827b67d6",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-04T21:17:33Z",
+      "side": 1,
+      "message": "nit: I suppose this doesn\u0027t need to be a hook call if we\u0027re not really deferring it?",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 57
+      },
+      "revId": "dbe6ddccd94ec70a0f6a898eaa9724b574c56a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
