@@ -5227,7 +5227,7 @@ struct ec_response_usb_pd_control_v2 {
 	char state[32];
 	uint8_t cc_state;	/* enum pd_cc_states representing cc state */
 	uint8_t dp_mode;	/* Current DP pin mode (MODE_DP_PIN_[A-E]) */
-	uint8_t reserved;	/* Reserved for future use */
+	uint8_t tcss_state;	/* Early boot state of TCSS */
 	uint8_t control_flags;	/* USB_PD_CTRL_*flags */
 	uint8_t cable_speed;	/* TBT_SS_* cable speed */
 	uint8_t cable_gen;	/* TBT_GEN3_* cable rounded support */
@@ -5294,6 +5294,18 @@ struct ec_response_usb_pd_power_info {
 #define EC_CMD_CHARGE_PORT_COUNT 0x0105
 struct ec_response_charge_port_count {
 	uint8_t port_count;
+} __ec_align1;
+
+/*
+ * This command synchronizes the Coreboot and Kernel TCSS states by saving the
+ * Coreboot's early boot TCSS state of USB-C devices. When the Kernel boots,
+ * it determines the next TCSS state based on the Coreboot's early boot state
+ * available in EC.
+ */
+#define EC_CMD_USB_PD_SET_TCSS_STATE 0x0106
+struct ec_params_usb_pd_set_tcss_state {
+	uint8_t port;
+	uint8_t tcss_state;
 } __ec_align1;
 
 /* Write USB-PD device FW */
