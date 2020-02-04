@@ -106,4 +106,8 @@ static inline void keyboard_raw_set_cols(int cols) {
 	keyboard_cols = cols;
 }
 
+#ifdef CONFIG_KEYBOARD_CUSTOMIZATION
+void board_keyboard_drive_col(int col);
+#endif
+
 #endif  /* __CROS_EC_KEYBOARD_RAW_H */
