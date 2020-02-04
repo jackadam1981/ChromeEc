@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "a82cc9e0_3c6df52b",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-04T21:37:57Z",
+      "side": 1,
+      "message": "Yep, that flow for exception handling is correct. Thus, our modification to bkpdata_write_reset_flags will be invoked.\n\nI\u0027m not totally following. There are multiple entries into system_reset that can trigger the reset loop, not just the exception path.\nException\u003d\u003esystem_reset(0), HostCmd(reboot_of_any_kind)\u003d\u003esystem_reset(reboot_of_any_kind), ConsoleCmd(reboot_of_any_kind)\u003d\u003esystem_reset(reboot_of_any_kind)\n\n\nLet me know if the new comment clears anything up.",
+      "parentUuid": "733306f1_59f884da",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "165ccbb5_fcff25a5",
         "filename": "chip/stm32/system.c",
         "patchSetId": 17
