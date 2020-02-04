@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f104ddb5_db126317",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T20:05:48Z",
+      "side": 1,
+      "message": "We should defer CPRINTS until a session is complete. We want dev images to imitate a normal image as closely as possible.",
+      "parentUuid": "ab9dbbcc_16c3ad0e",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "2978086ac68c4396781bc35fe28b976cd825fabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "982ddfe8_26c72ca7",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 14
