@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b6de8e2_1e1a6995",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T23:06:44Z",
+      "side": 1,
+      "message": "given temp is between CONFIG_ACCEL_CAL_MAX_TEMP and CONFIG_ACCEL_CAL_MIN_TEMP, this will always return 0. Don\u0027t you want to multiply with ARRAY_SIZE(cal-\u003ealgos)?",
+      "revId": "3639d652d05884b4741ce23c5965667876a7839d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab9d7fd_71039ac9",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-04T23:06:44Z",
+      "side": 1,
+      "message": "Is kasa compute  dependant on newton_fit_accumulate?\nDoes it make sense for kasa_accumulate to return true when enough samples are accumulated?",
+      "revId": "3639d652d05884b4741ce23c5965667876a7839d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
