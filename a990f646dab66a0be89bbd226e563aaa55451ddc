@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7647d177_7d86d4bf",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "We won\u0027t use NO_BOOT_RECOVERY.",
+      "parentUuid": "ec9b9035_39db6b0c",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be49afc6_ee750e19",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "why is timeout special? is a timeout an invalid response somehow?",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587047fb_fd988983",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Because it indicates communication was broken.",
+      "parentUuid": "be49afc6_ee750e19",
       "range": {
         "startLine": 45,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b693a66b_6a400370",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "If cr50 needs to send a command in the future, we can use this line bi-directionaly. EC pin has to be input.",
+      "parentUuid": "afd0152d_59f63e52",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30021c13_da444055",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "how do we know that some high priority task isn\u0027t writing to the UART buffer. We should have some locking mechisim here (that drops UART console prints when we are in packet mode)",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 26
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a8fd42_19656def",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Please note this is only for EFS2. No other tasks are running. When we need to use the communication channel for something else in the future, we\u0027ll need to deal with all other issues including concurrent access control.",
+      "parentUuid": "30021c13_da444055",
       "range": {
         "startLine": 69,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d43d9d6c_c9bd0e4a",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "The prototype is int uart_getc(void).",
+      "parentUuid": "c2ccd993_69cbd3b5",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea6559dd_15015d03",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -128,6 +248,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "what is going on here? This definitely need more comments\n\nres is only 16-bits but you are shift 7*8 \u003d 56 bits??\n\n---\n\nWe need to update the design to return a structure response with crc and ability to expand response in future if needed",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c44e3b_ba52f08f",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "It takes only 0 and 1 because sizeof(enum cr50_comm_err) \u003d\u003d 2.",
+      "parentUuid": "ea6559dd_15015d03",
       "range": {
         "startLine": 85,
         "startChar": 3,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "d7d645b4_2f76f5e5",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "I think this is better on the stack. Can you elaborate your thought?",
+      "parentUuid": "e5bb1c10_59970f71",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e486b382_b4bcfb19",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -197,6 +365,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "nit: it might make the code less clean, but do you think it is worth waiting the 5ms even if we are on the last retry?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af802361_d4003948",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "I think it\u0027s ok not to worry about it. It\u0027s a corner case. Mostly communication ends in one ore two iterations.",
+      "parentUuid": "e486b382_b4bcfb19",
       "range": {
         "startLine": 132,
         "startChar": 2,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "077b106d_88e2a0d0",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "It\u0027s in verify_and_jump.",
+      "parentUuid": "e7462b94_f88b1c44",
+      "range": {
+        "startLine": 148,
+        "startChar": 20,
+        "endLine": 148,
+        "endChar": 53
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "976b9974_3d3562cd",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "675a9773_c4ffb6cd",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "If power is sufficient, a user won\u0027t see anything. If the battery is low or a PD adapter\u0027s power isn\u0027t high enough, this is a chance we let the user know.",
+      "parentUuid": "976b9974_3d3562cd",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 15
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e516bfbe_7234bff2",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -266,6 +506,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "we should single source this with the pd_comm_enabled logic. We are assuming that the pd_comm_endabled method use this signal to enable PD\n\n--\n\nalso, I think we should still do the RW jump even if HW WP is deasserted (i.e. when battery is removed). We should still be testing the main jump flow when the battery is removed.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 2
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72fc61ed_371aed76",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Battery presence is tied to WP in the current design but it\u0027s not tied necessarily. So, please read the if condition as is. It\u0027s literally about WP GPIO signal.",
+      "parentUuid": "e516bfbe_7234bff2",
       "range": {
         "startLine": 231,
         "startChar": 1,
@@ -324,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "45c99dc3_ef0c5630",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c7da06_97c634a6",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 16
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e01de6c_7327e3bb",
         "filename": "common/vboot_hash.c",
         "patchSetId": 9
@@ -370,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "e9e938e4_2b66b805",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Since vboot_hash_init is always called (by HOOK_INIT) for deferred hashing, I don\u0027t think we need an API which can do deferred hashing (as well as blocking computation).\n\nHowever, some optimization can be done. Filed https://crbug.com/1047870.",
+      "parentUuid": "10e6aefe_c394d2eb",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "514412bd_642f11ca",
         "filename": "common/vboot_hash.c",
         "patchSetId": 9
@@ -393,6 +705,30 @@
     },
     {
       "key": {
+        "uuid": "ee519cb8_7388b365",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "514412bd_642f11ca",
+      "range": {
+        "startLine": 185,
+        "startChar": 19,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07b44c08_df339372",
         "filename": "include/vboot.h",
         "patchSetId": 9
@@ -413,6 +749,30 @@
       "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ffd9d5f_a396df0e",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07b44c08_df339372",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -462,6 +822,30 @@
     },
     {
       "key": {
+        "uuid": "2aafa0ea_ceee99ce",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Not sure what you mean. This will stay even if we add more commands.",
+      "parentUuid": "f095a9a5_e3df8e0b",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12689369_53ec4b49",
         "filename": "include/vboot.h",
         "patchSetId": 9
@@ -482,6 +866,30 @@
       "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efaa148e_4953ecb8",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12689369_53ec4b49",
+      "range": {
+        "startLine": 159,
+        "startChar": 17,
+        "endLine": 159,
+        "endChar": 20
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

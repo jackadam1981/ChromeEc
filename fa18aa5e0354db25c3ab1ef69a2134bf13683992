@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "80e77030_5df42802",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "CONFIG_RW_SIZE is for the entire RW region. system_get_image_used returns only the size of the RW region used. The rest is just FF .... So, it\u0027s not signed.",
+      "parentUuid": "9db9aad6_5436698a",
+      "range": {
+        "startLine": 245,
+        "startChar": 25,
+        "endLine": 245,
+        "endChar": 50
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1874ef9_67fb38f6",
         "filename": "common/vboot_hash.c",
         "patchSetId": 8
@@ -517,6 +541,30 @@
       "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8a8cd6_bfcc39f7",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4323,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e844cfd3_0a85de29",
+      "range": {
+        "startLine": 4321,
+        "startChar": 0,
+        "endLine": 4323,
+        "endChar": 24
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -942,6 +990,30 @@
     },
     {
       "key": {
+        "uuid": "6930b04d_83da5933",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "Added struct_version. It\u0027s not strictly required because we can distinguish structs by \u0027magic\u0027 as well.",
+      "parentUuid": "6d4922e3_28981676",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 62
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cff0ebf_acc76c3e",
         "filename": "include/vboot.h",
         "patchSetId": 8
@@ -1048,6 +1120,30 @@
       "side": 1,
       "message": "How are we going to transition from this \"raw\" mode to packet mode in the future? Can we just send back a packet now?\n\nI know this is more of a design point that we should determine, but both request and response should be packets with structure (even if it is a very simple structure)",
       "parentUuid": "f5615054_40ff981b",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4d7eb4_6ad1130e",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T17:10:39Z",
+      "side": 1,
+      "message": "If current EC receives a packet (as a response), the magic (0x4345) will be seen as invalid error code.\n\nIf future EC receives a raw error code, the error code will be seen as an invalid magic.\n\nIt\u0027s ok not to support features we don\u0027t use as long as there is a way to extend the protocol.",
+      "parentUuid": "cbb15e04_819aa462",
       "range": {
         "startLine": 124,
         "startChar": 5,
