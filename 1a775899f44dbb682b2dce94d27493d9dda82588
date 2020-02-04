@@ -34,6 +34,24 @@
       "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f19eed8f_0babf772",
+        "filename": "common/mock/usb_mux_mock.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-04T23:00:42Z",
+      "side": 1,
+      "message": "No worries! I appreciate the analysis.\nI too, really like the header files along side the source files, similar to unit tests.\n\nThe only reason I broken them up to begin with is because it seemed to be more inline with other files for common. This is strengthen by that fact that these header files are indeed an interface for other sources in /test.",
+      "parentUuid": "10f73c1e_821dee29",
+      "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
