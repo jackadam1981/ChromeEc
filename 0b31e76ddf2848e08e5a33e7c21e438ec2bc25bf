@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bd38409_6bb25c4a",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-02-04T23:54:58Z",
+      "side": 1,
+      "message": "It\u0027s a bit messy to have to store this in a static.\nI presume the reason for storing this rather than just getting the board version each\ntime is to minimise the time in the ISR.\nI also presume this is only relevant for running on the proto, and all post-proto versions will not need to check the board info.\nSo can you perhaps call load_board_info() proto_load_board_info() instead to make it clear it is only relevant for proto boards?\nAlso, perhaps call board_is_c10_gate_enabled() something like board_is_proto(), and maybe put a TODO in to clean this up once EVT is delivered and we have washed out the proto boards.\nIt\u0027s good to clean up cruft leftover from the proto board once it is no longer needed.",
+      "range": {
+        "startLine": 563,
+        "startChar": 8,
+        "endLine": 563,
+        "endChar": 21
+      },
+      "revId": "0b31e76ddf2848e08e5a33e7c21e438ec2bc25bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
