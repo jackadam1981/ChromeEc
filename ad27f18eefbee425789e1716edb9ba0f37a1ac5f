@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38f64ca6_4de5522d",
+        "filename": "chip/npcx/adc_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-04T20:57:59Z",
+      "side": 1,
+      "message": "Is this correct?  Because we definitely appear to be using 2700 for dedede, and I\u0027d thought we could go up to 2.8V?",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 78
+      },
+      "revId": "ad27f18eefbee425789e1716edb9ba0f37a1ac5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f165375b_b309bba2",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-04T20:57:59Z",
+      "side": 1,
+      "message": "Is it worth noting that these are intended to be 1-indexed?  (as opposed to the CHNDAT right below, which is 0-indexed)?",
+      "range": {
+        "startLine": 1317,
+        "startChar": 63,
+        "endLine": 1317,
+        "endChar": 80
+      },
+      "revId": "ad27f18eefbee425789e1716edb9ba0f37a1ac5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
