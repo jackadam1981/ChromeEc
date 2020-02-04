@@ -70,6 +70,30 @@
       "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8c6ced0_b7200464",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T02:39:08Z",
+      "side": 1,
+      "message": "Per offline discussion, we decide to allow ccd_ext to be detected during ec-cr50 communication.\nIf ec-cr50 communication doesn\u0027t stop for any bad reasons, then we need a way to rescue or to diagnose cr50.",
+      "parentUuid": "7ea8e71d_3acd1f19",
+      "range": {
+        "startLine": 367,
+        "startChar": 53,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "2dc5212cad230e0fcadbc95258cb0a12650fe498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
