@@ -5269,7 +5269,12 @@ struct ec_response_usb_pd_control_v2 {
 	char state[32];
 	uint8_t cc_state;	/* enum pd_cc_states representing cc state */
 	uint8_t dp_mode;	/* Current DP pin mode (MODE_DP_PIN_[A-E]) */
-	uint8_t reserved;	/* Reserved for future use */
+	/*
+	 * This returns the last Type-C Sub Systems (TCSS) state written by
+	 * the host. Refer: struct ec_params_usb_pd_set_tcss_state and
+	 * EC_CMD_USB_PD_SET_TCSS_STATE.
+	 */
+	uint8_t tcss_state;
 	uint8_t control_flags;	/* USB_PD_CTRL_*flags */
 	uint8_t cable_speed;	/* TBT_SS_* cable speed */
 	uint8_t cable_gen;	/* TBT_GEN3_* cable rounded support */
@@ -5336,6 +5341,29 @@ struct ec_response_usb_pd_power_info {
 #define EC_CMD_CHARGE_PORT_COUNT 0x0105
 struct ec_response_charge_port_count {
 	uint8_t port_count;
+} __ec_align1;
+
+/*
+ * This command synchronizes the Coreboot and Kernel TCSS (Type-C Sub Systems)
+ * states by saving the Coreboot's early boot TCSS state of USB-C ports. When
+ * the Kernel boots, it determines the next TCSS state based on the Coreboot's
+ * early boot state available in EC.
+ */
+#define EC_CMD_USB_PD_SET_TCSS_STATE 0x0106
+struct ec_params_usb_pd_set_tcss_state {
+	uint8_t port;
+	/*
+	 * Set early boot state of Type-C Sub Systems (TCSS)
+	 * Possible TCSS states: Disconnect, USB, Alternate, HPD, Safe
+	 * Note: These states are Intel Virtual MUX states (but not limited) and
+	 * are used in the Coreboot and Kernel to set the Virtual MUX of PMC
+	 * (Power Management Controller).
+	 * Coreboot sets this state based on the early boot TCSS state of USB-C
+	 * port. EC will never modify or use the contents of tcss_state and EC
+	 * must always return unmodified tcss_state back to the host as part of
+	 * EC_CMD_USB_PD_CONTROL command.
+	 */
+	uint8_t tcss_state;
 } __ec_align1;
 
 /* Write USB-PD device FW */
