@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f328c263_45c5dc01",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-04T19:43:02Z",
+      "side": 1,
+      "message": "Can you add comment:\n\n/* On Fizz, CHIPSET_RESUME isn\u0027t triggered when AP warm resets. \n * So we hook CHIPSET_RESET instead. */",
+      "range": {
+        "startLine": 613,
+        "startChar": 13,
+        "endLine": 613,
+        "endChar": 31
+      },
+      "revId": "0061137ee1635f5e4f493d5746fa933a6b4d3bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
