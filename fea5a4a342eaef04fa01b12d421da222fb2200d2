@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a78561cf_5a6c7272",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "s/prefix/preamble/g",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e685fa3_10463383",
         "filename": "board/cr50/ec_comm.c",
         "patchSetId": 21
@@ -22,6 +45,30 @@
       "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f3dcc14_8597884b",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "Yes. That\u0027s agreed with EC side. Didn\u0027t want EC/H1 to spend time in byte arranging.\nAdded comments here and in ec_comm_process_packet().",
+      "parentUuid": "4e685fa3_10463383",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3ffc76c9_e236b9e5",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "In the early discussion on the design document, it was addressed that some intentional console output \u00270xec\u0027 could be missed. I decided to print it as default because garbage shouldn\u0027t be harmful.\nReturning 1 is ok to me, but not sure whether we want to send dropped 0xEC bytes to USB. It might change the line 148 149 like this:\n\nif (ch !\u003d CR50_COMM_PREAMBLE) {\n    while (ec_comm_ctx.prefix_count--) {\n        if (count !\u003d q_room) {\n          // Put CR50_COMM_PREAMBLE into uart_in-\u003ebuffer[]\n        }\n    }\n\n    return 0;\n}",
+      "parentUuid": "2cbe2f42_d6f58ec2",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 12
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c112bd9_392e4f03",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 21
@@ -68,6 +139,30 @@
       "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b2a955_3e0e8a01",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c112bd9_392e4f03",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "1a5a4074_a8ae6962",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5e971b_948836d4",
+      "range": {
+        "startLine": 170,
+        "startChar": 19,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27f3916e_b126606f",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 21
@@ -114,6 +233,30 @@
       "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b6393e_84c29967",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f3916e_b126606f",
+      "range": {
+        "startLine": 172,
+        "startChar": 48,
+        "endLine": 172,
+        "endChar": 57
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "08552957_a4d97b56",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "Instead of defining ec_comm_process_packet for non CR50 cases, I am reducing \"#ifdef BOARD_CR50\" statement in this file.\n\nI think this patch (two while-loops) is more readable and less burden than the one-loop version.",
+      "parentUuid": "28afa441_ce6b6706",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7b17731_677d1159",
         "filename": "chip/g/usart.c",
         "patchSetId": 21
@@ -163,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "1ec9df15_cec98389",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t change.\nsend_data_to_usb() runs in interrupt handler.",
+      "parentUuid": "c7b17731_677d1159",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 35
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a5dc09_b62f21c9",
         "filename": "chip/g/usart.c",
         "patchSetId": 21
@@ -183,6 +374,30 @@
       "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20dbeff_c2ffa21f",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-04T19:36:05Z",
+      "side": 1,
+      "message": "I think this could be in this way:\n\n#ifdef BOARD_CR50\n  const int in_packet_mode \u003d ec_comm_is_uart_in_packet_mode(uart);\n#endif\n\n  ...\n\n#ifdef BOARD_CR50\n  while (uartn_rx_available(uart)) {\n    uint8_t ch;\n\n    if (!in_packet_mode)\n        if (count \u003d\u003d q_room)\n            break;\n\n    ch \u003d uartn_read_char(uart);\n\n    if (in_packet_mode)\n        if (ec_comm_process_packet(ch) || (count \u003d\u003d q_room))\n          continue;\n\n    uart_in-\u003ebuffer[tail \u0026 mask] \u003d ch;\n#else\n  while ((count !\u003d q_room) \u0026\u0026 uartn_rx_available(uart)) {\n    uart_in-\u003ebuffer[tail \u0026 mask] \u003d uartn_read_char(uart);\n#endif\n    tail++;\n    count++;\n  }\n\n\nThis version has more if-condition inside the loop. I like to keep the patch#21.",
+      "parentUuid": "47a5dc09_b62f21c9",
+      "range": {
+        "startLine": 188,
+        "startChar": 37,
+        "endLine": 189,
+        "endChar": 26
+      },
+      "revId": "fea5a4a342eaef04fa01b12d421da222fb2200d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
