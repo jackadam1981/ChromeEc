@@ -33,6 +33,7 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_PWM
 
 /* GPIO mapping from board specific name to EC common name. */
 #define CONFIG_BATTERY_PRESENT_GPIO	GPIO_EC_BATT_PRES_ODL
@@ -65,6 +66,14 @@ enum battery_type {
 	BATTERY_SUNWODA,
 	BATTERY_LGC,
 	BATTERY_TYPE_COUNT,
+};
+
+
+enum pwm_channel {
+	PWM_CH_KBLIGHT = 0,
+	PWM_CH_FAN,
+	PWM_CH_LOGO_LED,
+	PWM_CH_COUNT
 };
 
 #endif /* !__ASSEMBLER__ */
