@@ -26,6 +26,13 @@ struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #endif /* CONFIG_COMMON_RUNTIME */
 
 #ifdef HAS_TASK_HOSTCMD
+/*
+ * Store early boot USB-PD Type-C Sub Systems (TCSS) state
+ * EC acts as facilitator to synchronize Coreboot and Kernel TCSS states.
+ * Hence, EC should never modify or use this data.
+ * Refer struct ec_params_usb_pd_tcss_state for more information.
+ */
+static uint8_t tcss_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 {
@@ -368,6 +375,27 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 		     hc_usb_pd_control,
 		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
+
+static enum ec_status hc_usb_pd_tcss_state(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_tcss_state *p = args->params;
+	struct ec_response_usb_pd_tcss_state *r = args->response;
+
+	/* Set the TCSS state */
+	if (p->set)
+		tcss_state[p->port] = p->tcss_state;
+
+	/* Retune the TCSS state */
+	r->tcss_state = tcss_state[p->port];
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_TCSS_STATE,
+		     hc_usb_pd_tcss_state,
+		     EC_VER_MASK(0));
+
 #endif /* CONFIG_COMMON_RUNTIME */
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)

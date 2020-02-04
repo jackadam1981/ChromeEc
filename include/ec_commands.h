@@ -5338,6 +5338,30 @@ struct ec_response_charge_port_count {
 	uint8_t port_count;
 } __ec_align1;
 
+/*
+ * This command synchronizes the Coreboot and Kernel TCSS (Type-C Sub Systems)
+ * states. Coreboot sets this state based on the early boot TCSS state of USB-C
+ * port. Kernel gets this state at initialization and determines the next TCSS
+ * state. EC will never modify or use the contents of tcss_state and EC must
+ * always return unmodified tcss_state back to the host whenever requested.
+ *
+ * Note:
+ * Possible TCSS states: Disconnect, USB, Alternate, HPD, Safe
+ * These states are Intel Virtual MUX states (but not limited) and are used in
+ * the Coreboot and Kernel to set the Virtual MUX of PMC (Power Management
+ * Controller).
+ */
+#define EC_CMD_USB_PD_TCSS_STATE 0x0106
+struct ec_params_usb_pd_tcss_state {
+	uint8_t port;
+	uint8_t set; /* Non zero - Set, Zero - Get */
+	uint8_t tcss_state;
+} __ec_align1;
+
+struct ec_response_usb_pd_tcss_state {
+	uint8_t tcss_state;
+} __ec_align1;
+
 /* Write USB-PD device FW */
 #define EC_CMD_USB_PD_FW_UPDATE 0x0110
 
