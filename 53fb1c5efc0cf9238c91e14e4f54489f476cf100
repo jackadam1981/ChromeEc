@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4292259f_be21ccc6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-04T20:37:50Z",
+      "side": 1,
+      "message": "this should return a const struct pd_cable*\n\nsame for above pd_policy struct",
+      "range": {
+        "startLine": 1789,
+        "startChar": 0,
+        "endLine": 1789,
+        "endChar": 15
+      },
+      "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
