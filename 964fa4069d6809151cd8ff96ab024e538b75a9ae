@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d5e4032_bd78e964",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1316197
+      },
+      "writtenOn": "2020-02-05T00:59:41Z",
+      "side": 1,
+      "message": "If match is None (which I\u0027ve seen happen), the script will abort with an error:\n\n  AttributeError: \u0027NoneType\u0027 object has no attribute \u0027string\u0027",
+      "revId": "964fa4069d6809151cd8ff96ab024e538b75a9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
