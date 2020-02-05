@@ -84,7 +84,10 @@
 #define TC_FLAGS_POWER_STATE_CHANGE     BIT(23)
 /* Flag to note the TCPM supports auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(24)
-
+/* Flag to trigger a power role check in attached SRC and SNK */
+#define TC_FLAGS_CHECK_PR_ROLE          BIT(25)
+/* Flag to trigger a data role check in attached SRC and SNK */
+#define TC_FLAGS_CHECK_DR_ROLE          BIT(26)
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
  * TC_FLAGS_LPM_REQUESTED, and TC_FLAGS_LPM_ENGAGED if
@@ -779,6 +782,47 @@ static __maybe_unused void bc12_role_change_handler(int port)
 }
 
 #ifdef CONFIG_USB_PE_SM
+static void tc_policy_check_roles(int port)
+{
+	/*
+	 * Check power role policy, which may trigger a swap
+	 */
+	if (TC_CHK_FLAG(port, TC_FLAGS_CHECK_PR_ROLE)) {
+		TC_CLR_FLAG(port, TC_FLAGS_CHECK_PR_ROLE);
+		/*
+		 * If partner is dual-role power and dualrole toggling
+		 * is on, consider if a power swap is necessary.
+		 */
+		if (TC_CHK_FLAG(port, TC_FLAGS_PARTNER_DR_POWER) &&
+			pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
+			 /*
+			  * If we are a sink and partner is not
+			  * unconstrained, then swap to become a source.
+			  * If we are source and partner is
+			  * unconstrained, swap to become a sink.
+			  */
+			int partner_unconstrained = TC_CHK_FLAG(port,
+					TC_FLAGS_PARTNER_UNCONSTRAINED);
+				if ((!partner_unconstrained &&
+					tc[port].power_role == PD_ROLE_SINK) ||
+					(partner_unconstrained &&
+					tc[port].power_role == PD_ROLE_SOURCE))
+					pd_request_power_swap(port);
+		}
+	}
+
+	/*
+	 * Check data role policy, which may trigger a swap
+	 */
+	if (TC_CHK_FLAG(port, TC_FLAGS_CHECK_DR_ROLE)) {
+		TC_CLR_FLAG(port, TC_FLAGS_CHECK_DR_ROLE);
+		/* If UFP, try to switch to DFP */
+		if (TC_CHK_FLAG(port, TC_FLAGS_PARTNER_DR_POWER) &&
+				tc[port].data_role == PD_ROLE_UFP)
+			pd_request_data_swap(port);
+	}
+}
+
 static void tc_perform_src_hard_reset(int port)
 {
 	switch (tc[port].ps_reset_state) {
@@ -1918,6 +1962,11 @@ static void tc_attached_snk_run(const int port)
 			/* CTVPD detected */
 			set_state_tc(port, TC_UNATTACHED_SRC);
 		}
+
+		/*
+		 * Check power/data role policy, which may trigger a swap
+		 */
+		tc_policy_check_roles(port);
 	}
 
 #else /* CONFIG_USB_PE_SM */
@@ -2671,6 +2720,11 @@ static void tc_attached_src_run(const int port)
 
 			set_state_tc(port, TC_CT_UNATTACHED_SNK);
 		}
+
+		/*
+		 * Check power/data role policy, which may trigger a swap
+		 */
+		tc_policy_check_roles(port);
 	}
 #endif
 }
@@ -3185,9 +3239,15 @@ static void pd_chipset_resume(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+			if (charge_manager_get_active_charge_port() != i)
+				TC_SET_FLAG(i, TC_FLAGS_CHECK_PR_ROLE |
+						TC_FLAGS_CHECK_DR_ROLE);
+		} else {
+			TC_SET_FLAG(i, TC_FLAGS_CHECK_PR_ROLE |
+					TC_FLAGS_CHECK_DR_ROLE);
+		}
 		pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-				PD_EVENT_POWER_STATE_CHANGE, 0);
 	}
 
 	CPRINTS("PD:S3->S0");
@@ -3198,11 +3258,8 @@ static void pd_chipset_suspend(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-			PD_EVENT_POWER_STATE_CHANGE, 0);
-	}
 
 	CPRINTS("PD:S0->S3");
 }
