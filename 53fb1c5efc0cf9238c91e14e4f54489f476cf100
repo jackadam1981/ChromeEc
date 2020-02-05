@@ -166,6 +166,30 @@
       "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33acc2f_8b086e2e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T21:16:04Z",
+      "side": 1,
+      "message": "never mind, looks like everything is already too depending on using this an non-const.\n\nCan you add to the comments have callers can mutate this object please",
+      "parentUuid": "7a42eb36_ce611ce3",
+      "range": {
+        "startLine": 1789,
+        "startChar": 0,
+        "endLine": 1789,
+        "endChar": 15
+      },
+      "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
