@@ -22,6 +22,30 @@
       "revId": "0b31e76ddf2848e08e5a33e7c21e438ec2bc25bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed2fe7c6_3eaec6f8",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-02-05T01:01:05Z",
+      "side": 1,
+      "message": "Loading CBI into statics is a pattern I borrowed from Fizz. It\u0027s pretty safe to assume it\u0027s immutable, and reading it out is very slow because it\u0027s on an external ROM (so especially for this application we do need to cache it). This may also be relevant for other board versions; for instance Fizz uses CBI to adjust some fan parameters.\n\nI think it\u0027s more appropriate to maintain support for proto hardware than eventually remove it. The burden is small especially when considering other features may care about what version of the board they\u0027re running on.\n\nFor reference I see somewhat split opinions on other boards; hatch, ampton and helios (as the first examples I found) have similar workarounds to this for particular board revisions and no apparent intention to remove them, whereas yorp specifically prints a warnings that rev0 boards are not supported and casta has a TODO to remove rev0 support.\n\nGiven there don\u0027t seem to be any critical problems with puff rev0, I think it\u0027s appropriate to maintain support for it.",
+      "parentUuid": "5bd38409_6bb25c4a",
+      "range": {
+        "startLine": 563,
+        "startChar": 8,
+        "endLine": 563,
+        "endChar": 21
+      },
+      "revId": "0b31e76ddf2848e08e5a33e7c21e438ec2bc25bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
