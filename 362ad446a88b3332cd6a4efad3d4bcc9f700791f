@@ -22,6 +22,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5cb1bb_48932400",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-05T23:31:45Z",
+      "side": 1,
+      "message": "I don\u0027t know. What happens if the EC can\u0027t communicate with cr50? Will the device be able to boot?",
+      "parentUuid": "245850be_3ed6cbfa",
+      "range": {
+        "startLine": 284,
+        "startChar": 36,
+        "endLine": 284,
+        "endChar": 58
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
