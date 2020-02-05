@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "d481e1ae_3db2c971",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:48:37Z",
+      "side": 1,
+      "message": "See latest patchset for comment",
+      "parentUuid": "f2cbe35f_5626cc79",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afd0152d_59f63e52",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -307,6 +331,30 @@
       "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1396517a_468a57dd",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:48:37Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "83bddcd0_8f1ec552",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 26
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -476,6 +524,30 @@
     },
     {
       "key": {
+        "uuid": "764bd638_3e41badc",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:48:37Z",
+      "side": 1,
+      "message": "console task protect lgtm",
+      "parentUuid": "aaca4378_f28eec6d",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b4fd75_4ce6c821",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -606,6 +678,30 @@
       "side": 1,
       "message": "Resolved offline. We\u0027ll use the stack. Host command buffers are used throughout the EC operation but vboot_main runs only once in the beginning, thus preserving the space in bss is wasteful.",
       "parentUuid": "652111b2_04161906",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7029d5_b2dd0dcf",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:48:37Z",
+      "side": 1,
+      "message": "Can you add that comment to the code, it is a helpful breadcrumb as to why",
+      "parentUuid": "fffce686_e568f25d",
       "range": {
         "startLine": 110,
         "startChar": 1,
