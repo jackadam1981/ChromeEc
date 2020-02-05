@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4297c5c7_bf7ecd8c",
+        "filename": "board/morphius/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-05T23:15:02Z",
+      "side": 1,
+      "message": "The other uses of this config have set to 94/95.  Is 91 too low or is it this value for a reason?",
+      "range": {
+        "startLine": 24,
+        "startChar": 39,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "057973db000a467f76c2cff36ebe76a519b1575b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
