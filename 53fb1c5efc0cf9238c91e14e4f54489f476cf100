@@ -46,6 +46,30 @@
       "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e950793_bf0ada7a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T16:30:42Z",
+      "side": 1,
+      "message": "internally we do, but external callers using this function shouldn\u0027t be updating the struct contents.\n\nWe would be returning a const pointer to something which means the compile should ensure that the callers won\u0027t modify the contents of what is being pointed to. Internal implementations can still mutate the underlying data though\n\n\n--- \n\nnothing in this CL is trying to mutate the struct contents from the pd_get_cable_attributes call",
+      "parentUuid": "78e09f58_242a833b",
+      "range": {
+        "startLine": 1789,
+        "startChar": 0,
+        "endLine": 1789,
+        "endChar": 15
+      },
+      "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
