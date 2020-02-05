@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dae0a18c_c0daed8a",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T20:19:07Z",
+      "side": 1,
+      "message": "We should add CONFIG_DPTF_FAIL_SAFE_OFFSET in a separate patch. It\u0027s a per-board choice. And I don\u0027t think without hysteresis, this code has a chance of making audible noise (by the rally between DPTF and EC).",
+      "parentUuid": "b4cc8f60_6156f0f9",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "cc06dfc5c8f73539bdf7b230d70d52e86e3a69c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5297e66e_1d4c2cb0",
         "filename": "common/thermal.c",
         "patchSetId": 8
@@ -59,6 +83,30 @@
       "writtenOn": "2020-02-04T17:15:03Z",
       "side": 1,
       "message": "It seems this will be always called, irrespective of “get_dptf_alive_Status( )” function return.",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "cc06dfc5c8f73539bdf7b230d70d52e86e3a69c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91624f7c_ca7e82b0",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T20:19:07Z",
+      "side": 1,
+      "message": "{} doesn\u0027t change the compiler output. So, set_thermal_control_enabled will be called only if get_dptf_alive_status returns false. PS8 is just for checking whether your test passes or not.",
+      "parentUuid": "7f8c4a32_c4ca4183",
       "range": {
         "startLine": 211,
         "startChar": 3,
