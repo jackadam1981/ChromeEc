@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2935929a_fc03ea91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-02-05T23:17:01Z",
+      "side": 1,
+      "message": "It should now, though I haven\u0027t tested that myself.",
+      "parentUuid": "5b031b06_a1c44c72",
+      "revId": "b7b61338b0d5b68548afeaddc49c6cc3a650cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9dd95e1_d49b0648",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b7b61338b0d5b68548afeaddc49c6cc3a650cd95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa568cb_48714a4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-02-05T23:17:01Z",
+      "side": 1,
+      "message": "Added for the two relevant changes.",
+      "parentUuid": "f9dd95e1_d49b0648",
+      "revId": "b7b61338b0d5b68548afeaddc49c6cc3a650cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
