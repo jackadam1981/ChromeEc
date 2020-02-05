@@ -34,6 +34,24 @@
       "revId": "de4b4cf3c22417fdcb6bd644dd83bc85d35e4a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f0b58f_d294993b",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-05T22:50:49Z",
+      "side": 1,
+      "message": "True, it is only one extra I2C read.",
+      "parentUuid": "bc98c5f3_5c7bed5a",
+      "revId": "de4b4cf3c22417fdcb6bd644dd83bc85d35e4a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
