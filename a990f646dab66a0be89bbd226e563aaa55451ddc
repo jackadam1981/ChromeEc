@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "f2cbe35f_5626cc79",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Clarified by adding comments.",
+      "parentUuid": "0bf4f9ef_cb4cf804",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afd0152d_59f63e52",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "interrupts are still enabled and could cause issues. We should put in the protection now since the code path can exist in code today",
       "parentUuid": "d4a8fd42_19656def",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 26
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83bddcd0_8f1ec552",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Added interrupt_disable. This is enough for EFS2 because it requires only the frame to be transferred in atomic.\n\nIt\u0027s nice to have a concurrent access control. Filed https://crbug.com/1048909.",
+      "parentUuid": "d31a3c63_68f7d226",
       "range": {
         "startLine": 69,
         "startChar": 1,
@@ -404,6 +452,30 @@
     },
     {
       "key": {
+        "uuid": "aaca4378_f28eec6d",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Added protection against console task who may steal response data.",
+      "parentUuid": "a5ebafbc_7c922d3f",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29b4fd75_4ce6c821",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -415,6 +487,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "this is probably not relevant since the above code will change, but it is possible to have a valid code other that timeout here but you just happen to have also breached the timeout. Might be work seeing if return is valid first",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05969fde_ab2cb292",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "29b4fd75_4ce6c821",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -486,6 +582,30 @@
       "side": 1,
       "message": "This is quite a large buffer to place on the stack and could easily  account for more than a 4th of a task\u0027s stack (when or if this was done in a task context).\n\nWe don\u0027t put host command buffers on the stack either.\n\nMaking this static within this function gives us less stack pressure and also keeps the variable scoped to this function (which we want)\n\nWe should add a comment note of why we are making this static as well",
       "parentUuid": "d7d645b4_2f76f5e5",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fffce686_e568f25d",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Resolved offline. We\u0027ll use the stack. Host command buffers are used throughout the EC operation but vboot_main runs only once in the beginning, thus preserving the space in bss is wasteful.",
+      "parentUuid": "652111b2_04161906",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -687,6 +807,30 @@
     },
     {
       "key": {
+        "uuid": "40c1b3d2_0fbd33b9",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "It\u0027s a callback. It allows each board to implement custom notification (e.g. beep, LED). Added declaration in vboot.h.",
+      "parentUuid": "9360d16f_02a17706",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 15
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e516bfbe_7234bff2",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -746,6 +890,30 @@
       "side": 1,
       "message": "\"If hardware WP is disabled, PD communication is enabled. We can return and wait for more power.\"\n\nThe comment is specifically talking about using the write protect signal to know that we can have PD communication",
       "parentUuid": "72fc61ed_371aed76",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 2
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef674f6_371299a0",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Rephrased the comment to remove confusion.",
+      "parentUuid": "7cc00864_b7d590e4",
       "range": {
         "startLine": 231,
         "startChar": 1,
@@ -1074,6 +1242,30 @@
       "side": 1,
       "message": "I was looking at the implementation for is_valid_cr50_response (which is now out of date)\n\nI though you were putting an entry at the end to mark the end (like a COUNT value)",
       "parentUuid": "2aafa0ea_ceee99ce",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237aaa19_31328fd8",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "No, it\u0027s not a COUNT entry.",
+      "parentUuid": "4a1e47fd_cd1d5ecb",
       "range": {
         "startLine": 135,
         "startChar": 1,

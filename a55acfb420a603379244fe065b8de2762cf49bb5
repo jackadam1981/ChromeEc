@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c129eeb2_58e6e87a",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "Removed. I think we don\u0027t need to handle abort for blocking calls. There is little chance abort is issued during blocking computation and little chance it matters whether it\u0027s aborted or not.",
+      "parentUuid": "fc7eef0a_29801e63",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "a55acfb420a603379244fe065b8de2762cf49bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ca9cefa_8ad55490",
         "filename": "include/vboot.h",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-04T20:35:38Z",
       "side": 1,
       "message": "This is only 8-bits (which is enough) so this comment doesn\u0027t make sense",
+      "range": {
+        "startLine": 111,
+        "startChar": 51,
+        "endLine": 111,
+        "endChar": 70
+      },
+      "revId": "a55acfb420a603379244fe065b8de2762cf49bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66f3f4cb_d964140e",
+        "filename": "include/vboot.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T19:35:20Z",
+      "side": 1,
+      "message": "upper 4 bits are major and lower 4 bits are minor.",
+      "parentUuid": "5ca9cefa_8ad55490",
       "range": {
         "startLine": 111,
         "startChar": 51,
