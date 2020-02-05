@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3c2b7b5d_61cbd028",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1316197
+      },
+      "writtenOn": "2020-02-05T01:08:47Z",
+      "side": 1,
+      "message": "I\u0027ve seen others misinterpret this message, so it could tweaking.  It currently seems to imply that you \"need [a] servo_v4 [that is] running servo_v4_with_ccd_cr50\"\n\nCurrent:\n\n  need .*servo_.[^4] running servo_v4_with_ccd_cr50\n\nTweaked:\n\n  need .*servo_.[^4], found servo_v4_with_ccd_cr50",
+      "revId": "964fa4069d6809151cd8ff96ab024e538b75a9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d5e4032_bd78e964",
         "filename": "util/flash_cr50.py",
         "patchSetId": 10
