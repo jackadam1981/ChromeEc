@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bac50b_519997a3",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-02-05T03:43:50Z",
+      "side": 1,
+      "message": "Overall LGTM, just one question:\nisn\u0027t this already in baseboard.h?\n(https://chromium.googlesource.com/chromiumos/platform/ec/+/master/baseboard/kukui/baseboard.h#192)",
+      "revId": "dbd3b45dfd4bbc5967924e62c8a7cfac3b477ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
