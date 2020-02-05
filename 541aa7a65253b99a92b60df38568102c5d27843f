@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "291822bd_b3f7f4ab",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08e3a041_a6935c40",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c9ecde3_dd9cfee4",
         "filename": "common/newton_fit.c",
         "patchSetId": 25
@@ -33,6 +51,24 @@
       "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a074a2_f37318a3",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9ecde3_dd9cfee4",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a6f316ee_a5d30f4e",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Not always, for example:\n\n- The queue is set to 4, meaning we\u0027ll be tracking up to 4 orientations. And min_orientation_samples is set to 15.\n- Several samples come in to fill the queue, lets say we now have [15, 15, 15, 13] samples per orientation.\n- A new sample comes in which is close to the one in index [3], it\u0027ll be caught in the check loop in newton_fit_accumulate and merged with the nearby orientation ticking the nsamples to 14.\n- We now call is_ready_to_compute with prune\u003dfalse\n\nThe logic here is that even though the queue is full, we might not have enough samples per orientation yet to compute the sphere. The device is currently still and oriented in such a way that the most recent orientation will continue to get samples. There\u0027s no need to evict an orientation since new samples are likely to continue to be merged into the current bin (or the device will start moving).\n\nThe only time we want to prune is if the queue is full AND we need room for a new orientation.",
+      "parentUuid": "a1b930a0_13505d01",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a96c6f_833550a1",
         "filename": "common/newton_fit.c",
         "patchSetId": 25
@@ -67,6 +121,24 @@
       "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc4208a3_1aa60104",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a96c6f_833550a1",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b69125e2_9c894ef2",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7cf636_728db058",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61d15b64_c4b6c5a4",
         "filename": "common/newton_fit.c",
         "patchSetId": 25
@@ -101,6 +191,24 @@
       "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69deeb03_eab1f5f8",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d15b64_c4b6c5a4",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "11bba411_aa9466d7",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "104b6ee5_4b4f4a88",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ccb7e0_347c6189",
         "filename": "common/newton_fit.c",
         "patchSetId": 25
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "34a5ff64_c5cebd7c",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ccb7e0_347c6189",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ff439c2_4e7f6afa",
         "filename": "common/newton_fit.c",
         "patchSetId": 25
@@ -152,6 +296,24 @@
       "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd691bb3_0b185a0b",
+        "filename": "common/newton_fit.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-05T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ff439c2_4e7f6afa",
+      "revId": "541aa7a65253b99a92b60df38568102c5d27843f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
