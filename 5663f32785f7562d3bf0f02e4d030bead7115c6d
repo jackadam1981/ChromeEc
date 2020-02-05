@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a2d371_0ba008cd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2328,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T17:46:11Z",
+      "side": 1,
+      "message": "we can make this a else if !comm_src_snk case and print out unhandled (like we did for the other state. See line 1604",
+      "range": {
+        "startLine": 2324,
+        "startChar": 5,
+        "endLine": 2328,
+        "endChar": 7
+      },
+      "revId": "5663f32785f7562d3bf0f02e4d030bead7115c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cead1af3_f1499010",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 3206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T17:46:11Z",
+      "side": 1,
+      "message": "this change doesn\u0027t look like it belongs in this CL. should it be in another CL?",
+      "range": {
+        "startLine": 3206,
+        "startChar": 4,
+        "endLine": 3206,
+        "endChar": 32
+      },
+      "revId": "5663f32785f7562d3bf0f02e4d030bead7115c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
