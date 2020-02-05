@@ -74,7 +74,6 @@ GPIO(EN_USB_A_LOW_PWR_OD,      PIN(9, 4), GPIO_OUT_LOW)
 GPIO(EC_BATT_PRES_ODL,         PIN(E, 1), GPIO_INPUT)
 GPIO(LED_1_L,                  PIN(C, 4), GPIO_OUT_HIGH)        /* Yellow (hatch) */
 GPIO(LED_2_L,                  PIN(C, 3), GPIO_OUT_HIGH)        /* White (hatch) */
-GPIO(LED_3_L,                  PIN(C, 2), GPIO_OUT_HIGH)
 GPIO(LED_4_L,                  PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(EC_KB_BL_EN,              PIN(8, 6), GPIO_OUT_LOW)         /* Keyboard backlight */
 GPIO(EDP_BKLTEN_OD,            PIN(D, 3), GPIO_ODR_HIGH)        /* Display backlight */
@@ -122,7 +121,9 @@ ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)                            /* UA
 /* PWM */
 ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)                             /* PWM3 - Keyboard backlight */
 ALTERNATE(PIN_MASK(B, 0x80), 0, MODULE_PWM, 0)                             /* PWM5 - FAN */
+ALTERNATE(PIN_MASK(C, 0x01), 0, MODULE_PWM, 0)                             /* PWM6 - FAN2 */
 ALTERNATE(PIN_MASK(4, 0x01), 0, MODULE_PWM, 0)                             /* TA1 - Fan Tachometer */
+ALTERNATE(PIN_MASK(7, 0x08), 0, MODULE_PWM, 0)                             /* TA2 - Fan Tachometer */
 
 /* ADC */
 ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)                             /* ADC0-1 */
