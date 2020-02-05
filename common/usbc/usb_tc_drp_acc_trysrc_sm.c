@@ -84,7 +84,10 @@
 #define TC_FLAGS_POWER_STATE_CHANGE     BIT(23)
 /* Flag to note the TCPM supports auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(24)
-
+/* Flag to trigger a power role check in attached SRC and SNK */
+#define TC_FLAGS_CHECK_PR_ROLE          BIT(25)
+/* Flag to trigger a data role check in attached SRC and SNK */
+#define TC_FLAGS_CHECK_DR_ROLE          BIT(26)
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
  * TC_FLAGS_LPM_REQUESTED, and TC_FLAGS_LPM_ENGAGED if
@@ -3185,9 +3188,15 @@ static void pd_chipset_resume(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+			if (charge_manager_get_active_charge_port() != i)
+				TC_SET_FLAG(i, TC_FLAGS_CHECK_PR_ROLE |
+						TC_FLAGS_CHECK_DR_ROLE);
+		} else {
+			TC_SET_FLAG(i, TC_FLAGS_CHECK_PR_ROLE |
+					TC_FLAGS_CHECK_DR_ROLE);
+		}
 		pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-				PD_EVENT_POWER_STATE_CHANGE, 0);
 	}
 
 	CPRINTS("PD:S3->S0");
@@ -3198,11 +3207,8 @@ static void pd_chipset_suspend(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-			PD_EVENT_POWER_STATE_CHANGE, 0);
-	}
 
 	CPRINTS("PD:S0->S3");
 }
