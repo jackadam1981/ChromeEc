@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8238e6f_ace4f93b",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "can we just check the upper result_code for 0xec? the chance of that being 0xec but having an invalid response if almost 0.\n\n---\nThe way the code is written now does not account for new error codes added (like CR50_COMM_ERR_STRUCT_VERSION), which is why I would like to change this logic",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a67d46d_115bb414",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "When using the response struct it will be more like\n\n       /* Wait for response from Cr50 */\n\tfor (i \u003d 0; i \u003c sizeof(res); i++) {\n                uint8_t *buffer \u003d (uint8_t*)\u0026res;\n\t\twhile (!timeout) {\n\t\t\tint c \u003d uart_getc();\n\t\t\t// If nothing is ready (-1), try polling again in 1ms\n\t\t\tif (c !\u003d -1) {\n\t\t\t\tbuffer[i] \u003d c;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tmsleep(1);\n\t\t\ttimeout \u003d timestamp_expired(until, NULL);\n\t\t}\n\t}\n\n\n\nThen we can access return code with\n\nres.return_code;",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51bb0f7f_86433445",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "I still have confusion about this callback. Can we omitt it for now and add it when we need it?",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 15
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8221e385_7d02fadc",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "I would still rather ask the PD layer with a pd_ call asking if PD communication is going to be allowed or not instead of encoding what we think the PD layer is going to do here",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 63
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88270658_c6e0746c",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "I also think we should do EFS2 even if the battery isn\u0027t present. Why would we want to skip EFS2 in the factory?",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 9
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9706d98_f9234544",
+        "filename": "include/vboot.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "let\u0027s rename this to have request in it",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b93c4ad_048e365e",
+        "filename": "include/vboot.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "Max request",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2cc128_c8572610",
+        "filename": "include/vboot.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "let\u0027s add the \nstruct cr50_response {\n  uint16_t return_code;\n};",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

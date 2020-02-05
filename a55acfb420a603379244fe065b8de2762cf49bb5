@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6b0cfc2c_dba99f1e",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "c129eeb2_58e6e87a",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "a55acfb420a603379244fe065b8de2762cf49bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ca9cefa_8ad55490",
         "filename": "include/vboot.h",
         "patchSetId": 10
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "upper 4 bits are major and lower 4 bits are minor.",
       "parentUuid": "5ca9cefa_8ad55490",
+      "range": {
+        "startLine": 111,
+        "startChar": 51,
+        "endLine": 111,
+        "endChar": 70
+      },
+      "revId": "a55acfb420a603379244fe065b8de2762cf49bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc69867_04bc807f",
+        "filename": "include/vboot.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:42:57Z",
+      "side": 1,
+      "message": "so the first value we are going to use is 0x10 \u003d 16?\n\nI would think that a sequential number from 1 to 255 would be all the version resolution we would need.",
+      "parentUuid": "66f3f4cb_d964140e",
       "range": {
         "startLine": 111,
         "startChar": 51,
