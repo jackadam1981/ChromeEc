@@ -94,6 +94,30 @@
       "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1071931_b2ae1433",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T18:47:45Z",
+      "side": 1,
+      "message": "Hmm, I would rather add first class set methods versus give the entire stucture to a caller for it to change",
+      "parentUuid": "6ab3691a_9ad758f0",
+      "range": {
+        "startLine": 1789,
+        "startChar": 0,
+        "endLine": 1789,
+        "endChar": 15
+      },
+      "revId": "53fb1c5efc0cf9238c91e14e4f54489f476cf100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
