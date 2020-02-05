@@ -27,6 +27,7 @@
 #include "timer.h"
 #include "task.h"
 #include "util.h"
+#include "online_calibration.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
@@ -1309,6 +1310,18 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		default:
 			return EC_RES_INVALID_PARAM;
 		}
+		break;
+	case MOTIONSENSE_CMD_CALIB_READ:
+		if (!IS_ENABLED(CONFIG_ONLINE_CALIB))
+			return EC_RES_INVALID_PARAM;
+
+		out->calib_read.number_data = online_calibration_read(
+			args->response_max - sizeof(out->calib_read),
+			out->calib_read.data);
+		args->response_size =
+			(out->calib_read.number_data *
+			 sizeof(struct ec_response_online_calibration)) +
+			sizeof(out->calib_read);
 		break;
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	case MOTIONSENSE_CMD_LIST_ACTIVITIES: {

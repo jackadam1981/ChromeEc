@@ -2434,6 +2434,11 @@ enum motionsense_command {
 	 */
 	MOTIONSENSE_CMD_SENSOR_SCALE = 18,
 
+	/*
+	 * Read all the current online calibration values.
+	 */
+	MOTIONSENSE_CMD_CALIB_READ = 19,
+
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
 };
@@ -2524,6 +2529,11 @@ struct ec_response_online_calibration_data {
 	/** Sensor number the data comes from. */
 	uint8_t sensor_num;
 };
+
+struct ec_response_online_calibration {
+	uint32_t number_data;
+	struct ec_response_online_calibration_data data[0];
+} __ec_todo_packed;
 
 /* Note: used in ec_response_get_next_data */
 struct ec_response_motion_sense_fifo_info {
@@ -2780,6 +2790,7 @@ struct ec_params_motion_sense {
 			 */
 			int16_t hys_degree;
 		} tablet_mode_threshold;
+
 	};
 } __ec_todo_packed;
 
@@ -2899,6 +2910,8 @@ struct ec_response_motion_sense {
 		struct ec_response_motion_sense_fifo_info fifo_info, fifo_flush;
 
 		struct ec_response_motion_sense_fifo_data fifo_read;
+
+		struct ec_response_online_calibration calib_read;
 
 		struct __ec_todo_packed {
 			uint16_t reserved;
