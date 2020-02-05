@@ -46,6 +46,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc94e8cc_49f1080e",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-05T23:55:19Z",
+      "side": 1,
+      "message": "No-response from CR50 upon ECRW hash verification will cause a system recovery mode. (dnojiri@, correct me if it is incorrect.)\n\nWe used to agree to implement \u0027ccdblock ECTX\u0027 for crbug.com/1047287, but in my second thought, the policy is not going to look consistent. It will be like \"\u0027ccdblock EC\u0027 won\u0027t stop EC-CR50 communication but \u0027ccdblock ECTX\u0027 will\u0027.\n\nIf ccdblock is for emergency and rarely be used in normal dev/test cases, then why don\u0027t we allow \u0027ccdblock EC\u0027 to stop EC-CR50 communication?",
+      "parentUuid": "7b5cb1bb_48932400",
+      "range": {
+        "startLine": 284,
+        "startChar": 36,
+        "endLine": 284,
+        "endChar": 58
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
