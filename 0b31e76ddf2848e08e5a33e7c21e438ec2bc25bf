@@ -46,6 +46,30 @@
       "revId": "0b31e76ddf2848e08e5a33e7c21e438ec2bc25bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf9ba21_475018cd",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-02-05T02:12:12Z",
+      "side": 1,
+      "message": "I agree that caching the CBI data seems reasonable (though at risk of getting it stale if you change the data using the EC command).\nI am less convinced that maintaining proto specific code is a good thing. At some point it becomes necessary to just say that a proto is no longer supported if there are h/w differences.\nI\u0027d be OK with renaming the functions to make it clear they are proto specific, and adding a TODO that once proto support is no longer required, that the workaround can be removed.",
+      "parentUuid": "ed2fe7c6_3eaec6f8",
+      "range": {
+        "startLine": 563,
+        "startChar": 8,
+        "endLine": 563,
+        "endChar": 21
+      },
+      "revId": "0b31e76ddf2848e08e5a33e7c21e438ec2bc25bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
