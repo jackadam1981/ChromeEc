@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9039bc51_529a714b",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-05T01:24:12Z",
+      "side": 1,
+      "message": "nit: can we use the IS_ENABLED(...) macro here instead? Also, it would be nice to add a brief comment here why this isn\u0027t done for the PS8751.",
+      "revId": "3bd3155c1c00a502b5d0f73858fd90f5e36e46c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
