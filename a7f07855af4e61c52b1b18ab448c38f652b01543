@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41851b95_83738079",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T23:10:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8238e6f_ace4f93b",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a67d46d_115bb414",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 11
@@ -105,6 +129,30 @@
       "writtenOn": "2020-02-05T20:42:57Z",
       "side": 1,
       "message": "I also think we should do EFS2 even if the battery isn\u0027t present. Why would we want to skip EFS2 in the factory?",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 9
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c03141_e2cf3fd1",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-05T23:10:09Z",
+      "side": 1,
+      "message": "This is related to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1035697 and I think we can remove this branch.",
+      "parentUuid": "88270658_c6e0746c",
       "range": {
         "startLine": 257,
         "startChar": 2,
