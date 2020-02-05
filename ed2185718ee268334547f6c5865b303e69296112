@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "6df92fbb_e5a00c5f",
+        "filename": "board/nocturne_fp/fixes.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-05T00:53:53Z",
+      "side": 1,
+      "message": "We discussed in person. The exception handling cannot handle the pin reset case, so we still need write protect GPIO as an interrupt to handle a change to write protect followed by pin reset.",
+      "parentUuid": "a82cc9e0_3c6df52b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "ed2185718ee268334547f6c5865b303e69296112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "165ccbb5_fcff25a5",
         "filename": "chip/stm32/system.c",
         "patchSetId": 17
