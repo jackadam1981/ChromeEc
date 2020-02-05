@@ -52,6 +52,24 @@
       "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9afa143b_6f414859",
+        "filename": "common/mock/usb_mux_mock.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T17:19:58Z",
+      "side": 1,
+      "message": "Moved to include/moock in CL:2039038",
+      "parentUuid": "f19eed8f_0babf772",
+      "revId": "1a775899f44dbb682b2dce94d27493d9dda82588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
