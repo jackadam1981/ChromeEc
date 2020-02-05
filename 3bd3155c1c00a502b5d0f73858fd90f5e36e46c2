@@ -16,6 +16,24 @@
       "revId": "3bd3155c1c00a502b5d0f73858fd90f5e36e46c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec705fb0_aa41b491",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-05T19:14:40Z",
+      "side": 1,
+      "message": "Done. Using IS_ENABLED() is more clear.",
+      "parentUuid": "9039bc51_529a714b",
+      "revId": "3bd3155c1c00a502b5d0f73858fd90f5e36e46c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
