@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92e58271_eac60e51",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5230,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-05T20:55:16Z",
+      "side": 1,
+      "message": "Sorry, this is still too vague; a developer has no idea what valid values are and what they mean here. See the other fields listing something like USB_PD_CTRL_* flags to let the developer know what valid and expected values are.",
+      "range": {
+        "startLine": 5230,
+        "startChar": 24,
+        "endLine": 5230,
+        "endChar": 62
+      },
+      "revId": "9d141637c5ed1103f3c1e3963d52472be717da77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
