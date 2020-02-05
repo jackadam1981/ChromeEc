@@ -16,6 +16,24 @@
       "revId": "dbd3b45dfd4bbc5967924e62c8a7cfac3b477ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60411d06_a641ac98",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-02-05T06:48:12Z",
+      "side": 1,
+      "message": "Done. Remove CONFIG_USB_PD_COMM_LOCKED.",
+      "parentUuid": "b4bac50b_519997a3",
+      "revId": "dbd3b45dfd4bbc5967924e62c8a7cfac3b477ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
