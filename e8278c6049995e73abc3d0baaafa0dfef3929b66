@@ -261,6 +261,30 @@
       "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147abdd6_3a361b36",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-05T17:37:09Z",
+      "side": 1,
+      "message": "We tested this and it\u0027s working fine. But the main essence of CONFIG_DPTF_FAIL_SAFE_OFFSET is not being exercised as mentioned in above scenario#3. \nAlso, can you please address my other last two comments on ps8.",
+      "parentUuid": "e57e4b10_a1bd3503",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
