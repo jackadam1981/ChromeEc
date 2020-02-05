@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "111780ed_60f93cd5",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-05T22:43:32Z",
+      "side": 1,
+      "message": "Won\u0027t it already be awake since this ps8802_tune_mux() gets called from ps8802_set_mux(), which has already called  ps8802_i2c_wake()?",
+      "revId": "de4b4cf3c22417fdcb6bd644dd83bc85d35e4a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
