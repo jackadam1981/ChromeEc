@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7fe82fb5_b47bf5fe",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-05T22:11:24Z",
+      "side": 1,
+      "message": "You can\u0027t use ARRAY_SIZE on cal-\u003ealgos as it\u0027s not an array.",
+      "parentUuid": "6b6de8e2_1e1a6995",
+      "revId": "3639d652d05884b4741ce23c5965667876a7839d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ab9d7fd_71039ac9",
         "filename": "common/accel_cal.c",
         "patchSetId": 21
