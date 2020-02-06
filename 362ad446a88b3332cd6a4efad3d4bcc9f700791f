@@ -70,6 +70,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edcd06c_69c1eb7f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-06T17:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc94e8cc_49f1080e",
+      "range": {
+        "startLine": 284,
+        "startChar": 36,
+        "endLine": 284,
+        "endChar": 58
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
