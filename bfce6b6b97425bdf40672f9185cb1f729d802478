@@ -22,6 +22,30 @@
       "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e76bf90_2bd3f338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1348029
+      },
+      "writtenOn": "2020-02-06T23:16:36Z",
+      "side": 1,
+      "message": "With a current probe, I measure ~28W currently (might go down later). The main situation we want to avoid is booting from suzyQ which is 7.5W.",
+      "parentUuid": "462a4814_c2a5093d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
