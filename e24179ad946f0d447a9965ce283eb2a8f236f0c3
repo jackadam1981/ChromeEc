@@ -22,6 +22,30 @@
       "revId": "e24179ad946f0d447a9965ce283eb2a8f236f0c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ccec6d_255347d7",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-06T16:58:22Z",
+      "side": 1,
+      "message": "I guess you\u0027re right, I concentrated on the most common case, let me add those too.",
+      "parentUuid": "f959c636_5918cf1d",
+      "range": {
+        "startLine": 91,
+        "startChar": 55,
+        "endLine": 91,
+        "endChar": 59
+      },
+      "revId": "e24179ad946f0d447a9965ce283eb2a8f236f0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
