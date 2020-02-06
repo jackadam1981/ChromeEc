@@ -22,6 +22,109 @@
       "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc76053_21d40ebb",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-06T02:09:51Z",
+      "side": 1,
+      "message": "Maybe let\u0027s single source this?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969c0e49_6ed110ce",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-06T02:09:51Z",
+      "side": 1,
+      "message": "This too?",
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcec45fb_3cf2074a",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-06T02:09:51Z",
+      "side": 1,
+      "message": "below there\u0027s a mix of strcasecmp and strncasecmp, why one vs. the other?",
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7bd6ca_7bbd8cc0",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-06T02:09:51Z",
+      "side": 1,
+      "message": "\u0027e\u0027 is unchanged so if it was non-null, we wouldn\u0027t get here.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4bc0df_c3951fce",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-06T02:09:51Z",
+      "side": 1,
+      "message": "max_volt is being used without checking `e\u0027",
+      "range": {
+        "startLine": 149,
+        "startChar": 35,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
