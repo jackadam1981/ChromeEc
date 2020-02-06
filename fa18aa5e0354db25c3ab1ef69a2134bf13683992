@@ -686,6 +686,30 @@
     },
     {
       "key": {
+        "uuid": "7d141ec6_7a2af67b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2403,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f0c0690_744d9c3f",
+      "range": {
+        "startLine": 2403,
+        "startChar": 21,
+        "endLine": 2403,
+        "endChar": 39
+      },
+      "revId": "fa18aa5e0354db25c3ab1ef69a2134bf13683992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "805dd30a_5213669b",
         "filename": "include/vboot.h",
         "patchSetId": 8

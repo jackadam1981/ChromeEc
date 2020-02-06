@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6095266d_f8e2a839",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a67d46d_115bb414",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51bb0f7f_86433445",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 11
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f7d7cff_5aa8d0da",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51bb0f7f_86433445",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 15
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8221e385_7d02fadc",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 11
@@ -106,6 +154,30 @@
       "writtenOn": "2020-02-05T20:42:57Z",
       "side": 1,
       "message": "I would still rather ask the PD layer with a pd_ call asking if PD communication is going to be allowed or not instead of encoding what we think the PD layer is going to do here",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 63
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb67d13_595f7c57",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "8221e385_7d02fadc",
       "range": {
         "startLine": 248,
         "startChar": 1,
@@ -188,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "eb22650e_a33d7579",
+        "filename": "include/vboot.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a9706d98_f9234544",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b93c4ad_048e365e",
         "filename": "include/vboot.h",
         "patchSetId": 11
@@ -211,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c534ea6b_dc4f850c",
+        "filename": "include/vboot.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b93c4ad_048e365e",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2cc128_c8572610",
         "filename": "include/vboot.h",
         "patchSetId": 11
@@ -231,6 +351,30 @@
       "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff3e17d_c58c79b6",
+        "filename": "include/vboot.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a2cc128_c8572610",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "a7f07855af4e61c52b1b18ab448c38f652b01543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

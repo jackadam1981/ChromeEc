@@ -714,6 +714,30 @@
     },
     {
       "key": {
+        "uuid": "02b5b3de_aedb6abf",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc7029d5_b2dd0dcf",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 14
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486b382_b4bcfb19",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -1045,6 +1069,30 @@
     },
     {
       "key": {
+        "uuid": "2f056a45_f595b9ab",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c392e23d_d781356f",
+      "range": {
+        "startLine": 261,
+        "startChar": 51,
+        "endLine": 261,
+        "endChar": 62
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c7da06_97c634a6",
         "filename": "common/vboot/efs2.c",
         "patchSetId": 9
@@ -1103,6 +1151,30 @@
       "writtenOn": "2020-01-31T18:20:38Z",
       "side": 1,
       "message": "s/Flase/False/",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd61abc2_8e6aa922",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "7e01de6c_7327e3bb",
       "range": {
         "startLine": 50,
         "startChar": 3,
@@ -1276,6 +1348,30 @@
       "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db98623_5e774cab",
+        "filename": "include/vboot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T23:34:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4138a353_c699ec5d",
+      "range": {
+        "startLine": 115,
+        "startChar": 39,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "a990f646dab66a0be89bbd226e563aaa55451ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
