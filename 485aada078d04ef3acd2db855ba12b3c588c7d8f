@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f9634d8_4f1ae198",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-06T00:22:39Z",
+      "side": 1,
+      "message": "May want to make this readonly since it\u0027s constant?\n\n  readonly DEFAULT_RETRIES",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "485aada078d04ef3acd2db855ba12b3c588c7d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
