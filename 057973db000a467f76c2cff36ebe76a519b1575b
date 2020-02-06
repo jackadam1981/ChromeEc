@@ -22,6 +22,30 @@
       "revId": "057973db000a467f76c2cff36ebe76a519b1575b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7b7e95_3a835e7e",
+        "filename": "board/morphius/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-02-06T09:43:02Z",
+      "side": 1,
+      "message": "91 is base on LED behavior spec:\nBattery LED:\n    Battery Charging 0%~90%: Amber\n    Battery Charging 91%~100%: White",
+      "parentUuid": "4297c5c7_bf7ecd8c",
+      "range": {
+        "startLine": 24,
+        "startChar": 39,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "057973db000a467f76c2cff36ebe76a519b1575b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
