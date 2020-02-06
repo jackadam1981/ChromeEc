@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33eb7e6c_df461bd7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-06T23:32:28Z",
+      "side": 1,
+      "message": "I think you can remove the guard around this.  Since pe[].cable is always included in the build, there\u0027s no harm in explicitly initializing these fields.",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 2
+      },
+      "revId": "584f0a218725f5b9998b8c33ab69fbd846090b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
