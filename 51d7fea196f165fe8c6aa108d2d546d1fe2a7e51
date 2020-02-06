@@ -212,6 +212,30 @@
       "revId": "51d7fea196f165fe8c6aa108d2d546d1fe2a7e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03857eb4_ce5db8ad",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-02-06T20:08:56Z",
+      "side": 1,
+      "message": "I\u0027ll delete this from all trembyle-based platforms in a follow-on commit.",
+      "parentUuid": "038f8d75_3bc40d6f",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "51d7fea196f165fe8c6aa108d2d546d1fe2a7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
