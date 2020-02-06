@@ -1278,6 +1278,45 @@ static int read_temp(const struct motion_sensor_t *s, int *temp_ptr)
 	return bmi160_get_sensor_temp(s - motion_sensors, temp_ptr);
 }
 
+uint8_t tx_data[20], rx_data[20];
+static int command_bmixfer(int argc, char **argv)
+{
+	char *e;
+	int rv;
+	int rx_len, tx_len;
+
+	/* First argument is read length. */
+	rx_len = strtoi(argv[1], &e, 0);
+	if (*e || rx_len < 0)
+		return EC_ERROR_PARAM1;
+
+	/* Following arguments are what we write */
+	tx_len = argc - 2;
+	ccprintf("tx %d bytes: ", tx_len);
+	for (int i = 2; i < argc; i++) {
+		tx_data[i - 2] = strtoi(argv[i], &e, 0);
+		if (*e || rx_len < 0)
+			return EC_ERROR_PARAM2;
+		ccprintf("0x%02x ", tx_data[i - 2]);
+	}
+	ccprintf("\n");
+
+
+	ccprintf("rx %d bytes", rx_len);
+	rv = spi_transaction(&spi_devices[CONFIG_SPI_ACCEL_PORT], tx_data, tx_len, rx_data, rx_len);
+
+	ccprintf(": ");
+	for (int i = 0; i < rx_len; i++) {
+		ccprintf("0x%02x ", rx_data[i]);
+	}
+	ccprintf("\n");
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(bmixfer, command_bmixfer,
+	"rx_bytes [bytes to write]",
+	"Read write SPI");
+
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp, i;
@@ -1289,6 +1328,12 @@ static int init(const struct motion_sensor_t *s)
 		return EC_ERROR_UNKNOWN;
 
 	if (tmp != BMI160_CHIP_ID_MAJOR && tmp != BMI168_CHIP_ID_MAJOR) {
+		CPRINTS("amstan chipid=%x", tmp);
+
+		ret = raw_read8(s->port, s->i2c_spi_addr_flags,
+			BMI160_CHIP_ID, &tmp);
+		CPRINTS("amstan chipid2=%x", tmp);
+
 		/* The device may be lock on paging mode. Try to unlock it. */
 		raw_write8(s->port, s->i2c_spi_addr_flags,
 			   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B0);
