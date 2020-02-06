@@ -69,6 +69,30 @@
       "revId": "eeb7c4c6d0d1e556c056e5f5f6ff6c3f94e4a941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc4cc59_953a6662",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 20
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-06T06:33:07Z",
+      "side": 1,
+      "message": "No, the exit code is used further down this script as the final exit status, in the event of a total failure.",
+      "parentUuid": "fb1172cb_8d6c5f4d",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 6
+      },
+      "revId": "eeb7c4c6d0d1e556c056e5f5f6ff6c3f94e4a941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
