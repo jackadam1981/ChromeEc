@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "2fa08bdd_742aa64d",
+        "filename": "board/dalboz/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-02-06T20:08:22Z",
+      "side": 1,
+      "message": "Be that as it may, I have to work around it right now. We can look at changing the hook in a future CL.",
+      "parentUuid": "ffd01fc6_964a383f",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "51d7fea196f165fe8c6aa108d2d546d1fe2a7e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d9caac8_3f98ae12",
         "filename": "board/dalboz/board.h",
         "patchSetId": 1
