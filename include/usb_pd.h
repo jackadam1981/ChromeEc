@@ -1590,6 +1590,236 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 		uint16_t head);
 
 /**
+ * Returns True if number of data objects in the payload is greater than
+ * the Index
+ *
+ * @param cnt      number of data objects in the payload.
+ * @param index    VDO Index
+ * @return         True if cnt > Index, False otherwise
+ */
+bool is_vdo_present(int cnt, int index);
+
+/**
+ * Enables CABLE_FLAGS_SOP_PRIME_ENABLE flags
+ *
+ * @param port    USB-C port number
+ */
+void enable_transmit_sop_prime(int port);
+
+/**
+ * Enables CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
+ *
+ * @param port    USB-C port number
+ */
+void enable_transmit_sop_prime_prime(int port);
+
+/**
+ * Disables CABLE_FLAGS_SOP_PRIME_ENABLE flags
+ *
+ * @param port    USB-C port number
+ */
+void disable_transmit_sop_prime(int port);
+
+/**
+ * Disable CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
+ *
+ * @param port    USB-C port number
+ */
+void disable_transmit_sop_prime_prime(int port);
+
+/**
+ * Returns true if CABLE_FLAGS_TBT_COMPAT_ENABLE is enabled
+ *
+ * @param port    USB-C port number
+ * @return        True if CABLE_FLAGS_TBT_COMPAT_ENABLE is enabled
+ *		  Flase otherwise
+ */
+bool is_tbt_compat_enabled(int port);
+
+/**
+ * Sets CABLE_FLAGS_TBT_COMPAT_ENABLE flags
+ *
+ * @param port    USB-C port number
+ */
+void enable_tbt_compat_mode(int port);
+
+/**'
+ * Clears CABLE_FLAGS_TBT_COMPAT_ENABLE flags
+ *
+ * @param port    USB-C port number
+ */
+void disable_tbt_compat_mode(int port);
+
+/**
+ * Sets USB_PD_MUX_TBT_COMPAT_ENABLED flag
+ *
+ * @param port    USB-C port number
+ */
+void set_tbt_compat_mode_ready(int port);
+
+/**
+ * Returns True if the cable is an Active cable or if the cable is
+ * superspeed passive cable
+ *
+ * @param port    USB-C port number
+ * @return        True if cable is superpeed or Active, False otherwise
+ */
+bool is_tbt_cable_superspeed(int port);
+
+/**
+ * Returns True is if product supports any Modal Operation (Alternate Modes)
+ *
+ * @param port     USB-C port number
+ * @param cnt      number of data objects in the payload.
+ * @param payload  payload data.
+ * @return         True if Modal operation supported, False otherwise
+ */
+bool is_modal(int port, int cnt, uint32_t *payload);
+
+/**
+ * Returns True is SVID = USB_VID_INTEL
+ *
+ * @param port          USB-C port number
+ * @param prev_svid_cnt Previous SVID count
+ * @return              True is SVID = USB_VID_INTEL, False otherwise
+ */
+bool is_intel_svid(int port, int prev_svid_cnt);
+
+/**
+ * Return True if payload has Thunderbolt Alternate mode response
+ *
+ * @param port     USB-C port number
+ * @param cnt      number of data objects in the payload.
+ * @param payload  payload data.
+ * @return         True if mode response is Thunderbolt Alternate mode
+ *                 False otherwise
+ */
+bool is_tbt_compat_mode(int port, int cnt, uint32_t *payload);
+
+/**
+ * Sets CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED flag
+ *
+ * @param port     USB-C port number
+ */
+void limit_tbt_cable_speed(int port);
+
+/**
+ * Checks if CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED flag is enabled
+ *
+ * @param port     USB-C port number
+ * @return         True is CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED is enabled
+ *                 False otherwise
+ */
+bool is_limit_tbt_cable_speed(int port);
+
+/**
+ * Checks if CABLE_FLAGS_USB4_CAPABLE is enabled
+ *
+ * @param port     USB-C port number
+ * @return         True is CABLE_FLAGS_USB4_CAPABLE is enabled, false otherwise
+ */
+bool is_usb4_mode_enabled(int port);
+
+/**
+ * Sets CABLE_FLAGS_USB4_CAPABLE flags
+ *
+ * @param port     USB-C port number
+ */
+void enable_usb4_mode(int port);
+
+/**
+ * Clears CABLE_FLAGS_USB4_CAPABLE flags
+ *
+ * @param port     USB-C port number
+ */
+void disable_usb4_mode(int port);
+
+/**
+ * Returns True if the cable is ready to enter USB4 mode
+ *
+ * @param port     USB-C port number
+ * @param cnt      number of data objects in the payload.
+ * @return         True if cable is ready to Enter mode, False otherwise
+ */
+bool is_cable_ready_to_enter_usb4(int port, int cnt);
+
+/**
+ * Returns True if payload has USB4 VDO
+ *
+ * @param port     USB-C port number
+ * @param cnt      number of data objects in the payload.
+ * @param payload  payload data.
+ * @return         True is payload has USB4 vdo, False otherwise
+ */
+bool is_usb4_vdo(int port, int cnt, uint32_t *payload);
+
+/**
+ * Stores the Discover Identity response of the cable
+ *
+ * @param port     USB-C port number
+ * @param cnt      number of data objects in the payload.
+ * @param payload  payload data.
+ * @param head     PD packet header
+ */
+void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
+					uint16_t head);
+
+/**
+ * Prepares the Discover Identity command payload
+ *
+ * @param payload  payload data.
+ * @return         Size of the payload i.e 1
+ */
+int dfp_discover_ident(uint32_t *payload);
+
+/**
+ * Prepares the Discover SVID command payload
+ *
+ * @param payload  payload data.
+ * @return         Size of the payload i.e 1
+ */
+int dfp_discover_svids(uint32_t *payload);
+
+/**
+ * Checks if the cable spped is Thunderbolt-Compatible
+ *
+ * @param port     USB-C port number
+ * @return         True if the speed is TBT_SS_TBT_GEN3/TBT_SS_U32_GEN1_GEN2
+ *                 false otheriwse
+ */
+bool check_tbt_cable_speed(int port);
+
+/**
+ * Fills the TBT3 objects in the payload and returns the number of objects it
+ * has filled.
+ *
+ * @param port     USB-C port number
+ * @param payload  payload data.
+ * @return         Number of objects filled in the payload
+ */
+int enter_tbt_compat_mode(int port, uint32_t *payload);
+
+/**
+ * Stores the Discover mode response and sends the next request required
+ * for entering Thunderbolt-Compatible mode
+ *
+ * @param port     USB-C port number
+ * @param payload  payload data.
+ * @return         Number of objects filled in the payload
+ */
+int process_tbt_compat_discover_modes(int port, uint32_t *payload);
+
+/**
+ * Returns the number of objects filled for entering Thunderbolt-Compatible
+ * mode
+ *
+ * @param port     USB-C port number
+ * @param payload  payload data.
+ * @return         Number of objects filled in the payload
+ */
+int enter_mode_tbt_compat(int port, uint32_t *payload);
+
+/**
  * Handle Custom VDMs for flashing.
  *
  * @param port     USB-C port number
@@ -1773,6 +2003,14 @@ bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id);
 bool is_transmit_msg_sop_prime(int port);
 
 /*
+ * Return the pointer to PD cable attributes
+ *
+ * @param port  USB-C port number
+ * @return      pointer to PD cable attributes
+ */
+struct pd_cable *pd_get_cable_attributes(int port);
+
+/*
  * Return the pointer to PD alternate mode policy
  * Note: Caller function can mutate the data in this structure.
  *
@@ -1845,6 +2083,13 @@ uint32_t get_enter_usb_msg_payload(int port);
  * @param port	USB-C port number
  */
 void enter_usb4_mode(int port);
+
+/**
+ * Set enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void enable_enter_usb4_mode(int port);
 
 /**
  * Clear enter USB4 mode
