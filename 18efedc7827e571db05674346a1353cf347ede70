@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "b4291437_a4b74bff",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-06T03:58:25Z",
+      "side": 1,
+      "message": "Then this becomes __override board_chipset_forced_shutdown(void)",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 4
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810f3741_3b6260b0",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-06T03:58:25Z",
+      "side": 1,
+      "message": "You could cancel the deferred call here; hook_call_deferred(..., -1);",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 28
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd17aac_01571c94",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-06T03:58:25Z",
+      "side": 1,
+      "message": "__overridable (see include/common.h)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe2ca7a_76cda1d6",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-06T03:58:25Z",
+      "side": 1,
+      "message": "Can we rename this to something more generic, like board_forced_shutdown_callback ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 27,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ff0ab13_1fa866a1",
         "filename": "power/cometlake.c",
         "patchSetId": 1
@@ -37,6 +129,30 @@
       "side": 1,
       "message": "I already have CHIPSET_SHUTDOWN in kindred\u0027s board.c.\nBut chipset_force_shutdown didn\u0027t trigger any HOOKS.\nSo we need this here. Or we can add a new HOOK for CHIPSET_FORCE_SHUTDOWN?",
       "parentUuid": "9ff0ab13_1fa866a1",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6afc079_b4feca19",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-06T03:58:25Z",
+      "side": 1,
+      "message": "See above about name change, then it\u0027s not so board specific.",
+      "parentUuid": "36377aa1_31f2cfae",
       "range": {
         "startLine": 88,
         "startChar": 1,
