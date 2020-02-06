@@ -333,6 +333,30 @@
       "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88a28df_f355df75",
+        "filename": "common/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-02-06T17:11:41Z",
+      "side": 1,
+      "message": "Along with ps9, we added below code in file board/hatch/board.h b/board/hatch/board.h for testing.\n...\n+#define CONFIG_DPTF_FAIL_SAFE\n... \n+/* Fan control by EC in absence of DPTF */\n+#define CONFIG_DPTF_FAIL_SAFE_OFFSET 0\n...\n\n\nTestcase #1:\n- Make the EC temp is equivalent to HIGH temperature value\n- Observe that EC is taking over the control from DPTF.\nObservations:\n1. Enabled the DPTF again. By default  Active threshold values were less than EC Fan-off temperature and the fan was starting when the temperature reaches Active threshold values  in DPTF.\n2. In order to check Whether EC was taking control from DPTF, we increased the Active Thresholds to value more than fan_off  temperature.\nObservations are:\n• When the temperature reached HIGH value, it was expected that EC should take the control from DPTF. But it was not happening.\n• When the temperature reached FAN-OFF value, as the DPTF was still controlling the fan, the fan was not rotating.\n3. Tried flashing the new EC binary again second time, but the result was the same.                                                                                                                                                         \nSo, this test case failed.\n\nTestcase #2:\n- Make the EC temp is equivalent to WARN temperature value\n- Observe that EC is taking over the control from DPTF.\nObservation: \n• warn temperature is zero for all sensors by default. So not able to verify this testcase. \n\nlocalhost ~ # ectool thermalget\nsensor  warn  high  halt   fan_off fan_max   name\n  0                 0   338    363    338     353     Temp1\n  1                 0   338    363    338     353     Temp2\n  2                 0     0      0      0       0     Temp3\n  3                 0     0      0      0       0     Temp4\nEC result 3 (INVALID_PARAM)\n(all temps in degrees Kelvin)",
+      "parentUuid": "a0fdf88d_397194f3",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "e8278c6049995e73abc3d0baaafa0dfef3929b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
