@@ -22,6 +22,30 @@
       "revId": "66f6662041addbe7b25a3c19b86f823ad3647c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a34af70_b5af72e9",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-06T20:27:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure additional comments are required:\n\n- none of the other included command line options are commented\n\n- patch description explains why this option is added\n\n- kernel and coreboot makefiles do not explicitly comment this command option either\n\n- adding comments in all places where this option is added would just add noise",
+      "parentUuid": "6670f04e_a76509cb",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 6
+      },
+      "revId": "66f6662041addbe7b25a3c19b86f823ad3647c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
