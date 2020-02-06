@@ -13,6 +13,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "system.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"

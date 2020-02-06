@@ -45,6 +45,7 @@
 #include "thermal.h"
 #include "timer.h"
 #include "usb_charge.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -641,3 +642,7 @@ int board_get_epp_fod(uint8_t **fod)
 	return 0;
 }
 
+__override enum gpio_signal PORT_TO_HPD(int port)
+{
+	return GPIO_USB_C0_HPD_OD;
+}

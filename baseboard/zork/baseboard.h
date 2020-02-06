@@ -298,12 +298,6 @@ enum zork_c1_retimer {
 };
 extern enum zork_c1_retimer zork_c1_retimer;
 
-#define PORT_TO_HPD(port) ((port == 0) \
-	? GPIO_USB_C0_HPD \
-	: (zork_c1_retimer == C1_RETIMER_PS8802) \
-		? GPIO_DP1_HPD \
-		: GPIO_DP2_HPD)
-
 /*
  * Matrix to rotate accelerators into the standard reference frame.  The default
  * is the identity which is correct for the reference design.  Variations of

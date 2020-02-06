@@ -53,6 +53,7 @@
 #include "tcpci.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -471,6 +472,15 @@ void bc12_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
+}
+
+__override enum gpio_signal PORT_TO_HPD(int port)
+{
+	if (port == 0)
+		return GPIO_USB_C0_HPD;
+	else if (zork_c1_retimer == C1_RETIMER_PS8802)
+		return GPIO_DP1_HPD;
+	return GPIO_DP2_HPD;
 }
 
 /*****************************************************************************

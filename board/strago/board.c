@@ -39,6 +39,7 @@
 #include "temp_sensor_chip.h"
 #include "thermal.h"
 #include "usb_charge.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -365,4 +366,9 @@ void board_hibernate(void)
 	/* Power to EC should shut down now */
 	while (1)
 		;
+}
+
+__override enum gpio_signal PORT_TO_HPD(int port)
+{
+	return GPIO_USB_C0_DP_HPD;
 }

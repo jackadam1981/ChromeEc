@@ -24,9 +24,16 @@
 #define CPRINTF(format, args...)
 #endif
 
-#ifndef PORT_TO_HPD
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
-#endif /* PORT_TO_HPD */
+
+__overridable enum gpio_signal PORT_TO_HPD(int port)
+{
+#if defined(GPIO_USB_C0_DP_HPD) && defined(GPIO_USB_C1_DP_HPD)
+	return ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD);
+#else
+	ccprintf("Default %s is being used but shouldn't\n", __func__);
+	return 0;
+#endif
+}
 
 /*
  * timestamp of the next possible toggle to ensure the 2-ms spacing

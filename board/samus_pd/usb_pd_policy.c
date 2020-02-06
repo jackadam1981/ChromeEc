@@ -15,6 +15,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 
@@ -88,7 +89,6 @@ int pd_check_vconn_swap(int port)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 __override void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;

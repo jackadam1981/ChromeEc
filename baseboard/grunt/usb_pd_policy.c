@@ -12,6 +12,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "system.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
@@ -126,7 +127,6 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 __override void svdm_dp_post_config(int port)
 {
 	const struct usb_mux * const mux = &usb_muxes[port];

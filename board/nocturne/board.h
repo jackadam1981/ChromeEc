@@ -206,8 +206,6 @@
 #define GPIO_VOLUME_DOWN_L    GPIO_H1_EC_VOL_DOWN_ODL
 #define GPIO_WP_L             GPIO_EC_WP_L
 
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
-
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
