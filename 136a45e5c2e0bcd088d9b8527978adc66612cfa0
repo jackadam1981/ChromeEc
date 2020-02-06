@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b4f29b5_2d818e33",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-02-06T10:15:28Z",
+      "side": 1,
+      "message": "Ah.. thanks for the catch,\nchanged to charge_set_output_current_limit(\u003d set_otg_current_voltage + enable_otg_power).\n\nDidn\u0027t know why the previous version works...",
+      "parentUuid": "86684874_fde4eeb2",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "136a45e5c2e0bcd088d9b8527978adc66612cfa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec2e2bf5_7f379645",
         "filename": "baseboard/kukui/usb_pd_policy.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "136a45e5c2e0bcd088d9b8527978adc66612cfa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b6c002_94488897",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-02-06T10:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec2e2bf5_7f379645",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "136a45e5c2e0bcd088d9b8527978adc66612cfa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
