@@ -5,6 +5,7 @@
  * Alternate Mode Downstream Facing Port (DFP) USB-PD module.
  */
 
+#include "assert.h"
 #include "chipset.h"
 #include "console.h"
 #include "task.h"
@@ -24,9 +25,17 @@
 #define CPRINTF(format, args...)
 #endif
 
-#ifndef PORT_TO_HPD
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
-#endif /* PORT_TO_HPD */
+
+__overridable enum gpio_signal pd_get_hpd_gpio(int port)
+{
+#if defined(GPIO_USB_C0_DP_HPD) && defined(GPIO_USB_C1_DP_HPD)
+	return ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD);
+#else
+	ccprintf("Default %s is being used but shouldn't\n", __func__);
+	assert(0);
+	return 0;
+#endif
+}
 
 /*
  * timestamp of the next possible toggle to ensure the 2-ms spacing
@@ -540,7 +549,7 @@ __overridable void svdm_dp_post_config(int port)
 		return;
 
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
-	gpio_set_level(PORT_TO_HPD(port), 1);
+	gpio_set_level(pd_get_hpd_gpio(port), 1);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -559,7 +568,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
-	enum gpio_signal hpd = PORT_TO_HPD(port);
+	enum gpio_signal hpd = pd_get_hpd_gpio(port);
 	int cur_lvl = gpio_get_level(hpd);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
@@ -624,7 +633,7 @@ __overridable void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
-	gpio_set_level(PORT_TO_HPD(port), 0);
+	gpio_set_level(pd_get_hpd_gpio(port), 0);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 	usb_mux_hpd_update(port, 0, 0);
 #ifdef USB_PD_PORT_TCPC_MST

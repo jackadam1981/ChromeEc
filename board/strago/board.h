@@ -201,8 +201,6 @@ enum als_id {
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
 
-#define PORT_TO_HPD(port) (GPIO_USB_C0_DP_HPD)
-
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

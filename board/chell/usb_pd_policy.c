@@ -15,6 +15,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 
@@ -263,14 +264,13 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 __override void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
-	gpio_set_level(PORT_TO_HPD(port), 1);
+	gpio_set_level(pd_get_hpd_gpio(port), 1);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -281,7 +281,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl;
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
-	enum gpio_signal hpd = PORT_TO_HPD(port);
+	enum gpio_signal hpd = pd_get_hpd_gpio(port);
 
 	cur_lvl = gpio_get_level(hpd);
 	dp_status[port] = payload[1];
@@ -323,7 +323,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
-	gpio_set_level(PORT_TO_HPD(port), 0);
+	gpio_set_level(pd_get_hpd_gpio(port), 0);
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)

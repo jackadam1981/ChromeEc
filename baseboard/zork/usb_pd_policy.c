@@ -13,6 +13,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "system.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
@@ -147,7 +148,7 @@ __override void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
-	gpio_set_level(PORT_TO_HPD(port), 1);
+	gpio_set_level(pd_get_hpd_gpio(port), 1);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -165,7 +166,7 @@ __override void svdm_exit_dp_mode(int port)
 
 	usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_CONNECT,
 		    pd_get_polarity(port));
-	gpio_set_level(PORT_TO_HPD(port), 0);
+	gpio_set_level(pd_get_hpd_gpio(port), 0);
 
 	if (mux->hpd_update)
 		mux->hpd_update(port, 0, 0);

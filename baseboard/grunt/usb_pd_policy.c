@@ -12,6 +12,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "system.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
@@ -126,7 +127,6 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 __override void svdm_dp_post_config(int port)
 {
 	const struct usb_mux * const mux = &usb_muxes[port];
@@ -140,7 +140,7 @@ __override void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
-	gpio_set_level(PORT_TO_HPD(port), 1);
+	gpio_set_level(pd_get_hpd_gpio(port), 1);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;

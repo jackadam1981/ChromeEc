@@ -139,4 +139,12 @@ void notify_sysjump_ready(volatile const task_id_t * const
  * @param port USB-C port number
  */
 void set_usb_mux_with_current_data_role(int port);
+
+/**
+ * mapping from port to HPD GPIO
+ *
+ * @param port USB-C port number
+ */
+__override_proto enum gpio_signal pd_get_hpd_gpio(int port);
+
 #endif /* __CROS_EC_USB_COMMON_H */

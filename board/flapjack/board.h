@@ -337,8 +337,6 @@ extern uint8_t board_version;
 extern uint8_t oem;
 extern uint32_t sku;
 
-#define PORT_TO_HPD(port) GPIO_USB_C0_HPD_OD
-
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
