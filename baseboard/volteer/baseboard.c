@@ -127,16 +127,14 @@ const struct i2c_port_t i2c_ports[] = {
 	{
 		.name = "usb_c0",
 		.port = I2C_PORT_USB_C0,
-		/* TODO: design supports 1 MHz, set to 100 KHz for bringup */
-		.kbps = 100,
+		.kbps = 400,
 		.scl = GPIO_EC_I2C1_USB_C0_SCL,
 		.sda = GPIO_EC_I2C1_USB_C0_SDA,
 	},
 	{
 		.name = "usb_c1",
 		.port = I2C_PORT_USB_C1,
-		/* TODO: design supports 1 MHz, set to 100 KHz for bringup */
-		.kbps = 100,
+		.kbps = 400,
 		.scl = GPIO_EC_I2C2_USB_C1_SCL,
 		.sda = GPIO_EC_I2C2_USB_C1_SDA,
 	},
@@ -662,9 +660,12 @@ DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
 static void config_db_usb3(void)
 {
 	tcpc_config[USBC_PORT_C1] = tcpc_config_p1_usb3;
-	/* USB-C port 1 has an integrated retimer */
-	memset(&usb_retimers[USBC_PORT_C1], 0,
-	       sizeof(usb_retimers[USBC_PORT_C1]));
+
+	if (IS_ENABLED(CONFIG_USBC_MUX_RETIMER)) {
+		/* USB-C port 1 has an integrated retimer */
+		memset(&usb_retimers[USBC_PORT_C1], 0,
+		       sizeof(usb_retimers[USBC_PORT_C1]));
+	}
 }
 
 static uint8_t board_id;
