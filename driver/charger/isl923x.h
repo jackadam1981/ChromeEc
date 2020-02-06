@@ -240,6 +240,9 @@
 /* Control4: PSYS Rsense ratio. */
 #define RAA489000_C4_PSYS_RSNS_RATIO_1_TO_1 BIT(11)
 
+/* Control4: enables or disables trigger PROCHOT# with OTGCURRENT */
+#define ISL9238_C4_OTGCURRENT_PROCHOT BIT(7)
+
 /* OTG voltage limit in mV, current limit in mA */
 #define ISL9237_OTG_VOLTAGE_MIN 4864
 #define ISL9237_OTG_VOLTAGE_MAX 5376
@@ -342,6 +345,9 @@ extern const struct charger_drv isl923x_drv;
  */
 int isl923x_set_ac_prochot(uint16_t ma);
 int isl923x_set_dc_prochot(uint16_t ma);
+#ifdef CONFIG_CHARGER_ISL9238
+int isl923x_enable_otg_current_prochot(int chgnum, int enable);
+#endif
 
 #define ISL923X_AC_PROCHOT_CURRENT_MAX	6400	/* mA */
 #define ISL923X_DC_PROCHOT_CURRENT_MAX	12800	/* mA */

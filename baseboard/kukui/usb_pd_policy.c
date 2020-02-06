@@ -6,7 +6,9 @@
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
+#include "driver/charger/isl923x.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "system.h"
 #include "timer.h"
 #include "usb_mux.h"
@@ -39,6 +41,18 @@ int board_is_sourcing_vbus(int port)
 		return charger_is_sourcing_otg_power(port);
 	else
 		return board_vbus_source_enabled(port);
+}
+
+static void board_isl9238_init(void)
+{
+	CPRINTS("board_isl9238_init");
+	isl923x_enable_otg_current_prochot(0, 1);
+}
+DECLARE_HOOK(HOOK_INIT, board_isl9238_init, HOOK_PRIO_INIT_I2C + 2);
+
+void charger_prochot_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("charger_prochot_interrupt triggered!!");
 }
 
 int pd_set_power_supply_ready(int port)

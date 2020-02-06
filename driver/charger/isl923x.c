@@ -345,6 +345,24 @@ int isl923x_set_dc_prochot(uint16_t ma)
 	return rv;
 }
 
+#ifdef CONFIG_CHARGER_ISL9238
+int isl923x_enable_otg_current_prochot(int chgnum, int enable)
+{
+	int rv, reg;
+
+	rv = raw_read16(chgnum, ISL9238_REG_CONTROL4, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= ISL9238_C4_OTGCURRENT_PROCHOT;
+	else
+		reg &= ~ISL9238_C4_OTGCURRENT_PROCHOT;
+
+	return raw_write16(chgnum, ISL9238_REG_CONTROL4, reg);
+}
+#endif
+
 static void isl923x_init(int chgnum)
 {
 	int reg;

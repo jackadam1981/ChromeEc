@@ -52,6 +52,8 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(0 /* port */);
 }
 
+void charger_prochot_interrupt(enum gpio_signal);
+
 #include "gpio_list.h"
 
 /******************************************************************************/

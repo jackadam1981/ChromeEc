@@ -35,6 +35,8 @@ GPIO_INT(BC12_EC_INT_ODL,   PIN(C, 9),  GPIO_INT_FALLING,
          bc12_interrupt)
 GPIO_INT(IT8801_SMB_INT,    PIN(A, 8),  GPIO_INT_FALLING | GPIO_PULL_UP,
          io_expander_it8801_interrupt) /* KB_INT_ODL */
+GPIO_INT(EC_PROCHOT_ODL,    PIN(C, 13), GPIO_INT_BOTH,
+         charger_prochot_interrupt)
 
 /* Unimplemented interrupts */
 GPIO(ALS_RGB_INT_ODL,      PIN(C, 10), GPIO_INPUT)
