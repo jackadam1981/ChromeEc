@@ -392,6 +392,13 @@ void ec_comm_packet_mode_dis(enum gpio_signal unsed);
  */
 int ec_comm_is_uart_in_packet_mode(int uart);
 
+/*
+ * Block or unblock EC-CR50 communication.
+ * @param block   non-zero value blocks EC-CR50 communication.
+ *                Zero value unblocks it.
+ */
+void ec_comm_block(int block);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
