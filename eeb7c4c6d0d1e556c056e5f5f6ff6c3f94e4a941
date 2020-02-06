@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aa68a2c_4b6f4646",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-06T00:23:11Z",
+      "side": 1,
+      "message": "Nevermind, I see the followup commit that adds separate stm32mon retries value.",
+      "parentUuid": "4a5193b6_de6df36e",
+      "range": {
+        "startLine": 123,
+        "startChar": 33,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "eeb7c4c6d0d1e556c056e5f5f6ff6c3f94e4a941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb1172cb_8d6c5f4d",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 20
