@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6670f04e_a76509cb",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-06T20:06:20Z",
+      "side": 1,
+      "message": "can we add comment above thie line (and other lines) saying why we are using these options\n\nFor this CL we could just document the -MT usage and why is it important to us",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 6
+      },
+      "revId": "66f6662041addbe7b25a3c19b86f823ad3647c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
