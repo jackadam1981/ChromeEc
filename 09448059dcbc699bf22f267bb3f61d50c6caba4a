@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "731f8313_38464756",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-06T20:38:25Z",
+      "side": 1,
+      "message": "Can you add a comment if RX is disabled by ccdblock, tx will be disabled later.",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 59
+      },
+      "revId": "09448059dcbc699bf22f267bb3f61d50c6caba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
