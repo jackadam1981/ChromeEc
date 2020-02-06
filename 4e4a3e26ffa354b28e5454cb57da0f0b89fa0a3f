@@ -16,6 +16,24 @@
       "revId": "4e4a3e26ffa354b28e5454cb57da0f0b89fa0a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a2f3d4_2a8f04c5",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-06T14:58:12Z",
+      "side": 1,
+      "message": "I wasn\u0027t sending out an error because this is an optional part and wanted it to slide under the radar if the running board did not need a retimer on USB-A1.  I added a message that indicates it is either not present or having problems setting the gain.",
+      "parentUuid": "cfda3414_174f3f20",
+      "revId": "4e4a3e26ffa354b28e5454cb57da0f0b89fa0a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
