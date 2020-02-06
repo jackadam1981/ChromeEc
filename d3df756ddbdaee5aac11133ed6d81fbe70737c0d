@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "265d6b52_24a8db02",
+        "filename": "common/vboot/vb21_lib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-06T00:09:03Z",
+      "side": 1,
+      "message": "Updated the other references.",
+      "parentUuid": "a5716b62_58146834",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "d3df756ddbdaee5aac11133ed6d81fbe70737c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19f36cff_de1ab0af",
         "filename": "common/vboot/vb21_lib.c",
         "patchSetId": 5
