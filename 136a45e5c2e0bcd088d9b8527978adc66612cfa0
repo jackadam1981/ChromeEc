@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86684874_fde4eeb2",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-06T09:57:33Z",
+      "side": 1,
+      "message": "Does it need to charger_enable_otg_power(1) before setting current and voltage?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "136a45e5c2e0bcd088d9b8527978adc66612cfa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2e2bf5_7f379645",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-06T09:57:33Z",
+      "side": 1,
+      "message": "Does it need to charger_enable_otg_power(0) after setting current and voltage.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "136a45e5c2e0bcd088d9b8527978adc66612cfa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
