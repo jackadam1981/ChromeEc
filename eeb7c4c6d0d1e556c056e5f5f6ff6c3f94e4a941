@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a5193b6_de6df36e",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-06T00:17:55Z",
+      "side": 1,
+      "message": "Did you mean to use FLAG_retries here?",
+      "range": {
+        "startLine": 123,
+        "startChar": 33,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "eeb7c4c6d0d1e556c056e5f5f6ff6c3f94e4a941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1172cb_8d6c5f4d",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 20
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-06T00:17:55Z",
+      "side": 1,
+      "message": "I think you don\u0027t necessarily need cmd_exit_status? Just use \"$?\" in the if statement?",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 6
+      },
+      "revId": "eeb7c4c6d0d1e556c056e5f5f6ff6c3f94e4a941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
