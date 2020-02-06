@@ -22,6 +22,30 @@
       "revId": "8c603b429189d68147a4d99531a5658aece5b3da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f8f0aee_9981cdd0",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-06T21:27:28Z",
+      "side": 1,
+      "message": "I figured we should take some scope shots first. The benefit to the PD latency is minimal going from 400 kHz to 1 MHz.",
+      "parentUuid": "702d0adf_779eb126",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "8c603b429189d68147a4d99531a5658aece5b3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
