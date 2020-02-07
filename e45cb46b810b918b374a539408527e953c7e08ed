@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "c79419ae_1d70b1d1",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-07T21:02:21Z",
+      "side": 1,
+      "message": "Honestly I can\u0027t justify the original order of the code here. I admit that I haven\u0027t spent as much time thinking about it as I should have originally. After a second look this makes more sense to me as far as glitches are concerned.",
+      "parentUuid": "4492b4a5_4359e4f7",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 42
+      },
+      "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45b3d596_45506a06",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 2
@@ -143,6 +167,24 @@
       "side": 1,
       "message": "In a similar vein here. I was hoping I would avoid gitches. Set the output level first, then release control of spi pins. I almost think spi_enable(.., 0) should be last.\n\nBut now that you mention in, I do wonder if gpio_set_flags won\u0027t get clobbered by gpio_config_module(0).",
       "parentUuid": "45b3d596_45506a06",
+      "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa7f839_7a30d143",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-07T21:02:21Z",
+      "side": 1,
+      "message": "Does not get clobbered, since our flags are set to 0 (no GPIO_DEFAULT in them).\n\nI do want to move the spi peripheral stuff down though.",
+      "parentUuid": "c29acb9a_b5d7b6bc",
       "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
