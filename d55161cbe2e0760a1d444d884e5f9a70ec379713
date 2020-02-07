@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbac7fc3_804e0018",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T05:08:05Z",
+      "side": 1,
+      "message": "Why is it legitimate that they do not exit mode? My reading of the DP Alt Mode on Type-C spec suggest that they must.\n\nVersion 1.0 Section 5.2.6 - DisplayPort Exit Mode\n\n\"\"\"\nIf the UFP_U receives an Exit Mode command when in DisplayPort Configuration,\nit shall switch to USB Configuration and then continue with the other actions that it performs\non receiving an Exit Mode command.\n\nThe UFP_U that receives the Exit Mode VDM shall return to VCONN default power consumption,\nand exit the node, returning to normal USB operation. It shall then send the Responder ACK\nresponse. The device is not allowed to return either a Responder NAK or Responder BUSY.\n\"\"\"",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "d55161cbe2e0760a1d444d884e5f9a70ec379713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
