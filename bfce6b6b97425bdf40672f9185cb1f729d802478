@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "da51bff3_d732c83a",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-07T18:22:55Z",
+      "side": 1,
+      "message": "I was following Hatch, which used 1%.  Looking at all boards, this setting varies from 1% to 3%.  Nami in particular includes the comment \n\n/* EC\u0027s thresholds. 3%: boot, 2%: no boot. Required for soft sync. */\n\nI\u0027ll switch to 3%. At the login screen, Volteer draws roughly 25-30W.  With the 61Wh battery, 3% will provide ~4 minutes of use.",
+      "parentUuid": "764d9443_ddd9ef25",
+      "range": {
+        "startLine": 131,
+        "startChar": 50,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a75a8f2_6e068281",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 1
@@ -83,6 +107,24 @@
       "writtenOn": "2020-02-07T00:27:03Z",
       "side": 1,
       "message": "Should we also define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW to 15001?",
+      "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b55f4a2_3c5057a8",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-07T18:22:55Z",
+      "side": 1,
+      "message": "I think that would block trickle charge of a dead battery if the RO is prevented from doing PD negotiation.  Without a PD contract, we\u0027re limited to 15W.",
+      "parentUuid": "0a75a8f2_6e068281",
       "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
