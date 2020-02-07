@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "75108810_92bdbf0a",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:22:45Z",
+      "side": 1,
+      "message": "I confused again offset and calibration. Still, calibration should be per sensor and stored in motion_sensor_t.",
+      "parentUuid": "56e07b10_c3d3dd1b",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "765a9e0f_2865506d",
         "filename": "common/online_calibration.c",
         "patchSetId": 7
