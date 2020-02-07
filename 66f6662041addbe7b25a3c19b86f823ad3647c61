@@ -46,6 +46,30 @@
       "revId": "66f6662041addbe7b25a3c19b86f823ad3647c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec0ef2e_9d6499e0",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-07T17:49:45Z",
+      "side": 1,
+      "message": "Adding documentation for the intent of adding flags seems like a beneficial practice. I don\u0027t think that a lack of existing documentation should be reason for not adding future documentation.\n\nI think it would be beneficial to actually document why the other flags are in use as well.\n\nCommit history can be tricky to trace through to figure out the intent of code; it is not impossible but can be time consuming especially if there have been refactor CLs in between the CL you care about and the ToT. A comment is easier to follow.\n\nSent out CL:2044358 to add comments if you care.\n\n---\n\nI also agree with submitting this fix to ToT quickly was important. I didn\u0027t think adding comment would be contentious or time consuming.",
+      "parentUuid": "6a34af70_b5af72e9",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 6
+      },
+      "revId": "66f6662041addbe7b25a3c19b86f823ad3647c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
