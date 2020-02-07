@@ -1797,6 +1797,79 @@ bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id);
  */
 bool is_transmit_msg_sop_prime(int port);
 
+/**
+ * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ * @return		Status of CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
+ */
+bool is_transmit_msg_sop_prime_prime(int port);
+
+/**
+ * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
+ *
+ *@param port		USB-C port number
+ *@return		Status of CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
+ */
+bool is_transmit_msg_sop_prime_prime(int port);
+
+/**
+ * Returns the type of communication (SOP/SOP'/SOP'')
+ *
+ * @param port		USB-C port number
+ * @param data_role	current data role
+ * @param pd_flags	current pd flags
+ * @return		Type of message to be transmitted
+ */
+enum pd_msg_type pd_msg_tx_type(int port, enum pd_data_role data_role,
+				uint32_t pd_flags);
+
+/**
+ * Reset Cable type, Cable attributes and cable flags
+ *
+ *@param port     USB-C port number
+ */
+void reset_pd_cable(int port);
+
+/**
+ * Returns true if the number of data objects in the payload is greater than
+ * than the VDO index
+ *
+ * @param cnt      number of data objects in payload
+ * @param index    VDO Index
+ * @return         True if number of data objects is greater than VDO index,
+ *                 false otherwise
+ */
+bool is_vdo_present(int cnt, int index);
+
+/**
+ * Sets cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ */
+void enable_transmit_sop_prime(int port);
+
+/**
+ * Clears cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ */
+void disable_transmit_sop_prime(int port);
+
+/**
+ * Sets cable flag - CABLE_FLAGS_SOP_PRIME_PRIMEENABLE
+ *
+ * @param port		USB-C port number
+ */
+void enable_transmit_sop_prime_prime(int port);
+
+/**
+ * Clears cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
+ *
+ * @param port		USB-C port number
+ */
+void disable_transmit_sop_prime_prime(int port);
+
 /*
  * Return the pointer to PD alternate mode policy
  * Note: Caller function can mutate the data in this structure.
@@ -1824,38 +1897,23 @@ struct pd_cable *pd_get_cable_attributes(int port);
 void pd_set_dfp_enter_mode_flag(int port, bool set);
 
 /**
- * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
- *
- * @param port		USB-C port number
- * @return		Status of CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
- */
-bool is_transmit_msg_sop_prime_prime(int port);
-
-/**
- * Returns the type of communication (SOP/SOP'/SOP'')
- *
- * @param port		USB-C port number
- * @param data_role	current data role
- * @param pd_flags	current pd flags
- * @return		Type of message to be transmitted
- */
-enum pd_msg_type pd_msg_tx_type(int port, enum pd_data_role data_role,
-				uint32_t pd_flags);
-
-/**
- * Reset Cable type, Cable attributes and cable flags
- *
- * @param port     USB-C port number
- */
-void reset_pd_cable(int port);
-
-/**
  * Return the type of cable attached
  *
  * @param port	USB-C port number
  * @return	cable type
  */
 enum idh_ptype get_usb_pd_cable_type(int port);
+
+/**
+ * Stores the cable's response to discover Identity SOP' request
+ *
+ * @param port      USB-C port number
+ * @param cnt       number of data objects in payload
+ * @param payload   payload data
+ * @param head      PD packet header
+ */
+void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
+					uint16_t head);
 
 /**
  * Return enter USB message payload
