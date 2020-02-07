@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7cce4b8_bcbc8100",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T19:32:51Z",
+      "side": 1,
+      "message": "Right, define CONFIG_BACKLIGHT_LID in baseboard.h.",
+      "parentUuid": "c686a5c8_9f558147",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89b8eff9_b9962fb9",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-07T19:12:39Z",
       "side": 1,
       "message": "does this change need to happen since you\u0027re changing the value in baseboard_chipset_startup (or elsewhere)?",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1921f4b4_842d7814",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T19:32:51Z",
+      "side": 1,
+      "message": "We shouldn\u0027t initialize it to enabled.",
+      "parentUuid": "89b8eff9_b9962fb9",
       "range": {
         "startLine": 68,
         "startChar": 40,
@@ -65,6 +113,40 @@
         "endLine": 74,
         "endChar": 53
       },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b6173bd_6fda4831",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T19:32:51Z",
+      "side": 1,
+      "message": "Can you update the comment to account for PCH_PWROK?",
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b222920_2ac85946",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T19:32:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to enforce the 2ms minimum delay? Should we just combine all these actions into the deferred function and rename it?",
       "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
