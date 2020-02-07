@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a938da4_e2bcf9cf",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-07T18:09:35Z",
+      "side": 1,
+      "message": "There are configurations that this function is overridden and the defines are not present.  I can\u0027t use #error and this would give a compile error in these cases.  I just want to catch boards that should have overridden due to not defining GPIO_USB_Cx_DP_HPD but didn\u0027t.  I will make this an assert after the printf",
+      "parentUuid": "a5545ae4_6639e0aa",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "d8d0284930811e099c769baadbb2774a8e9e35c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "894f6640_2da0c7c2",
         "filename": "include/usb_common.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d8d0284930811e099c769baadbb2774a8e9e35c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1dc001_d10be254",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-07T18:09:35Z",
+      "side": 1,
+      "message": "renamed PORT_TO_HPD as pd_get_hpd_gpio",
+      "parentUuid": "894f6640_2da0c7c2",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "d8d0284930811e099c769baadbb2774a8e9e35c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
