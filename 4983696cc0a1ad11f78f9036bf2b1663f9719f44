@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "954c0bc5_fcb2bb6d",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1185694
+      },
+      "writtenOn": "2020-02-07T19:48:34Z",
+      "side": 1,
+      "message": "There are ways the kernel can read such data from coreboot using ACPI table.\ne.g ov5670_probe () in https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/media/i2c/ov5670.c\nIn this particular case, coreboot has to generate the ACPI tables dynamically based on the mux configuration that it does, depending on the Type-C devices connected during boot, which the extcon driver can consume during probe.\n\nIf we take a step back here, the extcon kernel driver is an intermediate solution to enable Type-C on Volteer. Details can be found here.\nhttps://partnerissuetracker.corp.google.com/issues/140404595#comment8\n\nI think we can keep this solution for now, while we work for the proper solution with the Type-C connector class driver (that will replace extcon driver, on which Benson/Prashant are working on) as applicable.",
+      "parentUuid": "3966e101_e7e6c367",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
