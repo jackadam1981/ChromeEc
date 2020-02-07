@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ec9b00d_e7ad9c01",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:21:42Z",
+      "side": 1,
+      "message": "for factory calibration.",
+      "revId": "b0d743693e5125d4d8f01258357dbc87f7120a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb7d783_579dcf96",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2440,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:21:42Z",
+      "side": 1,
+      "message": "Rename ONLINE_CALIB_READ, to make a difference from factory calibration (MOTIONSENSE_CMD_SENSOR_OFFSET)",
+      "revId": "b0d743693e5125d4d8f01258357dbc87f7120a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0ffba9_9b0e282c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:21:42Z",
+      "side": 1,
+      "message": "Not needed: read calibration data per sensor, the kernel has no concept of reading for all sensors.",
+      "revId": "b0d743693e5125d4d8f01258357dbc87f7120a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
