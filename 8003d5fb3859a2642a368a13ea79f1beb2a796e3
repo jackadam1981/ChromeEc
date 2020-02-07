@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c686a5c8_9f558147",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-07T19:12:39Z",
+      "side": 1,
+      "message": "this should be dependent on the state of the lid switch",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b8eff9_b9962fb9",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-07T19:12:39Z",
+      "side": 1,
+      "message": "does this change need to happen since you\u0027re changing the value in baseboard_chipset_startup (or elsewhere)?",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec0b279_0651c32b",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-07T19:12:39Z",
+      "side": 1,
+      "message": "this will cause leakage in low power states.\nAP firmware should enable its internal pull-up instead.",
+      "range": {
+        "startLine": 74,
+        "startChar": 40,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
