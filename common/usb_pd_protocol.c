@@ -616,6 +616,15 @@ static int reset_device_and_notify(int port)
 
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
+static void reset_pd_cable(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	memset(&cable, 0, sizeof(cable));
+	cable->last_sop_p_msg_id = INVALID_MSG_ID_COUNTER;
+	cable->last_sop_p_p_msg_id = INVALID_MSG_ID_COUNTER;
+}
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static int get_bbram_idx(int port)
 {
@@ -690,6 +699,30 @@ static bool consume_sop_repeat_message(int port, uint8_t msg_id)
 	return true;
 }
 
+static bool consume_sop_prime_repeat_msg(int port, uint8_t msg_id)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	if (cable->last_sop_p_msg_id != msg_id) {
+		cable->last_sop_p_msg_id = msg_id;
+		return false;
+	}
+	CPRINTF("C%d SOP Prime repeat msg_id %d\n", port, msg_id);
+	return true;
+}
+
+static bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	if (cable->last_sop_p_p_msg_id != msg_id) {
+		cable->last_sop_p_p_msg_id = msg_id;
+		return false;
+	}
+	CPRINTF("C%d SOP Prime Prime repeat msg_id %d\n", port, msg_id);
+	return true;
+}
+
 /**
  * Identify and drop any duplicate messages received at the port.
  *
@@ -709,14 +742,15 @@ static bool consume_repeat_message(int port, uint16_t msg_header)
 	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
 	    PD_HEADER_CNT(msg_header) == 0) {
 		return false;
-	} else if (is_transmit_msg_sop_prime(port)) {
-		return consume_sop_prime_repeat_msg(port, msg_id);
-	} else if (is_transmit_msg_sop_prime_prime(port)) {
-		return consume_sop_prime_prime_repeat_msg(port, msg_id);
-	} else {
-		return consume_sop_repeat_message(port, msg_id);
 	}
 
+	if (is_transmit_msg_sop_prime(port))
+		return consume_sop_prime_repeat_msg(port, msg_id);
+
+	if (is_transmit_msg_sop_prime_prime(port))
+		return consume_sop_prime_prime_repeat_msg(port, msg_id);
+
+	return consume_sop_repeat_message(port, msg_id);
 }
 
 /**
@@ -2240,6 +2274,45 @@ static void exit_tbt_mode_sop_prime(int port)
 
 	usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
 		   pd_get_polarity(port));
+}
+
+static enum pd_msg_type pd_msg_tx_type(int port, enum pd_data_role data_role,
+				uint32_t pd_flags)
+{
+	/*
+	 * Ref: USB PD 3.0 sec 2.5.4: When an Explicit Contract is in place the
+	 * VCONN Source (either the DFP or the UFP) can communicate with the
+	 * Cable Plug(s) using SOP’/SOP’’ Packets
+	 *
+	 * Ref: USB PD 2.0 sec 2.4.4: When an Explicit Contract is in place the
+	 * DFP (either the Source or the Sink) can communicate with the
+	 * Cable Plug(s) using SOP’/SOP” Packets.
+	 * Sec 3.6.11 : Before communicating with a Cable Plug a Port Should
+	 * ensure that it is the Vconn Source
+	 */
+	if (pd_flags & PD_FLAGS_VCONN_ON && (IS_ENABLED(CONFIG_USB_PD_REV30) ||
+		data_role == PD_ROLE_DFP)) {
+		if (is_transmit_msg_sop_prime(port))
+			return PD_MSG_SOP_PRIME;
+		if (is_transmit_msg_sop_prime_prime(port))
+			return PD_MSG_SOP_PRIME_PRIME;
+	}
+
+	if (is_transmit_msg_sop_prime(port)) {
+		/*
+		 * Clear the CABLE_FLAGS_SOP_PRIME_ENABLE flag if the port is
+		 * unable to communicate with the cable plug.
+		 */
+		disable_transmit_sop_prime(port);
+	} else if (is_transmit_msg_sop_prime_prime(port)) {
+		/*
+		 * Clear the CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag if the port
+		 * is unable to communicate with the cable plug.
+		 */
+		disable_transmit_sop_prime_prime(port);
+	}
+
+	return PD_MSG_SOP;
 }
 
 static void pd_vdm_send_state_machine(int port)
