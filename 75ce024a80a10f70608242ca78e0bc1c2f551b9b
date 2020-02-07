@@ -16,6 +16,24 @@
       "revId": "75ce024a80a10f70608242ca78e0bc1c2f551b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c63e80e_bc9b24f4",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1374736
+      },
+      "writtenOn": "2020-02-07T06:03:35Z",
+      "side": 1,
+      "message": "Thanks. Looks the methods was modified. \nFixed in patch 11. and \"make -j BOARD\u003dkakadu\" passed.",
+      "parentUuid": "91a00eb7_4c7eca1f",
+      "revId": "75ce024a80a10f70608242ca78e0bc1c2f551b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
