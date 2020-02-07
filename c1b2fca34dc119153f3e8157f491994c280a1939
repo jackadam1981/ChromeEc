@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b5cefb0_550d9c2b",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "s/sample_time/timestamp to be consistent.",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a37675a_d4f60b4d",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "noop?",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e07b10_c3d3dd1b",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "Let\u0027s centralize all calibration information in motion_sensor_t:\nmagnetometer is in mag_cal_t -\u003ebias\nST sensors: stprivate_data -\u003eoffset\n..\nBMI160 is actually the exception, where offsets are saved inside the chip. We save a copy when we call -\u003eset_offset().",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765a9e0f_2865506d",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "Does not seems to be used. Add them in the proper CL.",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3557b70d_08cae3ce",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "Use uint32_t otherwise SENSOR_COUNT is now limited to 8 sensors.",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ca3077_d74733dc",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "Only if CONFIG_MKBP_EVENT is enabled.",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646810b8_73d4b9ef",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:17:06Z",
+      "side": 1,
+      "message": "remove, this function is called for all sensors.",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
