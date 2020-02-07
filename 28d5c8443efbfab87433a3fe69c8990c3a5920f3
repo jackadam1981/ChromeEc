@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "110f5eb1_2ebe4e29",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T05:06:40Z",
+      "side": 1,
+      "message": "Now these flags are set, but never checked. Therefore, they don\u0027t seem needed?",
+      "revId": "28d5c8443efbfab87433a3fe69c8990c3a5920f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
