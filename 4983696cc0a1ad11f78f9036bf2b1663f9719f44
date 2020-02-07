@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c81c488_55eb384b",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-07T00:17:03Z",
+      "side": 1,
+      "message": "This comment is nearly identical to the one you\u0027ve added to ec_commands.h.\n\nIf I understand the intent correctly, the EC is simply being used to store the coreboot TCSS state so that the kernel can read it later. Will the EC code ever need to take action based on what coreboot stores into this variable? If the EC never uses this data directly, why is the EC used to store this data?  Aren\u0027t there other ways for coreboot/BIOS and the kernel to share volatile data directly?\n\nIf the EC will have to take action based on this field, then we need to document the specific bits that can be set and their meaning.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
