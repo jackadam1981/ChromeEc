@@ -38,16 +38,6 @@ static const char *boot_mode_to_string(uint8_t mode)
 	return "UNDEF";
 }
 
-/*
- * Check whether the session has successfully ended or not. ERR_TIMEOUT is
- * excluded because it's an internal error produced by EC itself.
- */
-static bool is_valid_cr50_response(enum cr50_comm_err code)
-{
-	return code != CR50_COMM_ERR_TIMEOUT
-			&& (code >> 8) == CR50_COMM_ERR_PREFIX;
-}
-
 static void enable_packet_mode(bool enable)
 {
 	/*
@@ -62,6 +52,7 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	timestamp_t until;
 	int i, timeout = 0;
 	struct cr50_comm_response res = {};
+	uint8_t *const res_buffer = (uint8_t *)&res;
 
 	/* This will wake up (if it's sleeping) and interrupt Cr50. */
 	enable_packet_mode(true);
@@ -90,11 +81,12 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	task_disable_task(TASK_ID_CONSOLE);
 
 	/* Wait for response from Cr50 */
-	for (i = 0; i < sizeof(res); i++) {
+	for (i = 0; i < sizeof(struct cr50_comm_response); i++) {
 		while (!timeout) {
+			/* Poll UART for RX data, -1 means nothing waiting */
 			int c = uart_getc();
 			if (c != -1) {
-				res.error = res.error | c << (i*8);
+				res_buffer[i] = c;
 				break;
 			}
 			msleep(1);
@@ -112,9 +104,14 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 		return CR50_COMM_ERR_TIMEOUT;
 	}
 
-	CPRINTS("Received 0x%04x", res.error);
+	/* Check for a valid response by presence of expected preamble value */
+	if (res.preamble != CR50_COMM_PREAMBLE) {
+		CPRINTS("Received bad preamble 0x%02x!", res.preamble);
+		return CR50_COMM_ERR_UNKNOWN;
+	}
 
-	return res.error;
+	CPRINTS("Received response code 0x%02x", res.response_code);
+	return res.response_code;
 }
 
 static enum cr50_comm_err cmd_to_cr50(enum cr50_comm_cmd cmd,
@@ -146,7 +143,7 @@ static enum cr50_comm_err cmd_to_cr50(enum cr50_comm_cmd cmd,
 	do {
 		rv = send_to_cr50((uint8_t *)&s,
 				  sizeof(s.preamble) + sizeof(*p) + p->size);
-		if (is_valid_cr50_response(rv))
+		if (rv == CR50_COMM_SUCCESS)
 			break;
 		msleep(5);
 	} while (--retry);
