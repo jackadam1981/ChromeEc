@@ -59,6 +59,7 @@ $(obj)/%.o: $(obj)/%.c
 
 $(obj)/%.o: %.c
 	$(call echo,"  CC      $(notdir $@)")
+	# MT explicitly sets target file to work around ccache issue
 	$(Q)gcc $(CFLAGS) -Wall -Werror -MMD -MF $@.d -MT $@ -o $@ $<
 
 $(obj)/_$(TARGET).so: $(OBJS) $(obj)/$(TARGET).py
