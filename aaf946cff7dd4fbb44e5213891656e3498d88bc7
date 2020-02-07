@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9d830a8_7e58bdf5",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-07T01:44:58Z",
+      "side": 1,
+      "message": "Let\u0027s distinguish these and have cr50 return CR50_COMM_ERROR_NVMEM.",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "aaf946cff7dd4fbb44e5213891656e3498d88bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
