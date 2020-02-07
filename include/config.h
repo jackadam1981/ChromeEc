@@ -3888,7 +3888,10 @@
 #undef CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_TCPM_TCPCI
 #undef CONFIG_USB_PD_TCPM_FUSB302
+/* CONFIG_USB_PD_TCPM_ITE83XX is for chip IT8320 series */
 #undef CONFIG_USB_PD_TCPM_ITE83XX
+/* CONFIG_USB_PD_TCPM_ITE8XXX2 is for chip IT8xxx1 or IT8xxx2 series */
+#undef CONFIG_USB_PD_TCPM_ITE8XXX2
 #undef CONFIG_USB_PD_TCPM_ANX3429
 #undef CONFIG_USB_PD_TCPM_ANX740X
 #undef CONFIG_USB_PD_TCPM_ANX741X
@@ -4780,7 +4783,7 @@
 
 /*****************************************************************************/
 /*
- * Define CONFIG_USB_PD_TCPC_ON_CHIP if we use ITE83XX series TCPM driver
+ * Define CONFIG_USB_PD_TCPC_ON_CHIP if we use ITE series TCPM driver
  * on the board.
  */
 #if defined(CONFIG_USB_PD_TCPM_ITE83XX) ||  \
