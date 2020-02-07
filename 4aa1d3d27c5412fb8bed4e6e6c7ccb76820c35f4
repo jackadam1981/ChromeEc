@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e5157d7_1b2f5b15",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "If we are checking sensor_num here, use sensor_num \u003c SENSOR_COUNT",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730469eb_084e3267",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "sensor_num also check in is_new_timestamp.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ae5506_e670fa7f",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "Add a BUILD_ASSERT() check in motionsense.c that SENSOR_COUNT is less than 32.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd03fa19_0cd43961",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "At this stage, the timestamps are not spread. Will it be a problem?\nIf not, we should process all the samples here.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd53285_6d984f8b",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "why does it need to be a fp_t is the temperature is only has 1K precision anyway.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f518f17_6a30cb70",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "timestamp unused.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ad39d35_0c91798e",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T22:54:18Z",
+      "side": 1,
+      "message": "Add a TODO that the real code is missing.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
