@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "769f962e_64cfe2b9",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-07T21:04:40Z",
+      "side": 1,
+      "message": "You\u0027re right, this was wrong, added tests to catch this in the future for regression.",
+      "parentUuid": "7fe82fb5_b47bf5fe",
+      "revId": "3639d652d05884b4741ce23c5965667876a7839d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab9d7fd_71039ac9",
         "filename": "common/accel_cal.c",
         "patchSetId": 21
@@ -51,6 +69,24 @@
       "revId": "3639d652d05884b4741ce23c5965667876a7839d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46fce498_dfecf0a5",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-07T21:04:40Z",
+      "side": 1,
+      "message": "Kasa has no limit or threshold for the number of samples technically, it only gets better the more samples there are. It also has some strange properties that make it very hard to predict when a good center can be computed. The best indicator (without running the calculation is the eigen value test), but as I found out in my research (see the doc I linked in the commit message) it\u0027s not a good one. It filter out a lot of cases where we could have had a good calculation. Instead, I found it\u0027s much better to just rely on having a certain threshold of orientations represented in the accumulator (which is the trigger for the newton algorithm).\n\nSo as it is right now, we\u0027ll keep getting samples until we\u0027ve collected enough orientations for newton\u0027s algorithm. At this point we know that we can calculate a good bias. We try to compute using the Kasa algorithm first because it\u0027s much much cheaper. If the radius we get back is close to 1, then we can stop. But in some cases (when the orientations are close to each other) the Kasa algorithm optimizes for a smaller radius. In that case, we fall back to the newton algorithm.",
+      "parentUuid": "3ab9d7fd_71039ac9",
+      "revId": "3639d652d05884b4741ce23c5965667876a7839d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
