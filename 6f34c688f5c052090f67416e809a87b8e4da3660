@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c56530f6_32388714",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-07T23:22:23Z",
+      "side": 1,
+      "message": "The kernel uses kerneldoc, not doxygen. I\u0027m not sure if kerneldoc supports inline documentation format: https://www.kernel.org/doc/Documentation/kernel-doc-nano-HOWTO.txt",
+      "parentUuid": "a631c106_8f5e9280",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "6f34c688f5c052090f67416e809a87b8e4da3660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9367bdb_a8a92ee3",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
         "patchSetId": 2
