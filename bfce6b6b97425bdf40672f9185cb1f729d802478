@@ -46,6 +46,23 @@
       "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a75a8f2_6e068281",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-07T00:27:03Z",
+      "side": 1,
+      "message": "Should we also define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW to 15001?",
+      "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
