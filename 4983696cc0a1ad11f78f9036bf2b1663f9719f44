@@ -70,6 +70,76 @@
       "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d233f4d_29950665",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-07T17:28:40Z",
+      "side": 1,
+      "message": "I understand.  Please update comment to explicitly state that the EC should not modify or use this data.  You can also reference ec_params_usb_pd_set_tcss_state for additional details on how the host uses this data.",
+      "parentUuid": "717a44b7_c9b0531b",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a314ad23_642a8b98",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-07T17:28:40Z",
+      "side": 1,
+      "message": "This comment is duplicated in three places.  I think it makes sense to put  most of the details with the ec_params_usb_pd_set_tcss_state definition.\nThis comment can then just note that this field returns the last TCSS state written by the host and reference ec_params_usb_pd_set_tcss_state and EC_CMD_USB_PD_SET_TCSS_STATE.",
+      "range": {
+        "startLine": 5230,
+        "startChar": 0,
+        "endLine": 5238,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f403bc_ec4fe5e8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5323,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-07T17:28:40Z",
+      "side": 1,
+      "message": "Please note that the EC will never modify or use the contents of tcss_state and that it must always be returned unmodified back to the host as part of EC_CMD_USB_PD_CONTROL.",
+      "range": {
+        "startLine": 5317,
+        "startChar": 0,
+        "endLine": 5323,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
