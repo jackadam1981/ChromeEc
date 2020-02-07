@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af4d80f_c16bd54c",
+        "filename": "baseboard/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-07T04:49:29Z",
+      "side": 1,
+      "message": "I\u0027m just a little bit uncomfortable having this here, because there\u0027s no guarantee this gets called before we try using the sensors.\n\nBut regardless, i don\u0027t like that this is not symmetric with another call from emmc_enable_spi. \n\n\"gpio_config_module(MODULE_SPI_FLASH, 1);\" happens in emmc_init_spi, only at HOOK_PRIO_INIT_SPI time. So this could be disabling it and nothing reenabling it again. (unless silegro is saving us with a cold reset)",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 41
+      },
+      "revId": "f643735077c44cd0a9d1a82341922476a0272059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
