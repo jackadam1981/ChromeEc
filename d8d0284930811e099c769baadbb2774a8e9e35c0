@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5545ae4_6639e0aa",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-07T17:34:34Z",
+      "side": 1,
+      "message": "what uses this? Can we put a #error here?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "d8d0284930811e099c769baadbb2774a8e9e35c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "894f6640_2da0c7c2",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-07T17:34:34Z",
+      "side": 1,
+      "message": "Please make the lower case. maybe get_hpd_gpio(int port)\n\nThis can be a child CL in this CL stack if it makes it easier to reason about.",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "d8d0284930811e099c769baadbb2774a8e9e35c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
