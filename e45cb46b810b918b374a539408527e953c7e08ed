@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca8bc709_daad0c2e",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-07T04:55:27Z",
+      "side": 1,
+      "message": "Should there be a \n\"\tgpio_config_module(MODULE_SPI_MASTER, 0);\" somewhere in the emmc init code or do we think the silegro triggered cold reset is enough once we get back to RO?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 42
+      },
+      "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
