@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90bf1af0_fb975298",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-02-07T03:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4291437_a4b74bff",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 4
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810f3741_3b6260b0",
         "filename": "board/kindred/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "18efedc7827e571db05674346a1353cf347ede70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ee5106_e905652f",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-02-07T03:05:26Z",
+      "side": 1,
+      "message": "Done, remove system_in_resume_state.",
+      "parentUuid": "810f3741_3b6260b0",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 28
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "18efedc7827e571db05674346a1353cf347ede70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143ca58d_2214f7c2",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-02-07T03:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd17aac_01571c94",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ac410ab_7279c307",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-02-07T03:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe2ca7a_76cda1d6",
+      "range": {
+        "startLine": 59,
+        "startChar": 27,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +258,30 @@
       "revId": "18efedc7827e571db05674346a1353cf347ede70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddbc5981_86d7f4bc",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-02-07T03:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6afc079_b4feca19",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "18efedc7827e571db05674346a1353cf347ede70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
