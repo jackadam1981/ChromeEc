@@ -82,6 +82,11 @@ __overridable int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 	return gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD);
 }
 
+__overridable void board_jsl_all_sys_pwrgd(int value)
+{
+
+}
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	int timeout_ms = 50;
@@ -164,6 +169,7 @@ static void enable_pp5000_rail(void)
 static void assert_ec_ap_vccst_pwrgd(void)
 {
 	GPIO_SET_LEVEL(GPIO_EC_AP_VCCST_PWRGD_OD, 1);
+	GPIO_SET_LEVEL(GPIO_EC_AP_PCH_PWROK_OD, 1);
 }
 DECLARE_DEFERRED(assert_ec_ap_vccst_pwrgd);
 #endif /* CONFIG_CHIPSET_JASPERLAKE */
@@ -193,10 +199,13 @@ enum power_state power_handle_state(enum power_state state)
 	 * delay minimum.
 	 */
 	if (all_sys_pwrgd_in && !gpio_get_level(GPIO_EC_AP_VCCST_PWRGD_OD)) {
+		board_jsl_all_sys_pwrgd(all_sys_pwrgd_in);
 		hook_call_deferred(&assert_ec_ap_vccst_pwrgd_data, 2 * MSEC);
 	} else if (!all_sys_pwrgd_in &&
 		   gpio_get_level(GPIO_EC_AP_VCCST_PWRGD_OD)) {
 		GPIO_SET_LEVEL(GPIO_EC_AP_VCCST_PWRGD_OD, 0);
+		GPIO_SET_LEVEL(GPIO_EC_AP_PCH_PWROK_OD, 0);
+		board_jsl_all_sys_pwrgd(all_sys_pwrgd_in);
 	}
 #endif /* CONFIG_CHIPSET_JASPERLAKE */
 

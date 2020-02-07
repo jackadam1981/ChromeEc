@@ -42,6 +42,14 @@ __override int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 		gpio_get_level(GPIO_PG_DRAM_OD);
 }
 
+__override void board_jsl_all_sys_pwrgd(int value)
+{
+	/*
+	 * ALL_SYS_PWRGD is an AND of both DRAM PGOOD and VCCST PGOOD.
+	 */
+	gpio_set_level(GPIO_ALL_SYS_PWRGD, value);
+}
+
 __override int power_signal_get_level(enum gpio_signal signal)
 {
 	if (signal == GPIO_PG_EC_DSW_PWROK)
@@ -63,6 +71,8 @@ void baseboard_chipset_startup(void)
 {
 	/* Allow keyboard backlight to be enabled */
 	gpio_set_level(GPIO_EN_KB_BL, 1);
+	/* Allow display backlight to be enabled */
+	gpio_set_level(GPIO_EN_BL_OD, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 	     HOOK_PRIO_DEFAULT);
@@ -71,6 +81,8 @@ void baseboard_chipset_shutdown(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
 	gpio_set_level(GPIO_EN_KB_BL, 0);
+	/* Turn off the display backlight if it's on. */
+	gpio_set_level(GPIO_EN_BL_OD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
