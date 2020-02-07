@@ -32,6 +32,7 @@
 /* Battery */
 #ifdef BOARD_KRANE
 #define BATTERY_DESIRED_CHARGING_CURRENT    3500  /* mA */
+#undef CONFIG_SYSTEM_UNLOCKED
 #else
 #define BATTERY_DESIRED_CHARGING_CURRENT    2000  /* mA */
 #endif /* BOARD_KRANE */

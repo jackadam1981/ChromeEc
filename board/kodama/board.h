@@ -28,6 +28,8 @@
 
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 
+#undef CONFIG_SYSTEM_UNLOCKED
+
 /* free flash space */
 #ifdef SECTION_IS_RO
 #undef CONFIG_USB_PD_DEBUG_LEVEL
