@@ -81,6 +81,11 @@ uint8_t pd_get_src_cap_cnt(int port)
 
 static struct pd_cable cable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+struct pd_cable *pd_get_cable_attributes(int port)
+{
+	return &cable[port];
+}
+
 bool is_transmit_msg_sop_prime(int port)
 {
 	return (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
@@ -115,13 +120,13 @@ bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id)
 	return true;
 }
 
-static void disable_transmit_sop_prime(int port)
+void disable_transmit_sop_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
 }
 
-static void disable_transmit_sop_prime_prime(int port)
+void disable_transmit_sop_prime_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
@@ -171,11 +176,6 @@ void reset_pd_cable(int port)
 	memset(&cable[port], 0, sizeof(cable[port]));
 	cable[port].last_sop_p_msg_id = INVALID_MSG_ID_COUNTER;
 	cable[port].last_sop_p_p_msg_id = INVALID_MSG_ID_COUNTER;
-}
-
-enum idh_ptype get_usb_pd_cable_type(int port)
-{
-	return cable[port].type;
 }
 
 union tbt_mode_resp_cable get_cable_tbt_vdo(int port)
@@ -293,23 +293,6 @@ void disable_enter_usb4_mode(int port)
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 
 static struct pd_policy pe[CONFIG_USB_PD_PORT_MAX_COUNT];
-
-static int is_vdo_present(int cnt, int index)
-{
-	return cnt > index;
-}
-
-static void enable_transmit_sop_prime(int port)
-{
-	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
-}
-
-static void enable_transmit_sop_prime_prime(int port)
-{
-	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
-		cable[port].flags |= CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE;
-}
 
 static bool is_tbt_compat_enabled(int port)
 {
@@ -545,33 +528,6 @@ void pd_dfp_pe_init(int port)
 	memset(&pe[port], 0, sizeof(struct pd_policy));
 }
 
-static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-					uint16_t head)
-{
-	if (cable[port].is_identified)
-		return;
-
-	/* Get cable rev */
-	cable[port].rev = PD_HEADER_REV(head);
-
-	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {
-		cable[port].type = PD_IDH_PTYPE(payload[VDO_INDEX_IDH]);
-		if (is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1))
-			cable[port].attr.raw_value =
-					payload[VDO_INDEX_PTYPE_CABLE1];
-	}
-	/*
-	 * Ref USB PD Spec 3.0  Pg 145. For active cable there are two VDOs.
-	 * Hence storing the second VDO.
-	 */
-	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
-	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
-	    cable[port].type == IDH_PTYPE_ACABLE)
-		cable[port].attr2.raw_value = payload[VDO_INDEX_PTYPE_CABLE2];
-
-	cable[port].is_identified = 1;
-}
-
 static int dfp_discover_ident(uint32_t *payload)
 {
 	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
@@ -606,11 +562,6 @@ struct pd_policy *pd_get_am_policy(int port)
 /* Note: Enter mode flag is not needed by TCPMv1 */
 void pd_set_dfp_enter_mode_flag(int port, bool set)
 {
-}
-
-struct pd_cable *pd_get_cable_attributes(int port)
-{
-	return &cable[port];
 }
 
 /*
