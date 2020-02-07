@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3966e101_e7e6c367",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-07T19:21:07Z",
+      "side": 1,
+      "message": "I think using ectool is better way to share information so that we dont have to involve other modules in coreboot or Kernel.",
+      "parentUuid": "3e7adb05_8388e94a",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "bc668eeb_ca51b4c5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5238,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-07T19:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a314ad23_642a8b98",
+      "range": {
+        "startLine": 5230,
+        "startChar": 0,
+        "endLine": 5238,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68f403bc_ec4fe5e8",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
@@ -164,6 +212,30 @@
       "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244084dd_d661d4c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5323,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-07T19:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f403bc_ec4fe5e8",
+      "range": {
+        "startLine": 5317,
+        "startChar": 0,
+        "endLine": 5323,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
