@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d4e4a06_3e29a82b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-07T21:42:24Z",
+      "side": 1,
+      "message": "Maybe add a brief description of why we only do this when the chipset is off. Essentially, we will do this when setting the data role and if the mux needs to be configured for DP Alt mode, it should be done when we perform DP configure.",
+      "revId": "f30a432042fec9f35289eccc4ad104df77059d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
