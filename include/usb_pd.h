@@ -1877,34 +1877,6 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
  * Return enter USB message payload
  *
  * @param port	USB-C port number
- */
-uint32_t get_enter_usb_msg_payload(int port);
-
-/**
- * Enter USB4 mode
- *
- * @param port	USB-C port number
- */
-void enter_usb4_mode(int port);
-
-/**
- * Clear enter USB4 mode
- *
- * @param port	USB-C port number
- */
-void disable_enter_usb4_mode(int port);
-
-/**
- * Return if need to enter into USB4 mode
- *
- * @param port	USB-C port number
- */
-bool should_enter_usb4_mode(int port);
-
-/**
- * Return the response of discover mode SOP prime, with SVID = 0x8087
- *
- * @param port	USB-C port number
  * @return	cable mode response vdo
  */
 union tbt_mode_resp_cable get_cable_tbt_vdo(int port);
@@ -1934,6 +1906,136 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port);
  * @return tbt_rounded_support
  */
 enum tbt_compat_rounded_support get_tbt_rounded_support(int port);
+
+/**
+ * Sets CABLE_FLAGS_TBT_COMPAT_ENABLE flag
+ *
+ * @param port	USB-C port number
+ */
+void enable_tbt_compat_mode(int port);
+
+/**
+ * Clears CABLE_FLAGS_TBT_COMPAT_ENABLE flag
+ *
+ * @param port	USB-C port number
+ */
+void disable_tbt_compat_mode(int port);
+
+/**
+ * Checks if CABLE_FLAGS_TBT_COMPAT_ENABLE flag is enabled
+ *
+ * @param port	USB-C port number
+ * @return      Status of CABLE_FLAGS_TBT_COMPAT_ENABLE flag
+ */
+bool is_tbt_compat_enabled(int port);
+
+/**
+ * Sets the Mux state to Thunderbolt-Compatible mode
+ *
+ *  @param port  USB-C port number
+ */
+void set_tbt_compat_mode_ready(int port);
+
+/**
+ * Checks if the attached cable supports superspeed
+ *
+ * @param port	USB-C port number
+ * @return      True if cable is superspeed, false otherwise
+ */
+bool is_tbt_cable_superspeed(int port);
+
+/**
+ * Check if product supports any Modal Operation (Alternate Modes)
+ *
+ * @param port	   USB-C port number
+ * @param cnt      number of data objects in payload
+ * @param payload  payload data
+ * @return         True if product supports Modal Operation, false otherwise
+ */
+bool is_modal(int port, int cnt, uint32_t *payload);
+
+/**
+ * Checks all the SVID for USB_VID_INTEL
+ *
+ * @param port	        USB-C port number
+ * @param prev_svid_cnt Previous SVID cnt
+ * @return              True is SVID = USB_VID_INTEL False otherwise
+ */
+bool is_intel_svid(int port, int prev_svid_cnt);
+
+/**
+ * Checks if Device disocver mode response contains Thunderbolt alternate mode
+ *
+ * @param port	   USB-C port number
+ * @param payload  payload data
+ * @param cnt      number of data objects in payload
+ * @return         True if Thunderbolt Alternate mode response is received,
+ *                 false otherwise
+ */
+bool is_tbt_compat_mode(int port, int cnt, uint32_t *payload);
+
+/**
+ * Sets CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED flags
+ *
+ * @param port     USB-C port number
+ */
+void limit_tbt_cable_speed(int port);
+
+/**
+ * Checks the status of CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED flags
+ *
+ * @param port   USB-C port number
+ * @return       True is CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED is set,
+ *               false otherwise
+ */
+bool is_limit_tbt_cable_speed(int port);
+
+/*
+ * The function returns checks if the cable supports Thunderbolt speed.
+ *
+ * @param port   USB-C port number
+ * @return       True if the Thunderbolt cable speed is TBT_SS_TBT_GEN3 or
+ *               TBT_SS_U32_GEN1_GEN2, false otherwise
+ */
+bool check_tbt_cable_speed(int port);
+
+/**
+ * This function fills the TBT3 objects in the payload and returns the number
+ * of objects it has filled.
+ *
+ * @param port      usb-c port number
+ * @param payload   payload data
+ * @return          Number of object filled
+ */
+int enter_tbt_compat_mode(int port, uint32_t *payload);
+
+/**
+ * Return enter USB message payload
+ *
+ * @param port	USB-C port number
+ */
+uint32_t get_enter_usb_msg_payload(int port);
+
+/**
+ * Enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void enter_usb4_mode(int port);
+
+/**
+ * Clear enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void disable_enter_usb4_mode(int port);
+
+/**
+ * Return if need to enter into USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+bool should_enter_usb4_mode(int port);
 
 /**
  * Return maximum allowed speed for Thunderbolt-compatible mode
