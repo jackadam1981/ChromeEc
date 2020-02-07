@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3e7adb05_8388e94a",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-07T17:29:43Z",
+      "side": 1,
+      "message": "+furquan, there are several ways to share information from coreboot to kernel.\n\nCould we add something to the cbmem, SMBios info, or ACPI tables (SSDT)?",
+      "parentUuid": "717a44b7_c9b0531b",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
