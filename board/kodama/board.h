@@ -28,11 +28,15 @@
 
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 
+<<<<<<< HEAD   (ba6cb1 Juniper: remove CONFIG_SYSTEM_UNLOCKED, enable CONFIG_USB_PD)
 #define CONFIG_I2C_BITBANG
 #define I2C_BITBANG_PORT_COUNT 1
 #undef CONFIG_I2C_NACK_RETRY_COUNT
 #define CONFIG_I2C_NACK_RETRY_COUNT 3
 #define CONFIG_SMBUS_PEC
+=======
+#undef CONFIG_SYSTEM_UNLOCKED
+>>>>>>> CHANGE (0c4798 krane,kodama: drop CONFIG_SYSTEM_UNLOCKED)
 
 /* free flash space */
 #ifdef SECTION_IS_RO
