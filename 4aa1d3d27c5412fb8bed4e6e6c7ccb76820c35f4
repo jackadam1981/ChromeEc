@@ -70,6 +70,40 @@
     },
     {
       "key": {
+        "uuid": "7635ee5b_54988418",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:06:33Z",
+      "side": 1,
+      "message": "move to line 33 to not waste time when we have nothing to do.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e28f19_55253285",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-07T23:06:33Z",
+      "side": 1,
+      "message": "could sensor be NULL? We already using it when calculating entry.",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddd53285_6d984f8b",
         "filename": "common/online_calibration.c",
         "patchSetId": 22
