@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "37fba887_cc084d25",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-07T05:53:44Z",
+      "side": 1,
+      "message": "I consider this line activates some kind of switch on the signal just before it gets out of the chip.\n\nI moved it here so it\u0027s for sure configured enough to not cause a glitch in between remuxing and resetting (what if MOSI left by emmc was in a different state than EC_SENSOR_SPI_MOSI) and reconfiguring the spi.\n\nDo you think spi_enable needs the pins already muxed?",
+      "parentUuid": "ffa812e8_40927b4f",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 42
+      },
+      "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45b3d596_45506a06",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 2
@@ -60,6 +84,24 @@
       "writtenOn": "2020-02-07T05:19:12Z",
       "side": 1,
       "message": "I wonder if it\u0027s ok to move this here. Probably, but if you don\u0027t want to test it, I\u0027d just drop that change.",
+      "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c29acb9a_b5d7b6bc",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-07T05:53:44Z",
+      "side": 1,
+      "message": "In a similar vein here. I was hoping I would avoid gitches. Set the output level first, then release control of spi pins. I almost think spi_enable(.., 0) should be last.\n\nBut now that you mention in, I do wonder if gpio_set_flags won\u0027t get clobbered by gpio_config_module(0).",
+      "parentUuid": "45b3d596_45506a06",
       "revId": "e45cb46b810b918b374a539408527e953c7e08ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
