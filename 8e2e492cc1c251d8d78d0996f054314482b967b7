@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b4aa7f9_a0868214",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-07T18:37:28Z",
+      "side": 1,
+      "message": "created board/cr50/ec_comm.h for these declaration.\nHowever, I am keeping ec_comm.c, ec_efs.c in board/cr50/ not common/ because it is for cr50 only.",
+      "parentUuid": "e88bab52_e75be855",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 71
+      },
+      "revId": "8e2e492cc1c251d8d78d0996f054314482b967b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "663ddd9b_de5174a0",
         "filename": "chip/g/usart.c",
         "patchSetId": 23
@@ -45,6 +69,30 @@
       "revId": "8e2e492cc1c251d8d78d0996f054314482b967b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e556e8_82edbc91",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-07T18:37:28Z",
+      "side": 1,
+      "message": "EC might print some texts. Actually, it has not been decided explicitly whether EC should or not send any console output during packet mode, and EC might wants to print some debug texts.\nAs long as ec_comm_process_packet() is able to detect if \u0027ch\u0027 belongs to a packet or not, I think it should forward it to USB instead of dropping.",
+      "parentUuid": "663ddd9b_de5174a0",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 4
+      },
+      "revId": "8e2e492cc1c251d8d78d0996f054314482b967b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
