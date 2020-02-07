@@ -285,6 +285,7 @@ static void emmc_disable_spi(void)
 
 	enable_sleep(SLEEP_MASK_EMMC);
 
+	gpio_config_module(MODULE_SPI_FLASH, 0);
 	emmc_enabled = 0;
 	CPRINTS("emmc disabled");
 }
