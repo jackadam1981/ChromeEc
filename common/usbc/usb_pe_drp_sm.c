@@ -4245,11 +4245,6 @@ static void pe_vdm_request_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
-enum idh_ptype get_usb_pd_cable_type(int port)
-{
-	return pe[port].cable.type;
-}
-
 /**
  * PE_VDM_Acked
  */
