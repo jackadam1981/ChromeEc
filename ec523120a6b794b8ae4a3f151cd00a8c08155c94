@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d9cdf5f_93580a7c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-07T19:04:24Z",
+      "side": 1,
+      "message": "nit: add spaces around the |s",
+      "range": {
+        "startLine": 211,
+        "startChar": 33,
+        "endLine": 211,
+        "endChar": 34
+      },
+      "revId": "ec523120a6b794b8ae4a3f151cd00a8c08155c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47643ac_b1da9e4e",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-07T19:04:24Z",
+      "side": 1,
+      "message": "It\u0027s difficult to tell what \u003c\u003e means. Can we make print RW|RO? or R RW",
+      "range": {
+        "startLine": 243,
+        "startChar": 50,
+        "endLine": 243,
+        "endChar": 59
+      },
+      "revId": "ec523120a6b794b8ae4a3f151cd00a8c08155c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
