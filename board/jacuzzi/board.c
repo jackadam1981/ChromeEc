@@ -261,8 +261,11 @@ void bc12_interrupt(enum gpio_signal signal)
 #ifndef VARIANT_KUKUI_NO_SENSORS
 static void board_spi_enable(void)
 {
-	cputs(CC_ACCEL, "board_spi_enable");
-	gpio_config_module(MODULE_SPI_MASTER, 1);
+	/*
+	 * Pin mux spi peripheral away from emmc, since RO might have
+	 * left them there.
+	 */
+	gpio_config_module(MODULE_SPI_FLASH, 0);
 
 	/* Enable clocks to SPI2 module */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
@@ -272,6 +275,9 @@ static void board_spi_enable(void)
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+
+	/* Pin mux spi peripheral toward the sensor */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP,
 	     board_spi_enable,
@@ -284,9 +290,10 @@ static void board_spi_disable(void)
 	/* Disable clocks to SPI2 module */
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
 
-	gpio_config_module(MODULE_SPI_MASTER, 0);
+	/* Set pins to a state calming the sensor down. */
 	gpio_set_flags(GPIO_EC_SENSOR_SPI_CK, GPIO_OUT_LOW);
 	gpio_set_level(GPIO_EC_SENSOR_SPI_CK, 0);
+	gpio_config_module(MODULE_SPI_MASTER, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
