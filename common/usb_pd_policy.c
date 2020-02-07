@@ -362,12 +362,6 @@ bool should_enter_usb4_mode(int port)
 		cable[port].flags & CABLE_FLAGS_ENTER_USB_MODE;
 }
 
-void enable_enter_usb4_mode(int port)
-{
-	if (IS_ENABLED(CONFIG_USB_PD_USB4))
-		cable[port].flags |= CABLE_FLAGS_ENTER_USB_MODE;
-}
-
 void disable_enter_usb4_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_USB4))
@@ -477,160 +471,20 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 		switch (cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			/* Received a SOP' Discover Ident msg */
-			if (is_transmit_msg_sop_prime(port)) {
-				/* Store cable type */
-				dfp_consume_cable_response(port, cnt, payload,
-							head);
-
-				/*
-				 * Enter USB4 mode if the cable supports USB4
-				 * operation and has USB4 VDO.
-				 */
-				if (is_usb4_mode_enabled(port) &&
-				    is_cable_ready_to_enter_usb4(port, cnt)) {
-					enable_enter_usb4_mode(port);
-					usb_mux_set_safe_mode(port);
-					disable_transmit_sop_prime(port);
-					/*
-					 * To change the mode of operation from
-					 * USB4 the port needs to be
-					 * reconfigured.
-					 * Ref: USB Type-C Cable and Connectot
-					 * Specification section 5.4.4.
-					 *
-					 */
-					disable_tbt_compat_mode(port);
-					rsize = 0;
-					break;
-				}
-
-				/*
-				 * Disable Thunderbolt-compatible mode if the
-				 * cable does not support superspeed
-				 */
-				if (is_tbt_compat_enabled(port) &&
-					!is_tbt_cable_superspeed(port)) {
-					disable_tbt_compat_mode(port);
-				}
-
-				rsize = dfp_discover_svids(payload);
-
-				disable_transmit_sop_prime(port);
-			/* Received a SOP Discover Ident Message */
-			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
-				board_is_tbt_usb4_port(port)) {
-				dfp_consume_identity(port, cnt, payload);
-
-				/* Enable USB4 mode if USB4 VDO present
-				 * and port partner supports USB Rev 3.0.
-				 */
-				if (is_usb4_vdo(port, cnt, payload) &&
-				    PD_HEADER_REV(head)	== PD_REV30) {
-					enable_usb4_mode(port);
-				}
-
-				/*
-				 * Enable Thunderbolt-compatible mode
-				 * if the modal operation is supported
-				 */
-				if (is_modal(port, cnt, payload))
-					enable_tbt_compat_mode(port);
-
-				if (is_modal(port, cnt, payload) ||
-				    is_usb4_vdo(port, cnt, payload)) {
-					rsize = dfp_discover_ident(payload);
-					enable_transmit_sop_prime(port);
-				} else {
-					rsize = dfp_discover_svids(payload);
-				}
-			} else {
-				dfp_consume_identity(port, cnt, payload);
-				rsize = dfp_discover_svids(payload);
-			}
-#ifdef CONFIG_CHARGE_MANAGER
-			if (pd_charge_from_device(pd_get_identity_vid(port),
-						  pd_get_identity_pid(port)))
-				charge_manager_update_dualrole(port,
-							       CAP_DEDICATED);
-#endif
+			rsize = dfp_handle_acked_discover_ident(port, cnt,
+							payload, head);
 			break;
 		case CMD_DISCOVER_SVID:
-			{
-			int prev_svid_cnt = pe[port].svid_cnt;
-			dfp_consume_svids(port, cnt, payload);
-			/*
-			 * Ref: USB Type-C Cable and Connector Specification,
-			 * figure F-1: TBT3 Discovery Flow
-			 *
-			 * Check if 0x8087 is received for Discover SVID SOP.
-			 * If not, disable Thunderbolt-compatible mode
-			 *
-			 * If 0x8087 is not received for Discover SVID SOP'
-			 * limit to TBT passive Gen 2 cable
-			 */
-			if (is_tbt_compat_enabled(port)) {
-				bool intel_svid =
-					is_intel_svid(port, prev_svid_cnt);
-				if (is_transmit_msg_sop_prime(port)) {
-					if (!intel_svid)
-						limit_tbt_cable_speed(port);
-				} else if (intel_svid) {
-					rsize = dfp_discover_svids(payload);
-					enable_transmit_sop_prime(port);
-					break;
-				} else {
-					disable_tbt_compat_mode(port);
-				}
-			}
-
-			rsize = dfp_discover_modes(port, payload);
-
-			disable_transmit_sop_prime(port);
-			}
+			rsize = dfp_handle_acked_discover_svid(port, cnt,
+							payload);
 			break;
 		case CMD_DISCOVER_MODES:
-			dfp_consume_modes(port, cnt, payload);
-			if (is_tbt_compat_enabled(port) &&
-				is_tbt_compat_mode(port, cnt, payload)) {
-				rsize = process_tbt_compat_discover_modes(
-						port, payload);
-				break;
-			}
-
-			rsize = dfp_discover_modes(port, payload);
-			/* enter the default mode for DFP */
-			if (!rsize) {
-				/*
-				 * Disabling Thunderbolt-Compatible mode if
-				 * discover mode response doesn't include Intel
-				 * SVID.
-				 */
-				disable_tbt_compat_mode(port);
-				payload[0] = pd_dfp_enter_mode(port, 0, 0);
-				if (payload[0])
-					rsize = 1;
-			}
+			rsize = dfp_handle_acked_discover_mode(port, cnt,
+							payload);
 			break;
 		case CMD_ENTER_MODE:
-			if (is_tbt_compat_enabled(port)) {
-				rsize = enter_mode_tbt_compat(port, payload);
-			/*
-			 * Continue with PD flow if Thunderbolt-compatible mode
-			 * is disabled.
-			 */
-			} else if (!modep) {
-				rsize = 0;
-			} else {
-				if (!modep->opos)
-					pd_dfp_enter_mode(port, 0, 0);
-
-				if (modep->opos) {
-					rsize = modep->fx->status(port,
-								  payload);
-					payload[0] |= PD_VDO_OPOS(modep->opos);
-				}
-			}
+			rsize = dfp_handle_acked_enter_mode(port, cnt,
+							payload, modep);
 			break;
 		case CMD_DP_STATUS:
 			/* DP status response & UFP's DP attention have same
