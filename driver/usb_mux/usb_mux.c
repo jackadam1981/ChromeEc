@@ -73,6 +73,9 @@ static int configure_mux(int port, enum mux_config_type config,
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 
+	CPRINTS("%s: ================ p%d cmd%d m0x%02x", __func__, port,
+		config, *mux_state);
+
 	switch (config) {
 	case USB_MUX_INIT:
 		res = mux->driver->init(port);
@@ -101,6 +104,10 @@ static int configure_mux(int port, enum mux_config_type config,
 		if (res)
 			break;
 		res = configure_retimer(port, config, *mux_state);
+
+		if (mux->flags & USB_MUX_FLAG_HOST)
+			host_set_single_event(EC_HOST_EVENT_USB_MUX);
+
 		break;
 	case USB_MUX_GET_MODE:
 		res = mux->driver->get(port, mux_state);
@@ -158,6 +165,9 @@ void usb_mux_set(int port, mux_state_t mux_mode,
 	const int should_enter_low_power_mode =
 		(mux_mode == USB_PD_MUX_NONE &&
 		usb_mode == USB_SWITCH_DISCONNECT);
+
+	CPRINTS("%s: ================ p%d m0x%02x u%d x%d", __func__, port,
+		mux_mode, usb_mode, polarity);
 
 	/* Configure USB2.0 */
 	if (IS_ENABLED(CONFIG_USB_CHARGER))

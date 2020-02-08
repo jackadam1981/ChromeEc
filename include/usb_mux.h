@@ -73,6 +73,7 @@ struct usb_mux_driver {
 
 /* Flags used for usb_mux.flags */
 #define USB_MUX_FLAG_NOT_TCPC BIT(0) /* TCPC/MUX device used only as MUX */
+#define USB_MUX_FLAG_HOST     BIT(1) /* Also notify host of mux change (TGL TCSS) */
 
 /* Describes a USB mux present in the system */
 struct usb_mux {
