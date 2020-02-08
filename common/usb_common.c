@@ -327,6 +327,8 @@ mux_state_t get_mux_mode_to_set(int port)
 
 void set_usb_mux_with_current_data_role(int port)
 {
+	CPRINTS("%s: ================ p%d", __func__, port);
+
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
 		mux_state_t mux_mode = get_mux_mode_to_set(port);
 		enum usb_switch usb_switch_mode =

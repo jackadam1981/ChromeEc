@@ -1303,13 +1303,15 @@ bool pd_is_disconnected(int port)
 		;
 }
 
-static void pd_set_data_role(int port, int role)
+static void pd_set_data_role(int port, enum pd_data_role role)
 {
 	pd[port].data_role = role;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DATA_ROLE, role);
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
 	pd_execute_data_swap(port, role);
+
+	CPRINTS("%s: ================ p%d role %d", __func__, port, role);
 
 	set_usb_mux_with_current_data_role(port);
 	pd_update_roles(port);
