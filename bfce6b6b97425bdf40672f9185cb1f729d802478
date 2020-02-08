@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "24631b67_832a32f7",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T01:16:53Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "da51bff3_d732c83a",
+      "range": {
+        "startLine": 131,
+        "startChar": 50,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a75a8f2_6e068281",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 1
@@ -125,6 +149,24 @@
       "side": 1,
       "message": "I think that would block trickle charge of a dead battery if the RO is prevented from doing PD negotiation.  Without a PD contract, we\u0027re limited to 15W.",
       "parentUuid": "0a75a8f2_6e068281",
+      "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a2ec1ac_b9eee3ed",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T01:16:53Z",
+      "side": 1,
+      "message": "CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW and CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT are the thresholds for booting the OS. You can set them something like 30W/3%, for example. The OS will boot if one of 30W or 3% is met.",
+      "parentUuid": "0b55f4a2_3c5057a8",
       "revId": "bfce6b6b97425bdf40672f9185cb1f729d802478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
