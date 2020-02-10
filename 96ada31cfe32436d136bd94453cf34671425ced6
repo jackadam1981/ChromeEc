@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "138b7f9c_91c0f261",
+        "filename": "board/akemi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-02-10T21:50:59Z",
+      "side": 1,
+      "message": "nit: I really like to see parens in an expression like this\n(sku \u003d\u003d 255) || (sku \u003d\u003d 1) || etc.\nI feel like it makes the code more readable for the next maintainer, and doesn\u0027t affect the compiler at all.",
+      "range": {
+        "startLine": 440,
+        "startChar": 8,
+        "endLine": 440,
+        "endChar": 18
+      },
+      "revId": "96ada31cfe32436d136bd94453cf34671425ced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
