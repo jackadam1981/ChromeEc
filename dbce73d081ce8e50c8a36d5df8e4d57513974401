@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d12690a_19cf39d9",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-02-10T21:13:59Z",
+      "side": 1,
+      "message": "Nit: since these are booleans, let\u0027s use the `bool` type for them. You can do this by adding `#include \"stdbool.h\"` at the top, then use the `bool` type here and `true` or `false` instead of 1 and 0 when setting them.",
+      "revId": "dbce73d081ce8e50c8a36d5df8e4d57513974401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d85c48_17f1165b",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-02-10T21:13:59Z",
+      "side": 1,
+      "message": "Nit: this line is over 80 characters long, so please wrap it.",
+      "revId": "dbce73d081ce8e50c8a36d5df8e4d57513974401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0295727_88e23e76",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-02-10T21:13:59Z",
+      "side": 1,
+      "message": "Nit: could you update the comment on the line above to explain these extra things?",
+      "range": {
+        "startLine": 436,
+        "startChar": 33,
+        "endLine": 436,
+        "endChar": 116
+      },
+      "revId": "dbce73d081ce8e50c8a36d5df8e4d57513974401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bafcad8_4648c3da",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-02-10T21:13:59Z",
+      "side": 1,
+      "message": "The code in this block is getting quite far indented, which tends to make things hard to follow. Could it be extracted into its own function?",
+      "revId": "dbce73d081ce8e50c8a36d5df8e4d57513974401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c12578f_a6a8a8e6",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-02-10T21:13:59Z",
+      "side": 1,
+      "message": "Nit: Again, please wrap this line since it\u0027s \u003e80 characters long.",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 95
+      },
+      "revId": "dbce73d081ce8e50c8a36d5df8e4d57513974401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
