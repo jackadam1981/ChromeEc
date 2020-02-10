@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b2e6c9e_f78c9a72",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-10T22:01:06Z",
+      "side": 1,
+      "message": "if serial is optional, should this be reflected in the __init__ func with like serial\u003dNone ?",
+      "revId": "9093cb9264e23309d1a478c0535215851996b2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb60002d_cf85cda6",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-10T22:01:06Z",
+      "side": 1,
+      "message": "does this work ?  based on the update() method below, i\u0027m guessing you wanted to write:\n\n self._gsctool_cmd +\u003d [\u0027-n\u0027, serial]",
+      "revId": "9093cb9264e23309d1a478c0535215851996b2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
