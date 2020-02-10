@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6886654_43bc5753",
+        "filename": "board/trembyle/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-10T14:51:12Z",
+      "side": 1,
+      "message": "you define this after the inclusion of baseboard.h but baseboard.h refers to PWM_CH_FAN which will not be defined.\n\nHow were you able to \"make buildall\"?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "e39a347678cc9445be6c7d517849ebbca037716b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
