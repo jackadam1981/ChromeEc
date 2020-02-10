@@ -355,6 +355,9 @@ void baseboard_mst_enable_control(enum mst_source src, int level)
 #ifndef TEST_BUILD
 void lid_angle_peripheral_enable(int enable)
 {
+	if (!board_sku_is_convertible())
+		return;
+
 	/* TODO(b/125936966): Need to add SKU dependency for convertibles */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		enable = 0;

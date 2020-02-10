@@ -431,3 +431,13 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+bool board_sku_is_convertible(void)
+{
+	const uint8_t sku = get_board_sku();
+
+	if (sku == 255 || sku == 1 || sku == 2 || sku == 21 || sku == 22)
+		return true;
+	else
+		return false;
+}

@@ -497,3 +497,13 @@ static void check_reboot_deferred(void)
 	if (!gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD))
 		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
 }
+
+bool board_sku_is_convertible(void)
+{
+	const uint8_t sku = get_board_sku();
+
+	if (sku == 255 || sku == 1 || sku == 2 || sku == 3 || sku == 4)
+		return true;
+	else
+		return false;
+}
