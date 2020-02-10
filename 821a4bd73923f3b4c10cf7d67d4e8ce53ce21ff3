@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5ed0391_13bd8a98",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-10T21:39:28Z",
+      "side": 1,
+      "message": "could be improved:\n\n\u0027explicitly sets target file name in generated .d files to work around ccache issue.\u0027",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "821a4bd73923f3b4c10cf7d67d4e8ce53ce21ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
