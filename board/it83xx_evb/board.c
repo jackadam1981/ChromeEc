@@ -9,6 +9,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "dac_chip.h"
 #include "it83xx_pd.h"
 #include "fan.h"
 #include "gpio.h"
@@ -164,6 +165,16 @@ const struct adc_t adc_channels[] = {
 	{"ADC_EVB_CH_16", 3000, 1024, 0, CHIP_ADC_CH16}, /* GPL3, ADC16 */
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* DAC channels. Must be in the exactly same order as in enum dac_channel. */
+const struct dac_t dac_channels[] = {
+
+	{"DAC_EVB_CH_2", 0x40, CHIP_DAC_CH2}, /* GPJ2, DAC2 */
+	{"DAC_EVB_CH_3", 0x80, CHIP_DAC_CH3}, /* GPJ3, DAC3 */
+	{"DAC_EVB_CH_4", 0xC0, CHIP_DAC_CH4}, /* GPJ4, DAC4 */
+	{"DAC_EVB_CH_5", 0xFF, CHIP_DAC_CH5}, /* GPJ5, DAC5 */
+};
+BUILD_ASSERT(ARRAY_SIZE(dac_channels) == DAC_CH_COUNT);
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {

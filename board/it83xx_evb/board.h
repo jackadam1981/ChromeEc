@@ -90,6 +90,15 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
+enum dac_channel {
+	DAC_EVB_CH_2,
+	DAC_EVB_CH_3,
+	DAC_EVB_CH_4,
+	DAC_EVB_CH_5,
+	/* Number of DAC channels */
+	DAC_CH_COUNT
+};
+
 #if IT83XX_PD_EVB
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000

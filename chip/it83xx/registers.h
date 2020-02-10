@@ -1085,6 +1085,19 @@ enum clock_gate_offsets {
 #define IT83XX_ADC_VCH16DATL    REG8(IT83XX_ADC_BASE+0x6B)
 #define IT83XX_ADC_ADCDVSTS2    REG8(IT83XX_ADC_BASE+0x6C)
 
+/* Digital to Analog Converter (DAC) */
+#define IT83XX_DAC_BASE   0x00F01A00
+
+#define IT83XX_DAC_DACPDREG     REG8(IT83XX_DAC_BASE+0x01)
+#define IT83XX_DAC_POWDN5       BIT(5)
+#define IT83XX_DAC_POWDN4       BIT(4)
+#define IT83XX_DAC_POWDN3       BIT(3)
+#define IT83XX_DAC_POWDN2       BIT(2)
+#define IT83XX_DAC_DACDAT2      REG8(IT83XX_DAC_BASE+0x04)
+#define IT83XX_DAC_DACDAT3      REG8(IT83XX_DAC_BASE+0x05)
+#define IT83XX_DAC_DACDAT4      REG8(IT83XX_DAC_BASE+0x06)
+#define IT83XX_DAC_DACDAT5      REG8(IT83XX_DAC_BASE+0x07)
+
 /* Keyboard Controller (KBC) */
 #define IT83XX_KBC_BASE   0x00F01300
 
@@ -1641,7 +1654,6 @@ extern const int hibernate_wake_pins_used;
 /* --- MISC (not implemented yet) --- */
 
 #define IT83XX_PS2_BASE   0x00F01700
-#define IT83XX_DAC_BASE   0x00F01A00
 #define IT83XX_EGPIO_BASE 0x00F02100
 #define IT83XX_CIR_BASE   0x00F02300
 #define IT83XX_DBGR_BASE  0x00F02500

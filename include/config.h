@@ -236,6 +236,9 @@
  */
 #undef CONFIG_SYNC_INT_EVENT
 
+/* Compile chip support for digital-to-analog convertor */
+#undef CONFIG_DAC
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
