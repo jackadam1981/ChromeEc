@@ -1852,6 +1852,83 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 					uint16_t head);
 
 /**
+ * Sets enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void enable_enter_usb4_mode(int port);
+
+/**
+ * Clear enter USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+void disable_enter_usb4_mode(int port);
+
+/**
+ * Returns USB4 cable speed
+ *
+ * @param port	USB-C port number
+ * @Return       USB4 cable speed
+ */
+enum usb_rev30_ss get_usb4_cable_speed(int port);
+
+/**
+ * Sets CABLE_FLAGS_USB4_CAPABLE flag
+ *
+ * @param port	USB-C port number
+ */
+void enable_usb4_mode(int port);
+
+/**
+ * Clears CABLE_FLAGS_USB4_CAPABLE flag
+ *
+ * @param port	USB-C port number
+ */
+void disable_usb4_mode(int port);
+
+/**
+ * CHecks the status of CABLE_FLAGS_USB4_CAPABLE flag
+ *
+ * @param port	USB-C port number
+ * @return      True if CABLE_FLAGS_USB4_CAPABLE is set, false otherwise
+ */
+bool is_usb4_mode_enabled(int port);
+
+/**
+ * Return if need to enter into USB4 mode
+ *
+ * @param port	USB-C port number
+ */
+bool should_enter_usb4_mode(int port);
+
+/**
+ * Checks if the Discover Identity SOP response has USB4 product type
+ *
+ * @param port	   USB-C port number
+ * @param payload  payload data
+ * @param cnt      number of data objects in payload
+ * @return         True if VDO response has USB4 product type, false otherwise
+ */
+bool is_usb4_vdo(int port, int cnt, uint32_t *payload);
+
+/**
+ * Returns True if the cable is ready to enter USB4 mdoe
+ *
+ * @param port	   USB-C port number
+ * @param cnt      number of data objects in payload
+ * @return         True if cable ready to enter USB4 mode, false otherwise
+ */
+bool is_cable_ready_to_enter_usb4(int port, int cnt);
+
+/**
+ * Return enter USB message payload
+ *
+ * @param port	USB-C port number
+ */
+uint32_t get_enter_usb_msg_payload(int port);
+
+/**
  * Return enter USB message payload
  *
  * @param port	USB-C port number
@@ -1979,6 +2056,16 @@ bool check_tbt_cable_speed(int port);
  * @return          Number of object filled
  */
 int enter_tbt_compat_mode(int port, uint32_t *payload);
+
+/*
+ * Function fills the objects of next request in the payload and returns the
+ * number of objecrs it has filled
+ *
+ * @param port      usb-c port number
+ * @param payload   payload data
+ * @return          Number of objects filled
+ */
+int process_tbt_compat_discover_modes(int port, uint32_t *payload);
 
 /*
  * This function returns number of objects required to enter

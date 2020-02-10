@@ -3004,9 +3004,14 @@ void pd_interrupt_handler_task(void *p)
 
 static void pd_send_enter_usb(int port, int *timeout)
 {
-	uint32_t usb4_payload = get_enter_usb_msg_payload(port);
+	uint32_t usb4_payload;
 	uint16_t header;
 	int res;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return;
+
+	usb4_payload = get_enter_usb_msg_payload(port);
 
 	/*
 	 * TODO: Enable Enter USB for cables (SOP').
@@ -3909,7 +3914,8 @@ void pd_task(void *u)
 			 * Enter_USB if port partner and cable are
 			 * USB4 compatible.
 			 */
-			if (should_enter_usb4_mode(port)) {
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) &&
+			    should_enter_usb4_mode(port)) {
 				pd_send_enter_usb(port, &timeout);
 				break;
 			}
@@ -4531,7 +4537,8 @@ void pd_task(void *u)
 			 * Enter_USB if port partner and cable are
 			 * USB4 compatible.
 			 */
-			if (should_enter_usb4_mode(port)) {
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) &&
+			    should_enter_usb4_mode(port)) {
 				pd_send_enter_usb(port, &timeout);
 				break;
 			}

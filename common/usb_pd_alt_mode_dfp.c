@@ -499,6 +499,224 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 	cable->is_identified = 1;
 }
 
+/* USB4 functions */
+bool should_enter_usb4_mode(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return IS_ENABLED(CONFIG_USB_PD_USB4) &&
+		cable->flags & CABLE_FLAGS_ENTER_USB_MODE;
+}
+
+void enable_enter_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		struct pd_cable *cable = pd_get_cable_attributes(port);
+
+		cable->flags |= CABLE_FLAGS_ENTER_USB_MODE;
+	}
+}
+
+void disable_enter_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		struct pd_cable *cable = pd_get_cable_attributes(port);
+
+		cable->flags &= ~CABLE_FLAGS_ENTER_USB_MODE;
+	}
+}
+
+enum usb_rev30_ss get_usb4_cable_speed(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	if ((cable->rev == PD_REV30) &&
+	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
+	   ((cable->attr.p_rev30.ss != USB_R30_SS_U32_U40_GEN2) ||
+	    !IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))) {
+		return cable->attr.p_rev30.ss;
+	}
+
+	/*
+	 * Converting Thunderolt-Compatible cable speed to equivalent USB4 cable
+	 * speed.
+	 */
+	return cable->cable_mode_resp.tbt_cable_speed == TBT_SS_TBT_GEN3 ?
+	       USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
+}
+
+void enable_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		struct pd_cable *cable = pd_get_cable_attributes(port);
+
+		cable->flags |= CABLE_FLAGS_USB4_CAPABLE;
+	}
+}
+
+void disable_usb4_mode(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		struct pd_cable *cable = pd_get_cable_attributes(port);
+
+		cable->flags &= ~CABLE_FLAGS_USB4_CAPABLE;
+	}
+}
+
+bool is_usb4_mode_enabled(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	       (cable->flags & CABLE_FLAGS_USB4_CAPABLE));
+}
+
+bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
+{
+	enum idh_ptype ptype = PD_IDH_PTYPE(payload[VDO_I(PRODUCT)]);
+
+	/*
+	 * Product types Hub and peripheral should use UFP product vdos
+	 * Reference Table 6-30 USB PD spec 3.2.
+	 */
+	if (ptype == IDH_PTYPE_HUB || ptype == IDH_PTYPE_PERIPH) {
+		/*
+		 * Ref: USB Type-C Cable and Connector Specification
+		 * Figure 5-1 USB4 Discovery and Entry Flow Model
+		 * Device USB4 VDO detection.
+		 */
+		return IS_ENABLED(CONFIG_USB_PD_USB4) &&
+			is_vdo_present(cnt, VDO_INDEX_PTYPE_UFP1_VDO) &&
+			PD_PRODUCT_IS_USB4(payload[VDO_INDEX_PTYPE_UFP1_VDO]);
+	}
+	return false;
+}
+
+/*
+ * Ref: USB Type-C Cable and Connector Specification
+ * Figure 5-1 USB4 Discovery and Entry Flow Model.
+ *
+ * Note: USB Type-C Cable and Connector Specification
+ * doesn't include details for Revision 2 cables.
+ *
+ *                         Passive Cable
+ *                                |
+ *                -----------------------------------
+ *                |                                 |
+ *           Revision 2                        Revision 3
+ *          USB Signalling                   USB Signalling
+ *             |                                     |
+ *     ------------------            -------------------------
+ *     |       |        |            |       |       |       |
+ * USB2.0   USB3.1    USB3.1       USB3.2   USB4   USB3.2   USB2
+ *   |      Gen1      Gen1 Gen2    Gen2     Gen3   Gen1       |
+ *   |       |          |           |        |       |       Exit
+ *   --------           ------------         --------        USB4
+ *      |                    |                  |          Discovery.
+ *    Exit          Is DFP Gen3 Capable?     Enter USB4
+ *    USB4                  |                with respective
+ *   Discovery.   --- No ---|--- Yes ---     cable speed.
+ *                |                    |
+ *    Enter USB4 with             Is Cable TBT3
+ *    respective cable                 |
+ *    speed.                 --- No ---|--- Yes ---
+ *                           |                    |
+ *                   Enter USB4 with        Enter USB4 with
+ *                   TBT Gen2 passive       TBT Gen3 passive
+ *                   cable.                 cable.
+ *
+ */
+bool is_cable_ready_to_enter_usb4(int port, int cnt)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	/* TODO: USB4 enter mode for Active cables */
+	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	   (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
+	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
+		switch (cable->rev) {
+		case PD_REV30:
+			switch (cable->attr.p_rev30.ss) {
+			case USB_R30_SS_U40_GEN3:
+			case USB_R30_SS_U32_U40_GEN1:
+				return true;
+			case USB_R30_SS_U32_U40_GEN2:
+				/* Check if DFP is Gen 3 capable */
+				if (IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))
+					return false;
+				return true;
+			default:
+				disable_usb4_mode(port);
+				return false;
+			}
+		case PD_REV20:
+			switch (cable->attr.p_rev20.ss) {
+			case USB_R20_SS_U31_GEN1_GEN2:
+				/* Check if DFP is Gen 3 capable */
+				if (IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))
+					return false;
+				return true;
+			default:
+				disable_usb4_mode(port);
+				return false;
+		}
+		default:
+			disable_usb4_mode(port);
+		}
+	}
+	return false;
+}
+
+uint32_t get_enter_usb_msg_payload(int port)
+{
+	/*
+	 * Ref: USB Power Delivery Specification Revision 3.0, Version 2.0
+	 * Table 6-47 Enter_USB Data Object
+	 */
+	union enter_usb_data_obj eudo;
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
+		return 0;
+
+	eudo.mode = USB_PD_40;
+	eudo.usb4_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB4);
+	eudo.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB32);
+	eudo.cable_speed = get_usb4_cable_speed(port);
+
+	if ((cable->rev == PD_REV30) &&
+	    (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)) {
+		eudo.cable_type = (cable->attr2.a2_rev30.active_elem ==
+			ACTIVE_RETIMER) ? CABLE_TYPE_ACTIVE_RETIMER :
+			CABLE_TYPE_ACTIVE_REDRIVER;
+	/* TODO: Add eudo.cable_type for Revisiosn 2 active cables */
+	} else {
+		eudo.cable_type = CABLE_TYPE_PASSIVE;
+	}
+
+	switch (cable->attr.p_rev20.vbus_cur) {
+	case USB_VBUS_CUR_3A:
+		eudo.cable_current = USB4_CABLE_CURRENT_3A;
+		break;
+	case USB_VBUS_CUR_5A:
+		eudo.cable_current = USB4_CABLE_CURRENT_5A;
+		break;
+	default:
+		eudo.cable_current = USB4_CABLE_CURRENT_INVALID;
+		break;
+	}
+	eudo.pcie_supported = IS_ENABLED(CONFIG_USB_PD_PCIE_TUNNELING);
+	eudo.dp_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
+	eudo.tbt_supported = IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE);
+	eudo.host_present = 1;
+
+	return eudo.raw_value;
+}
+__overridable bool board_is_tbt_usb4_port(int port)
+{
+	return true;
+}
+
 /* Thunderbolt-Compatible functions */
 union tbt_mode_resp_cable get_cable_tbt_vdo(int port)
 {
@@ -729,6 +947,87 @@ int enter_tbt_compat_mode(int port, uint32_t *payload)
 
 	/* For TBT3 Device Enter Mode Command, number of Objects are 2 */
 	return 2;
+}
+
+int process_tbt_compat_discover_modes(int port, uint32_t *payload)
+{
+	int rsize;
+	enum tbt_compat_cable_speed max_tbt_speed;
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+	struct pd_policy *pe = pd_get_am_policy(port);
+
+	/*
+	 * For active cables, Enter mode: SOP', SOP'', SOP
+	 * Ref: USB Type-C Cable and Connector Specification, figure F-1: TBT3
+	 * Discovery Flow and Section F.2.7 TBT3 Cable Enter Mode Command.
+	 */
+	if (is_transmit_msg_sop_prime(port)) {
+		/* Store Discover Mode SOP' response */
+		cable->cable_mode_resp.raw_value = payload[1];
+
+		/* Cable does not have Intel SVID for Discover SVID */
+		if (is_limit_tbt_cable_speed(port))
+			cable->cable_mode_resp.tbt_cable_speed =
+						TBT_SS_U32_GEN1_GEN2;
+
+		max_tbt_speed = board_get_max_tbt_speed(port);
+		if (cable->cable_mode_resp.tbt_cable_speed >
+			max_tbt_speed) {
+			cable->cable_mode_resp.tbt_cable_speed =
+				max_tbt_speed;
+		}
+
+		/*
+		 * Enter Mode SOP' (Cable Enter Mode) and Enter USB SOP' is
+		 * skipped for passive cables.
+		 */
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE)
+			disable_transmit_sop_prime(port);
+
+		if (is_usb4_mode_enabled(port)) {
+			/*
+			 * If Cable is not Thunderbolt Gen 3
+			 * capable or Thunderbolt Gen1_Gen2
+			 * capable, disable USB4 mode and
+			 * continue flow for
+			 * Thunderbolt-compatible mode
+			 */
+			if (check_tbt_cable_speed(port)) {
+				enable_enter_usb4_mode(port);
+				usb_mux_set_safe_mode(port);
+				return 0;
+			}
+			disable_usb4_mode(port);
+		}
+		rsize = enter_tbt_compat_mode(port, payload);
+	} else {
+		/* Store Discover Mode SOP response */
+		cable->dev_mode_resp.raw_value = payload[1];
+
+		if (is_limit_tbt_cable_speed(port)) {
+			/*
+			 * Passive cable has Nacked for Discover SVID.
+			 * No need to do Discover modes of cable. Assign the
+			 * cable discovery attributes and enter into device
+			 * Thunderbolt-compatible mode.
+			 */
+			cable->cable_mode_resp.tbt_cable_speed =
+				(cable->rev == PD_REV30 &&
+				cable->attr.p_rev30.ss >
+					USB_R30_SS_U32_U40_GEN2) ?
+				TBT_SS_U32_GEN1_GEN2 :
+				cable->attr.p_rev30.ss;
+
+			rsize = enter_tbt_compat_mode(port, payload);
+		} else {
+			/* Discover modes for SOP' */
+			pe->svid_idx--;
+			rsize = dfp_discover_modes(port, payload);
+			enable_transmit_sop_prime(port);
+		}
+	}
+
+	return rsize;
 }
 
 int enter_mode_tbt_compat(int port, uint32_t *payload)
