@@ -495,7 +495,7 @@ static void ps8811_tuning_init(void)
 		return;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, ps8811_tuning_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, ps8811_tuning_init, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************
  * Custom Zork USB-C1 Retimer/MUX driver
