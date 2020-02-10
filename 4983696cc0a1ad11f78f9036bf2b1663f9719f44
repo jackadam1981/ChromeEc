@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "119c6557_ab97e78d",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-10T23:27:04Z",
+      "side": 1,
+      "message": "I have created a b:149243080 to discuss this issue.\nWill associate bug based on the final decision about the proposed solution.",
+      "parentUuid": "e617a7f9_8b3c03d5",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
