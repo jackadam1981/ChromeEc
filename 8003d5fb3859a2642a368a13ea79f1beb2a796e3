@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7c5a955c_e390fb3a",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-02-10T17:43:19Z",
+      "side": 1,
+      "message": "Ok, Agree.",
+      "parentUuid": "f7cce4b8_bcbc8100",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89b8eff9_b9962fb9",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "f115f861_a6740ec6",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-02-10T17:43:19Z",
+      "side": 1,
+      "message": "If we keep EN_BL_OD low from the EC, the display backlight enabled will stay low due to onboard open drain diode logic. \nHence we made this pin high, so that AP_EDP_BKLTEN pin from SOC can control the Back light.",
+      "parentUuid": "1921f4b4_842d7814",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aec0b279_0651c32b",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 2
@@ -107,6 +155,30 @@
       "writtenOn": "2020-02-07T19:12:39Z",
       "side": 1,
       "message": "this will cause leakage in low power states.\nAP firmware should enable its internal pull-up instead.",
+      "range": {
+        "startLine": 74,
+        "startChar": 40,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6acdf47_9c6bd54f",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-02-10T17:43:19Z",
+      "side": 1,
+      "message": "This is done as an experimental purpose. During initial bring up, we found the internal pull up was getting disabled in an abrupt shutdown scenario and hence kept it HIGH (to rule out any dependency). Currently, we are not see this issue. \nSo this change may not be required and hence reverting it back.",
+      "parentUuid": "aec0b279_0651c32b",
       "range": {
         "startLine": 74,
         "startChar": 40,
@@ -136,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "0903c81a_3b4d8fe8",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-02-10T17:43:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4b6173bd_6fda4831",
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b222920_2ac85946",
         "filename": "power/icelake.c",
         "patchSetId": 2
@@ -147,6 +237,24 @@
       "writtenOn": "2020-02-07T19:32:51Z",
       "side": 1,
       "message": "This doesn\u0027t seem to enforce the 2ms minimum delay? Should we just combine all these actions into the deferred function and rename it?",
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4038befc_32ba02c6",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-02-10T17:43:19Z",
+      "side": 1,
+      "message": "ALL_SYS_PWRGD is the enable signal for VCCIN VR, which would take around 1ms for the ramp up (tPLT04). \nSince VCCIN VR power good is the wired AND with PCH_PWROK onboard, we kept 2ms delay between while enabling ALL_SYS_PWRGD  and PCH_PWROK.  \nTo meet “tCPU16” timing requirement, EC_AP_VCCST_PWRGD_OD and PCH_PWGD are driven at the same time from EC. \nSo driving ALL_SYS_PWRGD, not combined with the deferred function.",
+      "parentUuid": "6b222920_2ac85946",
       "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
