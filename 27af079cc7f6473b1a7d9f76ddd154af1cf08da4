@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7dc0eb8_b8475cfe",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-10T20:23:19Z",
+      "side": 0,
+      "message": "We do explicitly disable unaligned access on cortex-m/m0, but I\u0027m not sure about other cores: https://chromium.googlesource.com/chromiumos/platform/ec/+/07a524f3ea434e711aceeb8cb79ba140d9e20a35/core/cortex-m/build.mk#19\n\nMaybe we should add a config option (CONFIG_UNALIGNED_ACCESS) and then we can set SUPPORT_UNALIGNED and CFLAGS_CPU based on that.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 21
+      },
+      "revId": "27af079cc7f6473b1a7d9f76ddd154af1cf08da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
