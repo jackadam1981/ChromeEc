@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "e617a7f9_8b3c03d5",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-10T17:03:11Z",
+      "side": 1,
+      "message": "b:148542623 comment#12\n\nRedundant PMC requests cause the PMC timeout error. Hence Kernel needs to know if Coreboot has already configured the MUX.",
+      "parentUuid": "6ae46e35_a838ae8b",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
