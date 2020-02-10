@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ccb5254_42ca80d9",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "WIP\n\n---\n\nDB resistor means \"Dead Battery\" resistor. If ITE TCPC isn\u0027t used, we do disconnect this resistor in it83xx_disable_cc_module () for not cc pin leakage..",
+      "parentUuid": "8c3c52c0_94fcb940",
+      "range": {
+        "startLine": 651,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 33
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d30bee1_3011909d",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-04T17:32:01Z",
       "side": 1,
       "message": "let\u0027s make this an API function call instead please. externs can get tricky to trace",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7c52ee_b8aabb28",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "WIP",
+      "parentUuid": "4d30bee1_3011909d",
       "range": {
         "startLine": 37,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7e06eadc_c3fb8dac",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99217c18_5cf283e2",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "455cb0c0_3c890225",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b918d8_97de7300",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "455cb0c0_3c890225",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bf53fc0c_39dbaf8e",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e29173_01954fa9",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50581b96_41e7c7ed",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed73003_73f120ff",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50581b96_41e7c7ed",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c79a1f0d_7504b5f1",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "No, usbpd_ctrl_regs[] is used in int.c chip_pd_irq().",
+      "parentUuid": "2b63d6d4_ff55f347",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85c78dae_cce84655",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2020-02-04T17:32:01Z",
       "side": 1,
       "message": "this code seems very similar to the code in gpio.c; let\u0027s signle source it. Also I like this version better since you are using defined names.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1113c90e_23d38dfa",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "WIP",
+      "parentUuid": "85c78dae_cce84655",
       "range": {
         "startLine": 57,
         "startChar": 2,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "39934818_2bf63332",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ff36025_7b8a206a",
+      "range": {
+        "startLine": 108,
+        "startChar": 43,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc4b3004_665f6cb3",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 2
@@ -220,6 +436,30 @@
       "writtenOn": "2020-02-04T17:32:01Z",
       "side": 1,
       "message": "why remove BIT(2)? cc_state should already have BIT(2) set if taking this path, right?\n\nWhy can\u0027t we just set the value like\n\ncc_state \u003d TYPEC_CC_VOLT_RP_1_5\n\ndo we need to use |\u003d ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6450832e_e4dc02db",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Yes, I remove line 87 to 96, and set cc state like your comment.",
+      "parentUuid": "fc4b3004_665f6cb3",
       "range": {
         "startLine": 114,
         "startChar": 15,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "0d8cec00_c6680172",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1de598f_991789d0",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de78a6b4_a8d5ceb5",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 2
@@ -275,6 +539,30 @@
       "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac59d588_1bfd379c",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de78a6b4_a8d5ceb5",
+      "range": {
+        "startLine": 365,
+        "startChar": 37,
+        "endLine": 365,
+        "endChar": 44
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "3083ae49_e59a71e0",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e414dcde_c462438f",
+      "range": {
+        "startLine": 376,
+        "startChar": 37,
+        "endLine": 376,
+        "endChar": 44
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f502d11b_de0e1b89",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 2
@@ -321,6 +633,30 @@
       "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb435c9a_30cd5470",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-10T10:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f502d11b_de0e1b89",
+      "range": {
+        "startLine": 425,
+        "startChar": 9,
+        "endLine": 427,
+        "endChar": 40
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
