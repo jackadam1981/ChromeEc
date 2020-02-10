@@ -39,6 +39,24 @@
       "revId": "1880dbea074b821e6e647ecf0b9524fb94690634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d94a5f_7233133b",
+        "filename": "board/waddledee/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-10T17:59:51Z",
+      "side": 1,
+      "message": "Yup, good call.  I\u0027ll fix it",
+      "parentUuid": "aff4b557_8f107132",
+      "revId": "1880dbea074b821e6e647ecf0b9524fb94690634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
