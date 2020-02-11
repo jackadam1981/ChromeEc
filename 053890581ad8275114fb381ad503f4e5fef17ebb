@@ -142,6 +142,30 @@
       "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ff66a9_4f5302ff",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-11T21:30:54Z",
+      "side": 1,
+      "message": "we will pick up the faults, clear and ignore that they happened, in the tcpci_tcpc_alert function but the interrupt mask for FAULT is not set.\n\nOther than adding in the complexity, I am more likely to just ignore that this fault can happen, because unless we mess up the stack and enable SRC Vbus when we have left SNK Vbus enabled, this does not fail.",
+      "parentUuid": "eb51a372_1e750729",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
