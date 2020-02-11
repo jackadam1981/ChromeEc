@@ -46,6 +46,30 @@
       "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b696cba_5f4794fa",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-11T20:52:44Z",
+      "side": 1,
+      "message": "Looking at it again we won\u0027t lose status bits, because you do have to actually clear them (not just read them).\n\nNow this code is racing with the TCPC interrupt handler and the ALERT_FAULT bit won\u0027t be set since it will have been cleared by the tcpci_tcpc_alert method.\n\nShould we override tcpci_handle_fault and store a value and use that value here?",
+      "parentUuid": "ff1f2ae1_36a51685",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
