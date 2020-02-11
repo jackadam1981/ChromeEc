@@ -487,13 +487,13 @@ int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role)
 			  TCPC_REG_MSG_HDR_INFO_SET(data_role, power_role));
 }
 
-static int tcpm_alert_status(int port, int *alert)
+int tcpci_alert_status(int port, int *alert)
 {
 	/* Read TCPC Alert register */
 	return tcpc_read16(port, TCPC_REG_ALERT, alert);
 }
 
-static int tcpm_alert_ext_status(int port, int *alert_ext)
+static int tcpci_alert_ext_status(int port, int *alert_ext)
 {
 	/* Read TCPC Extended Alert register */
 	return tcpc_read(port, TCPC_REG_ALERT_EXT, alert_ext);
@@ -840,7 +840,7 @@ static int register_mask_reset(int port)
 }
 #endif
 
-static int tcpci_get_fault(int port, int *fault)
+int tcpci_get_fault(int port, int *fault)
 {
 	return tcpc_read(port, TCPC_REG_FAULT_STATUS, fault);
 }
@@ -851,9 +851,27 @@ static int tcpci_handle_fault(int port, int fault)
 	return EC_SUCCESS;
 }
 
-static int tcpci_clear_fault(int port, int fault)
+int tcpci_clear_fault(int port, int fault)
 {
-	return tcpc_write(port, TCPC_REG_FAULT_STATUS, fault);
+	int rv;
+
+	rv = tcpc_write(port, TCPC_REG_FAULT_STATUS, fault);
+	if (rv)
+		return rv;
+
+	/*
+	 * If all FAULTs are now clear, remove it from the
+	 * ALERT register
+	 */
+	rv = tcpci_get_fault(port, &fault);
+	if (rv)
+		return rv;
+
+	if (fault == 0)
+		rv = tcpc_write16(port, TCPC_REG_ALERT,
+				  TCPC_REG_ALERT_FAULT);
+
+	return rv;
 }
 
 /*
@@ -870,11 +888,11 @@ void tcpci_tcpc_alert(int port)
 	uint32_t pd_event = 0;
 
 	/* Read the Alert register from the TCPC */
-	tcpm_alert_status(port, &status);
+	tcpci_alert_status(port, &status);
 
 	/* Get Extended Alert register if needed */
 	if (status & TCPC_REG_ALERT_ALERT_EXT)
-		tcpm_alert_ext_status(port, &alert_ext);
+		tcpci_alert_ext_status(port, &alert_ext);
 
 	/* Clear any pending faults */
 	if (status & TCPC_REG_ALERT_FAULT) {
@@ -901,7 +919,7 @@ void tcpci_tcpc_alert(int port)
 	while (status & TCPC_REG_ALERT_RX_STATUS) {
 		if (tcpm_enqueue_message(port))
 			++failed_attempts;
-		if (tcpm_alert_status(port, &status))
+		if (tcpci_alert_status(port, &status))
 			++failed_attempts;
 
 		/* Ensure we don't loop endlessly */

@@ -204,6 +204,38 @@ int tcpci_get_cached_rp(int port);
 void tcpci_set_cached_pull(int port, enum tcpc_cc_pull pull);
 enum tcpc_cc_pull tcpci_get_cached_pull(int port);
 
+/*
+ * Retrieve the TCPCI ALERT register value
+ *
+ * @param port Type-C port number
+ * @param alert pointer to return ALERT value
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpci_alert_status(int port, int *alert);
+
+/*
+ * Retrieve the TCPCI FAULT register value
+ *
+ * @param port Type-C port number
+ * @param fault pointer to return FAULT value
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpci_get_fault(int port, int *fault);
+
+/*
+ * Clear the TCPCI FAULT register value and if
+ * the fault value is now zero, clear the ALERT
+ * register's FAULT bit as well
+ *
+ * @param port Type-C port number
+ * @param fault mask of ALERT values to clear
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpci_clear_fault(int port, int fault);
+
 void tcpci_tcpc_alert(int port);
 int tcpci_tcpm_init(int port);
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
