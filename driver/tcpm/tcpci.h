@@ -204,6 +204,9 @@ int tcpci_get_cached_rp(int port);
 void tcpci_set_cached_pull(int port, enum tcpc_cc_pull pull);
 enum tcpc_cc_pull tcpci_get_cached_pull(int port);
 
+int tcpm_alert_status(int port, int *alert);
+int tcpci_get_fault(int port, int *fault);
+int tcpci_clear_fault(int port, int fault);
 void tcpci_tcpc_alert(int port);
 int tcpci_tcpm_init(int port);
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,

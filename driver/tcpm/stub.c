@@ -78,7 +78,7 @@ int tcpm_set_msg_header(int port, int power_role, int data_role)
 	return tcpc_set_msg_header(port, power_role, data_role);
 }
 
-static int tcpm_alert_status(int port, int *alert)
+int tcpm_alert_status(int port, int *alert)
 {
 	/* Read TCPC Alert register */
 	return tcpc_alert_status(port, alert);

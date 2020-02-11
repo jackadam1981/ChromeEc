@@ -487,7 +487,7 @@ int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role)
 			  TCPC_REG_MSG_HDR_INFO_SET(data_role, power_role));
 }
 
-static int tcpm_alert_status(int port, int *alert)
+int tcpm_alert_status(int port, int *alert)
 {
 	/* Read TCPC Alert register */
 	return tcpc_read16(port, TCPC_REG_ALERT, alert);
@@ -840,7 +840,7 @@ static int register_mask_reset(int port)
 }
 #endif
 
-static int tcpci_get_fault(int port, int *fault)
+int tcpci_get_fault(int port, int *fault)
 {
 	return tcpc_read(port, TCPC_REG_FAULT_STATUS, fault);
 }
@@ -851,9 +851,27 @@ static int tcpci_handle_fault(int port, int fault)
 	return EC_SUCCESS;
 }
 
-static int tcpci_clear_fault(int port, int fault)
+int tcpci_clear_fault(int port, int fault)
 {
-	return tcpc_write(port, TCPC_REG_FAULT_STATUS, fault);
+	int rv;
+
+	rv = tcpc_write(port, TCPC_REG_FAULT_STATUS, fault);
+	if (rv)
+		return rv;
+
+	/*
+	 * If all FAULTs are now clear, remove it from the
+	 * ALERT register
+	 */
+	rv = tcpci_get_fault(port, &fault);
+	if (rv)
+		return rv;
+
+	if (fault == 0)
+		rv = tcpc_write16(port, TCPC_REG_ALERT,
+				  TCPC_REG_ALERT_FAULT);
+
+	return rv;
 }
 
 /*
