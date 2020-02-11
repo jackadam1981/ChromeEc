@@ -22,6 +22,30 @@
       "revId": "3d60bc0151b7b7bd557e8fc557b7e4e4807b186d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfe2a3e_e1785411",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-02-11T16:02:46Z",
+      "side": 1,
+      "message": "https://docs.google.com/spreadsheets/d/1vxTc12cZ7OuPoA2S8R5HZA3sozsHQH4SWdzWh4NBKDg/edit#gid\u003d0\n\nNine is used for Endeavour which has its own EC firmware but shares fizz coreboot baseboard.",
+      "parentUuid": "42e04c0a_4dce4726",
+      "range": {
+        "startLine": 234,
+        "startChar": 17,
+        "endLine": 234,
+        "endChar": 19
+      },
+      "revId": "3d60bc0151b7b7bd557e8fc557b7e4e4807b186d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
