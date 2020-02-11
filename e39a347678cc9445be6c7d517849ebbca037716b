@@ -22,6 +22,30 @@
       "revId": "e39a347678cc9445be6c7d517849ebbca037716b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26da398e_464b2145",
+        "filename": "board/trembyle/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-02-11T06:08:59Z",
+      "side": 1,
+      "message": "looks like new variant board: dalboz had been add around last CL upload, had modified together.",
+      "parentUuid": "b6886654_43bc5753",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "e39a347678cc9445be6c7d517849ebbca037716b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
