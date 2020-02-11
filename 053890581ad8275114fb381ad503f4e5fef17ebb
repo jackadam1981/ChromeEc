@@ -22,6 +22,30 @@
       "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1f2ae1_36a51685",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-11T20:40:58Z",
+      "side": 1,
+      "message": "tcpm_alert_status() calls tcpc_alert_status(), which does not clear the alert bits, it just returns them.",
+      "parentUuid": "02972520_f160a141",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
