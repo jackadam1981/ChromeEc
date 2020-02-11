@@ -2005,15 +2005,6 @@ void disable_tbt_compat_mode(int port);
 bool is_tbt_compat_enabled(int port);
 
 /**
- * Checks all the SVID for USB_VID_INTEL
- *
- * @param port	        USB-C port number
- * @param prev_svid_cnt Previous SVID cnt
- * @return              True is SVID = USB_VID_INTEL False otherwise
- */
-bool is_intel_svid(int port, int prev_svid_cnt);
-
-/**
  * Checks if Device disocver mode response contains Thunderbolt alternate mode
  *
  * @param port	   USB-C port number
@@ -2110,14 +2101,6 @@ void disable_enter_usb4_mode(int port);
 bool should_enter_usb4_mode(int port);
 
 /**
- * Returns the size of discover SVID mode payload data
- *
- * @param payload   payload data
- * @return          Size of SVID data i.e. 1
- */
-int dfp_discover_svids(uint32_t *payload);
-
-/**
  * This function fills the next VDO request in the payload once an ack from the
  * discover Identity request is received and returns the number of objects it
  * has filled
@@ -2130,6 +2113,18 @@ int dfp_discover_svids(uint32_t *payload);
  */
 int dfp_handle_acked_discover_ident(int port, int cnt, uint32_t *payload,
 				uint16_t head);
+
+/**
+ * This function fills the next VDO request in the payload, once an ack from
+ * discover SVID request is received and returns the number of objects it has
+ * filled
+ *
+ * @param port      usb-c port number
+ * @param cnt	    number of data objects in payload
+ * @param payload   payload data
+ * @return          Number of objects filled
+ */
+int dfp_handle_acked_discover_svid(int port, int cnt, uint32_t *payload);
 
 /**
  * Return maximum allowed speed for Thunderbolt-compatible mode
