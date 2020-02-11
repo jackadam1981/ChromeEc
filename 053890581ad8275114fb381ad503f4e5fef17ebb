@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02972520_f160a141",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-11T20:37:25Z",
+      "side": 1,
+      "message": "I am worried that we will drop other status on the floor here since the tcpci_tcpc_alert function isn\u0027t getting a chance to process those statuses.\n\nCan we some out get this informaiton from TCPCI layer via tcpci_tcpc_alert so all the other status can be handle as well?",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
