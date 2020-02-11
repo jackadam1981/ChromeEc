@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b5463f9_b9a33421",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-11T20:30:42Z",
+      "side": 1,
+      "message": "this tcpm_ definition doesn\u0027t look like it belongs in this header file.",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 21
+      },
+      "revId": "6e37673abefba5bc335ab2964ffdfa723ca533fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91155aab_c17ce5e7",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-11T20:30:42Z",
+      "side": 1,
+      "message": "even though the other functions are document, can you still document these function and how they should be used please.",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "6e37673abefba5bc335ab2964ffdfa723ca533fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
