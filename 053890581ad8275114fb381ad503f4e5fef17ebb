@@ -70,6 +70,30 @@
       "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47562bb7_d226fffd",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-11T21:01:41Z",
+      "side": 1,
+      "message": "Then we have a different race.  The fault is pretty much never going to happen.  The cause for this fault would be we had SNK Vbus enabled when we enable SRC Vbus.  Is it really worth adding a lot of complexity for this?",
+      "parentUuid": "6b696cba_5f4794fa",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
