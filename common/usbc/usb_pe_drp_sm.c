@@ -3806,6 +3806,30 @@ static void pe_vdm_request_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
+void disable_transmit_sop_prime(int port)
+{
+}
+
+void disable_transmit_sop_prime_prime(int port)
+{
+}
+
+bool is_transmit_msg_sop_prime(int port)
+{
+	return false;
+}
+
+bool is_transmit_msg_sop_prime_prime(int port)
+{
+	return false;
+}
+
+int dfp_discover_svids(uint32_t *payload)
+{
+	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
+	return 1;
+}
+
 /**
  * PE_VDM_Acked
  */
@@ -3837,14 +3861,8 @@ static void pe_vdm_acked_entry(int port)
 		switch (vdo_cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			dfp_consume_identity(port, cnt, payload);
-#ifdef CONFIG_CHARGE_MANAGER
-			if (pd_charge_from_device(pd_get_identity_vid(port),
-						pd_get_identity_pid(port))) {
-				charge_manager_update_dualrole(port,
-								CAP_DEDICATED);
-			}
-#endif
+			/* TODOi(b:148834626): Pass head */
+			dfp_handle_acked_discover_ident(port, cnt, payload, 0);
 			break;
 		case CMD_DISCOVER_SVID:
 			dfp_consume_svids(port, cnt, payload);
