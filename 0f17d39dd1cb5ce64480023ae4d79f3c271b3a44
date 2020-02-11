@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a711528_573a7a79",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-11T20:48:06Z",
+      "side": 1,
+      "message": "publishing tcss_state here isn\u0027t correct through the lifetime of when this command can be called. The TCSS state is only set once during AP firmware initialization. Any future state updates won\u0027t be reflected here.",
+      "range": {
+        "startLine": 5277,
+        "startChar": 9,
+        "endLine": 5277,
+        "endChar": 19
+      },
+      "revId": "0f17d39dd1cb5ce64480023ae4d79f3c271b3a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

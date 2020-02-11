@@ -288,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "f1836781_f23930f0",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-11T20:48:06Z",
+      "side": 1,
+      "message": "I it is my understanding that this write-once at AP firmware initialization value, and isn\u0027t updated again within the EC. The value returned by the EC is only the snapshot of what happened during coreboot initialization.\n\nIf that is the case, then an ACPI table seems more appropriate.\n\nIf the TCSS is something that will be updated by the kernel all the time, then I am much more okay the currently proposed CL",
+      "parentUuid": "119c6557_ab97e78d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
