@@ -22,6 +22,30 @@
       "revId": "c7a466a6f995f58e3d1114365ab713775fcce869",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b74746_efabdcf6",
+        "filename": "board/waddledee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-11T20:59:51Z",
+      "side": 1,
+      "message": "I believe the answer here is \"copy-paste\", and as far as I can tell the option was added in 2012[0] and removed from use in 2013[1].  So for the sake of posterity, I\u0027ll remove the definition of this here.  We could probably also remove the struct member if we\u0027re feeling ambitious... \n\n[0] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/24694/\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/66688/",
+      "parentUuid": "0fb9f521_33e81cd6",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "c7a466a6f995f58e3d1114365ab713775fcce869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
