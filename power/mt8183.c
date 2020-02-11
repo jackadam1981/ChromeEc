@@ -108,6 +108,9 @@ static const struct power_seq_op s3s5_power_seq[] = {
 };
 
 static int forcing_shutdown;
+#ifdef BOARD_KODAMA
+static int delay_auto_poweron;
+#endif
 
 void chipset_reset_request_interrupt(enum gpio_signal signal)
 {
@@ -201,6 +204,9 @@ enum power_state power_chipset_init(void)
 	} else {
 		/* Auto-power on */
 		chipset_exit_hard_off();
+		#ifdef BOARD_KODAMA
+		delay_auto_poweron = 1;
+		#endif
 	}
 
 	/* Start from S5 if the PMIC is already up. */
@@ -280,6 +286,9 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5:
+#ifdef BOARD_KODAMA
+		delay_auto_poweron = 0;
+#endif
 		/*
 		 * If AP initiated shutdown, PMIC is off, and we can transition
 		 * to G3 immediately.
@@ -329,6 +338,27 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_G3S5:
 		forcing_shutdown = 0;
+
+#ifdef BOARD_KODAMA
+		/*
+		 * b:148045048: With the adapter to activate the smart battery
+		 * which is shutdown mode, will enable PMIC during activation
+		 * and have heavy loading, which will prevent the system from
+		 * powering on. Delay 3 seconds to boot system until the smart
+		 * battry is ready.
+		 */
+		if (delay_auto_poweron) {
+			static int delay_auto_poweron_cnt;
+
+			if (delay_auto_poweron_cnt++ < 300) {
+				msleep(10);
+				return POWER_G3S5;
+			} else {
+				delay_auto_poweron = 0;
+				delay_auto_poweron_cnt = 0;
+			}
+		}
+#endif
 
 #if CONFIG_CHIPSET_POWER_SEQ_VERSION == 1
 		hook_call_deferred(&deassert_en_pp1800_s5_l_data, -1);
