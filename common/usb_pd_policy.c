@@ -286,24 +286,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 							payload);
 			break;
 		case CMD_ENTER_MODE:
-			if (is_tbt_compat_enabled(port)) {
-				rsize = enter_mode_tbt_compat(port, payload);
-			/*
-			 * Continue with PD flow if Thunderbolt-compatible mode
-			 * is disabled.
-			 */
-			} else if (!modep) {
-				rsize = 0;
-			} else {
-				if (!modep->opos)
-					pd_dfp_enter_mode(port, 0, 0);
-
-				if (modep->opos) {
-					rsize = modep->fx->status(port,
-								  payload);
-					payload[0] |= PD_VDO_OPOS(modep->opos);
-				}
-			}
+			rsize = dfp_handle_acked_enter_mode(port, payload,
+							modep);
 			break;
 		case CMD_DP_STATUS:
 			/* DP status response & UFP's DP attention have same
