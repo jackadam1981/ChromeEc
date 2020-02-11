@@ -903,7 +903,7 @@ bool check_tbt_cable_speed(int port)
  * Enter Thunderbolt-compatible mode
  * Reference: USB Type-C cable and connector specification, Release 2.0
  */
-int enter_tbt_compat_mode(int port, uint32_t *payload)
+static int enter_tbt_compat_mode(int port, uint32_t *payload)
 {
 	union tbt_dev_mode_enter_cmd enter_dev_mode = {0};
 	struct pd_cable *cable = pd_get_cable_attributes(port);
@@ -1032,7 +1032,14 @@ static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 	return rsize;
 }
 
-int enter_mode_tbt_compat(int port, uint32_t *payload)
+/*
+ * This function returns number of objects required to enter
+ * Thunderbolt-Compatible mode i.e.
+ * 2 - When SOP is enabled.
+ * 1 - When SOP' or SOP'' is enabled.
+ * 0 - Acknowledge.
+ */
+static int enter_mode_tbt_compat(int port, uint32_t *payload)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
 
@@ -1217,6 +1224,32 @@ int dfp_handle_acked_discover_mode(int port, int cnt, uint32_t *payload)
 		payload[0] = pd_dfp_enter_mode(port, 0, 0);
 		if (payload[0])
 			rsize = 1;
+	}
+	return rsize;
+}
+
+int dfp_handle_acked_enter_mode(int port, uint32_t *payload,
+				struct svdm_amode_data *modep)
+{
+	int rsize = 0;
+
+	if (is_tbt_compat_enabled(port)) {
+		rsize = enter_mode_tbt_compat(port, payload);
+	/*
+	 * Continue with PD flow if Thunderbolt-compatible mode
+	 * is disabled.
+	 */
+	} else if (!modep) {
+		rsize = 0;
+	} else {
+		if (!modep->opos)
+			pd_dfp_enter_mode(port, 0, 0);
+
+		if (modep->opos) {
+			rsize = modep->fx->status(port,
+						  payload);
+			payload[0] |= PD_VDO_OPOS(modep->opos);
+		}
 	}
 	return rsize;
 }
