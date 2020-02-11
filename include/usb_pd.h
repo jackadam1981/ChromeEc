@@ -2027,28 +2027,6 @@ bool is_limit_tbt_cable_speed(int port);
 bool check_tbt_cable_speed(int port);
 
 /**
- * This function fills the TBT3 objects in the payload and returns the number
- * of objects it has filled.
- *
- * @param port      usb-c port number
- * @param payload   payload data
- * @return          Number of object filled
- */
-int enter_tbt_compat_mode(int port, uint32_t *payload);
-
-/*
- * This function returns number of objects required to enter
- * Thunderbolt-Compatible mode i.e.
- *
- * @param port      usb-c port number
- * @param payload   payload data
- * @return          2 - When SOP is enabled.
- *                  1 - When SOP' or SOP'' is enabled.
- *                  0 - Acknowledge.
- */
-int enter_mode_tbt_compat(int port, uint32_t *payload);
-
-/**
  * Return enter USB message payload
  *
  * @param port	USB-C port number
@@ -2113,6 +2091,19 @@ int dfp_handle_acked_discover_svid(int port, int cnt, uint32_t *payload);
  * @return          Number of objects filled
  */
 int dfp_handle_acked_discover_mode(int port, int cnt, uint32_t *payload);
+
+/**
+ * This function fills the next VDO request in the payload, once an ack from
+ * enter mode request is received and returns the number of objects it has
+ * filled
+ *
+ * @param port      usb-c port number
+ * @param payload   payload data
+ * @param modep     object position of mode chosen in alternate mode
+ * @return          Number of objects filled
+ */
+int dfp_handle_acked_enter_mode(int port, uint32_t *payload,
+				struct svdm_amode_data *modep);
 
 /**
  * Return maximum allowed speed for Thunderbolt-compatible mode
