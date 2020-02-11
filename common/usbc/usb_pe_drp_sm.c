@@ -3862,7 +3862,7 @@ static void pe_vdm_acked_entry(int port)
 			dfp_handle_acked_discover_ident(port, cnt, payload, 0);
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, cnt, payload);
+			dfp_handle_acked_discover_svid(port, cnt, payload);
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
