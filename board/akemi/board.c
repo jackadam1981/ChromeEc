@@ -432,3 +432,18 @@ static void board_chipset_shutdown(void)
 	sb_quick_charge_mode(SB_QUICK_CHARGE_ENABLE);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+static void board_AC_on(void)
+{
+	enum power_state state;
+
+	if (extpower_is_present()) {
+		state = power_get_state();
+		if ((state == POWER_G3) || (state == POWER_S5)) {
+			/* Quick charge current */
+			sb_quick_charge_mode(SB_QUICK_CHARGE_ENABLE);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_AC_on, HOOK_PRIO_DEFAULT);
+
