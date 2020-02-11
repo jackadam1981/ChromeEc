@@ -1942,25 +1942,6 @@ bool is_usb4_mode_enabled(int port);
 bool should_enter_usb4_mode(int port);
 
 /**
- * Checks if the Discover Identity SOP response has USB4 product type
- *
- * @param port	   USB-C port number
- * @param payload  payload data
- * @param cnt      number of data objects in payload
- * @return         True if VDO response has USB4 product type, false otherwise
- */
-bool is_usb4_vdo(int port, int cnt, uint32_t *payload);
-
-/**
- * Returns True if the cable is ready to enter USB4 mdoe
- *
- * @param port	   USB-C port number
- * @param cnt      number of data objects in payload
- * @return         True if cable ready to enter USB4 mode, false otherwise
- */
-bool is_cable_ready_to_enter_usb4(int port, int cnt);
-
-/**
  * Return enter USB message payload
  *
  * @param port	USB-C port number
@@ -2022,24 +2003,6 @@ void disable_tbt_compat_mode(int port);
  * @return      Status of CABLE_FLAGS_TBT_COMPAT_ENABLE flag
  */
 bool is_tbt_compat_enabled(int port);
-
-/**
- * Checks if the attached cable supports superspeed
- *
- * @param port	USB-C port number
- * @return      True if cable is superspeed, false otherwise
- */
-bool is_tbt_cable_superspeed(int port);
-
-/**
- * Check if product supports any Modal Operation (Alternate Modes)
- *
- * @param port	   USB-C port number
- * @param cnt      number of data objects in payload
- * @param payload  payload data
- * @return         True if product supports Modal Operation, false otherwise
- */
-bool is_modal(int port, int cnt, uint32_t *payload);
 
 /**
  * Checks all the SVID for USB_VID_INTEL
@@ -2145,6 +2108,28 @@ void disable_enter_usb4_mode(int port);
  * @param port	USB-C port number
  */
 bool should_enter_usb4_mode(int port);
+
+/**
+ * Returns the size of discover SVID mode payload data
+ *
+ * @param payload   payload data
+ * @return          Size of SVID data i.e. 1
+ */
+int dfp_discover_svids(uint32_t *payload);
+
+/**
+ * This function fills the next VDO request in the payload once an ack from the
+ * discover Identity request is received and returns the number of objects it
+ * has filled
+ *
+ * @param port      usb-c port number
+ * @param cnt	    number of data objects in payload
+ * @param payload   payload data
+ * @param head      PD packet header
+ * @return          Number of objects filled
+ */
+int dfp_handle_acked_discover_ident(int port, int cnt, uint32_t *payload,
+				uint16_t head);
 
 /**
  * Return maximum allowed speed for Thunderbolt-compatible mode
