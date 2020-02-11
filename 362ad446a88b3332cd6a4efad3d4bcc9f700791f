@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e96035b6_c6998a7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Re-praised it.",
+      "parentUuid": "70b31228_384a2e40",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cdb2c96_dff58a65",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "550093e3_b086ae53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cdb2c96_dff58a65",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6293e380_d99bb29f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0b1e1f_415dcc30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "I meant the situation that \u0027ccdblock EC\u0027 is enabled.\nI am changing it to \u0027EC UART is ccdblocked\u0027.",
+      "parentUuid": "6293e380_d99bb29f",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "7d7688b7_e2c950ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f481e8ea_7d23eced",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6583462_f3d5ec82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc0015b_04947ce0",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704d2b9b_2639c661",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abd3879_e2531a36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "chip/g/rdd.c detects RDD connection based on input pin value of CC1/2 by interrupt. Interrupt handler will put GPIO_CCD_MODE_L low or high in a deferred function.\n\nboard/cr50/rdd.c monitors GPIO_CCD_MODE_L in a HOOK_SECOND function, and this module controls CCD capabilities. I quoted \u0027ccd_ext\u0027 keyword from the code and expressed it as \u0027CCD external detection\u0027.",
+      "parentUuid": "704d2b9b_2639c661",
+      "range": {
+        "startLine": 18,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8a829db9_6c699957",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Corrected.",
+      "parentUuid": "ec11d986_1b67f53b",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f32d586a_efd86f0a",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0928e5cf_7485c530",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f32d586a_efd86f0a",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 60
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "ce05bde7_b5727fe4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c37dc79_c1f849be",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a688979d_c661d6f1",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a39bca_f2780eed",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Should ec_comm_is_active be checked first, then it could be like:\n\nif (ec_comm_is_active)\n\tflags_want_by_ec_comm \u003d (flags_want \u0026 CCD_ENABLE_UART_EC) | CCD_ENABLE_UART_EC_TX;\nelse\n\tflags_want_by_ec_comm \u003d 0;\n\nif (ccd_ext_is_enabled())\n\tflags_want |\u003d (CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |  CCD_ENABLE_I2C | CCD_ENABLE_SPI);\nelse\n\tflags_want \u003d flags_want_by_ec_comm;\n\nThis looks more complicated.",
+      "parentUuid": "a688979d_c661d6f1",
+      "range": {
+        "startLine": 240,
+        "startChar": 10,
+        "endLine": 240,
+        "endChar": 27
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "34987c33_80819016",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d959f0_8b8a47ab",
+      "range": {
+        "startLine": 254,
+        "startChar": 19,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f072fd93_3c7e2345",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 4
@@ -275,6 +539,30 @@
       "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22cc210b_605bdd14",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f072fd93_3c7e2345",
+      "range": {
+        "startLine": 265,
+        "startChar": 31,
+        "endLine": 265,
+        "endChar": 32
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -361,6 +649,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "dc94e8cc_49f1080e",
+      "range": {
+        "startLine": 284,
+        "startChar": 36,
+        "endLine": 284,
+        "endChar": 58
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebbf3aad_840d14c3",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-11T04:39:18Z",
+      "side": 1,
+      "message": "Per crbug.com/1047287#c10, I am bring this back in this patch, so that \u0027ccdblock EC enable\u0027 wouldn\u0027t block EC-CR50 communication.",
+      "parentUuid": "1edcd06c_69c1eb7f",
       "range": {
         "startLine": 284,
         "startChar": 36,
