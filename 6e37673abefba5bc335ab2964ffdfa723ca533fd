@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "acf1ccd4_854fb873",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-11T20:58:40Z",
+      "side": 1,
+      "message": "it is really more of a tcpci function... so changed the name instead. It was only local to the tcpci.c file and now used to access TCPCI registers.",
+      "parentUuid": "2b5463f9_b9a33421",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 21
+      },
+      "revId": "6e37673abefba5bc335ab2964ffdfa723ca533fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91155aab_c17ce5e7",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6e37673abefba5bc335ab2964ffdfa723ca533fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223b79f1_389cdaba",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-11T20:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91155aab_c17ce5e7",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "6e37673abefba5bc335ab2964ffdfa723ca533fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
