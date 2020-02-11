@@ -166,6 +166,30 @@
       "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f3fa5f5_2f903588",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-11T22:00:12Z",
+      "side": 1,
+      "message": "problem solved.... no longer caring about the possible fault. We will get notice on the EC console if this ever happens",
+      "parentUuid": "a5ff66a9_4f5302ff",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "053890581ad8275114fb381ad503f4e5fef17ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
