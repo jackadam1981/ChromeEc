@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ec885f9_59485595",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5157d7_1b2f5b15",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "730469eb_084e3267",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 22
@@ -33,6 +51,24 @@
       "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95804108_11840b5d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730469eb_084e3267",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3c8bcc99_beb2ad05",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ae5506_e670fa7f",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd03fa19_0cd43961",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 22
@@ -67,6 +121,24 @@
       "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9e060d_60219250",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "It\u0027s not ideal. Stillness detection does depend on timestamps and it would be best to process things after spreading. Having said that, if the option is to either dump the data or use it without spreading, the best option is to use it.",
+      "parentUuid": "dd03fa19_0cd43961",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "f6cc8ed1_3e05ac30",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7635ee5b_54988418",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20e28f19_55253285",
         "filename": "common/online_calibration.c",
         "patchSetId": 22
@@ -101,6 +191,24 @@
       "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc1c1a3_f9797cb1",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e28f19_55253285",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "01768e88_bd6fa3a7",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd53285_6d984f8b",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f518f17_6a30cb70",
         "filename": "common/online_calibration.c",
         "patchSetId": 22
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "1f2b0cdd_e043659a",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Trying to set this change up as an interface for how things will integrate with the rest of motion sense. It will be used in the next CL.",
+      "parentUuid": "8f518f17_6a30cb70",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ad39d35_0c91798e",
         "filename": "common/online_calibration.c",
         "patchSetId": 22
@@ -152,6 +296,24 @@
       "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0bc10a0_37635608",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-11T17:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad39d35_0c91798e",
+      "revId": "4aa1d3d27c5412fb8bed4e6e6c7ccb76820c35f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
