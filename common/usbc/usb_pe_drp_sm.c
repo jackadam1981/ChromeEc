@@ -3824,12 +3824,6 @@ bool is_transmit_msg_sop_prime_prime(int port)
 	return false;
 }
 
-int dfp_discover_svids(uint32_t *payload)
-{
-	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
-	return 1;
-}
-
 /**
  * PE_VDM_Acked
  */
@@ -3865,7 +3859,7 @@ static void pe_vdm_acked_entry(int port)
 			dfp_handle_acked_discover_ident(port, cnt, payload, 0);
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, cnt, payload);
+			dfp_handle_acked_discover_svid(port, cnt, payload);
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);

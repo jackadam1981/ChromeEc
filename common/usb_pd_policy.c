@@ -189,12 +189,6 @@ void pd_dfp_pe_init(int port)
 	memset(&pe[port], 0, sizeof(struct pd_policy));
 }
 
-int dfp_discover_svids(uint32_t *payload)
-{
-	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
-	return 1;
-}
-
 struct pd_policy *pd_get_am_policy(int port)
 {
 	return &pe[port];
@@ -284,38 +278,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 							payload, head);
 			break;
 		case CMD_DISCOVER_SVID:
-			{
-			int prev_svid_cnt = pe[port].svid_cnt;
-			dfp_consume_svids(port, cnt, payload);
-			/*
-			 * Ref: USB Type-C Cable and Connector Specification,
-			 * figure F-1: TBT3 Discovery Flow
-			 *
-			 * Check if 0x8087 is received for Discover SVID SOP.
-			 * If not, disable Thunderbolt-compatible mode
-			 *
-			 * If 0x8087 is not received for Discover SVID SOP'
-			 * limit to TBT passive Gen 2 cable
-			 */
-			if (is_tbt_compat_enabled(port)) {
-				bool intel_svid =
-					is_intel_svid(port, prev_svid_cnt);
-				if (is_transmit_msg_sop_prime(port)) {
-					if (!intel_svid)
-						limit_tbt_cable_speed(port);
-				} else if (intel_svid) {
-					rsize = dfp_discover_svids(payload);
-					enable_transmit_sop_prime(port);
-					break;
-				} else {
-					disable_tbt_compat_mode(port);
-				}
-			}
-
-			rsize = dfp_discover_modes(port, payload);
-
-			disable_transmit_sop_prime(port);
-			}
+			rsize = dfp_handle_acked_discover_svid(port, cnt,
+							payload);
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
