@@ -310,27 +310,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 							payload);
 			break;
 		case CMD_DISCOVER_MODES:
-			dfp_consume_modes(port, cnt, payload);
-			if (is_tbt_compat_enabled(port) &&
-				is_tbt_compat_mode(port, cnt, payload)) {
-				rsize = process_tbt_compat_discover_modes(
-						port, payload);
-				break;
-			}
-
-			rsize = dfp_discover_modes(port, payload);
-			/* enter the default mode for DFP */
-			if (!rsize) {
-				/*
-				 * Disabling Thunderbolt-Compatible mode if
-				 * discover mode response doesn't include Intel
-				 * SVID.
-				 */
-				disable_tbt_compat_mode(port);
-				payload[0] = pd_dfp_enter_mode(port, 0, 0);
-				if (payload[0])
-					rsize = 1;
-			}
+			rsize = dfp_handle_acked_discover_mode(port, cnt,
+							payload);
 			break;
 		case CMD_ENTER_MODE:
 			if (is_tbt_compat_enabled(port)) {

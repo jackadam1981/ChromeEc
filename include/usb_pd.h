@@ -1944,20 +1944,6 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port);
 enum tbt_compat_rounded_support get_tbt_rounded_support(int port);
 
 /**
- * Sets CABLE_FLAGS_TBT_COMPAT_ENABLE flag
- *
- * @param port	USB-C port number
- */
-void enable_tbt_compat_mode(int port);
-
-/**
- * Clears CABLE_FLAGS_TBT_COMPAT_ENABLE flag
- *
- * @param port	USB-C port number
- */
-void disable_tbt_compat_mode(int port);
-
-/**
  * Checks if CABLE_FLAGS_TBT_COMPAT_ENABLE flag is enabled
  *
  * @param port	USB-C port number
@@ -2086,6 +2072,18 @@ int dfp_handle_acked_discover_ident(int port, int cnt, uint32_t *payload,
  * @return          Number of objects filled
  */
 int dfp_handle_acked_discover_svid(int port, int cnt, uint32_t *payload);
+
+/**
+ * This function fills the next VDO request in the payload, once an ack from
+ * Discover mode request is received and returns the number of objects it has
+ * filled
+ *
+ * @param port      usb-c port number
+ * @param cnt	    number of data objects in payload
+ * @param payload   payload data
+ * @return          Number of objects filled
+ */
+int dfp_handle_acked_discover_mode(int port, int cnt, uint32_t *payload);
 
 /**
  * Return maximum allowed speed for Thunderbolt-compatible mode
