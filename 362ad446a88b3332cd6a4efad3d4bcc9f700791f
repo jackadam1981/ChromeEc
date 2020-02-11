@@ -2,6 +2,282 @@
   "comments": [
     {
       "key": {
+        "uuid": "70b31228_384a2e40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "isn\u0027t EC UART supposed to be functional for bitbang programming? \n\nOr does \u0027UART_EC RX and TX\u0027 in line 9 above refer explicitly to EFS2 communications?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cdb2c96_dff58a65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "EC UART",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6293e380_d99bb29f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "what does \u0027CCD UART EC is blocked\u0027 mean?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cc0015b_04947ce0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "s/UART/EC UART TX/",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f481e8ea_7d23eced",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "s/dominates/dominate/",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704d2b9b_2639c661",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "what is \u0027CCD external detection\u0027 - is this about plugging in the debug cable? But isn\u0027t debug cable detection driven by interrupts?",
+      "range": {
+        "startLine": 18,
+        "startChar": 44,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec11d986_1b67f53b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "do you mean to say \u0027is used as an output in this mode\u0027?",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f32d586a_efd86f0a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "is this variable really needed? its name is confusing. see suggestions below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 60
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c37dc79_c1f849be",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "drop this check.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a688979d_c661d6f1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "should this check be the first one (and as such have the highest priority)?",
+      "range": {
+        "startLine": 240,
+        "startChar": 10,
+        "endLine": 240,
+        "endChar": 27
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d959f0_8b8a47ab",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "add here\nif (!ec_comm_is_active)\n    flags_want \u0026\u003d ~CCD_ENABLE_UART_EC_TX",
+      "range": {
+        "startLine": 254,
+        "startChar": 19,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f072fd93_3c7e2345",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-11T02:15:56Z",
+      "side": 1,
+      "message": "add here a check for ec_comm_is_active and mix in CCD_ENABLE_UART_EC_TX is necessary.",
+      "range": {
+        "startLine": 265,
+        "startChar": 31,
+        "endLine": 265,
+        "endChar": 32
+      },
+      "revId": "362ad446a88b3332cd6a4efad3d4bcc9f700791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "245850be_3ed6cbfa",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 4
