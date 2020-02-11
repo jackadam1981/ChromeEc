@@ -217,13 +217,7 @@ void pd_dfp_pe_init(int port)
 	memset(&pe[port], 0, sizeof(struct pd_policy));
 }
 
-static int dfp_discover_ident(uint32_t *payload)
-{
-	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
-	return 1;
-}
-
-static int dfp_discover_svids(uint32_t *payload)
+int dfp_discover_svids(uint32_t *payload)
 {
 	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
 	return 1;
@@ -314,83 +308,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 		switch (cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			/* Received a SOP' Discover Ident msg */
-			if (is_transmit_msg_sop_prime(port)) {
-				/* Store cable type */
-				dfp_consume_cable_response(port, cnt, payload,
-							head);
-
-				/*
-				 * Enter USB4 mode if the cable supports USB4
-				 * operation and has USB4 VDO.
-				 */
-				if (is_usb4_mode_enabled(port) &&
-				    is_cable_ready_to_enter_usb4(port, cnt)) {
-					enable_enter_usb4_mode(port);
-					usb_mux_set_safe_mode(port);
-					disable_transmit_sop_prime(port);
-					/*
-					 * To change the mode of operation from
-					 * USB4 the port needs to be
-					 * reconfigured.
-					 * Ref: USB Type-C Cable and Connectot
-					 * Specification section 5.4.4.
-					 *
-					 */
-					disable_tbt_compat_mode(port);
-					rsize = 0;
-					break;
-				}
-
-				/*
-				 * Disable Thunderbolt-compatible mode if the
-				 * cable does not support superspeed
-				 */
-				if (is_tbt_compat_enabled(port) &&
-					!is_tbt_cable_superspeed(port)) {
-					disable_tbt_compat_mode(port);
-				}
-
-				rsize = dfp_discover_svids(payload);
-
-				disable_transmit_sop_prime(port);
-			/* Received a SOP Discover Ident Message */
-			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
-				board_is_tbt_usb4_port(port)) {
-				dfp_consume_identity(port, cnt, payload);
-
-				/* Enable USB4 mode if USB4 VDO present
-				 * and port partner supports USB Rev 3.0.
-				 */
-				if (is_usb4_vdo(port, cnt, payload) &&
-				    PD_HEADER_REV(head)	== PD_REV30) {
-					enable_usb4_mode(port);
-				}
-
-				/*
-				 * Enable Thunderbolt-compatible mode
-				 * if the modal operation is supported
-				 */
-				if (is_modal(port, cnt, payload))
-					enable_tbt_compat_mode(port);
-
-				if (is_modal(port, cnt, payload) ||
-				    is_usb4_vdo(port, cnt, payload)) {
-					rsize = dfp_discover_ident(payload);
-					enable_transmit_sop_prime(port);
-				} else {
-					rsize = dfp_discover_svids(payload);
-				}
-			} else {
-				dfp_consume_identity(port, cnt, payload);
-				rsize = dfp_discover_svids(payload);
-			}
-#ifdef CONFIG_CHARGE_MANAGER
-			if (pd_charge_from_device(pd_get_identity_vid(port),
-						  pd_get_identity_pid(port)))
-				charge_manager_update_dualrole(port,
-							       CAP_DEDICATED);
-#endif
+			rsize = dfp_handle_acked_discover_ident(port, cnt,
+							payload, head);
 			break;
 		case CMD_DISCOVER_SVID:
 			{
