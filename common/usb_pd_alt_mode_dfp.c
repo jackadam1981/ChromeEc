@@ -777,7 +777,7 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable->cable_mode_resp.tbt_rounded;
 }
 
-void enable_tbt_compat_mode(int port)
+static void enable_tbt_compat_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
 		struct pd_cable *cable = pd_get_cable_attributes(port);
@@ -786,7 +786,7 @@ void enable_tbt_compat_mode(int port)
 	}
 }
 
-void disable_tbt_compat_mode(int port)
+static void disable_tbt_compat_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
 		struct pd_cable *cable = pd_get_cable_attributes(port);
@@ -971,7 +971,7 @@ int enter_tbt_compat_mode(int port, uint32_t *payload)
 	return 2;
 }
 
-int process_tbt_compat_discover_modes(int port, uint32_t *payload)
+static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 {
 	int rsize;
 	enum tbt_compat_cable_speed max_tbt_speed;
@@ -1212,6 +1212,32 @@ int dfp_handle_acked_discover_svid(int port, int cnt, uint32_t *payload)
 	disable_transmit_sop_prime(port);
 
 	return dfp_discover_modes(port, payload);
+}
+
+int dfp_handle_acked_discover_mode(int port, int cnt, uint32_t *payload)
+{
+	int rsize = 0;
+
+	dfp_consume_modes(port, cnt, payload);
+	if (is_tbt_compat_enabled(port) &&
+		is_tbt_compat_mode(port, cnt, payload)) {
+		return process_tbt_compat_discover_modes(port, payload);
+	}
+
+	rsize = dfp_discover_modes(port, payload);
+	/* enter the default mode for DFP */
+	if (!rsize) {
+		/*
+		 * Disabling Thunderbolt-Compatible mode if
+		 * discover mode response doesn't include Intel
+		 * SVID.
+		 */
+		disable_tbt_compat_mode(port);
+		payload[0] = pd_dfp_enter_mode(port, 0, 0);
+		if (payload[0])
+			rsize = 1;
+	}
+	return rsize;
 }
 
 __overridable void svdm_safe_dp_mode(int port)
