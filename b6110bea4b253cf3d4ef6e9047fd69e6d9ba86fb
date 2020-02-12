@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67bb99cb_44642d30",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T19:30:18Z",
+      "side": 1,
+      "message": "use noticeable comment line",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 20
+      },
+      "revId": "b6110bea4b253cf3d4ef6e9047fd69e6d9ba86fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65808ec_c2c32946",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T19:30:18Z",
+      "side": 1,
+      "message": "use separate CL, as it has both TBT \u0026 USB4",
+      "range": {
+        "startLine": 952,
+        "startChar": 4,
+        "endLine": 952,
+        "endChar": 37
+      },
+      "revId": "b6110bea4b253cf3d4ef6e9047fd69e6d9ba86fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
