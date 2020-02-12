@@ -16,6 +16,24 @@
       "revId": "34012fbf0d357a3e940590e0898f5de93cd01da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a69626c_3f4c4a5c",
+        "filename": "board/morphius/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-02-12T09:36:45Z",
+      "side": 1,
+      "message": "This array is use for PWM channel(Power LED), we only have white color on PWM channel.\nAmber is color of Battery LED control by GPIO.",
+      "parentUuid": "599b49c7_adf12b67",
+      "revId": "34012fbf0d357a3e940590e0898f5de93cd01da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
