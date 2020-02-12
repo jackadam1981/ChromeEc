@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "656a8720_853e08c3",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-12T18:22:24Z",
+      "side": 1,
+      "message": "why enable them unconditionally, what\u0027s changing? A comment would help.",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 55
+      },
+      "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e05d45c_2c0da42f",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 9
@@ -46,6 +69,30 @@
       "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05708e6b_e2404557",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-12T18:22:24Z",
+      "side": 1,
+      "message": "I must be missing something - why does the order of flag settings in this function have to change? Can the check for packet mode be in the end and override the rest of the settings?",
+      "parentUuid": "0e05d45c_2c0da42f",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 15
+      },
+      "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
