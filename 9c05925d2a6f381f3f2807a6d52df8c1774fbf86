@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "496ccda8_1075c77b",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-12T21:30:43Z",
+      "side": 1,
+      "message": "Yes, I agree that we should only block uart-\u003eusb on the EC channel if ec-efs is in progress, should be a simple check.",
+      "parentUuid": "b18180e3_8b5cc9f6",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "9c05925d2a6f381f3f2807a6d52df8c1774fbf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2233e9df_bfea4dda",
         "filename": "chip/g/usart.c",
         "patchSetId": 19
