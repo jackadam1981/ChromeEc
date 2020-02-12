@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51beea7_9f2f731b",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-02-12T22:44:02Z",
+      "side": 1,
+      "message": "This is a frequency in Hz for the PWM?  Datasheet says 1kHz is typical, 200 Hz is min, and 10kHz is max.\n\nSo I think you\u0027re out of spec at 19.2kHz.\n\n...but also the old frequency should have been fine.\n\nAre you sure you\u0027re not papering over some other problem here?",
+      "range": {
+        "startLine": 180,
+        "startChar": 58,
+        "endLine": 180,
+        "endChar": 63
+      },
+      "revId": "5d4727f52cb2850c54c8bb0f0bbd239001777b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
