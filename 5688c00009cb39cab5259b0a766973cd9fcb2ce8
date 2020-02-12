@@ -1,0 +1,671 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f14a3db_829d605f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "Please document the testing procedure here. This says nothing.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a75218_0133881f",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "Please open a bug for this and link the relevant bug with TODO(...)",
+      "range": {
+        "startLine": 83,
+        "startChar": 48,
+        "endLine": 83,
+        "endChar": 69
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3ba928_752bb276",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "Please make this a configuration option instead of switching on CHIP_VARIANT_ISH5P4",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc464611_c2c4845b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "do not use ifdef in function implementations. use IS_ENABLED instead. Also, this should be switched on a relevant configuration option instead of CHIP_VARIANT_ISH5P4",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d43e6c_4a5db386",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "038fb793_a17f54df",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec022874_e701d428",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f70b8f_a8d5929e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 0
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ceadd0d_5c478ffd",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "Do not guard these macros with an ifdef.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce453cd9_4a51e2e2",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3527e77_4e0493f5",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto 😮",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc92c1c_c02ebb95",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78be8610_b974fc06",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff598dad_a9abc337",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 0
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f7d2fc_4653da15",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2857358e_df2d95c7",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46d6948_46369c43",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7318bd_76f71d65",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1979f022_c8f3488b",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "Do not guard prototypes with ifdef",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9a1184_5f2239f8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe5c13f_99a9e8bd",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a04a3a_93296012",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a93b139f_269042ef",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28db37c_fe985d0d",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecac1eb5_e73105ed",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 604,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8820b0a_f08f8feb",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "do not guard definitions in ifdef",
+      "range": {
+        "startLine": 758,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b4d04f_36057f6d",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "This is defined in compile_time_macros.h. Please do not define it here.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 52
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f378d3_e43615a5",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "do not guard definitions in ifdef",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "404972cb_c7df2009",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-12T22:30:07Z",
+      "side": 1,
+      "message": "do not guard definitions in ifdef",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 6
+      },
+      "revId": "5688c00009cb39cab5259b0a766973cd9fcb2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
