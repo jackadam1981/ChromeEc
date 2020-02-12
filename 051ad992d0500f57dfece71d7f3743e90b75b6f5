@@ -22,6 +22,30 @@
       "revId": "051ad992d0500f57dfece71d7f3743e90b75b6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cf085b_3b379af3",
+        "filename": "common/usbc/usb_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-02-12T23:51:05Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "f95fb8d3_9ae6e622",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 78
+      },
+      "revId": "051ad992d0500f57dfece71d7f3743e90b75b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
