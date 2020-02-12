@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ca81d4ac_db6350c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-02-12T04:12:33Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "8858a05b_bf235572",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4f62300_8095c843",
         "filename": "power/mt8183.c",
         "patchSetId": 5
