@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d145b84_4b937270",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-12T04:57:18Z",
+      "side": 1,
+      "message": "This is redundant to board_reboot_ec() in board/cr50/board.c, introduced in crrev.com/c/2020328. Should be removed.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "8e1a11c8889854af592ca5708c0e2e67b5d1a54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
