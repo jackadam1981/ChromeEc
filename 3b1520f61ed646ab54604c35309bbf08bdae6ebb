@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "172da8ec_f8f2927d",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-12T00:09:40Z",
+      "side": 1,
+      "message": "You could skip this sleep for the NX20P3483 now that we don\u0027t read the status back.",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 47
+      },
+      "revId": "3b1520f61ed646ab54604c35309bbf08bdae6ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
