@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ccd_config.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -135,12 +136,25 @@ void get_data_from_usb(struct usart_config const *config)
 	int c;
 
 #ifdef BOARD_CR50
-	/*
-	 * If EC-CR50 communication is on-going, then let's not forward
-	 * console input to EC for now.
-	 */
-	if (ec_comm_is_uart_in_packet_mode(config->uart))
-		return;
+	if (config->uart == UART_EC) {
+		/*
+		 * If CCD_CAP_GSC_RX_EC_TX is disabled, drop all input data.
+		 * Otherwise, data could be pushed into UART TX FIFO, and
+		 * transferred to EC eventually once EC-CR50 communication
+		 * enables EC UART.
+		 */
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX)) {
+			queue_advance_head(uart_out, queue_count(uart_out));
+			return;
+		}
+
+		/*
+		 * If EC-CR50 communication is on-going, then let's not forward
+		 * console input to EC for now.
+		 */
+		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+			return;
+	}
 #endif
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */
@@ -160,11 +174,20 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t q_room;
 	size_t tail;
 	size_t mask;
+	size_t inc = 1;
 
 	q_room = queue_space(uart_in);
 
-	if (!q_room)
-		return;
+#ifdef BOARD_CR50
+	if (uart == UART_EC) {
+		/*
+		 * If CCD_CAP_GSC_TX_EC_RX is disabled, do not put any output
+		 * data to uart_in queue.
+		 */
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
+			inc = 0;
+	}
+#endif
 
 	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
@@ -179,8 +202,8 @@ void send_data_to_usb(struct usart_config const *config)
 
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
+		tail = (tail + inc) & mask;
+		count += inc;
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);
