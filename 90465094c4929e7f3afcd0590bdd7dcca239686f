@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ae7e2041_2186ecf2",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T01:31:49Z",
+      "side": 1,
+      "message": "Yes, but zinger also performs the invalid index check.  I\u0027m suggesting you put the invalid index check directly into pd_check_requested_voltage().\n\nThe zinger override then just becomes:\nint pd_board_check_request(uint32_t rdo, int pdo_cnt)\n{\n\t/* fault condition or output disabled: reject transitions */\n\tif (fault !\u003d FAULT_OK || !output_is_enabled())\n\t\treturn EC_ERROR_INVAL;\n\treturn EC_SUCCESS;\n}",
+      "parentUuid": "ddfc934b_17303b0d",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "90465094c4929e7f3afcd0590bdd7dcca239686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc2c8a85_8e8fe246",
         "filename": "common/usb_common.c",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "looked at the code, CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is assigned with a enum hence we won\u0027t be able to move it to IS_ENABLED()",
       "parentUuid": "b83e832d_5bfc2156",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 0
+      },
+      "revId": "90465094c4929e7f3afcd0590bdd7dcca239686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdfd260a_f042c889",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T01:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e8c631_735710fe",
       "range": {
         "startLine": 174,
         "startChar": 0,
