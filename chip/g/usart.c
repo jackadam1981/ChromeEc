@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ccd_config.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -135,12 +136,25 @@ void get_data_from_usb(struct usart_config const *config)
 	int c;
 
 #ifdef BOARD_CR50
-	/*
-	 * If EC-CR50 communication is on-going, then let's not forward
-	 * console input to EC for now.
-	 */
-	if (ec_comm_is_uart_in_packet_mode(config->uart))
-		return;
+	if (config->uart == UART_EC) {
+		/*
+		 * If CCD_CAP_GSC_RX_EC_TX is disabled, drop all input data.
+		 * Otherwise, data could be pushed into UART TX FIFO, and
+		 * transferred to EC eventually once EC-CR50 communication
+		 * enables EC UART.
+		 */
+		if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX)) {
+			queue_advance_head(uart_out, queue_count(uart_out));
+			return;
+		}
+
+		/*
+		 * If EC-CR50 communication is on-going, then let's not forward
+		 * console input to EC for now.
+		 */
+		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+			return;
+	}
 #endif
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */
