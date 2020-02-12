@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b18180e3_8b5cc9f6",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-12T21:23:09Z",
+      "side": 1,
+      "message": "How about replacing this with the line below?\n      if ((config-\u003euart \u003d\u003d UART_EC) \u0026\u0026 !ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX)) {\n\nIn other words, we just leave AP UART\u003c-\u003eUSB bridging, and also EC UART-\u003eUSB bridging.\nJust let\u0027s focus on filtering EC UART \u003c- USB data.\n\nThen, we can remove all implementations here.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "9c05925d2a6f381f3f2807a6d52df8c1774fbf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2233e9df_bfea4dda",
         "filename": "chip/g/usart.c",
         "patchSetId": 19
