@@ -46,6 +46,30 @@
       "revId": "a0099c08e9cc4eb70601dd1abdec6583c9d8cf95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9519da3_fca67bfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1313581
+      },
+      "writtenOn": "2020-02-12T18:02:58Z",
+      "side": 1,
+      "message": "pd_chipset_resume() is called only in tglrvp not volteer.",
+      "parentUuid": "9163b31a_24253ecf",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "a0099c08e9cc4eb70601dd1abdec6583c9d8cf95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
