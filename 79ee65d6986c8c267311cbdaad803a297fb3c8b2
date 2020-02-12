@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd99bdc9_06db8305",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T01:02:04Z",
+      "side": 1,
+      "message": "Redundant with IS_ENABLED() check at line 855.",
+      "range": {
+        "startLine": 857,
+        "startChar": 4,
+        "endLine": 857,
+        "endChar": 40
+      },
+      "revId": "79ee65d6986c8c267311cbdaad803a297fb3c8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
