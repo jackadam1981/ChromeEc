@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a8ac8a3_f3d343ea",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-12T19:50:47Z",
+      "side": 1,
+      "message": "use () rather than \\ for long lines like this",
+      "revId": "fe8ab39a35af3ce132a09aa4cb7feb5b504bd779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee264c0e_d57b4cce",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-12T19:50:47Z",
+      "side": 1,
+      "message": "changing decoding sounds like a py3 port issue rather than linting related ?",
+      "revId": "fe8ab39a35af3ce132a09aa4cb7feb5b504bd779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "427fa01f_f3c27564",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-12T19:50:47Z",
+      "side": 1,
+      "message": "two blank lines between module level funcs",
+      "revId": "fe8ab39a35af3ce132a09aa4cb7feb5b504bd779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f19f0fe1_21870847",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-12T19:50:47Z",
+      "side": 1,
+      "message": "call it |opts| rather than |args| to avoid confusing with argv and with standard *args in funcs",
+      "revId": "fe8ab39a35af3ce132a09aa4cb7feb5b504bd779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33eb8df6_00847591",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-12T19:50:47Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "fe8ab39a35af3ce132a09aa4cb7feb5b504bd779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
