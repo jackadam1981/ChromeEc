@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a282a593_47f309a4",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T00:47:24Z",
+      "side": 1,
+      "message": "Move this check within the body of pd_check_requested_voltage(), I can\u0027t imagine any board override would want to allow an invalid index.  This could be added just before or after the pd_board_check_request() call at line 184.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "90465094c4929e7f3afcd0590bdd7dcca239686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2c8a85_8e8fe246",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T00:47:24Z",
+      "side": 1,
+      "message": "Refactor with IS_ENABLED().",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 0
+      },
+      "revId": "90465094c4929e7f3afcd0590bdd7dcca239686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
