@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e03995aa_52e7ee62",
+        "filename": "board/mushu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-12T21:02:16Z",
+      "side": 1,
+      "message": "Are both fans enabled by the same GPIO?",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "6e3ae407819e94441a3b0f6c5e47065a65d98e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
