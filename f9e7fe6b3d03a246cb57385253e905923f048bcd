@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ffee9fb_6c4b08ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "could you ensure it won\u0027t have 4 secs delay at non-first boot-from-cutoff?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f62300_8095c843",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "please drop this guard",
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdd680b_5f0dc723",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "How about using \u0027boot_from_cutoff\u0027?",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753e5615_220f03ca",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "just drop this guard",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 19
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b09076_2e10bd64",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 19
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c83a06e_3ba9bd0d",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a917522c_7e8fed95",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "How about:\n\n    static int total_sleep_ms;\n\n    if (total_sleep_ms \u003c 4000) {\n        msleep(10);\n        total_sleep_ms +\u003d 10;\n        return POWER_G3S5;\n    }",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 5
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b08ddc5_956fd773",
+        "filename": "power/mt8183.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T02:19:57Z",
+      "side": 1,
+      "message": "I think we can drop this? since it should be handled at line:290.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 4
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
