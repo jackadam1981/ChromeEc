@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ccd_config.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -129,18 +130,73 @@ USB_STREAM_CONFIG(ec_usb,
 		  ec_uart_to_usb)
 #endif
 
+#ifdef BOARD_CR50
+/* Flags indicating if uartn-usb bridge is enabled. */
+static uint8_t flag_usb_from_uartn;
+static uint8_t flag_usb_to_uartn;
+
+static inline int usb_from_uartn_is_enabled_(int uart)
+{
+	return !!(flag_usb_from_uartn & BIT(uart));
+}
+
+static inline int usb_to_uartn_is_enabled_(int uart)
+{
+	return !!(flag_usb_to_uartn & BIT(uart));
+}
+
+void usb_from_uartn_set(int uart, int enable)
+{
+	if (enable)
+		flag_usb_from_uartn |= BIT(uart);
+	else
+		flag_usb_from_uartn &= ~BIT(uart);
+}
+
+void usb_to_uartn_set(int uart, int enable)
+{
+	if (enable) {
+		flag_usb_to_uartn |= BIT(uart);
+
+		/* Let's flush any blocked console input data if any.
+		 *
+		 * NOTE: The current implementation is checking for EC UART
+		 * only, not AP UART yet. If it is required, then you should
+		 * update this code.
+		 */
+		task_trigger_irq(GC_IRQNUM_UART2_TXINT);
+
+	} else {
+		flag_usb_to_uartn &= ~BIT(uart);
+	}
+}
+#endif /* BOARD_CR50 */
+
 void get_data_from_usb(struct usart_config const *config)
 {
 	struct queue const *uart_out = config->consumer.queue;
 	int c;
 
 #ifdef BOARD_CR50
-	/*
-	 * If EC-CR50 communication is on-going, then let's not forward
-	 * console input to EC for now.
-	 */
-	if (ec_comm_is_uart_in_packet_mode(config->uart))
-		return;
+	if (config->uart == UART_EC) {
+		/*
+		 * If USB-to-UART bridging is disabled, drop all input data.
+		 * Otherwise, data could be pushed into UART TX FIFO, and
+		 * transferred to EC eventually once EC-CR50 communication
+		 * enables EC UART.
+		 */
+		if (!usb_to_uartn_is_enabled_(config->uart)) {
+			queue_advance_head(uart_out, queue_count(uart_out));
+			return;
+		}
+
+		/*
+		 * If EC-CR50 communication is on-going, then let's not forward
+		 * console input to EC for now.
+		 */
+		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+			return;
+	}
 #endif
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */
@@ -160,11 +216,20 @@ void send_data_to_usb(struct usart_config const *config)
 	size_t q_room;
 	size_t tail;
 	size_t mask;
+	size_t inc = 1;
 
 	q_room = queue_space(uart_in);
 
-	if (!q_room)
-		return;
+#ifdef BOARD_CR50
+	if (uart == UART_EC) {
+		/*
+		 * If UART-to-USB bridging is not allowed, do not put any output
+		 * data to uart_in queue.
+		 */
+		if (!usb_from_uartn_is_enabled_(uart))
+			inc = 0;
+	}
+#endif
 
 	mask = uart_in->buffer_units_mask;
 	tail = uart_in->state->tail & mask;
@@ -179,8 +244,8 @@ void send_data_to_usb(struct usart_config const *config)
 
 	while ((count != q_room) && uartn_rx_available(uart)) {
 		uart_in->buffer[tail] = uartn_read_char(uart);
-		tail = (tail + 1) & mask;
-		count++;
+		tail = (tail + inc) & mask;
+		count += inc;
 	}
 	if (count)
 		queue_advance_tail(uart_in, count);

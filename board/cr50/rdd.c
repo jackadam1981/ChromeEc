@@ -15,6 +15,7 @@
 #include "system.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
+#include "usart.h"
 #include "usb_api.h"
 #include "usb_console.h"
 #include "usb_i2c.h"
@@ -247,11 +248,19 @@ static void ccd_state_change_hook(void)
 		flags_want &= ~CCD_ENABLE_UART_AP;
 	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_AP_RX))
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
-	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX))
+	if (!ccd_is_cap_enabled(CCD_CAP_GSC_RX_EC_TX)) {
 		flags_want &= ~CCD_ENABLE_UART_EC;
-	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX))
+		usb_from_uartn_set(UART_EC, 0);
+	} else {
+		usb_from_uartn_set(UART_EC, 1);
+	}
+	if (!ccd_is_cap_enabled(CCD_CAP_GSC_TX_EC_RX)) {
 		flags_want &= ~(CCD_ENABLE_UART_EC_TX |
 				CCD_ENABLE_UART_EC_BITBANG);
+		usb_to_uartn_set(UART_EC, 0);
+	} else {
+		usb_to_uartn_set(UART_EC, 1);
+	}
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		flags_want &= ~CCD_ENABLE_I2C;
 
