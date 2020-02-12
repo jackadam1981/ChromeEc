@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e05d45c_2c0da42f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-12T18:00:03Z",
+      "side": 1,
+      "message": "The comment could be clearer. Maybe\n\"EC uart flags are cleared if ccd ext is not detected or if ccd block EC uart is enabled. ec-comm trumps both of those conditions. reenable the EC uart flags if ec-comm is enabled.\"",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 15
+      },
+      "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
