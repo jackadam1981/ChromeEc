@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ea454f4a_a640427d",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-12T18:45:46Z",
+      "side": 1,
+      "message": "Hah, no worries. I see the benefit both ways.\nI will go with the original logic, since it more closely matches all other flash_physical_restore_state functions.",
+      "parentUuid": "cd43367f_3649f218",
+      "revId": "f4d411c1a87300cf873468d263609b826b01d9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50088e78_ccd482bb",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 9
