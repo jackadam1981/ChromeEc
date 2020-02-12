@@ -22,6 +22,30 @@
       "revId": "a0099c08e9cc4eb70601dd1abdec6583c9d8cf95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9163b31a_24253ecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T17:18:44Z",
+      "side": 1,
+      "message": "On Volteer after AP power on, EC goes through this same code path and the chipset stack has only used 312 of 800 bytes.\nAfter S0-\u003eG3 transition, chipset stack uses 376 bytes.\nIs there extra debug enabled in your build that contributing to the overflow?",
+      "parentUuid": "d7ff5e37_4145c53d",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "a0099c08e9cc4eb70601dd1abdec6583c9d8cf95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
