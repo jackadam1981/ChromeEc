@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af2b1637_faf86961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-02-12T04:01:04Z",
+      "side": 1,
+      "message": "Hi Eric,\n\nKodama DUT always need to do auto power on.\n2020-02-12 12:00:01 --- UART initialized after reboot ---                       \n2020-02-12 12:00:01 [Reset cause: reset-pin hard]                               \n2020-02-12 12:00:01 [Image: RO, kodama_1.1.9999-0d273a2  @hx-pc]                \n2020-02-12 12:00:01 [0.000400 init buttons]",
+      "parentUuid": "4ffee9fb_6c4b08ad",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4f62300_8095c843",
         "filename": "power/mt8183.c",
         "patchSetId": 5
