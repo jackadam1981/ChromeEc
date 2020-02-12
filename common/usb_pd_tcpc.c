@@ -22,6 +22,7 @@
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -1236,6 +1237,14 @@ void pd_vbus_evt_p1(enum gpio_signal signal)
 #endif /* CONFIG_USB_PD_TCPC_TRACK_VBUS */
 
 #ifndef CONFIG_USB_POWER_DELIVERY
+void pd_set_polarity(int port, enum tcpc_cc_polarity polarity)
+{
+	tcpm_set_polarity(port, polarity);
+
+	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY))
+		ppc_set_polarity(port, polarity);
+}
+
 static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 {
 	uint16_t alert;
