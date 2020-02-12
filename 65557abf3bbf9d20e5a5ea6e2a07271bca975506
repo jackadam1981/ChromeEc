@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "46becaa8_791590ae",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-12T07:43:04Z",
+      "side": 1,
+      "message": "Done.\n\n\nThe register definition is different on chip it8320 and it83202, so we need CONFIG_USB_PD_TCPM_DRIVER_IT83XX and CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2 to know which register definition for code running. CONFIG_USB_PD_TCPM_DRIVER_IT83XX and CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2 both are already binded in config_chip_itxxxx.h.\n\n\nCONFIG_USB_PD_TCPM_ITE83XX is for checking if ITE embedded TCPC is used or not. if not we will disable cc module to avoid cc leakage and won\u0027t generate driver.o. CONFIG_USB_PD_TCPM_ITE83XX is defined on board level as before.",
+      "parentUuid": "8ccb5254_42ca80d9",
+      "range": {
+        "startLine": 651,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 33
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d30bee1_3011909d",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ac6fe4_99951993",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-12T07:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7c52ee_b8aabb28",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -375,6 +423,30 @@
       "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d385eb_1e0f5f24",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-12T07:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1113c90e_23d38dfa",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "65557abf3bbf9d20e5a5ea6e2a07271bca975506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
