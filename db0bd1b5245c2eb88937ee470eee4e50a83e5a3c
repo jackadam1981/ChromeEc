@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9ec6bc1_3212e78e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T19:35:54Z",
+      "side": 1,
+      "message": "change this in common/usbc/usb_pe_drp_sm.c as well",
+      "range": {
+        "startLine": 1198,
+        "startChar": 4,
+        "endLine": 1198,
+        "endChar": 34
+      },
+      "revId": "db0bd1b5245c2eb88937ee470eee4e50a83e5a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
