@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39a535dc_781ed093",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T07:11:38Z",
+      "side": 1,
+      "message": "Could we let this flag per board basis rather than globally? Since some of the new boards may be still developing.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "52676cc507e647bbd3e76d9dc67f04871919137a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
