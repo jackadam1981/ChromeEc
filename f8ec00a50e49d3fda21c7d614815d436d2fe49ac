@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94e93ee4_234211de",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-12T19:26:09Z",
+      "side": 1,
+      "message": "ToT codes used to enable flags first and disabled later. It was well divided.\nThis patch from #8 inserts \"enabling flags\" code to the end, which is much simpler, comparing against patchset#7.\n\nI thought that instead of checking if EC is off multiple times whenever it is necessary, it will be simpler to enable it unconditionally here, and to check if EC is off in the end.\n\nWould this comment lgty? \n\"It will check if EC|AP is off in the end, and will clear the overriden CCD_ENABLE_UART_AP(or EC) flags.\"",
+      "parentUuid": "656a8720_853e08c3",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 55
+      },
+      "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e05d45c_2c0da42f",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 9
@@ -93,6 +117,30 @@
       "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3811030_57633d64",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-12T19:26:09Z",
+      "side": 1,
+      "message": "Actually, this patch places \"packet mode checking\" almost in the end to override the rest of the setting. However, it should not override the settings by these conditions:\n- EC is off: If EC is off, then of course EC-CR50 communication cannot be happening, but we\u0027ve decided to make sure that EC UART won\u0027t be enabled if EC is off.\n- Bitbang is enabled: If EC is being programmed, then of course EC-CR50 communication is not going to be happening, but I wanted to make sure that any noise from DIOB3 (packet mode trigger) won\u0027t break bitbang mode.",
+      "parentUuid": "05708e6b_e2404557",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 15
+      },
+      "revId": "f8ec00a50e49d3fda21c7d614815d436d2fe49ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
