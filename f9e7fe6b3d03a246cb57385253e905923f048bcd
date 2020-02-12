@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "98871c10_2b89ae94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-02-12T07:14:34Z",
+      "side": 1,
+      "message": "Yes. It\u0027s fixed and only 4 secs delay at first-boot-from-cutoff. Thanks!",
+      "parentUuid": "f72c73d2_7b6d537e",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4f62300_8095c843",
         "filename": "power/mt8183.c",
         "patchSetId": 5
