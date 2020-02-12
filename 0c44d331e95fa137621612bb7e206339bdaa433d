@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4415fba3_6ab6d336",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T19:23:00Z",
+      "side": 1,
+      "message": "use noticeable comment line",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 38
+      },
+      "revId": "0c44d331e95fa137621612bb7e206339bdaa433d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee63f5d_86c78d3c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T19:23:00Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1754,
+        "startChar": 0,
+        "endLine": 1764,
+        "endChar": 0
+      },
+      "revId": "0c44d331e95fa137621612bb7e206339bdaa433d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
