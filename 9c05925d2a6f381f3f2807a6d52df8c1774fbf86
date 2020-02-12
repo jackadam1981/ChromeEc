@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "af2d816f_6133c40d",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-12T21:48:26Z",
+      "side": 1,
+      "message": "Uploaded the alternative patch: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2052643\n\nWill re-stack the other CLs.",
+      "parentUuid": "496ccda8_1075c77b",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "9c05925d2a6f381f3f2807a6d52df8c1774fbf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2233e9df_bfea4dda",
         "filename": "chip/g/usart.c",
         "patchSetId": 19
