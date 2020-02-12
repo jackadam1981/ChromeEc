@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecbd4d54_76c5e4da",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T01:21:59Z",
+      "side": 1,
+      "message": "Currently this change is a perfect copy+paste from usb_common.c, and due to the size of the CL, I think it should remain so.\nCan you convert this to IS_ENABLED() as a separate change?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 30
+      },
+      "revId": "11c56ff673d7242ec102b6b8215203f5c52c65ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
