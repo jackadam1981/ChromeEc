@@ -34,7 +34,6 @@
 #define CONFIG_I2C_NACK_RETRY_COUNT 3
 #define CONFIG_SMBUS_PEC
 
-#undef CONFIG_SYSTEM_UNLOCKED
 
 /* free flash space */
 #ifdef SECTION_IS_RO
