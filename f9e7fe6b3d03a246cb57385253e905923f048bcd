@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f72c73d2_7b6d537e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T06:58:59Z",
+      "side": 1,
+      "message": "could you ensure this can be passed with the latest patchset?\n\nonly 4 secs delay at first-boot-from-cutoff\n\ni.e. cutoff, and plug adapter.",
+      "parentUuid": "ca81d4ac_db6350c9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f9e7fe6b3d03a246cb57385253e905923f048bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4f62300_8095c843",
         "filename": "power/mt8183.c",
         "patchSetId": 5
