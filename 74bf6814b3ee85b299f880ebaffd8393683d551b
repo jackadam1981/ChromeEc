@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b2aba19_92e48b91",
+        "filename": "power/mt8183.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-02-12T12:36:32Z",
+      "side": 1,
+      "message": "suggest using CONFIG_BATTERY_SMART",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 39
+      },
+      "revId": "74bf6814b3ee85b299f880ebaffd8393683d551b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
