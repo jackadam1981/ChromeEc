@@ -22,6 +22,30 @@
       "revId": "79ee65d6986c8c267311cbdaad803a297fb3c8b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e938b5bb_45a19e25",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T01:41:23Z",
+      "side": 1,
+      "message": "we wont be able to remove it as the GPIO will not be available for boards without CONFIG_USB_PD_DISCHARGE_GPIO.\n\nwould you prefer me to guard entire if statement within CONFIG_USB_PD_DISCHARGE_GPIO instead of IS_ENABLED?",
+      "parentUuid": "dd99bdc9_06db8305",
+      "range": {
+        "startLine": 857,
+        "startChar": 4,
+        "endLine": 857,
+        "endChar": 40
+      },
+      "revId": "79ee65d6986c8c267311cbdaad803a297fb3c8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
