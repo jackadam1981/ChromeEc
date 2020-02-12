@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2233e9df_bfea4dda",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-12T20:53:36Z",
+      "side": 1,
+      "message": "Just like to remind you that console data won\u0027t be transferred during ec-cr50 communication, but remain in the USB-stream buffer.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "9c05925d2a6f381f3f2807a6d52df8c1774fbf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
