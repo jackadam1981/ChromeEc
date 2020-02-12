@@ -46,6 +46,30 @@
       "revId": "9c05925d2a6f381f3f2807a6d52df8c1774fbf86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04299fee_8e5d5eb9",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-12T21:04:47Z",
+      "side": 1,
+      "message": "ah, you mean from USB to EC - yes, this makes perfect sense.",
+      "parentUuid": "48a02b00_12627d61",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "9c05925d2a6f381f3f2807a6d52df8c1774fbf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
