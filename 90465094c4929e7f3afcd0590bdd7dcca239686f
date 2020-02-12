@@ -93,6 +93,30 @@
       "revId": "90465094c4929e7f3afcd0590bdd7dcca239686f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e8c631_735710fe",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-12T01:15:48Z",
+      "side": 1,
+      "message": "looked at the code, CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is assigned with a enum hence we won\u0027t be able to move it to IS_ENABLED()",
+      "parentUuid": "b83e832d_5bfc2156",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 0
+      },
+      "revId": "90465094c4929e7f3afcd0590bdd7dcca239686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
