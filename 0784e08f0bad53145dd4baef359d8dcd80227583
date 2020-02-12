@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c921f10e_2deed285",
+        "filename": "power/mt8183.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-12T05:29:36Z",
+      "side": 1,
+      "message": "I think you need to add\n\n if (system_get_reset_flags() \u003d\u003d EC_RESET_FLAG_RESET_PIN)\n     boot_from_cutoff \u003d 1;\n\nThis could ensure that it will only have a boot delay since cut-off.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "0784e08f0bad53145dd4baef359d8dcd80227583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
