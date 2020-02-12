@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c17b59f_89f88965",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-12T21:47:24Z",
+      "side": 1,
+      "message": "you can pass encoding\u003d\u0027utf-8\u0027 to avoid explicit .decode call",
+      "revId": "7afb263b1ad25ce60740381150b736fc5258c4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
