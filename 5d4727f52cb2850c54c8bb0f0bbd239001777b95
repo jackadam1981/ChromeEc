@@ -22,6 +22,30 @@
       "revId": "5d4727f52cb2850c54c8bb0f0bbd239001777b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b956591_4b0283b7",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-12T23:32:07Z",
+      "side": 1,
+      "message": "Oops. I have to check what will happen.\n\nI saw other boards even set the freq to 25KHz; so I set it without doubt. Looks like I was wrong.",
+      "parentUuid": "c51beea7_9f2f731b",
+      "range": {
+        "startLine": 180,
+        "startChar": 58,
+        "endLine": 180,
+        "endChar": 63
+      },
+      "revId": "5d4727f52cb2850c54c8bb0f0bbd239001777b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
