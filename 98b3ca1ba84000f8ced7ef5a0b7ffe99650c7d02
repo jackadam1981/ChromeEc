@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3667a2_5e7099b5",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-12T16:55:46Z",
+      "side": 1,
+      "message": "This is much better, thanks.  Eventually the dischg_gpio[] array could be delcared and initialized in baseboard.c/board.c, eliminated the inline #ifdefs completely.\n\nI filed bug b:149391790 to cleanup the PD initialization and track this effort.",
+      "range": {
+        "startLine": 845,
+        "startChar": 0,
+        "endLine": 882,
+        "endChar": 1
+      },
+      "revId": "98b3ca1ba84000f8ced7ef5a0b7ffe99650c7d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
