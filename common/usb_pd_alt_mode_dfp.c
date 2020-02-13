@@ -969,6 +969,87 @@ int enter_tbt_compat_mode(int port, uint32_t *payload)
 	return 2;
 }
 
+int process_tbt_compat_discover_modes(int port, uint32_t *payload)
+{
+	int rsize;
+	enum tbt_compat_cable_speed max_tbt_speed;
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+	struct pd_policy *pe = pd_get_am_policy(port);
+
+	/*
+	 * For active cables, Enter mode: SOP', SOP'', SOP
+	 * Ref: USB Type-C Cable and Connector Specification, figure F-1: TBT3
+	 * Discovery Flow and Section F.2.7 TBT3 Cable Enter Mode Command.
+	 */
+	if (is_transmit_msg_sop_prime(port)) {
+		/* Store Discover Mode SOP' response */
+		cable->cable_mode_resp.raw_value = payload[1];
+
+		/* Cable does not have Intel SVID for Discover SVID */
+		if (is_limit_tbt_cable_speed(port))
+			cable->cable_mode_resp.tbt_cable_speed =
+						TBT_SS_U32_GEN1_GEN2;
+
+		max_tbt_speed = board_get_max_tbt_speed(port);
+		if (cable->cable_mode_resp.tbt_cable_speed >
+			max_tbt_speed) {
+			cable->cable_mode_resp.tbt_cable_speed =
+				max_tbt_speed;
+		}
+
+		/*
+		 * Enter Mode SOP' (Cable Enter Mode) and Enter USB SOP' is
+		 * skipped for passive cables.
+		 */
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE)
+			disable_transmit_sop_prime(port);
+
+		if (is_usb4_mode_enabled(port)) {
+			/*
+			 * If Cable is not Thunderbolt Gen 3
+			 * capable or Thunderbolt Gen1_Gen2
+			 * capable, disable USB4 mode and
+			 * continue flow for
+			 * Thunderbolt-compatible mode
+			 */
+			if (check_tbt_cable_speed(port)) {
+				enable_enter_usb4_mode(port);
+				usb_mux_set_safe_mode(port);
+				return 0;
+			}
+			disable_usb4_mode(port);
+		}
+		rsize = enter_tbt_compat_mode(port, payload);
+	} else {
+		/* Store Discover Mode SOP response */
+		cable->dev_mode_resp.raw_value = payload[1];
+
+		if (is_limit_tbt_cable_speed(port)) {
+			/*
+			 * Passive cable has Nacked for Discover SVID.
+			 * No need to do Discover modes of cable. Assign the
+			 * cable discovery attributes and enter into device
+			 * Thunderbolt-compatible mode.
+			 */
+			cable->cable_mode_resp.tbt_cable_speed =
+				(cable->rev == PD_REV30 &&
+				cable->attr.p_rev30.ss >
+					USB_R30_SS_U32_U40_GEN2) ?
+				TBT_SS_U32_GEN1_GEN2 :
+				cable->attr.p_rev30.ss;
+
+			rsize = enter_tbt_compat_mode(port, payload);
+		} else {
+			/* Discover modes for SOP' */
+			pe->svid_idx--;
+			rsize = dfp_discover_modes(port, payload);
+			enable_transmit_sop_prime(port);
+		}
+	}
+
+	return rsize;
+}
+
 int enter_mode_tbt_compat(int port, uint32_t *payload)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
