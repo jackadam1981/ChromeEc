@@ -11,8 +11,6 @@
 #include "usb_charge.h"
 #include "util.h"
 
-#define TYPEC_DTS_RAMP_MAX 2400
-
 test_mockable int chg_ramp_allowed(int supplier)
 {
 	/* Don't allow ramping in RO when write protected. */
@@ -29,13 +27,6 @@ test_mockable int chg_ramp_allowed(int supplier)
 
 test_mockable int chg_ramp_max(int supplier, int sup_curr)
 {
-	/*
-	 * Ramp DTS suppliers to advertised current or predetermined
-	 * limit, whichever is greater.
-	 */
-	if (supplier == CHARGE_SUPPLIER_TYPEC_DTS)
-		return MAX(TYPEC_DTS_RAMP_MAX, sup_curr);
-
-	/* Otherwise ask the BC1.2 detect module */
+	/* Ask the BC1.2 detect module */
 	return usb_charger_ramp_max(supplier, sup_curr);
 }
