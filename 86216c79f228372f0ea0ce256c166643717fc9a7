@@ -52,6 +52,24 @@
       "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd9fcfda_9d8946c9",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-13T21:49:51Z",
+      "side": 1,
+      "message": "Yes, hopefully that will work: I think what happened is that Nuvoton wrote tcpci_nct38xx_get_message_raw() before Diana wrote tcpci_v2_0_tcpm_get_message_raw(), so would be nice to de-dupe them if possible.",
+      "parentUuid": "33d060d6_e143b5d4",
+      "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
