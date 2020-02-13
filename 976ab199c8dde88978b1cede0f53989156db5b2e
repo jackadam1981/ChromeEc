@@ -46,6 +46,30 @@
       "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d27d671b_2fb3a153",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-13T21:47:48Z",
+      "side": 1,
+      "message": "But isn\u0027t there a type mismatch here? TCPC_REG_ROLE_CTRL takes enum tcpc_cc_pull, not enum tcpc_cc_voltage_status, so seems like we need to translate the values.",
+      "parentUuid": "a3fbc96f_081e6b8f",
+      "range": {
+        "startLine": 219,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
