@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f9648fc_3cc7814d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-02-13T01:11:53Z",
+      "side": 1,
+      "message": "So this would only happen if we tell it to disable the sink path after we started sourcing, under what situation would this happen? I don\u0027t think it should. Is it possible to fix upstream?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "366257f91a2f22ab893af26d81ab5d1d9df20a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
