@@ -139,6 +139,7 @@ motion_sense_fifo-y=motion_sense_fifo.o
 kasa-y=kasa.o
 mutex-y=mutex.o
 newton_fit-y=newton_fit.o
+packed_unaligned-y=packed_unaligned.o
 pingpong-y=pingpong.o
 pinweaver-y=pinweaver.o
 power_button-y=power_button.o
