@@ -125,22 +125,42 @@ int tcpci_nct38xx_transmit(int port, enum tcpm_transmit_type type,
 
 static int tcpci_nct38xx_get_message_raw(int port, uint32_t *payload, int *head)
 {
-	int rv, cnt, num_obj_byte;
+	int rv, cnt, frm, num_obj_byte;
 
+	/* Read the number of bytes received */
 	rv = tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &cnt);
 
+	/* RX_BYTE_CNT includes 3 bytes for frame type and header */
 	if (rv != EC_SUCCESS || cnt < 3) {
 		rv = EC_ERROR_UNKNOWN;
 		goto clear;
 	}
 
+	/*
+	 * Read in RX information
+	 *   [0] byte count
+	 *   [1] frame
+	 *   [2] header
+	 *   [3-0x1F] data
+	 */
 	rv = tcpc_read_block(port, TCPC_REG_RX_BYTE_CNT, rxBuf, cnt + 1);
 	if (rv != EC_SUCCESS)
 		goto clear;
 
+	/* Get the Frame to build the SOP in the header */
+	frm = (int)rxBuf[1];
+
+	/* Point to the header for the caller */
 	*head = *(int *)&rxBuf[2];
+
+	/* Determine the number of objects by the header */
 	num_obj_byte = PD_HEADER_CNT(*head) * 4;
 
+	/* Fill in SOP type in bits 31 to 28 */
+	*head &= 0x0000ffff;
+	*head |= PD_HEADER_SOP(frm & 7);
+
+	/* Move the data over to the payload for the caller */
 	if (num_obj_byte) {
 		uint32_t *buf_ptr;
 
