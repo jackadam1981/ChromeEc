@@ -67,11 +67,11 @@ static int configure_retimer(int port, enum mux_config_type config,
 }
 
 /* Configure the MUX */
-static int configure_mux(int port, enum mux_config_type config,
-				mux_state_t *mux_state)
+static enum ec_error_list configure_mux(int port, enum mux_config_type config,
+					mux_state_t *mux_state)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
-	int res;
+	enum ec_error_list res;
 
 	CPRINTS("%s: ================ p%d cmd%d m0x%02x", __func__, port,
 		config, *mux_state);
@@ -79,11 +79,11 @@ static int configure_mux(int port, enum mux_config_type config,
 	switch (config) {
 	case USB_MUX_INIT:
 		res = mux->driver->init(port);
-		if (res)
+		if (res != EC_SUCCESS)
 			break;
 
 		res = configure_retimer(port, config, USB_PD_MUX_NONE);
-		if (res)
+		if (res != EC_SUCCESS)
 			break;
 
 		/* Apply board specific initialization */
@@ -94,14 +94,14 @@ static int configure_mux(int port, enum mux_config_type config,
 	case USB_MUX_LOW_POWER:
 		if (mux->driver->enter_low_power_mode) {
 			res = mux->driver->enter_low_power_mode(port);
-			if (res)
+			if (res != EC_SUCCESS)
 				break;
 		}
 		res = configure_retimer(port, config, USB_PD_MUX_NONE);
 		break;
 	case USB_MUX_SET_MODE:
 		res = mux->driver->set(port, *mux_state);
-		if (res)
+		if (res != EC_SUCCESS)
 			break;
 		res = configure_retimer(port, config, *mux_state);
 
@@ -114,8 +114,9 @@ static int configure_mux(int port, enum mux_config_type config,
 		break;
 	}
 
-	if (res)
-		CPRINTS("mux config:%d, port:%d, res:%d", config, port, res);
+	if (res == EC_SUCCESS)
+		CPRINTS("mux config:%d, port:%d, res:%d, mux_state 0x%02x",
+			config, port, res, *mux_state);
 
 	return res;
 }
@@ -313,7 +314,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
-	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
+	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state) != EC_SUCCESS)
 		return EC_RES_ERROR;
 
 	r->flags = mux_state;
