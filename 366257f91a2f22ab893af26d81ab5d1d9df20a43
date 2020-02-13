@@ -22,6 +22,53 @@
       "revId": "366257f91a2f22ab893af26d81ab5d1d9df20a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f54d653_2d38e21d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-02-13T03:15:36Z",
+      "side": 1,
+      "message": "you might as well use the syv682x_is_sourcing_vbus() helper\nfunction.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "366257f91a2f22ab893af26d81ab5d1d9df20a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee3fdfc_b0298a1e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-02-13T03:15:36Z",
+      "side": 1,
+      "message": "charge from C0.\nplug in load on C1.\nunplug C0.\n... disable SINK on C0 and C1.",
+      "parentUuid": "6f9648fc_3cc7814d",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "366257f91a2f22ab893af26d81ab5d1d9df20a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
