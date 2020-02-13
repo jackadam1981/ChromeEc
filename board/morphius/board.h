@@ -22,6 +22,8 @@
 /* Battery */
 #define CONFIG_BATTERY_LEVEL_NEAR_FULL 91
 
+#define CONFIG_PS2
+#define CONFIG_CMD_PS2
 /* Motion sensing drivers */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
