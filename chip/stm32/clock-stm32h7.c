@@ -175,6 +175,8 @@ static void clock_set_osc(enum clock_osc osc)
 		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV1
 				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
 				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
+		STM32_RCC_D2CFGR = STM32_RCC_D2CFGR_D2PPRE1_DIV1 | STM32_RCC_D2CFGR_D2PPRE1_DIV1;
+		STM32_RCC_D3CFGR = STM32_RCC_D3CFGR_D3PPRE_DIV1;
 		/* Use more optimized flash latency settings for 64-MHz ACLK */
 		clock_flash_latency(FLASH_ACLK_64MHZ);
 		/* Turn off the PLL1 to save power */
@@ -199,6 +201,8 @@ static void clock_set_osc(enum clock_osc osc)
 		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV2
 				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
 				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
+		STM32_RCC_D2CFGR = STM32_RCC_D2CFGR_D2PPRE1_DIV2 | STM32_RCC_D2CFGR_D2PPRE1_DIV2;
+		STM32_RCC_D3CFGR = STM32_RCC_D3CFGR_D3PPRE_DIV2;
 		freq = PLL1_FREQ / 2;
 		/* Increase flash latency before transition the clock */
 		clock_flash_latency(FLASH_ACLK_200MHZ);
