@@ -22,6 +22,30 @@
       "revId": "630b57e0385adf7c0c78954d11a6ef49bfa4bf73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e34dfb_0e9e31ec",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-02-13T19:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f3260ac_63c0f6ee",
+      "range": {
+        "startLine": 1074,
+        "startChar": 4,
+        "endLine": 1074,
+        "endChar": 35
+      },
+      "revId": "630b57e0385adf7c0c78954d11a6ef49bfa4bf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
