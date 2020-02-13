@@ -46,6 +46,30 @@
       "revId": "c2ac5ff2db50957c2a27ef4495454aaf0831ed36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ae2f8e_011f1298",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-13T00:19:03Z",
+      "side": 1,
+      "message": "Updated the child patch, http://crrev.com/c/2052643/2. It will filter EC UART in or out data based on CCD capability status.\nFor AP UART, we are not changing anything.",
+      "parentUuid": "ff5b8d88_59b26781",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 61
+      },
+      "revId": "c2ac5ff2db50957c2a27ef4495454aaf0831ed36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
