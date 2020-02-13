@@ -22,6 +22,30 @@
       "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3fbc96f_081e6b8f",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-13T21:43:14Z",
+      "side": 1,
+      "message": "This is the decoded version of what the auto-toggle believes it is connecting to.  I tried to just update the value with DRP turned off, didn\u0027t work out.  If you don\u0027t write this back out these CC values when you clear the DRP it gets very lost.  This is the combo that is working properly for nct38xx.",
+      "parentUuid": "1780e201_bdf4c92b",
+      "range": {
+        "startLine": 219,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
