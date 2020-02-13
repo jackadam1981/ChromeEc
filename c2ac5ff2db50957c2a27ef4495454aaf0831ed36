@@ -94,6 +94,30 @@
       "revId": "c2ac5ff2db50957c2a27ef4495454aaf0831ed36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff1a9adb_de0ce8ae",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-13T01:14:37Z",
+      "side": 1,
+      "message": "I think we are overcomplicating things here. Why would we ever be in bitbang mode when the EC cooms are active?\n\nWhy do we care about EC being reset if there is an indication of the EC requesting the packet mode?",
+      "parentUuid": "a3552a24_8fe1399b",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 61
+      },
+      "revId": "c2ac5ff2db50957c2a27ef4495454aaf0831ed36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
