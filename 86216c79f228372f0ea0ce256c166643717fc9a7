@@ -34,6 +34,24 @@
       "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33d060d6_e143b5d4",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-13T21:47:05Z",
+      "side": 1,
+      "message": "I can try to set the TCPC_FLAGS_TCPCI_V2_0 in the flags and see if that works...",
+      "parentUuid": "87716f49_6add480e",
+      "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
