@@ -70,6 +70,30 @@
       "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084886c5_a4daaa91",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-13T22:22:02Z",
+      "side": 1,
+      "message": "I will check into this tomorrow. I think this change broke me from running in non-auto toggle mode with AP off.  So leaving it unverified until I get that working again.",
+      "parentUuid": "d27d671b_2fb3a153",
+      "range": {
+        "startLine": 219,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
