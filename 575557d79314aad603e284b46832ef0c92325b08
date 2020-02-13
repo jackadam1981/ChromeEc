@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d753473c_369d73cc",
+        "filename": "util/tpm_hash_gen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-02-13T15:07:15Z",
+      "side": 1,
+      "message": "Not sure what UML stands for - should this be UMA?",
+      "range": {
+        "startLine": 99,
+        "startChar": 28,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "575557d79314aad603e284b46832ef0c92325b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f470d6a_81a5c9d3",
+        "filename": "util/tpm_hash_gen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-02-13T15:07:15Z",
+      "side": 1,
+      "message": "Might be useful to print the Cr50 git hash here as well?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "575557d79314aad603e284b46832ef0c92325b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
