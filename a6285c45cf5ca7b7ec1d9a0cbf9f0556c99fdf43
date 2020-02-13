@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44916482_749f236d",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-13T02:39:38Z",
+      "side": 1,
+      "message": "didn\u0027t we agree that there is no need to worry about bitbang mode when packet mode is active?",
+      "range": {
+        "startLine": 279,
+        "startChar": 7,
+        "endLine": 279,
+        "endChar": 47
+      },
+      "revId": "a6285c45cf5ca7b7ec1d9a0cbf9f0556c99fdf43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8a9d8c_7fa5d756",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-13T02:39:38Z",
+      "side": 1,
+      "message": "uart AP logic is not affected by this patch, the original code code in line 210/211 should be left where it was and no new code would be needed here.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 36
+      },
+      "revId": "a6285c45cf5ca7b7ec1d9a0cbf9f0556c99fdf43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
