@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1780e201_bdf4c92b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-13T21:39:00Z",
+      "side": 1,
+      "message": "Weren\u0027t these the CC voltage values from the port partner?  Is this the right thing to write here (versus just clearing out the DRP bit from our previous read)?",
+      "range": {
+        "startLine": 219,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
