@@ -11,8 +11,6 @@
 #include "usb_charge.h"
 #include "util.h"
 
-#define TYPEC_DTS_RAMP_MAX 2400
-
 test_mockable int chg_ramp_allowed(int supplier)
 {
 	/* Don't allow ramping in RO when write protected. */
@@ -29,12 +27,28 @@ test_mockable int chg_ramp_allowed(int supplier)
 
 test_mockable int chg_ramp_max(int supplier, int sup_curr)
 {
+<<<<<<< HEAD   (0dd908 Revert "eve: Delay charge port selection until VBUS is stabl)
 	/*
 	 * Ramp DTS suppliers to advertised current or predetermined
 	 * limit, whichever is greater.
 	 */
 	if (supplier == CHARGE_SUPPLIER_TYPEC_DTS)
 		return MAX(TYPEC_DTS_RAMP_MAX, sup_curr);
+=======
+	switch (supplier) {
+#ifdef CONFIG_CHARGE_RAMP_HW
+	case CHARGE_SUPPLIER_PD:
+	case CHARGE_SUPPLIER_TYPEC:
+#endif
+	case CHARGE_SUPPLIER_TYPEC_DTS:
+		/*
+		 * We should not ramp DTS beyond what they advertise, otherwise
+		 * we may brownout the systems they are connected to.
+		 */
+		return sup_curr;
+	/* default: fall through */
+	}
+>>>>>>> CHANGE (32867a chgramp: Don't ramp DTS suppliers above advertisement)
 
 	/* Otherwise ask the BC1.2 detect module */
 	return usb_charger_ramp_max(supplier, sup_curr);
