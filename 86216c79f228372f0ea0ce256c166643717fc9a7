@@ -124,6 +124,24 @@
       "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bf4c87_40993def",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-13T22:10:53Z",
+      "side": 1,
+      "message": "I switched over and that is working with the straight TCPCI interface. So switching that.",
+      "parentUuid": "f67ca820_572f0012",
+      "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
