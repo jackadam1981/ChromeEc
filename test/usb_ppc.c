@@ -171,7 +171,9 @@ static int test_ppc_is_vbus_present(void)
 	return EC_SUCCESS;
 }
 
-
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+}
 
 void run_test(void)
 {

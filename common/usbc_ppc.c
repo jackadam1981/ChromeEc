@@ -9,7 +9,9 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "task.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -29,6 +31,13 @@
 static uint8_t oc_event_cnt_tbl[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static uint32_t connected_ports;
+
+static uint32_t port_oc_reset_req;
+
+static void pd_send_hard_reset(int port)
+{
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET, 0);
+}
 
 /* Simple wrappers to dispatch to the drivers. */
 
@@ -309,6 +318,54 @@ int ppc_vbus_source_enable(int port, int enable)
 		rv = ppc->drv->vbus_source_enable(port, enable);
 
 	return rv;
+}
+
+static void re_enable_ports(void)
+{
+	uint32_t ports = atomic_read_clear(&port_oc_reset_req);
+
+	while (ports) {
+		int port = __fls(ports);
+
+		ports &= ~BIT(port);
+
+		/*
+		 * Let the board know that the overcurrent is
+		 * over since we're going to attempt re-enabling
+		 * the port.
+		 */
+		board_overcurrent_event(port, 0);
+
+		pd_send_hard_reset(port);
+		/*
+		 * TODO(b/117854867): PD3.0 to send an alert message
+		 * indicating OCP after explicit contract.
+		 */
+	}
+}
+DECLARE_DEFERRED(re_enable_ports);
+
+void pd_handle_overcurrent(int port)
+{
+	/* Keep track of the overcurrent events. */
+	CPRINTS("C%d: overcurrent!", port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_LOGGING))
+		pd_log_event(PD_EVENT_PS_FAULT, PD_LOG_PORT_SIZE(port, 0),
+			PS_FAULT_OCP, NULL);
+
+	ppc_add_oc_event(port);
+	/* Let the board specific code know about the OC event. */
+	board_overcurrent_event(port, 1);
+
+	/* Wait 1s before trying to re-enable the port. */
+	atomic_or(&port_oc_reset_req, BIT(port));
+	hook_call_deferred(&re_enable_ports_data, SECOND);
+}
+
+void pd_handle_cc_overvoltage(int port)
+{
+	pd_send_hard_reset(port);
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
