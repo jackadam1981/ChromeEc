@@ -88,6 +88,24 @@
       "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6068f30_0b069c27",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-13T22:00:20Z",
+      "side": 1,
+      "message": "Hmm, maybe we need to re-name TCPC_FLAGS_TCPCI_V2_0 to TCPC_FLAGS_TCPCI_REV2_0 ?\n\"our TCPC chip is compatible with spec  Revision 2.0, Version 1.0.\"\nFrom\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1436658/4/driver/tcpm/nct38xx.c#286",
+      "parentUuid": "75181575_1431a198",
+      "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
