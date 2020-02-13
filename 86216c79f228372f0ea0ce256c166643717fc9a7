@@ -70,6 +70,24 @@
       "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75181575_1431a198",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-13T21:55:32Z",
+      "side": 1,
+      "message": "Actually Aseda wrote it :) \n\nIs this chip definitely using TCPCI v2 then?",
+      "parentUuid": "bd9fcfda_9d8946c9",
+      "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
