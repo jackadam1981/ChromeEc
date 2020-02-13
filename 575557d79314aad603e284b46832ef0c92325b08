@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ee1b216_450d2e70",
+        "filename": "util/tpm_hash_gen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-13T18:51:43Z",
+      "side": 1,
+      "message": "hmm, not sure where this came from, fixed all around.",
+      "parentUuid": "d753473c_369d73cc",
+      "range": {
+        "startLine": 99,
+        "startChar": 28,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "575557d79314aad603e284b46832ef0c92325b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f470d6a_81a5c9d3",
         "filename": "util/tpm_hash_gen.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-13T15:07:15Z",
       "side": 1,
       "message": "Might be useful to print the Cr50 git hash here as well?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "575557d79314aad603e284b46832ef0c92325b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ae45ea_17438609",
+        "filename": "util/tpm_hash_gen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-13T18:51:43Z",
+      "side": 1,
+      "message": "I am not sure git hashes would be that valuable, of more interest are the RO and RW versions to be able to match UMA hashes to Cr50 image versions, but the intention here is to keep the script simple and add a wrapper bash script to print other information about the Cr50 images.",
+      "parentUuid": "2f470d6a_81a5c9d3",
       "range": {
         "startLine": 106,
         "startChar": 0,
