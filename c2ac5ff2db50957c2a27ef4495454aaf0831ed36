@@ -70,6 +70,30 @@
       "revId": "c2ac5ff2db50957c2a27ef4495454aaf0831ed36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3552a24_8fe1399b",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-13T01:09:16Z",
+      "side": 1,
+      "message": "To answer Vadim\u0027s comment, once I used to do the similar thing: Not re-ordering these checks, and simply put ec-comm checking in the last, as in http://crrev.com/c/1989581/10/board/cr50/rdd.c#319\n\nHowever, I still  had to check if it is in bitbang mode and if EC is off, which is redundantly done earlier.  My excuse of reordering here is to avoid the redundant checking.",
+      "parentUuid": "c0ae2f8e_011f1298",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 61
+      },
+      "revId": "c2ac5ff2db50957c2a27ef4495454aaf0831ed36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
