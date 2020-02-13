@@ -64,6 +64,13 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 	int regval;
 	int rv;
 
+	if (!enable && syv682x_is_sourcing_vbus(port)) {
+		/*
+		 * We're currently a source, so nothing more to do
+		 */
+		return EC_SUCCESS;
+	}
+
 	/*
 	 * Force Discharge mode must be off in sink mode
 	 */
@@ -90,7 +97,7 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 	} else {
 		/*
 		 * No need to change the voltage path or channel direction. But,
-		 * turn both paths off.
+		 * turn both paths off because we are currently a sink.
 		 */
 		regval |= SYV682X_CONTROL_1_PWR_ENB;
 	}
