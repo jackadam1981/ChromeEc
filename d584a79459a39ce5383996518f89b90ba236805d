@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e2d968b_aa9defcc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3860,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-13T20:15:13Z",
+      "side": 1,
+      "message": "identify the cable version",
+      "range": {
+        "startLine": 3859,
+        "startChar": 50,
+        "endLine": 3860,
+        "endChar": 25
+      },
+      "revId": "d584a79459a39ce5383996518f89b90ba236805d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
