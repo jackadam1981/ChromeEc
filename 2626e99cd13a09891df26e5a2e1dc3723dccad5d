@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fec41b6c_488ae986",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-13T19:35:41Z",
+      "side": 1,
+      "message": "Based on my review, the overall logic for pd_send_request_msg() looks unchanged.  Can you verify the power contract with an external SRC does work with these changes and update the commit message?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "2626e99cd13a09891df26e5a2e1dc3723dccad5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
