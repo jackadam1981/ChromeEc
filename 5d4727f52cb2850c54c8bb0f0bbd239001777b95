@@ -94,6 +94,30 @@
       "revId": "5d4727f52cb2850c54c8bb0f0bbd239001777b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585fb45b_d5ab8ef7",
+        "filename": "board/trogdor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-13T00:11:34Z",
+      "side": 1,
+      "message": "Just meant I saw the values: 1kHz is typical, 200 Hz is min, and 10kHz is max.\n\nWill do more check.",
+      "parentUuid": "d32445cf_2a23d839",
+      "range": {
+        "startLine": 180,
+        "startChar": 58,
+        "endLine": 180,
+        "endChar": 63
+      },
+      "revId": "5d4727f52cb2850c54c8bb0f0bbd239001777b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
