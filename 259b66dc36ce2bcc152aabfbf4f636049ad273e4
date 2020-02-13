@@ -22,6 +22,30 @@
       "revId": "259b66dc36ce2bcc152aabfbf4f636049ad273e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a5c037_0bece18d",
+        "filename": "board/mushu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-02-13T02:20:10Z",
+      "side": 1,
+      "message": "There are same define in baseboard/hatch/baseboard.h. It will build fail which error message is redefine if don\u0027t undef first .",
+      "parentUuid": "ff23afcf_82ddb6ad",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "259b66dc36ce2bcc152aabfbf4f636049ad273e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
