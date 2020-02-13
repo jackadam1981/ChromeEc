@@ -69,6 +69,30 @@
       "revId": "366257f91a2f22ab893af26d81ab5d1d9df20a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d70b803_1d14668e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-02-13T03:25:22Z",
+      "side": 1,
+      "message": "Why do we disable sink on C1 when we unplug from C0? Maybe its just what we do and this is exactly where it needs to be.",
+      "parentUuid": "3ee3fdfc_b0298a1e",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "366257f91a2f22ab893af26d81ab5d1d9df20a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
