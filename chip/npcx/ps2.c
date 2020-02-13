@@ -15,6 +15,7 @@
 #include "registers.h"
 #include "timer.h"
 #include "util.h"
+#include "lpc.h"
 
 #define CPRINTS(format, args...) cprints(CC_PS2, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_PS2, format, ## args)
@@ -301,6 +302,7 @@ void ps2_int_handler(void)
 							&ps2_ch_data[active_ch];
 
 				DEBUG_CPRINTF("Recv:0x%02x", data_read);
+				lpc_mouse_put_char(data_read);//add
 				if (ps2_ptr->rx_handler_cb)
 					ps2_ptr->rx_handler_cb(data_read);
 			}

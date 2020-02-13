@@ -35,6 +35,8 @@ int lpc_keyboard_input_pending(void);
  */
 void lpc_keyboard_put_char(uint8_t chr, int send_irq);
 
+void lpc_mouse_put_char(uint8_t chr);
+
 /**
  * Clear the keyboard buffer.
  */
