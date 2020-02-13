@@ -16,6 +16,24 @@
       "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87716f49_6add480e",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-13T21:45:16Z",
+      "side": 1,
+      "message": "I tried to use the tcpci_tcpm_get_message_raw, which selects the correct version and this did not work",
+      "parentUuid": "68c561c1_b3ef67e7",
+      "revId": "86216c79f228372f0ea0ce256c166643717fc9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
