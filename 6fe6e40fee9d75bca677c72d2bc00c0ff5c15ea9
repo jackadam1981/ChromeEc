@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa8ab63c_35857323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-13T19:29:58Z",
+      "side": 1,
+      "message": "discover identity",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "6fe6e40fee9d75bca677c72d2bc00c0ff5c15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af69fd8d_fb588d80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3832,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-13T19:29:58Z",
+      "side": 1,
+      "message": "move to common file",
+      "range": {
+        "startLine": 3827,
+        "startChar": 0,
+        "endLine": 3832,
+        "endChar": 0
+      },
+      "revId": "6fe6e40fee9d75bca677c72d2bc00c0ff5c15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80bf4467_1fb4de70",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3864,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-13T19:29:58Z",
+      "side": 1,
+      "message": "add a description for TODO",
+      "range": {
+        "startLine": 3864,
+        "startChar": 6,
+        "endLine": 3864,
+        "endChar": 38
+      },
+      "revId": "6fe6e40fee9d75bca677c72d2bc00c0ff5c15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
