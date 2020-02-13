@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d400f011_f0345800",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-13T23:33:36Z",
+      "side": 1,
+      "message": "Why did we move this out of usart.c",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b0b96f7_3f10d191",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-13T23:33:36Z",
+      "side": 1,
+      "message": "This is the uart part. Only check the uart flags. We need to be able to tell if ec uart is interfering with servo.",
+      "range": {
+        "startLine": 237,
+        "startChar": 21,
+        "endLine": 237,
+        "endChar": 27
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e572c2_f0ca7c51",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-13T23:33:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be part of the ccd_ext_is_enabled flags",
+      "range": {
+        "startLine": 297,
+        "startChar": 15,
+        "endLine": 297,
+        "endChar": 42
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ecf62c4_ec8a8f9f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-13T23:33:36Z",
+      "side": 1,
+      "message": "If might be simpler if we don\u0027t care about the delta for this since we\u0027re just modifying some flags in usb_console.c. \nCan we have a function in usart.c\nvoid ec_usb_uart_enable(int enabled, int write)\n{\n\tif (enabled \u0026\u0026 !is_enabled)\n                task_trigger_irq(GC_IRQNUM_UART2_TXINT);\n\n        is_enabled \u003d enabled;\n\tis_readwrite \u003d write \u0026\u0026 enabled;\n\n}\n\nAnd just always call in the ccd_update state function in line 364?\nec_usb_uart_enable(flags_want \u0026 CCD_ENABLE_USB_FROM_UART_EC, \n                   flags_want \u0026 CCD_ENABLE_USB_TO_UART_EC);",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 44
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a354880_446396be",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-13T23:33:36Z",
+      "side": 1,
+      "message": "I feel like these names aren\u0027t very readable.",
+      "range": {
+        "startLine": 192,
+        "startChar": 7,
+        "endLine": 192,
+        "endChar": 40
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c28290_fd93255b",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-13T23:33:36Z",
+      "side": 1,
+      "message": "Will this overwrite the last character of the queue even if inc is 0?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 31
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
