@@ -205,6 +205,25 @@ static void uart_hw_init(enum UART_PORT id)
 		IER(ctx->id) = IER_RECV;
 }
 
+#ifdef CHIP_VARIANT_ISH5P4
+void uart_port_restore(void)
+{
+	uart_hw_init(ISH_DEBUG_UART);
+}
+
+void uart_to_idle(void)
+{
+	int id;
+
+	for (id = 0; id < UART_DEVICES; id++) {
+		LCR(id) = 0x80;
+		DLL(id) = 0x1;
+		DLH(id) = 0x0;
+		LCR(id) = 0x0;
+	}
+}
+#endif
+
 static void uart_stop_hw(enum UART_PORT id)
 {
 	int i;
@@ -252,6 +271,7 @@ static int uart_client_init(enum UART_PORT id, uint32_t baud_rate_id, int flags)
 
 	return EC_SUCCESS;
 }
+
 
 static void uart_drv_init(void)
 {
