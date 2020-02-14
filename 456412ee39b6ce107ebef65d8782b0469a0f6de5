@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebed33b2_0978fbec",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-02-14T04:04:14Z",
+      "side": 0,
+      "message": "I removed this config, it was previously to distinguish whether the keyboard function is from EC. Now we have CONFIG_KEYBOARD_NOT_RAW.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "456412ee39b6ce107ebef65d8782b0469a0f6de5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
