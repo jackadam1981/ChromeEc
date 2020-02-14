@@ -1301,7 +1301,8 @@ static void rt946x_pd_disconnect(void)
 	hook_call_deferred(&check_pd_capable_data, -1);
 	hook_call_deferred(&check_ac_state_data, 0);
 }
-DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, rt946x_pd_disconnect, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_USB_PD_UNATTACH_SNK_SRC, rt946x_pd_disconnect,
+		HOOK_PRIO_DEFAULT);
 
 int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
 {

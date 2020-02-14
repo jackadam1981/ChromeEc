@@ -163,9 +163,9 @@ SECTIONS
 		KEEP(*(.rodata.HOOK_SECOND))
 		__hooks_second_end = .;
 
-		__hooks_usb_pd_disconnect = .;
-		KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
-		__hooks_usb_pd_disconnect_end = .;
+		__hooks_usb_pd_unattach_snk_src = .;
+		KEEP(*(.rodata.HOOK_USB_PD_UNATTACH_SNK_SRC))
+		__hooks_usb_pd_unattach_snk_src_end = .;
 
 		__hooks_usb_pd_connect = .;
 		KEEP(*(.rodata.HOOK_USB_PD_CONNECT))

@@ -885,7 +885,7 @@ static inline void set_state(int port, enum pd_states next_state)
 
 		/* detect USB PD cc disconnect */
 		if (IS_ENABLED(CONFIG_COMMON_RUNTIME))
-			hook_notify(HOOK_USB_PD_DISCONNECT);
+			hook_notify(HOOK_USB_PD_UNATTACH_SNK_SRC);
 	}
 
 #ifdef CONFIG_USB_PD_REV30

@@ -210,9 +210,9 @@ enum hook_type {
 	HOOK_SECOND,
 
 	/*
-	 * USB PD cc disconnect event.
+	 * USB PD cc is in unattach.SRC/SNK state.
 	 */
-	HOOK_USB_PD_DISCONNECT,
+	HOOK_USB_PD_UNATTACH_SNK_SRC,
 
 	/*
 	 * USB PD cc connection event.

@@ -648,7 +648,8 @@ static void it83xx_tcpm_sw_reset(void)
 	USBPD_SW_RESET(port);
 }
 
-DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it83xx_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_USB_PD_UNATTACH_SNK_SRC, it83xx_tcpm_sw_reset,
+		HOOK_PRIO_DEFAULT);
 
 const struct tcpm_drv it83xx_tcpm_drv = {
 	.init			= &it83xx_tcpm_init,
