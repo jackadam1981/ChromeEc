@@ -329,6 +329,16 @@ static void syv682x_handle_interrupt(int port)
 	{
 		pd_handle_overcurrent(port);
 	}
+
+	#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
+	
+	/* FRS has already occurred, inform policy engine to */
+	/* Complete the PD cleanup from FRS */
+	if (regval & SYV682X_STATUS_FRS)
+	{
+		pd_got_frs_signal(port);
+	}
+	#endif
 }
 
 static void syv682x_irq_deferred(void)
@@ -348,6 +358,13 @@ void syv682x_interrupt(int port)
         hook_call_deferred(&syv682x_irq_deferred_data, 0);
 }
 
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
+static int syv682x_set_frs_enable(int port,int enable)
+{
+	gpio_set_level(ppc_chips[port].frs_en,enable);
+	return EC_SUCCESS;
+}
+#endif /*CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC*/
 
 static int syv682x_init(int port)
 {
@@ -429,6 +446,9 @@ const struct ppc_drv syv682x_drv = {
 #ifdef CONFIG_CMD_PPC_DUMP
 	.reg_dump = &syv682x_dump,
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+	.set_frs_enable = &syv682x_set_frs_enable,
+#endif
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 	.is_vbus_present = &syv682x_is_vbus_present,
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
