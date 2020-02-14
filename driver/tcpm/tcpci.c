@@ -637,6 +637,7 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 }
 
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#ifndef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
 void tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 {
 	tcpc_update8(port,
@@ -646,6 +647,7 @@ void tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 
 	board_tcpc_fast_role_swap_enable(port, enable);
 }
+#endif
 #endif
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
