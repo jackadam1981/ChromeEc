@@ -425,9 +425,12 @@ struct usb_retimer usb_retimers[] = {
 		/* USB-C port 0 doesn't have a retimer */
 	},
 	[USBC_PORT_C1] = {
+#ifdef CONFIG_USBC_MUX_RETIMER
+/* TODO(b/150301041): Remove #ifdefs when bb_retimer.c builds with TCPMv2. */
 		.driver = &bb_usb_retimer,
 		.i2c_port = I2C_PORT_USB_1_MIX,
 		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+#endif /* CONFIG_USBC_MUX_RETIMER */
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_retimers) == USBC_PORT_COUNT);
