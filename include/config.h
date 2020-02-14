@@ -3994,6 +3994,7 @@
 
 /* Type-C Fast Role Swap */
 #undef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#undef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
 
 /*
  * USB Product ID. Each platform (e.g. baseboard set) should have a single

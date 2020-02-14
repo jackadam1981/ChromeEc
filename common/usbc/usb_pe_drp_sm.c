@@ -672,9 +672,12 @@ static void pe_set_frs_enable(int port, int enable)
 
 		/* Request an FRS change, only if the state has changed */
 		if (!!current != !!enable) {
-			tcpm_set_frs_enable(port, enable);
+			if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC))
+				ppc_set_frs_enable(port,enable);
+			else 
+				tcpm_set_frs_enable(port, enable);
 
-			if (enable)
+			if (enable) 
 				PE_SET_FLAG(port,
 					    PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
 			else
