@@ -94,6 +94,30 @@
       "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e300a25c_40154e1b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-14T19:47:54Z",
+      "side": 1,
+      "message": "All seems to be working with the latest version.  I am following the TCPCIr2 spec on coming out of DRP.",
+      "parentUuid": "084886c5_a4daaa91",
+      "range": {
+        "startLine": 219,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "976ab199c8dde88978b1cede0f53989156db5b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
