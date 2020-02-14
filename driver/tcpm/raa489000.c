@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/charger/isl923x.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "raa489000.h"
 #include "tcpci.h"
@@ -83,9 +84,12 @@ int raa489000_init(int port)
 	if (rv)
 		CPRINTS("c%d: failed to set PD PHY setting1", port);
 
-	/* Enable VBUS auto discharge. needed to goodcrc */
+	/*
+	 * Disable VBUS auto discharge, we'll turn it on later as its needed to
+	 * goodcrc.
+	 */
 	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &regval);
-	regval |= TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+	regval &= ~TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
 	rv |= tcpc_write(port, TCPC_REG_POWER_CTRL, regval);
 	if (rv)
 		CPRINTS("c%d: failed to set auto discharge", port);
@@ -126,6 +130,41 @@ int raa489000_tcpm_set_cc(int port, int pull)
 
 	return rv;
 }
+
+static void raa489000_vbus_discharge_workaround(void)
+{
+	int port;
+	int rv;
+	int regval;
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &regval);
+		if (pd_is_connected(port)) {
+			/*
+			 * Enable VBUS auto discharge in order to send GoodCRCs.
+			 */
+			regval |= TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+			CPRINTS("C%d: RAA489000 WAR: Enabling VBUS Auto "
+				"Discharge", port);
+		} else {
+			/*
+			 * Disable VBUS auto discharge in order for DRP toggling
+			 * to work.
+			 */
+			regval &= ~TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+			CPRINTS("C%d: RAA489000 WAR: Disabling VBUS Auto "
+				"Discharge", port);
+		}
+
+		rv |= tcpc_write(port, TCPC_REG_POWER_CTRL, regval);
+		if (rv)
+			CPRINTS("c%d: failed to set auto discharge", port);
+	}
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, raa489000_vbus_discharge_workaround,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, raa489000_vbus_discharge_workaround,
+	     HOOK_PRIO_DEFAULT);
 
 /* RAA489000 is a TCPCI compatible port controller */
 const struct tcpm_drv raa489000_tcpm_drv = {
