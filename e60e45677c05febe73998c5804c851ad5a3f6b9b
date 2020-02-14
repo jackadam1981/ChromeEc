@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d2967b9_e942c307",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-14T23:06:30Z",
+      "side": 1,
+      "message": "Duplicate of the usb_common function?",
+      "range": {
+        "startLine": 1240,
+        "startChar": 0,
+        "endLine": 1247,
+        "endChar": 0
+      },
+      "revId": "e60e45677c05febe73998c5804c851ad5a3f6b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
