@@ -8,6 +8,7 @@
 CHIP:=stm32
 CHIP_FAMILY:=stm32h7
 CHIP_VARIANT:=stm32h7x3
+BASEBOARD:=nucleo-h743zi
 
 board-y=board.o
 
