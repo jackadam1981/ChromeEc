@@ -59,6 +59,8 @@ static void button_event(enum gpio_signal signal)
 /* Initialize board. */
 static void board_init(void)
 {
+	STM32_DBGMCU_CR |= BIT(0)|BIT(1)|BIT(2) | BIT(7)|BIT(8);
+
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
 	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
