@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ef3158b_baedd27b",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-14T22:02:32Z",
+      "side": 1,
+      "message": "why is this additional check required, is it not enough to drop out in line 182?\n\nIf usb to uart traffic is enabled, it will be passed. If it is not enabled, the UART fifo will fill up, but no data will be sent to the ec.",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c614a9_01fdc460",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-14T22:02:32Z",
+      "side": 1,
+      "message": "why do you change this? Please, let\u0027s not make unrelated drive by changes.",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 48
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a56243_017346b2",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-14T22:02:32Z",
+      "side": 1,
+      "message": "isn\u0027t packet mode receiveer supposed to be consuming the data in the uart RX buffer? Do I get it right that with this code the buffer would be just drained?\n\nAlso, if you just need to drain the buffer - why not make it in a separate tight loop here, instead of making processing in the main loop lines 225..229 longer?",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 11
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
