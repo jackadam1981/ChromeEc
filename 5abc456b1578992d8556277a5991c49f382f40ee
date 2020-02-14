@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dcb51014_9fba7eed",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T23:57:32Z",
+      "side": 1,
+      "message": "I rename this to \"ec_bridge_tx_enabled_\".\nIf it should be \"ec_bridge_readonly_\", then this statement must be like \"ec_bridge_enabled_ \u0026\u0026 !ec_bridge_readonly_\".",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 27
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ef3158b_baedd27b",
         "filename": "chip/g/usart.c",
         "patchSetId": 24
@@ -22,6 +45,30 @@
       "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f48861_269cd9fa",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T23:57:32Z",
+      "side": 1,
+      "message": "This is to observe \"no data leak when CCD capability.\"\nThis is needed.\nIf USB-to-UART traffic is enabled, yes, it will be passed. and line 181 will check if EC-comm is active or not. We will delay pass the data during EC-comm, and just return (line 182).\n\nIf USB-to-UART traffic is disabled and if we let it go to line 181, then the data shall be pushed into EC UART FIFO, which will be eventually passed to EC when EC-CR50 communication enables EC UART. It is violating CCD capability, and not what cr50 is doing today.\n\nHowever, I think we don\u0027t need to drain out USB-stream buffer. removing line 173.",
+      "parentUuid": "7ef3158b_baedd27b",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e96aeaa0_d17f3d02",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T23:57:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c614a9_01fdc460",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 48
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29a56243_017346b2",
         "filename": "chip/g/usart.c",
         "patchSetId": 24
@@ -68,6 +139,30 @@
       "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554a43af_c4db2d24",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T23:57:32Z",
+      "side": 1,
+      "message": "I am bring this change to http://crrev.com/c/1961145.",
+      "parentUuid": "29a56243_017346b2",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 11
+      },
+      "revId": "5abc456b1578992d8556277a5991c49f382f40ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
