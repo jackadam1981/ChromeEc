@@ -62,7 +62,11 @@
  * (256 * 8), so we just defined the only needed IDT entries:
  * AON_IDT_ENTRY_VEC_FIRST ~  AON_IDT_ENTRY_VEC_LAST
  */
-#define AON_IDT_ENTRY_VEC_FIRST        ISH_PMU_WAKEUP_VEC
+#ifdef CHIP_VARIANT_ISH5P4
+#define AON_IDT_ENTRY_VEC_LAST		ISH_PMU_WAKEUP_VEC
+#else
+#define AON_IDT_ENTRY_VEC_FIRST		ISH_PMU_WAKEUP_VEC
+#endif
 
 #ifdef CONFIG_ISH_PM_RESET_PREP
 /**
@@ -70,10 +74,18 @@
  * vector, and also need handle reset prep interrupt
  * (if CONFIG_ISH_PM_RESET_PREP defined)
  */
-#define AON_IDT_ENTRY_VEC_LAST         ISH_RESET_PREP_VEC
+#ifdef CONFIG_ISH54_PM
+#define AON_IDT_ENTRY_VEC_FIRST		ISH_RESET_PREP_VEC
+#else
+#define AON_IDT_ENTRY_VEC_LAST		ISH_RESET_PREP_VEC
+#endif
 #else
 /* only need handle single PMU wakeup interrupt */
-#define AON_IDT_ENTRY_VEC_LAST         ISH_PMU_WAKEUP_VEC
+#ifdef CONFIG_ISH54_PM
+#define AON_IDT_ENTRY_VEC_FIRST		ISH_PMU_WAKEUP_VEC
+#else
+#define AON_IDT_ENTRY_VEC_LAST		ISH_PMU_WAKEUP_VEC
+#endif
 #endif
 
 static void handle_reset(enum ish_pm_state pm_state);
@@ -307,7 +319,10 @@ static int store_main_fw(void)
 			  - CONFIG_RAM_BASE);
 
 	/* disable BCG (Block Clock Gating) for DMA, DMA can be accessed now */
-	CCU_BCG_EN = CCU_BCG_EN & ~CCU_BCG_BIT_DMA;
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		CCU_BCG_DMA = 0;
+	else
+		CCU_BCG_EN = CCU_BCG_EN & ~CCU_BCG_BIT_DMA;
 
 	/* store main FW's read and write data region to IMR/UMA DDR */
 	ret = ish_dma_copy(
@@ -318,7 +333,10 @@ static int store_main_fw(void)
 		SRAM_TO_UMA);
 
 	/* enable BCG for DMA, DMA can't be accessed now */
-	CCU_BCG_EN = CCU_BCG_EN | CCU_BCG_BIT_DMA;
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		CCU_BCG_DMA = 1;
+	else
+		CCU_BCG_EN = CCU_BCG_EN | CCU_BCG_BIT_DMA;
 
 	if (ret != DMA_RC_OK) {
 
@@ -352,7 +370,10 @@ static int restore_main_fw(void)
 			  - CONFIG_RAM_BASE);
 
 	/* disable BCG (Block Clock Gating) for DMA, DMA can be accessed now */
-	CCU_BCG_EN = CCU_BCG_EN & ~CCU_BCG_BIT_DMA;
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		CCU_BCG_DMA = 0;
+	else
+		CCU_BCG_EN = CCU_BCG_EN & ~CCU_BCG_BIT_DMA;
 
 	/* restore main FW's read only code and data region from IMR/UMA DDR */
 	ret = ish_dma_copy(
@@ -368,6 +389,9 @@ static int restore_main_fw(void)
 		aon_share.error_count++;
 
 		/* enable BCG for DMA, DMA can't be accessed now */
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		CCU_BCG_DMA = 1;
+	else
 		CCU_BCG_EN = CCU_BCG_EN | CCU_BCG_BIT_DMA;
 
 		return AON_ERROR_DMA_FAILED;
@@ -383,7 +407,10 @@ static int restore_main_fw(void)
 			);
 
 	/* enable BCG for DMA, DMA can't be accessed now */
-	CCU_BCG_EN = CCU_BCG_EN | CCU_BCG_BIT_DMA;
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		CCU_BCG_DMA = 1;
+	else
+		CCU_BCG_EN = CCU_BCG_EN | CCU_BCG_BIT_DMA;
 
 	if (ret != DMA_RC_OK) {
 
@@ -453,18 +480,27 @@ static void sram_power(int on)
 	 * size unit, and using 0 based length, i.e if set 0, will erase one
 	 * DWORD
 	 */
-	erase_cfg = (((bank_size - 4) >> 2) << 2) | 0x1;
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		erase_cfg = ((bank_size >> 3) << 2) | 0x1;
+	else
+		erase_cfg = (((bank_size - 4) >> 2) << 2) | 0x1;
 
 	for (i = 0; i < SRAM_POWER_OFF_BANKS; i++) {
 
+#ifdef CONFIG_ISH54_PM
+		if (on && (BANK_PG_STATUS(i))) {
+#else
 		if (on && (BANK_PG_STATUS(i) || BANK_DISABLE_STATUS(i))) {
+#endif
 
 			/* power on and enable a bank */
 			BANK_PG_DISABLE(i);
 
 			delay(SRAM_WARM_UP_DELAY_CNT);
 
+#ifndef CONFIG_ISH54_PM
 			BANK_ENABLE(i);
+#endif
 
 			/* erase a bank */
 			ISH_SRAM_CTRL_ERASE_ADDR = sram_addr + (i * bank_size);
@@ -476,7 +512,9 @@ static void sram_power(int on)
 
 		} else {
 			/* disable and power off a bank */
+#ifndef CONFIG_ISH54_PM
 			BANK_DISABLE(i);
+#endif
 			BANK_PG_ENABLE(i);
 		}
 
@@ -499,8 +537,18 @@ static void handle_d0i2(void)
 	/* delay some cycles before halt */
 	delay(SRAM_RETENTION_CYCLES_DELAY);
 
+	if (IS_ENABLED(CONFIG_ISH54_PM)) {
+		PMU_VNNAON_RED = 1;
+		CCU_AONCG_EN = 1;
+	}
+
 	ish_mia_halt();
 	/* wakeup from PMU interrupt */
+
+	if (IS_ENABLED(CONFIG_ISH54_PM)) {
+		PMU_VNNAON_RED = 0;
+		CCU_AONCG_EN = 0;
+	}
 
 	/* set main SRAM intto normal mode */
 	PMU_LDO_CTRL = PMU_LDO_ENABLE_BIT;
@@ -527,8 +575,18 @@ static void handle_d0i3(void)
 	/* power off main SRAM */
 	sram_power(0);
 
+	if (IS_ENABLED(CONFIG_ISH54_PM)) {
+		PMU_VNNAON_RED = 1;
+		CCU_AONCG_EN = 1;
+	}
+
 	ish_mia_halt();
 	/* wakeup from PMU interrupt */
+
+	if (IS_ENABLED(CONFIG_ISH54_PM)) {
+		PMU_VNNAON_RED = 0;
+		CCU_AONCG_EN = 0;
+	}
 
 	/* power on main SRAM */
 	sram_power(1);
@@ -559,7 +617,10 @@ static void handle_reset(enum ish_pm_state pm_state)
 	ISH_GPIO_GIMR = 0;
 
 	/* disable CSME CSR irq */
-	IPC_PIMR &= ~IPC_PIMR_CSME_CSR_BIT;
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		REG32(IPC_PIMR_CIM_SEC) = 1;
+	else
+        	REG32(IPC_PIMR) &= ~IPC_PIMR_CSME_CSR_BIT;
 
 	/* power off main SRAM */
 	sram_power(0);
@@ -633,24 +694,39 @@ void ish_aon_main(void)
 {
 
 	/* set PMU wakeup interrupt gate using LDT code segment selector(0x4) */
-	aon_idt[0].dword_lo = GEN_IDT_DESC_LO(&pmu_wakeup_isr, 0x4,
-					IDT_DESC_FLAGS);
+	if (IS_ENABLED(CONFIG_ISH54_PM)) {
+        	aon_idt[AON_IDT_ENTRY_VEC_LAST - AON_IDT_ENTRY_VEC_FIRST].dword_lo =
+                	GEN_IDT_DESC_LO(&pmu_wakeup_isr, 0x4, IDT_DESC_FLAGS);
 
-	aon_idt[0].dword_up = GEN_IDT_DESC_UP(&pmu_wakeup_isr, 0x4,
-					IDT_DESC_FLAGS);
+        	aon_idt[AON_IDT_ENTRY_VEC_LAST - AON_IDT_ENTRY_VEC_FIRST].dword_up =
+                	GEN_IDT_DESC_UP(&pmu_wakeup_isr, 0x4, IDT_DESC_FLAGS);
+	} else {
+        	aon_idt[0].dword_lo = GEN_IDT_DESC_LO(&pmu_wakeup_isr, 0x4,
+                                        	IDT_DESC_FLAGS);
+
+        	aon_idt[0].dword_up = GEN_IDT_DESC_UP(&pmu_wakeup_isr, 0x4,
+                                        	IDT_DESC_FLAGS);
+	}
 
 	if (IS_ENABLED(CONFIG_ISH_PM_RESET_PREP)) {
 		/*
 		 * set reset prep interrupt gate using LDT code segment
 		 * selector(0x4)
 		 */
-		aon_idt[AON_IDT_ENTRY_VEC_LAST - AON_IDT_ENTRY_VEC_FIRST]
-			.dword_lo =
-			GEN_IDT_DESC_LO(&reset_prep_isr, 0x4, IDT_DESC_FLAGS);
+#ifdef CHIP_VARIANT_ISH5P4
+		if (IS_ENABLED(CONFIG_ISH54_PM)) {
+        		aon_idt[0].dword_lo =
+                		GEN_IDT_DESC_LO(&reset_prep_isr, 0x4, IDT_DESC_FLAGS);
 
-		aon_idt[AON_IDT_ENTRY_VEC_LAST - AON_IDT_ENTRY_VEC_FIRST]
-			.dword_up =
-			GEN_IDT_DESC_UP(&reset_prep_isr, 0x4, IDT_DESC_FLAGS);
+        		aon_idt[0].dword_up =
+                		GEN_IDT_DESC_UP(&reset_prep_isr, 0x4, IDT_DESC_FLAGS);
+		} else {
+        		aon_idt[AON_IDT_ENTRY_VEC_LAST - AON_IDT_ENTRY_VEC_FIRST].dword_lo =
+                        	GEN_IDT_DESC_LO(&reset_prep_isr, 0x4, IDT_DESC_FLAGS);
+
+        		aon_idt[AON_IDT_ENTRY_VEC_LAST - AON_IDT_ENTRY_VEC_FIRST].dword_up =
+                        	GEN_IDT_DESC_UP(&reset_prep_isr, 0x4, IDT_DESC_FLAGS);
+		}
 	}
 
 	while (1) {
