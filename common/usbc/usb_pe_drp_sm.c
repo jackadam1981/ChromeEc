@@ -4372,8 +4372,8 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 		ext = PD_HEADER_EXT(emsg[port].header);
 		payload = *(uint32_t *)emsg[port].buf;
 
-		if ((ext == 0) && (cnt == 0)) {
-			if (type == PD_CTRL_ACCEPT) {
+		if ((ext == 0) && (cnt == 1)) {
+			if (type == PD_DATA_SINK_CAP) {
 				/*
 				 * Check message to see if we can handle
 				 * FRS for this connection.
@@ -4390,13 +4390,8 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 					case PDO_FIXED_FRS_CURR_1A5_AT_5V:
 					case PDO_FIXED_FRS_CURR_3A0_AT_5V:
 						pe_set_frs_enable(port, 1);
-						return;
 					}
 				}
-				set_state_pe(port, PE_SNK_READY);
-				return;
-			} else if ((type == PD_CTRL_REJECT) ||
-				   (type == PD_CTRL_WAIT)) {
 				set_state_pe(port, PE_SNK_READY);
 				return;
 			}
