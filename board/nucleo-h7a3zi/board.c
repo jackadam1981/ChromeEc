@@ -7,7 +7,6 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "registers.h"
 #include "spi.h"
 #include "system.h"
 #include "task.h"
@@ -50,17 +49,9 @@ static void slp_event(enum gpio_signal signal)
 	hook_call_deferred(&ap_deferred_data, 0);
 }
 
-static void button_event(enum gpio_signal signal)
-{
-}
-
-#include "gpio_list.h"
-
 /* Initialize board. */
 static void board_init(void)
 {
-	STM32_DBGMCU_CR |= BIT(0)|BIT(1)|BIT(2) | BIT(7)|BIT(8);
-
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
 	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
@@ -68,3 +59,5 @@ static void board_init(void)
 	hook_call_deferred(&ap_deferred_data, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+#include "gpio_list.h"
