@@ -1942,6 +1942,8 @@ static void tc_attached_snk_entry(const int port)
 
 	/* VBus should be powered, turn on auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2645,6 +2647,8 @@ static void tc_attached_src_entry(const int port)
 
 	/* VBus should be powered, turn on auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_src_run(const int port)
