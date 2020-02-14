@@ -24,6 +24,9 @@ extern uint32_t __aon_ro_start;
 extern uint32_t __aon_ro_end;
 extern uint32_t __aon_rw_start;
 extern uint32_t __aon_rw_end;
+extern void uart_port_restore(void);
+extern void uart_to_idle(void);
+extern void clear_fabric_error(void);
 
 /**
  * on ISH, uart interrupt can only wakeup ISH from low power state via
@@ -346,6 +349,9 @@ static void enter_d0i1(void)
 	/* halt ISH cpu, will wakeup from PMU wakeup interrupt */
 	ish_mia_halt();
 
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		clear_fabric_error();
+
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
@@ -390,6 +396,9 @@ static void enter_d0i2(void)
 	switch_to_aontask();
 
 	/* returned from aontask */
+
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		clear_fabric_error();
 
 	/* disable power gating of RF(Cache) and ROMs */
 	PMU_RF_ROM_PWR_CTRL = 0;
@@ -438,6 +447,9 @@ static void enter_d0i3(void)
 	switch_to_aontask();
 
 	/* returned from aontask */
+
+	if (IS_ENABLED(CONFIG_ISH54_PM))
+		clear_fabric_error();
 
 	/* disable power gating of RF(Cache) and ROMs */
 	PMU_RF_ROM_PWR_CTRL = 0;
@@ -500,14 +512,32 @@ static void pm_process(timestamp_t cur_time, uint32_t idle_us)
 
 	switch (decide) {
 	case ISH_PM_STATE_D0I1:
+		if (IS_ENABLED(CONFIG_ISH54_PM)) {
+			PMU_VNN_REQ = PMU_VNN_REQ;
+			uart_to_idle();
+		}
 		enter_d0i1();
+		if (IS_ENABLED(CONFIG_ISH54_PM))
+			uart_port_restore();
 		break;
 	case ISH_PM_STATE_D0I2:
+		if (IS_ENABLED(CONFIG_ISH54_PM)) {
+			PMU_VNN_REQ = PMU_VNN_REQ;
+			uart_to_idle();
+		}
 		enter_d0i2();
+		if (IS_ENABLED(CONFIG_ISH54_PM))
+			uart_port_restore();
 		check_aon_task_status();
 		break;
 	case ISH_PM_STATE_D0I3:
+		if (IS_ENABLED(CONFIG_ISH54_PM)) {
+			PMU_VNN_REQ = PMU_VNN_REQ;
+			uart_to_idle();
+		}
 		enter_d0i3();
+		if (IS_ENABLED(CONFIG_ISH54_PM))
+			uart_port_restore();
 		check_aon_task_status();
 		break;
 	default:
@@ -526,7 +556,16 @@ void ish_pm_init(void)
 
 	/* disable TCG and disable BCG */
 	CCU_TCG_EN = 0;
-	CCU_BCG_EN = 0;
+	if (IS_ENABLED(CONFIG_ISH54_PM)) {
+		CCU_BCG_MIA = 0;
+		CCU_BCG_DMA = 0;
+		CCU_BCG_I2C = 0;
+		CCU_BCG_SPI = 0;
+		CCU_BCG_UART = 0;
+		CCU_BCG_GPIO = 0;
+	} else {
+		CCU_BCG_EN = 0;
+	}
 
 	if (IS_ENABLED(CONFIG_ISH_PM_AONTASK))
 		init_aon_task();
@@ -550,9 +589,11 @@ void ish_pm_init(void)
 			PMU_D3_STATUS = PMU_D3_STATUS;
 
 		task_enable_irq(ISH_D3_RISE_IRQ);
-		task_enable_irq(ISH_D3_FALL_IRQ);
-		task_enable_irq(ISH_BME_RISE_IRQ);
-		task_enable_irq(ISH_BME_FALL_IRQ);
+		if (!IS_ENABLED(CONFIG_ISH54_PM)) {
+			task_enable_irq(ISH_D3_FALL_IRQ);
+			task_enable_irq(ISH_BME_RISE_IRQ);
+			task_enable_irq(ISH_BME_FALL_IRQ);
+		}
 	}
 }
 
@@ -723,9 +764,11 @@ static void bme_fall_isr(void)
 
 #ifdef CONFIG_ISH_PM_D3
 DECLARE_IRQ(ISH_D3_RISE_IRQ, d3_rise_isr);
+#ifndef CONFIG_ISH54_PM
 DECLARE_IRQ(ISH_D3_FALL_IRQ, d3_fall_isr);
 DECLARE_IRQ(ISH_BME_RISE_IRQ, bme_rise_isr);
 DECLARE_IRQ(ISH_BME_FALL_IRQ, bme_fall_isr);
+#endif
 #endif
 
 void ish_pm_refresh_console_in_use(void)
