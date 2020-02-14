@@ -24,6 +24,11 @@ extern uint32_t __aon_ro_start;
 extern uint32_t __aon_ro_end;
 extern uint32_t __aon_rw_start;
 extern uint32_t __aon_rw_end;
+#ifdef CHIP_VARIANT_ISH5P4
+extern void uart_port_restore(void);
+extern void uart_to_idle(void);
+extern void clear_fabric_error(void);
+#endif
 
 /**
  * on ISH, uart interrupt can only wakeup ISH from low power state via
@@ -346,6 +351,10 @@ static void enter_d0i1(void)
 	/* halt ISH cpu, will wakeup from PMU wakeup interrupt */
 	ish_mia_halt();
 
+#ifdef CHIP_VARIANT_ISH5P4
+	clear_fabric_error();
+#endif
+
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
@@ -390,6 +399,10 @@ static void enter_d0i2(void)
 	switch_to_aontask();
 
 	/* returned from aontask */
+
+#ifdef CHIP_VARIANT_ISH5P4
+	clear_fabric_error();
+#endif
 
 	/* disable power gating of RF(Cache) and ROMs */
 	PMU_RF_ROM_PWR_CTRL = 0;
@@ -438,6 +451,10 @@ static void enter_d0i3(void)
 	switch_to_aontask();
 
 	/* returned from aontask */
+
+#ifdef CHIP_VARIANT_ISH5P4
+	clear_fabric_error();
+#endif
 
 	/* disable power gating of RF(Cache) and ROMs */
 	PMU_RF_ROM_PWR_CTRL = 0;
@@ -500,14 +517,35 @@ static void pm_process(timestamp_t cur_time, uint32_t idle_us)
 
 	switch (decide) {
 	case ISH_PM_STATE_D0I1:
+#ifdef CHIP_VARIANT_ISH5P4
+		PMU_VNN_REQ = PMU_VNN_REQ;
+		uart_to_idle();
+#endif
 		enter_d0i1();
+#ifdef CHIP_VARIANT_ISH5P4
+		uart_port_restore();
+#endif
 		break;
 	case ISH_PM_STATE_D0I2:
+#ifdef CHIP_VARIANT_ISH5P4
+		PMU_VNN_REQ = PMU_VNN_REQ;
+		uart_to_idle();
+#endif
 		enter_d0i2();
+#ifdef CHIP_VARIANT_ISH5P4
+		uart_port_restore();
+#endif
 		check_aon_task_status();
 		break;
 	case ISH_PM_STATE_D0I3:
+#ifdef CHIP_VARIANT_ISH5P4
+		PMU_VNN_REQ = PMU_VNN_REQ;
+		uart_to_idle();
+#endif
 		enter_d0i3();
+#ifdef CHIP_VARIANT_ISH5P4
+		uart_port_restore();
+#endif
 		check_aon_task_status();
 		break;
 	default:
@@ -526,7 +564,16 @@ void ish_pm_init(void)
 
 	/* disable TCG and disable BCG */
 	CCU_TCG_EN = 0;
+#ifdef CHIP_VARIANT_ISH5P4
+	CCU_BCG_MIA = 0;
+	CCU_BCG_DMA = 0;
+	CCU_BCG_I2C = 0;
+	CCU_BCG_SPI = 0;
+	CCU_BCG_UART = 0;
+	CCU_BCG_GPIO = 0;
+#else
 	CCU_BCG_EN = 0;
+#endif
 
 	if (IS_ENABLED(CONFIG_ISH_PM_AONTASK))
 		init_aon_task();
@@ -550,9 +597,11 @@ void ish_pm_init(void)
 			PMU_D3_STATUS = PMU_D3_STATUS;
 
 		task_enable_irq(ISH_D3_RISE_IRQ);
+#ifndef CHIP_VARIANT_ISH5P4
 		task_enable_irq(ISH_D3_FALL_IRQ);
 		task_enable_irq(ISH_BME_RISE_IRQ);
 		task_enable_irq(ISH_BME_FALL_IRQ);
+#endif
 	}
 }
 
@@ -706,6 +755,7 @@ static void d3_rise_isr(void)
 	handle_d3(ISH_D3_RISE_VEC);
 }
 
+#ifndef CHIP_VARIANT_ISH5P4
 static void d3_fall_isr(void)
 {
 	handle_d3(ISH_D3_FALL_VEC);
@@ -720,12 +770,15 @@ static void bme_fall_isr(void)
 {
 	handle_d3(ISH_BME_FALL_VEC);
 }
+#endif
 
 #ifdef CONFIG_ISH_PM_D3
 DECLARE_IRQ(ISH_D3_RISE_IRQ, d3_rise_isr);
+#ifndef CHIP_VARIANT_ISH5P4
 DECLARE_IRQ(ISH_D3_FALL_IRQ, d3_fall_isr);
 DECLARE_IRQ(ISH_BME_RISE_IRQ, bme_rise_isr);
 DECLARE_IRQ(ISH_BME_FALL_IRQ, bme_fall_isr);
+#endif
 #endif
 
 void ish_pm_refresh_console_in_use(void)
