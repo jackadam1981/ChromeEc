@@ -9,12 +9,14 @@
 
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
 #define GPIO(name, pin, flags) {GPIO_NAME_BY_##pin, GPIO_##pin, flags},
+#define GPIO_INT(name, pin, flags, signal) \
+		{GPIO_NAME_BY_##pin, GPIO_##pin, flags},
 #else
 #define GPIO(name, pin, flags) {#name, GPIO_##pin, flags},
+#define GPIO_INT(name, pin, flags, signal) {#name, GPIO_##pin, flags},
 #endif
 
 #define UNIMPLEMENTED(name) {#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT},
-#define GPIO_INT(name, pin, flags, signal) GPIO(name, pin, flags)
 
 /* GPIO signal list. */
 const struct gpio_info gpio_list[] = {
