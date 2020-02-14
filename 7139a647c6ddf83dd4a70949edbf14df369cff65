@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0113f1a1_11649e08",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d400f011_f0345800",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b0b96f7_3f10d191",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 21
@@ -45,6 +69,30 @@
       "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72e02d1_9f635c4c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b0b96f7_3f10d191",
+      "range": {
+        "startLine": 237,
+        "startChar": 21,
+        "endLine": 237,
+        "endChar": 27
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4db50129_dbb75b3c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e572c2_f0ca7c51",
+      "range": {
+        "startLine": 297,
+        "startChar": 15,
+        "endLine": 297,
+        "endChar": 42
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ecf62c4_ec8a8f9f",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 21
@@ -91,6 +163,30 @@
       "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e6dc23_5bd0f8d4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ecf62c4_ec8a8f9f",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 44
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5bb23b2f_8a65255d",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "3a354880_446396be",
+      "range": {
+        "startLine": 192,
+        "startChar": 7,
+        "endLine": 192,
+        "endChar": 40
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1c28290_fd93255b",
         "filename": "chip/g/usart.c",
         "patchSetId": 21
@@ -137,6 +257,30 @@
       "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a76550_51ef7ab4",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "It will hit here only when queue has a room for any characters (q_room !\u003d 0 \u0026\u0026 count !\u003d q_room). It won\u0027t overwrite any valid queue entries.",
+      "parentUuid": "f1c28290_fd93255b",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 31
+      },
+      "revId": "7139a647c6ddf83dd4a70949edbf14df369cff65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

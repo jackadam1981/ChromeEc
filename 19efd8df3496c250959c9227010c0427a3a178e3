@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e929a35_0f28ccc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T01:13:25Z",
+      "side": 1,
+      "message": "firmware_Cr50CCDServoCap test fails for this part.\nIt finds \"+TX\" and misundertand that it was from \"UARTEC+TX\".\nThe test needs to be re-written. \n\nWill create a bug for this, once this patch gets lgtm.",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "19efd8df3496c250959c9227010c0427a3a178e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
