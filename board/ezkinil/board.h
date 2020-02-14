@@ -61,6 +61,7 @@ extern enum gpio_signal GPIO_PCH_SYS_PWROK;
 
 enum battery_type {
 	BATTERY_AP18F4M,
+	BATTERY_AP18C7M,
 	BATTERY_TYPE_COUNT,
 };
 
