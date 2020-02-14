@@ -1919,6 +1919,8 @@ static void tc_attached_snk_entry(const int port)
 		 */
 		tc_set_data_role(port, PD_ROLE_UFP);
 
+		hook_notify(HOOK_USB_PD_CONNECT);
+
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 			tc[port].typec_curr =
 			usb_get_typec_current_limit(tc[port].polarity,
@@ -2645,6 +2647,8 @@ static void tc_attached_src_entry(const int port)
 
 	/* VBus should be powered, turn on auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_src_run(const int port)
