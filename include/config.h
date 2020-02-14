@@ -3980,6 +3980,9 @@
 #undef CONFIG_USBC_RETIMER_PS8802
 #undef CONFIG_USBC_RETIMER_PS8818
 
+/* Allow run-time configuration the Burnside Bridge driver structure */
+#undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+
 /*
  * Adds an EC console command to erase the ANX7447 OCM flash.
  * Note: this is intended to be a temporary option and
