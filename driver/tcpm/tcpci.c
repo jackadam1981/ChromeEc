@@ -300,7 +300,7 @@ static int init_alert_mask(int port)
 	/* Set the alert mask in TCPC */
 	rv = tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
 
-	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP)) {
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {
 		if (rv)
 			return rv;
 
@@ -722,8 +722,8 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 	return tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
 }
 
-#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
-void tcpci_tcpc_fast_role_swap_enable(int port, int enable)
+#ifdef CONFIG_USB_PD_FRS_TCPC
+int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 {
 	tcpc_update8(port,
 		     TCPC_REG_POWER_CTRL,
@@ -1277,7 +1277,7 @@ void tcpci_tcpc_alert(int port)
 	    alert & TCPC_REG_ALERT_TX_FAILED)
 		CPRINTS("C%d Hard Reset sent", port);
 
-	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP)
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)
 	    && (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
 		pd_got_frs_signal(port);
 
