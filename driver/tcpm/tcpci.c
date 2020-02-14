@@ -360,22 +360,11 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 int tcpci_tcpm_set_cc(int port, int pull)
 {
 	int cc1, cc2;
-	enum tcpc_cc_polarity polarity;
 
 	cc1 = cc2 = pull;
 
 	/* Keep track of current CC pull value */
 	tcpci_set_cached_pull(port, pull);
-
-	/*
-	 * Only drive one CC line when attached crbug.com/951681
-	 * and drive both when unattached.
-	 */
-	polarity = pd_get_polarity(port);
-	if (polarity == POLARITY_CC1)
-		cc2 = TYPEC_CC_OPEN;
-	else if (polarity == POLARITY_CC2)
-		cc1 = TYPEC_CC_OPEN;
 
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(0,
@@ -414,20 +403,6 @@ int tcpci_enter_low_power_mode(int port)
 
 int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
-	int rv;
-
-	/*
-	 * TCPCI sets the CC lines based on polarity.  If it is set to
-	 * no connection or SRC Debug Accessory then both CC lines are
-	 * driven, otherwise only one is driven.
-	 */
-	rv = tcpm_set_cc(port, tcpci_get_cached_pull(port));
-	if (rv)
-		return rv;
-
-	if (polarity == POLARITY_NONE)
-		return EC_SUCCESS;
-
 	return tcpc_update8(port,
 			    TCPC_REG_TCPC_CTRL,
 			    TCPC_REG_TCPC_CTRL_SET(1),
