@@ -153,6 +153,15 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 				     SYV682X_FLAGS_RVS)) {
 		CPRINTS("ppc p%d: VBUS Reverse Voltage!", port);
 	}
+
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
+	/* FRS has already occurred, inform policy engine to */
+	/* Complete the PD cleanup from FRS */
+	if (regval & SYV682X_STATUS_FRS) {
+		flags[port] |= SYV682X_FLAGS_SOURCE_ENABLED;
+		pd_got_frs_signal(port);
+	}
+#endif
 }
 
 static void syv682x_handle_control_4_interrupt(int port, int regval)
@@ -363,12 +372,24 @@ static int syv682x_set_vconn(int port, int enable)
 	 */
 	syv682x_handle_control_4_interrupt(port, regval);
 
-	if (enable)
+	/*
+	 * The CC line used for Vconn must be disconnected from the TCPC. The
+	 * SYV682X uses the CC1_BPS and CC2_BPS bits to tell which pin to look
+	 * at for FRS detection. If both CC1 and CC2 are connected to the TCPC,
+	 * FRS will trigger on an AND of these 2 signals (both are low). When
+	 * VCONN is not used, CC is always low so there is no need to configure
+	 * the CC registers.
+	 */
+	regval |= SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
+	regval &= ~(SYV682X_CONTROL_4_VCONN2 | SYV682X_CONTROL_4_VCONN1);
+	if (enable) {
+		regval &= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
+				  ~SYV682X_CONTROL_4_CC1_BPS :
+				  ~SYV682X_CONTROL_4_CC2_BPS;
 		regval |= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
-			SYV682X_CONTROL_4_VCONN1 : SYV682X_CONTROL_4_VCONN2;
-	else
-		regval &= ~(SYV682X_CONTROL_4_VCONN2 |
-			    SYV682X_CONTROL_4_VCONN1);
+				  SYV682X_CONTROL_4_VCONN1 :
+				  SYV682X_CONTROL_4_VCONN2;
+	}
 
 	return write_reg(port, SYV682X_CONTROL_4_REG, regval);
 }
@@ -456,6 +477,14 @@ void syv682x_interrupt(int port)
 	syv682x_interrupt_delayed(port, 0);
 }
 
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
+static int syv682x_set_frs_enable(int port,int enable)
+{
+	gpio_set_level(ppc_chips[port].frs_en,enable);
+	return EC_SUCCESS;
+}
+#endif /*CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC*/
+
 static bool syv682x_is_sink(uint8_t control_1)
 {
 	/*
@@ -540,12 +569,12 @@ static int syv682x_init(int port)
 	if (rv)
 		return rv;
 
-	/*
-	 * Remove Rd, connect CC1/CC2 lines to TCPC, and disable fast role
-	 * swap.
+	/* 
+	 * Remove Rd and connect CC1/CC2 lines to TCPC
+	 * Disable Vconn
+	 * Enable CC detection of Fast Role Swap (FRS)
 	 */
-	regval = SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS
-		| SYV682X_CONTROL_4_CC_FRS;
+	regval = SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
 	rv = write_reg(port, SYV682X_CONTROL_4_REG, regval);
 	if (rv)
 		return rv;
@@ -561,6 +590,9 @@ const struct ppc_drv syv682x_drv = {
 #ifdef CONFIG_CMD_PPC_DUMP
 	.reg_dump = &syv682x_dump,
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
+#ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
+	.set_frs_enable = &syv682x_set_frs_enable,
+#endif
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 	.is_vbus_present = &syv682x_is_vbus_present,
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
