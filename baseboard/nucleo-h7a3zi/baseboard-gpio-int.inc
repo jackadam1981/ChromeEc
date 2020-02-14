@@ -9,9 +9,5 @@
  */
 
 /* Interrupts */
-#include "baseboard-gpio-int.inc"
-GPIO_INT(PCH_SLP_S0_L,    PIN(D, 13), GPIO_INT_BOTH, slp_event)
-GPIO_INT(PCH_SLP_S3_L,    PIN(A, 11), GPIO_INT_BOTH, slp_event)
-
-/* General IO */
-#include "baseboard-gpio.inc"
+GPIO_INT(SPI1_NSS, PIN(A, 4),  GPIO_INPUT,    spi_event)
+GPIO_INT(BTN1,     PIN(C, 13), GPIO_INT_BOTH, button_event)
