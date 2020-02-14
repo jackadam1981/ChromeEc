@@ -37,9 +37,10 @@ static int dma_poll(uint32_t addr, uint32_t expected, uint32_t mask)
 
 void ish_dma_ocp_timeout_disable(void)
 {
-	uint32_t ctrl = OCP_AGENT_CONTROL;
-
-	OCP_AGENT_CONTROL = ctrl & OCP_RESPONSE_TO_DISABLE;
+	if (!IS_ENABLED(CONFIG_ISH_NEW_PM)) {
+		uint32_t ctrl = OCP_AGENT_CONTROL;
+		OCP_AGENT_CONTROL = ctrl & OCP_RESPONSE_TO_DISABLE;
+	}
 }
 
 static inline uint32_t interrupt_lock(void)
