@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "441cb31a_7fd8d938",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-14T22:03:57Z",
+      "side": 1,
+      "message": "will this break any dut-control that already exist?",
+      "range": {
+        "startLine": 1000,
+        "startChar": 4,
+        "endLine": 1000,
+        "endChar": 24
+      },
+      "revId": "cfeadd980b2a5a16f0f32d8c355e1fb785630529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
