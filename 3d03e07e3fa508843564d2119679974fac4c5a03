@@ -22,6 +22,30 @@
       "revId": "3d03e07e3fa508843564d2119679974fac4c5a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5783dc_96ed0aa2",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T21:28:48Z",
+      "side": 1,
+      "message": "This is the base, and the http://crrev.com/c/1956159 adds more print statements, which tells if kernel data were read correctly or not.",
+      "parentUuid": "f69c1c08_94e631f1",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "3d03e07e3fa508843564d2119679974fac4c5a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
