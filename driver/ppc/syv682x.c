@@ -12,12 +12,19 @@
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
+#include "usb_pd.h"
 #include "util.h"
+
+#include "hooks.h"
+#include "system.h"
+//#include "timer.h"
+
 
 #define SYV682X_FLAGS_SOURCE_ENABLED BIT(0)
 /* 0 -> CC1, 1 -> CC2 */
 #define SYV682X_FLAGS_CC_POLARITY BIT(1)
 #define SYV682X_FLAGS_VBUS_PRESENT BIT(2)
+static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define SYV682X_VBUS_DET_THRESH_MV		4000
@@ -313,6 +320,53 @@ static int syv682x_dump(int port)
 }
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
+
+static void syv682x_handle_interrupt(int port)
+{
+	int regval;
+	
+	/* Clear on read */
+	read_reg(port,SYV682X_STATUS_REG, &regval);
+	
+	if (regval & SYV682X_STATUS_FRS)
+	{
+		/* FRS has already occured, inform policy engine to */
+		/* Complete the PD cleanup from FRS */
+		pd_got_frs_signal(port);
+	}
+
+	// TODO combine? These may need to be handled separately
+	if (regval & SYV682X_OC_HV)
+	{
+		/* Overcurrent on SNK path */
+		pd_handle_overcurrent(port);
+	}
+
+	if (regval & SYV682X_OC_5V)
+	{
+		/* Overcurrent on SRC path */
+		pd_handle_overcurrent(port);
+	}
+}
+
+static void syv682x_irq_deferred(void)
+{
+        int i;
+        uint32_t pending = atomic_read_clear(&irq_pending);
+
+        for (i = 0; i < board_get_usb_pd_port_count(); i++)
+                if (BIT(i) & pending)
+                        syv682x_handle_interrupt(i);
+}
+DECLARE_DEFERRED(syv682x_irq_deferred);
+
+void syv682x_interrupt(int port)
+{
+        atomic_or(&irq_pending, BIT(port));
+        hook_call_deferred(&syv682x_irq_deferred_data, 0);
+}
+
+
 static int syv682x_init(int port)
 {
 	int rv;
@@ -376,7 +430,8 @@ static int syv682x_init(int port)
 		return rv;
 	/* Remove Rd and connect CC1/CC2 lines to TCPC */
 	regval |= SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
-	/* Disable Fast Role Swap (FRS) */
+	/* Enable Fast Role Swap (FRS) Detection on CC pins */
+	/* Note this only has an effect if the FRS_EN pin is high */
 	regval |= SYV682X_CONTROL_4_CC_FRS;
 	rv = write_reg(port, SYV682X_CONTROL_4_REG, regval);
 	if (rv)
