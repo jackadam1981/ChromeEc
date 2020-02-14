@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "17e8da39_fa810907",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-14T22:41:00Z",
+      "side": 1,
+      "message": "Right, once you enable EC backlight control, it will enable this accordingly and then allow the SoC to control it; but we should not initialize it to enabled.",
+      "parentUuid": "f115f861_a6740ec6",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aec0b279_0651c32b",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 2
@@ -258,6 +282,24 @@
       "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "433fdafa_ddc45e1f",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-14T22:41:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4038befc_32ba02c6",
+      "revId": "8003d5fb3859a2642a368a13ea79f1beb2a796e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
