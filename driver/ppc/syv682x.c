@@ -7,17 +7,21 @@
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/syv682x.h"
+#include "hooks.h"
 #include "i2c.h"
+#include "system.h"
 #include "timer.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
+#include "usb_pd.h"
 #include "util.h"
 
 #define SYV682X_FLAGS_SOURCE_ENABLED BIT(0)
 /* 0 -> CC1, 1 -> CC2 */
 #define SYV682X_FLAGS_CC_POLARITY BIT(1)
 #define SYV682X_FLAGS_VBUS_PRESENT BIT(2)
+static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define SYV682X_VBUS_DET_THRESH_MV		4000
@@ -93,6 +97,53 @@ static int syv682x_discharge_vbus(int port, int enable)
 	return EC_SUCCESS;
 }
 
+/*
+ * Two status registers can trigger the ALERT_L pin, STATUS and CONTROL_4
+ * These are all clear on read, so if there are alerts we need to service
+ * them even if we are not directly answering the interrupt to avoid race
+ * conditions.
+*/
+static void syv682x_handle_status_interrupt(int port, int regval)
+{
+    /* Handle OC and thermal shutdown the same */
+    if (regval & (SYV682X_STATUS_OC_HV | SYV682X_STATUS_OC_5V | SYV682X_STATUS_TSD)) {
+        pd_handle_overcurrent(port);
+    }
+
+    /* No handler for VBUS OVP/RVS events; the PPC will handle the protection */
+    if (regval & (SYV682X_STATUS_OVP)) {
+        CPRINTS("ppc p%d: VBUS OVP!", port);
+    }
+    if (regval & SYV682X_STATUS_RVS)
+    {
+        CPRINTS("ppc p%d: Reverse Voltage!", port);
+    }
+}
+
+static void syv682x_handle_control_4_interrupt(int port, int regval)
+{
+    if (regval & SYV682X_CONTROL_4_VCONN_OCP) {
+        CPRINTS("ppc p%d: VCONN OC!", port);
+    }
+    if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
+        CPRINTS("ppc p%d: VBAT OVP!", port);
+    }
+}
+
+static void syv682x_handle_interrupt(int port)
+{
+    int regval;
+    /* Clear on read */
+    read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+    CPRINTS("CONTROL_4 0x%02x", regval);
+    syv682x_handle_control_4_interrupt(port, regval);
+
+    /* Clear on read */
+    read_reg(port, SYV682X_STATUS_REG, &regval);
+    CPRINTS("STATUS 0x%02x", regval);
+    syv682x_handle_status_interrupt(port, regval);
+}
+
 static int syv682x_vbus_sink_enable(int port, int enable)
 {
 	int regval;
@@ -138,6 +189,7 @@ static int syv682x_is_vbus_present(int port)
 
 	if (read_reg(port, SYV682X_STATUS_REG, &val))
 		return vbus;
+	syv682x_handle_status_interrupt(port,val);
 
 	/*
 	 * VBUS is considered present if VSafe5V is detected or neither VSafe5V
@@ -275,6 +327,7 @@ static int syv682x_set_vconn(int port, int enable)
 	rv = read_reg(port, SYV682X_CONTROL_4_REG, &regval);
 	if (rv)
 		return rv;
+	syv682x_handle_control_4_interrupt(port,regval);
 
 	if (enable)
 		regval |= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
@@ -312,6 +365,24 @@ static int syv682x_dump(int port)
 	return EC_SUCCESS;
 }
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
+
+static void syv682x_irq_deferred(void)
+{
+        int i;
+        uint32_t pending = atomic_read_clear(&irq_pending);
+
+        for (i = 0; i < board_get_usb_pd_port_count(); i++)
+                if (BIT(i) & pending)
+                        syv682x_handle_interrupt(i);
+}
+DECLARE_DEFERRED(syv682x_irq_deferred);
+
+void syv682x_interrupt(int port)
+{
+        atomic_or(&irq_pending, BIT(port));
+        hook_call_deferred(&syv682x_irq_deferred_data, 0);
+}
+
 
 static int syv682x_init(int port)
 {
