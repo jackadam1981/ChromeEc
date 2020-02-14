@@ -105,6 +105,21 @@ static int syv682x_is_sourcing_vbus(int port)
 	return !!(flags[port] & SYV682X_FLAGS_SOURCE_ENABLED);
 }
 
+int syv682x_update_sourcing_vbus(int port)
+{
+	int regval;
+	int rv;
+
+	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
+	if (rv)
+		return rv;
+	if (regval & (SYV682X_CONTROL_1_PWR_ENB | SYV682X_CONTROL_1_CH_SEL))
+		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
+	else
+		flags[port] |= SYV682X_FLAGS_SOURCE_ENABLED;
+	return EC_SUCCESS;
+}
+
 static int syv682x_discharge_vbus(int port, int enable)
 {
 	/*
@@ -189,6 +204,23 @@ static bool syv682x_interrupt_filter(int port, int regval, int regmask,
  */
 static void syv682x_handle_status_interrupt(int port, int regval)
 {
+	/*
+	 * Workaround for bug in SYV692.
+	 *
+	 * The SYV682X has an FRS trigger but it is broken in some versions of
+	 * the part. The old parts require VBUS to fall to generate the
+	 * interrupt, it needs to be generated on CC alone.
+	 *
+	 * The workaround is to default to the TCPC trigger if available. When
+	 * the part is fixed, the TCPC trigger is no longer needed.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC) &&
+	    !IS_ENABLED(CONFIG_USB_PD_FRS_TCPC) &&
+	    (regval & SYV682X_STATUS_FRS)) {
+		pd_got_frs_signal(port);
+		flags[port] |= SYV682X_FLAGS_SOURCE_ENABLED;
+	}
+
 	/* These conditions automatically turn off VBUS sourcing */
 	if (regval & (SYV682X_STATUS_OVP | SYV682X_STATUS_TSD))
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
@@ -387,12 +419,12 @@ static int syv682x_set_vconn(int port, int enable)
 	 */
 	syv682x_handle_control_4_interrupt(port, regval);
 
-	if (enable)
+	regval &= ~(SYV682X_CONTROL_4_VCONN2 | SYV682X_CONTROL_4_VCONN1);
+	if (enable) {
 		regval |= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
-			SYV682X_CONTROL_4_VCONN1 : SYV682X_CONTROL_4_VCONN2;
-	else
-		regval &= ~(SYV682X_CONTROL_4_VCONN2 |
-			    SYV682X_CONTROL_4_VCONN1);
+				  SYV682X_CONTROL_4_VCONN1 :
+				  SYV682X_CONTROL_4_VCONN2;
+	}
 
 	return write_reg(port, SYV682X_CONTROL_4_REG, regval);
 }
@@ -479,6 +511,59 @@ void syv682x_interrupt(int port)
 	/* FRS timings require <15ms response to an FRS event */
 	syv682x_interrupt_delayed(port, 0);
 }
+
+/*
+ * The frs_en signal can be driven from the TCPC as well (preferred).
+ * In that case, no PPC configuration needs to be done to enable FRS
+ */
+#ifdef CONFIG_USB_PD_FRS_PPC
+static int syv682x_set_frs_enable(int port, int enable)
+{
+	int status;
+	int regval;
+
+	read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+	syv682x_handle_control_4_interrupt(port, regval);
+
+	if (enable) {
+		read_reg(port, SYV682X_STATUS_REG, &status);
+		syv682x_handle_status_interrupt(port, status);
+		/*
+		 * Workaround for bug in SYV682.
+		 *
+		 * The bug is that VBUS needs to be below VBAT when CC is pulled
+		 * low to trigger FRS. This is fine when charging at 5V usually,
+		 * but often not when charging at higher voltages. At higher
+		 * voltages, the CC trigger needs to be disabled for the broken
+		 * parts.
+		 *
+		 * TODO: When this is fixed, always use the CC trigger.
+		 */
+		if (status & SYV682X_STATUS_VSAFE_5V) {
+			regval &= ~SYV682X_CONTROL_4_CC_FRS;
+			/*
+			 * For FRS, only the CC line is connected through. The
+			 * SYV682 uses these bits to tell which CC line to look
+			 * at for the FRS trigger.
+			 */
+			regval &= flags[port] & SYV682X_FLAGS_CC_POLARITY ?
+				  ~SYV682X_CONTROL_4_CC1_BPS :
+				  ~SYV682X_CONTROL_4_CC2_BPS;
+		} else {
+			regval |= SYV682X_CONTROL_4_CC_FRS;
+		}
+	} else {
+		/*
+		 * Disabling FRS is part of the disconnect sequence, reconnect
+		 * CC lines to TCPC.
+		 */
+		regval |= SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
+	}
+	write_reg(port, SYV682X_CONTROL_4_REG, regval);
+	gpio_set_level(ppc_chips[port].frs_en, enable);
+	return EC_SUCCESS;
+}
+#endif /*CONFIG_USB_PD_FRS_PPC*/
 
 static bool syv682x_is_sink(uint8_t control_1)
 {
@@ -574,11 +659,12 @@ static int syv682x_init(int port)
 		return rv;
 
 	/*
-	 * Remove Rd, connect CC1/CC2 lines to TCPC, and disable fast role
-	 * swap.
+	 * Remove Rd and connect CC1/CC2 lines to TCPC
+	 * Disable Vconn
+	 * Disable CC detection of Fast Role Swap (FRS)
 	 */
-	regval = SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS
-		| SYV682X_CONTROL_4_CC_FRS;
+	regval = SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS;
+	regval |= SYV682X_CONTROL_4_CC_FRS;
 	rv = write_reg(port, SYV682X_CONTROL_4_REG, regval);
 	if (rv)
 		return rv;
@@ -594,6 +680,9 @@ const struct ppc_drv syv682x_drv = {
 #ifdef CONFIG_CMD_PPC_DUMP
 	.reg_dump = &syv682x_dump,
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
+#ifdef CONFIG_USB_PD_FRS_PPC
+	.set_frs_enable = &syv682x_set_frs_enable,
+#endif
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 	.is_vbus_present = &syv682x_is_vbus_present,
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
