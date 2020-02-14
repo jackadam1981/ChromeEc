@@ -92,7 +92,7 @@
  * than 5V.
  */
 static const uint16_t pd_src_voltages_mv[] = {
-		5000, 9000, 12000, 15000, 20000,
+		5000, 9000, 10000, 12000, 15000, 20000,
 };
 static uint32_t pd_src_chg_pdo[ARRAY_SIZE(pd_src_voltages_mv)];
 static uint8_t chg_pdo_cnt;
@@ -967,22 +967,12 @@ DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
 
 static int cmd_usbc_action(int argc, char *argv[])
 {
+	int sink_v;
+
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	if (!strcasecmp(argv[1], "5v")) {
-		do_cc(CONFIG_SRC(cc_config));
-		user_limited_max_mv = 5000;
-		update_ports();
-	} else if (!strcasecmp(argv[1], "12v")) {
-		do_cc(CONFIG_SRC(cc_config));
-		user_limited_max_mv = 12000;
-		update_ports();
-	} else if (!strcasecmp(argv[1], "20v")) {
-		do_cc(CONFIG_SRC(cc_config));
-		user_limited_max_mv = 20000;
-		update_ports();
-	} else if (!strcasecmp(argv[1], "dev")) {
+	if (!strcasecmp(argv[1], "dev")) {
 		/* Set the limit back to original */
 		user_limited_max_mv = 20000;
 		do_cc(CONFIG_PDSNK(cc_config));
@@ -996,6 +986,10 @@ static int cmd_usbc_action(int argc, char *argv[])
 		CPRINTF("DRP = %d, host_mode = %d\n",
 			!!(cc_config & CC_ENABLE_DRP),
 			!!(cc_config & CC_ALLOW_SRC));
+	} else if ((sink_v = atoi(argv[1]))) {
+		do_cc(CONFIG_SRC(cc_config));
+		user_limited_max_mv = sink_v * 1000;
+		update_ports();
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -1003,5 +997,5 @@ static int cmd_usbc_action(int argc, char *argv[])
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
-			"5v|12v|20v|dev|pol0|pol1|drp",
+			"x(x=voltage, e.g. 9)|dev|pol0|pol1|drp",
 			"Set Servo v4 type-C port state");
