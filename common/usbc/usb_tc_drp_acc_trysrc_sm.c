@@ -1919,6 +1919,8 @@ static void tc_attached_snk_entry(const int port)
 		 */
 		tc_set_data_role(port, PD_ROLE_UFP);
 
+		hook_notify(HOOK_USB_PD_CONNECT);
+
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 			tc[port].typec_curr =
 			usb_get_typec_current_limit(tc[port].polarity,
@@ -2563,7 +2565,7 @@ static void tc_attached_src_entry(const int port)
 				tc[port].power_role, tc[port].data_role);
 		/*
 		 * Both CC1 and CC2 pins shall be independently terminated to
-		 * ground through Rp.
+		 * pulled up through Rp.
 		 */
 		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
 
@@ -2645,6 +2647,13 @@ static void tc_attached_src_entry(const int port)
 
 	/* VBus should be powered, turn on auto discharge disconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	/*
+	 * Only notify if we're not performing a power role swap.  During a
+	 * power role swap, the port partner is not disconnecting/connecting.
+	 */
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		hook_notify(HOOK_USB_PD_CONNECT);
 }
 
 static void tc_attached_src_run(const int port)
