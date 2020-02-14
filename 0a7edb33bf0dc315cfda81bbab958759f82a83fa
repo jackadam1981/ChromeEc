@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5ba9314_e29848b8",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-14T20:29:43Z",
+      "side": 1,
+      "message": "If we allow getting the boot mode from the usb vendor command, then I don\u0027t think we need this console command in release images.\nIt would save some space.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "0a7edb33bf0dc315cfda81bbab958759f82a83fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "899a91b4_0cdfdb2c",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-14T20:29:43Z",
+      "side": 1,
+      "message": "Can we rename this, so it\u0027s more clear what it does\n\nec_efs_update_pwrdn_state or ec_efs_save_pwrdn_state",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "0a7edb33bf0dc315cfda81bbab958759f82a83fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a962a09d_7373c25b",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-14T20:29:43Z",
+      "side": 1,
+      "message": "Is there a reason why this isn\u0027t done as a part of set_boot_mode?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "0a7edb33bf0dc315cfda81bbab958759f82a83fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
