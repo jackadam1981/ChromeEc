@@ -19,6 +19,9 @@
 #define CONFIG_USB_PD_TCPMV1
 #endif
 
+#define CONFIG_USB_PD_FRS_TCPC
+#define CONFIG_USB_PD_FRS_PPC
+
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
