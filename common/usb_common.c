@@ -402,6 +402,12 @@ void pd_handle_cc_overvoltage(int port)
 	pd_send_hard_reset(port);
 }
 
+void pd_got_frs_signal(int port)
+{
+	/* Not implemented */
+	return;
+}
+
 #endif /* CONFIG_USBC_PPC */
 
 __overridable int pd_board_checks(void)
