@@ -22,6 +22,30 @@
       "revId": "e60e45677c05febe73998c5804c851ad5a3f6b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c0586b4_ebcd65d5",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-14T23:09:13Z",
+      "side": 1,
+      "message": "yes, some board don\u0027t have CONFIG_USB_POWER_DELIVERY defined.",
+      "parentUuid": "5d2967b9_e942c307",
+      "range": {
+        "startLine": 1240,
+        "startChar": 0,
+        "endLine": 1247,
+        "endChar": 0
+      },
+      "revId": "e60e45677c05febe73998c5804c851ad5a3f6b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
