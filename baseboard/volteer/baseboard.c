@@ -466,7 +466,6 @@ void ppc_interrupt(enum gpio_signal signal)
 	case GPIO_USB_C0_PPC_INT_ODL:
 		sn5s330_interrupt(USBC_PORT_C0);
 		break;
-
 	default:
 		break;
 	}
