@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f58d7e9c_96b55500",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-14T22:13:19Z",
+      "side": 0,
+      "message": "all these functions should stay in usb_common, but always be defined.\n\nOnly the ppc parts (like ppc_add_oc_event) should be guarded behind the IS_ENABLED(CONFIG_USBC_PPC) condition.",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 0
+      },
+      "revId": "35bb4afa2a1d69b12f77e74c77dfa65cc350781a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
