@@ -618,9 +618,12 @@ static void pe_set_frs_enable(int port, int enable)
 
 		/* Request an FRS change, only if the state has changed */
 		if (!!current != !!enable) {
-			tcpm_set_frs_enable(port, enable);
+			if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC))
+				ppc_set_frs_enable(port,enable);
+			else 
+				tcpm_set_frs_enable(port, enable);
 
-			if (enable)
+			if (enable) 
 				PE_SET_FLAG(port,
 					    PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
 			else
@@ -1979,7 +1982,6 @@ static void pe_snk_select_capability_run(int port)
 				/* explicit contract is now in place */
 				PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
-
 				/*
 				 * Setup to get Device Policy Manager to
 				 * request Sink Capabilities for possible FRS
@@ -4366,7 +4368,6 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
 		ext = PD_HEADER_EXT(emsg[port].header);
