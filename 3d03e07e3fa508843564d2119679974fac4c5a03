@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f69c1c08_94e631f1",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-14T20:51:30Z",
+      "side": 1,
+      "message": "We don\u0027t need this command at all unless CR50_RELAXED is defined.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "3d03e07e3fa508843564d2119679974fac4c5a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
