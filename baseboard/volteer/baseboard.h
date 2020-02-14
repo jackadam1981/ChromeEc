@@ -153,6 +153,9 @@
 #define CONFIG_USB_PRL_SM
 #define CONFIG_USB_PE_SM
 #define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+
+#define CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#define CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP_PPC
 #else
 /*
  * PD 3.0 is always enabled by the TCPMv2 stack, so it's only explicitly
@@ -160,6 +163,10 @@
  */
 #define CONFIG_USB_PD_REV30
 #endif
+
+
+
+
 
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
