@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f003ad1_8fe6c786",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-14T19:27:40Z",
+      "side": 1,
+      "message": "I moved this part to crrev.com/c/1961145/35.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "720ef07fcafa7e18e8bacfea4bc0edb0f4cd4e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
