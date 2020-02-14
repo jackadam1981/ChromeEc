@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d730cb47_99b37dfb",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-14T23:17:05Z",
+      "side": 1,
+      "message": "EN_PP1800_A is DNS in ID\u003d0,\nwe can add a comment and assign the GPIO to RST pin",
+      "revId": "8ccd4cfdf52a4793a859eb631710c839adf14aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
