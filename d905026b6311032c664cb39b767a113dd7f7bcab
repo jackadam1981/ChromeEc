@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f49cdf5f_6f003144",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-14T07:30:01Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_BATTERY_SMART",
+      "revId": "d905026b6311032c664cb39b767a113dd7f7bcab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
