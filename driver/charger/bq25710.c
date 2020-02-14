@@ -505,10 +505,10 @@ int charger_set_hw_ramp(int enable)
 			BQ25710_BC12_MIN_VOLTAGE_MV);
 		if (rv)
 			return rv;
-
+#if 0
 		/*  Enable ICO algorithm */
 		option3_reg |= BQ25710_CHARGE_OPTION_3_EN_ICO_MODE;
-
+#endif
 		/* 0b: Input current limit is set by BQ25710_REG_IIN_HOST */
 		option2_reg &= ~BQ25710_CHARGE_OPTION_2_EN_EXTILIM;
 
