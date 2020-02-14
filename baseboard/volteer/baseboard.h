@@ -145,6 +145,16 @@
 #define CONFIG_LED_PWM
 /* Although there are 2 LEDs, they are both controlled by the same lines. */
 #define CONFIG_LED_PWM_COUNT 1
+/* DO NOT SUBMIT: Compensate for broken green LED on board 0CA. */
+#undef CONFIG_LED_PWM_CHARGE_COLOR
+#undef CONFIG_LED_PWM_NEAR_FULL_COLOR
+#undef CONFIG_LED_PWM_SOC_ON_COLOR
+#undef CONFIG_LED_PWM_SOC_SUSPEND_COLOR
+#define CONFIG_LED_PWM_CHARGE_COLOR EC_LED_COLOR_BLUE
+/* Without green, white is purple, which isn't defined in enum ec_led_colors. */
+#define CONFIG_LED_PWM_NEAR_FULL_COLOR EC_LED_COLOR_WHITE
+#define CONFIG_LED_PWM_SOC_ON_COLOR EC_LED_COLOR_WHITE
+#define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_WHITE
 
 /* USB Type C and USB PD defines */
 /* Enable the new USB-C PD stack */
