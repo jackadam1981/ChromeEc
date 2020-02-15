@@ -424,6 +424,13 @@ void pd_request_data_swap(int port)
 	}
 }
 
+void pd_comm_enable(int port, int enable)
+{
+	/* If type-C connection, then update the TCPC RX enable */
+	if (pd_is_connected(port))
+		tcpm_set_rx_enable(port, enable);
+}
+
 /*
  * Return true if partner port is a DTS or TS capable of entering debug
  * mode (eg. is presenting Rp/Rp or Rd/Rd).
