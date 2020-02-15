@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "269ef7e6_2af8b5a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-15T03:09:16Z",
+      "side": 1,
+      "message": "Sorry, I missed this the first time on this CL. I would also change the tag of this commit message to something like \"power/icelake: JSL:\" since you\u0027re only touching that file.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "fbbf124df96b088e8b7457d6aa052a479dcf545a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
