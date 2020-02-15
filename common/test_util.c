@@ -8,6 +8,7 @@
 #ifdef TEST_COVERAGE
 #include <signal.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #endif
 
 #include "console.h"
@@ -71,25 +72,29 @@ void test_reset(void)
 {
 	if (!system_jumped_to_this_image())
 		__test_error_count = 0;
+	test_set_state(0);
 }
 
 void test_pass(void)
 {
-	ccprintf("Pass!\n");
+	test_set_state(test_get_state() & ~(TEST_STATE_MASK(TEST_STATE_PASSED)|TEST_STATE_MASK(TEST_STATE_FAILED)));
+	test_cprintf("Pass!\n");
 }
 
 void test_fail(void)
 {
-	ccprintf("Fail!\n");
+	__test_error_count++;
+	test_set_state(test_get_state() & ~(TEST_STATE_MASK(TEST_STATE_PASSED)|TEST_STATE_MASK(TEST_STATE_FAILED)));
+	test_cprintf("Fail!\n");
 }
 
 void test_print_result(void)
 {
 	if (__test_error_count)
-		ccprintf("Fail! (%d tests)\n", __test_error_count);
+		test_cprintf("Fail! (%d tests)\n", __test_error_count);
 	else
-		ccprintf("Pass!\n");
-}
+		test_cprintf("Pass!\n");
+	}
 
 int test_get_error_count(void)
 {
@@ -101,15 +106,38 @@ uint32_t test_get_state(void)
 	return system_get_scratchpad();
 }
 
+void test_set_state(uint32_t state)
+{
+	system_set_scratchpad(state);
+}
+
 test_mockable void test_clean_up(void)
 {
 }
 
+/*
+ * You need multistep enabled for this to work.
+ *
+ * The idea is that you specify if a reboot is expected before issuing
+ * the set of test instructions.
+ * If/when a reboot occurs, the proper fail/pass is reported and the
+ * next test step is started.
+ *
+ * If no accidental reboots occur, may sure that you clear
+ */
+void test_expect_reboot(bool expected, enum test_state_t next_step)
+{
+	test_set_state(
+		TEST_STATE_MASK(expected?TEST_STATE_PASSED:TEST_STATE_FAILED) |
+		TEST_STATE_MASK(next_step)
+		);
+}
+
 void test_reboot_to_next_step(enum test_state_t step)
 {
-	ccprintf("Rebooting to next test step...\n");
+	test_cprintf("Rebooting to next test step...\n");
 	cflush();
-	system_set_scratchpad(TEST_STATE_MASK(step));
+	test_set_state(TEST_STATE_MASK(step));
 	system_reset(SYSTEM_RESET_HARD);
 }
 
@@ -123,11 +151,11 @@ void test_run_multistep(void)
 
 	if (state & TEST_STATE_MASK(TEST_STATE_PASSED)) {
 		test_clean_up();
-		system_set_scratchpad(0);
+		test_set_state(0);
 		test_pass();
 	} else if (state & TEST_STATE_MASK(TEST_STATE_FAILED)) {
 		test_clean_up();
-		system_set_scratchpad(0);
+		test_set_state(0);
 		test_fail();
 	}
 
@@ -137,6 +165,13 @@ void test_run_multistep(void)
 	} else {
 		test_run_step(state);
 	}
+}
+
+int test_multistep_task(void *data)
+{
+	while (1)
+		test_run_multistep();
+	return EC_SUCCESS;
 }
 
 #ifdef HAS_TASK_HOSTCMD

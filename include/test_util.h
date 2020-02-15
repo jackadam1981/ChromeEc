@@ -8,23 +8,32 @@
 #ifndef __CROS_EC_TEST_UTIL_H
 #define __CROS_EC_TEST_UTIL_H
 
+#include <stdbool.h>
+
 #include "common.h"
 #include "console.h"
 #include "stack_trace.h"
+
+#define test_cputs(outstr)            cputs(CC_TEST, outstr)
+#define test_cprintf(format, args...) cprintf(CC_TEST, format, ## args)
+#define test_cprints(format, args...) cprints(CC_TEST, format, ## args)
 
 /* This allows tests to be easily commented out in run_test for debugging */
 #define test_static static __attribute__((unused))
 
 #define RUN_TEST(n) \
 	do { \
-		ccprintf("Running %s...", #n); \
+		int rv; \
+		const char *name = #n; \
+		test_cprintf("\n# Running %s...\n", name); \
 		cflush(); \
 		before_test(); \
-		if (n() == EC_SUCCESS) { \
-			ccputs("OK\n"); \
+		rv = n(); \
+		test_cprintf("\n# Result of %s...", name); \
+		if (rv == EC_SUCCESS) { \
+			test_pass(); \
 		} else { \
-			ccputs("Fail\n"); \
-			__test_error_count++; \
+			test_fail(); \
 		} \
 		after_test(); \
 	} while (0)
@@ -32,7 +41,7 @@
 #define TEST_ASSERT(n) \
 	do { \
 		if (!(n)) { \
-			ccprintf("%d: ASSERTION failed: %s\n", __LINE__, #n); \
+			test_cprintf("%d: ASSERTION failed: %s\n", __LINE__, #n); \
 			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \
@@ -47,9 +56,9 @@
 		__auto_type _a = (a); \
 		__auto_type _b = (b); \
 		if (!(_a op _b)) { \
-			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
+			test_cprintf("%d: ASSERSION failed: %s " #op " %s\n", \
 				 __LINE__, #a, #b); \
-			ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", \
+			test_cprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", \
 				 _a, _b); \
 			task_dump_trace();                                  \
 			return EC_ERROR_UNKNOWN;                            \
@@ -76,7 +85,7 @@
 		int __i; \
 		for (__i = 0; __i < n; ++__i) \
 			if ((s)[__i] != (d)[__i]) { \
-				ccprintf("%d: ASSERT_ARRAY_EQ failed at " \
+				test_cprintf("%d: ASSERT_ARRAY_EQ failed at " \
 					 "index=%d: %d != %d\n", __LINE__, \
 					 __i, (int)(s)[__i], (int)(d)[__i]); \
 				task_dump_trace(); \
@@ -89,7 +98,7 @@
 		int __i; \
 		for (__i = 0; __i < n; ++__i) \
 			if ((d)[__i] != (c)) { \
-				ccprintf("%d: ASSERT_MEMSET failed at " \
+				test_cprintf("%d: ASSERT_MEMSET failed at " \
 					 "index=%d: %d != %d\n", __LINE__, \
 					 __i, (int)(d)[__i], (c)); \
 				task_dump_trace(); \
@@ -119,7 +128,7 @@ enum test_state_t {
 	TEST_STATE_PASSED,
 	TEST_STATE_FAILED,
 };
-#define TEST_STATE_MASK(x) (1 << (x))
+#define TEST_STATE_MASK(x) BIT(x)
 
 /* Hooks gcov_flush() for test coverage report generation */
 void register_test_end_hook(void);
@@ -236,11 +245,15 @@ void test_run_step(uint32_t state);
 /* Get the current test state */
 uint32_t test_get_state(void);
 
+void test_set_state(uint32_t state);
+
 /*
  * Multistep test clean up. If a multi-step test has this function defined,
  * it will be called on test end. (i.e. when test passes or fails.)
  */
 void test_clean_up(void);
+
+void test_expect_reboot(bool expected, enum test_state_t next_step);
 
 /* Set the next step and reboot */
 void test_reboot_to_next_step(enum test_state_t step);
