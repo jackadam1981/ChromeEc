@@ -96,6 +96,9 @@ CONSOLE_CHANNEL(CC_SWITCH,       "switch")
 #endif
 CONSOLE_CHANNEL(CC_SYSTEM,       "system")
 CONSOLE_CHANNEL(CC_TASK,         "task")
+#if defined(TEST_BUILD) || defined(CTS_MODULE)
+CONSOLE_CHANNEL(CC_TEST,         "test")
+#endif
 #ifdef CONFIG_TOUCHPAD
 CONSOLE_CHANNEL(CC_TOUCHPAD,     "touchpad")
 #endif
