@@ -75,20 +75,20 @@ void test_reset(void)
 
 void test_pass(void)
 {
-	ccprintf("Pass!\n");
+	test_cprintf("Pass!\n");
 }
 
 void test_fail(void)
 {
-	ccprintf("Fail!\n");
+	test_cprintf("Fail!\n");
 }
 
 void test_print_result(void)
 {
 	if (__test_error_count)
-		ccprintf("Fail! (%d tests)\n", __test_error_count);
+		test_ccprintf("Fail! (%d tests)\n", __test_error_count);
 	else
-		ccprintf("Pass!\n");
+		test_ccprintf("Pass!\n");
 }
 
 int test_get_error_count(void)
@@ -107,7 +107,7 @@ test_mockable void test_clean_up(void)
 
 void test_reboot_to_next_step(enum test_state_t step)
 {
-	ccprintf("Rebooting to next test step...\n");
+	test_cprintf("Rebooting to next test step...\n");
 	cflush();
 	system_set_scratchpad(TEST_STATE_MASK(step));
 	system_reset(SYSTEM_RESET_HARD);
