@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8142ea1_ff185689",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "Address comments from previous CL",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e6995d_f6666c51",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "Create a static helper function and make a configuration option for how BCG for DMA is used.\n\nYour CONFIG_ISH54_PM configuration option is no better than the previous CL. The config option should be reflective of the feature, not the ISH version. The 5.4 can then imply the feature. This way, when Intel comes up with another ISH version, you don\u0027t have to change this code.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db95ff5_bde92259",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same for here",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 0
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a441cd_fee7af6e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 45
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00458686_4ee20b4f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here. also, the indentation is incorrect",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 0
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1025c0f_9056b62e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 44
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69ba624_f91a9e65",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 50
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced5e6da_9e8ac506",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "ifdef in function definitions is disallowed. please fix.",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 21
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f202260_4805e46e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "Please create a helper function and make the coniguration option reflective of a feature, not ISH version.",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 2
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa9a9ef_090ea75d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 0
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b50b6c3_b6a4f28b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 0
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f653f07a_c6202cef",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here. additionally, you should not mix tabs and spaces in indentation",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 2
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9eea96_117f6773",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 3
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f7fbf4_20e6eb23",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "these need to be in a header file",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20626dbc_6613010f",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "please make a configuration option which is non-reflective of the ISH version for this",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 23
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ca5d30_6f6c86a4",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 23
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8d6ac3_1dbf3c85",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 23
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585f314e_6be636dd",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "these should be placed into a helper method, and use a configuration option reflective of a feature.\n\nAdditionally, factor common code out of the switch.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 23
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6bb1a7_7e16e636",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 2
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4459ded_86f73a08",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T03:03:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 3
+      },
+      "revId": "b091bb4a2da91c0ae932534d53d104c634737c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
