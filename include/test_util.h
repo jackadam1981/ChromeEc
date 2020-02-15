@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_TEST_UTIL_H
 #define __CROS_EC_TEST_UTIL_H
 
+#include <stdbool.h>
+
 #include "common.h"
 #include "console.h"
 #include "stack_trace.h"
@@ -21,9 +23,9 @@
 		cflush(); \
 		before_test(); \
 		if (n() == EC_SUCCESS) { \
-			ccputs("OK\n"); \
+			test_pass(); \
 		} else { \
-			ccputs("Fail\n"); \
+			test_fail(); \
 			__test_error_count++; \
 		} \
 		after_test(); \
@@ -119,7 +121,7 @@ enum test_state_t {
 	TEST_STATE_PASSED,
 	TEST_STATE_FAILED,
 };
-#define TEST_STATE_MASK(x) (1 << (x))
+#define TEST_STATE_MASK(x) BIT(x)
 
 /* Hooks gcov_flush() for test coverage report generation */
 void register_test_end_hook(void);
@@ -236,11 +238,15 @@ void test_run_step(uint32_t state);
 /* Get the current test state */
 uint32_t test_get_state(void);
 
+void test_set_state(uint32_t state);
+
 /*
  * Multistep test clean up. If a multi-step test has this function defined,
  * it will be called on test end. (i.e. when test passes or fails.)
  */
 void test_clean_up(void);
+
+void test_expect_reboot(bool expected, enum test_state_t next_step);
 
 /* Set the next step and reboot */
 void test_reboot_to_next_step(enum test_state_t step);
