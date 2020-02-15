@@ -9,4 +9,4 @@ BASEBOARD:=nucleo-h7a3zi
 board-y=board.o
 
 # Enable on device tests
-test-list-y=aes sha256 sha256_unrolled
+test-list-y=aes sha256 sha256_unrolled trng
