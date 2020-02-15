@@ -11,4 +11,4 @@ CHIP_VARIANT:=stm32h7a3-b3
 
 board-y=board.o fpsensor_detect.o
 
-test-list-y=aes sha256 sha256_unrolled
+test-list-y=aes sha256 sha256_unrolled trng

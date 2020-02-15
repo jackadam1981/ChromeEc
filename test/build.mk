@@ -162,6 +162,7 @@ system-y=system.o
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o
+trng-rw+=trng.o
 uptime-y=uptime.o
 usb_common-y=usb_common_test.o fake_battery.o
 usb_pd_int-y=usb_pd_int.o

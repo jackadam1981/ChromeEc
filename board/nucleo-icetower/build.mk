@@ -10,4 +10,4 @@ board-y=board.o
 board-y+=fpsensor_detect.o
 
 # Enable on device tests
-test-list-y=aes sha256 sha256_unrolled
+test-list-y=aes sha256 sha256_unrolled trng
