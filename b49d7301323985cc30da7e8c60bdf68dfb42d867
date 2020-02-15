@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb47e7c9_2fffdab6",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T02:53:07Z",
+      "side": 1,
+      "message": "please fix",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "b49d7301323985cc30da7e8c60bdf68dfb42d867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0be3167_4b17bd86",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T02:53:07Z",
+      "side": 1,
+      "message": "don\u0027t guard these definitions with ifdef",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 6
+      },
+      "revId": "b49d7301323985cc30da7e8c60bdf68dfb42d867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa2a0b89_47ea8f9f",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T02:53:07Z",
+      "side": 1,
+      "message": "ARRAY_SIZE is available in compile_time_macros.h",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 52
+      },
+      "revId": "b49d7301323985cc30da7e8c60bdf68dfb42d867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccdaddd8_978706d0",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T02:53:07Z",
+      "side": 1,
+      "message": "Do not guard definitions in ifdef",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "b49d7301323985cc30da7e8c60bdf68dfb42d867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226de178_8e1568a3",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T02:53:07Z",
+      "side": 1,
+      "message": "Do not guard defininions in ifdef",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 6
+      },
+      "revId": "b49d7301323985cc30da7e8c60bdf68dfb42d867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bbb5ced_f4c19b90",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-15T02:53:07Z",
+      "side": 1,
+      "message": "Don\u0027t add this blank line",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 0
+      },
+      "revId": "b49d7301323985cc30da7e8c60bdf68dfb42d867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
