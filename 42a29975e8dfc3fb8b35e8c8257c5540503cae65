@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "24bc4ee5_599849ac",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-16T23:37:26Z",
+      "side": 1,
+      "message": "Please join.",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0f60dee_ebd28a64",
         "filename": "common/usb_common.c",
         "patchSetId": 2
@@ -64,6 +87,29 @@
         "startChar": 4,
         "endLine": 5395,
         "endChar": 27
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f2e5cb_27d402c1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-16T23:37:26Z",
+      "side": 1,
+      "message": "I hope this was named ec_image.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
       },
       "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
