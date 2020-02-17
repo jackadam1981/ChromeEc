@@ -18,6 +18,7 @@
 #include "system.h"
 #include "tablet_mode.h"
 #include "uart.h"
+#include "usb_pd.h"
 
 #include "gpio_list.h"
 
@@ -143,4 +144,18 @@ int board_get_version(void)
 	CPRINTS("BID:0x%x, FID:0x%x, BOM:0x%x", board_id, fab_id, bom_id);
 
 	return board_id | (fab_id << 8);
+}
+
+__override void board_get_sbu_hsl_orientation(int port, uint16_t *flags)
+{
+	if (pd_get_polarity(port) == POLARITY_CC2) {
+		/*
+		 * Intel Burnside Bridge retimer connects cable SBU1 line
+		 * always to LSTX_SBU1 and PA_AUX_P pins (in TBT and DP modes
+		 * respectively) and SBU2 line to LSRX_SBU1 and PA_AUX_N pins,
+		 * regardless of the cable orientation. High speed lines follow
+		 * CC line orientation.
+		 */
+		*flags |= USB_PD_MUX_ORI_HSL;
+	}
 }

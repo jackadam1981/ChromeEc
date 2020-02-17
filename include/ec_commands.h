@@ -5563,12 +5563,19 @@ struct ec_params_usb_pd_mux_info {
 #define USB_PD_MUX_SAFE_MODE          BIT(5) /* DP is in safe mode */
 #define USB_PD_MUX_TBT_COMPAT_ENABLED BIT(6) /* TBT compat enabled */
 #define USB_PD_MUX_USB4_ENABLED       BIT(7) /* USB4 enabled */
+/* Below defines are not applicable to Version 0 */
+#define USB_PD_MUX_ORI_HSL            BIT(8) /* High speed lane orientation */
+#define USB_PD_MUX_ORI_SBU            BIT(9) /* Sideband Use line orientation */
 
 /* USB-C Dock connected */
 #define USB_PD_MUX_DOCK		(USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED)
 
 struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
+} __ec_align1;
+
+struct ec_response_usb_pd_mux_info_v1 {
+	uint16_t flags; /* USB_PD_MUX_*-encoded USB mux state */
 } __ec_align1;
 
 #define EC_CMD_PD_CHIP_INFO		0x011B

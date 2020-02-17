@@ -2284,6 +2284,19 @@ void pd_transmit_complete(int port, int status);
 enum tcpc_cc_polarity pd_get_polarity(int port);
 
 /**
+ * Get board specific SBU & HSL orientation
+ *
+ * Note: High speed lane (HSL) and Sideband Use (SBU) line orientation may not
+ * follow the CC line orientation as the retimer/redrive/PPC circuits can
+ * switch these data lines and send the data to host always in one direction
+ * regardless of the CC line orientation.
+ *
+ * @param port  USB-C port number
+ * @param flags Pointer to USB_PD_MUX_*-encoded USB mux flags
+ */
+__override_proto void board_get_sbu_hsl_orientation(int port, uint16_t *flags);
+
+/**
  * Get port partner data swap capable status
  *
  * @param port USB-C port number

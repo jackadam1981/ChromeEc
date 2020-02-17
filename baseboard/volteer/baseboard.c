@@ -715,3 +715,26 @@ static void cbi_init(void)
 	usb_db_type = usb_db_val;
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_FIRST);
+
+__override void board_get_sbu_hsl_orientation(int port, uint16_t *flags)
+{
+	if (pd_get_polarity(port) == POLARITY_CC2) {
+		/*
+		 * TPD5S330 PPC does pass though of the SBU lines and the high
+		 * speed lines directly go to SOC. Hence, both SBU & HSL follow
+		 * CC line orientation.
+		 */
+		if (port == USBC_PORT_C0)
+			*flags |= USB_PD_MUX_ORI_HSL | USB_PD_MUX_ORI_SBU;
+
+		/*
+		 * Intel Burnside Bridge retimer connects cable SBU1 line
+		 * always to LSTX_SBU1 and PA_AUX_P pins (in TBT and DP modes
+		 * respectively) and SBU2 line to LSRX_SBU1 and PA_AUX_N pins,
+		 * regardless of the cable orientation. High speed lines follow
+		 * CC line orientation.
+		 */
+		if (port == USBC_PORT_C1)
+			*flags |= USB_PD_MUX_ORI_HSL;
+	}
+}
