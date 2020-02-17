@@ -17,6 +17,8 @@ GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH,                  switch_inter
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING,               uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
+GPIO_INT(ADC6_WUI,       PIN(I, 6), GPIO_INT_BOTH,                  adc6_wui_interrupt) /* ADC6_WUI threshold H/L = 2v/0.8v */
+GPIO_INT(ADC7_WUI,       PIN(I, 7), GPIO_INT_BOTH,                  adc7_wui_interrupt) /* ADC7_WUI threshold H/L = 2v/0.8v */
 
 #if IT83XX_PD_EVB
 GPIO(USBPD_HVLDO,             PIN(A, 1), GPIO_OUT_LOW)
