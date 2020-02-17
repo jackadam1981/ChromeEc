@@ -715,3 +715,13 @@ static void cbi_init(void)
 	usb_db_type = usb_db_val;
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_FIRST);
+
+__override void board_get_orientation(int port, uint16_t *flags)
+{
+	if (pd_get_polarity(port) == POLARITY_CC2) {
+		if (port == USBC_PORT_C0)
+			*flags |= USB_PD_MUX_ORI_HSL | USB_PD_MUX_ORI_SBU;
+		else
+			*flags |= USB_PD_MUX_ORI_HSL;
+	}
+}

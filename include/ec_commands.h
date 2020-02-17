@@ -5571,6 +5571,13 @@ struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
 } __ec_align1;
 
+#define USB_PD_MUX_ORI_HSL            BIT(8) /* High speed lane orientation */
+#define USB_PD_MUX_ORI_SBU            BIT(9) /* SBU line orienatation */
+
+struct ec_response_usb_pd_mux_info_v1 {
+	uint16_t flags; /* USB_PD_MUX_*-encoded USB mux state */
+} __ec_align1;
+
 #define EC_CMD_PD_CHIP_INFO		0x011B
 
 struct ec_params_pd_chip_info {

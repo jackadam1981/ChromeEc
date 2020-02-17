@@ -292,10 +292,19 @@ DECLARE_CONSOLE_COMMAND(typec, command_typec,
 			"Control type-C connector muxing");
 #endif
 
+__overridable void board_get_orientation(int port, uint16_t *flags)
+{
+	/* HSL & SBU follow CC lines */
+	if (pd_get_polarity(port) == POLARITY_CC2) {
+		*flags |= USB_PD_MUX_ORI_HSL | USB_PD_MUX_ORI_SBU;
+	}
+}
+
 static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
+	struct ec_response_usb_pd_mux_info_v1 *r1 = args->response;
 	int port = p->port;
 	const struct usb_mux *mux = &usb_muxes[port];
 	mux_state_t mux_state;
@@ -315,9 +324,15 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
 	}
 
-	args->response_size = sizeof(*r);
+	if (args->version) {
+		board_get_orientation(port, &r1->flags);
+		args->response_size = sizeof(*r1);
+	} else {
+		args->response_size = sizeof(*r);
+	}
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));

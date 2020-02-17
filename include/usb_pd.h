@@ -2283,6 +2283,8 @@ void pd_transmit_complete(int port, int status);
  */
 enum tcpc_cc_polarity pd_get_polarity(int port);
 
+__override_proto void board_get_orientation(int port, uint16_t *flags);
+
 /**
  * Get port partner data swap capable status
  *
