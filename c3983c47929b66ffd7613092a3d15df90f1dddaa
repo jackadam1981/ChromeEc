@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80f76be6_753ce0e3",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-17T03:46:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edcb5cf0_ab1e2d71",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 6
+      },
+      "revId": "c3983c47929b66ffd7613092a3d15df90f1dddaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a62027f_e8e7ef27",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-14T22:44:27Z",
       "side": 1,
       "message": "let\u0027s remove these from config.h and remove the CONFIG_ prefix\n\nlet\u0027s call them ITE_TCPM_IT83XX and ITE_TCPM_IT83XX2.\n\nOtherwise we can use them exactly the same.\n\n---\n\nthis is because these really are configs that are expected to be used, while CONFIG_USB_PD_TCPM_ITE83XX is, but we still need the control to pick the correct driver based on config_chip",
+      "range": {
+        "startLine": 3897,
+        "startChar": 7,
+        "endLine": 3897,
+        "endChar": 39
+      },
+      "revId": "c3983c47929b66ffd7613092a3d15df90f1dddaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b276e027_6a7e17b7",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3897,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-02-17T03:46:36Z",
+      "side": 1,
+      "message": "Actually I did same as your comment at the begining, but in driver/build.mk only with CONFIG_ prefix can be generated object file, so I add CONFIG_ prefix. Or are there other prefix that we can use?",
+      "parentUuid": "9a62027f_e8e7ef27",
       "range": {
         "startLine": 3897,
         "startChar": 7,
