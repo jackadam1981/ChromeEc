@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5316dc6b_af25a030",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-18T22:37:41Z",
+      "side": 1,
+      "message": "Should only keep the \"dev\". while \"limit_v\" only accepts an integer as an argument. If changing servo v4 to be a USB device, use \"dev\" (a short form on \"device\").\n\nMaybe the rename the command to a similar term to \"dev\", like \"chg\", a short form of charger, instead of \"limit_v\".",
+      "parentUuid": "7cc1ca37_4b19d6b9",
+      "range": {
+        "startLine": 1007,
+        "startChar": 2,
+        "endLine": 1011,
+        "endChar": 21
+      },
+      "revId": "156c17823e64d54dabccf6a473271796d9aab56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f79ccc_fa8a132d",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
