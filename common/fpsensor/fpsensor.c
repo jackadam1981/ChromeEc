@@ -818,6 +818,23 @@ int command_fpmatch(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, NULL,
 			"Run match algorithm against finger");
 
+int command_fpstats(int argc, char **argv)
+{
+
+	CPRINTF("%18s: %u us\n", "Capture Time", capture_time_us);
+	CPRINTF("%18s: %u us\n", "Matching Time", matching_time_us);
+	CPRINTF("%18s: %u us\n", "Overall Time", overall_time_us);
+	CPRINTF("%18s: %u\n",    "Overall t0 lo", overall_t0.le.lo);
+	CPRINTF("%18s: %u\n",    "Overall t0 hi", overall_t0.le.hi);
+	CPRINTF("%18s: %u\n",    "Timestamp Invalid", timestamps_invalid);
+	CPRINTF("%18s: 0x%x\n",    "Pos Match", \
+		positive_match_secret_state.template_matched);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fpstats, command_fpstats, NULL,
+			"Print running fingerprint stats");
+
 int command_fpclear(int argc, char **argv)
 {
 	/*
