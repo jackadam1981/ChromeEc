@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d147e33e_26426277",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-18T17:24:08Z",
+      "side": 1,
+      "message": "removing this command.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "8d1c6113cec7786625ab40b7bde8210384513bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
