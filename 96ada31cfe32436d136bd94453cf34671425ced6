@@ -22,6 +22,30 @@
       "revId": "96ada31cfe32436d136bd94453cf34671425ced6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8c69e9_bfa01442",
+        "filename": "board/akemi/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-18T16:10:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138b7f9c_91c0f261",
+      "range": {
+        "startLine": 440,
+        "startChar": 8,
+        "endLine": 440,
+        "endChar": 18
+      },
+      "revId": "96ada31cfe32436d136bd94453cf34671425ced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
