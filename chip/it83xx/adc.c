@@ -167,6 +167,17 @@ int adc_read_channel(enum adc_channel ch)
 	return valid ? mv : ADC_READ_ERROR;
 }
 
+void adc6_wui_interrupt(enum gpio_signal signal)
+{
+	int lv;
+
+	lv = gpio_get_level(signal);
+	ccprints("ADC6 WUI level = %d", lv);
+
+	/* clear GPIO_ADC6_WUI interrupt status */
+	gpio_clear_pending_interrupt(signal);
+}
+
 void adc_interrupt(void)
 {
 	/*
@@ -218,6 +229,12 @@ static void adc_init(void)
 	adc_accuracy_initialization();
 
 	for (index = 0; index < ADC_CH_COUNT; index++) {
+		/*
+		 * GPI6 enable ADC alternate and GPIO_INT function,
+		 * adc_ctrl_regs = 0x80 (default GPI).
+		 */
+		if (index == ADC_EVB_CH_6)
+			continue;
 		ch = adc_channels[index].channel;
 
 		/* enable adc channel[x] function pin */
@@ -240,6 +257,9 @@ static void adc_init(void)
 	task_waiting = TASK_ID_INVALID;
 	/* disable adc interrupt */
 	task_disable_irq(IT83XX_IRQ_ADC);
+
+	/* enable ADC pin WUI interrupt */
+	gpio_enable_interrupt(GPIO_ADC6_WUI);
 
 	adc_init_done = 1;
 }

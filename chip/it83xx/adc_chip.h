@@ -63,5 +63,6 @@ struct adc_t {
  * the enum adc_channel list provided by the board.
  */
 extern const struct adc_t adc_channels[];
+void adc6_wui_interrupt(enum gpio_signal signal);
 
 #endif /* __CROS_EC_ADC_CHIP_H */

@@ -82,6 +82,7 @@ enum pwm_channel {
 enum adc_channel {
 	ADC_VBUSSA,
 	ADC_VBUSSB,
+	ADC_EVB_CH_6,
 	ADC_EVB_CH_13,
 	ADC_EVB_CH_14,
 	ADC_EVB_CH_15,
