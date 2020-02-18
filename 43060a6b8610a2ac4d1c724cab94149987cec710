@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea31ace9_05d6951f",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T14:32:48Z",
+      "side": 1,
+      "message": "define",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "43060a6b8610a2ac4d1c724cab94149987cec710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052c5e4a_8f018b7e",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T14:32:48Z",
+      "side": 1,
+      "message": "bottom",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 28,
+        "endChar": 66
+      },
+      "revId": "43060a6b8610a2ac4d1c724cab94149987cec710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12f3951_e8ada166",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T14:32:48Z",
+      "side": 1,
+      "message": "This actually changed behavior. What did this affect, and why is this okay? (It probably is okay, but it looks like it should break stuff - Also maybe we don\u0027t need one of these ifdef branches)",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "43060a6b8610a2ac4d1c724cab94149987cec710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee5139e_2d4e9de6",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T14:32:48Z",
+      "side": 1,
+      "message": "s/repaired/handled/",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "43060a6b8610a2ac4d1c724cab94149987cec710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
