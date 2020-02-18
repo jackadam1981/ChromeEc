@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b49ce851_a4f784a9",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T17:07:10Z",
+      "side": 1,
+      "message": "simulate_button_release is already being called in HOOKS task, so we can directly set the siml_btn_presd \u003d 0 here without a deferred call",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 61
+      },
+      "revId": "c624344ddf7f80899d29de5ad7b8e9efe17bbc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a41f35_dba294ac",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5954,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T17:07:10Z",
+      "side": 1,
+      "message": "we need to specify in the comments that KEYBOARD_BUTTON_* is the type that is used. Also we need to expose those defines in ec_command.h now since this is the public EC interface, and the kernel would be allowed to use this command as well.",
+      "range": {
+        "startLine": 5954,
+        "startChar": 1,
+        "endLine": 5954,
+        "endChar": 20
+      },
+      "revId": "c624344ddf7f80899d29de5ad7b8e9efe17bbc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
