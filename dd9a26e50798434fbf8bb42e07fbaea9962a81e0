@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afd29ddf_3db353f2",
+        "filename": "board/palkia/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-18T22:33:59Z",
+      "side": 1,
+      "message": "All new CONFIG_ options must be #undef\u0027d (or #define\u0027d, as appropriate) in include/config.h first.",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "dd9a26e50798434fbf8bb42e07fbaea9962a81e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
