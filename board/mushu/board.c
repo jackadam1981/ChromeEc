@@ -42,6 +42,7 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "amd_r19me4070.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -50,6 +51,11 @@
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_EN_USB_A_5V,
 };
+
+static void gpu_ctf_interrupt(enum gpio_signal signal)
+{
+	/* discuss with HW ,do nothing currently */
+}
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -414,6 +420,10 @@ const struct temp_sensor_t temp_sensors[] = {
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_30k9_47k_4050b,
 				 .idx = ADC_TEMP_SENSOR_2},
+	[TEMP_SENSOR_3] = {.name = "GPU",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = get_temp_R19M14017,
+				 .idx = R19M14017_LOCAL},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
