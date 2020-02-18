@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b659bc9f_e8408e60",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-18T17:18:20Z",
+      "side": 1,
+      "message": "Any concern about timing with power role swaps?",
+      "range": {
+        "startLine": 3215,
+        "startChar": 1,
+        "endLine": 3216,
+        "endChar": 29
+      },
+      "revId": "c883aa1d254aacb13ba726bee9807f0f96f686e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
