@@ -93,6 +93,30 @@
       "revId": "c3983c47929b66ffd7613092a3d15df90f1dddaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d465f9_dcd81932",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3897,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-18T16:56:09Z",
+      "side": 1,
+      "message": "Ah, I forgot about that limitations. Then this looks okay to me.\n\nI uploaded a small patch set that renamed CONFIG_USB_PD_TCPM_ITE83XX -\u003e CONFIG_USB_PD_TCPM_ITE_ON_CHIP\n\nand moved CONFIG_USB_PD_TCPM_DRIVER_IT83XX and CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2 down with a comment.\n\nLet me know your thoughts",
+      "parentUuid": "b276e027_6a7e17b7",
+      "range": {
+        "startLine": 3897,
+        "startChar": 7,
+        "endLine": 3897,
+        "endChar": 39
+      },
+      "revId": "c3983c47929b66ffd7613092a3d15df90f1dddaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
