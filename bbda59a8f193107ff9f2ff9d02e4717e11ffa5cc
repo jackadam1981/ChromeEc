@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bb1619c_af717bbb",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-02-18T19:18:46Z",
+      "side": 1,
+      "message": "Probably better to use a guard clause idiom here:\n\n if (pd_get_polarity(port) !\u003d POLARITY_CC2)\n   return;\n\n if (port \u003d\u003d USBC_PORT_C0)\n ...",
+      "revId": "bbda59a8f193107ff9f2ff9d02e4717e11ffa5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49237ec2_c4eed565",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-02-18T19:18:46Z",
+      "side": 1,
+      "message": "I\u0027m lacking context here, but why is PORT_C0 being handled in a special way? If so, please document why.",
+      "revId": "bbda59a8f193107ff9f2ff9d02e4717e11ffa5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
