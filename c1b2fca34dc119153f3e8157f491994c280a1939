@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b1346ff_262567e7",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5cefb0_550d9c2b",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a37675a_d4f60b4d",
         "filename": "common/accel_cal.c",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e4f303_dd9ed10b",
+        "filename": "common/accel_cal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a37675a_d4f60b4d",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "aaf5d4d4_997744ed",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Done, but I had to wrap it in #ifdef CONFIG_ONLINE_CALIB because some boards didn\u0027t have enough room for the extra data.",
+      "parentUuid": "75108810_92bdbf0a",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765a9e0f_2865506d",
         "filename": "common/online_calibration.c",
         "patchSetId": 7
@@ -85,6 +139,24 @@
       "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d910422_dbabaf80",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Used in line 175",
+      "parentUuid": "765a9e0f_2865506d",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "2248662d_f949e8f1",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3557b70d_08cae3ce",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ca3077_d74733dc",
         "filename": "common/online_calibration.c",
         "patchSetId": 7
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "e20cf120_5143fe02",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ca3077_d74733dc",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "646810b8_73d4b9ef",
         "filename": "common/online_calibration.c",
         "patchSetId": 7
@@ -136,6 +244,24 @@
       "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5fa34d_eec899f2",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-18T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "646810b8_73d4b9ef",
+      "revId": "c1b2fca34dc119153f3e8157f491994c280a1939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
