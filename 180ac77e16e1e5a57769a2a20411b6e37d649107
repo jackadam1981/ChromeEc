@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "237af68b_5964bed1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-02-19T05:29:47Z",
+      "side": 1,
+      "message": "This Rp level is quite prone to false-detects or mis-detects, based on USB Type-C spec thresholds and limits.\n\nSee \"[09-11-19] Ra calculations\" for the deltas. 3.3v-Rp (all levels) are most-prone to false detects, followed by Ip-DefaultUSB and 5.5v-RpDefaultUSB.\n\nThis should likely be: min(board_capability, Rp1a5), to work around H1 CC ADC, and avoid the mis-detect risk.",
+      "range": {
+        "startLine": 139,
+        "startChar": 29,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "180ac77e16e1e5a57769a2a20411b6e37d649107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
