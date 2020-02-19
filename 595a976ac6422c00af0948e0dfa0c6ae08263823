@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7f442146_a175cd83",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-19T23:58:41Z",
+      "side": 1,
+      "message": "Error correction code exists on some platforms requiring us to write in blocks of certain sizes, the STM32H requires blocks to be written in chunks of 32 bytes and some of the STM32L platforms require 8 bytes. The STM32F which ServoV4 uses only requires blocks be aligned to 2 bytes so this works fine with all combinations of enablement.\n\nThere is a bug but it appears to be present only in STM32H where the struct persist_state size is 8 bytes rather than the 32 bytes and there\u0027s no build asserts to protect against this. I\u0027ll be filing a ticket about this with more details.",
+      "parentUuid": "9a494f55_e4edb429",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6af5c2c_a4a51039",
         "filename": "common/flash.c",
         "patchSetId": 3
