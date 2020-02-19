@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5278dc5_90bccce2",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-19T20:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d730cb47_99b37dfb",
+      "revId": "8ccd4cfdf52a4793a859eb631710c839adf14aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b89ef7ee_682a4a16",
         "filename": "board/volteer/gpio.inc",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-19T02:00:01Z",
       "side": 1,
       "message": "just to double check, PIN(8, 3) is set up in ALTERNATE\nmode by default, right?",
+      "range": {
+        "startLine": 98,
+        "startChar": 26,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "8ccd4cfdf52a4793a859eb631710c839adf14aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d535c16_bc9e3b2e",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-19T20:56:36Z",
+      "side": 1,
+      "message": "By default the KSO15/GPIO83 pin defaults to the KSO13 function. I confirmed that the NPCx GPIO driver correctly sets DEVALT9:NO_KSO15_SL when GPIOP(PIN(8,3)) is configured.",
+      "parentUuid": "b89ef7ee_682a4a16",
       "range": {
         "startLine": 98,
         "startChar": 26,
