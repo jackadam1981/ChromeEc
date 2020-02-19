@@ -22,6 +22,30 @@
       "revId": "878bd27943777020954490846e7e8a1fe1aa9f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1230dcd_57ff66a6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T02:40:17Z",
+      "side": 1,
+      "message": "Just I didn\u0027t have any cases to cancel it. No requirement to prevent canceling either, though.",
+      "parentUuid": "2bad0f62_d7f334b0",
+      "range": {
+        "startLine": 1044,
+        "startChar": 5,
+        "endLine": 1044,
+        "endChar": 21
+      },
+      "revId": "878bd27943777020954490846e7e8a1fe1aa9f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
