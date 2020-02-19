@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce28ae9_371ac025",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-19T21:56:23Z",
+      "side": 1,
+      "message": "wait to read data until we\u0027ve checked the size?",
+      "range": {
+        "startLine": 162,
+        "startChar": 27,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec5c107_e74864a1",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-19T21:56:23Z",
+      "side": 1,
+      "message": "Why isn\u0027t there an cr50_comm_err for this?",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc77013e_d5fd4d05",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-19T21:56:23Z",
+      "side": 1,
+      "message": "Do we need to rate limit this?",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f61e883_a9266a5d",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-19T21:56:23Z",
+      "side": 1,
+      "message": "what does this error code mean if the hash hasn\u0027t been loaded?",
+      "range": {
+        "startLine": 193,
+        "startChar": 17,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc16317c_c112695a",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-19T21:56:23Z",
+      "side": 1,
+      "message": "Is this hash a secret? Should we use safe_memcmp to protect against extracting it with a timing attack?",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 11
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

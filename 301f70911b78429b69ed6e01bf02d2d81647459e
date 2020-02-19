@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0956c070_c5808d17",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-19T21:56:23Z",
+      "side": 0,
+      "message": "I think we still need this in the loop outside of packet mode (line 243). We don\u0027t want to process uart until there\u0027s space in the queue.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 9
+      },
+      "revId": "301f70911b78429b69ed6e01bf02d2d81647459e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
