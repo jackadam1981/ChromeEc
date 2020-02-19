@@ -134,6 +134,13 @@ void dma_go(stm32_dma_chan_t *chan)
 void dma_prepare_tx(const struct dma_option *option, unsigned count,
 		    const void *memory)
 {
+	if(!memory) {
+		uint8_t dummy = 0x00;
+		prepare_channel(option->channel, count, option->periph, &dummy,
+				STM32_DMA_CCR_DIR | option->flags);
+		return;
+	}
+
 	/*
 	 * Cast away const for memory pointer; this is ok because we know
 	 * we're preparing the channel for transmit.
@@ -147,8 +154,15 @@ void dma_start_rx(const struct dma_option *option, unsigned count,
 		  void *memory)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(option->channel);
-	prepare_channel(option->channel, count, option->periph, memory,
-			STM32_DMA_CCR_MINC | option->flags);
+
+	if(memory) {
+		prepare_channel(option->channel, count, option->periph, memory,
+				STM32_DMA_CCR_MINC | option->flags);
+	} else {
+		uint8_t dummy;
+		prepare_channel(option->channel, count, option->periph, &dummy,
+				option->flags);
+	}
 	dma_go(chan);
 }
 

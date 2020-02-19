@@ -286,16 +286,13 @@ static int spi_dma_start(int port, const uint8_t *txdata,
 {
 	dma_chan_t *txdma;
 
-	/* Set up RX DMA */
-	if (rxdata)
-		dma_start_rx(&dma_rx_option[port], len, rxdata);
+	/* Set up RX DMA, always needed or else the FIFO will get dirty */
+	dma_start_rx(&dma_rx_option[port], len, rxdata);
 
-	/* Set up TX DMA */
-	if (txdata) {
-		txdma = dma_get_channel(dma_tx_option[port].channel);
-		dma_prepare_tx(&dma_tx_option[port], len, txdata);
-		dma_go(txdma);
-	}
+	/* Set up TX DMA, always needed since this dictates the length */
+	txdma = dma_get_channel(dma_tx_option[port].channel);
+	dma_prepare_tx(&dma_tx_option[port], len, txdata);
+	dma_go(txdma);
 
 	return EC_SUCCESS;
 }
@@ -360,10 +357,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	if (rxlen == SPI_READBACK_ALL) {
 		buf = rxdata;
 		full_readback = 1;
-	} else {
-		rv = shared_mem_acquire(MAX(txlen, rxlen), &buf);
-		if (rv != EC_SUCCESS)
-			return rv;
 	}
 #endif
 
@@ -399,10 +392,6 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	}
 
 err_free:
-#ifndef CONFIG_SPI_HALFDUPLEX
-	if (!full_readback)
-		shared_mem_release(buf);
-#endif
 	return rv;
 }
 
