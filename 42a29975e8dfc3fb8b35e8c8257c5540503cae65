@@ -210,6 +210,30 @@
       "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6564ab_4665e2be",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-19T21:38:40Z",
+      "side": 1,
+      "message": "How about doing this?\n\n  #ifndef CHROMIUM_EC\n    #define ec_current_image ec_image\n  #endif\n\nThen we use \"ec_image\" internally and \"ec_current_image\" will still work externally.\n\nI don\u0027t really like using a macro like this, but maybe it\u0027s a stepping stone to fixing the external projects?",
+      "parentUuid": "48f2e5cb_27d402c1",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
