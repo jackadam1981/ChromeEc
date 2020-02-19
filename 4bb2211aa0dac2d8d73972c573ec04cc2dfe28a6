@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b005ce2c_51fdaf8c",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-19T23:27:58Z",
+      "side": 1,
+      "message": "I am not sure what the intention is, but why not just have a vb2_secdata_kernel structure on the stack and use it for the buffer when reading TPM Index contents?\n\nWhy a 256 byte buffer is needed anyways?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a92f5d0_d4837f77",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-19T23:27:58Z",
+      "side": 1,
+      "message": "just a thought: there should be no enum values which are not capitalized - this contradicts the adopted coding style, we should fix this (in a separate patchset of course).",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff8054b3_926a056c",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-19T23:27:58Z",
+      "side": 1,
+      "message": "let\u0027s keep sting use to minimum. It is enough to print the return value at the call site of this function.",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
