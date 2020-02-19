@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33ee758c_44d21144",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-19T10:10:13Z",
+      "side": 1,
+      "message": "Variable siml_btn_presd is checked in the function raw_button_pressed which is called from button_change_deferred.\nThe execution of function button_change_deferred is deferred for ~(30-60)ms in previous function call button_interrupt_simulate. So the global siml_btn_presd is cleared in a deferred call to ensure button_change_deferred is executed first.",
+      "parentUuid": "b49ce851_a4f784a9",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 61
+      },
+      "revId": "c624344ddf7f80899d29de5ad7b8e9efe17bbc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8a41f35_dba294ac",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c624344ddf7f80899d29de5ad7b8e9efe17bbc71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec18cec_14837229",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5954,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-19T10:10:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a41f35_dba294ac",
+      "range": {
+        "startLine": 5954,
+        "startChar": 1,
+        "endLine": 5954,
+        "endChar": 20
+      },
+      "revId": "c624344ddf7f80899d29de5ad7b8e9efe17bbc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
