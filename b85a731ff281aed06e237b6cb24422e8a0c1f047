@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b97c0e0_9d638503",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "add dangling commas\n\ncomes up below many times too",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2cd1f22_ebe3532e",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "this needs to be a tuple otherwise it\u0027s mutable across multiple instantiations of this class\n\ncomes up below too",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e2946e_a254b641",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "if you want, it\u0027s acceptable to use short names like |e| with short exception blocks like this one (and below)",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66973ed8_862bb75e",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "if you want, you don\u0027t need to use str() when passing to a format string that has %s",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2394d45_12fd77be",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "blank line after the class\u0027s docstring",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f116ec6_6493721f",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "redundant -\u003e delete",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2475fd10_f4f98255",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75bee26c_80451256",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "outdated docstring",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fda4cd4_a59d56c6",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-02-19T22:20:06Z",
+      "side": 1,
+      "message": "seems like a bad repr implementation",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
