@@ -46,6 +46,30 @@
       "revId": "a153b29efd7411d10ebf77154fc9980a96f0d4b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe3061e_61a03f05",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-19T18:13:35Z",
+      "side": 1,
+      "message": "Weird.  So did moving the hook_notify in the PD task also affect the timing for the WAR?",
+      "parentUuid": "ed5b936f_bd153ff9",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "a153b29efd7411d10ebf77154fc9980a96f0d4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
