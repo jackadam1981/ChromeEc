@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c5a9740_7f84e7d1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-19T19:21:46Z",
+      "side": 1,
+      "message": "Moving forward with TCPMv2 development, I\u0027m hoping to encapsulate the message type with the message data.  Keeping the type flags separate from the message they correspond to like this seems much more vulnerable to bugs.  \n\nI\u0027ll be getting code reviews up with what I\u0027m envisioning for the v2 approach in the coming week.",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 1
+      },
+      "revId": "94dfb2816d6b39343deb99382c7e8a4bb5ab5d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
