@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2cc388_b543f23c",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "now we have two bits of state for each uart pin, one globally accessible and one function-static.\n\nWould it be cleaner to consolidate into a single state variable with 2 (or even 8) bits per UART?\n\nThen we can track exactly what the bus is doing: Z, GP, TIM, UART, I2C, SPI, voltage, whatever...",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e1bdae_9f76bad7",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "I like the ap name because it\u0027s 2 characters and matches the fact that it overrides the AP uart.  But I also don\u0027t like it because technically this I2C would never be connected to the AP; rather it would be used for the INAs or some other auxiliary function.\n\nIs naming the I2C \"ap\" consistent with previous servos, or is there a more appropriate name?",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662dd7a2_181d561f",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "maybe we should start calling these busses, e.g., BUS_STATE",
+      "range": {
+        "startLine": 626,
+        "startChar": 7,
+        "endLine": 626,
+        "endChar": 18
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb464177_928fd696",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "1000 should work too?",
+      "range": {
+        "startLine": 665,
+        "startChar": 2,
+        "endLine": 665,
+        "endChar": 49
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abfc2be_a9e5d441",
+        "filename": "board/c2d2/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "is enabling PVD required for making I2C work?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5bb99f_375af0f3",
+        "filename": "chip/stm32/i2c_ite_flash_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "nits:\nits\ncounterpart\ncomplement",
+      "range": {
+        "startLine": 274,
+        "startChar": 32,
+        "endLine": 274,
+        "endChar": 36
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a28c39c_ff6623f8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "nit: align with spaces",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7b155e_7828b059",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-19T21:28:31Z",
+      "side": 1,
+      "message": "we should be able to do 1000kbps for ITE, which may reduce flash times significantly.",
+      "range": {
+        "startLine": 1185,
+        "startChar": 30,
+        "endLine": 1185,
+        "endChar": 37
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
