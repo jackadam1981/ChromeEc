@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ba22832_90659879",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-19T20:59:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c51c7248_52a4cde0",
+      "revId": "0e3eeb1abac40fafbf0a332a329ab05c29932c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29fbd4b1_d78fd846",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "0e3eeb1abac40fafbf0a332a329ab05c29932c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987b1ec1_2b9a401b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-19T20:59:20Z",
+      "side": 1,
+      "message": "the rest of the drivers use nct38xx_tcpm_drv.set_cc, so would rather use that instead.",
+      "parentUuid": "29fbd4b1_d78fd846",
+      "range": {
+        "startLine": 211,
+        "startChar": 7,
+        "endLine": 212,
+        "endChar": 46
+      },
+      "revId": "0e3eeb1abac40fafbf0a332a329ab05c29932c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
