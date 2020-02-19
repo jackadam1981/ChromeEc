@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8abd17f0_f2699883",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-02-19T18:25:26Z",
+      "side": 1,
+      "message": "Indenting the wrapped lines makes them separate args.  I think then the trailing space in the previous string should be removed.\n\nI prefer all as one arg though (which requires not indenting), so that it\u0027s obvious the whitespace inside the strings is correct.",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 49
+      },
+      "revId": "a7c7355b30cd4504d61e4da4c5c5997b3eb7d96b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
