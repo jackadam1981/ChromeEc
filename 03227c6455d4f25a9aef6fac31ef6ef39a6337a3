@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102a8ea7_41130539",
+        "filename": "chip/stm32/i2c_ite_flash_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-19T21:57:34Z",
+      "side": 1,
+      "message": "stm32?",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "03227c6455d4f25a9aef6fac31ef6ef39a6337a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1125b481_63633b13",
+        "filename": "chip/stm32/i2c_ite_flash_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-19T21:57:34Z",
+      "side": 1,
+      "message": "nit: different 7-bit addresses",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "03227c6455d4f25a9aef6fac31ef6ef39a6337a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
