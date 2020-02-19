@@ -201,6 +201,33 @@ void adc_interrupt(void)
 		task_set_event(task_waiting, TASK_EVENT_ADC_DONE, 0);
 }
 
+void volt_comp_interrupt(void)
+{
+	/* Stop voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL &= ~BIT(7);
+	/* Clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+	/* If comparator0 trigger mode: greater than CMP0THRDAT[9:0] */
+	if (IT83XX_ADC_VCMP0CTL & BIT(5)) {
+		/* Threshold volt = 3v * CMP0THRDAT[9:0] / 1023 */
+		IT83XX_ADC_CMP0THRDATL = 0x00;
+		IT83XX_ADC_CMP0THRDATM = 0x01;
+		/* Select comparator0 trigger mode: equal or less than CMP0THRDAT[9:0] */
+		IT83XX_ADC_VCMP0CTL &= ~BIT(5);
+		ccprints("Cmp0 INT detect High, switch detect Low");
+	} else {
+		/* Threshold volt = 3v * CMP0THRDAT[9:0] / 1023 */
+		IT83XX_ADC_CMP0THRDATL = 0xFF;
+		IT83XX_ADC_CMP0THRDATM = 0x03;
+		/* Select comparator0 trigger mode: greater than CMP0THRDAT[9:0] */
+		IT83XX_ADC_VCMP0CTL |= BIT(5);
+		ccprints("Cmp0 INT detect Low, switch detect High");
+	}
+
+	/* Start voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL |= BIT(7);
+}
+
 /*
  * ADC analog accuracy initialization (only once after VSTBY power on)
  *
@@ -257,6 +284,40 @@ static void adc_init(void)
 	task_waiting = TASK_ID_INVALID;
 	/* disable adc interrupt */
 	task_disable_irq(IT83XX_IRQ_ADC);
+
+	/* Comparator0 init */
+	/* Threshold volt 2v = 3v * CMP0THRDAT[9:0] / 1023 */
+	IT83XX_ADC_CMP0THRDATL = 0xAA;
+	IT83XX_ADC_CMP0THRDATM = 0x02;
+
+	/* Select input voltage ADC7 channel */
+	IT83XX_ADC_VCMP0CTL |=  0x07;
+
+	/* Select comparator0 trigger mode: greater than CMP0THRDAT[9:0] */
+	IT83XX_ADC_VCMP0CTL |=  BIT(5);
+
+	/* Select comparator0, 1, 2 scan period: 1ms */
+	IT83XX_ADC_VCMPSCP = 0x60;
+
+	/* Enable comparator0 interrupt */
+	IT83XX_ADC_VCMP0CTL |= BIT(6);
+
+	/* Enable comparator0 output to GPJ3 */
+	IT83XX_GPIO_GRC15 |= BIT(0); //may not
+
+	/* Select GPJ3 alternate mode */
+	IT83XX_GPIO_GPCRJ3 = 0x00; //may not
+
+	/* Start voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL |= BIT(7);
+
+	/* Enable ADC read, but not generate INT */
+	//adc_enable_channel(CHIP_ADC_CH7);
+	/* disable adc read interrupt */
+	//task_disable_irq(IT83XX_IRQ_ADC);
+	/* Enable volt compare INT */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+	task_enable_irq(IT83XX_IRQ_V_COMP);
 
 	/* enable ADC pin WUI interrupt */
 	gpio_enable_interrupt(GPIO_ADC6_WUI);
