@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "5ea46808_d475e040",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2020-02-19T11:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1312dd_fc01ba3d",
+      "revId": "dbce73d081ce8e50c8a36d5df8e4d57513974401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c12578f_a6a8a8e6",
         "filename": "chip/max32660/i2c_chip.c",
         "patchSetId": 2
