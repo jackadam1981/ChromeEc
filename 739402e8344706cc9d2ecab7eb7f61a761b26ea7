@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d91febe_4d6ff044",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-19T19:23:01Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "51fe60f7_188f80e5",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "739402e8344706cc9d2ecab7eb7f61a761b26ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e1d558d_8c6b15c2",
         "filename": "include/gpio.wrap",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "739402e8344706cc9d2ecab7eb7f61a761b26ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbd78bd_f3bece8d",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-02-19T19:23:01Z",
+      "side": 1,
+      "message": "Hmmm, correct me if I\u0027m wrong, but this seems to be one of those polarizing subjects.\n\n* Some argue that you shouldn\u0027t need a web browser, internet connection, or sophisticated git log grep to find a patch reference.\n* Some like to just click the links.\n\nI kinda like clicking too, but I see it both ways.",
+      "parentUuid": "3e1d558d_8c6b15c2",
+      "range": {
+        "startLine": 208,
+        "startChar": 9,
+        "endLine": 208,
+        "endChar": 18
+      },
+      "revId": "739402e8344706cc9d2ecab7eb7f61a761b26ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
