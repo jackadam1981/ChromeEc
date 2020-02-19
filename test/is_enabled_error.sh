@@ -21,7 +21,7 @@ for test_value in 0 1 2 A "5 + 5"; do
 		continue
 	fi
 
-	EXPECTED_ERROR="CONFIG_VALUE must be <blank>, or not defined"
+	EXPECTED_ERROR="error: division by zero"
 	if grep -q "$EXPECTED_ERROR" <<< "$BUILD_OUTPUT"; then
 		echo "OK"
 	else
