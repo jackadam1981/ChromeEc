@@ -22,6 +22,30 @@
       "revId": "a153b29efd7411d10ebf77154fc9980a96f0d4b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5b936f_bd153ff9",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-19T00:16:33Z",
+      "side": 1,
+      "message": "Without the enabling done here, I\u0027m unable to negotiate up to 45W in one orientation. I suspect it\u0027s a timing thing...",
+      "parentUuid": "1ba9e1d6_e53ee5a0",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "a153b29efd7411d10ebf77154fc9980a96f0d4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
