@@ -22,6 +22,30 @@
       "revId": "96326cbd20421a0611e5d1bb2b713ebad33d756e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2ef4dd_1f8c5058",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-19T21:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d37986_14a33b88",
+      "range": {
+        "startLine": 372,
+        "startChar": 64,
+        "endLine": 372,
+        "endChar": 65
+      },
+      "revId": "96326cbd20421a0611e5d1bb2b713ebad33d756e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
