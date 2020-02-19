@@ -369,20 +369,14 @@ enum ec_error_list {
  * Compare the option name with the value string in the OTHERWISE to
  * __cfg_select. If they are identical we assume that the value was
  * undefined and return 0. If the value happens to be anything else we
- * call an undefined method that will raise a compiler error. This
- * technique requires that the optimizer be enabled so it can remove
- * the undefined function call.
+ * take advantage of division-by-zero to raise a compiler error.
+ *
+ * If you encounter division-by-zero when using IS_ENABLED, it is
+ * because you are using a config value which was not either undefined
+ * or empty.
  */
-#define __config_enabled(cfg, value)					      \
-	__cfg_select(							      \
-		value, 1, ({						      \
-			int __undefined = __builtin_strcmp(cfg, #value) == 0; \
-			extern int IS_ENABLED_BAD_ARGS(void) __error(	      \
-				cfg " must be <blank>, or not defined.");     \
-			if (!__undefined)				      \
-				IS_ENABLED_BAD_ARGS();			      \
-			0;						      \
-		}))
+#define __config_enabled(cfg, value) \
+	__cfg_select(value, 1, (0 / !__builtin_strcmp(cfg, #value)))
 
 /**
  * Checks if a config option is enabled or disabled
@@ -393,10 +387,8 @@ enum ec_error_list {
  * Disabled examples:
  *     #undef CONFIG_FOO
  *
- * If the option is defined to any value a compiler error will be thrown.
- *
- * Note: This macro will only function inside a code block due to the way
- * it checks for unknown values.
+ * If the option is defined to any value a division-by-zero compiler
+ * error will be thrown.
  */
 #define IS_ENABLED(option) __config_enabled(#option, option)
 
