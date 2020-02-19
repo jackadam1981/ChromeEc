@@ -22,6 +22,30 @@
       "revId": "301f70911b78429b69ed6e01bf02d2d81647459e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9472c1_f262e805",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T22:52:50Z",
+      "side": 0,
+      "message": "If q_room is zero, then it won\u0027t enter into while loop, because count !\u003d q_room is false.\ncount \u003d 0 and q_room \u003d 0.",
+      "parentUuid": "0956c070_c5808d17",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 9
+      },
+      "revId": "301f70911b78429b69ed6e01bf02d2d81647459e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

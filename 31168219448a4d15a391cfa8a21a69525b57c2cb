@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "297233f6_a5d28f21",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T22:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cce28ae9_371ac025",
+      "range": {
+        "startLine": 162,
+        "startChar": 27,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eec5c107_e74864a1",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 41
@@ -45,6 +69,30 @@
       "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bb420b_076f7e76",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T22:52:50Z",
+      "side": 1,
+      "message": "I didn\u0027t want to send response bytes to EC, because we are going to reboot EC. EC-FW doesn\u0027t care about the result in this case.",
+      "parentUuid": "eec5c107_e74864a1",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "30a83194_a7aec1ed",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T22:52:50Z",
+      "side": 1,
+      "message": "Once hash verification fails, then boot_mode becomes EC_EFS_BOOT_MODE_NO_BOOT.\nEC-EFS2 design is requiring CR50 to accept repeated commands as long as they get the same result. It says that it will not create a security problem and an attacker will not gain any advantage.",
+      "parentUuid": "fc77013e_d5fd4d05",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f61e883_a9266a5d",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 41
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "451c9444_b4b2d731",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T22:52:50Z",
+      "side": 1,
+      "message": "This error code is for debug purpose, and the cases are handled in load_ec_hash_().\nEC doesn\u0027t need to know in detail.",
+      "parentUuid": "5f61e883_a9266a5d",
+      "range": {
+        "startLine": 193,
+        "startChar": 17,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc16317c_c112695a",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 41
@@ -114,6 +210,30 @@
       "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4cec6a_f6407633",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-19T22:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc16317c_c112695a",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 11
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
