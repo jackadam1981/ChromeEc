@@ -61,7 +61,7 @@ static void load_ec_hash_(struct ec_efs_context_ *ctx)
 	uint8_t crc;
 
 	if (read_tpm_nvmem(KERNEL_NV_INDEX, secdata_size,
-			   (void *)&secdata) != tpm_read_success) {
+			   (void *)&secdata) != TPM_READ_SUCCESS) {
 		CPRINTS("secdata read error");
 		ctx->secdata_error_code = EC_ERROR_VBOOT_DATA_UNDERSIZED;
 		return;
