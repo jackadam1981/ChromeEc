@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b63f87fe_728c082b",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-19T20:13:54Z",
+      "side": 1,
+      "message": "Update it to \"MAC address\". Some terms below also need update.",
+      "range": {
+        "startLine": 905,
+        "startChar": 8,
+        "endLine": 905,
+        "endChar": 21
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e6c658_fe798560",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-19T20:13:54Z",
+      "side": 1,
+      "message": "It seems tricky.\n\nThe previous case:\n  !CONFIG_SERIALNO_LEN: 4 + 4(padding)\n   CONFIG_SERIALNO_LEN: 4 + 28 + 0(padding)\n\nThe new case:\n  !CONFIG_SERIALNO_LEN, !CONFIG_MAC_ADDR_LEN: 4 + 4(padding)\n   CONFIG_SERIALNO_LEN, !CONFIG_MAC_ADDR_LEN: 4 + 28 + 0(padding)\n  !CONFIG_SERIALNO_LEN,  CONFIG_MAC_ADDR_LEN: 4 + 20 + 0(padding)\n   CONFIG_SERIALNO_LEN,  CONFIG_MAC_ADDR_LEN: 4 + 28 + 20 + 4(padding)\n\nSo the CONFIG_SERIALNO_LEN \u0026\u0026 CONFIG_MAC_ADDR_LEN case needs 4-byte padding too.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6af5c2c_a4a51039",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-19T20:13:54Z",
+      "side": 1,
+      "message": "Why the \u003d\u003d case is an error?",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 14
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98dd171_91c44ddb",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-19T20:13:54Z",
+      "side": 1,
+      "message": "Why not treat it as an error?",
+      "range": {
+        "startLine": 467,
+        "startChar": 46,
+        "endLine": 468,
+        "endChar": 67
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f6eff1_1ba11198",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-19T20:13:54Z",
+      "side": 1,
+      "message": "Update it.",
+      "range": {
+        "startLine": 1564,
+        "startChar": 20,
+        "endLine": 1564,
+        "endChar": 33
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
