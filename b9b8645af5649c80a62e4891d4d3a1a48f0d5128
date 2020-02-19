@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a989eb1_86dea02d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-19T23:00:58Z",
+      "side": 1,
+      "message": "TEST\u003dChange dummy\u003d to something else in dma_prepare_tx. See the new byte being sent over the wire over and over again in a SPI transaction.",
+      "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82d2088_eb9c79e9",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-19T23:00:58Z",
+      "side": 1,
+      "message": "Should probably update the comments here. memory\u003d\u003dNULL is now accepted.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b02250_4db4314f",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-02-19T23:00:58Z",
+      "side": 1,
+      "message": "Should probably update the comments here. memory\u003d\u003dNULL is now accepted.",
+      "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
