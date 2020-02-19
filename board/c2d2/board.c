@@ -4,17 +4,19 @@
  */
 /* C2D2 debug device board configuration */
 
-#include "adc.h"
 #include "adc_chip.h"
+#include "adc.h"
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "i2c_ite_flash_support.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "update_fw.h"
@@ -35,6 +37,7 @@
 /* Forward declarations */
 static void update_vrefs_and_shifters(void);
 DECLARE_DEFERRED(update_vrefs_and_shifters);
+static bool is_ec_i2c_enabled(void);
 
 /* Global state tracking current pin configuration and operations */
 static struct mutex vref_uart_state_mutex;
@@ -43,9 +46,17 @@ static int vref_monitor_disable;
 #define VREF_MON_DIS_EC_PWR_HELD	BIT(1)
 #define VREF_MON_DIS_SPI_MODE		BIT(2)
 
+/*
+ * Tracks if UART pins are being used by some other function like I2C or SPI.
+ *
+ * Bit 0 is A0/A1 (H1 UART or SPI)
+ * Bit 1 is B6/B7 (EC UART, EC I2C, or SPI)
+ * Bit 2 is B10/B11 (AP UART, AP I2C)
+ */
 static int uart_state;
-#define UART_STATE_HELD			BIT(0)
-#define UART_STATE_SPI_MODE		BIT(1)
+#define UART_STATE_H1_PINS		BIT(0)
+#define UART_STATE_EC_PINS		BIT(1)
+#define UART_STATE_AP_PINS		BIT(2)
 
 void board_config_pre_init(void)
 {
@@ -112,6 +123,47 @@ const void *const usb_strings[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
+/******************************************************************************
+ * Support I2C bridging over USB.
+ */
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{
+		.name = "ec",
+		.port = I2C_PORT_EC,
+		.kbps = 100,
+		.scl = GPIO_UART_DBG_TX_EC_RX_SCL,
+		.sda =  GPIO_UART_EC_TX_DBG_RX_SDA,
+		.flags = I2C_PORT_FLAG_DYNAMIC_SPEED,
+	},
+	{
+		.name = "ap",
+		.port = I2C_PORT_AP,
+		.kbps = 100,
+		.scl = GPIO_UART_DBG_TX_AP_RX_INA_SCL,
+		.sda =  GPIO_UART_AP_TX_DBG_RX_INA_SDA,
+		.flags = I2C_PORT_FLAG_DYNAMIC_SPEED,
+	},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* Configure ITE flash support module */
+const struct ite_dfu_config_t ite_dfu_config = {
+	.i2c_port = I2C_PORT_EC,
+	/* PB6/7 are connected to complement outputs of TIM16/17 */
+	.use_compliment_timer_channel = true,
+	.access_allow = &is_ec_i2c_enabled,
+	.scl = GPIO_UART_DBG_TX_EC_RX_SCL,
+	.sda = GPIO_UART_EC_TX_DBG_RX_SDA,
+};
+
+/*
+ * I2C is always enabled, but the i2c pins may not be muxed to DUT. We will
+ * let the i2c transactions fail instead of using the USB endpoint disable
+ * status.
+ */
+int usb_i2c_board_is_enabled(void) { return 1; }
 
 /******************************************************************************
  * Forward UARTs as a USB serial interface.
@@ -349,22 +401,22 @@ DECLARE_CONSOLE_COMMAND(baud, command_uart_baud,
 static int command_hold_usart_low(int argc, char **argv)
 {
 	/* Each bit represents if that port is being held low */
-	static int usart_status;
+	static int uart_held;
 
-	int usart_mask;
+	int uart_mask;
 	enum gpio_signal rx;
 
 	if (argc > 3 || argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 
 	if (!strcasecmp(argv[1], "usart1")) {
-		usart_mask = 1 << 1;
+		uart_mask = UART_STATE_EC_PINS;
 		rx = GPIO_UART_EC_TX_DBG_RX_SDA;
 	} else if (!strcasecmp(argv[1], "usart3")) {
-		usart_mask = 1 << 3;
+		uart_mask = UART_STATE_AP_PINS;
 		rx = GPIO_UART_AP_TX_DBG_RX_INA_SDA;
 	} else if (!strcasecmp(argv[1], "usart4")) {
-		usart_mask = 1 << 4;
+		uart_mask = UART_STATE_H1_PINS;
 		rx = GPIO_UART_H1_TX_DBG_RX;
 	} else {
 		return EC_ERROR_PARAM1;
@@ -380,14 +432,15 @@ static int command_hold_usart_low(int argc, char **argv)
 
 		mutex_lock(&vref_uart_state_mutex);
 
-		if (uart_state & UART_STATE_SPI_MODE) {
-			ccprintf("Cannot hold USART while in SPI mode\n");
-			goto busy_error_unlock;
-		}
-
-		if (!!(usart_status & usart_mask) == hold_low) {
+		if (!!(uart_held & uart_mask) == hold_low) {
 			/* Do nothing since there is no change */
 		} else if (hold_low) {
+			/* Ensure no other use of these pins */
+			if (uart_state & uart_mask) {
+				ccprintf("Cannot hold UART. Pins in use\n");
+				goto busy_error_unlock;
+			}
+
 			/*
 			 * No need to shutdown UART, just de-mux the RX pin from
 			 * UART and change it to a GPIO temporarily
@@ -396,8 +449,8 @@ static int command_hold_usart_low(int argc, char **argv)
 			gpio_set_flags(rx, GPIO_OUT_LOW);
 
 			/* Update global uart state */
-			usart_status |= usart_mask;
-			uart_state |= UART_STATE_HELD;
+			uart_held |= uart_mask;
+			uart_state |= uart_mask;
 		} else {
 			/*
 			 * Mux the RX pin back to GPIO mode
@@ -405,8 +458,8 @@ static int command_hold_usart_low(int argc, char **argv)
 			gpio_config_pin(MODULE_USART, rx, 1);
 
 			/* Update global uart state */
-			usart_status &= ~usart_mask;
-			uart_state &= ~UART_STATE_HELD;
+			uart_held &= ~uart_mask;
+			uart_state &= ~uart_mask;
 		}
 
 		mutex_unlock(&vref_uart_state_mutex);
@@ -414,7 +467,7 @@ static int command_hold_usart_low(int argc, char **argv)
 
 	/* Print status for get and set case. */
 	ccprintf("USART status: %s\n",
-			usart_status & usart_mask ? "held low" : "normal");
+			uart_held & uart_mask ? "held low" : "normal");
 
 	return EC_SUCCESS;
 
@@ -431,8 +484,6 @@ DECLARE_CONSOLE_COMMAND(hold_usart_low, command_hold_usart_low,
  * Console commands SPI programming
  */
 
-
-
 enum vref {
 	OFF = 0,
 	PP1800 = 1800,
@@ -448,8 +499,17 @@ static int command_enable_spi(int argc, char **argv)
 
 	/* Updating the state */
 	if (argc == 2) {
+		int i;
 		char *e;
 		const enum vref spi_vref = strtoi(argv[1], &e, 0);
+		const int uart_pins_needed = UART_STATE_H1_PINS |
+					     UART_STATE_EC_PINS;
+		const enum gpio_signal uart_pins[] = {
+			GPIO_UART_DBG_TX_H1_RX,
+			GPIO_UART_H1_TX_DBG_RX,
+			GPIO_UART_DBG_TX_EC_RX_SCL,
+			GPIO_UART_EC_TX_DBG_RX_SDA,
+		};
 
 		if (*e)
 			return EC_ERROR_PARAM1;
@@ -457,11 +517,6 @@ static int command_enable_spi(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 
 		mutex_lock(&vref_uart_state_mutex);
-
-		if (uart_state & UART_STATE_HELD) {
-			ccprintf("Cannot update SPI with UART held.\n");
-			goto busy_error_unlock;
-		}
 
 		if (vref_monitor_disable & ~VREF_MON_DIS_SPI_MODE) {
 			ccprintf("Cannot update SPI with reset held.\n");
@@ -482,15 +537,16 @@ static int command_enable_spi(int argc, char **argv)
 			/* Set default state for chip select */
 			gpio_set_flags(GPIO_SPI_CSN, GPIO_INPUT);
 
-			/* Re-enable all UARTs pins as UART alternate mode. */
-			gpio_config_module(MODULE_USART, 1);
+			/* Re-enable all UARTs pins we used. */
+			for (i = 0; i < ARRAY_SIZE(uart_pins); ++i)
+				gpio_config_pin(MODULE_USART, uart_pins[i], 1);
 
 			/* Ensure DUT's muxes are switched to UART mode */
 			gpio_set_level(GPIO_C2D2_MUX_UART_ODL, 0);
 
 			/* Update state and defer Vrefs update  */
 			vref_monitor_disable &= ~VREF_MON_DIS_SPI_MODE;
-			uart_state &= ~UART_STATE_SPI_MODE;
+			uart_state &= ~uart_pins_needed;
 			hook_call_deferred(&update_vrefs_and_shifters_data, 0);
 		} else if (vref_monitor_disable & VREF_MON_DIS_SPI_MODE) {
 			/* We are just changing voltages */
@@ -499,6 +555,12 @@ static int command_enable_spi(int argc, char **argv)
 			gpio_set_level(GPIO_SEL_SPIVREF_ECVREF_3V3,
 				       spi_vref == PP3300);
 		} else {
+			/* Ensure nothing else is using the UART pins we need */
+			if (uart_state & uart_pins_needed) {
+				ccprintf("Cannot update to SPI; Pins busy.\n");
+				goto busy_error_unlock;
+			}
+
 			/* We are transitioning from UART to SPI mode: */
 			/* Turn off comparator interrupt for Vref detection */
 			STM32_EXTI_IMR &= ~EXTI_COMP2_EVENT;
@@ -508,10 +570,11 @@ static int command_enable_spi(int argc, char **argv)
 			gpio_set_level(GPIO_EN_CLK_CSN_EC_UART, 0);
 
 			/*
-			 * De-select UART on all UARTs pins to avoid drive
-			 * fights with SPI pins.
+			 * De-select UART on all UARTs pins we are using to
+			 * avoid drive fights with SPI pins.
 			 */
-			gpio_config_module(MODULE_USART, 0);
+			for (i = 0; i < ARRAY_SIZE(uart_pins); ++i)
+				gpio_config_pin(MODULE_USART, uart_pins[i], 0);
 
 			/* Set default state for chip select */
 			gpio_set_flags(GPIO_SPI_CSN, GPIO_OUT_HIGH);
@@ -533,7 +596,7 @@ static int command_enable_spi(int argc, char **argv)
 			gpio_set_level(GPIO_EN_CLK_CSN_EC_UART, 1);
 
 			vref_monitor_disable |= VREF_MON_DIS_SPI_MODE;
-			uart_state |= UART_STATE_SPI_MODE;
+			uart_state |= uart_pins_needed;
 		}
 
 		current_spi_vref_state = spi_vref;
@@ -553,6 +616,107 @@ busy_error_unlock:
 DECLARE_CONSOLE_COMMAND(enable_spi, command_enable_spi,
 			"[0|1800|3300]?",
 			"Get/set the SPI Vref");
+
+/******************************************************************************
+ * Console commands I2c programming mode
+ */
+
+/*
+ * Bit field that tracks which UART ports are selected to I2C currently. Reuses
+ * the UART_STATE_* definitions.
+ */
+static int i2c_enabled;
+
+static bool is_ec_i2c_enabled(void)
+{
+	return !!(i2c_enabled & UART_STATE_EC_PINS);
+}
+
+static int command_enable_i2c(int argc, char **argv)
+{
+	int pin_mask, i2c_index;
+	enum gpio_signal sda, scl;
+
+	if (argc > 3 || argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "ec")) {
+		pin_mask = UART_STATE_EC_PINS;
+		i2c_index = I2C_PORT_EC;
+		sda = GPIO_UART_EC_TX_DBG_RX_SDA;
+		scl = GPIO_UART_DBG_TX_EC_RX_SCL;
+
+	} else if (!strcasecmp(argv[1], "ap")) {
+		pin_mask = UART_STATE_AP_PINS;
+		i2c_index = I2C_PORT_AP;
+		sda = GPIO_UART_AP_TX_DBG_RX_INA_SDA;
+		scl = GPIO_UART_DBG_TX_AP_RX_INA_SCL;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	/* Updating the state */
+	if (argc == 3) {
+		char *e;
+		const int speed = strtoi(argv[2], &e, 0);
+
+		if (*e)
+			return EC_ERROR_PARAM2;
+		if (speed != 0 && speed != 100 && speed != 400)
+			return EC_ERROR_PARAM2;
+
+		mutex_lock(&vref_uart_state_mutex);
+
+		if (!!speed == !!(i2c_enabled & pin_mask)) {
+			/* No change, do nothing */
+		} else if (speed) {
+			/* Ensure no one is using these pins */
+			if (uart_state & pin_mask) {
+				ccprintf("Cannot enable I2C; Pins busy\n");
+				goto busy_error_unlock;
+			}
+
+			/* Change alternate mode to I2C */
+			gpio_config_pin(MODULE_I2C, sda, 1);
+			gpio_config_pin(MODULE_I2C, scl, 1);
+
+			/* Update state */
+			uart_state |= pin_mask;
+			i2c_enabled |= pin_mask;
+		} else {
+			/* Update back to default UART mode */
+			gpio_config_pin(MODULE_USART, sda, 1);
+			gpio_config_pin(MODULE_USART, scl, 1);
+
+			/* Update state */
+			uart_state &= ~pin_mask;
+			i2c_enabled &= ~pin_mask;
+		}
+
+		mutex_unlock(&vref_uart_state_mutex);
+
+		/* If we have a non-zero speed, then set frequency */
+		if (speed)
+			i2c_set_freq(i2c_index, speed == 400 ? I2C_FREQ_400KHZ :
+							       I2C_FREQ_100KHZ);
+	}
+
+	/* Print status for get and set case. */
+	ccprintf("I2C speed kpbs: %d\n",
+		 i2c_enabled & pin_mask ?
+			 (i2c_get_freq(i2c_index) == I2C_FREQ_400KHZ ? 400 :
+								       100) :
+			 0);
+
+	return EC_SUCCESS;
+
+busy_error_unlock:
+	mutex_unlock(&vref_uart_state_mutex);
+	return EC_ERROR_BUSY;
+}
+DECLARE_CONSOLE_COMMAND(enable_i2c, command_enable_i2c,
+			"[ec|ap] [0|100|400]?",
+			"Get/set the I2C speed in kbps for EC and AP pins");
 
 /******************************************************************************
  * Console commands for asserting H1 reset and EC Power button
