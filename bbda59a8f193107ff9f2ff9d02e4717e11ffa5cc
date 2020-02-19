@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "eb92e9d8_ece28a5c",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-02-19T20:16:41Z",
+      "side": 1,
+      "message": "With the guard clause you reduce one level of indentation.",
+      "parentUuid": "2f99825b_0fe4a56e",
+      "revId": "bbda59a8f193107ff9f2ff9d02e4717e11ffa5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49237ec2_c4eed565",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 1
