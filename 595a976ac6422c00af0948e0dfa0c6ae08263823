@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9a494f55_e4edb429",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-19T21:25:44Z",
+      "side": 1,
+      "message": "I asked Gwendal Grignou about this line and the amount of padding we are expecting here this was his response:\n\n\"CONFIG_FLASH_WRITE_SIZE is [normally] the minimum size the EC can write to the flash. This is not always true though, it has sometimes be interpreted as the ideal size.\"\n\n\nHe\u0027s currently on vacation for the week so I\u0027m going to wait for him to get back before I make changes to this structure on the other platforms so right now the only platform which will be impacted by this CL is ServoV4. Based on his statement, only the minimum length is important which explains why the else case before included the padding.\n\nRight now, I\u0027m not actually convinced that this is doing the right thing. It doesn\u0027t match that description because the maximum padding that can be added is 4B and I\u0027m also don\u0027t believe that this is protecting against the right issue. I\u0027ve seen problems before where structures like this which have only 8 or 16 bit values are cast to 32 bit pointers. The compiler things that it can align it to 1 boundaries so misaligned addressing occurs if the pointer type is larger. If that\u0027s the actual problem then aligning this structure to 4 or 8 byte boundaries would prevent the bug.\n\nIf you want, I am happy to add a todo with a buganizer ticket to follow up on this to clean it up because I don\u0027t trust that this is working correctly and at the very least the line is unclear.",
+      "parentUuid": "80e6c658_fe798560",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6af5c2c_a4a51039",
         "filename": "common/flash.c",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "90bdb3ff_1ba855b2",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-19T21:25:44Z",
+      "side": 1,
+      "message": "A string must be shorter than it\u0027s buffer for it to be null terminated.",
+      "parentUuid": "c6af5c2c_a4a51039",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 14
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b98dd171_91c44ddb",
         "filename": "common/flash.c",
         "patchSetId": 3
@@ -82,6 +130,30 @@
       "writtenOn": "2020-02-19T20:13:54Z",
       "side": 1,
       "message": "Why not treat it as an error?",
+      "range": {
+        "startLine": 467,
+        "startChar": 46,
+        "endLine": 468,
+        "endChar": 67
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aee71ef_5c486e8a",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-19T21:25:44Z",
+      "side": 1,
+      "message": "It is treated as an error, we return an EC_ERROR_INVAL, the field is not updated, and the console shows an error.",
+      "parentUuid": "b98dd171_91c44ddb",
       "range": {
         "startLine": 467,
         "startChar": 46,
