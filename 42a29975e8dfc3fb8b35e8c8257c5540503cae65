@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2a2e22af_6cb9004b",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T17:45:50Z",
+      "side": 1,
+      "message": "?",
+      "parentUuid": "fbbe1b19_71b59442",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0f60dee_ebd28a64",
         "filename": "common/usb_common.c",
         "patchSetId": 2
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "How about doing this?\n\n  #ifndef CHROMIUM_EC\n    #define ec_current_image ec_image\n  #endif\n\nThen we use \"ec_image\" internally and \"ec_current_image\" will still work externally.\n\nI don\u0027t really like using a macro like this, but maybe it\u0027s a stepping stone to fixing the external projects?",
       "parentUuid": "48f2e5cb_27d402c1",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9a6302_baaf7662",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T17:45:50Z",
+      "side": 1,
+      "message": "Or we define enum ec_image identically:\n\nenum ec_image {\n\tEC_IMAGE_UNKNOWN \u003d 0,\n\tEC_IMAGE_RO,\n\tEC_IMAGE_RO,\n\tEC_IMAGE_RW\n\tEC_IMAGE_RW,\n\tEC_IMAGE_RW_A \u003d EC_IMAGE_RW,\n\tEC_IMAGE_RO_B,\n\tEC_IMAGE_RW_B\n}\n\n/* Deprecated. Use enum ec_image. */\nenum ec_current_image {\n\t...\n}\n\nAnd after the transition, we remove the latter from ec_commands.h. I searched through the codebase and found \u0027enum ec_image\u0027 is available.",
+      "parentUuid": "9f6564ab_4665e2be",
       "range": {
         "startLine": 1053,
         "startChar": 5,
