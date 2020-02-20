@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c29e00ae_c35f922d",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "I think it actually makes it cleaner for the code to have the global \"lock\" on the pins and the locally scope functionality. Each functionality shouldn\u0027t care what anyone else is doing, only if it can get the global lock.\n\nI did try out a few different forms here to play around, but I couldn\u0027t find anything that improved readability in my opinion. Also there are two UART states: uart unlock (normal) and uart locked (held low) which starts making things looks a little weird.",
+      "parentUuid": "ff2cc388_b543f23c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e1bdae_9f76bad7",
         "filename": "board/c2d2/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cd1331_d5dfa658",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "There is only a single i2c bus on other designs, and it is called master.\n\nI like ap because it is on the AP pins, but I agree that is it really the free form i2c bus. Naming AP does give the user indication that this in mutually exclusive with AP uart (or freeform UART that would traditionally be connected to ap).\n\nI am fine changing it if you have another suggestion though.",
+      "parentUuid": "83e1bdae_9f76bad7",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4902dfa9_e83af558",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "Good suggestion. Did some renaming to bus_lock_state and BUS_LOCK_",
+      "parentUuid": "662dd7a2_181d561f",
+      "range": {
+        "startLine": 626,
+        "startChar": 7,
+        "endLine": 626,
+        "endChar": 18
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb464177_928fd696",
         "filename": "board/c2d2/board.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a0058d4_9ccd54d8",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. I was looking at the wrong table in the spec. the 05 doesn\u0027t variant does not support 1Mhz for I2C2, but the 07 does.\n\nAdded support here.\n\n----\n\nAs of now, it doesn\u0027t actually speed anything up, because I think there is a bottle neck in the USB endpoint and/or buffer sizes. That is an optimization for another day though ;)",
+      "parentUuid": "fb464177_928fd696",
+      "range": {
+        "startLine": 665,
+        "startChar": 2,
+        "endLine": 665,
+        "endChar": 49
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "119222dc_c8da1f65",
+        "filename": "board/c2d2/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "It\u0027s not; just functionality I saw in other servo implementations. I moved it to the previous parent CL",
+      "parentUuid": "5abfc2be_a9e5d441",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5bb99f_375af0f3",
         "filename": "chip/stm32/i2c_ite_flash_support.c",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d18573_234559ed",
+        "filename": "chip/stm32/i2c_ite_flash_support.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd5bb99f_375af0f3",
+      "range": {
+        "startLine": 274,
+        "startChar": 32,
+        "endLine": 274,
+        "endChar": 36
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "463e5bd3_d58d2074",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "I tabbed the over since they are child definitions of the above register definition. This file doesn\u0027t do a great job of that style, but I didn\u0027t want to make all those changes in this CL.\n\nSee line 254 for when it was done correctly in this file.\n\nAnyway, I upload a parent CL that cleans up this file",
+      "parentUuid": "7a28c39c_ff6623f8",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c7b155e_7828b059",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4365f14_6fd889d9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:40:59Z",
+      "side": 1,
+      "message": "updated, but again, didn\u0027t see any real speed improvements",
+      "parentUuid": "2c7b155e_7828b059",
+      "range": {
+        "startLine": 1185,
+        "startChar": 30,
+        "endLine": 1185,
+        "endChar": 37
+      },
+      "revId": "c12e2ef25086b39c19170a0310beb05ebd071671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
