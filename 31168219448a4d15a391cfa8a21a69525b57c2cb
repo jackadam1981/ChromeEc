@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82fa8a08_70d44789",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T00:23:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58dee69a_19ad27d8",
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b54bdfa_19c4b6c4",
         "filename": "board/cr50/ec_comm.c",
         "patchSetId": 41
@@ -39,6 +57,30 @@
       "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e406976e_0921e41f",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T00:23:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b54bdfa_19c4b6c4",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 53
+      },
+      "revId": "31168219448a4d15a391cfa8a21a69525b57c2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
