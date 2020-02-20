@@ -22,6 +22,30 @@
       "revId": "1e591faa5721473add4349efc987bcf6c79e8bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d154028a_d6133c61",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T01:17:34Z",
+      "side": 1,
+      "message": "Changed the condition of CPRINTS definition in line 20.\nError type can be shown later through the console command, \"ec_comm\" as in the patch https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1961145.",
+      "parentUuid": "d248353c_eaea7ebe",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1e591faa5721473add4349efc987bcf6c79e8bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
