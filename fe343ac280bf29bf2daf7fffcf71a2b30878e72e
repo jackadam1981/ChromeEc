@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2b902fc8_57dbed36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-20T23:28:45Z",
+      "side": 1,
+      "message": "earlier discussion is here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2037090/8/common/usb_pd_host_cmd.c#35",
+      "parentUuid": "5e628525_62f96b34",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abced735_c12276bb",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
