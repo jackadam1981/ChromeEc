@@ -22,6 +22,30 @@
       "revId": "222bca44a6eb111db41e3a520a034b45936c230e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a66ae20_77ff27e9",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-20T21:00:15Z",
+      "side": 1,
+      "message": "Jett can confirm, but I think these are all tabs.  The repo pre-submit hooks scold you for using spaces where tabs would be best, so unless you\u0027re skipping the hooks it\u0027s unlikely you\u0027ll upload code which uses space then tab.",
+      "parentUuid": "23e787e7_7fb6480e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "222bca44a6eb111db41e3a520a034b45936c230e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
