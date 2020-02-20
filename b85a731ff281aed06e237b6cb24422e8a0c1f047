@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "689b8323_6552c834",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "140f1fa9_0d5d96d4",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 63
+      },
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b97c0e0_9d638503",
         "filename": "util/flash_cr50.py",
         "patchSetId": 14
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b2cd1f22_ebe3532e",
+      "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c53238c_db0d533f",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "BTW, from Python programming point of view - is this empty tuple declaration even necessary in the base class?",
+      "parentUuid": "2bba830d_342d49ea",
       "revId": "b85a731ff281aed06e237b6cb24422e8a0c1f047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afd21907_b5bfb8c4",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "why would you always create the rescue image, the user might intend to go through gsctool?",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 58
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca47a97_cf7af647",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "will this fail if original image file name did not have an extension?",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 132,
+        "endChar": 70
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e13d75ba_72fa398b",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "should this be (\u0027.\u0027 + ext) ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 37,
+        "endLine": 144,
+        "endChar": 40
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d8df4d_054a7c2c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "What the use case is for hex input, where would it come from?\n\nAlso, relying on file name extension to determine the file type is extremely fragile.\n\nI think this script would completely achieve its goals if we declare that the input must be a binary Cr50 image. A sanity check could verify that the file is exactlly 512KB in size.",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 57
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68d44f8_1eec46f2",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "this is not an accurate description of what this function does.",
+      "range": {
+        "startLine": 169,
+        "startChar": 11,
+        "endLine": 169,
+        "endChar": 46
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e001da3_52a76949",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "shouldn\u0027t you check and report if timeout happened?",
+      "range": {
+        "startLine": 706,
+        "startChar": 27,
+        "endLine": 706,
+        "endChar": 33
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda57acd_cba13507",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:02:23Z",
+      "side": 1,
+      "message": "this is way to clever if you ask me 😊 and also would fail if the user\u0027s intention is to program the file named \u0027prod\u0027 or \u0027prepvt\u0027 in the current directory.",
+      "range": {
+        "startLine": 795,
+        "startChar": 22,
+        "endLine": 795,
+        "endChar": 62
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
