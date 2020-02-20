@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55851a60_3b468d83",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T00:12:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b005ce2c_51fdaf8c",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a92f5d0_d4837f77",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 32
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "04f01cd2_03baa0ff",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T00:12:01Z",
+      "side": 1,
+      "message": "Made a patch http://crrev.com/c/2065493",
+      "parentUuid": "3a92f5d0_d4837f77",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff8054b3_926a056c",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 32
@@ -68,6 +116,53 @@
       "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c305f0_fa691b5e",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T00:12:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff8054b3_926a056c",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e121037_f782f09d",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-20T00:12:01Z",
+      "side": 1,
+      "message": "Removing the code that handles bigger secdata.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
