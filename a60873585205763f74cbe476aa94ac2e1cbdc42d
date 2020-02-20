@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68175d52_c67bef61",
+        "filename": "board/kohaku/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-02-20T22:22:32Z",
+      "side": 1,
+      "message": "This was an issue that was specific to Helios\u0027 IO board, IIRC. Details at b/136531130",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 48
+      },
+      "revId": "a60873585205763f74cbe476aa94ac2e1cbdc42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
