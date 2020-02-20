@@ -111,5 +111,7 @@ enum adc_channel {
 void board_pd_vbus_ctrl(int port, int enabled);
 #endif
 
+void vsns_pp3300_interrupt(enum gpio_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
