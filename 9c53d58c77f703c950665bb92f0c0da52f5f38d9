@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "342ff124_95ab0866",
+        "filename": "board/nightfury/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f4ea67_aebd9d4f",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2ddb7f_149f4c6e",
         "filename": "board/nightfury/board.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346bc77e_7d9649e4",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f2ddb7f_149f4c6e",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f9fc57bc_4c65df28",
+        "filename": "board/nightfury/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ade6bd5_0fd63865",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa439413_f4215110",
         "filename": "board/nightfury/build.mk",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79d0c22b_ac511c82",
+        "filename": "board/nightfury/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa439413_f4215110",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c2507ac4_5de8301c",
+        "filename": "board/nightfury/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6c253b_f282647b",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b76588e8_b748efe7",
         "filename": "board/nightfury/gpio.inc",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63f8987_eeeeac4c",
+        "filename": "board/nightfury/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b76588e8_b748efe7",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9ef05065_bf4905c7",
+        "filename": "board/nightfury/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e38011d_e9cc8e72",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da24c59b_b8e0ebce",
         "filename": "board/nightfury/thermal.c",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e26a06_e462d82e",
+        "filename": "board/nightfury/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da24c59b_b8e0ebce",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
