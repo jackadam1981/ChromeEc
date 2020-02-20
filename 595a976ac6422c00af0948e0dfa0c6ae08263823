@@ -357,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "0d0992fe_dd6edd09",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-20T23:11:59Z",
+      "side": 1,
+      "message": "I am OK with doing it on the Python side. But I saw you already changed it. It is up to you.",
+      "parentUuid": "c0330b6a_0f002c8f",
+      "range": {
+        "startLine": 467,
+        "startChar": 46,
+        "endLine": 468,
+        "endChar": 67
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17f6eff1_1ba11198",
         "filename": "common/system.c",
         "patchSetId": 3
