@@ -46,6 +46,30 @@
       "revId": "b52baa948291a89402c8028b399fed19652cef69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b003f4fb_808e87ad",
+        "filename": "board/nightfury/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-02-20T18:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436f567b_1246aebc",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "b52baa948291a89402c8028b399fed19652cef69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
