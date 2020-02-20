@@ -20,7 +20,7 @@
 #define CONFIG_FLASH_SIZE (512 * 1024)
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
-
+//test only
 /* EC Defines */
 #define CONFIG_LTO
 #define CONFIG_BOARD_VERSION_CBI
