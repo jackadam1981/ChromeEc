@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80ef2ac8_28aef425",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2020-02-20T17:09:31Z",
+      "side": 1,
+      "message": "Do you have more details as to why such a mechanism is required? Presumably we need a way to inform kernel of what? Current state of configuration of ports and muxes? What other current gotchas/issues is this necessary. I wonder if we need behavior to take on this exact form as opposed to reflecting state true state of the ports from a configuration request.",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2355dae_695a7aab",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2020-02-20T17:09:31Z",
+      "side": 1,
+      "message": "What is such a thing? Shouldn\u0027t these be more generic to cover different and future implementations? Why doesn\u0027t the chipset already know its current state?",
+      "range": {
+        "startLine": 5350,
+        "startChar": 20,
+        "endLine": 5350,
+        "endChar": 44
+      },
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
