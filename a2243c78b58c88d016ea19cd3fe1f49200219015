@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a676fcdd_14a2caed",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T02:10:16Z",
+      "side": 1,
+      "message": "I think passing a pointer to ec_efs_context was better, because it guaranteed the size of the space where hash is copied to in line 87.\n\nBut this is a static function, used in this file only, let\u0027s leave it to future enhancements.",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "a2243c78b58c88d016ea19cd3fe1f49200219015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
