@@ -46,6 +46,30 @@
       "revId": "1e591faa5721473add4349efc987bcf6c79e8bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a592763f_29673a57",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:36:13Z",
+      "side": 1,
+      "message": "I don\u0027t think this is an equivalent change:\n\n- there is no easy way to build an image with EC_EFS_DEBUG defined\n- if debug is not enabled errors will go unnoticed if one just examines the log\n\nI think adding a short message like\n\nccprinf(\"load_ec_hash error %d\\n\", rv)\n\nis better.",
+      "parentUuid": "d154028a_d6133c61",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1e591faa5721473add4349efc987bcf6c79e8bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
