@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fc98b6c4_4bb03197",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-20T08:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5316dc6b_af25a030",
+      "range": {
+        "startLine": 1007,
+        "startChar": 2,
+        "endLine": 1011,
+        "endChar": 21
+      },
+      "revId": "156c17823e64d54dabccf6a473271796d9aab56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f79ccc_fa8a132d",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2020-02-18T14:41:50Z",
       "side": 1,
       "message": "why is do_cc and setting user_limited_max in a different order here (are they unrelated)?\n\nAlso, the \"dev\" branch does not call update_ports()? Is that intended?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 2,
+        "endLine": 1018,
+        "endChar": 17
+      },
+      "revId": "156c17823e64d54dabccf6a473271796d9aab56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacbbb31_f6da38a0",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-20T08:20:41Z",
+      "side": 1,
+      "message": "I followed the statement sequece above, and I think it\u0027s fine since that will be olny used in\"update_ports()\" for thresholding adapter PDOs. (also, \u0027dev\u0027 not calling update_ports,)",
+      "parentUuid": "f0f79ccc_fa8a132d",
       "range": {
         "startLine": 1016,
         "startChar": 2,
