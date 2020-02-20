@@ -1,0 +1,148 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23a376c2_b812b281",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-20T23:52:24Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "3d3c8969_7ea0abac",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "6dbd1076b4630178c57bd9230616ea42d8f77654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e8defed_17b63221",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-20T23:52:24Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "e8df87ba_5616297a",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "6dbd1076b4630178c57bd9230616ea42d8f77654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dec2650_3eff3c52",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-20T23:52:24Z",
+      "side": 1,
+      "message": "\u003e error: Double quote array expansions to avoid re-splitting elements.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2068\n\nPlease fix.",
+      "parentUuid": "13b813d5_daccc85f",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 33
+      },
+      "revId": "6dbd1076b4630178c57bd9230616ea42d8f77654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2065cb29_3135d439",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-20T23:52:24Z",
+      "side": 1,
+      "message": "\u003e warning: Prefer mapfile or read -a to split command output (or quote to avoid splitting).\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2207\n\nPlease fix.",
+      "parentUuid": "eff176f5_afebf6ff",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "6dbd1076b4630178c57bd9230616ea42d8f77654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "581bb0d5_57b69dd6",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-20T23:52:24Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "e00fee5b_57e133c0",
+      "range": {
+        "startLine": 152,
+        "startChar": 41,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "6dbd1076b4630178c57bd9230616ea42d8f77654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9f66f50_6c8abea7",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-20T23:52:24Z",
+      "side": 1,
+      "message": "\u003e warning: REPRODUCIBLE_BUILD is referenced but not assigned.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2154\n\nPlease fix.",
+      "parentUuid": "6edd1b20_d26f0a6f",
+      "range": {
+        "startLine": 152,
+        "startChar": 41,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "6dbd1076b4630178c57bd9230616ea42d8f77654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
