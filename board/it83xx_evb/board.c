@@ -150,6 +150,8 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 /* Initialize board. */
 static void board_init(void)
 {
+	/* enable EC_VSNS_PP3300_A pin WUI interrupt */
+	gpio_enable_interrupt(GPIO_EC_VSNS_PP3300_A);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -211,3 +213,15 @@ const struct spi_device_t spi_devices[] = {
 	{ CONFIG_SPI_FLASH_PORT, 0, -1},
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+/* EC_VSNS_PP3300_A wakeup interrupt */
+void vsns_pp3300_interrupt(enum gpio_signal signal)
+{
+	int lv;
+
+	lv = gpio_get_level(signal);
+	ccprints("EC_VSNS_PP3300_A level = %d", lv);
+
+	/* clear EC_VSNS_PP3300_A WUI interrupt status */
+	gpio_clear_pending_interrupt(signal);
+}
