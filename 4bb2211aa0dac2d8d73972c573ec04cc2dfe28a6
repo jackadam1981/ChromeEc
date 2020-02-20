@@ -163,6 +163,30 @@
       "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "833732c3_ac021455",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-20T01:06:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e121037_f782f09d",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "4bb2211aa0dac2d8d73972c573ec04cc2dfe28a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
