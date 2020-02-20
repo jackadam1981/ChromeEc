@@ -133,6 +133,24 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int ps8xxx_tcpc_drp_toggle(int port)
+{
+	int rv = EC_SUCCESS;
+
+	/*
+	 * Workaround for PS8805, which can't restart Connection Detection if
+	 * the partner already presents Rp. Check b/149570002.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8805))
+		rv |= tcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RP);
+
+	return rv | tcpci_tcpc_drp_toggle(port);
+}
+#endif
+
+
+
 static int ps8xxx_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 **chip_info)
 {
@@ -310,7 +328,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	.drp_toggle		= &tcpci_tcpc_drp_toggle,
+	.drp_toggle		= &ps8xxx_tcpc_drp_toggle,
 #endif
 #ifdef CONFIG_USBC_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
