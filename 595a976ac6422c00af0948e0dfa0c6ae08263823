@@ -96,6 +96,53 @@
     },
     {
       "key": {
+        "uuid": "f5811ed8_c4f1239b",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-20T00:12:43Z",
+      "side": 1,
+      "message": "Thanks for explaining. This file is a common code. Should be careful. OK to follow it up later.",
+      "parentUuid": "7f442146_a175cd83",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ebb9293_1371cec5",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-20T00:12:43Z",
+      "side": 1,
+      "message": "Better to use strnlen() to prevent buffer overflow.",
+      "range": {
+        "startLine": 457,
+        "startChar": 10,
+        "endLine": 457,
+        "endChar": 16
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6af5c2c_a4a51039",
         "filename": "common/flash.c",
         "patchSetId": 3
@@ -143,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "58987de6_9446f52e",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-20T00:12:43Z",
+      "side": 1,
+      "message": "I thought the buffer size just fits the string, like 12-byte. Actually it has more room, i.e. 20-byte. So it is OK.",
+      "parentUuid": "90bdb3ff_1ba855b2",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 14
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b98dd171_91c44ddb",
         "filename": "common/flash.c",
         "patchSetId": 3
@@ -178,6 +249,30 @@
       "side": 1,
       "message": "It is treated as an error, we return an EC_ERROR_INVAL, the field is not updated, and the console shows an error.",
       "parentUuid": "b98dd171_91c44ddb",
+      "range": {
+        "startLine": 467,
+        "startChar": 46,
+        "endLine": 468,
+        "endChar": 67
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a6e502_b767d735",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-02-20T00:12:43Z",
+      "side": 1,
+      "message": "How about the length \u003c 12-byte, or 17-byte (with \":\") like an invalid MAC address? Is there any check?",
+      "parentUuid": "1aee71ef_5c486e8a",
       "range": {
         "startLine": 467,
         "startChar": 46,
