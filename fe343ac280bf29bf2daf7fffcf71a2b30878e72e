@@ -105,6 +105,30 @@
       "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14acf37b_45cb07e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-20T19:36:49Z",
+      "side": 1,
+      "message": "yes, a request is raised internally. @shamile is following up.",
+      "parentUuid": "9c19c3e5_826d3440",
+      "range": {
+        "startLine": 5350,
+        "startChar": 20,
+        "endLine": 5350,
+        "endChar": 44
+      },
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
