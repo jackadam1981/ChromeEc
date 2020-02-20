@@ -190,6 +190,42 @@ void adc_interrupt(void)
 		task_set_event(task_waiting, TASK_EVENT_ADC_DONE, 0);
 }
 
+void volt_comp_interrupt(void)
+{
+	/* Stop voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL &= ~BIT(7);
+	/* Write Clear voltage comparator0 interrupt status */
+	IT83XX_ADC_VCMPSTS = BIT(0);
+	/* Clear MCU IRQ status */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+
+	/* If comparator0 trigger mode: greater than CMP0THRDAT[9:0] */
+	if (IT83XX_ADC_VCMP0CTL & BIT(5)) {
+		/* Threshold volt 0.2v = 3v * CMP0THRDAT[9:0] / 1023 */
+		IT83XX_ADC_CMP0THRDATL = 0x44;
+		IT83XX_ADC_CMP0THRDATM = 0x00;
+		/*
+		 * Select comparator0 trigger mode: equal or less than
+		 * CMP0THRDAT[9:0]
+		 */
+		IT83XX_ADC_VCMP0CTL &= ~BIT(5);
+		ccprints("Cmp0 INT detect High, switch detect Low");
+	} else {
+		/* Threshold volt 2.8v = 3v * CMP0THRDAT[9:0] / 1023 */
+		IT83XX_ADC_CMP0THRDATL = 0xBA;
+		IT83XX_ADC_CMP0THRDATM = 0x03;
+		/*
+		 * Select comparator0 trigger mode: greater than
+		 * CMP0THRDAT[9:0]
+		 */
+		IT83XX_ADC_VCMP0CTL |= BIT(5);
+		ccprints("Cmp0 INT detect Low, switch detect High");
+	}
+
+	/* Start voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL |= BIT(7);
+}
+
 /*
  * ADC analog accuracy initialization (only once after VSTBY power on)
  *
@@ -240,6 +276,40 @@ static void adc_init(void)
 	task_waiting = TASK_ID_INVALID;
 	/* disable adc interrupt */
 	task_disable_irq(IT83XX_IRQ_ADC);
+
+	/* Comparator0 init */
+	/* Threshold volt 2.8v = 3v * CMP0THRDAT[9:0] / 1023 */
+	IT83XX_ADC_CMP0THRDATL = 0xBA;
+	IT83XX_ADC_CMP0THRDATM = 0x03;
+
+	/* Select input voltage ADC7 channel */
+	IT83XX_ADC_VCMP0CTL |=  0x07;
+
+	/* Select comparator0 trigger mode: greater than CMP0THRDAT[9:0] */
+	IT83XX_ADC_VCMP0CTL |=  BIT(5);
+	/* Select comparator0 trigger mode: edge trigger */
+	IT83XX_ADC_VCMP0CTL |=  BIT(4);
+
+	/* Select comparator0, 1, 2 scan period: 1ms */
+	IT83XX_ADC_VCMPSCP = 0x60;
+
+	/* Enable comparator0 interrupt */
+	IT83XX_ADC_VCMP0CTL |= BIT(6);
+
+	/* Enable comparator0 output to GPJ3 */
+	//IT83XX_GPIO_GRC15 |= BIT(0); //for FRS
+
+	/* Select GPJ3 alternate mode */
+	//IT83XX_GPIO_GPCRJ3 = 0x00; //for FRS
+
+	/* Write Clear voltage comparator0 interrupt status */
+	IT83XX_ADC_VCMPSTS = BIT(0);
+	/* Clear MCU IRQ status */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+
+	task_enable_irq(IT83XX_IRQ_V_COMP);
+	/* Start voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL |= BIT(7);
 
 	adc_init_done = 1;
 }
