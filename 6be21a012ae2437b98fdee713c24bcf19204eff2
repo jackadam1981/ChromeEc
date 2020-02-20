@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6150f03d_33b238b6",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-20T19:23:53Z",
+      "side": 1,
+      "message": "I can see how the current approach of keeping only lock global creates nice separation between the functionality, but it seems like you end up with a lot of double-checks and double-writes like this (\"is it locked?\" followed by *inferring* \"am I the one who locked it?\").  Seems error-prone to me vs collapsing it into a single state variable.",
+      "range": {
+        "startLine": 453,
+        "startChar": 3,
+        "endLine": 454,
+        "endChar": 31
+      },
+      "revId": "6be21a012ae2437b98fdee713c24bcf19204eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be7b327e_6e957184",
+        "filename": "include/i2c_ite_flash_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-02-20T19:23:53Z",
+      "side": 1,
+      "message": "complement :)",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "6be21a012ae2437b98fdee713c24bcf19204eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
