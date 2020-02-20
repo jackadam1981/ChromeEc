@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4097ec02_9a650fca",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-20T00:42:16Z",
+      "side": 1,
+      "message": "I\u0027ve created b/149870870 we can talk about it further there. I think I have a good resolution to the issue and feel free to add anyone who may see problems with it.",
+      "parentUuid": "f5811ed8_c4f1239b",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ebb9293_1371cec5",
         "filename": "common/flash.c",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "writtenOn": "2020-02-20T00:12:43Z",
       "side": 1,
       "message": "Better to use strnlen() to prevent buffer overflow.",
+      "range": {
+        "startLine": 457,
+        "startChar": 10,
+        "endLine": 457,
+        "endChar": 16
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64cb23a5_605ea8f8",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-20T00:42:16Z",
+      "side": 1,
+      "message": "Never seen that one before, I\u0027ll switch it in here and the following CL that adds validation to the SERIAL_NO_LEN.",
+      "parentUuid": "1ebb9293_1371cec5",
       "range": {
         "startLine": 457,
         "startChar": 10,
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "How about the length \u003c 12-byte, or 17-byte (with \":\") like an invalid MAC address? Is there any check?",
       "parentUuid": "1aee71ef_5c486e8a",
+      "range": {
+        "startLine": 467,
+        "startChar": 46,
+        "endLine": 468,
+        "endChar": 67
+      },
+      "revId": "595a976ac6422c00af0948e0dfa0c6ae08263823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0330b6a_0f002c8f",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-02-20T00:42:16Z",
+      "side": 1,
+      "message": "The plan was to add validation on the Python interface side to avoid putting validation in the EC. It\u0027s pretty trivial to add checks the main 3 checks which would be ensuring every 3rd character is a \u0027:\u0027 and the 6 pairs are all in the range of \u00270\u0027-\u00279\u0027 or \u0027A\u0027-\u0027F\u0027 and the string length.\n\nI\u0027m okay with either option and there\u0027s pros and cons to both.",
+      "parentUuid": "86a6e502_b767d735",
       "range": {
         "startLine": 467,
         "startChar": 46,
