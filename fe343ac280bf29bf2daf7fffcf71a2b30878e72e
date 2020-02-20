@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "68f8f363_bed6c557",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-20T19:23:28Z",
+      "side": 1,
+      "message": "sure I will add this info",
+      "parentUuid": "80ef2ac8_28aef425",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2355dae_695a7aab",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-20T17:09:31Z",
       "side": 1,
       "message": "What is such a thing? Shouldn\u0027t these be more generic to cover different and future implementations? Why doesn\u0027t the chipset already know its current state?",
+      "range": {
+        "startLine": 5350,
+        "startChar": 20,
+        "endLine": 5350,
+        "endChar": 44
+      },
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92da846a_788d06cd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-20T19:23:28Z",
+      "side": 1,
+      "message": "Integrated mux is referred as Virtual mux in Chrome driver code.\nCurrently there is no mechanism to get the TCSS state of port from PMC.",
+      "parentUuid": "a2355dae_695a7aab",
       "range": {
         "startLine": 5350,
         "startChar": 20,
