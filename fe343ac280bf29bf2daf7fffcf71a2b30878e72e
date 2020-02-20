@@ -37,6 +37,47 @@
     },
     {
       "key": {
+        "uuid": "5e628525_62f96b34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T22:41:24Z",
+      "side": 1,
+      "message": "Why does EC need to be involved at all? Can we make coreboot pass TCSS states directly to the kernel through, for example, coreboot_table?",
+      "parentUuid": "68f8f363_bed6c557",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abced735_c12276bb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5346,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T22:41:24Z",
+      "side": 1,
+      "message": "Then, why does EC need to be involved at all? Can you describe why you don\u0027t want coreboot to pass TCSS states directly to the kernel?",
+      "range": {
+        "startLine": 5342,
+        "startChar": 0,
+        "endLine": 5346,
+        "endChar": 75
+      },
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2355dae_695a7aab",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
