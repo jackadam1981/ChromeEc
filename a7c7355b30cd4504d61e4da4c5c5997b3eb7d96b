@@ -22,6 +22,30 @@
       "revId": "a7c7355b30cd4504d61e4da4c5c5997b3eb7d96b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d1fe0b_9abdd554",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-20T18:39:52Z",
+      "side": 1,
+      "message": "Done. (I think)",
+      "parentUuid": "8abd17f0_f2699883",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 49
+      },
+      "revId": "a7c7355b30cd4504d61e4da4c5c5997b3eb7d96b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
