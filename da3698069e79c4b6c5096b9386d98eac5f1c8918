@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ff9dc27_6c0478c5",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-20T18:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e23b62_d7d01434",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 74
+      },
+      "revId": "da3698069e79c4b6c5096b9386d98eac5f1c8918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56112602_6e50e244",
         "filename": "include/util.h",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ae567348_c8dc7058",
+        "filename": "include/util.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-20T18:10:06Z",
+      "side": 1,
+      "message": "It can, but it made more sense to follow the above MIN/MAX. I\u0027ll change it to actually expand to those for better readability.",
+      "parentUuid": "56112602_6e50e244",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "da3698069e79c4b6c5096b9386d98eac5f1c8918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bda7c0d_1a362609",
         "filename": "test/online_calibration.c",
         "patchSetId": 11
@@ -68,6 +116,30 @@
       "revId": "da3698069e79c4b6c5096b9386d98eac5f1c8918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a40ce20_933c0e5d",
+        "filename": "test/online_calibration.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-02-20T18:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bda7c0d_1a362609",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "da3698069e79c4b6c5096b9386d98eac5f1c8918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
