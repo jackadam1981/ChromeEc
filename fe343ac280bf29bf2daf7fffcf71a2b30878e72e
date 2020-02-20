@@ -81,6 +81,30 @@
       "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c19c3e5_826d3440",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-02-20T19:30:03Z",
+      "side": 1,
+      "message": "\u003e Currently there is no mechanism to get the TCSS state of port from PMC.\n\nIs there an internal request to fix this issue? We may, in the end, still need both approaches, but we should not be working around deficiencies that can be improved elsewhere.",
+      "parentUuid": "92da846a_788d06cd",
+      "range": {
+        "startLine": 5350,
+        "startChar": 20,
+        "endLine": 5350,
+        "endChar": 44
+      },
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
