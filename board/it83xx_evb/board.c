@@ -160,12 +160,23 @@ const struct adc_t adc_channels[] = {
 	/* Convert to mV (3000mV/1024). */
 	{"ADC_VBUSSA", 3000, 1024, 0, CHIP_ADC_CH0}, /* GPI0, ADC0 */
 	{"ADC_VBUSSB", 3000, 1024, 0, CHIP_ADC_CH1}, /* GPI1, ADC1 */
+	{"ADC_EVB_CH_7", 3000, 1024, 0, CHIP_ADC_CH7}, /* GPI7, ADC7 */
 	{"ADC_EVB_CH_13", 3000, 1024, 0, CHIP_ADC_CH13}, /* GPL0, ADC13 */
 	{"ADC_EVB_CH_14", 3000, 1024, 0, CHIP_ADC_CH14}, /* GPL1, ADC14 */
 	{"ADC_EVB_CH_15", 3000, 1024, 0, CHIP_ADC_CH15}, /* GPL2, ADC15 */
 	{"ADC_EVB_CH_16", 3000, 1024, 0, CHIP_ADC_CH16}, /* GPL3, ADC16 */
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/*
+ * Voltage comparator channels. Must be in the exactly same order as
+ * enum vcmp_channel.
+ */
+const struct vcmp_t vcmp_channels[] = {
+	/* Threshold H/L is 2800/200 mV. (0xFF means invalid) */
+	{"VCMP_SNS_PP3300", 2800, 1, 1, 1024, CHIP_VCMP_CH0, CHIP_ADC_CH7}, /* GPI7, ADC7 */
+};
+BUILD_ASSERT(ARRAY_SIZE(vcmp_channels) == VCMP_CH_COUNT);
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {

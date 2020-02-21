@@ -62,6 +62,23 @@ const struct adc_ctrl_t adc_ctrl_regs[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_ctrl_regs) == CHIP_ADC_COUNT);
 
+/* Data structure of voltage comparator channel control registers. */
+const struct vcmp_ctrl_t vcmp_ctrl_regs[] = {
+	{&IT83XX_ADC_VCMP0CTL, &IT83XX_ADC_CMP0THRDATM, &IT83XX_ADC_CMP0THRDATL,
+		&IT83XX_GPIO_GPCRJ3},
+	{&IT83XX_ADC_VCMP1CTL, &IT83XX_ADC_CMP1THRDATM, &IT83XX_ADC_CMP1THRDATL,
+		&IT83XX_GPIO_GPCRJ4},
+	{&IT83XX_ADC_VCMP2CTL, &IT83XX_ADC_CMP2THRDATM, &IT83XX_ADC_CMP2THRDATL,
+		&IT83XX_GPIO_GPCRJ5},
+	{&IT83XX_ADC_VCMP3CTL, &IT83XX_ADC_CMP3THRDATM, &IT83XX_ADC_CMP3THRDATL,
+		&IT83XX_GPIO_GPCRL5},
+	{&IT83XX_ADC_VCMP4CTL, &IT83XX_ADC_CMP4THRDATM, &IT83XX_ADC_CMP4THRDATL,
+		&IT83XX_GPIO_GPCRL6},
+	{&IT83XX_ADC_VCMP5CTL, &IT83XX_ADC_CMP5THRDATM, &IT83XX_ADC_CMP5THRDATL,
+		&IT83XX_GPIO_GPCRL7},
+};
+BUILD_ASSERT(ARRAY_SIZE(vcmp_ctrl_regs) == CHIP_VCMP_COUNT);
+
 static void adc_enable_channel(int ch)
 {
 	if (ch < CHIP_ADC_CH4)
@@ -190,6 +207,43 @@ void adc_interrupt(void)
 		task_set_event(task_waiting, TASK_EVENT_ADC_DONE, 0);
 }
 
+void volt_comp_interrupt(void)
+{
+	/* IT83XX_ADC_VCMPSTS, IT83XX_ADC_VCMPSTS2 to know which v cmp channel triggered */
+	/* Stop voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL &= ~BIT(7);
+	/* Write Clear voltage comparator0 interrupt status */
+	IT83XX_ADC_VCMPSTS = BIT(0);
+	/* Clear MCU IRQ status */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+
+	/* If comparator0 trigger mode: greater than CMP0THRDAT[9:0] */
+	if (IT83XX_ADC_VCMP0CTL & BIT(5)) {
+		/* Threshold volt 0.2v = 3v * CMP0THRDAT[9:0] / 1023 */
+		IT83XX_ADC_CMP0THRDATL = 0x44;
+		IT83XX_ADC_CMP0THRDATM = 0x00;
+		/*
+		 * Select comparator0 trigger mode: equal or less than
+		 * CMP0THRDAT[9:0]
+		 */
+		IT83XX_ADC_VCMP0CTL &= ~BIT(5);
+		ccprints("Cmp0 INT detect High, switch detect Low");
+	} else {
+		/* Threshold volt 2.8v = 3v * CMP0THRDAT[9:0] / 1023 */
+		IT83XX_ADC_CMP0THRDATL = 0xBA;
+		IT83XX_ADC_CMP0THRDATM = 0x03;
+		/*
+		 * Select comparator0 trigger mode: greater than
+		 * CMP0THRDAT[9:0]
+		 */
+		IT83XX_ADC_VCMP0CTL |= BIT(5);
+		ccprints("Cmp0 INT detect Low, switch detect High");
+	}
+
+	/* Start voltage comparator0 */
+	IT83XX_ADC_VCMP0CTL |= BIT(7);
+}
+
 /*
  * ADC analog accuracy initialization (only once after VSTBY power on)
  *
@@ -206,6 +260,63 @@ static void adc_accuracy_initialization(void)
 	IT83XX_GCTRL_WNCKR = 0;
 	/* bit3 : stop adc accuracy initialization */
 	IT83XX_ADC_ADCSTS &= ~0x08;
+}
+
+/* Voltage comparator initialization */
+static void voltage_comparator_init(void)
+{
+	int index;
+	int ch;
+	int temp;
+
+	/* If needn't init voltage comparator, then return. */
+	if (VCMP_CH_COUNT == 0)
+		return;
+
+	/* Threshold volt 2.8v = 3v * CMP0THRDAT[9:0] / 1023 */
+	for (index = 0; index < VCMP_CH_COUNT; index++) {
+		ch = vcmp_channels[index].vcmp_channel;
+		temp = vcmp_channels[index].threshold * vcmp_channels[index].comparator_resolution / 3;
+		*vcmp_ctrl_t[ch].vcmp_datl = (uint8_t)temp;
+		*vcmp_ctrl_t[ch].vcmp_datm = (uint8_t)(temp >> 8);
+
+
+		/* Select which ADC channel to input voltage into comparator */
+		*vcmp_ctrl_t[ch].vcmp_ctrl |=  vcmp_channels[index].adc_channel;
+
+		/* Select comparator trigger mode: greater than CMP0THRDAT[9:0] */
+		if (vcmp_channels[index].greater_or_less_equal)
+			*vcmp_ctrl_t[ch].vcmp_ctrl |= BIT(5);
+		else
+			*vcmp_ctrl_t[ch].vcmp_ctrl &= ~BIT(5);
+
+		/* Select comparator trigger mode: edge trigger */
+		if (vcmp_channels[index].trigger_level)
+			*vcmp_ctrl_t[ch].vcmp_ctrl |= BIT(4);
+		else
+			*vcmp_ctrl_t[ch].vcmp_ctrl &= ~BIT(4);
+
+		/* Select comparator0, 1, 2 scan period: 1ms */
+		IT83XX_ADC_VCMPSCP = 0x60;
+
+		/* Enable comparator interrupt */
+		*vcmp_ctrl_t[ch].vcmp_ctrl |= BIT(6);
+
+		/* Enable comparator0 output to GPJ3 */
+		//IT83XX_GPIO_GRC15 |= BIT(0); //for FRS
+
+		/* Select GPJ3 alternate mode */
+		//IT83XX_GPIO_GPCRJ3 = 0x00; //for FRS
+
+		/* Write Clear voltage comparator0 interrupt status */
+		IT83XX_ADC_VCMPSTS = BIT(0);
+		/* Clear MCU IRQ status */
+		task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+
+		task_enable_irq(IT83XX_IRQ_V_COMP);
+		/* Start voltage comparator */
+		*vcmp_ctrl_t[ch].vcmp_ctrl |= BIT(7);
+	}
 }
 
 /* ADC module Initialization */
@@ -240,6 +351,8 @@ static void adc_init(void)
 	task_waiting = TASK_ID_INVALID;
 	/* disable adc interrupt */
 	task_disable_irq(IT83XX_IRQ_ADC);
+
+	voltage_comparator_init();
 
 	adc_init_done = 1;
 }
