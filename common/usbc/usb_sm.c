@@ -82,8 +82,11 @@ static void call_entry_functions(const int port,
 
 	/* Track the latest state that was entered, so we can exit properly. */
 	internal->last_entered = current;
-	if (current->entry)
+	if (current->entry) {
+		trace_sm_execute(port, current->entry, 0);
 		current->entry(port);
+		trace_sm_execute(port, current->entry, 1);
+	}
 }
 
 /*
@@ -96,8 +99,11 @@ static void call_exit_functions(const int port, const usb_state_ptr stop,
 	if (current == stop)
 		return;
 
-	if (current->exit)
+	if (current->exit) {
+		trace_sm_execute(port, current->exit, 0);
 		current->exit(port);
+		trace_sm_execute(port, current->exit, 1);
+	}
 
 	call_exit_functions(port, stop, current->parent);
 }
@@ -177,8 +183,11 @@ static void call_run_functions(const int port,
 	if (!internal->running)
 		return;
 
-	if (current->run)
+	if (current->run) {
+		trace_sm_execute(port, current->run, 0);
 		current->run(port);
+		trace_sm_execute(port, current->run, 1);
+	}
 
 	call_run_functions(port, internal, current->parent);
 }

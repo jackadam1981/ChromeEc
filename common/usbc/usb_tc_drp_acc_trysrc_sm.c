@@ -3382,7 +3382,7 @@ static const struct usb_state tc_states[] = {
 #endif
 };
 
-#ifdef TEST_BUILD
+#ifdef TEST_SM_DATA
 const struct test_sm_data test_tc_sm_data[] = {
 	{
 		.base = tc_states,

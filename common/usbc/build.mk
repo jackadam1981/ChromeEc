@@ -22,3 +22,5 @@ all-obj-$(CONFIG_USB_TYPEC_CTVPD)+=$(_usbc_dir)usb_tc_ctvpd_sm.o
 all-obj-$(CONFIG_USB_TYPEC_DRP_ACC_TRYSRC)+=\
 			$(_usbc_dir)usb_tc_drp_acc_trysrc_sm.o
 endif
+
+all-obj-$(CONFIG_USB_SM_TRACE)+=$(_usbc_dir)usb_sm_trace.o

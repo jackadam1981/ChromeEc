@@ -4705,7 +4705,7 @@ static const struct usb_state pe_states[] = {
 	},
 };
 
-#ifdef TEST_BUILD
+#ifdef TEST_SM_DATA
 const struct test_sm_data test_pe_sm_data[] = {
 	{
 		.base = pe_states,

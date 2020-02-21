@@ -65,7 +65,18 @@ void set_state(int port, struct sm_ctx *ctx, usb_state_ptr new_state);
  */
 void run_state(int port, struct sm_ctx *ctx);
 
+#ifdef CONFIG_USB_SM_TRACE
+	#define TEST_SM_DATA
+	void trace_sm_execute(int port, state_execution exec, int start_end);
+#else
+	#define trace_sm_execute(p, e, s)
+#endif
+
 #ifdef TEST_BUILD
+	#define TEST_SM_DATA
+#endif
+
+#ifdef TEST_SM_DATA
 /*
  * Struct for test builds that allow unit tests to easily iterate through
  * state machines

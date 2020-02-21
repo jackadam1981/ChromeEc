@@ -1747,7 +1747,7 @@ static const struct usb_state tch_states[] = {
 	},
 };
 
-#ifdef TEST_BUILD
+#ifdef TEST_SM_DATA
 
 static const char * const prl_tx_state_names[] = {
 	[PRL_TX_PHY_LAYER_RESET] = "PRL_TX_PHY_LAYER_RESET",
