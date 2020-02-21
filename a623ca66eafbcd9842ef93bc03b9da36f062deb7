@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87ecdac_404e3da6",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-21T17:03:00Z",
+      "side": 1,
+      "message": "Patch#36 failed in CQ, for the absence of this function:\nchromeos-cr50-dev-0.0.1-r30: /build/reef/tmp/portage/chromeos-base/chromeos-cr50-dev-0.0.1-r30/work/chromeos-cr50-dev-0.0.1/platform/ec/board/cr50/tpm2/NVMem.c:198: undefined reference to `ec_efs_refresh\u0027\nchromeos-cr50-dev-0.0.1-r30: collect2: error: ld returned 1 exit status\nc\n\nThis appeared with http://crrev.com/c/2027027, it didn\u0027t without it.\nI\u0027ve checked \u0027emerge chromeos-cr50-dev\u0027 with this patch and http://crrev.com/c/2027027 together.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
+      },
+      "revId": "a623ca66eafbcd9842ef93bc03b9da36f062deb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
