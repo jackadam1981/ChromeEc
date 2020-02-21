@@ -30,10 +30,15 @@
 #define BB_RETIMER_IRQ_HPD			BIT(14)
 #define BB_RETIMER_HPD_LVL			BIT(15)
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 /* Describes a USB Retimer present in the system */
 struct bb_retimer {
 	/* USB Retimer I2C port */
 	const int i2c_port;
+=======
+/* Supported USB retimer drivers */
+extern const struct usb_mux_driver bb_usb_retimer;
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 
 	/* USB Retimer I2C address */
 	const int i2c_addr;

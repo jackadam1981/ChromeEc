@@ -83,8 +83,6 @@ static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 __override void svdm_dp_post_config(int port)
 {
-	const struct usb_mux * const mux = &usb_muxes[port];
-
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
@@ -94,8 +92,13 @@ __override void svdm_dp_post_config(int port)
 	gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 	mux->hpd_update(port, 1, 0);
+=======
+	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	usb_mux_hpd_update(port, 1, 0);
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 }
 
 __override int svdm_dp_attention(int port, uint32_t *payload)
@@ -103,7 +106,6 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl = gpio_get_level(GPIO_USB_C0_HPD_OD);
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
-	const struct usb_mux * const mux = &usb_muxes[port];
 
 	dp_status[port] = payload[1];
 
@@ -117,7 +119,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	usb_mux_set(port, lvl ? TYPEC_MUX_DP : TYPEC_MUX_NONE,
 		    USB_SWITCH_CONNECT, pd_get_polarity(port));
 
-	mux->hpd_update(port, lvl, irq);
+	usb_mux_hpd_update(port, lvl, irq);
 
 	if (irq & cur_lvl) {
 		uint64_t now = get_time().val;
@@ -152,11 +154,9 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 
 __override void svdm_exit_dp_mode(int port)
 {
-	const struct usb_mux * const mux = &usb_muxes[port];
-
 	svdm_safe_dp_mode(port);
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 0);
 	gpio_set_level(GPIO_USB_C0_DP_OE_L, 1);
-	mux->hpd_update(port, 0, 0);
+	usb_mux_hpd_update(port, 0, 0);
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */

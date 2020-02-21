@@ -31,5 +31,10 @@ struct bb_retimer bb_retimers[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 #endif /* HAS_TASK_PD_C1 */
 };
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 BUILD_ASSERT(ARRAY_SIZE(bb_retimers) == CONFIG_USB_PD_PORT_MAX_COUNT);
+=======
+BUILD_ASSERT(ARRAY_SIZE(bb_controls) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 #endif /* CONFIG_USBC_RETIMER_INTEL_BB */

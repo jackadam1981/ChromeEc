@@ -100,6 +100,8 @@
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
+
 #define CONFIG_USBC_PPC
 #define CONFIG_CMD_PPC_DUMP
 /* Note - SN5S330 support automatically adds
@@ -120,6 +122,14 @@
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
 #define PD_VCONN_SWAP_DELAY		5000 /* us */
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
+=======
+/* Retimer */
+#define CONFIG_USBC_RETIMER_INTEL_BB
+#define CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
+
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 /*
  * SN5S30 PPC supports up to 24V VBUS source and sink, however passive USB-C
  * cables only support up to 60W.
