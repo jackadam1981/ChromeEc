@@ -406,12 +406,12 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
  * results taking up to 10ms before I2C communication with PS8751
  * is stable. Don't know how to fix this.
  */
-static int ps8751_tune_mux(int port)
+static int ps8751_tune_mux(const struct usb_mux *me)
 {
 	int rv;
 
 	/* 0x98 sets lower EQ of DP port (4.5db) */
-	rv = mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	rv = mux_write(me, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 
 	/* TCPCI spec. delay msleep(6); */
 
@@ -423,16 +423,22 @@ static int ps8751_tune_mux(int port)
  * tcpc_config array. The tcpc_config array contains the actual EC I2C
  * port, device slave address, and a function pointer into the driver code.
  */
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
+		.usb_port = USB_PD_PORT_ANX74XX,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_PS8751] = {
+		.usb_port = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		.board_init = &ps8751_tune_mux,
 	}
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USB_PD_PORT_ANX74XX] = &usb_muxes_mem[USB_PD_PORT_ANX74XX],
+	[USB_PD_PORT_PS8751] = &usb_muxes_mem[USB_PD_PORT_PS8751],
 };
 
 /* MCHP
@@ -539,9 +545,9 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
+		const struct usb_mux *mux = usb_muxes[port];
 
-		mux->hpd_update(port, 0, 0);
+		mux->hpd_update(mux, 0, 0);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);

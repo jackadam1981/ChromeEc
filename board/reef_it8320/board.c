@@ -146,10 +146,12 @@ const enum gpio_signal hibernate_wake_pins[] = {
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
-static void it83xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
+static void it83xx_tcpc_update_hpd_status(const struct usb_mux *me,
+					  int hpd_lvl, int hpd_irq)
 {
 	enum gpio_signal gpio =
-		port ? GPIO_USB_C1_HPD_1P8_ODL : GPIO_USB_C0_HPD_1P8_ODL;
+		me->usb_port ? GPIO_USB_C1_HPD_1P8_ODL
+			     : GPIO_USB_C0_HPD_1P8_ODL;
 
 	hpd_lvl = !hpd_lvl;
 
@@ -161,18 +163,24 @@ static void it83xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = MUX_PORT_AND_ADDR(I2C_PORT_USB_MUX,
-					       PI3USB3X532_I2C_ADDR0),
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
 		.driver = &pi3usb3x532_usb_mux_driver,
 		.hpd_update = &it83xx_tcpc_update_hpd_status,
 	},
 	{
+		.usb_port = 1,
 		.port_addr = 0x10,
 		.driver = &ps874x_usb_mux_driver,
 		.hpd_update = &it83xx_tcpc_update_hpd_status,
 	},
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	&usb_muxes_mem[0],
+	&usb_muxes_mem[1],
 };
 
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
@@ -255,8 +263,11 @@ static void board_init(void)
 	* Initialize HPD to low; after sysjump SOC needs to see
 	* HPD pulse to enable video path
 	*/
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
-		usb_muxes[port].hpd_update(port, 0, 0);
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		const struct usb_mux *mux = usb_muxes[port];
+
+		mux->hpd_update(mux, 0, 0);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_I2C + 1);
 

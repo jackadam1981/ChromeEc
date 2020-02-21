@@ -119,7 +119,8 @@ void board_set_dp_mux_control(int output_enable, int polarity)
 		gpio_set_level(GPIO_USB_C0_DP_POLARITY, polarity);
 }
 
-static void board_hpd_update(int port, int hpd_lvl, int hpd_irq)
+static void board_hpd_update(const struct usb_mux *me,
+			     int hpd_lvl, int hpd_irq)
 {
 	/*
 	 * svdm_dp_attention() did most of the work, we only need to notify
@@ -142,12 +143,16 @@ __override const struct rt946x_init_setting *board_rt946x_init_setting(void)
 	return &battery_init_setting;
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = IT5205_I2C_ADDR1_FLAGS,
+		.usb_port = 0,
+		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
 	},
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	&usb_muxes_mem[0],
 };
 
 uint16_t tcpc_get_alert_status(void)
@@ -338,10 +343,12 @@ static void board_rev_init(void)
 	}
 
 	if (board_get_version() < 5) {
+		struct usb_mux *me = usb_muxes[0];
+
 		gpio_set_flags(GPIO_USB_C0_DP_OE_L, GPIO_OUT_HIGH);
 		gpio_set_flags(GPIO_USB_C0_DP_POLARITY, GPIO_OUT_LOW);
-		usb_muxes[0].driver = &virtual_usb_mux_driver;
-		usb_muxes[0].hpd_update = &virtual_hpd_update;
+		me->driver = &virtual_usb_mux_driver;
+		me->hpd_update = &virtual_hpd_update;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);

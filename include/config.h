@@ -3963,15 +3963,6 @@
 #undef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
 
 /*
- * Type-C retimer mux configuration tends to be set on a specific
- * driver's need basis.  After including the board/baseboard.h files
- * the drivers will be checked and if one of these are needed it will
- * automatically be included.  This does not stop a board/basebord.h
- * configration from defining these as well.
- */
-#undef CONFIG_USBC_MUX_RETIMER
-
-/*
  * Type-C retimer drivers to be used.
  */
 #undef CONFIG_USBC_RETIMER_INTEL_BB
@@ -4935,19 +4926,6 @@
 /* Define derived config options for BC1.2 detection */
 #ifdef CONFIG_BC12_DETECT_PI3USB9201
 #define CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
-#endif
-
-/*****************************************************************************/
-/*
- * Define derived config options for Retimer chips.  There are
- * for convenience. Any retimer driver that also needs USBC MUX Retimers
- * will not have to include it in their own board/baseboard.h file.
- */
-#if	defined(CONFIG_USBC_RETIMER_INTEL_BB) || \
-	defined(CONFIG_USBC_RETIMER_PI3DPX1207) || \
-	defined(CONFIG_USBC_RETIMER_PS8802) || \
-	defined(CONFIG_USBC_RETIMER_PS8818)
-#define CONFIG_USBC_MUX_RETIMER
 #endif
 
 /*****************************************************************************/
