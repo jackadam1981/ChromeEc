@@ -32,15 +32,15 @@ static void enter_low_power_mode(int port)
 	int res;
 
 	/*
-	 * Set LPM flag regardless of method presence or method failure. We want
-	 * know know that we tried to put the device in low power mode so we can
-	 * re-initialize the device on the next access.
+	 * Set LPM flag regardless of method presence or method failure. We
+	 * want know know that we tried to put the device in low power mode
+	 * so we can re-initialize the device on the next access.
 	 */
 	flags[port] |= USB_MUX_FLAG_IN_LPM;
 
 	/* Apply any low power customization if present */
 	if (mux->driver->enter_low_power_mode) {
-		res = mux->driver->enter_low_power_mode(port);
+		res = mux->driver->enter_low_power_mode(mux);
 
 		if (res)
 			CPRINTS("Err: enter_low_power_mode mux port(%d): %d",
@@ -62,7 +62,7 @@ void usb_mux_init(int port)
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
-	res = mux->driver->init(port);
+	res = mux->driver->init(mux);
 	if (res) {
 		CPRINTS("Err: init mux port(%d): %d", port, res);
 		return;
@@ -73,7 +73,7 @@ void usb_mux_init(int port)
 
 	/* Apply board specific initialization */
 	if (mux->board_init) {
-		res = mux->board_init(port);
+		res = mux->board_init(mux);
 
 		if (res)
 			CPRINTS("Err: board_init mux port(%d): %d", port, res);
@@ -110,7 +110,7 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 
 	/* Configure superspeed lanes */
 	mux_state = polarity ? mux_mode | MUX_POLARITY_INVERTED : mux_mode;
-	res = mux->driver->set(port, mux_state);
+	res = mux->driver->set(mux, mux_state);
 	if (res) {
 		CPRINTS("Err: set mux port(%d): %d", port, res);
 		return;
@@ -120,6 +120,10 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 		CPRINTS(
 		     "usb/dp mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
 		     port, mux_mode, usb_mode, polarity);
+
+	/* Apply board specific setting */
+	if (mux->board_set)
+		mux->board_set(mux, mux_state);
 
 	/*
 	 * If we are completely disconnecting the mux, then we should put it in
@@ -138,7 +142,7 @@ int usb_mux_get(int port, const char **dp_str, const char **usb_str)
 
 	exit_low_power_mode(port);
 
-	res = mux->driver->get(port, &mux_state);
+	res = mux->driver->get(mux, &mux_state);
 	if (res) {
 		CPRINTS("Err: get mux port(%d): %d", port, res);
 		return 0;
@@ -161,7 +165,7 @@ void usb_mux_flip(int port)
 
 	exit_low_power_mode(port);
 
-	res = mux->driver->get(port, &mux_state);
+	res = mux->driver->get(mux, &mux_state);
 	if (res) {
 		CPRINTS("Err: get mux port(%d): %d", port, res);
 		return;
@@ -172,7 +176,7 @@ void usb_mux_flip(int port)
 	else
 		mux_state |= MUX_POLARITY_INVERTED;
 
-	res = mux->driver->set(port, mux_state);
+	res = mux->driver->set(mux, mux_state);
 	if (res)
 		CPRINTS("Err: set mux port(%d): %d", port, res);
 }
@@ -238,14 +242,14 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 
 	mux = &usb_muxes[port];
-	if (mux->driver->get(port, &r->flags) != EC_SUCCESS)
+	if (mux->driver->get(mux, &r->flags) != EC_SUCCESS)
 		return EC_RES_ERROR;
 
 #ifdef CONFIG_USB_MUX_VIRTUAL
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if ((r->flags & USB_PD_MUX_HPD_IRQ) &&
 	    mux->hpd_update == &virtual_hpd_update)
-		mux->hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
+		mux->hpd_update(mux, r->flags & USB_PD_MUX_HPD_LVL, 0);
 #endif
 
 	args->response_size = sizeof(*r);
@@ -254,3 +258,20 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
+
+
+void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	mux_state_t mux_state;
+	const struct usb_mux *mux_ptr = &usb_muxes[port];
+
+	for (; mux_ptr; mux_ptr = mux_ptr->next_mux)
+		if (mux_ptr->hpd_update)
+			mux_ptr->hpd_update(mux_ptr, hpd_lvl, hpd_irq);
+
+	if (mux_ptr->driver->get(mux_ptr, &mux_state)) {
+		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
+			     (hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
+		mux_ptr->driver->set(mux_ptr, mux_state);
+	}
+}
