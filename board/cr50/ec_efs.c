@@ -117,7 +117,7 @@ DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
 
 void ec_efs_reset(void)
 {
-	set_boot_mode_(EC_EFS_BOOT_MODE_NORMAL);
+	set_boot_mode_(EC_EFS_BOOT_MODE_UNSET);
 }
 
 /*
@@ -138,7 +138,8 @@ uint16_t ec_efs_set_boot_mode(const char * const data, const uint8_t size)
 
 	boot_mode = data[0];
 
-	if (boot_mode != EC_EFS_BOOT_MODE_NORMAL) {
+	if ((boot_mode != EC_EFS_BOOT_MODE_UNSET) &&
+	    (boot_mode != ec_efs_ctx.boot_mode)) {
 		board_reboot_ec_deferred(0);
 		return 0;
 	}
@@ -177,10 +178,13 @@ uint16_t ec_efs_verify_hash(const char *hash_data, const uint8_t size)
 		return CR50_COMM_ERROR_BAD_PAYLOAD;
 	}
 
-	if (ec_efs_ctx.boot_mode != EC_EFS_BOOT_MODE_NORMAL) {
+	if ((ec_efs_ctx.boot_mode != EC_EFS_BOOT_MODE_NORMAL) &&
+	    (ec_efs_ctx.boot_mode != EC_EFS_BOOT_MODE_UNSET)) {
 		board_reboot_ec_deferred(0);
 		return 0;
 	}
+
+	set_boot_mode_(EC_EFS_BOOT_MODE_NORMAL);
 
 	return CR50_COMM_SUCCESS;
 }
