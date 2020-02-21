@@ -3867,9 +3867,6 @@
 /* Type-C retimer used with virtual mux */
 #undef CONFIG_USBC_VIRTUAL_MUX_RETIMER
 
-/* Type-C retimer used with real mux */
-#undef CONFIG_USBC_MUX_RETIMER
-
 /*
  * Type-C retimer drivers to be used in on-board applications.
  */
@@ -4202,6 +4199,9 @@
 
 /******************************************************************************/
 /* USB port switch */
+
+/* Allow run-time completion of the usb mux driver structure */
+#undef CONFIG_USB_MUX_RUNTIME_CONFIG
 
 /* Support the AMD FP5 USB/DP Mux */
 #undef CONFIG_USB_MUX_AMD_FP5

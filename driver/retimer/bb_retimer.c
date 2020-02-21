@@ -21,7 +21,8 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-static int bb_retimer_read(int port, const uint8_t offset, uint32_t *data)
+static int bb_retimer_read(const struct usb_mux *me,
+			   const uint8_t offset, uint32_t *data)
 {
 	int rv;
 	uint8_t buf[BB_RETIMER_READ_SIZE];
@@ -33,8 +34,8 @@ static int bb_retimer_read(int port, const uint8_t offset, uint32_t *data)
 	 * byte[1:4] : Data [LSB -> MSB]
 	 * Stop
 	 */
-	rv = i2c_xfer(bb_retimers[port].i2c_port, bb_retimers[port].i2c_addr,
-			&offset, 1, buf, BB_RETIMER_READ_SIZE);
+	rv = i2c_xfer(me->i2c_port, me->i2c_addr_flags,
+		      &offset, 1, buf, BB_RETIMER_READ_SIZE);
 	if (rv)
 		return rv;
 	if (buf[0] != BB_RETIMER_REG_SIZE)
@@ -45,7 +46,8 @@ static int bb_retimer_read(int port, const uint8_t offset, uint32_t *data)
 	return EC_SUCCESS;
 }
 
-static int bb_retimer_write(int port, const uint8_t offset, uint32_t data)
+static int bb_retimer_write(const struct usb_mux *me,
+			    const uint8_t offset, uint32_t data)
 {
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
 
@@ -64,16 +66,17 @@ static int bb_retimer_write(int port, const uint8_t offset, uint32_t data)
 	buf[4] = (data >> 16) & 0xFF;
 	buf[5] = (data >> 24) & 0xFF;
 
-	return i2c_xfer(bb_retimers[port].i2c_port, bb_retimers[port].i2c_addr,
+	return i2c_xfer(me->i2c_port,
+			me->i2c_addr_flags,
 			buf, BB_RETIMER_WRITE_SIZE, NULL, 0);
 }
 
-static void bb_retimer_power_handle(int port, int on_off)
+static void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 {
 	struct bb_retimer *retimer;
 
 	/* handle retimer's power domain */
-	retimer = &bb_retimers[port];
+	retimer = &bb_retimers[me->usb_port];
 
 	if (on_off) {
 		gpio_set_level(retimer->usb_ls_en_gpio, 1);
@@ -100,10 +103,11 @@ static void bb_retimer_power_handle(int port, int on_off)
 	}
 }
 
-int retimer_set_state(int port, mux_state_t mux_state)
+static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 {
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
+	int port = me->usb_port;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -191,30 +195,30 @@ int retimer_set_state(int port, mux_state_t mux_state)
 		set_retimer_con |= BB_RETIMER_DEBUG_ACCESSORY_MODE;
 
 	/* Writing the register4 */
-	return bb_retimer_write(port, BB_RETIMER_REG_CONNECTION_STATE,
+	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
 }
 
-int retimer_low_power_mode(int port)
+static int retimer_low_power_mode(const struct usb_mux *me)
 {
-	bb_retimer_power_handle(port, 0);
+	bb_retimer_power_handle(me, 0);
 	return EC_SUCCESS;
 }
 
-int retimer_init(int port)
+static int retimer_init(const struct usb_mux *me)
 {
 	int rv;
 	uint32_t data;
 
-	bb_retimer_power_handle(port, 1);
+	bb_retimer_power_handle(me, 1);
 
-	rv = bb_retimer_read(port, BB_RETIMER_REG_VENDOR_ID, &data);
+	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
 	if (rv)
 		return rv;
 	if (data != BB_RETIMER_VENDOR_ID)
 		return EC_ERROR_UNKNOWN;
 
-	rv = bb_retimer_read(port, BB_RETIMER_REG_DEVICE_ID, &data);
+	rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
 	if (rv)
 		return rv;
 
@@ -224,11 +228,18 @@ int retimer_init(int port)
 	return EC_SUCCESS;
 }
 
+const struct usb_mux_driver bb_usb_retimer = {
+	.init = retimer_init,
+	.set = retimer_set_state,
+	.enter_low_power_mode = retimer_low_power_mode,
+};
+
 #ifdef CONFIG_CMD_RETIMER
 static int console_command_bb_retimer(int argc, char **argv)
 {
 	char rw, *e;
 	int rv, port, reg, data, val;
+	const struct usb_mux *mux;
 
 	if (argc < 4)
 		return EC_ERROR_PARAM_COUNT;
@@ -236,6 +247,16 @@ static int console_command_bb_retimer(int argc, char **argv)
 	/* Get port number */
 	port = strtoi(argv[1], &e, 0);
 	if (*e || port < 0 || port > board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM1;
+
+	mux = &usb_muxes[port];
+	while (mux) {
+		if (mux->driver == &bb_usb_retimer)
+			break;
+		mux = mux->next_mux;
+	}
+
+	if (!mux)
 		return EC_ERROR_PARAM1;
 
 	/* Validate r/w selection */
@@ -249,16 +270,16 @@ static int console_command_bb_retimer(int argc, char **argv)
 		return EC_ERROR_PARAM3;
 
 	if (rw == 'r')
-		rv = bb_retimer_read(port, reg, &data);
+		rv = bb_retimer_read(mux, reg, &data);
 	else {
 		/* Get value to be written */
 		val = strtoi(argv[4], &e, 0);
 		if (*e || val < 0)
 			return EC_ERROR_PARAM4;
 
-		rv = bb_retimer_write(port, reg, val);
+		rv = bb_retimer_write(mux, reg, val);
 		if (rv == EC_SUCCESS) {
-			rv = bb_retimer_read(port, reg, &data);
+			rv = bb_retimer_read(mux, reg, &data);
 			if (rv == EC_SUCCESS && data != val)
 				rv = EC_ERROR_UNKNOWN;
 		}
