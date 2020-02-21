@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2a4de6e_0744300b",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bf00fd0_d04e84f7",
+      "range": {
+        "startLine": 233,
+        "startChar": 24,
+        "endLine": 233,
+        "endChar": 38
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc6f7642_db11fbe8",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631d0524_8f657c48",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "hpd_update does not call this with the head of the chain.",
+      "parentUuid": "fc6f7642_db11fbe8",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d4ba30a8_ef6515ab",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc6d8258_c33cb6b4",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25c46aa7_9c8040bf",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f9bbeb_b1d8983a",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c46aa7_9c8040bf",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1281c2a9_3d4e6b52",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6323611_032ce919",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d8e9587_7f585683",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2020-02-21T21:46:29Z",
       "side": 1,
       "message": "I imagined this as another USB_MUX_FLAG_ that said USB_MUX_FLAG_NEVER_FLIPP\n\nor something like that. Thoughts?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 27
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ac7c0f_356e4670",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "I was leaving it generic so any other bits could be turned off in the same manner.  If you do not think this flexibility is required, I can reduce this to a FLAG bit",
+      "parentUuid": "3d8e9587_7f585683",
       "range": {
         "startLine": 94,
         "startChar": 1,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "53485cec_622fff59",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deeb4ef9_d23dd8c4",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 47
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0172becd_b94e7ea0",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2020-02-21T21:46:29Z",
       "side": 1,
       "message": "question: what do you think about making this change in these CL sets since we are cleaning things up?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97650562_6f74933f",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-21T22:52:55Z",
+      "side": 1,
+      "message": "I need to think about this before I add it to an already large CL",
+      "parentUuid": "0172becd_b94e7ea0",
       "range": {
         "startLine": 114,
         "startChar": 3,
