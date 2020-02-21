@@ -46,6 +46,30 @@
       "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c41e7db_cf797717",
+        "filename": "test/is_enabled.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T23:02:44Z",
+      "side": 1,
+      "message": "How about https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1053753#c6?",
+      "parentUuid": "8e84e06a_0bb6369c",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
