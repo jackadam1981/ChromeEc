@@ -32,9 +32,9 @@ static void enter_low_power_mode(int port)
 	int res;
 
 	/*
-	 * Set LPM flag regardless of method presence or method failure. We want
-	 * know know that we tried to put the device in low power mode so we can
-	 * re-initialize the device on the next access.
+	 * Set LPM flag regardless of method presence or method failure. We
+	 * want know know that we tried to put the device in low power mode
+	 * so we can re-initialize the device on the next access.
 	 */
 	flags[port] |= USB_MUX_FLAG_IN_LPM;
 
@@ -254,3 +254,30 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
+
+
+static void perform_mux_hpd_update(int port, int index, mux_state_t hpd_state)
+{
+	/* Perform initialization if not initialized yet */
+	if (!(flags[port] & USB_MUX_FLAG_INIT))
+		usb_mux_init(port);
+
+	if (exit_low_power_mode(port) != EC_SUCCESS)
+		return;
+
+	configure_mux(port, index, USB_MUX_HPD_UPDATE, &hpd_state);
+}
+
+void usb_mux_hpd_update(int port, mux_state_t hpd_state)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	/* Send to the mux task if present to maintain sequencing with sets */
+	if (IS_ENABLED(HAS_TASK_USB_MUX))
+		mux_task_enqueue(port, TYPEC_USB_MUX_SET_ALL_CHIPS,
+				 USB_MUX_HPD_UPDATE, hpd_state, 0, 0);
+	else
+		perform_mux_hpd_update(port, TYPEC_USB_MUX_SET_ALL_CHIPS,
+				       hpd_state);
+}

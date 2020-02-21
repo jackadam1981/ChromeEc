@@ -21,7 +21,6 @@
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
-#include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "ec_commands.h"
@@ -458,14 +457,19 @@ void bc12_interrupt(enum gpio_signal signal)
 
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
 		.driver = &amd_fp5_usb_mux_driver,
+		.next_mux = &usbc0_pi3dpx1207_usb_retimer,
 	},
 	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.i2c_port = I2C_PORT_TCPC1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
 
 struct ioexpander_config_t ioex_config[] = {
 	[USBC_PORT_C0] = {
