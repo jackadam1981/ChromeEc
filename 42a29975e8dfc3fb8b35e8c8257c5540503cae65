@@ -330,6 +330,30 @@
       "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3f84cf_5e09fb3d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T03:24:20Z",
+      "side": 1,
+      "message": "Hmm... That\u0027s right. I suppose your macro trick is a good step forward, then.\n\nLooking at the codebase, it wouldn\u0027t be much hustle even if we deprecate ec_current_image here today. I see only a few lines referring ec_current_image in each foreign project and none in mosys and depthcharge.",
+      "parentUuid": "99bf9e0b_d71e07d2",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
