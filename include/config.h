@@ -2367,6 +2367,9 @@
 /* Compile code for 8042 keyboard protocol */
 #undef CONFIG_KEYBOARD_PROTOCOL_8042
 
+/* Disable code for chromeos vivaldi keyboard (standard for new devices) */
+#undef CONFIG_KEYBOARD_DISABLE_VIVALDI
+
 /* Compile code for MKBP keyboard protocol */
 #undef CONFIG_KEYBOARD_PROTOCOL_MKBP
 
@@ -5282,5 +5285,12 @@
 #define CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES 0.001f
 #endif
 #endif /* CONFIG_ONLINE_CALIB */
+
+/* Enable Vivaldi keyboard code if the board has not disabled it explicitly */
+#ifdef CONFIG_KEYBOARD_PROTOCOL_8042
+#ifndef CONFIG_KEYBOARD_DISABLE_VIVALDI
+#define CONFIG_KEYBOARD_VIVALDI
+#endif
+#endif
 
 #endif  /* __CROS_EC_CONFIG_H */
