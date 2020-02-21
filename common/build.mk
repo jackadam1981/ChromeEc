@@ -90,7 +90,7 @@ common-$(CONFIG_I2C_SLAVE)+=i2c_slave.o
 common-$(CONFIG_I2C_VIRTUAL_BATTERY)+=virtual_battery.o
 common-$(CONFIG_INDUCTIVE_CHARGING)+=inductive_charging.o
 common-$(CONFIG_KEYBOARD_PROTOCOL_8042)+=keyboard_8042.o \
-	keyboard_8042_sharedlib.o
+	keyboard_8042_sharedlib.o keyboard_vivaldi.o
 common-$(CONFIG_KEYBOARD_PROTOCOL_MKBP)+=keyboard_mkbp.o
 common-$(CONFIG_KEYBOARD_TEST)+=keyboard_test.o
 common-$(CONFIG_LED_COMMON)+=led_common.o
