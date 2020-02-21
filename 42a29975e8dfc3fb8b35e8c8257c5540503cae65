@@ -306,6 +306,30 @@
       "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99bf9e0b_d71e07d2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-21T00:16:14Z",
+      "side": 1,
+      "message": "Actually, you can\u0027t make the definitions have the same name (EC_IMAGE_RO, etc) because enums in C are global:\n\n include/ec_commands.h:1067:2: error: redeclaration of enumerator \u0027EC_IMAGE_RO_B\u0027\n  EC_IMAGE_RO_B,\n  ^~~~~~~~~~~~~\n\n include/ec_commands.h:1058:2: note: previous definition of \u0027EC_IMAGE_RO_B\u0027 was here\n  EC_IMAGE_RO_B,",
+      "parentUuid": "028560d1_8f3da159",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
