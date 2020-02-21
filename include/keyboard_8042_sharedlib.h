@@ -96,14 +96,38 @@ enum scancode_values {
 	SCANCODE_B = 0x0032,
 	SCANCODE_T = 0x002c,
 
-	SCANCODE_F1 = 0x0005,
-	SCANCODE_F2 = 0x0006,
-	SCANCODE_F3 = 0x0004,
-	SCANCODE_F4 = 0x000c,
-	SCANCODE_F5 = 0x0003,
-	SCANCODE_F6 = 0x000b,
-	SCANCODE_F7 = 0x0083,
-	SCANCODE_F8 = 0x000a,
+	SCANCODE_F1 = 0x0005,	/* Translates to 3B in codeset 1 */
+	SCANCODE_F2 = 0x0006,	/* Translates to 3C in codeset 1 */
+	SCANCODE_F3 = 0x0004,	/* Translates to 3D in codeset 1 */
+	SCANCODE_F4 = 0x000c,	/* Translates to 3E in codeset 1 */
+	SCANCODE_F5 = 0x0003,	/* Translates to 3F in codeset 1 */
+	SCANCODE_F6 = 0x000b,	/* Translates to 40 in codeset 1 */
+	SCANCODE_F7 = 0x0083,	/* Translates to 41 in codeset 1 */
+	SCANCODE_F8 = 0x000a,	/* Translates to 42 in codeset 1 */
+	SCANCODE_F9 = 0x0001,	/* Translates to 43 in codeset 1 */
+	SCANCODE_F10 = 0x0009,	/* Translates to 44 in codeset 1 */
+	SCANCODE_F11 = 0x0078,	/* Translates to 57 in codeset 1 */
+	SCANCODE_F12 = 0x0007,	/* Translates to 58 in codeset 1 */
+	SCANCODE_F13 = 0x000F,	/* Translates to 59 in codeset 1 */
+	SCANCODE_F14 = 0x0017,	/* Translates to 5A in codeset 1 */
+	SCANCODE_F15 = 0x001F,	/* Translates to 5B in codeset 1 */
+
+	SCANCODE_BACK =	0xE038,			/* E06A in codeset 1 */
+	SCANCODE_REFRESH = 0xE020,		/* E067 in codeset 1 */
+	SCANCODE_ZOOM = 0xE01D,			/* E011 in codeset 1 */
+	SCANCODE_SCALE = 0xE024,		/* E012 in codeset 1 */
+	SCANCODE_SNIP = 0xE02D,			/* E013 in codeset 1 */
+	SCANCODE_BRIGHTNESS_DOWN = 0xE02C,	/* E014 in codeset 1 */
+	SCANCODE_BRIGHTNESS_UP = 0xE035,	/* E015 in codeset 1 */
+	SCANCODE_PRIVACY_SCRN_TOGGLE = 0xE03C,	/* E016 in codeset 1 */
+	SCANCODE_VOLUME_MUTE = 0xE023,		/* E020 in codeset 1 */
+	SCANCODE_VOLUME_DOWN = 0xE021,		/* E02E in codeset 1 */
+	SCANCODE_VOLUME_UP = 0xE032,		/* E030 in codeset 1 */
+	SCANCODE_KBD_BKLIGHT_DOWN = 0xE043,	/* E017 in codeset 1 */
+	SCANCODE_KBD_BKLIGHT_UP = 0xE044,	/* E018 in codeset 1 */
+	SCANCODE_NEXT_TRACK = 0xE04D,		/* E019 in codeset 1 */
+	SCANCODE_PREV_TRACK = 0xE015,		/* E010 in codeset 1 */
+	SCANCODE_PLAY_PAUSE = 0xE054,		/* E01A in codeset 1 */
 
 	SCANCODE_UP = 0xe075,
 	SCANCODE_DOWN = 0xe072,
@@ -120,8 +144,6 @@ enum scancode_values {
 	SCANCODE_MENU = 0xe02f,
 
 	SCANCODE_POWER = 0xe037,
-	SCANCODE_VOLUME_DOWN = 0xe021,
-	SCANCODE_VOLUME_UP = 0xe032,
 
 	SCANCODE_NUMLOCK = 0x0077,
 	SCANCODE_CAPSLOCK = 0x0058,
