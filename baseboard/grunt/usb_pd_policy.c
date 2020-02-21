@@ -144,7 +144,8 @@ __override void svdm_dp_post_config(int port)
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
-	mux->hpd_update(port, 1, 0);
+	if (mux->hpd_update)
+		mux->hpd_update(mux, 1, 0);
 }
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */

@@ -181,7 +181,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 
 	dp_status[port] = payload[1];
 
-	mux->hpd_update(port, lvl, irq);
+	mux->hpd_update(mux, lvl, irq);
 
 	if (lvl && is_dp_muxable(port)) {
 		/*
