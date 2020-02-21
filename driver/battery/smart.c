@@ -10,6 +10,7 @@
 #include "console.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "smbus.h"
 #include "timer.h"
 #include "util.h"
 
@@ -55,10 +56,22 @@ test_mockable int sb_read(int cmd, int *param)
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+#ifdef CONFIG_SMBUS
+	{
+		int rv;
+		uint16_t d16 = 0;
+		rv = smbus_read_word(I2C_PORT_BATTERY, addr_flags, cmd, &d16);
+		*param = d16;
+		return rv;
+	}
+#else
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
 	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+#endif
+
 }
 
 test_mockable int sb_write(int cmd, int param)
@@ -72,10 +85,15 @@ test_mockable int sb_write(int cmd, int param)
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+#ifdef CONFIG_SMBUS
+	return smbus_write_word(I2C_PORT_BATTERY, addr_flags, cmd, param);
+#else
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
 	return i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+#endif
 }
 
 int sb_read_string(int offset, uint8_t *data, int len)
@@ -89,10 +107,17 @@ int sb_read_string(int offset, uint8_t *data, int len)
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+#ifdef CONFIG_SMBUS
+	return smbus_read_string(I2C_PORT_BATTERY, addr_flags,
+				offset, data, len);
+#else
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data, len);
+	return i2c_read_string(I2C_PORT_BATTERY, addr_flags,
+				offset, data, len);
+#endif
 }
 
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
