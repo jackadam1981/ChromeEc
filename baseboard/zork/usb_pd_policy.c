@@ -136,7 +136,7 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 
 __override void svdm_dp_post_config(int port)
 {
-	const struct usb_mux * const mux = &usb_muxes[port];
+	struct usb_mux *mux = usb_muxes[port];
 
 	/* Connect the SBU and USB lines to the connector. */
 	ppc_set_sbu(port, 1);
@@ -153,12 +153,12 @@ __override void svdm_dp_post_config(int port)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 
 	if (mux->hpd_update)
-		mux->hpd_update(port, 1, 0);
+		mux->hpd_update(mux, 1, 0);
 }
 
 __override void svdm_exit_dp_mode(int port)
 {
-	const struct usb_mux * const mux = &usb_muxes[port];
+	struct usb_mux *mux = usb_muxes[port];
 
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
@@ -168,6 +168,6 @@ __override void svdm_exit_dp_mode(int port)
 	gpio_set_level(PORT_TO_HPD(port), 0);
 
 	if (mux->hpd_update)
-		mux->hpd_update(port, 0, 0);
+		mux->hpd_update(mux, 0, 0);
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
