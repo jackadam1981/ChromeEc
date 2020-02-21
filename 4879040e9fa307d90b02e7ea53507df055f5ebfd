@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33e41b5f_5583c972",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-02-21T05:15:02Z",
+      "side": 1,
+      "message": "This the property of ISH version 5.4 and may be inherited by versions after 5.4,\nbut it is hard to find an appropriate name for it. Is the \"CONFIG_POST_ISH54_PM\" ok?",
+      "parentUuid": "984c1be1_a7e7acce",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "4879040e9fa307d90b02e7ea53507df055f5ebfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8839cc88_0fc184a3",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 6
