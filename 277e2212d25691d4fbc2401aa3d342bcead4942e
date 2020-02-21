@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "828ebf32_889a55f1",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-02-21T22:07:22Z",
+      "side": 1,
+      "message": "is verbose left over from debugging?  i\u0027m not sure it\nmakes a lot of sense to report this in isolation.",
+      "range": {
+        "startLine": 477,
+        "startChar": 15,
+        "endLine": 477,
+        "endChar": 23
+      },
+      "revId": "277e2212d25691d4fbc2401aa3d342bcead4942e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
