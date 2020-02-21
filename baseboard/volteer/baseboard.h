@@ -234,7 +234,7 @@
 #define PD_MAX_POWER_MW		60000
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
-
+//learn how to upload cl
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C
