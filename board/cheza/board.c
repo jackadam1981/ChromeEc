@@ -294,23 +294,23 @@ const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
  * Redirect to anx74xx_tcpm_usb_mux_driver but override the get() function
  * to check the HPD_IRQ mask from virtual_usb_mux_driver.
  */
-static int port0_usb_mux_init(int port)
+static int port0_usb_mux_init(const struct usb_mux *me)
 {
-	return anx74xx_tcpm_usb_mux_driver.init(port);
+	return anx74xx_tcpm_usb_mux_driver.init(me);
 }
 
-static int port0_usb_mux_set(int i2c_addr, mux_state_t mux_state)
+static int port0_usb_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 {
-	return anx74xx_tcpm_usb_mux_driver.set(i2c_addr, mux_state);
+	return anx74xx_tcpm_usb_mux_driver.set(me, mux_state);
 }
 
-static int port0_usb_mux_get(int port, mux_state_t *mux_state)
+static int port0_usb_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int rv;
 	mux_state_t virtual_mux_state;
 
-	rv = anx74xx_tcpm_usb_mux_driver.get(port, mux_state);
-	rv |= virtual_usb_mux_driver.get(port, &virtual_mux_state);
+	rv = anx74xx_tcpm_usb_mux_driver.get(me, mux_state);
+	rv |= virtual_usb_mux_driver.get(me, &virtual_mux_state);
 
 	if (virtual_mux_state & USB_PD_MUX_HPD_IRQ)
 		*mux_state |= USB_PD_MUX_HPD_IRQ;
@@ -330,32 +330,32 @@ const struct usb_mux_driver port0_usb_mux_driver = {
  * Redirect to tcpci_tcpm_usb_mux_driver but override the get() function
  * to check the HPD_IRQ mask from virtual_usb_mux_driver.
  */
-static int port1_usb_mux_init(int port)
+static int port1_usb_mux_init(const struct usb_mux *me)
 {
-	return tcpci_tcpm_usb_mux_driver.init(port);
+	return tcpci_tcpm_usb_mux_driver.init(me);
 }
 
-static int port1_usb_mux_set(int i2c_addr, mux_state_t mux_state)
+static int port1_usb_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 {
-	return tcpci_tcpm_usb_mux_driver.set(i2c_addr, mux_state);
+	return tcpci_tcpm_usb_mux_driver.set(me, mux_state);
 }
 
-static int port1_usb_mux_get(int port, mux_state_t *mux_state)
+static int port1_usb_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int rv;
 	mux_state_t virtual_mux_state;
 
-	rv = tcpci_tcpm_usb_mux_driver.get(port, mux_state);
-	rv |= virtual_usb_mux_driver.get(port, &virtual_mux_state);
+	rv = tcpci_tcpm_usb_mux_driver.get(me, mux_state);
+	rv |= virtual_usb_mux_driver.get(me, &virtual_mux_state);
 
 	if (virtual_mux_state & USB_PD_MUX_HPD_IRQ)
 		*mux_state |= USB_PD_MUX_HPD_IRQ;
 	return rv;
 }
 
-static int port1_usb_mux_enter_low_power(int port)
+static int port1_usb_mux_enter_low_power(const struct usb_mux *me)
 {
-	return tcpci_tcpm_usb_mux_driver.enter_low_power_mode(port);
+	return tcpci_tcpm_usb_mux_driver.enter_low_power_mode(me);
 }
 
 const struct usb_mux_driver port1_usb_mux_driver = {
@@ -365,12 +365,14 @@ const struct usb_mux_driver port1_usb_mux_driver = {
 	.enter_low_power_mode = &port1_usb_mux_enter_low_power,
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+		.usb_port = 0,
 		.driver = &port0_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
 	{
+		.usb_port = 1,
 		.driver = &port1_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	}
@@ -431,7 +433,7 @@ void board_tcpc_init(void)
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		const struct usb_mux *mux = &usb_muxes[port];
 
-		mux->hpd_update(port, 0, 0);
+		mux->hpd_update(mux, 0, 0);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);

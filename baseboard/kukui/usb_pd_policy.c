@@ -192,7 +192,7 @@ __override void svdm_dp_post_config(int port)
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
-	mux->hpd_update(port, 1, 0);
+	mux->hpd_update(mux, 1, 0);
 }
 
 __override int svdm_dp_attention(int port, uint32_t *payload)
@@ -211,7 +211,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 		return 1;
 	}
 
-	mux->hpd_update(port, lvl, irq);
+	mux->hpd_update(mux, lvl, irq);
 
 	if (irq & cur_lvl) {
 		uint64_t now = get_time().val;
@@ -257,6 +257,6 @@ __override void svdm_exit_dp_mode(int port)
 #ifdef VARIANT_KUKUI_DP_MUX_GPIO
 	board_set_dp_mux_control(0, 0);
 #endif
-	mux->hpd_update(port, 0, 0);
+	mux->hpd_update(mux, 0, 0);
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */

@@ -166,12 +166,14 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+		.usb_port = 0,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 	{
+		.usb_port = 1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
@@ -234,7 +236,7 @@ void board_tcpc_init(void)
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		const struct usb_mux *mux = &usb_muxes[port];
 
-		mux->hpd_update(port, 0, 0);
+		mux->hpd_update(mux, 0, 0);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
