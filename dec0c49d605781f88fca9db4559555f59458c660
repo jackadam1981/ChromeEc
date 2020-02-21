@@ -22,6 +22,30 @@
       "revId": "dec0c49d605781f88fca9db4559555f59458c660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efceed82_a99cda93",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T02:43:31Z",
+      "side": 1,
+      "message": "That change requires a counter part in EC. We should make only necessary changes now.",
+      "parentUuid": "cba77db1_0c7815d2",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "dec0c49d605781f88fca9db4559555f59458c660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
