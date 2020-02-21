@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4391bccb_57c9b961",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-21T18:57:49Z",
+      "side": 1,
+      "message": "you can move this into the else clause after line 132",
+      "revId": "a623ca66eafbcd9842ef93bc03b9da36f062deb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c87ecdac_404e3da6",
         "filename": "board/cr50/ec_efs.c",
         "patchSetId": 37
