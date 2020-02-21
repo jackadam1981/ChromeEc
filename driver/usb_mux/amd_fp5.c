@@ -11,7 +11,7 @@
 #include "i2c.h"
 #include "usb_mux.h"
 
-static inline int amd_fp5_mux_read(int port, uint8_t *val)
+static inline int amd_fp5_mux_read(const struct usb_mux *me, uint8_t *val)
 {
 	uint8_t buf[3] = { 0 };
 	int rv;
@@ -21,23 +21,23 @@ static inline int amd_fp5_mux_read(int port, uint8_t *val)
 	if (rv)
 		return rv;
 
-	*val = buf[port + 1];
+	*val = buf[me->usb_port + 1];
 
 	return EC_SUCCESS;
 }
 
-static inline int amd_fp5_mux_write(int port, uint8_t val)
+static inline int amd_fp5_mux_write(const struct usb_mux *me, uint8_t val)
 {
 	return i2c_write8(I2C_PORT_USB_MUX, AMD_FP5_MUX_I2C_ADDR_FLAGS,
-			  port, val);
+			  me->usb_port, val);
 }
 
-static int amd_fp5_init(int port)
+static int amd_fp5_init(const struct usb_mux *me)
 {
 	return EC_SUCCESS;
 }
 
-static int amd_fp5_set_mux(int port, mux_state_t mux_state)
+static int amd_fp5_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	uint8_t val = 0;
 
@@ -62,10 +62,10 @@ static int amd_fp5_set_mux(int port, mux_state_t mux_state)
 		val = (mux_state & MUX_POLARITY_INVERTED)
 			? AMD_FP5_MUX_DP_INVERTED : AMD_FP5_MUX_DP;
 
-	return amd_fp5_mux_write(port, val);
+	return amd_fp5_mux_write(me, val);
 }
 
-static int amd_fp5_get_mux(int port, mux_state_t *mux_state)
+static int amd_fp5_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	uint8_t val = AMD_FP5_MUX_SAFE;
 
@@ -77,11 +77,10 @@ static int amd_fp5_get_mux(int port, mux_state_t *mux_state)
 	if (!chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
 		int rv;
 
-		rv = amd_fp5_mux_read(port, &val);
+		rv = amd_fp5_mux_read(me, &val);
 		if (rv)
 			return rv;
 	}
-
 
 	switch (val) {
 	case AMD_FP5_MUX_USB:
@@ -113,7 +112,7 @@ static int amd_fp5_get_mux(int port, mux_state_t *mux_state)
 }
 
 const struct usb_mux_driver amd_fp5_usb_mux_driver = {
-	.init = amd_fp5_init,
-	.set = amd_fp5_set_mux,
-	.get = amd_fp5_get_mux,
+	.init = &amd_fp5_init,
+	.set = &amd_fp5_set_mux,
+	.get = &amd_fp5_get_mux,
 };
