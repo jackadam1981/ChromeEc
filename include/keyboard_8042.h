@@ -45,4 +45,24 @@ void keyboard_host_write(int data, int is_cmd);
 enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
 					      int8_t pressed);
 
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
+=======
+/**
+ * Send aux response data to host.
+ *
+ * @param data	Aux response to send to host.
+ */
+void send_aux_data_to_host(uint8_t data);
+
+/**
+ * Send aux data to device.
+ *
+ * @param data	Aux data to send to device.
+ */
+void send_aux_data_to_device(uint8_t data);
+
+extern struct top_row_layout *vivaldi_top_row;
+__override_proto void board_set_vivaldi_top_row(void);
+
+>>>>>>> CHANGE (6c217a common/keyboard: Start sending action codes by default (aka )
 #endif  /* __CROS_EC_KEYBOARD_8042_H */

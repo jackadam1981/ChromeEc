@@ -112,6 +112,7 @@ enum scancode_values {
 
 	SCANCODE_BACK =	0xe038,			/* e06a in codeset 1 */
 	SCANCODE_REFRESH = 0xe020,		/* e067 in codeset 1 */
+	SCANCODE_FORWARD = 0xe030,		/* e069 in codeset 1 */
 	SCANCODE_FULLSCREEN = 0xe01d,		/* e011 in codeset 1 */
 	SCANCODE_OVERVIEW = 0xe024,		/* e012 in codeset 1 */
 	SCANCODE_SNIP = 0xe02d,			/* e013 in codeset 1 */
