@@ -158,9 +158,9 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
+		const struct usb_mux *mux = usb_muxes[port];
 
-		mux->hpd_update(port, 0, 0);
+		mux->hpd_update(mux, 0, 0);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
@@ -280,32 +280,35 @@ void board_reset_pd_mcu(void)
 
 static uint32_t sku_id;
 
-static int ps8751_tune_mux(int port)
+static int ps8751_tune_mux(const struct usb_mux *me)
 {
 	/* Tune USB mux registers for treeya's port 1 Rx measurement */
 	if ((sku_id >= 0xa0) && (sku_id <= 0xaf))
-		mux_write(port, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
+		mux_write(me, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
 
 	return EC_SUCCESS;
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usbc0_anx74xx_mux = {
+	.usb_port = USB_PD_PORT_ANX74XX,
 #ifdef VARIANT_GRUNT_TCPC_0_ANX3429
-	[USB_PD_PORT_ANX74XX] = {
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
-	},
+	.driver = &anx74xx_tcpm_usb_mux_driver,
+	.hpd_update = &anx74xx_tcpc_update_hpd_status,
 #elif defined(VARIANT_GRUNT_TCPC_0_ANX3447)
-	[USB_PD_PORT_ANX74XX] = {
-		.driver = &anx7447_usb_mux_driver,
-		.hpd_update = &anx7447_tcpc_update_hpd_status,
-	},
+	.driver = &anx7447_usb_mux_driver,
+	.hpd_update = &anx7447_tcpc_update_hpd_status,
 #endif
-	[USB_PD_PORT_PS8751] = {
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-		.board_init = &ps8751_tune_mux,
-	}
+};
+struct usb_mux usbc1_ps8751_mux = {
+	.usb_port = USB_PD_PORT_PS8751,
+	.driver = &tcpci_tcpm_usb_mux_driver,
+	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+	.board_init = &ps8751_tune_mux,
+};
+
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USB_PD_PORT_ANX74XX] = &usbc0_anx74xx_mux,
+	[USB_PD_PORT_PS8751] = &usbc1_ps8751_mux,
 };
 
 struct ppc_config_t ppc_chips[] = {

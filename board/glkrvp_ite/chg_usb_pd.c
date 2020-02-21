@@ -50,15 +50,21 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+		.usb_port = 0,
 		.port_addr = 0x10,
 		.driver = &ps874x_usb_mux_driver,
 	},
 	{
+		.usb_port = 1,
 		.port_addr = 0x11,
 		.driver = &ps874x_usb_mux_driver,
 	},
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	&usb_muxes_mem[0],
+	&usb_muxes_mem[1],
 };
 
 /* TODO: Implement this function and move to appropriate file */

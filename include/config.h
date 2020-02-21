@@ -3969,7 +3969,10 @@
  * automatically be included.  This does not stop a board/basebord.h
  * configration from defining these as well.
  */
-#undef CONFIG_USBC_MUX_RETIMER
+/*
+ * Type-C MUX Chaining to be used.
+ */
+#undef CONFIG_USBC_MUX_CHAINING
 
 /*
  * Type-C retimer drivers to be used.
@@ -4947,7 +4950,7 @@
 	defined(CONFIG_USBC_RETIMER_PI3DPX1207) || \
 	defined(CONFIG_USBC_RETIMER_PS8802) || \
 	defined(CONFIG_USBC_RETIMER_PS8818)
-#define CONFIG_USBC_MUX_RETIMER
+#define CONFIG_USBC_MUX_CHAINING
 #endif
 
 /*****************************************************************************/

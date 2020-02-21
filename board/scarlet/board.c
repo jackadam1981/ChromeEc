@@ -144,11 +144,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+		.usb_port = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	&usb_muxes_mem[0],
 };
 
 void board_reset_pd_mcu(void)

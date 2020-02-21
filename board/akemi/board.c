@@ -141,15 +141,21 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
+		.usb_port = USB_PD_PORT_TCPC_0,
 		.driver = &anx7447_usb_mux_driver,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_TCPC_1] = {
+		.usb_port = USB_PD_PORT_TCPC_1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USB_PD_PORT_TCPC_0] = &usb_muxes_mem[USB_PD_PORT_TCPC_0],
+	[USB_PD_PORT_TCPC_1] = &usb_muxes_mem[USB_PD_PORT_TCPC_1],
 };
 
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {

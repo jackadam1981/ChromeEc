@@ -98,7 +98,8 @@ struct mt6370_thermal_bound thermal_bound = {
 	.err = 4,
 };
 
-static void board_hpd_status(int port, int hpd_lvl, int hpd_irq)
+static void board_hpd_status(const struct usb_mux *me,
+			     int hpd_lvl, int hpd_irq)
 {
 	/*
 	 * svdm_dp_attention() did most of the work, we only need to notify
@@ -122,12 +123,16 @@ __override const struct rt946x_init_setting *board_rt946x_init_setting(void)
 	return &battery_init_setting;
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes_mem[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = IT5205_I2C_ADDR1_FLAGS,
+		.usb_port = 0,
+		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &board_hpd_status,
 	},
+};
+struct usb_mux *usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	&usb_muxes_mem[0],
 };
 
 uint16_t tcpc_get_alert_status(void)

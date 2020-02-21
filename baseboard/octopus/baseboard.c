@@ -227,9 +227,9 @@ void baseboard_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
+		const struct usb_mux *mux = usb_muxes[port];
 
-		mux->hpd_update(port, 0, 0);
+		mux->hpd_update(mux, 0, 0);
 	}
 }
 /* Called after the cbi_init (via +2) */
