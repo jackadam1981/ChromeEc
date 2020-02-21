@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90df2845_b8706581",
+        "filename": "test/is_enabled.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T21:57:40Z",
+      "side": 1,
+      "message": "I guess this looks more readable than #if ... #endif but it\u0027s also less obvious that this member is conditionally included. This style also makes a non-array member look like an array. Does it also work for real arrays?\n\nHow about using a wrapper? That is, we write:\n\n  int foo INCLUDE_IF(CONFIG_FOO);\n\nwhere\n\n  #define INCLUDE_IF(x) [IS_ENABLED_IF(x)]\n\nThen, we can keep the nice message of IS_ENABLED (option#3).\n\nWhat do other projects do?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
