@@ -32,9 +32,9 @@ static void enter_low_power_mode(int port)
 	int res;
 
 	/*
-	 * Set LPM flag regardless of method presence or method failure. We want
-	 * know know that we tried to put the device in low power mode so we can
-	 * re-initialize the device on the next access.
+	 * Set LPM flag regardless of method presence or method failure. We
+	 * want know know that we tried to put the device in low power mode
+	 * so we can re-initialize the device on the next access.
 	 */
 	flags[port] |= USB_MUX_FLAG_IN_LPM;
 
@@ -254,3 +254,20 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
+
+
+void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	mux_state_t mux_state;
+	const struct usb_mux *mux_ptr = &usb_muxes[port];
+
+	for (; mux_ptr; mux_ptr = mux_ptr->next_mux)
+		if (mux_ptr->hpd_update)
+			mux_ptr->hpd_update(mux_ptr, hpd_lvl, hpd_irq);
+
+	if (!configure_mux(port, USB_MUX_GET_MODE, &mux_state)) {
+		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
+			     (hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
+		configure_mux(port, USB_MUX_SET_MODE, &mux_state);
+	}
+}
