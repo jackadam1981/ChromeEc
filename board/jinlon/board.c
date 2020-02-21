@@ -25,6 +25,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_vivaldi.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -391,6 +392,25 @@ static void board_update_sensor_config_from_sku(void)
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 }
 
+const static struct vivaldi_config keybd = {
+	.num_top_row_keys = 13,
+	.scancodes = {
+		[T1] = SCANCODE_BACK,
+		[T2] = SCANCODE_REFRESH,
+		[T3] = SCANCODE_ZOOM,
+		[T4] = SCANCODE_SCALE,
+		[T5] = SCANCODE_SNIP,
+		[T6] = SCANCODE_BRIGHTNESS_DOWN,
+		[T7] = SCANCODE_BRIGHTNESS_UP,
+		[T8] = SCANCODE_PRIVACY_SCRN_TOGGLE,
+		[T9] = SCANCODE_KBD_BKLIGHT_DOWN,
+		[T10] = SCANCODE_KBD_BKLIGHT_UP,
+		[T11] = SCANCODE_VOL_MUTE,
+		[T12] = SCANCODE_VOL_DOWN,
+		[T13] = SCANCODE_VOL_UP,
+	}
+};
+
 static void board_init(void)
 {
 	/* Initialize Fans */
@@ -399,6 +419,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
 
 	board_update_sensor_config_from_sku();
+
+	vivaldi_init(&keybd);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
