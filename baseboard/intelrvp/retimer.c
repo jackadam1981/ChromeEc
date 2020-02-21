@@ -32,4 +32,5 @@ struct bb_retimer bb_retimers[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 #endif /* HAS_TASK_PD_C1 */
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_retimers) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
 #endif /* CONFIG_USBC_RETIMER_INTEL_BB */

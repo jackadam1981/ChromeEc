@@ -226,16 +226,18 @@ static void anx74xx_tcpc_discharge_vbus(int port, int enable)
  */
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
+void anx74xx_tcpc_update_hpd_status(const struct usb_mux *me,
+				    int hpd_lvl, int hpd_irq)
 {
 	int reg;
+	int port = me->usb_port;
 
-	mux_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+	mux_read(me, ANX74XX_REG_HPD_CTRL_0, &reg);
 	if (hpd_lvl)
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
 	else
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
-	mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+	mux_write(me, ANX74XX_REG_HPD_CTRL_0, reg);
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
@@ -243,12 +245,12 @@ void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 		if (now < hpd_deadline[port])
 			usleep(hpd_deadline[port] - now);
 
-		mux_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+		mux_read(me, ANX74XX_REG_HPD_CTRL_0, &reg);
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
-		mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+		mux_write(me, ANX74XX_REG_HPD_CTRL_0, reg);
 		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
-		mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+		mux_write(me, ANX74XX_REG_HPD_CTRL_0, reg);
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -264,12 +266,12 @@ void anx74xx_tcpc_clear_hpd_status(int port)
 }
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
-static int anx74xx_tcpm_mux_init(int port)
+static int anx74xx_tcpm_mux_init(const struct usb_mux *me)
 {
 	/* Nothing to do here, ANX initializes its muxes
 	 * as (MUX_USB_ENABLED | MUX_DP_ENABLED)
 	 */
-	anx[port].mux_state = MUX_USB_ENABLED | MUX_DP_ENABLED;
+	anx[me->usb_port].mux_state = MUX_USB_ENABLED | MUX_DP_ENABLED;
 
 	return EC_SUCCESS;
 }
@@ -277,10 +279,11 @@ static int anx74xx_tcpm_mux_init(int port)
 static int anx74xx_tcpm_mux_enter_safe_mode(int port)
 {
 	int reg;
+	const struct usb_mux *me = &usb_muxes[port];
 
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg |
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg |
 		       ANX74XX_REG_MODE_TRANS))
 		return EC_ERROR_UNKNOWN;
 
@@ -291,10 +294,11 @@ static int anx74xx_tcpm_mux_enter_safe_mode(int port)
 static int anx74xx_tcpm_mux_exit_safe_mode(int port)
 {
 	int reg;
+	const struct usb_mux *me = &usb_muxes[port];
 
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg &
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg &
 		       ~ANX74XX_REG_MODE_TRANS))
 		return EC_ERROR_UNKNOWN;
 
@@ -305,6 +309,7 @@ static int anx74xx_tcpm_mux_exit_safe_mode(int port)
 static int anx74xx_tcpm_mux_exit(int port)
 {
 	int reg;
+	const struct usb_mux *me = &usb_muxes[port];
 
 	/*
 	 * Safe mode must be entered before any changes are made to the mux
@@ -318,18 +323,18 @@ static int anx74xx_tcpm_mux_exit(int port)
 		return EC_ERROR_UNKNOWN;
 
 	/* Disconnect aux from sbu */
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
 		return EC_ERROR_UNKNOWN;
 
 	/* Clear Bit[7:0] R_SWITCH */
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
 		return EC_ERROR_UNKNOWN;
 	/* Clear Bit[7:4] R_SWITCH_H */
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_5, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
 		return EC_ERROR_UNKNOWN;
 
 	/* Exit safe mode */
@@ -345,6 +350,7 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 	int reg;
 	const int aux_mask = ANX74XX_REG_AUX_SWAP_SET_CC2 |
 		ANX74XX_REG_AUX_SWAP_SET_CC1;
+	const struct usb_mux *me = &usb_muxes[port];
 
 	/*
 	 * Get the current value of analog_ctrl_2 register. Note, that safe mode
@@ -352,7 +358,7 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 	 * about setting the correct value for the upper 4 bits of analog_ctrl_2
 	 * here.
 	 */
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
 
 	/* Assume aux_p/n lines are not connected */
@@ -366,25 +372,26 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 			reg |= ANX74XX_REG_AUX_SWAP_SET_CC1;
 	}
 	/* Write new aux <-> sbu settings */
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg))
 		return EC_ERROR_UNKNOWN;
 
 	return EC_SUCCESS;
 }
 
-static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
+static int anx74xx_tcpm_mux_set(const struct usb_mux *me,
+				mux_state_t mux_state)
 {
 	int ctrl5;
 	int ctrl1 = 0;
 	int rv;
-	int port = i2c_addr;
+	int port = me->usb_port;
 
 	if (!(mux_state & ~MUX_POLARITY_INVERTED)) {
 		anx[port].mux_state = mux_state;
 		return anx74xx_tcpm_mux_exit(port);
 	}
 
-	rv = mux_read(port, ANX74XX_REG_ANALOG_CTRL_5, &ctrl5);
+	rv = mux_read(me, ANX74XX_REG_ANALOG_CTRL_5, &ctrl5);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 	ctrl5 &= 0x0f;
@@ -436,9 +443,9 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 		return EC_ERROR_UNKNOWN;
 
 	/* Write updated pin assignment */
-	rv = mux_write(port, ANX74XX_REG_ANALOG_CTRL_1, ctrl1);
+	rv = mux_write(me, ANX74XX_REG_ANALOG_CTRL_1, ctrl1);
 	/* Write Rswitch config bits */
-	rv |= mux_write(port, ANX74XX_REG_ANALOG_CTRL_5, ctrl5);
+	rv |= mux_write(me, ANX74XX_REG_ANALOG_CTRL_5, ctrl5);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
@@ -457,17 +464,18 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 }
 
 /* current mux state  */
-static int anx74xx_tcpm_mux_get(int port, mux_state_t *mux_state)
+static int anx74xx_tcpm_mux_get(const struct usb_mux *me,
+				mux_state_t *mux_state)
 {
-	*mux_state = anx[port].mux_state;
+	*mux_state = anx[me->usb_port].mux_state;
 
 	return EC_SUCCESS;
 }
 
 const struct usb_mux_driver anx74xx_tcpm_usb_mux_driver = {
-	.init = anx74xx_tcpm_mux_init,
-	.set = anx74xx_tcpm_mux_set,
-	.get = anx74xx_tcpm_mux_get,
+	.init = &anx74xx_tcpm_mux_init,
+	.set = &anx74xx_tcpm_mux_set,
+	.get = &anx74xx_tcpm_mux_get,
 };
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
@@ -763,6 +771,7 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 static int anx74xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
+	const struct usb_mux *me = &usb_muxes[port];
 
 	/*
 	 * TCPCI sets the CC lines based on polarity.  If it is set to
@@ -788,7 +797,7 @@ static int anx74xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	mux_state = anx[port].mux_state & ~MUX_POLARITY_INVERTED;
 	if (polarity)
 		mux_state |= MUX_POLARITY_INVERTED;
-	anx74xx_tcpm_mux_set(port, mux_state);
+	anx74xx_tcpm_mux_set(me, mux_state);
 #endif
 	return rv;
 }
