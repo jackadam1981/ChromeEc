@@ -46,6 +46,30 @@
       "revId": "dec0c49d605781f88fca9db4559555f59458c660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94219882_a489dbce",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-21T17:04:00Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "efceed82_a99cda93",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "dec0c49d605781f88fca9db4559555f59458c660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
