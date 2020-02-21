@@ -59,4 +59,7 @@ void send_aux_data_to_host(uint8_t data);
  */
 void send_aux_data_to_device(uint8_t data);
 
+extern struct top_row_layout *vivaldi_top_row;
+__override_proto void board_set_vivaldi_top_row(void);
+
 #endif  /* __CROS_EC_KEYBOARD_8042_H */
