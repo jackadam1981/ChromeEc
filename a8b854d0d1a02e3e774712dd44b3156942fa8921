@@ -22,6 +22,30 @@
       "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e84e06a_0bb6369c",
+        "filename": "test/is_enabled.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-21T22:48:59Z",
+      "side": 1,
+      "message": "Adding too many macros here is likely to do more harm than good. I\u0027m in favor of keeping the notation mentioned in the bug as it\u0027s explicit that the struct member is an array.\n\nI\u0027m not aware of other projects doing this.",
+      "parentUuid": "90df2845_b8706581",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
