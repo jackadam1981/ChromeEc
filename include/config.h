@@ -3857,6 +3857,7 @@
 #undef CONFIG_USB_PD_TCPM_TUSB422
 
 /*
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
  * Type-C retimer mux configuration tends to be set on a specific
  * driver's need basis.  After including the board/baseboard.h files
  * the drivers will be checked and if one of these are needed it will
@@ -3872,6 +3873,9 @@
 
 /*
  * Type-C retimer drivers to be used in on-board applications.
+=======
+ * Type-C retimer drivers to be used.
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
  */
 #undef CONFIG_USBC_RETIMER_INTEL_BB
 
@@ -4202,6 +4206,9 @@
 
 /******************************************************************************/
 /* USB port switch */
+
+/* Allow run-time completion of the usb mux driver structure */
+#undef CONFIG_USB_MUX_RUNTIME_CONFIG
 
 /* Support the AMD FP5 USB/DP Mux */
 #undef CONFIG_USB_MUX_AMD_FP5
@@ -4780,6 +4787,7 @@
 
 /*****************************************************************************/
 /*
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
  * Define derived config options for Retimer chips.  There are
  * for convenience. Any retimer driver that also needs USBC MUX Retimers
  * will not have to include it in their own board/baseboard.h file.
@@ -4790,6 +4798,8 @@
 
 /*****************************************************************************/
 /*
+=======
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
  * Define CONFIG_LIBCRYPTOC if a board needs to read secret data from the
  * anti-rollback block.
  */

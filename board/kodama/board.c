@@ -91,7 +91,17 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 static void board_hpd_status(int port, int hpd_lvl, int hpd_irq)
+=======
+struct mt6370_thermal_bound thermal_bound = {
+	.target = 75,
+	.err = 4,
+};
+
+static void board_hpd_status(const struct usb_mux *me,
+			     int hpd_lvl, int hpd_irq)
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 {
 	/*
 	 * svdm_dp_attention() did most of the work, we only need to notify
@@ -100,9 +110,30 @@ static void board_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 }
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+=======
+
+__override const struct rt946x_init_setting *board_rt946x_init_setting(void)
+{
+	static const struct rt946x_init_setting battery_init_setting = {
+		.eoc_current = 150,
+		.mivr = 4000,
+		.ircmp_vclamp = 32,
+		.ircmp_res = 25,
+		.boost_voltage = 5050,
+		.boost_current = 1500,
+	};
+
+	return &battery_init_setting;
+}
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 	{
-		.port_addr = IT5205_I2C_ADDR1_FLAGS,
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &board_hpd_status,
 	},

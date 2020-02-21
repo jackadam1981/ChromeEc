@@ -25,20 +25,123 @@ static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define USB_MUX_FLAG_IN_LPM BIT(0) /* Device is in low power mode. */
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
+=======
+enum mux_config_type {
+	USB_MUX_INIT,
+	USB_MUX_LOW_POWER,
+	USB_MUX_SET_MODE,
+	USB_MUX_GET_MODE,
+};
+
+/* Configure the MUX */
+static int configure_mux(int port,
+			 enum mux_config_type config,
+			 mux_state_t *mux_state)
+{
+	int rv = EC_SUCCESS;
+	const struct usb_mux *mux_ptr;
+
+	if (config == USB_MUX_SET_MODE ||
+	    config == USB_MUX_GET_MODE) {
+		if (mux_state == NULL)
+			return EC_ERROR_INVAL;
+
+		if (config == USB_MUX_GET_MODE)
+			*mux_state = USB_PD_MUX_NONE;
+	}
+
+	/*
+	 * a MUX for a particular port can be a linked list chain of
+	 * MUXes.  So when we change one, we traverse the whole list
+	 * to make sure they are all updated appropriately.
+	 */
+	for (mux_ptr = &usb_muxes[port];
+	     rv == EC_SUCCESS && mux_ptr != NULL;
+	     mux_ptr = mux_ptr->next_mux) {
+		mux_state_t lcl_state;
+		const struct usb_mux_driver *drv = mux_ptr->driver;
+
+		switch (config) {
+		case USB_MUX_INIT:
+			if (drv && drv->init) {
+				rv = drv->init(mux_ptr);
+				if (rv)
+					break;
+			}
+
+			/* Apply board specific initialization */
+			if (mux_ptr->board_init)
+				rv = mux_ptr->board_init(mux_ptr);
+
+			break;
+
+		case USB_MUX_LOW_POWER:
+			if (drv && drv->enter_low_power_mode)
+				rv = drv->enter_low_power_mode(mux_ptr);
+
+			break;
+
+		case USB_MUX_SET_MODE:
+			lcl_state = *mux_state;
+
+			if (mux_ptr->flags & USB_MUX_FLAG_SET_WITHOUT_FLIP)
+				lcl_state &= ~USB_PD_MUX_POLARITY_INVERTED;
+
+			if (drv && drv->set) {
+				rv = drv->set(mux_ptr, lcl_state);
+				if (rv)
+					break;
+			}
+
+			/* Apply board specific setting */
+			if (mux_ptr->board_set)
+				rv = mux_ptr->board_set(mux_ptr, lcl_state);
+
+			break;
+
+		case USB_MUX_GET_MODE:
+			/*
+			 * This is doing a GET_CC on all of the MUXes in the
+			 * chain and ORing them together. This will make sure
+			 * if one of the MUX values has FLIP turned off that
+			 * we will end up with the correct value in the end.
+			 */
+			if (drv && drv->get) {
+				rv = drv->get(mux_ptr, &lcl_state);
+				if (rv)
+					break;
+				*mux_state |= lcl_state;
+			}
+			break;
+		}
+	}
+
+	if (rv)
+		CPRINTS("mux config:%d, port:%d, rv:%d",
+			config, port, rv);
+
+	return rv;
+}
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 
 static void enter_low_power_mode(int port)
 {
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 
+=======
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 	/*
-	 * Set LPM flag regardless of method presence or method failure. We want
-	 * know know that we tried to put the device in low power mode so we can
-	 * re-initialize the device on the next access.
+	 * Set LPM flag regardless of method presence or method failure. We
+	 * want know know that we tried to put the device in low power mode
+	 * so we can re-initialize the device on the next access.
 	 */
 	flags[port] |= USB_MUX_FLAG_IN_LPM;
 
 	/* Apply any low power customization if present */
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	if (mux->driver->enter_low_power_mode) {
 		res = mux->driver->enter_low_power_mode(port);
 
@@ -46,6 +149,9 @@ static void enter_low_power_mode(int port)
 			CPRINTS("Err: enter_low_power_mode mux port(%d): %d",
 				port, res);
 	}
+=======
+	configure_mux(port, USB_MUX_LOW_POWER, NULL);
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 }
 
 static inline void exit_low_power_mode(int port)
@@ -57,16 +163,23 @@ static inline void exit_low_power_mode(int port)
 
 void usb_mux_init(int port)
 {
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 
+=======
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	res = mux->driver->init(port);
 	if (res) {
 		CPRINTS("Err: init mux port(%d): %d", port, res);
 		return;
 	}
+=======
+	configure_mux(port, USB_MUX_INIT, NULL);
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 
 	/* Device is always out of LPM after initialization. */
 	flags[port] &= ~USB_MUX_FLAG_IN_LPM;
@@ -165,6 +278,31 @@ void usb_mux_flip(int port)
 	if (res) {
 		CPRINTS("Err: get mux port(%d): %d", port, res);
 		return;
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
+=======
+
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+		mux_state &= ~USB_PD_MUX_POLARITY_INVERTED;
+	else
+		mux_state |= USB_PD_MUX_POLARITY_INVERTED;
+
+	configure_mux(port, USB_MUX_SET_MODE, &mux_state);
+}
+
+void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	mux_state_t mux_state;
+	const struct usb_mux *mux_ptr = &usb_muxes[port];
+
+	for (; mux_ptr; mux_ptr = mux_ptr->next_mux)
+		if (mux_ptr->hpd_update)
+			mux_ptr->hpd_update(mux_ptr, hpd_lvl, hpd_irq);
+
+	if (!configure_mux(port, USB_MUX_GET_MODE, &mux_state)) {
+		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
+			     (hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
+		configure_mux(port, USB_MUX_SET_MODE, &mux_state);
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 	}
 
 	if (mux_state & MUX_POLARITY_INVERTED)
@@ -232,7 +370,12 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
 	int port = p->port;
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	const struct usb_mux *mux;
+=======
+	const struct usb_mux *me = &usb_muxes[port];
+	mux_state_t mux_state;
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
@@ -243,10 +386,18 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 
 #ifdef CONFIG_USB_MUX_VIRTUAL
 	/* Clear HPD IRQ event since we're about to inform host of it. */
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 	if ((r->flags & USB_PD_MUX_HPD_IRQ) &&
 	    mux->hpd_update == &virtual_hpd_update)
 		mux->hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
 #endif
+=======
+	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
+	    (r->flags & USB_PD_MUX_HPD_IRQ) &&
+	    (me->hpd_update == &virtual_hpd_update)) {
+		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
+	}
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;

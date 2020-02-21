@@ -203,13 +203,45 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
+struct usb_mux usbc1_usb_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_USB_1_MIX,
+	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+};
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
 		.driver = &virtual_usb_mux_driver,
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
+=======
+		.hpd_update = &virtual_hpd_update,
+	},
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+		.next_mux = &usbc1_usb_retimer,
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
+=======
+struct bb_usb_control bb_controls[] = {
+	[USBC_PORT_C0] = {
+		/* USB-C port 0 doesn't have a retimer */
+	},
+	[USBC_PORT_C1] = {
+		.shared_nvm = false,
+		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
+		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
+		.force_power_gpio = GPIO_USB_C1_RT_FORCE_PWR,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 
 static void baseboard_tcpc_init(void)
 {
@@ -341,3 +373,116 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO: b/140561826 - check correct operation for Volteer */
 }
 
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
+=======
+/*
+ * Delay assertion of PCH_SYS_PWROK from assertion of the PG_EC_ALL_SYS_PWRGD
+ * input. This ensures PCH_SYS_PWROK is asserted only after all rails have
+ * stabilized. See b/144478941 for full discussion.
+ */
+__override void board_icl_tgl_all_sys_pwrgood(void)
+{
+	msleep(50);
+}
+
+static void baseboard_init(void)
+{
+	/* Illuminate motherboard and daughter board LEDs equally.
+	 * TODO(b/139554899): Illuminate only the LED next to the active
+	 * charging port.
+	 */
+	pwm_enable(PWM_CH_LED4_SIDESEL, 1);
+	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
+
+/*
+ * Set up support for the USB3 daughterboard:
+ *   Parade PS8815 TCPC (integrated retimer)
+ *   Diodes PI3USB9201 BC 1.2 chip (same as USB4 board)
+ *   Silergy SYV682A PPC (same as USB4 board)
+ */
+static void config_db_usb3(void)
+{
+	tcpc_config[USBC_PORT_C1] = tcpc_config_p1_usb3;
+	/* USB-C port 1 has an integrated retimer */
+	usb_muxes[USBC_PORT_C1].next_mux = NULL;
+}
+
+/*
+ * Reconfigure Volteer GPIOs based on the board ID
+ */
+static void config_volteer_gpios(void)
+{
+	/* Legacy support for the first board build */
+	if (get_board_id() == 0) {
+		CPRINTS("Configuring GPIOs for board ID 0");
+
+		/* Reassign USB_C1_RT_RST_ODL */
+		bb_controls[USBC_PORT_C1].retimer_rst_gpio =
+			GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
+		ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
+
+		/* Reassign EC_VOLUP_BTN_ODL */
+		button_reassign_gpio(BUTTON_VOLUME_UP,
+			GPIO_EC_VOLUP_BTN_ODL_BOARDID_0);
+	}
+}
+
+static uint8_t board_id;
+
+uint8_t get_board_id(void)
+{
+	return board_id;
+}
+
+/*
+ * Read CBI from i2c eeprom and initialize variables for board variants
+ *
+ * Example for configuring for a USB3 DB:
+ *   ectool cbi set 6 2 4 10
+ */
+static void cbi_init(void)
+{
+	uint32_t cbi_val;
+	uint32_t usb_db_val;
+
+	/* Board ID */
+	if (cbi_get_board_version(&cbi_val) != EC_SUCCESS ||
+	    cbi_val > UINT8_MAX)
+		CPRINTS("CBI: Read Board ID failed");
+	else
+		board_id = cbi_val;
+
+	CPRINTS("Board ID: %d", board_id);
+
+	config_volteer_gpios();
+
+	/* FW config */
+
+	if (cbi_get_fw_config(&cbi_val) != EC_SUCCESS) {
+		CPRINTS("CBI: Read FW config failed, assuming USB4");
+		usb_db_val = USB_DB_USB4;
+	} else {
+		usb_db_val = CBI_FW_CONFIG_USB_DB_TYPE(cbi_val);
+	}
+
+	switch (usb_db_val) {
+	case USB_DB_NONE:
+		CPRINTS("Daughterboard type: None");
+		break;
+	case USB_DB_USB4:
+		CPRINTS("Daughterboard type: USB4");
+		break;
+	case USB_DB_USB3:
+		config_db_usb3();
+		CPRINTS("Daughterboard type: USB3");
+		break;
+	default:
+		CPRINTS("Daughterboard ID %d not supported", usb_db_val);
+		usb_db_val = USB_DB_NONE;
+	}
+	usb_db_type = usb_db_val;
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_FIRST);
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)

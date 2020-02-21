@@ -139,10 +139,17 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+<<<<<<< HEAD   (f7e31b jinlon: moving buttons and switches to use MKBP)
 		.port_addr = 0x55,
 		.driver = &pi3usb30532_usb_mux_driver,
+=======
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = PI3USB3X532_I2C_ADDR1,
+		.driver = &pi3usb3x532_usb_mux_driver,
+>>>>>>> CHANGE (9c194f usb_mux: retimer: mux as chained mux and retimer)
 	},
 };
 
