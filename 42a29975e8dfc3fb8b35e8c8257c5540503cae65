@@ -282,6 +282,30 @@
       "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "028560d1_8f3da159",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-21T00:07:46Z",
+      "side": 1,
+      "message": "Sounds good. We may also be able to set the \"deprecated\" attribute on \"ec_current_image\" as well to give a compiler warning.",
+      "parentUuid": "6b9a6302_baaf7662",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
