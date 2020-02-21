@@ -354,6 +354,30 @@
       "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fa950f_241cce46",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-02-21T19:48:46Z",
+      "side": 1,
+      "message": "I\u0027ve filed b/149987779 to track fixing the external projects. It doesn\u0027t look like much work, but there\u0027s a lot of gerrit overhead to do it all at once. Also, since this change touches so many files I end up having to rebase and fix conflicts a lot, so I think it will be easier to land this first if the change is acceptable.",
+      "parentUuid": "1b3f84cf_5e09fb3d",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 21
+      },
+      "revId": "42a29975e8dfc3fb8b35e8c8257c5540503cae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
