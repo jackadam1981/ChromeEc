@@ -26,7 +26,6 @@
 #include "driver/retimer/ps8802.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
-#include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "driver/usb_mux/amd_fp5.h"
@@ -518,19 +517,19 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, ps8811_retimer_off, HOOK_PRIO_DEFAULT);
  * PS8802 set mux tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int ps8802_tune_mux(int port, mux_state_t mux_state)
+static int ps8802_tune_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 
 	/* Make sure the PS8802 is awake */
-	rv = ps8802_i2c_wake(port);
+	rv = ps8802_i2c_wake(me);
 	if (rv)
 		return rv;
 
 	/* USB specific config */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/* Boost the USB gain */
-		rv = ps8802_i2c_field_update16(port,
+		rv = ps8802_i2c_field_update16(me,
 					PS8802_REG_PAGE2,
 					PS8802_REG2_USB_SSEQ_LEVEL,
 					PS8802_USBEQ_LEVEL_UP_MASK,
@@ -542,7 +541,7 @@ static int ps8802_tune_mux(int port, mux_state_t mux_state)
 	/* DP specific config */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Boost the DP gain */
-		rv = ps8802_i2c_field_update8(port,
+		rv = ps8802_i2c_field_update8(me,
 					PS8802_REG_PAGE2,
 					PS8802_REG2_DPEQ_LEVEL,
 					PS8802_DPEQ_LEVEL_UP_MASK,
@@ -564,14 +563,14 @@ static int ps8802_tune_mux(int port, mux_state_t mux_state)
  * PS8818 set mux tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int ps8818_tune_mux(int port, mux_state_t mux_state)
+static int ps8818_tune_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 
 	/* USB specific config */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/* Boost the USB gain */
-		rv = ps8818_i2c_field_update8(port,
+		rv = ps8818_i2c_field_update8(me,
 					PS8818_REG_PAGE1,
 					PS8818_REG1_APTX1EQ_10G_LEVEL,
 					PS8818_EQ_LEVEL_UP_MASK,
@@ -579,7 +578,7 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(port,
+		rv = ps8818_i2c_field_update8(me,
 					PS8818_REG_PAGE1,
 					PS8818_REG1_APTX2EQ_10G_LEVEL,
 					PS8818_EQ_LEVEL_UP_MASK,
@@ -587,7 +586,7 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(port,
+		rv = ps8818_i2c_field_update8(me,
 					PS8818_REG_PAGE1,
 					PS8818_REG1_APTX1EQ_5G_LEVEL,
 					PS8818_EQ_LEVEL_UP_MASK,
@@ -595,7 +594,7 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(port,
+		rv = ps8818_i2c_field_update8(me,
 					PS8818_REG_PAGE1,
 					PS8818_REG1_APTX2EQ_5G_LEVEL,
 					PS8818_EQ_LEVEL_UP_MASK,
@@ -607,7 +606,7 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 	/* DP specific config */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Boost the DP gain */
-		rv = ps8818_i2c_field_update8(port,
+		rv = ps8818_i2c_field_update8(me,
 					PS8818_REG_PAGE1,
 					PS8818_REG1_DPEQ_LEVEL,
 					PS8818_DPEQ_LEVEL_UP_MASK,
@@ -626,47 +625,15 @@ static int ps8818_tune_mux(int port, mux_state_t mux_state)
 }
 
 /*
- * FP5 is a true MUX but being used as a secondary MUX. Don't want to
- * send FLIP or this will cause a double flip
- */
-static int zork_c1_retimer_set_mux(int port, mux_state_t mux_state)
-{
-	return amd_fp5_usb_retimer.set(port,
-				mux_state & ~USB_PD_MUX_POLARITY_INVERTED);
-}
-
-const struct usb_retimer_driver zork_c1_usb_retimer = {
-	/* Secondary MUX/Retimer only needs the set mux interface */
-	.set = zork_c1_retimer_set_mux,
-};
-
-struct usb_retimer usb_retimers[] = {
-	[USBC_PORT_C0] = {
-		.driver = &pi3dpx1207_usb_retimer,
-		.i2c_port = I2C_PORT_TCPC0,
-		.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
-	},
-	[USBC_PORT_C1] = {
-		/*
-		 * The driver is left off until we detect the
-		 * hardware present. Once the hardware has been
-		 * detected, the driver will be set to the
-		 * detected hardware driver table.
-		 */
-		.i2c_port = I2C_PORT_TCPC1,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(usb_retimers) == USBC_PORT_COUNT);
-
-/*
  * To support both OPT1 DB with PS8818 retimer, and OPT3 DB with PS8802
  * retimer,  Try both, and remember the first one that succeeds.
- *
- * TODO(b:147593660) Cleanup of retimers as muxes in a more
- * generalized mechanism
  */
+extern struct usb_mux usbc1_ps8802;
+extern struct usb_mux usbc1_ps8818;
+extern struct usb_mux usbc1_amd_fp5_usb_mux;
+
 enum zork_c1_retimer zork_c1_retimer = C1_RETIMER_UNKNOWN;
-static int zork_c1_detect(int port, int err_if_power_off)
+static int zork_c1_detect(const struct usb_mux *me, int err_if_power_off)
 {
 	int rv;
 
@@ -682,29 +649,27 @@ static int zork_c1_detect(int port, int err_if_power_off)
 	 * Identifying a PS8818 is faster than the PS8802,
 	 * so do it first.
 	 */
-	usb_retimers[port].i2c_addr_flags = PS8818_I2C_ADDR_FLAGS;
-	rv = ps8818_detect(port);
+	rv = ps8818_detect(&usbc1_ps8818);
 	if (rv == EC_SUCCESS) {
 		zork_c1_retimer = C1_RETIMER_PS8818;
 		ccprints("C1 PS8818 detected");
 
 		/* Main MUX is FP5, secondary MUX is PS8818 */
-		usb_muxes[USBC_PORT_C1].driver = &amd_fp5_usb_mux_driver;
-		usb_retimers[USBC_PORT_C1].driver = &ps8818_usb_retimer;
-		usb_retimers[USBC_PORT_C1].tune = &ps8818_tune_mux;
+		usb_muxes[USBC_PORT_C1] = &usbc1_amd_fp5_usb_mux;
+		usbc1_amd_fp5_usb_mux.next_mux = &usbc1_ps8818;
 		return rv;
 	}
 
-	usb_retimers[port].i2c_addr_flags = PS8802_I2C_ADDR_FLAGS;
-	rv = ps8802_detect(port);
+	rv = ps8802_detect(&usbc1_ps8802);
 	if (rv == EC_SUCCESS) {
 		zork_c1_retimer = C1_RETIMER_PS8802;
 		ccprints("C1 PS8802 detected");
 
 		/* Main MUX is PS8802, secondary MUX is modified FP5 */
-		usb_muxes[USBC_PORT_C1].driver = &ps8802_usb_mux_driver;
-		usb_retimers[USBC_PORT_C1].driver = &zork_c1_usb_retimer;
-		usb_retimers[USBC_PORT_C1].tune = &ps8802_tune_mux;
+		usb_muxes[USBC_PORT_C1] = &usbc1_ps8802;
+		usbc1_ps8802.next_mux = &usbc1_amd_fp5_usb_mux;
+		usbc1_amd_fp5_usb_mux.exclude_state =
+						USB_PD_MUX_POLARITY_INVERTED;
 	}
 
 	return rv;
@@ -716,21 +681,13 @@ static int zork_c1_detect(int port, int err_if_power_off)
  * determine the actual hardware and then we patch the jump tables
  * to go to the actual drivers instead.
  */
-static int zork_c1_init_mux(int port)
-{
-	/* Try to detect, but don't give an error if no power */
-	return zork_c1_detect(port, 0);
-}
-
-static int zork_c1_set_mux(int port, mux_state_t mux_state)
+static int zork_c1_init_mux(const struct usb_mux *me)
 {
 	int rv;
+	const int port = me->usb_port;
 
-	/*
-	 * Try to detect, give an error if we are setting to a
-	 * MUX value that is not NONE when we have no power.
-	 */
-	rv = zork_c1_detect(port, mux_state != USB_PD_MUX_NONE);
+	/* Try to detect, but don't give an error if no power */
+	rv = zork_c1_detect(me, 0);
 	if (rv)
 		return rv;
 
@@ -740,17 +697,56 @@ static int zork_c1_set_mux(int port, mux_state_t mux_state)
 	 * and avoid this special driver.
 	 */
 	if (zork_c1_retimer != C1_RETIMER_UNKNOWN)
-		rv = usb_muxes[port].driver->set(port, mux_state);
+		usb_mux_init(port);
 
 	return rv;
 }
 
-static int zork_c1_get_mux(int port, mux_state_t *mux_state)
+static int zork_c1_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
+	const int port = me->usb_port;
+
+	/*
+	 * Try to detect, give an error if we are setting to a
+	 * MUX value that is not NONE when we have no power.
+	 */
+	rv = zork_c1_detect(me, mux_state != USB_PD_MUX_NONE);
+	if (rv)
+		return rv;
+
+	/*
+	 * If we detected the hardware, then call the real routine.
+	 * We only do this one time, after that time we will go direct
+	 * and avoid this special driver.
+	 */
+	if (zork_c1_retimer != C1_RETIMER_UNKNOWN) {
+		struct usb_mux *mux_ptr = usb_muxes[port];
+
+		for (; mux_ptr; mux_ptr = mux_ptr->next_mux) {
+			const struct usb_mux_driver *drv = mux_ptr->driver;
+
+			if (drv && drv->set) {
+				mux_state_t state;
+
+				state = mux_state & ~me->exclude_state;
+				rv = drv->set(mux_ptr, state);
+				if (rv)
+					break;
+			}
+		}
+	}
+
+	return rv;
+}
+
+static int zork_c1_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+{
+	int rv;
+	const int port = me->usb_port;
 
 	/* Try to detect the hardware */
-	rv = zork_c1_detect(port, 1);
+	rv = zork_c1_detect(me, 1);
 	if (rv) {
 		/*
 		 * Not powered is MUX_NONE, so change the values
@@ -769,7 +765,7 @@ static int zork_c1_get_mux(int port, mux_state_t *mux_state)
 	 * and avoid this special driver.
 	 */
 	if (zork_c1_retimer != C1_RETIMER_UNKNOWN)
-		rv = usb_muxes[port].driver->get(port, mux_state);
+		*mux_state = usb_mux_get(port);
 
 	return rv;
 }
@@ -790,20 +786,55 @@ const struct usb_mux_driver zork_c1_usb_mux_driver = {
 	.get = zork_c1_get_mux,
 };
 
-struct usb_mux usb_muxes[] = {
-	[USBC_PORT_C0] = {
-		.driver = &amd_fp5_usb_mux_driver,
-	},
-	[USBC_PORT_C1] = {
-		/*
-		 * This is the detection driver. Once the hardware
-		 * has been detected, the driver will change to the
-		 * detected hardware driver table.
-		 */
-		.driver = &zork_c1_usb_mux_driver,
-	},
+
+struct usb_mux usbc0_pi3dpx1207_usb_retimer = {
+	.usb_port = USBC_PORT_C0,
+	.i2c_port = I2C_PORT_TCPC0,
+	.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
+	.driver = &pi3dpx1207_usb_retimer,
+};
+struct usb_mux usbc0_amd_fp5_usb_mux = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &amd_fp5_usb_mux_driver,
+	.next_mux = &usbc0_pi3dpx1207_usb_retimer,
+};
+
+struct usb_mux usbc1_ps8802 = {
+	.usb_port = USBC_PORT_C1,
+	.i2c_port = I2C_PORT_TCPC1,
+	.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
+	.driver = &ps8802_usb_mux_driver,
+	.tune = &ps8802_tune_mux,
+};
+struct usb_mux usbc1_ps8818 = {
+	.usb_port = USBC_PORT_C1,
+	.i2c_port = I2C_PORT_TCPC1,
+	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
+	.driver = &ps8818_usb_retimer_driver,
+	.tune = &ps8818_tune_mux,
+};
+struct usb_mux usbc1_amd_fp5_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &amd_fp5_usb_mux_driver,
+	.next_mux = &usbc0_pi3dpx1207_usb_retimer,
+};
+struct usb_mux zork_c1_usb_mux = {
+	/*
+	 * This is the detection driver. Once the hardware
+	 * has been detected, the driver will change to the
+	 * detected hardware driver table.
+	 */
+	.usb_port = USBC_PORT_C1,
+	.i2c_port = I2C_PORT_TCPC1,
+	.driver = &zork_c1_usb_mux_driver,
+};
+
+struct usb_mux *usb_muxes[] = {
+	[USBC_PORT_C0] = &usbc0_amd_fp5_usb_mux,
+	[USBC_PORT_C1] = &zork_c1_usb_mux,
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
 
 struct ioexpander_config_t ioex_config[] = {
 	[USBC_PORT_C0] = {
