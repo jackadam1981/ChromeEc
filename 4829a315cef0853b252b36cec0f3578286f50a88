@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "9baa1a09_b2d54531",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-22T17:53:12Z",
+      "side": 1,
+      "message": "decided to go flag route and if other states should be excluded in the future we can revisit this.",
+      "parentUuid": "a8ac7c0f_356e4670",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 27
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deeb4ef9_d23dd8c4",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -375,6 +399,30 @@
       "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af633846_4755fc94",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-22T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97650562_6f74933f",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "4829a315cef0853b252b36cec0f3578286f50a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
