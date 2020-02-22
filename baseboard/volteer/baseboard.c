@@ -14,6 +14,7 @@
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tusb422.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "fan.h"
@@ -401,8 +402,11 @@ struct usb_mux usb_muxes[] = {
 		.hpd_update = &virtual_hpd_update,
 	},
 	[USBC_PORT_C1] = {
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+//%%%		.driver = &virtual_usb_mux_driver,
+		.flags = USB_MUX_FLAG_HOST,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+//%%%		.hpd_update = &virtual_hpd_update,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
@@ -502,8 +506,10 @@ void board_reset_pd_mcu(void)
 {
 	/* No reset available for TCPC on port 0 */
 	/* Daughterboard specific reset for port 1 */
-	if (usb_db_type == USB_DB_USB3)
+	if (usb_db_type == USB_DB_USB3) {
 		ps8815_reset();
+		usb_muxes[USBC_PORT_C1].hpd_update(USBC_PORT_C1, 0, 0);
+	}
 }
 
 uint16_t tcpc_get_alert_status(void)
