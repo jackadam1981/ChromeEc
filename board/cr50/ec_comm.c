@@ -49,11 +49,11 @@ static struct ec_comm_context_ {
 	uint8_t bytes_expected;
 	uint8_t reserved[1];
 
-	uint16_t last_resp;
+	enum cr50_comm_err last_resp;
 
 	union {
-		struct cr50_comm_packet ph;
-		uint8_t packet[CR50_COMM_MAX_PACKET_SIZE];
+		struct cr50_comm_request ph;
+		uint8_t packet[CR50_COMM_MAX_REQUEST_SIZE];
 	};
 } ec_comm_ctx;
 
@@ -85,26 +85,26 @@ DECLARE_HOOK(HOOK_INIT, ec_comm_init_, HOOK_PRIO_DEFAULT + 1);
  * @param ph     Pointer to the received EC-Cr50 packet.
  * @param bytes  Total bytes of the received EC-Cr50 packet.
  * @return CR50_COMM_SUCCESS if the packet has been processed successfully,
- *         CR50_COMM_ERROR_CRC if CRC is incorrect,
- *         CR50_COMM_ERROR_UNDEFINED_CMD if the cmd is unknown,
- *         CR50_COMM_ERROR_SIZE if data size is not as expected, or
- *         CR50_COMM_ERROR_BAD_PAYLOAD if the given hash and the hash in NVM
+ *         CR50_COMM_ERR_CRC if CRC is incorrect,
+ *         CR50_COMM_ERR_UNDEFINED_CMD if the cmd is unknown,
+ *         CR50_COMM_ERR_SIZE if data size is not as expected, or
+ *         CR50_COMM_ERR_BAD_PAYLOAD if the given hash and the hash in NVM
  *                                     are not same.
  *         0 if it deosn't have to respond to EC.
  */
-static uint16_t decode_packet_(const struct cr50_comm_packet *ph, int bytes)
+static uint16_t decode_packet_(const struct cr50_comm_request *ph, int bytes)
 {
-	const int offset_cmd = offsetof(struct cr50_comm_packet, cmd);
+	const int offset_type = offsetof(struct cr50_comm_request, type);
 	uint8_t crc8_calc;
 	uint16_t response;
 
 	/* Verify CRC. */
-	crc8_calc = crc8((const uint8_t *)&ph->cmd, bytes - offset_cmd);
+	crc8_calc = crc8((const uint8_t *)&ph->type, bytes - offset_type);
 	if (crc8_calc != ph->crc)
-		return CR50_COMM_ERROR_CRC;
+		return CR50_COMM_ERR_CRC;
 
 	/* Execute the command. */
-	switch (ph->cmd) {
+	switch (ph->type) {
 	case CR50_COMM_CMD_SET_BOOT_MODE:
 		response = ec_efs_set_boot_mode(ph->data, ph->size);
 		break;
@@ -114,7 +114,7 @@ static uint16_t decode_packet_(const struct cr50_comm_packet *ph, int bytes)
 		break;
 
 	default:
-		response = CR50_COMM_ERROR_UNDEFINED_CMD;
+		response = CR50_COMM_ERR_UNDEFINED_CMD;
 	}
 
 	return response;
@@ -140,10 +140,31 @@ static void transfer_response_to_ec_(uint16_t response)
 	ec_comm_ctx.last_resp = response;
 }
 
+static void send_response(const enum cr50_comm_err response)
+{
+	transfer_response_to_ec_(response);
+
+#ifdef CR50_RELAXED
+	CPRINTS("decoded a packet");
+	CPRINTS("header  : 0x%ph",
+		HEX_BUF((uint8_t *)&ec_comm_ctx.ph,
+			sizeof(struct cr50_comm_request)));
+	CPRINTS("body    : 0x%ph",
+		HEX_BUF((uint8_t *)ec_comm_ctx.ph.data,
+			ec_comm_ctx.ph.size));
+	/* Let's response to EC */
+	CPRINTS("response: 0x%04x", response);
+#endif
+	/*
+	* If it reaches here, EC comm is either broken or one packet
+	* was well-processed. Let's turn the phase back to READY_COMM.
+	*/
+	ec_comm_ctx.phase = PHASE_READY_COMM;
+	ec_comm_ctx.preamble_count = 0;
+}
+
 int ec_comm_process_packet(uint8_t ch)
 {
-	uint16_t response = 0;
-
 	switch (ec_comm_ctx.phase) {
 	case PHASE_READY_COMM:
 		/*
@@ -160,7 +181,8 @@ int ec_comm_process_packet(uint8_t ch)
 		 * it is not yet sure whether it is a preamble or not.
 		 * Forwarding 0xec to USB is not harmful anyway.
 		 */
-		if (++ec_comm_ctx.preamble_count < MIN_LENGTH_PREAMBLE)
+		if (++ec_comm_ctx.preamble_count <
+		    CR50_COMM_PREAMBLE_MIN_LENGTH)
 			return 0;
 
 		ec_comm_ctx.phase = PHASE_RECEIVING_PREAMBLE;
@@ -177,7 +199,7 @@ int ec_comm_process_packet(uint8_t ch)
 		 * fall through to receive header.
 		 */
 		ec_comm_ctx.bytes_received = 0;
-		ec_comm_ctx.bytes_expected = sizeof(struct cr50_comm_packet);
+		ec_comm_ctx.bytes_expected = sizeof(struct cr50_comm_request);
 		ec_comm_ctx.phase = PHASE_RECEIVING_HEADER;
 		/* FALLTHROUGH */
 
@@ -192,29 +214,29 @@ int ec_comm_process_packet(uint8_t ch)
 			break;
 
 		/* The header has been received. Let's parse it. */
-		if (ec_comm_ctx.ph.magic != CR50_COMM_MAGIC_WORD) {
-			response = CR50_COMM_ERROR_MAGIC;
+		if (ec_comm_ctx.ph.magic != CR50_PACKET_MAGIC) {
+			send_response(CR50_COMM_ERR_MAGIC);
 			break;
 		}
 
 		/* Check struct_version */
 		/*
-		 * Note: if CR50_COMM_VERSION gets bigger than 0x00,
+		 * Note: if CR50_COMM_PACKET_VERSION gets bigger than 0x00,
 		 *       you should implement how to handle backward
 		 *       compatibility.
 		 */
-		if (ec_comm_ctx.ph.version != CR50_COMM_VERSION) {
-			response = CR50_COMM_ERROR_STRUCT_VERSION;
+		if (ec_comm_ctx.ph.struct_version != CR50_COMM_PACKET_VERSION) {
+			send_response(CR50_COMM_ERR_STRUCT_VERSION);
 			break;
 		}
 
 		if (ec_comm_ctx.ph.size == 0) {
 			/* Data size zero, then process the packet now. */
-			response = decode_packet_(&ec_comm_ctx.ph,
-						  ec_comm_ctx.bytes_received);
+			send_response(decode_packet_(
+				&ec_comm_ctx.ph, ec_comm_ctx.bytes_received));
 		} else if ((ec_comm_ctx.ph.size + ec_comm_ctx.bytes_expected) >
-			   CR50_COMM_MAX_PACKET_SIZE) {
-			response = CR50_COMM_ERROR_SIZE;
+			   CR50_COMM_MAX_REQUEST_SIZE) {
+			send_response(CR50_COMM_ERR_SIZE);
 		} else {
 			ec_comm_ctx.bytes_expected += ec_comm_ctx.ph.size;
 			ec_comm_ctx.phase = PHASE_RECEIVING_DATA;
@@ -226,8 +248,8 @@ int ec_comm_process_packet(uint8_t ch)
 
 		/* The EC is done sending the packet, let's process it. */
 		if (ec_comm_ctx.bytes_received >= ec_comm_ctx.bytes_expected)
-			response = decode_packet_(&ec_comm_ctx.ph,
-						  ec_comm_ctx.bytes_received);
+			send_response(decode_packet_(
+				&ec_comm_ctx.ph, ec_comm_ctx.bytes_received));
 		break;
 
 	default:
@@ -239,28 +261,6 @@ int ec_comm_process_packet(uint8_t ch)
 		ec_comm_ctx.phase = PHASE_READY_COMM;
 		ec_comm_ctx.preamble_count = 0;
 		return 0;
-	}
-
-	if (response) {
-		transfer_response_to_ec_(response);
-
-#ifdef CR50_RELAXED
-		CPRINTS("decoded a packet");
-		CPRINTS("header  : 0x%ph",
-			HEX_BUF((uint8_t *)&ec_comm_ctx.ph,
-				sizeof(struct cr50_comm_packet)));
-		CPRINTS("body    : 0x%ph",
-			HEX_BUF((uint8_t *)ec_comm_ctx.ph.data,
-				ec_comm_ctx.ph.size));
-		/* Let's response to EC */
-		CPRINTS("response: 0x%04x", response);
-#endif
-		/*
-		 * If it reaches here, EC comm is either broken or one packet
-		 * was well-processed. Let's turn the phase back to READY_COMM.
-		 */
-		ec_comm_ctx.phase = PHASE_READY_COMM;
-		ec_comm_ctx.preamble_count = 0;
 	}
 
 	return 1;
@@ -336,7 +336,7 @@ static int command_ec_comm(int argc, char **argv)
 	ccprintf("bytes_expected     : %d\n", ec_comm_ctx.bytes_expected);
 #ifdef CR50_RELAXED
 	ccprintf("packet:\n");
-	hexdump((uint8_t *)ec_comm_ctx.packet, CR50_COMM_MAX_PACKET_SIZE);
+	hexdump((uint8_t *)ec_comm_ctx.packet, CR50_COMM_MAX_REQUEST_SIZE);
 #endif  /* CR50_RELAXED */
 	ccprintf("response           : 0x%04x\n", ec_comm_ctx.last_resp);
 	ccprintf("\n");
