@@ -1228,7 +1228,8 @@ i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	}
 
-	if (!get_i2c_port(params->port)) {
+	if (!get_i2c_port(params->port) &&
+		params->subcmd != EC_CMD_I2C_PASSTHRU_PROTECT_ENABLE_TCPCS) {
 		PTHRUPRINTS("protect invalid port %d", params->port);
 		return EC_RES_INVALID_PARAM;
 	}
