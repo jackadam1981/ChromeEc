@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "3fc0106e_23c4e58a",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T23:14:15Z",
+      "side": 1,
+      "message": "It this pointer long lived? seems like it might be dangerous passing in the pointer to a local variable here",
+      "range": {
+        "startLine": 139,
+        "startChar": 58,
+        "endLine": 139,
+        "endChar": 64
+      },
+      "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab7a753_6532c34f",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T23:14:15Z",
+      "side": 1,
+      "message": "same concern about local variable memory lifetime",
+      "range": {
+        "startLine": 163,
+        "startChar": 59,
+        "endLine": 163,
+        "endChar": 64
+      },
+      "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a82d2088_eb9c79e9",
         "filename": "include/dma.h",
         "patchSetId": 1
@@ -30,6 +76,30 @@
       "writtenOn": "2020-02-19T23:00:58Z",
       "side": 1,
       "message": "Should probably update the comments here. memory\u003d\u003dNULL is now accepted.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de4f82e_1e79f441",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T23:14:15Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "a82d2088_eb9c79e9",
       "range": {
         "startLine": 45,
         "startChar": 0,
