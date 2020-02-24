@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15f45d56_5abb6203",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T17:37:06Z",
+      "side": 1,
+      "message": "I updated it. I am also happy with the patchset 4",
+      "parentUuid": "6150f03d_33b238b6",
+      "range": {
+        "startLine": 453,
+        "startChar": 3,
+        "endLine": 454,
+        "endChar": 31
+      },
+      "revId": "6be21a012ae2437b98fdee713c24bcf19204eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be7b327e_6e957184",
         "filename": "include/i2c_ite_flash_support.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6be21a012ae2437b98fdee713c24bcf19204eff2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c34fbb_32344679",
+        "filename": "include/i2c_ite_flash_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T17:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be7b327e_6e957184",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "6be21a012ae2437b98fdee713c24bcf19204eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
