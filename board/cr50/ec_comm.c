@@ -126,20 +126,24 @@ static uint16_t decode_packet_(const struct cr50_comm_request *ph, int bytes)
  * @param response  Response code to return to EC. Should be one of
  *                  CR50_COMM_RESPONSE codes in include/vboot.h.
  */
-static void transfer_response_to_ec_(uint16_t response)
+static void transfer_response_to_ec_(enum cr50_comm_err response_code)
 {
-	uint8_t *ptr_resp = (uint8_t *)&response;
-	int uart = ec_comm_ctx.uart;
+	struct cr50_comm_response response = {
+		.preamble = CR50_COMM_PREAMBLE,
+		.response_code = response_code,
+	};
+	const uint8_t *const ptr_resp = (uint8_t *)&response;
+	const int uart = ec_comm_ctx.uart;
+	int i;
 
 	/* Send the response to EC in little endian. */
-	uartn_write_char(uart, ptr_resp[0]);
-	uartn_write_char(uart, ptr_resp[1]);
+	for (i = 0; i < sizeof(response); ++i)
+		uartn_write_char(uart, ptr_resp[i]);
 
 	uartn_tx_flush(uart);  /* Flush from UART2_TX to DIOB3 */
 
-	ec_comm_ctx.last_resp = response;
+	ec_comm_ctx.last_resp = response_code;
 }
-
 /* Minimum amount of preamble required from EC to consider a pre-amble */
 #define MIN_LENGTH_PREAMBLE 4
 
