@@ -232,5 +232,7 @@ static void baseboard_sensors_init(void)
 	gpio_enable_interrupt(GPIO_EC_CAM_VSYN_SLP_S0IX);
 	/* Enable interrupt for the TCS3400 color light sensor */
 	gpio_enable_interrupt(GPIO_EC_ALS_RGB_INT_L);
+	/* Enable interrupt for the BMI260 accel/gyro sensor */
+	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_DEFAULT);
