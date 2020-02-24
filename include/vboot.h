@@ -103,6 +103,9 @@ void packet_mode_interrupt(enum gpio_signal signal);
 /* Preamble character repeated before the packet header starts. */
 #define CR50_COMM_PREAMBLE	0xec
 
+/* Minimum amount of preamble required from EC to consider a pre-amble */
+#define CR50_COMM_PREAMBLE_MIN_LENGTH 4
+
 /* Magic characters used to identify ec-cr50-comm packets */
 #define CR50_PACKET_MAGIC	0x4345	/* 'EC' in little endian */
 
@@ -133,8 +136,13 @@ struct cr50_comm_response {
 	uint16_t error;
 } __packed;
 
+/*
+ * Let's keep CR50_COMM_MAX_DATA_SIZE as small as possible.
+ * It is SHA256_DIGEST_SIZE for CR50_COMM_PACKET_VERSION 0x00.
+ */
+#define CR50_COMM_MAX_DATA_SIZE		SHA256_DIGEST_SIZE
 #define CR50_COMM_MAX_REQUEST_SIZE	(sizeof(struct cr50_comm_request) \
-					 + UINT8_MAX)
+					 + CR50_COMM_MAX_DATA_SIZE)
 #define CR50_UART_RX_BUFFER_SIZE	32	/* TODO: Get from Cr50 header */
 
 /* commands */
@@ -172,6 +180,23 @@ enum boot_mode {
 	BOOT_MODE_NO_BOOT          = 0x01,
 } __packed;
 BUILD_ASSERT(sizeof(enum boot_mode) == sizeof(uint8_t));
+
+/****************************************************************************
+ * This is quoted from 2secdata_struct.h in the directory,
+ * src/platform/vboot_reference/firmware/2lib/include/.
+ ****************************************************************************/
+/* Kernel secure storage space */
+#define VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN  0x10
+#define VB2_SECDATA_KERNEL_UID          0x4752574c  /* 'LWRG' */
+struct vb2_secdata_kernel {
+	uint8_t struct_version;		/* top-half:major. bottom-half:minor. */
+	uint8_t struct_size;		/* Whole structure size */
+	uint8_t crc8;			/* CRC for everything below */
+	uint8_t reserved0;
+
+	uint32_t kernel_versions;	/* Kernel versions */
+	uint8_t ec_hash[SHA256_DIGEST_SIZE];
+} __packed;
 
 /**
  * Indicate PD is allowed (in RO) by vboot or not.
