@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a374c3ec_57eebf4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-24T17:58:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6aa216af_020323de",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddc76053_21d40ebb",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "950cb5b0_e3c49708",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-24T17:58:05Z",
+      "side": 1,
+      "message": "fixed in CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2070452",
+      "parentUuid": "ddc76053_21d40ebb",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "969c0e49_6ed110ce",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 13
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "93ac0d4b_31567ec7",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-24T17:58:05Z",
+      "side": 1,
+      "message": "fixed in CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2070452",
+      "parentUuid": "969c0e49_6ed110ce",
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcec45fb_3cf2074a",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 13
@@ -79,6 +145,24 @@
       "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5a9b65_e4deddbc",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-24T17:58:05Z",
+      "side": 1,
+      "message": "This is the original implementation but I don\u0027t see a reason to use both. Unless anyone objects, I\u0027ll use strcasecmp throughout.",
+      "parentUuid": "dcec45fb_3cf2074a",
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "2a14dc37_8e9fe7c2",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-24T17:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e7bd6ca_7bbd8cc0",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d4bc0df_c3951fce",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 13
@@ -125,6 +233,30 @@
       "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a62791f_974caa13",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-24T17:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d4bc0df_c3951fce",
+      "range": {
+        "startLine": 149,
+        "startChar": 35,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "8bade383beef4fcbc8137ef7af0eea2ed9c3d256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
