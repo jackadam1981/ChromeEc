@@ -31,23 +31,23 @@ struct vb2_secdata_kernel test_secdata = {
 };
 
 union cr50_test_packet {
-	struct cr50_comm_packet ph;
-	uint8_t packet[CR50_COMM_MAX_PACKET_SIZE * 2];
+	struct cr50_comm_request ph;
+	uint8_t packet[CR50_COMM_MAX_REQUEST_SIZE * 2];
 };
 
 union cr50_test_packet sample_packet_cmd_set_mode = {
-	.ph.magic = CR50_COMM_MAGIC_WORD,
-	.ph.version = CR50_COMM_VERSION,
+	.ph.magic = CR50_PACKET_MAGIC,
+	.ph.struct_version = CR50_COMM_PACKET_VERSION,
 	.ph.crc = 0,
-	.ph.cmd = CR50_COMM_CMD_SET_BOOT_MODE,
+	.ph.type = CR50_COMM_CMD_SET_BOOT_MODE,
 	.ph.size = 1,
 };
 
 union cr50_test_packet sample_packet_cmd_verify_hash = {
-	.ph.magic = CR50_COMM_MAGIC_WORD,
-	.ph.version = CR50_COMM_VERSION,
+	.ph.magic = CR50_PACKET_MAGIC,
+	.ph.struct_version = CR50_COMM_PACKET_VERSION,
 	.ph.crc = 0,
-	.ph.cmd = CR50_COMM_CMD_VERIFY_HASH,
+	.ph.type = CR50_COMM_CMD_VERIFY_HASH,
 	.ph.size = SHA256_DIGEST_SIZE,
 };
 
@@ -116,11 +116,11 @@ static int find_byte(const char *buf, uint8_t byte)
  */
 static void calculate_crc8(union cr50_test_packet *pk)
 {
-	const int offset_cmd = offsetof(struct cr50_comm_packet, cmd);
+	const int offset_cmd = offsetof(struct cr50_comm_request, type);
 
 	/* Calculate the sample EC-CR50 packet.	*/
-	pk->ph.crc = crc8((uint8_t *)&pk->ph.cmd,
-			  (sizeof(struct cr50_comm_packet)
+	pk->ph.crc = crc8((uint8_t *)&pk->ph.type,
+			  (sizeof(struct cr50_comm_request)
 			  + pk->ph.size - offset_cmd));
 }
 
@@ -141,7 +141,7 @@ static int test_ec_comm(const union cr50_test_packet *pk, int preambles,
 	int i;
 	const char *resp;
 
-	leng = sizeof(struct cr50_comm_packet) + pk->ph.size;
+	leng = sizeof(struct cr50_comm_request) + pk->ph.size;
 
 	/* Prepare the input packet. */
 	buf = (uint8_t *)pk;
@@ -181,11 +181,11 @@ static int test_ec_comm_packet_failure(void)
 {
 	/* Copy the sample packet to buffer. */
 	union cr50_test_packet pk = sample_packet_cmd_verify_hash;
-	int preambles = MIN_LENGTH_PREAMBLE;
+	int preambles = CR50_COMM_PREAMBLE_MIN_LENGTH;
 
 	ec_has_reset();
 
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/* Test 1: Test with less preambles than required. */
 	calculate_crc8(&pk);
@@ -194,13 +194,13 @@ static int test_ec_comm_packet_failure(void)
 	/* Test 2: Test a wrong magic */
 	pk.ph.magic = 0x1234;
 	calculate_crc8(&pk);
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_MAGIC));
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERR_MAGIC));
 
 	/* Test 3: Test with a wrong CRC */
 	pk = sample_packet_cmd_verify_hash;
 	calculate_crc8(&pk);
 	pk.ph.crc += 0x01;	/* corrupt the CRC */
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_CRC));
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERR_CRC));
 
 	/* Test 4: Test with too large payload */
 	pk = sample_packet_cmd_verify_hash;
@@ -208,26 +208,26 @@ static int test_ec_comm_packet_failure(void)
 	pk.ph.data[SHA256_DIGEST_SIZE] = 0xff;
 	calculate_crc8(&pk);
 
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_SIZE));
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERR_SIZE));
 
 	/* Test 5: Test with a undefined command */
 	pk = sample_packet_cmd_verify_hash;
-	pk.ph.cmd = 0x1000;
+	pk.ph.type = 0x1000;
 	calculate_crc8(&pk);
 	TEST_ASSERT(!test_ec_comm(&pk, preambles,
-				  CR50_COMM_ERROR_UNDEFINED_CMD));
+				  CR50_COMM_ERR_UNDEFINED_CMD));
 
 	/* Test 6: Test with a wrong struct version */
 	pk = sample_packet_cmd_verify_hash;
-	pk.ph.version = CR50_COMM_VERSION + 0x01;
+	pk.ph.struct_version = CR50_COMM_PACKET_VERSION + 0x01;
 	calculate_crc8(&pk);
 	TEST_ASSERT(!test_ec_comm(&pk, preambles,
-				  CR50_COMM_ERROR_STRUCT_VERSION));
+				  CR50_COMM_ERR_STRUCT_VERSION));
 
 	/* Check if ec has ever been reset during these tests */
 	TEST_ASSERT(!ec_has_reset());
 
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	return EC_SUCCESS;
 }
@@ -244,29 +244,29 @@ static int test_ec_comm_set_boot_mode(void)
 	ec_has_reset();
 
 	/* Test 1: Attempt to set boot mode to NORMAL. */
-	pk.ph.data[0] = EC_EFS_BOOT_MODE_NORMAL;
+	pk.ph.data[0] = BOOT_MODE_NORMAL;
 	calculate_crc8(&pk);
-	preambles = MIN_LENGTH_PREAMBLE * 2;
+	preambles = CR50_COMM_PREAMBLE_MIN_LENGTH * 2;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/* Test 2: Attempt to set boot mode to NORMAL again. */
-	preambles = MIN_LENGTH_PREAMBLE;
+	preambles = CR50_COMM_PREAMBLE_MIN_LENGTH;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/*
 	 * Test 3: Attempt to set boot mode to NO BOOT.
 	 *         EC should not be reset with this boot mode change from NORMAL
 	 *         to NO_BOOT.
 	 */
-	pk.ph.data[0] = EC_EFS_BOOT_MODE_NO_BOOT;
+	pk.ph.data[0] = BOOT_MODE_NO_BOOT;
 	calculate_crc8(&pk);
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NO_BOOT);
 
 	/*
 	 * Test 4: Attempt to set boot mode to NO BOOT again.
@@ -274,18 +274,18 @@ static int test_ec_comm_set_boot_mode(void)
 	 */
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NO_BOOT);
 
 	/*
 	 * Test 5: Attempt to set boot mode to NORMAL.
 	 *         EC should be reset with this boot mode change from NO_BOOT
 	 *         to NORMAL.
 	 */
-	pk.ph.data[0] = EC_EFS_BOOT_MODE_NORMAL;
+	pk.ph.data[0] = BOOT_MODE_NORMAL;
 	calculate_crc8(&pk);
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, 0));
 	TEST_ASSERT(ec_has_reset());	/* EC must be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	return EC_SUCCESS;
 }
@@ -297,36 +297,36 @@ static int test_ec_comm_verify_hash(void)
 {
 	/* Copy the sample packet to buffer. */
 	union cr50_test_packet pk = sample_packet_cmd_verify_hash;
-	int preambles = MIN_LENGTH_PREAMBLE;
+	int preambles = CR50_COMM_PREAMBLE_MIN_LENGTH;
 
 	ec_has_reset();
 
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/* Test 1: Attempt to verify EC Hash. */
 	calculate_crc8(&pk);
-	preambles = MIN_LENGTH_PREAMBLE * 2;
+	preambles = CR50_COMM_PREAMBLE_MIN_LENGTH * 2;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/* Test 2: Attempt to verify EC Hash again. */
-	preambles = MIN_LENGTH_PREAMBLE;
+	preambles = CR50_COMM_PREAMBLE_MIN_LENGTH;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/* Test 3: Attempt to verify a wrong EC Hash. */
 	pk.ph.data[0] ^= 0xff;	/* corrupt the payload */
 	calculate_crc8(&pk);
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERR_BAD_PAYLOAD));
 	TEST_ASSERT(!ec_has_reset());	/* EC should not be reset though. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NO_BOOT);
 
 	/* Test 4: Attempt to verify a wrong EC Hash again. */
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERR_BAD_PAYLOAD));
 	TEST_ASSERT(!ec_has_reset());	/* EC should not be reset though. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NO_BOOT);
 
 	/*
 	 * Test 5: Attempt to verify the correct EC Hash.
@@ -334,10 +334,10 @@ static int test_ec_comm_verify_hash(void)
 	 */
 	pk = sample_packet_cmd_verify_hash;
 	calculate_crc8(&pk);
-	preambles = MIN_LENGTH_PREAMBLE * 2;
+	preambles = CR50_COMM_PREAMBLE_MIN_LENGTH * 2;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, 0));
 	TEST_ASSERT(ec_has_reset());	/* EC must be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == BOOT_MODE_NORMAL);
 
 	/* Check if ec has ever been reset during these tests */
 	return EC_SUCCESS;
