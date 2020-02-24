@@ -159,6 +159,7 @@ enum cr50_comm_err {
 	CR50_COMM_ERR_BAD_PAYLOAD =	0xec06,
 	CR50_COMM_ERR_UNDEFINED_CMD =	0xec07,
 	CR50_COMM_ERR_STRUCT_VERSION =	0xec08,
+	CR50_COMM_ERR_NVMEM =		0xec09,
 } __packed;
 BUILD_ASSERT(sizeof(enum cr50_comm_err) == sizeof(uint16_t));
 
