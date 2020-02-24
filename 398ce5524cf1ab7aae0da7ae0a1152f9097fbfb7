@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "d7d7660b_6fd72c19",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-24T22:38:18Z",
+      "side": 1,
+      "message": "nit: vague function naming, something like bus_lock_to_string may be more precise",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d240362_8de3f695",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-24T22:38:18Z",
+      "side": 1,
+      "message": "or",
+      "range": {
+        "startLine": 83,
+        "startChar": 50,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d890a3c3_833e8dd8",
         "filename": "board/c2d2/board.c",
         "patchSetId": 4
@@ -71,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "5bdd99da_010ec97e",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-24T22:38:18Z",
+      "side": 1,
+      "message": "nit: one the one hand, I appreciate the compactness of this statement. On the other, throwing in a couple of ands plus an or might make it more readable (or making this clause the final else, checking the bus in the other ifs)",
+      "range": {
+        "startLine": 739,
+        "startChar": 7,
+        "endLine": 739,
+        "endChar": 33
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d504e893_565c6e81",
         "filename": "board/c2d2/board.h",
         "patchSetId": 4
@@ -87,6 +156,29 @@
         "startChar": 17,
         "endLine": 83,
         "endChar": 19
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36d8d21_de1381a7",
+        "filename": "include/i2c_ite_flash_support.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-24T22:38:18Z",
+      "side": 1,
+      "message": "true and false?",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 63
       },
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
