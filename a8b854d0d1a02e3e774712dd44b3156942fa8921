@@ -94,6 +94,30 @@
       "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "790dd5f9_f8092809",
+        "filename": "test/is_enabled.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-24T22:29:25Z",
+      "side": 1,
+      "message": "I guess it\u0027s ok, either way. I think neither is significantly better than the other. Then, I usually think the author\u0027s opinion should prevail.",
+      "parentUuid": "747c9f07_ede87916",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "a8b854d0d1a02e3e774712dd44b3156942fa8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
