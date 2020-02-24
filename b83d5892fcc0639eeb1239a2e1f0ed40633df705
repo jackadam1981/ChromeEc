@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "010f1b09_b479e46c",
+        "filename": "board/dalboz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-24T16:46:35Z",
+      "side": 1,
+      "message": "Suggest to keep this as \"GPIO_INT_FALLING | GPIO_PULL_UP\".\nGPIOA0 is VSPI power domain so already 1.8V.\nGPIO_PULL_UP to avoid floating if sensor not connected.",
+      "revId": "b83d5892fcc0639eeb1239a2e1f0ed40633df705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
