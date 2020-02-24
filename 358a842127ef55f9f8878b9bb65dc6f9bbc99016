@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "838f5d41_14d45f11",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-02-24T21:50:49Z",
+      "side": 1,
+      "message": "This seems reasonable. What about the cases where we timeout but the response comes delayed? Would we be out of sync until reset? Is there a mechanism to detect those issues?",
+      "parentUuid": "d80ba5ba_37bcb5a6",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "358a842127ef55f9f8878b9bb65dc6f9bbc99016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abc7ca8e_a21e6e3f",
         "filename": "include/vboot.h",
         "patchSetId": 1
