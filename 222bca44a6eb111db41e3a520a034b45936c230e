@@ -46,6 +46,30 @@
       "revId": "222bca44a6eb111db41e3a520a034b45936c230e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519f16b9_e0109ea0",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T17:37:02Z",
+      "side": 1,
+      "message": "Our current presubmit requires no spaces before tabs, so you just want to tab all the way.",
+      "parentUuid": "4a66ae20_77ff27e9",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "222bca44a6eb111db41e3a520a034b45936c230e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
