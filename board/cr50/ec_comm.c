@@ -126,23 +126,29 @@ static uint16_t decode_packet_(const struct cr50_comm_request *ph, int bytes)
  * @param response  Response code to return to EC. Should be one of
  *                  CR50_COMM_RESPONSE codes in include/vboot.h.
  */
-static void transfer_response_to_ec_(uint16_t response)
+static void send_response(const enum cr50_comm_err response_code)
 {
-	uint8_t *ptr_resp = (uint8_t *)&response;
-	int uart = ec_comm_ctx.uart;
+	const struct cr50_comm_response response = {
+		.preamble = CR50_COMM_PREAMBLE,
+		.response_code = response_code,
+	};
+	const uint8_t *const ptr_resp = (uint8_t *)&response;
+	const int uart = ec_comm_ctx.uart;
+	int i;
 
 	/* Send the response to EC in little endian. */
-	uartn_write_char(uart, ptr_resp[0]);
-	uartn_write_char(uart, ptr_resp[1]);
+	for (i = 0; i < sizeof(response); ++i)
+		uartn_write_char(uart, ptr_resp[i]);
 
 	uartn_tx_flush(uart);  /* Flush from UART2_TX to DIOB3 */
 
-	ec_comm_ctx.last_resp = response;
-}
-
-static void send_response(const enum cr50_comm_err response)
-{
-	transfer_response_to_ec_(response);
+	/*
+	* If it reaches here, EC comm is either broken or one packet
+	* was well-processed. Let's turn the phase back to READY_COMM.
+	*/
+	ec_comm_ctx.last_resp = response_code;
+	ec_comm_ctx.phase = PHASE_READY_COMM;
+	ec_comm_ctx.preamble_count = 0;
 
 #ifdef CR50_RELAXED
 	CPRINTS("decoded a packet");
@@ -155,12 +161,6 @@ static void send_response(const enum cr50_comm_err response)
 	/* Let's response to EC */
 	CPRINTS("response: 0x%04x", response);
 #endif
-	/*
-	* If it reaches here, EC comm is either broken or one packet
-	* was well-processed. Let's turn the phase back to READY_COMM.
-	*/
-	ec_comm_ctx.phase = PHASE_READY_COMM;
-	ec_comm_ctx.preamble_count = 0;
 }
 
 int ec_comm_process_packet(uint8_t ch)
