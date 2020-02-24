@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "3b1efc5f_153f60e8",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T21:31:48Z",
+      "side": 1,
+      "message": "Oh, I see. Makes sense. Thanks!",
+      "parentUuid": "e457f530_bb8c31f5",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "43060a6b8610a2ac4d1c724cab94149987cec710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ee5139e_2d4e9de6",
         "filename": "include/gpio_list.h",
         "patchSetId": 4
