@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3a859487_6a01fde6",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-24T22:20:50Z",
+      "side": 1,
+      "message": "We could add a sequence number on the packets. +Diasuke and +Namyoon for thoughts?",
+      "parentUuid": "838f5d41_14d45f11",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "358a842127ef55f9f8878b9bb65dc6f9bbc99016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abc7ca8e_a21e6e3f",
         "filename": "include/vboot.h",
         "patchSetId": 1
