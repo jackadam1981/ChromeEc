@@ -16,6 +16,24 @@
       "revId": "f677d4650477ada70c16bc25c06bb71657a290b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "290900ab_13f585f7",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-25T07:37:29Z",
+      "side": 1,
+      "message": "I\u0027d like to let this command print something if the command success. This could help the servod reacts to the output more quickly, or it might hand there for raise a ptyError, and we then realize it success.\n\nhttps://crrev.com/c/2054650/6/servo/drv/ec3po_servo_v4.py#299",
+      "parentUuid": "10b3d96b_b66ec3d2",
+      "revId": "f677d4650477ada70c16bc25c06bb71657a290b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
