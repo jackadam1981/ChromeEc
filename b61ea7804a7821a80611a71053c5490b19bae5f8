@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6a75d52_bea11adc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-25T14:52:38Z",
+      "side": 1,
+      "message": "Add the details about the scenarios this fixes here.  This will help firmware branch owners when they look at master to evaluate what commits they need to pull into their firmware branches.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfea9871_eddeefdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-25T14:52:38Z",
+      "side": 1,
+      "message": "Describe the tests in the \"TEST\u003d\" field.  If you performed the tests yourself and they passed, mark the CL as verified.  If the tests were performed by another party, usually they will be the ones to mark \"verified\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
