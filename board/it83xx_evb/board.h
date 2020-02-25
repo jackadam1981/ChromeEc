@@ -82,12 +82,19 @@ enum pwm_channel {
 enum adc_channel {
 	ADC_VBUSSA,
 	ADC_VBUSSB,
+	ADC_EVB_CH_7,
 	ADC_EVB_CH_13,
 	ADC_EVB_CH_14,
 	ADC_EVB_CH_15,
 	ADC_EVB_CH_16,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
+};
+
+enum vcmp_channel {
+	VCMP_SNS_PP3300,
+	/* Number of voltage comparator channels */
+	VCMP_CH_COUNT
 };
 
 #if IT83XX_PD_EVB

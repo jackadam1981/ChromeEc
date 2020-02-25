@@ -178,6 +178,9 @@ void intc_cpu_int_group_7(void)
 	case IT83XX_IRQ_ADC:
 		adc_interrupt();
 		break;
+	case IT83XX_IRQ_V_COMP:
+		volt_comp_interrupt();
+		break;
 #endif
 	default:
 		break;
