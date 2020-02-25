@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2da52de9_b56aef04",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-25T18:21:32Z",
+      "side": 1,
+      "message": "I think this should be in vboot.h, so that EC and CR50 can share.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 27
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bb9765_379701a1",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-25T18:21:32Z",
+      "side": 1,
+      "message": "It should zero. It doesn\u0027t mean SUCCESS but no-response.",
+      "range": {
+        "startLine": 148,
+        "startChar": 31,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb7b5be_2e183015",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-25T18:21:32Z",
+      "side": 1,
+      "message": "This should be in vboot.h.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb0a12d_6be71eac",
+        "filename": "include/vboot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-25T18:21:32Z",
+      "side": 1,
+      "message": "This is much bigger than actually used (32 bytes, SHA256_DIGEST_SIZE) as of today.\nCan we have 32 bytes, and extend it later when it is needed?",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
