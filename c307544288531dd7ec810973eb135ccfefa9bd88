@@ -566,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "1d75284a_da96d8be",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T18:34:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58359a1d_9d4c58b9",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27bde3f5_95cac6f5",
         "filename": "docs/configuration/gpio.md",
         "patchSetId": 7
@@ -648,6 +672,30 @@
       "side": 1,
       "message": "I\u0027m not clear on what you\u0027re asking for.  Do you want this section to also point to include/gpio.h?",
       "parentUuid": "5b9042ae_af1dd39e",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "c307544288531dd7ec810973eb135ccfefa9bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93281428_fa0ebc42",
+        "filename": "docs/configuration/gpio.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T18:34:11Z",
+      "side": 1,
+      "message": "Ah, that didnt\u0027 make sense did it.\n\nCould you point to GPIO_ values in gpio.h as the source for the flags variable?",
+      "parentUuid": "3b496af6_8062863d",
       "range": {
         "startLine": 55,
         "startChar": 12,
