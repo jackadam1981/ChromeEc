@@ -22,6 +22,8 @@
 #undef CONFIG_LED_ONOFF_STATES
 /* Battery */
 #define CONFIG_BATTERY_LEVEL_NEAR_FULL 91
+#define CONFIG_SB_FIRMWARE_UPDATE
+#define CONFIG_SMBUS_PEC
 
 /* Motion sensing drivers */
 #define CONFIG_ACCELGYRO_BMI160
