@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70df4f80_17e9e215",
+        "filename": "common/usbc/usb_sm_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:53:04Z",
+      "side": 1,
+      "message": "nit: we can use \"bool is_end\" or maybe an enum instead for START and STOP",
+      "range": {
+        "startLine": 18,
+        "startChar": 54,
+        "endLine": 18,
+        "endChar": 57
+      },
+      "revId": "a975bdcc95069c6ce5c9050daeb28241e7be4b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba47ef15_96ad30e8",
+        "filename": "common/usbc/usb_sm_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:53:04Z",
+      "side": 1,
+      "message": "pass in usb_state_ptr state here and also whether it is start, run, or exit, then we won\u0027t have to scan.",
+      "range": {
+        "startLine": 48,
+        "startChar": 32,
+        "endLine": 48,
+        "endChar": 53
+      },
+      "revId": "a975bdcc95069c6ce5c9050daeb28241e7be4b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "970441f1_67a92d1e",
+        "filename": "common/usbc/usb_sm_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:53:04Z",
+      "side": 1,
+      "message": "instead of scanning each state machine, we can see if 0 \u003c\u003d (usb_state_ptr - test_tc_sm_data.base) \u003c test_tc_sm_data.size to determine which is the correct state machine.\n\nAlso the calling site know if we are entry, run, or exit, so we can pass that in too so we don\u0027t have to scan that either.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "a975bdcc95069c6ce5c9050daeb28241e7be4b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a612099c_db9545b8",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:53:04Z",
+      "side": 1,
+      "message": "needs to be defined in config.h",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "a975bdcc95069c6ce5c9050daeb28241e7be4b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "872e4d75_30b7cda5",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:53:04Z",
+      "side": 1,
+      "message": "these derived defines should be in config.h otherwise if the c file doesn\u0027t include this header file then we will get different complication behavior\n\nheader file refactoring in the future could also trigger a complication change too",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "a975bdcc95069c6ce5c9050daeb28241e7be4b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e0039c_a630a31f",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:53:04Z",
+      "side": 1,
+      "message": "needs function header.\n\nAlso maybe don\u0027t tab it over, that is going to look weird with a function header",
+      "range": {
+        "startLine": 70,
+        "startChar": 6,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "a975bdcc95069c6ce5c9050daeb28241e7be4b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
