@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbf9199b_0b3d0fa0",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually create rw hex. Updated docstring.",
+      "parentUuid": "afd21907_b5bfb8c4",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 58
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dca47a97_cf7af647",
         "filename": "util/flash_cr50.py",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e84029_f53cd542",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "dca47a97_cf7af647",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 132,
+        "endChar": 70
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e806134a_7a0e6ab2",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "e13d75ba_72fa398b",
+      "range": {
+        "startLine": 144,
+        "startChar": 37,
+        "endLine": 144,
+        "endChar": 40
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18d8df4d_054a7c2c",
         "filename": "util/flash_cr50.py",
         "patchSetId": 15
@@ -91,6 +163,30 @@
       "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a45f468_b3e18b36",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "Modified the script to assume it\u0027s a binary cr50 image.",
+      "parentUuid": "18d8df4d_054a7c2c",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 57
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3f9b49b1_2a74cfd8",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68d44f8_1eec46f2",
+      "range": {
+        "startLine": 169,
+        "startChar": 11,
+        "endLine": 169,
+        "endChar": 46
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e001da3_52a76949",
         "filename": "util/flash_cr50.py",
         "patchSetId": 15
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "45558f39_13b3313b",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "cleanup_rescue_thread does that.",
+      "parentUuid": "7e001da3_52a76949",
+      "range": {
+        "startLine": 706,
+        "startChar": 27,
+        "endLine": 706,
+        "endChar": 33
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fda57acd_cba13507",
         "filename": "util/flash_cr50.py",
         "patchSetId": 15
@@ -151,6 +295,30 @@
       "writtenOn": "2020-02-20T01:02:23Z",
       "side": 1,
       "message": "this is way to clever if you ask me 😊 and also would fail if the user\u0027s intention is to program the file named \u0027prod\u0027 or \u0027prepvt\u0027 in the current directory.",
+      "range": {
+        "startLine": 795,
+        "startChar": 22,
+        "endLine": 795,
+        "endChar": 62
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff4b7310_3fc0c35c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T22:18:42Z",
+      "side": 1,
+      "message": "People never know where the cr50 firmware is. I think this is ok. We can remove it later??",
+      "parentUuid": "fda57acd_cba13507",
       "range": {
         "startLine": 795,
         "startChar": 22,
