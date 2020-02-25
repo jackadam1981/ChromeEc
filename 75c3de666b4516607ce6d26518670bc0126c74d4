@@ -96,6 +96,52 @@
     },
     {
       "key": {
+        "uuid": "c70e5c59_709dae17",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-25T23:57:01Z",
+      "side": 1,
+      "message": "missed this: why are these declarations necessary?",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c031cbd_43e4eb29",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-25T23:57:01Z",
+      "side": 1,
+      "message": "Ah, I misurndestood how join(timeout) works, I thought it would kill the thread and the spawned process, if any.",
+      "range": {
+        "startLine": 677,
+        "startChar": 8,
+        "endLine": 677,
+        "endChar": 54
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0d4aee0_c05a4e14",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
