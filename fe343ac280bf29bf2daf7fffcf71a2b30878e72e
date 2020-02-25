@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "26cb153b_6c79e2e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-02-25T17:18:00Z",
+      "side": 1,
+      "message": "I think we need to detail better semantics. For example, do we need both a request and commit of the state? Currently I feel this is bolted on the side when we should be exposing the adequate semantics.\n\nSimilarly, both depthcharge and in kernel should also be taking advantage of the same behavior/flows of detailing to EC the request and capturing the state.  We should not be just providing a single mechanism that stores information the inevitably becomes stale. We should have an idea how the mux configuration will work in deptcharge as well as being consistent in the kernel driver too.",
+      "parentUuid": "2b902fc8_57dbed36",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abced735_c12276bb",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
