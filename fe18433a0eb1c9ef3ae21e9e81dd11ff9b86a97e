@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "98510e2a_8702928e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2905,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-02-25T04:39:17Z",
+      "side": 1,
+      "message": "SGTM. We should ensure the VCONN on if we have being sourcing VCONN and as a sink role.",
+      "parentUuid": "36801d83_322df307",
+      "revId": "fe18433a0eb1c9ef3ae21e9e81dd11ff9b86a97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be5d5e22_0fea698d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
