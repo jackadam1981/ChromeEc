@@ -3216,6 +3216,9 @@
  */
 #undef CONFIG_SAVE_VBOOT_HASH
 
+/* Enable smart battery firmware update driver */
+#undef CONFIG_SB_FIRMWARE_UPDATE
+
 /* Allow the board to use a GPIO for the SCI# signal. */
 #undef CONFIG_SCI_GPIO
 
