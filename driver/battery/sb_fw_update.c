@@ -16,7 +16,6 @@
 #include "sb_fw_update.h"
 #include "console.h"
 #include "crc8.h"
-#include "smbus.h"
 
 #define CPRINTF(fmt, args...) cprintf(CC_I2C, fmt, ## args)
 
@@ -47,10 +46,6 @@ int sb_fw_update_in_progress(void)
 static int is_protected(void)
 {
 	int state = get_state();
-	int vboot_mode = host_get_vboot_mode();
-
-	if (vboot_mode == VBOOT_MODE_DEVELOPER)
-		return 1;
 
 	if (state == EC_SB_FW_UPDATE_PROTECT) {
 		CPRINTF("firmware update is protected.\n");
@@ -78,7 +73,7 @@ static int prepare_update(struct host_cmd_handler_args *args)
 			SB_FW_UPDATE_CMD_WRITE_WORD,
 			SB_FW_UPDATE_CMD_WRITE_WORD_PREPARE);
 
-	rv = smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR,
+	rv = i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 		SB_FW_UPDATE_CMD_WRITE_WORD,
 		SB_FW_UPDATE_CMD_WRITE_WORD_PREPARE);
 	if (rv) {
@@ -108,7 +103,7 @@ static int begin_update(struct host_cmd_handler_args *args)
 
 	set_state(EC_SB_FW_UPDATE_BEGIN);
 
-	rv = smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR,
+	rv = i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 		SB_FW_UPDATE_CMD_WRITE_WORD,
 		SB_FW_UPDATE_CMD_WRITE_WORD_UPDATE);
 	if (rv) {
@@ -130,7 +125,7 @@ static int end_update(struct host_cmd_handler_args *args)
 	if (!i2c_access_enable)
 		return EC_RES_ERROR;
 
-	rv = smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR,
+	rv = i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 		SB_FW_UPDATE_CMD_WRITE_WORD,
 		SB_FW_UPDATE_CMD_WRITE_WORD_END);
 	if (rv) {
@@ -147,7 +142,7 @@ static int end_update(struct host_cmd_handler_args *args)
 static int get_info(struct host_cmd_handler_args *args)
 {
 	int rv = EC_RES_SUCCESS;
-	uint8_t len = SB_FW_UPDATE_CMD_INFO_SIZE;
+	int len = SB_FW_UPDATE_CMD_INFO_SIZE;
 
 	struct ec_response_sb_fw_update *resp =
 		(struct ec_response_sb_fw_update *)args->response;
@@ -163,8 +158,8 @@ static int get_info(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 	}
 
-	rv = smbus_read_block(I2C_PORT_BATTERY, BATTERY_ADDR,
-		SB_FW_UPDATE_CMD_READ_INFO, resp->info.data, &len);
+	rv = i2c_read_block(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+		SB_FW_UPDATE_CMD_READ_INFO, resp->info.data, len);
 	if (rv) {
 		CPRINTF("smbus cmd:%x rd info - access error\n",
 			SB_FW_UPDATE_CMD_READ_INFO);
@@ -180,7 +175,7 @@ static int get_status(struct host_cmd_handler_args *args)
 	struct ec_response_sb_fw_update *resp =
 		(struct ec_response_sb_fw_update *)args->response;
 
-	uint16_t *p16 = (uint16_t *) resp->status.data;
+	int *p16 = (int *) resp->status.data;
 
 	struct sb_fw_update_status *sts =
 		(struct sb_fw_update_status *) resp->status.data;
@@ -190,7 +185,7 @@ static int get_status(struct host_cmd_handler_args *args)
 
 	args->response_size = SB_FW_UPDATE_CMD_STATUS_SIZE;
 
-	rv = smbus_read_word(I2C_PORT_BATTERY, BATTERY_ADDR,
+	rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 		SB_FW_UPDATE_CMD_READ_STATUS, p16);
 
 	if (rv == EC_ERROR_BUSY) {
@@ -229,7 +224,7 @@ static int write_block(struct host_cmd_handler_args *args)
 
 	set_state(EC_SB_FW_UPDATE_WRITE);
 
-	rv = smbus_write_block(I2C_PORT_BATTERY, BATTERY_ADDR,
+	rv = i2c_write_block(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 			SB_FW_UPDATE_CMD_WRITE_BLOCK, param->write.data,
 			SB_FW_UPDATE_CMD_WRITE_BLOCK_SIZE);
 	if (rv) {
@@ -241,7 +236,8 @@ static int write_block(struct host_cmd_handler_args *args)
 
 typedef int (*sb_fw_update_func)(struct host_cmd_handler_args *args);
 
-static int sb_fw_update(struct host_cmd_handler_args *args)
+static enum ec_status
+sb_fw_update(struct host_cmd_handler_args *args)
 {
 	struct ec_sb_fw_update_header *hdr =
 		(struct ec_sb_fw_update_header *)args->params;
