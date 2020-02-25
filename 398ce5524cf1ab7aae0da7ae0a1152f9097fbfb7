@@ -183,6 +183,46 @@
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87fcd138_131cbc4d",
+        "filename": "include/i2c_ite_flash_support.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-02-25T03:45:50Z",
+      "side": 1,
+      "message": "Do we have link-time / whole program optimizations on EC builds?  If not, how about restructuring to place these constants within the i2c_ite_flash_support compilation unit?\n\nWhen I added ITE waveform support I was scolded for any potential excess use of Servo flash space, so I\u0027m naturally carrying that concern forward. :-)\n\nThe most obvious path would be moving all of the constants into board.h as preprocessor macros, e.g. ITE_DFU_I2C_PORT, ITE_DFU_USE_COMPLEMENT_TIMER_CHANNEL, etc.\n\nThe access_allow() function needs external linkage of course.  Since that\u0027s global too it could become a standalone function, e.g. extern bool ite_dfu_access_allowed(void);",
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dadfff8_abcf16d1",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-02-25T03:45:50Z",
+      "side": 1,
+      "message": "style nit: I\u0027d prefer the || go inside [[ ]] when applicable.  (Yes I realize this file is already inconsistent on that.)",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1214,
+        "endChar": 42
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
