@@ -1,7 +1,9 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+
+/* Shared USB-C policy for IT_evb boards */
 
 #include "adc.h"
 #include "config.h"

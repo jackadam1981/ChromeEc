@@ -3,12 +3,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
-# Board specific files build
+# Baseboard specific files build
+#
 
-# the IC is ITE IT8xxx2
-CHIP:=it83xx
-CHIP_FAMILY:=it8xxx2
-CHIP_VARIANT:=it83202bx
-BASEBOARD:=it_evb
-
-board-y=board.o
+baseboard-y=baseboard.o
+baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
