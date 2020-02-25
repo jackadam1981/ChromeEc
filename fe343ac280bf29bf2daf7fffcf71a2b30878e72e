@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "f1d9779d_d177e108",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-02-25T21:59:52Z",
+      "side": 1,
+      "message": "smbios is not dynamic. ACPI can be. I think we need a way to reflect true status. And it shouldn\u0027t just be used only for a narrow case. I am expecting that what we choose to go with needs to be used up and down the stack -- not just for some slim time during coreboot boot.\n\nI think the answer should be clearer once the requirements are fully fleshed out. i.e. what was the impetus for this patch originally and how does that fit into the long term solution?",
+      "parentUuid": "6f6091d7_b6df530f",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abced735_c12276bb",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
