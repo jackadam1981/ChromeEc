@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd3770c2_2f262d88",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f437b42f_3d9aeb57",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a1cd92c_e2581a4b",
         "filename": "board/c2d2/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df64edc0_96979b26",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Explicitly named variables work here well and making into an array doesn\u0027t really give us much. (if it were written that way it wouldn\u0027t really hurt either).",
+      "parentUuid": "6a1cd92c_e2581a4b",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "91373924_18ad7638",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "renamed",
+      "parentUuid": "d7d7660b_6fd72c19",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d240362_8de3f695",
         "filename": "board/c2d2/board.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ce6056_97132050",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d240362_8de3f695",
+      "range": {
+        "startLine": 83,
+        "startChar": 50,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "195e43ce_62455828",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "It is pretty clear to me. See sample console output:\n\n\n\u003e enable_spi 1800                                                                                                                                                       \nSPI Vref: 1800                                                                                                                                                          \n\u003e enable_i2c ec 400                                                                                                                                                     \nCannot update to I2C! Pin busy with SPI.                                                                                                                                \nBusy                                                                                                                                                                    \nUsage: enable_i2c [ec|ap] [0|100|400|1000]?            \n\u003e \n\n\nand\n\n\n\u003e enable_i2c ec 400                                                                                                                                                     \nI2C speed kpbs: 400                                                                                                                                                     \n\u003e hold_usart_low usart1 1                                                                                                                                               \nCannot update to UART HELD! Pin busy with I2C.                                                                                                                          \nBusy                                                                                                                                                                    \nUsage: hold_usart_low usart[1|3|4] [0|1]?\n\u003e\n\n\n-----\n\nAnyway, this changed based on Diana\u0027s feedback, so this function no longer exists",
+      "parentUuid": "d890a3c3_833e8dd8",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bdd99da_010ec97e",
         "filename": "board/c2d2/board.c",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ef7b7b_c8ce7102",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Pulled this out and make if and else branch conditions more explicit",
+      "parentUuid": "5bdd99da_010ec97e",
+      "range": {
+        "startLine": 739,
+        "startChar": 7,
+        "endLine": 739,
+        "endChar": 33
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ed3723a8_3e322545",
+        "filename": "board/c2d2/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d504e893_565c6e81",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36d8d21_de1381a7",
         "filename": "include/i2c_ite_flash_support.h",
         "patchSetId": 4
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "c8048edf_a668fa05",
+        "filename": "include/i2c_ite_flash_support.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f36d8d21_de1381a7",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87fcd138_131cbc4d",
         "filename": "include/i2c_ite_flash_support.h",
         "patchSetId": 4
@@ -200,6 +392,24 @@
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9090225_58d094fd",
+        "filename": "include/i2c_ite_flash_support.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "I think that the extra flash space required here (16 - 20 bytes) is well worth having an explicit API boundary for the ite flash support.\n\nOnly the boards that needs this (servo_micro and c2d2) will pay this cost since board.c defines it.\n\nOur config define API boundaries get convoluted very quickly.\n\nWe are currently building with O3 optimizations (https://chromium.git.corp.google.com/chromiumos/platform/ec/+/7137c3daeaf10ca989b6df2a2a0d3ff35c39e8c4/Makefile.toolchain#129)\n\nI strongly prefer having an API structure for this instead of using CONFIG_ options",
+      "parentUuid": "87fcd138_131cbc4d",
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +433,30 @@
       "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97af1e61_d99c5a51",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T16:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dadfff8_abcf16d1",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1214,
+        "endChar": 42
+      },
+      "revId": "398ce5524cf1ab7aae0da7ae0a1152f9097fbfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
