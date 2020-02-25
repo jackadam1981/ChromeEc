@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "021f9497_b430de37",
+        "filename": "driver/usb_mux/ps874x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "826fb62f_1587e2c2",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c069555d_30134781",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 8
@@ -45,6 +69,54 @@
       "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ae83d8_f4b2766d",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "it was part of my attempt to reduce the size of eve and lux. Didn\u0027t do any good, so it is gone",
+      "parentUuid": "c069555d_30134781",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c1f32a2_f097b43f",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3970,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "\u003e \"configration\" is a possible misspelling of \"configuration\".\n\nPlease fix.",
+      "parentUuid": "61361dd6_502002ed",
+      "range": {
+        "startLine": 3970,
+        "startChar": 3,
+        "endLine": 3970,
+        "endChar": 15
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ac0c4e67_9e136a8b",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3973,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "this is gone",
+      "parentUuid": "56670ba5_dbe8f607",
+      "range": {
+        "startLine": 3973,
+        "startChar": 3,
+        "endLine": 3973,
+        "endChar": 34
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8531e4d_1fbc1151",
         "filename": "include/usb_mux.h",
         "patchSetId": 8
@@ -91,6 +187,30 @@
       "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "206dbfae_1c32b922",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "did as suggested in our conversation",
+      "parentUuid": "e8531e4d_1fbc1151",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "540a1525_f3d2cca8",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "yes, removed it right after I uploaded this",
+      "parentUuid": "daa72075_e36cd0ef",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b63b656e_16cbfc30",
         "filename": "include/usb_mux.h",
         "patchSetId": 8
@@ -140,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "0991efc5_5d37c707",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "did as suggested in our conversation",
+      "parentUuid": "b63b656e_16cbfc30",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4233141_a3963c41",
         "filename": "include/usb_mux.h",
         "patchSetId": 8
@@ -160,6 +328,30 @@
       "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0f0c8d_bd615f72",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-25T21:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4233141_a3963c41",
+      "range": {
+        "startLine": 149,
+        "startChar": 22,
+        "endLine": 149,
+        "endChar": 32
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
