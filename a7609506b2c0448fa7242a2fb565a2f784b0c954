@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce03a93_d6ac4a89",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T14:39:14Z",
+      "side": 1,
+      "message": "nit: can you use .field \u003d value, notation please?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "a7609506b2c0448fa7242a2fb565a2f784b0c954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8177135_42e5e828",
+        "filename": "board/nucleo-dartmonkey/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T14:39:14Z",
+      "side": 1,
+      "message": "nit: join this SECTION_IS_RW with above section, or why we break into two different sections?",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "a7609506b2c0448fa7242a2fb565a2f784b0c954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
