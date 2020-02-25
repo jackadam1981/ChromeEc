@@ -316,6 +316,7 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 /* Put a char to host buffer by HIMDO */
 void lpc_mouse_put_char(uint8_t chr)
 {
+	NPCX_HIKMST |= BIT(5);
 	NPCX_HIMDO = chr;
 	CPRINTS("Mouse put %02x", chr);
 
@@ -532,6 +533,9 @@ void lpc_kbc_obe_interrupt(void)
 	task_disable_irq(NPCX_IRQ_KBC_OBE);
 
 	CPRINTS("obe isr %02x", NPCX_HIKMST);
+
+	NPCX_HIKMST &= ~BIT(5);
+
 	task_wake(TASK_ID_KEYPROTO);
 }
 DECLARE_IRQ(NPCX_IRQ_KBC_OBE, lpc_kbc_obe_interrupt, 4);
