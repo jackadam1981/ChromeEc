@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "6f6091d7_b6df530f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-25T20:15:57Z",
+      "side": 1,
+      "message": "sure, I can add this info.\nDoes this mean we need to follow this approach of synchronizing TCSS state? or we still need to explore options of sharing info from smbios or ACPI etc?",
+      "parentUuid": "26cb153b_6c79e2e6",
+      "revId": "fe343ac280bf29bf2daf7fffcf71a2b30878e72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abced735_c12276bb",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
