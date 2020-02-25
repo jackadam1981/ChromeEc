@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d7f0ecb_13f5e932",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2020-02-25T06:32:42Z",
+      "side": 1,
+      "message": "Scenarious:\nAs this issue (https://partnerissuetracker.corp.google.com/issues/146318582) . when one CC is open, the other CC is Ra, TCPM set Look4Connection command to toggle CC under normal mode (Don`t enter Low Power mode), but ANX7447/ANX3447 can not enter CC toggle process if CABLE_DET_DEG is not configured as \"0\".\n\nChip Behaviors: \nthere are two conditions to toggle CC pins through Look4Connection under normal mode, those are almost like the below.\nif(CABLE_DET_DEG \u003d\u003d 0 \u0026\u0026 Look4Connection)\n{\n  config CC pins to toggle;\n} \nNote: \n      CABLE_DET_DEG: it is a degital signal, and be configured by register 0xAA:bit6;\n      Look4Connection: configure the Look4Connection command;\n\nwhen this issue (146318582) occurs, look4Connection_command is \"1\", so CABLE_DET_DEG shall be configured to \"0\" to start the CC toggling; Once CC is connection, CABLE_DET_DEG shall be configured to \"1\" to stop the CC toggling.",
+      "parentUuid": "e09de042_340c23f5",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "b713c28ac7ebb99f293e6ed5604908196f85db16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efe20cbd_54301da9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b713c28ac7ebb99f293e6ed5604908196f85db16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0fc98c_b8736220",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2020-02-25T06:32:42Z",
+      "side": 1,
+      "message": "Already tested it by Quanta.",
+      "parentUuid": "efe20cbd_54301da9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "b713c28ac7ebb99f293e6ed5604908196f85db16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
