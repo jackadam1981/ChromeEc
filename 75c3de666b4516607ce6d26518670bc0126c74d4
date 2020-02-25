@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e27f9be9_05b85499",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T23:17:43Z",
+      "side": 1,
+      "message": "Checking only size seems a little arbitrary. We can discuss this check and add it in a followup cl.",
+      "parentUuid": "b99b25f9_6bd98462",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b76d8fae_4b413f69",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "368db032_fff724b2",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T23:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b76d8fae_4b413f69",
+      "range": {
+        "startLine": 141,
+        "startChar": 7,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0d4aee0_c05a4e14",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
@@ -59,6 +107,30 @@
       "writtenOn": "2020-02-25T22:58:27Z",
       "side": 1,
       "message": "I think it is better to avoid ambiguity, How about allowing \u0027-prod, -prepvt or file name as the only command line parameter?\n\nNo need on fancy getopt() stuff.",
+      "range": {
+        "startLine": 766,
+        "startChar": 4,
+        "endLine": 766,
+        "endChar": 64
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12221b3b_eac872b4",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-25T23:17:43Z",
+      "side": 1,
+      "message": "I added a release arg. Does that work?",
+      "parentUuid": "f0d4aee0_c05a4e14",
       "range": {
         "startLine": 766,
         "startChar": 4,
