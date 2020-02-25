@@ -2902,7 +2902,21 @@ void pd_task(void *u)
 	 */
 	pd_power_supply_reset(port);
 #ifdef CONFIG_USBC_VCONN
-	set_vconn(port, 0);
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	/*
+	 * If TCPC was being sourcing VCONN and as a sink source in previous
+	 * explicit contract, TCPC should still be the VCONN source. Otherwise,
+	 * VCONN should be turned off.
+	 */
+	if (pd_comm_is_enabled(port) &&
+	    (pd_get_saved_port_flags(port, &saved_flgs) == EC_SUCCESS) &&
+	    (saved_flgs & PD_BBRMFLG_EXPLICIT_CONTRACT) &&
+	    !(saved_flgs & PD_BBRMFLG_POWER_ROLE) &&
+	    (saved_flgs & PD_BBRMFLG_VCONN_ROLE))
+		set_vconn(port, 1);
+	else
+#endif
+		set_vconn(port, 0);
 #endif
 
 	/* Initialize TCPM driver and wait for TCPC to be ready */
