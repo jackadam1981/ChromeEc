@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0361a561_91f692de",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-25T22:23:39Z",
+      "side": 1,
+      "message": "Done. I elected to put it after the intro, Wikipedia-style.",
+      "parentUuid": "1c6e365e_33a689e0",
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12669215_de9e8a07",
         "filename": "docs/code_reviews.md",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51605127_706cca27",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-25T22:23:39Z",
+      "side": 1,
+      "message": "It looks like we might be able to do that with the reviewers Gerrit plugin: http://stackoverflow.com/q/27039310. I\u0027ll note that in a lot of (most?) cases, the author will want a specific domain expert to review. Assigning to the rotation unconditionally might create some noise. I\u0027ll see what the Gerrit people think.",
+      "parentUuid": "12669215_de9e8a07",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f039776d_8676224a",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-25T22:23:39Z",
+      "side": 1,
+      "message": "I thought about this but decided against it. From what I can see now, all the bullets below but one are most directly addressed to the CL author. The one addressed to the reviewer (when to CR+2) could be separated, but then it would be farther away from its context (resolving outstanding comments). I think splitting it up would make comprehension harder. Ultimately, for this to work well, both the author and the reviewer will need to be familiar with all the guidelines, so I\u0027m not as concerned about role-based reading.",
+      "parentUuid": "029da6a7_ed7850d7",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37ba0ebb_3ecbae22",
         "filename": "docs/code_reviews.md",
         "patchSetId": 8
@@ -85,6 +151,30 @@
       "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db67ea30_589f5bc1",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-25T22:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ba0ebb_3ecbae22",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "2aa1ad67_3f26ef51",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-25T22:23:39Z",
+      "side": 1,
+      "message": "Yes. The hope is that the reviewer won\u0027t get an email until the author is definitely ready for the reviewer to respond. I suppose the case could be made that repo upload should work this way by default.\n\nThe intended workflow, and I can clarify this if need be, is\n1. Receive comments on uploaded patchset.\n2. Fix things that need to be fixed.\n3. Uploaded new patchset with --ne.\n4. Reply to comments, saying that you fixed things or whatever, generating an email to the reviewer.",
+      "parentUuid": "75e96771_1487d208",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10e71832_d28591cd",
         "filename": "docs/code_reviews.md",
         "patchSetId": 8
@@ -125,6 +239,24 @@
       "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efbb86f9_34211a30",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-25T22:23:39Z",
+      "side": 1,
+      "message": "I added a few lines and softened the language. Sometimes, there are legitimate reasons to do a quick first-pass review or to not have a bug. Note that I have not associated a bug with this CL. We have a pre-upload hook that catches if you don\u0027t include a BUG\u003d line, so if you want to not link a bug, you have to at least do it intentionally.",
+      "parentUuid": "10e71832_d28591cd",
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
