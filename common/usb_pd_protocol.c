@@ -2969,6 +2969,9 @@ void pd_task(void *u)
 					 (saved_flgs & PD_BBRMFLG_DATA_ROLE) ?
 					 PD_ROLE_DFP : PD_ROLE_UFP);
 #ifdef CONFIG_USBC_VCONN
+			set_vconn(port,
+					  (saved_flgs & PD_BBRMFLG_VCONN_ROLE) ?
+					  PD_ROLE_VCONN_ON : PD_ROLE_VCONN_OFF);
 			pd_set_vconn_role(port,
 					  (saved_flgs & PD_BBRMFLG_VCONN_ROLE) ?
 					  PD_ROLE_VCONN_ON : PD_ROLE_VCONN_OFF);
