@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826fb62f_1587e2c2",
+        "filename": "driver/usb_mux/ps874x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "could probably change to me-\u003ei2c_port, right?",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c069555d_30134781",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "do we actually need this? Can\u0027t we just iterate through the list any way (and the normal case will just have a single mux in the linked list)?",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56670ba5_dbe8f607",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3973,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "Needs more. e.g. system has more than one USB-C mux for a single port and they all need to be set properly (via chaining all driver calls)\n\nAlso is there anything the developer needs to do differently or provide in board.c when they enable this option?",
+      "range": {
+        "startLine": 3973,
+        "startChar": 3,
+        "endLine": 3973,
+        "endChar": 34
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8531e4d_1fbc1151",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "why not const here?\n\n--\n\nactually the scalars shoudl probable all be non const and the pointers should be const pointers.\n\nThe array of muxes should be const in most situations unless you have a define that allows it to be non-const.  (we can talk more about this if you want)",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa72075_e36cd0ef",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "remove exclude_state now, right?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63b656e_16cbfc30",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "should be const pointer",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4233141_a3963c41",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-25T17:34:47Z",
+      "side": 1,
+      "message": "why an array of pointers instead of just an array? What does that level of indirection give us, It makes the boards files have to do some dancing to get into that form too",
+      "range": {
+        "startLine": 149,
+        "startChar": 22,
+        "endLine": 149,
+        "endChar": 32
+      },
+      "revId": "4090f971826975fbc2539b75e6d599c90d8db5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
