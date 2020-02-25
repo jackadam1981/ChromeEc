@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "eb6fd1b9_544fd81d",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-25T22:58:27Z",
+      "side": 1,
+      "message": "I am not sure why is it better to process it elsewhere than here, where you know that the thread just finished running?\n\nI\u0027ll look at this a bit more trying to understand the dirrernces.",
+      "parentUuid": "45558f39_13b3313b",
+      "range": {
+        "startLine": 706,
+        "startChar": 27,
+        "endLine": 706,
+        "endChar": 33
+      },
+      "revId": "cd167371b8f45ffc757c0832f8e3ee27bd3c65f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fda57acd_cba13507",
         "filename": "util/flash_cr50.py",
         "patchSetId": 15
