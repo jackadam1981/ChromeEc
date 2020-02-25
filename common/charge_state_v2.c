@@ -23,6 +23,7 @@
 #include "i2c.h"
 #include "math_util.h"
 #include "printf.h"
+#include "sb_fw_update.h"
 #include "system.h"
 #include "task.h"
 #include "throttle_ap.h"
@@ -1647,6 +1648,13 @@ void charger_task(void *u)
 	battery_level_shutdown = board_set_battery_level_shutdown();
 
 	while (1) {
+
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+		if (sb_fw_update_in_progress()) {
+			task_wait_event(CHARGE_MAX_SLEEP_USEC);
+			continue;
+		}
+#endif
 
 		/* Let's see what's going on... */
 		curr.ts = get_time();
