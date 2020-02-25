@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "12669215_de9e8a07",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-25T19:12:46Z",
+      "side": 1,
+      "message": "can git hooks automatically add `cros-ec-reviewers@google.com` when these files are modified?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ba0ebb_3ecbae22",
+        "filename": "docs/code_reviews.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-25T19:12:46Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "b5d31a1f58bdca27ba348cbb9482451c1b65abd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75e96771_1487d208",
         "filename": "docs/code_reviews.md",
         "patchSetId": 8
