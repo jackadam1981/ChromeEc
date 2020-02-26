@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc1d3037_db90c9ee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-26T20:38:09Z",
+      "side": 1,
+      "message": "nit: Sorry, can we reword this a bit? I find it a little hard to parse, especially the \"sink source\" part.\n\n    \nIf we were previously a sink but also the VCONN source, we should still continue to source VCONN. Otherwise, we should turn off VCONN since we are also going to turn off VBUS.",
+      "range": {
+        "startLine": 2906,
+        "startChar": 3,
+        "endLine": 2909,
+        "endChar": 31
+      },
+      "revId": "5ccfaa1df65d4207f09845418c1710418184299b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
