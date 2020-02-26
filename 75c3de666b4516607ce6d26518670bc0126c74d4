@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9eeff594_d4694a24",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-26T00:23:40Z",
+      "side": 1,
+      "message": "Sorry. I thought I uploaded the patch. Done",
+      "parentUuid": "fbaf0c1a_a2541481",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b76d8fae_4b413f69",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "4a6cbef0_91f8bba7",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-26T00:23:40Z",
+      "side": 1,
+      "message": "PACKAGE is just for debug information on what you might need to emerge.\nDEFAULT_UPDATER is the default updater. You could use gsctool from the EC if you want instead of /usr/sbin",
+      "parentUuid": "c70e5c59_709dae17",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c031cbd_43e4eb29",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
@@ -163,6 +211,30 @@
       "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42dd10e6_9c2b3133",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-26T00:23:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c031cbd_43e4eb29",
+      "range": {
+        "startLine": 677,
+        "startChar": 8,
+        "endLine": 677,
+        "endChar": 54
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
