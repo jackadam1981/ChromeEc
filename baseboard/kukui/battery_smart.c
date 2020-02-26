@@ -39,22 +39,20 @@ static enum battery_present battery_check_present_status(void)
 
 	/*
 	 * Check battery disconnect status. If we are unable to read battery
-	 * disconnect status, then return BP_NOT_SURE. Battery could be in ship
-	 * mode and might require pre-charge current to wake it up. BP_NO is not
-	 * returned here because charger state machine will not provide
-	 * pre-charge current assuming that battery is not present.
+	 * disconnect status or DFET is off, then return BP_NOT_SURE. Battery
+	 * could be in ship mode and might require pre-charge current to wake
+	 * it up. BP_NO is not returned here because charger state machine
+	 * will not provide pre-charge current assuming that battery is not
+	 * present.
 	 */
-	if (battery_get_disconnect_state() == BATTERY_DISCONNECT_ERROR)
+	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
 		return BP_NOT_SURE;
 
 	/*
 	 * Ensure that battery is:
 	 * 1. Not in cutoff
-	 * 2. Not disconnected
-	 * 3. Initialized
 	 */
-	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL)
 		return BP_NO;
 
 	return batt_pres;
