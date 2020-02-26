@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1b1f92_b8698a17",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "Can these both enable a common config CONFIG_SIMULATED_BUTTON which can be used in other places as well?\n\n#if defined(CONFIG_CMD_BUTTON) || defined(CONFIG_HOSTCMD_BUTTON)\n#define CONFIG_SIMULATED_BUTTON\n#endif",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 64
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49758d3d_5d6087cd",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "I know this is not added as part of this change, but I am trying to remember why this function toggles the state of the button? It looks like it is expecting to return one particular state of a button when simulated_button_pressed() is called for the first time and then returns flipped state when simulate_button_pressed() is called the second time. Can\u0027t this be handled by simulate_button() and simulate_button_release()?\n\ni.e.\nsimulate_button --\u003e Updates sim_button_state to be pressed for given button\nsimulate_button_release --\u003e Updates sim_button_state to be released for given button\n\nsimulated_button_pressed --\u003e Returns current state as per sim_button_state for given button.",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cecb028_53832e18",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "Vijay - do you remember why this was done? i.e. why is the button interrupt triggered twice?",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 40
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43bcd3cc_18185893",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "Can we avoid adding a deferred_func member to button_config structure? I know you are using it to differentiate between the buttons being released. But, can we instead store information about what was simulated to be pressed and use that? In fact, isn\u0027t this information already present in this driver? One downside of doing that would be that EC cannot accept another simulate button press host command while it is already processing one, which I think is perfectly fine.",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 45
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97fc2bc2_f75431c5",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "This change is completely changing the behavior of this function. The way it was written before was to allow multiple buttons to be pressed at the same time using a single command: https://chromium-review.googlesource.com/783515.",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 35
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f155901b_39df7b3c",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "|rec",
+      "range": {
+        "startLine": 405,
+        "startChar": 13,
+        "endLine": 405,
+        "endChar": 14
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f342a28_fab5edec",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:04:02Z",
+      "side": 1,
+      "message": "In my opinion, this host command should be supported only when system is unlocked. That way we can guarantee that the host cannot simply simulate recovery button press for example on devices in field.",
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
