@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fbaf0c1a_a2541481",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-26T00:08:51Z",
+      "side": 1,
+      "message": "this check is even more arbitrary, let\u0027s drop it until we decide what a good check is.",
+      "parentUuid": "e27f9be9_05b85499",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b76d8fae_4b413f69",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
@@ -186,6 +210,30 @@
       "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b8f49d_ccc28693",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-26T00:08:51Z",
+      "side": 1,
+      "message": "looks good, thank you",
+      "parentUuid": "12221b3b_eac872b4",
+      "range": {
+        "startLine": 766,
+        "startChar": 4,
+        "endLine": 766,
+        "endChar": 64
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
