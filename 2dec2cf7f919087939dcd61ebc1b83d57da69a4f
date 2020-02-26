@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d2e6061e_2b588248",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:57:12Z",
+      "side": 1,
+      "message": "\u003e we need to meet below case in button_interrupt() to succeed. \nif (next_deferred_time \u003c\u003d time_now ||\n    next_deferred_time \u003e state[i].debounce_time)\n\nWhy would that be a problem? That checks:\na) If the next_deferred_time is in the past i.e. no deferred call is scheduled already for button interrupt.\nb) if the next_deferred_time is greater than the debounce time of the current button i.e. deferred call is already scheduled, but the expiry time is greater than what the current button requests.\n\nIn both these cases, deferred call needs to be scheduled with the expiry time as the debounce time of the current button. However, if there is already a deferred call scheduled with expiry time before the current button\u0027s debounce time, then we don\u0027t need to change that.\n\nBy making two calls to button_interrupt(), it is just setting the debounce_time for current button twice effectively ignoring the first call to button_interrupt() here. Can you try removing the last two lines in this function to see if you run into any issues?",
+      "parentUuid": "37690161_af070e96",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 40
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43bcd3cc_18185893",
         "filename": "common/button.c",
         "patchSetId": 3
