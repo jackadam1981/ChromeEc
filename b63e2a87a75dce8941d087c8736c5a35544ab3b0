@@ -22,6 +22,30 @@
       "revId": "b63e2a87a75dce8941d087c8736c5a35544ab3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0514588e_a83d85b1",
+        "filename": "common/printf.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-02-26T03:39:00Z",
+      "side": 1,
+      "message": "The opposite (it is !IS_ENABLED(NO_UINT64_SUPPORT))...\n\niirc, this may only be tiny chips like zinger.",
+      "parentUuid": "af0d6163_d38afe75",
+      "range": {
+        "startLine": 237,
+        "startChar": 8,
+        "endLine": 237,
+        "endChar": 39
+      },
+      "revId": "b63e2a87a75dce8941d087c8736c5a35544ab3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
