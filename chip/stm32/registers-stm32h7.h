@@ -297,6 +297,7 @@
 #define GPIO_ALT_LCD                 0xB
 #define GPIO_ALT_RI                  0xE
 #define GPIO_ALT_EVENTOUT            0xF
+#define GPIO_ALT_DEBUG               GPIO_ALT_FUNC_1
 
 /* --- I2C --- */
 #define STM32_I2C_CR1(n)              REG16(stm32_i2c_reg(n, 0x00))
