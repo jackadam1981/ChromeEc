@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c2d1392a_72a97a5c",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-26T01:22:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean by \"simulate de-bounce\"? IIUC, when button_interrupt() is called for a particular button, state[i].debounce_time is set to indicate how long the button input needs to be debounced. And then button_change_deferred() checks the state of the button after the debounce_time to see if the button press state is different than the last state. If yes, then it considers that as a new button press/release event.\n\nNow, with button_interrupt_simulate(), you would enable button_interrupt() to set debounce_time for a button and follow the steps mentioned above. And once you decide to release the button after the press_ms as per user request, you would have to repeat the same.\n\nBTW, I checked CL:380315, but I couldn\u0027t find any explanation for the button_interrupt() being called twice.",
+      "parentUuid": "f4345be0_e16c16a6",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 40
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43bcd3cc_18185893",
         "filename": "common/button.c",
         "patchSetId": 3
