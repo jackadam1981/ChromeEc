@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "52b04691_dd035eca",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-26T17:44:20Z",
+      "side": 1,
+      "message": "It is a little hard to follow, but this won\u0027t be called any more after detection succeeds because we swap out the special zork_c1_usb_mux_driver that does the detection.\n\nWe are probably about at the point (on Zork) where we should switch to use FW_CONFIG and drop the detection.",
+      "parentUuid": "db95e29d_a944e7eb",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 661,
+        "endChar": 51
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a61a81d6_63332932",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 11
@@ -110,6 +134,29 @@
         "startChar": 1,
         "endLine": 49,
         "endChar": 67
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ebdc8d_78e97259",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-26T17:44:20Z",
+      "side": 1,
+      "message": "\"mux_ptr !\u003d NULL\" for clarity?",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 35
       },
       "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
