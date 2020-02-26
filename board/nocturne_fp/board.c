@@ -81,6 +81,9 @@ static void spi_configure(void)
 /* Initialize board. */
 static void board_init(void)
 {
+	/* Disable JTAG/SWD */
+	gpio_config_module(MODULE_DEBUG, 0);
+
 	spi_configure();
 
 	/* Enable interrupt on PCH power signals */
