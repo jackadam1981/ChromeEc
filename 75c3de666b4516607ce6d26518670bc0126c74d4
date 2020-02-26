@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "f5a26e6d_b52eef76",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-26T17:08:51Z",
+      "side": 1,
+      "message": "I think since base class is not instantiated directly, these do not have to be declared in it.",
+      "parentUuid": "62da21b6_e4d4d189",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c031cbd_43e4eb29",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
