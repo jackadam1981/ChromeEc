@@ -336,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "7ba15112_e2e32ed2",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-02-26T23:28:28Z",
+      "side": 1,
+      "message": "Hi Raj,\n\nSorry to exhume an old Comment thread but I\u0027d like more info regarding the following:\n\n\"I think we can keep this solution for now, while we work for the proper solution with the Type-C connector class driver (that will replace extcon driver, on which Benson/Prashant are working on) as applicable.\"\n\nHow is this (the TCSS state synchronization) related to the Type C connector class driver? FWIU based on the patches Heikki sent of his WIP type C connector class driver, I couldn\u0027t see any code about synchronizing TCSS state b/w coreboot and kernel.\n\nCan you detail how a connector class implementation will resolve this issue?\n\nThanks,",
+      "parentUuid": "76d511f6_18a5736f",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
