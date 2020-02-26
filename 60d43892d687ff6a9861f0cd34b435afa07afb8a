@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67ecf402_b8be0c99",
+        "filename": "board/mushu/amd_r19me4070.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-02-26T22:56:11Z",
+      "side": 1,
+      "message": "This file belongs in /ec/driver/temp_sensor/",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 53
+      },
+      "revId": "60d43892d687ff6a9861f0cd34b435afa07afb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a08b2f_b7792e58",
+        "filename": "board/mushu/amd_r19me4070.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-02-26T22:56:11Z",
+      "side": 1,
+      "message": "I feel like these should just be static functions rather than macros",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 80
+      },
+      "revId": "60d43892d687ff6a9861f0cd34b435afa07afb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41966b78_65645a5a",
+        "filename": "board/mushu/amd_r19me4070.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-02-26T22:56:11Z",
+      "side": 1,
+      "message": "Is this function complete? Where is the one second following initialization time? It seems to only be tracking first call since POWER_S0 state. Does the 1 second pause happen from the calling function?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "60d43892d687ff6a9861f0cd34b435afa07afb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b58188f_5ce39dc5",
+        "filename": "board/mushu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-02-26T22:56:11Z",
+      "side": 1,
+      "message": "If this sensor is only being polled, then there is no need to use the interrupt handler.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "60d43892d687ff6a9861f0cd34b435afa07afb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
