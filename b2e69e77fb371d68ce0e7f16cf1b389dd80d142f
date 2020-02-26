@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3930eac7_8e7d3050",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-26T17:22:19Z",
+      "side": 1,
+      "message": "Add more details to your description as to what this does and why",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff7952b_90fab0df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-26T17:22:19Z",
+      "side": 1,
+      "message": "Especially on CLs that touch large numbers of board files, specify which platform(s) you tested on",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db95e29d_a944e7eb",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-26T17:22:19Z",
+      "side": 1,
+      "message": "Does this need to be copied in every time the mux is set? I would assume the chips can\u0027t change after init, right?",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 661,
+        "endChar": 51
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61a81d6_63332932",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-26T17:22:19Z",
+      "side": 1,
+      "message": "Since mux_state may be NULL now, perform a check to ensure it\u0027s non-NULL for configs which will be dereferencing it",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aff202f_bab113d9",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-02-26T17:22:19Z",
+      "side": 1,
+      "message": "Definitely add comments here to explain what\u0027s going on, since this is pretty different from our usual driver architecture of just indexing into an array",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "b2e69e77fb371d68ce0e7f16cf1b389dd80d142f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
