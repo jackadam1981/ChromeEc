@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "f4345be0_e16c16a6",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-26T01:14:48Z",
+      "side": 1,
+      "message": "Hi Furquan,\nButton is de-bounce type of interrupt (both edge triggered) hence to simulate de-bounce it is called twice\nCL:380315",
+      "parentUuid": "9cecb028_53832e18",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 40
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43bcd3cc_18185893",
         "filename": "common/button.c",
         "patchSetId": 3
