@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99b2e47e_92a6d23d",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "I left this as board.h only.  Since the gpio.inc file is specific to one board, the mapping of net names should also only added to board.h.",
+      "parentUuid": "5fa13917_37102426",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acb675a0_dbf8bab8",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73b9d37_1acd752e",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb675a0_dbf8bab8",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "35f904e5_ba196591",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91b275a_3b550d85",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 4
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b81ac41c_48bb6af1",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda1949e_56db1aa2",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Yes, most options are disabled by default. But some are enabled by default and boards/baseboards have the flexibility to turn these features off.",
+      "parentUuid": "b81ac41c_48bb6af1",
+      "range": {
+        "startLine": 69,
+        "startChar": 51,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1a18e01c_2f5c384c",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c47457d_716e436c",
+      "range": {
+        "startLine": 74,
+        "startChar": 56,
+        "endLine": 74,
+        "endChar": 66
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ed880f8_bb82fbad",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0440240e_d22787ef",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "This section has been rewritten in latest patchset.",
+      "parentUuid": "9ed880f8_bb82fbad",
+      "range": {
+        "startLine": 88,
+        "startChar": 45,
+        "endLine": 90,
+        "endChar": 42
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4df399be_0d9329bc",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -154,6 +298,24 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5a86c7_734f0a28",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "This has been updated in latest patchset.",
+      "parentUuid": "4df399be_0d9329bc",
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "ac1072d7_cdb528d7",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "I removed this placeholder for now and pointed users to the Hatch and Volteer skeleton builds.",
+      "parentUuid": "86e4fe23_3b2a863d",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dab73a9_01ecc511",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -200,6 +386,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4220c97e_07aec374",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dab73a9_01ecc511",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "a5811823_3ef29fe5",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f24904_349b9913",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 89
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20264f84_5837aa77",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -246,6 +480,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10a4e43_2f72eb31",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20264f84_5837aa77",
+      "range": {
+        "startLine": 167,
+        "startChar": 57,
+        "endLine": 167,
+        "endChar": 75
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "18af9231_5f7cbaa4",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "681171c7_94a5ec42",
+      "range": {
+        "startLine": 177,
+        "startChar": 56,
+        "endLine": 177,
+        "endChar": 57
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f838bee3_1d419af5",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -292,6 +574,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04abe95_afcd636d",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f838bee3_1d419af5",
+      "range": {
+        "startLine": 208,
+        "startChar": 42,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "b571e373_a5003da4",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2a591b_3afa25fc",
+      "range": {
+        "startLine": 235,
+        "startChar": 14,
+        "endLine": 235,
+        "endChar": 23
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c246ab34_6d651a6d",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -332,6 +662,24 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6680ed_de224ed2",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Will be moved to separate x86 doc.",
+      "parentUuid": "c246ab34_6d651a6d",
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -358,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "ee6f7188_a59e5603",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "https://www.merriam-webster.com/words-at-play/plural-of-bus\n:)",
+      "parentUuid": "3c633280_e5878ae8",
+      "range": {
+        "startLine": 312,
+        "startChar": 17,
+        "endLine": 312,
+        "endChar": 22
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4609239d_25f669f9",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -378,6 +750,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db07b11e_865d24c7",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4609239d_25f669f9",
+      "range": {
+        "startLine": 337,
+        "startChar": 55,
+        "endLine": 337,
+        "endChar": 69
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -404,6 +800,30 @@
     },
     {
       "key": {
+        "uuid": "eb56cf60_af35a770",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c35cca6_13d2c5d0",
+      "range": {
+        "startLine": 338,
+        "startChar": 78,
+        "endLine": 339,
+        "endChar": 12
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73eb46ff_bf73474f",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -424,6 +844,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635e2783_9f06700d",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73eb46ff_bf73474f",
+      "range": {
+        "startLine": 341,
+        "startChar": 74,
+        "endLine": 341,
+        "endChar": 77
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -450,6 +894,30 @@
     },
     {
       "key": {
+        "uuid": "efd53551_2b39fde9",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "092ac2a2_b3c6330b",
+      "range": {
+        "startLine": 369,
+        "startChar": 38,
+        "endLine": 369,
+        "endChar": 68
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2301733_d19792bf",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -470,6 +938,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7466ff6_4ce00c2c",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2301733_d19792bf",
+      "range": {
+        "startLine": 370,
+        "startChar": 4,
+        "endLine": 370,
+        "endChar": 9
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -496,6 +988,30 @@
     },
     {
       "key": {
+        "uuid": "c137419c_c8b45bd4",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1606575_6491525c",
+      "range": {
+        "startLine": 413,
+        "startChar": 66,
+        "endLine": 413,
+        "endChar": 79
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be0f4be3_374d848f",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -516,6 +1032,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8ef4b1_5dcf94b8",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Updated in latest patchset to note this is an H1 requirement.",
+      "parentUuid": "be0f4be3_374d848f",
+      "range": {
+        "startLine": 429,
+        "startChar": 10,
+        "endLine": 429,
+        "endChar": 51
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -542,6 +1082,30 @@
     },
     {
       "key": {
+        "uuid": "1cb8ce59_6d0a30c6",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "734ab6d1_80391df8",
+      "range": {
+        "startLine": 441,
+        "startChar": 13,
+        "endLine": 441,
+        "endChar": 17
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb846f36_fada4e5c",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -562,6 +1126,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "553f2ccd_53b9e38a",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Latest patchset doesn\u0027t use this connector, but let me know if you have objections.",
+      "parentUuid": "cb846f36_fada4e5c",
+      "range": {
+        "startLine": 442,
+        "startChar": 14,
+        "endLine": 442,
+        "endChar": 25
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -588,6 +1176,30 @@
     },
     {
       "key": {
+        "uuid": "f20cf09e_713bb139",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903e2201_cdc148d7",
+      "range": {
+        "startLine": 473,
+        "startChar": 33,
+        "endLine": 473,
+        "endChar": 40
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c72daeb_adf1ca8b",
         "filename": "docs/new_board_checklist.md",
         "patchSetId": 4
@@ -608,6 +1220,30 @@
       "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a37d695_708300cc",
+        "filename": "docs/new_board_checklist.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-26T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c72daeb_adf1ca8b",
+      "range": {
+        "startLine": 485,
+        "startChar": 16,
+        "endLine": 485,
+        "endChar": 28
+      },
+      "revId": "e9f7334ff3bee5874711d348010be0e983dc9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
