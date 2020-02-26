@@ -69,6 +69,30 @@
       "revId": "08be96fc2835c97095da138d8f90544d1be60ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486ba6ac_8e358bc6",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-26T23:00:54Z",
+      "side": 1,
+      "message": "Use CONFIG_USB_PD_TCPMV2. See https://crrev.com/c/2068519.",
+      "parentUuid": "f9f6bd70_44fb9542",
+      "range": {
+        "startLine": 202,
+        "startChar": 8,
+        "endLine": 202,
+        "endChar": 31
+      },
+      "revId": "08be96fc2835c97095da138d8f90544d1be60ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
