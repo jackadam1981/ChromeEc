@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "37690161_af070e96",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-02-26T01:40:40Z",
+      "side": 1,
+      "message": "CL:380315 I think function name had simulate hence comment was not added.\n\nwe need to meet below case in button_interrupt() to succeed. \nif (next_deferred_time \u003c\u003d time_now ||\n    next_deferred_time \u003e state[i].debounce_time)",
+      "parentUuid": "c2d1392a_72a97a5c",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 40
+      },
+      "revId": "2dec2cf7f919087939dcd61ebc1b83d57da69a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43bcd3cc_18185893",
         "filename": "common/button.c",
         "patchSetId": 3
