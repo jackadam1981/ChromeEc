@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "73a8631c_c525a903",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-26T00:34:47Z",
+      "side": 1,
+      "message": "sorry, I was not clear: why is this necessary in the base class, is it not enough define these in the derived classes only?",
+      "parentUuid": "4a6cbef0_91f8bba7",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c031cbd_43e4eb29",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
