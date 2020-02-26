@@ -797,6 +797,11 @@ static void print_cc_mode(void)
 	ccprintf("drp enabled: %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
 	ccprintf("cc polarity: %s\n", cc_config & CC_POLARITY ? "cc2" :
 								"cc1");
+	/* If act as SRC, PD is enabled by default. */
+	ccprintf("pd enabled: %s\n",
+		 (cc_config & CC_ALLOW_SRC || cc_config & CC_SNK_WITH_PD) ?
+			 "on" :
+			 "off");
 }
 
 
