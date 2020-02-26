@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "bbe2b3bb_c140263c",
+        "filename": "util/flash_cr50.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-02-26T17:24:38Z",
+      "side": 1,
+      "message": "pylint raises some errors when I remove them, so I am going to leave them.",
+      "parentUuid": "f5a26e6d_b52eef76",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "75c3de666b4516607ce6d26518670bc0126c74d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c031cbd_43e4eb29",
         "filename": "util/flash_cr50.py",
         "patchSetId": 16
