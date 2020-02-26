@@ -164,9 +164,9 @@ enum mft_channel {
 };
 
 enum temp_sensor_id {
-	TEMP_SENSOR_1,
-	TEMP_SENSOR_2,
-	TEMP_SENSOR_3,
+	TEMP_CHARGER,
+	TEMP_5V,
+	TEMP_GPU,
 	TEMP_SENSOR_COUNT
 };
 
