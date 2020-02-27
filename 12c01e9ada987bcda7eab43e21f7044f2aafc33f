@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78b5a1dc_8520666d",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-27T17:27:43Z",
+      "side": 1,
+      "message": "Nit - Should be CONFIG_USB_PD_TCPMV2",
+      "range": {
+        "startLine": 230,
+        "startChar": 10,
+        "endLine": 230,
+        "endChar": 33
+      },
+      "revId": "12c01e9ada987bcda7eab43e21f7044f2aafc33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
