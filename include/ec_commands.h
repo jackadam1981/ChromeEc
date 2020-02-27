@@ -5714,6 +5714,7 @@ struct ec_params_set_cbi {
 #define EC_RESET_FLAG_RBOX        BIT(16)  /* Fixed Reset Functionality */
 #define EC_RESET_FLAG_SECURITY    BIT(17)  /* Security threat */
 #define EC_RESET_FLAG_AP_WATCHDOG BIT(18)  /* AP experienced a watchdog reset */
+#define EC_RESET_FLAG_STAY_IN_RO  BIT(19)  /* Do not select RW in EFS */
 
 struct ec_response_uptime_info {
 	/*

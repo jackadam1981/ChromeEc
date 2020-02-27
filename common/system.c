@@ -213,6 +213,10 @@ void system_encode_save_flags(int reset_flags, uint32_t *save_flags)
 	if (reset_flags & SYSTEM_RESET_LEAVE_AP_OFF)
 		*save_flags |= EC_RESET_FLAG_AP_OFF;
 
+	/* Add in stay in RO flag into saved flags. */
+	if (reset_flags & SYSTEM_RESET_STAY_IN_RO)
+		*save_flags |= EC_RESET_FLAG_STAY_IN_RO;
+
 	/* Save reset flag */
 	if (reset_flags & (SYSTEM_RESET_HARD | SYSTEM_RESET_WAIT_EXT))
 		*save_flags |= EC_RESET_FLAG_HARD;
@@ -1164,6 +1168,8 @@ static int command_reboot(int argc, char **argv)
 			flags &= ~SYSTEM_RESET_HARD;
 		} else if (!strcasecmp(argv[i], "ap-off")) {
 			flags |= SYSTEM_RESET_LEAVE_AP_OFF;
+		} else if (!strcasecmp(argv[i], "stay-in-ro")) {
+			flags |= SYSTEM_RESET_STAY_IN_RO;
 		} else if (!strcasecmp(argv[i], "cancel")) {
 			reboot_at_shutdown = EC_REBOOT_CANCEL;
 			return EC_SUCCESS;
@@ -1187,7 +1193,7 @@ static int command_reboot(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(reboot, command_reboot,
-			"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel]",
+			"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel] [stay-in-ro]",
 			"Reboot the EC");
 
 #ifdef CONFIG_CMD_SYSLOCK
