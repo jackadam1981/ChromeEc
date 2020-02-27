@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "76d5b9a1_4c3dd6c9",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T17:08:46Z",
+      "side": 1,
+      "message": "It is a structure from AP-FW codes, but we don\u0027t have a good way to have this structure synced at both sides today. Instead, I thought it would be more noticeable to accommodate this structure in this header file.",
+      "parentUuid": "e07a41a9_9e4689ab",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdb0a12d_6be71eac",
         "filename": "include/vboot.h",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "I am fine with that, this is just the definition on ToT. We should update ToT to be what ever size we need.",
       "parentUuid": "bdb0a12d_6be71eac",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76e6651d_cab8344d",
+        "filename": "include/vboot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T17:08:46Z",
+      "side": 1,
+      "message": "Instead of doing separate patch to sync vboot.h, would it be acceptable to undo all ec-efs2 change to have a base vboot.h, and to make a change on vboot.h in platform/ec master branch, and to cherry-pick it to here?",
+      "parentUuid": "98ca7141_1fe2a2b9",
       "range": {
         "startLine": 137,
         "startChar": 8,
