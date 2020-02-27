@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2445eac_5e5d480d",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "this does not allow for multiple buttons to be pressed at the same time and it also block the real value of other buttons while one is being simulated.\n\nI don\u0027t actually think we need this sml_btn_presd concept because we don\u0027t really care to simulate a button as off (it is just not simulated).\n\nLet\u0027s just remove this variable",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6afac1f_0b1a52a4",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "please indicate which bits map to which buttons here",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e13dae6a_6fb08df9",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "nit: can we use BIT(button-\u003etype) to match the rest of the code in this file now",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08696ba_ebac0490",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "should just clear instead of toggle since the above line guantees a toggle will be a clear",
+      "range": {
+        "startLine": 339,
+        "startChar": 20,
+        "endLine": 339,
+        "endChar": 41
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02515e32_f9bfcdc1",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "why call this deferred, should should be able to set siml_btn_presd \u003d 0 here directly since you are already in the hooks tasks\n\n---\n\nand I don\u0027t think we even need the siml_bnt_pred concept from above note",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 61
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69affde0_ddc8e7d5",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "this should be setting ( |\u003d )instead of toggling (^\u003d ) since release depends on it being set",
+      "range": {
+        "startLine": 360,
+        "startChar": 3,
+        "endLine": 360,
+        "endChar": 44
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c81d77_e6abe798",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5949,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "let\u0027s also note that this is only available on unlocked devices for testing purposes only",
+      "range": {
+        "startLine": 5947,
+        "startChar": 0,
+        "endLine": 5949,
+        "endChar": 79
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dfb1202_26514ba3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5960,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:03:14Z",
+      "side": 1,
+      "message": "since this is a serialize interface, please number each of of these values explicitly.",
+      "range": {
+        "startLine": 5960,
+        "startChar": 1,
+        "endLine": 5960,
+        "endChar": 28
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
