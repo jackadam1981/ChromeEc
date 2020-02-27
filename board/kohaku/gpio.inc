@@ -126,8 +126,9 @@ GPIO(TP18,                     PIN(C, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(TP54,                     PIN(4, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(TP56,                     PIN(6, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(TP57,                     PIN(8, 1), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(TP55,                     PIN(7, 3), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(TP59,                     PIN(B, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP55,                     PIN(7, 3), GPIO_OUT_LOW)
+GPIO(TP59,                     PIN(B, 0), GPIO_OUT_LOW)
+GPIO(TP1,                      PIN(D, 6), GPIO_OUT_LOW)
 
 /* Keyboard pins */
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)

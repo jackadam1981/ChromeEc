@@ -10,6 +10,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "keyboard_config.h"
@@ -52,6 +53,12 @@
  */
 #define CONFIG_KEYBOARD_POST_SCAN_CLOCKS 16000
 #endif
+
+static int active_row;
+static int active_col;
+static int key_change_count;
+#define DEBUG_ACTIVE_COLUMN 1
+#define DEBUG_ACTIVE_ROW 5
 
 #ifndef CONFIG_KEYBOARD_BOARD_CONFIG
 /* Use default keyboard scan config, because board didn't supply one */
@@ -258,12 +265,16 @@ static int read_matrix(uint8_t *state)
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
-		state[c] = keyboard_raw_read_rows();
+		state[c] = (c == active_col ? keyboard_raw_read_rows() : 0x00);
 
 		/* Use simulated keyscan sequence instead if testing active */
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
+
+	/* Set GPIO for active key */
+	gpio_set_level(GPIO_TP55, state[active_col] &
+		       (1 << active_row));
 
 	/* 2. Detect transitional ghost */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -483,6 +494,7 @@ static int has_ghosting(const uint8_t *state)
  *
  * @return 1 if any key is still pressed, 0 if no key is pressed.
  */
+
 static int check_keys_changed(uint8_t *state)
 {
 	int any_pressed = 0;
@@ -546,6 +558,10 @@ static int check_keys_changed(uint8_t *state)
 		 * edge was not suppressed due to debouncing.
 		 */
 		state[c] ^= diff;
+
+		if (c == active_col) {
+			gpio_set_level(GPIO_TP59, ++key_change_count & 0x1);
+		}
 	}
 
 	if (any_change) {
@@ -740,6 +756,8 @@ void keyboard_scan_init(void)
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
 }
 
+extern void keyboard_npcx_force_kso(int col_mask);
+
 void keyboard_scan_task(void *u)
 {
 	timestamp_t poll_deadline, start;
@@ -810,6 +828,7 @@ void keyboard_scan_task(void *u)
 		CPRINTS5("KB poll");
 		keyboard_raw_enable_interrupt(0);
 		keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+		keyboard_npcx_force_kso(1 << active_col);
 
 		/* Busy polling keyboard state. */
 		while (keyboard_scan_is_enabled()) {
@@ -1070,4 +1089,32 @@ static int command_keyboard_press(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
 			"[col row [0 | 1]]",
 			"Simulate keypress");
+
+static int command_keyboard_sel_col_row(int argc, char **argv)
+{
+	if (argc == 1) {
+
+		ccprintf("Keyboard: Active col = %d, Active row = %d\n",
+		       active_col, active_row);
+	} else if (argc == 3) {
+		int r, c;
+		char *e;
+
+		c = strtoi(argv[1], &e, 0);
+		if (*e || c < 0 || c >= keyboard_cols)
+			return EC_ERROR_PARAM1;
+
+		r = strtoi(argv[2], &e, 0);
+		if (*e || r < 0 || r >= KEYBOARD_ROWS)
+			return EC_ERROR_PARAM2;
+		active_row = r;
+		active_col = c;
+		key_change_count = 0;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kbselcr, command_keyboard_sel_col_row,
+			"[col row]",
+			"set col and row");
 #endif

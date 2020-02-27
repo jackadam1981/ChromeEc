@@ -118,8 +118,14 @@ test_mockable void keyboard_raw_drive_column(int col)
 	}
 
 	/* Set KBSOUT */
-	NPCX_KBSOUT0 = (mask & 0xFFFF);
+	/* NPCX_KBSOUT0 = (mask & 0xFFFF); */
 	NPCX_KBSOUT1 = ((mask >> 16) & 0x03);
+}
+
+void keyboard_npcx_force_kso(int col_mask)
+{
+	/* Set KBSOUT */
+	NPCX_KBSOUT0 = ~(col_mask & 0xFFFF);
 }
 
 /**
