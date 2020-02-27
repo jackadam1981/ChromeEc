@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a08e9363_bbe995b3",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-02-27T18:29:16Z",
+      "side": 1,
+      "message": "remove space above and set CC_FRS appropriately",
+      "range": {
+        "startLine": 367,
+        "startChar": 9,
+        "endLine": 367,
+        "endChar": 47
+      },
+      "revId": "e4ce54e66c9a7774a79be90e15b9df1c50f25d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
