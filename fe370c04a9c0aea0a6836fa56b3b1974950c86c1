@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f677bc4_4c6e8988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T18:48:28Z",
+      "side": 1,
+      "message": "It\u0027s abandoned now.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "fe370c04a9c0aea0a6836fa56b3b1974950c86c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24ea858a_2301a04a",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T18:48:28Z",
+      "side": 1,
+      "message": "I am reverting this. It is nice refactoring, but I think this patch should be scoped to synchronize vboot.h.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 1
+      },
+      "revId": "fe370c04a9c0aea0a6836fa56b3b1974950c86c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "784cc7c4_35ea18de",
+        "filename": "include/vboot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T18:48:28Z",
+      "side": 1,
+      "message": "To be synced with vboot.h from master branch, I am bring this to ec_comm.h as in patchset#1.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "fe370c04a9c0aea0a6836fa56b3b1974950c86c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf78a6d5_78719100",
+        "filename": "include/vboot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T18:48:28Z",
+      "side": 1,
+      "message": "They are swapped. Looks like you quoted it from the old patch.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 38
+      },
+      "revId": "fe370c04a9c0aea0a6836fa56b3b1974950c86c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
