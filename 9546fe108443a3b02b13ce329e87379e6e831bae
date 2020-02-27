@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bdfb836_6d04d046",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T15:51:06Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2da52de9_b56aef04",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 27
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38bb9765_379701a1",
         "filename": "board/cr50/ec_comm.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d1aab7_fb3b2fe8",
+        "filename": "board/cr50/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T15:51:06Z",
+      "side": 1,
+      "message": "Good catch, I update the code. It was subjective change, let me know if you want it to be different.",
+      "parentUuid": "38bb9765_379701a1",
+      "range": {
+        "startLine": 148,
+        "startChar": 31,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e07a41a9_9e4689ab",
+        "filename": "board/cr50/ec_efs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T15:51:06Z",
+      "side": 1,
+      "message": "This was only used by CR50 so it seemed like it may want to be \"private\" to the cr50 implementation.\n\nDo you think it is worth having a shared vboot.h file and a non-shared header file?",
+      "parentUuid": "dcb7b5be_2e183015",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdb0a12d_6be71eac",
         "filename": "include/vboot.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-25T18:21:32Z",
       "side": 1,
       "message": "This is much bigger than actually used (32 bytes, SHA256_DIGEST_SIZE) as of today.\nCan we have 32 bytes, and extend it later when it is needed?",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "9546fe108443a3b02b13ce329e87379e6e831bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ca7141_1fe2a2b9",
+        "filename": "include/vboot.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T15:51:06Z",
+      "side": 1,
+      "message": "I am fine with that, this is just the definition on ToT. We should update ToT to be what ever size we need.",
+      "parentUuid": "bdb0a12d_6be71eac",
       "range": {
         "startLine": 137,
         "startChar": 8,
