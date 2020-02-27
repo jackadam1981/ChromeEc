@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3edbe32c_633c78e6",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "why not move this into board/ instead of having it in baseboard? Or what am I missing here?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a9a1a5_323c25d0",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "please use the .field \u003d value, notation please",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a216d13_47867b71",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "use .field notation please",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456ab91a_31137092",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 158,
+        "startChar": 19,
+        "endLine": 158,
+        "endChar": 31
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "134e1e13_bce88309",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "same please",
+      "range": {
+        "startLine": 201,
+        "startChar": 24,
+        "endLine": 201,
+        "endChar": 33
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d207fac0_e42f9224",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 211,
+        "startChar": 26,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0728ee_c0b038fe",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T20:43:03Z",
+      "side": 1,
+      "message": "do you need this sleep and the one on line 890?\n\nI can see the need for the one on line 892 though. If these are all needed, can you elaborate why please",
+      "range": {
+        "startLine": 888,
+        "startChar": 3,
+        "endLine": 888,
+        "endChar": 12
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
