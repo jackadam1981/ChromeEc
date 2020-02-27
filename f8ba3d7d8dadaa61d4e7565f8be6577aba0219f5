@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85763e89_1a765cda",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-27T17:34:58Z",
+      "side": 1,
+      "message": "Will this compile if converted to IS_ENABLED(HAS_TASK_CHARGER)?\nIf so - add as a follow on CL as you probably should put this check inside the pd_is_vbus_present check.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 23
+      },
+      "revId": "f8ba3d7d8dadaa61d4e7565f8be6577aba0219f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5dfc511_57f064e8",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-02-27T17:34:58Z",
+      "side": 1,
+      "message": "Change to IS_ENABLED(HAS_TASK_PDCMD) in follow on CL.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 21
+      },
+      "revId": "f8ba3d7d8dadaa61d4e7565f8be6577aba0219f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
