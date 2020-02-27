@@ -22,6 +22,29 @@
       "revId": "e38a23bfde6a7a7019e1201d140816676b373e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682f9ac1_fdf9ea21",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-02-27T23:53:27Z",
+      "side": 1,
+      "message": "QQ: Is this a \"meanwhile-at-it\" fix, or was it tied to the CL cause?",
+      "range": {
+        "startLine": 2832,
+        "startChar": 2,
+        "endLine": 2832,
+        "endChar": 40
+      },
+      "revId": "e38a23bfde6a7a7019e1201d140816676b373e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
