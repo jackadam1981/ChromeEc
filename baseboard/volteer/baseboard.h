@@ -149,9 +149,6 @@
 /* USB Type C and USB PD defines */
 /* Enable the new USB-C PD stack */
 #define CONFIG_USB_PD_TCPMV2
-#define CONFIG_USB_TYPEC_SM
-#define CONFIG_USB_PRL_SM
-#define CONFIG_USB_PE_SM
 #define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
 
 #define CONFIG_USB_POWER_DELIVERY
