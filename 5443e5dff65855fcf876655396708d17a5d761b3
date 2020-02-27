@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "f55eb57f_5d0be1dc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4395,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-27T18:23:31Z",
+      "side": 1,
+      "message": "Per the description of PE_DR_SNK_Get_Sink_Cap, PD_CTRL_REJECT is still a valid response here.",
+      "range": {
+        "startLine": 4395,
+        "startChar": 3,
+        "endLine": 4395,
+        "endChar": 4
+      },
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91090920_dd3a5ea5",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
