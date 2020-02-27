@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8146cb4d_ed7cf7a9",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:31:11Z",
+      "side": 1,
+      "message": "Host should be allowed to read calibration data, even if not updated: after reboot, it may want to re-ask the EC, even if the EC did not recalculate.\n\nWe should return an error when the EC asks for calibration information when the sensor does not support it.\n\n               Old AP                 |    New AP\n--------+-----------------------------+----------------------------------------\nNewer EC:  will not ask at boot,      | May ask for sensor not yet supported (MAG) at boot\n           not register MKBP handler  |  - return EC_RES_UNAVAILABLE: the AP will not\n           code not exercised.        |     register a listener.\n                                      |  - return some data otherwise, 0s is fine.\n--------+-----------------------------+---------------------------------------- \nOlder EC:      NA                     | EC_RES_INVALID_COMMAND",
+      "revId": "b87db290edc65de497f4a453f8ee81286ad48d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
