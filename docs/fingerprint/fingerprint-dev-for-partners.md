@@ -384,9 +384,9 @@ at Google for the exact values to use below:
 
 ```xml
 <project remote="cros-internal"
-         path="<CHECK WITH GOOGLE>"
+         path="<CHECK-WITH-GOOGLE>"
          groups="firmware"
-         name="<CHECK WITH GOOGLE>" />
+         name="<CHECK-WITH-GOOGLE>" />
 ```
 
 **`(outside) $ ~/chromiumos/.repo/manifests/remote.xml`**
