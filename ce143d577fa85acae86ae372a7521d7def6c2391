@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b6b496a_bb969f40",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-27T18:50:42Z",
+      "side": 0,
+      "message": "This is much bigger than actually used. Can we downsize this",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "ce143d577fa85acae86ae372a7521d7def6c2391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
