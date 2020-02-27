@@ -373,7 +373,21 @@ If your partnership agreement requires non-public code sharing you will need to
 register for an account on the [Internal Gerrit]. Refer to the
 [Gerrit Credentials Setup] page for details. Once you register for an internal
 account, your contact at Google can make sure you have the necessary permissions
-to access the necessary repo.
+to access the private repository.
+
+*** note
+**NOTE**: In order to use a private repository you will have to manually add it
+to the repo manifest file before running `repo sync`. Check with your contact
+at Google for the exact values to use below:
+
+**`~/chromiumos/.repo/manifests/default.xml`**
+```xml
+  <project remote="cros-internal"
+           path="<CHECK WITH GOOGLE>"
+           groups="firmware"
+           name="<CHECK WITH GOOGLE>" />
+```
+***
 
 ## Working with Chromebooks
 
