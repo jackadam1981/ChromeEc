@@ -13,11 +13,14 @@
 #include "registers.h"
 #include "task.h"
 
+static int scan_override;
 /**
  * Initialize the raw keyboard interface.
  */
 void keyboard_raw_init(void)
 {
+	scan_override = 0;
+
 	/* Enable clock for KBS peripheral */
 	clock_enable_peripheral(CGC_OFFSET_KBS, CGC_KBS_MASK,
 			CGC_MODE_RUN | CGC_MODE_SLEEP);
@@ -117,9 +120,21 @@ test_mockable void keyboard_raw_drive_column(int col)
 		mask = ~BIT(col_out);
 	}
 
-	/* Set KBSOUT */
-	NPCX_KBSOUT0 = (mask & 0xFFFF);
+	if (!scan_override)
+		/* Set KBSOUT */
+		NPCX_KBSOUT0 = (mask & 0xFFFF);
 	NPCX_KBSOUT1 = ((mask >> 16) & 0x03);
+}
+
+void keyboard_npcx_force_kso(int col_mask)
+{
+	if (col_mask) {
+		scan_override = 1;
+		/* Set KBSOUT */
+		NPCX_KBSOUT0 = ~(col_mask & 0xFFFF);
+	} else {
+		scan_override = 0;
+	}
 }
 
 /**
