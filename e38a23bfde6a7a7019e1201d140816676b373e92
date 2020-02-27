@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d35b9b6d_03144e4d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T22:35:47Z",
+      "side": 1,
+      "message": "should we clear the flag after this statement?\n\nThis flag looks like it could be stale; this flag needs to be fixed in general\n\n\n\nAlso can we signal to the PE layer to redo the discovery and mode entry piece?",
+      "range": {
+        "startLine": 1895,
+        "startChar": 5,
+        "endLine": 1895,
+        "endChar": 16
+      },
+      "revId": "e38a23bfde6a7a7019e1201d140816676b373e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
