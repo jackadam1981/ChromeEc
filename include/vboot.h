@@ -103,6 +103,9 @@ void packet_mode_interrupt(enum gpio_signal signal);
 /* Preamble character repeated before the packet header starts. */
 #define CR50_COMM_PREAMBLE	0xec
 
+/* Minimum amount of preambles required from EC to activate EC-CR50 comm. */
+#define CR50_COMM_PREAMBLE_MIN_LENGTH 4
+
 /* Magic characters used to identify ec-cr50-comm packets */
 #define CR50_PACKET_MAGIC	0x4345	/* 'EC' in little endian */
 
@@ -133,8 +136,9 @@ struct cr50_comm_response {
 	uint16_t error;
 } __packed;
 
+#define CR50_COMM_MAX_DATA_SIZE		SHA256_DIGEST_SIZE
 #define CR50_COMM_MAX_REQUEST_SIZE	(sizeof(struct cr50_comm_request) \
-					 + UINT8_MAX)
+					 + CR50_COMM_MAX_DATA_SIZE)
 #define CR50_UART_RX_BUFFER_SIZE	32	/* TODO: Get from Cr50 header */
 
 /* commands */
