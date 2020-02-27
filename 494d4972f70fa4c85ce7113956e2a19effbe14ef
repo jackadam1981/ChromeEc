@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaa2bbde_ba96ea98",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "Do you need a lock, could using atomic_read (and read_clear in online_calibration_read) be more  consice.",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20a22db_814fb8bc",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "replace 1 \u003c\u003c with BIT(sensor_num)",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572cc29a_61e1fa11",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "replace 6 with sizeof(out-\u003edata)",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d741d938_d1a353f4",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "Should we use it for Magnetometer as well? We need to shift the current implementation from calibration to offset as well. (follow up CL is fine)",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e1ca43_d59772c2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "not needed, the caller has specified the sensor number already.",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3875afae_f83585ea",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "Considered adding structure ec_response_online_calibration_data here, as it is now trivial.",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f5b817_97122afc",
+        "filename": "include/online_calibration.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-27T20:15:12Z",
+      "side": 1,
+      "message": "once you remove sensor_num, out is just an int16_t array.",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
