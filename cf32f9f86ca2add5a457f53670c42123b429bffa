@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7146d47_7067f8a7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-02-27T01:55:43Z",
+      "side": 0,
+      "message": "I agree. Maybe Sam might know what he had in mind in case we are missing something.",
+      "parentUuid": "579ea05a_0d509d2d",
+      "range": {
+        "startLine": 707,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 38
+      },
+      "revId": "cf32f9f86ca2add5a457f53670c42123b429bffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f550ec26_31b116f8",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
