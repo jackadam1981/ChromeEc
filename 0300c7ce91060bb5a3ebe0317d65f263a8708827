@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08f4aed_b4bb7395",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "isn\u0027t this what the mux_set function does? I don\u0027t understand what we are doing this here (or can you add a comment of why you can\u0027t call the mux_set function?)",
+      "range": {
+        "startLine": 728,
+        "startChar": 3,
+        "endLine": 741,
+        "endChar": 3
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6a1ab7_8b0850d3",
+        "filename": "board/chell/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "needs usb_port \u003d 1,",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8315300e_348f2f64",
+        "filename": "board/glados/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "needs usb_port \u003d 1,",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a3f6af_349564ac",
+        "filename": "board/oak/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "this should be in the #if block (just move down one line)",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269b2719_77cb1029",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "should we make sure that this me is actually the anx  (anx7447_usb_mux_driver) in the linked list of muxes? (I empirically know that it is, but we should probably guard it)",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 45
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d954f18_b6178ca5",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "let\u0027s put a comment here saying we are combining everything bit wise, which should account for various flip states.",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516ddee0_c6383ead",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "should use put this in configure_mux switch statement too?",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 0
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aeb44af_4e923a8d",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "this was never used, should we remove it and drop the union?\n\nThen the i2c_port and addr_flags fields are optional if this MUX is the TCPC",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1917a0_a2fdad6b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-27T21:41:57Z",
+      "side": 1,
+      "message": "is this TODO still valid or did you determine that having hpd_update here was beneficial or not?",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 8
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
