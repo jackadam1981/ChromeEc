@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579ea05a_0d509d2d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-02-27T00:49:12Z",
+      "side": 0,
+      "message": "This request won\u0027t be acted upon until we move to a READY state, but it should still be queued up, right? Regardless, we do this right after we move to SNK_TRANSITION in the FRS flow, so something needs to change.",
+      "range": {
+        "startLine": 707,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 38
+      },
+      "revId": "cf32f9f86ca2add5a457f53670c42123b429bffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f550ec26_31b116f8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-02-27T00:49:12Z",
+      "side": 0,
+      "message": "This response is not what we should get from the GET_SINK_CAP message.",
+      "range": {
+        "startLine": 4398,
+        "startChar": 5,
+        "endLine": 4399,
+        "endChar": 32
+      },
+      "revId": "cf32f9f86ca2add5a457f53670c42123b429bffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
