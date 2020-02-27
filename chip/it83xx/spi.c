@@ -82,10 +82,12 @@ static void spi_set_state(int state)
 
 static void reset_rx_fifo(void)
 {
+#ifndef CHIP_VARIANT_IT81202AX_1024
 	/* End Rx FIFO access */
 	IT83XX_SPI_TXRXFAR = 0x00;
 	/* Rx FIFO reset and count monitor reset */
 	IT83XX_SPI_FCR = IT83XX_SPI_RXFR | IT83XX_SPI_RXFCMR;
+#endif
 	/* Enable Rx FIFO full interrupt */
 	IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
 }
@@ -244,6 +246,7 @@ void spi_slv_int_handler(void)
 	/* Interrupt status register */
 	int spi_status = IT83XX_SPI_ISR;
 
+#ifndef CHIP_VARIANT_IT81202AX_1024
 	/*
 	 * The status of Rx FIFO full interrupt bit is set,
 	 * start to parse transaction.
@@ -261,6 +264,7 @@ void spi_slv_int_handler(void)
 		/* Parse header for version of spi-protocol */
 		spi_parse_header();
 	}
+#endif
 	/*
 	 * The status of SPI end detection interrupt bit is set,
 	 * the AP ended the transaction data.
@@ -279,6 +283,15 @@ void spi_slv_int_handler(void)
 
 	/* Write clear the slave status */
 	IT83XX_SPI_ISR = spi_status;
+
+#ifdef CHIP_VARIANT_IT81202AX_1024
+	if (IT83XX_SPI_RX_VLISR & IT83XX_SPI_RVLI) {
+		IT83XX_SPI_RX_VLISR = IT83XX_SPI_RVLI;
+		/* Parse header for version of spi-protocol */
+		spi_parse_header();
+	}
+#endif
+
 	/* Clear the interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
 }
@@ -338,6 +351,19 @@ static void spi_init(void)
 	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
 	/* SPI slave controller enable */
 	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
+
+#ifdef CHIP_VARIANT_IT81202AX_1024
+	/*
+	 * General control register2
+	 * bit4 : Rx FIFO2 will not be overwrited once it's full.
+	 * bit3 : Rx FIFO1 will not be overwrited once it's full.
+	 * bit0 : Rx FIFO1/FIFO2 will reset after each CS_N goes high.
+	 */
+	IT83XX_SPI_GCR2 = IT83XX_SPI_RXF2OC | IT83XX_SPI_RXF1OC
+				| IT83XX_SPI_RXFAR;
+	/* Rx valid length interrupt enabled */
+	IT83XX_SPI_RX_VLISMR &= ~IT83XX_SPI_RVLIM;
+#endif
 
 	if (system_jumped_to_this_image() &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
