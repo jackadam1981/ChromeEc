@@ -373,9 +373,6 @@
 #undef CONFIG_AUDIO_CODEC_WOV_LANG_BUF_LEN
 #undef CONFIG_AUDIO_CODEC_WOV_LANG_BUF_TYPE
 
-/* Allow proprietary communication protocols' extensions. */
-#undef CONFIG_EXTENSION_COMMAND
-
 /*
  * Support controlling the display backlight based on the state of the lid
  * switch.  The EC will disable the backlight when the lid is closed.
@@ -732,12 +729,6 @@
  */
 #undef CONFIG_BUTTONS_RUNTIME_CONFIG
 
-/* Support V1 CCD configuration */
-#undef CONFIG_CASE_CLOSED_DEBUG_V1
-/* Allow unsafe debugging functionality in V1 configuration */
-#undef CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
-/* Enable ITE EC programming by CCD using the INA i2c interface. */
-#undef CONFIG_CCD_ITE_PROGRAMMING
 /* Loosen Open restrictions for prePVT devices */
 #undef CONFIG_CCD_OPEN_PREPVT
 
@@ -1427,13 +1418,6 @@
 #undef CONFIG_CRC8
 
 /*
- * When enabled, do not build RO image from the same set of files as the RW
- * image. Instead define a separate set of object files in the respective
- * build.mk files by adding the objects to the custom-ro_objs-y variable.
- */
-#undef CONFIG_CUSTOMIZED_RO
-
-/*
  * When enabled, build in support for software & hardware crypto;
  * only supported on CR50.
  *
@@ -1455,12 +1439,6 @@
 #undef CONFIG_DCRYPTO_RSA_SPEEDUP
 
 /*
- * When enabled, accelerate sha512 using the generic crypto engine;
- * only supported on CR50
- */
-#undef CONFIG_DCRYPTO_SHA512
-
-/*
  * When enabled build support for SHA-384/512, requires CONFIG_DCRYPTO.
  */
 #undef CONFIG_UPTO_SHA512
@@ -1470,15 +1448,6 @@
  */
 #undef CONFIG_IGNORE_G_UPDATE_CHECKS
 
-/*
- * When enabled hardware alerts statistics provided via VendorCommand extension.
- */
-#undef CONFIG_ENABLE_H1_ALERTS
-
-/*
- * Enable console shell command 'alerts' that prints chip alerts statistics.
- */
-#undef CONFIG_ENABLE_H1_ALERTS_CONSOLE
 
 /*****************************************************************************/
 /*
@@ -1619,9 +1588,6 @@
 /* Default debounce time for external power signal */
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 30
 
-/* Add support for CCD factory mode */
-#undef CONFIG_FACTORY_MODE
-
 /*****************************************************************************/
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS
@@ -1667,7 +1633,6 @@
 #undef CONFIG_FLASH_LOG_SPACE
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
-#undef CONFIG_FLASH_ROW_SIZE
 /* Allow deferred (async) flash erase */
 #undef CONFIG_FLASH_DEFERRED_ERASE
 /* Flash must be selected for write/erase operations to succeed. */
@@ -1781,34 +1746,6 @@
 #undef CONFIG_FP_SENSOR_FPC1025
 #undef CONFIG_FP_SENSOR_FPC1035
 #undef CONFIG_FP_SENSOR_FPC1145
-
-/*****************************************************************************/
-/* NvMem Configuration */
-/* Enable NV Memory module within flash */
-#undef CONFIG_FLASH_NVMEM
-/* Offset to start of NvMem area from base of flash */
-#undef CONFIG_FLASH_NVMEM_OFFSET_A
-#undef CONFIG_FLASH_NVMEM_OFFSET_B
-/* Address of start of Nvmem area */
-#undef CONFIG_FLASH_NVMEM_BASE_A
-#undef CONFIG_FLASH_NVMEM_BASE_B
-
-/* Flash offsets for the 'new' (as of 1/2019) nvmem storage scheme. */
-#undef CONFIG_FLASH_NEW_NVMEM_BASE_A
-#undef CONFIG_FLASH_NEW_NVMEM_BASE_B
-
-/* Size in bytes of NvMem area */
-#undef CONFIG_FLASH_NVMEM_SIZE
-
-/* Enable <key,value> variable support (requires CONFIG_FLASH_NVMEM) */
-#undef CONFIG_FLASH_NVMEM_VARS
-/*
- * We already have to define nvmem_user_sizes[] to specify the order and size
- * of the user regions. CONFIG_FLASH_NVMEM_VARS looks for two symbols to
- * specify the region number and size for the variable region.
- */
-#undef CONFIG_FLASH_NVMEM_VARS_USER_NUM
-#undef CONFIG_FLASH_NVMEM_VARS_USER_SIZE
 
 /*****************************************************************************/
 
@@ -2909,19 +2846,6 @@
  */
 #undef CONFIG_PECI_TJMAX
 
-/* Support physical presence detection (via a physical button) */
-#undef CONFIG_PHYSICAL_PRESENCE
-
-/* Enable (unsafe!) developer debug features for physical presence */
-#undef CONFIG_PHYSICAL_PRESENCE_DEBUG_UNSAFE
-
-/*****************************************************************************/
-/* PinWeaver config
- * A feature which exchanges a low entropy secret with rate limits for a high
- * entropy secret. This enables a set of vendor specific commands for Cr50.
- */
-#undef CONFIG_PINWEAVER
-
 /*****************************************************************************/
 /* PMU config */
 
@@ -3115,15 +3039,6 @@
 #undef CONFIG_RAM_SIZE
 #undef CONFIG_ROM_SIZE
 
-/* Enable rbox peripheral */
-#undef CONFIG_RBOX
-
-/* Enable rbox wakeup */
-#undef CONFIG_RBOX_WAKEUP
-
-/* Enable RDD peripheral */
-#undef CONFIG_RDD
-
 /* Support IR357x Link voltage regulator debugging / reprogramming */
 #undef CONFIG_REGULATOR_IR357X
 
@@ -3263,14 +3178,6 @@
 /* Support deprecated SPI protocol version 2. */
 #undef CONFIG_SPI_PROTOCOL_V2
 
-/*
- * Support SPI Slave interfaces. The first board supporting this is cr50 and
- * in its parlance SPI_SLAVE is called SPS. This convention might be
- * reconsidered later, and the use of "SPI" in different config options needs
- * to be cleaned up. (crbug.com/512613).
- */
-#undef CONFIG_SPS
-
 /* Define the SPI port to use to access SPI accelerometer */
 #undef CONFIG_SPI_ACCEL_PORT
 
@@ -3349,9 +3256,6 @@
  * Define to 0x03 for both controllers.
  */
 #undef CONFIG_MCHP_GPSPI
-
-/* Support testing SPI slave controller driver. */
-#undef CONFIG_SPS_TEST
 
 /* Default stack size to use for tasks, in bytes */
 #undef CONFIG_STACK_SIZE
@@ -3624,14 +3528,6 @@
 #undef CONFIG_TOUCHPAD_HASH_FW
 
 /*****************************************************************************/
-/* TPM-like configuration */
-
-/* Speak the TPM SPI Hardware Protocol on the SPI slave interface */
-#undef CONFIG_TPM_SPS
-/* Speak to the TPM 2.0 hardware protocol on the I2C slave interface */
-#undef CONFIG_TPM_I2CS
-
-/*****************************************************************************/
 /* USART stream config */
 #undef CONFIG_STREAM_USART
 
@@ -3645,10 +3541,6 @@
 #undef CONFIG_STREAM_USART4
 
 /*****************************************************************************/
-/* U2F config: second factor authentication */
-#undef CONFIG_U2F
-
-/*****************************************************************************/
 /* USB stream config */
 #undef CONFIG_STREAM_USB
 
@@ -3657,9 +3549,6 @@
 
 /* Baud rate for UARTs */
 #define CONFIG_UART_BAUD_RATE 115200
-
-/* Allow bit banging of a UARTs pins and bypassing the UART block. */
-#undef CONFIG_UART_BITBANG
 
 /* UART index (number) for EC console */
 #undef CONFIG_UART_CONSOLE
@@ -4166,9 +4055,6 @@
 /* Support USB isochronous handler */
 #undef CONFIG_USB_ISOCHRONOUS
 
-/* Support USB blob handler. */
-#undef CONFIG_USB_BLOB
-
 /* Common USB / BC1.2 charger detection routines */
 #undef CONFIG_USB_CHARGER
 
@@ -4239,8 +4125,6 @@
 
 /* Support control of multiple PHY */
 #undef CONFIG_USB_SELECT_PHY
-/* Select which USB PHY will be used at startup */
-#undef CONFIG_USB_SELECT_PHY_DEFAULT
 
 /* Support simple control of power to the device's USB ports */
 #undef CONFIG_USB_PORT_POWER_DUMB
@@ -4497,9 +4381,6 @@
 #define CONFIG_RW_HEAD_ROOM 0
 
 /* Firmware upgrade options. */
-/* Firmware updates using other than HC channel(s). */
-#undef CONFIG_NON_HC_FW_UPDATE
-#undef CONFIG_USB_FW_UPDATE
 /* A different config for the same update. TODO(vbendeb): dedupe these */
 #undef CONFIG_USB_UPDATE
 
@@ -4523,18 +4404,6 @@
  * command output.
  */
 #undef CONFIG_EXTENDED_VERSION_INFO
-
-/*
- * Define this if board ID support is required. For g chip based boards it
- * allows to nail different images to different boards.
- */
-#undef CONFIG_BOARD_ID_SUPPORT
-
-/*
- * Define this if serial number support is required. For g chip based boards
- * it allows a verifiable serial number to be stored / certified.
- */
-#undef CONFIG_SN_BITS_SUPPORT
 
 /*
  * Define this to enable Cros Board Info support. I2C_EEPROM_PORT and
