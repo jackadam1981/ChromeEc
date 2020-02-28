@@ -68,6 +68,8 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#undef CONFIG_CMD_CHARGEN
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
