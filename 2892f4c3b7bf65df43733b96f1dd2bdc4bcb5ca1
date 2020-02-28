@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbfe8c45_75556812",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-28T18:43:51Z",
+      "side": 1,
+      "message": "this is what I am talking about, if any button is simulated, then all of the other buttons now are in simulate realm instead of the real GPIO realm.\n\nWe need to track the simulated state on the per button level, or remove the simulated data altogether and just use:\n\nraw_value \u003d (IS_ENABLED(CONFIG_SIMULATED_BUTTON) \u0026\u0026 simulate_button_pressed(button)) || gpioget(button_gpio);",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "2892f4c3b7bf65df43733b96f1dd2bdc4bcb5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11411b90_944e416e",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-28T18:43:51Z",
+      "side": 1,
+      "message": "I realized that access to this variable happens in two difference tasks, we should atomically read/modify/write here with\n\natomic_clear",
+      "range": {
+        "startLine": 340,
+        "startChar": 3,
+        "endLine": 340,
+        "endChar": 38
+      },
+      "revId": "2892f4c3b7bf65df43733b96f1dd2bdc4bcb5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47605194_74f2421e",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-02-28T18:43:51Z",
+      "side": 1,
+      "message": "atomic_or",
+      "range": {
+        "startLine": 361,
+        "startChar": 3,
+        "endLine": 361,
+        "endChar": 38
+      },
+      "revId": "2892f4c3b7bf65df43733b96f1dd2bdc4bcb5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
