@@ -59,3 +59,6 @@
 
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT	97
+
+#undef CONFIG_CMD_CHARGEN
+
