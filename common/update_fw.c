@@ -5,7 +5,6 @@
 
 #include "byteorder.h"
 #include "console.h"
-#include "extension.h"
 #include "flash.h"
 #include "hooks.h"
 #include "include/compile_time_macros.h"
