@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f075a6a_cf778eb2",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-28T16:50:58Z",
+      "side": 1,
+      "message": "nit: When I see \"CHARGEN\" I first think this is something related to charger! What do you think about changing to CONFIG_CMD_UART_TEST or CONFIG_CMD_CCD_TEST or something?",
+      "revId": "3ba3de0d467fb79747d74a8dadbf636463c7d093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
