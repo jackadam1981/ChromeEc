@@ -22,6 +22,30 @@
       "revId": "a0e1dcff1a50901808446b391f3ba2b72ceb162c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2181c4db_2dbbaa1b",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-28T20:59:45Z",
+      "side": 1,
+      "message": "This will affect all tests using ap-off: currently they\u0027re testing RW in S5  but with this change, they\u0027ll test RO in S5. Since we need to test both, we need to extend the reboot command.",
+      "parentUuid": "7482789a_7e3907e4",
+      "range": {
+        "startLine": 252,
+        "startChar": 32,
+        "endLine": 252,
+        "endChar": 52
+      },
+      "revId": "a0e1dcff1a50901808446b391f3ba2b72ceb162c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
