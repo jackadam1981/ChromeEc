@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3726a3_a166cd30",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-28T23:39:20Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t look at what keyboard_irq_assert was doing earlier, which is nothing in the non-CONFIG_KEYBOARD_IRQ_GPIO case, so that makes me mildly prefer removing the send_irq param here.",
+      "revId": "697cd13fa37e271d28bfc78d45b6ba9b2354b9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
