@@ -360,6 +360,30 @@
     },
     {
       "key": {
+        "uuid": "23d1a787_510645fb",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1185694
+      },
+      "writtenOn": "2020-02-28T22:45:02Z",
+      "side": 1,
+      "message": "Hi Prashant,\nAs we know, the functionality of extcon driver is going to be replaced by Type-C Connector class driver + Type-C Mux agent driver.\nThe general consensus in this thread is to eliminate EC in the TCSS state synchronization, if the EC is not going to use that information for its own needs. In that case, the onus falls between coreboot and kernel to ensure that kernel is aware of the TCSS mux state for a given port, after boot.\nWe can sync up with Heikki to confirm / align on how exactly this can be handled with the combination of Type-C Mux agent driver + Type-C Connector class driver.\nIf it\u0027s not the connector class driver, we should figure out how this can be handled in conjunction with the connector class driver.\nThe reason Heikki\u0027s WIP code does not have that code is likely because the early boot scenarios were not considered.",
+      "parentUuid": "7ba15112_e2e32ed2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
