@@ -16,6 +16,24 @@
       "revId": "6bb765eb5ec6e73ef09c5a6974c0bda9e13519c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84466865_77e0f6ce",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-02-28T22:08:58Z",
+      "side": 1,
+      "message": "I don\u0027t think so since handle_keyboard_data will always return 1.",
+      "parentUuid": "0d4f5c11_4a02ce9a",
+      "revId": "6bb765eb5ec6e73ef09c5a6974c0bda9e13519c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
