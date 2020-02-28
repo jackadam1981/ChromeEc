@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4f5c11_4a02ce9a",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-28T00:45:39Z",
+      "side": 1,
+      "message": "Think it is worth changing handle_keyboard_data signature to match handle_mouse_data (do \u0026ret_len for both)?",
+      "revId": "6bb765eb5ec6e73ef09c5a6974c0bda9e13519c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
