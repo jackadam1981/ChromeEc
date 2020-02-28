@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "541d8634_ab29e2ec",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-02-28T11:13:02Z",
+      "side": 1,
+      "message": "Address needed if MUX only, right? and the I2C_PORT_USB_MUX.",
+      "revId": "f291550eb2121d545efc092a5082a54838e7ad49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
