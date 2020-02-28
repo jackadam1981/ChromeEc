@@ -480,6 +480,30 @@
     },
     {
       "key": {
+        "uuid": "a4b641b2_cb94bbfa",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-02-28T23:58:33Z",
+      "side": 1,
+      "message": "Hi Raj,\n\nThanks for clarification. So it looks like this \"TCSS synchronization\" mechanism needs to be in place *regardless* of whether we are using a connector class port driver or the extcon driver. I think it\u0027s important we make that clarification, since my earlier interpretation of the responses here was that \"the connector class port driver will solve this issue\".\n\nNow for the second part of the problem:\n\nEarlier in this comment thread it was written:\n\"b:148542623 comment#12\n\nRedundant PMC requests cause the PMC timeout error. Hence Kernel needs to know if Coreboot has already configured the MUX.\"\n\nWhy are redundant PMC requests causing an error? Can we get an investigation and analysis? If nothing else it may help informat hardware design for future iterations.\n\nAlso, can\u0027t we have a fix either in the kernel driver or the PMC firmware which enables redundant requests to be handled gracefully (silently drops them, or returns some notification)? This would simplify this solution here, rather than having to deal with tricky state sharing.",
+      "parentUuid": "cbc7ef81_2cdc14df",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
