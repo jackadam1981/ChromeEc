@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b5d332b_5559d6ab",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-02-28T00:10:29Z",
+      "side": 1,
+      "message": "Yes the flag should be cleared here. I thought about using the PE layer but I would need to add another DPM_REQUEST_XXXX flag. I thought it would be simpler to just briefly disconnect. I\u0027ve asked Nathan to take a look to see if this is okay.",
+      "parentUuid": "d35b9b6d_03144e4d",
+      "range": {
+        "startLine": 1895,
+        "startChar": 5,
+        "endLine": 1895,
+        "endChar": 16
+      },
+      "revId": "e38a23bfde6a7a7019e1201d140816676b373e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "682f9ac1_fdf9ea21",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
