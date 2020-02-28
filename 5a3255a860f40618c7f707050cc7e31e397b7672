@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7a691d5_d5e8bf18",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-02-28T00:37:46Z",
+      "side": 1,
+      "message": "Why does this happen twice in power_handle_state? Is PG_EC_DSW_PWROK expected to have changed between the 2 readings?",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 20
+      },
+      "revId": "5a3255a860f40618c7f707050cc7e31e397b7672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
