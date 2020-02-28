@@ -192,6 +192,11 @@ void vboot_main(void)
 		return;
 	}
 
+	if (system_get_reset_flags() & EC_RESET_FLAG_AP_OFF) {
+		CPRINTS("AP_OFF");
+		return;
+	}
+
 	if (!(flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED)) {
 		/*
 		 * If hardware WP is disabled, PD communication is enabled.

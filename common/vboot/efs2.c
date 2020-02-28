@@ -249,6 +249,11 @@ void vboot_main(void)
 		return;
 	}
 
+	if (system_get_reset_flags() & EC_RESET_FLAG_AP_OFF) {
+		CPRINTS("AP_OFF");
+		return;
+	}
+
 	if (is_manual_recovery()) {
 		CPRINTS("In recovery mode");
 		if (!IS_ENABLED(CONFIG_BATTERY)
