@@ -22,6 +22,30 @@
       "revId": "3f2ee8317accc1d961825b7e01258f83deff121a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0316ed21_e4c3086d",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T19:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "181047be_9ea1273c",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "3f2ee8317accc1d961825b7e01258f83deff121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
