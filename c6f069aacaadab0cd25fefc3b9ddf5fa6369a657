@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c3b89b5_6b61a38e",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T19:31:20Z",
+      "side": 1,
+      "message": "If Dalboz does not need to adjust the usb_muxes data during run time, please make this only a trembyle variant option and make its usb_muxes a const",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "c6f069aacaadab0cd25fefc3b9ddf5fa6369a657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4004f8c8_e4a13bc2",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T19:31:20Z",
+      "side": 1,
+      "message": "const if this is not run time adjusted like trembyle has to be",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "c6f069aacaadab0cd25fefc3b9ddf5fa6369a657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c027c2_3ff80232",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T19:31:20Z",
+      "side": 1,
+      "message": "add i2c_addr_flags with the constant the that driver is using to make that driver more generic?",
+      "revId": "c6f069aacaadab0cd25fefc3b9ddf5fa6369a657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489f2cfd_f00fb7f5",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T19:31:20Z",
+      "side": 1,
+      "message": "same comment here for the i2c_addr_flags",
+      "revId": "c6f069aacaadab0cd25fefc3b9ddf5fa6369a657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a61d4a9_67404605",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T19:31:20Z",
+      "side": 1,
+      "message": "if you are going to make this function generic, which I like, you should probably stuff this in as the isc_addr_flags and change this code to me-\u003ei2c_addr_flags",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "c6f069aacaadab0cd25fefc3b9ddf5fa6369a657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
