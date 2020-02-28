@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7482789a_7e3907e4",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-02-28T17:31:45Z",
+      "side": 1,
+      "message": "Would this have an impact on any other FAFT tests? e.g. https://chromium.git.corp.google.com/chromiumos/third_party/autotest/+/1a380f4c7dbcb68a93b95d881c06baf80597c164/server/site_tests/firmware_ECBootTime/firmware_ECBootTime.py#69?",
+      "range": {
+        "startLine": 252,
+        "startChar": 32,
+        "endLine": 252,
+        "endChar": 52
+      },
+      "revId": "a0e1dcff1a50901808446b391f3ba2b72ceb162c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
