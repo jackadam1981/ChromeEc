@@ -16,6 +16,24 @@
       "revId": "3ba3de0d467fb79747d74a8dadbf636463c7d093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9775a00b_5a794132",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-02-28T16:54:37Z",
+      "side": 1,
+      "message": "There was a similar discussion on the name when it was introduced, but it turned out that chargen was a quite well-known name.\n\nhttps://en.wikipedia.org/wiki/Character_Generator_Protocol\n\nI think, this can be useful not only for CR50 test, but also for any bridging/debug device test like servo_micro or c2d2 maybe?\n\nThank you for CR+2!",
+      "parentUuid": "9f075a6a_cf778eb2",
+      "revId": "3ba3de0d467fb79747d74a8dadbf636463c7d093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
