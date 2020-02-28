@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3ba3860_1ecaab69",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "The variable siml_btn_presd is only used as a flag to differentiate the simulation flow(EC Console \u0026 ECTool) vs regular button press flows. This flag is required for the check done in function raw_button_pressed.\nDuring simulation flow, the mask sim_button_state holds the value of buttons.",
+      "parentUuid": "b2445eac_5e5d480d",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6afac1f_0b1a52a4",
         "filename": "common/button.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de865a8c_c5ab99e1",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6afac1f_0b1a52a4",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f38d8cc1_9e88ecf4",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13dae6a_6fb08df9",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c08696ba_ebac0490",
         "filename": "common/button.c",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e335d153_4c6dd5d9",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08696ba_ebac0490",
+      "range": {
+        "startLine": 339,
+        "startChar": 20,
+        "endLine": 339,
+        "endChar": 41
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02515e32_f9bfcdc1",
         "filename": "common/button.c",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2020-02-27T22:03:14Z",
       "side": 1,
       "message": "why call this deferred, should should be able to set siml_btn_presd \u003d 0 here directly since you are already in the hooks tasks\n\n---\n\nand I don\u0027t think we even need the siml_bnt_pred concept from above note",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 61
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b81c02_382d65fd",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "I have tested by setting siml_btn_presd \u003d 0 here directly, but the button release does not work.\nSetting siml_btn_presd \u003d 0 has to be done only after the deferred function button_change_deferred execution completes. Thus this call also needs to be deferred.",
+      "parentUuid": "02515e32_f9bfcdc1",
       "range": {
         "startLine": 345,
         "startChar": 1,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5d645d93_33ac4f0b",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69affde0_ddc8e7d5",
+      "range": {
+        "startLine": 360,
+        "startChar": 3,
+        "endLine": 360,
+        "endChar": 44
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45c81d77_e6abe798",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "4493b76a_4e2cc7d1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5949,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c81d77_e6abe798",
+      "range": {
+        "startLine": 5947,
+        "startChar": 0,
+        "endLine": 5949,
+        "endChar": 79
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dfb1202_26514ba3",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d54dc1_976693af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5960,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-02-28T06:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dfb1202_26514ba3",
+      "range": {
+        "startLine": 5960,
+        "startChar": 1,
+        "endLine": 5960,
+        "endChar": 28
+      },
+      "revId": "8d9fd6ae740425c3116b379cc3ee6f16b1f1fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
