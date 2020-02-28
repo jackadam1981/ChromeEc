@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d077284c_32e0cb11",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "Changed this code. We should only have to perform the real action on the current me, as it is usb_muxes[0] and then the chain traverse mechanism in usb_muxes.c will perform any needed following driver calls.",
+      "parentUuid": "f08f4aed_b4bb7395",
+      "range": {
+        "startLine": 728,
+        "startChar": 3,
+        "endLine": 741,
+        "endChar": 3
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe6a1ab7_8b0850d3",
         "filename": "board/chell/board.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3825199a_dc9cc02e",
+        "filename": "board/chell/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe6a1ab7_8b0850d3",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b18e489_aed414c6",
+        "filename": "board/glados/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8315300e_348f2f64",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31a3f6af_349564ac",
         "filename": "board/oak/board.c",
         "patchSetId": 14
@@ -91,6 +163,30 @@
       "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4610390_39655675",
+        "filename": "board/oak/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "I believe this is correct. the ps847x driver used to hard code the port to I2C_PORT_USB_MUX and now we are using me-\u003ei2c_port",
+      "parentUuid": "31a3f6af_349564ac",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "965f3c9a_bfe9d4ff",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "269b2719_77cb1029",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 45
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d954f18_b6178ca5",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 14
@@ -137,6 +257,30 @@
       "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fde21e_5283f777",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d954f18_b6178ca5",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "4d23dfe3_993b2b72",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "this will complicate things because of the number of arguments. I considered doing this and decided against it.  If you feel strongly, I will rethink this",
+      "parentUuid": "516ddee0_c6383ead",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 0
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aeb44af_4e923a8d",
         "filename": "include/usb_mux.h",
         "patchSetId": 14
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "2399bd5d_a856b48b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aeb44af_4e923a8d",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1917a0_a2fdad6b",
         "filename": "include/usb_mux.h",
         "patchSetId": 14
@@ -206,6 +398,30 @@
       "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef873653_0a7b7a0b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-02-28T15:06:35Z",
+      "side": 1,
+      "message": "I left it as a TODO because it was not concluded that we should not. I don\u0027t think it works well without having to create special drivers or overrides.",
+      "parentUuid": "bf1917a0_a2fdad6b",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 8
+      },
+      "revId": "0300c7ce91060bb5a3ebe0317d65f263a8708827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
