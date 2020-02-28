@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "909d390b_238a3389",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-02-28T00:46:31Z",
+      "side": 1,
+      "message": "Seems odd to me to add the send_irq param but not do anything with it, or am I missing something?",
+      "revId": "3e80b61c81595df00e61f6abf16a04b1d3c00cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
