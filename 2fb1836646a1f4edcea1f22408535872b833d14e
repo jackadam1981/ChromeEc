@@ -46,6 +46,30 @@
       "revId": "2fb1836646a1f4edcea1f22408535872b833d14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa54ed2c_c48da98d",
+        "filename": "include/uart.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-29T03:03:50Z",
+      "side": 1,
+      "message": "I ran into this while working in a different branch (cr50_stab), I\u0027ll get to fixing it in the branch, but it would take a few days, as I am about to change this file.\n\nI would fix the master branch version then.",
+      "parentUuid": "bc06db7a_993e55a7",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 28
+      },
+      "revId": "2fb1836646a1f4edcea1f22408535872b833d14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
