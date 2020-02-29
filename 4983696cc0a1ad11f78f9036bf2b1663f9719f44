@@ -504,6 +504,30 @@
     },
     {
       "key": {
+        "uuid": "23fca2b8_8e3b5c39",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1185694
+      },
+      "writtenOn": "2020-02-29T01:32:34Z",
+      "side": 1,
+      "message": "Yes.\nI meant to say that this solution should be properly implemented in Type-C connector class driver. \n\nKernel does not know the earlier TCSS mux configs done by coreboot (or depthcharge). So redundancy in this case, can not be avoided as such.\n\nWe are working with our internal teams (including PMC firmware) to understand why this is an issue and if it can be handled gracefully (so the state tracking / sharing is not needed). Let me get back with our findings.",
+      "parentUuid": "a4b641b2_cb94bbfa",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "4983696cc0a1ad11f78f9036bf2b1663f9719f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a314ad23_642a8b98",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
