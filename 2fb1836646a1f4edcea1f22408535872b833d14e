@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9fcebe0_9de51fde",
+        "filename": "include/uart.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-02-29T02:28:38Z",
+      "side": 1,
+      "message": "was this intentionally added outside of the compilation inclusion guard?",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 28
+      },
+      "revId": "2fb1836646a1f4edcea1f22408535872b833d14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
