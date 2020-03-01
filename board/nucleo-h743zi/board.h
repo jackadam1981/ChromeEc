@@ -24,4 +24,11 @@
 #define CONFIG_CONSOLE_COMMAND_FLAGS
 #define CONFIG_RESTRICTED_CONSOLE_COMMANDS
 
+/*
+ * Enable the blink example.
+ * The LEDs are used to count in binary and the button
+ * stops/starts the counting.
+ */
+#define CONFIG_BLINK
+
 #endif /* __BOARD_H */
