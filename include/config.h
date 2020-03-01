@@ -1175,6 +1175,18 @@
 
 /*****************************************************************************/
 /*
+ * Example functionality that are used to test boards.
+ */
+
+/*
+ * Enable the blink example.
+ *
+ * LEDs are used to count in binary and a button stops/starts the counting.
+ */
+#undef CONFIG_BLINK
+
+/*****************************************************************************/
+/*
  * Optional console commands
  *
  * Defining these options will enable the corresponding command on the EC
