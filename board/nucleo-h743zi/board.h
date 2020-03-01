@@ -24,4 +24,9 @@
 #define CONFIG_CONSOLE_COMMAND_FLAGS
 #define CONFIG_RESTRICTED_CONSOLE_COMMANDS
 
+/*
+ * Enable the blink example that exercises the LEDs (and button).
+ */
+#define CONFIG_BLINK
+
 #endif /* __BOARD_H */
