@@ -315,23 +315,7 @@ void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
-	/*
-	 * TODO(crbug.com/1045283): Change this part of code to use
-	 * system_encode_save_flags, like all other system_reset functions.
-	 *
-	 * system_encode_save_flags(flags, &save_flags);
-	 */
-
-	/* Save current reset reasons if necessary */
-	if (flags & SYSTEM_RESET_PRESERVE_FLAGS)
-		save_flags = system_get_reset_flags() | EC_RESET_FLAG_PRESERVED;
-
-	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
-		save_flags |= EC_RESET_FLAG_AP_OFF;
-
-	/* Remember that the software asked us to hard reboot */
-	if (flags & SYSTEM_RESET_HARD)
-		save_flags |= EC_RESET_FLAG_HARD;
+	system_encode_save_flags(flags, &save_flags);
 
 #ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
 	if (flags & SYSTEM_RESET_AP_WATCHDOG)
