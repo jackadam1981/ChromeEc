@@ -226,8 +226,23 @@ int pd_snk_is_vbus_provided(int port)
 	return rt946x_is_vbus_ready();
 }
 
+#define CHARGER_I2C_ADDR_FLAGS RT946X_ADDR_FLAGS
+
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
+	int val;
+
+	i2c_read8(I2C_PORT_CHARGER, CHARGER_I2C_ADDR_FLAGS,
+			RT946X_REG_CHGCTRL1, &val);
+	if (val & 0x01)
+		i2c_write8(I2C_PORT_CHARGER, CHARGER_I2C_ADDR_FLAGS,
+			   RT946X_REG_CHGCTRL1, 0x11);
+	else
+		i2c_write8(I2C_PORT_CHARGER, CHARGER_I2C_ADDR_FLAGS,
+			   RT946X_REG_CHGCTRL1, 0x10);
+#endif
+
 	/* If the reset cause is external, pulse PMIC force reset. */
 	if (system_get_reset_flags() == EC_RESET_FLAG_RESET_PIN) {
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
