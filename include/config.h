@@ -1173,6 +1173,34 @@
 
 /*****************************************************************************/
 /*
+ * Example functionality that is used to test boards.
+ */
+
+/*
+ * Enable the blink example.
+ *
+ * LEDs are used to count in binary and a button stops/starts the counting.
+ *
+ * Required Configuration:
+ * - CONFIG_BLINK_LEDS        --> List of LEDs (gpio enum names) to use as bits
+ *
+ * Optional Configuration:
+ * - CONFIG_BLINK_BTN         --> Button gpio enum name
+ * - CONFIG_BLINK_BTN_FN      --> The interrupt function registered to the btn
+ * - CONFIG_BLINK_BTN_ACT     --> Button active level
+ *
+ * Reconfigurable Configuration:
+ * - CONFIG_BLINK_BTN_DEBOUNCE --> The debounce time in microseconds
+ */
+#undef  CONFIG_BLINK
+#undef  CONFIG_BLINK_LEDS                     /* Ex: GPIO_LED1, GPIO_LED2 */
+#undef  CONFIG_BLINK_BTN                      /* Ex: GPIO_BTN1 */
+#undef  CONFIG_BLINK_BTN_FN                   /* Ex: button_event */
+#undef  CONFIG_BLINK_BTN_ACT                  /* Ex: 1 */
+#define CONFIG_BLINK_BTN_DEBOUNCE (1000*100)  /* 100ms */
+
+/*****************************************************************************/
+/*
  * Optional console commands
  *
  * Defining these options will enable the corresponding command on the EC
