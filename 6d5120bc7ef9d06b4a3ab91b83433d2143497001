@@ -22,6 +22,30 @@
       "revId": "6d5120bc7ef9d06b4a3ab91b83433d2143497001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a932ed_654382fc",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-02T21:52:28Z",
+      "side": 1,
+      "message": "\u003e Is there a character limit so the H isn\u0027t added?\n\nI\u0027m not sure. The KILLI_SEARC was added here, I\u0027m just using it:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1214543/",
+      "parentUuid": "6f9af58e_dd64a001",
+      "range": {
+        "startLine": 90,
+        "startChar": 43,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "6d5120bc7ef9d06b4a3ab91b83433d2143497001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
