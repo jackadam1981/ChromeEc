@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f46d307_e801aece",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-02T06:32:18Z",
+      "side": 1,
+      "message": "it\u0027s better using MACROS defined in rt946x.h instead. That would make the code more readable.",
+      "range": {
+        "startLine": 238,
+        "startChar": 11,
+        "endLine": 238,
+        "endChar": 15
+      },
+      "revId": "6c82449bcc8fdbe8ed626d895992af5406e8da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e956c2_f4f6929e",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-02T06:32:18Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 240,
+        "startChar": 27,
+        "endLine": 240,
+        "endChar": 31
+      },
+      "revId": "6c82449bcc8fdbe8ed626d895992af5406e8da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba3bcd7_aad4bf7e",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-02T06:32:18Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 243,
+        "startChar": 27,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "6c82449bcc8fdbe8ed626d895992af5406e8da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
