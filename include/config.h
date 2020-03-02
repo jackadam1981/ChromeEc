@@ -2383,6 +2383,9 @@
 /* Support NXP PCA9534 I/O expander. */
 #undef CONFIG_IO_EXPANDER_PCA9534
 
+/* Support NXP PCAL6408 I/O expander. */
+#undef CONFIG_IO_EXPANDER_PCAL6408
+
 /* Number of IO Expander ports */
 #undef CONFIG_IO_EXPANDER_PORT_COUNT
 
