@@ -1,0 +1,262 @@
+#!/bin/bash
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# Usage: ./util/ide-config vscode all | tee .vscode/c_cpp_properties.json
+# This tool needs to be run from the base ec directory.
+
+DEFAULT_IMAGE=RW
+INDENT_WIDTH=4
+PARALLEL_CACHE_FILL=true
+MAKE_CACHE_DIR=""
+
+init() {
+	MAKE_CACHE_DIR=$(mktemp -d /tmp/ide-config.XXXX)
+	mkdir -p $MAKE_CACHE_DIR/defines
+	mkdir -p $MAKE_CACHE_DIR/includes
+	trap deinit EXIT
+}
+
+deinit() {
+	rm -rf "$MAKE_CACHE_DIR"
+}
+
+usage() {
+	echo "Usage: ide-config <vscode> [BOARD:IMAGE] [BOARD:IMAGE...]"
+	echo "Generate a C language configuration for a given IDE and EC board."
+	echo
+	echo "Example: ide-config vscode nocturne"
+	echo "Example: ide-config vscode nocturne_fp:RO"
+	echo "Example: ide-config vscode nocturne:RO hatch:RW"
+	echo "Example: ide-config vscode all:RW all:RO"
+}
+
+# Usage: iprintf <indent-level> <printf-fmt> [printf-args]
+iprintf() {
+	local level=$1
+	shift
+
+	printf "%*s" $((INDENT_WIDTH*level)) "" && \
+	printf "$@"
+	return $?
+}
+
+# Usage: parse-cfg-board <cfg-string>
+#
+# Example: parse-cfg-board nocturne:RW
+parse-cfg-board() {
+	local cfg=$1
+	# Remove possible :RW or :RO
+	echo ${cfg%%:*}
+}
+
+# Usage: parse-cfg-image <cfg-string>
+#
+# Example: parse-cfg-image nocturne:RW
+# Example: parse-cfg-image nocturne
+parse-cfg-image() {
+	local cfg=$1
+	# Add false separator -- see below
+	cfg+=":"
+	# Remove possible board up until ':'
+	cfg=$(echo ${cfg##*:})
+	# Remove trailing ':'
+	cfg=${cfg%%:*}
+	# Use default RW if none set
+	cfg=${cfg:-$DEFAULT_IMAGE}
+	echo "$cfg" > this
+	case $cfg in
+		RW|RO)
+			echo $cfg
+			return 0
+			;;
+		*)
+			return 1
+			;;
+	esac
+}
+
+# Usage: make-defines <board> <RO|RW>
+make-defines() {
+	local board=$1
+	local image=$2
+
+	local cache="$MAKE_CACHE_DIR/defines/${board}-${image}"
+
+	if [[ ! -f "$cache" ]]; then
+		make print-defines BOARD=$board BLD=$image >"$cache"
+	fi
+
+	cat "$cache"
+}
+
+# Usage: make-includes <board> <RO|RW>
+#
+# Retun a newline separted list of include directories relative to the ec's
+# root directory.
+make-includes() {
+	local board=$1
+	local image=$2
+
+	local cache="$MAKE_CACHE_DIR/includes/${board}-${image}"
+
+	if [[ ! -f "$cache" ]]; then
+		make print-includes BOARD=$board BLD=$image \
+		| xargs realpath --relative-to=. >"$cache"
+	fi
+
+	cat "$cache"
+}
+
+# Usage: make-boards
+make-boards() {
+	local cache="$MAKE_CACHE_DIR/boards"
+
+	if [[ ! -f "$cache" ]]; then
+		make print-boards >"$cache"
+	fi
+
+	cat "$cache"
+}
+
+# Usage: echo -e "list\nlist" |  join <left> <right> <separator>
+#
+# JSON: includes nocturne_fp RW | join '"' '"' ',\n'
+# C:    includes nocturne_fp RW | join '"' '",' '\n'
+join() {
+	local left=$1
+	local right=$2
+	local sep=$3
+
+	local first=true
+	while read line; do
+		# JSON is rediculous for not allowing a trailing ,
+		if [[ "$first" == true ]]; then
+			first=false
+		else
+			printf "%b" "$sep"
+		fi
+		printf "%b%s%b" "$left" "$line" "$right"
+	done
+	echo
+}
+
+# Usage: echo "<content>" | encap <header> <footer>
+#
+# Encapsulate the stdin with a header, footer, and indention
+encap() {
+	local header=$1
+	local footer=$2
+
+	echo -n -e "$header"
+	while IFS='\n' read -e line; do
+		iprintf 1 "%s\n" "$line"
+	done
+	echo -n -e "$footer"
+}
+
+##########################################################################
+
+vscode() {
+	local first=true
+	{
+		for cfg; do
+			local board=$(parse-cfg-board "$cfg")
+			local image=$(parse-cfg-image "$cfg")
+			{
+				printf '"name": "%s",\n' "${board}:${image}"
+				make-includes $board $image \
+					| join '"' '"' ',\n' \
+					| encap '"includePath": [\n' '],\n'
+				make-defines $board $image \
+					| join '"' '"' ',\n' \
+					| encap '"defines": [\n' '],\n'
+				echo '"include/config.h"' \
+					| encap '"forcedInclude": [\n' '],\n'
+
+				echo '"compilerPath": "/usr/bin/arm-none-eabi-gcc",'
+				echo '"cStandard": "c11",'
+				echo '"cppStandard": "c++17",'
+				echo '"intelliSenseMode": "clang-x64",'
+				echo '"compilerArgs": []'
+			} | {
+				# A single named configuration
+				if [[ "$first" == true ]]; then
+					encap '{\n' '}'
+				else
+					encap ',\n{\n' '}'
+				fi
+			}
+			first=false
+		done
+		echo
+	} \
+	| {
+		encap '"configurations": [\n' '],\n'
+		echo '"version": 4'
+	} \
+	| encap '{\n' '}\n'
+}
+
+
+main() {
+	if [[ $# -lt 1 ]]; then
+		usage
+		exit 1
+	fi
+	for flag; do
+		case $flag in
+			help|--help|-h)
+				usage
+				exit 0
+				;;
+		esac
+	done
+
+	local ide=$1
+	shift
+
+	local -a cfgs=( )
+	for cfg; do
+		# Note "all:*" could be specified multiple times for RO and RW
+		# Note "all:*" could be specified with other specific board:images
+		if [[ "$(parse-cfg-board "$cfg")" == all ]]; then
+			local image=$(parse-cfg-image $cfg)
+			local allboards=( $(make-boards) )
+			cfgs+=( "${allboards[@]/%/:$image}" )
+		else
+			cfgs+=( "$cfg" )
+		fi
+	done
+
+	# Make configs unique (and sorted)
+	cfgs=( $(echo -e "${cfgs[@]/%/$'\n'}"|sort -u) )
+
+	# Prefill the the make cache in parallel
+	# This is important because each make request take about 700ms.
+	# When running on all boards, this could result in (127*2)*700ms = 3mins.
+	if [[ "$PARALLEL_CACHE_FILL" == true ]]; then
+		echo "# Fetching make defines and includes. Please wait." >&2
+		for cfg in "${cfgs[@]}"; do
+			local board="$(parse-cfg-board "$cfg")"
+			local image="$(parse-cfg-image "$cfg")"
+			make-defines "$board" "$image" >/dev/null &
+			make-includes "$board" "$image" >/dev/null &
+		done
+		wait
+	fi
+
+	case "$ide" in
+		vscode)
+			vscode "${cfgs[@]}"
+			;;
+		*)
+			echo "Error - IDE '${ide}' is an unsupported." >&2
+			exit 1
+			;;
+	esac
+}
+
+init
+main "$@"
