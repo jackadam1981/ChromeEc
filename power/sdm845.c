@@ -561,11 +561,12 @@ static uint8_t check_for_power_on_event(void)
 	if (power_request == POWER_REQ_ON) {
 		power_request = POWER_REQ_NONE;
 		return POWER_ON_BY_POWER_REQ_ON;
-	}
-
-	if (power_request == POWER_REQ_RESET) {
+	} else if (power_request == POWER_REQ_RESET) {
 		power_request = POWER_REQ_NONE;
 		return POWER_ON_BY_POWER_REQ_RESET;
+	} else {
+		/* Clear invalid request */
+		power_request = POWER_REQ_NONE;
 	}
 
 	/* check if system is already ON */
@@ -628,6 +629,9 @@ static uint8_t check_for_power_off_event(void)
 		 * in check_for_power_on_event() in S5.
 		 */
 		return POWER_OFF_BY_POWER_REQ_RESET;
+	} else {
+		/* Clear invalid request */
+		power_request = POWER_REQ_NONE;
 	}
 
 	/*
