@@ -232,6 +232,12 @@ void set_voltage_comparator_condition(int index, int ch)
 		*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_EDGE_TRIGGER;
 	else
 		*vcmp_ctrl_regs[ch].vcmp_ctrl &= ~ADC_VCMP_EDGE_TRIGGER;
+
+	temp = ((*vcmp_ctrl_regs[ch].vcmp_datm << 8) |
+		*vcmp_ctrl_regs[ch].vcmp_datl);
+	ccprints("threshold = 0x%x ", temp);
+	ccprints("set condition, index = %d, ch = %d, vcmp_reg = 0x%x", index,
+		ch, *vcmp_ctrl_regs[ch].vcmp_ctrl);
 }
 
 /* Voltage comparator interrupt, handle one channel at a time. */
@@ -240,6 +246,11 @@ void volt_comp_interrupt(void)
 	int ch = 0xFF;
 	int index;
 	int temp;
+
+	index = IT83XX_ADC_VCMPSTS;
+	ccprints("INT vcmp status012 = 0x%x", index);
+	index = IT83XX_ADC_VCMPSTS2;
+	ccprints("INT vcmp status345 = 0x%x", index);
 
 	/* Get triggered voltage comparator channel */
 	temp = IT83XX_ADC_VCMPSTS & 0x07;
@@ -250,6 +261,7 @@ void volt_comp_interrupt(void)
 			break;
 		}
 	}
+	ccprints("INT vcmp ch = 0x%x", ch);
 
 	/* Stop voltage comparator */
 	*vcmp_ctrl_regs[ch].vcmp_ctrl &= ~ADC_VCMP_CMPEN;
@@ -270,6 +282,23 @@ void volt_comp_interrupt(void)
 	}
 
 	/* TODO: Set voltage comparator conditions */
+	if (ch == CHIP_VCMP_CH0) {
+		if (*vcmp_ctrl_regs[ch].vcmp_ctrl &
+						ADC_VCMP_GREATER_THRESHOLD) {
+			vcmp_channels[index].threshold = 200;
+			vcmp_channels[index].condition =
+				(LESS_EQUAL_THRESHOLD | EDGE_TRIGGER);
+			ccprints("INT detect High, switch detect Low");
+		} else {
+			vcmp_channels[index].threshold = 2800;
+			vcmp_channels[index].condition =
+				(GREATER_THRESHOLD | EDGE_TRIGGER);
+			ccprints("INT detect Low, switch detect High");
+		}
+		set_voltage_comparator_condition(index, ch);
+	} else if (ch == CHIP_VCMP_CH3) {
+		/* nothing */
+	}
 
 	/* Start voltage comparator */
 	*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_CMPEN;
