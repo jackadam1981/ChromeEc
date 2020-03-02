@@ -22,6 +22,30 @@
       "revId": "78a5f3de5e830151d7e58bc46e69f841f1fdfcf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861a2fa0_74117e60",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-03-02T04:02:49Z",
+      "side": 1,
+      "message": "Done. Switched to \"ap-off-in-ro\".",
+      "parentUuid": "d8322e78_76a3f6c3",
+      "range": {
+        "startLine": 1171,
+        "startChar": 0,
+        "endLine": 1172,
+        "endChar": 36
+      },
+      "revId": "78a5f3de5e830151d7e58bc46e69f841f1fdfcf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
