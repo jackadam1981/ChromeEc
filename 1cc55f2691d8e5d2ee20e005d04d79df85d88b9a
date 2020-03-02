@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad9382ec_1075d443",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-03-02T19:44:18Z",
+      "side": 1,
+      "message": "I guess you don\u0027t need this.",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 55
+      },
+      "revId": "1cc55f2691d8e5d2ee20e005d04d79df85d88b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad456b5a_8dba244b",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-03-02T19:44:18Z",
+      "side": 1,
+      "message": "Dratini?",
+      "range": {
+        "startLine": 350,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 10
+      },
+      "revId": "1cc55f2691d8e5d2ee20e005d04d79df85d88b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e370443a_9c6b284c",
+        "filename": "board/nightfury/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-03-02T19:44:18Z",
+      "side": 1,
+      "message": "This EC-fan-control is specific to Jinlon.\nNightfury doesn\u0027t need this file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 0
+      },
+      "revId": "1cc55f2691d8e5d2ee20e005d04d79df85d88b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
