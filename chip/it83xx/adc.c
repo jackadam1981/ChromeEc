@@ -62,6 +62,25 @@ const struct adc_ctrl_t adc_ctrl_regs[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_ctrl_regs) == CHIP_ADC_COUNT);
 
+#ifdef CONFIG_ADC_VOLTAGE_COMPARATOR
+/* Data structure of voltage comparator channel control registers. */
+const struct vcmp_ctrl_t vcmp_ctrl_regs[] = {
+	{&IT83XX_ADC_VCMP0CTL, &IT83XX_ADC_CMP0THRDATM,
+		&IT83XX_ADC_CMP0THRDATL},
+	{&IT83XX_ADC_VCMP1CTL, &IT83XX_ADC_CMP1THRDATM,
+		&IT83XX_ADC_CMP1THRDATL},
+	{&IT83XX_ADC_VCMP2CTL, &IT83XX_ADC_CMP2THRDATM,
+		&IT83XX_ADC_CMP2THRDATL},
+	{&IT83XX_ADC_VCMP3CTL, &IT83XX_ADC_CMP3THRDATM,
+		&IT83XX_ADC_CMP3THRDATL},
+	{&IT83XX_ADC_VCMP4CTL, &IT83XX_ADC_CMP4THRDATM,
+		&IT83XX_ADC_CMP4THRDATL},
+	{&IT83XX_ADC_VCMP5CTL, &IT83XX_ADC_CMP5THRDATM,
+		&IT83XX_ADC_CMP5THRDATL},
+};
+BUILD_ASSERT(ARRAY_SIZE(vcmp_ctrl_regs) == CHIP_VCMP_COUNT);
+#endif
+
 static void adc_enable_channel(int ch)
 {
 	if (ch < CHIP_ADC_CH4)
@@ -190,6 +209,118 @@ void adc_interrupt(void)
 		task_set_event(task_waiting, TASK_EVENT_ADC_DONE, 0);
 }
 
+#ifdef CONFIG_ADC_VOLTAGE_COMPARATOR
+/* Set voltage comparator conditions */
+void set_voltage_comparator_condition(int index, int ch)
+{
+	int temp;
+
+	/* Threshold(mv) = 3000(mv) * CMP0THRDAT[9:0] / 1024 */
+	temp = (vcmp_channels[index].threshold *
+		vcmp_channels[index].resolution / 3000);
+	*vcmp_ctrl_regs[ch].vcmp_datl = (uint8_t)temp;
+	*vcmp_ctrl_regs[ch].vcmp_datm = (uint8_t)(temp >> 8);
+
+	/* Select comparator mode: greater or less equal than threshold */
+	if (vcmp_channels[index].condition & GREATER_THRESHOLD)
+		*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_GREATER_THRESHOLD;
+	else
+		*vcmp_ctrl_regs[ch].vcmp_ctrl &= ~ADC_VCMP_GREATER_THRESHOLD;
+
+	/* Select trigger mode: edge or level trigger */
+	if (vcmp_channels[index].condition & EDGE_TRIGGER)
+		*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_EDGE_TRIGGER;
+	else
+		*vcmp_ctrl_regs[ch].vcmp_ctrl &= ~ADC_VCMP_EDGE_TRIGGER;
+}
+
+/* Voltage comparator interrupt, handle one channel at a time. */
+void volt_comp_interrupt(void)
+{
+	int ch = 0xFF;
+	int index;
+	int temp;
+
+	/* Get triggered voltage comparator channel */
+	temp = IT83XX_ADC_VCMPSTS & 0x07;
+	temp |= (IT83XX_ADC_VCMPSTS2 & 0x07) << 3;
+	for (index = 0; index < CHIP_VCMP_COUNT; index++) {
+		if (temp & (1 << index)) {
+			ch = index;
+			break;
+		}
+	}
+
+	/* Stop voltage comparator */
+	*vcmp_ctrl_regs[ch].vcmp_ctrl &= ~ADC_VCMP_CMPEN;
+
+	/* Clear voltage comparator interrupt status */
+	if (ch <= 2)
+		IT83XX_ADC_VCMPSTS = BIT(ch);
+	else
+		IT83XX_ADC_VCMPSTS2 = BIT(ch - 3);
+
+	/* Clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+
+	/* Find comparator channel index that board claims in vcmp_channels[] */
+	for (index = 0; index < VCMP_CH_COUNT; index++) {
+		if (ch == vcmp_channels[index].vcmp_channel)
+			break;
+	}
+
+	/* TODO: Set voltage comparator conditions */
+
+	/* Start voltage comparator */
+	*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_CMPEN;
+}
+
+/* Voltage comparator initialization */
+static void voltage_comparator_init(void)
+{
+	int ch;
+	int index;
+
+	/* If needn't init voltage comparator, then return. */
+	if (VCMP_CH_COUNT == 0)
+		return;
+
+	/* Clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_V_COMP);
+	/* Enable voltage comparator to interrupt MCU */
+	task_enable_irq(IT83XX_IRQ_V_COMP);
+
+	for (index = 0; index < VCMP_CH_COUNT; index++) {
+		/* Find voltage comparator channel */
+		ch = vcmp_channels[index].vcmp_channel;
+
+		/* Select which ADC channel output voltage into comparator */
+		*vcmp_ctrl_regs[ch].vcmp_ctrl |=
+			(vcmp_channels[index].adc_channel & 0x07);
+		if (vcmp_channels[index].adc_channel & BIT(3))
+			IT83XX_ADC_VCMP0CSELM |= BIT(0);
+
+		/* Set voltage comparator conditions */
+		set_voltage_comparator_condition(index, ch);
+
+		/* Select comparator scan period */
+		IT83XX_ADC_VCMPSCP = ADC_VCMP_SCAN_PERIOD_1MS;
+
+		/* Clear voltage comparator interrupt status */
+		if (ch <= 2)
+			IT83XX_ADC_VCMPSTS = BIT(ch);
+		else
+			IT83XX_ADC_VCMPSTS2 = BIT(ch - 3);
+
+		/* Enable comparator interrupt */
+		*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_CMPINTEN;
+
+		/* Start voltage comparator */
+		*vcmp_ctrl_regs[ch].vcmp_ctrl |= ADC_VCMP_CMPEN;
+	}
+}
+#endif
+
 /*
  * ADC analog accuracy initialization (only once after VSTBY power on)
  *
@@ -207,6 +338,7 @@ static void adc_accuracy_initialization(void)
 	/* bit3 : stop adc accuracy initialization */
 	IT83XX_ADC_ADCSTS &= ~0x08;
 }
+
 
 /* ADC module Initialization */
 static void adc_init(void)
@@ -240,6 +372,15 @@ static void adc_init(void)
 	task_waiting = TASK_ID_INVALID;
 	/* disable adc interrupt */
 	task_disable_irq(IT83XX_IRQ_ADC);
+
+#ifdef CONFIG_ADC_VOLTAGE_COMPARATOR
+	/*
+	 * Init voltage comparator
+	 * NOTE:ADC channel signal output to voltage comparator,
+	 *      so we need set the channel to ADC alternate mode before.
+	 */
+	voltage_comparator_init();
+#endif
 
 	adc_init_done = 1;
 }
