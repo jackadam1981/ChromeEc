@@ -22,6 +22,30 @@
       "revId": "7d768c5dcf4a32133c2997355bdf3c97011f0e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bf9e504_8d518304",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-02T22:19:07Z",
+      "side": 1,
+      "message": "\u003e Just curious: So, was the Search key press getting dropped at the EC side for all current keyboards?\n\nThis was froma few weeks ago, so my memory is still hazy. The default keyboard mask is not used on many boards (most boards inclusing Hatch provide their own scanmask), so this CL couldn\u0027t be tested ofcourse. I also fixed the Hatch mask in the next CL. Yes, if I did not have that CL, I was not getting search key presses while I was debugging.",
+      "parentUuid": "adbb53be_a4fcc003",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "7d768c5dcf4a32133c2997355bdf3c97011f0e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
