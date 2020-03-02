@@ -677,6 +677,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	CPRINTS("%s(%d)", __func__, reason);
 	report_ap_reset(reason);
 
+	if (power_get_state() != POWER_S0) {
+		CPRINTS("Ignore shutdown, not in S0");
+		return;
+	}
+
 	/* Issue a request to initiate a power-off sequence */
 	power_request = POWER_REQ_OFF;
 	task_wake(TASK_ID_CHIPSET);
@@ -688,6 +693,11 @@ void chipset_reset(enum chipset_reset_reason reason)
 
 	CPRINTS("%s(%d)", __func__, reason);
 	report_ap_reset(reason);
+
+	if (power_get_state() != POWER_S0) {
+		CPRINTS("Ignore reset, not in S0");
+		return;
+	}
 
 	/* The host command is used to hard reset AP. Check b/119261783 */
 	if (reason == CHIPSET_RESET_HOST_CMD) {
