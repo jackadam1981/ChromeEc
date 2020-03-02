@@ -114,6 +114,30 @@
       "revId": "6c82449bcc8fdbe8ed626d895992af5406e8da14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5a9a94_038c0d38",
+        "filename": "board/kodama/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-03-02T06:50:12Z",
+      "side": 1,
+      "message": "From the current data captured by the abnormal machine, it is mainly that bit1 and bit4 have changed, and bit2 can also capture the changes.AT present, not see any change in other bits.",
+      "parentUuid": "70fd5edb_7f29bc9c",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "6c82449bcc8fdbe8ed626d895992af5406e8da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
