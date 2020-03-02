@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cc349e65_68618fb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-02T06:32:55Z",
+      "side": 1,
+      "message": "rewrite",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "6c82449bcc8fdbe8ed626d895992af5406e8da14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f46d307_e801aece",
         "filename": "board/kodama/board.c",
         "patchSetId": 1
