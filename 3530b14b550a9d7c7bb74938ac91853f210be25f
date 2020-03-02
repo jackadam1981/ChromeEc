@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f19bbc5d_16742282",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "OK, the related pd will move to board code.",
+      "parentUuid": "3edbe32c_633c78e6",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a9a1a5_323c25d0",
         "filename": "baseboard/ite_evb/baseboard.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82ee7e7_595f7f76",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a9a1a5_323c25d0",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5c64dc18_d33b3c4a",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a216d13_47867b71",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456ab91a_31137092",
         "filename": "baseboard/ite_evb/baseboard.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ff55a3_4f73d34b",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "456ab91a_31137092",
+      "range": {
+        "startLine": 158,
+        "startChar": 19,
+        "endLine": 158,
+        "endChar": 31
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "149d2583_ae00ddd9",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134e1e13_bce88309",
+      "range": {
+        "startLine": 201,
+        "startChar": 24,
+        "endLine": 201,
+        "endChar": 33
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d207fac0_e42f9224",
         "filename": "baseboard/ite_evb/baseboard.c",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "bd113104_486cad2f",
+        "filename": "baseboard/ite_evb/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d207fac0_e42f9224",
+      "range": {
+        "startLine": 211,
+        "startChar": 26,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e0728ee_c0b038fe",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90af9183_519e8a2f",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-02T09:03:11Z",
+      "side": 1,
+      "message": "The sleep is indeed unnecessary at line 888. The sleep at line 890 is to ensure that there is enough time for the strap pin to identify the cold_reset pin from low to high when it is in the low state, then enter programming mode.",
+      "parentUuid": "8e0728ee_c0b038fe",
+      "range": {
+        "startLine": 888,
+        "startChar": 3,
+        "endLine": 888,
+        "endChar": 12
+      },
+      "revId": "3530b14b550a9d7c7bb74938ac91853f210be25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
