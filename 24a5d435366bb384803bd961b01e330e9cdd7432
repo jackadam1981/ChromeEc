@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5a8ecbe_0790917c",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-02T22:04:53Z",
+      "side": 1,
+      "message": "Not related to this change and mostly a question for Tim/Scott/Jett:\n\nDoes this really apply to Hatch? I see this is being copied over since reef:\ngit grep \"F3 key scan cycle completed but scan input is not\"\nbaseboard/dragonegg/baseboard.c:         * F3 key scan cycle completed but scan input is not\nbaseboard/hatch/baseboard.c:     * F3 key scan cycle completed but scan input is not\nbaseboard/octopus/baseboard.c:   * F3 key scan cycle completed but scan input is not\nboard/coral/board.c:     * F3 key scan cycle completed but scan input is not\nboard/nami/board.c:      * F3 key scan cycle completed but scan input is not\nboard/reef/board.c:      * F3 key scan cycle completed but scan input is not\nboard/reef_it8320/board.c:       * F3 key scan cycle completed but scan input is not\nboard/reef_mchp/board.c:         * F3 key scan cycle completed but scan input is not\n\nBut, doesn\u0027t seem to be applied to all boards e.g. I see grunt missing, ARM boards missing. If the problem is with H1/Silego delays, wouldn\u0027t it apply to all boards? Is it time to update the common/keyboard_scan.c keyscan_config to use 80us for output_settle_us?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "24a5d435366bb384803bd961b01e330e9cdd7432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
