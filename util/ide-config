@@ -1,0 +1,173 @@
+#!/bin/bash
+# Usage: ./util/ide-config vscode nocturne_fp > .vscode/c_cpp_properties.json
+
+DEFAULT_IMAGE=RW
+DEFAULT_INDENT=4
+
+usage() {
+	echo "Usage: ide-config <vscode> [BOARD:IMAGE] [BOARD:IMAGE...]"
+	echo
+	echo "Example: ide-config nocturne_fp:RW"
+	echo "Example: ide-config nocturne_fp"
+	echo "Example: ide-config nocturne:RO hatch:RO"
+	echo "Example: ide-config all:RW"
+}
+
+iprintf() {
+	local level=$1
+	shift
+
+	printf "%*s" $((DEFAULT_INDENT*level)) "" && \
+	printf "$@"
+	return $?
+}
+
+# Example: parse-cfg-board nocturne:RW
+parse-cfg-board() {
+	local cfg=$1
+	# Remove possible :RW or :RO
+	echo ${cfg%%:*}
+}
+
+# Example: parse-cfg-image nocturne:RW
+# Example: parse-cfg-image nocturne
+parse-cfg-image() {
+	local cfg=$1
+	# Add false separator -- see below
+	cfg+=":"
+	# Remove possible board up until ':'
+	cfg=$(echo ${cfg##*:})
+	# Remove trailing ':'
+	cfg=${cfg%%:*}
+	# Use default RW if none set
+	cfg=${cfg:-$DEFAULT_IMAGE}
+	echo "$cfg" > this
+	case $cfg in
+		RW|RO)
+			echo $cfg
+			return 0
+			;;
+		*)
+			return 1
+			;;
+	esac
+}
+
+# JSON: includes nocturne_fp RW | join '"' '"' ',\n'
+# C:    includes nocturne_fp RW | join '"' '",' '\n'
+join() {
+	local left=$1
+	local right=$2
+	local sep=$3
+
+	local first=1
+	while read line; do
+		# JSON is rediculous for not allowing a trailing ,
+		if [[ $first -eq 1 ]]; then
+			first=0
+		else
+			printf "%b" "$sep"
+		fi
+		printf "%b%s%b" "$left" "$line" "$right"
+	done
+	echo
+}
+
+defines() {
+	local board=$1
+	local image=$2
+
+	make print-defines BOARD=$board BLD=$image | cat
+}
+
+# Retun a newline separted list of include directories relative to the ec's
+# root directory.
+includes() {
+	local board=$1
+	local image=$2
+
+	make print-includes BOARD=$board BLD=$image \
+	| xargs realpath --relative-to=.
+}
+
+# Fun
+encapsulate() {
+	local header=$1
+	local footer=$2
+
+	echo -n -e "$header"
+	while IFS='\n' read -e line; do
+		iprintf 1 "%s\n" "$line"
+	done
+	echo -n -e "$footer"
+}
+
+##########################################################################
+
+vscode() {
+	local first=1
+	{
+		for cfg; do
+			local board=$(parse-cfg-board "$cfg")
+			local image=$(parse-cfg-image "$cfg")
+			{
+				printf '"name": "%s",\n' "${board}:${image}"
+				includes $board $image \
+					| join '"' '"' ',\n' \
+					| encapsulate '"includePath": [\n' '],\n'
+				defines $board $image \
+					| join '"' '"' ',\n' \
+					| encapsulate '"defines": [\n' '],\n'
+				echo '"include/config.h"' \
+					| encapsulate '"forcedInclude": [\n' '],\n'
+
+				echo '"compilerPath": "/usr/bin/arm-none-eabi-gcc",'
+				echo '"cStandard": "c11",'
+				echo '"cppStandard": "c++17",'
+				echo '"intelliSenseMode": "clang-x64",'
+				echo '"compilerArgs": []'
+			} | {
+				# A single named configuration
+				if [[ $first -eq 1 ]]; then
+					encapsulate '{\n' '}'
+				else
+					encapsulate ',\n{\n' '}'
+				fi
+			}
+			first=0
+		done
+		echo
+	} \
+	| {
+		encapsulate '"configurations": [\n' '],\n'
+		echo '"version": 4'
+	} \
+	| encapsulate '{\n' '}\n'
+}
+
+
+main() {
+	for flag; do
+		case $flag in
+			help|--help|-h)
+				usage
+				exit 0
+				;;
+		esac
+	done
+
+	local ide=$1
+	shift
+
+	case "$ide" in
+		vscode)
+			vscode "$@"
+			;;
+		*)
+			echo "Error - IDE '${ide}' is an unsupported." >&2
+			exit 1
+			;;
+	esac
+}
+
+main "$@"
