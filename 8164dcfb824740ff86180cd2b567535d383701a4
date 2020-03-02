@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf5fc0d_c9d381d5",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T18:33:56Z",
+      "side": 1,
+      "message": "preamble",
+      "range": {
+        "startLine": 106,
+        "startChar": 61,
+        "endLine": 106,
+        "endChar": 70
+      },
+      "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0726ccbf_d011970d",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T18:33:56Z",
+      "side": 1,
+      "message": "This is only for V02. Thus, it shouldn\u0027t be used by Cr50.",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db92aa6_1ec80d17",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T18:33:56Z",
+      "side": 1,
+      "message": "This has been renamed. I think we should sync cr50-stab first.",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 25
+      },
+      "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
