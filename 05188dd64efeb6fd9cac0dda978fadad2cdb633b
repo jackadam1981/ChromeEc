@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed2b66f2_5f8e0faa",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T17:29:51Z",
+      "side": 1,
+      "message": "nit: To fix this 80+ column, I think it\u0027s ok to split the line in this case but it looks more readable if we do:\n\nDECLARE_CONSOLE_COMMAND(\n\treboot, command_reboot,\n\t\"[hard|soft] [preserve] ... [cancel] [ap-off-in-ro]\",",
+      "range": {
+        "startLine": 1246,
+        "startChar": 55,
+        "endLine": 1246,
+        "endChar": 70
+      },
+      "revId": "05188dd64efeb6fd9cac0dda978fadad2cdb633b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d39a43e_45ec2ce2",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T17:29:51Z",
+      "side": 1,
+      "message": "Can you add the same logic to efs2.c?",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "05188dd64efeb6fd9cac0dda978fadad2cdb633b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d736df_c374162f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5749,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T17:29:51Z",
+      "side": 1,
+      "message": "Can you add: \"This enables PD in RO for Chromebox.\"?",
+      "range": {
+        "startLine": 5749,
+        "startChar": 46,
+        "endLine": 5749,
+        "endChar": 70
+      },
+      "revId": "05188dd64efeb6fd9cac0dda978fadad2cdb633b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
