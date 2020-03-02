@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fd12af1_e1b7f5db",
+        "filename": "board/nucleo-h743zi/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-02T23:29:17Z",
+      "side": 1,
+      "message": "I think a description shouldn\u0027t be duplicated. This needs to be updated when the behavior changes. This will be a maintenance burden.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "236a15c6805d5fe001df2cf6aa7e8c90d4696dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
