@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4a38421_5fb34bb4",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-02T19:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf5fc0d_c9d381d5",
+      "range": {
+        "startLine": 106,
+        "startChar": 61,
+        "endLine": 106,
+        "endChar": 70
+      },
+      "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0726ccbf_d011970d",
         "filename": "include/vboot.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "035c6b15_1230d211",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-02T19:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0726ccbf_d011970d",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0db92aa6_1ec80d17",
         "filename": "include/vboot.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0987615f_0d48d3a3",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-02T19:01:50Z",
+      "side": 1,
+      "message": "Since EC doesn\u0027t use this, I\u0027ll keep this structure in cr50_stab branch.",
+      "parentUuid": "0db92aa6_1ec80d17",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 25
+      },
+      "revId": "8164dcfb824740ff86180cd2b567535d383701a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
