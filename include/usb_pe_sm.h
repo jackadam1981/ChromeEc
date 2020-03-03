@@ -176,5 +176,12 @@ const char *pe_get_current_state(int port);
  */
 uint32_t pe_get_flags(int port);
 
+/**
+ * Inform Policy Engine that a Data Reset is complete
+ *
+ * @param port USB-C port number
+ */
+void pe_data_reset_complete(int port);
+
 #endif /* __CROS_EC_USB_PE_H */
 
