@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "94d81a5f_6fb8ea17",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:20:03Z",
+      "side": 1,
+      "message": "Ah it looks like the logic needs to be tweaked to handle the active high and active low cases for simulation.\n\nI can offer a suggestion tomorrow if you want one.",
+      "parentUuid": "6f9ba138_462469c5",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "2892f4c3b7bf65df43733b96f1dd2bdc4bcb5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11411b90_944e416e",
         "filename": "common/button.c",
         "patchSetId": 6
