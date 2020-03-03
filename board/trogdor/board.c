@@ -20,7 +20,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "lid_switch.h"
-#include "pi3usb9281.h"
+#include "pi3usb9201.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -266,16 +266,16 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 };
 
 /* BC1.2 */
-struct pi3usb9281_config pi3usb9281_chips[] = {
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	{
 		.i2c_port = I2C_PORT_POWER,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
 	{
 		.i2c_port = I2C_PORT_EEPROM,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
 };
-BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
-	     CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT);
 
 const struct charger_config_t chg_chips[] = {
 	{
