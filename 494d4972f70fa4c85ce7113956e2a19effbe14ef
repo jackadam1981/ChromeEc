@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ac3c694d_f253ead3",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "I can\u0027t seem to find an `atomic_read` function in core/. Similarly all instances of `atomic_read_clear` reset all the bits and I would still need to lock to make sure that sensor-\u003eonline_calib_data-\u003ecache isn\u0027t written to while we read it.",
+      "parentUuid": "aaa2bbde_ba96ea98",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e20a22db_814fb8bc",
         "filename": "common/online_calibration.c",
         "patchSetId": 13
@@ -33,6 +51,24 @@
       "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ff5ae1_796a1f78",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20a22db_814fb8bc",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0839ec21_244b9d84",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "572cc29a_61e1fa11",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d741d938_d1a353f4",
         "filename": "common/online_calibration.c",
         "patchSetId": 13
@@ -67,6 +121,24 @@
       "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa93a83_9102ed65",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "Already got started on that :)",
+      "parentUuid": "d741d938_d1a353f4",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8bf968a5_9c7eb73e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5e1ca43_d59772c2",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3875afae_f83585ea",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -98,6 +188,24 @@
       "writtenOn": "2020-02-27T20:15:12Z",
       "side": 1,
       "message": "Considered adding structure ec_response_online_calibration_data here, as it is now trivial.",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a09999_6c3abe8c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I\u0027m not sure by the placement of this comment where do you mean here? In the following CL I added it to ec_response_motion_sense.",
+      "parentUuid": "3875afae_f83585ea",
       "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -118,6 +226,24 @@
       "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f18bdb4_b5f35625",
+        "filename": "include/online_calibration.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-03T20:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90f5b817_97122afc",
+      "revId": "494d4972f70fa4c85ce7113956e2a19effbe14ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
