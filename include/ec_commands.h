@@ -16,12 +16,13 @@
 extern "C" {
 #endif
 
+#ifdef CHROMIUM_EC
 /*
  * CHROMIUM_EC is defined by the Makefile system of Chromium EC repository.
  * It is used to not include macros that may cause conflicts in foreign
  * projects (refer to crbug.com/984623).
  */
-#ifdef CHROMIUM_EC
+
 /*
  * Include common.h for CONFIG_HOSTCMD_ALIGNED, if it's defined. This
  * generates more efficient code for accessing request/response structures on
@@ -34,6 +35,16 @@ extern "C" {
 
 #define BUILD_ASSERT(_cond)
 
+#endif  /* CHROMIUM_EC */
+
+#ifndef __KERNEL__
+/*
+ * Defines macros that may be needed but are for sure defined by the linux
+ * kernel. This section is removed when cros_ec_commands.h is generated (by
+ * util/make_linux_ec_commands_h.sh).
+ * cros_ec_commands.h looks more integrated to the kernel.
+ */
+
 #ifndef BIT
 #define BIT(nr)         (1UL << (nr))
 #endif
@@ -42,7 +53,51 @@ extern "C" {
 #define BIT_ULL(nr)     (1ULL << (nr))
 #endif
 
-#endif  /* CHROMIUM_EC */
+/*
+ * Define kernel integer constants.
+ */
+#ifndef U8_MAX
+#define U8_MAX UINT8_MAX
+#endif
+#ifndef S8_MAX
+#define S8_MAX INT8_MAX
+#endif
+#ifndef S8_MIN
+#define S8_MIN INT8_MIN
+#endif
+
+#ifndef U16_MAX
+#define U16_MAX UINT16_MAX
+#endif
+#ifndef S16_MAX
+#define S16_MAX INT16_MAX
+#endif
+#ifndef S16_MIN
+#define S16_MIN INT16_MIN
+#endif
+
+#ifndef U32_MAX
+#define U32_MAX UINT32_MAX
+#endif
+#ifndef S32_MAX
+#define S32_MAX INT32_MAX
+#endif
+#ifndef S32_MIN
+#define S32_MIN INT32_MIN
+#endif
+
+#ifndef U64_MAX
+#define U64_MAX UINT64_MAX
+#endif
+#ifndef S64_MAX
+#define S64_MAX INT64_MAX
+#endif
+#ifndef S64_MIN
+#define S64_MIN INT64_MIN
+#endif
+
+#endif  /* __KERNEL__ */
+
 
 /*
  * Current version of this protocol
@@ -561,7 +616,7 @@ enum ec_status {
 	EC_RES_INVALID_DATA_CRC = 19,        /* Data CRC invalid */
 	EC_RES_DUP_UNAVAILABLE = 20,         /* Can't resend response */
 
-	EC_RES_MAX = UINT16_MAX		/**< Force enum to be 16 bits */
+	EC_RES_MAX = U16_MAX		/**< Force enum to be 16 bits */
 } __packed;
 BUILD_ASSERT(sizeof(enum ec_status) == sizeof(uint16_t));
 
@@ -1050,7 +1105,7 @@ struct ec_response_hello {
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
 
-#ifndef CHROMIUM_EC
+#if !defined(CHROMIUM_EC) && !defined(__KERNEL__)
 /*
  * enum ec_current_image is deprecated and replaced by enum ec_image. This
  * macro exists for backwards compatibility of external projects until they
