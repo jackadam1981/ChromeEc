@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02d6eee0_e235124f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:15:16Z",
+      "side": 1,
+      "message": "should we add a comment saying that this is the list of interruptible AMS (or there is not explicit contract in place)",
+      "range": {
+        "startLine": 667,
+        "startChar": 1,
+        "endLine": 668,
+        "endChar": 20
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c5a656_357f84e7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:15:16Z",
+      "side": 1,
+      "message": "why was this set here, it doesn\u0027t appear to be used in this state",
+      "range": {
+        "startLine": 1080,
+        "startChar": 11,
+        "endLine": 1080,
+        "endChar": 39
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a70af5_0fadcce3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:15:16Z",
+      "side": 1,
+      "message": "will this need to be updated for all of the child states?\n\nCould we make the entry drop this timer setting, and have the intial timer value as 0 (so it would tigger), then every time we perform the src caps we would through the timer into the future ( in the src_send_capcabilites state)",
+      "range": {
+        "startLine": 1117,
+        "startChar": 32,
+        "endLine": 1117,
+        "endChar": 59
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0439ee_bc1a3b16",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3825,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:15:16Z",
+      "side": 1,
+      "message": "this is totally the stuff we need to add fuzz testers for. We are parsing untrusted input from the TCPC. Who knows what kinds of invalid data they are going to give us. Should we be more defensive here?",
+      "range": {
+        "startLine": 3815,
+        "startChar": 4,
+        "endLine": 3825,
+        "endChar": 6
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040a96ba_86074db6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3874,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:15:16Z",
+      "side": 1,
+      "message": "when are we in this state that isn\u0027t coming from src_discovery?",
+      "range": {
+        "startLine": 3874,
+        "startChar": 6,
+        "endLine": 3874,
+        "endChar": 49
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d180041_00738f87",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T23:15:16Z",
+      "side": 1,
+      "message": "why -1, and why explicitly set the value?",
+      "range": {
+        "startLine": 327,
+        "startChar": 15,
+        "endLine": 327,
+        "endChar": 19
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
