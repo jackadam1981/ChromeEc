@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f1509ecb_a4cc0a6a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4395,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-03-03T18:47:08Z",
+      "side": 1,
+      "message": "Can you point me to that? Based on my reading a reject is only valid after a request, pr_swap, dr_swap, or vconn_swap control message.",
+      "parentUuid": "f55eb57f_5d0be1dc",
+      "range": {
+        "startLine": 4395,
+        "startChar": 3,
+        "endLine": 4395,
+        "endChar": 4
+      },
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91090920_dd3a5ea5",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
