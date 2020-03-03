@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4e97544a_6025a397",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4395,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-03T19:29:20Z",
+      "side": 1,
+      "message": "It\u0027s in 8.3.3.18.9.1 of the PD 3.0 Version 2.0 spec (PE_DR_SNK_Get_Sink_Cap State):\n\nThe Policy Engine Shall transition back to the PE_SNK_Ready state (see Figure 8-76) when:\nA Sink_Capabilities Message is received\nOr SenderResponseTimer times out\nOr a Reject Message is received.\nPage 548\n\nIt looks like the Reject Message section wasn\u0027t updated to include this usage, which I believe is new in PD 3.0",
+      "parentUuid": "f1509ecb_a4cc0a6a",
+      "range": {
+        "startLine": 4395,
+        "startChar": 3,
+        "endLine": 4395,
+        "endChar": 4
+      },
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91090920_dd3a5ea5",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
