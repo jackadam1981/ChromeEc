@@ -374,6 +374,11 @@ uint32_t tc_get_flags(int port);
  */
 void tc_print_dev_info(int port);
 
+/*
+ * Instructs the Type-C State Machine to start a Data Reset
+ */
+void tc_start_data_reset(int port);
+
 #ifdef CONFIG_USB_TYPEC_CTVPD
 
 /**

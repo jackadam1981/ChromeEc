@@ -228,7 +228,11 @@ enum pd_rx_errors {
 #define PD_T_SRC_DISCONNECT        (15*MSEC) /* 15ms */
 #define PD_T_VCONN_STABLE          (50*MSEC) /* 50ms */
 #define PD_T_DISCOVER_IDENTITY     (45*MSEC) /* between 40ms and 50ms */
-
+#define PD_T_DATA_RESET            (200*MSEC) /* 200ms */
+#define PD_T_DATA_RESET_FAIL       (300*MSEC) /* 300ms */
+#define PD_T_VCONN_DISCHARGE       (240*MSEC) /* 240ms */
+#define PD_T_VCONN_ZERO            (100*MSEC) /* 100ms */
+#define PD_T_VCONN_REAPPLIED       (15*MSEC) /* 15ms */
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
 #define PD_RX_TRANSITION_WINDOW 20 /* between 12us and 20us */
@@ -1030,8 +1034,8 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_VCONN_SWAP = 11,
 	PD_CTRL_WAIT = 12,
 	PD_CTRL_SOFT_RESET = 13,
-	/* 14-15 Reserved */
-
+	PD_CTRL_DATA_RESET = 14,
+	PD_CTRL_DATA_RESET_COMPLETE = 15,
 	/* Used for REV 3.0 */
 	PD_CTRL_NOT_SUPPORTED = 16,
 	PD_CTRL_GET_SOURCE_CAP_EXT = 17,

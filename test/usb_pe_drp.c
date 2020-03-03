@@ -41,6 +41,11 @@ void pd_set_vbus_discharge(int port, int enable)
 	gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);
 }
 
+void tc_start_data_reset(int port)
+{
+	/* Do nothing */
+}
+
 /**
  * Test section
  */
