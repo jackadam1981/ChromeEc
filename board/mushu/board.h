@@ -25,6 +25,8 @@
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 
+#define CONFIG_TEMP_SENSOR_AMD_R19ME4070
+
 /* Sensors */
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCEL_INTERRUPTS
@@ -46,9 +48,6 @@
 #define CONFIG_ALS_TCS3400_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
 #define I2C_PORT_ALS      I2C_PORT_SENSOR
-
-/* GPU features */
-#define I2C_PORT_GPU                    NPCX_I2C_PORT4_1
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_COMM_LOCKED
@@ -167,8 +166,9 @@ enum mft_channel {
 };
 
 enum temp_sensor_id {
-	TEMP_SENSOR_1,
-	TEMP_SENSOR_2,
+	TEMP_CHARGER,
+	TEMP_5V,
+	TEMP_GPU,
 	TEMP_SENSOR_COUNT
 };
 
