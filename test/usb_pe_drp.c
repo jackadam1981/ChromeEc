@@ -87,6 +87,10 @@ static int test_pe_frs(void)
 	TEST_ASSERT(get_state_pe(PORT0) == PE_PRS_SNK_SRC_SEND_SWAP);
 	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
 
+	pe_set_flag(PORT0, PE_FLAGS_TX_COMPLETE);
+	pe_run(PORT0, EVT_IGNORED, ENABLED);
+	TEST_ASSERT(!pe_chk_flag(PORT0, PE_FLAGS_TX_COMPLETE));
+
 	/*
 	 * Accept the partners PS_RDY control message
 	 */

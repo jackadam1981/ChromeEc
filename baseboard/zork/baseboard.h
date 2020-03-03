@@ -128,9 +128,8 @@
 	#define CONFIG_USB_PD_DECODE_SOP
 	#define CONFIG_USB_DRP_ACC_TRYSRC
 
-	 /* Enable TCPMv2 Fast Role Swap */
-	 /* Turn off until FRSwap is working */
-	#undef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+	/* Enable TCPMv2 Fast Role Swap */
+	#define CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 #endif
 
 #define CONFIG_CMD_PD_CONTROL
