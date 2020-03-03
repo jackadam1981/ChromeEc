@@ -46,6 +46,11 @@ uint8_t tc_get_pd_enabled(int port)
 	return 1;
 }
 
+void tc_start_data_reset(int port)
+{
+	/* Do nothing */
+}
+
 /**
  * Test section
  */

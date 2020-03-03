@@ -84,6 +84,8 @@
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(23)
 /* Flag to note TCPM was requested to DRP auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_REQUESTED  BIT(24)
+/* Flag to start a data reset process */
+#define PE_START_DATA_RESET             BIT(25)
 
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
@@ -143,6 +145,9 @@ enum usb_tc_state {
 	TC_CT_UNATTACHED_SNK,
 	TC_CT_ATTACHED_SNK,
 #endif
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+	TC_DATA_RESET,
+#endif
 	/* Super States */
 	TC_CC_OPEN,
 	TC_CC_RD,
@@ -175,6 +180,9 @@ static const char * const tc_state_names[] = {
 #ifdef CONFIG_USB_PE_SM
 	[TC_CT_UNATTACHED_SNK] =  "CTUnattached.SNK",
 	[TC_CT_ATTACHED_SNK] = "CTAttached.SNK",
+#endif
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+	[TC_DATA_RESET] = "Data Reset",
 #endif
 	/* Super States */
 	[TC_CC_OPEN] = "SS:CC_OPEN",
@@ -386,6 +394,13 @@ void pd_set_new_power_request(int port)
 			pe_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 }
+
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+void tc_start_data_reset(int port)
+{
+	TC_SET_FLAG(port, PE_START_DATA_RESET);
+}
+#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
 void tc_request_power_swap(int port)
 {
@@ -2016,6 +2031,17 @@ static void tc_attached_snk_run(const int port)
 	 * PD swap commands
 	 */
 	if (tc_get_pd_enabled(port) && prl_is_running(port)) {
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+		/*
+		 * Data Reset
+		 */
+		if (TC_CHK_FLAG(port, PE_START_DATA_RESET)) {
+			TC_CLR_FLAG(port, PE_START_DATA_RESET);
+			set_state_tc(port, TC_DATA_RESET);
+			return;
+		}
+#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+
 		/*
 		 * Power Role Swap
 		 */
@@ -2779,6 +2805,17 @@ static void tc_attached_src_run(const int port)
 	 * PD swap commands
 	 */
 	if (tc_get_pd_enabled(port) && prl_is_running(port)) {
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+		/*
+		 * Data Reset
+		 */
+		if (TC_CHK_FLAG(port, PE_START_DATA_RESET)) {
+			TC_CLR_FLAG(port, PE_START_DATA_RESET);
+			set_state_tc(port, TC_DATA_RESET);
+			return;
+		}
+#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+
 		/*
 		 * Power Role Swap Request
 		 */
@@ -3135,6 +3172,85 @@ static void tc_try_wait_snk_run(const int port)
 		set_state_tc(port, TC_ATTACHED_SNK);
 }
 
+#endif
+
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+static void tc_data_reset_entry(int port)
+{
+	print_current_state(port);
+
+	/*
+	 * 1) The DFP shall:
+	 *	a) Disconnect the Port’s [USB 2.0] D+/D- signals.
+	 *	b) If operating in [USB 3.2] remove the port’s Rx
+	 *		Terminations.
+	 *	c) If operating in [USB4] drive the port’s SBTX to
+	 *		a logic low.
+	 */
+	if (tc[port].data_role == PD_ROLE_DFP) {
+		/* TODO */
+		/* Disconnect the Port’s [USB 2.0] D+/D- signals. */
+
+		/*
+		 * If operating in [USB 3.2] remove the port’s Rx
+		 * Terminations.
+		 */
+
+		/*
+		 * If operating in [USB4] drive the port’s SBTX to
+		 * a logic low.
+		 */
+	}
+
+	/* 2) Both the DFP and UFP Shall exit all Alternate Modes if any. */
+	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		pd_dfp_exit_mode(port, 0, 0);
+
+	/* 3) Reset the cable */
+	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
+			tc[port].data_role == PD_ROLE_DFP) {
+		set_vconn(port, 0);
+		tc[port].timeout = get_time().val + PD_T_VCONN_REAPPLIED;
+	}
+}
+
+static void tc_data_reset_run(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
+			tc[port].data_role == PD_ROLE_DFP) {
+		if (get_time().val < tc[port].timeout)
+			return;
+		/* Enable VCONN */
+		set_vconn(port, 1);
+	}
+
+	if (tc[port].power_role	== PD_ROLE_SOURCE)
+		set_state_tc(port, TC_ATTACHED_SRC);
+	else
+		set_state_tc(port, TC_ATTACHED_SNK);
+}
+
+static void tc_data_reset_exit(int port)
+{
+	/*
+	 * 4) The DFP shall:
+	 *	a) Reconnect the [USB 2.0] D+/D- signals
+	 *	b) If the Port was operating in [USB 3.2] or [USB4] reapply the
+	 *		port’s Rx Terminations
+	 */
+	if (tc[port].data_role == PD_ROLE_DFP) {
+		/* TODO */
+		/* Reconnect the [USB 2.0] D+/D- signals */
+
+		/*
+		 * If the Port was operating in [USB 3.2] or [USB4] reapply the
+		 * port’s Rx Terminations
+		 */
+	}
+
+	/* 5) Inform Policy Engine Data Reset is complete */
+	pe_data_reset_complete(port);
+}
 #endif
 
 #if defined(CONFIG_USB_PE_SM)
@@ -3540,6 +3656,13 @@ static const struct usb_state tc_states[] = {
 		.exit  = tc_ct_attached_snk_exit,
 	},
 #endif
+#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+	[TC_DATA_RESET] = {
+		.entry = tc_data_reset_entry,
+		.run   = tc_data_reset_run,
+		.exit  = tc_data_reset_exit,
+	},
+#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 };
 
 #ifdef TEST_BUILD

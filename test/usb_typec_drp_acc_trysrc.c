@@ -34,6 +34,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	/* Do Nothing, but needed for linking */
 }
 
+void pe_data_reset_complete(int port)
+{
+	/* Do nothing */
+}
+
 __maybe_unused static int test_mux_con_dis_as_src(void)
 {
 	/* Update CC lines send state machine event to process */
