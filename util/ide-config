@@ -231,6 +231,96 @@ vscode() {
 	| encap '{\n' '}\n'
 }
 
+# Usage: eclipse-cdt-import [cfg...]
+#
+# * Add odd EC "File Types"
+#   - *.tasklist *.mocklist *.testlist *.irqlist "C Header File"
+#   - gpio.wrap "C Header File"
+# * Enable the indexer to follow current build configuration
+#   - Enable "Index all header variants"
+#   - Enable "Use active build configuration"
+#   - Probably bump up the Cache Limit->"Absolute Limit"
+eclipse-cdt-import() {
+	local cfg=$1
+	local board=$(parse-cfg-board "$cfg")
+	local image=$(parse-cfg-image "$cfg")
+
+	local includes="$(make-includes "$board" "$image" \
+			| join '<includepath>${ProjDirPath}/' '</includepath>' '\n\t\t\t')"
+
+	local macros="$(
+		while read name value; do
+			{
+				join '<name>' '</name>' '' <<<$name
+				join '<value>' '</value>' '' <<<$value
+			} | encap '<macro>\n' '</macro>\n' 3
+		done < <(make-defines "$board" "$image" | tr '=' '\t')
+	)"
+
+	cat <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+	<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+		<!-- Normal CDT -->
+		<language name="holder for library settings"></language>
+
+		<language name="Assembly">
+			${includes}
+		</language>
+
+		<language name="GNU C++">
+			${includes}
+		</language>
+
+		<language name="GNU C">
+			${includes}
+		</language>
+
+		<!-- CDT Cross/Embedded -->
+		<language name="C Source File">
+			${includes}
+		</language>
+
+		<language name="Object File">
+		</language>
+
+		<language name="Assembly Source File">
+			${includes}
+		</language>
+	</section>
+
+	<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+		<!-- Normal CDT -->
+		<language name="holder for library settings"></language>
+
+		<language name="Assembly">
+${macros}
+		</language>
+
+		<language name="GNU C++">
+${macros}
+		</language>
+
+		<language name="GNU C">
+${macros}
+		</language>
+
+		<!-- CDT Cross/Embedded -->
+		<language name="C Source File">
+${macros}
+		</language>
+
+		<language name="Object File">
+		</language>
+
+		<language name="Assembly Source File">
+${macros}
+		</language>
+	</section>
+</cdtprojectproperties>
+EOF
+}
+
 # Usage: main <ide> [cfgs...]
 main() {
 	# Disaply help if no args
@@ -340,6 +430,9 @@ main() {
 	case "$ide" in
 		vscode)
 			vscode "${cfgs[@]}"
+			;;
+		eclipse)
+			eclipse-cdt-import "${cfgs[@]}"
 			;;
 		*)
 			echo "Error - IDE '${ide}' is an unsupported." >&2
