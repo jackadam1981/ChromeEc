@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "573d9dbd_26fbff9a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-03T19:35:37Z",
+      "side": 1,
+      "message": "Previous comments when importing .h file in the kernel code base is it has to look \"stock\", as if it was specifically written for the linux kernel.\nAdding \"#ifndef BIT\" when BIT is well-known to be defined the kernel would not make sense if we were writing this file just for the kernel.",
+      "parentUuid": "ea6ed7d0_2a8a025a",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "139818f7483c7b6fcc7733ace7f8b82683cc87ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f09fea6f_aba62ab8",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-03T03:03:04Z",
       "side": 1,
       "message": "Kernel doesn\u0027t need this replacement? If kernel is using ec_current_image, it needs this macro.",
+      "range": {
+        "startLine": 1062,
+        "startChar": 8,
+        "endLine": 1062,
+        "endChar": 33
+      },
+      "revId": "139818f7483c7b6fcc7733ace7f8b82683cc87ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28bb9e7_4f2f8f27",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-03T19:35:37Z",
+      "side": 1,
+      "message": "I checked ec_current_image was never used by the kernel. \nI added a __KERNEL as I did not want to add a b: reference.",
+      "parentUuid": "f09fea6f_aba62ab8",
       "range": {
         "startLine": 1062,
         "startChar": 8,
