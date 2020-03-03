@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579f9faf_bb1abeab",
+        "filename": "driver/ioexpander/ioexpander_pcal6408.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-03T14:46:19Z",
+      "side": 1,
+      "message": "the fact this is an array implies there can be more than 1.  This will only initialize [0] to 0xff and any other elements to 0.  Is that what you want?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "a6b3c5efe6012922e98721794a18d8678b8ec8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
