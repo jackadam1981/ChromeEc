@@ -53,6 +53,11 @@ bool pd_alt_mode_capable(int port)
 	return 1;
 }
 
+void tc_start_data_reset(int port)
+{
+	/* Do nothing */
+}
+
 /**
  * Test section
  */

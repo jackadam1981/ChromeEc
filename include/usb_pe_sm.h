@@ -42,6 +42,7 @@ enum pe_dpm_request {
 	DPM_REQUEST_HARD_RESET_SEND     = BIT(15),
 	DPM_REQUEST_SOFT_RESET_SEND     = BIT(16),
 	DPM_REQUEST_PORT_DISCOVERY      = BIT(17),
+	DPM_REQUEST_DATA_RESET          = BIT(18),
 };
 
 /**
@@ -178,5 +179,13 @@ void pe_set_sysjump(void);
  * @param port USB-C port number
  */
 void pe_invalidate_explicit_contract(int port);
+
+/*
+ * Inform Policy Engine that a Data Reset is complete
+ *
+ * @param port USB-C port number
+ */
+void pe_data_reset_complete(int port);
+
 #endif /* __CROS_EC_USB_PE_H */
 
