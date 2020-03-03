@@ -86,11 +86,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
-static void hdmi_hpd_interrupt(enum gpio_signal signal)
-{
-	baseboard_mst_enable_control(MST_HDMI, gpio_get_level(signal));
-}
-
 static void bc12_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
@@ -401,9 +396,6 @@ static void board_init(void)
 {
 	/* Initialize Fans */
 	setup_fans();
-	/* Enable HDMI HPD interrupt. */
-	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
-
 	board_update_sensor_config_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -456,3 +448,19 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+static void disable_hdmi(void)
+{
+	gpio_set_level(GPIO_EN_HDMI, 0);
+	gpio_set_level(GPIO_EN_MST, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_hdmi, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_hdmi, HOOK_PRIO_DEFAULT);
+
+static void enable_hdmi(void)
+{
+	gpio_set_level(GPIO_EN_HDMI, 1);
+	gpio_set_level(GPIO_EN_MST, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_hdmi, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, enable_hdmi, HOOK_PRIO_DEFAULT);

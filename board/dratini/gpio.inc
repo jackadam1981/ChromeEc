@@ -38,8 +38,6 @@ GPIO_INT(USB_C1_TCPC_INT_ODL,  PIN(F, 5), GPIO_INT_FALLING, tcpc_alert_event)
 GPIO_INT(USB_C0_BC12_INT_ODL,  PIN(9, 5), GPIO_INT_FALLING, bc12_interrupt)
 GPIO_INT(USB_C1_BC12_INT_ODL,  PIN(E, 4), GPIO_INT_FALLING, bc12_interrupt)
 
-GPIO_INT(HDMI_CONN_HPD,        PIN(7, 2), GPIO_INT_BOTH, hdmi_hpd_interrupt)
-
 /* Volume button interrupts */
 GPIO_INT(EC_VOLDN_BTN_ODL,     PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(EC_VOLUP_BTN_ODL,     PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
@@ -90,7 +88,8 @@ GPIO(EC_KB_BL_EN,              PIN(8, 6), GPIO_OUT_LOW)         /* Keyboard back
 GPIO(EDP_BKLTEN_OD,            PIN(D, 3), GPIO_ODR_HIGH)        /* Display backlight */
 GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
 GPIO(EN_MST,                   PIN(9, 6), GPIO_OUT_LOW)
-
+GPIO(HDMI_CONN_HPD,            PIN(7, 2), GPIO_INPUT)           /* was hdmi_hpd_interrupt */
+GPIO(EN_HDMI,                  PIN(B, 0), GPIO_OUT_LOW)         /* HDMI power rail */
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(I2C0_SCL,                 PIN(B, 5), GPIO_INPUT |
