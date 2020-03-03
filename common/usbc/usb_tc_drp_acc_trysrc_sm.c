@@ -666,9 +666,11 @@ void tc_prs_src_snk_assert_rd(int port)
 
 void tc_prs_snk_src_assert_rp(int port)
 {
+ccprintf("%s called\n", __func__);
 	/* Must be in Attached.SNK when this function is called */
 	if (get_state_tc(port) == TC_ATTACHED_SNK) {
 		/* Transition to Attached.SRC to assert Rp */
+ccprintf("%s setting state to assert RP\n", __func__);
 		TC_SET_FLAG(port, TC_FLAGS_DO_PR_SWAP);
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 	}
@@ -2769,8 +2771,10 @@ static void tc_drp_auto_toggle_entry(const int port)
 	atomic_clear(task_get_event_bitmap(task_get_current()),
 		PD_EXIT_LOW_POWER_EVENT_MASK);
 
-	if (drp_state[port] == PD_DRP_TOGGLE_ON)
+	if (drp_state[port] == PD_DRP_TOGGLE_ON) {
+		tcpm_enable_auto_discharge_disconnect(port, 0);
 		tcpm_enable_drp_toggle(port);
+	}
 }
 
 static void tc_drp_auto_toggle_run(const int port)

@@ -223,11 +223,10 @@ static int init_alert_mask(int port)
 		;
 	/* Set the alert mask in TCPC */
 	rv = tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
+	if (rv)
+		return rv;
 
 	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP)) {
-		if (rv)
-			return rv;
-
 		/* Sink FRS allowed */
 		mask = TCPC_REG_ALERT_EXT_SNK_FRS;
 		rv = tcpc_write(port, TCPC_REG_ALERT_EXT, mask);
@@ -288,6 +287,8 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
  */
 void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 {
+	ccprintf("auto discharge disconnect %sABLED\n",
+		 (enable) ? "EN" : "DIS");
 	tcpc_update8(port,
 		     TCPC_REG_POWER_CTRL,
 		     TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT,
@@ -499,6 +500,7 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 void tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 {
+ccprintf("TCPC FRS enable=%d\n", enable);
 	tcpc_update8(port,
 		     TCPC_REG_POWER_CTRL,
 		     TCPC_REG_POWER_CTRL_FRS_ENABLE,
@@ -832,11 +834,11 @@ static int tcpci_clear_fault(int port, int fault)
  * have 1 or 2 messages waiting.
  */
 #define MAX_ALLOW_FAILED_RX_READS 10
+int debug_frs = -1;
 
 void tcpci_tcpc_alert(int port)
 {
 	int status = 0;
-	int alert_ext = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
 
@@ -844,8 +846,28 @@ void tcpci_tcpc_alert(int port)
 	tcpm_alert_status(port, &status);
 
 	/* Get Extended Alert register if needed */
-	if (status & TCPC_REG_ALERT_ALERT_EXT)
+	if (status & TCPC_REG_ALERT_ALERT_EXT) {
+		int alert_ext;
+
 		tcpm_alert_ext_status(port, &alert_ext);
+ccprintf("TC%d: alert=0x%X alert_ext=0x%X\n",
+	 port, status, alert_ext);
+
+		if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP) &&
+		    (status & TCPC_REG_ALERT_POWER_STATUS) &&
+		    (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS)) {
+			tcpc_write(port, TCPC_REG_ALERT_EXT, alert_ext);
+			tcpc_write16(port, TCPC_REG_ALERT, status);
+
+ccprintf("TC%d: FRS DETECTED\n", port);
+			debug_frs = port;
+			pd_got_frs_signal(port);
+			return;
+		}
+	} else {
+//if (debug_frs == port)
+ccprintf("TC%d: alert=0x%X\n", port, status);
+	}
 
 	/* Clear any pending faults */
 	if (status & TCPC_REG_ALERT_FAULT) {
@@ -916,10 +938,6 @@ void tcpci_tcpc_alert(int port)
 		pd_execute_hard_reset(port);
 		pd_event |= TASK_EVENT_WAKE;
 	}
-
-	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP)
-	    && (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
-		pd_got_frs_signal(port);
 
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 	/*
@@ -1031,6 +1049,8 @@ int tcpci_tcpm_init(int port)
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
 	int regval;
+
+	debug_frs = -1;
 
 	/* Start with an unknown connection */
 	tcpci_set_cached_pull(port, TYPEC_CC_OPEN);
