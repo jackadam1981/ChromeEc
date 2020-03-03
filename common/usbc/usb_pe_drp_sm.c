@@ -3439,30 +3439,36 @@ static void pe_prs_snk_src_transition_to_off_entry(int port)
 {
 	print_current_state(port);
 
-	if (!PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH))
-		tc_snk_power_off(port);
+	/*
+	 * THE FRS diagram 8-107 in the PD3v1.2 spec does not show
+	 * turning SNK power off.  The text below 8.3.3.16.6.3 does
+	 * mention that it should happen here.
+	 *
+	 * On entry to the PE_FRS_SNK_SRC_Transition_to_off state the
+	 * Policy Engine Shall initialize and run the PSSourceOffTimer
+	 * and then request the Device Policy Manager to turn off the
+	 * Sink.
+	 *
+	 * Going to follow the text and be aware if this area seems
+	 * to not work correctly for FRS, then guard turning power off
+	 * to only do so for PRS
+	 */
+	tc_snk_power_off(port);
 
 	pe[port].ps_source_timer = get_time().val + PD_T_PS_SOURCE_OFF;
 }
 
 static void pe_prs_snk_src_transition_to_off_run(int port)
 {
-	int type;
-	int cnt;
-	int ext;
-
-	/*
-	 * Transition to ErrorRecovery state when:
-	 *   1) The PSSourceOffTimer times out.
-	 */
-	if (get_time().val > pe[port].ps_source_timer)
-		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
-
 	/*
 	 * Transition to PE_PRS_SNK_SRC_Assert_Rp when:
 	 *   1) An PS_RDY Message is received.
 	 */
-	else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		int type;
+		int cnt;
+		int ext;
+
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
@@ -3476,8 +3482,16 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 			 * PE_FRS_SNK_SRC_Assert_Rp
 			 */
 			set_state_pe(port, PE_PRS_SNK_SRC_ASSERT_RP);
+			return;
 		}
 	}
+
+	/*
+	 * Transition to ErrorRecovery state when:
+	 *   1) The PSSourceOffTimer times out.
+	 */
+	if (get_time().val > pe[port].ps_source_timer)
+		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 }
 
 /**
@@ -3586,16 +3600,60 @@ static void pe_prs_snk_src_send_swap_entry(int port)
 			? PD_CTRL_FR_SWAP
 			: PD_CTRL_PR_SWAP);
 
-	/* Start the SenderResponseTimer */
-	pe[port].sender_response_timer =
-				get_time().val + PD_T_SENDER_RESPONSE;
+	/* Don't start the timer until the message is sent */
+	pe[port].sender_response_timer = TIMER_DISABLED;
 }
 
 static void pe_prs_snk_src_send_swap_run(int port)
 {
-	int type;
-	int cnt;
-	int ext;
+	/* Wait until message is sent */
+	if (pe[port].sender_response_timer == TIMER_DISABLED) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+			/* Start the SenderResponseTimer */
+			pe[port].sender_response_timer = get_time().val +
+						PD_T_SENDER_RESPONSE;
+		} else {
+			return;
+		}
+	}
+
+	/*
+	 * Transition to PE_PRS_SNK_SRC_Transition_to_off when:
+	 *   1) An Accept Message is received.
+	 *
+	 * PRS: Transition to PE_SNK_Ready state when:
+	 * FRS: Transition to ErrorRecovery state when:
+	 *   1) A Reject Message is received.
+	 *   2) Or a Wait Message is received.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		int type;
+		int cnt;
+		int ext;
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		type = PD_HEADER_TYPE(rx_emsg[port].header);
+		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		ext = PD_HEADER_EXT(rx_emsg[port].header);
+
+		if ((ext == 0) && (cnt == 0)) {
+			if (type == PD_CTRL_ACCEPT) {
+				set_state_pe(port,
+					     PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
+				return;
+			} else if ((type == PD_CTRL_REJECT) ||
+				   (type == PD_CTRL_WAIT)) {
+				set_state_pe(port,
+					PE_CHK_FLAG(port,
+						PE_FLAGS_FAST_ROLE_SWAP_PATH)
+					   ? PE_WAIT_FOR_ERROR_RECOVERY
+					   : PE_SNK_READY);
+				return;
+			}
+		}
+	}
 
 	/*
 	 * PRS: Transition to PE_SNK_Ready state when:
@@ -3607,36 +3665,6 @@ static void pe_prs_snk_src_send_swap_run(int port)
 			     PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)
 				? PE_WAIT_FOR_ERROR_RECOVERY
 				: PE_SNK_READY);
-
-	/*
-	 * Transition to PE_PRS_SNK_SRC_Transition_to_off when:
-	 *   1) An Accept Message is received.
-	 *
-	 * PRS: Transition to PE_SNK_Ready state when:
-	 * FRS: Transition to ErrorRecovery state when:
-	 *   1) A Reject Message is received.
-	 *   2) Or a Wait Message is received.
-	 */
-	else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
-		type = PD_HEADER_TYPE(rx_emsg[port].header);
-		cnt = PD_HEADER_CNT(rx_emsg[port].header);
-		ext = PD_HEADER_EXT(rx_emsg[port].header);
-
-		if ((ext == 0) && (cnt == 0)) {
-			if (type == PD_CTRL_ACCEPT)
-				set_state_pe(port,
-					     PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
-			else if ((type == PD_CTRL_REJECT) ||
-						(type == PD_CTRL_WAIT))
-				set_state_pe(port,
-					PE_CHK_FLAG(port,
-						PE_FLAGS_FAST_ROLE_SWAP_PATH)
-					   ? PE_WAIT_FOR_ERROR_RECOVERY
-					   : PE_SNK_READY);
-		}
-	}
 }
 
 static void pe_prs_snk_src_send_swap_exit(int port)
@@ -4890,7 +4918,7 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 	/*
 	 * Determine if FRS is possible based on the returned Sink Caps
 	 * and transition to PE_SNK_Ready when:
-	 *   1) An Accept Message is received.
+	 *   1) A Data Sink Cap Message is received.
 	 *
 	 * Transition to PE_SNK_Ready state when:
 	 *   1) A Reject Message is received.
@@ -4904,8 +4932,9 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
 		payload = *(uint32_t *)rx_emsg[port].buf;
 
-		if ((ext == 0) && (cnt == 0)) {
-			if (type == PD_CTRL_ACCEPT) {
+		if (ext == 0) {
+			if ((cnt > 0) &&
+			    (type == PD_DATA_SINK_CAP)) {
 				/*
 				 * Check message to see if we can handle
 				 * FRS for this connection.
@@ -4922,13 +4951,13 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 					case PDO_FIXED_FRS_CURR_1A5_AT_5V:
 					case PDO_FIXED_FRS_CURR_3A0_AT_5V:
 						pe_set_frs_enable(port, 1);
-						return;
 					}
 				}
 				set_state_pe(port, PE_SNK_READY);
 				return;
-			} else if ((type == PD_CTRL_REJECT) ||
-				   (type == PD_CTRL_WAIT)) {
+			} else if ((cnt == 0) &&
+				   ((type == PD_CTRL_WAIT) ||
+				    (type == PD_CTRL_REJECT))) {
 				set_state_pe(port, PE_SNK_READY);
 				return;
 			}
