@@ -10,7 +10,8 @@
 # mechanism for passing IDE specific parameters to the IDE generator.
 
 DEFAULT_IMAGE=RW
-INDENT_WIDTH=4
+INDENT_WIDTH=${INDENT_WIDTH:-1}
+INDENT_CHAR=${INDENT_CHAR:-$'\t'}
 PARALLEL_CACHE_FILL=${PARALLEL_CACHE_FILL:-true}
 FORCE_INCLUDE_CONFIG_H=${FORCE_INCLUDE_CONFIG_H:-false}
 
@@ -44,8 +45,8 @@ iprintf() {
 	local level=$1
 	shift
 
-	printf "%*s" $((INDENT_WIDTH*level)) "" && \
-	printf "$@"
+	local n=$((INDENT_WIDTH*level))
+	eval printf '"${INDENT_CHAR}%.0s"' {1..$n} && printf "$@"
 	return $?
 }
 
@@ -148,18 +149,19 @@ join() {
 	echo
 }
 
-# Usage: <content> | encap <header> <footer>
+# Usage: <content> | encap <header> <footer> [indent]
 #
 # Encapsulate the content from stdin with a header, footer, and indention
 encap() {
 	local header=$1
 	local footer=$2
+	local indent=${3:-0}
 
-	echo -n -e "$header"
+	iprintf "$indent" "%b" "$header"
 	while IFS='\n' read -e line; do
-		iprintf 1 "%s\n" "$line"
+		iprintf $((1+indent)) "%s\n" "$line"
 	done
-	echo -n -e "$footer"
+	iprintf "$indent" "%b" "$footer"
 }
 
 ##########################################################################
@@ -218,6 +220,49 @@ vscode() {
 	| encap '{\n' '}\n'
 }
 
+# Usage: eclipse-cdt-import [cfg...]
+eclipse-cdt-import() {
+	local cfg=$1
+	local board=$(parse-cfg-board "$cfg")
+	local image=$(parse-cfg-image "$cfg")
+
+	cat <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+	<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+		<language name="C Source File">
+			$(make-includes "$board" "$image" \
+				| join '<includepath>${ProjDirPath}/' '</includepath>' '\n\t\t\t')
+			<!-- <includepath>board/nocturne_fp</includepath>  -->
+		</language>
+		<language name="Object File">
+		</language>
+		<language name="Assembly Source File">
+			$(make-includes "$board" "$image" \
+				| join '<includepath>${ProjDirPath}/' '</includepath>' '\n\t\t\t')
+		</language>
+	</section>
+
+	<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+		<language name="C Source File">
+$(
+	while read name value; do
+		{
+			join '<name>' '</name>' '' <<<$name
+			join '<value>' '</value>' '' <<<$value
+		} | encap '<macro>\n' '</macro>\n' 3
+	done < <(make-defines "$board" "$image" | tr '=' '\t')
+)
+		</language>
+		<language name="Object File">
+		</language>
+		<language name="Assembly Source File">
+		</language>
+	</section>
+</cdtprojectproperties>
+EOF
+}
+
 # Usage: main <ide> [cfgs...]
 main() {
 	# Disaply help if no args
@@ -266,7 +311,9 @@ main() {
 	# "all" expression.
 
 	# Make configs unique (and sorted)
+	local oldifs="$IFS"
 	IFS=$'\n' cfgs=( $(echo "${cfgs[@]}" | tr ' ' '\n' | sort -u) )
+	IFS="$oldifs"
 	echo "# Generating a config for the following board:images: " >&2
 	echo "${cfgs[@]}" | tr ' ' '\n' | sort -u | column >&2
 
@@ -325,6 +372,9 @@ main() {
 	case "$ide" in
 		vscode)
 			vscode "${cfgs[@]}"
+			;;
+		eclipse)
+			eclipse-cdt-import "${cfgs[@]}"
 			;;
 		*)
 			echo "Error - IDE '${ide}' is an unsupported." >&2
