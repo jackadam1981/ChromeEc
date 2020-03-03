@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a43b0af6_b6ca3ab3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-03T22:47:05Z",
+      "side": 1,
+      "message": "Sounds like you run some script to process ec_commands.h before uploading it to the kernel repo. That\u0027s why we need to specifically mark the sections we want to be excluded even if they are no-op.\n\nCan you add a comment explaining that? I think it deserves the place near the top.",
+      "parentUuid": "573d9dbd_26fbff9a",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "139818f7483c7b6fcc7733ace7f8b82683cc87ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f09fea6f_aba62ab8",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
