@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "d727382c_fba16701",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4359,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-03-03T22:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a7dd86_daae9707",
+      "range": {
+        "startLine": 4359,
+        "startChar": 5,
+        "endLine": 4359,
+        "endChar": 38
+      },
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c27257e0_3a5008fb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4373,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-03-03T22:53:11Z",
+      "side": 1,
+      "message": "This needs to be cnt\u003e0 because we can have multiple PDOs within a response to get_sink_cap",
+      "range": {
+        "startLine": 4373,
+        "startChar": 2,
+        "endLine": 4373,
+        "endChar": 32
+      },
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f55eb57f_5d0be1dc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -96,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9f810296_162ef3c3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4395,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-03-03T22:53:11Z",
+      "side": 1,
+      "message": "Thanks! I didn\u0027t see that.",
+      "parentUuid": "4e97544a_6025a397",
+      "range": {
+        "startLine": 4395,
+        "startChar": 3,
+        "endLine": 4395,
+        "endChar": 4
+      },
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91090920_dd3a5ea5",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -110,6 +181,24 @@
       "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb0569d_0869e056",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4396,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-03-03T22:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91090920_dd3a5ea5",
+      "revId": "5443e5dff65855fcf876655396708d17a5d761b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
