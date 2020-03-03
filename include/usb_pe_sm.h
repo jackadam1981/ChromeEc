@@ -43,6 +43,7 @@ enum pe_dpm_request {
 	DPM_REQUEST_PORT_DISCOVERY      = BIT(16),
 	DPM_REQUEST_SEND_ALERT          = BIT(17),
 	DPM_REQUEST_ENTER_USB           = BIT(18),
+	DPM_REQUEST_DATA_RESET          = BIT(19),
 };
 
 /**
@@ -201,6 +202,13 @@ const char *pe_get_current_state(int port);
  * @return flag mask of the pe state machine
  */
 uint32_t pe_get_flags(int port);
+
+/**
+ * Inform Policy Engine that a Data Reset is complete
+ *
+ * @param port USB-C port number
+ */
+void pe_data_reset_complete(int port);
 
 #endif /* __CROS_EC_USB_PE_H */
 
