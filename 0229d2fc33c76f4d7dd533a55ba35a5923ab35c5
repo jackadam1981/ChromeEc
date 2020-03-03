@@ -22,6 +22,29 @@
       "revId": "0229d2fc33c76f4d7dd533a55ba35a5923ab35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d646a90_d4ef5567",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-03T22:22:55Z",
+      "side": 1,
+      "message": "let\u0027s also document the required defines\n\nGPIO_BTN1, GPIO_LED1, GPIO_LED2, and GPIO_LED3",
+      "range": {
+        "startLine": 1183,
+        "startChar": 2,
+        "endLine": 1184,
+        "endChar": 7
+      },
+      "revId": "0229d2fc33c76f4d7dd533a55ba35a5923ab35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
