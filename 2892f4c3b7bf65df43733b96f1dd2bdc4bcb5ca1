@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6f9ba138_462469c5",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-03T17:46:13Z",
+      "side": 1,
+      "message": "how about keeping array of siml_btn_presd[]?",
+      "parentUuid": "8ea08a2e_83777920",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "2892f4c3b7bf65df43733b96f1dd2bdc4bcb5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11411b90_944e416e",
         "filename": "common/button.c",
         "patchSetId": 6
