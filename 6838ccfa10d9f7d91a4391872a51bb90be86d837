@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e67368f1_a53942d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T01:53:03Z",
+      "side": 1,
+      "message": "INT32_MIN?",
+      "range": {
+        "startLine": 11,
+        "startChar": 54,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "6838ccfa10d9f7d91a4391872a51bb90be86d837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d30eab7_95b5e7ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T01:53:03Z",
+      "side": 1,
+      "message": "You mean S32_MIN?",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "6838ccfa10d9f7d91a4391872a51bb90be86d837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c8f36d3_93e41624",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T01:53:03Z",
+      "side": 1,
+      "message": "Can you please do this in the next patch?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "6838ccfa10d9f7d91a4391872a51bb90be86d837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
