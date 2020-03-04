@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "886035e8_e4a899ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-04T20:43:01Z",
+      "side": 1,
+      "message": "I now got it. Sorry for the trouble.",
+      "parentUuid": "63d922ec_5ae53733",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "415dc54754e8efed2f6dca0df7c420614a10dedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "089ae347_c70cc69e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-04T19:38:00Z",
       "side": 1,
       "message": "I think it\u0027s cleaner to define UINT16_MAX for the kernel. All other  projects importing ec_commands.h include stdint.h, where UINT*_MAX are defined. That is,\n\n  #ifdef __KERNEL__\n  #define UINT16_MAX U16_MAX\n  #endif\n\nDo the kernel reviewers specifically request not to define UINT16_MAX? If so, why?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "415dc54754e8efed2f6dca0df7c420614a10dedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f685eb1_6fc7da6c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-04T20:43:01Z",
+      "side": 1,
+      "message": "I see it defined only once, in an include arch/arm/boot/compressed/libfdt_env.h, a file that allows loading the device tree.\nRedefining it elsewhere in the kernel will probably not fly [stock, it has to look stock, remmeber :-)]\nWe are lucky uint32_t is defined...",
+      "parentUuid": "089ae347_c70cc69e",
       "range": {
         "startLine": 56,
         "startChar": 0,
