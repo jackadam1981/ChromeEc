@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03f5f7ec_dd0c4b57",
+        "filename": "driver/temp_sensor/amd_r19me4070.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-04T23:10:28Z",
+      "side": 1,
+      "message": "represents",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7541dc0_5c7a1e73",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-04T23:10:28Z",
+      "side": 1,
+      "message": "These defines don\u0027t need to be exported, they can live in the amd_...c file",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683cb640_7b6d20b0",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-04T23:10:28Z",
+      "side": 1,
+      "message": "This definition should go in the board.h file for mushu.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c16ca96_d7923302",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-04T23:10:28Z",
+      "side": 1,
+      "message": "temp_ptr",
+      "range": {
+        "startLine": 31,
+        "startChar": 42,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9ecdf5_09c97834",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-04T23:10:28Z",
+      "side": 1,
+      "message": "Maybe gpu_init_temp_sensor?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
