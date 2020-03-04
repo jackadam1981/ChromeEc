@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63d922ec_5ae53733",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T19:38:00Z",
+      "side": 1,
+      "message": "This isn\u0027t present (because unsigned min is always zero).",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "415dc54754e8efed2f6dca0df7c420614a10dedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089ae347_c70cc69e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T19:38:00Z",
+      "side": 1,
+      "message": "I think it\u0027s cleaner to define UINT16_MAX for the kernel. All other  projects importing ec_commands.h include stdint.h, where UINT*_MAX are defined. That is,\n\n  #ifdef __KERNEL__\n  #define UINT16_MAX U16_MAX\n  #endif\n\nDo the kernel reviewers specifically request not to define UINT16_MAX? If so, why?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "415dc54754e8efed2f6dca0df7c420614a10dedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
