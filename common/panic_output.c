@@ -46,6 +46,24 @@ int panic_sw_reason_is_valid(uint32_t reason)
 		(reason - PANIC_SW_BASE) < ARRAY_SIZE(panic_sw_reasons));
 }
 
+#ifndef CONFIG_UART_HOST
+/* There's no UART configured, so we can't do much with panic output. */
+
+void panic_puts(const char *outstr)
+{
+	/* Shout into the void. */
+}
+
+void panic_printf(const char *format, ...)
+{
+#if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
+	/* Send the message to the USB console on platforms which support it. */
+	usb_vprintf(format, args);
+#endif
+}
+
+#elif !defined(CONFIG_DEBUG_PRINTF)
+
 /**
  * Add a character directly to the UART buffer.
  *
@@ -53,7 +71,6 @@ int panic_sw_reason_is_valid(uint32_t reason)
  * @param c		Character to write.
  * @return 0 if the character was transmitted, 1 if it was dropped.
  */
-#ifndef CONFIG_DEBUG_PRINTF
 static int panic_txchar(void *context, int c)
 {
 	if (c == '\n')

@@ -130,8 +130,10 @@ test_mockable __keep int main(void)
 	dma_init();
 #endif
 
+#ifdef CONFIG_UART_HOST
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
+#endif
 
 	/* be less verbose if we boot for USB resume to meet spec timings */
 	if (!(system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME)) {

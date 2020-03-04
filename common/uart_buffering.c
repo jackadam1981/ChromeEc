@@ -172,7 +172,7 @@ void uart_process_output(void)
 	uart_tx_dma_start((char *)(tx_buf + tx_buf_tail), tx_dma_in_progress);
 }
 
-#else /* !CONFIG_UART_TX_DMA */
+#elif defined(CONFIG_UART_HOST)
 
 void uart_process_output(void)
 {
@@ -188,6 +188,26 @@ void uart_process_output(void)
 	/* If output buffer is empty, disable transmit interrupt */
 	if (tx_buf_tail == tx_buf_head)
 		uart_tx_stop();
+}
+
+#else
+/* There's no UART to send output to, so we can't do anything. */
+
+void uart_process_output(void)
+{
+}
+
+void uart_tx_start(void)
+{
+}
+
+void uart_tx_flush(void)
+{
+}
+
+int uart_init_done(void)
+{
+	return 1;
 }
 
 #endif /* !CONFIG_UART_TX_DMA */
