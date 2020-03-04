@@ -111,6 +111,9 @@ main() {
       if [[ -d ./private/fingerprint/fpc ]]; then
         dir_list+=( ./private/fingerprint/fpc )
       fi
+      if [[ -d ../../third_party/cryptoc ]]; then
+        dir_list+=( ../../third_party/cryptoc )
+      fi
       ;;
   esac
 
