@@ -107,6 +107,7 @@ main() {
     (*_fp|dartmonkey|bloonchipper)
       if [[ -d ./private ]]; then
         dir_list+=( ./private )
+        dir_list+=( ./private/fingerprint/fpc )
       fi
       ;;
   esac
