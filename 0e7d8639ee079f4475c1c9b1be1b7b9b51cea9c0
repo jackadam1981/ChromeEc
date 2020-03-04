@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b86c9f_b8ad85e6",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-03-04T08:51:17Z",
+      "side": 1,
+      "message": "Do we still need this if we\u0027re using BMI260?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 53
+      },
+      "revId": "0e7d8639ee079f4475c1c9b1be1b7b9b51cea9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
