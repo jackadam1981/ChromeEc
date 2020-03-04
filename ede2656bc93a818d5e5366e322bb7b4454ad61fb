@@ -22,6 +22,30 @@
       "revId": "ede2656bc93a818d5e5366e322bb7b4454ad61fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48cac07c_a20a8372",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T21:42:26Z",
+      "side": 1,
+      "message": "I think so yet 30 ms worked for all buttons on all boards. When it needs to be customized, we can add CONFIG_POWER_BUTTON_DEBOUNCE_US or let the board override the whole struct button_config power_button.",
+      "parentUuid": "1a10fe14_7f386442",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "ede2656bc93a818d5e5366e322bb7b4454ad61fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
