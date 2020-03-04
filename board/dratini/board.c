@@ -86,9 +86,23 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
+static void control_mst_power(void)
+{
+	baseboard_mst_enable_control(MST_HDMI, gpio_get_level(GPIO_HDMI_CONN_HPD));
+}
+DECLARE_DEFERRED(control_mst_power);
+
 static void hdmi_hpd_interrupt(enum gpio_signal signal)
 {
-	baseboard_mst_enable_control(MST_HDMI, gpio_get_level(signal));
+	/*
+	 * Insert a 1 msec delay before toggling the MST hub.
+	 * This delay debounces the MST power toggle. Without it, the HPD signal
+	 * was causing the OS to think there was another edge, so everytime
+	 * the internal display turned off, the external display would turn
+	 * off then immediately back on, defeating runtime suspend and
+	 * lower power states.
+	 */
+	hook_call_deferred(&control_mst_power_data, MSEC);
 }
 
 static void bc12_interrupt(enum gpio_signal signal)
@@ -400,7 +414,15 @@ static void board_init(void)
 {
 	/* Initialize Fans */
 	setup_fans();
+
+	/*
+	 * If HDMI is plugged in at boot, the interrupt may have been missed,
+	 * so check if the MST hub needs to be powered now.
+	 */
+	control_mst();
+
 	/* Enable HDMI HPD interrupt. */
+	gpio_clear_pending_interrupt(GPIO_HDMI_CONN_HPD);
 	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
 
 	board_update_sensor_config_from_sku();
@@ -455,3 +477,19 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+/* Disable HDMI power while AP is suspended / off */
+static void disable_hdmi(void)
+{
+	gpio_set_level(GPIO_EN_HDMI, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_hdmi, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_hdmi, HOOK_PRIO_DEFAULT);
+
+/* Enable HDMI power while AP is active */
+static void enable_hdmi(void)
+{
+	gpio_set_level(GPIO_EN_HDMI, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_hdmi, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, enable_hdmi, HOOK_PRIO_DEFAULT);
