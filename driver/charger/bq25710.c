@@ -185,6 +185,7 @@ static void bq25710_init(void)
 {
 	int reg;
 	int vsys;
+	int mode;
 	int rv;
 
 	/*
@@ -196,6 +197,9 @@ static void bq25710_init(void)
 	 * the bq25710 must not be in low power mode, otherwise the VDDA rail
 	 * may not be powered if AC is not connected.
 	 */
+
+	/* Save low power mode */
+	rv = bq25710_get_low_power_mode(&mode);
 	rv = bq25710_set_low_power_mode(0);
 	/* Allow enough time for VDDA to be powered */
 	msleep(BQ25710_VDDA_STARTUP_DELAY_MSEC);
@@ -208,8 +212,8 @@ static void bq25710_init(void)
 		/* Restore VSYS_MIN voltage to POR reset value */
 		raw_write16(BQ25710_REG_MIN_SYSTEM_VOLTAGE, vsys);
 	}
-	/* Reenable low power mode */
-	bq25710_set_low_power_mode(1);
+	/* Restore low power mode */
+	bq25710_set_low_power_mode(mode);
 
 	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
 		/* Disbale VDPM prochot profile at initialization */
