@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29390b66_2e6de5ef",
+        "filename": "common/blink.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T20:57:15Z",
+      "side": 1,
+      "message": "Why don\u0027t you assert ARRAY_SIZE(leds) \u003e\u003d 1 as well? That\u0027ll catch CONFIG_BLINK_LDES defined but empty. The check at line 61 wouldn\u0027t catch it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "12565260d92565a9206f222beb1f6565fddd4c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18e4436_3f818d1a",
+        "filename": "common/blink.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T20:57:15Z",
+      "side": 1,
+      "message": "Why don\u0027t we just name it blink_button or something? In which situation, would this macro be useful?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "12565260d92565a9206f222beb1f6565fddd4c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3888fac8_fa5e63a1",
+        "filename": "common/blink.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T20:57:15Z",
+      "side": 1,
+      "message": "You need to check the button state again in the deferred function. You can refer to power_button_interrupt in power_button.c.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "12565260d92565a9206f222beb1f6565fddd4c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4abd93_e0c14dbc",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T20:57:15Z",
+      "side": 1,
+      "message": "nit: How about CONFIG_BLINK_BUTTON?",
+      "range": {
+        "startLine": 1197,
+        "startChar": 8,
+        "endLine": 1197,
+        "endChar": 24
+      },
+      "revId": "12565260d92565a9206f222beb1f6565fddd4c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c546bd_983bede2",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T20:57:15Z",
+      "side": 1,
+      "message": "I think this is better in blink.c until we ever need to customize it. We may never need to. FYI, we use 30 msec for all the buttons (recovery, power, volume) and no boards customize it.\n\nYou probably want to use struct button_config to characterize blink_button.",
+      "range": {
+        "startLine": 1200,
+        "startChar": 8,
+        "endLine": 1200,
+        "endChar": 33
+      },
+      "revId": "12565260d92565a9206f222beb1f6565fddd4c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
