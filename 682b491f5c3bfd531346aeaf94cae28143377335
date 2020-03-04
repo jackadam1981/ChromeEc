@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11f65ff1_bbf54a23",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-04T17:28:37Z",
+      "side": 1,
+      "message": "Done.  Though looking more into the errors we\u0027re lumping together here, we may need to change granularity here later.  Making a TODO",
+      "parentUuid": "02d6eee0_e235124f",
+      "range": {
+        "startLine": 667,
+        "startChar": 1,
+        "endLine": 668,
+        "endChar": 20
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25c5a656_357f84e7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-03T23:15:16Z",
       "side": 1,
       "message": "why was this set here, it doesn\u0027t appear to be used in this state",
+      "range": {
+        "startLine": 1080,
+        "startChar": 11,
+        "endLine": 1080,
+        "endChar": 39
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d993f0_44194de2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-04T17:28:37Z",
+      "side": 1,
+      "message": "It will be used in src_discovery.  Since we enter/exit discovery potentially many times and enter startup only once, it seems like the more appropriate place to initialize the discovery variables.  I\u0027m open to setting to 0 as opposed to the current time since we don\u0027t worry about rollover on the 64-bit time.",
+      "parentUuid": "25c5a656_357f84e7",
       "range": {
         "startLine": 1080,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b8be8231_50ee7861",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-04T17:28:37Z",
+      "side": 1,
+      "message": "Nope.  It is only valid to probe the cable during discovery, nothing else.\n\nThe code as it is tracks best with the spec. At least the spec says for SRC_Discovery:\nOn entry to the PE_SRC_Discovery state the Policy Engine Shall initialize and run the SourceCapabilityTimer in order\nto trigger sending a Source_Capabilities Message.\n\nAnd in PE_SRC_VDM_Identity_Request State:\nEven though there has been a transition out of the PE_SRC_Discovery state the SourceCapabilityTimer Shall continue\nto run during the states shown in Figure 8-144 and Shall Not be initialized on re-entry to PE_SRC_Discovery.",
+      "parentUuid": "21a70af5_0fadcce3",
+      "range": {
+        "startLine": 1117,
+        "startChar": 32,
+        "endLine": 1117,
+        "endChar": 59
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab0439ee_bc1a3b16",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-03-03T23:15:16Z",
       "side": 1,
       "message": "this is totally the stuff we need to add fuzz testers for. We are parsing untrusted input from the TCPC. Who knows what kinds of invalid data they are going to give us. Should we be more defensive here?",
+      "range": {
+        "startLine": 3815,
+        "startChar": 4,
+        "endLine": 3825,
+        "endChar": 6
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff07fce1_482e0428",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3825,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-04T17:28:37Z",
+      "side": 1,
+      "message": "I am definitely in favor of the EC being defensive about sanity checking the header and VDM header.  I\u0027m not as sure about the discovery contents... is it really the domain of the EC to verify, for example, the cable type is expected? Or is that more the domain of the AP since there could be updates to values for that field in the future?",
+      "parentUuid": "ab0439ee_bc1a3b16",
       "range": {
         "startLine": 3815,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f8f899a5_2ab1efd6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3874,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-04T17:28:37Z",
+      "side": 1,
+      "message": "Next CL, we\u0027ll be in SRC_Ready or SNK_Ready.  I just put in the code ahead of time for it.",
+      "parentUuid": "040a96ba_86074db6",
+      "range": {
+        "startLine": 3874,
+        "startChar": 6,
+        "endLine": 3874,
+        "endChar": 49
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d180041_00738f87",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2020-03-03T23:15:16Z",
       "side": 1,
       "message": "why -1, and why explicitly set the value?",
+      "range": {
+        "startLine": 327,
+        "startChar": 15,
+        "endLine": 327,
+        "endChar": 19
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9a9f9d_982808fb",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-04T17:28:37Z",
+      "side": 1,
+      "message": "Conceptually, I was thinking failures would be \u003c0 and successes \u003e0 so if we find we need more granularity in the type of failure we could use a general \u003c0 check for all of them.  I\u0027m open to changing though, as long as NEEDED remains 0 for my memset :)",
+      "parentUuid": "1d180041_00738f87",
       "range": {
         "startLine": 327,
         "startChar": 15,
