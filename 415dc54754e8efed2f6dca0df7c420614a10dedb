@@ -93,6 +93,30 @@
       "revId": "415dc54754e8efed2f6dca0df7c420614a10dedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c54412_b6b54567",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T22:09:49Z",
+      "side": 1,
+      "message": "I see several files define UINT16_MAX under kernel v4.14. linux/lib/libfdt_env.h also defines UINT32_MAX. So, we\u0027re not going to be the first who defines an integer max/min macro:\n\n  #ifndef UINT16_MAX\n  #define UINT16_MAX ((u16)(~0U))\n  #endif\n\n\u003e it has to look stock\n\nOr can we make make_linux_ec_commands_h.sh substitute UINT16_MAX with U16_MAX?\n\nIf we define macro X because the kernel doesn\u0027t like an alternative (and standard) macro Y, we\u0027ll gradually taint the namespace and lose the readability. Foreign projects have to accept such macros too.",
+      "parentUuid": "8f685eb1_6fc7da6c",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "415dc54754e8efed2f6dca0df7c420614a10dedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
