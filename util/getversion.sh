@@ -104,7 +104,7 @@ main() {
     (cr50)
       dir_list+=( ../../third_party/tpm2 ../../third_party/cryptoc )
       ;;
-    (*_fp|dartmonkey|bloonchipper)
+    (*_fp|*dartmonkey|*bloonchipper)
       if [[ -d ./private ]]; then
         dir_list+=( ./private )
         dir_list+=( ./private/fingerprint/fpc )
