@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9854f842_0d3fd7f8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-04T18:44:12Z",
+      "side": 1,
+      "message": "I thinking setting both to 0 here makes sense too, but get_time().val is also fine.\n\nCan you add the comment note discover timer is being set here because of the reason you provided above?",
+      "parentUuid": "f4d993f0_44194de2",
+      "range": {
+        "startLine": 1080,
+        "startChar": 11,
+        "endLine": 1080,
+        "endChar": 39
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21a70af5_0fadcce3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "cf7f8df5_0e5d9fb4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-04T18:44:12Z",
+      "side": 1,
+      "message": "Let\u0027s put a comment that cable request is the only valid identity request during discovery\n\n(and all other requests happen in ...)",
+      "parentUuid": "b8be8231_50ee7861",
+      "range": {
+        "startLine": 1117,
+        "startChar": 32,
+        "endLine": 1117,
+        "endChar": 59
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab0439ee_bc1a3b16",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "I am definitely in favor of the EC being defensive about sanity checking the header and VDM header.  I\u0027m not as sure about the discovery contents... is it really the domain of the EC to verify, for example, the cable type is expected? Or is that more the domain of the AP since there could be updates to values for that field in the future?",
       "parentUuid": "ab0439ee_bc1a3b16",
+      "range": {
+        "startLine": 3815,
+        "startChar": 4,
+        "endLine": 3825,
+        "endChar": 6
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010e8794_63a450fa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3825,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-04T18:44:12Z",
+      "side": 1,
+      "message": "Good point about the AP vs EC validation. Maybe a good what to think of it is if the EC is making a decision on it or not. So if the EC every uses cable.type to switch of branch, then we should validate that it fits within our expected enums.",
+      "parentUuid": "ff07fce1_482e0428",
       "range": {
         "startLine": 3815,
         "startChar": 4,
@@ -237,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "d1832d74_9c609235",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3874,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-04T18:44:12Z",
+      "side": 1,
+      "message": "Fair, it could go in that CL so we can trace history better, your call though.",
+      "parentUuid": "f8f899a5_2ab1efd6",
+      "range": {
+        "startLine": 3874,
+        "startChar": 6,
+        "endLine": 3874,
+        "endChar": 49
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d180041_00738f87",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -272,6 +368,30 @@
       "side": 1,
       "message": "Conceptually, I was thinking failures would be \u003c0 and successes \u003e0 so if we find we need more granularity in the type of failure we could use a general \u003c0 check for all of them.  I\u0027m open to changing though, as long as NEEDED remains 0 for my memset :)",
       "parentUuid": "1d180041_00738f87",
+      "range": {
+        "startLine": 327,
+        "startChar": 15,
+        "endLine": 327,
+        "endChar": 19
+      },
+      "revId": "682b491f5c3bfd531346aeaf94cae28143377335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b8d5f3_2822f764",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-04T18:44:12Z",
+      "side": 1,
+      "message": "Ah, we definitely need to call out that NEEDED needs to be 0-value due to memset requirements/assumptions.\n\nIf you want to have the negative value thing for errors, call that out in a comment that is what the expectations are. If you don\u0027t want to do that, then just keep the 0 for NEEDED since it has an explicit reason and drop the rest of the values.",
+      "parentUuid": "fd9a9f9d_982808fb",
       "range": {
         "startLine": 327,
         "startChar": 15,
