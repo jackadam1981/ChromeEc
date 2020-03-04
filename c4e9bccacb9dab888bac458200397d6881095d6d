@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e442d8e_aabcbb93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-04T17:06:31Z",
+      "side": 1,
+      "message": "Check with Rachel and Jerry on this. I think MST power should be enabled in S0 only when required based on HPD.",
+      "range": {
+        "startLine": 15,
+        "startChar": 53,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "c4e9bccacb9dab888bac458200397d6881095d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be58079_53577145",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-04T17:06:31Z",
+      "side": 1,
+      "message": "This is going to mess up the state that is maintained by baseboard_mst_enable_control() in baseboard/hatch.c",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 32
+      },
+      "revId": "c4e9bccacb9dab888bac458200397d6881095d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac823a6d_77c1dcc9",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-04T17:06:31Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to enable MST all the time the chipset is up and running. If I understand what Rachel and Jerry mentioned correctly, MST consumes a lot of power and we don\u0027t want to keep it enabled unless EC knows that it is being used based on HPD status.",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 32
+      },
+      "revId": "c4e9bccacb9dab888bac458200397d6881095d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85d08d5_e36a81e0",
+        "filename": "board/dratini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-04T17:06:31Z",
+      "side": 1,
+      "message": "Why did this change?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 92
+      },
+      "revId": "c4e9bccacb9dab888bac458200397d6881095d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
