@@ -205,7 +205,7 @@ fi
 
 : ${CR50_BOARD_ID=}
 : ${H1_DEVIDS=}
-EC_ROOT="${CROS_WORKON_SRCROOT}/src/platform/ec"
+EC_ROOT="${CROS_WORKON_SRCROOT}/src/platform/cr50"
 EC_BIN_ROOT="${EC_ROOT}/util/signer"
 
 do_hex=
