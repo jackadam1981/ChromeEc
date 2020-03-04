@@ -158,12 +158,56 @@ const struct adc_t adc_channels[] = {
 	/* Convert to mV (3000mV/1024). */
 	{"ADC_VBUSSA", 3000, 1024, 0, CHIP_ADC_CH0}, /* GPI0, ADC0 */
 	{"ADC_VBUSSB", 3000, 1024, 0, CHIP_ADC_CH1}, /* GPI1, ADC1 */
+	{"ADC_EVB_CH_5", 3000, 1024, 0, CHIP_ADC_CH5}, /* GPI5, ADC5 */
+	{"ADC_EVB_CH_7", 3000, 1024, 0, CHIP_ADC_CH7}, /* GPI7, ADC7 */
 	{"ADC_EVB_CH_13", 3000, 1024, 0, CHIP_ADC_CH13}, /* GPL0, ADC13 */
 	{"ADC_EVB_CH_14", 3000, 1024, 0, CHIP_ADC_CH14}, /* GPL1, ADC14 */
 	{"ADC_EVB_CH_15", 3000, 1024, 0, CHIP_ADC_CH15}, /* GPL2, ADC15 */
 	{"ADC_EVB_CH_16", 3000, 1024, 0, CHIP_ADC_CH16}, /* GPL3, ADC16 */
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/*
+ * Voltage comparator channels. Must be in the exactly same order as
+ * enum board_vcmp.
+ */
+struct vcmp_t vcmp_list[] = {
+	/* Threshold H/L is 2800/200 mV */
+	[VCMP_SNS_PP3300] = {.name = "VCMP_SNS_PP3300",
+			     .threshold = 2800,
+			     .flag = (GREATER_THRESHOLD | EDGE_TRIGGER),
+			     .scan_period = VCMP_SCAN_PERIOD_1MS,
+			     .vcmpx = CHIP_VCMP0,
+			     .adc_ch = CHIP_ADC_CH7},
+	[TEST] = {.name = "TEST",
+		  .threshold = 500,
+		  .flag = (LESS_EQUAL_THRESHOLD | LEVEL_TRIGGER),
+		  .scan_period = VCMP_SCAN_PERIOD_1MS,
+		  .vcmpx = CHIP_VCMP3,
+		  .adc_ch = CHIP_ADC_CH5},
+};
+BUILD_ASSERT(ARRAY_SIZE(vcmp_list) == BOARD_VCMP_COUNT);
+
+void board_vcmp_ctrl(int index, enum chip_vcmp vcmpx)
+{
+	if (vcmpx == CHIP_VCMP0) {
+		if (*vcmp_ctrl_regs[vcmpx].vcmp_ctrl &
+						ADC_VCMPX_GREATER_THRESHOLD) {
+			vcmp_list[index].threshold = 200;
+			vcmp_list[index].flag =
+				(LESS_EQUAL_THRESHOLD | EDGE_TRIGGER);
+			ccprints("INT detect High, switch detect Low");
+		} else {
+			vcmp_list[index].threshold = 2800;
+			vcmp_list[index].flag =
+				(GREATER_THRESHOLD | EDGE_TRIGGER);
+			ccprints("INT detect Low, switch detect High");
+		}
+		set_voltage_comparator_condition(index, vcmpx);
+	} else if (vcmpx == CHIP_VCMP3) {
+		/* nothing */
+	}
+}
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
