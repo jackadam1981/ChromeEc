@@ -46,6 +46,30 @@
       "revId": "ede2656bc93a818d5e5366e322bb7b4454ad61fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e08e00_e30fc7ec",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-04T21:46:01Z",
+      "side": 1,
+      "message": "Gotcha. Yeah, I later realized that this is simply cleaning up the already used constant.",
+      "parentUuid": "48cac07c_a20a8372",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "ede2656bc93a818d5e5366e322bb7b4454ad61fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
