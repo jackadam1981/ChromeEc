@@ -12,6 +12,7 @@
 #define IT83XX_PD_EVB  0
 
 /* Optional features */
+#define CONFIG_ADC_VOLTAGE_COMPARATOR
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BOARD_VERSION_GPIO
 #define CONFIG_DAC
@@ -84,12 +85,21 @@ enum pwm_channel {
 enum adc_channel {
 	ADC_VBUSSA,
 	ADC_VBUSSB,
+	ADC_EVB_CH_5,
+	ADC_EVB_CH_7,
 	ADC_EVB_CH_13,
 	ADC_EVB_CH_14,
 	ADC_EVB_CH_15,
 	ADC_EVB_CH_16,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
+};
+
+enum board_vcmp {
+	VCMP_SNS_PP3300,
+	TEST,
+	/* Number of voltage comparator channels */
+	BOARD_VCMP_COUNT
 };
 
 #if IT83XX_PD_EVB
