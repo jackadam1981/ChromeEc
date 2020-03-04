@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "7f26b0f1_d9a9379b",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-04T14:23:09Z",
+      "side": 1,
+      "message": "I had to run yesterday but the logic could be\n\n----\n\nint physical_value \u003d !!gpio_get_level(button-\u003egpio) \u003d\u003d !!(button-flags \u0026 BUTTON_FLAG_ACTIVE_HIGH);\n\n// Button is considered pressed if it is being simulated or the physical signal is\n// engaged.\nreturn (IS_ENABLED(CONFIG_SIMULATED_BUTTON) \u0026\u0026 simulated_button_pressed(button)) || physical_value;\n\n----\n\nIt might be more clear to know which button is being simulated and then return the simulated value always. This would let us simulate a released button as well (but we probably don\u0027t need that behavior)",
+      "parentUuid": "94d81a5f_6fb8ea17",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "2892f4c3b7bf65df43733b96f1dd2bdc4bcb5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11411b90_944e416e",
         "filename": "common/button.c",
         "patchSetId": 6
