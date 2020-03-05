@@ -247,6 +247,58 @@
 /* CLI COMMAND */
 #define CONFIG_CMD_CHARGEN
 
+/* CBI Configuration */
+#define CBI_CFG_VAL(m, s)	((m) << (s))
+
+#define EC_FW_CFG_USB0_MASK		15
+#define EC_FW_CFG_USB0_SHIFT		0
+#define CBI_EC_FW_CONFIG_USB0_MASK	CBI_CFG_VAL(EC_FW_CFG_USB0_MASK,\
+						    EC_FW_CFG_USB0_SHIFT)
+
+#define EC_FW_CFG_USB1_MASK		15
+#define EC_FW_CFG_USB1_SHIFT		4
+#define CBI_EC_FW_CONFIG_USB1_MASK	CBI_CFG_VAL(EC_FW_CFG_USB1_MASK,\
+						    EC_FW_CFG_USB1_SHIFT)
+
+#define EC_FW_CFG_LACCEL_MASK		7
+#define EC_FW_CFG_LACCEL_SHIFT		8
+#define CBI_EC_FW_CONFIG_LACCESS_MASK	CBI_CFG_VAL(EC_FW_CFG_LACCEL_MASK,\
+						    EC_FW_CFG_LACCEL_SHIFT)
+
+#define EC_FW_CFG_BGYRO_MASK		7
+#define EC_FW_CFG_BGYRO_SHIFT		11
+#define CBI_EC_FW_CONFIG_BGYRO_MASK	CBI_CFG_VAL(EC_FW_CFG_BGYRO_MASK,\
+						    EC_FW_CFG_BGYRO_SHIFT)
+
+#define EC_FW_CFG_KBBLIGHT_MASK		1
+#define EC_FW_CFG_KBBLIGHT_SHIFT	14
+#define CBI_EC_FW_CONFIG_KBBLIGHT_MASK	CBI_CFG_VAL(EC_FW_CFG_KBBLIGHT_MASK,\
+						    EC_FW_CFG_KBBLIGHT_SHIFT)
+
+#define EC_FW_CFG_TABLET_MASK		1
+#define EC_FW_CFG_TABLET_SHIFT		15
+#define CBI_EC_FW_CONFIG_TABLET_MASK	CBI_CFG_VAL(EC_FW_CFG_TABLET_MASK,\
+						    EC_FW_CFG_TABLET_SHIFT)
+
+#define get_cbi_ec_config_usb0() \
+	((get_cbi_fw_config() >> EC_FW_CFG_USB0_SHIFT) & \
+		EC_FW_CFG_USB0_MASK)
+#define get_cbi_ec_config_usb1() \
+	((get_cbi_fw_config() >> EC_FW_CFG_USB1_SHIFT) & \
+		EC_FW_CFG_USB1_MASK)
+#define get_cbi_ec_config_laccel() \
+	((get_cbi_fw_config() >> EC_FW_CFG_LACCEL_SHIFT) & \
+		EC_FW_CFG_LACCEL_MASK)
+#define get_cbi_ec_config_bgyro() \
+	((get_cbi_fw_config() >> EC_FW_CFG_BGYRO_SHIFT) & \
+		EC_FW_CFG_BGYRO_MASK)
+#define get_cbi_ec_config_kbblight() \
+	((get_cbi_fw_config() >> EC_FW_CFG_KBBLIGHT_SHIFT) & \
+		EC_FW_CFG_KBBLIGHT_MASK)
+#define get_cbi_ec_config_tablet() \
+	((get_cbi_fw_config() >> EC_FW_CFG_TABLET_SHIFT) & \
+		EC_FW_CFG_TABLET_MASK)
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -351,6 +403,32 @@ void board_update_sensor_config_from_sku(void);
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 int board_tcpc_fast_role_swap_enable(int port, int enable);
 #endif
+
+
+/*****************************************************************************
+ * MSI EC FW Configuration
+ */
+uint32_t get_cbi_fw_config(void);
+
+int ec_config_has_keyboard_backlight(void);
+int ec_config_has_tablet_mode(void);
+int ec_config_has_usba0(void);
+int ec_config_has_usba0_retimer(void);
+int ec_config_has_usbc0(void);
+int ec_config_has_usbc0_retimer(void);
+int ec_config_has_usbc0_tcpc(void);
+int ec_config_has_usbc0_ppc(void);
+int ec_config_has_usba1(void);
+int ec_config_has_usba1_retimer(void);
+int ec_config_has_usbc1(void);
+int ec_config_has_usbc1_retimer(void);
+int ec_config_has_usbc1_tcpc(void);
+int ec_config_has_usbc1_ppc(void);
+int ec_config_has_hdmi(void);
+int ec_config_has_hdmi_retimer(void);
+int ec_config_has_mst_hub(void);
+int ec_config_has_lid_accel(void);
+int ec_config_has_base_gyro(void);
 
 #endif /* !__ASSEMBLER__ */
 

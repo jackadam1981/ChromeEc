@@ -90,6 +90,19 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
+/*****************************************************************************
+ * MSI EC FW Configuration
+ */
+int ec_config_has_usbc0_retimer_pi3dpx1207(void);
+int ec_config_has_usbc0_tcpc_nct3807(void);
+int ec_config_has_usbc0_ppc_aoz1380(void);
+int ec_config_has_usbc1_retimer_ps8802(void);
+int ec_config_has_usbc1_retimer_ps8818(void);
+int ec_config_has_usbc1_tcpc_nct3807(void);
+int ec_config_has_usbc1_ppc_nx20p3483(void);
+int ec_config_has_hdmi_retimer_pi3hdx1204(void);
+int ec_config_has_mst_hub_rtd2141b(void);
+
 #endif /* !__ASSEMBLER__ */
 
 

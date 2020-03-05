@@ -24,6 +24,268 @@
 #include "usb_charge.h"
 #include "gpio_list.h"
 
+/*****************************************************************************
+ * MSI EC FW Configuration
+ */
+int ec_config_has_keyboard_backlight(void)
+{
+	return get_cbi_ec_config_kbblight();
+}
+int ec_config_has_tablet_mode(void)
+{
+	return get_cbi_ec_config_tablet();
+}
+
+/**
+ * CBI_EC_CONFIG_USB_MB_
+ *
+ * OPT0 USB-A0  Speed: 10 Gbps
+ *		Retimer: PS8811
+ *	USB-C0  Speed: 10 Gbps
+ *		Retimer: PI3DPX1207
+ *		TCPC: NCT3807
+ *		PPC: AOZ1380
+ *		IOEX: TCPC
+ */
+static const uint32_t has_usba0				= BIT(0);
+static const uint32_t has_usba0_retimer_ps8811		= BIT(0);
+static const uint32_t has_usbc0				= BIT(0);
+static const uint32_t has_usbc0_retimer_pi3dpx1207	= BIT(0);
+static const uint32_t has_usbc0_tcpc_nct3807		= BIT(0);
+static const uint32_t has_usbc0_ppc_aoz1380		= BIT(0);
+
+int ec_config_has_usba0(void)
+{
+	return !!(has_usba0 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usba0_retimer(void)
+{
+	return !!(has_usba0_retimer_ps8811 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usba0_retimer_ps8811(void)
+{
+	return !!(has_usba0_retimer_ps8811 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0(void)
+{
+	return !!(has_usbc0 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_retimer(void)
+{
+	return !!(has_usbc0_retimer_pi3dpx1207 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_retimer_pi3dpx1207(void)
+{
+	return !!(has_usbc0_retimer_pi3dpx1207 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_tcpc(void)
+{
+	return !!(has_usbc0_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_tcpc_nct3807(void)
+{
+	return !!(has_usbc0_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_ppc(void)
+{
+	return !!(has_usbc0_ppc_aoz1380 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_ppc_aoz1380(void)
+{
+	return !!(has_usbc0_ppc_aoz1380 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+
+/**
+ * CBI_EC_CONFIG_USB_DB_
+ *
+ * OPT0 USB-A1  Speed: 10 Gbps
+ *		Retimer: PS8811
+ *	USB-C1  Speed: 10 Gbps
+ *		Retimer: PS8818
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: yes
+ *		Retimer: PI3HDX1204
+ *		MST Hub: none
+ *
+ * OPT1 USB-A1  Speed: 10 Gbps
+ *		Retimer: PS8811
+ *	USB-C1  Speed: 10 Gbps
+ *		Retimer: PS8802
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: no
+ *		Retimer: none
+ *		MST Hub: none
+ *
+ * OPT2 USB-A1  Speed: 10 Gbps
+ *		Retimer: PS8811
+ *	USB-C1  Speed: 10 Gbps
+ *		Retimer: PS8802
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: yes
+ *		Retimer: none
+ *		MST Hub: RTD2141B
+ */
+static const uint32_t has_usba1			= BIT(0) + BIT(1) + BIT(2);
+static const uint32_t has_usba1_retimer_ps8811	= BIT(0) + BIT(1) + BIT(2);
+static const uint32_t has_usbc1			= BIT(0) + BIT(1) + BIT(2);
+static const uint32_t has_usbc1_retimer_ps8802	=          BIT(1) + BIT(2);
+static const uint32_t has_usbc1_retimer_ps8818	= BIT(0);
+static const uint32_t has_usbc1_tcpc_nct3807	= BIT(0) + BIT(1) + BIT(2);
+static const uint32_t has_usbc1_ppc_nx20p3483	= BIT(0) + BIT(1) + BIT(2);
+static const uint32_t has_hdmi			= BIT(0) +          BIT(2);
+static const uint32_t has_hdmi_retimer_pi3hdx1204 = BIT(0);
+static const uint32_t has_mst_hub_rtd2141b	=                   BIT(2);
+
+int ec_config_has_usba1(void)
+{
+	return !!(has_usba1 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usba1_retimer(void)
+{
+	return !!(has_usba1_retimer_ps8811 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usba1_retimer_ps8811(void)
+{
+	return !!(has_usba1_retimer_ps8811 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1(void)
+{
+	return !!(has_usbc1 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_retimer(void)
+{
+	return !!((has_usbc1_retimer_ps8802 | has_usbc1_retimer_ps8818)  &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_retimer_ps8802(void)
+{
+	return !!(has_usbc1_retimer_ps8802 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_retimer_ps8818(void)
+{
+	return !!(has_usbc1_retimer_ps8818 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_tcpc(void)
+{
+	return !!(has_usbc1_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_tcpc_nct3807(void)
+{
+	return !!(has_usbc1_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_ppc(void)
+{
+	return !!(has_usbc1_ppc_nx20p3483 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_ppc_nx20p3483(void)
+{
+	return !!(has_usbc1_ppc_nx20p3483 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_hdmi(void)
+{
+	return !!(has_hdmi &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_hdmi_retimer(void)
+{
+	return !!(has_hdmi_retimer_pi3hdx1204 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_hdmi_retimer_pi3hdx1204(void)
+{
+	return !!(has_hdmi_retimer_pi3hdx1204 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_mst_hub(void)
+{
+	return !!(has_mst_hub_rtd2141b &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_mst_hub_rtd2141b(void)
+{
+	return !!(has_mst_hub_rtd2141b &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+
+/**
+ * CBI_EC_CONFIG_LID_ACCEL_
+ *
+ * OPT0: none
+ * OPT1: KX022
+ * OPT2: LIS2DWL
+ */
+static const uint32_t has_lid_accel_kx022	=          BIT(1);
+static const uint32_t has_lid_accel_lis2dwl	=                   BIT(2);
+
+int ec_config_has_lid_accel(void)
+{
+	return !!((has_lid_accel_kx022 | has_lid_accel_lis2dwl) &
+		  BIT(get_cbi_ec_config_laccel()));
+}
+int ec_config_has_lid_accel_kx022(void)
+{
+	return !!(has_lid_accel_kx022 &
+		  BIT(get_cbi_ec_config_laccel()));
+}
+int ec_config_has_lid_accel_lis2dwl(void)
+{
+	return !!(has_lid_accel_lis2dwl &
+		  BIT(get_cbi_ec_config_laccel()));
+}
+
+/**
+ * CBI_EC_CONFIG_BASE_GYRO_
+ *
+ * OPT0: none
+ * OPT1: BMI160
+ * OPT2: LSM6DSM
+ */
+static const uint32_t has_base_gyro_bmi160	=          BIT(1);
+static const uint32_t has_base_gyro_lsm6dsm	=                   BIT(2);
+
+int ec_config_has_base_gyro(void)
+{
+	return !!((has_base_gyro_bmi160 | has_base_gyro_lsm6dsm) &
+		  BIT(get_cbi_ec_config_bgyro()));
+}
+int ec_config_has_base_gyro_bmi160(void)
+{
+	return !!(has_base_gyro_bmi160 &
+		  BIT(get_cbi_ec_config_bgyro()));
+}
+int ec_config_has_base_gyro_lsm6dsm(void)
+{
+	return !!(has_base_gyro_lsm6dsm &
+		  BIT(get_cbi_ec_config_bgyro()));
+}
+
+
 #ifdef HAS_TASK_MOTIONSENSE
 
 /* Motion sensors */

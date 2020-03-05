@@ -25,6 +25,203 @@
 
 #include "gpio_list.h"
 
+/*****************************************************************************
+ * MSI EC FW Configuration
+ */
+int ec_config_has_keyboard_backlight(void)
+{
+	return get_cbi_ec_config_kbblight();
+}
+int ec_config_has_tablet_mode(void)
+{
+	return get_cbi_ec_config_tablet();
+}
+
+/**
+ * CBI_EC_CONFIG_USB_MB_
+ *
+ * OPT0 USB-A0  Speed: 5 Gbps
+ *		Retimer: none
+ *	USB-C0  Speed: 5 Gbps
+ *		Retimer: none
+ *		TCPC: NCT3807
+ *		PPC: AOZ1380
+ *		IOEX: TCPC
+ */
+static const uint32_t has_usba0				= BIT(0);
+static const uint32_t has_usbc0				= BIT(0);
+static const uint32_t has_usbc0_tcpc_nct3807		= BIT(0);
+static const uint32_t has_usbc0_ppc_aoz1380		= BIT(0);
+
+int ec_config_has_usba0(void)
+{
+	return !!(has_usba0 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usba0_retimer(void)
+{
+	return 0;
+}
+int ec_config_has_usbc0(void)
+{
+	return !!(has_usbc0 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_retimer(void)
+{
+	return 0;
+}
+int ec_config_has_usbc0_tcpc(void)
+{
+	return !!(has_usbc0_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_tcpc_nct3807(void)
+{
+	return !!(has_usbc0_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_ppc(void)
+{
+	return !!(has_usbc0_ppc_aoz1380 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+int ec_config_has_usbc0_ppc_aoz1380(void)
+{
+	return !!(has_usbc0_ppc_aoz1380 &
+		  BIT(get_cbi_ec_config_usb0()));
+}
+
+/**
+ * CBI_EC_CONFIG_USB_DB_
+ *
+ * OPT0 USB-A1  none
+ *	USB-C1  Speed: 5 Gbps
+ *		Retimer: TUSB544
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: yes
+ *		Retimer: PI3HDX1204
+ *		MST Hub: none
+ *
+ * OPT1 USB-A1  Speed: 5 Gbps
+ *		Retimer: TUSB522
+ *	USB-C1  Speed: 5 Gbps
+ *		Retimer: PS8743
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: no
+ *		Retimer: none
+ *		MST Hub: none
+ */
+static const uint32_t has_usba1				=          BIT(1);
+static const uint32_t has_usba1_retimer_tusb522		=          BIT(1);
+static const uint32_t has_usbc1				= BIT(0) + BIT(1);
+static const uint32_t has_usbc1_retimer_ps8743		=          BIT(1);
+static const uint32_t has_usbc1_retimer_tusb544		= BIT(0);
+static const uint32_t has_usbc1_tcpc_nct3807		= BIT(0) + BIT(1);
+static const uint32_t has_usbc1_ppc_nx20p3483		= BIT(0) + BIT(1);
+static const uint32_t has_hdmi				= BIT(0);
+static const uint32_t has_hdmi_retimer_pi3hdx1204	= BIT(0);
+
+int ec_config_has_usba1(void)
+{
+	return !!(has_usba1 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usba1_retimer(void)
+{
+	return !!(has_usba1_retimer_tusb522 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usba1_retimer_tusb522(void)
+{
+	return !!(has_usba1_retimer_tusb522 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1(void)
+{
+	return !!(has_usbc1 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_retimer(void)
+{
+	return !!((has_usbc1_retimer_ps8743 | has_usbc1_retimer_tusb544) &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_retimer_ps8743(void)
+{
+	return !!(has_usbc1_retimer_ps8743 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_retimer_tusb544(void)
+{
+	return !!(has_usbc1_retimer_tusb544 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_tcpc(void)
+{
+	return !!(has_usbc1_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_tcpc_nct3807(void)
+{
+	return !!(has_usbc1_tcpc_nct3807 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_ppc(void)
+{
+	return !!(has_usbc1_ppc_nx20p3483 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_usbc1_ppc_nx20p3483(void)
+{
+	return !!(has_usbc1_ppc_nx20p3483 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_hdmi(void)
+{
+	return !!(has_hdmi &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_hdmi_retimer(void)
+{
+	return !!(has_hdmi_retimer_pi3hdx1204 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_hdmi_retimer_pi3hdx1204(void)
+{
+	return !!(has_hdmi_retimer_pi3hdx1204 &
+		  BIT(get_cbi_ec_config_usb1()));
+}
+int ec_config_has_mst_hub(void)
+{
+	return 0;
+}
+
+/**
+ * CBI_EC_CONFIG_LID_ACCEL_
+ *
+ * OPT0: none
+ */
+int ec_config_has_lid_accel(void)
+{
+	return 0;
+}
+
+/**
+ * CBI_EC_CONFIG_BASE_GYRO_
+ *
+ * OPT0: none
+ */
+int ec_config_has_base_gyro(void)
+{
+	return 0;
+}
+
+
 #ifdef HAS_TASK_MOTIONSENSE
 
 /* Motion sensors */

@@ -583,6 +583,12 @@ void lid_angle_peripheral_enable(int enable)
 
 /* Unprovisioned magic value. */
 static uint32_t sku_id = 0x7fffffff;
+static uint32_t cbi_fw_config;
+
+uint32_t get_cbi_fw_config(void)
+{
+	return cbi_fw_config;
+}
 
 static void cbi_init(void)
 {
@@ -596,6 +602,11 @@ static void cbi_init(void)
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku_id = val;
 	ccprints("SKU: %d (0x%x)", sku_id, sku_id);
+
+	/* FW config */
+	if (cbi_get_fw_config(&val) == EC_SUCCESS)
+		cbi_fw_config = val;
+	ccprints("FW Config: %d (0x%x)", cbi_fw_config, cbi_fw_config);
 
 #ifdef HAS_TASK_MOTIONSENSE
 	board_update_sensor_config_from_sku();
