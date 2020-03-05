@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70dbec02_07d9b6dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-05T00:11:02Z",
+      "side": 1,
+      "message": "what does this mean?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "5001c2a41750faf35fb1c6acc9e03a737dd88991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cab2d0c_60070aa7",
+        "filename": "util/signer/bs",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-05T00:11:02Z",
+      "side": 1,
+      "message": "maybe to make this future proof move this to line 15 and use\n\nEC_ROOT\u003d\"$(readlink -f \"$(dirname $0)/../..\")\"",
+      "revId": "5001c2a41750faf35fb1c6acc9e03a737dd88991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
