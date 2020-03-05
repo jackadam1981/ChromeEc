@@ -597,6 +597,12 @@ static void cbi_init(void)
 		sku_id = val;
 	ccprints("SKU: %d (0x%x)", sku_id, sku_id);
 
+	/* FW config */
+	if (cbi_get_fw_config(&val) == EC_SUCCESS)
+		ccprints("FW Config: %d (0x%x)", val, val);
+	else
+		ccprints("FW Config: not set in cbi");
+
 #ifdef HAS_TASK_MOTIONSENSE
 	board_update_sensor_config_from_sku();
 #endif
@@ -604,6 +610,7 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
+/* TODO(b/151075885) Base initialization off the fw_config */
 uint32_t system_get_sku_id(void)
 {
 	return sku_id;
