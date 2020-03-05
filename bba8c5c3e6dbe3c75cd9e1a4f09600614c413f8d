@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "150cb570_30248e6e",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "I image this defined at a per-board level so it can return the board enum.\n\n----\n\nLooking at your code more, defining it once here probably make the most sense. I think we should have more comment saying that each of the marco functions returns enum XX values (either defined in baseboard.h or board.h)",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 30
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16c54693_d8b3a3cc",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 1
@@ -41,6 +64,213 @@
         "startChar": 3,
         "endLine": 409,
         "endChar": 6
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dccf3184_3c5dd436",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "nit can you make these bool instead?",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 3
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec072d1_c317d7e4",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "let\u0027s name these options and return them as the enum value for get_cbi_ec_config_mlb",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e306c13f_0dd255ce",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "when we have an enum, then this 0 would turn into that enum value for 0",
+      "range": {
+        "startLine": 50,
+        "startChar": 41,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "955cdc66_4ce981e5",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "optional, we could make these defines so we didn\u0027t have to use the flash space (I am okay either way, just bring it up)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9a32a5_882bd5cd",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "when we make this an enum, we can/should give more descriptive names for each option like\n\n1A1C_HDMI\n1A1C\n\nThis comment with everything listed is very good though.",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 7
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74367ac_8b478a52",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "so these values would get replace with 1A1C_HDMI and 1A1C (just using the same example names, you are free to chose something better)",
+      "range": {
+        "startLine": 120,
+        "startChar": 41,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ff8e3b_95ec7dbe",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "I think this could move up to baseboard right If the enum/bool will be defined at the baseboard level",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b45853_41a5ca4e",
+        "filename": "board/trembyle/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "this is really nice. Good system",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 70
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f15bff_0444c8be",
+        "filename": "board/trembyle/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:28:16Z",
+      "side": 1,
+      "message": "based on Ed\u0027s comments, these move to baseboard, right?",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 1
       },
       "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
