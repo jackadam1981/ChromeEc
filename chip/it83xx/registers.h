@@ -1265,6 +1265,10 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_SPI_TXFCMR          BIT(2)
 #define IT83XX_SPI_TXFR            BIT(1)
 #define IT83XX_SPI_TXFS            BIT(0)
+#define IT83XX_SPI_GCR2         REG8(IT83XX_SPI_BASE+0x03)
+#define IT83XX_SPI_RXF2OC          BIT(4)
+#define IT83XX_SPI_RXF1OC          BIT(3)
+#define IT83XX_SPI_RXFAR           BIT(0)
 #define IT83XX_SPI_IMR          REG8(IT83XX_SPI_BASE+0x04)
 #define IT83XX_SPI_RFFIM           BIT(7)
 #define IT83XX_SPI_EDIM            BIT(2)
@@ -1275,7 +1279,11 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_SPI_RXFFSM          (BIT(4) | BIT(3))
 #define IT83XX_SPI_RXF2FS          BIT(2)
 #define IT83XX_SPI_RXF1FS          BIT(1)
+#if 0 /* TODO: add a config option to select correct offset */
 #define IT83XX_SPI_SPISRDR      REG8(IT83XX_SPI_BASE+0x08)
+#else
+#define IT83XX_SPI_SPISRDR      REG8(IT83XX_SPI_BASE+0x0b)
+#endif
 #define IT83XX_SPI_CPUWTFDB0    REG32(IT83XX_SPI_BASE+0x08)
 #define IT83XX_SPI_FCR          REG8(IT83XX_SPI_BASE+0x09)
 #define IT83XX_SPI_SPISRTXF        BIT(2)
@@ -1285,6 +1293,10 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_SPI_FTCB0R       REG8(IT83XX_SPI_BASE+0x18)
 #define IT83XX_SPI_FTCB1R       REG8(IT83XX_SPI_BASE+0x19)
 #define IT83XX_SPI_HPR2         REG8(IT83XX_SPI_BASE+0x1E)
+#define IT83XX_SPI_RX_VLISMR    REG8(IT83XX_SPI_BASE+0x26)
+#define IT83XX_SPI_RVLIM           BIT(0)
+#define IT83XX_SPI_RX_VLISR     REG8(IT83XX_SPI_BASE+0x27)
+#define IT83XX_SPI_RVLI            BIT(0)
 
 /* Platform Environment Control Interface (PECI) */
 #define IT83XX_PECI_BASE  0x00F02C00
