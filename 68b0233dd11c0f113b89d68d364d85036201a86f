@@ -46,6 +46,29 @@
       "revId": "68b0233dd11c0f113b89d68d364d85036201a86f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fee2f672_fd7c2441",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T22:53:37Z",
+      "side": 1,
+      "message": "\"present\" suggests a response of true/false, which the flash_ec code does as well.  Is there a translation layer somewhere turning on/off into True/False?\n\n(on/off would make sense as a response to a more generically-named \"h1 vref\")",
+      "range": {
+        "startLine": 863,
+        "startChar": 45,
+        "endLine": 863,
+        "endChar": 57
+      },
+      "revId": "68b0233dd11c0f113b89d68d364d85036201a86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
