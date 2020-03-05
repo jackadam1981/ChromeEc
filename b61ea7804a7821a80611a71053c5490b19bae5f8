@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8101c6a5_adff8e1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2020-03-05T06:20:29Z",
+      "side": 1,
+      "message": "(1) Scenarios: \nUsing a E-mark calbe (with Ra), Chromebook is connnected to a USB-C sink device(with Rd), it is work well, at this time plug out USB C sink device, and E-mark is still connected with Chromebook.\n(2) Source Code:\nPD_STATE_DRP_AUTO_TOGGLE:    \n  ...\n   if (cc_is_open(cc1, cc2))\n     pd[port].flags |\u003d PD_FLAGS_LPM_REQUESTED;\n(3) Summary:\nIn this scenarios, ANX3447 don`t enter LPM mode (cc is NOT open, it is Ra), EC shall use Look4connection command to toggle CC pins, so this patch is needed.",
+      "parentUuid": "c6a75d52_bea11adc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfea9871_eddeefdc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3052da_b21c60c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2020-03-05T06:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfea9871_eddeefdc",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
