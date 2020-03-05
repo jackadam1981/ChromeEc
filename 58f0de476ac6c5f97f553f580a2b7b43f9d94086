@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d3497f1_e2599deb",
+        "filename": "util/update_release_branch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-05T00:58:33Z",
+      "side": 1,
+      "message": "That\u0027s tough to nail down.\n\nAre you sure that we shouldn\u0027t also include commits that appear in a query like\n```\ngit log --grep\u003d\"^BRANCH\u003d.*\\(dartmonkey\\|bloonchipper\\|fingerprint\\).*$\" --regexp-ignore-case\n```\ntoo? Then, we just continue to mark CLs that are relevant for fingerprint, knowing that the \"BRANCH\u003ddartmonkey\" or \"BRANCH\u003dfingeprint\" line signals inclusion in this commit message.",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "58f0de476ac6c5f97f553f580a2b7b43f9d94086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
