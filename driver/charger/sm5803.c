@@ -4,9 +4,11 @@
  *
  * Silicon Mitus SM5803 Buck-Boost Charger
  */
+#include "atomic.h"
 #include "battery_smart.h"
 #include "charger.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "sm5803.h"
 #include "throttle_ap.h"
@@ -33,6 +35,7 @@ static const struct charger_info sm5803_charger_info = {
 	.input_current_step = INPUT_I_STEP,
 };
 
+static uint32_t irq_pending; /* Bitmask of chips with interrupts pending */
 
 static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
 {
@@ -111,6 +114,24 @@ enum ec_error_list sm5803_set_gpio0_level(int chgnum, int level)
 	return rv;
 }
 
+enum ec_error_list sm5803_configure_chg_det_od(int chgnum, int enable)
+{
+	enum ec_error_list rv;
+	int reg;
+
+	rv = main_read8(chgnum, SM5803_REG_GPIO0_CTRL, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= SM5803_CHG_DET_OPEN_DRAIN_EN;
+	else
+		reg &= ~SM5803_CHG_DET_OPEN_DRAIN_EN;
+
+	rv = main_write8(chgnum, SM5803_REG_GPIO0_CTRL, reg);
+	return rv;
+}
+
 static void sm5803_init(int chgnum)
 {
 	enum ec_error_list rv;
@@ -178,6 +199,23 @@ void sm5803_handle_interrupt(int chgnum)
 			CPRINTS("%s %d: Unexpected Vbus interrupt: 0x%02x",
 				CHARGER_NAME, chgnum, vbus_reg);
 	}
+}
+
+static void sm5803_irq_deferred(void)
+{
+	int i;
+	uint32_t pending = atomic_read_clear(&irq_pending);
+
+	for (i = 0; i < CHARGER_NUM; i++)
+		if (BIT(i) & pending)
+			sm5803_handle_interrupt(i);
+}
+DECLARE_DEFERRED(sm5803_irq_deferred);
+
+void sm5803_interrupt(int chgnum)
+{
+	atomic_or(&irq_pending, BIT(chgnum));
+	hook_call_deferred(&sm5803_irq_deferred_data, 0);
 }
 
 static const struct charger_info *sm5803_get_info(int chgnum)
