@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6060caf_c5df2857",
+        "filename": "driver/temp_sensor/amd_r19me4070.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-05T18:50:06Z",
+      "side": 1,
+      "message": "This still needs to be defined somewhere, or it won\u0027t build.",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "b4118b46464f0caaa0568c95bc6740dedcb9ef6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
