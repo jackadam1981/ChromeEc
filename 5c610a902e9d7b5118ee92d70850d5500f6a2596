@@ -22,6 +22,30 @@
       "revId": "5c610a902e9d7b5118ee92d70850d5500f6a2596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18e6e4e_cfec8811",
+        "filename": "board/foob/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1374233
+      },
+      "writtenOn": "2020-03-05T08:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3deaeb1b_476984ae",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "5c610a902e9d7b5118ee92d70850d5500f6a2596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
