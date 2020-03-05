@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f09830c6_f9de5cf4",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T16:56:22Z",
+      "side": 1,
+      "message": "we should be able to use \n\nif IS_ENALBED for most or all of these;\n\nWe might have to define board_keyboard_drive_col() in a header though to get it to compile",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8142724a_d3c005b1",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2498,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T16:56:22Z",
+      "side": 1,
+      "message": "great comment explaining the API. Thank you!",
+      "range": {
+        "startLine": 2495,
+        "startChar": 6,
+        "endLine": 2498,
+        "endChar": 58
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "107b9060_890a6303",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T16:56:22Z",
+      "side": 1,
+      "message": "why do we need to do this? What are we expecting to be defined in this header file?",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb076fd_8d561c59",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T16:56:22Z",
+      "side": 1,
+      "message": "to use IS_ENABLED, we need to define this alway. Add a comment here expaining when it is needed though",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
