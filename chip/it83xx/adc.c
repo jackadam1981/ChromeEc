@@ -258,6 +258,12 @@ void set_voltage_comparator_condition(int index, enum chip_vcmp vcmpx)
 		*vcmp_ctrl_regs[vcmpx].vcmp_ctrl |= ADC_VCMPX_EDGE_TRIGGER;
 	else
 		*vcmp_ctrl_regs[vcmpx].vcmp_ctrl &= ~ADC_VCMPX_EDGE_TRIGGER;
+
+	val = ((*vcmp_ctrl_regs[vcmpx].vcmp_datm << 8) |
+		*vcmp_ctrl_regs[vcmpx].vcmp_datl);
+	ccprints("threshold = 0x%x ", val);
+	ccprints("set condition: index = %d, vcmpx = %d, vcmp_reg = 0x%x",
+		index, vcmpx, *vcmp_ctrl_regs[vcmpx].vcmp_ctrl);
 }
 
 /* Voltage comparator interrupt, handle one channel at a time. */
@@ -265,6 +271,11 @@ void voltage_comparator_interrupt(void)
 {
 	enum chip_vcmp vcmpx = 0xFF;
 	int index, status;
+
+	index = IT83XX_ADC_VCMPSTS;
+	ccprints("INT vcmp status012 = 0x%x", index);
+	index = IT83XX_ADC_VCMPSTS2;
+	ccprints("INT vcmp status345 = 0x%x", index);
 
 	/* Find out which voltage comparator triggered */
 	status = IT83XX_ADC_VCMPSTS & 0x07;
@@ -275,6 +286,7 @@ void voltage_comparator_interrupt(void)
 			break;
 		}
 	}
+	ccprints("INT vcmpx = 0x%x", vcmpx);
 
 	/* Find voltage comparator index that board claims in vcmp_list[] */
 	for (index = 0; index < BOARD_VCMP_COUNT; index++) {
