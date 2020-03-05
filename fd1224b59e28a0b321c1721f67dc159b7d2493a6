@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff1482e0_6f4d7dad",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:43:50Z",
+      "side": 1,
+      "message": "Done. about 40 seconds",
+      "parentUuid": "bfa8ab14_3f501063",
+      "range": {
+        "startLine": 1348,
+        "startChar": 22,
+        "endLine": 1348,
+        "endChar": 23
+      },
+      "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48c21cb6_d19e835c",
         "filename": "util/flash_ec",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4113ffa3_22db5e89",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:43:50Z",
+      "side": 1,
+      "message": "ha, I was trying to follow something I learned about mystical bash from this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2064590/1/util/flash_ec#1157\n\nApparently I was applying it wrong. I basically hate bash",
+      "parentUuid": "48c21cb6_d19e835c",
+      "range": {
+        "startLine": 1349,
+        "startChar": 58,
+        "endLine": 1350,
+        "endChar": 36
+      },
+      "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
