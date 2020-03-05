@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff357a5d_a343d43d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-05T20:39:01Z",
+      "side": 1,
+      "message": "why not call it \u0027getbootmode\u0027 to match the short version. I know this does not always match, but that\u0027s because short version is already taken in other cases,",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 12
+      },
+      "revId": "a4a0d099712b3a860d77a84c306219ef2f6831b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d2398a_cbb5e2df",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-05T20:39:01Z",
+      "side": 1,
+      "message": "I don\u0027t think this message is needed - this function will print something in any case.",
+      "revId": "a4a0d099712b3a860d77a84c306219ef2f6831b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
