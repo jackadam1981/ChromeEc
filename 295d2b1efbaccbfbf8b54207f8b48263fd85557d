@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9aa25ae_cde230e9",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-05T23:08:34Z",
+      "side": 1,
+      "message": "But, this CL changes the behavior to turn off HDMI power only when the system enters suspend S0ix, right? So, is the HPD change causing a wake from suspend S0ix?",
+      "range": {
+        "startLine": 102,
+        "startChar": 44,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6ce651_d4dd953e",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-05T23:08:34Z",
+      "side": 1,
+      "message": "control_mst_power()?",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 12
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2afb04_5ce1cae6",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-05T23:08:34Z",
+      "side": 1,
+      "message": "Just curious: Why is clear pending interrupt required here?",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
