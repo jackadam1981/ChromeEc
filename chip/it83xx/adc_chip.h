@@ -24,6 +24,13 @@
 #define ADC_READ_MAX 1023
 #define ADC_MAX_MVOLT 3000
 
+/* Definitions for voltage comparator */
+#define VCMP_RESOLUTION           1024
+#define GREATER_THRESHOLD         BIT(0)
+#define LESS_EQUAL_THRESHOLD      BIT(1)
+#define EDGE_TRIGGER              BIT(2)
+#define LEVEL_TRIGGER             BIT(3)
+
 /* List of ADC channels. */
 enum chip_adc_channel {
 	CHIP_ADC_CH0 = 0,
@@ -39,6 +46,33 @@ enum chip_adc_channel {
 	CHIP_ADC_CH15,
 	CHIP_ADC_CH16,
 	CHIP_ADC_COUNT,
+};
+
+/* List of voltage comparator. */
+enum chip_vcmp {
+	CHIP_VCMP0 = 0,
+	CHIP_VCMP1,
+	CHIP_VCMP2,
+	CHIP_VCMP3,
+	CHIP_VCMP4,
+	CHIP_VCMP5,
+	CHIP_VCMP_COUNT,
+};
+
+/* List of voltage comparator scan period times. */
+enum vcmp_scan_period {
+	VCMP_SCAN_PERIOD_100US = 0x10,
+	VCMP_SCAN_PERIOD_200US = 0x20,
+	VCMP_SCAN_PERIOD_400US = 0x30,
+	VCMP_SCAN_PERIOD_600US = 0x40,
+	VCMP_SCAN_PERIOD_800US = 0x50,
+	VCMP_SCAN_PERIOD_1MS   = 0x60,
+	VCMP_SCAN_PERIOD_1_5MS = 0x70,
+	VCMP_SCAN_PERIOD_2MS   = 0x80,
+	VCMP_SCAN_PERIOD_2_5MS = 0x90,
+	VCMP_SCAN_PERIOD_3MS   = 0xA0,
+	VCMP_SCAN_PERIOD_4MS   = 0xB0,
+	VCMP_SCAN_PERIOD_5MS   = 0xC0,
 };
 
 /* Data structure to define ADC channel control registers. */
@@ -58,10 +92,52 @@ struct adc_t {
 	enum chip_adc_channel channel;
 };
 
+/* Data structure to define voltage comparator control registers. */
+struct vcmp_ctrl_t {
+	volatile uint8_t *vcmp_ctrl;
+	volatile uint8_t *vcmp_adc_chm;
+	volatile uint8_t *vcmp_datm;
+	volatile uint8_t *vcmp_datl;
+};
+
+/* Data structure for board to define voltage comparator list. */
+struct vcmp_t {
+	const char *name;
+	int threshold;
+	/*
+	 * Select greater/less equal threshold, and edge/level trigger.
+	 * NOTE: once edge trigger interrupt fires, we need disable the voltage
+	 *       comparator, or the matching threshold level will infinitely
+	 *       triggers interrupt.
+	 */
+	char flag;
+	/* Called when the interrupt fires */
+	void (*vcmp_thresh_cb)(void);
+	/*
+	 * Select "all voltage comparator" scan period time.
+	 * The power consumption is positively relative with scan frequency.
+	 */
+	enum vcmp_scan_period scan_period;
+	/*
+	 * Select which ADC channel output voltage into comparator and we
+	 * should set the ADC channel pin in alternate mode via adc_channels[].
+	 */
+	enum chip_adc_channel adc_ch;
+};
+
 /*
  * Boards must provide this list of ADC channel definitions. This must match
  * the enum adc_channel list provided by the board.
  */
 extern const struct adc_t adc_channels[];
+
+#ifdef CONFIG_ADC_VOLTAGE_COMPARATOR
+/*
+ * Boards must provide this list of voltage comparator definitions.
+ * This must match the enum board_vcmp list provided by the board.
+ */
+extern const struct vcmp_t vcmp_list[];
+void vcmp_enable(int index, int enable);
+#endif
 
 #endif /* __CROS_EC_ADC_CHIP_H */
