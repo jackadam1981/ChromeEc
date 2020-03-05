@@ -22,6 +22,30 @@
       "revId": "58f0de476ac6c5f97f553f580a2b7b43f9d94086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd6a981_98d78ae1",
+        "filename": "util/update_release_branch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-05T21:49:25Z",
+      "side": 1,
+      "message": "I don\u0027t really like the \"BRANCH\u003d\" stuff. It gets harder as we add more boards unless we use a generic \"fingerprint\" token. At that point we\u0027re really not using it as a \"BRANCH\" field (since there\u0027s no generic fingerprint branch), so it\u0027s misleading to those browsing the history.\n\nI think including the fingerprint-specific files gets us close. It\u0027s hard to make it exhaustive \n in either case (what happens in the BRANCH case where someone outside fingerprint is modifying the STM32 SPI driver?), so I\u0027m leaning towards something that is automatic over a tag that requires a human to get it right.",
+      "parentUuid": "2d3497f1_e2599deb",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "58f0de476ac6c5f97f553f580a2b7b43f9d94086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
