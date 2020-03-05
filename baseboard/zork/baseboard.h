@@ -252,6 +252,7 @@
 #include "gpio_signal.h"
 #include "math_util.h"
 #include "registers.h"
+#include "cbi_ec_fw_config.h"
 
 enum adc_channel {
 	ADC_TEMP_SENSOR_CHARGER,
