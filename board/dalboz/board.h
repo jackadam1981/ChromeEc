@@ -10,6 +10,7 @@
 
 #define VARIANT_ZORK_DALBOZ
 
+#include <stdbool.h>
 #include "baseboard.h"
 
 /*
@@ -73,6 +74,74 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
 	PWM_CH_COUNT
 };
+
+
+/*****************************************************************************
+ * CBI EC FW Configuration
+ */
+/**
+ * USB_MB_OPTION_0
+ *	USB-A0  Speed: 5 Gbps
+ *		Retimer: none
+ *	USB-C0  Speed: 5 Gbps
+ *		Retimer: none
+ *		TCPC: NCT3807
+ *		PPC: AOZ1380
+ *		IOEX: TCPC
+ */
+
+/**
+ * DALBOZ_USB_DB_D_OPT1
+ *	USB-A1  Speed: 5 Gbps
+ *		Retimer: TUSB522
+ *	USB-C1  Speed: 5 Gbps
+ *		Retimer: PS8740
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: no
+ *		Retimer: none
+ *		MST Hub: none
+ *
+ * DALBOZ_USB_DB_D_OPT2
+ *	USB-A1  Speed: 5 Gbps
+ *		Retimer: TUSB522
+ *	USB-C1  none
+ *		IOEX: PCAL6408
+ *	HDMI    Exists: yes
+ *		Retimer: PI3HDX1204
+ *		MST Hub: none
+ */
+enum dalboz_ec_cfg_usb_db_type {
+	DALBOZ_USB_DB_D_OPT1 = 0,
+	DALBOZ_USB_DB_D_OPT2 = 1,
+};
+
+static inline enum dalboz_ec_cfg_usb_db_type
+ec_config_has_usb_db(void)
+{
+	return get_cbi_ec_cfg_usb_db();
+}
+
+
+#define HAS_USBC1 \
+			(BIT(DALBOZ_USB_DB_D_OPT1))
+
+static inline bool ec_config_has_usbc1(void)
+{
+	return !!(BIT(ec_config_has_usb_db()) &
+		  HAS_USBC1);
+}
+
+
+#define HAS_USBC1_RETIMER_PS8740 \
+			(BIT(DALBOZ_USB_DB_D_OPT1))
+
+static inline bool ec_config_has_usbc1_retimer_ps8740(void)
+{
+	return !!(BIT(ec_config_has_usb_db()) &
+		  HAS_USBC1_RETIMER_PS8740);
+}
 
 #endif /* !__ASSEMBLER__ */
 

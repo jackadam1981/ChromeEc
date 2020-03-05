@@ -247,6 +247,7 @@
 /* CLI COMMAND */
 #define CONFIG_CMD_CHARGEN
 
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -351,6 +352,179 @@ void board_update_sensor_config_from_sku(void);
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 int board_tcpc_fast_role_swap_enable(int port, int enable);
 #endif
+
+
+/****************************************************************************
+ * CBI Zork EC FW Configuration
+ */
+/*
+ * USB Main Board (4 bits)
+ *
+ * get_cbi_ec_cfg_usb_mb() will return the MB option number.
+ * The option number will be defined in a variant or board level enumeration
+ * if more clarification is required
+ */
+enum ec_cfg_usb_mb_type {
+	USB_MB_OPTION_0 = 0,
+	USB_MB_OPTION_1 = 1,
+	USB_MB_OPTION_2 = 2,
+	USB_MB_OPTION_3 = 3,
+	USB_MB_OPTION_4 = 4,
+	USB_MB_OPTION_5 = 5,
+	USB_MB_OPTION_6 = 6,
+	USB_MB_OPTION_7 = 7,
+	USB_MB_OPTION_8 = 8,
+	USB_MB_OPTION_9 = 9,
+	USB_MB_OPTION_10 = 10,
+	USB_MB_OPTION_11 = 11,
+	USB_MB_OPTION_12 = 12,
+	USB_MB_OPTION_13 = 13,
+	USB_MB_OPTION_14 = 14,
+	USB_MB_OPTION_15 = 15,
+};
+#define EC_CFG_USB_MB_L				0
+#define EC_CFG_USB_MB_H				3
+#define EC_CFG_USB_MB_MASK \
+				GENMASK(EC_CFG_USB_MB_H,\
+					EC_CFG_USB_MB_L)
+#define get_cbi_ec_cfg_usb_mb() \
+	((get_cbi_fw_config() & EC_CFG_USB_MB_MASK) \
+		>> EC_CFG_USB_MB_L)
+
+/*
+ * USB Daughter Board (4 bits)
+ *
+ * get_cbi_ec_cfg_usb_db() will return the DB option number.
+ * The option number will be defined in a variant or board level enumeration
+ * if more clarification is required
+ */
+enum ec_cfg_usb_db_type {
+	USB_DB_OPTION_0 = 0,
+	USB_DB_OPTION_1 = 1,
+	USB_DB_OPTION_2 = 2,
+	USB_DB_OPTION_3 = 3,
+	USB_DB_OPTION_4 = 4,
+	USB_DB_OPTION_5 = 5,
+	USB_DB_OPTION_6 = 6,
+	USB_DB_OPTION_7 = 7,
+	USB_DB_OPTION_8 = 8,
+	USB_DB_OPTION_9 = 9,
+	USB_DB_OPTION_10 = 10,
+	USB_DB_OPTION_11 = 11,
+	USB_DB_OPTION_12 = 12,
+	USB_DB_OPTION_13 = 13,
+	USB_DB_OPTION_14 = 14,
+	USB_DB_OPTION_15 = 15,
+};
+#define EC_CFG_USB_DB_L				4
+#define EC_CFG_USB_DB_H				7
+#define EC_CFG_USB_DB_MASK \
+				GENMASK(EC_CFG_USB_DB_H,\
+					EC_CFG_USB_DB_L)
+#define get_cbi_ec_cfg_usb_db() \
+	((get_cbi_fw_config() & EC_CFG_USB_DB_MASK) \
+		>> EC_CFG_USB_DB_L)
+
+/*
+ * PWM Keyboard Backlight (1 bit)
+ *
+ * get_cbi_ec_cfg_pwm_keyboard_backlight() will return 1 is present or 0
+ */
+enum ec_cfg_pwm_keyboard_backlight_type {
+	PWM_KEYBOARD_BACKLIGHT_NONE = 0,
+	PWM_KEYBOARD_BACKLIGHT_PRESENT = 1,
+};
+#define EC_CFG_PWM_KEYBOARD_BACKLIGHT_L		8
+#define EC_CFG_PWM_KEYBOARD_BACKLIGHT_H		8
+#define EC_CFG_PWM_KEYBOARD_BACKLIGHT_MASK \
+				GENMASK(EC_CFG_PWM_KEYBOARD_BACKLIGHT_H,\
+					EC_CFG_PWM_KEYBOARD_BACKLIGHT_L)
+#define get_cbi_ec_cfg_pwm_keyboard_backlight() \
+	((get_cbi_fw_config() & EC_CFG_PWM_KEYBOARD_BACKLIGHT_MASK) \
+		>> EC_CFG_PWM_KEYBOARD_BACKLIGHT_L)
+
+/*
+ * Lid Angle Tablet Mode (1 bit)
+ *
+ * get_cbi_ec_cfg_lid_angle_tablet_mode() will return 1 is present or 0
+ */
+enum ec_cfg_lid_angle_tablet_mode_type {
+	LID_ANGLE_TABLET_MODE_NONE = 0,
+	LID_ANGLE_TABLET_MODE_PRESENT = 1,
+};
+#define EC_CFG_LID_ANGLE_TABLET_MODE_L		9
+#define EC_CFG_LID_ANGLE_TABLET_MODE_H		9
+#define EC_CFG_LID_ANGLE_TABLET_MODE_MASK \
+				GENMASK(EC_CFG_LID_ANGLE_TABLET_MODE_H,\
+					EC_CFG_LID_ANGLE_TABLET_MODE_L)
+#define get_cbi_ec_cfg_lid_angle_tablet_mode() \
+	((get_cbi_fw_config() & EC_CFG_LID_ANGLE_TABLET_MODE_MASK) \
+		>> EC_CFG_LID_ANGLE_TABLET_MODE_L)
+
+/*
+ * Lid Accelerometer Sensor (3 bits)
+ *
+ * get_cbi_ec_cfg_lid_accel_sensor() will return ec_cfg_lid_accel_sensor_type
+ */
+enum ec_cfg_lid_accel_sensor_type {
+	LID_ACCEL_NONE = 0,
+	LID_ACCEL_KX022 = 1,
+	LID_ACCEL_LIS2DWL = 2,
+};
+#define EC_CFG_LID_ACCEL_SENSOR_L		10
+#define EC_CFG_LID_ACCEL_SENSOR_H		12
+#define EC_CFG_LID_ACCEL_SENSOR_MASK	\
+				GENMASK(EC_CFG_LID_ACCEL_SENSOR_H,\
+					EC_CFG_LID_ACCEL_SENSOR_L)
+#define get_cbi_ec_cfg_lid_accel_sensor() \
+	((get_cbi_fw_config() & EC_CFG_LID_ACCEL_SENSOR_MASK) \
+		>> EC_CFG_LID_ACCEL_SENSOR_L)
+
+/*
+ * Base Gyro Sensor (3 bits)
+ *
+ * get_cbi_ec_cfg_base_gyro_sensor() will return ec_cfg_base_gyro_type
+ */
+enum ec_cfg_base_gyro_sensor_type {
+	BASE_GYRO_NONE = 0,
+	BASE_GYRO_BMI160 = 1,
+	BASE_GYRO_LSM6DSM = 2,
+};
+#define EC_CFG_BASE_GYRO_SENSOR_L		13
+#define EC_CFG_BASE_GYRO_SENSOR_H		15
+#define EC_CFG_BASE_GYRO_SENSOR_MASK	\
+				GENMASK(EC_CFG_BASE_GYRO_SENSOR_H,\
+					EC_CFG_BASE_GYRO_SENSOR_L)
+#define get_cbi_ec_cfg_base_gyro_sensor() \
+	((get_cbi_fw_config() & EC_CFG_BASE_GYRO_SENSOR_MASK) \
+		>> EC_CFG_BASE_GYRO_SENSOR_L)
+
+/* cbi_get_fw_config - cached value */
+uint32_t get_cbi_fw_config(void);
+
+static inline enum ec_cfg_pwm_keyboard_backlight_type
+ec_config_has_pwm_keyboard_backlight(void)
+{
+	return get_cbi_ec_cfg_pwm_keyboard_backlight();
+}
+
+static inline enum ec_cfg_lid_angle_tablet_mode_type
+ec_config_has_lid_angle_tablet_mode(void)
+{
+	return get_cbi_ec_cfg_lid_angle_tablet_mode();
+}
+
+static inline enum ec_cfg_lid_accel_sensor_type
+ec_config_has_lid_accel_sensor(void)
+{
+	return get_cbi_ec_cfg_lid_accel_sensor();
+}
+
+static inline enum ec_cfg_base_gyro_sensor_type
+ec_config_has_base_gyro_sensor(void)
+{
+	return get_cbi_ec_cfg_base_gyro_sensor();
+}
 
 #endif /* !__ASSEMBLER__ */
 

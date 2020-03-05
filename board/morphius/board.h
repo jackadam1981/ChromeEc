@@ -10,6 +10,7 @@
 
 #define VARIANT_ZORK_TREMBYLE
 
+#include <stdbool.h>
 #include "baseboard.h"
 
 /*
@@ -89,6 +90,75 @@ enum pwm_channel {
 	PWM_CH_POWER_LED,
 	PWM_CH_COUNT
 };
+
+
+/*****************************************************************************
+ * CBI EC FW Configuration
+ */
+/**
+ * USB_MB_OPTION_0
+ *	USB-A0  Speed: 5 Gbps
+ *		Retimer: none
+ *	USB-C0  Speed: 5 Gbps
+ *		Retimer: PI3DPX1207
+ *		TCPC: NCT3807
+ *		PPC: AOZ1380
+ *		IOEX: TCPC
+ */
+
+/**
+ * MORPHIUS_USB_DB_T_OPT1
+ *	USB-A1  none
+ *	USB-C1  Speed: 5 Gbps
+ *		Retimer: PS8818
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: yes
+ *		Retimer: PI3HDX1204
+ *		MST Hub: none
+ *
+ * MORPHIUS_USB_DB_T_OPT3
+ *	USB-A1  none
+ *	USB-C1  Speed: 5 Gbps
+ *		Retimer: PS8802
+ *		TCPC: NCT3807
+ *		PPC: NX20P3483
+ *		IOEX: TCPC
+ *	HDMI    Exists: yes
+ *		Retimer: none
+ *		MST Hub: RTD2141B
+ */
+enum morphius_ec_cfg_usb_db_type {
+	MORPHIUS_USB_DB_T_OPT1 = 0,
+	MORPHIUS_USB_DB_T_OPT3 = 1,
+};
+
+static inline enum morphius_ec_cfg_usb_db_type
+ec_config_has_usb_db(void)
+{
+	return get_cbi_ec_cfg_usb_db();
+}
+
+
+#define HAS_USBC1_RETIMER_PS8802 \
+			(BIT(MORPHIUS_USB_DB_T_OPT3))
+
+static inline bool ec_config_has_usbc1_retimer_ps8802(void)
+{
+	return !!(BIT(ec_config_has_usb_db()) &
+		  HAS_USBC1_RETIMER_PS8802);
+}
+
+
+#define HAS_USBC1_RETIMER_PS8818 \
+			(BIT(MORPHIUS_USB_DB_T_OPT1))
+
+static inline bool ec_config_has_usbc1_retimer_ps8818(void)
+{
+	return !!(BIT(ec_config_has_usb_db()) &
+		  HAS_USBC1_RETIMER_PS8818);
+}
 
 #endif /* !__ASSEMBLER__ */
 
