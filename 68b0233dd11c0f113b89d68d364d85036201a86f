@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f5d8a14_a043d47b",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T21:27:20Z",
+      "side": 1,
+      "message": "Would it be helpful to make the command print out busy/0/1800/3300 for both vrefs?  (Busy being if h1_rst/pwr_button is being asserted)",
+      "range": {
+        "startLine": 863,
+        "startChar": 0,
+        "endLine": 863,
+        "endChar": 59
+      },
+      "revId": "68b0233dd11c0f113b89d68d364d85036201a86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
