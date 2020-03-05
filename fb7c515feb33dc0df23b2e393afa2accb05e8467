@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce9b302c_b2eebbc8",
+        "filename": "driver/temp_sensor/amd_r19me4070.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T03:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03f5f7ec_dd0c4b57",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7541dc0_5c7a1e73",
         "filename": "driver/temp_sensor/amd_r19me4070.h",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665f4cb8_da402908",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T03:06:45Z",
+      "side": 1,
+      "message": "Down",
+      "parentUuid": "d7541dc0_5c7a1e73",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "16b32d0b_e83c023d",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T03:06:45Z",
+      "side": 1,
+      "message": "Down.I will add this define in another CL.",
+      "parentUuid": "683cb640_7b6d20b0",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c16ca96_d7923302",
         "filename": "driver/temp_sensor/amd_r19me4070.h",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9c6d4345_415b9f43",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T03:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c16ca96_d7923302",
+      "range": {
+        "startLine": 31,
+        "startChar": 42,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c9ecdf5_09c97834",
         "filename": "driver/temp_sensor/amd_r19me4070.h",
         "patchSetId": 6
@@ -114,6 +210,30 @@
       "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca500c07_0bdb5892",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T03:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9ecdf5_09c97834",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "fb7c515feb33dc0df23b2e393afa2accb05e8467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
