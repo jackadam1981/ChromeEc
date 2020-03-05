@@ -22,6 +22,30 @@
       "revId": "68b0233dd11c0f113b89d68d364d85036201a86f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9ca5b1_2fb7b446",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T22:46:02Z",
+      "side": 1,
+      "message": "It is not currently helpful for servo automation; we really only need the abstraction of on versus off.\n\nIf we need it in the future we can add it (or use the console directly as a work around)\n\n--\n\nbut yes I set up the code to allow us to easy expose that information if we need to in the future",
+      "parentUuid": "3f5d8a14_a043d47b",
+      "range": {
+        "startLine": 863,
+        "startChar": 0,
+        "endLine": 863,
+        "endChar": 59
+      },
+      "revId": "68b0233dd11c0f113b89d68d364d85036201a86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
