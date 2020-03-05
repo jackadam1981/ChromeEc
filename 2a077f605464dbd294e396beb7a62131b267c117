@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb94a37d_cfdd57ca",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T20:03:36Z",
+      "side": 1,
+      "message": "Delete this function, since nothing to do, then don\u0027t set .init in struct usb_mux_driver (this is supported by driver/usb_mux/usb_mux.c)",
+      "revId": "2a077f605464dbd294e396beb7a62131b267c117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8807b1_ad6fbb16",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T20:03:36Z",
+      "side": 1,
+      "message": "Delete, since USB_MUX_FLAG_SET_WITHOUT_FLIP doesn\u0027t make sense for this driver, which is only looking at USB_PD_MUX_POLARITY_INVERTED.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "2a077f605464dbd294e396beb7a62131b267c117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f7803f_fdf01215",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T20:03:36Z",
+      "side": 1,
+      "message": "Delete this function, primary mux can handle it.",
+      "revId": "2a077f605464dbd294e396beb7a62131b267c117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df69973a_1d476bba",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T20:03:36Z",
+      "side": 1,
+      "message": "Suggest rename to usbc0_sbu_mux_driver, I think it is a clearer name.",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 49
+      },
+      "revId": "2a077f605464dbd294e396beb7a62131b267c117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cabc82_e0d8144b",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T20:03:36Z",
+      "side": 1,
+      "message": "Remove setting i2c_port and i2c_addr_flags, since this driver is just IOEX GPIO, no I2C needed.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "2a077f605464dbd294e396beb7a62131b267c117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
