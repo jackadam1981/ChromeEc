@@ -22,6 +22,30 @@
       "revId": "27fee0a7b5f9a63f36901168c3331876eafea46d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8f9ddc_3ae854ae",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-05T20:20:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92bf1e93_735c579e",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "27fee0a7b5f9a63f36901168c3331876eafea46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
