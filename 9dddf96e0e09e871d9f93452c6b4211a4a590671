@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18c1fdc7_60b112a2",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T21:30:24Z",
+      "side": 1,
+      "message": "this path can also happen if the dut simply isn\u0027t attached.",
+      "revId": "9dddf96e0e09e871d9f93452c6b4211a4a590671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a64820eb_3691fa2f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T21:30:24Z",
+      "side": 1,
+      "message": "Might want to bake in a timeout as well in case flashing is unattended.",
+      "range": {
+        "startLine": 1348,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 66
+      },
+      "revId": "9dddf96e0e09e871d9f93452c6b4211a4a590671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
