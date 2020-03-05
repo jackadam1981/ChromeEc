@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb89623d_243f27a1",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-05T23:39:33Z",
+      "side": 1,
+      "message": "Well, my Dratini won\u0027t go into S0ix right now (sof-audio-pci issues), but it does go into C9 on suspend S0ix attempts, and stays there for like 30 seconds. The external HDMI monitor says \u0027no signal\u0027, then comes back correctly on resume. I also tested with set_short_powerd_timeouts for the runtime s0ix case.",
+      "parentUuid": "d9aa25ae_cde230e9",
+      "range": {
+        "startLine": 102,
+        "startChar": 44,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e6ce651_d4dd953e",
         "filename": "board/dratini/board.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e3be00d6_52e29328",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-05T23:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6ce651_d4dd953e",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 12
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f2afb04_5ce1cae6",
         "filename": "board/dratini/board.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91c9bdb_3fde718d",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-05T23:39:33Z",
+      "side": 1,
+      "message": "Since this is a user input, I\u0027m just being paranoid, in case an interrupt is pending between GPIO config and board_init().",
+      "parentUuid": "4f2afb04_5ce1cae6",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
