@@ -22,6 +22,30 @@
       "revId": "4f867c4a926eb93c7f44667b2acf5f14679a164d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c3ab5b_07491a64",
+        "filename": "board/puff/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-03-05T00:40:17Z",
+      "side": 1,
+      "message": "NPCX doesn\u0027t define a huge stack size, so this is fine.",
+      "parentUuid": "9e5a5abd_301d7d13",
+      "range": {
+        "startLine": 14,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "4f867c4a926eb93c7f44667b2acf5f14679a164d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
