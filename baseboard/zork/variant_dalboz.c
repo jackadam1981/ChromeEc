@@ -24,12 +24,73 @@ static void usba_retimer_off(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usba_retimer_off, HOOK_PRIO_DEFAULT);
 
+/*
+ * USB C0 port SBU mux use standalone FSUSB42UMX
+ * chip and it need a board specific driver.
+ * Overall, it will use chained mux framework.
+ */
+static int fsusb42umx_init_mux(const struct usb_mux *me)
+{
+	/* Nothing to do here */
+	ccprints("FSUSB42UMX init_mux");
+	return EC_SUCCESS;
+}
+
+static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+{
+
+	if (me->flags & USB_MUX_FLAG_SET_WITHOUT_FLIP)
+		mux_state &= ~USB_PD_MUX_POLARITY_INVERTED;
+
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+		ccprints("FSUSB42UMX flipped");
+		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
+	} else {
+		ccprints("FSUSB42UMX unflipped");
+		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 0);
+	}
+
+	return EC_SUCCESS;
+}
+
+static int fsusb42umx_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+{
+	int rv, val;
+
+	rv = ioex_get_level(IOEX_USB_C0_SBU_FLIP, &val);
+	if (rv != EC_SUCCESS) {
+		ccprints("FSUSB42UMX failed to get SBU_FLIP");
+		return rv;
+	}
+
+	ccprints("FUSB42UMX get mux val=%d", val);
+	if (val)
+		*mux_state |= USB_PD_MUX_POLARITY_INVERTED;
+
+	return EC_SUCCESS;
+}
+
+const struct usb_mux_driver fsusb42umx_mux_driver = {
+	.init = fsusb42umx_init_mux,
+	.set = fsusb42umx_set_mux,
+	.get = fsusb42umx_get_mux,
+};
+
+/* Fake i2c_port and i2c_addr_flags */
+const struct usb_mux usbc0_sbu_mux = {
+	.usb_port = USBC_PORT_C0,
+	.i2c_port = I2C_PORT_USB_AP_MUX,
+	.i2c_addr_flags = 0xfe,
+	.driver = &fsusb42umx_mux_driver,
+};
+
 const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
 		.i2c_port = I2C_PORT_USB_AP_MUX,
 		.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 		.driver = &amd_fp5_usb_mux_driver,
+		.next_mux = &usbc0_sbu_mux,
 	},
 	[USBC_PORT_C1] = {
 		.usb_port = USBC_PORT_C1,
@@ -39,3 +100,4 @@ const struct usb_mux usb_muxes[] = {
 	}
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
