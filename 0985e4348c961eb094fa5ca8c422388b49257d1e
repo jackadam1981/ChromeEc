@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47e176aa_402e6e65",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T16:50:09Z",
+      "side": 1,
+      "message": "nit: let\u0027s add /* !BOARD_PALKIA */ comment on this endif line",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "0985e4348c961eb094fa5ca8c422388b49257d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
