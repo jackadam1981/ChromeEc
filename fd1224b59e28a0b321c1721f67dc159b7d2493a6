@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa8ab14_3f501063",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T21:55:18Z",
+      "side": 1,
+      "message": "count down so you can put the magic number here?\nalso, how long is 100 actually considering the time it takes for dut control to do its thing?  That should be in the comments.",
+      "range": {
+        "startLine": 1348,
+        "startChar": 22,
+        "endLine": 1348,
+        "endChar": 23
+      },
+      "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c21cb6_d19e835c",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T21:55:18Z",
+      "side": 1,
+      "message": "spacing and indentation should be more like https://engdoc.corp.google.com/eng/doc/devguide/shell/styleguide.md#pipelines",
+      "range": {
+        "startLine": 1349,
+        "startChar": 58,
+        "endLine": 1350,
+        "endChar": 36
+      },
+      "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
