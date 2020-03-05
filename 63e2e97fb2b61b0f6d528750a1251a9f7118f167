@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9022895d_9e927347",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T07:24:16Z",
+      "side": 1,
+      "message": "Are you mean that delete \"and\" ?",
+      "parentUuid": "12077540_71bd7192",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "63e2e97fb2b61b0f6d528750a1251a9f7118f167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0622aff7_895ebabe",
         "filename": "board/mushu/thermal.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2020-03-04T22:39:23Z",
       "side": 1,
       "message": "Isn\u0027t this only ever going to eventually drive the fan to its highest speed and keep it there?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "63e2e97fb2b61b0f6d528750a1251a9f7118f167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968ea785_cecdb00a",
+        "filename": "board/mushu/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-05T07:24:16Z",
+      "side": 1,
+      "message": "No, It\u0027s not what I want to do. I do less thing that assign 0 to \"fmax\".\nDone",
+      "parentUuid": "0622aff7_895ebabe",
       "range": {
         "startLine": 54,
         "startChar": 0,
