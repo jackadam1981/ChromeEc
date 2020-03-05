@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2568be59_ac42969a",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-03-05T04:25:04Z",
+      "side": 1,
+      "message": "I think it should be:\nenum usbpd_cc_pin cc_pin \u003d (polarity \u003d\u003d (POLARITY_CC1 || POLARITY_CC1_DTS)  ? \nUSBPD_CC_PIN_1 : USBPD_CC_PIN_2);",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 446,
+        "endChar": 20
+      },
+      "revId": "26e1337074bd912c615d2c81fbb9f3a251eb1e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
