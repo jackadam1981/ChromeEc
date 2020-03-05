@@ -204,12 +204,14 @@ enum sm5803_gpio0_modes {
 #define INPUT_I_MIN 0
 #define INPUT_I_STEP SM5803_CURRENT_STEP
 
-/* Expose functions to control charger's GPIO */
+/* Expose functions to control charger's GPIO and CHG_DET configuration */
 enum ec_error_list sm5803_configure_gpio0(int chgnum,
 					  enum sm5803_gpio0_modes mode);
 enum ec_error_list sm5803_set_gpio0_level(int chgnum, int level);
+enum ec_error_list sm5803_configure_chg_det_od(int chgnum, int enable);
 
-void sm5803_handle_interrupt(int chgnum);
+
+void sm5803_interrupt(int chgnum);
 
 extern const struct charger_drv sm5803_drv;
 
