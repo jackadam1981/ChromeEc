@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e945390_22805f72",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T21:52:41Z",
+      "side": 1,
+      "message": "silly nit: what do you think about making this 0x0f\n\nIt makes it a little more clear to me which bits are being used\n\n(not a hard requirement, just a thought)",
+      "range": {
+        "startLine": 253,
+        "startChar": 29,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c54693_d8b3a3cc",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T21:52:41Z",
+      "side": 1,
+      "message": "MSI? MISC?  (if MISC you could probably just drop the word)",
+      "range": {
+        "startLine": 409,
+        "startChar": 3,
+        "endLine": 409,
+        "endChar": 6
+      },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
