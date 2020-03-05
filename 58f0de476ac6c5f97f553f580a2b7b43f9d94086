@@ -46,6 +46,30 @@
       "revId": "58f0de476ac6c5f97f553f580a2b7b43f9d94086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059f81f0_ba25cd5b",
+        "filename": "util/update_release_branch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-05T22:51:32Z",
+      "side": 1,
+      "message": "I agree that the BRANCH\u003d line is obnoxious and that we couldn\u0027t enforce others to reference fingerprint, but with this implementation we will be missing a ton of very radical changes that impact fingerprint.\nFlashprotect mechanism changes, system_is_locked changes...\n\n---\n\nFrom an offline convo, it seems that we can make this work, but I think we then need to double-down on automatically detecting which files are relevant to a given build target. Unblocking for now.",
+      "parentUuid": "bdd6a981_98d78ae1",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "58f0de476ac6c5f97f553f580a2b7b43f9d94086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
