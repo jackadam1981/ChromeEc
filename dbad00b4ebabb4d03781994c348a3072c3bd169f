@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dfdb1fc_cd572570",
+        "filename": "board/damu/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-03-05T04:08:00Z",
+      "side": 1,
+      "message": "2020",
+      "revId": "dbad00b4ebabb4d03781994c348a3072c3bd169f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e50ed8d1_e97146e3",
+        "filename": "board/damu/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-03-05T04:08:00Z",
+      "side": 1,
+      "message": "Seems it\u0027s not the same mentioned in issuetracker. Have you tested the border or the battery is fully charged when soc is 95% for damu battery in charging status?",
+      "revId": "dbad00b4ebabb4d03781994c348a3072c3bd169f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d13739_7f7aaacd",
+        "filename": "board/damu/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-03-05T04:08:00Z",
+      "side": 1,
+      "message": "WHITE?",
+      "revId": "dbad00b4ebabb4d03781994c348a3072c3bd169f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c930e87_743bce23",
+        "filename": "board/damu/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-03-05T04:08:00Z",
+      "side": 1,
+      "message": "WHITE?",
+      "revId": "dbad00b4ebabb4d03781994c348a3072c3bd169f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
