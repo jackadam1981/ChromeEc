@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92bf1e93_735c579e",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-05T00:51:35Z",
+      "side": 1,
+      "message": "nit; These can be granular if we want to reduce the chance of false matching:\n\nsed -i \"s/UINT\\([0-9]\\{1,2\\}\\)_MAX/U\\1_MAX/\" \"${tmp}\"\nsed -i \"s/INT\\([0-9]\\{1:2\\}\\)_MAX/S\\1_MAX/\" \"${tmp}\"\nsed -i \"s/INT\\([0-9]\\{1:2\\}\\)_MIN/S\\1_MIN/\" \"${tmp}\"",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "27fee0a7b5f9a63f36901168c3331876eafea46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
