@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ad7771dd_20768c42",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T21:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c1fdc7_60b112a2",
+      "revId": "9dddf96e0e09e871d9f93452c6b4211a4a590671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a64820eb_3691fa2f",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "9dddf96e0e09e871d9f93452c6b4211a4a590671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8ae1ec_a6695165",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-05T21:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64820eb_3691fa2f",
+      "range": {
+        "startLine": 1348,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 66
+      },
+      "revId": "9dddf96e0e09e871d9f93452c6b4211a4a590671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
