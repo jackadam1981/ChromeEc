@@ -93,6 +93,30 @@
       "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a35fb322_e5e14216",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-03-05T22:49:30Z",
+      "side": 1,
+      "message": "Yeah, in this case you do want them to be separate arguments, so extra whitespace is fine.\n\n\"bash is pretty much the worst\"\n-- crouton author",
+      "parentUuid": "4113ffa3_22db5e89",
+      "range": {
+        "startLine": 1349,
+        "startChar": 58,
+        "endLine": 1350,
+        "endChar": 36
+      },
+      "revId": "fd1224b59e28a0b321c1721f67dc159b7d2493a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
