@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6c675a46_8bbb1e7c",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T22:32:01Z",
+      "side": 1,
+      "message": "Can use GENMASK (in compile_time_macros.h) for this.",
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e945390_22805f72",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 1
@@ -19,6 +36,23 @@
         "endLine": 253,
         "endChar": 31
       },
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb1a092_7d45af45",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T22:32:01Z",
+      "side": 1,
+      "message": "I\u0027d like to make the field names here match the sheet:\nusb_mb\nusb_db\npwm_keyboard_backlight\nlid_angle_tablet_mode\nlid_accel_sensor\nbase_gyro_sensor",
       "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
