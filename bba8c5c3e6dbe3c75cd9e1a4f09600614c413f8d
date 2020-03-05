@@ -128,6 +128,23 @@
     },
     {
       "key": {
+        "uuid": "62da9ff4_33cf0bf2",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-05T22:42:54Z",
+      "side": 1,
+      "message": "I was imagining that instead of multiple functions returning bools:\n    ec_config_has_usbc1_retimer()\n    ec_config_has_usbc1_retimer_ps8743()\n    ec_config_has_usbc1_retimer_tusb544()\n\nThere would be one function returning an enum:\n    ec_config_get_usbc1_retimer() returns enum { NONE, PS8743, TUSB544 }",
+      "revId": "bba8c5c3e6dbe3c75cd9e1a4f09600614c413f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ec072d1_c317d7e4",
         "filename": "board/dalboz/board.c",
         "patchSetId": 1
