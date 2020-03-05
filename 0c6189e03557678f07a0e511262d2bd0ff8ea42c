@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdf316e3_289fb10a",
+        "filename": "board/palkia/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-03-05T02:26:35Z",
+      "side": 1,
+      "message": "Thanks Jett for the review. I have removed this in the next patch. The previous comment was asking me to separate the change. So, i clone the helios board and modify the change in the next patch.",
+      "parentUuid": "922c1abe_2a7dfe2d",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 9
+      },
+      "revId": "0c6189e03557678f07a0e511262d2bd0ff8ea42c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0540e683_2687a8a0",
         "filename": "board/palkia/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-04T14:27:21Z",
       "side": 1,
       "message": "same, if this is new board, does this still apply?",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "0c6189e03557678f07a0e511262d2bd0ff8ea42c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48160be0_2ee0c142",
+        "filename": "board/palkia/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-03-05T02:26:35Z",
+      "side": 1,
+      "message": "same as above.",
+      "parentUuid": "0540e683_2687a8a0",
       "range": {
         "startLine": 122,
         "startChar": 1,
