@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "07b97973_e89f1ede",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-06T18:07:16Z",
+      "side": 1,
+      "message": "Yes, we use the Linux Kernel style guide. There is a .clang-format file in the base of this repository, that if you use clang-format-patch will follow the style guide.",
+      "parentUuid": "bb219271_e906aea5",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 16
+      },
+      "revId": "16e0b75b44f0c7d25665627f917c4252b4cc8a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5be83cf_ebb48e9e",
         "filename": "common/i2c_trace.c",
         "patchSetId": 1
