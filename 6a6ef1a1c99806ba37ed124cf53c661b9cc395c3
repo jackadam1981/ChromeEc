@@ -22,6 +22,30 @@
       "revId": "6a6ef1a1c99806ba37ed124cf53c661b9cc395c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91970e13_a73ab572",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-06T21:25:42Z",
+      "side": 1,
+      "message": "On second look, because the I2C slave address is passed as a separate parameter, I2C transfers with out_size\u003d0 are possible.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/driver/retimer/pi3dpx1207.c#47\n\nI modified the output to support I2C transactions without a write bytes.",
+      "parentUuid": "6100157a_ca7d5d10",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "6a6ef1a1c99806ba37ed124cf53c661b9cc395c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
