@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90a46b73_6431d2dd",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-06T02:18:03Z",
+      "side": 1,
+      "message": "It would be nice if these are in a separate patch.",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 79
+      },
+      "revId": "711ea72ecb0cf3ef9fc92d8c995948795b667887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fab7b99_f42f5155",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-06T02:18:03Z",
+      "side": 1,
+      "message": "Is this intended?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "711ea72ecb0cf3ef9fc92d8c995948795b667887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
