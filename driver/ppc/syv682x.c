@@ -202,13 +202,14 @@ static int syv682x_vbus_source_enable(int port, int enable)
 	else
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
 
-#if defined(CONFIG_USB_CHARGER) && defined(CONFIG_USB_PD_VBUS_DETECT_PPC)
-	/*
-	 * Since the VBUS state could be changing here, need to wake the
-	 * USB_CHG_N task so that BC 1.2 detection will be triggered.
-	 */
-	usb_charger_vbus_change(port, enable);
-#endif
+	if (IS_ENABLED(CONFIG_USB_CHARGER)
+		&& IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_PPC)) {
+		/*
+		 * Update other modules about any detected changes in VBUS
+		 * level.
+		 */
+		syv682x_is_vbus_present(port);
+	}
 
 	return EC_SUCCESS;
 }
