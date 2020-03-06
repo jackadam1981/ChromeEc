@@ -68,6 +68,30 @@
       "revId": "9508578f686de646e001252fa08b96edbb14d37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9205b8d2_0fc957c9",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-06T18:15:20Z",
+      "side": 1,
+      "message": "Thanks for matching this to the \"D-OPT1\" in the sheet, I like that.\nJett: OPT1 and OPT2 are from the schematic.\nI\u0027ll try to come up with a better name, add that to the sheet, then can use it here and stay in sync.",
+      "parentUuid": "0696a86b_7b78e692",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "9508578f686de646e001252fa08b96edbb14d37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
