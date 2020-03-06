@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0fb5d844_321653dd",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-06T17:50:42Z",
+      "side": 1,
+      "message": "fix the indentation",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 16
+      },
+      "revId": "16e0b75b44f0c7d25665627f917c4252b4cc8a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5be83cf_ebb48e9e",
         "filename": "common/i2c_trace.c",
         "patchSetId": 1
@@ -18,6 +41,52 @@
         "startChar": 5,
         "endLine": 33,
         "endChar": 19
+      },
+      "revId": "16e0b75b44f0c7d25665627f917c4252b4cc8a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53dd332c_e9fceb78",
+        "filename": "docs/i2c-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-06T17:50:42Z",
+      "side": 1,
+      "message": "why change to backticks here?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "16e0b75b44f0c7d25665627f917c4252b4cc8a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc8b799_47cfaec6",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-06T17:50:42Z",
+      "side": 1,
+      "message": "indentation is incorrect again",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 0
       },
       "revId": "16e0b75b44f0c7d25665627f917c4252b4cc8a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
