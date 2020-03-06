@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ed1ea6d1_1bc130c3",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-06T01:11:30Z",
+      "side": 1,
+      "message": "But, are you seeing HPD toggle on entry into C9 or runtime S0ix? Reason I ask is with entry to C9 and runtime S0ix, we should no longer see HDMI power being cut since it happens only on actual system suspend into S0ix.",
+      "parentUuid": "eb89623d_243f27a1",
+      "range": {
+        "startLine": 102,
+        "startChar": 44,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e6ce651_d4dd953e",
         "filename": "board/dratini/board.c",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Since this is a user input, I\u0027m just being paranoid, in case an interrupt is pending between GPIO config and board_init().",
       "parentUuid": "4f2afb04_5ce1cae6",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "295d2b1efbaccbfbf8b54207f8b48263fd85557d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7c46414_aa527ed9",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-06T01:11:30Z",
+      "side": 1,
+      "message": "Oh okay. That behavior would have been good since it would allow us to skip the call to control_mst_power() above ;).",
+      "parentUuid": "f91c9bdb_3fde718d",
       "range": {
         "startLine": 425,
         "startChar": 1,
