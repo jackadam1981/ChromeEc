@@ -15,7 +15,11 @@
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
 
-#define BATT_ID 0
+#ifdef BOARD_KAKADU
+	#define BATT_ID 1
+#else
+	#define BATT_ID 0
+#endif
 
 #define BATTERY_SIMPLO_CHARGE_MIN_TEMP 0
 #define BATTERY_SIMPLO_CHARGE_MAX_TEMP 60
@@ -24,6 +28,7 @@
 
 enum battery_type {
 	BATTERY_SIMPLO = 0,
+	BATTERY_NAME,
 	BATTERY_COUNT
 };
 
@@ -40,6 +45,21 @@ static const struct battery_info info[] = {
 		.discharging_min_c	= -20,
 		.discharging_max_c	= 60,
 	},
+
+#ifdef BOARD_KAKADU
+	[BATTERY_NAME] = {
+		.voltage_max		= 4370,
+		.voltage_normal		= 3860,
+		.voltage_min		= 3150,
+		.precharge_current	= 256,
+		.start_charging_min_c	= 0,
+		.start_charging_max_c	= 45,
+		.charging_min_c		= 0,
+		.charging_max_c		= 60,
+		.discharging_min_c	= -20,
+		.discharging_max_c	= 60,
+	},
+#endif
 };
 
 static const struct max17055_batt_profile batt_profile[] = {
@@ -49,6 +69,15 @@ static const struct max17055_batt_profile batt_profile[] = {
 		.ichg_term		= MAX17055_ICHGTERM_REG(235),
 		.v_empty_detect		= MAX17055_VEMPTY_REG(3000, 3600),
 	},
+
+#ifdef BOARD_KAKADU
+	[BATTERY_NAME] = {
+		.is_ez_config		= 1,
+		.design_cap		= MAX17055_DESIGNCAP_REG(6910),
+		.ichg_term		= MAX17055_ICHGTERM_REG(235),
+		.v_empty_detect		= MAX17055_VEMPTY_REG(3000, 3600),
+	},
+#endif
 };
 
 static const struct max17055_alert_profile alert_profile[] = {
@@ -60,6 +89,15 @@ static const struct max17055_alert_profile alert_profile[] = {
 		.s_alert_mxmn = SALRT_DISABLE,
 		.i_alert_mxmn = IALRT_DISABLE,
 	},
+
+#ifdef BOARD_KAKADU
+	[BATTERY_NAME] = {
+		.is_ez_config		= 1,
+		.design_cap		= MAX17055_DESIGNCAP_REG(6910),
+		.ichg_term		= MAX17055_ICHGTERM_REG(235),
+		.v_empty_detect		= MAX17055_VEMPTY_REG(3000, 3600),
+	},
+#endif
 };
 
 const struct max17055_batt_profile *max17055_get_batt_profile(void)
