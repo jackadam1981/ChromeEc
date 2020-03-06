@@ -46,6 +46,30 @@
       "revId": "b4118b46464f0caaa0568c95bc6740dedcb9ef6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eee2fc8_599f6f22",
+        "filename": "driver/temp_sensor/amd_r19me4070.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-06T03:42:07Z",
+      "side": 1,
+      "message": "I see. But that means that this patch doesn\u0027t build. We strongly prefer that all patches compile, at the very least. The pre-submit hook for the EC repo (when you upload using \u0027repo upload\u0027) enforces that via forcing you to run \"make -j buildall\" first.",
+      "parentUuid": "b686db5b_f58e89f9",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "b4118b46464f0caaa0568c95bc6740dedcb9ef6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
