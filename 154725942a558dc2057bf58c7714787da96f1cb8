@@ -22,6 +22,30 @@
       "revId": "154725942a558dc2057bf58c7714787da96f1cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13452107_07111b7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2020-03-06T02:19:13Z",
+      "side": 1,
+      "message": "There are big changes on master branch(refactoring on charger driver)\nDoes I have to apply all changes to firmware branch?",
+      "parentUuid": "a6110ce9_1f98ff3c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "154725942a558dc2057bf58c7714787da96f1cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
