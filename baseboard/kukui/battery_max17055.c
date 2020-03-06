@@ -24,6 +24,7 @@
 
 enum battery_type {
 	BATTERY_SIMPLO = 0,
+	BATTERY_NAME,
 	BATTERY_COUNT
 };
 
@@ -40,6 +41,21 @@ static const struct battery_info info[] = {
 		.discharging_min_c	= -20,
 		.discharging_max_c	= 60,
 	},
+
+#ifdef BOARD_KAKADU
+	[BATTERY_NAME] = {
+		.voltage_max		= 4400,
+		.voltage_normal		= 3860,
+		.voltage_min		= 3000,
+		.precharge_current	= 256,
+		.start_charging_min_c	= 0,
+		.start_charging_max_c	= 45,
+		.charging_min_c		= 0,
+		.charging_max_c		= 60,
+		.discharging_min_c	= -20,
+		.discharging_max_c	= 60,
+	},
+#endif
 };
 
 static const struct max17055_batt_profile batt_profile[] = {
