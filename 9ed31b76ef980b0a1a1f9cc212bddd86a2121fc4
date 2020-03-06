@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "db8fef58_4d1096a2",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-06T17:07:01Z",
+      "side": 1,
+      "message": "if (IS_ENABLED()) actually is still a compile time check because the optimizer removes if (0) conditions. the if IS_ENABLED makes it easier to read logic most of the time.\n\nYou are right about the COL2_INVERTED define needing GPIO_KBD_KSO2, so it probably doesn\u0027t make sense to use the IS_ENABLED here (just keep it in mind in the future then)",
+      "parentUuid": "0f25ba80_a9e20dad",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8142724a_d3c005b1",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -116,6 +140,30 @@
       "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b2b089_8198d22f",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-06T17:07:01Z",
+      "side": 1,
+      "message": "Looking at this again, this makes sense",
+      "parentUuid": "a31f6e0a_5f178d62",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
