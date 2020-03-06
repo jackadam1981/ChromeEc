@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4739365_b76c268b",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-06T17:41:05Z",
+      "side": 1,
+      "message": "this entire section might be worth breaking off into a separate header file, thoughts?\n\n(since it doesn\u0027t define #defines that changes compilation in other parts of the code)",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 2
+      },
+      "revId": "9508578f686de646e001252fa08b96edbb14d37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18cb4aaf_334339d8",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-06T17:41:05Z",
+      "side": 1,
+      "message": "since we have board level enums, I don\u0027t think we need this (I don\u0027t think anyone will use this enum)",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 2
+      },
+      "revId": "9508578f686de646e001252fa08b96edbb14d37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0696a86b_7b78e692",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-06T17:41:05Z",
+      "side": 1,
+      "message": "OPT1 and OPT2 aren\u0027t very helpful, let\u0027s give more meaning names\n\nDALBOZ_USB_DB_1A1C\nDALBOZ_USB_DB_1A1C_HDMI\n\ncould work",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "9508578f686de646e001252fa08b96edbb14d37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
