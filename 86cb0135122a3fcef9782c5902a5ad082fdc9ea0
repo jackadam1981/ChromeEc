@@ -1,0 +1,400 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa283ffa_dd13fc73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "Did you squash two CLs?\nIf you squash the CLs, I think the status of BMI260.[ch] should be add instead of modify.\nAnd the CL is missing board.h.\n\nYou should split the CL into two CLs.\nOne is only for bmi260.[ch].\nAnother is for board config of volteer.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529b2797_8289729b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "This is a general driver. Not only for volteer. remove it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f076cf_efc308cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "Please add BUG and TEST",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2662a3_fe5aee1a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "I think it should be removed at final version",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf31490e_186cc876",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "g_bmi260_config_tbin",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc8ebbf2_0e0214a0",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "g_bmi260_config_tbin_len",
+      "range": {
+        "startLine": 721,
+        "startChar": 13,
+        "endLine": 721,
+        "endChar": 35
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b173c4_59287c75",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "extra empty line.",
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4fefa14_b363e933",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "extra empty lines",
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbf80b0_4efdbda8",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "can be in one line",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1875,
+        "endChar": 19
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67fc92d_4d0efcb1",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "extra spaces",
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86767da_e1f634ed",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "remove it",
+      "range": {
+        "startLine": 2056,
+        "startChar": 0,
+        "endLine": 2066,
+        "endChar": 36
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe680271_29728fdb",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2077,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "config is also needed for MOTIONSENSE_TYPE_GYRO. Right?",
+      "range": {
+        "startLine": 2077,
+        "startChar": 6,
+        "endLine": 2077,
+        "endChar": 17
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8170ffc9_65465508",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "We haven\u0027t implemented magnetic. I think we can remove it first.",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280c42ef_f3590def",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "extra empty line. Remove it.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85420809_d4c26b21",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "two extra empty lines",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75856475_65903e64",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "The formula is the same as BMI160. Could we move it to a common file?",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 44
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df82edc_7235405c",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "If these registers are not in BMI260, please remove it.",
+      "range": {
+        "startLine": 256,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 38
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e939142_d4ea0a23",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-06T09:09:22Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 2
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
