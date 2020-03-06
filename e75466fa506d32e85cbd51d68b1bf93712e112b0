@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "60c89c8a_de7c6435",
+        "filename": "common/button.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-06T23:51:21Z",
+      "side": 1,
+      "message": "gpio_get_level(button-\u003egpio) \u0026\u0026 (button-\u003eflags \u0026 BUTTON_FLAG_ACTIVE_HIGH);",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "e75466fa506d32e85cbd51d68b1bf93712e112b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b695ea28_6be11dc7",
         "filename": "common/button.c",
         "patchSetId": 8
