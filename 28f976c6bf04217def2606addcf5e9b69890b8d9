@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65269d39_64376482",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-06T22:05:54Z",
+      "side": 1,
+      "message": "If this is cached by CBI code already, then could just always call cbi_get_fw_config(), and remove cbi_fw_config and get_cbi_fw_config().",
+      "range": {
+        "startLine": 607,
+        "startChar": 5,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afdfaed5_0fce7bfb",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-06T22:05:54Z",
+      "side": 1,
+      "message": "As a future todo: should remove system_get_sku_id() (since EC should be using FW_CONFIG only).",
+      "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cdb9f41_39ef9258",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-06T22:05:54Z",
+      "side": 1,
+      "message": "Are these inline funcs to get the right enum return type?",
+      "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
