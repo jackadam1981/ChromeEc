@@ -93,6 +93,30 @@
       "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cab9a70_9388ef68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-06T16:34:15Z",
+      "side": 1,
+      "message": "Please describe the test that you performed to veried that this CL works as intended",
+      "parentUuid": "dc3052da_b21c60c9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
