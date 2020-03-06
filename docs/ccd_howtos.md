@@ -190,7 +190,14 @@ is not a clamshell, check out the [full dev mode instructions].
 
                 chroot > dut-control ec_board
 
-13. **Debug Setup**
+14. **Try running a test** Use autotest_dir, so you don't need to about what
+   autotest packages to emerge. firmware_ECHash is just a short test. If your
+   board doesn't have an EC, try something else.
+
+                chroot > test_that $IP --autotest_dir
+                         ~/trunk/src/third_party/autotest/files/ firmware_ECHash
+
+14. **Debug Setup**
 
 
     *   **Cr50 capabilities:** EC uart capability needs to always be accessible.
