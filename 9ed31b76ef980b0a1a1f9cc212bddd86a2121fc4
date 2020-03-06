@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f25ba80_a9e20dad",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-03-06T13:26:47Z",
+      "side": 1,
+      "message": "If we switch to use the if (IS_ENABLED()) for CONFIG_KEYBOARD_COL2_INVERTED, we will need to define the GPIO_KBD_KSO2. otherwise, the build will fail. However, define GPIO_KBD_KSO2 in the unused case is weird..\n\nBTW, do we need to change the compile time `#if defined()` to the runtime check `if (IS_ENABLED())`? May i know the reason?",
+      "parentUuid": "f09830c6_f9de5cf4",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8142724a_d3c005b1",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2020-03-05T16:56:22Z",
       "side": 1,
       "message": "why do we need to do this? What are we expecting to be defined in this header file?",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "9ed31b76ef980b0a1a1f9cc212bddd86a2121fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31f6e0a_5f178d62",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-03-06T13:26:47Z",
+      "side": 1,
+      "message": "Because there are many #define in the below that are used in the many different places. For example, KEYBOARD_COLS_MAX is used in keyboard_raw.c, keyboard_8042_sharelib.c, keyboard_scan.c and so on. With #include \"keyboard_customization.h\" in here, i can minimize the change, just #define the value in the \"keyboard_customization.h\". This is an example for the \"keyboard_customization.h\" https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2035445/6/board/palkia/keyboard_customization.h",
+      "parentUuid": "107b9060_890a6303",
       "range": {
         "startLine": 15,
         "startChar": 10,
