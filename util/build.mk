@@ -17,7 +17,7 @@ uartupdatetool-objs=uut/main.o uut/cmd.o uut/opr.o uut/l_com_port.o \
 	uut/lib_crc.o
 $(out)/util/uartupdatetool: HOST_CFLAGS+=-Iutil/
 # Build on a limited subset of boards to save build time
-ifeq ($(BOARD),nocturne_fp)
+ifeq ($(CONFIG_ECTOOL_SERVO),y)
 build-util-bin+=ectool_servo
 endif
 
@@ -95,10 +95,13 @@ HOST_OPENSSL_LDFLAGS := $(shell $(HOST_PKG_CONFIG) --libs openssl)
 $(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(HOST_OPENSSL_CFLAGS)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(HOST_OPENSSL_LDFLAGS)
 
-deps-y += $(out)/util/gen_touchpad_hash.d
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
 
 cbi-util-objs=../common/crc8.o ../common/cbi.o
+
+deps-y += $(foreach b,$(host-util-bin),$(out)/util/$(b).d)
+deps-y += $(foreach b,$(build-util-bin),$(out)/util/$(b).d)
+deps-y += $(foreach b,$(build-util-art),$(out)/util/$(b).d)
 
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
 			$(out)/util/export_taskinfo_rw.o
