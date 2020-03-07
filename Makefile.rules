@@ -153,8 +153,9 @@ cmd_rsasign_rwsig = futility sign --type rwsig \
                                     --prikey $(out)/key.vbprik2 $< $@
 
 # commands to build optional xref files
-cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' \
-	| egrep '\.[chS]$$' | sort | uniq > $@
+cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' | sort -u
+cmd_deps_to_clist = $(cmd_deps_to_list) | egrep '\.[chS]$$' > $@
+cmd_deps_to_files = $(cmd_deps_to_list) | xargs realpath --relative-to=.
 cmd_etags = etags -o $@ $(shell cat $<)
 cmd_ctags = ctags -o $@ $(shell cat $<)
 targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
@@ -591,8 +592,16 @@ $(build-utils): $(out)/%:$(build-srcs)
 $(host-utils): $(out)/%:$(host-srcs)
 	$(call quiet,c_to_host,HOSTCC )
 
+# Create list of C files a BOARD interacts with (.h, .c, or .S)
+# Cscope is a utility for browsing source code.
 $(out)/cscope.files: $(out)/$(PROJECT).bin
-	$(call quiet,deps_to_list,SH     )
+	$(call quiet,deps_to_clist,SH     )
+
+# Print a list of all files a BOARD interacts with (.h, .c, .tasklist, ...)
+.PHONY: print-files
+print-files:
+	@$(MAKE) --no-print-directory rw utils $(if $(CONFIG_FW_INCLUDE_RO),ro,) >&2
+	$(call cmd_pretty_print_cmd,$(cmd_deps_to_files))
 
 $(out)/TAGS: $(out)/cscope.files
 	$(call quiet,etags,ETAGS  )
@@ -716,12 +725,16 @@ help:
 	@echo "  savesizes            - Save the filesizes of currently built boards for comparison"
 	@echo "  newsizes             - Compare previously saved filesizes against new sizes"
 	@echo "  utils                - Build all host utilities"
+	@echo "  hex   [BOARD=]       - Build images in ihex format (ec.hex, ec.RO.hex, ec.RW.hex)"
+	@echo "  dis   [BOARD=]       - Disassemble the output images (ec.RO.dis, ec.RW.dis)"
 	@echo ""
-	@echo "  tests [BOARD=]       - Build all unit tests for a specific board"
+	@echo "  tests [BOARD=]       - Build all on-device unit tests for a specific board"
 	@echo "  hosttests            - Build all host unit tests"
 	@echo "  runhosttests         - Build and run all host unit tests"
 	@echo "  buildfuzztests       - Build all host fuzzers"
 	@echo "  runfuzztests         - Build and run all host fuzzers for one round"
+	@echo "  coverage             - Build and run host unit tests and report coverage"
+	@echo "  analyzestack         - TODO"
 	@echo ""
 	@echo "  flash     [BOARD=]   - Use OpenOCD to flash the latest image"
 	@echo "  flash_ec  [BOARD=]   - Use flash_ec to flash the latest image"
@@ -731,9 +744,12 @@ help:
 	@echo "  print-host-tests     - Prints all host test targets"
 	@echo "  print-host-fuzzers   - Prints all host fuzz targets"
 	@echo "  print-boards         - Prints all boards"
-	@echo "  print-configs  [BOARD=]      - Print CONFIG_* options for the target board"
-	@echo "  print-defines  [BOARD=]      - Print forced defines passed to the compiler"
-	@echo "  print-includes [BOARD=]      - Print include paths passed to the compiler"
+	@echo "  print-baseboard [BOARD=]   - Print a board's baseboard"
+	@echo "  print-configs   [BOARD=]   - Print CONFIG_* options for the target board"
+	@echo "  print-files     [BOARD=]   - Print all the files a BOARD interacts with"
+	@echo "  print-defines   [BOARD=]   - Print forced defines passed to the compiler"
+	@echo "  print-includes  [BOARD=]   - Print include paths passed to the compiler"
+	@echo "  print-make-vars [BOARD=]   - Print basic input make variable for a board"
 	@echo "Common Variables:"
 	@echo "  V=1                  - Show make output"
 	@echo "  BOARD=               - Set the board name to build (Default is $(BOARD))"
