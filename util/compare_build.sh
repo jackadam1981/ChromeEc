@@ -51,7 +51,14 @@ do_build() {
   local ref="$1"
   local result_dir="$2"
   local board="$3"
-  git checkout "${ref}" >/dev/null 2>&1
+
+  local err
+  if ! err=$(git checkout "${ref}" 2>&1); then
+    echo "Failed to checkout ${ref}:" >&2
+    echo "${err}" >&2
+    echo >&2
+    return 1
+  fi
   echo "Testing commit: $(git rev-parse --short HEAD)"
   rm -rf "build/${board}"
   # STATIC_VERSION makes sure the generated ec_version.h is constant.
