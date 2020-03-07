@@ -18,6 +18,9 @@ ifeq ($(HAS_MOCK_FPSENSOR_DETECT),)
 	board-y+=fpsensor_detect.o
 endif
 
+# Utilities
+build-util-bin-y = ectool_servo
+
 # Do not build rsa test because this board uses RSA exponent 3 and the rsa test
 # will fail on device.
 test-list-y=\
