@@ -14,7 +14,6 @@ build-util-art-y += util/export_taskinfo.so
 host-util-bin-$(CHIP_STM32) += stm32mon
 build-util-bin-$(CHIP_NPCX) += ecst
 host-util-bin-$(CHIP_IT83XX) += iteflash
-build-util-bin-$(BOARD_NOCTURNE_FP) += ectool_servo
 
 host-util-bin-y += uartupdatetool
 uartupdatetool-objs=uut/main.o uut/cmd.o uut/opr.o uut/l_com_port.o \
