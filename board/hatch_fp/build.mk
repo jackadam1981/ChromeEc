@@ -20,6 +20,7 @@ endif
 
 # Utilities
 host-util-bin-y = stm32mon
+build-util-bin-y = ectool_servo
 
 # Do not build rsa test because this board uses RSA exponent 3 and the rsa test
 # will fail on device.
