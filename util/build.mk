@@ -17,10 +17,6 @@ host-util-bin-y += uartupdatetool
 uartupdatetool-objs=uut/main.o uut/cmd.o uut/opr.o uut/l_com_port.o \
 	uut/lib_crc.o
 $(out)/util/uartupdatetool: HOST_CFLAGS+=-Iutil/
-# Build on a limited subset of boards to save build time
-ifeq ($(BOARD),nocturne_fp)
-build-util-bin+=ectool_servo
-endif
 
 # If the util/ directory in the private repo is symlinked into util/private,
 # we want to build host-side tools from it, too.
