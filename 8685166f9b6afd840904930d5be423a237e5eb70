@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5d09757_9c817924",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-07T00:25:26Z",
+      "side": 1,
+      "message": "Why is this even done here? Does this part not have an interrupt pin? Notifying the system of VBUS presence seems like it should go in the interrupt handler path.\n\nAlso, I\u0027m not sure if we would want to notify this change when we\u0027re sourcing VBUS. My understanding is that this is intended to kick off BC1.2 detection which should only occur when we are a sink.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "8685166f9b6afd840904930d5be423a237e5eb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
