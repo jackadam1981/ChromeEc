@@ -189,4 +189,7 @@ void wp_event(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
+/* Utilities */
+#define CONFIG_ECTOOL_SERVO
+
 #endif /* __BOARD_H */
