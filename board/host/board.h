@@ -77,10 +77,21 @@ enum {
 #define CONFIG_SPI_MASTER
 #define CONFIG_SPI_FP_PORT    1 /* SPI1: third master config */
 
+/* UART indexes (use define rather than enum to expand them) */
+#define UART_CR50	0
+#define UART_AP		1
+#define UART_EC		2
+#define UART_NULL	0xff
+
 #define CONFIG_RNG
 void fps_event(enum gpio_signal signal);
 
 /* Let the tests always check the other NVMEM slot. */
 static inline int board_nvmem_legacy_check_needed(void){ return 1; }
+
+/* Mock functions for EC-CR50 communication test */
+int board_has_ec_cr50_comm_support(void);
+void board_reboot_ec_deferred(int usec_delay);
+void ccd_update_state(void);
 
 #endif /* __CROS_EC_BOARD_H */

@@ -193,3 +193,13 @@ void uart_init(void)
 	stopped = 1;  /* Not transmitting yet */
 	init_done = 1;
 }
+
+test_mockable void uartn_tx_flush(int uart_unused)
+{
+	uart_tx_flush();
+}
+
+test_mockable void uartn_write_char(int uart_unused, char c)
+{
+	uart_write_char(c);
+}
