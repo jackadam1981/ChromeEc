@@ -41,5 +41,12 @@ uint16_t ec_efs_verify_hash(const char *hash_data, const uint8_t size);
 void ec_efs_refresh(void);
 /* print EC-EFS status */
 void ec_efs_print_status(void);
+/* corrupt ECRW hash */
+void ec_efs_corrupt_hash(void);
+
+#ifdef BOARD_HOST
+/* return the current boot mode. For test purpose only. */
+uint8_t ec_efs_get_boot_mode(void);
+#endif
 
 #endif /* __CROS_EC_COMM_H */
