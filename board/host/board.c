@@ -5,6 +5,7 @@
 /* Emulator board-specific configuration */
 
 #include "button.h"
+#include "ec_comm.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "host_command.h"
@@ -27,6 +28,8 @@
 #define GPIO_0  0
 
 #include "gpio_list.h"
+
+uint32_t fake_reg __maybe_unused;
 
 test_mockable_static int dummy_temp_get_val(int idx, int *temp_ptr)
 {
@@ -89,3 +92,29 @@ int board_get_entropy(void *buffer, int len)
 	return 1;
 }
 #endif
+
+test_mockable void ccd_update_state(void)
+{
+
+}
+
+test_mockable void ec_comm_packet_mode_en(enum gpio_signal unsed)
+{
+
+}
+
+test_mockable void ec_comm_packet_mode_dis(enum gpio_signal unsed)
+{
+
+}
+
+int board_has_ec_cr50_comm_support(void)
+{
+#ifdef CONFIG_EC_CR50_COMM
+	return 1;
+#else
+	return 0;
+#endif
+}
+
+
