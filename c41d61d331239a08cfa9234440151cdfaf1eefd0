@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0134d02_8e81109a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-09T07:58:33Z",
+      "side": 1,
+      "message": "I don\u0027t see grunt defines CONFIG_ACCEL_LIS2DW_COMMON, CONFIG_ACCEL_LIS2DW12, or CONFIG_ACCEL_LIS2DWL in board.h",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "c41d61d331239a08cfa9234440151cdfaf1eefd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
