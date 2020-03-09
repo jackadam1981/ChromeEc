@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa15386f_fccac6cb",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-09T23:53:05Z",
+      "side": 1,
+      "message": "Right, given the existing values.",
+      "parentUuid": "9383e068_06362448",
+      "range": {
+        "startLine": 566,
+        "startChar": 3,
+        "endLine": 566,
+        "endChar": 46
+      },
+      "revId": "48cfdc10ec0d8df1184559b2c88a3a7875383e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d47f6f9_5833f145",
         "filename": "power/sc7180.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "48cfdc10ec0d8df1184559b2c88a3a7875383e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b8de75_3ab48abd",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-09T23:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d47f6f9_5833f145",
+      "revId": "48cfdc10ec0d8df1184559b2c88a3a7875383e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
