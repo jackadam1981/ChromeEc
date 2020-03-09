@@ -70,6 +70,30 @@
       "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "018d3584_cce7dc38",
+        "filename": "board/damu/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-03-09T02:35:10Z",
+      "side": 1,
+      "message": "Got it. Patch11 already modified it. Thanks.",
+      "parentUuid": "9820734b_a702f21a",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
