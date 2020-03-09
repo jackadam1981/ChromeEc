@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "639ac655_e68ab257",
+        "filename": "power/sc7180.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-09T23:53:55Z",
+      "side": 1,
+      "message": "you don\u0027t even need the else, but I\u0027ll leave that up to you.",
+      "range": {
+        "startLine": 566,
+        "startChar": 3,
+        "endLine": 566,
+        "endChar": 9
+      },
+      "revId": "ceed760fad30334aaa70757c798f3cd4bd8f10e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
