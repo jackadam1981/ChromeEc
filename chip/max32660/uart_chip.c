@@ -18,6 +18,8 @@
 
 static int done_uart_init_yet;
 
+#ifdef CONFIG_UART_HOST
+
 #ifndef UARTN
 #define UARTN CONFIG_UART_HOST
 #endif
@@ -161,6 +163,8 @@ static inline int uartn_is_tx_interrupt(int uart_num)
 	return MXC_UART_GET_UART(uart_num)->int_fl & UART_TX_IF;
 }
 
+#endif /* defined(CONFIG_UART_HOST) */
+
 int uart_init_done(void)
 {
 	return done_uart_init_yet;
@@ -168,6 +172,7 @@ int uart_init_done(void)
 
 void uart_tx_start(void)
 {
+#ifdef CONFIG_UART_HOST
 	/* Do not allow deep sleep while transmit in progress */
 	disable_sleep(SLEEP_MASK_UART);
 	/*
@@ -176,48 +181,72 @@ void uart_tx_start(void)
 	 */
 	uartn_enable_tx_interrupt(UARTN);
 	task_trigger_irq(EC_UART_IRQn);
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 void uart_tx_stop(void)
 {
+#ifdef CONFIG_UART_HOST
 	uartn_disable_tx_interrupt(UARTN);
 	/* Re-allow deep sleep */
 	enable_sleep(SLEEP_MASK_UART);
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 int uart_tx_in_progress(void)
 {
+#ifdef CONFIG_UART_HOST
 	return uartn_tx_in_progress(UARTN);
+#else
+	return 0;
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 void uart_tx_flush(void)
 {
+#ifdef CONFIG_UART_HOST
 	uartn_tx_flush(UARTN);
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 int uart_tx_ready(void)
 {
+#ifdef CONFIG_UART_HOST
 	/* True if the TX buffer is not completely full */
 	return uartn_tx_ready(UARTN);
+#else
+	return 1;
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 int uart_rx_available(void)
 {
+#ifdef CONFIG_UART_HOST
 	/* True if the RX buffer is not completely empty. */
 	return uartn_rx_available(UARTN);
+#else
+	return 0;
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 void uart_write_char(char c)
 {
+#ifdef CONFIG_UART_HOST
 	/* write a character to the UART */
 	uartn_write_char(UARTN, c);
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
 int uart_read_char(void)
 {
+#ifdef CONFIG_UART_HOST
 	return uartn_read_char(UARTN);
+#else
+	return '\0';
+#endif /* defined(CONFIG_UART_HOST) */
 }
 
+#ifdef CONFIG_UART_HOST
 /**
  * Interrupt handlers for UART
  */
@@ -230,9 +259,11 @@ void uart_rxtx_interrupt(void)
 	uartn_clear_interrupt_flags(UARTN);
 }
 DECLARE_IRQ(EC_UART_IRQn, uart_rxtx_interrupt, 1);
+#endif /* defined(CONFIG_UART_HOST) */
 
 void uart_init(void)
 {
+#ifdef CONFIG_UART_HOST
 	uint32_t flags;
 	uint32_t baud0 = 0, baud1 = 0, div;
 	int32_t factor = -1;
@@ -272,6 +303,7 @@ void uart_init(void)
 
 	/* Enable the IRQ */
 	task_enable_irq(EC_UART_IRQn);
+#endif /* defined(CONFIG_UART_HOST) */
 	/* Set a flag for the system that the UART has been initialized */
 	done_uart_init_yet = 1;
 }
