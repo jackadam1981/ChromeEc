@@ -22,6 +22,30 @@
       "revId": "8685166f9b6afd840904930d5be423a237e5eb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7803c4_ab08c2b7",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-09T20:11:19Z",
+      "side": 1,
+      "message": "OOB discussion with eherrmann: This part has an interrupt pin, but it doesn\u0027t interrupt on VBUS changes. It might be better for Volteer to set CONFIG_USB_PD_VBUS_DETECT_TCPC and let the TCPCs handle this and generate interrupts.",
+      "parentUuid": "a5d09757_9c817924",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "8685166f9b6afd840904930d5be423a237e5eb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
