@@ -5,6 +5,8 @@
 
 /* Clocks and power management settings */
 
+#include <stdbool.h>
+
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -18,14 +20,47 @@
 #include "uart.h"
 #include "util.h"
 
+/* Check chip family and variant for compatibility */
+#ifndef CHIP_FAMILY_STM32H7
+#error  Source clock-stm32h7.c does not support this chip family.
+#endif
+#ifndef CHIP_VARIANT_STM32H7X3
+#error Unsupported chip variant.
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ## args)
 
+enum clock_osc {
+	OSC_HSI = 0,	/* High-speed internal oscillator */
+	OSC_CSI,	/* Multi-speed internal oscillator: NOT IMPLEMENTED */
+	OSC_HSE,	/* High-speed external oscillator: NOT IMPLEMENTED */
+	OSC_PLL,	/* PLL */
+};
+
+enum voltage_scale {
+	VOLTAGE_SCALE0 = 0,
+	VOLTAGE_SCALE1,
+	VOLTAGE_SCALE2,
+	VOLTAGE_SCALE3,
+	VOLTAGE_SCALE_COUNT,
+};
+
+enum freq {
+	FREQ_32KHZ  = 32  * 1000,
+	FREQ_64MHZ  = 64  * 1000000,
+	FREQ_140MHZ = 140 * 1000000,
+	FREQ_200MHZ = 200 * 1000000,
+	FREQ_280MHZ = 280 * 1000000,
+	FREQ_400MHZ = 400 * 1000000,
+	FREQ_480MHZ = 480 * 1000000,
+};
+
 /* High-speed oscillator default is 64 MHz */
-#define STM32_HSI_CLOCK 64000000
+#define STM32_HSI_CLOCK FREQ_64MHZ
 /* Low-speed oscillator is 32-Khz */
-#define STM32_LSI_CLOCK 32000
+#define STM32_LSI_CLOCK FREQ_32KHZ
 
 /*
  * LPTIM is a 16-bit counter clocked by LSI
@@ -40,41 +75,13 @@
 #define LPTIM_PRESCALER ((int)BIT(LPTIM_PRESCALER_LOG2))
 #define LPTIM_PERIOD_US (SECOND / (STM32_LSI_CLOCK / LPTIM_PRESCALER))
 
-/*
- * PLL1 configuration:
- * CPU freq = VCO / DIVP = HSI / DIVM * DIVN / DIVP
- *          = 64 / 4 * 50 / 2
- *          = 400 Mhz
- * System clock = 400 Mhz
- *  HPRE = /2  => AHB/Timer clock = 200 Mhz
- */
-#if !defined(PLL1_DIVM) && !defined(PLL1_DIVN) && !defined(PLL1_DIVP)
-#define PLL1_DIVM 4
-#define PLL1_DIVN 50
-#define PLL1_DIVP 2
-#endif
-#define PLL1_FREQ (STM32_HSI_CLOCK / PLL1_DIVM * PLL1_DIVN / PLL1_DIVP)
-
-/* Flash latency settings for AHB/ACLK at 64 Mhz and Vcore in VOS1 range */
-#define FLASH_ACLK_64MHZ (STM32_FLASH_ACR_WRHIGHFREQ_85MHZ | \
-			  (0 << STM32_FLASH_ACR_LATENCY_SHIFT))
-/* Flash latency settings for AHB/ACLK at 200 Mhz and Vcore in VOS1 range */
-#define FLASH_ACLK_200MHZ (STM32_FLASH_ACR_WRHIGHFREQ_285MHZ | \
-			   (2 << STM32_FLASH_ACR_LATENCY_SHIFT))
-
-enum clock_osc {
-	OSC_HSI = 0,	/* High-speed internal oscillator */
-	OSC_CSI,	/* Multi-speed internal oscillator: NOT IMPLEMENTED */
-	OSC_HSE,	/* High-speed external oscillator: NOT IMPLEMENTED */
-	OSC_PLL,	/* PLL */
-};
-
-static int freq = STM32_HSI_CLOCK;
+/* This is not the core frequency */
+static enum freq current_bus_freq = STM32_HSI_CLOCK;
 static int current_osc = OSC_HSI;
 
 int clock_get_freq(void)
 {
-	return freq;
+	return current_bus_freq;
 }
 
 int clock_get_timer_freq(void)
@@ -95,14 +102,111 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 	}
 }
 
-static void clock_flash_latency(uint32_t target_acr)
+/* Flash latency values are dependent on peripheral speed and voltage scale */
+static void clock_flash_latency(enum freq axi_freq, enum voltage_scale vos)
 {
+	uint32_t target_acr;
+
+	if (axi_freq == FREQ_64MHZ && vos == VOLTAGE_SCALE3) {
+		target_acr = STM32_FLASH_ACR_WRHIGHFREQ_85MHZ |
+			     (0 << STM32_FLASH_ACR_LATENCY_SHIFT);
+	} else if (axi_freq == FREQ_200MHZ && vos == VOLTAGE_SCALE1) {
+		target_acr = STM32_FLASH_ACR_WRHIGHFREQ_285MHZ |
+			     (2 << STM32_FLASH_ACR_LATENCY_SHIFT);
+	} else {
+		ASSERT(0);
+	}
+
 	STM32_FLASH_ACR(0) = target_acr;
 	while (STM32_FLASH_ACR(0) != target_acr)
 		;
 }
 
-static void clock_enable_osc(enum clock_osc osc)
+static void clock_pll1_configure(enum freq freq) {
+	uint32_t divm = 4; // Input prescaler (16MHz max for PLL -- 64/4 ==> 16)
+	uint32_t divn;     // Pll multiplier
+	uint32_t divp;     // Output 1 prescaler
+	switch (freq)
+	{
+	case FREQ_400MHZ:
+		/*
+		 * PLL1 configuration:
+		 * CPU freq = VCO / DIVP = HSI / DIVM * DIVN / DIVP
+		 *          = 64MHz/4 * 50 / 2
+		 *          = 16MHz * 50 / 2
+		 *          = 400 Mhz
+		 */
+		divn = 50;
+		divp = 2;
+		break;
+	case FREQ_200MHZ:
+		/*
+		 * PLL1 configuration:
+		 * CPU freq = VCO / DIVP = HSI / DIVM * DIVN / DIVP
+		 *          = 64 / 4 * 25 / 2
+		 *          = 16MHz * 50 / 2
+		 *          = 200 Mhz
+		 */
+		divn = 25;
+		divp = 2;
+		break;
+	case FREQ_280MHZ:
+		divn = 35;
+		divp = 2;
+		break;
+	case FREQ_480MHZ:
+		divn = 60;
+		divp = 2;
+		break;
+	default:
+		ASSERT(0);
+		break;
+	}
+
+	ASSERT((STM32_HSI_CLOCK / divm * divn / divp) == freq);
+
+	/* Configure PLL1 using 64 Mhz HSI as input */
+	STM32_RCC_PLLCKSELR = STM32_RCC_PLLCKSEL_PLLSRC_HSI
+			    | STM32_RCC_PLLCKSEL_DIVM1(divm);
+	/* in integer mode, wide range VCO with 16Mhz input, use divP */
+	STM32_RCC_PLLCFGR = STM32_RCC_PLLCFG_PLL1VCOSEL_WIDE
+			  | STM32_RCC_PLLCFG_PLL1RGE_8M_16M
+			  | STM32_RCC_PLLCFG_DIVP1EN;
+	STM32_RCC_PLL1DIVR = STM32_RCC_PLLDIV_DIVP(divp)
+			   | STM32_RCC_PLLDIV_DIVN(divn);
+}
+
+/**
+ * Configure peripheral domain prescalers to allow a given sysclk frequency.
+ *
+ * @param sysclk The input system clock, after the system clock prescaler.
+ * @return The bus clock speed selected and configured
+ */
+static enum freq clock_peripheral_configure(enum freq sysclk) {
+	switch (sysclk)
+	{
+	case FREQ_64MHZ:
+		/* Restore /1 HPRE (AHB prescaler) */
+		/* Disable downstream prescalers */
+		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV1
+				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
+				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
+		/* TODO(b/149512910): Adjust more peripheral prescalers */
+		return FREQ_64MHZ;
+	case FREQ_400MHZ:
+		/* Put /2 on HPRE (AHB prescaler) to keep at the 200MHz max */
+		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV2
+				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
+				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
+		/* TODO(b/149512910): Adjust more peripheral prescalers */
+		return FREQ_200MHZ;
+	default:
+		ASSERT(0);
+		return 0;
+	}
+}
+
+static void clock_enable_osc(enum clock_osc osc, bool enabled)
 {
 	uint32_t ready;
 	uint32_t on;
@@ -117,11 +221,20 @@ static void clock_enable_osc(enum clock_osc osc)
 		on = STM32_RCC_CR_PLL1ON;
 		break;
 	default:
+		ASSERT(0);
 		return;
 	}
 
+	/* Turn off the oscillator, but don't wait for shutdown */
+	if (!enabled) {
+		STM32_RCC_CR &= ~on;
+		return;
+	}
+
+	/* Turn on the oscillator if not already on */
 	if (!(STM32_RCC_CR & ready)) {
 		STM32_RCC_CR |= on;
+		/* Wait until ready */
 		while (!(STM32_RCC_CR & ready))
 			;
 	}
@@ -150,16 +263,32 @@ static void clock_switch_osc(enum clock_osc osc)
 		;
 }
 
-static void switch_voltage_scale(uint32_t vos)
+static void switch_voltage_scale(enum voltage_scale vos)
 {
-	STM32_PWR_D3CR &= ~STM32_PWR_D3CR_VOSMASK;
-	STM32_PWR_D3CR |= vos;
-	while (!(STM32_PWR_D3CR & STM32_PWR_D3CR_VOSRDY))
+	volatile uint32_t *const vos_reg   = &STM32_PWR_D3CR;
+	const uint32_t           vos_ready = STM32_PWR_D3CR_VOSRDY;
+	const uint32_t           vos_mask  = STM32_PWR_D3CR_VOSMASK;
+	const uint32_t           vos_values[VOLTAGE_SCALE_COUNT] = {
+							STM32_PWR_D3CR_VOS1,
+							STM32_PWR_D3CR_VOS1,
+							STM32_PWR_D3CR_VOS2,
+							STM32_PWR_D3CR_VOS3,
+						 };
+	/* VOS0 on the H743 requires VOS1 and setting an extra SYS reg */
+	if (vos == VOLTAGE_SCALE0)
+		ASSERT(0);
+
+	*vos_reg &= ~vos_mask;
+	*vos_reg |= vos_values[vos];
+	while (!(*vos_reg & vos_ready))
 		;
 }
 
 static void clock_set_osc(enum clock_osc osc)
 {
+	enum freq target_sysclk_freq = FREQ_64MHZ;
+	enum voltage_scale target_voltage_scale = VOLTAGE_SCALE3;
+
 	if (osc == current_osc)
 		return;
 
@@ -169,38 +298,34 @@ static void clock_set_osc(enum clock_osc osc)
 	case OSC_HSI:
 		/* Switch to HSI */
 		clock_switch_osc(osc);
-		freq = STM32_HSI_CLOCK;
-		/* Restore /1 HPRE (AHB prescaler) */
-		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV1
-				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
-				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
+		current_bus_freq = clock_peripheral_configure(target_sysclk_freq);
 		/* Use more optimized flash latency settings for 64-MHz ACLK */
-		clock_flash_latency(FLASH_ACLK_64MHZ);
+		clock_flash_latency(current_bus_freq, target_voltage_scale);
 		/* Turn off the PLL1 to save power */
-		STM32_RCC_CR &= ~STM32_RCC_CR_PLL1ON;
-		switch_voltage_scale(STM32_PWR_D3CR_VOS3);
+		clock_enable_osc(OSC_PLL, false);
+		switch_voltage_scale(target_voltage_scale);
 		break;
 
 	case OSC_PLL:
-		switch_voltage_scale(STM32_PWR_D3CR_VOS1);
-		/* Configure PLL1 using 64 Mhz HSI as input */
-		STM32_RCC_PLLCKSELR = STM32_RCC_PLLCKSEL_PLLSRC_HSI |
-				      STM32_RCC_PLLCKSEL_DIVM1(PLL1_DIVM);
-		/* in integer mode, wide range VCO with 16Mhz input, use divP */
-		STM32_RCC_PLLCFGR = STM32_RCC_PLLCFG_PLL1VCOSEL_WIDE
-				| STM32_RCC_PLLCFG_PLL1RGE_8M_16M
-				| STM32_RCC_PLLCFG_DIVP1EN;
-		STM32_RCC_PLL1DIVR = STM32_RCC_PLLDIV_DIVP(PLL1_DIVP)
-				| STM32_RCC_PLLDIV_DIVN(PLL1_DIVN);
-		/* turn on PLL1 and wait that it's ready */
-		clock_enable_osc(OSC_PLL);
-		/* Put /2 on HPRE (AHB prescaler) to keep at the 200Mhz max */
-		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV2
-				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
-				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
-		freq = PLL1_FREQ / 2;
+		/*
+		 * PLL1 configuration:
+		 * CPU freq = VCO / DIVP = HSI / DIVM * DIVN / DIVP
+		 *          = 64 / 4 * 50 / 2
+		 *          = 400 Mhz
+		 * System clock = 400 Mhz
+		 *  HPRE = /2  => AHB/Timer clock = 200 Mhz
+		 */
+		target_sysclk_freq = FREQ_400MHZ;
+		target_voltage_scale = VOLTAGE_SCALE1;
+
+		switch_voltage_scale(target_voltage_scale);
+		clock_pll1_configure(target_sysclk_freq);
+		/* turn on PLL1 and wait until it's ready */
+		clock_enable_osc(OSC_PLL, true);
+		current_bus_freq = clock_peripheral_configure(target_sysclk_freq);
 		/* Increase flash latency before transition the clock */
-		clock_flash_latency(FLASH_ACLK_200MHZ);
+		clock_flash_latency(current_bus_freq, target_voltage_scale);
+
 		/* Switch to PLL */
 		clock_switch_osc(OSC_PLL);
 		break;
@@ -422,7 +547,7 @@ void clock_init(void)
 		| STM32_RCC_D2CCIP1R_SPI45SEL_HSI;
 
 	/* Use more optimized flash latency settings for ACLK = HSI = 64 Mhz */
-	clock_flash_latency(FLASH_ACLK_64MHZ);
+	clock_flash_latency(FREQ_64MHZ, VOLTAGE_SCALE3);
 
 	/* Ensure that LSI is ON to clock LPTIM1 and IWDG */
 	STM32_RCC_CSR |= STM32_RCC_CSR_LSION;
@@ -444,7 +569,7 @@ static int command_clock(int argc, char **argv)
 		else
 			return EC_ERROR_PARAM1;
 	}
-	ccprintf("Clock frequency is now %d Hz\n", freq);
+	ccprintf("Clock frequency is now %d Hz\n", clock_get_freq());
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(clock, command_clock,
