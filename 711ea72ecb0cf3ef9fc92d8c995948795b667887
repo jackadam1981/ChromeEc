@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aaafba7f_c315bf17",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-09T06:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a46b73_6431d2dd",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 79
+      },
+      "revId": "711ea72ecb0cf3ef9fc92d8c995948795b667887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fab7b99_f42f5155",
         "filename": "util/make_linux_ec_commands_h.sh",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-06T02:18:03Z",
       "side": 1,
       "message": "Is this intended?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "711ea72ecb0cf3ef9fc92d8c995948795b667887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48497171_1f9ab765",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-09T06:15:57Z",
+      "side": 1,
+      "message": "I don\u0027t see that changes in my patch.",
+      "parentUuid": "2fab7b99_f42f5155",
       "range": {
         "startLine": 62,
         "startChar": 0,
