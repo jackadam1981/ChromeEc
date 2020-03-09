@@ -16,6 +16,24 @@
       "revId": "b87db290edc65de497f4a453f8ee81286ad48d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca35a98f_02caf600",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-09T18:57:44Z",
+      "side": 1,
+      "message": "My thinking was that the New AP gets the sensor info via MOTIONSENSE_CMD_INFO using v4 which includes uint32_t flags. So if the sensor doesn\u0027t say it supports online calibration (MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB) then we don\u0027t register the listener.\n\nIf that\u0027s the case, then I think we can just leave this as is. I\u0027ll update the logic for online_calibration_read to let us read any valid sensor reading and not just dirty ones.",
+      "parentUuid": "8146cb4d_ed7cf7a9",
+      "revId": "b87db290edc65de497f4a453f8ee81286ad48d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
