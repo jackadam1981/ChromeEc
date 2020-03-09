@@ -22,6 +22,29 @@
       "revId": "59cd1a51866f396d8e43a83d9ca481ae3f9b7a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6d22c3_c546a9fe",
+        "filename": "board/mushu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-09T20:20:57Z",
+      "side": 1,
+      "message": "As I mentioned in the previous CL, this change by itself should come first in this stack.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 56
+      },
+      "revId": "59cd1a51866f396d8e43a83d9ca481ae3f9b7a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
