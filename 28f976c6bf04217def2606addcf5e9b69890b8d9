@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23d16435_d6949539",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-09T15:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65269d39_64376482",
+      "range": {
+        "startLine": 607,
+        "startChar": 5,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afdfaed5_0fce7bfb",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "ab61add4_73349e0c",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-09T15:11:35Z",
+      "side": 1,
+      "message": "that is next on my list.",
+      "parentUuid": "afdfaed5_0fce7bfb",
+      "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cdb9f41_39ef9258",
         "filename": "baseboard/zork/cbi_ec_fw_config.h",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315b315f_563e21fe",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-09T15:11:35Z",
+      "side": 1,
+      "message": "yes.  Inserted the macro inline and moved these functions to where the macros were defined.",
+      "parentUuid": "8cdb9f41_39ef9258",
+      "revId": "28f976c6bf04217def2606addcf5e9b69890b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
