@@ -3942,26 +3942,13 @@ static void pe_vdm_identity_request_cbl_run(int port)
 
 		if (sop == TCPC_TX_SOP_PRIME && type == PD_DATA_VENDOR_DEF &&
 							cnt > 0 && ext == 0) {
-			/*
-			 * Valid DiscoverIdentity responses should have at least
-			 * 4 objects (header, ID header, Cert Stat, Product VDO)
-			 */
-			if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK &&
-								cnt > 3) {
+			if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK) {
 				/*
 				 * PE_SRC_VDM_Identity_ACKed and
 				 * PE_INIT_PORT_VDM_Identity_ACKed embedded here
 				 */
-				pe[port].cable.rev =
-					PD_HEADER_REV(emsg[port].header);
-				pe[port].cable.type = PD_IDH_PTYPE(payload[1]);
-				pe[port].cable.attr.raw_value = payload[3];
-				if (cnt > 4)
-					pe[port].cable.attr2.raw_value =
-								payload[4];
-				pe[port].cable.discovery = PD_DISC_COMPLETE;
-				pe[port].cable.is_identified = 1;
-
+				dfp_consume_cable_response(port, cnt, payload,
+							emsg[port].header);
 				/*
 				 * Note: If port partner runs PD 2.0, we must
 				 * use PD 2.0 to communicate with the cable plug
@@ -4182,11 +4169,6 @@ static void pe_vdm_request_run(int port)
 static void pe_vdm_request_exit(int port)
 {
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
-}
-
-enum idh_ptype get_usb_pd_cable_type(int port)
-{
-	return pe[port].cable.type;
 }
 
 /**
