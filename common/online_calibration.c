@@ -8,6 +8,7 @@
 #include "hwtimer.h"
 #include "online_calibration.h"
 #include "common.h"
+#include "mag_cal.h"
 #include "util.h"
 #include "vec3.h"
 #include "task.h"
@@ -107,6 +108,12 @@ void online_calibration_init(void)
 						type_specific_data);
 			break;
 		}
+		case MOTIONSENSE_TYPE_MAG: {
+			if (type_specific_data)
+				init_mag_cal((struct mag_cal_t *)
+					     type_specific_data);
+			break;
+		}
 		default:
 			break;
 		}
@@ -148,13 +155,10 @@ int online_calibration_process_data(
 	struct motion_sensor_t *sensor,
 	uint32_t timestamp)
 {
+	int sensor_num = motion_sensors - sensor;
 	int rc;
 	int temperature;
 	struct online_calib_data *calib_data;
-
-	rc = get_temperature(sensor, &temperature);
-	if (rc != EC_SUCCESS)
-		return rc;
 
 	calib_data = sensor->online_calib_data;
 	switch (sensor->type) {
@@ -163,10 +167,14 @@ int online_calibration_process_data(
 			(struct accel_cal *) (calib_data->type_specific_data);
 		fpv3_t fdata;
 
+		/* Temperature is required for accelerometer calibration. */
+		rc = get_temperature(sensor, &temperature);
+		if (rc != EC_SUCCESS)
+			return rc;
+
 		data_int16_to_fp(sensor, data->data, fdata);
 		if (accel_cal_accumulate(cal, timestamp, fdata[X], fdata[Y],
 					 fdata[Z], temperature)) {
-			int sensor_num = motion_sensors - sensor;
 
 			mutex_lock(&g_calib_cache_mutex);
 			/* Convert result to the right scale. */
@@ -174,6 +182,30 @@ int online_calibration_process_data(
 			/* Set valid and dirty. */
 			sensor_calib_cache_valid_map |=	BIT(sensor_num);
 			sensor_calib_cache_dirty_map |=	BIT(sensor_num);
+			mutex_unlock(&g_calib_cache_mutex);
+			/* Notify the AP. */
+			mkbp_send_event(EC_MKBP_EVENT_ONLINE_CALIBRATION);
+		}
+		break;
+	}
+	case MOTIONSENSE_TYPE_MAG: {
+		struct mag_cal_t *cal =
+			(struct mag_cal_t *) (calib_data->type_specific_data);
+		int idata[] = {
+			(int)data->data[X],
+			(int)data->data[Y],
+			(int)data->data[Z],
+		};
+
+		if (mag_cal_update(cal, idata)) {
+			mutex_lock(&g_calib_cache_mutex);
+			/* Copy the values */
+			calib_data->cache[X] = cal->bias[X];
+			calib_data->cache[Y] = cal->bias[Y];
+			calib_data->cache[Z] = cal->bias[Z];
+			/* Set valid and dirty. */
+			sensor_calib_cache_valid_map |= BIT(sensor_num);
+			sensor_calib_cache_dirty_map |= BIT(sensor_num);
 			mutex_unlock(&g_calib_cache_mutex);
 			/* Notify the AP. */
 			mkbp_send_event(EC_MKBP_EVENT_ONLINE_CALIBRATION);
