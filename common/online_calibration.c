@@ -93,8 +93,24 @@ void online_calibration_init(void)
 {
 	size_t i;
 
-	for (i = 0; i < SENSOR_COUNT; i++)
-		motion_sensors[i].online_calib_data->last_temperature = -1;
+	for (i = 0; i < SENSOR_COUNT; i++) {
+		struct motion_sensor_t *s = motion_sensors + i;
+		void *type_specific_data = s->online_calib_data
+			? s->online_calib_data->type_specific_data
+			: NULL;
+
+		s->online_calib_data->last_temperature = -1;
+		switch (s->type) {
+		case MOTIONSENSE_TYPE_ACCEL: {
+			if (type_specific_data)
+				accel_cal_reset((struct accel_cal *)
+						type_specific_data);
+			break;
+		}
+		default:
+			break;
+		}
+	}
 }
 
 bool online_calibration_has_new_values(void)
