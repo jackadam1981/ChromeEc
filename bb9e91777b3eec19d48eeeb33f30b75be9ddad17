@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "17ebcdf5_dd47130a",
+        "filename": "board/damu/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-03-09T03:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ec9314_aba07a67",
+      "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b4b4f9e_71e482ff",
         "filename": "board/damu/led.c",
         "patchSetId": 10
@@ -126,6 +144,30 @@
       "side": 1,
       "message": "Could you confirm with HW. As I know, amber is red + green in treeya.",
       "parentUuid": "d649bf20_2d78fd66",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38a0b424_476655d2",
+        "filename": "board/damu/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-03-09T03:00:30Z",
+      "side": 1,
+      "message": "After confirm with HW, damu have amber led on board. We don\u0027t need combine two colors.",
+      "parentUuid": "1638c708_20203bf5",
       "range": {
         "startLine": 50,
         "startChar": 0,
