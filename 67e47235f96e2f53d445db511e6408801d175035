@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7740ed5_a2273e05",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-09T18:22:29Z",
+      "side": 1,
+      "message": "nit: no space after cast (linux style)",
+      "range": {
+        "startLine": 147,
+        "startChar": 23,
+        "endLine": 147,
+        "endChar": 24
+      },
+      "revId": "67e47235f96e2f53d445db511e6408801d175035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7daf8411_b272fbba",
+        "filename": "include/accel_cal.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-09T18:22:29Z",
+      "side": 1,
+      "message": "were there changes to this file which required it?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "67e47235f96e2f53d445db511e6408801d175035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a73ca026_74ed23b1",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-09T18:22:29Z",
+      "side": 1,
+      "message": "comment is a little bit silly given the name of the struct",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "67e47235f96e2f53d445db511e6408801d175035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96870004_7e702f6e",
+        "filename": "include/util.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-09T18:22:29Z",
+      "side": 1,
+      "message": "add documentation, and remove the ifndef if possible (to prevent accidental duplicate definition).",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "67e47235f96e2f53d445db511e6408801d175035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
