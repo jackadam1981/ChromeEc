@@ -587,7 +587,6 @@ static uint32_t sku_id = 0x7fffffff;
 static void cbi_init(void)
 {
 	uint32_t board_version = 0;
-	uint32_t cbi_fw_config = 0;
 	uint32_t val;
 
 	if (cbi_get_board_version(&val) == EC_SUCCESS)
@@ -600,8 +599,9 @@ static void cbi_init(void)
 
 	/* FW config */
 	if (cbi_get_fw_config(&val) == EC_SUCCESS)
-		cbi_fw_config = val;
-	ccprints("FW Config: %d (0x%x)", cbi_fw_config, cbi_fw_config);
+		ccprints("FW Config: %d (0x%x)", val, val);
+	else
+		ccprints("FW Config: not set in cbi");
 
 #ifdef HAS_TASK_MOTIONSENSE
 	board_update_sensor_config_from_sku();

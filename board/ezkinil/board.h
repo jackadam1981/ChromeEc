@@ -100,6 +100,12 @@ enum ezkinil_ec_cfg_usb_mb_type {
 	EZKINIL_MB_USBAC = 0,
 };
 
+static inline enum ezkinil_ec_cfg_usb_mb_type
+ec_config_get_usb_mb(void)
+{
+	return get_cbi_ec_cfg_usb_mb();
+}
+
 /**
  * EZKINIL_DB_T_OPT1_USBC_HDMI
  *	USB-A1  none
@@ -130,7 +136,7 @@ enum ezkinil_ec_cfg_usb_db_type {
 };
 
 static inline enum ezkinil_ec_cfg_usb_db_type
-ec_config_has_usb_db(void)
+ec_config_get_usb_db(void)
 {
 	return get_cbi_ec_cfg_usb_db();
 }
@@ -141,7 +147,7 @@ ec_config_has_usb_db(void)
 
 static inline bool ec_config_has_usba1_retimer_tusb522(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBA1_RETIMER_TUSB522);
 }
 
@@ -151,7 +157,7 @@ static inline bool ec_config_has_usba1_retimer_tusb522(void)
 
 static inline bool ec_config_has_usbc1_retimer_ps8743(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBC1_RETIMER_PS8743);
 }
 
@@ -161,7 +167,7 @@ static inline bool ec_config_has_usbc1_retimer_ps8743(void)
 
 static inline bool ec_config_has_usbc1_retimer_tusb544(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBC1_RETIMER_TUSB544);
 }
 

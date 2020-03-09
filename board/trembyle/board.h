@@ -99,6 +99,12 @@ enum trembyle_ec_cfg_usb_mb_type {
 	TREMBYLE_MB_USBAC = 0,
 };
 
+static inline enum trembyle_ec_cfg_usb_mb_type
+ec_config_get_usb_mb(void)
+{
+	return get_cbi_ec_cfg_usb_mb();
+}
+
 /**
  * TREMBYLE_DB_T_OPT1_USBAC_HMDI
  *	USB-A1  Speed: 10 Gbps
@@ -143,7 +149,7 @@ enum trembyle_ec_cfg_usb_db_type {
 };
 
 static inline enum trembyle_ec_cfg_usb_db_type
-ec_config_has_usb_db(void)
+ec_config_get_usb_db(void)
 {
 	return get_cbi_ec_cfg_usb_db();
 }
@@ -155,7 +161,7 @@ ec_config_has_usb_db(void)
 
 static inline bool ec_config_has_usbc1_retimer_ps8802(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBC1_RETIMER_PS8802);
 }
 
@@ -165,7 +171,7 @@ static inline bool ec_config_has_usbc1_retimer_ps8802(void)
 
 static inline bool ec_config_has_usbc1_retimer_ps8818(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBC1_RETIMER_PS8818);
 }
 

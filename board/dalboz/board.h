@@ -95,6 +95,12 @@ enum dalboz_ec_cfg_usb_mb_type {
 	DALBOZ_MB_USBAC = 0,
 };
 
+static inline enum dalboz_ec_cfg_usb_mb_type
+ec_config_get_usb_mb(void)
+{
+	return get_cbi_ec_cfg_usb_mb();
+}
+
 /**
  * DALBOZ_DB_D_OPT1_USBAC
  *	USB-A1  Speed: 5 Gbps
@@ -123,7 +129,7 @@ enum dalboz_ec_cfg_usb_db_type {
 };
 
 static inline enum dalboz_ec_cfg_usb_db_type
-ec_config_has_usb_db(void)
+ec_config_get_usb_db(void)
 {
 	return get_cbi_ec_cfg_usb_db();
 }
@@ -134,7 +140,7 @@ ec_config_has_usb_db(void)
 
 static inline bool ec_config_has_usbc1(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBC1);
 }
 
@@ -144,7 +150,7 @@ static inline bool ec_config_has_usbc1(void)
 
 static inline bool ec_config_has_usbc1_retimer_ps8740(void)
 {
-	return !!(BIT(ec_config_has_usb_db()) &
+	return !!(BIT(ec_config_get_usb_db()) &
 		  HAS_USBC1_RETIMER_PS8740);
 }
 

@@ -50,7 +50,7 @@ static inline uint32_t get_cbi_fw_config(void)
 /*
  * Lid Accelerometer Sensor (3 bits)
  *
- * get_cbi_ec_cfg_lid_accel_sensor() will return ec_cfg_lid_accel_sensor_type
+ * ec_config_has_lid_accel_sensor() will return ec_cfg_lid_accel_sensor_type
  */
 enum ec_cfg_lid_accel_sensor_type {
 	LID_ACCEL_NONE = 0,
@@ -73,7 +73,7 @@ ec_config_has_lid_accel_sensor(void)
 /*
  * Base Gyro Sensor (3 bits)
  *
- * get_cbi_ec_cfg_base_gyro_sensor() will return ec_cfg_base_gyro_type
+ * ec_config_has_base_gyro_sensor() will return ec_cfg_base_gyro_sensor_type
  */
 enum ec_cfg_base_gyro_sensor_type {
 	BASE_GYRO_NONE = 0,
@@ -96,7 +96,7 @@ ec_config_has_base_gyro_sensor(void)
 /*
  * PWM Keyboard Backlight (1 bit)
  *
- * get_cbi_ec_cfg_pwm_keyboard_backlight() will return 1 is present or 0
+ * ec_config_has_pwm_keyboard_backlight() will return 1 is present or 0
  */
 enum ec_cfg_pwm_keyboard_backlight_type {
 	PWM_KEYBOARD_BACKLIGHT_NO = 0,
@@ -118,7 +118,7 @@ ec_config_has_pwm_keyboard_backlight(void)
 /*
  * Lid Angle Tablet Mode (1 bit)
  *
- * get_cbi_ec_cfg_lid_angle_tablet_mode() will return 1 is present or 0
+ * ec_config_has_lid_angle_tablet_mode() will return 1 is present or 0
  */
 enum ec_cfg_lid_angle_tablet_mode_type {
 	LID_ANGLE_TABLET_MODE_NO = 0,
