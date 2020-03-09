@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b4b4f9e_71e482ff",
+        "filename": "board/damu/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-09T01:45:26Z",
+      "side": 1,
+      "message": "The mapping seems weird:\n\n GPIO AMBER -\u003e color red\n GPIO AMBER + GPIO WHITE -\u003e color amber\n\nIf this is what you expected, could you add comments for this?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
