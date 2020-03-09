@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0f919f_04123dcf",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-09T23:05:29Z",
+      "side": 1,
+      "message": "Where is this function?",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a27fb8_d5a2ffac",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-09T23:05:29Z",
+      "side": 1,
+      "message": "Where is this function?",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "119a761a_6d19be60",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-09T23:05:29Z",
+      "side": 1,
+      "message": "nit: ec_cfg_base_gyro_sensor_type",
+      "range": {
+        "startLine": 76,
+        "startChar": 49,
+        "endLine": 76,
+        "endChar": 70
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d41386_4e932a76",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-09T23:05:29Z",
+      "side": 1,
+      "message": "nit: not needed?",
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b835438_d7309341",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-09T23:05:29Z",
+      "side": 1,
+      "message": "nit: change to ec_config_get_usb_db()?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
