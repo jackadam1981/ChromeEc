@@ -46,6 +46,30 @@
       "revId": "8685166f9b6afd840904930d5be423a237e5eb70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea5d7c6_6f11f9c1",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-09T21:40:02Z",
+      "side": 1,
+      "message": "Hmm, if that\u0027s the case, I\u0027m almost tempted to remove the CONFIG_* option from the driver. I suppose there\u0027s an implicit contract that if CONFIG_USB_PD_VBUS_DETECT_* is defined, it should notify the system when VBUS changes in addition to providing a mechanism to determine whether VBUS is present or not. We may want to make that more clear in config.h.",
+      "parentUuid": "9d7803c4_ab08c2b7",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "8685166f9b6afd840904930d5be423a237e5eb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
