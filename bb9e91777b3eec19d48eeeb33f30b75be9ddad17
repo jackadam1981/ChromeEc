@@ -46,6 +46,30 @@
       "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9820734b_a702f21a",
+        "filename": "board/damu/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-09T02:30:37Z",
+      "side": 1,
+      "message": "Then should we rename the IOEX_BAT_LED_AMBER_L to IOEX_BAT_LED_RED_L?",
+      "parentUuid": "d649bf20_2d78fd66",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "bb9e91777b3eec19d48eeeb33f30b75be9ddad17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
