@@ -16,6 +16,24 @@
       "revId": "5874ffc3424377f454daa2c97ce2c9f305b1a34c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7877ab4_a92613ae",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T16:33:02Z",
+      "side": 1,
+      "message": "Daisuke and I used to discuss about it, and agree that EC-EFS is one of functions (and only one for now though) based on EC-CR50 communication. For that reason, I\u0027ve preferred EC-CR50-Comm expression in naming. If the name should include \u0027EFS\u0027, then how about CONFIG_EC_EFS_SUPPORT?",
+      "parentUuid": "ecedea9b_72a83bab",
+      "revId": "5874ffc3424377f454daa2c97ce2c9f305b1a34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
