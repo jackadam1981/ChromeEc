@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d97df03a_efbb167d",
+        "filename": "baseboard/zork/cbi_ec_fw_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T17:27:15Z",
+      "side": 1,
+      "message": "nit: you can make it a static locally within get_cbi_fw_config",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "cc4ffd2b8c249a409543bc124f62250d3e2dd561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62b0ddf_db22d299",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T17:27:15Z",
+      "side": 1,
+      "message": "db",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 17
+      },
+      "revId": "cc4ffd2b8c249a409543bc124f62250d3e2dd561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
