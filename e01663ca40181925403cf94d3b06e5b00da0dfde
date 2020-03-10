@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7ddc244d_520af055",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T18:21:12Z",
+      "side": 1,
+      "message": "This is not this change\u0027s addition, but it is still not clear: how would ec_efs_ctx.boot_mode be ever set to EC_EFS_BOOT_MODE_NORMAL?\n\nA comment would help.",
+      "range": {
+        "startLine": 186,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 26
+      },
+      "revId": "e01663ca40181925403cf94d3b06e5b00da0dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f7888d8_bf78438f",
         "filename": "common/ec_efs.c",
         "patchSetId": 1
