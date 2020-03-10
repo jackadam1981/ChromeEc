@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27c0e68e_6fb70347",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2360,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-10T22:41:20Z",
+      "side": 1,
+      "message": "how about making common code for exit_supported_alt_modes()\nreplace exit_dp_mode with exit_supported_alt_modes\nin a loop (for i \u003c supported_modes) do this rest of the code?\n\nreplacing USB_VID_** with svid from supported modes",
+      "range": {
+        "startLine": 2360,
+        "startChar": 12,
+        "endLine": 2360,
+        "endChar": 25
+      },
+      "revId": "2d1086dff75025c11a7ba65a79464396badc01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
