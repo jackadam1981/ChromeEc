@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b6af793_0c49a3eb",
+        "filename": "board/host/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T16:59:04Z",
+      "side": 1,
+      "message": "why do you skip (0, 15) - does this number have to match some other case?",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f2aa84_23d37335",
+        "filename": "board/host/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T16:59:04Z",
+      "side": 1,
+      "message": "please wrap lines at 80 cols or less.",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 20,
+        "endChar": 83
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6905b795_ea375bd0",
+        "filename": "chip/host/uartn.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T16:59:04Z",
+      "side": 1,
+      "message": "why do these have to be #defines as opposed to functions?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75c38142_2291f139",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T16:59:04Z",
+      "side": 1,
+      "message": "another unrelated change. I suggest you put these in a separate code clean up patch.",
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca61259_a1e39b2f",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T16:59:04Z",
+      "side": 1,
+      "message": "why does this have to be a string, defining it as an array would make it better readable.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
