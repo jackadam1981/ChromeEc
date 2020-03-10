@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e41ce41_7ede164c",
+        "filename": "include/keyboard_vivaldi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-10T19:21:05Z",
+      "side": 1,
+      "message": "\u003e Would be nice to line these up better.\n\nI tried, but not possible unless we are OK to break some other nice-to-have rules. It will either exceed 80 cols (Currently it is at 77 cols), or will have tabs followed by spaces. Is that OK (I think some of these rules trigger git hook failures while submitting).",
+      "parentUuid": "e308d587_5f829ffd",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "6a94e3e25447fc6e64b17ee45675d0b845c17bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7789ef8e_f60e58f5",
         "filename": "include/keyboard_vivaldi.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-10T19:13:54Z",
       "side": 1,
       "message": "nit: vivaldi_top_keys? or vivaldi_top_row_keys?",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "6a94e3e25447fc6e64b17ee45675d0b845c17bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bda1543_b59d57c3",
+        "filename": "include/keyboard_vivaldi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-10T19:21:05Z",
+      "side": 1,
+      "message": "\u003e nit: vivaldi_top_keys? or vivaldi_top_row_keys?\n\nSure, I\u0027ll change it to vivaldi_top_row_keys",
+      "parentUuid": "7789ef8e_f60e58f5",
       "range": {
         "startLine": 44,
         "startChar": 5,
