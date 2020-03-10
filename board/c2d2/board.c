@@ -867,39 +867,18 @@ static int command_h1_vref_present(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(h1_vref, command_h1_vref_present,
 			"",
 			"Get if the h1 vref is present");
-
-/* Voltage thresholds for rail detection */
-#define VREF_3300_MIN_MV 2300
 #define VREF_1800_MIN_MV 1500
 
 static enum vref get_vref(enum adc_channel chan)
 {
-	const int adc = adc_read_channel(chan);
-
-	if (adc == ADC_READ_ERROR)
-		return OFF;
-	else if (adc > VREF_3300_MIN_MV)
-		return PP3300;
-	else if (adc > VREF_1800_MIN_MV)
-		return PP1800;
-	else
+	
 		return OFF;
 }
 
 static inline void drain_vref_lines(void)
 {
 	mutex_lock(&vref_bus_state_mutex);
-	if (vref_monitor_disable) {
-		mutex_unlock(&vref_bus_state_mutex);
-		return;
-	}
-
-	/*
-	 * Disconnect level shifters to prevent any leakage on DUT side while we
-	 * are draining Vref lines for a proper read.
-	 */
-	gpio_set_level(GPIO_EN_MISO_MOSI_H1_UART, 0);
-	gpio_set_level(GPIO_EN_CLK_CSN_EC_UART, 0);
+	
 
 	/* Disconnect Vref switches */
 	gpio_set_level(GPIO_EN_SPIVREF_RSVD_H1VREF_H1_RST, 0);
@@ -907,12 +886,7 @@ static inline void drain_vref_lines(void)
 
 	/* Actively pull down floating voltage */
 	gpio_set_flags(GPIO_SPIVREF_RSVD_H1VREF_H1_RST_ODL, GPIO_OUT_LOW);
-	gpio_set_flags(GPIO_SPIVREF_HOLDN_ECVREF_H1_PWRBTN_ODL, GPIO_OUT_LOW);
-
-	/* Ensure we have enough time to drain line. Not in mutex */
-	mutex_unlock(&vref_bus_state_mutex);
-	msleep(5);
-	mutex_lock(&vref_bus_state_mutex);
+	gpio_set_flags(GPIO_SPIVREF_HOLDN_ECVREF_H1_PWRBTN_ODL, GPIO_OUT_LOW);ck(&vref_bus_state_mutex);
 	if (vref_monitor_disable) {
 		mutex_unlock(&vref_bus_state_mutex);
 		/*
