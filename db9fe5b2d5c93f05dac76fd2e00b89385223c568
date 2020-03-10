@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "ca65567a_e20bf078",
+        "filename": "board/host/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Line 36 assigns pin(0, 15) to USB_C0_DISCHARGE.",
+      "parentUuid": "2b6af793_0c49a3eb",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5491f7e9_6173dc7c",
+        "filename": "board/host/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f2aa84_23d37335",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 20,
+        "endChar": 83
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6905b795_ea375bd0",
         "filename": "chip/host/uartn.h",
         "patchSetId": 2
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d7b430c9_684d0d96",
+        "filename": "chip/host/uartn.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6905b795_ea375bd0",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75c38142_2291f139",
         "filename": "common/ec_efs.c",
         "patchSetId": 2
@@ -85,6 +157,24 @@
       "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00106662_0e9ba83e",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c38142_2291f139",
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "9183f3b0_62e272e1",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca61259_a1e39b2f",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad4e9725_58df3322",
         "filename": "test/ec_comm.c",
         "patchSetId": 2
@@ -131,6 +245,30 @@
       "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c29a640_1511b3e9",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "I meant \"a sample packet for CMD_VERIFY_HASH\". \nRenaming it to sample_packet_cmd_verify_hash.",
+      "parentUuid": "ad4e9725_58df3322",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "78cc60e7_a870374a",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fc73e66_d29f0bc2",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 52
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eb873df_a6ec6ab7",
         "filename": "test/ec_comm.c",
         "patchSetId": 2
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "89357c45_6237a980",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb873df_a6ec6ab7",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 50
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85540bfd_e3f8275f",
         "filename": "test/ec_comm.c",
         "patchSetId": 2
@@ -194,6 +380,24 @@
       "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006f7194_f89493d0",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T18:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85540bfd_e3f8275f",
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
