@@ -11,7 +11,7 @@
 GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button_interrupt)
 GPIO_INT(WP_L,           PIN(I, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_interrupt)         /* Write protect input */
 #ifdef CONFIG_LOW_POWER_IDLE
-GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
+GPIO_INT(UART1_RX,       PIN(H, 1), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
 
 /*
@@ -82,9 +82,9 @@ UNIMPLEMENTED(LPC_CLKRUN_L)
 UNIMPLEMENTED(LID_OPEN)
 
 ALTERNATE(PIN_MASK(B, 0x03), 1, MODULE_UART, GPIO_PULL_UP) /* UART1 */
-#ifdef CONFIG_UART_HOST
+//#ifdef CONFIG_UART_HOST
 ALTERNATE(PIN_MASK(H, 0x06), 1, MODULE_UART, 0)            /* UART2 */
-#endif
+//#endif
 ALTERNATE(PIN_MASK(G, 0x01), 3, MODULE_SPI_MASTER, 0)      /* SSCE1# of SPI */
 ALTERNATE(PIN_MASK(G, 0x04), 3, MODULE_SPI_MASTER, 0)      /* SSCE0# of SPI */
 ALTERNATE(PIN_MASK(A, 0x04), 1, MODULE_PWM, 0)             /* PWM2 for FAN1 */

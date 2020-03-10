@@ -17,8 +17,8 @@
 #include "util.h"
 
 /* Traces on UART1 */
-#define UART_PORT      0
-#define UART_PORT_HOST 1
+#define UART_PORT      1
+#define UART_PORT_HOST 0
 
 static int init_done;
 
@@ -97,7 +97,7 @@ static void uart_ec_interrupt(void)
 	uint8_t uart_ier;
 
 	/* clear interrupt status */
-	task_clear_pending_irq(IT83XX_IRQ_UART1);
+	task_clear_pending_irq(IT83XX_IRQ_UART2);
 
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
@@ -115,6 +115,7 @@ static void intc_cpu_int_group_9(void)
 
 	switch (intc_group_9) {
 	case IT83XX_IRQ_UART1:
+	case IT83XX_IRQ_UART2:
 		uart_ec_interrupt();
 		break;
 	default:
@@ -209,22 +210,26 @@ void uart_init(void)
 	 * bit3: uart1 belongs to the EC side.
 	 * This is necessary for enabling eSPI module.
 	 */
-	IT83XX_GCTRL_RSTDMMC |= BIT(3);
+	//IT83XX_GCTRL_RSTDMMC |= BIT(3);
+	IT83XX_GCTRL_RSTDMMC |= BIT(2);
 
 	/* reset uart before config it */
-	IT83XX_GCTRL_RSTC4 |= BIT(1);
+	//IT83XX_GCTRL_RSTC4 |= BIT(1);
+	IT83XX_GCTRL_RSTC4 |= BIT(2);
 
 	/* Waiting for when we can use the GPIO module to set pin muxing */
 	gpio_config_module(MODULE_UART, 1);
 
 	/* switch UART1 on without hardware flow control */
-	IT83XX_GPIO_GRC1 |= 0x01;
-	IT83XX_GPIO_GRC6 |= 0x03;
+	//IT83XX_GPIO_GRC1 |= 0x01;
+	//IT83XX_GPIO_GRC6 |= 0x03;
+	IT83XX_GPIO_GRC1 |= BIT(2);
+	IT83XX_GPIO_GRC6 |= 0x0C;
 
 	/* Enable clocks to UART 1 and 2. */
 	clock_enable_peripheral(CGC_OFFSET_UART, 0, 0);
 
-	/* Config UART 1 */
+	/* Config UART 2 */
 	uart_config();
 
 #ifdef CONFIG_UART_HOST
@@ -235,13 +240,12 @@ void uart_init(void)
 	/* Config UART 2 */
 	host_uart_config();
 #endif
-
 	/* clear interrupt status */
-	task_clear_pending_irq(IT83XX_IRQ_UART1);
+	task_clear_pending_irq(IT83XX_IRQ_UART2);
 
 	/* Enable interrupts */
 	IT83XX_UART_IER(UART_PORT) = 0x03;
-	task_enable_irq(IT83XX_IRQ_UART1);
+	task_enable_irq(IT83XX_IRQ_UART2);
 
 	init_done = 1;
 }
