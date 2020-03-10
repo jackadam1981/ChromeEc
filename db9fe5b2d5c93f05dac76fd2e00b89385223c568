@@ -108,6 +108,92 @@
       "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4e9725_58df3322",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-10T17:10:16Z",
+      "side": 1,
+      "message": "change to valid",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc73e66_d29f0bc2",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-10T17:10:16Z",
+      "side": 1,
+      "message": "Incorrect comment.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 52
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb873df_a6ec6ab7",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-10T17:10:16Z",
+      "side": 1,
+      "message": "Can you check the boot mode after all of these cases?",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 50
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85540bfd_e3f8275f",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-10T17:10:16Z",
+      "side": 1,
+      "message": "can you add an assert verifying the EC boot mode is NO_BOOT?",
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
