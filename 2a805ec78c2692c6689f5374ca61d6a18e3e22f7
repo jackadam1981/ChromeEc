@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74254e94_7451c8d4",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-10T18:59:26Z",
+      "side": 1,
+      "message": "should this be flexible for table changes?\n\ntusb422_tcpm_drv.tcpc_enable_discharge_disconnect(port, 1);",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "2a805ec78c2692c6689f5374ca61d6a18e3e22f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
