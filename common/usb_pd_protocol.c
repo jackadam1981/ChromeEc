@@ -2356,15 +2356,50 @@ static void exit_dp_mode(int port)
 	/* Have to wait for ACK */
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 }
+
+static void exit_tbt_mode(int port)
+{
+	int opos;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) ||
+	    !(IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)))
+		return;
+
+	opos = pd_alt_mode(port, USB_VID_INTEL);
+
+	if (opos <= 0)
+		return;
+
+	CPRINTS("C%d Exiting TBT mode", port);
+	if (!pd_dfp_exit_mode(port, USB_VID_INTEL, opos))
+		return;
+	pd_send_vdm(port, USB_VID_INTEL,
+		    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
+	pd_vdm_send_state_machine(port);
+	/* Have to wait for ACK */
+}
 #endif /* CONFIG_POWER_COMMON */
 
 #ifdef CONFIG_POWER_COMMON
 static void handle_new_power_state(int port)
 {
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
-		/* The SoC will negotiated DP mode again when it boots up */
-		exit_dp_mode(port);
+	mux_state_t mux_state = usb_mux_get(port);
 
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
+		if (!!(mux_state & USB_PD_MUX_DP_ENABLED)) {
+			/*
+			 * The SoC will negotiate DP mode again when it
+			 * boots up.
+			 */
+			exit_dp_mode(port);
+		} else if (!!(mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED)) {
+			/*
+			 * The SoC will negotiate Thunderbolt-Compatible mode
+			 * again when it boots up.
+			 */
+			exit_tbt_mode(port);
+		}
+	}
 	/* Ensure mux is set properly after chipset transition */
 	set_usb_mux_with_current_data_role(port);
 }
@@ -3102,6 +3137,7 @@ void pd_task(void *u)
 #if defined(CONFIG_USB_PD_ALT_MODE_DFP)
 		if (evt & PD_EVENT_SYSJUMP) {
 			exit_dp_mode(port);
+			exit_tbt_mode(port);
 			notify_sysjump_ready(&sysjump_task_waiting);
 
 		}
