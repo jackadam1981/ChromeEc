@@ -46,6 +46,30 @@
       "revId": "176306b5684cf3623ba0bf6c9e7e816cc8d0ad64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f05c32e5_26e9f240",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T19:33:50Z",
+      "side": 1,
+      "message": "1) it caches at the CBI image level, so we would have to traverse the linked list of all CBI tags everytime we called this (which there are only 7 so far, but still parsing code).\n\n2) if we have not already requested CBI information (or the API invalidiated the EC\u0027s CBI cache), then the cbi layer will make an i2c request in line to get the information (since the cache doesn\u0027t exist).",
+      "parentUuid": "17911464_d7c79b75",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "176306b5684cf3623ba0bf6c9e7e816cc8d0ad64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
