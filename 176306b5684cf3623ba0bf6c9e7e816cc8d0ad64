@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91594f3b_2e417f5e",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T16:19:11Z",
+      "side": 1,
+      "message": "this makes me nervous that this could get called in an interrupt context and we would be calling out to i2c during that. It is a low change, but it could happen. I thinking caching the value once in cbi_init makes more sense",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "176306b5684cf3623ba0bf6c9e7e816cc8d0ad64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
