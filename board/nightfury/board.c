@@ -21,6 +21,8 @@
 #include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
 #include "extpower.h"
+#include "fan.h"
+#include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -107,6 +109,8 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT]   = { .channel = 3, .flags = 0, .freq = 10000 },
+	[PWM_CH_FAN] = {.channel = 5, .flags = PWM_CONFIG_OPEN_DRAIN,
+                        .freq = 25000},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -131,7 +135,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -391,6 +395,34 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
+/******************************************************************************/
+/* Physical fans. These are logically separate from pwm_channels. */
+
+const struct fan_conf fan_conf_0 = {
+        .flags = FAN_USE_RPM_MODE,
+        .ch = MFT_CH_0, /* Use MFT id to control fan */
+        .pgood_gpio = -1,
+        .enable_gpio = GPIO_EN_PP5000_FAN,
+};
+
+/* Default */
+const struct fan_rpm fan_rpm_0 = {
+        .rpm_min = 3100,
+        .rpm_start = 3100,
+        .rpm_max = 6900,
+};
+
+const struct fan_t fans[FAN_CH_COUNT] = {
+        [FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+};
+
+/******************************************************************************/
+/* MFT channels. These are logically separate from pwm_channels. */
+const struct mft_t mft_channels[] = {
+        [MFT_CH_0] = {NPCX_MFT_MODULE_1, TCKC_LFCLK, PWM_CH_FAN},
+};
+BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
+
 /**********************************************************************/
 /* ADC channels */
 const struct adc_t adc_channels[] = {
@@ -409,23 +441,19 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_1] = {.name = "Ambient",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_30k9_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_1,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_1},
 	[TEMP_SENSOR_2] = {.name = "Charger",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_30k9_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_2,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_2},
 	[TEMP_SENSOR_3] = {.name = "IA",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_30k9_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_3,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_3},
 	[TEMP_SENSOR_4] = {.name = "GT",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_30k9_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_4,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
