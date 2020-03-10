@@ -557,6 +557,29 @@ void clock_init(void)
 #endif
 }
 
+static void inspect()
+{
+#	ifdef CHIP_VARIANT_STM32H7X3
+	ccprintf("PLL Config:\n");
+	ccprintf("STM32_RCC_PLLCKSELR = 0x%X\n", STM32_RCC_PLLCKSELR);
+	ccprintf("STM32_RCC_PLLCFGR = 0x%X\n", STM32_RCC_PLLCFGR);
+	ccprintf("STM32_RCC_PLL1DIVR = 0x%X\n", STM32_RCC_PLL1DIVR);
+
+	ccprintf("Flash Latency (should be identical):\n");
+	ccprintf("STM32_FLASH_ACR(0) = 0x%X\n", STM32_FLASH_ACR(0));
+	ccprintf("STM32_FLASH_ACR(1) = 0x%X\n", STM32_FLASH_ACR(1));
+
+	ccprintf("Prescalers:\n");
+	ccprintf("STM32_RCC_D1CFGR = 0x%X\n", STM32_RCC_D1CFGR);
+
+	ccprintf("Clock Selection:\n");
+	ccprintf("STM32_RCC_CFGR = 0x%X\n", STM32_RCC_CFGR);
+
+	ccprintf("Voltage Scaling:\n");
+	ccprintf("STM32_PWR_D3CR = 0x%X\n", STM32_PWR_D3CR);
+#	endif
+}
+
 static int command_clock(int argc, char **argv)
 {
 	if (argc >= 2) {
@@ -568,6 +591,7 @@ static int command_clock(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 	}
 	ccprintf("Clock frequency is now %d Hz\n", clock_get_freq());
+	inspect();
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(clock, command_clock,
