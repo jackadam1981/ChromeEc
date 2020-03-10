@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa890245_3251bbc8",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-10T23:52:06Z",
+      "side": 1,
+      "message": "Can we eliminate board_is_convertible() and replace with ec_config_has_lid_angle_tablet_mode()?",
+      "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcb0257_d5ddd0b2",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-10T23:52:06Z",
+      "side": 1,
+      "message": "Does this get the ordering right so it is called after cbi_init()?",
+      "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
