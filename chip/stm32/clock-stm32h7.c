@@ -557,6 +557,34 @@ void clock_init(void)
 #endif
 }
 
+#define REG_CCPRINT(reg) ccprintf("%25s = 0x%-X\n", #reg, reg)
+
+static void inspect(void)
+{
+#	ifdef CHIP_VARIANT_STM32H7X3
+	ccprintf("\nPLL Config:\n");
+	REG_CCPRINT(STM32_RCC_PLLCKSELR);
+	REG_CCPRINT(STM32_RCC_PLLCFGR);
+	REG_CCPRINT(STM32_RCC_PLL1DIVR);
+
+	ccprintf("\nFlash Latency (should be identical):\n");
+	REG_CCPRINT(STM32_FLASH_ACR(0));
+	REG_CCPRINT(STM32_FLASH_ACR(1));
+
+	ccprintf("\nPrescalers:\n");
+	REG_CCPRINT(STM32_RCC_D1CFGR);
+
+	ccprintf("\nClocks Enabled:\n");
+	REG_CCPRINT(STM32_RCC_CR);
+
+	ccprintf("\nClock Selection:\n");
+	REG_CCPRINT(STM32_RCC_CFGR);
+
+	ccprintf("\nVoltage Scaling:\n");
+	REG_CCPRINT(STM32_PWR_D3CR);
+#	endif
+}
+
 static int command_clock(int argc, char **argv)
 {
 	if (argc >= 2) {
@@ -568,6 +596,7 @@ static int command_clock(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 	}
 	ccprintf("Clock frequency is now %d Hz\n", clock_get_freq());
+	inspect();
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(clock, command_clock,
