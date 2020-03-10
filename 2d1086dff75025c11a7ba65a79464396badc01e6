@@ -22,6 +22,29 @@
       "revId": "2d1086dff75025c11a7ba65a79464396badc01e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8059614c_7e4a8aba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-10T22:42:30Z",
+      "side": 1,
+      "message": "no need to explicitly check as \nopos \u003d pd_alt_mode(port, **)\nwill be \u003c\u003d 0",
+      "range": {
+        "startLine": 2386,
+        "startChar": 1,
+        "endLine": 2386,
+        "endChar": 15
+      },
+      "revId": "2d1086dff75025c11a7ba65a79464396badc01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
