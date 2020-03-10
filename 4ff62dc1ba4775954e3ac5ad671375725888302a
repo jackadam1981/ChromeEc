@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acc82c50_4e79641f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-10T07:02:54Z",
+      "side": 1,
+      "message": "Changing this will invalidate all existing registrations, which I don\u0027t think we want to do - ideally we\u0027d have a migration path where new keys were generated FIPS compliant, and old keys would continue to work. We can put something in the keyhandle to identify the FIPS compliant ones",
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10303ff3_2e8f59cf",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-10T07:02:54Z",
+      "side": 1,
+      "message": "If we are going to create a new salt, may as well create it the same way as the others - the reason to continue to use setvar here was to avoid resetting it.\n\nThat said, probably best to check with vbendeb what the best way to store this is now (with the new nvram setup)",
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
