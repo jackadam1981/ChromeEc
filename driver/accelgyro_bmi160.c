@@ -11,6 +11,7 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/mag_bmm150.h"
 #include "hooks.h"
@@ -405,11 +406,11 @@ static int set_data_rate(const struct motion_sensor_t *s,
 		msleep(wakeup_time[s->type]);
 	}
 	ctrl_reg = BMI160_CONF_REG(s->type);
-	reg_val = BMI160_ODR_TO_REG(rate);
-	normalized_rate = BMI160_REG_TO_ODR(reg_val);
+	reg_val = BMI_ODR_TO_REG(rate);
+	normalized_rate = BMI_REG_TO_ODR(reg_val);
 	if (rnd && (normalized_rate < rate)) {
 		reg_val++;
-		normalized_rate = BMI160_REG_TO_ODR(reg_val);
+		normalized_rate = BMI_REG_TO_ODR(reg_val);
 	}
 
 	switch (s->type) {
@@ -426,7 +427,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 #ifdef CONFIG_MAG_BMI160_BMM150
 	case MOTIONSENSE_TYPE_MAG:
 		/* We use the regular preset we can go about 100Hz */
-		if (reg_val > BMI160_ODR_100HZ || reg_val < BMI160_ODR_0_78HZ)
+		if (reg_val > BMI_ODR_100HZ || reg_val < BMI_ODR_0_78HZ)
 			return EC_RES_INVALID_PARAM;
 		break;
 #endif

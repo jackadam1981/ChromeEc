@@ -107,6 +107,7 @@
 #undef CONFIG_ACCEL_LIS2DW_AS_BASE
 
 #undef CONFIG_ACCELGYRO_BMI160
+#undef CONFIG_ACCELGYRO_BMI260
 #undef CONFIG_ACCELGYRO_LSM6DS0
 /* Use CONFIG_ACCELGYRO_LSM6DSM for LSM6DSL, LSM6DSM, and/or LSM6DS3 */
 #undef CONFIG_ACCELGYRO_LSM6DSM
@@ -132,14 +133,16 @@
 #undef CONFIG_MAG_LIS2MDL
 #undef CONFIG_MAG_BMM150
 
-/* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
+/* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMIxxx. */
 #undef CONFIG_MAG_BMI160_BMM150
+#undef CONFIG_MAG_BMI260_BMM150
 
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a LSM6DSM. */
 #undef CONFIG_MAG_LSM6DSM_BMM150
 
-/* Presence of a ST LIS2MDL magnetometer behind a BMI160. */
+/* Presence of a ST LIS2MDL magnetometer behind a BMIxxx. */
 #undef CONFIG_MAG_BMI160_LIS2MDL
+#undef CONFIG_MAG_BMI260_LIS2MDL
 
 /* Presence of a ST LIS2MDL magnetometer behind a LSM6DSM. */
 #undef CONFIG_MAG_LSM6DSM_LIS2MDL
@@ -147,20 +150,23 @@
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
 
-/* When set, it indicates a secondary sensor is attached behind a BMI160. */
+/* When set, it indicates a secondary sensor is attached behind a BMIxxx. */
 #undef CONFIG_BMI160_SEC_I2C
+#undef CONFIG_BMI260_SEC_I2C
 
 /* When set, it indicates a secondary sensor is attached behind a LSM6DSM/L. */
 #undef CONFIG_LSM6DSM_SEC_I2C
 
-/* Support for BMI160 hardware orientation sensor */
+/* Support for BMIxxx hardware orientation sensor */
 #undef CONFIG_BMI160_ORIENTATION_SENSOR
+#undef CONFIG_BMI260_ORIENTATION_SENSOR
 
 /* Support for KIONIX KX022 hardware orientation sensor */
 #undef CONFIG_KX022_ORIENTATION_SENSOR
 
 /* Define the i2c address of the sensor behind the main sensor, if present. */
 #undef CONFIG_ACCELGYRO_SEC_ADDR_FLAGS
+
 
 /*
  * Define if either CONFIG_BMI160_ORIENTATION_SUPPORT or
@@ -189,6 +195,7 @@
 
 /* Set when INT2 is an ouptut */
 #undef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
+#undef CONFIG_ACCELGYRO_BMI260_INT2_OUTPUT
 
 /* Specify type of Gyrometers attached. */
 #undef CONFIG_GYRO_L3GD20H
@@ -306,6 +313,7 @@
  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
  */
 #undef CONFIG_ACCELGYRO_BMI160_INT_EVENT
+#undef CONFIG_ACCELGYRO_BMI260_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSM_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSO_INT_EVENT
 #undef CONFIG_ACCEL_LIS2DW12_INT_EVENT
@@ -4666,7 +4674,8 @@
 /******************************************************************************/
 /* Set generic orientation config if a specific orientation config is set. */
 #if defined(CONFIG_KX022_ORIENTATION_SENSOR) || \
-	defined(CONFIG_BMI160_ORIENTATION_SENSOR)
+	defined(CONFIG_BMI160_ORIENTATION_SENSOR) || \
+	defined(CONFIG_BMI260_ORIENTATION_SENSOR)
 #ifndef CONFIG_ACCEL_FIFO
 #error CONFIG_ACCEL_FIFO must be defined to use hw orientation sensor support
 #endif
@@ -5047,6 +5056,12 @@
 #define CONFIG_BMI160_SEC_I2C
 #endif
 
+/* Enable BMI260 secondary port if needed. */
+#if defined(CONFIG_MAG_BMI260_BMM150) || \
+	defined(CONFIG_MAG_BMI260_LIS2MDL)
+#define CONFIG_BMI260_SEC_I2C
+#endif
+
 /* Enable LSM2MDL secondary port if needed. */
 #if defined(CONFIG_MAG_LSM6DSM_BMM150) || \
 	defined(CONFIG_MAG_LSM6DSM_LIS2MDL)
@@ -5055,6 +5070,7 @@
 
 /* Load LIS2MDL driver if needed */
 #if defined(CONFIG_MAG_BMI160_LIS2MDL) || \
+	defined(CONFIG_MAG_BMI260_LIS2MDL) || \
 	defined(CONFIG_MAG_LSM6DSM_LIS2MDL)
 #define CONFIG_MAG_LIS2MDL
 #ifndef CONFIG_ACCELGYRO_SEC_ADDR_FLAGS
@@ -5064,6 +5080,7 @@
 
 /* Load BMM150 driver if needed */
 #if defined(CONFIG_MAG_BMI160_BMM150) || \
+	defined(CONFIG_MAG_BMI260_BMM150) || \
 	defined(CONFIG_MAG_LSM6DSM_BMM150)
 #define CONFIG_MAG_BMM150
 #ifndef CONFIG_ACCELGYRO_SEC_ADDR_FLAGS
