@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20b851f4_e0f39b56",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-10T23:44:53Z",
+      "side": 1,
+      "message": "In the case where CHIP_VARIANT_STM32H7X3 is not defined, should there be an ASSERT(0)?",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
