@@ -217,6 +217,15 @@ bool board_is_convertible(void);
 /* Check with variant about battery presence. */
 enum battery_present variant_battery_present(void);
 
+/* Check with variant about battery disconnect status. */
+enum battery_disconnect_state variant_battery_check_disconnect(void);
+
+/*
+ * If the variant has a BQ40Z50 fuel gauge, it should use this
+ * in variant_battery_check_disconnect().
+ */
+enum battery_disconnect_state battery_check_disconnect_ti_bq40z50(void);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BASEBOARD_H */
