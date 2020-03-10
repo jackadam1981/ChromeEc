@@ -10,6 +10,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "timer.h"
+#include "task.h"
 #include "usb_pd_tcpm.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -111,6 +112,12 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
 	CPRINTS("p%d %s", port, __func__);
+}
+
+void pd_task_idle(void *u)
+{
+	while (1)
+		task_wait_event(-1);
 }
 
 /*
