@@ -805,24 +805,9 @@ void pe_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
-void pe_exit_dp_mode(int port)
+void pd_vdm_send_state_machine(int port)
 {
-	/* This should only be called from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
-
-	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-		int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-
-		if (opos <= 0)
-			return;
-
-		CPRINTS("C%d Exiting DP mode", port);
-		if (!pd_dfp_exit_mode(port, USB_SID_DISPLAYPORT, opos))
-			return;
-
-		pe_send_vdm(port, USB_SID_DISPLAYPORT,
-				CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
-	}
+	/* Dummy function as it is not applicable for TCPMv2 */
 }
 
 /*
