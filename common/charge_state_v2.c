@@ -1203,12 +1203,18 @@ static int charge_request(int voltage, int current)
 		/* If the battery is full, request the max voltage. */
 		if (is_full)
 			voltage = battery_get_info()->voltage_max;
-		/* And handle dead battery case */
-		voltage = MAX(voltage, battery_get_info()->voltage_normal);
 #else
 		voltage = current = 0;
 #endif
 	}
+
+#ifdef CONFIG_CHARGER_NARROW_VDC
+	/*
+	 * For NVDC chargers, we never want VSYS to be too low.  This covers
+	 * the dead and/or missing battery case.
+	 */
+	voltage = MAX(voltage, battery_get_info()->voltage_normal);
+#endif
 
 	if (curr.ac) {
 		if (prev_volt != voltage || prev_curr != current)
