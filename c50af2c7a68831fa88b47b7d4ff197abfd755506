@@ -22,6 +22,52 @@
       "revId": "c50af2c7a68831fa88b47b7d4ff197abfd755506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5e0810_5f4c45d9",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:53:01Z",
+      "side": 1,
+      "message": "would should probably add the \u00270x\u0027 prefix here and on read just to ensure the output isn\u0027t ambiguous with decimal versus hex",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "c50af2c7a68831fa88b47b7d4ff197abfd755506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb7258c_9211d6dc",
+        "filename": "docs/i2c-debugging.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:53:01Z",
+      "side": 1,
+      "message": "this will update with 0x prefix then",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "c50af2c7a68831fa88b47b7d4ff197abfd755506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
