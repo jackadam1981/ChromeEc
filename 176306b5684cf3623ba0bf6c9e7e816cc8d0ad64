@@ -22,6 +22,30 @@
       "revId": "176306b5684cf3623ba0bf6c9e7e816cc8d0ad64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17911464_d7c79b75",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-10T16:24:38Z",
+      "side": 1,
+      "message": "Why isn\u0027t the caching in common/cbi.c sufficient?",
+      "parentUuid": "91594f3b_2e417f5e",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "176306b5684cf3623ba0bf6c9e7e816cc8d0ad64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
