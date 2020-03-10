@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2adb4a41_6fa7c95b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "nit: normally we don\u0027t end with _t for enums\n\nI think we would make \u0027send_swap_t\u0027 equivalent to \u0027enum send_swap\u0027 if we were to typedef it",
+      "range": {
+        "startLine": 299,
+        "startChar": 5,
+        "endLine": 299,
+        "endChar": 16
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e9a17b9_12583855",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "let\u0027s call this the wait retry counter, because there may be other retry concepts floating around too (also we should probalby make the DEFINE more specific too)",
+      "range": {
+        "startLine": 489,
+        "startChar": 10,
+        "endLine": 489,
+        "endChar": 23
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2dcfc8d_03c10684",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4378,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "all variable but the swap_cmd could be set here (instead of the caller)\n\n---\n\nAlso, another possibility is to create sub-states for each of these swaps, and the caller just set_state to the correct send state. Each send state (e.g. PE_SEND_DR_SWAP, PE_SEND_PR_SWAP, PD_SEND_VCONN_SWAP) would set the swap_cmd appropriately. Also, the print_state would be more informative.\n\nI would image that only the send states would be expanded, the remaining states could/should be shared.",
+      "range": {
+        "startLine": 4378,
+        "startChar": 12,
+        "endLine": 4378,
+        "endChar": 37
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f8dabf_7da3f9cb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4413,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "what if we get an error isntead? we need some kind of time out or we will get stuck here forever",
+      "range": {
+        "startLine": 4413,
+        "startChar": 5,
+        "endLine": 4413,
+        "endChar": 43
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba18682_497af65b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4447,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "why does prs go to SRC ready always? The comments don\u0027t explain this. Seems like we would want to go to what ever the current power role was too (like above)",
+      "range": {
+        "startLine": 4446,
+        "startChar": 3,
+        "endLine": 4447,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231dda9d_009be4d0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4480,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "how do we know that we don\u0027t want to go to SNK_SRC transition instead?\n\nThere are some assumptions in this code that shouldn\u0027t be here or at the very least documented",
+      "range": {
+        "startLine": 4480,
+        "startChar": 4,
+        "endLine": 4480,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a544d6_4e9d1753",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4503,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "same with assumption here",
+      "range": {
+        "startLine": 4502,
+        "startChar": 5,
+        "endLine": 4503,
+        "endChar": 38
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd5bae0_943fbc6d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4831,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:48:13Z",
+      "side": 1,
+      "message": "based on usaged, we should probably name these more specifically, like PE_COMMON_SWAP_SEND etc.",
+      "range": {
+        "startLine": 4831,
+        "startChar": 5,
+        "endLine": 4831,
+        "endChar": 16
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
