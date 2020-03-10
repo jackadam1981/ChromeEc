@@ -19,6 +19,8 @@
 #define CONFIG_USB_PID 0x503d
 #elif defined(BOARD_MASTERBALL)
 #define CONFIG_USB_PID 0x503c
+#elif defined(BOARD_MOONBALL)
+#define CONFIG_USB_PID 0x5044
 #elif defined(BOARD_STAFF)
 #define CONFIG_USB_PID 0x502b
 #elif defined(BOARD_WAND)
@@ -42,7 +44,7 @@
 #define CONFIG_TOUCHPAD_VIRTUAL_SIZE (48*1024)
 #elif defined(BOARD_MAGNEMITE)
 #define HAS_NO_TOUCHPAD
-#elif defined(BOARD_MASTERBALL)
+#elif defined(BOARD_MASTERBALL) || defined(BOARD_MOONBALL)
 #define HAS_I2C_TOUCHPAD
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 2644
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1440
@@ -101,7 +103,8 @@
 #endif /* BOARD_HAMMER/WAND/WHISKERS */
 
 /* GMR sensor for tablet mode detection */
-#if defined(BOARD_MASTERBALL) || defined(BOARD_WHISKERS)
+#if defined(BOARD_MASTERBALL) || defined(BOARD_WHISKERS) || \
+    defined(BOARD_MOONBALL)
 #define CONFIG_GMR_TABLET_MODE
 #endif
 
