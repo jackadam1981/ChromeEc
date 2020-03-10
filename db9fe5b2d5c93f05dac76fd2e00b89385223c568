@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "dc07282a_3394c3f9",
+        "filename": "board/host/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-10T18:49:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca65567a_e20bf078",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "db9fe5b2d5c93f05dac76fd2e00b89385223c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6905b795_ea375bd0",
         "filename": "chip/host/uartn.h",
         "patchSetId": 2
