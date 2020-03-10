@@ -585,6 +585,11 @@ void lid_angle_peripheral_enable(int enable)
 /* Unprovisioned magic value. */
 static uint32_t sku_id = 0x7fffffff;
 
+uint32_t system_get_sku_id(void)
+{
+	return sku_id;
+}
+
 static void cbi_init(void)
 {
 	uint32_t board_version = 0;
@@ -612,20 +617,13 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
-/* TODO(b/151075885) Base initialization off the fw_config */
-uint32_t system_get_sku_id(void)
-{
-	return sku_id;
-}
-
 /*
  * Returns 1 for boards that are convertible into tablet mode, and zero for
  * clamshells.
  */
 int board_is_convertible(void)
 {
-	/* TODO: Add convertible SKU values */
-	return 0;
+	return ec_config_has_lid_angle_tablet_mode();
 }
 
 int board_is_lid_angle_tablet_mode(void)
