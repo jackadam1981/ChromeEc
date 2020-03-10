@@ -272,6 +272,8 @@ int pd_alt_mode(int port, uint16_t svid)
 		return alt_mode[PD_AMODE_DISPLAYPORT];
 	else if (svid == USB_VID_GOOGLE)
 		return alt_mode[PD_AMODE_GOOGLE];
+	else if (svid == USB_VID_INTEL)
+		return alt_mode[PD_AMODE_INTEL];
 	return 0;
 }
 
