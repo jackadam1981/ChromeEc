@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae59ae5_8a0c8770",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T22:01:20Z",
+      "side": 1,
+      "message": "I think it would be better to create a different buffer for EC UART to separate console UART.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 1
+      },
+      "revId": "84c9fc706cad2c3cb1abf7851387ff9dcbbf2fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
