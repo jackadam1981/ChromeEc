@@ -181,9 +181,18 @@ uint16_t ec_efs_set_boot_mode(const char * const data, const uint8_t size)
 
 	boot_mode = data[0];
 
-	if (ec_efs_ctx.boot_mode != EC_EFS_BOOT_MODE_NORMAL) {
+	switch (boot_mode) {
+	case EC_EFS_BOOT_MODE_NORMAL:
+		if (ec_efs_ctx.boot_mode == EC_EFS_BOOT_MODE_NORMAL)
+			break;
 		board_reboot_ec_deferred(0);
 		return 0;
+
+	case EC_EFS_BOOT_MODE_NO_BOOT:
+		break;
+
+	default:
+		return CR50_COMM_ERROR_BAD_PAYLOAD;
 	}
 
 	set_boot_mode_(boot_mode);
@@ -237,7 +246,7 @@ void ec_efs_refresh(void)
 		ec_efs_ctx.hash_is_loaded = 1;
 	} else {
 		ec_efs_ctx.hash_is_loaded = 0;
-		cprints(CC_SYSTEM, "load_ec_hash error: 0x%x\n", rv);
+		cprints(CC_SYSTEM, "load_ec_hash error: 0x%x", rv);
 	}
 	ec_efs_ctx.secdata_error_code = rv;
 }
