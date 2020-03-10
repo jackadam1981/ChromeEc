@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "668811ed_81e78d3e",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T07:25:24Z",
+      "side": 0,
+      "message": "Daisuke, please confirm the design. I\u0027ve noticed that any \u0027set_boot_mode\u0027 to NO_BOOT will reset EC if the boot mode is already in NO_BOOT. In other words, Cr50 won\u0027t accept the consecutive set_boot_mode command with NO_BOOT value.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 2
+      },
+      "revId": "3c73935ec48370f5245d000f15825de91d5365b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
