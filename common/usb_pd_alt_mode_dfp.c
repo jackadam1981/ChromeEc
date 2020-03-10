@@ -437,6 +437,27 @@ void usb_mux_set_safe_mode(int port)
 		ppc_set_sbu(port, 0);
 }
 
+void exit_supported_alt_mode(int port)
+{
+	int opos;
+
+	if (!IS_ENABLED(CONFIG_POWER_COMMON))
+		return;
+
+	for (int i = 0; i < supported_modes_cnt; i++) {
+		opos = pd_alt_mode(port, supported_modes[i].svid);
+		if (opos > 0) {
+			CPRINTS("C%d Exiting ALT mode with SVID = 0x%x", port,
+				supported_modes[i].svid);
+			if (!pd_dfp_exit_mode(port, supported_modes[i].svid,
+					      opos))
+				return;
+			pd_send_vdm(port, supported_modes[i].svid,
+				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
+		}
+	}
+}
+
 __overridable void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
