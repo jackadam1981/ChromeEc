@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c1cfe276_921592a7",
+        "filename": "driver/build.mk",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-10T17:14:32Z",
+      "side": 1,
+      "message": "All new #define CONFIG_... options must be #undef\u0027d (as appropriate) in include/config.h first.  See the other CONFIG_TEMP_SENSOR_... options in that file.",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "c7bfce01107dc42fd722865179861c7b913fb29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "465273cd_5f499dca",
         "filename": "driver/temp_sensor/amd_r19me4070.h",
         "patchSetId": 16
