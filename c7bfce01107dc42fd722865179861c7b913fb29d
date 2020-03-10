@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a25fc0d3_323a5221",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-03-10T20:19:20Z",
+      "side": 1,
+      "message": "Is this required? I don\u0027t think baseboard.h needs to be added explicitly here.",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "c7bfce01107dc42fd722865179861c7b913fb29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "465273cd_5f499dca",
         "filename": "driver/temp_sensor/amd_r19me4070.h",
         "patchSetId": 16
@@ -36,6 +59,30 @@
       "writtenOn": "2020-03-10T17:12:08Z",
       "side": 1,
       "message": "Prefer you to leave this out of here; it is each board\u0027s responsibility to define their own I2C ports.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "c7bfce01107dc42fd722865179861c7b913fb29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182d4bf7_751280e9",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-03-10T20:19:20Z",
+      "side": 1,
+      "message": "I think this is stronger than preference. GPU port being I2C port 4 is very specific to the board. The driver can assume there is a GPU port defined in board.h. There can be a compiler error check here if the concern is that GPU_PORT is not defined.",
+      "parentUuid": "465273cd_5f499dca",
       "range": {
         "startLine": 16,
         "startChar": 0,
