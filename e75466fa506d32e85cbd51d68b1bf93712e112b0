@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3419cfa_04c2ef73",
+        "filename": "common/button.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-10T15:57:02Z",
+      "side": 1,
+      "message": "unfortunately, that doesn\u0027t work where active is low; We would never return that the button was active (i.e. when it was low)\n\nif Active high \u003d\u003e use gpio_get_level\nIf Active low \u003d\u003e use !gpio_get_level\n\n\n!!gpio \u003d\u003d !!Active_high implements the above logic",
+      "parentUuid": "60c89c8a_de7c6435",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "e75466fa506d32e85cbd51d68b1bf93712e112b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b695ea28_6be11dc7",
         "filename": "common/button.c",
         "patchSetId": 8
