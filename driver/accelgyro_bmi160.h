@@ -22,7 +22,6 @@
 
 /* I2C addresses */
 #define BMI160_ADDR0_FLAGS	0x68
-#define BMI160_ADDR1_FLAGS	0x69
 
 #define BMI160_CHIP_ID           0x00
 #define BMI160_CHIP_ID_MAJOR     0xd1
@@ -45,26 +44,26 @@
 #define BMI160_PMU_LOW_POWER                2
 #define BMI160_PMU_FAST_STARTUP             3
 
-#define BMI160_MAG_X_L_G       0x04
-#define BMI160_MAG_X_H_G       0x05
-#define BMI160_MAG_Y_L_G       0x06
-#define BMI160_MAG_Y_H_G       0x07
-#define BMI160_MAG_Z_L_G       0x08
-#define BMI160_MAG_Z_H_G       0x09
-#define BMI160_RHALL_L_G       0x0a
-#define BMI160_RHALL_H_G       0x0b
-#define BMI160_GYR_X_L_G       0x0c
-#define BMI160_GYR_X_H_G       0x0d
-#define BMI160_GYR_Y_L_G       0x0e
-#define BMI160_GYR_Y_H_G       0x0f
-#define BMI160_GYR_Z_L_G       0x10
-#define BMI160_GYR_Z_H_G       0x11
-#define BMI160_ACC_X_L_G       0x12
-#define BMI160_ACC_X_H_G       0x13
-#define BMI160_ACC_Y_L_G       0x14
-#define BMI160_ACC_Y_H_G       0x15
-#define BMI160_ACC_Z_L_G       0x16
-#define BMI160_ACC_Z_H_G       0x17
+#define BMI_AUX_X_L_G          0x04
+#define BMI_AUX_X_H_G          0x05
+#define BMI_AUX_Y_L_G          0x06
+#define BMI_AUX_Y_H_G          0x07
+#define BMI_AUX_Z_L_G          0x08
+#define BMI_AUX_Z_H_G          0x09
+#define BMI_AUX_R_L_G          0x0a
+#define BMI_AUX_R_H_G          0x0b
+#define BMI_GYR_X_L_G          0x0c
+#define BMI_GYR_X_H_G          0x0d
+#define BMI_GYR_Y_L_G          0x0e
+#define BMI_GYR_Y_H_G          0x0f
+#define BMI_GYR_Z_L_G          0x10
+#define BMI_GYR_Z_H_G          0x11
+#define BMI_ACC_X_L_G          0x12
+#define BMI_ACC_X_H_G          0x13
+#define BMI_ACC_Y_L_G          0x14
+#define BMI_ACC_Y_H_G          0x15
+#define BMI_ACC_Z_L_G          0x16
+#define BMI_ACC_Z_H_G          0x17
 
 #define BMI160_SENSORTIME_0    0x18
 #define BMI160_SENSORTIME_1    0x19
@@ -133,18 +132,6 @@
 #define BMI160_FIFO_LENGTH_1   0x23
 #define BMI160_FIFO_LENGTH_MASK    (BIT(11) - 1)
 #define BMI160_FIFO_DATA       0x24
-enum fifo_header {
-	BMI160_EMPTY = 0x80,
-	BMI160_SKIP = 0x40,
-	BMI160_TIME = 0x44,
-	BMI160_CONFIG = 0x48
-};
-
-#define BMI160_FH_MODE_MASK    0xc0
-#define BMI160_FH_PARM_OFFSET    2
-#define BMI160_FH_PARM_MASK    (0x7 << BMI160_FH_PARM_OFFSET)
-#define BMI160_FH_EXT_MASK     0x03
-
 
 #define BMI160_ACC_CONF        0x40
 #define BMI160_ODR_MASK                 0x0F
@@ -152,38 +139,26 @@ enum fifo_header {
 #define BMI160_ACC_BW_MASK     (0x7 << BMI160_ACC_BW_OFFSET)
 
 #define BMI160_ACC_RANGE       0x41
-#define BMI160_GSEL_2G         0x03
-#define BMI160_GSEL_4G         0x05
-#define BMI160_GSEL_8G         0x08
-#define BMI160_GSEL_16G        0x0c
+#define BMI_GSEL_2G            0x03
+#define BMI_GSEL_4G            0x05
+#define BMI_GSEL_8G            0x08
+#define BMI_GSEL_16G           0x0c
 
 #define BMI160_GYR_CONF        0x42
 #define BMI160_GYR_BW_OFFSET   4
 #define BMI160_GYR_BW_MASK     (0x3 << BMI160_GYR_BW_OFFSET)
 
 #define BMI160_GYR_RANGE       0x43
-#define BMI160_DPS_SEL_2000    0x00
-#define BMI160_DPS_SEL_1000    0x01
-#define BMI160_DPS_SEL_500     0x02
-#define BMI160_DPS_SEL_250     0x03
-#define BMI160_DPS_SEL_125     0x04
-
+#define BMI_DPS_SEL_2000       0x00
+#define BMI_DPS_SEL_1000       0x01
+#define BMI_DPS_SEL_500        0x02
+#define BMI_DPS_SEL_250        0x03
+#define BMI_DPS_SEL_125        0x04
 
 #define BMI160_MAG_CONF        0x44
 
-/* odr = 100 / (1 << (8 - reg)) ,within limit */
-#define BMI160_ODR_0_78HZ      0x01
-#define BMI160_ODR_100HZ       0x08
-
-#define BMI160_REG_TO_ODR(_regval) \
-	((_regval) < BMI160_ODR_100HZ ? 100000 / (1 << (8 - (_regval))) : \
-					100000 * (1 << ((_regval) - 8)))
-#define BMI160_ODR_TO_REG(_odr) \
-	((_odr) < 100000 ? (__builtin_clz(100000 / ((_odr) + 1)) - 24) : \
-			   (39 - __builtin_clz((_odr) / 100000)))
-
-#define BMI160_CONF_REG(_sensor)   (0x40 + 2 * (_sensor))
-#define BMI160_RANGE_REG(_sensor)  (0x41 + 2 * (_sensor))
+#define BMI_CONF_REG(_sensor)      (0x40 + 2 * (_sensor))
+#define BMI_RANGE_REG(_sensor)     (0x41 + 2 * (_sensor))
 
 #define BMI160_FIFO_DOWNS      0x45
 #define BMI160_FIFO_CONFIG_0   0x46
@@ -220,7 +195,7 @@ enum fifo_header {
 #define BMI160_MAG_I2C_WRITE_ADDR   BMI160_MAG_IF_3
 #define BMI160_MAG_IF_4        0x4f
 #define BMI160_MAG_I2C_WRITE_DATA   BMI160_MAG_IF_4
-#define BMI160_MAG_I2C_READ_DATA    BMI160_MAG_X_L_G
+#define BMI160_MAG_I2C_READ_DATA    BMI_AUX_X_L_G
 
 #define BMI160_INT_EN_0        0x50
 #define BMI160_INT_ANYMO_X_EN      BIT(0)
@@ -403,8 +378,6 @@ enum fifo_header {
 #define BMI160_COM_C_TRIM_ADDR 0x85
 #define BMI160_COM_C_TRIM              (3 << 4)
 
-
-
 #define BMI160_CMD_TGT_PAGE    0
 #define BMI160_CMD_TGT_PAGE_COM    1
 #define BMI160_CMD_TGT_PAGE_ACC    2
@@ -414,9 +387,6 @@ enum fifo_header {
 #define BMI160_FF_DATA_LEN_ACC          6
 #define BMI160_FF_DATA_LEN_GYR          6
 #define BMI160_FF_DATA_LEN_MAG          8
-
-/* Sensor resolution in number of bits. This sensor has fixed resolution. */
-#define BMI160_RESOLUTION      16
 
 /* Min and Max sampling frequency in mHz */
 #define BMI160_ACCEL_MIN_FREQ 12500
@@ -447,10 +417,10 @@ struct bmi160_drv_data_t {
 	uint8_t              flags;
 	uint8_t              enabled_activities;
 	uint8_t              disabled_activities;
-#ifdef CONFIG_MAG_BMI160_BMM150
+#ifdef CONFIG_MAG_BMI_BMM150
 	struct bmm150_private_data compass;
 #endif
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#ifdef CONFIG_BMI_ORIENTATION_SENSOR
 	uint8_t raw_orientation;
 	enum motionsensor_orientation orientation;
 	enum motionsensor_orientation last_orientation;
@@ -460,10 +430,10 @@ struct bmi160_drv_data_t {
 
 #define BMI160_GET_DATA(_s) \
 	((struct bmi160_drv_data_t *)(_s)->drv_data)
-#define BMI160_GET_SAVED_DATA(_s) \
+#define BMI_GET_SAVED_DATA(_s) \
 	(&BMI160_GET_DATA(_s)->saved_data[(_s)->type])
 
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#ifdef CONFIG_BMI_ORIENTATION_SENSOR
 #define ORIENTATION_CHANGED(_sensor) \
 	(BMI160_GET_DATA(_sensor)->orientation != \
 	BMI160_GET_DATA(_sensor)->last_orientation)
@@ -481,7 +451,7 @@ struct bmi160_drv_data_t {
 
 void bmi160_interrupt(enum gpio_signal signal);
 
-#ifdef CONFIG_BMI160_SEC_I2C
+#ifdef CONFIG_BMI_SEC_I2C
 /* Functions to access the secondary device through the accel/gyro. */
 int bmi160_sec_raw_read8(const int port, const uint16_t addr_flags,
 			 const uint8_t reg, int *data_ptr);
