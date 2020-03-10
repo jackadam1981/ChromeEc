@@ -2573,6 +2573,15 @@ extern uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
  */
 void usb_mux_set_safe_mode(int port);
 
+/*
+ * Exits the supported Alternate mode
+ *
+ * @param port The PD port number
+ * @return True if exit mode command is sent
+ *         False otherwise
+ */
+bool exit_supported_alt_mode(int port);
+
 /**
  * Configure the pins used for DisplayPort Alternate Mode into safe state.
  *

@@ -2338,30 +2338,6 @@ void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
 		memcpy(rw_hash, pd[port].dev_rw_hash, PD_RW_HASH_SIZE);
 }
 
-#if defined(CONFIG_POWER_COMMON) || defined(CONFIG_USB_PD_ALT_MODE_DFP)
-static void exit_supported_alt_mode(int port)
-{
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	int opos;
-
-	for (int i = 0; i < supported_modes_cnt; i++) {
-		opos = pd_alt_mode(port, supported_modes[i].svid);
-		if (opos > 0) {
-			CPRINTS("C%d Exiting ALT mode with SVID = 0x%x", port,
-				supported_modes[i].svid);
-			if (!pd_dfp_exit_mode(port, supported_modes[i].svid,
-					      opos))
-				return;
-			pd_send_vdm(port, supported_modes[i].svid,
-				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
-			/* Wait for an ACK from port-partner */
-			pd_vdm_send_state_machine(port);
-		}
-	}
-#endif /* CONFIG_USB_PD_ALT_MODE_DFP */
-}
-#endif /* CONFIG_POWER_COMMON */
-
 #ifdef CONFIG_POWER_COMMON
 static void handle_new_power_state(int port)
 {
@@ -2371,7 +2347,11 @@ static void handle_new_power_state(int port)
 		 * The SoC will negotiate the alternate mode again when
 		 * it boots up.
 		 */
-		exit_supported_alt_mode(port);
+		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) &&
+		    exit_supported_alt_mode(port)) {
+			/* Wait for an ACK from port-partner */
+			pd_vdm_send_state_machine(port);
+		}
 	}
 	/* Ensure mux is set properly after chipset transition */
 	set_usb_mux_with_current_data_role(port);
@@ -3109,7 +3089,10 @@ void pd_task(void *u)
 
 #if defined(CONFIG_USB_PD_ALT_MODE_DFP)
 		if (evt & PD_EVENT_SYSJUMP) {
-			exit_supported_alt_mode(port);
+			if (exit_supported_alt_mode(port)) {
+				/* Wait for an ACK from port-partner */
+				pd_vdm_send_state_machine(port);
+			}
 			notify_sysjump_ready(&sysjump_task_waiting);
 
 		}
