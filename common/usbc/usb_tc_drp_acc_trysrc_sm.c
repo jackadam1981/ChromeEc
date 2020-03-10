@@ -1121,7 +1121,7 @@ void tc_event_check(int port, int evt)
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 		if (evt & PD_EVENT_SYSJUMP) {
-			pe_exit_dp_mode(port);
+			exit_supported_alt_mode(port);
 			notify_sysjump_ready(&sysjump_task_waiting);
 		}
 	}
@@ -1251,13 +1251,12 @@ static void handle_new_power_state(int port)
 		if (chipset_in_or_transitioning_to_state(
 					CHIPSET_STATE_ANY_OFF)) {
 			/*
-			 * The SoC will negotiated DP mode again when it
-			 * boots up
+			 * The SoC will negotiate alternate mode again when it
+			 * boots up.
 			 */
-			pe_exit_dp_mode(port);
-
+			exit_supported_alt_mode(port);
 			/*
-			 * Reset mux to USB. DP mode is selected
+			 * Reset mux to USB. Same alternate mode is selected
 			 * again at boot up.
 			 */
 			set_usb_mux_with_current_data_role(port);

@@ -104,13 +104,6 @@ void pe_hard_reset_sent(int port);
 void pe_got_frs_signal(int port);
 
 /**
- * Exit DP mode
- *
- * @param port USB-C port number
- */
-void pe_exit_dp_mode(int port);
-
-/**
  * Get the id of the current Policy Engine state
  *
  * @param port USB-C port number
