@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "0d0cca73_64db8c05",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T22:34:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d61a948_19b7f643",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 30
+      },
+      "revId": "e01663ca40181925403cf94d3b06e5b00da0dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d522c25_313c7a01",
         "filename": "common/ec_efs.c",
         "patchSetId": 1
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1d522c25_313c7a01",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 30
+      },
+      "revId": "e01663ca40181925403cf94d3b06e5b00da0dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f65e51c1_06955d0a",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-10T22:34:14Z",
+      "side": 1,
+      "message": "Instead of printing here, line 46 will display boot_mode transition.",
+      "parentUuid": "0f2f120e_0820c91b",
       "range": {
         "startLine": 233,
         "startChar": 2,
