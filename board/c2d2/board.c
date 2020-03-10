@@ -867,9 +867,6 @@ static int command_h1_vref_present(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(h1_vref, command_h1_vref_present,
 			"",
 			"Get if the h1 vref is present");
-
-/* Voltage thresholds for rail detection */
-#define VREF_3300_MIN_MV 2300
 #define VREF_1800_MIN_MV 1500
 
 static enum vref get_vref(enum adc_channel chan)
