@@ -22,6 +22,30 @@
       "revId": "5cfba79a70069be07d099379dd194b2e26e52589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb429c61_c4d606d7",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-10T06:13:01Z",
+      "side": 1,
+      "message": "Done, as following CL : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2094845",
+      "parentUuid": "43f011db_38930141",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "5cfba79a70069be07d099379dd194b2e26e52589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
