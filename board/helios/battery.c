@@ -89,3 +89,8 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SIMPLO_C424;
+
+__override enum battery_disconnect_state variant_battery_check_disconnect(void)
+{
+	return battery_check_disconnect_ti_bq40z50();
+}
