@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dceaa9ce_ea7e0665",
+        "filename": "include/keyboard_vivaldi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-10T19:29:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e41ce41_7ede164c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "6a94e3e25447fc6e64b17ee45675d0b845c17bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7789ef8e_f60e58f5",
         "filename": "include/keyboard_vivaldi.h",
         "patchSetId": 7
@@ -93,6 +117,30 @@
       "revId": "6a94e3e25447fc6e64b17ee45675d0b845c17bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e865782_5f98ee9d",
+        "filename": "include/keyboard_vivaldi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-10T19:29:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bda1543_b59d57c3",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "6a94e3e25447fc6e64b17ee45675d0b845c17bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
