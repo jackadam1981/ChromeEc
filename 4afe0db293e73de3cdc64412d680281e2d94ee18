@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb90f872_af26c461",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-10T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0f919f_04123dcf",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17a27fb8_d5a2ffac",
         "filename": "baseboard/zork/cbi_ec_fw_config.h",
         "patchSetId": 8
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "a74f4b01_62732e52",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-10T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a27fb8_d5a2ffac",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3b40634_d961f3d8",
+        "filename": "baseboard/zork/cbi_ec_fw_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-10T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "119a761a_6d19be60",
+      "range": {
+        "startLine": 76,
+        "startChar": 49,
+        "endLine": 76,
+        "endChar": 70
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92d41386_4e932a76",
         "filename": "board/dalboz/board.h",
         "patchSetId": 8
@@ -85,6 +157,24 @@
       "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fa352e_211e5d36",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-10T14:36:57Z",
+      "side": 1,
+      "message": "Is needed\n\nstatic inline bool ec_config_has_usbc1(void)\nstatic inline bool ec_config_has_usbc1_retimer_ps8740(void)",
+      "parentUuid": "92d41386_4e932a76",
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +198,30 @@
       "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db0ae3b_9e0cbdfc",
+        "filename": "board/dalboz/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-10T14:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b835438_d7309341",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "4afe0db293e73de3cdc64412d680281e2d94ee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
