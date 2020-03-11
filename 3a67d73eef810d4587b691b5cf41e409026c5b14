@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea2d7693_499f0438",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T02:12:34Z",
+      "side": 1,
+      "message": "so, now there are three priorities in play: nvmem_init, this module and ec_comm, this is very brittle.\n\nHow about make ec_efs_init() call ec_comm_init() as one can\u0027t work without another anyways, and adding a comment here that this priority must be lower than nvmem_init hook priority.",
+      "revId": "3a67d73eef810d4587b691b5cf41e409026c5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
