@@ -46,6 +46,30 @@
       "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c925d265_01d37e93",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-11T22:04:34Z",
+      "side": 1,
+      "message": "The AC presence criteria could explain why other boards haven\u0027t needed this.  I believe we just had a GPIO for AC presence on GLK.  Does the TCPC register take a while to return a correct value?  Are there any other registers we could try using besides TCPC_REG_POWER_STATUS?",
+      "parentUuid": "8bb57599_6bc52455",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1216,
+        "endChar": 60
+      },
+      "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
