@@ -627,11 +627,24 @@ static const struct fan_step fan_table3[] = {
 	{.on = 82, .off = 76, .rpm = 5100},
 	{.on = 92, .off = 85, .rpm = 5400},
 };
+static const struct fan_step fan_table4[] = {
+	{.on =   0, .off =  22, .rpm = 0},
+	{.on =  36, .off =  22, .rpm = 2500},
+	{.on =  86, .off =  76, .rpm = 3200},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+};
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 BUILD_ASSERT(ARRAY_SIZE(fan_table1) == NUM_FAN_LEVELS);
 BUILD_ASSERT(ARRAY_SIZE(fan_table2) == NUM_FAN_LEVELS);
 BUILD_ASSERT(ARRAY_SIZE(fan_table3) == NUM_FAN_LEVELS);
+BUILD_ASSERT(ARRAY_SIZE(fan_table4) == NUM_FAN_LEVELS);
+
+static int en_low_fan;
 
 static void setup_fan(void)
 {
@@ -662,6 +675,18 @@ static void setup_fan(void)
 		fan_table = fan_table3;
 		break;
 	}
+
+	if (en_low_fan)
+		fan_table = fan_table4;
+}
+
+void board_enable_low_fan(int enable)
+{
+	en_low_fan = enable;
+
+	setup_fan();
+	CPRINTS("Setup fan_table to %s fan table",
+		enable ? "low speed" : "original");
 }
 
 static void cbi_init(void)

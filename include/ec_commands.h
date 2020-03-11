@@ -3315,6 +3315,8 @@ struct ec_params_thermal_set_threshold_v1 {
 /* Version 1 of input params */
 struct ec_params_auto_fan_ctrl_v1 {
 	uint8_t fan_idx;
+	int change_fan_table;
+	int en_low_fan;
 } __ec_align1;
 
 /* Get/Set TMP006 calibration data */

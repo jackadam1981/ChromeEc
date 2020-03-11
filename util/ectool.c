@@ -3077,22 +3077,38 @@ int cmd_thermal_auto_fan_ctrl(int argc, char *argv[])
 		return 0;
 	}
 
-	if (argc > 2 || !strcmp(argv[1], "help")) {
+	if (argc > 3 || !strcmp(argv[1], "help")) {
 		printf("Usage: %s [idx]\n", argv[0]);
 		return -1;
 	}
 
-	num_fans = get_num_fans();
-	p_v1.fan_idx = strtol(argv[1], &e, 0);
-	if ((e && *e) || (p_v1.fan_idx >= num_fans)) {
-		fprintf(stderr, "Bad fan index.\n");
-		return -1;
+	if (!strcmp(argv[1], "low")) {
+		p_v1.change_fan_table = 1;
+		p_v1.en_low_fan = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "1/0 to en/dis-able.\n");
+			return -1;
+		}
+	} else {
+		p_v1.change_fan_table = 0;
+
+		num_fans = get_num_fans();
+		p_v1.fan_idx = strtol(argv[1], &e, 0);
+		if ((e && *e) || (p_v1.fan_idx >= num_fans)) {
+			fprintf(stderr, "Bad fan index.\n");
+			return -1;
+		}
 	}
 
 	rv = ec_command(EC_CMD_THERMAL_AUTO_FAN_CTRL, cmdver,
 			&p_v1, sizeof(p_v1), NULL, 0);
 	if (rv < 0)
 		return rv;
+
+	if (p_v1.change_fan_table) {
+		printf("Enable low fan table flag=%d\n", p_v1.en_low_fan);
+		return 0;
+	}
 
 	printf("Automatic fan control is now on for fan %d\n", p_v1.fan_idx);
 
