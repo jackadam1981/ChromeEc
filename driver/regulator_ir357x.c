@@ -195,7 +195,7 @@ static int ir357x_check(void)
 	return !!diff;
 }
 
-#ifdef CONFIG_CMD_REGULATOR
+#ifdef CONFIG_CMD_IR357X
 static int command_ir357x(int argc, char **argv)
 {
 	int reg, val;

@@ -215,7 +215,6 @@
 #undef CONFIG_CMD_MMAPINFO
 #undef CONFIG_CMD_PD
 #undef CONFIG_CMD_PWR_AVG
-#undef CONFIG_CMD_REGULATOR
 #undef CONFIG_CMD_RW
 #undef CONFIG_CMD_SHMEM
 /* TODO: Consider put these back when FSI is (about to be) done. */
