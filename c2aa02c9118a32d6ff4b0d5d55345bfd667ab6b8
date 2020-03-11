@@ -22,6 +22,30 @@
       "revId": "c2aa02c9118a32d6ff4b0d5d55345bfd667ab6b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c568b11_a15b56aa",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T16:28:08Z",
+      "side": 0,
+      "message": "he thing is that CONFIG_CMD_GPIO_EXTENDED is not defined for Cr50, so this patch has no effect on functionality.\n\nIf we decide to define CONFIG_CMD_GPIO_EXTENDED we could do this in a separate patch ad change the set of displayed flags at that time?",
+      "parentUuid": "7856bacb_d4ebf3eb",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "c2aa02c9118a32d6ff4b0d5d55345bfd667ab6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
