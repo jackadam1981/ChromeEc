@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1375de62_9cd45fa1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T23:17:56Z",
+      "side": 1,
+      "message": "int opos \u003d pd_alt_mode(port, supported_modes[i].svid);\nso that line 442 can be removed",
+      "revId": "ff9455fad8d4b124ee3e417b55faa6cb5a77a299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0837472a_2810d360",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T23:17:56Z",
+      "side": 1,
+      "message": "rename to pd_send_vdm",
+      "range": {
+        "startLine": 789,
+        "startChar": 5,
+        "endLine": 789,
+        "endChar": 16
+      },
+      "revId": "ff9455fad8d4b124ee3e417b55faa6cb5a77a299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
