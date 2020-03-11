@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c94bcf1_bf520dd9",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-11T06:17:38Z",
+      "side": 1,
+      "message": "you can bail here if type_specific_data \u003d\u003d NULL, whatever the sensor.",
+      "revId": "2be783d71c7a3f7ca826d3d4c20bda13e1e6c122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
