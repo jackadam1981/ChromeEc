@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3b999e1d_11986329",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-11T23:09:42Z",
+      "side": 1,
+      "message": "Or actually with the file-level checks you could just remove all of the \"ifdef CHIP_VARIANT_STM32H7X3\" in the rest of the file. That makes it a little easier to read at this point since we don\u0027t support any others at the moment.",
+      "parentUuid": "718cc12f_0fc689c4",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2cfa68_61d073e2",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 5
