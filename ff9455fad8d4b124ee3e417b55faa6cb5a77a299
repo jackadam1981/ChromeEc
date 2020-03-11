@@ -19,6 +19,69 @@
     },
     {
       "key": {
+        "uuid": "42d2d034_930937f2",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T23:23:59Z",
+      "side": 1,
+      "message": "add new line",
+      "range": {
+        "startLine": 451,
+        "startChar": 29,
+        "endLine": 452,
+        "endChar": 3
+      },
+      "revId": "ff9455fad8d4b124ee3e417b55faa6cb5a77a299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accdd3dd_ac6f88db",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T23:23:59Z",
+      "side": 1,
+      "message": "add new line",
+      "range": {
+        "startLine": 454,
+        "startChar": 2,
+        "endLine": 454,
+        "endChar": 3
+      },
+      "revId": "ff9455fad8d4b124ee3e417b55faa6cb5a77a299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7683cb66_fe4ed30b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2351,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T23:23:59Z",
+      "side": 1,
+      "message": "need to add everywhere exit_supported_alt_mode is called\npd_vdm_send_state_machine(port);",
+      "revId": "ff9455fad8d4b124ee3e417b55faa6cb5a77a299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0837472a_2810d360",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
