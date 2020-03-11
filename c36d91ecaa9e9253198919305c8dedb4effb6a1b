@@ -22,6 +22,30 @@
       "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb57599_6bc52455",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-11T21:51:26Z",
+      "side": 1,
+      "message": "\u003e Or are we using a bad voltage request for the case where the battery isn\u0027t there?  Should the calling code for charge_request be the one changing here for the no-battery case?\n\nIt was this. Our charger sets regulation in steps of 64mV compared to others with 8mV or so. So charge_request ended up getting called with paramters 64, and -1 which totally skipped that entire clause and brought down VSYS.\n\nAs to the reason for that, it may be that our AC presence criteria is incorrect/unreliable? See also around L2019.",
+      "parentUuid": "e660eedf_972315d4",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1216,
+        "endChar": 60
+      },
+      "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
