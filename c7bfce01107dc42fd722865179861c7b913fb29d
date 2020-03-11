@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e3611f3_48beb3e0",
+        "filename": "driver/build.mk",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-11T06:42:13Z",
+      "side": 1,
+      "message": "#undef CONFIG_TEMP_SENSOR_AMD_R19ME4070 have existed in include/config.h .\nAre you mean that add undef on another CL?",
+      "parentUuid": "c1cfe276_921592a7",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "c7bfce01107dc42fd722865179861c7b913fb29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a25fc0d3_323a5221",
         "filename": "driver/temp_sensor/amd_r19me4070.h",
         "patchSetId": 16
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-10T20:19:20Z",
       "side": 1,
       "message": "Is this required? I don\u0027t think baseboard.h needs to be added explicitly here.",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "c7bfce01107dc42fd722865179861c7b913fb29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e281c691_1ab0eca0",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-11T06:42:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a25fc0d3_323a5221",
       "range": {
         "startLine": 12,
         "startChar": 1,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "I think this is stronger than preference. GPU port being I2C port 4 is very specific to the board. The driver can assume there is a GPU port defined in board.h. There can be a compiler error check here if the concern is that GPU_PORT is not defined.",
       "parentUuid": "465273cd_5f499dca",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "c7bfce01107dc42fd722865179861c7b913fb29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010d991b_3e63845d",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-11T06:42:13Z",
+      "side": 1,
+      "message": "Done.\nI add #error . It will warn when building without define GPU_PORT in board.h .",
+      "parentUuid": "182d4bf7_751280e9",
       "range": {
         "startLine": 16,
         "startChar": 0,
