@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb4b06ad_26d201f6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T22:49:31Z",
+      "side": 1,
+      "message": "this is sent irrespective of exit_supported_alt_mode()",
+      "range": {
+        "startLine": 2353,
+        "startChar": 3,
+        "endLine": 2353,
+        "endChar": 28
+      },
+      "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ddec10_c6b44d35",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T22:49:31Z",
+      "side": 1,
+      "message": "rename pd_send_vdm",
+      "range": {
+        "startLine": 789,
+        "startChar": 5,
+        "endLine": 789,
+        "endChar": 16
+      },
+      "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e13206_5ab608e3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T22:49:31Z",
+      "side": 1,
+      "message": "how about naming exit_supported_alt_mode",
+      "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
