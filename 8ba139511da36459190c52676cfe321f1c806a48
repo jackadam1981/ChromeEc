@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "617ea18d_c1f329e2",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "I would not to that, and force the board to define it.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "446e1cc9_f0126e6c",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "Never used, drop?",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c27b9eb_eb390f29",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbf9e01_773673b4",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "nit: Comment style in EC codebase has /* alone on the first line.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f94096_4ada3164",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "Do you really need this kind of complicated thing?\n\nNote that in HID the logical size does not need to match the physical size.\n\nSo even if your x position is, say, 0-1350, you can encode it in 8-bit (0-255) and have the OS/kernel scale it.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65fafe43_822aaf66",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "Could this use DIV_ROUND_UP, for at least part of the computation?",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999c7ea2_179e75c2",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2244,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:11:35Z",
+      "side": 1,
+      "message": "Alphabetical order, 2 \u003c T. (I know we don\u0027t always respect it...)",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
