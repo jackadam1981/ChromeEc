@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "718cc12f_0fc689c4",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-11T23:06:55Z",
+      "side": 1,
+      "message": "I think the checks you added are good. Just as a defensive measure, I would initialize \"target_acr\" though to avoid undefined behavior if someone manages to mess up the defines somehow.",
+      "parentUuid": "04fc72f0_5bb9c1d3",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2cfa68_61d073e2",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 5
