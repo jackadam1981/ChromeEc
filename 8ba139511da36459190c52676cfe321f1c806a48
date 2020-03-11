@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b26ca476_fa639d7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "Should probably add https://crbug.com/1008568 (Googlers only) to all the CLs in this series.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "617ea18d_c1f329e2",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 1
@@ -76,6 +93,63 @@
     },
     {
       "key": {
+        "uuid": "97dfe174_5a8ac8be",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "I was a bit confused reading this until I saw your comment on lines 124–126, so maybe it would be helpful to mention that up here too.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1533dc7_839807a9",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. By \"horizontal/vertical status\" do you mean whether it\u0027s wider than it is high or vice versa? If so, `bool(WIDTH\u003eHEIGHT)` would be clearer.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e3e048_1ea53a74",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "Could you add a comment explaining what these are?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03f94096_4ada3164",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 1
@@ -110,6 +184,46 @@
     },
     {
       "key": {
+        "uuid": "64509d2d_7f5e2863",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "Could you add comments or rename these bits to make their purpose clearer? I don\u0027t understand what they\u0027re for.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 19
+      },
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92718885_d062a1fc",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "Nit: could you just use `MAX` from util.h here, instead of defining a macro that\u0027s used once?",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "999c7ea2_179e75c2",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -121,6 +235,40 @@
       "writtenOn": "2020-03-11T08:11:35Z",
       "side": 1,
       "message": "Alphabetical order, 2 \u003c T. (I know we don\u0027t always respect it...)",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee356c0_2a11bd6e",
+        "filename": "include/hid.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "Nit: might be nice to add a reference to one of the usb.org docs that describes what the fields are.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fb6c70_88e5a09f",
+        "filename": "include/i2c_hid.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T21:49:04Z",
+      "side": 1,
+      "message": "Nit: again, a link to a reference would be nice.",
       "revId": "8ba139511da36459190c52676cfe321f1c806a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
