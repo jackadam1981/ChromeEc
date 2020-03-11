@@ -22,6 +22,30 @@
       "revId": "de64d33e87746c5321f353e8cdc48bf26ae9e126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8249b21a_78bd1921",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-11T17:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91cbe338_c3cd8c5e",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "de64d33e87746c5321f353e8cdc48bf26ae9e126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
