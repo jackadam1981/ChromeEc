@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03229e10_278cec47",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-11T19:36:24Z",
+      "side": 1,
+      "message": "Is this expected to be the case long-term, or is this a short-term measure for proto?  I believe we\u0027ve been able to run other small core systems off 15 W before.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "a614624dc05242a8caad9054737a961c8ca04e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
