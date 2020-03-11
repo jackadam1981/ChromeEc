@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e470c433_4cb361e9",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T00:12:30Z",
+      "side": 1,
+      "message": "with new approach it can be void",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7247bf73_30b6cb53",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T00:12:30Z",
+      "side": 1,
+      "message": "this guard can be removed",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 44
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d43a961_8442fa73",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T00:12:30Z",
+      "side": 1,
+      "message": "print SVID too?",
+      "range": {
+        "startLine": 451,
+        "startChar": 32,
+        "endLine": 451,
+        "endChar": 33
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfdc11f7_1cce246b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2352,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T00:12:30Z",
+      "side": 1,
+      "message": "i think this needs to be done per mode\nso need to be added in exit_supported_alt_mode()",
+      "range": {
+        "startLine": 2351,
+        "startChar": 3,
+        "endLine": 2352,
+        "endChar": 35
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
