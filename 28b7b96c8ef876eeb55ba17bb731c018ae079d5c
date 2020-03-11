@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d46b6c2_cedd5882",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2347,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-11T23:31:04Z",
+      "side": 1,
+      "message": "Is it guaranteed that only one alternate mode will be entered at a time?  If multiple alternate modes can be enabled, then the return at line 2354 will skip exiting some modes. The pd_send_vdm() at line 2355 would also need to be queued to send one VDM as I don\u0027t the TCPMv1 is setup to send concurrent VDMs.",
+      "range": {
+        "startLine": 2347,
+        "startChar": 0,
+        "endLine": 2347,
+        "endChar": 48
+      },
+      "revId": "28b7b96c8ef876eeb55ba17bb731c018ae079d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
