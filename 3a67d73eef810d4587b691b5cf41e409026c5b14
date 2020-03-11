@@ -16,6 +16,24 @@
       "revId": "3a67d73eef810d4587b691b5cf41e409026c5b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d93895_4dae3e00",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-11T02:55:55Z",
+      "side": 1,
+      "message": "I was considering that EC-CR50 communication could be a base for other new features than EC-EFS.\nI\u0027d like to keep each priority rather than putting a call dependency (in an opposite way in my optinion). \nInstead, I defined an alias for each priority in include/hooks.h with some explanation.",
+      "parentUuid": "ea2d7693_499f0438",
+      "revId": "3a67d73eef810d4587b691b5cf41e409026c5b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
