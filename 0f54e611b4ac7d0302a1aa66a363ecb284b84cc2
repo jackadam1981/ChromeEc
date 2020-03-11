@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d9c0a9c_e5174aaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T01:21:18Z",
+      "side": 1,
+      "message": "maybe\n\n\u0027add corrupt and reload options to ec_comm_console_cmd\u0027 ?\n\nAlso, please add a few line description why this is necessary.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "0f54e611b4ac7d0302a1aa66a363ecb284b84cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be34a23c_1e9418a0",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T01:21:18Z",
+      "side": 1,
+      "message": "so, what if the parameter is there, but it is neither \u0027corrupt\u0027 nor \u0027reload\u0027?\n\nAlso, do you want to continue processing if a valid parameter was entered or just do the action and return?",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 1
+      },
+      "revId": "0f54e611b4ac7d0302a1aa66a363ecb284b84cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd14a6d8_ad1b064b",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T01:21:18Z",
+      "side": 1,
+      "message": "why does it have to be corrupted with some arbitrary value, this creates unnecessary test variances (not a big deal in this case, but I just don\u0027t see a reason to bother). You could just invert all bytes, or even a single byte (depending on what needs to be tested)",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 57
+      },
+      "revId": "0f54e611b4ac7d0302a1aa66a363ecb284b84cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
