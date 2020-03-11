@@ -8,6 +8,7 @@
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
+#include "driver/accelgyro_bmi260.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/als_tcs3400.h"
 #include "driver/sync.h"
