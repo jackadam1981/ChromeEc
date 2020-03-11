@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47632853_a13b48a1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-11T18:39:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t this occur on resume as well? Could this cause a double entry upon suspend/resume? Instead of embedding it here, wouldn\u0027t it be better to do this at the chipset_startup hook?",
+      "range": {
+        "startLine": 1891,
+        "startChar": 23,
+        "endLine": 1891,
+        "endChar": 50
+      },
+      "revId": "cbee84c478570c303ab93640f6e0361dbceb2fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
