@@ -69,6 +69,24 @@
       "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac688ff1_633759fb",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-11T18:38:30Z",
+      "side": 1,
+      "message": "Yep, that should be fine for setup_mux.\nThere is some danger that something else in the future (eg sensor init) might happen before cbi_init(), which will lead to trouble. How hard is it to add an error message if someone reads fw_config before it has been set, so we can catch this if it happens?",
+      "parentUuid": "74448f9c_46c5ba76",
+      "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
