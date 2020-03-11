@@ -110,6 +110,8 @@
 #define PE_FLAGS_LOCALLY_INITIATED_AMS       BIT(26)
 /* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
 #define PE_FLAGS_FIRST_MSG                   BIT(27)
+/* Flag to continue port discovery if it was interrupted */
+#define PE_FLAGS_DISCOVER_PORT_CONTINUE      BIT(28)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -911,6 +913,22 @@ static bool common_src_snk_dpm_requests(int port)
 		PE_CLR_DPM_REQUEST(port,
 					DPM_REQUEST_SOFT_RESET_SEND);
 		set_state_pe(port, PE_SEND_SOFT_RESET);
+		return true;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_PORT_DISCOVERY)) {
+		PE_CLR_DPM_REQUEST(port,
+					DPM_REQUEST_PORT_DISCOVERY);
+		if (!PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION)) {
+			/*
+			 * Clear counters and reset timer to trigger a
+			 * port discovery.
+			 */
+			PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+			pe[port].dr_swap_attempt_counter = 0;
+			pe[port].discover_port_identity_counter = 0;
+			pe[port].discover_port_identity_timer = get_time().val +
+						PD_T_DISCOVER_IDENTITY;
+		}
 		return true;
 	}
 
@@ -1764,6 +1782,9 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
 		}
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
+		set_state_pe(port, PE_VDM_REQUEST);
 	}
 }
 
@@ -2503,6 +2524,9 @@ static void pe_snk_ready_run(int port)
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
 		}
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
+		set_state_pe(port, PE_VDM_REQUEST);
 	}
 }
 
@@ -4165,8 +4189,11 @@ static void pe_vdm_request_run(int port)
 			 */
 			PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
-			/* Port Disc. was interrupted. So don't try again. */
-			PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+			/*
+			 * Continue port discovery after the unexpected message
+			 * is handled
+			 */
+			PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
 
 			if (pe[port].power_role == PD_ROLE_SOURCE)
 				set_state_pe(port, PE_SRC_READY);
