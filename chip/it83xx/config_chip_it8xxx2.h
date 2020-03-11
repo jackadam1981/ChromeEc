@@ -97,6 +97,8 @@
 #define IT83XX_GPIO_INT_FLEXIBLE
 /* Enable detect type-c plug in interrupt. */
 #define IT83XX_INTC_PLUG_IN_SUPPORT
+/*TDOD: Please add comment here. */
+#define IT83XX_SPI_RX_VALID
 /* Chip actually has TCPC physical port count. */
 #define IT83XX_USBPD_PHY_PORT_COUNT    2
 #else
