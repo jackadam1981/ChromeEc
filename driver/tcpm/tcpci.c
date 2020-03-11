@@ -1057,7 +1057,8 @@ int tcpci_tcpm_init(int port)
 	 * TCPC_CONTROL.EnableLooking4ConnectionAlert bit, TCPC by default masks
 	 * Alert assertion when CC_STATUS.Looking4Connection changes state.
 	 */
-	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
+	if ((!IS_ENABLED(CONFIG_USB_PD_TCPM_NCT38XX))
+	    && (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0)) {
 		error = tcpc_read(port, TCPC_REG_TCPC_CTRL, &regval);
 		regval |= TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT;
 		error |= tcpc_write(port, TCPC_REG_TCPC_CTRL, regval);
