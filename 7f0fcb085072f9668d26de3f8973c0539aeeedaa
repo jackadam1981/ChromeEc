@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d26169c5_b4c69ea6",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T21:10:28Z",
+      "side": 1,
+      "message": "this should be abstracted, both because conceivably some other device could have PP wired to a different GPIO, and because it is not clear to the reader what DIOM4 level means.\n\nIf I understand the intention correctly, you should add a function in board/cr50/board.c file called something like \u0027pp_asserted()\u0027.",
+      "range": {
+        "startLine": 116,
+        "startChar": 34,
+        "endLine": 116,
+        "endChar": 60
+      },
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
