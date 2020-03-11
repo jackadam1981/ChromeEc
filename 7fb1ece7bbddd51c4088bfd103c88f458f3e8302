@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43885402_9b5fced0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T23:52:38Z",
+      "side": 1,
+      "message": "Nit: there\u0027s a new style for CQ depend: https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#CQ-DEPEND",
+      "revId": "7fb1ece7bbddd51c4088bfd103c88f458f3e8302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc46c9bf_f92a38a1",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T23:52:38Z",
+      "side": 1,
+      "message": "Nit: Can these be declared `static`?",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 50
+      },
+      "revId": "7fb1ece7bbddd51c4088bfd103c88f458f3e8302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f410f3a4_828023a0",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T23:52:38Z",
+      "side": 1,
+      "message": "Similarly to in the header, looks like this can be `size_t` too.",
+      "range": {
+        "startLine": 456,
+        "startChar": 44,
+        "endLine": 456,
+        "endChar": 47
+      },
+      "revId": "7fb1ece7bbddd51c4088bfd103c88f458f3e8302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95865e64_c4202c64",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T23:52:38Z",
+      "side": 1,
+      "message": "Nit: if this should always be \u003e\u003d 0, should we use `size_t` or `unsigned int` instead of `int`?",
+      "revId": "7fb1ece7bbddd51c4088bfd103c88f458f3e8302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe8c492_fda35650",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T23:52:38Z",
+      "side": 1,
+      "message": "As I commented in the original large CL, this return value seems really complicated to handle in the caller. Can\u0027t we just return `EC_SUCCESS` or an error, then have output parameters for the command and register?",
+      "revId": "7fb1ece7bbddd51c4088bfd103c88f458f3e8302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
