@@ -22,6 +22,30 @@
       "revId": "e25c2f411faa6aa9c5831641afe342e9c2a56f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50db3d06_68ccdf08",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-03-11T17:55:13Z",
+      "side": 1,
+      "message": "I am not a big fan of this.\nIf the define is missing, won\u0027t it cause a compile time error, if it is used?",
+      "parentUuid": "bf69135c_1135864a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "e25c2f411faa6aa9c5831641afe342e9c2a56f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
