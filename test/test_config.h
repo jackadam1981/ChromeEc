@@ -344,12 +344,14 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PRL_SM
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_PD_REV30
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_SHA256
 #define CONFIG_SW_CRC
 #endif
 
 #if defined(TEST_USB_PE_DRP)
+#define CONFIG_USB_PD_REV30
 #define CONFIG_TEST_USB_PE_SM
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PE_SM
@@ -385,6 +387,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_REV30
 #define CONFIG_SW_CRC
 #endif /* Common TypeC test defines */
 
