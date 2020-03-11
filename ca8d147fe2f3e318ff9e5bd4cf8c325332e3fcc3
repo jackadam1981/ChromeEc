@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "010d1022_c875918b",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-11T14:01:19Z",
+      "side": 1,
+      "message": "would be better to add logs here as well. e.g.\n\n #define CLEAR_MKBP_FIFO \"clear %sMKBP fifo\"\n\n  CPRINTS(CLEAR_MKBP_FIFO, \"keyboard-\");\n\nand modify line 201 as:\n\n  CPRINTS(CLEAR_MKBP_FIFO, \"\");",
+      "revId": "ca8d147fe2f3e318ff9e5bd4cf8c325332e3fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
