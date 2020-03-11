@@ -2339,21 +2339,25 @@ void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
 }
 
 #if defined(CONFIG_POWER_COMMON) || defined(CONFIG_USB_PD_ALT_MODE_DFP)
-static void exit_dp_mode(int port)
+static void exit_supported_alt_mode(int port)
 {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+	int opos;
 
-	if (opos <= 0)
-		return;
-
-	CPRINTS("C%d Exiting DP mode", port);
-	if (!pd_dfp_exit_mode(port, USB_SID_DISPLAYPORT, opos))
-		return;
-	pd_send_vdm(port, USB_SID_DISPLAYPORT,
-		    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
-	pd_vdm_send_state_machine(port);
-	/* Have to wait for ACK */
+	for (int i = 0; i < supported_modes_cnt; i++) {
+		opos = pd_alt_mode(port, supported_modes[i].svid);
+		if (opos > 0) {
+			CPRINTS("C%d Exiting ALT mode with SVID = 0x%x", port,
+				supported_modes[i].svid);
+			if (!pd_dfp_exit_mode(port, supported_modes[i].svid,
+					      opos))
+				return;
+			pd_send_vdm(port, supported_modes[i].svid,
+				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
+			/* Wait for an ACK from port-partner */
+			pd_vdm_send_state_machine(port);
+		}
+	}
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 }
 #endif /* CONFIG_POWER_COMMON */
@@ -2361,10 +2365,14 @@ static void exit_dp_mode(int port)
 #ifdef CONFIG_POWER_COMMON
 static void handle_new_power_state(int port)
 {
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
-		/* The SoC will negotiated DP mode again when it boots up */
-		exit_dp_mode(port);
 
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
+		/*
+		 * The SoC will negotiate the alternate mode again when
+		 * it boots up.
+		 */
+		exit_supported_alt_mode(port);
+	}
 	/* Ensure mux is set properly after chipset transition */
 	set_usb_mux_with_current_data_role(port);
 }
@@ -3101,9 +3109,8 @@ void pd_task(void *u)
 
 #if defined(CONFIG_USB_PD_ALT_MODE_DFP)
 		if (evt & PD_EVENT_SYSJUMP) {
-			exit_dp_mode(port);
+			exit_supported_alt_mode(port);
 			notify_sysjump_ready(&sysjump_task_waiting);
-
 		}
 #endif
 
