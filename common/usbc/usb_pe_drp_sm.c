@@ -195,8 +195,10 @@ enum usb_pe_state {
 	PE_SOFT_RESET,
 	PE_SEND_NOT_SUPPORTED,
 	PE_SRC_PING,
+#ifdef CONFIG_USB_PD_REV30
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
+#endif /* CONFIG_USB_PD_REV30 */
 	PE_DRS_EVALUATE_SWAP,
 	PE_DRS_CHANGE,
 	PE_DRS_SEND_SWAP,
@@ -267,8 +269,10 @@ static const char * const pe_state_names[] = {
 	[PE_SOFT_RESET] = "PE_Soft_Reset",
 	[PE_SEND_NOT_SUPPORTED] = "PE_Send_Not_Supported",
 	[PE_SRC_PING] = "PE_SRC_Ping",
+#ifdef CONFIG_USB_PD_REV30
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
+#endif /* CONFIG_USB_PD_REV30 */
 	[PE_DRS_EVALUATE_SWAP] = "PE_DRS_Evaluate_Swap",
 	[PE_DRS_CHANGE] = "PE_DRS_Change",
 	[PE_DRS_SEND_SWAP] = "PE_DRS_Send_Swap",
@@ -1714,6 +1718,7 @@ static void pe_src_ready_run(int port)
 		/* Extended Message Requests */
 		if (ext > 0) {
 			switch (type) {
+#ifdef CONFIG_USB_PD_REV30
 #ifdef CONFIG_BATTERY
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
@@ -1722,6 +1727,7 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
 #endif
+#endif /* CONFIG_USB_PD_REV30 */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2475,6 +2481,7 @@ static void pe_snk_ready_run(int port)
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
+#ifdef CONFIG_USB_PD_REV30
 #ifdef CONFIG_BATTERY
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
@@ -2483,6 +2490,7 @@ static void pe_snk_ready_run(int port)
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
 #endif
+#endif /* CONFIG_USB_PD_REV30 */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2900,6 +2908,7 @@ static void pe_src_ping_run(int port)
 	}
 }
 
+#ifdef CONFIG_USB_PD_REV30
 /**
  * PE_Give_Battery_Cap
  */
@@ -3067,6 +3076,7 @@ static void pe_give_battery_status_run(int port)
 		set_state_pe(port, PE_SRC_READY);
 	}
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 /**
  * PE_DRS_Evaluate_Swap
@@ -5169,6 +5179,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_src_ping_entry,
 		.run   = pe_src_ping_run,
 	},
+#ifdef CONFIG_USB_PD_REV30
 	[PE_GIVE_BATTERY_CAP] = {
 		.entry = pe_give_battery_cap_entry,
 		.run   = pe_give_battery_cap_run,
@@ -5177,6 +5188,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_give_battery_status_entry,
 		.run   = pe_give_battery_status_run,
 	},
+#endif /* CONFIG_USB_PD_REV30 */
 	[PE_DRS_EVALUATE_SWAP] = {
 		.entry = pe_drs_evaluate_swap_entry,
 		.run   = pe_drs_evaluate_swap_run,
