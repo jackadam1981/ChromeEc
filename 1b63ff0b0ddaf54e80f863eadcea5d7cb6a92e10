@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ceee8a5_8784af53",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-11T06:22:25Z",
+      "side": 1,
+      "message": "see previous CL. We can bail earlier.",
+      "revId": "1b63ff0b0ddaf54e80f863eadcea5d7cb6a92e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "852f21e7_4764f88f",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-11T06:22:25Z",
+      "side": 1,
+      "message": "Note to self, we will need a graceful transition to remove the cal bias vector to be removed from the raw output. It has to stay until the new kernel driver is in place.\nWe will enable calibration support in info_4 for mag only when the kernels are updated.",
+      "revId": "1b63ff0b0ddaf54e80f863eadcea5d7cb6a92e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
