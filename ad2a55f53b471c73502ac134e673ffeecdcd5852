@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d26165_2f14c05d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-11T02:54:41Z",
+      "side": 1,
+      "message": "As mentioned on b/151058106 for nuwani you can upload changes directly to the firmware-grunt-11031.B branch and avoid the extra step to cherry pick from master.",
+      "revId": "ad2a55f53b471c73502ac134e673ffeecdcd5852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c97919_b8647b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-11T02:54:41Z",
+      "side": 1,
+      "message": "Are you able to test this change with the battery?",
+      "revId": "ad2a55f53b471c73502ac134e673ffeecdcd5852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
