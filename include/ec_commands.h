@@ -5043,6 +5043,11 @@ enum cbi_data_tag {
 	CBI_TAG_DRAM_PART_NUM = 3, /* variable length ascii, nul terminated. */
 	CBI_TAG_OEM_NAME = 4,      /* variable length ascii, nul terminated. */
 	CBI_TAG_MODEL_ID = 5,      /* uint32_t or smaller */
+<<<<<<< HEAD   (b5f89a Octopus: Initiate the first version of parsing SSFC of CBI)
+=======
+	CBI_TAG_FW_CONFIG = 6,     /* uint32_t bit field */
+	CBI_TAG_PCB_SUPPLIER = 7,  /* uint32_t or smaller */
+>>>>>>> CHANGE (f28e4c cbi: Support PCB supplier field)
 	CBI_TAG_COUNT,
 };
 

@@ -51,6 +51,11 @@ int cbi_get_board_version(uint32_t *version);
 int cbi_get_sku_id(uint32_t *sku_id);
 int cbi_get_oem_id(uint32_t *oem_id);
 int cbi_get_model_id(uint32_t *id);
+<<<<<<< HEAD   (b5f89a Octopus: Initiate the first version of parsing SSFC of CBI)
+=======
+int cbi_get_fw_config(uint32_t *fw_config);
+int cbi_get_pcb_supplier(uint32_t *pcb_supplier);
+>>>>>>> CHANGE (f28e4c cbi: Support PCB supplier field)
 
 /**
  * Primitive accessors
