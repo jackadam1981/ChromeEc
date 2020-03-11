@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce3232d0_7c83881c",
+        "filename": "common/button.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-11T20:08:47Z",
+      "side": 1,
+      "message": "nit: you could rewrite these 4 lines as\n\nreturn !!(sim_button_state \u0026 BIT(button-\u003etype));",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "97530ad1dc33d8db4be6e06844b6f9d35df64ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
