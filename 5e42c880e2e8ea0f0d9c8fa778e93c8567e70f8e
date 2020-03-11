@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c01f51e5_37e86dca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T17:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd54ab9b_82170755",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3283b4_265991fb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdc8830_dd798a3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T17:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3283b4_265991fb",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "115c3c76_c86fc0aa",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T17:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7247bf73_30b6cb53",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 44
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d43a961_8442fa73",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "1ea51d6d_bf20c7db",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T17:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d43a961_8442fa73",
+      "range": {
+        "startLine": 451,
+        "startChar": 32,
+        "endLine": 451,
+        "endChar": 33
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfdc11f7_1cce246b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2020-03-11T00:12:30Z",
       "side": 1,
       "message": "i think this needs to be done per mode\nso need to be added in exit_supported_alt_mode()",
+      "range": {
+        "startLine": 2351,
+        "startChar": 3,
+        "endLine": 2352,
+        "endChar": 35
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7af7b70_21ee660d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2352,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T17:01:39Z",
+      "side": 1,
+      "message": "We need to exit only for the mode that the port entered in and not all the supported modes",
+      "parentUuid": "bfdc11f7_1cce246b",
       "range": {
         "startLine": 2351,
         "startChar": 3,
