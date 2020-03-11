@@ -256,12 +256,23 @@ void set_voltage_comparator_condition(int idx)
 		*vcmp_ctrl_regs[idx].vcmp_ctrl |= ADC_VCMP_GREATER_THRESHOLD;
 	else
 		*vcmp_ctrl_regs[idx].vcmp_ctrl &= ~ADC_VCMP_GREATER_THRESHOLD;
+
+	val = ((*vcmp_ctrl_regs[idx].vcmp_datm << 8) |
+		*vcmp_ctrl_regs[idx].vcmp_datl);
+	ccprints("threshold = 0x%x ", val);
+	ccprints("set condition: vcmpx = %d, vcmp_reg = 0x%x",
+		idx, *vcmp_ctrl_regs[idx].vcmp_ctrl);
 }
 
 /* Voltage comparator interrupt, handle one channel at a time. */
 void voltage_comparator_interrupt(void)
 {
 	int idx, status;
+
+	idx = IT83XX_ADC_VCMPSTS;
+	ccprints("INT vcmp status012 = 0x%x", idx);
+	idx = IT83XX_ADC_VCMPSTS2;
+	ccprints("INT vcmp status345 = 0x%x", idx);
 
 	/* Find out which voltage comparator triggered */
 	status = IT83XX_ADC_VCMPSTS & 0x07;
@@ -274,6 +285,7 @@ void voltage_comparator_interrupt(void)
 				vcmp_list[idx].vcmp_thresh_cb();
 			/* Clear voltage comparator interrupt status */
 			clear_vcmp_status(idx);
+			ccprints("INT vcmpx = 0x%x", idx);
 		}
 	}
 
