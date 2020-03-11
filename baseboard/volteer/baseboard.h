@@ -246,6 +246,7 @@
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C
+#define I2C_PORT_ACCEL		I2C_PORT_SENSOR
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
 #define I2C_PORT_USB_C0		NPCX_I2C_PORT1_0
 #define I2C_PORT_USB_C1		NPCX_I2C_PORT2_0
@@ -311,6 +312,8 @@ enum usbc_port {
 
 enum sensor_id {
 	LID_ACCEL = 0,
+	BASE_ACCEL,
+	BASE_GYRO,
 	CLEAR_ALS,
 	RGB_ALS,
 	VSYNC,

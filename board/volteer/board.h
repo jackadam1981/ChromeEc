@@ -22,6 +22,9 @@
 /* Keyboard features */
 
 /* Sensors */
+#define CONFIG_ACCELGYRO_BMI260
+#define CONFIG_ACCELGYRO_BMI_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 /* USB Type C and USB PD defines */
 /*
