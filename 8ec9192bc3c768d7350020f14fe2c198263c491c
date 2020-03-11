@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b690337_1b0b59c0",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T05:46:19Z",
+      "side": 1,
+      "message": "huh, is this true on all variants? We support a large number of different STM32, so I wonder if this always holds...\n\nThe thing that confuses me most is that I think STM32F072 works fine (last project I personally remember using the PWM). But then reading the datasheet, I agree with your change.\n\nCan you please check Reference manuals for a few other variants?",
+      "revId": "8ec9192bc3c768d7350020f14fe2c198263c491c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
