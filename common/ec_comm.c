@@ -322,6 +322,17 @@ static int command_ec_comm(int argc, char **argv)
 		return EC_ERROR_INVAL;
 	}
 
+	if (argc > 1) {
+#ifdef CR50_RELAXED
+		if (!strcasecmp(argv[1], "corrupt"))
+			ec_efs_corrupt_hash();
+		else if (!strcasecmp(argv[1], "reload"))
+			ec_efs_refresh();
+#else
+		return EC_ERROR_PARAM1;
+#endif
+	}
+
 	/*
 	 * EC Packet Context
 	 */
@@ -343,5 +354,13 @@ static int command_ec_comm(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(ec_comm, command_ec_comm, NULL,
-			     "Dump EC-CR50-comm status");
+DECLARE_SAFE_CONSOLE_COMMAND(ec_comm, command_ec_comm,
+#ifdef CR50_RELAXED
+			     "[corrupt|reload]",
+			     "Dump EC-CR50-comm status, or corrupt ECRW hash,"
+			     "or reload it"
+#else
+			     NULL,
+			     "Dump EC-CR50-comm status"
+#endif
+);

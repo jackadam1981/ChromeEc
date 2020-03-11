@@ -11,6 +11,7 @@
 #include "ec_commands.h"
 #include "extension.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "registers.h"
 #include "system.h"
 #include "tpm_nvmem.h"
@@ -280,6 +281,16 @@ void ec_efs_print_status(void)
 		 HEX_BUF(ec_efs_ctx.hash, SHA256_DIGEST_SIZE));
 #endif
 }
+
+#ifdef CR50_RELAXED
+void ec_efs_corrupt_hash(void)
+{
+	int i;
+
+	for (i = 0; i < SHA256_DIGEST_SIZE; i++)
+		ec_efs_ctx.hash[i] = (uint8_t)__hw_clock_source_read();
+}
+#endif
 
 #ifdef BOARD_HOST
 uint8_t ec_efs_get_boot_mode(void)
