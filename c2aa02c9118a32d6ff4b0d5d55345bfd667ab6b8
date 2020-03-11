@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7856bacb_d4ebf3eb",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-11T16:02:03Z",
+      "side": 0,
+      "message": "If it is a matter of parameters, then can we remove some unused ones here instead of moving this into ONCIFG_CMD_GPIO_EXTENDED area? \n\nCr5x doesn\u0027t use GPIO_ANALOG, GPIO_ALTERNATE, GPIO_SEL_1P8V, GPIO_LOCKED. (chip/npcx or chip/lm4 use them though). Actually, I hope to add GPIO_INT_RISING and GPIO_INT_FALLING here if there is any room.\n\nIf we don\u0027t need this for prod image, then at least can we have this when CR50_RELAXED is defined?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "c2aa02c9118a32d6ff4b0d5d55345bfd667ab6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
