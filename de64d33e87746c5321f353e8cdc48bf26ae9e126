@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91cbe338_c3cd8c5e",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T16:45:50Z",
+      "side": 1,
+      "message": "is this typecast needed?",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "de64d33e87746c5321f353e8cdc48bf26ae9e126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
