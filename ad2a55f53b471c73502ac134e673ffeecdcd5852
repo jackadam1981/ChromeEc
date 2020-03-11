@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d2e7d93_73af7b87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1374233
+      },
+      "writtenOn": "2020-03-11T03:10:30Z",
+      "side": 1,
+      "message": "I will abandon this cl.\nAny future CL to nuwani will be submitted to the firmware-grunt-11031.B branch?",
+      "parentUuid": "b9d26165_2f14c05d",
+      "revId": "ad2a55f53b471c73502ac134e673ffeecdcd5852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2c97919_b8647b31",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-11T02:54:41Z",
       "side": 1,
       "message": "Are you able to test this change with the battery?",
+      "revId": "ad2a55f53b471c73502ac134e673ffeecdcd5852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eecc13fd_e86c1993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1374233
+      },
+      "writtenOn": "2020-03-11T03:10:30Z",
+      "side": 1,
+      "message": "Nuwani board not yet produced.\nI used Treeya/Foob board verify this battery function.",
+      "parentUuid": "d2c97919_b8647b31",
       "revId": "ad2a55f53b471c73502ac134e673ffeecdcd5852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
